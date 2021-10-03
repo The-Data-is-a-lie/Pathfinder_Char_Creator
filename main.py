@@ -4,7 +4,7 @@ from utils.data import version
 from utils.util import isBool
 from utils.markdown import style
 
-print(style.BOLD + f"Welcome to the DnD Random Character Generator ({version})" + style.END)
+print(style.BOLD + f"Welcome to the D&D Random Character Generator ({version})" + style.END)
 
 isTrue = True
 
