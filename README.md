@@ -1,2 +1,3 @@
-# DND-Character-Creator
-A Simple DND Character Creator
+# DND Character Creator
+
+## A simple DND Character Creator using Python & Dictionaries
