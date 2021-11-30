@@ -10,8 +10,7 @@ isTrue = True
 
 while isTrue != False:
 	print("===============================================================")
-	userInput = input("Create a new character?: ")
-	userInput = userInput.lower()
+	userInput = input("Create a new character?: ").lower()
 	isTrue = isBool(userInput)
 
 	if isTrue == True:
