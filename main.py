@@ -4,17 +4,19 @@ from utils.data import version
 from utils.util import isBool
 from utils.markdown import style
 
-print(style.BOLD + f"Welcome to the D&D Random Character Generator ({version})" + style.END)
+print(style.BOLD + f'Welcome to the D&D Random Character Generator ({version})' + style.END)
 
 isTrue = True
 
 while isTrue != False:
-	print("===============================================================")
-	userInput = input("Create a new character?: ").lower()
+	print('===============================================================')
+	userInput = input('Create a new character? (y/n): ').lower()
 	isTrue = isBool(userInput)
 
 	if isTrue == True:
-		print("===============================================================")
+		print('===============================================================')
 		CreateNewCharacter()
+
 	else:
-		print("Exiting Character Generator...")
+		print('Exiting Character Generator...')
+

@@ -24,3 +24,4 @@ class style:
    DARKMAGENTA = '\033[2;35m'
    DARKCYAN = '\033[2;36m'
    DARKLIGHTGRAY = '\033[2;37m'
+

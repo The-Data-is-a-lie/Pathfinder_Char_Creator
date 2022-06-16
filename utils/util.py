@@ -50,9 +50,23 @@ def chooseRace():
     c_race = races[randrange(0,len(races))]
     return c_race
 
-
-def isBool(strBool):
+def isBool(strBool: bool):
 	if strBool == "yes" or strBool == "y":
 		return True
 	else:
 		return False
+
+def printAttributes(title: str, attributeList: list):
+    print(f'\n{title}', end='')
+    for i in range(len(attributeList)):
+        print(f'{attributeList[i]}, ', end='')
+
+def appendAttr(attributeList: list, dataList: list):
+    for attr in dataList:
+        attributeList.append(attr)
+
+def appendAttrData(attributeList: list, charAttrVar):
+    for attr in attributeList:
+        attributeList.append(attr)
+    charAttrVar = data.attributeList[randrange(0, len(data.attributeList))]
+

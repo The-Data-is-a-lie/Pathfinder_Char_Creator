@@ -276,4 +276,4 @@ mannerisms = ['Prone To Singing Or Whistling', 'Loves To Rhyme', 'Slurs Words', 
 
 traits = ['Argumentative', 'Arrogant', 'Blustering', 'Rude', 'Curious', 'Friendly', 'Honest', 'Hot Tempered', 'Irritable', 'Quiet']
 
-version = "1.1.3"
+version = "1.1.4"

@@ -9,6 +9,7 @@ def deityFavour():
     divine_favour = randrange(0,100)
     print(f"Divine Favour: {divine_favour}")
 
-def runDeities():
+def Deities():
     randomDeity()
     deityFavour()
+
