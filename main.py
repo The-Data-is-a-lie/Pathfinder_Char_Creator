@@ -8,15 +8,14 @@ print(style.BOLD + f'Welcome to the D&D Random Character Generator ({version})' 
 
 isTrue = True
 
-while isTrue != False:
+while isTrue:
 	print('===============================================================')
 	userInput = input('Create a new character? (y/n): ').lower()
 	isTrue = isBool(userInput)
 
-	if isTrue == True:
+	if isTrue:
 		print('===============================================================')
 		CreateNewCharacter()
 
 	else:
 		print('Exiting Character Generator...')
-
