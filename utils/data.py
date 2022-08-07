@@ -1,4 +1,3 @@
-
 races = {
     'Human': {
         'first names': {
@@ -93,6 +92,7 @@ races = {
         'traits': ['Darkvision', 'Dwarven Resilience'],
         'languages': ['Dwarvish', 'Giant', 'Gnomish', 'Goblin', 'Orc', 'Undercommon'],
     },
+    
     'Half-Elf': {
         'age': (20, '2d6'),
         'height': (55, '2d8'),

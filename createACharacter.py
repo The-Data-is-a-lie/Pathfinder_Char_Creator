@@ -3,10 +3,10 @@ from utils import data
 from utils.util import RollStat, chooseClass, printAttributes, appendAttr, appendAttrData
 from utils.markdown import style
 
-#Extention Modules:
+#Extension Modules:
+from modules.extraDetail import ExtraDetail
 from modules.currency import Currency
 from modules.deities import Deities
-from modules.extraDetail import ExtraDetail
 
 #External Imports
 from random import randrange
@@ -25,22 +25,27 @@ class Character:
     c_class = 'Placeholder'
     c_name = 'Placeholder'
     c_surname = 'Placeholder'
+    
     c_weapon = ['Dagger']
     c_armor = ['Cloth shirt']
+    
     c_skills = ['Placeholder']
     c_abilities = ['Placeholder']
     c_spells = ['None']
     c_hp = 1
 
     c_langs = ['Common']
+    
     c_saving_throws = []
     c_racial_traits = []
+    
     c_size = 'Medium'
     c_traits = []
+    
     c_bg = 'outlander'
+    c_mannerisms = ''
 
-    def __str__(self):
-        return f'Name: {self.c_name} ({self.c_race} {self.c_class})'
+    def __str__(self): return f'Name: {self.c_name} ({self.c_race} {self.c_class})'
 
 def CreateNewCharacter():
     new_char = Character()
@@ -59,8 +64,8 @@ def CreateNewCharacter():
     new_char.c_race = races[randrange(0,len(races))]
     new_char.c_class = chooseClass()
 
-    firstnames = []
-    lastnames = []
+    forenames = []
+    surnames = []
 
     if new_char.c_race == 'Human':
         types = []
@@ -70,8 +75,8 @@ def CreateNewCharacter():
 
         type = types[randrange(0,len(types))]
 
-        appendAttr(firstnames, data.races[new_char.c_race]['first names'][type])
-        appendAttr(lastnames, data.races[new_char.c_ract]['last names'][type])
+        appendAttr(forenames, data.races[new_char.c_race]['first names'][type])
+        appendAttr(surnames, data.races[new_char.c_race]['last names'][type])
 
     elif new_char.c_race == 'Half-Elf':
         types = []
@@ -81,25 +86,23 @@ def CreateNewCharacter():
 
         type = types[randrange(0,len(types))]
 
-        appendAttr(firstnames, data.races['Human']['first names'][type])
-        appendAttr(lastnames, data.races['Human']['last names'][type])
-        appendAttr(firstnames, data.races['Elf']['first names'])
-        appendAttr(lastnames, data.races['Elf']['last names'])
+        appendAttr(forenames, data.races['Human']['first names'][type])
+        appendAttr(surnames, data.races['Human']['last names'][type])
+        appendAttr(forenames, data.races['Elf']['first names'])
+        appendAttr(surnames, data.races['Elf']['last names'])
 
     else:
         for name in data.races[new_char.c_race]['first names']:
-            firstnames.append(name)
+            forenames.append(name)
 
-        if new_char.c_race == 'Half-Orc':
-            pass
+        if new_char.c_race == 'Half-Orc': pass
         else:
-            for name in data.races[new_char.c_race]['last names']:
-                lastnames.append(name)
+            for name in data.races[new_char.c_race]['last names']: 
+                surnames.append(name)
 
-    new_char.c_name = firstnames[randrange(0,len(firstnames))]
+    new_char.c_name = forenames[randrange(0,len(forenames))]
 
-    if new_char.c_race != 'Half-Orc':
-        new_char.c_surname = lastnames[randrange(0,len(lastnames))]
+    if new_char.c_race != 'Half-Orc': new_char.c_surname = surnames[randrange(0,len(surnames))]
 
     new_char.c_str = RollStat()
     new_char.c_dex =  RollStat()
@@ -128,38 +131,33 @@ def CreateNewCharacter():
     new_char.c_background = data.classes[new_char.c_class]['background']
 
     mannerisms = []
-    appendAttrData(mannerisms, new_char.c_mannerisms)
+    new_char.c_mannerisms = appendAttrData(mannerisms, data.mannerisms)
 
     traits = []
-    appendAttrData(traits, new_char.c_traits)
+    new_char.c_traits = appendAttrData(traits, data.traits)
 
     talents = []
-    appendAttrData(talents, new_char.c_talent)
+    new_char.c_talent = appendAttrData(talents, data.talents)
 
     appearances = []
-    appendAttrData(appearances, new_char.c_appearance)
+    new_char.c_appearance = appendAttrData(appearances, data.appearance)
 
     deityList = []
-    appendAttrData(deityList, new_char.c_deity)
+    new_char.c_deity = appendAttrData(deityList, data.deities)
 
     match new_char.c_race:
-        case 'Half-Orc':
-            print(f'Name: {new_char.c_name} ({new_char.c_race} {new_char.c_class})')
+        case 'Half-Orc': print(f'Name: {new_char.c_name} ({new_char.c_race} {new_char.c_class})\n')
 
-        case 'Elf':
-            print(f'Name: {new_char.c_name} {new_char.c_surname} ({new_char.c_race} {new_char.c_class})')
+        case 'Elf': print(f'Name: {new_char.c_name} {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n')
 
-        case 'Dragonborn':
-            print(f'Name: {new_char.c_name} of the clan {new_char.c_surname} ({new_char.c_race} {new_char.c_class})')
+        case 'Dragonborn': print(f'Name: {new_char.c_name} of the clan {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n')
 
-        case _:
-            print(f'Name: {new_char.c_name} {new_char.c_surname} ({new_char.c_race} {new_char.c_class})')
+        case _: print(f'Name: {new_char.c_name} {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n')
 
-    print(f'Strength: {new_char.c_str}\nDexterity: {new_char.c_dex}\n')
-    print(f'Constitution: {new_char.c_const} \nIntelligence: {new_char.c_intelligence}\n')
-    print(f'Wisdom: {new_char.c_wisdom}\nCharisma: {new_char.c_charisma}')
-
-    print(f'\nBackground: {new_char.c_background}\n')
+    print(f'Strength: {new_char.c_str}\nDexterity: {new_char.c_dex}')
+    print(f'Constitution: {new_char.c_const} \nIntelligence: {new_char.c_int}')
+    print(f'Wisdom: {new_char.c_wisdom}\nCharisma: {new_char.c_char}')
+    print(f'Background: {new_char.c_background}')
 
     printAttributes('Languages', new_char.c_langs)
     printAttributes('Skills', new_char.c_skills)
