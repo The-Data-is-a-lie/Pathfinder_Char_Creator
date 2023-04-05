@@ -1,4 +1,5 @@
 from random import randrange
+import random
 from utils import data
 
 def RollStat():
@@ -20,6 +21,21 @@ def RollStat():
     for num in dice: total += num
 
     return total - lowest
+
+def Roll_Level(user_input="y"):
+    """
+    Rolls for a random character level
+    """
+    if user_input.lower() == "y":
+        weights = [i/sum(range(1, 31)) for i in range(30, 0, -1)]
+    else:
+        weights = [i/sum(range(1, 31)) for i in range(1, 31)]
+
+    level = random.choices(range(1, 31), weights=weights)[0]
+
+    return level
+
+
 
 def chooseClass():
     """
