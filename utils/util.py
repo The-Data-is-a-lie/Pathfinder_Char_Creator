@@ -22,10 +22,25 @@ def RollStat():
 
     return total - lowest
 
-def Roll_Level(user_input="y"):
+def Roll_Level_40(user_input="y"):
     """
     Rolls for a random character level
     """
+    "1-40"
+    if user_input.lower() == "y":
+        weights = [i/sum(range(1, 41)) for i in range(40, 0, -1)]
+    else:
+        weights = [i/sum(range(1, 41)) for i in range(1, 41)]
+
+    level = random.choices(range(1, 41), weights=weights)[0]
+
+    return level
+
+def Roll_Level_30(user_input="y"):
+    """
+    Rolls for a random character level
+    """
+    "1-30"
     if user_input.lower() == "y":
         weights = [i/sum(range(1, 31)) for i in range(30, 0, -1)]
     else:
@@ -35,6 +50,47 @@ def Roll_Level(user_input="y"):
 
     return level
 
+def Roll_Level_20(user_input="y"):
+    """
+    Rolls for a random character level
+    """
+    "1-20"
+    if user_input.lower() == "y":
+        weights = [i/sum(range(1, 21)) for i in range(20, 0, -1)]
+    else:
+        weights = [i/sum(range(1, 21)) for i in range(1, 21)]
+
+    level = random.choices(range(1, 21), weights=weights)[0]
+
+    return level
+
+def Roll_Level_10(user_input="y"):
+    """
+    Rolls for a random character level
+    """
+    "1-10"
+    if user_input.lower() == "y":
+        weights = [i/sum(range(1, 11)) for i in range(10, 0, -1)]
+    else:
+        weights = [i/sum(range(1, 11)) for i in range(1, 11)]
+
+    level = random.choices(range(1, 11), weights=weights)[0]
+
+    return level
+
+def Roll_Level_5(user_input="y"):
+    """
+    Rolls for a random character level
+    """
+    "1-5"
+    if user_input.lower() == "y":
+        weights = [i/sum(range(1, 6)) for i in range(5, 0, -1)]
+    else:
+        weights = [i/sum(range(1, 6)) for i in range(1, 6)]
+
+    level = random.choices(range(1, 6), weights=weights)[0]
+
+    return level
 
 
 def chooseClass():

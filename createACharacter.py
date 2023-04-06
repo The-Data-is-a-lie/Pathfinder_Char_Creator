@@ -1,6 +1,6 @@
 #Internal Imports
 from utils import data
-from utils.util import RollStat, chooseClass, printAttributes, appendAttr, appendAttrData
+from utils.util import RollStat, chooseClass,  appendAttr, appendAttrData #printAttributes,
 from utils.markdown import style
 import random
 
@@ -47,169 +47,220 @@ class Character:
 
     def __str__(self): return f'Name: {self.c_name} ({self.c_race} {self.c_class})'
 
-def CreateNewCharacter():
-    new_char = Character()
 
-    races = []
-    classes = []
 
-    for race in data.races:
-        races.append(race)
+def CreateNewCharacter(name):
+    filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+    with open(filename, 'a') as f:
 
-    for _class in data.classes:
-        classes.append(_class)
+        new_char = Character()
 
-    new_char.c_class = classes[randrange(0,len(classes))]
+        races = []
+        classes = []
 
-    new_char.c_race = races[randrange(0,len(races))]
-    new_char.c_class = chooseClass()
+        for race in data.races:
+            races.append(race)
 
-    forenames = []
-    surnames = []
+        for _class in data.classes:
+            classes.append(_class)
 
-    if new_char.c_race == 'Human':
-        types = []
+        new_char.c_class = classes[randrange(0,len(classes))]
 
-        for type in data.races['Human']['first names']:
-            types.append(type)
+        new_char.c_race = races[randrange(0,len(races))]
+        new_char.c_class = chooseClass()
 
-        type = types[randrange(0,len(types))]
+        forenames = []
+        surnames = []
 
-        appendAttr(forenames, data.races[new_char.c_race]['first names'][type])
-        appendAttr(surnames, data.races[new_char.c_race]['last names'][type])
+        if new_char.c_race == 'Human':
+            types = []
 
-    elif new_char.c_race == 'Half-Elf':
-        types = []
+            for type in data.races['Human']['first names']:
+                types.append(type)
 
-        for type in data.races['Human']['first names']:
-            types.append(type)
+            type = types[randrange(0,len(types))]
 
-        type = types[randrange(0,len(types))]
+            appendAttr(forenames, data.races[new_char.c_race]['first names'][type])
+            appendAttr(surnames, data.races[new_char.c_race]['last names'][type])
 
-        appendAttr(forenames, data.races['Human']['first names'][type])
-        appendAttr(surnames, data.races['Human']['last names'][type])
-        appendAttr(forenames, data.races['Elf']['first names'])
-        appendAttr(surnames, data.races['Elf']['last names'])
+        elif new_char.c_race == 'Half-Elf':
+            types = []
 
-    else:
-        for name in data.races[new_char.c_race]['first names']:
-            forenames.append(name)
+            for type in data.races['Human']['first names']:
+                types.append(type)
 
-        if new_char.c_race == 'Half-Orc': pass
+            type = types[randrange(0,len(types))]
+
+            appendAttr(forenames, data.races['Human']['first names'][type])
+            appendAttr(surnames, data.races['Human']['last names'][type])
+            appendAttr(forenames, data.races['Elf']['first names'])
+            appendAttr(surnames, data.races['Elf']['last names'])
+
         else:
-            for name in data.races[new_char.c_race]['last names']: 
-                surnames.append(name)
+            for name in data.races[new_char.c_race]['first names']:
+                forenames.append(name)
 
-    new_char.c_name = forenames[randrange(0,len(forenames))]
+            if new_char.c_race == 'Half-Orc': pass
+            else:
+                for name in data.races[new_char.c_race]['last names']: 
+                    surnames.append(name)
 
-    if new_char.c_race != 'Half-Orc': new_char.c_surname = surnames[randrange(0,len(surnames))]
+        new_char.c_name = forenames[randrange(0,len(forenames))]
 
-    new_char.c_str = RollStat()
-    new_char.c_dex =  RollStat()
-    new_char.c_const = RollStat()
-    new_char.c_int = RollStat()
-    new_char.c_wisdom = RollStat()
-    new_char.c_char = RollStat()
+        if new_char.c_race != 'Half-Orc': new_char.c_surname = surnames[randrange(0,len(surnames))]
 
-    weapons = []
-    armors = []
+        new_char.c_str = RollStat()
+        new_char.c_dex =  RollStat()
+        new_char.c_const = RollStat()
+        new_char.c_int = RollStat()
+        new_char.c_wisdom = RollStat()
+        new_char.c_char = RollStat()
 
-    appendAttr(weapons, data.classes[new_char.c_class]['weapons'])
-    appendAttr(armors, data.classes[new_char.c_class]['armor'])
+        weapons = []
+        armors = []
 
-    new_char.c_weapon = weapons[randrange(0,len(weapons))]
-    new_char.c_armor = armors[randrange(0,len(armors))]
-    new_char.c_skills = data.classes[new_char.c_class]['skills']
-    new_char.c_langs = ['Common']
-    new_char.c_langs += data.races[new_char.c_race]['languages']
-    new_char.c_racial_traits = data.races[new_char.c_race]['traits']
+        appendAttr(weapons, data.classes[new_char.c_class]['weapons'])
+        appendAttr(armors, data.classes[new_char.c_class]['armor'])
 
-    mannerisms = []
-    new_char.c_mannerisms = appendAttrData(mannerisms, data.mannerisms)
+        new_char.c_weapon = weapons[randrange(0,len(weapons))]
+        new_char.c_armor = armors[randrange(0,len(armors))]
+        new_char.c_skills = data.classes[new_char.c_class]['skills']
+        new_char.c_langs = ['Common']
+        new_char.c_langs += data.races[new_char.c_race]['languages']
+        new_char.c_racial_traits = data.races[new_char.c_race]['traits']
 
-    traits = []
-    new_char.c_traits = appendAttrData(traits, data.traits)
+        mannerisms = []
+        new_char.c_mannerisms = appendAttrData(mannerisms, data.mannerisms)
 
-    profession = []
-    new_char.c_profession = appendAttrData(profession, data.profession)
+        traits = []
+        new_char.c_traits = appendAttrData(traits, data.traits)
 
-    appearances = []
-    new_char.c_appearance = appendAttrData(appearances, data.appearance)
+        profession = []
+        new_char.c_profession = appendAttrData(profession, data.profession)
 
-    deityList = []
-    new_char.c_deity = appendAttrData(deityList, data.deities)
+        appearances = []
+        new_char.c_appearance = appendAttrData(appearances, data.appearance)
 
-    traits_abilities = []
-    new_char.c_traits_abilities = appendAttrData(traits_abilities, data.traits_abilities)
+        deityList = []
+        new_char.c_deity = appendAttrData(deityList, data.deities)
 
-    weapon_groups = []
-    new_char.c_weapon_groups = appendAttrData(weapon_groups, data.weapon_groups)
+        traits_abilities = []
+        new_char.c_traits_abilities = appendAttrData(traits_abilities, data.traits_abilities)
 
-    match new_char.c_race:
-        case 'Half-Orc': print(f'Name: {new_char.c_name} ({new_char.c_race} {new_char.c_class})\n')
+        weapon_groups = []
+        new_char.c_weapon_groups = appendAttrData(weapon_groups, data.weapon_groups)
 
-        case 'Elf': print(f'Name: {new_char.c_name} {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n')
+        match new_char.c_race:
+            case 'Half-Orc': print(f'Name: {new_char.c_name} ({new_char.c_race} {new_char.c_class})\n', file=f)
+            case 'Half-Orc': print(f'Name: {new_char.c_name} ({new_char.c_race} {new_char.c_class})\n')            
 
-        case 'Dragonborn': print(f'Name: {new_char.c_name} of the clan {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n')
+            case 'Elf': print(f'Name: {new_char.c_name} {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n', file=f)
+            case 'Elf': print(f'Name: {new_char.c_name} {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n')            
 
-        case _: print(f'Name: {new_char.c_name} {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n')
+            case 'Dragonborn': print(f'Name: {new_char.c_name} of the clan {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n', file=f)
+            case 'Dragonborn': print(f'Name: {new_char.c_name} of the clan {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n')
 
-    print(f'Strength: {new_char.c_str}\nDexterity: {new_char.c_dex}')
-    print(f'Constitution: {new_char.c_const} \nIntelligence: {new_char.c_int}')
-    print(f'Wisdom: {new_char.c_wisdom}\nCharisma: {new_char.c_char}')
-
-    printAttributes(f'Languages', new_char.c_langs)
-    printAttributes(f'Skills', new_char.c_skills)
-    printAttributes(f'Traits', new_char.c_racial_traits)
-#    printAttributes(f'profession', new_char.c_profession)
-#    printAttributes(f'traits_abilities', new_char.c_traits_abilities)
-#    printAttributes(f'Traits_background', new_char.c_traits)
-
-
-    # use random.sample to select 3 random professions 
-    random_professions = random.sample(profession, 3)
-    # loop through the random abilities and print out each element
-    for proforce in random_professions:
-        print(f'(profession):',proforce)
-
-    # use random.sample to select 8 random abilities
-    random_abilities = random.sample(traits_abilities, 8)
-    # loop through the random abilities and print out each element
-    for ability in random_abilities:
-        print(f'(ability traits):',ability)
-
-    # use random.sample to select 5 random personality traits
-    random_personality = random.sample(traits, 5)
-    # loop through the random abilities and print out each element
-    for personality in random_personality:
-        print(f'(personality traits):',personality)
-
-    # use random.sample to select 3 random mannerisms
-    random_mannerisms = random.sample(mannerisms, 3)
-    # loop through the random abilities and print out each element
-    for manners in random_mannerisms:
-        print(f'(mannerisms):',manners)
-
-    # yse random.sample to select 2 random weapons
-    weapons = random.sample(weapon_groups, 2)
-    # loop through the random abilities and print out each element
-    for weapun in weapons:
-        print(f'(weapon groups):',weapun)        
-
-    print('===============================================================')
-
-    match sys.modules:
-        case 'modules.extraDetail':
-            print(style.BOLD+'Extra Details Module:\n'+style.END)
-            ExtraDetail()
-
-        case 'modules.currency':
-            print(style.BOLD+'Currency Module:\n'+style.END)
-            Currency()
+            case _: print(f'Name: {new_char.c_name} {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n', file=f)
             
-        case 'modules.deities':
-            print(style.BOLD+'Deities Module:\n'+style.END)
-            Deities()
 
-        case _:
-            pass
+
+        
+        print(f'Strength: {new_char.c_str}\nDexterity: {new_char.c_dex}', file=f)
+        print(f'Constitution: {new_char.c_const} \nIntelligence: {new_char.c_int}', file=f)
+        print(f'Wisdom: {new_char.c_wisdom}\nCharisma: {new_char.c_char}' + '\n', file=f )
+
+        print(f'Languages' + '\n', new_char.c_langs, file=f)
+        print(f'Skills' + '\n', new_char.c_skills, file=f)
+        print(f'Traits' + '\n', new_char.c_racial_traits, file=f)
+
+        print(f'Strength: {new_char.c_str}\nDexterity: {new_char.c_dex}')
+        print(f'Constitution: {new_char.c_const} \nIntelligence: {new_char.c_int}')
+        print(f'Wisdom: {new_char.c_wisdom}\nCharisma: {new_char.c_char}')
+
+        print(f'Languages' + '\n', new_char.c_langs)
+        print(f'Skills' + '\n', new_char.c_skills)
+        print(f'Traits' + '\n', new_char.c_racial_traits)
+
+
+
+        # use random.sample to select 3 random professions 
+        random_professions = random.sample(profession, 3)
+        # loop through the random abilities and print out each element
+        for proforce in random_professions:
+            print(f'(profession):', proforce, file=f )
+
+
+        # use random.sample to select 8 random abilities
+        random_abilities = random.sample(traits_abilities, 8)
+        # loop through the random abilities and print out each element
+        for ability in random_abilities:
+            print(f'(ability traits):',ability, file=f)
+
+        # use random.sample to select 5 random personality traits
+        random_personality = random.sample(traits, 5)
+        # loop through the random abilities and print out each element
+        for personality in random_personality:
+            print(f'(personality traits):',personality, file=f)
+
+        # use random.sample to select 3 random mannerisms
+        random_mannerisms = random.sample(mannerisms, 3)
+        # loop through the random abilities and print out each element
+        for manners in random_mannerisms:
+            print(f'(mannerisms):',manners, file=f)
+
+        # yse random.sample to select 2 random weapons
+        weapons = random.sample(weapon_groups, 2)
+        # loop through the random abilities and print out each element
+        for weapun in weapons:
+            print(f'(weapon groups):',weapun, file=f)        
+
+                # Copy + paste so it prints to the terminal as well as the output file
+                
+        # use random.sample to select 3 random professions 
+        random_professions = random.sample(profession, 3)
+        # loop through the random abilities and print out each element
+        for proforce in random_professions:
+            print(f'(profession):',proforce)
+
+        # use random.sample to select 8 random abilities
+        random_abilities = random.sample(traits_abilities, 8)
+        # loop through the random abilities and print out each element
+        for ability in random_abilities:
+            print(f'(ability traits):',ability)
+
+        # use random.sample to select 5 random personality traits
+        random_personality = random.sample(traits, 5)
+        # loop through the random abilities and print out each element
+        for personality in random_personality:
+            print(f'(personality traits):',personality)
+
+        # use random.sample to select 3 random mannerisms
+        random_mannerisms = random.sample(mannerisms, 3)
+        # loop through the random abilities and print out each element
+        for manners in random_mannerisms:
+            print(f'(mannerisms):',manners)
+
+        # yse random.sample to select 2 random weapons
+        weapons = random.sample(weapon_groups, 2)
+        # loop through the random abilities and print out each element
+        for weapun in weapons:
+            print(f'(weapon groups):',weapun)  
+        print('===============================================================')
+
+        match sys.modules:
+            case 'modules.extraDetail':
+                print(style.BOLD+'Extra Details Module:\n'+style.END)
+                ExtraDetail()
+
+            case 'modules.currency':
+                print(style.BOLD+'Currency Module:\n'+style.END)
+                Currency()
+                
+            case 'modules.deities':
+                print(style.BOLD+'Deities Module:\n'+style.END)
+                Deities()
+
+            case _:
+                pass
+
+            

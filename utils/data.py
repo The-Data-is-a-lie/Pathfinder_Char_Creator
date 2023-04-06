@@ -117,6 +117,7 @@ races = {
 
 classes = {
     'Barbarian': {
+        'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
         'armor': ['Padded', 'Leather', 'Studded Leather', 'Hide', 'Chain Shirt', 'Scale Mail', 'Breastplate', 'Half Plate'],
         'skills': ['Acrobatics', 'Animal Handling', 'Athletics', 'Intimidate', 'Nature', 'Perception', 'Survival'],
         'abilities': ['Rage', 'Unarmored Defense', 'Reckless Abandon'],
@@ -126,6 +127,7 @@ classes = {
 },
 
     'Bard': {
+    'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],    
     'armor': ['Padded', 'Leather', 'Studded Leather'],
     'skills': ['Acrobatics', 'Appraise', 'Bluff', 'Climb', 'Diplomacy', 'Disguise', 'Escape Artist', 'Intimidate', 'Knowledge (all skills taken individually)', 'Linguistics', 'Perception', 'Perform (all skills taken individually)', 'Sense Motive', 'Sleight of Hand', 'Spellcraft', 'Stealth', 'Use Magic Device'],
     'abilities': ['Bardic Knowledge', 'Bardic Performance'],
@@ -135,6 +137,7 @@ classes = {
 },
 
 'Cleric': {
+    'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
     'armor': ['Padded', 'Leather', 'Studded Leather', 'Chain Shirt', 'Scale Mail', 'Breastplate', 'Splint Mail', 'Banded Mail', 'Half Plate', 'Full Plate'],
     'skills': ['Appraise', 'Craft (all skills taken individually)', 'Diplomacy', 'Heal', 'Knowledge (arcana)', 'Knowledge (history)', 'Knowledge (nobility)', 'Knowledge (planes)', 'Knowledge (religion)', 'Linguistics', 'Profession (all skills taken individually)', 'Sense Motive', 'Spellcraft'],
     'abilities': ['Channel Energy', 'Spontaneous Casting'],
@@ -144,6 +147,8 @@ classes = {
 },
 
     'Druid': {
+        'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
+        'armor': ['Padded', 'Leather', 'Studded Leather'],
         'skills': ['Craft (Alchemy)', 'Handle Animal', 'Heal', 'Knowledge (Geography)', 'Knowledge (Nature)', 'Perception', 'Spellcraft', 'Survival'],
         'abilities': ['Spontaneous Casting (Summon Nature’s Ally)', 'Nature Sense', 'Wild Empathy', 'Woodland Stride', 'Trackless Step', 'Resist Nature’s Lure', 'Wild Shape'],
         'hp': 8,
@@ -152,6 +157,7 @@ classes = {
 },
 
  'Fighter': {
+    'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
     'armor': ['Padded', 'Leather', 'Studded Leather', 'Hide', 'Chain Shirt', 'Scale Mail', 'Breastplate', 'Banded Mail', 'Half-Plate', 'Full Plate'],
     'skills': ['Climb', 'Handle Animal', 'Intimidate', 'Knowledge (dungeoneering)', 'Knowledge (engineering)', 'Profession', 'Ride', 'Survival', 'Swim'],
     'abilities': ['Bravery', 'Weapon Training'],
@@ -161,7 +167,7 @@ classes = {
 },
 
 'Monk': {
-    'weapons': ['Club', 'Dagger', 'Handaxe', 'Javelin', 'Kama', 'Nunchaku', 'Quarterstaff', 'Shuriken', 'Siangham', 'Sling', 'Spear'],
+    'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
     'armor': ['None'],
     'skills': ['Acrobatics', 'Climb', 'Craft', 'Escape Artist', 'Intimidate', 'Knowledge (history)', 'Knowledge (religion)', 'Perception', 'Perform', 'Profession', 'Ride', 'Sense Motive', 'Stealth', 'Swim'],
     'abilities': ['Flurry of Blows', 'Unarmed Strike', 'Evasion', 'Still Mind'],
@@ -171,7 +177,7 @@ classes = {
 },
 
   'Paladin': {
-    'weapons': ['Club', 'Dagger', 'Quarterstaff', 'Scimitar', 'Sickle', 'Shortspear', 'Sling', 'Longspear', 'Battleaxe', 'Greatsword', 'Greataxe', 'Warhammer', 'Lance', 'Longsword'],
+    'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
     'armor': ['Padded', 'Leather', 'Studded Leather', 'Hide', 'Chain Shirt', 'Scale Mail', 'Breastplate', 'Banded Mail', 'Half-Plate', 'Full Plate'],
     'skills': ['Diplomacy', 'Handle Animal', 'Heal', 'Knowledge (nobility)', 'Knowledge (religion)', 'Profession', 'Ride', 'Sense Motive'],
     'abilities': ['Aura of Good', 'Detect Evil', 'Smite Evil', 'Lay on Hands'],
@@ -181,7 +187,7 @@ classes = {
 },
 
 'Ranger': {
-'weapons': ['Club', 'Dagger', 'Quarterstaff', 'Scimitar', 'Sickle', 'Shortspear', 'Sling', 'Longspear', 'Battleaxe', 'Greatsword', 'Greataxe', 'Warhammer', 'Lance', 'Longsword'],
+'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
 'armor': ['Padded', 'Leather', 'Studded Leather', 'Hide', 'Chain Shirt', 'Scale Mail', 'Breastplate', 'Half-Plate'],
 'skills': ['Climb', 'Handle Animal', 'Heal', 'Intimidate', 'Knowledge (dungeoneering)', 'Knowledge (geography)', 'Knowledge (nature)', 'Perception', 'Ride', 'Stealth', 'Survival', 'Swim'],
 'abilities': ['Favored Enemy', 'Track', 'Wild Empathy'],
@@ -191,6 +197,7 @@ classes = {
 },
 
 'Rogue': {
+    'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
     'armor': ['Padded', 'Leather', 'Studded Leather'],
     'skills': ['Acrobatics', 'Appraise', 'Bluff', 'Climb', 'Craft', 'Diplomacy', 'Disable Device', 'Disguise', 'Escape Artist', 'Intimidate', 'Knowledge (dungeoneering)', 'Knowledge (local)', 'Linguistics', 'Perception', 'Perform', 'Sense Motive', 'Sleight of Hand', 'Stealth', 'Swim', 'Use Magic Device'],
     'abilities': ['Sneak Attack', 'Trapfinding', 'Evasion', 'Rogue Talents'],
@@ -200,6 +207,7 @@ classes = {
 },
 
 'Sorcerer': {
+    'weapons': ['Club', 'Dagger', 'Heavy Crossbow', 'Light Crossbow', 'Quarterstaff'],
     'armor': ['None'],
     'skills': ['Appraise', 'Bluff', 'Fly', 'Intimidate', 'Knowledge (arcana)', 'Spellcraft', 'Use Magic Device'],
     'abilities': ['Bloodline', 'Cantrips', 'Eschew Materials'],
@@ -209,7 +217,8 @@ classes = {
     'saving throws': ['Fortitude', 'Will']
 },
 
-'Warlock': {
+'Warlock': {    
+'weapons': ['Club', 'Dagger', 'Heavy Crossbow', 'Light Crossbow', 'Quarterstaff'],
 'armor': ['Padded', 'Leather', 'Studded Leather'],
 'skills': ['Bluff', 'Craft (any one)', 'Escape Artist', 'Intimidate', 'Knowledge (arcana)', 'Knowledge (planes)', 'Perception', 'Sense Motive', 'Spellcraft', 'Use Magic Device'],
 'abilities': ['Otherwordly Patron', 'Eldritch Blast'],
@@ -220,6 +229,7 @@ classes = {
 },
 
 'Wizard': {
+    'weapons': ['Club', 'Dagger', 'Heavy Crossbow', 'Light Crossbow', 'Quarterstaff'],
     'armor': ['None'],
     'skills': ['Craft (any one)', 'Fly', 'Knowledge (arcana)', 'Knowledge (history)', 'Knowledge (planes)', 'Linguistics', 'Spellcraft'],
     'abilities': ['Arcane Bond', 'Arcane School'],
@@ -229,26 +239,27 @@ classes = {
 },
 
     'Stalker': {
-        'weapons': ['Light Blades', 'Thrown Blades', 'Kamas', 'Unarmed Strike'],
+        'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
         'armor': ['Light Armor', 'Shields'],
-        'skills': ['Acrobatics', 'Athletics', 'Intimidate', 'Perception', 'Stealth'],
+        'skills': ['Acrobatics','Climb','Craft','Disable Device','Disguise','Escape Artist','Handle Animal','Heal','Intimidate','Knowledge (dungeoneering)','Knowledge (geography)','Knowledge (nature)','Perception','Ride','Sense Motive','Stealth','Survival','Swim'],
         'hp': 10,
         'gold': '3d6x10',
         'saving throws': ['Fortitude', 'Reflex']
     },
 
     'Warder': {
-        'weapons': ['Heavy Blades', 'Axes', 'Hammers', 'Polearms', 'Thrown Weapons'],
+        'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
         'armor': ['Heavy Armor', 'Medium Armor', 'Shields'],
+        'skills': ["Acrobatics", "Autohypnosis", "Climb", "Craft", "Handle Animal", "Intimidate", "Jump", "Knowledge (engineering)", "Knowledge (history)", "Knowledge (nobility)", "Knowledge (tactics)", "Perception", "Perform", "Profession", "Ride", "Sense Motive", "Survival", "Swim", "Use Rope"],
         'hp': 12,
         'gold': '3d6x10',
         'saving throws': ['Fortitude', 'Will']
     },
 
     'Warlord': {
-        'weapons': ['Axes', 'Heavy Blades', 'Light Blades', 'Maces', 'Polearms', 'Thrown Weapons'],
+        'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
         'armor': ['Heavy Armor', 'Medium Armor', 'Light Armor', 'Shields'],
-        'skills': ['Athletics', 'Intimidate', 'Perception', 'Persuasion'],
+        'skills': ['Acrobatics', 'Appraise', 'Bluff', 'Climb', 'Craft', 'Diplomacy', 'Disable Device', 'Disguise', 'Escape Artist', 'Fly', 'Handle Animal', 'Heal', 'Intimidate', 'Knowledge (all)', 'Linguistics', 'Perception', 'Perform', 'Profession', 'Ride', 'Sense Motive', 'Sleight of Hand', 'Spellcraft', 'Stealth', 'Survival', 'Swim', 'Use Magic Device'],
         'hp': 10,
         'gold': '4d6x10',
         'saving throws': ['Fortitude', 'Will']
