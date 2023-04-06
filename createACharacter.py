@@ -1,7 +1,7 @@
 #Internal Imports
 from utils import data
 #from utils.data import archetypes
-from utils.util import RollStat, chooseClass,  appendAttr, appendAttrData, roll_4d6 #printAttributes,
+from utils.util import RollStat, chooseClass,  appendAttr, appendAttrData, roll_4d6, roll_dice #printAttributes,
 from utils.markdown import style
 import random
 
@@ -175,6 +175,9 @@ def CreateNewCharacter(name):
         deityList = []
         new_char.c_deity = appendAttrData(deityList, data.deities)
 
+        Alignment = []
+        new_char.c_alignment = appendAttrData(Alignment, data.alignment)
+
         traits_abilities = []
         new_char.c_traits_abilities = appendAttrData(traits_abilities, data.traits_abilities)
 
@@ -212,6 +215,14 @@ def CreateNewCharacter(name):
         print(f'Skills' + '\n', new_char.c_skills)
         print(f'Traits' + '\n', new_char.c_racial_traits)
 
+# comment this out later
+
+        print(f'Deities' + '\n', new_char.c_deity)
+        print(f'Alignment' + '\n', new_char.c_alignment)
+#        print(f'hair_colors' + '\n', new_char.c_hair_colors)
+#        print(f'hair_types' + '\n', new_char.c_langs)
+#        print(f'eye_colors' + '\n', new_char.c_skills)
+#        print(f'appearance' + '\n', new_char.c_racial_traits)
 
 
         # use random.sample to select 3 random professions 
@@ -282,14 +293,10 @@ def CreateNewCharacter(name):
 
         # Assigning archetypes:
 
-        #char_class = new_char.c_class.lower()
-        #selected_archetype = random.choice(archetypes[char_class])
-        #print('this is the randomly selected archetype' +  '\n' + selected_archetype + '\n' + ' for this class' + '\n' + char_class)
+        char_class = new_char.c_class.lower()
+        selected_archetype = random.choice(archetypes[char_class])
+        print('this is the randomly selected archetype' +  '\n' + selected_archetype + '\n' + ' for this class' + '\n' + char_class)
         
-        #    archetype_list = getattr(archetypes)
-        #    print("this is the archetype lst" + archetype_list)
-#            selected_archetype = random.choice(archetype_list)
-
             #selected_archetype = random.choice(archetypes.eval("archetypes_{new_char.c_class.lower()}"))
 
 
