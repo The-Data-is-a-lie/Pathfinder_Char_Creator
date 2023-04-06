@@ -116,10 +116,41 @@ races = {
 }
 
 classes = {
+
+    'Alchemist': {
+        'weapons': ['Club', 'Dagger', 'Dart', 'Heavy Crossbow', 'Light Crossbow', 'Mace', 'Morningstar', 'Quarterstaff', 'Sickle', 'Sling', 'Spear'],
+        'armor': ['Padded', 'Leather', 'Studded Leather', 'Chain Shirt'],
+        'skills': ['Appraise', 'Craft', 'Fly', 'Heal', 'Knowledge (arcana)', 'Knowledge (nature)', 'Perception', 'Profession', 'Sleight of Hand', 'Spellcraft', 'Survival', 'Use Magic Device'],
+        'abilities': ['Alchemy', 'Bomb', 'Mutagen', 'Poison Resistance', 'Throw Anything'],
+        'hp': 8,
+        'gold': '3d6',
+        'saving throws': ['Fortitude', 'Reflex']
+},
+
+'Anti-Paladin': {
+    'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
+    'armor': ['Padded', 'Leather', 'Studded Leather', 'Hide', 'Chain Shirt', 'Scale Mail', 'Breastplate', 'Half Plate', 'Full Plate'],
+    'skills': ['Bluff', 'Diplomacy', 'Intimidate', 'Perception', 'Ride', 'Sense Motive'],
+    'abilities': ['Aura of Evil', 'Cruelty', 'Detect Good', 'Smite Good', 'Touch of Corruption', 'Unholy Resilience'],
+    'hp': 10,
+    'gold': '5d6',
+    'saving throws': ['Fortitude', 'Will']
+},
+
+'Arcanist': {
+    'weapons': ['Club', 'Dagger', 'Heavy Crossbow', 'Light Crossbow', 'Quarterstaff'],
+    'armor': ['Padded', 'Leather'],
+    'skills': ['Appraise', 'Craft', 'Knowledge (arcana)', 'Knowledge (dungeoneering)', 'Knowledge (engineering)', 'Knowledge (geography)', 'Knowledge (history)', 'Knowledge (local)', 'Knowledge (nature)', 'Knowledge (nobility)', 'Knowledge (planes)', 'Knowledge (religion)', 'Linguistics', 'Spellcraft'],
+    'abilities': ['Arcane Reservoir', 'Arcanist Exploits', 'Cantrips', 'Consume Spells', 'Metamagic Knowledge'],
+    'hp': 6,
+    'gold': '2d6',
+    'saving throws': ['Fortitude', 'Will']
+},
+
     'Barbarian': {
         'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
         'armor': ['Padded', 'Leather', 'Studded Leather', 'Hide', 'Chain Shirt', 'Scale Mail', 'Breastplate', 'Half Plate'],
-        'skills': ['Acrobatics', 'Animal Handling', 'Athletics', 'Intimidate', 'Nature', 'Perception', 'Survival'],
+        'skills': ['Acrobatics', 'Animal Handling', 'Athletics', 'Intimidate', 'nature', 'Perception', 'Survival'],
         'abilities': ['Rage', 'Unarmored Defense', 'Reckless Abandon'],
         'hp': 12,
         'gold': '3d6',
@@ -133,6 +164,36 @@ classes = {
     'abilities': ['Bardic Knowledge', 'Bardic Performance'],
     'hp': 8,
     'gold': '3d6',
+    'saving throws': ['Fortitude', 'Will']
+},
+
+'Bloodrager': {
+    'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
+    'armor': ['Light Armor', 'Medium Armor', 'Shields'],
+    'skills': ['Acrobatics', 'Climb', 'Craft', 'Handle Animal', 'Intimidate', 'Knowledge (arcana)', 'Perception', 'Ride', 'Spellcraft', 'Survival', 'Swim'],
+    'abilities': ['Blood Casting', 'Bloodline', 'Bloodrage', 'Fast Movement', 'Uncanny Dodge'],
+    'hp': 10,
+    'gold': '4d6',
+    'saving throws': ['Fortitude', 'Will']
+},
+
+'Brawler': {
+    'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
+    'armor': ['Padded', 'Leather', 'Studded Leather', 'Chain Shirt', 'Breastplate'],
+    'skills': ['Acrobatics', 'Climb', 'Escape Artist', 'Intimidate', 'Knowledge (dungeoneering)', 'Knowledge (local)', 'Profession', 'Sense Motive', 'Survival', 'Swim'],
+    'abilities': ['Unarmed Strike', 'Martial Flexibility'],
+    'hp': 10,
+    'gold': '3d6',
+    'saving throws': ['Fortitude', 'Reflex']
+},
+
+'Cavalier': {
+    'weapons': ['Lance', 'Longsword', 'Morningstar', 'Ranseur', 'Scimitar', 'Shortsword', 'Throwing Axe', 'Throwing Hammer'],
+    'armor': ['Padded', 'Leather', 'Studded Leather', 'Chain Shirt', 'Breastplate', 'Ring Mail', 'Scale Mail', 'Chainmail', 'Splint Mail', 'Banded Mail', 'Half Plate', 'Full Plate'],
+    'skills': ['Handle Animal', 'Intimidate', 'Ride', 'Survival'],
+    'abilities': ['Challenge', 'Order', 'Tactician'],
+    'hp': 10,
+    'gold': '5d6',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -166,6 +227,66 @@ classes = {
     'saving throws': ['Fortitude', 'Reflex']
 },
 
+'Gunslinger': {
+    'weapons': ['Pistol', 'Musket', 'Pepperbox', 'Blunderbuss'],
+    'armor': ['Padded', 'Leather'],
+    'skills': ['Acrobatics', 'Bluff', 'Craft (alchemy)', 'Intimidate', 'Perception', 'Profession (gunsmith)', 'Ride', 'Sleight of Hand', 'Survival'],
+    'abilities': ['Grit', 'Gunsmithing', 'Deeds'],
+    'hp': 10,
+    'gold': '4d6x10',
+    'saving throws': ['Reflex', 'Will']
+},
+
+'Hunter': {
+    'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
+    'armor': ['Padded', 'Leather', 'Studded Leather', 'Hide', 'Chain Shirt', 'Scale Mail', 'Breastplate'],
+    'skills': ['Climb', 'Craft', 'Handle Animal', 'Heal', 'Intimidate', 'Knowledge (dungeoneering)', 'Knowledge (geography)', 'Knowledge (nature)', 'Perception', 'Profession', 'Ride', 'Spellcraft', 'Stealth', 'Survival', 'Swim'],
+    'abilities': ['Animal Companion', 'Nature Training', 'Teamwork Feat'],
+    'hp': 8,
+    'gold': '2d6x10',
+    'saving throws': ['Fortitude', 'Reflex']
+},
+
+'Inquisitor': {
+    'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
+    'armor': ['Padded', 'Leather', 'Studded Leather', 'Chain Shirt', 'Scale Mail', 'Breastplate', 'Splint Mail', 'Banded Mail', 'Half Plate'],
+    'skills': ['Bluff', 'Climb', 'Diplomacy', 'Disguise', 'Heal', 'Intimidate', 'Knowledge (arcana)', 'Knowledge (dungeoneering)', 'Knowledge (nature)', 'Knowledge (planes)', 'Knowledge (religion)', 'Perception', 'Ride', 'Sense Motive', 'Spellcraft', 'Stealth', 'Survival', 'Swim'],
+    'abilities': ['Judgment', 'Monster Lore', 'Solo Tactics', 'Track', 'Stern Gaze', 'Cunning Initiative', 'Discern Lies'],
+    'hp': 8,
+    'gold': '5d6',
+    'saving throws': ['Fortitude', 'Will']
+},
+
+'Magus': {
+    'weapons': ['Club', 'Dagger', 'Heavy Crossbow', 'Javelin', 'Light Crossbow','Longsword', 'Morningstar', 'Quarterstaff', 'Rapier', 'Scimitar','Short Sword', 'Spear'],
+    'armor': ['None', 'Light'],
+    'skills': ['Acrobatics', 'Bluff', 'Craft', 'Intimidate', 'Knowledge (arcana)','Knowledge (dungeoneering)', 'Knowledge (planes)', 'Profession', 'Spellcraft', 'Use Magic Device'],
+    'abilities': ['Spell Combat', 'Spellstrike'],
+    'hp': 8,
+    'gold': '3d6 x 10',
+    'saving throws': ['Fortitude', 'Will']
+},
+
+'Medium': {
+    'weapons': ['All Simple Weapons'],
+    'armor': ['Light', 'Medium', 'Heavy', 'Shields'],
+    'skills': ['Appraise', 'Craft', 'Diplomacy', 'Handle Animal', 'Heal', 'Knowledge (history)', 'Knowledge (planes)', 'Knowledge (religion)', 'Perception', 'Ride', 'Sense Motive', 'Spellcraft', 'Survival'],
+    'abilities': ['Spirit', 'Trance', 'Shared Seance'],
+    'hp': 8,
+    'gold': '2d6 x 10',
+    'saving throws': ['Fortitude', 'Will']
+},
+
+'Mesmerist': {
+    'weapons': ['Club', 'Crossbow, Light', 'Dagger', 'Hand Crossbow', 'Heavy Crossbow','Rapier', 'Short Sword'],
+    'armor': ['Light'],
+    'skills': ['Bluff', 'Diplomacy', 'Disguise', 'Escape Artist', 'Intimidate', 'Knowledge (arcana)', 'Knowledge (local)', 'Perception', 'Perform', 'Sense Motive', 'Sleight of Hand', 'Spellcraft', 'Use Magic Device'],
+    'abilities': ['Hypnotic Stare', 'Mesmeric Mirror', 'Bold Stare'],
+    'hp': 6,
+    'gold': '4d4 x 10',
+    'saving throws': ['Fortitude', 'Will']
+},
+
 'Monk': {
     'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
     'armor': ['None'],
@@ -173,6 +294,36 @@ classes = {
     'abilities': ['Flurry of Blows', 'Unarmed Strike', 'Evasion', 'Still Mind'],
     'hp': 8,
     'gold': '2d10',
+    'saving throws': ['Fortitude', 'Will']
+},
+
+'Ninja': {
+    'weapons': ['All Simple Weapons', 'Kama', 'Nunchaku', 'Sai', 'Shuriken','Siangham'],
+    'armor': ['Padded', 'Leather'],
+    'skills': ['Acrobatics', 'Bluff', 'Climb', 'Craft', 'Diplomacy', 'Disguise','Escape Artist', 'Intimidate', 'Knowledge (local)', 'Linguistics', 'Perception','Perform', 'Profession', 'Sense Motive', 'Sleight of Hand', 'Stealth', 'Swim','Use Magic Device'],
+    'abilities': ['Ninjutsu Tricks', 'Ki Pool', 'No Trace'],
+    'hp': 8,
+    'gold': '5d4',
+    'saving throws': ['Reflex', 'Will']
+},
+
+'Occultist': {
+    'weapons': ['Blowgun', 'Club', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dart', 'Falchion', 'Gauntlet', 'Gauntlet, Spiked','Glaive', 'Greataxe', 'Greatclub', 'Greatsword', 'Handaxe', 'Javelin','Kukri', 'Longbow', 'Longspear', 'Longsword', 'Morningstar','Nunchaku', 'Quarterstaff', 'Rapier', 'Sap', 'Scimitar', 'Shortbow','Shortspear', 'Shuriken', 'Sickle', 'Sling', 'Spear', 'Sword, Short','Trident', 'Unarmed Strike', 'Warhammer', 'Whip'],
+    'armor': ['Padded', 'Leather', 'Studded Leather', 'Chain Shirt', 'Hide', 'Scale Mail', 'Chainmail', 'Breastplate', 'Splint Mail', 'Banded Mail', 'Half-Plate', 'Full Plate'],
+    'skills': ['Appraise', 'Bluff', 'Climb', 'Craft', 'Diplomacy', 'Disable Device', 'Disguise', 'Escape Artist', 'Fly', 'Heal', 'Intimidate', 'Knowledge (arcana)', 'Knowledge (dungeoneering)', 'Knowledge (engineering)', 'Knowledge (geography)', 'Knowledge (history)', 'Knowledge (local)', 'Knowledge (nature)', 'Knowledge (nobility)', 'Knowledge (planes)', 'Knowledge (religion)', 'Linguistics', 'Perception', 'Perform', 'Profession', 'Sense Motive', 'Sleight of Hand', 'Spellcraft', 'Stealth', 'Survival', 'Swim', 'Use Magic Device'],
+    'abilities': ['Implement Mastery', 'Mental Focus', 'Object Reading', 'Psychic Aura', 'Shift Focus'],
+    'hp': 6,
+    'gold': '4d4',
+    'saving throws': ['Fortitude', 'Will']
+},
+
+'Oracle': {
+    'weapons': ['Club', 'Dagger', 'Heavy Mace', 'Javelin', 'Light Crossbow','Quarterstaff', 'Shortspear', 'Sickle', 'Sling', 'Unarmed Strike'],
+    'armor': ['Padded', 'Leather', 'Studded Leather', 'Hide', 'Chain Shirt', 'Scale Mail', 'Breastplate', 'Half Plate', 'Ring Mail', 'Chainmail'],
+    'skills': ['Craft', 'Diplomacy', 'Heal', 'Knowledge (history)', 'Knowledge (planes)', 'Linguistics', 'Profession', 'Sense Motive', 'Spellcraft'],
+    'abilities': ['Orisons', 'Mystery', 'Revelation', 'Curse'],
+    'hp': 8,
+    'gold': '2d6',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -186,14 +337,24 @@ classes = {
     'saving throws': ['Fortitude', 'Will']
 },
 
+'Psychic': {
+    'weapons': ['Blowgun', 'Crossbow, Heavy', 'Crossbow, Light', 'Dagger','Dart', 'Dart, Jolting', 'Falchion', 'Hand Crossbow', 'Kama','Longbow', 'Longspear', 'Morningstar', 'Net', 'Quarterstaff','Rapier', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Sickle', 'Spear', 'Sword, Short', 'Trident', 'Unarmed Strike'],
+    'armor': ['Light Armor'],
+    'skills': ['Appraise', 'Autohypnosis', 'Craft', 'Fly', 'Knowledge (arcana)', 'Knowledge (dungeoneering)', 'Knowledge (engineering)', 'Knowledge (history)', 'Knowledge (local)', 'Knowledge (nature)', 'Knowledge (nobility)', 'Knowledge (planes)', 'Knowledge (psionics)', 'Knowledge (religion)', 'Linguistics', 'Perception', 'Profession', 'Sense Motive', 'Spellcraft', 'Use Magic Device'],
+    'abilities': ['Phrenic Amplifications', 'Phrenic Pool', 'Discipline'],
+    'hp': 6,
+    'gold': '2d6',
+    'saving throws': ['Will']
+},
+
 'Ranger': {
-'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
-'armor': ['Padded', 'Leather', 'Studded Leather', 'Hide', 'Chain Shirt', 'Scale Mail', 'Breastplate', 'Half-Plate'],
-'skills': ['Climb', 'Handle Animal', 'Heal', 'Intimidate', 'Knowledge (dungeoneering)', 'Knowledge (geography)', 'Knowledge (nature)', 'Perception', 'Ride', 'Stealth', 'Survival', 'Swim'],
-'abilities': ['Favored Enemy', 'Track', 'Wild Empathy'],
-'hp': 8,
-'gold': '5d6',
-'saving throws': ['Fortitude', 'Reflex']
+    'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
+    'armor': ['Padded', 'Leather', 'Studded Leather', 'Hide', 'Chain Shirt', 'Scale Mail', 'Breastplate', 'Half-Plate'],
+    'skills': ['Climb', 'Handle Animal', 'Heal', 'Intimidate', 'Knowledge (dungeoneering)', 'Knowledge (geography)', 'Knowledge (nature)', 'Perception', 'Ride', 'Stealth', 'Survival', 'Swim'],
+    'abilities': ['Favored Enemy', 'Track', 'Wild Empathy'],
+    'hp': 8,
+    'gold': '5d6',
+    'saving throws': ['Fortitude', 'Reflex']
 },
 
 'Rogue': {
@@ -217,15 +378,66 @@ classes = {
     'saving throws': ['Fortitude', 'Will']
 },
 
+'Spiritualist': {
+    'weapons': ['Battleaxe', 'Blowgun', 'Blunderbuss', 'Bolas', 'Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light', 'Dagger', 'Dart', 'Falchion', 'Flail', 'Glaive', 'Greataxe', 'Greatclub', 'Greatsword', 'Halberd', 'Hammer, Light', 'Handaxe', 'Javelin', 'Longbow', 'Longspear', 'Longsword', 'Morningstar', 'Net', 'Nunchaku', 'Quarterstaff', 'Ranseur', 'Rapier', 'Sai', 'Scimitar', 'Shortbow', 'Shortspear', 'Shuriken', 'Sickle', 'Sling', 'Spear', 'Spiked Chain', 'Trident', 'Unarmed Strike', 'Warhammer', 'Whip'],
+    'armor': ['Padded', 'Leather', 'Studded Leather', 'Chain Shirt'],
+    'skills': ['Bluff', 'Craft', 'Diplomacy', 'Disguise', 'Fly', 'Handle Animal', 'Heal', 'Intimidate', 'Knowledge (arcana)', 'Knowledge (history)', 'Knowledge (planes)', 'Knowledge (religion)', 'Perception', 'Perform', 'Profession', 'Ride', 'Sense Motive', 'Spellcraft', 'Stealth', 'Survival', 'Swim', 'Use Magic Device'],
+    'abilities': ['Etheric Tether', 'Phantom', 'Spellcasting'],
+    'hp': 6,
+    'gold': '3d6',
+    'saving throws': ['Fortitude', 'Will']
+},
+
+'Summoner': {
+    'weapons': ['Club', 'Dagger', 'Heavy Crossbow', 'Light Crossbow', 'Quarterstaff'],
+    'armor': ['None'],
+    'skills': ['Appraise', 'Fly', 'Knowledge (arcana)', 'Knowledge (engineering)', 'Linguistics', 'Profession', 'Spellcraft', 'Use Magic Device'],
+    'abilities': ['Eidolon', 'Life Link', 'Spellcasting'],
+    'hp': 6,
+    'gold': '3d6',
+    'saving throws': ['Fortitude', 'Reflex', 'Will']
+},
+
+'Swashbuckler': {
+    'weapons': ['Axe, Throwing', 'Battleaxe', 'Blowgun', 'Boar Spear', 'Bolas','Crossbow, Hand', 'Dagger', 'Dart', 'Falchion', 'Flail, Heavy','Glaive', 'Greataxe', 'Greatclub', 'Greatsword', 'Halberd', 'Handaxe','Javelin', 'Kukri', 'Lance', 'Longbow', 'Longspear', 'Longsword','Morningstar', 'Net', 'Pike', 'Rapier', 'Sap', 'Scimitar', 'Shortbow','Shortspear', 'Sickle', 'Sling', 'Spear', 'Sword, Bastard', 'Sword, Short','Trident', 'Unarmed Strike', 'Warhammer'],
+    'armor': ['Light Armor', 'Medium Armor', 'Heavy Armor'],
+    'skills': ['Acrobatics', 'Bluff', 'Climb', 'Diplomacy', 'Escape Artist', 'Intimidate', 'Knowledge (local)', 'Perception', 'Perform', 'Profession', 'Sense Motive', 'Swim', 'Use Magic Device'],
+    'abilities': ['Deeds', 'Panache'],
+    'hp': 10,
+    'gold': '3d6',
+    'saving throws': ['Fortitude', 'Reflex']
+},
+
+
 'Warlock': {    
-'weapons': ['Club', 'Dagger', 'Heavy Crossbow', 'Light Crossbow', 'Quarterstaff'],
-'armor': ['Padded', 'Leather', 'Studded Leather'],
-'skills': ['Bluff', 'Craft (any one)', 'Escape Artist', 'Intimidate', 'Knowledge (arcana)', 'Knowledge (planes)', 'Perception', 'Sense Motive', 'Spellcraft', 'Use Magic Device'],
-'abilities': ['Otherwordly Patron', 'Eldritch Blast'],
-'invocations': ['Beguiling Influence', 'Darkness', 'Devils Sight', 'See the Unseen', 'Walk Unseen'],
-'hp': 8,
-'gold': '3d6',
-'saving throws': ['Fortitude', 'Reflex']
+    'weapons': ['Club', 'Dagger', 'Heavy Crossbow', 'Light Crossbow', 'Quarterstaff'],
+    'armor': ['Padded', 'Leather', 'Studded Leather'],
+    'skills': ['Bluff', 'Craft (any one)', 'Escape Artist', 'Intimidate', 'Knowledge (arcana)', 'Knowledge (planes)', 'Perception', 'Sense Motive', 'Spellcraft', 'Use Magic Device'],
+    'abilities': ['Otherwordly Patron', 'Eldritch Blast'],
+    'invocations': ['Beguiling Influence', 'Darkness', 'Devils Sight', 'See the Unseen', 'Walk Unseen'],
+    'hp': 8,
+    'gold': '3d6',
+    'saving throws': ['Fortitude', 'Reflex']
+},
+
+'Warpriest': {
+    'weapons': ['Battleaxe', 'Blowgun', 'Blunderbuss', 'Bomb', 'Cestus','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dart', 'Dart, Jolting', 'Dwarven Waraxe', 'Falchion','Flail', 'Glaive', 'Greataxe', 'Greatclub', 'Greatsword', 'Guillotine Axe','Halberd', 'Handaxe', 'Harpoon', 'Heavy Flail', 'Heavy Mace','Heavy Pick', 'Javelin', 'Kama', 'Kukri', 'Lance', 'Light Flail','Light Hammer', 'Light Mace', 'Light Pick', 'Longbow', 'Longspear','Longsword', 'Mace, Cold Iron', 'Mace, Heavy', 'Mace, Light', 'Morningstar','Net', 'Nunchaku', 'Orc Double Axe', 'Pick, Heavy', 'Pick, Light','Quarterstaff', 'Ranseur', 'Rapier', 'Sai', 'Sap', 'Scimitar','Scythe', 'Shortbow', 'Shortspear', 'Shuriken', 'Sickle', 'Sling','Spear', 'Spear, Hekatonkheires', 'Starknife', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Three-Section Staff', 'Trident','Unarmed Strike', 'Warhammer', 'Whip', 'Whip, Dire'],
+    'armor': ['Padded', 'Leather', 'Studded Leather', 'Hide', 'Chain Shirt', 'Scale Mail', 'Breastplate', 'Half Plate', 'Ring Mail', 'Chainmail', 'Splint Mail', 'Banded Mail', 'Half-Plate', 'Full Plate'],
+    'skills': ['Climb', 'Craft', 'Diplomacy', 'Heal', 'Knowledge (engineering)', 'Knowledge (religion)', 'Profession', 'Ride', 'Sense Motive', 'Spellcraft'],
+    'abilities': ['Blessings', 'Fervor', 'Sacred Weapon', 'Weapon Focus'],
+    'hp': 8,
+    'gold': '3d6',
+    'saving throws': ['Fortitude', 'Will']
+},
+
+'Witch': {
+    'weapons': ['Dagger', 'Dart', 'Sling', 'Quarterstaff'],
+    'armor': ['None'],
+    'skills': ['Craft (Alchemy)', 'Fly', 'Heal', 'Intimidate', 'Knowledge (arcana)', 'Knowledge (history)', 'Knowledge (nature)', 'Knowledge (planes)', 'Knowledge (religion)', 'Profession', 'Spellcraft', 'Use Magic Device'],
+    'abilities': ['Spells', 'Patron', 'Hexes', 'Familiar', 'Cantrips'],
+    'hp': 6,
+    'gold': '3d6',
+    'saving throws': ['Fortitude', 'Will']
 },
 
 'Wizard': {
@@ -236,6 +448,29 @@ classes = {
     'hp': 6,
     'gold': '3d6',
     'saving throws': ['Fortitude', 'Reflex']
+},
+
+
+                                    # path of war classes
+
+        'Harbinger': {
+    'weapons': ['Dagger', 'Falchion', 'Flail', 'Gauntlet', 'Greatsword', 'Handaxe', 'Kukri', 'Longsword', 'Quarterstaff', 'Rapier', 'Scimitar', 'Short sword', 'Spear', 'Spiked chain', 'Whip'],
+    'armor': ['Light'],
+    'skills': ['Acrobatics', 'Athletics', 'Bluff', 'Intimidate', 'Perception', 'Sense Motive', 'Stealth'],
+    'abilities': ['Mystic Foresight', 'Omen Casting', 'Mystic Echoes', 'Mystic Insight', 'Mystic Resonance', 'Divine Arcanum', 'Mystic Guide'],
+    'hp': 8,
+    'gold': '3d6x10',
+    'saving throws': ['Reflex', 'Will']
+},
+
+'Mystic': {
+    'weapons': ['Battle Aspergillum', 'Bastard Sword', 'Bec de Corbin', 'Bo Staff', 'Bolas', 'Brass Knuckles', 'Butchering Axe', 'Chakram', 'Club', 'Crossbow, Heavy', 'Crossbow, Light', 'Dagger', 'Dart', 'Double Chained Kama', 'Flail', 'Gauntlet', 'Glaive', 'Greataxe', 'Greatsword', 'Halberd', 'Hammer, Gnome Hooked', 'Handaxe', 'Javelin', 'Kama', 'Kusarigama', 'Lance', 'Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Morningstar', 'Nunchaku', 'Quarterstaff', 'Ranseur', 'Rapier', 'Sai', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken', 'Siangham', 'Sickle', 'Sling', 'Spear', 'Spiked Armor', 'Spiked Chain', 'Spiked Gauntlet', 'Spiked Shield', 'Starknife', 'Sword Cane', 'Sword, Short', 'Temple Sword', 'Trident', 'Unarmed Strike', 'Warhammer', 'Whip'],
+    'armor': ['Light Armor', 'Medium Armor', 'Heavy Armor'],
+    'skills': ['Acrobatics', 'Autohypnosis', 'Climb', 'Craft', 'Knowledge (psionics)', 'Perception', 'Profession', 'Ride', 'Sense Motive', 'Spellcraft', 'Stealth', 'Survival', 'Swim', 'Use Psionic Device'],
+    'abilities': ['Psionic Power Source', 'Discipline Focus', 'Form Mind Blade', 'Mind Blade Enhancement'],
+    'hp': 8,
+    'gold': '2d10',
+    'saving throws': ['Fortitude', 'Will']
 },
 
     'Stalker': {
@@ -264,7 +499,16 @@ classes = {
         'gold': '4d6x10',
         'saving throws': ['Fortitude', 'Will']
 
-    }
+    },
+    'Zealot': {
+        'weapons': ['Battleaxe', 'Club', 'Dagger', 'Flail', 'Greataxe', 'Greatsword', 'Halberd', 'Heavy flail', 'Javelin', 'Kama', 'Longsword', 'Mace', 'Morningstar', 'Quarterstaff', 'Ranseur', 'Rapier', 'Sai', 'Scimitar', 'Short sword', 'Spear', 'Spiked chain', 'Trident', 'Warhammer', 'Whip'],
+        'armor': ['Light', 'Medium'],
+        'skills': ['Acrobatics', 'Athletics', 'Endurance', 'Intimidate', 'Perception', 'Sense Motive'],
+        'abilities': ['Zealous Focus', 'Zealous Surge', 'Sacred Might', 'Fervor', 'Divine Favor'],
+        'hp': 10,
+        'gold': '3d6x10',
+        'saving throws': ['Fortitude', 'Will']
+}
 }
 
 weapon_groups = ['Axes', 'Blades, Heavy', 'Blades, Light', 'Bows', 'Close', 'Crossbows', 'Double', 'Firearms', 'Flails', 'Hammers', 'Monk', 'Natural', 'Polearms', 'Siege Engines', 'Spears', 'Thrown', 'Tribal']
@@ -462,7 +706,7 @@ traits_abilities = ["Absolute Loyalty",
 "Larger Than Life",
 "Martial Performer",
 "Muscle of the Society",
-"Nature's Mimic",
+"natures Mimic",
 "Never Stop Shooting",
 "Pillager",
 "Reactionary",
@@ -1538,5 +1782,40 @@ traits_abilities = ["Absolute Loyalty",
 "Skymetal Affinity",
 "Offspring of the Ascension",
 "Self-Reliant"]
+
+
+# Comprehensive list of Archetypes:
+#need to use archetypes_{class_name} so we can grab it like this later
+                    #Base Classes
+
+
+archetypes = {
+
+'fighter': ['Tribal Defender', 'Biathlete', 'Road Warrior', 'Aether Soldier', 'Warmachine', 'Harrier', 'Knife Fighter', 'Man-at-Arms', 'Berserker', 'Chain Lasher', 'Challenger', 'Bonded Pet', 'Blade Shifter', 'Technique Master', 'Ironborn', 'Myrmidon', 'Silverblade Hunter', 'Swordsmith', 'Chakram Dervish', 'Quickblade', 'Spellscorn Fighter', 'Coachman', 'Tjuman', 'Pugilist', 'Ructioneer', 'Warrior of the Path', 'Scrapper', 'Aerial Assaulter', 'Spear Fighter', 'Skirmisher', 'Tribal Fighter', 'Venomblade', 'Viking', 'Aquanaut', 'Armiger', 'Defender', 'Lore Warden', 'High Guardian', 'Opportunist Fighter', 'Cyber-Soldier', 'Unbreakable', 'Phalanx Soldier', 'Gladiator', 'Gloomblade', 'Archer', 'Armor Master', 'Blackjack', 'Border Defender', 'Brawler', 'Buckler Duelist', 'Cad', 'Child of War', 'Corsair', 'Crossbowman', 'Dervish of Dawn', 'Dragonheir Scion', 'Dragoon', 'Drill Sergeant', 'Eldritch Guardian', 'Free Hand Fighter', 'Free-Style Fighter', 'Learned Duelist', 'Titan Fighter', 'Seasoned Commander', 'Martial Master', 'Mobile Fighter', 'Mutation Warrior', 'Pack Mule', 'Polearm Master', 'Relic Master', 'Roughrider', 'Savage Warrior', 'Sensate', 'Shielded Fighter', 'Siegebreaker', 'Steelbound Fighter', 'Swordlord', 'Tactician', 'Thunderstriker', 'Tower Shield Specialist', 'Trench Fighter', 'Two-Handed Fighter', 'Two-Weapon Warrior', 'Unarmed Fighter', 'Vengeful Hunter', 'Viking', 'Weapon Bearer Squire', 'Weapon Master', 'Warshade', 'Kappa-Bushi', 'Peltast', 'Tengubushi', 'Yakuza Bushi', 'Dragon Warrior']
+,
+#
+'barbarian': ['Armored Hulk','Beastkin Berserker','Blooded Arcanist','Breaker','Brutal Pugilist','Cannibal','Chaos Totem','Dreadnought','Elemental Kin','Fated Champion','Feral Gnasher','Flesheater','Furyborn','Goliath Druid','Hateful Rager','Hurler','Invulnerable Rager','Lion Blade','Marauder','Mooncursed','Mounted Fury','Pack Rager','Primal Hunter','Primalist','Raging Cannibal','Raging Cyclone','Raging Drunk','Raging Flame','Raging Hurler','Raging Tactician','Savage Barbarian','Scarred Rager','Sea Reaver','Shaman','Skeletal Champion','Spell Sunderer','Steel-Breaker','Superstitious','Survivor','Titan Mauler','Totem Warrior','True Primitive','Unchained Rager','Urban Barbarian','Wild Rager']
+,
+#
+'druid': ['Agathiel', 'Animal Shaman', 'Aquatic Druid', 'Arboreal Grappler', 'Archdruid', 'Blacksnake', 'Blazoned Tracker', 'Blight Druid', 'Blind Singer', 'Blightwarden', 'Child of the Moon', 'Cleric of the Green', 'Death Druid', 'Defender of the True World', 'Dragon Shaman', 'Dreamspeaker', 'Elemental Ally', 'Elemental Ascetic', 'Elemental Druid', 'Emberkin', 'Enlightened Druid', 'Fanglord', 'Feral Child', 'Fey Caller', 'Fist of the Forest', 'Flame Keeper', 'Frostburn Warden', 'Geisha', 'Geomancer', 'Green Faith Acolyte', 'Green Scourge', 'Greenstalker', 'Guardian of the Wild', 'Harrow Warden', 'Hedge Witch', 'Hooded Champion', 'Ice Sentinel', 'Infiltrator', 'Inquisitor of the Elk', 'Inquisitor of the Raven', 'Inquisitor of the Water', 'Jungle Druid', 'Lion Shaman', 'Lithic', 'Mad Prophet', 'Mammoth Rider', 'Master of Many Forms', 'Master of Storms', 'Mooncaller', 'Mooncursed', 'natures Fang', 'natures Whispers', 'Nature-Bonded Magus', 'Necrologist', 'Pack Lord', 'Pain Taster', 'Pale Stranger', 'Plant Master', 'Polar Midnight', 'Powerful Shapechanger', 'Rage Prophet', 'Ravenlord', 'Reincarnated Druid', 'River Druid', 'Saurian Shaman', 'Sea Reaver', 'Serpent-Fire Adept', 'Serpentfire', 'Shark Shaman', 'Shapeshifter', 'Shark Shaman', 'Storm Druid', 'Stormwalker', 'Street Shaman', 'Swamp Druid', 'Tamer of Beasts', 'Teisatsu', 'Theologian', 'Thornwarden', 'Thundercaller', 'Totemic Demonslayer', 'Tribal Shaman', 'Tunnel Rat', 'Undead Lord', 'Urban Druid', 'Verdant Lord', 'Verminous Hunter', 'Visionary Seeker', 'Volcano Priest', 'Vulture Shaman', 'Warshaper', 'Wild Rager', 'Wild Whisperer', 'Wildfire Heart', 'Winter Witch', 'Wolf Shaman', 'Woodland Skirmisher', 'World Walker', 'Wyrm Singer' ]
+,
+#
+'cleric': ['Angelfire Apostle', 'Anger Inquisition', 'Aquatic Druid', 'Arcanist', 'Atheist', 'Battle Priest', 'Chaos Channeler', 'Cloistered Cleric', 'Crusader', 'Divine Strategist', 'Evangelist', 'Exalted', 'Feral Hunter', 'Inheritors Crusader', 'Liturgical Mage', 'Merciful Healer', 'Necromancer', 'Planar Oracle', 'Ravener Hunter', 'Sanguine Angel', 'Separatist', 'Shaman', 'Theologian', 'Undead Lord', 'Varisian Pilgrim', 'Visionary Prophet']
+,
+#
+'rogue':  ['Acrobat', 'Bandit', 'Beastmaster', 'Beguiler', 'Burglar', 'Charlatan', 'Chirurgeon', 'Circus Performer', 'Cloaked Dancer', 'Cloistered Cleric', 'Commando', 'Con Artist', 'Counterfeit Mage', 'Court Fool', 'Cutpurse', 'Daggermark Poisoner', 'Dandy', 'Dark Delver', 'Deep Walker', 'Demagogue', 'Dervish of Dawn', 'Eldritch Scoundrel', 'False Medium', 'Fast Hands', 'Gang Leader', 'Gloomblade', 'Guerrilla', 'Guild Agent', 'Guild Poisoner', 'Hidden Priest', 'Highwayman', 'Hooded Champion', 'Infiltrator', 'Knife Master', 'Liberator', 'Master Spy', 'Mouser', 'Natural Alchemist', 'Noble Fencer', 'Phantom Thief', 'Pilferer', 'Pirate', 'Poisoner', 'Rake', 'Rapscallion', 'Ratcatcher', 'Ringleader', 'Saboteur', 'Sandman', 'Sapper', 'Savage Skirmisher', 'Scavenger', 'Scout', 'Shadowdancer', 'Shadow Rager', 'Sleuth', 'Sniper', 'Spy', 'Stalker', 'Streetfighter', 'Survivalist', 'Swordmaster', 'Thief Acrobat', 'Thug', 'Trapsmith', 'Underground Chemist', 'Vexing Dodger', 'Vigilante', 'Wasp', 'Watersinger', 'Wild Child', 'Zealot']
+,
+#
+'ranger':  ['Airborne Ambusher', 'Arboreal Ranger', 'Battle Scout', 'Beastmaster', 'Blightwarden', 'Bow Nomad', 'Cavalier', 'Child of Acavna and Amaznen', 'Deep Walker', 'Divine Marksman', 'Dragon Hunter', 'Duskwarden', 'Falconer', 'Favored Enemy (aquatic)', 'Favored Enemy (dungeon)', 'Favored Enemy (forest)', 'Favored Enemy (giant)', 'Favored Enemy (magical beast)', 'Favored Enemy (plant)', 'Favored Enemy (undead)', 'Frost Tusk', 'Geomancer', 'Ghost Hunter', 'Giant Killer', 'Guide', 'Harrow Warden', 'Hooded Champion', 'Horse Lord', 'Horizon Walker', 'Infiltrator', 'Initiate of the Hunt', 'Liberator', 'Lion Blade', 'Living Monolith', 'Master of Many Forms', 'Natural Warrior', 'Nature Warden', 'Pack Lord', 'Pathfinder Chronicler', 'Polearm Master', 'Reaper of Secrets', 'Sable Company Marine', 'Savage Skirmisher', 'Sea Dog', 'Skirmisher', 'Stormwalker', 'Strider', 'Swift Hunter', 'Terramancer', 'Thundercaller', 'Trapper', 'Treantmonk (Druid/Ranger)', 'Trick Shot', 'Trickster', 'Two-Handed Fighter', 'Urban Ranger', 'Verdant Sorcerer', 'Wild Shadow', 'Wild Stalker', 'Witch Hunter', 'Woodland Skirmisher', 'World Walker']
+,
+#
+#
+'paladin' : ['Angelic', 'Blade of Mercy', 'Chosen One', 'Divine Defender', 'Divine Guardian', 'Divine Hunter', 'Divine Paragon', 'Divine Scion', 'Divine Servitor', 'Divine Strategist', 'Enlightened Paladin', 'Eternal Hope', 'Gray Paladin', 'Holy Gun', 'Hospitaler', 'Oathbound Paladin', 'Oath of Vengeance', 'Paladin of Freedom', 'Sacred Servant', 'Shining Knight', 'Templar']
+
+#
+#
+}
+
+                    #Path of war classes
 
 version = "1.1.4"

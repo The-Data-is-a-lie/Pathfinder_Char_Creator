@@ -2,8 +2,7 @@
 from createACharacter import CreateNewCharacter
 from utils.markdown import style
 from utils.data import version
-from utils.util import isBool
-from utils.util import Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5
+from utils.util import isBool, Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5, chooseClass
 import random
 
 print(style.BOLD + f'Welcome to the D&D Random Character Generator ({version})' + style.END)
@@ -59,7 +58,9 @@ while isTrue:
 			print('Number of bonus feats 1-10' + '\n', bonus_feats_10)									
 			print('Number of bonus feats 1-5' + '\n', bonus_feats_5)	
 			
-			#need to devise a way to randomly pick good feats
+			
+				
+				#need to devise a way to randomly pick good feats
 
 		else: 
 			print('Exiting Character Generator...')
