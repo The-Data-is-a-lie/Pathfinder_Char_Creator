@@ -35,6 +35,7 @@ print(roll_4d6())
 
 
 def Roll_Level(name):
+    from createACharacter import path
     filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
     with open(filename, 'a') as f:
         """
@@ -55,11 +56,28 @@ def Roll_Level(name):
         # Roll for level using weights
         level = random.choices(range(min_num, max_num+1), weights=weights)[0]
 
+
         print("this is the character level ")
         print(level)
         print("this is the character level ", file=f)
         print(level, file=f)        
         feats = (5 + floor(level/2) + floor(level/5))
+       
+        if path == 0:
+            feats = feats - 0
+        elif level == 3 and path == 1:
+            feats = feats-1
+        elif level == 7 and path == 1:
+            feats = feats-2
+        elif level == 11 and path == 1:
+            feats = feats-3        
+        elif level == 3 and path == 2:
+            feats = feats-2
+        elif level == 7 and path == 2:
+            feats = feats-4 
+        elif level == 11 and path == 2:
+            feats = feats-6           
+
         extra_ability_score_levels = floor(level/4)
         print ("This is the number of bonus feats per level ")
         print(feats)
@@ -69,6 +87,7 @@ def Roll_Level(name):
         print(extra_ability_score_levels)
         print ("number of bonus ability scores from levels ", file=f)        
         print(extra_ability_score_levels, file=f)        
+
         return level
 
 def chooseClass():

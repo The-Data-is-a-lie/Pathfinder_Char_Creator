@@ -24,9 +24,11 @@ while isTrue:
 			CreateNewCharacter(character_name)
 			user_input = input("Do you want levels to be weighted lower (if n then they are weighted higher)? (y/n) ")
 			Roll_Level(character_name)
+
 				#need to devise a way to randomly pick good feats
 
-			
+
+
 			for i in range(1, 11):
 				if random.randint(1, 10000) == 10000:
 					print(f'Character is mythic {i}')
@@ -44,6 +46,8 @@ while isTrue:
 				print('character is extremely lucky, make it a luck build rather than everything else ')
 			elif random.randint(1,100) == 10:
 				print('you need to take negative luck feats as well as normal feats ')
+				
+				
 
 		else: 
 			print('Exiting Character Generator...')
@@ -61,17 +65,5 @@ while isTrue:
 #Include a way to make it so we decide how many npc levels out of total level
 #make it toggled randomly (an option to have npc classes)
 #if they have npc levels make it a .75 chance to get npc levels per level
-
-#If level <= 3 one feat on path of war, if level <= 7 two feats on path of war, if level <=11 3 feats on path of war
-
-#FULL BAB get's like a 75% chance for path of war abilities (if not path of war)
-#if they get it, then they auto use 3 feats when they can (assuming their levels)
-#25% chance they get another chain as well (if they are full BAB)
-
-#Mid BAB 50% chance for path of war abilities
-#10% chance for another chain
-
-#low bab 25% chance for path of war abilities
-#Only chance to do it once
 
 #implement weights per region to decide what weapon a character uses

@@ -1,7 +1,7 @@
 #Internal Imports
 from utils import data
 #from utils.data import archetypes
-from utils.util import RollStat, chooseClass,  appendAttr, appendAttrData, roll_4d6, roll_dice #printAttributes,
+from utils.util import RollStat, chooseClass,  appendAttr, appendAttrData, roll_4d6, Roll_Level#, roll_dice #printAttributes,
 from utils.markdown import style
 import random
 
@@ -15,7 +15,7 @@ from random import randrange
 import sys
 
 
-
+path_of_war_class = ['Warder', 'Harbinger', 'Mystic', 'Zealot', 'Stalker']
 archetypes = {
 
 'fighter': ['Tribal Defender', 'Biathlete', 'Road Warrior', 'Aether Soldier', 'Warmachine', 'Harrier', 'Knife Fighter', 'Man-at-Arms', 'Berserker', 'Chain Lasher', 'Challenger', 'Bonded Pet', 'Blade Shifter', 'Technique Master', 'Ironborn', 'Myrmidon', 'Silverblade Hunter', 'Swordsmith', 'Chakram Dervish', 'Quickblade', 'Spellscorn Fighter', 'Coachman', 'Tjuman', 'Pugilist', 'Ructioneer', 'Warrior of the Path', 'Scrapper', 'Aerial Assaulter', 'Spear Fighter', 'Skirmisher', 'Tribal Fighter', 'Venomblade', 'Viking', 'Aquanaut', 'Armiger', 'Defender', 'Lore Warden', 'High Guardian', 'Opportunist Fighter', 'Cyber-Soldier', 'Unbreakable', 'Phalanx Soldier', 'Gladiator', 'Gloomblade', 'Archer', 'Armor Master', 'Blackjack', 'Border Defender', 'Brawler', 'Buckler Duelist', 'Cad', 'Child of War', 'Corsair', 'Crossbowman', 'Dervish of Dawn', 'Dragonheir Scion', 'Dragoon', 'Drill Sergeant', 'Eldritch Guardian', 'Free Hand Fighter', 'Free-Style Fighter', 'Learned Duelist', 'Titan Fighter', 'Seasoned Commander', 'Martial Master', 'Mobile Fighter', 'Mutation Warrior', 'Pack Mule', 'Polearm Master', 'Relic Master', 'Roughrider', 'Savage Warrior', 'Sensate', 'Shielded Fighter', 'Siegebreaker', 'Steelbound Fighter', 'Swordlord', 'Tactician', 'Thunderstriker', 'Tower Shield Specialist', 'Trench Fighter', 'Two-Handed Fighter', 'Two-Weapon Warrior', 'Unarmed Fighter', 'Vengeful Hunter', 'Viking', 'Weapon Bearer Squire', 'Weapon Master', 'Warshade', 'Kappa-Bushi', 'Peltast', 'Tengubushi', 'Yakuza Bushi', 'Dragon Warrior']
@@ -42,6 +42,8 @@ archetypes = {
 #
 #
 }
+
+
 
 # Base Character Traits
 class Character:
@@ -159,6 +161,7 @@ def CreateNewCharacter(name):
         new_char.c_langs = ['Common']
         new_char.c_langs += data.races[new_char.c_race]['languages']
         new_char.c_racial_traits = data.races[new_char.c_race]['traits']
+        c_bab = data.classes[new_char.c_class]['BAB']
 
         mannerisms = []
         new_char.c_mannerisms = appendAttrData(mannerisms, data.mannerisms)
@@ -225,6 +228,8 @@ def CreateNewCharacter(name):
 #        print(f'appearance' + '\n', new_char.c_racial_traits)
 
 
+
+
         # use random.sample to select 3 random professions 
         random_professions = random.sample(profession, 3)
         # loop through the random abilities and print out each element
@@ -286,16 +291,51 @@ def CreateNewCharacter(name):
         weapons = random.sample(weapon_groups, 2)
         # loop through the random abilities and print out each element
         for weapun in weapons:
-            print(f'(weapon groups):',weapun)  
+            print(f'(weapon groups):',weapun)
+
+        print('this is your new class')
+        print(new_char.c_class)
+
+        chance = random.randint(1,100)
+        chance_2 = random.randint(1,100)
+        
+        global path
+        if new_char.c_class != path_of_war_class:
+            if c_bab == 'high':
+                if chance >= 25:
+                    path = 1
+                    print('this is the path number ')
+                    print(path)                    
+                    if chance_2 >= 75:
+                        path = 2
+                        print('this is the path number ')
+                        print(path)
+                    return 'Path of War'
+            elif c_bab == 'mid':
+                if chance >= 50:
+                    path = 1
+                    print(path)
+                    if chance_2 >= 90:
+                        path = 2
+                        print('this is the path number ')
+                        print(path)
+                    return 'Path of War'            
+
+                else:
+                    if chance >= 90:
+                        path = 1
+                        print('this is the path number ')
+                        print(path)
+                        return 'Path of War '
+                    
 
 
 
+        # Randomly Assigning archetypes:
 
-        # Assigning archetypes:
-
-        char_class = new_char.c_class.lower()
-        selected_archetype = random.choice(archetypes[char_class])
-        print('this is the randomly selected archetype' +  '\n' + selected_archetype + '\n' + ' for this class' + '\n' + char_class)
+       # char_class = new_char.c_class.lower()
+       # selected_archetype = random.choice(archetypes[char_class])
+       # print('this is the randomly selected archetype' +  '\n' + selected_archetype + '\n' + ' for this class' + '\n' + char_class)
         
             #selected_archetype = random.choice(archetypes.eval("archetypes_{new_char.c_class.lower()}"))
 
