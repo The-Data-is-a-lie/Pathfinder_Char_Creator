@@ -30,6 +30,31 @@ races = {
         'languages': ['Elven', 'Draconic', 'Gnoll', 'Gnome', 'Goblin', 'Orc', 'Sylvan'],
     },
 
+     'Aasimar': {
+        'first names': ['Aria', 'Cassiel', 'Erelim', 'Galizur', 'Jael', 'Kael', 'Leraje', 'Muriel', 'Nahiri', 'Zariel'],
+        'last names': ['Angelheart', 'Dusksinger', 'Lightbringer', 'Radiantwing', 'Silversong', 'Starborn'],
+        'age': (20, '1d4'),
+        'height': (64, '2d10'),
+        'weight': (120, '2d4'),
+        'size': 'Medium',
+        'speed': 30,
+        'traits': ['Darkvision', 'Celestial Resistance'],
+        'languages': ['Celestial', 'Common']
+    },
+
+            'Catfolk': {
+        'first names': ['Chavi', 'Jaswinder', 'Kaela', 'Korin', 'Liris', 'Mazzy', 'Nanali', 'Rajni', 'Sarene', 'Zahra'],
+        'last names': ['Catspirit', 'Clawstrike', 'Furpelt', 'Nimblefoot', 'Quickclaw', 'Silentpaw'],
+        'age': (18, '1d6'),
+        'height': (58, '2d10'),
+        'weight': (90, '1d6'),
+        'size': 'Medium',
+        'speed': 40,
+        'traits': ['Low-Light Vision', 'Natural Hunter'],
+        'languages': ['Catfolk', 'Common']
+    },
+
+
 		'Dragonborn': {
 			'first names': ['Agon', 'Egon', 'Sugissa', 'Qixiris', 'Nysriel', 'Qicoria', 'Phidalynn', 'Wraxiris', 'Orinn', 'Yrsaadi', 'Mathtuan', 'Nysqorel', 'Zenpora', 'Wradalynn',],
 			'last names': ['Shunxash', 'Girrhiliar', 'Nyelkanshteth', 'Dommicmellir', 'Preapinshtondeth', 'Karjualath', 'Cardaseargual', 'Fambucoth', '', '', 'Priarindraandin', 'Aapos'],
@@ -41,6 +66,46 @@ races = {
 			'traits': ['Draconic Ancestory', 'Increased Resistance'],
 			'languages': ['Draconic', 'Undercommon']
 		},
+
+
+
+    'Dhampir': {
+        'first names': ['Aria', 'Caius', 'Damien', 'Eira', 'Felicity', 'Gideon', 'Hazel', 'Isadora', 'Kael', 'Lilith', 'Mariel', 'Nero', 'Octavia', 'Phaedra', 'Raven', 'Serafina', 'Theron', 'Vesper'],
+        'last names': ['Black', 'Cross', 'Gray', 'Hunter', 'Knight', 'Moon', 'Noble', 'Shade', 'Silver', 'Stalker'],
+        'age': (16, '1d6'),
+        'height': (62, '2d6'),
+        'weight': (100, '2d4'),
+        'size': 'Medium',
+        'speed': 30,
+        'traits': ['Darkvision', 'Negative Energy Affinity', 'Resist Level Drain'],
+        'languages': ['Common']
+    },
+
+
+'Drow': {
+        'first names': ['Ara', 'Briar', 'Cora', 'Dara', 'Eilistraee', 'Faelivrin', 'Gwen', 'Halan', 'Inara', 'Jhaelryn', 'Kael', 'Liriel', 'Mizzrym', 'Nimor', 'Pharaun', 'Quenthel', 'Rilrae', 'Solaufein', 'Thalack', 'Ulitree'],
+        'last names': ['Aleanrahel', 'Baenre', 'Despana', 'Do\'Urden', 'Eilservs', 'Jaelre', 'Mizzrym', 'Noquar', 'T\'orgh', 'Xorlarrin'],
+        'age': (20, '1d6'),
+        'height': (53, '2d6'),
+        'weight': (75, '1d6'),
+        'size': 'Medium',
+        'speed': 30,
+        'traits': ['Darkvision', 'Light Sensitivity'],
+        'languages': ['Elven', 'Undercommon']
+    },
+
+'Duergar': {
+        'first names': ['Aukanthi', 'Baela', 'Drogan', 'Ervendio', 'Girnyaga', 'Harral', 'Isar', 'Jarnak', 'Kurk', 'Lurka', 'Mivra', 'Nathir', 'Onar', 'Pezock', 'Quaralyn', 'Rautha', 'Sarzan', 'Thorbrog', 'Ulfe', 'Vonkil'],
+        'last names': ['Boulderborn', 'Deephammer', 'Earthenstone', 'Fireheart', 'Ironfist', 'Rocksplitter', 'Steelshadow', 'Stonecrusher', 'Underforge', 'Whitestrike'],
+        'age': (40, '1d6'),
+        'height': (48, '2d4'),
+        'weight': (150, '2d6'),
+        'size': 'Medium',
+        'speed': 20,
+        'traits': ['Darkvision', 'Duergar Resilience', 'Spell Resistance'],
+        'languages': ['Dwarven', 'Undercommon']
+    },
+
 
     'Elf': {
         'first names': ['Adran', 'Aelar', 'Aramil', 'Arannis', 'Aust', 'Beiro', 'Berrian', 'Carric', 'Enialis', 'Erdan', 'Erevan', 'Galinndan', 'Hadarai', 'Heian', 'Himo', 'Immeral', 'Ivellios', 'Laucian', 'Mindartis', 'Paelias',
@@ -55,6 +120,19 @@ races = {
         'languages': ['Elven', 'Draconic', 'Gnoll', 'Gnome', 'Goblin', 'Orc', 'Sylvan'],
     },
 
+    'Fetchling': {
+        'first names': ['Aria', 'Darian', 'Jax', 'Kiera', 'Miles', 'Nisha', 'Sable', 'Ty', 'Zora'],
+        'last names': ['Darkness', 'Dusksinger', 'Gloomweaver', 'Nightshade', 'Shadowborn', 'Shadowcaster'],
+        'age': (20, '1d6'),
+        'height': (62, '2d10'),
+        'weight': (110, '1d6'),
+        'size': 'Medium',
+        'speed': 30,
+        'traits': ['Darkvision', 'Shadow Blending'],
+        'languages': ['Common', 'Shadowtongue']
+    },
+
+
     'Gnome': {
         'first names': ['Boddynock', 'Dimble', 'Fonkin', 'Gimble', 'Glim', 'Gerbo', 'Jebeddo', 'Namfoodle', 'Roondar', 'Seebo', 'Zook'],
         'last names': ['Beren', 'Daergel', 'Folkor', 'Garrick', 'Nackle', 'Murnig', 'Ningel', 'Raulnor', 'Scheppen', 'Turen'],
@@ -66,6 +144,30 @@ races = {
         'speed': 20,
         'traits': ['Tinker'],
         'languages': ['Gnomish', 'Draconic', 'Dwarvish', 'Elven', 'Giant', 'Goblin', 'Orc']
+    },
+
+    'Goblin': {
+        'first names': ['Gnash', 'Vola', 'Zibini', 'Sneeg', 'Reta', 'Snick', 'Tuff', 'Kukka', 'Drixi', 'Puska', 'Kippa'],
+        'last names': ['Nogginfogger', 'Greasyfingers', 'Stinkfoot', 'Mudsnout', 'Snaggletooth', 'Thumbslicer', 'Skullcrusher', 'Bonebreaker', 'Spiderbait', 'Sludgegrinder'],
+        'age': (10, '1d6'),
+        'height': (38, '2d4'),
+        'weight': (30, '1d2'),
+        'size': 'Small',
+        'speed': 30,
+        'traits': ['Darkvision', 'Small and Nimble'],
+        'languages': ['Goblin']
+    },
+
+'Gnome': {
+        'first names': ['Alston', 'Bilbron', 'Caramip', 'Donella', 'Euphemia', 'Fijit', 'Gimble', 'Lintra', 'Milba', 'Podwig', 'Sorrel', 'Wrenn'],
+        'last names': ['Shortstack', 'Copperknob', 'Bigtoe', 'Tinkerer', 'Sprocket', 'Whirligig', 'Gyrospark', 'Clockwise', 'Flange', 'Cogsmith'],
+        'age': (40, '1d6'),
+        'height': (36, '2d4'),
+        'weight': (40, '1d2'),
+        'size': 'Small',
+        'speed': 20,
+        'traits': ['Darkvision', 'Small and Nimble', 'Gnome Magic'],
+        'languages': ['Gnome', 'Sylvan']
     },
 
     'Halfling': {
@@ -94,6 +196,8 @@ races = {
     },
     
     'Half-Elf': {
+        'first names': ['Aramil', 'Arin', 'Darian', 'Elaith', 'Erevan', 'Fintan', 'Isilme', 'Keyleth', 'Lairelos', 'Laucian', 'Liriel', 'Lothir', 'Maiele', 'Melarue', 'Merethyl', 'Mindartis', 'Naiadryl', 'Naivara', 'Naralieth', 'Sariel', 'Sariele', 'Selsharra', 'Siannodel', 'Silaqui', 'Tathariel', 'Tialith', 'Vadania', 'Zereni'],
+        'last names': ['Amastacia', 'Amakiir', 'Galanodel', 'Holimion', 'Ilphelkiir', 'Liadon', 'Meliamne', 'Naiadryl', 'Siannodel', 'Xiloscient'],
         'age': (20, '2d6'),
         'height': (55, '2d8'),
         'weight': (100, '2d4'),
@@ -113,6 +217,192 @@ races = {
         'traits': ['Darkvision', 'Savage Attacks'],
         'languages': ['Orc', 'Draconic', 'Giant', 'Gnoll', 'Goblin', 'Abyssal']
     },
+
+'Hobgoblin': {
+    'first names': ['Aukan', 'Denchu', 'Gulk', 'Kishkumen', 'Kothar', 'Krusk', 'Mhurren', 'Nord', 'Sark', 'Vargach'],
+    'last names': ['Bloodtusk', 'Ironskin', 'Necksmasher', 'Skullcleaver', 'Steelbreaker', 'Warscar'],
+    'age': (15, '1d6'),
+    'height': (56, '2d10'),
+    'weight': (120, '2d4'),
+    'size': 'Medium',
+    'speed': 30,
+    'traits': ['Darkvision', 'Martial Training'],
+    'languages': ['Goblin', 'Common']
+},
+
+'Ifrit': {
+    'first names': ['Akakios', 'Aster', 'Dax', 'Eryndor', 'Ignatius', 'Nemeia', 'Razia', 'Talibah', 'Zara'],
+    'last names': ['Blazeborn', 'Emberheart', 'Flamekin', 'Inferno', 'Pyreborn', 'Scorchfire'],
+    'age': (16, '1d6'),
+    'height': (58, '2d8'),
+    'weight': (120, '2d4'),
+    'size': 'Medium',
+    'speed': 30,
+    'traits': ['Darkvision', 'Energy Resistance'],
+    'languages': ['Ignan', 'Common']
+},
+
+'Kitsune': {
+        'first names': ['Akane', 'Chie', 'Etsuko', 'Haruko', 'Kaori', 'Miki', 'Natsuki', 'Rina', 'Yumi', 'Yuna'],
+        'last names': ['Foxtail', 'Glowingfur', 'Nimbleclaw', 'Silentpounce', 'Swiftstrike', 'Trickster'],
+        'age': (16, '1d10'),
+        'height': (48, '2d8'),
+        'weight': (80, '1d4'),
+        'size': 'Medium',
+        'speed': 30,
+        'traits': ['Agile', 'Change Shape'],
+        'languages': ['Kitsune', 'Common']
+    },
+
+    'Kobold': {
+        'first names': ['Dek', 'Drog', 'Gak', 'Keg', 'Kronk', 'Nak', 'Soot', 'Tik', 'Trog', 'Zak'],
+        'last names': ['Firebelly', 'Gnawtooth', 'Minesniffer', 'Redscale', 'Sharpclaw', 'Tunneldigger'],
+        'age': (6, '1d6'),
+        'height': (27, '2d4'),
+        'weight': (25, '1d2'),
+        'size': 'Small',
+        'speed': 30,
+        'traits': ['Crafty', 'Light Sensitivity'],
+        'languages': ['Kobold', 'Draconic']
+    },
+
+    'Orc': {
+        'first names': ['Drogath', 'Grommash', 'Hakak', 'Karguk', 'Mazgak', 'Tharag', 'Uzguk', 'Vorgoth', 'Zogar'],
+        'last names': ['Bloodfang', 'Deathbringer', 'Gorechewer', 'Ironhide', 'Skullcrusher', 'Warchief'],
+        'age': (14, '1d6'),
+        'height': (58, '2d12'),
+        'weight': (150, '2d6'),
+        'size': 'Medium',
+        'speed': 30,
+        'traits': ['Darkvision', 'Orc Ferocity'],
+        'languages': ['Orc', 'Draconic']
+    },
+
+    'Oread': {
+        'first names': ['Bof', 'Dolgrin', 'Fargas', 'Gethen', 'Grunyar', 'Heng', 'Kazmuk', 'Olarra', 'Tazgurt', 'Torgoth'],
+        'last names': ['Deeproot', 'Highpeak', 'Mountainheart', 'Stonesoul', 'Thunderstrike', 'Underhill'],
+        'age': (20, '1d6'),
+        'height': (56, '2d6'),
+        'weight': (130, '2d6'),
+        'size': 'Medium',
+        'speed': 30,
+        'traits': ['Darkvision', 'Oread Resistance'],
+        'languages': ['Terran', 'Draconic', 'Giant', 'Gnome', 'Oread']
+    },
+
+'Ratfolk': {
+    'first names': ['Briko', 'Chirp', 'Flea', 'Kip', 'Nibble', 'Picket', 'Quick', 'Ridge', 'Scurry', 'Zig'],
+    'last names': ['Bigwhisker', 'Furback', 'Nimbletail', 'Quickclaw', 'Sneaky', 'Swiftfoot'],
+    'age': (14, '1d6'),
+    'height': (33, '2d4'),
+    'weight': (20, '1d4'),
+    'size': 'Small',
+    'speed': 20,
+    'traits': ['Darkvision', 'Swarming'],
+    'languages': ['Common', 'Ratfolk']
+},
+
+'Sylph': {
+    'first names': ['Aeris', 'Aria', 'Caeli', 'Kara', 'Nila', 'Ora', 'Phoebe', 'Thalia', 'Zephyr'],
+    'last names': ['Airheart', 'Breezewhisper', 'Cloudwatcher', 'Galewind', 'Skyborn', 'Stormchaser'],
+    'age': (18, '1d6'),
+    'height': (60, '2d10'),
+    'weight': (95, '1d6'),
+    'size': 'Medium',
+    'speed': 30,
+    'traits': ['Darkvision', 'Air Affinity'],
+    'languages': ['Auran', 'Common']
+},
+
+'Tengu': {
+    'first names': ['Bishr', 'Fumihiro', 'Haruki', 'Karasu', 'Kenji', 'Kenta', 'Masaaki', 'Rokuro', 'Shiro', 'Takeshi'],
+    'last names': ['Blackswoop', 'Copperspine', 'Featherstep', 'Goldeye', 'Silvertalon', 'Stonespear'],
+    'age': (16, '1d6'),
+    'height': (58, '2d8'),
+    'weight': (90, '2d4'),
+    'size': 'Medium',
+    'speed': 30,
+    'traits': ['Low-Light Vision', 'Sneaky', 'Swordtrained'],
+    'languages': ['Tengu', 'Common']
+},
+
+'Tiefling': {
+    'first names': ['Akmenos', 'Amnon', 'Barakas', 'Damakos', 'Ekemon', 'Iados', 'Kairon', 'Leucis', 'Melech', 'Mordai', 'Morthos', 'Pelaios', 'Skamos', 'Therai'],
+    'last names': ['Blackfire', 'Bloodthorn', 'Horned', 'Ironfist', 'Redmoon', 'Sharp', 'Silvermane'],
+    'age': (18, '1d6'),
+    'height': (57, '2d8'),
+    'weight': (110, '2d4'),
+    'size': 'Medium',
+    'speed': 30,
+    'traits': ['Darkvision', 'Prehensile Tail'],
+    'languages': ['Common']
+},
+
+'Undine': {
+    'first names': ['Akane', 'Hama', 'Haruka', 'Hotaru', 'Kaida', 'Kaito', 'Kana', 'Mizuho', 'Nami', 'Rin', 'Sora'],
+    'last names': ['Mistweaver', 'Oceandream', 'Raincaller', 'Riverflow', 'Seabreeze', 'Wavecrasher'],
+    'age': (18, '1d6'),
+    'height': (56, '2d10'),
+    'weight': (85, '2d4'),
+    'size': 'Medium',
+    'speed': 30,
+    'traits': ['Amphibious', 'Swim', 'Water Sense'],
+    'languages': ['Undine', 'Aquan', 'Common']
+},
+
+'Wayang': {
+    'first names': ['Ari', 'Bren', 'Fen', 'Hak', 'Jin', 'Kai', 'Rai', 'Tae', 'Umi', 'Yan'],
+    'last names': ['Darkwhisper', 'Firestarter', 'Moonshadow', 'Nightstalker', 'Silentblade', 'Twilightsworn'],
+    'age': (20, '1d6'),
+    'height': (44, '2d4'),
+    'weight': (40, '2d2'),
+    'size': 'Small',
+    'speed': 20,
+    'traits': ['Darkvision', 'Shadow Resistance', 'Skilled'],
+    'languages': ['Wayang', 'Common']
+},
+
+
+# Homebrew classes:
+
+    'Loxophant': {
+        'first names': ['Chavi', 'Jaswinder', 'Kaela', 'Korin', 'Liris', 'Mazzy', 'Nanali', 'Rajni', 'Sarene', 'Zahra'],
+        'last names': ['Catspirit', 'Clawstrike', 'Furpelt', 'Nimblefoot', 'Quickclaw', 'Silentpaw'],
+        'age': (18, '1d6'),
+        'height': (58, '2d10'),
+        'weight': (90, '1d6'),
+        'size': 'Large',
+        'speed': 30,
+        'traits': ['Low-Light Vision', 'Natural Hunter'],
+        'languages': ['Catfolk', 'Common']
+    },
+
+    'D-ziriak': {
+        'first names': ['Chavi', 'Jaswinder', 'Kaela', 'Korin', 'Liris', 'Mazzy', 'Nanali', 'Rajni', 'Sarene', 'Zahra'],
+        'last names': ['Catspirit', 'Clawstrike', 'Furpelt', 'Nimblefoot', 'Quickclaw', 'Silentpaw'],
+        'age': (18, '1d6'),
+        'height': (58, '2d10'),
+        'weight': (90, '1d6'),
+        'size': 'Medium',
+        'speed': 30,
+        'traits': ['Low-Light Vision', 'Natural Hunter'],
+        'languages': ['Catfolk', 'Common']
+    },
+
+
+    'Tortugan': {
+        'first names': ['Chavi', 'Jaswinder', 'Kaela', 'Korin', 'Liris', 'Mazzy', 'Nanali', 'Rajni', 'Sarene', 'Zahra'],
+        'last names': ['Catspirit', 'Clawstrike', 'Furpelt', 'Nimblefoot', 'Quickclaw', 'Silentpaw'],
+        'age': (18, '1d6'),
+        'height': (58, '2d10'),
+        'weight': (90, '1d6'),
+        'size': 'Large',
+        'speed': 20,
+        'traits': ['Low-Light Vision', 'Natural Hunter'],
+        'languages': ['Catfolk', 'Common']
+    }
+
+
 }
 
 classes = {
@@ -124,6 +414,8 @@ classes = {
         'abilities': ['Alchemy', 'Bomb', 'Mutagen', 'Poison Resistance', 'Throw Anything'],
         'hp': 8,
         'gold': '3d6',
+        'BAB': 'mid',
+    'casting level': 'mid',
         'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -134,6 +426,8 @@ classes = {
     'abilities': ['Aura of Evil', 'Cruelty', 'Detect Good', 'Smite Good', 'Touch of Corruption', 'Unholy Resilience'],
     'hp': 10,
     'gold': '5d6',
+    'BAB': 'high',
+    'casting level': 'none',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -144,6 +438,8 @@ classes = {
     'abilities': ['Arcane Reservoir', 'Arcanist Exploits', 'Cantrips', 'Consume Spells', 'Metamagic Knowledge'],
     'hp': 6,
     'gold': '2d6',
+    'BAB': 'low',
+    'casting level': 'high',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -154,6 +450,8 @@ classes = {
         'abilities': ['Rage', 'Unarmored Defense', 'Reckless Abandon'],
         'hp': 12,
         'gold': '3d6',
+        'BAB': 'high',
+    'casting level': 'none',
         'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -164,6 +462,8 @@ classes = {
     'abilities': ['Bardic Knowledge', 'Bardic Performance'],
     'hp': 8,
     'gold': '3d6',
+    'BAB': 'mid',
+    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -174,6 +474,8 @@ classes = {
     'abilities': ['Blood Casting', 'Bloodline', 'Bloodrage', 'Fast Movement', 'Uncanny Dodge'],
     'hp': 10,
     'gold': '4d6',
+    'BAB': 'high',
+    'casting level': 'low',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -184,6 +486,8 @@ classes = {
     'abilities': ['Unarmed Strike', 'Martial Flexibility'],
     'hp': 10,
     'gold': '3d6',
+    'BAB': 'high',
+    'casting level': 'none',
     'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -194,6 +498,8 @@ classes = {
     'abilities': ['Challenge', 'Order', 'Tactician'],
     'hp': 10,
     'gold': '5d6',
+    'BAB': 'high',
+    'casting level': 'none',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -204,6 +510,8 @@ classes = {
     'abilities': ['Channel Energy', 'Spontaneous Casting'],
     'hp': 8,
     'gold': '5d6',
+    'BAB': 'mid',
+    'casting level': 'high',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -214,6 +522,8 @@ classes = {
         'abilities': ['Spontaneous Casting (Summon Nature’s Ally)', 'Nature Sense', 'Wild Empathy', 'Woodland Stride', 'Trackless Step', 'Resist Nature’s Lure', 'Wild Shape'],
         'hp': 8,
         'gold': '2d4',
+        'BAB': 'mid',
+        'casting level': 'high',
         'saving throws': ['Fortitude', 'Reflex', 'Will']
 },
 
@@ -224,6 +534,8 @@ classes = {
     'abilities': ['Bravery', 'Weapon Training'],
     'hp': 10,
     'gold': '5d4',
+    'BAB': 'high',
+    'casting level': 'none',
     'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -234,6 +546,8 @@ classes = {
     'abilities': ['Grit', 'Gunsmithing', 'Deeds'],
     'hp': 10,
     'gold': '4d6x10',
+    'BAB': 'high',
+    'casting level': 'none',
     'saving throws': ['Reflex', 'Will']
 },
 
@@ -244,6 +558,8 @@ classes = {
     'abilities': ['Animal Companion', 'Nature Training', 'Teamwork Feat'],
     'hp': 8,
     'gold': '2d6x10',
+    'BAB': 'mid',
+    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -254,6 +570,8 @@ classes = {
     'abilities': ['Judgment', 'Monster Lore', 'Solo Tactics', 'Track', 'Stern Gaze', 'Cunning Initiative', 'Discern Lies'],
     'hp': 8,
     'gold': '5d6',
+    'BAB': 'mid',
+    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -264,6 +582,8 @@ classes = {
     'abilities': ['Spell Combat', 'Spellstrike'],
     'hp': 8,
     'gold': '3d6 x 10',
+    'BAB': 'mid',
+    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -274,6 +594,8 @@ classes = {
     'abilities': ['Spirit', 'Trance', 'Shared Seance'],
     'hp': 8,
     'gold': '2d6 x 10',
+    'BAB': 'mid',
+    'casting level': 'low',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -282,18 +604,22 @@ classes = {
     'armor': ['Light'],
     'skills': ['Bluff', 'Diplomacy', 'Disguise', 'Escape Artist', 'Intimidate', 'Knowledge (arcana)', 'Knowledge (local)', 'Perception', 'Perform', 'Sense Motive', 'Sleight of Hand', 'Spellcraft', 'Use Magic Device'],
     'abilities': ['Hypnotic Stare', 'Mesmeric Mirror', 'Bold Stare'],
-    'hp': 6,
+    'hp': 8,
     'gold': '4d4 x 10',
+    'BAB': 'mid',
+    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
 
-'Monk': {
+'Unchained_Monk': {
     'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
     'armor': ['None'],
     'skills': ['Acrobatics', 'Climb', 'Craft', 'Escape Artist', 'Intimidate', 'Knowledge (history)', 'Knowledge (religion)', 'Perception', 'Perform', 'Profession', 'Ride', 'Sense Motive', 'Stealth', 'Swim'],
     'abilities': ['Flurry of Blows', 'Unarmed Strike', 'Evasion', 'Still Mind'],
-    'hp': 8,
+    'hp': 10,
     'gold': '2d10',
+    'BAB': 'high',
+    'casting level': 'none',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -304,6 +630,8 @@ classes = {
     'abilities': ['Ninjutsu Tricks', 'Ki Pool', 'No Trace'],
     'hp': 8,
     'gold': '5d4',
+    'BAB': 'mid',
+    'casting level': 'none',
     'saving throws': ['Reflex', 'Will']
 },
 
@@ -312,8 +640,10 @@ classes = {
     'armor': ['Padded', 'Leather', 'Studded Leather', 'Chain Shirt', 'Hide', 'Scale Mail', 'Chainmail', 'Breastplate', 'Splint Mail', 'Banded Mail', 'Half-Plate', 'Full Plate'],
     'skills': ['Appraise', 'Bluff', 'Climb', 'Craft', 'Diplomacy', 'Disable Device', 'Disguise', 'Escape Artist', 'Fly', 'Heal', 'Intimidate', 'Knowledge (arcana)', 'Knowledge (dungeoneering)', 'Knowledge (engineering)', 'Knowledge (geography)', 'Knowledge (history)', 'Knowledge (local)', 'Knowledge (nature)', 'Knowledge (nobility)', 'Knowledge (planes)', 'Knowledge (religion)', 'Linguistics', 'Perception', 'Perform', 'Profession', 'Sense Motive', 'Sleight of Hand', 'Spellcraft', 'Stealth', 'Survival', 'Swim', 'Use Magic Device'],
     'abilities': ['Implement Mastery', 'Mental Focus', 'Object Reading', 'Psychic Aura', 'Shift Focus'],
-    'hp': 6,
+    'hp': 8,
     'gold': '4d4',
+    'BAB': 'mid',
+    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -324,6 +654,8 @@ classes = {
     'abilities': ['Orisons', 'Mystery', 'Revelation', 'Curse'],
     'hp': 8,
     'gold': '2d6',
+    'BAB': 'mid',
+    'casting level': 'high',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -334,6 +666,8 @@ classes = {
     'abilities': ['Aura of Good', 'Detect Evil', 'Smite Evil', 'Lay on Hands'],
     'hp': 10,
     'gold': '5d4',
+    'BAB': 'high',
+    'casting level': 'low',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -344,6 +678,8 @@ classes = {
     'abilities': ['Phrenic Amplifications', 'Phrenic Pool', 'Discipline'],
     'hp': 6,
     'gold': '2d6',
+    'BAB': 'low',
+    'casting level': 'high',
     'saving throws': ['Will']
 },
 
@@ -352,8 +688,10 @@ classes = {
     'armor': ['Padded', 'Leather', 'Studded Leather', 'Hide', 'Chain Shirt', 'Scale Mail', 'Breastplate', 'Half-Plate'],
     'skills': ['Climb', 'Handle Animal', 'Heal', 'Intimidate', 'Knowledge (dungeoneering)', 'Knowledge (geography)', 'Knowledge (nature)', 'Perception', 'Ride', 'Stealth', 'Survival', 'Swim'],
     'abilities': ['Favored Enemy', 'Track', 'Wild Empathy'],
-    'hp': 8,
+    'hp': 10,
     'gold': '5d6',
+    'BAB': 'high',
+    'casting level': 'low',
     'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -362,8 +700,10 @@ classes = {
     'armor': ['Padded', 'Leather', 'Studded Leather'],
     'skills': ['Acrobatics', 'Appraise', 'Bluff', 'Climb', 'Craft', 'Diplomacy', 'Disable Device', 'Disguise', 'Escape Artist', 'Intimidate', 'Knowledge (dungeoneering)', 'Knowledge (local)', 'Linguistics', 'Perception', 'Perform', 'Sense Motive', 'Sleight of Hand', 'Stealth', 'Swim', 'Use Magic Device'],
     'abilities': ['Sneak Attack', 'Trapfinding', 'Evasion', 'Rogue Talents'],
-    'hp': 6,
+    'hp': 8,
     'gold': '4d6',
+    'BAB': 'mid',
+    'casting level': 'none',
     'saving throws': ['Reflex', 'Will']
 },
 
@@ -373,8 +713,10 @@ classes = {
     'skills': ['Appraise', 'Bluff', 'Fly', 'Intimidate', 'Knowledge (arcana)', 'Spellcraft', 'Use Magic Device'],
     'abilities': ['Bloodline', 'Cantrips', 'Eschew Materials'],
     'spells': ['Acid Splash', 'Detect Magic', 'Light', 'Mage Hand', 'Mending', 'Message', 'Prestidigitation', 'Ray of Frost', 'Read Magic'],
-    'hp': 4,
+    'hp': 6,
     'gold': '3d6',
+    'BAB': 'low',
+    'casting level': 'high',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -383,8 +725,10 @@ classes = {
     'armor': ['Padded', 'Leather', 'Studded Leather', 'Chain Shirt'],
     'skills': ['Bluff', 'Craft', 'Diplomacy', 'Disguise', 'Fly', 'Handle Animal', 'Heal', 'Intimidate', 'Knowledge (arcana)', 'Knowledge (history)', 'Knowledge (planes)', 'Knowledge (religion)', 'Perception', 'Perform', 'Profession', 'Ride', 'Sense Motive', 'Spellcraft', 'Stealth', 'Survival', 'Swim', 'Use Magic Device'],
     'abilities': ['Etheric Tether', 'Phantom', 'Spellcasting'],
-    'hp': 6,
+    'hp': 8,
     'gold': '3d6',
+    'BAB': 'mid',
+    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -393,8 +737,10 @@ classes = {
     'armor': ['None'],
     'skills': ['Appraise', 'Fly', 'Knowledge (arcana)', 'Knowledge (engineering)', 'Linguistics', 'Profession', 'Spellcraft', 'Use Magic Device'],
     'abilities': ['Eidolon', 'Life Link', 'Spellcasting'],
-    'hp': 6,
+    'hp': 8,
     'gold': '3d6',
+    'BAB': 'mid',
+    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Reflex', 'Will']
 },
 
@@ -405,6 +751,8 @@ classes = {
     'abilities': ['Deeds', 'Panache'],
     'hp': 10,
     'gold': '3d6',
+    'BAB': 'high',
+    'casting level': 'none',
     'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -417,6 +765,8 @@ classes = {
     'invocations': ['Beguiling Influence', 'Darkness', 'Devils Sight', 'See the Unseen', 'Walk Unseen'],
     'hp': 8,
     'gold': '3d6',
+    'BAB': 'mid',
+    'casting level': 'none',
     'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -427,6 +777,8 @@ classes = {
     'abilities': ['Blessings', 'Fervor', 'Sacred Weapon', 'Weapon Focus'],
     'hp': 8,
     'gold': '3d6',
+    'BAB': 'mid',
+    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -437,6 +789,8 @@ classes = {
     'abilities': ['Spells', 'Patron', 'Hexes', 'Familiar', 'Cantrips'],
     'hp': 6,
     'gold': '3d6',
+    'BAB': 'low',
+    'casting level': 'high',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -447,6 +801,8 @@ classes = {
     'abilities': ['Arcane Bond', 'Arcane School'],
     'hp': 6,
     'gold': '3d6',
+    'BAB': 'low',
+    'casting level': 'high',
     'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -460,6 +816,8 @@ classes = {
     'abilities': ['Mystic Foresight', 'Omen Casting', 'Mystic Echoes', 'Mystic Insight', 'Mystic Resonance', 'Divine Arcanum', 'Mystic Guide'],
     'hp': 8,
     'gold': '3d6x10',
+    'BAB': 'mid',
+    'casting level': 'none',
     'saving throws': ['Reflex', 'Will']
 },
 
@@ -470,6 +828,8 @@ classes = {
     'abilities': ['Psionic Power Source', 'Discipline Focus', 'Form Mind Blade', 'Mind Blade Enhancement'],
     'hp': 8,
     'gold': '2d10',
+    'BAB': 'mid',
+    'casting level': 'none',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -477,8 +837,10 @@ classes = {
         'weapons': ['Axe, Throwing', 'Axe, Two-Bladed', 'Axe, Battle', 'Chain, Spiked','Club', 'Crossbow, Hand', 'Crossbow, Heavy', 'Crossbow, Light','Dagger', 'Dagger, Punching', 'Falchion', 'Flail', 'Flail, Dire','Gauntlet', 'Gauntlet, Spiked', 'Glaive', 'Glaive, Guisarme', 'Greataxe','Greatclub', 'Greatsword', 'Guisarme', 'Halberd', 'Hammer, Gnome Hooked','Hammer, Light', 'Hammer, Lucerne', 'Handaxe', 'Javelin', 'Lance','Longbow', 'Longspear', 'Longsword', 'Mace, Heavy', 'Mace, Light','Morningstar', 'Pick, Heavy', 'Pick, Light', 'Ranseur', 'Rapier','Sap', 'Scimitar', 'Scythe', 'Shortbow', 'Shortspear', 'Shuriken','Siangham', 'Sickle', 'Spear', 'Spear, Hekatonkheires', 'Spiked Armor','Spiked Shield', 'Spiked Gauntlet', 'Staff', 'Sword, Bastard','Sword Cane', 'Sword, Short', 'Trident', 'Urgrosh, Double','Warhammer', 'Whip'],
         'armor': ['Light Armor', 'Shields'],
         'skills': ['Acrobatics','Climb','Craft','Disable Device','Disguise','Escape Artist','Handle Animal','Heal','Intimidate','Knowledge (dungeoneering)','Knowledge (geography)','Knowledge (nature)','Perception','Ride','Sense Motive','Stealth','Survival','Swim'],
-        'hp': 10,
+        'hp': 8,
         'gold': '3d6x10',
+        'BAB': 'mid',
+    'casting level': 'none',
         'saving throws': ['Fortitude', 'Reflex']
     },
 
@@ -488,6 +850,8 @@ classes = {
         'skills': ["Acrobatics", "Autohypnosis", "Climb", "Craft", "Handle Animal", "Intimidate", "Jump", "Knowledge (engineering)", "Knowledge (history)", "Knowledge (nobility)", "Knowledge (tactics)", "Perception", "Perform", "Profession", "Ride", "Sense Motive", "Survival", "Swim", "Use Rope"],
         'hp': 12,
         'gold': '3d6x10',
+        'BAB': 'high',
+    'casting level': 'none',
         'saving throws': ['Fortitude', 'Will']
     },
 
@@ -497,6 +861,8 @@ classes = {
         'skills': ['Acrobatics', 'Appraise', 'Bluff', 'Climb', 'Craft', 'Diplomacy', 'Disable Device', 'Disguise', 'Escape Artist', 'Fly', 'Handle Animal', 'Heal', 'Intimidate', 'Knowledge (all)', 'Linguistics', 'Perception', 'Perform', 'Profession', 'Ride', 'Sense Motive', 'Sleight of Hand', 'Spellcraft', 'Stealth', 'Survival', 'Swim', 'Use Magic Device'],
         'hp': 10,
         'gold': '4d6x10',
+        'BAB': 'high',
+    'casting level': 'none',
         'saving throws': ['Fortitude', 'Will']
 
     },
@@ -507,6 +873,8 @@ classes = {
         'abilities': ['Zealous Focus', 'Zealous Surge', 'Sacred Might', 'Fervor', 'Divine Favor'],
         'hp': 10,
         'gold': '3d6x10',
+        'BAB': 'high',
+    'casting level': 'none',
         'saving throws': ['Fortitude', 'Will']
 }
 }

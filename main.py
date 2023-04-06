@@ -2,7 +2,7 @@
 from createACharacter import CreateNewCharacter
 from utils.markdown import style
 from utils.data import version
-from utils.util import isBool, Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5, chooseClass
+from utils.util import isBool, Roll_Level #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
 import random
 
 print(style.BOLD + f'Welcome to the D&D Random Character Generator ({version})' + style.END)
@@ -12,6 +12,7 @@ isTrue = True
 
 while isTrue:
 	character_name = random.randint(0,10000000)
+	# write the location of where you want it to export here:
 	filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{character_name}_character_sheet.txt"
 	with open(filename, 'a') as f:
 		print('===============================================================',file=f)
@@ -22,45 +23,27 @@ while isTrue:
 			print('===============================================================', file=f)
 			CreateNewCharacter(character_name)
 			user_input = input("Do you want levels to be weighted lower (if n then they are weighted higher)? (y/n) ")
-			level_40 = Roll_Level_40(user_input)
-			level_30 = Roll_Level_30(user_input)
-			level_20 = Roll_Level_20(user_input)
-			level_10 = Roll_Level_10(user_input)
-			level_5 = Roll_Level_5(user_input)
-
-			print('Character level 1-40' + '\n', level_40, file=f)
-			print('Character level 1-30' + '\n', level_30, file=f)
-			print('Character level 1-20' + '\n', level_20, file=f)
-			print('Character level 1-10' + '\n', level_10, file=f)
-			print('Character level 1-5' + '\n', level_5, file=f)
-
-			bonus_feats_40 = (5 + level_40//5 + level_40//2)
-			bonus_feats_30 = (5 + level_30//5 + level_30//2)
-			bonus_feats_20 = (5 + level_20//5 + level_20//2)
-			bonus_feats_10 = (5 + level_10//5 + level_10//2)
-			bonus_feats_5 = (5 + level_5//5 + level_5//2)
-			
-			print('Number of bonus feats (1-40):' + '\n', bonus_feats_40, file=f)
-			print('Number of bonus feats (1-30):' + '\n', bonus_feats_30, file=f)
-			print('Number of bonus feats (1-20):' + '\n', bonus_feats_20, file=f)
-			print('Number of bonus feats (1-10):' + '\n', bonus_feats_10, file=f)									
-			print('Number of bonus feats (1-5):' + '\n', bonus_feats_5, file=f)			
-
-
-			print('Character level 1-40' + '\n', level_40)
-			print('Character level 1-30' + '\n', level_30)
-			print('Character level 1-20' + '\n', level_20)
-			print('Character level 1-10' + '\n', level_10)
-			print('Character level 1-5' + '\n', level_5)
-			print('Number of bonus feats 1-40' + '\n', bonus_feats_40)
-			print('Number of bonus feats 1-30' + '\n', bonus_feats_30)
-			print('Number of bonus feats 1-20' + '\n', bonus_feats_20)
-			print('Number of bonus feats 1-10' + '\n', bonus_feats_10)									
-			print('Number of bonus feats 1-5' + '\n', bonus_feats_5)	
-			
-			
-				
+			Roll_Level(character_name)
 				#need to devise a way to randomly pick good feats
+
+			
+			for i in range(1, 11):
+				if random.randint(1, 1000) == 1000:
+					print(f'Character is mythic {i}')
+					for j in range(2, 11):
+						roll = random.randint(1, 100)
+						if roll >= 90:
+							print(f'Character is mythic {j}')
+						else:
+							break
+				else:
+					print('didnt get mythic ')
+					break			
+
+			if random.randint(1,100) == 100:
+				print('character is extremely lucky, make it a luck build rather than everything else ')
+			elif random.randint(1,100) == 10:
+				print('you need to take negative luck feats as well as normal feats ')
 
 		else: 
 			print('Exiting Character Generator...')

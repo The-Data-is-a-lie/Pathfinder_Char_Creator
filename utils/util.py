@@ -1,4 +1,5 @@
 from random import randrange
+from math import floor
 import random
 from utils import data
 
@@ -21,6 +22,109 @@ def RollStat():
     for num in dice: total += num
 
     return total - lowest
+
+def roll_4d6():
+    """
+    Roll 4 and drop the lowest and return the sum of the highest three rolls.
+    """
+    rolls = [random.randint(1, 6) for i in range(4)]
+    return sum(sorted(rolls)[1:])
+
+# Example usage:
+print(roll_4d6())
+
+
+def Roll_Level(name):
+    filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+    with open(filename, 'a') as f:
+        """
+        Rolls for a random character level
+        """
+        # Prompt user for level range
+        max_num = int(input("Enter the highest level you want the char to be: "))
+        min_num = int(input("Enter the lowest level you want the char to be: "))
+
+        # Calculate weights based on level range
+        user_input = input("this is the weights: y = higher levels, n = lower levels (y/n): ")
+        if user_input.lower() == "y":
+            weights = [i/sum(range(min_num, max_num+1)) for i in range(max_num, min_num-1, -1)]
+            weights = [round(i/sum(weights)*len(weights)) for i in weights]
+        else:
+            weights = [1 for i in range(min_num, max_num+1)]
+
+        # Roll for level using weights
+        level = random.choices(range(min_num, max_num+1), weights=weights)[0]
+
+        print("this is the character level ")
+        print(level)
+        print("this is the character level ", file=f)
+        print(level, file=f)        
+        feats = (5 + floor(level/2) + floor(level/5))
+        extra_ability_score_levels = floor(level/4)
+        print ("This is the number of bonus feats per level ")
+        print(feats)
+        print ("This is the number of bonus feats per level ", file=f)        
+        print(feats, file=f)
+        print ("number of bonus ability scores from levels ")        
+        print(extra_ability_score_levels)
+        print ("number of bonus ability scores from levels ", file=f)        
+        print(extra_ability_score_levels, file=f)        
+        return level
+
+def chooseClass():
+    """
+    Gives the Character a random Class 
+    - Returns
+    - Class (String)
+    """
+    
+    classes = []
+
+    for _class in data.classes: classes.append(_class)
+    
+    c_class = classes[randrange(0,len(classes))]
+    return c_class
+
+def chooseRace():
+    """
+    Gives the Character a random Race
+    - Returns
+    - Race (String)
+    """
+    
+    races = []
+    for race in data.races: races.append(race)
+
+    c_race = races[randrange(0,len(races))]
+    return c_race
+
+def isBool(strBool: bool): return True if strBool == 'yes' or strBool == 'y' else False
+
+def printAttributes(title: str, attributeList: list) -> None:
+    print(f'\n{title}:', end=' ')
+    
+    for i in range(len(attributeList) - 1): print(f'{attributeList[i]}, ', end='')
+    print(f'{attributeList[-1]}')
+
+def appendAttr(attributeList: list, dataList: list):
+    
+    for attr in dataList: attributeList.append(attr)
+
+def appendAttrData(attributeList: list, dataList):
+    
+    for attr in dataList: attributeList.append(attr)
+    
+    return attributeList[randrange(0, len(attributeList))]
+
+
+
+
+
+
+
+
+
+# we don't use these anymore:
 
 def Roll_Level_40(user_input="y"):
     """
@@ -91,49 +195,3 @@ def Roll_Level_5(user_input="y"):
     level = random.choices(range(1, 6), weights=weights)[0]
 
     return level
-
-
-def chooseClass():
-    """
-    Gives the Character a random Class 
-    - Returns
-    - Class (String)
-    """
-    
-    classes = []
-
-    for _class in data.classes: classes.append(_class)
-    
-    c_class = classes[randrange(0,len(classes))]
-    return c_class
-
-def chooseRace():
-    """
-    Gives the Character a random Race
-    - Returns
-    - Race (String)
-    """
-    
-    races = []
-    for race in data.races: races.append(race)
-
-    c_race = races[randrange(0,len(races))]
-    return c_race
-
-def isBool(strBool: bool): return True if strBool == 'yes' or strBool == 'y' else False
-
-def printAttributes(title: str, attributeList: list) -> None:
-    print(f'\n{title}:', end=' ')
-    
-    for i in range(len(attributeList) - 1): print(f'{attributeList[i]}, ', end='')
-    print(f'{attributeList[-1]}')
-
-def appendAttr(attributeList: list, dataList: list):
-    
-    for attr in dataList: attributeList.append(attr)
-
-def appendAttrData(attributeList: list, dataList):
-    
-    for attr in dataList: attributeList.append(attr)
-    
-    return attributeList[randrange(0, len(attributeList))]

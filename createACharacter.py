@@ -1,7 +1,7 @@
 #Internal Imports
 from utils import data
 #from utils.data import archetypes
-from utils.util import RollStat, chooseClass,  appendAttr, appendAttrData #printAttributes,
+from utils.util import RollStat, chooseClass,  appendAttr, appendAttrData, roll_4d6 #printAttributes,
 from utils.markdown import style
 import random
 
@@ -139,12 +139,13 @@ def CreateNewCharacter(name):
 
         if new_char.c_race != 'Half-Orc': new_char.c_surname = surnames[randrange(0,len(surnames))]
 
-        new_char.c_str = RollStat()
-        new_char.c_dex =  RollStat()
-        new_char.c_const = RollStat()
-        new_char.c_int = RollStat()
-        new_char.c_wisdom = RollStat()
-        new_char.c_char = RollStat()
+                                #this is where we change the stat rolls:
+        new_char.c_str = roll_4d6()
+        new_char.c_dex =  roll_4d6()
+        new_char.c_const = roll_4d6()
+        new_char.c_int = roll_4d6()
+        new_char.c_wisdom = roll_4d6()
+        new_char.c_char = roll_4d6()
 
         weapons = []
         armors = []
@@ -281,9 +282,9 @@ def CreateNewCharacter(name):
 
         # Assigning archetypes:
 
-        char_class = new_char.c_class.lower()
-        selected_archetype = random.choice(archetypes[char_class])
-        print('this is the randomly selected archetype' +  '\n' + selected_archetype + '\n' + ' for this class' + '\n' + char_class)
+        #char_class = new_char.c_class.lower()
+        #selected_archetype = random.choice(archetypes[char_class])
+        #print('this is the randomly selected archetype' +  '\n' + selected_archetype + '\n' + ' for this class' + '\n' + char_class)
         
         #    archetype_list = getattr(archetypes)
         #    print("this is the archetype lst" + archetype_list)
