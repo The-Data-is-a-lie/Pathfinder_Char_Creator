@@ -2,6 +2,7 @@
 from utils import data
 from utils.util import RollStat, chooseClass, printAttributes, appendAttr, appendAttrData
 from utils.markdown import style
+import random
 
 #Extension Modules:
 from modules.extraDetail import ExtraDetail
@@ -30,7 +31,6 @@ class Character:
     c_armor = ['Cloth shirt']
     
     c_skills = ['Placeholder']
-    c_abilities = ['Placeholder']
     c_spells = ['None']
     c_hp = 1
 
@@ -120,15 +120,9 @@ def CreateNewCharacter():
     new_char.c_weapon = weapons[randrange(0,len(weapons))]
     new_char.c_armor = armors[randrange(0,len(armors))]
     new_char.c_skills = data.classes[new_char.c_class]['skills']
-
-    if 'spells' in data.classes[new_char.c_class]:
-        new_char.c_spells =  data.classes[new_char.c_class]['spells']
-
-    new_char.c_abilities = data.classes[new_char.c_class]['abilities']
     new_char.c_langs = ['Common']
     new_char.c_langs += data.races[new_char.c_race]['languages']
     new_char.c_racial_traits = data.races[new_char.c_race]['traits']
-    new_char.c_background = data.classes[new_char.c_class]['background']
 
     mannerisms = []
     new_char.c_mannerisms = appendAttrData(mannerisms, data.mannerisms)
@@ -136,14 +130,20 @@ def CreateNewCharacter():
     traits = []
     new_char.c_traits = appendAttrData(traits, data.traits)
 
-    talents = []
-    new_char.c_talent = appendAttrData(talents, data.talents)
+    profession = []
+    new_char.c_profession = appendAttrData(profession, data.profession)
 
     appearances = []
     new_char.c_appearance = appendAttrData(appearances, data.appearance)
 
     deityList = []
     new_char.c_deity = appendAttrData(deityList, data.deities)
+
+    traits_abilities = []
+    new_char.c_traits_abilities = appendAttrData(traits_abilities, data.traits_abilities)
+
+    weapon_groups = []
+    new_char.c_weapon_groups = appendAttrData(weapon_groups, data.weapon_groups)
 
     match new_char.c_race:
         case 'Half-Orc': print(f'Name: {new_char.c_name} ({new_char.c_race} {new_char.c_class})\n')
@@ -157,13 +157,44 @@ def CreateNewCharacter():
     print(f'Strength: {new_char.c_str}\nDexterity: {new_char.c_dex}')
     print(f'Constitution: {new_char.c_const} \nIntelligence: {new_char.c_int}')
     print(f'Wisdom: {new_char.c_wisdom}\nCharisma: {new_char.c_char}')
-    print(f'Background: {new_char.c_background}')
 
-    printAttributes('Languages', new_char.c_langs)
-    printAttributes('Skills', new_char.c_skills)
-    printAttributes('Abilities', new_char.c_abilities)
-    printAttributes('Spells', new_char.c_spells)
-    printAttributes('Traits', new_char.c_racial_traits)
+    printAttributes(f'Languages', new_char.c_langs)
+    printAttributes(f'Skills', new_char.c_skills)
+    printAttributes(f'Traits', new_char.c_racial_traits)
+#    printAttributes(f'profession', new_char.c_profession)
+#    printAttributes(f'traits_abilities', new_char.c_traits_abilities)
+#    printAttributes(f'Traits_background', new_char.c_traits)
+
+
+    # use random.sample to select 3 random professions 
+    random_professions = random.sample(profession, 3)
+    # loop through the random abilities and print out each element
+    for proforce in random_professions:
+        print(f'(profession):',proforce)
+
+    # use random.sample to select 8 random abilities
+    random_abilities = random.sample(traits_abilities, 8)
+    # loop through the random abilities and print out each element
+    for ability in random_abilities:
+        print(f'(ability traits):',ability)
+
+    # use random.sample to select 5 random personality traits
+    random_personality = random.sample(traits, 5)
+    # loop through the random abilities and print out each element
+    for personality in random_personality:
+        print(f'(personality traits):',personality)
+
+    # use random.sample to select 3 random mannerisms
+    random_mannerisms = random.sample(mannerisms, 3)
+    # loop through the random abilities and print out each element
+    for manners in random_mannerisms:
+        print(f'(mannerisms):',manners)
+
+    # yse random.sample to select 2 random weapons
+    weapons = random.sample(weapon_groups, 2)
+    # loop through the random abilities and print out each element
+    for weapun in weapons:
+        print(f'(weapon groups):',weapun)        
 
     print('===============================================================')
 

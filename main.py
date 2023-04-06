@@ -17,7 +17,7 @@ while isTrue:
 	if isTrue:
 		print('===============================================================')
 		CreateNewCharacter()
-		user_input = input("Do you want levels to be weighted higher (if n then they are weighted lower)? (y/n) ")
+		user_input = input("Do you want levels to be weighted lower (if n then they are weighted higher)? (y/n) ")
 		level = Roll_Level(user_input)
 		print('Character level', level)
 		bonus_feats = (5 + level//5 + level//2)
