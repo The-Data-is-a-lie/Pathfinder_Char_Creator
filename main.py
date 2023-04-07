@@ -44,8 +44,10 @@ while isTrue:
 
 			if random.randint(1,100) == 100:
 				print('character is extremely lucky, make it a luck build rather than everything else ')
+				print('character is extremely lucky, make it a luck build rather than everything else ', file=f)				
 			elif random.randint(1,100) == 10:
 				print('you need to take negative luck feats as well as normal feats ')
+				print('you need to take negative luck feats as well as normal feats ', file = f)
 				
 				
 

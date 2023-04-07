@@ -23,15 +23,15 @@ def RollStat():
 
     return total - lowest
 
-def roll_4d6():
-    """
-    Roll 4 and drop the lowest and return the sum of the highest three rolls.
-    """
-    rolls = [random.randint(1, 6) for i in range(4)]
-    return sum(sorted(rolls)[1:])
-
-# Example usage:
-print(roll_4d6())
+def roll_dice(num_dice, num_sides, stat, name):
+    filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+    with open(filename, 'a') as f:
+        rolls = []
+        for i in range(num_dice):
+            rolls.append(random.randint(1, num_sides))
+        total = sum(rolls)
+        #print(f"{stat} = {total}")
+        return total
 
 
 def Roll_Level(name):
@@ -65,17 +65,17 @@ def Roll_Level(name):
        
         if path == 0:
             feats = feats - 0
-        elif level == 3 and path == 1:
+        elif 7 > level >= 3 and path == 1:
             feats = feats-1
-        elif level == 7 and path == 1:
+        elif 11 > level >= 7 and path == 1:
             feats = feats-2
-        elif level == 11 and path == 1:
+        elif level >= 11 and path == 1:
             feats = feats-3        
-        elif level == 3 and path == 2:
+        elif 7 > level >= 3 and path == 2:
             feats = feats-2
-        elif level == 7 and path == 2:
+        elif 11 > level >= 7 and path == 2:
             feats = feats-4 
-        elif level == 11 and path == 2:
+        elif level >= 11 and path == 2:
             feats = feats-6           
 
         extra_ability_score_levels = floor(level/4)

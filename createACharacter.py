@@ -1,7 +1,7 @@
 #Internal Imports
 from utils import data
 #from utils.data import archetypes
-from utils.util import RollStat, chooseClass,  appendAttr, appendAttrData, roll_4d6, Roll_Level#, roll_dice #printAttributes,
+from utils.util import RollStat, chooseClass,  appendAttr, appendAttrData, roll_dice#,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
 from utils.markdown import style
 import random
 
@@ -142,12 +142,15 @@ def CreateNewCharacter(name):
         if new_char.c_race != 'Half-Orc': new_char.c_surname = surnames[randrange(0,len(surnames))]
 
                                 #this is where we change the stat rolls:
-        new_char.c_str = roll_4d6()
-        new_char.c_dex =  roll_4d6()
-        new_char.c_const = roll_4d6()
-        new_char.c_int = roll_4d6()
-        new_char.c_wisdom = roll_4d6()
-        new_char.c_char = roll_4d6()
+        num_dice = int(input("How many dice would you like to roll? "))
+        num_sides = int(input("How many sides should each die have? "))
+
+        new_char.c_str = roll_dice(num_dice, num_sides, 'Strength', name)
+        new_char.c_dex = roll_dice(num_dice, num_sides, 'Dexterity', name)
+        new_char.c_const = roll_dice(num_dice, num_sides, 'Constitution', name)
+        new_char.c_int = roll_dice(num_dice, num_sides, 'Intelligence', name)
+        new_char.c_wisdom = roll_dice(num_dice, num_sides, 'Wisdom', name)
+        new_char.c_char = roll_dice(num_dice, num_sides, 'Charisma', name)
 
         weapons = []
         armors = []
@@ -227,6 +230,13 @@ def CreateNewCharacter(name):
 #        print(f'eye_colors' + '\n', new_char.c_skills)
 #        print(f'appearance' + '\n', new_char.c_racial_traits)
 
+        print(f'Deities' + '\n', new_char.c_deity, file=f)
+        print(f'Alignment' + '\n', new_char.c_alignment, file=f)
+#        print(f'hair_colors' + '\n', new_char.c_hair_colors)
+#        print(f'hair_types' + '\n', new_char.c_langs)
+#        print(f'eye_colors' + '\n', new_char.c_skills)
+#        print(f'appearance' + '\n', new_char.c_racial_traits)
+
 
 
 
@@ -234,6 +244,7 @@ def CreateNewCharacter(name):
         random_professions = random.sample(profession, 3)
         # loop through the random abilities and print out each element
         for proforce in random_professions:
+            print(f'(profession):',proforce)
             print(f'(profession):', proforce, file=f )
 
 
@@ -241,57 +252,33 @@ def CreateNewCharacter(name):
         random_abilities = random.sample(traits_abilities, 8)
         # loop through the random abilities and print out each element
         for ability in random_abilities:
+            print(f'(ability traits):',ability)
             print(f'(ability traits):',ability, file=f)
 
         # use random.sample to select 5 random personality traits
         random_personality = random.sample(traits, 5)
         # loop through the random abilities and print out each element
         for personality in random_personality:
+            print(f'(personality traits):',personality)
             print(f'(personality traits):',personality, file=f)
 
         # use random.sample to select 3 random mannerisms
         random_mannerisms = random.sample(mannerisms, 3)
         # loop through the random abilities and print out each element
         for manners in random_mannerisms:
+            print(f'(mannerisms):',manners)
             print(f'(mannerisms):',manners, file=f)
 
         # yse random.sample to select 2 random weapons
         weapons = random.sample(weapon_groups, 2)
         # loop through the random abilities and print out each element
         for weapun in weapons:
+            print(f'(weapon groups):',weapun)
             print(f'(weapon groups):',weapun, file=f)        
 
                 # Copy + paste so it prints to the terminal as well as the output file
                 
-        # use random.sample to select 3 random professions 
-        random_professions = random.sample(profession, 3)
-        # loop through the random abilities and print out each element
-        for proforce in random_professions:
-            print(f'(profession):',proforce)
-
-        # use random.sample to select 8 random abilities
-        random_abilities = random.sample(traits_abilities, 8)
-        # loop through the random abilities and print out each element
-        for ability in random_abilities:
-            print(f'(ability traits):',ability)
-
-        # use random.sample to select 5 random personality traits
-        random_personality = random.sample(traits, 5)
-        # loop through the random abilities and print out each element
-        for personality in random_personality:
-            print(f'(personality traits):',personality)
-
-        # use random.sample to select 3 random mannerisms
-        random_mannerisms = random.sample(mannerisms, 3)
-        # loop through the random abilities and print out each element
-        for manners in random_mannerisms:
-            print(f'(mannerisms):',manners)
-
-        # yse random.sample to select 2 random weapons
-        weapons = random.sample(weapon_groups, 2)
-        # loop through the random abilities and print out each element
-        for weapun in weapons:
-            print(f'(weapon groups):',weapun)
+       
 
         print('this is your new class')
         print(new_char.c_class)
@@ -304,11 +291,11 @@ def CreateNewCharacter(name):
             if c_bab == 'high':
                 if chance >= 25:
                     path = 1
-                    print('this is the path number ')
+                    print('this is how many path of war abiities they take ')
                     print(path)                    
                     if chance_2 >= 75:
                         path = 2
-                        print('this is the path number ')
+                        print('this is how many path of war abiities they take ')
                         print(path)
                     return 'Path of War'
             elif c_bab == 'mid':
@@ -317,14 +304,14 @@ def CreateNewCharacter(name):
                     print(path)
                     if chance_2 >= 90:
                         path = 2
-                        print('this is the path number ')
+                        print('this is how many path of war abiities they take ')
                         print(path)
                     return 'Path of War'            
 
                 else:
                     if chance >= 90:
                         path = 1
-                        print('this is the path number ')
+                        print('this is how many path of war abiities they take ')
                         print(path)
                         return 'Path of War '
                     

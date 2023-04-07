@@ -2156,6 +2156,7 @@ traits_abilities = ["Absolute Loyalty",
 #need to use archetypes_{class_name} so we can grab it like this later
                     #Base Classes
 
+disciplines = ['Black Seraph', 'Broken Blade', 'Brutal Crocodile', 'Cursed Razor', 'Elemental Flux', 'Eternal Guardian', 'Fools Errand', 'Golden Lion', 'Iron Tortoise', 'Leaden Hyena', 'Mangled Gear', 'Mithral Current', 'Piercing Thunder', 'Primal Fury', 'Radiant Dawn', 'Riven Hourglass', 'Roaring Mouse', 'Sagitta Stellaris', 'Scarlet Throne', 'Shattered Mirror', 'Silver Crane', 'Sleeping Goddess', 'Solar Wind', 'Spark of Battle', 'Steel Serpent', 'Surging Shark', 'Tempest Gale', 'Thrashing Dragon', 'Unquiet Grave', 'Veiled Moon']
 
 archetypes = {
 
