@@ -56,9 +56,5 @@ while isTrue:
 
 
 										#notes
-#make stat total toggles
-#make race and region toggeable (e.g. user_input region('Sojoria') -> leads to more likely classes (lower likelihood for magic casers ...) 
-
+#Might not do below:
 #using a list of all regions, weight weapon groups
-
-#implement weights per region to decide what weapon a character uses

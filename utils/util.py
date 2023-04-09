@@ -2,7 +2,7 @@ from random import randrange
 from math import floor
 import random
 from utils import data
-from utils.data import regions #classes
+from utils.data import regions, races #classes
 
 def RollStat():
     """
@@ -129,9 +129,12 @@ def chooseClass(name):
         
         # Prompt the user to select a region
         userInput_region = input('Select region [input the number for the region you want] (1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, ...)').lower()
+        userInput_race = input('Select race (e.g. Goblin, Human, Drow, ...)').capitalize()
+        print(userInput_race)
         if userInput_region.isdigit() and int(userInput_region) in range(1, 10):
             # make sure max range = the number of regions we have
             region_index = int(userInput_region) - 1
+            # if you want to add regions, make sure to add them in the data section as well
             region = regions[region_index]
             print('You have selected this region: ' + region)
             print('You have selected this region: ' + region, file=f)
@@ -142,8 +145,8 @@ def chooseClass(name):
         # Iterate through the classes and select the ones that meet the BAB requirement
         classes = []
         for class_name, class_info in data.classes.items():
-            #print(class_info.keys()) [ this is to see if the class info actually exists in the dictionary]
-            if region in class_info['regions']:
+            #print(class_info.keys()) #to see if the key actually exists in the class dictionary
+            if region in class_info['regions'] and userInput_race in class_info['race']:
                 # Check BAB input + region input
                 if BAB == 'H' and class_info['BAB'] == 'high':
                     classes.append(class_name)
@@ -156,6 +159,7 @@ def chooseClass(name):
                     continue
 
         # Select a random class from the list of eligible classes
+        print(f'These are the classes available to get {classes}')
         c_class = classes[randrange(0,len(classes))]
         return c_class
 

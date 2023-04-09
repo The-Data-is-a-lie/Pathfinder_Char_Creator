@@ -1,6 +1,6 @@
 #Internal Imports
 from utils import data
-from utils.data import regions
+from utils.data import regions, weapon_groups_region
 #from utils.data import archetypes
 from utils.util import RollStat, chooseClass,  appendAttr, appendAttrData, roll_dice#,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
 from utils.markdown import style
@@ -270,12 +270,14 @@ def CreateNewCharacter(name):
             print(f'(mannerisms):',manners)
             print(f'(mannerisms):',manners, file=f)
 
-        # yse random.sample to select 2 random weapons
+        # random.sample to select 2 random weapons
         weapons = random.sample(weapon_groups, 2)
+        print(f'weapons not weight by region {weapons}')
         # loop through the random abilities and print out each element
-        for weapun in weapons:
-            print(f'(weapon groups):',weapun)
-            print(f'(weapon groups):',weapun, file=f)        
+        for region in regions:
+            weaponz = random.choice(weapon_groups_region[region])
+            print(f"Weapon for {region}: {weaponz}")
+            print(f"Weapon for {region}: {weaponz}", file=f)        
 
                 # Copy + paste so it prints to the terminal as well as the output file
                 
@@ -283,6 +285,8 @@ def CreateNewCharacter(name):
 
         print('this is your new class')
         print(new_char.c_class)
+        print('this is your new class', file=f)
+        print(new_char.c_class, file=f)
 
         chance = random.randint(1,100)
         chance_2 = random.randint(1,100)
@@ -294,11 +298,15 @@ def CreateNewCharacter(name):
                     if chance >= 25:
                         path = 1
                         print('this is how many path of war abiities they take ')
-                        print(path)                    
+                        print('this is how many path of war abiities they take ', file = f)
+                        print(path)
+                        print(path, file = f)                    
                         if chance_2 >= 75:
                             path = 2
                             print('this is how many path of war abiities they take ')
+                            print('this is how many path of war abiities they take ', file = f)
                             print(path)
+                            print(path, file = f)
                         return 'Path of War'
                 elif c_bab == 'mid':
                     if chance >= 50:
@@ -307,14 +315,18 @@ def CreateNewCharacter(name):
                         if chance_2 >= 90:
                             path = 2
                             print('this is how many path of war abiities they take ')
+                            print('this is how many path of war abiities they take ', file = f)
                             print(path)
+                            print(path, file = f)
                         return 'Path of War'            
 
                     else:
                         if chance >= 90:
                             path = 1
                             print('this is how many path of war abiities they take ')
+                            print('this is how many path of war abiities they take ', file = f)
                             print(path)
+                            print(path, file = f)
                             return 'Path of War '
                         
 

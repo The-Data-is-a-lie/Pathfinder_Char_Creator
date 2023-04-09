@@ -1,5 +1,24 @@
 # where you want characters to be from:
 regions = ['Tal-falko','Dolestan','Sojoria','Ieso']
+races = ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir']
+weapon_groups = ['Axes', 'Blades, Heavy', 'Blades, Light', 'Bows', 'Close', 'Crossbows', 'Double', 'Firearms', 'Flails', 'Hammers', 'Monk', 'Natural', 'Polearms', 'Siege Engines', 'Spears', 'Thrown', 'Tribal']
+# make weapon group into a dictionary that depends on regions:
+weapon_groups_region = {
+    'Tal-falko': ['Swords', 'Axes', 'Bows'],
+    'Dolestan': ['Maces', 'Spears', 'Wands'],
+    'Sojoria': ['Swords', 'Bows', 'Wands'],
+    'Ieso': ['Axes', 'Maces', 'Spears']
+}
+#add all of forests options
+languages = ['Abyssal', 'Aklo', 'Aquan', 'Auran', 'Boggard', 'Celestial', 'Common', 'Cyclops', 'Dark Folk', 'Draconic', 'Druidic', 'Drow Sign Language', 'Dwarven', 'Elven', 'Giant', 'Gnoll', 'Gnome', 'Goblin', 'Grippli', 'Halfling', 'Ignan', 'Infernal', 'Kelish', 'Orc', 'Protean', 'Sphinx', 'Sylvan', 'Tengu', 'Terran', 'Treant', 'Undercommon', 'Vegepygmy', 'Vishkanya', 'Wayang']
+#add all of forests options
+deities = ['Abadar', 'Achaekek', 'Alseta', 'Ameiko Kaijitsu', 'Apsu', 'Aroden', 'Asmodeus', 'Black Butterfly, The', 'Brigh', 'Calistria', 'Cayden Cailean', 'Chaldira Zuzaristan', 'Chamidu', 'Daikitsu', 'Dahak', 'Desna', 'Elion', 'Erastil', 'Ghlaunder', 'Gorum', 'Gozreh', 'Groetus', 'Gruhastha, The', 'Hanspur', 'Hei Feng', 'Iomedae', 'Irori', 'Jaidi', 'Jingxi', 'Kabriri', 'Kazutal', 'Kelizandri', 'Ketephys', 'Kofusachi', 'Lama, The', 'Lamashtu', 'Magrim', 'Milani', 'Minderhal', 'Naderi', 'Nalinivati', 'Nethys', 'Nivi Rhombodazzle', 'Norgorber', 'Old-Mage Jatembe', 'Oras', 'Orcus', 'Pharasma', 'Qi Zhong', 'Ragathiel', 'Razmir', 'Rovagug', 'Sarenrae', 'Sivanah', 'Sivanah, The', 'Skrymir', 'Sokhna', 'Sun Wukong', 'Thamir Gixx', 'Thremyr', 'Torag', 'Urgathoa', 'Uskyeria', 'Wadjet', 'Weydan', 'Ydersius', 'Yuelral', 'Zagnexapan', 'Zargos', 'Zon-Kuthon' ]
+alignment = ["Chaotic good", "Chaotic neutral", "Chaotic evil", "Lawful good", "Lawful neutral", "Lawful evil", "Neutral good", "True Neutral", "Neutral evil"]
+hair_colors = ['Black', 'Brown', 'Blond', 'Red', 'White', 'Grey']
+hair_types = ['Curly', 'Wavy', 'Straight', 'Flowing', 'Frizzy', 'Spiky', 'Touseled', 'Unkempt']
+eye_colors = ['Amber', 'Blue', 'Brown', 'Grey', 'Green', 'Hazel']
+appearance = ['Jewelry', 'Piercings', 'Formal Clothing', 'Ragged', 'Missing Teeth', 'Scar', 'Tattoos', 'Birthmark', 'Bald', 'Braided Hair', 'Twitch', 'Beautiful', 'Ugly']
+
 
 races = {
     'Human': {
@@ -418,8 +437,9 @@ classes = {
         'hp': 8,
         'gold': '3d6',
         'BAB': 'mid',
-        'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
-   'casting level': 'mid',
+        'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+        'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
+        'casting level': 'mid',
         'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -432,7 +452,8 @@ classes = {
     'gold': '5d6',
     'BAB':    'high',
 
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
     'saving throws': ['Fortitude', 'Will']
 },
@@ -445,7 +466,8 @@ classes = {
     'hp': 6,
     'gold': '2d6',
     'BAB': 'low',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level':    'high',
 
     'saving throws': ['Fortitude', 'Will']
@@ -460,7 +482,8 @@ classes = {
         'gold': '3d6',
         'BAB':    'high',
 
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
         'saving throws': ['Fortitude', 'Reflex']
 },
@@ -473,7 +496,8 @@ classes = {
     'hp': 8,
     'gold': '3d6',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
@@ -487,7 +511,8 @@ classes = {
     'gold': '4d6',
     'BAB':    'high',
 
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'low',
     'saving throws': ['Fortitude', 'Will']
 },
@@ -501,7 +526,8 @@ classes = {
     'gold': '3d6',
     'BAB':    'high',
 
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
     'saving throws': ['Fortitude', 'Reflex']
 },
@@ -515,7 +541,8 @@ classes = {
     'gold': '5d6',
     'BAB':    'high',
 
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
     'saving throws': ['Fortitude', 'Will']
 },
@@ -528,7 +555,8 @@ classes = {
     'hp': 8,
     'gold': '5d6',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level':    'high',
 
     'saving throws': ['Fortitude', 'Will']
@@ -542,7 +570,8 @@ classes = {
         'hp': 8,
         'gold': '2d4',
         'BAB': 'mid',
-        'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+        'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level':    'high',
 
         'saving throws': ['Fortitude', 'Reflex', 'Will']
@@ -557,7 +586,8 @@ classes = {
     'gold': '5d4',
     'BAB':    'high',
 
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
     'saving throws': ['Fortitude', 'Reflex']
 },
@@ -571,7 +601,8 @@ classes = {
     'gold': '4d6x10',
     'BAB':    'high',
 
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
     'saving throws': ['Reflex', 'Will']
 },
@@ -584,7 +615,8 @@ classes = {
     'hp': 8,
     'gold': '2d6x10',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Reflex']
 },
@@ -597,7 +629,8 @@ classes = {
     'hp': 8,
     'gold': '5d6',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
@@ -610,7 +643,8 @@ classes = {
     'hp': 8,
     'gold': '3d6 x 10',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
@@ -623,7 +657,8 @@ classes = {
     'hp': 8,
     'gold': '2d6 x 10',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'low',
     'saving throws': ['Fortitude', 'Will']
 },
@@ -636,7 +671,8 @@ classes = {
     'hp': 8,
     'gold': '4d4 x 10',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
@@ -650,7 +686,8 @@ classes = {
     'gold': '2d10',
     'BAB':    'high',
 
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
     'saving throws': ['Fortitude', 'Will']
 },
@@ -663,7 +700,8 @@ classes = {
     'hp': 8,
     'gold': '5d4',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
     'saving throws': ['Reflex', 'Will']
 },
@@ -676,7 +714,8 @@ classes = {
     'hp': 8,
     'gold': '4d4',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
@@ -689,7 +728,8 @@ classes = {
     'hp': 8,
     'gold': '2d6',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level':    'high',
 
     'saving throws': ['Fortitude', 'Will']
@@ -704,7 +744,8 @@ classes = {
     'gold': '5d4',
     'BAB':    'high',
 
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'low',
     'saving throws': ['Fortitude', 'Will']
 },
@@ -717,7 +758,8 @@ classes = {
     'hp': 6,
     'gold': '2d6',
     'BAB': 'low',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level':    'high',
 
     'saving throws': ['Will']
@@ -732,7 +774,8 @@ classes = {
     'gold': '5d6',
     'BAB':    'high',
 
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'low',
     'saving throws': ['Fortitude', 'Reflex']
 },
@@ -745,7 +788,8 @@ classes = {
     'hp': 8,
     'gold': '4d6',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
     'saving throws': ['Reflex', 'Will']
 },
@@ -759,7 +803,8 @@ classes = {
     'hp': 6,
     'gold': '3d6',
     'BAB': 'low',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level':    'high',
 
     'saving throws': ['Fortitude', 'Will']
@@ -773,7 +818,8 @@ classes = {
     'hp': 8,
     'gold': '3d6',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
@@ -786,7 +832,8 @@ classes = {
     'hp': 8,
     'gold': '3d6',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Reflex', 'Will']
 },
@@ -800,7 +847,8 @@ classes = {
     'gold': '3d6',
     'BAB':    'high',
 
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
     'saving throws': ['Fortitude', 'Reflex']
 },
@@ -815,7 +863,8 @@ classes = {
     'hp': 8,
     'gold': '3d6',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
     'saving throws': ['Fortitude', 'Reflex']
 },
@@ -828,7 +877,8 @@ classes = {
     'hp': 8,
     'gold': '3d6',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
@@ -841,7 +891,8 @@ classes = {
     'hp': 6,
     'gold': '3d6',
     'BAB': 'low',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level':    'high',
 
     'saving throws': ['Fortitude', 'Will']
@@ -855,7 +906,8 @@ classes = {
     'hp': 6,
     'gold': '3d6',
     'BAB': 'low',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level':    'high',
 
     'saving throws': ['Fortitude', 'Reflex']
@@ -872,7 +924,8 @@ classes = {
     'hp': 8,
     'gold': '3d6x10',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
     'saving throws': ['Reflex', 'Will']
 },
@@ -885,7 +938,8 @@ classes = {
     'hp': 8,
     'gold': '2d10',
     'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
     'saving throws': ['Fortitude', 'Will']
 },
@@ -897,7 +951,8 @@ classes = {
         'hp': 8,
         'gold': '3d6x10',
         'BAB': 'mid',
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
         'saving throws': ['Fortitude', 'Reflex']
     },
@@ -910,7 +965,8 @@ classes = {
         'gold': '3d6x10',
         'BAB':    'high',
 
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
         'saving throws': ['Fortitude', 'Will']
     },
@@ -923,7 +979,8 @@ classes = {
         'gold': '4d6x10',
         'BAB':    'high',
 
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
         'saving throws': ['Fortitude', 'Will']
 
@@ -937,29 +994,13 @@ classes = {
         'gold': '3d6x10',
         'BAB':    'high',
 
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
         'saving throws': ['Fortitude', 'Will']
 }
 }
 
-weapon_groups = ['Axes', 'Blades, Heavy', 'Blades, Light', 'Bows', 'Close', 'Crossbows', 'Double', 'Firearms', 'Flails', 'Hammers', 'Monk', 'Natural', 'Polearms', 'Siege Engines', 'Spears', 'Thrown', 'Tribal']
-
-#add all of forests options
-languages = ['Abyssal', 'Aklo', 'Aquan', 'Auran', 'Boggard', 'Celestial', 'Common', 'Cyclops', 'Dark Folk', 'Draconic', 'Druidic', 'Drow Sign Language', 'Dwarven', 'Elven', 'Giant', 'Gnoll', 'Gnome', 'Goblin', 'Grippli', 'Halfling', 'Ignan', 'Infernal', 'Kelish', 'Orc', 'Protean', 'Sphinx', 'Sylvan', 'Tengu', 'Terran', 'Treant', 'Undercommon', 'Vegepygmy', 'Vishkanya', 'Wayang']
-
-#add all of forests options
-deities = ['Abadar', 'Achaekek', 'Alseta', 'Ameiko Kaijitsu', 'Apsu', 'Aroden', 'Asmodeus', 'Black Butterfly, The', 'Brigh', 'Calistria', 'Cayden Cailean', 'Chaldira Zuzaristan', 'Chamidu', 'Daikitsu', 'Dahak', 'Desna', 'Elion', 'Erastil', 'Ghlaunder', 'Gorum', 'Gozreh', 'Groetus', 'Gruhastha, The', 'Hanspur', 'Hei Feng', 'Iomedae', 'Irori', 'Jaidi', 'Jingxi', 'Kabriri', 'Kazutal', 'Kelizandri', 'Ketephys', 'Kofusachi', 'Lama, The', 'Lamashtu', 'Magrim', 'Milani', 'Minderhal', 'Naderi', 'Nalinivati', 'Nethys', 'Nivi Rhombodazzle', 'Norgorber', 'Old-Mage Jatembe', 'Oras', 'Orcus', 'Pharasma', 'Qi Zhong', 'Ragathiel', 'Razmir', 'Rovagug', 'Sarenrae', 'Sivanah', 'Sivanah, The', 'Skrymir', 'Sokhna', 'Sun Wukong', 'Thamir Gixx', 'Thremyr', 'Torag', 'Urgathoa', 'Uskyeria', 'Wadjet', 'Weydan', 'Ydersius', 'Yuelral', 'Zagnexapan', 'Zargos', 'Zon-Kuthon' ]
-
-alignment = ["Chaotic good", "Chaotic neutral", "Chaotic evil", "Lawful good", "Lawful neutral", "Lawful evil", "Neutral good", "True Neutral", "Neutral evil"]
-
-hair_colors = ['Black', 'Brown', 'Blond', 'Red', 'White', 'Grey']
-
-hair_types = ['Curly', 'Wavy', 'Straight', 'Flowing', 'Frizzy', 'Spiky', 'Touseled', 'Unkempt']
-
-eye_colors = ['Amber', 'Blue', 'Brown', 'Grey', 'Green', 'Hazel']
-
-appearance = ['Jewelry', 'Piercings', 'Formal Clothing', 'Ragged', 'Missing Teeth', 'Scar', 'Tattoos', 'Birthmark', 'Bald', 'Braided Hair', 'Twitch', 'Beautiful', 'Ugly']
 
 #add all of forests options
 profession = [
