@@ -2,6 +2,7 @@ from random import randrange
 from math import floor
 import random
 from utils import data
+from utils.data import regions #classes
 
 def RollStat():
     """
@@ -56,13 +57,35 @@ def Roll_Level(name):
         # Roll for level using weights
         level = random.choices(range(min_num, max_num+1), weights=weights)[0]
 
+		#randomized NPC level generator
+        npcInput = input('enable npc class levels (y/n)').lower()
+        npcEnabled = False
+        for x in range(1, level):
+            if random.randint(1, 100) >= 75 and npcInput == 'y':
+                if not npcEnabled:
+                    npcEnabled = True
+                x += 1
+                character_class_level = (level - x)
+        else:
+            character_class_level = level - x
 
-        print("this is the character level ")
+        if npcEnabled:
+            print(f'This is your number of npc levels: {x}')
+            print(f'This is your non-npc levels: {character_class_level}')
+            print(f'This is your number of npc levels: {x}',file=f)
+            print(f'This is your non-npc levels: {character_class_level}',file=f)
+        elif npcInput == 'n':
+            print('No NPC class levels')
+        else:
+            print('Invalid input. Please enter "y" or "n".')
+
+            # end of npc class level macro
+        print("this is the total character level ")
         print(level)
-        print("this is the character level ", file=f)
+        print("this is the total character level ", file=f)
         print(level, file=f)        
         feats = (5 + floor(level/2) + floor(level/5))
-       
+                    
         if path == 0:
             feats = feats - 0
         elif 7 > level >= 3 and path == 1:
@@ -88,21 +111,53 @@ def Roll_Level(name):
         print ("number of bonus ability scores from levels ", file=f)        
         print(extra_ability_score_levels, file=f)        
 
-        return level
+        return level                 
+        # end of npc level generator
 
-def chooseClass():
-    """
-    Gives the Character a random Class 
-    - Returns
-    - Class (String)
-    """
     
-    classes = []
 
-    for _class in data.classes: classes.append(_class)
-    
-    c_class = classes[randrange(0,len(classes))]
-    return c_class
+def chooseClass(name):
+    filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+    with open(filename, 'a') as f:
+        """
+        Gives the Character a random Class 
+        - Returns
+        - Class (String)
+        """
+        # Prompt the user to input BAB
+        BAB = input('Enter BAB (H/M/L): ').capitalize()
+        
+        # Prompt the user to select a region
+        userInput_region = input('Select region [input the number for the region you want] (1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, ...)').lower()
+        if userInput_region.isdigit() and int(userInput_region) in range(1, 10):
+            # make sure max range = the number of regions we have
+            region_index = int(userInput_region) - 1
+            region = regions[region_index]
+            print('You have selected this region: ' + region)
+            print('You have selected this region: ' + region, file=f)
+        else:
+            print('You have selected no region.')
+            print('You have selected no region.', file=f)
+
+        # Iterate through the classes and select the ones that meet the BAB requirement
+        classes = []
+        for class_name, class_info in data.classes.items():
+            #print(class_info.keys()) [ this is to see if the class info actually exists in the dictionary]
+            if region in class_info['regions']:
+                # Check BAB input + region input
+                if BAB == 'H' and class_info['BAB'] == 'high':
+                    classes.append(class_name)
+                elif BAB == 'M' and class_info['BAB'] == 'mid':
+                    classes.append(class_name)
+                elif BAB == 'L' and class_info['BAB'] == 'low':
+                    classes.append(class_name)
+                else:
+                    # Ignore classes that don't meet the BAB requirement
+                    continue
+
+        # Select a random class from the list of eligible classes
+        c_class = classes[randrange(0,len(classes))]
+        return c_class
 
 def chooseRace():
     """

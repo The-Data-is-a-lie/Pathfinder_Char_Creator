@@ -18,17 +18,15 @@ while isTrue:
 		print('===============================================================',file=f)
 		userInput = input('Create a new character? (y/n): ').lower()
 		isTrue = isBool(userInput)
+		#User selects the region to start from (if they want to)
+		
 
 		if isTrue:
-			print('===============================================================', file=f)
+			#end of region macro
 			CreateNewCharacter(character_name)
-			user_input = input("Do you want levels to be weighted lower (if n then they are weighted higher)? (y/n) ")
 			Roll_Level(character_name)
 
-				#need to devise a way to randomly pick good feats
-
-
-
+			#need to devise a way to randomly pick good feats
 			for i in range(1, 11):
 				if random.randint(1, 10000) == 10000:
 					print(f'Character is mythic {i}')
@@ -62,10 +60,5 @@ while isTrue:
 #make race and region toggeable (e.g. user_input region('Sojoria') -> leads to more likely classes (lower likelihood for magic casers ...) 
 
 #using a list of all regions, weight weapon groups
-
-#npc levels
-#Include a way to make it so we decide how many npc levels out of total level
-#make it toggled randomly (an option to have npc classes)
-#if they have npc levels make it a .75 chance to get npc levels per level
 
 #implement weights per region to decide what weapon a character uses

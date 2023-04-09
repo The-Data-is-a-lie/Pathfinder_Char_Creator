@@ -1,3 +1,6 @@
+# where you want characters to be from:
+regions = ['Tal-falko','Dolestan','Sojoria','Ieso']
+
 races = {
     'Human': {
         'first names': {
@@ -415,7 +418,8 @@ classes = {
         'hp': 8,
         'gold': '3d6',
         'BAB': 'mid',
-    'casting level': 'mid',
+        'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'mid',
         'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -426,8 +430,10 @@ classes = {
     'abilities': ['Aura of Evil', 'Cruelty', 'Detect Good', 'Smite Good', 'Touch of Corruption', 'Unholy Resilience'],
     'hp': 10,
     'gold': '5d6',
-    'BAB': 'high',
-    'casting level': 'none',
+    'BAB':    'high',
+
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -439,7 +445,9 @@ classes = {
     'hp': 6,
     'gold': '2d6',
     'BAB': 'low',
-    'casting level': 'high',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level':    'high',
+
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -450,8 +458,10 @@ classes = {
         'abilities': ['Rage', 'Unarmored Defense', 'Reckless Abandon'],
         'hp': 12,
         'gold': '3d6',
-        'BAB': 'high',
-    'casting level': 'none',
+        'BAB':    'high',
+
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
         'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -463,7 +473,8 @@ classes = {
     'hp': 8,
     'gold': '3d6',
     'BAB': 'mid',
-    'casting level': 'mid',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -474,8 +485,10 @@ classes = {
     'abilities': ['Blood Casting', 'Bloodline', 'Bloodrage', 'Fast Movement', 'Uncanny Dodge'],
     'hp': 10,
     'gold': '4d6',
-    'BAB': 'high',
-    'casting level': 'low',
+    'BAB':    'high',
+
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'low',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -486,8 +499,10 @@ classes = {
     'abilities': ['Unarmed Strike', 'Martial Flexibility'],
     'hp': 10,
     'gold': '3d6',
-    'BAB': 'high',
-    'casting level': 'none',
+    'BAB':    'high',
+
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
     'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -498,8 +513,10 @@ classes = {
     'abilities': ['Challenge', 'Order', 'Tactician'],
     'hp': 10,
     'gold': '5d6',
-    'BAB': 'high',
-    'casting level': 'none',
+    'BAB':    'high',
+
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -511,7 +528,9 @@ classes = {
     'hp': 8,
     'gold': '5d6',
     'BAB': 'mid',
-    'casting level': 'high',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level':    'high',
+
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -523,7 +542,9 @@ classes = {
         'hp': 8,
         'gold': '2d4',
         'BAB': 'mid',
-        'casting level': 'high',
+        'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level':    'high',
+
         'saving throws': ['Fortitude', 'Reflex', 'Will']
 },
 
@@ -534,8 +555,10 @@ classes = {
     'abilities': ['Bravery', 'Weapon Training'],
     'hp': 10,
     'gold': '5d4',
-    'BAB': 'high',
-    'casting level': 'none',
+    'BAB':    'high',
+
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
     'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -546,8 +569,10 @@ classes = {
     'abilities': ['Grit', 'Gunsmithing', 'Deeds'],
     'hp': 10,
     'gold': '4d6x10',
-    'BAB': 'high',
-    'casting level': 'none',
+    'BAB':    'high',
+
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
     'saving throws': ['Reflex', 'Will']
 },
 
@@ -559,7 +584,8 @@ classes = {
     'hp': 8,
     'gold': '2d6x10',
     'BAB': 'mid',
-    'casting level': 'mid',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'mid',
     'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -571,7 +597,8 @@ classes = {
     'hp': 8,
     'gold': '5d6',
     'BAB': 'mid',
-    'casting level': 'mid',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -583,7 +610,8 @@ classes = {
     'hp': 8,
     'gold': '3d6 x 10',
     'BAB': 'mid',
-    'casting level': 'mid',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -595,7 +623,8 @@ classes = {
     'hp': 8,
     'gold': '2d6 x 10',
     'BAB': 'mid',
-    'casting level': 'low',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'low',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -607,7 +636,8 @@ classes = {
     'hp': 8,
     'gold': '4d4 x 10',
     'BAB': 'mid',
-    'casting level': 'mid',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -618,8 +648,10 @@ classes = {
     'abilities': ['Flurry of Blows', 'Unarmed Strike', 'Evasion', 'Still Mind'],
     'hp': 10,
     'gold': '2d10',
-    'BAB': 'high',
-    'casting level': 'none',
+    'BAB':    'high',
+
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -631,7 +663,8 @@ classes = {
     'hp': 8,
     'gold': '5d4',
     'BAB': 'mid',
-    'casting level': 'none',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
     'saving throws': ['Reflex', 'Will']
 },
 
@@ -643,7 +676,8 @@ classes = {
     'hp': 8,
     'gold': '4d4',
     'BAB': 'mid',
-    'casting level': 'mid',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -655,7 +689,9 @@ classes = {
     'hp': 8,
     'gold': '2d6',
     'BAB': 'mid',
-    'casting level': 'high',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level':    'high',
+
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -666,8 +702,10 @@ classes = {
     'abilities': ['Aura of Good', 'Detect Evil', 'Smite Evil', 'Lay on Hands'],
     'hp': 10,
     'gold': '5d4',
-    'BAB': 'high',
-    'casting level': 'low',
+    'BAB':    'high',
+
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'low',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -679,7 +717,9 @@ classes = {
     'hp': 6,
     'gold': '2d6',
     'BAB': 'low',
-    'casting level': 'high',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level':    'high',
+
     'saving throws': ['Will']
 },
 
@@ -690,8 +730,10 @@ classes = {
     'abilities': ['Favored Enemy', 'Track', 'Wild Empathy'],
     'hp': 10,
     'gold': '5d6',
-    'BAB': 'high',
-    'casting level': 'low',
+    'BAB':    'high',
+
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'low',
     'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -703,7 +745,8 @@ classes = {
     'hp': 8,
     'gold': '4d6',
     'BAB': 'mid',
-    'casting level': 'none',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
     'saving throws': ['Reflex', 'Will']
 },
 
@@ -716,7 +759,9 @@ classes = {
     'hp': 6,
     'gold': '3d6',
     'BAB': 'low',
-    'casting level': 'high',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level':    'high',
+
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -728,7 +773,8 @@ classes = {
     'hp': 8,
     'gold': '3d6',
     'BAB': 'mid',
-    'casting level': 'mid',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -740,7 +786,8 @@ classes = {
     'hp': 8,
     'gold': '3d6',
     'BAB': 'mid',
-    'casting level': 'mid',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'mid',
     'saving throws': ['Fortitude', 'Reflex', 'Will']
 },
 
@@ -751,8 +798,10 @@ classes = {
     'abilities': ['Deeds', 'Panache'],
     'hp': 10,
     'gold': '3d6',
-    'BAB': 'high',
-    'casting level': 'none',
+    'BAB':    'high',
+
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
     'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -766,7 +815,8 @@ classes = {
     'hp': 8,
     'gold': '3d6',
     'BAB': 'mid',
-    'casting level': 'none',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
     'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -778,7 +828,8 @@ classes = {
     'hp': 8,
     'gold': '3d6',
     'BAB': 'mid',
-    'casting level': 'mid',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'mid',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -790,7 +841,9 @@ classes = {
     'hp': 6,
     'gold': '3d6',
     'BAB': 'low',
-    'casting level': 'high',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level':    'high',
+
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -802,7 +855,9 @@ classes = {
     'hp': 6,
     'gold': '3d6',
     'BAB': 'low',
-    'casting level': 'high',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level':    'high',
+
     'saving throws': ['Fortitude', 'Reflex']
 },
 
@@ -817,7 +872,8 @@ classes = {
     'hp': 8,
     'gold': '3d6x10',
     'BAB': 'mid',
-    'casting level': 'none',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
     'saving throws': ['Reflex', 'Will']
 },
 
@@ -829,7 +885,8 @@ classes = {
     'hp': 8,
     'gold': '2d10',
     'BAB': 'mid',
-    'casting level': 'none',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
     'saving throws': ['Fortitude', 'Will']
 },
 
@@ -840,7 +897,8 @@ classes = {
         'hp': 8,
         'gold': '3d6x10',
         'BAB': 'mid',
-    'casting level': 'none',
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
         'saving throws': ['Fortitude', 'Reflex']
     },
 
@@ -850,8 +908,10 @@ classes = {
         'skills': ["Acrobatics", "Autohypnosis", "Climb", "Craft", "Handle Animal", "Intimidate", "Jump", "Knowledge (engineering)", "Knowledge (history)", "Knowledge (nobility)", "Knowledge (tactics)", "Perception", "Perform", "Profession", "Ride", "Sense Motive", "Survival", "Swim", "Use Rope"],
         'hp': 12,
         'gold': '3d6x10',
-        'BAB': 'high',
-    'casting level': 'none',
+        'BAB':    'high',
+
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
         'saving throws': ['Fortitude', 'Will']
     },
 
@@ -861,8 +921,10 @@ classes = {
         'skills': ['Acrobatics', 'Appraise', 'Bluff', 'Climb', 'Craft', 'Diplomacy', 'Disable Device', 'Disguise', 'Escape Artist', 'Fly', 'Handle Animal', 'Heal', 'Intimidate', 'Knowledge (all)', 'Linguistics', 'Perception', 'Perform', 'Profession', 'Ride', 'Sense Motive', 'Sleight of Hand', 'Spellcraft', 'Stealth', 'Survival', 'Swim', 'Use Magic Device'],
         'hp': 10,
         'gold': '4d6x10',
-        'BAB': 'high',
-    'casting level': 'none',
+        'BAB':    'high',
+
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
         'saving throws': ['Fortitude', 'Will']
 
     },
@@ -873,8 +935,10 @@ classes = {
         'abilities': ['Zealous Focus', 'Zealous Surge', 'Sacred Might', 'Fervor', 'Divine Favor'],
         'hp': 10,
         'gold': '3d6x10',
-        'BAB': 'high',
-    'casting level': 'none',
+        'BAB':    'high',
+
+    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],
+   'casting level': 'none',
         'saving throws': ['Fortitude', 'Will']
 }
 }

@@ -1,5 +1,6 @@
 #Internal Imports
 from utils import data
+from utils.data import regions
 #from utils.data import archetypes
 from utils.util import RollStat, chooseClass,  appendAttr, appendAttrData, roll_dice#,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
 from utils.markdown import style
@@ -99,7 +100,7 @@ def CreateNewCharacter(name):
         new_char.c_class = classes[randrange(0,len(classes))]
 
         new_char.c_race = races[randrange(0,len(races))]
-        new_char.c_class = chooseClass()
+        new_char.c_class = chooseClass(name)
 
         forenames = []
         surnames = []
@@ -285,36 +286,37 @@ def CreateNewCharacter(name):
 
         chance = random.randint(1,100)
         chance_2 = random.randint(1,100)
-        
-        global path
-        if new_char.c_class != path_of_war_class:
-            if c_bab == 'high':
-                if chance >= 25:
-                    path = 1
-                    print('this is how many path of war abiities they take ')
-                    print(path)                    
-                    if chance_2 >= 75:
-                        path = 2
-                        print('this is how many path of war abiities they take ')
-                        print(path)
-                    return 'Path of War'
-            elif c_bab == 'mid':
-                if chance >= 50:
-                    path = 1
-                    print(path)
-                    if chance_2 >= 90:
-                        path = 2
-                        print('this is how many path of war abiities they take ')
-                        print(path)
-                    return 'Path of War'            
-
-                else:
-                    if chance >= 90:
+        if new_char.c_class != '':   
+            global path
+            path=0 
+            if new_char.c_class != path_of_war_class:
+                if c_bab == 'high':
+                    if chance >= 25:
                         path = 1
                         print('this is how many path of war abiities they take ')
+                        print(path)                    
+                        if chance_2 >= 75:
+                            path = 2
+                            print('this is how many path of war abiities they take ')
+                            print(path)
+                        return 'Path of War'
+                elif c_bab == 'mid':
+                    if chance >= 50:
+                        path = 1
                         print(path)
-                        return 'Path of War '
-                    
+                        if chance_2 >= 90:
+                            path = 2
+                            print('this is how many path of war abiities they take ')
+                            print(path)
+                        return 'Path of War'            
+
+                    else:
+                        if chance >= 90:
+                            path = 1
+                            print('this is how many path of war abiities they take ')
+                            print(path)
+                            return 'Path of War '
+                        
 
 
 
