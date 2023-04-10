@@ -2,7 +2,7 @@ RACE_ATTR=[
     'first names','last names','age',
     'height','weight','size','speed',
     'traits','languages', 'hair_colors',
-    'hair_types','eye_colors','appearance']
+    'hair_types','eye_colors','appearance', 'class']
 
 class RaceCreater:
     def __init__(self, attr=RACE_ATTR, ):

@@ -428,6 +428,9 @@ races = {
 }
 
 classes = {
+#object oriented programming -> have a race object which can store all available races -> subclass that race object to process certain races given certain conditions
+#classes have general class objects
+#it can have these same exact attributes, but then only take general things from that
 
     'Alchemist': {
         'weapons': ['Club', 'Dagger', 'Dart', 'Heavy Crossbow', 'Light Crossbow', 'Mace', 'Morningstar', 'Quarterstaff', 'Sickle', 'Sling', 'Spear'],
@@ -451,7 +454,6 @@ classes = {
     'hp': 10,
     'gold': '5d6',
     'BAB':    'high',
-
     'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
     'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level': 'none',
@@ -979,9 +981,9 @@ classes = {
         'gold': '4d6x10',
         'BAB':    'high',
 
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
-    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
-   'casting level': 'none',
+     'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+     'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
+     'casting level': 'none',
         'saving throws': ['Fortitude', 'Will']
 
     },
@@ -994,9 +996,9 @@ classes = {
         'gold': '3d6x10',
         'BAB':    'high',
 
-    'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
-    'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
-   'casting level': 'none',
+     'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
+     'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
+     'casting level': 'none',
         'saving throws': ['Fortitude', 'Will']
 }
 }
