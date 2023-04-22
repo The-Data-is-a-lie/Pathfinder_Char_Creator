@@ -84,7 +84,7 @@ def Roll_Level(name):
         print(level)
         print("this is the total character level ", file=f)
         print(level, file=f)        
-        feats = (5 + floor(level/2) + floor(level/5))
+        feats = (4 + floor(level/2) + floor(level/5))
                     
         if path == 0:
             feats = feats - 0
@@ -110,7 +110,6 @@ def Roll_Level(name):
         print(extra_ability_score_levels)
         print ("number of bonus ability scores from levels ", file=f)        
         print(extra_ability_score_levels, file=f)        
-
         return level                 
         # end of npc level generator
 
@@ -142,10 +141,13 @@ def chooseClass(name):
             print('You have selected no region.')
             print('You have selected no region.', file=f)
 
+        if userInput_race == 'Human':
+            print('Humans take the feat ')  
 
         # random.sample to select 2 random weapons
         weapons = random.sample(weapon_groups, 2)
         print(f'weapons not dependent on region {weapons}')
+        print(f'weapons not dependent on region {weapons}', file=f)
         # loop through the random abilities and print out each element
         for reg in regions:
                 if reg == region:

@@ -30,14 +30,17 @@ while isTrue:
 			for i in range(1, 11):
 				if random.randint(1, 10000) == 10000:
 					print(f'Character is mythic {i}')
+					print(f'Character is mythic {i}',file=f)					
 					for j in range(2, 11):
 						roll = random.randint(1, 100)
 						if roll >= 90:
 							print(f'Character is mythic {j}')
+							print(f'Character is mythic {j}',file=f)
 						else:
 							break
 				else:
 					print('didnt get mythic ')
+					print('didnt get mythic ', file=f)
 					break			
 
 			if random.randint(1,100) == 100:
