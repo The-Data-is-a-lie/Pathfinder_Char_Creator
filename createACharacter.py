@@ -221,7 +221,7 @@ def CreateNewCharacter(name):
         print(f'Skills' + '\n', new_char.c_skills)
 
         # Printing out additional 1-4 random class
-        skill_list = random.sample(skills, 4)
+        skill_list = random.choices(skills, k=4)
         print(f'Specialized Skills {skill_list}')
         print(f'Specialized Skills {skill_list}', file=f)
 
