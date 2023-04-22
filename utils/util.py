@@ -2,7 +2,7 @@ from random import randrange
 from math import floor
 import random
 from utils import data
-from utils.data import regions, races #classes
+from utils.data import regions, weapon_groups_region, weapon_groups, archetypes
 
 def RollStat():
     """
@@ -141,6 +141,19 @@ def chooseClass(name):
         else:
             print('You have selected no region.')
             print('You have selected no region.', file=f)
+
+
+        # random.sample to select 2 random weapons
+        weapons = random.sample(weapon_groups, 2)
+        print(f'weapons not dependent on region {weapons}')
+        # loop through the random abilities and print out each element
+        for reg in regions:
+                if reg == region:
+                    weaponz = random.choice(weapon_groups_region[reg])
+                    print(f"Weapon for {reg}: {weaponz}")
+                    print(f"Weapon for {reg}: {weaponz}", file=f)  
+
+
 
         # Iterate through the classes and select the ones that meet the BAB requirement
         classes = []

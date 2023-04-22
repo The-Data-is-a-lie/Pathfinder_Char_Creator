@@ -1,8 +1,8 @@
 #Internal Imports
 from utils import data
-from utils.data import regions, weapon_groups_region, archetypes
+from utils.data import regions, weapon_groups_region, archetypes, skills
 #from utils.data import archetypes
-from utils.util import RollStat, chooseClass,  appendAttr, appendAttrData, roll_dice#,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
+from utils.util import  RollStat, chooseClass,  appendAttr, appendAttrData, roll_dice#,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
 from utils.markdown import style
 import random
 
@@ -43,7 +43,6 @@ archetypes = {
 #
 #
 }
-
 
 
 # Base Character Traits
@@ -220,7 +219,14 @@ def CreateNewCharacter(name):
 
         print(f'Languages' + '\n', new_char.c_langs)
         print(f'Skills' + '\n', new_char.c_skills)
+
+        # Printing out additional 1-4 random class
+        skill_list = random.sample(skills, 4)
+        print(f'Specialized Skills {skill_list}')
+        print(f'Specialized Skills {skill_list}', file=f)
+
         print(f'Traits' + '\n', new_char.c_racial_traits)
+
 
 # comment this out later
 
@@ -270,16 +276,10 @@ def CreateNewCharacter(name):
             print(f'(mannerisms):',manners)
             print(f'(mannerisms):',manners, file=f)
 
-        # random.sample to select 2 random weapons
-        weapons = random.sample(weapon_groups, 2)
-        print(f'weapons not weight by region {weapons}')
-        # loop through the random abilities and print out each element
-        for region in regions:
-            weaponz = random.choice(weapon_groups_region[region])
-            print(f"Weapon for {region}: {weaponz}")
-            print(f"Weapon for {region}: {weaponz}", file=f)        
+        
+      
 
-                # Copy + paste so it prints to the terminal as well as the output file
+                
                 
        
 
