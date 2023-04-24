@@ -166,7 +166,8 @@ def chooseClass(name):
             f_name = random.choice(f_names)
             l_names = last_names_region[region]
             l_name = random.choice(l_names) 
-            print(f"Name for {region}: {f_name} {l_name}")            
+            print(f"Name for {region}: {f_name} {l_name}")    
+            print(f"Name for {region}: {f_name} {l_name}", file=f)        
 
 
         # Iterate through the classes and select the ones that meet the BAB requirement

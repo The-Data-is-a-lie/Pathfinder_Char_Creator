@@ -188,17 +188,7 @@ def CreateNewCharacter(name):
         weapon_groups = []
         new_char.c_weapon_groups = appendAttrData(weapon_groups, data.weapon_groups)
 
-        match new_char.c_race:
-            case 'Half-Orc': print(f'Name: {new_char.c_name} ({new_char.c_race} {new_char.c_class})\n', file=f)
-            case 'Half-Orc': print(f'Name: {new_char.c_name} ({new_char.c_race} {new_char.c_class})\n')            
 
-            case 'Elf': print(f'Name: {new_char.c_name} {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n', file=f)
-            case 'Elf': print(f'Name: {new_char.c_name} {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n')            
-
-            case 'Dragonborn': print(f'Name: {new_char.c_name} of the clan {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n', file=f)
-            case 'Dragonborn': print(f'Name: {new_char.c_name} of the clan {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n')
-
-            case _: print(f'Name: {new_char.c_name} {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n', file=f)
             
 
     
