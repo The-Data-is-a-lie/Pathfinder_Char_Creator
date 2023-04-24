@@ -1,6 +1,6 @@
 #Internal Imports
 from utils import data
-from utils.data import regions, weapon_groups_region, archetypes, skills
+from utils.data import regions, weapon_groups_region, archetypes, skills, evil_deities, good_deities, neutral_deities, languages
 #from utils.data import archetypes
 from utils.util import  RollStat, chooseClass,  appendAttr, appendAttrData, roll_dice#,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
 from utils.markdown import style
@@ -9,7 +9,7 @@ import random
 #Extension Modules:
 from modules.extraDetail import ExtraDetail
 from modules.currency import Currency
-from modules.deities import Deities
+
 
 #External Imports
 from random import randrange
@@ -178,8 +178,6 @@ def CreateNewCharacter(name):
         appearances = []
         new_char.c_appearance = appendAttrData(appearances, data.appearance)
 
-        deityList = []
-        new_char.c_deity = appendAttrData(deityList, data.deities)
 
         Alignment = []
         new_char.c_alignment = appendAttrData(Alignment, data.alignment)
@@ -203,7 +201,7 @@ def CreateNewCharacter(name):
             case _: print(f'Name: {new_char.c_name} {new_char.c_surname} ({new_char.c_race} {new_char.c_class})\n', file=f)
             
 
-
+    
         
         print(f'Strength: {new_char.c_str}\nDexterity: {new_char.c_dex}', file=f)
         print(f'Constitution: {new_char.c_const} \nIntelligence: {new_char.c_int}', file=f)
@@ -230,15 +228,34 @@ def CreateNewCharacter(name):
 
 # comment this out later
 
-        print(f'Deities' + '\n', new_char.c_deity)
         print(f'Alignment' + '\n', new_char.c_alignment)
 #        print(f'hair_colors' + '\n', new_char.c_hair_colors)
 #        print(f'hair_types' + '\n', new_char.c_langs)
 #        print(f'eye_colors' + '\n', new_char.c_skills)
 #        print(f'appearance' + '\n', new_char.c_racial_traits)
 
-        print(f'Deities' + '\n', new_char.c_deity, file=f)
         print(f'Alignment' + '\n', new_char.c_alignment, file=f)
+
+            #adding a process where we select deity based off of alignment
+
+
+        if 'good' in new_char.c_alignment:
+            chosen_deity = random.choice(good_deities)
+            print(f"Deity \n {chosen_deity}",file=f)
+            print(f"Deity \n {chosen_deity}") 
+        elif 'evil' in new_char.c_alignment:
+            chosen_deity = random.choice(evil_deities)            
+            print(f"Deity \n {chosen_deity}",file=f)
+            print(f"Deity \n {chosen_deity}")
+        else:
+            chosen_deity = random.choice(neutral_deities)            
+            print(f"Deity \n {chosen_deity}",file=f)
+            print(f"Deity \n {chosen_deity}")
+
+        random_number = random.randint(1,5)
+        extra_lang = random.sample(languages,k=random_number)
+        print(f"These are the extra languages the character knows: {extra_lang}")
+        print(f"These are the extra languages the character knows: {extra_lang}", file=f)
 #        print(f'hair_colors' + '\n', new_char.c_hair_colors)
 #        print(f'hair_types' + '\n', new_char.c_langs)
 #        print(f'eye_colors' + '\n', new_char.c_skills)
@@ -357,9 +374,9 @@ def CreateNewCharacter(name):
                 print(style.BOLD+'Currency Module:\n'+style.END)
                 Currency()
                 
-            case 'modules.deities':
-                print(style.BOLD+'Deities Module:\n'+style.END)
-                Deities()
+            # case 'modules.deities':
+            #     print(style.BOLD+'Deities Module:\n'+style.END)
+            #     Deities()
 
             case _:
                 pass

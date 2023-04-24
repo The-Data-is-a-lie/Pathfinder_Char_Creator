@@ -3,6 +3,8 @@ from math import floor
 import random
 from utils import data
 from utils.data import regions, weapon_groups_region, weapon_groups, archetypes
+import json
+#from utils.race import race
 
 def RollStat():
     """
@@ -117,7 +119,7 @@ def Roll_Level(name):
 
 def chooseClass(name):
     filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
-    with open(filename, 'a') as f:
+    with open(filename, 'a') as f, open("utils/race.json", "r") as b, open("first_names_regions.json", "r") as a, open("first_names_regions.json", "r") as g:
         """
         Gives the Character a random Class 
         - Returns
@@ -142,7 +144,7 @@ def chooseClass(name):
             print('You have selected no region.', file=f)
 
         if userInput_race == 'Human':
-            print('Humans take the feat ')  
+            print('Humans get an extra feat ')  
 
         # random.sample to select 2 random weapons
         weapons = random.sample(weapon_groups, 2)
@@ -155,6 +157,16 @@ def chooseClass(name):
                     print(f"Weapon for {reg}: {weaponz}")
                     print(f"Weapon for {reg}: {weaponz}", file=f)  
 
+        
+        first_names_region = json.load(a)
+        last_names_region = json.load(g)   
+
+        if region in first_names_region:
+            f_names = first_names_region[region]
+            f_name = random.choice(f_names)
+            l_names = last_names_region[region]
+            l_name = random.choice(l_names) 
+            print(f"Name for {region}: {f_name} {l_name}")            
 
 
         # Iterate through the classes and select the ones that meet the BAB requirement
@@ -172,6 +184,33 @@ def chooseClass(name):
                 else:
                     # Ignore classes that don't meet the BAB requirement
                     continue
+
+        # added this in to print out ability score adjustments per race
+        race_data = json.load(b)
+        if userInput_race in race_data:
+            ability_scores = race_data[userInput_race]["ability scores"]
+            print(f"Ability Scores for {userInput_race}")
+            print(f"Ability Scores for {userInput_race}", file=f)
+            
+            for score, value in ability_scores.items():
+                print(f"{score}: {value}")
+
+         #added this in to print out a random age for the character
+            if "age" in race_data[userInput_race]:
+                age = race_data[userInput_race]["age"]
+            if isinstance(age[1], str):
+                left, right = map(int, age[1].split('d'))
+                age_roll = sum([random.randint(1, right) for i in range(left)]) + age[0]
+            else:
+                age_roll = random.randint(age[0], age[1])
+                left = age[0]
+            age_roll += left
+            print(f"Age: {age_roll}")
+            print(f"Age: {age_roll}", file=f)
+           
+ 
+        
+        
 
         # Select a random class from the list of eligible classes
         print(f'These are the classes available to get {classes}')

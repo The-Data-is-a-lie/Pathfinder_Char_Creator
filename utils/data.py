@@ -50,11 +50,54 @@ weapon_groups_region = {
     'Sojoria': ['Swords', 'Bows', 'Wands'],
     'Ieso': ['Axes', 'Maces', 'Spears']
 }
+
+
 #add all of forests options
 languages = ['Abyssal', 'Aklo', 'Aquan', 'Auran', 'Boggard', 'Celestial', 'Common', 'Cyclops', 'Dark Folk', 'Draconic', 'Druidic', 'Drow Sign Language', 'Dwarven', 'Elven', 'Giant', 'Gnoll', 'Gnome', 'Goblin', 'Grippli', 'Halfling', 'Ignan', 'Infernal', 'Kelish', 'Orc', 'Protean', 'Sphinx', 'Sylvan', 'Tengu', 'Terran', 'Treant', 'Undercommon', 'Vegepygmy', 'Vishkanya', 'Wayang']
 #add all of forests options
-deities = ['Abadar', 'Achaekek', 'Alseta', 'Ameiko Kaijitsu', 'Apsu', 'Aroden', 'Asmodeus', 'Black Butterfly, The', 'Brigh', 'Calistria', 'Cayden Cailean', 'Chaldira Zuzaristan', 'Chamidu', 'Daikitsu', 'Dahak', 'Desna', 'Elion', 'Erastil', 'Ghlaunder', 'Gorum', 'Gozreh', 'Groetus', 'Gruhastha, The', 'Hanspur', 'Hei Feng', 'Iomedae', 'Irori', 'Jaidi', 'Jingxi', 'Kabriri', 'Kazutal', 'Kelizandri', 'Ketephys', 'Kofusachi', 'Lama, The', 'Lamashtu', 'Magrim', 'Milani', 'Minderhal', 'Naderi', 'Nalinivati', 'Nethys', 'Nivi Rhombodazzle', 'Norgorber', 'Old-Mage Jatembe', 'Oras', 'Orcus', 'Pharasma', 'Qi Zhong', 'Ragathiel', 'Razmir', 'Rovagug', 'Sarenrae', 'Sivanah', 'Sivanah, The', 'Skrymir', 'Sokhna', 'Sun Wukong', 'Thamir Gixx', 'Thremyr', 'Torag', 'Urgathoa', 'Uskyeria', 'Wadjet', 'Weydan', 'Ydersius', 'Yuelral', 'Zagnexapan', 'Zargos', 'Zon-Kuthon' ]
+good_deities = [ "Abadar",    "Cayden Cailean",    "Desna",    "Erastil",    "Iomedae",    "Irori",    "Sarenrae",    "Shelyn",    "Torag",    "Amaznen",    "Angradd",    "Apsu",    "Chaldira Zuzaristan",    "Chamidu",    "Chevaghol",    "Dorasharn",    "Eritrice",    "Falayna",    "Ghenshau",    "Green Faith",    "Gruhastha",    "Hathor",    "Hei Feng",    "Horus",    "Kofusachi",    "Kurgess",    "Lady Nanbyo",    "Lysianassa",    "Milani",    "Nalinivati",    "Nethys",    "Norgorber",    "Osiris",    "Pharasma",    "Qi Zhong",    "Ragdya",    "Razmir",    "Sivanah",    "Spirits of the Land",    "Sulak",    "Sun Wukong",    "Tsukiyo",    "Wadjet",    "Yamatsumi",    "Ydersius",    "Zon-Kuthon"]
+neutral_deities = ["Apsu",
+"Aroden",
+"Besmara",
+"Brigh",
+"Calistria",
+"Cayden Cailean",
+"Desna",
+"Erastil",
+"Ghlaunder",
+"Gozreh",
+"Grandmother Spider",
+"Groteus",
+"Iomedae",
+"Irori",
+"Lamashtu",
+"Nethys",
+"Norgorber",
+"Pharasma",
+"Qi Zhong",
+"Sarenrae",
+"Shelyn",
+"Torag",
+"Urgathoa",
+"Wadjet",
+"Ydersius",
+"Zyphus"]
+evil_deities = ["Asmodeus",
+"Baphomet",
+"Dahak",
+"Droskar",
+"Ghlaunder",
+"Gorum",
+"Groetus",
+"Lamashtu",
+"Norgorber",
+"Rovagug",
+"Szuriel",
+"Urgathoa",
+"Zon-Kuthon"]
+#all_deities = ['Abadar', 'Achaekek', 'Alseta', 'Ameiko Kaijitsu', 'Apsu', 'Aroden', 'Asmodeus', 'Black Butterfly, The', 'Brigh', 'Calistria', 'Cayden Cailean', 'Chaldira Zuzaristan', 'Chamidu', 'Daikitsu', 'Dahak', 'Desna', 'Elion', 'Erastil', 'Ghlaunder', 'Gorum', 'Gozreh', 'Groetus', 'Gruhastha, The', 'Hanspur', 'Hei Feng', 'Iomedae', 'Irori', 'Jaidi', 'Jingxi', 'Kabriri', 'Kazutal', 'Kelizandri', 'Ketephys', 'Kofusachi', 'Lama, The', 'Lamashtu', 'Magrim', 'Milani', 'Minderhal', 'Naderi', 'Nalinivati', 'Nethys', 'Nivi Rhombodazzle', 'Norgorber', 'Old-Mage Jatembe', 'Oras', 'Orcus', 'Pharasma', 'Qi Zhong', 'Ragathiel', 'Razmir', 'Rovagug', 'Sarenrae', 'Sivanah', 'Sivanah, The', 'Skrymir', 'Sokhna', 'Sun Wukong', 'Thamir Gixx', 'Thremyr', 'Torag', 'Urgathoa', 'Uskyeria', 'Wadjet', 'Weydan', 'Ydersius', 'Yuelral', 'Zagnexapan', 'Zargos', 'Zon-Kuthon' ]
 alignment = ["Chaotic good", "Chaotic neutral", "Chaotic evil", "Lawful good", "Lawful neutral", "Lawful evil", "Neutral good", "True Neutral", "Neutral evil"]
+
 hair_colors = ['Black', 'Brown', 'Blond', 'Red', 'White', 'Grey']
 hair_types = ['Curly', 'Wavy', 'Straight', 'Flowing', 'Frizzy', 'Spiky', 'Touseled', 'Unkempt']
 eye_colors = ['Amber', 'Blue', 'Brown', 'Grey', 'Green', 'Hazel']
@@ -465,6 +508,11 @@ races = {
         'languages': ['Catfolk', 'Common']
     }
 
+# store this into a TSV file (or CSV)
+# we can have a regex expression to tell the intrepreter thing what we want to change
+# it will find the location of 
+# uses the json format (very easy to parse)
+# get out of the .py and get into a text file, then load the .txt file into the python program and use that to add, modify things to the .txt file
 
 }
 
@@ -804,7 +852,6 @@ classes = {
     'regions': ['Tal-falko','Dolestan','Sojoria','Ieso'],       
     'race': ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir'], 
    'casting level':    'high',
-
     'saving throws': ['Will']
 },
 

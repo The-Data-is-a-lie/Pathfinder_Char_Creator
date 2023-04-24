@@ -46,7 +46,7 @@ while isTrue:
 			if random.randint(1,100) == 100:
 				print('character is extremely lucky, make it a luck build rather than everything else ')
 				print('character is extremely lucky, make it a luck build rather than everything else ', file=f)				
-			elif random.randint(1,100) == 10:
+			elif random.randint(1,100) <= 5:
 				print('you need to take negative luck feats as well as normal feats ')
 				print('you need to take negative luck feats as well as normal feats ', file = f)
 				
@@ -56,8 +56,10 @@ while isTrue:
 			print('Exiting Character Generator...')
 			break
 
+# Add Extra race stats (Tortugan, Loxophant, ...)
+# Have forest give me extra race info (Tortugan, Loxophant, ...)
+# 
 
-
-										#notes
+								#notes
 #Might not do below:
 #using a list of all regions, weight weapon groups

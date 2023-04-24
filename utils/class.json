@@ -1,0 +1,570 @@
+{
+
+        "Alchemist": {
+            "weapons": ["Club", "Dagger", "Dart", "Heavy Crossbow", "Light Crossbow", "Mace", "Morningstar", "Quarterstaff", "Sickle", "Sling", "Spear"],
+            "armor": ["Padded", "Leather", "Studded Leather", "Chain Shirt"],
+            "skills": ["Appraise", "Craft", "Fly", "Heal", "Knowledge (arcana)", "Knowledge (nature)", "Perception", "Profession", "Sleight of Hand", "Spellcraft", "Survival", "Use Magic Device"],
+            "abilities": ["Alchemy", "Bomb", "Mutagen", "Poison Resistance", "Throw Anything"],
+            "hp": 8,
+            "gold": "3d6",
+            "BAB": "mid",
+            "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+            "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+            "casting level": "mid",
+            "saving throws": ["Fortitude", "Reflex"]
+    },
+    
+    "Anti-Paladin": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Half Plate", "Full Plate"],
+        "skills": ["Bluff", "Diplomacy", "Intimidate", "Perception", "Ride", "Sense Motive"],
+        "abilities": ["Aura of Evil", "Cruelty", "Detect Good", "Smite Good", "Touch of Corruption", "Unholy Resilience"],
+        "hp": 10,
+        "gold": "5d6",
+        "BAB":    "high",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "casting level": "none",
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+    "Arcanist": {
+        "weapons": ["Club", "Dagger", "Heavy Crossbow", "Light Crossbow", "Quarterstaff"],
+        "armor": ["Padded", "Leather"],
+        "skills": ["Appraise", "Craft", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)", "Linguistics", "Spellcraft"],
+        "abilities": ["Arcane Reservoir", "Arcanist Exploits", "Cantrips", "Consume Spells", "Metamagic Knowledge"],
+        "hp": 6,
+        "gold": "2d6",
+        "BAB": "low",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level":    "high",
+    
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+        "Barbarian": {
+            "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+            "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Half Plate"],
+            "skills": ["Acrobatics", "Animal Handling", "Athletics", "Intimidate", "nature", "Perception", "Survival"],
+            "abilities": ["Rage", "Unarmored Defense", "Reckless Abandon"],
+            "hp": 12,
+            "gold": "3d6",
+            "BAB":    "high",
+    
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "none",
+            "saving throws": ["Fortitude", "Reflex"]
+    },
+    
+        "Bard": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],    
+        "armor": ["Padded", "Leather", "Studded Leather"],
+        "skills": ["Acrobatics", "Appraise", "Bluff", "Climb", "Diplomacy", "Disguise", "Escape Artist", "Intimidate", "Knowledge (all skills taken individually)", "Linguistics", "Perception", "Perform (all skills taken individually)", "Sense Motive", "Sleight of Hand", "Spellcraft", "Stealth", "Use Magic Device"],
+        "abilities": ["Bardic Knowledge", "Bardic Performance"],
+        "hp": 8,
+        "gold": "3d6",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "mid",
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+    "Bloodrager": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["Light Armor", "Medium Armor", "Shields"],
+        "skills": ["Acrobatics", "Climb", "Craft", "Handle Animal", "Intimidate", "Knowledge (arcana)", "Perception", "Ride", "Spellcraft", "Survival", "Swim"],
+        "abilities": ["Blood Casting", "Bloodline", "Bloodrage", "Fast Movement", "Uncanny Dodge"],
+        "hp": 10,
+        "gold": "4d6",
+        "BAB":    "high",
+    
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "low",
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+    "Brawler": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["Padded", "Leather", "Studded Leather", "Chain Shirt", "Breastplate"],
+        "skills": ["Acrobatics", "Climb", "Escape Artist", "Intimidate", "Knowledge (dungeoneering)", "Knowledge (local)", "Profession", "Sense Motive", "Survival", "Swim"],
+        "abilities": ["Unarmed Strike", "Martial Flexibility"],
+        "hp": 10,
+        "gold": "3d6",
+        "BAB":    "high",
+    
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "none",
+        "saving throws": ["Fortitude", "Reflex"]
+    },
+    
+    "Cavalier": {
+        "weapons": ["Lance", "Longsword", "Morningstar", "Ranseur", "Scimitar", "Shortsword", "Throwing Axe", "Throwing Hammer"],
+        "armor": ["Padded", "Leather", "Studded Leather", "Chain Shirt", "Breastplate", "Ring Mail", "Scale Mail", "Chainmail", "Splint Mail", "Banded Mail", "Half Plate", "Full Plate"],
+        "skills": ["Handle Animal", "Intimidate", "Ride", "Survival"],
+        "abilities": ["Challenge", "Order", "Tactician"],
+        "hp": 10,
+        "gold": "5d6",
+        "BAB":    "high",
+    
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "none",
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+    "Cleric": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["Padded", "Leather", "Studded Leather", "Chain Shirt", "Scale Mail", "Breastplate", "Splint Mail", "Banded Mail", "Half Plate", "Full Plate"],
+        "skills": ["Appraise", "Craft (all skills taken individually)", "Diplomacy", "Heal", "Knowledge (arcana)", "Knowledge (history)", "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)", "Linguistics", "Profession (all skills taken individually)", "Sense Motive", "Spellcraft"],
+        "abilities": ["Channel Energy", "Spontaneous Casting"],
+        "hp": 8,
+        "gold": "5d6",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level":    "high",
+    
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+        "Druid": {
+            "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+            "armor": ["Padded", "Leather", "Studded Leather"],
+            "skills": ["Craft (Alchemy)", "Handle Animal", "Heal", "Knowledge (Geography)", "Knowledge (Nature)", "Perception", "Spellcraft", "Survival"],
+            "abilities": ["Spontaneous Casting (Summon Nature’s Ally)", "Nature Sense", "Wild Empathy", "Woodland Stride", "Trackless Step", "Resist Nature’s Lure", "Wild Shape"],
+            "hp": 8,
+            "gold": "2d4",
+            "BAB": "mid",
+            "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level":    "high",
+    
+            "saving throws": ["Fortitude", "Reflex", "Will"]
+    },
+    
+     "Fighter": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Banded Mail", "Half-Plate", "Full Plate"],
+        "skills": ["Climb", "Handle Animal", "Intimidate", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Profession", "Ride", "Survival", "Swim"],
+        "abilities": ["Bravery", "Weapon Training"],
+        "hp": 10,
+        "gold": "5d4",
+        "BAB":    "high",
+    
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "none",
+        "saving throws": ["Fortitude", "Reflex"]
+    },
+    
+    "Gunslinger": {
+        "weapons": ["Pistol", "Musket", "Pepperbox", "Blunderbuss"],
+        "armor": ["Padded", "Leather"],
+        "skills": ["Acrobatics", "Bluff", "Craft (alchemy)", "Intimidate", "Perception", "Profession (gunsmith)", "Ride", "Sleight of Hand", "Survival"],
+        "abilities": ["Grit", "Gunsmithing", "Deeds"],
+        "hp": 10,
+        "gold": "4d6x10",
+        "BAB":    "high",
+    
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "none",
+        "saving throws": ["Reflex", "Will"]
+    },
+    
+    "Hunter": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate"],
+        "skills": ["Climb", "Craft", "Handle Animal", "Heal", "Intimidate", "Knowledge (dungeoneering)", "Knowledge (geography)", "Knowledge (nature)", "Perception", "Profession", "Ride", "Spellcraft", "Stealth", "Survival", "Swim"],
+        "abilities": ["Animal Companion", "Nature Training", "Teamwork Feat"],
+        "hp": 8,
+        "gold": "2d6x10",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "mid",
+        "saving throws": ["Fortitude", "Reflex"]
+    },
+    
+    "Inquisitor": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["Padded", "Leather", "Studded Leather", "Chain Shirt", "Scale Mail", "Breastplate", "Splint Mail", "Banded Mail", "Half Plate"],
+        "skills": ["Bluff", "Climb", "Diplomacy", "Disguise", "Heal", "Intimidate", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (nature)", "Knowledge (planes)", "Knowledge (religion)", "Perception", "Ride", "Sense Motive", "Spellcraft", "Stealth", "Survival", "Swim"],
+        "abilities": ["Judgment", "Monster Lore", "Solo Tactics", "Track", "Stern Gaze", "Cunning Initiative", "Discern Lies"],
+        "hp": 8,
+        "gold": "5d6",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "mid",
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+    "Magus": {
+        "weapons": ["Club", "Dagger", "Heavy Crossbow", "Javelin", "Light Crossbow","Longsword", "Morningstar", "Quarterstaff", "Rapier", "Scimitar","Short Sword", "Spear"],
+        "armor": ["None", "Light"],
+        "skills": ["Acrobatics", "Bluff", "Craft", "Intimidate", "Knowledge (arcana)","Knowledge (dungeoneering)", "Knowledge (planes)", "Profession", "Spellcraft", "Use Magic Device"],
+        "abilities": ["Spell Combat", "Spellstrike"],
+        "hp": 8,
+        "gold": "3d6 x 10",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "mid",
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+    "Medium": {
+        "weapons": ["All Simple Weapons"],
+        "armor": ["Light", "Medium", "Heavy", "Shields"],
+        "skills": ["Appraise", "Craft", "Diplomacy", "Handle Animal", "Heal", "Knowledge (history)", "Knowledge (planes)", "Knowledge (religion)", "Perception", "Ride", "Sense Motive", "Spellcraft", "Survival"],
+        "abilities": ["Spirit", "Trance", "Shared Seance"],
+        "hp": 8,
+        "gold": "2d6 x 10",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "low",
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+    "Mesmerist": {
+        "weapons": ["Club", "Crossbow, Light", "Dagger", "Hand Crossbow", "Heavy Crossbow","Rapier", "Short Sword"],
+        "armor": ["Light"],
+        "skills": ["Bluff", "Diplomacy", "Disguise", "Escape Artist", "Intimidate", "Knowledge (arcana)", "Knowledge (local)", "Perception", "Perform", "Sense Motive", "Sleight of Hand", "Spellcraft", "Use Magic Device"],
+        "abilities": ["Hypnotic Stare", "Mesmeric Mirror", "Bold Stare"],
+        "hp": 8,
+        "gold": "4d4 x 10",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "mid",
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+    "Unchained_Monk": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["None"],
+        "skills": ["Acrobatics", "Climb", "Craft", "Escape Artist", "Intimidate", "Knowledge (history)", "Knowledge (religion)", "Perception", "Perform", "Profession", "Ride", "Sense Motive", "Stealth", "Swim"],
+        "abilities": ["Flurry of Blows", "Unarmed Strike", "Evasion", "Still Mind"],
+        "hp": 10,
+        "gold": "2d10",
+        "BAB":    "high",
+    
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "none",
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+    "Ninja": {
+        "weapons": ["All Simple Weapons", "Kama", "Nunchaku", "Sai", "Shuriken","Siangham"],
+        "armor": ["Padded", "Leather"],
+        "skills": ["Acrobatics", "Bluff", "Climb", "Craft", "Diplomacy", "Disguise","Escape Artist", "Intimidate", "Knowledge (local)", "Linguistics", "Perception","Perform", "Profession", "Sense Motive", "Sleight of Hand", "Stealth", "Swim","Use Magic Device"],
+        "abilities": ["Ninjutsu Tricks", "Ki Pool", "No Trace"],
+        "hp": 8,
+        "gold": "5d4",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "none",
+        "saving throws": ["Reflex", "Will"]
+    },
+    
+    "Occultist": {
+        "weapons": ["Blowgun", "Club", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dart", "Falchion", "Gauntlet", "Gauntlet, Spiked","Glaive", "Greataxe", "Greatclub", "Greatsword", "Handaxe", "Javelin","Kukri", "Longbow", "Longspear", "Longsword", "Morningstar","Nunchaku", "Quarterstaff", "Rapier", "Sap", "Scimitar", "Shortbow","Shortspear", "Shuriken", "Sickle", "Sling", "Spear", "Sword, Short","Trident", "Unarmed Strike", "Warhammer", "Whip"],
+        "armor": ["Padded", "Leather", "Studded Leather", "Chain Shirt", "Hide", "Scale Mail", "Chainmail", "Breastplate", "Splint Mail", "Banded Mail", "Half-Plate", "Full Plate"],
+        "skills": ["Appraise", "Bluff", "Climb", "Craft", "Diplomacy", "Disable Device", "Disguise", "Escape Artist", "Fly", "Heal", "Intimidate", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)", "Linguistics", "Perception", "Perform", "Profession", "Sense Motive", "Sleight of Hand", "Spellcraft", "Stealth", "Survival", "Swim", "Use Magic Device"],
+        "abilities": ["Implement Mastery", "Mental Focus", "Object Reading", "Psychic Aura", "Shift Focus"],
+        "hp": 8,
+        "gold": "4d4",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "mid",
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+    "Oracle": {
+        "weapons": ["Club", "Dagger", "Heavy Mace", "Javelin", "Light Crossbow","Quarterstaff", "Shortspear", "Sickle", "Sling", "Unarmed Strike"],
+        "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Half Plate", "Ring Mail", "Chainmail"],
+        "skills": ["Craft", "Diplomacy", "Heal", "Knowledge (history)", "Knowledge (planes)", "Linguistics", "Profession", "Sense Motive", "Spellcraft"],
+        "abilities": ["Orisons", "Mystery", "Revelation", "Curse"],
+        "hp": 8,
+        "gold": "2d6",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level":    "high",
+    
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+      "Paladin": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Banded Mail", "Half-Plate", "Full Plate"],
+        "skills": ["Diplomacy", "Handle Animal", "Heal", "Knowledge (nobility)", "Knowledge (religion)", "Profession", "Ride", "Sense Motive"],
+        "abilities": ["Aura of Good", "Detect Evil", "Smite Evil", "Lay on Hands"],
+        "hp": 10,
+        "gold": "5d4",
+        "BAB":    "high",
+    
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "low",
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+    "Psychic": {
+        "weapons": ["Blowgun", "Crossbow, Heavy", "Crossbow, Light", "Dagger","Dart", "Dart, Jolting", "Falchion", "Hand Crossbow", "Kama","Longbow", "Longspear", "Morningstar", "Net", "Quarterstaff","Rapier", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Sickle", "Spear", "Sword, Short", "Trident", "Unarmed Strike"],
+        "armor": ["Light Armor"],
+        "skills": ["Appraise", "Autohypnosis", "Craft", "Fly", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (psionics)", "Knowledge (religion)", "Linguistics", "Perception", "Profession", "Sense Motive", "Spellcraft", "Use Magic Device"],
+        "abilities": ["Phrenic Amplifications", "Phrenic Pool", "Discipline"],
+        "hp": 6,
+        "gold": "2d6",
+        "BAB": "low",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level":    "high",
+        "saving throws": ["Will"]
+    },
+    
+    "Ranger": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Half-Plate"],
+        "skills": ["Climb", "Handle Animal", "Heal", "Intimidate", "Knowledge (dungeoneering)", "Knowledge (geography)", "Knowledge (nature)", "Perception", "Ride", "Stealth", "Survival", "Swim"],
+        "abilities": ["Favored Enemy", "Track", "Wild Empathy"],
+        "hp": 10,
+        "gold": "5d6",
+        "BAB":    "high",
+    
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "low",
+        "saving throws": ["Fortitude", "Reflex"]
+    },
+    
+    "Rogue": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["Padded", "Leather", "Studded Leather"],
+        "skills": ["Acrobatics", "Appraise", "Bluff", "Climb", "Craft", "Diplomacy", "Disable Device", "Disguise", "Escape Artist", "Intimidate", "Knowledge (dungeoneering)", "Knowledge (local)", "Linguistics", "Perception", "Perform", "Sense Motive", "Sleight of Hand", "Stealth", "Swim", "Use Magic Device"],
+        "abilities": ["Sneak Attack", "Trapfinding", "Evasion", "Rogue Talents"],
+        "hp": 8,
+        "gold": "4d6",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "none",
+        "saving throws": ["Reflex", "Will"]
+    },
+    
+    "Sorcerer": {
+        "weapons": ["Club", "Dagger", "Heavy Crossbow", "Light Crossbow", "Quarterstaff"],
+        "armor": ["None"],
+        "skills": ["Appraise", "Bluff", "Fly", "Intimidate", "Knowledge (arcana)", "Spellcraft", "Use Magic Device"],
+        "abilities": ["Bloodline", "Cantrips", "Eschew Materials"],
+        "spells": ["Acid Splash", "Detect Magic", "Light", "Mage Hand", "Mending", "Message", "Prestidigitation", "Ray of Frost", "Read Magic"],
+        "hp": 6,
+        "gold": "3d6",
+        "BAB": "low",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level":    "high",
+    
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+    "Spiritualist": {
+        "weapons": ["Battleaxe", "Blowgun", "Blunderbuss", "Bolas", "Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light", "Dagger", "Dart", "Falchion", "Flail", "Glaive", "Greataxe", "Greatclub", "Greatsword", "Halberd", "Hammer, Light", "Handaxe", "Javelin", "Longbow", "Longspear", "Longsword", "Morningstar", "Net", "Nunchaku", "Quarterstaff", "Ranseur", "Rapier", "Sai", "Scimitar", "Shortbow", "Shortspear", "Shuriken", "Sickle", "Sling", "Spear", "Spiked Chain", "Trident", "Unarmed Strike", "Warhammer", "Whip"],
+        "armor": ["Padded", "Leather", "Studded Leather", "Chain Shirt"],
+        "skills": ["Bluff", "Craft", "Diplomacy", "Disguise", "Fly", "Handle Animal", "Heal", "Intimidate", "Knowledge (arcana)", "Knowledge (history)", "Knowledge (planes)", "Knowledge (religion)", "Perception", "Perform", "Profession", "Ride", "Sense Motive", "Spellcraft", "Stealth", "Survival", "Swim", "Use Magic Device"],
+        "abilities": ["Etheric Tether", "Phantom", "Spellcasting"],
+        "hp": 8,
+        "gold": "3d6",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "mid",
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+    "Summoner": {
+        "weapons": ["Club", "Dagger", "Heavy Crossbow", "Light Crossbow", "Quarterstaff"],
+        "armor": ["None"],
+        "skills": ["Appraise", "Fly", "Knowledge (arcana)", "Knowledge (engineering)", "Linguistics", "Profession", "Spellcraft", "Use Magic Device"],
+        "abilities": ["Eidolon", "Life Link", "Spellcasting"],
+        "hp": 8,
+        "gold": "3d6",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "mid",
+        "saving throws": ["Fortitude", "Reflex", "Will"]
+    },
+    
+    "Swashbuckler": {
+        "weapons": ["Axe, Throwing", "Battleaxe", "Blowgun", "Boar Spear", "Bolas","Crossbow, Hand", "Dagger", "Dart", "Falchion", "Flail, Heavy","Glaive", "Greataxe", "Greatclub", "Greatsword", "Halberd", "Handaxe","Javelin", "Kukri", "Lance", "Longbow", "Longspear", "Longsword","Morningstar", "Net", "Pike", "Rapier", "Sap", "Scimitar", "Shortbow","Shortspear", "Sickle", "Sling", "Spear", "Sword, Bastard", "Sword, Short","Trident", "Unarmed Strike", "Warhammer"],
+        "armor": ["Light Armor", "Medium Armor", "Heavy Armor"],
+        "skills": ["Acrobatics", "Bluff", "Climb", "Diplomacy", "Escape Artist", "Intimidate", "Knowledge (local)", "Perception", "Perform", "Profession", "Sense Motive", "Swim", "Use Magic Device"],
+        "abilities": ["Deeds", "Panache"],
+        "hp": 10,
+        "gold": "3d6",
+        "BAB":    "high",
+    
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "none",
+        "saving throws": ["Fortitude", "Reflex"]
+    },
+    
+    
+    "Warlock": {    
+        "weapons": ["Club", "Dagger", "Heavy Crossbow", "Light Crossbow", "Quarterstaff"],
+        "armor": ["Padded", "Leather", "Studded Leather"],
+        "skills": ["Bluff", "Craft (any one)", "Escape Artist", "Intimidate", "Knowledge (arcana)", "Knowledge (planes)", "Perception", "Sense Motive", "Spellcraft", "Use Magic Device"],
+        "abilities": ["Otherwordly Patron", "Eldritch Blast"],
+        "invocations": ["Beguiling Influence", "Darkness", "Devils Sight", "See the Unseen", "Walk Unseen"],
+        "hp": 8,
+        "gold": "3d6",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "none",
+        "saving throws": ["Fortitude", "Reflex"]
+    },
+    
+    "Warpriest": {
+        "weapons": ["Battleaxe", "Blowgun", "Blunderbuss", "Bomb", "Cestus","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dart", "Dart, Jolting", "Dwarven Waraxe", "Falchion","Flail", "Glaive", "Greataxe", "Greatclub", "Greatsword", "Guillotine Axe","Halberd", "Handaxe", "Harpoon", "Heavy Flail", "Heavy Mace","Heavy Pick", "Javelin", "Kama", "Kukri", "Lance", "Light Flail","Light Hammer", "Light Mace", "Light Pick", "Longbow", "Longspear","Longsword", "Mace, Cold Iron", "Mace, Heavy", "Mace, Light", "Morningstar","Net", "Nunchaku", "Orc Double Axe", "Pick, Heavy", "Pick, Light","Quarterstaff", "Ranseur", "Rapier", "Sai", "Sap", "Scimitar","Scythe", "Shortbow", "Shortspear", "Shuriken", "Sickle", "Sling","Spear", "Spear, Hekatonkheires", "Starknife", "Sword, Bastard","Sword Cane", "Sword, Short", "Three-Section Staff", "Trident","Unarmed Strike", "Warhammer", "Whip", "Whip, Dire"],
+        "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Half Plate", "Ring Mail", "Chainmail", "Splint Mail", "Banded Mail", "Half-Plate", "Full Plate"],
+        "skills": ["Climb", "Craft", "Diplomacy", "Heal", "Knowledge (engineering)", "Knowledge (religion)", "Profession", "Ride", "Sense Motive", "Spellcraft"],
+        "abilities": ["Blessings", "Fervor", "Sacred Weapon", "Weapon Focus"],
+        "hp": 8,
+        "gold": "3d6",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "mid",
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+    "Witch": {
+        "weapons": ["Dagger", "Dart", "Sling", "Quarterstaff"],
+        "armor": ["None"],
+        "skills": ["Craft (Alchemy)", "Fly", "Heal", "Intimidate", "Knowledge (arcana)", "Knowledge (history)", "Knowledge (nature)", "Knowledge (planes)", "Knowledge (religion)", "Profession", "Spellcraft", "Use Magic Device"],
+        "abilities": ["Spells", "Patron", "Hexes", "Familiar", "Cantrips"],
+        "hp": 6,
+        "gold": "3d6",
+        "BAB": "low",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level":    "high",
+    
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+    "Wizard": {
+        "weapons": ["Club", "Dagger", "Heavy Crossbow", "Light Crossbow", "Quarterstaff"],
+        "armor": ["None"],
+        "skills": ["Craft (any one)", "Fly", "Knowledge (arcana)", "Knowledge (history)", "Knowledge (planes)", "Linguistics", "Spellcraft"],
+        "abilities": ["Arcane Bond", "Arcane School"],
+        "hp": 6,
+        "gold": "3d6",
+        "BAB": "low",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level":    "high",
+    
+        "saving throws": ["Fortitude", "Reflex"]
+    },
+    
+    
+    
+            "Harbinger": {
+        "weapons": ["Dagger", "Falchion", "Flail", "Gauntlet", "Greatsword", "Handaxe", "Kukri", "Longsword", "Quarterstaff", "Rapier", "Scimitar", "Short sword", "Spear", "Spiked chain", "Whip"],
+        "armor": ["Light"],
+        "skills": ["Acrobatics", "Athletics", "Bluff", "Intimidate", "Perception", "Sense Motive", "Stealth"],
+        "abilities": ["Mystic Foresight", "Omen Casting", "Mystic Echoes", "Mystic Insight", "Mystic Resonance", "Divine Arcanum", "Mystic Guide"],
+        "hp": 8,
+        "gold": "3d6x10",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "none",
+        "saving throws": ["Reflex", "Will"]
+    },
+    
+    "Mystic": {
+        "weapons": ["Battle Aspergillum", "Bastard Sword", "Bec de Corbin", "Bo Staff", "Bolas", "Brass Knuckles", "Butchering Axe", "Chakram", "Club", "Crossbow, Heavy", "Crossbow, Light", "Dagger", "Dart", "Double Chained Kama", "Flail", "Gauntlet", "Glaive", "Greataxe", "Greatsword", "Halberd", "Hammer, Gnome Hooked", "Handaxe", "Javelin", "Kama", "Kusarigama", "Lance", "Longbow", "Longspear", "Longsword", "Mace, Heavy", "Morningstar", "Nunchaku", "Quarterstaff", "Ranseur", "Rapier", "Sai", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken", "Siangham", "Sickle", "Sling", "Spear", "Spiked Armor", "Spiked Chain", "Spiked Gauntlet", "Spiked Shield", "Starknife", "Sword Cane", "Sword, Short", "Temple Sword", "Trident", "Unarmed Strike", "Warhammer", "Whip"],
+        "armor": ["Light Armor", "Medium Armor", "Heavy Armor"],
+        "skills": ["Acrobatics", "Autohypnosis", "Climb", "Craft", "Knowledge (psionics)", "Perception", "Profession", "Ride", "Sense Motive", "Spellcraft", "Stealth", "Survival", "Swim", "Use Psionic Device"],
+        "abilities": ["Psionic Power Source", "Discipline Focus", "Form Mind Blade", "Mind Blade Enhancement"],
+        "hp": 8,
+        "gold": "2d10",
+        "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "none",
+        "saving throws": ["Fortitude", "Will"]
+    },
+    
+        "Stalker": {
+            "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+            "armor": ["Light Armor", "Shields"],
+            "skills": ["Acrobatics","Climb","Craft","Disable Device","Disguise","Escape Artist","Handle Animal","Heal","Intimidate","Knowledge (dungeoneering)","Knowledge (geography)","Knowledge (nature)","Perception","Ride","Sense Motive","Stealth","Survival","Swim"],
+            "hp": 8,
+            "gold": "3d6x10",
+            "BAB": "mid",
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "none",
+            "saving throws": ["Fortitude", "Reflex"]
+        },
+    
+        "Warder": {
+            "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+            "armor": ["Heavy Armor", "Medium Armor", "Shields"],
+            "skills": ["Acrobatics", "Autohypnosis", "Climb", "Craft", "Handle Animal", "Intimidate", "Jump", "Knowledge (engineering)", "Knowledge (history)", "Knowledge (nobility)", "Knowledge (tactics)", "Perception", "Perform", "Profession", "Ride", "Sense Motive", "Survival", "Swim", "Use Rope"],
+            "hp": 12,
+            "gold": "3d6x10",
+            "BAB":    "high",
+    
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+       "casting level": "none",
+            "saving throws": ["Fortitude", "Will"]
+        },
+    
+        "Warlord": {
+            "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+            "armor": ["Heavy Armor", "Medium Armor", "Light Armor", "Shields"],
+            "skills": ["Acrobatics", "Appraise", "Bluff", "Climb", "Craft", "Diplomacy", "Disable Device", "Disguise", "Escape Artist", "Fly", "Handle Animal", "Heal", "Intimidate", "Knowledge (all)", "Linguistics", "Perception", "Perform", "Profession", "Ride", "Sense Motive", "Sleight of Hand", "Spellcraft", "Stealth", "Survival", "Swim", "Use Magic Device"],
+            "hp": 10,
+            "gold": "4d6x10",
+            "BAB":    "high",
+    
+         "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+         "casting level": "none",
+            "saving throws": ["Fortitude", "Will"]
+    
+        },
+        "Zealot": {
+            "weapons": ["Battleaxe", "Club", "Dagger", "Flail", "Greataxe", "Greatsword", "Halberd", "Heavy flail", "Javelin", "Kama", "Longsword", "Mace", "Morningstar", "Quarterstaff", "Ranseur", "Rapier", "Sai", "Scimitar", "Short sword", "Spear", "Spiked chain", "Trident", "Warhammer", "Whip"],
+            "armor": ["Light", "Medium"],
+            "skills": ["Acrobatics", "Athletics", "Endurance", "Intimidate", "Perception", "Sense Motive"],
+            "abilities": ["Zealous Focus", "Zealous Surge", "Sacred Might", "Fervor", "Divine Favor"],
+            "hp": 10,
+            "gold": "3d6x10",
+            "BAB":    "high",
+    
+         "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+         "casting level": "none",
+            "saving throws": ["Fortitude", "Will"]
+    }
+    }
