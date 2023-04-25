@@ -130,18 +130,23 @@ def Roll_Level(name):
 
 def chooseClass(name):
     filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
-    with open(filename, 'a') as f, open("utils/race.json", "r") as r, open("first_names_regions.json", "r") as a, open("first_names_regions.json", "r") as g, open("utils/class.json", "r") as c:
+    with open(filename, 'a') as f, open("utils/race.json", "r") as r, open("last_names_regions.json", "r") as a, open("first_names_regions.json", "r") as g, open("utils/class.json", "r") as c:
         """
         Gives the Character a random Class 
         - Returns
         - Class (String)
         """
+        #grabbing race + class + region data from the json files
+        race_data = json.load(r)
+        class_data = json.load(c)
         # Prompt the user to input BAB
         BAB = input('Enter BAB (H/M/L): ').capitalize()
         
         # Prompt the user to select a region
+        
         userInput_region = input('Select region [input the number for the region you want] (1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, 5=Spire, 6=Feyador, 7=Esterdragon, 8=Grundykin Damplands, 9=Dust Cairn, 10= ...)').lower()
-        userInput_race = input('Select race (e.g. Goblin, Human, Drow, ...)').capitalize()
+        print(race_data.keys())
+        userInput_race = input(f'Select race from the above list: ').capitalize()
         print(userInput_race)
         if userInput_region.isdigit() and int(userInput_region) in range(1, 10):
             # make sure max range = the number of regions we have
@@ -183,8 +188,7 @@ def chooseClass(name):
 
         # Iterate through the classes and select the ones that meet the BAB requirement
         classes = []
-        race_data = json.load(r)
-        class_data = json.load(c)
+
         for class_name in class_data.keys():
             if region in class_data[class_name]["regions"] and userInput_race in class_data[class_name]["race"]:
                 # Check BAB input + region input

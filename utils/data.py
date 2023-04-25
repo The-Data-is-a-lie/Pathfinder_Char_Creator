@@ -114,6 +114,8 @@ appearance = ['Jewelry', 'Piercings', 'Formal Clothing', 'Ragged', 'Missing Teet
 
 
 
+#path of war classes:
+path_of_war_class = ['Warder', 'Harbinger', 'Mystic', 'Zealot', 'Stalker']
 
 #add all of forests options
 profession = [

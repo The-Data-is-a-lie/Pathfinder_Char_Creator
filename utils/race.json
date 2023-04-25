@@ -9,7 +9,7 @@
         "speed": 30,
         "traits": ["Versatility"],
         "languages": ["Elven", "Draconic", "Gnoll", "Gnome", "Goblin", "Orc", "Sylvan"],
-        "ability_score_adjustments": {
+        "ability scores": {
             "Any one ability score": 2
         }
     },
@@ -22,7 +22,7 @@
         "weight": [120, "2d4"],
         "size": "Medium",
         "speed": 30,
-        "traits": ["Darkvision", "Celestial Resistance"],
+        "traits": ["Darkvision", "Celestial Resistance", "Skilled", "Daylight"],
         "languages": ["Celestial", "Common"],
             "ability scores": {
                 "Strength": "+2",
@@ -39,7 +39,7 @@
         "weight": [90, "10d6"],
         "size": "Medium",
         "speed": 40,
-        "traits": ["Low-Light Vision", "Natural Hunter"],
+        "traits": ["Low-Light Vision", "Natural Hunter", "Sprinter", "Cat's Luck"],
         "languages": ["Catfolk", "Common"],
         "ability scores": {
             "Dexterity": "+2",
@@ -57,7 +57,7 @@
 			"weight": [210, "10d6"],
 			"size": "Medium",
 			"speed": 30,
-			"traits": ["Draconic Ancestory", "Increased Resistance"],
+			"traits": ["Draconic Ancestory", "Increased Resistance", "Bite", "Draconic Resistances", "Energy Resistance", "Natural Armor", "Draconic Mein", "Fearless"],
 			"languages": ["Draconic", "Undercommon"],
             "ability scores": {
                 "Strength": "+2",
@@ -76,7 +76,7 @@
         "weight": [100, "2d4"],
         "size": "Medium",
         "speed": 30,
-        "traits": ["Darkvision", "Negative Energy Affinity", "Resist Level Drain"],
+        "traits": ["Darkvision", "Negative Energy Affinity", "Resist Level Drain", "Low-Light Vision", "Manipulative", "Undead Resistance", "Detect Undead", "Light Sensitivity"],
         "languages": ["Common"],
         "ability scores": {
             "Dexterity": "+2",
@@ -94,7 +94,7 @@
         "weight": [75, "10d6"],
         "size": "Medium",
         "speed": 30,
-        "traits": ["Darkvision", "Light Sensitivity"],
+        "traits": ["Darkvision", "Light Sensitivity", "Keen senses", "Superior Darkvision", "Light blindness", "Spell Resistance", "Immunities"],
         "languages": ["Elven", "Undercommon"],
         "ability scores": {
             "Dexterity": "+2",
@@ -111,7 +111,7 @@
         "weight": [150, "2d6"],
         "size": "Medium",
         "speed": 20,
-        "traits": ["Darkvision", "Duergar Resilience", "Spell Resistance"],
+        "traits": ["Spell Resistance", "Stability", "Enlarge Person", "Invisibility", "Superior Darkvision", "Light Sensitivity"],
         "languages": ["Dwarven", "Undercommon"],
         "ability scores": {
             "Constitution": "+2",
@@ -130,9 +130,9 @@
         "weight": [85, "10d6"],
         "size": "Medium",
         "speed": 30,
-        "traits": ["Darkvision", "Fey Ancestory"],
+        "traits": ["Low-light vision","Elven Magic", "Elven Immunities", "Keen senses", "Weapon familiarity"],
         "languages": ["Elven", "Draconic", "Gnoll", "Gnome", "Goblin", "Orc", "Sylvan"],
-        "ability_score_adjustments": {
+        "ability scores": {
             "Dexterity": 2,
             "Intelligence": 2,
             "Constitution": -2
@@ -147,7 +147,7 @@
         "weight": [110, "10d6"],
         "size": "Medium",
         "speed": 30,
-        "traits": ["Darkvision", "Shadow Blending"],
+        "traits": ["Darkvision", "Shadow Blending", "Shadow Resistance", "Skilled","Low-Light Vision","Spell-Like Abilities"],
         "languages": ["Common", "Shadowtongue"],
             "ability scores": {
                 "Dexterity": "+2",
@@ -164,7 +164,7 @@
         "weight": [30, "1d2"],
         "size": "Small",
         "speed": 30,
-        "traits": ["Darkvision", "Small and Nimble"],
+        "traits": ["Darkvision","Fast movement","Skilled"],
         "languages": ["Goblin"],
         "ability scores": {
             "Dexterity": "+4",
@@ -181,9 +181,9 @@
         "weight": [40, "1d2"],
         "size": "Small",
         "speed": 20,
-        "traits": ["Darkvision", "Small and Nimble", "Gnome Magic"],
+        "traits": ["Gnome Magic", "Defensive Training","Illusion Resistance","Keen senses","Gnome Magic","Hatred","Weapon familiarity","Low-Light Vision"],
         "languages": ["Gnome", "Sylvan"],
-        "ability_score_adjustments": {
+        "ability scores": {
             "Constitution": 2,
             "Charisma": 2,
             "Strength": -2
@@ -198,7 +198,7 @@
         "weight": [30, "1d1"],
         "size": "Small",
         "speed": 20,
-        "traits": ["Brave", "Halfling Nimbleness"],
+        "traits": ["Fearless","Halfling Luck","Sure footed", "Weapon familiarity","Keen senses"],
         "languages": ["Halfling", "Dwarvish", "Elven", "Gnomish", "Goblin", "Orc"],
         "ability scores": {
             "Dexterity": "+2",
@@ -218,7 +218,7 @@
         "speed": 20,
         "traits": ["Darkvision", "Dwarven Resilience", "Greed", "Hatred", "Weapon familiarity"],
         "languages": ["Dwarvish", "Giant", "Gnomish", "Goblin", "Orc", "Undercommon"],
-        "ability_score_adjustments": {
+        "ability scores": {
             "Constitution": 2,
             "Wisdom": 2,
             "Charisma": -2
@@ -233,9 +233,9 @@
         "weight": [100, "2d4"],
         "size": "Medium",
         "speed": 30,
-        "traits": ["Darkvision", "Fey Ancestory"],
+        "traits": ["Low-Light Vision","Elven Immunities","Keen senses","adaptibility","elf blood","multi-talented"],
         "languages": ["Dwarvish", "Giant", "Gnomish", "Goblin", "Orc", "Undercommon"],
-        "ability_score_adjustments": {
+        "ability scores": {
             "Any two ability scores": 2
         }
     },
@@ -247,9 +247,9 @@
         "weight": [150, "2d6"],
         "size": "Medium",
         "speed": 30,
-        "traits": ["Darkvision", "Savage Attacks"],
+        "traits": ["Darkvision","Imtimidating","Orc Ferocity","Orc blood"],
         "languages": ["Orc", "Draconic", "Giant", "Gnoll", "Goblin", "Abyssal"],
-        "ability_score_adjustments": {
+        "ability scores": {
             "Strength": 2,
             "Constitution": 2,
             "Intelligence": -2
@@ -264,9 +264,9 @@
     "weight": [120, "2d4"],
     "size": "Medium",
     "speed": 30,
-    "traits": ["Darkvision", "Martial Training"],
+    "traits": ["Sneaky","Darkvision"],
     "languages": ["Goblin", "Common"],
-    "ability_score_adjustments": {
+    "ability scores": {
         "Dexterity": 2,
         "Charisma": 2,
         "Strength": -2
@@ -281,7 +281,7 @@
     "weight": [120, "2d4"],
     "size": "Medium",
     "speed": 30,
-    "traits": ["Darkvision", "Energy Resistance"],
+    "traits": ["Darkvision", "Energy Resistance","Fire Affinity","Spell-Like Abilities"],
     "languages": ["Ignan", "Common"],
     "ability scores": {
         "Dexterity": "+2",
@@ -298,7 +298,7 @@
         "weight": [80, "10d4"],
         "size": "Medium",
         "speed": 30,
-        "traits": ["Agile", "Change Shape"],
+        "traits": ["Agile", "Change Shape", "Kitsune Magic", "Natural weapons", "Low-Light Vision"],
         "languages": ["Kitsune", "Common"],
         "ability scores": {
             "Dexterity": "+2",
@@ -315,7 +315,7 @@
         "weight": [25, "1d2"],
         "size": "Small",
         "speed": 30,
-        "traits": ["Crafty", "Light Sensitivity"],
+        "traits": ["Crafty", "Light Sensitivity","Armor","Darkvision"],
         "languages": ["Kobold", "Draconic"],
         "ability scores": {
             "Dexterity": "+2",
@@ -332,7 +332,7 @@
         "weight": [35, "2d2"],
         "size": "Small",
         "speed": 20,
-        "traits": ["Darkvision", "Goblin Scuttle", "Jester's Familiarity", "Swing Through Trees"],
+        "traits": ["Low-Light Vision","Fearless","acrobatic","Prehensile Tail","Natural Climber"],
         "languages": ["Goblin", "Common"],
         "ability scores": {
         "Dexterity": "+2",
@@ -349,7 +349,7 @@
         "weight": [150, "2d6"],
         "size": "Medium",
         "speed": 30,
-        "traits": ["Darkvision", "Orc Ferocity"],
+        "traits": ["Darkvision", "Orc Ferocity", "Weapon familiarity","Light Sensitivity"],
         "languages": ["Orc", "Draconic"],
         "ability scores": {
             "Strength": "+4",
@@ -367,7 +367,7 @@
         "weight": [130, "2d6"],
         "size": "Medium",
         "speed": 30,
-        "traits": ["Darkvision", "Oread Resistance"],
+        "traits": ["Darkvision", "Spell-Like Abilities", "Acid Resistance", "Earth Affinity"],
         "languages": ["Terran", "Draconic", "Giant", "Gnome", "Oread"],
         "ability scores": {
             "Strength": "+2",
@@ -384,7 +384,7 @@
     "weight": [20, "10d4"],
     "size": "Small",
     "speed": 20,
-    "traits": ["Darkvision", "Swarming"],
+    "traits": ["Darkvision", "Swarming","Rodent Empathy","Tinker"],
     "languages": ["Common", "Ratfolk"]
 },
 
@@ -396,7 +396,7 @@
     "weight": [95, "10d6"],
     "size": "Medium",
     "speed": 30,
-    "traits": ["Darkvision", "Air Affinity"],
+    "traits": ["Darkvision", "Air Affinity","Spell-Like Abilities","5 Electric Resistance"],
     "languages": ["Auran", "Common"],
     "ability scores": {
         "Dexterity": "+2",
@@ -413,7 +413,7 @@
     "weight": [90, "2d4"],
     "size": "Medium",
     "speed": 30,
-    "traits": ["Low-Light Vision", "Sneaky", "Swordtrained"],
+    "traits": ["Low-Light Vision", "Sneaky", "Swordtrained", "Gifted Linguist","Natural weapons","Senses"],
     "languages": ["Tengu", "Common"],
     "ability scores": {
         "Dexterity": "+2",
@@ -430,7 +430,7 @@
     "weight": [110, "2d4"],
     "size": "Medium",
     "speed": 30,
-    "traits": ["Darkvision", "Prehensile Tail"],
+    "traits": ["Darkvision", "Fiendish Sorcery","Skilled","Fiendish Resistance","Spell-Like Abilities"],
     "languages": ["Common"],
     "ability scores": {
         "Intelligence": "+2",
@@ -447,7 +447,7 @@
     "weight": [85, "2d4"],
     "size": "Medium",
     "speed": 30,
-    "traits": ["Amphibious", "Swim", "Water Sense"],
+    "traits": ["5 cold resistance", "Darkvision", "Water affinity", "30 Swim Speed", "Water Sense"],
     "languages": ["Undine", "Aquan", "Common"],
     "ability scores": {
         "Dexterity": "+2",
@@ -464,7 +464,7 @@
     "weight": [40, "2d2"],
     "size": "Small",
     "speed": 20,
-    "traits": ["Darkvision", "Shadow Resistance", "Skilled"],
+    "traits": ["Darkvision", "Lurker","Shadow Magic","Light and Dark", "Shadow Resistance"],
     "languages": ["Wayang", "Common"],
     "ability scores": {
         "Dexterity": "+2",

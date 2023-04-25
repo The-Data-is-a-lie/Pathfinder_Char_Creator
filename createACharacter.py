@@ -1,7 +1,7 @@
 #Internal Imports
 from utils import data
 import json
-from utils.data import regions, weapon_groups_region, archetypes, skills, evil_deities, good_deities, neutral_deities, languages, hair_colors, hair_types, appearance, eye_colors
+from utils.data import regions, weapon_groups_region, archetypes, skills, evil_deities, good_deities, neutral_deities, languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class
 #from utils.data import archetypes
 from utils.util import  RollStat, chooseClass,  appendAttr, appendAttrData, roll_dice#,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
 from utils.markdown import style
@@ -15,35 +15,6 @@ from modules.currency import Currency
 #External Imports
 from random import randrange
 import sys
-
-
-path_of_war_class = ['Warder', 'Harbinger', 'Mystic', 'Zealot', 'Stalker']
-archetypes = {
-
-'fighter': ['Tribal Defender', 'Biathlete', 'Road Warrior', 'Aether Soldier', 'Warmachine', 'Harrier', 'Knife Fighter', 'Man-at-Arms', 'Berserker', 'Chain Lasher', 'Challenger', 'Bonded Pet', 'Blade Shifter', 'Technique Master', 'Ironborn', 'Myrmidon', 'Silverblade Hunter', 'Swordsmith', 'Chakram Dervish', 'Quickblade', 'Spellscorn Fighter', 'Coachman', 'Tjuman', 'Pugilist', 'Ructioneer', 'Warrior of the Path', 'Scrapper', 'Aerial Assaulter', 'Spear Fighter', 'Skirmisher', 'Tribal Fighter', 'Venomblade', 'Viking', 'Aquanaut', 'Armiger', 'Defender', 'Lore Warden', 'High Guardian', 'Opportunist Fighter', 'Cyber-Soldier', 'Unbreakable', 'Phalanx Soldier', 'Gladiator', 'Gloomblade', 'Archer', 'Armor Master', 'Blackjack', 'Border Defender', 'Brawler', 'Buckler Duelist', 'Cad', 'Child of War', 'Corsair', 'Crossbowman', 'Dervish of Dawn', 'Dragonheir Scion', 'Dragoon', 'Drill Sergeant', 'Eldritch Guardian', 'Free Hand Fighter', 'Free-Style Fighter', 'Learned Duelist', 'Titan Fighter', 'Seasoned Commander', 'Martial Master', 'Mobile Fighter', 'Mutation Warrior', 'Pack Mule', 'Polearm Master', 'Relic Master', 'Roughrider', 'Savage Warrior', 'Sensate', 'Shielded Fighter', 'Siegebreaker', 'Steelbound Fighter', 'Swordlord', 'Tactician', 'Thunderstriker', 'Tower Shield Specialist', 'Trench Fighter', 'Two-Handed Fighter', 'Two-Weapon Warrior', 'Unarmed Fighter', 'Vengeful Hunter', 'Viking', 'Weapon Bearer Squire', 'Weapon Master', 'Warshade', 'Kappa-Bushi', 'Peltast', 'Tengubushi', 'Yakuza Bushi', 'Dragon Warrior']
-,
-# 
-'barbarian': ['Armored Hulk','Beastkin Berserker','Blooded Arcanist','Breaker','Brutal Pugilist','Cannibal','Chaos Totem','Dreadnought','Elemental Kin','Fated Champion','Feral Gnasher','Flesheater','Furyborn','Goliath Druid','Hateful Rager','Hurler','Invulnerable Rager','Lion Blade','Marauder','Mooncursed','Mounted Fury','Pack Rager','Primal Hunter','Primalist','Raging Cannibal','Raging Cyclone','Raging Drunk','Raging Flame','Raging Hurler','Raging Tactician','Savage Barbarian','Scarred Rager','Sea Reaver','Shaman','Skeletal Champion','Spell Sunderer','Steel-Breaker','Superstitious','Survivor','Titan Mauler','Totem Warrior','True Primitive','Unchained Rager','Urban Barbarian','Wild Rager']
-,
-#
-'druid': ['Agathiel', 'Animal Shaman', 'Aquatic Druid', 'Arboreal Grappler', 'Archdruid', 'Blacksnake', 'Blazoned Tracker', 'Blight Druid', 'Blind Singer', 'Blightwarden', 'Child of the Moon', 'Cleric of the Green', 'Death Druid', 'Defender of the True World', 'Dragon Shaman', 'Dreamspeaker', 'Elemental Ally', 'Elemental Ascetic', 'Elemental Druid', 'Emberkin', 'Enlightened Druid', 'Fanglord', 'Feral Child', 'Fey Caller', 'Fist of the Forest', 'Flame Keeper', 'Frostburn Warden', 'Geisha', 'Geomancer', 'Green Faith Acolyte', 'Green Scourge', 'Greenstalker', 'Guardian of the Wild', 'Harrow Warden', 'Hedge Witch', 'Hooded Champion', 'Ice Sentinel', 'Infiltrator', 'Inquisitor of the Elk', 'Inquisitor of the Raven', 'Inquisitor of the Water', 'Jungle Druid', 'Lion Shaman', 'Lithic', 'Mad Prophet', 'Mammoth Rider', 'Master of Many Forms', 'Master of Storms', 'Mooncaller', 'Mooncursed', 'natures Fang', 'natures Whispers', 'Nature-Bonded Magus', 'Necrologist', 'Pack Lord', 'Pain Taster', 'Pale Stranger', 'Plant Master', 'Polar Midnight', 'Powerful Shapechanger', 'Rage Prophet', 'Ravenlord', 'Reincarnated Druid', 'River Druid', 'Saurian Shaman', 'Sea Reaver', 'Serpent-Fire Adept', 'Serpentfire', 'Shark Shaman', 'Shapeshifter', 'Shark Shaman', 'Storm Druid', 'Stormwalker', 'Street Shaman', 'Swamp Druid', 'Tamer of Beasts', 'Teisatsu', 'Theologian', 'Thornwarden', 'Thundercaller', 'Totemic Demonslayer', 'Tribal Shaman', 'Tunnel Rat', 'Undead Lord', 'Urban Druid', 'Verdant Lord', 'Verminous Hunter', 'Visionary Seeker', 'Volcano Priest', 'Vulture Shaman', 'Warshaper', 'Wild Rager', 'Wild Whisperer', 'Wildfire Heart', 'Winter Witch', 'Wolf Shaman', 'Woodland Skirmisher', 'World Walker', 'Wyrm Singer' ]
-,
-#
-'cleric': ['Angelfire Apostle',  'Aquatic Druid', 'Arcanist', 'Atheist', 'Battle Priest', 'Chaos Channeler', 'Cloistered Cleric', 'Crusader', 'Divine Strategist', 'Evangelist', 'Exalted', 'Feral Hunter', 'Inheritors Crusader', 'Liturgical Mage', 'Merciful Healer', 'Necromancer', 'Planar Oracle', 'Ravener Hunter', 'Sanguine Angel', 'Separatist', 'Shaman', 'Theologian', 'Undead Lord', 'Varisian Pilgrim', 'Visionary Prophet']
-,
-#
-'rogue':  ['Acrobat', 'Bandit', 'Beastmaster', 'Beguiler', 'Burglar', 'Charlatan', 'Chirurgeon', 'Circus Performer', 'Cloaked Dancer', 'Cloistered Cleric', 'Commando', 'Con Artist', 'Counterfeit Mage', 'Court Fool', 'Cutpurse', 'Daggermark Poisoner', 'Dandy', 'Dark Delver', 'Deep Walker', 'Demagogue', 'Dervish of Dawn', 'Eldritch Scoundrel', 'False Medium', 'Fast Hands', 'Gang Leader', 'Gloomblade', 'Guerrilla', 'Guild Agent', 'Guild Poisoner', 'Hidden Priest', 'Highwayman', 'Hooded Champion', 'Infiltrator', 'Knife Master', 'Liberator', 'Master Spy', 'Mouser', 'Natural Alchemist', 'Noble Fencer', 'Phantom Thief', 'Pilferer', 'Pirate', 'Poisoner', 'Rake', 'Rapscallion', 'Ratcatcher', 'Ringleader', 'Saboteur', 'Sandman', 'Sapper', 'Savage Skirmisher', 'Scavenger', 'Scout', 'Shadowdancer', 'Shadow Rager', 'Sleuth', 'Sniper', 'Spy', 'Stalker', 'Streetfighter', 'Survivalist', 'Swordmaster', 'Thief Acrobat', 'Thug', 'Trapsmith', 'Underground Chemist', 'Vexing Dodger', 'Vigilante', 'Wasp', 'Watersinger', 'Wild Child', 'Zealot']
-,
-#
-'ranger':  ['Airborne Ambusher', 'Arboreal Ranger', 'Battle Scout', 'Beastmaster', 'Blightwarden', 'Bow Nomad', 'Cavalier', 'Child of Acavna and Amaznen', 'Deep Walker', 'Divine Marksman', 'Dragon Hunter', 'Duskwarden', 'Falconer', 'Favored Enemy (aquatic)', 'Favored Enemy (dungeon)', 'Favored Enemy (forest)', 'Favored Enemy (giant)', 'Favored Enemy (magical beast)', 'Favored Enemy (plant)', 'Favored Enemy (undead)', 'Frost Tusk', 'Geomancer', 'Ghost Hunter', 'Giant Killer', 'Guide', 'Harrow Warden', 'Hooded Champion', 'Horse Lord', 'Horizon Walker', 'Infiltrator', 'Initiate of the Hunt', 'Liberator', 'Lion Blade', 'Living Monolith', 'Master of Many Forms', 'Natural Warrior', 'Nature Warden', 'Pack Lord', 'Pathfinder Chronicler', 'Polearm Master', 'Reaper of Secrets', 'Sable Company Marine', 'Savage Skirmisher', 'Sea Dog', 'Skirmisher', 'Stormwalker', 'Strider', 'Swift Hunter', 'Terramancer', 'Thundercaller', 'Trapper', 'Treantmonk (Druid/Ranger)', 'Trick Shot', 'Trickster', 'Two-Handed Fighter', 'Urban Ranger', 'Verdant Sorcerer', 'Wild Shadow', 'Wild Stalker', 'Witch Hunter', 'Woodland Skirmisher', 'World Walker']
-,
-#
-#
-'paladin' : ['Angelic', 'Blade of Mercy', 'Chosen One', 'Divine Defender', 'Divine Guardian', 'Divine Hunter', 'Divine Paragon', 'Divine Scion', 'Divine Servitor', 'Divine Strategist', 'Enlightened Paladin', 'Eternal Hope', 'Gray Paladin', 'Holy Gun', 'Hospitaler', 'Oathbound Paladin', 'Oath of Vengeance', 'Paladin of Freedom', 'Sacred Servant', 'Shining Knight', 'Templar']
-
-#
-#
-}
 
 
 # Base Character Traits
@@ -133,9 +104,6 @@ def CreateNewCharacter(name):
         profession = []
         new_char.c_profession = appendAttrData(profession, data.profession)
 
-        appearances = []
-        new_char.c_appearance = appendAttrData(appearances, data.appearance)
-
         Alignment = []
         new_char.c_alignment = appendAttrData(Alignment, data.alignment)
 
@@ -174,7 +142,8 @@ def CreateNewCharacter(name):
         hair_color_choice = random.choice(hair_colors)
         hair_type_choice = random.choice(hair_types)
         eye_color_choice = random.choice(eye_colors)
-        appearance_choice = random.choice(appearance)
+        random_app_number = random.randint(1,3)
+        appearance_choice = random.sample(appearance,k=random_app_number)
 
         print(f'hair_colors' + '\n', hair_color_choice)
         print(f'hair_types' + '\n', hair_type_choice)
