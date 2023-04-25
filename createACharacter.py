@@ -1,6 +1,7 @@
 #Internal Imports
 from utils import data
-from utils.data import regions, weapon_groups_region, archetypes, skills, evil_deities, good_deities, neutral_deities, languages
+import json
+from utils.data import regions, weapon_groups_region, archetypes, skills, evil_deities, good_deities, neutral_deities, languages, hair_colors, hair_types, appearance, eye_colors
 #from utils.data import archetypes
 from utils.util import  RollStat, chooseClass,  appendAttr, appendAttrData, roll_dice#,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
 from utils.markdown import style
@@ -56,8 +57,6 @@ class Character:
 
     c_race = 'Placeholder'
     c_class = 'Placeholder'
-    c_name = 'Placeholder'
-    c_surname = 'Placeholder'
     
     c_weapon = ['Dagger']
     c_armor = ['Cloth shirt']
@@ -83,17 +82,20 @@ class Character:
 
 def CreateNewCharacter(name):
     filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
-    with open(filename, 'a') as f:
+    with open(filename, 'a') as f, open("utils/race.json", "r") as r, open("utils/class.json", "r") as c, open("utils/traits_abilities.json") as t:
+        race_data = json.load(r)
+        class_data = json.load(c)
+        traits_data = json.load(t)
 
         new_char = Character()
 
         races = []
         classes = []
 
-        for race in data.races:
+        for race in race_data:
             races.append(race)
 
-        for _class in data.classes:
+        for _class in class_data:
             classes.append(_class)
 
         new_char.c_class = classes[randrange(0,len(classes))]
@@ -101,45 +103,7 @@ def CreateNewCharacter(name):
         new_char.c_race = races[randrange(0,len(races))]
         new_char.c_class = chooseClass(name)
 
-        forenames = []
-        surnames = []
-
-        if new_char.c_race == 'Human':
-            types = []
-
-            for type in data.races['Human']['first names']:
-                types.append(type)
-
-            type = types[randrange(0,len(types))]
-
-            appendAttr(forenames, data.races[new_char.c_race]['first names'][type])
-            appendAttr(surnames, data.races[new_char.c_race]['last names'][type])
-
-        elif new_char.c_race == 'Half-Elf':
-            types = []
-
-            for type in data.races['Human']['first names']:
-                types.append(type)
-
-            type = types[randrange(0,len(types))]
-
-            appendAttr(forenames, data.races['Human']['first names'][type])
-            appendAttr(surnames, data.races['Human']['last names'][type])
-            appendAttr(forenames, data.races['Elf']['first names'])
-            appendAttr(surnames, data.races['Elf']['last names'])
-
-        else:
-            for name in data.races[new_char.c_race]['first names']:
-                forenames.append(name)
-
-            if new_char.c_race == 'Half-Orc': pass
-            else:
-                for name in data.races[new_char.c_race]['last names']: 
-                    surnames.append(name)
-
-        new_char.c_name = forenames[randrange(0,len(forenames))]
-
-        if new_char.c_race != 'Half-Orc': new_char.c_surname = surnames[randrange(0,len(surnames))]
+            
 
                                 #this is where we change the stat rolls:
         num_dice = int(input("How many dice would you like to roll? "))
@@ -152,20 +116,14 @@ def CreateNewCharacter(name):
         new_char.c_wisdom = roll_dice(num_dice, num_sides, 'Wisdom', name)
         new_char.c_char = roll_dice(num_dice, num_sides, 'Charisma', name)
 
-        weapons = []
-        armors = []
 
-        appendAttr(weapons, data.classes[new_char.c_class]['weapons'])
-        appendAttr(armors, data.classes[new_char.c_class]['armor'])
-
-        new_char.c_weapon = weapons[randrange(0,len(weapons))]
-        new_char.c_armor = armors[randrange(0,len(armors))]
-        new_char.c_skills = data.classes[new_char.c_class]['skills']
+        new_char.c_skills = class_data[new_char.c_class]['skills']
         new_char.c_langs = ['Common']
-        new_char.c_langs += data.races[new_char.c_race]['languages']
-        new_char.c_racial_traits = data.races[new_char.c_race]['traits']
-        c_bab = data.classes[new_char.c_class]['BAB']
+        new_char.c_langs += race_data[new_char.c_race]['languages']
+        new_char.c_racial_traits = race_data[new_char.c_race]['traits']
+        c_bab = class_data[new_char.c_class]['BAB']
 
+        #Printing out character traits, (mannerisms, traits, profession, appearances, alignment, + traits_Abilities)
         mannerisms = []
         new_char.c_mannerisms = appendAttrData(mannerisms, data.mannerisms)
 
@@ -178,21 +136,13 @@ def CreateNewCharacter(name):
         appearances = []
         new_char.c_appearance = appendAttrData(appearances, data.appearance)
 
-
         Alignment = []
         new_char.c_alignment = appendAttrData(Alignment, data.alignment)
 
         traits_abilities = []
-        new_char.c_traits_abilities = appendAttrData(traits_abilities, data.traits_abilities)
-
-        weapon_groups = []
-        new_char.c_weapon_groups = appendAttrData(weapon_groups, data.weapon_groups)
-
-
-            
-
+        new_char.c_traits_abilities = appendAttrData(traits_abilities, traits_data)
     
-        
+        #prints stats
         print(f'Strength: {new_char.c_str}\nDexterity: {new_char.c_dex}', file=f)
         print(f'Constitution: {new_char.c_const} \nIntelligence: {new_char.c_int}', file=f)
         print(f'Wisdom: {new_char.c_wisdom}\nCharisma: {new_char.c_char}' + '\n', file=f )
@@ -216,19 +166,24 @@ def CreateNewCharacter(name):
         print(f'Traits' + '\n', new_char.c_racial_traits)
 
 
-# comment this out later
-
+        #print out alignment + physical characteristics
         print(f'Alignment' + '\n', new_char.c_alignment)
-#        print(f'hair_colors' + '\n', new_char.c_hair_colors)
-#        print(f'hair_types' + '\n', new_char.c_langs)
-#        print(f'eye_colors' + '\n', new_char.c_skills)
-#        print(f'appearance' + '\n', new_char.c_racial_traits)
-
         print(f'Alignment' + '\n', new_char.c_alignment, file=f)
+      
+        #Potentially add a charactersitics by region section
+        hair_color_choice = random.choice(hair_colors)
+        hair_type_choice = random.choice(hair_types)
+        eye_color_choice = random.choice(eye_colors)
+        appearance_choice = random.choice(appearance)
 
-            #adding a process where we select deity based off of alignment
+        print(f'hair_colors' + '\n', hair_color_choice)
+        print(f'hair_types' + '\n', hair_type_choice)
+        print(f'eye_colors' + '\n', eye_color_choice)
+        print(f'appearance' + '\n', appearance_choice)
 
 
+        
+        #deciding deity based off of aligment
         if 'good' in new_char.c_alignment:
             chosen_deity = random.choice(good_deities)
             print(f"Deity \n {chosen_deity}",file=f)
@@ -284,12 +239,7 @@ def CreateNewCharacter(name):
             print(f'(mannerisms):',manners, file=f)
 
         
-      
-
-                
-                
-       
-
+        #printing out your class
         print('this is your new class')
         print(new_char.c_class)
         print('this is your new class', file=f)

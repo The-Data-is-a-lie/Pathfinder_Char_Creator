@@ -216,7 +216,7 @@
         "weight": [130, "2d6"],
         "size": "Medium",
         "speed": 20,
-        "traits": ["Darkvision", "Dwarven Resilience"],
+        "traits": ["Darkvision", "Dwarven Resilience", "Greed", "Hatred", "Weapon familiarity"],
         "languages": ["Dwarvish", "Giant", "Gnomish", "Goblin", "Orc", "Undercommon"],
         "ability_score_adjustments": {
             "Constitution": 2,

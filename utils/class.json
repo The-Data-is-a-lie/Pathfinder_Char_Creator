@@ -8,7 +8,7 @@
             "hp": 8,
             "gold": "3d6",
             "BAB": "mid",
-            "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+            "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
             "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
             "casting level": "mid",
             "saving throws": ["Fortitude", "Reflex"]
@@ -22,7 +22,7 @@
         "hp": 10,
         "gold": "5d6",
         "BAB":    "high",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
         "casting level": "none",
         "saving throws": ["Fortitude", "Will"]
@@ -36,10 +36,9 @@
         "hp": 6,
         "gold": "2d6",
         "BAB": "low",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level":    "high",
-    
         "saving throws": ["Fortitude", "Will"]
     },
     
@@ -51,8 +50,7 @@
             "hp": 12,
             "gold": "3d6",
             "BAB":    "high",
-    
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "none",
             "saving throws": ["Fortitude", "Reflex"]
@@ -66,7 +64,7 @@
         "hp": 8,
         "gold": "3d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Will"]
@@ -80,8 +78,7 @@
         "hp": 10,
         "gold": "4d6",
         "BAB":    "high",
-    
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "low",
         "saving throws": ["Fortitude", "Will"]
@@ -96,7 +93,7 @@
         "gold": "3d6",
         "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "none",
         "saving throws": ["Fortitude", "Reflex"]
@@ -111,7 +108,7 @@
         "gold": "5d6",
         "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "none",
         "saving throws": ["Fortitude", "Will"]
@@ -125,7 +122,7 @@
         "hp": 8,
         "gold": "5d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level":    "high",
     
@@ -140,7 +137,7 @@
             "hp": 8,
             "gold": "2d4",
             "BAB": "mid",
-            "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+            "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level":    "high",
     
@@ -156,7 +153,7 @@
         "gold": "5d4",
         "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "none",
         "saving throws": ["Fortitude", "Reflex"]
@@ -171,7 +168,7 @@
         "gold": "4d6x10",
         "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "none",
         "saving throws": ["Reflex", "Will"]
@@ -185,7 +182,7 @@
         "hp": 8,
         "gold": "2d6x10",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Reflex"]
@@ -199,7 +196,7 @@
         "hp": 8,
         "gold": "5d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Will"]
@@ -213,7 +210,7 @@
         "hp": 8,
         "gold": "3d6 x 10",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Will"]
@@ -227,7 +224,7 @@
         "hp": 8,
         "gold": "2d6 x 10",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "low",
         "saving throws": ["Fortitude", "Will"]
@@ -241,7 +238,7 @@
         "hp": 8,
         "gold": "4d4 x 10",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Will"]
@@ -256,7 +253,7 @@
         "gold": "2d10",
         "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "none",
         "saving throws": ["Fortitude", "Will"]
@@ -270,7 +267,7 @@
         "hp": 8,
         "gold": "5d4",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "none",
         "saving throws": ["Reflex", "Will"]
@@ -284,7 +281,7 @@
         "hp": 8,
         "gold": "4d4",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Will"]
@@ -298,7 +295,7 @@
         "hp": 8,
         "gold": "2d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level":    "high",
     
@@ -314,7 +311,7 @@
         "gold": "5d4",
         "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "low",
         "saving throws": ["Fortitude", "Will"]
@@ -328,7 +325,7 @@
         "hp": 6,
         "gold": "2d6",
         "BAB": "low",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level":    "high",
         "saving throws": ["Will"]
@@ -343,7 +340,7 @@
         "gold": "5d6",
         "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "low",
         "saving throws": ["Fortitude", "Reflex"]
@@ -357,7 +354,7 @@
         "hp": 8,
         "gold": "4d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "none",
         "saving throws": ["Reflex", "Will"]
@@ -372,7 +369,7 @@
         "hp": 6,
         "gold": "3d6",
         "BAB": "low",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level":    "high",
     
@@ -387,7 +384,7 @@
         "hp": 8,
         "gold": "3d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Will"]
@@ -401,7 +398,7 @@
         "hp": 8,
         "gold": "3d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Reflex", "Will"]
@@ -416,7 +413,7 @@
         "gold": "3d6",
         "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "none",
         "saving throws": ["Fortitude", "Reflex"]
@@ -432,7 +429,7 @@
         "hp": 8,
         "gold": "3d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "none",
         "saving throws": ["Fortitude", "Reflex"]
@@ -446,7 +443,7 @@
         "hp": 8,
         "gold": "3d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Will"]
@@ -460,7 +457,7 @@
         "hp": 6,
         "gold": "3d6",
         "BAB": "low",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level":    "high",
     
@@ -475,7 +472,7 @@
         "hp": 6,
         "gold": "3d6",
         "BAB": "low",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level":    "high",
     
@@ -492,7 +489,7 @@
         "hp": 8,
         "gold": "3d6x10",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "none",
         "saving throws": ["Reflex", "Will"]
@@ -506,7 +503,7 @@
         "hp": 8,
         "gold": "2d10",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "none",
         "saving throws": ["Fortitude", "Will"]
@@ -519,7 +516,7 @@
             "hp": 8,
             "gold": "3d6x10",
             "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "none",
             "saving throws": ["Fortitude", "Reflex"]
@@ -533,7 +530,7 @@
             "gold": "3d6x10",
             "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
        "casting level": "none",
             "saving throws": ["Fortitude", "Will"]
@@ -547,7 +544,7 @@
             "gold": "4d6x10",
             "BAB":    "high",
     
-         "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+         "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
          "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
          "casting level": "none",
             "saving throws": ["Fortitude", "Will"]
@@ -562,7 +559,7 @@
             "gold": "3d6x10",
             "BAB":    "high",
     
-         "regions": ["Tal-falko","Dolestan","Sojoria","Ieso"],       
+         "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
          "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
          "casting level": "none",
             "saving throws": ["Fortitude", "Will"]

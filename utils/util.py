@@ -2,7 +2,7 @@ from random import randrange
 from math import floor
 import random
 from utils import data
-from utils.data import regions, weapon_groups_region, weapon_groups, archetypes
+from utils.data import regions, weapon_groups_region, weapon_groups, archetypes, disciplines
 import json
 #from utils.race import race
 
@@ -103,6 +103,17 @@ def Roll_Level(name):
         elif level >= 11 and path == 2:
             feats = feats-6           
 
+        #adding an additional option where we print disciplines for the people to get (we can add functionality so it's based off of region later)
+        #to make it based off of region, we simply just do what we did with weapons_region_group, ...
+        if path == 1:
+            disciplines_choice = random.choice(disciplines)
+            print(disciplines_choice)
+            print(disciplines_choice,file=f)
+        elif path == 2:
+            disciplines_choice=random.sample(disciplines,k=2)
+            print(disciplines_choice)
+            print(disciplines_choice,file=f)
+
         extra_ability_score_levels = floor(level/4)
         print ("This is the number of bonus feats per level ")
         print(feats)
@@ -119,7 +130,7 @@ def Roll_Level(name):
 
 def chooseClass(name):
     filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
-    with open(filename, 'a') as f, open("utils/race.json", "r") as b, open("first_names_regions.json", "r") as a, open("first_names_regions.json", "r") as g:
+    with open(filename, 'a') as f, open("utils/race.json", "r") as r, open("first_names_regions.json", "r") as a, open("first_names_regions.json", "r") as g, open("utils/class.json", "r") as c:
         """
         Gives the Character a random Class 
         - Returns
@@ -129,7 +140,7 @@ def chooseClass(name):
         BAB = input('Enter BAB (H/M/L): ').capitalize()
         
         # Prompt the user to select a region
-        userInput_region = input('Select region [input the number for the region you want] (1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, ...)').lower()
+        userInput_region = input('Select region [input the number for the region you want] (1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, 5=Spire, 6=Feyador, 7=Esterdragon, 8=Grundykin Damplands, 9=Dust Cairn, 10= ...)').lower()
         userInput_race = input('Select race (e.g. Goblin, Human, Drow, ...)').capitalize()
         print(userInput_race)
         if userInput_region.isdigit() and int(userInput_region) in range(1, 10):
@@ -172,22 +183,23 @@ def chooseClass(name):
 
         # Iterate through the classes and select the ones that meet the BAB requirement
         classes = []
-        for class_name, class_info in data.classes.items():
-            #print(class_info.keys()) #to see if the key actually exists in the class dictionary
-            if region in class_info['regions'] and userInput_race in class_info['race']:
+        race_data = json.load(r)
+        class_data = json.load(c)
+        for class_name in class_data.keys():
+            if region in class_data[class_name]["regions"] and userInput_race in class_data[class_name]["race"]:
                 # Check BAB input + region input
-                if BAB == 'H' and class_info['BAB'] == 'high':
+                if BAB == "H" and class_data[class_name]["BAB"] == "high":
                     classes.append(class_name)
-                elif BAB == 'M' and class_info['BAB'] == 'mid':
+                elif BAB == "M" and class_data[class_name]["BAB"] == "mid":
                     classes.append(class_name)
-                elif BAB == 'L' and class_info['BAB'] == 'low':
+                elif BAB == "L" and class_data[class_name]["BAB"] == "low":
                     classes.append(class_name)
                 else:
                     # Ignore classes that don't meet the BAB requirement
                     continue
 
         # added this in to print out ability score adjustments per race
-        race_data = json.load(b)
+        
         if userInput_race in race_data:
             ability_scores = race_data[userInput_race]["ability scores"]
             print(f"Ability Scores for {userInput_race}")
