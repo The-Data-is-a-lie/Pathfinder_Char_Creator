@@ -61,6 +61,12 @@ weapon_groups_region = {
     'Kaeru no Tochi': ['katana', 'Kusarigama', 'Tonfa', 'Hooked Lance', 'Nodachi', 'Kama', 'Wakizashi']
 }
 
+hit_dice = {
+    "d12": ["Barbarian", "Warder"],
+    "d10": ["Anti-Paladin","Bloodrager","Brawler","Fighter","Cavalier","Gunslinger","Paladin","Ranger","Samurai","Slayer","Swashbuckler", "Unchained Monk", "Warlord","Zealot"],
+    "d8": ["Alchemist","Bard","Cleric","Druid","Hunter","Inquisitor","Investigator","Magus","Medium","Mesmerist","Mystic","Ninja","Occultist","Oracle","Psychic","Rogue","Shaman","Skald","Spiritualist","Summoner","Stalker","Warpriest"],
+    "d6": ["Arcanist","Psychic","Sorcerer","Witch","Wizard"]
+}
 
 #add all of forests options
 languages = ['Abyssal', 'Aklo', 'Aquan', 'Auran', 'Boggard', 'Celestial', 'Common', 'Cyclops', 'Dark Folk', 'Draconic', 'Druidic', 'Drow Sign Language', 'Dwarven', 'Elven', 'Giant', 'Gnoll', 'Gnome', 'Goblin', 'Grippli', 'Halfling', 'Ignan', 'Infernal', 'Kelish', 'Orc', 'Protean', 'Sphinx', 'Sylvan', 'Tengu', 'Terran', 'Treant', 'Undercommon', 'Vegepygmy', 'Vishkanya', 'Wayang']

@@ -1,6 +1,6 @@
 {
 
-        "Alchemist": {
+    "Alchemist": {
             "weapons": ["Club", "Dagger", "Dart", "Heavy Crossbow", "Light Crossbow", "Mace", "Morningstar", "Quarterstaff", "Sickle", "Sling", "Spear"],
             "armor": ["Padded", "Leather", "Studded Leather", "Chain Shirt"],
             "skills": ["Appraise", "Craft", "Fly", "Heal", "Knowledge (arcana)", "Knowledge (nature)", "Perception", "Profession", "Sleight of Hand", "Spellcraft", "Survival", "Use Magic Device"],
