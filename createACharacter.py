@@ -3,19 +3,12 @@ from utils import data
 import json
 from utils.data import regions, weapon_groups_region, archetypes, skills, evil_deities, good_deities, neutral_deities, languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class
 #from utils.data import archetypes
-from utils.util import  RollStat, chooseClass,  appendAttr, appendAttrData, roll_dice#,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
+from utils.util import  chooseClass, appendAttrData, roll_dice#,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
 from utils.markdown import style
 import random
 
-#Extension Modules:
-from modules.extraDetail import ExtraDetail
-from modules.currency import Currency
-
-
 #External Imports
 from random import randrange
-import sys
-
 
 # Base Character Traits
 class Character:
@@ -53,7 +46,8 @@ class Character:
 
 def CreateNewCharacter(name):
     filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
-    with open(filename, 'a') as f, open("utils/race.json", "r") as r, open("utils/class.json", "r") as c, open("utils/traits_abilities.json") as t:
+    with open(filename, 'a') as f, open("utils/race.json", "r") as r, open("utils/class.json", "r") as c, open("utils/traits_abilities.json") as t, open("utils/profession.json") as p:
+        profession_data = json.load(p)
         race_data = json.load(r)
         class_data = json.load(c)
         traits_data = json.load(t)
@@ -69,14 +63,11 @@ def CreateNewCharacter(name):
         for _class in class_data:
             classes.append(_class)
 
-        new_char.c_class = classes[randrange(0,len(classes))]
-
-        new_char.c_race = races[randrange(0,len(races))]
         new_char.c_class = chooseClass(name)
 
-            
 
-                                #this is where we change the stat rolls:
+
+                        #this is where we change the stat rolls:
         num_dice = int(input("How many dice would you like to roll? "))
         num_sides = int(input("How many sides should each die have? "))
 
@@ -90,8 +81,6 @@ def CreateNewCharacter(name):
 
         new_char.c_skills = class_data[new_char.c_class]['skills']
         new_char.c_langs = ['Common']
-        new_char.c_langs += race_data[new_char.c_race]['languages']
-        new_char.c_racial_traits = race_data[new_char.c_race]['traits']
         c_bab = class_data[new_char.c_class]['BAB']
 
         #Printing out character traits, (mannerisms, traits, profession, appearances, alignment, + traits_Abilities)
@@ -100,9 +89,6 @@ def CreateNewCharacter(name):
 
         traits = []
         new_char.c_traits = appendAttrData(traits, data.traits)
-
-        profession = []
-        new_char.c_profession = appendAttrData(profession, data.profession)
 
         Alignment = []
         new_char.c_alignment = appendAttrData(Alignment, data.alignment)
@@ -115,15 +101,13 @@ def CreateNewCharacter(name):
         print(f'Constitution: {new_char.c_const} \nIntelligence: {new_char.c_int}', file=f)
         print(f'Wisdom: {new_char.c_wisdom}\nCharisma: {new_char.c_char}' + '\n', file=f )
 
-        print(f'Languages' + '\n', new_char.c_langs, file=f)
+
         print(f'Skills' + '\n', new_char.c_skills, file=f)
-        print(f'Traits' + '\n', new_char.c_racial_traits, file=f)
 
         print(f'Strength: {new_char.c_str}\nDexterity: {new_char.c_dex}')
         print(f'Constitution: {new_char.c_const} \nIntelligence: {new_char.c_int}')
         print(f'Wisdom: {new_char.c_wisdom}\nCharisma: {new_char.c_char}')
 
-        print(f'Languages' + '\n', new_char.c_langs)
         print(f'Skills' + '\n', new_char.c_skills)
 
         # Printing out additional 1-4 random class
@@ -131,7 +115,7 @@ def CreateNewCharacter(name):
         print(f'Specialized Skills {skill_list}')
         print(f'Specialized Skills {skill_list}', file=f)
 
-        print(f'Traits' + '\n', new_char.c_racial_traits)
+
 
 
         #print out alignment + physical characteristics
@@ -170,16 +154,11 @@ def CreateNewCharacter(name):
         extra_lang = random.sample(languages,k=random_number)
         print(f"These are the extra languages the character knows: {extra_lang}")
         print(f"These are the extra languages the character knows: {extra_lang}", file=f)
-#        print(f'hair_colors' + '\n', new_char.c_hair_colors)
-#        print(f'hair_types' + '\n', new_char.c_langs)
-#        print(f'eye_colors' + '\n', new_char.c_skills)
-#        print(f'appearance' + '\n', new_char.c_racial_traits)
-
-
 
 
         # use random.sample to select 3 random professions 
-        random_professions = random.sample(profession, 3)
+        professions = profession_data['Profession']
+        random_professions = random.sample(professions, 3)
         # loop through the random abilities and print out each element
         for proforce in random_professions:
             print(f'(profession):',proforce)
@@ -273,21 +252,5 @@ def CreateNewCharacter(name):
 
             
         print('===============================================================')
-
-        match sys.modules:
-            case 'modules.extraDetail':
-                print(style.BOLD+'Extra Details Module:\n'+style.END)
-                ExtraDetail()
-
-            case 'modules.currency':
-                print(style.BOLD+'Currency Module:\n'+style.END)
-                Currency()
-                
-            # case 'modules.deities':
-            #     print(style.BOLD+'Deities Module:\n'+style.END)
-            #     Deities()
-
-            case _:
-                pass
 
             

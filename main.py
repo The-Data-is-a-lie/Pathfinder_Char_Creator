@@ -10,12 +10,17 @@ print(style.BOLD + f'Welcome to the D&D Random Character Generator ({version})' 
 isTrue = True
 
 
+
+
 while isTrue:
 	character_name = random.randint(0,10000000)
 	# write the location of where you want it to export here:
 	filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{character_name}_character_sheet.txt"
-	with open(filename, 'a') as f:
+	with open(filename, 'a') as f, open("last_names_regions.json", "r") as a, open("first_names_regions.json", "r") as g:
 		print('===============================================================',file=f)
+		#
+
+		
 		userInput = input('Create a new character? (y/n): ').lower()
 		isTrue = isBool(userInput)
 		#User selects the region to start from (if they want to)
@@ -25,7 +30,6 @@ while isTrue:
 			#end of region macro
 			CreateNewCharacter(character_name)
 			Roll_Level(character_name)
-
 			#need to devise a way to randomly pick good feats
 			for i in range(1, 11):
 				if random.randint(1, 10000) == 10000:
@@ -58,7 +62,7 @@ while isTrue:
 
 # Add Extra race stats (Tortugan, Loxophant, ...)
 # Have forest give me extra race info (Tortugan, Loxophant, ...)
-# 
+#
 
 								#notes
 #Might not do below:

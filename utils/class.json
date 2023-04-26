@@ -50,9 +50,9 @@
             "hp": 12,
             "gold": "3d6",
             "BAB":    "high",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
-       "casting level": "none",
+            "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
+             "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+            "casting level": "none",
             "saving throws": ["Fortitude", "Reflex"]
     },
     

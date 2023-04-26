@@ -6,26 +6,6 @@ from utils.data import regions, weapon_groups_region, weapon_groups, archetypes,
 import json
 #from utils.race import race
 
-def RollStat():
-    """
-    Rolls a series of random numbers between 1 - 7 and adds them together
-    - Returns
-    - Total (Integer)
-    """
-    
-    dice = []
-    for i in range(4): dice.append(randrange(1,7))
-
-    total = 0
-    lowest = dice[0]
-
-    for num in dice:
-        if num < lowest: lowest = num
-
-    for num in dice: total += num
-
-    return total - lowest
-
 def roll_dice(num_dice, num_sides, stat, name):
     filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
     with open(filename, 'a') as f:
@@ -139,16 +119,19 @@ def chooseClass(name):
         #grabbing race + class + region data from the json files
         race_data = json.load(r)
         class_data = json.load(c)
+        first_names_region = json.load(a)
+        last_names_region = json.load(g) 
         # Prompt the user to input BAB
         BAB = input('Enter BAB (H/M/L): ').capitalize()
         
         # Prompt the user to select a region
-        
-        userInput_region = input('Select region [input the number for the region you want] (1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, 5=Spire, 6=Feyador, 7=Esterdragon, 8=Grundykin Damplands, 9=Dust Cairn, 10= ...)').lower()
+        print(f"Please make sure below matches this list: {first_names_region.keys()}")
+
+        userInput_region = input('Select region [input the number for the region you want] from above list: (1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, 5=Spire, 6=Feyador, 7=Esterdragon, 8=Grundykin Damplands, 9=Dust Cairn, 10=Kaeru no Tochi ...)').lower()
         print(race_data.keys())
         userInput_race = input(f'Select race from the above list: ').capitalize()
         print(userInput_race)
-        if userInput_region.isdigit() and int(userInput_region) in range(1, 10):
+        if userInput_region.isdigit() and int(userInput_region) in range(1, 30):
             # make sure max range = the number of regions we have
             region_index = int(userInput_region) - 1
             # if you want to add regions, make sure to add them in the data section as well
@@ -167,15 +150,14 @@ def chooseClass(name):
         print(f'weapons not dependent on region {weapons}')
         print(f'weapons not dependent on region {weapons}', file=f)
         # loop through the random abilities and print out each element
-        for reg in regions:
+        for reg in regions: #regions != region, they are very different, regions is defined in the data tab, region is the user input assigned as a number above
                 if reg == region:
                     weaponz = random.choice(weapon_groups_region[reg])
                     print(f"Weapon for {reg}: {weaponz}")
                     print(f"Weapon for {reg}: {weaponz}", file=f)  
 
         
-        first_names_region = json.load(a)
-        last_names_region = json.load(g)   
+  
 
         if region in first_names_region:
             f_names = first_names_region[region]
@@ -205,9 +187,21 @@ def chooseClass(name):
         # added this in to print out ability score adjustments per race
         
         if userInput_race in race_data:
+            racial_traits = race_data[userInput_race]["traits"]
+            racial_language = race_data[userInput_race]["languages"]
+            racial_size = race_data[userInput_race]["size"]
+            racial_speed = race_data[userInput_race]["speed"]
             ability_scores = race_data[userInput_race]["ability scores"]
             print(f"Ability Scores for {userInput_race}")
             print(f"Ability Scores for {userInput_race}", file=f)
+            print(f"Racial traits: {racial_traits}")
+            print(f"Racial traits: {racial_traits}",file=f)
+            print(f"racial languages: {racial_language}")
+            print(f"racial languages: {racial_language}",file=f)
+            print(f"racial size: {racial_size}")
+            print(f"racial size: {racial_size}",file=f)
+            print(f"racial speed: {racial_speed}")
+            print(f"racial speed: {racial_speed}",file=f)
             
             for score, value in ability_scores.items():
                 print(f"{score}: {value}")
@@ -224,6 +218,30 @@ def chooseClass(name):
             age_roll += left
             print(f"Age: {age_roll}")
             print(f"Age: {age_roll}", file=f)
+
+            if "weight" in race_data[userInput_race]:
+                weight = race_data[userInput_race]["weight"]
+            if isinstance(weight[1], str):
+                left, right = map(int, weight[1].split('d'))
+                weight_roll = sum([random.randint(1, right) for i in range(left)]) + weight[0]
+            else:
+                weight_roll = random.randint(weight[0], weight[1])
+                left = weight[0]
+            weight_roll += left
+            print(f"weight: {weight_roll}")
+            print(f"weight: {weight_roll}", file=f)
+
+            if "height" in race_data[userInput_race]:
+                height = race_data[userInput_race]["height"]
+            if isinstance(height[1], str):
+                left, right = map(int, height[1].split('d'))
+                height_roll = sum([random.randint(1, right) for i in range(left)]) + height[0]
+            else:
+                height_roll = random.randint(height[0], height[1])
+                left = height[0]
+            height_roll += left
+            print(f"height: {height_roll}")
+            print(f"height: {height_roll}", file=f)
            
  
         
