@@ -499,8 +499,13 @@ def skills(name):
             class_data = json.load(c)
             
             if isinstance(new_char_c_class, tuple):
-                c_skills  = class_data[c_class[0]]['skills']
-                c_skills_2 = class_data[c_class[1]]['skills']
+                # Can use either method, new_char_c_class is a tuple so we need to select the right elements from it
+
+                # c_skills  = class_data[c_class]['skills']
+                # c_skills_2 = class_data[c_class_2]['skills']
+                c_skills  = class_data[new_char_c_class[0]]['skills']
+                c_skills_2 = class_data[new_char_c_class[1]]['skills']
+
                 print(f'Primary Skills' + '\n', c_skills)
                 print(f'Secondary Skills' + '\n', c_skills_2)
                 print(f'Primary Skills' + '\n', c_skills, file=f)
