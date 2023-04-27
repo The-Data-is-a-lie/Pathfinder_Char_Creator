@@ -44,7 +44,7 @@ skills = ["Acrobatics",
 
 #must match the same order as the weapon_groups_region section
 regions = ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"]
-races = ['Human','Drow', 'Aasimar', 'Goblin', 'Catfolk', 'Dragonborn', 'Dhampir']
+races = ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"]
 weapon_groups = ['Axes', 'Blades, Heavy', 'Blades, Light', 'Bows', 'Close', 'Crossbows', 'Double', 'Firearms', 'Flails', 'Hammers', 'Monk', 'Natural', 'Polearms', 'Siege Engines', 'Spears', 'Thrown', 'Tribal']
 
 # make weapon group into a dictionary that depends on regions:

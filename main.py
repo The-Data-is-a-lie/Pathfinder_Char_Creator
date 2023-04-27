@@ -68,8 +68,6 @@ while isTrue:
 			print('Exiting Character Generator...')
 			break
 
-# Add a multi-class option + dip option (you can either multi-class or dip, no in between)
-# Adjust inherent stat roller (if Forest wants it adjusted)
 # Add Extra race stats (Tortugan, Loxophant, ...)
 # Have forest give me extra race info (Tortugan, Loxophant, ...)
 #

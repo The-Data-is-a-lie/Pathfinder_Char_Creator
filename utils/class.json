@@ -8,8 +8,8 @@
             "hp": 8,
             "gold": "3d6",
             "BAB": "mid",
-            "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-            "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+            "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+            "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
             "casting level": "mid",
             "saving throws": ["Fortitude", "Reflex"]
     },
@@ -22,8 +22,8 @@
         "hp": 10,
         "gold": "5d6",
         "BAB":    "high",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
         "casting level": "none",
         "saving throws": ["Fortitude", "Will"]
     },
@@ -36,8 +36,8 @@
         "hp": 6,
         "gold": "2d6",
         "BAB": "low",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level":    "high",
         "saving throws": ["Fortitude", "Will"]
     },
@@ -50,8 +50,8 @@
             "hp": 12,
             "gold": "3d6",
             "BAB":    "high",
-            "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-             "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+            "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+             "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
             "casting level": "none",
             "saving throws": ["Fortitude", "Reflex"]
     },
@@ -64,8 +64,8 @@
         "hp": 8,
         "gold": "3d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Will"]
     },
@@ -78,8 +78,8 @@
         "hp": 10,
         "gold": "4d6",
         "BAB":    "high",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "low",
         "saving throws": ["Fortitude", "Will"]
     },
@@ -93,8 +93,8 @@
         "gold": "3d6",
         "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "none",
         "saving throws": ["Fortitude", "Reflex"]
     },
@@ -108,8 +108,8 @@
         "gold": "5d6",
         "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "none",
         "saving throws": ["Fortitude", "Will"]
     },
@@ -122,8 +122,8 @@
         "hp": 8,
         "gold": "5d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level":    "high",
     
         "saving throws": ["Fortitude", "Will"]
@@ -137,8 +137,8 @@
             "hp": 8,
             "gold": "2d4",
             "BAB": "mid",
-            "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+            "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level":    "high",
     
             "saving throws": ["Fortitude", "Reflex", "Will"]
@@ -153,8 +153,8 @@
         "gold": "5d4",
         "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "none",
         "saving throws": ["Fortitude", "Reflex"]
     },
@@ -168,8 +168,8 @@
         "gold": "4d6x10",
         "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "none",
         "saving throws": ["Reflex", "Will"]
     },
@@ -182,8 +182,8 @@
         "hp": 8,
         "gold": "2d6x10",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Reflex"]
     },
@@ -196,8 +196,8 @@
         "hp": 8,
         "gold": "5d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Will"]
     },
@@ -210,8 +210,8 @@
         "hp": 8,
         "gold": "3d6 x 10",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Will"]
     },
@@ -224,8 +224,8 @@
         "hp": 8,
         "gold": "2d6 x 10",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "low",
         "saving throws": ["Fortitude", "Will"]
     },
@@ -238,8 +238,8 @@
         "hp": 8,
         "gold": "4d4 x 10",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Will"]
     },
@@ -253,8 +253,8 @@
         "gold": "2d10",
         "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "none",
         "saving throws": ["Fortitude", "Will"]
     },
@@ -267,8 +267,8 @@
         "hp": 8,
         "gold": "5d4",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "none",
         "saving throws": ["Reflex", "Will"]
     },
@@ -281,8 +281,8 @@
         "hp": 8,
         "gold": "4d4",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Will"]
     },
@@ -295,8 +295,8 @@
         "hp": 8,
         "gold": "2d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level":    "high",
     
         "saving throws": ["Fortitude", "Will"]
@@ -311,8 +311,8 @@
         "gold": "5d4",
         "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "low",
         "saving throws": ["Fortitude", "Will"]
     },
@@ -325,8 +325,8 @@
         "hp": 6,
         "gold": "2d6",
         "BAB": "low",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level":    "high",
         "saving throws": ["Will"]
     },
@@ -340,8 +340,8 @@
         "gold": "5d6",
         "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "low",
         "saving throws": ["Fortitude", "Reflex"]
     },
@@ -354,8 +354,8 @@
         "hp": 8,
         "gold": "4d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "none",
         "saving throws": ["Reflex", "Will"]
     },
@@ -369,8 +369,8 @@
         "hp": 6,
         "gold": "3d6",
         "BAB": "low",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level":    "high",
     
         "saving throws": ["Fortitude", "Will"]
@@ -384,8 +384,8 @@
         "hp": 8,
         "gold": "3d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Will"]
     },
@@ -398,8 +398,8 @@
         "hp": 8,
         "gold": "3d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Reflex", "Will"]
     },
@@ -413,8 +413,8 @@
         "gold": "3d6",
         "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "none",
         "saving throws": ["Fortitude", "Reflex"]
     },
@@ -429,8 +429,8 @@
         "hp": 8,
         "gold": "3d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "none",
         "saving throws": ["Fortitude", "Reflex"]
     },
@@ -443,8 +443,8 @@
         "hp": 8,
         "gold": "3d6",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "mid",
         "saving throws": ["Fortitude", "Will"]
     },
@@ -457,8 +457,8 @@
         "hp": 6,
         "gold": "3d6",
         "BAB": "low",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level":    "high",
     
         "saving throws": ["Fortitude", "Will"]
@@ -472,8 +472,8 @@
         "hp": 6,
         "gold": "3d6",
         "BAB": "low",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level":    "high",
     
         "saving throws": ["Fortitude", "Reflex"]
@@ -489,8 +489,8 @@
         "hp": 8,
         "gold": "3d6x10",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "none",
         "saving throws": ["Reflex", "Will"]
     },
@@ -503,8 +503,8 @@
         "hp": 8,
         "gold": "2d10",
         "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "none",
         "saving throws": ["Fortitude", "Will"]
     },
@@ -516,8 +516,8 @@
             "hp": 8,
             "gold": "3d6x10",
             "BAB": "mid",
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "none",
             "saving throws": ["Fortitude", "Reflex"]
         },
@@ -530,8 +530,8 @@
             "gold": "3d6x10",
             "BAB":    "high",
     
-        "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-        "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
        "casting level": "none",
             "saving throws": ["Fortitude", "Will"]
         },
@@ -544,8 +544,8 @@
             "gold": "4d6x10",
             "BAB":    "high",
     
-         "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+         "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+         "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
          "casting level": "none",
             "saving throws": ["Fortitude", "Will"]
     
@@ -559,8 +559,8 @@
             "gold": "3d6x10",
             "BAB":    "high",
     
-         "regions": ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn"],       
-         "race": ["Human","Drow", "Aasimar", "Goblin", "Catfolk", "Dragonborn", "Dhampir"], 
+         "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+         "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
          "casting level": "none",
             "saving throws": ["Fortitude", "Will"]
     }

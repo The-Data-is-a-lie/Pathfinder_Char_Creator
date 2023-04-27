@@ -101,7 +101,7 @@ def chooseClass(name):
         # Prompt the user to select a region
         print(f"Please make sure below matches this list: {first_names_region.keys()}")
 
-        userInput_region = input('Select region [input the number for the region you want] from above list: (1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, 5=Spire, 6=Feyador, 7=Esterdragon, 8=Grundykin Damplands, 9=Dust Cairn, 10=Kaeru no Tochi ...)').lower()
+        userInput_region = input('Select region [input the number for the region you want] from above list: (0 = Random, 1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, 5=Spire, 6=Feyador, 7=Esterdragon, 8=Grundykin Damplands, 9=Dust Cairn, 10=Kaeru no Tochi ...)').lower()
         print(race_data.keys())
         userInput_race = input(f'Select race from the above list: ').capitalize()
         print(userInput_race)
@@ -112,6 +112,12 @@ def chooseClass(name):
             region = regions[region_index]
             print('You have selected this region: ' + region)
             print('You have selected this region: ' + region, file=f)
+        elif int(userInput_region) == 0:
+            #make sure this is the full number of regions in the util.data regions area
+            region_index = random.randint(0,10)
+            region = regions[region_index]
+            print('You have randomly selected this region: ' + region)
+            print('You have randomly selected this region: ' + region, file=f)
         else:
             print('You have selected no region.')
             print('You have selected no region.', file=f)
@@ -141,7 +147,6 @@ def chooseClass(name):
             print(f"Name for {region}: {f_name} {l_name}")    
             print(f"Name for {region}: {f_name} {l_name}", file=f)        
 
-
         # Iterate through the classes and select the ones that meet the BAB requirement
         classes = []
         global class_name
@@ -157,13 +162,34 @@ def chooseClass(name):
                 else:
                     # Ignore classes that don't meet the BAB requirement
                     continue
-
  
-        global c_class
+
+        #If there isn't a racial option in the the BAB list you want, then it will error out
+        #currently all races can be all classes
+        global c_class, c_class_2
         # Select a random class from the list of eligible classes
-        print(f'These are the classes available to get {classes}')
-        c_class = classes[randrange(0,len(classes))]
-        return c_class
+        #adding a 10% chance for the character to take a dip or multi-class
+        chance_dip = random.randint(0,100)
+        coin_flip = random.randint(0,100)
+        if  chance_dip >= 90 and coin_flip >= 50:
+            c_class=classes[randrange(0,len(classes))]
+            c_class_2 = random.choice(list(class_data.keys()))
+            print(f"Primary class: {c_class}")
+            print(f"1 level Dip {c_class_2}")
+            print(f"Primary class: {c_class}",file=f)
+            print(f"Secondary Multi-class {c_class_2}",file=f)   
+        elif chance_dip >= 90 and coin_flip < 50:
+            c_class=classes[randrange(0,len(classes))]
+            c_class_2 = random.choice(list(class_data.keys()))
+            print(f"Primary class: {c_class}")
+            print(f"Secondary Multi-class {c_class_2}")
+            print(f"Primary class: {c_class}",file=f)
+            print(f"Secondary Multi-class {c_class_2}",file=f)            
+        else:
+            c_class = classes[randrange(0,len(classes))]
+            return c_class
+
+        return c_class, c_class_2           
 
 def path_of_war(name):
     filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
@@ -329,21 +355,22 @@ def inherent_stats(name):
             elif 30 >= roll > 20:
                 stats += roll_inherent(1,2)
             elif 40 >= roll > 30:
-                stats += roll_inherent(1,2) + 1
+                stats += roll_inherent(1,2)
             elif 50 >= roll > 40:
-                stats += roll_inherent(1,3) + 1
+                stats += roll_inherent(1,3)
             elif 60 >= roll > 50:
-                stats += roll_inherent(1,4) + 1
+                stats += roll_inherent(1,2) + 1
             elif 70 >= roll > 60:
-                stats += roll_inherent(2,2) + 1
+                stats += roll_inherent(2,2)
             elif 80 >= roll > 70:
-                stats += roll_inherent(2,3) + 1
+                stats += roll_inherent(1,3) + 1
             elif 90 >= roll > 80:
-                stats += roll_inherent(2,4)
+                stats += roll_inherent(1,4) + 1
             elif 99 >= roll > 90:
-                stats += roll_inherent(2,4) + 1
+                stats += roll_inherent(2,4)
             elif roll == 100:
-                stats += roll_inherent(2,4) + 2
+                stats += roll_inherent(2,4)
+                print("Choose one of the stats, rather than assign it based off of backstory")
         
         print(f"this is your total inherent stat buff: {stats}")
         print(f"this is your total inherent stat buff: {stats}",file=f)        

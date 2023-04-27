@@ -21,11 +21,13 @@ class Character:
 
     c_race = 'Placeholder'
     c_class = 'Placeholder'
+
     
     c_weapon = ['Dagger']
     c_armor = ['Cloth shirt']
     
     c_skills = ['Placeholder']
+    c_skills_2 = ['Placeholder']
     c_spells = ['None']
     c_hp = 1
 
@@ -51,16 +53,11 @@ def CreateNewCharacter(name):
         class_data = json.load(c)
         traits_data = json.load(t)
 
-        global c_const
-        global c_str
-        global c_dex
-        global c_int
-        global c_wisdom
-        global c_char
+        global c_const, c_str, c_dex, c_int, c_wisdom, c_char
         global traits_abilities
         global c_alignment
         global c_langs
-        global c_skills
+        global c_skills, c_skills_2
 
         new_char = Character()
 
@@ -74,8 +71,7 @@ def CreateNewCharacter(name):
             classes.append(_class)
 
         new_char.c_class = chooseClass(name)
-
-
+        new_char_c_class = new_char.c_class
 
                         #this is where we change the stat rolls:
         num_dice = int(input("How many dice would you like to roll? "))
@@ -98,11 +94,20 @@ def CreateNewCharacter(name):
         new_char.c_wisdom = c_wisdom                                
         new_char.c_char = c_char
 
-        c_skills = class_data[new_char.c_class]['skills']
-        new_char.c_skills = c_skills
+        if isinstance(new_char_c_class, tuple):
+            c_skills  = class_data[new_char.c_class[0]]['skills']
+            c_skills_2 = class_data[new_char.c_class[1]]['skills']
+            new_char.c_skills = c_skills
+            new_char.c_skills_2 = c_skills_2
+        else:
+            c_skills = class_data[new_char.c_class]['skills']
+            new_char.c_skills = c_skills
+
         c_langs = ['Common']
         new_char.c_langs = c_langs
-        c_bab = class_data[new_char.c_class]['BAB']
+        #c_class is now a tuple sometimes, so we need to be able to work with if it is
+        #c_bab = class_data[new_char.c_class[0]]['BAB']
+        #c_bab = class_data[new_char.c_class[1]]['BAB']
 
         #Creating character traits, (mannerisms, traits, profession, appearances, alignment, + traits_Abilities so we can print them out later
         mannerisms = []
@@ -125,6 +130,7 @@ def CreateNewCharacter(name):
 
 
         print(f'Skills' + '\n', new_char.c_skills, file=f)
+        print(f'Skills' + '\n', new_char.c_skills_2, file=f)
 
         print(f'Strength: {new_char.c_str}\nDexterity: {new_char.c_dex}')
         print(f'Constitution: {new_char.c_const} \nIntelligence: {new_char.c_int}')
