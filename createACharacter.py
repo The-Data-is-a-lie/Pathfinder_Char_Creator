@@ -58,6 +58,7 @@ def CreateNewCharacter(name):
         global c_alignment
         global c_langs
         global c_skills, c_skills_2
+        global new_char_c_class
 
         new_char = Character()
 
@@ -94,14 +95,8 @@ def CreateNewCharacter(name):
         new_char.c_wisdom = c_wisdom                                
         new_char.c_char = c_char
 
-        if isinstance(new_char_c_class, tuple):
-            c_skills  = class_data[new_char.c_class[0]]['skills']
-            c_skills_2 = class_data[new_char.c_class[1]]['skills']
-            new_char.c_skills = c_skills
-            new_char.c_skills_2 = c_skills_2
-        else:
-            c_skills = class_data[new_char.c_class]['skills']
-            new_char.c_skills = c_skills
+
+
 
         c_langs = ['Common']
         new_char.c_langs = c_langs
@@ -127,34 +122,13 @@ def CreateNewCharacter(name):
         print(f'Strength: {new_char.c_str}\nDexterity: {new_char.c_dex}', file=f)
         print(f'Constitution: {new_char.c_const} \nIntelligence: {new_char.c_int}', file=f)
         print(f'Wisdom: {new_char.c_wisdom}\nCharisma: {new_char.c_char}' + '\n', file=f )
-
-
-        print(f'Skills' + '\n', new_char.c_skills, file=f)
-        print(f'Skills' + '\n', new_char.c_skills_2, file=f)
-
         print(f'Strength: {new_char.c_str}\nDexterity: {new_char.c_dex}')
         print(f'Constitution: {new_char.c_const} \nIntelligence: {new_char.c_int}')
         print(f'Wisdom: {new_char.c_wisdom}\nCharisma: {new_char.c_char}')
 
 
-
-
-
-        
-        #printing out your class
-        print('this is your new class')
-        print(new_char.c_class)
-        print('this is your new class', file=f)
-        print(new_char.c_class, file=f)
-
-
-
-                        
-
-
-
         # Randomly Assigning archetypes:
-
+        #need to add an if statement like above to check if it's a tuple or not
        # char_class = c_class.lower()
        # selected_archetype = random.choice(archetypes[char_class])
        # print('this is the randomly selected archetype' +  '\n' + selected_archetype + '\n' + ' for this class' + '\n' + char_class)

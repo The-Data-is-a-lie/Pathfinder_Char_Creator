@@ -2,7 +2,7 @@
 from createACharacter import CreateNewCharacter
 from utils.markdown import style
 from utils.data import version
-from utils.util import isBool, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_deities_and_skills #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
+from utils.util import isBool, skills, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
 import random
 
 print(style.BOLD + f'Welcome to the D&D Random Character Generator ({version})' + style.END)
@@ -36,8 +36,9 @@ while isTrue:
 			various_racial_attr(character_name)
 			appearnce_func(character_name)
 			personality_and_profession(character_name)
-			alignment_deities_and_skills(character_name)
+			alignment_and_deities(character_name)
 			path_of_war(character_name)
+			skills(character_name)
 			#need to devise a way to randomly pick good feats
 			for i in range(1, 11):
 				if random.randint(1, 10000) == 10000:

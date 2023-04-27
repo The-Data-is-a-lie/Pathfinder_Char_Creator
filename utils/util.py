@@ -187,6 +187,7 @@ def chooseClass(name):
             print(f"Secondary Multi-class {c_class_2}",file=f)            
         else:
             c_class = classes[randrange(0,len(classes))]
+            print(f"This is your only class: {c_class}")
             return c_class
 
         return c_class, c_class_2           
@@ -461,17 +462,10 @@ def personality_and_profession(name):
 
 
 
-def alignment_deities_and_skills(name):
-        from createACharacter import c_skills, c_alignment
+def alignment_and_deities(name):
+        from createACharacter import c_alignment
         filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
         with open(filename, 'a') as f:
-            print(f'Skills' + '\n', c_skills, file=f)
-            print(f'Skills' + '\n', c_skills)
-
-            # Printing out additional 1-4 random class
-            skill_list = random.choices(skills, k=4)
-            print(f'Specialized Skills {skill_list}')
-            print(f'Specialized Skills {skill_list}', file=f)
 
             #print out alignment + physical characteristics
             print(f'Alignment' + '\n', c_alignment)
@@ -496,6 +490,30 @@ def alignment_deities_and_skills(name):
             print(f"These are the extra languages the character knows: {extra_lang}")
             print(f"These are the extra languages the character knows: {extra_lang}", file=f)
 
+
+def skills(name):
+        from createACharacter import new_char_c_class
+        from utils.data import skills
+        filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+        with open(filename, 'a') as f, open("utils/class.json", "r") as c:
+            class_data = json.load(c)
+            
+            if isinstance(new_char_c_class, tuple):
+                c_skills  = class_data[c_class[0]]['skills']
+                c_skills_2 = class_data[c_class[1]]['skills']
+                print(f'Primary Skills' + '\n', c_skills)
+                print(f'Secondary Skills' + '\n', c_skills_2)
+                print(f'Primary Skills' + '\n', c_skills, file=f)
+                print(f'Secondary Skills' + '\n', c_skills_2, file=f)
+            else:
+                c_skills = class_data[c_class]['skills']
+                print(f'Skills' + '\n', c_skills)
+                print(f'Skills' + '\n', c_skills, file=f)
+
+            # Printing out additional 1-4 random specialized skills
+            skill_list = random.choices(skills, k=4)
+            print(f'Specialized Skills {skill_list}')
+            print(f'Specialized Skills {skill_list}', file=f)
 
 
 def chooseRace():
