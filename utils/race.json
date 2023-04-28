@@ -385,7 +385,12 @@
     "size": "Small",
     "speed": 20,
     "traits": ["Darkvision", "Swarming","Rodent Empathy","Tinker"],
-    "languages": ["Common", "Ratfolk"]
+    "languages": ["Common", "Ratfolk"],
+    "ability scores": {
+        "Strength": "-2",
+        "Dex": "+2",
+        "Int": "+2"
+    }
 },
 
 "Sylph": {
@@ -483,8 +488,15 @@
         "size": "Large",
         "speed": 30,
         "traits": ["Low-Light Vision", "Natural Hunter"],
-        "languages": ["Common"]
-    },
+        "languages": ["Common"],
+        "ability scores": {
+            "Wisdom": "+4",
+            "Dexterity": "+2",
+            "Constitution": "+2",
+            "Intelligence": "-2",
+            "Strength": "+2"
+    }
+},
 
     "D-ziriak": {
         "first names": ["Chavi", "Jaswinder", "Kaela", "Korin", "Liris", "Mazzy", "Nanali", "Rajni", "Sarene", "Zahra"],
@@ -503,7 +515,7 @@
             "Intelligence": "-2",
             "Strength": "+2"
         }
-    },
+},
 
 
     "Tortugan": {
@@ -515,6 +527,14 @@
         "size": "Large",
         "speed": 20,
         "traits": ["Low-Light Vision", "Natural Hunter"],
-        "languages": ["Common"]
+        "languages": ["Common"],
+        "ability scores": {
+            "Wisdom": "+4",
+            "Dexterity": "+2",
+            "Constitution": "+2",
+            "Intelligence": "-2",
+            "Strength": "+2"
+        }
     }
+
 }

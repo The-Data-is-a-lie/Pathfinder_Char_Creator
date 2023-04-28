@@ -45,8 +45,8 @@ class Character:
     def __str__(self): return f'Name: {self.c_name} ({self.c_race} {self.c_class})'
 
 
-def CreateNewCharacter(name):
-    filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+def CreateNewCharacter():
+    from main import filename
     with open(filename, 'a') as f, open("utils/race.json", "r") as r, open("utils/class.json", "r") as c, open("utils/traits_abilities.json") as t, open("utils/profession.json") as p:
         profession_data = json.load(p)
         race_data = json.load(r)
@@ -71,7 +71,7 @@ def CreateNewCharacter(name):
         for _class in class_data:
             classes.append(_class)
 
-        new_char.c_class = chooseClass(name)
+        new_char.c_class = chooseClass()
         new_char_c_class = new_char.c_class
 
                         #this is where we change the stat rolls:
@@ -80,12 +80,12 @@ def CreateNewCharacter(name):
 
         #declare con as global so we cna work with it
         
-        c_str = roll_dice(num_dice, num_sides, 'Strength', name)
-        c_dex = roll_dice(num_dice, num_sides, 'Dexterity', name)
-        c_const = roll_dice(num_dice, num_sides, 'Constitution', name)
-        c_int = roll_dice(num_dice, num_sides, 'Intelligence', name)
-        c_wisdom = roll_dice(num_dice, num_sides, 'Wisdom', name)
-        c_char = roll_dice(num_dice, num_sides, 'Charisma', name)
+        c_str = roll_dice(num_dice, num_sides, 'Strength')
+        c_dex = roll_dice(num_dice, num_sides, 'Dexterity')
+        c_const = roll_dice(num_dice, num_sides, 'Constitution')
+        c_int = roll_dice(num_dice, num_sides, 'Intelligence')
+        c_wisdom = roll_dice(num_dice, num_sides, 'Wisdom')
+        c_char = roll_dice(num_dice, num_sides, 'Charisma')
 
 
         new_char.c_str = c_str

@@ -1,15 +1,14 @@
 from random import randrange
 from math import floor
 #importing stats in case we want to work on them
-
 import random
 from utils import data
 from utils.data import traits, mannerisms, regions, weapon_groups, weapon_groups_region, archetypes, disciplines, skills, evil_deities, good_deities, neutral_deities, languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class
 import json
 #from utils.race import race
 
-def roll_dice(num_dice, num_sides, stat, name):
-    filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+def roll_dice(num_dice, num_sides, stat):
+    from main import filename
     with open(filename, 'a') as f:
         rolls = []
         for i in range(num_dice):
@@ -22,8 +21,8 @@ def roll_inherent(sides,size):
     return random.randint(sides,size)
     
 
-def Roll_Level(name):
-    filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+def Roll_Level():
+    from main import filename
     with open(filename, 'a') as f, open("utils/class.json", 'r') as c:
         class_data = json.load(c)
         """
@@ -43,7 +42,6 @@ def Roll_Level(name):
 
         # Roll for level using weights
         global level
-        global feats
         global character_class_level
         level = random.choices(range(min_num, max_num+1), weights=weights)[0]
 
@@ -58,7 +56,7 @@ def Roll_Level(name):
                 character_class_level = (level - x)
         else:
             character_class_level = level - x
-
+        
         if npcEnabled:
             print(f'This is your number of npc levels: {x}')
             print(f'This is your non-npc levels: {character_class_level}')
@@ -71,17 +69,29 @@ def Roll_Level(name):
             print('Invalid input. Please enter "y" or "n".')
 
             # end of npc class level macro
+
+            #adding flaws to help calculate total feats
+
         print("this is the total character level ")
         print(level)
         print("this is the total character level ", file=f)
-        print(level, file=f)        
-        feats = (4 + floor(level/2) + floor(level/5))
-                    
-                                                                      
- 
-    
-def chooseClass(name):
-    filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+        print(level, file=f)
+        global feats       
+        if len(flaw) == 2 or len(flaw) == 3:
+            feats = (4 + floor(level/2) + floor(level/5))
+        elif len(flaw) == 4:
+            #add 1 extra feat because of 2 extra flaws
+            feats = (4 + 1 + floor(level/2) + floor(level/5))
+        elif len(flaw) == 1:
+            #remove 1 extra feat because of 1 less flaw
+            feats = (4 - 1 + floor(level/2) + floor(level/5))
+        else:
+            #remove 2 extra feats because of no flaws
+            feats = (4 - 2 + floor(level/2) + floor(level/5))
+    return feats
+                                                                  
+def chooseClass():
+    from main import filename
     with open(filename, 'a') as f, open("utils/race.json", "r") as r, open("last_names_regions.json", "r") as a, open("first_names_regions.json", "r") as g, open("utils/class.json", "r") as c:
         """
         Gives the Character a random Class 
@@ -192,52 +202,53 @@ def chooseClass(name):
 
         return c_class, c_class_2           
 
-def path_of_war(name):
-    filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+def path_of_war_chance():
+    from main import filename
     with open(filename, 'a') as f, open("utils/class.json", "r") as c:
-        from utils.util import feats, c_class
         class_data = json.load(c)
         global path
-        path=0
+        path = None
         chance = random.randint(1,100)
         chance_2 = random.randint(1,100)
         if c_class not in path_of_war_class:
-                if class_data[class_name]["BAB"] == 'high':
-                    if chance >= 25:
-                        path = 1
-                        print('this is how many path of war abiities they take ')
-                        print('this is how many path of war abiities they take ', file = f)
-                        print(path)
-                        print(path, file = f)                    
-                        if chance_2 >= 75:
-                            path = 2
-                            print('this is how many path of war abiities they take ')
-                            print('this is how many path of war abiities they take ', file = f)
-                            print(path)
-                            print(path, file = f)
-                        return path
-                elif class_data[class_name]["BAB"] == 'mid':
-                    if chance >= 50:
-                        path = 1
-                        print(path)
-                        if chance_2 >= 90:
-                            path = 2
-                            print('this is how many path of war abiities they take ')
-                            print('this is how many path of war abiities they take ', file = f)
-                            print(path)
-                            print(path, file = f)
-                        return path            
-
-                    else:
-                        if chance >= 90:
+                    if class_data[class_name]["BAB"] == 'high':
+                        if chance >= 25:
                             path = 1
                             print('this is how many path of war abiities they take ')
                             print('this is how many path of war abiities they take ', file = f)
                             print(path)
-                            print(path, file = f)
-                            return path
-                        
-                #path of War section (calculates amount of path of war for later)
+                            print(path, file = f)                   
+                        if chance_2 >= 75:
+                                path = 2
+                                print('this is how many path of war abiities they take ')
+                                print('this is how many path of war abiities they take ', file = f)
+                                print(path)
+                                print(path, file = f)
+                    elif class_data[class_name]["BAB"] == 'mid':
+                        if chance >= 50:
+                            path = 1
+                            print(path)
+                            if chance_2 >= 90:
+                                path = 2
+                                print('this is how many path of war abiities they take ')
+                                print('this is how many path of war abiities they take ', file = f)
+                                print(path)
+                                print(path, file = f)        
+
+                        else:
+                            if chance >= 90:
+                                path = 1
+                                print('this is how many path of war abiities they take ')
+                                print('this is how many path of war abiities they take ', file = f)
+                                print(path)
+                                print(path, file = f)
+        return path
+
+               #path of War section (calculates amount of path of war for later)
+def path_of_war():
+    from main import filename
+    with open(filename, 'a') as f:
+        global feats
         if path == 0:
             feats = feats - 0
         elif 7 > level >= 3 and path == 1:
@@ -251,18 +262,20 @@ def path_of_war(name):
         elif 11 > level >= 7 and path == 2:
             feats = feats-4 
         elif level >= 11 and path == 2:
-            feats = feats-6           
+            feats = feats-6
+                    
 
+        print(f" This is their path # {path}")
         #adding an additional option where we print disciplines for the people to get (we can add functionality so it's based off of region later)
         #to make it based off of region, we simply just do what we did with weapons_region_group, ...
         if path == 1:
             disciplines_choice = random.choice(disciplines)
-            print(disciplines_choice)
-            print(disciplines_choice,file=f)
+            print(f" This is their discipline {disciplines_choice}")
+            print(f" This is their discipline {disciplines_choice}",file=f)
         elif path == 2:
             disciplines_choice=random.sample(disciplines,k=2)
-            print(disciplines_choice)
-            print(disciplines_choice,file=f)
+            print(f" This is their discipline {disciplines_choice}")
+            print(f" This is their discipline {disciplines_choice}",file=f)
 
         extra_ability_score_levels = floor(level/4)
         print ("This is the number of bonus feats per level ")
@@ -272,11 +285,13 @@ def path_of_war(name):
         print ("number of bonus ability scores from levels ")        
         print(extra_ability_score_levels)
         print ("number of bonus ability scores from levels ", file=f)        
-        print(extra_ability_score_levels, file=f)  
+        print(extra_ability_score_levels, file=f)
+        return feats, extra_ability_score_levels      
+ 
 
 
-def various_racial_attr(name):
-    filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+def various_racial_attr():
+    from main import filename
     with open(filename, 'a') as f, open("utils/class.json", 'r') as c, open("utils/race.json", 'r') as r:
             race_data = json.load(r)
             if userInput_race in race_data:
@@ -299,8 +314,8 @@ def various_racial_attr(name):
                 
 
 
-def age_weight_height(name):
-    filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+def age_weight_height():
+    from main import filename
     with open(filename, 'a') as f, open("utils/class.json", 'r') as c, open("utils/race.json", 'r') as r:
             race_data = json.load(r)
             #added this in to print out a random age for the character
@@ -341,8 +356,8 @@ def age_weight_height(name):
             print(f"height: {height_roll}", file=f)
 
 
-def inherent_stats(name):
-    filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+def inherent_stats():
+    from main import filename
     with open(filename, 'a') as f, open("utils/class.json", 'r') as c:
         inherent = int(floor(level/2))
         global stats
@@ -378,9 +393,9 @@ def inherent_stats(name):
                 #end of inherent stats roller   
 
 
-def Total_Hitpoint_Calc(name):
+def Total_Hitpoint_Calc():
     from createACharacter import c_const, c_str, c_dex, c_int, c_wisdom, c_char
-    filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+    from main import filename
     with open(filename, 'a') as f, open("utils/class.json", 'r') as c:
         class_data = json.load(c)
                        # Class Hit Dice + total Hit points
@@ -400,8 +415,8 @@ def Total_Hitpoint_Calc(name):
 
 
 
-def appearnce_func(name):
-    filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+def appearnce_func():
+    from main import filename
     with open(filename, 'a') as f, open("utils/class.json", 'r') as c:
         #Potentially add a charactersitics by region section
         hair_color_choice = random.choice(hair_colors)
@@ -423,10 +438,10 @@ def appearnce_func(name):
 
 
 
-def personality_and_profession(name):
+def personality_and_profession():
         from createACharacter import traits_abilities
         from utils.data import mannerisms, traits
-        filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+        from main import filename
         with open(filename, 'a') as f, open("utils/race.json", "r") as r, open("utils/class.json", "r") as c, open("utils/traits_abilities.json") as t, open("utils/profession.json") as p:
             profession_data = json.load(p)
             traits_abilities = json.load(t)
@@ -460,12 +475,18 @@ def personality_and_profession(name):
                 print(f'(mannerisms):',manners)
                 print(f'(mannerisms):',manners, file=f)
 
+            for character_flaws in range(len(flaw)):
+                print(f"(character_flaws): {flaw[character_flaws]}")
+                print(f"(character_flaws): {flaw[character_flaws]}",file=f)
 
 
-def alignment_and_deities(name):
+
+def alignment_and_deities():
         from createACharacter import c_alignment
-        filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
-        with open(filename, 'a') as f:
+        from main import filename
+        with open(filename, 'a') as f, open("utils/class.json", "r") as c:
+            class_data = json.load(c)
+            global class_name
 
             #print out alignment + physical characteristics
             print(f'Alignment' + '\n', c_alignment)
@@ -490,11 +511,16 @@ def alignment_and_deities(name):
             print(f"These are the extra languages the character knows: {extra_lang}")
             print(f"These are the extra languages the character knows: {extra_lang}", file=f)
 
+            print(class_name)
+            if "Druid" == class_name:
+                print("you know Druidic")
+                print("you know Druidic",file=f)                
 
-def skills(name):
+
+def skills():
         from createACharacter import new_char_c_class
         from utils.data import skills
-        filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+        from main import filename
         with open(filename, 'a') as f, open("utils/class.json", "r") as c:
             class_data = json.load(c)
             
@@ -520,6 +546,54 @@ def skills(name):
             print(f'Specialized Skills {skill_list}')
             print(f'Specialized Skills {skill_list}', file=f)
 
+
+def flaws():
+    from main import filename
+    with open(filename, 'a') as f, open("utils/flaws.json") as fl:
+        global flaw
+        data = json.load(fl)
+        flaw_data = data["Flaws"]
+        flaw_chance = random.randint(0,100)
+        if int(flaw_chance) <= 50:
+            flaw = random.sample(list(flaw_data),2)
+        elif 50 < int(flaw_chance) <= 65:
+            flaw = random.sample(list(flaw_data),3)
+        elif 65 < int(flaw_chance) <= 80:
+            flaw = random.sample(list(flaw_data),1)
+        elif 80 < int(flaw_chance) <= 95:
+            flaw = random.sample(list(flaw_data),0)
+        else:
+            flaw = random.sample(list(flaw_data),4)
+        return flaw
+    #printing flaws next to the personality traits, because I though it would make more sense there
+
+
+def mythic():
+            from main import filename
+            with open(filename, 'a') as f, open("utils/flaws.json") as fl:
+                for i in range(1, 11):
+                    if random.randint(1, 10000) == 10000:
+                        print(f'Character is mythic {i}')
+                        print(f'Character is mythic {i}',file=f)					
+                        for j in range(2, 11):
+                            roll = random.randint(1, 100)
+                            if roll >= 90:
+                                print(f'Character is mythic {j}')
+                                print(f'Character is mythic {j}',file=f)
+                            else:
+                                break
+                    else:
+                        print('didnt get mythic ')
+                        print('didnt get mythic ', file=f)
+                        break			
+
+                if random.randint(1,100) == 100:
+                    print('character is extremely lucky, make it a luck build rather than everything else ')
+                    print('character is extremely lucky, make it a luck build rather than everything else ', file=f)				
+                elif random.randint(1,100) <= 5:
+                    print('you need to take negative luck feats as well as normal feats ')
+                    print('you need to take negative luck feats as well as normal feats ', file = f)
+                                
 
 def chooseRace():
     """
