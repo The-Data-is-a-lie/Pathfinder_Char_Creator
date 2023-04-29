@@ -610,7 +610,7 @@ def Archetype_Assigner():
     from main import filename
     from utils.data import archetypes
     global c_class, c_class_2
-    with open(filename, 'a') as f:
+    with open(filename, 'a') as f: 
         if isinstance(new_char_c_class, tuple) and (c_class.lower() in archetypes or c_class_2.lower() in archetypes):
                 random_archetype_1 = random.choice(archetypes[c_class.lower()])
                 random_archetype_2 = random.choice(archetypes[c_class_2.lower()])
