@@ -211,7 +211,7 @@ def path_of_war_chance():
         chance = random.randint(1,100)
         chance_2 = random.randint(1,100)
         if c_class not in path_of_war_class:
-                    if class_data[class_name]["BAB"] == 'high':
+                    if class_data[c_class]["BAB"] == 'high':
                         if chance >= 25:
                             path = 1
                             print('this is how many path of war abiities they take ')
@@ -224,7 +224,7 @@ def path_of_war_chance():
                                 print('this is how many path of war abiities they take ', file = f)
                                 print(path)
                                 print(path, file = f)
-                    elif class_data[class_name]["BAB"] == 'mid':
+                    elif class_data[c_class]["BAB"] == 'mid':
                         if chance >= 50:
                             path = 1
                             print(path)
@@ -482,11 +482,11 @@ def personality_and_profession():
 
 
 def alignment_and_deities():
-        from createACharacter import c_alignment
+        from createACharacter import c_alignment, new_char_c_class
         from main import filename
         with open(filename, 'a') as f, open("utils/class.json", "r") as c:
             class_data = json.load(c)
-            global class_name
+            global c_class, c_class_2
 
             #print out alignment + physical characteristics
             print(f'Alignment' + '\n', c_alignment)
@@ -511,10 +511,20 @@ def alignment_and_deities():
             print(f"These are the extra languages the character knows: {extra_lang}")
             print(f"These are the extra languages the character knows: {extra_lang}", file=f)
 
-            print(class_name)
-            if "Druid" == class_name:
-                print("you know Druidic")
-                print("you know Druidic",file=f)                
+            # For testing purposes:
+            # if isinstance(new_char_c_class,tuple):
+            #     print(f"These are your classes:{c_class},{c_class_2}")
+            # else:
+            #     print(f"This is your one class: {c_class}")
+
+            if isinstance(new_char_c_class,tuple):
+                if "Druid" == c_class or "Druid" == c_class_2:
+                    print("you know Druidic")
+                    print("you know Druidic",file=f)          
+            else:
+                if "Druid" == c_class:
+                    print("you know Druidic")
+                    print("you know Druidic",file=f)                           
 
 
 def skills():
@@ -527,10 +537,10 @@ def skills():
             if isinstance(new_char_c_class, tuple):
                 # Can use either method, new_char_c_class is a tuple so we need to select the right elements from it
 
-                # c_skills  = class_data[c_class]['skills']
-                # c_skills_2 = class_data[c_class_2]['skills']
-                c_skills  = class_data[new_char_c_class[0]]['skills']
-                c_skills_2 = class_data[new_char_c_class[1]]['skills']
+                c_skills  = class_data[c_class]['skills']
+                c_skills_2 = class_data[c_class_2]['skills']
+                #c_skills  = class_data[new_char_c_class[0]]['skills']
+                #c_skills_2 = class_data[new_char_c_class[1]]['skills']
 
                 print(f'Primary Skills' + '\n', c_skills)
                 print(f'Secondary Skills' + '\n', c_skills_2)
@@ -593,7 +603,32 @@ def mythic():
                 elif random.randint(1,100) <= 5:
                     print('you need to take negative luck feats as well as normal feats ')
                     print('you need to take negative luck feats as well as normal feats ', file = f)
-                                
+
+
+def Archetype_Assigner():
+    from createACharacter import new_char_c_class
+    from main import filename
+    from utils.data import archetypes
+    global c_class, c_class_2
+    with open(filename, 'a') as f:
+        if isinstance(new_char_c_class, tuple) and (c_class.lower() in archetypes or c_class_2.lower() in archetypes):
+                random_archetype_1 = random.choice(archetypes[c_class.lower()])
+                random_archetype_2 = random.choice(archetypes[c_class_2.lower()])
+                print(f"The is your {random_archetype_1}")
+                print(f"The is your {random_archetype_2}")
+        elif not isinstance(new_char_c_class, tuple) and c_class.lower() in archetypes:
+            random_archetype = random.choice(archetypes[c_class.lower()])
+            print(f"Archetype: {random_archetype}")
+        else:
+            print("There are no archetypes yet available for this class :( ")
+
+            
+
+                # char_class = c_class.lower()
+                # selected_archetype = random.choice(archetypes[char_class])
+                # print('this is the randomly selected archetype' +  '\n' + selected_archetype + '\n' + ' for this class' + '\n' + char_class)
+                # selected_archetype = random.choice(archetypes.eval("archetypes_{new_char.c_class.lower()}"))
+                # print(f"This is the selected archetype for {c_class}: + {selected_archetype}")                        
 
 def chooseRace():
     """

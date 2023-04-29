@@ -127,16 +127,6 @@ def CreateNewCharacter():
         print(f'Wisdom: {new_char.c_wisdom}\nCharisma: {new_char.c_char}')
 
 
-        # Randomly Assigning archetypes:
-        #need to add an if statement like above to check if it's a tuple or not
-       # char_class = c_class.lower()
-       # selected_archetype = random.choice(archetypes[char_class])
-       # print('this is the randomly selected archetype' +  '\n' + selected_archetype + '\n' + ' for this class' + '\n' + char_class)
-        
-            #selected_archetype = random.choice(archetypes.eval("archetypes_{new_char.c_class.lower()}"))
-
-
-        #    print(f"This is the selected archetype for {new_char.c_class}: + {selected_archetype}")
 
 
 
