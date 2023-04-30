@@ -391,88 +391,115 @@ disciplines = ['Black Seraph', 'Broken Blade', 'Brutal Crocodile', 'Cursed Razor
 
 #all base classes are done
 archetypes = {
-'fighter': ['base','Tribal Defender', 'Biathlete', 'Road Warrior', 'Aether Soldier', 'Warmachine', 'Harrier', 'Knife Fighter', 'Man-at-Arms', 'Berserker', 'Chain Lasher', 'Challenger', 'Bonded Pet', 'Blade Shifter', 'Technique Master', 'Ironborn', 'Myrmidon', 'Silverblade Hunter', 'Swordsmith', 'Chakram Dervish', 'Quickblade', 'Spellscorn Fighter', 'Coachman', 'Tjuman', 'Pugilist', 'Ructioneer', 'Warrior of the Path', 'Scrapper', 'Aerial Assaulter', 'Spear Fighter', 'Skirmisher', 'Tribal Fighter', 'Venomblade', 'Viking', 'Aquanaut', 'Armiger', 'Defender', 'Lore Warden', 'High Guardian', 'Opportunist Fighter', 'Cyber-Soldier', 'Unbreakable', 'Phalanx Soldier', 'Gladiator', 'Gloomblade', 'Archer', 'Armor Master', 'Blackjack', 'Border Defender', 'Brawler', 'Buckler Duelist', 'Cad', 'Child of War', 'Corsair', 'Crossbowman', 'Dervish of Dawn', 'Dragonheir Scion', 'Dragoon', 'Drill Sergeant', 'Eldritch Guardian', 'Free Hand Fighter', 'Free-Style Fighter', 'Learned Duelist', 'Titan Fighter', 'Seasoned Commander', 'Martial Master', 'Mobile Fighter', 'Mutation Warrior', 'Pack Mule', 'Polearm Master', 'Relic Master', 'Roughrider', 'Savage Warrior', 'Sensate', 'Shielded Fighter', 'Siegebreaker', 'Steelbound Fighter', 'Swordlord', 'Tactician', 'Thunderstriker', 'Tower Shield Specialist', 'Trench Fighter', 'Two-Handed Fighter', 'Two-Weapon Warrior', 'Unarmed Fighter', 'Vengeful Hunter', 'Viking', 'Weapon Bearer Squire', 'Weapon Master', 'Warshade', 'Kappa-Bushi', 'Peltast', 'Tengubushi', 'Yakuza Bushi', 'Dragon Warrior']
+'alchemist': ['base',"Metallurgist (Alchemist Archetype)", "Necrophage (Ghoul Alchemist Archetype)", "Mutator (Blue)", "Metallurgist", "Mutator", "Wild Experimenter", "Fumigant", "Moonshiner", "Lycanthologist", "Herbalist", "Perfumer", "Cruorchymist (Alchemist Archetype)", "Aerochemist", "Mixologist", "Mnemostiller", "Energist", "Blightseeker", "Bogborn", "Bramble Brewer (Half-elf)", "Deep Bomber (Svirfneblin)", "Fey World Innovator", "Fire Bomber", "Oenopion Researcher", "Oozemaster", "Plague Bringer", "Saboteur", "Vaultbreaker", "Concocter", "Fermenter", "Gun Chemist", "Ice Chemist", "Aquachymist", "Crimson Chymist", "Energy Scientist", "Reanimator", "Royal Alchemist", "Sacrament Alchemist", "Wasteland Blighter", "Tinkerer", "Alchemical Sapper", "Alchemical Trapper (Kobold)", "Beastmorph", "Blazing Torchbearer", "Blood Alchemist", "Chirurgeon", "Clone Master", "Construct Rider", "Crypt Breaker", "Dimensional Excavator", "Dragonblood Chymist", "Ectochymist", "Ectoplasm Master", "Eldritch Poisoner", "Gloom Chymist", "Grenadier (PFS Field Guide)", "Grenadier (PRG:MC)", "Homunculist", "Horticulturist", "Inspired Chemist", "Internal Alchemist", "Interrogator", "Mad Scientist", "Metamorph", "Mindchemist", "Preservationist", "Promethean Alchemist", "Psychonaut", "Ragechemist", "Toxicant", "Trap Breaker", "Visionary Researcher", "Vivisectionist", "Winged Marauder (Goblin)"]
+#*
 ,
-#
-'barbarian': ['base','Armored Hulk','Beastkin Berserker','Blooded Arcanist','Breaker','Brutal Pugilist','Cannibal','Chaos Totem','Dreadnought','Elemental Kin','Fated Champion','Feral Gnasher','Flesheater','Furyborn','Goliath Druid','Hateful Rager','Hurler','Invulnerable Rager','Lion Blade','Marauder','Mooncursed','Mounted Fury','Pack Rager','Primal Hunter','Primalist','Raging Cannibal','Raging Cyclone','Raging Drunk','Raging Flame','Raging Hurler','Raging Tactician','Savage Barbarian','Scarred Rager','Sea Reaver','Shaman','Skeletal Champion','Spell Sunderer','Steel-Breaker','Superstitious','Survivor','Titan Mauler','Totem Warrior','True Primitive','Unchained Rager','Urban Barbarian','Wild Rager']
+'anti-paladin': ['base',"Kinetic Despoiler","Midnight Gun","Sinsworn Reaver","Spectral Terror","Witch-Eyed Knight","Blighted Myrmidon","Dread Vanguard","Fearmonger","Insinuator","Iron Tyrant","Knight of the Sepulcher","Rampager","Seal-Breaker","Tyrant"]
+#*
 ,
-#
+'arcanist': ['base',"Arcane Tinkerer","Aeromancer","Blade Adept","Blood Arcanist","Brown-Fur Transmuter","Collegiate Initiate","Eldritch Font","Elemental Master","Occultist","School Savant","Spell Specialist","Tarot Student","Twilight Sage","Unlettered Arcanist","White Mage"]
+#*
+,
+'barbarian': ['base','Armored Hulk','Beastkin Berserker',"Brutish Swamper","Cave Dweller","Deepwater Rager","Giant Stalker","Pack Hunter","Sharptooth","Wildborn","Geminate Invoker","Armored Hulk","Breaker","Brutal Pugilist","Burn Rider","Dreadnought","Drunken Brute","Drunken Rager","Elemental Kin","Fearsome Defender","Flesheater","Hurler","Invulnerable Rager","Jungle Rager","Liberator","Mad Dog","Mooncursed","Mounted Fury","Pack Rager","Primal Hunter","Raging Cannibal","Savage Barbarian","Savage Technologist","Scarred Rager","Sea Reaver","Superstitious","Titan Mauler","Totem Warrior","True Primitive","Untamed Rager","Urban Barbarian","Wild Rager"]
+,
+#*
+'bard': ['base',"Speaker of the Palatine Eye","Clockspeaker","Dwarven Scholar","Chronicler of Worlds","Cultivator","Disciple of the Forked Tongue (Vishkanya)","Fey Courtier","Fey Prankster","Fey World Minstrel","Filidh","Fortune-Teller","Luring Piper","Plant Speaker","Stonesinger","Thundercaller (PRG:UW)","Wasteland Chronicler","Argent Voice","Brazen Deceiver","Flamesinger","Ringleader (PRG:AG)","Flame Dancer","Diva","Animal Speaker","Arbiter","Arcane Duelist","Arcane Healer","Archaeologist","Archivist","Arrowsong Minstrel","Buccaneer","Busker","Celebrity","Court Bard","Court Fool","Daredevil","Demagogue","Dervish Dancer","Dervish of Dawn","Detective","Dirge Bard","Dragon Yapper (Kobold)","Duettist","Faith Singer","Geisha","Hoaxer","Impervious Messenger","Juggler","Lotus Geisha","Magician","Masked Performer","Mute Musician","Negotiator","Phrenologist","Provocateur","Ringleader (PRG:UI)","Sandman","Savage Skald","Sea Singer","Silver Balladeer","Solacer","Songhealer","Sorrowsoul","Sound Striker","Street Performer","Studious Librarian","Thundercaller (PPC:VBL)","Voice of the Wild","Wit"]
+#*
+,
+'bloodrager': ['base',"Symbol Striker","Ancestral Harbinger","Blood Conduit","Bloodrider","Bloody-Knuckled Rowdy","Crossblooded Rager","Enlightened Bloodrager (PZO1138)","Enlightened Bloodrager (PZO9465)","Greenrager","Hag-Riven","Id Rager","Metamagic Rager","Primalist","Prowler at World's End","Rageshaper","Spelleater","Steelblood","Untouchable Rager","Urban Bloodrager"]
+#*
+,
+'brawler': ['base',"Battle Dancer (Brawler Archetype)","Beast-Wrestler","Bouncer","Constructed Pugilist","Exemplar","Feral Striker","Hinyasi","Living Avalanche","Mutagenic Mauler","Shield Champion","Snakebite Striker","Steel-Breaker","Strangler","Strong-Side Boxer (Brawler Archetype)","Turfer","Venomfist","Verdant Grappler","Wild Child","Winding Path Renegade"]
+#*
+,
+'cleric': ['base',"Angakok" "Talvikind" "Cultist" "DivineAnimalCompanion" "DivineEnergy" "ShadowPriest" "UnholyBarrister" "Avatar" "SteelValkyrie" "DiscipleofOrcus" "Filth-PriestofTsathogga" "Polyglot" "Wuuntzu" "CultistofCharun" "Ascetic" "Charismatic" "Enthusiast" "Exorcist" "Flagelant" "Theosophist" "Vatic" "Weapon-Sworn" "WonderWorker" "Lawspeaker" "Idealist" "ChanneleroftheUnknown" "TriadicPriest" "BlossomingLight" "CrashingWave" "FoundationofFaith" "AsmodeanAdvocate" "Cardinal" "AngelfireApostle" "Appeaser" "CloisteredCleric" "Crusader" "DevilbanePriest" "DevoutPilgrim" "DivineParagon" "DivineScourge" "DivineStrategist" "Ecclesitheurge" "ElderMythosCultist" "Evangelist" "HeraldCaller" "HiddenPriest" "IronPriest" "MercifulHealer" "RoamingExorcist" "SacredAttendant" "ScrollScholar" "Separatist" "StoicCaregiver" "Theologian" "UndeadLord" "OccultPriest" "Kappa-Kannushi" "PiousSentinel" "Idolater"]
+,
+#*
+'cavalier': ['base',"Fell Rider (Hobgoblin)","Outrider (Lashunta)","Castellan","Circuit Judge","Constable","Courtly Knight","Daring Champion","Daring General","Disciple of the Pike","Drake Rider","Dune Drifter","Emissary","Esquire","Gallant","Gendarme","Ghost Rider","Green Knight","Herald Squire","Honor Guard","Horselord","Huntmaster","Hussar","Knight of the Wall","Luring Cavalier","Mother’s Fang","Musketeer","Oceanrider","Saurian Champion","Sister in Arms","Standard Bearer","Strategist","Wave Rider"]
+#*
+,
 'druid': ['base','Animal Lord', 'Aquatic Druid', 'Arboreal Druid', 'Blight Druid', 'Blistering Invective Druid', 'Cave Druid', 'Chaos Beast', 'Cleric of the Cudgel', 'Demoniac', 'Dragon Herald', 'Dread Druid', 'Druid of Decay', 'Druid of the Swarm', 'Elemental Ally', 'Elemental Druid', 'Elemental Scion', 'Feyspeaker', 'Green Faith Acolyte', 'Hedge Witch', 'Herald Caller', 'Hinterlander', 'Infiltrator', 'Ley Line Guardian', 'Lion Shaman', 'Menhir Savant', 'Mooncaller', 'Nature Fang', 'Nature Warden', 'Pack Lord', 'Primal Companion Hunter', 'Rage Prophet', 'Ranger', 'Ravager', 'Reincarnated Druid', 'Saurian Shaman', 'Serpentfire Adept', 'Shaman', 'Shapeshifter', 'Storm Druid', 'Storval Stalker', 'Street Performer', 'Totemic Druid', 'Twilight Sage', 'Urban Druid', 'Verdant Druid', 'Visionary Seeker', 'Vulture Shaman', 'White-Haired Witch', 'Wild Whisperer']
 ,
 #
-'cleric': ['base','Angelfire Apostle', 'Anger Inquisition', 'Aquatic Druid', 'Arcanist', 'Atheist', 'Battle Priest', 'Chaos Channeler', 'Cloistered Cleric', 'Crusader', 'Divine Strategist', 'Evangelist', 'Exalted', 'Feral Hunter', 'Inheritors Crusader', 'Liturgical Mage', 'Merciful Healer', 'Necromancer', 'Planar Oracle', 'Ravener Hunter', 'Sanguine Angel', 'Separatist', 'Shaman', 'Theologian', 'Undead Lord', 'Varisian Pilgrim', 'Visionary Prophet']
+'fighter': ['base','Tribal Defender', 'Biathlete', 'Road Warrior', 'Aether Soldier', 'Warmachine', 'Harrier', 'Knife Fighter', 'Man-at-Arms', 'Berserker', 'Chain Lasher', 'Challenger', 'Bonded Pet', 'Blade Shifter', 'Technique Master', 'Ironborn', 'Myrmidon', 'Silverblade Hunter', 'Swordsmith', 'Chakram Dervish', 'Quickblade', 'Spellscorn Fighter', 'Coachman', 'Tjuman', 'Pugilist', 'Ructioneer', 'Warrior of the Path', 'Scrapper', 'Aerial Assaulter', 'Spear Fighter', 'Skirmisher', 'Tribal Fighter', 'Venomblade', 'Viking', 'Aquanaut', 'Armiger', 'Defender', 'Lore Warden', 'High Guardian', 'Opportunist Fighter', 'Cyber-Soldier', 'Unbreakable', 'Phalanx Soldier', 'Gladiator', 'Gloomblade', 'Archer', 'Armor Master', 'Blackjack', 'Border Defender', 'Brawler', 'Buckler Duelist', 'Cad', 'Child of War', 'Corsair', 'Crossbowman', 'Dervish of Dawn', 'Dragonheir Scion', 'Dragoon', 'Drill Sergeant', 'Eldritch Guardian', 'Free Hand Fighter', 'Free-Style Fighter', 'Learned Duelist', 'Titan Fighter', 'Seasoned Commander', 'Martial Master', 'Mobile Fighter', 'Mutation Warrior', 'Pack Mule', 'Polearm Master', 'Relic Master', 'Roughrider', 'Savage Warrior', 'Sensate', 'Shielded Fighter', 'Siegebreaker', 'Steelbound Fighter', 'Swordlord', 'Tactician', 'Thunderstriker', 'Tower Shield Specialist', 'Trench Fighter', 'Two-Handed Fighter', 'Two-Weapon Warrior', 'Unarmed Fighter', 'Vengeful Hunter', 'Viking', 'Weapon Bearer Squire', 'Weapon Master', 'Warshade', 'Kappa-Bushi', 'Peltast', 'Tengubushi', 'Yakuza Bushi', 'Dragon Warrior']
 ,
 #
-'rogue':  ['base','Acrobat', 'Bandit', 'Beastmaster', 'Beguiler', 'Burglar', 'Charlatan', 'Chirurgeon', 'Circus Performer', 'Cloaked Dancer', 'Cloistered Cleric', 'Commando', 'Con Artist', 'Counterfeit Mage', 'Court Fool', 'Cutpurse', 'Daggermark Poisoner', 'Dandy', 'Dark Delver', 'Deep Walker', 'Demagogue', 'Dervish of Dawn', 'Eldritch Scoundrel', 'False Medium', 'Fast Hands', 'Gang Leader', 'Gloomblade', 'Guerrilla', 'Guild Agent', 'Guild Poisoner', 'Hidden Priest', 'Highwayman', 'Hooded Champion', 'Infiltrator', 'Knife Master', 'Liberator', 'Master Spy', 'Mouser', 'Natural Alchemist', 'Noble Fencer', 'Phantom Thief', 'Pilferer', 'Pirate', 'Poisoner', 'Rake', 'Rapscallion', 'Ratcatcher', 'Ringleader', 'Saboteur', 'Sandman', 'Sapper', 'Savage Skirmisher', 'Scavenger', 'Scout', 'Shadowdancer', 'Shadow Rager', 'Sleuth', 'Sniper', 'Spy', 'Stalker', 'Streetfighter', 'Survivalist', 'Swordmaster', 'Thief Acrobat', 'Thug', 'Trapsmith', 'Underground Chemist', 'Vexing Dodger', 'Vigilante', 'Wasp', 'Watersinger', 'Wild Child', 'Zealot']
-,
-#
-'ranger':  ['base','Airborne Ambusher', 'Arboreal Ranger', 'Battle Scout', 'Beastmaster', 'Blightwarden', 'Bow Nomad', 'Cavalier', 'Child of Acavna and Amaznen', 'Deep Walker', 'Divine Marksman', 'Dragon Hunter', 'Duskwarden', 'Falconer', 'Favored Enemy (aquatic)', 'Favored Enemy (dungeon)', 'Favored Enemy (forest)', 'Favored Enemy (giant)', 'Favored Enemy (magical beast)', 'Favored Enemy (plant)', 'Favored Enemy (undead)', 'Frost Tusk', 'Geomancer', 'Ghost Hunter', 'Giant Killer', 'Guide', 'Harrow Warden', 'Hooded Champion', 'Horse Lord', 'Horizon Walker', 'Infiltrator', 'Initiate of the Hunt', 'Liberator', 'Lion Blade', 'Living Monolith', 'Master of Many Forms', 'Natural Warrior', 'Nature Warden', 'Pack Lord', 'Pathfinder Chronicler', 'Polearm Master', 'Reaper of Secrets', 'Sable Company Marine', 'Savage Skirmisher', 'Sea Dog', 'Skirmisher', 'Stormwalker', 'Strider', 'Swift Hunter', 'Terramancer', 'Thundercaller', 'Trapper', 'Treantmonk (Druid/Ranger)', 'Trick Shot', 'Trickster', 'Two-Handed Fighter', 'Urban Ranger', 'Verdant Sorcerer', 'Wild Shadow', 'Wild Stalker', 'Witch Hunter', 'Woodland Skirmisher', 'World Walker']
-,
-#
-'paladin' : ['base','Angelfire Apostle', 'Blaze of Glory', 'Champion of the Faith', 'Chosen One', 'Divine Defender', 'Divine Hunter', 'Divine Strategist', 'Divine Warrior', 'Divine Weapon', 'Eagle Knight', 'Empyreal Knight', 'Enlightened Paladin', 'Erastils Boon', 'Holy Gun', 'Holy Tactician', 'Hospitaler', 'Inheritors Crusader', 'Knight of Ozem', 'Knight of the Sepulcher', 'Lion Blade', 'Living Grimoire', 'Oathbound Paladin', 'Oath of Charity', 'Oath of Chivalry', 'Oath of Duty', 'Oath of Loyalty', 'Oath of the Crown', 'Oath of the People', 'Oath of Vengeance', 'Oath against Savagery', 'Oath of Empathy', 'Oath of the Open Hand', 'Sacred Servant', 'Sanctified Prophet', 'Shining Knight', 'Undead Scourge']
-,
-#
-'alchemist': ['base','Alchemical Trapper', 'Apothecary', 'Beastmorph', 'Blood Alchemist', 'Bombardier', 'Chirurgeon', 'Clone Master', 'Construct Rider', 'Crypt Breaker', 'Ectoplasm Master', 'Elemental Master', 'Experimental Gunsmith', 'Feral Mutagen', 'Frost Rider', 'Grenadier', 'Gunslinger Alchemist', 'Infernal Alchemist', 'Inspired Chemist', 'Master Chymist', 'Mindchemist', 'Mutation Warrior', 'Plague Bringer', 'Psychonaut', 'Reanimator', 'Sapper', 'Soulforger', 'Spagyrist', 'Spelleater', 'Spirit Whisperer', 'Totemic Summoner', 'Twilight Sage', 'Vivisectionist']
+'gunslinger': ['base','Bolt Ace', 'Breaker', 'Bushwacker', 'Chronicler', 'Desperado', 'Dragoon', 'Firebrand', 'Grenadier', 'Gun Scavenger', 'Gun Tank', 'Mysterious Stranger', 'Musket Master', 'Nimble Shot', 'Pistolero', 'Pistolero Exemplar', 'Pirate', 'Rocketslinger', 'Sniper', 'Thunderstriker', 'Vigilante']
 #
 ,
-'monk': ['base','Black Asp', 'Chained Monk', 'Drunken Master', 'Flowing Monk', 'Gong-Fu Disciple', 'Hamatula Strike Monk', 'Hungry Ghost Monk', 'Iron Mountain', 'Ki Mystic', 'Ki Warrior', 'Lotus Geisha', 'Martial Artist', 'Master of Many Styles', 'Monk of the Four Winds', 'Monk of the Healing Hand', 'Monk of the Iron Mountain', 'Monk of the Lotus', 'Monk of the Mantis', 'Monk of the Sacred Mountain', 'Monk of the Seven Winds', 'Monk of the Silver Fist', 'Monk of the Third Eye', 'Mute Monk', 'Nagaji Sensei', 'Nornkith', 'Ouat Monk', 'Sacred Fist', 'Scaled Fist', 'Sensei', 'Sohei', 'Soothsayer', 'Soulknife Monk', 'Swordmaster', 'Tattooed Monk', 'Teisatsu', 'Thunderstriker', 'Unchained Monk', 'Weapon Adept']
+'hunter': ['base',"Chameleon Adept","Colluding Scoundrel","Feykiller","Flood Flourisher","Forester","Plant Master","Treestrider","Aquatic Beastmaster","Pelagic Hunter","Totem-Bonded","Blight Scout","Courtly Hunter","Divine Hunter","Feral Hunter","Packmaster","Patient Ambusher","Primal Companion","Roof Runner","Scarab Stalker","Urban Hunter"]
+#
+,
+'investigator': ['base',"Demolitionist","Engineer (Investigator Archetype)","Antiquarian","Jinyiwei","Tekritanin Arbiter","Portal Seeker","Cartographer","Malice Binder","Natural Philosopher","Reckless Epicurean","Ruthless Agent","Star Watcher","Toxin Codexer","Scavenger Investigator","Forensic Physician","Relentless Inspector","Guardian of Immortality","Profiler","Bonded Investigator","Cipher","Conspirator","Cryptid Scholar","Cult Hunter","Dread Investigator","Empiricist","Gravedigger","Hallucinist","Infiltrator","Lamplighter","Majordomo","Mastermind","Psychic Detective","Questioner","Skeptic","Sleuth","Spiritualist"]
+#
+,
+'inquisitor': ['base','Conversion Inquisitor', 'Daemon Slayer', 'Ecclesitheurge', 'Exorcist', 'Forensic Physician', 'Heretic', 'Infiltrator', 'Inheritors Crusader', 'Judgmental Crusader', 'Monster Tactician', 'Preacher', 'Prepared Inquisitor', 'Sacred Huntmaster', 'Sanctified Prophet', 'Sin Seeker', 'Spellbreaker', 'Witch Hunter', 'Agent of the Grave', 'Divine Assessor', 'Enlightened Paladin', 'Living Grimoire', 'Tactical Leader', 'Umbral Agent', 'Spellkiller', 'Threatener']#
+#
+,
+'unchained monk': ['base','Black Asp', 'Chained Monk', 'Drunken Master', 'Flowing Monk', 'Gong-Fu Disciple', 'Hamatula Strike Monk', 'Hungry Ghost Monk', 'Iron Mountain', 'Ki Mystic', 'Ki Warrior', 'Lotus Geisha', 'Martial Artist', 'Master of Many Styles', 'Monk of the Four Winds', 'Monk of the Healing Hand', 'Monk of the Iron Mountain', 'Monk of the Lotus', 'Monk of the Mantis', 'Monk of the Sacred Mountain', 'Monk of the Seven Winds', 'Monk of the Silver Fist', 'Monk of the Third Eye', 'Mute Monk', 'Nagaji Sensei', 'Nornkith', 'Ouat Monk', 'Sacred Fist', 'Scaled Fist', 'Sensei', 'Sohei', 'Soothsayer', 'Soulknife Monk', 'Swordmaster', 'Tattooed Monk', 'Teisatsu', 'Thunderstriker', 'Unchained Monk', 'Weapon Adept']
 #
 ,
 'magus': ['base',"Bladebound", "Eldritch Archer", "Hexcrafter", "Kensai", "Myrmidarch", "Staff Magus"]
 #
 ,
-'wizard': ['base','Arcane Bomber', 'Bladesinger', 'Chronomancer', 'Diviner', 'Elemental Master', 'Foresightful', 'Illusionist', 'Infernal Binder', 'Magical Child', 'Martial Mage', 'Necromancer', 'Occultist', 'Shadowcaster', 'Spell Sage', 'Summoner', 'Thassilonian Specialist', 'Scroll Scholar', 'Spellbinder', 'Spirit Binder', 'Spirit Whisperer', 'Spontaneous Mage', 'Teleportation Master', 'Thaumaturge', 'Universalist', 'Undead Master']
+'medium': ['base',"Angelic Aspect","Elemental Acuity","Fey Foundling","Fiend Keeper","Guardian","Haunted","Harrowed","Karmic Monk","Legendary Influence","Ley Line Guardian","Mind Reader","Possessed Hand","Relic Channeler","Scourge","Séance Channeler","Speaker for the Past","Storyteller","Twinned Summoner","Vessel of the Spirit"]
 #
 ,
-'sorceror': ['base','Abyssal Bloodline', 'Accursed', 'Ardent', 'Boreal', 'Brutal', 'Celestial Bloodline', 'Chaos', 'Crossblooded', 'Daemon', 'Djinni', 'Draconic Bloodline', 'Dreamspun', 'Efreeti', 'Elemental Bloodline', 'Empyreal Bloodline', 'Fey Bloodline', 'Ghoul', 'Harrowing', 'Imperious', 'Infernal Bloodline', 'Marid', 'Maestro', 'Psychic Bloodline', 'Rakshasa', 'Razmiran Priest', 'Sanguine', 'Serpentine', 'Shadow', 'Shaitan', 'Stormborn', 'Undead Bloodline', 'Verdant', 'Wildblooded']
+'mesmerist': ['base',"Cerulean Witch","Cult Leader","Enigma","Esotericist","Ethersinger","Eyebiter","Hypnotist","Lurker in Light","Mage of the Veil","Mindfreak","Seducer","Spirit Walker","Starwatcher","Thrallherd","Umbral Mesmerist","Vexing Daredevil","White Mage"]
 #
 ,
-'anti-paladin': ['base','Apostate', 'Atheist', 'Beast Lord', 'Blacker of the Blackest Black', 'Blackguard', 'Brutal Fiend', 'Chosen One', 'Conqueror', 'Cowled Rider', 'Crimson Templar', 'Cult Slayer', 'Deathtouched', 'Demagogue', 'Demoniac', 'Demonic Champion', 'Demonologist', 'Devil Eater', 'Devils Arm', 'Disciple of Whispers', 'Dread Vanguard', 'Drow Nobility', 'Duellist', 'Executioner', 'Fell Rider', 'Fiend Keeper', 'Fiendish Vessel', 'Glorifier', 'Green Faith Acolyte', 'Hell Knight', 'Hells Vengeance Commander', 'Herald of the Horned King', 'Horseman of the Apocalypse', 'Houndlord', 'Hungerseed', 'Hunter of the Dead', 'Insinuator', 'Knight of the Sepulcher', 'Knight of the Wastes', 'Knight of the Word', 'Martial Disciple', 'Master of Shrouds', 'Night Terror', 'Order of the Ebon Hand', 'Plaguebearer', 'Psychic Beacon', 'Reaper of Vengeance', 'Redeemer', 'Reliquarian', 'Ruin Delver', 'Sanguine Angel', 'Sanguine Disciple', 'Savage Barbarian', 'Seductive Whisperer', 'Senghorian Defender', 'Shadow Disciple', 'Skeletal Champion', 'Soul Flayer', 'Sword Scion', 'Terror Knight', 'Thrune Agent', 'Tyrant', 'Unbreakable Guardian', 'Undead Scourge', 'Unforgiving Zealot', 'Unholy Barrister', 'Unholy Vindicator', 'Warrior of the Holy Light', 'Whispering Wayfinder', 'Widowmaker']
+'ninja': ['base',"Shadow Walker", "Master of Many Styles", "Tengu Assassin", "Shadow Scion", "Poison Master", "Harvester of Sorrows", "Ninpo Maniac", "Flurry of Stars", "Sanguine Angel", "Blighted Myrmidon", "Zen Archer", "Shikigami Style", "Scarred Monk", "Snakebite Striker", "Vanishing Assassin"]
 #
 ,
-'cavalier': ['base','Beast Rider', 'Bushi', 'Castellan', 'Chevalier', 'Constable', 'Daring Champion', 'Disciple of the Pike', 'Divine Commander', 'Emissary', 'Esquire', 'Fell Rider', 'Gendarme', 'Goblin Cleaver', 'Green Knight', 'Herald', 'Honor Guard', 'Huntmaster', 'Knight of the Wall', 'Luring Cavalier', 'Musketeer', 'Order of the Blossom', 'Order of the Cockatrice', 'Order of the Dragon', 'Order of the Eclipse', 'Order of the Flame', 'Order of the Lion', 'Order of the Penitent', 'Order of the Shield', 'Order of the Staff', 'Order of the Star', 'Order of the Sword', 'Order of the Tome', 'Order of the Wall', 'Pure Legionnaire', 'Quarterback', 'Samurai', 'Standard Bearer', 'Tactician', 'Thunderstriker', 'Vengeful Knight']
-#
+'occultist':['base',"Battle Host", "Panoply Savant", "Reliquarian", "Silksworn", "Souldrinker", "Transmuter"]
+#*
 ,
-'gunslinger': ['base','Bolt Ace', 'Breaker', 'Bushwacker', 'Chronicler', 'Desperado', 'Dragoon', 'Firebrand', 'Grenadier', 'Gun Scavenger', 'Gun Tank', 'Mysterious Stranger', 'Musket Master', 'Nimble Shot', 'Pistolero', 'Pistolero Exemplar', 'Pirate', 'Rocketslinger', 'Sniper', 'Thunderstriker', 'Vigilante']
-#
+
+'oracle': ['base',"Dual-Cursed Oracle","Elemental Oracle","Heavens Oracle","Lunar Oracle","Nature Oracle","Life Oracle","Ancestor Oracle","Battle Oracle","Bones Oracle","Dark Tapestry Oracle","Deep Earth Oracle","Dragon Oracle","Flame Oracle","Metal Oracle","Outer Rifts Oracle","Waves Oracle","Wind Oracle","Time Oracle","Solar Oracle","Lunar Paragon","Cosmic Champion (Oracle)","Devoted Oracle (Oracle)","Entranced Warrior (Champion Oracle)","Pale Rider (Duskwalker Oracle)","Pantheist Oracle (Oracle)","Revelator (Oracle)","Runist (Oracle)","Sortilega (Oracle)","Spiritist (Oracle)","Divine Numerologist","Elementalist Oracle","Hermit","River Soul","Tree Soul","Ocean's Echo","Divine Herbalist","Possessed Oracle","Inerrant Voice","Prophet","Black-Blooded Oracle","Cyclopean Seer","Dual-Cursed Oracle","Elementalist Oracle (PotS)","Enlightened Philosopher","Planar Oracle","Psychic Searcher","Seeker","Seer","Spirit Guide","Stargazer","Warsighted"]
+#*
 ,
-'inquisitor': ['base','Conversion Inquisitor', 'Daemon Slayer', 'Ecclesitheurge', 'Exorcist', 'Forensic Physician', 'Heretic', 'Infiltrator', 'Inheritors Crusader', 'Judgmental Crusader', 'Monster Tactician', 'Preacher', 'Prepared Inquisitor', 'Sacred Huntmaster', 'Sanctified Prophet', 'Sin Seeker', 'Spellbreaker', 'Witch Hunter', 'Agent of the Grave', 'Divine Assessor', 'Enlightened Paladin', 'Living Grimoire', 'Tactical Leader', 'Umbral Agent', 'Spellkiller', 'Threatener']#
+'paladin' : ['base',"Divine Calling","Shadow Banisher","Knight Disciple","Dashing Hero","Horned Warden","Righteous Flame Acolyte","Spirit-Scarred Paladin","Knight of the Road","Village Champion","Consecrator (Paladin Archetype)","Fate Swayer (Paladin Archetype)","Spear Maiden","Coastal Defender","Sacred Flame","Chevalier","Dragon Knight","Champion of the Cascade","Forgefather Seeker","Chaos Knight","Knight of Coins","Banishing Warden","Faithful Wanderer","Forest Preserver","Hunting Paladin","Vindictive Bastard","Wilderness Warden","Kraken Slayer","Pearl Seeker","Scion of Peace","Chosen One","Combat Healer Squire","Divine Defender","Divine Guardian","Divine Hunter","Dusk Knight","Empyreal Knight","Enforcer","Enlightened Paladin","Ghost Hunter","Gray Paladin","Holy Guide","Holy Gun","Holy Tactician","Hospitaler","Legate","Martyr","Mind Sword","Oathbound Paladin","Sacred Servant","Sacred Shield","Shining Knight","Silver Champion","Soul Sentinel","Sword of Valor","Tempered Champion","Temple Champion","Tortured Crusader","Undead Scourge","Virtuous Bravo","Warrior of the Holy Light"]
 ,
-'oracle': ['base','Ancient Lorekeeper', 'Black-Blooded Oracle', 'Blighted Myrmidon', 'Bones Oracle', 'Chosen One', 'Dark Tapestry', 'Dual-Cursed Oracle', 'Elemental Master', 'Enlightened Philosopher', 'Haunted', 'Heavens', 'Hedge Witch', 'Lunar', 'Nature Oracle', 'Noble Scion', 'Outer Rifts', 'Planar Oracle', 'Possessed', 'Seer', 'Shadow Oracle', 'Spirit Guide', 'Stone Tell', 'Time Oracle', 'Visionary Prophet', 'Waves Oracle']
-#
+#*
+'psychic': ["Amnesiac","Esoteric Starseeker (Psychic Archetype)","Formless Adept","Mutation Mind","Psychic Duelist","Psychic Marauder","Terror Weaver","Wildepath (Psychic Archetype)"]
+#*
 ,
-'shifter': ['base','Adaptive Shifter', 'Beastkin Berserker', 'Chaos Shifter', 'Cliffwalker Keeper', 'Doppelganger Shifter', 'Dreamstalker', 'Elemental Acolyte', 'Feral Hunter', 'Giant Shifter', 'Lycanthropic Investigator', 'Moonlight Stalker', 'Oozemorph', 'Pack Lord', 'Rageshaper', 'Razorclaw Shifter', 'Saurian Champion', 'Savage Assailant', 'Serpent-Fire Adept', 'Serpentine Bloodline', 'Skinchanger', 'Soul Carver', 'Spellslinger', 'Survivor', 'Tauric Shifter', 'Totem Beast', 'Umbral Blade', 'Verdant Shifter', 'Voidfrost Weaver', 'Watersinger']
-#
+'rogue':  ['base',"SpellResistance", "ScourgeofShadows", "HiddenBlade", "Menteur(Elan)", "ReavingRaider(Maenad)", "Chemist", "DungeonRunner", "Fence", "GloryRogue", "ImperialFlanker", "Mageslayer", "Medic", "PetTrainer", "Stalker", "StreetMagician", "StreetUrchin", "TrueProfessional", "UrbanNinja", "WeaponExpert", "Bomber", "Hitman", "Nightmage", "BankRobber", "CultDefector", "Rustler", "GreaseRat", "Poacher", "Snowbird", "ConstructSaboteur", "Dreamthief", "NamelessShadow", "DesertRaider", "DiscretionSpecialist", "FeyPrankster", "GunSmuggler", "Needler", "Rotdrinker", "ShadowScion", "SlySaboteur", "SwampPoisoner(Grippli)", "SylvanTrickster", "Earthshadow", "Irrigator", "SeekeroftheLost", "TidalTrickster", "ToxicTalon", "Acrobat", "Agitator", "Bandit", "Burglar", "Carnivalist", "Chameleon", "Charlatan", "Consigliere", "CounterfeitMage", "Cutpurse", "DarkLurker", "Driver", "EldritchScoundrel", "Escapologist", "FalseMedium", "Guerrilla", "GuildAgent", "Heister", "Investigator", "Kidnapper", "KnifeMaster", "Liberator", "MakeshiftScrapper", "MasterofDisguise", "PhantomThief", "Pirate", "PlanarSneak", "Poisoner", "Rake", "RelicRaider", "RiverRat", "RoofRunner", "SanctifiedRogue", "Sapper", "Scavenger", "Scout", "ScrollScoundrel", "ShadowRebel", "ShadowWalker", "Sharper", "Smuggler", "Sniper", "Snoop", "Spy", "Survivalist", "Swashbuckler", "Swindler"]
 ,
-'summoner': ['base','Broodmaster', 'Chthonic Companion', 'Demonic Apostle', 'Ectopic Summoner', 'Elemental Master', 'Gadget Summoner', 'God Caller', 'Harrower', 'Hedge Witch', 'Malconvoker', 'Master Summoner', 'Occultist Summoner', 'Possessed Hand', 'Psychic Summoner', 'Sanguine Angel', 'Soulbound Puppeteer', 'Spirit Summoner', 'Stargazer', 'Synthesist', 'Undead Lord', 'Unlettered Arcanist', 'Void Caller', 'Wild Caller']
-#
+#*
+'ranger':  ['base',"Heart of the Forest","Ambush Hunter","Kinslayer (Half-Giant)","Cloaked Killer","Divinely Bound Ranger","Grasslands Prowler","Commando","Yuam","Blockade Runner","Bombardier (Ranger Archetype)","Robot Fighter (Ranger Archetype)","Creationist","Musher","Dragon Hunter","Blood Hunter (Ranger Archetype)","Lycanthrope Hunter","Planar Scout","Blightwarden","Deeplands Sailor","Elemental Envoy","Flamewarden","Stormwalker","Summit Sentinel","Tidal Hunter","Toxic Herbalist","Wild Soul","Wilderness Explorer","Deep Diver","Lantern Lighter","Raven Master","Poison Darter","Wilderness Medic","Lantern Bearer","Fortune Finder","Infiltrator","Battle Scout","Beastmaster","Bow Nomad (Kasatha)","Cinderwalker","Code Runner","Corpse Hunter","Dandy","Deep Walker","Demonslayer","Divine Marksman","Divine Tracker","Dragon Hunter","Drake Warden","Dungeon Rover","Falconer","Freebooter","Galvanic Saboteur","Groom","Guide","Guildbreaker","Hooded Champion","Horse Lord","Sentinel","Shapeshifter","Skirmisher","Sky Stalker","Spirit Ranger","Toxophilite","Transporter","Trapper","Trophy Hunter","Urban Ranger","Warden","Wild Hunter","Wild Stalker","Witchguard","Woodland Skirmisher","Yokai Hunter","Seabeast Hunter (Gnorri)","Foe Reaper","Henge Matagi","Pack Hunter","Yojimbo","Golem Slayer","Pack-Bonded Hunter (Gnoll)","Wolf Heart","Wolf Heart","Arcanger","Churimanger","Unearthed Ranger"]
 ,
-'witch': ['base','Bouda', 'Cartomancer', 'Changeling', 'Child of the Briar', 'Demoniac', 'Elementalist', 'Familiar Adept', 'Fey Caller', 'Gutter Mage', 'Hedge Witch', 'Hex Channeler', 'Magical Child', 'Moon Touched', 'Natural Alchemist', 'Patron Witch', 'Pipehedge Necromancer', 'Sea Witch', 'Silksworn', 'Spirit Binder', 'Spitfire', 'Time Thief', 'Valkyrie', 'Veiled Illusionist', 'Venomfist Adept', 'Witchwarden']
-#
+#*
+'sorcerer': ['base',"Learned Sorcery","Nine-Tailed Mystic (Kitsune)","Sanctified Sorcerer","Nanotech Infuser","Mongrel Mage","Crossblooded","Dragon Drinker","Eldritch Scrapper","False Priest","Seeker","Sorcerer of Sleep","Stone Warder","Tattooed Sorcerer","Umbral Scion","Wildblooded","Familiar","Magilith","Arcane Endowments","Bedreven","Bloodless","Scourge","Strega"]
+#*
 ,
-'arcanist': ['base','Blade Adept', 'Brown-Fur Transmuter', 'Chained', 'Consort', 'Dimensional Occultist', 'Eldritch Font', 'Elemental Master', 'Empyreal', 'False Priest', 'Harrowed Society Mind', 'Occultist', 'Pact Wizard', 'School Savant', 'Scroll Scoundrel', 'Spell Specialist', 'Spirit Binder', 'Twilight Sage']
-#
+'spiritualist': ["Ectoplasmatist","Exciter","Fated Guide","Fractured Mind","Geist Channeler","Grim Apostle","Hag-Haunted","Haunted","Involutionist","Necrologist","Onmyoji","Phantom Blade","Plague Eater","Priest of the Fallen","Scourge","Seeker of Enlightenment","Shadow Caller","Soul Warden","Spirit Fuse","Totem Spiritualist","Usher of Lost Souls","Ward Spiritualist","Zeitgeist Binder"]
+#*
 ,
-'bloodrager': ['base','Crossblooded Rager', 'Draconic Bloodrager', 'Elemental Bloodrager', 'Hateful Rager', 'Id Rager', 'Metamagic Rager', 'Primalist', 'Spelleater', 'Steelblood']
-#
+'shifter': ['base',"Dragonblood Shifter","Feyform Shifter","Holy Beast","Swarm Shifter","Style Shifter","Wild Effigy","Adaptive Shifter","Elementalist Shifter","Fiendflesh Shifter","Leafshifter","Oozemorph","Rageshaper","Verdant Shifter","Weretouched"]
+#*
 ,
-'brawler': ['base','Battle Dancer', 'Bitter-End Enforcer', 'Boxer', 'Brawler Champion', 'Champion of the Cascade', 'Chirurgeon', 'Clumsy Combatant', 'Cornugon Smash', 'Drunken Brawler', 'Exemplar', 'Falconer', 'Feral Combat Training', 'Free-Style Fighter', 'Grapple Fighter', 'Knockout Artist', 'Martial Artist', 'Mutagenic Mauler', 'Pit Fighter', 'Practiced Tactician', 'Savage Technologist', 'Shield Champion', 'Strangler', 'Strangler of the Occult', 'Street Performer', 'Thunderstriker', 'Torturer', 'Unarmed Fighter', 'Wild Child', 'Winding Path Renegade']
-#
+'summoner': ['base',"Blood God Disciple","Broodmaster","Clan Summoner","Creative Artist","Demon Binder","Divine Summoner","Evolutionist","First Worlder","God Caller","Hostile Summoner","Leshy Caller","Master Summoner","Monster Ally","Monster Channeler","Monster Knight","Monster Magus","Morphic Savant","Muse-Touched (Summoner Archetype)","Naturalist","Pyroclast","Spirit Summoner","Spellbook Summoner","Story Summoner","Storm Caller","Synthesist","Twinned Summoner","Unwavering Conduit","Wild Caller","Celestial Commander","Progenitor"]
+#*
 ,
-'hunter': ['base',"Divine Hunter", "Feykiller", "Forester", "Frost Rider", "Gendarme", "Geomancer", "Gloomblade", "Hooded Champion", "Horse Lord", "Infiltrator", "Master of the Wild", "Packmaster", "Planar Hunter", "Reclaimer", "Savage", "Sea Singer", "Spire Defender", "Spirit Channeler", "Spirit Whisperer", "Totemic", "Umbral Stalker", "Veiled Illusionist", "Wild Whisperer"]
-#
+
+'shaman': ['base',"Darkness","Metal","Aether","AkashicRecords","ShamanOfTheElements","Jiuweihu","CrystalTender","GraspingVine","PrimalWarden","DeepShaman","Name-Keeper","SerendipityShaman","DraconicShaman","Animist","Overseer","PossessedShaman","SpeakerForThePast","SpiritWarden","TrueSilveredThrone","UnswornShaman","Visionary","WitchDoctor","Bloodlust","FeralSpirit","FuryOfTheWind","GhostWolf","Maelstrom","PersonalReincarnation","Stormbringer","WaterWalking","Frost","Tribe","Ancestors","Battle","Bones","Flame","Heavens","Life","Lore","Mammoth","Nature","Slums","Stone","Waves","Wind","Wood"]
+#*
 ,
-'investigator': ['base',"Empiricist", "Exarch", "Forensic Physician", "Infiltrator", "Lamplighter", "Mastermind", "Questioner", "Sleuth", "Spiritualist Investigator", "Symbiotic Investigator", "Synergist", "Unbreakable Survivor", "Virtuoso Sleuth"]
-#
+'swashbuckler': ['base',"corsair","daringinfiltrator","flyingblade","inspiredblade","guidingblade","mouser","musketeer","mysteriousavenger","picaroon","whirlingdervish","ronin"]
+#*
 ,
-'shaman': ['base',"Apothecary", "Chaos Spirit", "Dark Tapestry", "Elemental Ally", "Flamespeaker", "Life Spirit", "Lore Oracle", "Nature Spirit", "Stone Spirit", "Waves Spirit", "Witch Doctor", "Woodsman"]
-#
+'warpriest': ['base',"Arsenal Chaplain""Champion of The Faith""Cult Leader""Disenchanter""Divine Commander""Feral Champion""Forgepriest""Liberty’s Blade""Mantis Zealot""Proselytizer""Sacred Fist""Shieldbearer""Faithful Paragon""Soldier of Gaia"]
+#*
 ,
-'swashbuckler': ['base','Acrobat', 'Buccaneer', 'Daring Infiltrator', 'Daring Champion', 'Flying Blade', 'Inspired Blade', 'Musketeer', 'Mysterious Avenger', 'Picaroon', 'Rondelero duelist', 'Roughrider', 'Serpent Blade', 'Swashbuckler of the Society', 'Vanguard']
-#
+'warlock': ['base']
+#*
 ,
-'warpriest': ['base','Arsenal Chaplain', 'Cloistered Cleric', 'Cult Leader', 'Divine Commander', 'Divine Disciple', 'Divine Paragon', 'Divine Strategist', 'Holy Vindicator', 'Iron Priest', 'Sacred Fist', 'Sacred Shield', 'Sacred Sentinel', 'Sanctified Prophet', 'Shielded Fighter', 'Tactical Leader', 'Weapon Adept']
-#
+'witch': ['base',"Jewel Bound Familiar","Skullbound Shapechanger","Ancestral Disapproval","Ancestral Hex","Ancestral Knowledge","Bat Sneeze","Become Familiar","Borrow Speed","Dire Familiar","Drain Life","Fear of Death","Leg Lock","Steal Life","Swift Step","Aura of Purity","Beast of Ill-Omen","Blight","Cackle","Cauldron","Charm","Child-Scent","Coven","Cursed Wound","Discord","Disguise","Disrupt Connection","Evil Eye","Feral Speech","Flight","Fortune","Healing","Misfortune","Mud Witch","Nails","Peacebond","Poison Steep","Prehensile Hair","Scar","Slumber","Soothsayer","Swamp Hag","Swamp's Grasp","Tongues","Unnerve Beasts","Ward","Water Lung","Witch's Bottle","Agony","Beast Eye","Animal Skin","Cook People","Delicious Fright","Hag's Eye","Harrowing Curse","Hidden Home","Hoarfrost","Ice Tomb","Infected Wounds","Major Healing","Nightmares","Pariah","Retribution","Speak in Dreams","Steal Voice","Vision","Waxen Image","Weather Control","Witch's Bounty","Witch's Charge","Witch's Brew","Abominate","Curse of Nor","Death Curse","Dire Prophecy","Eternal Slumber","Forced Reincarnation","Lay to Rest","Life Giver","Natural Disaster","Summon Spirit","Witch's Hut"]
+#*
+,
+'wizard': ['base',"Cryomancer Wizard", "Fundamentalist Wizard", "Pine Baron", "Delver", "Animist", "Astromancer", "Blood Mage", "Chaos Mage", "Clockworker", "Geomancer", "Iounmancer", "Ring Warden (Dwarf)", "Timekeeper", "Vril Adept", "Petersen Games - Wizard", "Ritualist", "Ruin Guardian (Zoog)", "d20pfsrd.com Publishing - Wizard", "Circulumancer", "Echo Bonded", "4 Winds Fantasy Gaming - Wizard", "Intuitive Wizardry", "Gold-Robed Wizard",  "Bestial Arcanist", "Ilumbo",  "Sutramancer", "Paizo, Inc. - Wizard", "Clocksmith", "Arcane Warden", "Poleiheira Adherent", "Fey Caller", "Worldseeker", "Chronomancer", "Runesage", "Arcane Bomber", "Arcane Physician", "Bonded Wizard", "Elder Mythos Scholar", "Exploiter Wizard", "Familiar Adept", "Hallowed Necromancer", "Instructor", "Pact Wizard (FF)", "Pact Wizard (HH)", "Primalist", "Scroll Scholar", "Scrollmaster", "Shadowcaster", "Siege Mage", "Spell Sage", "Spellslinger", "Spirit Binder", "Spirit Whisperer", "Sword Binder", "Undead Master", "Radiance House - Wizard", "Soul Weaver", "Dweomerden Wizard", "Force Commander", "Glamerforge Wizard", "Horimyo", "Nethervault Wizard", "Onmyoji"]
+#*
 ,
 #Path of War Archetypes:
 
@@ -503,7 +530,7 @@ archetypes = {
 'commander':['base',"Bearon [CS]", "Braveheart", "Dreadlord [CS]", "Feylord [CS]", "Noble", "Vanguard", "Visionary General [CS]"]
 #
 ,
-'conscript':["Alchemy","Athletics","Barrage","Barroom","Beastmastery","Berserker","Boxing","Brute","Dual Wielding","Duelist","Equipment","Fencing","Gladiator","Guardian","Lancer","Open Hand","Scoundrel","Scout","Shield","Sniper","Trap","Warleader","Wrestling"]
+'conscript':['base',"Alchemy","Athletics","Barrage","Barroom","Beastmastery","Berserker","Boxing","Brute","Dual Wielding","Duelist","Equipment","Fencing","Gladiator","Guardian","Lancer","Open Hand","Scoundrel","Scout","Shield","Sniper","Trap","Warleader","Wrestling"]
 #
 ,
 'savant': ['base']
@@ -531,6 +558,9 @@ archetypes = {
 'eliciter': ['base',"Dark Presence","Empathic Duelist","Fright Wright","Hypnotist","Id","Sympath"]
 #
 ,
+'fey adept': ['base',"dreamtwister","seelie disciple","sidhe invoker","skulk","solipsist","unseelie disciple","word witch","wunderkind"]
+#
+,
 'hedgewitch':['base',"Dreamtwister","Seelie Disciple","Sidhe Invoker","Skulk","Solipsist","Unseelie Disciple","Word Witch","Wunderkind [WoP]"]
 #
 ,
@@ -555,6 +585,34 @@ archetypes = {
 'wraith': ['base',"BaobhanSith","Collective[CS]","Draugr[CS]","Matagot[CS,CatgirlHB]","Mistshade","Swarmheart","Unbodied"]
 #
 ,
+#spheres of power champions
+'crimson dancer': ['base',"Crimson Tempest", "Path of the Lost Ravager", "Primeval"]
+#
+,
+'dragoon': ['base','Mech Dragoon', 'Spellscale', 'violent Brute']
+#
+,
+'mountebank': ['base','back alley grifter', 'Mental Manipulator', 'Phantom thief']
+#
+,
+'necros': ["Brutal Necromancer", "Necrotech Savant"]
+#
+,
+'prodigy': ['base','battle-born','chromamancer','extemporizer','gutter rat', 'mimic']
+#
+,
+'reaper': ['base','chem dog', 'Discipline of the monstrous arts', 'hunt master', 'machine cultist', 'magekiller']
+#
+,
+'sage': ['base','Battleshifter', 'Confluence', 'Resolute', 'Votary', 'Wand Master']
+#
+,
+'troubadour': ['base',"binder","clone","method actor","ringmaster"]
+#
+,
+'warden': ['base','Custodian', 'Empathetic Guardian', 'Jailer', 'Keeper']
+#
+,
 #spheres of power agents
 'agent': ['base','Blackpowder Slayer', 'Erudie Pugilist', 'Imposter', 'Superstar Spy']
 #
@@ -573,4 +631,4 @@ archetypes = {
 
                     #Path of war classes
 
-version = "4/29/23"
+version = "4/30/23"

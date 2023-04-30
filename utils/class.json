@@ -1,6 +1,6 @@
 {
 
-    "Alchemist": {
+    "alchemist": {
             "weapons": ["Club", "Dagger", "Dart", "Heavy Crossbow", "Light Crossbow", "Mace", "Morningstar", "Quarterstaff", "Sickle", "Sling", "Spear"],
             "armor": ["Padded", "Leather", "Studded Leather", "Chain Shirt"],
             "skills": ["Appraise", "Craft", "Fly", "Heal", "Knowledge (arcana)", "Knowledge (nature)", "Perception", "Profession", "Sleight of Hand", "Spellcraft", "Survival", "Use Magic Device"],
@@ -13,7 +13,7 @@
             "saving throws": ["Fortitude", "Reflex"]
     },
     
-    "Anti-Paladin": {
+    "anti-paladin": {
         "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
         "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Half Plate", "Full Plate"],
         "skills": ["Bluff", "Diplomacy", "Intimidate", "Perception", "Ride", "Sense Motive"],
@@ -26,7 +26,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-    "Arcanist": {
+    "arcanist": {
         "weapons": ["Club", "Dagger", "Heavy Crossbow", "Light Crossbow", "Quarterstaff"],
         "armor": ["Padded", "Leather"],
         "skills": ["Appraise", "Craft", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)", "Linguistics", "Spellcraft"],
@@ -39,7 +39,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-        "Barbarian": {
+        "barbarian": {
             "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
             "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Half Plate"],
             "skills": ["Acrobatics", "Animal Handling", "Athletics", "Intimidate", "nature", "Perception", "Survival"],
@@ -52,7 +52,7 @@
             "saving throws": ["Fortitude", "Reflex"]
     },
     
-        "Bard": {
+        "bard": {
         "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],    
         "armor": ["Padded", "Leather", "Studded Leather"],
         "skills": ["Acrobatics", "Appraise", "Bluff", "Climb", "Diplomacy", "Disguise", "Escape Artist", "Intimidate", "Knowledge (all skills taken individually)", "Linguistics", "Perception", "Perform (all skills taken individually)", "Sense Motive", "Sleight of Hand", "Spellcraft", "Stealth", "Use Magic Device"],
@@ -65,7 +65,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-    "Bloodrager": {
+    "bloodrager": {
         "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
         "armor": ["Light Armor", "Medium Armor", "Shields"],
         "skills": ["Acrobatics", "Climb", "Craft", "Handle Animal", "Intimidate", "Knowledge (arcana)", "Perception", "Ride", "Spellcraft", "Survival", "Swim"],
@@ -78,7 +78,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-    "Brawler": {
+    "brawler": {
         "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
         "armor": ["Padded", "Leather", "Studded Leather", "Chain Shirt", "Breastplate"],
         "skills": ["Acrobatics", "Climb", "Escape Artist", "Intimidate", "Knowledge (dungeoneering)", "Knowledge (local)", "Profession", "Sense Motive", "Survival", "Swim"],
@@ -92,7 +92,7 @@
         "saving throws": ["Fortitude", "Reflex"]
     },
     
-    "Cavalier": {
+    "cavalier": {
         "weapons": ["Lance", "Longsword", "Morningstar", "Ranseur", "Scimitar", "Shortsword", "Throwing Axe", "Throwing Hammer"],
         "armor": ["Padded", "Leather", "Studded Leather", "Chain Shirt", "Breastplate", "Ring Mail", "Scale Mail", "Chainmail", "Splint Mail", "Banded Mail", "Half Plate", "Full Plate"],
         "skills": ["Handle Animal", "Intimidate", "Ride", "Survival"],
@@ -106,7 +106,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-    "Cleric": {
+    "cleric": {
         "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
         "armor": ["Padded", "Leather", "Studded Leather", "Chain Shirt", "Scale Mail", "Breastplate", "Splint Mail", "Banded Mail", "Half Plate", "Full Plate"],
         "skills": ["Appraise", "Craft (all skills taken individually)", "Diplomacy", "Heal", "Knowledge (arcana)", "Knowledge (history)", "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)", "Linguistics", "Profession (all skills taken individually)", "Sense Motive", "Spellcraft"],
@@ -120,7 +120,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-        "Druid": {
+        "druid": {
             "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
             "armor": ["Padded", "Leather", "Studded Leather"],
             "skills": ["Craft (Alchemy)", "Handle Animal", "Heal", "Knowledge (Geography)", "Knowledge (Nature)", "Perception", "Spellcraft", "Survival"],
@@ -134,7 +134,7 @@
             "saving throws": ["Fortitude", "Reflex", "Will"]
     },
     
-     "Fighter": {
+     "fighter": {
         "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
         "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Banded Mail", "Half-Plate", "Full Plate"],
         "skills": ["Climb", "Handle Animal", "Intimidate", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Profession", "Ride", "Survival", "Swim"],
@@ -148,7 +148,7 @@
         "saving throws": ["Fortitude", "Reflex"]
     },
     
-    "Gunslinger": {
+    "gunslinger": {
         "weapons": ["Pistol", "Musket", "Pepperbox", "Blunderbuss"],
         "armor": ["Padded", "Leather"],
         "skills": ["Acrobatics", "Bluff", "Craft (alchemy)", "Intimidate", "Perception", "Profession (gunsmith)", "Ride", "Sleight of Hand", "Survival"],
@@ -162,7 +162,7 @@
         "saving throws": ["Reflex", "Will"]
     },
     
-    "Hunter": {
+    "hunter": {
         "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
         "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate"],
         "skills": ["Climb", "Craft", "Handle Animal", "Heal", "Intimidate", "Knowledge (dungeoneering)", "Knowledge (geography)", "Knowledge (nature)", "Perception", "Profession", "Ride", "Spellcraft", "Stealth", "Survival", "Swim"],
@@ -175,7 +175,7 @@
         "saving throws": ["Fortitude", "Reflex"]
     },
     
-    "Inquisitor": {
+    "inquisitor": {
         "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
         "armor": ["Padded", "Leather", "Studded Leather", "Chain Shirt", "Scale Mail", "Breastplate", "Splint Mail", "Banded Mail", "Half Plate"],
         "skills": ["Bluff", "Climb", "Diplomacy", "Disguise", "Heal", "Intimidate", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (nature)", "Knowledge (planes)", "Knowledge (religion)", "Perception", "Ride", "Sense Motive", "Spellcraft", "Stealth", "Survival", "Swim"],
@@ -187,8 +187,21 @@
        "casting level": "mid",
         "saving throws": ["Fortitude", "Will"]
     },
+
+    "investigator": {
+        "weapons": ["simple", "Hand Crossbow","sap","Rapier","short bow","short sword","Sword Cane"],
+        "armor": ["light armor"],
+        "skills": ["Acrobatics (Dex)","Appraise (Int)","Bluff (Cha)","Climb (Str)","Craft (Int)","Diplomacy (Cha)","Disable Device (Dex)","Disguise (Cha)","Escape Artist (Dex)","Heal (Wis)","Intimidate (Cha)","Knowledge (all) (Int)","Linguistics (Int)","Perception (Wis)","Perform (Cha)","Profession (Wis)","Sense Motive (Wis)","Sleight of Hand (Dex)","Spellcraft (Int)","Stealth (Dex)","Use Magic Device (Cha)"],
+        "hp": 8,
+        "gold": "5d6",
+        "BAB": "mid",
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
+       "casting level": "mid",
+        "saving throws": ["Fortitude", "Will"]
+    },
     
-    "Magus": {
+    "magus": {
         "weapons": ["Club", "Dagger", "Heavy Crossbow", "Javelin", "Light Crossbow","Longsword", "Morningstar", "Quarterstaff", "Rapier", "Scimitar","Short Sword", "Spear"],
         "armor": ["None", "Light"],
         "skills": ["Acrobatics", "Bluff", "Craft", "Intimidate", "Knowledge (arcana)","Knowledge (dungeoneering)", "Knowledge (planes)", "Profession", "Spellcraft", "Use Magic Device"],
@@ -201,7 +214,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-    "Medium": {
+    "medium": {
         "weapons": ["All Simple Weapons"],
         "armor": ["Light", "Medium", "Heavy", "Shields"],
         "skills": ["Appraise", "Craft", "Diplomacy", "Handle Animal", "Heal", "Knowledge (history)", "Knowledge (planes)", "Knowledge (religion)", "Perception", "Ride", "Sense Motive", "Spellcraft", "Survival"],
@@ -214,7 +227,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-    "Mesmerist": {
+    "mesmerist": {
         "weapons": ["Club", "Crossbow, Light", "Dagger", "Hand Crossbow", "Heavy Crossbow","Rapier", "Short Sword"],
         "armor": ["Light"],
         "skills": ["Bluff", "Diplomacy", "Disguise", "Escape Artist", "Intimidate", "Knowledge (arcana)", "Knowledge (local)", "Perception", "Perform", "Sense Motive", "Sleight of Hand", "Spellcraft", "Use Magic Device"],
@@ -227,7 +240,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-    "Unchained_Monk": {
+    "unchained monk": {
         "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
         "armor": ["None"],
         "skills": ["Acrobatics", "Climb", "Craft", "Escape Artist", "Intimidate", "Knowledge (history)", "Knowledge (religion)", "Perception", "Perform", "Profession", "Ride", "Sense Motive", "Stealth", "Swim"],
@@ -241,7 +254,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-    "Ninja": {
+    "ninja": {
         "weapons": ["All Simple Weapons", "Kama", "Nunchaku", "Sai", "Shuriken","Siangham"],
         "armor": ["Padded", "Leather"],
         "skills": ["Acrobatics", "Bluff", "Climb", "Craft", "Diplomacy", "Disguise","Escape Artist", "Intimidate", "Knowledge (local)", "Linguistics", "Perception","Perform", "Profession", "Sense Motive", "Sleight of Hand", "Stealth", "Swim","Use Magic Device"],
@@ -254,7 +267,7 @@
         "saving throws": ["Reflex", "Will"]
     },
     
-    "Occultist": {
+    "occultist": {
         "weapons": ["Blowgun", "Club", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dart", "Falchion", "Gauntlet", "Gauntlet, Spiked","Glaive", "Greataxe", "Greatclub", "Greatsword", "Handaxe", "Javelin","Kukri", "Longbow", "Longspear", "Longsword", "Morningstar","Nunchaku", "Quarterstaff", "Rapier", "Sap", "Scimitar", "Shortbow","Shortspear", "Shuriken", "Sickle", "Sling", "Spear", "Sword, Short","Trident", "Unarmed Strike", "Warhammer", "Whip"],
         "armor": ["Padded", "Leather", "Studded Leather", "Chain Shirt", "Hide", "Scale Mail", "Chainmail", "Breastplate", "Splint Mail", "Banded Mail", "Half-Plate", "Full Plate"],
         "skills": ["Appraise", "Bluff", "Climb", "Craft", "Diplomacy", "Disable Device", "Disguise", "Escape Artist", "Fly", "Heal", "Intimidate", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)", "Linguistics", "Perception", "Perform", "Profession", "Sense Motive", "Sleight of Hand", "Spellcraft", "Stealth", "Survival", "Swim", "Use Magic Device"],
@@ -267,7 +280,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-    "Oracle": {
+    "oracle": {
         "weapons": ["Club", "Dagger", "Heavy Mace", "Javelin", "Light Crossbow","Quarterstaff", "Shortspear", "Sickle", "Sling", "Unarmed Strike"],
         "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Half Plate", "Ring Mail", "Chainmail"],
         "skills": ["Craft", "Diplomacy", "Heal", "Knowledge (history)", "Knowledge (planes)", "Linguistics", "Profession", "Sense Motive", "Spellcraft"],
@@ -281,7 +294,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-      "Paladin": {
+      "paladin": {
         "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
         "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Banded Mail", "Half-Plate", "Full Plate"],
         "skills": ["Diplomacy", "Handle Animal", "Heal", "Knowledge (nobility)", "Knowledge (religion)", "Profession", "Ride", "Sense Motive"],
@@ -295,7 +308,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-    "Psychic": {
+    "psychic": {
         "weapons": ["Blowgun", "Crossbow, Heavy", "Crossbow, Light", "Dagger","Dart", "Dart, Jolting", "Falchion", "Hand Crossbow", "Kama","Longbow", "Longspear", "Morningstar", "Net", "Quarterstaff","Rapier", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Sickle", "Spear", "Sword, Short", "Trident", "Unarmed Strike"],
         "armor": ["Light Armor"],
         "skills": ["Appraise", "Autohypnosis", "Craft", "Fly", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (psionics)", "Knowledge (religion)", "Linguistics", "Perception", "Profession", "Sense Motive", "Spellcraft", "Use Magic Device"],
@@ -308,7 +321,7 @@
         "saving throws": ["Will"]
     },
     
-    "Ranger": {
+    "ranger": {
         "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
         "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Half-Plate"],
         "skills": ["Climb", "Handle Animal", "Heal", "Intimidate", "Knowledge (dungeoneering)", "Knowledge (geography)", "Knowledge (nature)", "Perception", "Ride", "Stealth", "Survival", "Swim"],
@@ -322,7 +335,7 @@
         "saving throws": ["Fortitude", "Reflex"]
     },
     
-    "Rogue": {
+    "rogue": {
         "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
         "armor": ["Padded", "Leather", "Studded Leather"],
         "skills": ["Acrobatics", "Appraise", "Bluff", "Climb", "Craft", "Diplomacy", "Disable Device", "Disguise", "Escape Artist", "Intimidate", "Knowledge (dungeoneering)", "Knowledge (local)", "Linguistics", "Perception", "Perform", "Sense Motive", "Sleight of Hand", "Stealth", "Swim", "Use Magic Device"],
@@ -335,7 +348,7 @@
         "saving throws": ["Reflex", "Will"]
     },
     
-    "Sorcerer": {
+    "sorcerer": {
         "weapons": ["Club", "Dagger", "Heavy Crossbow", "Light Crossbow", "Quarterstaff"],
         "armor": ["None"],
         "skills": ["Appraise", "Bluff", "Fly", "Intimidate", "Knowledge (arcana)", "Spellcraft", "Use Magic Device"],
@@ -350,7 +363,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-    "Spiritualist": {
+    "spiritualist": {
         "weapons": ["Battleaxe", "Blowgun", "Blunderbuss", "Bolas", "Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light", "Dagger", "Dart", "Falchion", "Flail", "Glaive", "Greataxe", "Greatclub", "Greatsword", "Halberd", "Hammer, Light", "Handaxe", "Javelin", "Longbow", "Longspear", "Longsword", "Morningstar", "Net", "Nunchaku", "Quarterstaff", "Ranseur", "Rapier", "Sai", "Scimitar", "Shortbow", "Shortspear", "Shuriken", "Sickle", "Sling", "Spear", "Spiked Chain", "Trident", "Unarmed Strike", "Warhammer", "Whip"],
         "armor": ["Padded", "Leather", "Studded Leather", "Chain Shirt"],
         "skills": ["Bluff", "Craft", "Diplomacy", "Disguise", "Fly", "Handle Animal", "Heal", "Intimidate", "Knowledge (arcana)", "Knowledge (history)", "Knowledge (planes)", "Knowledge (religion)", "Perception", "Perform", "Profession", "Ride", "Sense Motive", "Spellcraft", "Stealth", "Survival", "Swim", "Use Magic Device"],
@@ -362,8 +375,21 @@
        "casting level": "mid",
         "saving throws": ["Fortitude", "Will"]
     },
+
+    "shaman": {
+        "weapons": ["simple"],
+        "armor": ["light", "medium"],
+        "skills": ["Craft(Int)","Diplomacy(Cha)","Fly(Dex)","Handle Animal(Cha)","Heal(Wis)","Knowledge(nature)(Int)","Knowledge(planes)(Int)","Knowledge(religion)(Int)","Profession(Wis)","Ride(Dex)","Spellcraft(Int)","Survival(Wis)"],
+        "hp": 8,
+        "gold": "3d6",
+        "BAB": "mid",
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
+       "casting level": "high",
+        "saving throws": ["Will"]
+    },
     
-    "Summoner": {
+    "summoner": {
         "weapons": ["Club", "Dagger", "Heavy Crossbow", "Light Crossbow", "Quarterstaff"],
         "armor": ["None"],
         "skills": ["Appraise", "Fly", "Knowledge (arcana)", "Knowledge (engineering)", "Linguistics", "Profession", "Spellcraft", "Use Magic Device"],
@@ -376,7 +402,7 @@
         "saving throws": ["Fortitude", "Reflex", "Will"]
     },
     
-    "Swashbuckler": {
+    "swashbuckler": {
         "weapons": ["Axe, Throwing", "Battleaxe", "Blowgun", "Boar Spear", "Bolas","Crossbow, Hand", "Dagger", "Dart", "Falchion", "Flail, Heavy","Glaive", "Greataxe", "Greatclub", "Greatsword", "Halberd", "Handaxe","Javelin", "Kukri", "Lance", "Longbow", "Longspear", "Longsword","Morningstar", "Net", "Pike", "Rapier", "Sap", "Scimitar", "Shortbow","Shortspear", "Sickle", "Sling", "Spear", "Sword, Bastard", "Sword, Short","Trident", "Unarmed Strike", "Warhammer"],
         "armor": ["Light Armor", "Medium Armor", "Heavy Armor"],
         "skills": ["Acrobatics", "Bluff", "Climb", "Diplomacy", "Escape Artist", "Intimidate", "Knowledge (local)", "Perception", "Perform", "Profession", "Sense Motive", "Swim", "Use Magic Device"],
@@ -391,7 +417,7 @@
     },
     
     
-    "Warlock": {    
+    "warlock": {    
         "weapons": ["Club", "Dagger", "Heavy Crossbow", "Light Crossbow", "Quarterstaff"],
         "armor": ["Padded", "Leather", "Studded Leather"],
         "skills": ["Bluff", "Craft (any one)", "Escape Artist", "Intimidate", "Knowledge (arcana)", "Knowledge (planes)", "Perception", "Sense Motive", "Spellcraft", "Use Magic Device"],
@@ -406,7 +432,7 @@
         "saving throws": ["Fortitude", "Reflex"]
     },
     
-    "Warpriest": {
+    "warpriest": {
         "weapons": ["Battleaxe", "Blowgun", "Blunderbuss", "Bomb", "Cestus","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dart", "Dart, Jolting", "Dwarven Waraxe", "Falchion","Flail", "Glaive", "Greataxe", "Greatclub", "Greatsword", "Guillotine Axe","Halberd", "Handaxe", "Harpoon", "Heavy Flail", "Heavy Mace","Heavy Pick", "Javelin", "Kama", "Kukri", "Lance", "Light Flail","Light Hammer", "Light Mace", "Light Pick", "Longbow", "Longspear","Longsword", "Mace, Cold Iron", "Mace, Heavy", "Mace, Light", "Morningstar","Net", "Nunchaku", "Orc Double Axe", "Pick, Heavy", "Pick, Light","Quarterstaff", "Ranseur", "Rapier", "Sai", "Sap", "Scimitar","Scythe", "Shortbow", "Shortspear", "Shuriken", "Sickle", "Sling","Spear", "Spear, Hekatonkheires", "Starknife", "Sword, Bastard","Sword Cane", "Sword, Short", "Three-Section Staff", "Trident","Unarmed Strike", "Warhammer", "Whip", "Whip, Dire"],
         "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Half Plate", "Ring Mail", "Chainmail", "Splint Mail", "Banded Mail", "Half-Plate", "Full Plate"],
         "skills": ["Climb", "Craft", "Diplomacy", "Heal", "Knowledge (engineering)", "Knowledge (religion)", "Profession", "Ride", "Sense Motive", "Spellcraft"],
@@ -419,7 +445,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-    "Witch": {
+    "witch": {
         "weapons": ["Dagger", "Dart", "Sling", "Quarterstaff"],
         "armor": ["None"],
         "skills": ["Craft (Alchemy)", "Fly", "Heal", "Intimidate", "Knowledge (arcana)", "Knowledge (history)", "Knowledge (nature)", "Knowledge (planes)", "Knowledge (religion)", "Profession", "Spellcraft", "Use Magic Device"],
@@ -433,7 +459,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-    "Wizard": {
+    "wizard": {
         "weapons": ["Club", "Dagger", "Heavy Crossbow", "Light Crossbow", "Quarterstaff"],
         "armor": ["None"],
         "skills": ["Craft (any one)", "Fly", "Knowledge (arcana)", "Knowledge (history)", "Knowledge (planes)", "Linguistics", "Spellcraft"],
@@ -449,7 +475,7 @@
     
     
     
-            "Harbinger": {
+        "harbringer": {
         "weapons": ["Dagger", "Falchion", "Flail", "Gauntlet", "Greatsword", "Handaxe", "Kukri", "Longsword", "Quarterstaff", "Rapier", "Scimitar", "Short sword", "Spear", "Spiked chain", "Whip"],
         "armor": ["Light"],
         "skills": ["Acrobatics", "Athletics", "Bluff", "Intimidate", "Perception", "Sense Motive", "Stealth"],
@@ -462,7 +488,7 @@
         "saving throws": ["Reflex", "Will"]
     },
     
-    "Mystic": {
+    "mystic": {
         "weapons": ["Battle Aspergillum", "Bastard Sword", "Bec de Corbin", "Bo Staff", "Bolas", "Brass Knuckles", "Butchering Axe", "Chakram", "Club", "Crossbow, Heavy", "Crossbow, Light", "Dagger", "Dart", "Double Chained Kama", "Flail", "Gauntlet", "Glaive", "Greataxe", "Greatsword", "Halberd", "Hammer, Gnome Hooked", "Handaxe", "Javelin", "Kama", "Kusarigama", "Lance", "Longbow", "Longspear", "Longsword", "Mace, Heavy", "Morningstar", "Nunchaku", "Quarterstaff", "Ranseur", "Rapier", "Sai", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken", "Siangham", "Sickle", "Sling", "Spear", "Spiked Armor", "Spiked Chain", "Spiked Gauntlet", "Spiked Shield", "Starknife", "Sword Cane", "Sword, Short", "Temple Sword", "Trident", "Unarmed Strike", "Warhammer", "Whip"],
         "armor": ["Light Armor", "Medium Armor", "Heavy Armor"],
         "skills": ["Acrobatics", "Autohypnosis", "Climb", "Craft", "Knowledge (psionics)", "Perception", "Profession", "Ride", "Sense Motive", "Spellcraft", "Stealth", "Survival", "Swim", "Use Psionic Device"],
@@ -475,7 +501,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-        "Stalker": {
+        "stalker": {
             "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
             "armor": ["Light Armor", "Shields"],
             "skills": ["Acrobatics","Climb","Craft","Disable Device","Disguise","Escape Artist","Handle Animal","Heal","Intimidate","Knowledge (dungeoneering)","Knowledge (geography)","Knowledge (nature)","Perception","Ride","Sense Motive","Stealth","Survival","Swim"],
@@ -488,7 +514,7 @@
             "saving throws": ["Fortitude", "Reflex"]
         },
     
-        "Warder": {
+        "warder": {
             "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
             "armor": ["Heavy Armor", "Medium Armor", "Shields"],
             "skills": ["Acrobatics", "Autohypnosis", "Climb", "Craft", "Handle Animal", "Intimidate", "Jump", "Knowledge (engineering)", "Knowledge (history)", "Knowledge (nobility)", "Knowledge (tactics)", "Perception", "Perform", "Profession", "Ride", "Sense Motive", "Survival", "Swim", "Use Rope"],
@@ -502,7 +528,7 @@
             "saving throws": ["Fortitude", "Will"]
         },
     
-        "Warlord": {
+        "warlord": {
             "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
             "armor": ["Heavy Armor", "Medium Armor", "Light Armor", "Shields"],
             "skills": ["Acrobatics", "Appraise", "Bluff", "Climb", "Craft", "Diplomacy", "Disable Device", "Disguise", "Escape Artist", "Fly", "Handle Animal", "Heal", "Intimidate", "Knowledge (all)", "Linguistics", "Perception", "Perform", "Profession", "Ride", "Sense Motive", "Sleight of Hand", "Spellcraft", "Stealth", "Survival", "Swim", "Use Magic Device"],
@@ -516,7 +542,7 @@
             "saving throws": ["Fortitude", "Will"]
     
         },
-        "Zealot": {
+        "zealot": {
             "weapons": ["Battleaxe", "Club", "Dagger", "Flail", "Greataxe", "Greatsword", "Halberd", "Heavy flail", "Javelin", "Kama", "Longsword", "Mace", "Morningstar", "Quarterstaff", "Ranseur", "Rapier", "Sai", "Scimitar", "Short sword", "Spear", "Spiked chain", "Trident", "Warhammer", "Whip"],
             "armor": ["Light", "Medium"],
             "skills": ["Acrobatics", "Athletics", "Endurance", "Intimidate", "Perception", "Sense Motive"],
@@ -530,7 +556,7 @@
             "saving throws": ["Fortitude", "Will"]
     },
 
-    "Armorist": {
+    "armorist": {
         "weapons": ["Club", "Dagger", "Dart", "Heavy Crossbow", "Light Crossbow", "Quarterstaff", "Sickle", "Sling", "Spear", "longsword"],
         "armor": ["all armor", "shields (except tower shields)"],
         "skills": ["Acrobatics", "Bluff", "Climb", "Craft", "Escape Artist", "Fly", "Intimidate", "Knowledge (arcana)", "Knowledge (nature)", "Knowledge (planes)", "Perception", "Profession", "Spellcraft", "Stealth", "Survival", "Swim"],
@@ -542,7 +568,7 @@
         "casting level": "low",
         "saving throws": ["Fortitude", "Will"]
     },
-    "Elementalist": {
+    "elementalist": {
         "weapons": ["Club", "Dagger", "Dart", "Heavy Crossbow", "Light Crossbow", "Mace", "Quarterstaff", "Sickle", "Sling", "Spear"],
         "armor": ["Light armor", "medium armor", "shields (except tower shields)"],
         "skills":  ["Acrobatics (Dex)", "Bluff (Cha)", "Climb (Str)", "Craft (Int)", "Escape Artist (Dex)", "Fly (Dex)", "Intimidate (Cha)", "Knowledge (arcana) (Int)", "Knowledge (nature) (Int)", "Knowledge (planes) (Int)", "Perception (Wis)", "Profession (Wis)", "Spellcraft (Int)", "Stealth (Dex)", "Survival (Wis)", "Swim (Str)"],
@@ -554,7 +580,7 @@
         "casting level": "high",
         "saving throws": ["Reflex", "Fortitude","Will"]
     },
-    "Eliciter": {
+    "eliciter": {
         "weapons": ["Club", "Dagger", "Dart", "Heavy Crossbow", "Light Crossbow", "Mace", "Quarterstaff", "Sickle", "Sling", "Spear"],
         "armor": ["Light armor"],
         "skills": ["Acrobatics", "Bluff", "Climb", "Craft", "Diplomacy", "Disguise", "Handle Animal", "Intimidate", "Knowledge (local)", "Knowledge (nobility)", "Linguistics", "Perform", "Profession", "Sense Motive", "Spellcraft", "Stealth", "Use Magic Device"], 
@@ -567,7 +593,7 @@
         "saving throws": ["Reflex", "Will"]
     },
 
-    "Fey Adept": {
+    "fey adept": {
         "weapons": ["Club", "Dagger", "Dart", "Quarterstaff", "Sickle", "Shortspear", "Sling", "Spear"],
         "armor": ["Padded", "Leather"],
         "skills": ["Appraise", "Bluff", "Craft", "Disguise", "Escape Artist", "Intimidate", "Knowledge (arcana)", "Knowledge (local)", "Knowledge (nature)", "Linguistics", "Perception", "Perform", "Sense Motive", "Sleight of Hand", "Spellcraft", "Stealth", "Use Magic Device"],        "hp": 6,
@@ -578,7 +604,7 @@
         "casting level": "high",
         "saving throws": ["Will"]
     },
-    "Hedgewitch": {
+    "hedgewitch": {
         "weapons": ["Club", "Dagger", "Dart", "Quarterstaff", "Sickle", "Shortspear", "Sling", "Spear"],
         "armor": ["Padded", "Leather"],
         "skills": ["Appraise", "Bluff", "Craft", "Diplomacy", "Fly", "Handle Animal", "Heal", "Knowledge (arcana)", "Linguistics", "Perform", "Profession", "Sense Motive", "Spellcraft", "Stealth", "Use Magic Device"],
@@ -590,7 +616,7 @@
         "casting level": "mid",
         "saving throws": ["Will"]
     },
-    "Incanter": {
+    "incanter": {
         "weapons": ["Club", "Dagger", "Quarterstaff", "Sickle"],
         "armor": ["None"],
         "skills": ["Appraise", "Craft", "Fly", "Knowledge (arcana)", "Knowledge (planes)", "Profession", "Spellcraft"],
@@ -602,7 +628,7 @@
         "casting level": "high",
         "saving throws": ["Will"]
     },
-    "Mageknight": {
+    "mageknight": {
         "weapons": ["All simple and martial weapons"],
         "armor": ["All armor, shields (except tower shields)"],
         "skills": ["Acrobatics", "Bluff", "Climb", "Craft", "Disguise", "Fly", "Handle Animal", "Intimidate", "Knowledge (geography)", "Knowledge (nature)", "Perception", "Profession", "Sense Motive", "Spellcraft", "Stealth", "Survival", "Swim"],
@@ -614,7 +640,7 @@
         "casting level": "low",
         "saving throws": ["Fortitude", "Will"]
     },
-    "Shifter": {
+    "shifter": {
         "weapons": ["Club", "Dagger", "Dart", "Quarterstaff", "Scimitar", "Sickle", "Shortspear", "Sling", "Spear"],
         "armor": ["Padded", "Leather", "Hide"],
         "skills": ["Craft", "Diplomacy", "Fly", "Heal", "Intimidate", "Knowledge (arcana)", "Knowledge (history)", "Knowledge (planes)", "Knowledge (religion)", "Linguistics", "Perform", "Profession", "Sense Motive", "Spellcraft"],
@@ -626,7 +652,7 @@
         "casting level": "mid",
         "saving throws": ["Fortitude", "Reflex"]
     },
-    "Soul Weaver": {
+    "soul weaver": {
         "weapons": ["Club", "Dagger", "Light Mace", "Morningstar", "Quarterstaff", "Sickle", "Sling", "Unarmed Strike"],
         "armor": ["Padded", "Leather"],
         "skills": ["Diplomacy", "Heal", "Knowledge (arcana)", "Knowledge (history)", "Knowledge (religion)", "Perception", "Profession", "Sense Motive", "Spellcraft"],
@@ -638,7 +664,7 @@
         "casting level": "high",
         "saving throws": ["Will"]
     },
-    "Symbiat": {
+    "symbiat": {
         "weapons": ["Club", "Dagger", "Heavy Mace", "Light Mace", "Morningstar", "Quarterstaff", "Sickle", "Shortspear", "Spear"],
         "armor": ["Padded", "Leather"],
         "skills": ["Acrobatics", "Craft", "Diplomacy", "Fly", "Intimidate", "Knowledge (all)", "Linguistics", "Perception", "Profession", "Sense Motive", "Spellcraft", "Stealth"],
@@ -651,7 +677,7 @@
         "saving throws": ["Reflex", "Will"]
     },
 
-    "Thaumaturge": {
+    "thamaturge": {
         "weapons": ["Club", "Dagger", "Quarterstaff", "Sickle"],
         "armor": ["Padded"],
         "skills": ["Craft", "Diplomacy", "Disguise", "Fly", "Heal", "Intimidate", "Knowledge (all)", "Linguistics", "Perform", "Profession", "Sense Motive", "Spellcraft", "Use Magic Device"],
@@ -663,7 +689,7 @@
         "casting level": "high",
         "saving throws": ["Will"]
     },
-    "Wraith": {
+    "wraith": {
         "weapons": ["Dagger", "Handaxe", "Light hammer", "Light mace", "Short sword", "Sickle"],
         "armor": ["Padded", "Leather"],
         "skills": ["Bluff (Cha)", "Craft (Int)", "Disguise (Cha)", "Fly (Dex)", "Intimidate (Cha)", "Knowledge (arcana) (Int)", "Knowledge (history) (Int)", "Knowledge (nobility) (Int)", "Knowledge (religion) (Int)", "Linguistics (Int)", "Perception (Wis)", "Profession (Wis)", "Sense Motive (Wis)", "Spellcraft (Int)", "Stealth (Dex)", "Use Magic Device (Cha)"],
@@ -675,7 +701,7 @@
         "casting level": "mid",
         "saving throws": ["Reflex", "Will"]
     },
-    "Armiger": {
+    "armiger": {
         "weapons": ["battleaxe", "dagger", "greatsword", "greataxe", "halberd", "heavy flail", "longsword", "morningstar", "ranseur", "scimitar", "short sword", "warhammer"],
         "armor": ["all armor", "shields (except tower shields)"],
         "skills": ["Acrobatics", "Climb", "Craft", "Intimidate", "Knowledge (dungeoneering)", "Knowledge (geography)", "Knowledge (local)", "Knowledge (nobility)", "Perception", "Profession", "Ride", "Sense Motive", "Sleight of Hand", "Survival", "Swim"],
@@ -687,7 +713,7 @@
         "casting level": "none",
         "saving throws": ["Fortitude", "Reflex"]
         },
-    "Blacksmith": {
+    "blacksmith": {
             "weapons": ["Dagger", "Heavy Mace", "Light Hammer", "Light Pick", "Sap", "Sickle", "Warhammer"],
             "armor": ["all armor", "shields (except tower shields)"],
             "skills": ["Appraise", "Climb", "Craft", "Disable Device", "Intimidate", "Knowledge (engineering)", "Knowledge (local)", "Perception", "Profession", "Survival", "Swim", "Use Magic Device"],
@@ -699,7 +725,7 @@
             "casting level": "none",
             "saving throws": ["Fortitude", "Will"]
 },
-    "Commander": {
+    "commander": {
                 "weapons": ["Longsword", "Shortsword", "Dagger", "Shortbow", "Longbow"],
                 "armor": ["light armor", "medium armor", "heavy armor", "shields"],
                 "skills": ["Appraise", "Bluff", "Climb", "Craft", "Diplomacy", "Handle Animal", "Intimidate", "Knowledge (engineering)", "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nobility)", "Linguistics", "Perception", "Profession", "Ride", "Sense Motive", "Survival", "Swim"],
@@ -711,7 +737,7 @@
                 "casting level": "none",
                 "saving throws": ["Fortitude", "Will"]
 },  
-    "Conscript": {
+    "conscript": {
                 "weapons": ["Bolas", "Crossbow (light or heavy)", "Dagger", "Darts", "Javelin", "Shortbow", "Spear"],
                 "armor": ["All armor", "Shields (except tower shields)"],
                 "skills": ["Acrobatics", "Climb", "Handle Animal", "Intimidate", "Knowledge (geography)", "Knowledge (local)", "Perception", "Profession", "Ride", "Survival", "Swim", "+3 of your choice"],
@@ -723,7 +749,7 @@
                 "casting level": "none",
                 "saving throws": ["Fortitude", "Reflex"]
 },
-"Savant": {
+"savant": {
     "weapons": ["Crossbow", "Dagger", "Dart", "Longbow", "Quarterstaff", "Rapier", "Shortbow"],
     "armor": ["light armor", "shields (except tower shields)"],
     "skills":["Acrobatics","Climb", "Craft","Disguise", "Diplomacy", "Intimidate", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)", "Linguistics", "Perform", "Profession", "Sense Motive","Swim"],
@@ -735,7 +761,7 @@
     "casting level": "high",
     "saving throws": ["Reflex"]
 },
-"Scholar": {
+"scholar": {
     "weapons": ["Dagger", "Dart", "Sling", "Staff", "Spear"],
     "armor": ["light armor", "shields (except tower shields)"],
     "skills": ["Appraise (Int)", "Bluff (Cha)", "Craft (Int)", "Diplomacy (Cha)", "Disable Device (Dex)", "Disguise (Cha)", "Escape Artist (Dex)", "Handle Animal (Cha)", "Heal (Wis)", "Intimidate (Cha)", "Knowledge (all) (Int)", "Linguistics (Int)", "Perception (Wis)", "Perform (Cha)", "Profession (Wis)", "Sense Motive (Wis)", "Sleight of Hand (Dex)", "Spellcraft (Int)", "Stealth (Dex)", "Survival (Wis)", "Use Magic Device (Cha)"],
@@ -747,7 +773,7 @@
     "casting level": "high",
     "saving throws": ["Fortitude", "Will"]
 },
-    "Sentinel": {
+    "sentinel": {
         "weapons": ["Battleaxe", "Flail", "Glaive", "Greataxe", "Greatsword", "Halberd", "Longsword", "Morningstar", "Rapier", "Scimitar", "Shortsword", "Spear", "Trident", "Warhammer"],
         "armor": ["all armor", "shields (except tower shields)"],
         "skills": ["Bluff (Cha)", "Climb (Str)", "Craft (Int)", "Diplomacy (Cha)", "Handle Animal (Cha)", "Heal (Wis)", "Intimidate (Cha)", "Knowledge (nobility) (Int)", "Perception (Wis)", "Profession (Wis)", "Ride (Dex)", "Sense Motive (Wis)", "Swim (Str)"],
@@ -759,7 +785,7 @@
         "casting level": "none",
         "saving throws": ["Fortitude", "Will"]
 },
-    "Striker": {
+    "striker": {
         "weapons": ["Battleaxe", "Flail", "Glaive", "Greataxe", "Greatsword", "Halberd", "Longsword", "Morningstar", "Rapier", "Scimitar", "Shortsword", "Spear", "Trident", "Warhammer"],
         "armor": ["all armor", "shields (except tower shields)"],
         "skills": ["Acrobatics (Dex)", "Climb (Str)", "Craft (Int)", "Escape Artist (Dex)", "Fly (Dex)", "Heal (Wis)", "Intimidate (Cha)", "Knowledge (nature) (Int)", "Perception (Wis)", "Perform (Cha)", "Profession (Wis)", "Ride (Dex)", "Sense Motive (Wis)", "Sleight of Hand (Dex)", "Stealth (Dex)", "Survival (Wis)", "Swim (Str)"],
@@ -771,7 +797,7 @@
         "casting level": "none",
         "saving throws": ["Fortitude", "Reflex"]
     },
-"Technician": {
+"technician": {
     "weapons": ["Battleaxe", "Flail", "Glaive", "Greataxe", "Greatsword", "Halberd", "Longsword", "Morningstar", "Rapier", "Scimitar", "Shortsword", "Spear", "Trident", "Warhammer"],
     "armor": ["all armor", "shields (except tower shields)"],
     "skills": ["Appraise (Int)", "Bluff (Cha)", "Climb (Str)", "Craft (Int)", "Diplomacy (Cha)", "Disable Device (Dex)", "Knowledge (dungeoneering) (Int)", "Knowledge (engineering) (Int)", "Knowledge (geography) (Int)", "Knowledge (local) (Int)", "Linguistics (Int)", "Perception (Wis)", "Profession (Wis)", "Sense Motive (Wis)", "Sleight of Hand (Dex)", "Stealth (Dex)", "Swim (Str)", "Use Magic Device (Cha)"],
@@ -784,7 +810,7 @@
     "saving throws": ["Fortitude", "Reflex"]
 },
 
-"Crimson Dancer": {
+"crimson dancer": {
     "weapons": ["Battleaxe", "Flail", "Glaive", "Greataxe", "Greatsword", "Halberd", "Longsword", "Morningstar", "Rapier", "Scimitar", "Shortsword", "Spear", "Trident", "Warhammer"],
     "armor": ["all armor", "shields (except tower shields)"],
     "skills": ["Acrobatics (Dex)", "Bluff (Cha)", "Climb (Str)", "Craft (Int)", "Diplomacy (Cha)", "Escape Artist (Dex)", "Heal (Wis)", "Intimidate (Cha)", "Knowledge (local) (Int)", "Knowledge (nature) (Int)", "Knowledge (nobility) (Int)", "Knowledge (religion) (Int)", "Perception (Wis)", "Profession (Wis)", "Sense Motive (Wis)", "Spellcraft (Int)", "Stealth (Dex)", "Survival (Wis)", "Swim (Str)"],
@@ -797,7 +823,7 @@
     "saving throws": ["Fortitude", "Will"]
 },
 
-"Prodigy": {
+"prodigy": {
     "weapons": ["Battleaxe", "Flail", "Glaive", "Greataxe", "Greatsword", "Halberd", "Longsword", "Morningstar", "Rapier", "Scimitar", "Shortsword", "Spear", "Trident", "Warhammer"],
     "armor": ["all armor", "shields (except tower shields)"],
     "skills": ["Acrobatics (Dex)", "Bluff (Cha)", "Climb (Str)", "Craft (Int)", "Diplomacy (Cha)", "Intimidate (Cha)", "Knowledge (all) (Int)", "Perception (Wis)", "Perform (Cha)", "Profession (Wis)", "Sense Motive (Wis)", "Spellcraft (Int)", "Use Magic Device (Cha)", "Three other class skills of the prodigy’s choice, chosen at character creation."],
@@ -810,7 +836,7 @@
     "saving throws": ["Reflex", "Will"]
 },
 
-"Sage": {
+"sage": {
     "weapons": ["simple"],
     "armor": ["light armor", "bucklers"],
     "skills": ["Acrobatics (Dex)", "Appraise (Int)", "Climb (Str)", "Craft (Int)", "Diplomacy (Cha)", "Escape Artist (Dex)", "Intimidate (Cha)", "Knowledge (all) (Int)", "Perception (Wis)", "Perform (Cha)", "Profession (Wis)", "Ride (Dex)", "Sense Motive (Wis)", "Stealth (Dex)", "Swim (Str)"],
@@ -823,7 +849,7 @@
     "saving throws": ["Reflex", "Will"]
 },
 
-"Troubadour": {
+"troubadour": {
     "weapons": ["simple"],
     "armor": ["light armor", "bucklers"],
     "skills": ["Acrobatics (Dex)", "Appraise (Int)", "Bluff (Cha)", "Climb (Str)", "Craft (Int)", "Diplomacy (Cha)", "Disable Device (Dex)", "Disguise (Cha)", "Escape Artist (Dex)", "Intimidate (Cha)", "Knowledge (all) (Int)", "Linguistics (Int)", "Perform (Cha)", "Profession (Wis)", "Sense Motive (Wis)", "Spellcraft (Int)", "Stealth (Dex)", "Swim (Str)", "Use Magic Device (Cha)"],
@@ -836,7 +862,7 @@
     "saving throws": ["Reflex", "Will"]
 },
 
-"Warden": {
+"warden": {
     "weapons": ["simple"],
     "armor": ["light armor", "bucklers"],
     "skills": ["Climb (Str)", "Craft (Int)", "Diplomacy (Cha)", "Handle Animal (Cha)", "Heal (Wis)", "Intimidate (Cha)", "Knowledge (arcana) (Int)", "Knowledge (history) (Int)", "Knowledge (local) (Int)", "Knowledge (nobility) (Int)", "Perception (Wis)", "Profession (Wis)", "Sense Motive (Wis)", "Spellcraft (Int)", "Swim (Str)"],
@@ -849,7 +875,7 @@
     "saving throws": ["Fortitude", "Will"]
 },
 
-"Dragoon": {
+"dragoon": {
     "weapons": ["simple"],
     "armor": ["light armor", "bucklers"],
     "skills":  ["Acrobatics (Dex)", "Bluff (Cha)", "Climb (Str)", "Craft (Int)", "Diplomacy (Cha)", "Intimidate (Cha)", "Knowledge (local) (Int)", "Perception (Wis)", "Perform (Cha)", "Profession (Wis)", "Sense Motive (Wis)", "Spellcraft (Int)", "Use Magic Device (Cha)"],
@@ -862,7 +888,7 @@
     "saving throws": ["Fortitude", "Will"]
 },
 
-"Mountebank": {
+"mountebank": {
     "weapons": ["simple"],
     "armor": ["light armor", "bucklers"],
     "skills":  ["Acrobatics (Dex)", "Appraise (Int)", "Bluff (Cha)", "Climb (Str)", "Craft (Int)", "Diplomacy (Cha)", "Disable Device (Dex)", "Disguise (Cha)", "Escape Artist (Dex)", "Intimidate (Cha)", "Knowledge (arcana) (Int)", "Knowledge (dungeoneer) (Int)", "Knowledge (local) (Int)", "Knowledge (nobility) (Int)", "Linguistics (Int)", "Perception (Wis)", "Perform (Cha)", "Profession (Wis)", "Sense Motive (Wis)", "Sleight of Hand (Dex)", "Spellcraft (Int)", "Stealth (Dex)", "Swim (Str)", "Use Magic Device (Cha)"],
@@ -875,7 +901,7 @@
     "saving throws": ["Reflex", "Will"]
 },
 
-"Necros": {
+"necros": {
     "weapons": ["simple"],
     "armor": ["light armor", "bucklers"],
     "skills":  ["Bluff (Cha)", "Craft (Int)", "Diplomacy (Cha)", "Intimidate (Cha)", "Knowledge (arcana) (Int)", "Knowledge (religion) (Int)", "Perception (Wis)", "Perform (Cha)", "Profession (Wis)", "Sense Motive (Wis)", "Spellcraft (Int)", "Use Magic Device (Cha)"],
@@ -888,7 +914,7 @@
     "saving throws": ["Fortitude", "Will"]
 },
 
-"Reaper": {
+"reaper": {
     "weapons": ["simple"],
     "armor": ["light armor", "bucklers"],
     "skills":  ["Acrobatics (Dex), Bluff (Cha), Climb (Str), Craft (Int), Disguise (Cha), Heal (Wis), Intimidate (Cha), Knowledge (arcana) (Int), Knowledge (dungeoneering) (Int), Knowledge (local) (Int), Knowledge (nature) (Int), Knowledge (planes) (Int), Knowledge (religion) (Int), Linguistics (Int), Perception (Wis), Profession (Wis), Ride (Dex), Sense Motive (Wis), Spellcraft (Int), Stealth (Dex), Survival (Wis), and Use Magic Device (Cha)"],
@@ -901,7 +927,7 @@
     "saving throws": ["Fortitude", "Will"]
 },
 
-"Agent": {
+"agent": {
         "weapons": ["simple", "martial"],
         "armor": ["Light armor", "bucklers"],
         "skills": ["Acrobatics", "Appraise", "Bluff", "Craft", "Diplomacy", "Disable Device", "Disguise", "Escape Artist", "Handle Animal", "Heal", "Intimidate", "Knowledge (all)", "Linguistics", "Perception", "Perform", "Profession", "Sense Motive", "Sleight of Hand", "Spellcraft", "Stealth", "Survival", "Use Magic Device"],
@@ -913,7 +939,7 @@
         "casting level": "None",
         "saving throws": ["Reflex", "Will"]
 },
-    "Courser": {
+    "courser": {
     "weapons": ["Any light melee weapon", "any one-handed ranged weapon"],
     "armor": ["Light armor", "bucklers"],
     "skills": ["Acrobatics (Dex)", "Artistry (Int)", "Climb (Str)", "Craft (Int)", "Handle Animal (Cha)", "Heal (Wis)", "Intimidate (Cha)", "Knowledge (geography) (Int)", "Knowledge (nature) (Int)", "Lore (Int)", "Perception (Wis)", "Perform (Cha)", "Profession (Wis)", "Ride (Dex)", "Stealth (Dex)", "Survival (Wis)", "Swim (Str)"],
@@ -925,7 +951,7 @@
     "casting level": "None",
     "saving throws": ["Reflex", "Fortitude"]
 },
-"Envoy": {
+"envoy": {
     "weapons": ["simple"],
     "armor": ["no armor", "bucklers"],
     "skills": ["Artistry (Int)", "Bluff (Cha)", "Craft (Int)", "Diplomacy (Cha)", "Disguise (Cha)", "Intimidate (Cha)", "Knowledge (local) (Int)", "Knowledge (nobility) (Int)", "Lore (Int)", "Perception (Wis)", "Perform (Cha)", "Profession (Wis)", "Sense Motive (Wis)", "Stealth (Dex)"],
@@ -937,7 +963,7 @@
     "casting level": "None",
     "saving throws": ["Will"]
 },
-"Mastermind": {
+"mastermind": {
     "weapons": ["simple", "Rapier", "Sap", "short bow", "Sword Cane"],
     "armor": ["Light armor", "bucklers"],
     "skills":["Appraise (Int)", "Artistry (Int)", "Bluff (Cha)", "Craft (Int)", "Diplomacy (Cha)", "Disguise (Cha)", "Escape Artist (Dex)", "Handle Animal (Cha)", "Intimidate (Cha)", "Knowledge (all) (Int)", "Linguistics (Int)", "Lore (Int)", "Perception (Wis)", "Profession (Wis)", "Ride (Dex)", "Sense Motive (Wis)", "Sleight of Hand (Dex)", "Stealth (Dex)", "Use Magic Device (Cha)"],
@@ -949,7 +975,7 @@
     "casting level": "None",
     "saving throws": ["Will"]
 },
-"Professional": {
+"professional": {
     "weapons": ["simple", "Rapier", "Sap", "short bow", "Sword Cane", "short sword", "Hand Crossbow"],
     "armor": ["Light armor", "bucklers"],
     "skills": ["Artistry (Int)", "Craft (Int)", "Lore (Int)", "Perception (Wis)", "Profession (Wis)", "+10 other skills"],
