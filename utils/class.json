@@ -347,6 +347,46 @@
        "casting level": "none",
         "saving throws": ["Reflex", "Will"]
     },
+
+    "samurai": {
+        "weapons": ["simple","martial","katana","naginata","wakizashi"],
+        "armor": ["Light Armor", "Medium Armor", "Heavy Armor", "shields (except tower shields)"],
+        "skills": ["acrobatics","appraise","bluff","climb","craft","diplomacy","escape artist","handle animal","intimidate","knowledge","linguistics","perception","perform","profession","ride","sense motive","spellcraft","swim","use magic device"],
+        "hp": 10,
+        "gold": "3d6",
+        "BAB":    "high",
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
+        "casting level": "none",
+        "saving throws": ["Fortitude"]
+    },
+
+    "slayer": {
+        "weapons": ["simple","martial"],
+        "armor": ["Light Armor", "Medium Armor", "shields (except tower shields)"],
+        "skills": ["Acrobatics (Dex)", "Bluff (Cha)", "Climb (Str)", "Craft (Int)", "Disguise (Cha)", "Heal (Wis)", "Intimidate (Cha)", "Knowledge (dungeoneering) (Int)", "Knowledge (geography) (Int)", "Knowledge (local) (Int)", "Perception (Wis)", "Profession (Wis)", "Ride (Dex)", "Sense Motive (Wis)", "Stealth (Dex)", "Survival (Wis)","Swim (Str)"],
+        "hp": 10,
+        "gold": "3d6",
+        "BAB":    "high",
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
+        "casting level": "none",
+        "saving throws": ["Fortitude"]
+    },
+
+    "skald": {
+        "weapons": ["simple","martial"],
+        "armor": ["light armor","medium armor"],
+        "skills": ["Bluff (Cha)","Climb (Str)","Craft (Int)","Diplomacy (Cha)","Handle Animal (Cha)","Intimidate (Cha)","Profession (Wis)","Ride (Dex)","Sense Motive (Wis)","Swim (Str)"],
+        "hp": 8,
+        "gold": "4d6",
+        "BAB": "mid",
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
+       "casting level": "mid",
+        "saving throws": ["Reflex", "Will"]
+    },
+    
     
     "sorcerer": {
         "weapons": ["Club", "Dagger", "Heavy Crossbow", "Light Crossbow", "Quarterstaff"],
@@ -409,6 +449,20 @@
         "hp": 10,
         "gold": "3d6",
         "BAB":    "high",
+    
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
+       "casting level": "none",
+        "saving throws": ["Fortitude", "Reflex"]
+    },
+
+    "vigilante": {
+        "weapons": ["simple","martial"],
+        "armor": ["Light Armor", "Medium Armor", "shields (except tower shields)"],
+        "skills": ["Acrobatics (Dex)", "Appraise (Int)", "Bluff (Cha)", "Climb (Str)", "Craft (Int)", "Diplomacy (Cha)", "Disable Device (Dex)", "Disguise (Cha)", "Escape Artist (Dex)", "Intimidate (Cha)", "Knowledge (dungeoneering) (Int)", "Knowledge (engineering) (Int)", "Knowledge (local) (Int)", "Knowledge (nobilityerrata) (Int)", "Perception (Wis)", "Perform (Cha)", "Profession (Wis)", "Ride (Dex)", "Sense Motive (Wis)", "Sleight of Hand (Dex)", "Stealth (Dex)", "Survival (Wis)", "Swim (Str)","Use Magic Device (Cha)"],
+        "hp": 10,
+        "gold": "3d6",
+        "BAB": "mid",
     
         "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
         "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
@@ -640,10 +694,23 @@
         "casting level": "low",
         "saving throws": ["Fortitude", "Will"]
     },
-    "shifter": {
+    "shifter_base": {
         "weapons": ["Club", "Dagger", "Dart", "Quarterstaff", "Scimitar", "Sickle", "Shortspear", "Sling", "Spear"],
         "armor": ["Padded", "Leather", "Hide"],
         "skills": ["Craft", "Diplomacy", "Fly", "Heal", "Intimidate", "Knowledge (arcana)", "Knowledge (history)", "Knowledge (planes)", "Knowledge (religion)", "Linguistics", "Perform", "Profession", "Sense Motive", "Spellcraft"],
+        "hp": 8,
+        "gold": "2d6",
+        "BAB": "mid",
+        "regions" : ["Dust-Cairn", "Esterdragon", "Kaeru no Tochi", "Feyador", "Grundy", "Ieso", "Sojoria", "Spire", "Tal-falko"],
+        "race": ["Human", "Catfolk", "Elf", "Half-Elf", "Halfling", "Goblin", "Kitsune", "Ratfolk", "Sylph", "Tengu", "Undine", "Wayang"],
+        "casting level": "mid",
+        "saving throws": ["Fortitude", "Reflex"]
+    },
+
+    "shifter": {
+        "weapons": ["simple"],
+        "armor": ["light armor"],
+        "skills": ["Acrobatics (Dex)", "Bluff (Cha)", "Climb (Str)", "Craft (Int)", "Disguise (Cha)", "Fly (Dex)", "Handle Animal (Cha)", "Intimidate (Cha)", "Knowledge (geography) (Int)", "Knowledge (nature) (Int)", "Perception (Wis)", "Profession (Wis)", "Sense Motive (Wis)", "Spellcraft (Int)", "Stealth (Dex)", "Survival (Wis)", "Swim (Str)"],
         "hp": 8,
         "gold": "2d6",
         "BAB": "mid",

@@ -1,7 +1,7 @@
 #Internal Imports
 from utils import data
 import json
-from utils.data import regions, weapon_groups_region, archetypes, skills, evil_deities, good_deities, neutral_deities, languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class
+from utils.data import regions, weapon_groups_region, skills, evil_deities, good_deities, neutral_deities, languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class
 #from utils.data import archetypes
 from utils.util import  chooseClass, appendAttrData, roll_dice#,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
 from utils.markdown import style

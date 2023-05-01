@@ -3,7 +3,7 @@ from math import floor
 #importing stats in case we want to work on them
 import random
 from utils import data
-from utils.data import traits, mannerisms, regions, weapon_groups, weapon_groups_region, archetypes, disciplines, skills, evil_deities, good_deities, neutral_deities, languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class
+from utils.data import traits, mannerisms, regions, weapon_groups, weapon_groups_region, disciplines, skills, evil_deities, good_deities, neutral_deities, languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class
 import json
 #from utils.race import race
 
@@ -608,9 +608,10 @@ def mythic():
 def Archetype_Assigner():
     from createACharacter import new_char_c_class
     from main import filename
-    from utils.data import archetypes
+    import json
     global c_class, c_class_2
-    with open(filename, 'a') as f: 
+    with open(filename, 'a') as f, open("utils/archetypes.json",'r', encoding='utf8') as a:
+        archetypes = json.load(a) 
         if isinstance(new_char_c_class, tuple) and (c_class.lower() in archetypes or c_class_2.lower() in archetypes):
                 random_archetype_1 = random.choice(archetypes[c_class.lower()])
                 random_archetype_2 = random.choice(archetypes[c_class_2.lower()])
@@ -622,13 +623,7 @@ def Archetype_Assigner():
         else:
             print("There are no archetypes yet available for this class :( ")
 
-            
-
-                # char_class = c_class.lower()
-                # selected_archetype = random.choice(archetypes[char_class])
-                # print('this is the randomly selected archetype' +  '\n' + selected_archetype + '\n' + ' for this class' + '\n' + char_class)
-                # selected_archetype = random.choice(archetypes.eval("archetypes_{new_char.c_class.lower()}"))
-                # print(f"This is the selected archetype for {c_class}: + {selected_archetype}")                        
+                             
 
 def chooseRace():
     """
