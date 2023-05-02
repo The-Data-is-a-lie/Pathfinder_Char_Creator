@@ -172,9 +172,6 @@ def chooseClass():
                 else:
                     continue
                     # Ignore classes that don't meet the BAB requirement
-            
- 
-        print (class_data[class_name]["regions"])
 
         #If there isn't a racial option in the the BAB list you want, then it will error out
         #currently all races can be all classes
