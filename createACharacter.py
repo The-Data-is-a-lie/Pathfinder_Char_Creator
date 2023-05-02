@@ -75,10 +75,11 @@ def CreateNewCharacter():
         new_char_c_class = new_char.c_class
 
                         #this is where we change the stat rolls:
+        print(style.BLACK + f"drop the lowest roll for each one" + style.END)
         num_dice = int(input("How many dice would you like to roll? "))
         num_sides = int(input("How many sides should each die have? "))
 
-        #declare con as global so we cna work with it
+        #declare con as global so we can work with it
         
         c_str = roll_dice(num_dice, num_sides, 'Strength')
         c_dex = roll_dice(num_dice, num_sides, 'Dexterity')

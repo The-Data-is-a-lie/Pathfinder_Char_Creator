@@ -13,7 +13,7 @@ def roll_dice(num_dice, num_sides, stat):
         rolls = []
         for i in range(num_dice):
             rolls.append(random.randint(1, num_sides))
-        total = sum(rolls)
+        total = sum(rolls)   
         #print(f"{stat} = {total}")
         return total
 
@@ -30,7 +30,7 @@ def Roll_Level():
         """
         # Prompt user for level range
         max_num = int(input("Enter the highest level you want the char to be: "))
-        min_num = int(input("Enter the lowest level you want the char to be: "))
+        min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
 
         # Calculate weights based on level range
         user_input = input("this is the weights: y = higher levels, n = lower levels (y/n): ")
@@ -124,7 +124,7 @@ def chooseClass():
             print('You have selected this region: ' + region, file=f)
         elif int(userInput_region) == 0:
             #make sure this is the full number of regions in the util.data regions area
-            region_index = random.randint(0,10)
+            region_index = random.randint(1,10)
             region = regions[region_index]
             print('You have randomly selected this region: ' + region)
             print('You have randomly selected this region: ' + region, file=f)
@@ -170,9 +170,11 @@ def chooseClass():
                 elif BAB == "L" and class_data[class_name]["BAB"] == "low":
                     classes.append(class_name)
                 else:
-                    # Ignore classes that don't meet the BAB requirement
                     continue
+                    # Ignore classes that don't meet the BAB requirement
+            
  
+        print (class_data[class_name]["regions"])
 
         #If there isn't a racial option in the the BAB list you want, then it will error out
         #currently all races can be all classes
@@ -615,8 +617,10 @@ def Archetype_Assigner():
         if isinstance(new_char_c_class, tuple) and (c_class.lower() in archetypes or c_class_2.lower() in archetypes):
                 random_archetype_1 = random.choice(archetypes[c_class.lower()])
                 random_archetype_2 = random.choice(archetypes[c_class_2.lower()])
-                print(f"The is your {random_archetype_1}")
-                print(f"The is your {random_archetype_2}")
+                print(f"first archetype: {random_archetype_1}")
+                print(f"second archetype: {random_archetype_2}")
+                print(f"first archetype: {random_archetype_1}",file=f)
+                print(f"second archetype: {random_archetype_2}",file=f)
         elif not isinstance(new_char_c_class, tuple) and c_class.lower() in archetypes:
             random_archetype = random.choice(archetypes[c_class.lower()])
             print(f"Archetype: {random_archetype}")
