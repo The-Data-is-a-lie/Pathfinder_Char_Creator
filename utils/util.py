@@ -65,6 +65,7 @@ def Roll_Level():
         elif npcInput == 'n':
             character_class_level = level
             print('No NPC class levels')
+            print('No NPC class levels',file=f)
         else:
             print('Invalid input. Please enter "y" or "n".')
 
@@ -133,7 +134,8 @@ def chooseClass():
             print('You have selected no region.', file=f)
 
         if userInput_race == 'Human':
-            print('Humans get an extra feat ')  
+            print('Humans get an extra feat ') 
+            print('Humans get an extra feat ',file=f)
 
         # random.sample to select 2 random weapons
         weapons = random.sample(weapon_groups, 2)
@@ -197,6 +199,7 @@ def chooseClass():
         else:
             c_class = classes[randrange(0,len(classes))]
             print(f"This is your only class: {c_class}")
+            print(f"This is your only class: {c_class}",file=f)
             return c_class
 
         return c_class, c_class_2           
@@ -265,6 +268,7 @@ def path_of_war():
                     
 
         print(f" This is their path # {path}")
+        print(f" This is their path # {path}",file=f)
         #adding an additional option where we print disciplines for the people to get (we can add functionality so it's based off of region later)
         #to make it based off of region, we simply just do what we did with weapons_region_group, ...
         if path == 1:
@@ -621,9 +625,10 @@ def Archetype_Assigner():
         elif not isinstance(new_char_c_class, tuple) and c_class.lower() in archetypes:
             random_archetype = random.choice(archetypes[c_class.lower()])
             print(f"Archetype: {random_archetype}")
+            print(f"Archetype: {random_archetype}",file=f)
         else:
             print("There are no archetypes yet available for this class :( ")
-
+            print("There are no archetypes yet available for this class :( ",file=f)
                              
 
 def chooseRace():
