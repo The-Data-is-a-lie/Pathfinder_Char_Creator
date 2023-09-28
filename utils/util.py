@@ -602,11 +602,15 @@ def mythic():
 
                 if random.randint(1,100) == 100:
                     print('character is extremely lucky, make it a luck build rather than everything else ')
-                    print('character is extremely lucky, make it a luck build rather than everything else ', file=f)				
+                    print('character is extremely lucky, make it a luck build rather than everything else ', file=f)	
+                    print('This is the characters luck score')
+                    print(random.randint(1,25))			
+
                 elif random.randint(1,100) <= 5:
                     print('you need to take negative luck feats as well as normal feats ')
                     print('you need to take negative luck feats as well as normal feats ', file = f)
-
+                    print('This is the characters luck score (-)')
+                    print(random.randint(1,25))
 
 def Archetype_Assigner():
     from createACharacter import new_char_c_class

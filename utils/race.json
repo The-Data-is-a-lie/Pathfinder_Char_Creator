@@ -225,7 +225,7 @@
         }
         },
     
-    "Half-Elf": {
+    "Half-elf": {
         "first names": ["Aramil", "Arin", "Darian", "Elaith", "Erevan", "Fintan", "Isilme", "Keyleth", "Lairelos", "Laucian", "Liriel", "Lothir", "Maiele", "Melarue", "Merethyl", "Mindartis", "Naiadryl", "Naivara", "Naralieth", "Sariel", "Sariele", "Selsharra", "Siannodel", "Silaqui", "Tathariel", "Tialith", "Vadania", "Zereni"],
         "last names": ["Amastacia", "Amakiir", "Galanodel", "Holimion", "Ilphelkiir", "Liadon", "Meliamne", "Naiadryl", "Siannodel", "Xiloscient"],
         "age": [20, "3d31"],
@@ -240,7 +240,7 @@
         }
     },
 
-    "Half-Orc": {
+    "Half-orc": {
         "first names": ["Dench", "Feng", "Gell", "Henk", "Holg", "Imsh", "Keth", "Krusk", "Ront", "Shump", "Thokk"],
         "age": [14, "5d6"],
         "height": [58, "2d10"],
