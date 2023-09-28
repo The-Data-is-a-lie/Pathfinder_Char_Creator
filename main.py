@@ -39,6 +39,7 @@ while userInput == 'y':
 			skills()
 			mythic()
 
+
 			#need to devise a way to randomly pick good feats		
 
 		else: 
