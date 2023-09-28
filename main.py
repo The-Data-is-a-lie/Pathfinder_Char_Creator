@@ -3,6 +3,7 @@ from createACharacter import CreateNewCharacter
 from utils.markdown import style
 from utils.data import version
 from utils.util import isBool, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
+from utils.Text_to_pdf_python_file import text_to_pdf
 import random
 global filename
 #only location you need to specify where you want text files to be created at
@@ -38,6 +39,8 @@ while userInput == 'y':
 			Archetype_Assigner()
 			skills()
 			mythic()
+			text_to_pdf()
+
 
 
 			#need to devise a way to randomly pick good feats		
