@@ -3,9 +3,13 @@ from createACharacter import CreateNewCharacter
 from utils.markdown import style
 from utils.data import version
 from utils.util import isBool, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
-from utils.Text_to_pdf_python_file import text_to_pdf
 import random
 global filename
+#Adding in Text to PDF Imports
+import fillpdf        
+from fillpdf import fillpdfs
+# from utils.Text_to_pdf_Best_Version_9_28_23
+
 #only location you need to specify where you want text files to be created at
 
 print(style.BOLD + f'Welcome to the D&D Random Character Generator ({version})' + style.END)
@@ -40,6 +44,7 @@ while userInput == 'y':
 			skills()
 			mythic()
 			text_to_pdf()
+
 
 
 
