@@ -3,9 +3,11 @@ from utils import data
 import json
 from utils.data import regions, weapon_groups_region, skills, evil_deities, good_deities, neutral_deities, languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class
 #from utils.data import archetypes
-from utils.util import  chooseClass, appendAttrData, roll_dice#,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
+from utils.util import  format_text, chooseClass, appendAttrData, roll_dice#,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
 from utils.markdown import style
 import random
+import sys
+from utils.util import character_data
 
 #External Imports
 from random import randrange
@@ -119,13 +121,40 @@ def CreateNewCharacter():
         traits_abilities = []
         new_char.c_traits_abilities = appendAttrData(traits_abilities, traits_data)
     
-        #prints stats
-        print(f'Strength: {new_char.c_str}\nDexterity: {new_char.c_dex}', file=f)
-        print(f'Constitution: {new_char.c_const} \nIntelligence: {new_char.c_int}', file=f)
-        print(f'Wisdom: {new_char.c_wisdom}\nCharisma: {new_char.c_char}' + '\n', file=f )
-        print(f'Strength: {new_char.c_str}\nDexterity: {new_char.c_dex}')
-        print(f'Constitution: {new_char.c_const} \nIntelligence: {new_char.c_int}')
-        print(f'Wisdom: {new_char.c_wisdom}\nCharisma: {new_char.c_char}')
+
+        #pre formatting stats:
+
+        formatted_strength = format_text(f'Strength: {new_char.c_str}', bold=True, color="red")
+        formatted_dexterity = format_text(f'Dexterity: {new_char.c_dex}', bold=True, color="red")
+        formatted_constitution = format_text(f'Constitution: {new_char.c_const}', bold=True, color="red")
+        formatted_intelligence = format_text(f'Intelligence: {new_char.c_int}', bold=True, color="red")
+        formatted_wisdom = format_text(f'Wisdom: {new_char.c_wisdom}', bold=True, color="red")
+        formatted_charisma = format_text(f'Charisma: {new_char.c_char}', bold=True, color="red")
+
+
+        #Adding stats to the overall Character Dictionary
+        character_data.update({"Strength": formatted_strength}) 
+
+
+
+        #Print into Char Sheet
+        print(formatted_strength,file=f)
+        print(formatted_dexterity,file=f)
+        print(formatted_constitution,file=f)
+        print(formatted_intelligence,file=f)
+        print(formatted_wisdom,file=f)
+        print(formatted_charisma,file=f)
+        #Print into Terminal
+        print(formatted_strength)
+        print(formatted_dexterity)
+        print(formatted_constitution)
+        print(formatted_intelligence)
+        print(formatted_wisdom)
+        print(formatted_charisma)
+
+
+
+
 
 
 

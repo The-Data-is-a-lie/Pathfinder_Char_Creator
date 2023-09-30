@@ -5,6 +5,7 @@ import random
 from utils import data
 from utils.data import traits, mannerisms, regions, weapon_groups, weapon_groups_region, disciplines, skills, evil_deities, good_deities, neutral_deities, languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class
 import json
+import sys
 #from utils.race import race
 
 def roll_dice(num_dice, num_sides, stat):
@@ -600,17 +601,15 @@ def mythic():
                         print('didnt get mythic ', file=f)
                         break			
 
-                if random.randint(1,100) == 100:
-                    print('character is extremely lucky, make it a luck build rather than everything else ')
-                    print('character is extremely lucky, make it a luck build rather than everything else ', file=f)	
-                    print('This is the characters luck score')
-                    print(random.randint(1,25))			
+                if random.randint(1, 100) >= 95:
+                    luck_score = random.randint(1, 40)
+                    print(luck_score)
+                    print(f'Luck Score: {luck_score}', file=f)
 
-                elif random.randint(1,100) <= 5:
-                    print('you need to take negative luck feats as well as normal feats ')
-                    print('you need to take negative luck feats as well as normal feats ', file = f)
-                    print('This is the characters luck score (-)')
-                    print(random.randint(1,25))
+                elif random.randint(1, 100) <= 5:
+                    luck_score = random.randint(1, 40)
+                    print(luck_score)
+                    print(f'Luck Score: -{luck_score}', file=f)
 
 def Archetype_Assigner():
     from createACharacter import new_char_c_class
@@ -665,3 +664,35 @@ def appendAttrData(attributeList: list, dataList):
     for attr in dataList: attributeList.append(attr)
     
     return attributeList[randrange(0, len(attributeList))]
+
+
+
+
+
+def format_text(text, bold=False, color=None):
+    """
+    Format text with optional bold and color for HTML.
+    
+    Args:
+        text (str): The input text.
+        bold (bool): Whether to make the text bold.
+        color (str): The color of the text (e.g., 'red', 'green', 'blue').
+
+    Returns:
+        str: The formatted HTML text.
+    """
+    style = []
+    
+    # Add CSS style for bold
+    if bold:
+        style.append('font-weight: bold;')
+    
+    # Add CSS style for color
+    if color:
+        style.append(f'color: {color};')
+    
+    # Create HTML span element with inline style
+    if style:
+        return f'<span style="{"; ".join(style)}">{text}</span>'
+    
+

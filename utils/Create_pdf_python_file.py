@@ -1,6 +1,10 @@
 # %%
 # We can't import any self made functions because this uses a different intrepreter
 
+
+from fillpdf import fillpdfs
+import fillpdf
+
 # %%
 from fpdf import FPDF
 
@@ -135,40 +139,40 @@ text_to_pdf()
 # %%
 
 
-import openpyxl
-import re
+# import openpyxl
+# import re
 
-def text_to_excel(text_file, excel_file):
-  """Converts a text file to an Excel file.
+# def text_to_excel(text_file, excel_file):
+#   """Converts a text file to an Excel file.
 
-  Args:
-    text_file: The path to the text file.
-    excel_file: The path to the Excel file.
-  """
+#   Args:
+#     text_file: The path to the text file.
+#     excel_file: The path to the Excel file.
+#   """
 
-  # Create an Excel workbook.
-  wb = openpyxl.Workbook()
+#   # Create an Excel workbook.
+#   wb = openpyxl.Workbook()
 
-  # Create a worksheet.
-  ws = wb.active
+#   # Create a worksheet.
+#   ws = wb.active
 
-  # Open the text file.
-  with open(text_file, "r") as f:
-    # Read the text file line by line.
-    for line in f:
-      # Split the line into columns.
-      columns = re.split(r'\s+', line)
+#   # Open the text file.
+#   with open(text_file, "r") as f:
+#     # Read the text file line by line.
+#     for line in f:
+#       # Split the line into columns.
+#       columns = re.split(r'\s+', line)
 
-      # Write the columns to the Excel worksheet.
-      for column in columns:
-        ws.cell(row=ws.max_row + 1, column=column).value = column
+#       # Write the columns to the Excel worksheet.
+#       for column in columns:
+#         ws.cell(row=ws.max_row + 1, column=column).value = column
 
-  # Save the Excel workbook.
-  wb.save(excel_file)
+#   # Save the Excel workbook.
+#   wb.save(excel_file)
 
-# Example usage:
-text_file = "/path/to/text/file.txt"
-excel_file = "/path/to/excel/file.xlsx"
+# # Example usage:
+# text_file = "/path/to/text/file.txt"
+# excel_file = "/path/to/excel/file.xlsx"
 
-text_to_excel(text_file, excel_file)
+# text_to_excel(text_file, excel_file)
 # %%
