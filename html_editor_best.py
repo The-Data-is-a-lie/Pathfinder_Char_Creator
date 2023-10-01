@@ -1,5 +1,5 @@
 def html_builder():
-  import jinja2
+
   import webbrowser
   import json
   from utils.data_dict import character_json
@@ -9,7 +9,8 @@ def html_builder():
   character_data = character_json
 
   # Create a Jinja2 environment
-  template_env = jinja2.Environment()
+  import Jinja2
+  template_env = Jinja2.Environment()
 
 ##### Currently the data will overwrite any data in the test_character_sheet, so I've savd the data on character_sheet_true
 

@@ -1,36 +1,133 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Character Sheet</title>
+  <title>NPC Character Sheet</title>
+  <script src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>Character Sheet</h1>
 
-    <p>Name: <span id="character_name"></span></p>
-    <p>Class: <span id="character_class"></span></p>
-    <p>Strength: <span id="strength"></span></p>
-    <p>Dexterity: <span id="dexterity"></span></p>
-    <p>Constitution: <span id="constitution"></span></p>
-    <p>Intelligence: <span id="intelligence"></span></p>
-    <p>Wisdom: <span id="wisdom"></span></p>
-    <p>Charisma: <span id="charisma"></span></p>
-  </div>
+<script>
+import pyscript
 
-  <script>
-    // Load the character data from the JSON file
-    const characterData = JSON.parse(document.getElementById("character_data").textContent);
+# Create a JSON dictionary.
+json_dictionary = {
+  "str": 21,
+  "dex": 24,
+  "con": 27,
+  "int": 17,
+  "wis": 15,
+  "cha": 23,
+  "level": 4,
+  "feats": 4,
+  "BAB": "H",
+  "weapons_no_region": [
+    "Axes",
+    "Blades, Light"
+  ],
+  "weapons": "Lance",
+  "luck": 0,
+  "mythic": 0,
+  "flaws": [],
+  "professions": "Grain Miller",
+  "ability_traits": "Cold Fortitude",
+  "personality": "patient",
+  "mannerisms": [
+    "Leans back",
+    "Grits teeth",
+    "Hides hands in pockets"
+  ]
+}
 
-    // Update the HTML elements with the character data
-    document.getElementById("character_name").textContent = characterData.character_name;
-    document.getElementById("character_class").textContent = characterData.character_class;
-    document.getElementById("strength").textContent = characterData.strength;
-    document.getElementById("dexterity").textContent = characterData.dexterity;
-    document.getElementById("constitution").textContent = characterData.constitution;
-    document.getElementById("intelligence").textContent = characterData.intelligence;
-    document.getElementById("wisdom").textContent = characterData.wisdom;
-    document.getElementById("charisma").textContent = characterData.charisma;
-  </script>
+# Populate the HTML template with the JSON dictionary.
+@pyscript.script
+def populate_html_template():
+  for key in json_dictionary:
+    value = json_dictionary[key]
+    placeholder = "{{ " + key + " }}"
+    document.querySelectorAll(placeholder).forEach(element => {
+      element.textContent = value;
+    });
+
+# Call the populate_html_template() function.
+populate_html_template();
+</script>
+
+<h1>NPC Character Sheet</h1>
+
+<table border="1">
+  <tr>
+    <th>Strength</th>
+    <td id="str"></td>
+  </tr>
+  <tr>
+    <th>Dexterity</th>
+    <td id="dex"></td>
+  </tr>
+  <tr>
+    <th>Constitution</th>
+    <td id="con"></td>
+  </tr>
+  <tr>
+    <th>Intelligence</th>
+    <td id="int"></td>
+  </tr>
+  <tr>
+    <th>Wisdom</th>
+    <td id="wis"></td>
+  </tr>
+  <tr>
+    <th>Charisma</th>
+    <td id="cha"></td>
+  </tr>
+  <tr>
+    <th>Level</th>
+    <td id="level"></td>
+  </tr>
+  <tr>
+    <th>Feats</th>
+    <td id="feats"></td>
+  </tr>
+  <tr>
+    <th>BAB</th>
+    <td id="BAB"></td>
+  </tr>
+  <tr>
+    <th>Weapons (No Region)</th>
+    <td id="weapons_no_region"></td>
+  </tr>
+  <tr>
+    <th>Weapons</th>
+    <td id="weapons"></td>
+  </tr>
+  <tr>
+    <th>Luck</th>
+    <td id="luck"></td>
+  </tr>
+  <tr>
+    <th>Mythic</th>
+    <td id="mythic"></td>
+  </tr>
+  <tr>
+    <th>Flaws</th>
+    <td id="flaws"></td>
+  </tr>
+  <tr>
+    <th>Professions</th>
+    <td id="professions"></td>
+  </tr>
+  <tr>
+    <th>Ability Traits</th>
+    <td id="ability_traits"></td>
+  </tr>
+  <tr>
+    <th>Personality</th>
+    <td id="personality"></td>
+  </tr>
+  <tr>
+    <th>Mannerisms</th>
+    <td id="mannerisms"></td>
+  </tr>
+</table>
+
 </body>
 </html>
-    
