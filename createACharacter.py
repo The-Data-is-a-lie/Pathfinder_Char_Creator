@@ -124,12 +124,19 @@ def CreateNewCharacter():
 
         #pre formatting stats:
         global formatted_charisma, formatted_constitution, formatted_dexterity, formatted_intelligence, formatted_strength, formatted_wisdom
-        formatted_strength = format_text(f'Strength: {new_char.c_str}', bold=True, color="red")
-        formatted_dexterity = format_text(f'Dexterity: {new_char.c_dex}', bold=True, color="red")
-        formatted_constitution = format_text(f'Constitution: {new_char.c_const}', bold=True, color="red")
-        formatted_intelligence = format_text(f'Intelligence: {new_char.c_int}', bold=True, color="red")
-        formatted_wisdom = format_text(f'Wisdom: {new_char.c_wisdom}', bold=True, color="red")
-        formatted_charisma = format_text(f'Charisma: {new_char.c_char}', bold=True, color="red")
+        # formatted_strength = format_text(f'Strength: {new_char.c_str}', bold=True, color="red")
+        # formatted_dexterity = format_text(f'Dexterity: {new_char.c_dex}', bold=True, color="red")
+        # formatted_constitution = format_text(f'Constitution: {new_char.c_const}', bold=True, color="red")
+        # formatted_intelligence = format_text(f'Intelligence: {new_char.c_int}', bold=True, color="red")
+        # formatted_wisdom = format_text(f'Wisdom: {new_char.c_wisdom}', bold=True, color="red")
+        # formatted_charisma = format_text(f'Charisma: {new_char.c_char}', bold=True, color="red")
+
+        formatted_strength = new_char.c_str
+        formatted_dexterity = new_char.c_dex
+        formatted_constitution = new_char.c_const
+        formatted_intelligence = new_char.c_int
+        formatted_wisdom = new_char.c_wisdom
+        formatted_charisma = new_char.c_char
 
         global character_data
         character_data = {}

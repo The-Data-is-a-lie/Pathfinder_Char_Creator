@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Character Sheet</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Character Sheet</h1>
+
+    <p>Name: <span id="character_name"></span></p>
+    <p>Class: <span id="character_class"></span></p>
+    <p>Strength: <span id="strength"></span></p>
+    <p>Dexterity: <span id="dexterity"></span></p>
+    <p>Constitution: <span id="constitution"></span></p>
+    <p>Intelligence: <span id="intelligence"></span></p>
+    <p>Wisdom: <span id="wisdom"></span></p>
+    <p>Charisma: <span id="charisma"></span></p>
+  </div>
+
+  <script>
+    // Load the character data from the JSON file
+    const characterData = JSON.parse(document.getElementById("character_data").textContent);
+
+    // Update the HTML elements with the character data
+    document.getElementById("character_name").textContent = characterData.character_name;
+    document.getElementById("character_class").textContent = characterData.character_class;
+    document.getElementById("strength").textContent = characterData.strength;
+    document.getElementById("dexterity").textContent = characterData.dexterity;
+    document.getElementById("constitution").textContent = characterData.constitution;
+    document.getElementById("intelligence").textContent = characterData.intelligence;
+    document.getElementById("wisdom").textContent = characterData.wisdom;
+    document.getElementById("charisma").textContent = characterData.charisma;
+  </script>
+</body>
+</html>
