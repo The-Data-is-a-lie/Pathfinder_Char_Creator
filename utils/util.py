@@ -7,6 +7,7 @@ from utils.data import traits, mannerisms, regions, weapon_groups, weapon_groups
 import json
 import sys
 #from utils.race import race
+character_data = {}
 
 def roll_dice(num_dice, num_sides, stat):
     from main import filename
@@ -45,6 +46,8 @@ def Roll_Level():
         global level
         global character_class_level
         level = random.choices(range(min_num, max_num+1), weights=weights)[0]
+        
+
 
 		#randomized NPC level generator
         npcInput = input('enable npc class levels (y/n)').lower()
@@ -78,7 +81,7 @@ def Roll_Level():
         print(level)
         print("this is the total character level ", file=f)
         print(level, file=f)
-        global feats       
+        global feats      
         if len(flaw) == 2 or len(flaw) == 3:
             feats = (4 + floor(level/2) + floor(level/5))
         elif len(flaw) == 4:
@@ -110,6 +113,9 @@ def chooseClass():
         BAB = input('Enter BAB (H/M/L): ').capitalize()
         global userInput_race
         global userInput_region
+        global region
+        global weapons
+        global weaponz
         # Prompt the user to select a region
         print(f"Please make sure below matches this list: {first_names_region.keys()}")
 
@@ -126,7 +132,7 @@ def chooseClass():
             print('You have selected this region: ' + region, file=f)
         elif int(userInput_region) == 0:
             #make sure this is the full number of regions in the util.data regions area
-            region_index = random.randint(1,10)
+            region_index = random.randint(0,9)
             region = regions[region_index]
             print('You have randomly selected this region: ' + region)
             print('You have randomly selected this region: ' + region, file=f)
@@ -137,6 +143,7 @@ def chooseClass():
         if userInput_race == 'Human':
             print('Humans get an extra feat ') 
             print('Humans get an extra feat ',file=f)
+            feats = feats+1
 
         # random.sample to select 2 random weapons
         weapons = random.sample(weapon_groups, 2)
@@ -252,20 +259,20 @@ def path_of_war():
     from main import filename
     with open(filename, 'a') as f:
         global feats
-        if path == 0:
-            feats = feats - 0
-        elif 7 > level >= 3 and path == 1:
-            feats = feats-1
-        elif 11 > level >= 7 and path == 1:
-            feats = feats-2
-        elif level >= 11 and path == 1:
-            feats = feats-3        
-        elif 7 > level >= 3 and path == 2:
-            feats = feats-2
-        elif 11 > level >= 7 and path == 2:
-            feats = feats-4 
-        elif level >= 11 and path == 2:
-            feats = feats-6
+        # if path == 0:
+        #     feats = feats - 0
+        # elif 7 > level >= 3 and path == 1:
+        #     feats = feats-1
+        # elif 11 > level >= 7 and path == 1:
+        #     feats = feats-2
+        # elif level >= 11 and path == 1:
+        #     feats = feats-3        
+        # elif 7 > level >= 3 and path == 2:
+        #     feats = feats-2
+        # elif 11 > level >= 7 and path == 2:
+        #     feats = feats-4 
+        # elif level >= 11 and path == 2:
+        #     feats = feats-6
                     
 
         print(f" This is their path # {path}")
@@ -449,6 +456,11 @@ def personality_and_profession():
         with open(filename, 'a') as f, open("utils/race.json", "r") as r, open("utils/class.json", "r") as c, open("utils/traits_abilities.json") as t, open("utils/profession.json") as p:
             profession_data = json.load(p)
             traits_abilities = json.load(t)
+            global proforce
+            global ability
+            global personality
+            global random_mannerisms
+            global character_flaws
             # use random.sample to select 3 random professions 
             professions = profession_data['Profession']
             random_professions = random.sample(professions, 3)
@@ -583,20 +595,26 @@ def flaws():
 
 
 def mythic():
+            global mythic_rank
+            global luck_score
+
             from main import filename
             with open(filename, 'a') as f, open("utils/flaws.json") as fl:
                 for i in range(1, 11):
                     if random.randint(1, 10000) == 10000:
                         print(f'Character is mythic {i}')
-                        print(f'Character is mythic {i}',file=f)					
+                        print(f'Character is mythic {i}',file=f)
+                        mythic_rank = 1					
                         for j in range(2, 11):
                             roll = random.randint(1, 100)
                             if roll >= 90:
                                 print(f'Character is mythic {j}')
                                 print(f'Character is mythic {j}',file=f)
+                                mythic_rank =+ 1
                             else:
                                 break
                     else:
+                        mythic_rank = 0
                         print('didnt get mythic ')
                         print('didnt get mythic ', file=f)
                         break			
@@ -610,6 +628,8 @@ def mythic():
                     luck_score = random.randint(1, 40)
                     print(luck_score)
                     print(f'Luck Score: -{luck_score}', file=f)
+                else:
+                    luck_score = 0
 
 def Archetype_Assigner():
     from createACharacter import new_char_c_class
@@ -640,7 +660,7 @@ def chooseRace():
     - Returns
     - Race (String)
     """
-    
+    global c_race
     races = []
     for race in data.races: races.append(race)
 
@@ -685,14 +705,35 @@ def format_text(text, bold=False, color=None):
     
     # Add CSS style for bold
     if bold:
-        style.append('font-weight: bold;')
+        style.append('font-weight: bold')
     
     # Add CSS style for color
     if color:
-        style.append(f'color: {color};')
+        style.append(f'color: {color}')
     
     # Create HTML span element with inline style
     if style:
         return f'<span style="{"; ".join(style)}">{text}</span>'
+    else:
+        return text
+
+
     
+
+#updating Character data
+
+# character_data.update({"level": level})
+# character_data.update({"feats": feats})
+# character_data.update({"BAB": BAB})
+# character_data.update({"race": c_race})
+# character_data.update({"weapons_no_region": weapons})
+# character_data.update({"weapons": weaponz})
+# character_data.update({"luck": luck_score})
+# character_data.update({"mythic": mythic_rank})
+# character_data.update({"class": c_class})
+# character_data.update({"class_secondary": c_class_2})
+# character_data.update({"flaws": flaw})
+
+#
+
 

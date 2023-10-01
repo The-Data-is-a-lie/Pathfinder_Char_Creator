@@ -2,12 +2,14 @@
 from createACharacter import CreateNewCharacter
 from utils.markdown import style
 from utils.data import version
-from utils.util import format_text, isBool, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
+from utils.util import  format_text, isBool, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
 import random
+from utils.data_dict import initialize_character_data, character_data_to_json, convert_character_json_to_html
 #Making a Global Character Dictionary so we can reference it and create a HTML/CSS sheet based off of that
 
-
+global character_data 
 global filename
+character_data = {}
 #Adding in Text to PDF Imports
 # import fillpdf        
 # from fillpdf import fillpdfs
@@ -46,9 +48,14 @@ while userInput.lower() == 'y':
 			Archetype_Assigner()
 			skills()
 			mythic()
-			# text_to_pdf()
+			initialize_character_data()
+			character_data_to_json()
+			convert_character_json_to_html()
 
 
+
+			#update character data:
+			
 
 
 			#need to devise a way to randomly pick good feats		

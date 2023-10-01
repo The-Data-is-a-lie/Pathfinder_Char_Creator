@@ -7,7 +7,7 @@ from utils.util import  format_text, chooseClass, appendAttrData, roll_dice#,  R
 from utils.markdown import style
 import random
 import sys
-from utils.util import character_data
+
 
 #External Imports
 from random import randrange
@@ -123,7 +123,7 @@ def CreateNewCharacter():
     
 
         #pre formatting stats:
-
+        global formatted_charisma, formatted_constitution, formatted_dexterity, formatted_intelligence, formatted_strength, formatted_wisdom
         formatted_strength = format_text(f'Strength: {new_char.c_str}', bold=True, color="red")
         formatted_dexterity = format_text(f'Dexterity: {new_char.c_dex}', bold=True, color="red")
         formatted_constitution = format_text(f'Constitution: {new_char.c_const}', bold=True, color="red")
@@ -131,9 +131,13 @@ def CreateNewCharacter():
         formatted_wisdom = format_text(f'Wisdom: {new_char.c_wisdom}', bold=True, color="red")
         formatted_charisma = format_text(f'Charisma: {new_char.c_char}', bold=True, color="red")
 
-
-        #Adding stats to the overall Character Dictionary
-        character_data.update({"Strength": formatted_strength}) 
+        global character_data
+        character_data = {}
+        # #Adding stats to the overall Character Dictionary
+        # #Physical stats
+        character_data.update({"str": formatted_strength, "dex": formatted_dexterity, "con": formatted_constitution}) 
+        # #Mental stats
+        character_data.update({"int": formatted_intelligence, "wis": formatted_wisdom, "cha": formatted_charisma})
 
 
 
