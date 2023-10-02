@@ -1,54 +1,19 @@
 def html_builder():
-
+  from jinja2 import Template
   import webbrowser
-  import json
-  from utils.data_dict import character_json
-
-  print("this is it")
-  print(character_json)
-  character_data = character_json
-
-  # Create a Jinja2 environment
-  import Jinja2
-  template_env = Jinja2.Environment()
-
-##### Currently the data will overwrite any data in the test_character_sheet, so I've savd the data on character_sheet_true
-
-
+  from utils.data_dict import character_json, character_data
   # Load the HTML template
-  template = template_env.from_string("""
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Character Sheet</title>
-    </head>
-    <body>
-      <div class="container">
-        <h1>Character Sheet</h1>
-      </div>
+  with open('test_character_data.html', 'r') as file:
+      template = Template(file.read())
 
-      <table>
-        <tr>
-          <th>Attribute</th>
-          <th>Value</th>
-        </tr>
-        {% for key, value in character_data.items() %}
-        <tr>
-          <td>{{ key }}</td>
-          <td>{{ value }}</td>
-        </tr>
-        {% endfor %}
-      </table>
-    </body>
-    </html>
-  """)
+  data = character_data
 
-  # Render the template with the character data
-  rendered_html = template.render(character_data=character_data)
+  # Render the template with the data
+  html_output = template.render(data)
 
-  # Write the rendered HTML to a file
-  with open("test_character_data.html", "w") as f:
-    f.write(rendered_html)
+  # Save the generated HTML to a file
+  with open('output.html', 'w') as output_file:
+      output_file.write(html_output)
 
-  # Open the HTML file in the web browser
-  webbrowser.open('test_character_data.html')
+  print("HTML file generated successfully.")
+  webbrowser.open("output.html")

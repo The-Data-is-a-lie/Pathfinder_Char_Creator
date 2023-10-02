@@ -68,6 +68,7 @@ while userInput.lower() == 'y':
 
 # Revamp code so it becomes a dictionary -> we can make homemade HTML/CSS code to print out exactly what we want
 
+# Add a calculation for BAB (instead of just posting L,M,H)
 # Add Extra race stats (Tortugan, Loxophant, ...)
 # Have forest give me extra race info (Tortugan, Loxophant, ...)
 

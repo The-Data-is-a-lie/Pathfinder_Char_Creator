@@ -1,133 +1,169 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>NPC Character Sheet</title>
-  <script src="https://pyscript.net/latest/pyscript.js"></script>
+  <title>Character Sheet</title>
 </head>
 <body>
+  <h1>Character Sheet</h1>
 
-<script>
-import pyscript
+  <table>
+    <tr>
+      <th>region:</th>
+      <td>{{ region }}</td>
+    </tr>
+    <tr>
+      <tr>
+        <th>BAB:</th>
+        <td>{{ BAB }}</td>
+      </tr>
+      <tr>
+      <th>Non Regional Weapons:</th>
+      <td>{{ weapons_no_region }}</td>
+    </tr>
+    <tr>
+      <th>Weapons:</th>
+      <td>{{ weapons }}</td>
+    </tr>
+    <tr>
+      <th>Name:</th>
+      <td>{{ name }}</td>
+    </tr>
+    <tr>
+      <th>Class:</th>
+      <td>{{ class }}</td>
+    </tr>
+    <tr>
+      <th>Strength:</th>
+      <td>{{ str }}</td>
+    </tr>
+    <tr>
+      <th>Dexterity:</th>
+      <td>{{ dex }}</td>
+    </tr>
+    <tr>
+      <th>Constitution:</th>
+      <td>{{ con }}</td>
+    </tr>
+    <tr>
+      <th>Intelligence:</th>
+      <td>{{ int }}</td>
+    </tr>
+    <tr>
+      <th>Wisdom:</th>
+      <td>{{ wis }}</td>
+    </tr>
+    <tr>
+      <th>Charisma:</th>
+      <td>{{ cha }}</td>
+    </tr>
+    <tr>
+      <th>NPC Class Levels Y/N?</th>
+      <td>{{ npc_class_levels }}</td>
+    </tr>
+    <tr>
+      <th>Level:</th>
+      <td>{{ level }}</td>
+    </tr>
+    <tr>
+      <tr>
+        <th>feats:</th>
+        <td>{{ feats }}</td>
+      </tr>
+      <tr>
+      <tr>
+        <th>Mythic Ranks:</th>
+        <td>{{ mythic }}</td>
+      </tr>
+      <tr>
+        <tr>
+      <th>HP From Class Levels:</th>
+      <td>{{ hp_from_class_levels }}</td>
+    </tr>
+    <tr>
+      <th>Inherent stat buff:</th>
+      <td>{{ inherent_stat_buff }}</td>
+    </tr>
+    <tr>
+      <th>Bonus ability score from levels:</th>
+      <td>{{ bonus_ability_score_from_levels }}</td>
+    </tr>
+    <tr>
+      <th>Age:</th>
+      <td>{{ age }}</td>
+    </tr>
+    <tr>
+      <th>Weight:</th>
+      <td>{{ weight }}</td>
+    </tr>
+    <tr>
+      <th>Height:</th>
+      <td>{{ height }}</td>
+    </tr>
+    <tr>
+      <th>Racial Ability Scores for Half-orc:</th>
+      <td>{{ racial_ability_scores_for_half_orc }}</td>
+    </tr>
+    <tr>
+      <th>Racial traits:</th>
+      <td>{{ racial_traits }}</td>
+    </tr>
+    <tr>
+      <th>Racial languages:</th>
+      <td>{{ racial_languages }}</td>
+    </tr>
+    <tr>
+      <th>Racial size:</th>
+      <td>{{ racial_size }}</td>
+    </tr>
+    <tr>
+      <th>Racial speed:</th>
+      <td>{{ racial_speed }}</td>
+    </tr>
+    <tr>
+      <th>Hair_colors:</th>
+      <td>{{ hair_colors }}</td>
+    </tr>
+    <tr>
+      <th>Hair_types:</th>
+      <td>{{ hair_types }}</td>
+    </tr>
+    <tr>
+      <th>Eye_colors:</th>
+      <td>{{ eye_colors }}</td>
+    </tr>
+    <tr>
+      <th>Appearance:</th>
+      <td>{{ appearance }}</td>
+    </tr>
+    <tr>
+      <th>(profession):</th>
+      <td>{{ professions }}</td>
+    </tr>
+    <tr>
+      <th>(ability traits):</th>
+      <td>{{ ability_traits }}</td>
+    </tr>
+    <tr>
+      <th>(personality):</th>
+      <td>{{ personality }}</td>
+    </tr>
+    <tr>
+      <th>(mannerisms):</th>
+      <td>{{ mannerisms }}</td>
+    </tr>
+    <tr>
+      <th>(flaws):</th>
+      <td>{{ flaws }}</td>
+    </tr>
+    <tr>
+      <th>Alignment:</th>
+      <td>{{ alignment }}</td>
+    </tr>
+    <tr>
+      <th>Deity:</th>
+      <td>{{ deity }}</td>
+    </tr>
+    <tr>
+      <th>Extra languages known:</th>
+      <td>{{ extra_languages_known }}
 
-# Create a JSON dictionary.
-json_dictionary = {
-  "str": 21,
-  "dex": 24,
-  "con": 27,
-  "int": 17,
-  "wis": 15,
-  "cha": 23,
-  "level": 4,
-  "feats": 4,
-  "BAB": "H",
-  "weapons_no_region": [
-    "Axes",
-    "Blades, Light"
-  ],
-  "weapons": "Lance",
-  "luck": 0,
-  "mythic": 0,
-  "flaws": [],
-  "professions": "Grain Miller",
-  "ability_traits": "Cold Fortitude",
-  "personality": "patient",
-  "mannerisms": [
-    "Leans back",
-    "Grits teeth",
-    "Hides hands in pockets"
-  ]
-}
-
-# Populate the HTML template with the JSON dictionary.
-@pyscript.script
-def populate_html_template():
-  for key in json_dictionary:
-    value = json_dictionary[key]
-    placeholder = "{{ " + key + " }}"
-    document.querySelectorAll(placeholder).forEach(element => {
-      element.textContent = value;
-    });
-
-# Call the populate_html_template() function.
-populate_html_template();
-</script>
-
-<h1>NPC Character Sheet</h1>
-
-<table border="1">
-  <tr>
-    <th>Strength</th>
-    <td id="str"></td>
-  </tr>
-  <tr>
-    <th>Dexterity</th>
-    <td id="dex"></td>
-  </tr>
-  <tr>
-    <th>Constitution</th>
-    <td id="con"></td>
-  </tr>
-  <tr>
-    <th>Intelligence</th>
-    <td id="int"></td>
-  </tr>
-  <tr>
-    <th>Wisdom</th>
-    <td id="wis"></td>
-  </tr>
-  <tr>
-    <th>Charisma</th>
-    <td id="cha"></td>
-  </tr>
-  <tr>
-    <th>Level</th>
-    <td id="level"></td>
-  </tr>
-  <tr>
-    <th>Feats</th>
-    <td id="feats"></td>
-  </tr>
-  <tr>
-    <th>BAB</th>
-    <td id="BAB"></td>
-  </tr>
-  <tr>
-    <th>Weapons (No Region)</th>
-    <td id="weapons_no_region"></td>
-  </tr>
-  <tr>
-    <th>Weapons</th>
-    <td id="weapons"></td>
-  </tr>
-  <tr>
-    <th>Luck</th>
-    <td id="luck"></td>
-  </tr>
-  <tr>
-    <th>Mythic</th>
-    <td id="mythic"></td>
-  </tr>
-  <tr>
-    <th>Flaws</th>
-    <td id="flaws"></td>
-  </tr>
-  <tr>
-    <th>Professions</th>
-    <td id="professions"></td>
-  </tr>
-  <tr>
-    <th>Ability Traits</th>
-    <td id="ability_traits"></td>
-  </tr>
-  <tr>
-    <th>Personality</th>
-    <td id="personality"></td>
-  </tr>
-  <tr>
-    <th>Mannerisms</th>
-    <td id="mannerisms"></td>
-  </tr>
-</table>
-
-</body>
-</html>
