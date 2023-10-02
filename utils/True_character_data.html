@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Character Sheet</title>
+  <style>
+    .bold-teal {
+      color: rgb(0, 204, 255);
+      font-weight: bold;
+    }
+      .bold-red {
+        color: rgb(0, 204, 255);
+        font-weight: bold;      
+    }
+  </style>
+</head>
+<body>
+  <h1>Character Sheet</h1>
+
+  <table>
+    <tr>
+      <th>region:</th>
+      <td>{{ region }}</td>
+    </tr>
+    <tr>
+      <tr>
+        <th>BAB:</th>
+        <td>{{ BAB_total }}</td>
+      </tr>
+      <tr>
+      <th>Non Regional Weapons:</th>
+      <td>{{ weapons_no_region }}</td>
+    </tr>
+    <tr>
+      <th>Weapons:</th>
+      <td>{{ weapons }}</td>
+    </tr>
+    <tr>
+      <th>Name:</th>
+      <td>{{ full_name }}</td>
+    </tr>
+    <tr>
+      <th>Class:</th>
+      <td>{{ class }}</td>
+    </tr>
+    <tr>
+      <th><span class="bold-red">Strength:</span></th>
+      <td><span class="bold-red">{{ str }}</span></td>
+    </tr>
+    <tr>
+      <th>Dexterity:</th>
+      <td>{{ dex }}</td>
+    </tr>
+    <tr>
+      <th>Constitution:</th>
+      <td>{{ con }}</td>
+    </tr>
+    <tr>
+      <th>Intelligence:</th>
+      <td>{{ int }}</td>
+    </tr>
+    <tr>
+      <th>Wisdom:</th>
+      <td>{{ wis }}</td>
+    </tr>
+    <tr>
+      <th>Charisma:</th>
+      <td>{{ cha }}</td>
+    </tr>
+    <tr>
+      <th>NPC Levels</th>
+      <td>{{ npc_level }}</td>
+    </tr>
+    <tr>
+      <th>Level:</th>
+      <td>{{ level }}</td>
+    </tr>
+    <tr>
+      <tr>
+        <th>feats:</th>
+        <td>{{ feats }}</td>
+      </tr>
+      <tr>
+      <tr>
+        <th>Mythic Ranks:</th>
+        <td>{{ mythic }}</td>
+      </tr>
+      <tr>
+        <tr>
+      <th> Total Hit Points:</th>
+      <td>{{ Total_HP }}</td>
+    </tr>
+    <tr>
+      <th> Hit_dice:</th>
+      <td>{{ Hit_dice }}</td>
+    </tr>
+    <tr>
+      <th>Inherent Stats:</th>
+      <td>{{ inherent_stats }}</td>
+    </tr>
+    <tr>
+      <th>Bonus ability score from levels:</th>
+      <td>{{ extra_ability_score_levels }}</td>
+    </tr>
+    <tr>
+      <th>Age:</th>
+      <td>{{ age }}</td>
+    </tr>
+    <tr>
+      <th>Weight:</th>
+      <td>{{ weight }}</td>
+    </tr>
+    <tr>
+      <th>Height:</th>
+      <td>{{ height }}</td>
+    </tr>
+    <tr>
+      <th>Racial Ability Scores:</th>
+      <td>{{ ability_scores }}</td>
+    </tr>
+    <tr>
+      <th>Racial traits:</th>
+      <td>{{ racial_traits }}</td>
+    </tr>
+    <tr>
+      <!-- <th>Racial languages:</th>
+      <td>{{ racial_languages }}</td>
+    </tr>
+    <tr> -->
+      <th>Racial size:</th>
+      <td>{{ racial_size }}</td>
+    </tr>
+    <tr>
+      <th>Racial speed:</th>
+      <td>{{ racial_speed }}</td>
+    </tr>
+    <tr>
+      <th>Hair_colors:</th>
+      <td>{{ hair_color }}</td>
+    </tr>
+    <tr>
+      <th>Hair_types:</th>
+      <td>{{ hair_type }}</td>
+    </tr>
+    <tr>
+      <th>Eye_colors:</th>
+      <td>{{ eye_color }}</td>
+    </tr>
+    <tr>
+      <th>Appearance:</th>
+      <td>{{ appearance }}</td>
+    </tr>
+    <tr>
+      <th>(profession):</th>
+      <td>{{ professions }}</td>
+    </tr>
+    <tr>
+      <th>(ability traits):</th>
+      <td>{{ ability_traits }}</td>
+    </tr>
+    <tr>
+      <th>(racial traits):</th>
+      <td>{{ racial_traits }}</td>
+    </tr>
+    <tr>
+      <th>(personality):</th>
+      <td>{{ personality }}</td>
+    </tr>
+    <tr>
+      <th>(mannerisms):</th>
+      <td>{{ mannerisms }}</td>
+    </tr>
+    <tr>
+      <th>(flaws):</th>
+      <td>{{ flaws }}</td>
+    </tr>
+    <tr>
+      <th>Alignment:</th>
+      <td>{{ alignment }}</td>
+    </tr>
+    <tr>
+      <th>Deity:</th>
+      <td>{{ deity }}</td>
+    </tr>
+    <tr>
+      <th>Extra languages known:</th>
+      <td>{{ languages }}
+

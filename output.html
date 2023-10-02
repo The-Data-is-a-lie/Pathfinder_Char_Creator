@@ -2,167 +2,105 @@
 <html>
 <head>
   <title>Character Sheet</title>
+  <style>
+    /* Your CSS styles go here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      display: flex; /* Make the body a flex container */
+    }
+
+    h1 {
+      color: rgb(0, 204, 255);
+    }
+
+    .section {
+      margin-bottom: 20px;
+      flex-basis: 33.33%; /* Each section occupies 33.33% of the available width */
+    }
+
+    h2 {
+      color: rgb(0, 204, 255);
+    }
+
+    /* Styles for data boxes */
+    .data-box {
+      width: 200px;
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid #000;
+      background-color: #f2f2f2;
+    }
+
+    /* Styles for labels and values within the data boxes */
+    .label {
+      font-weight: bold;
+    }
+
+    .value {
+      font-weight: normal;
+    }
+  </style>
 </head>
 <body>
   <h1>Character Sheet</h1>
 
-  <table>
-    <tr>
-      <th>region:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <tr>
-        <th>BAB:</th>
-        <td>L</td>
-      </tr>
-      <tr>
-      <th>Non Regional Weapons:</th>
-      <td>['Axes', 'Bows']</td>
-    </tr>
-    <tr>
-      <th>Weapons:</th>
-      <td>Club</td>
-    </tr>
-    <tr>
-      <th>Name:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Class:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Strength:</th>
-      <td>185</td>
-    </tr>
-    <tr>
-      <th>Dexterity:</th>
-      <td>212</td>
-    </tr>
-    <tr>
-      <th>Constitution:</th>
-      <td>189</td>
-    </tr>
-    <tr>
-      <th>Intelligence:</th>
-      <td>254</td>
-    </tr>
-    <tr>
-      <th>Wisdom:</th>
-      <td>177</td>
-    </tr>
-    <tr>
-      <th>Charisma:</th>
-      <td>229</td>
-    </tr>
-    <tr>
-      <th>NPC Class Levels Y/N?</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Level:</th>
-      <td>10</td>
-    </tr>
-    <tr>
-      <tr>
-        <th>feats:</th>
-        <td>11</td>
-      </tr>
-      <tr>
-      <tr>
-        <th>Mythic Ranks:</th>
-        <td>0</td>
-      </tr>
-      <tr>
-        <tr>
-      <th>HP From Class Levels:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Inherent stat buff:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Bonus ability score from levels:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Age:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Weight:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Height:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Racial Ability Scores for Half-orc:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Racial traits:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Racial languages:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Racial size:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Racial speed:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Hair_colors:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Hair_types:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Eye_colors:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Appearance:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>(profession):</th>
-      <td>Rope Maker</td>
-    </tr>
-    <tr>
-      <th>(ability traits):</th>
-      <td>Cleansing Light</td>
-    </tr>
-    <tr>
-      <th>(personality):</th>
-      <td>Energetic</td>
-    </tr>
-    <tr>
-      <th>(mannerisms):</th>
-      <td>['Jumps at sudden sounds', 'Smiles', 'Cups chin with hand']</td>
-    </tr>
-    <tr>
-      <th>(flaws):</th>
-      <td>['Chronic Sneezing', 'Trouble paying attention']</td>
-    </tr>
-    <tr>
-      <th>Alignment:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Deity:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Extra languages known:</th>
-      <td>
+  <!-- Ability Score Container -->
+  <div class="section">
+    <h2>Ability Scores</h2>
+    <div class="data-box">
+      <span class="label">Strength:</span>
+      <span class="value">219</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Dexterity:</span>
+      <span class="value">225</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Constitution:</span>
+      <span class="value">225</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Intelligence:</span>
+      <span class="value">151</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Wisdom:</span>
+      <span class="value">210</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Charisma:</span>
+      <span class="value">228</span>
+    </div>
+    <!-- Add more ability scores as needed -->
+  </div>
+
+    <!-- Basic Information Container -->
+    <div class="section">
+      <h2>Basic Information</h2>
+      <div class="data-box">
+        <span class="label">Name:</span>
+        <span class="value">GrigorievAnastasia</span>
+      </div>
+      <div class="data-box">
+        <span class="label">Class:</span>
+        <span class="value">soul weaver</span>
+      </div>
+      <!-- Add more basic information fields as needed -->
+    </div>
+
+  <!-- Additional Information Container -->
+  <div class="section">
+    <h2>Additional Information</h2>
+    <div class="data-box">
+      <span class="label">Alignment:</span>
+      <span class="value">Chaotic neutral</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Deity:</span>
+      <span class="value">Urgathoa</span>
+    </div>
+    <!-- Add more data for the additional section as needed -->
+  </div>
+</body>
+</html>

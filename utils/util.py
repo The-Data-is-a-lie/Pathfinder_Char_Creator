@@ -43,35 +43,46 @@ def Roll_Level():
             weights = [1 for i in range(min_num, max_num+1)]
 
         # Roll for level using weights
-        global level
-        global character_class_level
+        global level, character_class_level, BAB_total
         level = random.choices(range(min_num, max_num+1), weights=weights)[0]
         
+
 
 
 		#randomized NPC level generator
         npcInput = input('enable npc class levels (y/n)').lower()
         npcEnabled = False
-        for x in range(1, level):
+        global npc_level
+        for npc_level in range(1, level):
             if random.randint(1, 100) >= 75 and npcInput == 'y':
                 if not npcEnabled:
                     npcEnabled = True
-                x += 1
-                character_class_level = (level - x)
+                npc_level += 1
+                character_class_level = (level - npc_level)
         else:
-            character_class_level = level - x
+            character_class_level = level - npc_level
         
         if npcEnabled:
-            print(f'This is your number of npc levels: {x}')
+            print(f'This is your number of npc levels: {npc_level}')
             print(f'This is your non-npc levels: {character_class_level}')
-            print(f'This is your number of npc levels: {x}',file=f)
+            print(f'This is your number of npc levels: {npc_level}',file=f)
             print(f'This is your non-npc levels: {character_class_level}',file=f)
         elif npcInput == 'n':
             character_class_level = level
             print('No NPC class levels')
             print('No NPC class levels',file=f)
+            npc_level = 0
         else:
             print('Invalid input. Please enter "y" or "n".')
+            npc_level = 0
+
+        # Creating a BAB total for printing out
+        if BAB == 'L':
+            BAB_total = floor(character_class_level *.5) + floor(npc_level * .5)
+        elif BAB == 'M':
+            BAB_total = floor(character_class_level *.75) + floor(npc_level * .5)
+        else: 
+            BAB_total = character_class_level * 1 + floor(npc_level * .5)
 
             # end of npc class level macro
 
@@ -111,11 +122,7 @@ def chooseClass():
         # Prompt the user to input BAB
         global BAB
         BAB = input('Enter BAB (H/M/L): ').capitalize()
-        global userInput_race
-        global userInput_region
-        global region
-        global weapons
-        global weaponz
+        global userInput_race, userInput_region, region, weapons, weaponz, f_name, l_name, full_name
         # Prompt the user to select a region
         print(f"Please make sure below matches this list: {first_names_region.keys()}")
 
@@ -164,6 +171,7 @@ def chooseClass():
             f_name = random.choice(f_names)
             l_names = last_names_region[region]
             l_name = random.choice(l_names) 
+            full_name = f_name + l_name
             print(f"Name for {region}: {f_name} {l_name}")    
             print(f"Name for {region}: {f_name} {l_name}", file=f)        
 
@@ -258,7 +266,7 @@ def path_of_war_chance():
 def path_of_war():
     from main import filename
     with open(filename, 'a') as f:
-        global feats
+        global feats, extra_ability_score_levels
         # if path == 0:
         #     feats = feats - 0
         # elif 7 > level >= 3 and path == 1:
@@ -305,6 +313,7 @@ def various_racial_attr():
     from main import filename
     with open(filename, 'a') as f, open("utils/class.json", 'r') as c, open("utils/race.json", 'r') as r:
             race_data = json.load(r)
+            global racial_traits, racial_language, racial_size, racial_speed, ability_scores
             if userInput_race in race_data:
                 racial_traits = race_data[userInput_race]["traits"]
                 racial_language = race_data[userInput_race]["languages"]
@@ -328,6 +337,8 @@ def various_racial_attr():
 def age_weight_height():
     from main import filename
     with open(filename, 'a') as f, open("utils/class.json", 'r') as c, open("utils/race.json", 'r') as r:
+            global age_roll, weight_roll, height_roll
+            
             race_data = json.load(r)
             #added this in to print out a random age for the character
             if "age" in race_data[userInput_race]:
@@ -400,14 +411,17 @@ def inherent_stats():
                 print("Choose one of the stats, rather than assign it based off of backstory")
         
         print(f"this is your total inherent stat buff: {stats}")
-        print(f"this is your total inherent stat buff: {stats}",file=f)        
+        print(f"this is your total inherent stat buff: {stats}",file=f) 
+        return stats       
                 #end of inherent stats roller   
+
 
 
 def Total_Hitpoint_Calc():
     from createACharacter import c_const, c_str, c_dex, c_int, c_wisdom, c_char
     from main import filename
     with open(filename, 'a') as f, open("utils/class.json", 'r') as c:
+        global Hit_dice, Pre_NPC_HP, Post_NPC_HP, Total_HP
         class_data = json.load(c)
                        # Class Hit Dice + total Hit points
         Hit_dice = class_data[c_class]["hp"]
@@ -430,6 +444,7 @@ def appearnce_func():
     from main import filename
     with open(filename, 'a') as f, open("utils/class.json", 'r') as c:
         #Potentially add a charactersitics by region section
+        global hair_color_choice, hair_type_choice, eye_color_choice, random_app_number, appearance_choice
         hair_color_choice = random.choice(hair_colors)
         hair_type_choice = random.choice(hair_types)
         eye_color_choice = random.choice(eye_colors)
@@ -502,7 +517,8 @@ def alignment_and_deities():
         from main import filename
         with open(filename, 'a') as f, open("utils/class.json", "r") as c:
             class_data = json.load(c)
-            global c_class, c_class_2
+            global c_class, c_class_2, chosen_deity
+
 
             #print out alignment + physical characteristics
             print(f'Alignment' + '\n', c_alignment)

@@ -20,7 +20,32 @@ character_data = {
     "ability_traits": None,
     "personality": None,
     "mannerisms": None,
+    "stats": None,
+    "age": None,
+    "height": None,
+    "weight": None,
+    "hair_color": None,
+    "hair_type": None,
+    "eye_color": None,
+    "appearance": None,
+    "deity": None,
+    "alignment": None,
+    "languages":None,    
+    "racial_traits": None,
+    # "racial_language": None,
+    "racial_size": None,
+    "racial_speed": None,
+    "ability_scores":None,
     # "character_flaws": None
+    "region":None,
+    "class": None,
+    "f_name":None,
+    "l_name": None,
+    "Hit_Dice": None,
+    "Total_HP": None,
+    "extra_ability_score_levels":None,
+    "npc_level": None,
+    "BAB_total": None
 }
 
 def update_character_data(key_value_pairs):
@@ -57,11 +82,36 @@ def initialize_character_data():
         ability,
         personality,
         random_mannerisms,
+        stats,
+        age_roll, 
+        weight_roll, 
+        height_roll,
+        hair_color_choice, 
+        hair_type_choice, 
+        eye_color_choice, 
+        appearance_choice,
+        chosen_deity,
+        racial_traits, 
+        # racial_language, 
+        racial_size, 
+        racial_speed, 
+        ability_scores,
+        region,
+        f_name,
+        l_name,
+        full_name,
+        Total_HP,
+        Hit_dice,
+        extra_ability_score_levels,
+        npc_level,
+        BAB_total,
+        c_class
         # character_flaws
     )
 
     from createACharacter import (
-        formatted_charisma, formatted_constitution, formatted_dexterity, formatted_intelligence, formatted_strength, formatted_wisdom
+        formatted_charisma, formatted_constitution, formatted_dexterity, formatted_intelligence, formatted_strength, formatted_wisdom,
+        c_alignment, c_langs
     )
 
     update_list = [
@@ -86,9 +136,36 @@ def initialize_character_data():
         ("ability_traits", ability),
         ("personality", personality),
         ("mannerisms", random_mannerisms),
+        ("inherent_stats", stats),
+        ("age", age_roll),
+        ("height", height_roll),
+        ("Weight", weight_roll),
+        ("hair_color", hair_color_choice),
+        ("hair_type", hair_type_choice),
+        ("eye", eye_color_choice),
+        ("appearance", appearance_choice),
+        ("deity", chosen_deity),
+        ("alignment", c_alignment),
+        ("languages", c_langs),
+        ("racial_traits", racial_traits),
+        # ("racial_language", racial_language),
+        ("racial_size", racial_size),
+        ("racial_speed", racial_speed),
+        ("ability_scores", ability_scores),
+        ("region", region),
+        ("c_class", c_class),        
+        ("full_name", full_name),
+        ("Total_HP", Total_HP),
+        ("Hit_dice", Hit_dice),
+        ("extra_ability_score_levels", extra_ability_score_levels),
+        ("npc_level", npc_level),
+        ("BAB_total", BAB_total)
+
+
         # ("character_flaws", character_flaws),
     ]
 
+    
     update_character_data(update_list)
     print(character_data)
 

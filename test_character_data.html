@@ -2,168 +2,105 @@
 <html>
 <head>
   <title>Character Sheet</title>
+  <style>
+    /* Your CSS styles go here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      display: flex; /* Make the body a flex container */
+    }
+
+    h1 {
+      color: rgb(0, 204, 255);
+    }
+
+    .section {
+      margin-bottom: 20px;
+      flex-basis: 33.33%; /* Each section occupies 33.33% of the available width */
+    }
+
+    h2 {
+      color: rgb(0, 204, 255);
+    }
+
+    /* Styles for data boxes */
+    .data-box {
+      width: 200px;
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid #000;
+      background-color: #f2f2f2;
+    }
+
+    /* Styles for labels and values within the data boxes */
+    .label {
+      font-weight: bold;
+    }
+
+    .value {
+      font-weight: normal;
+    }
+  </style>
 </head>
 <body>
   <h1>Character Sheet</h1>
 
-  <table>
-    <tr>
-      <th>region:</th>
-      <td>{{ region }}</td>
-    </tr>
-    <tr>
-      <tr>
-        <th>BAB:</th>
-        <td>{{ BAB }}</td>
-      </tr>
-      <tr>
-      <th>Non Regional Weapons:</th>
-      <td>{{ weapons_no_region }}</td>
-    </tr>
-    <tr>
-      <th>Weapons:</th>
-      <td>{{ weapons }}</td>
-    </tr>
-    <tr>
-      <th>Name:</th>
-      <td>{{ name }}</td>
-    </tr>
-    <tr>
-      <th>Class:</th>
-      <td>{{ class }}</td>
-    </tr>
-    <tr>
-      <th>Strength:</th>
-      <td>{{ str }}</td>
-    </tr>
-    <tr>
-      <th>Dexterity:</th>
-      <td>{{ dex }}</td>
-    </tr>
-    <tr>
-      <th>Constitution:</th>
-      <td>{{ con }}</td>
-    </tr>
-    <tr>
-      <th>Intelligence:</th>
-      <td>{{ int }}</td>
-    </tr>
-    <tr>
-      <th>Wisdom:</th>
-      <td>{{ wis }}</td>
-    </tr>
-    <tr>
-      <th>Charisma:</th>
-      <td>{{ cha }}</td>
-    </tr>
-    <tr>
-      <th>NPC Class Levels Y/N?</th>
-      <td>{{ npc_class_levels }}</td>
-    </tr>
-    <tr>
-      <th>Level:</th>
-      <td>{{ level }}</td>
-    </tr>
-    <tr>
-      <tr>
-        <th>feats:</th>
-        <td>{{ feats }}</td>
-      </tr>
-      <tr>
-      <tr>
-        <th>Mythic Ranks:</th>
-        <td>{{ mythic }}</td>
-      </tr>
-      <tr>
-        <tr>
-      <th>HP From Class Levels:</th>
-      <td>{{ hp_from_class_levels }}</td>
-    </tr>
-    <tr>
-      <th>Inherent stat buff:</th>
-      <td>{{ inherent_stat_buff }}</td>
-    </tr>
-    <tr>
-      <th>Bonus ability score from levels:</th>
-      <td>{{ bonus_ability_score_from_levels }}</td>
-    </tr>
-    <tr>
-      <th>Age:</th>
-      <td>{{ age }}</td>
-    </tr>
-    <tr>
-      <th>Weight:</th>
-      <td>{{ weight }}</td>
-    </tr>
-    <tr>
-      <th>Height:</th>
-      <td>{{ height }}</td>
-    </tr>
-    <tr>
-      <th>Racial Ability Scores for Half-orc:</th>
-      <td>{{ racial_ability_scores_for_half_orc }}</td>
-    </tr>
-    <tr>
-      <th>Racial traits:</th>
-      <td>{{ racial_traits }}</td>
-    </tr>
-    <tr>
-      <th>Racial languages:</th>
-      <td>{{ racial_languages }}</td>
-    </tr>
-    <tr>
-      <th>Racial size:</th>
-      <td>{{ racial_size }}</td>
-    </tr>
-    <tr>
-      <th>Racial speed:</th>
-      <td>{{ racial_speed }}</td>
-    </tr>
-    <tr>
-      <th>Hair_colors:</th>
-      <td>{{ hair_colors }}</td>
-    </tr>
-    <tr>
-      <th>Hair_types:</th>
-      <td>{{ hair_types }}</td>
-    </tr>
-    <tr>
-      <th>Eye_colors:</th>
-      <td>{{ eye_colors }}</td>
-    </tr>
-    <tr>
-      <th>Appearance:</th>
-      <td>{{ appearance }}</td>
-    </tr>
-    <tr>
-      <th>(profession):</th>
-      <td>{{ professions }}</td>
-    </tr>
-    <tr>
-      <th>(ability traits):</th>
-      <td>{{ ability_traits }}</td>
-    </tr>
-    <tr>
-      <th>(personality):</th>
-      <td>{{ personality }}</td>
-    </tr>
-    <tr>
-      <th>(mannerisms):</th>
-      <td>{{ mannerisms }}</td>
-    </tr>
-    <tr>
-      <th>(flaws):</th>
-      <td>{{ flaws }}</td>
-    </tr>
-    <tr>
-      <th>Alignment:</th>
-      <td>{{ alignment }}</td>
-    </tr>
-    <tr>
-      <th>Deity:</th>
-      <td>{{ deity }}</td>
-    </tr>
-    <tr>
-      <th>Extra languages known:</th>
-      <td>{{ extra_languages_known }}
+  <!-- Ability Score Container -->
+  <div class="section">
+    <h2>Ability Scores</h2>
+    <div class="data-box">
+      <span class="label">Strength:</span>
+      <span class="value">{{ str }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Dexterity:</span>
+      <span class="value">{{ dex }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Constitution:</span>
+      <span class="value">{{ con }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Intelligence:</span>
+      <span class="value">{{ int }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Wisdom:</span>
+      <span class="value">{{ wis }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Charisma:</span>
+      <span class="value">{{ cha }}</span>
+    </div>
+    <!-- Add more ability scores as needed -->
+  </div>
 
+    <!-- Basic Information Container -->
+    <div class="section">
+      <h2>Basic Information</h2>
+      <div class="data-box">
+        <span class="label">Name:</span>
+        <span class="value">{{ full_name }}</span>
+      </div>
+      <div class="data-box">
+        <span class="label">Class:</span>
+        <span class="value">{{ c_class }}</span>
+      </div>
+      <!-- Add more basic information fields as needed -->
+    </div>
+
+  <!-- Additional Information Container -->
+  <div class="section">
+    <h2>Additional Information</h2>
+    <div class="data-box">
+      <span class="label">Alignment:</span>
+      <span class="value">{{ alignment }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Deity:</span>
+      <span class="value">{{ deity }}</span>
+    </div>
+    <!-- Add more data for the additional section as needed -->
+  </div>
+</body>
+</html>
