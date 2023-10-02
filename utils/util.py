@@ -105,6 +105,7 @@ def Roll_Level():
             #remove 2 extra feats because of no flaws
             feats = (4 - 2 + floor(level/2) + floor(level/5))
     return feats
+
                                                                   
 def chooseClass():
     from main import filename
@@ -122,7 +123,7 @@ def chooseClass():
         # Prompt the user to input BAB
         global BAB
         BAB = input('Enter BAB (H/M/L): ').capitalize()
-        global userInput_race, userInput_region, region, weapons, weaponz, f_name, l_name, full_name
+        global userInput_race, userInput_region, region, weapons, weaponz, f_name, l_name, full_name, human_flag
         # Prompt the user to select a region
         print(f"Please make sure below matches this list: {first_names_region.keys()}")
 
@@ -147,10 +148,14 @@ def chooseClass():
             print('You have selected no region.')
             print('You have selected no region.', file=f)
 
-        if userInput_race == 'Human':
+        #Creating a human flag for if races are not human
+        human_flag = 'N'
+
+        if userInput_race.upper() == 'Human':
+            # adding a human flag
+            human_flag = 'Y'
             print('Humans get an extra feat ') 
             print('Humans get an extra feat ',file=f)
-            feats = feats+1
 
         # random.sample to select 2 random weapons
         weapons = random.sample(weapon_groups, 2)
@@ -266,7 +271,8 @@ def path_of_war_chance():
 def path_of_war():
     from main import filename
     with open(filename, 'a') as f:
-        global feats, extra_ability_score_levels
+        global feats, extra_ability_score_levels, human_flag, disciplines_choice
+        
         # if path == 0:
         #     feats = feats - 0
         # elif 7 > level >= 3 and path == 1:
@@ -295,6 +301,10 @@ def path_of_war():
             disciplines_choice=random.sample(disciplines,k=2)
             print(f" This is their discipline {disciplines_choice}")
             print(f" This is their discipline {disciplines_choice}",file=f)
+            
+        # Using the human flag to give humans an extra feat
+        if human_flag == 'Y':
+            feats = feats+1
 
         extra_ability_score_levels = floor(level/4)
         print ("This is the number of bonus feats per level ")
@@ -471,11 +481,7 @@ def personality_and_profession():
         with open(filename, 'a') as f, open("utils/race.json", "r") as r, open("utils/class.json", "r") as c, open("utils/traits_abilities.json") as t, open("utils/profession.json") as p:
             profession_data = json.load(p)
             traits_abilities = json.load(t)
-            global proforce
-            global ability
-            global personality
-            global random_mannerisms
-            global character_flaws
+            global proforce, random_professions, ability, personality, random_mannerisms, character_flaws, random_abilities, random_personality
             # use random.sample to select 3 random professions 
             professions = profession_data['Profession']
             random_professions = random.sample(professions, 3)
@@ -565,6 +571,11 @@ def skills():
         from main import filename
         with open(filename, 'a') as f, open("utils/class.json", "r") as c:
             class_data = json.load(c)
+        
+
+            global c_skills, c_skills_2, skill_list
+            
+            c_skills_2 = 'N/A'
             
             if isinstance(new_char_c_class, tuple):
                 # Can use either method, new_char_c_class is a tuple so we need to select the right elements from it

@@ -391,4 +391,4 @@ disciplines = ['Black Seraph', 'Broken Blade', 'Brutal Crocodile', 'Cursed Razor
 
                     #Path of war classes
 
-version = "4/30/23"
+version = "9/29/23"

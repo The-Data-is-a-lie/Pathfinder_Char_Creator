@@ -45,7 +45,8 @@ character_data = {
     "Total_HP": None,
     "extra_ability_score_levels":None,
     "npc_level": None,
-    "BAB_total": None
+    "BAB_total": None,
+    "path_of_war_discipline": None
 }
 
 def update_character_data(key_value_pairs):
@@ -79,8 +80,8 @@ def initialize_character_data():
         # c_class_2, Sometimes this is a tuple, we'll need to update the code to handle that
         flaw,
         proforce,
-        ability,
-        personality,
+        random_abilities,
+        random_personality,
         random_mannerisms,
         stats,
         age_roll, 
@@ -105,7 +106,13 @@ def initialize_character_data():
         extra_ability_score_levels,
         npc_level,
         BAB_total,
-        c_class
+        c_class,
+        flaw,
+        random_professions,
+        c_skills, 
+        c_skills_2, 
+        skill_list,
+        disciplines_choice
         # character_flaws
     )
 
@@ -132,9 +139,9 @@ def initialize_character_data():
         # ("class", c_class)
         # ("class_secondary", c_class_2),
         ("flaws", flaw),
-        ("professions", proforce),
-        ("ability_traits", ability),
-        ("personality", personality),
+        ("professions",random_professions),
+        ("ability_traits", random_abilities),
+        ("personality", random_personality),
         ("mannerisms", random_mannerisms),
         ("inherent_stats", stats),
         ("age", age_roll),
@@ -159,7 +166,11 @@ def initialize_character_data():
         ("Hit_dice", Hit_dice),
         ("extra_ability_score_levels", extra_ability_score_levels),
         ("npc_level", npc_level),
-        ("BAB_total", BAB_total)
+        ("BAB_total", BAB_total),
+        ("class_skills_2", c_skills_2),
+        ("class_skills", c_skills),
+        ("skill_list", skill_list),
+        ("path_of_war_discipline", disciplines_choice)
 
 
         # ("character_flaws", character_flaws),

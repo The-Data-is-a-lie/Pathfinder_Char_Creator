@@ -8,6 +8,7 @@
       font-family: Arial, sans-serif;
       margin: 20px;
       display: flex; /* Make the body a flex container */
+      color: #000000c7;
     }
 
     h1 {
@@ -16,11 +17,11 @@
 
     .section {
       margin-bottom: 20px;
-      flex-basis: 33.33%; /* Each section occupies 33.33% of the available width */
+      flex-basis: 20%; /* Each section occupies 33.33% of the available width */
     }
 
     h2 {
-      color: rgb(0, 204, 255);
+      color: rgb(255, 0, 0);
     }
 
     /* Styles for data boxes */
@@ -28,7 +29,7 @@
       width: 200px;
       padding: 10px;
       margin: 10px;
-      border: 1px solid #000;
+      border: 1px solid #000000;
       background-color: #f2f2f2;
     }
 
@@ -43,9 +44,11 @@
   </style>
 </head>
 <body>
-  <h1>Character Sheet</h1>
+<!-- If we want to change the title that appears on the character sheet, we change this: -->
+  <!-- <h1>Character Sheet</h1> -->
 
   <!-- Ability Score Container -->
+  <!-- changing h2 -> h1 will change colors + whatever we assign to that header -->
   <div class="section">
     <h2>Ability Scores</h2>
     <div class="data-box">
@@ -72,35 +75,194 @@
       <span class="label">Charisma:</span>
       <span class="value">{{ cha }}</span>
     </div>
+    <div class="data-box">
+      <span class="label">Racial Ability Scores:</span>
+      <span class="value">{{ ability_scores }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Ability Scores From Levels:</span>
+      <span class="value">{{ extra_ability_score_levels }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Inherent Stats:</span>
+      <span class="value">{{ inherent_stats }}</span>
+    </div>
+
     <!-- Add more ability scores as needed -->
   </div>
 
-    <!-- Basic Information Container -->
+    <!-- Basic Character Apperance Container -->
     <div class="section">
-      <h2>Basic Information</h2>
+      <h1>Character Apperance</h1>
       <div class="data-box">
-        <span class="label">Name:</span>
-        <span class="value">{{ full_name }}</span>
+        <span class="label">Personality:</span>
+        <span class="value">{{ personality }}</span>
       </div>
       <div class="data-box">
-        <span class="label">Class:</span>
-        <span class="value">{{ c_class }}</span>
+        <span class="label">Mannerisms:</span>
+        <span class="value">{{ mannerisms }}</span>
       </div>
+      <div class="data-box">
+        <span class="label">Flaws:</span>
+        <span class="value">{{ flaws }}</span>
+      </div>
+      <div class="data-box">
+        <span class="label">Height:</span>
+        <span class="value">{{ height }}</span>
+      </div>
+      <div class="data-box">
+        <span class="label">Weight:</span>
+        <span class="value">{{ Weight }}</span>
+      </div>
+      <div class="data-box">
+        <span class="label">Hair Type:</span>
+        <span class="value">{{ hair_type }}</span>
+      </div>
+      <div class="data-box">
+        <span class="label">Hair Color:</span>
+        <span class="value">{{ hair_color }}</span>
+      </div>      
+      <div class="data-box">
+        <span class="label">Eye color:</span>
+        <span class="value">{{ eye }}</span>
+      </div>      
+      <div class="data-box">
+        <span class="label">Age:</span>
+        <span class="value">{{ age }}</span>
+      </div>      
+      <div class="data-box">
+        <span class="label">Appearance:</span>
+        <span class="value">{{ appearance }}</span>
+      </div>      
       <!-- Add more basic information fields as needed -->
     </div>
 
   <!-- Additional Information Container -->
   <div class="section">
-    <h2>Additional Information</h2>
+    <h1>Character Demographic Info</h1>
     <div class="data-box">
-      <span class="label">Alignment:</span>
-      <span class="value">{{ alignment }}</span>
+      <span class="label">Full Name:</span>
+      <span class="value">{{ full_name }}</span>
     </div>
     <div class="data-box">
-      <span class="label">Deity:</span>
-      <span class="value">{{ deity }}</span>
+      <span class="label">Region:</span>
+      <span class="value">{{ region }}</span>
     </div>
+    <div class="data-box">
+      <span class="label">Languages:</span>
+      <span class="value">{{ languages}}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Racial Size:</span>
+      <span class="value">{{ racial_size }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Racial Speed:</span>
+      <span class="value">{{ racial_speed }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">racial_traits:</span>
+      <span class="value">{{ racial_traits }}</span>
+    </div>
+
     <!-- Add more data for the additional section as needed -->
   </div>
+
+    <div class="section">
+      <h2>Religion + Professions</h2>
+      <div class="data-box">
+        <span class="label">Alignment:</span>
+        <span class="value">{{ alignment }}</span>
+      </div>
+      <div class="data-box">
+        <span class="label">Deity:</span>
+        <span class="value">{{ deity }}</span>
+      </div>
+    <div class="data-box">
+      <span class="label">Professions:</span>
+      <span class="value">{{ professions }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Ability Traits:</span>
+      <span class="value">{{ ability_traits }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Class Skills:</span>
+      <span class="value">{{ class_skills }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Secondary Class Skills:</span>
+      <span class="value">{{ class_skills_2 }}</span>
+    </div>
+  <div class="data-box">
+    <span class="label">Additional Skills:</span>
+    <span class="value">{{ skill_list }}</span>
+  </div>
+  </div>
+  
+    <!-- Add more data for the additional section as needed -->
+  </div>  
+
+
+  <div class="section">
+    <h2> Martial Info </h2>
+    <div class="data-box">
+      <span class="label">Total Level:</span>
+      <span class="value">{{ level }}</span>
+    </div>
+
+    <div class="data-box">
+      <span class="label">NPC Level:</span>
+      <span class="value">{{ npc_level }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Class:</span>
+      <span class="value">{{ c_class }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Total BAB:</span>
+      <span class="value">{{ BAB_total }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Total HP:</span>
+      <span class="value">{{ Total_HP }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Hiy Dice:</span>
+      <span class="value">{{ Hit_dice }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">BAB:</span>
+      <span class="value">{{ BAB }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Weapons:</span>
+      <span class="value">{{ weapons_no_region }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Regional Weapons:</span>
+      <span class="value">{{ weapons }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Luck Score:</span>
+      <span class="value">{{ luck }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Total Feats:</span>
+      <span class="value">{{ feats }}</span>
+    </div>
+    <div class="data-box">
+      <span class="label">Path of War Disciplines:</span>
+      <span class="value">{{ path_of_war_disciplines }}</span>
+    </div>
+
+
+  
+
+
+  <!-- Add more data for the additional section as needed -->
+</div>  
+
+
 </body>
 </html>
