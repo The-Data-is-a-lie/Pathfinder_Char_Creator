@@ -7,7 +7,7 @@ $radius: 10px
 $gutter: 10px
 $bubble-size: 10px
 $small-box-width: 30px
-$large-box-width: 170px
+$large-box-width: 70px
 
 .red
   background: red
@@ -215,7 +215,7 @@ form.charsheet
                   
         div.attr-applications
             
-          div.inspiration
+          div.Hero_Points
             display: flex
             flex-direction: row-reverse
             justify-content: flex-end
@@ -339,6 +339,7 @@ form.charsheet
         &.hp
           flex-basis: 100%
           
+            /* CSS for current, nonlethal, and temporary hit point boxes */         
           > div.regular
             background-color: $bg
             border: 1px solid black
@@ -380,6 +381,28 @@ form.charsheet
                 text-align: center
                 font-weight: bold
                 
+          > div.nonlethal
+            margin: $gutter
+            margin-top: 0
+            border: 1px solid black
+            border-radius: 0 0 $radius $radius
+            display: flex
+            flex-direction: column-reverse
+            background-color: $bg
+            
+            input
+              padding: 1em 0
+              font-size: 20px
+              border: 0
+              text-align: center
+
+            label
+              font-size: 10px
+              padding-bottom: 5px
+              text-align: center
+              font-weight: bold  
+
+              
           > div.temporary
             margin: $gutter
             margin-top: 0
@@ -399,7 +422,7 @@ form.charsheet
               font-size: 10px
               padding-bottom: 5px
               text-align: center
-              font-weight: bold
+              font-weight: bold              
               
         &.hitdice, &.deathsaves
           $height: 100px

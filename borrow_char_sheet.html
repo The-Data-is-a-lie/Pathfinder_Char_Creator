@@ -1,243 +1,474 @@
-div class="container page character">
-  <div class="character__character-sheet">
-    <h2 class="character__name">Xavros</h2>
-    <p class="no-margin"><em>Human, Neutral Good</em></p>
-    <hr />
-    <dl class="character-stats">
-      <div class="character-stat">
-        <dt>Class</dt>
-        <dd>Level 3 Wizard (School of Transmutation)</dd>
-      </div>
-      <div class="character-stat">
-        <dt>Armor Class</dt>
-        <dd>12</dd>
-      </div>
-      <div class="character-stat">
-        <dt>Hit Points</dt>
-        <dd>20</dd>
-      </div>
-      <div class="character-stat">
-        <dt>Speed</dt>
-        <dd>30 ft</dd>
-      </div>
-    </dl>
-    <hr />
-    <table class="character__ability">
-      <thead>
-        <tr>
-          <th class="character__ability__header">STR</th>
-          <th class="character__ability__header">DEX</th>
-          <th class="character__ability__header">CON</th>
-          <th class="character__ability__header">INT</th>
-          <th class="character__ability__header">WIS</th>
-          <th class="character__ability__header">CHA</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>9 (0)</td>
-          <td>15 (2)</td>
-          <td>15 (2)</td>
-          <td>16 (3)</td>
-          <td>11 (0)</td>
-          <td>11 (0)</td>
-        </tr>
-      </tbody>
-    </table>
-    <hr />
-    <dl class="character-stats">
-      <div class="character-stat">
-        <dt>Proficency Bonus</dt>
-        <dd>+2</dd>
-      </div>
-      <div class="character-stat">
-        <dt>Saving Throws</dt>
-        <dd>Int (+5), Wis (+2)</dd>
-      </div>
-      <div class="character-stat">
-        <dt>Skills</dt>
-        <dd>Arcana (+5), History (+5), Medicine (+2), Investigation (+5)</dd>
-      </div>
-      <div class="character-stat">
-        <dt>Senses</dt>
-        <dd>Passive Perception 10</dd>
-      </div>
-      <div class="character-stat">
-        <dt>Languages</dt>
-        <dd>Common, Dwarvish, Draconic, Primordial</dd>
-      </div>
-      <div class="character-stat">
-        <dt>Weapons Proficiency</dt>
-        <dd>daggers, darts, slings, quaterstaff, light crossbows</dd>
-      </div>
-      <div class="character-stat">
-        <dt>Spellcasting</dt>
-        <dd>Xavros is a Spellcaster</dd>
-      </div>
-      <div class="character-stat">
-        <dt>Arcane Recovery</dt>
-        <dd>
-          Once per day, when Xavros finishes a short rest, he can choose
-          expended spell slots to recover
-        </dd>
-      </div>
-      <div class="character-stat">
-        <dt>Transmutation Savant</dt>
-        <dd>See Handbook for Details</dd>
-      </div>
-      <div class="character-stat">
-        <dt>Minor Alchemy</dt>
-        <dd>See Handbook for Details</dd>
-      </div>
-    </dl>
-    <hr />
-    <div class="character__section">
-      <h2 class="character__header">Spellcasting</h2>
-      <p>
-        Xavros is a level 3 spellcaster. Xavros's spellcasting ability is
-        Intelligence (spell save DC13; +5 to hit with spell attacks) and has the
-        following spells prepared:
-      </p>
-      <dl class="character-stats">
-        <div class="character-stat">
-          <dt>Cantrips (at will)</dt>
-          <dd>Firebolt, Light, Ray of Frost</dd>
-        </div>
-        <div class="character-stat">
-          <dt>Spells</dt>
-          <dd>
-            Comprehend Languages, Detect Magic, Unseen Servent, Mage Armor,
-            Magic Missile, Identify
-          </dd>
-        </div>
-        <div class="character-stat">
-          <dt>1st Level</dt>
-          <dd>4 Slots</dd>
-        </div>
-        <div class="character-stat">
-          <dt>2nd Level</dt>
-          <dd>2 Slots</dd>
-        </div>
-      </dl>
-    </div>
-    <div class="character__section">
-      <h2 class="character__header">Actions</h2>
-      <dl class="character-stats">
-        <div class="character-stat">
-          <dt>Quarterstaff</dt>
-          <dd>
-            Melee Weapon Attack: +1 to hit, reach 5ft., one target. Hit (1d6)
-            bludgeoning damage, or (1d8) bludgeoning damaging if used with two
-            hands
-          </dd>
-        </div>
-      </dl>
-    </div>
-    <div class="character__section">
-      <h2 class="character__header">Equipment</h2>
+<form class="charsheet">
+  <header>
+    </section>
+    <section class="misc">
       <ul>
         <li>
-          Scholar Pack (Backpack, book of lore, bottle of ink, ink pen, 10
-          sheets of parchment, little bag of sand)
-        </li>
-        <li>Quarterstaff</li>
-        <li>Arcane Focus (Orb on Staff)</li>
-        <li>Spellbook</li>
-        <li>Bottle of Black Inc</li>
-        <li>Quill</li>
-        <li>Small Knife</li>
+          <label for="classlevel">Character Name</label><input name="classlevel" placeholder="Paladin 2" />
+        </li>        
         <li>
-          Letter from a missing (or dead) colleague posing questions he can't
-          answer
+          <label for="classlevel">Class & Level</label><input name="classlevel" placeholder="Paladin 2" />
         </li>
-        <li>Common Clothes</li>
-        <li>Small Pouch with 10GP</li>
+        <li>
+          <label for="background">Background</label><input name="background" placeholder="Acolyte" />
+        </li>
+        <li>
+          <label for="playername">Player Name</label><input name="playername" placeholder="Player McPlayerface">
+        </li>
+        <li>
+          <label for="race">Race</label><input name="race" placeholder="Half-elf" />
+        </li>
+        <li>
+          <label for="Deity">Deity</label><input name="Deity" placeholder="33" />
+        </li>
+        <li>
+          <label for="Height">Height</label><input name="Height" placeholder="60" />
+        </li>
+        <li>
+          <label for="Weight">Weight</label><input name="Weight" placeholder="80" />
+        </li>
+        <li>                    
+          <label for="Eyes">Eyes</label><input name="Eyes" placeholder="Blue" />
+        </li>
+        <li>
+          <label for="Skin">Skin</label><input name="Skin" placeholder="Green" />
+        </li>
+        <li>                    
+          <label for="race">Race</label><input name="race" placeholder="Half-elf" />
+        </li>
+        <li>                    
+          <label for="alignment">Alignment</label><input name="alignment" placeholder="Lawful Good" />
+        </li>
+        <li>
+          <label for="Gender">Gender</label><input name="Gender" placeholder="M" />
+        </li>
+        <li>  
+          <label for="Languages">Languages</label><input name="Languages" placeholder="Common" />
+        </li>
+        <li>                  
+          <label for="experiencepoints">Experience Points</label><input name="experiencepoints" placeholder="0" />
+        </li>
       </ul>
-      <dl class="character-stats">
-        <div class="character-stat">
-          <dt>Trinket</dt>
-          <dd>Diary with seven missing pages</dd>
+    </section>
+  </header>
+  <main>
+    <section>
+      <section class="attributes">
+        <div class="scores">
+          <ul>
+            <li>
+              <div class="score">
+                <label for="Strengthscore">Strength</label><input name="Strengthscore" placeholder="10" />
+              </div>
+              <div class="modifier">
+                <input name="Strengthmod" placeholder="+0" />
+              </div>
+            </li>
+            <li>
+              <div class="score">
+                <label for="Dexterityscore">Dexterity</label><input name="Dexterityscore" placeholder="10" />
+              </div>
+              <div class="modifier">
+                <input name="Dexteritymod" placeholder="+0" />
+              </div>
+            </li>
+            <li>
+              <div class="score">
+                <label for="Constitutionscore">Constitution</label><input name="Constitutionscore" placeholder="10" />
+              </div>
+              <div class="modifier">
+                <input name="Constitutionmod" placeholder="+0" />
+              </div>
+            </li>
+            <li>
+              <div class="score">
+                <label for="Wisdomscore">Wisdom</label><input name="Wisdomscore" placeholder="10" />
+              </div>
+              <div class="modifier">
+                <input name="Wisdommod" placeholder="+0" />
+              </div>
+            </li>
+            <li>
+              <div class="score">
+                <label for="Intelligencescore">Intelligence</label><input name="Intelligencescore" placeholder="10" />
+              </div>
+              <div class="modifier">
+                <input name="Intelligencemod" placeholder="+0" />
+              </div>
+            </li>
+            <li>
+              <div class="score">
+                <label for="Charismascore">Charisma</label><input name="Charismascore" placeholder="10" />
+              </div>
+              <div class="modifier">
+                <input name="Charismamod" placeholder="+0" />
+              </div>
+            </li>
+          </ul>
         </div>
-      </dl>
-    </div>
-    <div class="character__section">
-      <h2 class="character__header">Roleplaying Notes</h2>
-      <dl class="character-stats">
-        <div class="character-stat">
-          <dt>Background</dt>
-          <dd>Sage (Researcher)</dd>
+<!--   If we want to end the Scores section, we just write <section> here (it would make ability scores into 1 page)       -->
+<!--       <section>       -->
+        <div class="attr-applications">
+          <div class="inspiration box">
+            <div class="label-container">
+              <label 
+                     for="Hero_Points">Hero Points</label>
+            </div>
+          <div class="saves list-section box">
+                     Saving Throws
+            <ul>
+              <li>
+                <label for="Fort-save">Fort</label><input name="Fort-save" placeholder="+0" type="text" /><input name="Fort-save-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Reflex-save">Reflex</label><input name="Reflex-save" placeholder="+0" type="text" /><input name="Reflex-save-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Will-save">Will</label><input name="Will-save" placeholder="+0" type="text" /><input name="Will-save-prof" type="checkbox" />
+              </li>
+            </div>
+          </div>
+          <div class="skills list-section box">
+            <ul>
+              <li>
+                <label for="Acrobatics">Acrobatics <span class="skill">(Dex, Str)</span></label><input name="Acrobatics" placeholder="+0" type="text" /><input name="Acrobatics-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Animal Handling">Animal Handling <span class="skill">(Int,Wis)</span></label><input name="Animal Handling" placeholder="+0" type="text" /><input name="Animal Handling-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Appraise">Animal Handling <span class="skill">(Int, Wis)</span></label><input name="Appraise" placeholder="+0" type="text" /><input name="Appraise-prof" type="checkbox" />
+              </li>
+              <li>                
+                <label for="Arcana">Arcana <span class="skill">(Int)</span></label><input name="Arcana" placeholder="+0" type="text" /><input name="Arcana-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Athletics">Athletics <span class="skill">(Dex, Str)</span></label><input name="Athletics" placeholder="+0" type="text" /><input name="Athletics-prof" type="checkbox" />
+              </li>
+              <li>
+              <li>
+                <label for="Craft">Craft <span class="skill">(Int, Wis)</span></label><input name="Craft" placeholder="+0" type="text" /><input name="Craft-prof" type="checkbox" />
+              </li>
+              <li>             
+                <label for="Deception">Deception <span class="skill">(Cha)</span></label><input name="Deception" placeholder="+0" type="text" /><input name="Deception-prof" type="checkbox" />
+              </li>              
+              <li>          
+                <label for="Diplomacy">Diplomacy <span class="skill">(Cha, Wis)</span></label><input name="Diplomacy" placeholder="+0" type="text" /><input name="Diplomacy-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Disable Device">Disable Device <span class="skill">(Dex, Int)</span></label><input name="Disable Device" placeholder="+0" type="text" /><input name="Disable Device-prof" type="checkbox" />
+              </li>
+              <li>                                
+                <label for="Disguise">Disguise <span class="skill">(Cha, Dex)</span></label><input name="Disguise" placeholder="+0" type="text" /><input name="Disguise-prof" type="checkbox" />
+              </li>
+              <li>     
+                <label for="Escape Artist">Escape Artist <span class="skill">(Dex, Str)</span></label><input name="Escape Artist" placeholder="+0" type="text" /><input name="Escape Artist-prof" type="checkbox" />
+              </li>
+              <li> 
+                <label for="Fly">Fly <span class="skill">(Dex)</span></label><input name="Fly" placeholder="+0" type="text" /><input name="Fly-prof" type="checkbox" />
+              </li>
+              <li>        
+                <label for="Gather Information">Gather Information <span class="skill">(Cha, Int)</span></label><input name="Gather Information" placeholder="+0" type="text" /><input name="Gather Information-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Handle Animal">Handle Animal <span class="skill">(Cha, Wis)</span></label><input name="Handle Animal" placeholder="+0" type="text" /><input name="Handle Animal-prof" type="checkbox" />
+              </li>
+              <li>                                                                  
+                <label for="Heal">Heal <span class="skill">(Int, Wis)</span></label><input name="Heal" placeholder="+0" type="text" /><input name="Heal-prof" type="checkbox" />
+              </li>
+              <li>                                  
+                <label for="Insight">Insight <span class="skill">(Wis)</span></label><input name="Insight" placeholder="+0" type="text" /><input name="Insight-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Intimidation">Intimidation <span class="skill">(Cha)</span></label><input name="Intimidation" placeholder="+0" type="text" /><input name="Intimidation-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Investigation">Investigation <span class="skill">(Int)</span></label><input name="Investigation" placeholder="+0" type="text" /><input name="Investigation-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Knowledge (Martial)">Knowledge (Martial) <span class="skill">(Cha, Con, Dex, Int, Str, Wis)</span></label><input name="Knowledge (Martial)" placeholder="+0" type="text" /><input name="Knowledge Martial-prof" type="checkbox" />
+              </li>
+              <li>             
+                <label for="Knowledge (Arcana)">Knowledge (Arcana) <span class="skill">(Int)</span></label><input name="Knowledge (Arcana)" placeholder="+0" type="text" /><input name="Knowledge (Arcana)-prof" type="checkbox" />
+              </li>
+              <li> 
+                <label for="Knowledge (Dungeoneering)">Knowledge (Dungeoneering) <span class="skill">(Int, Wis)</span></label><input name="Knowledge (Dungeoneering)" placeholder="+0" type="text" /><input name="Knowledge (Dungeoneering)-prof" type="checkbox" />
+              </li>
+              <li>                                           
+                <label for="Knowledge (Engineering)">Knowledge (Engineering) <span class="skill">(Int, Wis)</span></label><input name="Knowledge (Engineering)" placeholder="+0" type="text" /><input name="Knowledge (Engineering)-prof" type="checkbox" />
+              </li>
+              <li>                   
+                <label for="Knowledge (History)">Knowledge (History) <span class="skill">(Cha, Int)</span></label><input name="Knowledge (History)" placeholder="+0" type="text" /><input name="Knowledge (History)-prof" type="checkbox" />
+              </li>
+              <li>                   
+                <label for="Knowledge (Nature)">Knowledge (Nature) <span class="skill">(Int, Wis)</span></label><input name="Knowledge (Nature)" placeholder="+0" type="text" /><input name="Knowledge (Nature)-prof" type="checkbox" />
+              </li>
+              <li>                   
+                <label for="Knowledge (Nobility)">Knowledge (Nobility) <span class="skill">(Cha, Int)</span></label><input name="Knowledge (Nobility)" placeholder="+0" type="text" /><input name="Knowledge (Nobility)-prof" type="checkbox" />
+              </li>
+              <li> 
+                <label for="Knowledge (Planes)">Knowledge (Planes) <span class="skill">(Int)</span></label><input name="Knowledge (Planes)" placeholder="+0" type="text" /><input name="Knowledge (Planes)-prof" type="checkbox" />
+              </li>
+              <li>       
+                <label for="Knowledge (Religion)">Knowledge (Religion) <span class="skill">(Cha, Int, Wis)</span></label><input name="Knowledge (Religion)" placeholder="+0" type="text" /><input name="Knowledge (Religion)-prof" type="checkbox" />
+              </li>
+              <li>              
+                <label for="Linguistics">Linguistics <span class="skill">(Cha, Int)</span></label><input name="Linguistics" placeholder="+0" type="text" /><input name="Linguistics-prof" type="checkbox" />
+              </li>
+              <li>                                                      
+                <label for="Medicine">Medicine <span class="skill">(Wis)</span></label><input name="Medicine" placeholder="+0" type="text" /><input name="Medicine-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Nature">Nature <span class="skill">(Int)</span></label><input name="Nature" placeholder="+0" type="text" /><input name="Nature-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Perception">Perception <span class="skill">(Wis, Int)</span></label><input name="Perception" placeholder="+0" type="text" /><input name="Perception-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Perform">Perform <span class="skill">(Cha, Dex, Str)</span></label><input name="Perform" placeholder="+0" type="text" /><input name="Perform-prof" type="checkbox" />
+              </li>
+              <li>                
+                <label for="Profession">Profession <span class="skill">(Cha, Int, Wis)</span></label><input name="Profession" placeholder="+0" type="text" /><input name="Profession-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Ride">Ride <span class="skill">(Dex, Str)</span></label><input name="Ride" placeholder="+0" type="text" /><input name="Ride-prof" type="checkbox" />
+              </li>
+              <li>       
+                <label for="Sense Motive">Sense Motive <span class="skill">(Cha, Wis)</span></label><input name="Sense Motive" placeholder="+0" type="text" /><input name="Sense Motive-prof" type="checkbox" />
+              </li>
+              <li>                                              
+                <label for="Sleight of Hand">Sleight of Hand <span class="skill">(Dex)</span></label><input name="Sleight of Hand" placeholder="+0" type="text" /><input name="Sleight of Hand-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Spellcraft">Spellcraft <span class="skill">(Int)</span></label><input name="Spellcraft" placeholder="+0" type="text" /><input name="Spellcraft-prof" type="checkbox" />
+              </li>
+              <li>                    
+                <label for="Stealth">Stealth <span class="skill">(Dex)</span></label><input name="Stealth" placeholder="+0" type="text" /><input name="Stealth-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Survival">Survival <span class="skill">(Wis)</span></label><input name="Survival" placeholder="+0" type="text" /><input name="Survival-prof" type="checkbox" />
+              </li>
+              <li>
+                <label for="Swim">Swim <span class="skill">(Dex,Str)</span></label><input name="Swim" placeholder="+0" type="text" /><input name="Swim-prof" type="checkbox" />
+              </li>   
+              <li>
+                <label for="Use Magic Device">Use Magic Device <span class="skill">(Cha, Int)</span></label><input name="Use Magic Device" placeholder="+0" type="text" /><input name="Use Magic Device-prof" type="checkbox" />
+              </li>              
+            </ul>
+            <div class="label">
+              Skills
+            </div>
+          </div>
         </div>
-        <div class="character-stat">
-          <dt>Personality Trait</dt>
-          <dd>
-            I'm the most knowledgeable and well read so clearly I would make the
-            best leader
-          </dd>
+      </section>
+      <div class="passive-perception box">
+        <div class="label-container">
+          <label for="passiveperception">Passive Wisdom (Perception)</label>
         </div>
-        <div class="character-stat">
-          <dt>Ideal</dt>
-          <dd>The path to power and greatness is through knowledge</dd>
+        <input name="passiveperception" placeholder="10" />
+      </div>
+      <div class="otherprofs box textblock">
+        <label for="otherprofs">Other Proficiencies and Languages</label><textarea name="otherprofs"></textarea>
+      </div>
+    </section>
+    <section>
+      <section class="combat">
+        <div class="armorclass">
+          <div>
+            <label for="ac">Total Armor Class</label><input name="ac" placeholder="10" type="text" />
+          </div>
+          <div>
+          </div>
         </div>
-        <div class="character-stat">
-          <dt>Bond</dt>
-          <dd>
-            My life's work is a series of tombs related to a specific field of
-            lore
-          </dd>
+        <div class="speed">
+          <div>
+            <label for="armor_ac">Armor AC</label><input name="armor_ac" placeholder="30" type="text" />            
+          </div>
         </div>
-        <div class="character-stat">
-          <dt>Flaw</dt>
-          <dd>I am easily distracted by the promise of knowledge</dd>
+        <div class="speed">
+          <div>
+            <label for="shield_ac">Shield AC</label><input name="shield_ac" placeholder="30" type="text" />
+          </div>
         </div>
-      </dl>
-    </div>
-  </div>
-  <div class="character__content">
-    <p>
-      If asked, Xavros will proudly declare that he was the natural leader of
-      the PC party, and everyone naturally and almost instantly chose to look to
-      him as their leader. After all, who wouldn’t look up to a wizard with,
-      what some might argue, a questionable long amount of time spent in
-      university? True, he had issues becoming the leader in any of the
-      extracurricular activities he was in at the university, but everyone knew
-      those were based on popularity contests rather than actual knowledge and
-      skill at leadership. Eventually Xavros would prove himself and his
-      abilities to the world, he just needed the right situation to present
-      itself.
-    </p>
-    <p>
-      The right situation did present itself three months ago after his favorite
-      mentor mysteriously went missing, leaving only a torn journal of some of
-      her notes behind. The other professors insisted - rather forcibly - that
-      it was time for him to get out of the hallowed halls of academia and get
-      some “practical” experience. Not sure why no one had his university seemed
-      at all concerned about the disappearance of his mentor, Xavros swore to
-      find out what happened to her and her research, and struck out to the east
-      where he knew a tomb she had been looking for was said to have been
-      located.
-    </p>
-    <p>
-      While at a tavern, he overheard the bartender telling another employee
-      about the unfortunate kidnapping of a village girl a few miles away rumors
-      of a strange glow at an abandoned lighthouse. Remembering something his
-      mentor had mentioned, Xavros wondered if this had something to do with one
-      of the rumored summoning spells in the tomb his mentor had had been
-      looking for. Knowing he did not have the physical power to take on the
-      tower alone, he cleverly convinced two physical types, Thog and Horbin, to
-      investigate the matter with him.
-    </p>
-  </div>
-  <div class="character__section">
-    <picture class="character__image">
-      <source
-        srcset="
-          https://tavern-wenches.com/assets/images/xavros_hua0f68b663066c360e1f9a854241340e2_73891_700x0_resize_q100_box_2.png 700w,
-          https://tavern-wenches.com/assets/images/xavros_hua0f68b663066c360e1f9a854241340e2_73891_350x0_resize_q100_box_2.png 350w
-        "/>
-      <img
-        class="characters__thumb"
-        src="https://tavern-wenches.com/assets/images/xavros_hua0f68b663066c360e1f9a854241340e2_73891_350x0_resize_q100_box_2.png"
-        alt="Xavros"
-    /></picture>
-  </div>
-</div>
+        <div class="speed">
+          <div>
+            <label for="dex_ac">Dex AC</label><input name="dex_ac" placeholder="30" type="text" />
+          </div>
+        </div>    
+        <div class="speed">
+          <div>
+            <label for="size_ac">Size AC</label><input name="size_ac" placeholder="30" type="text" />
+          </div>
+        </div>       
+        <div class="speed">
+          <div>
+            <label for="dodge_ac">Dodge AC</label><input name="dodge_ac" placeholder="30" type="text" />
+          </div>
+        </div>  
+        <div class="speed">
+          <div>
+            <label for="natural_ac">Natural AC</label><input name="natural_ac" placeholder="30" type="text" />
+          </div>
+        </div>  
+        <div class="speed">
+          <div>
+            <label for="deflect_ac">Deflect AC</label><input name="deflect_ac" placeholder="30" type="text" />
+          </div>
+        </div>          
+        <div class="hp">
+          <div class="regular">
+            <div class="max">
+              <label for="maxhp">Hit Point Maximum</label><input name="maxhp" placeholder="10" type="text" />
+            </div>
+            <div class="current">
+              <label for="currenthp">Current Hit Points</label><input name="currenthp" type="text" />
+            </div>
+          </div>
+          <div class="nonlethal">
+            <label for="nonlethalhp">Non Lethal Damage</label><input name="nonlethalhp" type="text" />
+            </div>
+                    <div class="nonlethal">
+            <label for="nonlethalhp">Non Lethal Damage</label><input name="nonlethalhp" type="text" />
+            </div>
+          </div>
+        <div class="hitdice">
+          <div>
+            <div class="total">
+              <label for="totalhd">Total</label><input name="totalhd" placeholder="0" type="text" />           
+            </div>
+            <div class="remaining">
+              <label for="remaininghd">Hit Dice</label><input name="remaininghd" type="text" />
+            </div>
+          </div>
+        </div>
+        <div class="deathsaves">
+          <div>
+            <div class="label">
+              <label>Death Saves</label>
+            </div>
+            <div class="marks">
+              <div class="deathsuccesses">
+                <label>Successes</label>
+                <div class="bubbles">
+                  <input name="deathsuccess1" type="checkbox" />
+                  <input name="deathsuccess2" type="checkbox" />
+                  <input name="deathsuccess3" type="checkbox" />
+                </div>
+              </div>
+              <div class="deathfails">
+                <label>Failures</label>
+                <div class="bubbles">
+                  <input name="deathfail1" type="checkbox" />
+                  <input name="deathfail2" type="checkbox" />
+                  <input name="deathfail3" type="checkbox" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="attacksandspellcasting">
+        <div>
+          <label>Attacks & Spellcasting</label>
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  Name
+                </th>
+                <th>
+                  Atk Bonus
+                </th>
+                <th>
+                  Damage/Type
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input name="atkname1" type="text" />
+                </td>
+                <td>
+                  <input name="atkbonus1" type="text" />
+                </td>
+                <td>
+                  <input name="atkdamage1" type="text" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input name="atkname2" type="text" />
+                </td>
+                <td>
+                  <input name="atkbonus2" type="text" />
+                </td>
+                <td>
+                  <input name="atkdamage2" type="text" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input name="atkname3" type="text" />
+                </td>
+                <td>
+                  <input name="atkbonus3" type="text" />
+                </td>
+                <td>
+                  <input name="atkdamage3" type="text" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <textarea></textarea>
+        </div>
+      </section>
+      <section class="equipment">
+        <div>
+          <label>Equipment</label>
+          <div class="money">
+            <ul>
+              <li>
+                <label for="cp">cp</label><input name="cp" />
+              </li>
+              <li>
+                <label for="sp">sp</label><input name="sp" />
+              </li>
+              <li>
+                <label for="ep">ep</label><input name="ep" />
+              </li>
+              <li>
+                <label for="gp">gp</label><input name="gp" />
+              </li>
+              <li>
+                <label for="pp">pp</label><input name="pp" />
+              </li>
+            </ul>
+          </div>
+          <textarea placeholder="Equipment list here"></textarea>
+        </div>
+      </section>
+    </section>
+    <section>
+      <section class="flavor">
+        <div class="personality">
+          <label for="personality">Personality</label><textarea name="personality"></textarea>
+        </div>
+        <div class="ideals">
+          <label for="ideals">Ideals</label><textarea name="ideals"></textarea>
+        </div>
+        <div class="bonds">
+          <label for="bonds">Bonds</label><textarea name="bonds"></textarea>
+        </div>
+        <div class="flaws">
+          <label for="flaws">Flaws</label><textarea name="flaws"></textarea>
+        </div>
+      </section>
+      <section class="features">
+        <div>
+          <label for="features">Features & Traits</label><textarea name="features"></textarea>
+        </div>
+      </section>
+    </section>
+  </main>
+</form>
