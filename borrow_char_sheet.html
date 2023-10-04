@@ -53,61 +53,259 @@
   </header>
   <main>
     <section>
+      <div class = "label">
+<!--    Need to make a class for attributes container      -->
       <section class="attributes">
+<!--    attributes affects the square box around ability scoes      -->
         <div class="scores">
-          <ul>
-            <li>
-              <div class="score">
-                <label for="Strengthscore">Strength</label><input name="Strengthscore" placeholder="10" />
-              </div>
-              <div class="modifier">
-                <input name="Strengthmod" placeholder="+0" />
-              </div>
-            </li>
-            <li>
-              <div class="score">
-                <label for="Dexterityscore">Dexterity</label><input name="Dexterityscore" placeholder="10" />
-              </div>
-              <div class="modifier">
-                <input name="Dexteritymod" placeholder="+0" />
-              </div>
-            </li>
-            <li>
-              <div class="score">
-                <label for="Constitutionscore">Constitution</label><input name="Constitutionscore" placeholder="10" />
-              </div>
-              <div class="modifier">
-                <input name="Constitutionmod" placeholder="+0" />
-              </div>
-            </li>
-            <li>
-              <div class="score">
-                <label for="Wisdomscore">Wisdom</label><input name="Wisdomscore" placeholder="10" />
-              </div>
-              <div class="modifier">
-                <input name="Wisdommod" placeholder="+0" />
-              </div>
-            </li>
-            <li>
-              <div class="score">
-                <label for="Intelligencescore">Intelligence</label><input name="Intelligencescore" placeholder="10" />
-              </div>
-              <div class="modifier">
-                <input name="Intelligencemod" placeholder="+0" />
-              </div>
-            </li>
-            <li>
-              <div class="score">
-                <label for="Charismascore">Charisma</label><input name="Charismascore" placeholder="10" />
-              </div>
-              <div class="modifier">
-                <input name="Charismamod" placeholder="+0" />
-              </div>
-            </li>
-          </ul>
+<table>
+  <thead>
+    <tr>
+      <th>Ability Score</th>
+      <th>Total</th>
+      <th>Mod</th>
+      <th>Base</th>      
+      <th>Buff</th>
+      <th>Misc</th>
+      <th>Temp</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+  <td>STR</td>
+  <td><input name="Total" placeholder="" /></td>
+  <td><input name="Mod" placeholder="" /></td>    
+  <td><input name="Base" placeholder="" /></td>     
+  <td><input name="Enhance" placeholder="" /></td>   
+  <td><input name="Temp" placeholder="" /></td>     
+  <td><input name="Misc" placeholder="" /></td>   
+</tr>
+<tr>
+  <td>DEX</td>
+  <td><input name="Total" placeholder="" /></td>
+  <td><input name="Mod" placeholder="" /></td>    
+  <td><input name="Base" placeholder="" /></td>   
+  <td><input name="Enhance" placeholder="" /></td>   
+  <td><input name="Temp" placeholder="" /></td>
+  <td><input name="Misc" placeholder="" /></td>       
+</tr>
+<tr>
+  <td>CON</td>
+  <td><input name="Total" placeholder="" /></td>
+  <td><input name="Mod" placeholder="" /></td>    
+  <td><input name="Base" placeholder="" /></td>   
+  <td><input name="Enhance" placeholder="" /></td>   
+  <td><input name="Temp" placeholder="" /></td> 
+  <td><input name="Misc" placeholder="" /></td>      
+</tr>
+<tr>
+  <td>WIS</td>
+  <td><input name="Total" placeholder="" /></td>
+  <td><input name="Mod" placeholder="" /></td>    
+  <td><input name="Base" placeholder="" /></td>   
+  <td><input name="Enhance" placeholder="" /></td>   
+  <td><input name="Temp" placeholder="" /></td>
+  <td><input name="Misc" placeholder="" /></td>       
+</tr>
+<tr>
+  <td>INT</td>
+  <td><input name="Total" placeholder="" /></td>
+  <td><input name="Mod" placeholder="" /></td>    
+  <td><input name="Base" placeholder="" /></td>   
+  <td><input name="Enhance" placeholder="" /></td>   
+  <td><input name="Temp" placeholder="" /></td>
+  <td><input name="Misc" placeholder="" /></td>       
+</tr>
+<tr>
+  <td>CHA</td>
+  <td><input name="Total" placeholder="" /></td>
+  <td><input name="Mod" placeholder="" /></td>    
+  <td><input name="Base" placeholder="" /></td>   
+  <td><input name="Enhance" placeholder="" /></td>   
+  <td><input name="Temp" placeholder="" /></td>   
+  <td><input name="Misc" placeholder="" /></td>  
+</tr>
+  </tbody>
+</table>
+  
+      </div>
+<!--   If we want to end the Scores section, we just write <section> here (it would make ability scores into 1 page)       -->           
+    </section>
+    <section>
+      <section class="combat">
+        <div class="armorclass">
+          <div>
+            <label for="ac">Total Armor Class</label><input name="ac" placeholder="10" type="text" />
+          </div>
+          <div>
+          </div>
         </div>
-<!--   If we want to end the Scores section, we just write <section> here (it would make ability scores into 1 page)       -->
-<!--       <section>       -->
+        <div class="speed">
+          <div>
+            <label for="armor_ac">Armor AC</label><input name="armor_ac" placeholder="30" type="text" />            
+          </div>
+        </div>
+        <div class="speed">
+          <div>
+            <label for="shield_ac">Shield AC</label><input name="shield_ac" placeholder="30" type="text" />
+          </div>
+        </div>
+        <div class="speed">
+          <div>
+            <label for="dex_ac">Dex AC</label><input name="dex_ac" placeholder="30" type="text" />
+          </div>
+        </div>    
+        <div class="speed">
+          <div>
+            <label for="size_ac">Size AC</label><input name="size_ac" placeholder="30" type="text" />
+          </div>
+        </div>       
+        <div class="speed">
+          <div>
+            <label for="dodge_ac">Dodge AC</label><input name="dodge_ac" placeholder="30" type="text" />
+          </div>
+        </div>  
+        <div class="speed">
+          <div>
+            <label for="natural_ac">Natural AC</label><input name="natural_ac" placeholder="30" type="text" />
+          </div>
+        </div>  
+        <div class="speed">
+          <div>
+            <label for="deflect_ac">Deflect AC</label><input name="deflect_ac" placeholder="30" type="text" />
+          </div>
+        </div>          
+        <div class="hp">
+          <div class="regular">
+            <div class="max">
+              <label for="maxhp">Hit Point Maximum</label><input name="maxhp" placeholder="10" type="text" />
+            </div>
+            <div class="current">
+              <label for="currenthp">Current Hit Points</label><input name="currenthp" type="text" />
+            </div>
+          </div>
+          <div class="nonlethal">
+            <label for="nonlethalhp">Non Lethal Damage</label><input name="nonlethalhp" type="text" />
+            </div>
+                    <div class="nonlethal">
+            <label for="nonlethalhp">Non Lethal Damage</label><input name="nonlethalhp" type="text" />
+            </div>
+          </div>
+        <div class="hitdice">
+          <div>
+            <div class="total">
+              <label for="totalhd">Total</label><input name="totalhd" placeholder="0" type="text" />           
+            </div>
+            <div class="remaining">
+              <label for="remaininghd">Hit Dice</label><input name="remaininghd" type="text" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="attacksandspellcasting">
+        <div>
+          <label>Attacks & Spellcasting</label>
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  Name
+                </th>
+                <th>
+                  Atk Bonus
+                </th>
+                <th>
+                  Damage/Type
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input name="atkname1" type="text" />
+                </td>
+                <td>
+                  <input name="atkbonus1" type="text" />
+                </td>
+                <td>
+                  <input name="atkdamage1" type="text" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input name="atkname2" type="text" />
+                </td>
+                <td>
+                  <input name="atkbonus2" type="text" />
+                </td>
+                <td>
+                  <input name="atkdamage2" type="text" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input name="atkname3" type="text" />
+                </td>
+                <td>
+                  <input name="atkbonus3" type="text" />
+                </td>
+                <td>
+                  <input name="atkdamage3" type="text" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <textarea></textarea>
+        </div>
+      </section>
+      <section class="equipment">
+        <div>
+          <label>Equipment</label>
+          <div class="money">
+            <ul>
+              <li>
+                <label for="cp">cp</label><input name="cp" />
+              </li>
+              <li>
+                <label for="sp">sp</label><input name="sp" />
+              </li>
+              <li>
+                <label for="ep">ep</label><input name="ep" />
+              </li>
+              <li>
+                <label for="gp">gp</label><input name="gp" />
+              </li>
+              <li>
+                <label for="pp">pp</label><input name="pp" />
+              </li>
+            </ul>
+          </div>
+          <textarea placeholder="Equipment list here"></textarea>
+        </div>
+      </section>
+    </section>
+    <section>
+      <section class="flavor">
+        <div class="personality">
+          <label for="personality">Personality</label><textarea name="personality"></textarea>
+        </div>
+        <div class="ideals">
+          <label for="ideals">Ideals</label><textarea name="ideals"></textarea>
+        </div>
+        <div class="bonds">
+          <label for="bonds">Bonds</label><textarea name="bonds"></textarea>
+        </div>
+        <div class="flaws">
+          <label for="flaws">Flaws</label><textarea name="flaws"></textarea>
+        </div>
+      </section>
+      <section class="features">
+        <div>
+          <label for="features">Features & Traits</label><textarea name="features"></textarea>
+        </div>
+        <section>
+          <section>
+          <section class = Skills >
         <div class="attr-applications">
           <div class="inspiration box">
             <div class="label-container">
@@ -270,205 +468,6 @@
       <div class="otherprofs box textblock">
         <label for="otherprofs">Other Proficiencies and Languages</label><textarea name="otherprofs"></textarea>
       </div>
-    </section>
-    <section>
-      <section class="combat">
-        <div class="armorclass">
-          <div>
-            <label for="ac">Total Armor Class</label><input name="ac" placeholder="10" type="text" />
-          </div>
-          <div>
-          </div>
-        </div>
-        <div class="speed">
-          <div>
-            <label for="armor_ac">Armor AC</label><input name="armor_ac" placeholder="30" type="text" />            
-          </div>
-        </div>
-        <div class="speed">
-          <div>
-            <label for="shield_ac">Shield AC</label><input name="shield_ac" placeholder="30" type="text" />
-          </div>
-        </div>
-        <div class="speed">
-          <div>
-            <label for="dex_ac">Dex AC</label><input name="dex_ac" placeholder="30" type="text" />
-          </div>
-        </div>    
-        <div class="speed">
-          <div>
-            <label for="size_ac">Size AC</label><input name="size_ac" placeholder="30" type="text" />
-          </div>
-        </div>       
-        <div class="speed">
-          <div>
-            <label for="dodge_ac">Dodge AC</label><input name="dodge_ac" placeholder="30" type="text" />
-          </div>
-        </div>  
-        <div class="speed">
-          <div>
-            <label for="natural_ac">Natural AC</label><input name="natural_ac" placeholder="30" type="text" />
-          </div>
-        </div>  
-        <div class="speed">
-          <div>
-            <label for="deflect_ac">Deflect AC</label><input name="deflect_ac" placeholder="30" type="text" />
-          </div>
-        </div>          
-        <div class="hp">
-          <div class="regular">
-            <div class="max">
-              <label for="maxhp">Hit Point Maximum</label><input name="maxhp" placeholder="10" type="text" />
-            </div>
-            <div class="current">
-              <label for="currenthp">Current Hit Points</label><input name="currenthp" type="text" />
-            </div>
-          </div>
-          <div class="nonlethal">
-            <label for="nonlethalhp">Non Lethal Damage</label><input name="nonlethalhp" type="text" />
-            </div>
-                    <div class="nonlethal">
-            <label for="nonlethalhp">Non Lethal Damage</label><input name="nonlethalhp" type="text" />
-            </div>
-          </div>
-        <div class="hitdice">
-          <div>
-            <div class="total">
-              <label for="totalhd">Total</label><input name="totalhd" placeholder="0" type="text" />           
-            </div>
-            <div class="remaining">
-              <label for="remaininghd">Hit Dice</label><input name="remaininghd" type="text" />
-            </div>
-          </div>
-        </div>
-        <div class="deathsaves">
-          <div>
-            <div class="label">
-              <label>Death Saves</label>
-            </div>
-            <div class="marks">
-              <div class="deathsuccesses">
-                <label>Successes</label>
-                <div class="bubbles">
-                  <input name="deathsuccess1" type="checkbox" />
-                  <input name="deathsuccess2" type="checkbox" />
-                  <input name="deathsuccess3" type="checkbox" />
-                </div>
-              </div>
-              <div class="deathfails">
-                <label>Failures</label>
-                <div class="bubbles">
-                  <input name="deathfail1" type="checkbox" />
-                  <input name="deathfail2" type="checkbox" />
-                  <input name="deathfail3" type="checkbox" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="attacksandspellcasting">
-        <div>
-          <label>Attacks & Spellcasting</label>
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  Name
-                </th>
-                <th>
-                  Atk Bonus
-                </th>
-                <th>
-                  Damage/Type
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <input name="atkname1" type="text" />
-                </td>
-                <td>
-                  <input name="atkbonus1" type="text" />
-                </td>
-                <td>
-                  <input name="atkdamage1" type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input name="atkname2" type="text" />
-                </td>
-                <td>
-                  <input name="atkbonus2" type="text" />
-                </td>
-                <td>
-                  <input name="atkdamage2" type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input name="atkname3" type="text" />
-                </td>
-                <td>
-                  <input name="atkbonus3" type="text" />
-                </td>
-                <td>
-                  <input name="atkdamage3" type="text" />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <textarea></textarea>
-        </div>
-      </section>
-      <section class="equipment">
-        <div>
-          <label>Equipment</label>
-          <div class="money">
-            <ul>
-              <li>
-                <label for="cp">cp</label><input name="cp" />
-              </li>
-              <li>
-                <label for="sp">sp</label><input name="sp" />
-              </li>
-              <li>
-                <label for="ep">ep</label><input name="ep" />
-              </li>
-              <li>
-                <label for="gp">gp</label><input name="gp" />
-              </li>
-              <li>
-                <label for="pp">pp</label><input name="pp" />
-              </li>
-            </ul>
-          </div>
-          <textarea placeholder="Equipment list here"></textarea>
-        </div>
-      </section>
-    </section>
-    <section>
-      <section class="flavor">
-        <div class="personality">
-          <label for="personality">Personality</label><textarea name="personality"></textarea>
-        </div>
-        <div class="ideals">
-          <label for="ideals">Ideals</label><textarea name="ideals"></textarea>
-        </div>
-        <div class="bonds">
-          <label for="bonds">Bonds</label><textarea name="bonds"></textarea>
-        </div>
-        <div class="flaws">
-          <label for="flaws">Flaws</label><textarea name="flaws"></textarea>
-        </div>
-      </section>
-      <section class="features">
-        <div>
-          <label for="features">Features & Traits</label><textarea name="features"></textarea>
-        </div>
-      </section>
-    </section>
+      
   </main>
 </form>
