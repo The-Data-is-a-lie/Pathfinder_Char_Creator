@@ -1,54 +1,390 @@
-<table>
-    <thead>
-      <tr>
-        <th>Armor</th>
-        <th>Shield</th>
-        <th>Dex</th>
-        <th>Size</th>      
-        <th>Dodge</th>
-        <th>Natural</th>
-        <th>Deflect</th>
-        <th>Misc</th>
-        <th>Temp</th>                
-      </tr>
-    </thead>
-    <tbody>
-  <tr>
-    <td>AC</td>
-    <td><input name="Armor" placeholder="" /></td>
-    <td><input name="Shield" placeholder="" /></td>    
-    <td><input name="Dex" placeholder="" /></td>     
-    <td><input name="Size" placeholder="" /></td>   
-    <td><input name="Dodge" placeholder="" /></td>     
-    <td><input name="Natural" placeholder="" /></td>   
-    <td><input name="Deflect" placeholder="" /></td>     
-    <td><input name="Misc" placeholder="" /></td>   
-    <td><input name="Temp" placeholder="" /></td>          
-  </tr>
-  <tr>
-    <td>Touch</td>
-    <td><input name="Armor" placeholder="" /></td>
-    <td><input name="Shield" placeholder="" /></td>    
-    <td><input name="Dex" placeholder="" /></td>     
-    <td><input name="Size" placeholder="" /></td>   
-    <td><input name="Dodge" placeholder="" /></td>     
-    <td><input name="Natural" placeholder="" /></td>   
-    <td><input name="Deflect" placeholder="" /></td>     
-    <td><input name="Misc" placeholder="" /></td>   
-    <td><input name="Temp" placeholder="" /></td>        
-  </tr>
-  <tr>
-    <td>Flat-Foot</td>
-    <td><input name="Armor" placeholder="" /></td>
-    <td><input name="Shield" placeholder="" /></td>    
-    <td><input name="Dex" placeholder="" /></td>     
-    <td><input name="Size" placeholder="" /></td>   
-    <td><input name="Dodge" placeholder="" /></td>     
-    <td><input name="Natural" placeholder="" /></td>   
-    <td><input name="Deflect" placeholder="" /></td>     
-    <td><input name="Misc" placeholder="" /></td>   
-    <td><input name="Temp" placeholder="" /></td>         
-  </tr>
-    </tbody>
-  </table>
+<form class="charsheet">
+  <header>
+    </section>
+    <section class="misc">
+      <ul>
+        <li>
+          <label for="classlevel">Character Name</label><input name="classlevel" placeholder="Paladin 2" />
+        </li>        
+        <li>
+          <label for="classlevel">Class & Level</label><input name="classlevel" placeholder="Paladin 2" />
+        </li>
+        <li>
+          <label for="background">Background</label><input name="background" placeholder="Acolyte" />
+        </li>
+        <li>
+          <label for="playername">Player Name</label><input name="playername" placeholder="Player McPlayerface">
+        </li>
+        <li>
+          <label for="race">Race</label><input name="race" placeholder="Half-elf" />
+        </li>
+        <li>
+          <label for="Deity">Deity</label><input name="Deity" placeholder="33" />
+        </li>
+        <li>
+          <label for="Height">Height</label><input name="Height" placeholder="60" />
+        </li>
+        <li>
+          <label for="Weight">Weight</label><input name="Weight" placeholder="80" />
+        </li>
+        <li>                    
+          <label for="Eyes">Eyes</label><input name="Eyes" placeholder="Blue" />
+        </li>
+        <li>
+          <label for="Skin">Skin</label><input name="Skin" placeholder="Green" />
+        </li>
+        <li>                    
+          <label for="race">Race</label><input name="race" placeholder="Half-elf" />
+        </li>
+        <li>                    
+          <label for="alignment">Alignment</label><input name="alignment" placeholder="Lawful Good" />
+        </li>
+        <li>
+          <label for="Gender">Gender</label><input name="Gender" placeholder="M" />
+        </li>
+        <li>  
+          <label for="Languages">Languages</label><input name="Languages" placeholder="Common" />
+        </li>
+        <li>                  
+          <label for="experiencepoints">Experience Points</label><input name="experiencepoints" placeholder="0" />
+        </li>
+      </ul>
+    </section>
+  </header>
+  <main>
+<!--  Start of the Ability Score Section    -->    
+    <section>
+      <div class = "label">
+        </div>
+                <!--    Need to make a class for attributes container      -->
+      <section class="attributes">
+                <!--    attributes affects the square box around ability scoes      -->
+        <div class="scores">
+            <table>
+              <thead>
+                <tr>
+                  <th>Ability Score</th>
+                  <th>Total</th>
+                  <th>Mod</th>
+                  <th>Base</th>      
+                  <th>Buff</th>
+                  <th>Misc</th>
+                  <th>Temp</th>
+                </tr>
+              </thead>
+              <tbody>
+            <tr>
+              <td>STR</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>    
+              <td><input name="Base" placeholder="" /></td>     
+              <td><input name="Enhance" placeholder="" /></td>   
+              <td><input name="Temp" placeholder="" /></td>     
+              <td><input name="Misc" placeholder="" /></td>   
+            </tr>
+            <tr>
+              <td>DEX</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>    
+              <td><input name="Base" placeholder="" /></td>   
+              <td><input name="Enhance" placeholder="" /></td>   
+              <td><input name="Temp" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>       
+            </tr>
+            <tr>
+              <td>CON</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>    
+              <td><input name="Base" placeholder="" /></td>   
+              <td><input name="Enhance" placeholder="" /></td>   
+              <td><input name="Temp" placeholder="" /></td> 
+              <td><input name="Misc" placeholder="" /></td>      
+            </tr>
+            <tr>
+              <td>WIS</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>    
+              <td><input name="Base" placeholder="" /></td>   
+              <td><input name="Enhance" placeholder="" /></td>   
+              <td><input name="Temp" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>       
+            </tr>
+            <tr>
+              <td>INT</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>    
+              <td><input name="Base" placeholder="" /></td>   
+              <td><input name="Enhance" placeholder="" /></td>   
+              <td><input name="Temp" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>       
+            </tr>
+            <tr>
+              <td>CHA</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>    
+              <td><input name="Base" placeholder="" /></td>   
+              <td><input name="Enhance" placeholder="" /></td>   
+              <td><input name="Temp" placeholder="" /></td>   
+              <td><input name="Misc" placeholder="" /></td>  
+            </tr>
+              </tbody>  
+            </table>  
+          </div>
+            <!--  Start of The HP Section --> 
+    </section>
+      </section>
+        <section>
+      <div class = "label">
+                <!--    Need to make a class for attributes container      -->
+      <section class="Total-HP">
+                <!--    attributes affects the square box around ability scoes      -->
+        <div class="HP">  
+      <table>         
+              <thead>
+                <tr>
+                  <th>Total Hit Points</th>                
+                </tr>          
+              </thead>
+              <tbody>
+            <tr>        
+            </tr>                
+            <tr>
+              </tbody>  
+            </table>  
+              <td><input name="Total" placeholder="" /></td>                 
+  </section>
+</main>
+       
+            <!--  End of The HP Section --> 
+
+        <!--  Start of the Armor Class Section    -->
+
+<main>
+  <section>
+    <div class="label">
+    </div>
+    <section class="armor-class">
+      <div class="AC">
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Total</th>
+              <th>Armor</th>
+              <th>Shield</th>
+              <th>Dex</th>
+              <th>Size</th>
+              <th>Dodge</th>
+              <th>Natural</th>
+              <th>Deflect</th>
+              <th>Misc</th>
+              <th>Temp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AC</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Armor" placeholder="" /></td>
+              <td><input name="Shield" placeholder="" /></td>
+              <td><input name="Dex" placeholder="" /></td>
+              <td><input name="Size" placeholder="" /></td>
+              <td><input name="Dodge" placeholder="" /></td>
+              <td><input name="Natural" placeholder="" /></td>
+              <td><input name="Deflect" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>
+              <td><input name="Temp" placeholder="" /></td>
+            </tr>
+            <tr>
+              <td>Touch</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Armor" placeholder="" /></td>
+              <td><input name="Shield" placeholder="" /></td>
+              <td><input name="Dex" placeholder="" /></td>
+              <td><input name="Size" placeholder="" /></td>
+              <td><input name="Dodge" placeholder="" /></td>
+              <td><input name="Natural" placeholder="" /></td>
+              <td><input name="Deflect" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>
+              <td><input name="Temp" placeholder="" /></td>
+            </tr>
+            <tr>
+              <td>Flat-Foot</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Armor" placeholder="" /></td>
+              <td><input name="Shield" placeholder="" /></td>
+              <td><input name="Dex" placeholder="" /></td>
+              <td><input name="Size" placeholder="" /></td>
+              <td><input name="Dodge" placeholder="" /></td>
+              <td><input name="Natural" placeholder="" /></td>
+              <td><input name="Deflect" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>
+              <td><input name="Temp" placeholder="" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+</main>
+<!--  End of the Armor Class Section    -->
+        
+        
+        
     
+<!-- Start of the Saving Throw section --> 
+        
+
+<main>
+  <section>
+    <div class="label">
+    </div>
+    <section class="saving-throws">
+      <div class="saving-throws-boxes">
+        <table>
+          <thead>
+            <tr>
+              <th>Saving Throws</th>
+              <th>Total</th>
+              <th>Base</th>
+              <th>Mod</th>
+              <th>Enhance</th>
+              <th>Misc</th>
+              <th>Temp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fort</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Base" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>
+              <td><input name="Enhance" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>
+              <td><input name="Temp" placeholder="" /></td>
+            </tr>
+            <tr>
+              <td>Reflex</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Base" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>
+              <td><input name="Enhance" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>
+              <td><input name="Temp" placeholder="" /></td>
+            </tr>
+            <tr>
+              <td>Will</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Base" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>
+              <td><input name="Enhance" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>
+              <td><input name="Temp" placeholder="" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+</main>        
+ 
+        
+<!--  End of the Saving throw secton       -->
+
+
+<!--    Start of attack info section      -->
+        
+
+<!--    End of attack info section      -->
+
+        
+<!--  Start of Skills Section      -->
+<main>
+  <section>
+    <div class="label">
+    </div>
+    <section class="skills-section">
+      <div class="skills">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="3">Trained</th>
+            <th colspan="2">Skill</th>
+            <th>Total</th>
+            <th>Ranks</th>
+            <th>Ability</th>
+            <th>Buff</th>            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox" name="Acrobatics-prof" /></td>            
+            <td colspan="3">Acrobatics</td>
+            <td></td>
+            <td><input type="number" name="Acrobatics-extra-box" /></td>
+            <td><input type="number" name="Acrobatics-extra-box" /></td>
+            <td><input type="number" name="Acrobatics-extra-box" /></td>
+            <td><input type="number" name="Acrobatics-extra-box" /></td>       
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="Animal Handling-prof" /></td>
+            <td colspan="3">Animal Handling</td>
+            <td></td>
+            <td><input type="number" name="Animal Handling-extra-box" /></td>
+            <td><input type="number" name="Animal Handling-extra-box" /></td>
+            <td><input type="number" name="Animal Handling-extra-box" /></td>
+            <td><input type="number" name="Animal Handling-extra-box" /></td>  
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="Appraise-prof" /></td>           
+            <td colspan="3">Appraise</td>
+            <td></td>
+            <td><input type="number" name="Appraise-extra-box" /></td>
+            <td><input type="number" name="Appraise-extra-box" /></td>
+            <td><input type="number" name="Appraise-extra-box" /></td>
+            <td><input type="number" name="Appraise-extra-box" /></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="Arcana-prof" /></td>            
+            <td colspan="3">Arcana</td>
+            <td></td>
+            <td><input type="number" name="Arcana-extra-box" /></td>
+            <td><input type="number" name="Arcana-extra-box" /></td>
+            <td><input type="number" name="Arcana-extra-box" /></td>
+            <td><input type="number" name="Arcana-extra-box" /></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="Athletics-prof" /></td>            
+            <td colspan="3">Athletics</td>
+            <td></td>
+            <td><input type="number" name="Athletic-extra-box" /></td>
+            <td><input type="number" name="Athletic-extra-box" /></td>
+            <td><input type="number" name="Athletic-extra-box" /></td>
+            <td><input type="number" name="Athletic-extra-box" /></td>
+          </tr>
+          
+<!--    Extra Code Here        -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+</main>   
+
+
+<!--  End of Skills Section      -->        
+             
+             
+             
+<!--  Start of Feats Section             -->
+             
+             
+<!--  End of Feats Section              -->
+             
+             
+             
+<!-- Start of Items + Equipment Section              -->
+             
+             
+             
+<!-- End of Items + Equipment Section              -->
