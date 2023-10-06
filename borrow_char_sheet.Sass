@@ -9,6 +9,7 @@ $bubble-size: 10px
 $small-box-width: 30px
 $large-box-width: 70px
 $grey: #d0d0d0
+$red: #901a1a
 
 .red
   background: red
@@ -205,49 +206,47 @@ form.charsheet
             $attr-height: 100px
             $attr-gutter: 31px
             width: 100%
+            display: flex          
             flex-direction: column
             justify-content: space-between
 
             
+            
             div.HP
             // This controls the size of the Whole HP Stats box
-            width: 15*$attr-width
-            height: 250px          
+            width: 6*$attr-width
+            height: 300px          
             background-color: $faded-dark
             border-radius: $radius
             padding-bottom: $gutter
-
-            label
-                // Controls the size of the font outside of any specific section
-                font-size: 20px
-                font-weight: bold
-                border-radius: $radius
-              
+            
+      
+      
               
             // Controls the HP BOX Sizes 
-            input
-                width:  200px
-                height: 100px
-                border: 1px solid black    
-                background-color: $grey 
-                display: flex              
-                flex-direction: column
-              
-            td
+            input.Total-hp-input
                 width:  200px
                 height: 50px
-                border: 1px solid black    
+                border: 10px solid black  
                 background-color: $grey 
-                display: flex
-                flex-direction: column      
-            th
-                // changes the size of Hit Points (anything in th)              
-                width:  250px                 
-                font-size: 28px
-                font-weight: bold          
-                text-align: center              
-                              
-        
+                display: flex              
+                flex-direction: column    
+                        
+            input.Other-hp-input
+                // We can change class level data separately if we put an input.class_name 
+                width:  200px
+                height: 25px
+                border: 10px solid black    
+                background-color: $red 
+                display: flex              
+                flex-direction: column        
+              
+              
+
+              
+
+            
+            
                   
         section.armor-class
             // This controls the size of the Armor Class Boxes
@@ -326,14 +325,14 @@ form.charsheet
               
         section.skills-section
             // This controls the size of the total skill box
-            $attr-width: 200px
+            $attr-width: 100px
             $attr-height: 20px
             $attr-gutter: 31px
             $attr-width_box: 10px
             $attr-height_box: 10px          
-            width: 100%
+            width: 40%
             display: flex
-            flex-direction: reverse-column
+            flex-direction: column
             justify-content: space-between
 
             
@@ -360,23 +359,46 @@ form.charsheet
             th
                text-align: center
                font-size: 25px
-               background: $grey                                              
-                                                      
+               background: $grey          
+                             
               
-
-
-
-
-
-
-
-
-
-
-
-
-                  
-                  
-                  
-                    
+              
+        section.feats-section
+            // This controls the size of the Feats Background Box
+            $attr-width: 400px
+            $attr-height: 400px
+            $attr-gutter: 30px
+            $attr-width_box: 10px
+            $attr-height_box: 10px          
+            display: flex
+            float: right
+            margin-right: -100px
+            flex-direction: reverse-column
+      
+            div.label
+            // This controls the size of the Feats Background box
+            width: $attr-height_box
+            height: $attr-height_box            
+            background-color: $red
+            border-radius: $radius
+            padding-bottom: $gutter
+            flex-direction: reverse-column    
+           
             
+        
+            table
+            // This controls the size of the Feats Boxes + Writing              
+            width: $attr-width
+            height: $attr-height            
+            flex-direction: column  
+            font-size: 10px
+            text-align: center            
+            
+            
+            
+            numExtraBoxes
+              // this is affecting the color of the Feats Fonts
+            color: $grey
+            flex-direction: column    
+            font-size: 20px   
+            text-align: center                

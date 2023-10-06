@@ -52,422 +52,681 @@
     </section>
   </header>
   <main>
+<!--  Start of the Ability Score Section    -->    
     <section>
       <div class = "label">
-<!--    Need to make a class for attributes container      -->
+        </div>
+                <!--    Need to make a class for attributes container      -->
       <section class="attributes">
-<!--    attributes affects the square box around ability scoes      -->
+                <!--    attributes affects the square box around ability scoes      -->
         <div class="scores">
-<table>
-  <thead>
-    <tr>
-      <th>Ability Score</th>
-      <th>Total</th>
-      <th>Mod</th>
-      <th>Base</th>      
-      <th>Buff</th>
-      <th>Misc</th>
-      <th>Temp</th>
-    </tr>
-  </thead>
-  <tbody>
-<tr>
-  <td>STR</td>
-  <td><input name="Total" placeholder="" /></td>
-  <td><input name="Mod" placeholder="" /></td>    
-  <td><input name="Base" placeholder="" /></td>     
-  <td><input name="Enhance" placeholder="" /></td>   
-  <td><input name="Temp" placeholder="" /></td>     
-  <td><input name="Misc" placeholder="" /></td>   
-</tr>
-<tr>
-  <td>DEX</td>
-  <td><input name="Total" placeholder="" /></td>
-  <td><input name="Mod" placeholder="" /></td>    
-  <td><input name="Base" placeholder="" /></td>   
-  <td><input name="Enhance" placeholder="" /></td>   
-  <td><input name="Temp" placeholder="" /></td>
-  <td><input name="Misc" placeholder="" /></td>       
-</tr>
-<tr>
-  <td>CON</td>
-  <td><input name="Total" placeholder="" /></td>
-  <td><input name="Mod" placeholder="" /></td>    
-  <td><input name="Base" placeholder="" /></td>   
-  <td><input name="Enhance" placeholder="" /></td>   
-  <td><input name="Temp" placeholder="" /></td> 
-  <td><input name="Misc" placeholder="" /></td>      
-</tr>
-<tr>
-  <td>WIS</td>
-  <td><input name="Total" placeholder="" /></td>
-  <td><input name="Mod" placeholder="" /></td>    
-  <td><input name="Base" placeholder="" /></td>   
-  <td><input name="Enhance" placeholder="" /></td>   
-  <td><input name="Temp" placeholder="" /></td>
-  <td><input name="Misc" placeholder="" /></td>       
-</tr>
-<tr>
-  <td>INT</td>
-  <td><input name="Total" placeholder="" /></td>
-  <td><input name="Mod" placeholder="" /></td>    
-  <td><input name="Base" placeholder="" /></td>   
-  <td><input name="Enhance" placeholder="" /></td>   
-  <td><input name="Temp" placeholder="" /></td>
-  <td><input name="Misc" placeholder="" /></td>       
-</tr>
-<tr>
-  <td>CHA</td>
-  <td><input name="Total" placeholder="" /></td>
-  <td><input name="Mod" placeholder="" /></td>    
-  <td><input name="Base" placeholder="" /></td>   
-  <td><input name="Enhance" placeholder="" /></td>   
-  <td><input name="Temp" placeholder="" /></td>   
-  <td><input name="Misc" placeholder="" /></td>  
-</tr>
-  </tbody>
-</table>
-  
-      </div>
-<!--   If we want to end the Scores section, we just write <section> here (it would make ability scores into 1 page)       -->           
+            <table>
+              <thead>
+                <tr>
+                  <th>Ability Score</th>
+                  <th>Total</th>
+                  <th>Mod</th>
+                  <th>Base</th>      
+                  <th>Buff</th>
+                  <th>Misc</th>
+                  <th>Temp</th>
+                </tr>
+              </thead>
+              <tbody>
+            <tr>
+              <td>STR</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>    
+              <td><input name="Base" placeholder="" /></td>     
+              <td><input name="Enhance" placeholder="" /></td>   
+              <td><input name="Temp" placeholder="" /></td>     
+              <td><input name="Misc" placeholder="" /></td>   
+            </tr>
+            <tr>
+              <td>DEX</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>    
+              <td><input name="Base" placeholder="" /></td>   
+              <td><input name="Enhance" placeholder="" /></td>   
+              <td><input name="Temp" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>       
+            </tr>
+            <tr>
+              <td>CON</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>    
+              <td><input name="Base" placeholder="" /></td>   
+              <td><input name="Enhance" placeholder="" /></td>   
+              <td><input name="Temp" placeholder="" /></td> 
+              <td><input name="Misc" placeholder="" /></td>      
+            </tr>
+            <tr>
+              <td>WIS</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>    
+              <td><input name="Base" placeholder="" /></td>   
+              <td><input name="Enhance" placeholder="" /></td>   
+              <td><input name="Temp" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>       
+            </tr>
+            <tr>
+              <td>INT</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>    
+              <td><input name="Base" placeholder="" /></td>   
+              <td><input name="Enhance" placeholder="" /></td>   
+              <td><input name="Temp" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>       
+            </tr>
+            <tr>
+              <td>CHA</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>    
+              <td><input name="Base" placeholder="" /></td>   
+              <td><input name="Enhance" placeholder="" /></td>   
+              <td><input name="Temp" placeholder="" /></td>   
+              <td><input name="Misc" placeholder="" /></td>  
+            </tr>
+              </tbody>  
+            </table>  
+          </div>
+            <!--  Start of The HP Section --> 
     </section>
-    <section>
-      <section class="combat">
-        <div class="armorclass">
-          <div>
-            <label for="ac">Total Armor Class</label><input name="ac" placeholder="10" type="text" />
-          </div>
-          <div>
-          </div>
-        </div>
-        <div class="speed">
-          <div>
-            <label for="armor_ac">Armor AC</label><input name="armor_ac" placeholder="30" type="text" />            
-          </div>
-        </div>
-        <div class="speed">
-          <div>
-            <label for="shield_ac">Shield AC</label><input name="shield_ac" placeholder="30" type="text" />
-          </div>
-        </div>
-        <div class="speed">
-          <div>
-            <label for="dex_ac">Dex AC</label><input name="dex_ac" placeholder="30" type="text" />
-          </div>
-        </div>    
-        <div class="speed">
-          <div>
-            <label for="size_ac">Size AC</label><input name="size_ac" placeholder="30" type="text" />
-          </div>
-        </div>       
-        <div class="speed">
-          <div>
-            <label for="dodge_ac">Dodge AC</label><input name="dodge_ac" placeholder="30" type="text" />
-          </div>
-        </div>  
-        <div class="speed">
-          <div>
-            <label for="natural_ac">Natural AC</label><input name="natural_ac" placeholder="30" type="text" />
-          </div>
-        </div>  
-        <div class="speed">
-          <div>
-            <label for="deflect_ac">Deflect AC</label><input name="deflect_ac" placeholder="30" type="text" />
-          </div>
-        </div>          
-        <div class="hp">
-          <div class="regular">
-            <div class="max">
-              <label for="maxhp">Hit Point Maximum</label><input name="maxhp" placeholder="10" type="text" />
-            </div>
-            <div class="current">
-              <label for="currenthp">Current Hit Points</label><input name="currenthp" type="text" />
-            </div>
-          </div>
-          <div class="nonlethal">
-            <label for="nonlethalhp">Non Lethal Damage</label><input name="nonlethalhp" type="text" />
-            </div>
-                    <div class="nonlethal">
-            <label for="nonlethalhp">Non Lethal Damage</label><input name="nonlethalhp" type="text" />
-            </div>
-          </div>
-        <div class="hitdice">
-          <div>
-            <div class="total">
-              <label for="totalhd">Total</label><input name="totalhd" placeholder="0" type="text" />           
-            </div>
-            <div class="remaining">
-              <label for="remaininghd">Hit Dice</label><input name="remaininghd" type="text" />
-            </div>
-          </div>
-        </div>
       </section>
-      <section class="attacksandspellcasting">
-        <div>
-          <label>Attacks & Spellcasting</label>
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  Name
-                </th>
-                <th>
-                  Atk Bonus
-                </th>
-                <th>
-                  Damage/Type
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <input name="atkname1" type="text" />
-                </td>
-                <td>
-                  <input name="atkbonus1" type="text" />
-                </td>
-                <td>
-                  <input name="atkdamage1" type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input name="atkname2" type="text" />
-                </td>
-                <td>
-                  <input name="atkbonus2" type="text" />
-                </td>
-                <td>
-                  <input name="atkdamage2" type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input name="atkname3" type="text" />
-                </td>
-                <td>
-                  <input name="atkbonus3" type="text" />
-                </td>
-                <td>
-                  <input name="atkdamage3" type="text" />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <textarea></textarea>
-        </div>
-      </section>
-      <section class="equipment">
-        <div>
-          <label>Equipment</label>
-          <div class="money">
-            <ul>
-              <li>
-                <label for="cp">cp</label><input name="cp" />
-              </li>
-              <li>
-                <label for="sp">sp</label><input name="sp" />
-              </li>
-              <li>
-                <label for="ep">ep</label><input name="ep" />
-              </li>
-              <li>
-                <label for="gp">gp</label><input name="gp" />
-              </li>
-              <li>
-                <label for="pp">pp</label><input name="pp" />
-              </li>
-            </ul>
-          </div>
-          <textarea placeholder="Equipment list here"></textarea>
-        </div>
-      </section>
-    </section>
-    <section>
-      <section class="flavor">
-        <div class="personality">
-          <label for="personality">Personality</label><textarea name="personality"></textarea>
-        </div>
-        <div class="ideals">
-          <label for="ideals">Ideals</label><textarea name="ideals"></textarea>
-        </div>
-        <div class="bonds">
-          <label for="bonds">Bonds</label><textarea name="bonds"></textarea>
-        </div>
-        <div class="flaws">
-          <label for="flaws">Flaws</label><textarea name="flaws"></textarea>
-        </div>
-      </section>
-      <section class="features">
-        <div>
-          <label for="features">Features & Traits</label><textarea name="features"></textarea>
-        </div>
         <section>
-          <section>
-          <section class = Skills >
-        <div class="attr-applications">
-          <div class="inspiration box">
-            <div class="label-container">
-              <label 
-                     for="Hero_Points">Hero Points</label>
-            </div>
-          <div class="saves list-section box">
-                     Saving Throws
-            <ul>
-              <li>
-                <label for="Fort-save">Fort</label><input name="Fort-save" placeholder="+0" type="text" /><input name="Fort-save-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Reflex-save">Reflex</label><input name="Reflex-save" placeholder="+0" type="text" /><input name="Reflex-save-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Will-save">Will</label><input name="Will-save" placeholder="+0" type="text" /><input name="Will-save-prof" type="checkbox" />
-              </li>
-            </div>
+      <div class = "label">
+                <!--    Need to make a class for attributes container      -->
+      <section class="Total-HP">
+                <!--    attributes affects the square box around ability scoes      -->
+        <div class="HP">  
+      <table>         
+              <thead>     
+              </tbody>  
+            </table>  
+            <th>Total Hit Points</th>
+            <td><input class="Total-hp-input" placeholder="" /></td>
+            <th>Temp Hit Points</th>
+            <td><input class="Other-hp-input" placeholder="" /></td>
+            <th>Non Lethal Damage</th>
+            <td><input class="Other-hp-input" placeholder="" /></td>
+            <th>Minimum HP</th>
+            <td><input class="Other-hp-input" placeholder="" /></td>
+        </div>          
+        </section>
+        <section>
+          <div>
+            Bababooey
           </div>
-          <div class="skills list-section box">
-            <ul>
-              <li>
-                <label for="Acrobatics">Acrobatics <span class="skill">(Dex, Str)</span></label><input name="Acrobatics" placeholder="+0" type="text" /><input name="Acrobatics-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Animal Handling">Animal Handling <span class="skill">(Int,Wis)</span></label><input name="Animal Handling" placeholder="+0" type="text" /><input name="Animal Handling-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Appraise">Animal Handling <span class="skill">(Int, Wis)</span></label><input name="Appraise" placeholder="+0" type="text" /><input name="Appraise-prof" type="checkbox" />
-              </li>
-              <li>                
-                <label for="Arcana">Arcana <span class="skill">(Int)</span></label><input name="Arcana" placeholder="+0" type="text" /><input name="Arcana-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Athletics">Athletics <span class="skill">(Dex, Str)</span></label><input name="Athletics" placeholder="+0" type="text" /><input name="Athletics-prof" type="checkbox" />
-              </li>
-              <li>
-              <li>
-                <label for="Craft">Craft <span class="skill">(Int, Wis)</span></label><input name="Craft" placeholder="+0" type="text" /><input name="Craft-prof" type="checkbox" />
-              </li>
-              <li>             
-                <label for="Deception">Deception <span class="skill">(Cha)</span></label><input name="Deception" placeholder="+0" type="text" /><input name="Deception-prof" type="checkbox" />
-              </li>              
-              <li>          
-                <label for="Diplomacy">Diplomacy <span class="skill">(Cha, Wis)</span></label><input name="Diplomacy" placeholder="+0" type="text" /><input name="Diplomacy-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Disable Device">Disable Device <span class="skill">(Dex, Int)</span></label><input name="Disable Device" placeholder="+0" type="text" /><input name="Disable Device-prof" type="checkbox" />
-              </li>
-              <li>                                
-                <label for="Disguise">Disguise <span class="skill">(Cha, Dex)</span></label><input name="Disguise" placeholder="+0" type="text" /><input name="Disguise-prof" type="checkbox" />
-              </li>
-              <li>     
-                <label for="Escape Artist">Escape Artist <span class="skill">(Dex, Str)</span></label><input name="Escape Artist" placeholder="+0" type="text" /><input name="Escape Artist-prof" type="checkbox" />
-              </li>
-              <li> 
-                <label for="Fly">Fly <span class="skill">(Dex)</span></label><input name="Fly" placeholder="+0" type="text" /><input name="Fly-prof" type="checkbox" />
-              </li>
-              <li>        
-                <label for="Gather Information">Gather Information <span class="skill">(Cha, Int)</span></label><input name="Gather Information" placeholder="+0" type="text" /><input name="Gather Information-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Handle Animal">Handle Animal <span class="skill">(Cha, Wis)</span></label><input name="Handle Animal" placeholder="+0" type="text" /><input name="Handle Animal-prof" type="checkbox" />
-              </li>
-              <li>                                                                  
-                <label for="Heal">Heal <span class="skill">(Int, Wis)</span></label><input name="Heal" placeholder="+0" type="text" /><input name="Heal-prof" type="checkbox" />
-              </li>
-              <li>                                  
-                <label for="Insight">Insight <span class="skill">(Wis)</span></label><input name="Insight" placeholder="+0" type="text" /><input name="Insight-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Intimidation">Intimidation <span class="skill">(Cha)</span></label><input name="Intimidation" placeholder="+0" type="text" /><input name="Intimidation-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Investigation">Investigation <span class="skill">(Int)</span></label><input name="Investigation" placeholder="+0" type="text" /><input name="Investigation-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Knowledge (Martial)">Knowledge (Martial) <span class="skill">(Cha, Con, Dex, Int, Str, Wis)</span></label><input name="Knowledge (Martial)" placeholder="+0" type="text" /><input name="Knowledge Martial-prof" type="checkbox" />
-              </li>
-              <li>             
-                <label for="Knowledge (Arcana)">Knowledge (Arcana) <span class="skill">(Int)</span></label><input name="Knowledge (Arcana)" placeholder="+0" type="text" /><input name="Knowledge (Arcana)-prof" type="checkbox" />
-              </li>
-              <li> 
-                <label for="Knowledge (Dungeoneering)">Knowledge (Dungeoneering) <span class="skill">(Int, Wis)</span></label><input name="Knowledge (Dungeoneering)" placeholder="+0" type="text" /><input name="Knowledge (Dungeoneering)-prof" type="checkbox" />
-              </li>
-              <li>                                           
-                <label for="Knowledge (Engineering)">Knowledge (Engineering) <span class="skill">(Int, Wis)</span></label><input name="Knowledge (Engineering)" placeholder="+0" type="text" /><input name="Knowledge (Engineering)-prof" type="checkbox" />
-              </li>
-              <li>                   
-                <label for="Knowledge (History)">Knowledge (History) <span class="skill">(Cha, Int)</span></label><input name="Knowledge (History)" placeholder="+0" type="text" /><input name="Knowledge (History)-prof" type="checkbox" />
-              </li>
-              <li>                   
-                <label for="Knowledge (Nature)">Knowledge (Nature) <span class="skill">(Int, Wis)</span></label><input name="Knowledge (Nature)" placeholder="+0" type="text" /><input name="Knowledge (Nature)-prof" type="checkbox" />
-              </li>
-              <li>                   
-                <label for="Knowledge (Nobility)">Knowledge (Nobility) <span class="skill">(Cha, Int)</span></label><input name="Knowledge (Nobility)" placeholder="+0" type="text" /><input name="Knowledge (Nobility)-prof" type="checkbox" />
-              </li>
-              <li> 
-                <label for="Knowledge (Planes)">Knowledge (Planes) <span class="skill">(Int)</span></label><input name="Knowledge (Planes)" placeholder="+0" type="text" /><input name="Knowledge (Planes)-prof" type="checkbox" />
-              </li>
-              <li>       
-                <label for="Knowledge (Religion)">Knowledge (Religion) <span class="skill">(Cha, Int, Wis)</span></label><input name="Knowledge (Religion)" placeholder="+0" type="text" /><input name="Knowledge (Religion)-prof" type="checkbox" />
-              </li>
-              <li>              
-                <label for="Linguistics">Linguistics <span class="skill">(Cha, Int)</span></label><input name="Linguistics" placeholder="+0" type="text" /><input name="Linguistics-prof" type="checkbox" />
-              </li>
-              <li>                                                      
-                <label for="Medicine">Medicine <span class="skill">(Wis)</span></label><input name="Medicine" placeholder="+0" type="text" /><input name="Medicine-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Nature">Nature <span class="skill">(Int)</span></label><input name="Nature" placeholder="+0" type="text" /><input name="Nature-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Perception">Perception <span class="skill">(Wis, Int)</span></label><input name="Perception" placeholder="+0" type="text" /><input name="Perception-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Perform">Perform <span class="skill">(Cha, Dex, Str)</span></label><input name="Perform" placeholder="+0" type="text" /><input name="Perform-prof" type="checkbox" />
-              </li>
-              <li>                
-                <label for="Profession">Profession <span class="skill">(Cha, Int, Wis)</span></label><input name="Profession" placeholder="+0" type="text" /><input name="Profession-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Ride">Ride <span class="skill">(Dex, Str)</span></label><input name="Ride" placeholder="+0" type="text" /><input name="Ride-prof" type="checkbox" />
-              </li>
-              <li>       
-                <label for="Sense Motive">Sense Motive <span class="skill">(Cha, Wis)</span></label><input name="Sense Motive" placeholder="+0" type="text" /><input name="Sense Motive-prof" type="checkbox" />
-              </li>
-              <li>                                              
-                <label for="Sleight of Hand">Sleight of Hand <span class="skill">(Dex)</span></label><input name="Sleight of Hand" placeholder="+0" type="text" /><input name="Sleight of Hand-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Spellcraft">Spellcraft <span class="skill">(Int)</span></label><input name="Spellcraft" placeholder="+0" type="text" /><input name="Spellcraft-prof" type="checkbox" />
-              </li>
-              <li>                    
-                <label for="Stealth">Stealth <span class="skill">(Dex)</span></label><input name="Stealth" placeholder="+0" type="text" /><input name="Stealth-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Survival">Survival <span class="skill">(Wis)</span></label><input name="Survival" placeholder="+0" type="text" /><input name="Survival-prof" type="checkbox" />
-              </li>
-              <li>
-                <label for="Swim">Swim <span class="skill">(Dex,Str)</span></label><input name="Swim" placeholder="+0" type="text" /><input name="Swim-prof" type="checkbox" />
-              </li>   
-              <li>
-                <label for="Use Magic Device">Use Magic Device <span class="skill">(Cha, Int)</span></label><input name="Use Magic Device" placeholder="+0" type="text" /><input name="Use Magic Device-prof" type="checkbox" />
-              </li>              
-            </ul>
-            <div class="label">
-              Skills
-            </div>
-          </div>
-        </div>
-      </section>
-      <div class="passive-perception box">
-        <div class="label-container">
-          <label for="passiveperception">Passive Wisdom (Perception)</label>
-        </div>
-        <input name="passiveperception" placeholder="10" />
+        </section>
+</main>
+
+       
+            <!--  End of The HP Section --> 
+
+        <!--  Start of the Armor Class Section    -->
+
+<main>
+  <section>
+    <div class="label">
+    </div>
+    <section class="armor-class">
+      <div class="AC">
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Total</th>
+              <th>Armor</th>
+              <th>Shield</th>
+              <th>Dex</th>
+              <th>Size</th>
+              <th>Dodge</th>
+              <th>Natural</th>
+              <th>Deflect</th>
+              <th>Misc</th>
+              <th>Temp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AC</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Armor" placeholder="" /></td>
+              <td><input name="Shield" placeholder="" /></td>
+              <td><input name="Dex" placeholder="" /></td>
+              <td><input name="Size" placeholder="" /></td>
+              <td><input name="Dodge" placeholder="" /></td>
+              <td><input name="Natural" placeholder="" /></td>
+              <td><input name="Deflect" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>
+              <td><input name="Temp" placeholder="" /></td>
+            </tr>
+            <tr>
+              <td>Touch</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Armor" placeholder="" /></td>
+              <td><input name="Shield" placeholder="" /></td>
+              <td><input name="Dex" placeholder="" /></td>
+              <td><input name="Size" placeholder="" /></td>
+              <td><input name="Dodge" placeholder="" /></td>
+              <td><input name="Natural" placeholder="" /></td>
+              <td><input name="Deflect" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>
+              <td><input name="Temp" placeholder="" /></td>
+            </tr>
+            <tr>
+              <td>Flat-Foot</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Armor" placeholder="" /></td>
+              <td><input name="Shield" placeholder="" /></td>
+              <td><input name="Dex" placeholder="" /></td>
+              <td><input name="Size" placeholder="" /></td>
+              <td><input name="Dodge" placeholder="" /></td>
+              <td><input name="Natural" placeholder="" /></td>
+              <td><input name="Deflect" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>
+              <td><input name="Temp" placeholder="" /></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="otherprofs box textblock">
-        <label for="otherprofs">Other Proficiencies and Languages</label><textarea name="otherprofs"></textarea>
+    </section>
+  </section>
+</main>
+<!--  End of the Armor Class Section    -->
+        
+        
+        
+    
+<!-- Start of the Saving Throw section --> 
+        
+
+<main>
+  <section>
+    <div class="label">
+    </div>
+    <section class="saving-throws">
+      <div class="saving-throws-boxes">
+        <table>
+          <thead>
+            <tr>
+              <th>Saving Throws</th>
+              <th>Total</th>
+              <th>Base</th>
+              <th>Mod</th>
+              <th>Enhance</th>
+              <th>Misc</th>
+              <th>Temp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fort</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Base" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>
+              <td><input name="Enhance" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>
+              <td><input name="Temp" placeholder="" /></td>
+            </tr>
+            <tr>
+              <td>Reflex</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Base" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>
+              <td><input name="Enhance" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>
+              <td><input name="Temp" placeholder="" /></td>
+            </tr>
+            <tr>
+              <td>Will</td>
+              <td><input name="Total" placeholder="" /></td>
+              <td><input name="Base" placeholder="" /></td>
+              <td><input name="Mod" placeholder="" /></td>
+              <td><input name="Enhance" placeholder="" /></td>
+              <td><input name="Misc" placeholder="" /></td>
+              <td><input name="Temp" placeholder="" /></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      
-  </main>
-</form>
+    </section>
+  </section>
+</main>        
+ 
+        
+<!--  End of the Saving throw secton       -->
+
+
+<!--    Start of attack info section      -->
+        
+
+<!--    End of attack info section      -->
+
+        
+<!--  Start of Skills Section      -->
+<main>
+  <section>
+    <div class="label">
+    </div>
+    <section class="skills-section">
+      <div class="skills">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="3">Trained</th>
+            <th colspan="2">Skill</th>
+            <th>Total</th>
+            <th>Ranks</th>
+            <th>Ability</th>
+            <th>Buff</th>            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox" name="Acrobatics-prof" /></td>            
+            <td colspan="3">Acrobatics</td>
+            <td></td>
+            <td><input type="number" name="Acrobatics-extra-box" /></td>
+            <td><input type="number" name="Acrobatics-extra-box" /></td>
+            <td><input type="number" name="Acrobatics-extra-box" /></td>
+            <td><input type="number" name="Acrobatics-extra-box" /></td>       
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="Animal Handling-prof" /></td>
+            <td colspan="3">Animal Handling</td>
+            <td></td>
+            <td><input type="number" name="Animal Handling-extra-box" /></td>
+            <td><input type="number" name="Animal Handling-extra-box" /></td>
+            <td><input type="number" name="Animal Handling-extra-box" /></td>
+            <td><input type="number" name="Animal Handling-extra-box" /></td>  
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="Appraise-prof" /></td>           
+            <td colspan="3">Appraise</td>
+            <td></td>
+            <td><input type="number" name="Appraise-extra-box" /></td>
+            <td><input type="number" name="Appraise-extra-box" /></td>
+            <td><input type="number" name="Appraise-extra-box" /></td>
+            <td><input type="number" name="Appraise-extra-box" /></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="Arcana-prof" /></td>            
+            <td colspan="3">Arcana</td>
+            <td></td>
+            <td><input type="number" name="Arcana-extra-box" /></td>
+            <td><input type="number" name="Arcana-extra-box" /></td>
+            <td><input type="number" name="Arcana-extra-box" /></td>
+            <td><input type="number" name="Arcana-extra-box" /></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="Athletics-prof" /></td>            
+            <td colspan="3">Athletics</td>
+            <td></td>
+            <td><input type="number" name="Athletic-extra-box" /></td>
+            <td><input type="number" name="Athletic-extra-box" /></td>
+            <td><input type="number" name="Athletic-extra-box" /></td>
+            <td><input type="number" name="Athletic-extra-box" /></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="Craft-prof" /></td>            
+            <td colspan="3">Craft</td>
+            <td></td>
+            <td><input type="number" name="Craft-extra-box" /></td>
+            <td><input type="number" name="Craft-extra-box" /></td>
+            <td><input type="number" name="Craft-extra-box" /></td>
+            <td><input type="number" name="Craft-extra-box" /></td>
+          </tr>      
+          <tr>
+            <td><input type="checkbox" name="Deception-prof" /></td>            
+            <td colspan="3">Deception</td>
+            <td></td>
+            <td><input type="number" name="Deception-extra-box" /></td>
+            <td><input type="number" name="Deception-extra-box" /></td>
+            <td><input type="number" name="Deception-extra-box" /></td>
+            <td><input type="number" name="Deception-extra-box" /></td>
+          </tr>      
+          <tr>
+            <td><input type="checkbox" name="Diplomacy-prof" /></td>            
+            <td colspan="3">Diplomacy</td>
+            <td></td>
+            <td><input type="number" name="Diplomacy-extra-box" /></td>
+            <td><input type="number" name="Diplomacy-extra-box" /></td>
+            <td><input type="number" name="Diplomacy-extra-box" /></td>
+            <td><input type="number" name="Diplomacy-extra-box" /></td>
+          </tr>      
+          <tr>
+            <td><input type="checkbox" name="Disable Device-prof" /></td>            
+            <td colspan="3">Disable Device</td>
+            <td></td>
+            <td><input type="number" name="Disable Device-extra-box" /></td>
+            <td><input type="number" name="Disable Device-extra-box" /></td>
+            <td><input type="number" name="Disable Device-extra-box" /></td>
+            <td><input type="number" name="Disable Device-extra-box" /></td>
+          </tr>      
+          <tr>
+            <td><input type="checkbox" name="Disguise-prof" /></td>            
+            <td colspan="3">Disguise</td>
+            <td></td>
+            <td><input type="number" name="Disguise-extra-box" /></td>
+            <td><input type="number" name="Disguise-extra-box" /></td>
+            <td><input type="number" name="Disguise-extra-box" /></td>
+            <td><input type="number" name="Disguise-extra-box" /></td>
+          </tr>      
+          <tr>
+            <td><input type="checkbox" name="Escape Artist-prof" /></td>            
+            <td colspan="3">Escape Artist</td>
+            <td></td>
+            <td><input type="number" name="Escape Artist-extra-box" /></td>
+            <td><input type="number" name="Escape Artist-extra-box" /></td>
+            <td><input type="number" name="Escape Artist-extra-box" /></td>
+            <td><input type="number" name="Escape Artist-extra-box" /></td>
+          </tr>      
+          <tr>
+            <td><input type="checkbox" name="Fly-prof" /></td>            
+            <td colspan="3">Fly</td>
+            <td></td>
+            <td><input type="number" name="Fly-extra-box" /></td>
+            <td><input type="number" name="Fly-extra-box" /></td>
+            <td><input type="number" name="Fly-extra-box" /></td>
+            <td><input type="number" name="Fly-extra-box" /></td>
+          </tr>       
+          <tr>
+            <td><input type="checkbox" name="Gather Information-prof" /></td>            
+            <td colspan="3">Gather Information</td>
+            <td></td>
+            <td><input type="number" name="Gather Information-extra-box" /></td>
+            <td><input type="number" name="Gather Information-extra-box" /></td>
+            <td><input type="number" name="Gather Information-extra-box" /></td>
+            <td><input type="number" name="Gather Information-extra-box" /></td>
+          </tr>   
+          <tr>
+            <td><input type="checkbox" name="Hangle Animal-prof" /></td>            
+            <td colspan="3">Hangle Animal</td>
+            <td></td>
+            <td><input type="number" name="Hangle Animal-extra-box" /></td>
+            <td><input type="number" name="Hangle Animal-extra-box" /></td>
+            <td><input type="number" name="Hangle Animal-extra-box" /></td>
+            <td><input type="number" name="Hangle Animal-extra-box" /></td>
+          </tr>   
+          <tr>
+            <td><input type="checkbox" name="Heal-prof" /></td>            
+            <td colspan="3">Heal</td>
+            <td></td>
+            <td><input type="number" name="Heal-extra-box" /></td>
+            <td><input type="number" name="Heal-extra-box" /></td>
+            <td><input type="number" name="Heal-extra-box" /></td>
+            <td><input type="number" name="Heal-extra-box" /></td>
+          </tr>   
+          <tr>
+            <td><input type="checkbox" name="Intimidation-prof" /></td>            
+            <td colspan="3">Intimidation</td>
+            <td></td>
+            <td><input type="number" name="Intimidation-extra-box" /></td>
+            <td><input type="number" name="Intimidation-extra-box" /></td>
+            <td><input type="number" name="Intimidation-extra-box" /></td>
+            <td><input type="number" name="Intimidation-extra-box" /></td>
+          </tr>   
+          <tr>
+            <td><input type="checkbox" name="Investigation-prof" /></td>            
+            <td colspan="3">Investigation</td>
+            <td></td>
+            <td><input type="number" name="Investigation-extra-box" /></td>
+            <td><input type="number" name="Investigation-extra-box" /></td>
+            <td><input type="number" name="Investigation-extra-box" /></td>
+            <td><input type="number" name="Investigation-extra-box" /></td>
+          </tr>   
+          <tr>
+            <td><input type="checkbox" name="Knowledge (Martial)-prof" /></td>            
+            <td colspan="3">Knowledge (Martial)</td>
+            <td></td>
+            <td><input type="number" name="Knowledge (Martial)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Martial)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Martial)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Martial)-extra-box" /></td>
+          </tr>   
+          <tr>
+            <td><input type="checkbox" name="Knowledge (Arcana)-prof" /></td>            
+            <td colspan="3">Knowledge (Arcana)</td>
+            <td></td>
+            <td><input type="number" name="Knowledge (Arcana)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Arcana)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Arcana)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Arcana)-extra-box" /></td>
+          </tr>   
+          <tr>
+            <td><input type="checkbox" name="Knowldege (Dungeorerring)-prof" /></td>            
+            <td colspan="3">Knowldege (Dungeorerring)</td>
+            <td></td>
+            <td><input type="number" name="Knowldege (Dungeorerring)-extra-box" /></td>
+            <td><input type="number" name="Knowldege (Dungeorerring)-extra-box" /></td>
+            <td><input type="number" name="Knowldege (Dungeorerring)-extra-box" /></td>
+            <td><input type="number" name="Knowldege (Dungeorerring)-extra-box" /></td>
+          </tr>   
+          <tr>
+            <td><input type="checkbox" name="Knowledge (Engineering)-prof" /></td>            
+            <td colspan="3">Knowledge (Engineering)</td>
+            <td></td>
+            <td><input type="number" name="Knowledge (Engineering)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Engineering)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Engineering)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Engineering)-extra-box" /></td>
+          </tr>   
+          <tr>
+            <td><input type="checkbox" name="Knowledge (History)-prof" /></td>            
+            <td colspan="3">Knowledge (History)</td>
+            <td></td>
+            <td><input type="number" name="Knowledge (History)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (History)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (History)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (History)-extra-box" /></td>
+          </tr>   
+          <tr>
+            <td><input type="checkbox" name="Knowledge (Nature)-prof" /></td>            
+            <td colspan="3">Knowledge (Nature)</td>
+            <td></td>
+            <td><input type="number" name="Knowledge (Nature)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Nature)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Nature)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Nature)-extra-box" /></td>
+          </tr>           
+          <tr>
+            <td><input type="checkbox" name="Knowledge (Nobility)-prof" /></td>            
+            <td colspan="3">Knowledge (Nobility)</td>
+            <td></td>
+            <td><input type="number" name="Knowledge (Nobility)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Nobility)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Nobility)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Nobility)-extra-box" /></td>
+          </tr>     
+          <tr>
+            <td><input type="checkbox" name="Knowledge (Planes)-prof" /></td>            
+            <td colspan="3">Knowledge (Planes)</td>
+            <td></td>
+            <td><input type="number" name="Knowledge (Planes)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Planes)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Planes)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Planes)-extra-box" /></td>
+          </tr>     
+          <tr>
+            <td><input type="checkbox" name="Knowledge (Religion)-prof" /></td>            
+            <td colspan="3">Knowledge (Religion)</td>
+            <td></td>
+            <td><input type="number" name="Knowledge (Religion)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Religion)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Religion)-extra-box" /></td>
+            <td><input type="number" name="Knowledge (Religion)-extra-box" /></td>
+          </tr>     
+          <tr>
+            <td><input type="checkbox" name="Linguistics-prof" /></td>            
+            <td colspan="3">Linguistics</td>
+            <td></td>
+            <td><input type="number" name="Linguistics-extra-box" /></td>
+            <td><input type="number" name="Linguistics-extra-box" /></td>
+            <td><input type="number" name="Linguistics-extra-box" /></td>
+            <td><input type="number" name="Linguistics-extra-box" /></td>
+          </tr>     
+          <tr>
+            <td><input type="checkbox" name="Medicine-prof" /></td>            
+            <td colspan="3">Medicine</td>
+            <td></td>
+            <td><input type="number" name="Medicine-extra-box" /></td>
+            <td><input type="number" name="Medicine-extra-box" /></td>
+            <td><input type="number" name="Medicine-extra-box" /></td>
+            <td><input type="number" name="Medicine-extra-box" /></td>
+          </tr>     
+          <tr>
+            <td><input type="checkbox" name="Nature-prof" /></td>            
+            <td colspan="3">Nature</td>
+            <td></td>
+            <td><input type="number" name="Nature-extra-box" /></td>
+            <td><input type="number" name="Nature-extra-box" /></td>
+            <td><input type="number" name="Nature-extra-box" /></td>
+            <td><input type="number" name="Nature-extra-box" /></td>
+          </tr>     
+          <tr>
+            <td><input type="checkbox" name="Perception-prof" /></td>            
+            <td colspan="3">Perception</td>
+            <td></td>
+            <td><input type="number" name="Perception-extra-box" /></td>
+            <td><input type="number" name="Perception-extra-box" /></td>
+            <td><input type="number" name="Perception-extra-box" /></td>
+            <td><input type="number" name="Perception-extra-box" /></td>
+          </tr>        
+          <tr>
+            <td><input type="checkbox" name="Perform-prof" /></td>            
+            <td colspan="3">Perform</td>
+            <td></td>
+            <td><input type="number" name="Perform-extra-box" /></td>
+            <td><input type="number" name="Perform-extra-box" /></td>
+            <td><input type="number" name="Perform-extra-box" /></td>
+            <td><input type="number" name="Perform-extra-box" /></td>
+          </tr>      
+          <tr>
+            <td><input type="checkbox" name="Profession-prof" /></td>            
+            <td colspan="3">Profession</td>
+            <td></td>
+            <td><input type="number" name="Profession-extra-box" /></td>
+            <td><input type="number" name="Profession-extra-box" /></td>
+            <td><input type="number" name="Profession-extra-box" /></td>
+            <td><input type="number" name="Profession-extra-box" /></td>
+          </tr>      
+          <tr>
+            <td><input type="checkbox" name="Ride-prof" /></td>            
+            <td colspan="3">Ride</td>
+            <td></td>
+            <td><input type="number" name="Ride-extra-box" /></td>
+            <td><input type="number" name="Ride-extra-box" /></td>
+            <td><input type="number" name="Ride-extra-box" /></td>
+            <td><input type="number" name="Ride-extra-box" /></td>
+          </tr>      
+          <tr>
+            <td><input type="checkbox" name="Semse Motive-prof" /></td>            
+            <td colspan="3">Semse Motive</td>
+            <td></td>
+            <td><input type="number" name="Semse Motive-extra-box" /></td>
+            <td><input type="number" name="Semse Motive-extra-box" /></td>
+            <td><input type="number" name="Semse Motive-extra-box" /></td>
+            <td><input type="number" name="Semse Motive-extra-box" /></td>
+          </tr>      
+          <tr>
+            <td><input type="checkbox" name="Sleight of Hand-prof" /></td>            
+            <td colspan="3">Sleight of Hand</td>
+            <td></td>
+            <td><input type="number" name="Sleight of Hand-extra-box" /></td>
+            <td><input type="number" name="Sleight of Hand-extra-box" /></td>
+            <td><input type="number" name="Sleight of Hand-extra-box" /></td>
+            <td><input type="number" name="Sleight of Hand-extra-box" /></td>
+          </tr>      
+          <tr>
+            <td><input type="checkbox" name="Spellcraft-prof" /></td>            
+            <td colspan="3">Spellcraft</td>
+            <td></td>
+            <td><input type="number" name="Spellcraft-extra-box" /></td>
+            <td><input type="number" name="Spellcraft-extra-box" /></td>
+            <td><input type="number" name="Spellcraft-extra-box" /></td>
+            <td><input type="number" name="Spellcraft-extra-box" /></td>
+          </tr>      
+          <tr>
+            <td><input type="checkbox" name="Surviavl-prof" /></td>            
+            <td colspan="3">Surviavl</td>
+            <td></td>
+            <td><input type="number" name="Surviavl-extra-box" /></td>
+            <td><input type="number" name="Surviavl-extra-box" /></td>
+            <td><input type="number" name="Surviavl-extra-box" /></td>
+            <td><input type="number" name="Surviavl-extra-box" /></td>
+          </tr>      
+          <tr>
+            <td><input type="checkbox" name="Swim-prof" /></td>            
+            <td colspan="3">Swim</td>
+            <td></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+          </tr>      
+                                                                                                           
+          <!--  End of Skills Section      -->                                                                                    
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+  
+  
+<!--  Start of Feats Section             -->
+  
+
+
+
+  <main>
+<section>
+  <div class="feats-title">
+  </div>  
+  <section class = feats-section>
+    <div class="label">
+      <label for="dropdown-menu">Number of Boxes:</label>
+      <select id="dropdown-menu">
+      </select>
+    </div>
+    <div>
+      <label for="numExtraBoxes">Number of Extra Boxes:</label>   
+      <input type="number" id="numExtraBoxes" readonly>
+    </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Feats</th>
+            <th>Feat Descriptions:</th>       
+          </tr>
+        </thead>
+        </table>    
+    <section class="feats-section">
+      <div class="feats-table" id="feats-table">
+      </div>
+    </section>
+  </section>
+</section>
+
+
+
+  
+  
+<!--  End of Feats Section             -->  
+  
+  
+</main>   
+
+
+   
+             
+
+             
+             
+             
+<!-- Start of Items + Equipment Section              -->
+             
+
+
+             
+<!-- End of Items + Equipment Section              -->
