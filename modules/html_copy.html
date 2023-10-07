@@ -51,14 +51,12 @@
       </ul>
     </section>
   </header>
-  <main>
+
+
 <!--  Start of the Ability Score Section    -->    
+  <main>
     <section>
-      <div class = "label">
-        </div>
-                <!--    Need to make a class for attributes container      -->
       <section class="attributes">
-                <!--    attributes affects the square box around ability scoes      -->
         <div class="scores">
             <table>
               <thead>
@@ -129,17 +127,14 @@
             </tr>
               </tbody>  
             </table>  
-          </div>
-            <!--  Start of The HP Section --> 
     </section>
-      </section>
-        <section>
-      <div class = "label">
-                <!--    Need to make a class for attributes container      -->
+ </section>
+      
+            <!--  Start of The HP Section --> 
+
+    <section>
       <section class="Total-HP">
-                <!--    attributes affects the square box around ability scoes      -->
-        <div class="HP">  
-      <table>         
+        <table>         
               <thead>     
               </tbody>  
             </table>  
@@ -151,24 +146,51 @@
             <td><input class="Other-hp-input" placeholder="" /></td>
             <th>Minimum HP</th>
             <td><input class="Other-hp-input" placeholder="" /></td>
-        </div>          
+           
+            
         </section>
-        <section>
-          <div>
-            Bababooey
-          </div>
-        </section>
-</main>
+<!-- End of Total HP Section -->
+      
+<!-- Start of Attack Section       -->
+      <section>
+  <div class="attack-title">
+  </div>  
+  <section class="attack-section">
+    <div class="label">
+      <label for="attack-dropdown-menu">Number of Boxes:</label>
+      <select id="attack-dropdown-menu">
+      </select>
+    </div>
+    <div>
+      <label for="attack-numExtraBoxes">Number of Extra Boxes:</label>   
+      <input type="number" id="attack-numExtraBoxes" readonly>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Attack Name</th>
+          <th>Attack Macro </th>       
+        </tr>
+      </thead>
+    </table>    
+    <div class="attack-table" id="attack-table">
+    </div>
+  </section>
+</section>
+      
+<!-- End of Attack Section       -->
+      
+      </main>
 
-       
-            <!--  End of The HP Section --> 
+      
+      
+      
+<!--  Start of Total Char Info-->
+
 
         <!--  Start of the Armor Class Section    -->
-
 <main>
-  <section>
-    <div class="label">
-    </div>
+ <section>
     <section class="armor-class">
       <div class="AC">
         <table>
@@ -232,19 +254,97 @@
       </div>
     </section>
   </section>
-</main>
+      </main>
 <!--  End of the Armor Class Section    -->
         
+<!--  Start of DR Section      -->
+
+      <main>
+                
+  <section>
+    <div class="label">
+    </div>
+    <section class="dr-class">
+      <div class="DR">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Total</th>              
+              <th>Bludgeoning</th>
+              <th>Piercing</th>
+              <th>Slashing</th>
+              <th>Adamantine</th>
+              <th>Cold Iron</th>
+              <th>Magic</th>
+              <th>Epic</th>
+              <th>Chaotic</th>
+              <th>Evil</th>
+              <th>Good</th>
+              <th>Lawful</th> 
+              <th>Non-Lethal</th>                  
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DR</td>
+              <td><input name="DR" placeholder="" /></td>
+              <td><input name="DR" placeholder="" /></td>
+              <td><input name="DR" placeholder="" /></td>
+              <td><input name="DR" placeholder="" /></td>
+              <td><input name="DR" placeholder="" /></td>
+              <td><input name="DR" placeholder="" /></td>
+              <td><input name="DR" placeholder="" /></td>
+              <td><input name="DR" placeholder="" /></td>
+              <td><input name="DR" placeholder="" /></td>
+              <td><input name="DR" placeholder="" /></td>
+              <td><input name="DR" placeholder="" /></td>  
+              <td><input name="DR" placeholder="" /></td>   
+              <td><input name="DR" placeholder="" /></td>                 
+            </tr>
+
+            
+            <th></th>
+              <th>Acid</th>              
+              <th>Cold</th>
+              <th>Fire</th>
+              <th>Lightning</th>
+              <th>Sonic</th>              
+              <th>Thunder</th>
+              <th>Poison</th>            
+              <th>Positive</th>
+              <th>Negative</th>
+              <th>Bleed</th>     
+              <th>Precision</th>                 
+            <tr>
+              <td>Resistances</td>
+              <td><input name="Resistance" placeholder="" /></td>
+              <td><input name="Resistance" placeholder="" /></td>
+              <td><input name="Resistance" placeholder="" /></td>
+              <td><input name="Resistance" placeholder="" /></td>
+              <td><input name="Resistance" placeholder="" /></td>
+              <td><input name="Resistance" placeholder="" /></td>
+              <td><input name="Resistance" placeholder="" /></td>
+              <td><input name="Resistance" placeholder="" /></td>
+              <td><input name="Resistance" placeholder="" /></td>
+              <td><input name="Resistance" placeholder="" /></td>
+              <td><input name="Resistance" placeholder="" /></td>
+            </tr>            
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </section>        
         
-        
-    
+      </main>
+      
+<!-- End of DR Section      -->
+      
 <!-- Start of the Saving Throw section --> 
         
 
 <main>
   <section>
-    <div class="label">
-    </div>
     <section class="saving-throws">
       <div class="saving-throws-boxes">
         <table>
@@ -292,23 +392,152 @@
       </div>
     </section>
   </section>
-</main>        
+      </main>
+        
+<!--  End of the Saving throw secton       -->      
+
+<!--  Start of Speed Section      -->
+
+
+<main>
+  <section>
+<section class="speed">
+      <div class="speed-div">
+        <table>
+          <thead>
+            <tr>
+         <th>Land Speed</th>
+         <th>Fly Speed</th>
+         <th>Swim Speed</th>
+         <th>Climb Speed</th>
+         <th>Burrow Speed</th>
+         <th>Buff</th>     
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Speedy</td>
+              <td><input class="speed-input" placeholder="" /></td>
+              <td><input class="speed-input" placeholder="" /></td>
+              <td><input class="speed-input" placeholder="" /></td>
+              <td><input class="speed-input" placeholder="" /></td>
+              <td><input class="speed-input" placeholder="" /></td> 
+              <td><input class="speed-input" placeholder="" /></td>    
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+      </main>
+      
+<!-- End of Speed Section       -->
+      
+      
+      <!--    Start of attack info section      -->
+ <main>      
+<section>
+  <section class="Total-char-level">
+    <div class="char-hp-info">   
+      <table>
+        <thead>
+          <tr>
+                  <th>HP Gained</th>
+                  <th>HD</th>
+                  <th>Class Names</th>  
+                  <th>BAB</th>  
+                  <th>Skill</th>            
+                  <th>FC HP</th>  
+                  <th>Fort</th>  
+                  <th>Reflex</th>              
+                  <th>Will</th>
+                  <th>Level</th>
+                  <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+                <tr>
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="class-input" placeholder="" /></td>
+              <td><input class="HD-input" placeholder="" /></td> 
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td> 
+              <td><input class="HD-input" placeholder="" /></td> 
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>                     
+                </tr>
+                
+                <tr>
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="class-input" placeholder="" /></td>
+              <td><input class="HD-input" placeholder="" /></td> 
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td> 
+              <td><input class="HD-input" placeholder="" /></td> 
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>               
+                </tr>
+               
+                <tr>
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="class-input" placeholder="" /></td>
+              <td><input class="HD-input" placeholder="" /></td> 
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td> 
+              <td><input class="HD-input" placeholder="" /></td> 
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>                       
+                </tr>
+                
+                <tr>
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="class-input" placeholder="" /></td>
+              <td><input class="HD-input" placeholder="" /></td> 
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td> 
+              <td><input class="HD-input" placeholder="" /></td> 
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>             
+                </tr>
  
-        
-<!--  End of the Saving throw secton       -->
-
-
-<!--    Start of attack info section      -->
-        
+                <tr>
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="class-input" placeholder="" /></td>
+              <td><input class="HD-input" placeholder="" /></td> 
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td> 
+              <td><input class="HD-input" placeholder="" /></td> 
+              <td><input class="HD-input" placeholder="" /></td>   
+              <td><input class="HD-input" placeholder="" /></td>            
+                </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</section>
+</main>
 
 <!--    End of attack info section      -->
 
-        
+      
 <!--  Start of Skills Section      -->
-<main>
+<main>      
   <section>
-    <div class="label">
-    </div>
     <section class="skills-section">
       <div class="skills">
       <table>
@@ -664,69 +893,402 @@
             <td><input type="number" name="Swim-extra-box" /></td>
             <td><input type="number" name="Swim-extra-box" /></td>
             <td><input type="number" name="Swim-extra-box" /></td>
-          </tr>      
-                                                                                                           
-          <!--  End of Skills Section      -->                                                                                    
+          </tr>  
+<!--  Additional Fill in Skills          -->
+          <tr>
+            <td><input type="checkbox" name="Swim-prof" /></td>            
+              <td colspan="3"><input type="text" name="Swim" Placeholder = "Add a Skill"></td>
+            <td></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+          </tr>    
+          <tr>
+            <td><input type="checkbox" name="Swim-prof" /></td>            
+              <td colspan="3"><input type="text" name="Swim" Placeholder = "Add a Skill"></td>
+            <td></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+          </tr>    
+          <tr>
+            <td><input type="checkbox" name="Swim-prof" /></td>            
+              <td colspan="3"><input type="text" name="Swim" Placeholder = "Add a Skill"></td>
+            <td></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+          </tr>    
+          <tr>
+            <td><input type="checkbox" name="Swim-prof" /></td>            
+              <td colspan="3"><input type="text" name="Swim" Placeholder = "Add a Skill"></td>
+            <td></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+          </tr>    
+          <tr>
+            <td><input type="checkbox" name="Swim-prof" /></td>            
+              <td colspan="3"><input type="text" name="Swim" Placeholder = "Add a Skill"></td>
+            <td></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+            <td><input type="number" name="Swim-extra-box" /></td>
+          </tr>              
+                                                                                                                                                                                   
           </tbody>
         </table>
       </div>
     </section>
   </section>
-  
-  
+      </main>      
+
+      
+<!--  End of Skills Section      -->      
+      
 <!--  Start of Feats Section             -->
   
 
 
+<main>
 
-  <main>
 <section>
   <div class="feats-title">
-  </div>  
-  <section class = feats-section>
+  </div>  
+  <section class="feats-section">
     <div class="label">
-      <label for="dropdown-menu">Number of Boxes:</label>
-      <select id="dropdown-menu">
+      <label for="feats-dropdown-menu">Number of Boxes:</label>
+      <select id="feats-dropdown-menu">
       </select>
     </div>
     <div>
-      <label for="numExtraBoxes">Number of Extra Boxes:</label>   
-      <input type="number" id="numExtraBoxes" readonly>
+      <label for="feats-numExtraBoxes">Number of Extra Boxes:</label>   
+      <input type="number" id="feats-numExtraBoxes" readonly>
     </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Feats</th>
-            <th>Feat Descriptions:</th>       
-          </tr>
-        </thead>
-        </table>    
-    <section class="feats-section">
-      <div class="feats-table" id="feats-table">
-      </div>
-    </section>
+    <table>
+      <thead>
+        <tr>
+          <th>Feats</th>
+          <th>Feat Descriptions:</th>       
+        </tr>
+      </thead>
+    </table>    
+    <div class="feats-table" id="feats-table">
+    </div>
   </section>
 </section>
 
-
-
-  
   
 <!--  End of Feats Section             -->  
-  
-  
-</main>   
-
-
-   
-             
-
-             
-             
-             
+        
+      
+    
 <!-- Start of Items + Equipment Section              -->
              
+      <section>
+  <div class="equipment-title">
+  </div>  
+  <section class="equipment-section">
+    <div class="label">
+      <label for="equipment-dropdown-menu">Number of Boxes:</label>
+      <select id="equipment-dropdown-menu">
+      </select>
+    </div>
+    <div>
+      <label for="equipment-numExtraBoxes">Number of Extra Boxes:</label>   
+      <input type="number" id="equipment-numExtraBoxes" readonly>
+    </div>
+    <table class="equipment">
+      <thead>
+        <tr>
+          <th>Equipment</th>
+          <th>Equipment Descriptions:</th>       
+        </tr>
+      </thead>
+    </table>    
+    <div class="equipment-table" id="equipment-table">
+    </div>
+  </section>
+</section>
+
+  
+      </main>  
+<!-- End of Items + Equipment Section              -->      
+
+      
+<!-- Start of Class features Section       -->
+
+<main>      
+      <section>
+  <div class="features-title">
+  </div>  
+  <section class="features-section">
+    <div class="label">
+      <label for="features-menu">Number of Boxes:</label>
+      <select id="features-menu">
+      </select>
+    </div>
+    <div>
+      <label for="features-numExtraBoxes">Number of Extra Boxes:</label>   
+      <input type="number" id="features-numExtraBoxes" readonly>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Class Features</th>
+          <th>Class Features Descriptions:</th>       
+        </tr>
+      </thead>
+    </table>    
+    <div class="features-table" id="features-table">
+    </div>
+  </section>
+</section>            
+<!-- End of Class features Section       -->
+      
+  
+<!-- Start of Path of War Section -->
+ <section>
+  <div class="path-of-war-title">
+  </div>  
+  <section class="path-of-war-section">
+    <div class="label">
+      <label for="path-of-war-dropdown-menu">Number of Boxes:</label>
+      <select id="path-of-war-dropdown-menu">
+      </select>
+    </div>
+    <div>
+      <label for="path-of-war-numExtraBoxes">Number of Extra Boxes:</label>   
+      <input type="number" id="path-of-war-numExtraBoxes" readonly>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>path-of-war</th>
+          <th>path-of-war Descriptions:</th>       
+        </tr>
+      </thead>
+    </table>    
+    <div class="path-of-war-table" id="path-of-war-table">
+    </div>
+  </section>
+</section>
+  
+      </main>      
+  
+<!--   End of Path of War Section     -->
+      
+<!--  Start of Worn Equipment      -->
+<main>      
+<section>
+  <section class="worn-equipment-section">
+    <div class="worn-equipment">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Equipment slot</th>                        
+          </tr>
+        </thead>
+        <tbody class="worn-equip-table">
+          <tr>
+            <td>Belt</td>
+            <td><input name="equip-slot" placeholder="" /></td>             
+          </tr>  
+          <tr>
+            <td>Body</td>
+            <td><input name="equip-slot" placeholder="" /></td>
+          </tr>        
+          <tr>
+            <td>Chest</td>
+            <td><input name="equip-slot" placeholder="" /></td>
+          </tr>        
+          <tr>
+            <td>Eyes</td>
+            <td><input name="equip-slot" placeholder="" /></td>
+          </tr>        
+          <tr>
+            <td>Feet</td>
+            <td><input name="equip-slot" placeholder="" /></td>
+          </tr>        
+          <tr>
+            <td>Feet</td>
+            <td><input name="equip-slot" placeholder="" /></td>
+          </tr>        
+          <tr>
+            <td>Hands</td>
+            <td><input name="equip-slot" placeholder="" /></td>
+          </tr>        
+          <tr>
+            <td>Head</td>
+            <td><input name="equip-slot" placeholder="" /></td>
+          </tr>        
+          <tr>
+            <td>Headband</td>
+            <td><input name="equip-slot" placeholder="" /></td>
+          </tr>        
+          <tr>
+            <td>Neck</td>
+            <td><input name="equip-slot" placeholder="" /></td>
+          </tr>            
+            <td>Ring</td>
+            <td><input name="equip-slot" placeholder="" /></td>
+          </tr>         
+            <td>Ring</td>
+            <td><input name="equip-slot" placeholder="" /></td>
+          </tr>         
+            <td>Shoulders</td>
+            <td><input name="equip-slot" placeholder="" /></td>
+          </tr>         
+            <td>Wrist</td>
+            <td><input name="equip-slot" placeholder="" /></td>
+          </tr>             
+        </tbody>
+      </table>
+  </section>
+</section>   
+</div>
+<!-- End of Worn Equipment       -->      
 
 
-             
-<!-- End of Items + Equipment Section              -->
+
+<!-- Start of Currency Section -->
+<section>
+  <section class="currency-section">
+    <div class="currency">
+      <table class="currency-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Carried</th>              
+            <th>Stored</th>                   
+          </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+              <td>Platnium</td>
+              <td><input name="currency" placeholder="" /></td> 
+              <td><input name="currency" placeholder="" /></td>             
+            </tr>  
+            <tr>
+              <td>Gold</td>
+              <td><input name="currency" placeholder="" /></td>
+              <td><input name="currency" placeholder="" /></td>            
+            </tr>        
+            <tr>
+              <td>Silver</td>
+              <td><input name="currency" placeholder="" /></td>
+              <td><input name="currency" placeholder="" /></td>            
+            </tr>        
+            <tr>
+              <td>Copper</td>
+              <td><input name="currency" placeholder="" /></td>
+              <td><input name="currency" placeholder="" /></td>            
+            </tr>        
+            <tr>
+              <td>Total</td>
+              <td><input name="currency" placeholder="" /></td>
+              <td><input name="currency" placeholder="" /></td>            
+            </tr>              
+
+        
+        </tbody>
+      </table>
+    </div>
+  </section>
+</section>  
+<!-- End of Currency Section -->
+
+
+<!-- Start of Carry section -->
+<section>
+  <section class="carry-section">
+    <div class="carry">
+      <table class="carry-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Armor and Weapons</th>     
+            <th>Currency</th>     
+            <th>Equipment</th>     
+            <th>Misc</th>     
+            <th>Total</th>                 
+          </tr>
+        </thead>
+        <tbody>
+
+
+            <tr>
+              <td>Total Weight</td>
+              <td><input name="carry" placeholder="" /></td> 
+              <td><input name="carry" placeholder="" /></td>   
+              <td><input name="carry" placeholder="" /></td>   
+              <td><input name="carry" placeholder="" /></td>   
+              <td><input name="carry" placeholder="" /></td>                 
+            </tr>  
+         
+
+        
+        </tbody>
+      </table>
+    </div>
+  </section>
+</section>  
+
+<!-- End of Carry section -->
+
+<!-- Start of Lift Section -->
+
+<section>
+  <section class="lift-section">
+    <div class="lifts">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Light Load</th>     
+            <th>Medium Load</th>     
+            <th>Heavy Load</th>     
+            <th>Lift Above Head</th>     
+            <th>Lift off Ground</th> 
+            <th>Drag and Push</th>             
+          </tr>
+        </thead>
+        <tbody>
+
+
+            <tr>
+              <td>Total Weight</td>
+              <td><input name="lift" placeholder="" /></td> 
+              <td><input name="lift" placeholder="" /></td>   
+              <td><input name="lift" placeholder="" /></td>   
+              <td><input name="lift" placeholder="" /></td>   
+              <td><input name="lift" placeholder="" /></td>  
+              <td><input name="lift" placeholder="" /></td>                
+            </tr>  
+         
+
+        
+        </tbody>
+      </table>
+    </div>
+  </section>
+</section>  
+
+<!-- End of Lift Section -->
+</main>
+
+
+
+
+
+
+
+
+
