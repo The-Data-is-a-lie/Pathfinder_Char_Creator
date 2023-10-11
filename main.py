@@ -2,7 +2,7 @@
 from createACharacter import CreateNewCharacter
 from utils.markdown import style
 from utils.data import version
-from utils.util import  format_text, isBool, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
+from utils.util import  chooseClass, format_text, isBool, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
 import random
 from utils.data_dict import initialize_character_data, character_data_to_json, convert_character_json_to_html
 from html_editor_best import html_builder
@@ -20,39 +20,62 @@ character_data = {}
 print(style.BOLD + f'Welcome to the D&D Random Character Generator ({version})' + style.END)
 
 userInput = input('Create a new character? (y/n): ').lower()
+# assuming we are creating new character
+# character = Character()
+
+character_json_config = {
+	'race': 'utils/race.json',
+	'class': 'utils/class.json',
+	'traits': 'utils/traits_abilities.json',
+	'profession': 'utils/profession.json',
+	'last_names_regions': 'last_names_regions.json',
+	'first_names_regions': 'first_names_regions.json',
+	'flaws': 'utils/flaws.json'
+}
 
 
 while userInput.lower() == 'y':
 	name = random.randint(0,100000000000)
 	character_name = name
-	filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
-	with open(filename, 'a') as f, open("last_names_regions.json", "r") as a, open("first_names_regions.json", "r") as g:
-		print('===============================================================',file=f)
+	# filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
+	with open("last_names_regions.json", "r") as a, open("first_names_regions.json", "r") as g:
 
 		isTrue = isBool(userInput)
 
 		if userInput == 'y':
 			#end of region macro
 			# format_text(text, bold=False, color=None)
-			CreateNewCharacter()
-			flaws()
-			Roll_Level()
-			Total_Hitpoint_Calc()
-			inherent_stats()
-			age_weight_height()
-			various_racial_attr()
-			appearnce_func()
-			personality_and_profession()
-			alignment_and_deities()
-			path_of_war_chance()
-			path_of_war()
-			Archetype_Assigner()
-			skills()
-			mythic()
-			initialize_character_data()
-			character_data_to_json()
-			convert_character_json_to_html()
-			html_builder()
+			character = CreateNewCharacter(
+				character_json_config)
+			
+			chooseClass(character)
+			num_dice = int(input("How many dice would you like to roll? "))
+			num_sides = int(input("How many sides should each die have? "))
+			character.roll_stats(num_dice, num_sides)
+
+			character.randomize_flaw()
+
+			max_num = int(input("Enter the highest level you want the char to be: "))
+			min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
+			character.randomize_level(min_num, max_num)
+
+
+			# Total_Hitpoint_Calc()
+			# inherent_stats()
+			# age_weight_height()
+			# various_racial_attr()
+			# appearnce_func()
+			# personality_and_profession()
+			# alignment_and_deities()
+			# path_of_war_chance()
+			# path_of_war()
+			# Archetype_Assigner()
+			# skills()
+			# mythic()
+			# initialize_character_data()
+			# character_data_to_json()
+			# convert_character_json_to_html()
+			# html_builder()
 
 
 

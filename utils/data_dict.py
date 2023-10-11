@@ -66,7 +66,7 @@ def update_character_data(key_value_pairs):
         character_data[key] = value
 
 # Example usage:
-def initialize_character_data():
+def initialize_character_data(character):
     from utils.util import (
         feats,
         BAB,
