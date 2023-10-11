@@ -58,7 +58,7 @@ while userInput.lower() == 'y':
 			max_num = int(input("Enter the highest level you want the char to be: "))
 			min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
 			character.randomize_level(min_num, max_num)
-
+ 
 
 			# Total_Hitpoint_Calc()
 			# inherent_stats()
