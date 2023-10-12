@@ -59,8 +59,11 @@ while userInput.lower() == 'y':
 			min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
 			character.randomize_level(min_num, max_num)
  
+			character.hit_dice_calc()
+			character.roll_hp()
+			character.total_hp_calc()
 
-			# Total_Hitpoint_Calc()
+
 			# inherent_stats()
 			# age_weight_height()
 			# various_racial_attr()

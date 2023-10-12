@@ -58,8 +58,9 @@ class Character:
         self.weaponz=None
         self.luck_score=None
         self.mythic_rank=None
-        # c_class,
-        # c_class_2, Sometimes this is a tuple, we'll need to update the code to handle that
+        self.c_class=None,
+        self.c_class_2=None, 
+        # Sometimes this is a tuple, we'll need to update the code to handle that
         self.flaw=None
         self.proforce=None
         self.random_abilities=None
@@ -85,6 +86,12 @@ class Character:
         self.full_name=None
         self.Total_HP=None
         self.Hit_dice=None
+        self.Hit_dice1=None
+        # self.Hit_dice2=None                
+        self.total_hp_rolls=None    
+        # self.total_hp_rolls1=None
+        # self.total_hp_rolls2=None                            
+        self.total_Hit_dice=None
         self.extra_ability_score_levels=None
         self.npc_level=None
         self.BAB_total=None
@@ -160,6 +167,9 @@ class Character:
         #         self.BAB_total += floor(data.level *.75)
         #     else: 
         #         self.BAB_total += data.level * 1
+
+        # set as an integer so our function beneath works
+        self.BAB_total = 0
         if self.BAB == 'L':
             self.BAB_total += floor(self.level *.5)
         elif self.BAB == 'M':
@@ -193,10 +203,46 @@ class Character:
         level = random.randint(min, max)
         self.update_level(level)
 
+    def hit_dice_calc(character):
+        print(character.classes.keys())
+        # Class Hit Dice + total Hit points
+        character.Hit_dice1 = character.classes[character.c_class]["hp"]
+        # character.Hit_dice2 = character.classes[character.c_class_2]["hp"]            
+
+
+        print(f"hit dice {character.Hit_dice1}")
+        # print(f"hit dice {character.Hit_dice2}")            
+
+        # print(f"hit dice {Hit_dice2}")            
+        print(f"This is your characters first class Hit dice: {character.Hit_dice1}")
+        # print(f"This is your characters first class Hit dice: {character.Hit_dice2}")            
+
+    def roll_hp(character):
+        hp_rolls = []
+        #Figure out how to loop this to calc for each class rather than just one
+        for _ in range(character.level-1):
+            hp_rolls.append(random.randint(1,character.Hit_dice1))
+            print(hp_rolls) #working as expected
+        character.total_hp_rolls = sum(hp_rolls)         
+        return character.total_hp_rolls
+
+
+    def total_hp_calc(character):        
+        character.Total_HP = character.total_hp_rolls + character.Hit_dice1
+        print(f'This is your total HP: {character.Total_HP}')
+
+
+
+
 # setting up a new character
 def CreateNewCharacter(character_json_config):
     new_char = Character(character_json_config)
     return new_char
+
+
+
+
+
 
 
 def _CreateNewCharacter():
