@@ -9,7 +9,7 @@ import sys
 #from utils.race import race
 character_data = {}
 
-def roll_dice(num_dice, num_sides, stat):
+def roll_dice(num_dice, num_sides):
     rolls = []
     for _ in range(num_dice):
         rolls.append(random.randint(1, num_sides))
@@ -107,8 +107,12 @@ def chooseClass(character):
     print(f"Please make sure below matches this list: {character.first_names_regions.keys()}")
 
     userInput_region = input('Select region [input the number for the region you want] from above list: (0 = Random, 1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, 5=Spire, 6=Feyador, 7=Esterdragon, 8=Grundykin Damplands, 9=Dust Cairn, 10=Kaeru no Tochi ...)').lower()
+    character.userInput_region = userInput_region
     print(character.races.keys())
+
     userInput_race = input(f'Select race from the above list: ').capitalize()
+    print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race{userInput_race}')
+    character.userInput_race = userInput_race
     print(userInput_race)
 
     if userInput_region.isdigit() and int(userInput_region) in range(1, 30):

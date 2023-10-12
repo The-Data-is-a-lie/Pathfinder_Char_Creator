@@ -48,26 +48,39 @@ while userInput.lower() == 'y':
 			character = CreateNewCharacter(
 				character_json_config)
 			
+
 			chooseClass(character)
-			num_dice = int(input("How many dice would you like to roll? "))
-			num_sides = int(input("How many sides should each die have? "))
-			character.roll_stats(num_dice, num_sides)
+			character.randomize_body_feature('age')
+			character.randomize_body_feature('height')
+			character.randomize_body_feature('weight')			
+			# num_dice = int(input("How many dice would you like to roll? "))
+			# num_sides = int(input("How many sides should each die have? "))
+			# character.roll_stats(num_dice, num_sides)
 
-			character.randomize_flaw()
+			# character.randomize_flaw()
 
-			max_num = int(input("Enter the highest level you want the char to be: "))
-			min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
-			character.randomize_level(min_num, max_num)
+			# max_num = int(input("Enter the highest level you want the char to be: "))
+			# min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
+			# character.randomize_level(min_num, max_num)
  
-			character.hit_dice_calc()
-			character.roll_hp()
-			character.total_hp_calc()
+			# character.hit_dice_calc()
+			# character.roll_hp()
+			# character.total_hp_calc()
+
+			# inherent_stats() [Skip for now, make OOP later]
 
 
-			# inherent_stats()
-			# age_weight_height()
-			# various_racial_attr()
-			# appearnce_func()
+			print(f"Racial traits: {character.get_racial_attr('traits')}")			
+			print(f"racial languages: {character.get_racial_attr('languages')}")
+			print(f"racial size: {character.get_racial_attr('size')}")
+			print(f"racial speed: {character.get_racial_attr('speed')}")					
+			print(f"Ability Scores for {character.get_racial_attr('ability scores')}")												
+			
+			print(f'This is your hair_colors {character.randomize_apperance_attr("hair_colors")}')
+			print(f'This is your hair_types {character.randomize_apperance_attr("hair_types")}')
+			print(f'This is your eye_colors {character.randomize_apperance_attr("eye_colors")}')
+			print(f'This is your appearance {character.randomize_apperance_attr("appearance", 3)}')									
+
 			# personality_and_profession()
 			# alignment_and_deities()
 			# path_of_war_chance()

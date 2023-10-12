@@ -67,19 +67,12 @@ class Character:
         self.random_personality=None
         self.random_mannerisms=None
         self.stats=None
-        self.age_roll =None
-        self.weight_roll =None
-        self.height_roll=None
         self.hair_color_choice =None
         self.hair_type_choice =None
         self.eye_color_choice =None
         self.appearance_choice=None
         self.chosen_deity=None
-        self.racial_traits =None
-        # racial_language, 
-        self.racial_size =None
-        self.racial_speed =None
-        self.ability_scores=None
+
         self.region=None
         self.f_name=None
         self.l_name=None
@@ -103,6 +96,24 @@ class Character:
         self.skill_list=None
         self.disciplines_choice=None
         # character_flaws
+        # User Inputs
+        self.userInput_race=None
+        self.userInput_region=None
+        #body features
+        self.age=None
+        self.height=None
+        self.weight=None
+        # replaced age_roll with age
+        # self.age_roll =None
+        # self.weight_roll =None
+        # self.height_roll=None        
+
+        # Removed, because data redunancy we can just pull from json later
+        # self.racial_traits =None
+        # self.racial_language, 
+        # self.racial_size =None
+        # self.racial_speed =None
+        # self.racial_ability_scores=None
 
         self._load_jsons(json_config)
         
@@ -178,12 +189,12 @@ class Character:
             self.BAB_total += self.level * 1
     
     def roll_stats(self, num_dice, num_sides):
-        self.str = roll_dice(num_dice, num_sides, 'Strength')
-        self.dex = roll_dice(num_dice, num_sides, 'Dexterity')
-        self.const = roll_dice(num_dice, num_sides, 'Constitution')
-        self.int = roll_dice(num_dice, num_sides, 'Intelligence')
-        self.wisdom = roll_dice(num_dice, num_sides, 'Wisdom')
-        self.char = roll_dice(num_dice, num_sides, 'Charisma')
+        self.str = roll_dice(num_dice, num_sides)
+        self.dex = roll_dice(num_dice, num_sides)
+        self.const = roll_dice(num_dice, num_sides)
+        self.int = roll_dice(num_dice, num_sides)
+        self.wisdom = roll_dice(num_dice, num_sides)
+        self.char = roll_dice(num_dice, num_sides)
     
     def randomize_flaw(self):
         flaw_chance = random.randint(0,100)
@@ -203,33 +214,85 @@ class Character:
         level = random.randint(min, max)
         self.update_level(level)
 
-    def hit_dice_calc(character):
-        print(character.classes.keys())
+    def hit_dice_calc(self):
+        print(self.classes.keys())
         # Class Hit Dice + total Hit points
-        character.Hit_dice1 = character.classes[character.c_class]["hp"]
+        self.Hit_dice1 = self.classes[self.c_class]["hp"]
         # character.Hit_dice2 = character.classes[character.c_class_2]["hp"]            
 
 
-        print(f"hit dice {character.Hit_dice1}")
-        # print(f"hit dice {character.Hit_dice2}")            
+        print(f"hit dice {self.Hit_dice1}")
+        # print(f"hit dice {self.Hit_dice2}")            
 
         # print(f"hit dice {Hit_dice2}")            
-        print(f"This is your characters first class Hit dice: {character.Hit_dice1}")
-        # print(f"This is your characters first class Hit dice: {character.Hit_dice2}")            
+        print(f"This is your character's first class Hit dice: {self.Hit_dice1}")
+        # print(f"This is your character's first class Hit dice: {self.Hit_dice2}")            
 
-    def roll_hp(character):
+    def roll_hp(self):
         hp_rolls = []
         #Figure out how to loop this to calc for each class rather than just one
-        for _ in range(character.level-1):
-            hp_rolls.append(random.randint(1,character.Hit_dice1))
+        for _ in range(self.level-1):
+            hp_rolls.append(random.randint(1,self.Hit_dice1))
             print(hp_rolls) #working as expected
-        character.total_hp_rolls = sum(hp_rolls)         
-        return character.total_hp_rolls
+        self.total_hp_rolls = sum(hp_rolls)         
+        return self.total_hp_rolls
 
 
-    def total_hp_calc(character):        
-        character.Total_HP = character.total_hp_rolls + character.Hit_dice1
-        print(f'This is your total HP: {character.Total_HP}')
+    def total_hp_calc(self):        
+        self.Total_HP = self.total_hp_rolls + self.Hit_dice1
+        print(f'This is your total HP: {self.Total_HP}')
+
+    #change age/height/weight string into useable array that contains (e.g.) 5d6 -> 5,6 (5 num_dice, 6 num_sides)
+    def randomize_body_feature(self, body_attribute):
+        print(f'??????????????????????????{self.races[self.userInput_race][body_attribute] }')
+        [base_stat, dice_string] = self.races[self.userInput_race][body_attribute]        
+        # print(self.)
+        print(f'before setting attribute {body_attribute}', getattr(self, body_attribute))
+        [num_dice, num_sides] = [int(c) for c in dice_string.split('d')]
+        dice_roll = roll_dice(num_dice, num_sides)
+        setattr(self, body_attribute, base_stat+dice_roll)
+        print(f'after setting attribute {body_attribute}', getattr(self, body_attribute))
+
+    
+    def get_racial_attr(self, racial_attribute):
+        if self.userInput_race in self.races:
+            return self.races[self.userInput_race][racial_attribute]
+        
+    def randomize_apperance_attr(self, apperance_attribute, upper_limit=1):
+        random_app_number = random.randint(1,upper_limit)
+        potential_apperances = getattr(data,apperance_attribute)
+        return random.sample(potential_apperances, k=random_app_number)
+            
+            # hair_color_choice = random.choice(hair_colors)
+            # hair_type_choice = random.choice(hair_types)
+            # eye_color_choice = random.choice(eye_colors)
+            # random_app_number = random.randint(1,3)
+            # appearance_choice = random.sample(appearance,k=random_app_number)
+
+            # print(f'hair_colors' + '\n', hair_color_choice)
+            # print(f'hair_types' + '\n', hair_type_choice)
+            # print(f'eye_colors' + '\n', eye_color_choice)
+            # print(f'appearance' + '\n', appearance_choice)
+
+
+        # if userInput_race in race_data:
+        #     racial_traits = race_data[userInput_race]["traits"]
+        #     racial_language = race_data[userInput_race]["languages"]
+        #     racial_size = race_data[userInput_race]["size"]
+        #     racial_speed = race_data[userInput_race]["speed"]
+        #     racial_ability_scores = race_data[userInput_race]["ability scores"]          
+        
+
+
+        # if isinstance(self.age[1], str):
+        #     left, right = map(int, self.age[1].split('d'))
+        #     age_roll = sum([random.randint(1, right) for i in range(left)]) + age[0]
+        # else:
+        #     age_roll = random.randint(self.age[0], self.age[1])
+        #     left = self.age[0]
+        # age_roll += left
+        # print(f"Age: {age_roll}")
+
 
 
 
@@ -238,6 +301,8 @@ class Character:
 def CreateNewCharacter(character_json_config):
     new_char = Character(character_json_config)
     return new_char
+
+
 
 
 

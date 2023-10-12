@@ -115,10 +115,10 @@ evil_deities = ["Asmodeus",
 alignment = ["Chaotic good", "Chaotic neutral", "Chaotic evil", "Lawful good", "Lawful neutral", "Lawful evil", "Neutral good", "True Neutral", "Neutral evil"]
 
 hair_colors = ['Black', 'Brown', 'Blond', 'Red', 'White', 'Grey']
-hair_types = ['Curly', 'Wavy', 'Straight', 'Flowing', 'Frizzy', 'Spiky', 'Touseled', 'Unkempt','Bald']
+hair_types = ['Curly',  'Bald', 'Wavy', 'Straight', 'Flowing', 'Frizzy', 'Spiky', 'Touseled', 'Unkempt','Bald']
 eye_colors = ['Amber', 'Blue', 'Brown', 'Grey', 'Green', 'Hazel']
 appearance = [  "Athletic",
-  "Bald",
+
   "Beautiful",
   "Beefy",
   "Big-boned",
@@ -391,4 +391,4 @@ disciplines = ['Black Seraph', 'Broken Blade', 'Brutal Crocodile', 'Cursed Razor
 
                     #Path of war classes
 
-version = "9/29/23"
+version = "10/12/23"
