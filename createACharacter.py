@@ -1,7 +1,7 @@
 #Internal Imports
 from utils import data
 import json
-from utils.data import regions, weapon_groups_region, skills, evil_deities, good_deities, neutral_deities, languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class
+from utils.data import regions, weapon_groups_region, skills,  languages, hair_colors, hair_types, appearance, eye_colors#, path_of_war_class,evil_deities, good_deities, neutral_deities,
 #from utils.data import archetypes
 from utils.util import  format_text, chooseClass, appendAttrData, roll_dice#,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
 from utils.markdown import style
@@ -103,6 +103,16 @@ class Character:
         self.age=None
         self.height=None
         self.weight=None
+        #alignment variable
+        self.alignment=None
+
+        #path of war variables
+        self.path=None
+
+        #archetype variables
+        self.archetype1=None
+        self.archetype2=None
+
         # replaced age_roll with age
         # self.age_roll =None
         # self.weight_roll =None
@@ -143,6 +153,11 @@ class Character:
         with open(json_config['flaws']) as f:
             self.flaws = json.load(f)
 
+        with open(json_config['archetypes']) as f:
+            self.archetypes = json.load(f)      
+             
+
+    #should this be update feats, since we're updating feat amount [it 100% depends on level]
     def update_level(self, level):
         self.level = level
         if len(self.flaw) == 2 or len(self.flaw) == 3:
@@ -157,6 +172,12 @@ class Character:
             #remove 2 extra self.feats because of no flaws
             self.feats = (4 - 2 + floor(self.level/2) + floor(self.level/5))
         self._update_BAB_total()
+
+    def update_level_ability_score(self, level):
+        self.level=level
+        self.extra_ability_score_levels=floor(level/4)
+
+
 
     def _update_BAB_total(self):
         # self.class_level = {
@@ -262,6 +283,136 @@ class Character:
         random_app_number = random.randint(1,upper_limit)
         potential_apperances = getattr(data,apperance_attribute)
         return random.sample(potential_apperances, k=random_app_number)
+
+
+    def randomize_personality_attr(self, personality_attribute, upper_limit=1):
+        # redundant, JAVASCRIPT has a CSV file with all of these
+        random_pers_number = random.randint(1,upper_limit)
+        potential_personality = getattr(data,personality_attribute)  
+        return random.sample(potential_personality,k=random_pers_number)  
+        
+
+    def randomize_alignment(self, alignments):
+        #pulling alignments from data.py and picking one
+        random_alignment = getattr(data,alignments)
+        self.alignment = random.choice(random_alignment)
+        return self.alignment
+
+    def randomize_deity(self, all_deities):
+        # Might want to revamp the way we randomly select deities 
+        # (we could make it abit more complex and have chances to 
+        # pick Lawful + Chaotic deities as well)
+        # Gathering a dictionary of all deities to randomly select one
+        deity_list = getattr(data,all_deities) 
+        if 'good' in self.alignment:
+            return  random.choice(deity_list["good_deities"])
+        elif 'evil' in self.alignment:
+            return  random.choice(deity_list["evil_deities"])
+        else:
+            return  random.choice(deity_list["neutral_deities"])
+
+
+    def randomize_path_of_war_num(self, path_of_war_class):
+        path = None
+        chance = random.randint(1,100)
+        getattr(data,path_of_war_class)
+        if self.c_class not in path_of_war_class:
+            if self.BAB == 'H':
+                if chance >= 25:
+                    self.path = 1
+                else:
+                    self.path = 0
+
+            elif self.BAB == 'M':
+                if chance >= 50:
+                    self.path = 1
+                else:
+                    self.path = 0                    
+
+            else:
+                if chance >= 90:
+                    self.path = 1
+        return self.path
+    
+    def choose_path_of_war_attr(self, disciplines):
+        #choosing path of war discipline
+        potential_disciplines = getattr(data, disciplines)
+        if self.path > 0:
+            return random.sample(potential_disciplines, k=self.path)
+        else:
+            return None
+            
+
+    def Archetype_Assigner(self):
+        if self.c_class.lower() in self.archetypes.keys():
+            archetype_list_1 = self.archetypes[self.c_class]
+            self.archetype1 = random.choice(archetype_list_1)
+            print(f'!!!!!!! {self.archetype1}')               
+            # archetype_list_2 = self.archetypes[self.c_class]
+            # self.archetype2 = random.choice(archetype_list_2)       
+        else:
+            self.archetype1 = None
+            print(f'?????? {self.archetype1}')               
+            # self.archetype2 = None    
+     
+        return self.archetype1#, self.archetype2
+
+    # def ability_scores_from_level_attr():
+
+                # #print out alignment + physical characteristics
+                # print(f'Alignment' + '\n', c_alignment)
+            
+                #deciding deity based off of aligment
+                # if 'good' in c_alignment:
+                #     chosen_deity = random.choice(good_deities)
+                #     print(f"Deity \n {chosen_deity}") 
+                # elif 'evil' in c_alignment:
+                #     chosen_deity = random.choice(evil_deities)            
+                #     print(f"Deity \n {chosen_deity}")
+                # else:
+                #     chosen_deity = random.choice(neutral_deities)            
+                #     print(f"Deity \n {chosen_deity}")
+
+                # random_number = random.randint(1,5)
+                # extra_lang = random.sample(languages,k=random_number)
+                # print(f"These are the extra languages the character knows: {extra_lang}")
+
+                # # For testing purposes:
+                # # if isinstance(new_char_c_class,tuple):
+                # #     print(f"These are your classes:{c_class},{c_class_2}")
+                # # else:
+                # #     print(f"This is your one class: {c_class}")
+
+                # if isinstance(new_char_c_class,tuple):
+                #     if "Druid" == c_class or "Druid" == c_class_2:
+                #         print("you know Druidic")
+                # else:
+                #     if "Druid" == c_class:
+                #         print("you know Druidic")
+
+
+
+
+        # # use random.sample to select 8 random abilities
+        # random_abilities = random.sample(traits_abilities, 8)
+        # # loop through the random abilities and print out each element
+        # for ability in random_abilities:
+        #     print(f'(ability traits):',ability)
+
+        # # use random.sample to select 5 random personality traits
+        # random_personality = random.sample(traits, 5)
+        # # loop through the random abilities and print out each element
+        # for personality in random_personality:
+        #     print(f'(personality traits):',personality)
+
+        # # use random.sample to select 3 random mannerisms
+        # random_mannerisms = random.sample(mannerisms, 3)
+        # # loop through the random abilities and print out each element
+        # for manners in random_mannerisms:
+        #     print(f'(mannerisms):',manners)
+
+        # for character_flaws in range(len(flaw)):
+        #     print(f"(character_flaws): {flaw[character_flaws]}")
             
             # hair_color_choice = random.choice(hair_colors)
             # hair_type_choice = random.choice(hair_types)
@@ -274,6 +425,14 @@ class Character:
             # print(f'eye_colors' + '\n', eye_color_choice)
             # print(f'appearance' + '\n', appearance_choice)
 
+    # def randomize_profession_attr():
+
+    #     # use random.sample to select 3 random professions 
+    #     professions = profession_data['Profession']
+    #     random_professions = random.sample(professions, 3)
+    #     # loop through the random abilities and print out each element
+    #     for proforce in random_professions:
+    #         print(f'(profession):',proforce)
 
         # if userInput_race in race_data:
         #     racial_traits = race_data[userInput_race]["traits"]

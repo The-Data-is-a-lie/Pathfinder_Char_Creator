@@ -3,7 +3,7 @@ from math import floor
 #importing stats in case we want to work on them
 import random
 from utils import data
-from utils.data import traits, mannerisms, regions, weapon_groups, weapon_groups_region, disciplines, skills, evil_deities, good_deities, neutral_deities, languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class
+from utils.data import traits, mannerisms, regions, weapon_groups, weapon_groups_region, disciplines, skills,  languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class#evil_deities, good_deities, neutral_deities,
 import json
 import sys
 #from utils.race import race
@@ -403,28 +403,12 @@ def path_of_war():
  
 
 
-def various_racial_attr():
-    from main import filename
-    with open(filename, 'a') as f, open("utils/class.json", 'r') as c, open("utils/race.json", 'r') as r:
-            race_data = json.load(r)
-            global racial_traits, racial_language, racial_size, racial_speed, ability_scores
-            if userInput_race in race_data:
-                racial_traits = race_data[userInput_race]["traits"]
-                racial_language = race_data[userInput_race]["languages"]
-                racial_size = race_data[userInput_race]["size"]
-                racial_speed = race_data[userInput_race]["speed"]
-                ability_scores = race_data[userInput_race]["ability scores"]  
-
-                print(f"Ability Scores for {userInput_race} {ability_scores}")
-                print(f"Ability Scores for {userInput_race} {ability_scores}", file=f)
-                print(f"Racial traits: {racial_traits}")
-                print(f"Racial traits: {racial_traits}",file=f)
-                print(f"racial languages: {racial_language}")
-                print(f"racial languages: {racial_language}",file=f)
-                print(f"racial size: {racial_size}")
-                print(f"racial size: {racial_size}",file=f)
-                print(f"racial speed: {racial_speed}")
-                print(f"racial speed: {racial_speed}",file=f)
+def print_racial_attr():
+        print(f"Ability Scores for {userInput_race} {ability_scores}")
+        print(f"Racial traits: {racial_traits}")
+        print(f"racial languages: {racial_language}")
+        print(f"racial size: {racial_size}")
+        print(f"racial speed: {racial_speed}")
                 
 
 
@@ -534,7 +518,7 @@ def Total_Hitpoint_Calc():
 
 
 
-def appearnce_func():
+def appearance_func():
     from main import filename
     with open(filename, 'a') as f, open("utils/class.json", 'r') as c:
         #Potentially add a charactersitics by region section
