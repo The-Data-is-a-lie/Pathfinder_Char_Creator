@@ -50,22 +50,25 @@ while userInput.lower() == 'y':
 		
 
 		chooseClass(character)
+
+	
+		
 		character.randomize_body_feature('age')
 		character.randomize_body_feature('height')
 		character.randomize_body_feature('weight')			
-		# num_dice = int(input("How many dice would you like to roll? "))
-		# num_sides = int(input("How many sides should each die have? "))
-		# character.roll_stats(num_dice, num_sides)
+		num_dice = int(input("How many dice would you like to roll? "))
+		num_sides = int(input("How many sides should each die have? "))
+		character.roll_stats(num_dice, num_sides)
 
-		# character.randomize_flaw()
+		character.randomize_flaw()
 
-		# max_num = int(input("Enter the highest level you want the char to be: "))
-		# min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
-		# character.randomize_level(min_num, max_num)
+		max_num = int(input("Enter the highest level you want the char to be: "))
+		min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
+		character.randomize_level(min_num, max_num)
 
-		# character.hit_dice_calc()
-		# character.roll_hp()
-		# character.total_hp_calc()
+		character.hit_dice_calc()
+		character.roll_hp()
+		character.total_hp_calc()
 
 		# inherent_stats() [Skip for now, make OOP later]
 
@@ -93,20 +96,38 @@ while userInput.lower() == 'y':
 
 		print(f'This is your Deity {character.randomize_deity("all_deities")}')
 
+		# skill rank generator (class ranks + int)*level
+		# skills()
+		# mythic()
+
 		#3PP Content Only
 		# Needs to be in front of chooser
 		character.randomize_path_of_war_num("path_of_war_class")
 		print(f'This is your Path of War Path {character.choose_path_of_war_attr("disciplines")}')
 
 		character.Archetype_Assigner()
+		print(f'This is your gold {character.assign_gold("gold")}')
+		#use gold to randomly select items
 
-		# skills()
-		# mythic()
+		#calculating savings throws based off of class levels
+		character.saving_throw_calc('Fortitude')
+		character.saving_throw_calc('Reflex')
+		character.saving_throw_calc('Will')			
+	
+
 
 							# Want to Add:
+		# Find a way to print all main class info
+
+
+		# Add a note (everything is calculated off of base classes, will need to 
+		## add archetype changes manually) [e.g. skills, spells, feats]
+
+		# create a list for feats chosen to export over to Javascript					
 		# randomize_feats() -> probably create baby buckets per BAB to make it 
 		## simple yet not garbage randomly assigned feats
 
+		# Create a List for spells chosen to export over to Javascript
 		# randomize_spells() -> will be a bit complex, need to assign per 
 		## full caster, mid caster, low caster 
 		### (Can pull spells per class and assign them truly randomly)

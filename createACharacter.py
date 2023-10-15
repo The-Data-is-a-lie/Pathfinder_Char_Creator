@@ -11,6 +11,7 @@ from math import floor
 
 #External Imports
 from random import randrange
+import pandas
 
 # # Base Character Traits
 # class Character:
@@ -112,6 +113,14 @@ class Character:
         #archetype variables
         self.archetype1=None
         self.archetype2=None
+
+        #gold + Item variables
+        self.gold=None
+
+        #Saving throw variables
+        self.fort=None
+        self.reflex=None
+        self.will=None
 
         # replaced age_roll with age
         # self.age_roll =None
@@ -236,7 +245,6 @@ class Character:
         self.update_level(level)
 
     def hit_dice_calc(self):
-        print(self.classes.keys())
         # Class Hit Dice + total Hit points
         self.Hit_dice1 = self.classes[self.c_class]["hp"]
         # character.Hit_dice2 = character.classes[character.c_class_2]["hp"]            
@@ -357,39 +365,27 @@ class Character:
      
         return self.archetype1#, self.archetype2
 
-    # def ability_scores_from_level_attr():
 
-                # #print out alignment + physical characteristics
-                # print(f'Alignment' + '\n', c_alignment)
-            
-                #deciding deity based off of aligment
-                # if 'good' in c_alignment:
-                #     chosen_deity = random.choice(good_deities)
-                #     print(f"Deity \n {chosen_deity}") 
-                # elif 'evil' in c_alignment:
-                #     chosen_deity = random.choice(evil_deities)            
-                #     print(f"Deity \n {chosen_deity}")
-                # else:
-                #     chosen_deity = random.choice(neutral_deities)            
-                #     print(f"Deity \n {chosen_deity}")
+    def saving_throw_calc(self, saving_throw):
+        #update this to be for class_level then add up both options
+        high_saving_throw = floor(2 + (self.level/2))
+        low_saving_throw = floor((self.level/3))        
+        if saving_throw in self.classes[self.c_class]["saving throws"]: 
+            self.saving_throw = high_saving_throw            
+        else:
+            self.saving_throw = low_saving_throw
+        print(self.saving_throw)
+        return self.saving_throw
 
-                # random_number = random.randint(1,5)
-                # extra_lang = random.sample(languages,k=random_number)
-                # print(f"These are the extra languages the character knows: {extra_lang}")
 
-                # # For testing purposes:
-                # # if isinstance(new_char_c_class,tuple):
-                # #     print(f"These are your classes:{c_class},{c_class_2}")
-                # # else:
-                # #     print(f"This is your one class: {c_class}")
 
-                # if isinstance(new_char_c_class,tuple):
-                #     if "Druid" == c_class or "Druid" == c_class_2:
-                #         print("you know Druidic")
-                # else:
-                #     if "Druid" == c_class:
-                #         print("you know Druidic")
-
+    def assign_gold(self,gold):
+        gold = getattr(data,gold)
+        print(type(gold))     
+        if self.level>20:
+            self.gold = gold[-1]
+        self.gold = gold[self.level-2]
+        return self.gold
 
 
 
