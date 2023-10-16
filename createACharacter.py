@@ -7,11 +7,11 @@ from utils.util import  format_text, chooseClass, appendAttrData, roll_dice#,  R
 from utils.markdown import style
 import random
 import sys
-from math import floor
 
 #External Imports
 from random import randrange
-import pandas
+from math import floor
+import pandas as pd
 
 # # Base Character Traits
 # class Character:
@@ -95,6 +95,9 @@ class Character:
         self.c_class_level=None
         self.c_class_2_level=None                
         self.dip=None
+
+        #Spell list variables
+        self.spell_list=None
 
         self.flaw=None
         self.random_professions=None
@@ -239,6 +242,13 @@ class Character:
         self.int = roll_dice(num_dice, num_sides)
         self.wisdom = roll_dice(num_dice, num_sides)
         self.char = roll_dice(num_dice, num_sides)
+        print(f'STR {self.str}')
+        print(f'DEX {self.dex}')
+        print(f'CON {self.const}')
+        print(f'INT {self.int}')
+        print(f'WIS {self.wisdom}')
+        print(f'CHA {self.char}')                                        
+        
     
     def randomize_flaw(self):
         flaw_chance = random.randint(0,100)
@@ -308,8 +318,9 @@ class Character:
 
 
     def total_hp_calc(self):               
-            self.Total_HP = self.total_hp_rolls + self.Hit_dice1
-            print(f'This is your total HP: {self.Total_HP}')
+        self.Total_HP = self.total_hp_rolls + self.Hit_dice1 + (floor(self.const-10)/2 * self.level)
+
+        print(f'This is your total HP: {self.Total_HP}')
 
 
     #change age/height/weight string into useable array that contains (e.g.) 5d6 -> 5,6 (5 num_dice, 6 num_sides)
@@ -458,11 +469,30 @@ class Character:
             self.feats += 1     
 
 
-    def randomize_spells(self):
-        if self.classes[self.c_class]["casting level"].lower() in ['low', 'mid', 'high']:
-            print('This is a CASTER WUBALUBADUBDUB')
+    def randomize_spells(self,base_classes):
+        #to make it easier, delete most of the classes to just test base for now
+
+        #currently we only know that skald spells aren't proper, but 
+        # skalds use bard spell list -> just have an if statement for them
+        # + check others
+        casting_level = str(self.classes[self.c_class]["casting level"].lower())
+        print(casting_level)
+        base_classes = getattr(data,base_classes)
+        print(self.c_class)
+        print(base_classes)
+        self.spell_list = []
+        if casting_level in ('low', 'mid', 'high') and self.c_class in base_classes:
+            spell_data=pd.read_csv('data/spells.csv', sep='|')
+            print(spell_data.head())
+
+            # query = spell_data.loc[spell_data[self.c_class]]
+            # random.shuffle(query.to_numpy())
+            # spells = query[:15]
+            # print(spells)
+            # spell_data.loc[spell_data['name'].isin(spells), 'current_character_spells'] = True            
+
         else:
-            print('Not a Caster')
+            print('Not a base Caster')
 
         # # use random.sample to select 8 random abilities
         # random_abilities = random.sample(traits_abilities, 8)

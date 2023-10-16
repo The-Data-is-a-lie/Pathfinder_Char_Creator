@@ -71,59 +71,59 @@ while userInput.lower() == 'y':
 		character.roll_hp()
 		character.total_hp_calc()
 
-		character.randomize_spells()
+		character.randomize_spells('base_classes')
 
 		# inherent_stats() [Skip for now, make OOP later]
 
 
-		print(f"Racial traits: {character.get_racial_attr('traits')}")	
+		# print(f"Racial traits: {character.get_racial_attr('traits')}")	
 
-		print(f"racial languages: {character.get_racial_attr('languages')}")
-		print(f"racial size: {character.get_racial_attr('size')}")
-		print(f"racial speed: {character.get_racial_attr('speed')}")					
-		print(f"Ability Scores for {character.get_racial_attr('ability scores')}")												
+		# print(f"racial languages: {character.get_racial_attr('languages')}")
+		# print(f"racial size: {character.get_racial_attr('size')}")
+		# print(f"racial speed: {character.get_racial_attr('speed')}")					
+		# print(f"Ability Scores for {character.get_racial_attr('ability scores')}")												
 		
-		print(f'This is your hair_colors {character.randomize_apperance_attr("hair_colors")}')
-		print(f'This is your hair_types {character.randomize_apperance_attr("hair_types")}')
-		print(f'This is your eye_colors {character.randomize_apperance_attr("eye_colors")}')
-		print(f'This is your appearance {character.randomize_apperance_attr("appearance", 3)}')									
+		# print(f'This is your hair_colors {character.randomize_apperance_attr("hair_colors")}')
+		# print(f'This is your hair_types {character.randomize_apperance_attr("hair_types")}')
+		# print(f'This is your eye_colors {character.randomize_apperance_attr("eye_colors")}')
+		# print(f'This is your appearance {character.randomize_apperance_attr("appearance", 3)}')									
 
-		print(f'This is your background_traits {character.randomize_personality_attr("background_traits",4)}')
-		print(f'This is your professions {character.randomize_personality_attr("professions", 3)}')
-		print(f'This is your mannerisms {character.randomize_personality_attr("mannerisms", 3)}')
-		print(f'This is your flaws {character.randomize_personality_attr("flaws", 3)}')									
-
-
-		print(f' This is your alignment {character.randomize_alignment("alignments")}')
-
-		print(f'This is your Deity {character.randomize_deity("all_deities")}')
-
-		# skill rank generator (class ranks + int)*level
-
-		character.Archetype_Assigner()
-		print(f'This is your gold {character.assign_gold("gold")}')
-		#use gold to randomly select items
+		# print(f'This is your background_traits {character.randomize_personality_attr("background_traits",4)}')
+		# print(f'This is your professions {character.randomize_personality_attr("professions", 3)}')
+		# print(f'This is your mannerisms {character.randomize_personality_attr("mannerisms", 3)}')
+		# print(f'This is your flaws {character.randomize_personality_attr("flaws", 3)}')									
 
 
+		# print(f' This is your alignment {character.randomize_alignment("alignments")}')
 
-		#calculating savings throws based off of class levels
-		character.saving_throw_calc('Fortitude')
-		character.saving_throw_calc('Reflex')
-		character.saving_throw_calc('Will')			
+		# print(f'This is your Deity {character.randomize_deity("all_deities")}')
 
-		print(f'This is your mythic rank {character.randomize_mythic()}')
+		# # skill rank generator (class ranks + int)*level
 
-		#creating quick race/class specific flags 
-		character.druidic_flag()
-		character.human_flag()
+		# character.Archetype_Assigner()
+		# print(f'This is your gold {character.assign_gold("gold")}')
+		# #use gold to randomly select items
 
-		#3PP Content Only
-		# Path of War Content
-		character.randomize_path_of_war_num("path_of_war_class")
-		print(f'This is your Path of War Path {character.choose_path_of_war_attr("disciplines")}')
 
-		#Luck Content
-		print(f'this is your luck score {character.randomize_luck()}')
+
+		# #calculating savings throws based off of class levels
+		# character.saving_throw_calc('Fortitude')
+		# character.saving_throw_calc('Reflex')
+		# character.saving_throw_calc('Will')			
+
+		# print(f'This is your mythic rank {character.randomize_mythic()}')
+
+		# #creating quick race/class specific flags 
+		# character.druidic_flag()
+		# character.human_flag()
+
+		# #3PP Content Only
+		# # Path of War Content
+		# character.randomize_path_of_war_num("path_of_war_class")
+		# print(f'This is your Path of War Path {character.choose_path_of_war_attr("disciplines")}')
+
+		# #Luck Content
+		# print(f'this is your luck score {character.randomize_luck()}')
 
 
 

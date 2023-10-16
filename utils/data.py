@@ -363,23 +363,10 @@ appearance = [  "Athletic",
   "Tousled hair",
   "Towering"]
 
+base_classes = ['sorcerer','wizard','cleric','druid','ranger','bard','paladin','alchemist','summoner','witch','inquisitor','oracle','antipaladin','magus','adept','bloodrager','shaman','psychic','medium','mesmerist','occultist','spiritualist','skald','investigator','hunter']
+
 gold = [1000,3000,6000,10500,16000,23500,33000,46000,62000,82000,108000,140000,185000,240000,315000,410000,530000,685000,880000]
-#Combat Spheres:
-combat_spheres = ["Alchemy","Athletics","Barrage","Barroom","Beastmastery","Berserker","Boxing","Brute","Dual Wielding","Duelist","Equipment","Fencing","Gladiator","Guardian","Lancer","Open Hand","Scoundrel","Scout","Shield","Sniper","Trap","Warleader","Wrestling"]
-#magic spheres:
-magic_spheres = ["Alteration","Blood","Conjuration","Creation","Dark","Death","Destruction","Divination","Enhancement","Fallen Fey","Fate","Illusion","Life","Light","Mana","Mind","Nature","Protection","Telekinesis","Time","War","Warp","Weather"]
-#skill spheres:
-skill_spheres = ["Artifice", "Bluster", "Body Control", "Communication", "Faction", "Herbalism", "Infiltration", "Investigation", "Navigation", "Performance", "Spellhacking", "Study", "Subterfuge", "Survivalism", "Vocation"]
 
-#path of war classes:
-path_of_war_class = ['Warder', 'Harbinger', 'Mystic', 'Zealot', 'Stalker']
-
-#add all of forests options
-
-
-#add all of forests options
-
-#add all of forests options
 mannerisms = ['Adjusts glasses', 'Bites fingernails', 'Bites lip', 'Blows bubbles', 'Brushes hair out of face', 'Bursts into laughter', 'Chews gum', 'Chuckles', 'Clicks pen', 'Clutches purse tightly', 'Combs hair with fingers', 'Covers mouth when speaking', 'Cracks knuckles', 'Crosses arms', 'Crosses legs', 'Curls up in a ball', 'Doodles', 'Drums fingers', 'Eyes dart around room', 'Fiddles with hair', 'Fidgets', 'Flexes muscles', 'Folds arms', 'Furrows brow', 'Gestures while talking', 'Glances at watch', 'Grins', 'Hides hands in pockets', 'Hugs oneself', 'Hums to oneself', 'Jingles keys', 'Jumps up and down', 'Laughs at own jokes', 'Leans back', 'Leans forward', 'Licks lips', 'Lifts eyebrows', 'Lifts chin', 'Licks teeth', 'Looks around nervously', 'Looks over glasses', 'Mumbles', 'Nervously clears throat', 'Nods often', 'Opens and closes mouth', 'Paces', 'Pats pockets', 'Peers over glasses', 'Plays with jewelry', 'Plays with sleeves', 'Pops knuckles', 'Puts hands in pockets', 'Raises eyebrows', 'Readjusts clothing', 'Rests chin in hand', 'Rests hand on hip', 'Rests head on hand', 'Rolls eyes', 'Rub hands together', 'Runs fingers through hair', 'Scratches head', 'Shakes head', 'Shifts weight from one foot to the other', 'Shrugs', 'Sighs', 'Smacks lips', 'Smiles', 'Smirks', 'Snaps fingers', 'Squints', 'Stares into space', 'Stares intensely', 'Stifles a yawn', 'Strokes chin', 'Sways back and forth', 'Sweats', 'Swings arms', 'Taps foot', 'Taps pencil', 'Thumbs through a book', 'Throws head back when laughing', 'Tilts head', 'Tucks hair behind ears', 'Twiddles thumbs', 'Twirls hair', 'Twists hair', 'Twitches', 'Winks', 'Wipes hands on pants', 'Wipes nose', 'Wipes sweat from forehead', 'Withdraws into oneself', 'Wring hands', 'Yawns', 'Yells when excited', 'Zones out', 'Bites lower lip', 'Bites upper lip', 'Blows nose', 'Brushes off clothes', 'Clenches fists', 'Clenches jaw', 'Combs mustache', 'Covers ears', 'Covers eyes', 'Crosses fingers', 'Crouches', 'Cups chin with hand', 'Dabs at eyes', 'Dons sunglasses', 'Drops head', 'Elevates eyebrows', 'Exhales audibly', 'Fans oneself', 'Fiddles with jewelry', 'Fingers lapel', 'Flips hair', 'Folds hands', 'Gathers hair into a ponytail', 'Glances away', 'Glances over shoulder', 'Gnaws on pencil', 'Grits teeth', 'Holds breath', 'Huffs', 'Jumps at sudden sounds', 'Kicks at the ground', 'Kneads fingers', 'Kneels', 'Lays head on desk', 'Leans on desk', 'Lift']
 
 #add all of forests options
@@ -392,7 +379,6 @@ traits = ['ambitious', 'anxious', 'artistic', 'brave', 'calm', 'careless','charm
 #need to use archetypes_{class_name} so we can grab it like this later
                     #Base Classes
 
-disciplines = ["Black Seraph", "Broken Blade", "Brutal Crocodile", "Cursed Razor", "Elemental Flux", "Eternal Guardian", "Fools Errand", "Golden Lion", "Iron Tortoise", "Leaden Hyena", "Mangled Gear", "Mithral Current", "Piercing Thunder", "Primal Fury", "Radiant Dawn", "Riven Hourglass", "Roaring Mouse", "Sagitta Stellaris", "Scarlet Throne", "Shattered Mirror", "Silver Crane", "Sleeping Goddess", "Solar Wind", "Spark of Battle", "Steel Serpent", "Surging Shark", "Tempest Gale", "Thrashing Dragon", "Unquiet Grave", "Veiled Moon"]
 
                     #Path of war classes
 
@@ -2873,3 +2859,18 @@ flaws = [
 ]
 
 version = "10/12/23"
+
+
+#3PP Content:
+#Combat Spheres:
+combat_spheres = ["Alchemy","Athletics","Barrage","Barroom","Beastmastery","Berserker","Boxing","Brute","Dual Wielding","Duelist","Equipment","Fencing","Gladiator","Guardian","Lancer","Open Hand","Scoundrel","Scout","Shield","Sniper","Trap","Warleader","Wrestling"]
+#magic spheres:
+magic_spheres = ["Alteration","Blood","Conjuration","Creation","Dark","Death","Destruction","Divination","Enhancement","Fallen Fey","Fate","Illusion","Life","Light","Mana","Mind","Nature","Protection","Telekinesis","Time","War","Warp","Weather"]
+#skill spheres:
+skill_spheres = ["Artifice", "Bluster", "Body Control", "Communication", "Faction", "Herbalism", "Infiltration", "Investigation", "Navigation", "Performance", "Spellhacking", "Study", "Subterfuge", "Survivalism", "Vocation"]
+
+
+
+#path of war classes:
+path_of_war_class = ['Warder', 'Harbinger', 'Mystic', 'Zealot', 'Stalker']
+disciplines = ["Black Seraph", "Broken Blade", "Brutal Crocodile", "Cursed Razor", "Elemental Flux", "Eternal Guardian", "Fools Errand", "Golden Lion", "Iron Tortoise", "Leaden Hyena", "Mangled Gear", "Mithral Current", "Piercing Thunder", "Primal Fury", "Radiant Dawn", "Riven Hourglass", "Roaring Mouse", "Sagitta Stellaris", "Scarlet Throne", "Shattered Mirror", "Silver Crane", "Sleeping Goddess", "Solar Wind", "Spark of Battle", "Steel Serpent", "Surging Shark", "Tempest Gale", "Thrashing Dragon", "Unquiet Grave", "Veiled Moon"]
