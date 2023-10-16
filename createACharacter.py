@@ -59,8 +59,7 @@ class Character:
         self.weaponz=None
         self.luck_score=None
         self.mythic_rank=None
-        self.c_class=None,
-        self.c_class_2=None, 
+
         # Sometimes this is a tuple, we'll need to update the code to handle that
         self.flaw=None
         self.proforce=None
@@ -85,11 +84,18 @@ class Character:
         self.total_hp_rolls=None    
         # self.total_hp_rolls1=None
         # self.total_hp_rolls2=None                            
+
+        #level dependent variables
         self.total_Hit_dice=None
         self.extra_ability_score_levels=None
         self.npc_level=None
         self.BAB_total=None
         self.c_class=None
+        self.c_class_2=None
+        self.c_class_level=None
+        self.c_class_2_level=None                
+        self.dip=None
+
         self.flaw=None
         self.random_professions=None
         self.c_skills =None
@@ -167,8 +173,15 @@ class Character:
              
 
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
-    def update_level(self, level):
-        self.level = level
+    def update_level(self, level, c_class_level, c_class_2_level):
+        if self.c_class == '':
+            self.level = level
+            self.c_class_level = c_class_level
+        else:  
+            self.level = level
+            self.c_class_level = c_class_level
+            self.c_class_2_level = c_class_2_level              
+
         if len(self.flaw) == 2 or len(self.flaw) == 3:
             self.feats = (4 + floor(self.level/2) + floor(self.level/5))
         elif len(self.flaw) == 4:
@@ -181,6 +194,7 @@ class Character:
             #remove 2 extra self.feats because of no flaws
             self.feats = (4 - 2 + floor(self.level/2) + floor(self.level/5))
         self._update_BAB_total()
+
 
     def update_level_ability_score(self, level):
         self.level=level
@@ -240,36 +254,63 @@ class Character:
             flaw = random.sample(list(self.flaws),4)
         self.flaw = flaw
     
-    def randomize_level(self, min, max):
-        level = random.randint(min, max)
-        self.update_level(level)
+    def randomize_level(self, min, max_num):
+        if self.c_class_2 == '':
+            level = random.randint(min, max(min, max_num))
+            c_class_level = level
+            c_class_2_level = 0
+            self.update_level(level, c_class_level, c_class_2_level)
+        if self.dip == True:
+            level = random.randint(min, max(min, max_num))
+            c_class_level = level-1
+            c_class_2_level = 1
+            self.update_level(level, c_class_level, c_class_2_level)
+        else:
+            level = random.randint(min, max(min, max_num))
+            c_class_level = random.randint(min-1,level-1)
+            c_class_2_level = level - c_class_level
+            self.update_level(level, c_class_level, c_class_2_level)            
 
     def hit_dice_calc(self):
-        # Class Hit Dice + total Hit points
-        self.Hit_dice1 = self.classes[self.c_class]["hp"]
-        # character.Hit_dice2 = character.classes[character.c_class_2]["hp"]            
+        if self.c_class_2 != '':
+            self.Hit_dice1 = self.classes[self.c_class]["hp"]
+            self.Hit_dice2 = self.classes[self.c_class_2]["hp"]            
 
+            print(f"hit dice {self.Hit_dice1}")
+            print(f"hit dice {self.Hit_dice2}")            
+      
+            print(f"This is your character's first class Hit dice: {self.Hit_dice1}")
+            print(f"This is your character's second class Hit dice: {self.Hit_dice2}")            
+        else:
+            self.Hit_dice1 = self.classes[self.c_class]["hp"]
+            print(f"hit dice {self.Hit_dice1}")            
+            print(f"This is your character's first class Hit dice: {self.Hit_dice1}")                        
 
-        print(f"hit dice {self.Hit_dice1}")
-        # print(f"hit dice {self.Hit_dice2}")            
-
-        # print(f"hit dice {Hit_dice2}")            
-        print(f"This is your character's first class Hit dice: {self.Hit_dice1}")
-        # print(f"This is your character's first class Hit dice: {self.Hit_dice2}")            
 
     def roll_hp(self):
+        print(f' This is your first class level {self.c_class_level}')        
+        print(f' This is your second class level {self.c_class_2_level}')
         hp_rolls = []
         #Figure out how to loop this to calc for each class rather than just one
-        for _ in range(self.level-1):
+        for _ in range(self.c_class_level-1):
+            print('#1 !!!!!!!!!')
             hp_rolls.append(random.randint(1,self.Hit_dice1))
             print(hp_rolls) #working as expected
         self.total_hp_rolls = sum(hp_rolls)         
+
+        for _ in range(self.c_class_2_level):
+            print('#2 ?????????')
+            hp_rolls.append(random.randint(1,self.Hit_dice2))
+            print(hp_rolls) #working as expected
+        self.total_hp_rolls = sum(hp_rolls)         
+
         return self.total_hp_rolls
 
 
-    def total_hp_calc(self):        
-        self.Total_HP = self.total_hp_rolls + self.Hit_dice1
-        print(f'This is your total HP: {self.Total_HP}')
+    def total_hp_calc(self):               
+            self.Total_HP = self.total_hp_rolls + self.Hit_dice1
+            print(f'This is your total HP: {self.Total_HP}')
+
 
     #change age/height/weight string into useable array that contains (e.g.) 5d6 -> 5,6 (5 num_dice, 6 num_sides)
     def randomize_body_feature(self, body_attribute):
@@ -321,7 +362,7 @@ class Character:
 
 
     def randomize_path_of_war_num(self, path_of_war_class):
-        path = None
+        self.path = 0
         chance = random.randint(1,100)
         getattr(data,path_of_war_class)
         if self.c_class not in path_of_war_class:
@@ -377,8 +418,6 @@ class Character:
         print(self.saving_throw)
         return self.saving_throw
 
-
-
     def assign_gold(self,gold):
         gold = getattr(data,gold)
         print(type(gold))     
@@ -387,7 +426,43 @@ class Character:
         self.gold = gold[self.level-2]
         return self.gold
 
+    def randomize_mythic(self):
+        self.mythic_rank = 0
+        if random.randint(1, 10) >= 1:
+            self.mythic_rank = 1					
+            for j in range(2, 11):
+                roll = random.randint(1, 100)
+                if roll >= 90:
+                    self.mythic_rank += 1
+        else:
+            self.mythic_rank = 0
+        return self.mythic_rank
 
+
+    def randomize_luck(self):
+        if random.randint(1, 100) >= 95:
+            self.luck_score = random.randint(1, 40)
+        #using a -40 to make it a negative luck score when you roll low
+        elif random.randint(1, 100) <= 5:
+            self.luck_score = random.randint(1, 40) - 40
+        else:
+            self.luck_score = 0
+        return self.luck_score
+
+    def druidic_flag(self):
+        if self.c_class.lower() == 'druid':
+            self.languages = languages.append('Druidic')
+
+    def human_flag(self):
+        if self.c_class.lower() == 'human':
+            self.feats += 1     
+
+
+    def randomize_spells(self):
+        if self.classes[self.c_class]["casting level"].lower() in ['low', 'mid', 'high']:
+            print('This is a CASTER WUBALUBADUBDUB')
+        else:
+            print('Not a Caster')
 
         # # use random.sample to select 8 random abilities
         # random_abilities = random.sample(traits_abilities, 8)

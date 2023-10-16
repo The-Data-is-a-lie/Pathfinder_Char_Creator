@@ -24,14 +24,14 @@ userInput = input('Create a new character? (y/n): ').lower()
 # character = Character()
 
 character_json_config = {
-	'race': 'utils/race.json',
-	'class': 'utils/class.json',
-	'traits': 'utils/traits_abilities.json',
-	'profession': 'utils/profession.json',
-	'last_names_regions': 'last_names_regions.json',
-	'first_names_regions': 'first_names_regions.json',
-	'flaws': 'utils/flaws.json',
-	'archetypes': 'utils/archetypes.json'
+	'race': 'json/race.json',
+	'class': 'json/class.json',
+	'traits': 'json/traits_abilities.json',
+	'profession': 'json/profession.json',
+	'last_names_regions': 'json/last_names_regions.json',
+	'first_names_regions': 'json/first_names_regions.json',
+	'flaws': 'json/flaws.json',
+	'archetypes': 'json/archetypes.json'
 }
 
 
@@ -66,16 +66,18 @@ while userInput.lower() == 'y':
 		min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
 		character.randomize_level(min_num, max_num)
 
+		#hp calculations
 		character.hit_dice_calc()
 		character.roll_hp()
 		character.total_hp_calc()
+
+		character.randomize_spells()
 
 		# inherent_stats() [Skip for now, make OOP later]
 
 
 		print(f"Racial traits: {character.get_racial_attr('traits')}")	
-		#add a druid flag function, if druid append 'Druidic' onto languages known		
-		#add a human flag function, if human feats = feats+1
+
 		print(f"racial languages: {character.get_racial_attr('languages')}")
 		print(f"racial size: {character.get_racial_attr('size')}")
 		print(f"racial speed: {character.get_racial_attr('speed')}")					
@@ -97,23 +99,32 @@ while userInput.lower() == 'y':
 		print(f'This is your Deity {character.randomize_deity("all_deities")}')
 
 		# skill rank generator (class ranks + int)*level
-		# skills()
-		# mythic()
-
-		#3PP Content Only
-		# Needs to be in front of chooser
-		character.randomize_path_of_war_num("path_of_war_class")
-		print(f'This is your Path of War Path {character.choose_path_of_war_attr("disciplines")}')
 
 		character.Archetype_Assigner()
 		print(f'This is your gold {character.assign_gold("gold")}')
 		#use gold to randomly select items
 
+
+
 		#calculating savings throws based off of class levels
 		character.saving_throw_calc('Fortitude')
 		character.saving_throw_calc('Reflex')
 		character.saving_throw_calc('Will')			
-	
+
+		print(f'This is your mythic rank {character.randomize_mythic()}')
+
+		#creating quick race/class specific flags 
+		character.druidic_flag()
+		character.human_flag()
+
+		#3PP Content Only
+		# Path of War Content
+		character.randomize_path_of_war_num("path_of_war_class")
+		print(f'This is your Path of War Path {character.choose_path_of_war_attr("disciplines")}')
+
+		#Luck Content
+		print(f'this is your luck score {character.randomize_luck()}')
+
 
 
 							# Want to Add:

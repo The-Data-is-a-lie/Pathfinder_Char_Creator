@@ -172,14 +172,15 @@ def chooseClass(character):
     #adding a 10% chance for the character to take a dip or multi-class
     chance_dip = random.randint(0,100)
     coin_flip = random.randint(0,100)
-    if  chance_dip >= 90 and coin_flip >= 50:
+    if  chance_dip >= 1 and coin_flip >= 50:
         c_class=classes[randrange(0,len(classes))]
         c_class_2 = random.choice(list(character.classes.keys()))
         print(f"Primary class: {c_class}")
         print(f"1 level Dip {c_class_2}")
-    elif chance_dip >= 90 and coin_flip < 50:
+    elif chance_dip >= 1 and coin_flip < 50:
         c_class=classes[randrange(0,len(classes))]
         c_class_2 = random.choice(list(character.classes.keys()))
+        character.dip = True
         print(f"Primary class: {c_class}")
         print(f"Secondary Multi-class {c_class_2}")
     else:
