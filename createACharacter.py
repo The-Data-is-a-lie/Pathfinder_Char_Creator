@@ -10,7 +10,7 @@ import sys
 
 #External Imports
 from random import randrange
-from math import floor
+from math import floor, ceil
 import pandas as pd
 
 # # Base Character Traits
@@ -93,11 +93,17 @@ class Character:
         self.c_class=None
         self.c_class_2=None
         self.c_class_level=None
-        self.c_class_2_level=None                
+        self.c_class_2_level=None     
+        self.c_class_for_spells=None
+        self.c_class_2_for_spells=None  
+        self.spells_1_known=None
+        self.spells_2_known=None                        
         self.dip=None
 
         #Spell list variables
-        self.spell_list=None
+        #change these to prepared spells
+        self.spells_list_1=None
+        self.spells_list_2=None        
 
         self.flaw=None
         self.random_professions=None
@@ -468,93 +474,138 @@ class Character:
         if self.c_class.lower() == 'human':
             self.feats += 1     
 
-
-    def randomize_spells(self,base_classes):
-        #to make it easier, delete most of the classes to just test base for now
-
+    def class_for_spells(self):
         #currently we only know that skald spells aren't proper, but 
         # skalds use bard spell list -> just have an if statement for them
+        # investigators use alchemists spells
         # + check others
-        casting_level = str(self.classes[self.c_class]["casting level"].lower())
-        print(casting_level)
-        base_classes = getattr(data,base_classes)
-        print(self.c_class)
-        print(base_classes)
-        self.spell_list = []
-        if casting_level in ('low', 'mid', 'high') and self.c_class in base_classes:
-            spell_data=pd.read_csv('data/spells.csv', sep='|')
-            print(spell_data.head())
-
-            # query = spell_data.loc[spell_data[self.c_class]]
-            # random.shuffle(query.to_numpy())
-            # spells = query[:15]
-            # print(spells)
-            # spell_data.loc[spell_data['name'].isin(spells), 'current_character_spells'] = True            
-
+                
+        #This is a quick and easy function to make it so we search
+        #for different spell lists than our current class
+        if self.c_class == 'skald':
+            self.c_class_for_spells = 'bard'
+        if self.c_class == 'investigator':
+            self.c_class_for_spells = 'alchemist'   
         else:
-            print('Not a base Caster')
+            self.c_class = self.c_class     
+        return self.c_class_for_spells
 
-        # # use random.sample to select 8 random abilities
-        # random_abilities = random.sample(traits_abilities, 8)
-        # # loop through the random abilities and print out each element
-        # for ability in random_abilities:
-        #     print(f'(ability traits):',ability)
+    def high_caster_formula(self,n):
+        if cast_level % 2 == 0:
+            cast_level=n // 2
+        else:
+            cast_level=(n + 1) // 2
+        cast_level = min(cast_level,9)
+        return cast_level
+    
+    def mid_caster_formula(self,n):
+        if cast_level % 3 == 1:
+            cast_level= ceil(n // 3)+1
+        else:
+            cast_level= ceil(n / 3)
+        cast_level = min(n,6)
+        return cast_level
 
-        # # use random.sample to select 5 random personality traits
-        # random_personality = random.sample(traits, 5)
-        # # loop through the random abilities and print out each element
-        # for personality in random_personality:
-        #     print(f'(personality traits):',personality)
+    def low_caster_formula(self,n):
+        cast_level= ceil(n / 3)-1
+        cast_level = min(cast_level,4)
+        return cast_level
+    
 
-        # # use random.sample to select 3 random mannerisms
-        # random_mannerisms = random.sample(mannerisms, 3)
-        # # loop through the random abilities and print out each element
-        # for manners in random_mannerisms:
-        #     print(f'(mannerisms):',manners)
 
-        # for character_flaws in range(len(flaw)):
-        #     print(f"(character_flaws): {flaw[character_flaws]}")
+    # def spells_known_divine_caster(self, divine_casters):
+    #     self.spells_1_known = []        
+    #     getattr(data, divine_casters)
+    #     casting_level_1 = str(self.classes[c_class]["casting level"].lower())         
+    #     spell_data=pd.read_csv('data/spells.csv', sep='|')
+    #     extraction_list = ['name', self.c_class]      
+    #     high_caster_formula = high_caster_formula(self.c_class_level)
+    #     mid_caster_formula = mid_caster_formula(self.c_class_level)
+    #     low_caster_formula = low_caster_formula(self.c_class_level)
+
+    #     # we are just trying to grab all spells in their lists, since they know all of them
+    #     if self.c_class in divine_casters and casting_level_1 == 'high':
+    #             # range = 0 because divine casters know all cantrips as well
+    #             for i in range(0, high_caster_formula):              
+    #                 self.spells_1_known = spell_data.loc[spell_data[self.c_class] == i, extraction_list]
+    #     elif self.c_class in divine_casters and casting_level_1 == 'high':
+    #             for i in range(1, mid_caster_formula):              
+    #                 self.spells_1_known = spell_data.loc[spell_data[self.c_class] == i, extraction_list]            
+
+
             
-            # hair_color_choice = random.choice(hair_colors)
-            # hair_type_choice = random.choice(hair_types)
-            # eye_color_choice = random.choice(eye_colors)
-            # random_app_number = random.randint(1,3)
-            # appearance_choice = random.sample(appearance,k=random_app_number)
-
-            # print(f'hair_colors' + '\n', hair_color_choice)
-            # print(f'hair_types' + '\n', hair_type_choice)
-            # print(f'eye_colors' + '\n', eye_color_choice)
-            # print(f'appearance' + '\n', appearance_choice)
-
-    # def randomize_profession_attr():
-
-    #     # use random.sample to select 3 random professions 
-    #     professions = profession_data['Profession']
-    #     random_professions = random.sample(professions, 3)
-    #     # loop through the random abilities and print out each element
-    #     for proforce in random_professions:
-    #         print(f'(profession):',proforce)
-
-        # if userInput_race in race_data:
-        #     racial_traits = race_data[userInput_race]["traits"]
-        #     racial_language = race_data[userInput_race]["languages"]
-        #     racial_size = race_data[userInput_race]["size"]
-        #     racial_speed = race_data[userInput_race]["speed"]
-        #     racial_ability_scores = race_data[userInput_race]["ability scores"]          
-        
 
 
-        # if isinstance(self.age[1], str):
-        #     left, right = map(int, self.age[1].split('d'))
-        #     age_roll = sum([random.randint(1, right) for i in range(left)]) + age[0]
-        # else:
-        #     age_roll = random.randint(self.age[0], self.age[1])
-        #     left = self.age[0]
-        # age_roll += left
-        # print(f"Age: {age_roll}")
+    # def randomize_spells_known_1(self):
+    #     if self.c_class_for_spells in 
+
+    # def randomize_spells_known_1(self,base_classes):
+
+    #     self.spells_list_1 = []
+    #     c_class = self.c_class
+    #     casting_level_1 = str(self.classes[c_class]["casting level"].lower())   
+    #     base_classes = getattr(data,base_classes)
+    #     spell_data=pd.read_csv('data/spells.csv', sep='|')
+    #     extraction_list = ['name', c_class]
+    #     self.spell_list = []
+
+    #     if casting_level_1 in ('low') and c_class in base_classes:
+
+    #         for i in range(self.c_class_level):
+    #             query_i = spell_data.loc[spell_data[c_class] == i, extraction_list] 
+    #             random.shuffle(query_i.to_numpy())
+    #             spells = query_i[:3]
+    #             self.spells_list_1.append(spells)
+
+    #     if casting_level_1 in ('mid') and c_class in base_classes:
+
+    #         for i in range(self.c_class_level):
+    #             query_i = spell_data.loc[spell_data[c_class] == i, extraction_list] 
+    #             random.shuffle(query_i.to_numpy())
+    #             spells = query_i[:3]
+    #             self.spells_list_1.append(spells)
+
+    #     if casting_level_1 in ('high') and c_class in base_classes:
+
+    #         for i in range(self.c_class_level):
+    #             query_i = spell_data.loc[spell_data[c_class] == i, extraction_list] 
+    #             random.shuffle(query_i.to_numpy())
+    #             spells = query_i[:3]
+    #             self.spells_list_1.append(spells)                                
+
+          
+    #     else:
+    #         print('Not a base Caster_class_1')
+
+    #     # Print the list of strings
+    #     print(self.spells_list_1)            
+    
 
 
 
+    # def randomize_spells_known_2(self,base_classes):
+    #     self.spells_list_2 = []
+    #     c_class = self.c_class
+    #     casting_level_2 = str(self.classes[c_class]["casting level"].lower())   
+    #     base_classes = getattr(data,base_classes)
+    #     spell_data=pd.read_csv('data/spells.csv', sep='|')
+    #     extraction_list = ['name', c_class]
+
+    #     self.spell_list = []
+    #     if casting_level_2 in ('low', 'mid', 'high') and c_class in base_classes:
+
+
+    #         for i in range(self.c_class_level):
+    #             query_i = spell_data.loc[spell_data[c_class] == i, extraction_list] 
+    #             random.shuffle(query_i.to_numpy())
+    #             spells = query_i[:3]
+    #             self.spells_list_2.append(spells)
+
+    #         # Print the list of strings
+    #         print(self.spells_list_2)            
+          
+    #     else:
+    #         print('Not a base Caster_class_2')        
 
 
 # setting up a new character
@@ -562,132 +613,3 @@ def CreateNewCharacter(character_json_config):
     new_char = Character(character_json_config)
     return new_char
 
-
-
-
-
-
-
-
-
-def _CreateNewCharacter():
-    from main import filename
-    with open(filename, 'a') as f, open("utils/race.json", "r") as r, open("utils/class.json", "r") as c, open("utils/traits_abilities.json") as t, open("utils/profession.json") as p:
-        profession_data = json.load(p)
-        race_data = json.load(r)
-        class_data = json.load(c)
-        traits_data = json.load(t)
-
-        global c_const, c_str, c_dex, c_int, c_wisdom, c_char
-        global traits_abilities
-        global c_alignment
-        global c_langs
-        global c_skills, c_skills_2
-        global new_char_c_class
-
-        new_char = Character()
-
-        races = []
-        classes = []
-
-        for race in race_data:
-            races.append(race)
-
-        for _class in class_data:
-            classes.append(_class)
-
-        new_char.c_class = chooseClass()
-        new_char_c_class = new_char.c_class
-
-                        #this is where we change the stat rolls:
-        print(style.BLACK + f"drop the lowest roll for each one" + style.END)
-        num_dice = int(input("How many dice would you like to roll? "))
-        num_sides = int(input("How many sides should each die have? "))
-
-        #declare con as global so we can work with it
-        
-        c_str = roll_dice(num_dice, num_sides, 'Strength')
-        c_dex = roll_dice(num_dice, num_sides, 'Dexterity')
-        c_const = roll_dice(num_dice, num_sides, 'Constitution')
-        c_int = roll_dice(num_dice, num_sides, 'Intelligence')
-        c_wisdom = roll_dice(num_dice, num_sides, 'Wisdom')
-        c_char = roll_dice(num_dice, num_sides, 'Charisma')
-
-
-        new_char.c_str = c_str
-        new_char.c_dex = c_dex
-        new_char.c_const = c_const
-        new_char.c_int = c_int
-        new_char.c_wisdom = c_wisdom                                
-        new_char.c_char = c_char
-
-
-
-
-        c_langs = ['Common']
-        new_char.c_langs = c_langs
-        #c_class is now a tuple sometimes, so we need to be able to work with if it is
-        #c_bab = class_data[new_char.c_class[0]]['BAB']
-        #c_bab = class_data[new_char.c_class[1]]['BAB']
-
-        #Creating character traits, (mannerisms, traits, profession, appearances, alignment, + traits_Abilities so we can print them out later
-        mannerisms = []
-        new_char.c_mannerisms = appendAttrData(mannerisms, data.mannerisms)
-
-        traits = []
-        new_char.c_traits = appendAttrData(traits, data.traits)
-
-        Alignment = []
-        c_alignment = appendAttrData(Alignment, data.alignment)
-        new_char.c_alignment = c_alignment
-
-        traits_abilities = []
-        new_char.c_traits_abilities = appendAttrData(traits_abilities, traits_data)
-    
-
-        #pre formatting stats:
-        global formatted_charisma, formatted_constitution, formatted_dexterity, formatted_intelligence, formatted_strength, formatted_wisdom
-        # formatted_strength = format_text(f'Strength: {new_char.c_str}', bold=True, color="red")
-        # formatted_dexterity = format_text(f'Dexterity: {new_char.c_dex}', bold=True, color="red")
-        # formatted_constitution = format_text(f'Constitution: {new_char.c_const}', bold=True, color="red")
-        # formatted_intelligence = format_text(f'Intelligence: {new_char.c_int}', bold=True, color="red")
-        # formatted_wisdom = format_text(f'Wisdom: {new_char.c_wisdom}', bold=True, color="red")
-        # formatted_charisma = format_text(f'Charisma: {new_char.c_char}', bold=True, color="red")
-
-        formatted_strength = new_char.c_str
-        formatted_dexterity = new_char.c_dex
-        formatted_constitution = new_char.c_const
-        formatted_intelligence = new_char.c_int
-        formatted_wisdom = new_char.c_wisdom
-        formatted_charisma = new_char.c_char
-
-        global character_data
-        character_data = {}
-        # #Adding stats to the overall Character Dictionary
-        # #Physical stats
-        character_data.update({"str": formatted_strength, "dex": formatted_dexterity, "con": formatted_constitution}) 
-        # #Mental stats
-        character_data.update({"int": formatted_intelligence, "wis": formatted_wisdom, "cha": formatted_charisma})
-
-
-
-        #Print into Terminal
-        print(formatted_strength)
-        print(formatted_dexterity)
-        print(formatted_constitution)
-        print(formatted_intelligence)
-        print(formatted_wisdom)
-        print(formatted_charisma)
-
-
-
-
-
-
-
-
-
-            
-        print('===============================================================')
-
-            

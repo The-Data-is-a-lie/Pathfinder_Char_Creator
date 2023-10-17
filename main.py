@@ -51,6 +51,18 @@ while userInput.lower() == 'y':
 
 		chooseClass(character)
 
+		# Spells known fucntion
+		# create a json dicitonary with all different spells known tables 
+		# (wizard, cleric, ...) 
+		# make it look like this
+		# "wizard": { '1st': [1,1,1,2,2,2,3,3,3,4,4,4,4,4,4,]} 
+		# ['2nd': None,None,1,1,1,2,2,2,3,3,3,3] 
+		# or '1', '2'
+		# ...
+		# Create a function to grab all spells underneath highest level spell known
+		# and grab all elements from your highest class level
+
+
 	
 		
 		character.randomize_body_feature('age')
@@ -71,9 +83,15 @@ while userInput.lower() == 'y':
 		character.roll_hp()
 		character.total_hp_calc()
 
-		character.randomize_spells('base_classes')
+		character.class_for_spells()
+		#Divine Casters have all spells known (don't make this function for them)
+		character.randomize_spells_known_1('base_classes')
+		character.randomize_spells_known_2('base_classes')
+		#Create a prepared spell list (dependent on spells known)
+
 
 		# inherent_stats() [Skip for now, make OOP later]
+		# add a spontaneous caster option as well (so sorcs + wizs get spells known at right level)
 
 
 		# print(f"Racial traits: {character.get_racial_attr('traits')}")	
