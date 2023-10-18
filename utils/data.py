@@ -42,6 +42,13 @@ skills = ["Acrobatics",
 "Profession",
 "Lore"]
 
+# caster spell known progression:
+# wizards know 3 + INT mod + 2(per level) spells
+wizard_progression = ['wizard']
+
+divine_casters = ['cleric', 'druid', 'oracle', 'inquisitors', 'paladins', 'rangers']
+#caster spells per day progression
+
 #must match the same order as the weapon_groups_region section
 regions = ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"]
 races = ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-elf", "Half-orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"]

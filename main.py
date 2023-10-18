@@ -88,8 +88,7 @@ while userInput.lower() == 'y':
 
 		character.class_for_spells()
 		#Divine Casters have all spells known (don't make this function for them)
-		character.randomize_spells_known_1('base_classes')
-		character.randomize_spells_known_2('base_classes')
+		print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
 		#Create a prepared spell list (dependent on spells known)
 
 

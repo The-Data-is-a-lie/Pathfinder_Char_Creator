@@ -104,9 +104,8 @@ class Character:
         #change these to prepared spells
         self.spells_list_1=None
         self.spells_list_2=None   
-        self.spells_known=None
-        self.spells_from_ability_mod=None
-        self.spells_per_day=None     
+        self.spells_known_list=None      
+
 
         self.flaw=None
         self.random_professions=None
@@ -337,7 +336,7 @@ class Character:
 
     def total_hp_calc(self):               
         self.Total_HP = self.total_hp_rolls + self.Hit_dice1 + (floor(self.const-10)/2 * self.level)
-
+        self.Total_HP = floor(self.Total_HP)
         print(f'This is your total HP: {self.Total_HP}')
 
 
@@ -457,7 +456,7 @@ class Character:
 
     def randomize_mythic(self):
         self.mythic_rank = 0
-        if random.randint(1, 10) >= 1:
+        if random.randint(1, 1000) >= 995:
             self.mythic_rank = 1					
             for j in range(2, 11):
                 roll = random.randint(1, 100)
@@ -499,11 +498,11 @@ class Character:
         if self.c_class == 'investigator':
             self.c_class_for_spells = 'alchemist'   
         else:
-            self.c_class = self.c_class     
+            self.c_class_for_spells = self.c_class     
         return self.c_class_for_spells
 
     def high_caster_formula(self,n):
-        if cast_level % 2 == 0:
+        if n % 2 == 0:
             cast_level=n // 2
         else:
             cast_level=(n + 1) // 2
@@ -511,7 +510,7 @@ class Character:
         return cast_level
     
     def mid_caster_formula(self,n):
-        if cast_level % 3 == 1:
+        if n % 3 == 1:
             cast_level= ceil(n // 3)+1
         else:
             cast_level= ceil(n / 3)
@@ -524,8 +523,39 @@ class Character:
         return cast_level
     
 
-    def spells_known_attr(self):
-        if self.c_class_for_spells in spells_known.keys():
+    def spells_known_attr(self,base_classes, divine_casters):
+        high_caster_level = self.high_caster_formula(self.c_class_level)
+        mid_caster_level = self.mid_caster_formula(self.c_class_level)
+        low_caster_level = self.low_caster_formula(self.c_class_level)  
+        casting_level_1 = str(self.classes[self.c_class]["casting level"].lower())         
+        base_classes = getattr(data,base_classes)
+        divine_casters=getattr(data, divine_casters)    
+        self.spells_known_list = []
+        list = []    
+ 
+
+        if self.c_class in base_classes and casting_level_1 == 'high' and self.c_class not in divine_casters:
+            for i in range(1,high_caster_level+1):
+                print(high_caster_level)
+                key = str(i)
+                list=self.spells_known[self.c_class_for_spells][key][self.c_class_level-1]
+                self.spells_known_list.append(list)
+        elif self.c_class in base_classes and casting_level_1 == 'mid' and self.c_class not in divine_casters:
+            for i in range(1,mid_caster_level+1):
+                key = str(i)                
+                list=self.spells_known[self.c_class_for_spells][key][self.c_class_level-1]
+                self.spells_known_list.append(list)
+        elif self.c_class in base_classes and casting_level_1 == 'low' and self.c_class not in divine_casters:
+            for i in range(1,low_caster_level+1):
+                key = str(i)                
+                list=self.spells_known[self.c_class_for_spells][key][self.c_class_level-1]
+                self.spells_known_list.append(list)
+        else:
+            print('Not an Arcane caster')
+
+        return self.spells_known_list
+    
+
 
 
     # def spells_known(self, divine_casters):
