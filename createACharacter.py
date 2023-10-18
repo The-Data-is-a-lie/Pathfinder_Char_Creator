@@ -103,7 +103,10 @@ class Character:
         #Spell list variables
         #change these to prepared spells
         self.spells_list_1=None
-        self.spells_list_2=None        
+        self.spells_list_2=None   
+        self.spells_known=None
+        self.spells_from_ability_mod=None
+        self.spells_per_day=None     
 
         self.flaw=None
         self.random_professions=None
@@ -179,6 +182,15 @@ class Character:
 
         with open(json_config['archetypes']) as f:
             self.archetypes = json.load(f)      
+
+        with open(json_config['spells_known']) as f:
+            self.spells_known = json.load(f)      
+
+        with open(json_config['spells_per_day']) as f:
+            self.spells_per_day = json.load(f)      
+
+        with open(json_config['spells_from_ability_mod']) as f:
+            self.spells_from_ability_mod = json.load(f)                                          
              
 
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
@@ -511,6 +523,31 @@ class Character:
         cast_level = min(cast_level,4)
         return cast_level
     
+
+    def spells_known_attr(self):
+        if self.c_class_for_spells in spells_known.keys():
+
+
+    # def spells_known(self, divine_casters):
+    #     self.spells_1_known = []   
+    #     divine_casters=getattr(data, divine_casters)
+
+    #     casting_level_1 = str(self.classes[self.c_class]["casting level"].lower())  
+    #     spell_data=pd.read_csv('data/spells.csv', sep='|')
+    #     extraction_list = ['name', self.c_class]         
+    #     high_caster_formula = high_caster_formula(self.c_class_level)
+    #     mid_caster_formula = mid_caster_formula(self.c_class_level)
+    #     low_caster_formula = low_caster_formula(self.c_class_level)                 
+    #     # we are just trying to grab all spells in their lists, since they know all of them
+    #     if self.c_class in divine_casters and casting_level_1 == 'high':
+    #             # range = 0 because divine casters know all cantrips as well
+    #             for i in range(1, high_caster_formula+1):              
+    #                 self.spells_1_known = spell_data.loc[spell_data[self.c_class] == i, extraction_list]
+    #     elif self.c_class in divine_casters and casting_level_1 == 'high':
+    #             for i in range(1, mid_caster_formula):              
+    #                 self.spells_1_known = spell_data.loc[spell_data[self.c_class] == i, extraction_list]            
+
+
 
 
     # def spells_known_divine_caster(self, divine_casters):

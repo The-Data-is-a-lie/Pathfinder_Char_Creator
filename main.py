@@ -31,7 +31,10 @@ character_json_config = {
 	'last_names_regions': 'json/last_names_regions.json',
 	'first_names_regions': 'json/first_names_regions.json',
 	'flaws': 'json/flaws.json',
-	'archetypes': 'json/archetypes.json'
+	'archetypes': 'json/archetypes.json',
+	'spells_known': 'json/spells_known.json',
+	'spells_per_day': 'json/spells_per_day.json',
+	'spells_from_ability_mod': 'json/spells_from_ability_mod.json'			
 }
 
 
