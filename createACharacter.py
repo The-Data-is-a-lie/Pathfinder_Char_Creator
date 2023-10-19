@@ -550,11 +550,15 @@ class Character:
                 key = str(i)                
                 list=self.spells_known[self.c_class_for_spells][key][self.c_class_level-1]
                 self.spells_known_list.append(list)
+        elif self.c_class in divine_casters:
+            print('Divine Casters know all spells')
         else:
             print('Not an Arcane caster')
 
         return self.spells_known_list
     
+    def spells_per_day(self, base_classes, divine_casteres):
+
 
 
 
