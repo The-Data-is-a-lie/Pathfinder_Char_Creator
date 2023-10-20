@@ -80,7 +80,7 @@ class Character:
         self.Total_HP=None
         self.Hit_dice=None
         self.Hit_dice1=None
-        # self.Hit_dice2=None                
+        self.Hit_dice2=None                
         self.total_hp_rolls=None    
         # self.total_hp_rolls1=None
         # self.total_hp_rolls2=None                            
@@ -99,12 +99,14 @@ class Character:
         self.spells_1_known=None
         self.spells_2_known=None                        
         self.dip=None
+    
 
         #Spell list variables
         #change these to prepared spells
         self.spells_list_1=None
         self.spells_list_2=None   
         self.spells_known_list=None      
+        self.spells_per_day_list=None
 
 
         self.flaw=None
@@ -194,13 +196,9 @@ class Character:
 
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
     def update_level(self, level, c_class_level, c_class_2_level):
-        if self.c_class == '':
-            self.level = level
-            self.c_class_level = c_class_level
-        else:  
-            self.level = level
-            self.c_class_level = c_class_level
-            self.c_class_2_level = c_class_2_level              
+        self.level = level
+        self.c_class_level = c_class_level
+        self.c_class_2_level = c_class_2_level              
 
         if len(self.flaw) == 2 or len(self.flaw) == 3:
             self.feats = (4 + floor(self.level/2) + floor(self.level/5))
@@ -283,6 +281,7 @@ class Character:
     
     def randomize_level(self, min, max_num):
         if self.c_class_2 == '':
+            print('this is is blank class_2')
             level = random.randint(min, max(min, max_num))
             c_class_level = level
             c_class_2_level = 0
@@ -301,16 +300,12 @@ class Character:
     def hit_dice_calc(self):
         if self.c_class_2 != '':
             self.Hit_dice1 = self.classes[self.c_class]["hp"]
-            self.Hit_dice2 = self.classes[self.c_class_2]["hp"]            
-
-            print(f"hit dice {self.Hit_dice1}")
-            print(f"hit dice {self.Hit_dice2}")            
+            self.Hit_dice2 = self.classes[self.c_class_2]["hp"]                    
       
             print(f"This is your character's first class Hit dice: {self.Hit_dice1}")
             print(f"This is your character's second class Hit dice: {self.Hit_dice2}")            
         else:
-            self.Hit_dice1 = self.classes[self.c_class]["hp"]
-            print(f"hit dice {self.Hit_dice1}")            
+            self.Hit_dice1 = self.classes[self.c_class]["hp"]         
             print(f"This is your character's first class Hit dice: {self.Hit_dice1}")                        
 
 
@@ -325,11 +320,12 @@ class Character:
             print(hp_rolls) #working as expected
         self.total_hp_rolls = sum(hp_rolls)         
 
-        for _ in range(self.c_class_2_level):
-            print('#2 ?????????')
-            hp_rolls.append(random.randint(1,self.Hit_dice2))
-            print(hp_rolls) #working as expected
-        self.total_hp_rolls = sum(hp_rolls)         
+        if self.c_class_2 != '':
+            for _ in range(self.c_class_2_level):
+                print('#2 ?????????')
+                hp_rolls.append(random.randint(1,self.Hit_dice2))
+                print(hp_rolls) #working as expected
+            self.total_hp_rolls = sum(hp_rolls)         
 
         return self.total_hp_rolls
 
@@ -557,9 +553,37 @@ class Character:
 
         return self.spells_known_list
     
-    def spells_per_day(self, base_classes, divine_casteres):
+    def spells_per_day_attr(self, base_classes):
+        high_caster_level = self.high_caster_formula(self.c_class_level)
+        mid_caster_level = self.mid_caster_formula(self.c_class_level)
+        low_caster_level = self.low_caster_formula(self.c_class_level)  
+        casting_level_1 = str(self.classes[self.c_class]["casting level"].lower())         
+        base_classes = getattr(data,base_classes)  
+        self.spells_per_day_list = []
+        list = []            
 
+        if self.c_class in base_classes and casting_level_1 == 'high':
+            for i in range(1,high_caster_level+1):
+                key = str(i)
+                list=self.spells_per_day[self.c_class_for_spells][key][self.c_class_level-1]
+                self.spells_per_day_list.append(list)
+        elif self.c_class in base_classes and casting_level_1 == 'mid':
+            for i in range(1,mid_caster_level+1):
+                key = str(i)                
+                list=self.spells_per_day[self.c_class_for_spells][key][self.c_class_level-1]
+                self.spells_per_day_list.append(list)
+        elif self.c_class in base_classes and casting_level_1 == 'low':
+            for i in range(1,low_caster_level+1):
+                key = str(i)                
+                list=self.spells_per_day[self.c_class_for_spells][key][self.c_class_level-1]
+                self.spells_per_day_list.append(list)
+        else:
+            print('Not an spell list caster')
 
+        return self.spells_per_day_list            
+
+    def spells_from_ability_mod(self):
+        print("Add function")
 
 
     # def spells_known(self, divine_casters):

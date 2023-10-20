@@ -66,7 +66,8 @@ while userInput.lower() == 'y':
 		# and grab all elements from your highest class level
 
 
-	
+
+		#add an optional flaws rule function	
 		
 		character.randomize_body_feature('age')
 		character.randomize_body_feature('height')
@@ -89,6 +90,8 @@ while userInput.lower() == 'y':
 		character.class_for_spells()
 		#Divine Casters have all spells known (don't make this function for them)
 		print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
+		print(f'This is your spells per day {character.spells_per_day_attr("base_classes")}')
+
 		#Create a prepared spell list (dependent on spells known)
 
 
