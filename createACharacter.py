@@ -586,6 +586,90 @@ class Character:
         print("Add function")
 
 
+    def extra_class_feats(self):
+        #fighter_feats = [1,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40]
+        monk_feats = [1,2,6,10,14,18,22,26,30,34,38]
+        brawler_feats = [2,5,8,11,14,17,20,23,26,29,32,35,38] 
+        ranger_feats = [2,6,10,14,18,22,26,30,34,38]                
+        #fighter section
+        if self.c_class == 'fighter':
+            extra_feats =  1 + floor((self.c_class_level)/2)
+
+        if self.c_class_2 == 'fighter':
+            extra_feats_2 = self.feats + 1 + floor((self.c_class_2_level)/2)         
+
+        i=0
+        i_2=0
+
+        #monk section
+        if self.c_class == 'monk' or self.c_class == 'unchained_monk':
+            while i < len(monk_feats) and monk_feats[i] <= self.c_class_level:
+                i += 1
+            extra_feats = i
+
+        if self.c_class == 'monk' or self.c_class == 'unchained_monk':
+            while i_2 < len(monk_feats) and monk_feats[i_2] <= self.c_class_level:
+                i_2 += 1
+            extra_feats = i_2
+            extra_feats_2 = i_2
+
+        i=0
+        i_2=0
+
+        if self.c_class == 'brawler':
+            while i < len(brawler_feats) and brawler_feats[i] <= self.c_class_level:
+                i += 1
+            extra_feats = i
+
+        if self.c_class_2 == 'brawler':
+            while i_2 < len(brawler_feats) and brawler_feats[i_2] <= self.c_class_level:
+                i_2 += 1
+            extra_feats = i_2
+            extra_feats_2 = i_2        
+
+        i=0
+        i_2=0
+
+        if self.c_class == 'ranger':
+            while i < len(ranger_feats) and ranger_feats[i] <= self.c_class_level:
+                i += 1
+            extra_feats = i
+
+        if self.c_class_2 == 'ranger':
+            while i_2 < len(ranger_feats) and ranger_feats[i_2] <= self.c_class_level:
+                i_2 += 1
+            extra_feats = i_2
+            extra_feats_2 = i_2                    
+
+        self.feats = self.feats + extra_feats + extra_feats_2
+        return self.feats              
+    
+
+    #same type of function as above, but for class abilities like
+    #rogue talents, rage powers, ... 
+
+    #Huge function for Spheres of power classes
+    def class_abilities_amount(self):
+        if self.c_class == 'rogue' or self.c_class == 'unchained_rogue':
+            rogue_talent_amount = floor(self.c_class_level/2)
+        if self.c_class_2 == 'rogue' or self.c_class_2 == 'unchained_rogue':
+            rogue_talent_amount = floor(self.c_class_2_level/2)    
+
+        if self.c_class == 'barbarian' or self.c_class == 'unchained_barbarian':
+            barbarian_talent_amount = floor(self.c_class_level/2)
+        if self.c_class_2 == 'barbarian' or self.c_class_2 == 'unchained_barbarian':
+            barbarian_talent_amount = floor(self.c_class_2_level/2)  
+
+        if self.c_class == 'paladin':
+            paladin_talent_amount = floor(self.c_class_level/3)
+        if self.c_class_2 == 'paladin':
+            paladin_talent_amount = floor(self.c_class_2_level/3) 
+
+                               
+
+
+
+
     # def spells_known(self, divine_casters):
     #     self.spells_1_known = []   
     #     divine_casters=getattr(data, divine_casters)
