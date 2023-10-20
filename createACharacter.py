@@ -668,6 +668,31 @@ class Character:
                                
 
 
+    def ranger_favored_groups(self):
+        favored_terrains = ['Cold', 'desert', 'Forest', 'Jungle', 'Mountain', 'Plains', 'Planes [choose]', 'Swamp', 'Underground', 'Urban', 'Water']
+        favored_enemies = ['Aberration', 'Animal', 'Construct', 'Dragon', 'Fey', 'Humanoid (aquatic)', 'Humanoid (dwarf)', 'Humanoid (elf)','Humanoid (giant)','Humanoid (goblinoid)', 'Humanoid (gnoll)', 'Humanoid (gnome)', 'Humanoid (halfling)','Humanoid (human)', 'Humanoid (orc)', 'Humanoid (reptilian)', 'Humanoid (other subtype)', 'Magical beast', 'Monstrous humanoid', 'Ooze', 'Outsider (air)', 'Outsider (chaotic)','Outsider (earth)', 'Outsider (evil)', 'Outsider (fire)', 'Outsider (good)', 'Outsider (lawful)', 'Outsider (native)', 'Outsider (water)', 'Plant', 'Undead', 'Vermin']
+
+        if self.c_class == 'ranger':
+            enemy_choice_num = 1 + floor(self.c_class_level/5)
+            terrain_choice_num = ceil((self.c_class_level-2)/5) 
+            terrains=random.sample(favored_terrains,k=terrain_choice_num)
+            enemies=random.sample(favored_enemies,k=enemy_choice_num)            
+
+        elif self.c_class_2 == 'ranger':
+            enemy_choice_num = 1 + floor(self.c_class_2_level/5)
+            terrain_choice_num = ceil((self.c_class_2_level-2)/5)      
+            terrains=random.sample(favored_terrains,k=terrain_choice_num)
+            enemies=random.sample(favored_enemies,k=enemy_choice_num)                     
+
+
+        else:
+            print('no ranger class levels')
+
+        print(f'These are your randomly selected favored terrains {terrains}')
+        print(f'These are your randomly selected favored enemies {enemies}')        
+        return terrains, enemies
+            
+
 
 
     # def spells_known(self, divine_casters):
