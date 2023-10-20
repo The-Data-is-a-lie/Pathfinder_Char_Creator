@@ -85,6 +85,21 @@ class Character:
         # self.total_hp_rolls1=None
         # self.total_hp_rolls2=None                            
 
+        #ability_score
+        self.str=None
+        self.dex=None
+        self.con=None
+        self.int=None
+        self.wis=None
+        self.cha=None           
+
+        self.str_mod=None
+        self.dex_mod=None
+        self.con_mod=None
+        self.int_mod=None
+        self.wis_mod=None
+        self.cha_mod=None                                         
+
         #level dependent variables
         self.total_Hit_dice=None
         self.extra_ability_score_levels=None
@@ -107,6 +122,8 @@ class Character:
         self.spells_list_2=None   
         self.spells_known_list=None      
         self.spells_per_day_list=None
+        self.highest_spell_known1=None
+        self.highest_spell_known2=None
 
 
         self.flaw=None
@@ -253,16 +270,27 @@ class Character:
     def roll_stats(self, num_dice, num_sides):
         self.str = roll_dice(num_dice, num_sides)
         self.dex = roll_dice(num_dice, num_sides)
-        self.const = roll_dice(num_dice, num_sides)
+        self.con = roll_dice(num_dice, num_sides)
         self.int = roll_dice(num_dice, num_sides)
-        self.wisdom = roll_dice(num_dice, num_sides)
-        self.char = roll_dice(num_dice, num_sides)
+        self.wis = roll_dice(num_dice, num_sides)
+        self.cha = roll_dice(num_dice, num_sides)
         print(f'STR {self.str}')
         print(f'DEX {self.dex}')
-        print(f'CON {self.const}')
+        print(f'CON {self.con}')
         print(f'INT {self.int}')
-        print(f'WIS {self.wisdom}')
-        print(f'CHA {self.char}')                                        
+        print(f'WIS {self.wis}')
+        print(f'CHA {self.cha}')            
+
+    def calc_ability_mod(self):
+        self.str_mod = floor((self.str-10)/2)
+        self.dex_mod = floor((self.dex-10)/2)
+        self.con_mod = floor((self.con-10)/2)
+        self.int_mod = floor((self.int-10)/2)
+        self.wis_mod = floor((self.wis-10)/2)
+        self.cha_mod = floor((self.cha-10)/2)
+        print(self.str_mod)
+        print(self.dex_mod)
+        print(self.con_mod)                
         
     
     def randomize_flaw(self):
@@ -331,7 +359,7 @@ class Character:
 
 
     def total_hp_calc(self):               
-        self.Total_HP = self.total_hp_rolls + self.Hit_dice1 + (floor(self.const-10)/2 * self.level)
+        self.Total_HP = self.total_hp_rolls + self.Hit_dice1 + (floor(self.con-10)/2 * self.level)
         self.Total_HP = floor(self.Total_HP)
         print(f'This is your total HP: {self.Total_HP}')
 
@@ -492,7 +520,9 @@ class Character:
         if self.c_class == 'skald':
             self.c_class_for_spells = 'bard'
         if self.c_class == 'investigator':
-            self.c_class_for_spells = 'alchemist'   
+            self.c_class_for_spells = 'alchemist'
+        if self.c_class in ['witch']:
+            self.c_class_2_for_spells='wizard'       
         else:
             self.c_class_for_spells = self.c_class     
         return self.c_class_for_spells
@@ -517,32 +547,56 @@ class Character:
         cast_level= ceil(n / 3)-1
         cast_level = min(cast_level,4)
         return cast_level
-    
 
-    def spells_known_attr(self,base_classes, divine_casters):
-        high_caster_level = self.high_caster_formula(self.c_class_level)
-        mid_caster_level = self.mid_caster_formula(self.c_class_level)
-        low_caster_level = self.low_caster_formula(self.c_class_level)  
-        casting_level_1 = str(self.classes[self.c_class]["casting level"].lower())         
+    def choose_caster_formula_1(self): 
+        self.highest_spell_known2=0        
+        casting_level_1 = str(self.classes[self.c_class]["casting level"].lower())                   
+        if casting_level_1 == 'high':
+            self.highest_spell_known1 = self.high_caster_formula(self.c_class_level)
+        elif casting_level_1 == 'mid':
+            self.highest_spell_known1 = self.mid_caster_formula(self.c_class_level)
+        elif casting_level_1 == 'low':
+            self.highest_spell_known1 = self.low_caster_formula(self.c_class_level)  
+        else:
+            print('No caster_1 level')
+        return self.highest_spell_known1
+
+    def choose_caster_formula_2(self):  
+        self.highest_spell_known2=0                         
+        if self.c_class_2 != '':
+            casting_level_2 = str(self.classes[self.c_class_2]["casting level"].lower())              
+            if casting_level_2 == 'high':
+                self.highest_spell_known2 = self.high_caster_formula(self.c_class_level)
+            elif casting_level_2 == 'mid':
+                self.highest_spell_known2 = self.mid_caster_formula(self.c_class_level)
+            elif casting_level_2 == 'low':
+                self.highest_spell_known2 = self.low_caster_formula(self.c_class_level)    
+            else:
+                print('No caster_2 level')
+        
+        return self.highest_spell_known2
+    
+#need to create this for casting_level_2 as well
+    def spells_known_attr(self,base_classes, divine_casters):     
         base_classes = getattr(data,base_classes)
         divine_casters=getattr(data, divine_casters)    
+        casting_level_1 = str(self.classes[self.c_class]["casting level"].lower())         
         self.spells_known_list = []
         list = []    
  
 
         if self.c_class in base_classes and casting_level_1 == 'high' and self.c_class not in divine_casters:
-            for i in range(1,high_caster_level+1):
-                print(high_caster_level)
+            for i in range(1,self.highest_spell_known1+1):
                 key = str(i)
                 list=self.spells_known[self.c_class_for_spells][key][self.c_class_level-1]
                 self.spells_known_list.append(list)
         elif self.c_class in base_classes and casting_level_1 == 'mid' and self.c_class not in divine_casters:
-            for i in range(1,mid_caster_level+1):
+            for i in range(1,self.highest_spell_known1+1):
                 key = str(i)                
                 list=self.spells_known[self.c_class_for_spells][key][self.c_class_level-1]
                 self.spells_known_list.append(list)
         elif self.c_class in base_classes and casting_level_1 == 'low' and self.c_class not in divine_casters:
-            for i in range(1,low_caster_level+1):
+            for i in range(1,self.highest_spell_known1+1):
                 key = str(i)                
                 list=self.spells_known[self.c_class_for_spells][key][self.c_class_level-1]
                 self.spells_known_list.append(list)
@@ -582,15 +636,56 @@ class Character:
 
         return self.spells_per_day_list            
 
-    def spells_from_ability_mod(self):
-        print("Add function")
+
+
+
+    def spells_per_day_from_ability_mod(self, caster_mod):
+        caster_mod = getattr(data,caster_mod)
+        dataset = self.spells_from_ability_mod
+        #for now we make sure it can't be above 17 -> otherwise breaks
+        int_str = str(min(self.int_mod,17))
+        wis_str = str(min(self.wis_mod,17))
+        cha_str = str(min(self.cha_mod,17))
+        i=0
+        i_2=0
+        bonus_spells = []
+        if self.c_class in caster_mod["int_casters"]:
+            list=dataset[int_str]          
+            for i in range (self.highest_spell_known1):
+                i+=1
+                spells= list[i]
+                bonus_spells.append(spells)
+        if self.c_class in caster_mod["wis_casters"]:
+            list=dataset[wis_str]         
+            for i in range (self.highest_spell_known1):
+                i+=1
+                spells= list[i]
+                bonus_spells.append(spells)
+        if self.c_class in caster_mod["cha_casters"]:
+            list=dataset[cha_str]          
+            for i in range (self.highest_spell_known1):
+                i+=1
+                spells= list[i]
+                bonus_spells.append(spells)                                
+        else:
+            print('Not a caster sorry bucko')
+
+        return bonus_spells
+            
+
+
+
+
 
 
     def extra_class_feats(self):
         #fighter_feats = [1,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40]
         monk_feats = [1,2,6,10,14,18,22,26,30,34,38]
         brawler_feats = [2,5,8,11,14,17,20,23,26,29,32,35,38] 
-        ranger_feats = [2,6,10,14,18,22,26,30,34,38]                
+        ranger_feats = [2,6,10,14,18,22,26,30,34,38]            
+        #setting up extra feats + extra feats_2 as 0 so we don't get errors
+        extra_feats = 0
+        extra_feats_2 = 0    
         #fighter section
         if self.c_class == 'fighter':
             extra_feats =  1 + floor((self.c_class_level)/2)
@@ -668,9 +763,11 @@ class Character:
                                
 
 
-    def ranger_favored_groups(self):
-        favored_terrains = ['Cold', 'desert', 'Forest', 'Jungle', 'Mountain', 'Plains', 'Planes [choose]', 'Swamp', 'Underground', 'Urban', 'Water']
-        favored_enemies = ['Aberration', 'Animal', 'Construct', 'Dragon', 'Fey', 'Humanoid (aquatic)', 'Humanoid (dwarf)', 'Humanoid (elf)','Humanoid (giant)','Humanoid (goblinoid)', 'Humanoid (gnoll)', 'Humanoid (gnome)', 'Humanoid (halfling)','Humanoid (human)', 'Humanoid (orc)', 'Humanoid (reptilian)', 'Humanoid (other subtype)', 'Magical beast', 'Monstrous humanoid', 'Ooze', 'Outsider (air)', 'Outsider (chaotic)','Outsider (earth)', 'Outsider (evil)', 'Outsider (fire)', 'Outsider (good)', 'Outsider (lawful)', 'Outsider (native)', 'Outsider (water)', 'Plant', 'Undead', 'Vermin']
+    def ranger_favored_groups(self,favored_terrains,favored_enemies):
+        favored_terrains=getattr(data, favored_terrains)
+        favored_enemies=getattr(data, favored_enemies)
+        terrains = []
+        enemies = []
 
         if self.c_class == 'ranger':
             enemy_choice_num = 1 + floor(self.c_class_level/5)
@@ -684,12 +781,9 @@ class Character:
             terrains=random.sample(favored_terrains,k=terrain_choice_num)
             enemies=random.sample(favored_enemies,k=enemy_choice_num)                     
 
-
         else:
             print('no ranger class levels')
-
-        print(f'These are your randomly selected favored terrains {terrains}')
-        print(f'These are your randomly selected favored enemies {enemies}')        
+    
         return terrains, enemies
             
 

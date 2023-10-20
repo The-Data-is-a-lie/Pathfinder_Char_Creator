@@ -75,6 +75,7 @@ while userInput.lower() == 'y':
 		num_dice = int(input("How many dice would you like to roll? "))
 		num_sides = int(input("How many sides should each die have? "))
 		character.roll_stats(num_dice, num_sides)
+		character.calc_ability_mod()
 
 		character.randomize_flaw()
 
@@ -88,9 +89,14 @@ while userInput.lower() == 'y':
 		character.total_hp_calc()
 
 		character.class_for_spells()
+
+		character.choose_caster_formula_1()
+		character.choose_caster_formula_2()
+
 		#Divine Casters have all spells known (don't make this function for them)
 		print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
 		print(f'This is your spells per day {character.spells_per_day_attr("base_classes")}')
+		print(f'This is your spells per day from ability mods {character.spells_per_day_from_ability_mod("caster_mod")}')
 
 		#Create a prepared spell list (dependent on spells known)
 
@@ -123,6 +129,11 @@ while userInput.lower() == 'y':
 
 		# # skill rank generator (class ranks + int)*level
 
+
+		# Extra class choices:
+		character.extra_class_feats()
+		character.class_abilities_amount()
+		print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
 		# character.Archetype_Assigner()
 		# print(f'This is your gold {character.assign_gold("gold")}')
 		# #use gold to randomly select items
