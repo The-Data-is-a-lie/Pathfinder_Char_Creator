@@ -124,6 +124,7 @@ class Character:
         self.spells_per_day_list=None
         self.highest_spell_known1=None
         self.highest_spell_known2=None
+        self.spell_list_choose_from=None        
 
 
         self.flaw=None
@@ -519,10 +520,10 @@ class Character:
         #for different spell lists than our current class
         if self.c_class == 'skald':
             self.c_class_for_spells = 'bard'
-        if self.c_class == 'investigator':
+        elif self.c_class == 'investigator':
             self.c_class_for_spells = 'alchemist'
-        if self.c_class in ['witch']:
-            self.c_class_2_for_spells='wizard'       
+        elif self.c_class in ['witch']:
+            self.c_class_for_spells='wizard'       
         else:
             self.c_class_for_spells = self.c_class     
         return self.c_class_for_spells
@@ -606,6 +607,35 @@ class Character:
             print('Not an Arcane caster')
 
         return self.spells_known_list
+    
+
+    def spells_known_selection(self,base_classes):
+        spell_data=pd.read_csv('data/spells.csv', sep='|')
+        extraction_list = ['name', self.c_class]                
+        self.spell_list = []
+        casting_level_1 = str(self.classes[self.c_class]["casting level"].lower())         
+        base_classes=getattr(data,base_classes)
+        i=0
+        self.spell_list_choose_from=[]
+        if casting_level_1 != 'none' and self.c_class in base_classes:
+            print('baba booey')
+            while i < len(self.spells_known_list) and i <= self.highest_spell_known1:
+                select_spell=self.spells_known_list[i]             
+                query_i = spell_data.loc[spell_data[self.c_class] == i, extraction_list] 
+                random.shuffle(query_i.to_numpy())
+                spells = query_i[:select_spell]
+                self.spell_list_choose_from.append(spells)
+                i += 1                
+
+        else:
+            print('cannot select spells_known_selection')
+
+
+        return self.spell_list_choose_from
+
+
+
+        
     
     def spells_per_day_attr(self, base_classes):
         high_caster_level = self.high_caster_formula(self.c_class_level)

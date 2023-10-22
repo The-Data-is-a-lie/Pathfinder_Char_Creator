@@ -90,6 +90,7 @@ while userInput.lower() == 'y':
 
 		character.class_for_spells()
 
+
 		character.choose_caster_formula_1()
 		character.choose_caster_formula_2()
 
@@ -97,6 +98,7 @@ while userInput.lower() == 'y':
 		print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
 		print(f'This is your spells per day {character.spells_per_day_attr("base_classes")}')
 		print(f'This is your spells per day from ability mods {character.spells_per_day_from_ability_mod("caster_mod")}')
+		print(f"This is your spells list you can choose from {character.spells_known_selection('base_classes')}")
 
 		#Create a prepared spell list (dependent on spells known)
 
@@ -128,6 +130,7 @@ while userInput.lower() == 'y':
 		# print(f'This is your Deity {character.randomize_deity("all_deities")}')
 
 		# # skill rank generator (class ranks + int)*level
+
 
 
 		# Extra class choices:

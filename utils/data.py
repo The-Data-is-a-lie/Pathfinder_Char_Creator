@@ -44,8 +44,7 @@ skills = ["Acrobatics",
 
 # caster spell known progression:
 # wizards know 3 + INT mod + 2(per level) spells
-wizard_progression = ['wizard']
-
+base_classes = ['sorcerer','wizard','cleric','druid','ranger','bard','paladin','alchemist','summoner','witch','inquisitor','oracle','antipaladin','magus','adept','bloodrager','shaman','psychic','medium','mesmerist','occultist','spiritualist','skald','investigator','hunter']
 divine_casters = ['cleric', 'druid', 'oracle', 'inquisitor', 'paladin', 'ranger']
 #caster spells per day progression
 
@@ -380,7 +379,6 @@ appearance = [  "Athletic",
   "Tousled hair",
   "Towering"]
 
-base_classes = ['sorcerer','wizard','cleric','druid','ranger','bard','paladin','alchemist','summoner','witch','inquisitor','oracle','antipaladin','magus','adept','bloodrager','shaman','psychic','medium','mesmerist','occultist','spiritualist','skald','investigator','hunter']
 
 gold = [1000,3000,6000,10500,16000,23500,33000,46000,62000,82000,108000,140000,185000,240000,315000,410000,530000,685000,880000]
 
