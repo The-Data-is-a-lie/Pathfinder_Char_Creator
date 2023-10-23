@@ -639,14 +639,15 @@ class Character:
         self.spell_list_choose_from=[]
         if casting_level_1 != 'none' and self.c_class in base_classes:
             print('baba booey')
-            print(self.highest_spell_known1)
-            print(len(self.spells_known_list))
             while i < len(self.spells_known_list) and i <= self.highest_spell_known1:
                 select_spell=self.spells_known_list[i]             
-                query_i = spell_data.loc[spell_data[self.c_class] == i, extraction_list] 
+                query_i = spell_data.loc[spell_data[self.c_class] == i, extraction_list]
+                #needed to use this to properly randomize (vs. random.shuffle)
+                query_i = query_i.sample(frac=1.0)
                 spells = query_i[:select_spell]
                 self.spell_list_choose_from.append(spells)
                 i += 1                
+
 
         else:
             print('cannot select spells_known_selection')
