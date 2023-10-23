@@ -12,6 +12,7 @@ import sys
 from random import randrange
 from math import floor, ceil
 import pandas as pd
+from operator import add
 
 # # Base Character Traits
 # class Character:
@@ -510,7 +511,7 @@ class Character:
         if self.c_class.lower() == 'human':
             self.feats += 1     
 
-    def class_for_spells(self):
+    def class_for_spells_attr(self):
         #currently we only know that skald spells aren't proper, but 
         # skalds use bard spell list -> just have an if statement for them
         # investigators use alchemists spells
@@ -518,9 +519,9 @@ class Character:
                 
         #This is a quick and easy function to make it so we search
         #for different spell lists than our current class
-        if self.c_class == 'skald':
+        if self.c_class in ['skald']:
             self.c_class_for_spells = 'bard'
-        elif self.c_class == 'investigator':
+        elif self.c_class in ['investigator']:
             self.c_class_for_spells = 'alchemist'
         elif self.c_class in ['witch']:
             self.c_class_for_spells='wizard'       
@@ -587,17 +588,25 @@ class Character:
  
 
         if self.c_class in base_classes and casting_level_1 == 'high' and self.c_class not in divine_casters:
-            for i in range(1,self.highest_spell_known1+1):
+            for i in range(0,self.highest_spell_known1+1):
                 key = str(i)
                 list=self.spells_known[self.c_class_for_spells][key][self.c_class_level-1]
                 self.spells_known_list.append(list)
-        elif self.c_class in base_classes and casting_level_1 == 'mid' and self.c_class not in divine_casters:
-            for i in range(1,self.highest_spell_known1+1):
+        elif self.c_class in base_classes and casting_level_1 == 'mid' and self.c_class not in divine_casters and self.c_class_for_spells != 'alchemist':
+            for i in range(0,self.highest_spell_known1+1):
                 key = str(i)                
                 list=self.spells_known[self.c_class_for_spells][key][self.c_class_level-1]
                 self.spells_known_list.append(list)
+
+        #Low casters + some mid casters don't have orisons/cantrips [but we just have 0 for spells known + spells per day so it doesn't select any]
+        elif self.c_class_for_spells == 'alchemist':
+            for i in range(0,self.highest_spell_known1+1):
+                key = str(i)                
+                list=self.spells_known[self.c_class_for_spells][key][self.c_class_level-1]
+                self.spells_known_list.append(list)
+
         elif self.c_class in base_classes and casting_level_1 == 'low' and self.c_class not in divine_casters:
-            for i in range(1,self.highest_spell_known1+1):
+            for i in range(0,self.highest_spell_known1+1):
                 key = str(i)                
                 list=self.spells_known[self.c_class_for_spells][key][self.c_class_level-1]
                 self.spells_known_list.append(list)
@@ -608,6 +617,17 @@ class Character:
 
         return self.spells_known_list
     
+    def spells_known_extra_roll(self):
+        extra_spell_list = []        
+        if self.c_class_for_spells in ['alchemist','wizard']:
+            for i in range(0,self.highest_spell_known1+1):
+                extra_spells = random.randint(1,10)
+                i += 1
+                extra_spell_list.append(extra_spells)
+            self.spells_known_list=list( map(add, self.spells_known_list, extra_spell_list) )
+        return self.spells_known_list
+
+
 
     def spells_known_selection(self,base_classes):
         spell_data=pd.read_csv('data/spells.csv', sep='|')
@@ -619,10 +639,11 @@ class Character:
         self.spell_list_choose_from=[]
         if casting_level_1 != 'none' and self.c_class in base_classes:
             print('baba booey')
+            print(self.highest_spell_known1)
+            print(len(self.spells_known_list))
             while i < len(self.spells_known_list) and i <= self.highest_spell_known1:
                 select_spell=self.spells_known_list[i]             
                 query_i = spell_data.loc[spell_data[self.c_class] == i, extraction_list] 
-                random.shuffle(query_i.to_numpy())
                 spells = query_i[:select_spell]
                 self.spell_list_choose_from.append(spells)
                 i += 1                
@@ -647,20 +668,30 @@ class Character:
         list = []            
 
         if self.c_class in base_classes and casting_level_1 == 'high':
-            for i in range(1,high_caster_level+1):
+            for i in range(0,high_caster_level+1):
                 key = str(i)
                 list=self.spells_per_day[self.c_class_for_spells][key][self.c_class_level-1]
                 self.spells_per_day_list.append(list)
-        elif self.c_class in base_classes and casting_level_1 == 'mid':
-            for i in range(1,mid_caster_level+1):
+        elif self.c_class in base_classes and casting_level_1 == 'mid' and self.c_class_for_spells != 'alchemist':
+            for i in range(0,mid_caster_level+1):
                 key = str(i)                
                 list=self.spells_per_day[self.c_class_for_spells][key][self.c_class_level-1]
                 self.spells_per_day_list.append(list)
+
+        #adding an exception for alchemist (+ other classes that don't receive cantrips)
+        elif self.c_class_for_spells == 'alchemist':
+            for i in range(1,mid_caster_level+1):
+                key = str(i)                
+                list=self.spells_per_day[self.c_class_for_spells][key][self.c_class_level-1]
+                self.spells_per_day_list.append(list)        
         elif self.c_class in base_classes and casting_level_1 == 'low':
             for i in range(1,low_caster_level+1):
                 key = str(i)                
                 list=self.spells_per_day[self.c_class_for_spells][key][self.c_class_level-1]
-                self.spells_per_day_list.append(list)
+                self.spells_per_day_list.append(list)                
+
+
+
         else:
             print('Not an spell list caster')
 

@@ -88,16 +88,25 @@ while userInput.lower() == 'y':
 		character.roll_hp()
 		character.total_hp_calc()
 
-		character.class_for_spells()
+		print(f'This is your class for spells{character.class_for_spells_attr()} ')
 
-
+		# Some spellcasters get 0th level spells (all high + most mid)
+		# Also 0th spells = infinite casting 
+		# Wizards + Clerics know all 0th level spells (wizards know all except opposing school)
+		# as long as spells known list has a '0th' spell column (even if it isn't 0) 
+		# it won't pull any 0th spells for casters with orisons/cantrips
 		character.choose_caster_formula_1()
 		character.choose_caster_formula_2()
+
+
 
 		#Divine Casters have all spells known (don't make this function for them)
 		print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
 		print(f'This is your spells per day {character.spells_per_day_attr("base_classes")}')
 		print(f'This is your spells per day from ability mods {character.spells_per_day_from_ability_mod("caster_mod")}')
+
+		print(f'Spells known + extra randomized spells known [spell book learners only] {character.spells_known_extra_roll()}')		
+		
 		print(f"This is your spells list you can choose from {character.spells_known_selection('base_classes')}")
 
 		#Create a prepared spell list (dependent on spells known)
