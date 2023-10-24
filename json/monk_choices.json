@@ -1,0 +1,13 @@
+{
+
+    "feats": {
+        "2": ["Catch Off-Guard", "Combat Reflexes", "Deflect Arrows", "Dodge", "Improved Grapple", "Scorpion Style", "Throw Anything"],
+        "6": ["Gorgons Fist", "Improved Bull Rush", "Improved Disarm", "Improved Feint", "Improved Trip", "Mobility" ],
+        "10": ["Improved Critical", "Medusas Wrath", "Snatch Arrows", "Spring Attack"]
+    }
+    ,
+
+    "ki powers": {
+
+    }
+}

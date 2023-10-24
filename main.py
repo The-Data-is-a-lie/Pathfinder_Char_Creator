@@ -34,7 +34,9 @@ character_json_config = {
 	'archetypes': 'json/archetypes.json',
 	'spells_known': 'json/spells_known.json',
 	'spells_per_day': 'json/spells_per_day.json',
-	'spells_from_ability_mod': 'json/spells_from_ability_mod.json'			
+	'spells_from_ability_mod': 'json/spells_from_ability_mod.json',
+	'ranger_combat_styles': 'json/ranger_combat_styles.json',				
+	'monk_choices': 'json/monk_choices.json'					
 }
 
 
@@ -112,8 +114,19 @@ while userInput.lower() == 'y':
 
 		print(f'This is your wizard schools {character.wizard_school_chooser()}')
 
+
+		# Extra class choices:
+		character.extra_combat_feats()
+		character.class_abilities_amount()
+		print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
+
+
 		print(f"This is your selected feats: {character.feats_selector()}")
 
+		character.ranger_feats_chooser()
+		character.monk_feats_chooser()
+
+	
 		#Create a prepared spell list (dependent on spells known)
 
 
@@ -147,10 +160,6 @@ while userInput.lower() == 'y':
 
 
 
-		# Extra class choices:
-		character.extra_combat_feats()
-		character.class_abilities_amount()
-		print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
 		# character.Archetype_Assigner()
 		# print(f'This is your gold {character.assign_gold("gold")}')
 		# #use gold to randomly select items

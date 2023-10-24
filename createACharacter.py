@@ -97,13 +97,22 @@ class Character:
         self.prohibited_schools=None
         self.chosen_bloodline=None
 
+        #classes like monks + rangers can only select certain combat feats
+        self.ranger_feats=None
+        self.ranger_combat_styles=None
+
+
 
 
         #feat selector variables
         self.feats=None
+        self.combat_feats=None
+        self.magic_feats=None
         self.BAB=None
         self.level=None
         self.feat_list=None
+        self.monk_feats=None
+
 
 
         self.flaw=None
@@ -190,6 +199,11 @@ class Character:
         with open(json_config['spells_from_ability_mod']) as f:
             self.spells_from_ability_mod = json.load(f)                                          
              
+        with open(json_config['ranger_combat_styles']) as f:
+            self.ranger_combat_styles = json.load(f)                 
+
+        with open(json_config['monk_choices']) as f:
+            self.monk_choices = json.load(f)               
 
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
     def update_level(self, level, c_class_level, c_class_2_level):
@@ -726,6 +740,12 @@ class Character:
         #setting up extra feats + extra feats_2 as 0 so we don't get errors
         extra_feats = 0
         extra_feats_2 = 0    
+        ranger_feats_list = 0
+        ranger_feats_2_list = 0
+        monk_feats_list = 0 
+        monk_feats_2_list = 0
+        self.combat_feats_list=0
+
         #fighter section
         if self.c_class == 'fighter':
             extra_feats =  1 + floor((self.c_class_level)/2)
@@ -740,13 +760,13 @@ class Character:
         if self.c_class == 'monk' or self.c_class == 'unchained_monk':
             while i < len(monk_feats) and monk_feats[i] <= self.c_class_level:
                 i += 1
-            extra_feats = i
+            monk_feats_list = i
 
         if self.c_class == 'monk' or self.c_class == 'unchained_monk':
             while i_2 < len(monk_feats) and monk_feats[i_2] <= self.c_class_level:
                 i_2 += 1
-            extra_feats = i_2
-            extra_feats_2 = i_2
+
+            monk_feats_2_list = i_2
 
         i=0
         i_2=0
@@ -759,7 +779,7 @@ class Character:
         if self.c_class_2 == 'brawler':
             while i_2 < len(brawler_feats) and brawler_feats[i_2] <= self.c_class_level:
                 i_2 += 1
-            extra_feats = i_2
+
             extra_feats_2 = i_2        
 
         i=0
@@ -768,18 +788,22 @@ class Character:
         if self.c_class == 'ranger':
             while i < len(ranger_feats) and ranger_feats[i] <= self.c_class_level:
                 i += 1
-            extra_feats = i
+            ranger_feats_list = i
 
         if self.c_class_2 == 'ranger':
             while i_2 < len(ranger_feats) and ranger_feats[i_2] <= self.c_class_level:
                 i_2 += 1
-            extra_feats = i_2
-            extra_feats_2 = i_2                    
+
+            ranger_feats_2_list = i_2                    
 
         #currently we're just adding combat feats to total feats, 
         # but we may want to have them be their own separate entity
-        self.feats = self.feats + extra_feats + extra_feats_2
-        return self.feats          
+        self.combat_feats = extra_feats + extra_feats_2
+        self.ranger_feats = ranger_feats_list + ranger_feats_2_list
+        self.monk_feats = monk_feats_list + monk_feats_2_list
+               
+
+        return self.combat_feats          
 
 
     def extra_magic_feats(self):
@@ -811,8 +835,8 @@ class Character:
 
 
 
-        self.feats = self.feats + magic_feats + magic_feats_2
-        return self.feats      
+        self.magic_feats = magic_feats + magic_feats_2
+        return self.magic_feats      
 
     #same type of function as above, but for class abilities like
     #rogue talents, rage powers, ... 
@@ -873,6 +897,57 @@ class Character:
             print('no ranger class levels')
     
         return terrains, enemies
+    
+
+    def ranger_feats_chooser(self):
+        if self.c_class == 'ranger':
+            ranger_feats = [2,6,10,14,18,22,26,30,34,38]              
+            choice = list(self.ranger_combat_styles.keys())   
+            random_combat_style = random.choice(choice)
+            ranger_feats_chosen_list=set()     
+            i=0
+
+
+            while i <= len(ranger_feats) and ranger_feats[i] <= self.c_class_level:
+                ranger_feats_list=self.ranger_combat_styles[random_combat_style]["2"]
+                
+                if ranger_feats[i]>=6:
+                    ranger_feats_list=(self.ranger_combat_styles[random_combat_style]["2"] + self.ranger_combat_styles[random_combat_style]["6"])
+                elif ranger_feats[i]>=10:
+                    ranger_feats_list=(self.ranger_combat_styles[random_combat_style]["2"] + self.ranger_combat_styles[random_combat_style]["6"] +self.ranger_combat_styles[random_combat_style]["10"])
+
+
+                ranger_feats_chosen=random.choice(ranger_feats_list)
+                ranger_feats_chosen_list.add(ranger_feats_chosen)
+                   
+                i=len(ranger_feats_chosen_list)
+
+            print(ranger_feats_chosen_list)
+
+
+    def monk_feats_chooser(self):
+        if self.c_class == 'monk' or self.c_class == 'unchained_monk':
+            monk_feats = [1,2,6,10,14,18,22,26,30,34,38]   
+            #using set + .add makes sure we don't have any repeats in our list           
+            monk_feats_chosen_list=set()     
+            i=0
+
+            while i <= len(monk_feats) and monk_feats[i] <= self.c_class_level:
+                monk_feats_list=self.monk_choices['feats']["2"]
+                
+                if monk_feats[i]>=6:
+                    monk_feats_list=(self.monk_choices['feats']["2"] + self.monk_choices['feats']["6"])
+                elif monk_feats[i]>=10:
+                    monk_feats_list=(self.monk_choices['feats']["2"] + self.monk_choices['feats']["6"] + self.monk_choices['feats']["10"])
+
+
+                monk_feats_chosen=random.choice(monk_feats_list)
+                monk_feats_chosen_list.add(monk_feats_chosen)
+                   
+                i=len(monk_feats_chosen_list)
+
+            print(monk_feats_chosen_list)
+
 
 
     def wizard_school_chooser(self):
@@ -899,7 +974,7 @@ class Character:
                 self.prohibited_schools == None
 
 
-        return self.chosen_school, self.prohibited_schools
+            return self.chosen_school, self.prohibited_schools
     
 
     def sorcerer_bloodline_chooser(self):
@@ -915,17 +990,46 @@ class Character:
     def feats_selector(self):             
         self.feat_list = []   
         feat_data=pd.read_csv('data/feats.csv', sep='|', on_bad_lines='skip')
+        # feat_data_combat = feat_data[feat_data['type']=='Combat'] 
+        feat_data_combat = feat_data[feat_data['type'].str.contains('Combat')]
+        feat_data_magic = feat_data[((feat_data['type'].isin(['Creation', 'Metamagic'])) | (feat_data.name.str.contains('Spell')))]
+        # | = or
+        # & = and
+
+             
+        print(feat_data.columns)
         extraction_list = ['name', 'prerequisites']                
         self.feat_list = []      
-        i=0        
+        i=0    
+        c=0    
+        s=0
         #potentially remove one feat to always select a weapon focus (or spell focus)
-        while i<=self.feats:          
+        while i<=self.feats and self.feats != None:          
             query_i = feat_data[extraction_list]
             #needed to use this to properly randomize (vs. random.shuffle)
             query_i = query_i.sample(frac=1.0)
             feat = query_i[:1]
             self.feat_list.append(feat)
             i += 1     
+        
+      
+        if self.combat_feats is not None and self.c_class not in ('ranger', 'monk', 'unchained_monk'):
+            while c<=self.combat_feats and self.combat_feats != None:          
+                query_c = feat_data_combat[extraction_list]
+                #needed to use this to properly randomize (vs. random.shuffle)
+                query_c = query_c.sample(frac=1.0)
+                feat = query_c[:1]
+                self.feat_list.append(feat)
+                c += 1                 
+
+        if self.magic_feats is not None:
+            while s<=self.magic_feats:
+                query_s = feat_data_magic[extraction_list]
+                #needed to use this to properly randomize (vs. random.shuffle)
+                query_s = query_s.sample(frac=1.0)
+                feat = query_s[:1]
+                self.feat_list.append(feat)
+                s += 1 
 
         return self.feat_list
 

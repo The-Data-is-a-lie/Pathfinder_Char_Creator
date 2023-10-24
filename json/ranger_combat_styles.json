@@ -1,0 +1,84 @@
+{
+
+    "archery": {
+        "2": ["Far Shot", "Focused Shot", "Point Blank Shot", "Precise Shot", "Rapid Shot"],
+        "6": ["Crossbow Mastery", "Improved Precise Shot", "Parting Shot", "Point Blank Master",  "Manyshot" ],
+        "10": ["Pinpoint Targeting", "Shot on the Run"]
+    }
+    ,
+
+    "crossbow": {
+        "2": ["Deadly Aim", "Focused Shot", "Precise Shot", "Rapid Reload"],
+        "6": ["Crossbow Mastery", "Improved Precise Shot" ],
+        "10": ["Pinpoint Targeting", "Shot on the Run"]
+    }
+    ,
+
+    "deceptive": {
+        "2": ["Disengaging Feint", "Improved Feint", "Ranged Feint", "Two-Weapon Feint"],
+        "6": ["Greater Feint", "Misdirection Tactics"],
+        "10": ["Disengaging Shot", "Passing Trick"]
+    }
+    ,
+
+    "elemental": {
+        "2": ["Aquadynamic Focus", "Scorching Weapons", "Stony Step", "Wind Stance"],
+        "6": ["Inner Flame", "Lightning Stance"],
+        "10": ["Blazing Aura", "Whirlwind Attack"]
+    }
+    ,
+
+    "menacing": {
+        "2": ["Dazzling Display", "Enforcer", "Gory Finish", "Intimidating Prowess"],
+        "6": ["Martial Dominance", "Shatter Defenses"],
+        "10": ["Dreadful Carnage", "Improved Critical"]
+    }
+    ,
+
+    "mounted combat": {
+        "2": ["Mounted Combat", "Mounted Archery", "Ride-By Attack"," Trick Riding"],
+        "6": ["Mounted Shield", "Spirited Charge"],
+        "10": ["Mounted Skirmisher", "Unseat"]
+    }
+    ,
+
+    "natural weapon": {
+        "2": ["Aspect of the Beast", "Improved Natural Attack", "Rending Claws", "Weapon Focus"],
+        "6": ["Eldritch Claws",  "Vital Strike"],
+        "10": ["Multiattack", "Improved Vital Strike"]
+    }
+    ,
+
+    "thrown weapon": {
+        "2": ["Distance Thrower", "Precise Shot", "Quick Draw", "Two-Weapon Fighting"],
+        "6": ["Close-Quarters Thrower", "False Opening"],
+        "10": ["Pinpoint Targeting", "Shot on the Run"]
+    }
+    ,
+    
+    "two-handed weapon": {
+        "2": ["Cleave", "Power Attack", "Pushing Assault", "Shield of Swings"],
+        "6": ["Furious Focus", "Great Cleave"],
+        "10": ["Dreadful Carnage","Improved Sunder"]
+    }
+    ,
+
+    "two-weapon combat": {
+        "2": ["Double Slice", "Improved Shield Bash", "Quick Draw", "Two-Weapon Fighting"],
+        "6": ["Improved Two-Weapon Fighting", "Two-Weapon Defense"],
+        "10": ["Greater Two-Weapon Fighting", "Two-Weapon Rend"]
+    }
+    ,
+    "underhanded": {
+        "2": ["Combat Expertise", "Dodge", "Improved Dirty Trick", "Improved Steal"],
+        "6": ["Greater Dirty Trick","Greater Steal"],
+        "10": ["Quick Dirty Trick", "Quick Steal"]
+    }
+    ,
+    "weapon and shield": {
+        "2": ["Improved Shield Bash", "Shield Focus", "Shield Slam", "Two-Weapon Fighting"],
+        "6": ["Saving Shield", "Shield Master"],
+        "10": ["Bashing Finish", "Greater Shield Focus"]
+    }
+            
+}
