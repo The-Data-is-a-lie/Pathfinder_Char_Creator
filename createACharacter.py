@@ -14,47 +14,12 @@ from math import floor, ceil
 import pandas as pd
 from operator import add
 
-# # Base Character Traits
-# class Character:
-#     c_str = 10
-#     c_dex = 10
-#     c_const = 10
-#     c_int = 10
-#     c_wisdom = 10
-#     c_char = 10
-
-#     c_race = 'Placeholder'
-#     c_class = 'Placeholder'
-
-    
-#     c_weapon = ['Dagger']
-#     c_armor = ['Cloth shirt']
-    
-#     c_skills = ['Placeholder']
-#     c_skills_2 = ['Placeholder']
-#     c_spells = ['None']
-#     c_hp = 1
-
-#     c_langs = ['Common']
-    
-#     c_saving_throws = []
-#     c_racial_traits = []
-    
-#     c_size = 'Medium'
-#     c_traits = []
-    
-#     c_bg = 'outlander'
-#     c_mannerisms = ''
-
-#     def __str__(self): return f'Name: {self.c_name} ({self.c_race} {self.c_class})'
 
 # simply create a new character
 class Character:
     def __init__(self, json_config):
         # json_paths stores the paths to different json files
-        self.feats=None
-        self.BAB=None
-        self.level=None
+
         # c_race
         self.weapons=None
         self.weaponz=None
@@ -126,6 +91,19 @@ class Character:
         self.highest_spell_known1=None
         self.highest_spell_known2=None
         self.spell_list_choose_from=None        
+
+        #class specific options
+        self.wizard_chosen_school=None
+        self.prohibited_schools=None
+        self.chosen_bloodline=None
+
+
+
+        #feat selector variables
+        self.feats=None
+        self.BAB=None
+        self.level=None
+        self.feat_list=None
 
 
         self.flaw=None
@@ -740,7 +718,7 @@ class Character:
 
 
 
-    def extra_class_feats(self):
+    def extra_combat_feats(self):
         #fighter_feats = [1,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40]
         monk_feats = [1,2,6,10,14,18,22,26,30,34,38]
         brawler_feats = [2,5,8,11,14,17,20,23,26,29,32,35,38] 
@@ -798,25 +776,73 @@ class Character:
             extra_feats = i_2
             extra_feats_2 = i_2                    
 
+        #currently we're just adding combat feats to total feats, 
+        # but we may want to have them be their own separate entity
         self.feats = self.feats + extra_feats + extra_feats_2
-        return self.feats              
-    
+        return self.feats          
+
+
+    def extra_magic_feats(self):
+        # wizard_feats = [1,5,10,15,20,25,30,35,40] 
+        sorcerer_feats = [7,13,19,25,31,37]
+        if self.c_class == 'wizard':
+            magic_feats =  1 + floor((self.c_class_level)/5)
+
+        if self.c_class_2 == 'wizard':
+            magic_feats_2 = self.feats + 1 + floor((self.c_class_2_level)/5)         
+
+        i=0
+        i_2=0        
+
+        if self.c_class == 'sorcerer':
+            while i < len(sorcerer_feats) and sorcerer_feats[i] <= self.c_class_level:
+                i += 1
+            magic_feats = i
+
+        if self.c_class_2 == 'sorcerer':
+            while i_2 < len(sorcerer_feats) and sorcerer_feats[i_2] <= self.c_class_level:
+                i_2 += 1
+            magic_feats = i_2
+            magic_feats_2 = i_2    
+
+        i=0
+        i_2=0        
+
+
+
+
+        self.feats = self.feats + magic_feats + magic_feats_2
+        return self.feats      
 
     #same type of function as above, but for class abilities like
     #rogue talents, rage powers, ... 
 
     #Huge function for Spheres of power classes
     def class_abilities_amount(self):
+
+        #rogues + ninja both can select rogue talents        
         if self.c_class == 'rogue' or self.c_class == 'unchained_rogue':
             rogue_talent_amount = floor(self.c_class_level/2)
         if self.c_class_2 == 'rogue' or self.c_class_2 == 'unchained_rogue':
-            rogue_talent_amount = floor(self.c_class_2_level/2)    
+            rogue_talent_amount = floor(self.c_class_2_level/2)  
 
+        if self.c_class == 'ninja' :
+            ninja_talent_amount = floor(self.c_class_level/2)
+        if self.c_class_2 == 'ninja' :
+            ninja_talent_amount = floor(self.c_class_2_level/2)               
+
+        #skald + barbarians both select rage powers
         if self.c_class == 'barbarian' or self.c_class == 'unchained_barbarian':
             barbarian_talent_amount = floor(self.c_class_level/2)
         if self.c_class_2 == 'barbarian' or self.c_class_2 == 'unchained_barbarian':
             barbarian_talent_amount = floor(self.c_class_2_level/2)  
 
+        if self.c_class == 'skald':
+            skald_talent_amount = floor(self.c_class_level/3)
+        if self.c_class_2 == 'skald':
+            skald_talent_amount = floor(self.c_class_2_level/3)              
+
+        #paladins select mercies
         if self.c_class == 'paladin':
             paladin_talent_amount = floor(self.c_class_level/3)
         if self.c_class_2 == 'paladin':
@@ -847,7 +873,64 @@ class Character:
             print('no ranger class levels')
     
         return terrains, enemies
-            
+
+
+    def wizard_school_chooser(self):
+        if self.c_class == 'wizard' or self.c_class_2 == 'wizard':
+            school_list = ['Abjuration', 'Banishment', 'Counterspell', 'Conjuration', 'Creation', 'Extradimension', 'Infernal Binder', 'Teleportation',
+            'Divination', 'Prophecy', 'Foresight', 'Scryer', 'Enchantment', 'Controller', 'Manipulator', 'Evocation', 'Admixture',
+            'Generation', 'Illusion', 'Deception', 'Mage of the Veil', 'Phantasm', 'Shadow', 'Necromancy', 'Life', 'Undead',
+            'Sin Magic', 'Transmutation', 'Enhancement', 'Shapechange', 'Universalist', 'Arcane Crafter',
+            'Aether', 'Air', 'Ice', 'Smoke', 'Earth', 'Magma', 'Mud', 'Fire', 'Magma', 'Smoke', 'Water', 'Ice', 'Mud', 'Metal', 'Void', 'Wood']
+            #making school_list lower case
+            school_list = [element.lower() for element in school_list]
+
+            opposing_school_list = ['abjuration','conjuration','divination','enchantment', 'evocation', 'illusion','necromancy', 'transmutation', 'universalist', 'air','earth', 'fire', 'water',  'metal', 'void', 'wood']
+            #Wizards tend to select a chosen school
+            self.chosen_school = random.sample(school_list,k=1)
+
+            #wizards that have one chosen school have 2 prohibited schools
+            self.prohibited_schools = random.sample(opposing_school_list,k=2)        
+            while self.chosen_school in self.prohibited_schools:
+                self.prohibited_schools.remove(self.chosen_school)
+
+
+            if self.chosen_school == 'universalist':
+                self.prohibited_schools == None
+
+
+        return self.chosen_school, self.prohibited_schools
+    
+
+    def sorcerer_bloodline_chooser(self):
+        if self.c_class == 'sorcerer' or self.c_class_2 == 'sorcerer':        
+            bloodline_list = ['Aberrant','Abyssal','Accursed','Aquatic','Arcane','Astral','Boreal','Celestial','Daemon','Deep Earth','Destined','Div','Djinni','Draconic','Dreamspun','Ectoplasm','Efreeti','Elemental','Fey','Ghoul','Harrow','Imperious (Human)','Impossible','Infernal','Kobold (Kobold)','Maestro','Marid','Martyred','Nanite','Oni','Orc','Pestilence','Phoenix','Possessed','Protean','Psychic','Rakshasa','Salamander','Scorpion','Serpentine','Shadow','Shaitan','Shapechanger','Solar','Solar','Starsoul','Stormborn','Undead','Unicorn','Verdant','Vestige']
+            self.chosen_bloodline = random.sample(bloodline_list,k=1)
+
+
+        return self.chosen_bloodline
+
+
+    #need to implement all the restrictions to feats we want
+    def feats_selector(self):             
+        self.feat_list = []   
+        feat_data=pd.read_csv('data/feats.csv', sep='|', on_bad_lines='skip')
+        extraction_list = ['name', 'prerequisites']                
+        self.feat_list = []      
+        i=0        
+        #potentially remove one feat to always select a weapon focus (or spell focus)
+        while i<=self.feats:          
+            query_i = feat_data[extraction_list]
+            #needed to use this to properly randomize (vs. random.shuffle)
+            query_i = query_i.sample(frac=1.0)
+            feat = query_i[:1]
+            self.feat_list.append(feat)
+            i += 1     
+
+        return self.feat_list
+
+
+
 
 
 

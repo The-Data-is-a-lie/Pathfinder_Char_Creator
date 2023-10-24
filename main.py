@@ -109,6 +109,11 @@ while userInput.lower() == 'y':
 		
 		print(f"This is your spells list you can choose from {character.spells_known_selection('base_classes')}")
 
+
+		print(f'This is your wizard schools {character.wizard_school_chooser()}')
+
+		print(f"This is your selected feats: {character.feats_selector()}")
+
 		#Create a prepared spell list (dependent on spells known)
 
 
@@ -143,7 +148,7 @@ while userInput.lower() == 'y':
 
 
 		# Extra class choices:
-		character.extra_class_feats()
+		character.extra_combat_feats()
 		character.class_abilities_amount()
 		print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
 		# character.Archetype_Assigner()
