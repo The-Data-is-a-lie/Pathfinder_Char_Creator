@@ -908,19 +908,22 @@ class Character:
             i=0
 
 
-            while i <= len(ranger_feats) and ranger_feats[i] <= self.c_class_level:
+            while ranger_feats[i] <= self.c_class_level:
                 ranger_feats_list=self.ranger_combat_styles[random_combat_style]["2"]
                 
                 if ranger_feats[i]>=6:
                     ranger_feats_list=(self.ranger_combat_styles[random_combat_style]["2"] + self.ranger_combat_styles[random_combat_style]["6"])
                 elif ranger_feats[i]>=10:
-                    ranger_feats_list=(self.ranger_combat_styles[random_combat_style]["2"] + self.ranger_combat_styles[random_combat_style]["6"] +self.ranger_combat_styles[random_combat_style]["10"])
+                    ranger_feats_list=(self.ranger_combat_styles[random_combat_style]["2"] + self.ranger_combat_styles[random_combat_style]["6"] + self.ranger_combat_styles[random_combat_style]["10"])
 
 
                 ranger_feats_chosen=random.choice(ranger_feats_list)
                 ranger_feats_chosen_list.add(ranger_feats_chosen)
                    
                 i=len(ranger_feats_chosen_list)
+
+                if ranger_feats_chosen_list == 7:
+                    break
 
             print(ranger_feats_chosen_list)
 
@@ -932,7 +935,7 @@ class Character:
             monk_feats_chosen_list=set()     
             i=0
 
-            while i <= len(monk_feats) and monk_feats[i] <= self.c_class_level:
+            while monk_feats[i] <= self.c_class_level:
                 monk_feats_list=self.monk_choices['feats']["2"]
                 
                 if monk_feats[i]>=6:
@@ -995,8 +998,6 @@ class Character:
         feat_data_magic = feat_data[((feat_data['type'].isin(['Creation', 'Metamagic'])) | (feat_data.name.str.contains('Spell')))]
         # | = or
         # & = and
-
-             
         print(feat_data.columns)
         extraction_list = ['name', 'prerequisites']                
         self.feat_list = []      
@@ -1011,8 +1012,7 @@ class Character:
             feat = query_i[:1]
             self.feat_list.append(feat)
             i += 1     
-        
-      
+
         if self.combat_feats is not None and self.c_class not in ('ranger', 'monk', 'unchained_monk'):
             while c<=self.combat_feats and self.combat_feats != None:          
                 query_c = feat_data_combat[extraction_list]
