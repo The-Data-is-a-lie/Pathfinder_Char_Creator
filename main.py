@@ -38,7 +38,9 @@ character_json_config = {
 	'ranger_combat_styles': 'json/ranger_combat_styles.json',				
 	'monk_choices': 'json/monk_choices.json',
 	'class_features': 'json/class_features.json',	
-	'bloodlines': 'json/bloodlines.json'
+	'bloodlines': 'json/bloodlines.json',
+	'mercies': 'json/mercies.json',
+	'rogue_talents': 'json/rogue_talents.json'	
 						
 }
 
@@ -106,13 +108,13 @@ while userInput.lower() == 'y':
 
 
 		#Divine Casters have all spells known (don't make this function for them)
-		print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
-		print(f'This is your spells per day {character.spells_per_day_attr("base_classes")}')
-		print(f'This is your spells per day from ability mods {character.spells_per_day_from_ability_mod("caster_mod")}')
+		# print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
+		# print(f'This is your spells per day {character.spells_per_day_attr("base_classes")}')
+		# print(f'This is your spells per day from ability mods {character.spells_per_day_from_ability_mod("caster_mod")}')
 
-		print(f'Spells known + extra randomized spells known [spell book learners only] {character.spells_known_extra_roll()}')		
+		# print(f'Spells known + extra randomized spells known [spell book learners only] {character.spells_known_extra_roll()}')		
 		
-		print(f"This is your spells list you can choose from {character.spells_known_selection('base_classes')}")
+		# print(f"This is your spells list you can choose from {character.spells_known_selection('base_classes')}")
 
 
 		print(f'This is your wizard schools {character.wizard_school_chooser()}')
@@ -128,8 +130,11 @@ while userInput.lower() == 'y':
 
 		character.ranger_feats_chooser()
 		character.monk_feats_chooser()
+		character.monk_ki_power_chooser()
+		character.sorcerer_bloodline_chooser()
+		character.paladin_mercy_chooser()
+		character.rogue_talent_chooser()
 
-	
 		#Create a prepared spell list (dependent on spells known)
 
 

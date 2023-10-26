@@ -96,6 +96,8 @@ class Character:
         self.wizard_chosen_school=None
         self.prohibited_schools=None
         self.chosen_bloodline=None
+        self.mercy_chosen_list=None
+        self.rogue_talent_list=None
 
         #classes like monks + rangers can only select certain combat feats
         self.ranger_feats=None
@@ -211,6 +213,12 @@ class Character:
         with open(json_config['bloodlines']) as f:
             self.bloodlines = json.load(f)               
 
+        with open(json_config['mercies']) as f:
+            self.mercies = json.load(f)  
+
+        with open(json_config['rogue_talents']) as f:
+            self.rogue_talents = json.load(f)             
+
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
     def update_level(self, level, c_class_level, c_class_2_level):
         self.level = level
@@ -307,23 +315,28 @@ class Character:
             flaw = random.sample(list(self.flaws),4)
         self.flaw = flaw
     
-    def randomize_level(self, min, max_num):
+    def randomize_level(self, min_num, max_num):
         if self.c_class_2 == '':
             print('this is is blank class_2')
-            level = random.randint(min, max(min, max_num))
+            pre_level = random.randint(min_num, max(min_num, max_num))
+            level = min(pre_level,40)
             c_class_level = level
             c_class_2_level = 0
             self.update_level(level, c_class_level, c_class_2_level)
-        if self.dip == True:
-            level = random.randint(min, max(min, max_num))
+        elif self.dip == True:
+            pre_level = random.randint(min_num, max(min_num, max_num))
+            level = min(pre_level,40)
             c_class_level = level-1
             c_class_2_level = 1
             self.update_level(level, c_class_level, c_class_2_level)
         else:
-            level = random.randint(min, max(min, max_num))
-            c_class_level = random.randint(min-1,level-1)
+            pre_level = random.randint(min_num, max(min_num, max_num))
+            level = min(pre_level,40)            
+            pre_c_class_level = random.randint((min_num-1,level-1))
+            c_class_level = min(pre_c_class_level,39)            
             c_class_2_level = level - c_class_level
-            self.update_level(level, c_class_level, c_class_2_level)            
+            self.update_level(level, c_class_level, c_class_2_level)    
+        
 
     def hit_dice_calc(self):
         if self.c_class_2 != '':
@@ -740,9 +753,9 @@ class Character:
 
     def extra_combat_feats(self):
         #fighter_feats = [1,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40]
-        monk_feats = [1,2,6,10,14,18,22,26,30,34,38]
-        brawler_feats = [2,5,8,11,14,17,20,23,26,29,32,35,38] 
-        ranger_feats = [2,6,10,14,18,22,26,30,34,38]            
+        monk_feats = [1,2,6,10,14,18,22,26,30,34,38,42]
+        brawler_feats = [2,5,8,11,14,17,20,23,26,29,32,35,38,41] 
+        ranger_feats = [2,6,10,14,18,22,26,30,34,38,42]            
         #setting up extra feats + extra feats_2 as 0 so we don't get errors
         extra_feats = 0
         extra_feats_2 = 0    
@@ -814,7 +827,7 @@ class Character:
 
     def extra_magic_feats(self):
         # wizard_feats = [1,5,10,15,20,25,30,35,40] 
-        sorcerer_feats = [7,13,19,25,31,37]
+        sorcerer_feats = [7,13,19,25,31,37,43]
         if self.c_class == 'wizard':
             magic_feats =  1 + floor((self.c_class_level)/5)
 
@@ -872,11 +885,7 @@ class Character:
         if self.c_class_2 == 'skald':
             skald_talent_amount = floor(self.c_class_2_level/3)              
 
-        #paladins select mercies
-        if self.c_class == 'paladin':
-            paladin_talent_amount = floor(self.c_class_level/3)
-        if self.c_class_2 == 'paladin':
-            paladin_talent_amount = floor(self.c_class_2_level/3) 
+
 
                                
 
@@ -907,7 +916,7 @@ class Character:
 
     def ranger_feats_chooser(self):
         if self.c_class == 'ranger':
-            ranger_feats = [2,6,10,14,18,22,26,30,34,38]              
+            ranger_feats = [2,6,10,14,18,22,26,30,34,38,42]              
             choice = list(self.ranger_combat_styles.keys())   
             random_combat_style = random.choice(choice)
             ranger_feats_chosen_list=set()     
@@ -936,7 +945,7 @@ class Character:
 
     def monk_feats_chooser(self):
         if self.c_class == 'monk' or self.c_class == 'unchained_monk':
-            monk_feats = [1,2,6,10,14,18,22,26,30,34,38]   
+            monk_feats = [1,2,6,10,14,18,22,26,30,34,38,42]   
             #using set + .add makes sure we don't have any repeats in our list           
             monk_feats_chosen_list=set()     
             i=0
@@ -956,6 +965,50 @@ class Character:
                 i=len(monk_feats_chosen_list)
 
             print(monk_feats_chosen_list)
+
+    def monk_ki_power_chooser(self):
+        ki_powers = [4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50]
+        #using set + .add makes sure we don't have any repeats in our list           
+        ki_powers_chosen_list=set()     
+        i=0
+        ki = str(4)
+        if self.c_class == 'unchained_monk':
+
+            while ki_powers[i] <= self.c_class_level:
+                ki_powers_list=self.monk_choices['ki_powers'][ki]
+
+                ki_powers_chosen=random.choice(ki_powers_list)
+                ki_powers_chosen_list.add(ki_powers_chosen)
+                   
+                i+=1
+                ki = str(min(ki_powers[i],20))
+
+                if ki_powers[i] == 30:
+                    ki = str(16)
+                    
+                if ki_powers[i] == 40:
+                    ki = str(14)                  
+
+        if self.c_class_2 == 'unchained_monk':
+
+            while ki_powers[i] <= self.c_class_2_level:
+                ki_powers_list=self.monk_choices['ki_powers'][ki]
+
+                ki_powers_chosen=random.choice(ki_powers_list)
+                ki_powers_chosen_list.add(ki_powers_chosen)
+                   
+                i+=1
+                ki = str(min(ki_powers[i],20))
+
+                if ki_powers[i] == 30:
+                    ki = str(16)
+                    
+                if ki_powers[i] == 40:
+                    ki = str(14)                          
+                
+
+
+            print(ki_powers_chosen_list)            
 
 
 
@@ -989,16 +1042,78 @@ class Character:
     def sorcerer_bloodline_chooser(self):
         if self.c_class == 'sorcerer' or self.c_class_2 == 'sorcerer':   
             self.chosen_bloodline =  random.choice(list(self.bloodlines.keys()))
+            print(f'This is your selected bloodline {self.chosen_bloodline} + its info: \n{self.bloodlines[self.chosen_bloodline]}')
 
-    
-    def sorcerer_bloodline_info(self):
-        if self.c_class == 'sorcerer' or self.c_class_2 == 'sorcerer':        
-            bloodline_list = ['Aberrant','Abyssal','Accursed','Aquatic','Arcane','Astral','Boreal','Celestial','Daemon','Deep Earth','Destined','Div','Djinni','Draconic','Dreamspun','Ectoplasm','Efreeti','Elemental','Fey','Ghoul','Harrow','Imperious (Human)','Impossible','Infernal','Kobold (Kobold)','Maestro','Marid','Martyred','Nanite','Oni','Orc','Pestilence','Phoenix','Possessed','Protean','Psychic','Rakshasa','Salamander','Scorpion','Serpentine','Shadow','Shaitan','Shapechanger','Solar','Solar','Starsoul','Stormborn','Undead','Unicorn','Verdant','Vestige']
-            self.chosen_bloodline = random.sample(bloodline_list,k=1)
+            return self.chosen_bloodline
 
 
-        return self.chosen_bloodline
+    def paladin_mercy_chooser(self):
 
+        self.mercy_chosen_list=set()        
+        i=0      
+        k=0   
+
+
+        if self.c_class == 'paladin':
+            paladin_list = floor(self.c_class_level/3)
+        elif self.c_class_2 == 'paladin':
+            paladin_list = floor(self.c_class_2_level/3) 
+        else:
+            paladin_list = 0
+        
+        while i <= (paladin_list):
+            if paladin_list >= 1:
+                mercy_list = self.mercies["mercy"]["3"]
+            elif paladin_list >= 2:
+                mercy_list = self.mercies["mercy"]["3"] + self.mercies["mercy"]["6"]
+            elif paladin_list >= 3:
+                mercy_list = self.mercies["mercy"]["3"] + self.mercies["mercy"]["6"] + self.mercies["mercy"]["9"]
+            else:
+                mercy_list = self.mercies["mercy"]["3"] + self.mercies["mercy"]["6"] + self.mercies["mercy"]["9"] + self.mercies["mercy"]["12"]                                            
+            
+            mercy_chosen=random.choice(mercy_list)
+            self.mercy_chosen_list.add(mercy_chosen) 
+ 
+            #need to find a better way to grab all mercies, if it selects one multiple times you have 1 less mercy
+            k+=1
+            print(f'NEED TO FIND A BETTER WAY TO HANDLE THIS mercy chosen list length {len(self.mercy_chosen_list)}')
+            i = max(len(self.mercy_chosen_list),k)
+            
+           
+
+
+
+
+    def rogue_talent_chooser(self):
+        rogue_talent_list=set()       
+        i=0
+
+        if self.c_class == 'rogue' or self.c_class == 'rogue_unchained':
+            talent_list = floor(self.c_class_level/2)   
+        elif self.c_class_2 == 'rogue' or self.c_class_2 == 'rogue_unchained':
+            talent_list = floor(self.c_class_2_level/2)
+        else:
+            talent_list = 0
+
+        print(talent_list)
+
+
+        while i <= talent_list and talent_list != 0:
+            if talent_list >= 1:
+                talent_list_choice = list(self.rogue_talents["basic"].keys())
+            elif talent_list >= 5:
+                talent_list_choice = list(self.rogue_talents["basic"].keys()) + list(self.rogue_talents["advanced"].keys())
+
+            talent_chosen=random.choice(talent_list_choice)
+            self.rogue_talent_list.add(talent_chosen)     
+            i+= 1            
+
+
+            print(self.rogue_talent_list)
+        return self.rogue_talent_list        
+ 
+
+        
 
     #need to implement all the restrictions to feats we want
     def feats_selector(self):             
