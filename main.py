@@ -133,7 +133,10 @@ while userInput.lower() == 'y':
 		character.monk_ki_power_chooser()
 		character.sorcerer_bloodline_chooser()
 		character.paladin_mercy_chooser()
+		#this is just to see all unique pre-requisites for rogue talents
+		character.print_unique_prerequisites()		
 		character.rogue_talent_chooser()
+
 
 		#Create a prepared spell list (dependent on spells known)
 

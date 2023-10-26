@@ -1081,11 +1081,25 @@ class Character:
             
            
 
+    def get_all_prerequisites(self):
+        prerequisites = set()
+        for talent_name, talent_info in self.rogue_talents["advanced"].items():
+            prerequisites_string = talent_info["prerequisites"]
+            prerequisites_list = prerequisites_string.split(",") if prerequisites_string else []
+            prerequisites.update(prerequisites_list)
+
+        return prerequisites
+
+    def print_unique_prerequisites(self):
+        unique_prerequisites = self.get_all_prerequisites()
+        print("Unique prerequisites for rogue talents:")
+        for prerequisite in unique_prerequisites:
+            print(prerequisite)
 
 
 
     def rogue_talent_chooser(self):
-        rogue_talent_list=set()       
+        self.rogue_talent_list=set()       
         i=0
 
         if self.c_class == 'rogue' or self.c_class == 'rogue_unchained':
