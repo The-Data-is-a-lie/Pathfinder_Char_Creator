@@ -1,5 +1,5 @@
 {
-    "wizard": {
+    "sorcerer": {
         "weapons": ["Club", "Dagger", "Heavy Crossbow", "Light Crossbow", "Quarterstaff"],
         "armor": ["none"],
         "skills": ["Craft (any one)", "Fly", "Knowledge (arcana)", "Knowledge (history)", "Knowledge (planes)", "Linguistics", "Spellcraft"],

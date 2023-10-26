@@ -36,7 +36,10 @@ character_json_config = {
 	'spells_per_day': 'json/spells_per_day.json',
 	'spells_from_ability_mod': 'json/spells_from_ability_mod.json',
 	'ranger_combat_styles': 'json/ranger_combat_styles.json',				
-	'monk_choices': 'json/monk_choices.json'					
+	'monk_choices': 'json/monk_choices.json',
+	'class_features': 'json/class_features.json',	
+	'bloodlines': 'json/bloodlines.json'
+						
 }
 
 

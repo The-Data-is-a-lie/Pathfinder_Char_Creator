@@ -205,6 +205,12 @@ class Character:
         with open(json_config['monk_choices']) as f:
             self.monk_choices = json.load(f)               
 
+        with open(json_config['class_features']) as f:
+            self.class_features = json.load(f)  
+
+        with open(json_config['bloodlines']) as f:
+            self.bloodlines = json.load(f)               
+
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
     def update_level(self, level, c_class_level, c_class_2_level):
         self.level = level
@@ -981,6 +987,11 @@ class Character:
     
 
     def sorcerer_bloodline_chooser(self):
+        if self.c_class == 'sorcerer' or self.c_class_2 == 'sorcerer':   
+            self.chosen_bloodline =  random.choice(list(self.bloodlines.keys()))
+
+    
+    def sorcerer_bloodline_info(self):
         if self.c_class == 'sorcerer' or self.c_class_2 == 'sorcerer':        
             bloodline_list = ['Aberrant','Abyssal','Accursed','Aquatic','Arcane','Astral','Boreal','Celestial','Daemon','Deep Earth','Destined','Div','Djinni','Draconic','Dreamspun','Ectoplasm','Efreeti','Elemental','Fey','Ghoul','Harrow','Imperious (Human)','Impossible','Infernal','Kobold (Kobold)','Maestro','Marid','Martyred','Nanite','Oni','Orc','Pestilence','Phoenix','Possessed','Protean','Psychic','Rakshasa','Salamander','Scorpion','Serpentine','Shadow','Shaitan','Shapechanger','Solar','Solar','Starsoul','Stormborn','Undead','Unicorn','Verdant','Vestige']
             self.chosen_bloodline = random.sample(bloodline_list,k=1)
