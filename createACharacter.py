@@ -106,6 +106,7 @@ class Character:
 
 
 
+
         #feat selector variables
         self.feats=None
         self.combat_feats=None
@@ -218,6 +219,10 @@ class Character:
 
         with open(json_config['rogue_talents']) as f:
             self.rogue_talents = json.load(f)             
+
+        with open(json_config['rage_powers']) as f:
+            self.rage_powers = json.load(f)       
+
 
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
     def update_level(self, level, c_class_level, c_class_2_level):
@@ -1081,28 +1086,87 @@ class Character:
             
            
 
-    def get_all_prerequisites(self):
-        prerequisites = set()
-        for talent_name, talent_info in self.rogue_talents["advanced"].items():
-            prerequisites_string = talent_info["prerequisites"]
-            prerequisites_list = prerequisites_string.split(",") if prerequisites_string else []
-            prerequisites.update(prerequisites_list)
+#start of rogue talent pre-req section
 
-        return prerequisites
+    def get_talents_without_prerequisites(self):
+        talents_without_prerequisites = []
+        if (self.c_class == 'rogue' or self.c_class == 'unchained_rogue') and self.c_class_level >= 5:
+            talent_groups = [self.rogue_talents["basic"]]    
+        else:
+            talent_groups = [self.rogue_talents["advanced"], self.rogue_talents["basic"]]
 
-    def print_unique_prerequisites(self):
-        unique_prerequisites = self.get_all_prerequisites()
-        print("Unique prerequisites for rogue talents:")
-        for prerequisite in unique_prerequisites:
-            print(prerequisite)
+        for talent_group in talent_groups:
+            for talent_name, talent_info in talent_group.items():
+                prerequisites_string = talent_info.get("prerequisites", "")
+                if not prerequisites_string:
+                    talents_without_prerequisites.append(talent_name)
+
+#        print(talents_without_prerequisites)
+        return talents_without_prerequisites
+    
+    #Want to make this a generic function that works for any class ability selection with complex prerequisites
+    def chooseable_list(self):
+        self.chooseable = set()
+        #figure out how to add feats + anything else that could function as a pre-req
+
+        return self.chooseable
+    
+    def chooseable_list_stats(self,attr,stat_name):
+        base = 10
+        while base <= int(attr):
+            stat = str(stat_name) + " " + str(base)
+            self.chooseable.add(stat)
+            base += 1
+
+            if base == 24:
+                break
+
+
+            
+    
+
+    def mashing_keys(self):
+        if (self.c_class == 'rogue' or self.c_class == 'unchained_rogue') and self.c_class_level >= 5:
+            talent_groups = [self.rogue_talents["basic"]]    
+        else:
+            talent_groups = [self.rogue_talents["advanced"], self.rogue_talents["basic"]]        
+
+        #our dynamic list we create, to help us isolate prereqs we meet
+        prerequisites_list = set(self.chooseable)
+        matching_keys = set()
+
+        # Iterate through the JSON data
+        for talent_group in talent_groups:
+            for key, value in talent_group.items():
+                prerequisites = value.get("prerequisites", "")
+#                print(prerequisites)
+                prerequisites_components = set(p.strip() for p in prerequisites.split(","))   
+#                print(prerequisites_components)             
+
+#                print(prerequisites_components.issubset(prerequisites_list))
+
+                #this looks to see if each version of prerequisites_list is exactly in our dynamic prereq list
+                if prerequisites_components.issubset(prerequisites_list) == True:
+                    matching_keys.add(key)
+
+                 
+
+        print(matching_keys)
+        return matching_keys    
+# End of rogue talent pre-req section
 
 
 # opportunities aplenty
 # if god = trickery + rogue -> can select jaunter talents [talents with word jaunter in them], otherwise can't
 # for 
+
     def rogue_talent_chooser(self):
-        self.rogue_talent_list=set()       
+        self.rogue_talent_list=[]    
+        talents_without_prerequisites = self.get_talents_without_prerequisites()     
+
         i=0
+        even=2
+        odd=1
 
         if self.c_class == 'rogue' or self.c_class == 'rogue_unchained':
             talent_list = floor(self.c_class_level/2)   
@@ -1110,22 +1174,37 @@ class Character:
             talent_list = floor(self.c_class_2_level/2)
         else:
             talent_list = 0
+        talent_list_choice = talents_without_prerequisites
+        
+        while i < talent_list and talent_list != 0:
+            talent_chosen = random.choice(talent_list_choice)
+            print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! {talent_chosen}')
+            self.rogue_talent_list.append(talent_chosen)
 
-        print(talent_list)
+            #assigning level values to the list, so we can select any talent with a level requirement
+            rogue_k_even = "rogue " + str(even)
+            rogue_k_odd = "rogue " + str(odd)
+            self.chooseable.add(rogue_k_even)
+            self.chooseable.add(rogue_k_odd)
+            
+            #adding the chosen talent to the list, so we can use it as a prerequisite for other talents
+            self.chooseable.add(talent_chosen)            
+            # using the mashing_keys function to cycle through all 
+            # values with prerequsites [we have in self.chooseable] to add them to list
+            
+            ## the mashing keys function needs work, it only looks for 
+            ## one word in each prerequisite vs many strings per each
+            matching_keys = self.mashing_keys()
+            talent_list_choice.extend(matching_keys)
+        
+            i = len(self.rogue_talent_list)     
+            even += 2
+            odd += 2
 
 
-        while i <= talent_list and talent_list != 0:
-            if talent_list >= 1:
-                talent_list_choice = list(self.rogue_talents["basic"].keys())
-            elif talent_list >= 5:
-                talent_list_choice = list(self.rogue_talents["basic"].keys()) + list(self.rogue_talents["advanced"].keys())
 
-            talent_chosen=random.choice(talent_list_choice)
-            self.rogue_talent_list.add(talent_chosen)     
-            i+= 1            
-
-
-            print(self.rogue_talent_list)
+        print(self.rogue_talent_list)
+        print(self.chooseable)
         return self.rogue_talent_list        
  
 
@@ -1177,6 +1256,43 @@ class Character:
 
 
 
+
+
+
+# Probably Delete, but not sure yet
+
+
+
+
+
+#     def get_all_prerequisites(self):
+#         prerequisites = set()
+#         talent_groups = [self.rogue_talents["advanced"], self.rogue_talents["basic"]]
+
+#         for talent_group in talent_groups:
+#             for talent_info in talent_group.values():
+#                 prerequisites_string = talent_info.get("prerequisites", "")
+#                 prerequisites_list = [req.strip() for req in prerequisites_string.split(",") if prerequisites_string]
+#                 prerequisites.update(prerequisites_list)
+    
+# #        print(prerequisites)
+#         return prerequisites     
+
+#     def get_talents_with_prerequisites(self):
+#         talents_with_prerequisites = []
+#         if (self.c_class == 'rogue' or self.c_class == 'unchained_rogue') and self.c_class_level >= 5:
+#             talent_groups = [self.rogue_talents["basic"]]    
+#         else:
+#             talent_groups = [self.rogue_talents["advanced"], self.rogue_talents["basic"]]
+
+#         for talent_group in talent_groups:
+#             for talent_name, talent_info in talent_group.items():
+#                 prerequisites_string = talent_info.get("prerequisites", "")
+#                 if prerequisites_string:
+#                     talents_with_prerequisites.append(talent_name)
+
+# #        print(talents_with_prerequisites)
+#         return talents_with_prerequisites    
 
 
 

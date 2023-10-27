@@ -40,7 +40,8 @@ character_json_config = {
 	'class_features': 'json/class_features.json',	
 	'bloodlines': 'json/bloodlines.json',
 	'mercies': 'json/mercies.json',
-	'rogue_talents': 'json/rogue_talents.json'	
+	'rogue_talents': 'json/rogue_talents.json',
+	'rage_powers': 'json/rage_powers.json'			
 						
 }
 
@@ -105,8 +106,6 @@ while userInput.lower() == 'y':
 		character.choose_caster_formula_1()
 		character.choose_caster_formula_2()
 
-
-
 		#Divine Casters have all spells known (don't make this function for them)
 		# print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
 		# print(f'This is your spells per day {character.spells_per_day_attr("base_classes")}')
@@ -133,11 +132,23 @@ while userInput.lower() == 'y':
 		character.monk_ki_power_chooser()
 		character.sorcerer_bloodline_chooser()
 		character.paladin_mercy_chooser()
-		#this is just to see all unique pre-requisites for rogue talents
-		character.print_unique_prerequisites()		
+
+		#this is to allow for talent choice stat pre-reqs (self.chooseable)
+		character.chooseable_list() 		
+		character.chooseable_list_stats(character.str, 'str')
+		character.chooseable_list_stats(character.dex, 'dex')
+		character.chooseable_list_stats(character.con, 'con')
+		character.chooseable_list_stats(character.int, 'int')
+		character.chooseable_list_stats(character.wis, 'wis')
+		character.chooseable_list_stats(character.cha, 'cha')	
+	
+
 		character.rogue_talent_chooser()
+									
 
-
+#		character.get_all_prerequisites()
+#		character.get_talents_without_prerequisites()
+#		character.get_talents_with_prerequisites()
 		#Create a prepared spell list (dependent on spells known)
 
 
