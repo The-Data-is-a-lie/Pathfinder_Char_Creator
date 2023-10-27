@@ -933,54 +933,10 @@
         "benefits": "may use dex instead of str on attack rolls with a light or one-handed weapon that you are proficient with and treat the selected weapon as a one-handed piercing weapon for all feats and class abilities that require such a weapon. ",
         "source": "kc"
         },
-        "constellation aspects": {
-        "prerequisites": "ability to bind spirits",
-        "benefits": "you gain the ability to bind a constellation aspect as though you were an occultist. ",
-        "source": "pmu, v1"
-        },
-        "fortify skill": {
-        "prerequisites": "ability to bind spirits",
-        "benefits": "expend spirits major granted ability to gain a bonus on the next str- or dex-based skill check. ",
-        "source": "pmu, v1"
-        },
-        "hide supernatural abilities": {
-        "prerequisites": "ability to bind spirits",
-        "benefits": "you gain the disguise granted abilities binder secret, and you can spend a swift action to take 10 on the bluff check. ",
-        "source": "pmu, v1"
-        },
-        "monstrous aspects": {
-        "prerequisites": "ability to bind spirits",
-        "benefits": "you gain the ability to bind a monstrous aspect as though you were an unbound occultist. ",
-        "source": "pmu, v1"
-        },
-        "occult feat": {
-        "prerequisites": "ability to bind spirits",
-        "benefits": "gain a bonus occult feat. ",
-        "source": "pmu, v1"
-        },
-        "brute malice": {
-        "prerequisites": "power attack, opportunities aplenty",
-        "benefits": "wielding a martial weapon two-handed increases opportunities aplenty bonus damage +3 per two levels. ",
-        "source": "rp: soa"
-        },
-        "coldhearted precision": {
-        "prerequisites": "rogue 4, opportunities aplenty",
-        "benefits": "add competence bonus to hit on opportunities aplenty attacks. ",
-        "source": "rp: soa"
-        },
+
         "crippling missile": {
         "prerequisites": "rogue 4, precise shot",
         "benefits": "hinder opponents combat ability using combat maneuvers with thrown weapons. ",
-        "source": "rp: soa"
-        },
-        "crippling shot": {
-        "prerequisites": "rogue 4, opportunities aplenty",
-        "benefits": "choose to make opponents struck by opportunities aplenty attack save or be staggered. ",
-        "source": "rp: soa"
-        },
-        "defenses aplenty": {
-        "prerequisites": "opportunities aplenty",
-        "benefits": "gain shields proficiency and competence bonus to your ac equal to 1/4 of your opportunities aplenty bonus damage. ",
         "source": "rp: soa"
         },
         "deadly tricks": {
@@ -1042,16 +998,6 @@
         "prerequisites": "",
         "benefits": "gain the katana exotic weapon proficiency. ",
         "source": "rp: woty"
-        },
-        "smarter and harder": {
-        "prerequisites": "opportunities aplenty",
-        "benefits": "add intelligence modifier to opportunities aplenty attack rolls when wielding only one light or one-handed weapon. ",
-        "source": "rp: soa"
-        },
-        "tear the wound": {
-        "prerequisites": "two-weapon fighting, opportunities aplenty",
-        "benefits": "opponent dealt opportunities aplenty damage from two-weapon fighting is dealt additional damage. ",
-        "source": "rp: soa"
         },
         "tricky combatant": {
         "prerequisites": "",

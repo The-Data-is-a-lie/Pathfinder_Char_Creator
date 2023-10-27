@@ -1097,7 +1097,9 @@ class Character:
             print(prerequisite)
 
 
-
+# opportunities aplenty
+# if god = trickery + rogue -> can select jaunter talents [talents with word jaunter in them], otherwise can't
+# for 
     def rogue_talent_chooser(self):
         self.rogue_talent_list=set()       
         i=0
