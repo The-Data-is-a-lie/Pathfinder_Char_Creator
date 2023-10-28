@@ -1,0 +1,309 @@
+{
+    "Lawful good": [
+      {
+        "Name": ["Erastil"],
+        "Portfolio": ["Farming", "Hunting", "Trade", "Family"],
+        "Worshipers": ["Farmers", "hunters", "tradesmen"],
+        "Domains": ["Animal", "Community", "good", "Law", "Plant"],
+        "Subdomains": ["Archon", "Cooperation", "Family", "Feather", "Fur", "Growth", "Home"]
+      },
+      {
+        "Name": ["Iomedae"],
+        "Portfolio": ["Valor", "Rulership", "Justice", "Honor"],
+        "Worshipers": ["Paladins", "knights", "warriors"],
+        "Domains": ["Glory", "good", "Law", "Sun", "War"],
+        "Subdomains": ["Archon", "Day", "Heroism", "Honor", "Judgment", "Light", "Redemption", "Revelation", "Tactics"]
+      },
+      {
+        "Name": ["Torag"],
+        "Portfolio": ["Forge", "protection", "strategy"],
+        "Worshipers": ["Dwarves"],
+        "Domains": ["Artifice", "Earth", "good", "Law", "Protection"],
+        "Subdomains": ["Archon", "Caves", "Construct", "Defense", "Judgment", "Metal", "Toil"]
+      },
+      {
+        "Name": ["Apsu"],
+        "Portfolio": ["good dragons", "leadership", "peace"],
+        "Worshipers": ["Dragons"],
+        "Domains": ["Artifice", "good", "Law", "Scalykind", "Travel"],
+        "Subdomains": ["Archon", "Construct", "Dragon", "Exploration", "Toil", "Trade"]
+      },
+      {
+        "Name": ["Easivra"],
+        "Portfolio": ["Avians", "gold", "the sun"],
+        "Worshipers": ["Sabosan"],
+        "Domains": ["Animal", "good", "Law", "Sun"],
+        "Subdomains": ["Archon", "Day", "Feather", "Light"]
+      }
+    ],
+    "Neutral good": [
+      {
+        "Name": ["Sarenrae"],
+        "Portfolio": ["Sun", "Redemption", "Honesty", "Healing"],
+        "Worshipers": ["Healers", "farmers", "redeemed evil-doers"],
+        "Domains": ["Fire", "Glory", "good", "Healing", "Sun"],
+        "Subdomains": ["Agathion", "Day", "Heroism", "Light", "Redemption", "Restoration", "Resurrection", "Revelation"]
+      },
+      {
+        "Name": ["Shelyn"],
+        "Portfolio": ["Beauty", "art", "love", "music"],
+        "Worshipers": ["Artists", "poets", "lovers"],
+        "Domains": ["Air", "Charm", "good", "Luck", "Protection"],
+        "Subdomains": ["Agathion", "Cloud", "Defense", "Fate", "Imagination", "Love", "Purity"]
+      },
+      {
+        "Name": ["Kurgess"],
+        "Portfolio": ["Bravery", "competition", "sport"],
+        "Worshipers": ["Archers", "athletes", "entertainers", "jousters", "sellswords"],
+        "Domains": ["Community", "good", "Luck", "Strength", "Travel"],
+        "Subdomains": ["Agathion", "Family", "Fate", "Home", "Resolve", "Trade"]
+      }
+    ],
+    "Chaotic good": [
+      {
+        "Name": ["Cayden Cailean"],
+        "Portfolio": ["Freedom", "ale", "wine", "bravery"],
+        "Worshipers": ["Brewers", "vintners", "barkeeps", "innkeepers", "good adventurers"],
+        "Domains": ["Chaos", "Charm", "good", "Strength", "Travel"],
+        "Subdomains": ["Azata", "Exploration", "Ferocity", "Love", "Lust", "Resolve", "Revelry"]
+      },
+      {
+        "Name": ["Desna"],
+        "Portfolio": ["Dreams", "stars", "travelers", "luck"],
+        "Worshipers": ["Travelers", "astronomers", "gamblers", "Varisians", "musicians"],
+        "Domains": ["Chaos", "good", "Liberation", "Luck", "Travel"],
+        "Subdomains": ["Azata", "Curse", "Exploration", "Fate", "Freedom", "Imagination", "Revelry", "Revolution"]
+      },
+      {
+        "Name": ["Kurgess"],
+        "Portfolio": ["Bravery", "competition", "sport"],
+        "Worshipers": ["Archers", "athletes", "entertainers", "jousters", "sellswords"],
+        "Domains": ["Community", "good", "Luck", "Strength", "Travel"],
+        "Subdomains": ["Agathion", "Family", "Fate", "Home", "Resolve", "Trade"]
+      }
+    ],
+    "Lawful neutral": [
+      {
+        "Name": ["Abadar"],
+        "Portfolio": ["Cities", "wealth", "merchants", "law"],
+        "Worshipers": ["Judges", "merchants", "lawyers", "aristocrats"],
+        "Domains": ["Earth", "Law", "Nobility", "Protection", "Travel"],
+        "Subdomains": ["Defense", "Inevitable", "Leadership", "Martyr", "Metal", "Trade"]
+      },
+      {
+        "Name": ["Irori"],
+        "Portfolio": ["History", "knowledge", "self-perfection"],
+        "Worshipers": ["Monks", "Vudrani", "Green dragons", "Dwarves"],
+        "Domains": ["Healing", "Knowledge", "Law", "Rune", "Strength"],
+        "Subdomains": ["Inevitable", "Language", "Memory", "Restoration", "Resolve", "Thought"]
+      },
+      {
+        "Name": ["Alseta"],
+        "Portfolio": ["Doors", "transitions", "years"],
+        "Worshipers": ["Hosts", "negotiators", "diplomats", "seneschals", "lawyers", "witnesses"],
+        "Domains": ["Community", "Law", "Magic", "Protection"],
+        "Subdomains": ["Arcane", "Defense", "Home", "Inevitable"]
+      },
+      {
+        "Name": ["Erecura"],
+        "Portfolio": ["Deduction", "mind reading", "subtlety"],
+        "Worshipers": ["Soothsayers"],
+        "Domains": ["Knowledge", "Law", "Nobility", "Trickery"],
+        "Subdomains": ["Deception", "Leadership", "Memory", "Thought"]
+      }
+    ],
+    "True Neutral": [
+      {
+        "Name": ["Gozreh"],
+        "Portfolio": ["Nature", "weather", "the sea"],
+        "Worshipers": ["Druids", "sailors", "woodsmen", "farmers"],
+        "Domains": ["Air", "Animal", "Plant", "Water", "Weather"],
+        "Subdomains": ["Cloud", "Decay", "Growth", "Oceans", "Seasons", "Wind"]
+      },
+      {
+        "Name": ["Nethys"],
+        "Portfolio": ["Magic"],
+        "Worshipers": ["Wizards", "mystic theurges"],
+        "Domains": ["Destruction", "Knowledge", "Magic", "Protection", "Rune"],
+        "Subdomains": ["Arcane", "Catastrophe", "Divine", "Defense", "Thought", "Wards"]
+      },
+      {
+        "Name": ["Pharasma"],
+        "Portfolio": ["Fate", "death", "prophecy", "rebirth"],
+        "Worshipers": ["Midwives", "pregnant women", "morticians"],
+        "Domains": ["Death", "Healing", "Knowledge", "Repose", "Water"],
+        "Subdomains": ["Ancestors", "Ice", "Memory", "Resurrection", "Souls", "Thought"]
+      },
+      {
+        "Name": ["Alseta"],
+        "Portfolio": ["Doors", "transitions", "years"],
+        "Worshipers": ["Hosts", "negotiators", "diplomats", "seneschals", "lawyers", "witnesses"],
+        "Domains": ["Community", "Law", "Magic", "Protection"],
+        "Subdomains": ["Arcane", "Defense", "Home", "Inevitable"]
+      },
+      {
+        "Name": ["Erecura"],
+        "Portfolio": ["Deduction", "mind reading", "subtlety"],
+        "Worshipers": ["Soothsayers"],
+        "Domains": ["Knowledge", "Law", "Nobility", "Trickery"],
+        "Subdomains": ["Deception", "Leadership", "Memory", "Thought"]
+      }
+    ],
+    "Chaotic neutral": [
+      {
+        "Name": ["Calistria"],
+        "Portfolio": ["Trickery", "lust", "revenge"],
+        "Worshipers": [""],
+        "Domains": ["Chaos", "Charm", "Knowledge", "Luck", "Trickery"],
+        "Subdomains": ["Azata", "Curse", "Deception", "Lust", "Memory", "Thievery"]
+      },
+      {
+        "Name": ["Gorum"],
+        "Portfolio": ["Strength", "battle", "weapons"],
+        "Worshipers": ["Soldiers", "mercenaries", "brigands", "bloodthirsty savages", "half-orcs", "barbarians"],
+        "Domains": ["Chaos", "Destruction", "Glory", "Strength", "War"],
+        "Subdomains": ["Blood", "Ferocity", "Protean", "Rage", "Resolve", "Tactics"]
+      },
+      {
+        "Name": ["Besmara"],
+        "Portfolio": ["Piracy", "strife", "sea monsters"],
+        "Worshipers": ["Pirates"],
+        "Domains": ["Chaos", "Trickery", "War", "Water", "Weather"],
+        "Subdomains": ["Deception", "Duels", "Oceans", "Protean", "Tactics", "Thievery", "Storms"]
+      },
+      {
+        "Name": ["Groetus"],
+        "Portfolio": ["Empty places", "ruins", "oblivion"],
+        "Worshipers": ["Madmen"],
+        "Domains": ["Chaos", "Darkness", "Destruction", "Madness", "Void"],
+        "Subdomains": ["Catastrophe", "Insanity", "Loss", "Night", "Protean", "Stars"]
+      },
+      {
+        "Name": ["Hanspur"],
+        "Portfolio": ["Rivers", "river travel", "smugglers"],
+        "Worshipers": ["Clerics", "druids", "rangers"],
+        "Domains": ["Chaos", "Death", "Travel", "Water"],
+        "Subdomains": ["Exploration", "Murder", "Rivers", "Trade"]
+      }
+    ],
+    "Lawful evil": [
+      {
+        "Name": ["Asmodeus"],
+        "Portfolio": ["Tyranny", "slavery", "pride", "contracts"],
+        "Worshipers": ["Slavers", "bureaucrats", "tyrants"],
+        "Domains": ["Evil", "Fire", "Law", "Magic", "Trickery"],
+        "Subdomains": ["Arcane", "Ash", "Deception", "Devil", "Divine", "Smoke"]
+      },
+      {
+        "Name": ["Zon-Kuthon"],
+        "Portfolio": ["Envy", "pain", "darkness", "loss"],
+        "Worshipers": ["Sadists", "masochists"],
+        "Domains": ["Darkness", "Death", "Destruction", "Evil", "Law"],
+        "Subdomains": ["Catastrophe", "Devil", "Loss", "Murder", "Night", "Undead"]
+      },
+      {
+        "Name": ["Achaekek"],
+        "Portfolio": ["Assassinations", "divine punishment", "the red mantis"],
+        "Worshipers": ["The Red Mantis", "assassins"],
+        "Domains": ["Death", "Evil", "Law", "Trickery", "War"],
+        "Subdomains": ["Blood", "Deception", "Devil", "Murder", "Tactics", "Thievery"]
+      },
+      {
+        "Name": ["Lissala"],
+        "Portfolio": ["Obedience", "reward of service", "runes"],
+        "Worshipers": ["Thassilonians", "rune giants"],
+        "Domains": ["Evil", "Knowledge", "Law", "Nobility", "Rune"],
+        "Subdomains": ["Devil", "Language", "Leadership", "Memory", "Thought", "Wards"]
+      }
+    ],
+    "Neutral evil": [
+        {
+            "Name": ["Norgorber"],
+            "Portfolio": ["Greed", "secrets", "poison", "murder"],
+            "Worshipers": ["Thieves", "assassins", "murderers", "spies"],
+            "Domains": ["Charm", "Death", "Evil", "Knowledge", "Trickery"],
+            "Subdomains": ["Daemon", "Deception", "Memory", "Murder", "Thievery", "Thought"]
+        },
+        {
+            "Name": ["Urgathoa"],
+            "Portfolio": ["Gluttony", "disease", "undeath"],
+            "Worshipers": ["Necromancers", "undead"],
+            "Domains": ["Death", "Evil", "Magic", "Strength", "War"],
+            "Subdomains": ["Blood", "Daemon", "Divine", "Ferocity", "Murder", "Undead"]
+        },
+        {
+            "Name": ["Ahriman"],
+            "Portfolio": ["Destruction", "divs", "nihilism"],
+            "Worshipers": ["Divs", "Usij", "nihilists", "deluded cultists"],
+            "Domains": ["Darkness", "Death", "Destruction", "Evil"],
+            "Subdomains": ["Catastrophe", "Fear", "Loss", "Rage"]
+        },
+        {
+            "Name": ["Alazhra"],
+            "Portfolio": ["Dreams", "night hags", "planar travel"],
+            "Worshipers": ["Night hags"],
+            "Domains": ["Darkness", "Evil", "Repose", "Travel"],
+            "Subdomains": ["Daemon", "Loss", "Night", "Souls"]
+        },
+        {
+            "Name": ["Arazni"],
+            "Portfolio": ["Command of undeath", "lichdom"],
+            "Worshipers": ["Geb"],
+            "Domains": ["Evil", "Nobility", "Protection"],
+            "Subdomains": ["Defense", "Leadership"]
+        },
+        {
+            "Name": ["Zyphus"],
+            "Portfolio": ["Accidental death", "graveyards", "tragedy"],
+            "Worshipers": ["Bitter sufferers of tragedy or loss"],
+            "Domains": ["Death", "Destruction", "Evil", "Plant", "War"],
+            "Subdomains": ["Blood", "Catastrophe", "Daemon", "Decay", "Murder", "Undead"]
+        }
+    ],
+    "Chaotic evil": [
+        {
+            "Name": ["Lamashtu"],
+            "Portfolio": ["Madness", "monsters", "nightmares"],
+            "Worshipers": ["Monstrous humanoids"],
+            "Domains": ["Chaos", "Evil", "Madness", "Strength", "Trickery"],
+            "Subdomains": ["Deception", "Demon", "Ferocity", "Insanity", "Nightmare", "Thievery"]
+        },
+        {
+            "Name": ["Rovagug"],
+            "Portfolio": ["Wrath", "disaster", "destruction"],
+            "Worshipers": ["Orcs", "gnolls", "savage tribes"],
+            "Domains": ["Chaos", "Evil", "Destruction", "Weather", "War"],
+            "Subdomains": ["Blood", "Catastrophe", "Demon", "Protean", "Rage", "Storms"]
+        },
+        {
+            "Name": ["Ahriman"],
+            "Portfolio": ["Destruction", "divs", "nihilism"],
+            "Worshipers": ["Divs", "Usij", "nihilists", "deluded cultists"],
+            "Domains": ["Darkness", "Death", "Destruction", "Evil"],
+            "Subdomains": ["Catastrophe", "Fear", "Loss", "Rage"]
+        },
+        {
+            "Name": ["Alazhra"],
+            "Portfolio": ["Dreams", "night hags", "planar travel"],
+            "Worshipers": ["Night hags"],
+            "Domains": ["Darkness", "Evil", "Repose", "Travel"],
+            "Subdomains": ["Daemon", "Loss", "Night", "Souls"]
+        },
+        {
+            "Name": ["Arazni"],
+            "Portfolio": ["Command of undeath", "lichdom"],
+            "Worshipers": ["Geb"],
+            "Domains": ["Evil", "Nobility", "Protection"],
+            "Subdomains": ["Defense", "Leadership"]
+        },
+        {
+            "Name": ["Zyphus"],
+            "Portfolio": ["Accidental death", "graveyards", "tragedy"],
+            "Worshipers": ["Bitter sufferers of tragedy or loss"],
+            "Domains": ["Death", "Destruction", "Evil", "Plant", "War"],
+            "Subdomains": ["Blood", "Catastrophe", "Daemon", "Decay", "Murder", "Undead"]
+        }
+    
+]
+    
+}

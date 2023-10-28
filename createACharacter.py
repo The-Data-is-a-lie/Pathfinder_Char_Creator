@@ -3,7 +3,7 @@ from utils import data
 import json
 from utils.data import regions, weapon_groups_region, skills,  languages, hair_colors, hair_types, appearance, eye_colors#, path_of_war_class,evil_deities, good_deities, neutral_deities,
 #from utils.data import archetypes
-from utils.util import  format_text, chooseClass, appendAttrData, roll_dice#,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
+from utils.util import   roll_dice#,format_text, chooseClass, appendAttrData,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
 from utils.markdown import style
 import random
 import sys
@@ -223,6 +223,13 @@ class Character:
         with open(json_config['rage_powers']) as f:
             self.rage_powers = json.load(f)       
 
+        with open(json_config['domains']) as f:
+            self.domains = json.load(f)          
+
+        with open(json_config['deity']) as f:
+            self.deity = json.load(f)              
+
+
 
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
     def update_level(self, level, c_class_level, c_class_2_level):
@@ -415,20 +422,25 @@ class Character:
         #pulling alignments from data.py and picking one
         random_alignment = getattr(data,alignments)
         self.alignment = random.choice(random_alignment)
+
         return self.alignment
 
-    def randomize_deity(self, all_deities):
+    def randomize_deity(self):
         # Might want to revamp the way we randomly select deities 
         # (we could make it abit more complex and have chances to 
         # pick Lawful + Chaotic deities as well)
         # Gathering a dictionary of all deities to randomly select one
-        deity_list = getattr(data,all_deities) 
-        if 'good' in self.alignment:
-            return  random.choice(deity_list["good_deities"])
-        elif 'evil' in self.alignment:
-            return  random.choice(deity_list["evil_deities"])
-        else:
-            return  random.choice(deity_list["neutral_deities"])
+        self.deity_choice = random.choice(list(self.deity[self.alignment]))
+
+        # deity_list = getattr(data,all_deities) 
+        # if 'good' in self.alignment:
+        #     return  random.choice(deity_list["good_deities"])
+        # elif 'evil' in self.alignment:
+        #     return  random.choice(deity_list["evil_deities"])
+        # else:
+        #     return  random.choice(deity_list["neutral_deities"])
+
+        return self.deity_choice
 
 
     def randomize_path_of_war_num(self, path_of_war_class):
@@ -1051,6 +1063,20 @@ class Character:
 
             return self.chosen_bloodline
 
+    #need to make sure cleric domain choices align with selected deity
+    def domain_chooser(self):
+        if self.c_class == 'cleric' or self.c_class_2 == 'cleric':  
+            deity_choice_list = list(self.deity_choice['Domains'])
+            self.chosen_domain = random.sample(deity_choice_list,k=2)
+            chosen_first = self.chosen_domain[0].capitalize()
+            chosen_second = self.chosen_domain[1].capitalize()
+#            this is randomly selecting from all without regard to Deity
+#            self.chosen_domain =  random.choice(list(self.domains["domains"].keys()))
+            print(f'This is your first selected domain {self.chosen_domain[0]} + its info: \n{self.domains["domains"][chosen_first]}')
+            print(f'This is your second selected domain {self.chosen_domain[1]} + its info: \n{self.domains["domains"][chosen_second]}')            
+
+        return self.chosen_domain            
+
 
     def paladin_mercy_chooser(self):
 
@@ -1090,10 +1116,15 @@ class Character:
 
     def get_talents_without_prerequisites(self):
         talents_without_prerequisites = []
-        if (self.c_class == 'rogue' or self.c_class == 'unchained_rogue') and self.c_class_level >= 5:
+        if (self.c_class == 'rogue' or self.c_class == 'unchained_rogue') and self.c_class_level >= 10:
             talent_groups = [self.rogue_talents["basic"]]    
+        elif (self.c_class == 'rogue' or self.c_class == 'unchained_rogue') and self.c_class_level < 10:
+            talent_groups = [self.rogue_talents["advanced"], self.rogue_talents["basic"]]               
+        elif (self.c_class == 'barbarian' or self.c_class == 'unchained_barbarian'):
+            talent_groups = [self.rage_powers["basic"]]
         else:
-            talent_groups = [self.rogue_talents["advanced"], self.rogue_talents["basic"]]
+            print("!!!!! no class abilties chosen !!!!")
+            return
 
         for talent_group in talent_groups:
             for talent_name, talent_info in talent_group.items():
@@ -1126,10 +1157,13 @@ class Character:
     
 
     def mashing_keys(self):
-        if (self.c_class == 'rogue' or self.c_class == 'unchained_rogue') and self.c_class_level >= 5:
+        if (self.c_class == 'rogue' or self.c_class == 'unchained_rogue') and self.c_class_level >= 10:
             talent_groups = [self.rogue_talents["basic"]]    
-        else:
-            talent_groups = [self.rogue_talents["advanced"], self.rogue_talents["basic"]]        
+        elif (self.c_class == 'rogue' or self.c_class == 'unchained_rogue') and self.c_class_level < 10:
+            talent_groups = [self.rogue_talents["advanced"], self.rogue_talents["basic"]]               
+        elif (self.c_class == 'barbarian' or self.c_class == 'unchained_barbarian'):
+            talent_groups = [self.rage_powers["basic"]]
+     
 
         #our dynamic list we create, to help us isolate prereqs we meet
         prerequisites_list = set(self.chooseable)
@@ -1180,7 +1214,7 @@ class Character:
             talent_chosen = random.choice(talent_list_choice)
             print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! {talent_chosen}')
             self.rogue_talent_list.append(talent_chosen)
-
+            set(self.rogue_talent_list)
             #assigning level values to the list, so we can select any talent with a level requirement
             rogue_k_even = "rogue " + str(even)
             rogue_k_odd = "rogue " + str(odd)
@@ -1208,6 +1242,54 @@ class Character:
         return self.rogue_talent_list        
  
 
+    def rage_power_chooser(self):
+        self.rage_power_list=[]  
+        rage_powers_without_prerequisites = self.get_talents_without_prerequisites()     
+
+        i=0
+        even=2
+        odd=1
+
+        if self.c_class == 'barbarian' or self.c_class == 'barbarian_unchained':
+            rage_power_list = floor(self.c_class_level/2)   
+        elif self.c_class_2 == 'barbarian' or self.c_class_2 == 'barbarian_unchained':
+            rage_power_list = floor(self.c_class_2_level/2)
+        else:
+            rage_power_list = 0
+
+        rage_power_list_choice = rage_powers_without_prerequisites
+        
+        while i < rage_power_list and rage_power_list != 0:
+            rage_power_chosen = random.choice(rage_power_list_choice)
+            print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! {rage_power_chosen}')
+            self.rage_power_list.append(rage_power_chosen)
+            set(self.rage_power_list)
+
+            #assigning level values to the list, so we can select any rage_power with a level requirement
+            barbarian_k_even = "barbarian " + str(even)
+            barbarian_k_odd = "barbarian " + str(odd)
+            self.chooseable.add(barbarian_k_even)
+            self.chooseable.add(barbarian_k_odd)
+            
+            #adding the chosen rage_power to the list, so we can use it as a prerequisite for other rage_powers
+            self.chooseable.add(rage_power_chosen)            
+            # using the mashing_keys function to cycle through all 
+            # values with prerequsites [we have in self.chooseable] to add them to list
+            
+            ## the mashing keys function needs work, it only looks for 
+            ## one word in each prerequisite vs many strings per each
+            matching_keys = self.mashing_keys()
+            rage_power_list_choice.extend(matching_keys)
+        
+            i = len(self.rage_power_list)     
+            even += 2
+            odd += 2
+
+
+
+        print(self.rage_power_list)
+        print(self.chooseable)
+        return self.rage_power_list 
         
 
     #need to implement all the restrictions to feats we want

@@ -4,8 +4,6 @@ from utils.markdown import style
 from utils.data import version
 from utils.util import  chooseClass, format_text, isBool#, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
 import random
-from utils.data_dict import initialize_character_data, character_data_to_json, convert_character_json_to_html
-from html_editor_best import html_builder
 #Making a Global Character Dictionary so we can reference it and create a HTML/CSS sheet based off of that
 
 global character_data 
@@ -41,7 +39,9 @@ character_json_config = {
 	'bloodlines': 'json/bloodlines.json',
 	'mercies': 'json/mercies.json',
 	'rogue_talents': 'json/rogue_talents.json',
-	'rage_powers': 'json/rage_powers.json'			
+	'rage_powers': 'json/rage_powers.json',
+	'domains': 'json/domains.json',				
+	'deity': 'json/deity.json',	
 						
 }
 
@@ -76,7 +76,9 @@ while userInput.lower() == 'y':
 
 
 		#add an optional flaws rule function	
-		
+		print(f"This is your randomly selected alignment: {character.randomize_alignment('alignments')}")
+		print(f"This is your randomly selected deity: {character.randomize_deity()}")
+
 		character.randomize_body_feature('age')
 		character.randomize_body_feature('height')
 		character.randomize_body_feature('weight')			
@@ -107,13 +109,11 @@ while userInput.lower() == 'y':
 		character.choose_caster_formula_2()
 
 		#Divine Casters have all spells known (don't make this function for them)
-		# print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
-		# print(f'This is your spells per day {character.spells_per_day_attr("base_classes")}')
-		# print(f'This is your spells per day from ability mods {character.spells_per_day_from_ability_mod("caster_mod")}')
-
-		# print(f'Spells known + extra randomized spells known [spell book learners only] {character.spells_known_extra_roll()}')		
-		
-		# print(f"This is your spells list you can choose from {character.spells_known_selection('base_classes')}")
+		print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
+		print(f'This is your spells per day {character.spells_per_day_attr("base_classes")}')
+		print(f'This is your spells per day from ability mods {character.spells_per_day_from_ability_mod("caster_mod")}')
+		print(f'Spells known + extra randomized spells known [spell book learners only] {character.spells_known_extra_roll()}')		
+		print(f"This is your spells list you can choose from {character.spells_known_selection('base_classes')}")
 
 
 		print(f'This is your wizard schools {character.wizard_school_chooser()}')
@@ -144,6 +144,8 @@ while userInput.lower() == 'y':
 	
 
 		character.rogue_talent_chooser()
+		character.rage_power_chooser()
+		character.domain_chooser()
 									
 
 #		character.get_all_prerequisites()
