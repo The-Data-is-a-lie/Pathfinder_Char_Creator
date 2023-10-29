@@ -227,7 +227,10 @@ class Character:
             self.domains = json.load(f)          
 
         with open(json_config['deity']) as f:
-            self.deity = json.load(f)              
+            self.deity = json.load(f)            
+
+        with open(json_config['items']) as f:
+            self.items = json.load(f)                   
 
 
 
@@ -1336,6 +1339,10 @@ class Character:
 
         return self.feat_list
 
+
+
+    def item_chooser(self):
+        print(self.items.keys())
 
 
 

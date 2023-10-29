@@ -42,6 +42,7 @@ character_json_config = {
 	'rage_powers': 'json/rage_powers.json',
 	'domains': 'json/domains.json',				
 	'deity': 'json/deity.json',	
+	'items': 'json/items.json'
 						
 }
 
@@ -146,6 +147,8 @@ while userInput.lower() == 'y':
 		character.rogue_talent_chooser()
 		character.rage_power_chooser()
 		character.domain_chooser()
+
+		character.item_chooser()
 									
 
 #		character.get_all_prerequisites()
