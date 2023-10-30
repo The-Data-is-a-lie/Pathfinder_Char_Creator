@@ -98,6 +98,11 @@ class Character:
         self.chosen_bloodline=None
         self.mercy_chosen_list=None
         self.rogue_talent_list=None
+        self.armor_chosen_list=None         
+        self.armor_chosen_list_description=None       
+        self.weapon_chosen_list=None
+        self.weapon_chosen_list_description=None  
+
 
         #classes like monks + rangers can only select certain combat feats
         self.ranger_feats=None
@@ -232,6 +237,12 @@ class Character:
         with open(json_config['items']) as f:
             self.items = json.load(f)                   
 
+        with open(json_config['fighter_options']) as f:
+            self.fighter_options = json.load(f)        
+
+
+        # with open(json_config['big_boy_item_data']) as f:
+        #     self.big_boy_item_data = json.load(f)                    
 
 
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
@@ -508,7 +519,8 @@ class Character:
         print(type(gold))     
         if self.level>20:
             self.gold = gold[-1]
-        self.gold = gold[self.level-2]
+        else:
+            self.gold = gold[self.level-2]
         return self.gold
 
     def randomize_mythic(self):
@@ -1031,6 +1043,59 @@ class Character:
             print(ki_powers_chosen_list)            
 
 
+    def fighter_armor_train_chooser(self):
+        armor_train = [3,7,11,15,19,23,27,31,35,39,43,47,51]
+        #using set + .add makes sure we don't have any repeats in our list           
+        self.armor_chosen_list=set()   
+        self.armor_chosen_list_description=[]   
+        i=0
+
+
+
+        if self.c_class == 'fighter':
+            while armor_train[i] <= self.c_class_level:
+                armor_train_list=self.fighter_options['armor_train']
+
+                armor_train_chosen=random.choice(list(armor_train_list))
+                armor_train_chosen_description=armor_train_list[armor_train_chosen]
+                print(armor_train_chosen)
+                print(armor_train_chosen_description)
+                self.armor_chosen_list_description.append(armor_train_chosen_description)
+                self.armor_chosen_list.add(armor_train_chosen)
+                i=len(self.armor_chosen_list)
+
+        print(self.armor_chosen_list)
+        return self.armor_chosen_list, self.armor_chosen_list_description
+    
+    
+    def fighter_weapon_train_chooser(self):
+
+        weapon_train = [5,9,13,17,21,25,29,33,37,41,45,49,53]
+        #using set + .add makes sure we don't have any repeats in our list           
+        self.weapon_chosen_list=set()     
+        self.weapon_chosen_list_description=[]       
+        i=0
+
+
+
+        if self.c_class == 'fighter':
+            while weapon_train[i] <= self.c_class_level:
+                weapon_train_list=self.fighter_options['weapon_train']
+
+                weapon_train_chosen=random.choice(list(weapon_train_list))
+                weapon_train_chosen_description=weapon_train_list[weapon_train_chosen]
+                print(weapon_train_chosen)
+                print(weapon_train_chosen_description)
+                self.weapon_chosen_list_description.append(weapon_train_chosen_description)
+                self.weapon_chosen_list.add(weapon_train_chosen)
+                i=len(self.weapon_chosen_list)
+
+        print(self.weapon_chosen_list)
+        print(f"this is your fighter weapon group: {self.weapons[1]}")
+        return self.weapon_chosen_list, self.weapon_chosen_list_description    
+                         
+
+
 
     def wizard_school_chooser(self):
         if self.c_class == 'wizard' or self.c_class_2 == 'wizard':
@@ -1078,7 +1143,7 @@ class Character:
             print(f'This is your first selected domain {self.chosen_domain[0]} + its info: \n{self.domains["domains"][chosen_first]}')
             print(f'This is your second selected domain {self.chosen_domain[1]} + its info: \n{self.domains["domains"][chosen_second]}')            
 
-        return self.chosen_domain            
+            return self.chosen_domain            
 
 
     def paladin_mercy_chooser(self):
@@ -1295,6 +1360,8 @@ class Character:
         return self.rage_power_list 
         
 
+
+
     #need to implement all the restrictions to feats we want
     def feats_selector(self):             
         self.feat_list = []   
@@ -1340,9 +1407,81 @@ class Character:
         return self.feat_list
 
 
+    def convert_price(self,price):
+        price = int(price.replace(',', ''))
+        if price<11:
+            price = (price**2) * 1000
+        return price
 
-    def item_chooser(self):
-        print(self.items.keys())
+
+    def armor_chooser(self):
+        if self.c_class in ('monk', 'unchained_monk') or self.BAB == 'L':
+            armor_type=None
+        elif self.c_class in ('rogue', 'bard', 'brawler') or self.BAB == 'M':
+            armor_type='L'            
+        elif self.c_class in ('barbarian', 'unchained_barbarian', 'ranger') or self.BAB == 'M':
+            armor_type='M'
+        elif self.c_class in ('cleric'):
+            armor_type='H'
+        else:
+            armor_type='H'
+
+        self.armor_type = armor_type       
+
+        return self.armor_type                           
+
+    def item_chooser(self):    
+        #we do this to skip shield (0) + armor (1) choices, since low casters typically don't use these
+        if self.armor_type==None:
+            i=2
+        elif self.armor_type=='L' or self.weapons[1] in ('Axes', 'Blades, Heavy', 'Bows', 'Crossbows' ,'Double', 'Firearms', 'Polearms', 'Siege Engines'):
+            i = 1
+        else:
+            i = 0
+
+        select_from_list = list(self.items.keys())
+        price_total = []
+        equipment_list = []
+
+
+        for i in range(i,len(select_from_list)):
+            print(i)
+            equipment_name = select_from_list[i]
+            dict = self.items.get(str(select_from_list[i]))
+            random_equip = random.choice(list(dict.keys()))
+            price = str(dict[random_equip])
+
+            price=self.convert_price(price)
+            #removing each element form the total self gold value, to make sure people don't get too many items
+            self.gold = self.gold-price
+            print(f"Total Gold: {self.gold}")
+            if self.gold <= 0:
+                break
+
+            print(f"Randomly selected equipment: {equipment_name} : {random_equip}")
+            print("Price:", price)
+            equipment_list.append(random_equip)
+            price_total.append(price)
+
+            i+=1
+
+
+
+
+
+        print(equipment_list)
+        print(price_total)
+
+
+
+
+        # armor_dict = self.items.get("armor")
+        # random_armor = random.choice(list(armor_dict.keys()))
+        # armor_price = armor_dict[random_armor]            
+
+        # print("Randomly selected armor:", random_armor)
+        # print("Armor price:", armor_price)        
+
 
 
 

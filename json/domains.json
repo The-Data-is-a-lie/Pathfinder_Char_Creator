@@ -184,7 +184,7 @@
     "Void": {
         "subdomains": ["Dark Tapestry", "Isolation", "Stars"],
         "Guarded Mind (Ex)": ["You gain a +2 insight bonus on saving throws against all mind-affecting effects."],
-        "Part the Veil (Su)": ["At 8th level, you can lace spells you cast with the raw madness that waits in the outer darkness. Activating this ability is a swift action that you must use as you cast a spell that targets a single creature and that allows a Will saving throw to negate or reduce the spell’s primary effect. If the target fails to resist the spell, the target is also confused for a number of rounds equal to the spell’s level as visions of the void cause temporary insanity. The victim must succeed at a new saving throw each round to end the effect—these additional saving throws apply only to the additional confusion effect and not to the original spell effect. Part the veil is a mind-affecting effect. You can use this ability a number of times per day equal to 1/2 your class level."],
+        "Part the Veil (Su)": ["At 8th level, you can lace spells you cast with the raw madness that waits in the outer darkness. Activating this ability is a swift action that you must use as you cast a spell that targets a single creature and that allows a Will saving throw to negate or reduce the spell’s primary effect. If the target fails to resist the spell, the target is also confused for a number of rounds equal to the spell’s level as visions of the void cause temporary insanity. The victim must succeed at a new saving throw each round to end the these additional saving throws apply only to the additional confusion effect and not to the original spell effect. Part the veil is a mind-affecting effect. You can use this ability a number of times per day equal to 1/2 your class level."],
         "domain spells": ["confusion", "feather fall", "levitate", "fly", "planar binding (lesser)", "overland flight", "planar binding", "reverse gravity", "planar binding (greater)", "interplanetary teleport"]
     },
     "War": {
@@ -221,13 +221,21 @@
         "Death’s Embrace (Ex)": ["At 8th level, you heal damage instead of taking damage from channeled negative energy. If the channeled negative energy targets undead, you heal hit points just like undead in the area."],
         "domain spells": ["cause fear", "death knell", "animate dead", "death ward", "slay living", "create undead", "destruction", "create greater undead", "wail of the banshee"]
         },
-        "Vermin": {
+
+    "Vermin": {
         "subdomains": [],
         "Familiar": ["You gain a greensting scorpion familiar. Your effective wizard level for this ability is equal to your druid level. Your druid level stacks with levels from other classes that grant familiars when determining the powers of your familiar."],
         "Vermin Friend (Ex)": ["You can use wild empathy to influence vermin as easily as you influence animals if you do not already possess this ability."],
         "Tremorsense (Ex)": ["At 6th level, you gain tremorsense 30 feet. At 12th level, you gain tremorsense 60 feet."],
         "domain spells": ["jump", "vomit swarm", "darkvision", "insect plague", "swarm skin (spider, crab, centipede, and army ant swarms only)", "whip of ants", "creeping doom", "mass fly", "mind blank"]
-        }            
+        },
+        
+        "Rune": {
+            "subdomains": ["Language","Legislation","Wards"],
+            "Blast Rune (Sp)": ["As a standard action, you can create a blast rune in any adjacent square. Any creature entering this square takes 1d6 points of damage + 1 point for every two cleric levels you possess. This rune deals either acid, cold, electricity, or fire damage, decided when you create the rune. The rune is invisible and lasts a number of rounds equal to your cleric level or until discharged. You cannot create a blast rune in a square occupied by another creature. This rune counts as a 1st-level spell for the purposes of dispelling. It can be discovered with a DC 26 Perception skill check and disarmed with a DC 26 Disable Device skill check. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."],
+            "Spell Rune (Sp)": ["At 8th level, you can attach another spell that you cast to one of your blast runes, causing that spell to affect the creature that triggers the rune, in addition to the damage. This spell must be of at least one level lower than the highest-level cleric spell you can cast and it must target one or more creatures. Regardless of the number of targets the spell can normally affect, it only affects the creature that triggers the rune."],
+            "domain spells": ["erase","secret page","glyph of warding","explosive runes","planar binding (lesser)","glyph of warding (greater)","instant summons","symbol of death","teleportation circle"]
+        }  
           
           
     },

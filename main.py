@@ -42,7 +42,8 @@ character_json_config = {
 	'rage_powers': 'json/rage_powers.json',
 	'domains': 'json/domains.json',				
 	'deity': 'json/deity.json',	
-	'items': 'json/items.json'
+	'items': 'json/items.json',
+	'fighter_options': 'json/fighter_options.json',	
 						
 }
 
@@ -128,12 +129,6 @@ while userInput.lower() == 'y':
 
 		print(f"This is your selected feats: {character.feats_selector()}")
 
-		character.ranger_feats_chooser()
-		character.monk_feats_chooser()
-		character.monk_ki_power_chooser()
-		character.sorcerer_bloodline_chooser()
-		character.paladin_mercy_chooser()
-
 		#this is to allow for talent choice stat pre-reqs (self.chooseable)
 		character.chooseable_list() 		
 		character.chooseable_list_stats(character.str, 'str')
@@ -143,13 +138,27 @@ while userInput.lower() == 'y':
 		character.chooseable_list_stats(character.wis, 'wis')
 		character.chooseable_list_stats(character.cha, 'cha')	
 	
+		#class specific feats choosers
+		character.ranger_feats_chooser()
+		character.monk_feats_chooser()
 
+		#class specific choices
+		character.monk_ki_power_chooser()
+		character.sorcerer_bloodline_chooser()
+		character.paladin_mercy_chooser()
+		character.fighter_armor_train_chooser()
+		character.fighter_weapon_train_chooser()	
 		character.rogue_talent_chooser()
 		character.rage_power_chooser()
-		character.domain_chooser()
+		character.domain_chooser()		
 
+
+
+		print(f'This is your gold pre items {character.assign_gold("gold")}')
 		character.item_chooser()
-									
+		print(f'This is your gold post items {character.gold}')									
+
+
 
 #		character.get_all_prerequisites()
 #		character.get_talents_without_prerequisites()
