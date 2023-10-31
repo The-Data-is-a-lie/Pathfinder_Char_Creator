@@ -240,6 +240,8 @@ class Character:
         with open(json_config['fighter_options']) as f:
             self.fighter_options = json.load(f)        
 
+        with open(json_config['bard_choices']) as f:
+            self.bard_choices = json.load(f) 
 
         # with open(json_config['big_boy_item_data']) as f:
         #     self.big_boy_item_data = json.load(f)                    
@@ -680,16 +682,19 @@ class Character:
         base_classes=getattr(data,base_classes)
         i=0
         self.spell_list_choose_from=[]
+        #we need to make sure we aren't grabbing null or our program will break
         if casting_level_1 != 'none' and self.c_class in base_classes:
-            print('baba booey')
-            while i < len(self.spells_known_list) and i <= self.highest_spell_known1:
-                select_spell=self.spells_known_list[i]             
-                query_i = spell_data.loc[spell_data[self.c_class] == i, extraction_list]
-                #needed to use this to properly randomize (vs. random.shuffle)
-                query_i = query_i.sample(frac=1.0)
-                spells = query_i[:select_spell]
-                self.spell_list_choose_from.append(spells)
-                i += 1                
+            while i <= self.highest_spell_known1:
+                if self.spells_known_list[i] != 'null':
+                    select_spell=self.spells_known_list[i]             
+                    query_i = spell_data.loc[spell_data[self.c_class] == i, extraction_list]
+                    #needed to use this to properly randomize (vs. random.shuffle)
+                    query_i = query_i.sample(frac=1.0)
+                    spells = query_i[:select_spell]
+                    self.spell_list_choose_from.append(spells)
+                    i += 1 
+                else:
+                    break        
 
 
         else:
@@ -1123,6 +1128,97 @@ class Character:
 
             return self.chosen_school, self.prohibited_schools
     
+    def versatile_perfomance(self):
+  
+        choose_list = [2,6,10,14,18,22,26,30,34,38,42,46,50,54]
+        self.performance_chosen_list = set()
+        self.performance_chosen_description_list=[]
+        self.martial_performance_choice=set()
+        expanded_choice_check = set()         
+        self.martial_performance_choice_description=[]  
+        martial_set = set()      
+        versatile_data = self.bard_choices["versatile_perfomances"]
+        expanded_data = list(self.bard_choices["expanded_versatility"])
+        martial_data = list(self.bard_choices["martial_performance"])
+
+        random_chance = random.randint(1,100)
+        performance_list = list(versatile_data.keys())  
+        random_chance_martial=0      
+        i=0
+
+
+        if self.c_class == 'bard':
+            performance_chosen=random.choice(performance_list)
+            performance_chosen_description=versatile_data[performance_chosen]
+            self.performance_chosen_description_list.append(performance_chosen_description)
+            self.performance_chosen_list.add(performance_chosen)
+            i=len(self.performance_chosen_list) 
+
+            #sometimes a bard will just choose all instruments
+            while choose_list[i] <= self.c_class_level and random_chance<=50:
+
+                if len(martial_set)>=8:
+                    break
+                
+                if len(self.performance_chosen_list)>=8:
+                    break
+
+                if random_chance_martial<=50:
+                    performance_chosen=random.choice(performance_list)
+                    performance_chosen_description=versatile_data[performance_chosen]
+                    self.performance_chosen_list.add(performance_chosen)
+                    self.performance_chosen_description_list.append(performance_chosen_description)                    
+                    i=len(self.performance_chosen_list)
+                    random_chance_martial = random.randint(1,100)
+
+                if random_chance_martial>50:
+                    
+                    martial_choice = random.choice(martial_data)
+                    martial_set.add(martial_choice)
+                    print(f'This is your martial choice: {martial_choice}')
+                    print(f'This is your martial choice: {martial_set}')                    
+                    i=len(self.performance_chosen_list) + len(martial_set)
+                    print(f'self.performance_chosen_list {self.performance_chosen_list}')
+                    print(martial_set.issubset(self.performance_chosen_list))
+
+                    if martial_set.issubset(self.performance_chosen_list) == True:
+                        self.martial_performance_choice.add(martial_choice)
+                        self.martial_performance_choice_description.append(self.bard_choices["martial_performance"][martial_choice])
+                        random_chance_martial = random.randint(1,100)
+
+
+
+                    #reroll random_chance martial
+                    else:
+                        random_chance_martial=random.randint(51,100)
+                        martial_set.discard(martial_choice)
+                        print(f'martial_set has bee removed {martial_set}')
+                    #reroll performance
+                else:
+                    random_chance_martial=random.randint(1,50)
+
+
+        #sometimes a bard will focus on one performance
+            while choose_list[i] <= self.c_class_level and random_chance > 50:
+                expanded_choice = random.choice(expanded_data)
+                print(f'This is your expanded choice {expanded_choice}')                
+                expanded_choice_check.add(expanded_choice)
+                self.performance_chosen_description_list.append(expanded_choice)
+                i=len(expanded_choice_check) + len(self.performance_chosen_list)
+                print(f'the number of elements in expanded choices {i}')
+
+                if len(expanded_choice_check)>7:
+                    break
+    
+
+        print('!!!!!!!!!!!!versatile performance choices !!!!!!!!!!!!!!')
+        print(self.performance_chosen_list) 
+        print(self.performance_chosen_description_list)  
+        print(self.martial_performance_choice)
+        print(self.martial_performance_choice_description)     
+
+        return self.performance_chosen_list, self.performance_chosen_description_list, self.martial_performance_choice, self.martial_performance_choice_description   
+
 
     def sorcerer_bloodline_chooser(self):
         if self.c_class == 'sorcerer' or self.c_class_2 == 'sorcerer':   

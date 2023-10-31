@@ -44,7 +44,8 @@ character_json_config = {
 	'deity': 'json/deity.json',	
 	'items': 'json/items.json',
 	'fighter_options': 'json/fighter_options.json',	
-						
+	'bard_choices': 'json/bard_choices.json',	
+
 }
 
 
@@ -124,7 +125,6 @@ while userInput.lower() == 'y':
 		# Extra class choices:
 		character.extra_combat_feats()
 		character.class_abilities_amount()
-		print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
 
 
 		print(f"This is your selected feats: {character.feats_selector()}")
@@ -150,13 +150,21 @@ while userInput.lower() == 'y':
 		character.fighter_weapon_train_chooser()	
 		character.rogue_talent_chooser()
 		character.rage_power_chooser()
-		character.domain_chooser()		
+		character.domain_chooser()	
+		character.versatile_perfomance()	
+		print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
+
+	
 
 
+
+
+		character.armor_chooser()
 
 		print(f'This is your gold pre items {character.assign_gold("gold")}')
 		character.item_chooser()
 		print(f'This is your gold post items {character.gold}')									
+
 
 
 

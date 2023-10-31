@@ -1,0 +1,29 @@
+{"versatile_perfomances": {
+    "act": ["bluff", "disguise"],
+    "comedy": ["bluff", "intimidate"],
+    "dance": ["acrobatics", "fly"],
+    "keyboard instruments": ["diplomacy", "intimidate"],
+    "oratory": ["diplomacy", "sense motive"],
+    "percussion": ["handle animal", "intimidate"],
+    "sing": ["bluff", "sense motive"],
+    "string": ["bluff", "diplomacy"],
+    "wind": ["diplomacy", "handle animal"]
+    },
+    
+    "expanded_versatility":
+    ["bluff", "diplomacy", "disguise", "escape artist", "handle animal", "intimidate", "sense motive", "use magic device"]
+    ,
+    
+    "martial_performance": {
+    "act": ["close", "double"],
+    "comedy": ["flails", "thrown"],
+    "dance": ["monk", "spears"],
+    "keyboard instruments": ["hammers", "siege engines"],
+    "oratory": ["heavy blades", "light blades"],
+    "percussion": ["close", "hammers"],
+    "sing": ["close", "natural"],
+    "string": ["axes", "bows"],
+    "wind": ["monk", "thrown"]
+    
+    }
+}
