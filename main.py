@@ -40,12 +40,14 @@ character_json_config = {
 	'mercies': 'json/mercies.json',
 	'rogue_talents': 'json/rogue_talents.json',
 	'rage_powers': 'json/rage_powers.json',
-	'domains': 'json/domains.json',				
+	'cleric_domains': 'json/cleric_domains.json',				
+	'druid_domains': 'json/druid_domains.json',		
 	'deity': 'json/deity.json',	
 	'items': 'json/items.json',
 	'fighter_options': 'json/fighter_options.json',	
 	'bard_choices': 'json/bard_choices.json',	
-
+	'animal_companion': 'json/animal_companion.json',	
+	'animal_choices': 'json/animal_choices.json',
 }
 
 
@@ -112,11 +114,11 @@ while userInput.lower() == 'y':
 		character.choose_caster_formula_2()
 
 		#Divine Casters have all spells known (don't make this function for them)
-		print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
-		print(f'This is your spells per day {character.spells_per_day_attr("base_classes")}')
-		print(f'This is your spells per day from ability mods {character.spells_per_day_from_ability_mod("caster_mod")}')
-		print(f'Spells known + extra randomized spells known [spell book learners only] {character.spells_known_extra_roll()}')		
-		print(f"This is your spells list you can choose from {character.spells_known_selection('base_classes')}")
+		# print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
+		# print(f'This is your spells per day {character.spells_per_day_attr("base_classes")}')
+		# print(f'This is your spells per day from ability mods {character.spells_per_day_from_ability_mod("caster_mod")}')
+		# print(f'Spells known + extra randomized spells known [spell book learners only] {character.spells_known_extra_roll()}')		
+		# print(f"This is your spells list you can choose from {character.spells_known_selection('base_classes')}")
 
 
 		print(f'This is your wizard schools {character.wizard_school_chooser()}')
@@ -142,6 +144,10 @@ while userInput.lower() == 'y':
 		character.ranger_feats_chooser()
 		character.monk_feats_chooser()
 
+
+		#decides if druids go animal companion or domain
+		character.druid_domain_chance()
+
 		#class specific choices
 		character.monk_ki_power_chooser()
 		character.sorcerer_bloodline_chooser()
@@ -152,6 +158,8 @@ while userInput.lower() == 'y':
 		character.rage_power_chooser()
 		character.domain_chooser()	
 		character.versatile_perfomance()	
+		character.animal_chooser()
+		character.animal_feats()			
 		print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
 
 	
@@ -163,7 +171,9 @@ while userInput.lower() == 'y':
 
 		print(f'This is your gold pre items {character.assign_gold("gold")}')
 		character.item_chooser()
-		print(f'This is your gold post items {character.gold}')									
+		print(f'This is your gold post items {character.gold}')	
+
+							
 
 
 

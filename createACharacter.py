@@ -228,8 +228,11 @@ class Character:
         with open(json_config['rage_powers']) as f:
             self.rage_powers = json.load(f)       
 
-        with open(json_config['domains']) as f:
-            self.domains = json.load(f)          
+        with open(json_config['cleric_domains']) as f:
+            self.cleric_domains = json.load(f) 
+
+        with open(json_config['druid_domains']) as f:
+            self.druid_domains = json.load(f)                       
 
         with open(json_config['deity']) as f:
             self.deity = json.load(f)            
@@ -242,6 +245,12 @@ class Character:
 
         with open(json_config['bard_choices']) as f:
             self.bard_choices = json.load(f) 
+
+        with open(json_config['animal_companion']) as f:
+            self.animal_companion = json.load(f)                  
+
+        with open(json_config['animal_choices']) as f:
+            self.animal_choices = json.load(f)             
 
         # with open(json_config['big_boy_item_data']) as f:
         #     self.big_boy_item_data = json.load(f)                    
@@ -1229,15 +1238,27 @@ class Character:
 
     #need to make sure cleric domain choices align with selected deity
     def domain_chooser(self):
+        self.chosen_domain = []
         if self.c_class == 'cleric' or self.c_class_2 == 'cleric':  
             deity_choice_list = list(self.deity_choice['Domains'])
             self.chosen_domain = random.sample(deity_choice_list,k=2)
             chosen_first = self.chosen_domain[0].capitalize()
             chosen_second = self.chosen_domain[1].capitalize()
 #            this is randomly selecting from all without regard to Deity
-#            self.chosen_domain =  random.choice(list(self.domains["domains"].keys()))
-            print(f'This is your first selected domain {self.chosen_domain[0]} + its info: \n{self.domains["domains"][chosen_first]}')
-            print(f'This is your second selected domain {self.chosen_domain[1]} + its info: \n{self.domains["domains"][chosen_second]}')            
+#            self.chosen_domain =  random.choice(list(self.cleric_domains["domains"].keys()))
+            print(f'This is your first selected domain {self.chosen_domain[0]} + its info: \n{self.cleric_domains["domains"][chosen_first]}')
+            print(f'This is your second selected domain {self.chosen_domain[1]} + its info: \n{self.cleric_domains["domains"][chosen_second]}')  
+
+        if (self.c_class == 'druid' or self.c_class_2 == 'druid' and self.domain_chance > 90):
+
+            druid_domains_list = list(self.druid_domains.keys())
+            chosen_domain = random.choice(druid_domains_list)
+            print(chosen_domain)
+            print(self.druid_domains[chosen_domain])
+            self.chosen_domain.append(chosen_domain)
+
+
+
 
             return self.chosen_domain            
 
@@ -1455,6 +1476,59 @@ class Character:
         print(self.chooseable)
         return self.rage_power_list 
         
+
+    def druid_domain_chance(self):
+        #chance to get a domain vs an animal companion
+        self.domain_chance = random.randint(1,100)
+        return self.domain_chance
+
+    def animal_chooser(self):
+        if self.c_class == 'druid' and self.domain_chance <= 90:
+            random_animal = random.randint(1,100)            
+            # give all druids carry companion
+            # or make it a subset of companions and make them based on region
+            normal = list(self.animal_choices["normal"].keys())
+            vermin = list(self.animal_choices["vermin"].keys())
+            plant =list(self.animal_choices["plant"].keys())
+            level = str(self.c_class_level)
+
+
+            if random_animal <= 80:
+                self.chosen_animal = random.choice(normal)
+                self.chosen_animal_description = self.animal_choices["normal"][self.chosen_animal]
+            elif random_animal <= 90:
+                self.chosen_animal = random.choice(plant)
+                self.chosen_animal_description = self.animal_choices["plant"][self.chosen_animal]                
+            else:
+                self.chosen_animal = random.choice(vermin)  
+                self.chosen_animal_description = self.animal_choices["vermin"][self.chosen_animal]                
+
+
+            self.companion_info = self.animal_companion["companion"][level]
+
+            print(self.companion_info)
+            print(self.chosen_animal)
+            print(self.chosen_animal_description)
+            return self.chosen_animal         
+
+
+    def animal_feats(self):
+        #may want to expand animal companion feat selection later
+        if self.c_class == 'druid':
+            i = 0
+            animal_chosen_feat_list = set()
+            feats_choose = [1,3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51]
+            while feats_choose[i] < self.c_class_level:            
+                animal_feats = list(self.animal_companion["feats"])
+                chosen_feat = random.choice(animal_feats)
+                animal_chosen_feat_list.add(chosen_feat)
+                i = len(animal_chosen_feat_list)
+
+                if i == 26:
+                    break
+
+            print(animal_chosen_feat_list)
+            return animal_chosen_feat_list
 
 
 
