@@ -48,6 +48,7 @@ character_json_config = {
 	'bard_choices': 'json/bard_choices.json',	
 	'animal_companion': 'json/animal_companion.json',	
 	'animal_choices': 'json/animal_choices.json',
+	'wizard_schools': 'json/wizard_schools.json',	
 }
 
 
@@ -159,7 +160,9 @@ while userInput.lower() == 'y':
 		character.domain_chooser()	
 		character.versatile_perfomance()	
 		character.animal_chooser()
-		character.animal_feats()			
+		character.animal_feats()	
+		character.wizard_school_chooser()
+		character.wizard_opposing_school()				
 		print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
 
 	
@@ -172,6 +175,10 @@ while userInput.lower() == 'y':
 		print(f'This is your gold pre items {character.assign_gold("gold")}')
 		character.item_chooser()
 		print(f'This is your gold post items {character.gold}')	
+
+
+
+
 
 							
 

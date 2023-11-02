@@ -1,0 +1,501 @@
+{ "elemental_schools":
+{
+"aether": {
+"description": "the aether elementalist uses a strange and complex substance called aether, which occurs where the elemental planes touch the ethereal plane. Wizards who study aether use it to manipulate objects on the material plane. This elemental arcane school allows a wizard to specialize in aether and grants various powers and bonus spells. ",
+"aether supremacy": {
+"description": "you gain a +2 enhancement bonus on sleight of hand checks, with the bonus increasing with your wizard levels. Additionally, you can cast mage hand at will as a spell-like ability. ",
+"level 5": "attempt sleight of hand checks against a target within 30 feet, with increased skill check dc and potential detection by onlookers. ",
+"level 10": "attempt a sleight of hand check as a move action with a -10 penalty. ",
+"level 20": "whenever you attempt a sleight of hand check, assume the roll resulted in a natural 20. "
+},
+"telekinetic protection": {
+"description": "as a swift action, you can grant yourself dr 5/magic for 1 round to protect against non-magical attacks. You can use this ability multiple times per day based on your intelligence modifier. "
+},
+"receptive vibrations": {
+"description": "at 8th level, you are surrounded by invisible strands of aether, enhancing your awareness. You are never denied your dexterity bonus to ac against attacks within 30 feet. You also gain a bonus on perception checks to avoid being surprised based on your wizard level. "
+},
+"spells": {
+"0": ["telekinetic projectile"],
+"1st": ["floating disk", "magic missile", "unseen servant"],
+"2nd": ["blur", "pilfering hand", "spiritual weapon"],
+"3rd": ["ablative barrier", "blink", "ectoplasmic snare", "force punch", "tiny hut"],
+"4th": ["resilient sphere", "spiritual ally", "telekinetic charge", "telekinetic maneuver"],
+"5th": ["condensed ether", "ethereal envelope", "interposing hand", "mages faithful hound", "secret chest", "telekinesis", "wall of ectoplasm"],
+"6th": ["animate objects", "enemy hammer", "forceful hand", "leashed shackles"],
+"7th": ["ectoplasmic eruption", "ethereal jaunt", "grasping hand", "phase door"],
+"8th": ["clenched fist", "telekinetic sphere"],
+"9th": ["etherealness", "telekinetic storm"]
+}
+},
+"air": {
+"description": "the air elementalist draws power from the forces of the wind, sky, clouds, and lightning. This elemental school allows the wizard to manipulate air and gain various powers and spells related to air manipulation. ",
+"air supremacy": {
+"description": "you gain a +2 enhancement bonus on fly skill checks, which increases with your wizard levels. You can also cast feather fall, levitate, and fly on yourself at will. Additionally, your fly skill checks are enhanced. ",
+"level 5": "you can cast levitate on yourself at will. ",
+"level 10": "you can cast fly on yourself at will. ",
+"level 20": "whenever you make a fly skill check, assume the roll resulted in a natural 20. "
+},
+"lightning flash": {
+"description": "as a standard action, you can unleash a flash of electricity that damages and dazzles nearby creatures. The damage and duration of dazzle are based on your wizard levels, and it can be used multiple times per day. "
+},
+"cyclone": {
+"description": "at 8th level, you can create a vortex of turbulent wind as a standard action. It has a radius and height based on your wizard level. Ranged attacks passing through it miss, and flying creatures may fall. Ground creatures require a strength check to pass through it. You can use this ability for a limited number of rounds per day. "
+},
+"spells": {
+"0": ["message"],
+"1st": ["alter winds", "feather fall", "shocking grasp"],
+"2nd": ["elemental speech", "elemental touch", "glide", "gust of wind", "levitate", "resist energy", "summon monster ii", "whispering wind"],
+"3rd": ["cloak of winds", "draconic reservoir", "elemental aura", "fly", "gaseous form", "lightning bolt", "protection from energy", "wind wall"],
+"4th": ["ball lightning", "detonate", "dragons breath", "elemental body i", "river of wind", "shout", "summon monster iv"],
+"5th": ["elemental body ii", "overland flight", "planar adaptation", "planar binding (lesser)", "suffocation", "summon monster v"],
+"6th": ["chain lightning", "elemental body iii", "planar binding", "sirocco", "summon monster vi"],
+"7th": ["control weather", "elemental body iv", "fly (mass)", "planar adaptation (mass)", "summon monster vii"],
+"8th": ["planar binding (greater)", "shout (greater)", "stormbolts", "summon monster viii"],
+"9th": ["gate", "suffocation (mass)", "winds of vengeance"]
+}
+},
+"earth": {
+"description": "the earth elementalist draws power from stone and earth, using it to protect and crush foes. The elemental school of earth grants various powers and bonus spells associated with earth manipulation. ",
+"earth supremacy": {
+"description": "you gain a bonus to cmd and melee attack and damage rolls when touching the ground. The bonus increases with your wizard levels. At 20th level, earth and stone no longer block line of effect for your spells. ",
+"acid cloud": "as a standard action, create a cloud of acid vapor that deals damage and sickens creatures. It can be used multiple times per day. ",
+"earth glide": "at 8th level, you gain the ability to move through earth, dirt, and stone for a limited duration. "
+},
+"spells": {
+"0": ["acid splash"],
+"1st": ["expeditious excavation", "grease", "stone fist"],
+"2nd": ["acid arrow", "create pit", "elemental speech", "elemental touch", "glitterdust", "resist energy", "shatter", "stone call", "summon monster ii"],
+"3rd": ["draconic reservoir", "elemental aura", "protection from energy", "shifting sand", "spiked pit", "stinking cloud"],
+"4th": ["acid pit", "calcific touch", "detonate", "dragons breath", "elemental body i", "stone shape", "stoneskin", "summon monster iv", "wall of fire"],
+"5th": ["elemental body ii", "hungry pit", "passwall", "planar adaptation", "planar binding (lesser)", "summon monster v", "transmute mud to rock", "transmute rock to mud", "wall of stone"],
+"6th": ["acid fog", "elemental body iii", "flesh to stone", "move earth", "planar binding", "stone to flesh", "summon monster vi", "wall of iron"],
+"7th": ["elemental body iv", "planar adaptation (mass)", "rampart", "reverse gravity", "statue", "summon monster vii"],
+"8th": ["iron body", "planar binding (greater)", "summon monster viii", "wall of lava"],
+"9th": ["clashing rocks", "gate", "world wave"]
+}
+},
+"fire": {
+"description": "the fire elementalist harnesses the power of fire to consume foes and protect against it. This elemental school grants various powers and bonus spells related to fire manipulation. ",
+"fire supremacy": {
+"description": "you gain resistance and later immunity to fire damage. You can also draw fire around you for retaliation against melee attackers near open flames. ",
+"fire jet": "as a standard action, unleash a line of fire that damages and potentially sets creatures on fire. It can be used multiple times per day. ",
+"dancing flame": "at 8th level, sculpt fire to your desires, move non-magical fire, and alter fire spells cast by you. This ability can be used multiple times per day. "
+},
+"spells": {
+"0": ["spark"],
+"1st": ["burning hands", "dancing lantern"],
+"2nd": ["burning gaze", "elemental speech", "elemental touch", "fire breath", "flaming sphere", "pyrotechnics", "resist energy", "scorching ray", "summon monster ii", "whispering wind"],
+"3rd": ["campfire wall", "draconic reservoir", "elemental aura", "fireball", "flame arrow", "protection from energy"],
+"4th": ["detonate", "dragons breath", "elemental body i", "fire shield", "fire trap", "firefall", "summon monster iv", "wall of fire"],
+"5th": ["cloudkill", "cone of cold", "elemental body ii", "fire snake", "geyser", "planar adaptation", "planar binding (lesser)", "summon monster v"],
+"6th": ["contagious flame", "elemental body iii", "planar binding", "sirocco", "summon monster vi"],
+"7th": ["delayed blast fireball", "elemental body iv", "firebrand", "planar adaptation (mass)", "summon monster vii"],
+"8th": ["incendiary cloud", "planar binding (greater)", "summon monster viii", "wall of lava"],
+"9th": ["fiery body", "gate", "meteor swarm"]
+}
+},
+
+"metal": {
+"description": "metal represents firmness, rigidity, persistence, strength, determination, and electricity. It is commonly represented by gold and silver as its purest forms, though lower magic relating to iron and steel is part of the metal school. ",
+"metal rending": {
+"description": "deals extra damage to creatures made of metal or wearing medium or heavy metal armor when casting a damaging spell. The bonus damage is 1/2 your wizard level. Bonus applies once to a spell, not per missile or ray. "
+},
+"iron skin": {
+"description": "provides an armor bonus to your armor class for 10 minutes. Bonus increases with caster levels, and can be used a certain number of times per day. "
+},
+"shrapnel burst": {
+"description": "causes metal shards to explode outward from your body, dealing piercing damage. Can be used once per day, with more uses at higher levels. At 10th level, the shrapnel bypasses damage reduction. "
+},
+"metal elementalist spells": {
+"0": ["mending"],
+"1st": ["gravity bow", "magic weapon", "shocking grasp"],
+"2nd": ["defensive shock", "glitterdust", "make whole", "shatter", "silk to steel"],
+"3rd": ["chill metal", "heat metal", "lightning bolt", "keen edge", "magic weapon (greater)", "versatile weapon"],
+"4th": ["malfunction", "shout", "stoneskin"],
+"5th": ["lightning arc", "major creation", "rapid repair", "rusting grasp", "soothe construct", "unbreakable construct"],
+"6th": ["chain lightning", "disintegrate", "wall of iron"],
+"7th": ["control construct", "lightning rod", "statue"],
+"8th": ["call construct", "iron body", "shout (greater)", "stormbolts"],
+"9th": ["meteor swarm", "repel metal or stone", "ride the lightning"]
+}
+},
+
+"void": {
+"description": "the void is a complex idea considered by some to be a fifth element, one that comprises thought, space, spiritualism, and insight. Wizards who tap into its mysterious powers gain control over energies that bind the earth to the heavens and the planes to their mysterious and eternal alignments, as well as the powers that stitch living beings to their spirits. ",
+"void awareness": {
+"description": "provides an insight bonus on saving throws against spells and spell-like abilities. Bonus increases with wizard levels. At 20th level, allows rolling twice to save against such effects. "
+},
+"reveal weakness": {
+"description": "allows you to penalize a foe's ac and saving throws as a standard action. Usable a certain number of times per day. "
+},
+"aura of prescience": {
+"description": "emits a 30-foot aura of void energy, granting allies an insight bonus on various rolls. Rounds do not need to be consecutive. "
+},
+"void elementalist spells": {
+"0": ["guidance"],
+"1st": ["gravity bow", "keen senses", "shield", "true strike"],
+"2nd": ["continual flame", "haunting mists", "invisibility", "masterwork transformation", "see invisibility", "share memory"],
+"3rd": ["arcane sight", "clairaudience/clairvoyance", "dispel magic", "nondetection", "seek thoughts", "tapestry's embrace*", "twilight knife"],
+"4th": ["minor creation", "moonstruck", "wandering star motes"],
+"5th": ["fabricate", "major creation", "mind fog", "telepathic bond", "teleport"],
+"6th": ["dispel magic (greater)", "legend lore", "true seeing", "mages lucubration"],
+"7th": ["teleport (greater)", "simulacrum", "vision"],
+"8th": ["mind blank", "moment of prescience", "orb of the void", "whirlwind"],
+"9th": ["foresight", "mages disjunction", "time stop"]
+}
+},
+
+"water": {
+"description": "the water elementalist draws magic from the ocean depths. His power is fluid as well, crushing foes in mighty waves or wearing them down through timeless erosion. ",
+"water supremacy": {
+"description": "provides enhancements to swim skill checks and breath-holding capabilities. Gains a swim speed at 10th level. Assume natural 20s on swim skill checks at 20th level. "
+},
+"cold blast": {
+"description": "unleashes a blast of freezing cold, dealing damage and staggering creatures. Usable a certain number of times per day. "
+},
+"wave": {
+"description": "creates a wave of water, knocking down and pushing away creatures. Usable for a limited number of rounds per day. "
+},
+"water elementalist spells": {
+"0": ["ray of frost"],
+"1st": ["hydraulic push", "obscuring mist", "touch of the sea"],
+"2nd": ["accelerate poison", "elemental speech", "elemental touch", "fog cloud", "resist energy", "slipstream", "summon monster ii"],
+"3rd": ["aqueous orb", "draconic reservoir", "elemental aura", "hydraulic torrent", "protection from energy", "sleet storm", "water breathing"],
+"4th": ["detonate", "dragon's breath", "elemental body i", "ice storm", "solid fog", "summon monster iv", "wall of ice"],
+"5th": ["cloudkill", "cone of cold", "elemental body ii", "geyser", "planar adaptation", "planar binding (lesser)", "summon monster v"],
+"6th": ["elemental body iii", "fluid form", "freezing sphere", "planar binding", "summon monster vi"],
+"7th": ["control weather", "elemental body iv", "planar adaptation (mass)", "summon monster vii", "vortex"],
+"8th": ["horrid wilting", "planar binding (greater)", "polar ray", "seamantle", "summon monster viii"],
+"9th": ["gate", "tsunami", "world wave"]
+}
+},
+
+"wood": {
+"description": "wood represents flexibility, warmth, wind, generosity, cooperation, and idealism. Practitioners of this elemental magic often resemble druids in character and in the use of their magic. ",
+"flexible enhancement": {
+"description": "provides an enhancement bonus to dexterity, constitution, or wisdom. The bonus can be changed when preparing spells and increases with wizard levels. "
+},
+"splintered spear": {
+"description": "creates a wooden shortspear and hurls it as a ranged attack, dealing damage and causing bleed. Usable a certain number of times per day, with enhancements at higher levels. "
+},
+"cooperative defense": {
+"description": "allows allies to use your saving throw against spells and effects that target both you and your allies within 30 feet. Usable once per day at 8th level, with additional uses at higher wizard levels. "
+},
+"wood elementalist wizard spells": {
+"0": ["light"],
+"1st": ["alter winds", "animate rope", "charm person"],
+"2nd": ["cat's grace", "entangle", "protection from arrows", "web", "whispering wind"],
+"3rd": ["cloak of winds", "tongues", "tree shape", "wind wall"],
+"4th": ["charm monster", "hallucinatory terrain", "minor creation", "plant growth", "river of wind", "secure shelter", "sirocco"],
+"5th": ["command plants", "fabricate", "fickle winds", "mirage arcana", "sending", "telepathic bond"],
+"6th": ["battlemind link", "cat's grace (mass)", "tree stride"],
+"7th": ["control weather", "liveoak", "scouring winds"],
+"8th": ["charm monster (mass)", "euphoric tranquility", "transmute metal to wood"],
+"9th": ["control plants", "refuge", "winds of vengeance"]
+}
+}
+
+},
+
+"elemental_subschools": {
+    "ice": {
+        "associated school": ["air", "water"],
+        "replacement powers": "The following school powers replace the lightning flash and cyclone powers of the air school and the cold blast and wave powers of the water school.",
+        "Freezing Shards (Su)": "As a standard action, you can cause shards of ice to burst forth from the ground around you. The shards deal 1d4 points of piercing damage and 1d6 points of cold damage + 1 point for every 2 wizard levels you have to all creatures within 5 feet of you. A successful Reflex save (DC = 10 + half your wizard level + your Intelligence modifier) negates the piercing damage and halves the cold damage. You can use this ability a number of times per day equal to 3 + your Intelligence modifier.",
+        "Icy Shackles (Su)": "At 8th level, as a standard action, you can make a melee touch attack against a foe to conjure icy restraints around its ankles, reducing its base speed to 5 feet and dealing it an amount of cold damage at the beginning of its turn equal to your Intelligence modifier. You can use this ability a number of times per day equal to your Intelligence modifier."
+      },
+      "smoke": {
+        "associated school": ["fire","air"],
+        "replacement powers": "The following school powers replace the lightning flash and cyclone powers of the air school and the fire jet and dancing flame powers of the fire school.",
+        "Smokesight (Su)": "You can see normally through natural fog and smoke, as well as any fog and smoke that you (but not others) magically create. You can touch another creature as a standard action to grant it this vision for 1 hour a number of times per day equal to 3 + your Intelligence bonus.",
+        "Body of Smoke (Sp)": "At 8th level, you can assume a gaseous form as a swift action for a number of minutes per day equal to your wizard level. This duration does not need to be consecutive, but it must be used in 1-minute increments."
+      },
+      "magma": {
+        "associated school": ["earth", "fire"],
+        "replacement powers": "The following school powers replace the acid cloud and earth glide powers of the earth school and the fire jet and dancing flame powers of the fire school.",
+        "Magma Furrow (Su)": "As a standard action, you can send forth a 20-foot line of magma. Any creature in this line takes 1d6 points of fire damage + 1 point for every 2 wizard levels you have. A successful Reflex save (DC = 10 + half your wizard level + your Intelligence modifier) halves this damage. You can use this ability a number of times per day equal to 3 + your Intelligence modifier.",
+        "Lava Shield (Su)": "At 8th level, you can create a barrier of lava to protect you for 1 round as a standard action. You can use this ability a number of rounds per day equal to half your wizard level."
+      },
+      "mud": {
+        "associated school": ["water","earth"],
+        "replacement powers": "The following school powers replace the acid cloud and earth glide powers of the earth school and the cold blast and wave powers of the water school.",
+        "Hindering Muck (Su)": "As a standard action, you can create a 15-foot cone of sticky mud. You can use this ability a number of times per day equal to 3 + your Intelligence modifier.",
+        "Mud Missile (Su)": "At 8th level, you can fling a ball of hardened mud at a foe within 30 feet as a standard action. You can use this ability a number of times per day equal to half your wizard level."
+      }
+
+}
+
+,
+
+"schools": {
+"abjuration": {
+    "description": "the abjurer uses magic against itself, and masters the art of defensive and warding magics. ",
+    "resistance": {
+    "description": "grants energy resistance to a chosen energy type. The resistance value increases at higher levels. ",
+    "resistance type": "variable (chosen energy type)",
+    "resistance value": "5 (at 1st level) / 10 (at 11th level) / immunity (at 20th level)"
+    },
+    "protective ward": {
+    "description": "creates a protective magic field that grants a deflection bonus to armor class for you and your allies within its radius. ",
+    "duration": "intelligence modifier rounds",
+    "acbonus": "+1 (increases with wizard levels)",
+    "usage": "3 + intelligence modifier times per day"
+    },
+    "energy absorption": {
+    "description": "grants energy absorption to mitigate energy damage. The absorption value is based on three times your wizard level per day. ",
+    "usage": "3 times wizard level per day"
+    }
+},
+"conjuration": {
+    "description": "the conjurer focuses on the study of summoning monsters and magic alike to bend to his will. ",
+    "summoner's charm": {
+    "description": "increases the duration of summoning spells and can make them permanent at 20th level. ",
+    "duration increase": "1/2 wizard level (minimum 1)",
+    "permanent summon": "available at 20th level (one permanent summon at a time)"
+    },
+    "acid dart": {
+    "description": "allows the conjurer to unleash acid darts as a ranged touch attack, dealing acid damage. ",
+    "damage": "1d6 + 1 for every two wizard levels",
+    "usage": "3 + intelligence modifier times per day",
+    "ignores spell resistance": "yes"
+    },
+    "dimensional steps": {
+    "description": "enables teleportation up to 30 feet per wizard level as a standard action. Can bring willing creatures. ",
+    "teleport distance": "30 feet per wizard level (in 5-foot increments)",
+    "usage": "per day"
+    }
+},
+"divination": {
+    "description": "diviners are masters of remote viewing, prophecies, and using magic to explore the world. ",
+    "forewarned": {
+    "description": "allows the diviner to act in the surprise round and provides an initiative bonus based on wizard level. ",
+    "surprise round": "always acts in the surprise round",
+    "initiative bonus": "1/2 wizard level (minimum +1) and a natural 20 at 20th level"
+    },
+    "diviner's fortune": {
+    "description": "grants an insight bonus to attack rolls, skill checks, ability checks, and saving throws to a touched creature for 1 round. ",
+    "bonusvalue": "1/2 wizard level (minimum +1)",
+    "usage": "3 + intelligence modifier times per day"
+    },
+    "scrying adept": {
+    "description": "provides awareness of being observed via magic and enhances scrying abilities. ",
+    "magicawareness": "permanent detect scrying",
+    "scryingenhancement": "one step more familiar to the subject, 10 penalty on save for very familiar subjects"
+    }
+},
+
+"enchantment": {
+    "description": "the enchanter uses magic to control and manipulate the minds of his victims. ",
+    "enchanting smile": {
+    "description": "grants enhancement bonuses to bluff, diplomacy, and intimidate skill checks. The bonuses increase with wizard levels and reach a maximum of +6 at 20th level. Reflects enchantment spells back at their caster at 20th level. ",
+    "skillbonuses": "+2 (at 1st level) / +6 (at 20th level)",
+    "skilllist": "bluff, diplomacy, intimidate",
+    "spellturning": "at 20th level"
+    },
+    "dazing touch": {
+    "description": "can daze a living creature for 1 round with a melee touch attack. Limited uses per day. ",
+    "effectduration": "1 round",
+    "targetlimitation": "hit dice <= wizard level",
+    "usage": "3 + intelligence modifier times per day"
+    },
+    "aura of despair": {
+    "description": "emits a 30-foot aura of despair that penalizes enemies' abilities, attacks, damage, saves, and skills. Limited rounds per day. Mind-affecting effect. ",
+    "aurarange": "30 feet",
+    "penalties": "-2",
+    "effectrounds": "wizard level",
+    "usage": "rounds per day"
+    }
+},
+"evocation": {
+    "description": "evokers revel in the raw power of magic, using it to create and destroy with shocking ease. ",
+    "intense spells": {
+    "description": "adds a bonus to the damage of evocation spells that deal hit point damage. Bonus damage based on wizard level. ",
+    "bonusdamage": "1/2 wizard level (minimum +1)",
+    "bonustype": "same type as the spell",
+    "penetratingspell resistance": "at 20th level"
+    },
+    "force missile": {
+    "description": "unleashes a force missile that automatically strikes a foe, dealing force damage. Limited uses per day. ",
+    "damage": "1d4 plus intense spells bonus",
+    "forceeffect": "yes",
+    "usage": "3 + intelligence modifier times per day"
+    },
+    "elemental wall": {
+    "description": "creates a wall of energy that deals acid, cold, electricity, or fire damage. Limited rounds per day. Functions like wall of fire. ",
+    "wallduration": "wizard level rounds",
+    "walldamagetypes": "acid, cold, electricity, or fire",
+    "usage": "rounds per day"
+    }
+},
+"illusion": {
+    "description": "illusionists use magic to weave confounding images, figments, and phantoms to baffle and vex their foes. ",
+    "extended illusions": {
+    "description": "extends the duration of concentration-based illusion spells for additional rounds after concentration ends. Permanent illusion available at 20th level. ",
+    "durationextension": "1/2 wizard level (minimum +1 round)",
+    "permanentillusion": "available at 20th level (one permanent illusion at a time)"
+    },
+    "blinding ray": {
+    "description": "fires a shimmering ray to blind or dazzle a foe. Limited uses per day. ",
+    "blindduration": "1 round",
+    "dazzleduration": "1 round (for higher-hit dice targets)",
+    "usage": "3 + intelligence modifier times per day"
+    },
+    "invisibility field": {
+    "description": "allows self to become invisible for a limited duration as a swift action. Functions as greater invisibility. ",
+    "invisibilityduration": "wizard level rounds",
+    "usage": "rounds per day"
+    }
+},
+
+"necromancy": {
+    "description": "The dread and feared necromancer commands undead and uses the foul power of unlife against his enemies.",
+    "Power over Undead (Su)": "You receive Command Undead or Turn Undead as a bonus feat. You can channel energy a number of times per day equal to 3 + your Intelligence modifier, but only to use the selected feat. You can take other feats to add to this ability, such as Extra Channel and Improved Channel, but not feats that alter this ability, such as Elemental Channel and Alignment Channel. The DC to save against these feats is equal to 10 + 1/2 your wizard level + your Charisma modifier. At 20th level, undead cannot add their channel resistance to the save against this ability.",
+    "Grave Touch (Sp)": "As a standard action, you can make a melee touch attack that causes a living creature to become shaken for a number of rounds equal to 1/2 your wizard level (minimum 1). If you touch a shaken creature with this ability, it becomes frightened for 1 round if it has fewer Hit Dice than your wizard level. You can use this ability a number of times per day equal to 3 + your Intelligence modifier.",
+    "Life Sight (Su)": "At 8th level, you gain blindsight to a range of 10 feet for a number of rounds per day equal to your wizard level. This ability only allows you to detect living creatures and undead creatures. This sight also tells you whether a creature is living or undead. Constructs and other creatures that are neither living nor undead cannot be seen with this ability. The range of this ability increases by 10 feet at 12th level, and by an additional 10 feet for every four levels beyond 12th. These rounds do not need to be consecutive."
+},
+"transmutation": {
+    "description": "Transmuters use magic to change the world around them.",
+    "Physical Enhancement (Su)": "You gain a +1 enhancement bonus to one physical ability score (Strength, Dexterity, or Constitution). This bonus increases by +1 for every five wizard levels you possess to a maximum of +5 at 20th level. You can change this bonus to a new ability score when you prepare spells. At 20th level, this bonus applies to two physical ability scores of your choice.",
+    "Telekinetic Fist (Sp)": "As a standard action, you can strike with a telekinetic fist, targeting any foe within 30 feet as a ranged touch attack. The telekinetic fist deals 1d4 points of bludgeoning damage + 1 for every two wizard levels you possess. You can use this ability a number of times per day equal to 3 + your Intelligence modifier.",
+    "Change Shape (Sp)": "At 8th level, you can change your shape for a number of rounds per day equal to your wizard level. These rounds do not need to be consecutive. This ability otherwise functions like beast shape II or elemental body I. At 12th level, this ability functions like beast shape III or elemental body II."
+},
+"universalist": {
+    "description": "Wizards who do not specialize (known as universalists) have the most diversity of all arcane spellcasters.",
+    "Hand of the Apprentice (Su)": "You cause your melee weapon to fly from your grasp and strike a foe before instantly returning to you. As a standard action, you can make a single attack using a melee weapon at a range of 30 feet. This attack is treated as a ranged attack with a thrown weapon, except that you add your Intelligence modifier on the attack roll instead of your Dexterity modifier (damage still relies on Strength). This ability cannot be used to perform a combat maneuver. You can use this ability a number of times per day equal to 3 + your Intelligence modifier.",
+    "Metamagic Mastery (Su)": "At 8th level, you can apply any one metamagic feat that you know to a spell you are about to cast. This does not alter the level of the spell or the casting time. You can use this ability once per day at 8th level and one additional time per day for every two wizard levels you possess beyond 8th. Any time you use this ability to apply a metamagic feat that increases the spell level by more than 1, you must use an additional daily usage for each level above 1 that the feat adds to the spell. Even though this ability does not modify the spell’s actual level, you cannot use this ability to cast a spell whose modified spell level would be above the level of the highest-level spell that you are capable of casting."
+}
+
+
+
+},
+
+"subschools": {
+
+"banishment": {
+"associated school": "abjuration",
+"replacement powers": "the following school powers replace the energy absorption power and the protective ward power of the abjuration school. ",
+"unstable bonds (su)": "at 1st level, your touch can disrupt the bonds that hold a summoned or called creature on this plane. As a melee touch attack, you can cause a summoned or called creature to become shaken and staggered for a number of rounds equal to 1/2 your wizard level (minimum 1). You can use this ability a number of times per day equal to 3 + your intelligence modifier. ",
+"aura of banishment (su)": "at 8th level, you can emit a 30-foot aura of banishment for a number of rounds per day equal to your wizard level. Any summoned or called creature in the area must make a will save each round. Once the creature fails a will saving throw, it is staggered as long as it remains inside the aura. If it fails a second will saving throw, it is immediately sent back to its home plane and the spell that summoned it immediately ends. These rounds do not need to be consecutive. "
+},
+"counterspell": {
+"associated school": "abjuration",
+"replacement powers": "the following school powers replace the protective ward power and the energy absorption power of the abjuration school. ",
+"disruption (su)": "at 1st level, you gain the ability to disrupt spellcasting with a touch. As a melee touch attack, you can place a disruptive field around the target. While the field is in place, the target must make a concentration check to cast any spell or to use a spell-like ability in addition to any other required concentration checks. The dc of this check is equal to 15 + twice the spells level. If the check is failed, the targets spell is wasted. This field lasts for a number of rounds equal to 1/2 your wizard level (minimum 1). You can use this ability a number of times per day equal to 3 + your intelligence modifier. ",
+"counterspell mastery (su)": "at 6th level, you gain improved counterspell as a bonus feat. You may attempt to counterspell an opponents spell once per day as an immediate action (instead of a readied action). You must use a spell at least one level higher than the spell being countered to use this ability. You can use this ability once per day at 6th level, plus one additional time per day for every 4 levels beyond 6th. "
+},
+"creation": {
+"associated school": "conjuration",
+"replacement powers": "the following school powers replace the acid dart power and the dimensional steps power of the conjuration school. ",
+"create gear (su)": "at 1st level, you can create any object that weighs no more than 1 pound per wizard level you possess. Creating an object in this way is a standard action. The item remains for 1 minute before fading away, although it disappears after one round if it leaves your possession. Creating an item to an exact specification might require a craft skill check, subject to gm discretion. The object must be made of simple materials, such as wood, stone, glass, or metal, and cannot contain any moving parts. You could use this ability to create a dagger, but not a vial of alchemists fire. You can use this ability a number of times per day equal to 3 + your intelligence modifier. ",
+"creators will (sp)": "at 8th level, you can cast minor creation as a spell-like ability. You can have no more than one minor creation active at a time. If you cast the spell again, the previous casting immediately ends. At 12th level, this ability improves to major creation. You can use this ability a number of times per day equal to 1/2 your wizard level. "
+},
+"extradimension": {
+"associated school": "conjuration",
+"replacement power": "the following school power replaces the summoners charm power of the conjuration school. ",
+"reshape space (su)": "whenever you cast a spell that creates an extradimensional space or demiplane, increase the duration by a number of units (rounds, minutes, hours, etc. ) equal to 1/2 your wizard level (minimum 1). At 20th level, you can make one spell that creates an extradimensional space or demiplane permanent. You can have no more than one such spell made permanent in this way at a time. If you designate another spell as permanent, the previous permanent spell ends. "
+},
+"infernal binder": {
+"replacement powers": "the following school powers replace the acid dart and dimensional steps powers of the conjuration school. ",
+"planar knowledge (ex)": "as an infernal binder, you gain a +3 bonus on knowledge (planes) checks. ",
+"assume control (su)": "at 1st level, you can attempt to gain control over a summoned creature by disrupting the bond between it and the caster who summoned it. You must make a caster level check (1d20 + caster level) equal to 10 + the summoning casters level. You can use this ability a number of times per day equal to 3 + your intelligence modifier. ",
+"imp familiar (ex)": "at 7th level, you gain improved familiar as a bonus feat, and must take an imp as a familiar. The imp replaces your current familiar. "
+},
+"teleportation": {
+"associated school": "conjuration",
+"replacement power": "the following school power replaces the acid dart power of the conjuration school. ",
+"shift (su)": "at 1st level, you can teleport to a nearby space as a swift action as if using dimension door. This movement does not provoke an attack of opportunity. You must be able to see the space that you are moving into. You cannot take other creatures with you when you use this ability (except for familiars). You can use this ability a number of times per day equal to 3 + your intelligence modifier. "
+},
+"prophecy": {
+"associated school": "divination",
+"replacement powers": "the following replace the forewarned and scrying adept powers of the divination school. ",
+"inspiring prediction (su)": "a number of times per day equal to 3 + your intelligence modifier, you can predict an allys success, bolstering others resolve. As a swift action, you can shout an inspiring prediction, granting each ally within 50 feet who can hear you a +4 luck bonus on her next attack roll, saving throw, or skill check. ",
+"in accordance with the prophecy (su)": "a number of times per day equal to your intelligence modifier, you can publicly declare that your next spell is guided by prophecy. When you do, the next spell you cast has a 20% chance of fizzling (120 on a d%). If the spell does not fail, treat the spell as if it had been modified by the empower spell feat, even if you do not have that feat. At 12th level, the chance that the spell fizzles is reduced to 15% (115 on a d%). At 16th level, the chance is reduced to 10% (110 on a d%). "
+},
+
+"foresight": {
+"associated school": "divination",
+"replacement powers": "the following school powers replace the diviners fortune and scrying adept powers of the divination school. ",
+"prescience (su)": "at the beginning of your turn, you may, as a free action, roll a single d20. At any point before your next turn, you may use the result of this roll as the result of any d20 roll you are required to make. If you do not use the d20 result before your next turn, it is lost. You can use this ability a number of times per day equal to 3 + your intelligence modifier. ",
+"foretell (su)": "at 8th level, you can utter a prediction of the immediate future. While your foretelling is in effect, you emit a 30-foot aura of fortune that aids your allies or hinders your enemies, as chosen by you at the time of prediction. If you choose to aid, you and your allies gain a +2 luck bonus on ability checks, attack rolls, caster level checks, saving throws, and skill checks. If you choose to hinder, your enemies take a 2 penalty on those rolls instead. You can use this ability for a number of rounds per day equal to your wizard level. These rounds do not need to be consecutive. "
+},
+"scryer": {
+"associated school": "divination",
+"replacement power": "the following school power replaces the diviners fortune power of the divination school. ",
+"send senses (sp)": ["as a standard action, you place a scrying sensor at a point within medium range (100 feet + 10 feet/wizard level) that you can see and have line of effect to. You can see or hear (not both) through this sensor for a number of rounds equal to 1/2 your wizard level (minimum 1). The sensor otherwise functions as a clairaudience/clairvoyance spell with a caster level equal to your wizard level. ", "you can use this ability a number of times per day equal to 3 + your intelligence modifier. "]
+},
+"controller": {
+"associated school": "enchantment",
+"replacement powers": "the following school powers replace the enchanting smile and aura of despair powers of the enchantment school. ",
+"force of will (su)": "you can send thoughts and instructions telepathically to any creature within 60 feet that you have charmed or dominated as though you shared a common language. At 11th level, affected creatures can communicate back to you via the telepathic link as well. At 20th level, any creature that succeeds at a saving throw against an enchantment spell you have just cast is still affected for 1 round if the spell has a duration greater than 1 round. ",
+"irresistible demand (sp)": "at 8th level, you can force others to do your bidding. As a standard action, you attempt to dominate a creature as though using the dominate monster spell, except that the creature must have a number of hit dice equal to or less than your wizard level. The targeted creature receives a will saving throw each round to negate the effect. The dc is equal to 10 + 1/2 your wizard level + your intelligence modifier. You can dominate creatures for a number of rounds per day equal to your wizard level. These rounds do not need to be consecutive. You must concentrate as a standard action to maintain control over a dominated creature. "
+},
+"manipulator": {
+"associated school": "enchantment",
+"replacement powers": "the following school powers replace the dazing touch and aura of despair powers of the enchantment school. ",
+"beguiling touch (sp)": "you can charm a living creature by touching it. Creatures with more hit dice than your wizard level are unaffected, as are creatures in combat and those with an attitude of hostile toward you. Creatures receive a will saving throw to negate the effect. The dc of this save is equal to 10 + 1/2 your wizard level + your intelligence modifier. Creatures that fail their save are affected by charm monster for a number of rounds equal to 1/2 your wizard level (minimum 1). This is a mind-affecting effect. You can use this ability a number of times per day equal to 3 + your intelligence modifier. ",
+"shape emotions (su)": "at 8th level, you can emit a 30-foot aura to either ward off or welcome emotional influence for a number of rounds per day equal to your wizard level. If you choose to ward, you and your allies within this aura receive a +4 morale bonus on saves against mind-affecting spells and effects, and any fear effects targeting you or your allies are reduced by one step (shaken has no effect, frightened becomes shaken, and panicked becomes frightened). If you chose to enhance emotional influence, enemies within the aura receive a 2 penalty on saves against mind-affecting spells and effects. These rounds do not need to be consecutive. "
+},
+"admixture": {
+"associated school": "evocation",
+"replacement powers": "the following school powers replace the force missile and elemental wall powers of the evocation school. ",
+"versatile evocation (su)": "when you cast an evocation spell that does acid, cold, electricity, or fire damage, you may change the damage dealt to one of the other four energy types. This changes the descriptor of the spell to match the new energy type. Any non-damaging effects remain unchanged unless the new energy type invalidates them (an ice storm that deals fire damage might still provide a penalty on perception checks due to smoke, but it would not create difficult terrain). Such effects are subject to gm discretion. You can use this ability a number of times per day equal to 3 + your intelligence modifier. ",
+"elemental manipulation (su)": "at 8th level, you can emit a 30-foot aura that transforms magical energy. Choose an energy type from acid, cold, electricity, and fire, and a second type to transform it into. Any magical source of energy of this type with a caster level equal to or less than your wizard level is altered to the chosen energy type. This includes supernatural effects from creatures with hit dice no greater than your caster level. For example, you could transform a white dragons frigid breath weapon (a supernatural ability), but not a fire elementals fiery touch (an extraordinary ability). If an effect lies only partially within your aura, only the portions within the aura are transformed. You can use this ability for a number of rounds per day equal to your wizard level. The rounds do not need to be consecutive. "
+},
+"generation": {
+"associated school": "evocation",
+"replacement powers": "the following school powers replace the intense spells and force missile powers of the evocation school. ",
+"lingering evocations (su)": "any evocation spell you cast with a duration greater than instantaneous lasts an additional number of rounds equal to 1/2 your wizard level (minimum +1). At 20th level, any dispel checks made against your evocation spells must be rolled twice, and your opponent must use the less favorable result. ",
+"arcane bond (su)": "at 8th level, you forge a powerful bond with items. You can add any one metamagic feat that you do not possess to your list of wizard bonus feats. This feat must be one that you can apply to an evocation spell. You can select this feat more than once. The effects do not stack. Each time you select this feat, it must be applied to a different metamagic feat that you do not possess. In addition, any metamagic feats you possess are considered to have a caster level equal to your wizard level. If the bond is broken, the feats are lost. "
+},
+"deception": {
+"associated school": "illusion",
+"replacement powers": "the following school powers replace the blinding ray and extended illusions powers of the illusion school. ",
+"invisibility (su)": "as a standard action, you can become invisible (as improved invisibility). You can maintain this invisibility for a number of rounds per day equal to your wizard level. These rounds do not need to be consecutive. ",
+"master's illusion (sp)": "at 8th level, you can create an illusion that hides the real nature of an object or creature. This ability functions as the change self spell, except that you can change the appearance of other people or objects as well. The object or creature changed takes on all the visual properties of the new form, including (but not limited to) color, texture, apparent mass, and size. You cannot duplicate the abilities of creatures or objects with this ability. You can maintain this illusion for a number of hours equal to your wizard level. The duration does not need to be consecutive, but it must be spent in 1-hour increments. At 20th level, the duration of this spell becomes permanent. "
+},
+"mage of the veil": {
+"associated school": "illusion",
+"replacement powers": "the following school powers replace the blinding ray and invisibility field powers of the illusion school. ",
+"shadow casting (su)": "at 1st level, the magus of the veil gains the following spell-like abilities: 1/dayshadow weapon. These abilities function as the spells cast by a sorcerer of the magus of the veil's magus level. The magus of the veil can use his magus arcana to apply metamagic feats to these spells as if he had prepared them ahead of time. He can also use his spell combat ability to cast these spells in conjunction with a one-handed melee weapon. At 7th level, the magus of the veil can use his magus arcana to spontaneously apply any metamagic feat he knows to his spells, preparing the spell normally or casting it as a spontaneous spell on the fly. The magus of the veil must be at least 6th level and possess the knowledge pool magus arcana to select this magus arcana. ",
+"clever casting (ex)": "at 7th level, the magus of the veil can make a concentration check to cast a spell and hide its manifestations. When casting a spell, the magus of the veil can attempt a concentration check to conceal his intentions. The dc for this check is equal to 15 + the spell's level. The magus of the veil can always choose to take 10 on this check, even if distracted or threatened, and can retry the check as long as he has uses of his magus arcana. If the check succeeds, the spell's verbal and somatic components are hidden from onlookers, requiring a sense motive check (opposed by the magus of the veil's concentration check result) to realize the spell is being cast. ",
+"shadow well (su)": "at 20th level, the magus of the veil can use a swift action to designate a 5-foot step that he takes. As long as this movement is made on his turn, it doesn't count as a 5-foot step, and he can take it in addition to his normal 5-foot step. Additionally, the magus of the veil is treated as though he has the improved evasion ability, using his magus level as his rogue level to determine the benefits of this ability. "
+},
+"phantasm": {
+"associated school": "illusion",
+"replacement powers": "the following school powers replace the blinding ray and invisibility field powers of the illusion school. ",
+"shadow casting (su)": "at 1st level, the magus of the veil gains the following spell-like abilities: 1/dayshadow weapon. These abilities function as the spells cast by a sorcerer of the magus of the veil's magus level. The magus of the veil can use his magus arcana to apply metamagic feats to these spells as if he had prepared them ahead of time. He can also use his spell combat ability to cast these spells in conjunction with a one-handed melee weapon. At 7th level, the magus of the veil can use his magus arcana to spontaneously apply any metamagic feat he knows to his spells, preparing the spell normally or casting it as a spontaneous spell on the fly. The magus of the veil must be at least 6th level and possess the knowledge pool magus arcana to select this magus arcana. ",
+"clever casting (ex)": "at 7th level, the magus of the veil can make a concentration check to cast a spell and hide its manifestations. When casting a spell, the magus of the veil can attempt a concentration check to conceal his intentions. The dc for this check is equal to 15 + the spell's level. The magus of the veil can always choose to take 10 on this check, even if distracted or threatened, and can retry the check as long as he has uses of his magus arcana. If the check succeeds, the spell's verbal and somatic components are hidden from onlookers, requiring a sense motive check (opposed by the magus of the veil's concentration check result) to realize the spell is being cast. ",
+"shadow well (su)": "at 20th level, the magus of the veil can use a swift action to designate a 5-foot step that he takes. As long as this movement is made on his turn, it doesn't count as a 5-foot step, and he can take it in addition to his normal 5-foot step. Additionally, the magus of the veil is treated as though he has the improved evasion ability, using his magus level as his rogue level to determine the benefits of this ability. "
+},
+
+"shadow": {
+"associated school": "illusion",
+"replacement powers": "the following school powers replace the blinding ray and invisibility field powers of the illusion school. ",
+"binding darkness (sp)": "as a standard action, you cast a weave of shadows at any foe within 30 feet as a ranged touch attack. The shadows entangle your foe for 1 round plus 1 additional round for every five wizard levels you possess. In conditions of bright light, this duration is halved (minimum 1 round). A creature entangled by your shadows has concealment from those without darkvision or the ability to see in darkness, and other creatures likewise have concealment relative to it. You can use this ability a number of times per day equal to 3 + your intelligence modifier. ",
+"shadow step (sp)": "at 8th level, you can use this ability to walk through the shadow plane and reappear as a standard action. You can travel up to 30 feet per wizard level per day in this fashion, either in a single round or broken up across multiple shadow steps. This movement must be used in 5-foot increments and does not provoke an attack of opportunity. Travel through the shadow plane is imprecise; when you arrive, you re-enter 1 square off target, as per the rules for thrown splash weapons (see page 202 of the pathfinder rpg core rulebook). If this would place you in an occupied square, you instead arrive in the nearest safe location. When you arrive, you are cloaked in shadow and gain concealment as the blur spell for 1 round. You may bring other willing creatures with you, but you must expend an equal amount of distance for each additional creature brought with you. They likewise re-enter off target (roll location for each creature) and are cloaked in shadow for 1 round. "
+},
+"life": {
+"associated school": "necromancy",
+"replacement powers": "the following school powers replace the power over undead and grave touch powers of the necromancy school. ",
+"healing grace (su)": "whenever you cast a spell that has targets, affects creatures in an area, or requires an attack roll, you may heal creatures affected by the spell a total of 1 point of damage per level of the spell. This healing may be spread out between the targets of the spell in any way you choose. If you assign any of the healing to an undead creature, it instead takes 1 point of damage for each point assigned. At 11th level, the amount of damage cured increases to 2 points of damage per level of the spell. This healing occurs when the spell is cast and has no effect on creatures that enter its area after the spell is in place. At 20th level, the amount of damage cured increases to 3 points of damage per level of the spell. ",
+"share essence (sp)": "as a standard action, you can share your vital energy with a living creature that you touch. You take 1d6 points of nonlethal damage + 1 for every two wizard levels you possess. You cannot take an amount of nonlethal damage equal to or greater than your current hit point total; any excess is prevented. The recipient gains a number of temporary hit points equal to the amount of damage you received (prevented damage is not counted). These temporary hit points disappear 1 hour later. You may not use this ability to grant yourself temporary hit points. You can use this ability a number of times per day equal to 3 + your intelligence modifier. This ability has no effect if you are immune to nonlethal damage. "
+},
+"undead": {
+"associated school": "necromancy",
+"replacement power": "the following school power replaces the grave touch power of the necromancy school. ",
+"bolster (sp)": "as a standard action, you can touch an undead creature and infuse it with negative energy. It gains a +1 profane bonus on all attack rolls and saving throws, as well as 1 temporary hit point per hit die and a +2 bonus to its turn resistance. The bonus on attack rolls and saving throws increases by +1 for every 5 wizard levels you possess. These bonuses last for a number of rounds equal to 1/2 your wizard level (minimum 1 round). The bonuses and temporary hit points are immediately dispelled if the creature is within the area of a consecrate spell. You can use this ability a number of times per day equal to 3 + your intelligence modifier. "
+},
+"enhancement": {
+"associated school": "transmutation",
+"replacement powers": "the following school powers replace the telekinetic fist and change shape powers of the transmutation school. ",
+"augment (sp)": "as a standard action, you can touch a creature and grant it either a +2 enhancement bonus to a single ability score of your choice or a +1 bonus to natural armor that stacks with any natural armor the creature might possess. At 10th level, the enhancement bonus to one ability score increases to +4. The natural armor bonus increases by +1 for every five wizard levels you possess, to a maximum of +5 at 20th level. This augmentation lasts a number of rounds equal to 1/2 your wizard level (minimum 1 round). You can use this ability a number of times per day equal to 3 + your intelligence modifier. ",
+"perfection of self (su)": "at 8th level, as a swift action you can grant yourself an enhancement bonus to a single ability score equal to 1/2 your wizard level (maximum +10) for one round. You may use this ability for a number of times per day equal to your wizard level. "
+},
+"shapechange": {
+"associated school": "transmutation",
+"replacement power": "the following school power replaces the telekinetic fist power of the transmutation school. ",
+"battleshaping (su)": "as a swift action, you grow a single natural weapon. The natural weapon lasts for 1 round and has a +1 enhancement bonus on attack and damage rolls for every four wizard levels you possess. You can grow a claw, a bite, or a gore attack. These attacks deal the normal damage for a creature of your size. At 11th level, you can shape two natural weapons. You may not grow additional limbs or a tail with this ability. You can use this ability a number of times per day equal to 3 + your intelligence modifier. "
+}
+}
+
+}

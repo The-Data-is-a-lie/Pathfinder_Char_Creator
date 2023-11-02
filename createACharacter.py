@@ -250,7 +250,10 @@ class Character:
             self.animal_companion = json.load(f)                  
 
         with open(json_config['animal_choices']) as f:
-            self.animal_choices = json.load(f)             
+            self.animal_choices = json.load(f)          
+
+        with open(json_config['wizard_schools']) as f:
+            self.wizard_schools = json.load(f)                
 
         # with open(json_config['big_boy_item_data']) as f:
         #     self.big_boy_item_data = json.load(f)                    
@@ -1111,31 +1114,117 @@ class Character:
 
 
 
-    def wizard_school_chooser(self):
+    def wizard_opposing_school(self):
+        elemental_list = ['metal', 'void', 'earth', 'air', 'water', 'fire']
+        school_set = set()    
+        i = 0    
+        random_school, description, associated, associated_school = self.wizard_school_chooser() 
+        print(random_school)
+
         if self.c_class == 'wizard' or self.c_class_2 == 'wizard':
-            school_list = ['Abjuration', 'Banishment', 'Counterspell', 'Conjuration', 'Creation', 'Extradimension', 'Infernal Binder', 'Teleportation',
-            'Divination', 'Prophecy', 'Foresight', 'Scryer', 'Enchantment', 'Controller', 'Manipulator', 'Evocation', 'Admixture',
-            'Generation', 'Illusion', 'Deception', 'Mage of the Veil', 'Phantasm', 'Shadow', 'Necromancy', 'Life', 'Undead',
-            'Sin Magic', 'Transmutation', 'Enhancement', 'Shapechange', 'Universalist', 'Arcane Crafter',
-            'Aether', 'Air', 'Ice', 'Smoke', 'Earth', 'Magma', 'Mud', 'Fire', 'Magma', 'Smoke', 'Water', 'Ice', 'Mud', 'Metal', 'Void', 'Wood']
+            if random_school in elemental_list:
+                if random_school == 'metal':
+                    opposing_school = 'wood'
+                elif random_school == 'wood':
+                    opposing_school = 'metal'
+                elif random_school == 'fire':
+                    opposing_school = 'water'
+                elif random_school == 'water':
+                    opposing_school = 'fire'
+                elif random_school == 'earth':
+                    opposing_school = 'air'
+                elif random_school == 'air':
+                    opposing_school = 'earth'                
+                else:
+                    opposing_school = random.choice(elemental_list)
+            else:
+                while i < 2:
+                    opposing_school_list = list(self.wizard_schools["schools"].keys()) 
+                    opposing_school = random.choice(opposing_school_list)
+
+                    school_set.add(random_school)
+                    school_set.add(opposing_school)
+
+                    i = len(school_set)
+
+            print(f"THIS IS YOUR OPPOSING SCHOOL SILLY BILLY {opposing_school}")
+
+                
+
+
+
+            # school_list = ['abjuration', 'banishment', 'counterspell', 'conjuration', 'creation', 'extradimension', 'infernal binder', 'teleportation',
+            #     'divination', 'prophecy', 'foresight', 'scryer', 'enchantment', 'controller', 'manipulator', 'evocation', 'admixture',
+            #     'generation', 'illusion', 'deception', 'mage of the veil', 'phantasm', 'shadow', 'necromancy', 'life', 'undead',
+            #     'sin magic', 'transmutation', 'enhancement', 'shapechange', 'universalist', 'arcane crafter',
+            #     'aether', 'air', 'ice', 'smoke', 'earth', 'magma', 'mud', 'fire', 'magma', 'smoke', 'water', 'ice', 'mud', 'metal', 'void', 'wood']
+
             #making school_list lower case
-            school_list = [element.lower() for element in school_list]
+            # school_list = [element.lower() for element in school_list]
 
-            opposing_school_list = ['abjuration','conjuration','divination','enchantment', 'evocation', 'illusion','necromancy', 'transmutation', 'universalist', 'air','earth', 'fire', 'water',  'metal', 'void', 'wood']
-            #Wizards tend to select a chosen school
-            self.chosen_school = random.sample(school_list,k=1)
+            # opposing_school_list = ['abjuration','conjuration','divination','enchantment', 'evocation', 'illusion','necromancy', 'transmutation', 'universalist', 'air','earth', 'fire', 'water',  'metal', 'void', 'wood']
+            # #Wizards tend to select a chosen school
+            # self.chosen_school = random.sample(school_list,k=1)
 
-            #wizards that have one chosen school have 2 prohibited schools
-            self.prohibited_schools = random.sample(opposing_school_list,k=2)        
-            while self.chosen_school in self.prohibited_schools:
-                self.prohibited_schools.remove(self.chosen_school)
-
-
-            if self.chosen_school == 'universalist':
-                self.prohibited_schools == None
+            # #wizards that have one chosen school have 2 prohibited schools
+            # self.prohibited_schools = random.sample(opposing_school_list,k=2)        
+            # while self.chosen_school in self.prohibited_schools:
+            #     self.prohibited_schools.remove(self.chosen_school)
 
 
-            return self.chosen_school, self.prohibited_schools
+            # if self.chosen_school == 'universalist':
+            #     self.prohibited_schools == None
+
+
+            # return self.chosen_school, self.prohibited_schools
+
+
+    def wizard_school_chooser(self):
+        if self.c_class == 'wizard' or self.c_class_2 == 'wizard':        
+            #some schools have a very different format, we may want to change that
+            #add opposing schools function
+            elemental = list(self.wizard_schools["elemental_schools"].keys())
+            elemental_data = self.wizard_schools["elemental_schools"]
+            schools = list(self.wizard_schools["schools"].keys())
+            schools_data = self.wizard_schools["schools"]
+            elemental_subschools = list(self.wizard_schools["elemental_subschools"].keys())
+            elemental_subschools_data = self.wizard_schools["elemental_subschools"]
+            subschools = list(self.wizard_schools["subschools"].keys())     
+            subschools_data = self.wizard_schools["subschools"]
+
+            random_choice = random.randint(1,4)
+            random_choice = 4
+            print(f"This is the random wizard school % chance {random_choice}")
+            associated_school = []
+            associated = None
+
+            if random_choice == 1:
+                random_school = random.choice(elemental)
+                description = elemental_data[random_school]
+
+            elif random_choice == 2:            
+                random_school = random.choice(elemental_subschools)
+                description = elemental_subschools_data[random_school]
+                associated = elemental_subschools_data[random_school]["associated school"][1]
+                associated_school = elemental_data[associated]
+
+            elif random_choice == 3:
+                random_school = random.choice(schools)
+                description = schools_data[random_school]
+
+            else:
+                random_school = random.choice(subschools)
+                description = subschools_data[random_school]
+                associated = subschools_data[random_school]["associated school"]
+                associated_school = schools_data[associated]            
+
+            print(random_school)
+            print(description)
+            print(associated)
+            print(associated_school)
+
+
+            return random_school, description, associated, associated_school
     
     def versatile_perfomance(self):
   
