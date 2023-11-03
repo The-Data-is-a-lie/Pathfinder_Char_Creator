@@ -141,9 +141,7 @@ while userInput.lower() == 'y':
 		character.chooseable_list_stats(character.wis, 'wis')
 		character.chooseable_list_stats(character.cha, 'cha')	
 	
-		#class specific feats choosers
-		character.ranger_feats_chooser()
-		character.monk_feats_chooser()
+
 
 
 		#decides if druids go animal companion or domain
@@ -167,14 +165,18 @@ while userInput.lower() == 'y':
 
 	
 
+		#class specific feats choosers
+		character.ranger_feats_chooser()
+		character.monk_feats_chooser()
+		character.sorcerer_feats_chooser()
 
 
 
-		character.armor_chooser()
+		# character.armor_chooser()
 
-		print(f'This is your gold pre items {character.assign_gold("gold")}')
-		character.item_chooser()
-		print(f'This is your gold post items {character.gold}')	
+		# print(f'This is your gold pre items {character.assign_gold("gold")}')
+		# character.item_chooser()
+		# print(f'This is your gold post items {character.gold}')	
 
 
 

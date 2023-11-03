@@ -1118,10 +1118,11 @@ class Character:
         elemental_list = ['metal', 'void', 'earth', 'air', 'water', 'fire']
         school_set = set()    
         i = 0    
-        random_school, description, associated, associated_school = self.wizard_school_chooser() 
-        print(random_school)
+
 
         if self.c_class == 'wizard' or self.c_class_2 == 'wizard':
+            random_school, description, associated, associated_school = self.wizard_school_chooser() 
+            print(random_school)            
             if random_school in elemental_list:
                 if random_school == 'metal':
                     opposing_school = 'wood'
@@ -1620,6 +1621,31 @@ class Character:
             return animal_chosen_feat_list
 
 
+    def sorcerer_feats_chooser(self):
+        #probably want to reformat the data to have all bloodline powers in one area (like we have it for the newest additions)
+        feat_amount = [7,13,19,25,31,37,43,49]
+        feat_list = set ()
+        i = 0
+        if self.chosen_bloodline != None:
+            while feat_amount[i] < self.c_class_level:
+                print(self.chosen_bloodline)
+                bloodline_feats = list(self.bloodlines[self.chosen_bloodline]["bonus feats"])
+                chosen_feat = random.choice(bloodline_feats)
+                feat_list.add(chosen_feat)
+                i = len(feat_list)
+
+                if i >= 6:
+                    break
+            print(feat_list)
+            return feat_list
+
+
+    def sorcerer_bloodline_chooser(self):
+        if self.c_class == 'sorcerer' or self.c_class_2 == 'sorcerer':   
+            self.chosen_bloodline =  random.choice(list(self.bloodlines.keys()))
+            print(f'This is your selected bloodline {self.chosen_bloodline} + its info: \n{self.bloodlines[self.chosen_bloodline]}')
+
+            return self.chosen_bloodline
 
     #need to implement all the restrictions to feats we want
     def feats_selector(self):             
