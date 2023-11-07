@@ -49,6 +49,7 @@ character_json_config = {
 	'animal_companion': 'json/animal_companion.json',	
 	'animal_choices': 'json/animal_choices.json',
 	'wizard_schools': 'json/wizard_schools.json',	
+	'alchemist_choices': 'json/alchemist_choices.json',		
 }
 
 
@@ -169,6 +170,9 @@ while userInput.lower() == 'y':
 		character.ranger_feats_chooser()
 		character.monk_feats_chooser()
 		character.sorcerer_feats_chooser()
+
+
+		character.discovery_chooser()
 
 
 

@@ -255,6 +255,8 @@ class Character:
         with open(json_config['wizard_schools']) as f:
             self.wizard_schools = json.load(f)                
 
+        with open(json_config['alchemist_choices']) as f:
+            self.alchemist_choices = json.load(f)  
         # with open(json_config['big_boy_item_data']) as f:
         #     self.big_boy_item_data = json.load(f)                    
 
@@ -1397,6 +1399,8 @@ class Character:
             talent_groups = [self.rogue_talents["advanced"], self.rogue_talents["basic"]]               
         elif (self.c_class == 'barbarian' or self.c_class == 'unchained_barbarian'):
             talent_groups = [self.rage_powers["basic"]]
+        elif (self.c_class == 'alchemist' or self.c_class == 'alchemist'):
+            talent_groups = [self.alchemist_choices["basic"]]            
         else:
             print("!!!!! no class abilties chosen !!!!")
             return
@@ -1438,6 +1442,8 @@ class Character:
             talent_groups = [self.rogue_talents["advanced"], self.rogue_talents["basic"]]               
         elif (self.c_class == 'barbarian' or self.c_class == 'unchained_barbarian'):
             talent_groups = [self.rage_powers["basic"]]
+        elif (self.c_class == 'alchemist' or self.c_class == 'alchemist'):
+            talent_groups = [self.alchemist_choices["basic"]]
      
 
         #our dynamic list we create, to help us isolate prereqs we meet
@@ -1460,7 +1466,7 @@ class Character:
 
                  
 
-        print(matching_keys)
+        #print(matching_keys)
         return matching_keys    
 # End of rogue talent pre-req section
 
@@ -1559,6 +1565,59 @@ class Character:
             i = len(self.rage_power_list)     
             even += 2
             odd += 2
+
+    def discovery_chooser(self):
+        #probably want to add a function which auto adds class + str(even) and str(odd) to the 
+        #prereqs list for all classes
+
+
+        #looks like we might need to redo alchemist choices, so it shows full benefits, not just from the table
+        discovery_amount = (floor(self.c_class_level/2))
+        print(f'this is your discovery amount {discovery_amount}')
+        i = 0
+        even=2
+        odd=1       
+        discovery_list_chosen = set()  
+        alchemist_discoveries_without_prerequisites = self.get_talents_without_prerequisites()
+        discovery_list = alchemist_discoveries_without_prerequisites
+      
+        basic = self.alchemist_choices['basic']
+        grand = self.alchemist_choices['grand']
+
+        grand_discoveries = list(grand.keys())  
+
+        if self.c_class == 'alchemist':
+
+            while i < discovery_amount and discovery_amount != 0 :      
+
+
+
+                alchemist_k_even = "alchemist " + str(even)
+                alchemist_k_odd = "alchemist " + str(odd)   
+                self.chooseable.add(alchemist_k_even)
+                self.chooseable.add(alchemist_k_odd)                                                     
+
+                discovery_chosen = random.choice(discovery_list)
+                discovery_description = basic[discovery_chosen]['benefits']
+                discovery_list_chosen.add(discovery_chosen) 
+                self.chooseable.add(discovery_chosen)
+
+
+                matching_keys = self.mashing_keys()
+                discovery_list.extend(matching_keys)
+
+                print(f'This is the chosen discovery {discovery_chosen}')
+                print(f'This is the chosen discovery description {discovery_description}')
+                print(f'This is your total discover list{discovery_list_chosen}')
+                print(f'chooseable list {discovery_list}')
+
+                print(f'This is your I value {i}')
+                i = len(discovery_list_chosen)
+                even += 2
+                odd += 2      
+
+                #add a function so level 20, you get 2 extra + 1 grand discovery          
+
 
 
 
