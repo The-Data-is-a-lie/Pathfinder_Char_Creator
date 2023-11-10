@@ -176,6 +176,9 @@ while userInput.lower() == 'y':
 
 
 
+		character.archetype_data()
+
+
 		# character.armor_chooser()
 
 		# print(f'This is your gold pre items {character.assign_gold("gold")}')

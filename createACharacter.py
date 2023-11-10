@@ -1291,7 +1291,7 @@ class Character:
 
                     #reroll random_chance martial
                     else:
-                        random_chance_martial=random.randint(51,100)
+                        random_chance_martial = random.randint(51,100)
                         martial_set.discard(martial_choice)
                         print(f'martial_set has bee removed {martial_set}')
                     #reroll performance
@@ -1751,6 +1751,33 @@ class Character:
         return self.feat_list
 
 
+    def archetype_data(self):
+        #looks like we also have dupes
+        class_string = str(self.c_class).capitalize()
+        extraction_list = ['Archetype',  'Level',
+       'Class Ability', 'Description']
+        #archetype data works + reads csv correctly
+        archetype_data = pd.read_csv(f'data/archetype_csv/{class_string}.csv', sep=',')
+
+        #list of columns
+        print(archetype_data.columns)
+        query_i = archetype_data['Archetype']
+        #needed to use this to properly randomize (vs. random.shuffle)
+        query_i = query_i.sample(frac=1.0)
+        selected_archetype = query_i[:1]
+        index = selected_archetype.index[0]
+        selected_archetype = selected_archetype[index]
+        print(type(selected_archetype))
+        print(selected_archetype)
+
+
+        query_ii = archetype_data.loc[archetype_data["Archetype"] == selected_archetype, extraction_list]
+        print(query_ii)
+
+
+
+
+
     def convert_price(self,price):
         price = int(price.replace(',', ''))
         if price<11:
@@ -1815,6 +1842,8 @@ class Character:
 
         print(equipment_list)
         print(price_total)
+
+
 
 
 
