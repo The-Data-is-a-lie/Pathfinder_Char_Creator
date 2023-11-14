@@ -116,11 +116,11 @@ while userInput.lower() == 'y':
 		character.choose_caster_formula_2()
 
 		#Divine Casters have all spells known (don't make this function for them)
-		# print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
-		# print(f'This is your spells per day {character.spells_per_day_attr("base_classes")}')
-		# print(f'This is your spells per day from ability mods {character.spells_per_day_from_ability_mod("caster_mod")}')
-		# print(f'Spells known + extra randomized spells known [spell book learners only] {character.spells_known_extra_roll()}')		
-		# print(f"This is your spells list you can choose from {character.spells_known_selection('base_classes')}")
+		print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
+		print(f'This is your spells per day {character.spells_per_day_attr("base_classes")}')
+		print(f'This is your spells per day from ability mods {character.spells_per_day_from_ability_mod("caster_mod")}')
+		print(f'Spells known + extra randomized spells known [spell book learners only] {character.spells_known_extra_roll()}')		
+		print(f"This is your spells list you can choose from {character.spells_known_selection('base_classes','divine_casters')}")
 
 
 		print(f'This is your wizard schools {character.wizard_school_chooser()}')
@@ -177,6 +177,8 @@ while userInput.lower() == 'y':
 
 
 		character.archetype_data()
+
+		character.skills_selector('skills')
 
 
 		# character.armor_chooser()

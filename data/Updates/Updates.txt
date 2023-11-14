@@ -1,0 +1,11 @@
+Needs:
+- Started a skill selector function (need to finish)
+- Need to add a function that properly grabs level 20 2 extra discoveries + grand discovery (need to make grand discovery take into account pre-reqs)
+
+11/13/23
+- Created self.c_capped_level_1 and self.c_capped_level_2 variables to fix the spellcaster bug where being above level 20 -> errors and wouldn't rogue_talent_chooser
+- Made it so Clerics pick favored spells (since they know all spells) to prepare based off of their spells per day
+- Fixed a bug where divine casters couldn't get spells (because they don't have cantrips their i would keep getting 1 too high and try to read more than the len of the list)
+- Similar bug with Alchemist (extra spells has some null values, we need to make them 0 otherwise the pgm doesn't run)
+- wizard_schools (infernal binder) was missing the associated school section
+

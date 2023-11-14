@@ -80,6 +80,8 @@ class Character:
         self.spells_1_known=None
         self.spells_2_known=None                        
         self.dip=None
+        self.capped_level_1=None
+        self.capped_level_2=None
     
 
         #Spell list variables
@@ -378,6 +380,10 @@ class Character:
             c_class_level = min(pre_c_class_level,39)            
             c_class_2_level = level - c_class_level
             self.update_level(level, c_class_level, c_class_2_level)    
+
+        self.capped_level_1 = min(c_class_level,20)
+        self.capped_level_2 = min(c_class_2_level,20)     
+        # we create capped levels for things like spells just in case we'll need it for many functions
         
 
     def hit_dice_calc(self):
@@ -649,25 +655,25 @@ class Character:
         if self.c_class in base_classes and casting_level_1 == 'high' and self.c_class not in divine_casters:
             for i in range(0,self.highest_spell_known1+1):
                 key = str(i)
-                list=self.spells_known[self.c_class_for_spells][key][self.c_class_level-1]
+                list=self.spells_known[self.c_class_for_spells][key][self.capped_level_1-1]
                 self.spells_known_list.append(list)
         elif self.c_class in base_classes and casting_level_1 == 'mid' and self.c_class not in divine_casters and self.c_class_for_spells != 'alchemist':
             for i in range(0,self.highest_spell_known1+1):
                 key = str(i)                
-                list=self.spells_known[self.c_class_for_spells][key][self.c_class_level-1]
+                list=self.spells_known[self.c_class_for_spells][key][self.capped_level_1-1]
                 self.spells_known_list.append(list)
 
         #Low casters + some mid casters don't have orisons/cantrips [but we just have 0 for spells known + spells per day so it doesn't select any]
         elif self.c_class_for_spells == 'alchemist':
             for i in range(0,self.highest_spell_known1+1):
                 key = str(i)                
-                list=self.spells_known[self.c_class_for_spells][key][self.c_class_level-1]
+                list=self.spells_known[self.c_class_for_spells][key][self.capped_level_1-1]
                 self.spells_known_list.append(list)
 
         elif self.c_class in base_classes and casting_level_1 == 'low' and self.c_class not in divine_casters:
             for i in range(0,self.highest_spell_known1+1):
                 key = str(i)                
-                list=self.spells_known[self.c_class_for_spells][key][self.c_class_level-1]
+                list=self.spells_known[self.c_class_for_spells][key][self.capped_level_1-1]
                 self.spells_known_list.append(list)
         elif self.c_class in divine_casters:
             print('Divine Casters know all spells')
@@ -679,28 +685,47 @@ class Character:
     def spells_known_extra_roll(self):
         extra_spell_list = []        
         if self.c_class_for_spells in ['alchemist','wizard']:
-            for i in range(0,self.highest_spell_known1+1):
+            for _ in range(0,self.highest_spell_known1 + 1):
                 extra_spells = random.randint(1,10)
-                i += 1
                 extra_spell_list.append(extra_spells)
-            self.spells_known_list=list( map(add, self.spells_known_list, extra_spell_list) )
+
+                # Remove 'null' values and ensure both lists have the same number of non-null elements
+                filtered_spells_known = [0 if x == 'null' else x for x in self.spells_known_list]
+                filtered_extra_spells = extra_spell_list[:len(filtered_spells_known)]
+
+                print(filtered_extra_spells)
+                print(f'This is the spells known {filtered_spells_known}')
+
+                # Add corresponding elements of both lists
+                result = [x + y for x, y in zip(filtered_spells_known, filtered_extra_spells)]
+
+            self.spells_known_list=result
+
         return self.spells_known_list
 
 
 
-    def spells_known_selection(self,base_classes):
+    def spells_known_selection(self,base_classes,divine_casters):
         spell_data=pd.read_csv('data/spells.csv', sep='|')
         extraction_list = ['name', self.c_class]                
         self.spell_list = []
         casting_level_1 = str(self.classes[self.c_class]["casting level"].lower())         
         base_classes=getattr(data,base_classes)
+        divine_casters=getattr(data, divine_casters)
         i=0
         self.spell_list_choose_from=[]
+        
+        #separating the lists
+        known_list = self.spells_known_list
+        day_list = self.spells_per_day_list
+
         #we need to make sure we aren't grabbing null or our program will break
-        if casting_level_1 != 'none' and self.c_class in base_classes:
+        if casting_level_1 != 'none' and self.c_class in base_classes and self.c_class not in divine_casters:
             while i <= self.highest_spell_known1:
-                if self.spells_known_list[i] != 'null':
-                    select_spell=self.spells_known_list[i]             
+                print(known_list)
+                print(i)
+                if known_list[i] != 'null':
+                    select_spell=known_list[i]             
                     query_i = spell_data.loc[spell_data[self.c_class] == i, extraction_list]
                     #needed to use this to properly randomize (vs. random.shuffle)
                     query_i = query_i.sample(frac=1.0)
@@ -708,8 +733,27 @@ class Character:
                     self.spell_list_choose_from.append(spells)
                     i += 1 
                 else:
-                    break        
+                    break     
 
+        elif casting_level_1 != 'none' and self.c_class in divine_casters:   
+            while i <= self.highest_spell_known1:
+                print(f'this is i {i}')
+                print(type(day_list[i]))
+                print(f"i: {i}, len(day_list): {len(day_list)}")
+                print(day_list)
+
+
+                if day_list[i] != 'null':
+                 
+                    select_spell=day_list[i]             
+                    query_i = spell_data.loc[spell_data[self.c_class] == i, extraction_list]
+                    #needed to use this to properly randomize (vs. random.shuffle)
+                    query_i = query_i.sample(frac=1.0)
+                    spells = query_i[:select_spell]
+                    self.spell_list_choose_from.append(spells)
+                    i += 1 
+                else:
+                    break                 
 
         else:
             print('cannot select spells_known_selection')
@@ -733,24 +777,24 @@ class Character:
         if self.c_class in base_classes and casting_level_1 == 'high':
             for i in range(0,high_caster_level+1):
                 key = str(i)
-                list=self.spells_per_day[self.c_class_for_spells][key][self.c_class_level-1]
+                list=self.spells_per_day[self.c_class_for_spells][key][self.capped_level_1-1]
                 self.spells_per_day_list.append(list)
         elif self.c_class in base_classes and casting_level_1 == 'mid' and self.c_class_for_spells != 'alchemist':
             for i in range(0,mid_caster_level+1):
                 key = str(i)                
-                list=self.spells_per_day[self.c_class_for_spells][key][self.c_class_level-1]
+                list=self.spells_per_day[self.c_class_for_spells][key][self.capped_level_1-1]
                 self.spells_per_day_list.append(list)
 
         #adding an exception for alchemist (+ other classes that don't receive cantrips)
         elif self.c_class_for_spells == 'alchemist':
-            for i in range(1,mid_caster_level+1):
+            for i in range(0,mid_caster_level+1):
                 key = str(i)                
-                list=self.spells_per_day[self.c_class_for_spells][key][self.c_class_level-1]
+                list=self.spells_per_day[self.c_class_for_spells][key][self.capped_level_1-1]
                 self.spells_per_day_list.append(list)        
         elif self.c_class in base_classes and casting_level_1 == 'low':
-            for i in range(1,low_caster_level+1):
+            for i in range(0,low_caster_level+1):
                 key = str(i)                
-                list=self.spells_per_day[self.c_class_for_spells][key][self.c_class_level-1]
+                list=self.spells_per_day[self.c_class_for_spells][key][self.capped_level_1-1]
                 self.spells_per_day_list.append(list)                
 
 
@@ -1751,6 +1795,7 @@ class Character:
         return self.feat_list
 
 
+# need to scrape the data to make this better (we want pre-reqs)
     def archetype_data(self):
         #looks like we also have dupes
         class_string = str(self.c_class).capitalize()
@@ -1846,14 +1891,48 @@ class Character:
 
 
 
+    def skills_selector(self, skills):
+
+        #need to add skill ranks at each level
+        all_skills = getattr(data,skills)
+
+        #change later to pull actual skill ranks per class
+        scaling = (2+self.int_mod)
+        
+
+        dummy_skill_ranks = scaling*self.c_class_level
+        skill_number = scaling + random.randint(1,8)
+
+        #This gives you a list of all selectable skills
+        selectable_skills = random.sample(all_skills,k=skill_number)
+        skill_ranks = {}
+
+        # We want to randomly assign skill ranks to the selected skills
+        i=0
+        while i < dummy_skill_ranks:
+            skill = random.choice(selectable_skills)
+
+            # Assign a random number of ranks between 1 and the remaining available ranks
+            ranks_to_assign = min(random.randint(1, 3), dummy_skill_ranks - i)
+            skill_ranks[skill] = skill_ranks.get(skill, 0) + ranks_to_assign
+            i += ranks_to_assign
+
+        # Optionally, you can return or print the selected skills and their rank
+
+            if i >= dummy_skill_ranks:
+                break
+
+        print(skill_ranks)    
 
 
-        # armor_dict = self.items.get("armor")
-        # random_armor = random.choice(list(armor_dict.keys()))
-        # armor_price = armor_dict[random_armor]            
 
-        # print("Randomly selected armor:", random_armor)
-        # print("Armor price:", armor_price)        
+
+
+
+
+
+
+    
 
 
 

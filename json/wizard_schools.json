@@ -395,6 +395,7 @@
 "reshape space (su)": "whenever you cast a spell that creates an extradimensional space or demiplane, increase the duration by a number of units (rounds, minutes, hours, etc. ) equal to 1/2 your wizard level (minimum 1). At 20th level, you can make one spell that creates an extradimensional space or demiplane permanent. You can have no more than one such spell made permanent in this way at a time. If you designate another spell as permanent, the previous permanent spell ends. "
 },
 "infernal binder": {
+"associated school": "conjuration",    
 "replacement powers": "the following school powers replace the acid dart and dimensional steps powers of the conjuration school. ",
 "planar knowledge (ex)": "as an infernal binder, you gain a +3 bonus on knowledge (planes) checks. ",
 "assume control (su)": "at 1st level, you can attempt to gain control over a summoned creature by disrupting the bond between it and the caster who summoned it. You must make a caster level check (1d20 + caster level) equal to 10 + the summoning casters level. You can use this ability a number of times per day equal to 3 + your intelligence modifier. ",
