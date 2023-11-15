@@ -1,6 +1,10 @@
 Needs:
 - Started a skill selector function (need to finish)
 - Need to add a function that properly grabs level 20 2 extra discoveries + grand discovery (need to make grand discovery take into account pre-reqs)
+- Add a function to choose if multiclass (or randomly assign it)
+- Create a function that randomly assigns a element to the Lore skill
+- Need to add comment blocks to each function
+- Need favored class options (just add hp or skill ranks for now)
 
 11/13/23
 - Created self.c_capped_level_1 and self.c_capped_level_2 variables to fix the spellcaster bug where being above level 20 -> errors and wouldn't rogue_talent_chooser
@@ -9,3 +13,6 @@ Needs:
 - Similar bug with Alchemist (extra spells has some null values, we need to make them 0 otherwise the pgm doesn't run)
 - wizard_schools (infernal binder) was missing the associated school section
 
+11/14/23
+- Updated the skill function (so it creates a dictionary with all randomly selected skills you have)
+- Started adding comment blocks to the code

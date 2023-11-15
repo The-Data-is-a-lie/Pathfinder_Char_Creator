@@ -1892,37 +1892,50 @@ class Character:
 
 
     def skills_selector(self, skills):
+        '''
+        randomly grabs a subset of skills then assigns skill ranks to them (up to character level for each)
+        to prevent any high stats characters from breaking the function, we max them out at character level for all in game skills
 
-        #need to add skill ranks at each level
+        param (skills list from the data section)
+        return (dictionary) 
+        '''
         all_skills = getattr(data,skills)
+        max_skill_ranks = self.c_class_level
 
         #change later to pull actual skill ranks per class
-        scaling = (2+self.int_mod)
-        
+        #make it based on multiple classes rather than just one
+        scaling = 2+self.int_mod
 
         dummy_skill_ranks = scaling*self.c_class_level
         skill_number = scaling + random.randint(1,8)
-
-        #This gives you a list of all selectable skills
+        skill_number = min(skill_number,len(all_skills))
         selectable_skills = random.sample(all_skills,k=skill_number)
         skill_ranks = {}
 
-        # We want to randomly assign skill ranks to the selected skills
         i=0
         while i < dummy_skill_ranks:
             skill = random.choice(selectable_skills)
-
-            # Assign a random number of ranks between 1 and the remaining available ranks
-            ranks_to_assign = min(random.randint(1, 3), dummy_skill_ranks - i)
+            ranks_to_assign = min(random.randint(1, 3), dummy_skill_ranks - i, max_skill_ranks)
+            ranks_to_assign = min(ranks_to_assign, max_skill_ranks - skill_ranks.get(skill, 0))
             skill_ranks[skill] = skill_ranks.get(skill, 0) + ranks_to_assign
             i += ranks_to_assign
-
-        # Optionally, you can return or print the selected skills and their rank
 
             if i >= dummy_skill_ranks:
                 break
 
-        print(skill_ranks)    
+            if all(skill_ranks.get(skill, 0) >= max_skill_ranks for skill in selectable_skills):
+                print('all skills are maxed')
+                break            
+
+        # print(skill_ranks) 
+        # print(i)  
+        # print(self.int_mod) 
+
+        #confirm total ranks add up to skill ranks
+        total_ranks = sum(skill_ranks.values())
+        print("The total sum of ranks is:", total_ranks)
+
+        return skill_ranks
 
 
 
