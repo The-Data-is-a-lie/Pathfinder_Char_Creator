@@ -704,10 +704,58 @@ class Character:
         return self.spells_known_list
 
 
+    def alignment_spell_limits(self, spell_data, i):
+        '''
+        Creates flags to limit spell choices to only be within the character's alignment for all classes 
+        (not just cleric to make characters more thematic)
+
+        return: query_i 
+        params: spell_data (pandas file), i (number)
+        '''
+        alignment = self.alignment.lower().replace(" ", "") 
+        print(alignment)
+        extraction_list = ['name', self.c_class]#, 'lawful', 'chaotic', 'evil','good']   
+
+        condition_chaotic = "chaotic" in alignment
+        condition_good = "good" in alignment
+        condition_lawful = "lawful" in alignment
+        condition_evil = "evil" in alignment
+
+        if condition_chaotic and condition_good:
+            condition = (spell_data['lawful'] == 0) & (spell_data['evil'] == 0)
+
+        elif condition_chaotic:
+            condition = (spell_data['lawful'] == 0)
+
+        elif condition_good:
+            condition = (spell_data['evil'] == 0)
+
+        elif condition_lawful and condition_evil:
+            condition = (spell_data['chaotic'] == 0) & (spell_data['good'] == 0)
+
+        elif condition_lawful:
+            condition = (spell_data['chaotic'] == 0)
+
+        elif condition_evil:
+            condition = (spell_data['good'] == 0)
+
+        else:
+            condition = None
+
+
+
+        if condition is not None:
+            print(condition)
+            query_i = spell_data.loc[(spell_data[self.c_class] == i) & condition, extraction_list]
+        else:
+            query_i = spell_data.loc[(spell_data[self.c_class] == i) & condition, extraction_list]            
+
+        return query_i               
+
 
     def spells_known_selection(self,base_classes,divine_casters):
         spell_data=pd.read_csv('data/spells.csv', sep='|')
-        extraction_list = ['name', self.c_class]                
+        #extraction_list = ['name', self.c_class]                
         self.spell_list = []
         casting_level_1 = str(self.classes[self.c_class]["casting level"].lower())         
         base_classes=getattr(data,base_classes)
@@ -726,7 +774,9 @@ class Character:
                 print(i)
                 if known_list[i] != 'null':
                     select_spell=known_list[i]             
-                    query_i = spell_data.loc[spell_data[self.c_class] == i, extraction_list]
+
+                    query_i = self.alignment_spell_limits(spell_data, i)
+#                    query_i = spell_data.loc[spell_data[self.c_class] == i, extraction_list]
                     #needed to use this to properly randomize (vs. random.shuffle)
                     query_i = query_i.sample(frac=1.0)
                     spells = query_i[:select_spell]
@@ -745,8 +795,12 @@ class Character:
 
                 if day_list[i] != 'null':
                  
-                    select_spell=day_list[i]             
-                    query_i = spell_data.loc[spell_data[self.c_class] == i, extraction_list]
+                    select_spell=day_list[i]         
+
+                    query_i = self.alignment_spell_limits(spell_data, i)                        
+
+#                    query_i = spell_data.loc[(spell_data[self.c_class] == i) & (spell_data['chaotic']== 0), extraction_list]
+
                     #needed to use this to properly randomize (vs. random.shuffle)
                     query_i = query_i.sample(frac=1.0)
                     spells = query_i[:select_spell]

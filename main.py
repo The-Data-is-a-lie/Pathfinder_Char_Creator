@@ -180,6 +180,9 @@ while userInput.lower() == 'y':
 
 		character.skills_selector('skills')
 
+		print(character.alignment)
+	#	character.alignment_spell_limits()
+
 
 		# character.armor_chooser()
 
