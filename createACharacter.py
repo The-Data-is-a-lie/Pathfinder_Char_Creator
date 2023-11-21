@@ -259,6 +259,9 @@ class Character:
 
         with open(json_config['alchemist_choices']) as f:
             self.alchemist_choices = json.load(f)  
+
+        with open(json_config['class_data']) as f:
+            self.class_data = json.load(f)              
         # with open(json_config['big_boy_item_data']) as f:
         #     self.big_boy_item_data = json.load(f)                    
 
@@ -1953,12 +1956,14 @@ class Character:
         param (skills list from the data section)
         return (dictionary) 
         '''
+        skill_points = self.class_data["skill points at each level"]
         all_skills = getattr(data,skills)
         max_skill_ranks = self.c_class_level
 
         #change later to pull actual skill ranks per class
         #make it based on multiple classes rather than just one
-        scaling = 2+self.int_mod
+
+        scaling = int(skill_points)+self.int_mod
 
         dummy_skill_ranks = scaling*self.c_class_level
         skill_number = scaling + random.randint(1,8)

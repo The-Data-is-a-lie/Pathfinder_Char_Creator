@@ -49,7 +49,8 @@ character_json_config = {
 	'animal_companion': 'json/animal_companion.json',	
 	'animal_choices': 'json/animal_choices.json',
 	'wizard_schools': 'json/wizard_schools.json',	
-	'alchemist_choices': 'json/alchemist_choices.json',		
+	'alchemist_choices': 'json/alchemist_choices.json',
+	'class_data': 'json/class_data.json',			
 }
 
 
