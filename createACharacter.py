@@ -1956,7 +1956,7 @@ class Character:
         param (skills list from the data section)
         return (dictionary) 
         '''
-        skill_points = self.class_data["skill points at each level"]
+        skill_points = self.class_data[self.c_class]["skill points at each level"]
         all_skills = getattr(data,skills)
         max_skill_ranks = self.c_class_level
 
@@ -1964,6 +1964,7 @@ class Character:
         #make it based on multiple classes rather than just one
 
         scaling = int(skill_points)+self.int_mod
+        print(scaling)
 
         dummy_skill_ranks = scaling*self.c_class_level
         skill_number = scaling + random.randint(1,8)
@@ -1991,6 +1992,8 @@ class Character:
         # print(self.int_mod) 
 
         #confirm total ranks add up to skill ranks
+        print(skill_ranks)
+        print(f'This is your int mod {self.int_mod}')
         total_ranks = sum(skill_ranks.values())
         print("The total sum of ranks is:", total_ranks)
 
