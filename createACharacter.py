@@ -1671,7 +1671,7 @@ class Character:
 
         #looks like we might need to redo alchemist choices, so it shows full benefits, not just from the table
         discovery_amount = (floor(self.c_class_level/2))
-        print(f'this is your discovery amount {discovery_amount}')
+        #print(f'this is your discovery amount {discovery_amount}')
         i = 0
         even=2
         odd=1       

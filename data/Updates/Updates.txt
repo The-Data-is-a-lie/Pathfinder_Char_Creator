@@ -4,7 +4,7 @@ Needs (High Prio):
 - Add a function to choose if multiclass (or randomly assign it)
 - Create a function that randomly assigns a element to the Lore skill
 - Need to add comment blocks to each function
-
+- Monkey Goblin Broken
 
 Needs (Low Prio):
 - Need favored class options (just add hp or skill ranks for now)
