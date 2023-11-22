@@ -708,13 +708,13 @@ class Character:
 
 
     def alignment_spell_limits(self, spell_data, i):
-        '''
+        """
         Creates flags to limit spell choices to only be within the character's alignment for all classes 
         (not just cleric to make characters more thematic)
 
         return: query_i 
         params: spell_data (pandas file), i (number)
-        '''
+        """
         alignment = self.alignment.lower().replace(" ", "") 
         print(alignment)
         extraction_list = ['name', self.c_class]#, 'lawful', 'chaotic', 'evil','good']   
@@ -1625,6 +1625,13 @@ class Character:
  
 
     def rage_power_chooser(self):
+        """ If class = Barbarian or Barbarian (Unchained)
+        First creates a list without prerequisites
+        Then every even level it will add rage powers + other pre-reqs into a big set which it checks to see
+        which rage powers are eligible to be taken
+
+        outputs: chosen rage power list + rage power descriptions"""
+
         self.rage_power_list=[]  
         rage_powers_without_prerequisites = self.get_talents_without_prerequisites()     
 
@@ -1667,7 +1674,46 @@ class Character:
             even += 2
             odd += 2
 
+
+    def grand_discovery_chooser(self):
+        """
+        At level 20 Alchemists get a grand discovery + 2 extra basic discoveries
+        This function assigns a random grand discovery, unless there are the 2 basic discoveries needed for greater change alignment
+        if it sees these discoveries it will auto assign greater change alignment
+
+        outputs: chosen discovery list (appends to it)
+        """
+        if self.c_class == 'alchemist' and self.c_class_level >= 20:    
+            grand = self.alchemist_choices['grand']
+            grand_discoveries = list(grand.keys())  
+
+            alignment_set = {"change alignment", "infusion"}
+
+            if alignment_set.issubset(self.discovery_list_chosen):
+                grand_discovery_chosen = "greater change alignment"
+            else:
+                grand_discoveries.remove("greater change alignment")
+                grand_discovery_chosen = random.choice(grand_discoveries)
+                       
+            self.discovery_list_chosen.add(grand_discovery_chosen)
+            print(f'This is your chosen grand discovery {grand_discovery_chosen}')
+            print(f'This is the description: {grand[grand_discovery_chosen]["benefits"]}')
+            return self.discovery_list_chosen
+
+
+        
+
+
+
     def discovery_chooser(self):
+        """
+        If class = Alchemist
+        First creates a list without prerequisites
+        Then every even level it will add discoveries + other pre-reqs into a big set which it checks to see
+        which discoveries are eligible to be taken
+
+        outputs: chosen discovery list + discovery descriptions
+        """
         #probably want to add a function which auto adds class + str(even) and str(odd) to the 
         #prereqs list for all classes
 
@@ -1682,12 +1728,13 @@ class Character:
         alchemist_discoveries_without_prerequisites = self.get_talents_without_prerequisites()
         discovery_list = alchemist_discoveries_without_prerequisites
       
-        basic = self.alchemist_choices['basic']
-        grand = self.alchemist_choices['grand']
-
-        grand_discoveries = list(grand.keys())  
+        basic = self.alchemist_choices['basic'] 
 
         if self.c_class == 'alchemist':
+
+            # at level 20 alchemists get an extra 2 discoveries
+            if self.c_class_level >= 20:
+                discovery_amount += 2
 
             while i < discovery_amount and discovery_amount != 0 :      
 
@@ -1708,31 +1755,34 @@ class Character:
                 discovery_list.extend(matching_keys)
 
                 print(f'This is the chosen discovery {discovery_chosen}')
-                print(f'This is the chosen discovery description {discovery_description}')
+                # print(f'This is the chosen discovery description {discovery_description}')
                 print(f'This is your total discover list{discovery_list_chosen}')
-                print(f'chooseable list {discovery_list}')
+                # print(f'chooseable list {discovery_list}')
 
                 print(f'This is your I value {i}')
                 i = len(discovery_list_chosen)
                 even += 2
-                odd += 2      
-
-                #add a function so level 20, you get 2 extra + 1 grand discovery          
-
-
-
-
-        print(self.rage_power_list)
-        print(self.chooseable)
-        return self.rage_power_list 
+                odd += 2
+                
+                self.discovery_list_chosen = discovery_list_chosen
+         
+            return self.discovery_list_chosen
         
 
     def druid_domain_chance(self):
+        """
+        Some druids choose a domain, some choose an animal companion. This decides which they do
+        """
         #chance to get a domain vs an animal companion
         self.domain_chance = random.randint(1,100)
         return self.domain_chance
 
     def animal_chooser(self):
+        """
+        if class = druid
+        chooses between a plant, vermin, or normal animal companion for a druid
+        prints out animal companion info after decidibg which companion to pick
+        """
         if self.c_class == 'druid' and self.domain_chance <= 90:
             random_animal = random.randint(1,100)            
             # give all druids carry companion
@@ -1763,6 +1813,9 @@ class Character:
 
 
     def animal_feats(self):
+        """
+        randomly decides animal companion feats
+        """
         #may want to expand animal companion feat selection later
         if self.c_class == 'druid':
             i = 0
@@ -1949,22 +2002,27 @@ class Character:
 
 
     def skills_selector(self, skills):
-        '''
+        """
         randomly grabs a subset of skills then assigns skill ranks to them (up to character level for each)
         to prevent any high stats characters from breaking the function, we max them out at character level for all in game skills
 
         param (skills list from the data section)
-        return (dictionary) 
-        '''
-        skill_points = self.class_data[self.c_class]["skill points at each level"]
+        return
+        - skill ranks (Dictionary)
+        """
         all_skills = getattr(data,skills)
         max_skill_ranks = self.c_class_level
+        i=0
+        
+        #Quick check to make sure it doesn't break
+        if self.c_class in self.class_data.keys():
 
-        #change later to pull actual skill ranks per class
-        #make it based on multiple classes rather than just one
+            skill_points = self.class_data[self.c_class]["skill points at each level"]
+            scaling = int(skill_points)+self.int_mod
+            print(scaling)
 
-        scaling = int(skill_points)+self.int_mod
-        print(scaling)
+        else:
+            scaling= 2 + self.int_mod
 
         dummy_skill_ranks = scaling*self.c_class_level
         skill_number = scaling + random.randint(1,8)
@@ -1972,7 +2030,7 @@ class Character:
         selectable_skills = random.sample(all_skills,k=skill_number)
         skill_ranks = {}
 
-        i=0
+
         while i < dummy_skill_ranks:
             skill = random.choice(selectable_skills)
             ranks_to_assign = min(random.randint(1, 3), dummy_skill_ranks - i, max_skill_ranks)
@@ -2000,7 +2058,21 @@ class Character:
         return skill_ranks
 
 
+    def profession_chooser(self,professions):
+        """
+        *** Will need to enhance the list, maybe redo it from scratch ***
+        randomly selects a profession from the list in the data tab
+        """
+        n = random.randint(1,3)
+        profession_data = getattr(data,professions)
+        self.profession_chosen = random.sample(profession_data,k=n)
 
+        return self.profession_chosen
+
+
+    #def lore_attr(self):
+    # def favored_class_bonus(self):
+            
 
 
 

@@ -1,10 +1,10 @@
 Needs (High Prio):
-- Started a skill selector function (need to finish)
-- Need to add a function that properly grabs level 20 2 extra discoveries + grand discovery (need to make grand discovery take into account pre-reqs)
-- Add a function to choose if multiclass (or randomly assign it)
 - Create a function that randomly assigns a element to the Lore skill
 - Need to add comment blocks to each function
 - Monkey Goblin Broken
+- Alchemist formulae sometimes Broken
+- Redo Profession Chooser (the data section, we may want to just redo it from scratch)
+- Redo Weapon selector (so it depends on what weapons a class can actually use)
 
 Needs (Low Prio):
 - Need favored class options (just add hp or skill ranks for now)
@@ -25,9 +25,21 @@ Needs (Low Prio):
 - Exploring beautiful_soup
 - Added a function to limit all classes to only select spells within their alignment (alignment_spell_limits)
 
+11/20/23
+- Worked on Web Scraper
+- Finished Skills selector function
 
-
-
+11/21/23
+- Updated Comments on code
+- Added a function that grabs grand discoveries
+- Added a profession chooser function
+- Separated chooseClass into these functions to be easier to maintain
+        region_chooser
+		race_chooser
+		weapon_chooser
+		name_chooser
+		chooseClass
+		dip_function
 
 
 Completed:

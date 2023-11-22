@@ -34,7 +34,7 @@
     "benefits": "blind enemies with your bombs"
     },
     "boneshard bomb": {
-    "prerequisites": "alchemical zombie discovery",
+    "prerequisites": "alchemical zombie",
     "benefits": "bomb deals piercing damage instead of fire, and creatures that take a direct hit from a boneshard bomb must succeed at a fortitude save or take 1d4 bleed in addition to normal damage. Creatures killed by a boneshard bomb or the bleed effect immediately reanimate as an undead creature with the skeleton template and count as undead created by animate dead for the purposes of determining how many undead the alchemist can control. "
     },
     "bottled ooze": {
@@ -54,7 +54,7 @@
     "benefits": "your skin changes colors, granting you a bonus on stealth checks"
     },
     "change alignment": {
-    "prerequisites": "alchemist 12, infusion discovery",
+    "prerequisites": "alchemist 12, infusion",
     "benefits": "once/day brew an infusion which changes drinkers alignment to good for 10 min. /alchemist level (unwilling drinkers gain save to resist. )"
     },
     "cognatogen": {
@@ -62,7 +62,7 @@
     "benefits": "increase a mental score and decrease a physical score"
     },
     "collective memory": {
-    "prerequisites": "cognatogen discovery",
+    "prerequisites": "cognatogen",
     "benefits": "while under the effects of a cognatogen, the alchemist adds half his class level on all knowledge skill checks and may attempt all knowledge skill checks untrained. This bonus does not stack with the second intelligence bonus granted by the mindchemist archetypes perfect recall class feature. "
     },
     "combine extracts": {
@@ -154,7 +154,7 @@
     "benefits": "the alchemist creates a masterpiece of material and arcane engineeringa small figurine whose head or tail can be broken off to create a breath weapon, as the breath weapon bomb discovery. "
     },
     "energy mutagen": {
-    "prerequisites": "cognatogen discovery, mutagen discovery",
+    "prerequisites": "cognatogen, mutagen",
     "benefits": "the alchemist adds a blast of his chosen energy type to his bombs or mutagen. "
     },
     "energy touch": {
@@ -278,7 +278,7 @@
     "benefits": "you learn how to make an inspiring cognatogen, a mutagen-like mixture that grants him inspiration (as the investigators class feature) at the expense of strength and constitution. "
     },
     "intuitive understanding": {
-    "prerequisites": "alchemist 4, cognatogen discovery",
+    "prerequisites": "alchemist 4, cognatogen",
     "benefits": "if you drink an extract of the divination school while under the effects of a cognatogen, your effective cl temporarily increases by +2. In addition, while under the effects of a cognatogen, you may use augury once as a spell-like ability ( caster level equal to his alchemist level). At 10th level, you can use divination instead. "
     },
     "lingering plague": {
@@ -503,7 +503,7 @@
     },
     
     "alter simulacrum": {
-    "prerequisites": "alchemist 10, alchemical simulacrum discovery",
+    "prerequisites": "alchemist 10, alchemical simulacrum",
     "benefits": "alter the physical appearance of your alchemical simulacra. "
     },
     "blending body": {
@@ -523,7 +523,7 @@
     "benefits": "gain low-light vision and darkvision. "
     },
     "perfect sight": {
-    "prerequisites": "alchemist 12, keen sight discovery",
+    "prerequisites": "alchemist 12, keen sight",
     "benefits": "gain immunity to blindness. "
     },
     "shadowmeld compound": {
@@ -535,7 +535,7 @@
     "benefits": "bomb incites fear in those struck. "
     },
     "umbral bomb": {
-    "prerequisites": "alchemist 6, darkness bomb discovery",
+    "prerequisites": "alchemist 6, darkness bomb",
     "benefits": "bomb creates supernatural darkness, exhausts target and fatigues those in splash radius. "
     },
     "compounding formulary": {
@@ -575,31 +575,31 @@
     
     "grand" : {
     "awakened intellect": {
-    "prerequisites": "grand discovery",
+    "prerequisites": "",
     "benefits": "gain 2 points of intelligence"
     },
     "greater change alignment": {
-    "prerequisites": "grand discovery, alchemist 20, change alignment discovery, infusion discovery",
-    "benefits": "change alignment infusion effects are permanent (but can be removed by wish or miracle. )"
+    "prerequisites": "change alignment, infusion",
+    "benefits": "change alignment infusion effects are permanent (but can be removed by wish or miracle.)"
     },
     "eternal youth": {
-    "prerequisites": "grand discovery",
+    "prerequisites": "",
     "benefits": "stop aging"
     },
     "fast healing": {
-    "prerequisites": "grand discovery",
+    "prerequisites": "",
     "benefits": "gain fast healing 5"
     },
     "philosophers stone": {
-    "prerequisites": "grand discovery",
+    "prerequisites": "",
     "benefits": "learn how to make a philosophers stone"
     },
     "poison touch": {
-    "prerequisites": "grand discovery",
+    "prerequisites": "",
     "benefits": "gain a poison touch attack"
     },
     "true mutagen": {
-    "prerequisites": "grand discovery, grand mutagen",
+    "prerequisites": "grand mutagen",
     "benefits": "gain a more powerful mutagen"
     }
     

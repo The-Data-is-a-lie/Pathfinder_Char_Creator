@@ -2,7 +2,7 @@
 from createACharacter import CreateNewCharacter
 from utils.markdown import style
 from utils.data import version
-from utils.util import  chooseClass, format_text, isBool#, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
+from utils.util import  chooseClass, region_chooser, race_chooser, weapon_chooser, name_chooser, dip_function, format_text, isBool#, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
 import random
 #Making a Global Character Dictionary so we can reference it and create a HTML/CSS sheet based off of that
 
@@ -67,8 +67,12 @@ while userInput.lower() == 'y':
 		character = CreateNewCharacter(
 			character_json_config)
 		
-
+		region_chooser(character)
+		race_chooser(character)
+		weapon_chooser(character)
+		name_chooser(character)
 		chooseClass(character)
+		dip_function(character, 'base_classes')
 
 		# Spells known fucntion
 		# create a json dicitonary with all different spells known tables 
@@ -162,10 +166,10 @@ while userInput.lower() == 'y':
 		character.animal_chooser()
 		character.animal_feats()	
 		character.wizard_school_chooser()
-		character.wizard_opposing_school()				
+		character.wizard_opposing_school()	
+		character.discovery_chooser()
+		character.grand_discovery_chooser()					
 		print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
-
-	
 
 		#class specific feats choosers
 		character.ranger_feats_chooser()
@@ -173,16 +177,12 @@ while userInput.lower() == 'y':
 		character.sorcerer_feats_chooser()
 
 
-		character.discovery_chooser()
-
-
-
 		character.archetype_data()
 
+		# background info
 		character.skills_selector('skills')
+		print(f'This is your chosen professions {character.profession_chooser("professions")}')
 
-		print(character.alignment)
-	#	character.alignment_spell_limits()
 
 
 		# character.armor_chooser()

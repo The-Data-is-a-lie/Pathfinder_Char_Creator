@@ -91,37 +91,22 @@ def Roll_Level():
     #         feats = (4 - 2 + floor(level/2) + floor(level/5))
     # return feats
 
-    
-def chooseClass(character):
+def region_chooser(character):
     """
-    Gives the Character a random Class 
-    - Returns
-    - Class (String)
+    Characters either choose a region or randomly select one
+    Return
+    - region
     """
-
-    
-    # global userInput_race, userInput_region, region, weapons, weaponz, f_name, l_name, full_name, human_flag
-
-    # Prompt the user to select a region
     print(f"Please make sure below matches this list: {character.first_names_regions.keys()}")
-
     userInput_region = input('Select region [input the number for the region you want] from above list: (0 = Random, 1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, 5=Spire, 6=Feyador, 7=Esterdragon, 8=Grundykin Damplands, 9=Dust Cairn, 10=Kaeru no Tochi ...)').lower()
     character.userInput_region = userInput_region
-    print(character.races.keys())
-
-    userInput_race = input(f'Select race from the above list: ').capitalize()
-    print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race{userInput_race}')
-    character.userInput_race = userInput_race
-    print(userInput_race)
+    
 
     if userInput_region.isdigit() and int(userInput_region) in range(1, 30):
-        # make sure max range = the number of regions we have
         region_index = int(userInput_region) - 1
-        # if you want to add regions, make sure to add them in the data section as well
         region = character.regions[region_index]        
         print('You have selected this region: ' + region)
     elif int(userInput_region) == 0:
-        #make sure this is the full number of regions in the util.data regions area
         region_index = random.randint(0,9)
         region = character.regions[region_index]
         print('You have randomly selected this region: ' + region)
@@ -130,6 +115,62 @@ def chooseClass(character):
         region = ''
     character.region = region
 
+def race_chooser(character):
+    """
+    Characters either choose a race, or randomly select one
+    Return
+    - userInput_race
+    """
+    races = list(character.races.keys())
+    print(races)
+    userInput_race = input(f'Select race from the above list: (or 0 if random)').capitalize()
+    if userInput_race in races:
+        print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race: {userInput_race}')
+        character.userInput_race = userInput_race
+    else:
+        userInput_race = random.choice(races)
+        character.userInput_race = userInput_race
+        print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race: {userInput_race}')
+
+def name_chooser(character):
+    """
+    Randomly generates names by region
+    Return
+    - f_name, l_name, full_name
+    """
+    f_name_list = list(character.first_names_regions)
+    l_name_list = list(character.last_names_regions)
+
+    if character.region in f_name_list:
+        f_names = character.first_names_regions[character.region]
+        l_names = character.last_names_regions[character.region]        
+        character.f_name = random.choice(f_names)
+        character.l_name = random.choice(l_names) 
+        character.full_name = character.f_name + character.l_name
+        print(f"Name for {character.region}: {character.f_name} {character.l_name}")
+
+    else:
+        # wehave this section in case of an emergency and region isn't selected. But this should never occur
+        region_list = (list(f_name_list.keys()))
+        region = random.choice(region_list)
+        f_names = random.choice(f_name_list(region))
+        l_names = random.choice(l_name_list(region))
+        character.f_name = random.choice(f_names)
+        character.l_name = random.choice(l_names) 
+        character.full_name = character.f_name + character.l_name
+        print(f"Name for {character.region}: {character.f_name} {character.l_name}")        
+
+
+
+
+def weapon_chooser(character):
+    """
+    *** Probably want to change to generate based off of what weapons a class could actually use ***
+    Characters are given random weapons selected by region and from all weapon groups
+    Return
+    - weaponz (by region random)
+    - weapons (random)
+    """
     # random.sample to select 2 random weapons
     weapons = random.sample(weapon_groups, 2)
     character.weapons = weapons
@@ -137,75 +178,66 @@ def chooseClass(character):
 
     # loop through the random abilities and print out each element
     for reg in character.regions: #regions != region, they are very different, regions is defined in the data tab, region is the user input assigned as a number above
-        if reg == region:
+        if reg == character.region:
             weaponz = random.choice(weapon_groups_region[reg])
             character.weaponz = weaponz
             print(f"Weapon for {reg}: {weaponz}")
-            
 
-    if region in character.first_names_regions:
-        f_names = character.first_names_regions[region]
-        character.f_name = random.choice(f_names)
-        l_names = character.last_names_regions[region]
-        character.l_name = random.choice(l_names) 
-        character.full_name = character.f_name + character.l_name
-        print(f"Name for {region}: {character.f_name} {character.l_name}")    
-
-
+    
+def chooseClass(character):
+    """
+    Select a class or 
+    Gives the Character a random class based off of BAB selection
+    Returns
+    - c_class (String)
+    """
     userInput_class = input(f'please type a class name to select a class, or type 0 for a random class: ').lower()
     print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_class: {userInput_class}')
     character.c_class = userInput_class
     character.c_class_2 = ''
-    print(character.c_class)
 
     if userInput_class not in character.classes.keys():
-        # Prompt the user to input BAB
         BAB = input('Enter BAB (H/M/L): ').capitalize()
         character.BAB = BAB
         userInput_class = None
 
-        # Iterate through the classes and select the ones that meet the BAB requirement
         classes = []
         for class_name in character.classes.keys():
-            if region in character.classes[class_name]["regions"] and userInput_race in character.classes[class_name]["race"]:
-                # Check BAB input + region input
                 if BAB == "H" and character.classes[class_name]["BAB"] == "high":
                     classes.append(class_name)
                 elif BAB == "M" and character.classes[class_name]["BAB"] == "mid":
                     classes.append(class_name)
                 elif BAB == "L" and character.classes[class_name]["BAB"] == "low":
                     classes.append(class_name)
-
-        #If there isn't a racial option in the the BAB list you want, then it will error out
-        #currently all races can be all classes
-
-
+    
+        classes = list(character.classes.keys())
+        character.c_class = classes[randrange(0,len(classes))]
 
 
 
-        # Select a random class from the list of eligible classes
-        #adding a 10% chance for the character to take a dip or multi-class
+def dip_function(character, base_classes):
+    """
+    Determines if you want to have multiple classes for a character, or only one
+    Returns 
+    -c_class_2 (string)
+    """
+    available_classes = getattr(data,base_classes)
+    classes = list(character.classes.keys())
+    userInput_multiclass = input('Do you want to multiclass Y/N')
+    c_class_2 = ''
+    if userInput_multiclass.lower() == 'y' or userInput_multiclass == 'yes':
         chance_dip = random.randint(0,100)
-        coin_flip = random.randint(0,100)
-        if  chance_dip >= 90 and coin_flip >= 50:
-            c_class=classes[randrange(0,len(classes))]
-            c_class_2 = random.choice(list(character.classes.keys()))
-            print(f"Primary class: {c_class}")
-            print(f"1 level Dip {c_class_2}")
-        elif chance_dip >= 90 and coin_flip < 50:
-            c_class=classes[randrange(0,len(classes))]
-            c_class_2 = random.choice(list(character.classes.keys()))
-            character.dip = True
-            print(f"Primary class: {c_class}")
-            print(f"Secondary Multi-class {c_class_2}")
+        if chance_dip >= 50:
+            c_class_2 = random.choice(classes)
         else:
-            c_class = classes[randrange(0,len(classes))]
-            c_class_2 = ''
-            print(f"This is your only class: {c_class}")
-            # return c_class
+            c_class_2 = random.choice(classes)
+            character.dip = True
+
+    else:
+        print(f"This is your only class: {character.c_class}")
             
-        character.c_class = c_class
-        character.c_class_2 = c_class_2
+    character.c_class_2 = c_class_2
+
 
 def isBool(strBool: bool): return True if strBool == 'yes' or strBool == 'y' else False
 
