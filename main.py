@@ -74,19 +74,6 @@ while userInput.lower() == 'y':
 		chooseClass(character)
 		dip_function(character, 'base_classes')
 
-		# Spells known fucntion
-		# create a json dicitonary with all different spells known tables 
-		# (wizard, cleric, ...) 
-		# make it look like this
-		# "wizard": { '1st': [1,1,1,2,2,2,3,3,3,4,4,4,4,4,4,]} 
-		# ['2nd': None,None,1,1,1,2,2,2,3,3,3,3] 
-		# or '1', '2'
-		# ...
-		# Create a function to grab all spells underneath highest level spell known
-		# and grab all elements from your highest class level
-
-
-
 		#add an optional flaws rule function	
 		print(f"This is your randomly selected alignment: {character.randomize_alignment('alignments')}")
 		print(f"This is your randomly selected deity: {character.randomize_deity()}")
