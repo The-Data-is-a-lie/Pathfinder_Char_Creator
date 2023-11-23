@@ -262,8 +262,6 @@ class Character:
 
         with open(json_config['class_data']) as f:
             self.class_data = json.load(f)              
-        # with open(json_config['big_boy_item_data']) as f:
-        #     self.big_boy_item_data = json.load(f)                    
 
 
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
@@ -834,6 +832,7 @@ class Character:
         if self.c_class in base_classes and casting_level_1 == 'high':
             for i in range(0,high_caster_level+1):
                 key = str(i)
+                print(self.c_class_for_spells)
                 list=self.spells_per_day[self.c_class_for_spells][key][self.capped_level_1-1]
                 self.spells_per_day_list.append(list)
         elif self.c_class in base_classes and casting_level_1 == 'mid' and self.c_class_for_spells != 'alchemist':
@@ -1253,36 +1252,6 @@ class Character:
 
             print(f"THIS IS YOUR OPPOSING SCHOOL SILLY BILLY {opposing_school}")
 
-                
-
-
-
-            # school_list = ['abjuration', 'banishment', 'counterspell', 'conjuration', 'creation', 'extradimension', 'infernal binder', 'teleportation',
-            #     'divination', 'prophecy', 'foresight', 'scryer', 'enchantment', 'controller', 'manipulator', 'evocation', 'admixture',
-            #     'generation', 'illusion', 'deception', 'mage of the veil', 'phantasm', 'shadow', 'necromancy', 'life', 'undead',
-            #     'sin magic', 'transmutation', 'enhancement', 'shapechange', 'universalist', 'arcane crafter',
-            #     'aether', 'air', 'ice', 'smoke', 'earth', 'magma', 'mud', 'fire', 'magma', 'smoke', 'water', 'ice', 'mud', 'metal', 'void', 'wood']
-
-            #making school_list lower case
-            # school_list = [element.lower() for element in school_list]
-
-            # opposing_school_list = ['abjuration','conjuration','divination','enchantment', 'evocation', 'illusion','necromancy', 'transmutation', 'universalist', 'air','earth', 'fire', 'water',  'metal', 'void', 'wood']
-            # #Wizards tend to select a chosen school
-            # self.chosen_school = random.sample(school_list,k=1)
-
-            # #wizards that have one chosen school have 2 prohibited schools
-            # self.prohibited_schools = random.sample(opposing_school_list,k=2)        
-            # while self.chosen_school in self.prohibited_schools:
-            #     self.prohibited_schools.remove(self.chosen_school)
-
-
-            # if self.chosen_school == 'universalist':
-            #     self.prohibited_schools == None
-
-
-            # return self.chosen_school, self.prohibited_schools
-
-
     def wizard_school_chooser(self):
         if self.c_class == 'wizard' or self.c_class_2 == 'wizard':        
             #some schools have a very different format, we may want to change that
@@ -1537,6 +1506,9 @@ class Character:
     
 
     def mashing_keys(self):
+        """
+        
+        """
         if (self.c_class == 'rogue' or self.c_class == 'unchained_rogue') and self.c_class_level >= 10:
             talent_groups = [self.rogue_talents["basic"]]    
         elif (self.c_class == 'rogue' or self.c_class == 'unchained_rogue') and self.c_class_level < 10:
@@ -1577,6 +1549,13 @@ class Character:
 # for 
 
     def rogue_talent_chooser(self):
+        """ If class = Rogue or Rogue (Unchained)
+        First creates a list without prerequisites
+        Then every even level it will add rogue talents + other pre-reqs into a big set which it checks to see
+        which rogue talents are eligible to be taken
+
+        Return
+        - chosen rogue talents list + rogue talents descriptions"""
         self.rogue_talent_list=[]    
         talents_without_prerequisites = self.get_talents_without_prerequisites()     
 
@@ -1630,7 +1609,8 @@ class Character:
         Then every even level it will add rage powers + other pre-reqs into a big set which it checks to see
         which rage powers are eligible to be taken
 
-        outputs: chosen rage power list + rage power descriptions"""
+        Return
+        - chosen rage power list + rage power descriptions"""
 
         self.rage_power_list=[]  
         rage_powers_without_prerequisites = self.get_talents_without_prerequisites()     
@@ -1835,6 +1815,11 @@ class Character:
 
 
     def sorcerer_feats_chooser(self):
+        """
+        If class = Sorcerer randomly chooses feats from each bloodline list
+        Return
+        - feat_list
+        """
         #probably want to reformat the data to have all bloodline powers in one area (like we have it for the newest additions)
         feat_amount = [7,13,19,25,31,37,43,49]
         feat_list = set ()
@@ -1854,6 +1839,11 @@ class Character:
 
 
     def sorcerer_bloodline_chooser(self):
+        """
+        If class = Sorcerer randomly chooses a bloodline
+        Return
+        - chosen_bloodline
+        """
         if self.c_class == 'sorcerer' or self.c_class_2 == 'sorcerer':   
             self.chosen_bloodline =  random.choice(list(self.bloodlines.keys()))
             print(f'This is your selected bloodline {self.chosen_bloodline} + its info: \n{self.bloodlines[self.chosen_bloodline]}')
@@ -1907,6 +1897,11 @@ class Character:
 
 # need to scrape the data to make this better (we want pre-reqs)
     def archetype_data(self):
+        """
+        Randomly selects an archetype + gives its data
+        Return
+        - query_ii 
+        """
         #looks like we also have dupes
         class_string = str(self.c_class).capitalize()
         extraction_list = ['Archetype',  'Level',
@@ -1934,6 +1929,11 @@ class Character:
 
 
     def convert_price(self,price):
+        """
+        Converts string prices to integer
+        Return
+        - price
+        """
         price = int(price.replace(',', ''))
         if price<11:
             price = (price**2) * 1000

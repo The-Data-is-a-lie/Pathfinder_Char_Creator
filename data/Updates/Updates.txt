@@ -41,6 +41,9 @@ Needs (Low Prio):
 		chooseClass
 		dip_function
 
+11/22/23:
+- Worked on Web Scraper
+
 
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment
