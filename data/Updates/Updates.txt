@@ -46,6 +46,7 @@ Needs (Low Prio):
 
 11/23/23:
 - Successfully Webscraped all Archetype data into a JSON file (from Archives Of Nethys)
+- Changed archetype program to use my json files (that discuss replacements) instead of old data
 
 
 Completed:
