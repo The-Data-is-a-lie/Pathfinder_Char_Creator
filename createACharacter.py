@@ -263,6 +263,9 @@ class Character:
         with open(json_config['class_data']) as f:
             self.class_data = json.load(f)              
 
+        with open(json_config['archetypes_json']) as f:
+            self.archetypes_json = json.load(f)              
+
 
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
     def update_level(self, level, c_class_level, c_class_2_level):
@@ -1896,35 +1899,52 @@ class Character:
 
 
 # need to scrape the data to make this better (we want pre-reqs)
+    # def archetype_data(self):
+    #     """
+    #     Randomly selects an archetype + gives its data
+    #     Return
+    #     - query_ii 
+    #     """
+    #     #looks like we also have dupes
+    #     class_string = str(self.c_class).capitalize()
+    #     extraction_list = ['Archetype',  'Level',
+    #    'Class Ability', 'Description']
+    #     #archetype data works + reads csv correctly
+    #     archetype_data = pd.read_csv(f'data/archetype_csv/{class_string}.csv', sep=',')
+
+    #     #list of columns
+    #     print(archetype_data.columns)
+    #     query_i = archetype_data['Archetype']
+    #     #needed to use this to properly randomize (vs. random.shuffle)
+    #     query_i = query_i.sample(frac=1.0)
+    #     selected_archetype = query_i[:1]
+    #     index = selected_archetype.index[0]
+    #     selected_archetype = selected_archetype[index]
+    #     print(type(selected_archetype))
+    #     print(selected_archetype)
+
+
+    #     query_ii = archetype_data.loc[archetype_data["Archetype"] == selected_archetype, extraction_list]
+    #     print(query_ii)
+
+
     def archetype_data(self):
         """
-        Randomly selects an archetype + gives its data
+        Randomly selects an archetype + prints the description for the class
         Return
-        - query_ii 
+        - String (archetypes_choice)
+        - dictionary (archetypes_description)
         """
-        #looks like we also have dupes
-        class_string = str(self.c_class).capitalize()
-        extraction_list = ['Archetype',  'Level',
-       'Class Ability', 'Description']
-        #archetype data works + reads csv correctly
-        archetype_data = pd.read_csv(f'data/archetype_csv/{class_string}.csv', sep=',')
-
-        #list of columns
-        print(archetype_data.columns)
-        query_i = archetype_data['Archetype']
-        #needed to use this to properly randomize (vs. random.shuffle)
-        query_i = query_i.sample(frac=1.0)
-        selected_archetype = query_i[:1]
-        index = selected_archetype.index[0]
-        selected_archetype = selected_archetype[index]
-        print(type(selected_archetype))
-        print(selected_archetype)
+        c_class = self.c_class.capitalize()
+        json = self.archetypes_json[c_class]
+        archetypes_list = list(json.keys())
+        archetypes_choice = random.choice(archetypes_list)
+        archetypes_description = json[archetypes_choice]
 
 
-        query_ii = archetype_data.loc[archetype_data["Archetype"] == selected_archetype, extraction_list]
-        print(query_ii)
-
-
+        print(archetypes_choice)
+        print(archetypes_description)
+        
 
 
 

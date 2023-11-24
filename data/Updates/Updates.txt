@@ -44,6 +44,9 @@ Needs (Low Prio):
 11/22/23:
 - Worked on Web Scraper
 
+11/23/23:
+- Successfully Webscraped all Archetype data into a JSON file (from Archives Of Nethys)
+
 
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment
