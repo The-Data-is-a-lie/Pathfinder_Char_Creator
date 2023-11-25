@@ -1,37 +1,38 @@
-{"mercy":{
-    "3": [
-      "deceived: The target can immediately attempt a new saving throw to disbelieve any ongoing illusions that it failed to disbelieve within the last minute.",
-      "fatigued: The target is no longer fatigued.",
-      "riled: The paladins lay on hands also acts as calm emotions, but only for the purpose of suppressing morale bonuses (such as from the rage spell) and emotion effects that arent fear effects. Use the paladins level as the caster level.",
-      "shaken: The target is no longer shaken.",
-      "sickened: The target is no longer sickened."
-    ],
-    "6": [
-      "dazed: The target is no longer dazed.",
-      "diseased: The paladins lay on hands ability also acts as remove disease, using the paladins level as the caster level.",
-      "enfeebled: The paladin dispels any magical effects that are reducing one of the targets ability scores (paladins choice).",
-      "haunted: The paladins lay on hands also acts as protection from evil, but only for the purpose of allowing a new saving throw against enchantment (charm) and enchantment (compulsion) effects, making the target immune to any attempts to possess or exercise mental control over the target, or preventing a life force from controlling the target.",
-      "staggered: The target is no longer staggered, unless the target is at exactly 0 hit points.",
-      "targeted: The paladins lay on hands also acts as sanctuary."
-    ],
-    "9": [
-      "confused: The target is no longer confused.",
-      "cursed: The paladins lay on hands ability also acts as remove curse, using the paladins level as the caster level.",
-      "exhausted: The target is no longer exhausted. The paladin must have the fatigue mercy before selecting this mercy.",
-      "frightened: The target is no longer frightened. The paladin must have the shaken mercy before selecting this mercy.",
-      "injured: The target gains fast healing 3 for a number of rounds equal to 1/2 the paladins level.",
-      "nauseated: The target is no longer nauseated. The paladin must have the sickened mercy before selecting this mercy.",
-      "poisoned: The paladins lay on hands ability also acts as neutralize poison, using the paladins level as the caster level.",
-      "restorative: The target heals 1d4 points of ability damage from a single ability score of the paladins choosing. The paladin must have the enfeebled mercy before selecting this mercy."
-    ],
-    "12": [
-      "amputated: The paladins lay on hands also acts as regenerate, but only for the purposes of regrowing severed body members, broken bones, and ruined organs. The paladin must have the injured mercy before she can select this mercy.",
-      "blinded: The target is no longer blinded.",
-      "deafened: The target is no longer deafened.",
-      "ensorcelled: The paladins lay on hands also acts as dispel magic, using the paladins level as her caster level (maximum 20).",
-      "paralyzed: The target is no longer paralyzed.",
-      "petrified: The paladins lay on hands ability also acts as stone to flesh, but only for the purpose of removing the petrified condition from a creature.",
-      "stunned: The target is no longer stunned."
-    ]
+{
+  "mercy": {
+    "3": {
+      "deceived": "The target can immediately attempt a new saving throw to disbelieve any ongoing illusions that it failed to disbelieve within the last minute.",
+      "fatigued": "The target is no longer fatigued.",
+      "riled": "The paladin's lay on hands also acts as calm emotions, but only for the purpose of suppressing morale bonuses (such as from the rage spell) and emotion effects that aren't fear effects. Use the paladin's level as the caster level.",
+      "shaken": "The target is no longer shaken.",
+      "sickened": "The target is no longer sickened."
+    },
+    "6": {
+      "dazed": "The target is no longer dazed.",
+      "diseased": "The paladin's lay on hands ability also acts as remove disease, using the paladin's level as the caster level.",
+      "enfeebled": "The paladin dispels any magical effects that are reducing one of the target's ability scores (paladin's choice).",
+      "haunted": "The paladin's lay on hands also acts as protection from evil, but only for the purpose of allowing a new saving throw against enchantment (charm) and enchantment (compulsion) effects, making the target immune to any attempts to possess or exercise mental control over the target, or preventing a life force from controlling the target.",
+      "staggered": "The target is no longer staggered, unless the target is at exactly 0 hit points.",
+      "targeted": "The paladin's lay on hands also acts as sanctuary."
+    },
+    "9": {
+      "confused": "The target is no longer confused.",
+      "cursed": "The paladin's lay on hands ability also acts as remove curse, using the paladin's level as the caster level.",
+      "exhausted": "The target is no longer exhausted. The paladin must have the fatigue mercy before selecting this mercy.",
+      "frightened": "The target is no longer frightened. The paladin must have the shaken mercy before selecting this mercy.",
+      "injured": "The target gains fast healing 3 for a number of rounds equal to 1/2 the paladin's level.",
+      "nauseated": "The target is no longer nauseated. The paladin must have the sickened mercy before selecting this mercy.",
+      "poisoned": "The paladin's lay on hands ability also acts as neutralize poison, using the paladin's level as the caster level.",
+      "restorative": "The target heals 1d4 points of ability damage from a single ability score of the paladin's choosing. The paladin must have the enfeebled mercy before selecting this mercy."
+    },
+    "12": {
+      "amputated": "The paladin's lay on hands also acts as regenerate, but only for the purposes of regrowing severed body members, broken bones, and ruined organs. The paladin must have the injured mercy before she can select this mercy.",
+      "blinded": "The target is no longer blinded.",
+      "deafened": "The target is no longer deafened.",
+      "ensorcelled": "The paladin's lay on hands also acts as dispel magic, using the paladin's level as her caster level (maximum 20).",
+      "paralyzed": "The target is no longer paralyzed.",
+      "petrified": "The paladin's lay on hands ability also acts as stone to flesh, but only for the purpose of removing the petrified condition from a creature.",
+      "stunned": "The target is no longer stunned."
+    }
   }
 }

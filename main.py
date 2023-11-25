@@ -52,6 +52,8 @@ character_json_config = {
 	'alchemist_choices': 'json/alchemist_choices.json',
 	'class_data': 'json/class_data.json',			
 	'archetypes_json': 'json/archetypes_json.json',			
+	'cruelties': 'json/cruelties.json',	
+	'arcanist_exploits': 'json/arcanist_exploits.json',				
 
 }
 
@@ -145,7 +147,7 @@ while userInput.lower() == 'y':
 		#class specific choices
 		character.monk_ki_power_chooser()
 		character.sorcerer_bloodline_chooser()
-		character.paladin_mercy_chooser()
+
 		character.fighter_armor_train_chooser()
 		character.fighter_weapon_train_chooser()	
 		character.rogue_talent_chooser()
@@ -172,7 +174,9 @@ while userInput.lower() == 'y':
 		character.skills_selector('skills')
 		print(f'This is your chosen professions {character.profession_chooser("professions")}')
 
-
+		character.anti_paladin_cruelty_chooser()
+		character.paladin_mercy_chooser()		
+		character.arcanist_exploits_chooser()
 
 		# character.armor_chooser()
 

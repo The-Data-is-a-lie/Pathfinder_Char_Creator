@@ -264,7 +264,13 @@ class Character:
             self.class_data = json.load(f)              
 
         with open(json_config['archetypes_json']) as f:
-            self.archetypes_json = json.load(f)              
+            self.archetypes_json = json.load(f)  
+
+        with open(json_config['cruelties']) as f:
+            self.cruelties = json.load(f)    
+
+        with open(json_config['arcanist_exploits']) as f:
+            self.arcanist_exploits = json.load(f)                                      
 
 
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
@@ -592,7 +598,7 @@ class Character:
             self.c_class_for_spells = 'bard'
         elif self.c_class in ['investigator']:
             self.c_class_for_spells = 'alchemist'
-        elif self.c_class in ['witch']:
+        elif self.c_class in ['witch', 'arcanist']:
             self.c_class_for_spells='wizard'       
         else:
             self.c_class_for_spells = self.c_class     
@@ -718,7 +724,7 @@ class Character:
         """
         alignment = self.alignment.lower().replace(" ", "") 
         print(alignment)
-        extraction_list = ['name', self.c_class]#, 'lawful', 'chaotic', 'evil','good']   
+        extraction_list = ['name', self.c_class_for_spells]#, 'lawful', 'chaotic', 'evil','good']   
 
         condition_chaotic = "chaotic" in alignment
         condition_good = "good" in alignment
@@ -750,9 +756,10 @@ class Character:
 
         if condition is not None:
             print(condition)
-            query_i = spell_data.loc[(spell_data[self.c_class] == i) & condition, extraction_list]
+            print(self.c_class_for_spells)
+            query_i = spell_data.loc[(spell_data[self.c_class_for_spells] == i) & condition, extraction_list]
         else:
-            query_i = spell_data.loc[(spell_data[self.c_class] == i) & condition, extraction_list]            
+            query_i = spell_data.loc[(spell_data[self.c_class_for_spells] == i) & condition, extraction_list]            
 
         return query_i               
 
@@ -1428,11 +1435,44 @@ class Character:
             return self.chosen_domain            
 
 
+    def arcanist_exploits_chooser(self):
+        self.exploit_chosen_list=set() 
+        amount = ceil(self.c_class_level / 2)
+        i=0      
+        k=0           
+        normal = list(self.arcanist_exploits['normal'])
+        greater = list(self.arcanist_exploits['greater'])
+        outer = list(self.arcanist_exploits['outer'])
+        combined = normal + outer
+
+        if self.c_class == 'arcanist':
+            while i < amount and i < 5:
+                exploit = random.choice(combined)
+                self.exploit_chosen_list.add(exploit)
+                i = len(self.exploit_chosen_list)
+
+            while i < amount and i >= 5:
+                exploit = random.choice(greater)
+                self.exploit_chosen_list.add(exploit)
+                i = len(self.exploit_chosen_list)
+
+            print(self.exploit_chosen_list)                
+
+
+
+
+
+
     def paladin_mercy_chooser(self):
 
         self.mercy_chosen_list=set()        
         i=0      
         k=0   
+
+        list_3 = list(self.mercies["mercy"]["3"].keys())
+        list_6 = list(self.mercies["mercy"]["6"].keys())
+        list_9 = list(self.mercies["mercy"]["9"].keys())
+        list_12 = list(self.mercies["mercy"]["12"].keys())
 
 
         if self.c_class == 'paladin':
@@ -1441,24 +1481,100 @@ class Character:
             paladin_list = floor(self.c_class_2_level/3) 
         else:
             paladin_list = 0
-        
-        while i <= (paladin_list):
-            if paladin_list >= 1:
-                mercy_list = self.mercies["mercy"]["3"]
-            elif paladin_list >= 2:
-                mercy_list = self.mercies["mercy"]["3"] + self.mercies["mercy"]["6"]
-            elif paladin_list >= 3:
-                mercy_list = self.mercies["mercy"]["3"] + self.mercies["mercy"]["6"] + self.mercies["mercy"]["9"]
-            else:
-                mercy_list = self.mercies["mercy"]["3"] + self.mercies["mercy"]["6"] + self.mercies["mercy"]["9"] + self.mercies["mercy"]["12"]                                            
-            
-            mercy_chosen=random.choice(mercy_list)
-            self.mercy_chosen_list.add(mercy_chosen) 
- 
-            #need to find a better way to grab all mercies, if it selects one multiple times you have 1 less mercy
-            k+=1
-            print(f'NEED TO FIND A BETTER WAY TO HANDLE THIS mercy chosen list length {len(self.mercy_chosen_list)}')
-            i = max(len(self.mercy_chosen_list),k)
+
+                
+        if self.c_class == 'paladin':
+            while i < (paladin_list):
+                if i == 0:
+                    mercy_list = list_3
+                elif i == 1:
+                    mercy_list = list_3 + list_6
+                elif i == 2:
+                    mercy_list = list_3 + list_6 + list_9
+                else:
+                    mercy_list = list_3 + list_6 + list_9 + list_12
+                
+                #Need to remove these from the selectable list until we have the pre-reqs, we can do manually with an if statement
+                if i >= 2:
+                    if 'fatigued' not in self.mercy_chosen_list:
+                        mercy_list.remove('exhausted')
+                    if 'shaken' not in self.mercy_chosen_list:
+                        mercy_list.remove('frightened')
+                    if 'sickened' not in self.mercy_chosen_list:
+                        mercy_list.remove('nauseated')
+                    if 'enfeebled' not in self.mercy_chosen_list:
+                        mercy_list.remove('restorative')
+                    if i >= 3 and 'injured' not in self.mercy_chosen_list:
+                        mercy_list.remove('amputated')
+
+                print(f'This is your mercy list {mercy_list}')
+
+                mercy_chosen=random.choice(mercy_list)
+                self.mercy_chosen_list.add(mercy_chosen)
+
+
+    
+                #need to find a better way to grab all mercies, if it selects one multiple times you have 1 less mercy
+                k+=1
+                print(self.mercy_chosen_list)
+                i = min(len(self.mercy_chosen_list),k)       
+
+            return self.mercy_chosen_list  
+
+
+    def anti_paladin_cruelty_chooser(self):
+
+        self.cruelty_chosen_list=set()        
+        i=0      
+        k=0   
+
+        list_3 = list(self.cruelties["cruelty"]["3"].keys())
+        list_6 = list(self.cruelties["cruelty"]["6"].keys())
+        list_9 = list(self.cruelties["cruelty"]["9"].keys())
+        list_12 = list(self.cruelties["cruelty"]["12"].keys())
+
+
+        if self.c_class == 'antipaladin':
+            anti_paladin_list = floor(self.c_class_level/3)
+        elif self.c_class_2 == 'antipaladin':
+            anti_paladin_list = floor(self.c_class_2_level/3) 
+        else:
+            anti_paladin_list = 0
+
+                
+        if self.c_class == 'antipaladin':
+            while i < (anti_paladin_list):
+                if i == 0:
+                    cruelty_list = list_3
+                elif i == 1:
+                    cruelty_list = list_3 + list_6
+                elif i == 2:
+                    cruelty_list = list_3 + list_6 + list_9
+                else:
+                    cruelty_list = list_3 + list_6 + list_9 + list_12
+                
+                #Need to remove these from the selectable list until we have the pre-reqs, we can do manually with an if statement
+                if i >= 2:
+                    if 'fatigued' not in self.cruelty_chosen_list:
+                        cruelty_list.remove('exhausted')
+                    if 'shaken' not in self.cruelty_chosen_list:
+                        cruelty_list.remove('frightened')
+                    if 'sickened' not in self.cruelty_chosen_list:
+                        cruelty_list.remove('nauseated')
+
+                print(f'This is your cruelty list {cruelty_list}')
+
+                cruelty_chosen=random.choice(cruelty_list)
+                self.cruelty_chosen_list.add(cruelty_chosen)
+
+
+    
+                #need to find a better way to grab all cruelties, if it selects one multiple times you have 1 less cruelty
+                k+=1
+                print(self.cruelty_chosen_list)
+                i = min(len(self.cruelty_chosen_list),k)       
+
+            return self.cruelty_chosen_list     
             
            
 

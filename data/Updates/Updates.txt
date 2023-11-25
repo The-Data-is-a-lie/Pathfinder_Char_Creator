@@ -45,8 +45,13 @@ Needs (Low Prio):
 - Worked on Web Scraper
 
 11/23/23:
-- Successfully Webscraped all Archetype data into a JSON file (from Archives Of Nethys)
+- Successfully Webscraped all Archetype data into a JSON file (archetypes_json) (from Archives Of Nethys)
 - Changed archetype program to use my json files (that discuss replacements) instead of old data
+
+11/24/23:
+- Successfully Webscraped all basic class data into a JSON file (class_data)
+- Added Cruelties selector
+- Fixed Mercies + Cruelties bug
 
 
 Completed:

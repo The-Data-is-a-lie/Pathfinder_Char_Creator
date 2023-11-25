@@ -13,7 +13,7 @@
             "saving throws": ["Fortitude", "Reflex"]
     },
     
-    "anti-paladin": {
+    "antipaladin": {
         "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
         "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Half Plate", "Full Plate"],
         "skills": ["Bluff", "Diplomacy", "Intimidate", "Perception", "Ride", "Sense Motive"],

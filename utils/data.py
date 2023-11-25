@@ -102,7 +102,7 @@ lore = ["Goblin Lore",
 
 # caster spell known progression:
 # wizards know 3 + INT mod + 2(per level) spells
-base_classes = ['sorcerer','wizard','cleric','druid','ranger','bard','paladin','alchemist','summoner','witch','inquisitor','oracle','antipaladin','magus','adept','bloodrager','shaman','psychic','medium','mesmerist','occultist','spiritualist','skald','investigator','hunter']
+base_classes = ['arcanist','sorcerer','wizard','cleric','druid','ranger','bard','paladin','alchemist','summoner','witch','inquisitor','oracle','antipaladin','magus','adept','bloodrager','shaman','psychic','medium','mesmerist','occultist','spiritualist','skald','investigator','hunter']
 divine_casters = ['cleric', 'druid', 'oracle', 'inquisitor', 'paladin', 'ranger']
 #caster spells per day progression
 
