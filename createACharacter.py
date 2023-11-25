@@ -665,25 +665,25 @@ class Character:
         if self.c_class in base_classes and casting_level_1 == 'high' and self.c_class not in divine_casters:
             for i in range(0,self.highest_spell_known1+1):
                 key = str(i)
-                list=self.spells_known[self.c_class_for_spells][key][self.capped_level_1-1]
+                list=self.spells_known[self.c_class][key][self.capped_level_1-1]
                 self.spells_known_list.append(list)
-        elif self.c_class in base_classes and casting_level_1 == 'mid' and self.c_class not in divine_casters and self.c_class_for_spells != 'alchemist':
+        elif self.c_class in base_classes and casting_level_1 == 'mid' and self.c_class not in divine_casters and self.c_class != 'alchemist':
             for i in range(0,self.highest_spell_known1+1):
                 key = str(i)                
-                list=self.spells_known[self.c_class_for_spells][key][self.capped_level_1-1]
+                list=self.spells_known[self.c_class][key][self.capped_level_1-1]
                 self.spells_known_list.append(list)
 
         #Low casters + some mid casters don't have orisons/cantrips [but we just have 0 for spells known + spells per day so it doesn't select any]
-        elif self.c_class_for_spells == 'alchemist':
+        elif self.c_class == 'alchemist':
             for i in range(0,self.highest_spell_known1+1):
                 key = str(i)                
-                list=self.spells_known[self.c_class_for_spells][key][self.capped_level_1-1]
+                list=self.spells_known[self.c_class][key][self.capped_level_1-1]
                 self.spells_known_list.append(list)
 
         elif self.c_class in base_classes and casting_level_1 == 'low' and self.c_class not in divine_casters:
             for i in range(0,self.highest_spell_known1+1):
                 key = str(i)                
-                list=self.spells_known[self.c_class_for_spells][key][self.capped_level_1-1]
+                list=self.spells_known[self.c_class][key][self.capped_level_1-1]
                 self.spells_known_list.append(list)
         elif self.c_class in divine_casters:
             print('Divine Casters know all spells')
@@ -695,13 +695,16 @@ class Character:
     def spells_known_extra_roll(self):
         extra_spell_list = []        
         if self.c_class_for_spells in ['alchemist','wizard']:
-            for _ in range(0,self.highest_spell_known1 + 1):
+            for i in range(0,self.highest_spell_known1 + 1):
                 extra_spells = random.randint(1,10)
                 extra_spell_list.append(extra_spells)
 
                 # Remove 'null' values and ensure both lists have the same number of non-null elements
                 filtered_spells_known = [0 if x == 'null' else x for x in self.spells_known_list]
                 filtered_extra_spells = extra_spell_list[:len(filtered_spells_known)]
+
+                if filtered_spells_known[i] == 0:
+                    filtered_extra_spells[i] = 0
 
                 print(filtered_extra_spells)
                 print(f'This is the spells known {filtered_spells_known}')
@@ -710,6 +713,7 @@ class Character:
                 result = [x + y for x, y in zip(filtered_spells_known, filtered_extra_spells)]
 
             self.spells_known_list=result
+            print(f'This is the spells known list {self.spells_known_list}')
 
         return self.spells_known_list
 
@@ -831,6 +835,7 @@ class Character:
         
     
     def spells_per_day_attr(self, base_classes):
+        # We have to use normal spell class, since certain classes like Arcanist or Witch have the same spells but diff progressions as wizard/sorc
         high_caster_level = self.high_caster_formula(self.c_class_level)
         mid_caster_level = self.mid_caster_formula(self.c_class_level)
         low_caster_level = self.low_caster_formula(self.c_class_level)  
@@ -842,25 +847,25 @@ class Character:
         if self.c_class in base_classes and casting_level_1 == 'high':
             for i in range(0,high_caster_level+1):
                 key = str(i)
-                print(self.c_class_for_spells)
-                list=self.spells_per_day[self.c_class_for_spells][key][self.capped_level_1-1]
+                print(self.c_class)
+                list=self.spells_per_day[self.c_class][key][self.capped_level_1-1]
                 self.spells_per_day_list.append(list)
-        elif self.c_class in base_classes and casting_level_1 == 'mid' and self.c_class_for_spells != 'alchemist':
+        elif self.c_class in base_classes and casting_level_1 == 'mid' and self.c_class != 'alchemist':
             for i in range(0,mid_caster_level+1):
                 key = str(i)                
-                list=self.spells_per_day[self.c_class_for_spells][key][self.capped_level_1-1]
+                list=self.spells_per_day[self.c_class][key][self.capped_level_1-1]
                 self.spells_per_day_list.append(list)
 
         #adding an exception for alchemist (+ other classes that don't receive cantrips)
-        elif self.c_class_for_spells == 'alchemist':
+        elif self.c_class == 'alchemist':
             for i in range(0,mid_caster_level+1):
                 key = str(i)                
-                list=self.spells_per_day[self.c_class_for_spells][key][self.capped_level_1-1]
+                list=self.spells_per_day[self.c_class][key][self.capped_level_1-1]
                 self.spells_per_day_list.append(list)        
         elif self.c_class in base_classes and casting_level_1 == 'low':
             for i in range(0,low_caster_level+1):
                 key = str(i)                
-                list=self.spells_per_day[self.c_class_for_spells][key][self.capped_level_1-1]
+                list=self.spells_per_day[self.c_class][key][self.capped_level_1-1]
                 self.spells_per_day_list.append(list)                
 
 

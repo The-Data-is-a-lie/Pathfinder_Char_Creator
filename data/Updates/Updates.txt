@@ -52,6 +52,8 @@ Needs (Low Prio):
 - Successfully Webscraped all basic class data into a JSON file (class_data)
 - Added Cruelties selector
 - Fixed Mercies + Cruelties bug
+- Added Arcanist Exploits Webscraper
+- Fixed Bug where Arcanist (+ other classes) couldn't select spells, because they use another class's info (arcanist uses wizard/sorc spell books)
 
 
 Completed:
