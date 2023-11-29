@@ -270,7 +270,13 @@ class Character:
             self.cruelties = json.load(f)    
 
         with open(json_config['arcanist_exploits']) as f:
-            self.arcanist_exploits = json.load(f)                                      
+            self.arcanist_exploits = json.load(f)             
+
+        with open(json_config['cavalier_orders']) as f:
+            self.cavalier_orders = json.load(f)            
+
+        with open(json_config['gunslinger_deeds_dares']) as f:
+            self.gunslinger_deeds_dares = json.load(f)                                             
 
 
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
@@ -1626,7 +1632,32 @@ class Character:
                 break
 
 
-            
+    def cavalier_order_chooser(self):
+        """
+        Picks out a random Cavalier Order
+        Return
+        - String
+        - Dictionary
+        """
+        if self.c_class == 'cavalier' or self.c_class_2 == 'cavalier':
+            orders_list = list(self.cavalier_orders.keys())
+            self.order_chosen = random.choice(orders_list)
+            self.order_description = self.cavalier_orders[self.order_chosen]
+
+            print(self.order_chosen)
+            print(self.order_description)
+
+
+            return self.order_chosen, self.order_description
+
+    def gunslinger_order_chooser(self):
+        """
+        Picks out a random gunslinger deed
+        Return
+        - String
+        - Dictionary
+        """
+
     
 
     def mashing_keys(self):

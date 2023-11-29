@@ -53,7 +53,9 @@ character_json_config = {
 	'class_data': 'json/class_data.json',			
 	'archetypes_json': 'json/archetypes_json.json',			
 	'cruelties': 'json/cruelties.json',	
-	'arcanist_exploits': 'json/arcanist_exploits.json',				
+	'arcanist_exploits': 'json/arcanist_exploits.json',	
+	'cavalier_orders': 'json/cavalier_orders.json',					
+	'gunslinger_deeds_dares': 'json/gunslinger_deeds_dares.json',					
 
 }
 
@@ -159,7 +161,11 @@ while userInput.lower() == 'y':
 		character.wizard_school_chooser()
 		character.wizard_opposing_school()	
 		character.discovery_chooser()
-		character.grand_discovery_chooser()					
+		character.grand_discovery_chooser()
+		character.anti_paladin_cruelty_chooser()
+		character.paladin_mercy_chooser()		
+		character.arcanist_exploits_chooser()
+		character.cavalier_order_chooser()							
 		print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
 
 		#class specific feats choosers
@@ -174,9 +180,7 @@ while userInput.lower() == 'y':
 		character.skills_selector('skills')
 		print(f'This is your chosen professions {character.profession_chooser("professions")}')
 
-		character.anti_paladin_cruelty_chooser()
-		character.paladin_mercy_chooser()		
-		character.arcanist_exploits_chooser()
+
 
 		# character.armor_chooser()
 

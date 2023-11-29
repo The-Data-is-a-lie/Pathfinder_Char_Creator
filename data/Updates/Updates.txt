@@ -1,4 +1,6 @@
 Needs (High Prio):
+- finish all classes on Pathfinder AON title 
+
 - Create a function that randomly assigns a element to the Lore skill
 - Need to add comment blocks to each function
 - Monkey Goblin Broken
@@ -55,6 +57,13 @@ Needs (Low Prio):
 - Added Arcanist Exploits Webscraper
 - Fixed Bug where Arcanist (+ other classes) couldn't select spells, because they use another class's info (arcanist uses wizard/sorc spell books)
 
+11/27/23:
+- built out cavalier order Webscraper
+
+11/28/23
+- Completed cavalier order Webscraper
+- Completed Cavalier order function
+- Gathered Gunslinger Data
 
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment
