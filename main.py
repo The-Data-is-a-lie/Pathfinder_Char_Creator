@@ -51,7 +51,6 @@ character_json_config = {
 	'wizard_schools': 'json/wizard_schools.json',	
 	'alchemist_choices': 'json/alchemist_choices.json',
 	'class_data': 'json/class_data.json',			
-	'archetypes_json': 'json/archetypes_json.json',			
 	'cruelties': 'json/cruelties.json',	
 	'arcanist_exploits': 'json/arcanist_exploits.json',	
 	'cavalier_orders': 'json/cavalier_orders.json',					

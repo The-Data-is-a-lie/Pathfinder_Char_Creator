@@ -60,10 +60,15 @@ Needs (Low Prio):
 11/27/23:
 - built out cavalier order Webscraper
 
-11/28/23
+11/28/23:
 - Completed cavalier order Webscraper
 - Completed Cavalier order function
 - Gathered Gunslinger Data
+
+11/29/12:
+- Gathered Hunter Aspects Data
+- Added Hunter + Inquisitors Spells known per day + Spells per day
+- Changed Archetypes_json -> Archetypes
 
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment

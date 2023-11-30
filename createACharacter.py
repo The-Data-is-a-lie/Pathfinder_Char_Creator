@@ -195,10 +195,10 @@ class Character:
             self.first_names_regions = json.load(f)
         
         with open(json_config['flaws']) as f:
-            self.flaws = json.load(f)
+            self.flaws = json.load(f)  
 
         with open(json_config['archetypes']) as f:
-            self.archetypes = json.load(f)      
+            self.archetypes = json.load(f)             
 
         with open(json_config['spells_known']) as f:
             self.spells_known = json.load(f)      
@@ -261,10 +261,7 @@ class Character:
             self.alchemist_choices = json.load(f)  
 
         with open(json_config['class_data']) as f:
-            self.class_data = json.load(f)              
-
-        with open(json_config['archetypes_json']) as f:
-            self.archetypes_json = json.load(f)  
+            self.class_data = json.load(f)               
 
         with open(json_config['cruelties']) as f:
             self.cruelties = json.load(f)    
@@ -1650,15 +1647,6 @@ class Character:
 
             return self.order_chosen, self.order_description
 
-    def gunslinger_order_chooser(self):
-        """
-        Picks out a random gunslinger deed
-        Return
-        - String
-        - Dictionary
-        """
-
-    
 
     def mashing_keys(self):
         """
@@ -2088,7 +2076,7 @@ class Character:
         - dictionary (archetypes_description)
         """
         c_class = self.c_class.capitalize()
-        json = self.archetypes_json[c_class]
+        json = self.archetypes[c_class]
         archetypes_list = list(json.keys())
         archetypes_choice = random.choice(archetypes_list)
         archetypes_description = json[archetypes_choice]
