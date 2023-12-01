@@ -55,6 +55,7 @@ character_json_config = {
 	'arcanist_exploits': 'json/arcanist_exploits.json',	
 	'cavalier_orders': 'json/cavalier_orders.json',					
 	'gunslinger_deeds_dares': 'json/gunslinger_deeds_dares.json',					
+	'inquisitions': 'json/inquisitions.json',					
 
 }
 
@@ -143,7 +144,9 @@ while userInput.lower() == 'y':
 
 
 		#decides if druids go animal companion or domain
-		character.druid_domain_chance()
+		# or if inquisitors go inquisitions or domains
+		character.domain_chance()
+
 
 		#class specific choices
 		character.monk_ki_power_chooser()
@@ -179,6 +182,9 @@ while userInput.lower() == 'y':
 		character.skills_selector('skills')
 		print(f'This is your chosen professions {character.profession_chooser("professions")}')
 
+
+
+		character.inquisition_chooser()
 
 
 		# character.armor_chooser()

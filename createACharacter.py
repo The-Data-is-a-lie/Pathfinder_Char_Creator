@@ -275,6 +275,8 @@ class Character:
         with open(json_config['gunslinger_deeds_dares']) as f:
             self.gunslinger_deeds_dares = json.load(f)                                             
 
+        with open(json_config['inquisitions']) as f:
+            self.inquisitions = json.load(f) 
 
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
     def update_level(self, level, c_class_level, c_class_2_level):
@@ -1417,6 +1419,7 @@ class Character:
             return self.chosen_bloodline
 
     #need to make sure cleric domain choices align with selected deity
+    #inquisitors can also get domains
     def domain_chooser(self):
         self.chosen_domain = []
         if self.c_class == 'cleric' or self.c_class_2 == 'cleric':  
@@ -1437,10 +1440,45 @@ class Character:
             print(self.druid_domains[chosen_domain])
             self.chosen_domain.append(chosen_domain)
 
+        if (self.c_class == 'inquisitor' or self.c_class_2 == 'inquisitor' and self.domain_chance > 90):
+
+            deity_choice_list = list(self.deity_choice['Domains'])
+            self.chosen_domain = random.sample(deity_choice_list,k=1)
+            chosen_first = self.chosen_domain[0].capitalize()
+            print(f'This is your first selected domain {self.chosen_domain[0]} + its info: \n{self.cleric_domains["domains"][chosen_first]}')
+
+            return self.chosen_domain    
+
+
+    def inquisition_chooser(self):
+        if self.c_class == 'inquisitor' or self.c_class_2 == 'inquisitor' and self.domain_chance <= 90:
+            inquisitions = self.inquisitions.get("inquisitions", {})
+            chosen_deity = self.deity_choice['Name'][0].lower()
+
+            print(f'this is your chosen deity!!!!! {chosen_deity}')
+
+            valid_inquisitions = {
+                inq: data for inq, data in inquisitions.items() if chosen_deity in data.get("deities", "")
+            }
+
+            if not valid_inquisitions:
+                self.domain_chance = 100
+                self.domain_chooser()
+
+            else:
+                self.inquisition_choice = random.choice(list(valid_inquisitions))
+                print(self.inquisition_choice)
+
+                return self.inquisition_choice
+
+
+            
+
+
+    
 
 
 
-            return self.chosen_domain            
 
 
     def arcanist_exploits_chooser(self):
@@ -1892,9 +1930,10 @@ class Character:
             return self.discovery_list_chosen
         
 
-    def druid_domain_chance(self):
+    def domain_chance(self):
         """
         Some druids choose a domain, some choose an animal companion. This decides which they do
+        Some inquisitors go domains instead of inquisitions
         """
         #chance to get a domain vs an animal companion
         self.domain_chance = random.randint(1,100)

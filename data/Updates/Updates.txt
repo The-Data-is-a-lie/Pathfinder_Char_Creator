@@ -65,10 +65,14 @@ Needs (Low Prio):
 - Completed Cavalier order function
 - Gathered Gunslinger Data
 
-11/29/12:
+11/29/23:
 - Gathered Hunter Aspects Data
 - Added Hunter + Inquisitors Spells known per day + Spells per day
 - Changed Archetypes_json -> Archetypes
+
+11/30/23:
+- Gathered Inquisitions
+- Created a function to randomly choose Inquisitions or domain based on deity
 
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment
