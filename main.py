@@ -55,7 +55,8 @@ character_json_config = {
 	'arcanist_exploits': 'json/arcanist_exploits.json',	
 	'cavalier_orders': 'json/cavalier_orders.json',					
 	'gunslinger_deeds_dares': 'json/gunslinger_deeds_dares.json',					
-	'inquisitions': 'json/inquisitions.json',					
+	'inquisitions': 'json/inquisitions.json',
+	'investigator_talents': 'json/investigator_talents.json',						
 
 }
 

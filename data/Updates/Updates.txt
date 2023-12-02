@@ -74,5 +74,10 @@ Needs (Low Prio):
 - Gathered Inquisitions
 - Created a function to randomly choose Inquisitions or domain based on deity
 
+12/1/23:
+- Webscraped investigator talents
+- Webscraped proper rage power info
+(generic enough, we can use it for all similar events (talents as well))
+
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment

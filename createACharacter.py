@@ -278,6 +278,9 @@ class Character:
         with open(json_config['inquisitions']) as f:
             self.inquisitions = json.load(f) 
 
+        with open(json_config['investigator_talents']) as f:
+            self.investigator_talents = json.load(f) 
+
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
     def update_level(self, level, c_class_level, c_class_2_level):
         self.level = level
