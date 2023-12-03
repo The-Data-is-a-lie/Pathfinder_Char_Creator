@@ -79,5 +79,11 @@ Needs (Low Prio):
 - Webscraped proper rage power info
 (generic enough, we can use it for all similar events (talents as well))
 
+12/2/23:
+- Webscraped Mesmerists
+- Webscraped Magus Arcana
+- Webscraped Ninja
+
+
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment
