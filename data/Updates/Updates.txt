@@ -84,6 +84,9 @@ Needs (Low Prio):
 - Webscraped Magus Arcana
 - Webscraped Ninja
 
+12/2/23:
+- Webscraped (Oracle Mysteries + curses, Samurai Orders (= Cavalier Orders) + shaman spirits)
+
 
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment
