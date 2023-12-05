@@ -1,0 +1,392 @@
+{
+    "social talents": [
+        {
+        "Always Prepared (Ex)" : "The vigilante can set aside resources to plan for future contingencies. The vigilante gains the Brilliant Planner feat except he can spend up to 100 gp per character level for his brilliant plan fund and only requires 1 minute to enact his brilliant plan. In addition, while in a settlement for at least 1 week, he can spend 24 hours and up to 500 gp per character level to create a stash somewhere within the settlement. Once per day, the vigilante can take 1 hour to retrieve a stash, retrieving any number of items that would have been available in a settlement he visited at the time of making the stash, regardless of the weight of the items. Once he retrieves a stash in this way, he subtracts the price of the items from the stash's value and the stash is exhausted and lost, regardless if he used the full value of the stash. The vigilante can maintain any number of stashes, but a stash is lost if he does not spend 1 hour to maintain the stash at least once per month. A vigilante's stash is well-hidden and only the vigilante knows the location of a stash he creates."
+        },
+        {
+        "Ancestral Enlightenment (Ex)" : "The vigilante can attempt any Knowledge check untrained. If he already has ranks in a particular Knowledge skill, he gains a +4 bonus on checks with that skill. A vigilante must be at least 5th level to select this talent."
+        },
+        {
+        "Any Guise (Su)" : "A vigilante can use his everyman social talent to disguise himself as any specific person, even a king or high priest. Furthermore, if the actual individual wouldn't normally be able to be found via magic (such as by being dead or protected from divinations designed to locate the individual), such divinations always find the vigilante instead. A vigilante must be at least 17th level and have the everyman social talent to select this talent."
+        },
+        {
+        "Beast Friend (Su)" : "The vigilante can cast charm animal once per day as a spell-like ability, with a caster level equal to his level. The vigilante must have the songbird talent to select this talent."
+        },
+        {
+        "Beast Speech (Su)" : "The vigilante can cast speak with animals once per day as a spell-like ability, with a caster level equal to his character level. The vigilante must have the songbird talent to select this talent."
+        },
+        {
+        "Beginner's Luck (Ex)" : "The vigilante appears so harmless and innocent that onlookers dismiss his incredible abilities as nothing more than beginner's luck. When the vigilante uses a vigilante talent while in his social identity, he can add the +20 circumstance bonus from seamless guise to his Disguise check to fool onlookers, so long as the number of onlookers witnessing him is no greater than his vigilante level. The vigilante's PC allies do not count as onlookers (and at the GM's discretion, a closely allied NPC might not count as an onlooker, either). He loses this bonus against onlookers who have already witnessed him using a vigilante talent in his social identity within the last week."
+        },
+        {
+        "Bellflower Innuendo (Ex)" : "A vigilante with this talent has learned to pass secret messages more efficiently by observing the coded messages of the Bellflower Network or another secret organization. He can pass a secret message with Bluff in the same amount of time it would normally take to convey the message without encryption. The words and meaning of his secret messages cannot be gleaned from him or those he directly delivered the message to by divinations unless the caster succeeds at a caster level check (DC = 15 + the vigilante's level)."
+        },
+        {
+        "Case the Joint (Ex)" : "The vigilante can use his social identity to learn important facts about a location before returning later in his vigilante identity. If he spends at least 1 hour in a location while in his social identity, he can attempt a DC 20 Knowledge (engineering) check. If he succeeds, he gains the ability to later reroll any one failed skill check involving the location's layout (such as a Stealth check to sneak into the location, a Disable Device check to disable an alarm, or a Sleight of Hand check to snatch an object from a pedestal). For every 10 by which the check exceeds 20, the vigilante gains an additional reroll. If the vigilante fails to return to the location within 1 week, the situation changes too much and he cannot use the rerolls. A vigilante can't case the same joint more than once a week."
+        },
+        {
+        "Celebrity Discount (Ex)" : "The vigilante's social identity is popular enough to receive discounts in his area of renown. Whenever he buys an item in his area of renown that costs 500 gp or less, he can buy it at 90% of the market price, rather than the full price. If he has the great renown social talent, the gp limit increases to 2,000 gp, and if he possesses the incredible renown social talent, the gp limit increases to 8,000 gp. A vigilante must be at least 3rd level and have the renown social talent to select this talent."
+        },
+        {
+        "Celebrity Perks (Ex)" : "The vigilante is a celebrity in his area of renown, and adoring fans are all too eager to shower him with the fundamental necessities. While within his area of renown, he can always receive common meals or lodging (worth up to 1 gp per meal or night) for free, and can avoid paying taxes or bribes of 1 gp or less. If he wants a particular nonmagical item worth 1 gp or less, he can spend 1d10 minutes interacting with people in his area of renown to receive the item from a fan (if he ever sells such a gift from a fan, he loses this social talent permanently). If he has the great renown social talent, he can receive gifts of up to 5 gp, receive fine food and lodgings (worth up to 10 gp per meal or night) for free, and avoid paying taxes or bribes of 10 gp or less. If he has incredible renown, he can receive gifts of up to 25 gp, receive exquisite food and lodgings (worth up to 100 gp per meal or night) for free, and avoid paying taxes or bribes of 100 gp or less. A vigilante must be at least 5th level and have the renown social talent to select this talent."
+        },
+        {
+        "Companion to the Lonely (Ex)" : "Whether religiously motivated, as are followers of Arshea, Calistria, or Shelyn, or for purely carnal reasons, physical intimacy helps the vigilante cope with the loneliness of his double life. Once per day, the vigilante can spend at least 1 hour engaged in acts of physical pleasure with a willing partner to gain a pool of morale points equal to his Charisma bonus or his partner's Charisma bonus, whichever is higher. For the next 24 hours, the vigilante can spend a morale point as an immediate action to roll a Charisma-based skill check or a Will saving throw again after rolling the die but before learning the consequences; he must take the second result even if it is lower."
+        },
+        {
+        "Conflicted Identity (Ex)" : "The vigilante's mind is in a constant state of turmoil, which makes him even more ethically and morally fluid than other vigilantes. When targeted by a harmful spell or effect that would affect the vigilante in his current identity but not his other identity (or when he would suffer a lesser effect in his other identity), he has a 50% chance of being affected as though he were in his other identity. This chance is rolled when the spell or effect is cast or triggered and before any spell resistance roll, if applicable. For example, if a vigilante has a lawful-neutral social identity and a neutral vigilante identity, he has a 50% chance of taking only half damage from a chaos hammer spell while in his social identity, since he would always take only half damage from a chaos hammer spell when in his vigilante identity."
+        },
+        {
+        "Discreet Inquiries (Ex)" : "The vigilante can attempt Diplomacy checks to gather information without being obvious he is seeking any, whether by buying the silence of informants or by talking foes into revealing information without realizing they are doing so. While the vigilante is in his area of renown, gathering information in this way takes 2d4 hours and costs 2d4 gp. Anyone who might take notice of the information gathering does not notice unless she succeeds at a Sense Motive check opposed by the vigilante's Bluff check. The vigilante gains a +4 bonus on this Bluff check."
+        },
+        {
+        "Double Time (Ex)" : "The vigilante's social identity is that of a skilled and respected artisan or professional, rather than a merchant or noble. In order to complete his day's work while still continuing his vigilante activities, he has learned to work faster than normal, hiding his progress so it seems like he is working full shifts at his day job rather than spending some of that time on other pursuits. The vigilante needs to spend only 6 hours each day for mundane uses of the Craft or Profession skill, rather than 8 hours. If he has the social grace social talent, he needs to spend only 4 hours for any skill he's chosen with social grace. A vigilante must have a social identity appropriate to the chosen skill to select this talent."
+        },
+        {
+        "Entrepreneur (Ex)" : "Select any one Intelligence-, Wisdom-, or Charisma-based skill other than Perception or Use Magic Device. The vigilante can use the selected skill to earn money as if he were using a Profession skill. If he selects Perform or Profession, the vigilante instead gains the skill unlock powers for those skills as appropriate for his number of ranks in that skill (Pathfinder RPG Pathfinder Unchained 82). If he has the social graceUI social talent, he can apply this benefit to all skills selected with the social grace talent."
+        },
+        {
+        "Everyman (Ex)" : "The vigilante can take on the appearance of a specific individual whenever he assumes a mundane guise using his many guises social talent. The individual must be a farmer, laborer, or peasant. While disguised as this individual, the vigilante receives a +20 circumstance bonus on Disguise checks to appear as that individual. Any spell or ability designed to locate the individual has a 50% chance of finding the vigilante instead of the actual individual, and divination spells and abilities used on the vigilante give results as if he were the actual individual. Although this doesn't grant the vigilante any special knowledge of the individual, the vigilante's training grants him a +10 circumstance bonus on Bluff checks to properly play the part of the individual. A vigilante must be at least 11th level and have the many guises social talent to select this talent."
+        },
+        {
+        "Feign Innocence (Ex)" : "The vigilante's social identity seems so innocent that it is hard to believe he was involved in wrongdoing. Within his area of renown, this provides a nonmagical effect identical to the innocenceAPG spell. A vigilante must be at least 5th level and have the renown social talent to take this talent."
+        },
+        {
+        "Gossip Collector (Ex)" : "The vigilante sits at the center of a web of gossip, granting him access to the latest scuttlebutt with baffling speed. Whenever the vigilante is presented with a topic about which he would normally need to spend 1d4 hours to gather information, he must spend only 1d2 hours instead. If he has the renown social talent and gathers the information in his area of renown, he must instead spend only 1d4 \u00d7 10 minutes, and if he beats the DC to gather a piece of information by 20 or more, he knows that piece of information without spending any time at all; he has simply already heard that gossip. This ability doesn't allow him to gather information that isn't available in the locale he is canvassing, even if that locale is his area of renown."
+        },
+        {
+        "Great Renown (Ex)" : "The vigilante is known on a broader scale. He can gain renown in a single community of up to 5,000 individuals (a large town) or up to two communities of no more than 2,000 individuals each (two small towns). The bonus while he is in his social identity remains unchanged, but the circumstance bonus on Intimidate checks from his renown social talent while he is in his vigilante identity increases to +6. A vigilante must be at least 7th level and have the renown social talent to select this talent."
+        },
+        {
+        "Guise of Life (Su)" : "An undead vigilante with this talent gains an additional social identity in the form of one living creature identical to the vigilante's appearance in life. Successful Knowledge checks reveal information about the vigilante as if he were a living creature, and he counts as living for the purpose of divination spells and effects. He gains no other benefit from appearing to be a living creature, and remains vulnerable to positive energy and spells that effect undead. The vigilante must be a corporeal undead creature to select this talent. Humanoid vigilantes with the negative energy affinity racial trait can also select this talent, gaining a human social identity."
+        },
+        {
+        "Guise of Unlife (Su)" : "A vigilante with this talent gains an additional social identity in the form of an undead version of one of his existing social identities, such as a ghoul, vampire, or zombie. Successful Knowledge checks reveal information about the vigilante as if he were undead, and he counts as undead for the purpose of divination spells and effects. He gains no other benefit from appearing to be an undead creature, and remains vulnerable to negative energy and spells that effect the living. The vigilante must be a living creature to select this talent."
+        },
+        {
+        "Hidden Magic (Ex)" : "The auras of magic items the vigilante is carrying are hidden (as per magic aura). The vigilante can suppress or reactivate this effect as a standard action. At 11th level, the vigilante and any magic items he is carrying appear to be nonmagical (as if he had cast greater magic aura). The vigilante must be at least 5th level to select this talent."
+        },
+        {
+        "Immediate Change (Ex)" : "The vigilante can change identities as a move action, and he no longer needs to spend extra time to adjust his appearance and persona. A vigilante must be at least 13th level and must have the quick change social talent to select this talent."
+        },
+        {
+        "In Vogue (Ex)" : "The vigilante's crafting or professional business is always at the height of the local trends, allowing the vigilante to gain more profits than usual. Goods he crafts with a Craft skill he chose with social grace are worth 1/3 more gp than normal due to his celebrity, without increasing the cost to create. Whenever he uses a Profession skill he chose with social grace to make money, he makes twice as much money. A vigilante must be at least 5th level and have both the double time and social grace social talents to take this talent."
+        },
+        {
+        "Incredible Renown (Ex)" : "The vigilante is incredibly famous in both identities. He can gain renown in a single community of up to 25,000 individuals (a large city) or up to two smaller cities of no more than 10,000 individuals each (two small cities). The bonus while he is in his social identity remains unchanged, but the circumstance bonus to Intimidate from his great renown social talent while in he is in his vigilante identity increases to +8. A vigilante must be at least 11th level and have the great renown social talent to select this talent."
+        },
+        {
+        "Instant Recognition (Ex)" : "The vigilante is so well known that his name precedes him, even to other communities. It only takes 4 hours of effort to get the word out to transfer his renown benefits to a new community. A vigilante must be at least 13th level and have both the incredible renown and triumphant return social talents to select this talent."
+        },
+        {
+        "Intrigue Feats (Ex)" : "The vigilante gains one of the following feats as a bonus feat: Blustering BluffUI, But a ScratchUI, Call TruceUI, ConfabulistUI, Criminal ReputationUI, Cutting HumiliationUI, Esoteric LinguisticsACG, Intoxicating FlatteryUI, Ironclad LogicUI, Nerve-Racking NegotiatorUI, OratorACG, Persuasive BriberyUI, Play to the CrowdUI, Quick FavorUI, Rhetorical FlourishUI, Sense AssumptionsUI, Sense RelationshipsUI, or Street SmartsUI. He must meet the feat's prerequisites. This talent can be selected multiple times; each time, the vigilante gains a new feat from the above list."
+        },
+        {
+        "Kalistocrat's Acumen (Ex)" : "A vigilante with this talent must follow the dietary and sexual prohibitions of the Prophecies of Kalistrade (Pathfinder Campaign Setting: The Inner Sea World Guide 237) in his social identity or he loses the talent's benefit until he atones. He can treat settlements as one size category larger when determining their base values and purchase limits. At 9th level, the vigilante can treat settlements as two size categories larger for the above purposes. At 15th level, the vigilante can treat settlements as four size categories larger for the above purposes."
+        },
+        {
+        "Loyal Aid (Ex)" : "The vigilante gains the service of a number of loyal allies who can help him gather information, cover for his two identities, or perform minor tasks. Inside his area of renown, a vigilante with this talent gains a bonus on Diplomacy checks to gather information equal to half his vigilante level.  In addition, if the vigilante wants, he can task his friends to help cover for him by spreading false tales of his location and activities to others. This has the effect of increasing the DC of Diplomacy checks to gather information about the vigilante and Survival checks to track him by an amount equal to his level. This lasts for 1 day, and can be used only once per week.  Finally, once per day, the vigilante can ask his allies to perform a minor task for him. This usually involves delivering a message, purchasing a piece of mundane gear worth 100 gp or less (which the vigilante must pay for), or retrieving an object owned by the vigilante (that would be easily accessible by the ally). This task might take other forms as well, subject to GM discretion, but can never involve combat or danger. A vigilante must be at least 3rd level and have the renown social talent to select this talent."
+        },
+        {
+        "Many Guises (Ex)" : "The vigilante can take on any number of mundane guises. Whenever he changes his identity, he has a third option (instead of social or vigilante): he can become mundane. The mundane identity is not a specific individual. Each one is created at the moment it is assumed, and quickly forgotten as soon as it is removed. While in a mundane identity, the vigilante does not gain the benefit of either his social or vigilante identity, but instead appears as a member of his race, usually a common laborer, farmer, or peasant of any gender. His alignment is treated as neutral when he is in his mundane identity. While in this identity, he receives a +20 circumstance bonus on Disguise checks to appear like an ordinary member of his race. Spells and abilities that are looking for the vigilante in either of his other identities fail while he is in his mundane identity. He must build the appearance for this identity using whatever clothing and tools he has at his disposal. While he can use magic (such as a hat of disguise), his mundane identity can never be anything other than an ordinary member of a society or large group (subject to GM discretion). A vigilante must be at least 5th level to select this talent."
+        },
+        {
+        "Mockingbird (Ex)" : "The vigilante can mimic almost any sort of voice, or even animal calls and sound effects, and he can throw his voice at a distance. This functions similarly to a combination of the ghost sound, ventriloquism, and vocal alterationUM spells. A vigilante must be at least 5th level to choose this talent."
+        },
+        {
+        "Morphic Mask (Su)" : "The vigilante's physical form in his vigilante identity can differ significantly from that of his social identity, within the norms for his race\u2014this can include changes to the vigilante's proportions, coloration, gender characteristics, and other physical characteristics. This increases the vigilante's bonus from seamless guise by 2 for every significant change, as per the Disguise skill. The vigilante always assumes the same form when using this ability. A vigilante with multiple natural forms, such as a kitsune, can alter each of his forms using this talent."
+        },
+        {
+        "Notorious Fool (Ex)" : "While in his social identity, the vigilante can feign absentmindedness, clumsiness, drunkenness, or eccentricity very convincingly. When he fails an opposed Sleight of Hand or Stealth check while in his social identity, he can immediately attempt a Bluff check opposed by the onlookers' Sense Motive checks to appear as though he had only blundered or stumbled in a spectacular fashion. If he succeeds at this Bluff check, the onlookers do not realize the vigilante was attempting the action that prompted him to attempt a Sleight of Hand or Stealth check, although being in the wrong place or behaving in an inappropriate manner may still have negative consequences. This talent is ineffective against any onlooker who has already witnessed the vigilante faking a blunder within the last 24 hours."
+        },
+        {
+        "Obscurity (Ex)" : "The vigilante is relatively unknown socially. In fact, he makes a point of keeping the life of his social identity as ordinary as possible. This social talent functions exactly as the renown social talent, but instead of improving the starting attitude of all NPCs within the community, it empowers the vigilante so that he no longer needs to succeed at Disguise checks to appear as his social identity while assuming that identity within his area of obscurity. He still has to attempt Disguise checks when NPCs within this settlement are confronted with indisputable proof that the vigilante could be more than he appears to be, such as when he uses a vigilante talent while in his social identity. This social talent counts as renown for the purpose of meeting the prerequisites of social talents that list renown as a prerequisite and can be improved by such talents. A vigilante with this talent cannot select renown, nor can he select any social talent that requires him to be famous (such as celebrity discount or celebrity perks)."
+        },
+        {
+        "Owl's Sight (Ex)" : "The vigilante gains low-light vision. If he already has low-light vision, he gains a +4 competence bonus on Perception checks in low light. The vigilante also gains a +2 competence bonus on Sleight of Hand and Stealth checks at night."
+        },
+        {
+        "Quick Change (Ex)" : "The vigilante learns to shift between his identities with ease. Instead of needing 1 minute to change his identity, he can now do so as a full-round action. If, after a quick change, he encounters any creature familiar with both of his identities, he must attempt a Disguise check to avoid the creature seeing through his hastily donned disguise and realizing that the identities are, in fact, the same person. The vigilante can spend 1 additional round adjusting and perfecting his appearance and persona to negate the need for this check. A vigilante must be at least 7th level to select this talent."
+        },
+        {
+        "Renown (Ex)" : "The vigilante becomes known for deeds and abilities regardless of his current identity. This renown grants him favorable treatment in civilized company and lends him an air of menace while facing down his enemies. While he is in his social identity, a vigilante can spend 1 week gaining renown among the locals of any community of no more than about 200 individuals (a village, if using settlement population ranges on page 203 of the Pathfinder RPG GameMastery Guide). This could be the entire community or a smaller neighborhood in a larger settlement. He must spend at least 4 hours each day socializing and making contacts. After spending 1 week doing this, whenever he is in his social identity, all NPCs in the community have a starting attitude toward him that is one category better, as long as each person's initial attitude would have at least been indifferent (see the Diplomacy skill description on pages 93\u2013 94 of the Pathfinder RPG Core Rulebook for more information). While he gains renown in an area using his social identity, he also spreads rumors and tales about his vigilante identity. Once he has gained renown in a community, he gains a +4 circumstance bonus on Intimidate checks whenever he is in his vigilante identity. This bonus applies only while he is near the community in which he has gained renown; he must be within a number of miles equal to his vigilante level.  A vigilante can hold renown in a limited number of communities (normally one, with other social talents allowing two). If he gains renown in a new community, he must decide which one of his previous communities to lose. These effects are subject to GM approval. For example, the GM might rule that an NPC or monster has not heard any tales about the vigilante. Or, a foe may have a starting attitude toward him that's one category worse, rather than one category better."
+        },
+        {
+        "Safe House (Ex)" : "The vigilante can establish a safe house in his area of renown, and he can change it every time he changes his area of renown. If he doesn't have the renown talent, he can still select this talent and place the safe house in a single location to which he has access, but he can never move the safe house from its initial location until he gains the renown talent. This safe house must be an area no larger in volume than a cube that is a number of feet per side equal to 10 feet per vigilante level. The safe house can be arranged any way he likes and it can be part of a larger building, like a secret room or an underground cave. Objects within this safe house can't be located by any effect that is less powerful than a discern location spell. At 7th level, this protection from being located also applies to creatures in the safe house. At 13th level, the entire area is protected from scrying effects (though not mundane snooping) like a mage's private sanctum."
+        },
+        {
+        "Seemless Shapechanger (Ex)" : "The vigilante seamlessly adopts any persona he assumes with magic. The vigilante adds his seamless guise bonus to the bonus on Disguise checks that he gains to assume the shape of another creature with a polymorph spell or effect. A vigilante must have the shapechanger subtype to select this talent."
+        },
+        {
+        "Skill Familiarity (Ex)" : "The vigilante choses four skills when he gains this talent. He can take 10 on checks with his chosen skills even when distracted or threatened. If he takes 10 on checks with these skills while not distracted or threatened, he gains a bonus on the check equal to one-quarter his vigilante level (minimum +2). A vigilante must be at least 9th level to select this talent."
+        },
+        {
+        "Social Grace (Ex)" : "The vigilante selects any one Intelligence-, Wisdom-, or Charisma-based skill other than Perception or Use Magic Device. Whenever the vigilante is in his social identity, he receives a +4 circumstance bonus on checks with the selected skill. At 5th level and every 4 levels thereafter, he can select another skill (with the same restrictions) to gain this bonus."
+        },
+        {
+        "Songbird (Su)" : "The vigilante gains the use of animal messenger once per day as a spell-like ability, with a caster level equal to his character level. He also gains Handle Animal as a class skill."
+        },
+        {
+        "Subjective Truth (Ex)" : "The vigilante's disparate identities allow him to defeat magic that detects lies. As long as what he says is true from the point of view of his current identity, it detects as true to effects such as discern lies, and he can say it in effects such as zone of truth that force him to speak the truth. A vigilante must be at least 9th level and have the feign innocence social talent to select this talent."
+        },
+        {
+        "Transformation Sequence (Su)" : "The vigilante's transformation between identities is assisted by magic. This makes it faster than usual, but also more noticeable. The vigilante can complete the switch between his identities in 5 rounds, improving to a standard action if he has the quick change social talent, and to a swift action if he has the immediate change social talent. However, the transformation causes quite a spectacle, involving loud sounds or music, brilliant colorful energies, and swift motions. A vigilante can select this talent only if he is able to cast spells or spell-like abilities (this needn't be from his vigilante class). A vigilante with the magical child archetype effectively gets this social talent for free at 1st level."
+        },
+        {
+        "Triumphant Return (Ex)" : "The vigilante's tales are never truly forgotten. This makes it easier to establish his renown in a place he has established it before. In any settlement where the vigilante previously gained renown, it takes only 3 days, rather than 1 week, to gain renown again. A vigilante must be at least 3rd level and have the renown social talent to select this talent."
+        },
+        {
+        "Well-Known Expert (Ex)" : "The vigilante's social identity is known as an expert in numerous fields, including areas and topics the vigilante hasn't actually taken the time to study. As a result the vigilante is skilled at encouraging others to discover solutions to difficult problems themselves by asking probing questions, while appearing to give the information himself.  In his social identity, the vigilante can take 10 when attempting to aid another on Appraise, Craft, and Knowledge checks. He also gains a bonus equal to half his class level (minimum +1) on Bluff checks to appear knowledgeable in Appraise, Craft (all), and Knowledge (all). If he has the renownUI social talent, he grants a +3 bonus when he successfully aids another on these skill checks, rather than +2.  In his area of renown, the vigilante's social identity is so trusted as an expert that scholars are inspired to make amazing deductions and intuitive leaps in discussions with him. A creature that has already failed a Knowledge check on a specific subject can attempt one additional check to gain information on the same topic if it receives an aid another bonus from the vigilante when doing so."
+        }    
+    ],
+
+"Vigilante talent": [
+
+    {
+    "Animal Patron (Ex)" : "The vigilante gains the benefits of one minor shifter aspect for a number of minutes per day equal to 1 + half his vigilante level. He can shift into this minor aspect as a swift action. The vigilante must be at least 5th level to select this talent."
+    },
+    {
+    "Another Day (Ex, Su)" : "When the vigilante is dropped unconscious due to hit point damage, he automatically stabilizes, but he can also appear to be dead, unless an examining creature succeeds at a Heal check (DC = 20 + the vigilante's class level) or, if using magic such as deathwatch, a caster level check with the same DC (the ability to affect spells is supernatural; the rest of the ability is extraordinary). The vigilante counts as having received aid and automatically succeeds at the Constitution check to become conscious after 1 hour (unless he has actually died in the meantime)."
+    },
+    {
+    "Aquatic Action (Ex)" : "The vigilante uses weapons, natural weapons, and unarmed strikes in aquatic environments as though under the effect of freedom of movement, including when making melee attacks against targets in the water while the vigilante is on land. The vigilante ignores limitations and penalties on ranged attacks, including thrown weapons, imposed by being underwater for the first 15 feet. (See Underwater Combat on page 432 of the Pathfinder RPG Core Rulebook for more information.) A vigilante must be at least 8th level to select this talent."
+    },
+    {
+    "Armor Skin (Ex)" : "The vigilante's armor is like a second skin. He doesn't apply the armor check penalty for light and medium armor on Acrobatics, Escape Artist, or Stealth checks. This penalty applies on other skill checks as normal. At 8th level, he can move at full speed in medium armor."
+    },
+    {
+    "Blind Spot (Ex)" : "The vigilante is so skilled at stealth, he can use the Stealth skill to hide from creatures with unusual senses that normally automatically detect creatures. This includes senses such as blindsense, blindsight, lifesense, scent, or tremorsense. For each such ability that the creature possesses, if the vigilante is not bypassing the sense in another way\u2014such as the negate aromaAPG spell for scent or flying for tremorsense\u2014the creature gains a stacking +20 circumstance bonus on all Perception checks to notice the vigilante, rather than automatically noticing the vigilante. Only a stalker vigilante of at least 6th level can select this talent."
+    },
+    {
+    "Brutal Maneuver" : "The first time each round that the vigilante uses a weapon, including a natural attack or unarmed strike, to perform a combat maneuver in place of making an attack (such as by performing a disarm, sunder, or trip combat maneuver in place of making a melee attack), he can choose to take a \u20135 penalty on all his attack rolls during the round. If he does so and succeeds at his combat maneuver check, the vigilante deals damage to the target of his combat maneuver as if he had hit that target with a normal hit from his weapon."
+    },
+    {
+    "Chase Master (Ex)" : "Whether he is the pursuer or the pursued, few can best a vigilante at a chase. He receives a bonus on all checks during a chase (Pathfinder RPG GameMastery Guide 232) equal to half his vigilante level or +4, whichever is greater."
+    },
+    {
+    "Close the Gap (Ex)" : "Each round, at the start of his turn, the vigilante can designate one foe within 20 feet that isn't adjacent to him. When he moves, he doesn't provoke attacks of opportunity from that foe as long as he ends his move adjacent to that foe. If he charges that foe, he does not take the \u20132 penalty to his AC on any attacks made by the designated foe."
+    },
+    {
+    "Combat Expertise (Ex)" : "The vigilante gains Combat Expertise as a bonus feat, even if he doesn't meet the prerequisites. If he already has Combat Expertise, he instead gains another feat he qualified for at the level when he chose Combat Expertise. If the vigilante's Intelligence score is less than 13, it counts as 13 for the purpose of meeting the prerequisites of combat feats."
+    },
+    {
+    "Combat Skill (Ex)" : "The vigilante gains any one combat feat as a bonus feat. He must meet the prerequisites for this feat, but he is treated as though he had a number of fighter levels equal to half his vigilante level for the purpose of qualifying for this feat. Only an avenger vigilante can select this talent, but he can select this talent more than once; each time he must select a different feat."
+    },
+    {
+    "Concealed Strike (Ex)" : "Whenever the vigilante attacks an opponent with a concealed weapon that his target wasn't aware of, he can attempt a Bluff check to feint that opponent as a move action. If he has the Improved Feint feat, he attempts this check as a free action instead. A vigilante must be at least 6th level to select this talent."
+    },
+    {
+    "Cunning Feint (Ex)" : "The vigilante can feint as a move action or in place of his first attack during a full attack. At 8th level, when the vigilante successfully feints, the opponent is denied its Dexterity bonus to AC against all attacks until the vigilante's next turn."
+    },
+    {
+    "Deceitful Trick" : "The vigilante can perform a dirty trickAPG combat maneuver in place of his first attack during a full attack. He can take a \u20134 penalty on his check in order to inf lict two different conditions on his foe if he succeeds at his check. If the vigilante is successful, the target can remove both conditions as a standard action. A vigilante must have Greater Dirty TrickAPG and Improved Dirty TrickAPG in order to select this vigilante talent."
+    },
+    {
+    "Environmental Weapon (Ex)" : "When the vigilante gains this talent, he must select one type of terrain from the ranger's list of favored terrains. While in this terrain, as a swift action the vigilante can find an improvised weapon if there are any loose or moveable objects around (subject to the GM's discretion). He doesn't take a penalty for using these improvised weapons. For example, if the vigilante selected the urban environment, he might attack a foe with a chair, an empty bottle, or even a door. At 5th, 10th, 15th, and 20th levels, the vigilante can select an additional type of terrain."
+    },
+    {
+    "Evasive (Ex)" : "The vigilante is hard to catch with area attacks. He gains the evasion ability, and at 12th level, he gains the improved evasion ability. Only a stalker vigilante can select this talent."
+    },
+    {
+    "Expose Weaknesses (Ex)" : "The vigilante is able to use sneaky tricks to make it easier to damage a foe, whether it is throwing a bit of fine dust of cold iron over a fey creature or melting a glob of silver onto a lycanthrope's hide. The vigilante can add the ability to reduce a creature's damage reduction or hardness by 10 to the list of options when attempting a dirty trick combat maneuver check (Advanced Player's Guide 320). This does not stack with itself, and it does not work against creatures with DR/\u2014."
+    },
+    {
+    "Fantastic Stride (Ex)" : "The vigilante gains Spring Attack as a bonus feat, ignoring its prerequisites. At 10th level and every 4 levels thereafter, the vigilante can designate one additional creature when he uses Spring Attack. The\u00a0 vigilante's movement this round does not provoke attacks of opportunity from any of these secondary creatures. A vigilante must be at least 6th level to select this talent."
+    },
+    {
+    "Favored Maneuver (Ex)" : "The vigilante selects one type of combat maneuver to be a favored maneuver. He gains the Improved feat corresponding to that combat maneuver (if one exists). He gains a +2 circumstance bonus on combat maneuver checks with that combat maneuver against a foe that is unaware of the vigilante's presence at the start of his combat maneuver. A vigilante can select this talent more than once. Each time, it applies to a different combat maneuver."
+    },
+    {
+    "Fist of the Avenger (Ex)" : "The vigilante gains Improved Unarmed Strike as a bonus feat, if he doesn't have this feat already. In addition, whenever he successfully attacks with his fist or a gauntlet, he gains a bonus on damage rolls equal to half his vigilante level (minimum +1, maximum of +5). Only an avenger vigilante can select this talent."
+    },
+    {
+    "Gator Wrangle (Ex)" : "The vigilante gains a +8 bonus to his CMD against grapple combat maneuvers when using the grab ability, and he halves all damage from constrict attacks. When attacking a creature that is grappling him, an avenger vigilante deals an additional amount of damage equal to half his vigilante level."
+    },
+    {
+    "Harsh Judgement (Su)" : "A vigilante with this talent can pronounce judgment upon his foes as per the inquisitor class feature (see page 38 of the Pathfinder RPG Advanced Player's Guide). He can choose from among the following inquisitor judgments: destruction, piercing, purity, and smiting. For the purpose of determining the bonuses provided by this ability, the vigilante's level stacks with levels in any other classes that grant judgment or harsh judgment. The vigilante can use this ability once per day plus an additional time per day at 4th level and every 3 levels thereafter (up to a maximum of seven times per day at 19th level). Only a vigilante with the zealot archetype can select this talent."
+    },
+    {
+    "Heavy Training (Ex)" : "The vigilante gains Heavy Armor Proficiency as a bonus feat, if he does not have that feat already. The armor skin vigilante talent also applies to heavy armor. At 16th level, if the vigilante has the armor skin vigilante talent, he can move at full speed in heavy armor. Only an avenger vigilante can select this talent."
+    },
+    {
+    "Hide in Plain Sight (Ex)" : "The vigilante can use Stealth to hide even when being observed. As long as he is within 10 feet of dim light (his own shadow doesn't count), he can hide without anything to actually hide behind. Only a stalker vigilante of at least 8th level can select this talent."
+    },
+    {
+    "Inspired Vigilante (Ex)" : "The vigilante's powers of deduction are far beyond the norm. This ability functions similarly to the investigator's inspiration ability, but the vigilante's inspiration pool is equal to his class level (do not add his Intelligence modifier), the vigilante can never use this ability without expending a use of inspiration, and it doesn't count as inspiration for any effects that interact with or require the inspiration class feature."
+    },
+    {
+    "Instant Plan (Ex)" : "The vigilante can quickly manage a situation that seems to be spiraling out of control. Once per day, the vigilante can state a plan of action. All allies within 30 feet that can hear him gain a +2 morale bonus on saving throws against fear effects and are immune to being demoralized. They also gain a +1 morale bonus on skill checks or combat maneuver checks of the vigilante's choice. The benefits last for 1 round per vigilante level."
+    },
+    {
+    "Leap and Bound (Ex)" : "A vigilante with this talent adds his Strength bonus on Acrobatics checks in addition to his Dexterity modifier. He is always treated as having a running start when jumping, and his high jumps are treated as long jumps when determining the DC. When the vigilante jumps, he does not fall until the end of his turn, allowing him to attack or perform other actions in midair. If the vigilante grapples a creature capable of bearing his weight, he does not fall, instead remaining adjacent to the creature as it moves. A vigilante must be at least 10th level to select this talent."
+    },
+    {
+    "Lethal Grace (Ex)" : "The vigilante combines strength and speed into incredibly deadly attacks. He gains Weapon Finesse as a bonus feat, and if he already has the Weapon Finesse feat, he can immediately swap it for another feat for which he qualified at the level he chose Weapon Finesse. When using Weapon Finesse to make a melee attack using his Dexterity bonus on attack rolls and his Strength bonus on damage rolls, he also adds half his vigilante level on damage rolls. This bonus damage is not reduced or increased if the vigilante is wielding a weapon two-handed or in an off-hand."
+    },
+    {
+    "Living Shield (Ex)" : "As an immediate action whenever the vigilante is grappling a creature and is targeted by an attack, he can attempt a combat maneuver check against the target of his grapple (this combat maneuver check doesn't count as a grapple combat maneuver check). If he succeeds, the creature he is grappling becomes the new target of the attack. If the check fails, the creature escapes the grapple and the vigilante is the target of the attack as normal. This ability must be used after the attack is declared against the vigilante, but before the attack is made and the results revealed."
+    },
+    {
+    "Mad Rush (Ex)" : "Whenever the vigilante charges, he can make a full attack. Whenever he uses this ability, he takes a \u20134 penalty to his AC until the start of his next turn (in addition to the AC penalty for charging). Only an avenger vigilante of at least 12th level can select this talent."
+    },
+    {
+    "Magical Familiarity (Sp)" : "The vigilante taps into a past life's arcane secrets. He selects a 0-level spell from the sorcerer/wizard spell list. The vigilante can cast the chosen spell three times per day as a spell-like ability, using his vigilante level as his caster level. At 6th level, he chooses a second 0-level spell that he can also use three times per day as a spell-like ability. At 12th level, in addition to these 0-level spells, he chooses a 1st-level spell that he can cast once per day as a spell-like ability. At 18th level, he can cast his 1st-level spell three times per day and his 0-level spells at will. The vigilante must have an Intelligence score of at least 10 to select this talent."
+    },
+    {
+    "Major Magic (Sp)" : "A vigilante with this talent gains the ability to cast a 1st-level spell drawn from the same spell list as the minor magic talent. The vigilante can cast this spell once per day as a spell-like ability for every 4 vigilante levels he has. The caster level for this ability is equal to the vigilante's level. The save DC for this spell is equal to 10 + the vigilante's Intelligence modifier (for psychic, sorcerer/wizard, and witch spells), Wisdom (for cleric, druid, and shaman spells), or Charisma (for bard spells). A vigilante must be at least 4th level, have the minor magic vigilante talent, and have a score of at least 11 in the appropriate ability to select this talent."
+    },
+    {
+    "Malleable Flesh (Su)" : "Whether through mutation or alchemy, some vigilantes have flesh that is as moldable as clay and as fluid as ink. A vigilante with this talent gains the shapechanger subtype and the compression universal monster rule. In addition, the vigilante can alter his appearance as disguise self, except that the changes are physical rather than illusory. However, aspects of the vigilante's aesthetic persist in all forms, halving the bonus on Disguise checks gained from this effect and from seamless guise. At 12th level, the vigilante can pass through narrow openings, even mere cracks, along with any item he wears or carries (to a maximum of his light load)."
+    },
+    {
+    "Minor Magic (Sp)" : "A vigilante with this talent selects one of the following spells lists: bard, cleric, druid, psychic, shaman, sorcerer/wizard, or witch. Once this decision is made, the selection cannot be changed. The vigilante gains the ability to cast a 0-level spell from the selected spell list. This spell can be cast two times per day as a spell-like ability. The caster level for this ability is equal to the vigilante's level. The save DC for this spell is equal to 10 + the vigilante's Intelligence modifier (for psychic, sorcerer/wizard, and witch spells), Wisdom (for cleric, druid, and shaman spells), or Charisma (for bard spells)."
+    },
+    {
+    "Mockery (Ex)" : "The vigilante gains AntagonizeUM as a bonus feat. He can target a creature with the Intimidate version of Antagonize twice each day, rather than just once. At 12th level, the effects of the Intimidate version of Antagonize last a number of rounds equal to the vigilante's Charisma modifier (minimum 1)."
+    },
+    {
+    "Monkey's Paws (Ex)" : "The vigilante gains a climb speed equal to his base speed and a +4 competence bonus on Escape Artist checks. The vigilante must have the rooftop infiltrator talent and be at least 5th level to select this talent."
+    },
+    {
+    "Morphic Weaponry (Ex)" : "The vigilante can shape his body into weaponry. This acts as the oozemorph shifter's morphic weaponry ability, treating the vigilante's level as his shifter level. The vigilante must have the shapechanger subtype to select this talent."
+    },
+    {
+    "Nothing Can Stop Me (Ex)" : "Once per round, while the vigilante is moving, he can make one attack as a free action against an unattended object in the way of his path, such as a door or table. If his attack deals enough damage to destroy the object, he can continue to move. If he doesn't destroy the object, his move ends. This attack is made as part of his move action and doesn't count against his attacks this round. If his attack inadvertently targets a creature (such as a mimic), it automatically misses and his move ends (although he can still attack the creature as normal at the end of his movement). Only an avenger vigilante can select this talent."
+    },
+    {
+    "One with the Wild (Ex)" : "The vigilante must have the environmental weapon talent to select this talent. In the same terrain for which he selected that talent, he gains a +4 competence bonus on Stealth, Survival, and Perception checks."
+    },
+    {
+    "Perfect Fall (Ex)" : "As long as there is a wall or another surface within arm's reach, the vigilante never takes falling damage. Even if no surface is available, he takes only half damage from falling and lands on his feet."
+    },
+    {
+    "Perfect Vulnerability (Ex)" : "As a standard action, the vigilante can cleverly strike his foe where that foe is weakest. This attack targets the foe's touch AC, and the foe is denied her Dexterity bonus against the attack. Once a foe has been the target of perfect vulnerability, she can't be the target of the same vigilante's perfect vulnerability for 24 hours. A vigilante must be at least 8th level to select this talent."
+    },
+    {
+    "Poisoner (Ex)" : "The vigilante gains the alchemist's poison use class feature. At 6th level, when he has 5 doses of a single kind of poison, he can synthesize a dose of that poison once per day at no cost. This process takes 1 minute. It doesn't expend the 5 doses of poison, but the doses must be in the vigilante's possession to perform the synthesis. The poison produced requires careful storage and special skill to use. It becomes inert if it leaves the vigilante's possession and can't be sold. The vigilante can maintain only 1 dose of synthesized poison for every 5 doses of that poison in his possession."
+    },
+    {
+    "Pull into the Shadows (Ex)" : "As a full-round action, the vigilante can move up to his speed toward an opponent who is unaware of his presence (or who considers him an ally) and make a single attack against that opponent. If the attack hits, he can attempt a drag combat maneuver (Advanced Player's Guide 321) against that enemy with a +4 bonus and without provoking an attack of opportunity. If the drag succeeds, the vigilante doesn't need to have enough movement remaining to move with the enemy. The vigilante can't use this ability on a true ally or a willing target."
+    },
+    {
+    "Racial Paragon" : "The vigilante can take a move action to gain the benefit of a feat with a racial prerequisite he meets but doesn't have. This effect lasts for 1 minute. The vigilante must meet all the feat's prerequisites. He can use this ability a number of times per day equal to 3 + 1/2 his vigilante level (minimum four times per day). The vigilante can use this ability again before the duration expires to replace a previous racial feat with another choice.  If a feat temporarily gained in this way has a daily use limitation, any uses of that feat while using this ability count toward that feat's daily limit.  This vigilante talent can be selected multiple times. Each time it is selected after the first, the vigilante can use this ability to gain the benefits of one additional racial feat at the same time, or to reduce the action required to activate this talent by one step (a move action becomes a swift action, a swift action becomes a free action, and a free action becomes an immediate action). If the vigilante chooses to gain the benefits of multiple feats, the feats selected must share the same racial prerequisite. He can use one of these feats to meet a prerequisite of a second feat; doing so means he cannot replace a feat currently fulfilling another's prerequisite without also replacing those feats that require it. Each individual feat selected counts toward his daily uses of this ability."
+    },
+    {
+    "Returning Weapon (Ex)" : "The vigilante has a signature type of thrown weapon that returns to him. Choose a type of thrown weapon, such as throwing axes. Whenever the vigilante uses that type of weapon, it automatically returns as if it had the returning property. At 14th level, if the vigilante chose a type of thrown weapon that is treated as ammunition, such as shuriken, and buys a set of 50 magic ammunition of that type, he automatically replenishes them at no cost and never runs out. If he chose a non-ammunition thrown weapon instead, he can apply the magical properties of the first weapon he throws in a round to any nonmagical thrown weapons of that type he throws that round. This allows him to make a full attack with the benefits of his magical thrown weapon, even though it only returns next round."
+    },
+    {
+    "Rogue Talent (Ex)" : "The vigilante gains a single rogue talent (not an advanced talent) of his choice. If he selects a rogue talent marked with an asterisk (*), that talent applies to his hidden strikes instead of to sneak attacks, and the talent counts as a stalker vigilante talent with an asterisk (*) for the limitation of only one applying to a given hidden strike. Only a stalker vigilante can select this talent."
+    },
+    {
+    "Rooftop Infiltrator (Ex)" : "The vigilante gains a climb speed equal to half his base speed, which increases to his full base speed when climbing a rope."
+    },
+    {
+    "Shackle Smash (Ex)" : "Perhaps trained to remove or destroy restraints from slaves and prisoners by the Twilight Talons or Bellflower Network, a vigilante with this talent can choose to make no more noise than people talking when he attempts a sunder combat maneuver check or attempts a Strength check to break an object. He ignores half an object's hardness when attempting sunder combat maneuver checks and when attacking nonmagical objects."
+    },
+    {
+    "Shadow's Sight (Ex)" : "The vigilante gains low-light vision and darkvision 60 feet. If he already had darkvision, its range increases by 30 feet."
+    },
+    {
+    "Shadow's Speed (Ex)" : "The vigilante's base speed increases by 10 feet. At 10th level, it increases by an additional 10 feet."
+    },
+    {
+    "Shield of Blades (Ex)" : "The vigilante's wild attacks allow him to block his foes' counterattacks. He gains Power Attack as a bonus feat. If he already has the Power Attack feat, he can immediately swap it for another feat for which he qualified at the level he chose Power Attack. When he takes an attack or full attack action, if he uses Power Attack on every attack to make melee attacks that use his Strength bonus on attack rolls, he gains a shield bonus to his AC until his next turn equal to his penalty on attack rolls from Power Attack. This bonus applies only if he actually takes that penalty on at least one of the attack rolls."
+    },
+    {
+    "Shield of Fury (Ex)" : "The vigilante gains Improved Shield Bash as a bonus feat. If he already has the Improved Shield Bash feat, he can immediately swap it for another feat for which he qualified at the level he chose Improved Shield Bash. In addition, if he is at least 6th level, he is treated as if he has the Two-Weapon Fighting feat as long as one of the weapons used is a shield. This allows him to take feats that require Two-Weapon Fighting as a prerequisite without meeting the Two-Weapon Fighting or Dexterity prerequisites, but these feats only apply while he is wielding a shield as one of his weapons (unless he takes Two-Weapon Fighting as normal, in which case this restriction is lifted)."
+    },
+    {
+    "Signature Arrows (Ex)" : "The vigilante must select one type of bow or crossbow (such as shortbow or heavy crossbow) when he selects this talent. After the first time the vigilante buys a set of 50 pieces of magic ammunition intended for that type of bow or crossbow, he can pay the construction cost instead of the purchase price for additional ammunition with identical magical effects for the same weapon, even if he could not normally craft magic ammunition. This benefit applies only to the first type of magic ammunition that the vigilante buys 50 pieces of for the designated weapon. The vigilante can take this talent more than once; each time he takes it, he can purchase and gain this benefit with either a specific type of magic ammunition for a different type of bow or crossbow or a different type of magic ammunition for the original weapon. The vigilante must be at least 14th level to select this talent."
+    },
+    {
+    "Signature Weapon (Ex)" : "The vigilante must select one type of weapon (such as longsword or crossbow) when he gains this talent. He gains Weapon Focus as a bonus feat for his selected weapon type. If he already has the Weapon Focus feat with the selected weapon, he can immediately swap it for another feat for which he qualified at the level he chose Weapon Focus in the selected weapon. At 8th level, he also gains Weapon Specialization as a bonus feat for his selected weapon. He doesn't have to meet any of the prerequisites for these feats. Only an avenger vigilante can select this talent."
+    },
+    {
+    "Silent Dispatch (Ex)" : "When the vigilante ambushes an enemy or enemies unaware of his presence, he can attempt a Stealth check at a \u20135 penalty. The result indicates the DC of Perception checks to hear the vigilante's attacks until an opponent's first action, when the DC returns to the normal \u201310 for hearing battle. Other enemies present can still see the attack; this talent only prevents the sounds of battle from alerting others."
+    },
+    {
+    "Sniper (Ex)" : "The vigilante can deal hidden strike damage with ranged attacks at any distance, rather than within 30 feet. Only a stalker vigilante of at least 6th level can select this talent."
+    },
+    {
+    "Stalker Sense (Ex)" : "The vigilante has a sense for danger. He always acts on the surprise round. At 6th level, he gains uncanny dodge, and at 12th level, he gains improved uncanny dodge. Only a stalker can select this talent."
+    },
+    {
+    "Steel Soldier (Ex)" : "Some vigilantes ceaselessly tinker with their armor until the two seem inseparable; masked maidens are particularly prone to developing this obsession. The vigilante can spend 1 day and 100 gp per class level modifying a set of armor with which he is proficient. The vigilante can conceal one set of unworn modified armor on his person as though it were an extraordinarily small object, as per Sleight of Hand, and can don modified armor without aid. The armor skin talent also applies to armor with this ability. At 8th level, the vigilante treats modified armor's enhancement bonus (if any) as a weapon enhancement bonus when making attacks with the armor's gauntlets, if the armor has any. Only an avenger vigilante can select this talent."
+    },
+    {
+    "Steely Resolve (Ex)" : "Three times per day, as an immediate action when the vigilante fails a Will saving throw against a mind-affecting effect, the vigilante can delay the effect's onset for a number of rounds equal to half his vigilante level, after which the vigilante is affected as normal by the entire effect. Rounds spent delaying the effect do not count toward the effect's duration."
+    },
+    {
+    "Strike the Unseen (Ex)" : "The vigilante gains Blind-Fight as a bonus feat. He can also deal hidden strike damage against targets with total concealment. At 10th level, he gains Improved Blind-Fight as a bonus feat and can deal all types of precision damage against targets with concealment or total concealment. At 16th level, he gains Greater Blind- Fight as a bonus feat. The vigilante does not have to meet the prerequisites for either Improved Blind-Fight or Greater Blind-Fight to gain these feats with this talent."
+    },
+    {
+    "Sucker Punch (Ex)" : "Whenever the vigilante attacks a foe that is unaware of his presence (or who views him as an ally), and the attack deals nonlethal damage, the attack deals an additional 1d6 points of nonlethal damage. This additional damage increases by 1d6 at each of 6th, 12th, and 18th levels. Only an avenger vigilante can select this talent."
+    },
+    {
+    "Sure-Footed (Ex)" : "The vigilante can move at full speed while using the Stealth and Acrobatics skills without penalty. At 8th level, he can move at full speed across difficult terrain."
+    },
+    {
+    "Surprise Strike (Ex)" : "The vigilante gains a greater advantage when his foe is unable to defend herself. Whenever he makes an attack against a foe that is denied her Dexterity bonus to AC, he gains a +1 bonus on his attack roll. This bonus increases to +2 at 8th level and to +3 at 16th level."
+    },
+    {
+    "Swamp Concoctions (Ex)" : "Twice per day as a full-round action, the vigilante can use the environment weapon vigilante talent to improvise an alchemical weapon worth no more than 15 gp per vigilante level. This improvised weapon cannot be sold and must be used within 3 rounds before it becomes inert. The vigilante gains the benefits of the Throw Anything feat for the purpose of these improvised weapons. This ability cannot create improvised weapons that incorporate special materials unless those materials are also present. To select this talent, the vigilante must have the environment weapon vigilante feat, and he must have selected jungle, swamp, or water for that talent."
+    },
+    {
+    "Sweeping Strike (Ex)" : "The vigilante gains Cleave as a bonus feat. At 6th level, he gains Great Cleave as a bonus feat. He does not need to meet the prerequisites for these feats. At 12th level, while using Great Cleave, he no longer has to hit a target in order to make an additional attack against a foe that is adjacent to that target. Only an avenger vigilante can select this talent."
+    },
+    {
+    "Take 'Em Alive (Ex)" : "The vigilante doesn't take the usual -4 penalty on attack rolls made to deal nonlethal damage with weapons that normally deal lethal damage. In addition, the vigilante gains a +1 bonus on all attack and damage rolls for attacks that deal only nonlethal damage and have no secondary effects (such as poison). This bonus increases by 1 at 5th level and every 3 levels thereafter, to a maximum of +5 at 20th level."
+    },
+    {
+    "Team Player (Ex)" : "The vigilante gains Swift AidAPG as a bonus feat, ignoring its prerequisites. Additionally, the vigilante can use the feat as a standard action, in which case it applies to every ally adjacent to the vigilante. At 10th level, the vigilante can increase the bonus provided to one ally by this feat to +2 by using the aid another action as a move action rather than as a swift action."
+    },
+    {
+    "Tiger's Claws (Ex)" : "The vigilante gains the ability to grow claws similar to a shifter's. These claws are natural weapons that can be extended at will and deal 1d4 points of piercing and slashing damage (1d3 if the vigilante is Small). At 11th level, the damage increases to 1d6 (1d4 if Small)."
+    },
+    {
+    "Turnabout (Ex)" : "A vigilante with this talent can capitalize on any opportunities in combat. Whenever a foe provokes an attack of opportunity from the vigilante by attacking or casting a spell, the vigilante can attempt a dirty trickAPG combat maneuver check in place of the attack of opportunity. If he succeeds at the check, in addition to the usual options, the vigilante can redirect the attack or spell to a new target or area the foe could have chosen."
+    },
+    {
+    "Twisting Fear (Ex)" : "Whenever the vigilante causes an opponent to gain the shaken, frightened, or panicked condition, that opponent takes an amount of nonlethal damage equal to the vigilante's reduced hidden strike damage, as the stress wears upon its body. A creature can't take damage from twisting fear more than once per round. Panicked creatures that take damage from twisting fear are too winded even to scream as they flee in terror. Only a stalker vigilante can select this talent."
+    },
+    {
+    "Unexpected Strike (Ex)" : "The vigilante gains Quick Draw as a bonus feat. At 8th level, he can draw hidden weapons as a swift action (instead of a move action)."
+    },
+    {
+    "Unkillable (Ex)" : "The vigilante gains Diehard as a bonus feat, though he does not have to meet the prerequisites for this feat. At 6th level, he doesn't lose hit points when he takes a standard action while disabled. At 12th level, when he would die from hit point damage, he remains alive for 1 round before dying (and if his hit points rise above a negative amount equal to his Constitution score before that round is over, he doesn't die). At 18th level, he is no longer disabled at negative hit points and can take a full round's worth of actions. Only an avenger vigilante can select this talent."
+    },
+    {
+    "Up Close and Personal (Ex)" : "When the vigilante attempts an Acrobatics check to move through an opponent's space during a move action, he can attempt a single melee attack against that opponent as a swift action. If the Acrobatics check succeeds, this attack applies the vigilante's hidden strike damage as if the foe were unaware of the vigilante. Otherwise, the vigilante applies the hidden strike damage he would deal if the target were denied its Dexterity bonus to AC. Only a stalker vigilante of at least 4th level can select this talent."
+    },
+    {
+    "Vigilante's Reflexes (Ex)" : "The vigilante gains Combat Reflexes as a bonus feat. If he already has the Combat Reflexes feat, he instead gains another feat he qualified for at the level when he chose Combat Reflexes. At 8th and 16th levels, the number of additional attacks of opportunity per round the vigilante can make increases by 1, regardless of the vigilante's Dexterity bonus."
+    },
+    {
+    "Vital Punishment (Ex)" : "The vigilante gains Vital Strike as a bonus feat, though he does not have to meet the prerequisites for this feat. Once per round, before he makes an attack of opportunity, he can declare it to be a vital punishment. If the attack hits, the vigilante can apply the Vital Strike feat. The vigilante can apply the Improved Vital Strike or Greater Vital Strike feat as his vital punishment instead if he later gains those feats. A vigilante must be at least 6th level to select this talent"
+    },
+    {
+    "Volatile Arrows (Ex)" : "A vigilante with this talent gains the ability to attach an alchemist bomb to a ranged attack he makes with a bow or crossbow as part of firing the attack. If the attack hits, it deals an additional amount of damage equal to that of an alchemist bomb, using the vigilante's level as his alchemist level to determine the bomb's damage. He can use this ability a number of times per day equal to 3 + his Intelligence modifier. The vigilante can takes this talent multiple times. Each time he does, he can use the ability one additional time per day and he gains one alchemist discovery that can modify bombs, treating his vigilante level as his alchemist level for any prerequisites. He can apply these discoveries to his bombs as normal."
+    },
+    {
+    "Vortex Splash (Ex)" : "When in rain or waist deep in water, the vigilante can make a whirling splash as a full-round action, allowing him to attempt a single dirty trick combat maneuver or feint against each adjacent foe. The vigilante can make a separate choice for each target."
+    },
+    {
+    "Weapon Familiarity (Ex)" : "The vigilante selects either two simple or martial weapons or one exotic weapon when he gains this talent. He gains proficiency with his chosen weapon or weapons. At 8th level, he also gains Weapon Focus as a bonus feat for his selected weapon or weapons. Only an avenger vigilante can select this talent."
+    },
+    {
+    "Whip of Vengeance (Ex)" : "The vigilante gains Whip MasteryUC as a bonus feat. If he already has the Whip Mastery feat, he can immediately swap it for another feat he qualified for at the level when he chose Whip Mastery. In addition, if he is at least 6th level, he also gains the Improved Whip MasteryUC feat. He treats his vigilante level as his vigilante base attack bonus for the purpose of meeting prerequisites of feats and abilities that have Whip Mastery as a prerequisite."
+    },
+    {
+    "Foe Collision (Ex)" : "The vigilante can shove one of his foes into another. When the vigilante deals hidden strike damage to a corporeal foe with a melee attack, he can also deal an amount of nonlethal damage equal to his reduced hidden strike damage to an opponent adjacent to the first (even if the second opponent is out of his reach). The damage is bludgeoning damage, and if the colliding foe has any natural attacks, the damage is also considered magic, evil, or any other type of damage the natural attack deals. Unlike normal vigilante talents that affect hidden strikes, this vigilante talent applies in all cases when the target is denied its Dexterity bonus to AC. Only a stalker vigilante can select this talent."
+    },
+    {
+    "Leave an Opening (Ex)" : "The vigilante's hidden strike leaves an unbalancing opening in a foe's defenses, setting up the foe to be attacked again. At the beginning of the foe's next turn, if the vigilante threatens the foe, the foe provokes an attack of opportunity from the vigilante. Multiple attacks against the same foe don't create multiple attacks of opportunity in the same round (but attacks against several foes can cause each to provoke one attack of opportunity). Only a stalker vigilante can select this talent."
+    },
+    {
+    "Mighty Ambush (Ex)" : "Once per round, when the vigilante succeeds at a hidden strike, he can instantly drop the damaged enemy unconscious for 1d4 rounds. A successful Fortitude saving throw negates this effect (DC = 10 + 1/2 the vigilante's class level + the higher of the vigilante's Strength and Dexterity modifiers). Whether or not a creature's saving throw is successful, it can't be affected by that vigilante's mighty ambush again for 24 hours. Only a stalker vigilante of at least 10th level can select this talent."
+    },
+    {
+    "Throat Jab (Ex)" : "The vigilante's hidden strike jabs his opponent in the throat, preventing that opponent from speaking until the vigilante's next turn. (If the vigilante uses this ability on the surprise round, it lasts until the end of his first full turn after the surprise round.) This prevents the target from calling out for help, using spells with verbal components, or doing anything else that requires speaking. The target cannot be affected by that vigilante's throat jab again for 24 hours. Only a stalker vigilante of at least 4th level can select this talent."
+    }
+]  
+}
