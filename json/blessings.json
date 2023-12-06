@@ -1,0 +1,338 @@
+[
+    {
+      " Air Blessing": {
+        "Source": "Advanced Class Guide pg. 63",
+        "Deities": " Gozreh, Shelyn.",
+        "Zephyr's Gift (minor)": " At 1st level, you can touch any one ranged weapon and enhance it with the quality of air. For 1 minute, any attacks made with the weapon take no penalties due to range. In addition, making a ranged attack with this weapon doesn't provoke an attack of opportunity.",
+        "Soaring Assault (major)": " At 10th level, you can touch an ally and give her the gift of flight for 1 minute (as). The ally gains a fly speed of 60 feet with average maneuverability. She gains a bonus on Fly skill checks equal to your level. Whenever the ally succeeds at a charge attack while flying, that attack deals an amount of additional electricity damage equal to your level."
+      }
+    },
+    {
+      " Animal Blessing": {
+        "Source": "Advanced Class Guide pg. 63",
+        "Deities": " Erastil, Gozreh.",
+        "Animal Fury (minor)": " At 1st level, you can touch one ally and grant it feral features. The ally gains 2 claw attacks that each deal 1d6 points of damage if the ally is Medium or 1d4 if it's Small, or 1 bite attack that deals 1d8 points of damage if the ally is Medium or 1d6 if it's Small. These are primary natural attacks that replace any similar primary natural attacks the ally might have. This effect lasts for 1 minute.",
+        "Battle Companion (major)": " At 10th level, you can summon a battle companion. This ability functions aswith a duration of 1 minute. This ability can summon only one animal, regardless of the list used. For every 2 levels beyond 10th, the level of thespell increases by 1 (to a maximum ofat 18th level)."
+      }
+    },
+    {
+      " Artifice Blessing": {
+        "Source": "Advanced Class Guide pg. 64",
+        "Deities": " Torag.",
+        "Crafter's Wrath (minor)": " At 1st level, you can touch one melee weapon and grant it greater power to harm and destroy crafted objects. For 1 minute, whenever this weapon deals damage to constructs or objects, it bypasses hardness and damage reduction.",
+        "Transfer Magic (major)": " At 10th level, you can temporarily transfer a weapon special ability from one weapon to another. The bearers of each of the weapons must be willing, and you must be touching both weapons to activate this ability. You can transfer a weapon special ability with a base price modifier of +1 or +2. If you are using this ability on a double weapon, only one end of the double weapon is affected. The transfer lasts for 1 minute, after which the transferred weapon special ability automatically returns to the source weapon. You can use this ability multiple times on the same weapon or weapons. Alternatively, you can use transfer magic to move a +1 or +2 armor special ability from one touched suit of armor to another, or move a +1 or +2 armor or weapon enhancement bonus to another armor or weapon."
+      }
+    },
+    {
+      " Chaos Blessing": {
+        "Source": "Advanced Class Guide pg. 64",
+        "Deities": " Calistria, Cayden Cailean, Desna, Gorum, Lamashtu, Rovagug.",
+        "Anarchic Strike (minor)": " At 1st level, you can touch one weapon and grant it a chaotic blessing. For 1 minute, this weapon glows yellow or purple and deals an additional 1d6 points of damage against lawful creatures. During this time, it's treated as chaotic for the purposes of overcoming damage reduction. This blessing's additional damage doesn't stack with the additional damage from the anarchic weapon special ability.",
+        "Battle Companion (major)": " At 10th level, you can summon a battle companion. This ability functions aswith a duration of 1 minute, but for only a chaotic outsider or an animal with the entropic creature simple template . This ability can summon only one creature, regardless of the list used. For every 2 levels beyond 10th, the level of the summon monster spell increases by 1 (to a maximum ofat 20th level)."
+      }
+    },
+    {
+      " Charm Blessing": {
+        "Source": "Advanced Class Guide pg. 64",
+        "Deities": " Calistria, Cayden Cailean, Norgorber, Shelyn.",
+        "Charming Presence (minor)": " At 1st level, you can touch an ally and grant an entrancing blessing. For 1 minute, the ally becomes mesmerizing to her opponents, filling them with either abject admiration or paralyzing fear. This effect functions as, except if the ally attacks an opponent, the effect ends with respect to only that opponent. This is a mind-affecting effect.",
+        "Dominance Aura (major)": " At 10th level, you can surround yourself with a tangible aura of majesty for 1 minute. While this aura is active, once per round as a swift action you can issue a command (as thespell) to one creature within 30 feet; the creature must succeed at a Will saving throw or submit for 1 round."
+      }
+    },
+    {
+      " Community Blessing": {
+        "Source": "Healer's Handbook pg. 13",
+        "Deities": " Erastil.",
+        "Communal Aid (minor)": " At 1st level, you can touch an ally and grant it the blessing of community. For the next minute, whenever that ally uses the aid another action, the bonus granted increases to +4. You can instead use this ability on yourself as a swift action.",
+        "Fight as One (major)": " At 10th level, you can rally your allies to fight together. For 1 minute, whenever you make a successful melee or ranged attack against a foe, allies within 10 feet of you gain a +2 insight bonus on attacks of the same type you made against that foe\u2014melee attacks if you made a melee attack, or ranged attacks if you made a ranged attack. If you score a critical hit, this bonus increases to +4 until the start of your next turn.Healer's Handbook pg. 13"
+      }
+    },
+    {
+      " Curse Blessing": {
+        "Source": "Magic Tactics Toolbox pg. 22",
+        "Deities": " Andirifkhu, Calistria, Desna, Graffiacane, Magdh.",
+        "Hexing Attack (minor)": " You can touch one weapon and enhance it to inflict a minor curse on the next target it strikes. The struck target must succeed at a Will saving throw or take a \u20132 penalty on attack rolls, saving throws, skill checks, or ability checks (warpriest's choice) for 1 minute.",
+        "Retributive Curse (major)": " At 10th level, as a swift or immediate action, you can inflict a curse on any adjacent creature that scores a critical hit against you or deals precision damage to you. The target must succeed at a Will saving throw or be cursed. Select one of the following effects: the target takes a \u20132 penalty to one ability score of your choice (the ability cannot be reduced below 1); the target takes a \u20132 penalty on attack rolls, saving throws, ability checks, and skill checks; each turn, the target has a 25% chance of taking no action (otherwise, it acts normally). This curse lasts for 1 hour. A creature can be subjected to only one instance of retributive curse at a time. This otherwise functions as"
+      }
+    },
+    {
+      " Darkness Blessing": {
+        "Source": "Advanced Class Guide pg. 65",
+        "Deities": " Zon-Kuthon.",
+        "Enshrouding Darkness (minor)": " At 1st level, you can touch an ally and bestow a darkness blessing. For 1 minute, the ally becomes enshrouded in shadows while in combat, granting it concealment (20%). Creatures that are normally able to see in supernatural darkness ignore this concealment.",
+        "Darkened Vision (major)": " At 10th level, you can place a shroud of darkness around the eyes of one foe within 30 feet. The target must succeed at a Will saving throw or be blinded for 1 minute (as)."
+      }
+    },
+    {
+      " Death Blessing": {
+        "Source": "Advanced Class Guide pg. 65",
+        "Deities": " Norgorber, Pharasma, Urgathoa, Zon-Kuthon.",
+        "From the Grave (minor)": " At 1st level, you can take on a corpse-like visage for 1 minute, making you more intimidating and giving you undead-like protection from harm. You gain a +4 bonus on Disguise checks to resemble an undead creature and on Intimidate checks, as well as a +2 profane bonus on saving throws against disease, mindaffecting effects, paralysis, poison, and stun.",
+        "Death's Touch (major)": " At 10th level, you can make a melee touch attack against an opponent to deliver grim suffering. If you succeed, you inflict 1 temporary negative level on the target for 1 minute. Alternatively, you can activate this ability as a swift action upon hitting an opponent with a melee attack. These temporary negative levels stack. You gain no benefit from imposing these negative levels (such as the temporary hit points undead gain from)."
+      }
+    },
+    {
+      " Destruction Blessing": {
+        "Source": "Advanced Class Guide pg. 65",
+        "Deities": " Gorum, Nethys, Rovagug, Zon-Kuthon.",
+        "Destructive Attacks (minor)": " At 1st level, you can touch an ally and bless it with the power of destruction. For 1 minute, the ally gains a morale bonus on weapon damage rolls equal to half your level (minimum 1).",
+        "Heart of Carnage (major)": " At 10th level, you can touch an ally and bless it with even greater destructive power. For 1 minute, the ally gains a +4 insight bonus on attack rolls made to confirm critical hits and has a 50% chance to treat any critical hit or sneak attack against it as a normal hit."
+      }
+    },
+    {
+      " Earth Blessing": {
+        "Source": "Advanced Class Guide pg. 65",
+        "Deities": " Abadar, Torag.",
+        "Acid Strike (minor)": " At 1st level, you can touch one weapon and enhance it with acidic potency. For 1 minute, this weapon emits acrid fumes that deal an additional 1d4 points of acid damage with each strike. This additional damage doesn't stack with the additional damage from theweapon special ability.",
+        "Armor of Earth (major)": " At 10th level, you can touch an ally and harden its armor or clothing. For 1 minute, the ally gains DR 1/\u2014. For every 2 levels beyond 10th, this DR increases by 1 (to a maximum of DR 5/\u2014 at 18th level). This doesn't stack with any other damage resistance."
+      }
+    },
+    {
+      " Earthquake Blessing": {
+        "Source": "Ultimate Wilderness pg. 97",
+        "Deities": " Evil deities that offer the Earth blessing or nonevil deities with disasters in their portfolios",
+        "Stone's Base (minor)": " You can touch an ally to bless it with the stalwart resilience of stone. For 1 minute, the creature gains a +4 bonus to its CMD against maneuvers that would move the ally or knock it prone.",
+        "Earth Hammer (major)": " At 10th level, you can touch a weapon to bless it with the force of a mighty earthquake for 1 minute. When the weapon hits a creature, the target must succeed at a Reflex save or fall prone; either way, the creature is immune to this ability for 24 hours."
+      }
+    },
+    {
+      " Evil Blessing": {
+        "Source": "Advanced Class Guide pg. 65",
+        "Deities": " Asmodeus, Lamashtu, Norgorber, Rovagug, Urgathoa, Zon-Kuthon.",
+        "Unholy Strike (minor)": " At 1st level, you can touch one weapon and give it an evil blessing. For 1 minute, this weapon takes on a black, orange, or violet cast and deals an additional 1d6 points of damage against good creatures. During this time, it's treated as evil for the purposes of overcoming damage reduction. This additional damage doesn't stack with the additional damage from theweapon special ability.",
+        "Battle Companion (major)": " At 10th level, you can summon a battle companion. This ability functions aswith a duration of 1 minute, but for only an evil outsider or an animal with the fiendish creature simple template. This ability can summon only one creature, regardless of the list used. For every 2 levels beyond 10th, the level of thespell increases by 1 (to a maximum ofat 20th level)."
+      }
+    },
+    {
+      " Fire Blessing": {
+        "Source": "Advanced Class Guide pg. 65",
+        "Deities": " Asmodeus, Sarenrae.",
+        "Fire Strike (minor)": " At 1st level, you can touch one weapon and enhance it with the grandeur of fire. For 1 minute, this weapon glows red-hot and deals an additional 1d4 points of fire damage with each hit. This additional damage doesn't stack with the additional damage from theorweapon special abilities.",
+        "Armor of Flame (major)": " At 10th level, you can touch an ally to wreath it in flames. This works as(warm shield only) with a duration of 1 minute."
+      }
+    },
+    {
+      " Flood Blessing": {
+        "Source": "Ultimate Wilderness pg. 97",
+        "Deities": " Evil deities that offer the Water blessing or nonevil deities with disasters in their portfolios",
+        "Lasting Breath (minor)": " You can touch an ally to bless it with an extra reserve of breath. For 1 minute, while the ally holds its breath, standard and full-round actions don't decrease the number of rounds the ally can hold its breath (see page 445 of).",
+        "Tsunami Burst (major)": " At 10th level, when you are hit by a melee attack, you can invoke this blessing as an immediate action. A wave of water blasts out from you at your attacker, attempting a bull rush combat maneuver check using your CMB but adding your Wisdom modifier instead of your Strength modifier."
+      }
+    },
+    {
+      " Glory Blessing": {
+        "Source": "Advanced Class Guide pg. 65",
+        "Deities": " Gorum, Iomedae, Sarenrae.",
+        "Glorious Presence (minor)": " At 1st level, you can touch an ally and grant it a glorious blessing. For 1 minute, the ally becomes mesmerizing to her foes. This functions as, except if the ally attacks an opponent, this effect ends with respect to only that opponent. This is a mind-affecting effect.",
+        "Demoralizing Glory (major)": " At 10th level, when you successfully damage an opponent with a melee attack or attack spell, as a swift action you can attempt to demoralize that opponent with the Intimidate skill using your ranks in Intimidate or your warpriest level, whichever is higher."
+      }
+    },
+    {
+      " Godclaw Blessing": {
+        "Source": "Disciple's Doctrine pg. 14",
+        "Deities": " Abadar, Asmodeus, Iomedae, Irori, Torag",
+        "Command Obedience (minor)": " You can touch an ally and say a quick word to remind her of her obligations, granting her a new saving throw against each enchantment effect that currently affects her. If the saving throw is successful, the enchantment effect immediately ends. This power affects only effects that allow a saving throw.",
+        "Tactical Readiness (major)": " At 10th level, you can rally your allies within 30 feet, allowing each to immediately do one of the following as a free action that does not provoke attacks of opportunity: remove the flat-footed condition, take a 5-foot step, draw a weapon, ready a shield, or gain a +1 dodge bonus to AC for 1 round. You can affect a number of allies equal to your Wisdom bonus. These actions do not count against your allies' total movement or actions on their next turn."
+      }
+    },
+    {
+      " Good Blessing": {
+        "Source": "Advanced Class Guide pg. 66",
+        "Deities": " Cayden Cailean, Desna, Erastil, Iomedae, Sarenrae, Shelyn, Torag.",
+        "Holy Strike (minor)": " At 1st level, you can touch one weapon and bless it with the power of purity and goodness. For 1 minute, this weapon glows green, white, or yellow-gold and deals an additional 1d6 points of damage against evil creatures. During this time, it's treated as good for the purposes of overcoming damage reduction. This additional damage doesn't stack with the additional damage from theweapon special ability.",
+        "Battle Companion (major)": " At 10th level, you can summon a battle companion. This ability functions aswith a duration of 1 minute, but for only a good outsider or an animal with the celestial creature simple template. This ability can summon only one creature, regardless of the list used. For every 2 levels beyond 10th, the level of thespell increases by 1 (to a maximum ofat 20th level)."
+      }
+    },
+    {
+      " Healing Blessing": {
+        "Source": "Healer's Handbook pg. 13",
+        "Deities": " Irori, Pharasma, Sarenrae.",
+        "Powerful Healer (minor)": " At 1st level, you can add power to a cure spell as you cast it. As a swift action, you can treat any cure spell as if it were empowered (as the Empower Spell feat), causing it to heal 50% more damage (or deal 50% more damage if used against undead). This ability doesn't stack with itself or the Empower Spell feat.",
+        "Fast Healing (major)": " At 10th level, you can touch an ally and grant it fast healing 3 for 1 minute.Healer's Handbook pg. 13"
+      }
+    },
+    {
+      " Knowledge Blessing": {
+        "Source": "Advanced Class Guide pg. 66",
+        "Deities": " Calistria, Irori, Nethys, Norgorber, Pharasma.",
+        "Lore Keeper (minor)": " At 1st level, you can touch a creature to learn about its abilities and weaknesses. With a successful touch attack, you gain information as if your result on the appropriate Knowledge skill check were equal to 15 + your warpriest level + your Wisdom modifier.",
+        "Monster Lore (major)": " At 10th level, when you succeed at a Knowledge check against an opponent to learn about its abilities or weaknesses (or succeed at a touch attack using the lore keeper blessing, above), you can as a swift action gain a +2 insight bonus on attacks, saving throws, and ability and skill checks, as well as to your AC against that creature. This effect lasts for 1 minute."
+      }
+    },
+    {
+      " Law Blessing": {
+        "Source": "Advanced Class Guide pg. 66",
+        "Deities": " Abadar, Asmodeus, Erastil, Iomedae, Irori, Torag, Zon-Kuthon.",
+        "Axiomatic Strike (minor)": " At 1st level, you can touch one weapon and enhance it with the essence of law. For 1 minute, this weapon glows blue, pale yellow, or white and deals an additional 1d6 points of damage against chaotic creatures. During this time, it's treated as lawful for the purposes of overcoming damage reduction. This additional damage doesn't stack with the additional damage from the axiomatic weapon special ability.",
+        "Battle Companion (major)": " At 10th level, you can summon a battle companion. This ability functions aswith a duration of 1 minute, but for only a lawful outsider or an animal with the resolute creature simple template . This ability can summon only one creature, regardless of the list used. For every 2 levels beyond 10th, the level of thespell increases by 1 (to a maximum ofat 20 level)."
+      }
+    },
+    {
+      " Liberation Blessing": {
+        "Source": "Healer's Handbook pg. 13",
+        "Deities": " Desna.",
+        "Liberation (minor)": " At 1st level, for 1 round as a swift action, you can ignore impediments to your mobility and effects that cause paralysis (as). You can activate this blessing even if you're otherwise unable to take actions, but not if you're unconscious.",
+        "Freedom's Shout (major)": " At 10th level, as a swift action you can emit a 30-foot aura that affects all allies with the liberation blessing described above. This effect lasts for 1 round.Healer's Handbook pg. 13"
+      }
+    },
+    {
+      " Luck Blessing": {
+        "Source": "Advanced Class Guide pg. 66",
+        "Deities": " Calistria, Desna, Shelyn.",
+        "Lucky Presence (minor)": " At 1st level, you can touch an ally and grant it a lucky presence. The target of this luck can call upon it to roll any one ability check, attack roll, saving throw, or skill check twice and take the better result. The decision to use this ability must be made before the roll is made. Once used, or once 1 minute passes, the effect ends.",
+        "Unlucky Enemy (major)": " At 10th level, as an immediate action you can force an adjacent opponent to reroll an attack, saving throw, or skill or ability check it just attempted; it must take the lower of the two rolls. You must declare this after the roll is made but before the result is revealed."
+      }
+    },
+    {
+      " Madness Blessing": {
+        "Source": "Advanced Class Guide pg. 66",
+        "Deities": " Lamashtu.",
+        "Madness Supremacy (minor)": " At 1st level, as a swift action you can target a creature within 30 feet that has the cowering, frightened, panicked, or paralyzed condition. That condition is suspended for 1 round, and the chosen creature gains the confused condition instead. The confused creature rerolls any result other than \"attack self \" or \"attack nearest creature.\" The round spent confused counts toward the duration of the suspended effect. At the end of the confused round, the suspended condition resumes.",
+        "Control Madness (major)": " At 10th level, as a swift action you can choose one behavior for all confused creatures within 30 feet to exhibit (as if all creatures rolled the same result). This effect lasts for 1 round. You can use this ability even while you are confused."
+      }
+    },
+    {
+      " Magic Blessing": {
+        "Source": "Advanced Class Guide pg. 67",
+        "Deities": " Asmodeus, Nethys, Urgathoa.",
+        "Hand of the Acolyte (minor)": " At 1st level, you can cause your melee weapon to fly from your grasp and strike an opponent, then instantly return to you. You can make a single attack using a melee weapon at a range of 30 feet. This attack is treated as a ranged attack with a thrown weapon, except that you add your Wisdom modifier to the attack roll instead of your Dexterity modifier (you still add your Strength modifier to the damage roll as normal). This ability cannot be used to perform a combat maneuver.",
+        "Blessed Magic (major)": " At 10th level, you can cast a prepared warpriest spell without expending its spell slot. The spell must have a casting time of 1 standard action and must use a spell slot that is at least 3 spell levels lower than the highest warpriest spell level you can cast. In addition, the spell must be one that damages a creature or causes a creature to take penalties (such asor). For example, if you are 10th level and can cast 4th-level warpriest spells, you could use this blessing to cast a 1st-level warpriest spell without expending its spell slot."
+      }
+    },
+    {
+      " Nobility Blessing": {
+        "Source": "Healer's Handbook pg. 13",
+        "Deities": " Abadar.",
+        "Inspiring Word (minor)": " At 1st level, you can speak a few words to a creature within 30 feet that fill them with inspiration. You can grant that creature a +2 morale bonus on attack rolls, ability checks, skill checks, or saving throws (your choice). This effect lasts for 1 minute.",
+        "Lead by Example (major)": " At 10th level, as a swift action you can inspire your allies to follow your lead. If the following action on your turn is an attack or skill check, all allies within 30 feet who take the same action against the same foe or obstacle on their next turn gain a +4 morale bonus on that roll.Healer's Handbook pg. 13"
+      }
+    },
+    {
+      " Plant Blessing": {
+        "Source": "Advanced Class Guide pg. 67",
+        "Deities": " Erastil, Gozreh.",
+        "Creeping Vines (minor)": " At 1st level, upon hitting with a melee attack, as a swift action you cause the creature you hit to sprout entangling vines that attempt to hold it in place, entangling it for 1 round (Reflex negates).",
+        "Battle Companion (major)": " At 10th level, you can summon a battle companion. This ability functions as, with a duration of 1 minute. This ability can summon only one animal, regardless of the list used, and the creature's type changes to plant instead of animal. For every 2 levels beyond 10th, the level of thespell increases by 1, to a maximum ofat 20th level."
+      }
+    },
+    {
+      " Protection Blessing": {
+        "Source": "Advanced Class Guide pg. 67",
+        "Deities": " Abadar, Nethys, Shelyn, Torag.",
+        "Increased Defense (minor)": " At 1st level, you can gain a +1 sacred bonus on saving throws and a +1 sacred bonus to AC for 1 minute. The bonus increases to +2 at 10th level and +3 at 20th level.",
+        "Aura of Protection (major)": " At 10th level, you can emit a 30-foot aura of protection for 1 minute. You and your allies within this aura gain resistance 10 against acid, cold, electricity, fire, and sonic. At 15th level, the energy resistance increases to 20."
+      }
+    },
+    {
+      " Repose Blessing": {
+        "Source": "Advanced Class Guide pg. 67",
+        "Deities": " Pharasma.",
+        "Gentle Rest (minor)": " At 1st level, you can fill a living creature with lethargy by hitting it with a melee touch attack, causing it to become staggered for 1 round. If the target is already staggered, it falls asleep for 1 round instead. An undead creature that's touched is staggered for a number of rounds equal to your Wisdom modifier (minimum 1).",
+        "Back to the Grave (major)": " At 10th level, when using channel energy to heal living creatures, you can take a swift action on that same turn to also deal damage to undead creatures (as your channel energy ability). Undead take an amount of damage equal to half the amount healed, and can attempt the normal saving throw to halve this damage."
+      }
+    },
+    {
+      " Rune Blessing": {
+        "Source": "Advanced Class Guide pg. 67",
+        "Deities": " Irori, Nethys.",
+        "Blast Rune (minor)": " At 1st level, you can create a blast rune in any adjacent square. Any creature entering this square takes an amount of damage equal to 1d6 + 1/2 your warpriest level. This rune deals either acid, cold, electricity, or fire damage, designated when you create the rune. The rune is invisible, and lasts a number of rounds equal to your warpriest level or until discharged. You cannot create a blast rune in a square occupied by another creature. This rune counts as a 1st-level spell for the purposes of dispelling. It can be discovered with a successful DC 26 Perception skill check and disarmed with a successful DC 26 Disable Device skill check.",
+        "Spell-Storing Weapon (major)": " At 10th level, you can cast a spell into a magic weapon as if it had theweapon special ability. If the stored spell is not used within 10 minutes, it dissipates."
+      }
+    },
+    {
+      " Scalykind Blessing": {
+        "Source": "Advanced Class Origins pg. 25",
+        "Deities": " Apsu, Dahak, Ragadahn, Ydersius.",
+        "Scaly Touch (minor)": " At 1st level, you can touch an ally as a standard action to grant it reptilian scales. For 1 minute, the ally gains a +1 enhancement bonus to its natural armor. At 5th level and every 5 levels thereafter, this bonus increases by 1 (to a maximum of +5 at 20th level).",
+        "Serpent Fang (major)": " At 10th level, as a standard action you can manifest venomous fangs for 1 minute. These fangs grant a bite attack that deals 1d4 points of damage (for a Medium warpriest, 1d3 if Small). A successful bite also aff licts the opponent with a debilitating venom. The poison's save DC is equal to 10 + 1/2 your warpriest level + your Constitution modifier."
+      }
+    },
+    {
+      " Shadow Blessing": {
+        "Source": "Blood of Shadows pg. 17",
+        "Deities": " Nocticula, Norgorber, Zon-Kuthon.",
+        "Flicker of Shadows (minor)": " At 1st level, you can cause a weapon you touch to warp and become insubstantial for a split second before an attack. The first attack made with this weapon each round ignores any shield bonus to Armor Class, as well as bonuses from cover. Total cover still provides a creature its full benefit. This effect lasts for 1 minute.",
+        "Swift as Shadow (major)": " At 10th level, you can spend a swift action to empower yourself or an ally within 30 feet to move over the ground as easily as its shadow. The subject's land speed increases by 10 feet and it takes no movement penalties for darkness, difficult terrain, or slickness. The creature can safely move over areas of ice and even those affected by aspell. When a creature affected by this ability hits with a charge attack, that attack deals an amount of additional cold damage equal to your level."
+      }
+    },
+    {
+      " Strength Blessing": {
+        "Source": "Advanced Class Guide pg. 68",
+        "Deities": " Cayden Cailean, Gorum, Irori, Lamashtu, Urgathoa.",
+        "Strength Surge (minor)": " At 1st level, as a swift action you can focus your own strength. You gain an enhancement bonus equal to 1/2 your warpriest level (minimum +1) on melee attack rolls, combat maneuver checks that rely on Strength, Strength-based skills, and Strength checks for 1 round.",
+        "Strength of Will (major)": " At 10th level, as a swift action you can ignore the movement penalties caused by wearing medium or heavy armor or by carrying a medium or heavy load. This effect lasts for 1 minute. During this time, you can add your Strength modifier on saving throws against effects that would cause you to become entangled, staggered, or paralyzed."
+      }
+    },
+    {
+      " Sun Blessing": {
+        "Source": "Advanced Class Guide pg. 68",
+        "Deities": " Iomedae, Sarenrae.",
+        "Blinding Strike (minor)": " At 1st level, you can create a flash of sunlight in the eyes of one of your opponents. The target is blinded for 1 round. If it succeeds at a Reflex saving throw, it's instead dazzled for 1 round. Creatures with light blindness or light sensitivity take a \u20134 penalty on this saving throw. This is a light effect. Sightless creatures are unaffected by this ability.",
+        "Cleansing Fire (major)": " At 10th level, you can touch a weapon and grant it either theorweapon special ability for 1 minute. If you spend two uses of your blessing when activating this ability, the weapon can have both weapon special abilities."
+      }
+    },
+    {
+      " Tornado Blessing": {
+        "Source": "Ultimate Wilderness pg. 97",
+        "Deities": " Evil deities that offer the Air blessing or nonevil deities with disasters in their portfolios",
+        "Dust Devil (minor)": " When you hit with a weapon attack, you can use a swift action to cause a sudden burst of wind and debris to swirl around your target. The target is dazzled for 1 minute.",
+        "Howling Gale (major)": " At 10th level, you can invoke a howling windstorm around yourself as a standard action. For 1 minute, any Large or smaller creature takes twice as much movement to enter a space adjacent to you due to the winds, and thus can't take a 5-foot step to move adjacent to you."
+      }
+    },
+    {
+      " Travel Blessing": {
+        "Source": "Advanced Class Guide pg. 68",
+        "Deities": " Abadar, Cayden Cailean, Desna.",
+        "Agile Feet (minor)": " At 1st level, as a swift action you gain increased mobility. For 1 round, you ignore all difficult terrain (including magical terrain) and take no penalties for moving through it.",
+        "Dimensional Hop (major)": " At 10th level, you can teleport up to 20 feet as a move action. You can increase this distance by expending another use of your blessing\u2014each use spent grants an additional 20 feet. You must have line of sight to your destination. This teleportation doesn't provoke attacks of opportunity. You can bring other willing creatures with you, but each such creature requires expending one additional use of your blessing, regardless of the distance traveled. (For example, transporting yourself 40 feet costs 2 uses of your blessing, and transporting an additional person this distance costs 1 more use.)"
+      }
+    },
+    {
+      " Trickery Blessing": {
+        "Source": "Advanced Class Guide pg. 68",
+        "Deities": " Asmodeus, Calistria, Lamashtu, Norgorber.",
+        "Double (minor)": " At 1st level, as a move action you can create an illusory double of yourself. This double functions as a single, and lasts for a number of rounds equal to your warpriest level, or until the illusory duplicate is dispelled or destroyed. You can have no more than one double at a time. The double created by this ability doesn't stack with the additional images from thespell.",
+        "Greater Invisibility (major)": " At 10th level, as a swift action you can become invisible for 1 round (as)."
+      }
+    },
+    {
+      " Void Blessing": {
+        "Source": "Advanced Class Origins pg. 25",
+        "Deities": " Great Old Ones, Groetus.",
+        "Airless Touch (minor)": " At 1st level, with a successful melee touch attack you can steal the breath from an opponent's lungs, leaving it unable to speak, use breath weapons, cast spells with verbal components, or do anything else requiring breath for 1 round. If the target fails at a Fortitude saving throw, it's also staggered for 1 round as it catches its breath. If the target was attempting to hold its breath, it can no longer do so: it must breathe on its turn or risk suffocation and unconsciousness. Creatures that don't need to breathe are unaffected. Regardless of whether it succeeds at its saving throw, the target is immune to further uses of your airless touch for 24 hours.",
+        "Deny Gravity (major)": " At 10th level, as a standard action you can touch an ally to allow her to ignore the effects of gravity for 1 minute (as). The ally gains a fly speed of 40 feet with average maneuverability. The ally is also immune to dangerous environmental conditions (as) for 1 minute."
+      }
+    },
+    {
+      " War Blessing": {
+        "Source": "Advanced Class Guide pg. 68",
+        "Deities": " Gorum, Iomedae, Rovagug, Urgathoa.",
+        "War Mind (minor)": " At 1st level, you can touch an ally and grant it a tactical advantage for 1 minute. At the start of its turn each round, it can select one of the following bonuses: +10 feet to base land speed, +1 dodge bonus to AC, +1 insight bonus on attack rolls, or a +1 luck bonus on saving throws. Each bonus selected lasts for 1 round.",
+        "Battle Lust (major)": " At 10th level, you can touch an ally and grant it a thirst for battle. All of the ally's melee attacks are treated as if they had theweapon special ability, but the additional damage dealt to the ally from that special ability is nonlethal. In addition, the ally receives a +4 insight bonus on attack rolls made to confirm critical hits. These benefits last for 1 minute."
+      }
+    },
+    {
+      " Water Blessing": {
+        "Source": "Advanced Class Guide pg. 68",
+        "Deities": " Gozreh, Pharasma.",
+        "Ice Strike (minor)": " At 1st level, you can touch one weapon and enhance it with the power of water. For 1 minute, this weapon glows with a blue-white chill and deals an additional 1d4 points of cold damage with each strike. This additional damage doesn't stack with the additional damage from theorweapon special abilities.",
+        "Armor of Ice (major)": " At 10th level, you can touch any one ally and wreath it in freezing mist. This works as(chill shield only) with a duration 1 minute."
+      }
+    },
+    {
+      " Weather Blessing": {
+        "Source": "Advanced Class Guide pg. 68",
+        "Deities": " Gozreh, Rovagug.",
+        "Storm Strike (minor)": " At 1st level, you can touch one weapon and grant it a blessing of stormy weather. For 1 minute, this weapon glows with blue or yellow sparks and deals an additional 1d4 points of electricity damage with each hit. This additional damage doesn't stack with the additional damage from theorweapon special abilities.",
+        "Wind Barrier (major)": " At 10th level, you can create a barrier of fast winds around yourself for 1 minute. This acts as aon all sides of your square, protects you with, and doesn't interfere with your ranged attacks."
+      }
+    },
+    {
+      " Wildfire Blessing": {
+        "Source": "Ultimate Wilderness pg. 97",
+        "Deities": " Evil deities that offer the Fire blessing or nonevil deities with disasters in their portfolios",
+        "Leaping Flames (minor)": " You touch an ally to bless it with the speed of a wildfire for 1 minute. The ally gains a +10-foot enhancement bonus to its base speed, and the ally gains a +1 dodge bonus to its AC against attacks of opportunity.",
+        "Fiery Wake (major)": " At 10th level, when you move, you can use a swift action to invoke a blazing blessing on yourself. For the rest of your turn, your movement leaves behind a 10-foot-tall wall of opaque fire in your path. The wall burns for 1 minute. A creature that touches the wall takes 2d6 points of fire damage."
+      }
+    }
+  ]
