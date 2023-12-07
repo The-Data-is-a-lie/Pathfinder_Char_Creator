@@ -1,138 +1,111 @@
 {
     "mesmerist tricks": [
       {
-        "name": "Astounding Avoidance",
-        "description": "The subject can avoid damage from magical and unusual attacks.",
+        "Astounding Avoidance": "The subject can avoid damage from magical and unusual attacks.",
         "trigger": "When the subject attempts a saving throw against an attack or spell that normally deals half damage on a successful save."
       },
       {
-        "name": "Compel Alacrity",
-        "description": "A dash of mental speed lets the subject push past her physical limits to avoid an enemy.",
+        "Compel Alacrity": "A dash of mental speed lets the subject push past her physical limits to avoid an enemy.",
         "trigger": "When the subject begins her turn within an enemy’s reach."
       },
       {
-        "name": "Chain of Eyes",
-        "description": "The subject can share her senses with the mesmerist.",
+        "Chain of Eyes": "The subject can share her senses with the mesmerist.",
         "trigger": "By closing his eyes and concentrating on the implanted subject."
       },
       {
-        "name": "False Flanker",
-        "description": "A duplicate of the mesmerist appears momentarily, as though he were fighting in tandem with the subject.",
+        "False Flanker": "A duplicate of the mesmerist appears momentarily, as though he were fighting in tandem with the subject.",
         "trigger": "When the subject moves into or begins her turn in a square where she threatens an enemy."
       },
       {
-        "name": "Fearsome Guise",
-        "description": "A veil of illusion makes the subject appear to be someone else and then transform into a hideous monster at an opportune time.",
+        "Fearsome Guise": "A veil of illusion makes the subject appear to be someone else and then transform into a hideous monster at an opportune time.",
         "trigger": "When the subject attacks a creature."
       },
       {
-        "name": "Fleet in Shadows",
-        "description": "The subject can move double its normal speed in dim or darker light.",
+        "Fleet in Shadows": "The subject can move double its normal speed in dim or darker light.",
         "trigger": "Whenever the target enters an area with dim or darker light."
       },
       {
-        "name": "Gift of Will",
-        "description": "A small portion of the mesmerist’s vast mental power buttresses his ally’s mind.",
+        "Gift of Will": "A small portion of the mesmerist’s vast mental power buttresses his ally’s mind.",
         "trigger": "When the subject attempts a Will saving throw, Sense Motive check, or is targeted by an Intimidate check."
       },
       {
-        "name": "Levitation Buffer",
-        "description": "A mesmerist’s telekinetic assault renders foes around the subject less of a threat.",
+        "Levitation Buffer": "A mesmerist’s telekinetic assault renders foes around the subject less of a threat.",
         "trigger": "When an enemy moves adjacent to the subject or the subject begins her turn with enemies adjacent to her."
       },
       {
-        "name": "Linked Reaction",
-        "description": "A hive mind allows the mesmerist and an ally to share one another’s reaction times.",
+        "Linked Reaction": "A hive mind allows the mesmerist and an ally to share one another’s reaction times.",
         "trigger": "When either the subject or the mesmerist is surprised and the other isn’t."
       },
       {
-        "name": "Mask Misery",
-        "description": "The subject can shrug off a condition for a short time before succumbing to it.",
+        "Mask Misery": "The subject can shrug off a condition for a short time before succumbing to it.",
         "trigger": "When the subject becomes affected by a minor condition listed under the touch treatment ability."
       },
       {
-        "name": "Meek Facade",
-        "description": "The subject magically seems like a weak target, goading an enemy into attacking her.",
+        "Meek Facade": "The subject magically seems like a weak target, goading an enemy into attacking her.",
         "trigger": "When the subject misses a creature with an attack."
       },
       {
-        "name": "Mesmeric Mirror",
-        "description": "An illusory image appears near the subject to throw off attackers.",
+        "Mesmeric Mirror": "An illusory image appears near the subject to throw off attackers.",
         "trigger": "When the subject is attacked or becomes the target of a spell that requires an attack roll."
       },
       {
-        "name": "Mesmeric Pantomime",
-        "description": "By orchestrating the movement of his ally’s body, the mesmerist imparts to that ally his own skill at a physical task.",
+        "Mesmeric Pantomime": "By orchestrating the movement of his ally’s body, the mesmerist imparts to that ally his own skill at a physical task.",
         "trigger": "When the subject attempts a Strength– or Dexterity-based skill check."
       },
       {
-        "name": "Misdirection",
-        "description": "An enemy’s perception of an attack by the subject shifts, making the foe unprepared to defend against the attack.",
+        "Misdirection": "An enemy’s perception of an attack by the subject shifts, making the foe unprepared to defend against the attack.",
         "trigger": "When the subject makes an attack or uses a spell that requires an attack roll."
       },
       {
-        "name": "Psychic Impression",
-        "description": "Objects retain psychic impressions of those who come in contact with them, and a powerful mind can read these impressions.",
+        "Psychic Impression": "Objects retain psychic impressions of those who come in contact with them, and a powerful mind can read these impressions.",
         "trigger": "When the subject touches an object that another creature with an Intelligence score of 3 or more has touched in the last 10 minutes."
       },
       {
-        "name": "Psychosomatic Surge",
-        "description": "Psychic magic soothes the subject, alleviating her wounds temporarily.",
+        "Psychosomatic Surge": "Psychic magic soothes the subject, alleviating her wounds temporarily.",
         "trigger": "When the subject takes damage."
       },
       {
-        "name": "Reflect Fear",
-        "description": "The subject suppresses the fear effect that triggered the trick for 1d4 rounds.",
+        "Reflect Fear": "The subject suppresses the fear effect that triggered the trick for 1d4 rounds.",
         "trigger": "When the subject is affected by a fear effect or is the target of an Intimidate check."
       },
       {
-        "name": "Reflection of Weakness",
-        "description": "Psychic feedback causes an enemy to suffer from the same weakening effect it imposes on the subject.",
+        "Reflection of Weakness": "Psychic feedback causes an enemy to suffer from the same weakening effect it imposes on the subject.",
         "trigger": "When an attack or spell used by an enemy causes the subject to take ability damage, ability drain, bleed damage, or a minor or moderate condition."
       },
       {
-        "name": "See in Darkness",
-        "description": "The subject gains darkvision with a range of 60 feet for 1 minute.",
+        "See in Darkness": "The subject gains darkvision with a range of 60 feet for 1 minute.",
         "trigger": "When the subject moves into an area of darkness."
       },
       {
-        "name": "Shadow Splinter",
-        "description": "The mesmerist protects the subject against an attack and redirects the harm to someone else.",
+        "Shadow Splinter": "The mesmerist protects the subject against an attack and redirects the harm to someone else.",
         "trigger": "When the subject is targeted by an attack or by a spell that requires an attack roll."
       },
       {
-        "name": "Slip Bonds",
-        "description": "While implanted with this trick, the subject gains a +2 circumstance bonus on Escape Artist checks.",
+        "Slip Bonds": "While implanted with this trick, the subject gains a +2 circumstance bonus on Escape Artist checks.",
         "trigger": "If the subject becomes grappled, pinned, shackled, or otherwise personally restrained."
       },
       {
-        "name": "Spectral Smoke",
-        "description": "A cloud of smoke pops up around the subject, foiling attacks.",
+        "Spectral Smoke": "A cloud of smoke pops up around the subject, foiling attacks.",
         "trigger": "When the subject is targeted by an attack or by a spell that requires an attack roll."
       },
       {
-        "name": "Telepathic Link",
-        "description": "The subject can communicate telepathically with the mesmerist during a crisis.",
+        "Telepathic Link": "The subject can communicate telepathically with the mesmerist during a crisis.",
         "trigger": "When the subject and her allies are outnumbered in combat."
       },
       {
-        "name": "Umbral Shield",
-        "description": "The subject ignores any harmful effects of bright light or sunlight for 1 minute.",
+        "Umbral Shield": "The subject ignores any harmful effects of bright light or sunlight for 1 minute.",
         "trigger": "Whenever the subject would be exposed to harmful bright light."
       },
       {
-        "name": "Unwitting Messenger",
-        "description": "The mesmerist describes a recipient to the subject while implanting this trick, then recites a verbal message no longer than five words per mesmerist level.",
+        "Unwitting Messenger": "The mesmerist describes a recipient to the subject while implanting this trick, then recites a verbal message no longer than five words per mesmerist level.",
         "trigger": "When the subject encounters the specified recipient."
       },
       {
-        "name": "Vanish Arrow",
-        "description": "The mesmerist snatches a projectile from an enemy before it can be shot.",
+        "Vanish Arrow": "The mesmerist snatches a projectile from an enemy before it can be shot.",
         "trigger": "When the subject is targeted by a ranged weapon attack, before the attack roll is made."
       },
       {
-        "name": "Voice of Reason",
-        "description": "The subject can more easily pierce sight-based illusions with the mesmerist’s aid.",
+        "Voice of Reason": "The subject can more easily pierce sight-based illusions with the mesmerist’s aid.",
         "trigger": "When the subject attempts a saving throw to disbelieve a sight-based illusion effect."
       }
     ]

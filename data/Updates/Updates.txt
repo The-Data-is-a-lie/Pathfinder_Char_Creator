@@ -1,5 +1,6 @@
 Needs (High Prio):
 - finish all classes on Pathfinder AON title 
+- Create buckets for feats [i.e. combat feat types for characters]
 
 - Create a function that randomly assigns a element to the Lore skill
 - Need to add comment blocks to each function
@@ -89,6 +90,9 @@ Needs (Low Prio):
 
 12/4/23:
 - Webscraped (Shifter + Slayer talents + Vigilante talents)
+
+12/5/23:
+- Webscraped Items + warpriest + witch
 
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment
