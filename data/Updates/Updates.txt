@@ -1,6 +1,11 @@
 Needs (High Prio):
 - finish all classes on Pathfinder AON title 
 - Create buckets for feats [i.e. combat feat types for characters]
+- Need to fix items_best, so it can only choose the same number as the one it got 
+	(e.g. +1 = can only choose a price of +1 ...)
+	(e.g. greater + lesser versions as well)
+	
+- Change chooseclass to draw from class_Data rather than classes
 
 - Create a function that randomly assigns a element to the Lore skill
 - Need to add comment blocks to each function

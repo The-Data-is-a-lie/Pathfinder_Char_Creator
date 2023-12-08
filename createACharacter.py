@@ -240,7 +240,7 @@ class Character:
             self.deity = json.load(f)            
 
         with open(json_config['items']) as f:
-            self.items = json.load(f)                   
+            self.items_best = json.load(f)                   
 
         with open(json_config['fighter_options']) as f:
             self.fighter_options = json.load(f)        

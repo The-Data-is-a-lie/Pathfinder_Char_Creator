@@ -43,7 +43,7 @@ character_json_config = {
 	'cleric_domains': 'json/cleric_domains.json',				
 	'druid_domains': 'json/druid_domains.json',		
 	'deity': 'json/deity.json',	
-	'items': 'json/items.json',
+	'items': 'json/items_best.json',
 	'fighter_options': 'json/fighter_options.json',	
 	'bard_choices': 'json/bard_choices.json',	
 	'animal_companion': 'json/animal_companion.json',	
