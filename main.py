@@ -61,6 +61,9 @@ character_json_config = {
 }
 
 
+# Add a function which allows warpriests to use their caster level + functions but grab cleric spells (possiby use class for spells)
+
+
 while userInput.lower() == 'y':
 	name = random.randint(0,100000000000)
 	character_name = name

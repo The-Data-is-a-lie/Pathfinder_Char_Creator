@@ -607,7 +607,9 @@ class Character:
         elif self.c_class in ['investigator']:
             self.c_class_for_spells = 'alchemist'
         elif self.c_class in ['witch', 'arcanist']:
-            self.c_class_for_spells='wizard'       
+            self.c_class_for_spells='wizard' 
+        elif self.c_class in ['warpriest', 'oracle']:
+            self.c_class_for_spells='cleric'                   
         else:
             self.c_class_for_spells = self.c_class     
         return self.c_class_for_spells

@@ -107,7 +107,7 @@ lore = ["Goblin Lore",
 # "occultist", "kineticist", "medium", "mesmerist", "psychic","spiritualist",
 base_classes = ["alchemist", "antipaladin", "arcanist", "barbarian", "barbarian (unchained)", "bard", "bloodrager", "brawler", "cavalier", "cleric", "druid", "fighter", "gunslinger", "hunter", "inquisitor", "investigator", "magus", "monk", "monk (unchained)", "ninja",  "oracle", "paladin",  "ranger", "rogue", "rogue (unchained)", "samurai", "shaman", "shifter", "skald", "slayer", "sorcerer",  "summoner", "summoner (unchained)", "swashbuckler", "vigilante", "warpriest", "witch", "wizard"]
 
-divine_casters = ['antipaladin', 'cleric', 'druid', 'oracle', 'hunter' ,'inquisitor', 'paladin', 'ranger', 'shaman']
+divine_casters = ['antipaladin', 'cleric', 'druid', 'oracle', 'hunter' ,'inquisitor', 'paladin', 'ranger', 'shaman', 'warpriest']
 #caster spells per day progression
 
 #must match the same order as the weapon_groups_region section

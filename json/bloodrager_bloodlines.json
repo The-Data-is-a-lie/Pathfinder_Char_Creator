@@ -1,0 +1,497 @@
+[
+  {
+    " Aberrant Bloodline": {
+      "Bonus Feats": " Combat Reflexes, Great Fortitude, Improved Disarm, Improved Grapple, Improved Initiative, Improved Unarmed Strike, Iron Will.",
+      "Bonus Spells": [
+        "enlarge person",
+        "see invisibility",
+        "displacement",
+        "black tentacles"
+      ],
+      "Bloodline Powers": " While bloodraging, you gain the abilities and immunities of some aberrations, but show signs of your tainted heritage.",
+      "Staggering Strike (Su)": " At 1st level, when you confirm a critical hit the target must succeed at a Fortitude saving throw or be staggered for 1 round. The DC of this save is equal to 10 + 1/2 your bloodrager level + your Constitution modifier. These effects stack with the Staggering Critical feat; the target must save against each effect individually.",
+      "Abnormal Reach (Su)": " At 4th level, your limbs elongate; your reach increases by 5 feet.",
+      "Aberrant Fortitude (Su)": " At 8th level, you become immune to the sickened and nauseated conditions.",
+      "Unusual Anatomy (Su)": " At 12th level, your internal anatomy shifts and changes, giving you a 50% chance to negate any critical hit or sneak attack that hits you. The damage is instead rolled normally.",
+      "Aberrant Resistance (Su)": " At 16th level, you are immune to disease, exhaustion, fatigue, and poison, and to the staggered condition.",
+      "Aberrant Form (Su)": " At 20th level, your body becomes truly unnatural. You are immune to critical hits and sneak attacks. In addition, you gain blindsight with a range of 60 feet and your bloodrager damage reduction increases by 1. You have these benefits constantly, even while not bloodraging."
+    }
+  },
+  {
+    " Abyssal Bloodline": {
+      "Bonus Feats": " Cleave, Great Fortitude, Improved Bull Rush, Improved Sunder, Intimidating Prowess, Power Attack, Toughness.",
+      "Bonus Spells": [
+        "ray of enfeeblement",
+        "bull's strength",
+        "rage",
+        "stoneskin",
+        "enlarge person"
+      ],
+      "Bloodline Powers": " The power of the Abyss courses through your veins, causing horrific transformations during your bloodrage.",
+      "Claws (Su)": " At 1st level, you grow claws while bloodraging. These claws are treated as natural weapons, allowing you to make two claw attacks as a full attack, using your full base attack bonus. These attacks deal 1d6 points of damage each (1d4 if you are Small) plus your Strength modifier. At 4th level, these claws are considered magic weapons for the purpose of overcoming damage resistance. At 8th level, the damage increases to 1d8 points (1d6 if you are Small). At 12th level, these claws become",
+      "flaming": "weapons, which deal an additional 1d6 points of fire damage on a hit.",
+      "Demonic Bulk (Su)": " At 4th level, when entering a bloodrage, you can choose to grow one size category larger than your base size (as ) even if you aren't humanoid.",
+      "Demon Resistances (Su)": " At 8th level, you gain resistance 5 to acid, cold, and fire. At 16th level, these resistances increase to 10.",
+      "Abyssal Bloodrage (Su)": " At 12th level, the morale bonus to Strength granted by your bloodrage increases by 2, but the penalty to AC becomes \u20134 instead of \u20132. At 16th level, this bonus increases by 4 instead. At 20th level, it increases by 6 instead.",
+      "Demonic Aura (Su)": " At 16th level, when entering a bloodrage you can choose to exude an aura of fire. The aura is a 5-foot burst centered on you, and deals 2d6 + your Constitution modifier points of fire damage to creatures that end their turns within it.",
+      "Demonic Immunities (Su)": " At 20th level, you're immune to electricity and poison. You have this benefit constantly, even while not bloodraging."
+    }
+  },
+  {
+    " Aquatic Bloodline": {
+      "Bonus Feats": " Aquadynamic Focus, Dodge, Lightning Reflexes, Mobility, Skill Focus (Fly), Steam Spell, and Toughness.",
+      "Bonus Spells": [
+        "hydraulic push",
+        "slipstream",
+        "hydraulic torrent",
+        "control water",
+        "haste"
+      ],
+      "Bloodline Powers": "",
+      "Underwater Attacks (Su)": " At 1st level, your bludgeoning and slashing melee attacks underwater ignore the usual underwater penalties (see page 44).",
+      "Aquatic Adaptation\r  (Ex)": " At 4th level, you gain a swim speed of 30 feet and the ability to breathe both underwater and in air. At 8th level, you gain cold resistance 5. At 12th level, your swim speed increases to 60 feet, and you have the 4thlevel benefits of aquatic adaptation constantly, even when not in bloodrage (but not the 8th- and 12th-level benefits).",
+      "Watersense (Ex)": " At 8th level, you gain tremorsense with a range of 30 feet in water. At 12th level, you instead gain tremorsense with a range of 60 feet when in water.",
+      "Wavedarter (Sp, Su)": " At 12th level, your bloodrage directs the flow of water to assist you in battle. While underwater, your reach increases by 5 feet and you gain the effects of",
+      "Currentcaller (Su)": " At 16th level, as a swift action up to three times per day when underwater, at the start of your turn you can call up a current with a speed up to 20 feet in the direction of your choice in your space (moving with you) that lasts until the end of your turn.",
+      "Deep Fury (Su)": " At 20th level, you gain tremorsense 120 feet in water, as well as evasion and immunity to cold and pressure damage. You have these benefits constantly, even when not in bloodrage."
+    }
+  },
+  {
+    " Arcane Bloodline": {
+      "Bonus Feats": " Combat Reflexes, Disruptive*, Improved Initiative, Iron Will, Power Attack, Quick Draw, Spellbreaker*. (Your bloodrager levels count as fighter levels for the purposes of qualifying for any feats marked with an asterisk [*].) This stacks with any levels in fighter you have.",
+      "Bonus Spells": [
+        "magic missile",
+        "invisibility",
+        "lightning bolt",
+        "dimension door",
+        "blur",
+        "protection from arrows",
+        "resist energy (choose one energy type)",
+        "spider climb",
+        "displacement",
+        "haste",
+        "beast shape IV",
+        "form of the dragon I",
+        "transformation"
+      ],
+      "Bloodline Powers": " When you bloodrage, arcane power transforms you into an arcane juggernaut who can cut down even the most careful caster.",
+      "Disruptive Bloodrage (Su)": " At 1st level, the DC to cast spells defensively increases by 2 for enemies within your threatened area. This increase stacks with that granted by the feat.",
+      "Arcane Bloodrage (Sp)": " At 4th level, when entering a bloodrage you can choose one of the following spells and apply its effects to yourself: , , , or . These effects last for as long as you continue bloodraging, regardless of the spell's normal duration.",
+      "resist energy": "(choose one energy type)",
+      "Greater Arcane Bloodrage (Sp)": " At 8th level, when entering a bloodrage, you can choose to apply the effects of either or to yourself. This is in addition to arcane bloodrage, and otherwise works as that ability.",
+      "Caster's Scourge (Ex)": " At 12th level, you gain a number of extra attacks of opportunity equal to your Dexterity modifier (minimum 1). You can use these attacks of opportunity only against spellcasters in your threatened area who cast or attempt to cast defensively. The feat, the caster's bane bloodrage power (see below), or some similar effect is still required to make attacks of opportunity against spellcasters who are casting defensively. You have this ability constantly, even while not bloodraging.",
+      "True Arcane Bloodrage (Sp)": " At 16th level, when entering a bloodrage you can choose one of the following spells and apply its effects to yourself: (choose a creature your size or larger only), , or . This is in addition to arcane bloodrage and greater arcane bloodrage, and otherwise works as those abilities.",
+      "Caster's Bane (Ex)": " At 20th level, spellcasters with a caster level lower than your bloodrager level always provoke attacks of opportunity within your threatened area, even when casting defensively. You have this ability constantly, even while not bloodraging."
+    }
+  },
+  {
+    " Black Blood Bloodline": {
+      "Bonus Feats": " Combat Reflexes, Diehard, Endurance, Great Fortitude, Improved Initiative, Iron Will, Toughness.",
+      "Bonus Spells": [
+        "chill touch",
+        "unshakable chill",
+        "elemental aura",
+        "black tentacles",
+        "Gentle repose"
+      ],
+      "Bloodline Powers": " The insidious magic of black blood grants you profane powers and hideous resistances.",
+      "Black Blood (Su)": " At 1st level, your blood runs black with the blood of Orv. You are immune to the effects (both beneficial and destructive) of black blood. You have this benefit constantly, even while not bloodraging. When you take damage from a slashing or piercing attack while bloodraging, as an immediate action you can grant your melee attacks the weapon special ability for 2 rounds. You can use this ability three times per day.",
+      "Abnormal Reach (Su)": " At 4th level, the black blood pumping within you twists and elongates your limbs. Your reach increases by 5 feet.",
+      "Black Blood Resistance (Su)": " At 8th level, you gain resistance 5 to cold and a +2 bonus on saving throws against ability drain, death effects, disease, energy drain, paralysis, and poison. At 16th level, this resistance increases to 10 and the saving throw bonus increases to +4.",
+      "Retributive Spray (Su)": " At 12th level, whenever you're hit by an attack or spell that deals slashing or piercing damage, your black blood sprays up to 10 feet toward the opponent who attacked you, striking the first creature along its path. That creature takes 1d8 points of cold damage + 1 point of cold damage for every 2 bloodrager levels you possess. A successful Reflex save (DC = 10 + 1/2 your bloodrager level + your Constitution modifier) halves the damage.",
+      "Black Blood Transfusion (Su)": " At 16th level, when you confirm a critical hit, some of your black blood seeps into the target's wounds. The next time the target would be healed by positive energy, the healing burns away the black blood and ends this effect, providing no other benefit. This ability is not effective against creatures that have no blood. The black blood transfusion persists until it negates one positive energy healing effect, but it can be removed sooner with a successful DC 25 Heal check.",
+      "Black Blood Immunity (Su)": " At 20th level, you gain immunity to cold, nonlethal damage, critical hits, and sneak attacks. You have this benefit constantly, even when not bloodraging. Black blood wells from the walls of a singular vault deep in Orv, a region known quite aptly as the Land of Black Blood. This noxious fluid repulses and freezes all natural life, although certain creatures like aberrations, undead, and possess an uncanny immunity to its effects. Any other creature that comes into contact with black blood takes 1d6 points of cold damage\u201410d6 points of cold damage per round if fully immersed. Although black blood isn't itself inherently evil, a pint of black blood can be used as unholy water. A spellcaster who consumes a dose of black blood casts all necromantic spells at +1 caster level for the next 10 minutes, but takes 3d6 points of cold damage and 1 point of Constitution damage by drinking the stuff. Normally, a dose of black blood becomes inert an hour after being harvested from the source in the Land of Black Blood, losing all mystical properties. can preserve up to 1 gallon of black blood's magical properties for increased lengths of time, but no other method of stabilizing the stuff has yet been developed. The blood of a black-blooded oracle is diluted and does not have the properties of full-strength black blood."
+    }
+  },
+  {
+    " Celestial Bloodline": {
+      "Bonus Feats": " Dodge, Improved Initiative, Iron Will, Mobility, Mounted Combat, Ride-By Attack, Weapon Focus.",
+      "Bonus Spells": [
+        "bless",
+        "resist energy",
+        "heroism",
+        "holy smite",
+        "align weapon",
+        "protection from evil"
+      ],
+      "Bloodline Powers": " Your bloodline grants a number of resistances and changes your form to something angelic and terrible to behold when you bloodrage.",
+      "Angelic Attacks (Su)": " At 1st level, your melee attacks are considered good-aligned weapons for the purpose of bypassing damage reduction. Furthermore, when you deal damage with a melee attack to an evil outsider, you deal an additional 1d6 points of damage. This additional damage stacks with effects such as and those granted by a weapon with the weapon special ability.",
+      "Celestial Resistances (Ex)": " At 4th level, you gain resistance 5 to acid and cold. At 12th level, these resistances increase to 10.",
+      "Conviction (Su)": " At 8th level, once per bloodrage you can reroll one ability check, skill check, or saving throw you just made. You must decide to use this ability after the die is rolled, but before the GM reveals the results. You must take the second result, even if it's worse.",
+      "Wings of Heaven (Su)": " At 12th level, you can choose to sprout feathery wings and fly with a speed of 60 feet and good maneuverability. At 20th level, your fly speed increases to 80 feet.",
+      "Angelic Protection (Su)": " At 16th level, you gain a +4 deflection bonus to AC and a +4 resistance bonus on saving throws against attacks made or effects created by evil creatures. In addition, you are affected as if subject to a spell. This effect cannot be dispelled.",
+      "Ascension (Su)": " At 20th level, you become infused with the power of the heavens. You gain immunity to acid, cold, and petrification. You also gain resistance 10 to electricity and fire, as well as a +4 racial bonus on saving throws against poison. You have these benefits constantly, even while not bloodraging."
+    }
+  },
+  {
+    " Destined Bloodline": {
+      "Bonus Feats": " Diehard, Endurance, Improved Initiative, Intimidating Prowess, Leadership, Lightning Reflexes, Weapon Focus.",
+      "Bonus Spells": [
+        "shield",
+        "blur",
+        "protection from energy",
+        "freedom of movement"
+      ],
+      "Bloodline Powers": " Your future greatness grants you the might to strike your enemies with awe.",
+      "Destined Strike (Su)": " At 1st level, as a free action up to three times per day you can grant yourself an insight bonus equal to 1/2 your bloodrager level (minimum 1) on one melee attack. At 12th level, you can use this ability up to five times per day.",
+      "Fated Bloodrager (Su)": " At 4th level, you gain a +1 luck bonus to AC and on saving throws. At 8th level and every 4 levels thereafter, this bonus increases by 1 (to a maximum of +5 at 20th level).",
+      "Certain Strike (Su)": " At 8th level, you may reroll an attack roll once during a bloodrage. You must decide to use this ability after the die is rolled, but before the GM reveals the results. You must take the second result, even if it's worse.",
+      "Defy Death (Su)": " At 12th level, once per day when an attack or spell that deals damage would result in your death, you can attempt a DC 20 Fortitude save. If you succeed, you are instead reduced to 1 hit point; if you succeed and already have less than 1 hit point, you instead take no damage.",
+      "Unstoppable (Su)": " At 16th level, any critical threats you score are automatically confirmed. Any critical threats made against you confirm only if the second roll results in a natural 20 (or is automatically confirmed).",
+      "Victory or Death (Su)": " At 20th level, you are immune to paralysis and petrification, as well as to the stunned, dazed, and staggered conditions. You have these benefits constantly, even while not bloodraging."
+    }
+  },
+  {
+    " Draconic Bloodline": {
+      "Bonus Feats": " Blind-Fight, Cleave, Great Fortitude, Improved Initiative, Power Attack, Skill Focus (Fly), Toughness.",
+      "Bonus Spells": [
+        "shield",
+        "resist energy",
+        "fly",
+        "fear",
+        "form of the dragon II",
+        "chill touch",
+        "scorching ray",
+        "fireball",
+        "lightning bolt"
+      ],
+      "Bloodline Powers": " The power of dragons flows through you and manifests in a number of ways. At 1st level, you must select one of the chromatic or metallic dragon types. Once chosen, this cannot be changed. A number of your bloodline powers deal damage and grant resistances based on your dragon type, as noted below.",
+      "Energy Types": " Several of these new draconic bloodline options include nonstandard damage types. For the sake of game balance, many of the damage types available to the bloodlines below somewhat differ from those produced by the parent dragon. Specifically, force energy, negative energy, and sonic energy have been altered to different types of energy. In cases where a dragon's energy type is listed as physical damage (such as bludgeoning or piercing), use that damage type when determining your breath weapon damage. For the purpose of the dragon resistance bloodline power, you gain DR equal to half the energy resistance you would normally gain against all attacks of that specific damage type. A character with the power of wyrms bloodline power gains immunity to her bloodline's damage type. For all other purposes, such as archetypes, bloodline powers, and feats, treat that dragon's energy type as fire.",
+      "Variant Bloodline Arcana": " Whenever you cast a spell with an energy descriptor that matches your draconic bloodline's energy type, you can reroll a number of damage dice equal to half the spell's level.",
+      "Claws (Su)": " At 1st level, you grow claws. These claws are treated as natural weapons, allowing you to make two claw attacks as a full attack, using your full base attack bonus. These attacks deal 1d6 points of damage each (1d4 if you are Small) plus your Strength modifier. At 4th level, these claws are considered magic weapons for the purpose of overcoming damage reduction. At 8th level, the damage increases to 1d8 points (1d6 if you are Small). At 12th level, these claws deal an additional 1d6 points of damage of your energy type on a hit.",
+      "Draconic Resistance (Ex)": " At 4th level, you gain resistance 5 against your energy type and a +1 natural armor bonus to AC. At 8th level, your energy resistance increases to 10 and your natural armor bonus increases to +2. At 16th level, your natural armor bonus increases to +4.",
+      "Breath Weapon (Su)": " At 8th level, you gain a breath weapon that you can use once per day. This breath weapon deals 1d6 points of damage of your energy type per bloodrager level. Those caught in the area of the breath can attempt a Reflex saving throw for half damage. The DC of this save is equal to 10 + 1/2 your bloodrager level + your Constitution modifier. The shape of the breath weapon depends on your dragon type (as indicated on the above table). At 16th level, you can use this ability twice per day. At 20th level, you can use this ability three times per day.",
+      "Dragon Wings (Su)": " At 12th level, when entering a bloodrage, you can choose to have leathery wings grow from your back, giving you a fly speed of 60 feet with average maneuverability. At 16th level, your fly speed increases to 80 feet with good maneuverability.",
+      "Dragon Form (Su)": " At 16th level, when entering a bloodrage, you can choose to take the form of your chosen dragon type (as , but with average or good maneuverability, as you would gain from the dragon wings bloodrage power above).",
+      "Power of Wyrms (Su)": " At 20th level, you gain immunity to paralysis, sleep, and damage from your energy type. You also gain blindsense with a range of 60 feet. You have these benefits constantly, even while not bloodraging.  Chromatic and metallic dragons remain the most common dragons to impart their legacy onto other species. The bloodrager and sorcerer classes each include a draconic bloodline that assumes the character's lineage is somehow connected with the power of a chromatic or metallic dragon. Presented below are expanded options for the existing draconic bloodlines, increasing the selection of heritages to include the numerous new true dragons presented in the many",
+      "Pathfinder RPG Bestiary": "volumes. Each of the draconic bloodlines below alters the bloodrager's or sorcerer's bloodline arcana. : Several of these new draconic bloodline options include nonstandard damage types. For the sake of game balance, many of the damage types available to the bloodlines below somewhat differ from those produced by the parent dragon. Specifically, force energy, negative energy, and sonic energy have been altered to different types of energy. In cases where a dragon's energy type is listed as physical damage (such as bludgeoning or piercing), use that damage type when determining your breath weapon damage. For the purpose of the dragon resistance bloodline power, you gain DR equal to half the energy resistance you would normally gain against all attacks of that specific damage type. A character with the power of wyrms bloodline power gains immunity to her bloodline's damage type. For all other purposes, such as archetypes, bloodline powers, and feats, treat that dragon's energy type as fire. Though many of the enigmatic esoteric dragons remain aloof or intentionally distant from mortal affairs, occult dragons are the most likely to imprint their bloodline onto humanoids. Often such draconic blood is the result of ongoing experimentation. Scions of other esoteric dragons are far more unusual; such bloodlines usually result from explorers traveling the realms where these distant dragons dwell and being exposed to some spectacular and illunderstood power. : When selecting spells known, you can choose spells from the psychic class spell list (",
+      "Pathfinder RPG Occult Adventures 69": "). The psychic spells you select must normally be unavailable to your class. You can know only a number of psychic spells equal to the highest level spell you can cast from your class spell list, based on your current class level. When you're casting these spells, they function as psychic magic instead of arcane. You use thought and emotion components (",
+      "Occult Adventures 144": ") instead of verbal and somatic components when casting these spells.  *Choose one when the bloodline is first selected The blood of imperial dragons is well known throughout the lands of Tian Xia, where such dragons form a strong part of much of the continent's mythology. This is particularly true in Xa Hoi, where imperial dragons rule. Imperial dragons in other lands may vary in their interactions with humanoids, but universally accept the praise (and fear) of those around them. Their connection to the land makes the blood of these dragons a powerful arcane catalyst in the making of heroes. : Whenever you cast a spell that affects a creature with the shaken, frightened, or panicked condition, increase the spell's save DC by 1.  The interests of outer dragons take them across the cosmos. Strange devices or experimentation are most likely to lead to the addition of outer dragon blood into a world's ecosystem. The hidden blood of an outer dragon in a family's lineage is difficult to detect or stamp out. On Golarion, these dragons most commonly find themselves drawn to the fabled land of Numeria and its alien technology, though they usually refuse to share any of their insights with that nation's residents. : Whenever you cast a spell with an energy descriptor that matches your draconic bloodline's energy type, if a creature is damaged by the spell, that creature cannot take a 5-foot step for 1 round. This effect occurs only when you're using spells that require an attack roll (such as or ) or spells that allow a save (such as or ). A successful save against the damage or effects of the spell also negates this additional effect.  Born from the elemental planes or the Shadow Plane, primal dragons are infused with primeval power. These dragons traveled to the Material Plane in ages past, and many of their kind continue to spread their blood and magical influence among the humanoid races of the world. Even the malign umbral dragons prosper in the caverns of the Darklands and the mountains of Nidal. Any exposure to or experimentation with primal magics may introduce primal dragon blood into a lineage. : Whenever you cast a spell with an energy descriptor that matches your draconic bloodline's energy type, you can reroll a number of damage dice equal to half the spell's level."
+    }
+  },
+  {
+    " Elemental Bloodline": {
+      "Bonus Feats": " Cleave, Dodge, Great Fortitude, Improved Initiative, Lightning Reflexes, Power Attack, Weapon Focus.",
+      "Bonus Spells": [
+        "protection from energy",
+        "elemental body I",
+        "elemental body IV"
+      ],
+      "Bloodline Powers": " One of the four elements infuses your being, and you can draw upon its power while bloodraging. At first level, you must select an element: air, earth, fire, or water. Once chosen, this cannot be changed. A number of your abilities deal damage and grant resistances based on your element, as noted below.",
+      "burning hands*": "(7th),",
+      "scorching ray*": "(10th), (13th), (16th) Spells marked with an asterisk [*] always deal a type of energy damage determined by your element, regardless of the spell's normal effects. In addition, the subtype of these spells changes to match the energy type of your element. : One of the four elements infuses your being, and you can draw upon its power while bloodraging. At first level, you must select an element: air, earth, fire, or water. Once chosen, this cannot be changed. A number of your abilities deal damage and grant resistances based on your element, as noted below.",
+      "Elemental Strikes (Su)": " At 1st level, three times a day as a swift action you can imbue your melee attacks with elemental energy. For 1 round, your melee attacks deal 1d6 points of additional damage of your energy type. At 8th level, you can use this ability up to five times per day. At 20th level, all your melee attacks deal this damage, and this ability no longer requires a swift action to activate.",
+      "Elemental Resistance (Ex)": " At 4th level, you gain energy resistance 10 against your energy type.",
+      "Elemental Movement (Su)": " At 8th level, you gain a special movement type or bonus based on your chosen element, as indicated on the above table.",
+      "Power of the Elements (Su)": " At 12th level, the energy damage done by your elemental strikes bloodline ability bypasses resistance to that energy type, and still deals half damage to creatures with immunity to energy of that type.",
+      "Elemental Form (Su)": " At 16th level, once per day when entering a bloodrage you can take an elemental form as",
+      "Elemental Body (Su)": " At 20th level, elemental power surges through your body. You gain immunity to sneak attacks, critical hits, and damage from your energy type. You have this benefit constantly, even while not bloodraging."
+    }
+  },
+  {
+    " Fey Bloodline": {
+      "Bonus Feats": " Combat Reflexes, Dodge, Improved Initiative, Lightning Reflexes, Mobility, Step Up, Intimidating Prowess.",
+      "Bonus Spells": [
+        "entangle",
+        "hideous laughter",
+        "haste",
+        "confusion",
+        "blur",
+        "haste",
+        "tree stride"
+      ],
+      "Bloodline Powers": " The power of the natural world saturates your being, and manifests itself when you bloodrage.",
+      "Confusing Critical (Su)": " At 1st level, fey power courses through your attacks. Each time you confirm a critical hit, the target must succeed at a Will saving throw or be confused for 1 round. The DC of this save is equal to 10 + 1/2 your bloodrager level + your Constitution modifier. This is a mind-affecting compulsion effect.",
+      "Leaping Charger (Su)": " At 4th level, you are able to leap over overgrowth and similar impediments with ease while charging. When you charge, you ignore difficult terrain (but not other creatures). You can move through it at normal speed, and it does not impede your charge.",
+      "Blurring Movement (Su)": " At 8th level, you become a blur of motion when you move. As long as you move at least 10 feet, you gain the effects of for 1 round.",
+      "Quickling Bloodrage (Sp)": " At 12th level, while bloodraging you're treated as if you are under the effects of",
+      "One with Nature (Su)": " At 16th level, creatures of the animal or plant types don't attack you unless compelled to do so by magic or you attack them first. Three times per day, you can transport yourself from one tree to another tree, as with half the transport range. Moving from one tree to another in this manner is a move action. You gain these abilities even while not bloodraging.",
+      "Fury of the Fey (Su)": " At 20th level, when entering a bloodrage you can choose one type of creature (and subtype for humanoids or outsiders) that can be affected by the weapon special ability. All of your melee attacks are considered to have against that type. This ability doesn't stack with other forms of"
+    }
+  },
+  {
+    " Hag Bloodline": {
+      "Bonus Feats": " Blind-Fight, Deceitful, Great Fortitude, Improved Natural Attack, Intimidating Prowess, Mother's Gift.",
+      "Bonus Spells": [
+        "chill touch",
+        "blindness/deafness",
+        "bestow curse",
+        "charm monster",
+        "bestow curse",
+        "bestow curse"
+      ],
+      "Bloodline Powers": " While bloodraging, you manifest the physical power and arcane corruption of your hag ancestor.",
+      "Evil Eye (Su)": " At 1st level, you can curse an opponent with a wicked glance. As a standard action, you can afflict one target within 30 feet that you can see, causing it to take a \u20132 penalty to AC and on attack rolls for 1 round per class level or until the target hits you with an attack. The target can negate this effect with a successful Will saving throw (DC = 10 + half your bloodrager level + your Charisma modifier). You can use this ability a number of times per day equal to 3 + your Charisma modifier.",
+      "Hag Fortitude (Su)": " At 4th level, you become immune to mundane and magical diseases. At 8th level, you also become immune to poison.",
+      "Hag Transformation (Su)": " At 12th level, your form grows more twisted and powerful while bloodraging, but clumsy, blind aggression clouds your mind. Your morale bonus to Strength increases by 2, and you gain low-light vision and darkvision (60 feet), but you take a \u20132 penalty to both Dexterity and Wisdom for the duration of your bloodrage. At 16th level, you apply your morale bonus on Will saving throws while bloodraging to Fortitude and Reflex saving throws against spells and spell-like abilities.",
+      "Covenguard (Su)": " At 16th level, you can cast three times per day as a spell-like ability. You count as a hag for the purposes of joining a coven; the coven must contain at least one hag.",
+      "Curse Conduit (Su)": " At 20th level, you gain immunity to negative energy damage and all spells with the curse descriptor. Whenever you confirm a critical hit with a melee weapon, you can immediately target your opponent with a spell or spell-like ability as a free action."
+    }
+  },
+  {
+    " Infernal Bloodline": {
+      "Bonus Feats": " Blind-Fight, Combat Reflexes, Deceitful, Improved Disarm, Improved Sunder, Intimidating Prowess, Iron Will.",
+      "Bonus Spells": [
+        "protection from good",
+        "scorching ray",
+        "suggestion",
+        "fire shield"
+      ],
+      "Bloodline Powers": " When you bloodrage, hellfire infuses your blood with terrifying effects.",
+      "Hellfire Strike (Su)": " At 1st level, as a swift action up to three times a day you can infuse your attacks with hellfire. When you do, your melee attacks gain the weapon special ability for 1 round. At 12th level, you can use this ability five times per day, and the effect is treated as",
+      "Infernal Resistance (Ex)": " At 4th level, you gain fire resistance 5, as well as a +2 bonus on saving throws against poison. At 8th level, your fire resistance increases to 10, and the bonus on saving throws against poison increases to +4.",
+      "Diabolical Arrogance (Su)": " At 8th level, you gain a +4 bonus on saving throws against enchantment and fear effects.",
+      "Dark Wings (Su)": " At 12th level, when entering a bloodrage you can choose to have batlike wings grow from your back, giving you a fly speed of 60 feet with average maneuverability. At 16th level, your fly speed increases to 80 feet with good maneuverability.",
+      "Hellfire Charge (Su)": " At 16th level, when you charge the attack you make at the end of the charge gains the benefit of your hellfire strike without expending a use of it. If you already have hellfire strike active, the fire damage ignores fire resistance of 10 or lower.",
+      "Fiend of the Pit (Su)": " At 20th level, you gain immunity to fire and poison. You also gain resistance 10 to acid and cold, and gain the see in darkness ability. You have these benefits constantly, even while not bloodraging."
+    }
+  },
+  {
+    " Kyton Bloodline": {
+      "Bonus Feats": " Alertness, Blind-Fight, Exotic Weapon Proficiency (spiked chain), Great Fortitude, Improved Dirty Trick, Iron Will, Toughness.",
+      "Bonus Spells": [
+        "persuasive goad",
+        "pain strike",
+        "deeper darkness",
+        "fear"
+      ],
+      "Bloodline Powers": " The sadistic power of the kytons flows through you, twisting you into a creature of pain and darkness when you bloodrage.",
+      "Painful Strike (Su)": " At 1st level, when you confirm a critical hit, the target is sickened for a number of rounds equal to 1/2 your bloodrager level (minimum 1). During this time, the creature must succeed at a concentration check (DC = 15 + the spell's level) in order to cast a spell.",
+      "Grasping Chains (Su)": " At 4th level, chains cover your body and extend from your arms, grasping at the air around you and granting you a +4 bonus on Climb skill checks. At 9th level, this bonus increases to +8 and you gain a Climb speed equal to 1/2 your base speed.",
+      "Armor of Chains (Su)": " At 8th level, you gain resistance 5 to cold and the chains covering your body provide a +4 armor bonus to AC with no armor check penalty, maximum Dexterity bonus, or additional weight. At 16th level, the resistance increases to 10 and the armor bonus increases to +8.",
+      "Agony's Embrace (Su)": " At 12th level, whenever you're hit by a critical hit, your morale bonus to Strength from your bloodrage increases by 2 for 1d6 rounds or until your rage ends. The bonus to Strength instead increases by 4 at 16th level and by +6 at 20th level.",
+      "Unnerving Gaze (Su)": " At 16th level, your foes begin to see flashes of the faces of dead loved ones when they look at your face. You gain a gaze attack with a range of 30 feet. All foes who fail a Will save (DC = 10 + 1/2 your bloodrager level + your Charisma modifier) become shaken for 1d3 rounds.",
+      "Kyton Immunities (Su)": " At 20th level, you gain immunity to cold and DR 10/good and silver. You have this benefit constantly, even when not bloodraging."
+    }
+  },
+  {
+    " Martyred Bloodline": {
+      "Bonus Feats": " Diehard, Endurance, Heroic Defiance, Heroic Recovery, Leadership, Persuasive, Toughness.",
+      "Bonus Spells": [
+        "endure elements",
+        "surmount affliction",
+        "heroism",
+        "blessing of fervor",
+        "raise dead",
+        "resurrection",
+        "hallow"
+      ],
+      "Bloodline Powers": " When you bloodrage, you channel the power of your ancestor's self-sacrifice to urge yourself and your allies on to greater feats of strength than would otherwise be possible.",
+      "Ancestral Strikes (Su)": " At 1st level, three times per day as a swift action, you can imbue your melee attacks with a measure of your ancestor's power. For 1 round, your melee attacks deal 1d6 additional points of good-aligned damage if you are good, or they deal 1d6 additional points of evil-aligned damage if you are evil. If you are neutral, you must choose which type of damage this ability deals when you choose this bloodline, and the decision cannot be changed later. At 8th level, you can use this ability up to five times per day. At 20th level, all your melee attacks deal this additional damage, and you don't need to activate this ability.",
+      "Martyr's Resistances (Su)": " At 4th level, you gain fire resistance 5 and you gain a +2 bonus on saving throws against fear and pain effects. At 8th level, your fire resistance increases to 10, and the bonus on saving throws against fear and pain effects increases to +4.",
+      "Forebear's Reserves (Su)": " At 8th level, you can reroll a saving throw once during a bloodrage. You must decide to use this ability after the die is rolled but before the GM reveals the result. You must take the second result, even if it's worse.",
+      "Ancestral Champion (Su)": " At 12th level, when your ancestral strikes target a creature whose alignment is opposite to the type of damage the strikes deal, your ancestral strikes instead deal 2d6 additional points of damage of that type.",
+      "Sacrificial Exchange (Su)": " At 16th level, as a swift action once per day while you are bloodraging, you can take a \u20132 penalty to Armor Class to grant one ally within 30 feet a +4 morale bonus to one ability score. (This penalty to your AC stacks with the penalty from your bloodrage.) The penalty and bonus last for the duration of your bloodrage. At 20th level, the penalty this ability imposes changes to \u20134, and the ally's bonus increases to +6.",
+      "Eternal Martyr (Su)": " Your ancestor's sacrifice transcends time and space, keeping you alive when you otherwise shouldn't be and sanctifying your form. At 20th level, your ancestor's act of martyrdom infuses your spirit. You become immune to death effects. Material components for spells and effects to bring you back to life (such as or ) cost half as much as normal. Your body cannot be turned into an undead creature, as though you were affected by a permanent effect (caster level = your bloodrager level). You have these benefits constantly, even while not bloodraging."
+    }
+  },
+  {
+    " Medusa Bloodline": {
+      "Bonus Feats": " Alertness, Blind-Fight, Greater Fortitude, Improved Initiative, Improved Unarmed Strike, Intimidating Prowess, Toughness.",
+      "Bonus Spells": [
+        "cause fear",
+        "resist energy",
+        "hold person",
+        "stoneskin",
+        "flesh to stone"
+      ],
+      "Bloodline Powers": " The cold fury of your cursed rage can freeze others in their tracks.",
+      "Gaze (Su)": " At 1st level, you can harness the power of the medusa through your gaze. As a standard action, choose a creature within your line of sight who is within 30 feet of you. The creature must succeed at a Fortitude saving throw or have its speed halved for a number of rounds equal to your Constitution modifier (minimum 1 round). The DC of this save is equal to 10 + half your bloodrager level + your Constitution modifier.",
+      "Gift of the Ancients (Su)": " At 4th level, you gain a +2 resistance bonus on saving throws against gaze attacks and to resist poison. You also gain a +2 competence bonus on Perception checks. At 8th level, these bonuses increase by 2.",
+      "Staggering Gaze (Su)": " At 8th level, when a creature is affected by your gaze bloodline power, it is staggered in addition to being slowed.",
+      "Viper's Touch (Su)": " At 12th level, you grow two sets of venomous claws resembling the teeth of a serpent. These claws are primary natural attacks that deal 1d8 points of damage (1d6 if you are Small). The claws also gain the following poison ability:",
+      "Viper's Venom": " Claw\u2014injury;",
+      "save": "Fort DC 10 + half the bloodrager's level + the bloodrager's Constitution modifier;",
+      "frequency": "1/round for 4 rounds;",
+      "effect": "1d3 Str damage;",
+      "cure": "1 save.",
+      "Stone Resistance (Su)": " At 16th level, you gain acid resistance 10 and are immune to disease, poison, and the sickened and staggered conditions. You also cannot be flanked.",
+      "True Petrification (Su)": " At 20th level, you can use your gaze bloodline ability to permanently turn a creature to stone, as . You can still use the less powerful versions of your gaze if you do not wish to turn the target to stone, but you must declare this at the time of the attack."
+    }
+  },
+  {
+    " Naga Bloodline": {
+      "Bonus Feats": " Alertness, Combat Casting, Combat Reflexes, Dodge, Lightning Reflexes, Power Attack, Stealthy.",
+      "Bonus Spells": [
+        "ray of enfeeblement",
+        "invisibility",
+        "lightning bolt",
+        "poison",
+        "naga shape III",
+        "see invisibility",
+        "detect thoughts"
+      ],
+      "Bloodline Powers": " When you bloodrage, arcane power surges through your body, infusing you with the aberrant power and terrible strength of the nagas.",
+      "Serpent Fangs (Su)": " At 1st level, you grow serpentine fangs. These fangs are treated as a natural weapon, granting you a bite attack as a primary natural weapon. This attack deals damage equal to 1d8 (1d6 if you are Small) + your Strength modifier. At 4th level, your fangs are considered magic weapons for the purpose of overcoming damage reduction. At 8th level, the damage increases to 1d10 (1d8 if you are Small) + your Strength modifier.",
+      "Serpentine Swim (Sp)": " At 4th level, you can swim sinuously, like a snake. You gain a swim speed equal to your base speed.",
+      "Naga Defenses (Su)": " At 8th level, when entering a bloodrage, you gain a +2 enhancement bonus to your natural armor bonus and a +4 bonus on saves against poison. At 16th level, the bonus to your natural armor increases to +4 and the bonus on saves against poison increases to +8. At 20th level, the bonus to your natural armor increases to +6, and you gain immunity to poison.",
+      "Poison Fangs (Su)": " At 12th level, you gain the poison special attack, tied to your bite attack. Your poison is as follows: bite\u2014injury;",
+      "save": "Fort DC = 10 + 1/2 your bloodrager level + your Constitution modifier;",
+      "frequency": "1/round for 6 rounds;",
+      "effect": "1d2 Con damage;",
+      "cure": "1 save.",
+      "Naga Form (Sp)": " At 16th level, when entering a bloodrage, you can assume the form of a naga (as per ).",
+      "Naga Thoughts (Sp, Su)": " At 20th level, when entering a bloodrage, you become immune to charm effects and all forms of mind reading, you gain a +2 bonus on saving throws against other mind-affecting effects, you gain the effects of the spell , and you can use at will."
+    }
+  },
+  {
+    "Phoenix Bloodline": {
+      "Bonus Feats": " Combat Reflexes, Critical Focus, Diehard, Dodge, Endurance, Improved Initiative, Mobility.",
+      "Bonus Spells": [
+        "burning hands",
+        "cure serious wounds",
+        "fire shield",
+        "dispel magic",
+        "breath of life",
+        "heal",
+        "breath of life",
+        "disintegrate"
+      ],
+      "Bloodline Powers": " When you bloodrage, you channel the molten fires of the phoenix to sear your foes and fill your allies with an unquenchable vigor.",
+      "lesser restoration": "(10th), (13th), (16th) : When you bloodrage, you channel the molten fires of the phoenix to sear your foes and fill your allies with an unquenchable vigor.",
+      "Dispelling Strikes (Su)": " At 1st level, when you confirm a critical hit against a target, you can also attempt to dispel the target as if you had cast as a bloodrager spell and used the targeted dispel function. You can dispel only a single magical effect per use of this ability, and you can use this ability against a particular creature only once per day. At 8th level, you gain a +2 bonus on your dispel check when using this ability. At 20th level, you can attempt to dispel all magical effects on your target when using this ability.",
+      "Heart of Fire (Su)": " At 4th level, you gain fire resistance 5. Whenever you are subjected to a magical healing effect from a cure spell, you regain 1 additional hit point per die rolled. At 8th level, your fire resistance increases to 10, and you regain 2 additional hit points per die rolled when you are healed by a cure spell.",
+      "Blazing Vitality (Su)": " When tensions run high and your emotions flare, you let forth waves of restorative energy from within. At 8th level, you emit a 10-foot-radius aura of energizing fire while bloodraging. Any ally that ends their turn within this aura gains a number of temporary hit points equal to your Constitution modifier. These temporary hit points last for 1 minute.",
+      "Molten Wings (Su)": " At 12th level, when entering a bloodrage you can choose to have wings of flame sprout from your back, giving you a fly speed of 60 feet with average maneuverability. At 16th level, your fly speed increases to 80 feet with good maneuverability.",
+      "Self-Resurrection (Su)": " From the ashes of your body springs forth new life. At 16th level, once per day when you are reduced below 0 hit points while you are bloodraging, you can call upon the power in your blood to pull yourself back from death. This functions as a spell cast upon yourself. At 20th level, this instead functions as a spell, except that the healing can return you to life as per , using your bloodrager level as your caster level. Using this ability does not take an action. This ability does not function if your body is completely destroyed by an effect such as",
+      "Phoenix Fire (Su)": " The power of the phoenix brings righteous destruction to any who oppose it. At 20th level, while bloodraging, you gain the following effects: your melee attacks deal an additional 2d6 points of fire damage, any enemies within 20 feet of you must succeed at a Reflex save (DC = 10 + 1/2 your bloodrager level + your Constitution modifier) or take 4d6 points of fire damage at the start of their turn, and any creature that attacks you with a natural or non-reach weapon takes 1d6 points of fire damage (no save) with each successful hit."
+    }
+  },
+  {
+    " Salamander Bloodline": {
+      "Bonus Feats": " Cleave, Improved Grapple, Improved Iron Will, Iron Will, Power Attack, Skill Focus (Perception), Toughness.",
+      "Bonus Spells": [
+        "lead blades",
+        "make whole",
+        "versatile weapon",
+        "greater magic weapon",
+        "magic vestment (shield or armor)"
+      ],
+      "Bloodline Powers": " When you bloodrage, you gain the form and flame of the salamander and the following powers.",
+      "fire shield (warm only)": "(16th). : When you bloodrage, you gain the form and flame of the salamander and the following powers.",
+      "Serpent's Tail (Su)": " At 1st level, your legs twist together into a slithering serpentine tail. Your speed is reduced by 10 feet (to a minimum of 5 feet), and you can't be tripped. Your footwear melds into your body and is nonfunctional unless it provides a constant bonus and does not need to be activated. You also gain a tail slap natural attack that deals 1d6 points of damage (1d4 if you are Small) + your Strength modifier. At 4th level, your speed is no longer reduced by 10 feet. At 8th level, your tail slap's damage increases to 1d8 (1d6 if you are Small) + your Strength modifier. At 12th level, your reach with your tail slap increases by 5 feet.",
+      "Salamander Scales (Ex)": " At 4th level, you gain fire resistance 5 and a +1 natural armor bonus to AC. At 8th level, your fire resistance increases to 10 and your natural armor bonus increases to +2. At 16th level, your fire resistance increases to 20 and your natural armor bonus increases to +3.",
+      "Bloodsmith (Su)": " At 8th level, when entering a bloodrage, you can choose one manufactured weapon you wield, shield you wield, or piece of armor you wear to gain the benefit of (weapon) or . The caster level of this effect is equal to your bloodrager level, and its effects end when your bloodrage ends or when you no longer wear or wield the weapon, shield, or armor.",
+      "magic vestment": "(shield or armor)",
+      "Scorching Heat (Su)": " At 12th level, your weapons conduct heat. You deal 1d6 additional points of fire damage with natural weapons and melee attacks made with metal weapons. You also deal 2d6 points of fire damage per round to any creature you grapple. This does not damage your equipment.",
+      "Master Bloodsmith (Su)": " At 16th level, you can affect up to two items simultaneously with your bloodsmith bloodline power. At 20th level, you can affect up to three items.",
+      "Essence of Fire (Ex)": " At 20th level, you become immune to fire damage. In addition, your bloodrager damage reduction increases by 5. If you don't have bloodrager damage reduction, you gain DR 10/magic instead. You have these benefits constantly, even while you are not bloodraging."
+    }
+  },
+  {
+    " Shadow Bloodline": {
+      "Bonus Feats": " Blind-Fight, Combat Reflexes, Improved Initiative, Lightning Reflexes, Quick Draw, Step Up.",
+      "Bonus Spells": [
+        "ray of enfeeblement",
+        "darkvision",
+        "deeper darkness",
+        "shadow conjuration",
+        "dimension door"
+      ],
+      "Bloodline Powers": " Your bloodline gives you powers over light and darkness.",
+      "Shadow Vision (Su)": " While bloodraging, you gain low-light vision if you don't already have it. If you already have low-light vision, you gain darkvision to a distance of 30 feet. At 10th level, you gain darkvision with a range of 30 feet, or add 30 feet to the range of your darkvision if you already have it.",
+      "Shades of Rage (Su)": " At 4th level, whenever you enter a bloodrage, the light level within 30 feet of you decreases by one step. Natural light is always affected, but magical illumination dispels this ability if the caster of the light effect succeeds at a caster level check against a DC equal to 10 + your class level.",
+      "Strength of Shadows (Su)": " At 8th level, you gain cold resistance 10. Your melee attacks deal additional cold damage equal to the critical multiplier of the weapon you use. At 13th level, your cold resistance increases to 20. At 18th level, you become immune to cold damage.",
+      "Strike Through Shadow (Su)": " At 12th level, you can declare a single melee attack as a strike through shadow. This attack moves through its target's shadow and strikes from below or inside its armor. You make this attack against the target's touch AC. You can use this ability once per day, plus an additional time per day each at 15th and 18th levels.",
+      "Shadow Door (Su)": " At 16th level, you can take any part of your movement through shadows, teleporting to another location within 60 feet. This ability functions as , except you can't use shadow door in brightly lit areas. You can teleport in this manner a total of 10 feet per class level each day.",
+      "Shadow Warrior (Su)": " At 20th level, you become shadow and fury personified. You see perfectly in natural and magical darkness. Whenever you deal hit point damage with a spell or attack, you also deal 2 points of Strength damage to each creature that took damage."
+    }
+  },
+  {
+    " Shapechanger Bloodline": {
+      "Bonus Feats": " Dodge, Fleet, Improved Initiative, Improved Unarmed Strike, Lightning Reflexes, Power Attack, Weapon Focus.",
+      "Bonus Spells": [
+        "enlarge person",
+        "alter self",
+        "fly",
+        "stoneskin",
+        "dispel magic",
+        "greater polymorph"
+      ],
+      "Bloodline Powers": " Transformative powers in your blood emerge when you bloodrage.",
+      "Shifting Aspect (Su)": " At 1st level, you gain the benefit of the feat while bloodraging. As part of the action to enter a bloodrage, you can choose any one of the four manifestations to affect you for the duration of your bloodrage.",
+      "Spontaneous Change (Sp)": " At 4th level, when entering a bloodrage, you can cast a transmutation spell that affects only you as a swift action, provided that the spell's normal casting time is 1 round or shorter. The spell lasts for as long as you continue bloodraging, regardless of the spell's normal duration. You can use this ability only to cast bloodrager spells you know.",
+      "Evolving Aspect (Su)": " At 8th level, you gain as a bonus feat even if you don't meet the prerequisites. As normal for the feat, you must choose one of the manifestations, and you gain its benefits even while not bloodraging. When you enter a bloodrage, you can choose a second manifestation to affect you simultaneously for the duration of your bloodrage.",
+      "Beastskin (Su)": " At 12th level, when entering a bloodrage, you can cause your skin to grow thicker and more bestial. Your damage reduction from your bloodrager levels increases by 2, but it can be bypassed with silver weapons. Your natural attacks (including unarmed strikes) are then treated as silver for the purpose of overcoming damage reduction.",
+      "Shed Skin (Su)": " At 16th level, when your bloodrage ends, you can choose one spell or spell-like ability affecting you and attempt to shake it off as an immediate action. Attempt a dispel check (1d20 + your bloodrager level) as if you were casting . If you succeed, the effect is dispelled.",
+      "True Shapechanger (Su)": " At 20th level, you are immune to all transmutation spells and effects unless you are a willing target. You can also use at will as a spell-like ability with a caster level equal to your bloodrager level targeting only yourself. These effects function even while you're not bloodraging."
+    }
+  },
+  {
+    " Sphinx Bloodline": {
+      "Bonus Feats": " Alertness, Combat Casting, Dazzling Display, Improved Critical, Iron Will, Rending Fury, Skill Focus (Intimidate), Voice of the Sibyl.",
+      "Bonus Spells": [
+        "divine favor",
+        "touch of idiocy",
+        "searing light",
+        "bestow curse",
+        "maze",
+        "symbol of insanity"
+      ],
+      "Bloodline Powers": " You gain the ruthless claws and implacable voice of the sphinx while bloodraging.",
+      "Claws (Su)": " At 1st level, you grow claws while bloodraging. These claws are treated as natural weapons, allowing you to make two claw attacks as a full attack, using your full base attack bonus. These attacks deal 1d6 points of damage each (1d4 if you are Small) plus your Strength modifier. At 4th level, these claws are considered magic weapons for the purpose of overcoming damage reduction. At 8th level, the damage increases to 1d8 points (1d6 if you are Small). At 12th level, the critical threat range for these claws increases to 19\u201320.",
+      "Roar (Su)": " At 4th level, the bloodrager learns the secrets of the sphinx's roar. He can roar as a standard action a number of times per day equal to 3 + his Charisma modifier. Enemies within 60 feet of the bloodrager that can hear the roar must succeed at a Will save (DC = 10 + half the bloodrager's character level + his Charisma modifier) or become frightened for 1d6 rounds. At 10th level, the bloodrager can instead cause the targets to be panicked or stunned (bloodrager's choice) and deafened for the duration; at 16th level, the bloodrager can instead cause the targets to be paralyzed for 1 round. Whether or not the save is successful, a creature cannot be the target of the bloodrager's roar again for 24 hours.",
+      "Desert Fortitude (Su)": " At 8th level, you gain resistance 5 to electricity and fire. In addition, you gain endure elements as a constant spell-like ability and a +2 competence bonus on saves against arcane spells. At 16th level, your resistance to electricity and fire increases to 10.",
+      "Rending Rage (Su)": " At 12th level, you gain a attack, as the universal monster rule, that deals extra damage equal to 2d4 + 1-1/2 times your Strength modifier. At 18th level, this damage increases to 2d6 + 1-1/2 times your Strength modifier.",
+      "Master of Mysteries (Su)": " At 16th level, you can cast either or once per day as a spell-like ability, with a caster level equal to your character level. You also gain spell resistance equal to 11 + your level.",
+      "Final Riddle (Su)": " At 20th level, you gain immunity to fire and electricity and ignore environmental penalties due to temperature. Your competence bonus on saving throws against arcane spells increases to +6. You have these benefits constantly, even while not raging."
+    }
+  },
+  {
+    " Undead Bloodline": {
+      "Bonus Feats": " Diehard, Dodge, Endurance, Intimidating Prowess, Iron Will, Mobility, Toughness.",
+      "Bonus Spells": [
+        "chill touch",
+        "false life",
+        "vampiric touch",
+        "enervation"
+      ],
+      "Bloodline Powers": " When you enter a bloodrage, the powers of undeath manifest, empowering your attacks with fear and your body with foul resistances.",
+      "Frightful Charger (Su)": " At 1st level, when you hit a creature with a charge attack, that creature becomes shaken for a number of rounds equal to 1/2 your bloodrager level (minimum 1). This effect does not cause an existing shaken or frightened condition (from this ability or another source) to turn into frightened or panicked. This is a mind-affecting fear effect.",
+      "Ghost Strike (Su)": " At 4th level, your melee attacks are treated as if they have the weapon special ability.",
+      "Death's Gift (Su)": " At 8th level, you gain cold resistance 10, as well as DR 10/\u2014 against nonlethal damage.",
+      "Frightful Strikes (Su)": " At 12th level, as a swift action once per bloodrage you can empower your melee attacks with fear. For 1 round, creatures you hit with your melee attacks become shaken. Creatures who are already shaken become frightened. At 16th level, those who are already frightened become panicked. This is a mind-affecting fear effect.",
+      "Incorporeal Bloodrager (Su)": " At 16th level, once per day you can choose to become incorporeal. You take only half damage from magic corporeal sources, and you take no damage from non-magic weapons and objects. Your attacks deal damage as normal due to your ghost strike bloodrage power.",
+      "One Foot in the Grave (Ex)": " At 20th level, you gain immunity to cold, nonlethal damage, paralysis, and sleep. The DR from your damage reduction ability increases to 8. Unintelligent undead don't notice you unless you attack them. You gain a +4 morale bonus on saving throws made against spells and spell-like abilities cast by undead. You have these benefits constantly, even while not bloodraging."
+    }
+  },
+  {
+    " Verdant Bloodline": {
+      "Bonus Feats": " Bolstered Resilience, Diehard, Endurance, Great Fortitude, Power Attack, Raging Vitality, Toughness.",
+      "Bonus Spells": [
+        "entangle",
+        "greensight",
+        "burst of nettles",
+        "command plants",
+        "wilderness soldiers"
+      ],
+      "Bloodline Powers": " While bloodraging, you gain plantlike abilities and immunities as you become overgrown with jagged branches, rugged bark, and thick vines.",
+      "Verdant Growth (Su)": " At 1st level, you gain fast healing 1 while bloodraging. Your fast healing increases by 1 at 4th level and every 3 levels thereafter, to a maximum of fast healing 6 at 19th level. If you have a bloodrager class feature that also grants you fast healing (such as the ), you can stack up to half of your fast healing from such abilities with the fast healing gained from this ability, but you cannot do so by an amount that exceeds your Charisma bonus (minimum 0).",
+      "Oaken Skin (Ex)": " At 4th level, when entering a bloodrage, your skin thickens like bark and you gain a +2 enhancement bonus to your natural armor. At 8th level and every 4 levels thereafter, this bonus increases by 1.",
+      "Botanical Plasticity (Su)": " At 8th level, as a swift action you can bend and twist the plant life within your body to elongate your limbs. Your reach increases by 5 feet until the end of your turn.",
+      "Verdant Call (Sp)": " At 12th level, when entering a bloodrage, as a swift action you can animate nearby plants to aid you in combat, functioning as , using your Charisma modifier instead of your Wisdom modifier. This effect lasts for as long as you continue bloodraging, regardless of the spell's normal duration.",
+      "Nature's Thorns (Su)": " At 16th level, creatures that hit you in melee (other than those using manufactured reach weapons) take 4d6 points of piercing damage. A creature takes this damage only on its first successful attack against you in a combat round, and not on subsequent attacks in that round.",
+      "Verdant Apotheosis (Su)": " At 20th level, verdant power surges throughout your being. While bloodraging, you gain tremorsense out to 30 feet. In addition, you gain immunity to paralysis, poison, sleep, and stunning effects, even while you are not bloodraging."
+    }
+  },
+  {
+    " Vestige Bloodline": {
+      "Bonus Feats": " Combat Casting, Exotic Weapon Proficiency, Greater Weapon Focus*, Greater Weapon Specialization*, Iron Will, Weapon Focus, Weapon Specialization*. (The bloodrager counts his total bloodrager levels as fighter levels for the purpose of qualifying for any feats marked with an asterisk [*]. If he also has levels in fighter, these levels stack.)",
+      "Bonus Spells": [
+        "true strike",
+        "false life",
+        "phantom steed",
+        "hallucinatory terrain",
+        "spiritual ally"
+      ],
+      "Bloodline Powers": " When you bloodrage, you transform into an ancestor or another notable figure from a lost civilization.",
+      "mass enlarge person": "(16th). : When you bloodrage, you transform into an ancestor or another notable figure from a lost civilization.",
+      "Warrior's Discipline (Su)": " At 1st level, you tap into untold generations of battle experience to control your battle fury. As a swift action, you can halve any morale bonuses gained from bloodrage to be able to use Intelligence- or Charisma-based skills, or any abilities requiring patience or concentration. This effect lasts for 1 round.",
+      "Ancient Tactics (Su)": " At 4th level, while you are bloodraging, whenever you or an ally within 30 feet of you would gain a bonus on attack rolls or to AC due to battlefield position (such as flanking or cover), that bonus is increased by 1. Allies must be able to see and hear you to gain this bonus. You can expend a spell slot as an immediate action to further increase this bonus by 1 per level of the spell slot expended until the beginning of your next turn.",
+      "Legacy Style (Su)": " At 8th level, select any one style feat. You can use this while bloodraging; however, if you do not meet all of the style feat's prerequisites, you must expend a spell slot when entering the style's stance, and the benefits last for only 1 round per level of the spell slot expended or for the duration of your bloodrage, whichever is shorter. If you already have this style feat, you can enter the style's stance as part of the free action to bloodrage.",
+      "War's Memory (Sp)": " At 12th level, you can manifest an illusion of an ancestor's bloody battlefield once per day. This functions as , except it can create only battlefields drawn from a civilization's past, and the effect ends when your bloodrage ends. The saving throw to disbelieve is equal to 10 + 1/2 your bloodrager level + your Constitution modifier. The horrifying scene causes creatures within the area of effect to take a \u20132 penalty on saves versus fear effects until they disbelieve the illusion. If a creature fails the Will save to disbelieve the illusion, it gains the shaken condition until your bloodrage ends, or until it leaves the area of effect. This is an illusion (glamer) and fear effect.",
+      "Legacy Conduit (Su)": " At 16th level, when using the legacy style bloodline power, you can expend a spell slot as a swift action to share the benefits of the selected style feat with all allies within 30 feet. The benefits last for 1 round per level of the spell slot expended. Allies must still enter the style's stance as a swift action.",
+      "Call to Arms (Su)": " At 20th level, you can summon a ghostly army from a fallen civilization once per day. This functions as with a caster level equal to your level, except that it summons a number of allies equal to your Constitution modifier, and the allies use your Strength modifier for attack rolls. You can direct all of these allies with a single swift action. Each ally can attack a different target or the same target, as you direct. The allies remain until the spell's duration ends or your bloodrage ends, whichever comes first."
+    }
+  }
+]
