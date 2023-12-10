@@ -1,5 +1,5 @@
 {
-    "Lawful good": [
+    "lawful good": [
       {
         "Name": ["Erastil"],
         "Portfolio": ["Farming", "Hunting", "Trade", "Family"],
@@ -36,7 +36,7 @@
         "Subdomains": ["Archon", "Day", "Feather", "Light"]
       }
     ],
-    "Neutral good": [
+    "neutral good": [
       {
         "Name": ["Sarenrae"],
         "Portfolio": ["Sun", "Redemption", "Honesty", "Healing"],
@@ -59,7 +59,7 @@
         "Subdomains": ["Agathion", "Family", "Fate", "Home", "Resolve", "Trade"]
       }
     ],
-    "Chaotic good": [
+    "chaotic good": [
       {
         "Name": ["Cayden Cailean"],
         "Portfolio": ["Freedom", "ale", "wine", "bravery"],
@@ -82,7 +82,7 @@
         "Subdomains": ["Agathion", "Family", "Fate", "Home", "Resolve", "Trade"]
       }
     ],
-    "Lawful neutral": [
+    "lawful neutral": [
       {
         "Name": ["Abadar"],
         "Portfolio": ["Cities", "wealth", "merchants", "law"],
@@ -112,7 +112,7 @@
         "Subdomains": ["Deception", "Leadership", "Memory", "Thought"]
       }
     ],
-    "True Neutral": [
+    "True neutral": [
       {
         "Name": ["Gozreh"],
         "Portfolio": ["Nature", "weather", "the sea"],
@@ -149,7 +149,7 @@
         "Subdomains": ["Deception", "Leadership", "Memory", "Thought"]
       }
     ],
-    "Chaotic neutral": [
+    "chaotic neutral": [
       {
         "Name": ["Calistria"],
         "Portfolio": ["Trickery", "lust", "revenge"],
@@ -186,7 +186,7 @@
         "Subdomains": ["Exploration", "Murder", "Rivers", "Trade"]
       }
     ],
-    "Lawful evil": [
+    "lawful evil": [
       {
         "Name": ["Asmodeus"],
         "Portfolio": ["Tyranny", "slavery", "pride", "contracts"],
@@ -216,7 +216,7 @@
         "Subdomains": ["Devil", "Language", "Leadership", "Memory", "Thought", "Wards"]
       }
     ],
-    "Neutral evil": [
+    "neutral evil": [
         {
             "Name": ["Norgorber"],
             "Portfolio": ["Greed", "secrets", "poison", "murder"],
@@ -260,7 +260,7 @@
             "Subdomains": ["Blood", "Catastrophe", "Daemon", "Decay", "Murder", "Undead"]
         }
     ],
-    "Chaotic evil": [
+    "chaotic evil": [
         {
             "Name": ["Lamashtu"],
             "Portfolio": ["Madness", "monsters", "nightmares"],

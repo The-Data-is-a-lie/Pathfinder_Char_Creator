@@ -85,7 +85,7 @@ while userInput.lower() == 'y':
 		dip_function(character, 'base_classes')
 
 		#add an optional flaws rule function	
-		print(f"This is your randomly selected alignment: {character.randomize_alignment('alignments')}")
+		print(f"This is your randomly selected alignment: {character.choose_alignment('alignments')}")
 		print(f"This is your randomly selected deity: {character.randomize_deity()}")
 
 		character.randomize_body_feature('age')
@@ -154,7 +154,7 @@ while userInput.lower() == 'y':
 
 		#class specific choices
 		character.monk_ki_power_chooser()
-		character.sorcerer_bloodline_chooser()
+		character.bloodline_chooser()
 
 		character.fighter_armor_train_chooser()
 		character.fighter_weapon_train_chooser()	

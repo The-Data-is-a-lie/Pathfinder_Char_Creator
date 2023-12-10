@@ -99,5 +99,14 @@ Needs (Low Prio):
 12/5/23:
 - Webscraped Items + warpriest + witch
 
+12/6-9/23:
+- Finishing up the first major portion of webscraping
+- Making sure all spellcasters can be assigned spells
+
+12/10/23:
+- Added the ability to choose Alignments
+- Added Bloodrager bloodlines
+- Combined Bloodrager + Sorcerer bloodlines into one data sheet
+
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment

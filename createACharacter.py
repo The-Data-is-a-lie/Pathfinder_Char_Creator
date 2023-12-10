@@ -220,6 +220,7 @@ class Character:
 
         with open(json_config['bloodlines']) as f:
             self.bloodlines = json.load(f)               
+        
 
         with open(json_config['mercies']) as f:
             self.mercies = json.load(f)  
@@ -472,12 +473,30 @@ class Character:
         return random.sample(potential_personality,k=random_pers_number)  
         
 
-    def randomize_alignment(self, alignments):
-        #pulling alignments from data.py and picking one
-        random_alignment = getattr(data,alignments)
-        self.alignment = random.choice(random_alignment)
+    def choose_alignment(self, alignments):
+        alignment_data = getattr(data,alignments)
+        alignment_input = input("If you want to choose an alignment, type: CG CN CE NG N NE LG LN LE ").upper()
+        self.alignment = alignment_data.get(alignment_input, None).lower()
+
+        if self.alignment is None:
+            print("Invalid alignment input. Randomizing alignment:")
+            random_alignment_code = random.choice(list(alignment_data.keys()))
+            print(alignment_data)
+            print(random_alignment_code)
+            self.alignment = alignment_data[random_alignment_code].lower()
+
+            print(self.alignment)
 
         return self.alignment
+
+
+
+    # def randomize_alignment(self, alignments):
+    #     #pulling alignments from data.py and picking one
+    #     alignment_data = getattr(data,alignments)
+    #     print(random_alignment_code)
+
+    #     return self.alignment
 
     def randomize_deity(self):
         # Might want to revamp the way we randomly select deities 
@@ -1416,12 +1435,12 @@ class Character:
         return self.performance_chosen_list, self.performance_chosen_description_list, self.martial_performance_choice, self.martial_performance_choice_description   
 
 
-    def sorcerer_bloodline_chooser(self):
-        if self.c_class == 'sorcerer' or self.c_class_2 == 'sorcerer':   
-            self.chosen_bloodline =  random.choice(list(self.bloodlines.keys()))
-            print(f'This is your selected bloodline {self.chosen_bloodline} + its info: \n{self.bloodlines[self.chosen_bloodline]}')
+    # def sorcerer_bloodline_chooser(self):
+    #     if self.c_class == 'sorcerer' or self.c_class_2 == 'sorcerer':   
+    #         self.chosen_bloodline =  random.choice(list(self.bloodlines.keys()))
+    #         print(f'This is your selected bloodline {self.chosen_bloodline} + its info: \n{self.bloodlines[self.chosen_bloodline]}')
 
-            return self.chosen_bloodline
+    #         return self.chosen_bloodline
 
     #need to make sure cleric domain choices align with selected deity
     #inquisitors can also get domains
@@ -2025,18 +2044,27 @@ class Character:
             return feat_list
 
 
-    def sorcerer_bloodline_chooser(self):
+    def bloodline_chooser(self):
         """
-        If class = Sorcerer randomly chooses a bloodline
+        If class = Sorcerer or Bloodrager randomly chooses a bloodline
         Return
         - chosen_bloodline
         """
+        self.chosen_b_bloodline = None
+        self.chosen_s_bloodline = None
+
         if self.c_class == 'sorcerer' or self.c_class_2 == 'sorcerer':   
-            self.chosen_bloodline =  random.choice(list(self.bloodlines.keys()))
-            print(f'This is your selected bloodline {self.chosen_bloodline} + its info: \n{self.bloodlines[self.chosen_bloodline]}')
+            self.chosen_s_bloodline =  random.choice(list(self.bloodlines["sorcerer"].keys()))
+            print(f'This is your selected bloodline {self.chosen_s_bloodline} + its info: \n{self.bloodlines["sorcerer"][self.chosen_s_bloodline]}')
 
-            return self.chosen_bloodline
+        if self.c_class == 'bloodrager' or self.c_class_2 == 'bloodrager':
+            b_bloodlines = (list(self.bloodlines["bloodrager"].keys()))
+            self.chosen_b_bloodline =  random.choice(b_bloodlines)
+            print(f'This is your selected bloodline {self.chosen_b_bloodline} + its info: \n{self.bloodlines["bloodrager"][self.chosen_b_bloodline]}')
 
+            return self.chosen_s_bloodline, self.chosen_b_bloodline
+
+    
     #need to implement all the restrictions to feats we want
     def feats_selector(self):             
         self.feat_list = []   

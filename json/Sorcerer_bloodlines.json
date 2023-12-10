@@ -1,4 +1,3 @@
-[
   {
     " Aberrant Bloodline": {
       "Class Skill": " Knowledge (dungeoneering).",
@@ -20,9 +19,7 @@
       "Unusual Anatomy (Ex)": " At 9th level, your anatomy changes, giving you a 25% chance to ignore any critical hit or sneak attack scored against you. This chance increases to 50% at 13th level.",
       "Alien Resistance (Su)": " At 15th level, you gain spell resistance equal to your sorcerer level + 10.",
       "Aberrant Form (Ex)": " At 20th level, your body becomes truly unnatural. You are immune to critical hits and sneak attacks. In addition, you gain blindsight with a range of 60 feet and damage reduction 5/-."
-    }
   },
-  {
     " Abyssal Bloodline": {
       "Class Skill": " Knowledge (planes).",
       "Bonus Spells": [      "cause fear (3rd)",
@@ -45,9 +42,7 @@
       "Added Summonings (Su)": " At 15th level, whenever you summon a creature with the demon subtype or the fiendish template using a",
       "summon monster": "spell, you summon one additional creature of the same kind.",
       "Demonic Might (Su)": " At 20th level, the power of the Abyss flows through you. You gain immunity to electricity and poison. You also gain resistance to acid 10, cold 10, and fire 10, and gain telepathy with a range of 60 feet (allowing you to communicate with any creature that can speak a language)."
-    }
   },
-  {
     " Accursed Bloodline": {
       "Class Skill": " Perception.",
       "Bonus Spells": [      "ray of enfeeblement (3rd)",
@@ -70,9 +65,7 @@
       "ethereal jaunt": ", but with a duration of 1 minute for every 2 sorcerer levels you possess. Once during this trip, you may cast",
       "nightmare": "as a spell-like ability on a creature you see on the Material Plane. (This is an exception to the normal rule that ethereal creatures cannot affect targets on the Material Plane).",
       "Fearsome Survival (Su)": " At 20th level, your hag-blood gives you considerable resilience. You gain DR 10/cold iron, and gain SR equal to 6 + your sorcerer level."
-    }
   },
-  {
     " Aquatic Bloodline": {
       "Class Skill": " Swim.",
       "Bonus Spells": [      "hydraulic push (3rd)",
@@ -96,9 +89,7 @@
       "Raise the Deep (Sp)": " At 15th level, you raise water as per",
       "Deep One (Ex)": " At 20th level, you gain blindsense 60 feet and your body is covered with fine, slippery scales granting DR 10/piercing, resist cold 20, and continuous",
       "freedom of movement": ". Underwater, you gain evasion and blindsight 120 feet, and you are immune to pressure damage from deep water."
-    }
   },
-  {
     " Arcane Bloodline": {
       "Class Skill": " Knowledge (any one).",
       "Bonus Spells": [      "identify (3rd)",
@@ -119,9 +110,7 @@
       "New Arcana (Ex)": " At 9th level, you can add any one spell from the sorcerer/wizard spell list to your list of spells known. This spell must be of a level that you are capable of casting. You can also add one additional spell at 13th level and 17th level.",
       "School Power (Ex)": " At 15th level, pick one school of magic. The DC for any spells you cast from that school increases by +2. This bonus stacks with the bonus granted by Spell Focus.",
       "Arcane Apotheosis (Ex)": " At 20th level, your body surges with arcane power. You can add any metamagic feats that you know to your spells without increasing their casting time, although you must still expend higher-level spell slots. Whenever you use magic items that require charges, you can instead expend spell slots to power the item. For every three levels of spell slots that you expend, you consume one less charge when using a magic item that expends charges."
-    }
   },
-  {
     " Astral Bloodline": {
       "Class Skill": " Knowledge (planes).",
       "Bonus Spells": [      "true strike (3rd)",
@@ -145,9 +134,7 @@
       "Arrest the Flow (Su)": " At 15th level, once per day as an immediate action, you can attune yourself to the Astral's timeless nature to halt the effects of one condition or affliction (such as paralyzed, stunned, a poison, or a curse), including permanent and instantaneous conditions, until the end of your next turn. You can use this ability even when a condition or affliction would normally prevent you from doing so, regardless of whether you're targeting that prevention effect's source. At the end of your next turn the condition or affliction resumes its normal effect and the round delayed by this ability does not count toward the condition or affliction's duration. This ability has no effect on hit point damage, ability damage, or the dead condition. Alternatively, you can use this ability to extend the duration of any one effect affecting you until the end of your next turn; this does not extend the duration for any other creatures under the effect. At 19th level, you can use this ability twice per day.",
       "Timeless Soul (Ex)": " At 20th level, the silver skies and conduits of the Astral Plane are permanently connected to you. You become immune to the retroactive aging side effects incurred when leaving a plane with the timeless planar trait. You do not gain negative levels when slain on the Astral Plane while using",
       "astral projection": ", and any effect that would sever your silver cord instead returns you to your physical body if you succeed at a Will save (DC = 10 + the CR of the creature or caster level of the effect that severed the cord). In addition, when applying the Quicken Spell metamagic feat to a spell, it uses up a spell slot only 3 levels higher than the spell's actual level. This ability does not stack with other abilities that would reduce the spell's final adjusted level."
-    }
   },
-  {
     " Boreal Bloodline": {
       "Class Skill": " Survival.",
       "Bonus Spells": [      "enlarge person (3rd)",
@@ -173,9 +160,7 @@
       "control winds": ", but in addition the entire area (not including the \"eye\" at the center of the storm) is affected as a",
       "sleet storm": "and all in the area are exposed to extreme cold. You may use this ability once per day.",
       "Child of Ancient Winters (Su)": " At 20th level, you gain the cold subtype and you become immune to fatigue and exhaustion. In addition, you gain immunity to sneak attacks and critical hits. This power causes you to gain vulnerability to fire."
-    }
   },
-  {
     " Celestial Bloodline": {
       "Class Skill": " Heal.",
       "Bonus Spells": [      "bless (3rd)",
@@ -197,9 +182,7 @@
       "Conviction (Su)": " At 15th level, you can reroll any one ability check, attack roll, skill check, or saving throw you just made. You must decide to use this ability after the die is rolled, but before the results are revealed by the GM. You must take the second result, even if it is worse. You can use this ability once per day.",
       "Ascension (Su)": " At 20th level, you become infused with the power of the heavens. You gain immunity to acid, cold, and petrification. You also gain resist electricity 10, resist fire 10, and a +4 racial bonus on saves against poison. Finally, you gain unlimited use of the wings of heaven ability. Finally, you gain the ability to speak with any creature that has a language (as per the",
       "tongues": "spell)."
-    }
   },
-  {
     "Daemon Bloodline": {
       "Class Skill": " Heal.",
       "Bonus Spells": [ "ray of enfeeblement (3rd)",
@@ -223,9 +206,7 @@
       "Wound Warp (Sp)": " At 15th level, you gain the ability to travel across the battlefield by literally erupting from the fatal wounds of deceased creatures. As a standard action once per day, you can teleport to an unoccupied square adjacent to any dead creature within 10 feet per caster level. Any creatures adjacent to the square you teleport to take 4d6 points of acid damage as you burst into being and shower them with acidic bile. Creatures that make successful Reflex saves (DC 10 + 1/2 your sorcerer level + your Charisma modifier) take half damage. This ability otherwise functions like",
       "dimension door": ". At 20th level, you can use this ability twice per day.",
       "One with Abaddon (Su)": " At 20th level, your body embraces the unspeakable power of your daemon lineage. You gain immunity to acid, death effects, and poison. You also gain DR 5/good or silver and resistance to cold 10, electricity 10, and fire 10."
-    }
   },
-  {
     " Deep Earth Bloodline": {
       "Class Skill": " Knowledge (dungeoneering).",
       "Bonus Spells": [      "expeditious excavation (3rd)",
@@ -248,9 +229,7 @@
       "bane": "property against any creature with the earth subtype, oozes, or constructs made of stone or metal, for 1 minute. You can use this ability once per day at 9th level, twice per day at 17th, and three times per day at 20th.",
       "Earth Glide (Ex)": " At 15th level, you can glide through any sort of natural earth or stone as easily as a fish swims through water, with a burrow speed equal to half your normal speed. You do not leave a tunnel or trace of your passage. You can use this ability for 1 minute per sorcerer level each day. The duration need not be continuous, but it must be used in 1-minute increments.",
       "Strength of Stone (Su)": " At 20th level, your flesh becomes as hard as stone, giving you DR 10/adamantine, and you become immune to petrification. You suffer no penalties while squeezing through tight spaces and are immune to bull rush, drag, grapple, reposition, and trip maneuvers, and to push and pull effects as long as you are standing on the ground."
-    }
   },
-  {
     " Destined Bloodline": {
       "Class Skill": " Knowledge (history).",
       "Bonus Spells": [      "alarm (3rd)",
@@ -271,9 +250,7 @@
       "It Was Meant To Be (Su)": " At 9th level, you may reroll any one attack roll, critical hit confirmation roll, or level check made to overcome spell resistance. You must decide to use this ability after the first roll is made but before the results are revealed by the GM. You must take the second result, even if it is worse. At 9th level, you can use this ability once per day. At 17th level, you can use this ability twice per day.",
       "Within Reach (Su)": " At 15th level, your ultimate destiny is drawing near. Once per day, when an attack or spell that causes damage would result in your death, you may attempt a DC 20 Will save. If successful, you are instead reduced to -1 hit points and are automatically stabilized. The bonus from your fated ability applies to this save.",
       "Destiny Realized (Su)": " At 20th level, your moment of destiny is at hand. Any critical threats made against you only confirm if the second roll results in a natural 20 on the die. Any critical threats you score with a spell are automatically confirmed. Once per day, you can automatically succeed at one caster level check made to overcome spell resistance. You must use this ability before making the roll."
-    }
   },
-  {
     " Div Bloodline": {
       "Class Skill": " Knowledge (planes).",
       "Bonus Spells": [      "disguise self (3rd)",
@@ -294,9 +271,7 @@
       "Corrupting Aura (Ex)": " At 9th level, you can surround yourself with an aura of corrupting energy for a number of rounds per day equal to your sorcerer level. Any creature within 10 feet of you takes 1d6 points of nonlethal damage + 1 for every 2 sorcerer levels you possess, and it is sickened for 1 round. In addition, any creature within the aura that attempts casting a divine spell must succeed at a caster level check (DC 15 + double the level of the spell) or lose the spell. You can use this ability once per day at 9th level, twice per day at 17th, and three times per day at 20th.",
       "Squander (Su)": " At 15th level, you gain the ability to force others to waste the opportunities they are given. Once per day as a standard action, you can cause a target within 30 feet to gain the staggered condition for a number of rounds equal to your sorcerer level. The duration is halved if the target makes a successful Will save (DC 10 + 1/2 your sorcerer level + your Cha modifier).",
       "Ahriman's Favor (Su)": " At 20th level, you are filled with Ahriman's wickedness. You gain immunity to fire and poison. You also gain acid resistance 10 and electricity resistance 10, and the ability to see perfectly in darkness of any kind to a range of 60 feet."
-    }
   },
-  {
     " Djinni Bloodline": {
       "Class Skill": " Knowledge (planes).",
       "Bonus Spells": [  "shocking grasp (3rd)",
@@ -318,9 +293,7 @@
       "Elemental Movement (Su)": " At 15th level, you gain a fly speed of 60 feet with average maneuverability.",
       "Power of the Djinn (Su)": " At 20th level, you gain the power of genies to grant wishes. Once per day, you can cast",
       "limited wish": "as a spell-like ability. Such wishes must begin with the words \"I wish,\" and cannot duplicate a wish you have granted within the past 24 hours. If you use this ability to duplicate a spell with a costly material component, you must provide that component. You also become immune to electricity damage, and can use"
-    }
   },
-  {
     " Draconic Bloodline": {
       "Class Skill": " Perception.",
       "Bonus Spells": [      "mage armor (3rd)",
@@ -346,9 +319,7 @@
       "Pathfinder RPG Bestiary": "volumes. Each of the draconic bloodlines below alters the bloodrager's or sorcerer's bloodline arcana. : Several of these new draconic bloodline options include nonstandard damage types. For the sake of game balance, many of the damage types available to the bloodlines below somewhat differ from those produced by the parent dragon. Specifically, force energy, negative energy, and sonic energy have been altered to different types of energy. In cases where a dragon's energy type is listed as physical damage (such as bludgeoning or piercing), use that damage type when determining your breath weapon damage. For the purpose of the dragon resistance bloodline power, you gain DR equal to half the energy resistance you would normally gain against all attacks of that specific damage type. A character with the power of wyrms bloodline power gains immunity to her bloodline's damage type. For all other purposes, such as archetypes, bloodline powers, and feats, treat that dragon's energy type as fire. Though many of the enigmatic esoteric dragons remain aloof or intentionally distant from mortal affairs, occult dragons are the most likely to imprint their bloodline onto humanoids. Often such draconic blood is the result of ongoing experimentation. Scions of other esoteric dragons are far more unusual; such bloodlines usually result from explorers traveling the realms where these distant dragons dwell and being exposed to some spectacular and illunderstood power. : When selecting spells known, you can choose spells from the psychic class spell list (",
       "Pathfinder RPG Occult Adventures 69": "). The psychic spells you select must normally be unavailable to your class. You can know only a number of psychic spells equal to the highest level spell you can cast from your class spell list, based on your current class level. When you're casting these spells, they function as psychic magic instead of arcane. You use thought and emotion components (",
       "Occult Adventures 144": ") instead of verbal and somatic components when casting these spells.  *Choose one when the bloodline is first selected The blood of imperial dragons is well known throughout the lands of Tian Xia, where such dragons form a strong part of much of the continent's mythology. This is particularly true in Xa Hoi, where imperial dragons rule. Imperial dragons in other lands may vary in their interactions with humanoids, but universally accept the praise (and fear) of those around them. Their connection to the land makes the blood of these dragons a powerful arcane catalyst in the making of heroes. : Whenever you cast a spell that affects a creature with the shaken, frightened, or panicked condition, increase the spell's save DC by 1.  The interests of outer dragons take them across the cosmos. Strange devices or experimentation are most likely to lead to the addition of outer dragon blood into a world's ecosystem. The hidden blood of an outer dragon in a family's lineage is difficult to detect or stamp out. On Golarion, these dragons most commonly find themselves drawn to the fabled land of Numeria and its alien technology, though they usually refuse to share any of their insights with that nation's residents. : Whenever you cast a spell with an energy descriptor that matches your draconic bloodline's energy type, if a creature is damaged by the spell, that creature cannot take a 5-foot step for 1 round. This effect occurs only when you're using spells that require an attack roll (such as chill touch or scorching ray) or spells that allow a save (such as fireball or lightning bolt). A successful save against the damage or effects of the spell also negates this additional effect.  Born from the elemental planes or the Shadow Plane, primal dragons are infused with primeval power. These dragons traveled to the Material Plane in ages past, and many of their kind continue to spread their blood and magical influence among the humanoid races of the world. Even the malign umbral dragons prosper in the caverns of the Darklands and the mountains of Nidal. Any exposure to or experimentation with primal magics may introduce primal dragon blood into a lineage. : Whenever you cast a spell with an energy descriptor that matches your draconic bloodline's energy type, you can reroll a number of damage dice equal to half the spell's level."
-    }
   },
-  {
     " Dreamspun Bloodline": {
       "Class Skill": " Sense Motive.",
       "Bonus Spells": [      "sleep (3rd)",
@@ -375,9 +346,7 @@
       "arcane eye": "to become visible. The eye can no longer be moved, but it acts as a",
       "symbol of sleep": "to all who see it. You may use this power once per day.",
       "Solipsism (Ex)": " At 20th level, you can drift into the dream world, fading from the world around you. You can become incorporeal for 1 minute per sorcerer level. You gain the incorporeal subtype and take only half damage from corporeal magical attacks (you take no damage from nonmagical weapons and objects). Your spells deal only half damage to corporeal creatures, but spells and abilities that do not deal damage function normally. The duration need not be continuous, but it must be used in 1-minute increments."
-    }
   },
-  {
     " Ectoplasm Bloodline": {
       "Class Skill": " Stealth.",
       "Bonus Spells": [      "obscuring mist (3rd)",
@@ -400,9 +369,7 @@
       "Malevolent Ectoplasm (Sp)": " At 15th level, your ectoplasmic tendrils can lash out at creatures around you. Treat this as a",
       "black tentacles": "effect centered on your position, but the tentacles can also grapple ethereal and incorporeal creatures, and they do not affect you (though they still affect your allies). You can use this ability a number of rounds per day equal to your sorcerer level. These rounds need not be consecutive.",
       "Ectoplasmic Body (Ex)": " At 20th level, you are more ectoplasm than flesh. You become immune to sneak attacks and critical hits and gain DR 5/slashing."
-    }
   },
-  {
     " Efreeti Bloodline": {
       "Class Skill": " Knowledge (planes).",
       "Bonus Spells": [      "enlarge person (3rd)",
@@ -425,9 +392,7 @@
       "Elemental Movement (Su)": " At 15th level, your base speed increases by +30 feet.",
       "Power of the Efreet (Su)": " At 20th level, you gain the power of genies to grant wishes. Once per day, you can cast",
       "limited wish": "as a spell-like ability. Such wishes must begin with the words \"I wish,\" and cannot duplicate a wish you have granted within the past 24 hours. If you use this ability to duplicate a spell with a costly material component, you must provide that component. You also become immune to fire damage, and can use"
-    }
   },
-  {
     " Elemental Bloodline": {
       "Class Skill": " Knowledge (planes).",
       "Bonus Spells": [      "burning hands* (3rd)",
@@ -449,9 +414,7 @@
       "Elemental Blast (Sp)": " At 9th level, you can unleash a blast of elemental power once per day. This 20-foot-radius burst does 1d6 points of damage of your energy type per sorcerer level. Those caught in the area of your blast receive a Reflex save for half damage. Creatures that fail their saves gain vulnerability to your energy type until the end of your next turn. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. At 9th level, you can use this ability once per day. At 17th level, you can use this ability twice per day. At 20th level, you can use this ability three times per day. This power has a range of 60 feet.",
       "Elemental Movement (Su)": " At 15th level, you gain a special movement type or bonus. This ability is based on your chosen element, as indicated on the above chart.",
       "Elemental Body (Su)": " At 20th level, elemental power surges through your body. You gain immunity to sneak attacks, critical hits, and damage from your energy type."
-    }
   },
-  {
     " Fey Bloodline": {
       "Class Skill": " Knowledge (nature).",
       "Bonus Spells": [      "entangle (3rd)",
@@ -474,9 +437,7 @@
       "Fey Magic (Su)": " At 15th level, you may reroll any caster level check made to overcome spell resistance. You must decide to use this ability before the results are revealed by the GM. You must take the second result, even if it is worse. You can use this ability at will.",
       "Soul of the Fey (Su)": " At 20th level, your soul becomes one with the world of the fey. You gain immunity to poison and DR 10/cold iron. Creatures of the animal type do not attack you unless compelled to do so through magic. Once per day, you can cast",
       "shadow walk": "as a spell-like ability using your sorcerer level as your caster level."
-    }
   },
-  {
     " Ghoul Bloodline": {
       "Class Skill": " Stealth.",
       "Bonus Spells": [      "ray of enfeeblement (3rd)",
@@ -498,9 +459,7 @@
       "haste": "for a number of rounds per day equal to your sorcerer level. These rounds don't need to be consecutive. Each time you hit a creature with two or more claw attacks during a full attack while affected by this ability, that creature takes 1d4 points of bleed damage.",
       "Earth Crawler (Su)": " At 15th level, you gain a burrow speed of 30 feet. Additionally, as long as you are surrounded by at least 5 feet of dirt or natural stone on all sides, you gain fast healing 10. You can heal a number of hit points per day equal to 10 + your sorcerer level with this ability.",
       "Ghoulish Aspect (Su)": " At 20th level, you take on aspects of the nature and appearance of ghouls. You no longer feel the need to eat and are immune to hunger (though you are still able to consume flesh if you choose to). You gain immunity to cold, nonlethal damage, paralysis, and sleep. You also gain DR 5/-. Additionally, you gain the stench ability with a radius of 10 feet. Creatures that fail their Fortitude saving throws are sickened for 1d6+4 minutes. Use half your sorcerer level instead of half your racial Hit Dice to determine the saving throw DC."
-    }
   },
-  {
     " Harrow Bloodline": {
       "Class Skill": " Knowledge (history).",
       "Bonus Spells": [      "ill omen (3rd)",
@@ -521,9 +480,7 @@
       "Invoke the Harrow (Su)": " At 9th level, you can draw a random harrow card from a complete harrow deck you own as a standard action and channel the aspects of the card into your body. You take on superficial traits featured on the card and gain a +4 enhancement bonus to the ability score associated with the card's suit. You can invoke the harrow for a number of minutes per day equal to your sorcerer level; the duration need not be continuous, but it must be used in 1-minute increments.",
       "Harrowed Home (Sp)": " At 15th level, your otherworldly connection is so strong that your subconscious cleaves off a small portion of the Harrowed Realm for use as your own private sanctuary. Your harrowed home is created the first time you use this ability, and is decorated as a garish ref lection of your personality. Thereafter, you always visit this same home. You can place a portal to your harrowed home once every 24 hours, but placing a new portal destroys the previous one, and you can not move the entrance while you are inside. As long as you are not in your harrowed home, time ceases to pass for anything and anyone still in your pocket dimension; creatures cannot move, objects do not decay, and everything remains exactly the same as you left it the last time you visited the plane. Time continues as normal whenever you are inside your harrowed home. This ability is otherwise identical to",
       "Kin to the Old Tales (Su)": " At 20th level, your soul becomes host to the otherworldly energies of the harrow. You gain DR 10/cold iron and immunity to curses, paralysis, and sleep. You can always act in the surprise round of combat, and you cannot be caught flat-footed. You gain unlimited use of your invoke the harrow ability."
-    }
   },
-  {
     " Imperious Bloodline": {
       "Class Skill": " Perform (oratory).",
       "Bonus Spells": [      "moment of greatness (3rd)",
@@ -544,9 +501,7 @@
       "Take Your Best Shot (Su)": " At 9th level, if you are targeted by a harmful spell, spell-like ability, or supernatural ability and suffer no harm from it, whether because of a successful saving throw, spell resistance, the attack missing, or some other protection, as an immediate action you can make an Intimidate check to demoralize the creature that produced the effect, but only if the creature that used the harmful effect is within 30 feet and can clearly see and hear you. At 13th level, you can use this ability after succeeding at a saving throw to reduce the effects of an attack (if no save is allowed, you cannot use this ability).",
       "Heroic Legends (Su)": " At 15th level, you may inspire greatness or inspire heroics as a bard of your sorcerer level by sacrificing a spell slot as a swift or move action. The effect lasts a number of rounds equal to the sacrificed spell's level; this duration is doubled for human recipients.",
       "Immortal Legend (Ex)": " At 20th level, you cease aging; no longer need to eat, drink, or sleep; and gain immunity to death effects and energy drain."
-    }
   },
-  {
     " Impossible Bloodline": {
       "Class Skill": " Knowledge (engineering).",
       "Bonus Spells": [      "lesser confusion (3rd)",
@@ -568,9 +523,7 @@
       "Relativity (Su)": " At 15th level, you can traverse vertical surfaces as easily as you walk on the ground. When climbing, you move at your normal land speed and take none of the penalties associated with climbing. The surface must be able to support your weight, and difficult terrain affects your speed as normal. You are also immune to",
       "reverse gravity": "and similar effects.",
       "Living Paradox (Ex)": " At 20th level, your outward appearance remains the same, but beneath your skin lies not flesh and blood but clockwork gears, miniature galaxies, or something equally uncanny. You gain immunity to disease and poison. You take no additional damage from bleed effects, critical hits, and sneak attacks."
-    }
   },
-  {
     " Infernal Bloodline": {
       "Class Skill": " Diplomacy.",
       "Bonus Spells": [      "protection from good (3rd)",
@@ -592,9 +545,7 @@
       "Hellfire (Sp)": " At 9th level, you can call down a column of hellfire. This 10-foot-radius burst does 1d6 points of fire damage per sorcerer level. Those caught in the area of your blast receive a Reflex save for half damage. Good creatures that fail their saves are shaken for a number of rounds equal to your sorcerer level. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. At 9th level, you can use this ability once per day. At 17th level, you can use this ability twice per day. At 20th level, you can use this ability three times per day. This power has a range of 60 feet.",
       "On Dark Wings (Su)": " At 15th level, you can grow fearsome bat wings as a standard action, giving you a fly speed of 60 feet with average maneuverability. The wings can be dismissed as a free action.",
       "Power of the Pit (Su)": " At 20th level, your form becomes infused with vile power. You gain immunity to fire and poison. You also gain resistance to acid 10 and cold 10, and the ability to see perfectly in darkness of any kind to a range of 60 feet."
-    }
   },
-  {
     "Kobold Sorcerer Bloodline": {
       "Class Skill": " Disable Device.",
       "Bonus Spells": [      "alarm (3rd)",
@@ -615,9 +566,7 @@
       "Arcane Ambush (Su)": " At 9th level, as a swift action, you can expend a spell slot in order to grant you and your allies a bonus on attack and damage rolls. This bonus lasts 1 round, is equal to the level of the spell expended, and only applies to opponents your allies are flanking or opponents denied their Dexterity bonus against your allies. You grant this bonus to yourself plus up to one ally for every four sorcerer levels you possess (to a maximum of five allies at 20th level). The allies must be within 30 feet of you and you must have line of effect to each affected ally.",
       "Earth Glide (Su)": " At 15th level, you gain the earth glide universal monster ability with a speed equal to your base speed. This does not give you the ability to breathe while passing through earth, so you must hold your breath or use some alternate method to breathe while using this ability.",
       "Nimble Walker (Su)": " At 20th level, you gain a +5 racial bonus on Reflex saving throws and on Acrobatics checks made to move through a creature's threatened area or through its space. You also gain the ability to breathe while passing through earth using your earth glide ability."
-    }
   },
-  {
     " Maestro Bloodline": {
       "Class Skill": " Perform.",
       "Bonus Spells": [      "ventriloquism (3rd)",
@@ -640,9 +589,7 @@
       "Inspire (Sp)": " At 15th level, your artistic magic can inspire your allies to great accomplishments. You can use",
       "greater heroism": "as a spell-like ability. You can use this ability once per day at 15th level, twice per day at 17th level, and three times per day at 19th level.",
       "Grand Maestro (Su)": " At 20th level, the power of pure magic music flows through you. You cast any spell with a verbal component as if it had the Still Spell metamagic feat applied to it, with no increase to the casting time or spell slot required to cast it. You gain immunity to sonic damage and language-dependent spells."
-    }
   },
-  {
     " Marid Bloodline": {
       "Class Skill": " Knowledge (planes).",
       "Bonus Spells": [      "obscuring mist (3rd)",
@@ -664,9 +611,7 @@
       "Elemental Movement (Su)": " At 15th level, you gain a swim speed of 60 feet.",
       "Power of the Marid (Su)": " At 20th level, you gain the power of genies to grant wishes. Once per day, you can cast",
       "limited wish": "as a spell-like ability. Such wishes must begin with the words \"I wish,\" and cannot duplicate a wish you have granted within the past 24 hours. If you use this ability to duplicate a spell with a costly material component, you must provide that component. You become immune to cold damage, and can use"
-    }
   },
-  {
     " Martyred Bloodline": {
       "Class Skill": " Perform (oratory).",
       "Bonus Spells": [      "endure elements (3rd)",
@@ -692,9 +637,7 @@
       "raise dead": "or",
       "resurrection": ") cost half as much as normal. Your body cannot be turned into an undead creature, as though you were affected by a permanent",
       "hallow": "effect (caster level equal to your sorcerer level)."
-    }
   },
-  {
     " Naga Bloodline": {
       "Class Skill": " Knowledge (dungeoneering)",
       "Bonus Spells": [      "ray of enfeeblement (3rd)",
@@ -715,9 +658,7 @@
       "Ensnaring Eyes (Su)": " At 9th level, add 2 to the save DC of any spell, spell-like ability, or supernatural ability you use that causes a target to become fascinated or that belongs to the charm subschool.",
       "Cast without Hands (Su)": " At 15th level, you learn to eschew the use of your hands when casting spells, as a naga would. Whenever you cast an arcane spell with a somatic component, you can do so even with your hands full, by twisting and gyrating your body. This doubles the arcane spell failure chance from your armor (if any), and you can't use this ability if you are pinned or immobile.",
       "Power of the Naga (Su)": " At 20th level, your form becomes enhanced by the power of the naga. You gain immunity to charm effects, mind-reading effects, and poison. In addition, you can also assume the shape of a naga at will as if using"
-    }
   },
-  {
     "Nanite Bloodline": {
       "Class Skill": " Knowledge (engineering).",
       "Bonus Spells": [      "disguise self (3rd)",
@@ -743,9 +684,7 @@
       "Pathfinder RPG Advanced Player's Guide": "239) using your sorcerer level as the caster level, except it is an extraordinary ability and cannot be dispelled. At 17th level, you can use this ability twice per day (though using this ability twice in one 24-hour period entails a chance of system shock and death; see the spell's description for more details). At 20th level, you never die of system shock from using this ability.",
       "Distributed Body (Ex)": " At 15th level, anytime you are struck by a critical hit or a sneak attack, there is a 25% chance that your nanites scatter and reincorporate around the attack, negating the extra damage and causing the attack to deal damage as normal instead.",
       "Living Swarm (Su)": " At 20th level, you and the machines within you become one. Your nanites consume and replicate your body, allowing swift and radical physical alterations with little more than a thought. You become immune to bleed effects, diseases, and poisons, and gain DR 5/-. At will, you can break down your body and move in a shimmering stream of flying nanites, as if affected by"
-    }
   },
-  {
     " Oni Bloodline": {
       "Class Skill": " Intimidate.",
       "Bonus Spells": [      "ray of enfeeblement (3rd)",
@@ -771,9 +710,7 @@
       "bleed": ", but if you take any acid or fire damage, you stop regenerating for the rest of the day (but remain stabilized) and you are affected by such effects as normal. You still die if your hit points reach a negative number equal to your Constitution score, regardless of whether you are regenerating. This ability only works once per day-if you drop below 0 hit points a second time, you do not benefit from this ability.",
       "Hedonistic Master (Su)": " At 20th level, you fully embrace your oni heritage to unlock its maximum potential. You gain the ability to change your shape between your natural form and that of any one Large humanoid creature of the giant subtype at will (as the spell",
       "giant form I": "). You must choose which creature you wish to be able to change into when you reach 20th level; once you make this decision, you cannot change it. You can switch between your forms at will, and can assume your giant form for as long as you want. In addition, you gain SR equal to 6 + your sorcerer level, and whenever you cast a spell of the charm or compulsion subschool, the spell's DC increases by +2."
-    }
   },
-  {
     " Orc Bloodline": {
       "Class Skill": " Survival.",
       "Bonus Spells": [      "burning hands (3rd)",
@@ -794,9 +731,7 @@
       "Strength of the Beast (Ex)": " At 9th level, you gain a +2 inherent bonus to your Strength. This bonus increases to +4 at 13th level, and to +6 at 17th level.",
       "Power of Giants (Sp)": " At 15th level, you may grow to Large size as a standard action. At this size you gain a +6 size bonus to Strength, a -2 penalty to Dexterity, a +4 size bonus to Constitution, and a +4 natural armor bonus. You may return to your normal size as a standard action. You may remain in this size for up to 1 minute per character level per day; this duration does not need to be consecutive, but it must be used in 1 minute increments.",
       "Warlord Reborn (Su)": " At 20th level, you become a true orc warlord of legend. You gain immunity to fire and DR 5/-. Once per day, you can cast"
-    }
   },
-  {
     "Pestilence Bloodline": {
       "Class Skill": " Heal.",
       "Bonus Spells": [      "charm animal (3rd)",
@@ -818,9 +753,7 @@
       "Pestilential Breath (Su)": " At 15th level, the sickness within your body finally becomes so potent that your very breath is deadly. Once per day as a standard action, you can exhale a cloud of pestilence in a 30-foot cone. Those caught in the area of this miasmic cloud receive a single Fortitude save to avoid suffering the effects of two different diseases. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. You can choose what two diseases you inflict on each target that succumbs to your plague breath, but they must be two different diseases chosen from the following list: blinding sickness, bubonic plague, cackle fever, filth fever, leprosy, mindfire, red ache, shakes, or slimy doom. The victim suffers the initial effects of these two diseases immediately - use the diseases' frequency and save DC normally to determine further effects as detailed on page 557 of the",
       "Pathfinder RPG Core Rulebook": ". At 17th level, you can use this ability twice per day. At 20th level you can use this ability three times per day.",
       "Plague Carrier (Su)": " At 20th level, your touch inflicts mummy rot on those you strike. You can choose to suppress this ability for 1 round as a swift action. You can make a touch attack to inflict this disease on a target, or transfer it as part of an attack with any melee weapon or touch-based spell. The creature touched can resist contracting mummy rot by making a Fortitude save - the DC is equal to 10 + 1/2 your sorcerer level + your Charisma modifier."
-    }
   },
-  {
     " Phoenix Bloodline": {
       "Class Skill": " Knowledge (Arcana)",
       "Bonus Spells": [
@@ -842,9 +775,7 @@
       "Vermilion Wings (Su)": " At 9th level, you gain the ability to grow a pair of phoenix wings from your back as a standard action. The wings grant you a fly speed of 60 feet with good maneuverability. You can dismiss the wings as a free action.",
       "Restoring Flames (Sp)": " At 15th level, you can cast once per day as a spell-like ability.",
       "Rebirth (Su)": " At 20th level, the full power of a phoenix erupts from within you if you perish. When you die, you are brought back to life, as , after 1 minute. This ability can be used only once every 24 hours, and if you are slain again within this period, your death is permanent."
-    }
   },
-  {
     " Possessed Bloodline": {
       "Class Skill": " Knowledge (religion)",
       "Bonus Spells": [      "anticipate peril (3rd)",
@@ -865,9 +796,7 @@
       "Inside Agent (Sp)": " At 9th level, you can reroll any Perception check you just attempted by allowing your possessing spirit to take further control. You take a -2 penalty on all other skill checks for the following minute as the spirit interferes with your concentration. At 13th level, you can reroll any other skill check, but the penalty for using the ability in this way increases to -4 for the following 10 minutes. You must reroll the check before  you learn the result of your original check, and cannot use this power while the skill check penalty associated with inside agent is imposed on you.",
       "One Body, Two Minds (Sp)": " At 15th level, once per day, you can improve the effectiveness of a single spell by havingyour possessing spirit channel that spell. The spell acts as though it were affected by both the Silent Spell and Still Spell metamagic feats. If the spell chosen is a mindaffecting spell, it also benefits from the Extend Spell metamagic feat. This ability does not use up a spell slot higher than the level of the base spell, nor does it increase the level of the base spell.",
       "Dual Spirit (Su)": " At 20th level, you gain immunity to mind-affecting effects. Whenever you successfully employ a possession effect (such as magic jar or possession ), you remain in complete control of your body and the body of your possessed target."
-    }
   },
-  {
     " Protean Bloodline": {
       "Class Skill": " Knowledge (planes).",
       "Bonus Spells": [      "entropic shield (3rd)",
@@ -891,9 +820,7 @@
       "dimension door": ", while also creating a mass of",
       "black tentacles": "centered on your former location. Both of these effects use your sorcerer level as the caster level. At 20th level, you can use this ability twice per day.",
       "Avatar of Chaos (Ex)": " At 20th level, you are infused with the essence of raw chaos. You gain immunity to acid, petrification, and polymorph effects (except when cast on self), as well as a +2 bonus to save DCs and on checks to overcome spell penetration against creatures with the lawful subtype."
-    }
   },
-  {
     " Psychic Bloodline": {
       "Class Skill": " Sense Motive.",
       "Bonus Spells": [      "mind thrust I (3rd)",
@@ -919,9 +846,7 @@
       "thoughtsense": "effect with a range of 30 feet instead of 60 feet.",
       "True Thought-Form (Sp)": " At 20th level, you can shed the restrictions of the flesh and become a thoughtform-a being that exists independently of its substance. Whenever a creature would kill you, you can attempt to use",
       "mind swap": "against that creature as an immediate action just before dying."
-    }
   },
-  {
     " Rakshasa Bloodline": {
       "Class Skill": " Disguise.",
       "Bonus Spells": [      "charm person (3rd)",
@@ -946,9 +871,7 @@
       "Alter Self (Sp)": " At 15th level, you can change your shape into that of any humanoid at will. This ability acts like",
       "alter self": "or other disguise and polymorph abilities to assume your original form or other forms when it suits you. You are forevermore treated as a native outsider rather than as a humanoid (or whatever your original type was) for the purpose of spells and other magical effects. Unlike other outsiders, you can still be brought back from the dead as if you were a member of your previous creature type. You gain DR 10/piercing.",
       "Outsider (Su)": " At 20th level, your natural form becomes an animal-headed humanoid, like a true rakshasa. This does not affect your ability to speak or cast spells. You can use your"
-    }
   },
-  {
     " Salamander Bloodline": {
       "Class Skill": " Acrobatics",
       "Bonus Spells": [      "magic weapon (3rd)",
@@ -970,9 +893,7 @@
       "Serpent's Tail (Su)": " At 9th level, you can transform your legs into a slithering serpentine tail as a free action. Your speed is reduced by 10 feet (to a minimum of 5 feet), and you can't be tripped. Your footwear melds into your body and is nonfunctional unless it provides a constant bonus and does not need to be activated. You also gain a tail slap natural attack that deals 1d8 points of damage (1d6 if you are Small) + your Strength modifier. At 15th level, your reach with your tail slap increases by 5 feet. These effects last a number of minutes per day equal to your sorcerer level; the duration does not need to be consecutive, but it must be used in 1-minute increments.",
       "Searing Heat (Su)": " At 15th level, your body becomes as hot as a salamander's. You deal 1d6 additional points of fire damage with natural weapons and melee attacks made with metal weapons. In addition, you deal 2d6 points of fire damage per round to any creature you grapple. This heat does not damage your equipment. You can activate or deactivate this effect as a free action.",
       "Reforged Flesh (Ex)": " At 20th level, you become immune to fire damage and gain DR 10/adamantine and magic."
-    }
   },
-  {
     " Scorpion Bloodline": {
       "Class Skill": " Climb.",
       "Bonus Spells": [      "thorn javelin (3rd)",
@@ -1000,9 +921,7 @@
       "delay poison": "as spell-like abilities a total of three times per day.",
       "Sandwalker (Ex)": " At 15th level, you gain you gain a burrow speed of 30 feet and tremorsense with a range of 60 feet.",
       "It Is My Nature (Su)": " At 20th level, your poisoned blood protects you, reflexively conjuring an ethereal stinger to lash out at foes who come too close. Three times per day when an enemy moves into a square adjacent to you, you can make a melee touch attack against the creature as an immediate action. On a hit, the creature must succeed at a Fortitude save (DC = 10 + half your sorcerer level + your Charisma modifier) or die. A creature that succeeds at this Fortitude save is immune to this effect for 24 hours. This is a poison and death effect. You can use this ability even when you are surprised or flat-footed."
-    }
   },
-  {
     " Serpentine Bloodline": {
       "Class Skill": " Diplomacy.",
       "Bonus Spells": [      "hypnotism (3rd)",
@@ -1031,9 +950,7 @@
       "Scaled Soul (Su)": " At 20th level, you gain the shapechanger subtype, and you can assume the form of a reptilian humanoid (as",
       "alter self": ") or snake of Diminutive to Huge size (as",
       "beast shape III": ") at will. You retain the power of speech and the ability to use somatic spell components when transformed. You also become immune to poison and paralysis. You may use serpent's fang as often as desired, and you may choose to inflict damage to any ability score."
-    }
   },
-  {
     " Shadow Bloodline": {
       "Class Skill": " Stealth.",
       "Bonus Spells": [      "ray of enfeeblement (3rd)",
@@ -1056,9 +973,7 @@
       "Enveloping Darkness (Sp)": " At 15th level, you may create an area of",
       "freedom of movement": "or a similar effect. You may use this ability once per day.",
       "Shadow Master (Su)": " At 20th level, you can see perfectly in natural or magical darkness. When you use"
-    }
   },
-  {
     " Shaitan Bloodline": {
       "Class Skill": " Knowledge (planes).",
       "Bonus Spells": [      "true strike (3rd)",
@@ -1080,9 +995,7 @@
       "Elemental Movement (Su)": " At 15th level, you gain a burrow speed of 30 feet.",
       "Power of the Shaitan (Su)": " At 20th level, you gain the power of genies to grant wishes. Once per day, you can cast",
       "limited wish": "as a spell-like ability. Such wishes must begin with the words \"I wish,\" and cannot duplicate a wish you have granted within the past 24 hours. If you use this ability to duplicate a spell with a costly material component, you must provide that component. You become immune to acid damage, and can use"
-    }
   },
-  {
     " Shapechanger Bloodline": {
       "Class Skill": " Disguise.",
       "Bonus Spells": [      "disguise self (3rd)",
@@ -1104,9 +1017,7 @@
       "magic fang": "), this attack ignores DR of the same type. Those caught in the area can attempt a Reflex saving throw (DC = 10 + half your sorcerer level + your Charisma modifier) for half damage. At 17th level, you can use this ability twice per day. At 20th level, you can use this ability three times per day.",
       "Superior Transformation (Su)": " At 15th level, you become master of your own shape and you fully understand the intricacies of all shapechanging magic. You are immune to polymorph effects unless you are a willing target. Once per day when you cast a polymorph spell on yourself, in addition to the normal effects of the spell, you can choose to gain a fly speed of 60 feet (average maneuverability), a swim speed of 60 feet, or an increase to your base land speed of 30 feet.",
       "Amorphous Anatomy (Su)": " At 20th level, your vital organs shift position, and as a rule they are constantly changing their shape and size to best protect you. You gain immunity to critical hits and sneak attacks. In addition, you gain blindsight with a range of 60 feet and damage reduction 5/-. You automatically recover from physical blindness or deafness after 1 round by growing new sensory organs to replace the compromised ones; you cannot otherwise regenerate lost body parts."
-    }
   },
-  {
     " Solar Bloodline": {
       "Class Skill": " Perception",
       "Bonus Spells": [      "searing light (3rd)",
@@ -1128,9 +1039,7 @@
       "Cleansing Flame (Su)": " At 9th level, twice per day, you can use fire to restore the health of yourself or your allies. As a standard action, you can wreathe your hand in a halo of flame and touch yourself or another creature. The touch heals 2d8 + your character level points of damage. You can also remove one of the following conditions affecting the target: 1d6 points of ability damage, blinded, confused, dazzled, deafened, diseased, exhausted, fatigued, nauseated, poisoned, or sickened. At 20th level, you can use this ability three times per day.",
       "Healing Fire (Su)": " At 15th level, you can channel energy twice per day as a cleric of half your level. Instead of using this ability to damage undead, you can convert the positive energy to flame and deal an equivalent amount of fire damage instead.",
       "Solar Ascension (Su)": " At 20th level, as a full-round action, you can become an incorporeal being of light for 1 round per sorcerer level. While in this form, you gain the incorporeal subtype and take half the normal damage from corporeal magic attacks (you take no damage from nonmagical weapons and objects). Your spells deal half damage to corporeal creatures, but spells and abilities that do not deal damage function normally. The duration need not be continuous, but it must be used in 1-round increments. While in this form, any creature you move through (as the overrun combat maneuver) takes 2d6 points of fire damage."
-    }
   },
-  {
     " Starsoul Bloodline": {
       "Class Skill": " Knowledge (nature).",
       "Bonus Spells": [      "unseen servant (3rd)",
@@ -1152,9 +1061,7 @@
       "wall of fire": ", but it inflicts cold damage and does not radiate heat. However, one side of the aurora designated by you fascinates creatures within 10 feet, up to a maximum of 2 HD of creatures per sorcerer level. A Will save negates this fascinate effect. The save DC is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. You may use this ability for a number of rounds per day equal to your sorcerer level. These rounds do not need to be consecutive.",
       "Breaching the Gulf (Sp)": " At 15th level, your caster level is increased by 3 when casting spells of the teleportation subschool. In addition, once per day you can teleport a single creature within 30 feet into the void of space if it fails a Will save. The save DC is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. The target can attempt a new saving throw as a full-round action each round to return. While trapped in the airless void, the target takes 6d6 points of cold damage per round and must hold its breath or begin to suffocate.",
       "Starborn (Ex)": " At 20th level, you gain immunity to cold and blindness, and you can see perfectly in natural or magical darkness. In addition, you gain fast healing 1 when you are outdoors at night."
-    }
   },
-  {
     " Stormborn Bloodline": {
       "Class Skill": " Knowledge (nature).",
       "Bonus Spells": [      "shocking grasp (3rd)",
@@ -1177,9 +1084,7 @@
       "Thunderbolt (Sp)": " At 9th level, you can command a stroke of lightning to strike from above in a 5-foot-radius cylinder 60 feet high. The thunderbolt inflicts 1d6 points of damage per sorcerer level; half of this damage is electricity and half is sonic. A Reflex save (DC 10 + 1/2 your sorcerer level + your Charisma modifier) halves this damage. Creatures failing their saves are deafened for 1 round. At 9th level, you can use this ability once per day, at 17th twice per day, and at 20th three times per day. This power has a range of 120 feet.",
       "Ride the Lightning (Sp)": " At 15th level, as a full-round action you can become a living lightning bolt and move in a straight line up to 10 times your speed. You do not provoke attacks of opportunity while moving in this way. Creatures or objects in your path are affected as by your thunderbolt power. Creatures do not block your movement but solid barriers do unless they are reduced to 0 hit points. You can use this power once per day for a number of rounds equal to your sorcerer level.",
       "Storm Lord (Ex)": " At 20th level, you are one with the storm. You gain immunity to deafness, stunning, and wind effects and gain blindsight 120 feet against concealment from natural or magical fog, mist, or weather. Once per day, when attacked with an electricity or sonic effect, you may forgo your saving throw and absorb the energies of the attack, healing 1 point of damage for every 3 points of damage the attack would otherwise have dealt."
-    }
   },
-  {
     " Undead Bloodline": {
       "Class Skill": " Knowledge (religion).",
       "Bonus Spells": [      "chill touch (3rd)",
@@ -1200,9 +1105,7 @@
       "Grasp of the Dead (Sp)": " At 9th level, you can cause a swarm of skeletal arms to burst from the ground to rip and tear at your foes. The skeletal arms erupt from the ground in a 20-foot-radius burst. Anyone in this area takes 1d6 points of slashing damage per sorcerer level. Those caught in the area receive a Reflex save for half damage. Those who fail the save are unable to move for 1 round. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. The skeletal arms disappear after 1 round. The arms must burst up from a solid surface. At 9th level, you can use this ability once per day. At 17th level, you can use this ability twice per day. At 20th level, you can use this ability three times per day. This power has a range of 60 feet.",
       "Incorporeal Form (Sp)": " At 15th level, you can become incorporeal for 1 round per sorcerer level. While in this form, you gain the incorporeal subtype. You only take half damage from corporeal sources as long as they are magic (you take no damage from non-magic weapons and objects). Likewise, your spells deal only half damage to corporeal creatures. Spells and other effects that do not deal damage function normally. You can use this ability once per day.",
       "One of Us (Ex)": " At 20th level, your form begins to rot (the appearance of this decay is up to you) and undead see you as one of them. You gain immunity to cold, nonlethal damage, paralysis, and sleep. You also gain DR 5/-. Unintelligent undead do not notice you unless you attack them. You receive a +4 morale bonus on saving throws made against spells and spell-like abilities cast by undead."
-    }
   },
-  {
     " Unicorn Bloodline": {
       "Class Skill": " Heal",
       "Bonus Spells": [
@@ -1224,9 +1127,7 @@
       "Righteous Fury (Su)": " At 9th level, once per day you can create a spear of pure light and throw it at a creature within 60 feet as a standard action. This is a ranged touch attack that uses your Charisma modifier in place of your Dexterity modifier to determine the attack bonus. The spear deals 1d6 points of damage per sorcerer level and ignores all damage reduction and hardness. This damage increases to 1d8 points of damage per sorcerer level against an evil creature. At 13th level, you can use this ability twice per day. At 17th level, you can use this ability three times per day.",
       "Friend to Nature (Su)": " At 15th level, creatures with the animal or magical beast type and a nonevil alignment instinctually trust you. Such creatures automatically have a starting attitude of indifferent or better toward you unless you or a creature allied with you has attacked or otherwise threatened violence against such a creature.",
       "Blessing (Su)": " At 20th level, you gain immunity to poison, to charm effects, and to spells and weapons with the evil descriptor. You can also cast at will with a caster level equal to your sorcerer level."
-    }
   },
-  {
     " Verdant Bloodline": {
       "Class Skill": " Knowledge (nature).",
       "Bonus Spells": [      "entangle (3rd)",
@@ -1253,9 +1154,7 @@
       "plant shape II": "at 20th level. You can transform non-plant creatures using this power once per day.",
       "Rooting (Ex)": " At 15th level, as a move action, you can extend roots into the ground. Your speed is reduced to 5 feet, but you gain a +4 bonus to natural armor and a +10 bonus to CMD against bull rush, overrun, reposition, and trip maneuvers. You also gain tremorsense 30 feet and fast healing 1. You can use this power for a number of minutes per day equal to your sorcerer level. This duration need not be consecutive, but it must be used in 1-minute increments.",
       "Shepherd of the Trees (Su)": " At 20th level, your verdant heritage fully manifests. You gain a +4 natural armor bonus. You gain immunity to paralysis, poison, polymorph, sleep, and stunning, and you gain tremorsense 30 feet even when not rooted."
-    }
   },
-  {
     " Vestige Bloodline": {
       "Class Skill": " Knowledge (history).",
       "Bonus Spells": [      "identify (3rd)",
@@ -1283,4 +1182,3 @@
       "mirage arcana": "spell, except all structures and terrain created must be places appearing within your mindscape. You can use this ability at will, but you can maintain only a single manifest memory at any one time. You can allow any creature you can see who has previously entered your mindscape to automatically disbelieve the illusion as a free action."
     }
   }
-]
