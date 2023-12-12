@@ -208,6 +208,13 @@ alignments = {
         "LE": "lawful evil"
     }
 
+alignment_exclusion = {
+        'chaotic': 'lawful',
+        'lawful': 'chaotic',
+        'good': 'evil',
+        'evil': 'good'
+    }
+
 hair_colors = ['Black', 'Brown', 'Blond', 'Red', 'White', 'Grey']
 hair_types = ['Curly',  'Bald', 'Wavy', 'Straight', 'Flowing', 'Frizzy', 'Spiky', 'Touseled', 'Unkempt','Bald']
 eye_colors = ['Amber', 'Blue', 'Brown', 'Grey', 'Green', 'Hazel']

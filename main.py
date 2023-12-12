@@ -171,13 +171,14 @@ while userInput.lower() == 'y':
 		character.anti_paladin_cruelty_chooser()
 		character.paladin_mercy_chooser()		
 		character.arcanist_exploits_chooser()
-		character.cavalier_order_chooser()							
+		character.cavalier_order_chooser()		
+		character.inquisition_chooser()
+
 		print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
 
 		#class specific feats choosers
 		character.ranger_feats_chooser()
 		character.monk_feats_chooser()
-		character.sorcerer_feats_chooser()
 
 
 		character.archetype_data()
@@ -188,7 +189,12 @@ while userInput.lower() == 'y':
 
 
 
-		character.inquisition_chooser()
+
+
+
+
+		character.bloodline_feats_chooser()
+
 
 
 		# character.armor_chooser()

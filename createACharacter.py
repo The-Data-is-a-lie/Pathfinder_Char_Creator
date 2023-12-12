@@ -476,7 +476,7 @@ class Character:
     def choose_alignment(self, alignments):
         alignment_data = getattr(data,alignments)
         alignment_input = input("If you want to choose an alignment, type: CG CN CE NG N NE LG LN LE ").upper()
-        self.alignment = alignment_data.get(alignment_input, None).lower()
+        self.alignment = alignment_data.get(alignment_input, None)
 
         if self.alignment is None:
             print("Invalid alignment input. Randomizing alignment:")
@@ -486,6 +486,8 @@ class Character:
             self.alignment = alignment_data[random_alignment_code].lower()
 
             print(self.alignment)
+        else:
+            self.alignment.lower()
 
         return self.alignment
 
@@ -746,8 +748,7 @@ class Character:
 
         return self.spells_known_list
 
-
-    def alignment_spell_limits(self, spell_data, i):
+    def alignment_spell_limits(self, spell_data, i, alignment_exclusion):
         """
         Creates flags to limit spell choices to only be within the character's alignment for all classes 
         (not just cleric to make characters more thematic)
@@ -755,46 +756,84 @@ class Character:
         return: query_i 
         params: spell_data (pandas file), i (number)
         """
-        alignment = self.alignment.lower().replace(" ", "") 
-        print(alignment)
-        extraction_list = ['name', self.c_class_for_spells]#, 'lawful', 'chaotic', 'evil','good']   
+        alignment = self.alignment.lower()
+        extraction_list = ['name', self.c_class_for_spells, 'lawful', 'chaotic', 'evil', 'good']
+        alignment_exclusion = getattr(data, alignment_exclusion)
 
-        condition_chaotic = "chaotic" in alignment
-        condition_good = "good" in alignment
-        condition_lawful = "lawful" in alignment
-        condition_evil = "evil" in alignment
 
-        if condition_chaotic and condition_good:
-            condition = (spell_data['lawful'] == 0) & (spell_data['evil'] == 0)
+        excluded_columns = set()
 
-        elif condition_chaotic:
-            condition = (spell_data['lawful'] == 0)
+        for alignment_part in alignment.split(' '):
+            print(f'This is your alignment part {alignment_part}')
+            excluded_column = alignment_exclusion.get(alignment_part)
+            if excluded_column:
+                excluded_columns.add(excluded_column)
 
-        elif condition_good:
-            condition = (spell_data['evil'] == 0)
+        condition = spell_data[self.c_class_for_spells] == i
 
-        elif condition_lawful and condition_evil:
-            condition = (spell_data['chaotic'] == 0) & (spell_data['good'] == 0)
+        for col in excluded_columns:
+            condition &= (spell_data[col] == 0)
 
-        elif condition_lawful:
-            condition = (spell_data['chaotic'] == 0)
+        query_i = spell_data.loc[condition, extraction_list]
 
-        elif condition_evil:
-            condition = (spell_data['good'] == 0)
-
-        else:
-            condition = None
+        return query_i
 
 
 
-        if condition is not None:
-            print(condition)
-            print(self.c_class_for_spells)
-            query_i = spell_data.loc[(spell_data[self.c_class_for_spells] == i) & condition, extraction_list]
-        else:
-            query_i = spell_data.loc[(spell_data[self.c_class_for_spells] == i) & condition, extraction_list]            
+    # def alignment_spell_limits(self, spell_data, i):
+    #     """
+    #     Creates flags to limit spell choices to only be within the character's alignment for all classes 
+    #     (not just cleric to make characters more thematic)
 
-        return query_i               
+    #     return: query_i 
+    #     params: spell_data (pandas file), i (number)
+    #     """
+    #     alignment = self.alignment.lower()
+    #     print(alignment)
+    #     extraction_list = ['name', self.c_class_for_spells, 'lawful', 'chaotic', 'evil','good']   
+
+    #     condition_chaotic = "chaotic" in alignment
+    #     condition_good = "good" in alignment
+    #     condition_lawful = "lawful" in alignment
+    #     condition_evil = "evil" in alignment
+
+    #     if condition_chaotic and condition_good:
+    #         condition = (spell_data['lawful'] == 0) & (spell_data['evil'] == 0)
+
+    #     elif condition_chaotic and condition_evil:
+    #         condition = (spell_data['lawful'] == 0) & (spell_data['good'] == 0)
+
+    #     elif condition_lawful and condition_evil:
+    #         condition = (spell_data['chaotic'] == 0) & (spell_data['good'] == 0)
+
+    #     elif condition_lawful and condition_good:
+    #         condition = (spell_data['chaotic'] == 0) & (spell_data['evil'] == 0)
+
+    #     elif condition_lawful:
+    #         condition = (spell_data['chaotic'] == 0)
+
+    #     elif condition_evil:
+    #         condition = (spell_data['good'] == 0)
+
+    #     elif condition_chaotic:
+    #         condition = (spell_data['lawful'] == 0)
+
+    #     elif condition_good:
+    #         condition = (spell_data['evil'] == 0)
+
+    #     else:
+    #         condition = None
+
+
+
+    #     if condition is not None:
+    #         print(condition)
+    #         print(self.c_class_for_spells)
+    #         query_i = spell_data.loc[(spell_data[self.c_class_for_spells] == i) & condition, extraction_list]
+    #     else:
+    #         query_i = spell_data.loc[(spell_data[self.c_class_for_spells] == i) & condition, extraction_list]            
+
+    #     return query_i         
 
 
     def spells_known_selection(self,base_classes,divine_casters):
@@ -819,7 +858,7 @@ class Character:
                 if known_list[i] != 'null':
                     select_spell=known_list[i]             
 
-                    query_i = self.alignment_spell_limits(spell_data, i)
+                    query_i = self.alignment_spell_limits(spell_data, i, "alignment_exclusion")
 #                    query_i = spell_data.loc[spell_data[self.c_class] == i, extraction_list]
                     #needed to use this to properly randomize (vs. random.shuffle)
                     query_i = query_i.sample(frac=1.0)
@@ -841,7 +880,7 @@ class Character:
                  
                     select_spell=day_list[i]         
 
-                    query_i = self.alignment_spell_limits(spell_data, i)                        
+                    query_i = self.alignment_spell_limits(spell_data, i, "alignment_exclusion")                        
 
 #                    query_i = spell_data.loc[(spell_data[self.c_class] == i) & (spell_data['chaotic']== 0), extraction_list]
 
@@ -2020,28 +2059,79 @@ class Character:
             return animal_chosen_feat_list
 
 
-    def sorcerer_feats_chooser(self):
+    def bloodline_feats_chooser(self):
         """
-        If class = Sorcerer randomly chooses feats from each bloodline list
+        If class = Sorcerer or Bloodrager randomly chooses feats from each bloodline list
         Return
         - feat_list
         """
+        print('Wubby Dubby 1st')
+        print(f'sorc bloodline {self.chosen_s_bloodline}')
+        print(f'blood bloodline {self.chosen_b_bloodline}')
         #probably want to reformat the data to have all bloodline powers in one area (like we have it for the newest additions)
-        feat_amount = [7,13,19,25,31,37,43,49]
+        sorc_amount = [7,13,19,25,31,37,43,49]
+        blood_amount = [7,10,13,16,19,22,25,28,31,34,37,40,43,46,49]
+
         feat_list = set ()
         i = 0
-        if self.chosen_bloodline != None:
-            while feat_amount[i] < self.c_class_level:
-                print(self.chosen_bloodline)
-                bloodline_feats = list(self.bloodlines[self.chosen_bloodline]["bonus feats"])
-                chosen_feat = random.choice(bloodline_feats)
+        if self.chosen_s_bloodline != None and self.c_class == 'sorcerer':
+            while sorc_amount[i] < self.c_class_level:
+                print(self.chosen_s_bloodline)
+                bloodline_feats_list = []
+                bloodline_feats_string = self.bloodlines["sorcerer"][self.chosen_s_bloodline]["bonus feats"]
+
+                self.json_list_grabber(bloodline_feats_string, bloodline_feats_list, ',')
+
+                print(bloodline_feats_list)
+
+                chosen_feat = random.choice(bloodline_feats_list)
                 feat_list.add(chosen_feat)
                 i = len(feat_list)
 
                 if i >= 6:
                     break
-            print(feat_list)
+                if i >= 6:
+                    break
+
+        if self.chosen_b_bloodline is not None and self.c_class == 'bloodrager':
+            while blood_amount[i] < self.c_class_level:
+                print(self.chosen_b_bloodline)
+                bloodline_feats_list = []
+                bloodline_feats_string = self.bloodlines["bloodrager"][self.chosen_b_bloodline]["bonus feats"]
+
+                self.json_list_grabber(bloodline_feats_string, bloodline_feats_list, ',')
+
+                print(bloodline_feats_list)
+
+                chosen_feat = random.choice(bloodline_feats_list)
+                feat_list.add(chosen_feat)
+                i = len(feat_list)
+
+                if i >= 6:
+                    break
+
+            print(f'This is your {feat_list}')
             return feat_list
+
+    def json_list_grabber(self, string, list, separator):
+        """
+        Generic function used to grab elements from lists, you decide the separator that determines where the elemnent ends
+
+        Return:
+        - List
+        """
+        for item in string:
+            elements = [element.strip() for element in item.split('separator')]
+            stop_grabbing = False
+
+            for element in elements:
+                if '*' in element:
+                    stop_grabbing = True
+                    element = element.split('*')[0].strip()
+                list.append(element)
+
+            if stop_grabbing:
+                break
 
 
     def bloodline_chooser(self):
