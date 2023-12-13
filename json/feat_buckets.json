@@ -1,0 +1,38 @@
+{"martial": {
+    
+"melee":{
+    "attack action": ["cleave", "greater cleave", "cleaving finish", "improved cleaving finish", "vital strike", "improved vital strike", 
+    "greater vital strike", "power attack", "improved feint", "greater feint", "weapon focus", "cornugon smash"],
+    "full attack": ["two weapon fighting", "improved two weapon fighting", "greater two weapon fighting", "power attack", "weapon focus",
+    "two weapon defense", "imrpoved two weapon defense", "greater two weapon defense"],
+    "cmb": ["improved bullrush", "greater bullrush", "improved trip", "greater trip", "improved disarm", "greater disarm", "weapon focus"],
+    "tank": ["dodge", "mobility", "combat reflexes", "stand still", "aid another", "combat expertise", "armor focus", "vital strike", 
+    "improved vital strike", "greater vital strike"]
+
+},
+
+"ranged": {
+    "attack action": ["cleave", "greater cleave", "cleaving finish", "improved cleaving finish", "vital strike", "improved vital strike", 
+    "greater vital strike", "power attack", "improved feint", "greater feint"],
+    "full attack": ["deadly aim", "point blank shot", "precise shot", "improved precise shot", "rapid shot", "many shot", "snap shot", "improved snap shot",
+"greater snap shot", "combat reflexes", "far shot"]
+}
+
+
+},
+
+"magical": {
+    "arcane": [],
+    "druid": [],
+    "cleric": []
+
+}
+,
+"universal": {
+    "combat": ["improved intiative", "iron will", "improved iron will", "lightning reflexes", "imporved lightning reflexes", "great fortitude",
+    "imporved great fortitude", "toughness", "improved toughness", "dodge", "endurance", "diehard", "greater diehard"],
+    "roleplay": ["skill focus", "dilettante", "alertness", "acrobatics", "animal affinity", "uncanny alertness", "oracular intuition", "voice of the sibyl",
+"deceitful", "deft hands", "magical aptitude", "persuasive", "prodigy", "scholar", "self-sufficient", "stealthy", "stone read", "wary smuggler"]
+
+}
+}

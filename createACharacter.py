@@ -1246,7 +1246,7 @@ class Character:
 
 
     def fighter_armor_train_chooser(self):
-        armor_train = [3,7,11,15,19,23,27,31,35,39,43,47,51]
+        armor_train = [7,11,15,19,23,27,31,35,39,43,47,51]
         #using set + .add makes sure we don't have any repeats in our list           
         self.armor_chosen_list=set()   
         self.armor_chosen_list_description=[]   
@@ -1272,7 +1272,7 @@ class Character:
     
     def fighter_weapon_train_chooser(self):
 
-        weapon_train = [5,9,13,17,21,25,29,33,37,41,45,49,53]
+        weapon_train = [9,13,17,21,25,29,33,37,41,45,49,53]
         #using set + .add makes sure we don't have any repeats in our list           
         self.weapon_chosen_list=set()     
         self.weapon_chosen_list_description=[]       
@@ -1295,81 +1295,68 @@ class Character:
         print(self.weapon_chosen_list)
         print(f"this is your fighter weapon group: {self.weapons[1]}")
         return self.weapon_chosen_list, self.weapon_chosen_list_description    
+
+
+        
                          
 
-
-
     def wizard_opposing_school(self):
-        elemental_list = ['metal', 'void', 'earth', 'air', 'water', 'fire']
-        school_set = set()    
-        i = 0    
+        """
+        wizards choose a school of magic (elemental/other). If elemental, it always as an opposing school. If not, we grab 2 random opposing schools
 
+        Return
+        - opposing_school
+        """
+        elemental_list = ['metal', 'void', 'earth', 'air', 'water', 'fire']
+        i = 0    
 
         if self.c_class == 'wizard' or self.c_class_2 == 'wizard':
             random_school, description, associated, associated_school = self.wizard_school_chooser() 
             print(random_school)            
+            
             if random_school in elemental_list:
-                if random_school == 'metal':
-                    opposing_school = 'wood'
-                elif random_school == 'wood':
-                    opposing_school = 'metal'
-                elif random_school == 'fire':
-                    opposing_school = 'water'
-                elif random_school == 'water':
-                    opposing_school = 'fire'
-                elif random_school == 'earth':
-                    opposing_school = 'air'
-                elif random_school == 'air':
-                    opposing_school = 'earth'                
-                else:
-                    opposing_school = random.choice(elemental_list)
+                elemental_opposing_schools = {'metal': 'wood', 'wood': 'metal', 'fire': 'water', 'water': 'fire', 'earth': 'air', 'air': 'earth'}
+                opposing_school = elemental_opposing_schools.get(random_school, random.choice(elemental_list))
             else:
-                while i < 2:
-                    opposing_school_list = list(self.wizard_schools["schools"].keys()) 
-                    opposing_school = random.choice(opposing_school_list)
+                school_list = (list(self.wizard_schools["schools"].keys()))
+                school_list.remove('universalist')
+                opposing_school = random.sample(school_list, k=2)
 
-                    school_set.add(random_school)
-                    school_set.add(opposing_school)
+            print(f"THIS IS YOUR OPPOSING SCHOOL: {opposing_school}")
 
-                    i = len(school_set)
+            return opposing_school
 
-            print(f"THIS IS YOUR OPPOSING SCHOOL SILLY BILLY {opposing_school}")
 
     def wizard_school_chooser(self):
         if self.c_class == 'wizard' or self.c_class_2 == 'wizard':        
-            #some schools have a very different format, we may want to change that
-            #add opposing schools function
-            elemental = list(self.wizard_schools["elemental_schools"].keys())
             elemental_data = self.wizard_schools["elemental_schools"]
-            schools = list(self.wizard_schools["schools"].keys())
             schools_data = self.wizard_schools["schools"]
-            elemental_subschools = list(self.wizard_schools["elemental_subschools"].keys())
             elemental_subschools_data = self.wizard_schools["elemental_subschools"]
-            subschools = list(self.wizard_schools["subschools"].keys())     
             subschools_data = self.wizard_schools["subschools"]
 
-            random_choice = random.randint(1,4)
-            random_choice = 4
-            print(f"This is the random wizard school % chance {random_choice}")
             associated_school = []
             associated = None
 
+            random_choice = random.randint(1,4)
+            print(f"This is the random wizard school % chance {random_choice}")
+
+
             if random_choice == 1:
-                random_school = random.choice(elemental)
+                random_school = random.choice(list(elemental_data.keys()))
                 description = elemental_data[random_school]
 
             elif random_choice == 2:            
-                random_school = random.choice(elemental_subschools)
+                random_school = random.choice(list(elemental_subschools_data.keys()))
                 description = elemental_subschools_data[random_school]
                 associated = elemental_subschools_data[random_school]["associated school"][1]
                 associated_school = elemental_data[associated]
 
             elif random_choice == 3:
-                random_school = random.choice(schools)
+                random_school = random.choice(list(schools_data.keys()))
                 description = schools_data[random_school]
 
             else:
-                random_school = random.choice(subschools)
+                random_school = random.choice(list(subschools_data.keys()))
                 description = subschools_data[random_school]
                 associated = subschools_data[random_school]["associated school"]
                 associated_school = schools_data[associated]            
@@ -1378,7 +1365,6 @@ class Character:
             print(description)
             print(associated)
             print(associated_school)
-
 
             return random_school, description, associated, associated_school
     

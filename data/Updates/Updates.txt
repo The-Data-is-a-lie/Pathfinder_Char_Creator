@@ -109,5 +109,10 @@ Needs (Low Prio):
 - Fixed alignment bug
 - Bloodragers + Sorcerers now properly select feats from bloodlines
 
+12/12/23:
+- Enhanced wizard oppostion school chooser
+- Started feat buckets (to select random feats from for builds)
+- Cleaned up wizard school chooser
+
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment
