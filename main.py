@@ -38,8 +38,6 @@ character_json_config = {
 	'class_features': 'json/class_features.json',	
 	'bloodlines': 'json/bloodlines.json',
 	'mercies': 'json/mercies.json',
-	'rogue_talents': 'json/rogue_talents.json',
-	'rage_powers': 'json/rage_powers.json',
 	'cleric_domains': 'json/cleric_domains.json',				
 	'druid_domains': 'json/druid_domains.json',		
 	'deity': 'json/deity.json',	
@@ -49,14 +47,20 @@ character_json_config = {
 	'animal_companion': 'json/animal_companion.json',	
 	'animal_choices': 'json/animal_choices.json',
 	'wizard_schools': 'json/wizard_schools.json',	
-	'alchemist_choices': 'json/alchemist_choices.json',
 	'class_data': 'json/class_data.json',			
 	'cruelties': 'json/cruelties.json',	
 	'arcanist_exploits': 'json/arcanist_exploits.json',	
-	'cavalier_orders': 'json/cavalier_orders.json',					
 	'gunslinger_deeds_dares': 'json/gunslinger_deeds_dares.json',					
-	'inquisitions': 'json/inquisitions.json',
 	'investigator_talents': 'json/investigator_talents.json',						
+
+
+	'alchemist': 'json/class_data/alchemist.json',
+	'barbarian': 'json/class_data/barbarian.json',
+	'cavalier': 'json/class_data/cavalier.json',					
+	'inquisitor': 'json/class_data/inquisitor.json',
+	'warpriest': 'json/class_data/warpriest.json',			
+	'rogue': 'json/class_data/rogue.json',
+
 
 }
 
@@ -158,21 +162,19 @@ while userInput.lower() == 'y':
 
 		character.fighter_armor_train_chooser()
 		character.fighter_weapon_train_chooser()	
-		character.rogue_talent_chooser()
-		character.rage_power_chooser()
+		# character.rogue_talent_chooser()
+		# character.rage_power_chooser()
+		# character.discovery_chooser()
+		# character.grand_discovery_chooser()
 		character.domain_chooser()	
 		character.versatile_perfomance()	
 		character.animal_chooser()
 		character.animal_feats()	
 		character.wizard_school_chooser()
 		character.wizard_opposing_school()	
-		character.discovery_chooser()
-		character.grand_discovery_chooser()
 		character.anti_paladin_cruelty_chooser()
 		character.paladin_mercy_chooser()		
 		character.arcanist_exploits_chooser()
-		character.cavalier_order_chooser()		
-		character.inquisition_chooser()
 
 		print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
 
@@ -194,6 +196,19 @@ while userInput.lower() == 'y':
 
 
 		character.bloodline_feats_chooser()
+
+
+		# generic single choices
+		character.generic_class_option_chooser("cavalier", "orders")
+		character.generic_class_option_chooser("warpriest", "blessing")
+		character.generic_class_option_chooser("inquisitor", "inquisitions")
+
+
+		# generic multi choices
+		character.get_data_without_prerequisites(class_1="rogue",data_name="basic", level=10, data_name_2="advanced")
+		character.get_data_without_prerequisites(class_1="alchemist",data_name="basic")
+		character.grand_discovery_chooser()
+		character.get_data_without_prerequisites(class_1="barbarian",data_name="basic")
 
 
 

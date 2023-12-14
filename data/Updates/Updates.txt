@@ -114,5 +114,9 @@ Needs (Low Prio):
 - Started feat buckets (to select random feats from for builds)
 - Cleaned up wizard school chooser
 
+12/13/23:
+- Created generic talent + class option choosers (so it's easier to add the rest of the data in the future)
+- updated the naming convention to allow for more generic functions
+
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment

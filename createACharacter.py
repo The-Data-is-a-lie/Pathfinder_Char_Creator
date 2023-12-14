@@ -225,11 +225,9 @@ class Character:
         with open(json_config['mercies']) as f:
             self.mercies = json.load(f)  
 
-        with open(json_config['rogue_talents']) as f:
-            self.rogue_talents = json.load(f)             
+          
 
-        with open(json_config['rage_powers']) as f:
-            self.rage_powers = json.load(f)       
+ 
 
         with open(json_config['cleric_domains']) as f:
             self.cleric_domains = json.load(f) 
@@ -258,8 +256,7 @@ class Character:
         with open(json_config['wizard_schools']) as f:
             self.wizard_schools = json.load(f)                
 
-        with open(json_config['alchemist_choices']) as f:
-            self.alchemist_choices = json.load(f)  
+
 
         with open(json_config['class_data']) as f:
             self.class_data = json.load(f)               
@@ -270,17 +267,33 @@ class Character:
         with open(json_config['arcanist_exploits']) as f:
             self.arcanist_exploits = json.load(f)             
 
-        with open(json_config['cavalier_orders']) as f:
-            self.cavalier_orders = json.load(f)            
-
-        with open(json_config['gunslinger_deeds_dares']) as f:
-            self.gunslinger_deeds_dares = json.load(f)                                             
-
-        with open(json_config['inquisitions']) as f:
-            self.inquisitions = json.load(f) 
+   
 
         with open(json_config['investigator_talents']) as f:
             self.investigator_talents = json.load(f) 
+
+
+        with open(json_config['gunslinger_deeds_dares']) as f:
+            self.gunslinger_deeds_dares = json.load(f)             
+
+        with open(json_config['barbarian']) as f:
+            self.barbarian = json.load(f)   
+
+        with open(json_config['cavalier']) as f:
+            self.cavalier = json.load(f)                                                     
+
+        with open(json_config['inquisitor']) as f:
+            self.inquisitor = json.load(f) 
+
+        with open(json_config['warpriest']) as f:
+            self.warpriest = json.load(f) 
+
+        with open(json_config['rogue']) as f:
+            self.rogue = json.load(f)          
+
+        with open(json_config['alchemist']) as f:
+            self.alchemist = json.load(f)                   
+        
 
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
     def update_level(self, level, c_class_level, c_class_2_level):
@@ -1521,15 +1534,6 @@ class Character:
                 return self.inquisition_choice
 
 
-            
-
-
-    
-
-
-
-
-
     def arcanist_exploits_chooser(self):
         self.exploit_chosen_list=set() 
         amount = ceil(self.c_class_level / 2)
@@ -1552,10 +1556,6 @@ class Character:
                 i = len(self.exploit_chosen_list)
 
             print(self.exploit_chosen_list)                
-
-
-
-
 
 
     def paladin_mercy_chooser(self):
@@ -1716,24 +1716,46 @@ class Character:
                 break
 
 
-    def cavalier_order_chooser(self):
-        """
-        Picks out a random Cavalier Order
-        Return
-        - String
-        - Dictionary
-        """
-        if self.c_class == 'cavalier' or self.c_class_2 == 'cavalier':
-            orders_list = list(self.cavalier_orders.keys())
-            self.order_chosen = random.choice(orders_list)
-            self.order_description = self.cavalier_orders[self.order_chosen]
+    # def cavalier_order_chooser(self):
+    #     """
+    #     Picks out a random Cavalier Order
+    #     Return
+    #     - String
+    #     - Dictionary
+    #     """
+    #     if self.c_class == 'cavalier' or self.c_class_2 == 'cavalier':
+    #         orders_list = list(self.cavalier.keys())
+    #         self.order_chosen = random.choice(orders_list)
+    #         self.order_description = self.cavalier[self.order_chosen]
 
-            print(self.order_chosen)
-            print(self.order_description)
+    #         print(self.order_chosen)
+    #         print(self.order_description)
 
 
-            return self.order_chosen, self.order_description
+    #         return self.order_chosen, self.order_description
 
+    def get_talents_without_prerequisites(self):
+        talents_without_prerequisites = []
+        if (self.c_class == 'rogue' or self.c_class == 'unchained_rogue') and self.c_class_level >= 10:
+            talent_groups = [self.rogue_talents["basic"]]    
+        elif (self.c_class == 'rogue' or self.c_class == 'unchained_rogue') and self.c_class_level < 10:
+            talent_groups = [self.rogue_talents["advanced"], self.rogue_talents["basic"]]               
+        elif (self.c_class == 'barbarian' or self.c_class == 'unchained_barbarian'):
+            talent_groups = [self.rage_powers["basic"]]
+        elif (self.c_class == 'alchemist' or self.c_class == 'alchemist'):
+            talent_groups = [self.alchemist_choices["basic"]]            
+        else:
+            print("!!!!! no class abilties chosen !!!!")
+            return
+
+        for talent_group in talent_groups:
+            for talent_name, talent_info in talent_group.items():
+                prerequisites_string = talent_info.get("prerequisites", "")
+                if not prerequisites_string:
+                    talents_without_prerequisites.append(talent_name)
+
+#        print(talents_without_prerequisites)
+        return talents_without_prerequisites
 
     def mashing_keys(self):
         """
@@ -1893,22 +1915,23 @@ class Character:
 
         outputs: chosen discovery list (appends to it)
         """
-        if self.c_class == 'alchemist' and self.c_class_level >= 20:    
-            grand = self.alchemist_choices['grand']
+        if self.c_class == 'alchemist' and self.c_class_level >= 20:   
+            discovery_list_chosen  = set()
+            grand = self.alchemist['grand']
             grand_discoveries = list(grand.keys())  
 
             alignment_set = {"change alignment", "infusion"}
 
-            if alignment_set.issubset(self.discovery_list_chosen):
+            if alignment_set.issubset(self.chooseable):
                 grand_discovery_chosen = "greater change alignment"
             else:
                 grand_discoveries.remove("greater change alignment")
                 grand_discovery_chosen = random.choice(grand_discoveries)
                        
-            self.discovery_list_chosen.add(grand_discovery_chosen)
+            discovery_list_chosen.add(grand_discovery_chosen)
             print(f'This is your chosen grand discovery {grand_discovery_chosen}')
             print(f'This is the description: {grand[grand_discovery_chosen]["benefits"]}')
-            return self.discovery_list_chosen
+            return discovery_list_chosen
 
 
         
@@ -2139,6 +2162,26 @@ class Character:
             print(f'This is your selected bloodline {self.chosen_b_bloodline} + its info: \n{self.bloodlines["bloodrager"][self.chosen_b_bloodline]}')
 
             return self.chosen_s_bloodline, self.chosen_b_bloodline
+
+
+    def brawler_manuever_chooser(self, level):
+        if self.c_class == "brawler":
+            amount = floor((level + 1)/4)
+            manuevers = getattr(data,"manuevers")
+            manuever_list = []
+
+            i = 0
+            while i < level:
+                chosen = random.choice(list(manuevers))
+                manuever_list.append(chosen)
+                print(manuever)
+
+                if len(manuevers) == 8:
+                    break
+
+            return manuever_list
+
+
 
     
     #need to implement all the restrictions to feats we want
@@ -2383,6 +2426,154 @@ class Character:
             
 
 
+    def generic_class_option_chooser(self, class_1, data_name, data_name_2 = None):
+        if self.c_class == class_1: 
+            data = getattr(self, class_1, {}).get(data_name, {}).keys()
+            choice = random.choice(list(data))
+            description = getattr(self, class_1, {None}).get(data_name, {None}).get(choice,{None})
+
+
+
+    # the next 3 functions are all used together
+
+    def get_data_without_prerequisites(self, class_1, data_name, level= None, data_name_2 = None):
+
+        if self.c_class != class_1:
+            return None
+
+        data_no_prereq = []
+        base_no_prereq = []
+        add_advanced_talents = False
+        amount = floor(self.c_class_level/2)
+        chosen_set = set()
+        
+        if self.c_class == class_1:
+            data = getattr(self, class_1, {}).get(data_name, {})
+            base = data.copy()
+            base_no_prereq = self.no_prereq_loop(base)
+            print(base_no_prereq)
+            total_choices = base_no_prereq
+
+            if self.c_class_level >= 10 and level == 10:
+                data.update( getattr(self, class_1, {}).get(data_name_2,{}) )
+                data_no_prereq = self.no_prereq_loop(data)            
+
+        for i in range(amount):
+            chosen = random.choice(total_choices)
+            even = f"{class_1} {2 * (i + 1)}"
+            odd = f"{class_1} {2 * i + 1}"
+            self.chooseable.update([even, odd, chosen])
+
+            prereq_list = self.no_prereq_loop(base, "prereq_list")
+
+            chosen_set.add(chosen)
+            i = len(chosen_set)
+
+            print(f'This is your chosen set {chosen_set}')
+            
+            total_choices.append(chosen) 
+            total_choices.extend(prereq_list)
+            total_choices = self.remove_duplicates_list(total_choices)
+            # total_choices=list(set(total_choices))
+            print(total_choices)
+
+
+            if i>= 5 and self.c_class_level >= 10 and level == 10:
+                add_advanced_talents = True
+                break
+
+        if add_advanced_talents == True:
+            total_choices.extend(data_no_prereq)
+            for i in range(i,amount):
+                print(total_choices)
+                chosen = random.choice(total_choices)
+
+                print(f'This is your chosen talent Friend!!!!!! {chosen}')
+
+                even = f"{class_1} {2 * (i + 1)}"
+                odd = f"{class_1} {2 * i + 1}"
+                self.chooseable.update([even, odd, chosen])
+
+                prereq_list = self.no_prereq_loop(data, "prereq_list")
+                # print(f'This is your prereq list {self.chooseable}')
+
+
+
+                chosen_set.add(chosen)
+
+                print(even, odd)
+                print(chosen_set)
+                i = len(chosen_set)
+                total_choices.append(chosen) 
+                total_choices.extend(prereq_list)
+                total_choices = self.remove_duplicates_list(total_choices)
+                # total_choices=list(set(total_choices))
+                print(total_choices)
+
+        return base_no_prereq, data_no_prereq, chosen_set
+
+
+    def no_prereq_loop(self, data_type, return_choice=None):
+        data_without_prerequisites = []
+        prereq_list = set()
+        for name, info in data_type.items():
+            prerequisites = info.get("prerequisites", "")
+            prerequisites_components = set(p.strip() for p in prerequisites.split(","))
+
+
+            if prerequisites_components.issubset(self.chooseable) == True:
+                prereq_list.add(name)
+
+            if not prerequisites:
+                data_without_prerequisites.append(name)
+
+        if return_choice == 'prereq_list':
+            return prereq_list
+        else:
+            return data_without_prerequisites                
+
+    def generic_class_talent_chooser(self, class_1, data_name, data_name_2 = None):
+        if self.c_class == class_1: 
+            data = getattr(self, class_1, {}).get(data_name, {}).keys()
+            choice = random.choice(list(data)).get(basic,{})
+            description = getattr(self, class_1, {None}).get(data_name, {None}).get(choice,{None})
+
+            print(choice)
+            print(description)   
+
+            return choice, description     
+
+
+    def remove_duplicates_list(self, input_list):
+        seen = set()
+        result = []
+        for item in input_list:
+            if item not in seen:
+                seen.add(item)
+                result.append(item)
+        return result
+
+
+    # def remove_duplicates_list(self,lst):
+    #     seen = set()
+    #     result = []
+    #     for item in lst:
+    #         # Convert lists to tuples for hashability
+    #         item_tuple = tuple(item) if isinstance(item, list) else item
+    #         if item_tuple not in seen:
+    #             seen.add(item_tuple)
+    #             result.append(item)
+    #     return result
+
+        # if self.c_class == class_1: 
+        #     options_data = self.class_data[class_1].get(data_name, {})
+        #     print(options_data)
+        #     if options_data:
+        #         choice = random.choice(list(options_data.keys()))
+        #         description = options_data.get(choice)
+
+        #         print(choice)
+        #         print(selected_value)
 
 
 
