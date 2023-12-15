@@ -216,6 +216,17 @@ alignment_exclusion = {
         'evil': 'good'
     }
 
+amount = {
+  'arcanist':{
+    'basic': [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51]
+  },
+  'fighter': {
+    'armor_train': [7,11,15,19,23,27,31,35,39,43,47,51],
+    'weapon_train': [9,13,17,21,25,29,33,37,41,45,49,53]
+  }
+
+}
+
 hair_colors = ['Black', 'Brown', 'Blond', 'Red', 'White', 'Grey']
 hair_types = ['Curly',  'Bald', 'Wavy', 'Straight', 'Flowing', 'Frizzy', 'Spiky', 'Touseled', 'Unkempt','Bald']
 eye_colors = ['Amber', 'Blue', 'Brown', 'Grey', 'Green', 'Hazel']

@@ -42,18 +42,18 @@ character_json_config = {
 	'druid_domains': 'json/druid_domains.json',		
 	'deity': 'json/deity.json',	
 	'items': 'json/items_best.json',
-	'fighter_options': 'json/fighter_options.json',	
 	'bard_choices': 'json/bard_choices.json',	
 	'animal_companion': 'json/animal_companion.json',	
 	'animal_choices': 'json/animal_choices.json',
 	'wizard_schools': 'json/wizard_schools.json',	
 	'class_data': 'json/class_data.json',			
 	'cruelties': 'json/cruelties.json',	
-	'arcanist_exploits': 'json/arcanist_exploits.json',	
 	'gunslinger_deeds_dares': 'json/gunslinger_deeds_dares.json',					
 	'investigator_talents': 'json/investigator_talents.json',						
 
 
+	'arcanist': 'json/class_data/arcanist.json',	
+	'fighter': 'json/class_data/fighter.json',	
 	'alchemist': 'json/class_data/alchemist.json',
 	'barbarian': 'json/class_data/barbarian.json',
 	'cavalier': 'json/class_data/cavalier.json',					
@@ -160,12 +160,14 @@ while userInput.lower() == 'y':
 		character.monk_ki_power_chooser()
 		character.bloodline_chooser()
 
-		character.fighter_armor_train_chooser()
-		character.fighter_weapon_train_chooser()	
+		# character.fighter_armor_train_chooser()
+		# character.fighter_weapon_train_chooser()	
 		# character.rogue_talent_chooser()
 		# character.rage_power_chooser()
 		# character.discovery_chooser()
 		# character.grand_discovery_chooser()
+		# character.arcanist_exploits_chooser()
+
 		character.domain_chooser()	
 		character.versatile_perfomance()	
 		character.animal_chooser()
@@ -174,7 +176,6 @@ while userInput.lower() == 'y':
 		character.wizard_opposing_school()	
 		character.anti_paladin_cruelty_chooser()
 		character.paladin_mercy_chooser()		
-		character.arcanist_exploits_chooser()
 
 		print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
 
@@ -202,13 +203,18 @@ while userInput.lower() == 'y':
 		character.generic_class_option_chooser("cavalier", "orders")
 		character.generic_class_option_chooser("warpriest", "blessing")
 		character.generic_class_option_chooser("inquisitor", "inquisitions")
+		character.generic_class_option_chooser("fighter",  dataset_name="armor_train", multiple='yes')
+		character.generic_class_option_chooser("fighter", dataset_name="weapon_train", multiple='yes')
+		character.generic_class_option_chooser("arcanist", dataset_name="basic", dataset_name_2="greater", multiple='yes', level=10)
 
 
-		# generic multi choices
-		character.get_data_without_prerequisites(class_1="rogue",data_name="basic", level=10, data_name_2="advanced")
-		character.get_data_without_prerequisites(class_1="alchemist",data_name="basic")
-		character.grand_discovery_chooser()
-		character.get_data_without_prerequisites(class_1="barbarian",data_name="basic")
+
+		# generic multi choices (with pre-reqs)
+		character.get_data_without_prerequisites(class_1="rogue",dataset_name="basic", level=10, dataset_name_2="advanced")
+		character.get_data_without_prerequisites(class_1="alchemist",dataset_name="basic")
+		character.grand_discovery_chooser() #fix this later
+		character.get_data_without_prerequisites(class_1="barbarian",dataset_name="basic")
+
 
 
 

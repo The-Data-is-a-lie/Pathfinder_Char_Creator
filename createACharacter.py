@@ -241,8 +241,6 @@ class Character:
         with open(json_config['items']) as f:
             self.items_best = json.load(f)                   
 
-        with open(json_config['fighter_options']) as f:
-            self.fighter_options = json.load(f)        
 
         with open(json_config['bard_choices']) as f:
             self.bard_choices = json.load(f) 
@@ -264,8 +262,6 @@ class Character:
         with open(json_config['cruelties']) as f:
             self.cruelties = json.load(f)    
 
-        with open(json_config['arcanist_exploits']) as f:
-            self.arcanist_exploits = json.load(f)             
 
    
 
@@ -275,6 +271,15 @@ class Character:
 
         with open(json_config['gunslinger_deeds_dares']) as f:
             self.gunslinger_deeds_dares = json.load(f)             
+
+
+
+
+        with open(json_config['arcanist']) as f:
+            self.arcanist = json.load(f)    
+
+        with open(json_config['fighter']) as f:
+            self.fighter = json.load(f)                    
 
         with open(json_config['barbarian']) as f:
             self.barbarian = json.load(f)   
@@ -292,7 +297,10 @@ class Character:
             self.rogue = json.load(f)          
 
         with open(json_config['alchemist']) as f:
-            self.alchemist = json.load(f)                   
+            self.alchemist = json.load(f)          
+
+         
+
         
 
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
@@ -2426,37 +2434,73 @@ class Character:
             
 
 
-    def generic_class_option_chooser(self, class_1, data_name, data_name_2 = None):
+    def generic_class_option_chooser(self, class_1, dataset_name, dataset_name_2 = None, multiple = None, level=None):
         if self.c_class == class_1: 
-            data = getattr(self, class_1, {}).get(data_name, {}).keys()
-            choice = random.choice(list(data))
-            description = getattr(self, class_1, {None}).get(data_name, {None}).get(choice,{None})
+            if multiple != None:
+                amount = getattr(data, 'amount', {}).get(self.c_class, {}).get(dataset_name, {})
+                dataset = getattr(self, class_1, {}).get(dataset_name, {})
+                dataset_list = list(dataset.keys())
+                chosen_set = set()
+                chosen_set_desc = []
+                i = 0
+
+                dataset_2 = getattr(self, class_1, {}).get(dataset_name_2, {})
+                dataset_2_list = list(dataset_2.keys())
+                # print(f'This is dataset {dataset}')    
+ 
+
+                while amount[i] < self.c_class_level:
+                    if dataset_name_2 != None and self.c_class_level >= level:
+                        dataset_list.extend(dataset_2_list)
+                        dataset.update(dataset_2)
+
+                    chosen = random.choice(dataset_list)
+                    print(chosen)
+                    chosen_set.add(chosen)
+                    i = len(chosen_set)
+
+                chosen_set_desc = [{desc: dataset[desc]} for desc in chosen_set]
+
+                    
+                print(chosen_set_desc)
+                return chosen_set, chosen_set_desc
+
+
+
+
+
+            else:
+                dataset = getattr(self, class_1, {}).get(dataset_name, {}).keys()
+                choice = random.choice(list(dataset))
+                description = getattr(self, class_1, {None}).get(dataset_name, {None}).get(choice,{None})
+
+                return choice, description
 
 
 
     # the next 3 functions are all used together
 
-    def get_data_without_prerequisites(self, class_1, data_name, level= None, data_name_2 = None):
+    def get_data_without_prerequisites(self, class_1, dataset_name, level= None, dataset_name_2 = None):
 
         if self.c_class != class_1:
             return None
 
-        data_no_prereq = []
+        dataset_no_prereq = []
         base_no_prereq = []
         add_advanced_talents = False
         amount = floor(self.c_class_level/2)
         chosen_set = set()
         
         if self.c_class == class_1:
-            data = getattr(self, class_1, {}).get(data_name, {})
-            base = data.copy()
+            dataset = getattr(self, class_1, {}).get(dataset_name, {})
+            base = dataset.copy()
             base_no_prereq = self.no_prereq_loop(base)
             print(base_no_prereq)
             total_choices = base_no_prereq
 
             if self.c_class_level >= 10 and level == 10:
-                data.update( getattr(self, class_1, {}).get(data_name_2,{}) )
-                data_no_prereq = self.no_prereq_loop(data)            
+                dataset.update( getattr(self, class_1, {}).get(dataset_name_2,{}) )
+                dataset_no_prereq = self.no_prereq_loop(dataset)            
 
         for i in range(amount):
             chosen = random.choice(total_choices)
@@ -2483,7 +2527,7 @@ class Character:
                 break
 
         if add_advanced_talents == True:
-            total_choices.extend(data_no_prereq)
+            total_choices.extend(dataset_no_prereq)
             for i in range(i,amount):
                 print(total_choices)
                 chosen = random.choice(total_choices)
@@ -2494,7 +2538,7 @@ class Character:
                 odd = f"{class_1} {2 * i + 1}"
                 self.chooseable.update([even, odd, chosen])
 
-                prereq_list = self.no_prereq_loop(data, "prereq_list")
+                prereq_list = self.no_prereq_loop(dataset, "prereq_list")
                 # print(f'This is your prereq list {self.chooseable}')
 
 
@@ -2510,13 +2554,13 @@ class Character:
                 # total_choices=list(set(total_choices))
                 print(total_choices)
 
-        return base_no_prereq, data_no_prereq, chosen_set
+        return base_no_prereq, dataset_no_prereq, chosen_set
 
 
-    def no_prereq_loop(self, data_type, return_choice=None):
-        data_without_prerequisites = []
+    def no_prereq_loop(self, dataset_type, return_choice=None):
+        dataset_without_prerequisites = []
         prereq_list = set()
-        for name, info in data_type.items():
+        for name, info in dataset_type.items():
             prerequisites = info.get("prerequisites", "")
             prerequisites_components = set(p.strip() for p in prerequisites.split(","))
 
@@ -2525,18 +2569,18 @@ class Character:
                 prereq_list.add(name)
 
             if not prerequisites:
-                data_without_prerequisites.append(name)
+                dataset_without_prerequisites.append(name)
 
         if return_choice == 'prereq_list':
             return prereq_list
         else:
-            return data_without_prerequisites                
+            return dataset_without_prerequisites                
 
-    def generic_class_talent_chooser(self, class_1, data_name, data_name_2 = None):
+    def generic_class_talent_chooser(self, class_1, dataset_name, dataset_name_2 = None):
         if self.c_class == class_1: 
-            data = getattr(self, class_1, {}).get(data_name, {}).keys()
-            choice = random.choice(list(data)).get(basic,{})
-            description = getattr(self, class_1, {None}).get(data_name, {None}).get(choice,{None})
+            dataset = getattr(self, class_1, {}).get(dataset_name, {}).keys()
+            choice = random.choice(list(dataset)).get(basic,{})
+            description = getattr(self, class_1, {None}).get(dataset_name, {None}).get(choice,{None})
 
             print(choice)
             print(description)   

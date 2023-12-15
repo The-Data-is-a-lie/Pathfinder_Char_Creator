@@ -1,4 +1,5 @@
 {
+  "aspects": {
     "bat": {
       "prerequisite": "",
       "description": "The creature gains darkvision to a range of 60 feet. At 8th level, the range increases by 30 feet. At 15th level, the creature also gains blindsense to a range of 10 feet."
@@ -336,3 +337,4 @@
         "description": "The creature gains a 25% chance to treat any critical hit or sneak attack as a normal hit (as the fortification armor special ability). This increases to 50% at 8th level, and 75% at 15th level."
       }                
   }
+}
