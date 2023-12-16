@@ -283,6 +283,9 @@ class Character:
         with open(json_config['barbarian']) as f:
             self.barbarian = json.load(f)   
 
+        with open(json_config['skald']) as f:
+            self.skald = json.load(f)               
+
         with open(json_config['cavalier']) as f:
             self.cavalier = json.load(f)                                                     
 
@@ -309,6 +312,14 @@ class Character:
 
         with open(json_config['vigilante']) as f:
             self.vigilante = json.load(f)                                
+
+        with open(json_config['slayer']) as f:
+            self.slayer = json.load(f)    
+            
+        with open(json_config['shaman']) as f:
+            self.shaman = json.load(f)    
+                                        
+                                        
 
          
 

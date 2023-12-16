@@ -55,6 +55,7 @@ character_json_config = {
 	'fighter': 'json/class_data/fighter.json',	
 	'alchemist': 'json/class_data/alchemist.json',
 	'barbarian': 'json/class_data/barbarian.json',
+	'skald': 'json/class_data/skald.json',
 	'cavalier': 'json/class_data/cavalier.json',					
 	'inquisitor': 'json/class_data/inquisitor.json',
 	'investigator': 'json/class_data/investigator.json',						
@@ -63,6 +64,8 @@ character_json_config = {
 	'witch': 'json/class_data/witch.json',
 	'oracle': 'json/class_data/oracle.json',
 	'vigilante': 'json/class_data/vigilante.json',
+	'slayer': 'json/class_data/slayer.json',
+	'shaman': 'json/class_data/shaman.json',
 
 
 }
@@ -201,6 +204,9 @@ while userInput.lower() == 'y':
 
 		character.bloodline_feats_chooser()
 
+		#generic single choices (adds spells?)
+		character.generic_class_option_chooser("shaman", "spirits")
+
 
 		# generic single choices
 		character.generic_class_option_chooser("cavalier", "orders")
@@ -218,6 +224,7 @@ while userInput.lower() == 'y':
 
 		# generic multi choices (with pre-reqs)
 		character.get_data_without_prerequisites(class_1="rogue",dataset_name="basic", level=10, dataset_name_2="advanced")
+		character.get_data_without_prerequisites(class_1="slayer",dataset_name="basic", level=10, dataset_name_2="advanced")
 		character.get_data_without_prerequisites(class_1="alchemist",dataset_name="basic")
 		character.get_data_without_prerequisites(class_1="investigator",dataset_name="basic")
 		character.get_data_without_prerequisites(class_1="vigilante",dataset_name="basic")
@@ -225,6 +232,7 @@ while userInput.lower() == 'y':
 
 		character.grand_discovery_chooser() #fix this later
 		character.get_data_without_prerequisites(class_1="barbarian",dataset_name="basic")
+		character.get_data_without_prerequisites(class_1="skald",dataset_name="basic")
 
 
 
