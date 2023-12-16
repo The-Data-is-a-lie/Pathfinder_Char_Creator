@@ -265,8 +265,7 @@ class Character:
 
    
 
-        with open(json_config['investigator_talents']) as f:
-            self.investigator_talents = json.load(f) 
+
 
 
         with open(json_config['gunslinger_deeds_dares']) as f:
@@ -290,6 +289,9 @@ class Character:
         with open(json_config['inquisitor']) as f:
             self.inquisitor = json.load(f) 
 
+        with open(json_config['investigator']) as f:
+            self.investigator = json.load(f)             
+
         with open(json_config['warpriest']) as f:
             self.warpriest = json.load(f) 
 
@@ -297,7 +299,16 @@ class Character:
             self.rogue = json.load(f)          
 
         with open(json_config['alchemist']) as f:
-            self.alchemist = json.load(f)          
+            self.alchemist = json.load(f)        
+
+        with open(json_config['witch']) as f:
+            self.witch = json.load(f)      
+
+        with open(json_config['oracle']) as f:
+            self.oracle = json.load(f)         
+
+        with open(json_config['vigilante']) as f:
+            self.vigilante = json.load(f)                                
 
          
 
@@ -2434,7 +2445,7 @@ class Character:
             
 
 
-    def generic_class_option_chooser(self, class_1, dataset_name, dataset_name_2 = None, multiple = None, level=None):
+    def generic_class_option_chooser(self, class_1, dataset_name, dataset_name_2 = None, dataset_name_3 = None, multiple = None, level=None, level_2 = None):
         if self.c_class == class_1: 
             if multiple != None:
                 amount = getattr(data, 'amount', {}).get(self.c_class, {}).get(dataset_name, {})
@@ -2453,6 +2464,10 @@ class Character:
                     if dataset_name_2 != None and self.c_class_level >= level:
                         dataset_list.extend(dataset_2_list)
                         dataset.update(dataset_2)
+
+                    if dataset_name_3 != None and self.c_class_level >= level_2:
+                        dataset_list.extend(dataset_2_list)
+                        dataset.update(dataset_2)                        
 
                     chosen = random.choice(dataset_list)
                     print(chosen)
@@ -2474,13 +2489,16 @@ class Character:
                 choice = random.choice(list(dataset))
                 description = getattr(self, class_1, {None}).get(dataset_name, {None}).get(choice,{None})
 
-                return choice, description
+                chosen_desc = {choice: description}
+
+                print(chosen_desc)
+                return chosen_desc
 
 
 
     # the next 3 functions are all used together
 
-    def get_data_without_prerequisites(self, class_1, dataset_name, level= None, dataset_name_2 = None):
+    def get_data_without_prerequisites(self, class_1, dataset_name, level= None, level_2 = None, dataset_name_2 = None, odd=None):
 
         if self.c_class != class_1:
             return None
@@ -2490,6 +2508,10 @@ class Character:
         add_advanced_talents = False
         amount = floor(self.c_class_level/2)
         chosen_set = set()
+
+        if odd == True:
+            amount = ceil(self.c_class_level/2)
+
         
         if self.c_class == class_1:
             dataset = getattr(self, class_1, {}).get(dataset_name, {})
@@ -2498,7 +2520,7 @@ class Character:
             print(base_no_prereq)
             total_choices = base_no_prereq
 
-            if self.c_class_level >= 10 and level == 10:
+            if level != None and self.c_class_level >= level:
                 dataset.update( getattr(self, class_1, {}).get(dataset_name_2,{}) )
                 dataset_no_prereq = self.no_prereq_loop(dataset)            
 
@@ -2519,7 +2541,7 @@ class Character:
             total_choices.extend(prereq_list)
             total_choices = self.remove_duplicates_list(total_choices)
             # total_choices=list(set(total_choices))
-            print(total_choices)
+            print(f"These are all your options to choose from: {total_choices}")
 
 
             if i>= 5 and self.c_class_level >= 10 and level == 10:

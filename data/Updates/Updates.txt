@@ -118,5 +118,11 @@ Needs (Low Prio):
 - Created generic talent + class option choosers (so it's easier to add the rest of the data in the future)
 - updated the naming convention to allow for more generic functions
 
+12/14/23:
+- Updated the generic function to be able to run things like arcanist exploits
+
+12/15/23:
+- added oracle + Vigilante + investigator + witch generic functions
+
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment

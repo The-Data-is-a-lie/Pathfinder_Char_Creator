@@ -49,7 +49,6 @@ character_json_config = {
 	'class_data': 'json/class_data.json',			
 	'cruelties': 'json/cruelties.json',	
 	'gunslinger_deeds_dares': 'json/gunslinger_deeds_dares.json',					
-	'investigator_talents': 'json/investigator_talents.json',						
 
 
 	'arcanist': 'json/class_data/arcanist.json',	
@@ -58,8 +57,12 @@ character_json_config = {
 	'barbarian': 'json/class_data/barbarian.json',
 	'cavalier': 'json/class_data/cavalier.json',					
 	'inquisitor': 'json/class_data/inquisitor.json',
+	'investigator': 'json/class_data/investigator.json',						
 	'warpriest': 'json/class_data/warpriest.json',			
 	'rogue': 'json/class_data/rogue.json',
+	'witch': 'json/class_data/witch.json',
+	'oracle': 'json/class_data/oracle.json',
+	'vigilante': 'json/class_data/vigilante.json',
 
 
 }
@@ -203,17 +206,26 @@ while userInput.lower() == 'y':
 		character.generic_class_option_chooser("cavalier", "orders")
 		character.generic_class_option_chooser("warpriest", "blessing")
 		character.generic_class_option_chooser("inquisitor", "inquisitions")
+		character.generic_class_option_chooser("oracle", "curses")
 		character.generic_class_option_chooser("fighter",  dataset_name="armor_train", multiple='yes')
 		character.generic_class_option_chooser("fighter", dataset_name="weapon_train", multiple='yes')
 		character.generic_class_option_chooser("arcanist", dataset_name="basic", dataset_name_2="greater", multiple='yes', level=10)
+		
+		#need to add patron spells to the witch spell list (like how clerics + druids + sorcs get their own added)
+		character.generic_class_option_chooser("witch", dataset_name="basic", dataset_name_2="greater", dataset_name_3="grand", multiple='yes', level=10, level_2=18)
 
 
 
 		# generic multi choices (with pre-reqs)
 		character.get_data_without_prerequisites(class_1="rogue",dataset_name="basic", level=10, dataset_name_2="advanced")
 		character.get_data_without_prerequisites(class_1="alchemist",dataset_name="basic")
+		character.get_data_without_prerequisites(class_1="investigator",dataset_name="basic")
+		character.get_data_without_prerequisites(class_1="vigilante",dataset_name="basic")
+		character.get_data_without_prerequisites(class_1="vigilante",dataset_name="social",odd=True)
+
 		character.grand_discovery_chooser() #fix this later
 		character.get_data_without_prerequisites(class_1="barbarian",dataset_name="basic")
+
 
 
 
