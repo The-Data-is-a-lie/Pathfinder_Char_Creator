@@ -124,5 +124,10 @@ Needs (Low Prio):
 12/15/23:
 - added oracle + Vigilante + investigator + witch generic functions
 
+12/16/23:
+- added Samurai
+- made the mercy + cruelty functions generic
+- made the json file opener generic (+ auto shuffle anything that is a list)
+
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment

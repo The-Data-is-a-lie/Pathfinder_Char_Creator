@@ -22,7 +22,8 @@ userInput = input('Create a new character? (y/n): ').lower()
 # character = Character()
 
 character_json_config = {
-	'race': 'json/race.json',
+	'races': 'json/races.json',
+	'classes': 'json/class.json',
 	'class': 'json/class.json',
 	'traits': 'json/traits_abilities.json',
 	'profession': 'json/profession.json',
@@ -37,7 +38,6 @@ character_json_config = {
 	'monk_choices': 'json/monk_choices.json',
 	'class_features': 'json/class_features.json',	
 	'bloodlines': 'json/bloodlines.json',
-	'mercies': 'json/mercies.json',
 	'cleric_domains': 'json/cleric_domains.json',				
 	'druid_domains': 'json/druid_domains.json',		
 	'deity': 'json/deity.json',	
@@ -47,25 +47,27 @@ character_json_config = {
 	'animal_choices': 'json/animal_choices.json',
 	'wizard_schools': 'json/wizard_schools.json',	
 	'class_data': 'json/class_data.json',			
-	'cruelties': 'json/cruelties.json',	
 	'gunslinger_deeds_dares': 'json/gunslinger_deeds_dares.json',					
 
-
-	'arcanist': 'json/class_data/arcanist.json',	
-	'fighter': 'json/class_data/fighter.json',	
-	'alchemist': 'json/class_data/alchemist.json',
-	'barbarian': 'json/class_data/barbarian.json',
-	'skald': 'json/class_data/skald.json',
-	'cavalier': 'json/class_data/cavalier.json',					
-	'inquisitor': 'json/class_data/inquisitor.json',
-	'investigator': 'json/class_data/investigator.json',						
-	'warpriest': 'json/class_data/warpriest.json',			
-	'rogue': 'json/class_data/rogue.json',
-	'witch': 'json/class_data/witch.json',
-	'oracle': 'json/class_data/oracle.json',
-	'vigilante': 'json/class_data/vigilante.json',
-	'slayer': 'json/class_data/slayer.json',
-	'shaman': 'json/class_data/shaman.json',
+	"alchemist": "json/class_data/alchemist.json",
+	"antipaladin": "json/class_data/antipaladin.json",
+	"arcanist": "json/class_data/arcanist.json",
+	"barbarian": "json/class_data/barbarian.json",
+	"cavalier": "json/class_data/cavalier.json",
+	"fighter": "json/class_data/fighter.json",
+	"inquisitor": "json/class_data/inquisitor.json",
+	"investigator": "json/class_data/investigator.json",
+	"ninja": "json/class_data/ninja.json",
+	"oracle": "json/class_data/oracle.json",
+	"paladin": "json/class_data/paladin.json",
+	"rogue": "json/class_data/rogue.json",
+	"shaman": "json/class_data/shaman.json",
+	"skald": "json/class_data/skald.json",
+	"slayer": "json/class_data/slayer.json",
+	"samurai": "json/class_data/samurai.json",
+	"vigilante": "json/class_data/vigilante.json",
+	"warpriest": "json/class_data/warpriest.json",
+	"witch": "json/class_data/witch.json",
 
 
 }
@@ -180,8 +182,8 @@ while userInput.lower() == 'y':
 		character.animal_feats()	
 		character.wizard_school_chooser()
 		character.wizard_opposing_school()	
-		character.anti_paladin_cruelty_chooser()
-		character.paladin_mercy_chooser()		
+		# character.anti_paladin_cruelty_chooser()
+		# character.paladin_mercy_chooser()		
 
 		print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
 
@@ -210,6 +212,7 @@ while userInput.lower() == 'y':
 
 		# generic single choices
 		character.generic_class_option_chooser("cavalier", "orders")
+		character.generic_class_option_chooser("samurai", "orders")
 		character.generic_class_option_chooser("warpriest", "blessing")
 		character.generic_class_option_chooser("inquisitor", "inquisitions")
 		character.generic_class_option_chooser("oracle", "curses")
@@ -224,6 +227,7 @@ while userInput.lower() == 'y':
 
 		# generic multi choices (with pre-reqs)
 		character.get_data_without_prerequisites(class_1="rogue",dataset_name="basic", level=10, dataset_name_2="advanced")
+		character.get_data_without_prerequisites(class_1="ninja",dataset_name="basic", level=10, dataset_name_2="advanced")
 		character.get_data_without_prerequisites(class_1="slayer",dataset_name="basic", level=10, dataset_name_2="advanced")
 		character.get_data_without_prerequisites(class_1="alchemist",dataset_name="basic")
 		character.get_data_without_prerequisites(class_1="investigator",dataset_name="basic")
@@ -235,11 +239,15 @@ while userInput.lower() == 'y':
 		character.get_data_without_prerequisites(class_1="skald",dataset_name="basic")
 
 
+		character.paladin_chooser("paladin", "mercy")
+		character.paladin_chooser("antipaladin", "cruelty")
 
 
+
+
+		### Need to change up the item_chooser function ###
 
 		# character.armor_chooser()
-
 		# print(f'This is your gold pre items {character.assign_gold("gold")}')
 		# character.item_chooser()
 		# print(f'This is your gold post items {character.gold}')	

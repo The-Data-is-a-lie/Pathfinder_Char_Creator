@@ -171,154 +171,156 @@ class Character:
 
         self._load_jsons(json_config)
         
+
     def _load_jsons(self, json_config):
-        with open(json_config['race']) as f:
-            self.races = json.load(f)
-            self.unique_races = self.races.keys()
+            for key, file_path in json_config.items():
+                with open(file_path) as f:
+                    data = json.load(f)
+                    setattr(self, key, data)
+                    if isinstance(data, list):
+                        random.shuffle(getattr(self, key))
+                    if key == 'last_names_regions':
+                        setattr(self, 'last_names_regions', data)
+                        setattr(self, 'regions', [k for k in data.keys()])
 
-        with open(json_config['class']) as f:
-            self.classes = json.load(f)
+    # def _load_jsons(self, json_config):
+    #     with open(json_config['race']) as f:
+    #         self.races = json.load(f)
+    #         self.unique_races = self.races.keys()
 
-        with open(json_config['traits']) as f:
-            self.traits_abilities = json.load(f)
-            random.shuffle(self.traits_abilities)
+    #     with open(json_config['class']) as f:
+    #         self.classes = json.load(f)
 
-        with open(json_config['profession']) as f:
-            self.professions = json.load(f)
-            random.shuffle(self.professions)
+    #     with open(json_config['traits']) as f:
+    #         self.traits_abilities = json.load(f)
+    #         random.shuffle(self.traits_abilities)
 
-        with open(json_config['last_names_regions']) as f:
-            self.last_names_regions = json.load(f)
-        self.regions = [k for k in self.last_names_regions.keys()]
+    #     with open(json_config['profession']) as f:
+    #         self.professions = json.load(f)
+    #         random.shuffle(self.professions)
 
-        with open(json_config['first_names_regions']) as f:
-            self.first_names_regions = json.load(f)
+    #     with open(json_config['last_names_regions']) as f:
+    #         self.last_names_regions = json.load(f)
+    #     self.regions = [k for k in self.last_names_regions.keys()]
+
+    #     with open(json_config['first_names_regions']) as f:
+    #         self.first_names_regions = json.load(f)
         
-        with open(json_config['flaws']) as f:
-            self.flaws = json.load(f)  
+    #     with open(json_config['flaws']) as f:
+    #         self.flaws = json.load(f)  
 
-        with open(json_config['archetypes']) as f:
-            self.archetypes = json.load(f)             
+    #     with open(json_config['archetypes']) as f:
+    #         self.archetypes = json.load(f)             
 
-        with open(json_config['spells_known']) as f:
-            self.spells_known = json.load(f)      
+    #     with open(json_config['spells_known']) as f:
+    #         self.spells_known = json.load(f)      
 
-        with open(json_config['spells_per_day']) as f:
-            self.spells_per_day = json.load(f)      
+    #     with open(json_config['spells_per_day']) as f:
+    #         self.spells_per_day = json.load(f)      
 
-        with open(json_config['spells_from_ability_mod']) as f:
-            self.spells_from_ability_mod = json.load(f)                                          
+    #     with open(json_config['spells_from_ability_mod']) as f:
+    #         self.spells_from_ability_mod = json.load(f)                                          
              
-        with open(json_config['ranger_combat_styles']) as f:
-            self.ranger_combat_styles = json.load(f)                 
+    #     with open(json_config['ranger_combat_styles']) as f:
+    #         self.ranger_combat_styles = json.load(f)                 
 
-        with open(json_config['monk_choices']) as f:
-            self.monk_choices = json.load(f)               
+    #     with open(json_config['monk_choices']) as f:
+    #         self.monk_choices = json.load(f)               
 
-        with open(json_config['class_features']) as f:
-            self.class_features = json.load(f)  
+    #     with open(json_config['class_features']) as f:
+    #         self.class_features = json.load(f)  
 
-        with open(json_config['bloodlines']) as f:
-            self.bloodlines = json.load(f)               
-        
+    #     with open(json_config['bloodlines']) as f:
+    #         self.bloodlines = json.load(f)               
 
-        with open(json_config['mercies']) as f:
-            self.mercies = json.load(f)  
+    #     with open(json_config['cleric_domains']) as f:
+    #         self.cleric_domains = json.load(f) 
 
-          
+    #     with open(json_config['druid_domains']) as f:
+    #         self.druid_domains = json.load(f)                       
 
- 
+    #     with open(json_config['deity']) as f:
+    #         self.deity = json.load(f)            
 
-        with open(json_config['cleric_domains']) as f:
-            self.cleric_domains = json.load(f) 
+    #     with open(json_config['items']) as f:
+    #         self.items_best = json.load(f)                   
 
-        with open(json_config['druid_domains']) as f:
-            self.druid_domains = json.load(f)                       
+    #     with open(json_config['bard_choices']) as f:
+    #         self.bard_choices = json.load(f) 
 
-        with open(json_config['deity']) as f:
-            self.deity = json.load(f)            
+    #     with open(json_config['animal_companion']) as f:
+    #         self.animal_companion = json.load(f)                  
 
-        with open(json_config['items']) as f:
-            self.items_best = json.load(f)                   
+    #     with open(json_config['animal_choices']) as f:
+    #         self.animal_choices = json.load(f)          
 
+    #     with open(json_config['wizard_schools']) as f:
+    #         self.wizard_schools = json.load(f)                
 
-        with open(json_config['bard_choices']) as f:
-            self.bard_choices = json.load(f) 
+    #     with open(json_config['class_data']) as f:
+    #         self.class_data = json.load(f)               
 
-        with open(json_config['animal_companion']) as f:
-            self.animal_companion = json.load(f)                  
+    #     with open(json_config['gunslinger_deeds_dares']) as f:
+    #         self.gunslinger_deeds_dares = json.load(f)             
 
-        with open(json_config['animal_choices']) as f:
-            self.animal_choices = json.load(f)          
+    #     with open(json_config['antipaladin']) as f:
+    #         self.antipaladin = json.load(f)    
 
-        with open(json_config['wizard_schools']) as f:
-            self.wizard_schools = json.load(f)                
+    #     with open(json_config['arcanist']) as f:
+    #         self.arcanist = json.load(f)    
 
+    #     with open(json_config['fighter']) as f:
+    #         self.fighter = json.load(f)                    
 
+    #     with open(json_config['barbarian']) as f:
+    #         self.barbarian = json.load(f)   
 
-        with open(json_config['class_data']) as f:
-            self.class_data = json.load(f)               
+    #     with open(json_config['skald']) as f:
+    #         self.skald = json.load(f)               
 
-        with open(json_config['cruelties']) as f:
-            self.cruelties = json.load(f)    
+    #     with open(json_config['cavalier']) as f:
+    #         self.cavalier = json.load(f)                                                     
 
+    #     with open(json_config['inquisitor']) as f:
+    #         self.inquisitor = json.load(f) 
 
-   
+    #     with open(json_config['investigator']) as f:
+    #         self.investigator = json.load(f)           
 
+    #     with open(json_config['paladin']) as f:
+    #         self.paladin = json.load(f)   
 
+    #     with open(json_config['ninja']) as f:
+    #         self.ninja = json.load(f)                             
 
+    #     with open(json_config['warpriest']) as f:
+    #         self.warpriest = json.load(f) 
 
-        with open(json_config['gunslinger_deeds_dares']) as f:
-            self.gunslinger_deeds_dares = json.load(f)             
+    #     with open(json_config['rogue']) as f:
+    #         self.rogue = json.load(f)          
 
+    #     with open(json_config['alchemist']) as f:
+    #         self.alchemist = json.load(f)        
 
+    #     with open(json_config['witch']) as f:
+    #         self.witch = json.load(f)      
 
+    #     with open(json_config['oracle']) as f:
+    #         self.oracle = json.load(f)         
 
-        with open(json_config['arcanist']) as f:
-            self.arcanist = json.load(f)    
+    #     with open(json_config['vigilante']) as f:
+    #         self.vigilante = json.load(f)                                
 
-        with open(json_config['fighter']) as f:
-            self.fighter = json.load(f)                    
+    #     with open(json_config['samurai']) as f:
+    #         self.samurai = json.load(f)    
 
-        with open(json_config['barbarian']) as f:
-            self.barbarian = json.load(f)   
-
-        with open(json_config['skald']) as f:
-            self.skald = json.load(f)               
-
-        with open(json_config['cavalier']) as f:
-            self.cavalier = json.load(f)                                                     
-
-        with open(json_config['inquisitor']) as f:
-            self.inquisitor = json.load(f) 
-
-        with open(json_config['investigator']) as f:
-            self.investigator = json.load(f)             
-
-        with open(json_config['warpriest']) as f:
-            self.warpriest = json.load(f) 
-
-        with open(json_config['rogue']) as f:
-            self.rogue = json.load(f)          
-
-        with open(json_config['alchemist']) as f:
-            self.alchemist = json.load(f)        
-
-        with open(json_config['witch']) as f:
-            self.witch = json.load(f)      
-
-        with open(json_config['oracle']) as f:
-            self.oracle = json.load(f)         
-
-        with open(json_config['vigilante']) as f:
-            self.vigilante = json.load(f)                                
-
-        with open(json_config['slayer']) as f:
-            self.slayer = json.load(f)    
+    #     with open(json_config['slayer']) as f:
+    #         self.slayer = json.load(f)    
             
-        with open(json_config['shaman']) as f:
-            self.shaman = json.load(f)    
+    #     with open(json_config['shaman']) as f:
+    #         self.shaman = json.load(f)    
                                         
+
                                         
 
          
@@ -619,12 +621,20 @@ class Character:
         return self.saving_throw
 
     def assign_gold(self,gold):
-        gold = getattr(data,gold)
-        print(type(gold))     
-        if self.level>20:
-            self.gold = gold[-1]
+        gold_input = input("Please input a desired number for gold, otherwise we will use the amount suggest by Paizo's rules for a PC of that level")
+        if gold_input.isnumeric():
+            self.gold = gold_input            
         else:
-            self.gold = gold[self.level-2]
+            gold = getattr(data,gold)
+            print(type(gold))     
+            if self.level>20:
+                self.gold = gold[-1]
+            else:
+                self.gold = gold[self.level-2]
+
+
+
+        print(self.gold)
         return self.gold
 
     def randomize_mythic(self):
@@ -1588,118 +1598,118 @@ class Character:
             print(self.exploit_chosen_list)                
 
 
-    def paladin_mercy_chooser(self):
+    # def paladin_mercy_chooser(self):
 
-        self.mercy_chosen_list=set()        
-        i=0      
-        k=0   
+    #     self.mercy_chosen_list=set()        
+    #     i=0      
+    #     k=0   
 
-        list_3 = list(self.mercies["mercy"]["3"].keys())
-        list_6 = list(self.mercies["mercy"]["6"].keys())
-        list_9 = list(self.mercies["mercy"]["9"].keys())
-        list_12 = list(self.mercies["mercy"]["12"].keys())
+    #     list_3 = list(self.mercies["mercy"]["3"].keys())
+    #     list_6 = list(self.mercies["mercy"]["6"].keys())
+    #     list_9 = list(self.mercies["mercy"]["9"].keys())
+    #     list_12 = list(self.mercies["mercy"]["12"].keys())
 
 
-        if self.c_class == 'paladin':
-            paladin_list = floor(self.c_class_level/3)
-        elif self.c_class_2 == 'paladin':
-            paladin_list = floor(self.c_class_2_level/3) 
-        else:
-            paladin_list = 0
+    #     if self.c_class == 'paladin':
+    #         paladin_list = floor(self.c_class_level/3)
+    #     elif self.c_class_2 == 'paladin':
+    #         paladin_list = floor(self.c_class_2_level/3) 
+    #     else:
+    #         paladin_list = 0
 
                 
-        if self.c_class == 'paladin':
-            while i < (paladin_list):
-                if i == 0:
-                    mercy_list = list_3
-                elif i == 1:
-                    mercy_list = list_3 + list_6
-                elif i == 2:
-                    mercy_list = list_3 + list_6 + list_9
-                else:
-                    mercy_list = list_3 + list_6 + list_9 + list_12
+    #     if self.c_class == 'paladin':
+    #         while i < (paladin_list):
+    #             if i == 0:
+    #                 mercy_list = list_3
+    #             elif i == 1:
+    #                 mercy_list = list_3 + list_6
+    #             elif i == 2:
+    #                 mercy_list = list_3 + list_6 + list_9
+    #             else:
+    #                 mercy_list = list_3 + list_6 + list_9 + list_12
                 
-                #Need to remove these from the selectable list until we have the pre-reqs, we can do manually with an if statement
-                if i >= 2:
-                    if 'fatigued' not in self.mercy_chosen_list:
-                        mercy_list.remove('exhausted')
-                    if 'shaken' not in self.mercy_chosen_list:
-                        mercy_list.remove('frightened')
-                    if 'sickened' not in self.mercy_chosen_list:
-                        mercy_list.remove('nauseated')
-                    if 'enfeebled' not in self.mercy_chosen_list:
-                        mercy_list.remove('restorative')
-                    if i >= 3 and 'injured' not in self.mercy_chosen_list:
-                        mercy_list.remove('amputated')
+    #             #Need to remove these from the selectable list until we have the pre-reqs, we can do manually with an if statement
+    #             if i >= 2:
+    #                 if 'fatigued' not in self.mercy_chosen_list:
+    #                     mercy_list.remove('exhausted')
+    #                 if 'shaken' not in self.mercy_chosen_list:
+    #                     mercy_list.remove('frightened')
+    #                 if 'sickened' not in self.mercy_chosen_list:
+    #                     mercy_list.remove('nauseated')
+    #                 if 'enfeebled' not in self.mercy_chosen_list:
+    #                     mercy_list.remove('restorative')
+    #                 if i >= 3 and 'injured' not in self.mercy_chosen_list:
+    #                     mercy_list.remove('amputated')
 
-                print(f'This is your mercy list {mercy_list}')
+    #             print(f'This is your mercy list {mercy_list}')
 
-                mercy_chosen=random.choice(mercy_list)
-                self.mercy_chosen_list.add(mercy_chosen)
+    #             mercy_chosen=random.choice(mercy_list)
+    #             self.mercy_chosen_list.add(mercy_chosen)
 
 
     
-                #need to find a better way to grab all mercies, if it selects one multiple times you have 1 less mercy
-                k+=1
-                print(self.mercy_chosen_list)
-                i = min(len(self.mercy_chosen_list),k)       
+    #             #need to find a better way to grab all mercies, if it selects one multiple times you have 1 less mercy
+    #             k+=1
+    #             print(self.mercy_chosen_list)
+    #             i = min(len(self.mercy_chosen_list),k)       
 
-            return self.mercy_chosen_list  
-
-
-    def anti_paladin_cruelty_chooser(self):
-
-        self.cruelty_chosen_list=set()        
-        i=0      
-        k=0   
-
-        list_3 = list(self.cruelties["cruelty"]["3"].keys())
-        list_6 = list(self.cruelties["cruelty"]["6"].keys())
-        list_9 = list(self.cruelties["cruelty"]["9"].keys())
-        list_12 = list(self.cruelties["cruelty"]["12"].keys())
+    #         return self.mercy_chosen_list  
 
 
-        if self.c_class == 'antipaladin':
-            anti_paladin_list = floor(self.c_class_level/3)
-        elif self.c_class_2 == 'antipaladin':
-            anti_paladin_list = floor(self.c_class_2_level/3) 
-        else:
-            anti_paladin_list = 0
+    # def anti_paladin_cruelty_chooser(self):
+
+    #     self.cruelty_chosen_list=set()        
+    #     i=0      
+    #     k=0   
+
+    #     list_3 = list(self.cruelties["cruelty"]["3"].keys())
+    #     list_6 = list(self.cruelties["cruelty"]["6"].keys())
+    #     list_9 = list(self.cruelties["cruelty"]["9"].keys())
+    #     list_12 = list(self.cruelties["cruelty"]["12"].keys())
+
+
+    #     if self.c_class == 'antipaladin':
+    #         anti_paladin_list = floor(self.c_class_level/3)
+    #     elif self.c_class_2 == 'antipaladin':
+    #         anti_paladin_list = floor(self.c_class_2_level/3) 
+    #     else:
+    #         anti_paladin_list = 0
 
                 
-        if self.c_class == 'antipaladin':
-            while i < (anti_paladin_list):
-                if i == 0:
-                    cruelty_list = list_3
-                elif i == 1:
-                    cruelty_list = list_3 + list_6
-                elif i == 2:
-                    cruelty_list = list_3 + list_6 + list_9
-                else:
-                    cruelty_list = list_3 + list_6 + list_9 + list_12
+    #     if self.c_class == 'antipaladin':
+    #         while i < (anti_paladin_list):
+    #             if i == 0:
+    #                 cruelty_list = list_3
+    #             elif i == 1:
+    #                 cruelty_list = list_3 + list_6
+    #             elif i == 2:
+    #                 cruelty_list = list_3 + list_6 + list_9
+    #             else:
+    #                 cruelty_list = list_3 + list_6 + list_9 + list_12
                 
-                #Need to remove these from the selectable list until we have the pre-reqs, we can do manually with an if statement
-                if i >= 2:
-                    if 'fatigued' not in self.cruelty_chosen_list:
-                        cruelty_list.remove('exhausted')
-                    if 'shaken' not in self.cruelty_chosen_list:
-                        cruelty_list.remove('frightened')
-                    if 'sickened' not in self.cruelty_chosen_list:
-                        cruelty_list.remove('nauseated')
+    #             #Need to remove these from the selectable list until we have the pre-reqs, we can do manually with an if statement
+    #             if i >= 2:
+    #                 if 'fatigued' not in self.cruelty_chosen_list:
+    #                     cruelty_list.remove('exhausted')
+    #                 if 'shaken' not in self.cruelty_chosen_list:
+    #                     cruelty_list.remove('frightened')
+    #                 if 'sickened' not in self.cruelty_chosen_list:
+    #                     cruelty_list.remove('nauseated')
 
-                print(f'This is your cruelty list {cruelty_list}')
+    #             print(f'This is your cruelty list {cruelty_list}')
 
-                cruelty_chosen=random.choice(cruelty_list)
-                self.cruelty_chosen_list.add(cruelty_chosen)
+    #             cruelty_chosen=random.choice(cruelty_list)
+    #             self.cruelty_chosen_list.add(cruelty_chosen)
 
 
     
-                #need to find a better way to grab all cruelties, if it selects one multiple times you have 1 less cruelty
-                k+=1
-                print(self.cruelty_chosen_list)
-                i = min(len(self.cruelty_chosen_list),k)       
+    #             #need to find a better way to grab all cruelties, if it selects one multiple times you have 1 less cruelty
+    #             k+=1
+    #             print(self.cruelty_chosen_list)
+    #             i = min(len(self.cruelty_chosen_list),k)       
 
-            return self.cruelty_chosen_list     
+    #         return self.cruelty_chosen_list     
             
            
 
@@ -2456,7 +2466,7 @@ class Character:
             
 
 
-    def generic_class_option_chooser(self, class_1, dataset_name, dataset_name_2 = None, dataset_name_3 = None, multiple = None, level=None, level_2 = None):
+    def generic_class_option_chooser(self, class_1,  dataset_name, dataset_name_2 = None, dataset_name_3 = None, multiple = None, level=None, level_2 = None):
         if self.c_class == class_1: 
             if multiple != None:
                 amount = getattr(data, 'amount', {}).get(self.c_class, {}).get(dataset_name, {})
@@ -2629,6 +2639,33 @@ class Character:
                 seen.add(item)
                 result.append(item)
         return result
+
+    def paladin_chooser(self, class_1, dataset_name):
+        if self.c_class == class_1:
+            dataset = getattr(self, class_1, {}).get(dataset_name, {})
+            dataset_list = []
+            chosen_set = set()
+            chosen_list = []
+            chosen_set_desc = []
+            i = 0
+
+            level = self.c_class_level   
+            k = level // 3         
+
+            while i < k:
+                dataset_list += dataset.get(str(3 * (i + 1)), [])
+                chosen = random.choice(dataset_list)
+                chosen_set.add(chosen)
+
+                for condition, item in [('fatigued', 'exhausted'), ('shaken', 'frightened'),
+                                        ('sickened', 'nauseated'), ('enfeebled', 'restorative'),
+                                        ('injured', 'amputated')]:
+                    if condition not in chosen_set:
+                        chosen_set.discard(item)
+
+                print(chosen_set)
+                i = min(len(chosen_set),k)
+            return chosen_set  
 
 
     # def remove_duplicates_list(self,lst):
