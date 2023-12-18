@@ -1,0 +1,627 @@
+$sheet-width: 800px
+$bg: white
+$faded: #ddd
+$faded-light: #f7f7f7
+$faded-dark: #777777
+$radius: 10px
+$gutter: 10px
+$bubble-size: 10px
+$small-box-width: 30px
+$large-box-width: 70px
+$grey: #d0d0d0
+$red: #901a1a
+
+.red
+  background: red
+  
+.blue
+  background: blue
+  
+.hide
+  display: none !important
+  
+textarea
+  font-size: 12px
+  text-align: left
+  width: calc(100% - #{$radius*2} - 2px)
+  border-radius: $radius
+  padding: $radius
+  resize: none
+  overflow: hidden
+  height: 15em
+  
+input[type="checkbox"]
+  cursor: pointer
+  
+div.box
+  margin-top: $gutter
+
+form.charsheet
+  width: $sheet-width
+  right: 0
+  left: 0
+  margin-right: auto
+  margin-left: auto
+  margin-top: 10px
+
+  div.textblock
+    display: flex
+    flex-direction: column-reverse
+    width: 100%
+    align-items: center
+    
+    label
+      text-align: center
+      border: 1px solid black
+      border-top: 0
+      font-size: 10px
+      width: calc(100% - #{$radius*2} - 2px)
+      border-radius: 0 0 $radius $radius
+      padding: 4px 0
+      font-weight: bold
+
+    textarea
+      border: 1px solid black
+
+  th
+    margin: 0
+    padding: 0
+
+    tr
+      list-style-image: none
+      display: block
+
+  ::placeholder
+    color: $faded-dark
+  
+  label
+    text-transform: uppercase
+    font-size: 12px
+  
+  header
+    display: flex
+    align-contents: stretch
+    align-items: stretch
+    
+    section.charname
+      border: 1px solid black
+      border-right: 0
+      border-radius: $radius 0 0 $radius
+      padding: 5px 0
+      background-color: $faded-light
+      width: 30%
+      display: flex
+      flex-direction: row
+      bottom: 0
+      top: 0
+      margin: auto
+      
+      input
+        padding: 0.5em
+        margin: 5px
+        border: 0
+        
+      label
+        padding-left: 1em
+    
+    section.misc
+      width: 100%
+      border: 1px solid black
+      border-radius: $radius
+      padding-left: 1em
+      padding-right: 1em
+      
+      ul
+        padding: 10px 0px 5px 0px
+        display: flex
+        flex-wrap: wrap
+        
+        li
+          width: 33.33333%
+          display: flex
+          flex-direction: column-reverse
+          
+          label
+            margin-bottom: 5px
+
+          input
+            border: 0
+            border-bottom: 1px solid $faded
+
+            
+            
+  main
+    display: flex
+    flex-flow: wrap column  
+    margin-top: $gutter*2
+    
+    
+    div.atrributes-container
+      // This affects everything in the div.label-container      
+      display: flex
+      width: 100%      
+      flex-flow: wrap column
+      // This overwrites the main wrap -> makes thinngs in a column format       
+      background: $grey
+      border: .2em solid black
+      padding: 1%
+      // we need to use percentages so it works across all devices
+      
+      section.attributes
+            // affects a box around ability scores        
+            width: 100%
+            height: 20%      
+            padding-bottom: $gutter  
+          
+        
+                // this affects things in td only
+            input
+                font-size: 1em
+                border: .2em solid black
+                width: 80%                 
+                background: $red
+                // This affects the text boxes
+                padding-bottom: $gutter   
+                display: flex
+                justify-content: space-between
+
+      
+          
+          
+      section.Total-HP
+            // affects a box around ability scores        
+            width: 20%
+            height: 20%      
+            padding-bottom: $gutter
+            display: flex
+            flex-flow: nowrap column
+            
+        
+            table
+            font-size: 1em
+            font-weight: bold          
+            border: 50% solid black
+            // This affects the text boxes
+            padding-bottom: $gutter           
+        
+            input
+                font-size: 1em
+                font-weight: bold
+                border: .2em solid black
+                background: $red
+                // This affects the text boxes
+                padding-bottom: $gutter           
+        
+        
+    div.AC-div
+      background-color: $grey
+      border: .2em solid black
+      
+      section.armor-class
+            // This controls the size of the Armor Class Boxes
+            $attr-width: 50em
+            $attr-height: 10em
+            $attr-gutter: 31px
+            $attr-width_box: 1em
+            $attr-height_box: 2em     
+            width: 100%
+            display: flex
+            background-color: $grey        
+            flex-direction: reverse-column
+            justify-content: space-between
+
+            
+            div.AC
+            // This controls the size of the Ability Score box
+            background-color: $grey               
+            width: $attr-width
+            height: $attr-height            
+            border-radius: $radius
+            padding-bottom: $gutter
+              
+   
+            input
+              width: $attr-width_box
+              height: $attr-height_box
+              width: 100%
+              display: flex             
+              background-color: $red      
+              border: .2em solid black 
+              font-size: 1em              
+              flex-direction: column
+              justify-content: space-between
+              
+    div.Saving-div
+      
+        section.saving-throws
+            // This controls the size of the Armor Class Boxes
+            $attr-width: 30em
+            $attr-height: 15em
+            $attr-gutter: 1em
+            $attr-width_box: 2.5em
+            $attr-height_box: 2em        
+            background-color: $grey  
+            border: .2em solid black
+            display: flex
+            flex-direction: row
+
+
+            
+            div.saving-throws-boxes
+            // This controls the size of the Ability Score box
+            width: $attr-width
+            height: $attr-height            
+            background-color: $grey 
+            border-radius: $radius
+            padding-bottom: $gutter  
+            display: flex              
+            flex-direction: reverse-column
+            justify-content: space-evenly          
+              
+   
+            input
+              width: $attr-width_box
+              height: $attr-height_box
+              background: $red
+              border: .2em solid black
+              width: 50px     
+              font-size: 1.5em
+              
+              
+    div.speed-div
+      
+        section.speed
+            // This controls the size of the Armor Class Boxes
+            $attr-width: 35em
+            $attr-height: 10em
+            $attr-gutter: 1em
+            $attr-width_box: 2.5em
+            $attr-height_box: 2em        
+            background-color: $grey  
+            border: .2em solid black
+            display: flex
+            flex-direction: row      
+              
+   
+            table
+            width: $attr-width
+            height: $attr-height            
+            
+          
+            input
+              width: $attr-width_box
+              height: $attr-height_box
+              background: $red
+              border: .2em solid black
+              width: 50px     
+              font-size: 1.5em              
+              
+
+              
+              
+              
+    div.char-hp-div
+      
+        section.Total-char-level
+            // This controls the size of the Armor Class Boxes
+            width: 60em
+            height: 22em
+            $attr-gutter: 1em
+            $attr-width_box: 1em
+            $attr-height_box: 2em        
+            $attr-width_box-class: 14em
+            $attr-height_box-class: 2em           
+            background-color: $grey  
+            border: .2em solid black
+            display: flex
+            flex-direction: row
+            justify-content: space-evenly
+   
+              
+   
+            input
+              min-width: $attr-width_box
+              min-height: $attr-height_box
+              background: $faded-dark
+              border: .2em solid black
+              width: 50px     
+              font-size: 1.5em              
+              
+              
+            .class-input
+              min-width: $attr-width_box-class
+              min-height: $attr-height_box-class
+              background: $red
+              border: .2em solid black  
+              font-size: 1em 
+              
+              
+              
+    div.DR-div
+      
+        section.dr-class
+            // This controls the size of the Armor Class Boxes
+            $attr-width: 60em
+            $attr-height: 10em
+            $attr-gutter: 1em
+            $attr-width_box: 2.5em
+            $attr-height_box: 2em        
+            background-color: $grey  
+            border: .2em solid black
+            display: flex
+            flex-direction: row
+
+
+            
+            div.DR
+            // This controls the size of the Ability Score box
+            width: $attr-width
+            height: $attr-height            
+            background-color: $grey 
+            border-radius: $radius
+            padding-bottom: $gutter  
+            display: flex              
+            flex-direction: reverse-column
+            justify-content: space-evenly          
+              
+   
+            input
+              width: $attr-width_box
+              height: $attr-height_box
+              background: $red
+              border: .2em solid black
+              width: 50px     
+              font-size: 1.5em
+              
+             
+              
+              
+    // Start of Drop down container (1) Section  
+    div.drop-down-container 
+      //  No idea how to affect the elements when we auto create them via JS      
+      // This affects everything in the div.label-container       
+      display: flex   
+      justify-content: space-between
+      // This overwrites the main wrap -> makes thinngs in a column format       
+      background: $grey
+      border: .2em solid black
+      padding: 1%
+      // we need to use percentages so it works across all devices 
+      
+
+          .extra-box
+            font-weight: bold
+            font-size: 1em
+            border: .2em
+          
+          
+          
+    // Start of Drop down container (1) Section  
+    div.drop-down-container2 
+      //  No idea how to affect the elements when we auto create them via JS      
+      // This affects everything in the div.label-container       
+      display: flex   
+      justify-content: space-between
+      // This overwrites the main wrap -> makes thinngs in a column format       
+      background: $grey
+      border: .2em solid black
+      padding: 1%
+      // we need to use percentages so it works across all devices 
+      
+
+          .extra-box
+            font-weight: bold
+            font-size: 1em
+            border: .2em
+          
+          
+          
+    // Start of Drop down container (1) Section  
+    div.drop-down-container3 
+      //  No idea how to affect the elements when we auto create them via JS      
+      // This affects everything in the div.label-container       
+      display: flex   
+      justify-content: space-between
+      // This overwrites the main wrap -> makes thinngs in a column format       
+      background: $grey
+      border: .2em solid black
+      padding: 1%
+      // we need to use percentages so it works across all devices 
+      
+
+          .extra-box
+            font-weight: bold
+            font-size: 1em
+            border: .2em          
+
+
+      
+          
+               
+
+          
+    div.skill-div
+
+        section.skills-section
+            // This controls the size of the Armor Class Boxes
+            $attr-width: 20em
+            $attr-height: 3em
+            $attr-gutter: 1em
+            $attr-width_box: 2.5em
+            $attr-height_box: 2em        
+            background-color: $grey  
+            border: .2em solid black
+            display: flex
+            flex-direction: row
+
+
+            
+            div.skills
+            // This controls the size of the Ability Score box
+            min-width: $attr-width
+            min-height: $attr-height            
+            background-color: $grey 
+            border-radius: $radius
+            padding-bottom: $gutter  
+            display: flex              
+            flex-direction: reverse-column
+            justify-content: flex-start          
+              
+   
+            input
+              min-width: $attr-width_box
+              min-height: $attr-height_box
+              background: $red
+              border: .2em solid black
+              width: 50px     
+              font-size: 1.5em      
+              
+              
+    div.equip-div
+
+        section.worn-equipment-section
+            // This controls the size of the Armor Class Boxes
+            $attr-width: 20em
+            $attr-height: 3em
+            $attr-gutter: 1em
+            $attr-width_box: 20em
+            $attr-height_box: 1em        
+            background-color: $grey  
+            border: .2em solid black
+            display: flex
+            flex-direction: row
+
+
+            
+            div.worn-equipment
+            // This controls the size of the Ability Score box
+            min-width: $attr-width
+            min-height: $attr-height            
+            background-color: $grey 
+            border-radius: $radius
+            padding-bottom: $gutter  
+            display: flex              
+            flex-direction: reverse-column
+            justify-content: flex-start          
+              
+   
+            input
+              min-width: $attr-width_box
+              min-height: $attr-height_box
+              background: $red
+              border: .2em solid black
+              width: 50px     
+              font-size: 1.5em       
+              
+              
+              
+    div.currency-div
+
+        section.currency-section
+            // This controls the size of the Armor Class Boxes
+            $attr-width: 20em
+            $attr-height: 3em
+            $attr-gutter: 1em
+            $attr-width_box: 20em
+            $attr-height_box: 1em        
+            background-color: $grey  
+            border: .2em solid black
+            display: flex
+            flex-direction: row
+
+
+            
+            table.currency-table
+            // This controls the size of the Ability Score box
+            min-width: $attr-width
+            min-height: $attr-height            
+            background-color: $grey 
+            border-radius: $radius
+            padding-bottom: $gutter  
+            display: flex              
+            flex-direction: reverse-column
+            justify-content: flex-start          
+              
+   
+            input
+              min-width: $attr-width_box
+              min-height: $attr-height_box
+              background: $red
+              border: .2em solid black
+              width: 50px     
+              font-size: 1.5em  
+              
+              
+              
+    div.carry-div
+
+        section.carry-section
+            // This controls the size of the Armor Class Boxes
+            $attr-width: 2em
+            $attr-height: 3em
+            $attr-gutter: 1em
+            $attr-width_box: 5em
+            $attr-height_box: 1em        
+            background-color: $grey  
+            border: .2em solid black
+            display: flex
+            flex-flow: wrap row
+            align-content: space-evenly
+
+
+            
+            table.carry-table
+            // This controls the size of the Ability Score box
+            min-width: $attr-width
+            min-height: $attr-height            
+            background-color: $grey 
+            border-radius: $radius
+            padding-bottom: $gutter  
+            display: flex              
+            flex-direction: reverse-column
+            justify-content: flex-start          
+              
+   
+            input
+              min-width: $attr-width_box
+              min-height: $attr-height_box
+              background: $red
+              border: .2em solid black
+              width: 50px     
+              font-size: 1.5em                  
+              
+              
+    div.Lift
+
+        section.lift-section
+            // This controls the size of the Armor Class Boxes
+            $attr-width: 2em
+            $attr-height: 3em
+            $attr-gutter: 1em
+            $attr-width_box: 5em
+            $attr-height_box: 1em        
+            background-color: $grey  
+            border: .2em solid black
+            display: flex
+            flex-flow: wrap row
+            align-content: space-evenly
+
+            table.carry-table
+            // This controls the size of the Ability Score box
+            min-width: $attr-width
+            min-height: $attr-height            
+            background-color: $grey 
+            border-radius: $radius
+            padding-bottom: $gutter  
+            display: flex              
+            flex-direction: reverse-column
+            justify-content: flex-start          
+              
+   
+            input
+              min-width: $attr-width_box
+              min-height: $attr-height_box
+              background: $red
+              border: .2em solid black
+              width: 50px     
+              font-size: 1.5em                                

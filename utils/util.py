@@ -196,21 +196,21 @@ def chooseClass(character):
     character.c_class = userInput_class
     character.c_class_2 = ''
 
-    if userInput_class not in character.classes.keys():
+    if userInput_class not in character.class_data.keys():
         BAB = input('Enter BAB (H/M/L): ').capitalize()
         character.BAB = BAB
         userInput_class = None
 
         classes = []
-        for class_name in character.classes.keys():
-                if BAB == "H" and character.classes[class_name]["BAB"] == "high":
+        for class_name in character.class_data.keys():
+                if BAB == "H" and character.class_data[class_name]["BAB"] == "high":
                     classes.append(class_name)
-                elif BAB == "M" and character.classes[class_name]["BAB"] == "mid":
+                elif BAB == "M" and character.class_data[class_name]["BAB"] == "mid":
                     classes.append(class_name)
-                elif BAB == "L" and character.classes[class_name]["BAB"] == "low":
+                elif BAB == "L" and character.class_data[class_name]["BAB"] == "low":
                     classes.append(class_name)
     
-        classes = list(character.classes.keys())
+        classes = list(character.class_data.keys())
         character.c_class = classes[randrange(0,len(classes))]
 
 
@@ -222,7 +222,7 @@ def dip_function(character, base_classes):
     -c_class_2 (string)
     """
     available_classes = getattr(data,base_classes)
-    classes = list(character.classes.keys())
+    classes = list(character.class_data.keys())
     userInput_multiclass = input('Do you want to multiclass Y/N')
     c_class_2 = ''
     if userInput_multiclass.lower() == 'y' or userInput_multiclass == 'yes':

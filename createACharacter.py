@@ -122,6 +122,7 @@ class Character:
         self.level=None
         self.feat_list=None
         self.monk_feats=None
+        self.result_dict={}
 
 
 
@@ -2640,7 +2641,7 @@ class Character:
                 result.append(item)
         return result
 
-    def paladin_chooser(self, class_1, dataset_name):
+    def generic_multi_chooser(self, class_1, dataset_name, n, n2=None):
         if self.c_class == class_1:
             dataset = getattr(self, class_1, {}).get(dataset_name, {})
             dataset_list = []
@@ -2650,10 +2651,19 @@ class Character:
             i = 0
 
             level = self.c_class_level   
-            k = level // 3         
+            ii = level // 3         
 
-            while i < k:
-                dataset_list += dataset.get(str(3 * (i + 1)), [])
+            while i < ii:
+                print(dataset)
+                print(dataset.keys())
+                if n2 != None:
+                    level = (n // n2 * (i + 1))
+                    string_level = str(max(level,4))
+                else:
+                    string_level = str((n * (i + 1)))
+
+                dataset_list += dataset.get(string_level, [])
+                print(f'This is your chooseable dataset {dataset_list}')
                 chosen = random.choice(dataset_list)
                 chosen_set.add(chosen)
 
@@ -2664,8 +2674,46 @@ class Character:
                         chosen_set.discard(item)
 
                 print(chosen_set)
-                i = min(len(chosen_set),k)
+                i = min(len(chosen_set),ii)
             return chosen_set  
+
+
+
+
+    def feat_searcher(self, class_1, chosen_set, types):
+        if self.c_class == class_1:
+            data = pd.read_csv(f'data/{types}.csv', sep='|', on_bad_lines='skip')
+            extraction_list = ['name', 'description']
+
+            # Convert chosen_set to uppercase
+            chosen_set_upper = {i.upper() for i in chosen_set}
+            print(f'This is your chosen set {chosen_set_upper}')
+
+            # Filter DataFrame based on 'name' column
+            query_result = data[data['name'].str.upper().isin(chosen_set_upper)][extraction_list]
+
+            result_dict = {}
+
+            for index, row in query_result.iterrows():
+                feat_name = row['name']
+                feat_info = {'description': row['description']}  # Add more fields if needed
+                result_dict[feat_name] = feat_info
+
+            self.result_dict.update(result_dict)
+            print(self.result_dict)
+            
+            return self.result_dict            
+
+
+            
+
+
+                
+
+
+
+
+
 
 
     # def remove_duplicates_list(self,lst):

@@ -24,7 +24,7 @@ userInput = input('Create a new character? (y/n): ').lower()
 character_json_config = {
 	'races': 'json/races.json',
 	'classes': 'json/class.json',
-	'class': 'json/class.json',
+	'class_data': 'json/class_data.json',
 	'traits': 'json/traits_abilities.json',
 	'profession': 'json/profession.json',
 	'last_names_regions': 'json/last_names_regions.json',
@@ -35,7 +35,6 @@ character_json_config = {
 	'spells_per_day': 'json/spells_per_day.json',
 	'spells_from_ability_mod': 'json/spells_from_ability_mod.json',
 	'ranger_combat_styles': 'json/ranger_combat_styles.json',				
-	'monk_choices': 'json/monk_choices.json',
 	'class_features': 'json/class_features.json',	
 	'bloodlines': 'json/bloodlines.json',
 	'cleric_domains': 'json/cleric_domains.json',				
@@ -57,6 +56,7 @@ character_json_config = {
 	"fighter": "json/class_data/fighter.json",
 	"inquisitor": "json/class_data/inquisitor.json",
 	"investigator": "json/class_data/investigator.json",
+	'monk': 'json/class_data/monk.json',
 	"ninja": "json/class_data/ninja.json",
 	"oracle": "json/class_data/oracle.json",
 	"paladin": "json/class_data/paladin.json",
@@ -165,7 +165,7 @@ while userInput.lower() == 'y':
 
 
 		#class specific choices
-		character.monk_ki_power_chooser()
+		# character.monk_ki_power_chooser()
 		character.bloodline_chooser()
 
 		# character.fighter_armor_train_chooser()
@@ -189,7 +189,7 @@ while userInput.lower() == 'y':
 
 		#class specific feats choosers
 		character.ranger_feats_chooser()
-		character.monk_feats_chooser()
+		# character.monk_feats_chooser()
 
 
 		character.archetype_data()
@@ -239,10 +239,15 @@ while userInput.lower() == 'y':
 		character.get_data_without_prerequisites(class_1="skald",dataset_name="basic")
 
 
-		character.paladin_chooser("paladin", "mercy")
-		character.paladin_chooser("antipaladin", "cruelty")
+		# >2 Choices based on level
+		character.generic_multi_chooser("paladin", "mercy", n=3)
+		character.generic_multi_chooser("antipaladin", "cruelty",n=3)
+		ki_powers = character.generic_multi_chooser("monk", "ki_powers",n=4,n2=2)
 
 
+		# feat + spell searcher
+		character.feat_searcher("monk", ki_powers, 'feats')
+		character.feat_searcher("monk", ki_powers, 'spells')
 
 
 		### Need to change up the item_chooser function ###

@@ -253,6 +253,20 @@
        "casting level": "none",
         "saving throws": ["Fortitude", "Will"]
     },
+
+    "monk": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["None"],
+        "skills": ["Acrobatics", "Climb", "Craft", "Escape Artist", "Intimidate", "Knowledge (history)", "Knowledge (religion)", "Perception", "Perform", "Profession", "Ride", "Sense Motive", "Stealth", "Swim"],
+        "hp": 10,
+        "gold": "2d10",
+        "BAB":    "mid",
+    
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
+       "casting level": "none",
+        "saving throws": ["Fortitude", "Will"]
+    },    
     
     "ninja": {
         "weapons": ["All Simple Weapons", "Kama", "Nunchaku", "Sai", "Shuriken","Siangham"],
