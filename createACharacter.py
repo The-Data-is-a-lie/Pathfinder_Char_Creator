@@ -2554,12 +2554,12 @@ class Character:
 
             prereq_list = self.no_prereq_loop(base, "prereq_list")
 
-            chosen_set.add(chosen)
+            chosen_set.add(chosen.lower())
             i = len(chosen_set)
 
             print(f'This is your chosen set {chosen_set}')
             
-            total_choices.append(chosen) 
+            total_choices.append(chosen.lower()) 
             total_choices.extend(prereq_list)
             total_choices = self.remove_duplicates_list(total_choices)
             # total_choices=list(set(total_choices))
@@ -2592,7 +2592,7 @@ class Character:
                 print(even, odd)
                 print(chosen_set)
                 i = len(chosen_set)
-                total_choices.append(chosen) 
+                total_choices.append(chosen.lower()) 
                 total_choices.extend(prereq_list)
                 total_choices = self.remove_duplicates_list(total_choices)
                 # total_choices=list(set(total_choices))
@@ -2606,14 +2606,14 @@ class Character:
         prereq_list = set()
         for name, info in dataset_type.items():
             prerequisites = info.get("prerequisites", "")
-            prerequisites_components = set(p.strip() for p in prerequisites.split(","))
+            prerequisites_components = set(p.strip().lower() for p in prerequisites.split(","))
 
 
             if prerequisites_components.issubset(self.chooseable) == True:
-                prereq_list.add(name)
+                prereq_list.add(name.lower())
 
             if not prerequisites:
-                dataset_without_prerequisites.append(name)
+                dataset_without_prerequisites.append(name.lower())
 
         if return_choice == 'prereq_list':
             return prereq_list
@@ -2680,7 +2680,7 @@ class Character:
 
 
 
-    def feat_searcher(self, class_1, chosen_set, types):
+    def feat_spell_searcher(self, class_1, chosen_set, types):
         if self.c_class == class_1:
             data = pd.read_csv(f'data/{types}.csv', sep='|', on_bad_lines='skip')
             extraction_list = ['name', 'description']

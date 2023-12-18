@@ -56,6 +56,7 @@ character_json_config = {
 	"fighter": "json/class_data/fighter.json",
 	"inquisitor": "json/class_data/inquisitor.json",
 	"investigator": "json/class_data/investigator.json",
+	"magus": "json/class_data/magus.json",
 	'monk': 'json/class_data/monk.json',
 	"ninja": "json/class_data/ninja.json",
 	"oracle": "json/class_data/oracle.json",
@@ -237,6 +238,7 @@ while userInput.lower() == 'y':
 		character.grand_discovery_chooser() #fix this later
 		character.get_data_without_prerequisites(class_1="barbarian",dataset_name="basic")
 		character.get_data_without_prerequisites(class_1="skald",dataset_name="basic")
+		character.get_data_without_prerequisites(class_1="magus",dataset_name="basic")
 
 
 		# >2 Choices based on level
@@ -246,8 +248,8 @@ while userInput.lower() == 'y':
 
 
 		# feat + spell searcher
-		character.feat_searcher("monk", ki_powers, 'feats')
-		character.feat_searcher("monk", ki_powers, 'spells')
+		character.feat_spell_searcher("monk", ki_powers, 'feats')
+		character.feat_spell_searcher("monk", ki_powers, 'spells')
 
 
 		### Need to change up the item_chooser function ###
