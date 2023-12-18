@@ -52,6 +52,7 @@ character_json_config = {
 	"antipaladin": "json/class_data/antipaladin.json",
 	"arcanist": "json/class_data/arcanist.json",
 	"barbarian": "json/class_data/barbarian.json",
+	"bloodrager": "json/class_data/bloodrager.json",
 	"cavalier": "json/class_data/cavalier.json",
 	"fighter": "json/class_data/fighter.json",
 	"inquisitor": "json/class_data/inquisitor.json",
@@ -66,6 +67,7 @@ character_json_config = {
 	"skald": "json/class_data/skald.json",
 	"slayer": "json/class_data/slayer.json",
 	"samurai": "json/class_data/samurai.json",
+	"sorcerer": "json/class_data/sorcerer.json",
 	"vigilante": "json/class_data/vigilante.json",
 	"warpriest": "json/class_data/warpriest.json",
 	"witch": "json/class_data/witch.json",
@@ -167,7 +169,7 @@ while userInput.lower() == 'y':
 
 		#class specific choices
 		# character.monk_ki_power_chooser()
-		character.bloodline_chooser()
+		# character.bloodline_chooser()
 
 		# character.fighter_armor_train_chooser()
 		# character.fighter_weapon_train_chooser()	
@@ -205,13 +207,15 @@ while userInput.lower() == 'y':
 
 
 
-		character.bloodline_feats_chooser()
+		# character.bloodline_feats_chooser()
 
 		#generic single choices (adds spells?)
 		character.generic_class_option_chooser("shaman", "spirits")
 
 
 		# generic single choices
+		character.generic_class_option_chooser("sorcerer", "bloodline")
+		character.generic_class_option_chooser("bloodrager", "bloodline")
 		character.generic_class_option_chooser("cavalier", "orders")
 		character.generic_class_option_chooser("samurai", "orders")
 		character.generic_class_option_chooser("warpriest", "blessing")
@@ -248,8 +252,11 @@ while userInput.lower() == 'y':
 
 
 		# feat + spell searcher
-		character.feat_spell_searcher("monk", ki_powers, 'feats')
-		character.feat_spell_searcher("monk", ki_powers, 'spells')
+		character.feat_spell_searcher("monk", ki_powers, "feats", "benefit")
+		character.feat_spell_searcher("monk", ki_powers, "spells", "description")
+		character.feat_spell_searcher("bloodrager", character.bonus_feats , "feats", "benefit")
+		character.feat_spell_searcher("bloodrager", character.bonus_spells, "spells", "description")
+		character.feat_spell_searcher("sorcerer", character.bonus_spells, "spells", "description")
 
 
 		### Need to change up the item_chooser function ###
