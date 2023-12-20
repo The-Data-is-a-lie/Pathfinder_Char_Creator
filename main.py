@@ -258,6 +258,7 @@ while userInput.lower() == 'y':
 		character.feat_spell_searcher("bloodrager", character.bonus_spells, "spells", "description")
 		character.feat_spell_searcher("sorcerer", character.bonus_spells, "spells", "description")
 
+		character.print_metamagic()
 
 		### Need to change up the item_chooser function ###
 

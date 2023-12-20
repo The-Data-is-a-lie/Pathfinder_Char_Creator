@@ -1,38 +1,267 @@
-{"martial": {
-    
-"melee":{
-    "attack action": ["cleave", "greater cleave", "cleaving finish", "improved cleaving finish", "vital strike", "improved vital strike", 
-    "greater vital strike", "power attack", "improved feint", "greater feint", "weapon focus", "cornugon smash"],
-    "full attack": ["two weapon fighting", "improved two weapon fighting", "greater two weapon fighting", "power attack", "weapon focus",
-    "two weapon defense", "imrpoved two weapon defense", "greater two weapon defense"],
-    "cmb": ["improved bullrush", "greater bullrush", "improved trip", "greater trip", "improved disarm", "greater disarm", "weapon focus"],
-    "tank": ["dodge", "mobility", "combat reflexes", "stand still", "aid another", "combat expertise", "armor focus", "vital strike", 
-    "improved vital strike", "greater vital strike"]
+{
+    "martial": {
+      "melee": {
+        "str": {
+                "attack action": [
+                    "cleave",
+                    "greater cleave",
+                    "cleaving finish",
+                    "improved cleaving finish",
+                    "vital strike",
+                    "improved vital strike",
+                    "greater vital strike",
+                    "power attack",
+                    "improved feint",
+                    "greater feint",
+                    "greater feint",
+                    "spring attack",
+                    "nimble moves",
+                    "combat expertise",
+                    "sprint attack",
+                    "improved spring attack",
+                    "greater spring attack",
+                    "whirlwind attack",                    
+                    "cornugon smash",
+                    "weapon focus",
+                    "greater weapon focus",
+                    "weapon specialization",
+                    "greater weapon specialization"
+        
+                ],
+                "full attack": [
+                    "two weapon fighting",
+                    "improved two weapon fighting",
+                    "greater two weapon fighting",
+                    "power attack",
+                    "two weapon defense",
+                    "improved two weapon defense",
+                    "greater two weapon defense",
+                    "vital strike",
+                    "improved vital strike",
+                    "greater vital strike",
+                    "weapon focus",
+                    "greater weapon focus",
+                    "weapon specialization",
+                    "greater weapon specialization"
+        
+                ],
+                "cmb": [
+                    "improved unarmed strike",
+                    "improved grapple",
+                    "improved trip",
+                    "improved disarm",
+                    "improved dirty trick",
+                    "improved steal",
+                    "improved bull rush",
+                    "improved overrun",
+                    "improved drag",
+                    "improved reposition",
+                    "greater grapple",
+                    "greater trip",
+                    "greater disarm",
+                    "greater dirty trick",
+                    "greater steal",
+                    "greater bull rush",
+                    "greater overrun",
+                    "greater drag",
+                    "greater reposition",
+                    "improved critical (unarmed strike)",
+                    "tandem trip",
+                    "weapon focus",
+                    "greater weapon focus",
+                    "weapon specialization",
+                    "greater weapon specialization"
+        
+                ],
+                "tank": [
+                    "cleave",
+                    "greater cleave",
+                    "cleaving finish",
+                    "improved cleaving finish",
+                    "vital strike",
+                    "improved vital strike",
+                    "greater vital strike",                    
+                    "toughness",
+                    "improved toughness",
+                    "dodge",
+                    "mobility",
+                    "combat reflexes",
+                    "stand still",
+                    "seize the opportunity",
+                    "aid another",
+                    "combat expertise",
+                    "armor focus",
+                    "bodyguard",
+                    "in harm's way",
+                    "shield focus",
+                    "greater shield focus",
+                    "shield master",
+                    "iron will",
+                    "imrpoved iron will",
+                    "great fortitude",
+                    "improved great fortitude",
+                    "diehard",
+                    "endurance",
+                    "outflank",
+                    "precise strike",
+                    "aid another",
+                    "deathless initiate"
 
-},
+                ]
+      }
+    },
+      "ranged": {
+        "attack action": [
+            "deadly aim",
+            "point blank shot",
+            "point blank master",
+            "precise shot",
+            "improved precise shot",
+            "rapid shot",
+            "many shot",
+            "snap shot",
+            "improved snap shot",
+            "greater snap shot",
+            "combat reflexes",
+            "far shot",
+            "overwatch style",
+            "overwatch vortex",
+            "overwatch tactian",
+            "vital strike",
+            "improved vital strike",
+            "greater vital strike",
+            "deadly aim",
+            "ranged trip",
+            "ace trip",
+            "combat expertise",
+            "improved feint",
+            "greater feint",
+            "weapon focus",
+            "greater weapon focus",
+            "weapon specialization",
+            "greater weapon specialization",
+            "shot on the run"
+        ],
+        "full attack": [
+            "deadly aim",
+            "point blank shot",
+            "point blank master",
+            "precise shot",
+            "improved precise shot",
+            "rapid shot",
+            "many shot",
+            "snap shot",
+            "improved snap shot",
+            "greater snap shot",
+            "combat reflexes",
+            "far shot",
+            "weapon focus",
+            "greater weapon focus",
+            "weapon specialization",
+            "greater weapon specialization",
+            "pinpoint targeting",
+            "penetrating shot",
+            "clustered shot",
+            "hammer the gap",
+            "critical focus",
+            "improved critical",
+            "impact critical shot"
+        ]
+      }
 
-"ranged": {
-    "attack action": ["cleave", "greater cleave", "cleaving finish", "improved cleaving finish", "vital strike", "improved vital strike", 
-    "greater vital strike", "power attack", "improved feint", "greater feint"],
-    "full attack": ["deadly aim", "point blank shot", "precise shot", "improved precise shot", "rapid shot", "many shot", "snap shot", "improved snap shot",
-"greater snap shot", "combat reflexes", "far shot"]
-}
+    },
+    "magical": {
+      "arcane": [
+        "spell focus",
+        "greater spell focus",
+        "spell penetration",
+        "greater spell penetration",
+        "spell specialization",
+        "spell perfection",      
+        "spell mastery",
+        "elemental focus",
+        "greater elemental focus"          
 
-
-},
-
-"magical": {
-    "arcane": [],
-    "druid": [],
-    "cleric": []
-
-}
+            ],
+      "druid": [],
+      "cleric": []
+    },
+    "universal": {
+            "combat": [
+                "improved intiative",
+                "iron will",
+                "improved iron will",
+                "lightning reflexes",
+                "improved lightning reflexes",
+                "great fortitude",
+                "improved great fortitude",
+                "toughness",
+                "improved toughness",
+                "dodge",
+                "endurance",
+                "diehard",
+                "greater diehard",
+                "run"
+            ],
+            "roleplay": [
+                "blind fight",
+                "skill focus",
+                "dilettante",
+                "alertness",
+                "acrobatics",
+                "animal affinity",
+                "uncanny alertness",
+                "oracular intuition",
+                "voice of the sibyl",
+                "deceitful",
+                "deft hands",
+                "magical aptitude",
+                "persuasive",
+                "prodigy",
+                "scholar",
+                "self-sufficient",
+                "stealthy",
+                "stone read",
+                "wary smuggler"
+            ]
+    }
 ,
-"universal": {
-    "combat": ["improved intiative", "iron will", "improved iron will", "lightning reflexes", "imporved lightning reflexes", "great fortitude",
-    "imporved great fortitude", "toughness", "improved toughness", "dodge", "endurance", "diehard", "greater diehard"],
-    "roleplay": ["skill focus", "dilettante", "alertness", "acrobatics", "animal affinity", "uncanny alertness", "oracular intuition", "voice of the sibyl",
-"deceitful", "deft hands", "magical aptitude", "persuasive", "prodigy", "scholar", "self-sufficient", "stealthy", "stone read", "wary smuggler"]
-
-}
-}
+            "extra":[
+                "extra amplification",
+                "extra arcana",
+                "extra arcane pool",
+                "extra arcanist exploit",
+                "extra bane",
+                "extra bombs",
+                "extra cantrips or orisons",
+                "extra channel",
+                "extra contingency",
+                "extra discovery",
+                "extra evolution",
+                "extra focus power",
+                "extra gnome magic",
+                "extra hex",
+                "extra inspiration",
+                "extra investigator talent",
+                "extra ki",
+                "extra lay on hands",
+                "extra martial flexibility",
+                "extra mental focus",
+                "extra mercy",
+                "extra mesmerist tricks",
+                "extra panache",
+                "extra performance",
+                "extra rage",
+                "extra rage power",
+                "extra ranger trap",
+                "extra reservoir",
+                "extra revelation",
+                "extra rogue talent",
+                "extra slayer talent",
+                "extra summons",
+                "extra touch treatment",
+                "extra variance",
+                "extra wild talent"                
+]
+  }
+  

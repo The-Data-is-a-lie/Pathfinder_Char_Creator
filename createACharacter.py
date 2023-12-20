@@ -1869,6 +1869,12 @@ class Character:
             return chosen_set  
 
 
+    def print_metamagic(self):
+        data = pd.read_csv(f'data/feats.csv', sep='|', on_bad_lines='skip')
+        Metamagic_feats = data[data['type']=='Metamagic']
+        extraction_list = ['name']        
+        print(Metamagic_feats[extraction_list])
+
 
 
     def feat_spell_searcher(self, class_1, chosen_set, types, info_column):
