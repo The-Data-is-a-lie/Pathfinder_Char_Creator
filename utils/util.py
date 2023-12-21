@@ -197,17 +197,21 @@ def chooseClass(character):
     character.c_class_2 = ''
 
     if userInput_class not in character.class_data.keys():
-        BAB = input('Enter BAB (H/M/L): ').capitalize()
-        character.BAB = BAB
+        bab = input('Enter bab (H/M/L): ').capitalize()
+        character.bab = bab
         userInput_class = None
+
+        if bab not in ('H','M','L'):
+            bab = 'H'
+            character.bab = 'H'
 
         classes = []
         for class_name in character.class_data.keys():
-                if BAB == "H" and character.class_data[class_name]["BAB"] == "high":
+                if bab == "H" and character.class_data[class_name]["bab"] == "H":
                     classes.append(class_name)
-                elif BAB == "M" and character.class_data[class_name]["BAB"] == "mid":
+                elif bab == "M" and character.class_data[class_name]["bab"] == "M":
                     classes.append(class_name)
-                elif BAB == "L" and character.class_data[class_name]["BAB"] == "low":
+                elif bab == "L" and character.class_data[class_name]["bab"] == "L":
                     classes.append(class_name)
     
         classes = list(character.class_data.keys())

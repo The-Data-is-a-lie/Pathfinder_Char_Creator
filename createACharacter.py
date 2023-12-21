@@ -8,6 +8,7 @@ from utils.markdown import style
 import random
 import sys
 import re
+import numpy as np
 
 #External Imports
 from random import randrange
@@ -225,26 +226,7 @@ class Character:
 
 
     def _update_BAB_total(self):
-        # self.class_level = {
-        #     'class 1': {
-        #         'level': 7,
-        #         'BAB': 'H'
-        #     },
-        #     'class 2': {
-        #         'level': 3,
-        #         'BAB': 'L'
-        #     }
-        # }
-        # self.BAB_total = 0
-        # for _, data in self.class_level.items():
-        #     # Creating a BAB total for printing out
-        #     if data.BAB == 'L':
-        #         self.BAB_total += floor(data.level *.5)
-        #     elif data.BAB == 'M':
-        #         self.BAB_total += floor(data.level *.75)
-        #     else: 
-        #         self.BAB_total += data.level * 1
-
+        self.BAB = self.class_data[self.c_class]['bab']
         # set as an integer so our function beneath works
         self.BAB_total = 0
         if self.BAB == 'L':
@@ -1907,6 +1889,47 @@ class Character:
             
             return self.result_dict            
 
+    def feat_spell_searcher(self, class_1, chosen_set, types, info_column, info_column_2 = None):
+        if self.c_class == class_1:
+            data = pd.read_csv(f'data/{types}.csv', sep='|', on_bad_lines='skip')
+            extraction_list = ['name', info_column, info_column_2]
+
+
+            # Convert chosen_set to uppercase
+            chosen_set_upper = {i.upper() for i in chosen_set}
+            print(f'This is your chosen set {chosen_set_upper}')
+
+            # Filter DataFrame based on 'name' column
+            if types == 'feats':
+                query_result = data[(data['name'].str.upper().isin(chosen_set_upper)) & (data['type'] != 'Mythic')][extraction_list]
+            else:
+                query_result = data[(data['name'].str.upper().isin(chosen_set_upper)) & (data['mythic'] == 0)][extraction_list]
+
+
+
+            result_dict = {}
+
+            for index, row in query_result.iterrows():
+                feat_name = row['name']
+                if pd.isna(row[info_column]):
+                    row[info_column] = ''
+                feat_info = {f'{info_column}': row[f'{info_column}']}  # Add more fields if needed
+
+                if info_column_2 is not None:
+                    if pd.isna(row[info_column_2]):
+                        row[info_column_2] = ''
+                    feat_info[f'{info_column_2}'] = row[f'{info_column_2}']
+
+
+                result_dict[feat_name] = feat_info
+
+
+            self.result_dict.update(result_dict)
+            print(self.result_dict)
+            
+            return self.result_dict            
+
+
 
     def bonus_searcher(self, choice, chosen_desc, types):
         bonus_list = []
@@ -1947,6 +1970,71 @@ class Character:
 
                 print(choice)
                 print(selected_value)
+
+
+    def build_selector(self):
+        martial=self.feat_buckets['martial']
+        magic=self.feat_buckets['magical']
+        universal=self.feat_buckets['universal']
+        casting_level=self.classes[self.c_class]['casting level'].lower()
+        type_chance = random.randint(1,100)
+        feat_list = []
+
+        if self.BAB == 'H' or (self.BAB == 'M' and casting_level not in ('low', 'mid', 'high')) :
+            martial_choice = random.choice(list(martial.keys())) 
+            universal_choice = random.choice(list(universal.keys()))
+            martial_choice_2 = random.choice(list((martial[martial_choice].keys())))
+            # print(martial_choice)
+            # print(universal_choice)            
+            # print(martial_choice_2)
+            list_2 = list(universal[universal_choice])
+            # print(list_2)
+            list_1 = list(martial[martial_choice][martial_choice_2])
+            # print(list_1)
+            feat_list.extend(list_1 + list_2)
+
+            if self.dex_mod >= self.str_mod +2:
+                feat_list.append('weapon finesse')
+
+            print(f'high BAB feat list {feat_list}')
+
+        result_dict = self.feat_spell_searcher(self.c_class, feat_list, "feats", "prerequisites", "description")
+        print(f'This is your result dict {result_dict}')
+
+        for feat,feat_info in result_dict.items():
+            print(feat)
+            print(feat_info)
+            prerequisites= feat_info.get('prerequisites')
+            if prerequisites is not None and prerequisites.lower() == 'nan':
+                result_dict[feat]['prerequisites'] = ''
+
+        print(f' post transform result_dict {result_dict}')
+
+
+        self.get_data_without_prerequisites(self.c_class, dataset_name = 'feat_list')
+
+
+        # or (self.BAB == 'M' and casting_level in ('mid', 'high') and type_chance >= 50)
+        # (casting_level == 'high' and self.BAB == 'L') or (self.BAB == 'M' and casting_level in ('mid', 'high') and type_chance < 50) 
+
+        # elif self.c_class in ('druid'):
+        #     choice = random.choice(list(magical).keys())
+        #     feat_list = random.choice
+
+
+        # else:
+
+
+
+        #     return feat_list
+
+
+
+    # def feats_selector(self):
+    #     chosen_feat_list = []   
+    #     feat_data=pd.read_csv('data/feats.csv', sep='|', on_bad_lines='skip')        
+    #     feat_list = self.build_selector()
+
 
 
 # setting up a new character

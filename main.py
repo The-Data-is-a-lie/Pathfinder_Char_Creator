@@ -47,6 +47,8 @@ character_json_config = {
 	'wizard_schools': 'json/wizard_schools.json',	
 	'class_data': 'json/class_data.json',			
 	'gunslinger_deeds_dares': 'json/gunslinger_deeds_dares.json',					
+	"feat_buckets": "json/feat_buckets.json",
+
 
 	"alchemist": "json/class_data/alchemist.json",
 	"antipaladin": "json/class_data/antipaladin.json",
@@ -71,6 +73,7 @@ character_json_config = {
 	"vigilante": "json/class_data/vigilante.json",
 	"warpriest": "json/class_data/warpriest.json",
 	"witch": "json/class_data/witch.json",
+
 
 
 }
@@ -225,7 +228,8 @@ while userInput.lower() == 'y':
 		character.generic_class_option_chooser("fighter", dataset_name="weapon_train", multiple='yes')
 		character.generic_class_option_chooser("arcanist", dataset_name="basic", dataset_name_2="greater", multiple='yes', level=10)
 		
-		#need to add patron spells to the witch spell list (like how clerics + druids + sorcs get their own added)
+		#need to add patron spells to the witch spell list (like how clerics + druids + s
+		# orcs get their own added)
 		character.generic_class_option_chooser("witch", dataset_name="basic", dataset_name_2="greater", dataset_name_3="grand", multiple='yes', level=10, level_2=18)
 
 
@@ -258,7 +262,8 @@ while userInput.lower() == 'y':
 		character.feat_spell_searcher("bloodrager", character.bonus_spells, "spells", "description")
 		character.feat_spell_searcher("sorcerer", character.bonus_spells, "spells", "description")
 
-		character.print_metamagic()
+		# character.print_metamagic()
+		character.build_selector()
 
 		### Need to change up the item_chooser function ###
 

@@ -1,7 +1,8 @@
 Needs (High Prio):
+- Add a section where high casters + mid casters can take meta magic feats
+
 - finish all classes on Pathfinder AON title 
 - Create buckets for feats [i.e. combat feat types for characters]
-- Change chooseclass to draw from class_Data rather than classes
 
 - Create a function that randomly assigns a element to the Lore skill
 - Need to add comment blocks to each function
@@ -128,6 +129,9 @@ Needs (Low Prio):
 - added Samurai
 - made the mercy + cruelty functions generic
 - made the json file opener generic (+ auto shuffle anything that is a list)
+
+12/18/12:
+- added feats to the feat buckets
 
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment
