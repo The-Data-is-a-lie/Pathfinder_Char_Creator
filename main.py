@@ -132,8 +132,8 @@ while userInput.lower() == 'y':
 		# Wizards + Clerics know all 0th level spells (wizards know all except opposing school)
 		# as long as spells known list has a '0th' spell column (even if it isn't 0) 
 		# it won't pull any 0th spells for casters with orisons/cantrips
-		character.choose_caster_formula_1()
-		character.choose_caster_formula_2()
+		character.caster_formula(character.c_class_level)
+		character.caster_formula(character.c_class_2_level, 'class_2')
 
 		#Divine Casters have all spells known (don't make this function for them)
 		print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
@@ -155,15 +155,15 @@ while userInput.lower() == 'y':
 
 		#this is to allow for talent choice stat pre-reqs (self.chooseable)
 		character.chooseable_list() 		
-		character.chooseable_list_stats(character.str, 'str')
-		character.chooseable_list_stats(character.dex, 'dex')
-		character.chooseable_list_stats(character.con, 'con')
-		character.chooseable_list_stats(character.int, 'int')
-		character.chooseable_list_stats(character.wis, 'wis')
-		character.chooseable_list_stats(character.cha, 'cha')	
-	
-
-
+		character.chooseable_list_stats(character.str, 'str ', base=10,)
+		character.chooseable_list_stats(character.dex, 'dex ', base=10,)
+		character.chooseable_list_stats(character.con, 'con ', base=10,)
+		character.chooseable_list_stats(character.int, 'int ', base=10,)
+		character.chooseable_list_stats(character.wis, 'wis ', base=10,)
+		character.chooseable_list_stats(character.cha, 'cha ', base=10,)	
+		character.chooseable_list_stats(character.bab_total, 'base attack bonus +', base=0 )
+		character.chooseable_list_stats(character.casting_level_num, 'caster level ', base=0, th='th')	
+		character.chooseable_list_race()
 
 		#decides if druids go animal companion or domain
 		# or if inquisitors go inquisitions or domains
@@ -264,6 +264,8 @@ while userInput.lower() == 'y':
 
 		# character.print_metamagic()
 		character.build_selector()
+
+		character.chooseable_list_class_features()
 
 		### Need to change up the item_chooser function ###
 

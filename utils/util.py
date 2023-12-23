@@ -126,11 +126,12 @@ def race_chooser(character):
     userInput_race = input(f'Select race from the above list: (or 0 if random)').capitalize()
     if userInput_race in races:
         print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race: {userInput_race}')
-        character.userInput_race = userInput_race
+        character.chosen_race = userInput_race
     else:
         userInput_race = random.choice(races)
-        character.userInput_race = userInput_race
+        character.chosen_race = userInput_race
         print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race: {userInput_race}')
+        
 
 def name_chooser(character):
     """

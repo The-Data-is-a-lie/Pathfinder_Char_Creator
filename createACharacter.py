@@ -72,7 +72,7 @@ class Character:
         self.total_Hit_dice=None
         self.extra_ability_score_levels=None
         self.npc_level=None
-        self.BAB_total=None
+        self.bab_total=None
         self.c_class=None
         self.c_class_2=None
         self.c_class_level=None
@@ -92,8 +92,8 @@ class Character:
         self.spells_list_2=None   
         self.spells_known_list=None      
         self.spells_per_day_list=None
-        self.highest_spell_known1=None
-        self.highest_spell_known2=None
+        self.highest_spell_known_1=None
+        self.highest_spell_known_2=None
         self.spell_list_choose_from=None        
 
         #class specific options
@@ -123,7 +123,7 @@ class Character:
         self.feats=None
         self.combat_feats=None
         self.magic_feats=None
-        self.BAB=None
+        self.bab=None
         self.level=None
         self.feat_list=None
         self.monk_feats=None
@@ -216,7 +216,7 @@ class Character:
         else:
             #remove 2 extra self.feats because of no flaws
             self.feats = (4 - 2 + floor(self.level/2) + floor(self.level/5))
-        self._update_BAB_total()
+        self._update_bab_total()
 
 
     def update_level_ability_score(self, level):
@@ -225,16 +225,16 @@ class Character:
 
 
 
-    def _update_BAB_total(self):
-        self.BAB = self.class_data[self.c_class]['bab']
+    def _update_bab_total(self):
+        self.bab = self.class_data[self.c_class]['bab']
         # set as an integer so our function beneath works
-        self.BAB_total = 0
-        if self.BAB == 'L':
-            self.BAB_total += floor(self.level *.5)
-        elif self.BAB == 'M':
-            self.BAB_total += floor(self.level *.75)
+        self.bab_total = 0
+        if self.bab == 'L':
+            self.bab_total += floor(self.level *.5)
+        elif self.bab == 'M':
+            self.bab_total += floor(self.level *.75)
         else: 
-            self.BAB_total += self.level * 1
+            self.bab_total += self.level * 1
     
     def roll_stats(self, num_dice, num_sides):
         self.str = roll_dice(num_dice, num_sides)
@@ -344,8 +344,8 @@ class Character:
 
     #change age/height/weight string into useable array that contains (e.g.) 5d6 -> 5,6 (5 num_dice, 6 num_sides)
     def randomize_body_feature(self, body_attribute):
-        print(f'??????????????????????????{self.races[self.userInput_race][body_attribute] }')
-        [base_stat, dice_string] = self.races[self.userInput_race][body_attribute]        
+        print(f'??????????????????????????{self.races[self.chosen_race][body_attribute] }')
+        [base_stat, dice_string] = self.races[self.chosen_race][body_attribute]        
         # print(self.)
         print(f'before setting attribute {body_attribute}', getattr(self, body_attribute))
         [num_dice, num_sides] = [int(c) for c in dice_string.split('d')]
@@ -355,8 +355,8 @@ class Character:
 
     
     def get_racial_attr(self, racial_attribute):
-        if self.userInput_race in self.races:
-            return self.races[self.userInput_race][racial_attribute]
+        if self.chosen_race in self.races:
+            return self.races[self.chosen_race][racial_attribute]
         
     def randomize_apperance_attr(self, apperance_attribute, upper_limit=1):
         random_app_number = random.randint(1,upper_limit)
@@ -403,13 +403,13 @@ class Character:
         chance = random.randint(1,100)
         getattr(data,path_of_war_class)
         if self.c_class not in path_of_war_class:
-            if self.BAB == 'H':
+            if self.bab == 'H':
                 if chance >= 25:
                     self.path = 1
                 else:
                     self.path = 0
 
-            elif self.BAB == 'M':
+            elif self.bab == 'M':
                 if chance >= 50:
                     self.path = 1
                 else:
@@ -523,84 +523,117 @@ class Character:
             self.c_class_for_spells = self.c_class     
         return self.c_class_for_spells
 
-    def high_caster_formula(self,n):
-        if n % 2 == 0:
-            cast_level=n // 2
-        else:
-            cast_level=(n + 1) // 2
-        cast_level = min(cast_level,9)
-        return cast_level
+    # def high_caster_formula(self,n):
+    #     if n % 2 == 0:
+    #         self.cast_level=n // 2
+    #     else:
+    #         self.cast_level=(n + 1) // 2
+    #     self.cast_level = min(self.cast_level,9)
+    #     return self.cast_level
     
-    def mid_caster_formula(self,n):
-        if n % 3 == 1:
-            cast_level= ceil(n // 3)+1
-        else:
-            cast_level= ceil(n / 3)
-        cast_level = min(n,6)
-        return cast_level
+    # def mid_caster_formula(self,n):
+    #     if n % 3 == 1:
+    #         self.cast_level= ceil(n // 3)+1
+    #     else:
+    #         self.cast_level= ceil(n / 3)
+    #     self.cast_level = min(n,6)
+    #     return self.cast_level
 
-    def low_caster_formula(self,n):
-        cast_level= ceil(n / 3)-1
-        cast_level = min(cast_level,4)
-        return cast_level
+    # def low_caster_formula(self,n):
+    #     self.cast_level= ceil(n / 3)-1
+    #     self.cast_level = min(self.cast_level,4)
+    #     return self.cast_level
 
-    def choose_caster_formula_1(self): 
-        self.highest_spell_known2=0        
-        casting_level_1 = str(self.classes[self.c_class]["casting level"].lower())                   
-        if casting_level_1 == 'high':
-            self.highest_spell_known1 = self.high_caster_formula(self.c_class_level)
-        elif casting_level_1 == 'mid':
-            self.highest_spell_known1 = self.mid_caster_formula(self.c_class_level)
-        elif casting_level_1 == 'low':
-            self.highest_spell_known1 = self.low_caster_formula(self.c_class_level)  
-        else:
-            print('No caster_1 level')
-        return self.highest_spell_known1
 
-    def choose_caster_formula_2(self):  
-        self.highest_spell_known2=0                         
-        if self.c_class_2 != '':
-            casting_level_2 = str(self.classes[self.c_class_2]["casting level"].lower())              
-            if casting_level_2 == 'high':
-                self.highest_spell_known2 = self.high_caster_formula(self.c_class_level)
-            elif casting_level_2 == 'mid':
-                self.highest_spell_known2 = self.mid_caster_formula(self.c_class_level)
-            elif casting_level_2 == 'low':
-                self.highest_spell_known2 = self.low_caster_formula(self.c_class_level)    
+    def caster_formula(self,n, class_2 = None):
+        self.casting_level_string = str(self.classes.get(self.c_class, "").get("casting level", "").lower())
+        self.casting_level_num = self.c_class_level
+
+        if self.casting_level_string == 'high':
+            if n % 2 == 0:
+                self.highest_spell_known_1=n // 2
             else:
-                print('No caster_2 level')
+                self.highest_spell_known_1=(n + 1) // 2
+            self.highest_spell_known_1 = min(self.highest_spell_known_1,9)
+
+        elif self.casting_level_string == 'mid':
+            if n % 3 == 1:
+                self.highest_spell_known_1= ceil(n // 3)+1
+            else:
+                self.highest_spell_known_1= ceil(n / 3)
+            self.highest_spell_known_1 = min(n,6)           
+       
+        elif self.casting_level_string == 'low':
+            self.highest_spell_known_1= ceil(n / 3)-1
+            self.highest_spell_known_1 = min(self.highest_spell_known_1,4)           
+            self.casting_level_num -= 3
+
+
+        else:
+            self.highest_spell_known_1 = 0 
+            self.casting_level_num = 0
+
+        if class_2 == None:
+            return self.highest_spell_known_1    
+        else:
+            return self.highest_spell_known_2
+
+    # def choose_caster_formula_1(self): 
+    #     self.highest_spell_known_1=0        
+    #     if self.casting_level_string == 'high':
+    #         self.highest_spell_known_1 = self.high_caster_formula(self.c_class_level)
+    #     elif self.casting_level_string == 'mid':
+    #         self.highest_spell_known_1 = self.mid_caster_formula(self.c_class_level)
+    #     elif self.casting_level_string == 'low':
+    #         self.highest_spell_known_1 = self.low_caster_formula(self.c_class_level)  
+    #     else:
+    #         print('No caster_1 level')
+    #     return self.highest_spell_known_1
+
+    # def choose_caster_formula_2(self):  
+    #     self.highest_spell_known_2=0                         
+    #     if self.c_class_2 != '':
+    #         casting_level_2 = str(self.classes[self.c_class_2]["casting level"].lower())              
+    #         if casting_level_2 == 'high':
+    #             self.highest_spell_known_2 = self.high_caster_formula(self.c_class_level)
+    #         elif casting_level_2 == 'mid':
+    #             self.highest_spell_known_2 = self.mid_caster_formula(self.c_class_level)
+    #         elif casting_level_2 == 'low':
+    #             self.highest_spell_known_2 = self.low_caster_formula(self.c_class_level)    
+    #         else:
+    #             print('No caster_2 level')
         
-        return self.highest_spell_known2
+    #     return self.highest_spell_known_2
     
 #need to create this for casting_level_2 as well
     def spells_known_attr(self,base_classes, divine_casters):     
         base_classes = getattr(data,base_classes)
         divine_casters=getattr(data, divine_casters)    
-        casting_level_1 = str(self.classes[self.c_class]["casting level"].lower())         
+        self.casting_level_string = str(self.classes[self.c_class]["casting level"].lower())         
         self.spells_known_list = []
         list = []    
  
 
-        if self.c_class in base_classes and casting_level_1 == 'high' and self.c_class not in divine_casters:
-            for i in range(0,self.highest_spell_known1+1):
+        if self.c_class in base_classes and self.casting_level_string == 'high' and self.c_class not in divine_casters:
+            for i in range(0,self.highest_spell_known_1+1):
                 key = str(i)
                 list=self.spells_known[self.c_class][key][self.capped_level_1-1]
                 self.spells_known_list.append(list)
-        elif self.c_class in base_classes and casting_level_1 == 'mid' and self.c_class not in divine_casters and self.c_class != 'alchemist':
-            for i in range(0,self.highest_spell_known1+1):
+        elif self.c_class in base_classes and self.casting_level_string == 'mid' and self.c_class not in divine_casters and self.c_class != 'alchemist':
+            for i in range(0,self.highest_spell_known_1+1):
                 key = str(i)                
                 list=self.spells_known[self.c_class][key][self.capped_level_1-1]
                 self.spells_known_list.append(list)
 
         #Low casters + some mid casters don't have orisons/cantrips [but we just have 0 for spells known + spells per day so it doesn't select any]
         elif self.c_class == 'alchemist':
-            for i in range(0,self.highest_spell_known1+1):
+            for i in range(0,self.highest_spell_known_1+1):
                 key = str(i)                
                 list=self.spells_known[self.c_class][key][self.capped_level_1-1]
                 self.spells_known_list.append(list)
 
-        elif self.c_class in base_classes and casting_level_1 == 'low' and self.c_class not in divine_casters:
-            for i in range(0,self.highest_spell_known1+1):
+        elif self.c_class in base_classes and self.casting_level_string == 'low' and self.c_class not in divine_casters:
+            for i in range(0,self.highest_spell_known_1+1):
                 key = str(i)                
                 list=self.spells_known[self.c_class][key][self.capped_level_1-1]
                 self.spells_known_list.append(list)
@@ -614,7 +647,7 @@ class Character:
     def spells_known_extra_roll(self):
         extra_spell_list = []        
         if self.c_class_for_spells in ['alchemist','wizard']:
-            for i in range(0,self.highest_spell_known1 + 1):
+            for i in range(0,self.highest_spell_known_1 + 1):
                 extra_spells = random.randint(1,10)
                 extra_spell_list.append(extra_spells)
 
@@ -675,7 +708,7 @@ class Character:
         spell_data=pd.read_csv('data/spells.csv', sep='|')
         #extraction_list = ['name', self.c_class]                
         self.spell_list = []
-        casting_level_1 = str(self.classes[self.c_class]["casting level"].lower())         
+        self.casting_level_string = str(self.classes[self.c_class]["casting level"].lower())         
         base_classes=getattr(data,base_classes)
         divine_casters=getattr(data, divine_casters)
         i=0
@@ -686,8 +719,8 @@ class Character:
         day_list = self.spells_per_day_list
 
         #we need to make sure we aren't grabbing null or our program will break
-        if casting_level_1 != 'none' and self.c_class in base_classes and self.c_class not in divine_casters:
-            while i <= self.highest_spell_known1:
+        if self.casting_level_string != 'none' and self.c_class in base_classes and self.c_class not in divine_casters:
+            while i <= self.highest_spell_known_1:
                 print(known_list)
                 print(i)
                 if known_list[i] != 'null':
@@ -703,8 +736,8 @@ class Character:
                 else:
                     break     
 
-        elif casting_level_1 != 'none' and self.c_class in divine_casters:   
-            while i <= self.highest_spell_known1:
+        elif self.casting_level_string != 'none' and self.c_class in divine_casters:   
+            while i <= self.highest_spell_known_1:
                 print(f'this is i {i}')
                 print(type(day_list[i]))
                 print(f"i: {i}, len(day_list): {len(day_list)}")
@@ -738,22 +771,18 @@ class Character:
         
     
     def spells_per_day_attr(self, base_classes):
-        # We have to use normal spell class, since certain classes like Arcanist or Witch have the same spells but diff progressions as wizard/sorc
-        high_caster_level = self.high_caster_formula(self.c_class_level)
-        mid_caster_level = self.mid_caster_formula(self.c_class_level)
-        low_caster_level = self.low_caster_formula(self.c_class_level)  
-        casting_level_1 = str(self.classes[self.c_class]["casting level"].lower())         
+        # We have to use normal spell class, since certain classes like Arcanist or Witch have the same spells but diff progressions as wizard/sorc 
         base_classes = getattr(data,base_classes)  
         self.spells_per_day_list = []
         list = []            
 
-        if self.c_class in base_classes and casting_level_1 == 'high':
-            for i in range(0,high_caster_level+1):
+        if self.c_class in base_classes and self.casting_level_string == 'high':
+            for i in range(0,self.highest_spell_known_1+1):
                 key = str(i)
                 print(self.c_class)
                 list=self.spells_per_day[self.c_class][key][self.capped_level_1-1]
                 self.spells_per_day_list.append(list)
-        elif self.c_class in base_classes and casting_level_1 == 'mid' and self.c_class != 'alchemist':
+        elif self.c_class in base_classes and self.casting_level_string == 'mid' and self.c_class != 'alchemist':
             for i in range(0,mid_caster_level+1):
                 key = str(i)                
                 list=self.spells_per_day[self.c_class][key][self.capped_level_1-1]
@@ -761,12 +790,12 @@ class Character:
 
         #adding an exception for alchemist (+ other classes that don't receive cantrips)
         elif self.c_class == 'alchemist':
-            for i in range(0,mid_caster_level+1):
+            for i in range(0,self.highest_spell_known_1+1):
                 key = str(i)                
                 list=self.spells_per_day[self.c_class][key][self.capped_level_1-1]
                 self.spells_per_day_list.append(list)        
-        elif self.c_class in base_classes and casting_level_1 == 'low':
-            for i in range(0,low_caster_level+1):
+        elif self.c_class in base_classes and self.casting_level_string == 'low':
+            for i in range(0,self.highest_spell_known_1+1):
                 key = str(i)                
                 list=self.spells_per_day[self.c_class][key][self.capped_level_1-1]
                 self.spells_per_day_list.append(list)                
@@ -793,19 +822,19 @@ class Character:
         bonus_spells = []
         if self.c_class in caster_mod["int_casters"]:
             list=dataset[int_str]          
-            for i in range (self.highest_spell_known1):
+            for i in range (self.highest_spell_known_1):
                 i+=1
                 spells= list[i]
                 bonus_spells.append(spells)
         if self.c_class in caster_mod["wis_casters"]:
             list=dataset[wis_str]         
-            for i in range (self.highest_spell_known1):
+            for i in range (self.highest_spell_known_1):
                 i+=1
                 spells= list[i]
                 bonus_spells.append(spells)
         if self.c_class in caster_mod["cha_casters"]:
             list=dataset[cha_str]          
-            for i in range (self.highest_spell_known1):
+            for i in range (self.highest_spell_known_1):
                 i+=1
                 spells= list[i]
                 bonus_spells.append(spells)                                
@@ -1269,15 +1298,32 @@ class Character:
 
         return self.chooseable
     
-    def chooseable_list_stats(self,attr,stat_name):
-        base = 10
+    def chooseable_list_stats(self,attr,stat_name,base,th = None):
         while base <= int(attr):
-            stat = str(stat_name) + " " + str(base)
+            suffix = "th" if base >= 4 else {1: "st", 2: "nd", 3: "rd"}.get(base, "th")
+            stat = str(stat_name) + str(base) + (suffix if th else "")
             self.chooseable.add(stat)
             base += 1
 
-            if base == 24:
+            print(self.chooseable)
+
+            if base == 25:
                 break
+
+    def chooseable_list_race(self):
+        self.chooseable.add(self.chosen_race)
+
+    def chooseable_list_class_features(self):
+        remove_list = ["aphorite", "aquatic elf", "boggard", "dhampir", "drow", "duergar", "duskwalker", "dwarf", "elf", "fetchling", "gillman", "gnome", "half-elf", "halfling", "half-orc", "human", "kitsune", "nagaji", "oread", "ratfolk", "strix", "tengu", "wayang", "aasimar", "aquatic elf", "catfolk", "dwarf", "elf", "gathlain", "gnome", "goblin", "half-elf", "halfling", "half-orc", "hobgoblin", "human", "kitsune", "kobold", "locathah", "nagaji", "orc", "vanara", "source", "role", "alignment", "hit die", "parent class(es)", "starting wealth", "skill points at each level" ]
+        class_keys_list = list(self.class_data.get(self.c_class, "").keys())
+        class_keys_list = [key.strip() for key in class_keys_list if key not in remove_list]
+        class_keys_list_class_feature = [key + " class feature" for key in class_keys_list]
+
+        
+        self.chooseable.update(class_keys_list)
+        self.chooseable.update(class_keys_list_class_feature)
+        print(self.chooseable)
+
 
 
 
@@ -1503,11 +1549,11 @@ class Character:
 
 
     def armor_chooser(self):
-        if self.c_class in ('monk', 'unchained_monk') or self.BAB == 'L':
+        if self.c_class in ('monk', 'unchained_monk') or self.bab == 'L':
             armor_type=None
-        elif self.c_class in ('rogue', 'bard', 'brawler') or self.BAB == 'M':
+        elif self.c_class in ('rogue', 'bard', 'brawler') or self.bab == 'M':
             armor_type='L'            
-        elif self.c_class in ('barbarian', 'unchained_barbarian', 'ranger') or self.BAB == 'M':
+        elif self.c_class in ('barbarian', 'unchained_barbarian', 'ranger') or self.bab == 'M':
             armor_type='M'
         elif self.c_class in ('cleric'):
             armor_type='H'
@@ -1735,41 +1781,15 @@ class Character:
             total_choices.append(chosen.lower()) 
             total_choices.extend(prereq_list)
             total_choices = self.remove_duplicates_list(total_choices)
-            # total_choices=list(set(total_choices))
+            total_choices=list(set(total_choices))
             print(f"These are all your options to choose from: {total_choices}")
 
 
             if i>= 5 and self.c_class_level >= 10 and level == 10:
                 add_advanced_talents = True
+                total_choices.extend(dataset_no_prereq)                
                 break
 
-        if add_advanced_talents == True:
-            total_choices.extend(dataset_no_prereq)
-            for i in range(i,amount):
-                print(total_choices)
-                chosen = random.choice(total_choices)
-
-                print(f'This is your chosen talent Friend!!!!!! {chosen}')
-
-                even = f"{class_1} {2 * (i + 1)}"
-                odd = f"{class_1} {2 * i + 1}"
-                self.chooseable.update([even, odd, chosen])
-
-                prereq_list = self.no_prereq_loop(dataset, "prereq_list")
-                # print(f'This is your prereq list {self.chooseable}')
-
-
-
-                chosen_set.add(chosen)
-
-                print(even, odd)
-                print(chosen_set)
-                i = len(chosen_set)
-                total_choices.append(chosen.lower()) 
-                total_choices.extend(prereq_list)
-                total_choices = self.remove_duplicates_list(total_choices)
-                # total_choices=list(set(total_choices))
-                print(total_choices)
 
         return base_no_prereq, dataset_no_prereq, chosen_set
 
@@ -1777,13 +1797,17 @@ class Character:
     def no_prereq_loop(self, dataset_type, return_choice=None):
         dataset_without_prerequisites = []
         prereq_list = set()
-        for name, info in dataset_type.items():
-            prerequisites = info.get("prerequisites", "")
-            prerequisites_components = set(p.strip().lower() for p in prerequisites.split(","))
 
+        for name, info in dataset_type.items():
+            prerequisites = info.get("prerequisites", "").lower()
+            prerequisites = re.sub(r'\.', '', prerequisites)
+            prerequisites_components = set(p.strip().lower() for p in prerequisites.split(","))
+            print(f'these are the components {prerequisites_components}')
+            # removes both . and proficency
 
             if prerequisites_components.issubset(self.chooseable) == True:
                 prereq_list.add(name.lower())
+                # print(f'total prereq_list: {prereq_list}')
 
             if not prerequisites:
                 dataset_without_prerequisites.append(name.lower())
@@ -1980,7 +2004,7 @@ class Character:
         type_chance = random.randint(1,100)
         feat_list = []
 
-        if self.BAB == 'H' or (self.BAB == 'M' and casting_level not in ('low', 'mid', 'high')) :
+        if self.bab == 'H' or (self.bab == 'M' and casting_level not in ('low', 'mid', 'high')) :
             martial_choice = random.choice(list(martial.keys())) 
             universal_choice = random.choice(list(universal.keys()))
             martial_choice_2 = random.choice(list((martial[martial_choice].keys())))
@@ -1996,26 +2020,88 @@ class Character:
             if self.dex_mod >= self.str_mod +2:
                 feat_list.append('weapon finesse')
 
-            print(f'high BAB feat list {feat_list}')
+            print(f'high bab feat list {feat_list}')
 
         result_dict = self.feat_spell_searcher(self.c_class, feat_list, "feats", "prerequisites", "description")
         print(f'This is your result dict {result_dict}')
 
-        for feat,feat_info in result_dict.items():
+        for feat in list(result_dict.keys()):
+            feat_info = result_dict[feat]
+            prereq_set = set()
             print(feat)
             print(feat_info)
-            prerequisites= feat_info.get('prerequisites')
-            if prerequisites is not None and prerequisites.lower() == 'nan':
-                result_dict[feat]['prerequisites'] = ''
+            prerequisites = feat_info.get('prerequisites', None)
+
+            if prerequisites is not None:
+                prereq_set.add(prerequisites.lower())
+                result_dict[feat]['prerequisites'] = prerequisites.lower()
+                new_feat = feat.lower()
+
+                if prerequisites.lower() == 'nan':
+                    result_dict[feat]['prerequisites'] = ''
+                    new_feat = ''
+
+                if new_feat != feat:
+                    result_dict[new_feat] = result_dict.pop(feat)
 
         print(f' post transform result_dict {result_dict}')
+        chosen_feats = self.get_feats_without_prerequisites(self.c_class, result_dict, odd=True)
+
+        print(chosen_feats)
 
 
-        self.get_data_without_prerequisites(self.c_class, dataset_name = 'feat_list')
 
 
-        # or (self.BAB == 'M' and casting_level in ('mid', 'high') and type_chance >= 50)
-        # (casting_level == 'high' and self.BAB == 'L') or (self.BAB == 'M' and casting_level in ('mid', 'high') and type_chance < 50) 
+    def get_feats_without_prerequisites(self, class_1, dataset_name, level= None, level_2 = None, dataset_name_2 = None, odd=None):
+
+        if self.c_class != class_1:
+            return None
+
+        dataset_no_prereq = []
+        base_no_prereq = []
+        add_advanced_talents = False
+        amount = floor(self.c_class_level/2)
+        chosen_set = set()
+
+        if odd == True:
+            amount = ceil(self.c_class_level/2)
+
+        
+        dataset = dataset_name
+        # print(f'dataset items: {dataset_name.items()}')
+        # print(f'this is  your dataset {dataset}')
+        base = dataset.copy()
+        # print(f"base: {base}")
+        base_no_prereq = self.no_prereq_loop(base)
+        # print(base_no_prereq)
+        total_choices = base_no_prereq
+ 
+
+        for i in range(amount):
+            print(f"this is total choices {total_choices}")
+            chosen = random.choice(total_choices)
+            print(f'this is your chosen {chosen}')
+            even = f"{class_1} {2 * (i + 1)}"
+            odd = f"{class_1} {2 * i + 1}"
+            self.chooseable.update([even, odd, chosen])
+
+            prereq_list = self.no_prereq_loop(base, "prereq_list")
+
+            chosen_set.add(chosen.lower())
+            i = len(chosen_set)
+
+            print(f'This is your chosen set {chosen_set}')
+            
+            total_choices.append(chosen.lower()) 
+            total_choices.extend(prereq_list)
+            total_choices = self.remove_duplicates_list(total_choices)
+            total_choices=list(set(total_choices))
+            print(f"These are all your options to choose from: {total_choices}")
+
+        return base_no_prereq, dataset_no_prereq, chosen_set
+
+        # or (self.bab == 'M' and casting_level in ('mid', 'high') and type_chance >= 50)
+        # (casting_level == 'high' and self.bab == 'L') or (self.bab == 'M' and casting_level in ('mid', 'high') and type_chance < 50) 
 
         # elif self.c_class in ('druid'):
         #     choice = random.choice(list(magical).keys())
