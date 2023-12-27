@@ -130,8 +130,12 @@ Needs (Low Prio):
 - made the mercy + cruelty functions generic
 - made the json file opener generic (+ auto shuffle anything that is a list)
 
-12/18/12:
+12/18/23:
 - added feats to the feat buckets
+
+12/26/23:
+- added class level + char level to the chooseable set
+- pre-reqs functionally work now for the feat selector
 
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment

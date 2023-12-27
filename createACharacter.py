@@ -1310,6 +1310,24 @@ class Character:
             if base == 25:
                 break
 
+    
+    def chooseable_list_class(self,i,class_1,attr,base,th = None):
+
+        while base <= int(attr):
+            even = f"{class_1} {2 * (i + 1)}"
+            odd = f"{class_1} {2 * i + 1}"
+
+            suffix = "th" if base >= 4 else {1: "st", 2: "nd", 3: "rd"}.get(base, "th")
+            class_level_name = str(base) + (suffix if th else "") + " " + str(class_1) + " level" 
+            class_level_name_2 = str(class_1) + " level " + str(base) + (suffix if th else "") 
+            char_level_name = str(base) + (suffix if th else "") + " " + "character level" 
+            char_level_name_2 = "character level " + str(base) + (suffix if th else "")  
+            base += 1
+
+            self.chooseable.update([even, odd, class_level_name, class_level_name_2, char_level_name, char_level_name_2])
+            if base == 25:
+                break            
+
     def chooseable_list_race(self):
         self.chooseable.add(self.chosen_race)
 
@@ -1802,7 +1820,7 @@ class Character:
             prerequisites = info.get("prerequisites", "").lower()
             prerequisites = re.sub(r'\.', '', prerequisites)
             prerequisites_components = set(p.strip().lower() for p in prerequisites.split(","))
-            print(f'these are the components {prerequisites_components}')
+            # print(f'these are the components {prerequisites_components}')
             # removes both . and proficency
 
             if prerequisites_components.issubset(self.chooseable) == True:
@@ -1883,35 +1901,35 @@ class Character:
 
 
 
-    def feat_spell_searcher(self, class_1, chosen_set, types, info_column):
-        if self.c_class == class_1:
-            data = pd.read_csv(f'data/{types}.csv', sep='|', on_bad_lines='skip')
-            extraction_list = ['name', info_column]
+    # def feat_spell_searcher(self, class_1, chosen_set, types, info_column):
+    #     if self.c_class == class_1:
+    #         data = pd.read_csv(f'data/{types}.csv', sep='|', on_bad_lines='skip')
+    #         extraction_list = ['name', info_column]
 
 
-            # Convert chosen_set to uppercase
-            chosen_set_upper = {i.upper() for i in chosen_set}
-            print(f'This is your chosen set {chosen_set_upper}')
+    #         # Convert chosen_set to uppercase
+    #         chosen_set_upper = {i.upper() for i in chosen_set}
+    #         print(f'This is your chosen set {chosen_set_upper}')
 
-            # Filter DataFrame based on 'name' column
-            if types == 'feats':
-                query_result = data[(data['name'].str.upper().isin(chosen_set_upper)) & (data['type'] != 'Mythic')][extraction_list]
-            else:
-                query_result = data[(data['name'].str.upper().isin(chosen_set_upper)) & (data['mythic'] == 0)][extraction_list]
+    #         # Filter DataFrame based on 'name' column
+    #         if types == 'feats':
+    #             query_result = data[(data['name'].str.upper().isin(chosen_set_upper)) & (data['type'] != 'Mythic')][extraction_list]
+    #         else:
+    #             query_result = data[(data['name'].str.upper().isin(chosen_set_upper)) & (data['mythic'] == 0)][extraction_list]
 
 
 
-            result_dict = {}
+    #         result_dict = {}
 
-            for index, row in query_result.iterrows():
-                feat_name = row['name']
-                feat_info = {f'{info_column}': row[f'{info_column}']}  # Add more fields if needed
-                result_dict[feat_name] = feat_info
+    #         for index, row in query_result.iterrows():
+    #             feat_name = row['name']
+    #             feat_info = {f'{info_column}': row[f'{info_column}']}  # Add more fields if needed
+    #             result_dict[feat_name] = feat_info
 
-            self.result_dict.update(result_dict)
-            print(self.result_dict)
+    #         self.result_dict.update(result_dict)
+    #         print(self.result_dict)
             
-            return self.result_dict            
+    #         return self.result_dict            
 
     def feat_spell_searcher(self, class_1, chosen_set, types, info_column, info_column_2 = None):
         if self.c_class == class_1:
@@ -1933,16 +1951,21 @@ class Character:
 
             result_dict = {}
 
+            replace_dash = lambda x: re.sub(r'[-]', ' ', str(x))            
+            replace_dot = lambda x: re.sub(r'[.]', '', str(x))            
+
             for index, row in query_result.iterrows():
                 feat_name = row['name']
                 if pd.isna(row[info_column]):
                     row[info_column] = ''
-                feat_info = {f'{info_column}': row[f'{info_column}']}  # Add more fields if needed
-
+                feat_info = {f'{info_column}': replace_dash(row[f'{info_column}'])}
+                feat_info = {f'{info_column}': replace_dot(row[f'{info_column}'])}
+                
                 if info_column_2 is not None:
                     if pd.isna(row[info_column_2]):
                         row[info_column_2] = ''
-                    feat_info[f'{info_column_2}'] = row[f'{info_column_2}']
+                feat_info = {f'{info_column}': replace_dash(row[f'{info_column}'])}
+                feat_info = {f'{info_column}': replace_dot(row[f'{info_column}'])}
 
 
                 result_dict[feat_name] = feat_info
@@ -2028,8 +2051,8 @@ class Character:
         for feat in list(result_dict.keys()):
             feat_info = result_dict[feat]
             prereq_set = set()
-            print(feat)
-            print(feat_info)
+            # print(feat)
+            # print(feat_info)
             prerequisites = feat_info.get('prerequisites', None)
 
             if prerequisites is not None:
@@ -2075,15 +2098,16 @@ class Character:
         base_no_prereq = self.no_prereq_loop(base)
         # print(base_no_prereq)
         total_choices = base_no_prereq
+        i = 0
  
 
-        for i in range(amount):
+        while i < amount:
             print(f"this is total choices {total_choices}")
             chosen = random.choice(total_choices)
             print(f'this is your chosen {chosen}')
             even = f"{class_1} {2 * (i + 1)}"
             odd = f"{class_1} {2 * i + 1}"
-            self.chooseable.update([even, odd, chosen])
+            self.chooseable_list_class(i,self.c_class,self.c_class_level, base=0, th='th')
 
             prereq_list = self.no_prereq_loop(base, "prereq_list")
 
@@ -2097,6 +2121,11 @@ class Character:
             total_choices = self.remove_duplicates_list(total_choices)
             total_choices=list(set(total_choices))
             print(f"These are all your options to choose from: {total_choices}")
+            print(f"this is your len {len(chosen_set)}")
+            print(f"this is your i {i}")
+            print(f"this is your amount {amount}")
+
+            self.chooseable.add(chosen)
 
         return base_no_prereq, dataset_no_prereq, chosen_set
 
