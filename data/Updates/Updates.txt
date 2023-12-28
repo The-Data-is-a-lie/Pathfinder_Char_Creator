@@ -137,5 +137,11 @@ Needs (Low Prio):
 - added class level + char level to the chooseable set
 - pre-reqs functionally work now for the feat selector
 
+12/27/23:
+- added casters feats to the feat selector
+- added a function which makes it so the main stat(s) for a class are always the highest
+
+*** Need to add a dice rereroller (so your main stat is always your highest) ***
+
 Completed:
 X - Add a function so Clerics can't cast spells of an opposing alignment

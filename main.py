@@ -163,6 +163,7 @@ while userInput.lower() == 'y':
 		character.chooseable_list_stats(character.cha, 'cha ', base=10,)	
 		character.chooseable_list_stats(character.bab_total, 'base attack bonus +', base=0 )
 		character.chooseable_list_stats(character.casting_level_num, 'caster level ', base=0, th='th')	
+		character.chooseable_list_class_features()
 		character.chooseable_list_race()
 
 		#decides if druids go animal companion or domain
@@ -242,11 +243,11 @@ while userInput.lower() == 'y':
 		character.get_data_without_prerequisites(class_1="investigator",dataset_name="basic")
 		character.get_data_without_prerequisites(class_1="vigilante",dataset_name="basic")
 		character.get_data_without_prerequisites(class_1="vigilante",dataset_name="social",odd=True)
-
-		character.grand_discovery_chooser() #fix this later
 		character.get_data_without_prerequisites(class_1="barbarian",dataset_name="basic")
 		character.get_data_without_prerequisites(class_1="skald",dataset_name="basic")
 		character.get_data_without_prerequisites(class_1="magus",dataset_name="basic")
+
+		character.grand_discovery_chooser() #fix this later
 
 
 		# >2 Choices based on level
@@ -265,7 +266,6 @@ while userInput.lower() == 'y':
 		# character.print_metamagic()
 		character.build_selector()
 
-		character.chooseable_list_class_features()
 
 		### Need to change up the item_chooser function ###
 

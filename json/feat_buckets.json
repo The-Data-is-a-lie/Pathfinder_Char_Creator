@@ -169,7 +169,7 @@
 
     },
     "magical": {
-        "arcane": [
+        "control": [
           "spell focus",
           "greater spell focus",
           "spell penetration",
@@ -177,38 +177,56 @@
           "spell specialization",
           "spell perfection",      
           "spell mastery",
-          "elemental focus",
-          "greater elemental focus"          
+          "improved intiative",
+          "bouncing spell",
+          "coaxing spell",
+          "dazing spell",
+          "persistent spell"
+
               ],
-        "druid": [
-          "planar wildshape",
-          "elemental focus",
-          "natural spell",
-          "augment summoning",
-          "superior summoning",
+        "blaster": [
           "spell focus",
           "greater spell focus",
-          "flyby attack",
-          "heavy armor proficiency",
-          "starlight summons",
-          "moonlight summons",
-          "sunlight summons",
-          "combat casting"
-      ],
-        "cleric": [
-          "combat casting",
-          "heavy armor proficiency",
-          "deific obedience",
-          "selected channeling",
-          "turn undead",
-          "versatile channeler",
-          "imrpoved channel",
-          "alignment channel",
-          "blazing channel",
-          "channel surge",
-          "quick channel"
+          "spell penetration",
+          "greater spell penetration",
+          "spell specialization",
+          "spell perfection",      
+          "spell mastery",          
+          "precise shot",
+          "point blank shot",
+          "elemental focus",
+          "greater elemental focus",          
+          "enlarge spell",
+          "crypt spell",
+          "delayed spell",
+          "echoing spell",
+          "empower spell",
+          "intensified spell",
+          "maximize spell",
+          "selective spell",
+          "elemental spell"
+
+
+        ],
+        "enhancer": [
+          "spell focus",
+          "greater spell focus",
+          "spell penetration",
+          "greater spell penetration",
+          "spell specialization",
+          "spell perfection",      
+          "spell mastery",          
+          "extend spell",
+          "contingent spell",
+          "cherry blossom spell",
+          "consecrate spell",
+          "dazing spell",
+          "toughness"
+
+
         ]
-    },
+            }
+        ,
     "universal": {
             "combat": [
                 "improved intiative",
@@ -259,6 +277,39 @@
 
             ]
     }
+,
+
+    "classes": {
+
+      "cleric": [
+        "combat casting",
+        "heavy armor proficiency",
+        "deific obedience",
+        "selected channeling",
+        "turn undead",
+        "versatile channeler",
+        "imrpoved channel",
+        "alignment channel",
+        "blazing channel",
+        "channel surge",
+        "quick channel"
+      ],      
+      "druid": [
+        "planar wildshape",
+        "elemental focus",
+        "natural spell",
+        "augment summoning",
+        "superior summoning",
+        "spell focus",
+        "greater spell focus",
+        "flyby attack",
+        "heavy armor proficiency",
+        "starlight summons",
+        "moonlight summons",
+        "sunlight summons",
+        "combat casting"
+    ]
+}
 ,
             "extra":[
                 "extra amplification",

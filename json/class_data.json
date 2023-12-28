@@ -1,5 +1,6 @@
 {  "alchemist": {
-    "bab": "M",
+  "main_stat": "int",
+  "bab": "M",
     "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "The alchemist's reputation is not softened by his exuberance (some would say dangerous recklessness) in perfecting his magical extracts and potion-like creations, infusing these substances with magic siphoned from his aura and using his own body as experimental stock. Nor is it mollified by the alchemist's almost gleeful passion for building explosive bombs and discovering strange new poisons and methods for their use. These traits, while making him a liability and risk for most civilized organizations and institutions of higher learning, seem to fit quite well with most adventuring groups.",
     "alignment": "Any.",
@@ -49,6 +50,7 @@
     "wyrwood": "Reduce the mental ability score penalty of the alchemist's mutagens by 1/5 (minimum 0)."
   },
     "antipaladin": {
+      "main_stat": "cha",
       "bab": "H",      
       "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Antipaladins are villains at their most dangerous. They care nothing for the lives of others and actively seek to bring death and destruction to ordered society. They rarely travel with those that they do not subjugate, unless as part of a ruse to bring ruin from within. As an alternate paladin class, the antipaladin uses Table: Antipaladin to determine its base attack bonus, saving throw bonuses, and spells per day. These details, along with the class's new special abilities, can be found on Table 2-13.",
@@ -81,6 +83,7 @@
     "kitsune": "Gain 1/6 of a new Magical Tail ARG feat. Any kitsune character can choose this bonus upon gaining a level in her favored class."
   },
     "arcanist": {
+      "main_stat": "int",
       "bab": "L",      
     "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Arcanists are scholars of all things magical. They constantly seek out new forms of magic to discover how they work, and in many cases, to collect the energy of such magic for their own uses. Many arcanists are seen as reckless, more concerned with the potency of magic than the ramifications of unleashing such power.",
@@ -114,6 +117,7 @@
     "wyrwood": "Add 1/4 to the arcanist's level for the spell resistance exploit."
   },
     "barbarian": {
+      "main_stat": "str",
       "bab": "H",      
     "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Barbarians excel in combat, possessing the martial prowess and fortitude to take on foes seemingly far superior to themselves. With rage granting them boldness and daring beyond that of most other warriors, barbarians charge furiously into battle and ruin all who would stand in their way.",
@@ -154,6 +158,7 @@
     "wayang": "Add a +1/4 bonus to weapon damage rolls that the barbarian makes against opponents that are within dim light or darkness."
   },
     "barbarian (unchained)": {
+      "main_stat": "str",
       "bab": "H",      
     "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "unchained": "The unchained barbarian is similar in many regards to its counterpart in the Core Rulebook-she still goes into a rage and gains rage powers, but many of the details have been changed. Rage now grants temporary hit points and static bonuses on attack and damage rolls, rather than bonuses to ability scores that force players to recalculate a number of statistics. Additionally, many rage powers now function whenever the barbarian is raging, as opposed to just once per rage. Finally, the overall utility of many of the rage powers has been adjusted to make them more useful and interesting.",
@@ -177,6 +182,7 @@
     "kitsune": "Gain 1/6 of a new Magical Tail ARG feat. Any kitsune character can choose this bonus upon gaining a level in her favored class."
   },
     "bard": {
+      "main_stat": "cha",
       "bab": "M",      
     "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Bards capably confuse and confound their foes while inspiring their allies to ever-greater daring. While accomplished with both weapons and magic, the true strength of bards lies outside melee, where they can support their companions and undermine their foes without fear of interruptions to their performances.",
@@ -226,6 +232,7 @@
     "wayang": "Add one spell known from the wizard's illusion school spell list. This spell must be at least one level below the highest spell level the bard can cast. The spell is treated as being one level higher, unless it is also on the bard spell list."
   },
   "bloodrager": {
+    "main_stat": "cha",
     "bab": "H",      
     "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Masters of the battlefield, bloodragers unleash fearful carnage on their enemies using their bloodlines and combat prowess. The bloodrager's place is on the front lines, right in his enemies' faces, supplying tremendous martial force bolstered by a trace of arcane magic.",
@@ -265,7 +272,8 @@
     "wyvaran": "Add 1 to the bloodrager's total rounds of bloodrage each day."
   },
     "brawler": {
-  "bab": "H",      
+      "main_stat": "str",
+      "bab": "H",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Brawlers are maneuverable and well suited for creating flanking situations or dealing with lightly armored enemies, as well as quickly adapting to a rapidly changing battlefield.",
     "alignment": "Any.",
@@ -300,7 +308,8 @@
     "vanara": "Gain 1/5 of a new Fleet feat."
   },
     "cavalier": {
-  "bab": "H",      
+      "main_stat": "str",
+      "bab": "H",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Cavaliers tend to marshal forces on the battlefield, using their mounted talents and challenges to control the flow of the fight. Outside of battle, cavaliers can be found advancing their cause through diplomacy and, if needed, subterfuge. The cavalier is no stranger to courtly intrigue and can hold his own in even the most delicate of social situations.",
     "alignment": "Any.",
@@ -345,7 +354,8 @@
     "vanara": "Add 1/2 to the cavalier's level when determining the duration of the tactician ability."
   },
     "cleric": {
-  "bab": "M",      
+      "main_stat": "wis",
+      "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "More than capable of upholding the honor of their deities in battle, clerics often prove stalwart and capable combatants. Their true strength lies in their capability to draw upon the power of their deities, whether to increase their own and their allies' prowess in battle, to vex their foes with divine magic, or to lend healing to companions in need. As their powers are influenced by their faith, all clerics must focus their worship upon a divine source. While the vast majority of clerics revere a specific deity, a small number dedicate themselves to a divine concept worthy of devotion-such as battle, death, justice, or knowledge-free of a deific abstraction. (Work with your GM if you prefer this path to selecting a specific deity.)",
     "alignment": "A cleric's alignment must be within one step of her deity's, along either the law/chaos axis or the good/evil axis (see Additional Rules).",
@@ -388,6 +398,7 @@
     "wyrwood": "Add 1/4 to the cleric's caster level when casting spells or using abilities from the Law domain or one of its subdomains, or when casting spells with the lawful descriptor."
   },
     "druid": {
+      "main_stat": "wis",
       "bab": "M",      
       "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "While some druids might keep to the fringe of battle, allowing companions and summoned creatures to fight while they confound foes with the powers of nature, others transform into deadly beasts and savagely wade into combat. Druids worship personifications of elemental forces, natural powers, or nature itself. Typically this means devotion to a nature deity, though druids are just as likely to revere vague spirits, animalistic demigods, or even specific awe-inspiring natural wonders.",
@@ -443,6 +454,7 @@
     "wayang": "Select one domain power granted at 1st level that is normally usable a number of times per day equal to 3 + the druid's Wisdom modifier. The druid adds +1/2 to the number of uses per day of that domain power. In addition, a druid that selects this bonus at 1st level can choose the Darkness domain with her natural bond ability."
   },
     "fighter": {
+      "main_stat": "str/dex",
       "bab": "H",      
       "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Fighters excel at combat-defeating their enemies, controlling the flow of battle, and surviving such sorties themselves. While their specific weapons and methods grant them a wide variety of tactics, few can match fighters for sheer battle prowess.",
@@ -486,6 +498,7 @@
     "wayang": "Add a +1/4 bonus on Stealth checks and on weapon damage rolls against flat-footed opponents."
   },
     "gunslinger": {
+      "main_stat": "dex",
       "bab": "H",      
       "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Gunslingers are thunderous artillery, often found where the fighting is fiercest. Brave, clever, and frequently foolhardy, many gunslingers push to position themselves at close range, barrels blazing, to take down their foes and demoralize their enemies. Other gunslingers are masters of distant death, picking off enemies from afar with their strange and wondrous weapons.",
@@ -519,6 +532,8 @@
     "ratfolk": "Add a +1/2 bonus on initiative checks when the gunslinger has at least 1 grit point."
   },
     "hunter": {
+      "main_stat": "wis",
+      "main_stat_2": "dex",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Hunters can adapt their tactics to many kinds of opponents, and cherish their highly trained animal companions. As a team, the hunter and her companion can react to danger with incredible speed, making them excellent scouts, explorers, and saboteurs.",
@@ -569,6 +584,7 @@
     "vanara": "Add 1 minute to the number of minutes per day that the hunter can use animal focus."
   },
     "inquisitor": {
+      "main_stat": "wis",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Inquisitors tend to move from place to place, chasing down enemies and researching emerging threats. As a result, they often travel with others, if for no other reason than to mask their presence. Inquisitors work with members of their faith whenever possible, but even such allies are not above suspicion.",
@@ -621,6 +637,7 @@
     "tiefling": "Add a +1/2 bonus on Intimidate checks and Knowledge checks to identify creatures."
   },
     "investigator": {
+      "main_stat": "int/dex",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Investigators live to solve mysteries and find inventive ways to get out of jams. They serve as advisors and support for their adventuring parties, but can take center stage when knowledge and cunning are needed. No slouches in battle, they know how to make surprise attacks and use inspiration to bring those attacks home.",
@@ -662,6 +679,7 @@
     "shabti": "Add 1/6 rounds to the duration of the investigator's studied combat."
   },
     "kineticist": {
+      "main_stat": "con",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Kineticists generally use their powers to assail their foes from range, but based on the way their talents develop, they can channel their kinetic abilities for a variety of situations. Kineticists are usually quite different from their families and friends, so they often strike out on their own or alongside others with extraordinary talents.",
@@ -703,6 +721,8 @@
     "wayang": "Add 1/4 to the save DC of the kineticist's void infusions and wild talents ( Pathfinder Player Companion: Occult Origins 6)."
   },
     "magus": {
+      "main_stat": "int",
+      "main_stat_2": "str/dex",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Magi spend much of their time traveling the world, learning whatever martial or arcane secrets they can find. They might spend months learning a new sword-fighting style from a master warrior, while simultaneously moonlighting in the local library, poring through tomes of ancient lore. Most who take this path dabble in all sorts of lore, picking up anything that might aid them in their search for perfection.",
@@ -747,6 +767,7 @@
     "wyrwood": "Add 2 rounds to the duration of the magus' arcane pool enhancements."
   },
     "medium": {
+      "main_stat": "cha",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Mediums are very versatile, filling whatever role the party needs at the moment by channeling the right spirit.",
@@ -788,6 +809,7 @@
     "wayang": "When gaining a taboo, the medium can use spirit surge without incurring influence an additional 1/4 time per day."
   },
     "mesmerist": {
+      "main_stat": "cha",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Mesmerists wield power over lesser minds, suppressing foes' wills to weaken them. Priding themselves on their trickery and inventiveness, they also support their allies-and often themselves-with magical tricks, most of which offer protection. Their limited healing ability primarily provides temporary hit points, so mesmerists aren't the strongest primary healers, but they can easily remove conditions that typically affect the mind.",
@@ -827,6 +849,8 @@
     "wyvaran": "Add 1/4 to the mesmerist's level for the purpose of determining the effect of mesmerist tricks."
   },
     "monk": {
+      "main_stat": "wis",
+      "main_stat_2": "dex",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Monks excel at overcoming even the most daunting perils, striking where it's least expected, and taking advantage of enemy vulnerabilities. Fleet of foot and skilled in combat, monks can navigate any battlefield with ease, aiding allies wherever they are needed most.",
@@ -886,6 +910,8 @@
     "wayang": "Add 1/6 to the monk's AC bonus."
   },
     "monk (unchained)": {
+      "main_stat": "wis",
+      "main_stat_2": "dex",
   "bab": "H",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "unchained": "Much of the monk has been reworked, including its base attack bonus, Hit Die, saves, and many of its special abilities. The result is a version of the monk that not only is easier to play, but also possesses a great deal more versatility. Flurry of blows is now much simpler to use in play. Many of the higher-level abilities of the monk, such as abundant step and quivering palm, have been incorporated into the new system of ki powers. As a monk advances in level, he can select from a variety of ki powers, allowing the player to truly customize his character.",
@@ -914,7 +940,9 @@
     "kitsune": "Gain 1/6 of a new Magical Tail ARG feat. Any kitsune character can choose this bonus upon gaining a level in her favored class."
   },
     "ninja": {
-  "bab": "M",      
+      "main_stat": "wis",
+      "main_stat_2": "dex",
+      "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "The ninja spends almost all of her time honing her skills, practicing her art, or working on her next assignment. Even when not specifically working, the ninja is ever vigilant and ready for the situation to turn deadly. Her line of work earns her many enemies, but it is a list that she frequently reduces through assassination and misdirection. The ninja is an alternate class for the rogue core class.",
     "alignment": "Any.",
@@ -936,6 +964,7 @@
     "kitsune": "Gain 1/6 of a new Magical Tail ARG feat. Any kitsune character can choose this bonus upon gaining a level in her favored class."
   },
     "occultist": {
+      "main_stat": "int",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Occultists are always eager to travel in the company of adventurers, explorers, and archaeologists, as those three groups of people have a knack for finding items with rich histories and great significance.",
@@ -970,6 +999,7 @@
     "vanara": "Gain 1/6 of a new focus power."
   },
     "oracle": {
+      "main_stat": "cha",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Oracles do not usually associate with any one church or temple, instead preferring to strike out on their own, or with a small group of like-minded individuals. Oracles typically use their spells and revelations to further their understanding of their mystery, be it through fighting mighty battles or tending to the poor and sick.",
@@ -1017,6 +1047,8 @@
     "wyvaran": "Add 1/4 to the oracle's level for the purpose of determining the effects of an oracle curse."
   },
     "paladin": {
+      "main_stat": "cha",
+      "main_stat_2": "str",
   "bab": "H",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Paladins serve as beacons for their allies within the chaos of battle. While deadly opponents of evil, they can also empower goodly souls to aid in their crusades. Their magic and martial skills also make them well suited to defending others and blessing the fallen with the strength to continue fighting.",
@@ -1067,6 +1099,7 @@
     "wyvaran": "Add 1/2 to the paladin's level when determining the effect of smite evil against evil-aligned dragons."
   },
     "psychic": {
+      "main_stat": "int",
   "bab": "L",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "With a large suite of spells, psychics can handle many situations, but they excel at moving and manipulating objects, as well as reading and influencing thoughts.",
@@ -1100,6 +1133,8 @@
     "wyrwood": "psychic gains 1/6 of a phrenic amplification."
   },
     "ranger": {
+      "main_stat": "wis",
+      "main_stat_2": "dex",
   "bab": "H",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Rangers are deft skirmishers, either in melee or at range, capable of skillfully dancing in and out of battle. Their abilities allow them to deal significant harm to specific types of foes, but their skills are valuable against all manner of enemies.",
@@ -1161,6 +1196,7 @@
     "wayang": "Gain 1/6 of an additional favored terrain. Gaining a favored terrain in this manner does not increase the bonuses provided by his other favored terrains."
   },
     "rogue": {
+      "main_stat": "dex",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Rogues excel at moving about unseen and catching foes unaware, and tend to avoid head-to-head combat. Their varied skills and abilities allow them to be highly versatile, with great variations in expertise existing between different rogues. Most, however, excel in overcoming hindrances of all types, from unlocking doors and disarming traps to outwitting magical hazards and conning dull-witted opponents.",
@@ -1216,6 +1252,7 @@
     "wyvaran": "Add a +1/2 bonus to Stealth and Sleight of Hand checks to steal or hide objects."
   },
     "rogue (unchained)": {
+      "main_stat": "dex",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "unchained": "While much of the unchained rogue will be familiar to those who have played the class from the Core Rulebook , there are a number of new class features that greatly enhance the power and flexibility of the rogue. Chief among these is the debilitating injury class feature. A rogue with this ability can severely hamper her foes, giving her a much-needed boost to her offense or defense, depending on the situation. In addition, with finesse training, the rogue now gains Weapon Finesse for free at 1st level. This ability also lets her add her Dexterity to damage rolls with one weapon starting at 3rd level. Finally, the rogue's edge ability ties into a new system presented in Chapter 2 of this book called skill unlocks. With this feature, the rogue can master a small set of chosen skills, outperforming all those characters without access to such talents.",
@@ -1239,6 +1276,7 @@
     "kitsune": "Gain 1/6 of a new Magical Tail ARG feat. Any kitsune character can choose this bonus upon gaining a level in her favored class."
   },
     "samurai": {
+      "main_stat": "str/dex",
   "bab": "H",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "While typically sworn to the service of a lord, a samurai is usually given free reign as to how he performs that service. As such, samurai can sometimes be found with other adventurers, taking the fight to the enemies of their masters. Other samurai become ronin, striving to serve an ideal without paying fealty to a lord. In either case, samurai make powerful allies, capable of withstanding nearly any harm while dispatching their foes with deadly precision. The samurai is an alternate class for the cavalier base class.",
@@ -1265,6 +1303,7 @@
     "kitsune": "Gain 1/6 of a new Magical Tail ARG feat. Any kitsune character can choose this bonus upon gaining a level in her favored class."
   },
     "shaman": {
+      "main_stat": "wis",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Shamans make for potent divine spellcasters, capable of using divine spells and the power of their spirits to aid their allies and destroy their foes. While they aren't the healers that clerics are, they can still fill that role when needed.",
@@ -1303,6 +1342,8 @@
     "wayang": "Add one spell from the sorcerer/wizard spell list that isn't on the shaman spell list to the list of spells the shaman knows. This spell must be at least 1 level below the highest spell level the shaman can cast and be of the illusion (shadow) subschool or have the darkness descriptor."
   },
     "shifter": {
+      "main_stat": "wis",
+      "main_stat_2": "dex/str",
   "bab": "H",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "The shifter is so attuned to nature and the wild beasts of the world that she can call upon those powers to mystically fortify her being. Fluid in form and function, she can shape herself to overcome hardships and support those she befriends or serves.",
@@ -1376,6 +1417,8 @@
     "vine leshy": "Add a +1 bonus on Knowledge (nature) checks relating to plants."
   },
     "skald": {
+      "main_stat": "cha",
+      "main_stat_2": "con",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "A skald inspires his allies, and often presses forward to fight enemies in melee. Outside of combat, he's useful as a healer and scholar, less versatile but more durable than a bard.",
@@ -1414,6 +1457,7 @@
     "shabti": "Add 1/2 to the skald's bardic knowledge bonus."
   },
     "slayer": {
+      "main_stat": "dex",
   "bab": "H",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "The slayer is elusive, and good at finding the opportune time and location to strike. Combining the deadliest talents of rangers and rogues, a slayer's abilities are all about getting into combat, dealing with a target, and then getting back out again.",
@@ -1453,6 +1497,7 @@
     "wyrwood": "The slayer gains 1/6 of a slayer talent."
   },
     "sorcerer": {
+      "main_stat": "cha",
   "bab": "L",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Sorcerers excel at casting a selection of favored spells frequently, making them powerful battle mages. As they become familiar with a specific and ever-widening set of spells, sorcerers often discover new and versatile ways of making use of magics other spellcasters might overlook. Their bloodlines also grant them additional abilities, assuring that no two sorcerers are ever quite alike.",
@@ -1495,7 +1540,9 @@
     "wyvaran": "Add a +1/2 bonus to the damage of spells or spell-like abilities that deal damage of the same energy type as the sorcerer's draconic bloodline breath weapon."
   },
     "spiritualist": {
-  "bab": "H",      
+      "main_stat": "wis",
+      "main_stat_2": "con",
+  "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "The spiritualist seeks the occult and esoteric truth about life, death, and the passage beyond, using her phantom as a guide and tool. The connection with her phantom allows her to harness the powers of life and death, thought and nightmare, shadow and revelation.",
     "alignment": "Any.",
@@ -1536,6 +1583,7 @@
     "wayang": "Add 1/4 to the number of rounds that the spiritualist's incorporeal phantom can be out of sight and line of effect before being sent back to the Ethereal Plane."
   },
     "summoner": {
+      "main_stat": "int",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Summoners spend much of their time exploring the arcane arts alongside their eidolons. While their power comes from within, they rely heavily on their eidolon companions in dangerous situations. While a summoner and his eidolon function as individuals, their true power lies in what they can accomplish together.",
@@ -1583,6 +1631,7 @@
     "wayang": "Add +1 skill rank to the summoner's eidolon."
   },
     "summoner (unchained)": {
+      "main_stat": "int",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "unchained": "Most of the summoner's class features are the same as those of the class's original design-the biggest change comes to the eidolon. The unchained summoner selects a subtype for his eidolon (such as angel, demon, or protean), which determines a number of its evolutions and helps to shape the eidolon's general attitude and appearance. In addition, some of the evolutions are now tied to one or more subtypes and base forms, to make eidolons that better match the expected appearances and abilities of such creatures. Finally, the summoner spell list has been greatly revised, removing a number of imbalances.",
@@ -1609,6 +1658,7 @@
     "kitsune": "Gain 1/6 of a new Magical Tail ARG feat. Any kitsune character can choose this bonus upon gaining a level in her favored class."
   },
     "swashbuckler": {
+      "main_stat": "dex",
       "bab": "H",      
       "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Combining fancy footwork with quick and precise lunges, swashbucklers dart in and out of battle, harassing and thwarting their opponents. These fast and agile combatants serve as protectors for spellcasters and flank mates for rogues and slayers, while waiting for the opportunity to show panache and score the killing blow on some lumbering hulk. Swashbucklers often face death with wry humor, mocking it with jabbing wit.",
@@ -1639,6 +1689,7 @@
     "tengu": "Add 1/2 to the swashbuckler's Acrobatics, Climb, Escape Artist, Fly, Ride, and Swim checks when using the derring-do deed."
   },
     "vigilante": {
+      "main_stat": "dex",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "A vigilante can take on many tasks within a group. Most are skilled at negotiating delicate social situations and courtly intrigue, but they can also serve as stealthy spies or even brutish warriors in dangerous environments.",
@@ -1668,6 +1719,8 @@
     "kitsune": "Add 1/2 to the Disguise bonus provided by seamless guise."
   },
     "warpriest": {
+      "main_stat": "wis",
+      "main_stat_2": "str",
   "bab": "M",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "Warpriests can serve as capable healers or spellcasters, calling upon their divine powers from the center of the fight, where their armor and martial skills are put to the test.",
@@ -1704,6 +1757,7 @@
     "nagaji": "Add 1/2 to the number of times per day the warpriest can use blessings, although he can use these additional blessings only for Charm, Magic, Nobility, Rune, or Scalykind ( Pathfinder Player Companion: Advanced Class Origins 25 ) blessings."
   },
     "witch": {
+      "main_stat": "int",
   "bab": "L",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "While many witches are recluses, living on the edge of civilization, some live within society, openly or in hiding. The blend of witches' spells makes them adept at filling a number of different roles, from seer to healer, and their hexes grant them a number of abilities that are useful in a fight. Some witches travel about, seeking greater knowledge and better understanding of the mysterious powers that guide them.",
@@ -1751,6 +1805,7 @@
     "wayang": "Add one spell from the sorcerer/wizard spell list that isn't on the witch spell list to the list of spells the witch knows. This spell must be at least 1 level below the highest spell level the witch can cast and be of the illusion (shadow) subschool or have the darkness descriptor."
   },
     "wizard": {
+      "main_stat": "int",
   "bab": "L",      
   "source": "Chronicle of Legends pg. 31 At 20th level, the character becomes a paragon of resilience. Once per week, if the character is killed, petrified, or otherwise removed from play, the character manages to survive by some dint of skill or luck and returns at the end of the combat or the scene (GM's discretion). The player and the GM should work together to ensure that the method of the character's survival is at least vaguely plausible, if unlikely. Characters of any class can select this ability. Favored Class Options",
     "role": "While universalist wizards might study to prepare themselves for any manner of danger, specialist wizards research schools of magic that make them exceptionally skilled within a specific focus. Yet no matter their specialty, all wizards are masters of the impossible and can aid their allies in overcoming any danger.",

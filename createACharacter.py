@@ -235,20 +235,73 @@ class Character:
             self.bab_total += floor(self.level *.75)
         else: 
             self.bab_total += self.level * 1
+
+
     
     def roll_stats(self, num_dice, num_sides):
-        self.str = roll_dice(num_dice, num_sides)
-        self.dex = roll_dice(num_dice, num_sides)
-        self.con = roll_dice(num_dice, num_sides)
-        self.int = roll_dice(num_dice, num_sides)
-        self.wis = roll_dice(num_dice, num_sides)
-        self.cha = roll_dice(num_dice, num_sides)
+        # Define the main stat for the class (replace 'main_stat' with the actual main stat for your class)
+        main_stat = self.class_data[self.c_class]['main_stat']
+        main_stat_2 = self.class_data[self.c_class].get('main_stat_2', None)
+
+        if '/' in main_stat:
+            main_stat_parts = main_stat.split('/')
+            main_stat = random.choice(main_stat_parts)
+
+        # Roll stats for all attributes
+        stats = {attr: roll_dice(num_dice, num_sides) for attr in ['str', 'dex', 'con', 'int', 'wis', 'cha']}
+
+        # Identify the original main stat
+        stats = self.swap_stats(main_stat, stats)
+        print(main_stat)
+
+        if main_stat_2 != None:
+            main_stat_parts_2 = main_stat_2.split('/')
+            print(main_stat_parts_2)
+            main_stat_2 = random.choice(main_stat_parts_2)      
+            print(f'main_stat 2 {main_stat_2}')
+            stats = self.swap_stats(main_stat_2, stats, new=True)   
+
+
+        # Assign the rolled stats to the character's attributes
+        for attr, value in stats.items():
+            setattr(self, attr, value)
+
+        # Print the rolled stats
+        self.print_stats()
+
+    def swap_stats(self, main_stat, stats, new=None):
+        original_main_stat = stats[main_stat]
+        new_main_stat_key = max(stats, key=stats.get)        
+        if new == None:
+            stats[main_stat], stats[new_main_stat_key] = stats[new_main_stat_key], original_main_stat
+        else:
+            second_highest_stat_key = max(stats, key=lambda k: stats[k] if k != new_main_stat_key else float('-inf'))
+            stats[main_stat], stats[second_highest_stat_key] = stats[second_highest_stat_key], original_main_stat
+         
+
+        return stats                    
+
+    def print_stats(self):
         print(f'STR {self.str}')
         print(f'DEX {self.dex}')
         print(f'CON {self.con}')
         print(f'INT {self.int}')
         print(f'WIS {self.wis}')
-        print(f'CHA {self.cha}')            
+        print(f'CHA {self.cha}')
+
+        # self.str = roll_dice(num_dice, num_sides)
+        # self.dex = roll_dice(num_dice, num_sides)
+        # self.con = roll_dice(num_dice, num_sides)
+        # self.int = roll_dice(num_dice, num_sides)
+        # self.wis = roll_dice(num_dice, num_sides)
+        # self.cha = roll_dice(num_dice, num_sides)
+        # print(f'STR {self.str}')
+        # print(f'DEX {self.dex}')
+        # print(f'CON {self.con}')
+        # print(f'INT {self.int}')
+        # print(f'WIS {self.wis}')
+        # print(f'CHA {self.cha}')           
+
 
     def calc_ability_mod(self):
         self.str_mod = floor((self.str-10)/2)
@@ -2021,9 +2074,13 @@ class Character:
 
     def build_selector(self):
         martial=self.feat_buckets['martial']
-        magic=self.feat_buckets['magical']
+        magical=self.feat_buckets['magical']
+        classes=self.feat_buckets['classes']
         universal=self.feat_buckets['universal']
         casting_level=self.classes[self.c_class]['casting level'].lower()
+        
+        specialty_bucket = ['cleric','druid']
+
         type_chance = random.randint(1,100)
         feat_list = []
 
@@ -2031,17 +2088,28 @@ class Character:
             martial_choice = random.choice(list(martial.keys())) 
             universal_choice = random.choice(list(universal.keys()))
             martial_choice_2 = random.choice(list((martial[martial_choice].keys())))
-            # print(martial_choice)
-            # print(universal_choice)            
-            # print(martial_choice_2)
             list_2 = list(universal[universal_choice])
-            # print(list_2)
             list_1 = list(martial[martial_choice][martial_choice_2])
-            # print(list_1)
             feat_list.extend(list_1 + list_2)
 
             if self.dex_mod >= self.str_mod +2:
                 feat_list.append('weapon finesse')
+
+        if self.bab == 'L' and casting_level != 'none':
+            magical_choice = random.choice(list(magical.keys())) 
+            universal_choice = random.choice(list(universal.keys()))
+            list_2 = list(universal[universal_choice])
+            list_1 = list(magical[magical_choice])
+            feat_list.extend(list_1 + list_2)
+
+        if self.c_class in specialty_bucket:
+            classes_choices = list(classes[self.c_class])
+            feat_list.extend(classes_choices)
+
+
+
+
+
 
             print(f'high bab feat list {feat_list}')
 
@@ -2105,8 +2173,6 @@ class Character:
             print(f"this is total choices {total_choices}")
             chosen = random.choice(total_choices)
             print(f'this is your chosen {chosen}')
-            even = f"{class_1} {2 * (i + 1)}"
-            odd = f"{class_1} {2 * i + 1}"
             self.chooseable_list_class(i,self.c_class,self.c_class_level, base=0, th='th')
 
             prereq_list = self.no_prereq_loop(base, "prereq_list")
