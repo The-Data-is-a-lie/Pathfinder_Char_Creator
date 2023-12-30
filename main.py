@@ -272,10 +272,10 @@ while userInput.lower() == 'y':
 
 		### Need to change up the item_chooser function ###
 
-		# character.armor_chooser()
-		# print(f'This is your gold pre items {character.assign_gold("gold")}')
-		# character.item_chooser()
-		# print(f'This is your gold post items {character.gold}')	
+		character.armor_chooser()
+		print(f'This is your gold pre items {character.assign_gold("gold")}')
+		character.item_chooser()
+		print(f'This is your gold post items {character.gold}')	
 
 
 

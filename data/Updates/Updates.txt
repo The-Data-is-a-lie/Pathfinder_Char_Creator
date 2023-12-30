@@ -141,6 +141,10 @@ Needs (Low Prio):
 - added casters feats to the feat selector
 - added a function which makes it so the main stat(s) for a class are always the highest
 
+12/28/23:
+- added a function which will search for feats for each class that needs it
+- enhanced the item function so now it works (for most cases)
+
 *** Need to add a dice rereroller (so your main stat is always your highest) ***
 
 Completed:

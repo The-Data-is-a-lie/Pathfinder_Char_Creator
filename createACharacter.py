@@ -120,7 +120,7 @@ class Character:
 
 
         #feat selector variables
-        self.feats=None
+        self.feat_amounts=None
         self.combat_feats=None
         self.magic_feats=None
         self.bab=None
@@ -200,22 +200,19 @@ class Character:
         
 
     #should this be update feats, since we're updating feat amount [it 100% depends on level]
-    def update_level(self, level, c_class_level, c_class_2_level):
+    def update_level(self, level, c_class_level, c_class_2_level, flaw_flag=None, homebrew_amount=None):
         self.level = level
         self.c_class_level = c_class_level
         self.c_class_2_level = c_class_2_level              
 
-        if len(self.flaw) == 2 or len(self.flaw) == 3:
-            self.feats = (4 + floor(self.level/2) + floor(self.level/5))
-        elif len(self.flaw) == 4:
-            #add 1 extra feat because of 2 extra flaws
-            self.feats = (4 + 1 + floor(self.level/2) + floor(self.level/5))
-        elif len(self.flaw) == 1:
-            #remove 1 extra feat because of 1 less flaw
-            self.feats = (4 - 1 + floor(self.level/2) + floor(self.level/5))
+        if flaw_flag == None:
+            self.feat_amounts = (ceil(self.level/2) + min(len(self.flaw),3))
         else:
-            #remove 2 extra self.feats because of no flaws
-            self.feats = (4 - 2 + floor(self.level/2) + floor(self.level/5))
+            self.feat_amounts = ( ceil(self.level/2) )
+
+        if homebrew_amount != None:
+            self.feat_amounts = (4 + ceil(self.level/2) + floor(self.level/5) + max((len(self.flaw)-2),0) )
+
         self._update_bab_total()
 
 
@@ -554,7 +551,7 @@ class Character:
 
     def human_flag(self):
         if self.c_class.lower() == 'human':
-            self.feats += 1     
+            self.feat_amounts += 1     
 
     def class_for_spells_attr(self):
         #currently we only know that skald spells aren't proper, but 
@@ -921,7 +918,7 @@ class Character:
             extra_feats =  1 + floor((self.c_class_level)/2)
 
         if self.c_class_2 == 'fighter':
-            extra_feats_2 = self.feats + 1 + floor((self.c_class_2_level)/2)         
+            extra_feats_2 = self.feat_amounts + 1 + floor((self.c_class_2_level)/2)         
 
         i=0
         i_2=0
@@ -983,7 +980,7 @@ class Character:
             magic_feats =  1 + floor((self.c_class_level)/5)
 
         if self.c_class_2 == 'wizard':
-            magic_feats_2 = self.feats + 1 + floor((self.c_class_2_level)/5)         
+            magic_feats_2 = self.feat_amounts + 1 + floor((self.c_class_2_level)/5)         
 
         i=0
         i_2=0        
@@ -1556,7 +1553,7 @@ class Character:
         c=0    
         s=0
         #potentially remove one feat to always select a weapon focus (or spell focus)
-        while i<=self.feats and self.feats != None:          
+        while i<=self.feat_amounts and self.feat_amounts != None:          
             query_i = feat_data[extraction_list]
             #needed to use this to properly randomize (vs. random.shuffle)
             query_i = query_i.sample(frac=1.0)
@@ -1607,16 +1604,49 @@ class Character:
 
 
 
-    def convert_price(self,price):
+    def convert_price(self,price,name):
         """
         Converts string prices to integer
         Return
         - price
         """
-        price = int(price.replace(',', ''))
+        
+        number_pull = r'\d+'
+        dynamic_variable = re.findall(number_pull, name)
+        word_pull = r'\b(lesser|greater|superior|major|minor|normal|djinni|efreeti|marid|shaitan|destined|fey|abyssal|accursed|celestial|draconic|elemental|infernal|undead|aberrant)\b'
+        dynamic_variable_word_pattern = re.compile(rf'(\d+){word_pull}')
+        dynamic_variable_word = re.findall(word_pull, name)
+        print(f'This is the dynamic variable {dynamic_variable}')
+        print(f'This is the dynamic variable word {dynamic_variable_word}')
+        if dynamic_variable: 
+            pattern = rf'(\d{{1,3}}(?:,\d{{3}})*)\s*\(\s*\+{dynamic_variable}\)'
+            print(f'1st case price {price}')
+            price_list = re.findall(pattern,price)[0]
+            price = int(price_list[0])
+            print(f'1st case price {price}')
+        elif dynamic_variable_word:
+            print(f"Target word: {dynamic_variable_word[-1]}")
+            price = self.find_number(price, dynamic_variable_word[-1])
+            print(f"Matched price: {price}")
+            price = int(price)
+        else:
+            if '(' in name:
+                print(f'no price detected for {name} + {price}')
+            price = int(price.replace(',', ''))
+
         if price<11:
             price = (price**2) * 1000
         return price
+
+    def find_number(self, text, target_word):
+        escaped_word = re.escape(target_word)
+        pattern = r'(\d+)\D*' + escaped_word
+        match = re.search(pattern, text)
+        
+        if match:
+            return match.group(1)
+        else:
+            return None        
 
 
     def armor_chooser(self):
@@ -1652,11 +1682,12 @@ class Character:
         for i in range(i,len(select_from_list)):
             print(i)
             equipment_name = select_from_list[i]
-            dict = self.items.get(str(select_from_list[i]))
-            random_equip = random.choice(list(dict.keys()))
-            price = str(dict[random_equip])
-
-            price=self.convert_price(price)
+            item_dict = self.items.get(str(select_from_list[i]))
+            random_equip = random.choice(list(item_dict.keys()))
+            print(random_equip)
+            price = str(item_dict[random_equip]['price'])
+            print(price)
+            price=self.convert_price(price,random_equip)
             #removing each element form the total self gold value, to make sure people don't get too many items
             self.gold = self.gold-price
             print(f"Total Gold: {self.gold}")
@@ -1829,7 +1860,7 @@ class Character:
             dataset = getattr(self, class_1, {}).get(dataset_name, {})
             base = dataset.copy()
             base_no_prereq = self.no_prereq_loop(base)
-            print(base_no_prereq)
+            # print(base_no_prereq)
             total_choices = base_no_prereq
 
             if level != None and self.c_class_level >= level:
@@ -1872,7 +1903,7 @@ class Character:
 
         for name, info in dataset_type.items():
                 prerequisites = str(info.get("prerequisites", "")).lower()
-                print(prerequisites)
+                # print(prerequisites)
                 prerequisites = re.sub(r'\.', '', prerequisites)
                 prerequisites_components = set(p.strip().lower() for p in prerequisites.split(","))
                 # print(f'these are the components {prerequisites_components}')
@@ -2177,10 +2208,6 @@ class Character:
         total_choices = base_no_prereq
         i = 0
  
-        print(f'base!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!: {base}')
-        #base_no_prereq empty for the new generic feats function
-        print(f'base_no_prereq?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????{base_no_prereq}')
-
         while i < amount:
             print(f'This is your total choices {total_choices}')
             chosen = random.choice(total_choices)
@@ -2210,67 +2237,23 @@ class Character:
 
 
     def generic_feat_chooser(self, class_1,feat_type, info_column):
-        feat_data = pd.read_csv(f'data/feats.csv', sep='|', on_bad_lines='skip')
-        extraction_list = ['name', 'prerequisites', 'description']
-        query_i = feat_data.loc[feat_data['type'] == feat_type.capitalize(), extraction_list]
-        print(query_i.head())
-        # feat_result_dict = query_i.set_index('name').to_dict(orient='index')
-        # feat_result_dict = query_i.to_dict(orient='split')
-        # result_dict = {feat_result_dict['columns'][i]: feat_result_dict['data'][0][i] for i in range(len(feat_result_dict['columns']))}
+        if class_1 == self.c_class:
+            feat_data = pd.read_csv(f'data/feats.csv', sep='|', on_bad_lines='skip')
+            extraction_list = ['name', 'prerequisites', 'description']
+            query_i = feat_data.loc[feat_data['type'] == feat_type.capitalize(), extraction_list]
+            query_i = query_i.drop_duplicates(subset='name', keep='first')
+            feat_result_dict = query_i.set_index('name')[['prerequisites', 'description']].to_dict(orient='index')
+            # feat_result_dict = self.remove_mythic('feats',feat_data,query_i, info_column)   
+            # feat_result_dict = self.remove_dots_dashes(feat_result_dict, query_i, info_column)
+            feat_result_dict = self.transform_result_dict(feat_result_dict)
 
-        # print(result_dict)
-        query_i = query_i.drop_duplicates(subset='name', keep='first')
-        feat_result_dict = query_i.set_index('name')[['prerequisites', 'description']].to_dict(orient='index')
-        # print(f'!!!!!!!!!!!! Feat data dict {feat_result_dict}')
+            feat_result_dict.update(feat_result_dict)
 
-        # print(feat_result_dict.keys())
-        # print(feat_result_dict)
+            print(f' post transform result_dict {feat_result_dict}')
+            _, _, chosen_feats = self.get_feats_without_prerequisites(self.c_class, feat_result_dict, odd=True)
 
+            print(f'These are your chosen feats {chosen_feats}')        
 
-        # query_i = query_i['name'].tolist()
-        # print(f'this is query_i line 2212 {query_i}')
-
-
-        # feat_result_dict = self.feat_spell_searcher(self.c_class, query_i, 'feats', info_column)
-
-
-        # feat_result_dict = self.remove_mythic('feats',feat_data,query_i, info_column)   
-        # feat_result_dict = self.remove_dots_dashes(feat_result_dict, query_i, info_column)
-        feat_result_dict = self.transform_result_dict(feat_result_dict)
-
-        feat_result_dict.update(feat_result_dict)
-        # print(feat_result_dict)
-
-        print(f' post transform result_dict {feat_result_dict}')
-        _, _, chosen_feats = self.get_feats_without_prerequisites(self.c_class, feat_result_dict, odd=True)
-
-        print(f'These are your chosen feats {chosen_feats}')        
-
-            
-
-
-
-
-        # or (self.bab == 'M' and casting_level in ('mid', 'high') and type_chance >= 50)
-        # (casting_level == 'high' and self.bab == 'L') or (self.bab == 'M' and casting_level in ('mid', 'high') and type_chance < 50) 
-
-        # elif self.c_class in ('druid'):
-        #     choice = random.choice(list(magical).keys())
-        #     feat_list = random.choice
-
-
-        # else:
-
-
-
-        #     return feat_list
-
-
-
-    # def feats_selector(self):
-    #     chosen_feat_list = []   
-    #     feat_data=pd.read_csv('data/feats.csv', sep='|', on_bad_lines='skip')        
-    #     feat_list = self.build_selector()
 
 
 
