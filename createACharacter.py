@@ -1868,20 +1868,22 @@ class Character:
     def no_prereq_loop(self, dataset_type, return_choice=None):
         dataset_without_prerequisites = []
         prereq_list = set()
+        # print(dataset_type.items())
 
         for name, info in dataset_type.items():
-            prerequisites = info.get("prerequisites", "").lower()
-            prerequisites = re.sub(r'\.', '', prerequisites)
-            prerequisites_components = set(p.strip().lower() for p in prerequisites.split(","))
-            # print(f'these are the components {prerequisites_components}')
-            # removes both . and proficency
+                prerequisites = str(info.get("prerequisites", "")).lower()
+                print(prerequisites)
+                prerequisites = re.sub(r'\.', '', prerequisites)
+                prerequisites_components = set(p.strip().lower() for p in prerequisites.split(","))
+                # print(f'these are the components {prerequisites_components}')
+                # removes both . and proficency
 
-            if prerequisites_components.issubset(self.chooseable) == True:
-                prereq_list.add(name.lower())
-                # print(f'total prereq_list: {prereq_list}')
+                if prerequisites_components.issubset(self.chooseable) == True:
+                    prereq_list.add(name.lower())
+                    # print(f'total prereq_list: {prereq_list}')
 
-            if not prerequisites:
-                dataset_without_prerequisites.append(name.lower())
+                if not prerequisites:
+                    dataset_without_prerequisites.append(name.lower())
 
         if return_choice == 'prereq_list':
             return prereq_list
@@ -1989,45 +1991,48 @@ class Character:
             data = pd.read_csv(f'data/{types}.csv', sep='|', on_bad_lines='skip')
             extraction_list = ['name', info_column, info_column_2]
 
-
-            # Convert chosen_set to uppercase
-            chosen_set_upper = {i.upper() for i in chosen_set}
-            print(f'This is your chosen set {chosen_set_upper}')
-
-            # Filter DataFrame based on 'name' column
-            if types == 'feats':
-                query_result = data[(data['name'].str.upper().isin(chosen_set_upper)) & (data['type'] != 'Mythic')][extraction_list]
-            else:
-                query_result = data[(data['name'].str.upper().isin(chosen_set_upper)) & (data['mythic'] == 0)][extraction_list]
-
-
+            query_result = self.remove_mythic(types,data, chosen_set, extraction_list)
 
             result_dict = {}
 
-            replace_dash = lambda x: re.sub(r'[-]', ' ', str(x))            
-            replace_dot = lambda x: re.sub(r'[.]', '', str(x))            
-
-            for index, row in query_result.iterrows():
-                feat_name = row['name']
-                if pd.isna(row[info_column]):
-                    row[info_column] = ''
-                feat_info = {f'{info_column}': replace_dash(row[f'{info_column}'])}
-                feat_info = {f'{info_column}': replace_dot(row[f'{info_column}'])}
-                
-                if info_column_2 is not None:
-                    if pd.isna(row[info_column_2]):
-                        row[info_column_2] = ''
-                feat_info = {f'{info_column}': replace_dash(row[f'{info_column}'])}
-                feat_info = {f'{info_column}': replace_dot(row[f'{info_column}'])}
-
-
-                result_dict[feat_name] = feat_info
-
-
+            result_dict = self.remove_dots_dashes(result_dict, query_result, info_column)
             self.result_dict.update(result_dict)
             print(self.result_dict)
             
-            return self.result_dict            
+            return self.result_dict         
+
+    def remove_mythic(self, types, data, chosen_set, extraction_list):
+
+        chosen_set_upper = {i.upper() for i in chosen_set}
+        print(f'This is your chosen set {chosen_set_upper}')
+
+        if types == 'feats':
+            query_result = data[(data['name'].str.upper().isin(chosen_set_upper)) & (data['type'] != 'Mythic')][extraction_list]
+        else:
+            query_result = data[(data['name'].str.upper().isin(chosen_set_upper)) & (data['mythic'] == 0)][extraction_list]  
+
+        return query_result
+
+    def remove_dots_dashes(self, result_dict, query_result, info_column, info_column_2=None):
+        replace_dash = lambda x: re.sub(r'[-]', ' ', str(x))            
+        replace_dot = lambda x: re.sub(r'[.]', '', str(x))            
+
+        for index, row in query_result.iterrows():
+            feat_name = row['name']
+            if pd.isna(row[info_column]):
+                row[info_column] = ''
+            feat_info = {f'{info_column}': replace_dash(row[f'{info_column}'])}
+            feat_info = {f'{info_column}': replace_dot(row[f'{info_column}'])}
+            
+            if info_column_2 is not None:
+                if pd.isna(row[info_column_2]):
+                    row[info_column_2] = ''
+            feat_info = {f'{info_column}': replace_dash(row[f'{info_column}'])}
+            feat_info = {f'{info_column}': replace_dot(row[f'{info_column}'])}
+
+            result_dict[feat_name] = feat_info
+        
+        return result_dict
 
 
 
@@ -2073,55 +2078,69 @@ class Character:
 
 
     def build_selector(self):
-        martial=self.feat_buckets['martial']
-        magical=self.feat_buckets['magical']
-        classes=self.feat_buckets['classes']
-        universal=self.feat_buckets['universal']
         casting_level=self.classes[self.c_class]['casting level'].lower()
-        
         specialty_bucket = ['cleric','druid']
-
         type_chance = random.randint(1,100)
         feat_list = []
 
         if self.bab == 'H' or (self.bab == 'M' and casting_level not in ('low', 'mid', 'high')) :
-            martial_choice = random.choice(list(martial.keys())) 
-            universal_choice = random.choice(list(universal.keys()))
-            martial_choice_2 = random.choice(list((martial[martial_choice].keys())))
-            list_2 = list(universal[universal_choice])
-            list_1 = list(martial[martial_choice][martial_choice_2])
-            feat_list.extend(list_1 + list_2)
-
-            if self.dex_mod >= self.str_mod +2:
-                feat_list.append('weapon finesse')
+            self.add_martial_feats(feat_list)
 
         if self.bab == 'L' and casting_level != 'none':
-            magical_choice = random.choice(list(magical.keys())) 
-            universal_choice = random.choice(list(universal.keys()))
-            list_2 = list(universal[universal_choice])
-            list_1 = list(magical[magical_choice])
-            feat_list.extend(list_1 + list_2)
+            self.add_magical_feats(feat_list)
+
+        if self.bab == 'M' and casting_level != 'none' and type_chance >= 50:
+            self.add_martial_feats(feat_list)
+        elif self.bab == 'M' and casting_level != 'none' and type_chance < 50:
+            self.add_magical_feats(feat_list)
 
         if self.c_class in specialty_bucket:
-            classes_choices = list(classes[self.c_class])
-            feat_list.extend(classes_choices)
+            self.add_specialty_feats(feat_list)
+
+        result_dict_pre = self.feat_spell_searcher(self.c_class, feat_list, "feats", "prerequisites", "description")
+        print(f'This is your result dict {result_dict_pre}')
+
+        result_dict = self.transform_result_dict(result_dict_pre)
+        print(f' post transform result_dict {result_dict}')
+        chosen_feats = self.get_feats_without_prerequisites(self.c_class, result_dict, odd=True)
+
+        print(chosen_feats)
 
 
 
+    def add_martial_feats(self, feat_list):
+        martial = self.feat_buckets['martial']
+        universal = self.feat_buckets['universal']
 
+        martial_choice = random.choice(list(martial.keys()))
+        universal_choice = random.choice(list(universal.keys()))
+        martial_choice_2 = random.choice(list((martial[martial_choice].keys())))
+        list_2 = list(universal[universal_choice])
+        list_1 = list(martial[martial_choice][martial_choice_2])
+        feat_list.extend(list_1 + list_2)        
 
+        if self.dex_mod >= self.str_mod +2:
+            feat_list.append('weapon finesse')        
 
-            print(f'high bab feat list {feat_list}')
+    def add_magical_feats(self, feat_list):
+        magical = self.feat_buckets['magical']
+        universal = self.feat_buckets['universal']
 
-        result_dict = self.feat_spell_searcher(self.c_class, feat_list, "feats", "prerequisites", "description")
-        print(f'This is your result dict {result_dict}')
+        magical_choice = random.choice(list(magical.keys()))
+        universal_choice = random.choice(list(universal.keys()))
+        list_2 = list(universal[universal_choice])
+        list_1 = list(magical[magical_choice])
+        feat_list.extend(list_1 + list_2)    
 
+    def add_specialty_feats(self, feat_list):
+        classes_choices = list(self.feat_buckets['classes'][self.c_class])
+        feat_list.extend(classes_choices)       
+
+    def transform_result_dict(self, result_dict):
         for feat in list(result_dict.keys()):
             feat_info = result_dict[feat]
             prereq_set = set()
-            # print(feat)
-            # print(feat_info)
-            prerequisites = feat_info.get('prerequisites', None)
+            prerequisites = str(feat_info.get('prerequisites', None))
 
             if prerequisites is not None:
                 prereq_set.add(prerequisites.lower())
@@ -2133,14 +2152,8 @@ class Character:
                     new_feat = ''
 
                 if new_feat != feat:
-                    result_dict[new_feat] = result_dict.pop(feat)
-
-        print(f' post transform result_dict {result_dict}')
-        chosen_feats = self.get_feats_without_prerequisites(self.c_class, result_dict, odd=True)
-
-        print(chosen_feats)
-
-
+                    result_dict[new_feat] = result_dict.pop(feat)     
+        return result_dict
 
 
     def get_feats_without_prerequisites(self, class_1, dataset_name, level= None, level_2 = None, dataset_name_2 = None, odd=None):
@@ -2159,41 +2172,84 @@ class Character:
 
         
         dataset = dataset_name
-        # print(f'dataset items: {dataset_name.items()}')
-        # print(f'this is  your dataset {dataset}')
         base = dataset.copy()
-        # print(f"base: {base}")
         base_no_prereq = self.no_prereq_loop(base)
-        # print(base_no_prereq)
         total_choices = base_no_prereq
         i = 0
  
+        print(f'base!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!: {base}')
+        #base_no_prereq empty for the new generic feats function
+        print(f'base_no_prereq?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????{base_no_prereq}')
 
         while i < amount:
-            print(f"this is total choices {total_choices}")
+            print(f'This is your total choices {total_choices}')
             chosen = random.choice(total_choices)
-            print(f'this is your chosen {chosen}')
+
             self.chooseable_list_class(i,self.c_class,self.c_class_level, base=0, th='th')
 
             prereq_list = self.no_prereq_loop(base, "prereq_list")
 
             chosen_set.add(chosen.lower())
             i = len(chosen_set)
-
-            print(f'This is your chosen set {chosen_set}')
             
             total_choices.append(chosen.lower()) 
             total_choices.extend(prereq_list)
             total_choices = self.remove_duplicates_list(total_choices)
             total_choices=list(set(total_choices))
-            print(f"These are all your options to choose from: {total_choices}")
-            print(f"this is your len {len(chosen_set)}")
-            print(f"this is your i {i}")
-            print(f"this is your amount {amount}")
+            # print(f"this is total choices {total_choices}")
+            # print(f'this is your chosen {chosen}')
+            # print(f'This is your chosen set {chosen_set}')
+            # print(f"These are all your options to choose from: {total_choices}")
+            # print(f"this is your len {len(chosen_set)}")
+            # print(f"this is your i {i}")
+            # print(f"this is your amount {amount}")
 
             self.chooseable.add(chosen)
 
         return base_no_prereq, dataset_no_prereq, chosen_set
+
+
+    def generic_feat_chooser(self, class_1,feat_type, info_column):
+        feat_data = pd.read_csv(f'data/feats.csv', sep='|', on_bad_lines='skip')
+        extraction_list = ['name', 'prerequisites', 'description']
+        query_i = feat_data.loc[feat_data['type'] == feat_type.capitalize(), extraction_list]
+        print(query_i.head())
+        # feat_result_dict = query_i.set_index('name').to_dict(orient='index')
+        # feat_result_dict = query_i.to_dict(orient='split')
+        # result_dict = {feat_result_dict['columns'][i]: feat_result_dict['data'][0][i] for i in range(len(feat_result_dict['columns']))}
+
+        # print(result_dict)
+        query_i = query_i.drop_duplicates(subset='name', keep='first')
+        feat_result_dict = query_i.set_index('name')[['prerequisites', 'description']].to_dict(orient='index')
+        # print(f'!!!!!!!!!!!! Feat data dict {feat_result_dict}')
+
+        # print(feat_result_dict.keys())
+        # print(feat_result_dict)
+
+
+        # query_i = query_i['name'].tolist()
+        # print(f'this is query_i line 2212 {query_i}')
+
+
+        # feat_result_dict = self.feat_spell_searcher(self.c_class, query_i, 'feats', info_column)
+
+
+        # feat_result_dict = self.remove_mythic('feats',feat_data,query_i, info_column)   
+        # feat_result_dict = self.remove_dots_dashes(feat_result_dict, query_i, info_column)
+        feat_result_dict = self.transform_result_dict(feat_result_dict)
+
+        feat_result_dict.update(feat_result_dict)
+        # print(feat_result_dict)
+
+        print(f' post transform result_dict {feat_result_dict}')
+        _, _, chosen_feats = self.get_feats_without_prerequisites(self.c_class, feat_result_dict, odd=True)
+
+        print(f'These are your chosen feats {chosen_feats}')        
+
+            
+
+
+
 
         # or (self.bab == 'M' and casting_level in ('mid', 'high') and type_chance >= 50)
         # (casting_level == 'high' and self.bab == 'L') or (self.bab == 'M' and casting_level in ('mid', 'high') and type_chance < 50) 

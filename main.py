@@ -264,7 +264,10 @@ while userInput.lower() == 'y':
 		character.feat_spell_searcher("sorcerer", character.bonus_spells, "spells", "description")
 
 		# character.print_metamagic()
-		character.build_selector()
+		# character.build_selector()
+ 
+
+		character.generic_feat_chooser(character.c_class,'combat',info_column = 'description')
 
 
 		### Need to change up the item_chooser function ###
