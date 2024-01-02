@@ -100,6 +100,18 @@ lore = ["Goblin Lore",
 "Kuo-Toa Lore"
 ]
 
+formulas = {
+    'favored_terrains': 'ceil((self.c_class_level - 2) / 5)',
+    'favored_enemies': '1 + floor(self.c_class_level / 5)',
+    'manuevers': 'floor((self.c_class_level + 1)/4)'
+}
+
+armor_type_mapping = {
+    ('monk', 'unchained_monk'): None,
+    ('rogue', 'bard', 'brawler'): 'L',
+    ('barbarian', 'unchained_barbarian', 'ranger'): 'M',
+    ('cleric',): 'H'
+}
 # caster spell known progression:
 # wizards know 3 + INT mod + 2(per level) spells
 
@@ -115,7 +127,7 @@ regions = ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdr
 races = ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-elf", "Half-orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"]
 weapon_groups = ['Axes', 'Blades, Heavy', 'Blades, Light', 'Bows', 'Close', 'Crossbows', 'Double', 'Firearms', 'Flails', 'Hammers', 'Monk', 'Natural', 'Polearms', 'Siege Engines', 'Spears', 'Thrown', 'Tribal']
 
-manuevers = ["Bull Rush, Dirty Trick, Disarm, Drag, Grapple, Overrun, Reposition, Steal, Sunder, Trip"]
+manuevers = ["Bull Rush", "Dirty Trick", "Disarm", "Drag", "Grapple", "Overrun", "Reposition", "Steal", "Sunder", "Trip"]
 
 # make weapon group into a dictionary that depends on regions:
 weapon_groups_region = {

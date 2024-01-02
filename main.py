@@ -4,6 +4,7 @@ from utils.markdown import style
 from utils.data import version
 from utils.util import  chooseClass, region_chooser, race_chooser, weapon_chooser, name_chooser, dip_function, format_text, isBool#, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
 import random
+from math import ceil, floor
 #Making a Global Character Dictionary so we can reference it and create a HTML/CSS sheet based off of that
 
 global character_data 
@@ -192,18 +193,16 @@ while userInput.lower() == 'y':
 		# character.anti_paladin_cruelty_chooser()
 		# character.paladin_mercy_chooser()		
 
-		print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
 
 		#class specific feats choosers
-		character.ranger_feats_chooser()
+		# character.ranger_feats_chooser()
 		# character.monk_feats_chooser()
 
 
 		character.archetype_data()
 
 		# background info
-		character.skills_selector('skills')
-		print(f'This is your chosen professions {character.profession_chooser("professions")}')
+
 
 
 
@@ -274,9 +273,23 @@ while userInput.lower() == 'y':
 
 		character.armor_chooser()
 		print(f'This is your gold pre items {character.assign_gold("gold")}')
+		print(f'This is your armor type {character.armor_type}')
 		character.item_chooser()
 		print(f'This is your gold post items {character.gold}')	
 
+		#calculating savings throws based off of class levels
+		character.saving_throw_calc('Fortitude')
+		character.saving_throw_calc('Reflex')
+		character.saving_throw_calc('Will')	
+
+		character.skills_selector('skills')
+		print(f'This is your chosen professions {character.profession_chooser("professions")}')		
+
+
+		# print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
+
+		character.simple_list_chooser('ranger','favored_terrains', 'favored_enemies')
+		character.simple_list_chooser('brawler','manuevers',max_num=8)
 
 
 
@@ -328,10 +341,7 @@ while userInput.lower() == 'y':
 
 
 
-		# #calculating savings throws based off of class levels
-		# character.saving_throw_calc('Fortitude')
-		# character.saving_throw_calc('Reflex')
-		# character.saving_throw_calc('Will')			
+		
 
 		# print(f'This is your mythic rank {character.randomize_mythic()}')
 

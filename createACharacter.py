@@ -502,7 +502,7 @@ class Character:
             self.saving_throw = high_saving_throw            
         else:
             self.saving_throw = low_saving_throw
-        print(self.saving_throw)
+        print(f'{saving_throw} is {self.saving_throw}')
         return self.saving_throw
 
     def assign_gold(self,gold):
@@ -833,7 +833,7 @@ class Character:
                 list=self.spells_per_day[self.c_class][key][self.capped_level_1-1]
                 self.spells_per_day_list.append(list)
         elif self.c_class in base_classes and self.casting_level_string == 'mid' and self.c_class != 'alchemist':
-            for i in range(0,mid_caster_level+1):
+            for i in range(0,self.highest_spell_known_1+1):
                 key = str(i)                
                 list=self.spells_per_day[self.c_class][key][self.capped_level_1-1]
                 self.spells_per_day_list.append(list)
@@ -1062,57 +1062,57 @@ class Character:
         return terrains, enemies
     
 
-    def ranger_feats_chooser(self):
-        if self.c_class == 'ranger':
-            ranger_feats = [2,6,10,14,18,22,26,30,34,38,42]              
-            choice = list(self.ranger_combat_styles.keys())   
-            random_combat_style = random.choice(choice)
-            ranger_feats_chosen_list=set()     
-            i=0
+    # def ranger_feats_chooser(self):
+    #     if self.c_class == 'ranger':
+    #         ranger_feats = [2,6,10,14,18,22,26,30,34,38,42]              
+    #         choice = list(self.ranger_combat_styles.keys())   
+    #         random_combat_style = random.choice(choice)
+    #         ranger_feats_chosen_list=set()     
+    #         i=0
 
 
-            while ranger_feats[i] <= self.c_class_level:
-                ranger_feats_list=self.ranger_combat_styles[random_combat_style]["2"]
+    #         while ranger_feats[i] <= self.c_class_level:
+    #             ranger_feats_list=self.ranger_combat_styles[random_combat_style]["2"]
                 
-                if ranger_feats[i]>=6:
-                    ranger_feats_list=(self.ranger_combat_styles[random_combat_style]["2"] + self.ranger_combat_styles[random_combat_style]["6"])
-                elif ranger_feats[i]>=10:
-                    ranger_feats_list=(self.ranger_combat_styles[random_combat_style]["2"] + self.ranger_combat_styles[random_combat_style]["6"] + self.ranger_combat_styles[random_combat_style]["10"])
+    #             if ranger_feats[i]>=6:
+    #                 ranger_feats_list=(self.ranger_combat_styles[random_combat_style]["2"] + self.ranger_combat_styles[random_combat_style]["6"])
+    #             elif ranger_feats[i]>=10:
+    #                 ranger_feats_list=(self.ranger_combat_styles[random_combat_style]["2"] + self.ranger_combat_styles[random_combat_style]["6"] + self.ranger_combat_styles[random_combat_style]["10"])
 
 
-                ranger_feats_chosen=random.choice(ranger_feats_list)
-                ranger_feats_chosen_list.add(ranger_feats_chosen)
+    #             ranger_feats_chosen=random.choice(ranger_feats_list)
+    #             ranger_feats_chosen_list.add(ranger_feats_chosen)
                    
-                i=len(ranger_feats_chosen_list)
+    #             i=len(ranger_feats_chosen_list)
 
-                if ranger_feats_chosen_list == 7:
-                    break
+    #             if ranger_feats_chosen_list == 7:
+    #                 break
 
-            print(ranger_feats_chosen_list)
+    #         print(ranger_feats_chosen_list)
 
 
-    def monk_feats_chooser(self):
-        if self.c_class == 'monk' or self.c_class == 'unchained_monk':
-            monk_feats = [1,2,6,10,14,18,22,26,30,34,38,42]   
-            #using set + .add makes sure we don't have any repeats in our list           
-            monk_feats_chosen_list=set()     
-            i=0
+    # def monk_feats_chooser(self):
+    #     if self.c_class == 'monk' or self.c_class == 'unchained_monk':
+    #         monk_feats = [1,2,6,10,14,18,22,26,30,34,38,42]   
+    #         #using set + .add makes sure we don't have any repeats in our list           
+    #         monk_feats_chosen_list=set()     
+    #         i=0
 
-            while monk_feats[i] <= self.c_class_level:
-                monk_feats_list=self.monk_choices['feats']["2"]
+    #         while monk_feats[i] <= self.c_class_level:
+    #             monk_feats_list=self.monk_choices['feats']["2"]
                 
-                if monk_feats[i]>=6:
-                    monk_feats_list=(self.monk_choices['feats']["2"] + self.monk_choices['feats']["6"])
-                elif monk_feats[i]>=10:
-                    monk_feats_list=(self.monk_choices['feats']["2"] + self.monk_choices['feats']["6"] + self.monk_choices['feats']["10"])
+    #             if monk_feats[i]>=6:
+    #                 monk_feats_list=(self.monk_choices['feats']["2"] + self.monk_choices['feats']["6"])
+    #             elif monk_feats[i]>=10:
+    #                 monk_feats_list=(self.monk_choices['feats']["2"] + self.monk_choices['feats']["6"] + self.monk_choices['feats']["10"])
 
 
-                monk_feats_chosen=random.choice(monk_feats_list)
-                monk_feats_chosen_list.add(monk_feats_chosen)
+    #             monk_feats_chosen=random.choice(monk_feats_list)
+    #             monk_feats_chosen_list.add(monk_feats_chosen)
                    
-                i=len(monk_feats_chosen_list)
+    #             i=len(monk_feats_chosen_list)
 
-            print(monk_feats_chosen_list)
+    #         print(monk_feats_chosen_list)
 
 
         
@@ -1494,13 +1494,16 @@ class Character:
             return animal_chosen_feat_list
 
 
-    def json_list_grabber(self, string_list, output_list, separator):
+    def json_list_grabber(self, string_list, separator, output_list=None):
         """
         Generic function used to grab elements from lists, you decide the separator that determines where the elemnent ends
 
         Return:
         - List
         """
+        if output_list == None:
+            output_list = []
+
         for string in string_list:
             elements = [element.strip() for element in string.split(separator)]
             stop_grabbing = False
@@ -1514,28 +1517,7 @@ class Character:
             if stop_grabbing:
                 break
 
-
-
-
-    def brawler_manuever_chooser(self, level):
-        if self.c_class == "brawler":
-            amount = floor((level + 1)/4)
-            manuevers = getattr(data,"manuevers")
-            manuever_list = []
-
-            i = 0
-            while i < level:
-                chosen = random.choice(list(manuevers))
-                manuever_list.append(chosen)
-                print(manuever)
-
-                if len(manuevers) == 8:
-                    break
-
-            return manuever_list
-
-
-
+        return output_list
     
     #need to implement all the restrictions to feats we want
     def feats_selector(self):             
@@ -1602,45 +1584,48 @@ class Character:
         print(archetypes_description)
         
 
-
-
-    def convert_price(self,price,name):
-        """
-        Converts string prices to integer
-        Return
-        - price
-        """
+# Start of major task: Items and Prices
+    def convert_price(self, price_input, name):
+        try:
+            price = int(price_input.replace(',', ''))
+        except ValueError:
+            dynamic_variable = self.extract_dynamic_variable(name)
+            dynamic_variable_word = self.extract_dynamic_variable_word(name)
+            if dynamic_variable:
+                price = self.find_number(price_input, dynamic_variable)
+                print(f'1st case price {price}')
+            elif dynamic_variable_word:
+                print(f"Target word: {dynamic_variable_word[-1]}")
+                price = self.find_word(price_input, dynamic_variable_word[-1])
+                print(f"Matched price: {price}")
+                price = int(price) if price is not None else 0
+            else:
+                price = self.handle_invalid_price_input(price_input, name)
         
-        number_pull = r'\d+'
-        dynamic_variable = re.findall(number_pull, name)
-        word_pull = r'\b(lesser|greater|superior|major|minor|normal|djinni|efreeti|marid|shaitan|destined|fey|abyssal|accursed|celestial|draconic|elemental|infernal|undead|aberrant)\b'
-        dynamic_variable_word_pattern = re.compile(rf'(\d+){word_pull}')
-        dynamic_variable_word = re.findall(word_pull, name)
-        print(f'This is the dynamic variable {dynamic_variable}')
-        print(f'This is the dynamic variable word {dynamic_variable_word}')
-        if dynamic_variable: 
-            pattern = rf'(\d{{1,3}}(?:,\d{{3}})*)\s*\(\s*\+{dynamic_variable}\)'
-            print(f'1st case price {price}')
-            price_list = re.findall(pattern,price)[0]
-            price = int(price_list[0])
-            print(f'1st case price {price}')
-        elif dynamic_variable_word:
-            print(f"Target word: {dynamic_variable_word[-1]}")
-            price = self.find_number(price, dynamic_variable_word[-1])
-            print(f"Matched price: {price}")
-            price = int(price)
-        else:
-            if '(' in name:
-                print(f'no price detected for {name} + {price}')
-            price = int(price.replace(',', ''))
-
-        if price<11:
-            price = (price**2) * 1000
+        price = self.adjust_price(price)
         return price
 
-    def find_number(self, text, target_word):
-        escaped_word = re.escape(target_word)
-        pattern = r'(\d+)\D*' + escaped_word
+    def extract_dynamic_variable(self, name):
+        number_pull = r'\d+'
+        dynamic_variable = re.findall(number_pull, name)
+        print(f'This is the dynamic variable {dynamic_variable}')
+        return dynamic_variable
+
+    def find_number(self, price_input, dynamic_variable):
+        price_input = str(price_input)  # Ensure price_input is a string
+        pattern = rf'(\d{{1,3}}(?:,\d{{3}})*)\s*\(\s*\+{dynamic_variable}\)'
+        price_list = re.findall(pattern, price_input)
+        print(f'this is the price_list {price_list}')
+        
+        if price_list:
+            price = int(price_list[0].replace(',', ''))
+            return price
+        else:
+            return None
+     
+
+    def find_word(self, text, target_word):
+        pattern = r'(\d+)\D*' + re.escape(target_word)
         match = re.search(pattern, text)
         
         if match:
@@ -1648,68 +1633,82 @@ class Character:
         else:
             return None        
 
+    def extract_dynamic_variable_word(self, name):
+        word_pull = r'\b(lesser|greater|superior|major|minor|normal|djinni|efreeti|marid|shaitan|destined|fey|abyssal|accursed|celestial|draconic|elemental|infernal|undead|aberrant|type i|type ii|type iii|type iv|)\b(?![()])'
+        dynamic_variable_word = re.findall(word_pull, name)
+        print(f'This is the dynamic variable word {dynamic_variable_word}')
+        return dynamic_variable_word
+
+    def handle_invalid_price_input(self, price_input, name):
+        if price_input is None or '(' in str(price_input):
+            print(f'no price detected for {name} + {price_input}')
+            price_input = 0
+        else:
+            print(f'invalid price format for {name} + {price_input}')
+            price_input = 0
+        return price_input
+
+    def adjust_price(self, price):
+        if price < 11:
+            price = (price ** 2) * 1000
+        return price
 
     def armor_chooser(self):
-        if self.c_class in ('monk', 'unchained_monk') or self.bab == 'L':
-            armor_type=None
-        elif self.c_class in ('rogue', 'bard', 'brawler') or self.bab == 'M':
-            armor_type='L'            
-        elif self.c_class in ('barbarian', 'unchained_barbarian', 'ranger') or self.bab == 'M':
-            armor_type='M'
-        elif self.c_class in ('cleric'):
-            armor_type='H'
-        else:
-            armor_type='H'
+        armor_type_data = getattr(data, 'armor_type_mapping')
+        default_armor_type = 'H'  # Default armor type
 
-        self.armor_type = armor_type       
+        armor_type = armor_type_data.get(self.c_class, default_armor_type)
+        if self.bab == 'L':
+            armor_type = None
 
-        return self.armor_type                           
+        self.armor_type = armor_type
+        return self.armor_type                          
 
-    def item_chooser(self):    
-        #we do this to skip shield (0) + armor (1) choices, since low casters typically don't use these
-        if self.armor_type==None:
-            i=2
-        elif self.armor_type=='L' or self.weapons[1] in ('Axes', 'Blades, Heavy', 'Bows', 'Crossbows' ,'Double', 'Firearms', 'Polearms', 'Siege Engines'):
-            i = 1
-        else:
-            i = 0
-
+    def item_chooser(self):
+        i = self.determine_start_index()
         select_from_list = list(self.items.keys())
         price_total = []
         equipment_list = []
 
-
-        for i in range(i,len(select_from_list)):
-            print(i)
-            equipment_name = select_from_list[i]
-            item_dict = self.items.get(str(select_from_list[i]))
-            random_equip = random.choice(list(item_dict.keys()))
-            print(random_equip)
-            price = str(item_dict[random_equip]['price'])
-            print(price)
-            price=self.convert_price(price,random_equip)
-            #removing each element form the total self gold value, to make sure people don't get too many items
-            self.gold = self.gold-price
-            print(f"Total Gold: {self.gold}")
+        for i in range(i, len(select_from_list)):
+            equipment_name, random_equip, price = self.choose_equipment(select_from_list[i])
+            self.subtract_price_from_gold(price)
             if self.gold <= 0:
                 break
 
-            print(f"Randomly selected equipment: {equipment_name} : {random_equip}")
-            print("Price:", price)
             equipment_list.append(random_equip)
             price_total.append(price)
 
-            i+=1
-
-
-
-
+            i += 1
 
         print(equipment_list)
         print(price_total)
 
+    def determine_start_index(self):
+        if self.armor_type is None:
+            return 2
+        elif self.armor_type == 'L' or self.weapons[1] in ('Axes', 'Blades, Heavy', 'Bows', 'Crossbows', 'Double', 'Firearms', 'Polearms', 'Siege Engines'):
+            return 1
+        else:
+            return 0
+        
+    def choose_equipment(self, equipment_key):
+        equipment_name = equipment_key
+        item_dict = self.items[str(equipment_key)]
+        random_equip = random.choice(list(item_dict.keys()))
+        price = str(item_dict[random_equip]['price'])
+        price = self.convert_price(price, random_equip)
+
+        return equipment_name, random_equip, price
+
+    def subtract_price_from_gold(self, price):
+        self.gold -= price
 
 
+# End of major task: Items and Prices
+
+
+# Start of major task: skills assignment
 
     def skills_selector(self, skills):
         """
@@ -1719,27 +1718,42 @@ class Character:
         param (skills list from the data section)
         return
         - skill ranks (Dictionary)
-        """
-        all_skills = getattr(data,skills)
+        """        
+
+        all_skills = getattr(data, skills)
         max_skill_ranks = self.c_class_level
-        i=0
-        
-        #Quick check to make sure it doesn't break
-        if self.c_class in self.class_data.keys():
-
-            skill_points = self.class_data[self.c_class]["skill points at each level"]
-            scaling = int(skill_points)+self.int_mod
-            print(scaling)
-
-        else:
-            scaling= 2 + self.int_mod
-
-        dummy_skill_ranks = scaling*self.c_class_level
-        skill_number = scaling + random.randint(1,8)
-        skill_number = min(skill_number,len(all_skills))
-        selectable_skills = random.sample(all_skills,k=skill_number)
         skill_ranks = {}
 
+        selectable_skills, dummy_skill_ranks = self.get_selectable_skills(all_skills)
+        self.assign_skill_ranks(selectable_skills, dummy_skill_ranks, max_skill_ranks, skill_ranks)
+
+        print(skill_ranks)
+        print(f'This is your int mod {self.int_mod}')
+        total_ranks = sum(skill_ranks.values())
+        print("The total sum of ranks is:", total_ranks)
+
+        return skill_ranks
+
+
+    def get_selectable_skills(self,all_skills):
+        skill_points = self.class_data[self.c_class]["skill points at each level"]
+        scaling = int(skill_points) + self.int_mod
+        dummy_skill_ranks = scaling * self.c_class_level
+
+        print(scaling)
+
+        if self.c_class not in self.class_data.keys():
+            scaling = 2 + self.int_mod
+
+        skill_number = scaling + random.randint(1, 8)
+        skill_number = min(skill_number, len(all_skills))
+        selectable_skills = random.sample(all_skills, k=skill_number)
+
+        return selectable_skills, dummy_skill_ranks
+
+
+    def assign_skill_ranks(self,selectable_skills, dummy_skill_ranks, max_skill_ranks, skill_ranks):
+        i = 0
 
         while i < dummy_skill_ranks:
             skill = random.choice(selectable_skills)
@@ -1748,24 +1762,10 @@ class Character:
             skill_ranks[skill] = skill_ranks.get(skill, 0) + ranks_to_assign
             i += ranks_to_assign
 
-            if i >= dummy_skill_ranks:
+            if i >= dummy_skill_ranks or all(skill_ranks.get(skill, 0) >= max_skill_ranks for skill in selectable_skills):
                 break
 
-            if all(skill_ranks.get(skill, 0) >= max_skill_ranks for skill in selectable_skills):
-                print('all skills are maxed')
-                break            
-
-        # print(skill_ranks) 
-        # print(i)  
-        # print(self.int_mod) 
-
-        #confirm total ranks add up to skill ranks
-        print(skill_ranks)
-        print(f'This is your int mod {self.int_mod}')
-        total_ranks = sum(skill_ranks.values())
-        print("The total sum of ranks is:", total_ranks)
-
-        return skill_ranks
+# Start of major task: skills assignment
 
 
     def profession_chooser(self,professions):
@@ -1922,9 +1922,10 @@ class Character:
             return dataset_without_prerequisites                
 
     def generic_class_talent_chooser(self, class_1, dataset_name, dataset_name_2 = None):
+        # Probably incorrect (the 2nd .get(dataset_name))
         if self.c_class == class_1: 
             dataset = getattr(self, class_1, {}).get(dataset_name, {}).keys()
-            choice = random.choice(list(dataset)).get(basic,{})
+            choice = random.choice(list(dataset)).get(dataset_name,{})
             description = getattr(self, class_1, {None}).get(dataset_name, {None}).get(choice,{None})
 
             print(choice)
@@ -1984,38 +1985,6 @@ class Character:
         Metamagic_feats = data[data['type']=='Metamagic']
         extraction_list = ['name']        
         print(Metamagic_feats[extraction_list])
-
-
-
-    # def feat_spell_searcher(self, class_1, chosen_set, types, info_column):
-    #     if self.c_class == class_1:
-    #         data = pd.read_csv(f'data/{types}.csv', sep='|', on_bad_lines='skip')
-    #         extraction_list = ['name', info_column]
-
-
-    #         # Convert chosen_set to uppercase
-    #         chosen_set_upper = {i.upper() for i in chosen_set}
-    #         print(f'This is your chosen set {chosen_set_upper}')
-
-    #         # Filter DataFrame based on 'name' column
-    #         if types == 'feats':
-    #             query_result = data[(data['name'].str.upper().isin(chosen_set_upper)) & (data['type'] != 'Mythic')][extraction_list]
-    #         else:
-    #             query_result = data[(data['name'].str.upper().isin(chosen_set_upper)) & (data['mythic'] == 0)][extraction_list]
-
-
-
-    #         result_dict = {}
-
-    #         for index, row in query_result.iterrows():
-    #             feat_name = row['name']
-    #             feat_info = {f'{info_column}': row[f'{info_column}']}  # Add more fields if needed
-    #             result_dict[feat_name] = feat_info
-
-    #         self.result_dict.update(result_dict)
-    #         print(self.result_dict)
-            
-    #         return self.result_dict            
 
     def feat_spell_searcher(self, class_1, chosen_set, types, info_column, info_column_2 = None):
         if self.c_class == class_1:
@@ -2109,32 +2078,24 @@ class Character:
 
 
     def build_selector(self):
-        casting_level=self.classes[self.c_class]['casting level'].lower()
-        specialty_bucket = ['cleric','druid']
-        type_chance = random.randint(1,100)
+        casting_level_str = self.classes[self.c_class]['casting level'].lower()
+        specialty_set = {'cleric', 'druid'}
+        type_chance = random.choices(range(1, 101))[0]
         feat_list = []
-
-        if self.bab == 'H' or (self.bab == 'M' and casting_level not in ('low', 'mid', 'high')) :
+        if self.bab == 'H' or (self.bab == 'M' and casting_level_str not in ('low', 'mid', 'high')):
             self.add_martial_feats(feat_list)
-
-        if self.bab == 'L' and casting_level != 'none':
+        if self.bab == 'L' and casting_level_str != 'none':
             self.add_magical_feats(feat_list)
-
-        if self.bab == 'M' and casting_level != 'none' and type_chance >= 50:
-            self.add_martial_feats(feat_list)
-        elif self.bab == 'M' and casting_level != 'none' and type_chance < 50:
-            self.add_magical_feats(feat_list)
-
-        if self.c_class in specialty_bucket:
+        if self.bab == 'M' and casting_level_str != 'none':
+            if type_chance >= 50:
+                self.add_martial_feats(feat_list)
+            else:
+                self.add_magical_feats(feat_list)
+        if self.c_class in specialty_set:
             self.add_specialty_feats(feat_list)
-
         result_dict_pre = self.feat_spell_searcher(self.c_class, feat_list, "feats", "prerequisites", "description")
-        print(f'This is your result dict {result_dict_pre}')
-
         result_dict = self.transform_result_dict(result_dict_pre)
-        print(f' post transform result_dict {result_dict}')
         chosen_feats = self.get_feats_without_prerequisites(self.c_class, result_dict, odd=True)
-
         print(chosen_feats)
 
 
@@ -2255,7 +2216,43 @@ class Character:
             print(f'These are your chosen feats {chosen_feats}')        
 
 
+    def simple_list_chooser(self, class_1, *dataset_names, max_num=float('inf'), **kwargs):
+        if self.c_class.lower() == class_1.lower():
+            chosen = []
+            for dataset_name in dataset_names:
+                dataset_input = getattr(data, dataset_name)
+                dataset = self.json_list_grabber(dataset_input, ',', **kwargs)
+                print(f"This is your dataset for {dataset_name}: {dataset}")
+                formula_calc = self.formula_grabber(dataset_name, **kwargs)
+                if isinstance(dataset, dict):
+                    dataset = list(dataset.keys())
+                chosen.append(random.sample(dataset, k=min(formula_calc, max_num)))
+            print(chosen)
+            return chosen
+    
+    def formula_grabber(self,dataset_name):
+        formula = getattr(data, 'formulas').get(dataset_name,1)
+        print(f'this is your formula {formula}')
+        amount = eval(formula)
+        return amount  
 
+
+    # def brawler_manuever_chooser(self, level):
+    #     if self.c_class == "brawler":
+    #         amount = floor((level + 1)/4)
+    #         manuevers = getattr(data,"manuevers")
+    #         manuever_list = []
+
+    #         i = 0
+    #         while i < level:
+    #             chosen = random.choice(list(manuevers))
+    #             manuever_list.append(chosen)
+    #             print(manuevers)
+
+    #             if len(manuevers) == 8:
+    #                 break
+
+    #         return manuever_list
 
 # setting up a new character
 def CreateNewCharacter(character_json_config):
