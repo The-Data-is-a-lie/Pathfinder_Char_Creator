@@ -2235,6 +2235,28 @@ class Character:
         print(f'this is your formula {formula}')
         amount = eval(formula)
         return amount  
+    
+
+    # Start of AC calculation
+    def ac_bonus_calculator(self):
+        if self.armor_type == 'H':
+
+
+            print('baba booey')
+        
+
+    # here to help create AC calculation
+    # def armor_chooser(self):
+    #     armor_type_data = getattr(data, 'armor_type_mapping')
+    #     default_armor_type = 'H'  # Default armor type
+
+    #     armor_type = armor_type_data.get(self.c_class, default_armor_type)
+    #     if self.bab == 'L':
+    #         armor_type = None
+
+    #     self.armor_type = armor_type
+    #     return self.armor_type   
+    
 
 
     # def brawler_manuever_chooser(self, level):

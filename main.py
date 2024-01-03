@@ -156,12 +156,12 @@ while userInput.lower() == 'y':
 
 		#this is to allow for talent choice stat pre-reqs (self.chooseable)
 		character.chooseable_list() 		
-		character.chooseable_list_stats(character.str, 'str ', base=10,)
-		character.chooseable_list_stats(character.dex, 'dex ', base=10,)
-		character.chooseable_list_stats(character.con, 'con ', base=10,)
-		character.chooseable_list_stats(character.int, 'int ', base=10,)
-		character.chooseable_list_stats(character.wis, 'wis ', base=10,)
-		character.chooseable_list_stats(character.cha, 'cha ', base=10,)	
+		character.chooseable_list_stats(character.str, 'str ', base=10)
+		character.chooseable_list_stats(character.dex, 'dex ', base=10)
+		character.chooseable_list_stats(character.con, 'con ', base=10)
+		character.chooseable_list_stats(character.int, 'int ', base=10)
+		character.chooseable_list_stats(character.wis, 'wis ', base=10)
+		character.chooseable_list_stats(character.cha, 'cha ', base=10)	
 		character.chooseable_list_stats(character.bab_total, 'base attack bonus +', base=0 )
 		character.chooseable_list_stats(character.casting_level_num, 'caster level ', base=0, th='th')	
 		character.chooseable_list_class_features()
@@ -284,9 +284,6 @@ while userInput.lower() == 'y':
 
 		character.skills_selector('skills')
 		print(f'This is your chosen professions {character.profession_chooser("professions")}')		
-
-
-		# print(f"This is your favored attributes {character.ranger_favored_groups('favored_terrains','favored_enemies')}")
 
 		character.simple_list_chooser('ranger','favored_terrains', 'favored_enemies')
 		character.simple_list_chooser('brawler','manuevers',max_num=8)
