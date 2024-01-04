@@ -15,7 +15,7 @@
       "cost": "3 gp",
       "weight": "1 lb.",
       "armor bonus": "+1;",
-      "max dex bonus": "—;",
+      "max dex bonus": ";",
       "armor check penalty": "0",
       "arcane spell failure chance": "0%;",
       "speed": "30 ft./20 ft. Description Also called a belly-warmer, a haramaki is a simple silken sash lined with chainmail or articulated metal plates and tied about the stomach to protect it."
@@ -48,7 +48,7 @@
       "max dex bonus": "+8;",
       "armor check penalty": "0",
       "arcane spell failure chance": "10%;",
-      "speed": "30 ft./20 ft. Description This enhanced form of padded armor has internal layers specifically designed to trap arrows, bolts, darts, shuriken, thrown daggers, and other small ranged piercing weapons. When these kinds of weapons strike you, they tend to become snagged in these layers and fail to harm you. Wearing quilted cloth armor gives you DR 3/— against attacks of this kind. The special layers of the armor have no effect on other kinds of weapons."
+      "speed": "30 ft./20 ft. Description This enhanced form of padded armor has internal layers specifically designed to trap arrows, bolts, darts, shuriken, thrown daggers, and other small ranged piercing weapons. When these kinds of weapons strike you, they tend to become snagged in these layers and fail to harm you. Wearing quilted cloth armor gives you DR 3/ against attacks of this kind. The special layers of the armor have no effect on other kinds of weapons."
     },
     "Reinforced tunic": {
       "source": "Adventurer's Armory 2 pg. 6 Statistics",
@@ -65,7 +65,7 @@
       "cost": "30 gp",
       "weight": "4 lbs.",
       "armor bonus": "+1;",
-      "max dex bonus": "—;",
+      "max dex bonus": ";",
       "armor check penalty": "0",
       "arcane spell failure chance": "0%;",
       "speed": "30 ft./20 ft. Description Used for ceremonial displays or occasionally worn (albeit with no additional benefit) over heavier armor, these robes consist of several layers of cloth and an outer layer of silk intricately woven with gold brocade designs and covered with metal studs."
@@ -105,9 +105,9 @@
       "cost": "150 gp",
       "weight": "8 lbs.",
       "armor bonus": "+2;",
-      "max dex bonus": "—;",
+      "max dex bonus": ";",
       "armor check penalty": "0",
-      "arcane spell failure chance": "—;",
+      "arcane spell failure chance": ";",
       "speed": "30 ft./20 ft. Description This set of colorful scarves, is made of heavy silk and reinforced with leather straps. As you move, they flutter and flow, obscuring your shape and protecting against enemy attacks. Varisian dancing scarves provide no benefit while you are standing still. Whenever you move at least 10 feet during your turn, you gain a +2 armor bonus to AC until the beginning of your next turn. Varisian dancing scarves add their enhancement bonus to this armor bonus instead of providing a constant benefit; other magical enhancements (such as light fortification ) apply whether or not you are moving. In addition, Varisian dancing scarves provide a +2 circumstance bonus on Bluff checks made to feint in combat."
     },
     "Hellknight leather": {
@@ -118,7 +118,7 @@
       "max dex bonus": "+5;",
       "armor check penalty": "-1",
       "arcane spell failure chance": "15%;",
-      "speed": "30 ft./20 ft. Description There are instances where wearing full plate armor can jeopardize a Hellknight's life. Primarily worn by Hellknight sailors, this studded leather armor includes heavy gloves and a helm of sculpted leather designed to look like a skull— either a human's or that of some aquatic creature. Hellknight leather's statistics are identical to those of studded leather, except it costs 5 gp more and weighs 5 pounds more."
+      "speed": "30 ft./20 ft. Description There are instances where wearing full plate armor can jeopardize a Hellknight's life. Primarily worn by Hellknight sailors, this studded leather armor includes heavy gloves and a helm of sculpted leather designed to look like a skull either a human's or that of some aquatic creature. Hellknight leather's statistics are identical to those of studded leather, except it costs 5 gp more and weighs 5 pounds more."
     },
     "Hide shirt": {
       "source": "Varisia, Birthplace of Legends pg. 14 , Rise of the Runelords Player's Guide pg. 11 , Curse of the Crimson Throne Player's Guide pg. 13 Statistics",
@@ -210,7 +210,7 @@
       "max dex bonus": "+3;",
       "armor check penalty": "-2",
       "arcane spell failure chance": "20%;",
-      "speed": "20 ft./15 ft. Description This sturdy leather coat is reinforced with metal plates sewn into the lining. An armored coat is more cumbersome than light armor but less effective than most medium armors. The advantage of it is that a person can don it or remove it as a move action (there is no “don hastily” option for an armored coat). If worn over other armor, use the better AC bonus and worse value in all other categories; an armored coat has no effect if worn with heavy armor. The only magic effects that apply are those of armor, clothing, or items worn on top."
+      "speed": "20 ft./15 ft. Description This sturdy leather coat is reinforced with metal plates sewn into the lining. An armored coat is more cumbersome than light armor but less effective than most medium armors. The advantage of it is that a person can don it or remove it as a move action (there is no don hastily option for an armored coat). If worn over other armor, use the better AC bonus and worse value in all other categories; an armored coat has no effect if worn with heavy armor. The only magic effects that apply are those of armor, clothing, or items worn on top."
     },
     "Chain coat": {
       "source": "Adventurer's Armory 2 pg. 6 Statistics",
@@ -290,7 +290,7 @@
       "max dex bonus": "+3;",
       "armor check penalty": "-4",
       "arcane spell failure chance": "25%;",
-      "speed": "20 ft./15 ft. Description This breastplate is specially crafted in a manner that allows extra maneuverability for some physical activities. The armor check penalty for Climb checks and Acrobatics checks made to jump is only –1 (masterwork and mithral versions of this armor reduce this penalty as well as the normal penalty)."
+      "speed": "20 ft./15 ft. Description This breastplate is specially crafted in a manner that allows extra maneuverability for some physical activities. The armor check penalty for Climb checks and Acrobatics checks made to jump is only 1 (masterwork and mithral versions of this armor reduce this penalty as well as the normal penalty)."
     },
     "Breastplate": {
       "source": "Ultimate Equipment pg. 9 , PRPG Core Rulebook pg. 151 Statistics",
@@ -340,7 +340,7 @@
       "max dex bonus": "+3;",
       "armor check penalty": "-4",
       "arcane spell failure chance": "30%;",
-      "speed": "20 ft./15 ft. Description This medium armor consists of hundreds of small, interlocking pieces of steel shaped to resemble an ancient symbol for the word “mountain.” The mail is then riveted to a cloth or leather backing. It is worn like a mail coat and covers your torso, shoulders, and thighs."
+      "speed": "20 ft./15 ft. Description This medium armor consists of hundreds of small, interlocking pieces of steel shaped to resemble an ancient symbol for the word mountain. The mail is then riveted to a cloth or leather backing. It is worn like a mail coat and covers your torso, shoulders, and thighs."
     }
   },
   "Heavy": {
@@ -372,7 +372,7 @@
       "max dex bonus": "+1;",
       "armor check penalty": "-7",
       "arcane spell failure chance": "35%;",
-      "speed": "20 ft./15 ft. Description Kusari gusoku is similar to tatami-do armor; however, a katabira— a type of chain jacket—is worn in place of the chest armor."
+      "speed": "20 ft./15 ft. Description Kusari gusoku is similar to tatami-do armor; however, a katabira a type of chain jacketis worn in place of the chest armor."
     },
     "Lamellar (iron)": {
       "source": "Ultimate Equipment pg. 9 , Ultimate Combat pg. 128 Statistics",
@@ -412,7 +412,7 @@
       "max dex bonus": "+0;",
       "armor check penalty": "-7",
       "arcane spell failure chance": "40%;",
-      "speed": "20 ft./15 ft. Description This style of half-plate is specially crafted in a manner that allows extra maneuverability for some physical activities. The armor check penalty for Climb checks and jump checks is only –4 (masterwork and mithral versions of this armor reduce this penalty as well as the normal penalty). In addition, unlike with most heavy armors, the wearer can still run at quadruple speed instead of triple speed."
+      "speed": "20 ft./15 ft. Description This style of half-plate is specially crafted in a manner that allows extra maneuverability for some physical activities. The armor check penalty for Climb checks and jump checks is only 4 (masterwork and mithral versions of this armor reduce this penalty as well as the normal penalty). In addition, unlike with most heavy armors, the wearer can still run at quadruple speed instead of triple speed."
     },
     "Alkenstar fortress plate": {
       "source": "Adventurer's Armory 2 pg. 6 Statistics",
@@ -422,7 +422,7 @@
       "max dex bonus": "+0;",
       "armor check penalty": "-7",
       "arcane spell failure chance": "40%;",
-      "speed": "20 ft./15 ft. Description This dwarf-forged armor features layers of overlapping plates molded to deflect projectiles—especially those from firearms. Whenever you are the target of a ranged weapon attack that would ignore your armor bonus to AC, you add half the fortress plate's armor bonus (including enhancement bonuses) to your AC against that attack. This benefit does not apply to energy attacks or magical touch attacks such as rays. Because the armor is designed with dwarves in mind, If you have the dwarf's weapon familiarity racial trait, you increase this projectile-only bonus by 1. Fortress plate is incredibly bulky, and its armor category can't be reduced by any effect (including by special materials, such as mithral). Fortress plate includes gauntlets and a helm."
+      "speed": "20 ft./15 ft. Description This dwarf-forged armor features layers of overlapping plates molded to deflect projectilesespecially those from firearms. Whenever you are the target of a ranged weapon attack that would ignore your armor bonus to AC, you add half the fortress plate's armor bonus (including enhancement bonuses) to your AC against that attack. This benefit does not apply to energy attacks or magical touch attacks such as rays. Because the armor is designed with dwarves in mind, If you have the dwarf's weapon familiarity racial trait, you increase this projectile-only bonus by 1. Fortress plate is incredibly bulky, and its armor category can't be reduced by any effect (including by special materials, such as mithral). Fortress plate includes gauntlets and a helm."
     },
     "Half-plate": {
       "source": "Ultimate Equipment pg. 9 , PRPG Core Rulebook pg. 151 Statistics",
@@ -462,7 +462,7 @@
       "max dex bonus": "+2;",
       "armor check penalty": "-6",
       "arcane spell failure chance": "35%;",
-      "speed": "20 ft./15 ft. Description Worn almost exclusively by highranking samurai, o-yoroi—or “great armor”—is a heavy combat armor that consists of various supplementary components that include both plate and lamellar elements. Each suit is crafted for a specific individual and displays the owner's aesthetic. Upon completion, the suit is colored and sealed with a final lacquer finish. The centerpiece of o-yoroi is a cuirass consisting of two parts—a separate reinforcement for the right side called a waidate, and a kikko cuirass. The upper part of the waidate consists of a leather-covered iron plate. The cuirass's leather shoulder straps—called watagami—are likewise armored with metal plates. Affixed to the cuirass are a number of supplementary pieces, including wide lamellar shoulder guards, a kikko sleeve for the shield arm, lacquered iron greaves worn over padded silk leggings, and a groin protector. The signature component of each suit of armor is the tiered kabuto helmet and its accompanying ho-ate mask. Ho-ate masks can be made of hardened leather or metal and are fashioned into fearsome visages such as oni, dragons, or other mythical beings."
+      "speed": "20 ft./15 ft. Description Worn almost exclusively by highranking samurai, o-yoroior great armoris a heavy combat armor that consists of various supplementary components that include both plate and lamellar elements. Each suit is crafted for a specific individual and displays the owner's aesthetic. Upon completion, the suit is colored and sealed with a final lacquer finish. The centerpiece of o-yoroi is a cuirass consisting of two partsa separate reinforcement for the right side called a waidate, and a kikko cuirass. The upper part of the waidate consists of a leather-covered iron plate. The cuirass's leather shoulder strapscalled watagamiare likewise armored with metal plates. Affixed to the cuirass are a number of supplementary pieces, including wide lamellar shoulder guards, a kikko sleeve for the shield arm, lacquered iron greaves worn over padded silk leggings, and a groin protector. The signature component of each suit of armor is the tiered kabuto helmet and its accompanying ho-ate mask. Ho-ate masks can be made of hardened leather or metal and are fashioned into fearsome visages such as oni, dragons, or other mythical beings."
     },
     "Full plate": {
       "source": "Ultimate Equipment pg. 9 , PRPG Core Rulebook pg. 151 Statistics",
@@ -505,7 +505,141 @@
       "speed": "15 ft./10 ft. Description This armor is crafted by dwarven stonesmiths from alchemically strengthened plates of basalt. Stoneplate is heavy and unwieldy, but offers incredible protection to its wearer. It is primarily used by dwarven druids who cannot wear metal armor."
     }
   },
-  "Shields": {},
-  "Extras": {},
-  "Mods": {}
+  "Shields": {
+    "Buckler": {
+      "source": "[PFS Legal]",
+      "cost": "5 gp",
+      "weight": "5 lbs.",
+      "armor bonus": "+1",
+      "max dex bonus": "",
+      "armor check penalty": "-1",
+      "arcane spell failure chance": "5%"
+    },
+    "Klar": {
+      "source": "[PFS Legal]",
+      "cost": "12 gp",
+      "weight": "6 lbs.",
+      "armor bonus": "+1",
+      "max dex bonus": "",
+      "armor check penalty": "-1",
+      "arcane spell failure chance": "5%"
+    },
+    "Light steel": {
+      "source": "[PFS Legal]",
+      "cost": "9 gp",
+      "weight": "6 lbs.",
+      "armor bonus": "+1",
+      "max dex bonus": "",
+      "armor check penalty": "-1",
+      "arcane spell failure chance": "5%"
+    },
+    "Light steel quickdraw": {
+      "source": "[PFS Legal]",
+      "cost": "59 gp",
+      "weight": "7 lbs.",
+      "armor bonus": "+1",
+      "max dex bonus": "",
+      "armor check penalty": "-2",
+      "arcane spell failure chance": "5%"
+    },
+    "Light wooden": {
+      "source": "[PFS Legal]",
+      "cost": "3 gp",
+      "weight": "5 lbs.",
+      "armor bonus": "+1",
+      "max dex bonus": "",
+      "armor check penalty": "-1",
+      "arcane spell failure chance": "5%"
+    },
+    "Light wooden quickdraw": {
+      "source": "[PFS Legal]",
+      "cost": "53 gp",
+      "weight": "6 lbs.",
+      "armor bonus": "+1",
+      "max dex bonus": "",
+      "armor check penalty": "-2",
+      "arcane spell failure chance": "5%"
+    },
+    "Madu (leather)": {
+      "source": "[PFS Legal]",
+      "cost": "40 gp",
+      "weight": "5 lbs.",
+      "armor bonus": "+1",
+      "max dex bonus": "",
+      "armor check penalty": "-2",
+      "arcane spell failure chance": "5%"
+    },
+    "Madu (steel)": {
+      "source": "[PFS Legal]",
+      "cost": "50 gp",
+      "weight": "6 lbs.",
+      "armor bonus": "+1",
+      "max dex bonus": "",
+      "armor check penalty": "-2",
+      "arcane spell failure chance": "5%"
+    },
+    "Poisoner's Buckler": {
+      "source": "[PFS Legal]",
+      "cost": "1,505 gp",
+      "weight": "3 lbs.",
+      "armor bonus": "+1",
+      "max dex bonus": "",
+      "armor check penalty": "",
+      "arcane spell failure chance": ""
+    },
+    "War-shield, dwarven": {
+      "source": "[PFS Legal]",
+      "cost": "50 gp",
+      "weight": "8 lbs.",
+      "armor bonus": "+1",
+      "max dex bonus": "",
+      "armor check penalty": "-1",
+      "arcane spell failure chance": "20%"
+    },
+    "Heavy steel": {
+      "source": "[PFS Legal]",
+      "cost": "20 gp",
+      "weight": "15 lbs.",
+      "armor bonus": "+2",
+      "max dex bonus": "",
+      "armor check penalty": "-2",
+      "arcane spell failure chance": "15%"
+    },
+    "Heavy wooden": {
+      "source": "[PFS Legal]",
+      "cost": "7 gp",
+      "weight": "10 lbs.",
+      "armor bonus": "+2",
+      "max dex bonus": "",
+      "armor check penalty": "-2",
+      "arcane spell failure chance": "15%"
+    },
+    "Snarlshield, steel": {
+      "source": "[PFS Legal]",
+      "cost": "50 gp",
+      "weight": "20 lbs.",
+      "armor bonus": "+2",
+      "max dex bonus": "",
+      "armor check penalty": "-3",
+      "arcane spell failure chance": "15%"
+    },
+    "Snarlshield, wooden": {
+      "source": "[PFS Legal]",
+      "cost": "37 gp",
+      "weight": "15 lbs.",
+      "armor bonus": "+2",
+      "max dex bonus": "",
+      "armor check penalty": "-3",
+      "arcane spell failure chance": "15%"
+    },
+    "Tower": {
+      "source": "[PFS Legal]",
+      "cost": "30 gp",
+      "weight": "45 lbs.",
+      "armor bonus": "+4",
+      "max dex bonus": "+2",
+      "armor check penalty": "-10",
+      "arcane spell failure chance": "50%"
+    }
+  }
 }

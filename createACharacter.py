@@ -1662,7 +1662,9 @@ class Character:
             armor_type = None
 
         self.armor_type = armor_type
-        return self.armor_type                          
+        return self.armor_type     
+
+                             
 
     def item_chooser(self):
         i = self.determine_start_index()
@@ -2240,9 +2242,26 @@ class Character:
     # Start of AC calculation
     def ac_bonus_calculator(self):
         if self.armor_type == 'H':
-
-
             print('baba booey')
+
+    def weapon_condtions(self):
+        print('baba booey')
+
+
+
+    def list_selection(self, name, limits=None):
+        # set up a condiiton for if dex > high -> medium or light armor
+        # else use heavy armor
+        choice = random.choice(list(getattr(self, name).keys()))
+        result = list(getattr(self, name).get(choice, {}).keys())
+        choice_2 = random.choice(result)
+        result_2 = getattr(self, name).get(choice, {}).get(choice_2, {})   
+
+        result_dict = {choice_2: result_2}
+        print(f'This is your result: {result_dict}')
+        
+        return result
+
         
 
     # here to help create AC calculation

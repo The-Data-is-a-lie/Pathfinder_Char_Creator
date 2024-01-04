@@ -49,6 +49,8 @@ character_json_config = {
 	'class_data': 'json/class_data.json',			
 	'gunslinger_deeds_dares': 'json/gunslinger_deeds_dares.json',					
 	"feat_buckets": "json/feat_buckets.json",
+	"armor": "json/armor.json",
+	"weapons_data": "json/weapons_data.json",
 
 
 	"alchemist": "json/class_data/alchemist.json",
@@ -288,6 +290,9 @@ while userInput.lower() == 'y':
 		character.simple_list_chooser('ranger','favored_terrains', 'favored_enemies')
 		character.simple_list_chooser('brawler','manuevers',max_num=8)
 
+
+		character.list_selection('armor')
+		character.list_selection('weapons_data')
 
 
 
