@@ -1653,17 +1653,6 @@ class Character:
             price = (price ** 2) * 1000
         return price
 
-    def armor_chooser(self):
-        armor_type_data = getattr(data, 'armor_type_mapping')
-        default_armor_type = 'H'  # Default armor type
-
-        armor_type = armor_type_data.get(self.c_class, default_armor_type)
-        if self.bab == 'L':
-            armor_type = None
-
-        self.armor_type = armor_type
-        return self.armor_type     
-
                              
 
     def item_chooser(self):
@@ -2239,20 +2228,23 @@ class Character:
         return amount  
     
 
+# start of Armor + Weapon choosing
+     
     # Start of AC calculation
     def ac_bonus_calculator(self):
         if self.armor_type == 'H':
             print('baba booey')
 
-    def weapon_condtions(self):
-        print('baba booey')
+
 
 
 
     def list_selection(self, name, limits=None):
-        # set up a condiiton for if dex > high -> medium or light armor
-        # else use heavy armor
-        choice = random.choice(list(getattr(self, name).keys()))
+        if limits is not None:
+            choice = self.list_selection_limits(name, limits)
+        else:
+            choice = random.choice(list(getattr(self, name).keys()))  
+
         result = list(getattr(self, name).get(choice, {}).keys())
         choice_2 = random.choice(result)
         result_2 = getattr(self, name).get(choice, {}).get(choice_2, {})   
@@ -2262,21 +2254,54 @@ class Character:
         
         return result
 
+    def list_selection_limits(self, name, limits=None):
+        skip_count = {'L': 0, 'S':0, 'M': 1, 'H': 2}.get(limits, 0)
+        attribute_keys = iter(getattr(self, name))
+        key = next(attribute_keys, None)            
         
 
+        for _ in range(skip_count):
+            key = next(attribute_keys, None)
+            if key is None:
+                break
+        print('this is your key', key)
+        return key
+
     # here to help create AC calculation
-    # def armor_chooser(self):
-    #     armor_type_data = getattr(data, 'armor_type_mapping')
-    #     default_armor_type = 'H'  # Default armor type
+    def armor_chooser(self):
+        armor_type_data = getattr(data, 'armor_type_mapping')
+        default_armor_type = 'H'  # Default armor type
 
-    #     armor_type = armor_type_data.get(self.c_class, default_armor_type)
-    #     if self.bab == 'L':
-    #         armor_type = None
+        armor_type = armor_type_data.get(self.c_class, default_armor_type)
+        if self.bab == 'L':
+            armor_type = None
 
-    #     self.armor_type = armor_type
-    #     return self.armor_type   
+        self.magus_armor_chooser(self.c_class_level)
+
+        self.armor_type = armor_type
+        return self.armor_type   
+    
+    
+    def weapon_chooser(self):
+        weapon_type_data = self.class_data.get(self.c_class, {}).get('weapon and armor proficiency')
+        print(weapon_type_data)
+        self.weapon_type = 'M' if 'martial' in weapon_type_data else 'S'
+        print(self.weapon_type)
+        return self.weapon_type
+
     
 
+    def magus_armor_chooser(self, level):
+        if self.c_class == 'magus':
+            self.armor_type = 'L'
+            if level >= 7:
+                self.armor_type = 'M'
+            elif level >= 13:
+                self.armor_type = 'H'
+
+            return self.armor_type
+        
+# End of Armor + Weapon choosing
 
     # def brawler_manuever_chooser(self, level):
     #     if self.c_class == "brawler":

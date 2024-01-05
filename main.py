@@ -291,8 +291,10 @@ while userInput.lower() == 'y':
 		character.simple_list_chooser('brawler','manuevers',max_num=8)
 
 
-		character.list_selection('armor')
-		character.list_selection('weapons_data')
+		character.list_selection('armor', limits=character.armor_type)
+		character.weapon_chooser()
+		character.list_selection('weapons_data', limits=character.weapon_type)
+
 
 
 

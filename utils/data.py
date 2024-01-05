@@ -109,8 +109,8 @@ formulas = {
 armor_type_mapping = {
     ('monk', 'unchained_monk'): None,
     ('rogue', 'bard', 'brawler'): 'L',
-    ('barbarian', 'unchained_barbarian', 'ranger'): 'M',
-    ('cleric',): 'H'
+    ('barbarian', 'unchained_barbarian', 'ranger', 'cleric'): 'M',
+    (): 'H'
 }
 # caster spell known progression:
 # wizards know 3 + INT mod + 2(per level) spells
