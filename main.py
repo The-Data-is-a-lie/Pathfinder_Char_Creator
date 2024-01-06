@@ -51,6 +51,8 @@ character_json_config = {
 	"feat_buckets": "json/feat_buckets.json",
 	"armor": "json/armor.json",
 	"weapons_data": "json/weapons_data.json",
+	"weapon_qualities": "json/weapon_qualities.json",
+	"armor_qualities": "json/armor_qualities.json",
 
 
 	"alchemist": "json/class_data/alchemist.json",
@@ -291,9 +293,31 @@ while userInput.lower() == 'y':
 		character.simple_list_chooser('brawler','manuevers',max_num=8)
 
 
-		character.list_selection('armor', limits=character.armor_type)
+		character.armor_dict = character.list_selection('armor', limits=character.armor_type)
 		character.weapon_chooser()
-		character.list_selection('weapons_data', limits=character.weapon_type)
+		character.weapon_dict = character.list_selection('weapons_data', limits=character.weapon_type)
+		limits = character.shield_chooser(character.weapon_dict)
+		character.shield_dict = character.list_selection('armor', limits=limits)
+		character.shield_flag = character.shield_flag_func(limits=limits)
+
+# Maybe change these
+		armor_enhancement = character.enhancement_calculator(3)
+		weapon_enhancement = character.enhancement_calculator(2)
+		shield_enhancement = character.enhancement_calculator(1)
+
+		Armor = character.ac_bonus_calculator(character.armor_dict)
+		Shield = character.ac_bonus_calculator(character.shield_dict)
+
+		weapon_type_flag = character.weapon_type_flag_func(character.weapon_dict)
+
+		weapon_enhancement_chosen_list = character.enhancement_chooser(character.weapon_qualities,weapon_enhancement, weapon_type_flag)
+		armor_enhancement_chosen_list = character.enhancement_chooser(character.armor_qualities,armor_enhancement, 'Armor')
+		shield_enhancement_chosen_list = character.enhancement_chooser(character.armor_qualities,armor_enhancement, 'Shield')
+
+		print(weapon_enhancement_chosen_list, armor_enhancement_chosen_list, shield_enhancement_chosen_list)
+
+
+
 
 
 

@@ -112,6 +112,19 @@ armor_type_mapping = {
     ('barbarian', 'unchained_barbarian', 'ranger', 'cleric'): 'M',
     (): 'H'
 }
+
+enhancement_bonus_mapping = {
+    2000: 1,
+    8000: 2,
+    18000: 3,
+    32000: 4,
+    50000: 5,
+    72000: 6,
+    98000: 7,
+    128000: 8,
+    162000: 9,
+    200000: 10,
+}
 # caster spell known progression:
 # wizards know 3 + INT mod + 2(per level) spells
 

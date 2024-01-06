@@ -2226,45 +2226,95 @@ class Character:
         print(f'this is your formula {formula}')
         amount = eval(formula)
         return amount  
+
+# Start enhnacement to Armor + Weapons
     
+    def enhancement_calculator(self, gold_divisor):
+        mapping = getattr(data,'enhancement_bonus_mapping')
+        closest_key = min(mapping.keys(), key=lambda x: abs(x - (self.gold // gold_divisor)))
+        self.gold = self.gold - closest_key 
+        enhancement_bonus = mapping[closest_key]
+        return enhancement_bonus
+    
+    def enhancement_chooser(self, data, enhancement_bonus, weapon_type):
+        if weapon_type == 'Shield' and self.shield_flag != None:
+            return []
+        total_bonus = 0
+        enhancement_list = list(data.get(weapon_type).keys())
+        chosen_enhancement_list = []
+        while (enhancement_bonus - total_bonus) > 5: 
+            chosen_enhancement = random.choice(enhancement_list)
+            chosen_enhancement_bonus = data[weapon_type][chosen_enhancement].get('enhancement', 0)
+            total_bonus += int(chosen_enhancement_bonus)
+            enhancement_list.remove(chosen_enhancement)
+            chosen_enhancement_list.append(chosen_enhancement)
+        
+        return chosen_enhancement_list
+            
+
+
+
+        
+# End of enhancement to Armor + Weapons
 
 # start of Armor + Weapon choosing
      
     # Start of AC calculation
-    def ac_bonus_calculator(self):
-        if self.armor_type == 'H':
-            print('baba booey')
+    def ac_bonus_calculator(self, dictionary):
+        if dictionary is None:
+            return 0
 
-
-
-
+        for _, value in dictionary.items():
+            armor_bonus = value.get('armor bonus', 0)
+        return armor_bonus
+    
+    def shield_chooser(self, dictionary):
+        shieldless_weapons = ["Two-Handed", "Ranged"]
+        for item in dictionary.values():
+            category = item.get('category', 'no shield')
+            limits = 'Shield' if all(weapon not in category for weapon in shieldless_weapons) else 'no shield'
+        if limits == 'Shield' and (self.armor_type == 'H' and random.randint(1,100)>90):
+            limits = 'Tower'
+            return limits
+    def shield_flag_func(self, limits):
+        if limits == 'Shield' or limits == 'Tower':
+            self.shield_flag = True
+        else:
+            self.shield_flag = False
+        
+    def weapon_type_flag_func(self, dictionary):
+        for item in dictionary.values():
+            if item.get('category', 'no shield') == 'Ranged':
+                weapon_type = 'Ranged'
+            else:
+                weapon_type = 'Melee'
+        return weapon_type
 
     def list_selection(self, name, limits=None):
-        if limits is not None:
-            choice = self.list_selection_limits(name, limits)
-        else:
-            choice = random.choice(list(getattr(self, name).keys()))  
+        if limits != 'no shield':
+            if limits is not None:
+                choice = self.list_selection_limits(name, limits)
+            else:
+                choice = random.choice(list(getattr(self, name).keys()))  
 
-        result = list(getattr(self, name).get(choice, {}).keys())
-        choice_2 = random.choice(result)
-        result_2 = getattr(self, name).get(choice, {}).get(choice_2, {})   
+            result = list(getattr(self, name).get(choice, {}).keys())
+            choice_2 = random.choice(result)
+            result_2 = getattr(self, name).get(choice, {}).get(choice_2, {})   
 
-        result_dict = {choice_2: result_2}
-        print(f'This is your result: {result_dict}')
-        
-        return result
+            result_dict = {choice_2: result_2}
+            print(f'This is your result: {result_dict}')
+            
+            return result_dict
 
     def list_selection_limits(self, name, limits=None):
-        skip_count = {'L': 0, 'S':0, 'M': 1, 'H': 2}.get(limits, 0)
+        skip_count = {'L': 0, 'S':0, 'M': 1, 'H': 2, 'Shield': 3, 'Tower': 4}.get(limits, 0)
         attribute_keys = iter(getattr(self, name))
         key = next(attribute_keys, None)            
-        
 
         for _ in range(skip_count):
             key = next(attribute_keys, None)
             if key is None:
                 break
-        print('this is your key', key)
         return key
 
     # here to help create AC calculation
@@ -2289,7 +2339,8 @@ class Character:
         print(self.weapon_type)
         return self.weapon_type
 
-    
+        
+
 
     def magus_armor_chooser(self, level):
         if self.c_class == 'magus':
@@ -2302,6 +2353,8 @@ class Character:
             return self.armor_type
         
 # End of Armor + Weapon choosing
+
+
 
     # def brawler_manuever_chooser(self, level):
     #     if self.c_class == "brawler":
