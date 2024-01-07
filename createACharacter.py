@@ -1693,7 +1693,7 @@ class Character:
         return equipment_name, random_equip, price
 
     def subtract_price_from_gold(self, price):
-        self.gold -= price
+        self.gold -= int(price)
 
 
 # End of major task: Items and Prices
@@ -2248,9 +2248,23 @@ class Character:
             total_bonus += int(chosen_enhancement_bonus)
             enhancement_list.remove(chosen_enhancement)
             chosen_enhancement_list.append(chosen_enhancement)
+
         
         return chosen_enhancement_list
-            
+    
+    def bonus_gold_calculator(self, chosen_enhancement, weapon_type, data):
+        price = data[weapon_type][chosen_enhancement].get('price', 0)
+        print(f'this is your price {price}')
+        if price == "":
+            bonus_cost = 0
+        else:
+            price = price.replace(",", "")
+            bonus_cost = int(price)
+        bonus_cost = self.bonus_gold_calculator(chosen_enhancement, weapon_type, data)
+        self.gold -= bonus_cost            
+
+
+
 
 
 
@@ -2338,8 +2352,6 @@ class Character:
         self.weapon_type = 'M' if 'martial' in weapon_type_data else 'S'
         print(self.weapon_type)
         return self.weapon_type
-
-        
 
 
     def magus_armor_chooser(self, level):
