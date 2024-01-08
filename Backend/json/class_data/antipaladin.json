@@ -1,0 +1,28 @@
+{
+    "cruelty": {
+      "3": {
+        "fatigued": "The target is fatigued.",
+        "shaken": "The target is shaken for 1 round per level of the antipaladin.",
+        "sickened": "The target is sickened for 1 round per level of the antipaladin."
+      },
+      "6": {
+        "dazed": "The target is dazed for 1 round.",
+        "diseased": "The target contracts a disease, as if the antipaladin had cast contagion, using his antipaladin level as his caster level.",
+        "staggered": "The target is staggered for 1 round per two levels of the antipaladin."
+      },
+      "9": {
+        "cursed": "The target is cursed, as if the antipaladin had cast bestow curse, using his antipaladin level as his caster level.",
+        "exhausted": "The target is exhausted. The antipaladin must have the fatigue cruelty before selecting this cruelty.",
+        "frightened": "The target is frightened for 1 round per two levels of the antipaladin. The antipaladin must have the shaken cruelty before selecting this cruelty.",
+        "nauseated": "The target is nauseated for 1 round per three levels of the antipaladin. The antipaladin must have the sickened cruelty before selecting this cruelty.",
+        "poisoned": "The target is poisoned, as if the antipaladin had cast poison, using the antipaladin's level as the caster level."
+      },
+      "12": {
+        "blinded": "The target is blinded for 1 round per level of the antipaladin.",
+        "deafened": "The target is deafened for 1 round per level of the antipaladin.",
+        "paralyzed": "The target is paralyzed for 1 round.",
+        "stunned": "The target is stunned for 1 round per four levels of the antipaladin."
+      }
+    }
+  }
+  
