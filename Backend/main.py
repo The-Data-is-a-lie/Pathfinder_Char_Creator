@@ -316,7 +316,10 @@ while userInput.lower() == 'y':
 
 		print(weapon_enhancement_chosen_list, armor_enhancement_chosen_list, shield_enhancement_chosen_list)
 
-		selected_traits = print(character.trait_selector(8))
+		selected_traits = character.trait_selector(8)
+		print(selected_traits)
+
+		character.subrace_chooser()
 
 
 

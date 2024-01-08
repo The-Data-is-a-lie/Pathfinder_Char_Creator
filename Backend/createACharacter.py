@@ -2368,10 +2368,26 @@ class Character:
     def trait_selector(self, count):
         trait_data = pd.read_csv('data/traits.csv', sep='|')
         extraction_list = ['name', 'description']
-        query_i = trait_data[extraction_list]
+        conditions = self.trait_selector_limits(trait_data)
+        query_i = trait_data.loc[conditions,extraction_list]
         query_i = query_i.sample(frac=1.0)
         traits = query_i[:count]
         return traits
+    
+    def trait_selector_limits(self, trait_data):
+        conditions = ( (trait_data['requirement_race'] == self.chosen_race) &
+                      (trait_data['requirement_class'] == self.c_class)
+                    |
+                    (trait_data['requirement_race'].isnull()) &
+                    (trait_data['requirement_class'].isnull())                    
+                    )
+                    #   trait_data['requirement_faith'] == ,
+                    #   trait_data['requirement_alignment'] == self.alignment
+                      
+        return conditions
+    
+    def subrace_chooser(self):
+        print('finish this function')
 
 
         
