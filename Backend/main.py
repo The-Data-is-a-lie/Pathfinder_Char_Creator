@@ -46,7 +46,6 @@ character_json_config = {
 	'animal_companion': 'Backend/json/animal_companion.json',	
 	'animal_choices': 'Backend/json/animal_choices.json',
 	'wizard_schools': 'Backend/json/wizard_schools.json',	
-	'class_data': 'Backend/json/class_data.json',			
 	'gunslinger_deeds_dares': 'Backend/json/gunslinger_deeds_dares.json',					
 	"feat_buckets": "Backend/json/feat_buckets.json",
 	"armor": "Backend/json/armor.json",
@@ -88,10 +87,6 @@ character_json_config = {
 
 
 while userInput.lower() == 'y':
-	name = random.randint(0,100000000000)
-	character_name = name
-	# filename = f"C:/Users/Daniel/Dropbox/My PC (DESKTOP-NEM7B1P)/Desktop/Randomized Character Sheet Generator/_{name}_character_sheet.txt"
-
 	isTrue = isBool(userInput)
 
 	if userInput == 'y':
@@ -319,6 +314,8 @@ while userInput.lower() == 'y':
 		selected_traits = character.trait_selector(8)
 		print(selected_traits)
 
+# Add a Subrace Chooser (+ race benefits -> webscrape race data)
+# Add an attack macro section (so we know what attack macros someone will get (like +22/+22/+17/+17/+12/+12/+7/+7/+2/ or similar))
 		character.subrace_chooser()
 
 

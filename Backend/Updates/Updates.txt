@@ -149,6 +149,9 @@ Needs (Low Prio):
 - Web scraped weapon + armor magic qualities
 - Developed a new system that assigns armor + weapons to classes
 
+1/10/24:
+- Been working on AwesomeSheet. can now run a localhost -> want to connect python + JS to make the varaibles dynamic
+
 *** Need to add a dice rereroller (so your main stat is always your highest) ***
 
 Completed:
