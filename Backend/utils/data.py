@@ -109,7 +109,7 @@ formulas = {
 armor_type_mapping = {
     ('monk', 'unchained_monk'): None,
     ('rogue', 'bard', 'brawler'): 'L',
-    ('barbarian', 'unchained_barbarian', 'ranger', 'cleric'): 'M',
+    ('barbarian', 'unchained_barbarian', 'ranger'): 'M',
     (): 'H'
 }
 

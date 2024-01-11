@@ -2236,21 +2236,22 @@ class Character:
         enhancement_bonus = mapping[closest_key]
         return enhancement_bonus
     
-    def enhancement_chooser(self, data, enhancement_bonus, weapon_type):
-        if weapon_type == 'Shield' and self.shield_flag != None:
+    def enhancement_chooser(self, data, enhancement_bonus, weapon_type, shield_type = True):
+        if weapon_type == 'Shield' and shield_type != True:
             return []
-        total_bonus = 0
-        enhancement_list = list(data.get(weapon_type).keys())
-        chosen_enhancement_list = []
-        while (enhancement_bonus - total_bonus) > 5: 
-            chosen_enhancement = random.choice(enhancement_list)
-            chosen_enhancement_bonus = data[weapon_type][chosen_enhancement].get('enhancement', 0)
-            total_bonus += int(chosen_enhancement_bonus)
-            enhancement_list.remove(chosen_enhancement)
-            chosen_enhancement_list.append(chosen_enhancement)
+        else:
+            total_bonus = 0
+            enhancement_list = list(data.get(weapon_type).keys())
+            chosen_enhancement_list = []
+            while (enhancement_bonus - total_bonus) > 5: 
+                chosen_enhancement = random.choice(enhancement_list)
+                chosen_enhancement_bonus = data[weapon_type][chosen_enhancement].get('enhancement', 0)
+                total_bonus += int(chosen_enhancement_bonus)
+                enhancement_list.remove(chosen_enhancement)
+                chosen_enhancement_list.append(chosen_enhancement)
 
-        
-        return chosen_enhancement_list
+            
+            return chosen_enhancement_list
     
     def bonus_gold_calculator(self, chosen_enhancement, weapon_type, data):
         price = data[weapon_type][chosen_enhancement].get('price', 0)
@@ -2304,8 +2305,8 @@ class Character:
                 weapon_type = 'Melee'
         return weapon_type
 
-    def list_selection(self, name, limits=None):
-        if limits != 'no shield':
+    def list_selection(self, name, limits=None, shield_flag=True):
+        if shield_flag == True:
             if limits is not None:
                 choice = self.list_selection_limits(name, limits)
             else:

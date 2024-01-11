@@ -292,8 +292,8 @@ while userInput.lower() == 'y':
 		character.weapon_chooser()
 		character.weapon_dict = character.list_selection('weapons_data', limits=character.weapon_type)
 		limits = character.shield_chooser(character.weapon_dict)
-		character.shield_dict = character.list_selection('armor', limits=limits)
 		character.shield_flag = character.shield_flag_func(limits=limits)
+		character.shield_dict = character.list_selection('armor', limits=limits, shield_flag = character.shield_flag)
 
 # Maybe change these
 		armor_enhancement = character.enhancement_calculator(3)
@@ -307,7 +307,7 @@ while userInput.lower() == 'y':
 
 		weapon_enhancement_chosen_list = character.enhancement_chooser(character.weapon_qualities,weapon_enhancement, weapon_type_flag)
 		armor_enhancement_chosen_list = character.enhancement_chooser(character.armor_qualities,armor_enhancement, 'Armor')
-		shield_enhancement_chosen_list = character.enhancement_chooser(character.armor_qualities,armor_enhancement, 'Shield')
+		shield_enhancement_chosen_list = character.enhancement_chooser(character.armor_qualities,armor_enhancement, 'Shield', character.shield_flag)
 
 		print(weapon_enhancement_chosen_list, armor_enhancement_chosen_list, shield_enhancement_chosen_list)
 

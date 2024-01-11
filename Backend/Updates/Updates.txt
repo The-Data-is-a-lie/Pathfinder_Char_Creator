@@ -1,4 +1,8 @@
 Needs (High Prio):
+- Make sure enhancements can only be placed on their respective weapons
+- Make it so you can't have the same enhancements on shield + armor (???) (maybe not)
+
+
 - Add a section where high casters + mid casters can take meta magic feats
 
 - finish all classes on Pathfinder AON title 
