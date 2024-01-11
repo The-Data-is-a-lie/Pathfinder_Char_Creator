@@ -21,7 +21,7 @@
       "damage": "1d3 (small), 1d4 (medium)",
       "critical": "19-20/x2",
       "range": "10 ft.",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Light",
       "proficiency": "Simple Description Pirates often carry long brass knives for working aboard a ship. Though brass doesn't hold as sharp an edge as steel, it isn't vulnerable to rust like steel is. In a pinch, a pirate can use his brass knife as a weapon. Mostly, though, they are used for cutting ropes, cleaning fish, and other sundry tasks. A brass knife has the fragile quality. A fragile weapon gains the broken condition if the wielder rolls a natural 1 on an attack roll with the weapon. If a fragile weapon is already broken, rolling a natural 1 destroys it instead."
     },
@@ -46,7 +46,7 @@
       "damage": "1d3 (small), 1d4 (medium)",
       "critical": "19-20/x2",
       "range": "",
-      "type": "B or P",
+      "type": "B / P",
       "category": "Light",
       "proficiency": "Simple",
       "weapon groups": "Close ; Monk Description The cestus is a glove of leather or thick cloth that covers the wielder from mid-finger to mid-forearm. The close combat weapon is reinforced with metal plates over the fingers and often lined with wicked spikes along the backs of the hands and wrists. While wearing a cestus, you are considered armed and your unarmed attacks deal lethal damage. If you are proficient with a cestus, you can have your unarmed strikes deal bludgeoning or piercing damage. Monks are proficient with the cestus. When using a cestus, your fingers are mostly exposed, allowing you to wield or carry items in that hand, but the constriction of the weapon at your knuckles gives you a 2 penalty on all precision-based tasks involving that hand (such as opening locks). A cestus can't be disarmed."
@@ -59,7 +59,7 @@
       "damage": "1d3 (small), 1d4 (medium)",
       "critical": "19-20/x2",
       "range": "10 ft.",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Light",
       "proficiency": "Simple",
       "weapon groups": "Blades, Light ; Thrown ; Tribal Description A dagger is a fighting knife. Its blade is usually less than 1 foot long, and can be curved or straight, with one edge or two. Dagger designs vary widely, and can have many different names (such as a thrusting dagger being called a dirk). You get a +2 bonus on Sleight of Hand skill checks made to conceal a dagger on your body."
@@ -95,7 +95,7 @@
       "source": "Martial Arts Handbook pg. 30 Statistics",
       "cost": "1 sp",
       "weight": "",
-      "damage": " (small),  (medium)",
+      "damage": "(small),  (medium)",
       "critical": "",
       "range": "",
       "type": "",
@@ -122,7 +122,7 @@
       "damage": "1d3 (small), 1d4 (medium)",
       "critical": "x2",
       "range": "10 ft.",
-      "type": "B or P",
+      "type": "B / P",
       "category": "Light",
       "proficiency": "Simple Description Crafted from a single piece of iron, a kunai has a leaf-shaped blade and a ring for a pommel. Adapted from the common trowel, the kunai has a thick blade that is sharpened only near the tip. Unlike finer weapons, the kunai can readily substitute for a crowbar or piton without being damaged in the process."
     },
@@ -198,7 +198,7 @@
       "damage": "1d3 (small), 1d4 (medium)",
       "critical": "x2",
       "range": "10 ft.",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Light",
       "proficiency": "Simple Description This 4-inch blade is attached via a hinge to a wooden handle with a slot in the center, into which the blade can be folded. With a click of a switch, a spring thrusts the blade outward, where it locks into place until it is reset. Releasing the blade is a free action, and resetting it is a move action. The handle must be in your hand for the blade to be released; placing it in your hand requires the same type of action as drawing a weapon. A spring blade is easy to conceal: an observer must succeed at a DC 20 Perception check to notice the blade hidden within the wooden handle, and you gain a +4 bonus on Sleight of Hand checks to conceal a spring blade on your body."
     },
@@ -274,7 +274,7 @@
       "damage": "1d3 (small), 1d4 (medium)",
       "critical": "x2",
       "range": "",
-      "type": "B or P",
+      "type": "B / P",
       "category": "One-Handed",
       "proficiency": "Simple",
       "weapon groups": "Close ; Hammers Description A Stone Age weapon traditionally made of carved stone, a mere (MEH-reh) is a short, flat-sided, sharp-pointed club."
@@ -287,7 +287,7 @@
       "damage": "1d6 (small), 1d8 (medium)",
       "critical": "x2",
       "range": "",
-      "type": "B and P",
+      "type": "B + P",
       "category": "One-Handed",
       "proficiency": "Simple",
       "weapon groups": "Flails Description A morningstar is a spiked metal ball affixed to a handle."
@@ -429,7 +429,7 @@
       "damage": "1d6/1d4 (small), 1d8/1d6 (medium)",
       "critical": "x3/x2",
       "range": "",
-      "type": "B or P",
+      "type": "B / P",
       "category": "Two-Handed",
       "proficiency": "Simple",
       "weapon groups": "Double ; Spears Description This pole has a spear head at one end and a mace head at the other. It can be wielded like a standard spear (though it isn't balanced for throwing), or it can be used as a double weapon, alternately thrusting and bashing."
@@ -584,7 +584,7 @@
       "damage": "1d4 (small), 1d6 (medium)",
       "critical": "x3",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Light",
       "proficiency": "Martial",
       "weapon groups": "Axes Description A boarding axe is similar to a handaxe, but features a spike that allows the weapon to do either slashing or piercing damage. When in hand, a boarding axe grants a +2 circumstance bonus on Climb checks to scale wooden or other penetrable surfaces, such as ice."
@@ -636,7 +636,7 @@
       "damage": "1d3 (small), 1d4 (medium)",
       "critical": "19-20/x2",
       "range": "10 ft.",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Light",
       "proficiency": "Martial",
       "weapon groups": "Blades, Light ; Thrown Description This dagger is used in the off hand to block attacks. When you fight defensively or use Combat Expertise while wielding a dueling dagger, your bonus to AC increases by 1. This benefit applies even if you did not attack with the dueling dagger. If you aren't proficient with a dueling dagger, you treat it as a dagger and gain no special benefits. Any effects that apply to daggers apply to dueling daggers."
@@ -649,7 +649,7 @@
       "damage": "1d4 (small), 1d6 (medium)",
       "critical": "19-20/x2",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Light",
       "proficiency": "Martial",
       "weapon groups": "Blades, Light Description The gladius is the favorite sword of gladiators, with a heavier blade than the standard shortsword. Feats and abilities that affect shortswords apply to the gladius."
@@ -779,7 +779,7 @@
       "damage": "1d3 (small), 1d4 (medium)",
       "critical": "x2",
       "range": "10 ft.",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Light",
       "proficiency": "Martial Description What seems to be an ordinary baton sheaths a pair of matching slender-bladed daggersperfectly balanced throwing blades."
     },
@@ -1123,7 +1123,7 @@
       "damage": "1d6 (small), 1d8 (medium)",
       "critical": "x2",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "One-Handed",
       "proficiency": "Martial",
       "weapon groups": "Blades, Light Description This rigid, fingerless gauntlet has three blades projecting from the gauntlet's hand. The central blade is straight and double edged, while the side blades are curved like the prongs of a sai. You can't use the hand on which a manople is worn for anything else. A manople takes a full-round action to don, and gives you a +10 bonus to your CMD against disarm attempts."
@@ -1188,7 +1188,7 @@
       "damage": "1d4 (small), 1d6 (medium)",
       "critical": "x3",
       "range": "10 ft.",
-      "type": "P or S",
+      "type": "P / S",
       "category": "One-Handed",
       "proficiency": "Martial",
       "weapon groups": "Spears ; Thrown Description This weapon is similar to a shortspear with a flexible rattan or bamboo shaft and an elaborately barbed head. The barbs can snag flesh, clothing, or armor to ensnare an enemy."
@@ -1291,7 +1291,7 @@
       "damage": "1d8 (small), 1d10 (medium)",
       "critical": "x3",
       "range": "",
-      "type": "B or P",
+      "type": "B / P",
       "category": "Two-Handed",
       "proficiency": "Martial",
       "weapon groups": "Polearms Description The bec de corbin is a polearm very similar to the lucerne hammer, but the hammer head is slightly blunter and the spike is stouter and more hooked. You primarily attack with the spike. You gain a +2 bonus on combat maneuver checks to sunder medium or heavy armor with a bec de corbin."
@@ -1421,7 +1421,7 @@
       "damage": "1d8 (small), 1d10 (medium)",
       "critical": "x3",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Two-Handed",
       "proficiency": "Martial",
       "weapon groups": "Polearms Description A halberd is similar to a 5-foot-long spear, but it also has a small, axelike head mounted near the tip."
@@ -1460,7 +1460,7 @@
       "damage": "1d8 (small), 1d10 (medium)",
       "critical": "x3",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Two-Handed",
       "proficiency": "Martial",
       "weapon groups": "Polearms Description Crafted by goblins for battling horses, this weapon is essentially a long-handled halberd with an enlarged hook on the blade. Most horsechoppers are sized for Small creatures."
@@ -1498,7 +1498,7 @@
       "damage": "1d10 (small), 1d12 (medium)",
       "critical": "x2",
       "range": "",
-      "type": "B or P",
+      "type": "B / P",
       "category": "Two-Handed",
       "proficiency": "Martial",
       "weapon groups": "Polearms Description This polearm has both a pronged hammer head for crushing blows and a spiked head for piercing and peeling armor. The long haft allows the wielder to put amazing force behind the head of this weapon. You gain a +2 bonus on combat maneuver checks to sunder medium or heavy armor with a lucerne hammer."
@@ -1524,7 +1524,7 @@
       "damage": "1d4/1d4 (small), 1d6/1d6 (medium)",
       "critical": "x2",
       "range": "",
-      "type": "B or P or S",
+      "type": "B / P / S",
       "category": "Two-Handed",
       "proficiency": "Martial",
       "weapon groups": "Double ; Monk ; Polearms Description This polearm is a double weapon. One side is fitted with a broad, shovel-like sharpened blade, while the opposite side is fitted with a crescent blade that juts out like a pair of bull's horns. The monk's spade does many types of damage. The type of damage it deals depends on how it is wielded, with the spade side able to bludgeon and slash and the crescent side able to slash and pierce."
@@ -1550,7 +1550,7 @@
       "damage": "1d8 (small), 1d10 (medium)",
       "critical": "18-20/x2",
       "range": "",
-      "type": "S or P",
+      "type": "S / P",
       "category": "Two-Handed",
       "proficiency": "Martial",
       "weapon groups": "Blades, Heavy ; Polearms Description This very long, two-handed weapon has a slender but wickedly sharp 4-foot-long blade at one end. It is predominantly used by ground troops to attack mounted warriors, and can be used to hack riders from their mounts or set to receive a charge."
@@ -1588,7 +1588,7 @@
       "damage": "1d8 (small), 1d10 (medium)",
       "critical": "x2",
       "range": "",
-      "type": "B or P",
+      "type": "B / P",
       "category": "Two-Handed",
       "proficiency": "Martial",
       "weapon groups": "Hammers ; Spears Description This 5-foot tapered pole is bound in metal with a narrow metal spike projecting from the top. The planson can be used as a club or as a sturdy, if top-heavy, spear to stop a charge."
@@ -1614,7 +1614,7 @@
       "damage": "1d6 (small), 2d4 (medium)",
       "critical": "x3",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Two-Handed",
       "proficiency": "Martial Description This Bronze Age weapon is an early polearm consisting of a long, single-edged blade attached to a sturdy staff, sometimes slightly curved. It serves as both a cutting and a thrusting weapon."
     },
@@ -1651,7 +1651,7 @@
       "damage": "1d6 (small), 2d4 (medium)",
       "critical": "x4",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Two-Handed",
       "proficiency": "Martial",
       "weapon groups": "Blades, Heavy Description This weapon consists of a long wooden shaft with protruding handles and a sharp curved blade set at a right angle. Derived from a farm tool used to mow down crops, a scythe requires two hands to use, and is unwieldy but capable of inflicting grievous wounds. Its connotations as a symbol of death due to its association with reaping also make the scythe a particularly intimidating weapon."
@@ -1676,7 +1676,7 @@
       "damage": "1d8 (small), 1d10 (medium)",
       "critical": "19-20/x2",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Two-Handed",
       "proficiency": "Martial Description The head of this wooden Stone Age polearm is edged with jagged bits of obsidian, glass, teeth, or similar materials. The wide head serves well for both piercing and slashing attacks."
     },
@@ -1804,7 +1804,7 @@
       "damage": "1d4 (small), 1d6 (medium)",
       "critical": "x3",
       "range": "10 ft.",
-      "type": "P and S",
+      "type": "P + S",
       "category": "Ranged",
       "proficiency": "Martial Description A hurlbat is a throwing axe made from a single piece of flat metal. Every extremity of the hurlbat is sharpened, including the point of the handle. You can wield the hurlbat as a melee weapon, but it's not designed for such use; you take a 1 penalty on melee attack rolls with the weapon, and you must succeed at a DC 15 Reflex save when making melee attacks to avoid cutting yourself on an edge and taking 1 point of slashing damage. You don't need to attempt this save while wearing heavy armor."
     },
@@ -1994,7 +1994,7 @@
       "damage": "1d3 (small), 1d4 (medium)",
       "critical": "19-20/x2",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Light",
       "proficiency": "Exotic Description Also known as the waveblade or scorpion's tail, this short, double-curved blade has no hilt but features a knuckle guard and can easily be used in either hand. A bich'hwa provides a +2 bonus on any roll made to keep from being disarmed in combat. This weapon is a special monk weapon for the use of f lurry of blows and other monk abilities."
     },
@@ -2006,7 +2006,7 @@
       "damage": "1d3 (small), 1d4 (medium)",
       "critical": "19-20/x2",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Light",
       "proficiency": "Exotic",
       "weapon groups": "Blades, Light Description This weapon has a blade concealed between the two halves of the handle that can be brought to bear quickly. If you are proficient with it (or have the Quick Draw feat), you may open it as a free action; a nonproficient user must spend a move action to open it. Otherwise, treat it as a dagger. When it's closed, you gain a +2 bonus on Sleight of Hand checks made to conceal it on your body."
@@ -2045,7 +2045,7 @@
       "damage": "1d4 (small), 1d6 (medium)",
       "critical": "x3",
       "range": "10 ft.",
-      "type": "B or S",
+      "type": "B / S",
       "category": "Light",
       "proficiency": "Exotic Description This versatile weapon looks like a heavy-headed axe, but a proficient wielder can use the blunt back of the head to deal bludgeoning damage."
     },
@@ -2057,7 +2057,7 @@
       "damage": "1d3 (small), 1d4 (medium)",
       "critical": "18-20/x2",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Light",
       "proficiency": "Exotic Description Elves have traditionally eschewed the use of larger weaponry, opting instead for lighter weapons that take advantage of their wielders' agility and poise. The elven curve blade is perhaps the bestknown weapon in this category, but the leafblade (often partnered with the substantially longer thornblade) embraces these fighting styles to an even greater extent. This short sword has a blade reminiscent of a long, narrow leaf and is suitable both for slashing swings and targeted thrusts. These weapons are designed to be wielded alongside elven thornblades. Attacks with an elven leafblade gain a +2 bonus on attack rolls made to confirm critical hits."
     },
@@ -2095,7 +2095,7 @@
       "damage": "1d3 (small), 1d4 (medium)",
       "critical": "x2",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Light",
       "proficiency": "Exotic",
       "weapon groups": "Flails Description This weapon consists of a three-pronged, barbed hook attached to a length of chain. Due to the weapon's unwieldiness, you cannot make attacks of opportunity with a flying talon and do not threaten any squares with it."
@@ -2159,7 +2159,7 @@
       "damage": "1d4 (small), 1d6 (medium)",
       "critical": "x3",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Light",
       "proficiency": "Exotic Description This light one-handed sword is covered in bony spines that make it easier to poison opponents. The save DC of a nonmagical injury poison applied to a kasatha spinal sword increases by 2. Kasathas treat kasatha spinal swords as martial weapons."
     },
@@ -2288,7 +2288,7 @@
       "damage": "1d3 (small), 1d4 (medium)",
       "critical": "19-20/x2",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Light",
       "proficiency": "Exotic",
       "weapon groups": "Blades, Light ; Monk Description This elaborate knife is carved with special barbs and grooves, meant to channel toxins into the bloodstream. Any injury poison delivered with a sanpkhang has its DC increased by 1, or by 2 if delivered as part of a critical hit or sneak attack. The vishkanya's ARG weapon familiarity racial trait grants proficiency with the sanpkhang."
@@ -2378,7 +2378,7 @@
       "damage": "1d4 (small), 1d6 (medium)",
       "critical": "18-20/x2",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Light",
       "proficiency": "Exotic",
       "weapon groups": "Blades, Light Description These short, slender blades are between 1 to 2 feet long. They are primarily used as back-up weapons, to decapitate defeated enemies, or to commit seppuku (ritual suicide) as a matter of honor. These blades are specifically worn by samurai and are intended to be paired with a katana. Together, this set of blades is referred to as a daisho."
@@ -2391,7 +2391,7 @@
       "damage": "1d4 (small), 1d6 (medium)",
       "critical": "x2",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Light",
       "proficiency": "Exotic",
       "weapon groups": "Close Description This shield's sides are cut into jagged angles and honed to razor sharpness. Dwarven skirmishers often wield these shields in pairs, savagely hacking opponents to pieces, while some dwarven scoundrels enjoy the shields' imposing appearance and ease of use. If you have the Two-Weapon Fighting feat and are wielding two dwarven war-shields, increase the higher of the two shield bonuses by 1. You lose this benefit for 1 round when you make a shield bash with one or both dwarven war-shields (unless you have the Improved Shield Bash feat or a similar benefit). A hand holding a dwarven warshield can't be used for anything else. A dwarven war-shield gains no benefit from shield spikes."
@@ -2404,7 +2404,7 @@
       "damage": "1d4 (small), 1d6 (medium)",
       "critical": "18-20/x2",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Light",
       "proficiency": "Exotic",
       "weapon groups": "Close Description Also known as a scorpion's tail due to its unique, stinger-like shape, this short, double-curved blade has no hilt but features a knuckle guard. You gain a +2 bonus to your CMD against disarm attempts made to disarm you of a waveblade."
@@ -2506,7 +2506,7 @@
       "damage": "1d4 (small), 1d6 (medium)",
       "critical": "18-20/x2",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "One-Handed",
       "proficiency": "Exotic Description This blade is suited for thrusts and parries, making it especially capable of inflicting deep, penetrating wounds. A wielder with Weapon Finesse can apply her Dexterity modifier to attack rolls with an elven thornblade instead of her Strength modifier. An elven thornblade grants no additional benefit when wielded two-handed. In addition, attacks with an elven thornblade gain a +2 bonus on attack rolls made to confirm critical hits."
     },
@@ -2544,7 +2544,7 @@
       "damage": "1d6 (small), 1d8 (medium)",
       "critical": "x2",
       "range": "",
-      "type": "B and P",
+      "type": "B + P",
       "category": "One-Handed",
       "proficiency": "Exotic Description This one-handed weapon is similar to a nunchaku in that it consists of a pair of bars linked with heavy chain. However, a flindbar's bars are made of iron and are capped with a ring of spikes or studs. Since it's much heaver than a nunchaku, it is not a light weapon."
     },
@@ -2736,7 +2736,7 @@
       "damage": "1d8/1d4 (small), 1d10/1d6 (medium)",
       "critical": "x2/x3",
       "range": "",
-      "type": "B or P",
+      "type": "B / P",
       "category": "One-Handed",
       "proficiency": "Exotic",
       "weapon groups": "Double ; Hammers Description The Stone Age taiaha is a long, heavy stick, club-shaped at one end and tipped with a wooden or metal spear point at the other. You wield it with a combination of solid strikes with the club and fending motions with the spear. A taiaha can be wielded as a martial weapon that deals 1d8 points of bludgeoning damage (1d6 if Small) and has a 2 critical."
@@ -2865,7 +2865,7 @@
       "damage": "1d4/1d4 (small), 1d6/1d6 (medium)",
       "critical": "x2",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Two-Handed",
       "proficiency": "Exotic",
       "weapon groups": "Double ; Polearms Description A boarding gaff, or gaff hook, is a long pole with a hook for spearing fish. Pirates often add extra, heavier hooks to both ends of boarding gaffs to assist with boarding actions, giving the weapon its common name. A boarding gaff can also be used for fishing."
@@ -2891,7 +2891,7 @@
       "damage": "1d4/1d4 (small), 1d6/1d6 (medium)",
       "critical": "x2",
       "range": "",
-      "type": "P and S",
+      "type": "P + S",
       "category": "Two-Handed",
       "proficiency": "Exotic",
       "weapon groups": "Double ; Flails ; Spears Description This vicious weapon is often used in gladiatorial events due to its versatility. The body of the weapon is a standard short spear, primarily used for thrusting. The butt of the spear is fitted with a length of chain, often spiked, with a hook at the end. The hook and chain may be used to make trip attacks. If your trip attack fails by 10 or more, you may drop the chain spear to avoid being knocked prone."
@@ -2982,7 +2982,7 @@
       "damage": "1d6/1d4 (small), 1d8/1d6 (medium)",
       "critical": "x3",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Two-Handed",
       "proficiency": "Exotic",
       "weapon groups": "Double Description A dwarven urgrosh is a double weapon an axe head and a spear point on opposite ends of a long haft. The urgrosh's axe head is a slashing weapon that deals 1d8 points of damage. Its spear head is a piercing weapon that deals 1d6 points of damage. You can use either head as the primary weapon; the other becomes the off-hand weapon. If you use an urgrosh against a charging character, the spear head is the part of the weapon that deals damage. Dwarves treat dwarven urgroshes as martial weapons."
@@ -3096,7 +3096,7 @@
       "damage": "1d8 (small), 2d6 (medium)",
       "critical": "x3",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Two-Handed",
       "proficiency": "Exotic",
       "weapon groups": "Polearms Description This heavy bladed spear is specifically designed for use against giants, who have long reach and the ability to soak up large amounts of damage."
@@ -3109,7 +3109,7 @@
       "damage": "1d6/1d4 (small), 1d8/1d6 (medium)",
       "critical": "x3/x4",
       "range": "",
-      "type": "B or P",
+      "type": "B / P",
       "category": "Two-Handed",
       "proficiency": "Exotic",
       "weapon groups": "Double Description A gnome hooked hammer is a double weaponan ingenious tool with a hammer head at one end of its haft and a long, curved pick at the other. The hammer's blunt head is a bludgeoning weapon that deals 1d6 points of damage (critical multiplier 3). Its hook is a piercing weapon that deals 1d4 points of damage (critical multiplier 4). You can use either head as the primary weapon. Gnomes treat hooked hammers as martial weapons."
@@ -3160,7 +3160,7 @@
       "damage": "1d2/1d4 (small), 1d3/1d6 (medium)",
       "critical": "x2",
       "range": "",
-      "type": "S or B",
+      "type": "S / B",
       "category": "Two-Handed",
       "proficiency": "Exotic",
       "weapon groups": "Double ; Flails ; Monk Description This weapon has a single kama or sickle held in the off hand, attached by 10 feet of fine chain to a weighted metal ball. The sickle can be used to make trip attacks, jabs, and blocks, while the ball is whipped around at high speeds and then smashed into the opponent, or used to tangle an opponent's sword or spear, allowing the wielder to then attack with the sickle."
@@ -3173,7 +3173,7 @@
       "damage": "1d3 (small), 1d4 (medium)",
       "critical": "x2",
       "range": "20 ft.",
-      "type": "S or P",
+      "type": "S / P",
       "category": "Two-Handed",
       "proficiency": "Exotic",
       "weapon groups": "Flails ; Monk Description This weapon consists of a foot-long double-edged blade, with another smaller, curved hook-blade sticking out the side like a rooster's spur. The blade is strung to a large iron hoop with a 10-foot length of rope. The blade can be used as an off-handed melee weapon or thrown like a dagger, while the rope and circlet can be whipped around and swung at opponents as a bludgeoning reach weapon."
@@ -3327,7 +3327,7 @@
       "damage": "1d6 (small), 2d4 (medium)",
       "critical": "x4",
       "range": "",
-      "type": "P or S",
+      "type": "P / S",
       "category": "Two-Handed",
       "proficiency": "Exotic",
       "weapon groups": "Blades, Heavy Description This scythe has a spring-loaded blade that folds down into the weapon's handle. Opening the scythe blade is a swift action, and closing it again is a standard action. You can use Bluff or Sleight of Hand to treat a closed switchscythe as a hidden weapon; the apparatus can be disguised with 1 minute of work, which grants a +5 bonus on such checks. This disguise is ruined when the weapon is opened and must be reapplied to hide the weapon again. Any effects that apply to a scythe also apply to a switchscythe."
@@ -3353,7 +3353,7 @@
       "damage": "1d8 (small), 1d10 (medium)",
       "critical": "x3",
       "range": "10 ft.",
-      "type": "P or B",
+      "type": "P / B",
       "category": "Two-Handed",
       "proficiency": "Exotic Description Favored by the Shoanti of the Sklar-Quah, totem spears combine deadly weapons with the mournful music of Varisia's displaced natives. The shovel-like heads of these broad spears are decorated with variously oriented hollows. In addition to its use as a weapon, a totem spear can be played using the Perform (wind instrument) skill."
     },
@@ -3438,7 +3438,7 @@
       "source": "Adventurer's Armory 2 pg. 8 , Gnomes of Golarion pg. 22 Statistics",
       "cost": "25 gp",
       "weight": "4 lbs.",
-      "damage": " (small),  (medium)",
+      "damage": "(small),  (medium)",
       "critical": "",
       "range": "20 ft.",
       "type": "",
@@ -3526,7 +3526,7 @@
       "cost": "400 gp",
       "weight": "12 lbs.",
       "damage": "1d6 (small), 1d8 (medium)",
-      "critical": "19-20/see \"bolas bolts\" text",
+      "critical": "19-20/see \"bolas bolts\"text",
       "range": "80 ft.",
       "type": "B",
       "category": "Ranged",
@@ -3587,7 +3587,7 @@
       "source": "Ranged Tactics Toolbox pg. 33 , Adventurer's Armory pg. 3 , Advanced Player's Guide pg. 178 , Ultimate Equipment pg. 21 Statistics",
       "cost": "1 sp",
       "weight": "5 lbs.",
-      "damage": " (small),  (medium)",
+      "damage": "(small),  (medium)",
       "critical": "",
       "range": "",
       "type": "",
@@ -3600,7 +3600,7 @@
       "source": "Adventurer's Armory pg. 4 Statistics",
       "cost": "75 gp",
       "weight": "8 lbs.",
-      "damage": " (small),  (medium)",
+      "damage": "(small),  (medium)",
       "critical": "",
       "range": "30 ft.",
       "type": "",
@@ -3626,7 +3626,7 @@
       "cost": "250 gp",
       "weight": "6 lbs.",
       "damage": "1d3 (small), 1d4 (medium)",
-      "critical": "19-20/see \"bolas bolts\" text",
+      "critical": "19-20/see \"bolas bolts\"text",
       "range": "40 ft.",
       "type": "B",
       "category": "Ranged",
@@ -3637,7 +3637,7 @@
       "source": "Ranged Tactics Toolbox pg. 33 , PRPG Core Rulebook pg. 143 , Ultimate Equipment pg. 21 Statistics",
       "cost": "20 gp",
       "weight": "6 lbs.",
-      "damage": " (small),  (medium)",
+      "damage": "(small),  (medium)",
       "critical": "",
       "range": "10 ft.",
       "type": "",
@@ -3731,7 +3731,7 @@
       "damage": "1d3 (small), 1d4 (medium)",
       "critical": "x2",
       "range": "10 ft.",
-      "type": "B and P",
+      "type": "B + P",
       "category": "Ranged",
       "proficiency": "Exotic",
       "weapon groups": "Thrown Description This spiked bolas functions as a standard bolas, but deals lethal damage rather than nonlethal damage."
@@ -3778,7 +3778,7 @@
       "source": "Ranged Tactics Toolbox pg. 33 , Advanced Race Guide pg. 201 , Ultimate Equipment pg. 21 Statistics",
       "cost": "30 gp",
       "weight": "10 lbs.",
-      "damage": " (small),  (medium)",
+      "damage": "(small),  (medium)",
       "critical": "",
       "range": "10 ft.",
       "type": "P",
@@ -3829,7 +3829,7 @@
       "source": "Ultimate Intrigue pg. 232 Statistics",
       "cost": "200 gp",
       "weight": "1 lb.",
-      "damage": " (small),  (medium)",
+      "damage": "(small),  (medium)",
       "critical": "",
       "range": "20 ft.",
       "type": "P",
@@ -3843,7 +3843,7 @@
       "source": "Advanced Race Guide pg. 93 Statistics",
       "cost": "305 gp",
       "weight": "2 lbs.",
-      "damage": " (small),  (medium)",
+      "damage": "(small),  (medium)",
       "critical": "",
       "range": "",
       "type": "S",

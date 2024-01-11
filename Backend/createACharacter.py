@@ -1649,8 +1649,13 @@ class Character:
         return price_input
 
     def adjust_price(self, price):
-        if price < 11:
-            price = (price ** 2) * 1000
+        if isinstance(price, int):
+            if price < 11:
+                price = (price ** 2) * 1000
+
+        else:
+            price = 0
+
         return price
 
                              
@@ -2245,13 +2250,75 @@ class Character:
             chosen_enhancement_list = []
             while (enhancement_bonus - total_bonus) > 5: 
                 chosen_enhancement = random.choice(enhancement_list)
-                chosen_enhancement_bonus = data[weapon_type][chosen_enhancement].get('enhancement', 0)
+                item_list = self.get_enhancement_info(weapon_type)
+                self.enhancement_limits(item_list, weapon_type, chosen_enhancement)
+                chosen_enhancement_bonus = data[weapon_type].get(chosen_enhancement,0).get('enhancement', 0)
                 total_bonus += int(chosen_enhancement_bonus)
-                enhancement_list.remove(chosen_enhancement)
-                chosen_enhancement_list.append(chosen_enhancement)
 
+                try:
+                    enhancement_list.remove(chosen_enhancement)
+                    chosen_enhancement_list.append(chosen_enhancement)
+                except:
+                    pass
+               
             
             return chosen_enhancement_list
+        
+    def get_enhancement_info(self, weapon_type):
+        if weapon_type in ('Melee', 'Ranged'):
+            item_list = set()
+            for item in self.weapon_dict.values():
+                item_list.add(item.get('type', 0))
+                item_list.add(item.get('special', 1))
+                item_list.add(item.get('only', 2))
+
+            key = list(self.weapon_dict.keys())[0] 
+            if re.search(r'(bow)|(firearm)', key.lower()):
+                key_add = ('bow' if re.search(r'bow', key) else 'firearm')
+                item_list.add(key_add)
+
+            item_list = self.split_item_list(item_list)
+            return item_list
+        
+    def split_item_list(self, item_list):
+        normalized_items = []
+        for item in item_list:
+            if isinstance(item, str):
+                stripped_item = item.lower()
+                split_items = re.split(r"[,|+|/]", stripped_item)
+                normalized_items.extend(split_items)
+            else:
+                normalized_items.append(item)
+        unique_items = set(normalized_items)
+        return unique_items
+
+    def clean_up_only(self, only):
+        only_list = []
+        only_list = only.split(",") if only else []
+        only_list = [item.lower() for item in only_list]
+        only_list = set(only_list)
+        return only_list
+
+    def enhancement_limits(self, item_list, weapon_type, chosen_enhancement):
+        if weapon_type in ('Melee', 'Ranged'):
+            only = self.weapon_qualities[weapon_type].get(chosen_enhancement,0).get('only',"N/A").lower()
+            not_only = self.weapon_qualities[weapon_type].get(chosen_enhancement,0).get('not',"N/A").lower()
+            only_list = self.clean_up_only(only)
+            not_only_list = self.clean_up_only(not_only)
+            print(f'This is only {only_list} and not_only {not_only_list}')
+            print(f'this is your item_list {item_list}')
+            if len(only_list) > 0 and len(not_only_list) > 0:
+                if only_list.issubset(item_list):
+                    pass
+                else:
+                    print('Removing chosen enhancement')
+                    chosen_enhancement = ''
+                    return chosen_enhancement
+
+        
+
+
+
     
     def bonus_gold_calculator(self, chosen_enhancement, weapon_type, data):
         price = data[weapon_type][chosen_enhancement].get('price', 0)
