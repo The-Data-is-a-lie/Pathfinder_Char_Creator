@@ -1634,7 +1634,7 @@ class Character:
             return None        
 
     def extract_dynamic_variable_word(self, name):
-        word_pull = r'\b(lesser|greater|superior|major|minor|normal|djinni|efreeti|marid|shaitan|destined|fey|abyssal|accursed|celestial|draconic|elemental|infernal|undead|aberrant|type i|type ii|type iii|type iv|)\b(?![()])'
+        word_pull = r'\b(lesser|greater|superior|major|minor|normal|djinni|efreeti|marid|shaitan|destined|fey|abyssal|accursed|celestial|draconic|elemental|infernal|undead|aberrant|adamantine|silver|cold iron|type i|type ii|type iii|type iv|)\b(?![()])'
         dynamic_variable_word = re.findall(word_pull, name)
         print(f'This is the dynamic variable word {dynamic_variable_word}')
         return dynamic_variable_word
