@@ -2453,18 +2453,51 @@ class Character:
                     #   trait_data['requirement_alignment'] == self.alignment
                       
         return conditions
-    
-    def subrace_chooser(self):
+    # Race_data section
+    def full_race_data(self):
         race_data = {}
         race_data.update(self.PlayableRaces['Core'])
         race_data.update(self.PlayableRaces['NonCore'])
+        return race_data
+    
+    def subrace_chooser(self):
+        race_data = self.full_race_data()
         subrace_list = (race_data.get(self.chosen_race, None).get("Subraces", None))
         if subrace_list is not None:
             subrace_list = list(subrace_list.keys())
             chosen_subrace = random.choice(subrace_list)
+            subrace_description = race_data.get(self.chosen_race, None).get("Subraces", None).get(chosen_subrace, None)
         else:
-            chosen_subrace = None            
-        return chosen_subrace
+            chosen_subrace = None
+            subrace_description = None       
+        return chosen_subrace, subrace_description
+    
+    def race_traits_chooser(self):
+        race_data = self.full_race_data()
+        data_list = list(race_data.get(self.chosen_race, None).keys())
+        race_traits_list = []
+        race_traits_description_list = []
+        append_start = False
+        for i in data_list:
+            if '+' in i:
+                append_start = True
+            if append_start:
+                race_traits_list.append(i)
+            if 'Languages' in i:
+                append_start = False
+
+        for trait in race_traits_list:
+            race_trait_description = race_data.get(self.chosen_race, None).get(trait)
+            race_traits_description_list.append(race_trait_description)
+
+        return race_traits_list, race_traits_description_list
+
+
+
+
+
+        
+
 
 
         

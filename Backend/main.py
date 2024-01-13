@@ -317,8 +317,11 @@ while userInput.lower() == 'y':
 
 # Add a Subrace Chooser (+ race benefits -> webscrape race data)
 # Add an attack macro section (so we know what attack macros someone will get (like +22/+22/+17/+17/+12/+12/+7/+7/+2/ or similar))
-		chosen_subrace = character.subrace_chooser()
+		chosen_subrace, subrace_description = character.subrace_chooser()
 		print(f'this is your chosen subrace {chosen_subrace}')
+
+		race_traits_list, race_traits_description_list = character.race_traits_chooser()
+		print(race_traits_list, race_traits_description_list)
 
 
 
