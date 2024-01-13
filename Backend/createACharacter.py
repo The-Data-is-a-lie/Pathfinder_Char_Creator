@@ -2455,7 +2455,16 @@ class Character:
         return conditions
     
     def subrace_chooser(self):
-        print('finish this function')
+        race_data = {}
+        race_data.update(self.PlayableRaces['Core'])
+        race_data.update(self.PlayableRaces['NonCore'])
+        subrace_list = (race_data.get(self.chosen_race, None).get("Subraces", None))
+        if subrace_list is not None:
+            subrace_list = list(subrace_list.keys())
+            chosen_subrace = random.choice(subrace_list)
+        else:
+            chosen_subrace = None            
+        return chosen_subrace
 
 
         
