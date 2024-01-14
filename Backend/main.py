@@ -113,6 +113,21 @@ while userInput.lower() == 'y':
 		num_dice = int(input("How many dice would you like to roll? "))
 		num_sides = int(input("How many sides should each die have? "))
 		character.roll_stats(num_dice, num_sides)
+
+		chosen_subrace, subrace_description = character.subrace_chooser()
+		print(f'this is your chosen subrace {chosen_subrace}')
+		race_traits_list, race_traits_description_list = character.race_traits_chooser()
+		print(race_traits_list, race_traits_description_list)
+
+		split_race_traits_list = character.race_ability_split(race_traits_list)
+		character.dex = character.race_ability_score_changes(split_race_traits_list, character.dex, 'dex')
+		character.str = character.race_ability_score_changes(split_race_traits_list, character.str, 'str')
+		character.con = character.race_ability_score_changes(split_race_traits_list, character.con, 'con')
+		character.int = character.race_ability_score_changes(split_race_traits_list, character.int, 'int')
+		character.wis = character.race_ability_score_changes(split_race_traits_list, character.wis, 'wis')
+		character.cha = character.race_ability_score_changes(split_race_traits_list, character.cha, 'cha')
+		character.print_stats()
+
 		character.calc_ability_mod()
 
 		character.randomize_flaw()
@@ -166,6 +181,10 @@ while userInput.lower() == 'y':
 		character.chooseable_list_stats(character.casting_level_num, 'caster level ', base=0, th='th')	
 		character.chooseable_list_class_features()
 		character.chooseable_list_race()
+
+
+
+
 
 		#decides if druids go animal companion or domain
 		# or if inquisitors go inquisitions or domains
@@ -317,11 +336,7 @@ while userInput.lower() == 'y':
 
 # Add a Subrace Chooser (+ race benefits -> webscrape race data)
 # Add an attack macro section (so we know what attack macros someone will get (like +22/+22/+17/+17/+12/+12/+7/+7/+2/ or similar))
-		chosen_subrace, subrace_description = character.subrace_chooser()
-		print(f'this is your chosen subrace {chosen_subrace}')
 
-		race_traits_list, race_traits_description_list = character.race_traits_chooser()
-		print(race_traits_list, race_traits_description_list)
 
 
 

@@ -264,7 +264,6 @@ class Character:
             setattr(self, attr, value)
 
         # Print the rolled stats
-        self.print_stats()
 
     def swap_stats(self, main_stat, stats, new=None):
         original_main_stat = stats[main_stat]
@@ -307,9 +306,7 @@ class Character:
         self.int_mod = floor((self.int-10)/2)
         self.wis_mod = floor((self.wis-10)/2)
         self.cha_mod = floor((self.cha-10)/2)
-        print(self.str_mod)
-        print(self.dex_mod)
-        print(self.con_mod)                
+               
         
     
     def randomize_flaw(self):
@@ -1355,7 +1352,7 @@ class Character:
             self.chooseable.add(stat)
             base += 1
 
-            print(self.chooseable)
+            # print(self.chooseable)
 
             if base == 25:
                 break
@@ -1390,7 +1387,7 @@ class Character:
         
         self.chooseable.update(class_keys_list)
         self.chooseable.update(class_keys_list_class_feature)
-        print(self.chooseable)
+        # print(self.chooseable)
 
 
 
@@ -1961,7 +1958,7 @@ class Character:
                     string_level = str((n * (i + 1)))
 
                 dataset_list += dataset.get(string_level, [])
-                print(f'This is your chooseable dataset {dataset_list}')
+                # print(f'This is your chooseable dataset {dataset_list}')
                 chosen = random.choice(dataset_list)
                 chosen_set.add(chosen)
 
@@ -2062,15 +2059,15 @@ class Character:
                 result.append(item)
         return result
 
-        if self.c_class == class_1: 
-            options_data = self.class_data[class_1].get(data_name, {})
-            print(options_data)
-            if options_data:
-                choice = random.choice(list(options_data.keys()))
-                description = options_data.get(choice)
+        # if self.c_class == class_1: 
+        #     options_data = self.class_data[class_1].get(data_name, {})
+        #     print(options_data)
+        #     if options_data:
+        #         choice = random.choice(list(options_data.keys()))
+        #         description = options_data.get(choice)
 
-                print(choice)
-                print(selected_value)
+        #         print(choice)
+        #         print(selected_value)
 
 
     def build_selector(self):
@@ -2166,7 +2163,7 @@ class Character:
         i = 0
  
         while i < amount:
-            print(f'This is your total choices {total_choices}')
+            # print(f'This is your total choices {total_choices}')
             chosen = random.choice(total_choices)
 
             self.chooseable_list_class(i,self.c_class,self.c_class_level, base=0, th='th')
@@ -2206,7 +2203,7 @@ class Character:
 
             feat_result_dict.update(feat_result_dict)
 
-            print(f' post transform result_dict {feat_result_dict}')
+            # print(f' post transform result_dict {feat_result_dict}')
             _, _, chosen_feats = self.get_feats_without_prerequisites(self.c_class, feat_result_dict, odd=True)
 
             print(f'These are your chosen feats {chosen_feats}')        
@@ -2491,6 +2488,25 @@ class Character:
             race_traits_description_list.append(race_trait_description)
 
         return race_traits_list, race_traits_description_list
+
+
+    def race_ability_split(self, race_traits_list):
+        ability_string = race_traits_list[0]
+        split_string = ability_string.split(",")
+        return split_string
+    
+    def race_ability_score_changes(self, split_race_traits_list, score, ability):
+        for trait in split_race_traits_list:
+            add_flag = '+' in trait
+
+            for n in range(10):
+                if ability.lower() in trait.lower() and str(n) in trait:
+                    score += n if add_flag else -n
+
+        return score
+
+
+                
 
 
 
