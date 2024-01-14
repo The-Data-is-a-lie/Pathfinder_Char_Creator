@@ -121,7 +121,8 @@ def race_chooser(character):
     Return
     - userInput_race
     """
-    races = list(character.races.keys())
+    race_data = character.full_race_data()
+    races = list(race_data.keys())
     print(races)
     userInput_race = input(f'Select race from the above list: (or 0 if random)').capitalize()
     if userInput_race in races:
