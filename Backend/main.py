@@ -182,6 +182,12 @@ while userInput.lower() == 'y':
 		character.chooseable_list_class_features()
 		character.chooseable_list_race()
 
+		character.druidic_flag_assigner()
+		character.human_flag_assigner()
+		favored_class_list = character.favored_class_option()
+		favored_class = character.favored_class_option_chooser(favored_class_list, character.human_flag)
+		skill_rank_level, favored_class_chosen = character.favored_class_calculator(favored_class)		
+
 
 
 
@@ -301,7 +307,7 @@ while userInput.lower() == 'y':
 		character.saving_throw_calc('Reflex')
 		character.saving_throw_calc('Will')	
 
-		character.skills_selector('skills')
+		character.skills_selector('skills', skill_rank_level)
 		print(f'This is your chosen professions {character.profession_chooser("professions")}')		
 
 		character.simple_list_chooser('ranger','favored_terrains', 'favored_enemies')
@@ -333,6 +339,13 @@ while userInput.lower() == 'y':
 
 		selected_traits = character.trait_selector(8)
 		print(selected_traits)
+
+
+		print(character.Total_HP)
+		print(favored_class_chosen)
+
+
+
 
 # Add a Subrace Chooser (+ race benefits -> webscrape race data)
 # Add an attack macro section (so we know what attack macros someone will get (like +22/+22/+17/+17/+12/+12/+7/+7/+2/ or similar))
@@ -397,8 +410,7 @@ while userInput.lower() == 'y':
 		# print(f'This is your mythic rank {character.randomize_mythic()}')
 
 		# #creating quick race/class specific flags 
-		# character.druidic_flag()
-		# character.human_flag()
+
 
 		# #3PP Content Only
 		# # Path of War Content

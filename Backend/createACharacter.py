@@ -116,7 +116,8 @@ class Character:
         self.bonus_spells=[]
 
 
-
+        # Extra Flags
+        
 
 
         #feat selector variables
@@ -542,17 +543,22 @@ class Character:
             self.luck_score = 0
         return self.luck_score
 
-    def druidic_flag(self):
+    def druidic_flag_assigner(self):
         if self.c_class.lower() == 'druid':
             self.languages = languages.append('Druidic')
 
-    def human_flag(self):
-        if self.c_class.lower() == 'human':
-            self.feat_amounts += 1     
+    def human_flag_assigner(self):
+        self.human_flag = False
+        if self.chosen_race.lower() == 'human':
+            print('this is your self.chosen_race ', self.chosen_race)
+            self.feat_amounts += 1
+            self.human_flag = True
 
     def class_for_spells_attr(self):
         #currently we only know that skald spells aren't proper, but 
-        # skalds use bard spell list -> just have an if statement for them
+        # skalds use bard spell list -> just have an if statement for them 
+        # CON 10
+        # INT 12
         # investigators use alchemists spells
         # + check others
                 
@@ -1695,7 +1701,11 @@ class Character:
         return equipment_name, random_equip, price
 
     def subtract_price_from_gold(self, price):
-        self.gold -= int(price)
+        if price != None and isinstance(self.gold, int):
+            self.gold -= int(price)
+        else:
+            self.gold = 0
+
 
 
 # End of major task: Items and Prices
@@ -1703,7 +1713,7 @@ class Character:
 
 # Start of major task: skills assignment
 
-    def skills_selector(self, skills):
+    def skills_selector(self, skills, skill_rank_level):
         """
         randomly grabs a subset of skills then assigns skill ranks to them (up to character level for each)
         to prevent any high stats characters from breaking the function, we max them out at character level for all in game skills
@@ -1717,7 +1727,7 @@ class Character:
         max_skill_ranks = self.c_class_level
         skill_ranks = {}
 
-        selectable_skills, dummy_skill_ranks = self.get_selectable_skills(all_skills)
+        selectable_skills, dummy_skill_ranks = self.get_selectable_skills(all_skills, skill_rank_level)
         self.assign_skill_ranks(selectable_skills, dummy_skill_ranks, max_skill_ranks, skill_ranks)
 
         print(skill_ranks)
@@ -1728,10 +1738,10 @@ class Character:
         return skill_ranks
 
 
-    def get_selectable_skills(self,all_skills):
+    def get_selectable_skills(self,all_skills, skill_ranks_level):
         skill_points = self.class_data[self.c_class]["skill points at each level"]
         scaling = int(skill_points) + self.int_mod
-        dummy_skill_ranks = scaling * self.c_class_level
+        dummy_skill_ranks = (scaling * self.c_class_level) + skill_ranks_level
 
         print(scaling)
 
@@ -2505,6 +2515,38 @@ class Character:
 
         return score
 
+
+    def favored_class_option(self):
+        race_data = self.full_race_data()
+        favored_class_list = []
+        favored_class_string = race_data.get(self.chosen_race.capitalize(), {}).get(self.c_class.capitalize(), "").strip()
+        favored_class_list.append(favored_class_string)
+        favored_class_list.extend(['health', 'skill ranks'])
+        return favored_class_list
+    
+    def favored_class_option_chooser(self, favored_class_list, human_flag):
+        if human_flag == True:
+            favored_class = ['health', 'skill ranks']
+            print(f'this is your human_flag {human_flag}!!!!!!!!!!')
+        else:
+            favored_class = random.sample(favored_class_list, k=1)
+        return favored_class
+    
+    def favored_class_calculator(self, favored_classes):
+        skill_ranks = 0
+        favored_class_chosen = []
+
+        for favored_class in favored_classes:
+            if favored_class == 'health':
+                self.Total_HP += self.c_class_level
+            elif favored_class == 'skill ranks':
+                skill_ranks += self.c_class_level
+            favored_class_chosen.append(favored_class)
+
+        return skill_ranks, favored_class_chosen
+
+
+        # if self.human_flag == True:
 
                 
 
