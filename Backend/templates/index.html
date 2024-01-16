@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form</title>
+</head>
+<body>
+
+<form action="/execute" method="post">
+    {% for i in range(1, 9) %}
+        Enter input {{ i }}: <input type="text" name="input{{ i }}"><br>
+    {% endfor %}
+    <button type="submit">Execute</button>
+</form>
+
+<pre>
+    {% if output %}
+        {{ output }}
+    {% endif %}
+    {% if error %}
+        {{ error }}
+    {% endif %}
+</pre>
+
+</body>
+</html>
