@@ -2,7 +2,8 @@
 
 from flask import Flask, render_template, request
 from main_test_run import process_inputs
-from main import generate_random_char
+from createACharacter import *
+
 
 app = Flask(__name__)
 
@@ -13,20 +14,20 @@ def index():
 @app.route('/execute', methods=['POST'])
 def execute():
     # Retrieve input values directly from the form
-    input_values = [request.form.get(f'input{i}') for i in range(1, 11)]
+    input_values = [request.form.get(f'input{i}') for i in range(1, 12)]
 
     try:
-        # Use the process_inputs function from the processing module
-        # results = process_inputs(input_values)
-        # This runs the main.py program
 
-        # e.g. how to run the code in the future to be able to take inputs:
+        from main import generate_random_char
+
         # Assuming 'inputs' is a list containing the user inputs
-        # user_input_region_value = inputs[2]  # Adjust the index based on your input order
-        # region_chooser(character_instance, user_input_region_value)
+        create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, num_dice, num_sides, high_level, low_level, gold_num = input_values
 
-        results = generate_random_char(input_values)
+        # Call the generate_random_char function with the retrieved inputs
+        results = generate_random_char(create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, num_dice, num_sides, high_level, low_level, gold_num)
 
+        #Don't think we need this, we don't want all our data to be strings (unless we need this, then we can modify the functions)
+        results = str(results)
         # Join the results into a single string
         output = '\n'.join(results)
 
@@ -36,6 +37,8 @@ def execute():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
 
 
 

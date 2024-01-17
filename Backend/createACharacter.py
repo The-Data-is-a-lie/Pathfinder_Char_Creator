@@ -419,9 +419,9 @@ class Character:
         return random.sample(potential_personality,k=random_pers_number)  
         
 
-    def choose_alignment(self, alignments):
+    def choose_alignment(self, alignments, alignment_input):
         alignment_data = getattr(data,alignments)
-        alignment_input = input("If you want to choose an alignment, type: CG CN CE NG N NE LG LN LE ").upper()
+        # alignment_input = input("If you want to choose an alignment, type: CG CN CE NG N NE LG LN LE ").upper()
         self.alignment = alignment_data.get(alignment_input, None)
 
         if self.alignment is None:
@@ -503,9 +503,10 @@ class Character:
         print(f'{saving_throw} is {self.saving_throw}')
         return self.saving_throw
 
-    def assign_gold(self,gold):
-        gold_input = input("Please input a desired number for gold, otherwise we will use the amount suggest by Paizo's rules for a PC of that level")
-        if gold_input.isnumeric():
+    def assign_gold(self,gold, gold_num):
+        # gold_input = input("Please input a desired number for gold, otherwise we will use the amount suggest by Paizo's rules for a PC of that level")
+        gold_input = gold_num
+        if isinstance(gold_input, int):
             self.gold = gold_input            
         else:
             gold = getattr(data,gold)

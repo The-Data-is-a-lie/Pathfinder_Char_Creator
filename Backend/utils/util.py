@@ -21,17 +21,22 @@ def roll_inherent(sides,size):
     return random.randint(sides,size)
     
 
-def Roll_Level():
-    from main import filename
-    with open(filename, 'a') as f, open("utils/class.json", 'r') as c:
-        class_data = json.load(c)
-        """
-        Rolls for a random character level
-        """
-        # Prompt user for level range
-        max_num = int(input("Enter the highest level you want the char to be: "))
-        min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
-        level = random.randint(min_num, max_num)
+# def Roll_Level(high_level, low_level):
+#     from main import filename
+#     with open(filename, 'a') as f, open("utils/class.json", 'r') as c:
+#         class_data = json.load(c)
+#         """
+#         Rolls for a random character level
+#         """
+#         # Prompt user for level range
+#         if isinstance(high_level, int) and isinstance(low_level, int):
+#             max_num = int(high_level)
+#             min_num = int(low_level)
+#         else:
+#             max_num = 20
+#             min_num = 1
+#         level = random.randint(min_num, max_num)
+#         return level
 
 
 		# #randomized NPC level generator
@@ -103,7 +108,7 @@ def region_chooser(character, userInput_region):
 
     
 
-    if userInput_region.isdigit() and int(userInput_region) in range(1, 30):
+    if isinstance(userInput_region, int) and int(userInput_region) in range(1, 30):
         region_index = int(userInput_region) - 1
         region = character.regions[region_index]        
         print('You have selected this region: ' + region)
@@ -125,8 +130,10 @@ def race_chooser(character, userInput_race):
     race_data = character.full_race_data()
     races = list(race_data.keys())
     print(races)
-    print(f'Select race from the above list: (or 0 if random)').capitalize()
-    userInput_race = userInput_race.lower()
+    print(f'Select race from the above list: (or 0 if random)')
+    if isinstance(userInput_race, str):
+        userInput_race = userInput_race.lower()
+
     if userInput_race in races:
         print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race: {userInput_race}')
         character.chosen_race = userInput_race
@@ -188,14 +195,16 @@ def weapon_chooser(character):
             print(f"Weapon for {reg}: {weaponz}")
 
     
-def chooseClass(character):
+def chooseClass(character, class_choice):
     """
     Select a class or 
     Gives the Character a random class based off of BAB selection
     Returns
     - c_class (String)
     """
-    userInput_class = input(f'please type a class name to select a class, or type 0 for a random class: ').lower()
+    # userInput_class = input(f'please type a class name to select a class, or type 0 for a random class: ').lower()
+    print('please type a class name to select a class, or type 0 for a random class: ')
+    userInput_class = class_choice
     print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_class: {userInput_class}')
     character.c_class = userInput_class
     character.c_class_2 = ''
@@ -223,7 +232,7 @@ def chooseClass(character):
 
 
 
-def dip_function(character, base_classes):
+def dip_function(character, base_classes, multi_class = False):
     """
     Determines if you want to have multiple classes for a character, or only one
     Returns 
@@ -231,7 +240,9 @@ def dip_function(character, base_classes):
     """
     available_classes = getattr(data,base_classes)
     classes = list(character.class_data.keys())
-    userInput_multiclass = input('Do you want to multiclass Y/N')
+    # userInput_multiclass = input('Do you want to multiclass Y/N')
+    userInput_multiclass = multi_class
+    
     c_class_2 = ''
     if userInput_multiclass.lower() == 'y' or userInput_multiclass == 'yes':
         chance_dip = random.randint(0,100)
