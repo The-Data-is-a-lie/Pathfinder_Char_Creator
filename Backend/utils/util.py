@@ -91,15 +91,16 @@ def Roll_Level():
     #         feats = (4 - 2 + floor(level/2) + floor(level/5))
     # return feats
 
-def region_chooser(character):
+def region_chooser(character, userInput_region):
     """
     Characters either choose a region or randomly select one
     Return
     - region
     """
     print(f"Please make sure below matches this list: {character.first_names_regions.keys()}")
-    userInput_region = input('Select region [input the number for the region you want] from above list: (0 = Random, 1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, 5=Spire, 6=Feyador, 7=Esterdragon, 8=Grundykin Damplands, 9=Dust Cairn, 10=Kaeru no Tochi ...)').lower()
+    # userInput_region = input('Select region [input the number for the region you want] from above list: (0 = Random, 1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, 5=Spire, 6=Feyador, 7=Esterdragon, 8=Grundykin Damplands, 9=Dust Cairn, 10=Kaeru no Tochi ...)').lower()
     character.userInput_region = userInput_region
+
     
 
     if userInput_region.isdigit() and int(userInput_region) in range(1, 30):
@@ -115,7 +116,7 @@ def region_chooser(character):
         region = ''
     character.region = region
 
-def race_chooser(character):
+def race_chooser(character, userInput_race):
     """
     Characters either choose a race, or randomly select one
     Return
@@ -124,7 +125,8 @@ def race_chooser(character):
     race_data = character.full_race_data()
     races = list(race_data.keys())
     print(races)
-    userInput_race = input(f'Select race from the above list: (or 0 if random)').capitalize()
+    print(f'Select race from the above list: (or 0 if random)').capitalize()
+    userInput_race = userInput_race.lower()
     if userInput_race in races:
         print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race: {userInput_race}')
         character.chosen_race = userInput_race

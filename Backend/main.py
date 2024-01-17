@@ -18,7 +18,6 @@ character_data = {}
 #only location you need to specify where you want text files to be created at
 print(style.BOLD + f'Welcome to the D&D Random Character Generator ({version})' + style.END)
 
-userInput = input('Create a new character? (y/n): ').lower()
 # assuming we are creating new character
 # character = Character()
 
@@ -92,14 +91,19 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char():
+def generate_random_char(create_new_char, userInput_region, userInput_race, class_choice, multi_class, dice, sides, high_level, low_level, gold_num):
+
+	# userInput = input('Create a new character? (y/n): ').lower()
+	userInput = create_new_char.lower()
+	print(f'Create a new character? ({create_new_char.lower()})')
+
 	#end of region macro
 	# format_text(text, bold=False, color=None)
 	character = CreateNewCharacter(
 		character_json_config)
 	
-	region_chooser(character)
-	race_chooser(character)
+	region_chooser(character, userInput_region)
+	race_chooser(character, userInput_race)
 	weapon_chooser(character)
 	name_chooser(character)
 	chooseClass(character)
@@ -134,9 +138,10 @@ def generate_random_char():
 
 	character.randomize_flaw()
 
-	max_num = int(input("Enter the highest level you want the char to be: "))
-	min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
-	character.randomize_level(min_num, max_num)
+	# max_num = int(input("Enter the highest level you want the char to be: "))
+	# min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
+	# character.randomize_level(min_num, max_num)
+	character.randomize_level(low_level, high_level)
 
 	#hp calculations
 	character.hit_dice_calc()
