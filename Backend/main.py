@@ -351,6 +351,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		print(character.Total_HP)
 		print(favored_class_chosen)
 
+
+		# We want this to ouput data we want in json format, so we can send it over to the frontend
 		return Armor, Shield, weapon_enhancement_chosen_list, armor_enhancement_chosen_list, shield_enhancement_chosen_list, selected_traits
 	
 
