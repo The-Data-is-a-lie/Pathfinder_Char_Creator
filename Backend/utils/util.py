@@ -103,23 +103,23 @@ def region_chooser(character, userInput_region):
     - region
     """
     print(f"Please make sure below matches this list: {character.first_names_regions.keys()}")
+    regions = list(character.first_names_regions.keys())
     # userInput_region = input('Select region [input the number for the region you want] from above list: (0 = Random, 1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, 5=Spire, 6=Feyador, 7=Esterdragon, 8=Grundykin Damplands, 9=Dust Cairn, 10=Kaeru no Tochi ...)').lower()
-    character.userInput_region = userInput_region
-
+    userInput_region = int(userInput_region)
     
 
-    if isinstance(userInput_region, int) and int(userInput_region) in range(1, 30):
+    if isinstance(userInput_region, int) and int(userInput_region) <= len(regions):
         region_index = int(userInput_region) - 1
-        region = character.regions[region_index]        
-        print('You have selected this region: ' + region)
+        region_selected = regions[region_index]        
+        print('You have selected this region: ' + region_selected)
     elif int(userInput_region) == 0:
         region_index = random.randint(0,9)
-        region = character.regions[region_index]
-        print('You have randomly selected this region: ' + region)
+        region_selected = regions[region_index]
+        print('You have randomly selected this region: ' + region_selected)
     else:
         print('You have selected no region.')
-        region = ''
-    character.region = region
+        region_selected = ''
+    character.region = region_selected
 
 def race_chooser(character, userInput_race):
     """
@@ -129,18 +129,17 @@ def race_chooser(character, userInput_race):
     """
     race_data = character.full_race_data()
     races = list(race_data.keys())
+    print(f'this is your race keys {races}')
     print(races)
-    print(f'Select race from the above list: (or 0 if random)')
+    print('Select race from the above list: (or 0 if random)')
     if isinstance(userInput_race, str):
-        userInput_race = userInput_race.lower()
-
+        userInput_race = userInput_race.capitalize()
     if userInput_race in races:
         print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race: {userInput_race}')
-        character.chosen_race = userInput_race
     else:
         userInput_race = random.choice(races)
-        character.chosen_race = userInput_race
         print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race: {userInput_race}')
+    character.chosen_race = userInput_race
         
 
 def name_chooser(character):

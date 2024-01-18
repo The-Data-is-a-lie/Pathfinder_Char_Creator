@@ -20,16 +20,33 @@ def execute():
 
         from main import generate_random_char
 
+
+
+# Convert relevant variables to integers
+        
+        input_values[1] = int(input_values[1])  # region
+        input_values[2] = int(input_values[2]) if input_values[2].isdigit() else input_values[2]  # num_sides
+        input_values[6] = int(input_values[6])  # num_dice
+        input_values[7] = int(input_values[7])  # num_sides
+        input_values[8] = int(input_values[8])  # high_level
+        input_values[9] = int(input_values[9])  # low_level
+        input_values[10] = int(input_values[10])  # gold_num
+
         # Assuming 'inputs' is a list containing the user inputs
         create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, num_dice, num_sides, high_level, low_level, gold_num = input_values
+
+        print(f'this is your input values {input_values}')
+
+        for item in input_values:
+            print(type(item))
 
         # Call the generate_random_char function with the retrieved inputs
         results = generate_random_char(create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, num_dice, num_sides, high_level, low_level, gold_num)
 
         #Don't think we need this, we don't want all our data to be strings (unless we need this, then we can modify the functions)
-        results = str(results)
+        # results = str(results)
         # Join the results into a single string
-        output = '\n'.join(results)
+        output = (results)
 
         return render_template('index.html', output=output)
     except Exception as e:
