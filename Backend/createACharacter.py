@@ -599,37 +599,40 @@ class Character:
     #     return self.cast_level
 
 
-    def caster_formula(self,n, class_2 = None):
+    def caster_formula(self,n, class_2 = 'missing'):
+        print(f'this is your damn class 2: {class_2}')
         self.casting_level_string = str(self.classes.get(self.c_class, "").get("casting level", "").lower())
         self.casting_level_num = self.c_class_level
 
         if self.casting_level_string == 'high':
             if n % 2 == 0:
-                self.highest_spell_known_1=n // 2
+                highest_spell_known=n // 2
             else:
-                self.highest_spell_known_1=(n + 1) // 2
-            self.highest_spell_known_1 = min(self.highest_spell_known_1,9)
+                highest_spell_known=(n + 1) // 2
+            highest_spell_known = min(highest_spell_known,9)
 
         elif self.casting_level_string == 'mid':
             if n % 3 == 1:
-                self.highest_spell_known_1= ceil(n // 3)+1
+                highest_spell_known= ceil(n // 3)+1
             else:
-                self.highest_spell_known_1= ceil(n / 3)
-            self.highest_spell_known_1 = min(n,6)           
+                highest_spell_known= ceil(n / 3)
+            highest_spell_known = min(n,6)           
        
         elif self.casting_level_string == 'low':
-            self.highest_spell_known_1= ceil(n / 3)-1
-            self.highest_spell_known_1 = min(self.highest_spell_known_1,4)           
+            highest_spell_known= ceil(n / 3)-1
+            highest_spell_known = min(highest_spell_known,4)           
             self.casting_level_num -= 3
 
 
         else:
-            self.highest_spell_known_1 = 0 
+            highest_spell_known = 0 
             self.casting_level_num = 0
 
-        if class_2 == None:
+        if class_2 == 'missing':
+            self.highest_spell_known_1 = highest_spell_known
             return self.highest_spell_known_1    
         else:
+            self.highest_spell_known_2 = highest_spell_known
             return self.highest_spell_known_2
 
     # def choose_caster_formula_1(self): 

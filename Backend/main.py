@@ -91,7 +91,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='paladin', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=20, low_level=15, gold_num=100000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='wizard', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=20, low_level=15, gold_num=100000):
 
 		# userInput = input('Create a new character? (y/n): ').lower()
 		userInput = create_new_char.lower()
@@ -162,7 +162,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		# as long as spells known list has a '0th' spell column (even if it isn't 0) 
 		# it won't pull any 0th spells for casters with orisons/cantrips
 		character.highest_spell_known_1 = character.caster_formula(character.c_class_level)
-		character.highest_spell_known_2 = character.caster_formula(character.c_class_2_level, 'class_2')
+		character.highest_spell_known_2 = character.caster_formula(character.c_class_2_level, character.c_class_2)
+		print(type(character.c_class_2))
+		print(character.c_class_2)
 
 		#Divine Casters have all spells known (don't make this function for them)
 		print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
