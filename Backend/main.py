@@ -91,7 +91,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='fighter', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=20, low_level=1, gold_num=100000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='paladin', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=20, low_level=15, gold_num=100000):
 
 		# userInput = input('Create a new character? (y/n): ').lower()
 		userInput = create_new_char.lower()
@@ -101,24 +101,30 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		# format_text(text, bold=False, color=None)
 		character = CreateNewCharacter(
 			character_json_config)
+		character.instantiate_full_data_dict()
 		
-		region_chooser(character,userInput_region)
-		race_chooser(character,userInput_race)
-		weapon_chooser(character)
-		name_chooser(character)
-		chooseClass(character,class_choice)
-		dip_function(character,'base_classes', multi_class)
+		
+		character.region = region_chooser(character,userInput_region)
+		character.chosen_race = race_chooser(character,userInput_race)
+		weapon_chooser(character) # We don't use this anymore, but leave it uncommented for now
+		character.f_name, character.l_name =name_chooser(character)
+		character.c_class = chooseClass(character,class_choice)
+		character.c_class_2 = dip_function(character,'base_classes', multi_class)
 
 		#add an optional flaws rule function	
-		print(f"This is your randomly selected alignment: {character.choose_alignment('alignments', alignment_input)}")
-		print(f"This is your randomly selected deity: {character.randomize_deity()}")
+		character.alignment = character.choose_alignment('alignments', alignment_input)
+		print(f"This is your randomly selected alignment: {character.alignment}")
+		
+		character.deity_choice = character.randomize_deity()
+		print(f"This is your randomly selected deity: {character.deity_choice}")
 
-		character.randomize_body_feature('age')
-		character.randomize_body_feature('height')
-		character.randomize_body_feature('weight')			
+		age, age_number = character.randomize_body_feature('age')
+		height, height_number = character.randomize_body_feature('height')
+		weight, weight_number = character.randomize_body_feature('weight')			
 		# num_dice = int(input("How many dice would you like to roll? "))
 		# num_sides = int(input("How many sides should each die have? "))
-		character.roll_stats(num_dice, num_sides)
+		stats = character.roll_stats(num_dice, num_sides)
+		character.assign_stats(stats)
 
 		chosen_subrace, subrace_description = character.subrace_chooser()
 		print(f'this is your chosen subrace {chosen_subrace}')
@@ -136,7 +142,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 		character.calc_ability_mod()
 
-		character.randomize_flaw()
+		flaw = character.randomize_flaw()
 
 		# max_num = int(input("Enter the highest level you want the char to be: "))
 		# min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
@@ -146,17 +152,17 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		#hp calculations
 		character.hit_dice_calc()
 		character.roll_hp()
-		character.total_hp_calc()
+		character.Total_HP = character.total_hp_calc()
 
-		print(f'This is your class for spells{character.class_for_spells_attr()} ')
+		print(f'This is your class for spells: {character.class_for_spells_attr()} ')
 
 		# Some spellcasters get 0th level spells (all high + most mid)
 		# Also 0th spells = infinite casting 
 		# Wizards + Clerics know all 0th level spells (wizards know all except opposing school)
 		# as long as spells known list has a '0th' spell column (even if it isn't 0) 
 		# it won't pull any 0th spells for casters with orisons/cantrips
-		character.caster_formula(character.c_class_level)
-		character.caster_formula(character.c_class_2_level, 'class_2')
+		character.highest_spell_known_1 = character.caster_formula(character.c_class_level)
+		character.highest_spell_known_2 = character.caster_formula(character.c_class_2_level, 'class_2')
 
 		#Divine Casters have all spells known (don't make this function for them)
 		print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
@@ -353,7 +359,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 
 		# We want this to ouput data we want in json format, so we can send it over to the frontend
-		return Armor, Shield, weapon_enhancement_chosen_list, armor_enhancement_chosen_list, shield_enhancement_chosen_list, selected_traits
+		return character.data_dict
 	
 
 

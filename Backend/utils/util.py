@@ -120,6 +120,7 @@ def region_chooser(character, userInput_region):
         print('You have selected no region.')
         region_selected = ''
     character.region = region_selected
+    return character.region
 
 def race_chooser(character, userInput_race):
     """
@@ -140,6 +141,7 @@ def race_chooser(character, userInput_race):
         userInput_race = random.choice(races)
         print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race: {userInput_race}')
     character.chosen_race = userInput_race
+    return character.chosen_race
         
 
 def name_chooser(character):
@@ -168,7 +170,9 @@ def name_chooser(character):
         character.f_name = random.choice(f_names)
         character.l_name = random.choice(l_names) 
         character.full_name = character.f_name + character.l_name
-        print(f"Name for {character.region}: {character.f_name} {character.l_name}")        
+        print(f"Name for {character.region}: {character.f_name} {character.l_name}")
+
+    return character.f_name, character.l_name
 
 
 
@@ -228,6 +232,7 @@ def chooseClass(character, class_choice):
     
         classes = list(character.class_data.keys())
         character.c_class = classes[randrange(0,len(classes))]
+    return character.c_class
 
 
 
@@ -255,6 +260,7 @@ def dip_function(character, base_classes, multi_class = False):
         print(f"This is your only class: {character.c_class}")
             
     character.c_class_2 = c_class_2
+    return character.c_class_2
 
 
 def isBool(strBool: bool): return True if strBool == 'yes' or strBool == 'y' else False

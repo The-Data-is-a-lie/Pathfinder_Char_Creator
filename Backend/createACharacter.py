@@ -259,12 +259,11 @@ class Character:
             print(f'main_stat 2 {main_stat_2}')
             stats = self.swap_stats(main_stat_2, stats, new=True)   
 
+        return stats
 
-        # Assign the rolled stats to the character's attributes
+    def assign_stats(self, stats):
         for attr, value in stats.items():
             setattr(self, attr, value)
-
-        # Print the rolled stats
 
     def swap_stats(self, main_stat, stats, new=None):
         original_main_stat = stats[main_stat]
@@ -298,7 +297,6 @@ class Character:
         # print(f'INT {self.int}')
         # print(f'WIS {self.wis}')
         # print(f'CHA {self.cha}')           
-
 
     def calc_ability_mod(self):
         self.str_mod = floor((self.str-10)/2)
@@ -348,6 +346,7 @@ class Character:
 
         self.capped_level_1 = min(c_class_level,20)
         self.capped_level_2 = min(c_class_2_level,20)     
+
         # we create capped levels for things like spells just in case we'll need it for many functions
         
 
@@ -387,19 +386,20 @@ class Character:
     def total_hp_calc(self):               
         self.Total_HP = self.total_hp_rolls + self.Hit_dice1 + (floor(self.con-10)/2 * self.level)
         self.Total_HP = floor(self.Total_HP)
-        print(f'This is your total HP: {self.Total_HP}')
+        return self.Total_HP
 
 
     #change age/height/weight string into useable array that contains (e.g.) 5d6 -> 5,6 (5 num_dice, 6 num_sides)
     def randomize_body_feature(self, body_attribute):
         print(f'??????????????????????????{self.races[self.chosen_race][body_attribute] }')
         [base_stat, dice_string] = self.races[self.chosen_race][body_attribute]        
-        # print(self.)
         print(f'before setting attribute {body_attribute}', getattr(self, body_attribute))
         [num_dice, num_sides] = [int(c) for c in dice_string.split('d')]
         dice_roll = roll_dice(num_dice, num_sides)
-        setattr(self, body_attribute, base_stat+dice_roll)
-        print(f'after setting attribute {body_attribute}', getattr(self, body_attribute))
+        total_number = dice_roll + base_stat
+        print(f'after setting attribute {body_attribute}', total_number)
+        
+        return body_attribute, total_number
 
     
     def get_racial_attr(self, racial_attribute):
@@ -433,7 +433,7 @@ class Character:
 
             print(self.alignment)
         else:
-            self.alignment.lower()
+            self.alignment = self.alignment.lower()
 
         return self.alignment
 
@@ -1960,8 +1960,8 @@ class Character:
             ii = level // 3         
 
             while i < ii:
-                print(dataset)
-                print(dataset.keys())
+                # print(dataset)
+                # print(dataset.keys())
                 if n2 != None:
                     level = (n // n2 * (i + 1))
                     string_level = str(max(level,4))
@@ -2551,6 +2551,13 @@ class Character:
 
                 
 
+    def full_data_dictionary(self, data_dict, key, value):
+        data_dict[key] = value
+        return data_dict
+
+    def instantiate_full_data_dict(self):
+        self.data_dict = {}
+        return self.data_dict
 
 
 
