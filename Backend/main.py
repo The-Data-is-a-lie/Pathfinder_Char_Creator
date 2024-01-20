@@ -91,7 +91,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='wizard', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=20, low_level=15, gold_num=100000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='ranger', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=20, low_level=15, gold_num=100000):
 
 		# userInput = input('Create a new character? (y/n): ').lower()
 		userInput = create_new_char.lower()
@@ -104,18 +104,18 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		character.instantiate_full_data_dict()
 		
 		
-		character.region = region_chooser(character,userInput_region)
-		character.chosen_race = race_chooser(character,userInput_race)
+		region = region_chooser(character,userInput_region)
+		chosen_race = race_chooser(character,userInput_race)
 		weapon_chooser(character) # We don't use this anymore, but leave it uncommented for now
-		character.f_name, character.l_name =name_chooser(character)
-		character.c_class = chooseClass(character,class_choice)
-		character.c_class_2 = dip_function(character,'base_classes', multi_class)
+		f_name, l_name =name_chooser(character)
+		c_class = chooseClass(character,class_choice)
+		c_class_2 = dip_function(character,'base_classes', multi_class)
 
 		#add an optional flaws rule function	
-		character.alignment = character.choose_alignment('alignments', alignment_input)
+		alignment = character.choose_alignment('alignments', alignment_input)
 		print(f"This is your randomly selected alignment: {character.alignment}")
 		
-		character.deity_choice = character.randomize_deity()
+		deity_choice = character.randomize_deity()
 		print(f"This is your randomly selected deity: {character.deity_choice}")
 
 		age, age_number = character.randomize_body_feature('age')
@@ -174,7 +174,6 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		print(f"This is your spells list you can choose from {character.spells_known_selection('base_classes','divine_casters')}")
 
 
-		print(f'This is your wizard schools {character.wizard_school_chooser()}')
 
 
 		# Extra class choices:
@@ -203,14 +202,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		favored_class = character.favored_class_option_chooser(favored_class_list, character.human_flag)
 		skill_rank_level, favored_class_chosen = character.favored_class_calculator(favored_class)		
 
-
-
-
-
 		#decides if druids go animal companion or domain
 		# or if inquisitors go inquisitions or domains
 		character.domain_chance()
-
 
 		#class specific choices
 		# character.monk_ki_power_chooser()
@@ -318,12 +312,13 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		print(f'This is your gold post items {character.gold}')	
 
 		#calculating savings throws based off of class levels
-		character.saving_throw_calc('Fortitude')
-		character.saving_throw_calc('Reflex')
-		character.saving_throw_calc('Will')	
+		fort_saving_throw = character.saving_throw_calc('Fortitude')
+		reflex_saving_throw = character.saving_throw_calc('Reflex')
+		wisdom_saving_throw = character.saving_throw_calc('Will')	
 
-		character.skills_selector('skills', skill_rank_level)
-		print(f'This is your chosen professions {character.profession_chooser("professions")}')		
+		skill_ranks = character.skills_selector('skills', skill_rank_level)
+		professions = character.profession_chooser("professions")		
+		print(f'This is your chosen professions {professions}')		
 
 		character.simple_list_chooser('ranger','favored_terrains', 'favored_enemies')
 		character.simple_list_chooser('brawler','manuevers',max_num=8)
@@ -341,14 +336,14 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		weapon_enhancement = character.enhancement_calculator(2)
 		shield_enhancement = character.enhancement_calculator(1)
 
-		Armor = character.ac_bonus_calculator(character.armor_dict)
-		Shield = character.ac_bonus_calculator(character.shield_dict)
+		armor_ac = character.ac_bonus_calculator(character.armor_dict)
+		shield_ac = character.ac_bonus_calculator(character.shield_dict)
 
 		weapon_type_flag = character.weapon_type_flag_func(character.weapon_dict)
 
 		weapon_enhancement_chosen_list = character.enhancement_chooser(character.weapon_qualities,weapon_enhancement, weapon_type_flag)
 		armor_enhancement_chosen_list = character.enhancement_chooser(character.armor_qualities,armor_enhancement, 'Armor')
-		shield_enhancement_chosen_list = character.enhancement_chooser(character.armor_qualities,armor_enhancement, 'Shield', character.shield_flag)
+		shield_enhancement_chosen_list = character.enhancement_chooser(character.armor_qualities,shield_enhancement, 'Shield', character.shield_flag)
 
 		print(weapon_enhancement_chosen_list, armor_enhancement_chosen_list, shield_enhancement_chosen_list)
 
@@ -358,6 +353,39 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 		print(character.Total_HP)
 		print(favored_class_chosen)
+
+		export_list_non_dict = [character.region, character.chosen_race, character.f_name, 
+				 character.l_name, character.c_class, character.c_class_2, 
+				 character.alignment,  age_number, 
+				 height_number, weight_number, character.dex, character.str, 
+				 character.con, character.int, character.wis, character.cha, 
+				 flaw, character.Total_HP,
+				 armor_ac, shield_ac,
+				 fort_saving_throw, reflex_saving_throw, wisdom_saving_throw
+				 
+				 ]
+		
+		string_export_list_non_dict = ["region", "chosen_race", "f_name", 
+				"l_name", "c_class", "c_class_2", 
+				"alignment",  "age_number", 
+				"height_number", "weight_number", "dex", "str", 
+				"con", "int", "wis", "cha", 
+				"flaw", "Total_HP",
+				"armor_ac", "shield_ac",
+				"fort_saving_throw", "reflex_saving_throw", "wisdom_saving_throw"
+				]
+		
+		export_list_dict = [character.deity_choice, character.armor_dict, 
+			  	 character.weapon_dict, character.shield_dict, skill_ranks,
+				 weapon_enhancement_chosen_list, armor_enhancement_chosen_list, 
+				 shield_enhancement_chosen_list, selected_traits, professions
+				 ] 
+		
+		character.export_list_non_dict(export_list_non_dict, string_export_list_non_dict)		
+
+		print(f'this is your character data {character.data_dict}')
+
+		# Need to add a good way to export spells
 
 
 		# We want this to ouput data we want in json format, so we can send it over to the frontend

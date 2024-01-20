@@ -1791,9 +1791,10 @@ class Character:
     # def favored_class_bonus(self):
             
 
-
+# Start of Generic class options chooser
     def generic_class_option_chooser(self, class_1,  dataset_name, dataset_name_2 = None, dataset_name_3 = None, multiple = None, level=None, level_2 = None):
         if self.c_class == class_1: 
+            data_dict = {}
             if multiple != None:
                 amount = getattr(data, 'amount', {}).get(self.c_class, {}).get(dataset_name, {})
                 dataset = getattr(self, class_1, {}).get(dataset_name, {})
@@ -1822,8 +1823,11 @@ class Character:
                     i = len(chosen_set)
 
                 chosen_set_desc = [{desc: dataset[desc]} for desc in chosen_set]
+                self.full_data_dictionary(data_dict, chosen_set, chosen_desc)
+                self.data_dict.update({'class features': data_dict})
 
                     
+
                 print(chosen_set_desc)
                 return chosen_set, chosen_set_desc
 
@@ -1839,11 +1843,22 @@ class Character:
                 chosen_desc = {choice: description}
 
                 print(chosen_desc)
+                self.data_dict.update({'class features': chosen_desc})
 
                 self.bonus_feats = self.bonus_searcher(choice, chosen_desc, 'feats')
                 self.bonus_spells = self.bonus_searcher(choice, chosen_desc, 'spells')
                 return chosen_desc
+            
 
+    def chosen_set_append(self, dataset, chosen_set, chosen):
+        chosen_dict = {}
+        for chosen in chosen_set:
+            chosen_desc = dataset.get(chosen, {})
+            chosen_dict.update({chosen: chosen_desc})
+
+        return chosen_dict            
+
+# End of Generic Class Option Chooser
 
 
     # the next 3 functions are all used together
@@ -1893,13 +1908,19 @@ class Character:
             total_choices=list(set(total_choices))
             print(f"These are all your options to choose from: {total_choices}")
 
+            chosen_desc = {chosen: dataset.get(chosen, {})}
 
             if i>= 5 and self.c_class_level >= 10 and level == 10:
                 add_advanced_talents = True
                 total_choices.extend(dataset_no_prereq)                
                 break
+            
 
+        chosen_dict = self.chosen_set_append(dataset, chosen_set, chosen)
 
+        
+
+        self.data_dict.update({'class features': chosen_dict})
         return base_no_prereq, dataset_no_prereq, chosen_set
 
 
@@ -1972,7 +1993,7 @@ class Character:
                     string_level = str((n * (i + 1)))
 
                 dataset_list += dataset.get(string_level, [])
-                # print(f'This is your chooseable dataset {dataset_list}')
+                print(f'This is your chooseable dataset {dataset_list}')
                 chosen = random.choice(dataset_list)
                 chosen_set.add(chosen)
 
@@ -1984,7 +2005,26 @@ class Character:
 
                 print(chosen_set)
                 i = min(len(chosen_set),ii)
-            return chosen_set  
+
+            chosen_dict = {}
+            pre_chosen_dict = self.chosen_set_muilt_append(dataset, chosen_set, chosen, dataset_name)
+            chosen_dict.update({dataset_name: pre_chosen_dict})
+            self.data_dict.update({'class features': chosen_dict})
+            return chosen_dict  
+
+    def chosen_set_muilt_append(self, dataset, chosen_set, chosen, dataset_name):
+        chosen_dict = {}
+        for chosen in chosen_set:
+            chosen_desc = self.get_description(chosen, dataset)
+            chosen_dict.update({chosen: chosen_desc})
+        return chosen_dict  
+    
+    def get_description(self, key, dataset):
+        for level_data in dataset.values():
+            if key in level_data:
+                return level_data[key]
+        return None 
+
 
 
     def print_metamagic(self):
@@ -2226,6 +2266,7 @@ class Character:
     def simple_list_chooser(self, class_1, *dataset_names, max_num=float('inf'), **kwargs):
         if self.c_class.lower() == class_1.lower():
             chosen = []
+            chosen_dict = {}
             for dataset_name in dataset_names:
                 dataset_input = getattr(data, dataset_name)
                 dataset = self.json_list_grabber(dataset_input, ',', **kwargs)
@@ -2233,7 +2274,9 @@ class Character:
                 formula_calc = self.formula_grabber(dataset_name, **kwargs)
                 if isinstance(dataset, dict):
                     dataset = list(dataset.keys())
-                chosen.append(random.sample(dataset, k=min(formula_calc, max_num)))
+                # chosen.append(random.sample(dataset, k=min(formula_calc, max_num)))
+                chosen_dict[dataset_name] = random.sample(dataset, k=min(formula_calc, max_num))
+                self.data_dict.update({'class features': chosen_dict})
             print(chosen)
             return chosen
     
@@ -2561,7 +2604,26 @@ class Character:
     def instantiate_full_data_dict(self):
         self.data_dict = {}
         return self.data_dict
+    
+    def export_list_non_dict(self, export_list, string_export_list):
+        chosen_dict = {string_key: variable_value for string_key, variable_value in zip(string_export_list, export_list)}
+        self.data_dict.update(chosen_dict)
+        return chosen_dict        
 
+    
+    # def chosen_set_muilt_append(self, dataset, chosen_set, chosen, dataset_2, n):
+    #     chosen_dict = {}
+    #     for chosen in chosen_set:
+    #         chosen_desc = dataset.get(n, {})
+    #         chosen_desc_2 = dataset.get(chosen, {}).get(n,{}).get(dataset_2, {})
+    #         pre_chosen_dict = {chosen: chosen_desc_2}
+    #         chosen_dict.update({chosen: pre_chosen_dict})
+
+    #         print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!chosen_dict_pally!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    #         print(chosen_dict, chosen_desc, chosen_desc_2, pre_chosen_dict)
+
+    #     return chosen_dict    
+            
 
 
 
