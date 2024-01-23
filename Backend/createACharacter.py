@@ -735,7 +735,7 @@ class Character:
         params: spell_data (pandas file), i (number)
         """
         alignment = self.alignment.lower()
-        extraction_list = ['name', self.c_class_for_spells, 'lawful', 'chaotic', 'evil', 'good']
+        extraction_list = ['name']#, self.c_class_for_spells 'lawful', 'chaotic', 'evil', 'good']
         alignment_exclusion = getattr(data, alignment_exclusion)
 
 
@@ -770,6 +770,7 @@ class Character:
         divine_casters=getattr(data, divine_casters)
         i=0
         self.spell_list_choose_from=[]
+        all_spell_names = []
         
         #separating the lists
         known_list = self.spells_known_list
@@ -820,6 +821,11 @@ class Character:
         else:
             print('cannot select spells_known_selection')
 
+        for df in self.spell_list_choose_from:
+            spell_names = df['name'].tolist()
+            all_spell_names.extend(spell_names)
+
+        self.spell_list_choose_from = all_spell_names
 
         return self.spell_list_choose_from
 
@@ -1822,10 +1828,9 @@ class Character:
                     chosen_set.add(chosen)
                     i = len(chosen_set)
 
-                chosen_set_desc = [{desc: dataset[desc]} for desc in chosen_set]
-                self.full_data_dictionary(data_dict, chosen_set, chosen_desc)
-                self.data_dict.update({'class features': data_dict})
-
+                chosen_set_desc = {desc: dataset[desc] for desc in chosen_set}
+                # self.full_data_dictionary(data_dict, chosen_set, chosen_set_desc)
+                self.data_dict['class features'].append(chosen_set_desc)
                     
 
                 print(chosen_set_desc)
@@ -2602,7 +2607,7 @@ class Character:
         return data_dict
 
     def instantiate_full_data_dict(self):
-        self.data_dict = {}
+        self.data_dict = {'class features': []}
         return self.data_dict
     
     def export_list_non_dict(self, export_list, string_export_list):
@@ -2610,6 +2615,10 @@ class Character:
         self.data_dict.update(chosen_dict)
         return chosen_dict        
 
+
+    # def pandas_to_json(self, data_frame):
+    #     json_data = data_frame.to_json(orient='records')
+    #     return json_data
     
     # def chosen_set_muilt_append(self, dataset, chosen_set, chosen, dataset_2, n):
     #     chosen_dict = {}

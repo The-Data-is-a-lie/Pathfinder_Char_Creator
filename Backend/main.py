@@ -91,7 +91,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='ranger', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=20, low_level=15, gold_num=100000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='wizard', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=100000):
 
 		# userInput = input('Create a new character? (y/n): ').lower()
 		userInput = create_new_char.lower()
@@ -171,7 +171,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		print(f'This is your spells per day {character.spells_per_day_attr("base_classes")}')
 		print(f'This is your spells per day from ability mods {character.spells_per_day_from_ability_mod("caster_mod")}')
 		print(f'Spells known + extra randomized spells known [spell book learners only] {character.spells_known_extra_roll()}')		
-		print(f"This is your spells list you can choose from {character.spells_known_selection('base_classes','divine_casters')}")
+
+		character.spell_list_choose_from = character.spells_known_selection('base_classes','divine_casters')
+		print(f"This is your spells list you can choose from {character.spell_list_choose_from}")
 
 
 
@@ -361,7 +363,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 character.con, character.int, character.wis, character.cha, 
 				 flaw, character.Total_HP,
 				 armor_ac, shield_ac,
-				 fort_saving_throw, reflex_saving_throw, wisdom_saving_throw
+				 fort_saving_throw, reflex_saving_throw, wisdom_saving_throw,
+				 character.spell_list_choose_from
 				 
 				 ]
 		
@@ -372,7 +375,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				"con", "int", "wis", "cha", 
 				"flaw", "Total_HP",
 				"armor_ac", "shield_ac",
-				"fort_saving_throw", "reflex_saving_throw", "wisdom_saving_throw"
+				"fort_saving_throw", "reflex_saving_throw", "wisdom_saving_throw",
+				"character.spell_list_choose_from"
 				]
 		
 		export_list_dict = [character.deity_choice, character.armor_dict, 

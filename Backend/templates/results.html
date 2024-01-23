@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Results</title>
+</head>
+<body>
+    <div id="characterResults">
+        <!-- Character data will be displayed here -->
+    </div>
+
+    <script>
+        // Make an AJAX request to the Flask server
+        fetch('/get_character_data')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(characterData => {
+                // Handle the received data in JavaScript
+                console.log('Received character data:', characterData);
+
+                // Display the character data on the page
+                const characterResultsDiv = document.getElementById('characterResults');
+                characterResultsDiv.innerHTML = '<pre>' + JSON.stringify(characterData, null, 2) + '</pre>';
+            })
+            .catch(error => console.error('Error fetching character data:', error));
+    </script>
+</body>
+</html>
