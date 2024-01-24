@@ -2463,7 +2463,7 @@
   "construction requirements": "craft wondrous item, deathwatch ",
   "cost": "1,000"
   },
-  "of the eagle": {
+  "eyes of the eagle": {
   "source": "ultimate equipment pg. 225 , prpg core rulebook pg. 512",
   "aura": "faint divination",
   "cl": "3rd",
@@ -2551,7 +2551,7 @@
   "construction requirements": "craft wondrous item, comprehend languages ",
   "cost": "1,800, 144 xp"
   },
-  "of the owl": {
+  "eyes of the owl": {
   "source": "ultimate equipment pg. 225 , pathfinder society field guide pg. 52",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -2606,7 +2606,7 @@
   "construction requirements": "craft wondrous item, locate object , scent trail apg ",
   "cost": "2,800"
   },
-  "of keen sight": {
+  "eyes of keen sight": {
   "source": "ultimate equipment pg. 225",
   "aura": "faint transmutation",
   "cl": "1st",
@@ -2749,7 +2749,7 @@
   "construction requirements": "craft wondrous item, eagle's splendor , creator must be a half-orc",
   "cost": "5,000"
   },
-  "of mind reading (android)": {
+  "eyes of mind reading (android)": {
   "source": "inner sea races pg. 231",
   "aura": "faint divination",
   "cl": "3rd",
@@ -2881,7 +2881,7 @@
   "construction requirements": "craft wondrous item, countless eyes (ultimate magic)",
   "cost": "7,500"
   },
-  "of the damned": {
+  "eyes of the damned": {
   "source": "villain codex pg. 93",
   "aura": "faint illusion",
   "cl": "5th",
@@ -2925,7 +2925,7 @@
   "construction requirements": "craft wondrous item, arcane sight, greater detect magic ui ",
   "cost": "7,500"
   },
-  "of embersight": {
+  "eyes of embersight": {
   "source": "villain codex pg. 93",
   "aura": "moderate divination",
   "cl": "9th",
@@ -2936,7 +2936,7 @@
   "construction requirements": "craft wondrous item, true seeing ",
   "cost": "8,000"
   },
-  "of the liar": {
+  "eyes of the liar": {
   "source": "melee tactics toolbox pg. 29",
   "aura": "faint divination",
   "cl": "5th",
@@ -3013,7 +3013,7 @@
   "construction requirements": "craft wondrous item, disintegrate , creator must be a transmuter",
   "cost": "12,500"
   },
-  "of doom": {
+  "eyes of doom": {
   "source": "ultimate equipment pg. 224 , prpg core rulebook pg. 512",
   "aura": "moderate necromancy",
   "cl": "11th",
@@ -3024,7 +3024,7 @@
   "construction requirements": "craft wondrous item, doom , deathwatch , fear ",
   "cost": "12,500"
   },
-  "of eyebite": {
+  "eyes of eyebite": {
   "source": "ultimate equipment pg. 224",
   "aura": "moderate necromancy",
   "cl": "11th",
@@ -3068,7 +3068,7 @@
   "construction requirements": "craft wondrous item, true strike ",
   "cost": "25,000"
   },
-  "of charming": {
+  "eyes of charming": {
   "source": "ultimate equipment pg. 224 , prpg core rulebook pg. 512",
   "aura": "moderate enchantment",
   "cl": "7th",
@@ -3123,7 +3123,7 @@
   "construction requirements": "craft wondrous item, charm monster , dominate person ",
   "cost": "47,500"
   },
-  "of the dragon": {
+  "eyes of the dragon": {
   "source": "ultimate equipment pg. 225",
   "aura": "strong transmutation",
   "cl": "15th",
@@ -7301,7 +7301,7 @@
   "construction requirements": "craft wondrous item, burst of insight oa ",
   "cost": "500"
   },
-  "of social competence": {
+  "headband of social competence": {
   "source": "heroes of the high court pg. 28",
   "aura": "faint divination",
   "cl": "1st",
@@ -7312,7 +7312,7 @@
   "construction requirements": "craft wondrous item, cultural adaptation ui ",
   "cost": "500"
   },
-  "of vermin control": {
+  "headband of vermin control": {
   "source": "monster codex pg. 45",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -7345,7 +7345,7 @@
   "construction requirements": "craft wondrous item, doom , shrink item ",
   "cost": "1,800"
   },
-  "of inspired wisdom2": {
+  "headband of inspired wisdom2": {
   "source": "ultimate equipment pg. 250 , prpg core rulebook pg. 516",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7356,7 +7356,7 @@
   "construction requirements": "craft wondrous item, owl's wisdom ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "of vast intelligence2": {
+  "headband of vast intelligence2": {
   "source": "ultimate equipment pg. 251 , prpg core rulebook pg. 517",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7367,7 +7367,7 @@
   "construction requirements": "craft wondrous item, fox's cunning ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "of alluring charisma2": {
+  "headband of alluring charisma2": {
   "source": "ultimate equipment pg. 248 , prpg core rulebook pg. 516",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7389,7 +7389,7 @@
   "construction requirements": "craft wondrous item, charm person , sanctuary ",
   "cost": "2,000"
   },
-  "of aerial agility2": {
+  "headband of aerial agility2": {
   "source": "ultimate equipment pg. 248",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7411,7 +7411,7 @@
   "construction requirements": "craft wondrous item, polymorph self ",
   "cost": "2,250(+2), 8,750(+4), 19,500(+6)"
   },
-  "of the tainted ouroboros": {
+  "headband of the tainted ouroboros": {
   "source": "potions and poisons pg. 31",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -7433,7 +7433,7 @@
   "construction requirements": "craft wondrous item, speak with animals ",
   "cost": "2,400"
   },
-  "of the wolf": {
+  "headband of the wolf": {
   "source": "advanced class guide pg. 230",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -7444,7 +7444,7 @@
   "construction requirements": "craft wondrous item, bloodhound apg , creator must have the animal focus class feature",
   "cost": "2,500"
   },
-  "of ponderous recollection": {
+  "headband of ponderous recollection": {
   "source": "ultimate equipment pg. 251",
   "aura": "moderate divination and transmutation",
   "cl": "8th",
@@ -7455,7 +7455,7 @@
   "construction requirements": "craft wondrous item, know the enemy (ultimate magic)",
   "cost": "2,550"
   },
-  "of ki focus": {
+  "headband of ki focus": {
   "source": "ultimate equipment pg. 250",
   "aura": "faint abjuration",
   "cl": "1st",
@@ -7466,7 +7466,7 @@
   "construction requirements": "craft wondrous item, creator must have a ki pool",
   "cost": "2,700"
   },
-  "of unshakeable resolve": {
+  "headband of unshakeable resolve": {
   "source": "ultimate equipment pg. 251",
   "aura": "moderate abjuration and transmutation",
   "cl": "8th",
@@ -7488,7 +7488,7 @@
   "construction requirements": "craft wondrous item, goodberry , plant growth ",
   "cost": "2,580"
   },
-  "of deathless devotion": {
+  "headband of deathless devotion": {
   "source": "ultimate equipment pg. 249",
   "aura": "faint enchantment",
   "cl": "1st",
@@ -7499,7 +7499,7 @@
   "construction requirements": "craft wondrous item, heroism , stabilize ",
   "cost": "3,200"
   },
-  "of intuition": {
+  "headband of intuition": {
   "source": "ultimate equipment pg. 250",
   "aura": "faint divination",
   "cl": "3rd",
@@ -7521,7 +7521,7 @@
   "construction requirements": "craft wondrous item, status ",
   "cost": "3,500"
   },
-  "of fortune's favor": {
+  "headband of fortune's favor": {
   "source": "ultimate equipment pg. 249",
   "aura": "faint enchantment and evocation",
   "cl": "5th",
@@ -7532,7 +7532,7 @@
   "construction requirements": "craft wondrous item, ill omen or prayer ",
   "cost": "3,850"
   },
-  "of havoc": {
+  "headband of havoc": {
   "source": "ultimate equipment pg. 249",
   "aura": "faint enchantment",
   "cl": "5th",
@@ -7543,7 +7543,7 @@
   "construction requirements": "craft wondrous item, rage ",
   "cost": "4,000"
   },
-  "of twisted intellect": {
+  "headband of twisted intellect": {
   "source": "pathfinder #123: the flooded cathedral pg. 54",
   "aura": "moderate transmutation",
   "cl": "10th",
@@ -7565,7 +7565,7 @@
   "construction requirements": "craft wondrous item, animal trance , hypnotism , speak with\r animals , summon nature's ally v ",
   "cost": "4,500"
   },
-  "of mental prowess2": {
+  "headband of mental prowess2": {
   "source": "ultimate equipment pg. 250 , prpg core rulebook pg. 517",
   "aura": "strong transmutation",
   "cl": "12th",
@@ -7642,7 +7642,7 @@
   "construction requirements": "craft wondrous item, remove fear ",
   "cost": "7,000"
   },
-  "of ninjitsu": {
+  "headband of ninjitsu": {
   "source": "ultimate equipment pg. 251",
   "aura": "faint abjuration",
   "cl": "1st",
@@ -7664,7 +7664,7 @@
   "construction requirements": "craft wondrous item, break enchantment , creator must have the giant subtype",
   "cost": "7,500"
   },
-  "of mental superiority2": {
+  "headband mental superiority2": {
   "source": "ultimate equipment pg. 251 , prpg core rulebook pg. 517",
   "aura": "strong transmutation",
   "cl": "16th",
@@ -7675,7 +7675,7 @@
   "construction requirements": "craft wondrous item, eagle's splendor , fox's cunning , owl's wisdom ",
   "cost": "8,000(+2), 32,000(+4), 77,000(+6)"
   },
-  "of vast intelligence4": {
+  "headband of vast intelligence4": {
   "source": "ultimate equipment pg. 251 , prpg core rulebook pg. 517",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7686,7 +7686,7 @@
   "construction requirements": "craft wondrous item, fox's cunning ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "of inspired wisdom4": {
+  "headband of inspired wisdom4": {
   "source": "ultimate equipment pg. 250 , prpg core rulebook pg. 516",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7697,7 +7697,7 @@
   "construction requirements": "craft wondrous item, owl's wisdom ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "of alluring charisma4": {
+  "headband of alluring charisma4": {
   "source": "ultimate equipment pg. 248 , prpg core rulebook pg. 516",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7752,7 +7752,7 @@
   "construction requirements": "craft wondrous item, creator must be a 10th-level kineticist with access to the appropriate element",
   "cost": "9,000(lesser), 25,000(normal), 49,000(greater)"
   },
-  "of arcane energy": {
+  "headband of arcane energy": {
   "source": "ultimate equipment pg. 248",
   "aura": "strong evocation",
   "cl": "13th",
@@ -7763,7 +7763,7 @@
   "construction requirements": "arcane blast, arcane shield, craft wondrous item, prismatic spray ",
   "cost": "10,000"
   },
-  "of counterspelling": {
+  "headband of counterspelling": {
   "source": "ultimate equipment pg. 248",
   "aura": "strong abjuration",
   "cl": "13th",
@@ -7796,7 +7796,7 @@
   "construction requirements": "craft wondrous item, enlarge person, owl's wisdom, reduce person ",
   "cost": "12,000"
   },
-  "of knucklebones": {
+  "headband of knucklebones": {
   "source": "ultimate equipment pg. 250",
   "aura": "moderate necromancy",
   "cl": "9th",
@@ -7829,7 +7829,7 @@
   "construction requirements": "craft wondrous item, beast shape ii , dragon's breath (advanced player's guide), resist energy ",
   "cost": "16,000"
   },
-  "of inspired wisdom6": {
+  "headband of inspired wisdom6": {
   "source": "ultimate equipment pg. 250 , prpg core rulebook pg. 516",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7840,7 +7840,7 @@
   "construction requirements": "craft wondrous item, owl's wisdom ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "of vast intelligence6": {
+  "headband of vast intelligence6": {
   "source": "ultimate equipment pg. 251 , prpg core rulebook pg. 517",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7851,7 +7851,7 @@
   "construction requirements": "craft wondrous item, fox's cunning ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "of alluring charisma6": {
+  "headband of alluring charisma6": {
   "source": "ultimate equipment pg. 248 , prpg core rulebook pg. 516",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7873,7 +7873,7 @@
   "construction requirements": "craft wondrous item, polymorph self ",
   "cost": "2,250(+2), 8,750(+4), 19,500(+6)"
   },
-  "of mental prowess4": {
+  "headband of mental prowess4": {
   "source": "ultimate equipment pg. 250 , prpg core rulebook pg. 517",
   "aura": "strong transmutation",
   "cl": "12th",
@@ -7884,7 +7884,7 @@
   "construction requirements": "craft wondrous item, eagle's splendor , fox's cunning , owl's wisdom (any two)",
   "cost": "5,000(+2), 20,000(+4), 45,000(+6)"
   },
-  "of controlling illusions (elf)": {
+  "headband of controlling illusions (elf)": {
   "source": "inner sea races pg. 231",
   "aura": "moderate enchantment",
   "cl": "13th",
@@ -7895,7 +7895,7 @@
   "construction requirements": "craft wondrous item, dispel magic , mirror image , project image , creator must be an elf",
   "cost": "20,000"
   },
-  "of seduction": {
+  "headband of seduction": {
   "source": "ultimate equipment pg. 251",
   "aura": "faint enchantment and transmutation",
   "cl": "5th",
@@ -7906,7 +7906,7 @@
   "construction requirements": "craft wondrous item, unnatural lust ",
   "cost": "20,000"
   },
-  "of aerial agility4": {
+  "headband of aerial agility4": {
   "source": "ultimate equipment pg. 248",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7939,7 +7939,7 @@
   "construction requirements": "craft wondrous item, creator must be a 10th-level kineticist with access to the appropriate element",
   "cost": "9,000(lesser), 25,000(normal), 49,000(greater)"
   },
-  "of mental superiority4": {
+  "headband of mental superiority4": {
   "source": "ultimate equipment pg. 251 , prpg core rulebook pg. 517",
   "aura": "strong transmutation",
   "cl": "16th",
@@ -7950,7 +7950,7 @@
   "construction requirements": "craft wondrous item, eagle's splendor , fox's cunning , owl's wisdom ",
   "cost": "8,000(+2), 32,000(+4), 77,000(+6)"
   },
-  "of mental resilience": {
+  "headband of mental resilience": {
   "source": "ultimate equipment pg. 250",
   "aura": "strong abjuration and transmutation",
   "cl": "16th",
@@ -7961,7 +7961,7 @@
   "construction requirements": "craft wondrous item, eagle's splendor , fox's cunning , lesser\r restoration , owl's wisdom ",
   "cost": "32,000"
   },
-  "of aerial agility6": {
+  "headband of aerial agility6": {
   "source": "ultimate equipment pg. 248",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7972,7 +7972,7 @@
   "construction requirements": "craft wondrous item, extend spell, fly ",
   "cost": "2,250(+2), 21,000(+4), 40,500(+6)"
   },
-  "of mental prowess6": {
+  "headband of mental prowess6": {
   "source": "ultimate equipment pg. 250 , prpg core rulebook pg. 517",
   "aura": "strong transmutation",
   "cl": "12th",
@@ -8005,7 +8005,7 @@
   "construction requirements": "craft wondrous item, creator must be a 10th-level kineticist with access to the appropriate element",
   "cost": "9,000(lesser), 25,000(normal), 49,000(greater)"
   },
-  "of mental superiority6": {
+  "headband of mental superiority6": {
   "source": "ultimate equipment pg. 251 , prpg core rulebook pg. 517",
   "aura": "strong transmutation",
   "cl": "16th",
@@ -8016,7 +8016,7 @@
   "construction requirements": "craft wondrous item, eagle's splendor , fox's cunning , owl's wisdom ",
   "cost": "8,000(+2), 32,000(+4), 77,000(+6)"
   },
-  "of sealed thoughts": {
+  "headband of sealed thoughts": {
   "source": "mythic adventures pg. 152",
   "aura": "strong abjuration",
   "cl": "15th",

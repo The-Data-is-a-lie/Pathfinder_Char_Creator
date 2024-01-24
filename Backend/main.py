@@ -91,7 +91,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='wizard', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=100000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='wizard', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
 
 		# userInput = input('Create a new character? (y/n): ').lower()
 		userInput = create_new_char.lower()
@@ -116,7 +116,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		print(f"This is your randomly selected alignment: {character.alignment}")
 		
 		deity_choice = character.randomize_deity()
-		print(f"This is your randomly selected deity: {character.deity_choice}")
+		print(f"This is your randomly selected deity: {deity_choice}")
 
 		age, age_number = character.randomize_body_feature('age')
 		height, height_number = character.randomize_body_feature('height')
@@ -310,7 +310,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		character.armor_chooser()
 		print(f'This is your gold pre items {character.assign_gold("gold", gold_num)}')
 		print(f'This is your armor type {character.armor_type}')
-		character.item_chooser()
+		equipment_list, equip_descrip = character.item_chooser()
 		print(f'This is your gold post items {character.gold}')	
 
 		#calculating savings throws based off of class levels
@@ -347,10 +347,11 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		armor_enhancement_chosen_list = character.enhancement_chooser(character.armor_qualities,armor_enhancement, 'Armor')
 		shield_enhancement_chosen_list = character.enhancement_chooser(character.armor_qualities,shield_enhancement, 'Shield', character.shield_flag)
 
+		print('these are your chosen enhancements **************************')
 		print(weapon_enhancement_chosen_list, armor_enhancement_chosen_list, shield_enhancement_chosen_list)
 
 		selected_traits = character.trait_selector(8)
-		print(selected_traits)
+		print(f"These are your selected traits {selected_traits}")
 
 
 		print(character.Total_HP)
@@ -364,28 +365,41 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 flaw, character.Total_HP,
 				 armor_ac, shield_ac,
 				 fort_saving_throw, reflex_saving_throw, wisdom_saving_throw,
-				 character.spell_list_choose_from
+				 character.spell_list_choose_from,
+				 deity_choice, skill_ranks,
+				 weapon_enhancement_chosen_list, armor_enhancement_chosen_list, 
+				 shield_enhancement_chosen_list, professions,
+				 selected_traits, equipment_list, 
 				 
 				 ]
 		
-		string_export_list_non_dict = ["region", "chosen_race", "f_name", 
-				"l_name", "c_class", "c_class_2", 
-				"alignment",  "age_number", 
-				"height_number", "weight_number", "dex", "str", 
-				"con", "int", "wis", "cha", 
-				"flaw", "Total_HP",
+		string_export_list_non_dict = [
+				"character.region", "character.chosen_race", "character.f_name", 
+				"character.l_name", "character.c_class", "character.c_class_2", 
+				"character.alignment", "age_number", 
+				"height_number", "weight_number", "character.dex", "character.str", 
+				"character.con", "character.int", "character.wis", "character.cha", 
+				"flaw", "character.Total_HP",
 				"armor_ac", "shield_ac",
 				"fort_saving_throw", "reflex_saving_throw", "wisdom_saving_throw",
-				"character.spell_list_choose_from"
+				"character.spell_list_choose_from",
+				"deity_choice", "skill_ranks",
+				"weapon_enhancement_chosen_list", "armor_enhancement_chosen_list", 
+				"shield_enhancement_chosen_list", "professions",
+				"selected_traits", "equipment_list", 
+
 				]
 		
-		export_list_dict = [character.deity_choice, character.armor_dict, 
-			  	 character.weapon_dict, character.shield_dict, skill_ranks,
-				 weapon_enhancement_chosen_list, armor_enhancement_chosen_list, 
-				 shield_enhancement_chosen_list, selected_traits, professions
+		export_list_dict = [ 
+				character.spell_list_choose_from, equip_descrip,
 				 ] 
-		
+
+		string_export_list_dict = [ 
+				"character.spell_list_choose_from", "equip_descrip",
+				 ] 
+
 		character.export_list_non_dict(export_list_non_dict, string_export_list_non_dict)		
+		character.export_list_dict(export_list_dict, string_export_list_dict)		
 
 		print(f'this is your character data {character.data_dict}')
 

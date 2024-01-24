@@ -785,12 +785,17 @@ class Character:
                     select_spell=known_list[i]             
 
                     query_i = self.alignment_spell_limits(spell_data, i, "alignment_exclusion")
-#                    query_i = spell_data.loc[spell_data[self.c_class] == i, extraction_list]
-                    #needed to use this to properly randomize (vs. random.shuffle)
                     query_i = query_i.sample(frac=1.0)
                     spells = query_i[:select_spell]
-                    self.spell_list_choose_from.append(spells)
+                    spell_list = spells['name'].tolist()
+
+                    self.spell_list_choose_from.append(spell_list)
+
                     i += 1 
+
+
+
+
                 else:
                     break     
 
@@ -807,13 +812,11 @@ class Character:
                     select_spell=day_list[i]         
 
                     query_i = self.alignment_spell_limits(spell_data, i, "alignment_exclusion")                        
-
-#                    query_i = spell_data.loc[(spell_data[self.c_class] == i) & (spell_data['chaotic']== 0), extraction_list]
-
-                    #needed to use this to properly randomize (vs. random.shuffle)
                     query_i = query_i.sample(frac=1.0)
                     spells = query_i[:select_spell]
-                    self.spell_list_choose_from.append(spells)
+                    spell_list = spells['name'].tolist()
+                    self.spell_list_choose_from.append(spell_list)
+
                     i += 1 
                 else:
                     break                 
@@ -821,11 +824,11 @@ class Character:
         else:
             print('cannot select spells_known_selection')
 
-        for df in self.spell_list_choose_from:
-            spell_names = df['name'].tolist()
-            all_spell_names.extend(spell_names)
+        # for df in self.spell_list_choose_from:
+        #     spell_names = df['name'].tolist()
+        #     all_spell_names.extend(spell_names)
 
-        self.spell_list_choose_from = all_spell_names
+        # self.spell_list_choose_from = all_spell_names
 
         return self.spell_list_choose_from
 
@@ -1678,20 +1681,31 @@ class Character:
         select_from_list = list(self.items.keys())
         price_total = []
         equipment_list = []
+        equip_dict = {}
 
         for i in range(i, len(select_from_list)):
-            equipment_name, random_equip, price = self.choose_equipment(select_from_list[i])
+            equipment_name, random_equip, price, equip_descrip = self.choose_equipment(select_from_list[i])
             self.subtract_price_from_gold(price)
             if self.gold <= 0:
                 break
 
             equipment_list.append(random_equip)
+            equip_details = {'item_name': random_equip, 'description': equip_descrip}
+            
+            equip_dict[equipment_name] = equip_details
             price_total.append(price)
 
             i += 1
 
         print(equipment_list)
         print(price_total)
+        return equipment_list, equip_dict
+    
+    def item_dictionary(self, random_equip, equipment_key):
+        items = self.items
+        equip_descrip = items.get(equipment_key, {}).get(random_equip, {}).get('description', {})
+        return equip_descrip
+
 
     def determine_start_index(self):
         if self.armor_type is None:
@@ -1707,8 +1721,9 @@ class Character:
         random_equip = random.choice(list(item_dict.keys()))
         price = str(item_dict[random_equip]['price'])
         price = self.convert_price(price, random_equip)
+        equip_descrip = self.item_dictionary(random_equip, equipment_key)
 
-        return equipment_name, random_equip, price
+        return equipment_name, random_equip, price, equip_descrip
 
     def subtract_price_from_gold(self, price):
         if price != None and isinstance(self.gold, int):
@@ -2493,13 +2508,16 @@ class Character:
         
 
     def trait_selector(self, count):
+        trait_list = []
         trait_data = pd.read_csv('data/traits.csv', sep='|')
-        extraction_list = ['name', 'description']
+        extraction_list = ['name']#, 'description']
         conditions = self.trait_selector_limits(trait_data)
         query_i = trait_data.loc[conditions,extraction_list]
         query_i = query_i.sample(frac=1.0)
         traits = query_i[:count]
-        return traits
+        trait_list = traits['name'].to_list()
+
+        return trait_list
     
     def trait_selector_limits(self, trait_data):
         conditions = ( (trait_data['requirement_race'] == self.chosen_race) &
@@ -2614,6 +2632,11 @@ class Character:
         chosen_dict = {string_key: variable_value for string_key, variable_value in zip(string_export_list, export_list)}
         self.data_dict.update(chosen_dict)
         return chosen_dict        
+    
+    def export_list_dict(self, export_list, string_export_list):
+        chosen_dict = dict(zip(string_export_list, export_list))
+        self.data_dict.update(chosen_dict)
+        return chosen_dict
 
 
     # def pandas_to_json(self, data_frame):
