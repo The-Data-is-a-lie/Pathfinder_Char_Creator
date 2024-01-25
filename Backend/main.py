@@ -357,6 +357,16 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		print(character.Total_HP)
 		print(favored_class_chosen)
 
+		hair_color = character.randomize_apperance_attr("hair_colors")
+		hair_type = character.randomize_apperance_attr("hair_types")
+		eye_color = character.randomize_apperance_attr("eye_colors")
+		appearance = character.randomize_apperance_attr("appearance")
+		language_text = character.language_chooser()
+
+
+		print(f'this is your language list {character.language_chooser()}')
+
+
 		export_list_non_dict = [character.region, character.chosen_race, character.f_name, 
 				 character.l_name, character.c_class, character.c_class_2, 
 				 character.alignment,  age_number, 
@@ -369,7 +379,10 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 deity_choice, skill_ranks,
 				 weapon_enhancement_chosen_list, armor_enhancement_chosen_list, 
 				 shield_enhancement_chosen_list, professions,
-				 selected_traits, equipment_list, 
+				 selected_traits, equipment_list, character.c_class_level,
+				 chosen_subrace, subrace_description, character.archetype1,
+				 hair_color, hair_type, eye_color, appearance,
+				 language_text,
 				 
 				 ]
 		
@@ -386,7 +399,10 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				"deity_choice", "skill_ranks",
 				"weapon_enhancement_chosen_list", "armor_enhancement_chosen_list", 
 				"shield_enhancement_chosen_list", "professions",
-				"selected_traits", "equipment_list", 
+				"selected_traits", "equipment_list", "level",
+				 "chosen_subrace", "subrace_description", "archetype1",
+				 "hair_color", "hair_type", "eye_color", "appearance",
+				"language_text",
 
 				]
 		
@@ -402,6 +418,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		character.export_list_dict(export_list_dict, string_export_list_dict)		
 
 		print(f'this is your character data {character.data_dict}')
+
 
 		# Need to add a good way to export spells
 
@@ -426,7 +443,7 @@ generate_random_char()
 
 							
 
-
+# choose from the following
 
 
 #		character.get_all_prerequisites()
@@ -446,10 +463,7 @@ generate_random_char()
 		# print(f"racial speed: {character.get_racial_attr('speed')}")					
 		# print(f"Ability Scores for {character.get_racial_attr('ability scores')}")												
 		
-		# print(f'This is your hair_colors {character.randomize_apperance_attr("hair_colors")}')
-		# print(f'This is your hair_types {character.randomize_apperance_attr("hair_types")}')
-		# print(f'This is your eye_colors {character.randomize_apperance_attr("eye_colors")}')
-		# print(f'This is your appearance {character.randomize_apperance_attr("appearance", 3)}')									
+							
 
 		# print(f'This is your background_traits {character.randomize_personality_attr("background_traits",4)}')
 		# print(f'This is your professions {character.randomize_personality_attr("professions", 3)}')
@@ -526,31 +540,3 @@ generate_random_char()
 
 
 
-
-							# HTML Sections
-		# initialize_character_data()
-		# character_data_to_json()
-		# convert_character_json_to_html()
-		# html_builder()
-
-
-
-		#update character data:
-		
-
-
-		#need to devise a way to randomly pick good feats		
-
-	# else: 
-	# 	print('Exiting Character Generator...')
-	# 	break
-
-# Revamp code so it becomes a dictionary -> we can make homemade HTML/CSS code to print out exactly what we want
-
-# Add a calculation for BAB (instead of just posting L,M,H)
-# Add Extra race stats (Tortugan, Loxophant, ...)
-# Have forest give me extra race info (Tortugan, Loxophant, ...)
-
-# Remove Path of War auto subtraction from total Feats
-# Have feats per class (e.g level 5 Fighter gets 3 feats)
-# Add spheres per class

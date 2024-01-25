@@ -2637,6 +2637,46 @@ class Character:
         chosen_dict = dict(zip(string_export_list, export_list))
         self.data_dict.update(chosen_dict)
         return chosen_dict
+    
+    def language_chooser(self):
+        full_race_data = self.full_race_data()
+        language_text = full_race_data.get(self.chosen_race, {}).get('Languages', [])        
+        regex = ':(.*)'
+        captured_content = self.regex_search(language_text, regex)
+        language_list = self.language_splitter(captured_content)
+        languages = self.random_language_chooser(language_list, self.int_mod)
+        
+        return languages
+
+    def regex_search(self, string, regex):
+        pattern = rf"{regex}"
+        match = re.search(pattern, string)
+        if match:
+            captured_content = match.group(1)
+            print(captured_content)
+        else:
+            captured_content = []
+
+        print(f'this is your captured_content {captured_content}')
+        return captured_content
+    
+    def language_splitter(self, language_text):
+        pre_language_list = language_text.split(",")
+        language_list = []
+        for lang in pre_language_list:
+            lang = lang.strip().lower()
+            lang = self.remove_word(lang, 'and')
+            language_list.append(lang)
+        return language_list
+    
+    def random_language_chooser(self, language_list, number):
+        languages = random.sample(language_list, k=min(number, len(language_list)))
+        return languages
+
+    def remove_word(self, string, word_to_remove):
+        new_string = string.replace(word_to_remove, '')
+        new_string = new_string.replace('.', '').replace(' ', '')
+        return new_string
 
 
     # def pandas_to_json(self, data_frame):

@@ -1,6 +1,5 @@
 {"Core":{
   "Dwarf": {
-    "Source": "Blood of Shadows pg. 5",
     "Physical Description": "Dwarves are a short and stocky race, and stand about a foot shorter than most humans, with wide, compact bodies that account for their burly appearance. Male and female dwarves pride themselves on the long length of their hair, and men often decorate their beards with a variety of clasps and intricate braids. Clean-shavenness on a male dwarf is a sure sign of madness, or worse—no one familiar with their race trusts a beardless dwarven man.",
     "Society": "The great distances between dwarves' mountain citadels account for many of the cultural differences that exist within their society. Despite these schisms, dwarves throughout the world are characterized by their love of stonework, their passion for stone- and metal-based craftsmanship and architecture, and their fierce hatred of giants, orcs, and goblinoids. In some remote enclaves, such as those areas where these races are uncommon or unheard of, dwarves' fixation on security and safety combined with their rather pugnacious nature leads them to find enemies or at least rivals wherever they settle. While they are not precisely militaristic, they learned long ago that those without axes can be hewn apart by them, and thus dwarves everywhere are schooled to be ready to enforce their rights and claims by force of arms. When their patience with diplomacy is exhausted, dwarves do not hesitate to adopt what they call \"aggressive negotiations.\"",
     "Relations": "Dwarves and orcs have long dwelt in proximity to one another, and share a history of violence as old as both races. Dwarves generally distrust and shun half-orcs. They find elves, gnomes, and halflings to be too frail, flighty, or \"pretty\"to be worthy of proper respect. It is with humans that dwarves share the strongest link, for humans' industrious nature and hearty appetites come closest to matching those of the dwarven ideal.",
@@ -19,7 +18,7 @@
     "Stability": "Dwarves receive a +4 racial bonus to their Combat Maneuver Defense when resisting a bull rush or trip attempt while standing on the ground.",
     "Stonecunning": "Dwarves receive a +2 bonus on Perception checks to potentially notice unusual stonework, such as traps and hidden doors located in stone walls or floors. They receive a check to notice any such features that they pass within 10 feet of, whether or not they are actively looking.",
     "Weapon Familiarity": "Dwarves are prof icient with battleaxes, heavy picks, and warhammers, and treat any weapon with the word \"dwarven\"in its name as a martial weapon.",
-    "Languages": "Dwarves begin play speaking Common and Dwarven. Dwarves with high Intelligence scores can choose from the following languages: Giant, Gnome, Goblin, Orc, Terran, and Undercommon.Advanced Race Guide pg. 12",
+    "Languages": "Dwarves begin play speaking Common and Dwarven. Dwarves with high Intelligence scores can choose from the following languages: Giant, Gnome, Goblin, Orc, Terran, and Undercommon",
     "Alchemist": "Add +1/4 to the alchemist's natural armor bonus when using his mutagen.",
     "Arcanist": "Add 1/4 to the arcanist's effective class level when determining the effects of the arcane barrier and arcane weapon arcanist exploits.",
     "Barbarian": "Add +1 to the barbarian's total number of rage rounds per day.",
@@ -90,7 +89,6 @@
     }
   },
 "Elf": {
-    "Source": "Blood of Shadows pg. 5",
     "Physical Description": "Generally taller than humans, elves possess a graceful, slender physique that is accentuated by their long, pointed ears. It is a mistake, however, to consider them weak or feeble, as the thin limbs of an elf can contain surprising power. Their eyes are wide and almond-shaped, and filled with large, vibrantly colored pupils. The coloration of elves as a whole varies wildly, and is much more diverse than that of human populations. However, as their coloration often matches their surroundings, the elves of a single community may appear quite similar. Forest-dwelling elves often have variations of green, brown, and tan in their hair, eye, and even skin tones.",
     "Society": "Many elves feel a bond with nature and strive to live in harmony with the natural world. Although, like most, elves prefer bountiful lands where resources are plentiful, when driven to live in harsher climates, they work hard to protect and shepherd the region's bounty, and learn how to maximize the benefit they receive from what little can be harvested. When they can carve out a sustainable, reliable life in deserts and wastelands, they take pride as a society in the accomplishment. While this can make them excellent guides to outsiders they befriend who must travel through such lands, their disdain of those who have not learned to live off the scant land as they have makes such friends rare.",
     "Relations": "Elves are prone to dismissing other races, writing them off as rash and impulsive, yet on an individual level, they are excellent judges of character. In many cases an elf will come to value a specific member of another race, seeing that individual as deserving and respectable, while still dismissing the race as a whole. If called on this behavior, the elf often doesn't understand why his \"special friend\"is upset the elf has noticed the friend is \"so much better than the rest of his kind.\"Even elves who see such prejudice for what it is must constantly watch themselves to prevent such views from coloring their thinking.",
@@ -106,7 +104,7 @@
     "Elven Magic": "Elves receive a +2 racial bonus on caster level checks made to overcome spell resistance. In addition, elves receive a +2 racial bonus on Spellcraft checks made to identify the properties of magic items.",
     "Keen Senses": "Elves receive a +2 racial bonus on Perception checks.",
     "Weapon Familiarity": "Elves are proficient with longbows (including composite longbows), longswords, rapiers, and shortbows (including composite shortbows), and treat any weapon with the word \"elven\"in its name as a martial weapon.",
-    "Languages": "Elves begin play speaking Common and Elven. Elves with high Intelligence scores can choose from the following languages: Celestial, Draconic, Gnoll, Gnome, Goblin, Orc, and Sylvan.Heroes from the Fringe pg. 10",
+    "Languages": "Elves begin play speaking Common and Elven. Elves with high Intelligence scores can choose from the following languages: Celestial, Draconic, Gnoll, Gnome, Goblin, Orc, and Sylvan",
     "Alchemist": "Add one extract formula from the alchemist's list to his formula book. This formula must be at least one level lower than the highest-level formula the alchemist can create.",
     "Arcanist": "Increase total number of points in the arcanist's arcane reservoir by 1.",
     "Barbarian": "Add +1 to the barbarian's base speed. In combat this option has no effect unless the barbarian has selected it five times (or another increment of five). This bonus stacks with the barbarian's fast movement feature and applies under the same conditions as that feature.",
@@ -177,7 +175,6 @@
     }
   },
   "Gnome": {
-    "Source": "Heroes from the Fringe pg. 16",
     "Physical Description": "Gnomes are one of the smallest of the common races, generally standing just over 3 feet in height. Despite their small frames, however, gnomes are extremely resilient, and not as weak as many of their foes assume. Though their diminutive stature reduces their ability to move quickly, gnomes often train to take advantage of their size, especially when fighting foes much larger than themselves.",
     "Society": "Unlike most races, gnomes do not generally organize themselves within classic societal structures. Gnome cities are unusual and gnome kingdoms almost unknown. Further, gnomes have no particular tendency to gather in specific neighborhoods even when a large number of them live among other races. While specific laws meant to contain the potential impact of gnomes on a society may require a \"gnome quarter,\"and societal pressure sometimes causes all non-gnomes to move away from areas with high gnome populations, left to their own devices, gnomes tend to spread evenly throughout communities that allow them.",
     "Relations": "Gnomes have difficulty interacting with the other races, on both emotional and physical levels. In many ways the very fact other races see gnomes as odd is itself the thing gnomes find most odd about other races, and this leads to a strong lack of common ground upon which understanding and relationships can be built. When two gnomes encounter one another, they generally assume some mutually beneficial arrangement can be reached, no matter how different their beliefs and traditions may be. Even if this turns out not to be the case, the gnomes continue to look for commonalities in their dealings with each other. The inability or unwillingness of members of other races to make the same effort when dealing with gnomes is both frustrating and confusing to most gnomes.",
@@ -196,7 +193,7 @@
     "Keen Senses": "Gnomes receive a +2 racial bonus on Perception checks.",
     "Obsessive": "Gnomes receive a +2 racial bonus on a Craft or Profession skill of their choice.",
     "Weapon Familiarity": "Gnomes treat any weapon with the word \"gnome\"in its name as a martial weapon.",
-    "Languages": "Gnomes begin play speaking Common, Gnome, and Sylvan. Gnomes with high Intelligence scores can choose from the following languages: Draconic, Dwarven, Elven, Giant, Goblin, and Orc.Heroes from the Fringe pg. 16",
+    "Languages": "Gnomes begin play speaking Common, Gnome, and Sylvan. Gnomes with high Intelligence scores can choose from the following languages: Draconic, Dwarven, Elven, Giant, Goblin, and Orc",
     "Alchemist": "Add +1/2 to the number of bombs per day the alchemist can create.",
     "Arcanist": "Add 1/6 to the number of points the arcanist gains in her arcane reservoir each day.",
     "Barbarian": "Add a +1/2 bonus to the barbarian's trap sense.",
@@ -260,7 +257,6 @@
     }
   },
   "Half-Elf": {
-    "Source": "Heroes of the Streets pg. 8",
     "Physical Description": "Half-elves stand taller than humans but shorter than elves. They inherit the lean build and comely features of their elven lineage, but their skin color is normally dictated by their human side. While half-elves retain the pointed ears of elves, theirs are more rounded and less pronounced. Their eyes tend to be humanlike in shape, but feature an exotic range of colors from amber or violet to emerald green and deep blue. This pattern changes for half-elves of drow descent, however. Such elves are almost unfailingly marked with the white or silver hair of the drow parent, and more often than not have dusky gray skin that takes on a purplish or bluish tinge in the right light, while their eye color usually favors that of the human parent.",
     "Society": "Their lack of a unified homeland and culture forces half-elves to remain versatile, able to conform to nearly any environment. While often considered attractive to both races for the same reasons as their parents, half-elves rarely fit in with either humans or elves, as both races see too much evidence of the other in them. This lack of acceptance weighs heavily on many half-elves, yet others are bolstered by their unique status, seeing in their lack of a formalized culture the ultimate freedom. As a result, half-elves are incredibly adaptable, capable of adjusting their mind-sets and talents to whatever societies they find themselves in.",
     "Relations": "Half-elves understand loneliness, and know that character is often less a product of race than of life experience. As such, they are often open to friendships and alliances with other races, and less likely than most to rely on first impressions when forming opinions of new acquaintances.",
@@ -277,7 +273,7 @@
     "Elven Immunities": "Half-elves are immune to magic sleep effects and get a +2 racial bonus on saving throws against enchantment spells and effects.",
     "Keen Senses": "Half-elves receive a +2 racial bonus on Perception checks.",
     "Multitalented": "Half-elves choose two favored classes at 1st level and gain 1 additional hit point or skill point whenever they take a level in either one of those classes.",
-    "Languages": "Half-elves begin play speaking Common and Elven. Half-elves with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic).Heroes from the Fringe pg. 20,Bastards of Golarion pg. 5",
+    "Languages": "Half-elves begin play speaking Common and Elven. Half-elves with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic)",
     "Alchemist": "Add +1 foot to the range increment of the alchemist's thrown splash weapons (including the alchemist's bombs). This option has no effect unless the alchemist has selected it 5 times (or another increment of 5); a range increment of 24 feet is effectively the same as a range increment of 20 feet, for example.",
     "Arcanist": "When casting arcanist enchantment spells, add 1/3 to the effective caster level, but only for the purpose of determining duration.",
     "Barbarian": "Add +1/4 to the bonus on Reflex saves and dodge bonus to AC against attacks made by traps granted by trap sense.",
@@ -339,7 +335,6 @@
     }
   },
   "Halfling": {
-    "Source": "Blood of Shadows pg. 5",
     "Physical Description": "Halflings rise to a humble height of 3 feet. They prefer to walk barefoot, leading the bottoms of their feet to become roughly calloused. Tufts of thick, curly hair warm the tops of their broad, tanned feet. Their skin tends toward a rich cinnamon color and their hair toward light shades of brown. A halfling's ears are pointed, but proportionately not much larger than those of a human.",
     "Society": "Rather than place their faith in empires or great causes, many halflings prefer to focus on the simpler and humbler virtues of their families and local communities. Halflings claim no cultural homeland and control no settlements larger than rural assemblies of free towns. Most often, they dwell at the knees of their human cousins in human cities, eking out livings as they can from the scraps of larger societies. Many halflings lead perfectly fulfilling lives in the shadow of their larger neighbors, while some prefer more nomadic lives, traveling the world and experiencing all it has to offer.",
     "Relations": "A typical halfling prides himself on his ability to go unnoticed by other racesa trait that allows many halflings to excel at thievery and trickery. Most halflings know full well the stereotypical view other races take of them as a result, and go out of their way to be forthcoming and friendly to the bigger races when they're not trying to go unnoticed. They get along fairly well with gnomes, although most halflings regard these eccentric creatures with a hefty dose of caution. Halflings respect elves and dwarves, but these races often live in remote regions far from the comforts of civilization that halflings enjoy, thus limiting opportunities for interaction. By and large, only half-orcs are shunned by halflings, for their great size and violent natures are a bit too intimidating for most halflings to cope with.",
@@ -355,7 +350,7 @@
     "Keen Senses": "Halflings receive a +2 racial bonus on Perception checks.",
     "Sure-Footed": "Halflings receive a +2 racial bonus on Acrobatics and Climb checks.",
     "Weapon Familiarity": "Halflings are proficient with slings and treat any weapon with the word \"halfling\"in its name as a martial weapon.",
-    "Languages": "Halflings begin play speaking Common and Halfling. Halflings with high Intelligence scores can choose from the following languages: Dwarven, Elven, Gnome, and Goblin.Advanced Race Guide pg. 62",
+    "Languages": "Halflings begin play speaking Common and Halfling. Halflings with high Intelligence scores can choose from the following languages: Dwarven, Elven, Gnome, and Goblin",
     "Alchemist": "Add one extract formula from the alchemist's list to the alchemist's formula book. This formula must be at least one level below the highest formula level the alchemist can create.",
     "Arcanist": "Gain 1/6 of a new arcanist exploit.",
     "Barbarian": "Add 1 foot to the range increment of thrown weapons the barbarian wields. This option has no effect unless the barbarian has selected it 5 times (or another increment of 5).",
@@ -412,7 +407,6 @@
     }
   },
   "Half-Orc": {
-    "Source": "Blood of Shadows pg. 5",
     "Physical Description": "Half-orcs average around 6 feet tall, with powerful builds and greenish or grayish skin. Their canine teeth often grow long enough to protrude from their mouths, and these \"tusks,\"combined with heavy brows and slightly pointed ears, give them their notoriously bestial appearance. While half-orcs may be impressive, few ever describe them as beautiful. Despite these obvious orc traits, half-orcs are as varied as their human parents.",
     "Society": "Unlike half-elves, where at least part of society's discrimination is born out of jealousy or attraction, half-orcs get the worst of both worlds: physically weaker than their orc kin, they also tend to be feared or attacked outright by humans who don't bother making the distinction between full orcs and halfbloods. Even on the best of terms, half-orcs in civilized societies are not exactly accepted, and tend to be valued only for their physical abilities. On the other hand, orc leaders have been known to deliberately spawn half-orcs, as the halfbreeds make up for their lack of physical strength with increased cunning and aggression, making them natural leaders and strategic advisors.",
     "Relations": "Elves and dwarves tend to be the least accepting of half-orcs, seeing in them too great a resemblance to their racial enemies, and other races aren't much more understanding.",
@@ -428,7 +422,7 @@
     "Orc Blood": "Half-orcs count as both humans and orcs for any effect related to race.",
     "Orc Ferocity": "Once per day, when a half-orc is brought below 0 hit points but not killed, he can fight on for 1 more round as if disabled. At the end of his next turn, unless brought to 1 or more hit points, he immediately falls unconscious and begins dying.",
     "Weapon Familiarity": "Half-orcs are proficient with greataxes and falchions, and treat any weapon with the word \"orc\"in its name as a martial weapon.",
-    "Languages": "Half-orcs begin play speaking Common and Orc. Half-orcs with high Intelligence scores can choose from the following languages: Abyssal, Draconic, Giant, Gnoll, and Goblin.Advanced Race Guide pg. 52",
+    "Languages": "Half-orcs begin play speaking Common and Orc. Half-orcs with high Intelligence scores can choose from the following languages: Abyssal, Draconic, Giant, Gnoll, and Goblin",
     "Alchemist": "Gain a +1/2 bonus on Strength checks to break objects and on sunder combat maneuver checks when under the effects of a mutagen that increases the alchemist's Strength or Constitution score.",
     "Arcanist": "Gain a +1 bonus on concentration checks made due to taking damage while casting arcanist spells.",
     "Barbarian": "Add +1 to the barbarian's total number of rage rounds per day.",
@@ -499,7 +493,6 @@
     }
   },
   "Human": {
-    "Source": "Inner Sea Races pg. 214",
     "Physical Description": "The physical characteristics of humans are as varied as the world's climes. From the dark-skinned tribesmen of the southern continents to the pale and barbaric raiders of the northern lands, humans possess a wide variety of skin colors, body types, and facial features. Generally speaking, humans' skin color assumes a darker hue the closer to the equator they live. At the same time, bone structure, hair color and texture, eye color, and a host of facial and bodily phenotypic characteristics vary immensely from one locale to another. Cheekbones may be high or broad, noses aquiline or flat, and lips full or thin; eyes range wildly in hue, some deep set in their sockets, and others with full epicanthic folds. Appearance is hardly random, of course, and familial, tribal, or national commonalities often allow the knowledgeable to identify a human's place of origin on sight, or at least to hazard a good guess. Humans' origins are also indicated through their traditional styles of bodily decoration, not only in the clothing or jewelry worn, but also in elaborate hairstyles, piercing, tattooing, and even scarification.",
     "Society": "Human society comprises a multitude of governments, attitudes, and lifestyles. Though the oldest human cultures trace their histories thousands of years into the past, when compared to the societies of other races like elves and dwarves, human society seems to be in a state of constant flux as empires fragment and new kingdoms subsume the old. In general, humans are known for their flexibility, ingenuity, and ambition. Other races sometimes envy humans their seemingly limitless adaptability, not so much biologically speaking but in their willingness to step beyond the known and press on to whatever might await them. While many or even most humans as individuals are content to stay within their comfortable routine, there is a dauntless spirit of discovery endemic to humans as a species that drives them in striving toward possibilities beyond every horizon.",
     "Relations": "Humans are fecund, and their drive and numbers often spur them into contact with other races during bouts of territorial expansion and colonization. In many cases, this tendency leads to violence and war, yet humans are also swift to forgive and forge alliances with races who do not try to match or exceed them in violence. Proud, sometimes to the point of arrogance, humans might look upon dwarves as miserly drunkards, elves as flighty fops, halflings as craven thieves, gnomes as twisted maniacs, and half-elves and half-orcs as embarrassmentsbut the race's diversity among its own members also makes many humans quite adept at accepting others for what they are. Humans may become so absorbed in their own affairs that they remain ignorant of the language and culture of others, and some take this ignorance to a hateful extreme of intolerance, oppression, and rarely even extermination of others they perceive as dangerous, strange, or \"impure.\"Thankfully, while such incidents and movements may taint all of humanity in the eyes of some, they are more often the exception than the rule.",
@@ -511,7 +504,7 @@
     "Normal Speed": "Humans have a base speed of 30 feet.",
     "Bonus Feat": "Humans select one extra feat at 1st level.",
     "Skilled": "Humans gain 1 additional skill rank at 1st level and 1 additional rank whenever they gain a level.",
-    "Languages": "Humans begin play speaking Common and their ethnic language. Humans whose ethnic language is Common (or Taldane, in the case of Chelaxians or Taldans) do not receive an additional ethnic language. Humans with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic).Advanced Race Guide pg. 72",
+    "Languages": "Humans begin play speaking Common and their ethnic language. Humans whose ethnic language is Common (or Taldane, in the case of Chelaxians or Taldans) do not receive an additional ethnic language. Humans with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic)",
     "Alchemist": "Add one extract formula from the alchemist formula list to the character's formula book. This formula must be at least one level below the highest formula level the alchemist can create.",
     "Arcanist": "Add one spell from the arcanist spell list to the arcanist's spellbook. The spell must be at least 1 spell level below the highest level the arcanist can cast.",
     "Barbarian": "Add a +1/2 bonus to trap sense or +1/3 to the bonus from the superstitious rage power.",
@@ -573,8 +566,6 @@
 "NonCore": 
 {
   "Aasimar": {
-    "Source": "Blood of Angels pg. 31",
-    "Monster Entry": "Link",
     "Physical Description": "Aasimars look mostly human except for some minor physical trait that reveals their unusual heritage. Typical aasimar features include hair that shines like metal, jewel-toned eyes, lustrous skin color, or even glowing, golden halos.",
     "Society": "Aasimars cannot truly be said to have an independent society of their own. As an offshoot of humanity, they adopt the societal norms around them, though most find themselves drawn to those elements of society that work for the redress of injustice and the assuagement of suffering. This sometimes puts them on the wrong side of the law in more tyrannical societies, but aasimars can be careful and cunning when necessary, able to put on a dissembling guise to divert the attention of oppressors elsewhere. While corrupt aasimars may be loners or may establish secret societies to conceal their involvement in crime, righteous aasimars are often found congregating in numbers as part of good-aligned organizations, especially (though not always) churches and religious orders.",
     "Relations": "Aasimars are most common and most comfortable in human communities. This is especially true of those whose lineage is more distant and who bear only faint marks of their heavenly ancestry. It is unclear why the touch of the celestial is felt so much more strongly in humanity than other races, though it may be that humanity's inherent adaptability and affinity for change is responsible for the evolution of aasimars as a distinct race. Perhaps the endemic racial traits of other races are too deeply bred, too strongly present, and too resistant to change. Whatever dalliances other races may have had with the denizens of the upper planes, the progeny of such couplings are vanishingly rare and have never bred true.",
@@ -590,7 +581,7 @@
     "Skilled": "Aasimars have a +2 racial bonus on Diplomacy and Perception checks. Aasimars of specific bloodlines (see below) gain a +2 bonus on different skill checks as indicated.",
     "Spell-Like Ability": "Aasimars can useonce per day as a spell-like ability (with a caster level equal to the aasimar's character level). Aasimars of specific bloodlines (see below) gain other spell-like abilities in place of",
     "Celestial Resistance": "Aasimars have acid resistance 5, cold resistance 5, and electricity resistance 5.",
-    "Languages": "Aasimars begin play speaking Common and Celestial. Aasimars with high Intelligence scores can choose from the following languages: Draconic, Dwarven, Elven, Gnome, Halfling, and Sylvan.Blood of Angels pg. 21",
+    "Languages": "Aasimars begin play speaking Common and Celestial. Aasimars with high Intelligence scores can choose from the following languages: Draconic, Dwarven, Elven, Gnome, Halfling, and Sylvan",
     "Ancestry": "Peri",
     "Typical Alignment": "NG",
     "Ability Modifiers": "+2 Int, +2 Cha",
@@ -603,7 +594,7 @@
     "Oracle": "Add +1/6 to the oracle's level for the purpose of determining the effects of one revelation.",
     "Paladin": "Add +1/6 to the morale bonus on saving throws provided by the paladin's auras.",
     "Sorcerer": "Add +1/4 to the sorcerer's caster level when casting spells with the good descriptor.",
-    "Summoner": "Add DR 1/evil to the summoner's eidolon. Each additional time the summoner selects this benefit, the DR/evil increases by +1/2 (maximum DR 10/evil).Blood of Angels pg. 31",
+    "Summoner": "Add DR 1/evil to the summoner's eidolon. Each additional time the summoner selects this benefit, the DR/evil increases by +1/2 (maximum DR 10/evil)",
     "Subraces": {
       "Non-Human Aasimars": [
         "It should be noted that while any creature that breeds with a celestial may give birth to half-celestial offspring, only humanoids can give birth to aasimars. Thus, while its possible to encounter a half-celestial dragon, unicorn, or griffon, any children of such creatures would be either half-celestials or normal members of their race. (And just as often, these less conventional half-celestials are sterile.) When discussing half-celestials and aasimars, its important to distinguish them from both true celestials (angels, azatas, agathions, etc.) and simple celestial creatures (creatures with the celestial template, which are themselves denizens of the good-aligned Outer Planes but similar in many ways to their Material Plane counterparts). Most aasimars also have a difficult time getting people to grasp distinctions between celestial types, with common folk erroneously grouping all such beings together as angels.Non-human aasimars have the same statistics as human aasimars with the exception of size. Thus a halfling aasimar is Small but otherwise possesses the same statistics and abilities as a human aasimarthe difference is purely cosmetic. Non-human aasimars do not possess any of the racial abilities of their base race. However, they are usually raised in the same cultural context as other members of their base race, and thus generally adopt the same fighting style as their peers, use the same types of weapons and armor, and study the same skills."
@@ -629,7 +620,6 @@
     }
   },  
   "Aquatic Elf": {
-    "Source": "Blood of the Sea pg. 5",
     "Adventurers": "Groups of aquatic elves are known to specialize in searching ruins for pieces of art, historical records, and magical artifacts from sunken and forgotten empires. Those exploring the submerged debris of long-lost cities sometimes partner with adventurers of other races to overcome dangerous traps or guardians. Prideful as they are, aquatic elves know that other creatures can contribute specialized abilities to an expedition, though they are happiest working with gnomes, halflings, and surface elves, as these creatures are likely to return to the surface when their business beneath the waves is done. Some aquatic elves distrust humans, who they believe conceal expansionist motives and have a reckless disregard for danger especially as concerns ancient and dangerous magic. Aquatic elves ally with gillmen only when necessary, as they worry that any such collaboration could be a part of some deeper aboleth scheme.",
     "+2 Dexterity, +2 Intelligence, -2 Constitution": "Aquatic elves are nimble, both in body and mind, but their form is frail.",
     "Medium": "Aquatic elves are Medium creatures and receive no bonuses or penalties due to their size.",
@@ -653,8 +643,6 @@
     "Wizard": "Add 1 to the wizard's caster level check when attempting to cast a spell with the fire descriptor underwater."
   },
   "Catfolk": {
-    "Source": "Advanced Race Guide pg. 91",
-    "Monster Entry": "Link",
     "Physical Description": "In general, catfolk are lithe and slender, standing midway between dwarves and humans in stature. While clearly humanoid, they possess many feline features, including a coat of soft fine fur, slit pupils, and a sleek, slender tail. Their ears are pointed, but unlike those of elves, are more rounded and catlike. They manipulate objects as easily as any other humanoid, but their fingers terminate in small, sharp, retractable claws. These claws are typically not powerful enough to be used as weapons, but some members of the specieseither by quirk of birth or from years of honingcan use them with deadly effect. Feline whiskers are not uncommon, but not universal, and hair and eye color vary greatly.",
     "Society": "While self-expression is an important aspect of catfolk culture, it is mitigated by a strong sense of community and group effort. In the wild, catfolk are a hunter-gatherer tribal people. The pursuit of personal power never comes before the health and wellbeing of the tribe. More than one race has underestimated this seemingly gentle people only to discover much too late that their cohesion also provides them great strength.",
     "Relations": "Adaptable and curious, catfolk get along with almost any race that extends reciprocal goodwill. They acclimate easily to halflings, humans, and especially elves. Catfolk and elves share a passionate nature, as well as a love of music, dance, and storytelling; elven communities often gently mentor catfolk tribes, though such elves are careful not to act in a patronizing manner toward their feline friends. Gnomes make natural companions for catfolk, as catfolk enjoy gnomes' strange and obsessive qualities. Catfolk are tolerant of kobolds as long as the reptilian beings respect the catfolk's boundaries. The feral nature of orcs stirs as much puzzlement as it does revulsion among catfolk, as they don't understand orcs' savagery and propensity for self-destruction. Half-orcs, on the other hand, intrigue catfolk, especially those half-orcs who strive to excel beyond the deleterious and hateful nature of their savage kin. Catfolk often view goblins and ratfolk as vermin, as they disdain the swarming and pernicious tendencies of those races.",
@@ -689,8 +677,6 @@
     "Sorcerer": "Select one bloodline power at 1st level that is normally usable a number of times equal to 3 + the sorcerer's Charisma modifier. The sorcerer adds + 1/2 to the number of uses per day of that bloodline power."
   },
   "Changeling": {
-    "Source": "Blood of the Coven pg. 13",
-    "Monster Entry": "Link",
     "+2 Wisdom, +2 Charisma, -2 Constitution": "Changelings are frail, but are clever and comely.",
     "Medium": "Changelings are Medium creatures and have no bonuses or penalties due to their size.",
     "Humanoid": "Changelings are humanoids with the changeling subtype.",
@@ -699,7 +685,7 @@
     "Claws": "Changelings' fingernails are hard and sharp, granting them two claw attacks (1d4 points of damage each).",
     "Natural Armor": "Changelings have a +1 natural armor bonus.",
     "Darkvision": "Changelings can see in the dark up to 60 feet.",
-    "Languages": "Changelings begin play speaking Common and the primary language of their host societies. Changelings with high Intelligence scores can choose from the following languages: Aklo, Draconic, Dwarven, Elven, Giant, Gnoll, Goblin, and Orc.Blood of the Coven pg. 5",
+    "Languages": "Changelings begin play speaking Common and the primary language of their host societies. Changelings with high Intelligence scores can choose from the following languages: Aklo, Draconic, Dwarven, Elven, Giant, Gnoll, Goblin, and Orc",
     "Subraces": {
       "Annis-Born (Slag May)": [
         "Broad-shouldered and athletic, slag mays demonstrate incredible talent for all physical tasks. They share a vivacity, an addiction to new sights and experiences, and a tendency to collect souvenirs wherever they go.Annis hagCN+2 Str, +2 Cha, 2 ConAnnis-born changelings gain a +1 racial bonus on melee damage rolls.Your jagged claws cause gaping wounds, dealing 1 point of bleed damage on a successful critical hit."
@@ -734,8 +720,6 @@
     }
   },
   "Dhampir": {
-    "Source": "Inner Sea Races pg. 215",
-    "Monster Entry": "Link",
     "Physical Description": "Tall and slender and with well-defined musculature, dhampirs look like statuesque humans of unearthly beauty. Their hair, eye, and skin colors resemble unnerving versions of their mothers'; many possess a ghastly pallor, particularly in the sunlight, while those with dark complexions often possess skin the color of a bruise.",
     "Society": "Dhampirs have no culture of their own, nor do they have any known lands or even communities. Often born in secret and abandoned at orphanages or left to die on the outskirts of town, they tend to live solitary lives as exiles and outcasts. Individuals acquire the cultural beliefs and teachings of the regions in which they grew up, and adopt additional philosophies over the course of their complex lives. This ability to adapt to a verity of circumstances provides dhampirs with a social camouflage that hides them from both predators and prey.",
     "Relations": "As dhampirs are scions of evil, few races view them favorably. They share an affinity for those half-breeds whose sinister ancestry also sets them apart from human society, particularly tieflings and half-orcs. Humans view them with a combination of fear and pity, though such feelings often devolve into hatred and violence. Other humanoid races, such as dwarves, elves, and halflings, simply shun them. Similarly, dhampirs bear a deep-seeded loathing for living creatures, their hatred planted by jealousy and fed by frustration.",
@@ -753,7 +737,7 @@
     "Negative Energy Affinity": "Though they're living creatures, dhampirs react to positive and negative energy as if they were undead; positive energy harms them, and negative energy heals them.",
     "Spell-Like Ability": "A dhampir can usethree times per day as a spell-like ability (with a caster level equal to the dhampir's character level). Dhampirs of specific heritages (see below) gain other spell-like abilities in place of",
     "Resist Level Drain": "A dhampir takes no penalties from energy drain effects, though he can still be killed if he accrues more negative levels then he has Hit Dice. After 24 hours, any negative levels a dhampir takes are removed without the need for an additional saving throw.",
-    "Languages": "Dhampirs begin play speaking Common. Dhampirs with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic).Inner Sea Races pg. 241,Blood of the Night pg. 20",
+    "Languages": "Dhampirs begin play speaking Common. Dhampirs with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic)",
     "Alternate Ability Modifiers": "+2 Dexterity, +2 Intelligence, 2 Wisdom.",
     "Alternate Skill Modifiers": "Escape Artist, Use Magic Device.",
     "Alternate Spell-Like Ability": "Comprehend languages",
@@ -782,8 +766,6 @@
     }
   },
   "Drow": {
-    "Source": "Blood of Shadows pg. 5",
-    "Monster Entry": "Link",
     "Physical Description": "Drow are similar in stature to humans, but share the slender build and features of elves, including the distinctive long, pointed ears. Their eyes lack pupils and are usually solid white or red. Drow skin ranges from coal black to a dusky purple. Their hair is typically white or silver, though some variation is not unknown.",
     "Society": "Drow society is traditionally class-oriented and matriarchal. Male drow usually fulfill martial roles, defending the species from external threats, while female drow assume positions of leadership and authority. Reinforcing these gender roles, one in 20 drow are born with exceptional abilities and thus considered to be nobility, and the majority of these special drow are female. Noble houses define drow politics, with each house governed by a noble matriarch and composed of lesser families, business enterprises, and military companies. Each house is also associated with a demon lord patron. Drow are strongly driven by individual self-interest and advancement, which shapes their culture with seething intrigue and politics, as common drow jockey for favor of the nobility, and the nobility rise in power through a combination of assassination, seduction, and treachery.",
     "Relations": "Drow have a strong sense of racial superiority and divide non-drow into two groups: slaves, and those that are not yet slaves. In practice, however, races that may share similar inclinations (such as hobgoblins and orcs) and those who serve willingly may be treated as servitor races and granted a measure of trust and modest rank in drow society. Others, such as dwarves, gnomes, and halflings, are deemed fit only for the lash. Manipulative drow delight in exploiting the weak character of humans. While they claim no kinship with fetchlings, the drow harbor a curiosity toward the shadow race, as both are adaptations of races exposed to extreme and dangerous conditions. Finally, the drow's hatred of elves sets these beings apart from all other races, and the dark elves desire nothing more than to ruin everything about their surface cousins.",
@@ -823,8 +805,6 @@
     "Wizard": "Select one arcane school power at 1st level that is normally usable a number of times per day equal to 3 + the wizard's Intelligence modifier. The wizard adds +1/2 to the number of uses per day of that arcane school power."
   }, 
   "Fetchling": {
-    "Source": "Agents of Evil pg. 24",
-    "Monster Entry": "Link",
     "Physical Description": "Superficially, fetchlings resemble unnaturally lithebordering on fragilehumans. Their adopted home has drained their skin and hair of bright colors. Their complexion ranges from stark white to deep black, and includes all the various shades of gray between those two extremes. Their eyes are pupilless and pronounced, and they typically glow a luminescent shade of yellow or greenish yellow, though rare individuals possess blue-green eyes. While their hair tends to be stark white or pale gray, many fetchlings dye their hair black. Some members of higher station or those who dwell on the Material Plane dye their hair with more striking colors, often favoring deep shades of violet, blue, and crimson.",
     "Society": "Fetchling are adaptable creatures, and as such display no singular preference for moral philosophy or the rule of law. Most mimic the cultural norms and governmental structures of those they live near or the creatures they serve. While fetchlings are arguably the most populous race on the Shadow Plane, they rarely rule over their own kind; most serve as vassals or subjects to the great umbral dragons of their homeland, or the bizarre nihiloi who dwell in the deeper darkness. Above all, fetchlings are survivors. Their tenacity, versatility, and devious pragmatism have helped them survive the harsh environs of the Shadow Plane and plots of the powerful creatures dwelling within it. On the Material Plane, especially if unable to return to their home plane at will, fetchlings tend to cluster in small, insular communities of their own kind, mimicking the cultural norms and political structures of those they trade with.",
     "Relations": "Because of their shared ancestry, fetchlings interact most easily with humans, though they also find kinship with gnomes and other races that were cut off from their home planes or are not native to the Material Plane. Their pragmatism and adaptable nature put them at odds with warlike or destructive races, and when they do have to deal with orcs, goblinoids, or other savage cultures, fetchlings will often play the part of the fawning sycophant, a tactic learned from serving umbral dragons and one they see as key to their race's survival. Strangely, their relationship with dwarves and elves are rather strained. Dwarves find fetchlings duplicitous and creepy, while the tension with elves is so subtle and inexplicable that both races find it difficult to explain.",
@@ -865,8 +845,6 @@
     "Wizard": "Add one spell from the wizard spell list to wizard's spellbook. The spell must be at or below the highest level he can cast and be of the illusion (shadow) subschool or have the darkness descriptor."
   },
   "Gathlain": {
-    "Source": "Wilderness Origins pg. 10",
-    "Monster Entry": "Link",
     "Physical Description": "Wings of wood and vines grow out of the bodies of these lithesome fey. Gathlains prefer to wear a mix of clothing, with a base of natural materials like grass skirts or simply woven tunics combined with bits of finery gathered from a variety of sources.",
     "Society": "Gathlain society is built around art, discovery, experimentation, and storytelling. These fey constantly seek new ways to look at the world. Gathlain leaders are often popular explorers followed primarily as idols worth emulating and as sources of intriguing gossip. Although gathlains tend to engage in raucous romances born of melodramatic or fanciful encounters, they do not procreate conventionally from such pairings, even when the two happen to be of different physical sexes. Gathlains show little interest in gender, finding it quaint when other races use it as a basis for assigning roles or choosing partners.",
     "Relations": "Gathlains associate with a variety of other fey as freely as among their own kind. These mixed communities of fey are called courts and feature elaborate titles for those members deemed most interesting or most worthy of admiration. When a gathlain chooses to join a different community, it is generally a temporary membership, whether it lasts only a season or persists for decades. Adventuring gathlains frequently seek out and attempt to mingle with like-minded gnomes; however, gnomes often find gathlains too flighty, foolish, and undisciplined for their tastes.",
@@ -902,8 +880,6 @@
     "Witch": "Add one spell from the druid spell list to the witch's familiar. This spell must be at least one level below the highest spell level the witch can cast. If the familiar is ever replaced, the new familiar knows these bonus spells."
   },  
   "Ghoran": {
-    "Source": "Ultimate Wilderness pg. 16",
-    "Monster Entry": "Link",
     "Physical Description": "The typical ghoran stands roughly as tall as a human and occupies a similar silhouette, but that's where their similarities with humanity end. A ghoran's \"skin\"is a complex layer of fibrous vines and rinds with a texture similar to moss-covered bark. Ghoran faces consist of layered petals that flush and flutter at a whim, allowing them to mimic the facial behaviors of their wouldbe devourers. They do not lack emotion per se, but ghoran \"feelings\"are primordial and abstract, making them utterly alien to most non-ghorans. A ghoran might laugh, smile, or raise its voice, but their companions seldom understand if these are displays of true emotion or merely more adaptive evolutions designedlike so many other aspects of their physiologysimply to keep them alive.",
     "Society": "A ghoran's alien thought processes (to say nothing of the empty holes upon its flower-petal face roughly approximating its eyes and mouth) make it very difficult for other races to understand and empathize with, leading many ghorans to stick to themselves in segregated communities of cosmopolitan and magic-rich city-states or in the deepest wild places of their barren homeland and its neighboring kingdoms.",
     "Relations": "Ghorans are most comfortable with other intelligent plants (such as treants and vine leshys) and wary around plant-eating creatures (including humans, whom ghorans know created them as a food source). Because their regeneration brings minor personality changes with each incarnation, ghorans have trouble forming long-lasting relationships with races such as elves, dwarves, and gnomes. Ghorans deeply distrust warmongering humanoids such as goblins and gnolls, especially those with pyromaniac tendencies. The ghorans' relation with humanity is the most complex, for while they admire humans for their capacities and are grateful for their creation, they fear their appetites more, and it is difficult for a ghoran to trust that a human doesn't simply want to eat it.",
@@ -931,8 +907,6 @@
     "Witch": "Add 1/4 to the witch's caster level when attempting dispel checks using,, and similar effects."
   },
   "Gillman": {
-    "Source": "Advanced Race Guide pg. 188",
-    "Monster Entry": "Link",
     "Gillman Adventurers": "Though small gillman communities exist underwater, most gillmen operate independently or in small family groups. They share no overreaching racial goals or desires, banding together solely for survival. Each gillman has unique experiences and motivations that may lead to an adventuring life. Although gillmen are slow to make friends with other races, they are nonetheless a stable addition to any group of adventurers.",
     "+2 Constitution, +2 Charisma, -2 Wisdom": "Gillmen are vigorous and beautiful, but their domination by the aboleths has made them weak-willed.",
     "Medium": "Increase the medium's spirit bonus by 1/6.",
@@ -951,8 +925,6 @@
     "Wizard": "Add one spell from the wizard spell list to the wizard's spellbook. This spell must be at least one level below the highest spell level he can cast."
   },  
   "Goblin": {
-    "Source": "Advanced Race Guide pg. 115",
-    "Monster Entry": "Link",
     "Physical Description": "Goblins are short, ugly humanoids that stand just over 3 feet tall. Their scrawny bodies are topped with oversized and usually hairless heads with massive ears and beady red or occasionally yellow eyes. Goblins' skin tone varies based on the surrounding environment; common skin tones include green, gray, and blue, though black and even pale white goblins have been sighted. Their voracious appetites are served well by their huge mouths filled with jagged teeth.",
     "Society": "Violent but fecund, goblins exist in primitive tribal structures with constant shifts in power. Rarely able to sustain their own needs through farming or hunting and gathering, goblin tribes live where food is abundant or near places that they can steal it from. Since they are incapable of building significant fortifications and have been driven out of most easily accessible locations, goblins tend to live in unpleasant and remote locations, and their poor building and planning skills ensure that they dwell primarily in crude caves, ramshackle villages, and abandoned structures. Few goblins are good with tools or skilled at farming, and the rare items of any value that they possess are usually cast-off implements from humans or other civilized cultures.",
     "Relations": "Goblins tend to view other beings as sources of food, which makes for poor relations with most civilized races. Goblins often survive on the fringes of human civilization, preying on weak or lost travelers and occasionally raiding small settlements to fuel their voracious appetites. They have a special animosity toward gnomes, and celebrate the capturing or killing of such victims with a feast. Of the most common races, half-orcs are the most tolerant of goblins, sharing a similar ancestry and experiencing the same hatred within many societies. Goblins are mostly unaware of half-orcs' sympathy, however, and avoid them because they are larger, meaner, and less flavorful than other humanoids.",
@@ -966,7 +938,7 @@
     "Normal Speed": "Goblins are fast for their size, and have a base speed of 30 feet.",
     "Darkvision": "Goblins can see in the dark up to 60 feet.",
     "Skilled": "+4 racial bonus on Ride and Stealth checks.",
-    "Languages": "Goblins begin play speaking Goblin. Goblins with high Intelligence scores can choose from the following languages: Common, Draconic, Dwarven, Gnoll, Gnome, Halfling, and Orc.Monster Codex pg. 104",
+    "Languages": "Goblins begin play speaking Goblin. Goblins with high Intelligence scores can choose from the following languages: Common, Draconic, Dwarven, Gnoll, Gnome, Halfling, and Orc",
     "Alchemist": "The alchemist gains fire resistance 1. Each time this reward is selected, increase fire resistance by +1. This fire resistance does not stack with fire resistance gained from other sources.",
     "Barbarian": "Add +1/2 on critical hit confirmation rolls for attacks made with unarmed strikes or natural weapons (maximum bonus of +4). This bonus does not stack with Critical Focus.",
     "Bard": "Add +1 to the bard's total number of bardic performance rounds per day.",
@@ -986,8 +958,6 @@
     }
   },  
   "Grippli": {
-    "Source": "Advanced Race Guide pg. 190",
-    "Monster Entry": "Link",
     "+2 Dexterity, +2 Wisdom, -2 Strength": "Gripplis are nimble and alert, but spindly.",
     "Small": "Gripplis are Small creatures and gain a +1 size bonus to their AC, a +1 size bonus on attack rolls,a 1 penalty on combat maneuver checks and to their Combat Maneuver Defense, and a +4 size bonus on Stealth checks.",
     "Grippli": "Gripplis are humanoids with the grippli subtype.",
@@ -1015,8 +985,6 @@
     "Witch": "Add 1/3 to the saving throw DC to resist the poison of the witch's familiar."
   },
   "Hobgoblin": {
-    "Source": "Advanced Race Guide pg. 121",
-    "Monster Entry": "Link",
     "Physical Description": "Burly and muscled, hobgoblins stand a few inches shorter than the average human, and their long arms, thick torsos, and relatively short legs give them an almost apelike stature. Hobgoblins' skin is a sickly gray-green that darkens to mossy green after long exposure to the sun. Their eyes burn fiery orange or red, and their broad faces and sharply pointed ears give their features a somewhat feline cast. Hobgoblins lack facial hair, and even hobgoblin women are bald. Except for their size, hobgoblins bear a strong physical resemblance to their goblin cousins.",
     "Society": "Hobgoblins live in militaristic tyrannies, each community under the absolute rule of a hobgoblin general. Every hobgoblin in a settlement receives military training, with those who excel serving in the army and the rest left to serve more menial roles. Those deemed unfit for military service have little social status, barely rating above favored slaves. Despite this, hobgoblin society is egalitarian after a fashion. Gender and birth offer no barrier to advancement, which is determined almost solely by each individual's personal merit. Hobgoblins eschew strong attachments, even to their young. Matings are matters of convenience, and are almost always limited to hobgoblins of equal rank. Any resulting baby is taken from its mother and forcibly weaned after 3 weeks of age. Young mature quicklymost take no more than 6 months to learn to talk and care for themselves. Hobgoblins' childhoods last a scant 14 years, a mirthless span filled with brutal training in the art of war.",
     "Relations": "Hobgoblins view other races as nothing more than toolsimplements to be enslaved, cowed, and put to work. Without slaves, hobgoblin society would collapse, so reliant is it on stolen labor. An injured, sickly, or defiant slave is like a broken tool, useless waste to be tossed out with the day's garbage. Not surprisingly, hobgoblin communities count no other races as their friends, and few as allies. Elves and dwarves earn special enmity, and are devilishly hard to break into proper slavery as both races hold blood feuds against goblinkind. Halflings and half-orcs make especially prized slavesthe former for their agile skills and the ease of breaking them to the collar, and the latter for their talent at thriving under the harshest of conditions. Hobgoblins have little love for the rest of goblinkind, though they typically treat goblinoid slaves better than they do other races.",
@@ -1042,8 +1010,6 @@
     "Rogue": "Reduce the penalty for not being proficient with one weapon by 1. When the nonproficiency penalty for a weapon becomes 0 because of this ability, the rogue is treated as having the appropriate Martial or Exotic Weapon Proficiency feat for that weapon."
   },
   "Ifrit": {
-    "Source": "Advanced Race Guide pg. 126",
-    "Monster Entry": "Link",
     "Physical Description": "Ifrits vary in appearance as widely as their elemental ancestors do. Most have pointy ears, red or mottled horns on the brow, and hair that flickers and waves as if it were aflame. Some possess skin the color of polished brass or have charcoal-hued scales covering their arms and legs. Ifrits favor revealing and ostentatious clothing in bright oranges and reds, preferably paired with gaudy jewelry.",
     "Society": "Ifrits are most often born into human communities, and rarely form societies of their own. Those who grow up in a city are almost always imprisoned or driven off before they reach adulthood; most are simply too hot-headed and independent to fit into civilized society, and their predilection toward pyromania doesn't endear them to the local authorities. Those born into nomadic or tribal societies fare much better, since ifrits' instinctive urge to explore and conquer their surroundings can easily earn them a place among their tribe's leadership.",
     "Relations": "Even the best-natured ifrits tend to view other individuals as tools to use as they see fit, and as such they get along best with races they can charm or browbeat into submission. Half-elves and gnomes often find themselves caught up in an ifrit's schemes, while halflings, half-orcs, and dwarves usually bridle at ifrits' controlling nature. Strangely, ifrits sometimes form incredibly close bonds with elves, whose calm, aloof nature seems to counterbalance an ifrit's impulsiveness. Most ifrits refuse to associate with sylphs, but are otherwise on peaceable terms with the other elemental-touched races.",
@@ -1059,7 +1025,7 @@
     "Spell-Like Ability": "Ifrits can use1/day as a spell-like ability (caster level equals the ifrit's character level).",
     "Energy Resistance": "Ifrits have fire resistance 5.",
     "Fire Affinity": "Ifrit sorcerers with the elemental (fire) bloodline treat their Charisma scores as 2 points higher for the purposes of all sorcerer spells and class abilities. Ifrit spellcasters with the Fire domain use their domain powers and spells at +1 caster level.",
-    "Languages": "Ifrits begin play speaking Common and Ignan. Ifrits with high Intelligence scores can choose from the following languages: Aquan, Auran, Dwarven, Elven, Gnome, Halfling, and Terran.Plane-Hopper's Handbook pg. 20",
+    "Languages": "Ifrits begin play speaking Common and Ignan. Ifrits with high Intelligence scores can choose from the following languages: Aquan, Auran, Dwarven, Elven, Gnome, Halfling, and Terran",
     "Typical Alignment": "LG",
     "Ability Modifiers": "+2 Str, +2 Cha, 2 Wis",
     "Alternate Spell-Like Ability": "Sunsouls gainsun metalas a spell-like ability.",
@@ -1083,8 +1049,6 @@
     }
   },  
   "Kitsune": {
-    "Source": "Blood of the Beast pg. 12",
-    "Monster Entry": "Link",
     "+2 Dexterity, +2 Charisma, -2 Strength": "Kitsune are agile and companionable, but tend to be physically weak.",
     "Kitsune": "Kitsune are humanoids with the kitsune and shapechanger subtypes.",
     "Medium": "Kitsune are Medium creatures and have no bonuses or penalties due to their size.",
@@ -1112,8 +1076,6 @@
     "Vigilante": "Add 1/2 to the Disguise bonus provided by seamless guise."
   },
   "Kobold": {
-    "Source": "Kobolds of Golarion pg. 7",
-    "Monster Entry": "Link",
     "Male Names": "Athraz, Dyrtrax, Fazij, Grytnok, Jekkajak, Kaidynn, Keegyn, Kirrok, Merlokrep, Nydryn, Nyktox, Ryzztyl, Torphrex, Varrann, Vreknog, Xahndyg",
     "Female Names": "Ahmmra, Azzlyn, Enga, Grymwyr, Gynnezz, Kregnaan, Jynnjun, Lyrtrahk, Melrynn, Petrahk, Ryzzntyg, Skyxa, Tyrrell, Varshez, Vregma, Zarrnyl: Kobolds are fast but weak.",
     "+2 Dexterity, -4 Strength, -2 Constitution": "Kobolds are fast but weak.",
@@ -1147,8 +1109,6 @@
     "Wizard": "Add 1/2 to your familiar's Will saves against\r enchantment effects, or increase the hit points of your\r bonded item by 1."
   },  
   "Locathah": {
-    "Source": "Blood of the Sea pg. 11",
-    "Monster Entry": "Link",
     "Locathah Adventurers": "Locathahs enjoy meeting new people from all races, often hiring themselves out as laborers, mercenaries, or guides aboard ships. Though locathahs are slow and somewhat uncomfortable out of the water, they can breathe air and suffer no ill effects from traveling on land. Locathahs work for fair rates but are canny enough to charge more for the use of their aquatic expertise, such as helping a ship navigate dangerous reefs. Locathahs are usually willing to accept useful items as payment rather than coins or gems, so long as their value is commensurate. They prefer artwork, metal weapons, and surface food (especially tubers) as payment for their services.",
     "+2 Dexterity, +2 Wisdom, -2 Intelligence": "Locathahs are agile and intuitive, but they are more interested in travel and experiences than in academia.",
     "Aquatic": "Locathahs are humanoids with the aquatic subtype.",
@@ -1168,14 +1128,12 @@
     "Slayer": "Gain 1/6 of a new slayer talent."
   },
   "Merfolk": {
-    "Source": "Advanced Race Guide pg. 194",
-    "Monster Entry": "Link",
     "Merfolk Adventurers": "Merfolk are an insular and guarded race. While they might work with non-merfolk on occasion, only rarely do they trust these allies fully. Merfolk who adventure on their own often do so because nothing is left for them in their homes.",
     "+2 Dexterity, +2 Constitution, +2 Charisma": "Merfolk are graceful, hale, and beautiful.",
     "Aquatic": "Merfolk are aquatic and can breathe water. Their land speed is 5 feet, but their swim speed is 50 feet. They are amphibious, but prefer not to spend long periods out of the water.",
     "Low-Light Vision": "All merfolk have low-light vision.",
     "Armor": "Merfolk have a +2 natural armor bonus.",
-    "Languages": "Merfolk begin play speaking Common and Aquan. Merfolk with high Intelligence scores can choose any of the following bonus languages: Aboleth, Aklo, Draconic, Elven, Sahuagin, and Sylvan.Heroes from the Fringe pg. 31",
+    "Languages": "Merfolk begin play speaking Common and Aquan. Merfolk with high Intelligence scores can choose any of the following bonus languages: Aboleth, Aklo, Draconic, Elven, Sahuagin, and Sylvan",
     "Mesmerist": "The mesmerist learns 1/4 of a new trick.",
     "Bard": "The bard learns 1/6 of a new bardic masterpiece. (The bard selects the masterpiece once he has made this selection six times and must meet its prerequisites when it is selected.)",
     "Druid": "Add +1 hit point to the druid's animal companion. If the merfolk ever replaces her animal companion, the new animal companion gains these bonus hit points.",
@@ -1192,8 +1150,6 @@
     }
   },
   "Monkey Goblin": {
-    "Source": "Bestiary 6 pg. 138,Inner Sea Bestiary pg. 16,Inner Sea Races pg. 244",
-    "Monster Entry": "Link",
     "+4 Dexterity, -2 Wisdom, -2 Charisma": "Monkey goblins are fast, but foolishly impulsive and disagreeable.",
     "Small": "Monkey goblins are Small creatures and gain a +1 size bonus to their AC, a +1 size bonus on attack rolls, a 1 penalty to their CMD and on combat maneuver checks, and a +4 size bonus on Stealth checks.",
     "Humanoid": "Monkey goblins are humanoids with the goblinoid subtype.",
@@ -1206,8 +1162,6 @@
     "Languages": "Monkey goblins begin play speaking Goblin. Monkey goblins with high Intelligence scores can choose from the following: Common, Draconic, Dwarven, Gnoll, Gnome, Halfling, Orc."
   },  
   "Nagaji": {
-    "Source": "Advanced Race Guide pg. 196",
-    "Monster Entry": "Link",
     "+2 Strength, +2 Charisma, -2 Intelligence": "Nagaji are strong and have forceful personalities, but they tend to ignore logic and mock scholarly pursuits.",
     "Medium": "Nagaji are Medium creatures and have no bonuses or penalties due to their size.",
     "Reptilian": "Nagaji are humanoids with the reptilian subtype.",
@@ -1231,8 +1185,6 @@
     "Warpriest": "Add 1/2 to the number of times per day the warpriest can use blessings, although he can use these additional blessings only for Charm, Magic, Nobility, Rune, or Scalykind () blessings."
   },  
   "Orc": {
-    "Source": "Advanced Race Guide pg. 138",
-    "Monster Entry": "Link",
     "Physical Description": "Powerfully built, orcs typically stand just a few inches taller than most humans but have much greater muscle mass, their broad shoulders and thick, brawny hips often giving them a slightly lurching gait. They typically have dull green skin, coarse dark hair, beady red eyes, and protruding, tusklike teeth. Orcs consider scars a mark of distinction and frequently use them as a form of body art.",
     "Society": "Orcs usually live amid squalor and constant mayhem, and intimidation and brutal violence are the glue that holds orc culture together. They settle disputes by making increasingly grisly threats until, when a rival fails to back down, the conflict escalates into actual bloodshed. Orcs who win these ferocious brawls not only feel free to take whatever they want from the loser, but also frequently indulge in humiliating physical violation, casual mutilation, and even outright murder. Orcs rarely spend much time improving their homes or belongings since doing so merely encourages a stronger orc to seize them. In fact, whenever possible, they prefer to occupy buildings and communities originally built by other races.",
     "Relations": "Orcs admire strength above all things. Even members of enemy races can sometimes win an orc's grudging respect, or at least tolerance, if they break his nose enough times.",
@@ -1259,8 +1211,6 @@
     "Witch": "Add one spell from the witch spell list to the witch's familiar. This spell must be at least one level below the highest spell level she can cast. If the witch ever replaces her familiar, the new familiar knows these bonus spells."
   },
   "Oread": {
-    "Source": "Advanced Race Guide pg. 145",
-    "Monster Entry": "Link",
     "Physical Description": "Oreads are strong and solidly built, with skin and hair colored stony shades of black, brown, gray, or white. While all oreads appear vaguely earthy, a few bear more pronounced signs of their elemental heritageskin that shines like polished onyx, rocky outcroppings protruding from their flesh, glowing gemstones for eyes, or hair like crystalline spikes. They often dress in earthy tones, wearing practical clothing well suited to vigorous physical activity and preferring fresh flowers, simple gemstones, and other natural accents to complex manufactured jewelry.",
     "Society": "As a minor offshoot of the human race, oreads have no real established society of their own. Instead, most oreads grow up in human communities learning the customs of their parents. Adult oreads have a well-deserved reputation among other races for being hermits and loners. Few take well to the bustle of city life, preferring instead to spend their days in quiet contemplation atop some remote mountain peak or deep below the earth in a secluded cavern. Oreads with a greater tolerance for life among humans often join the city watch, or find some other way to serve their community in a position of responsibility.",
     "Relations": "Oreads feel comfortable in the company of dwarves, with whom they have much in common. They find gnomes too strange and many halflings far too brash, and so avoid these races in general. Oreads gladly associate with half-orcs and half-elves, feeling a sense of kinship with the other part-human races despite inevitable personality conflicts. Among the elemental-touched races, oreads have few friends but no true enemies.",
@@ -1276,7 +1226,7 @@
     "Spell-Like Ability": "Oreads can use1/day as spell-like ability (with a caster level equal to the oread's character level).",
     "Energy Resistance": "Oreads have acid resistance 5.",
     "Earth Affinity": "Oread sorcerers with the elemental (earth) bloodline treat their Charisma scores as 2 points higher for the purposes of all sorcerer spells and class abilities. Oread clerics with the Earth domain use their domain powers and spells at +1 caster level.",
-    "Languages": "Oreads begin play speaking Common and Terran. Oreads with high Intelligence scores can choose from the following languages: Aquan, Auran, Dwarven, Elven, Gnome, Halfling, Ignan, and UndercommonPlane-Hopper's Handbook pg. 20",
+    "Languages": "Oreads begin play speaking Common and Terran. Oreads with high Intelligence scores can choose from the following languages: Aquan, Auran, Dwarven, Elven, Gnome, Halfling, Ignan, and Undercommon",
     "Typical Alignment": "LN",
     "Ability Modifiers": "+2 Con, +2 Wis, 2 Dex",
     "Alternate Spell-Like Ability": "Ironsouls gainunerring weaponas a spell-like ability.",
@@ -1317,8 +1267,6 @@
     }
   },  
   "Ratfolk": {
-    "Source": "Advanced Race Guide pg. 150",
-    "Monster Entry": "Link",
     "Physical Description": "Typical ratfolk are average 4 feet tall and weigh 80 pounds. They often wear robes to stay cool in the desert or conceal their forms in cities, as they know other humanoids find their rodent features distasteful. Ratfolk have a strong attraction to shiny jewelry, especially copper, bronze, and gold, and many decorate their ears and tails with small rings made of such metals. They are known to train giant rats (dire rats with the giant creature simple template), which they often use as pack animals and mounts.",
     "Society": "Ratfolk are extremely communal, and live in large warrens with plenty of hidden crannies in which to stash their hoards or flee in times of danger, gravitating toward subterranean tunnels or tightly packed tenements in city slums. They feel an intense bond with their large families and kin networks, as well as with ordinary rodents of all sorts, living in chaotic harmony and fighting fiercely to defend each other when threatened. They are quick to use their stockpiles of gear in combat, but prefer to work out differences and settle disputes with mutually beneficial trades.",
     "Relations": "Ratfolk tend to get along quite well with humans, and often develop ratfolk societies dwelling in the sewers, alleys, and shadows of human cities. Ratfolk find dwarves too hidebound and territorial, and often mistake even mild criticisms from dwarves as personal attacks. Ratfolk have no particular feelings about gnomes and halflings, although in areas where those races and ratfolk must compete for resources, clan warfare can become dogma for generations. Ratfolk enjoy the company of elves and half-elves, often seeing them as the calmest and most sane of the civilized humanoid races. Ratfolk are particularly fond of elven music and art, and many ratfolk warrens are decorated with elven art pieces acquired through generations of friendly trade.",
@@ -1358,8 +1306,6 @@
     "Witch": "Add +5 feet to the range of one hex with a range other than \"touch.\""
   },  
   "Sahuagin": {
-    "Source": "Heroes from the Fringe pg. 31",
-    "Monster Entry": "Link",
     "+2 Strength, +2 Wisdom, -2 Charisma": "While sahuagin are powerful and cunning, they are repulsive creatures.",
     "Monstrous Humanoid": "Sahuagin are monstrous humanoids with the aquatic subtype.",
     "Medium": "Sahuagin are Medium creatures and have no bonuses or penalties due to their size.",
@@ -1373,7 +1319,7 @@
     "Claws": "Sahuagin have two claw attacks that deal 1d4 points of damage. These are primary natural attacks.",
     "Blood Frenzy": "Once per day, whenever a sahuagin takes damage, it can fly into a frenzy for 1 minute; gaining a +2 racial bonus to Constitution and Strength but a 2 penalty to AC.",
     "Speak with Sharks (1 RP)": "Sahuagin can communicate telepathically with sharks to a distance of 100 feet. This communication is limited to simple concepts, such as \"attack,\"\"come,\"and \"defend.\"",
-    "Languages": "Sahuagin begin play speaking Aquan and Common. Sahuagin with high Intelligence scores can choose from the following: Aboleth, Abyssal, Aklo, Draconic, Giant, Goblin, and Infernal.Heroes from the Fringe pg. 31",
+    "Languages": "Sahuagin begin play speaking Aquan and Common. Sahuagin with high Intelligence scores can choose from the following: Aboleth, Abyssal, Aklo, Draconic, Giant, Goblin, and Infernal",
     "Subraces": {
       "Outsear Sahuagin": [
         "The settlement of Outsea is a bizarre environment: a saltwater oasis for merfolk and sahuagin in the freshwater River Kingdoms. Centuries ago, a sahuagin nation from the Inner Sea mobilized a city-sized saltwater bolus for an overland assault on a merfolk state located near modern-day Korvosa. The merfolk learned of this ambitious plan and sent an elite group of soldiers in saltwater tanks to intercept the ocean-bubble. The two sides clashed in Lake Encarthan and eventually worked their way up into what is now the River Kingdoms. In this battle, many of the wizards maintaining the sahuagins briny mobile fortress perished, and the two sides ended up stranded hundreds of miles from any ocean. Begrudgingly putting aside their grievances, the merfolk and sahuagin worked together to prevent their mutual extinction, holding back the fresh water with spells and building the settlement of Outsea to serve as a permanent home. Now Outsea is a thriving city, home to all kinds of peoples. Centuries of coexistence have worn down the merfolk and sahuagins hatred for each other, and now they live and work together in peace. Outsear sahuagin can take the sahuagin song and stoic defender alternate racial traits described below."
@@ -1381,8 +1327,6 @@
     }
   },  
   "Skinwalker": {
-    "Source": "Inner Sea Races pg. 216",
-    "Monster Entry": "Link",
     "Physical Description": "Outwardly human, skinwalkers are virtually indistinguishable from others of the ethnic group into which they are born. Those rare skinwalkers who have bred true for generations tend to have dark eyes, straight dark hair, and richly colored skin. Skinwalkers' features vary greatly when they shapechange. They gain a bestial visage evoking the creatures they emulate; the snout elongates, teeth become more prominent, claws emerge from fingertips, and skin toughens into hide. Despite their shapechanging abilities, they are not immune to infection from full lycanthropes.",
     "Society": "Skinwalkers sometimes weave themselves into other societies, hoping their peculiar talents go unnoticed. They may also be nomads found in lands with wide-open spaces. Groups of skinwalkers hidden among a larger community of non-skinwalkers may regularly gather for lunar rituals or nocturnal pack hunting.",
     "Relations": "Skinwalkers mostly populate human settlements and communities. They tend to get along with catfolk, tengus, and members of other animal-like races (including lycanthropes), and are comfortable taking their animalistic forms in the company of these fellows. However, many natural lycanthropes see skinwalkers as weaker, inferior versions of their own kind, and some lycanthropes even take to infecting or even hunting their distant kin.",
@@ -1396,7 +1340,7 @@
     "Spell-Like Ability": "A skinwalker with a Wisdom score of 11 or higher can usespeak with animalsonce per day as a spell-like ability, using his Wisdom modifier to determine his concentration checks. The caster level for this ability is equal to the skinwalker's character level.",
     "Animal-Minded": "Skinwalkers have a +2 racial bonus on Handle Animal checks and on wild empathy checks.",
     "Change Shape (Su)": "A skinwalker can change shape to a bestial form as a standard action. In bestial form, a skinwalker gains a +2 racial bonus to his choice of Strength, Dexterity, or Constitution. While in this form, a skinwalker also takes on an animalistic feature that provides a special effect. Each time a skinwalker assumes bestial form, he can choose to gain two claw attacks that each deal 1d4 points of damage, 60 foot darkvision, or a +1 natural armor bonus. These benefits last until the skinwalker returns to his humanoid form as a swift action. A skinwalker must first return to his humanoid form before changing to bestial form again to change benefits.",
-    "Languages": "Skinwalkers all begin play speaking Common. Skinwalkers with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic).Inner Sea Races pg. 248,Blood of the Moon pg. 8",
+    "Languages": "Skinwalkers all begin play speaking Common. Skinwalkers with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic)",
     "Ability Modifiers": "+2 Constitution, 2 Intelligence (+2 Wisdom while shapechanged)",
     "Alternate Skill Modifiers": "Perception, wild empathy",
     "Alternate Spell-Like Ability": "magic fang1/day",
@@ -1433,8 +1377,6 @@
     }
   },
   "Strix": {
-    "Source": "Advanced Race Guide pg. 200",
-    "Monster Entry": "Link",
     "+2 Dexterity, -2 Charisma": "Strix are swift and elusive, but tend to be stubborn and swift to anger.",
     "Medium": "Strix are Medium creatures and have no bonuses or penalties due to their size.",
     "Normal Speed": "Strix have a base speed of 30 feet on land.",
@@ -1459,8 +1401,6 @@
     "Witch": "Add one spell from the witch spell list to the witch's familiar. This spell must be at least 1 level below the highest spell level the witch can cast. If the witch ever replaces this familiar, the new familiar knows these bonus spells."
   },  
   "Svirfneblin": {
-    "Source": "Advanced Race Guide pg. 204",
-    "Monster Entry": "Link",
     "+2 Dexterity, +2 Wisdom, -2 Strength, -4 Charisma": "Svirfneblin are fast and observant but relatively weak and emotionally distant.",
     "Gnome": "Svirfneblin are humanoids with the gnome subtype.",
     "Small": "Svirfneblin are Small creatures and gain a +1 size bonus to their AC, a +1 size bonus on attack rolls, a 1 penalty on combat maneuver checks and to their Combat Maneuver Defense, and a +4 size bonus on Stealth checks.",
@@ -1479,8 +1419,6 @@
     "Ranger": "Add DR 1/magic to the ranger's animal companion. Each additional time the ranger selects this benefit, the DR/magic increases +1/2 (maximum DR 10/magic). If the ranger ever replaces his animal companion, the new companion gains this DR."
   },  
   "Sylph": {
-    "Source": "Advanced Race Guide pg. 157",
-    "Monster Entry": "Link",
     "Physical Description": "Sylphs tend to be pale and thin to the point of appearing delicate, but their skinny bodies are often more resilient than they look. Many sylphs can easily pass for humans with some effort, though the complex blue markings that swirl across their skin reveal their elemental ancestry. Sylphs also bear more subtle signs of their heritage, such as a slight breeze following them wherever they go. These signs become more pronounced as a sylph experiences intense passion or anger, spontaneous gusts of wind tousling the sylph's hair or hot blusters knocking small items off of shelves.",
     "Society": "Sylphs are usually born to human parents, and so are raised according to human customs. Most sylphs dislike the attention they receive growing up in human society, so it's common for them to leave home soon after coming of age. They rarely abandon civilization altogether, however, preferring instead to find some new city or settlement where they can go unnoticed among (and spy upon) the masses. A sylph who happens upon another sylph unnoticed instantly becomes obsessed with her kin, spying on and learning as much about the other as she possibly can. Only after weighing all the pros and cons and formulating plans for every potential outcome will the sylph introduce herself to the other. Rarely, two sylphs will discover each other's presence in a community at the same time. What ensues thereafter is a sort of cat-and-mouse game, a convoluted dance in which each sylph spies on the other as both attempt to gain the upper hand. Sylphs who meet this way always become either inseparable friends or intractable enemies.",
     "Relations": "Sylphs enjoy prying into the affairs of most other races, but have little taste for actually associating with most of them. Sylphs can relate on some level with elves, who share their tendency toward aloofness, but often spoil any possible relationship by violating the elven sense of privacy. Dwarves distrust sylphs intensely, considering them flighty and unreliable. They form excellent partnerships with halflings, relying on the short folk's courage and people skills to cover their own shortcomings. Sylphs are amused by the annoyed reactions they provoke in ifrits, and find oreads too boring to give them much attention.",
@@ -1496,7 +1434,7 @@
     "Spell-Like Ability": "Sylphs can use1/day as a spell-like ability (with a caster level equal to the sylph's character level).",
     "Energy Resistance": "Sylphs have electricity resistance 5.",
     "Air Affinity": "Sylph sorcerers with the elemental (air) bloodline treat their Charisma scores as 2 points higher for the purposes of all sorcerer spells and class abilities. Sylph spellcasters with the Air domain use their domain powers and spells at +1 caster level.",
-    "Languages": "Sylphs speak Common and Auran. Sylphs with high Intelligence scores can choose from the following languages: Aquan, Dwarven, Elven, Gnome, Halfling, Ignan, and Terran.Plane-Hopper's Handbook pg. 21",
+    "Languages": "Sylphs speak Common and Auran. Sylphs with high Intelligence scores can choose from the following languages: Aquan, Dwarven, Elven, Gnome, Halfling, Ignan, and Terran",
     "Typical Alignment": "CN",
     "Ability Modifiers": "+2 Dex, +2 Cha, 2 Wis",
     "Alternate Spell-Like Ability": "Stormsouls gainshocking graspas a spell-like ability.",
@@ -1520,8 +1458,6 @@
     }
   }, 
   "Syrinx": {
-    "Source": "Inner Sea Races pg. 216",
-    "Monster Entry": "Link",
     "+2 Wisdom, -2 Dexterity": "Syrinxes are contemplative and patient, traits that make them somewhat slow to act.",
     "Normal Speed": "Syrinxes have a base speed of 30 feet.",
     "Flight": "Syrinxes have a fly speed of 60 feet with average maneuverability.",
@@ -1533,8 +1469,6 @@
     "Languages": "Syrinxes begin play speaking Syrinx. Syrinxes with high Intelligence scores can choose from the following: Auran, Azlant, Celestial, Strix, and Infernal."
   },
   "Tengu": {
-    "Source": "Advanced Race Guide pg. 163",
-    "Monster Entry": "Link",
     "+2 Dexterity, +2 Wisdom, -2 Constitution": "Tengus are fast and observant, but relatively fragile.",
     "Tengu": "Tengus are humanoids with the tengu subtype.",
     "Medium": "Add 1/4 to the bonus on checks when the medium uses the spirit surge ability.",
@@ -1563,8 +1497,6 @@
     "Witch": "Add one spell from the witch spell list to the witch's familiar. This spell must be at least one level below the highest spell level she can cast. If the witch ever replaces her familiar, the new familiar knows these bonus spells."
   },   
   "Tiefling": {
-    "Source": "Blood of Fiends pg. 31",
-    "Monster Entry": "Link",
     "Physical Description": "No two tieflings look alike; the fiendish blood running through their veins manifests inconsistently, granting them an array of fiendish traits. One tiefling might appear as a human with small horns, a barbed tail, and oddly colored eyes, while another might manifest a mouth of fangs, tiny wings, and claws, and yet another might possess the perpetual smell of blood, foul incenses, and brimstone. Typically, these qualities hearken back in some way to the manner of fiend that spawned the tiefling's bloodline, but even then the admixture of human and fiendish blood is rarely ruled by sane, mortal laws, and the vast flexibility it produces in tieflings is a thing of wonder, running the gamut from oddly beautiful to utterly terrible.",
     "Society": "Tieflings on the Material Plane rarely create their own settlements and holdings. Instead, they live on the fringes of the land where they were born or choose to settle. Most societies view tieflings as aberrations or curses, but in cultures where there are frequent interactions with summoned fiends, and especially where the worship of demons, devils, or other evil outsiders is legal or obligatory, tieflings might be much more populous and accepted, even cherished as blessings of their fiendish overlords.",
     "Relations": "Tieflings face a significant amount of prejudice from most other races, who view them as fiend-spawn, seeds of evil, monsters, and lingering curses placed upon the world. Far too often, civilized races shun or marginalize them, while more monstrous ones simply fear and reject them unless forced or cowed into acceptance. But half-elves, half-orcs, fetchlings andmost oddlyaasimars tend to view them as kindred spirits who are too often rejected or who don't fit into most societies by virtue of their birth. The widespread assumption that tieflings are innately evilill-founded though it may beprevents many from easily fitting into most cultures on the Material Plane except in exceedingly cosmopolitan or planar-influenced nations.",
@@ -1581,7 +1513,7 @@
     "Spell-Like Ability": "Tieflings can use darkness once per day as a spell-like ability (with a caster level equal to the tiefling's character level). Tieflings of specific bloodlines (see below) gain different spell-like abilities.",
     "Fiendish Resistance": "Tieflings have cold resistance 5, electricity resistance 5, and fire resistance 5.",
     "Fiendish Sorcery": "Tiefling sorcerers with the Abyssal or Infernal bloodlines treat their Charisma scores as 2 points higher for the purposes of all sorcerer class abilities.",
-    "Languages": "Tieflings begin play speaking Common and either Abyssal or Infernal. Tieflings with high intelligence scores can choose from the following languages: Abyssal, Draconic, Dwarven, Elven, Gnome, Goblin, Halfling, Infernal, and Orc.Blood of Fiends pg. 19",
+    "Languages": "Tieflings begin play speaking Common and either Abyssal or Infernal. Tieflings with high intelligence scores can choose from the following languages: Abyssal, Draconic, Dwarven, Elven, Gnome, Goblin, Halfling, Infernal, and Orc",
     "Ancestry": "Rakshasa",
     "Typical Alignment": "LE",
     "Ability Modifiers": "+2 Dex, +2 Cha, 2 Wis",
@@ -1599,7 +1531,7 @@
     "Sorcerer": "Add +1/2 to the number of times per day a sorcerer can use the corrupting touch infernal bloodline power, or +1 to the total number of rounds per day the sorcerer can use the claws abyssal bloodline power. The sorcerer must possess the applicable power to select these bonuses.",
     "Summoner": "Add +1 hit point or +1 skill rank to the summoner's eidolon.",
     "Witch": "The witch's familiar gains resistance 1 against cold, electricity, or fire. Each time the witch selects this reward, increase the familiar's resistance to one of these energy types by 1 (maximum 5 for any one type). If the witch ever replaces her familiar, the new familiar has these resistances.",
-    "Wizard": "Select one arcane school power at 1st level that is normally usable a number of times per day equal to 3 + the wizard's Intelligence modifier. The wizard adds +1/2 to the number of uses per day of that arcane school power.Blood of Fiends pg. 31",
+    "Wizard": "Select one arcane school power at 1st level that is normally usable a number of times per day equal to 3 + the wizard's Intelligence modifier. The wizard adds +1/2 to the number of uses per day of that arcane school power",
     "Subraces": {
       "Non-Human Tieflings": [
         "It should be noted that while any monster or animal that breeds with a fiend may give birth to half-fiend offspring, only humanoids may give birth to tieflings. Thus, while its possible to encounter a half-fiend dragon, bear, or otyugh, any children of such creatures would be either half-fiends or normal members of their race. (And just as often, these less conventional half-fiends are simply sterile.) When discussing half-fiends and tieflings, its important to distinguish them from both true fiends (devils, demons, etc.) and simple fiendish creatures (creatures with the fiendish template, which are themselves denizens of the evil Outer Planes but similar in many ways to their Material Plane counterparts).In game terms, the difference between non-human tieflings and human tieflings is purely a matter of size. Unless they have specific tiefling-related size modifiers, the tieflings of each of these races are the same size as their non-fiendish ancestors. They gain any of the bonuses or penalties related to that size, but gain no racial bonuses except those of the tiefling; beyond size, their humanoid ancestry is purely cosmetic."
@@ -1637,8 +1569,6 @@
     }
   },
   "Triaxian": {
-    "Source": "Inner Sea Races pg. 217",
-    "Monster Entry": "Link",
     "+2 Constitution, +2 Wisdom, -2 Strength": "Triaxians are a hardy and wily, but also somewhat weak.",
     "Low-Light Vision": "In dim light, Triaxians can see twice as far as humans.",
     "Keen Senses": "Triaxians' unique ear construction grants them a +2 bonus on Perception checks.",
@@ -1647,8 +1577,6 @@
     "Languages": "Triaxians speak Triaxian (the common trade language of Triaxus). Triaxians with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic)."
   },
   "Triton": {
-    "Source": "Blood of the Sea pg. 14",
-    "Monster Entry": "Link",
     "Triton Adventurers": "Upon reaching maturity, tritons typically embark on a journey of a year or longer, exploring their region and researching the threats within it. Tritons consider this experience important for personal development and preparation for service to their community, and in some cases, the journey is a prerequisite to joining an organized military group. Tritons may work together with other travelers they meet along the way, and they eagerly summon allies from the sea with theirspell-like ability when needed, but they refuse aid from their homepart of the purpose of their journey is to learn to get along without relying on the strong bonds of familyhood and friendship which they have always drawn on for support.",
     "+2 Strength, +2 Charisma, -2 Dexterity": "Tritons are strong and have forceful personalities, but they are not very nimble.",
     "Outsider": "Tritons are native outsiders with the water subtype.",
@@ -1662,8 +1590,6 @@
     "Languages": "Tritons begin play speaking Aquan and Common. Tritons with a high Intelligence score can choose from the following: Aboleth, Aklo, Celestial, Draconic, Elven, Gnome, and Sylvan."
   },  
   "Undine": {
-    "Source": "Advanced Race Guide pg. 175",
-    "Monster Entry": "Link",
     "Physical Description": "Undines display a wide variation of skin tones, ranging from pale turquoise to deep blue to sea green. An undine's straight, thick hair tends to be of a similar, yet slightly darker color than her skin. All have limpid blue eyes. Physically, undines most resemble humans, and their physiques show human diversity in regard to overall height and body type. Aside from their coloration, their most racially defining traits remain their fin-like ears and webbed hands and feet.",
     "Society": "Undines define themselves as a unique race and are capable of producing undine offspring. While they remain able to interbreed with humans, they tend to keep to themselves, and form small, reclusive communities near bodies of water, or in some cases, floating settlements. A typical undine community lives under the guidance of a small council comprising officials appointed by consensus. Council positions can be held indefinitely, though a community unhappy with the performance of a council member can call for her resignation.",
     "Relations": "Undines hold no biases or prejudices toward any particular races. Their communities rely primarily on trade, giving them ample opportunity to interact with a diverse range of outsiders and foreigners. They have no qualms about establishing neighborhoods within the settlements of other races, provided adequate respect is given to both the undines and any nearby bodies of water. Still, in such instances, a given undine community does what it can to retain its autonomy.",
@@ -1679,7 +1605,7 @@
     "Spell-Like Ability": "Undines can castonce per day as a spell-like ability (with a caster level equal to the undine's character level).",
     "Energy Resistance": "Undines have cold resistance 5.",
     "Water Affinity": "Undine sorcerers with the elemental (water) bloodline treat their Charisma scores as 2 points higher for the purposes of all sorcerer spells and class abilities. Undine clerics with the Water domain cast their Water domain powers and spells at +1 caster level.",
-    "Languages": "Undines begin play speaking Common and Aquan. Undines with high Intelligence scores can choose from the following languages: Auran, Dwarven, Elven, Gnome, Halfling, Ignan, and Terran.Plane-Hopper's Handbook pg. 21",
+    "Languages": "Undines begin play speaking Common and Aquan. Undines with high Intelligence scores can choose from the following languages: Auran, Dwarven, Elven, Gnome, Halfling, Ignan, and Terran",
     "Typical Alignment": "LN",
     "Ability Modifiers": "+2 Dex, +2 Int, 2 Cha",
     "Alternate Spell-Like Ability": "Rimesouls gainchill touchas a spell-like ability.",
@@ -1703,8 +1629,6 @@
     }
   },
   "Vanara": {
-    "Source": "Advanced Race Guide pg. 206",
-    "Monster Entry": "Link",
     "+2 Dexterity, +2 Wisdom, -2 Charisma": "Vanaras are agile and perceptive, but are also rather impish and mischievous.",
     "Vanara": "Vanaras are humanoids with the vanara subtype.",
     "Medium": "Vanaras are Medium creatures and have no bonuses or penalties due to their size.",
@@ -1734,7 +1658,6 @@
     "Wizard": "1/6 of a bonus feat. This feat must be an item creation feat, a metamagic feat, or Spell Mastery."
   },
   "Vine Leshy": {
-    "Source": "Ultimate Wilderness pg. 21",
     "Physical Description": "A vine leshy's body is made of masses of twisted vines and leaves, sometimes incorporating flowers and fruits as well. Their appearance is mostly determined by the species of vine used in their creation, but most have a large cluster of leaves that forms a face with round eyes, a small mouth, and no visible nose.",
     "Society": "Because of their ritual-based genesis, vine leshys do not have a traditional family structure. They form strong friendships with those who accompany them on explorations or who assist them in protecting a natural site. Unlike most leshys, vine leshys usually feel a strong desire to seek out the one who created them. They see their creators as friends and allies rather than as parents.",
     "Relations": "Vine leshys are interested in learning about the cultures of many other races. Their initial attitudes when they encounter new races are based on biases from the nature spirit's past incarnations, but they evolve over time through the leshy's experiences. In unfamiliar situations, vine leshys prefer to blend in with vegetation to observe before venturing out and introducing themselves.",
@@ -1770,8 +1693,6 @@
     "Shifter": "Add a +1 bonus on Knowledge (nature) checks relating to plants."
   },
   "Vishkanya": {
-    "Source": "Advanced Race Guide pg. 208",
-    "Monster Entry": "Link",
     "+2 Dexterity, +2 Charisma, -2 Wisdom": "Vishkanyas are graceful but often irrational.",
     "Vishkanya": "Vishkanyas are humanoids with the vishkanya subtype.",
     "Medium": "Vishkanyas are Medium creatures and have no bonuses or penalties due to their size.",
@@ -1789,8 +1710,6 @@
     "Sorcerer": "Select one bloodline power at 1st level that is normally usable a number of times per day equal to 3 + the sorcerer's Charisma modifier. The sorcerer adds +1/2 to the number of uses per day of that bloodline power."
   },
   "Wayang": {
-    "Source": "Blood of Shadows pg. 10",
-    "Monster Entry": "Link",
     "+2 Dexterity, +2 Intelligence, -2 Wisdom": "Wayangs are nimble and cagey, but their perception of the world is clouded by shadows.",
     "Wayang": "Wayangs are humanoids with the wayang subtype.",
     "Small": "Wayangs are Small creatures and gain a +1 size bonus to their AC, a +1 size bonus on attack rolls, a 1 penalty on combat maneuver checks and to their Combat Maneuver Defense, and a +4 size bonus on Stealth checks.",
@@ -1822,8 +1741,6 @@
     "Wizard": "Add one spell from the wizard spell list to the wizard's spellbook. The spell must be an illusion spell of the shadow subschool or have the darkness descriptor."
   },
   "Wyrwood": {
-    "Source": "Heroes of Golarion pg. 6",
-    "Monster Entry": "Link",
     "+2 Dexterity, +2 Intelligence, -2 Charisma": "Wyrwoods are quick and calculating. As constructs, wyrwoods do not have a Constitution score.",
     "Construct": "Wyrwoods have the construct type.",
     "Normal Speed": "Wyrwoods have a base speed of 30 feet.",
@@ -1843,8 +1760,6 @@
     "Wizard": "The wizard gains 1/6 of a bonusitem creation,metamagic, or spell mastery feat."
   },
   "Wyvaran": {
-    "Source": "Legacy of Dragons pg. 18",
-    "Monster Entry": "Link",
     "+2 Dexterity, +2 Wisdom, -2 Intelligence": "Wyvarans have a reptilian grace and a strong will, but are a little dim-witted.",
     "Dragon": "Wyvarans have the dragon type.",
     "Medium": "Wyvarans are Medium creatures and have no bonuses or penalties due to their size.",
@@ -1862,8 +1777,6 @@
     "Sorcerer": "Add a +1/2 bonus to the damage of spells or spell-like abilities that deal damage of the same energy type as the sorcerer's draconic bloodline breath weapon."
   },
   "Yaddithian": {
-    "Source": "Bestiary 6 pg. 285",
-    "Monster Entry": "Link",
     "+2 Constitution, +2 Intelligence, –2 Wisdom": "",
     "Slow": "Yaddithians have a land speed of 20 feet.",
     "Darkvision": "Yaddithians can see in the dark up to 60 feet.",
