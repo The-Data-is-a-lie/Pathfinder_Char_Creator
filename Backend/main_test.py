@@ -1,10 +1,10 @@
 # # To run this you either need to go into CMD or terminal (after typing C:\Python312) and enter this set PYTHONPATH=C:\Python312\Lib\site-packages (because it makes sure we use the right location)
 
 from flask import Flask, render_template, request, jsonify, session
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 from flask_session import Session
-from start_py import create_app, SECRET_KEY
 
+from start_py import create_app, SECRET_KEY
 
 
 app = create_app()
@@ -14,6 +14,7 @@ CORS(app)
 app.config['SECRET_KEY'] = SECRET_KEY
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
+
 
 @app.route('/')
 

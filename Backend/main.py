@@ -367,9 +367,11 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 		print(f'this is your language list {character.language_chooser()}')
 
+		character_full_name = f_name + ' ' + l_name
 
-		export_list_non_dict = [character.region, character.chosen_race, character.f_name, 
-				 character.l_name, character.c_class, character.c_class_2, 
+
+		export_list_non_dict = [character.region, character.chosen_race,
+				 character_full_name, character.c_class, character.c_class_2, 
 				 character.alignment,  age_number, 
 				 height_number, weight_number, character.dex, character.str, 
 				 character.con, character.int, character.wis, character.cha, 
@@ -388,8 +390,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 ]
 		
 		string_export_list_non_dict = [
-				"character.region", "character.chosen_race", "character.f_name", 
-				"character.l_name", "character.c_class", "character.c_class_2", 
+				"character.region", "character.chosen_race", "character_full_name", 
+				"character.c_class", "character.c_class_2", 
 				"character.alignment", "age_number", 
 				"height_number", "weight_number", "character.dex", "character.str", 
 				"character.con", "character.int", "character.wis", "character.cha", 
