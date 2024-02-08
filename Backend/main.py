@@ -116,8 +116,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		alignment = character.choose_alignment('alignments', alignment_input)
 		print(f"This is your randomly selected alignment: {character.alignment}")
 		
-		deity_choice = character.randomize_deity()
-		print(f"This is your randomly selected deity: {deity_choice}")
+		deity = character.randomize_deity()
+		print(f"This is your randomly selected deity: {deity}")
 
 		age, age_number = character.randomize_body_feature('age')
 		height, height_number = character.randomize_body_feature('height')
@@ -369,6 +369,15 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 		character_full_name = f_name + ' ' + l_name
 
+		print(f"this is your deity {equipment_list}")
+		deity_name = deity["Name"]
+		print(f"this is your deity{deity_name}")
+
+		
+		print("this is your items list", character.items.keys())
+		print("this is your equipment list length", len(equipment_list))
+		print("this is your equipment list length", len(character.items.keys()))
+
 
 		export_list_non_dict = [character.region, character.chosen_race,
 				 character_full_name, character.c_class, character.c_class_2, 
@@ -379,7 +388,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 armor_ac, shield_ac,
 				 fort_saving_throw, reflex_saving_throw, wisdom_saving_throw,
 				 character.spell_list_choose_from,
-				 deity_choice, skill_ranks,
+				 deity_name, skill_ranks,
 				 weapon_enhancement_chosen_list, armor_enhancement_chosen_list, 
 				 shield_enhancement_chosen_list, professions,
 				 selected_traits, equipment_list, character.c_class_level,
@@ -390,16 +399,16 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 ]
 		
 		string_export_list_non_dict = [
-				"character.region", "character.chosen_race", "character_full_name", 
-				"character.c_class", "character.c_class_2", 
-				"character.alignment", "age_number", 
-				"height_number", "weight_number", "character.dex", "character.str", 
-				"character.con", "character.int", "character.wis", "character.cha", 
-				"flaw", "character.Total_HP",
+				"region", "chosen_race", "character_full_name", 
+				"c_class", "c_class_2", 
+				"alignment", "age_number", 
+				"height_number", "weight_number", "dex", "str", 
+				"con", "int", "wis", "cha", 
+				"flaw", "Total_HP",
 				"armor_ac", "shield_ac",
 				"fort_saving_throw", "reflex_saving_throw", "wisdom_saving_throw",
-				"character.spell_list_choose_from",
-				"deity_choice", "skill_ranks",
+				"spell_list_choose_from",
+				"deity_name", "skill_ranks",
 				"weapon_enhancement_chosen_list", "armor_enhancement_chosen_list", 
 				"shield_enhancement_chosen_list", "professions",
 				"selected_traits", "equipment_list", "level",

@@ -1677,15 +1677,20 @@ class Character:
                              
 
     def item_chooser(self):
-        i = self.determine_start_index()
+        i = 0
+        k = 0
+        # i = self.determine_start_index()
         select_from_list = list(self.items.keys())
         price_total = []
         equipment_list = []
         equip_dict = {}
 
-        for i in range(i, len(select_from_list)):
+        while i < len(select_from_list):
             equipment_name, random_equip, price, equip_descrip = self.choose_equipment(select_from_list[i])
             self.subtract_price_from_gold(price)
+            print(f"{select_from_list[i]} !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!XXXXXXXX???????SDGFASDFASD")
+            i,k = self.grab_two_rings(select_from_list[i], k, i)
+            
             if self.gold <= 0:
                 break
 
@@ -1730,6 +1735,14 @@ class Character:
             self.gold -= int(price)
         else:
             self.gold = 0
+
+    def grab_two_rings(self, equipment_key, k, i):
+        if equipment_key == "rings" and k < 1:
+            i -= 1
+            k += 10
+        return i,k
+        
+
 
 
 
@@ -2677,6 +2690,16 @@ class Character:
         new_string = string.replace(word_to_remove, '')
         new_string = new_string.replace('.', '').replace(' ', '')
         return new_string
+
+
+# ["cackling hag's blouse", 
+    # "pirate's eye patch", 
+    # 'boots of speed', 
+    # 'irongrip gauntlets', 
+    # 'plume of panache', 
+    # 'diadem of control', 
+    # 'talisman (greater)danger sense', 'cloak of the hedge wizard', 'bracers of armor2']
+    # 'belts', 'body', 'chest', 'eyes', 'feet', 'hands', 'head', 'headband', 'neck', 'shoulders', 'wrist'
 
 
     # def pandas_to_json(self, data_frame):
