@@ -10,6 +10,7 @@ def check_origin(origin):
 
 def create_app():
     app = Flask(__name__)
+    
 
 
     # Additional configurations or extensions if needed

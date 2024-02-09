@@ -2692,6 +2692,16 @@ class Character:
         return new_string
 
 
+
+    def prep_skill_rank_data(self, skill_ranks):
+        # Convert the Python dictionary to a JSON string
+        skill_ranks_json = json.dumps(skill_ranks)
+        
+        print("this is your skill_ranks_json", skill_ranks_json)
+        return skill_ranks_json
+                
+
+
 # ["cackling hag's blouse", 
     # "pirate's eye patch", 
     # 'boots of speed', 

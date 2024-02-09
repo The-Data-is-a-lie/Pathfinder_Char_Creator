@@ -6,6 +6,7 @@ from utils.util import  chooseClass, region_chooser, race_chooser, weapon_choose
 import random
 from math import ceil, floor
 from flask import jsonify
+import json
 #Making a Global Character Dictionary so we can reference it and create a HTML/CSS sheet based off of that
 
 global character_data 
@@ -369,15 +370,15 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 		character_full_name = f_name + ' ' + l_name
 
-		print(f"this is your deity {equipment_list}")
 		deity_name = deity["Name"]
-		print(f"this is your deity{deity_name}")
 
-		
+		print("this is your skill ranks", skill_ranks)
+
+
+		skill_ranks = json.dumps(skill_ranks)		
 		print("this is your items list", character.items.keys())
 		print("this is your equipment list length", len(equipment_list))
 		print("this is your equipment list length", len(character.items.keys()))
-
 
 		export_list_non_dict = [character.region, character.chosen_race,
 				 character_full_name, character.c_class, character.c_class_2, 
