@@ -1688,7 +1688,6 @@ class Character:
         while i < len(select_from_list):
             equipment_name, random_equip, price, equip_descrip = self.choose_equipment(select_from_list[i])
             self.subtract_price_from_gold(price)
-            print(f"{select_from_list[i]} !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!XXXXXXXX???????SDGFASDFASD")
             i,k = self.grab_two_rings(select_from_list[i], k, i)
             
             if self.gold <= 0:
@@ -2683,7 +2682,10 @@ class Character:
         return language_list
     
     def random_language_chooser(self, language_list, number):
-        languages = random.sample(language_list, k=min(number, len(language_list)))
+        k=min(number, len(language_list))
+        if k < 0:
+            k =0
+        languages = random.sample(language_list, k)
         return languages
 
     def remove_word(self, string, word_to_remove):
@@ -2691,14 +2693,6 @@ class Character:
         new_string = new_string.replace('.', '').replace(' ', '')
         return new_string
 
-
-
-    def prep_skill_rank_data(self, skill_ranks):
-        # Convert the Python dictionary to a JSON string
-        skill_ranks_json = json.dumps(skill_ranks)
-        
-        print("this is your skill_ranks_json", skill_ranks_json)
-        return skill_ranks_json
                 
 
 

@@ -93,7 +93,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='wizard', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='cleric', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
 
 		# userInput = input('Create a new character? (y/n): ').lower()
 		userInput = create_new_char.lower()
@@ -380,13 +380,57 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		print("this is your equipment list length", len(equipment_list))
 		print("this is your equipment list length", len(character.items.keys()))
 
+		print("this is your armor dict", character.armor_dict)
+		print("this is your shield dict", character.shield_dict)
+
+
+		if isinstance(character.armor_dict, dict):
+			armor_name = list(character.armor_dict.keys())[0]
+			armor_dict = character.armor_dict.get(next(iter(character.armor_dict), 0), 0)
+			armor_spell_failure = armor_dict.get('spell_failure', 0)
+			armor_armor_check_penalty = armor_dict.get('armor check penalty', 0)
+			armor_weight = armor_dict.get('weight', 0)
+			armor_max_dex_bonus = armor_dict.get('max dex bonus', 0)
+			if armor_max_dex_bonus == None:
+				armor_max_dex_bonus = 0
+		else:
+			armor_name = 0
+			armor_spell_failure = 0
+			armor_armor_check_penalty = 0
+			armor_weight = 0
+			armor_max_dex_bonus = 0
+
+		print("This is your armor variables: ",armor_name, armor_spell_failure, armor_weight, armor_armor_check_penalty)
+		print(character.armor_dict.keys())
+
+
+		if isinstance(character.shield_dict, dict) and character.shield_dict != None:
+			shield_name = list(character.shield_dict.keys())[0]
+			shield_dict = character.shield_dict.get(next(iter(character.shield_dict), 0), 0)
+			shield_spell_failure = shield_dict.get('spell_failure', 0)
+			shield_armor_check_penalty = shield_dict.get('shield check penalty', 0)
+			shield_weight = shield_dict.get('weight', 0)			
+			shield_max_dex_bonus = armor_dict.get('max dex bonus', 0)
+
+		else:
+			shield_name = " "
+			shield_spell_failure = " "
+			shield_armor_check_penalty = " "
+			shield_weight = " "
+			shield_max_dex_bonus = " "
+
+	
+
 		export_list_non_dict = [character.region, character.chosen_race,
 				 character_full_name, character.c_class, character.c_class_2, 
 				 character.alignment,  age_number, 
 				 height_number, weight_number, character.dex, character.str, 
 				 character.con, character.int, character.wis, character.cha, 
-				 flaw, character.Total_HP,
+				 flaw, character.Total_HP, character.total_hp_rolls,
+				 character.bab_total,
 				 armor_ac, shield_ac,
+				 armor_name, armor_spell_failure, armor_weight, armor_armor_check_penalty, armor_max_dex_bonus,
+				 shield_name, shield_spell_failure, shield_weight, shield_armor_check_penalty, shield_max_dex_bonus,
 				 fort_saving_throw, reflex_saving_throw, wisdom_saving_throw,
 				 character.spell_list_choose_from,
 				 deity_name, skill_ranks,
@@ -405,8 +449,11 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				"alignment", "age_number", 
 				"height_number", "weight_number", "dex", "str", 
 				"con", "int", "wis", "cha", 
-				"flaw", "Total_HP",
+				"flaw", "Total_HP", "total_hp_rolls",
+				 "bab_total",
 				"armor_ac", "shield_ac",
+				 "armor_name", "armor_spell_failure", "armor_weight", "armor_armor_check_penalty", "armor_max_dex_bonus",
+				 "shield_name", "shield_spell_failure", "shield_weight", "shield_armor_check_penalty", "shield_max_dex_bonus",				
 				"fort_saving_throw", "reflex_saving_throw", "wisdom_saving_throw",
 				"spell_list_choose_from",
 				"deity_name", "skill_ranks",
