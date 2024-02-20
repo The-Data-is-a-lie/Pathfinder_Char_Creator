@@ -2248,7 +2248,7 @@ class Character:
         total_choices = base_no_prereq
         i = 0
  
-        while i < amount:
+        while i < amount + 1:
             # print(f'This is your total choices {total_choices}')
             chosen = random.choice(total_choices)
 
@@ -2291,8 +2291,20 @@ class Character:
 
             # print(f' post transform result_dict {feat_result_dict}')
             _, _, chosen_feats = self.get_feats_without_prerequisites(self.c_class, feat_result_dict, odd=True)
+            chosen_feats = list(chosen_feats)
+            chosen_feats.remove("")
+            cleaned_chosen_feats = self.capitalize_feats(chosen_feats)
+            print(f'These are your chosen feats {cleaned_chosen_feats}')
 
-            print(f'These are your chosen feats {chosen_feats}')        
+            return cleaned_chosen_feats
+    def capitalize_feats(self, chosen_feats):
+        cleaned_chosen_feats = []
+        for feats in chosen_feats:
+            feat = feats.title()
+            cleaned_chosen_feats.append(feat)
+
+        return cleaned_chosen_feats
+
 
 
     def simple_list_chooser(self, class_1, *dataset_names, max_num=float('inf'), **kwargs):

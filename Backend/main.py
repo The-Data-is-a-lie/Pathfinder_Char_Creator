@@ -304,7 +304,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		# character.build_selector()
 
 
-		character.generic_feat_chooser(character.c_class,'combat',info_column = 'description')
+		feats = character.generic_feat_chooser(character.c_class,'combat',info_column = 'description')
 
 
 		### Need to change up the item_chooser function ###
@@ -419,6 +419,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			shield_weight = " "
 			shield_max_dex_bonus = " "
 
+		print(f"this is your chosen feats {feats}")
 	
 
 		export_list_non_dict = [character.region, character.chosen_race,
@@ -439,7 +440,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 selected_traits, equipment_list, character.c_class_level,
 				 chosen_subrace, subrace_description, character.archetype1,
 				 hair_color, hair_type, eye_color, appearance,
-				 language_text,
+				 language_text, feats,
 				 
 				 ]
 		
@@ -462,7 +463,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				"selected_traits", "equipment_list", "level",
 				 "chosen_subrace", "subrace_description", "archetype1",
 				 "hair_color", "hair_type", "eye_color", "appearance",
-				"language_text",
+				"language_text", "feats"
 
 				]
 		
@@ -471,7 +472,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 ] 
 
 		string_export_list_dict = [ 
-				"character.spell_list_choose_from", "equip_descrip",
+				"spell_list_choose_from_dict", "equip_descrip",
 				 ] 
 
 		character.export_list_non_dict(export_list_non_dict, string_export_list_non_dict)		
