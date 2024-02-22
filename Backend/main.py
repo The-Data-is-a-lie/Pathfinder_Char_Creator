@@ -174,7 +174,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		print(f'This is your spells per day from ability mods {character.spells_per_day_from_ability_mod("caster_mod")}')
 		print(f'Spells known + extra randomized spells known [spell book learners only] {character.spells_known_extra_roll()}')		
 
-		character.spell_list_choose_from = character.spells_known_selection('base_classes','divine_casters')
+		character.spell_list_choose_from, day_list, known_list = character.spells_known_selection('base_classes','divine_casters')
 		print(f"This is your spells list you can choose from {character.spell_list_choose_from}")
 
 
@@ -434,13 +434,14 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 shield_name, shield_spell_failure, shield_weight, shield_armor_check_penalty, shield_max_dex_bonus,
 				 fort_saving_throw, reflex_saving_throw, wisdom_saving_throw,
 				 character.spell_list_choose_from,
+				 day_list, known_list,
 				 deity_name, skill_ranks,
 				 weapon_enhancement_chosen_list, armor_enhancement_chosen_list, 
 				 shield_enhancement_chosen_list, professions,
 				 selected_traits, equipment_list, character.c_class_level,
 				 chosen_subrace, subrace_description, character.archetype1,
 				 hair_color, hair_type, eye_color, appearance,
-				 language_text, feats,
+				 language_text, feats, 
 				 
 				 ]
 		
@@ -451,18 +452,19 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				"height_number", "weight_number", "dex", "str", 
 				"con", "int", "wis", "cha", 
 				"flaw", "Total_HP", "total_hp_rolls",
-				 "bab_total",
+				"bab_total",
 				"armor_ac", "shield_ac",
-				 "armor_name", "armor_spell_failure", "armor_weight", "armor_armor_check_penalty", "armor_max_dex_bonus",
-				 "shield_name", "shield_spell_failure", "shield_weight", "shield_armor_check_penalty", "shield_max_dex_bonus",				
+				"armor_name", "armor_spell_failure", "armor_weight", "armor_armor_check_penalty", "armor_max_dex_bonus",
+				"shield_name", "shield_spell_failure", "shield_weight", "shield_armor_check_penalty", "shield_max_dex_bonus",				
 				"fort_saving_throw", "reflex_saving_throw", "wisdom_saving_throw",
 				"spell_list_choose_from",
+				"day_list", "known_list",
 				"deity_name", "skill_ranks",
 				"weapon_enhancement_chosen_list", "armor_enhancement_chosen_list", 
 				"shield_enhancement_chosen_list", "professions",
 				"selected_traits", "equipment_list", "level",
-				 "chosen_subrace", "subrace_description", "archetype1",
-				 "hair_color", "hair_type", "eye_color", "appearance",
+				"chosen_subrace", "subrace_description", "archetype1",
+				"hair_color", "hair_type", "eye_color", "appearance",
 				"language_text", "feats"
 
 				]

@@ -830,7 +830,7 @@ class Character:
 
         # self.spell_list_choose_from = all_spell_names
 
-        return self.spell_list_choose_from
+        return self.spell_list_choose_from, day_list, known_list
 
 
 
