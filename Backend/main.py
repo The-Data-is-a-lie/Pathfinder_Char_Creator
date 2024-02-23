@@ -420,6 +420,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			shield_max_dex_bonus = " "
 
 		print(f"this is your chosen feats {feats}")
+
+		character.platnium = character.gold / 10
 	
 
 		export_list_non_dict = [character.region, character.chosen_race,
@@ -442,6 +444,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 chosen_subrace, subrace_description, character.archetype1,
 				 hair_color, hair_type, eye_color, appearance,
 				 language_text, feats, 
+				 character.gold, character.platnium,
 				 
 				 ]
 		
@@ -465,7 +468,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				"selected_traits", "equipment_list", "level",
 				"chosen_subrace", "subrace_description", "archetype1",
 				"hair_color", "hair_type", "eye_color", "appearance",
-				"language_text", "feats"
+				"language_text", "feats", 
+				"gold", "platnium",
 
 				]
 		
