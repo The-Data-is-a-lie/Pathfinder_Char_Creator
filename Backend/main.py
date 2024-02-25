@@ -93,7 +93,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='bloodrager', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='cleric', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
 
 		# userInput = input('Create a new character? (y/n): ').lower()
 		userInput = create_new_char.lower()
@@ -506,7 +506,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 hair_color, hair_type, eye_color, appearance,
 				 language_text, feats, 
 				 character.gold, character.platnium,
-				 domain, school, opposing_school,
+				 full_domain, school, opposing_school,
 				 bloodline,
 				 
 				 ]
@@ -533,7 +533,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				"hair_color", "hair_type", "eye_color", "appearance",
 				"language_text", "feats", 
 				"gold", "platnium",
-				"domain", "school", "opposing_school",
+				"full_domain", "school", "opposing_school",
 				 "bloodline",
 
 				]
