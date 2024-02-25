@@ -1521,7 +1521,9 @@ class Character:
             output_list = []
 
         for string in string_list:
+            print("string", string)
             elements = [element.strip() for element in string.split(separator)]
+            print("elements", elements)
             stop_grabbing = False
 
             for element in elements:
@@ -1851,7 +1853,6 @@ class Character:
                         dataset.update(dataset_2)                        
 
                     chosen = random.choice(dataset_list)
-                    print(chosen)
                     chosen_set.add(chosen)
                     i = len(chosen_set)
 
@@ -1877,6 +1878,8 @@ class Character:
                 print(chosen_desc)
                 self.data_dict.update({'class features': chosen_desc})
 
+                print("sorcerereo choice", choice )
+                print("sorcerereo description", chosen_desc)
                 self.bonus_feats = self.bonus_searcher(choice, chosen_desc, 'feats')
                 self.bonus_spells = self.bonus_searcher(choice, chosen_desc, 'spells')
                 return chosen_desc
@@ -2068,7 +2071,13 @@ class Character:
     def feat_spell_searcher(self, class_1, chosen_set, types, info_column, info_column_2 = None):
         if self.c_class == class_1:
             data = pd.read_csv(f'data/{types}.csv', sep='|', on_bad_lines='skip')
-            extraction_list = ['name', info_column, info_column_2]
+
+            if info_column_2 is None:
+                extraction_list = ['name', info_column]
+            else:
+                extraction_list = ['name', info_column, info_column_2]
+
+
 
             query_result = self.remove_mythic(types,data, chosen_set, extraction_list)
 
@@ -2081,6 +2090,7 @@ class Character:
             return self.result_dict         
 
     def remove_mythic(self, types, data, chosen_set, extraction_list):
+        
 
         chosen_set_upper = {i.upper() for i in chosen_set}
         print(f'This is your chosen set {chosen_set_upper}')
@@ -2118,7 +2128,9 @@ class Character:
     def bonus_searcher(self, choice, chosen_desc, types):
         bonus_list = []
         bonus = chosen_desc.get(choice,{}).get(f"bonus {types}", {})
-        self.json_list_grabber(bonus, bonus_list, ",")
+        print('bonus', bonus)
+        print('bonus list', bonus_list)
+        self.json_list_grabber(bonus_list, ",", bonus)
         self.remove_parentheses(bonus_list)
 
         return bonus_list
@@ -2297,12 +2309,15 @@ class Character:
             print(f'These are your chosen feats {cleaned_chosen_feats}')
 
             return cleaned_chosen_feats
+
     def capitalize_feats(self, chosen_feats):
+        fillers = ["the", "of", "and", "a", "an", "in", "on", "at", "to", "for",]  # Add more as needed
         cleaned_chosen_feats = []
         for feats in chosen_feats:
-            feat = feats.title()
+            words = feats.split()
+            capitalized_words = [word.capitalize() if word.lower() not in fillers else word for word in words]
+            feat = ' '.join(capitalized_words)
             cleaned_chosen_feats.append(feat)
-
         return cleaned_chosen_feats
 
 

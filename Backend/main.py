@@ -93,7 +93,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='cleric', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='bloodrager', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
 
 		# userInput = input('Create a new character? (y/n): ').lower()
 		userInput = create_new_char.lower()
@@ -223,11 +223,17 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		# character.arcanist_exploits_chooser()
 
 		character.domain_chooser()	
+		full_domain = character.chosen_domain
 		character.versatile_perfomance()	
 		character.animal_chooser()
 		character.animal_feats()	
-		character.wizard_school_chooser()
-		character.wizard_opposing_school()	
+
+		if character.c_class.lower() == 'wizard':
+			full_school, school_desc, associaed_desc, associaed_school = character.wizard_school_chooser()
+			full_opposing_school = character.wizard_opposing_school()	
+
+		
+			
 		# character.anti_paladin_cruelty_chooser()
 		# character.paladin_mercy_chooser()		
 
@@ -255,8 +261,16 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 
 		# generic single choices
-		character.generic_class_option_chooser("sorcerer", "bloodline")
-		character.generic_class_option_chooser("bloodrager", "bloodline")
+		if character.c_class == 'sorcerer':
+			bloodline_sorc = character.generic_class_option_chooser("sorcerer", "bloodline")
+		else:
+			bloodline_sorc = None
+		if character.c_class == 'bloodrager':
+			bloodline_rager = character.generic_class_option_chooser("bloodrager", "bloodline")
+		else:
+			bloodline_rager = None
+
+
 		character.generic_class_option_chooser("cavalier", "orders")
 		character.generic_class_option_chooser("samurai", "orders")
 		character.generic_class_option_chooser("warpriest", "blessing")
@@ -359,6 +373,10 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		print(character.Total_HP)
 		print(favored_class_chosen)
 
+
+		# pre export data manip start
+
+
 		hair_color = character.randomize_apperance_attr("hair_colors")
 		hair_type = character.randomize_apperance_attr("hair_types")
 		eye_color = character.randomize_apperance_attr("eye_colors")
@@ -423,6 +441,49 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 		character.platnium = character.gold / 10
 	
+		try:
+			domain = next(iter(full_domain.keys()), "N/A")
+		except (NameError, AttributeError):
+			domain = "N/A"
+
+
+
+		try:
+			if bloodline_sorc:
+				bloodline_full = bloodline_sorc
+				bloodline = next(iter(bloodline_full.keys()), "N/A")
+			elif bloodline_rager:
+				bloodline_full = bloodline_rager
+				bloodline = next(iter(bloodline_full.keys()), "N/A")
+			else:
+				bloodline = "N/A"
+
+		except (NameError, AttributeError):
+			bloodline = "N/A"
+
+
+		try:
+			school = full_school if full_school else "N/A"
+		except NameError:
+			school = "N/A"
+
+		try:
+			opposing_school = full_opposing_school if full_opposing_school else "N/A"
+		except NameError:
+			opposing_school = "N/A"
+
+
+
+		print('school + domain + bloodline + opposing school')
+		print(school)
+		print(opposing_school)
+		print(bloodline)
+		print(full_domain)
+
+
+	# end of pre export data manip
+
+		
 
 		export_list_non_dict = [character.region, character.chosen_race,
 				 character_full_name, character.c_class, character.c_class_2, 
@@ -445,6 +506,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 hair_color, hair_type, eye_color, appearance,
 				 language_text, feats, 
 				 character.gold, character.platnium,
+				 domain, school, opposing_school,
+				 bloodline,
 				 
 				 ]
 		
@@ -470,6 +533,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				"hair_color", "hair_type", "eye_color", "appearance",
 				"language_text", "feats", 
 				"gold", "platnium",
+				"domain", "school", "opposing_school",
+				 "bloodline",
 
 				]
 		
