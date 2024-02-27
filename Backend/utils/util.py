@@ -6,7 +6,9 @@ from utils import data
 from utils.data import traits, mannerisms, regions, weapon_groups, weapon_groups_region, disciplines, skills,  languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class#evil_deities, good_deities, neutral_deities,
 import json
 import sys
-#from utils.race import race
+from Backend.utils.class_func.race_func import *
+
+
 character_data = {}
 
 def roll_dice(num_dice, num_sides):
@@ -128,7 +130,7 @@ def race_chooser(character, userInput_race):
     Return
     - userInput_race
     """
-    race_data = character.full_race_data()
+    race_data = full_race_data(character)
     races = list(race_data.keys())
     print(f'this is your race keys {races}')
     print(races)

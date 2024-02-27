@@ -7,6 +7,23 @@ import random
 from math import ceil, floor
 from flask import jsonify
 import json
+
+
+# Importing custom functions
+from utils.class_func.extra_combat_feats import extra_combat_feats
+from utils.class_func.generic_func import *
+from utils.class_func.armor_and_enhancements import *
+from utils.class_func.skill_ranks import skills_selector
+from utils.class_func.appearance import *
+from utils.class_func.language import *
+from utils.class_func.saving_throws import saving_throw_calc
+from utils.class_func.chooseable import *
+from utils.class_func.race_func import *
+from utils.class_func.favored_class import *
+from utils.class_func.flag_assign import *
+from utils.class_func.spells import *
+from utils.class_func.domain_inquisition import *
+from utils.class_func.class_specific_feats import *
 #Making a Global Character Dictionary so we can reference it and create a HTML/CSS sheet based off of that
 
 global character_data 
@@ -120,26 +137,26 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		deity = character.randomize_deity()
 		print(f"This is your randomly selected deity: {deity}")
 
-		age, age_number = character.randomize_body_feature('age')
-		height, height_number = character.randomize_body_feature('height')
-		weight, weight_number = character.randomize_body_feature('weight')			
+		age, age_number = randomize_body_feature(character, 'age')
+		height, height_number = randomize_body_feature(character, 'height')
+		weight, weight_number = randomize_body_feature(character, 'weight')			
 		# num_dice = int(input("How many dice would you like to roll? "))
 		# num_sides = int(input("How many sides should each die have? "))
 		stats = character.roll_stats(num_dice, num_sides)
 		character.assign_stats(stats)
 
-		chosen_subrace, subrace_description = character.subrace_chooser()
+		chosen_subrace, subrace_description = subrace_chooser(character)
 		print(f'this is your chosen subrace {chosen_subrace}')
-		race_traits_list, race_traits_description_list = character.race_traits_chooser()
+		race_traits_list, race_traits_description_list = race_traits_chooser(character)
 		print(race_traits_list, race_traits_description_list)
 
-		split_race_traits_list = character.race_ability_split(race_traits_list)
-		character.dex = character.race_ability_score_changes(split_race_traits_list, character.dex, 'dex')
-		character.str = character.race_ability_score_changes(split_race_traits_list, character.str, 'str')
-		character.con = character.race_ability_score_changes(split_race_traits_list, character.con, 'con')
-		character.int = character.race_ability_score_changes(split_race_traits_list, character.int, 'int')
-		character.wis = character.race_ability_score_changes(split_race_traits_list, character.wis, 'wis')
-		character.cha = character.race_ability_score_changes(split_race_traits_list, character.cha, 'cha')
+		split_race_traits_list = race_ability_split(character, race_traits_list)
+		character.dex = race_ability_score_changes(character, split_race_traits_list, character.dex, 'dex')
+		character.str = race_ability_score_changes(character, split_race_traits_list, character.str, 'str')
+		character.con = race_ability_score_changes(character, split_race_traits_list, character.con, 'con')
+		character.int = race_ability_score_changes(character, split_race_traits_list, character.int, 'int')
+		character.wis = race_ability_score_changes(character, split_race_traits_list, character.wis, 'wis')
+		character.cha = race_ability_score_changes(character, split_race_traits_list, character.cha, 'cha')
 		character.print_stats()
 
 		character.calc_ability_mod()
@@ -156,59 +173,59 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		character.roll_hp()
 		character.Total_HP = character.total_hp_calc()
 
-		print(f'This is your class for spells: {character.class_for_spells_attr()} ')
+		print(f'This is your class for spells: {class_for_spells_attr(character)} ')
 
 		# Some spellcasters get 0th level spells (all high + most mid)
 		# Also 0th spells = infinite casting 
 		# Wizards + Clerics know all 0th level spells (wizards know all except opposing school)
 		# as long as spells known list has a '0th' spell column (even if it isn't 0) 
 		# it won't pull any 0th spells for casters with orisons/cantrips
-		character.highest_spell_known_1 = character.caster_formula(character.c_class_level)
-		character.highest_spell_known_2 = character.caster_formula(character.c_class_2_level, character.c_class_2)
+		character.highest_spell_known_1 = caster_formula(character, character.c_class_level)
+		character.highest_spell_known_2 = caster_formula(character, character.c_class_2_level, character.c_class_2)
 		print(type(character.c_class_2))
 		print(character.c_class_2)
 
 		#Divine Casters have all spells known (don't make this function for them)
-		print(f'This is your spells known list {character.spells_known_attr("base_classes", "divine_casters")}')
-		print(f'This is your spells per day {character.spells_per_day_attr("base_classes")}')
-		print(f'This is your spells per day from ability mods {character.spells_per_day_from_ability_mod("caster_mod")}')
-		print(f'Spells known + extra randomized spells known [spell book learners only] {character.spells_known_extra_roll()}')		
+		print(f'This is your spells known list {spells_known_attr(character, "base_classes", "divine_casters")}')
+		print(f'This is your spells per day {spells_per_day_attr(character, "base_classes")}')
+		print(f'This is your spells per day from ability mods {spells_per_day_from_ability_mod(character, "caster_mod")}')
+		print(f'Spells known + extra randomized spells known [spell book learners only] {spells_known_extra_roll(character )}')		
 
-		character.spell_list_choose_from, day_list, known_list = character.spells_known_selection('base_classes','divine_casters')
+		character.spell_list_choose_from, day_list, known_list = spells_known_selection(character, 'base_classes','divine_casters')
 		print(f"This is your spells list you can choose from {character.spell_list_choose_from}")
 
 
 
 
 		# Extra class choices:
-		character.extra_combat_feats()
+		extra_combat_feats(character)
 		character.class_abilities_amount()
 
 
 		print(f"This is your selected feats: {character.feats_selector()}")
 
 		#this is to allow for talent choice stat pre-reqs (self.chooseable)
-		character.chooseable_list() 		
-		character.chooseable_list_stats(character.str, 'str ', base=10)
-		character.chooseable_list_stats(character.dex, 'dex ', base=10)
-		character.chooseable_list_stats(character.con, 'con ', base=10)
-		character.chooseable_list_stats(character.int, 'int ', base=10)
-		character.chooseable_list_stats(character.wis, 'wis ', base=10)
-		character.chooseable_list_stats(character.cha, 'cha ', base=10)	
-		character.chooseable_list_stats(character.bab_total, 'base attack bonus +', base=0 )
-		character.chooseable_list_stats(character.casting_level_num, 'caster level ', base=0, th='th')	
-		character.chooseable_list_class_features()
-		character.chooseable_list_race()
+		chooseable_list(character) 		
+		chooseable_list_stats(character, character.str, 'str ', base=10)
+		chooseable_list_stats(character, character.dex, 'dex ', base=10)
+		chooseable_list_stats(character, character.con, 'con ', base=10)
+		chooseable_list_stats(character, character.int, 'int ', base=10)
+		chooseable_list_stats(character, character.wis, 'wis ', base=10)
+		chooseable_list_stats(character, character.cha, 'cha ', base=10)	
+		chooseable_list_stats(character, character.bab_total, 'base attack bonus +', base=0 )
+		chooseable_list_stats(character, character.casting_level_num, 'caster level ', base=0, th='th')	
+		chooseable_list_class_features(character)
+		chooseable_list_race(character)
 
-		character.druidic_flag_assigner() 
-		character.human_flag_assigner()
-		favored_class_list = character.favored_class_option()
-		favored_class = character.favored_class_option_chooser(favored_class_list, character.human_flag)
-		skill_rank_level, favored_class_chosen = character.favored_class_calculator(favored_class)		
+		druidic_flag_assigner(character) 
+		human_flag_assigner(character)
+		favored_class_list = favored_class_option(character, )
+		favored_class = favored_class_option_chooser(character, favored_class_list, character.human_flag)
+		skill_rank_level, favored_class_chosen = favored_class_calculator(character, favored_class)		
 
 		#decides if druids go animal companion or domain
 		# or if inquisitors go inquisitions or domains
-		character.domain_chance()
+		domain_chance(character)
 
 		#class specific choices
 		# character.monk_ki_power_chooser()
@@ -222,7 +239,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		# character.grand_discovery_chooser()
 		# character.arcanist_exploits_chooser()
 
-		character.domain_chooser()	
+		domain_chooser(character)	
 		full_domain = character.chosen_domain
 		character.versatile_perfomance()	
 		character.animal_chooser()
@@ -255,46 +272,46 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		# character.bloodline_feats_chooser()
 
 		#generic single choices (adds spells?)
-		character.generic_class_option_chooser("shaman", "spirits")
+		generic_class_option_chooser(character,"shaman", "spirits")
 
 
 		# generic single choices
 		if character.c_class == 'sorcerer':
-			bloodline_sorc = character.generic_class_option_chooser("sorcerer", "bloodline")
+			bloodline_sorc = generic_class_option_chooser(character, "sorcerer", "bloodline")
 		else:
 			bloodline_sorc = None
 		if character.c_class == 'bloodrager':
-			bloodline_rager = character.generic_class_option_chooser("bloodrager", "bloodline")
+			bloodline_rager = generic_class_option_chooser(character, "bloodrager", "bloodline")
 		else:
 			bloodline_rager = None
 
 
-		character.generic_class_option_chooser("cavalier", "orders")
-		character.generic_class_option_chooser("samurai", "orders")
-		character.generic_class_option_chooser("warpriest", "blessing")
-		character.generic_class_option_chooser("inquisitor", "inquisitions")
-		character.generic_class_option_chooser("oracle", "curses")
-		character.generic_class_option_chooser("fighter",  dataset_name="armor_train", multiple='yes')
-		character.generic_class_option_chooser("fighter", dataset_name="weapon_train", multiple='yes')
-		character.generic_class_option_chooser("arcanist", dataset_name="basic", dataset_name_2="greater", multiple='yes', level=10)
+		generic_class_option_chooser(character,"cavalier", "orders")
+		generic_class_option_chooser(character,"samurai", "orders")
+		generic_class_option_chooser(character,"warpriest", "blessing")
+		generic_class_option_chooser(character,"inquisitor", "inquisitions")
+		generic_class_option_chooser(character,"oracle", "curses")
+		generic_class_option_chooser(character,"fighter",  dataset_name="armor_train", multiple='yes')
+		generic_class_option_chooser(character,"fighter", dataset_name="weapon_train", multiple='yes')
+		generic_class_option_chooser(character,"arcanist", dataset_name="basic", dataset_name_2="greater", multiple='yes', level=10)
 		
 		#need to add patron spells to the witch spell list (like how clerics + druids + s
 		# orcs get their own added)
-		character.generic_class_option_chooser("witch", dataset_name="basic", dataset_name_2="greater", dataset_name_3="grand", multiple='yes', level=10, level_2=18)
+		generic_class_option_chooser(character,"witch", dataset_name="basic", dataset_name_2="greater", dataset_name_3="grand", multiple='yes', level=10, level_2=18)
 
 
 
 		# generic multi choices (with pre-reqs)
-		character.get_data_without_prerequisites(class_1="rogue",dataset_name="basic", level=10, dataset_name_2="advanced")
-		character.get_data_without_prerequisites(class_1="ninja",dataset_name="basic", level=10, dataset_name_2="advanced")
-		character.get_data_without_prerequisites(class_1="slayer",dataset_name="basic", level=10, dataset_name_2="advanced")
-		character.get_data_without_prerequisites(class_1="alchemist",dataset_name="basic")
-		character.get_data_without_prerequisites(class_1="investigator",dataset_name="basic")
-		character.get_data_without_prerequisites(class_1="vigilante",dataset_name="basic")
-		character.get_data_without_prerequisites(class_1="vigilante",dataset_name="social",odd=True)
-		character.get_data_without_prerequisites(class_1="barbarian",dataset_name="basic")
-		character.get_data_without_prerequisites(class_1="skald",dataset_name="basic")
-		character.get_data_without_prerequisites(class_1="magus",dataset_name="basic")
+		get_data_without_prerequisites(character, class_1="rogue",dataset_name="basic", level=10, dataset_name_2="advanced")
+		get_data_without_prerequisites(character, class_1="ninja",dataset_name="basic", level=10, dataset_name_2="advanced")
+		get_data_without_prerequisites(character, class_1="slayer",dataset_name="basic", level=10, dataset_name_2="advanced")
+		get_data_without_prerequisites(character, class_1="alchemist",dataset_name="basic")
+		get_data_without_prerequisites(character, class_1="investigator",dataset_name="basic")
+		get_data_without_prerequisites(character, class_1="vigilante",dataset_name="basic")
+		get_data_without_prerequisites(character, class_1="vigilante",dataset_name="social",odd=True)
+		get_data_without_prerequisites(character, class_1="barbarian",dataset_name="basic")
+		get_data_without_prerequisites(character, class_1="skald",dataset_name="basic")
+		get_data_without_prerequisites(character, class_1="magus",dataset_name="basic")
 
 		character.grand_discovery_chooser() #fix this later
 
@@ -302,9 +319,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 
 		# >2 Choices based on level
-		character.generic_multi_chooser("paladin", "mercy", n=3)
-		character.generic_multi_chooser("antipaladin", "cruelty",n=3)
-		ki_powers = character.generic_multi_chooser("monk", "ki_powers",n=4,n2=2)
+		generic_multi_chooser(character,"paladin", "mercy", n=3)
+		generic_multi_chooser(character,"antipaladin", "cruelty",n=3)
+		ki_powers = generic_multi_chooser(character,"monk", "ki_powers",n=4,n2=2)
 
 
 		# feat + spell searcher
@@ -330,11 +347,11 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		print(f'This is your gold post items {character.gold}')	
 
 		#calculating savings throws based off of class levels
-		fort_saving_throw = character.saving_throw_calc('Fortitude')
-		reflex_saving_throw = character.saving_throw_calc('Reflex')
-		wisdom_saving_throw = character.saving_throw_calc('Will')	
+		fort_saving_throw = saving_throw_calc(character, 'Fortitude')
+		reflex_saving_throw = saving_throw_calc(character, 'Reflex')
+		wisdom_saving_throw = saving_throw_calc(character, 'Will')	
 
-		skill_ranks = character.skills_selector('skills', skill_rank_level)
+		skill_ranks = skills_selector(character, 'skills', skill_rank_level)
 		professions = character.profession_chooser("professions")		
 		print(f'This is your chosen professions {professions}')		
 
@@ -350,18 +367,18 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		character.shield_dict = character.list_selection('armor', limits=limits, shield_flag = character.shield_flag)
 
 	# Maybe change these
-		armor_enhancement = character.enhancement_calculator(3)
-		weapon_enhancement = character.enhancement_calculator(2)
-		shield_enhancement = character.enhancement_calculator(1)
+		armor_enhancement = enhancement_calculator(character, 3)
+		weapon_enhancement = enhancement_calculator(character, 2)
+		shield_enhancement = enhancement_calculator(character, 1)
 
 		armor_ac = character.ac_bonus_calculator(character.armor_dict)
 		shield_ac = character.ac_bonus_calculator(character.shield_dict)
 
 		weapon_type_flag = character.weapon_type_flag_func(character.weapon_dict)
 
-		weapon_enhancement_chosen_list = character.enhancement_chooser(character.weapon_qualities,weapon_enhancement, weapon_type_flag)
-		armor_enhancement_chosen_list = character.enhancement_chooser(character.armor_qualities,armor_enhancement, 'Armor')
-		shield_enhancement_chosen_list = character.enhancement_chooser(character.armor_qualities,shield_enhancement, 'Shield', character.shield_flag)
+		weapon_enhancement_chosen_list = enhancement_chooser(character, character.weapon_qualities,weapon_enhancement, weapon_type_flag)
+		armor_enhancement_chosen_list = enhancement_chooser(character, character.armor_qualities,armor_enhancement, 'Armor')
+		shield_enhancement_chosen_list = enhancement_chooser(character, character.armor_qualities,shield_enhancement, 'Shield', character.shield_flag)
 
 		print('these are your chosen enhancements **************************')
 		print(weapon_enhancement_chosen_list, armor_enhancement_chosen_list, shield_enhancement_chosen_list)
@@ -377,14 +394,14 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		# pre export data manip start
 
 
-		hair_color = character.randomize_apperance_attr("hair_colors")
-		hair_type = character.randomize_apperance_attr("hair_types")
-		eye_color = character.randomize_apperance_attr("eye_colors")
-		appearance = character.randomize_apperance_attr("appearance")
-		language_text = character.language_chooser()
+		hair_color = randomize_apperance_attr(character, "hair_colors")
+		hair_type = randomize_apperance_attr(character, "hair_types")
+		eye_color = randomize_apperance_attr(character, "eye_colors")
+		appearance = randomize_apperance_attr(character, "appearance")
+		language_text = language_chooser(character)
 
 
-		print(f'this is your language list {character.language_chooser()}')
+		print(f'this is your language list {language_chooser(character)}')
 
 		character_full_name = f_name + ' ' + l_name
 
@@ -484,23 +501,23 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 	# end of pre export data manip
 
 		# Start of Extra feats list generation section
-		character.total_feats = []
-		character.class_specific_feats_chooser("sorcerer", "bloodline", character.bloodline, name_3="bonus feats")
-		character.class_specific_feats_chooser("bloodrager", "bloodline", character.bloodline, name_3="bonus feats")
-		# character.class_specific_feats_chooser("monk", "feats", "2", class_level= 2)
-		# character.class_specific_feats_chooser("monk", "feats", "6", class_level= 6)
-		# character.class_specific_feats_chooser("monk", "feats", "10", class_level= 10)
+		
+		class_specific_feats_chooser(character, "sorcerer", "bloodline", character.bloodline, name_3="bonus feats")
+		class_specific_feats_chooser(character, "bloodrager", "bloodline", character.bloodline, name_3="bonus feats")
+		# class_specific_feats_chooser(character, "monk", "feats", "2", class_level= 2)
+		# class_specific_feats_chooser(character, "monk", "feats", "6", class_level= 6)
+		# class_specific_feats_chooser(character, "monk", "feats", "10", class_level= 10)
 		
 
 		#End of Extra feats list generation section
 
 		# Start of Extra feats selection Section
-		extra_feats = character.feat_chooser(character.total_feats, character.class_feats)
+		extra_feats = feat_chooser(character, character.total_feats, character.class_feats)
 		character.feats.extend(extra_feats)
 
 		#class specific feats choosers
-		character.ranger_feats_chooser()
-		character.monk_feats_chooser()
+		ranger_feats_chooser(character)
+		monk_feats_chooser(character)
 			
 		print(f"this is your chosen feats {character.feats}")
 
