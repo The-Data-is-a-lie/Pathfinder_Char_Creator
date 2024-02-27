@@ -208,39 +208,7 @@ class Character:
 
         
 
-    #should this be update feats, since we're updating feat amount [it 100% depends on level]
-    def update_level(self, level, c_class_level, c_class_2_level, flaw_flag=None, homebrew_amount=None):
-        self.level = level
-        self.c_class_level = c_class_level
-        self.c_class_2_level = c_class_2_level              
 
-        if flaw_flag == None:
-            self.feat_amounts = (ceil(self.level/2) + min(len(self.flaw),3))
-        else:
-            self.feat_amounts = ( ceil(self.level/2) )
-
-        if homebrew_amount != None:
-            self.feat_amounts = (4 + ceil(self.level/2) + floor(self.level/5) + max((len(self.flaw)-2),0) )
-
-        self._update_bab_total()
-
-
-    def update_level_ability_score(self, level):
-        self.level=level
-        self.extra_ability_score_levels=floor(level/4)
-
-
-
-    def _update_bab_total(self):
-        self.bab = self.class_data[self.c_class]['bab']
-        # set as an integer so our function beneath works
-        self.bab_total = 0
-        if self.bab == 'L':
-            self.bab_total += floor(self.level *.5)
-        elif self.bab == 'M':
-            self.bab_total += floor(self.level *.75)
-        else: 
-            self.bab_total += self.level * 1
 
 
     
@@ -330,32 +298,7 @@ class Character:
             flaw = random.sample(list(self.flaws),4)
         self.flaw = flaw
     
-    def randomize_level(self, min_num, max_num):
-        if self.c_class_2 == '':
-            print('this is is blank class_2')
-            pre_level = random.randint(min_num, max(min_num, max_num))
-            level = min(pre_level,40)
-            c_class_level = level
-            c_class_2_level = 0
-            self.update_level(level, c_class_level, c_class_2_level)
-        elif self.dip == True:
-            pre_level = random.randint(min_num, max(min_num, max_num))
-            level = min(pre_level,40)
-            c_class_level = level-1
-            c_class_2_level = 1
-            self.update_level(level, c_class_level, c_class_2_level)
-        else:
-            pre_level = random.randint(min_num, max(min_num, max_num))
-            level = min(pre_level,40)            
-            pre_c_class_level = random.randint((min_num-1,level-1))
-            c_class_level = min(pre_c_class_level,39)            
-            c_class_2_level = level - c_class_level
-            self.update_level(level, c_class_level, c_class_2_level)    
 
-        self.capped_level_1 = min(c_class_level,20)
-        self.capped_level_2 = min(c_class_2_level,20)     
-
-        # we create capped levels for things like spells just in case we'll need it for many functions
         
 
     def hit_dice_calc(self):

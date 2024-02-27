@@ -26,6 +26,7 @@ from utils.class_func.domain_inquisition import *
 from utils.class_func.class_specific_feats import *
 from utils.class_func.class_ability_amount import class_abilities_amount
 from utils.class_func.item_and_price import *
+from utils.class_func.level_and_bab import *
 #end of custom function import
 
 #Making a Global Character Dictionary so we can reference it and create a HTML/CSS sheet based off of that
@@ -170,7 +171,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		# max_num = int(input("Enter the highest level you want the char to be: "))
 		# min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
 		# character.randomize_level(min_num, max_num)
-		character.randomize_level(low_level, high_level)
+		randomize_level(character, low_level, high_level)
 
 		#hp calculations
 		character.hit_dice_calc()
