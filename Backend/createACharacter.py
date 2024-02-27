@@ -109,6 +109,7 @@ class Character:
 
 
         #classes like monks + rangers can only select certain combat feats
+        self.feats = []
         self.ranger_feats=None
         self.ranger_combat_styles=None
 
@@ -919,7 +920,8 @@ class Character:
         #fighter_feats = [1,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40]
         monk_feats = [1,2,6,10,14,18,22,26,30,34,38,42]
         brawler_feats = [2,5,8,11,14,17,20,23,26,29,32,35,38,41] 
-        ranger_feats = [2,6,10,14,18,22,26,30,34,38,42]            
+        ranger_feats = [2,6,10,14,18,22,26,30,34,38,42]       
+        sorcerer_feats = [7,13,19,25,31,37,43,49]     
         #setting up extra feats + extra feats_2 as 0 so we don't get errors
         extra_feats = 0
         extra_feats_2 = 0    
@@ -931,10 +933,10 @@ class Character:
 
         #fighter section
         if self.c_class == 'fighter':
-            extra_feats =  1 + floor((self.c_class_level)/2)
+            extra_feats +=  1 + floor((self.c_class_level)/2)
 
-        if self.c_class_2 == 'fighter':
-            extra_feats_2 = self.feat_amounts + 1 + floor((self.c_class_2_level)/2)         
+        # if self.c_class_2 == 'fighter':
+        #     extra_feats_2 = self.feat_amounts + 1 + floor((self.c_class_2_level)/2)         
 
         i=0
         i_2=0
@@ -943,13 +945,13 @@ class Character:
         if self.c_class == 'monk' or self.c_class == 'unchained_monk':
             while i < len(monk_feats) and monk_feats[i] <= self.c_class_level:
                 i += 1
-            monk_feats_list = i
+            extra_feats += i
 
-        if self.c_class == 'monk' or self.c_class == 'unchained_monk':
-            while i_2 < len(monk_feats) and monk_feats[i_2] <= self.c_class_level:
-                i_2 += 1
+        # if self.c_class_2 == 'monk' or self.c_class_2 == 'unchained_monk':
+        #     while i_2 < len(monk_feats) and monk_feats[i_2] <= self.c_class_level:
+        #         i_2 += 1
 
-            monk_feats_2_list = i_2
+        #     extra_feats = i_2
 
         i=0
         i_2=0
@@ -957,13 +959,13 @@ class Character:
         if self.c_class == 'brawler':
             while i < len(brawler_feats) and brawler_feats[i] <= self.c_class_level:
                 i += 1
-            extra_feats = i
+            extra_feats += i
 
-        if self.c_class_2 == 'brawler':
-            while i_2 < len(brawler_feats) and brawler_feats[i_2] <= self.c_class_level:
-                i_2 += 1
+        # if self.c_class_2 == 'brawler':
+        #     while i_2 < len(brawler_feats) and brawler_feats[i_2] <= self.c_class_level:
+        #         i_2 += 1
 
-            extra_feats_2 = i_2        
+        #     extra_feats_2 = i_2        
 
         i=0
         i_2=0
@@ -971,22 +973,33 @@ class Character:
         if self.c_class == 'ranger':
             while i < len(ranger_feats) and ranger_feats[i] <= self.c_class_level:
                 i += 1
-            ranger_feats_list = i
+            extra_feats += i
 
-        if self.c_class_2 == 'ranger':
-            while i_2 < len(ranger_feats) and ranger_feats[i_2] <= self.c_class_level:
-                i_2 += 1
+        # if self.c_class_2 == 'ranger':
+        #     while i_2 < len(ranger_feats) and ranger_feats[i_2] <= self.c_class_level:
+        #         i_2 += 1
 
-            ranger_feats_2_list = i_2                    
+        #     extra_feats += i_2                    
+            
+        if self.c_class == 'sorcerer':
+            while i < len(sorcerer_feats) and sorcerer_feats[i] <= self.c_class_level:
+                i += 1
+            extra_feats += i
+
+        if self.c_class == 'wizard':
+            i = floor(self.c_class_level / 5)
+            extra_feats += i
+
 
         #currently we're just adding combat feats to total feats, 
         # but we may want to have them be their own separate entity
-        self.combat_feats = extra_feats + extra_feats_2
-        self.ranger_feats = ranger_feats_list + ranger_feats_2_list
-        self.monk_feats = monk_feats_list + monk_feats_2_list
+        self.class_feats = extra_feats 
+        # self.class_feats = extra_feats + extra_feats_2
+        # self.ranger_feats = ranger_feats_list + ranger_feats_2_list
+        # self.monk_feats = monk_feats_list + monk_feats_2_list
                
 
-        return self.combat_feats          
+        return self.class_feats          
 
 
     def extra_magic_feats(self):
@@ -1078,57 +1091,60 @@ class Character:
         return terrains, enemies
     
 
-    # def ranger_feats_chooser(self):
-    #     if self.c_class == 'ranger':
-    #         ranger_feats = [2,6,10,14,18,22,26,30,34,38,42]              
-    #         choice = list(self.ranger_combat_styles.keys())   
-    #         random_combat_style = random.choice(choice)
-    #         ranger_feats_chosen_list=set()     
-    #         i=0
+    def ranger_feats_chooser(self):
+        if self.c_class == 'ranger':
+            ranger_feats = [2,6,10,14,18,22,26,30,34,38,42]              
+            choice = list(self.ranger.keys())   
+            random_combat_style = random.choice(choice)
+            ranger_feats_chosen_list=set()     
+            i=0
 
 
-    #         while ranger_feats[i] <= self.c_class_level:
-    #             ranger_feats_list=self.ranger_combat_styles[random_combat_style]["2"]
+            while ranger_feats[i] <= self.c_class_level:
+                ranger_feats_list=self.ranger[random_combat_style]["2"]
                 
-    #             if ranger_feats[i]>=6:
-    #                 ranger_feats_list=(self.ranger_combat_styles[random_combat_style]["2"] + self.ranger_combat_styles[random_combat_style]["6"])
-    #             elif ranger_feats[i]>=10:
-    #                 ranger_feats_list=(self.ranger_combat_styles[random_combat_style]["2"] + self.ranger_combat_styles[random_combat_style]["6"] + self.ranger_combat_styles[random_combat_style]["10"])
+                if ranger_feats[i]>=6:
+                    ranger_feats_list=(self.ranger[random_combat_style]["2"] + self.ranger[random_combat_style]["6"])
+                elif ranger_feats[i]>=10:
+                    ranger_feats_list=(self.ranger[random_combat_style]["2"] + self.ranger[random_combat_style]["6"] + self.ranger[random_combat_style]["10"])
 
 
-    #             ranger_feats_chosen=random.choice(ranger_feats_list)
-    #             ranger_feats_chosen_list.add(ranger_feats_chosen)
+                ranger_feats_chosen=random.choice(ranger_feats_list)
+                ranger_feats_chosen_list.add(ranger_feats_chosen)
                    
-    #             i=len(ranger_feats_chosen_list)
+                i=len(ranger_feats_chosen_list)
 
-    #             if ranger_feats_chosen_list == 7:
-    #                 break
+                if ranger_feats_chosen_list == 7:
+                    break
 
-    #         print(ranger_feats_chosen_list)
+            print(ranger_feats_chosen_list)
+            self.feats.extend(ranger_feats_chosen_list)
+            return ranger_feats_chosen_list
 
+    def monk_feats_chooser(self):
+        if self.c_class == 'monk' or self.c_class == 'unchained_monk':
+            monk_feats = [1,2,6,10,14,18,22,26,30,34,38,42]   
+            #using set + .add makes sure we don't have any repeats in our list           
+            monk_feats_chosen_list=set()     
+            i=0
 
-    # def monk_feats_chooser(self):
-    #     if self.c_class == 'monk' or self.c_class == 'unchained_monk':
-    #         monk_feats = [1,2,6,10,14,18,22,26,30,34,38,42]   
-    #         #using set + .add makes sure we don't have any repeats in our list           
-    #         monk_feats_chosen_list=set()     
-    #         i=0
-
-    #         while monk_feats[i] <= self.c_class_level:
-    #             monk_feats_list=self.monk_choices['feats']["2"]
+            while monk_feats[i] <= self.c_class_level:
+                monk_feats_list=self.monk['feats']["2"]
                 
-    #             if monk_feats[i]>=6:
-    #                 monk_feats_list=(self.monk_choices['feats']["2"] + self.monk_choices['feats']["6"])
-    #             elif monk_feats[i]>=10:
-    #                 monk_feats_list=(self.monk_choices['feats']["2"] + self.monk_choices['feats']["6"] + self.monk_choices['feats']["10"])
+                if monk_feats[i]>=6:
+                    monk_feats_list=(self.monk['feats']["2"] + self.monk['feats']["6"])
+                elif monk_feats[i]>=10:
+                    monk_feats_list=(self.monk['feats']["2"] + self.monk['feats']["6"] + self.monk['feats']["10"])
 
 
-    #             monk_feats_chosen=random.choice(monk_feats_list)
-    #             monk_feats_chosen_list.add(monk_feats_chosen)
+                monk_feats_chosen=random.choice(monk_feats_list)
+                monk_feats_chosen_list.add(monk_feats_chosen)
                    
-    #             i=len(monk_feats_chosen_list)
+                i=len(monk_feats_chosen_list)
 
-    #         print(monk_feats_chosen_list)
+            print(monk_feats_chosen_list)
+            self.feats.extend(monk_feats_chosen_list)
+            return monk_feats_chosen_list
 
 
         
@@ -1875,11 +1891,8 @@ class Character:
 
                 chosen_desc = {choice: description}
 
-                print(chosen_desc)
                 self.data_dict.update({'class features': chosen_desc})
 
-                print("sorcerereo choice", choice )
-                print("sorcerereo description", chosen_desc)
                 self.bonus_feats = self.bonus_searcher(choice, chosen_desc, 'feats')
                 self.bonus_spells = self.bonus_searcher(choice, chosen_desc, 'spells')
                 return chosen_desc
@@ -2186,7 +2199,7 @@ class Character:
             self.add_specialty_feats(feat_list)
         result_dict_pre = self.feat_spell_searcher(self.c_class, feat_list, "feats", "prerequisites", "description")
         result_dict = self.transform_result_dict(result_dict_pre)
-        chosen_feats = self.get_feats_without_prerequisites(self.c_class, result_dict, odd=True)
+        chosen_feats = self.get_feats_without_prerequisites(self.c_class, result_dict, amount = self.feat_amounts)
         print(chosen_feats)
 
 
@@ -2239,7 +2252,7 @@ class Character:
         return result_dict
 
 
-    def get_feats_without_prerequisites(self, class_1, dataset_name, level= None, level_2 = None, dataset_name_2 = None, odd=None):
+    def get_feats_without_prerequisites(self, class_1, dataset_name, level= None, level_2 = None, dataset_name_2 = None, odd=None, feat_amount=None):
 
         if self.c_class != class_1:
             return None
@@ -2250,8 +2263,11 @@ class Character:
         amount = floor(self.c_class_level/2)
         chosen_set = set()
 
-        if odd == True:
+        if odd == True and amount == None:
             amount = ceil(self.c_class_level/2)
+        else:
+            amount = feat_amount
+        
 
         
         dataset = dataset_name
@@ -2302,7 +2318,7 @@ class Character:
             feat_result_dict.update(feat_result_dict)
 
             # print(f' post transform result_dict {feat_result_dict}')
-            _, _, chosen_feats = self.get_feats_without_prerequisites(self.c_class, feat_result_dict, odd=True)
+            _, _, chosen_feats = self.get_feats_without_prerequisites(self.c_class, feat_result_dict, feat_amount= self.feat_amounts)
             chosen_feats = list(chosen_feats)
             chosen_feats.remove("")
             cleaned_chosen_feats = self.capitalize_feats(chosen_feats)
@@ -2720,7 +2736,39 @@ class Character:
         new_string = new_string.replace('.', '').replace(' ', '')
         return new_string
 
+
+# Start of class specific feats chooser
+    def class_specific_feats_chooser(self, c_class, name_1, name_2, name_3=None, class_level = None):
+        if self.c_class == c_class and (class_level == None or self.c_class_level >= class_level):
+            try:
+                print("start of the class_specific_feats_chooser _____________________")
+                if name_3 != None:
+                    extra_feat_list = getattr(self, self.c_class, {}).get(name_1, {}).get(name_2, {}).get(name_3, [])
+                else:
+                    extra_feat_list = getattr(self, self.c_class, {}).get(name_1, {}).get(name_2, [])
+                    print('no name_3')
+
                 
+            except AttributeError:
+                extra_feat_list = []
+
+            self.total_feats.extend(extra_feat_list)
+            print(self.total_feats)
+            return self.total_feats
+        
+
+    def feat_chooser(self, feat_list, num):
+        feats_chosen = []
+        if self.c_class not in ["ranger", "monk", "unchained_monk"]:
+            if feat_list != []:
+                k = min(num, len(feat_list))
+                feats_chosen = random.sample(feat_list, k)
+                print(feats_chosen)
+            else:
+                self.feat_amounts += num
+        return feats_chosen   
+
+     
 
 
 # ["cackling hag's blouse", 

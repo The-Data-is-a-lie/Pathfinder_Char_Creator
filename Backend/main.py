@@ -36,7 +36,6 @@ character_json_config = {
 	'spells_known': 'Backend/json/spells_known.json',
 	'spells_per_day': 'Backend/json/spells_per_day.json',
 	'spells_from_ability_mod': 'Backend/json/spells_from_ability_mod.json',
-	'ranger_combat_styles': 'Backend/json/ranger_combat_styles.json',				
 	'class_features': 'Backend/json/class_features.json',	
 	'bloodlines': 'Backend/json/bloodlines.json',
 	'cleric_domains': 'Backend/json/cleric_domains.json',				
@@ -70,6 +69,7 @@ character_json_config = {
 	"ninja": "Backend/json/class_data/ninja.json",
 	"oracle": "Backend/json/class_data/oracle.json",
 	"paladin": "Backend/json/class_data/paladin.json",
+	'ranger': 'Backend/json/class_data/ranger.json',				
 	"rogue": "Backend/json/class_data/rogue.json",
 	"shaman": "Backend/json/class_data/shaman.json",
 	"skald": "Backend/json/class_data/skald.json",
@@ -93,7 +93,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='cleric', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='druid', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
 
 		# userInput = input('Create a new character? (y/n): ').lower()
 		userInput = create_new_char.lower()
@@ -238,9 +238,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		# character.paladin_mercy_chooser()		
 
 
-		#class specific feats choosers
-		# character.ranger_feats_chooser()
-		# character.monk_feats_chooser()
+
 
 
 		character.archetype_data()
@@ -300,6 +298,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 		character.grand_discovery_chooser() #fix this later
 
+		# Adding class specific feats
+
 
 		# >2 Choices based on level
 		character.generic_multi_chooser("paladin", "mercy", n=3)
@@ -318,7 +318,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		# character.build_selector()
 
 
-		feats = character.generic_feat_chooser(character.c_class,'combat',info_column = 'description')
+
 
 
 		### Need to change up the item_chooser function ###
@@ -437,7 +437,6 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			shield_weight = " "
 			shield_max_dex_bonus = " "
 
-		print(f"this is your chosen feats {feats}")
 
 		character.platnium = character.gold / 10
 	
@@ -478,12 +477,43 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		print(school)
 		print(opposing_school)
 		print(bloodline)
+		character.bloodline = bloodline
 		print(full_domain)
 
 
 	# end of pre export data manip
 
+		# Start of Extra feats list generation section
+		character.total_feats = []
+		character.class_specific_feats_chooser("sorcerer", "bloodline", character.bloodline, name_3="bonus feats")
+		character.class_specific_feats_chooser("bloodrager", "bloodline", character.bloodline, name_3="bonus feats")
+		# character.class_specific_feats_chooser("monk", "feats", "2", class_level= 2)
+		# character.class_specific_feats_chooser("monk", "feats", "6", class_level= 6)
+		# character.class_specific_feats_chooser("monk", "feats", "10", class_level= 10)
 		
+
+		#End of Extra feats list generation section
+
+		# Start of Extra feats selection Section
+		extra_feats = character.feat_chooser(character.total_feats, character.class_feats)
+		character.feats.extend(extra_feats)
+
+		#class specific feats choosers
+		character.ranger_feats_chooser()
+		character.monk_feats_chooser()
+			
+		print(f"this is your chosen feats {character.feats}")
+
+		# End of Extra feats selection Section
+
+		# feat selector
+		print(f"this is your chosen feats {character.feat_amounts}")
+		character.feats = character.generic_feat_chooser(character.c_class,'combat',info_column = 'description')
+		print(f"this is your chosen feats {character.feats}")
+
+		feats = character.feats
+
+
 
 		export_list_non_dict = [character.region, character.chosen_race,
 				 character_full_name, character.c_class, character.c_class_2, 
