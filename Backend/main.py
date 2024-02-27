@@ -24,6 +24,10 @@ from utils.class_func.flag_assign import *
 from utils.class_func.spells import *
 from utils.class_func.domain_inquisition import *
 from utils.class_func.class_specific_feats import *
+from utils.class_func.class_ability_amount import class_abilities_amount
+from utils.class_func.item_and_price import *
+#end of custom function import
+
 #Making a Global Character Dictionary so we can reference it and create a HTML/CSS sheet based off of that
 
 global character_data 
@@ -199,7 +203,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 		# Extra class choices:
 		extra_combat_feats(character)
-		character.class_abilities_amount()
+		class_abilities_amount(character)
 
 
 		print(f"This is your selected feats: {character.feats_selector()}")
@@ -343,7 +347,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		character.armor_chooser()
 		print(f'This is your gold pre items {character.assign_gold("gold", gold_num)}')
 		print(f'This is your armor type {character.armor_type}')
-		equipment_list, equip_descrip = character.item_chooser()
+		equipment_list, equip_descrip = item_chooser(character)
 		print(f'This is your gold post items {character.gold}')	
 
 		#calculating savings throws based off of class levels
