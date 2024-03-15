@@ -1193,16 +1193,25 @@ class Character:
             print(f'These are your chosen feats {cleaned_chosen_feats}')
 
             return cleaned_chosen_feats
-
+        
     def capitalize_feats(self, chosen_feats):
-        fillers = ["the", "of", "and", "a", "an", "in", "on", "at", "to", "for",]  # Add more as needed
+        fillers = ["the", "of", "and", "a", "an", "in", "on", "at", "to", "for"]  # Add more as needed
         cleaned_chosen_feats = []
         for feats in chosen_feats:
             words = feats.split()
-            capitalized_words = [word.capitalize() if word.lower() not in fillers else word for word in words]
+            capitalized_words = []
+            for word in words:
+                if '-' in word:
+                    parts = word.split('-')
+                    print("these are the parts " + str(parts))
+                    capitalized_parts = [part.capitalize() for part in parts]
+                    capitalized_words.append('-'.join(capitalized_parts))
+                else:
+                    capitalized_words.append(word.capitalize() if word.lower() not in fillers else word)
             feat = ' '.join(capitalized_words)
             cleaned_chosen_feats.append(feat)
         return cleaned_chosen_feats
+
 
 
 

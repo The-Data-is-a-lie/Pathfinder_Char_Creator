@@ -115,7 +115,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='druid', multi_class='N', alignment_input = 'N' ,num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='human', class_choice='wizard', multi_class='N', alignment_input = 'N' ,num_dice=4, num_sides=6, high_level=5, low_level=1, gold_num=1000000):
 
 		# userInput = input('Create a new character? (y/n): ').lower()
 		userInput = create_new_char.lower()
@@ -533,7 +533,28 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		character.feats = character.generic_feat_chooser(character.c_class,'combat',info_column = 'description')
 		print(f"this is your chosen feats {character.feats}")
 
+		print("this is your language text", language_text)
+
 		feats = character.feats
+
+		# def capitalize_after_dash(words_list):
+		# 	capitalized_words = []
+		# 	for word in words_list:
+		# 		if '-' in word:
+		# 			parts = word.split('-')
+		# 			capitalized_parts = [part.capitalize() for part in parts]
+		# 			capitalized_words.append('-'.join(capitalized_parts))
+		# 		else:
+		# 			capitalized_words.append(word.capitalize())
+		# 	return capitalized_words
+
+		# words_list = ["this", "is", "a", "test-sentence", "another-example", "this-is-A-test"]
+		# capitalized_words_list = capitalize_after_dash(words_list)
+		# print(capitalized_words_list)
+
+
+		
+		# feats = capitalize_after_dash(feats)
 
 
 

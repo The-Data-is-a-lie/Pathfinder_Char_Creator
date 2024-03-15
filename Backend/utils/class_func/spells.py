@@ -232,7 +232,7 @@ def spells_known_selection(character,base_classes,divine_casters):
             if known_list[i] != 'null':
                 select_spell=known_list[i]             
 
-                query_i = character.alignment_spell_limits(spell_data, i, "alignment_exclusion")
+                query_i = alignment_spell_limits(character, spell_data, i, "alignment_exclusion")
                 query_i = query_i.sample(frac=1.0)
                 spells = query_i[:select_spell]
                 spell_list = spells['name'].tolist()
