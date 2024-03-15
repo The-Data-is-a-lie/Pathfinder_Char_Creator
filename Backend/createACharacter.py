@@ -170,20 +170,6 @@ class Character:
         self.reflex=None
         self.will=None
 
-
-
-        # replaced age_roll with age
-        # self.age_roll =None
-        # self.weight_roll =None
-        # self.height_roll=None        
-
-        # Removed, because data redunancy we can just pull from json later
-        # self.racial_traits =None
-        # self.racial_language, 
-        # self.racial_size =None
-        # self.racial_speed =None
-        # self.racial_ability_scores=None
-
         self._load_jsons(json_config)
         
 
@@ -197,18 +183,6 @@ class Character:
                     if key == 'last_names_regions':
                         setattr(self, 'last_names_regions', data)
                         setattr(self, 'regions', [k for k in data.keys()])
-
-
-    #         self.shaman = json.load(f)    
-                                        
-
-                                        
-
-         
-
-        
-
-
 
 
     
@@ -260,19 +234,6 @@ class Character:
         print(f'INT {self.int}')
         print(f'WIS {self.wis}')
         print(f'CHA {self.cha}')
-
-        # self.str = roll_dice(num_dice, num_sides)
-        # self.dex = roll_dice(num_dice, num_sides)
-        # self.con = roll_dice(num_dice, num_sides)
-        # self.int = roll_dice(num_dice, num_sides)
-        # self.wis = roll_dice(num_dice, num_sides)
-        # self.cha = roll_dice(num_dice, num_sides)
-        # print(f'STR {self.str}')
-        # print(f'DEX {self.dex}')
-        # print(f'CON {self.con}')
-        # print(f'INT {self.int}')
-        # print(f'WIS {self.wis}')
-        # print(f'CHA {self.cha}')           
 
     def calc_ability_mod(self):
         self.str_mod = floor((self.str-10)/2)
@@ -550,73 +511,7 @@ class Character:
         
                          
 
-    def wizard_opposing_school(self):
-        """
-        wizards choose a school of magic (elemental/other). If elemental, it always as an opposing school. If not, we grab 2 random opposing schools
 
-        Return
-        - opposing_school
-        """
-        elemental_list = ['metal', 'void', 'earth', 'air', 'water', 'fire']
-        i = 0    
-
-        if self.c_class == 'wizard' or self.c_class_2 == 'wizard':
-            random_school, description, associated, associated_school = self.wizard_school_chooser() 
-            print(random_school)            
-            
-            if random_school in elemental_list:
-                elemental_opposing_schools = {'metal': 'wood', 'wood': 'metal', 'fire': 'water', 'water': 'fire', 'earth': 'air', 'air': 'earth'}
-                opposing_school = elemental_opposing_schools.get(random_school, random.choice(elemental_list))
-            else:
-                school_list = (list(self.wizard_schools["schools"].keys()))
-                school_list.remove('universalist')
-                opposing_school = random.sample(school_list, k=2)
-
-            print(f"THIS IS YOUR OPPOSING SCHOOL: {opposing_school}")
-
-            return opposing_school
-
-
-    def wizard_school_chooser(self):
-        if self.c_class == 'wizard' or self.c_class_2 == 'wizard':        
-            elemental_data = self.wizard_schools["elemental_schools"]
-            schools_data = self.wizard_schools["schools"]
-            elemental_subschools_data = self.wizard_schools["elemental_subschools"]
-            subschools_data = self.wizard_schools["subschools"]
-
-            associated_school = []
-            associated = None
-
-            random_choice = random.randint(1,4)
-            print(f"This is the random wizard school % chance {random_choice}")
-
-
-            if random_choice == 1:
-                random_school = random.choice(list(elemental_data.keys()))
-                description = elemental_data[random_school]
-
-            elif random_choice == 2:            
-                random_school = random.choice(list(elemental_subschools_data.keys()))
-                description = elemental_subschools_data[random_school]
-                associated = elemental_subschools_data[random_school]["associated school"][1]
-                associated_school = elemental_data[associated]
-
-            elif random_choice == 3:
-                random_school = random.choice(list(schools_data.keys()))
-                description = schools_data[random_school]
-
-            else:
-                random_school = random.choice(list(subschools_data.keys()))
-                description = subschools_data[random_school]
-                associated = subschools_data[random_school]["associated school"]
-                associated_school = schools_data[associated]            
-
-            print(random_school)
-            print(description)
-            print(associated)
-            print(associated_school)
-
-            return random_school, description, associated, associated_school
     
     def versatile_perfomance(self):
   
@@ -757,68 +652,7 @@ class Character:
             return discovery_list_chosen
 
 
-        
 
-
-        
-
-
-
-    def animal_chooser(self):
-        """
-        if class = druid
-        chooses between a plant, vermin, or normal animal companion for a druid
-        prints out animal companion info after decidibg which companion to pick
-        """
-        if self.c_class == 'druid' and self.domain_chance <= 90:
-            random_animal = random.randint(1,100)            
-            # give all druids carry companion
-            # or make it a subset of companions and make them based on region
-            normal = list(self.animal_choices["normal"].keys())
-            vermin = list(self.animal_choices["vermin"].keys())
-            plant =list(self.animal_choices["plant"].keys())
-            level = str(self.c_class_level)
-
-
-            if random_animal <= 80:
-                self.chosen_animal = random.choice(normal)
-                self.chosen_animal_description = self.animal_choices["normal"][self.chosen_animal]
-            elif random_animal <= 90:
-                self.chosen_animal = random.choice(plant)
-                self.chosen_animal_description = self.animal_choices["plant"][self.chosen_animal]                
-            else:
-                self.chosen_animal = random.choice(vermin)  
-                self.chosen_animal_description = self.animal_choices["vermin"][self.chosen_animal]                
-
-
-            self.companion_info = self.animal_companion["companion"][level]
-
-            print(self.companion_info)
-            print(self.chosen_animal)
-            print(self.chosen_animal_description)
-            return self.chosen_animal         
-
-
-    def animal_feats(self):
-        """
-        randomly decides animal companion feats
-        """
-        #may want to expand animal companion feat selection later
-        if self.c_class == 'druid':
-            i = 0
-            animal_chosen_feat_list = set()
-            feats_choose = [1,3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51]
-            while feats_choose[i] < self.c_class_level:            
-                animal_feats = list(self.animal_companion["feats"])
-                chosen_feat = random.choice(animal_feats)
-                animal_chosen_feat_list.add(chosen_feat)
-                i = len(animal_chosen_feat_list)
-
-                if i == 26:
-                    break
-
-            print(animal_chosen_feat_list)
-            return animal_chosen_feat_list
 
 
     def json_list_grabber(self, string_list, separator, output_list=None):
@@ -848,49 +682,51 @@ class Character:
 
         return output_list
     
-    #need to implement all the restrictions to feats we want
-    def feats_selector(self):             
-        self.feat_list = []   
-        feat_data=pd.read_csv('data/feats.csv', sep='|', on_bad_lines='skip')
-        # feat_data_combat = feat_data[feat_data['type']=='Combat'] 
-        feat_data_combat = feat_data[feat_data['type'].str.contains('Combat')]
-        feat_data_magic = feat_data[((feat_data['type'].isin(['Creation', 'Metamagic'])) | (feat_data.name.str.contains('Spell')))]
-        # | = or
-        # & = and
-        print(feat_data.columns)
-        extraction_list = ['name', 'prerequisites']                
-        self.feat_list = []      
-        i=0    
-        c=0    
-        s=0
-        #potentially remove one feat to always select a weapon focus (or spell focus)
-        while i<=self.feat_amounts and self.feat_amounts != None:          
-            query_i = feat_data[extraction_list]
-            #needed to use this to properly randomize (vs. random.shuffle)
-            query_i = query_i.sample(frac=1.0)
-            feat = query_i[:1]
-            self.feat_list.append(feat)
-            i += 1     
+    ################################# We're not actually using this
 
-        if self.combat_feats is not None and self.c_class not in ('ranger', 'monk', 'unchained_monk'):
-            while c<=self.combat_feats and self.combat_feats != None:          
-                query_c = feat_data_combat[extraction_list]
-                #needed to use this to properly randomize (vs. random.shuffle)
-                query_c = query_c.sample(frac=1.0)
-                feat = query_c[:1]
-                self.feat_list.append(feat)
-                c += 1                 
+    # #need to implement all the restrictions to feats we want
+    # def feats_selector(self):             
+    #     self.feat_list = []   
+    #     feat_data=pd.read_csv('data/feats.csv', sep='|', on_bad_lines='skip')
+    #     # feat_data_combat = feat_data[feat_data['type']=='Combat'] 
+    #     feat_data_combat = feat_data[feat_data['type'].str.contains('Combat')]
+    #     feat_data_magic = feat_data[((feat_data['type'].isin(['Creation', 'Metamagic'])) | (feat_data.name.str.contains('Spell')))]
+    #     # | = or
+    #     # & = and
+    #     print(feat_data.columns)
+    #     extraction_list = ['name', 'prerequisites']                
+    #     self.feat_list = []      
+    #     i=0    
+    #     c=0    
+    #     s=0
+    #     #potentially remove one feat to always select a weapon focus (or spell focus)
+    #     while i<=self.feat_amounts and self.feat_amounts != None:          
+    #         query_i = feat_data[extraction_list]
+    #         #needed to use this to properly randomize (vs. random.shuffle)
+    #         query_i = query_i.sample(frac=1.0)
+    #         feat = query_i[:1]
+    #         self.feat_list.append(feat)
+    #         i += 1     
 
-        if self.magic_feats is not None:
-            while s<=self.magic_feats:
-                query_s = feat_data_magic[extraction_list]
-                #needed to use this to properly randomize (vs. random.shuffle)
-                query_s = query_s.sample(frac=1.0)
-                feat = query_s[:1]
-                self.feat_list.append(feat)
-                s += 1 
+    #     if self.combat_feats is not None and self.c_class not in ('ranger', 'monk', 'unchained_monk'):
+    #         while c<=self.combat_feats and self.combat_feats != None:          
+    #             query_c = feat_data_combat[extraction_list]
+    #             #needed to use this to properly randomize (vs. random.shuffle)
+    #             query_c = query_c.sample(frac=1.0)
+    #             feat = query_c[:1]
+    #             self.feat_list.append(feat)
+    #             c += 1                 
 
-        return self.feat_list
+    #     if self.magic_feats is not None:
+    #         while s<=self.magic_feats:
+    #             query_s = feat_data_magic[extraction_list]
+    #             #needed to use this to properly randomize (vs. random.shuffle)
+    #             query_s = query_s.sample(frac=1.0)
+    #             feat = query_s[:1]
+    #             self.feat_list.append(feat)
+    #             s += 1 
+
+    #     return self.feat_list
 
 
 
@@ -943,429 +779,10 @@ class Character:
 
 
 
-    def print_metamagic(self):
-        data = pd.read_csv(f'data/feats.csv', sep='|', on_bad_lines='skip')
-        Metamagic_feats = data[data['type']=='Metamagic']
-        extraction_list = ['name']        
-        print(Metamagic_feats[extraction_list])
 
-    def feat_spell_searcher(self, class_1, chosen_set, types, info_column, info_column_2 = None):
-        if self.c_class == class_1:
-            data = pd.read_csv(f'data/{types}.csv', sep='|', on_bad_lines='skip')
 
-            if info_column_2 is None:
-                extraction_list = ['name', info_column]
-            else:
-                extraction_list = ['name', info_column, info_column_2]
 
 
-
-            query_result = self.remove_mythic(types,data, chosen_set, extraction_list)
-
-            result_dict = {}
-
-            result_dict = self.remove_dots_dashes(result_dict, query_result, info_column)
-            self.result_dict.update(result_dict)
-            print(self.result_dict)
-            
-            return self.result_dict         
-
-    def remove_mythic(self, types, data, chosen_set, extraction_list):
-        
-
-        chosen_set_upper = {i.upper() for i in chosen_set}
-        print(f'This is your chosen set {chosen_set_upper}')
-
-        if types == 'feats':
-            query_result = data[(data['name'].str.upper().isin(chosen_set_upper)) & (data['type'] != 'Mythic')][extraction_list]
-        else:
-            query_result = data[(data['name'].str.upper().isin(chosen_set_upper)) & (data['mythic'] == 0)][extraction_list]  
-
-        return query_result
-
-    def remove_dots_dashes(self, result_dict, query_result, info_column, info_column_2=None):
-        replace_dash = lambda x: re.sub(r'[-]', ' ', str(x))            
-        replace_dot = lambda x: re.sub(r'[.]', '', str(x))            
-
-        for index, row in query_result.iterrows():
-            feat_name = row['name']
-            if pd.isna(row[info_column]):
-                row[info_column] = ''
-            feat_info = {f'{info_column}': replace_dash(row[f'{info_column}'])}
-            feat_info = {f'{info_column}': replace_dot(row[f'{info_column}'])}
-            
-            if info_column_2 is not None:
-                if pd.isna(row[info_column_2]):
-                    row[info_column_2] = ''
-            feat_info = {f'{info_column}': replace_dash(row[f'{info_column}'])}
-            feat_info = {f'{info_column}': replace_dot(row[f'{info_column}'])}
-
-            result_dict[feat_name] = feat_info
-        
-        return result_dict
-
-
-
-    def bonus_searcher(self, choice, chosen_desc, types):
-        bonus_list = []
-        bonus = chosen_desc.get(choice,{}).get(f"bonus {types}", {})
-        print('bonus', bonus)
-        print('bonus list', bonus_list)
-        self.json_list_grabber(bonus_list, ",", bonus)
-        self.remove_parentheses(bonus_list)
-
-        return bonus_list
-
-
-    def remove_parentheses(self, text_list):
-        result_list = []
-        for text in text_list:
-            pattern = r'\([^)]*\)'
-            result = re.sub(pattern, '', text)
-            result_list.extend(result)
-        
-        return result_list       
-            
-
-    def remove_duplicates_list(self,lst):
-        seen = set()
-        result = []
-        for item in lst:
-            # Convert lists to tuples for hashability
-            item_tuple = tuple(item) if isinstance(item, list) else item
-            if item_tuple not in seen:
-                seen.add(item_tuple)
-                result.append(item)
-        return result
-
-        # if self.c_class == class_1: 
-        #     options_data = self.class_data[class_1].get(data_name, {})
-        #     print(options_data)
-        #     if options_data:
-        #         choice = random.choice(list(options_data.keys()))
-        #         description = options_data.get(choice)
-
-        #         print(choice)
-        #         print(selected_value)
-
-
-    def build_selector(self):
-        casting_level_str = self.classes[self.c_class]['casting level'].lower()
-        specialty_set = {'cleric', 'druid'}
-        type_chance = random.choices(range(1, 101))[0]
-        feat_list = []
-        if self.bab == 'H' or (self.bab == 'M' and casting_level_str not in ('low', 'mid', 'high')):
-            self.add_martial_feats(feat_list)
-        if self.bab == 'L' and casting_level_str != 'none':
-            self.add_magical_feats(feat_list)
-        if self.bab == 'M' and casting_level_str != 'none':
-            if type_chance >= 50:
-                self.add_martial_feats(feat_list)
-            else:
-                self.add_magical_feats(feat_list)
-        if self.c_class in specialty_set:
-            self.add_specialty_feats(feat_list)
-        result_dict_pre = self.feat_spell_searcher(self.c_class, feat_list, "feats", "prerequisites", "description")
-        result_dict = self.transform_result_dict(result_dict_pre)
-        chosen_feats = self.get_feats_without_prerequisites(self.c_class, result_dict, amount = self.feat_amounts)
-        print(chosen_feats)
-
-
-
-    def add_martial_feats(self, feat_list):
-        martial = self.feat_buckets['martial']
-        universal = self.feat_buckets['universal']
-
-        martial_choice = random.choice(list(martial.keys()))
-        universal_choice = random.choice(list(universal.keys()))
-        martial_choice_2 = random.choice(list((martial[martial_choice].keys())))
-        list_2 = list(universal[universal_choice])
-        list_1 = list(martial[martial_choice][martial_choice_2])
-        feat_list.extend(list_1 + list_2)        
-
-        if self.dex_mod >= self.str_mod +2:
-            feat_list.append('weapon finesse')        
-
-    def add_magical_feats(self, feat_list):
-        magical = self.feat_buckets['magical']
-        universal = self.feat_buckets['universal']
-
-        magical_choice = random.choice(list(magical.keys()))
-        universal_choice = random.choice(list(universal.keys()))
-        list_2 = list(universal[universal_choice])
-        list_1 = list(magical[magical_choice])
-        feat_list.extend(list_1 + list_2)    
-
-    def add_specialty_feats(self, feat_list):
-        classes_choices = list(self.feat_buckets['classes'][self.c_class])
-        feat_list.extend(classes_choices)       
-
-    def transform_result_dict(self, result_dict):
-        for feat in list(result_dict.keys()):
-            feat_info = result_dict[feat]
-            prereq_set = set()
-            prerequisites = str(feat_info.get('prerequisites', None))
-
-            if prerequisites is not None:
-                prereq_set.add(prerequisites.lower())
-                result_dict[feat]['prerequisites'] = prerequisites.lower()
-                new_feat = feat.lower()
-
-                if prerequisites.lower() == 'nan':
-                    result_dict[feat]['prerequisites'] = ''
-                    new_feat = ''
-
-                if new_feat != feat:
-                    result_dict[new_feat] = result_dict.pop(feat)     
-        return result_dict
-
-
-    def get_feats_without_prerequisites(self, class_1, dataset_name, level= None, level_2 = None, dataset_name_2 = None, odd=None, feat_amount=None):
-
-        if self.c_class != class_1:
-            return None
-
-        dataset_no_prereq = []
-        base_no_prereq = []
-        add_advanced_talents = False
-        amount = floor(self.c_class_level/2)
-        chosen_set = set()
-
-        if odd == True and amount == None:
-            amount = ceil(self.c_class_level/2)
-        else:
-            amount = feat_amount
-        
-
-        
-        dataset = dataset_name
-        base = dataset.copy()
-        base_no_prereq = no_prereq_loop(self, base)
-        total_choices = base_no_prereq
-        i = 0
- 
-        while i < amount + 1:
-            # print(f'This is your total choices {total_choices}')
-            chosen = random.choice(total_choices)
-
-            chooseable_list_class(self,i,self.c_class,self.c_class_level, base=0, th='th')
-
-            prereq_list = no_prereq_loop(self, base, "prereq_list")
-
-            chosen_set.add(chosen.lower())
-            i = len(chosen_set)
-            
-            total_choices.append(chosen.lower()) 
-            total_choices.extend(prereq_list)
-            total_choices = self.remove_duplicates_list(total_choices)
-            total_choices=list(set(total_choices))
-            # print(f"this is total choices {total_choices}")
-            # print(f'this is your chosen {chosen}')
-            # print(f'This is your chosen set {chosen_set}')
-            # print(f"These are all your options to choose from: {total_choices}")
-            # print(f"this is your len {len(chosen_set)}")
-            # print(f"this is your i {i}")
-            # print(f"this is your amount {amount}")
-
-            self.chooseable.add(chosen)
-
-        return base_no_prereq, dataset_no_prereq, chosen_set
-
-
-    def generic_feat_chooser(self, class_1,feat_type, info_column):
-        if class_1 == self.c_class:
-            feat_data = pd.read_csv(f'data/feats.csv', sep='|', on_bad_lines='skip')
-            extraction_list = ['name', 'prerequisites', 'description']
-            query_i = feat_data.loc[feat_data['type'] == feat_type.capitalize(), extraction_list]
-            query_i = query_i.drop_duplicates(subset='name', keep='first')
-            feat_result_dict = query_i.set_index('name')[['prerequisites', 'description']].to_dict(orient='index')
-            # feat_result_dict = self.remove_mythic('feats',feat_data,query_i, info_column)   
-            # feat_result_dict = self.remove_dots_dashes(feat_result_dict, query_i, info_column)
-            feat_result_dict = self.transform_result_dict(feat_result_dict)
-
-            feat_result_dict.update(feat_result_dict)
-
-            # print(f' post transform result_dict {feat_result_dict}')
-            _, _, chosen_feats = self.get_feats_without_prerequisites(self.c_class, feat_result_dict, feat_amount= self.feat_amounts)
-            chosen_feats = list(chosen_feats)
-            chosen_feats.remove("")
-            cleaned_chosen_feats = self.capitalize_feats(chosen_feats)
-            print(f'These are your chosen feats {cleaned_chosen_feats}')
-
-            return cleaned_chosen_feats
-        
-    def capitalize_feats(self, chosen_feats):
-        fillers = ["the", "of", "and", "a", "an", "in", "on", "at", "to", "for"]  # Add more as needed
-        cleaned_chosen_feats = []
-        for feats in chosen_feats:
-            words = feats.split()
-            capitalized_words = []
-            for word in words:
-                if '-' in word:
-                    parts = word.split('-')
-                    print("these are the parts " + str(parts))
-                    capitalized_parts = [part.capitalize() for part in parts]
-                    capitalized_words.append('-'.join(capitalized_parts))
-                else:
-                    capitalized_words.append(word.capitalize() if word.lower() not in fillers else word)
-            feat = ' '.join(capitalized_words)
-            cleaned_chosen_feats.append(feat)
-        return cleaned_chosen_feats
-
-
-
-
-    def simple_list_chooser(self, class_1, *dataset_names, max_num=float('inf'), **kwargs):
-        if self.c_class.lower() == class_1.lower():
-            chosen = []
-            chosen_dict = {}
-            for dataset_name in dataset_names:
-                dataset_input = getattr(data, dataset_name)
-                dataset = self.json_list_grabber(dataset_input, ',', **kwargs)
-                print(f"This is your dataset for {dataset_name}: {dataset}")
-                formula_calc = self.formula_grabber(dataset_name, **kwargs)
-                if isinstance(dataset, dict):
-                    dataset = list(dataset.keys())
-                # chosen.append(random.sample(dataset, k=min(formula_calc, max_num)))
-                chosen_dict[dataset_name] = random.sample(dataset, k=min(formula_calc, max_num))
-                self.data_dict.update({'class features': chosen_dict})
-            print(chosen)
-            return chosen
-    
-    def formula_grabber(self,dataset_name):
-        formula = getattr(data, 'formulas').get(dataset_name,1)
-        print(f'this is your formula {formula}')
-        amount = eval(formula)
-        return amount  
-
-
-
-# start of Armor + Weapon choosing
-     
-    # Start of AC calculation
-    def ac_bonus_calculator(self, dictionary):
-        if dictionary is None:
-            return 0
-
-        for _, value in dictionary.items():
-            armor_bonus = value.get('armor bonus', 0)
-        return armor_bonus
-    
-    def shield_chooser(self, dictionary):
-        shieldless_weapons = ["Two-Handed", "Ranged"]
-        for item in dictionary.values():
-            category = item.get('category', 'no shield')
-            limits = 'Shield' if all(weapon not in category for weapon in shieldless_weapons) else 'no shield'
-        if limits == 'Shield' and (self.armor_type == 'H' and random.randint(1,100)>90):
-            limits = 'Tower'
-            return limits
-    def shield_flag_func(self, limits):
-        if limits == 'Shield' or limits == 'Tower':
-            self.shield_flag = True
-        else:
-            self.shield_flag = False
-        
-    def weapon_type_flag_func(self, dictionary):
-        for item in dictionary.values():
-            if item.get('category', 'no shield') == 'Ranged':
-                weapon_type = 'Ranged'
-            else:
-                weapon_type = 'Melee'
-        return weapon_type
-
-    def list_selection(self, name, limits=None, shield_flag=True):
-        if shield_flag == True:
-            if limits is not None:
-                choice = self.list_selection_limits(name, limits)
-            else:
-                choice = random.choice(list(getattr(self, name).keys()))  
-
-            result = list(getattr(self, name).get(choice, {}).keys())
-            choice_2 = random.choice(result)
-            result_2 = getattr(self, name).get(choice, {}).get(choice_2, {})   
-
-            result_dict = {choice_2: result_2}
-            print(f'This is your result: {result_dict}')
-            
-            return result_dict
-
-    def list_selection_limits(self, name, limits=None):
-        skip_count = {'L': 0, 'S':0, 'M': 1, 'H': 2, 'Shield': 3, 'Tower': 4}.get(limits, 0)
-        attribute_keys = iter(getattr(self, name))
-        key = next(attribute_keys, None)            
-
-        for _ in range(skip_count):
-            key = next(attribute_keys, None)
-            if key is None:
-                break
-        return key
-
-    # here to help create AC calculation
-    def armor_chooser(self):
-        armor_type_data = getattr(data, 'armor_type_mapping')
-        default_armor_type = 'H'  # Default armor type
-
-        armor_type = armor_type_data.get(self.c_class, default_armor_type)
-        if self.bab == 'L':
-            armor_type = None
-
-        self.magus_armor_chooser(self.c_class_level)
-
-        self.armor_type = armor_type
-        return self.armor_type   
-    
-    
-    def weapon_chooser(self):
-        weapon_type_data = self.class_data.get(self.c_class, {}).get('weapon and armor proficiency')
-        print(weapon_type_data)
-        self.weapon_type = 'M' if 'martial' in weapon_type_data else 'S'
-        print(self.weapon_type)
-        return self.weapon_type
-
-
-    def magus_armor_chooser(self, level):
-        if self.c_class == 'magus':
-            self.armor_type = 'L'
-            if level >= 7:
-                self.armor_type = 'M'
-            elif level >= 13:
-                self.armor_type = 'H'
-
-            return self.armor_type
-        
-
-    def trait_selector(self, count):
-        trait_list = []
-        trait_data = pd.read_csv('data/traits.csv', sep='|')
-        extraction_list = ['name']#, 'description']
-        conditions = self.trait_selector_limits(trait_data)
-        query_i = trait_data.loc[conditions,extraction_list]
-        query_i = query_i.sample(frac=1.0)
-        traits = query_i[:count]
-        trait_list = traits['name'].to_list()
-
-        return trait_list
-    
-    def trait_selector_limits(self, trait_data):
-        conditions = ( (trait_data['requirement_race'] == self.chosen_race) &
-                      (trait_data['requirement_class'] == self.c_class)
-                    |
-                    (trait_data['requirement_race'].isnull()) &
-                    (trait_data['requirement_class'].isnull())                    
-                    )
-                    #   trait_data['requirement_faith'] == ,
-                    #   trait_data['requirement_alignment'] == self.alignment
-                      
-        return conditions
-
-
-
-
-
-
-        # if self.human_flag == True:
-
-                
 
     def full_data_dictionary(self, data_dict, key, value):
         data_dict[key] = value
@@ -1384,70 +801,6 @@ class Character:
         chosen_dict = dict(zip(string_export_list, export_list))
         self.data_dict.update(chosen_dict)
         return chosen_dict
-    
-
-
-
-
-
-     
-
-
-# ["cackling hag's blouse", 
-    # "pirate's eye patch", 
-    # 'boots of speed', 
-    # 'irongrip gauntlets', 
-    # 'plume of panache', 
-    # 'diadem of control', 
-    # 'talisman (greater)danger sense', 'cloak of the hedge wizard', 'bracers of armor2']
-    # 'belts', 'body', 'chest', 'eyes', 'feet', 'hands', 'head', 'headband', 'neck', 'shoulders', 'wrist'
-
-
-    # def pandas_to_json(self, data_frame):
-    #     json_data = data_frame.to_json(orient='records')
-    #     return json_data
-    
-    # def chosen_set_muilt_append(self, dataset, chosen_set, chosen, dataset_2, n):
-    #     chosen_dict = {}
-    #     for chosen in chosen_set:
-    #         chosen_desc = dataset.get(n, {})
-    #         chosen_desc_2 = dataset.get(chosen, {}).get(n,{}).get(dataset_2, {})
-    #         pre_chosen_dict = {chosen: chosen_desc_2}
-    #         chosen_dict.update({chosen: pre_chosen_dict})
-
-    #         print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!chosen_dict_pally!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-    #         print(chosen_dict, chosen_desc, chosen_desc_2, pre_chosen_dict)
-
-    #     return chosen_dict    
-            
-
-
-
-        
-
-
-
-        
-# End of Armor + Weapon choosing
-
-
-
-    # def brawler_manuever_chooser(self, level):
-    #     if self.c_class == "brawler":
-    #         amount = floor((level + 1)/4)
-    #         manuevers = getattr(data,"manuevers")
-    #         manuever_list = []
-
-    #         i = 0
-    #         while i < level:
-    #             chosen = random.choice(list(manuevers))
-    #             manuever_list.append(chosen)
-    #             print(manuevers)
-
-    #             if len(manuevers) == 8:
-    #                 break
-
-    #         return manuever_list
 
 # setting up a new character
 def CreateNewCharacter(character_json_config):

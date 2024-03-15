@@ -27,6 +27,12 @@ from utils.class_func.class_specific_feats import *
 from utils.class_func.class_ability_amount import class_abilities_amount
 from utils.class_func.item_and_price import *
 from utils.class_func.level_and_bab import *
+from utils.class_func.wizard_school import *
+from utils.class_func.armor_and_weapon_chooser import *
+from utils.class_func.traits import *
+from utils.class_func.animal_companions import *
+from utils.class_func.feats import *
+
 #end of custom function import
 
 #Making a Global Character Dictionary so we can reference it and create a HTML/CSS sheet based off of that
@@ -130,7 +136,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		
 		region = region_chooser(character,userInput_region)
 		chosen_race = race_chooser(character,userInput_race)
-		weapon_chooser(character) # We don't use this anymore, but leave it uncommented for now
+		# weapon_chooser(character) # We don't use this anymore, but leave it uncommented for now
 		f_name, l_name =name_chooser(character)
 		c_class = chooseClass(character,class_choice)
 		c_class_2 = dip_function(character,'base_classes', multi_class)
@@ -207,7 +213,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		class_abilities_amount(character)
 
 
-		print(f"This is your selected feats: {character.feats_selector()}")
+		# print(f"This is your selected feats: {character.feats_selector()}")
 
 		#this is to allow for talent choice stat pre-reqs (self.chooseable)
 		chooseable_list(character) 		
@@ -247,12 +253,12 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		domain_chooser(character)	
 		full_domain = character.chosen_domain
 		character.versatile_perfomance()	
-		character.animal_chooser()
-		character.animal_feats()	
+		animal_chooser(character)
+		animal_feats(character)	
 
 		if character.c_class.lower() == 'wizard':
-			full_school, school_desc, associaed_desc, associaed_school = character.wizard_school_chooser()
-			full_opposing_school = character.wizard_opposing_school()	
+			full_school, school_desc, associaed_desc, associaed_school = wizard_school_chooser(character)
+			full_opposing_school = wizard_opposing_school(character)	
 
 		
 			
@@ -330,11 +336,11 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 
 		# feat + spell searcher
-		character.feat_spell_searcher("monk", ki_powers, "feats", "benefit")
-		character.feat_spell_searcher("monk", ki_powers, "spells", "description")
-		character.feat_spell_searcher("bloodrager", character.bonus_feats , "feats", "benefit")
-		character.feat_spell_searcher("bloodrager", character.bonus_spells, "spells", "description")
-		character.feat_spell_searcher("sorcerer", character.bonus_spells, "spells", "description")
+		feat_spell_searcher(character, "monk", ki_powers, "feats", "benefit")
+		feat_spell_searcher(character, "monk", ki_powers, "spells", "description")
+		feat_spell_searcher(character, "bloodrager", character.bonus_feats , "feats", "benefit")
+		feat_spell_searcher(character, "bloodrager", character.bonus_spells, "spells", "description")
+		feat_spell_searcher(character, "sorcerer", character.bonus_spells, "spells", "description")
 
 		# character.print_metamagic()
 		# character.build_selector()
@@ -345,7 +351,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 		### Need to change up the item_chooser function ###
 
-		character.armor_chooser()
+		armor_chooser(character)
 		print(f'This is your gold pre items {character.assign_gold("gold", gold_num)}')
 		print(f'This is your armor type {character.armor_type}')
 		equipment_list, equip_descrip = item_chooser(character)
@@ -360,26 +366,26 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		professions = character.profession_chooser("professions")		
 		print(f'This is your chosen professions {professions}')		
 
-		character.simple_list_chooser('ranger','favored_terrains', 'favored_enemies')
-		character.simple_list_chooser('brawler','manuevers',max_num=8)
+		simple_list_chooser(character, 'ranger','favored_terrains', 'favored_enemies')
+		simple_list_chooser(character, 'brawler','manuevers',max_num=8)
 
 
-		character.armor_dict = character.list_selection('armor', limits=character.armor_type)
-		character.weapon_chooser()
-		character.weapon_dict = character.list_selection('weapons_data', limits=character.weapon_type)
-		limits = character.shield_chooser(character.weapon_dict)
-		character.shield_flag = character.shield_flag_func(limits=limits)
-		character.shield_dict = character.list_selection('armor', limits=limits, shield_flag = character.shield_flag)
+		character.armor_dict = list_selection(character, 'armor', limits=character.armor_type)
+		weapon_chooser(character)
+		character.weapon_dict = list_selection(character, 'weapons_data', limits=character.weapon_type)
+		limits = shield_chooser(character, character.weapon_dict)
+		character.shield_flag = shield_flag_func(character, limits=limits)
+		character.shield_dict = list_selection(character, 'armor', limits=limits, shield_flag = character.shield_flag)
 
 	# Maybe change these
 		armor_enhancement = enhancement_calculator(character, 3)
 		weapon_enhancement = enhancement_calculator(character, 2)
 		shield_enhancement = enhancement_calculator(character, 1)
 
-		armor_ac = character.ac_bonus_calculator(character.armor_dict)
-		shield_ac = character.ac_bonus_calculator(character.shield_dict)
+		armor_ac = ac_bonus_calculator(character, character.armor_dict)
+		shield_ac = ac_bonus_calculator(character, character.shield_dict)
 
-		weapon_type_flag = character.weapon_type_flag_func(character.weapon_dict)
+		weapon_type_flag = weapon_type_flag_func(character, character.weapon_dict)
 
 		weapon_enhancement_chosen_list = enhancement_chooser(character, character.weapon_qualities,weapon_enhancement, weapon_type_flag)
 		armor_enhancement_chosen_list = enhancement_chooser(character, character.armor_qualities,armor_enhancement, 'Armor')
@@ -388,7 +394,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		print('these are your chosen enhancements **************************')
 		print(weapon_enhancement_chosen_list, armor_enhancement_chosen_list, shield_enhancement_chosen_list)
 
-		selected_traits = character.trait_selector(8)
+		selected_traits = trait_selector(character, 8)
 		print(f"These are your selected traits {selected_traits}")
 
 
@@ -530,7 +536,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 		# feat selector
 		print(f"this is your chosen feats {character.feat_amounts}")
-		character.feats = character.generic_feat_chooser(character.c_class,'combat',info_column = 'description')
+		character.feats = generic_feat_chooser(character, character.c_class,'combat',info_column = 'description')
 		print(f"this is your chosen feats {character.feats}")
 
 		print("this is your language text", language_text)
