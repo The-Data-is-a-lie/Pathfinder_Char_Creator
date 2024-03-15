@@ -32,6 +32,16 @@ from utils.class_func.armor_and_weapon_chooser import *
 from utils.class_func.traits import *
 from utils.class_func.animal_companions import *
 from utils.class_func.feats import *
+from utils.class_func.profession_chooser import *
+from utils.class_func.versatile_performance import versatile_perfomance
+from utils.class_func.grand_discovery import grand_discovery_chooser
+from utils.class_func.luck_and_mythic import randomize_luck, randomize_mythic
+from utils.class_func.path_of_war import randomize_path_of_war_num, choose_path_of_war_attr
+from utils.class_func.hp_rolls import roll_hp, total_hp_calc, hit_dice_calc
+from utils.class_func.stats import *
+from utils.class_func.randomize_flaw import randomize_flaw
+from utils.class_func.alignment_and_deity import randomize_deity, choose_alignment
+from utils.class_func.personality import randomize_personality_attr
 
 #end of custom function import
 
@@ -142,10 +152,10 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		c_class_2 = dip_function(character,'base_classes', multi_class)
 
 		#add an optional flaws rule function	
-		alignment = character.choose_alignment('alignments', alignment_input)
+		alignment = choose_alignment(character, 'alignments', alignment_input)
 		print(f"This is your randomly selected alignment: {character.alignment}")
 		
-		deity = character.randomize_deity()
+		deity = randomize_deity(character)
 		print(f"This is your randomly selected deity: {deity}")
 
 		age, age_number = randomize_body_feature(character, 'age')
@@ -153,8 +163,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		weight, weight_number = randomize_body_feature(character, 'weight')			
 		# num_dice = int(input("How many dice would you like to roll? "))
 		# num_sides = int(input("How many sides should each die have? "))
-		stats = character.roll_stats(num_dice, num_sides)
-		character.assign_stats(stats)
+		stats = roll_stats(character, num_dice, num_sides)
+		assign_stats(character, stats)
 
 		chosen_subrace, subrace_description = subrace_chooser(character)
 		print(f'this is your chosen subrace {chosen_subrace}')
@@ -168,11 +178,11 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		character.int = race_ability_score_changes(character, split_race_traits_list, character.int, 'int')
 		character.wis = race_ability_score_changes(character, split_race_traits_list, character.wis, 'wis')
 		character.cha = race_ability_score_changes(character, split_race_traits_list, character.cha, 'cha')
-		character.print_stats()
+		print_stats(character)
 
-		character.calc_ability_mod()
+		calc_ability_mod(character)
 
-		flaw = character.randomize_flaw()
+		flaw = randomize_flaw(character)
 
 		# max_num = int(input("Enter the highest level you want the char to be: "))
 		# min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
@@ -180,9 +190,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		randomize_level(character, low_level, high_level)
 
 		#hp calculations
-		character.hit_dice_calc()
-		character.roll_hp()
-		character.Total_HP = character.total_hp_calc()
+		hit_dice_calc(character)
+		roll_hp(character)
+		character.Total_HP = total_hp_calc(character)
 
 		print(f'This is your class for spells: {class_for_spells_attr(character)} ')
 
@@ -252,7 +262,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 		domain_chooser(character)	
 		full_domain = character.chosen_domain
-		character.versatile_perfomance()	
+		versatile_perfomance(character)	
 		animal_chooser(character)
 		animal_feats(character)	
 
@@ -324,7 +334,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		get_data_without_prerequisites(character, class_1="skald",dataset_name="basic")
 		get_data_without_prerequisites(character, class_1="magus",dataset_name="basic")
 
-		character.grand_discovery_chooser() #fix this later
+		grand_discovery_chooser(character) #fix this later
 
 		# Adding class specific feats
 
@@ -363,7 +373,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		wisdom_saving_throw = saving_throw_calc(character, 'Will')	
 
 		skill_ranks = skills_selector(character, 'skills', skill_rank_level)
-		professions = character.profession_chooser("professions")		
+		professions = profession_chooser(character, "professions")		
 		print(f'This is your chosen professions {professions}')		
 
 		simple_list_chooser(character, 'ranger','favored_terrains', 'favored_enemies')
@@ -671,10 +681,10 @@ generate_random_char()
 		
 							
 
-		# print(f'This is your background_traits {character.randomize_personality_attr("background_traits",4)}')
-		# print(f'This is your professions {character.randomize_personality_attr("professions", 3)}')
-		# print(f'This is your mannerisms {character.randomize_personality_attr("mannerisms", 3)}')
-		# print(f'This is your flaws {character.randomize_personality_attr("flaws", 3)}')									
+		# print(f'This is your background_traits {randomize_personality_attr(character, "background_traits",4)}')
+		# print(f'This is your professions {randomize_personality_attr(character, "professions", 3)}')
+		# print(f'This is your mannerisms {randomize_personality_attr(character, "mannerisms", 3)}')
+		# print(f'This is your flaws {randomize_personality_attr(character, "flaws", 3)}')									
 
 
 		# print(f' This is your alignment {character.randomize_alignment("alignments")}')
@@ -685,7 +695,7 @@ generate_random_char()
 
 
 
-		# character.Archetype_Assigner()
+		# Archetype_Assigner(character)
 		# print(f'This is your gold {character.assign_gold("gold")}')
 		# #use gold to randomly select items
 
@@ -693,18 +703,18 @@ generate_random_char()
 
 		
 
-		# print(f'This is your mythic rank {character.randomize_mythic()}')
+		# print(f'This is your mythic rank {randomize_mythic(character)}')
 
 		# #creating quick race/class specific flags 
 
 
 		# #3PP Content Only
 		# # Path of War Content
-		# character.randomize_path_of_war_num("path_of_war_class")
-		# print(f'This is your Path of War Path {character.choose_path_of_war_attr("disciplines")}')
+		# randomize_path_of_war_num(character, "path_of_war_class")
+		# print(f'This is your Path of War Path {choose_path_of_war_attr(character, "disciplines")}')
 
 		# #Luck Content
-		# print(f'this is your luck score {character.randomize_luck()}')
+		# print(f'this is your luck score {randomize_luck(character)}')
 
 
 
