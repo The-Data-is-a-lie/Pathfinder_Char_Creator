@@ -42,6 +42,7 @@ from utils.class_func.stats import *
 from utils.class_func.randomize_flaw import randomize_flaw
 from utils.class_func.alignment_and_deity import randomize_deity, choose_alignment
 from utils.class_func.personality import randomize_personality_attr
+from utils.class_func.hero_point_generator import hero_point_generator
 
 #end of custom function import
 
@@ -153,7 +154,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 		#add an optional flaws rule function	
 		alignment = choose_alignment(character, 'alignments', alignment_input)
-		print(f"This is your randomly selected alignment: {character.alignment}")
+		alignment = alignment.title()
+		print(f"This is your randomly selected alignment: {alignment}")
 		
 		deity = randomize_deity(character)
 		print(f"This is your randomly selected deity: {deity}")
@@ -413,6 +415,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 
 		# pre export data manip start
+		hero_points = hero_point_generator()
 
 
 		hair_color = randomize_apperance_attr(character, "hair_colors")
@@ -553,30 +556,15 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 		feats = character.feats
 
-		# def capitalize_after_dash(words_list):
-		# 	capitalized_words = []
-		# 	for word in words_list:
-		# 		if '-' in word:
-		# 			parts = word.split('-')
-		# 			capitalized_parts = [part.capitalize() for part in parts]
-		# 			capitalized_words.append('-'.join(capitalized_parts))
-		# 		else:
-		# 			capitalized_words.append(word.capitalize())
-		# 	return capitalized_words
 
-		# words_list = ["this", "is", "a", "test-sentence", "another-example", "this-is-A-test"]
-		# capitalized_words_list = capitalize_after_dash(words_list)
-		# print(capitalized_words_list)
-
-
-		
-		# feats = capitalize_after_dash(feats)
-
-
-
+		background_traits = randomize_personality_attr(character, "background_traits",4)
+		professions = randomize_personality_attr(character, "professions", 3)
+		mannerisms = randomize_personality_attr(character, "mannerisms", 3)
+		flaws = randomize_personality_attr(character, "flaws", 3)
+					
 		export_list_non_dict = [character.region, character.chosen_race,
 				 character_full_name, character.c_class, character.c_class_2, 
-				 character.alignment,  age_number, 
+				 alignment,  age_number, 
 				 height_number, weight_number, character.dex, character.str, 
 				 character.con, character.int, character.wis, character.cha, 
 				 flaw, character.Total_HP, character.total_hp_rolls,
@@ -597,6 +585,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 character.gold, character.platnium,
 				 full_domain, school, opposing_school,
 				 bloodline,
+				 background_traits, professions, mannerisms, flaws,
+				 hero_points,
+
 				 
 				 ]
 		
@@ -624,6 +615,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				"gold", "platnium",
 				"full_domain", "school", "opposing_school",
 				 "bloodline",
+				 "background_traits", "professions", "mannerisms", "flaws",
+				 "hero_points",
+
 
 				]
 		
@@ -681,10 +675,6 @@ generate_random_char()
 		
 							
 
-		# print(f'This is your background_traits {randomize_personality_attr(character, "background_traits",4)}')
-		# print(f'This is your professions {randomize_personality_attr(character, "professions", 3)}')
-		# print(f'This is your mannerisms {randomize_personality_attr(character, "mannerisms", 3)}')
-		# print(f'This is your flaws {randomize_personality_attr(character, "flaws", 3)}')									
 
 
 		# print(f' This is your alignment {character.randomize_alignment("alignments")}')
