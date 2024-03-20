@@ -137,8 +137,12 @@ def no_prereq_loop(self, dataset_type, return_choice=None):
     for name, info in dataset_type.items():
             prerequisites = str(info.get("prerequisites", "")).lower()
             # print(prerequisites)
-            prerequisites = re.sub(r'\.', '', prerequisites)
-            prerequisites_components = set(p.strip().lower() for p in prerequisites.split(","))
+            try:
+                prerequisites = re.sub(r'\.', '', prerequisites)
+                prerequisites_components = set(p.strip().lower() for p in prerequisites.split(","))
+            except Exception as e:
+                print("Error:", e)
+                print("prerequisites:", prerequisites)
             # print(f'these are the components {prerequisites_components}')
             # removes both . and proficency
 

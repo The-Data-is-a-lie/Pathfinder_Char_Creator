@@ -132,7 +132,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='human', class_choice='wizard', multi_class='N', alignment_input = 'N' ,num_dice=4, num_sides=6, high_level=5, low_level=1, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='wizard', multi_class='N', alignment_input = 'N' ,num_dice=1, num_sides=2, high_level=5, low_level=1, gold_num=1000000):
 
 		# userInput = input('Create a new character? (y/n): ').lower()
 		userInput = create_new_char.lower()
@@ -543,10 +543,6 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		ranger_feats_chooser(character)
 		monk_feats_chooser(character)
 			
-		print(f"this is your chosen feats {character.feats}")
-
-		# End of Extra feats selection Section
-
 		# feat selector
 		print(f"this is your chosen feats {character.feat_amounts}")
 		character.feats = generic_feat_chooser(character, character.c_class,'combat',info_column = 'description')
