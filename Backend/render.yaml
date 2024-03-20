@@ -1,0 +1,2 @@
+build:
+  command: gunicorn -b 52.41.36.82:$PORT app:app
