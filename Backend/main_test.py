@@ -77,16 +77,6 @@ def execute_char_data():
     except Exception as e:
         return render_template('index.html', error=str(e))    
 
-#Working get character data code
-# @app.route('/get_character_data', methods=['GET', 'POST', 'OPTIONS'])
-# def get_character_data():
-#     try:
-#         input_values = session.get('input_values', [])  # Retrieve input values from session
-#         results = process_input_values(input_values)
-#         return jsonify(results)
-#     except Exception as e:
-#         return jsonify({'error': str(e)})
-
 @app.route('/get_character_data', methods=['GET', 'POST', 'OPTIONS'])
 def get_character_data():
     if request.method == 'OPTIONS':
@@ -123,13 +113,6 @@ def results():
                 "character_class": "wizard",
             }
             
-            # # Use request.form.get for POST requests
-            # input_values = [request.form.get(f'input{i}') for i in range(1, 12)] 
-            # session['input_values'] = input_values  # Store input values in session
-            # results = process_input_values(input_values)
-            # output = results
-
-            # For testing, replace actual processing with returning sample data
             response = jsonify(sample_data)
         except Exception as e:
             response = jsonify({'error': str(e)})
@@ -154,24 +137,6 @@ def test_url_get():
         return render_template('index.html', output=results)
     except Exception as e:
         return render_template('index.html', error=str(e))    
-
-
-    # if request.method == 'OPTIONS':
-    #     # Respond to preflight request
-    #     response = jsonify({'status': 'success'})
-    #     response.headers.add('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-    # else:
-    #     try:
-    #         results = execute()
-    #         return render_template('index.html', output=results)
-    #     except Exception as e:
-    #         return render_template('index.html', error=str(e)) 
-
-    # # Set CORS headers for the main request
-    # response.headers.add('Access-Control-Allow-Credentials', 'true')
-
-    # return response
-    
 
 if __name__ == '__main__':
     app.run(debug=True)

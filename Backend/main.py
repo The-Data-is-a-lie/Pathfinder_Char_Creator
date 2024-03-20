@@ -555,6 +555,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		print("this is your language text", language_text)
 
 		feats = character.feats
+		print(hero_points)
 
 
 		background_traits = randomize_personality_attr(character, "background_traits",4)
@@ -587,7 +588,6 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 bloodline,
 				 background_traits, professions, mannerisms, flaws,
 				 hero_points,
-
 				 
 				 ]
 		
