@@ -4,8 +4,8 @@ from math import ceil, floor
 
 
 # Importing custom functions
-from utils.class_func.generic_func import *
-from utils.class_func.chooseable import *
+from Backend.utils.class_func.generic_func import *
+from Backend.utils.class_func.chooseable import *
 
 
 

@@ -1,6 +1,6 @@
 import random
 from math import floor
-from utils.util import roll_dice
+from Backend.utils.util import roll_dice
 
 def roll_stats(character, num_dice, num_sides):
     # Define the main stat for the class (replace 'main_stat' with the actual main stat for your class)

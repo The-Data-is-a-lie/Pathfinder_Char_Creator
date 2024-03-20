@@ -1,8 +1,8 @@
 #Custom Made Imports
-from createACharacter import CreateNewCharacter
-from utils.markdown import style
-from utils.data import version
-from utils.util import  chooseClass, region_chooser, race_chooser, weapon_chooser, name_chooser, dip_function, format_text, isBool#, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
+from Backend.createACharacter import CreateNewCharacter
+from Backend.utils.markdown import style
+from Backend.utils.data import version
+from Backend.utils.util import  chooseClass, region_chooser, race_chooser, weapon_chooser, name_chooser, dip_function, format_text, isBool#, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
 import random
 from math import ceil, floor
 from flask import jsonify
@@ -10,39 +10,39 @@ import json
 
 
 # Importing custom functions
-from utils.class_func.extra_combat_feats import extra_combat_feats
-from utils.class_func.generic_func import *
-from utils.class_func.armor_and_enhancements import *
-from utils.class_func.skill_ranks import skills_selector
-from utils.class_func.appearance import *
-from utils.class_func.language import *
-from utils.class_func.saving_throws import saving_throw_calc
-from utils.class_func.chooseable import *
-from utils.class_func.race_func import *
-from utils.class_func.favored_class import *
-from utils.class_func.flag_assign import *
-from utils.class_func.spells import *
-from utils.class_func.domain_inquisition import *
-from utils.class_func.class_specific_feats import *
-from utils.class_func.class_ability_amount import class_abilities_amount
-from utils.class_func.item_and_price import *
-from utils.class_func.level_and_bab import *
-from utils.class_func.wizard_school import *
-from utils.class_func.armor_and_weapon_chooser import *
-from utils.class_func.traits import *
-from utils.class_func.animal_companions import *
-from utils.class_func.feats import *
-from utils.class_func.profession_chooser import *
-from utils.class_func.versatile_performance import versatile_perfomance
-from utils.class_func.grand_discovery import grand_discovery_chooser
-from utils.class_func.luck_and_mythic import randomize_luck, randomize_mythic
-from utils.class_func.path_of_war import randomize_path_of_war_num, choose_path_of_war_attr
-from utils.class_func.hp_rolls import roll_hp, total_hp_calc, hit_dice_calc
-from utils.class_func.stats import *
-from utils.class_func.randomize_flaw import randomize_flaw
-from utils.class_func.alignment_and_deity import randomize_deity, choose_alignment
-from utils.class_func.personality import randomize_personality_attr
-from utils.class_func.hero_point_generator import hero_point_generator
+from Backend.utils.class_func.extra_combat_feats import extra_combat_feats
+from Backend.utils.class_func.generic_func import *
+from Backend.utils.class_func.armor_and_enhancements import *
+from Backend.utils.class_func.skill_ranks import skills_selector
+from Backend.utils.class_func.appearance import *
+from Backend.utils.class_func.language import *
+from Backend.utils.class_func.saving_throws import saving_throw_calc
+from Backend.utils.class_func.chooseable import *
+from Backend.utils.class_func.race_func import *
+from Backend.utils.class_func.favored_class import *
+from Backend.utils.class_func.flag_assign import *
+from Backend.utils.class_func.spells import *
+from Backend.utils.class_func.domain_inquisition import *
+from Backend.utils.class_func.class_specific_feats import *
+from Backend.utils.class_func.class_ability_amount import class_abilities_amount
+from Backend.utils.class_func.item_and_price import *
+from Backend.utils.class_func.level_and_bab import *
+from Backend.utils.class_func.wizard_school import *
+from Backend.utils.class_func.armor_and_weapon_chooser import *
+from Backend.utils.class_func.traits import *
+from Backend.utils.class_func.animal_companions import *
+from Backend.utils.class_func.feats import *
+from Backend.utils.class_func.profession_chooser import *
+from Backend.utils.class_func.versatile_performance import versatile_perfomance
+from Backend.utils.class_func.grand_discovery import grand_discovery_chooser
+from Backend.utils.class_func.luck_and_mythic import randomize_luck, randomize_mythic
+from Backend.utils.class_func.path_of_war import randomize_path_of_war_num, choose_path_of_war_attr
+from Backend.utils.class_func.hp_rolls import roll_hp, total_hp_calc, hit_dice_calc
+from Backend.utils.class_func.stats import *
+from Backend.utils.class_func.randomize_flaw import randomize_flaw
+from Backend.utils.class_func.alignment_and_deity import randomize_deity, choose_alignment
+from Backend.utils.class_func.personality import randomize_personality_attr
+from Backend.utils.class_func.hero_point_generator import hero_point_generator
 
 #end of custom function import
 
@@ -54,7 +54,7 @@ character_data = {}
 #Adding in Text to PDF Imports
 # import fillpdf        
 # from fillpdf import fillpdfs
-# from utils.Text_to_pdf_Best_Version_9_28_23
+# from Backend.utils.Text_to_pdf_Best_Version_9_28_23
 
 #only location you need to specify where you want text files to be created at
 print(style.BOLD + f'Welcome to the D&D Random Character Generator ({version})' + style.END)

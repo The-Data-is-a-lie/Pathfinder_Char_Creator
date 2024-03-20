@@ -1,6 +1,6 @@
 import random, json, sys, math
 from math import ceil, floor
-from utils import data
+from Backend.utils import data
 import pandas as pd
 
 def class_for_spells_attr(character):

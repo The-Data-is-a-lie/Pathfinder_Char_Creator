@@ -1,5 +1,5 @@
 from flask import Flask
-from instance.config import SECRET_KEY
+from Backend.instance.config import SECRET_KEY
 
 
 def create_app():

@@ -1,5 +1,5 @@
 import random
-from utils import data
+from Backend.utils import data
 def profession_chooser(character,professions):
     """
     *** Will need to enhance the list, maybe redo it from scratch ***

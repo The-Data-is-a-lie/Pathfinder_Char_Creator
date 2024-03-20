@@ -1,5 +1,5 @@
 import random
-from utils import data
+from Backend.utils import data
 
 def choose_alignment(self, alignments, alignment_input):
     alignment_data = getattr(data,alignments)

@@ -2,8 +2,8 @@ from random import randrange
 from math import floor
 #importing stats in case we want to work on them
 import random
-from utils import data
-from utils.data import traits, mannerisms, regions, weapon_groups, weapon_groups_region, disciplines, skills,  languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class#evil_deities, good_deities, neutral_deities,
+from Backend.utils import data
+from Backend.utils.data import traits, mannerisms, regions, weapon_groups, weapon_groups_region, disciplines, skills,  languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class#evil_deities, good_deities, neutral_deities,
 import json
 import sys
 from Backend.utils.class_func.race_func import *

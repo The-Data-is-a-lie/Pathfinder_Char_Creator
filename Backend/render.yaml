@@ -1,2 +1,2 @@
 build:
-  command: gunicorn -b 52.41.36.82:$PORT app:app
+  command: flask run --host=0.0.0.0 --port=$PORT
