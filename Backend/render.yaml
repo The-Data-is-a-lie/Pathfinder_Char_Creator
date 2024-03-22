@@ -1,5 +1,7 @@
-build:
-  command: flask run --host=0.0.0.0 --port=$PORT
+services:
+  - name: web
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: waitress-serve --port $PORT app:app
 
-build:
-  command: gunicorn -b 0.0.0.0:$PORT app:app
+
