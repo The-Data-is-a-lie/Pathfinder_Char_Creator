@@ -140,7 +140,7 @@ def race_chooser(character, userInput_race):
     if userInput_race in races:
         print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race: {userInput_race}')
     else:
-        userInput_race = random.choice(races)
+        userInput_race = random.choice(races.lower())
         print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race: {userInput_race}')
     character.chosen_race = userInput_race
     return character.chosen_race
@@ -209,7 +209,7 @@ def chooseClass(character, class_choice):
     """
     # userInput_class = input(f'please type a class name to select a class, or type 0 for a random class: ').lower()
     print('please type a class name to select a class, or type 0 for a random class: ')
-    userInput_class = class_choice
+    userInput_class = class_choice.lower()
     print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_class: {userInput_class}')
     character.c_class = userInput_class
     character.c_class_2 = ''
@@ -253,9 +253,9 @@ def dip_function(character, base_classes, multi_class = False):
     if userInput_multiclass.lower() == 'y' or userInput_multiclass == 'yes':
         chance_dip = random.randint(0,100)
         if chance_dip >= 50:
-            c_class_2 = random.choice(classes)
+            c_class_2 = random.choice(classes.lower())
         else:
-            c_class_2 = random.choice(classes)
+            c_class_2 = random.choice(classes.lower())
             character.dip = True
 
     else:
