@@ -65,13 +65,14 @@ def execute():
     return jsonify(results)
 
 # Define get_character_data route
-@app.route('/get_character_data')
+@app.route('/get_character_data', methods=['GET', 'POST'])
 def get_character_data():
     try:
         response = jsonify(character_data)
     except Exception as e:
         response = jsonify({'error': str(e)})
     return response
+
 
 # Define main block to run the app
 if __name__ == '__main__':

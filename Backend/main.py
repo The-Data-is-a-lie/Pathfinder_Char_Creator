@@ -135,7 +135,7 @@ character_json_config = {
 def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='wizard', multi_class='N', alignment_input = 'N' ,num_dice=1, num_sides=2, high_level=5, low_level=1, gold_num=1000000):
 
 		# userInput = input('Create a new character? (y/n): ').lower()
-		userInput = create_new_char.lower()
+		userInput = create_new_char
 		print(f'Create a new character? ({create_new_char.lower()})')
 
 		#end of region macro
