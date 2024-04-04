@@ -42,7 +42,7 @@ def process_input_values(input_values):
         create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, num_dice, num_sides, high_level, low_level, gold_num = input_values
 
         # Import and call generate_random_char
-        from Backend.main import generate_random_char
+        from main import generate_random_char
         global character_data
         character_data = generate_random_char(create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, num_dice, num_sides, high_level, low_level, gold_num)
         # sample_data = {
