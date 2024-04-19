@@ -140,7 +140,7 @@ def race_chooser(character, userInput_race):
     if userInput_race in races:
         print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race: {userInput_race}')
     else:
-        userInput_race = random.choice(races.lower())
+        userInput_race = random.choice(races).lower()
         print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race: {userInput_race}')
     character.chosen_race = userInput_race
     return character.chosen_race

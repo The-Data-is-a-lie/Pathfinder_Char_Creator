@@ -16,9 +16,10 @@ app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 
 def index():
+    # Render the template for both GET and POST requests
     return render_template('index.html')
 
 def process_input_values(input_values):
@@ -36,8 +37,6 @@ def process_input_values(input_values):
                 # Handle the case where the value is None or an empty string
                 input_values[i] = 0
 
-        # ... rest of your code ...
-        
         # Unpack input_values
         create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, num_dice, num_sides, high_level, low_level, gold_num = input_values
 
@@ -45,10 +44,8 @@ def process_input_values(input_values):
         from Backend.main import generate_random_char
         global character_data
         character_data = generate_random_char(create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, num_dice, num_sides, high_level, low_level, gold_num)
-        # sample_data = {
-        #     "name": "this is your session pull"
-        # }
-        # session['character_data'] = sample_data
+
+
         return character_data 
     except ValueError as ve:
         return {"error": str(ve)}
@@ -72,6 +69,23 @@ def get_character_data():
     except Exception as e:
         response = jsonify({'error': str(e)})
     return response
+
+@app.route('/update_character_data', methods=['GET', 'POST'])
+def update_character_data():
+    data = request.json  # Get JSON data from request
+    non_input_data = []
+    for key, value in data.items():
+        if key in ('input2', 'input7', 'input8', 'input9', 'input10', 'input11'):
+            value = int(value)
+        else:
+            value = value.strip()
+        non_input_data.append(value)
+
+    print("Received JS data:", data)
+    print("Cleaned JS data:", non_input_data)
+    results = process_input_values(non_input_data)
+    return jsonify({'message': 'Success! Data received successfully'}) 
+
 
 
 # Define main block to run the app
