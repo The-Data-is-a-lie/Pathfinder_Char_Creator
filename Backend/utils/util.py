@@ -145,6 +145,23 @@ def race_chooser(character, userInput_race):
     character.chosen_race = userInput_race
     return character.chosen_race
         
+def gender_chooser(character, userInput_gender):
+    """
+    Characters either choose a gender, or randomly select one
+    Return
+    - userInput_gender
+    """
+    genders = ("Male", "Female")
+    print('Select gender from the above list: (or 0 if random)')
+    if isinstance(userInput_gender, str):
+        userInput_gender = userInput_gender.capitalize()
+    if userInput_gender in genders:
+        print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_gender: {userInput_gender}')
+    else:
+        userInput_gender = random.choice(genders).capitalize()
+        print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_gender: {userInput_gender}')
+    character.chosen_gender = userInput_gender
+    return character.chosen_gender
 
 def name_chooser(character):
     """
@@ -155,8 +172,9 @@ def name_chooser(character):
     f_name_list = list(character.first_names_regions)
     l_name_list = list(character.last_names_regions)
 
+
     if character.region in f_name_list:
-        f_names = character.first_names_regions[character.region]
+        f_names = character.first_names_regions.get(character.region, "Tal-Falko").get(character.chosen_gender, "Nameless")
         l_names = character.last_names_regions[character.region]        
         character.f_name = random.choice(f_names)
         character.l_name = random.choice(l_names) 
@@ -165,10 +183,10 @@ def name_chooser(character):
 
     else:
         # wehave this section in case of an emergency and region isn't selected. But this should never occur
-        region_list = (list(f_name_list.keys()))
+        region_list = (list(f_name_list))
         region = random.choice(region_list)
-        f_names = random.choice(f_name_list(region))
-        l_names = random.choice(l_name_list(region))
+        f_names = character.first_names_regions.get(region, "Tal-Falko").get(character.chosen_gender, "Nameless")
+        l_names = character.last_names_regions[region]      
         character.f_name = random.choice(f_names)
         character.l_name = random.choice(l_names) 
         character.full_name = character.f_name + character.l_name

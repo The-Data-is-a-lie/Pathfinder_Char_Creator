@@ -2,7 +2,7 @@
 from Backend.createACharacter import CreateNewCharacter
 from Backend.utils.markdown import style
 from Backend.utils.data import version
-from Backend.utils.util import  chooseClass, region_chooser, race_chooser, weapon_chooser, name_chooser, dip_function, format_text, isBool#, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
+from Backend.utils.util import  chooseClass, region_chooser, race_chooser, weapon_chooser, name_chooser, dip_function, gender_chooser, format_text, isBool#, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
 import random
 from math import ceil, floor
 from flask import jsonify
@@ -133,7 +133,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='wizard', multi_class='N', alignment_input = 'N' ,num_dice=1, num_sides=2, high_level=5, low_level=1, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='wizard', multi_class='N', alignment_input = 'N', userInput_gender="Male", num_dice=1, num_sides=2, high_level=5, low_level=1, gold_num=1000000):
 
 	try:
 			# userInput = input('Create a new character? (y/n): ').lower()
@@ -145,6 +145,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			character = CreateNewCharacter(
 				character_json_config)
 			character.instantiate_full_data_dict()
+
+			character.chosen_gender = gender_chooser(character, userInput_gender)
 			
 			
 			region = region_chooser(character,userInput_region)
@@ -590,7 +592,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					full_domain, school, opposing_school,
 					bloodline,
 					background_traits, professions, mannerisms, flaws,
-					hero_points,
+					hero_points, character.chosen_gender,
 					
 					]
 			
@@ -619,7 +621,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					"full_domain", "school", "opposing_school",
 					"bloodline",
 					"background_traits", "professions", "mannerisms", "flaws",
-					"hero_points",
+					"hero_points", "gender",
 
 
 					]

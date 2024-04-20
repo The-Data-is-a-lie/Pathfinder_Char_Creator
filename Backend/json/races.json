@@ -1,7 +1,5 @@
 {
     "Human": {
-        "first names": ["Aria", "Cassiel", "Erelim", "Galizur", "Jael", "Kael", "Leraje", "Muriel", "Nahiri", "Zariel"],
-        "last names": ["Angelheart", "Dusksinger", "Lightbringer", "Radiantwing", "Silversong", "Starborn"],
         "age": [15, "5d6"],
         "height": [58, "2d10"],
         "weight": [120, "3d31"],
@@ -15,8 +13,6 @@
     },
 
      "Aasimar": {
-        "first names": ["Aria", "Cassiel", "Erelim", "Galizur", "Jael", "Kael", "Leraje", "Muriel", "Nahiri", "Zariel"],
-        "last names": ["Angelheart", "Dusksinger", "Lightbringer", "Radiantwing", "Silversong", "Starborn"],
         "age": [20, "5d4"],
         "height": [64, "2d10"],
         "weight": [120, "3d31"],
@@ -32,8 +28,6 @@
     },
 
         "Catfolk": {
-        "first names": ["Chavi", "Jaswinder", "Kaela", "Korin", "Liris", "Mazzy", "Nanali", "Rajni", "Sarene", "Zahra"],
-        "last names": ["Catspirit", "Clawstrike", "Furpelt", "Nimblefoot", "Quickclaw", "Silentpaw"],
         "age": [18, "5d6"],
         "height": [58, "2d10"],
         "weight": [90, "3d31"],
@@ -50,8 +44,6 @@
 
 
 		"Dragonborn": {
-			"first names": ["Agon", "Egon", "Sugissa", "Qixiris", "Nysriel", "Qicoria", "Phidalynn", "Wraxiris", "Orinn", "Yrsaadi", "Mathtuan", "Nysqorel", "Zenpora", "Wradalynn"],
-			"last names": ["Shunxash", "Girrhiliar", "Nyelkanshteth", "Dommicmellir", "Preapinshtondeth", "Karjualath", "Cardaseargual", "Fambucoth", "Priarindraandin", "Aapos"],
 			"age": [79,"6d6"],
 			"height": [182, "3d31"],
 			"weight": [210, "3d31"],
@@ -69,8 +61,6 @@
 
 
     "Dhampir": {
-        "first names": ["Aria", "Caius", "Damien", "Eira", "Felicity", "Gideon", "Hazel", "Isadora", "Kael", "Lilith", "Mariel", "Nero", "Octavia", "Phaedra", "Raven", "Serafina", "Theron", "Vesper"],
-        "last names": ["Black", "Cross", "Gray", "Hunter", "Knight", "Moon", "Noble", "Shade", "Silver", "Stalker"],
         "age": [16, "5d6"],
         "height": [62, "2d10"],
         "weight": [100, "3d31"],
@@ -87,8 +77,6 @@
 
 
 "Drow": {
-        "first names": ["Ara", "Briar", "Cora", "Dara", "Eilistraee", "Faelivrin", "Gwen", "Halan", "Inara", "Jhaelryn", "Kael", "Liriel", "Mizzrym", "Nimor", "Pharaun", "Quenthel", "Rilrae", "Solaufein", "Thalack", "Ulitree"],
-        "last names": ["Aleanrahel", "Baenre", "Despana", "Do\"Urden", "Eilservs", "Jaelre", "Mizzrym", "Noquar", "Torgh", "Xorlarrin"],
         "age": [20, "30d6"],
         "height": [53, "2d10"],
         "weight": [75, "3d31"],
@@ -104,8 +92,6 @@
     },
 
 "Duergar": {
-        "first names": ["Aukanthi", "Baela", "Drogan", "Ervendio", "Girnyaga", "Harral", "Isar", "Jarnak", "Kurk", "Lurka", "Mivra", "Nathir", "Onar", "Pezock", "Quaralyn", "Rautha", "Sarzan", "Thorbrog", "Ulfe", "Vonkil"],
-        "last names": ["Boulderborn", "Deephammer", "Earthenstone", "Fireheart", "Ironfist", "Rocksplitter", "Steelshadow", "Stonecrusher", "Underforge", "Whitestrike"],
         "age": [40, "5d6"],
         "height": [48, "2d10"],
         "weight": [150, "3d31"],
@@ -122,9 +108,6 @@
 
 
     "Elf": {
-        "first names": ["Adran", "Aelar", "Aramil", "Arannis", "Aust", "Beiro", "Berrian", "Carric", "Enialis", "Erdan", "Erevan", "Galinndan", "Hadarai", "Heian", "Himo", "Immeral", "Ivellios", "Laucian", "Mindartis", "Paelias",
-                        "Peren", "Quarion", "Riardon", "Rolen", "Soveliss", "Thamior", "Tharivol", "Theren", "Varis"],
-        "last names": ["Amakiir", "Amastacia", "Galanodel", "Holimion", "Ilphelkiir", "Liadon", "Meliamne", "Naïlo", "Siannodel", "Xiloscient"],
         "age": [110, "30d6"],
         "height": [58, "2d10"],
         "weight": [85, "3d31"],
@@ -140,8 +123,6 @@
     },
 
     "Fetchling": {
-        "first names": ["Aria", "Darian", "Jax", "Kiera", "Miles", "Nisha", "Sable", "Ty", "Zora"],
-        "last names": ["Darkness", "Dusksinger", "Gloomweaver", "Nightshade", "Shadowborn", "Shadowcaster"],
         "age": [20, "5d6"],
         "height": [62, "2d10"],
         "weight": [110, "3d31"],
@@ -157,8 +138,6 @@
     },
 
     "Goblin": {
-        "first names": ["Gnash", "Vola", "Zibini", "Sneeg", "Reta", "Snick", "Tuff", "Kukka", "Drixi", "Puska", "Kippa"],
-        "last names": ["Nogginfogger", "Greasyfingers", "Stinkfoot", "Mudsnout", "Snaggletooth", "Thumbslicer", "Skullcrusher", "Bonebreaker", "Spiderbait", "Sludgegrinder"],
         "age": [10, "5d6"],
         "height": [38, "2d10"],
         "weight": [30, "3d31"],
@@ -174,8 +153,6 @@
     },
 
     "Gnome": {
-        "first names": ["Alston", "Bilbron", "Caramip", "Donella", "Euphemia", "Fijit", "Gimble", "Lintra", "Milba", "Podwig", "Sorrel", "Wrenn"],
-        "last names": ["Shortstack", "Copperknob", "Bigtoe", "Tinkerer", "Sprocket", "Whirligig", "Gyrospark", "Clockwise", "Flange", "Cogsmith"],
         "age": [40, "5d6"],
         "height": [36, "2d10"],
         "weight": [40, "3d31"],
@@ -191,8 +168,6 @@
     },
 
     "Halfling": {
-        "first names": ["Alton", "Ander", "Cade", "Corrin", "Eldon", "Errich", "Finnan", "Garret", "Lindal", "Lyle", "Merric", "Milo", "Osborn", "Perrin", "Reed", "Roscoe", "Wellby"],
-        "last names": ["Brushgather", "Goodbarrel", "Greenbottle", "Highhill", "Hilltopple", "Leagallow", "Tealeaf", "Thorngage", "Tosscobble", "Underbough"],
         "age": [20, "3d6"],
         "height": [32, "2d10"],
         "weight": [30, "3d31"],
@@ -208,8 +183,6 @@
     },
 
     "Dwarf": {
-        "first names": ["Adrik", "Alberich", "Baern", "Barendd", "Brottor", "Bruenor", "Dain", "Darrak", "Delg", "Eberk", "Einkil", "Fargrim", "Flint", "Gardain", "Harbek", "Kildrak", "Morgran", "Orsik", "Oskar", "Rangrim", "Rurik","Taklinn", "Thoradin", "Thorin", "Tordek", "Traubon", "Travok", "Ulfgar", "Veit", "Vondal"],
-        "last names": ["Balderk", "Battlehammer", "Brawnanvil", "Dankil", "Fireforge", "Frostbeard", "Gorunn", "Holderhek", "Ironfist", "Loderr", "Lutgehr", "Rumnaheim", "Strakeln", "Torunn", "Ungart"],
         "clans": ["Balderk", "Dankil", "Gorunn", " Holderhek", "Loderr", "Lutgehr", "Rumnaheim", "Strakeln", "Torunn", "Ungart"],
         "age": [40, "15d6"],
         "height": [45, "2d10"],
@@ -226,8 +199,6 @@
         },
     
     "Half-elf": {
-        "first names": ["Aramil", "Arin", "Darian", "Elaith", "Erevan", "Fintan", "Isilme", "Keyleth", "Lairelos", "Laucian", "Liriel", "Lothir", "Maiele", "Melarue", "Merethyl", "Mindartis", "Naiadryl", "Naivara", "Naralieth", "Sariel", "Sariele", "Selsharra", "Siannodel", "Silaqui", "Tathariel", "Tialith", "Vadania", "Zereni"],
-        "last names": ["Amastacia", "Amakiir", "Galanodel", "Holimion", "Ilphelkiir", "Liadon", "Meliamne", "Naiadryl", "Siannodel", "Xiloscient"],
         "age": [20, "3d31"],
         "height": [55, "2d10"],
         "weight": [100, "3d31"],
@@ -241,8 +212,6 @@
     },
 
     "Half-orc": {
-        "first names": ["Dench", "Feng", "Gell", "Henk", "Holg", "Imsh", "Keth", "Krusk", "Ront", "Shump", "Thokk"],
-        "age": [14, "5d6"],
         "height": [58, "2d10"],
         "weight": [150, "3d31"],
         "size": "Medium",
@@ -257,8 +226,6 @@
     },
 
 "Hobgoblin": {
-    "first names": ["Aukan", "Denchu", "Gulk", "Kishkumen", "Kothar", "Krusk", "Mhurren", "Nord", "Sark", "Vargach"],
-    "last names": ["Bloodtusk", "Ironskin", "Necksmasher", "Skullcleaver", "Steelbreaker", "Warscar"],
     "age": [15, "5d6"],
     "height": [56, "2d10"],
     "weight": [120, "3d31"],
@@ -274,8 +241,6 @@
 },
 
 "Ifrit": {
-    "first names": ["Akakios", "Aster", "Dax", "Eryndor", "Ignatius", "Nemeia", "Razia", "Talibah", "Zara"],
-    "last names": ["Blazeborn", "Emberheart", "Flamekin", "Inferno", "Pyreborn", "Scorchfire"],
     "age": [16, "5d6"],
     "height": [58, "2d10"],
     "weight": [120, "3d31"],
@@ -291,8 +256,6 @@
 },
 
 "Kitsune": {
-        "first names": ["Akane", "Chie", "Etsuko", "Haruko", "Kaori", "Miki", "Natsuki", "Rina", "Yumi", "Yuna"],
-        "last names": ["Foxtail", "Glowingfur", "Nimbleclaw", "Silentpounce", "Swiftstrike", "Trickster"],
         "age": [16, "10d10"],
         "height": [48, "2d10"],
         "weight": [80, "3d31"],
@@ -308,8 +271,6 @@
     },
 
     "Kobold": {
-        "first names": ["Dek", "Drog", "Gak", "Keg", "Kronk", "Nak", "Soot", "Tik", "Trog", "Zak"],
-        "last names": ["Firebelly", "Gnawtooth", "Minesniffer", "Redscale", "Sharpclaw", "Tunneldigger"],
         "age": [6, "5d6"],
         "height": [27, "2d10"],
         "weight": [25, "3d31"],
@@ -325,8 +286,6 @@
     },
 
     "Monkey Goblin": {
-        "first names": ["Banana", "Chimp", "Fruit", "Grape", "Jungle", "Mango", "Monk", "Monkey", "Peach", "Swing"],
-        "last names": ["Bananasplitter", "Junglejester", "Treetumbler"],
         "age": [16, "5d4"],
         "height": [42, "2d10"],
         "weight": [35, "3d31"],
@@ -342,8 +301,6 @@
         },
 
     "Orc": {
-        "first names": ["Drogath", "Grommash", "Hakak", "Karguk", "Mazgak", "Tharag", "Uzguk", "Vorgoth", "Zogar"],
-        "last names": ["Bloodfang", "Deathbringer", "Gorechewer", "Ironhide", "Skullcrusher", "Warchief"],
         "age": [14, "5d6"],
         "height": [58, "2d10"],
         "weight": [150, "3d31"],
@@ -360,8 +317,6 @@
     },
 
     "Oread": {
-        "first names": ["Bof", "Dolgrin", "Fargas", "Gethen", "Grunyar", "Heng", "Kazmuk", "Olarra", "Tazgurt", "Torgoth"],
-        "last names": ["Deeproot", "Highpeak", "Mountainheart", "Stonesoul", "Thunderstrike", "Underhill"],
         "age": [20, "5d6"],
         "height": [56, "2d10"],
         "weight": [130, "3d31"],
@@ -377,8 +332,6 @@
     },
 
 "Ratfolk": {
-    "first names": ["Briko", "Chirp", "Flea", "Kip", "Nibble", "Picket", "Quick", "Ridge", "Scurry", "Zig"],
-    "last names": ["Bigwhisker", "Furback", "Nimbletail", "Quickclaw", "Sneaky", "Swiftfoot"],
     "age": [14, "5d6"],
     "height": [33, "2d10"],
     "weight": [20, "3d31"],
@@ -394,8 +347,6 @@
 },
 
 "Sylph": {
-    "first names": ["Aeris", "Aria", "Caeli", "Kara", "Nila", "Ora", "Phoebe", "Thalia", "Zephyr"],
-    "last names": ["Airheart", "Breezewhisper", "Cloudwatcher", "Galewind", "Skyborn", "Stormchaser"],
     "age": [18, "5d6"],
     "height": [60, "2d10"],
     "weight": [95, "3d31"],
@@ -411,8 +362,6 @@
 },
 
 "Tengu": {
-    "first names": ["Bishr", "Fumihiro", "Haruki", "Karasu", "Kenji", "Kenta", "Masaaki", "Rokuro", "Shiro", "Takeshi"],
-    "last names": ["Blackswoop", "Copperspine", "Featherstep", "Goldeye", "Silvertalon", "Stonespear"],
     "age": [16, "5d6"],
     "height": [58, "2d10"],
     "weight": [90, "3d31"],
@@ -428,8 +377,6 @@
 },
 
 "Tiefling": {
-    "first names": ["Akmenos", "Amnon", "Barakas", "Damakos", "Ekemon", "Iados", "Kairon", "Leucis", "Melech", "Mordai", "Morthos", "Pelaios", "Skamos", "Therai"],
-    "last names": ["Blackfire", "Bloodthorn", "Horned", "Ironfist", "Redmoon", "Sharp", "Silvermane"],
     "age": [18, "5d6"],
     "height": [57, "2d10"],
     "weight": [110, "3d31"],
@@ -445,8 +392,6 @@
 },
 
 "Undine": {
-    "first names": ["Akane", "Hama", "Haruka", "Hotaru", "Kaida", "Kaito", "Kana", "Mizuho", "Nami", "Rin", "Sora"],
-    "last names": ["Mistweaver", "Oceandream", "Raincaller", "Riverflow", "Seabreeze", "Wavecrasher"],
     "age": [18, "5d6"],
     "height": [56, "2d10"],
     "weight": [85, "3d31"],
@@ -462,8 +407,6 @@
 },
 
 "Wayang": {
-    "first names": ["Ari", "Bren", "Fen", "Hak", "Jin", "Kai", "Rai", "Tae", "Umi", "Yan"],
-    "last names": ["Darkwhisper", "Firestarter", "Moonshadow", "Nightstalker", "Silentblade", "Twilightsworn"],
     "age": [20, "5d6"],
     "height": [44, "2d10"],
     "weight": [40, "3d31"],
@@ -480,8 +423,6 @@
 
 
     "Loxophant": {
-        "first names": ["Chavi", "Jaswinder", "Kaela", "Korin", "Liris", "Mazzy", "Nanali", "Rajni", "Sarene", "Zahra"],
-        "last names": ["Catspirit", "Clawstrike", "Furpelt", "Nimblefoot", "Quickclaw", "Silentpaw"],
         "age": [18, "5d6"],
         "height": [58, "2d10"],
         "weight": [90, "3d31"],
@@ -499,8 +440,6 @@
 },
 
     "D-ziriak": {
-        "first names": ["Chavi", "Jaswinder", "Kaela", "Korin", "Liris", "Mazzy", "Nanali", "Rajni", "Sarene", "Zahra"],
-        "last names": ["Catspirit", "Clawstrike", "Furpelt", "Nimblefoot", "Quickclaw", "Silentpaw"],
         "age": [18, "5d6"],
         "height": [58, "2d10"],
         "weight": [90, "3d31"],
@@ -519,8 +458,6 @@
 
 
     "Tortugan": {
-        "first names": ["Chavi", "Jaswinder", "Kaela", "Korin", "Liris", "Mazzy", "Nanali", "Rajni", "Sarene", "Zahra"],
-        "last names": ["Catspirit", "Clawstrike", "Furpelt", "Nimblefoot", "Quickclaw", "Silentpaw"],
         "age": [18, "5d6"],
         "height": [58, "2d10"],
         "weight": [90, "3d31"],

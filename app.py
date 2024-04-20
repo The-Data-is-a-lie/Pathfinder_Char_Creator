@@ -25,11 +25,11 @@ def index():
 def process_input_values(input_values):
     try:
         # Ensure input_values has at least 11 elements
-        if len(input_values) < 11:
+        if len(input_values) < 12:
             raise IndexError("Not enough elements in input_values")
 
         # Convert specific elements to integers
-        for i in [1, 6, 7, 8, 9, 10]:
+        for i in [1, 7, 8, 9, 10, 11]:
             value = input_values[i]
             if value is not None and value != "":  # Check if not None and not empty string
                 input_values[i] = int(value)
@@ -38,12 +38,12 @@ def process_input_values(input_values):
                 input_values[i] = 0
 
         # Unpack input_values
-        create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, num_dice, num_sides, high_level, low_level, gold_num = input_values
+        create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, userInput_gender, num_dice, num_sides, high_level, low_level, gold_num = input_values
 
         # Import and call generate_random_char
         from Backend.main import generate_random_char
         global character_data
-        character_data = generate_random_char(create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, num_dice, num_sides, high_level, low_level, gold_num)
+        character_data = generate_random_char(create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, userInput_gender, num_dice, num_sides, high_level, low_level, gold_num)
 
 
         return character_data 
@@ -57,7 +57,7 @@ def process_input_values(input_values):
 # Define execute route
 @app.route('/execute', methods=['POST'])
 def execute():
-    input_values = [request.form.get(f'input{i}') for i in range(1, 12)]
+    input_values = [request.form.get(f'input{i}') for i in range(1, 13)]
     results = process_input_values(input_values)
     return jsonify(results)
 
@@ -75,7 +75,7 @@ def update_character_data():
     data = request.json  # Get JSON data from request
     non_input_data = []
     for key, value in data.items():
-        if key in ('input2', 'input7', 'input8', 'input9', 'input10', 'input11'):
+        if key in ('input2', 'input8', 'input9', 'input10', 'input11', 'input12'):
             value = int(value)
         else:
             value = value.strip()
