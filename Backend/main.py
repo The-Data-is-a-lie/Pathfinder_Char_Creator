@@ -32,7 +32,7 @@ from Backend.utils.class_func.wizard_school import wizard_school_chooser, wizard
 from Backend.utils.class_func.armor_and_weapon_chooser import armor_chooser, weapon_chooser, list_selection, shield_chooser, shield_flag_func, ac_bonus_calculator, weapon_type_flag_func
 from Backend.utils.class_func.traits import trait_selector
 from Backend.utils.class_func.animal_companions import animal_chooser, animal_feats
-from Backend.utils.class_func.feats import chooseable_list, chooseable_list_stats, chooseable_list_class_features, feat_spell_searcher, generic_multi_chooser, simple_list_chooser, generic_feat_chooser
+from Backend.utils.class_func.feats import build_selector, chooseable_list, chooseable_list_stats, chooseable_list_class_features, feat_spell_searcher, generic_multi_chooser, simple_list_chooser, generic_feat_chooser
 from Backend.utils.class_func.profession_chooser import profession_chooser
 from Backend.utils.class_func.versatile_performance import versatile_perfomance
 from Backend.utils.class_func.grand_discovery import grand_discovery_chooser
@@ -124,16 +124,8 @@ character_json_config = {
 
 }
 
-
 # Add a function which allows warpriests to use their caster level + functions but grab cleric spells (possiby use class for spells)
-
-
-# while userInput.lower() == 'y':
-# 	isTrue = isBool(userInput)
-
-# 	if userInput == 'y':
-
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='wizard', multi_class='N', alignment_input = 'N', userInput_gender="Male", num_dice=1, num_sides=2, high_level=5, low_level=1, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='wizard', multi_class='N', alignment_input = 'N' , userInput_gender='', truly_random_feats = "N", num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
 
 	try:
 			# userInput = input('Create a new character? (y/n): ').lower()
@@ -275,25 +267,12 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			if character.c_class.lower() == 'wizard':
 				full_school, school_desc, associaed_desc, associaed_school = wizard_school_chooser(character)
 				full_opposing_school = wizard_opposing_school(character)	
-
-			
 				
 			# character.anti_paladin_cruelty_chooser()
 			# character.paladin_mercy_chooser()		
-
-
-
-
-
 			character.archetype_data()
 
 			# background info
-
-
-
-
-
-
 
 
 			# character.bloodline_feats_chooser()
@@ -359,13 +338,6 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			feat_spell_searcher(character, "bloodrager", character.bonus_feats , "feats", "benefit")
 			feat_spell_searcher(character, "bloodrager", character.bonus_spells, "spells", "description")
 			feat_spell_searcher(character, "sorcerer", character.bonus_spells, "spells", "description")
-
-			# character.print_metamagic()
-			# character.build_selector()
-
-
-
-
 
 			### Need to change up the item_chooser function ###
 
@@ -545,6 +517,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			#End of Extra feats list generation section
 
 			# Start of Extra feats selection Section
+   
 			extra_feats = feat_chooser(character, character.total_feats, character.class_feats)
 			character.feats.extend(extra_feats)
 
@@ -553,13 +526,44 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			monk_feats_chooser(character)
 				
 			# feat selector
-			print(f"this is your chosen feats {character.feat_amounts}")
-			character.feats = generic_feat_chooser(character, character.c_class,'combat',info_column = 'description')
+			print(f"this is your chosen feat amount {character.feat_amounts}")
+			
+			# feat selector(s)
+			print("this is the value of truly random feats", truly_random_feats.upper())
+			if truly_random_feats.upper() == "Y":
+			# Truly Random Feats
+			# full casters + mid casters with low BAB
+				casting_level_str = character.classes[character.c_class]['casting level'].lower()
+				if character.bab == "L" and casting_level_str in ("mid", "high"):
+						character.feats = generic_feat_chooser(character, character.c_class,'metamagic',info_column = 'description')
+
+				# full casters + mid casters with med BAB
+				elif character.bab == "M" and casting_level_str in ("mid", "high"):
+					random_dice = random.randint(1, 100)
+					if random_dice <= 50:
+						character.feats = generic_feat_chooser(character, character.c_class,'metamagic',info_column = 'description')					
+					else:
+						character.feats = generic_feat_chooser(character, character.c_class,'combat',info_column = 'description')
+
+			else:
+				print("build selector is being activated")
+				# Curated List of feats
+				build_selector_feats = build_selector(character)
+				print("these are your extra feats", build_selector_feats)
+				chosen_feats = random.sample(build_selector_feats,k=character.feat_amounts)
+				character.feats.extend(chosen_feats)
+
+				print("this is your giga chosen feats", chosen_feats)
+				character.feats.extend(chosen_feats)
+		
+
+
 			print(f"this is your chosen feats {character.feats}")
 
 			print("this is your language text", language_text)
 
 			feats = character.feats
+			print("these are your feats being sent", feats)
 			print(hero_points)
 
 

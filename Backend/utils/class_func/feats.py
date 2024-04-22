@@ -18,7 +18,7 @@ def print_metamagic(character):
 def feat_spell_searcher(character, class_1, chosen_set, types, info_column, info_column_2 = None):
     if character.c_class == class_1:
         data = pd.read_csv(f'data/{types}.csv', sep='|', on_bad_lines='skip')
-
+    
         if info_column_2 is None:
             extraction_list = ['name', info_column]
         else:
@@ -29,10 +29,10 @@ def feat_spell_searcher(character, class_1, chosen_set, types, info_column, info
         query_result = remove_mythic(character, types,data, chosen_set, extraction_list)
 
         result_dict = {}
-
         result_dict = remove_dots_dashes(character, result_dict, query_result, info_column)
-        result_dict.update(character, result_dict)
-        print(character.result_dict)
+        # print("this is your result dict", result_dict) 
+        character.result_dict.update(result_dict)
+        # print("this is your char result dict", character.result_dict)
         
         return character.result_dict         
 
@@ -122,9 +122,9 @@ def build_selector(character):
         add_specialty_feats(character, feat_list)
     result_dict_pre = feat_spell_searcher(character, character.c_class, feat_list, "feats", "prerequisites", "description")
     result_dict = transform_result_dict(character, result_dict_pre)
-    chosen_feats = get_feats_without_prerequisites(character, character.c_class, result_dict, amount = character.feat_amounts)
-    print(chosen_feats)
-
+    all_feats, _, build_selector_feats = get_feats_without_prerequisites(character, character.c_class, result_dict, character.feat_amounts)
+    cleaned_chosen_feats = capitalize_feats(character, all_feats)
+    return cleaned_chosen_feats
 
 
 def add_martial_feats(character, feat_list):
@@ -140,6 +140,9 @@ def add_martial_feats(character, feat_list):
 
     if character.dex_mod >= character.str_mod +2:
         feat_list.append('weapon finesse')        
+
+    character.feat_list = feat_list
+    return character.feat_list
 
 def add_magical_feats(character, feat_list):
     magical = character.feat_buckets['magical']
@@ -196,11 +199,15 @@ def get_feats_without_prerequisites(character, class_1, dataset_name, level= Non
     dataset = dataset_name
     base = dataset.copy()
     base_no_prereq = no_prereq_loop(character, base)
+    print(base_no_prereq)
     total_choices = base_no_prereq
     i = 0
 
+    if amount == None:
+        amount = 0
+
     while i < amount + 1:
-        # print(f'This is your total choices {total_choices}')
+        print(f'This is your total choices {total_choices}')
         chosen = random.choice(total_choices)
 
         chooseable_list_class(character,i,character.c_class,character.c_class_level, base=0, th='th')
@@ -231,7 +238,7 @@ def generic_feat_chooser(character, class_1,feat_type, info_column):
     if class_1 == character.c_class:
         feat_data = pd.read_csv(f'data/feats.csv', sep='|', on_bad_lines='skip')
         extraction_list = ['name', 'prerequisites', 'description']
-        query_i = feat_data.loc[feat_data['type'] == feat_type.capitalize(), extraction_list]
+        query_i = feat_data.loc[(feat_data['type'] == feat_type.capitalize()) | (feat_data['type'] == 'General'), extraction_list]
         query_i = query_i.drop_duplicates(subset='name', keep='first')
         feat_result_dict = query_i.set_index('name')[['prerequisites', 'description']].to_dict(orient='index')
         # feat_result_dict = character.remove_mythic('feats',feat_data,query_i, info_column)   
@@ -245,6 +252,7 @@ def generic_feat_chooser(character, class_1,feat_type, info_column):
         chosen_feats = list(chosen_feats)
         chosen_feats.remove("")
         cleaned_chosen_feats = capitalize_feats(character, chosen_feats)
+        character.chosen_feats = cleaned_chosen_feats
         print(f'These are your chosen feats {cleaned_chosen_feats}')
 
         return cleaned_chosen_feats

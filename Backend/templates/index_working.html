@@ -19,18 +19,18 @@
 <body>
 
     <form action="/execute" method="post" onsubmit="saveFormData()">
-    Create a new character (y/n): <input type="text" name="input1"><br>
-    Select region [input the number for the region you want] from above list: (0 = Random, 1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, 5=Spire, 6=Feyador, 7=Esterdragon, 8=Grundykin Damplands, 9=Dust Cairn, 10=Kaeru no Tochi ...): <input type="number" name="input2"><br>
-    Select Race ['Dwarf', 'Elf', 'Gnome', 'Half-Elf', 'Halfling', 'Half-Orc', 'Human', 'Aasimar', 'Aquatic Elf', 'Catfolk', 'Changeling', 'Dhampir', 'Drow', 'Fetchling', 'Gathlain', 'Ghoran', 'Gillman', 'Goblin', 'Grippli', 'Hobgoblin', 'Ifrit', 'Kitsune', 'Kobold', 'Locathah', 'Merfolk', 'Monkey Goblin', 'Nagaji', 'Orc', 'Oread', 'Ratfolk', 'Sahuagin', 'Skinwalker', 'Strix', 'Svirfneblin', 'Sylph', 'Syrinx', 'Tengu', 'Tiefling', 'Triaxian', 'Triton', 'Undine', 'Vanara', 'Vine Leshy', 'Vishkanya', 'Wayang', 'Wyrwood', 'Wyvaran', 'Yaddithian']: <input type="text" name="input3"><br>
-    please type a class name to select a class, or type 0 for a random class: <input type="text" name="input4"><br>
-    Do you want to multiclass (Y/N): <input type="text" name="input5"><br>
-    If you want to choose an alignment, type: CG CN CE NG N NE LG LN LE: <input type="text" name="input6"><br>
-    If you want to choose a gender, type: Male or Female: <input type="text" name="input7"><br>
-    How many dice would you like to roll?: <input type="number" name="input8"><br>
-    How many sides should each die have?: <input type="number" name="input9"><br>
-    Enter the highest level you want the char to be: <input type="number" name="input10"><br>
-    Enter the lowest level you want the char to be: <input type="number" name="input11"><br>
-    Please input a desired number for gold, otherwise we will use the amount suggest by Paizo's rules for a PC of that level: <input type="number" name="input12"><br>
+        Create a new character (y/n): <input type="text" name="input1"><br>
+        Select region [input the number for the region you want] from above list: (0 = Random, 1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, 5=Spire, 6=Feyador, 7=Esterdragon, 8=Grundykin Damplands, 9=Dust Cairn, 10=Kaeru no Tochi ...): <input type="number" name="input2"><br>
+        Select Race ['Dwarf', 'Elf', 'Gnome', 'Half-Elf', 'Halfling', 'Half-Orc', 'Human', 'Aasimar', 'Aquatic Elf', 'Catfolk', 'Changeling', 'Dhampir', 'Drow', 'Fetchling', 'Gathlain', 'Ghoran', 'Gillman', 'Goblin', 'Grippli', 'Hobgoblin', 'Ifrit', 'Kitsune', 'Kobold', 'Locathah', 'Merfolk', 'Monkey Goblin', 'Nagaji', 'Orc', 'Oread', 'Ratfolk', 'Sahuagin', 'Skinwalker', 'Strix', 'Svirfneblin', 'Sylph', 'Syrinx', 'Tengu', 'Tiefling', 'Triaxian', 'Triton', 'Undine', 'Vanara', 'Vine Leshy', 'Vishkanya', 'Wayang', 'Wyrwood', 'Wyvaran', 'Yaddithian']: <input type="text" name="input3"><br>
+        please type a class name to select a class, or type 0 for a random class: <input type="text" name="input4"><br>
+        Do you want to multiclass (Y/N): <input type="text" name="input5"><br>
+        If you want to choose an alignment, type: CG CN CE NG N NE LG LN LE: <input type="text" name="input6"><br>
+        If you want to choose a gender, type: Male or Female: <input type="text" name="input7"><br>
+        How many dice would you like to roll?: <input type="number" name="input9"><br>
+        How many sides should each die have?: <input type="number" name="input10"><br>
+        Enter the highest level you want the char to be: <input type="number" name="input11"><br>
+        Enter the lowest level you want the char to be: <input type="number" name="input12"><br>
+        Please input a desired number for gold, otherwise we will use the amount suggest by Paizo's rules for a PC of that level: <input type="number" name="input13"><br>
 
     <button type="submit">Execute</button>
 </form>
@@ -43,6 +43,11 @@
         {{ error }}
     {% endif %}
 </pre>
+
+<p><a href="/results">View Results</a></p>
+<p><a href="/test_html_get_request">View test_html_get_request</a></p>
+<p><a href="/get_character_data">View get_character_data</a></p>
+
 
 </body>
 </html>

@@ -35,9 +35,9 @@ def get_selectable_skills(character,all_skills, skill_ranks_level):
     print(scaling)
 
     if character.c_class not in character.class_data.keys():
-        scaling = 2 + character.int_mod
-
-    skill_number = scaling + random.randint(1, 8)
+        scaling = 2 + abs(character.int_mod)
+    skill_number = scaling + random.randint(abs(character.int_mod), abs(character.int_mod)+8)
+    print(skill_number)
     skill_number = min(skill_number, len(all_skills))
     selectable_skills = random.sample(all_skills, k=skill_number)
 
