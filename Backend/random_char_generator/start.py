@@ -10,8 +10,7 @@ def check_origin(origin):
 
 def create_app():
     app = Flask(__name__)
-    app.config['SESSION_COOKIE_SECURE'] = True  # Mark the cookie as secure
-    app.config['SESSION_COOKIE_SAMESITE'] = 'None'  # Set SameSite attribute to None
+
 
     
 

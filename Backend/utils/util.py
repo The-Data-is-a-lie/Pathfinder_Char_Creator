@@ -232,7 +232,10 @@ def chooseClass(character, class_choice):
     character.c_class = userInput_class
     character.c_class_2 = ''
 
-    if userInput_class not in character.class_data.keys():
+    all_classes = list(character.class_data.keys()) # + list(character.class_data["Path of War"].keys())
+    print(all_classes)
+
+    if userInput_class not in all_classes:
         bab = input('Enter bab (H/M/L): ').capitalize()
         character.bab = bab
         userInput_class = None
@@ -242,7 +245,7 @@ def chooseClass(character, class_choice):
             character.bab = 'H'
 
         classes = []
-        for class_name in character.class_data.keys():
+        for class_name in all_classes:
                 if bab == "H" and character.class_data[class_name]["bab"] == "H":
                     classes.append(class_name)
                 elif bab == "M" and character.class_data[class_name]["bab"] == "M":
@@ -250,7 +253,7 @@ def chooseClass(character, class_choice):
                 elif bab == "L" and character.class_data[class_name]["bab"] == "L":
                     classes.append(class_name)
     
-        classes = list(character.class_data.keys())
+        classes = list(all_classes)
         character.c_class = classes[randrange(0,len(classes))]
     return character.c_class
 

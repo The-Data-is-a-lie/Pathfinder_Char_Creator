@@ -11,39 +11,39 @@ import traceback
 
 
 # Importing custom functions
-from Backend.utils.class_func.extra_combat_feats import extra_combat_feats
-from Backend.utils.class_func.generic_func import generic_class_option_chooser, get_data_without_prerequisites#, no_prereq_loop, chosen_set_append
-from Backend.utils.class_func.armor_and_enhancements import enhancement_calculator, enhancement_chooser#, enhancement_limits
-from Backend.utils.class_func.skill_ranks import skills_selector
-from Backend.utils.class_func.appearance import randomize_apperance_attr, randomize_body_feature, get_racial_attr
-from Backend.utils.class_func.language import language_chooser#, random_language_chooser ,language_splitter, remove_word ,random_language_chooser
-from Backend.utils.class_func.saving_throws import saving_throw_calc
-from Backend.utils.class_func.chooseable import chooseable_list, chooseable_list_race#, chooseable_list_class 
-from Backend.utils.class_func.race_func import  race_ability_score_changes, race_ability_split, race_traits_chooser, subrace_chooser#, full_race_data
-from Backend.utils.class_func.favored_class import favored_class_calculator, favored_class_option, favored_class_option_chooser
-from Backend.utils.class_func.flag_assign import human_flag_assigner, druidic_flag_assigner
-from Backend.utils.class_func.spells import spells_known_attr, spells_known_extra_roll, spells_known_selection, spells_per_day_attr, spells_per_day_from_ability_mod, class_for_spells_attr, caster_formula #, alignment_spell_limits
-from Backend.utils.class_func.domain_inquisition import domain_chance, domain_chooser#, inquisition_chooser
-from Backend.utils.class_func.class_specific_feats import class_specific_feats_chooser, feat_chooser, monk_feats_chooser, ranger_feats_chooser
-from Backend.utils.class_func.class_ability_amount import class_abilities_amount
-from Backend.utils.class_func.item_and_price import item_chooser
-from Backend.utils.class_func.level_and_bab import randomize_level
-from Backend.utils.class_func.wizard_school import wizard_school_chooser, wizard_opposing_school
-from Backend.utils.class_func.armor_and_weapon_chooser import armor_chooser, weapon_chooser, list_selection, shield_chooser, shield_flag_func, ac_bonus_calculator, weapon_type_flag_func
-from Backend.utils.class_func.traits import trait_selector
+from Backend.utils.class_func.alignment_and_deity import randomize_deity, choose_alignment
 from Backend.utils.class_func.animal_companions import animal_chooser, animal_feats
+from Backend.utils.class_func.appearance import randomize_apperance_attr, randomize_body_feature, get_racial_attr
+from Backend.utils.class_func.armor_and_enhancements import enhancement_calculator, enhancement_chooser#, enhancement_limits
+from Backend.utils.class_func.armor_and_weapon_chooser import armor_chooser, weapon_chooser, list_selection, shield_chooser, shield_flag_func, ac_bonus_calculator, weapon_type_flag_func
+from Backend.utils.class_func.chooseable import chooseable_list, chooseable_list_race#, chooseable_list_class 
+from Backend.utils.class_func.class_ability_amount import class_abilities_amount
+from Backend.utils.class_func.class_specific_feats import class_specific_feats_chooser, feat_chooser, monk_feats_chooser, ranger_feats_chooser
+from Backend.utils.class_func.domain_inquisition import domain_chance, domain_chooser#, inquisition_chooser
+from Backend.utils.class_func.extra_combat_feats import extra_combat_feats
+from Backend.utils.class_func.favored_class import favored_class_calculator, favored_class_option, favored_class_option_chooser
 from Backend.utils.class_func.feats import build_selector, chooseable_list, chooseable_list_stats, chooseable_list_class_features, feat_spell_searcher, generic_multi_chooser, simple_list_chooser, generic_feat_chooser
-from Backend.utils.class_func.profession_chooser import profession_chooser
-from Backend.utils.class_func.versatile_performance import versatile_perfomance
+from Backend.utils.class_func.flag_assign import human_flag_assigner, druidic_flag_assigner
+from Backend.utils.class_func.generic_func import generic_class_option_chooser, get_data_without_prerequisites#, no_prereq_loop, chosen_set_append
 from Backend.utils.class_func.grand_discovery import grand_discovery_chooser
+from Backend.utils.class_func.hero_point_generator import hero_point_generator
+from Backend.utils.class_func.hp_rolls import roll_hp, total_hp_calc, hit_dice_calc
+from Backend.utils.class_func.item_and_price import item_chooser
+from Backend.utils.class_func.language import language_chooser#, random_language_chooser ,language_splitter, remove_word ,random_language_chooser
+from Backend.utils.class_func.level_and_bab import randomize_level
 from Backend.utils.class_func.luck_and_mythic import randomize_luck, randomize_mythic
 from Backend.utils.class_func.path_of_war import randomize_path_of_war_num, choose_path_of_war_attr
-from Backend.utils.class_func.hp_rolls import roll_hp, total_hp_calc, hit_dice_calc
-from Backend.utils.class_func.stats import roll_stats, print_stats, assign_stats, calc_ability_mod 
-from Backend.utils.class_func.randomize_flaw import randomize_flaw
-from Backend.utils.class_func.alignment_and_deity import randomize_deity, choose_alignment
 from Backend.utils.class_func.personality import randomize_personality_attr
-from Backend.utils.class_func.hero_point_generator import hero_point_generator
+from Backend.utils.class_func.profession_chooser import profession_chooser
+from Backend.utils.class_func.race_func import  race_ability_score_changes, race_ability_split, race_traits_chooser, subrace_chooser#, full_race_data
+from Backend.utils.class_func.randomize_flaw import randomize_flaw
+from Backend.utils.class_func.saving_throws import saving_throw_calc
+from Backend.utils.class_func.skill_ranks import skills_selector
+from Backend.utils.class_func.spells import spells_known_attr, spells_known_extra_roll, spells_known_selection, spells_per_day_attr, spells_per_day_from_ability_mod, class_for_spells_attr, caster_formula #, alignment_spell_limits
+from Backend.utils.class_func.stats import roll_stats, print_stats, assign_stats, calc_ability_mod 
+from Backend.utils.class_func.traits import trait_selector
+from Backend.utils.class_func.versatile_performance import versatile_perfomance
+from Backend.utils.class_func.wizard_school import wizard_school_chooser, wizard_opposing_school
 
 #end of custom function import
 

@@ -543,7 +543,7 @@
     
     
     
-        "harbringer": {
+        "harbinger": {
         "weapons": ["Dagger", "Falchion", "Flail", "Gauntlet", "Greatsword", "Handaxe", "Kukri", "Longsword", "Quarterstaff", "Rapier", "Scimitar", "Short sword", "Spear", "Spiked chain", "Whip"],
         "armor": ["Light"],
         "skills": ["Acrobatics", "Athletics", "Bluff", "Intimidate", "Perception", "Sense Motive", "Stealth"],

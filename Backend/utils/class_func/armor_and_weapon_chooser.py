@@ -77,6 +77,7 @@ def armor_chooser(character):
 
 def weapon_chooser(character):
     weapon_type_data = character.class_data.get(character.c_class, {}).get('weapon and armor proficiency')
+    print(character.class_data.get(character.c_class, {}))
     print(weapon_type_data)
     character.weapon_type = 'M' if 'martial' in weapon_type_data else 'S'
     print(character.weapon_type)
