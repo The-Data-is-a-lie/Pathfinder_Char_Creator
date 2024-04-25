@@ -17,6 +17,7 @@ from Backend.utils.class_func.appearance import randomize_apperance_attr, random
 from Backend.utils.class_func.armor_and_enhancements import enhancement_calculator, enhancement_chooser#, enhancement_limits
 from Backend.utils.class_func.armor_and_weapon_chooser import armor_chooser, weapon_chooser, list_selection, shield_chooser, shield_flag_func, ac_bonus_calculator, weapon_type_flag_func
 from Backend.utils.class_func.chooseable import chooseable_list, chooseable_list_race#, chooseable_list_class 
+from Backend.utils.class_func.class_abilities import get_class_abilities, get_class_abilties_desc  
 from Backend.utils.class_func.class_ability_amount import class_abilities_amount
 from Backend.utils.class_func.class_specific_feats import class_specific_feats_chooser, feat_chooser, monk_feats_chooser, ranger_feats_chooser
 from Backend.utils.class_func.domain_inquisition import domain_chance, domain_chooser#, inquisition_chooser
@@ -133,7 +134,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='warlord', multi_class='N', alignment_input = 'N' , userInput_gender='', truly_random_feats = "Y", num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='Harbinger', multi_class='N', alignment_input = 'N' , userInput_gender='', truly_random_feats = "Y", num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()
@@ -576,21 +577,17 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			print("this is your giga chosen feats", chosen_feats)
 			character.feats.extend(chosen_feats)
 
-		# # full BAB
-		# else:
-		# 	character.feats = generic_feat_chooser(character, character.c_class,'combat',info_column = 'description')	
-		print(f"this is your chosen feats {character.feats}")
-
-		print("this is your language text", language_text)
-
-		print(hero_points)
 		feats = character.feats
-		print("this is your charactter feats", feats)
 
 		background_traits = randomize_personality_attr(character, "background_traits",4)
 		professions = randomize_personality_attr(character, "professions", 3)
 		mannerisms = randomize_personality_attr(character, "mannerisms", 3)
 		flaws = randomize_personality_attr(character, "flaws", 3)
+
+		actual_class_abilities = get_class_abilities(character)
+		class_ability_desc =get_class_abilties_desc(character, actual_class_abilities)
+
+
 					
 		export_list_non_dict = [character.region, character.chosen_race,
 				 character_full_name, character.c_class, character.c_class_2, 
@@ -616,7 +613,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 full_domain, school, opposing_school,
 				 bloodline,
 				 background_traits, professions, mannerisms, flaws,
-				 hero_points,
+				 hero_points, class_ability_desc
 				 
 				 ]
 		
@@ -645,7 +642,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				"full_domain", "school", "opposing_school",
 				 "bloodline",
 				 "background_traits", "professions", "mannerisms", "flaws",
-				 "hero_points",
+				 "hero_points", "class_ability_desc"
 
 
 				]

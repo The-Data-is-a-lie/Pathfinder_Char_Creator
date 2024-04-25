@@ -5,6 +5,7 @@ def extra_combat_feats(character):
     brawler_feats = [2,5,8,11,14,17,20,23,26,29,32,35,38,41] 
     ranger_feats = [2,6,10,14,18,22,26,30,34,38,42]       
     sorcerer_feats = [7,13,19,25,31,37,43,49]     
+    warlord_feats = [1,6,10,14,18,22,26,30,34,38,42]     
     #setting up extra feats + extra feats_2 as 0 so we don't get errors
     extra_feats = 0
     extra_feats_2 = 0    
@@ -13,6 +14,33 @@ def extra_combat_feats(character):
     monk_feats_list = 0 
     monk_feats_2_list = 0
     character.combat_feats_list=0
+
+    #Warder section
+    if character.c_class == 'warder':
+        if character.c_class_level < 3:
+            extra_feats = 0
+            return extra_feats
+        else:
+            extra_feats = floor((character.c_class_level - 3) / 5) + 1
+            return 
+        
+    #mystic section
+    if character.c_class == 'mystic':
+        if character.c_class_level < 2:
+            extra_feats = 0
+            return extra_feats
+        else:
+            extra_feats = floor((character.c_class_level - 2) / 5) + 1
+            return         
+
+    i=0
+    i_2=0
+    #warlord section
+    if character.c_class == 'warlord' or character.c_class == 'warlord':
+        while i < len(warlord_feats) and warlord_feats[i] <= character.c_class_level:
+            i += 1
+        extra_feats += i
+
 
     #fighter section
     if character.c_class == 'fighter':
@@ -23,6 +51,7 @@ def extra_combat_feats(character):
 
     i=0
     i_2=0
+
 
     #monk section
     if character.c_class == 'monk' or character.c_class == 'unchained_monk':

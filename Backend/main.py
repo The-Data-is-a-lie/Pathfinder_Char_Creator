@@ -18,6 +18,7 @@ from Backend.utils.class_func.armor_and_enhancements import enhancement_calculat
 from Backend.utils.class_func.armor_and_weapon_chooser import armor_chooser, weapon_chooser, list_selection, shield_chooser, shield_flag_func, ac_bonus_calculator, weapon_type_flag_func
 from Backend.utils.class_func.chooseable import chooseable_list, chooseable_list_race#, chooseable_list_class 
 from Backend.utils.class_func.class_ability_amount import class_abilities_amount
+from Backend.utils.class_func.class_abilities import get_class_abilities, get_class_abilties_desc  
 from Backend.utils.class_func.class_specific_feats import class_specific_feats_chooser, feat_chooser, monk_feats_chooser, ranger_feats_chooser
 from Backend.utils.class_func.domain_inquisition import domain_chance, domain_chooser#, inquisition_chooser
 from Backend.utils.class_func.extra_combat_feats import extra_combat_feats
@@ -571,6 +572,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			professions = randomize_personality_attr(character, "professions", 3)
 			mannerisms = randomize_personality_attr(character, "mannerisms", 3)
 			flaws = randomize_personality_attr(character, "flaws", 3)
+
+			actual_class_abilities = get_class_abilities(character)
+			class_ability_desc = get_class_abilties_desc(character, actual_class_abilities)
 						
 			export_list_non_dict = [character.region, character.chosen_race,
 					character_full_name, character.c_class, character.c_class_2, 
@@ -597,7 +601,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					bloodline,
 					background_traits, professions, mannerisms, flaws,
 					hero_points, character.chosen_gender,
-					
+					class_ability_desc,					
 					]
 			
 			string_export_list_non_dict = [
@@ -626,6 +630,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					"bloodline",
 					"background_traits", "professions", "mannerisms", "flaws",
 					"hero_points", "gender",
+					"class_ability_desc",
 
 
 					]
