@@ -7,19 +7,21 @@ def get_class_abilities(character):
             start = 0
             break
 
-        if ability == "weapon and armor proficiency":
-            start = 1
-
         if start == 1:
             actual_class_abilities.append(ability)
+
+        if ability == "weapon and armor proficiency":
+            start = 1
 
     return actual_class_abilities
 
 def get_class_abilties_desc(character, actual_class_abilities):
     chosen_class_data = character.class_data.get(character.c_class, "")
     class_ability_desc = {}
+    class_ability = []
     for ability in actual_class_abilities:
         desc = chosen_class_data.get(ability, {})
         class_ability_desc.update({ability: desc})
+        class_ability.append(f"{ability}_{character.c_class}")
 
-    return class_ability_desc
+    return class_ability_desc, class_ability

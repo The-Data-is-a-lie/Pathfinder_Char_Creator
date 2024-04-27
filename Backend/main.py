@@ -573,8 +573,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			mannerisms = randomize_personality_attr(character, "mannerisms", 3)
 			flaws = randomize_personality_attr(character, "flaws", 3)
 
-			actual_class_abilities = get_class_abilities(character)
-			class_ability_desc = get_class_abilties_desc(character, actual_class_abilities)
+			actual_class_abilities = get_class_abilities(character)		
+			class_ability_desc, class_ability =get_class_abilties_desc(character, actual_class_abilities)
+
 						
 			export_list_non_dict = [character.region, character.chosen_race,
 					character_full_name, character.c_class, character.c_class_2, 
@@ -601,7 +602,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					bloodline,
 					background_traits, professions, mannerisms, flaws,
 					hero_points, character.chosen_gender,
-					class_ability_desc,					
+					class_ability_desc, class_ability		
 					]
 			
 			string_export_list_non_dict = [
@@ -630,7 +631,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					"bloodline",
 					"background_traits", "professions", "mannerisms", "flaws",
 					"hero_points", "gender",
-					"class_ability_desc",
+					"class_ability_desc", "class_ability"
 
 
 					]
