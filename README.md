@@ -49,6 +49,22 @@ Example:
 ![image](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/assets/129898955/eeed6327-5630-4bed-b3f7-f3aac8db7fe7)
 
 
+## Custom Functions used in the program located in:
+Utils/
+Utils/class_func
+
+## Webscraped data located in:
+json
+json/class_data
+json/class_data/path_of_war
+
+## HTML files located in:
+templates
+
+## csv data files located in:
+data
+data/archetype_csv
+
 In the Works:
 - Spheres of Power / Might (classes + abilities + archetypes )
 - Homebrew feats / races ( Feats + Races that I use in my Pathfinder 1E games)
