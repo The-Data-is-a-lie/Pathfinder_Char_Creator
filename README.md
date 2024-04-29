@@ -50,20 +50,20 @@ Example:
 
 
 ## Custom Functions used in the program located in:
-Utils/
-Utils/class_func
+- Utils/
+- Utils/class_func
 
 ## Webscraped data located in:
-json
-json/class_data
-json/class_data/path_of_war
+- json
+- json/class_data
+- json/class_data/path_of_war
 
 ## HTML files located in:
-templates
+- templates
 
 ## csv data files located in:
-data
-data/archetype_csv
+- data
+- data/archetype_csv
 
 In the Works:
 - Spheres of Power / Might (classes + abilities + archetypes )
