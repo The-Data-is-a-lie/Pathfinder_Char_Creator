@@ -14,7 +14,7 @@ def class_specific_feats_chooser(character, c_class, name_1, name_2, name_3=None
         except AttributeError:
             extra_feat_list = []
 
-        character.total_feats.extend(character, extra_feat_list)
+        character.total_feats.extend(extra_feat_list)
         print(character.total_feats)
         return character.total_feats
     

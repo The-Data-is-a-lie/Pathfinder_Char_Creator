@@ -101,9 +101,9 @@ lore = ["Goblin Lore",
 ]
 
 formulas = {
-    'favored_terrains': 'ceil((self.c_class_level - 2) / 5)',
-    'favored_enemies': '1 + floor(self.c_class_level / 5)',
-    'manuevers': 'floor((self.c_class_level + 1)/4)'
+    'favored_terrains': 'ceil((character.c_class_level - 2) / 5)',
+    'favored_enemies': '1 + floor(character.c_class_level / 5)',
+    'manuevers': 'floor((character.c_class_level + 1)/4)'
 }
 
 armor_type_mapping = {
@@ -164,7 +164,7 @@ hit_dice = {
 }
 
 #add options
-languages = ['Abyssal', 'Aklo', 'Aquan', 'Auran', 'Boggard', 'Celestial', 'Common', 'Cyclops', 'Dark Folk', 'Draconic', 'Drow Sign Language', 'Dwarven', 'Elven', 'Giant', 'Gnoll', 'Gnome', 'Goblin', 'Grippli', 'Halfling', 'Ignan', 'Infernal', 'Kelish', 'Orc', 'Protean', 'Sphinx', 'Sylvan', 'Tengu', 'Terran', 'Treant', 'Undercommon', 'Vegepygmy', 'Vishkanya', 'Wayang']
+languages = ['Abyssal', 'Aklo', 'Aquan', 'Auran', 'Celestial', 'Common',  'Draconic', 'Drow Sign Language', 'Dwarven', 'Elven', 'Giant', 'Gnoll', 'Gnome', 'Goblin', 'Grippli', 'Halfling', 'Ignan', 'Infernal', 'Kelish', 'Orc', 'Protean', 'Sphinx', 'Sylvan', 'Tengu', 'Terran','Undercommon', 'Wayang']
 #add options
 all_deities = {
 "good_deities" : [ "Abadar",    "Cayden Cailean",    "Desna",    "Erastil",    "Iomedae",    "Irori",    "Sarenrae",    "Shelyn",    "Torag",    "Amaznen",    "Angradd",    "Apsu",    "Chaldira Zuzaristan",    "Chamidu",    "Chevaghol",    "Dorasharn",    "Eritrice",    "Falayna",    "Ghenshau",    "Green Faith",    "Gruhastha",    "Hathor",    "Hei Feng",    "Horus",    "Kofusachi",    "Kurgess",    "Lady Nanbyo",    "Lysianassa",    "Milani",    "Nalinivati",    "Nethys",    "Norgorber",    "Osiris",    "Pharasma",    "Qi Zhong",    "Ragdya",    "Razmir",    "Sivanah",    "Spirits of the Land",    "Sulak",    "Sun Wukong",    "Tsukiyo",    "Wadjet",    "Yamatsumi",    "Ydersius",    "Zon-Kuthon"]

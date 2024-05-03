@@ -576,6 +576,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			actual_class_abilities = get_class_abilities(character)		
 			class_ability_desc, class_ability =get_class_abilties_desc(character, actual_class_abilities)
 
+			print("this is the class ability", class_ability)
+			print("this is the class ability desc", class_ability_desc)
+
 						
 			export_list_non_dict = [character.region, character.chosen_race,
 					character_full_name, character.c_class, character.c_class_2, 

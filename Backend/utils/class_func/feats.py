@@ -286,7 +286,7 @@ def simple_list_chooser(character, class_1, *dataset_names, max_num=float('inf')
             dataset_input = getattr(data, dataset_name)
             dataset = character.json_list_grabber(dataset_input, ',', **kwargs)
             print(f"This is your dataset for {dataset_name}: {dataset}")
-            formula_calc = character.formula_grabber(dataset_name, **kwargs)
+            formula_calc = formula_grabber(character, dataset_name, **kwargs)
             if isinstance(dataset, dict):
                 dataset = list(dataset.keys())
             # chosen.append(random.sample(dataset, k=min(formula_calc, max_num)))
@@ -295,7 +295,7 @@ def simple_list_chooser(character, class_1, *dataset_names, max_num=float('inf')
         print(chosen)
         return chosen
 
-def formula_grabber(character,dataset_name):
+def formula_grabber(character, dataset_name):
     formula = getattr(data, 'formulas').get(dataset_name,1)
     print(f'this is your formula {formula}')
     amount = eval(formula)

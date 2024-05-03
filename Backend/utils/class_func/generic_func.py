@@ -52,8 +52,9 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
 
             character.data_dict.update({'class features': chosen_desc})
 
-            character.bonus_feats = character.bonus_searcher(choice, chosen_desc, 'feats')
-            character.bonus_spells = character.bonus_searcher(choice, chosen_desc, 'spells')
+            from Backend.utils.class_func.feats import bonus_searcher
+            character.bonus_feats = bonus_searcher(character, choice, chosen_desc, 'feats')
+            character.bonus_spells = bonus_searcher(character, choice, chosen_desc, 'spells')
             return chosen_desc
         
 
@@ -85,14 +86,15 @@ def get_data_without_prerequisites(self, class_1, dataset_name, level= None, lev
     
     if self.c_class == class_1:
         dataset = getattr(self, class_1, {}).get(dataset_name, {})
+        print("dataset", dataset)
         base = dataset.copy()
-        base_no_prereq = self.no_prereq_loop(base)
+        base_no_prereq = no_prereq_loop(self, base)
         # print(base_no_prereq)
         total_choices = base_no_prereq
 
         if level != None and self.c_class_level >= level:
             dataset.update( getattr(self, class_1, {}).get(dataset_name_2,{}) )
-            dataset_no_prereq = self.no_prereq_loop(dataset)            
+            dataset_no_prereq = no_prereq_loop(self, dataset)            
 
     for i in range(amount):
         chosen = random.choice(total_choices)
@@ -100,7 +102,7 @@ def get_data_without_prerequisites(self, class_1, dataset_name, level= None, lev
         odd = f"{class_1} {2 * i + 1}"
         self.chooseable.update([even, odd, chosen])
 
-        prereq_list = self.no_prereq_loop(base, "prereq_list")
+        prereq_list = no_prereq_loop(self, base, "prereq_list")
 
         chosen_set.add(chosen.lower())
         i = len(chosen_set)
@@ -109,7 +111,7 @@ def get_data_without_prerequisites(self, class_1, dataset_name, level= None, lev
         
         total_choices.append(chosen.lower()) 
         total_choices.extend(prereq_list)
-        total_choices = self.remove_duplicates_list(total_choices)
+        total_choices = remove_duplicates_list(self, total_choices)
         total_choices=list(set(total_choices))
         print(f"These are all your options to choose from: {total_choices}")
 
@@ -121,7 +123,7 @@ def get_data_without_prerequisites(self, class_1, dataset_name, level= None, lev
             break
         
 
-    chosen_dict = self.chosen_set_append(dataset, chosen_set, chosen)
+    chosen_dict = chosen_set_append(self, dataset, chosen_set, chosen)
 
     
 
@@ -216,7 +218,7 @@ def generic_multi_chooser(self, class_1, dataset_name, n, n2=None):
             i = min(len(chosen_set),ii)
 
         chosen_dict = {}
-        pre_chosen_dict = self.chosen_set_muilt_append(dataset, chosen_set, chosen, dataset_name)
+        pre_chosen_dict = chosen_set_muilt_append(self, dataset, chosen_set, chosen, dataset_name)
         chosen_dict.update({dataset_name: pre_chosen_dict})
         self.data_dict.update({'class features': chosen_dict})
         return chosen_dict  
@@ -224,7 +226,7 @@ def generic_multi_chooser(self, class_1, dataset_name, n, n2=None):
 def chosen_set_muilt_append(self, dataset, chosen_set, chosen, dataset_name):
     chosen_dict = {}
     for chosen in chosen_set:
-        chosen_desc = self.get_description(chosen, dataset)
+        chosen_desc = get_description(self, chosen, dataset)
         chosen_dict.update({chosen: chosen_desc})
     return chosen_dict  
 
