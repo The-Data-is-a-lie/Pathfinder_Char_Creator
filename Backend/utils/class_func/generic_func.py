@@ -69,40 +69,40 @@ def chosen_set_append(character, dataset, chosen_set, chosen):
 # End of Generic Class Option Chooser
 
 
-def get_data_without_prerequisites(self, class_1, dataset_name, level= None, level_2 = None, dataset_name_2 = None, odd=None):
+def get_data_without_prerequisites(character, class_1, dataset_name, level= None, level_2 = None, dataset_name_2 = None, odd=None):
 
-    if self.c_class != class_1:
+    if character.c_class != class_1:
         return None
 
     dataset_no_prereq = []
     base_no_prereq = []
     add_advanced_talents = False
-    amount = floor(self.c_class_level/2)
+    amount = floor(character.c_class_level/2)
     chosen_set = set()
 
     if odd == True:
-        amount = ceil(self.c_class_level/2)
+        amount = ceil(character.c_class_level/2)
 
     
-    if self.c_class == class_1:
-        dataset = getattr(self, class_1, {}).get(dataset_name, {})
+    if character.c_class == class_1:
+        dataset = getattr(character, class_1, {}).get(dataset_name, {})
         print("dataset", dataset)
         base = dataset.copy()
-        base_no_prereq = no_prereq_loop(self, base)
+        base_no_prereq = no_prereq_loop(character, base)
         # print(base_no_prereq)
         total_choices = base_no_prereq
 
-        if level != None and self.c_class_level >= level:
-            dataset.update( getattr(self, class_1, {}).get(dataset_name_2,{}) )
-            dataset_no_prereq = no_prereq_loop(self, dataset)            
+        if level != None and character.c_class_level >= level:
+            dataset.update( getattr(character, class_1, {}).get(dataset_name_2,{}) )
+            dataset_no_prereq = no_prereq_loop(character, dataset)            
 
     for i in range(amount):
         chosen = random.choice(total_choices)
         even = f"{class_1} {2 * (i + 1)}"
         odd = f"{class_1} {2 * i + 1}"
-        self.chooseable.update([even, odd, chosen])
+        character.chooseable.update([even, odd, chosen])
 
-        prereq_list = no_prereq_loop(self, base, "prereq_list")
+        prereq_list = no_prereq_loop(character, base, "prereq_list")
 
         chosen_set.add(chosen.lower())
         i = len(chosen_set)
@@ -111,27 +111,27 @@ def get_data_without_prerequisites(self, class_1, dataset_name, level= None, lev
         
         total_choices.append(chosen.lower()) 
         total_choices.extend(prereq_list)
-        total_choices = remove_duplicates_list(self, total_choices)
+        total_choices = remove_duplicates_list(character, total_choices)
         total_choices=list(set(total_choices))
         print(f"These are all your options to choose from: {total_choices}")
 
         chosen_desc = {chosen: dataset.get(chosen, {})}
 
-        if i>= 5 and self.c_class_level >= 10 and level == 10:
+        if i>= 5 and character.c_class_level >= 10 and level == 10:
             add_advanced_talents = True
             total_choices.extend(dataset_no_prereq)                
             break
         
 
-    chosen_dict = chosen_set_append(self, dataset, chosen_set, chosen)
+    chosen_dict = chosen_set_append(character, dataset, chosen_set, chosen)
 
     
 
-    self.data_dict.update({'class features': chosen_dict})
+    character.data_dict.update({'class features': chosen_dict})
     return base_no_prereq, dataset_no_prereq, chosen_set
 
 
-def no_prereq_loop(self, dataset_type, return_choice=None):
+def no_prereq_loop(character, dataset_type, return_choice=None):
     dataset_without_prerequisites = []
     prereq_list = set()
     # print(dataset_type.items())
@@ -148,7 +148,7 @@ def no_prereq_loop(self, dataset_type, return_choice=None):
             # print(f'these are the components {prerequisites_components}')
             # removes both . and proficency
 
-            if prerequisites_components.issubset(self.chooseable) == True:
+            if prerequisites_components.issubset(character.chooseable) == True:
                 prereq_list.add(name.lower())
                 # print(f'total prereq_list: {prereq_list}')
 
@@ -160,12 +160,12 @@ def no_prereq_loop(self, dataset_type, return_choice=None):
     else:
         return dataset_without_prerequisites                
 
-def generic_class_talent_chooser(self, class_1, dataset_name, dataset_name_2 = None):
+def generic_class_talent_chooser(character, class_1, dataset_name, dataset_name_2 = None):
     # Probably incorrect (the 2nd .get(dataset_name))
-    if self.c_class == class_1: 
-        dataset = getattr(self, class_1, {}).get(dataset_name, {}).keys()
+    if character.c_class == class_1: 
+        dataset = getattr(character, class_1, {}).get(dataset_name, {}).keys()
         choice = random.choice(list(dataset)).get(dataset_name,{})
-        description = getattr(self, class_1, {None}).get(dataset_name, {None}).get(choice,{None})
+        description = getattr(character, class_1, {None}).get(dataset_name, {None}).get(choice,{None})
 
         print(choice)
         print(description)   
@@ -173,7 +173,7 @@ def generic_class_talent_chooser(self, class_1, dataset_name, dataset_name_2 = N
         return choice, description     
 
 
-def remove_duplicates_list(self, input_list):
+def remove_duplicates_list(character, input_list):
     seen = set()
     result = []
     for item in input_list:
@@ -182,16 +182,16 @@ def remove_duplicates_list(self, input_list):
             result.append(item)
     return result
 
-def generic_multi_chooser(self, class_1, dataset_name, n, n2=None):
-    if self.c_class == class_1:
-        dataset = getattr(self, class_1, {}).get(dataset_name, {})
+def generic_multi_chooser(character, class_1, dataset_name, n, n2=None):
+    if character.c_class == class_1:
+        dataset = getattr(character, class_1, {}).get(dataset_name, {})
         dataset_list = []
         chosen_set = set()
         chosen_list = []
         chosen_set_desc = []
         i = 0
 
-        level = self.c_class_level   
+        level = character.c_class_level   
         ii = level // 3         
 
         while i < ii:
@@ -218,19 +218,19 @@ def generic_multi_chooser(self, class_1, dataset_name, n, n2=None):
             i = min(len(chosen_set),ii)
 
         chosen_dict = {}
-        pre_chosen_dict = chosen_set_muilt_append(self, dataset, chosen_set, chosen, dataset_name)
+        pre_chosen_dict = chosen_set_muilt_append(character, dataset, chosen_set, chosen, dataset_name)
         chosen_dict.update({dataset_name: pre_chosen_dict})
-        self.data_dict.update({'class features': chosen_dict})
+        character.data_dict.update({'class features': chosen_dict})
         return chosen_dict  
 
-def chosen_set_muilt_append(self, dataset, chosen_set, chosen, dataset_name):
+def chosen_set_muilt_append(character, dataset, chosen_set, chosen, dataset_name):
     chosen_dict = {}
     for chosen in chosen_set:
-        chosen_desc = get_description(self, chosen, dataset)
+        chosen_desc = get_description(character, chosen, dataset)
         chosen_dict.update({chosen: chosen_desc})
     return chosen_dict  
 
-def get_description(self, key, dataset):
+def get_description(character, key, dataset):
     for level_data in dataset.values():
         if key in level_data:
             return level_data[key]

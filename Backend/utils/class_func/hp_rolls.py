@@ -35,5 +35,6 @@ def roll_hp(character):
 
 def total_hp_calc(character):               
     character.Total_HP = character.total_hp_rolls + character.Hit_dice1 + (floor(character.con-10)/2 * character.level)
+    character.sheet_health = character.total_hp_rolls + character.Hit_dice1
     character.Total_HP = floor(character.Total_HP)
     return character.Total_HP

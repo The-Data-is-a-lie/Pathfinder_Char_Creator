@@ -134,7 +134,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='Sorcerer', multi_class='N', alignment_input = 'N' , userInput_gender='', truly_random_feats = "Y", num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='Witch', multi_class='N', alignment_input = 'N' , userInput_gender='', truly_random_feats = "Y", num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()
@@ -592,7 +592,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 alignment,  age_number, 
 				 height_number, weight_number, character.dex, character.str, 
 				 character.con, character.int, character.wis, character.cha, 
-				 flaw, character.Total_HP, character.total_hp_rolls,
+				 flaw, character.Total_HP, character.sheet_health,
 				 character.bab_total,
 				 armor_ac, shield_ac,
 				 armor_name, armor_spell_failure, armor_weight, armor_armor_check_penalty, armor_max_dex_bonus,

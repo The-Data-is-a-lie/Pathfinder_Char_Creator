@@ -390,7 +390,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			print(f"These are your selected traits {selected_traits}")
 
 
-			print(character.Total_HP)
+			print("this is your total HP",character.Total_HP)
+			print("this is your total hp rolls",character.total_hp_rolls)
 			print(favored_class_chosen)
 
 			print("line 416")
@@ -578,14 +579,13 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 			print("this is the class ability", class_ability)
 			print("this is the class ability desc", class_ability_desc)
-
-						
+			class_features = character.data_dict['class features']
 			export_list_non_dict = [character.region, character.chosen_race,
 					character_full_name, character.c_class, character.c_class_2, 
 					alignment,  age_number, 
 					height_number, weight_number, character.dex, character.str, 
 					character.con, character.int, character.wis, character.cha, 
-					flaw, character.Total_HP, character.total_hp_rolls,
+					flaw, character.Total_HP, character.sheet_health,
 					character.bab_total,
 					armor_ac, shield_ac,
 					armor_name, armor_spell_failure, armor_weight, armor_armor_check_penalty, armor_max_dex_bonus,
@@ -605,7 +605,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					bloodline,
 					background_traits, professions, mannerisms, flaws,
 					hero_points, character.chosen_gender,
-					class_ability_desc, class_ability		
+					class_ability_desc, class_ability,
+					class_features,
 					]
 			
 			string_export_list_non_dict = [
@@ -614,7 +615,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					"alignment", "age_number", 
 					"height_number", "weight_number", "dex", "str", 
 					"con", "int", "wis", "cha", 
-					"flaw", "Total_HP", "total_hp_rolls",
+					"flaw", "Total_HP", "sheet_health",
 					"bab_total",
 					"armor_ac", "shield_ac",
 					"armor_name", "armor_spell_failure", "armor_weight", "armor_armor_check_penalty", "armor_max_dex_bonus",
@@ -634,7 +635,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					"bloodline",
 					"background_traits", "professions", "mannerisms", "flaws",
 					"hero_points", "gender",
-					"class_ability_desc", "class_ability"
+					"class_ability_desc", "class_ability",
+					"class features",
 
 
 					]
