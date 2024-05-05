@@ -271,7 +271,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				
 			# character.anti_paladin_cruelty_chooser()
 			# character.paladin_mercy_chooser()		
-			character.archetype_data()
+			archetype_info = character.archetype_data()
+			print("this is your archetype info", archetype_info)
 
 			# background info
 
@@ -297,7 +298,6 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			generic_class_option_chooser(character,"samurai", "orders")
 			generic_class_option_chooser(character,"warpriest", "blessing")
 			generic_class_option_chooser(character,"inquisitor", "inquisitions")
-			print("line 316")
 			generic_class_option_chooser(character,"oracle", "curses")
 			generic_class_option_chooser(character,"fighter",  dataset_name="armor_train", multiple='yes')
 			generic_class_option_chooser(character,"fighter", dataset_name="weapon_train", multiple='yes')
@@ -307,7 +307,6 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			# orcs get their own added)
 			generic_class_option_chooser(character,"witch", dataset_name="basic", dataset_name_2="greater", dataset_name_3="grand", multiple='yes', level=10, level_2=18)
 
-			print("line 326")
 
 
 			# generic multi choices (with pre-reqs)
@@ -606,7 +605,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					background_traits, professions, mannerisms, flaws,
 					hero_points, character.chosen_gender,
 					class_ability_desc, class_ability,
-					class_features,
+					class_features, archetype_info,
 					]
 			
 			string_export_list_non_dict = [
@@ -636,7 +635,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					"background_traits", "professions", "mannerisms", "flaws",
 					"hero_points", "gender",
 					"class_ability_desc", "class_ability",
-					"class features",
+					"class features", "archetype_info",
 
 
 					]

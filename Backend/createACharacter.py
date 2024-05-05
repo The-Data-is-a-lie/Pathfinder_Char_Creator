@@ -242,10 +242,8 @@ class Character:
         archetypes_list = list(json.keys())
         archetypes_choice = random.choice(archetypes_list)
         archetypes_description = json[archetypes_choice]
-
-
-        print(archetypes_choice)
-        print(archetypes_description)
+        archetype_info = {archetypes_choice: archetypes_description}
+        return archetype_info
         
     def full_data_dictionary(self, data_dict, key, value):
         data_dict[key] = value
