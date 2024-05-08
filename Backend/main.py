@@ -23,6 +23,7 @@ from Backend.utils.class_func.class_specific_feats import class_specific_feats_c
 from Backend.utils.class_func.domain_inquisition import domain_chance, domain_chooser#, inquisition_chooser
 from Backend.utils.class_func.extra_combat_feats import extra_combat_feats
 from Backend.utils.class_func.favored_class import favored_class_calculator, favored_class_option, favored_class_option_chooser
+from Backend.utils.class_func.family_func import randomize_siblings, randomize_parents
 from Backend.utils.class_func.feats import build_selector, chooseable_list, chooseable_list_stats, chooseable_list_class_features, feat_spell_searcher, generic_multi_chooser, simple_list_chooser, generic_feat_chooser
 from Backend.utils.class_func.flag_assign import human_flag_assigner, druidic_flag_assigner
 from Backend.utils.class_func.generic_func import generic_class_option_chooser, get_data_without_prerequisites#, no_prereq_loop, chosen_set_append
@@ -126,7 +127,7 @@ character_json_config = {
 }
 
 # Add a function which allows warpriests to use their caster level + functions but grab cleric spells (possiby use class for spells)
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='wizard', multi_class='N', alignment_input = 'N' , userInput_gender='', truly_random_feats = "N", num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='fighter', multi_class='N', alignment_input = 'N' , userInput_gender='', truly_random_feats = "N", num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
 
 	try:
 			# userInput = input('Create a new character? (y/n): ').lower()
@@ -576,8 +577,18 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			actual_class_abilities = get_class_abilities(character)		
 			class_ability_desc, class_ability =get_class_abilties_desc(character, actual_class_abilities)
 
+			older_brothers, younger_brothers, older_sisters, younger_sisters = randomize_siblings(character)
+			parents = randomize_parents(character)
+			print("this is your parents:", parents)
+			print("this is your older brothers:", older_brothers)
+			print("this is your younger brothers:", younger_brothers)
+			print("this is your older sisters:", older_sisters)
+			print("this is your younger sisters:", younger_sisters)
+
+
 			print("this is the class ability", class_ability)
 			print("this is the class ability desc", class_ability_desc)
+
 			class_features = character.data_dict['class features']
 			export_list_non_dict = [character.region, character.chosen_race,
 					character_full_name, character.c_class, character.c_class_2, 
@@ -606,6 +617,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					hero_points, character.chosen_gender,
 					class_ability_desc, class_ability,
 					class_features, archetype_info,
+					parents, 
+					older_brothers, younger_brothers, 
+					older_sisters, younger_sisters,
 					]
 			
 			string_export_list_non_dict = [
@@ -636,8 +650,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					"hero_points", "gender",
 					"class_ability_desc", "class_ability",
 					"class features", "archetype_info",
-
-
+					"parents",
+					"older_brothers", "younger_brothers", 
+					"older_sisters", "younger_sisters",										
 					]
 			
 			export_list_dict = [ 
