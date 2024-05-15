@@ -76,26 +76,31 @@ def get_data_without_prerequisites(character, class_1, dataset_name, level= None
 
     dataset_no_prereq = []
     base_no_prereq = []
-    add_advanced_talents = False
     amount = floor(character.c_class_level/2)
-    chosen_set = set()
 
     if odd == True:
         amount = ceil(character.c_class_level/2)
 
-    
     if character.c_class == class_1:
         dataset = getattr(character, class_1, {}).get(dataset_name, {})
-        print("dataset", dataset)
         base = dataset.copy()
         base_no_prereq = no_prereq_loop(character, base)
-        # print(base_no_prereq)
         total_choices = base_no_prereq
 
         if level != None and character.c_class_level >= level:
+            print("this is occuring, the advanced talents portion")
             dataset.update( getattr(character, class_1, {}).get(dataset_name_2,{}) )
             dataset_no_prereq = no_prereq_loop(character, dataset)            
 
+        print("dataset", dataset)
+        
+        chosen_set, chosen_desc, chosen_dict = choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, base, level, total_choices)
+
+    character.data_dict.update({'class features': chosen_dict})
+    return base_no_prereq, dataset_no_prereq, chosen_set
+
+def choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, base, level, total_choices):
+    chosen_set = set()
     for i in range(amount):
         chosen = random.choice(total_choices)
         even = f"{class_1} {2 * (i + 1)}"
@@ -107,29 +112,15 @@ def get_data_without_prerequisites(character, class_1, dataset_name, level= None
         chosen_set.add(chosen.lower())
         i = len(chosen_set)
 
-        print(f'This is your chosen set {chosen_set}')
-        
         total_choices.append(chosen.lower()) 
         total_choices.extend(prereq_list)
         total_choices = remove_duplicates_list(character, total_choices)
         total_choices=list(set(total_choices))
-        print(f"These are all your options to choose from: {total_choices}")
 
         chosen_desc = {chosen: dataset.get(chosen, {})}
+        chosen_dict = chosen_set_append(character, dataset, chosen_set, chosen)
 
-        if i>= 5 and character.c_class_level >= 10 and level == 10:
-            add_advanced_talents = True
-            total_choices.extend(dataset_no_prereq)                
-            break
-        
-
-    chosen_dict = chosen_set_append(character, dataset, chosen_set, chosen)
-
-    
-
-    character.data_dict.update({'class features': chosen_dict})
-    return base_no_prereq, dataset_no_prereq, chosen_set
-
+    return chosen_set, chosen_desc, chosen_dict
 
 def no_prereq_loop(character, dataset_type, return_choice=None):
     dataset_without_prerequisites = []
@@ -138,19 +129,17 @@ def no_prereq_loop(character, dataset_type, return_choice=None):
 
     for name, info in dataset_type.items():
             prerequisites = str(info.get("prerequisites", "")).lower()
-            # print(prerequisites)
             try:
                 prerequisites = re.sub(r'\.', '', prerequisites)
+                # print("prerequisites loop:", prerequisites)
+
                 prerequisites_components = set(p.strip().lower() for p in prerequisites.split(","))
             except Exception as e:
                 print("Error:", e)
                 print("prerequisites:", prerequisites)
-            # print(f'these are the components {prerequisites_components}')
-            # removes both . and proficency
 
             if prerequisites_components.issubset(character.chooseable) == True:
                 prereq_list.add(name.lower())
-                # print(f'total prereq_list: {prereq_list}')
 
             if not prerequisites:
                 dataset_without_prerequisites.append(name.lower())
@@ -161,7 +150,6 @@ def no_prereq_loop(character, dataset_type, return_choice=None):
         return dataset_without_prerequisites                
 
 def generic_class_talent_chooser(character, class_1, dataset_name, dataset_name_2 = None):
-    # Probably incorrect (the 2nd .get(dataset_name))
     if character.c_class == class_1: 
         dataset = getattr(character, class_1, {}).get(dataset_name, {}).keys()
         choice = random.choice(list(dataset)).get(dataset_name,{})

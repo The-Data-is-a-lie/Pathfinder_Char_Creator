@@ -109,6 +109,7 @@ def build_selector(character):
     specialty_set = {'cleric', 'druid'}
     type_chance = random.choices(range(1, 101))[0]
     feat_list = []
+
     if character.bab == 'H' or (character.bab == 'M' and casting_level_str not in ('low', 'mid', 'high')):
         add_martial_feats(character, feat_list)
     if character.bab == 'L' and casting_level_str != 'none':
@@ -120,10 +121,11 @@ def build_selector(character):
             add_magical_feats(character, feat_list)
     if character.c_class in specialty_set:
         add_specialty_feats(character, feat_list)
+
     result_dict_pre = feat_spell_searcher(character, character.c_class, feat_list, "feats", "prerequisites", "description")
     result_dict = transform_result_dict(character, result_dict_pre)
-    all_feats, _, build_selector_feats = get_feats_without_prerequisites(character, character.c_class, result_dict, character.feat_amounts)
-    cleaned_chosen_feats = capitalize_feats(character, all_feats)
+    chosen_feats = get_feats_without_prerequisites(character, character.c_class, result_dict, character.feat_amounts)
+    cleaned_chosen_feats = capitalize_feats(character, chosen_feats)
     return cleaned_chosen_feats
 
 
@@ -178,61 +180,45 @@ def transform_result_dict(character, result_dict):
     return result_dict
 
 
-def get_feats_without_prerequisites(character, class_1, dataset_name, level= None, level_2 = None, dataset_name_2 = None, odd=None, feat_amount=None):
+def get_feats_without_prerequisites(character, class_1, dataset_name, level= None, level_2 = None, dataset_name_2 = None, feat_amount=None):
 
     if character.c_class != class_1:
         return None
 
-    dataset_no_prereq = []
     base_no_prereq = []
-    add_advanced_talents = False
-    amount = floor(character.c_class_level/2)
-    chosen_set = set()
-
-    if odd == True and amount == None:
-        amount = ceil(character.c_class_level/2)
-    else:
-        amount = feat_amount
-    
-
+    amount = ceil(character.c_class_level/2)
     
     dataset = dataset_name
     base = dataset.copy()
     base_no_prereq = no_prereq_loop(character, base)
-    print(base_no_prereq)
     total_choices = base_no_prereq
-    i = 0
 
     if amount == None:
         amount = 0
 
+    chosen_feats = choosing_feats(character, amount, base, total_choices)
+
+    return chosen_feats
+
+def choosing_feats(character, amount, base, total_choices):
+    chosen_feats = set()
+    i = 0
     while i < amount + 1:
-        print(f'This is your total choices {total_choices}')
         chosen = random.choice(total_choices)
-
-        chooseable_list_class(character,i,character.c_class,character.c_class_level, base=0, th='th')
-
+        print(f"this is the {i}th choice and this is your {chosen}")
         prereq_list = no_prereq_loop(character, base, "prereq_list")
-
-        chosen_set.add(chosen.lower())
-        i = len(chosen_set)
+        print("this is your prereq list", prereq_list)
+        chosen_feats.add(chosen.lower())
+        i = len(chosen_feats)
         
         total_choices.append(chosen.lower()) 
         total_choices.extend(prereq_list)
         total_choices = remove_duplicates_list(character, total_choices)
         total_choices=list(set(total_choices))
-        # print(f"this is total choices {total_choices}")
-        # print(f'this is your chosen {chosen}')
-        # print(f'This is your chosen set {chosen_set}')
-        # print(f"These are all your options to choose from: {total_choices}")
-        # print(f"this is your len {len(chosen_set)}")
-        # print(f"this is your i {i}")
-        # print(f"this is your amount {amount}")
 
         character.chooseable.add(chosen)
-
-    return base_no_prereq, dataset_no_prereq, chosen_set
-
+        
+    return chosen_feats
 
 def generic_feat_chooser(character, class_1,feat_type, info_column):
     if class_1 == character.c_class:
@@ -241,19 +227,14 @@ def generic_feat_chooser(character, class_1,feat_type, info_column):
         query_i = feat_data.loc[(feat_data['type'] == feat_type.capitalize()) | (feat_data['type'] == 'General'), extraction_list]
         query_i = query_i.drop_duplicates(subset='name', keep='first')
         feat_result_dict = query_i.set_index('name')[['prerequisites', 'description']].to_dict(orient='index')
-        # feat_result_dict = character.remove_mythic('feats',feat_data,query_i, info_column)   
-        # feat_result_dict = character.remove_dots_dashes(feat_result_dict, query_i, info_column)
         feat_result_dict = transform_result_dict(character, feat_result_dict)
 
         feat_result_dict.update(feat_result_dict)
 
-        # print(f' post transform result_dict {feat_result_dict}')
-        _, _, chosen_feats = get_feats_without_prerequisites(character, character.c_class, feat_result_dict, feat_amount= character.feat_amounts)
-        chosen_feats = list(chosen_feats)
+        chosen_feats = get_feats_without_prerequisites(character, character.c_class, feat_result_dict, feat_amount= character.feat_amounts)
         chosen_feats.remove("")
         cleaned_chosen_feats = capitalize_feats(character, chosen_feats)
         character.chosen_feats = cleaned_chosen_feats
-        print(f'These are your chosen feats {cleaned_chosen_feats}')
 
         return cleaned_chosen_feats
     

@@ -19,7 +19,7 @@ from Backend.utils.class_func.armor_and_weapon_chooser import armor_chooser, wea
 from Backend.utils.class_func.chooseable import chooseable_list, chooseable_list_race#, chooseable_list_class 
 from Backend.utils.class_func.class_ability_amount import class_abilities_amount
 from Backend.utils.class_func.class_abilities import get_class_abilities, get_class_abilties_desc  
-from Backend.utils.class_func.class_specific_feats import class_specific_feats_chooser, feat_chooser, monk_feats_chooser, ranger_feats_chooser
+from Backend.utils.class_func.class_specific_feats import class_specific_feats_chooser, extra_feat_number, monk_feats_chooser, ranger_feats_chooser
 from Backend.utils.class_func.domain_inquisition import domain_chance, domain_chooser#, inquisition_chooser
 from Backend.utils.class_func.extra_combat_feats import extra_combat_feats
 from Backend.utils.class_func.favored_class import favored_class_calculator, favored_class_option, favored_class_option_chooser
@@ -127,7 +127,7 @@ character_json_config = {
 }
 
 # Add a function which allows warpriests to use their caster level + functions but grab cleric spells (possiby use class for spells)
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='fighter', multi_class='N', alignment_input = 'N' , userInput_gender='', truly_random_feats = "N", num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='rogue', multi_class='N', alignment_input = 'N' , userInput_gender='', truly_random_feats = "N", num_dice=3, num_sides=6, high_level=30, low_level=30, gold_num=1000000):
 
 	try:
 			# userInput = input('Create a new character? (y/n): ').lower()
@@ -520,7 +520,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 			# Start of Extra feats selection Section
    
-			extra_feats = feat_chooser(character, character.total_feats, character.class_feats)
+			extra_feats = extra_feat_number(character, character.total_feats, character.class_feats)
+			print("this is character.class_feats", character.class_feats)
+			print("this is chracter.total_feats")
 			character.feats.extend(extra_feats)
 
 			#class specific feats choosers
@@ -546,22 +548,16 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 						character.feats = generic_feat_chooser(character, character.c_class,'metamagic',info_column = 'description')					
 					else:
 						character.feats = generic_feat_chooser(character, character.c_class,'combat',info_column = 'description')
+				else:
+					character.feats = generic_feat_chooser(character, character.c_class,'combat', info_column = 'description')
+
+				
 
 			else:
-				print("build selector is being activated")
-				# Curated List of feats
 				build_selector_feats = build_selector(character)
-				print("these are your extra feats", build_selector_feats)
-				chosen_feats = random.sample(build_selector_feats,k=character.feat_amounts)
-				character.feats.extend(chosen_feats)
-
-				print("this is your giga chosen feats", chosen_feats)
-				character.feats.extend(chosen_feats)
-		
-
+				character.feats.extend(build_selector_feats)
 
 			print(f"this is your chosen feats {character.feats}")
-
 			print("this is your language text", language_text)
 
 			feats = character.feats
@@ -775,10 +771,3 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		#auto add SR
 		#auto add Resource Pool
 		#auto add Resistances
-
-		# human_feat()
-		# druidic_language()
-		
-
-
-

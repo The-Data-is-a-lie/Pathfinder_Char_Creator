@@ -19,7 +19,7 @@ from Backend.utils.class_func.armor_and_weapon_chooser import armor_chooser, wea
 from Backend.utils.class_func.chooseable import chooseable_list, chooseable_list_race#, chooseable_list_class 
 from Backend.utils.class_func.class_abilities import get_class_abilities, get_class_abilties_desc  
 from Backend.utils.class_func.class_ability_amount import class_abilities_amount
-from Backend.utils.class_func.class_specific_feats import class_specific_feats_chooser, feat_chooser, monk_feats_chooser, ranger_feats_chooser
+from Backend.utils.class_func.class_specific_feats import class_specific_feats_chooser, extra_feat_number, monk_feats_chooser, ranger_feats_chooser
 from Backend.utils.class_func.domain_inquisition import domain_chance, domain_chooser#, inquisition_chooser
 from Backend.utils.class_func.extra_combat_feats import extra_combat_feats
 from Backend.utils.class_func.favored_class import favored_class_calculator, favored_class_option, favored_class_option_chooser
@@ -134,7 +134,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='Witch', multi_class='N', alignment_input = 'N' , userInput_gender='', truly_random_feats = "Y", num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='rogue', multi_class='N', alignment_input = 'N' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=20, low_level=20, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()
@@ -329,6 +329,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 
 		# generic multi choices (with pre-reqs)
+		# This isn't properly adding data with prerequisites, it's only grabbing those without
 		get_data_without_prerequisites(character, class_1="rogue",dataset_name="basic", level=10, dataset_name_2="advanced")
 		get_data_without_prerequisites(character, class_1="ninja",dataset_name="basic", level=10, dataset_name_2="advanced")
 		get_data_without_prerequisites(character, class_1="slayer",dataset_name="basic", level=10, dataset_name_2="advanced")
@@ -552,7 +553,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		
 		# # feat selector(s)
   
-		if truly_random_feats.upper() == "N" or truly_random_feats == False:
+		if truly_random_feats.upper() == "Y":
 		# Truly Random Feats
 		# full casters + mid casters with low BAB
 			casting_level_str = character.classes[character.c_class]['casting level'].lower()
@@ -560,22 +561,21 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					character.feats = generic_feat_chooser(character, character.c_class,'metamagic',info_column = 'description')
 
 			# full casters + mid casters with med BAB
-			elif character.bab == "L" and casting_level_str in ("mid", "high"):
+			elif character.bab == "M" and casting_level_str in ("mid", "high"):
 				random_dice = random.randint(1, 100)
 				if random_dice <= 50:
 					character.feats = generic_feat_chooser(character, character.c_class,'metamagic',info_column = 'description')					
 				else:
 					character.feats = generic_feat_chooser(character, character.c_class,'combat',info_column = 'description')
+			else:
+				character.feats = generic_feat_chooser(character, character.c_class,'combat', info_column = 'description')
 
 		else:
 			# Curated List of feats
+			# build selector can potentially grab high level feats at a lower level (so a 9th rogue can take vital strike any level)
+			# because we run get_data_without_prerequisites before build_selector -> updating character.chooseable
 			build_selector_feats = build_selector(character)
-			print("these are your extra feats", build_selector_feats)
-			chosen_feats = random.sample(build_selector_feats,k=character.feat_amounts)
-			character.feats.extend(chosen_feats)
-
-			print("this is your giga chosen feats", chosen_feats)
-			character.feats.extend(chosen_feats)
+			character.feats.extend(build_selector_feats)
 
 		feats = character.feats
 

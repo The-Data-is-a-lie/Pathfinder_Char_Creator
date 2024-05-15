@@ -45,7 +45,7 @@
         "prerequisites": "",
         "benefits": "you can make a number of bombs per day equal to your int modifier (minimum 1) which act as alchemist's bombs, except deal damage equal to the damage dealt by your sneak attack. "
         },
-        "bomber's discovery (su)": {
+        "bomber's discovery": {
         "prerequisites": "bomber",
         "benefits": "you gain an alchemist's discovery that modifies a bomb. "
         },
@@ -57,7 +57,7 @@
         "prerequisites": "",
         "benefits": "gain a +4 bonus to perception checks. "
         },
-        "card sharp (su)": {
+        "card sharp": {
         "prerequisites": "",
         "benefits": "gain deadly dealer as a bonus feat, even if you do not meet the prerequisites. "
         },
@@ -77,7 +77,7 @@
         "prerequisites": "trained in climb",
         "benefits": "see text. "
         },
-        "cloying shades (su)": {
+        "cloying shades": {
         "prerequisites": "dimension door as a spell or spell-like ability (including from the abundant step or shadow jump class features)",
         "benefits": "all creatures adjacent to you when you dimension door or abundant step or shadow jump at the start and end of your teleportation are entangled by grasping shadows. "
         },
@@ -137,7 +137,7 @@
         "prerequisites": "rogue 6",
         "benefits": "as a full-round action, the rogue can move up to her speed. If she successfully reaches a location that offers her cover or concealment, any creature observing her must attempt a perception check opposed by the rogue's stealth check. On a failed check, the observer loses track of the rogue and fails to note where she moved to. The rogue does not take a penalty on this stealth check for moving up to her speed. "
         },
-        "eldritch conduit (su)": {
+        "eldritch conduit": {
         "prerequisites": "",
         "benefits": "you can use two potions, two wands, or two scrolls as a full-round action (see text for additional requirements and rules). "
         },
@@ -248,7 +248,7 @@
         "prerequisites": "",
         "benefits": "gain aklo, aquan, auran, giant, ignan, sylvan, or terran as a bonus language and can attempt a dc 15 linguistics check to communicate with magical beasts and monstrous humanoids with which you do not share a common language. "
         },
-        "grig jig (su)": {
+        "grig jig": {
         "prerequisites": "int 12",
         "benefits": "1/day target one humanoid within 30 and attempt a perform (dance) check as a full-round action that does not provoke an attack of opportunity. If target fails will save, it begins to dance uncontrollably. "
         },
@@ -288,7 +288,7 @@
         "prerequisites": "",
         "benefits": "gain a bonus on saves against becoming nauseated or sickened. "
         },
-        "just a face in the crowd (su)": {
+        "just a face in the crowd": {
         "prerequisites": "",
         "benefits": "you gain a bonus equal to half your class level on disguise and perception checks when 10 or more creatures of your size are within 30 feet of you. "
         },
@@ -296,7 +296,7 @@
         "prerequisites": "",
         "benefits": "gain a ki pool with 1 ki point. "
         },
-        "leaf singer (su)": {
+        "leaf singer": {
         "prerequisites": "",
         "benefits": "you can use leaf singer as a bardic performance. "
         },
@@ -324,7 +324,7 @@
         "prerequisites": "",
         "benefits": "use magic items as if you were the correct class. "
         },
-        "magic scion (su)": {
+        "magic scion": {
         "prerequisites": "",
         "benefits": "gain a 1st-level sorcerer bloodline power. "
         },
@@ -369,7 +369,7 @@
         "prerequisites": "",
         "benefits": "once per day, you can choose to not deal sneak attack damage to instead attempt to cloud an opponents vision. "
         },
-        "occult dungeoneer (su)": {
+        "occult dungeoneer": {
         "prerequisites": "",
         "benefits": "you can use spell-trigger and spell-completion items as if the following spells were on a spell list to which you have access: detect secret doors, detect traps, knock, locate object, and obscure object. If the spell-trigger device allows a wielder to apply his own caster level (such as with a staff), you may use your class level as your caster level. You may also use knock as a supernatural ability once per day, using your rogue level as your caster level. "
         },
@@ -433,7 +433,7 @@
         "prerequisites": "",
         "benefits": "1/day, roll two dice while attempting a sleight of hand check and take the better result"
         },
-        "rapid perception (su)": {
+        "rapid perception": {
         "prerequisites": "Investigator: expanded inspiration. ",
         "benefits": "you can attempt a perception check to intentionally search for a specific item or creature as a swift action instead of a move action. If searching for an invisible creature, the creatures bonus on its stealth check from its invisibility is halved. "
         },
@@ -469,7 +469,7 @@
         "prerequisites": "",
         "benefits": "you can roll twice and take the better result on saving throws against divination (scrying) spells and effects, on perception checks to notice scrying sensors, and on caster level checks to overcome spell resistance when you use a scrying spell or effect. "
         },
-        "scry slip (su)": {
+        "scry slip": {
         "prerequisites": "",
         "benefits": "this talent wards you and any objects you are holding or carrying vs. Scrying effects. Whenever you are targeted by a scrying effect that allows a will save, the caster must succeed at a cl check (dc = 15 + the rogues class level). "
         },
@@ -477,7 +477,7 @@
         "prerequisites": "",
         "benefits": "when you successfully hit a target with a sneak attack in melee, you can choose to forgo your additional sneak attack damage to make the target more vulnerable to one of your allies adjacent to it. The first melee attack that ally makes against the target before the beginning of your next turn treats the target as flanked, even if your ally is not flanking the target. This has no effect on creatures you could not flank with that ally, even if the ally was properly positioned. "
         },
-        "shadows chill (su)": {
+        "shadows chill": {
         "prerequisites": "cold resistance racial trait",
         "benefits": "when you hit a creature with a melee weapon that deals sneak attack damage, a number of points of the damage dealt equal to the number of sneak attack dice rolled is cold damage. The remainder of the sneak attack damage and the normal weapon damage are unaffected. "
         },
@@ -493,7 +493,7 @@
         "prerequisites": "",
         "benefits": "you choose one poison as your signature poison and when you use the chosen poison, the poisons saving throw dc increases by +2. "
         },
-        "silencing strike (su)": {
+        "silencing strike": {
         "prerequisites": "",
         "benefits": "when a creature is damaged by the rogues sneak attack, the rogue magically renders the creature mute for 1 round unless it succeeds at a will save (dc = 10 + half the rogues level + the rogues charisma modifier). Silencing strike can be used a number of times per day equal to half the rogues level. "
         },
@@ -521,7 +521,7 @@
         "prerequisites": "",
         "benefits": "gain sneak attack on ranged attacks"
         },
-        "spell storing (su)": {
+        "spell storing": {
         "prerequisites": "use magic device 1 rank",
         "benefits": "you can store a spell of up to 2nd level within yourself. "
         },
@@ -581,7 +581,7 @@
         "prerequisites": "",
         "benefits": "gain a favored terrain"
         },
-        "the whole time (su)": {
+        "the whole time": {
         "prerequisites": "",
         "benefits": "you can use spell-trigger and spell-completion items as if the following spells were on a spell list to which he has access: greater invisibility, invisibility, and vanish (see description for additional effects). "
         },
@@ -593,7 +593,7 @@
         "prerequisites": "",
         "benefits": "receive a perception check whenever you come within 10 feet of a trap"
         },
-        "umbral gear (su)": {
+        "umbral gear": {
         "prerequisites": "",
         "benefits": "as a standard action while in an area of dim light or darkness, you can coalesce wisps of shadow into a quasi-real, functional item. "
         },
@@ -871,7 +871,7 @@
         "prerequisites": "",
         "benefits": "improve your skill at avoiding attacks of opportunity"
         },
-        "founders blessing (su)": {
+        "founders blessing": {
         "prerequisites": "",
         "benefits": "once per day, choose a skill in which you have no ranks. After 10 minutes, gain a luck bonus equal to your rogue level with that skill, and can attempt checks with that skill as if she were trained in its use. The effects of founders blessing last for 8 hours. "
         },
@@ -911,7 +911,7 @@
         "prerequisites": "",
         "benefits": "add sneak attack damage to all attacks made against one target"
         },
-        "improved shadows chill (su)": {
+        "improved shadows chill": {
         "prerequisites": "cold resistance racial trait, shadows chill",
         "benefits": "sneak attack damage you deal is cold damage"
         },
@@ -935,7 +935,7 @@
         "prerequisites": "",
         "benefits": "make an attack of opportunity when a target is damaged in melee"
         },
-        "petrifying strike (su)": {
+        "petrifying strike": {
         "prerequisites": "",
         "benefits": "whenever you damage a creature with a sneak attack, you also deal 2 points of dexterity damage to that creature as its body petrifies"
         },
@@ -943,7 +943,7 @@
         "prerequisites": "",
         "benefits": "redirect an attack that hits you to another target"
         },
-        "reflexive shadow shield (su)": {
+        "reflexive shadow shield": {
         "prerequisites": "resiliency",
         "benefits": "1/day as an immediate action, gain cold resistance or electricity resistance equal to half the rogues level for 1 round"
         },
@@ -951,11 +951,11 @@
         "prerequisites": "",
         "benefits": "spread rumors"
         },
-        "resonating rumbles (su)": {
+        "resonating rumbles": {
         "prerequisites": "",
         "benefits": "whenever you make a successful sneak attack against a creature with tremorsense, you can subtract 3 dice from the sneak attack damage to prevent the target from using tremorsense for a number of rounds equal to half your rogue level"
         },
-        "see in darkness (su)": {
+        "see in darkness": {
         "prerequisites": "darkvision",
         "benefits": "you gain the see in darkness ability"
         },
@@ -1075,7 +1075,7 @@
         "prerequisites": "assault leader, advanced rogue talents",
         "benefits": "use assault leader an additional 1 time per day for every 5 rogue levels she possesses. "
         },
-        "trap master (ex or su)": {
+        "trap master": {
         "prerequisites": "",
         "benefits": "gain bonuses and abilities related to trap creation. "
         },

@@ -19,7 +19,7 @@ def class_specific_feats_chooser(character, c_class, name_1, name_2, name_3=None
         return character.total_feats
     
 
-def feat_chooser(character, feat_list, num):
+def extra_feat_number(character, feat_list, num):
     feats_chosen = []
     if character.c_class not in ["ranger", "monk", "unchained_monk"]:
         if feat_list != []:
