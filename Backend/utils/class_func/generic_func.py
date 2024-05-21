@@ -15,7 +15,7 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
 
             dataset_2 = getattr(character, class_1, {}).get(dataset_name_2, {})
             dataset_2_list = list(dataset_2.keys())
-            # print(f'This is dataset {dataset}')    
+            # ## print(f'This is dataset {dataset}')    
 
 
             while amount[i] < character.c_class_level:
@@ -36,7 +36,7 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
             character.data_dict['class features'].append(chosen_set_desc)
                 
 
-            print(chosen_set_desc)
+            ## print(chosen_set_desc)
             return chosen_set, chosen_set_desc
 
 
@@ -88,11 +88,11 @@ def get_data_without_prerequisites(character, class_1, dataset_name, level= None
         total_choices = base_no_prereq
 
         if level != None and character.c_class_level >= level:
-            print("this is occuring, the advanced talents portion")
+            ## print("this is occuring, the advanced talents portion")
             dataset.update( getattr(character, class_1, {}).get(dataset_name_2,{}) )
             dataset_no_prereq = no_prereq_loop(character, dataset)            
 
-        print("dataset", dataset)
+        ## print("dataset", dataset)
         
         chosen_set, chosen_desc, chosen_dict = choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, base, level, total_choices)
 
@@ -125,18 +125,19 @@ def choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, bas
 def no_prereq_loop(character, dataset_type, return_choice=None):
     dataset_without_prerequisites = []
     prereq_list = set()
-    # print(dataset_type.items())
+    # ## print(dataset_type.items())
 
     for name, info in dataset_type.items():
             prerequisites = str(info.get("prerequisites", "")).lower()
             try:
                 prerequisites = re.sub(r'\.', '', prerequisites)
-                # print("prerequisites loop:", prerequisites)
+                # ## print("prerequisites loop:", prerequisites)
 
                 prerequisites_components = set(p.strip().lower() for p in prerequisites.split(","))
             except Exception as e:
-                print("Error:", e)
-                print("prerequisites:", prerequisites)
+                ## print("Error:", e)
+                ## print("prerequisites:", prerequisites)
+                print("")
 
             if prerequisites_components.issubset(character.chooseable) == True:
                 prereq_list.add(name.lower())
@@ -155,8 +156,8 @@ def generic_class_talent_chooser(character, class_1, dataset_name, dataset_name_
         choice = random.choice(list(dataset)).get(dataset_name,{})
         description = getattr(character, class_1, {None}).get(dataset_name, {None}).get(choice,{None})
 
-        print(choice)
-        print(description)   
+        ## print(choice)
+        ## print(description)   
 
         return choice, description     
 
@@ -183,8 +184,8 @@ def generic_multi_chooser(character, class_1, dataset_name, n, n2=None):
         ii = level // 3         
 
         while i < ii:
-            # print(dataset)
-            # print(dataset.keys())
+            # ## print(dataset)
+            # ## print(dataset.keys())
             if n2 != None:
                 level = (n // n2 * (i + 1))
                 string_level = str(max(level,4))
@@ -192,7 +193,7 @@ def generic_multi_chooser(character, class_1, dataset_name, n, n2=None):
                 string_level = str((n * (i + 1)))
 
             dataset_list += dataset.get(string_level, [])
-            print(f'This is your chooseable dataset {dataset_list}')
+            ## print(f'This is your chooseable dataset {dataset_list}')
             chosen = random.choice(dataset_list)
             chosen_set.add(chosen)
 
@@ -202,7 +203,7 @@ def generic_multi_chooser(character, class_1, dataset_name, n, n2=None):
                 if condition not in chosen_set:
                     chosen_set.discard(item)
 
-            print(chosen_set)
+            ## print(chosen_set)
             i = min(len(chosen_set),ii)
 
         chosen_dict = {}

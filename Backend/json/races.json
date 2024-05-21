@@ -198,7 +198,7 @@
         }
         },
     
-    "Half-elf": {
+    "Half-Elf": {
         "age": [20, "3d31"],
         "height": [55, "2d10"],
         "weight": [100, "3d31"],
@@ -211,7 +211,8 @@
         }
     },
 
-    "Half-orc": {
+    "Half-Orc": {
+        "age": [10, "2d20"],
         "height": [58, "2d10"],
         "weight": [150, "3d31"],
         "size": "Medium",
@@ -439,7 +440,7 @@
     }
 },
 
-    "D-ziriak": {
+    "D-Ziriak": {
         "age": [18, "5d6"],
         "height": [58, "4d10"],
         "weight": [90, "4d31"],

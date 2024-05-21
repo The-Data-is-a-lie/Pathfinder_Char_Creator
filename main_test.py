@@ -1,8 +1,5 @@
 #Custom Made Imports
 from Backend.createACharacter import CreateNewCharacter
-from Backend.utils.markdown import style
-from Backend.utils.data import version
-from Backend.utils.util import  chooseClass, region_chooser, race_chooser, weapon_chooser, name_chooser, dip_function, gender_chooser, format_text, isBool#, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
 import random
 from math import ceil, floor
 from flask import jsonify
@@ -10,7 +7,12 @@ import json
 import traceback
 
 
-# Importing custom functions
+# utils imports
+from Backend.utils.data import version
+from Backend.utils.util import  chooseClass, region_chooser, race_chooser, weapon_chooser, name_chooser, dip_function, gender_chooser, format_text, isBool#, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
+from Backend.utils.markdown import style
+
+# class_func imports
 from Backend.utils.class_func.alignment_and_deity import randomize_deity, choose_alignment
 from Backend.utils.class_func.animal_companions import animal_chooser, animal_feats
 from Backend.utils.class_func.appearance import randomize_apperance_attr, randomize_body_feature, get_racial_attr
@@ -59,7 +61,7 @@ character_data = {}
 # from Backend.utils.Text_to_pdf_Best_Version_9_28_23
 
 #only location you need to specify where you want text files to be created at
-print(style.BOLD + f'Welcome to the D&D Random Character Generator ({version})' + style.END)
+## print(style.BOLD + f'Welcome to the D&D Random Character Generator ({version})' + style.END)
 
 # assuming we are creating new character
 # character = Character()
@@ -134,12 +136,12 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='rogue', multi_class='N', alignment_input = 'N' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=20, low_level=20, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=0, userInput_race=2, class_choice='', multi_class='N', alignment_input = '' , userInput_gender='', truly_random_feats = "N", num_dice=6, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()
 		userInput = create_new_char
-		print(f'Create a new character? ({create_new_char.lower()})')
+		## print(f'Create a new character? ({create_new_char.lower()})')
 
 		#end of region macro
 		# format_text(text, bold=False, color=None)
@@ -159,10 +161,10 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		#add an optional flaws rule function	
 		alignment = choose_alignment(character, 'alignments', alignment_input)
 		alignment = alignment.title()
-		print(f"This is your randomly selected alignment: {alignment}")
+		## print(f"This is your randomly selected alignment: {alignment}")
 		
 		deity = randomize_deity(character)
-		print(f"This is your randomly selected deity: {deity}")
+		## print(f"This is your randomly selected deity: {deity}")
 
 		age, age_number = randomize_body_feature(character, 'age')
 		height, height_number = randomize_body_feature(character, 'height')
@@ -173,9 +175,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		assign_stats(character, stats)
 
 		chosen_subrace, subrace_description = subrace_chooser(character)
-		print(f'this is your chosen subrace {chosen_subrace}')
+		## print(f'this is your chosen subrace {chosen_subrace}')
 		race_traits_list, race_traits_description_list = race_traits_chooser(character)
-		print(race_traits_list, race_traits_description_list)
+		## print(race_traits_list, race_traits_description_list)
 
 		split_race_traits_list = race_ability_split(character, race_traits_list)
 		character.dex = race_ability_score_changes(character, split_race_traits_list, character.dex, 'dex')
@@ -200,6 +202,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		roll_hp(character)
 		character.Total_HP = total_hp_calc(character)
 
+		#don't comment out this code:
 		print(f'This is your class for spells: {class_for_spells_attr(character)} ')
 
 		# Some spellcasters get 0th level spells (all high + most mid)
@@ -209,8 +212,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		# it won't pull any 0th spells for casters with orisons/cantrips
 		character.highest_spell_known_1 = caster_formula(character, character.c_class_level)
 		character.highest_spell_known_2 = caster_formula(character, character.c_class_2_level, character.c_class_2)
-		print(type(character.c_class_2))
-		print(character.c_class_2)
+		## print(type(character.c_class_2))
+		## print(character.c_class_2)
 
 		#Divine Casters have all spells known (don't make this function for them)
 		print(f'This is your spells known list {spells_known_attr(character, "base_classes", "divine_casters")}')
@@ -219,7 +222,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		print(f'Spells known + extra randomized spells known [spell book learners only] {spells_known_extra_roll(character )}')		
 
 		character.spell_list_choose_from, day_list, known_list = spells_known_selection(character, 'base_classes','divine_casters')
-		print(f"This is your spells list you can choose from {character.spell_list_choose_from}")
+		## print(f"This is your spells list you can choose from {character.spell_list_choose_from}")
 
 
 
@@ -229,7 +232,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		class_abilities_amount(character)
 
 
-		# print(f"This is your selected feats: {character.feats_selector()}")
+		# ## print(f"This is your selected feats: {character.feats_selector()}")
 
 		#this is to allow for talent choice stat pre-reqs (self.chooseable)
 		chooseable_list(character) 		
@@ -370,10 +373,10 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		### Need to change up the item_chooser function ###
 
 		armor_chooser(character)
-		print(f'This is your gold pre items {character.assign_gold("gold", gold_num)}')
-		print(f'This is your armor type {character.armor_type}')
+		## print(f'This is your gold pre items {character.assign_gold("gold", gold_num)}')
+		## print(f'This is your armor type {character.armor_type}')
 		equipment_list, equip_descrip = item_chooser(character)
-		print(f'This is your gold post items {character.gold}')	
+		## print(f'This is your gold post items {character.gold}')	
 
 		#calculating savings throws based off of class levels
 		fort_saving_throw = saving_throw_calc(character, 'Fortitude')
@@ -382,7 +385,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 		skill_ranks = skills_selector(character, 'skills', skill_rank_level)
 		professions = profession_chooser(character, "professions")		
-		print(f'This is your chosen professions {professions}')		
+		## print(f'This is your chosen professions {professions}')		
 
 		simple_list_chooser(character, 'ranger','favored_terrains', 'favored_enemies')
 		simple_list_chooser(character, 'brawler','manuevers',max_num=8)
@@ -409,15 +412,15 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		armor_enhancement_chosen_list = enhancement_chooser(character, character.armor_qualities,armor_enhancement, 'Armor')
 		shield_enhancement_chosen_list = enhancement_chooser(character, character.armor_qualities,shield_enhancement, 'Shield', character.shield_flag)
 
-		print('these are your chosen enhancements **************************')
-		print(weapon_enhancement_chosen_list, armor_enhancement_chosen_list, shield_enhancement_chosen_list)
+		## print('these are your chosen enhancements **************************')
+		## print(weapon_enhancement_chosen_list, armor_enhancement_chosen_list, shield_enhancement_chosen_list)
 
 		selected_traits = trait_selector(character, 8)
-		print(f"These are your selected traits {selected_traits}")
+		## print(f"These are your selected traits {selected_traits}")
 
 
-		print(character.Total_HP)
-		print(favored_class_chosen)
+		## print(character.Total_HP)
+		## print(favored_class_chosen)
 
 
 		# pre export data manip start
@@ -431,22 +434,22 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		language_text = language_chooser(character)
 
 
-		print(f'this is your language list {language_chooser(character)}')
+		## print(f'this is your language list {language_chooser(character)}')
 
 		character_full_name = f_name + ' ' + l_name
 
 		deity_name = deity["Name"]
 
-		print("this is your skill ranks", skill_ranks)
+		## print("this is your skill ranks", skill_ranks)
 
 
 		skill_ranks = json.dumps(skill_ranks)		
-		print("this is your items list", character.items.keys())
-		print("this is your equipment list length", len(equipment_list))
-		print("this is your equipment list length", len(character.items.keys()))
+		## print("this is your items list", character.items.keys())
+		## print("this is your equipment list length", len(equipment_list))
+		## print("this is your equipment list length", len(character.items.keys()))
 
-		print("this is your armor dict", character.armor_dict)
-		print("this is your shield dict", character.shield_dict)
+		## print("this is your armor dict", character.armor_dict)
+		## print("this is your shield dict", character.shield_dict)
 
 
 		if isinstance(character.armor_dict, dict):
@@ -465,8 +468,8 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			armor_weight = 0
 			armor_max_dex_bonus = 0
 
-		print("This is your armor variables: ",armor_name, armor_spell_failure, armor_weight, armor_armor_check_penalty)
-		print(character.armor_dict.keys())
+		## print("This is your armor variables: ",armor_name, armor_spell_failure, armor_weight, armor_armor_check_penalty)
+		## print(character.armor_dict.keys())
 
 
 		if isinstance(character.shield_dict, dict) and character.shield_dict != None:
@@ -520,12 +523,12 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 
 
-		print('school + domain + bloodline + opposing school')
-		print(school)
-		print(opposing_school)
-		print(bloodline)
+		## print('school + domain + bloodline + opposing school')
+		## print(school)
+		## print(opposing_school)
+		## print(bloodline)
 		character.bloodline = bloodline
-		print(full_domain)
+		## print(full_domain)
 
 
 	# end of pre export data manip
@@ -549,7 +552,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		monk_feats_chooser(character)
 			
 		# feat selector
-		print(f"this is your chosen feat amount {character.feat_amounts}")
+		## print(f"this is your chosen feat amount {character.feat_amounts}")
 		
 		# # feat selector(s)
   
@@ -559,7 +562,6 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			casting_level_str = character.classes[character.c_class]['casting level'].lower()
 			if character.bab == "L" and casting_level_str in ("mid", "high"):
 					character.feats = generic_feat_chooser(character, character.c_class,'metamagic',info_column = 'description')
-
 			# full casters + mid casters with med BAB
 			elif character.bab == "M" and casting_level_str in ("mid", "high"):
 				random_dice = random.randint(1, 100)
@@ -567,8 +569,11 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					character.feats = generic_feat_chooser(character, character.c_class,'metamagic',info_column = 'description')					
 				else:
 					character.feats = generic_feat_chooser(character, character.c_class,'combat',info_column = 'description')
-			else:
+			elif character.bab in ("H", "M"):
 				character.feats = generic_feat_chooser(character, character.c_class,'combat', info_column = 'description')
+			else:
+				character.feats = generic_feat_chooser(character, character.c_class,'metamagic',info_column = 'description')
+				
 
 		else:
 			# Curated List of feats
@@ -656,12 +661,20 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		character.export_list_non_dict(export_list_non_dict, string_export_list_non_dict)		
 		character.export_list_dict(export_list_dict, string_export_list_dict)		
 
-		print(f'this is your character data {character.data_dict}')
+		# print(f'this is your character data {character.data_dict}')
 
 		return character.data_dict
 
-generate_random_char()
+# iterations = 1
+# for _ in range(iterations):
+#     try:
+#         generate_random_char()
+#     except Exception as e:
+#         print(f"An error occurred: {str(e)}")
+#         traceback.print_exc()
+#         break
 
+generate_random_char()
 
 # Add a Subrace Chooser (+ race benefits -> webscrape race data)
 # Add an attack macro section (so we know what attack macros someone will get (like +22/+22/+17/+17/+12/+12/+7/+7/+2/ or similar))
@@ -689,34 +702,34 @@ generate_random_char()
 		# add a spontaneous caster option as well (so sorcs + wizs get spells known at right level)
 
 
-		# print(f"Racial traits: {character.get_racial_attr('traits')}")	
+		# ## print(f"Racial traits: {character.get_racial_attr('traits')}")	
 
-		# print(f"racial languages: {character.get_racial_attr('languages')}")
-		# print(f"racial size: {character.get_racial_attr('size')}")
-		# print(f"racial speed: {character.get_racial_attr('speed')}")					
-		# print(f"Ability Scores for {character.get_racial_attr('ability scores')}")												
+		# ## print(f"racial languages: {character.get_racial_attr('languages')}")
+		# ## print(f"racial size: {character.get_racial_attr('size')}")
+		# ## print(f"racial speed: {character.get_racial_attr('speed')}")					
+		# ## print(f"Ability Scores for {character.get_racial_attr('ability scores')}")												
 		
 							
 
 
 
-		# print(f' This is your alignment {character.randomize_alignment("alignments")}')
+		# ## print(f' This is your alignment {character.randomize_alignment("alignments")}')
 
-		# print(f'This is your Deity {character.randomize_deity("all_deities")}')
+		# ## print(f'This is your Deity {character.randomize_deity("all_deities")}')
 
 		# # skill rank generator (class ranks + int)*level
 
 
 
 		# Archetype_Assigner(character)
-		# print(f'This is your gold {character.assign_gold("gold")}')
+		# ## print(f'This is your gold {character.assign_gold("gold")}')
 		# #use gold to randomly select items
 
 
 
 		
 
-		# print(f'This is your mythic rank {randomize_mythic(character)}')
+		# ## print(f'This is your mythic rank {randomize_mythic(character)}')
 
 		# #creating quick race/class specific flags 
 
@@ -724,10 +737,10 @@ generate_random_char()
 		# #3PP Content Only
 		# # Path of War Content
 		# randomize_path_of_war_num(character, "path_of_war_class")
-		# print(f'This is your Path of War Path {choose_path_of_war_attr(character, "disciplines")}')
+		# ## print(f'This is your Path of War Path {choose_path_of_war_attr(character, "disciplines")}')
 
 		# #Luck Content
-		# print(f'this is your luck score {randomize_luck(character)}')
+		# ## print(f'this is your luck score {randomize_luck(character)}')
 
 
 

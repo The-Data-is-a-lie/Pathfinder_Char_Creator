@@ -160,7 +160,7 @@
       {
         "Name": ["Gorum"],
         "Portfolio": ["Strength", "battle", "weapons"],
-        "Worshipers": ["Soldiers", "mercenaries", "brigands", "bloodthirsty savages", "half-orcs", "barbarians"],
+        "Worshipers": ["Soldiers", "mercenaries", "brigands", "bloodthirsty savages", "Half-Orcs", "barbarians"],
         "Domains": ["Chaos", "Destruction", "Glory", "Strength", "War"],
         "Subdomains": ["Blood", "Ferocity", "Protean", "Rage", "Resolve", "Tactics"]
       },

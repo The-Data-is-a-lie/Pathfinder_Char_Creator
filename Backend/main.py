@@ -37,7 +37,7 @@ from Backend.utils.class_func.luck_and_mythic import randomize_luck, randomize_m
 from Backend.utils.class_func.path_of_war import randomize_path_of_war_num, choose_path_of_war_attr
 from Backend.utils.class_func.personality import randomize_personality_attr
 from Backend.utils.class_func.profession_chooser import profession_chooser
-from Backend.utils.class_func.race_func import  race_ability_score_changes, race_ability_split, race_traits_chooser, subrace_chooser#, full_race_data
+from Backend.utils.class_func.race_func import  race_ability_score_changes, race_ability_split, race_traits_chooser, subrace_chooser#, full_race_data_func
 from Backend.utils.class_func.randomize_flaw import randomize_flaw
 from Backend.utils.class_func.saving_throws import saving_throw_calc
 from Backend.utils.class_func.skill_ranks import skills_selector

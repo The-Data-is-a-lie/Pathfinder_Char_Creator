@@ -53,7 +53,7 @@ def ranger_feats_chooser(character):
                 
             i=len(ranger_feats_chosen_list)
 
-            if ranger_feats_chosen_list == 7:
+            if len(ranger_feats_chosen_list) >= 8 or i >= len(ranger_feats_list):
                 break
 
         print(ranger_feats_chosen_list)
@@ -80,6 +80,11 @@ def monk_feats_chooser(character):
             monk_feats_chosen_list.add(monk_feats_chosen)
                 
             i=len(monk_feats_chosen_list)
+
+
+            if len(monk_feats_chosen_list) >= 8 or i >= len(monk_feats_list):
+                break
+
 
         print(monk_feats_chosen_list)
         character.feats.extend(monk_feats_chosen_list)

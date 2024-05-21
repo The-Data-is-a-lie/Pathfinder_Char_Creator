@@ -130,21 +130,21 @@ enhancement_bonus_mapping = {
 
 # add later
 # "occultist", "kineticist", "medium", "mesmerist", "psychic","spiritualist",
-base_classes = ["alchemist", "antipaladin", "arcanist", "barbarian", "barbarian (unchained)", "bard", "bloodrager", "brawler", "cavalier", "cleric", "druid", "fighter", "gunslinger", "hunter", "inquisitor", "investigator", "magus", "monk", "monk (unchained)", "ninja",  "oracle", "paladin",  "ranger", "rogue", "rogue (unchained)", "samurai", "shaman", "shifter", "skald", "slayer", "sorcerer",  "summoner", "summoner (unchained)", "swashbuckler", "vigilante", "warpriest", "witch", "wizard"]
+base_classes = ["alchemist", "antipaladin", "arcanist", "barbarian", "barbarian _unchained", "bard", "bloodrager", "brawler", "cavalier", "cleric", "druid", "fighter", "gunslinger", "hunter", "inquisitor", "investigator", "magus", "monk", "monk _unchained", "ninja",  "oracle", "paladin",  "ranger", "rogue", "rogue _unchained", "samurai", "shaman", "shifter", "skald", "slayer", "sorcerer",  "summoner", "summoner _unchained", "swashbuckler", "vigilante", "warpriest", "witch", "wizard"]
 
 divine_casters = ['antipaladin', 'cleric', 'druid', 'oracle', 'hunter' ,'inquisitor', 'paladin', 'ranger', 'shaman', 'warpriest']
 #caster spells per day progression
 
 #must match the same order as the weapon_groups_region section
-regions = ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"]
-races = ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-elf", "Half-orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"]
+regions = ["Tal-Falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"]
+races = ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-Ziriak", "Tortugan"]
 weapon_groups = ['Axes', 'Blades, Heavy', 'Blades, Light', 'Bows', 'Close', 'Crossbows', 'Double', 'Firearms', 'Flails', 'Hammers', 'Monk', 'Natural', 'Polearms', 'Siege Engines', 'Spears', 'Thrown', 'Tribal']
 
 manuevers = ["Bull Rush", "Dirty Trick", "Disarm", "Drag", "Grapple", "Overrun", "Reposition", "Steal", "Sunder", "Trip"]
 
 # make weapon group into a dictionary that depends on regions:
 weapon_groups_region = {
-    'Tal-falko': ['Swords', 'Axes', 'Bows'],
+    'Tal-Falko': ['Swords', 'Axes', 'Bows'],
     'Dolestan': ['Maces', 'Spears', 'Wands'],
     'Sojoria': ['Swords', 'Bows', 'Wands'],
     'Ieso': ['Axes', 'Maces', 'Spears'],
@@ -1697,7 +1697,7 @@ professions = [
     "Silversmith",
     "Bookbinder",
     "Papermaker",
-    "Printer",
+    "printer",
     "Apothecary",
     "Physician",
     "Surgeon",
@@ -1848,7 +1848,7 @@ professions = [
     "Plasterer",
     "Roofer",
     "Glassblower",
-    "Printer",
+    "printer",
     "Bookkeeper",
     "Banker",
     "Moneylender",
@@ -1913,7 +1913,7 @@ professions = [
     "Bishop",
     "Cardinal",
     "Pope",
-    "Perfumer",    "Glassblower",    "Weaver",    "Potter",    "Tinker",    "Cooper",    "Fencer",    "Falconer",    "Innkeeper",    "Soapmaker",    "Groom",    "Goldsmith",    "Charcoal Maker",    "Printer",    "Armorer",    "Beekeeper",    "Herbalist",    "Locksmith",    "Cobbler",    "Furrier",    "Hatter",    "Saddler",    "Tailor",    "Launderer",    "Blacksmith",    "Candlemaker",    "Cook",    "Baker",    "Butcher",    "Cheesemaker",    "Brewer",    "Vintner",    "Apothecary",    "Barber",    "Basket Weaver",    "Boatbuilder",    "Bookbinder",    "Brewster",    "Bricklayer",    "Carpenter",    "Cartographer",    "Chandler",    "Clockmaker",    "Compass Maker",    "Cooper",    "Cutler",    "Dyer",    "Engraver",    "Farrier",    "Fletcher",    "Gemcutter",    "Glazier",    "Glovemaker",    "Grain Miller",    "Harness Maker",    "Hatter",    "Horner",    "Illuminator",    "Jeweler",    "Leatherworker",    "Luthier",    "Mason",    "Metalworker",    "Milliner",    "Musician",    "Painter",    "Parchment Maker",    "Plumber",    "Rope Maker",    "Sculptor",    "Siegemaster",    "Silversmith",    "Spice Merchant",    "Stonemason",    "Tanner",    "Tax Collector",    "Textile Merchant",    "Toolmaker",    "Vellum Maker",    "Weaponsmith",    "Whitesmith",    "Wine Merchant",    "Woodcarver",    "Woodwright",    "Wool Merchant",    "Writer",    "Zincworker",    "Glassmaker",    "Book Seller",    "Map Maker",    "Thatcher",    "Jester",    "Astrologer",    "Alchemist",    "Bailiff",    "Chaplain",    "Cook",    "Falconer",    "Ferryman",    "Ghost",    "Gongfarmer",    "Gravedigger",    "Guide",    "Hedge Witch",    "Herbalist",    "Hunter",    "Jailer",    "Knight",    "Mercenary",    "Miller",    "Miner",    "Monk",    "Nun",    "Noble",    "Pilgrim",    "Pirate",    "Poacher",    "Prostitute",    "Ranger",    "Sailor",    "Scribe",    "Slave",    "Soldier",    "Tinker",    "Trapper",    "Urchin",    "Wanderer",    "Witch",    "Wizard",
+    "Perfumer",    "Glassblower",    "Weaver",    "Potter",    "Tinker",    "Cooper",    "Fencer",    "Falconer",    "Innkeeper",    "Soapmaker",    "Groom",    "Goldsmith",    "Charcoal Maker",    "printer",    "Armorer",    "Beekeeper",    "Herbalist",    "Locksmith",    "Cobbler",    "Furrier",    "Hatter",    "Saddler",    "Tailor",    "Launderer",    "Blacksmith",    "Candlemaker",    "Cook",    "Baker",    "Butcher",    "Cheesemaker",    "Brewer",    "Vintner",    "Apothecary",    "Barber",    "Basket Weaver",    "Boatbuilder",    "Bookbinder",    "Brewster",    "Bricklayer",    "Carpenter",    "Cartographer",    "Chandler",    "Clockmaker",    "Compass Maker",    "Cooper",    "Cutler",    "Dyer",    "Engraver",    "Farrier",    "Fletcher",    "Gemcutter",    "Glazier",    "Glovemaker",    "Grain Miller",    "Harness Maker",    "Hatter",    "Horner",    "Illuminator",    "Jeweler",    "Leatherworker",    "Luthier",    "Mason",    "Metalworker",    "Milliner",    "Musician",    "Painter",    "Parchment Maker",    "Plumber",    "Rope Maker",    "Sculptor",    "Siegemaster",    "Silversmith",    "Spice Merchant",    "Stonemason",    "Tanner",    "Tax Collector",    "Textile Merchant",    "Toolmaker",    "Vellum Maker",    "Weaponsmith",    "Whitesmith",    "Wine Merchant",    "Woodcarver",    "Woodwright",    "Wool Merchant",    "Writer",    "Zincworker",    "Glassmaker",    "Book Seller",    "Map Maker",    "Thatcher",    "Jester",    "Astrologer",    "Alchemist",    "Bailiff",    "Chaplain",    "Cook",    "Falconer",    "Ferryman",    "Ghost",    "Gongfarmer",    "Gravedigger",    "Guide",    "Hedge Witch",    "Herbalist",    "Hunter",    "Jailer",    "Knight",    "Mercenary",    "Miller",    "Miner",    "Monk",    "Nun",    "Noble",    "Pilgrim",    "Pirate",    "Poacher",    "Prostitute",    "Ranger",    "Sailor",    "Scribe",    "Slave",    "Soldier",    "Tinker",    "Trapper",    "Urchin",    "Wanderer",    "Witch",    "Wizard",
     "Embroiderer", "Herbalist",
     "Scabbard Maker", "Chandler",
     "Candle Maker", "Lamp Lighter",
@@ -1923,7 +1923,7 @@ professions = [
     "Alchemist", "Rug Maker",
     "Bookbinder", "Paper Cutter",
     "Paper Marbler", "Parchment Maker",
-    "Book Printer", "Ink Maker",
+    "Book printer", "Ink Maker",
     "Quill Cutter", "Scribe",
     "Black Powder Maker", "Falconer",
 "Crochet Maker", "Weaver",

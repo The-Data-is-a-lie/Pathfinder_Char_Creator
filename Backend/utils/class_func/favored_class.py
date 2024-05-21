@@ -2,9 +2,9 @@ import random
 from Backend.utils.class_func.race_func import * 
 
 def favored_class_option(character):
-    race_data = full_race_data(character)
+    race_data = full_race_data_func(character)
     favored_class_list = []
-    favored_class_string = race_data.get(character.chosen_race.capitalize(), {}).get(character.c_class.capitalize(), "").strip()
+    favored_class_string = race_data.get(character.chosen_race, {}).get(character.c_class.capitalize(), "").strip()
     favored_class_list.append(favored_class_string)
     favored_class_list.extend(['health', 'skill ranks'])
     return favored_class_list
