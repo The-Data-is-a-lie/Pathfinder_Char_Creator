@@ -592,6 +592,7 @@ def generate_random_char(create_new_char='Y', userInput_region=0, userInput_race
 		actual_class_abilities = get_class_abilities(character)
 		class_ability_desc, class_ability =get_class_abilties_desc(character, actual_class_abilities)
 
+# We 100% need to keep these variables
 		export_list_non_dict = [character.region, character.chosen_race,
 				 character_full_name, character.c_class, character.c_class_2, 
 				 alignment,  age_number, 
@@ -660,6 +661,8 @@ def generate_random_char(create_new_char='Y', userInput_region=0, userInput_race
 
 		character.export_list_non_dict(export_list_non_dict, string_export_list_non_dict)		
 		character.export_list_dict(export_list_dict, string_export_list_dict)		
+
+# this is where it ends
 
 		# print(f'this is your character data {character.data_dict}')
 
