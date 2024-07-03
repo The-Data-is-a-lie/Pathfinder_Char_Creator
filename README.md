@@ -36,8 +36,6 @@ Pending:
 1) Soon, you will be able to visit this website and just click + run there to fulfill all your random character generation needs
 https://pathfinder-1e-character-sheet.netlify.app/
 2) GPT API call to generate a randomized fully fleshed out character backstory
-3) Adding Spheres of Power
-4) Adding Path of War
 
 ## More in-depth explanation
 What it does:
@@ -70,10 +68,14 @@ Example:
 
 In the Works:
 - Spheres of Power / Might (classes + abilities + archetypes )
+- Fully Flesh out Path of War
 - Homebrew feats / races ( Feats + Races that I use in my Pathfinder 1E games)
 - Mythic
 
 - Download the Files or Clone the Repo from here [main.py](https://github.com/Daniel-Grkinich/Pathfinder_Char_Creator.git)  
+
+## Contact
+Please contact me at dgrk99@gmail.com if you have any questions regarding this. My dream is to make this an open-source website that anyone can use to play pathfinder 1e more easily.
 
 ## Requirements
  - Python (>= 3.10)
