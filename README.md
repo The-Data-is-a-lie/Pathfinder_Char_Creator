@@ -33,8 +33,11 @@ To run, you simply need to download the github repository and you can do 1 of 3 
    ( http://localhost:9000/, http://localhost:5000/ )
 
 Pending:
-Soon, you will be able to visit this website and just click + run there to fulfill all your random character generation needs
+1) Soon, you will be able to visit this website and just click + run there to fulfill all your random character generation needs
 https://pathfinder-1e-character-sheet.netlify.app/
+2) GPT API call to generate a randomized fully fleshed out character backstory
+3) Adding Spheres of Power
+4) Adding Path of War
 
 ## More in-depth explanation
 What it does:
