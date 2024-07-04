@@ -2,8 +2,8 @@ import random, re
 from Backend.utils.class_func.race_func import *
 from Backend.utils.data import languages
 def language_chooser(character):
-    full_race_data_grab = full_race_data(character)
-    language_text = full_race_data_grab.get(character.chosen_race, {}).get('Languages', [])        
+    full_race_data_func_grab = full_race_data_func(character)
+    language_text = full_race_data_func_grab.get(character.chosen_race, {}).get('Languages', [])        
     regex = ':(.*)'
     captured_content = regex_search(character,language_text, regex)
     language_list = language_splitter(character,captured_content)
@@ -29,12 +29,12 @@ def language_splitter(character, language_text):
         pre_language_list = language_text.split(",")
         language_list = []
         for lang in pre_language_list:
-            print("this is your pre lang transform " + lang)
+            # print("this is your pre lang transform " + lang)
             lang = lang.strip()
             lang = remove_word(character, lang, 'and')  # Remove 'and' before splitting
             capitalized_lang = capitalize_after_dash(lang)
             language_list.append(capitalized_lang)
-            print("this is your post lang transform " + capitalized_lang)
+            # print("this is your post lang transform " + capitalized_lang)
 
     return language_list
 

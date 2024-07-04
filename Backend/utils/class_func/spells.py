@@ -13,13 +13,13 @@ def class_for_spells_attr(character):
             
     #This is a quick and easy function to make it so we search
     #for different spell lists than our current class
-    if character.c_class in ['skald']:
+    if character.c_class.lower() in ['skald']:
         character.c_class_for_spells = 'bard'
-    elif character.c_class in ['investigator']:
+    elif character.c_class.lower() in ['investigator']:
         character.c_class_for_spells = 'alchemist'
-    elif character.c_class in ['witch', 'arcanist']:
+    elif character.c_class.lower() in ['witch', 'arcanist']:
         character.c_class_for_spells='wizard' 
-    elif character.c_class in ['warpriest', 'oracle']:
+    elif character.c_class.lower() in ['warpriest', 'oracle']:
         character.c_class_for_spells='cleric'                   
     else:
         character.c_class_for_spells = character.c_class     
@@ -48,7 +48,7 @@ def class_for_spells_attr(character):
 
 
 def caster_formula(character,n, class_2 = 'missing'):
-    print(f'this is your damn class 2: {class_2}')
+    # print(f'this is your darn class 2: {class_2}')
     character.casting_level_string = str(character.classes.get(character.c_class, "").get("casting level", "").lower())
     character.casting_level_num = character.c_class_level
 
@@ -135,7 +135,9 @@ def spells_known_attr(character,base_classes, divine_casters):
         for i in range(0,character.highest_spell_known_1+1):
             key = str(i)                
             list=character.spells_known[character.c_class][key][character.capped_level_1-1]
+            print("list is", list)
             character.spells_known_list.append(list)
+            print("this is the known_list generated", character.spells_known_list)
 
     elif character.c_class in base_classes and character.casting_level_string == 'low' and character.c_class not in divine_casters:
         for i in range(0,character.highest_spell_known_1+1):
@@ -194,7 +196,7 @@ def alignment_spell_limits(character, spell_data, i, alignment_exclusion):
         excluded_column = alignment_exclusion.get(alignment_part)
         if excluded_column:
             excluded_columns.add(excluded_column)
-
+    print("character.c_class_for_spells", character.c_class_for_spells)
     condition = spell_data[character.c_class_for_spells] == i
 
     for col in excluded_columns:
@@ -227,9 +229,9 @@ def spells_known_selection(character,base_classes,divine_casters):
     #we need to make sure we aren't grabbing null or our program will break
     if character.casting_level_string != 'none' and character.c_class in base_classes and character.c_class not in divine_casters:
         while i <= character.highest_spell_known_1:
-            print(known_list)
+            print("this is your known_list", known_list)
             print(i)
-            if known_list[i] != 'null':
+            if known_list[i] not in ('null', None, 0, '') and not isinstance(known_list, str):
                 select_spell=known_list[i]             
 
                 query_i = alignment_spell_limits(character, spell_data, i, "alignment_exclusion")

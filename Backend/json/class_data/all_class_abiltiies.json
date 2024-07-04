@@ -933,7 +933,7 @@
         "benefits": "deal bleed damage with your powerful blows"
         },
         "bloody bite": {
-        "prerequisites": "half-orc, animal fury rage power or a natural bite attack",
+        "prerequisites": "Half-Orc, animal fury rage power or a natural bite attack",
         "benefits": "your bite attack deals 1d6 points of bleed damage in addition to its other effects. "
         },
         "bloody fist": {
@@ -6037,7 +6037,7 @@
         "benefits": "deal bleed damage with your powerful blows"
         },
         "bloody bite": {
-        "prerequisites": "half-orc, animal fury rage power or a natural bite attack",
+        "prerequisites": "Half-Orc, animal fury rage power or a natural bite attack",
         "benefits": "your bite attack deals 1d6 points of bleed damage in addition to its other effects. "
         },
         "bloody fist": {

@@ -2,6 +2,8 @@ from math import ceil, floor
 import random
 
 def randomize_level(character, min_num, max_num):
+    min_num, max_num = only_numeric_levels(min_num, max_num)
+    
     if character.c_class_2 == '':
         print('this is is blank class_2')
         pre_level = random.randint(min_num, max(min_num, max_num))
@@ -48,6 +50,16 @@ def update_level_ability_score(character, level):
     character.level=level
     character.extra_ability_score_levels=floor(level/4)
 
+def only_numeric_levels(min_num, max_num):
+    if not isinstance(min_num, int):
+        min_num = 10
+
+    if not isinstance(max_num, int):
+        max_num = 10
+    
+    return min_num, max_num
+    
+    
 
 
 def _update_bab_total(character):

@@ -1,6 +1,7 @@
 import random
 from Backend.utils import data
 from Backend.utils.util import roll_dice
+from Backend.utils.class_func.race_func import full_race_data_func
 def randomize_apperance_attr(character, apperance_attribute, upper_limit=1):
     random_app_number = random.randint(1,upper_limit)
     potential_apperances = getattr(data,apperance_attribute)
@@ -8,6 +9,9 @@ def randomize_apperance_attr(character, apperance_attribute, upper_limit=1):
 
     #change age/height/weight string into useable array that contains (e.g.) 5d6 -> 5,6 (5 num_dice, 6 num_sides)
 def randomize_body_feature(self, body_attribute):
+    race_data = full_race_data_func(self)
+    print(race_data.keys())
+    print("this is your chosen race", self.chosen_race)
     print(f'??????????????????????????{self.races[self.chosen_race][body_attribute] }')
     [base_stat, dice_string] = self.races[self.chosen_race][body_attribute]        
     print(f'before setting attribute {body_attribute}', getattr(self, body_attribute))

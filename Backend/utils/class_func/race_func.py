@@ -1,13 +1,13 @@
 import random
 # Race_data section
-def full_race_data(character):
+def full_race_data_func(character):
     race_data = {}
     race_data.update(character.PlayableRaces['Core'])
     race_data.update(character.PlayableRaces['NonCore'])
     return race_data
 
 def subrace_chooser(character):
-    race_data = full_race_data(character)
+    race_data = full_race_data_func(character)
     subrace_list = (race_data.get(character.chosen_race, None).get("Subraces", None))
     if subrace_list is not None:
         subrace_list = list(subrace_list.keys())
@@ -19,7 +19,7 @@ def subrace_chooser(character):
     return chosen_subrace, subrace_description
 
 def race_traits_chooser(character):
-    race_data = full_race_data(character)
+    race_data = full_race_data_func(character)
     data_list = list(race_data.get(character.chosen_race, None).keys())
     race_traits_list = []
     race_traits_description_list = []
