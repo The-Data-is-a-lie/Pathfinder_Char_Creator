@@ -75,7 +75,7 @@ In the Works:
 - Download the Files or Clone the Repo from here [main.py](https://github.com/Daniel-Grkinich/Pathfinder_Char_Creator.git)  
 
 ## Contact
-Please contact me at dgrk99@gmail.com if you have any questions regarding this. My dream is to make this an open-source website that anyone can use to play pathfinder 1e more easily.
+Please contact me at tapletopsoftware@gmail.com if you have any questions regarding this. My dream is to make this an open-source website that anyone can use to play pathfinder 1e more easily.
 
 ## Requirements
  - Python (>= 3.10)
