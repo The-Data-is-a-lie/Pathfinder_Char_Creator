@@ -76,6 +76,34 @@ def get_character_data():
         response = jsonify({'error': str(e)})
     return response
 
+# @app.route('/update_character_data', methods=['POST'])
+# def update_character_data():
+#     try:
+#         # Ensure the request is JSON
+#         if not request.is_json:
+#             return jsonify({'error': 'Invalid content type, expected application/json'}), 400
+
+#         # Parse the incoming JSON data
+#         data = request.json
+#         print("Received JSON data:", data)
+
+#         # Process the data
+#         non_input_data = [
+#             int(data.get(k, 0)) if k in ('input2', 'input9', 'input10', 'input11', 'input12', 'input13')
+#             else data.get(k, '').strip()
+#             for k in data
+#         ]
+#         print("Processed data:", non_input_data)
+
+#         # Process the input values
+#         results = process_input_values(non_input_data)
+#         return jsonify({'message': 'Success', 'results': results})
+#     except ValueError as ve:
+#         return jsonify({'error': 'Invalid JSON: ' + str(ve)}), 400
+#     except Exception as e:
+#         return jsonify({'error': str(e)}), 500
+
+
 @app.route('/update_character_data', methods=['GET', 'POST'])
 def update_character_data():
     data = request.json  # Get JSON data from request
@@ -91,7 +119,6 @@ def update_character_data():
     print("Cleaned JS data:", non_input_data)
     results = process_input_values(non_input_data)
     return jsonify({'message': 'Success! Data received successfully'}) 
-
 
 
 
