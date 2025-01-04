@@ -389,6 +389,7 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 
 		character.armor_dict = list_selection(character, 'armor', limits=character.armor_type)
+		
 		weapon_chooser(character)
 		character.weapon_dict = list_selection(character, 'weapons_data', limits=character.weapon_type)
 		limits = shield_chooser(character, character.weapon_dict)

@@ -10,7 +10,7 @@ from Backend.start_py import create_app, SECRET_KEY
 app = create_app()
 # app = Flask(__name__)
 # app.secret_key = SECRET_KEY
-CORS(app)
+CORS(app, supports_credentials=True, origins="*")  # Allow all origins
 app.config['SECRET_KEY'] = SECRET_KEY
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_COOKIE_SECURE'] = True  # Mark the cookie as secure
