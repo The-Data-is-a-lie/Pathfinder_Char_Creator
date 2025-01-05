@@ -20,7 +20,9 @@ def class_for_spells_attr(character):
     elif character.c_class in ['witch', 'arcanist']:
         character.c_class_for_spells='wizard' 
     elif character.c_class in ['warpriest', 'oracle']:
-        character.c_class_for_spells='cleric'                   
+        character.c_class_for_spells='cleric'    
+    elif character.c_class in ['summoner (unchained)']:
+        character.c_class_for_spells='summoner'               
     else:
         character.c_class_for_spells = character.c_class     
     return character.c_class_for_spells

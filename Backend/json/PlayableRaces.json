@@ -256,7 +256,7 @@
       ]
     }
   },
-  "Half-Elf": {
+  "Half-elf": {
     "Physical Description": "Half-elves stand taller than humans but shorter than elves. They inherit the lean build and comely features of their elven lineage, but their skin color is normally dictated by their human side. While half-elves retain the pointed ears of elves, theirs are more rounded and less pronounced. Their eyes tend to be humanlike in shape, but feature an exotic range of colors from amber or violet to emerald green and deep blue. This pattern changes for half-elves of drow descent, however. Such elves are almost unfailingly marked with the white or silver hair of the drow parent, and more often than not have dusky gray skin that takes on a purplish or bluish tinge in the right light, while their eye color usually favors that of the human parent.",
     "Society": "Their lack of a unified homeland and culture forces half-elves to remain versatile, able to conform to nearly any environment. While often considered attractive to both races for the same reasons as their parents, half-elves rarely fit in with either humans or elves, as both races see too much evidence of the other in them. This lack of acceptance weighs heavily on many half-elves, yet others are bolstered by their unique status, seeing in their lack of a formalized culture the ultimate freedom. As a result, half-elves are incredibly adaptable, capable of adjusting their mind-sets and talents to whatever societies they find themselves in.",
     "Relations": "Half-elves understand loneliness, and know that character is often less a product of race than of life experience. As such, they are often open to friendships and alliances with other races, and less likely than most to rely on first impressions when forming opinions of new acquaintances.",
@@ -406,7 +406,7 @@
       ]
     }
   },
-  "Half-Orc": {
+  "Half-orc": {
     "Physical Description": "Half-orcs average around 6 feet tall, with powerful builds and greenish or grayish skin. Their canine teeth often grow long enough to protrude from their mouths, and these \"tusks,\"combined with heavy brows and slightly pointed ears, give them their notoriously bestial appearance. While half-orcs may be impressive, few ever describe them as beautiful. Despite these obvious orc traits, half-orcs are as varied as their human parents.",
     "Society": "Unlike half-elves, where at least part of society's discrimination is born out of jealousy or attraction, half-orcs get the worst of both worlds: physically weaker than their orc kin, they also tend to be feared or attacked outright by humans who don't bother making the distinction between full orcs and halfbloods. Even on the best of terms, half-orcs in civilized societies are not exactly accepted, and tend to be valued only for their physical abilities. On the other hand, orc leaders have been known to deliberately spawn half-orcs, as the halfbreeds make up for their lack of physical strength with increased cunning and aggression, making them natural leaders and strategic advisors.",
     "Relations": "Elves and dwarves tend to be the least accepting of half-orcs, seeing in them too great a resemblance to their racial enemies, and other races aren't much more understanding.",
@@ -619,29 +619,7 @@
       ]
     }
   },  
-  "Aquatic Elf": {
-    "Adventurers": "Groups of aquatic elves are known to specialize in searching ruins for pieces of art, historical records, and magical artifacts from sunken and forgotten empires. Those exploring the submerged debris of long-lost cities sometimes partner with adventurers of other races to overcome dangerous traps or guardians. Prideful as they are, aquatic elves know that other creatures can contribute specialized abilities to an expedition, though they are happiest working with gnomes, halflings, and surface elves, as these creatures are likely to return to the surface when their business beneath the waves is done. Some aquatic elves distrust humans, who they believe conceal expansionist motives and have a reckless disregard for danger especially as concerns ancient and dangerous magic. Aquatic elves ally with gillmen only when necessary, as they worry that any such collaboration could be a part of some deeper aboleth scheme.",
-    "+2 Dexterity, +2 Intelligence, -2 Constitution": "Aquatic elves are nimble, both in body and mind, but their form is frail.",
-    "Medium": "Aquatic elves are Medium creatures and receive no bonuses or penalties due to their size.",
-    "Normal Speed": "Aquatic elves have a base speed of 30 feet. They also have a swim speed of 30 feet, can move in water without making Swim checks, and always treat Swim as a class skill.",
-    "Aquatic": "Aquatic elves are humanoids with the aquatic subtype.",
-    "Amphibious": "Aquatic elves are amphibious and can breathe both air and water.",
-    "Low-Light Vision": "Aquatic elves can see twice as far as humans in conditions of dim light.",
-    "Elven Immunities": "Aquatic elves are immune to magic sleep effects and gain a +2 racial saving throw bonus against enchantment spells and effects.",
-    "Elven Magic": "Aquatic elves receive a +2 racial bonus on caster level checks made to overcome spell resistance. In addition, aquatic elves receive a +2 racial bonus on Spellcraft skill checks made to identify the properties of magic items.",
-    "Keen Senses": "Aquatic elves receive a +2 racial bonus on Perception checks.",
-    "Weapon Familiarity": "Aquatic elves are proficient with rapiers, short swords, and tridents, and treat any weapon with the word \"elven\"in its name as a martial weapon.",
-    "Languages": "Aquatic elves begin play speaking Common and Elven. Elves with high Intelligence scores can choose from the following: Celestial, Draconic, Gnoll, Gnome, Goblin, Orc, and Sylvan.",
-    "Arcanist": "Add 1/4 to the arcanist's caster level when casting spells with the water descriptor.",
-    "Cavalier": "Add 1 skill rank to the cavalier's mount. If the cavalier ever replaces his mount, the new mount gains these bonus skill ranks.",
-    "Druid": "Add 1 hit point to the druid's animal companion. If the druid ever replaces her animal companion, the new animal companion gains these bonus hit points. For a druid whose nature bond gives her a cleric domain, select one cleric domain power at 1st level that is normally usable a number of times per day equal to 3 + the druid's Wisdom modifier. The druid adds 1/2 to the number of uses per day of that domain power.",
-    "Fighter": "Choose a weapon from the following list: rapier, short sword, trident, or any weapon with \"elven\"in its name. Gain a +1/2 bonus on critical hit confirmation rolls made while using that type of weapon (maximum bonus +4). This bonus does not stack with those gained through Critical Focus and similar effects.",
-    "Magus": "Add one spell from the cleric, druid, or wizard spell list with the water descriptor to the magus's spellbook. This spell must be at least 1 level below the highest spell level he can cast. This spell is treated as 1 level higher unless it also appears on the magus spell list.",
-    "Ranger": "Choose a weapon from the following list: longbow, shortbow, or any weapon with \"elven\"in its name. Reduce the penalty on ranged attack rolls underwater made with this weapon by 1.",
-    "Summoner": "As long as the summoner's eidolon has a swim speed, add 5 feet to its swim speed (max +20 feet).",
-    "Witch": "When casting a witch spell underwater, add 1/3 to the effective caster level of the spell for the purpose of determining the spell's duration.",
-    "Wizard": "Add 1 to the wizard's caster level check when attempting to cast a spell with the fire descriptor underwater."
-  },
+
   "Catfolk": {
     "Physical Description": "In general, catfolk are lithe and slender, standing midway between dwarves and humans in stature. While clearly humanoid, they possess many feline features, including a coat of soft fine fur, slit pupils, and a sleek, slender tail. Their ears are pointed, but unlike those of elves, are more rounded and catlike. They manipulate objects as easily as any other humanoid, but their fingers terminate in small, sharp, retractable claws. These claws are typically not powerful enough to be used as weapons, but some members of the specieseither by quirk of birth or from years of honingcan use them with deadly effect. Feline whiskers are not uncommon, but not universal, and hair and eye color vary greatly.",
     "Society": "While self-expression is an important aspect of catfolk culture, it is mitigated by a strong sense of community and group effort. In the wild, catfolk are a hunter-gatherer tribal people. The pursuit of personal power never comes before the health and wellbeing of the tribe. More than one race has underestimated this seemingly gentle people only to discover much too late that their cohesion also provides them great strength.",
@@ -675,49 +653,6 @@
     "Shifter": "Add 1/5 to the damage dealt when using the shifter claws ability.",
     "Slayer": "Add 1/3 to the result of any sneak attack damage that the slayer deals after all sneak attack damage dice have been totaled.",
     "Sorcerer": "Select one bloodline power at 1st level that is normally usable a number of times equal to 3 + the sorcerer's Charisma modifier. The sorcerer adds + 1/2 to the number of uses per day of that bloodline power."
-  },
-  "Changeling": {
-    "+2 Wisdom, +2 Charisma, -2 Constitution": "Changelings are frail, but are clever and comely.",
-    "Medium": "Changelings are Medium creatures and have no bonuses or penalties due to their size.",
-    "Humanoid": "Changelings are humanoids with the changeling subtype.",
-    "Normal Speed": "Changelings have a base speed of 30 feet.",
-    "Hag Racial Trait": "Winter-born changelings gain a +5 racial bonus on Acrobatics and Climb checks on icy or slippery surfaces.",
-    "Claws": "Changelings' fingernails are hard and sharp, granting them two claw attacks (1d4 points of damage each).",
-    "Natural Armor": "Changelings have a +1 natural armor bonus.",
-    "Darkvision": "Changelings can see in the dark up to 60 feet.",
-    "Languages": "Changelings begin play speaking Common and the primary language of their host societies. Changelings with high Intelligence scores can choose from the following languages: Aklo, Draconic, Dwarven, Elven, Giant, Gnoll, Goblin, and Orc",
-    "Subraces": {
-      "Annis-Born (Slag May)": [
-        "Broad-shouldered and athletic, slag mays demonstrate incredible talent for all physical tasks. They share a vivacity, an addiction to new sights and experiences, and a tendency to collect souvenirs wherever they go.Annis hagCN+2 Str, +2 Cha, 2 ConAnnis-born changelings gain a +1 racial bonus on melee damage rolls.Your jagged claws cause gaping wounds, dealing 1 point of bleed damage on a successful critical hit."
-      ],
-      "Ash-Born (Hearth May)": [
-        "Possessed of a blazing inner fire, hearth mays are passionate and excitable. Ranging from bubbly to irate, they lack emotional nuance, but their drive and discipline can overcome nearly any obstacle.Ash hagLN+2 Wis, +2 Cha, -2 ConAsh-born changelings gain a +1 racial bonus on damage rolls for spells with the fire descriptor. This bonus increases by 1 for every 4 character levels the changeling has beyond 1st.You gain immunity to extremely warm conditions, as if you were under the effects of a permanentspell (heat only) that cannot be dispelled."
-      ],
-      "Blood-Born (Veil May)": [
-        "Gifted with a face for every occasion, veil mays can adjust to any social situation, showing those around them exactly what they want to see. As easily as they read others, they are equally gifted at hiding their true intentions.Blood hagN+2 Wis, +2 Cha, -2 IntThe DCs of Sense Motive checks to gain a hunch about a blood-born changeling increase by 5.You gain a +2 racial bonus on Bluff, Diplomacy, and Sense Motive skill checks as your gifts for reading and manipulating others matures."
-      ],
-      "Dreamthief-Born (Waker May)": [
-        "Rare beyond measure, waker mays exist only as the result of horrific rituals and bear stained souls. Cursed from birth, they mature like foul fruit into the deadliest of and most powerful of hags.Dreamthief hagNE+2 Str, +2 Cha, -2 WisDreamthief-born changelings gain a +2 racial bonus on saving throws against mind-affecting effects.You no longer need to sleep and cannot become fatigued due to lack of sleep. You can still be affected by other effects that inflict the fatigued condition, and must rest for 8 hours in order to prepare spells or regain uses of class abilities as normal, even if this time is not spent sleeping."
-      ],
-      "Green-Born (Callow May)": [
-        "Shy and soft-spoken, but possessed of grace and insight, callow mays are masterful manipulators who deeply appreciate the beautiful things in the world.Green hagCN+2 Wis, +2 Cha, -2 ConGreen-born changelings gain a +2 racial bonus on Bluff checks against creatures that could be sexually attracted to them.You can castonce per day as a spell-like ability, treating your character level as your caster level. The bonus on Bluff checks you gain from your hag racial trait applies when someone could be sexually attracted to your disguised form as well."
-      ],
-      "Mute-Born (Sorrow May)": [
-        "Unique among their kind, sorrow mays manifest spontaneously without the need for hag mothers, and likewise hold the potential to corrupt themselves, transforming into hags should their hearts grow cold.Mute hagCN+2 Int, +2 Wis, -2 ConMute-born changelings gain a +2 racial bonus on saving throws against gaze attacks.When you confirm a critical hit with your claw attack, your opponent is blinded for 1d6 rounds. A target that succeeds at a Fortitude saving throw (DC = 10 + half your character level + your Charisma modifier) is dazzled for 1 round instead."
-      ],
-      "Night-Born (Moon May)": [
-        "As much made as born, moon mays are deliberately created by night hags with foul futures in mind. Destiny haunts their lives, fanning pride and natural talent into megalomania.Night hagN+2 Wis, +2 Cha, -2 DexNight-born changelings gain a +2 racial bonus on saving throws against disease.You can form aby performing an 8-hour ritual over any gem worth at least 500 gp. While you carry it, aallows you to apply your +2 racial bonus on saving throws against disease to all Fortitude saves. Acan also be used as a focus to replace any material spell components worth 10 gp or less. Ais considered to have a caster level equal to your character level at the time of its creation."
-      ],
-      "Sea-Born (Brine May)": [
-        "Dauntless free spirits, brine mays wander like the wind and water, and just like the elements, they have little concern for others' plans.Sea hagCN+2 Dex, +2 Wis, -2 ConSea-born changelings can hold their breath for a number of rounds equal to three times their Constitution score before they risk drowning.You gain a swim speed equal to your base speed and can move in water without attempting Swim checks. Swim is a class skill for you."
-      ],
-      "Storm-Born (Virga May)": [
-        "Born with cold temperaments but hot passions, virga mays reject large crowds and open spaces and prefer to keep their emotions under tight control, all too aware of raging torrents that burble below their calm exteriors.Storm hagCN+2 Wis, +2 Cha, -2 ConStorm-born changelings are treated as two size categories larger for the purpose of resolving wind effects.You can cast following spell-like abilities: 1/day,, and. The caster level for these effects is equal to your level. The DC for these spells is equal to 10 + the spell's level + your Charisma modifier."
-      ],
-      "Winter-Born (Snow May)": [
-        "Playful and easily amused, snow mays are lighthearted but terribly creative once their anger is roused. Little phases these capricious women for long, and their casual cruelty can easily melt back to kindness.Winter hagCN+2 Int, +2 Cha, -2 ConWinter-born changelings gain a +5 racial bonus on Acrobatics and Climb checks on icy or slippery surfaces.You gain cold resistance equal to your character level and are no longer affected by severe cold or extreme cold."
-      ]
-    }
   },
   "Dhampir": {
     "Physical Description": "Tall and slender and with well-defined musculature, dhampirs look like statuesque humans of unearthly beauty. Their hair, eye, and skin colors resemble unnerving versions of their mothers'; many possess a ghastly pallor, particularly in the sunlight, while those with dark complexions often possess skin the color of a bruise.",
@@ -844,86 +779,9 @@
     "Summoner": "The summoner's eidolon gains resistance 1 against either cold or electricity. Each time the summoner selects this reward, he increases his eidolon's resistance to one of those energy types by 1 (maximum 10 for any one energy type).",
     "Wizard": "Add one spell from the wizard spell list to wizard's spellbook. The spell must be at or below the highest level he can cast and be of the illusion (shadow) subschool or have the darkness descriptor."
   },
-  "Gathlain": {
-    "Physical Description": "Wings of wood and vines grow out of the bodies of these lithesome fey. Gathlains prefer to wear a mix of clothing, with a base of natural materials like grass skirts or simply woven tunics combined with bits of finery gathered from a variety of sources.",
-    "Society": "Gathlain society is built around art, discovery, experimentation, and storytelling. These fey constantly seek new ways to look at the world. Gathlain leaders are often popular explorers followed primarily as idols worth emulating and as sources of intriguing gossip. Although gathlains tend to engage in raucous romances born of melodramatic or fanciful encounters, they do not procreate conventionally from such pairings, even when the two happen to be of different physical sexes. Gathlains show little interest in gender, finding it quaint when other races use it as a basis for assigning roles or choosing partners.",
-    "Relations": "Gathlains associate with a variety of other fey as freely as among their own kind. These mixed communities of fey are called courts and feature elaborate titles for those members deemed most interesting or most worthy of admiration. When a gathlain chooses to join a different community, it is generally a temporary membership, whether it lasts only a season or persists for decades. Adventuring gathlains frequently seek out and attempt to mingle with like-minded gnomes; however, gnomes often find gathlains too flighty, foolish, and undisciplined for their tastes.",
-    "Alignment and Religion": "Mischievous and capricious, gathlains have discordant temperaments. Most are chaotic, and they tend to be morally neutral. The typical gathlain finds mortal religions strange; like many fey, they trade respect and token offerings to godlike fey in exchange for protection, but they see little difference between that and offerings to lesser kings and queens.",
-    "Adventurers": "Gathlains strive to entertain themselves and sate their immense curiosity about the world around them, and those who decide to become adventurers often migrate to the Material Plane to explore. Those who remain in the First World seek the strangest parts of their home plane and try to learn about its most unusual inhabitants. They favor spellcasting classes and skilled classes such as bard or rogue.",
-    "Names": "Gathlains lack gender-specific names, but instead attempt to create unique names for each individual. Some examples are Agollia, Armath, Arnonwy, Brazial, Dwynnen, Eirgara, Finnath, Gummow, Inirha, Marcanth, Nirialu, Sollowy, Tiltiu, and Urhiod.: Gathlains are quick, with dynamic and engaging personalities, but are rather fragile.",
-    "+2 Dexterity, +2 Charisma, -2 Constitution": "Gathlains are quick, with dynamic and engaging personalities, but are rather fragile.",
-    "Fey": "Gathlain are fey.",
-    "Small": "Gathlains are Small and gain a +1 size bonus to their AC, a +1 size bonus on attack rolls, a 1 penalty on combat maneuver checks and to CMD, a +2 bonus on Fly checks, and a +4 size bonus on Stealth checks.",
-    "Normal Speed": "Gathlains have a base speed of 30 feet and a fly speed of 40 feet (poor maneuverability).",
-    "Low-Light Vision": "Gathlains can see twice as far as humans in dim light.",
-    "Natural Armor": "Gathlains have a +1 natural armor bonus.",
-    "Spell-Like Abilities": "1/day,(caster level equals the gathlain's character level).",
-    "Languages": "Gathlains speak Common and Sylvan. A gathlain with a high Intelligence score can choose from the following languages: Draconic, Elven, Goblin, Halfling, and Orc.",
-    "Alchemist": "Add 10 minutes to the duration of the alchemist's mutagens.",
-    "Barbarian": "Add 1/4 to the barbarian's damage reduction. If the barbarian would not otherwise have damage reduction, this damage reduction can be bypassed by cold iron.",
-    "Bard": "Add one spell from the druid spell list to the bard's spell list and known spells. This spell must be at least 1 level lower than the highest-level spell the bard can cast.",
-    "Bloodrager": "Add 1 additional round of bloodrage per day.",
-    "Cavalier": "Add a +1/2 bonus to the cavalier's Knowledge (nature) and Knowledge (nobility) checks relating to fey courts and fey courtiers.",
-    "Druid": "Add a +1/2 bonus to wild empathy checks.",
-    "Hunter": "The hunter's animal companion gains DR 1/cold iron. Each time the hunter gains another level, this DR increases by 1/3 (maximum DR 5/cold iron). If the hunter replaces this animal companion, the new companion gains this damage reduction.",
-    "Investigator": "Add a +1/3 bonus on inspiration rolls applied to Bluff and Knowledge checks.",
-    "Kineticist": "Increase the amount of burn cost reduction when using the kineticist's gather power ability by 1/6 point (the minimum burn cost of 0 still applies).",
-    "Mesmerist": "Increase the number of mesmerist tricks the mesmerist can use per day by one-third.",
-    "Oracle": "Add one spell known that is an enchantment spell from the sorcerer/wizard spell list. This spell must be at least one level below the highest spell level the oracle can cast. That spell is treated as one level higher unless it is also on the oracle spell list.",
-    "Ranger": "Add 1/4 to the damage dealt by the ranger's animal companion's natural attacks.",
-    "Rogue": "Add a +1/2 bonus to Bluff checks to pass secret messages or create a distraction to hide and on Sleight of Hands checks to pickpocket.",
-    "Shaman": "Add one spell from the druid spell list to the shaman's spell list. This spell must be at least 1 level lower than the highest-level spell the shaman can cast.",
-    "Shifter": "Add a +1 bonus on Knowledge (nature) checks relating to plants and flying animals.",
-    "Skald": "Add a +1/2 bonus to Acrobatics checks to avoid attacks of opportunity and to Perform checks while performing a raging song.",
-    "Sorcerer": "Choose a bloodline power from the fey or verdantbloodlines that the sorcerer can use. The sorcerer treats her class level as though it were 1/2 higher (to a maximum of +4) when determining the effects of that power.",
-    "Summoner": "Add 1/4 evolution point to the eidolon's evolution pool. These bonus evolution points must be spent on evolutions that grant spell-like abilities or protect the eidolon from spells.",
-    "Witch": "Add one spell from the druid spell list to the witch's familiar. This spell must be at least one level below the highest spell level the witch can cast. If the familiar is ever replaced, the new familiar knows these bonus spells."
-  },  
-  "Ghoran": {
-    "Physical Description": "The typical ghoran stands roughly as tall as a human and occupies a similar silhouette, but that's where their similarities with humanity end. A ghoran's \"skin\"is a complex layer of fibrous vines and rinds with a texture similar to moss-covered bark. Ghoran faces consist of layered petals that flush and flutter at a whim, allowing them to mimic the facial behaviors of their wouldbe devourers. They do not lack emotion per se, but ghoran \"feelings\"are primordial and abstract, making them utterly alien to most non-ghorans. A ghoran might laugh, smile, or raise its voice, but their companions seldom understand if these are displays of true emotion or merely more adaptive evolutions designedlike so many other aspects of their physiologysimply to keep them alive.",
-    "Society": "A ghoran's alien thought processes (to say nothing of the empty holes upon its flower-petal face roughly approximating its eyes and mouth) make it very difficult for other races to understand and empathize with, leading many ghorans to stick to themselves in segregated communities of cosmopolitan and magic-rich city-states or in the deepest wild places of their barren homeland and its neighboring kingdoms.",
-    "Relations": "Ghorans are most comfortable with other intelligent plants (such as treants and vine leshys) and wary around plant-eating creatures (including humans, whom ghorans know created them as a food source). Because their regeneration brings minor personality changes with each incarnation, ghorans have trouble forming long-lasting relationships with races such as elves, dwarves, and gnomes. Ghorans deeply distrust warmongering humanoids such as goblins and gnolls, especially those with pyromaniac tendencies. The ghorans' relation with humanity is the most complex, for while they admire humans for their capacities and are grateful for their creation, they fear their appetites more, and it is difficult for a ghoran to trust that a human doesn't simply want to eat it.",
-    "Alignment and Religion": "Ghorans seldom follow humanoid deities, instead preferring to worship nature itself by means of the Green Faith (see page 136) or other powerful nature spirits, such as the Eldest of the First World. Ghorans have no predisposition toward law, chaos, good, or evil, but many struggle to differentiate right from wrong as defined by most societies.",
-    "Adventurers": "Owing to their delicious nature, ghorans seldom know peace the way that humanoid races do, and many are forced to contend with nature and learn to fight as a means of self-defense against capture and consumption. Many have taken to adventuring lifestyles either to aid friends and companions or out of a darker drive for vengeance. Others join adventuring groups in hopes of accumulating enough power and lore to, perhaps, determine a solution to their race's central problem of reproduction, though so far no ghoran has solved this essential riddle.",
-    "Names": "Ghoran naming conventions seem random, as each ghoran is self-named and \"born\"with a near perfect recollection of every memory from previous incarnations. As a result, ghorans sometimes pick names they found pleasing in other lives or name themselves after people or places they once knew. Others maintain the same name over several incarnations, though minor personality and physical changes from life to life ensure that while the ghoran's name might remain the same, aspects of the ghoran's gradual change can often confuse and frustrate longtime friends and allies.: Ghorans are hardy, guileful, and eager to explore their emotions, but they process complex thoughts slowly.",
-    "+2 Constitution, +2 Charisma, -2 Intelligence": "Ghorans are hardy, guileful, and eager to explore their emotions, but they process complex thoughts slowly.",
-    "Medium": "Ghorans are Medium creatures and receive no bonuses or penalties due to their size.",
-    "+2 Natural Armor": "Ghorans have tough, rugged skin.",
-    "Plant": "Ghorans have the plant type but lack the immunities to mind-affecting, paralysis, poison, polymorph, sleep, and stunning effects that type usually has.",
-    "Delicious (Ex)": "Ghorans take a 2 penalty on Escape Artist and combat maneuver checks to escape a grapple against a creature that has a bite attack with the grab ability.",
-    "Natural Magic (Sp)": "Ghorans with a Charisma score of 11 or higher gain the following spell-like abilities: 1/day,(created berries bud from the ghoran's own body), and. The caster level is equal to the ghoran's level. The DC for these spells is equal to 10 + the spell's level + the ghoran's Charisma bonus.",
-    "Seed (Ex)": "As a full-round action, a ghoran can expel the seed from an orifice in its abdomen. If planted in fertile ground and left undisturbed for 2d6 days, the seed grows into a healthy duplicate of the original ghoran, save that the duplicate can reallocate all skill ranks upon sprouting. Once a ghoran expels this seed, it gains 1 negative level, and it dies as soon as the duplicate sprouts. This duplicate replaces the previous ghoran character.",
-    "Light Dependent": "Ghorans take 1d4 points of Constitution damage each day they go without exposure to sunlight.",
-    "Past-Life Knowledge (Ex)": "Ghorans have memories encoded in their seeds. They treat all Knowledge skills as class skills.",
-    "Languages": "Ghorans begin play speaking Common and Sylvan. Ghorans with high Intelligence scores can choose any languages they want (except secret languages such as Druidic).",
-    "Druid": "When casting spells that target plants or plant creatures, add 1/3 to the effective caster level, but only for the purpose of determining duration.",
-    "Hunter": "Add 1 skill rank to the hunter's plant companion. If the hunter replaces her plant companion, the new plant companion gains these bonus skill ranks.",
-    "Mesmerist": "Choose one mind-affecting mesmerist trick that the mesmerist knows. The mesmerist can affect intelligent plant creatures with that trick or spell as if they weren't immune to mind-affecting effects.",
-    "Ranger": "Add a +1/4 bonus on initiative checks and Survival checks when the ranger is in a favored terrain.",
-    "Rogue": "Choose one type of ranger favored enemy (or one subtype in case of either humanoid or outsider). The rogue adds 1/2 to her sneak attack damage when using sneak attack against creatures of the chosen type (maximum +3).",
-    "Shaman": "Add one spell from the druid spell list that isn't on the shaman spell list to the list of spells she knows. This spell must be at least 1 level lower than the highest-level spell the shaman can cast.",
-    "Shifter": "Add 1/5 to the shifter's natural armor bonus when using wild shape to assume a major form.",
-    "Sorcerer": "When casting sorcerer/wizard spells that are also on the druid spell list, add 1/3 to the effective class level, but only for the purpose of determining durations.",
-    "Witch": "Add 1/4 to the witch's caster level when attempting dispel checks using,, and similar effects."
-  },
-  "Gillman": {
-    "Gillman Adventurers": "Though small gillman communities exist underwater, most gillmen operate independently or in small family groups. They share no overreaching racial goals or desires, banding together solely for survival. Each gillman has unique experiences and motivations that may lead to an adventuring life. Although gillmen are slow to make friends with other races, they are nonetheless a stable addition to any group of adventurers.",
-    "+2 Constitution, +2 Charisma, -2 Wisdom": "Gillmen are vigorous and beautiful, but their domination by the aboleths has made them weak-willed.",
-    "Medium": "Increase the medium's spirit bonus by 1/6.",
-    "Aquatic": "Gillmen are humanoids with the aquatic subtype.",
-    "Normal Speed": "Gillmen have a base speed of 30 feet on land. As aquatic creatures, they also have a swim speed of 30 feet, can move in water without making Swim checks, and always treat Swim as a class skill.",
-    "Amphibious": "Gillmen have the aquatic subtype, but can breathe both water and air.",
-    "Enchantment Resistance": "Gillmen gain a +2 racial saving throw bonus against non-aboleth enchantment spells and effects, but take a 2 penalty on such saving throws against aboleth sources.",
-    "Water Dependent": "A gillman's body requires constant submersion in fresh or salt water. Gillmen who spend more than 1 day without fully submerging themselves in water risk internal organ failure, painful cracking of the skin, and death within 4d6 hours.",
-    "Languages": "Gillmen begin play speaking Common and Aboleth. Gillmen with high Intelligence scores can choose from the following: Aklo, Aquan, Draconic, and Elven.",
-    "Bard": "Add 1/2 to the bard's Bluff checks to fool someone and gain a +1/2 bonus on the bard's Sense Motive checks to sense enchantments.",
-    "Fighter": "Add +1 to the fighter's CMD when resisting two combat maneuvers of the character's choice.",
-    "Investigator": "Increase the total number of points in the investigator's inspiration pool by 1/3.",
-    "Monk": "Add 1 foot to the monk's swim speed. In combat, this option has no effect unless the monk has selected it five times (or another increment of five).",
-    "Rogue": "The rogue gains 1/6 of a new rogue talent.",
-    "Sorcerer": "Add one spell known from the sorcerer spell list. This spell must be at least one level below the highest spell level the sorcerer can cast.",
-    "Wizard": "Add one spell from the wizard spell list to the wizard's spellbook. This spell must be at least one level below the highest spell level he can cast."
-  },  
+
+
+
   "Goblin": {
     "Physical Description": "Goblins are short, ugly humanoids that stand just over 3 feet tall. Their scrawny bodies are topped with oversized and usually hairless heads with massive ears and beady red or occasionally yellow eyes. Goblins' skin tone varies based on the surrounding environment; common skin tones include green, gray, and blue, though black and even pale white goblins have been sighted. Their voracious appetites are served well by their huge mouths filled with jagged teeth.",
     "Society": "Violent but fecund, goblins exist in primitive tribal structures with constant shifts in power. Rarely able to sustain their own needs through farming or hunting and gathering, goblin tribes live where food is abundant or near places that they can steal it from. Since they are incapable of building significant fortifications and have been driven out of most easily accessible locations, goblins tend to live in unpleasant and remote locations, and their poor building and planning skills ensure that they dwell primarily in crude caves, ramshackle villages, and abandoned structures. Few goblins are good with tools or skilled at farming, and the rare items of any value that they possess are usually cast-off implements from humans or other civilized cultures.",
@@ -957,33 +815,7 @@
       ]
     }
   },  
-  "Grippli": {
-    "+2 Dexterity, +2 Wisdom, -2 Strength": "Gripplis are nimble and alert, but spindly.",
-    "Small": "Gripplis are Small creatures and gain a +1 size bonus to their AC, a +1 size bonus on attack rolls,a 1 penalty on combat maneuver checks and to their Combat Maneuver Defense, and a +4 size bonus on Stealth checks.",
-    "Grippli": "Gripplis are humanoids with the grippli subtype.",
-    "Normal Speed": "Gripplis have a base speed of 30 feet.",
-    "Natural Climber": "Gripplis have a climb speed of 20 feet.",
-    "Darkvision": "Gripplis can see in the dark up to 60 feet.",
-    "Camouflage": "Gripplis receive a +4 racial bonus on Stealth checks in marshes and forested areas.",
-    "Swamp Stride": "A grippli can move through difficult terrain at its normal speed while within a swamp. Magically altered terrain affects a grippli normally.",
-    "Weapon Familiarity": "Gripplis are proficient with nets.",
-    "Languages": "Gripplis begin play speaking Common and Grippli. Gripplis with high Intelligence scores can choose from the following languages: Boggard, Draconic, Elven, Gnome, Goblin, and Sylvan.",
-    "Alchemist": "Add +1/4 to the number of toxic skin uses per day.",
-    "Barbarian": "Add 1/5 to the armor bonus granted by hide armor or bone armor the barbarian wears (maximum +3).",
-    "Bard": "Add 5 feet to the range of one bardic performance.",
-    "Druid": "Add a +1/2 bonus on concentration checks. This bonus doubles in a forest or swamp terrain.",
-    "Gunslinger": "Add a +1/4 bonus on attack rolls when making a utility shot or a dead shot.",
-    "Medium": "Add 1/4 to any checks modified by the medium's spirit surge ability.",
-    "Oracle": "Add one spell known with the poison or water descriptor from the druid's spell list. This spell must be at least 1 level below the highest spell level the oracle can cast. The spell is treated as 1 spell level higher, unless it is also on the oracle spell list.",
-    "Ranger": "Add a +1 racial bonus on Swim skill checks. When this bonus reaches +8, the ranger gains a swim speed of 15 feet (this does not grant the ranger another +8 racial bonus on Swim checks).",
-    "Rogue": "Add a +1/2 bonus on Perception checks while in a forest or swamp.",
-    "Shaman": "Add one spell from the druid spell list that isn't on the shaman spell list to the list of spells the shaman knows. This spell must be at least 1 level below the highest spell level the shaman can cast.",
-    "Shifter": "Add a +1 bonus on Survival checks to follow tracks through swamps.",
-    "Skald": "Increase the skald's total number of raging song rounds per day by 1.",
-    "Slayer": "Add 1/3 to the damage the slayer deals with bone weapons (maximum +4).",
-    "Swashbuckler": "Add 1/2 to the swashbuckler's Acrobatics, Climb, Escape Artist, Fly, Ride, and Swim checks when using the derring-do deed.",
-    "Witch": "Add 1/3 to the saving throw DC to resist the poison of the witch's familiar."
-  },
+
   "Hobgoblin": {
     "Physical Description": "Burly and muscled, hobgoblins stand a few inches shorter than the average human, and their long arms, thick torsos, and relatively short legs give them an almost apelike stature. Hobgoblins' skin is a sickly gray-green that darkens to mossy green after long exposure to the sun. Their eyes burn fiery orange or red, and their broad faces and sharply pointed ears give their features a somewhat feline cast. Hobgoblins lack facial hair, and even hobgoblin women are bald. Except for their size, hobgoblins bear a strong physical resemblance to their goblin cousins.",
     "Society": "Hobgoblins live in militaristic tyrannies, each community under the absolute rule of a hobgoblin general. Every hobgoblin in a settlement receives military training, with those who excel serving in the army and the rest left to serve more menial roles. Those deemed unfit for military service have little social status, barely rating above favored slaves. Despite this, hobgoblin society is egalitarian after a fashion. Gender and birth offer no barrier to advancement, which is determined almost solely by each individual's personal merit. Hobgoblins eschew strong attachments, even to their young. Matings are matters of convenience, and are almost always limited to hobgoblins of equal rank. Any resulting baby is taken from its mother and forcibly weaned after 3 weeks of age. Young mature quicklymost take no more than 6 months to learn to talk and care for themselves. Hobgoblins' childhoods last a scant 14 years, a mirthless span filled with brutal training in the art of war.",
@@ -1108,48 +940,9 @@
     "Witch": "Add +5 feet to the distance at which her familiar grants the Alertness feat (maximum +20 feet).",
     "Wizard": "Add 1/2 to your familiar's Will saves against\r enchantment effects, or increase the hit points of your\r bonded item by 1."
   },  
-  "Locathah": {
-    "Locathah Adventurers": "Locathahs enjoy meeting new people from all races, often hiring themselves out as laborers, mercenaries, or guides aboard ships. Though locathahs are slow and somewhat uncomfortable out of the water, they can breathe air and suffer no ill effects from traveling on land. Locathahs work for fair rates but are canny enough to charge more for the use of their aquatic expertise, such as helping a ship navigate dangerous reefs. Locathahs are usually willing to accept useful items as payment rather than coins or gems, so long as their value is commensurate. They prefer artwork, metal weapons, and surface food (especially tubers) as payment for their services.",
-    "+2 Dexterity, +2 Wisdom, -2 Intelligence": "Locathahs are agile and intuitive, but they are more interested in travel and experiences than in academia.",
-    "Aquatic": "Locathahs are humanoids with the aquatic subtype.",
-    "Medium": "Locathahs are Medium creatures and have no bonuses or penalties due to their size.",
-    "Low-Light Vision": "Locathahs live in areas where sunlight illuminates the water, and they have low-light vision.",
-    "Natural Armor": "Locathahs have thick scales that provide a +2 natural armor bonus.",
-    "Slow Speed": "Locathahs have a base speed of 10 feet.",
-    "Fast Swimmer (5 RP)": "Locathahs have a swim speed of 60 feet.",
-    "Amphibious": "Locathahs have the aquatic subtype but can breathe both water and air.",
-    "Languages": "Locathahs begin play speaking Aquan and Common. Locathahs with a high Intelligence score can choose from the following:  Aklo, Draconic, Elven, Giant, Gnome, Goblin, and Halfling.",
-    "Cavalier": "Add 1 hit point to the cavalier's mount. If the cavalier ever replaces his mount, the new mount gains these bonus hit points.",
-    "Druid": "Add 1 skill rank to the druid's animal companion. If the druid ever replaces her animal companion, the new animal companion gains these bonus skill ranks.",
-    "Investigator": "Add a +1/2 bonus on Bluff checks to feint and a +1/2 bonus on Diplomacy checks to gather information.",
-    "Monk": "Add 1/4 point to the monk's ki pool.",
-    "Ranger": "Add 1 skill rank to the ranger's animal companion. If the ranger ever replaces his animal companion, the new animal companion gains these bonus skill ranks.",
-    "Rogue": "Choose a piercing melee weapon. Add a +1/2 bonus on critical hit confirmation rolls with that weapon (maximum bonus +4). This bonus does not stack with Critical Focus.",
-    "Slayer": "Gain 1/6 of a new slayer talent."
-  },
-  "Merfolk": {
-    "Merfolk Adventurers": "Merfolk are an insular and guarded race. While they might work with non-merfolk on occasion, only rarely do they trust these allies fully. Merfolk who adventure on their own often do so because nothing is left for them in their homes.",
-    "+2 Dexterity, +2 Constitution, +2 Charisma": "Merfolk are graceful, hale, and beautiful.",
-    "Aquatic": "Merfolk are aquatic and can breathe water. Their land speed is 5 feet, but their swim speed is 50 feet. They are amphibious, but prefer not to spend long periods out of the water.",
-    "Low-Light Vision": "All merfolk have low-light vision.",
-    "Armor": "Merfolk have a +2 natural armor bonus.",
-    "Languages": "Merfolk begin play speaking Common and Aquan. Merfolk with high Intelligence scores can choose any of the following bonus languages: Aboleth, Aklo, Draconic, Elven, Sahuagin, and Sylvan",
-    "Mesmerist": "The mesmerist learns 1/4 of a new trick.",
-    "Bard": "The bard learns 1/6 of a new bardic masterpiece. (The bard selects the masterpiece once he has made this selection six times and must meet its prerequisites when it is selected.)",
-    "Druid": "Add +1 hit point to the druid's animal companion. If the merfolk ever replaces her animal companion, the new animal companion gains these bonus hit points.",
-    "Monk": "Add a +1/4 bonus on combat maneuver checks to grapple or trip.",
-    "Oracle": "Add one spell known from the oracle spell list. This spell must be at least 1 level below the highest level spell the oracle can cast.",
-    "Ranger": "Add +1 hit point to the ranger's animal companion. If the ranger ever replaces his animal companion, the new animal companion gains these bonus hit points.",
-    "Skald": "Add one spell from the skald's spell list to the skald's known spells. This spell must be at least 1 spell level below the highest level of spell the skald can cast.",
-    "Sorcerer": "Add +1/2 to the sorcerer's caster level when determining the range of any spells with the water descriptor.",
-    "Witch": "Add 1 to the witch's caster level for one of her patron spells (to a maximum of +3 caster level to any one spell).",
-    "Subraces": {
-      "Outsear Merfolk": [
-        "The settlement of Outsea is a bizarre environment: a saltwater oasis for merfolk and sahuagin in the freshwater River Kingdoms. Centuries ago, a sahuagin nation from the Inner Sea mobilized a city-sized saltwater bolus for an overland assault on a merfolk state located near modern-day Korvosa. The merfolk learned of this ambitious plan and sent an elite group of soldiers in saltwater tanks to intercept the ocean-bubble. The two sides clashed in Lake Encarthan and eventually worked their way up into what is now the River Kingdoms. In this battle, many of the wizards maintaining the sahuagins briny mobile fortress perished, and the two sides ended up stranded hundreds of miles from any ocean. Begrudgingly putting aside their grievances, the merfolk and sahuagin worked together to prevent their mutual extinction, holding back the fresh water with spells and building the settlement of Outsea to serve as a permanent home. Now Outsea is a thriving city, home to all kinds of peoples. Centuries of coexistence have worn down the merfolk and sahuagins hatred for each other, and now they live and work together in peace. Outsear merfolk can take the unexpected ally alternate racial trait described below."
-      ]
-    }
-  },
-  "Monkey Goblin": {
+
+
+  "Monkey goblin": {
     "+4 Dexterity, -2 Wisdom, -2 Charisma": "Monkey goblins are fast, but foolishly impulsive and disagreeable.",
     "Small": "Monkey goblins are Small creatures and gain a +1 size bonus to their AC, a +1 size bonus on attack rolls, a 1 penalty to their CMD and on combat maneuver checks, and a +4 size bonus on Stealth checks.",
     "Humanoid": "Monkey goblins are humanoids with the goblinoid subtype.",
@@ -1161,29 +954,7 @@
     "Prehensile Tail (Ex)": "All monkey goblins have long, flexible tails that they can use to carry objects. They cannot wield weapons with their tails, but the tails do allow them to retrieve small objects stowed on their persons as a swift action.",
     "Languages": "Monkey goblins begin play speaking Goblin. Monkey goblins with high Intelligence scores can choose from the following: Common, Draconic, Dwarven, Gnoll, Gnome, Halfling, Orc."
   },  
-  "Nagaji": {
-    "+2 Strength, +2 Charisma, -2 Intelligence": "Nagaji are strong and have forceful personalities, but they tend to ignore logic and mock scholarly pursuits.",
-    "Medium": "Nagaji are Medium creatures and have no bonuses or penalties due to their size.",
-    "Reptilian": "Nagaji are humanoids with the reptilian subtype.",
-    "Normal Speed": "Nagaji have a base speed of 30 feet.",
-    "Low-Light Vision": "Nagaji can see twice as far as humans in conditions of dim light.",
-    "Armored Scales": "Nagaji have a +1 natural armor bonus because of their scaly flesh.",
-    "Resistant": "Nagaji receive a +2 racial saving throw bonus against mind-affecting effects and poison.",
-    "Serpent's Sense": "Nagaji receive a +2 racial bonus on Handle Animal checks against reptiles, and a +2 racial bonus on Perception checks.",
-    "Languages": "Nagaji begin play speaking Common and Nagaji. Nagaji with high Intelligence scores can choose from the following languages: any human tongue, Abyssal, Aklo, Celestial, Draconic, Giant, Infernal, and Sylvan.",
-    "Alchemist": "Add +1 on Craft (alchemy) checks to craft poison and +1/3 on the DCs of poisons the alchemist creates.",
-    "Cavalier": "Add 1 foot to the base speed of the cavalier's mount. This has no effect in combat unless the cavalier has selected this reward five times (or another increment of five). If the cavalier ever replaces this mount, the new mount gains this bonus to its speed.",
-    "Fighter": "Add +1 to the fighter's CMD when resisting a grapple or trip attempt.",
-    "Mesmerist": "Add 1/5 to the Hit-Die limit and the total number of Hit Die affected with each enchantment or illusion spell the mesmerist casts. This bonus stacks with the mesmerist's mental potency class feature and is applicable under the same conditions as that ability.",
-    "Monk": "Add +1/4 point to the monk'spool.",
-    "Oracle": "Add 1/6 to the oracle's level for the purpose of determining the effects of one revelation.",
-    "Paladin": "Add 1/2 minute to the duration of the paladin's divine bond with her weapon.",
-    "Ranger": "Add 1 skill rank to the ranger's constrictor snake or viper snake animal companion.",
-    "Slayer": "Gain 1/6 of a new slayer talent.",
-    "Sorcerer": "Add 1/2 to the sorcerer's caster level when determining the duration of transmutation spells she casts that target the sorcerer or spells she casts with the poison descriptor.",
-    "Summoner": "Add +1 hit point to the summoner's eidolon.",
-    "Warpriest": "Add 1/2 to the number of times per day the warpriest can use blessings, although he can use these additional blessings only for Charm, Magic, Nobility, Rune, or Scalykind () blessings."
-  },  
+
   "Orc": {
     "Physical Description": "Powerfully built, orcs typically stand just a few inches taller than most humans but have much greater muscle mass, their broad shoulders and thick, brawny hips often giving them a slightly lurching gait. They typically have dull green skin, coarse dark hair, beady red eyes, and protruding, tusklike teeth. Orcs consider scars a mark of distinction and frequently use them as a form of body art.",
     "Society": "Orcs usually live amid squalor and constant mayhem, and intimidation and brutal violence are the glue that holds orc culture together. They settle disputes by making increasingly grisly threats until, when a rival fails to back down, the conflict escalates into actual bloodshed. Orcs who win these ferocious brawls not only feel free to take whatever they want from the loser, but also frequently indulge in humiliating physical violation, casual mutilation, and even outright murder. Orcs rarely spend much time improving their homes or belongings since doing so merely encourages a stronger orc to seize them. In fact, whenever possible, they prefer to occupy buildings and communities originally built by other races.",
@@ -1305,119 +1076,9 @@
     "Swashbuckler": "Add 1/4 to the AC bonus provided by cover or improved cover.",
     "Witch": "Add +5 feet to the range of one hex with a range other than \"touch.\""
   },  
-  "Sahuagin": {
-    "+2 Strength, +2 Wisdom, -2 Charisma": "While sahuagin are powerful and cunning, they are repulsive creatures.",
-    "Monstrous Humanoid": "Sahuagin are monstrous humanoids with the aquatic subtype.",
-    "Medium": "Sahuagin are Medium creatures and have no bonuses or penalties due to their size.",
-    "Blindsense": "Sahuagin have blindsense with a range of 30 feet.",
-    "Darkvision": "Sahuagin have darkvision with a range of 60 feet.",
-    "Light Blindness": "Sahuagin have the light blindness trait.",
-    "Natural Armor": "Sahuagin have a +3 natural armor bonus.",
-    "Normal Speed": "Sahuagin have a base speed of 30 feet.",
-    "Fast Swimmer (5 RP)": "Sahuagin have a swim speed of 60 feet.",
-    "Bite": "Sahuagin have a natural bite attack that deals 1d4 points of damage. This bite is a primary attack, or a secondary attack if the creature is wielding manufactured weapons.",
-    "Claws": "Sahuagin have two claw attacks that deal 1d4 points of damage. These are primary natural attacks.",
-    "Blood Frenzy": "Once per day, whenever a sahuagin takes damage, it can fly into a frenzy for 1 minute; gaining a +2 racial bonus to Constitution and Strength but a 2 penalty to AC.",
-    "Speak with Sharks (1 RP)": "Sahuagin can communicate telepathically with sharks to a distance of 100 feet. This communication is limited to simple concepts, such as \"attack,\"\"come,\"and \"defend.\"",
-    "Languages": "Sahuagin begin play speaking Aquan and Common. Sahuagin with high Intelligence scores can choose from the following: Aboleth, Abyssal, Aklo, Draconic, Giant, Goblin, and Infernal",
-    "Subraces": {
-      "Outsear Sahuagin": [
-        "The settlement of Outsea is a bizarre environment: a saltwater oasis for merfolk and sahuagin in the freshwater River Kingdoms. Centuries ago, a sahuagin nation from the Inner Sea mobilized a city-sized saltwater bolus for an overland assault on a merfolk state located near modern-day Korvosa. The merfolk learned of this ambitious plan and sent an elite group of soldiers in saltwater tanks to intercept the ocean-bubble. The two sides clashed in Lake Encarthan and eventually worked their way up into what is now the River Kingdoms. In this battle, many of the wizards maintaining the sahuagins briny mobile fortress perished, and the two sides ended up stranded hundreds of miles from any ocean. Begrudgingly putting aside their grievances, the merfolk and sahuagin worked together to prevent their mutual extinction, holding back the fresh water with spells and building the settlement of Outsea to serve as a permanent home. Now Outsea is a thriving city, home to all kinds of peoples. Centuries of coexistence have worn down the merfolk and sahuagins hatred for each other, and now they live and work together in peace. Outsear sahuagin can take the sahuagin song and stoic defender alternate racial traits described below."
-      ]
-    }
-  },  
-  "Skinwalker": {
-    "Physical Description": "Outwardly human, skinwalkers are virtually indistinguishable from others of the ethnic group into which they are born. Those rare skinwalkers who have bred true for generations tend to have dark eyes, straight dark hair, and richly colored skin. Skinwalkers' features vary greatly when they shapechange. They gain a bestial visage evoking the creatures they emulate; the snout elongates, teeth become more prominent, claws emerge from fingertips, and skin toughens into hide. Despite their shapechanging abilities, they are not immune to infection from full lycanthropes.",
-    "Society": "Skinwalkers sometimes weave themselves into other societies, hoping their peculiar talents go unnoticed. They may also be nomads found in lands with wide-open spaces. Groups of skinwalkers hidden among a larger community of non-skinwalkers may regularly gather for lunar rituals or nocturnal pack hunting.",
-    "Relations": "Skinwalkers mostly populate human settlements and communities. They tend to get along with catfolk, tengus, and members of other animal-like races (including lycanthropes), and are comfortable taking their animalistic forms in the company of these fellows. However, many natural lycanthropes see skinwalkers as weaker, inferior versions of their own kind, and some lycanthropes even take to infecting or even hunting their distant kin.",
-    "Alignment and Religion": "Skinwalkers tend toward neutral alignments, but may be of any. Many follow the Green Faith or venerate deities with close ties to nature and the animal world, as well as those connected with hunting, transformation, travel, and trickery.",
-    "Adventurers": "Often on the move, skinwalkers make for excellent adventurers. Once they become comfortable in a group, most skinwalkers come to see their adventuring allies as their pack or herd.",
-    "Names": "Skinwalkers born in human and humanoid societies share the naming conventions of the surrounding culture. Skinwalkers born in their own packs typically have names similar to their overarching ethnicities appended with flavorful, animal-inspired appellations such as Bearmaw, Wolftamer, Fangblood, or Owlmarked.: Skinwalkers are attuned to the natural order and value passion above reason. Their bestial forms strengthen their bodies in various ways.",
-    "+2 Wisdom, -2 Intelligence, +2 to One Physical Ability Score While in Bestial Form": "Skinwalkers are attuned to the natural order and value passion above reason. Their bestial forms strengthen their bodies in various ways.",
-    "Medium": "Skinwalkers are Medium creatures and have no bonuses or penalties due to their size.",
-    "Normal Speed": "Skinwalkers have a base speed of 30 feet.",
-    "Low-Light Vision": "Skinwalkers can see twice as far as humans can in dim light.",
-    "Spell-Like Ability": "A skinwalker with a Wisdom score of 11 or higher can usespeak with animalsonce per day as a spell-like ability, using his Wisdom modifier to determine his concentration checks. The caster level for this ability is equal to the skinwalker's character level.",
-    "Animal-Minded": "Skinwalkers have a +2 racial bonus on Handle Animal checks and on wild empathy checks.",
-    "Change Shape (Su)": "A skinwalker can change shape to a bestial form as a standard action. In bestial form, a skinwalker gains a +2 racial bonus to his choice of Strength, Dexterity, or Constitution. While in this form, a skinwalker also takes on an animalistic feature that provides a special effect. Each time a skinwalker assumes bestial form, he can choose to gain two claw attacks that each deal 1d4 points of damage, 60 foot darkvision, or a +1 natural armor bonus. These benefits last until the skinwalker returns to his humanoid form as a swift action. A skinwalker must first return to his humanoid form before changing to bestial form again to change benefits.",
-    "Languages": "Skinwalkers all begin play speaking Common. Skinwalkers with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic)",
-    "Ability Modifiers": "+2 Constitution, 2 Intelligence (+2 Wisdom while shapechanged)",
-    "Alternate Skill Modifiers": "Perception, wild empathy",
-    "Alternate Spell-Like Ability": "magic fang1/day",
-    "Ancestry": "wereraptor",
-    "Typical Alignment": "LN",
-    "Subraces": {
-      "Werebat-Kin (Bloodmarked)": [
-        "These skinwalkers are usually communal and defer readily to their superiors. They prefer dwelling in areas of dense foliage, such as jungles or forests. They often have little trust for those not in their immediate clan.+2 Intelligence, 2 Wisdom (+2 Dexterity while shapechanged)Fly, Perception at night1/day"
-      ],
-      "Werebear-Kin (Coldborn)": [
-        "Known and respected as the defenders of the wild in many parts of the Lands of the Linnorm Kings, these skinwalkers often prefer to live as recluses.+2 Constitution, 2 Charisma (+2 Wisdom while shapechanged)Climb, wild empathy1/day"
-      ],
-      "Wereboar-Kin (Ragebred)": [
-        "These skinwalkers are known for their fiery tempers and stubborn streaks, features that have earned them respect in remote corners of Garund, Cheliax, and Varisia as freedom fighters.+2 Strength, 2 Charisma (+2 Constitution while shapechanged)Handle Animal, Perception(pigs and boars only) 3/day"
-      ],
-      "Werecrocodile-Kin (Scaleheart)": [
-        "Found most often in areas such as the Shackles and the Sodden lands, these skinwalkers are often brutish and cruel.+2 Constitution, 2 Wisdom (+2 Strength while shapechanged)Stealth, wild empathy1/day"
-      ],
-      "Wereraptor-Kin (Aerieborn)": [
-        "wereraptorLN+2 Wis, 2 Cha (+2 Dex while shapechanged)Perception, Sense Motive1/day"
-      ],
-      "Wererat-Kin (Nightskulk)": [
-        "These creatures, who are among the more common of the skinwalkers, prefer to dwell in urban areas.+2 Intelligence, 2 Strength (+2 Dexterity while shapechanged)Handle Animal, Stealth in urban environments(rodents only) 3/day"
-      ],
-      "Wereshark-Kin (Seascarred)": [
-        "These unusual skinwalkers tend to be strong-willed and brisk in their patterns of speech. They often serve aboard pirate ships, where their traits are well appreciated.+2 Wisdom, 2 Intelligence (+2 Constitution while shapechanged)Perception, Swim(aquatic animals only) 3/day"
-      ],
-      "Weretiger-Kin (Fanglord)": [
-        "More common in Vudra than the Inner Sea region, these skinwalkers are notorious for their fickle attitudes.+2 Dexterity, 2 Wisdom (+2 Charisma while shapechanged)Acrobatics, Perception1/day"
-      ],
-      "Werewolf-Kin (Witchwolf)": [
-        "Perhaps the most prevalent breed of skinwalker, witchwolves prefer dwelling with others of their kind.+2 Constitution, 2 Intelligence (+2 Wisdom while shapechanged)Perception, wild empathy1/day"
-      ]
-    }
-  },
-  "Strix": {
-    "+2 Dexterity, -2 Charisma": "Strix are swift and elusive, but tend to be stubborn and swift to anger.",
-    "Medium": "Strix are Medium creatures and have no bonuses or penalties due to their size.",
-    "Normal Speed": "Strix have a base speed of 30 feet on land.",
-    "Flight": "Strix have a fly speed of 60 feet (average).",
-    "Low-Light Vision": "Strix can see twice as far as humans in conditions of dim light.",
-    "Darkvision": "Strix can see in the dark up to 60 feet.",
-    "Hatred": "Strix receive a +1 bonus on attack rolls against humanoid creatures of the human subtype because of their special training against these hated foes.",
-    "Nocturnal": "Strix gain a +2 racial bonus on Perception and Stealth checks in dim light or darkness.",
-    "Suspicious": "Strix receive a +2 racial bonus on saving throws against illusion spells or effects.",
-    "Languages": "Strix begin play speaking Strix. Those with high Intelligence scores can choose any of the following languages: Auran, Azlanti, Common, Draconic, Giant, Gnome, Goblin, and Infernal.",
-    "Barbarian": "Add +1 to the barbarian's total number of rage rounds per day.",
-    "Bloodrager": "Increase the bloodrager's total number of bloodrage rounds per day by 1.",
-    "Brawler": "Add 1/4 to the brawler's effective class level to determine her unarmed strike damage.",
-    "Druid": "Add a +1/2 bonus to Knowledge (nature) checks related to weather and flying animals.",
-    "Fighter": "Add +1/4 to the attack roll bonus from the strix's hatred racial trait.",
-    "Hunter": "Add 1 hit point to the hunter's animal companion. If the hunter replaces her animal companion, the new animal companion gains these bonus hit points.",
-    "Monk": "Add +1/4 point to the monk'spool.",
-    "Oracle": "Add one spell known from the oracle spell list. This spell must be at least 1 level below the highest spell level the oracle can cast.",
-    "Ranger": "Add +1/2 round to the duration of the bonus granted to the companions of the ranger using his hunter's bond ability.",
-    "Shaman": "Add 1/2 to the shaman's effective class level for the purpose of determining her spirit animal's natural armor adjustment, Intelligence, and special abilities.",
-    "Slayer": "Increase the studied target bonus on Perception and Survival checks by 1/4. When the slayer gains the stalker class feature, the slayer also gains this increase to the studied target bonus on Stealth checks.",
-    "Witch": "Add one spell from the witch spell list to the witch's familiar. This spell must be at least 1 level below the highest spell level the witch can cast. If the witch ever replaces this familiar, the new familiar knows these bonus spells."
-  },  
-  "Svirfneblin": {
-    "+2 Dexterity, +2 Wisdom, -2 Strength, -4 Charisma": "Svirfneblin are fast and observant but relatively weak and emotionally distant.",
-    "Gnome": "Svirfneblin are humanoids with the gnome subtype.",
-    "Small": "Svirfneblin are Small creatures and gain a +1 size bonus to their AC, a +1 size bonus on attack rolls, a 1 penalty on combat maneuver checks and to their Combat Maneuver Defense, and a +4 size bonus on Stealth checks.",
-    "Slow Speed": "Svirfneblin have a base speed of 20 feet.",
-    "Defensive Training": "Svirfneblin gain a +2 dodge bonus to their AC.",
-    "Senses": "Svirfneblin have darkvision 120 feet and lowlight vision.",
-    "Fortunate": "Svirfneblin gain a +2 racial bonus on all saving throws.",
-    "Skilled": "Svirfneblin gain a +2 racial bonus on Stealth checks; this improves to a +4 bonus underground. They gain a +2 racial bonus on Craft (alchemy) checks and Perception checks.",
-    "Hatred": "Svirfneblin receive a +1 bonus on attack rolls against humanoid creatures of the reptilian and dwarven subtypes due to training against these hated foes.",
-    "Stonecunning": "Svirfneblin gain the stonecunning trait as dwarves.",
-    "Spell Resistance": "A svirfneblin has an amount of spell resistance equal to 11 + his character level.",
-    "Svirfneblin Magic": "Svirfneblin add 1 to the DCs of any saving throws to resist illusion spells they cast. Svirfneblin also gain the following spell-like abilities: constant; 1/day,,; caster level equals the svirfneblin's character level.",
-    "Languages": "Svirfneblin begin play speaking Gnome and Undercommon. Those with high Intelligence scores can choose from the following languages: Aklo, Common, Draconic, Dwarven, Elven, Giant, Goblin, Orc, and Terran.",
-    "Alchemist": "Add one extract formula from the alchemist's list to the alchemist's formula book. This formula must be at least one level below the highest formula level the alchemist can create.",
-    "Oracle": "Add one spell known from the oracle spell list. This spell must be at least one level below the highest spell level the oracle can cast.",
-    "Ranger": "Add DR 1/magic to the ranger's animal companion. Each additional time the ranger selects this benefit, the DR/magic increases +1/2 (maximum DR 10/magic). If the ranger ever replaces his animal companion, the new companion gains this DR."
-  },  
+
+
+
   "Sylph": {
     "Physical Description": "Sylphs tend to be pale and thin to the point of appearing delicate, but their skinny bodies are often more resilient than they look. Many sylphs can easily pass for humans with some effort, though the complex blue markings that swirl across their skin reveal their elemental ancestry. Sylphs also bear more subtle signs of their heritage, such as a slight breeze following them wherever they go. These signs become more pronounced as a sylph experiences intense passion or anger, spontaneous gusts of wind tousling the sylph's hair or hot blusters knocking small items off of shelves.",
     "Society": "Sylphs are usually born to human parents, and so are raised according to human customs. Most sylphs dislike the attention they receive growing up in human society, so it's common for them to leave home soon after coming of age. They rarely abandon civilization altogether, however, preferring instead to find some new city or settlement where they can go unnoticed among (and spy upon) the masses. A sylph who happens upon another sylph unnoticed instantly becomes obsessed with her kin, spying on and learning as much about the other as she possibly can. Only after weighing all the pros and cons and formulating plans for every potential outcome will the sylph introduce herself to the other. Rarely, two sylphs will discover each other's presence in a community at the same time. What ensues thereafter is a sort of cat-and-mouse game, a convoluted dance in which each sylph spies on the other as both attempt to gain the upper hand. Sylphs who meet this way always become either inseparable friends or intractable enemies.",
@@ -1457,17 +1118,7 @@
       ]
     }
   }, 
-  "Syrinx": {
-    "+2 Wisdom, -2 Dexterity": "Syrinxes are contemplative and patient, traits that make them somewhat slow to act.",
-    "Normal Speed": "Syrinxes have a base speed of 30 feet.",
-    "Flight": "Syrinxes have a fly speed of 60 feet with average maneuverability.",
-    "Low-Light Vision": "Syrinxes can see twice as far as humans in conditions of dim light.",
-    "Darkvision": "Syrinxes can see in the dark up to 60 feet.",
-    "Nocturnal": "Syrinxes gain a +2 racial bonus on Perception and Stealth checks at night.",
-    "Pride": "Syrinxes receive a +2 racial bonus on saving throws against mind-affecting effects.",
-    "Speak with Avians": "Syrinxes can speak with all birds of the animal creature type and birdlike magical beasts (such as phoenixes and thunderbirds).",
-    "Languages": "Syrinxes begin play speaking Syrinx. Syrinxes with high Intelligence scores can choose from the following: Auran, Azlant, Celestial, Strix, and Infernal."
-  },
+
   "Tengu": {
     "+2 Dexterity, +2 Wisdom, -2 Constitution": "Tengus are fast and observant, but relatively fragile.",
     "Tengu": "Tengus are humanoids with the tengu subtype.",
@@ -1568,147 +1219,11 @@
       ]
     }
   },
-  "Triaxian": {
-    "+2 Constitution, +2 Wisdom, -2 Strength": "Triaxians are a hardy and wily, but also somewhat weak.",
-    "Low-Light Vision": "In dim light, Triaxians can see twice as far as humans.",
-    "Keen Senses": "Triaxians' unique ear construction grants them a +2 bonus on Perception checks.",
-    "Bonus Feat": "Triaxians select one extra feat at 1st level.",
-    "Seasoned": "Summerborn Triaxians can exist comfortably in conditions between 90 and 140 degrees Fahrenheit without having to attempt Fortitude saves. Winterborn Triaxians can exist comfortably in conditions between 40 and 20 degrees Fahrenheit without having to attempt Fortitude saves. When in conditions of severe cold or heat, Triaxians have to attempt Fortitude saves only once per hour instead of once every 10 minutes. Transitional Triaxians do not have this ability.",
-    "Languages": "Triaxians speak Triaxian (the common trade language of Triaxus). Triaxians with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic)."
-  },
-  "Triton": {
-    "Triton Adventurers": "Upon reaching maturity, tritons typically embark on a journey of a year or longer, exploring their region and researching the threats within it. Tritons consider this experience important for personal development and preparation for service to their community, and in some cases, the journey is a prerequisite to joining an organized military group. Tritons may work together with other travelers they meet along the way, and they eagerly summon allies from the sea with theirspell-like ability when needed, but they refuse aid from their homepart of the purpose of their journey is to learn to get along without relying on the strong bonds of familyhood and friendship which they have always drawn on for support.",
-    "+2 Strength, +2 Charisma, -2 Dexterity": "Tritons are strong and have forceful personalities, but they are not very nimble.",
-    "Outsider": "Tritons are native outsiders with the water subtype.",
-    "Medium": "Tritons are Medium creatures and have no bonuses or penalties due to their size.",
-    "Darkvision": "Tritons have darkvision with a range of 60 feet.",
-    "Low-Light Vision": "Tritons have low-light vision.",
-    "Natural Armor": "Tritons have a +2 natural armor bonus.",
-    "Slow Speed": "Tritons are ungainly out of the water and have a base speed of only 5 feet.",
-    "Swim Speed": "Tritons have a swim speed of 40 feet.",
-    "Spell-Like Ability": "Tritons can castonce per day to summon either a Small water elemental or 1d3 dolphins only.",
-    "Languages": "Tritons begin play speaking Aquan and Common. Tritons with a high Intelligence score can choose from the following: Aboleth, Aklo, Celestial, Draconic, Elven, Gnome, and Sylvan."
-  },  
-  "Undine": {
-    "Physical Description": "Undines display a wide variation of skin tones, ranging from pale turquoise to deep blue to sea green. An undine's straight, thick hair tends to be of a similar, yet slightly darker color than her skin. All have limpid blue eyes. Physically, undines most resemble humans, and their physiques show human diversity in regard to overall height and body type. Aside from their coloration, their most racially defining traits remain their fin-like ears and webbed hands and feet.",
-    "Society": "Undines define themselves as a unique race and are capable of producing undine offspring. While they remain able to interbreed with humans, they tend to keep to themselves, and form small, reclusive communities near bodies of water, or in some cases, floating settlements. A typical undine community lives under the guidance of a small council comprising officials appointed by consensus. Council positions can be held indefinitely, though a community unhappy with the performance of a council member can call for her resignation.",
-    "Relations": "Undines hold no biases or prejudices toward any particular races. Their communities rely primarily on trade, giving them ample opportunity to interact with a diverse range of outsiders and foreigners. They have no qualms about establishing neighborhoods within the settlements of other races, provided adequate respect is given to both the undines and any nearby bodies of water. Still, in such instances, a given undine community does what it can to retain its autonomy.",
-    "Alignment and Religion": "Most undines are neutral. Their principle interests lie in the welfare of their people, and thus their moral concerns focus upon the community and upon themselves. This neutral view also allows them to interact with a broad scope of non-undine races with whom they trade. While not deeply religious, undines possess a strong spiritual connection to both their supernatural ancestors and to water itself. Those who pursue nonsecular paths almost always worship the gods of their ancestors or gods whose portfolios feature some aspect of water.",
-    "Adventurers": "On occasion, an undine leaves her people to seek out a life of adventure. Like water itself, some undines simply feel compelled to move, and adventuring gives them an ample excuse for living on the road. Others adventure for less wholesome reasons, and exile is a common punishment for crimes within undine society. With few other options, most exiles turn to adventuring hoping to find a new place in the world. Undines' affinity toward water makes them particularly good druids, while undine sorcerers usually have aquatic bloodlines.",
-    "Male Names": "Aven, Dharak, Ghiv, Jamash, Maakor, Ondir, Radid, Shiradahz.",
-    "Female Names": "Afzara, Baarah, Calah, Iryani, Maarin, Nylgune, Pari, Radabeh, Urdahna.: Undines are perceptive and agile, but somewhat weak.",
-    "+2 Dexterity, +2 Wisdom, -2 Strength": "Undines are perceptive and agile, but somewhat weak.",
-    "Native Outsider": "Undines are outsiders with the native subtype.",
-    "Medium": "Undines are Medium creatures and receive no bonuses or penalties due to their size.",
-    "Normal Speed": "Undines have a base speed of 30 feet on land. They also have a swim speed of 30 feet, can move in water without needing to attempt Swim checks, and always treat Swim as a class skill.",
-    "Darkvision": "Undines can see in the dark up to 60 feet.",
-    "Spell-Like Ability": "Undines can castonce per day as a spell-like ability (with a caster level equal to the undine's character level).",
-    "Energy Resistance": "Undines have cold resistance 5.",
-    "Water Affinity": "Undine sorcerers with the elemental (water) bloodline treat their Charisma scores as 2 points higher for the purposes of all sorcerer spells and class abilities. Undine clerics with the Water domain cast their Water domain powers and spells at +1 caster level.",
-    "Languages": "Undines begin play speaking Common and Aquan. Undines with high Intelligence scores can choose from the following languages: Auran, Dwarven, Elven, Gnome, Halfling, Ignan, and Terran",
-    "Typical Alignment": "LN",
-    "Ability Modifiers": "+2 Dex, +2 Int, 2 Cha",
-    "Alternate Spell-Like Ability": "Rimesouls gainchill touchas a spell-like ability.",
-    "Mist Affinity": "This racial trait functions as and can be replaced as the base undine's water affinity, except it benefits sorcerers with the dreamspun bloodline and spellcasters with the Repose domain.",
-    "Ice Affinity": "This racial trait functions as and can be replaced as the base undine's water affinity, except it benefits sorcerers with the boreal bloodline and spellcasters with the Ice subdomain.",
-    "Bard": "Add a +1 bonus on Perform checks to use the countersong bardic performance against creatures with the aquatic or water subtypes.",
-    "Cleric": "Add a +1 bonus on caster level checks to overcome the spell resistance of creatures with the aquatic or water subtype.",
-    "Druid": "Add a +1 bonus on wild empathy checks to influence animals and magical beasts with the aquatic subtype.",
-    "Monk": "Add +1 to the monk's CMD when resisting a grapple and +1/3 to the number of stunning attacks he can attempt per day.",
-    "Shifter": "Add a +1 bonus on wild empathy checks to influence animals and magical beasts with the aquatic subtype.",
-    "Sorcerer": "Add a +1 bonus on caster level checks to cast spells underwater.",
-    "Summoner": "If the summoner's eidolon has an aquatic base form , add +5 feet to the range of the summoner's life link ability.",
-    "Wizard": "Add one spell from the cleric, druid, or wizard spell list with the water descriptor to the wizard's spellbook. This spell must be at least one level below the highest spell level he can cast. This spell is treated as one level higher unless it also appears on the wizard spell list.",
-    "Subraces": {
-      "Mistsoul (Vapor Undine)": [
-        "Soothing and insightful, mistsoul undines move through the world with airy resilience and earnest action.NG+2 Con, +2 Wis, 2 IntMistsouls gainas a spell-like ability.This racial trait functions as and can be replaced as the base undines water affinity, except it benefits sorcerers with the dreamspun bloodline and spellcasters with the Repose domain.With gentle spirits and contemplative minds, mistsouls are drawn to the more mystic aspects of their element. Their ephemeral, vaporous natures can allow them to lull others into a dreamlike state, or facilitate a peaceful transition into the next life. They tend to seek out places where ideological and political struggles converge, and thus they are at home in communities like those of the common folk of Brevoy.Physically, mistsouls have rounded features and graceful deliberation in their movement. They prefer soft, highquality garments of neutral or earth tones and simple jewelry chosen for significance rather than expense."
-      ],
-      "Rimesoul (Frost Undine)": [
-        "Rimesoul undines are distant and imperious, aloof in their intellect and hesitant to change their ways.LN+2 Dex, +2 Int, 2 ChaRimesouls gainas a spell-like ability.This racial trait functions as and can be replaced as the base undines water affinity, except it benefits sorcerers with the boreal bloodline and spellcasters with the Ice subdomain.Like their ice-coated ancestors, rimesouls represent the solidification of change. They have precise, ordered minds that take well to individual pursuits. Rimesouls often choose to live in sparsely populated areas in Irrisen and Varisia. When they do live in cities, they prefer areas of disciplined culture such as Druma and Cheliax.In appearance, rimesouls are frequently pale, sometimes with translucent or blue-tinged skin. Rimesouls usually dress in crisp, understated fashions that present an impression of austerity."
-      ]
-    }
-  },
-  "Vanara": {
-    "+2 Dexterity, +2 Wisdom, -2 Charisma": "Vanaras are agile and perceptive, but are also rather impish and mischievous.",
-    "Vanara": "Vanaras are humanoids with the vanara subtype.",
-    "Medium": "Vanaras are Medium creatures and have no bonuses or penalties due to their size.",
-    "Normal Speed": "Vanaras have a base speed of 30 feet and a Climb speed of 20 feet.",
-    "Low-Light Vision": "A vanara can see twice as far as a human in dim light.",
-    "Nimble": "Vanaras have a +2 racial bonus on Acrobatics and Stealth checks.",
-    "Prehensile Tail": "A vanara has a long, flexible tail that she can use to carry objects. She cannot wield weapons with her tail, but the tail allows her to retrieve a small, stowed object carried on her person as a swift action.",
-    "Languages": "Vanaras begin play speaking Common and Vanaran. Vanaras with high Intelligence scores can choose from the following languages: Aklo, Celestial, Elven, Gnome, Goblin, and Sylvan.",
-    "Alchemist": "Add +1/2 to the alchemist's bomb damage.",
-    "Arcanist": "Add 1/4 to the arcanist's effective class level when determining the effects of any two arcanist exploits that the arcanist has.",
-    "Bard": "Add 1/2 to the bard's bardic Knowledge bonus.",
-    "Brawler": "Gain 1/5 of a new Fleet feat.",
-    "Cavalier": "Add 1/2 to the cavalier's level when determining the duration of the tactician ability.",
-    "Druid": "Add a +1/2 bonus on wild empathy checks and a +1/2 bonus on Handle Animal skill checks.",
-    "Fighter": "Add +1 to the fighter's CMD when resisting a reposition or trip attempt.",
-    "Hunter": "Add 1 minute to the number of minutes per day that the hunter can use animal focus.",
-    "Kineticist": "Add 1/3 to the total number of points of burn that the kineticist can accept before she can't choose to accept additional points of burn.",
-    "Monk": "Add a +1 bonus on Acrobatics checks made to jump.",
-    "Occultist": "Gain 1/6 of a new focus power.",
-    "Psychic": "When casting psychic divination spells, the psychic adds 1/2 to the effective caster level of the spell, but only to determine the spell's range and its d% chance to provide correct or meaningful information (such as with augury or divination).",
-    "Ranger": "Add +1/4 dodge bonus to Armor Class against the ranger's favored enemies.",
-    "Rogue": "The rogue gains 1/6 of a new rogue talent.",
-    "Shaman": "Add one spell from the cleric spell list that isn't on the shaman spell list to the list of spells the shaman knows. This spell must be at least 1 level below the highest level the shaman can cast.",
-    "Shifter": "Add a +1/2 bonus on Acrobatics checks to jump and a +1/2 bonus on wild empathy checks.",
-    "Summoner": "Add 1/4 to the eidolon's evolution pool.",
-    "Witch": "Add 1/4 to the witch's caster level when determining the effects of spells granted to her by her patron (to a maximum of +2).",
-    "Wizard": "1/6 of a bonus feat. This feat must be an item creation feat, a metamagic feat, or Spell Mastery."
-  },
-  "Vine Leshy": {
-    "Physical Description": "A vine leshy's body is made of masses of twisted vines and leaves, sometimes incorporating flowers and fruits as well. Their appearance is mostly determined by the species of vine used in their creation, but most have a large cluster of leaves that forms a face with round eyes, a small mouth, and no visible nose.",
-    "Society": "Because of their ritual-based genesis, vine leshys do not have a traditional family structure. They form strong friendships with those who accompany them on explorations or who assist them in protecting a natural site. Unlike most leshys, vine leshys usually feel a strong desire to seek out the one who created them. They see their creators as friends and allies rather than as parents.",
-    "Relations": "Vine leshys are interested in learning about the cultures of many other races. Their initial attitudes when they encounter new races are based on biases from the nature spirit's past incarnations, but they evolve over time through the leshy's experiences. In unfamiliar situations, vine leshys prefer to blend in with vegetation to observe before venturing out and introducing themselves.",
-    "Alignment and Religion": "Vine leshys see themselves as part of the ancient cycle of nature. They care for their friends and any natural areas under their care, but rarely feel compelled toward either charity or malice. Most vine leshys are truly neutral, and they almost always have at least one neutral aspect to their alignments. Religion is not particularly important to vine leshys. Those who do find faith tend toward worship of Gozreh, a green man , or one of the Eldest of the First World (see page 130), but the Green Faith is the most common philosophy followed by vine leshys.",
-    "Adventurers": "Like most leshys, vine leshys typically do not fear death. They know that if their bodies die, their spirits will return to the natural world and may someday find themselves in new bodies. This lack of fear combined with their curiosity leads them to take risks. However, they typically avoid excessively dangerous activities, as they would rather gather a story from their adventures to tell later. Vine leshys gravitate toward classes that let them use their connection to nature, such as druid and ranger.",
-    "Names": "Vine leshys' names change throughout their lives. A young vine leshy typically names herself after her physical characteristics or a natural feature that she particularly enjoys. As vine leshys age, they modify their names to better reflect their personality and experiences. A leshy may even have several names that she cycles among, such as one name for each season. Most vine leshys select names that are at least two words long. Example vine leshy names include Burbling Waterfall, Lovely Triple Leaves, Masterful Sun Drinker, Snowy Pine Branches, Verdant Taleweaver, and Vibrant Tree Climber.Vine leshys grow best in areas where they can receive ample sunlight. After a vine leshy sprouts, the leshy's creator must use a sturdy tree, trellis, or other support to guide it as it grows. For more information about growing leshys, see page 176 of5th;1,500 gpKnowledge (nature) 5 ranks,,,;Knowledge (nature) DC 13;750 gp: Vine leshys are hardy and insightful, but sometimes forgetful.",
-    "CL": "5th;1,500 gpKnowledge (nature) 5 ranks,,,;Knowledge (nature) DC 13;750 gp: Vine leshys are hardy and insightful, but sometimes forgetful.",
-    "Price": "1,500 gpKnowledge (nature) 5 ranks,,,;Knowledge (nature) DC 13;750 gp: Vine leshys are hardy and insightful, but sometimes forgetful.",
-    "Requirements": "Knowledge (nature) 5 ranks,,,;Knowledge (nature) DC 13;750 gp: Vine leshys are hardy and insightful, but sometimes forgetful.",
-    "Skill": "Knowledge (nature) DC 13;750 gp: Vine leshys are hardy and insightful, but sometimes forgetful.",
-    "Cost": "750 gp: Vine leshys are hardy and insightful, but sometimes forgetful.",
-    "+2 Constitution, +2 Wisdom, -2 Intelligence": "Vine leshys are hardy and insightful, but sometimes forgetful.",
-    "Leshy": "Vine leshys are plants with the leshy subtype but lack the immunities to mind-affecting effects, paralysis, poison, polymorph, sleep, and stunning that the plant type usually grants, and they lack the immunity to electricity and sonic that the leshy subtype usually grants.",
-    "Small": "Vine leshys are Small creatures and gain a +1 size bonus to their AC, a +1 size bonus on attack rolls, a 1 penalty on combat maneuver checks and to their Combat Maneuver Defense, and a +4 size bonus on Stealth checks.",
-    "Slow Speed": "Vine leshys have a base speed of 20 feet.",
-    "Darkvision": "Vine leshys can see in the dark up to 60 feet.",
-    "Low-Light Vision": "Vine leshys can see twice as far as humans under conditions of dim light.",
-    "Pass without Trace": "Vine leshys haveas a constant spell-like ability (caster level 2nd).",
-    "Change Shape": "Vine leshys can transform into vines, with results similar to. In this form, the leshy appears as a particularly healthy Small vine. The leshy can assume plant form or revert to its true form as a swift action.",
-    "Plantspeech": "Vine leshys can speak with vines as if subject to a continualspell.",
-    "Verdant Burst": "When slain, a vine leshy explodes in a burst of fertile energies. All plant creatures within 30 feet of the slain leshy regain hit 1d8 points, and vines quickly infest the area. If the terrain can support vines, the undergrowth is dense enough to make the region into difficult terrain for 24 hours, after which the plant life diminishes to a normal level; otherwise, this plant life has no significant effect on movement and withers and dies within an hour.",
-    "Unassuming Foliage": "Vine leshys gain a +4 racial bonus on Stealth checks in forests.",
-    "Climber": "Vine leshys gain a +2 racial bonus on Climb checks.",
-    "Languages": "Vine leshys begin play speaking Common and Sylvan. Vine leshys with high Intelligence scores can choose from the following: Aquan, Auran, Aklo, Elven, Gnome, Goblin, Terran, or Undercommon.",
-    "Alchemist": "Add 1/4 to the alchemist's natural armor bonus when using his mutagen.",
-    "Bard": "Add a +1/3 bonus to Perform (oratory) checks, including checks using versatile performance, as long as the bard first spends at least 10 minutes telling a story.",
-    "Druid": "Add a +1/2 bonus to the druid's wild empathy or plant empathy checks.",
-    "Kineticist": "Gain 1/5 of the Extra Wild Talent feat. This feat must be spent on a wood-element talent.",
-    "Oracle": "An oracle with the nature or wood mystery adds one spell from the druid's spell list that isn't on the cleric spell list to the oracle's spell list; she still must select this spell as one of her spells known in order to cast it. This spell must be at least 1 level lower than the highest spell level the oracle can cast.",
-    "Ranger": "Add a +1/2 bonus to Knowledge (nature) checks in the ranger's favored terrain.",
-    "Rogue": "Add a +1/2 bonus to Climb checks and on Stealth checks in forests.",
-    "Shaman": "Shamans with the nature or wood spirit add one spell from the druid's spell list that isn't on the shaman spell list to the shaman's spell list; she still must select this spell as one of her spells known in order to cast it. This spell must be at least 1 level lower than the highest spell level the shaman can cast.",
-    "Shifter": "Add a +1 bonus on Knowledge (nature) checks relating to plants."
-  },
-  "Vishkanya": {
-    "+2 Dexterity, +2 Charisma, -2 Wisdom": "Vishkanyas are graceful but often irrational.",
-    "Vishkanya": "Vishkanyas are humanoids with the vishkanya subtype.",
-    "Medium": "Vishkanyas are Medium creatures and have no bonuses or penalties due to their size.",
-    "Normal Speed": "Vishkanyas have a base speed of 30 feet.",
-    "Low-Light Vision": "Vishkanyas can see twice as far as humans in conditions of dim light.",
-    "Keen Senses": "Vishkanyas receive a +2 racial bonus on Perception checks.",
-    "Limber": "Vishkanyas receive a +2 racial bonus on Escape Artist and Stealth checks.",
-    "Poison Resistance": "A vishkanya has a racial bonus on saving throws against poison equal to its Hit Dice.",
-    "Poison Use": "Vishkanyas are skilled in the use of poison and never accidentally poison themselves when using or applying poison.",
-    "Toxic": "A number of times per day equal to his Constitution modifier (minimum 1/day), a vishkanya can envenom a weapon that he wields with his toxic saliva or blood (using blood requires the vishkanya to be injured when he uses this ability). Applying venom in this way is a swift action.",
-    "Weapon Familiarity": "Vishkanyas are always proficient with blowguns, kukri, and shuriken.",
-    "Languages": "Vishkanyas begin play speaking Common and Vishkanya. Vishkanyas with high Intelligence scores can choose from the following languages: Aklo, Draconic, Elven, Goblin, Sylvan, and Undercommon.",
-    "Bard": "Add +1 to the bard's total number of bardic performance rounds per day.",
-    "Rogue": "Add +1 to the rogue's CMD when resisting a grapple or reposition attempt.",
-    "Sorcerer": "Select one bloodline power at 1st level that is normally usable a number of times per day equal to 3 + the sorcerer's Charisma modifier. The sorcerer adds +1/2 to the number of uses per day of that bloodline power."
-  },
+
+
+
+
+
   "Wayang": {
     "+2 Dexterity, +2 Intelligence, -2 Wisdom": "Wayangs are nimble and cagey, but their perception of the world is clouded by shadows.",
     "Wayang": "Wayangs are humanoids with the wayang subtype.",
@@ -1739,53 +1254,6 @@
     "Summoner": "Add +1 skill rank to the summoner's eidolon.",
     "Witch": "Add one spell from the sorcerer/wizard spell list that isn't on the witch spell list to the list of spells the witch knows. This spell must be at least 1 level below the highest spell level the witch can cast and be of the illusion (shadow) subschool or have the darkness descriptor.",
     "Wizard": "Add one spell from the wizard spell list to the wizard's spellbook. The spell must be an illusion spell of the shadow subschool or have the darkness descriptor."
-  },
-  "Wyrwood": {
-    "+2 Dexterity, +2 Intelligence, -2 Charisma": "Wyrwoods are quick and calculating. As constructs, wyrwoods do not have a Constitution score.",
-    "Construct": "Wyrwoods have the construct type.",
-    "Normal Speed": "Wyrwoods have a base speed of 30 feet.",
-    "Small": "Wyrwoods are Small creatures and gain a +1 size bonus on attack rolls, a 1 penalty on combat maneuver checks and to their Combat Maneuver Defense, a +2 bonus on Fly checks, and a +4 size bonus on Stealth checks.",
-    "Darkvision": "Wyrwoods can see in the dark up to 60 feet.",
-    "Low-Light Vision": "Wyrwoods have low-light vision.",
-    "Languages": "Wyrwoods speak Common. A wyrwood with a high Intelligence score can choose from the following: Draconic, Dwarven, Elven, Gnome, Goblin, and Orc.",
-    "Alchemist": "Reduce the mental ability score penalty of the alchemist's mutagens by 1/5 (minimum 0).",
-    "Arcanist": "Add 1/4 to the arcanist's level for the spell resistance exploit.",
-    "Cleric": "Add 1/4 to the cleric's caster level when casting spells or using abilities from the Law domain or one of its subdomains, or when casting spells with the lawful descriptor.",
-    "Magus": "Add 2 rounds to the duration of the magus' arcane pool enhancements.",
-    "Oracle": "Add one spell known from the wizard's evocation school spell list. This spell must be at least 1 level below the highest-level spell the oracle can cast. That spell is treated as 1 level higher unless it is also on the oracle spell list.",
-    "Paladin": "The paladin gains 1/4 of a bonus spell per day of the highest-level spell that the paladin can cast.",
-    "Psychic": "psychic gains 1/6 of a phrenic amplification.",
-    "Rogue": "The rogue gains 1/6 of a rogue talent.",
-    "Slayer": "The slayer gains 1/6 of a slayer talent.",
-    "Wizard": "The wizard gains 1/6 of a bonusitem creation,metamagic, or spell mastery feat."
-  },
-  "Wyvaran": {
-    "+2 Dexterity, +2 Wisdom, -2 Intelligence": "Wyvarans have a reptilian grace and a strong will, but are a little dim-witted.",
-    "Dragon": "Wyvarans have the dragon type.",
-    "Medium": "Wyvarans are Medium creatures and have no bonuses or penalties due to their size.",
-    "Normal Speed": "Wyvarans have a base speed of 30 feet.",
-    "Flight": "Wyvarans have dragonlike wings that grant them a fly speed of 30 feet with clumsy maneuverability.",
-    "Slapping Tail": "Wyvarans have a tail attack they can use only when making attacks of opportunity. This slapping tail attack deals a number of points of damage equal to 1d8 + the wyvaran's Strength modifier.",
-    "Darkvision": "Wyvarans can see in the dark up to 60 feet.",
-    "Low-Light Vision": "Wyvarans have low-light vision.",
-    "Languages": "Wyvarans speak Common and Draconic. A wyvaran with a high Intelligence score can choose from the following: Dwarven, Elven, Gnome, Goblin, and Orc.",
-    "Bloodrager": "Add 1 to the bloodrager's total rounds of bloodrage each day.",
-    "Mesmerist": "Add 1/4 to the mesmerist's level for the purpose of determining the effect of mesmerist tricks.",
-    "Oracle": "Add 1/4 to the oracle's level for the purpose of determining the effects of an oracle curse.",
-    "Paladin": "Add 1/2 to the paladin's level when determining the effect of smite evil against evil-aligned dragons.",
-    "Rogue": "Add a +1/2 bonus to Stealth and Sleight of Hand checks to steal or hide objects.",
-    "Sorcerer": "Add a +1/2 bonus to the damage of spells or spell-like abilities that deal damage of the same energy type as the sorcerer's draconic bloodline breath weapon."
-  },
-  "Yaddithian": {
-    "+2 Constitution, +2 Intelligence, –2 Wisdom": "",
-    "Slow": "Yaddithians have a land speed of 20 feet.",
-    "Darkvision": "Yaddithians can see in the dark up to 60 feet.",
-    "Defensive Abilities": "Yaddithians have cold resistance 5 and theno breathability.",
-    "Claws": "A Yaddithian has two claws that deal 1d4 points of damage each.",
-    "Rugose": "A Yaddithian gains a +1 natural armor bonus.",
-    "Cosmic Mind (Ex)": "A Yaddithian gets a +2 racial bonus on Knowledge and Spellcraft checks. A yaddithian spellcaster who would store spells in a spellbook or familiar instead stores those spells in its mind (but must expend the normal resources to learn new spells).",
-    "Long-Lived (Ex)": "Yaddithians live for thousands of years; they gain no benefit or penalty from aging and are immune to magical aging effects.",
-    "Languages": "Yaddithians begin play speaking Yaddithian. Those with high Intelligence scores can choose any language as a bonus language."
   }
 }  
 }

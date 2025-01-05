@@ -12,6 +12,9 @@ from Backend.utils.class_func.race_func import *
 character_data = {}
 
 def roll_dice(num_dice, num_sides):
+    if not (isinstance(num_dice, int) or isinstance(num_sides, int)):
+        num_dice = 4
+        num_sides = 6
     rolls = []
     for _ in range(num_dice):
         rolls.append(random.randint(1, num_sides))
@@ -106,21 +109,14 @@ def region_chooser(character, userInput_region):
     """
     print(f"Please make sure below matches this list: {character.first_names_regions.keys()}")
     regions = list(character.first_names_regions.keys())
-    # userInput_region = input('Select region [input the number for the region you want] from above list: (0 = Random, 1=Tal-falko, 2=Dolestan, 3=Sojoria, 4=Ieso, 5=Spire, 6=Feyador, 7=Esterdragon, 8=Grundykin Damplands, 9=Dust Cairn, 10=Kaeru no Tochi ...)').lower()
-    userInput_region = int(userInput_region)
-    
 
-    if isinstance(userInput_region, int) and int(userInput_region) <= len(regions):
+    if isinstance(userInput_region, int) and ( 0 <= int(userInput_region) <= len(regions) ):
         region_index = int(userInput_region) - 1
         region_selected = regions[region_index]        
         print('You have selected this region: ' + region_selected)
-    elif int(userInput_region) == 0:
-        region_index = random.randint(0,9)
-        region_selected = regions[region_index]
-        print('You have randomly selected this region: ' + region_selected)
     else:
-        print('You have selected no region.')
-        region_selected = ''
+        print('You have selected no region, you will be given a random region.')
+        region_selected = random.randint(1,len(regions)-1)
     character.region = region_selected
     return character.region
 
@@ -132,16 +128,11 @@ def race_chooser(character, userInput_race):
     """
     race_data = full_race_data(character)
     races = list(race_data.keys())
-    print(f'this is your race keys {races}')
-    print(races)
-    print('Select race from the above list: (or 0 if random)')
-    if isinstance(userInput_race, str):
+    if isinstance(userInput_race, str) and (userInput_race in races):
         userInput_race = userInput_race.capitalize()
-    if userInput_race in races:
-        print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race: {userInput_race}')
     else:
-        userInput_race = random.choice(races).lower()
-        print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_race: {userInput_race}')
+        print('You have selected no race, you will be given a random race.')
+        userInput_race = random.choice(races).capitalize()
     character.chosen_race = userInput_race
     return character.chosen_race
         
@@ -225,6 +216,22 @@ def chooseClass(character, class_choice):
     Returns
     - c_class (String)
     """
+    # temporarily removing occult classes (they aren't ready yet)
+    occult_classes = getattr(data, 'occult_classes')
+    available_classes = list(character.class_data.keys())
+    #remove occult classes
+    for x in available_classes:
+        if x in occult_classes:
+            available_classes.remove(x)
+            
+    print("available_classes", available_classes)
+    print("these_are_available_classes", available_classes)
+    if not isinstance(class_choice, str) and class_choice not in character.class_data.keys():
+        class_choice = random.choice(available_classes)
+
+    if class_choice in occult_classes:
+        class_choice = random.choice(available_classes)
+
     # userInput_class = input(f'please type a class name to select a class, or type 0 for a random class: ').lower()
     print('please type a class name to select a class, or type 0 for a random class: ')
     userInput_class = class_choice.lower()
@@ -233,10 +240,11 @@ def chooseClass(character, class_choice):
     character.c_class_2 = ''
 
     all_classes = list(character.class_data.keys()) # + list(character.class_data["Path of War"].keys())
-    print(all_classes)
+    print("these are all_classes: ",all_classes)
 
     if userInput_class not in all_classes:
-        bab = input('Enter bab (H/M/L): ').capitalize()
+        bab = random.choice(('H','M','L'))
+        # bab = input('Enter bab (H/M/L): ').capitalize()
         character.bab = bab
         userInput_class = None
 

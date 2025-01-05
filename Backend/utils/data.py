@@ -129,7 +129,7 @@ enhancement_bonus_mapping = {
 # wizards know 3 + INT mod + 2(per level) spells
 
 # add later
-# "occultist", "kineticist", "medium", "mesmerist", "psychic","spiritualist",
+occult_classes = ["occultist", "kineticist", "medium", "mesmerist", "psychic", "spiritualist",]
 base_classes = ["alchemist", "antipaladin", "arcanist", "barbarian", "barbarian (unchained)", "bard", "bloodrager", "brawler", "cavalier", "cleric", "druid", "fighter", "gunslinger", "hunter", "inquisitor", "investigator", "magus", "monk", "monk (unchained)", "ninja",  "oracle", "paladin",  "ranger", "rogue", "rogue (unchained)", "samurai", "shaman", "shifter", "skald", "slayer", "sorcerer",  "summoner", "summoner (unchained)", "swashbuckler", "vigilante", "warpriest", "witch", "wizard"]
 
 divine_casters = ['antipaladin', 'cleric', 'druid', 'oracle', 'hunter' ,'inquisitor', 'paladin', 'ranger', 'shaman', 'warpriest']
@@ -137,7 +137,9 @@ divine_casters = ['antipaladin', 'cleric', 'druid', 'oracle', 'hunter' ,'inquisi
 
 #must match the same order as the weapon_groups_region section
 regions = ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"]
-races = ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-elf", "Half-orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"]
+races = options = ["Random", "Dwarf", "Elf", "Gnome", "Half-elf", "Halfling", "Half-orc", "Human", "Aasimar", "Catfolk", "Dhampir", "Drow", "Fetchling", "Goblin", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Wayang"]
+# eventually can add all these classes (especially for FoundryVtt)
+# ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-elf", "Half-orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"]
 weapon_groups = ['Axes', 'Blades, Heavy', 'Blades, Light', 'Bows', 'Close', 'Crossbows', 'Double', 'Firearms', 'Flails', 'Hammers', 'Monk', 'Natural', 'Polearms', 'Siege Engines', 'Spears', 'Thrown', 'Tribal']
 
 manuevers = ["Bull Rush", "Dirty Trick", "Disarm", "Drag", "Grapple", "Overrun", "Reposition", "Steal", "Sunder", "Trip"]

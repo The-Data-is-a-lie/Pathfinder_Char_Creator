@@ -3,6 +3,10 @@ from math import floor
 from Backend.utils.util import roll_dice
 
 def roll_stats(character, num_dice, num_sides):
+    if not isinstance(num_dice, int) or num_dice <= 0: 
+        num_dice = 4
+    if not isinstance(num_sides, int) or num_sides <= 0:
+        num_sides = 6     
     # Define the main stat for the class (replace 'main_stat' with the actual main stat for your class)
     main_stat = character.class_data[character.c_class]['main_stat']
     main_stat_2 = character.class_data[character.c_class].get('main_stat_2', None)

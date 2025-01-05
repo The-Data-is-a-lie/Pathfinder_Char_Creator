@@ -10,7 +10,7 @@ from Backend.start_py import create_app, SECRET_KEY
 app = create_app()
 # app = Flask(__name__)
 # app.secret_key = SECRET_KEY
-CORS(app)
+CORS(app, supports_credentials=True, origins="*", methods=["GET", "POST", "PUT", "DELETE"], allow_headers=["*"])
 app.config['SECRET_KEY'] = SECRET_KEY
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_COOKIE_SECURE'] = True  # Mark the cookie as secure
@@ -44,7 +44,9 @@ def process_input_values(input_values):
         create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, userInput_gender, truly_random_feats, num_dice, num_sides, high_level, low_level, gold_num = input_values
         
         # Import and call generate_random_char
-        from Backend.main import generate_random_char
+        # uncomment below if you want to use permanent website
+        # from Backend.main import generate_random_char
+        from main import generate_random_char
         global character_data
         character_data = generate_random_char(create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, userInput_gender, truly_random_feats, num_dice, num_sides, high_level, low_level, gold_num)
 

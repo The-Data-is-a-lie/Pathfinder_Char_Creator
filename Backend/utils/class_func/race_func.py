@@ -1,6 +1,8 @@
 import random
 # Race_data section
 def full_race_data(character):
+    # if we want races to work, we need them in data.py/playableraces.json/races.json
+    # all race data we can add is in races_json_missing_data 
     race_data = {}
     race_data.update(character.PlayableRaces['Core'])
     race_data.update(character.PlayableRaces['NonCore'])
@@ -8,8 +10,10 @@ def full_race_data(character):
 
 def subrace_chooser(character):
     race_data = full_race_data(character)
-    subrace_list = (race_data.get(character.chosen_race, None).get("Subraces", None))
-    if subrace_list is not None:
+    pre_subrace_list = race_data.get(character.chosen_race, {})
+
+    if pre_subrace_list.get("Subraces", {}) not in (None, {}):
+        subrace_list = pre_subrace_list.get("Subraces", {})
         subrace_list = list(subrace_list.keys())
         chosen_subrace = random.choice(subrace_list)
         subrace_description = race_data.get(character.chosen_race, None).get("Subraces", None).get(chosen_subrace, None)
@@ -20,7 +24,11 @@ def subrace_chooser(character):
 
 def race_traits_chooser(character):
     race_data = full_race_data(character)
-    data_list = list(race_data.get(character.chosen_race, None).keys())
+    if race_data.get(character.chosen_race.capitalize(), None) == None:
+            print(character.chosen_race + " has no traits")
+            return '', ''
+    
+    data_list = list(race_data.get(character.chosen_race.capitalize(), None).keys())
     race_traits_list = []
     race_traits_description_list = []
     append_start = False

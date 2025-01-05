@@ -166,18 +166,19 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			stats = roll_stats(character, num_dice, num_sides)
 			assign_stats(character, stats)
 
-			chosen_subrace, subrace_description = subrace_chooser(character)
-			print(f'this is your chosen subrace {chosen_subrace}')
-			race_traits_list, race_traits_description_list = race_traits_chooser(character)
-			print(race_traits_list, race_traits_description_list)
+			# We don't use subrace data in foundryVTT (comment these out if we want to (will need to fix their issues first))
+			# chosen_subrace, subrace_description = subrace_chooser(character)
+			# print(f'this is your chosen subrace {chosen_subrace}')
+			# race_traits_list, race_traits_description_list = race_traits_chooser(character)
+			# print(race_traits_list, race_traits_description_list)
 
-			split_race_traits_list = race_ability_split(character, race_traits_list)
-			character.dex = race_ability_score_changes(character, split_race_traits_list, character.dex, 'dex')
-			character.str = race_ability_score_changes(character, split_race_traits_list, character.str, 'str')
-			character.con = race_ability_score_changes(character, split_race_traits_list, character.con, 'con')
-			character.int = race_ability_score_changes(character, split_race_traits_list, character.int, 'int')
-			character.wis = race_ability_score_changes(character, split_race_traits_list, character.wis, 'wis')
-			character.cha = race_ability_score_changes(character, split_race_traits_list, character.cha, 'cha')
+			# split_race_traits_list = race_ability_split(character, race_traits_list)
+			# character.dex = race_ability_score_changes(character, split_race_traits_list, character.dex, 'dex')
+			# character.str = race_ability_score_changes(character, split_race_traits_list, character.str, 'str')
+			# character.con = race_ability_score_changes(character, split_race_traits_list, character.con, 'con')
+			# character.int = race_ability_score_changes(character, split_race_traits_list, character.int, 'int')
+			# character.wis = race_ability_score_changes(character, split_race_traits_list, character.wis, 'wis')
+			# character.cha = race_ability_score_changes(character, split_race_traits_list, character.cha, 'cha')
 			print_stats(character)
 
 			calc_ability_mod(character)
@@ -603,7 +604,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					weapon_enhancement_chosen_list, armor_enhancement_chosen_list, 
 					shield_enhancement_chosen_list, professions,
 					selected_traits, equipment_list, character.c_class_level,
-					chosen_subrace, subrace_description, character.archetype1,
+					# We don't use subrace data in foundryVTT (comment these out if we want to (will need to fix their issues first))
+					# chosen_subrace, subrace_description, 
+					character.archetype1,
 					hair_color, hair_type, eye_color, appearance,
 					language_text, feats, 
 					character.gold, character.platnium,
@@ -636,7 +639,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 					"weapon_enhancement_chosen_list", "armor_enhancement_chosen_list", 
 					"shield_enhancement_chosen_list", "professions",
 					"selected_traits", "equipment_list", "level",
-					"chosen_subrace", "subrace_description", "archetype1",
+					# We don't use subrace data in foundryVTT (comment these out if we want to (will need to fix their issues first))
+					# "chosen_subrace", "subrace_description", 
+					"archetype1",
 					"hair_color", "hair_type", "eye_color", "appearance",
 					"language_text", "feats", 
 					"gold", "platnium",

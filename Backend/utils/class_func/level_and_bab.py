@@ -2,6 +2,11 @@ from math import ceil, floor
 import random
 
 def randomize_level(character, min_num, max_num):
+    if not isinstance(min_num, int) or min_num <= 0: 
+        min_num = 1
+    if not isinstance(max_num, int) or max_num <= 0:
+        max_num = 20    
+    # for now (we won't deal with multiclasses)
     if character.c_class_2 == '':
         print('this is is blank class_2')
         pre_level = random.randint(min_num, max(min_num, max_num))

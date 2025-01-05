@@ -77,7 +77,10 @@ def get_data_without_prerequisites(character, class_1, dataset_name, level= None
     dataset_no_prereq = []
     base_no_prereq = []
     amount = floor(character.c_class_level/2)
-
+    # fail safe to not break if any character with amount = 0 tries to use this
+    if amount == 0:
+        return None
+    
     if odd == True:
         amount = ceil(character.c_class_level/2)
 
@@ -100,6 +103,10 @@ def get_data_without_prerequisites(character, class_1, dataset_name, level= None
     return base_no_prereq, dataset_no_prereq, chosen_set
 
 def choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, base, level, total_choices):
+    # added this logic so low level characters don't break
+    if amount == None or amount <= 0:
+        return [], [], []
+        
     chosen_set = set()
     for i in range(amount):
         chosen = random.choice(total_choices)
@@ -180,7 +187,10 @@ def generic_multi_chooser(character, class_1, dataset_name, n, n2=None):
         i = 0
 
         level = character.c_class_level   
-        ii = level // 3         
+        # Added logic so low level characters can't break at this point
+        ii = floor(level // 3)
+        if ii <= 0:
+            return None        
 
         while i < ii:
             # print(dataset)

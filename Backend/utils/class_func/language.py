@@ -12,6 +12,9 @@ def language_chooser(character):
     return languages
 
 def regex_search(character, string, regex):
+    print("this is your race" + character.chosen_race)
+    print(f'this is your string {string}')
+    print(f'this is your regex {regex}')
     pattern = rf"{regex}"
     match = re.search(pattern, string)
     if match:
