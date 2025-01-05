@@ -134,7 +134,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='rogue', multi_class='N', alignment_input = 'N' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=20, low_level=20, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='monk', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=1, num_sides=1, high_level=2, low_level=2, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()
@@ -148,12 +148,13 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		character.instantiate_full_data_dict()
 		
 		character.chosen_gender = gender_chooser(character, userInput_gender)
-		
+		 
 		region = region_chooser(character,userInput_region)
 		chosen_race = race_chooser(character,userInput_race)
+		print("this is your race: " + chosen_race)
 		# weapon_chooser(character) # We don't use this anymore, but leave it uncommented for now
 		f_name, l_name =name_chooser(character)
-		c_class = chooseClass(character,class_choice.lower())
+		c_class = chooseClass(character,class_choice)
 		c_class_2 = dip_function(character,'base_classes', multi_class)
 
 		#add an optional flaws rule function	
@@ -172,19 +173,19 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		stats = roll_stats(character, num_dice, num_sides)
 		assign_stats(character, stats)
 
-		chosen_subrace, subrace_description = subrace_chooser(character)
-		print(f'this is your chosen subrace {chosen_subrace}')
-		race_traits_list, race_traits_description_list = race_traits_chooser(character)
-		print(race_traits_list, race_traits_description_list)
-
-		split_race_traits_list = race_ability_split(character, race_traits_list)
-		character.dex = race_ability_score_changes(character, split_race_traits_list, character.dex, 'dex')
-		character.str = race_ability_score_changes(character, split_race_traits_list, character.str, 'str')
-		character.con = race_ability_score_changes(character, split_race_traits_list, character.con, 'con')
-		character.int = race_ability_score_changes(character, split_race_traits_list, character.int, 'int')
-		character.wis = race_ability_score_changes(character, split_race_traits_list, character.wis, 'wis')
-		character.cha = race_ability_score_changes(character, split_race_traits_list, character.cha, 'cha')
-		print_stats(character)
+		# We don't use subrace data in foundryVTT (comment these out if we want to (will need to fix their issues first))
+		# chosen_subrace, subrace_description = subrace_chooser(character)
+		# print(f'this is your chosen subrace {chosen_subrace}')
+		# race_traits_list, race_traits_description_list = race_traits_chooser(character)
+		# print(race_traits_list, race_traits_description_list)
+		# split_race_traits_list = race_ability_split(character, race_traits_list)
+		# character.dex = race_ability_score_changes(character, split_race_traits_list, character.dex, 'dex')
+		# character.str = race_ability_score_changes(character, split_race_traits_list, character.str, 'str')
+		# character.con = race_ability_score_changes(character, split_race_traits_list, character.con, 'con')
+		# character.int = race_ability_score_changes(character, split_race_traits_list, character.int, 'int')
+		# character.wis = race_ability_score_changes(character, split_race_traits_list, character.wis, 'wis')
+		# character.cha = race_ability_score_changes(character, split_race_traits_list, character.cha, 'cha')
+		# print_stats(character)
 
 		calc_ability_mod(character)
 
@@ -193,6 +194,12 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		# max_num = int(input("Enter the highest level you want the char to be: "))
 		# min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
 		# character.randomize_level(min_num, max_num)
+
+		# I don't know why, but these keep breaking the game (if low enough level and stats)
+		if character.c_class in ('rogue (unchained)', 'vigilante') and low_level <= 1:
+			low_level = 2
+		if character.c_class == ('rogue (unchained)', 'vigilante') and high_level <= 1:
+			high_level = 2
 		randomize_level(character, low_level, high_level)
 
 		#hp calculations
@@ -559,17 +566,17 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 		# full casters + mid casters with low BAB
 			casting_level_str = character.classes[character.c_class]['casting level'].lower()
 			if character.bab == "L" and casting_level_str in ("mid", "high"):
-					character.feats = generic_feat_chooser(character, character.c_class,'metamagic',info_column = 'description')
+					character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'metamagic',info_column = 'description')
 
 			# full casters + mid casters with med BAB
 			elif character.bab == "M" and casting_level_str in ("mid", "high"):
 				random_dice = random.randint(1, 100)
 				if random_dice <= 50:
-					character.feats = generic_feat_chooser(character, character.c_class,'metamagic',info_column = 'description')					
+					character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'metamagic',info_column = 'description')					
 				else:
-					character.feats = generic_feat_chooser(character, character.c_class,'combat',info_column = 'description')
+					character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'combat',info_column = 'description')
 			else:
-				character.feats = generic_feat_chooser(character, character.c_class,'combat', info_column = 'description')
+				character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'combat', info_column = 'description')
 
 		else:
 			# Curated List of feats
@@ -605,7 +612,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				 weapon_enhancement_chosen_list, armor_enhancement_chosen_list, 
 				 shield_enhancement_chosen_list, professions,
 				 selected_traits, equipment_list, character.c_class_level,
-				 chosen_subrace, subrace_description, character.archetype1,
+				#  we don't use these in foundry, comment out if we do (all instances (but will need to fix program issue))
+				#  chosen_subrace, subrace_description, 
+				 character.archetype1,
 				 hair_color, hair_type, eye_color, appearance,
 				 language_text, feats, 
 				 character.gold, character.platnium,
@@ -634,7 +643,9 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				"weapon_enhancement_chosen_list", "armor_enhancement_chosen_list", 
 				"shield_enhancement_chosen_list", "professions",
 				"selected_traits", "equipment_list", "level",
-				"chosen_subrace", "subrace_description", "archetype1",
+				#  we don't use these in foundry, comment out if we do (all instances (but will need to fix program issue))
+				# "chosen_subrace", "subrace_description", 
+				"archetype1",
 				"hair_color", "hair_type", "eye_color", "appearance",
 				"language_text", "feats", 
 				"gold", "platnium",

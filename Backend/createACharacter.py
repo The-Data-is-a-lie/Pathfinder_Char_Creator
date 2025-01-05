@@ -237,6 +237,10 @@ class Character:
         - String (archetypes_choice)
         - dictionary (archetypes_description)
         """
+        c_class = self.c_class
+        if " (unchained)" in self.c_class:
+            self.c_class = self.c_class.replace(" (unchained)", "")
+
         c_class = self.c_class.capitalize()
         json = self.archetypes[c_class]
         archetypes_list = list(json.keys())

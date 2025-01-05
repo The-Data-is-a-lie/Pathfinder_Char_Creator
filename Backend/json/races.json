@@ -212,6 +212,7 @@
     },
 
     "Half-orc": {
+        "age": [10, "2d20"],
         "height": [58, "2d10"],
         "weight": [150, "3d31"],
         "size": "Medium",
@@ -285,7 +286,7 @@
         }
     },
 
-    "Monkey Goblin": {
+    "Monkey goblin": {
         "age": [16, "5d4"],
         "height": [42, "2d10"],
         "weight": [35, "3d31"],

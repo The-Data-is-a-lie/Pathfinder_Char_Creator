@@ -22,7 +22,7 @@
         "BAB":    "high",
         "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
         "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
-        "casting level": "none",
+        "casting level": "low",
         "saving throws": ["Fortitude", "Will"]
     },
     
@@ -51,7 +51,33 @@
             "casting level": "none",
             "saving throws": ["Fortitude", "Reflex"]
     },
-    
+
+    "barbarian (unchained)": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Half Plate"],
+        "skills": ["Acrobatics", "Animal Handling", "Athletics", "Intimidate", "nature", "Perception", "Survival"],
+        "hp": 12,
+        "gold": "3d6",
+        "BAB":    "high",
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+         "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
+        "casting level": "none",
+        "saving throws": ["Fortitude", "Reflex"]
+},    
+
+"unchained barbarian": {
+    "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+    "armor": ["Padded", "Leather", "Studded Leather", "Hide", "Chain Shirt", "Scale Mail", "Breastplate", "Half Plate"],
+    "skills": ["Acrobatics", "Animal Handling", "Athletics", "Intimidate", "nature", "Perception", "Survival"],
+    "hp": 12,
+    "gold": "3d6",
+    "BAB":    "high",
+    "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+     "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
+    "casting level": "none",
+    "saving throws": ["Fortitude", "Reflex"]
+},        
+
         "bard": {
         "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],    
         "armor": ["Padded", "Leather", "Studded Leather"],
@@ -240,19 +266,7 @@
         "saving throws": ["Fortitude", "Will"]
     },
     
-    "unchained monk": {
-        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
-        "armor": ["None"],
-        "skills": ["Acrobatics", "Climb", "Craft", "Escape Artist", "Intimidate", "Knowledge (history)", "Knowledge (religion)", "Perception", "Perform", "Profession", "Ride", "Sense Motive", "Stealth", "Swim"],
-        "hp": 10,
-        "gold": "2d10",
-        "BAB":    "high",
-    
-        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
-        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
-       "casting level": "none",
-        "saving throws": ["Fortitude", "Will"]
-    },
+
 
     "monk": {
         "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
@@ -267,7 +281,35 @@
        "casting level": "none",
         "saving throws": ["Fortitude", "Will"]
     },    
+
+    "monk (unchained)": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["None"],
+        "skills": ["Acrobatics", "Climb", "Craft", "Escape Artist", "Intimidate", "Knowledge (history)", "Knowledge (religion)", "Perception", "Perform", "Profession", "Ride", "Sense Motive", "Stealth", "Swim"],
+        "hp": 10,
+        "gold": "2d10",
+        "BAB":    "high",
     
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
+       "casting level": "none",
+        "saving throws": ["Fortitude", "Will"]
+    },    
+
+    "unchained monk": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["None"],
+        "skills": ["Acrobatics", "Climb", "Craft", "Escape Artist", "Intimidate", "Knowledge (history)", "Knowledge (religion)", "Perception", "Perform", "Profession", "Ride", "Sense Motive", "Stealth", "Swim"],
+        "hp": 10,
+        "gold": "2d10",
+        "BAB":    "high",
+    
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
+       "casting level": "none",
+        "saving throws": ["Fortitude", "Will"]
+    },    
+
     "ninja": {
         "weapons": ["All Simple Weapons", "Kama", "Nunchaku", "Sai", "Shuriken","Siangham"],
         "armor": ["Padded", "Leather"],
@@ -350,6 +392,32 @@
     },
     
     "rogue": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["Padded", "Leather", "Studded Leather"],
+        "skills": ["Acrobatics", "Appraise", "Bluff", "Climb", "Craft", "Diplomacy", "Disable Device", "Disguise", "Escape Artist", "Intimidate", "Knowledge (dungeoneering)", "Knowledge (local)", "Linguistics", "Perception", "Perform", "Sense Motive", "Sleight of Hand", "Stealth", "Swim", "Use Magic Device"],
+        "hp": 8,
+        "gold": "4d6",
+        "BAB": "mid",
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
+       "casting level": "none",
+        "saving throws": ["Reflex", "Will"]
+    },
+
+    "rogue (unchained)": {
+        "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
+        "armor": ["Padded", "Leather", "Studded Leather"],
+        "skills": ["Acrobatics", "Appraise", "Bluff", "Climb", "Craft", "Diplomacy", "Disable Device", "Disguise", "Escape Artist", "Intimidate", "Knowledge (dungeoneering)", "Knowledge (local)", "Linguistics", "Perception", "Perform", "Sense Motive", "Sleight of Hand", "Stealth", "Swim", "Use Magic Device"],
+        "hp": 8,
+        "gold": "4d6",
+        "BAB": "mid",
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
+       "casting level": "none",
+        "saving throws": ["Reflex", "Will"]
+    },
+
+    "unchained rogue": {
         "weapons": ["Axe, Throwing", "Axe, Two-Bladed", "Axe, Battle", "Chain, Spiked","Club", "Crossbow, Hand", "Crossbow, Heavy", "Crossbow, Light","Dagger", "Dagger, Punching", "Falchion", "Flail", "Flail, Dire","Gauntlet", "Gauntlet, Spiked", "Glaive", "Glaive, Guisarme", "Greataxe","Greatclub", "Greatsword", "Guisarme", "Halberd", "Hammer, Gnome Hooked","Hammer, Light", "Hammer, Lucerne", "Handaxe", "Javelin", "Lance","Longbow", "Longspear", "Longsword", "Mace, Heavy", "Mace, Light","Morningstar", "Pick, Heavy", "Pick, Light", "Ranseur", "Rapier","Sap", "Scimitar", "Scythe", "Shortbow", "Shortspear", "Shuriken","Siangham", "Sickle", "Spear", "Spear, Hekatonkheires", "Spiked Armor","Spiked Shield", "Spiked Gauntlet", "Staff", "Sword, Bastard","Sword Cane", "Sword, Short", "Trident", "Urgrosh, Double","Warhammer", "Whip"],
         "armor": ["Padded", "Leather", "Studded Leather"],
         "skills": ["Acrobatics", "Appraise", "Bluff", "Climb", "Craft", "Diplomacy", "Disable Device", "Disguise", "Escape Artist", "Intimidate", "Knowledge (dungeoneering)", "Knowledge (local)", "Linguistics", "Perception", "Perform", "Sense Motive", "Sleight of Hand", "Stealth", "Swim", "Use Magic Device"],
@@ -456,6 +524,31 @@
         "saving throws": ["Fortitude", "Reflex", "Will"]
     },
     
+    "summoner (unchained)": {
+        "weapons": ["Club", "Dagger", "Heavy Crossbow", "Light Crossbow", "Quarterstaff"],
+        "armor": ["None"],
+        "skills": ["Appraise", "Fly", "Knowledge (arcana)", "Knowledge (engineering)", "Linguistics", "Profession", "Spellcraft", "Use Magic Device"],
+        "hp": 8,
+        "gold": "3d6",
+        "BAB": "mid",
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
+       "casting level": "mid",
+        "saving throws": ["Fortitude", "Reflex", "Will"]
+    },       
+
+    "unchained summoner": {
+        "weapons": ["Club", "Dagger", "Heavy Crossbow", "Light Crossbow", "Quarterstaff"],
+        "armor": ["None"],
+        "skills": ["Appraise", "Fly", "Knowledge (arcana)", "Knowledge (engineering)", "Linguistics", "Profession", "Spellcraft", "Use Magic Device"],
+        "hp": 8,
+        "gold": "3d6",
+        "BAB": "mid",
+        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],       
+        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"], 
+       "casting level": "mid",
+        "saving throws": ["Fortitude", "Reflex", "Will"]
+    },    
     "swashbuckler": {
         "weapons": ["Axe, Throwing", "Battleaxe", "Blowgun", "Boar Spear", "Bolas","Crossbow, Hand", "Dagger", "Dart", "Falchion", "Flail, Heavy","Glaive", "Greataxe", "Greatclub", "Greatsword", "Halberd", "Handaxe","Javelin", "Kukri", "Lance", "Longbow", "Longspear", "Longsword","Morningstar", "Net", "Pike", "Rapier", "Sap", "Scimitar", "Shortbow","Shortspear", "Sickle", "Sling", "Spear", "Sword, Bastard", "Sword, Short","Trident", "Unarmed Strike", "Warhammer"],
         "armor": ["Light Armor", "Medium Armor", "Heavy Armor"],
@@ -708,18 +801,6 @@
         "casting level": "low",
         "saving throws": ["Fortitude", "Will"]
     },
-    "shifter_base": {
-        "weapons": ["Club", "Dagger", "Dart", "Quarterstaff", "Scimitar", "Sickle", "Shortspear", "Sling", "Spear"],
-        "armor": ["Padded", "Leather", "Hide"],
-        "skills": ["Craft", "Diplomacy", "Fly", "Heal", "Intimidate", "Knowledge (arcana)", "Knowledge (history)", "Knowledge (planes)", "Knowledge (religion)", "Linguistics", "Perform", "Profession", "Sense Motive", "Spellcraft"],
-        "hp": 8,
-        "gold": "2d6",
-        "BAB": "mid",
-        "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],
-        "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"],
-        "casting level": "mid",
-        "saving throws": ["Fortitude", "Reflex"]
-    },
 
     "shifter": {
         "weapons": ["simple"],
@@ -730,7 +811,7 @@
         "BAB": "mid",
         "regions" : ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"],
         "race": ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"],
-        "casting level": "mid",
+        "casting level": "none",
         "saving throws": ["Fortitude", "Reflex"]
     },
     "soul weaver": {
