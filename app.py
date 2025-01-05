@@ -44,7 +44,7 @@ def process_input_values(input_values):
         create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, userInput_gender, truly_random_feats, num_dice, num_sides, high_level, low_level, gold_num = input_values
         
         # Import and call generate_random_char
-        from Backend.main import generate_random_char
+        from main import generate_random_char
         global character_data
         character_data = generate_random_char(create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, userInput_gender, truly_random_feats, num_dice, num_sides, high_level, low_level, gold_num)
 
@@ -58,7 +58,7 @@ def process_input_values(input_values):
         return {"error": str(e)}
 
 # Define execute route
-@app.route('/execute', methods=['POST'])
+@app.route('/execute', methods=['GET','POST'])
 def execute():
     input_values = list(request.form.get(f'input{i}') for i in range(1, 14))
 
@@ -104,21 +104,48 @@ def get_character_data():
 #         return jsonify({'error': str(e)}), 500
 
 
-@app.route('/update_character_data', methods=['GET', 'POST'])
+@app.route('/update_character_data', methods=['POST'])
 def update_character_data():
-    data = request.json  # Get JSON data from request
-    non_input_data = []
-    for key, value in data.items():
-        if key in ('input2', 'input9', 'input10', 'input11', 'input12', 'input13'):
-            value = int(value)
-        else:
-            value = value.strip()
-        non_input_data.append(value)
+    try:
+        data = request.get_json()  # Get JSON data from the request
+        if not data:
+            return jsonify({'error': 'No data provided'}), 400
 
-    print("Received JS data:", data)
-    print("Cleaned JS data:", non_input_data)
-    results = process_input_values(non_input_data)
-    return jsonify({'message': 'Success! Data received successfully'}) 
+        # Create a list from the JSON data in the expected order
+        non_input_data = [
+            # we always need to have a 'Y' at the start of this
+            'Y',
+            data.get('region', ''),
+            data.get('race', ''),
+            data.get('class', ''),
+            data.get('multiclass', ''),
+            data.get('alignment', ''),
+            data.get('gender', ''),
+            data.get('randomFeats', ''),
+            data.get('diceRolls', 0),
+            data.get('diceSides', 0),
+            data.get('highestLevel', 0),
+            data.get('lowestLevel', 0),
+            data.get('goldAmount', 0)
+        ]
+
+        # Ensure numeric fields are converted to integers
+        for i in [7, 8, 9, 10, 11]:  # Indices for diceRolls, diceSides, highestLevel, lowestLevel, goldAmount
+            if isinstance(non_input_data[i], str) and non_input_data[i].isdigit():
+                non_input_data[i] = int(non_input_data[i])
+            else:
+                non_input_data[i] = 0
+
+        print("Received JSON data:", data)
+        print("Processed data:", non_input_data)
+
+        results = process_input_values(non_input_data)
+        print(results)
+        return jsonify({'message': 'Success', 'results': results})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
 
 
 
