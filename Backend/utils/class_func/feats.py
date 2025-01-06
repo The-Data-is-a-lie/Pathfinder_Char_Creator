@@ -13,7 +13,7 @@ def print_metamagic(character):
     data = pd.read_csv(f'data/feats.csv', sep='|', on_bad_lines='skip')
     Metamagic_feats = data[data['type']=='Metamagic']
     extraction_list = ['name']        
-    print(Metamagic_feats[extraction_list])
+    # print(Metamagic_feats[extraction_list])
 
 def feat_spell_searcher(character, class_1, chosen_set, types, info_column, info_column_2 = None):
     if chosen_set == None:
@@ -33,9 +33,9 @@ def feat_spell_searcher(character, class_1, chosen_set, types, info_column, info
 
         result_dict = {}
         result_dict = remove_dots_dashes(character, result_dict, query_result, info_column)
-        # print("this is your result dict", result_dict) 
+        print("this is your result dict", result_dict) 
         character.result_dict.update(result_dict)
-        # print("this is your char result dict", character.result_dict)
+        print("this is your char result dict", character.result_dict)
         
         return character.result_dict         
 
@@ -83,8 +83,8 @@ def remove_dots_dashes(character, result_dict, query_result, info_column, info_c
 def bonus_searcher(character, choice, chosen_desc, types):
     bonus_list = []
     bonus = chosen_desc.get(choice,{}).get(f"bonus {types}", {})
-    print('bonus', bonus)
-    print('bonus list', bonus_list)
+    # print('bonus', bonus)
+    # print('bonus list', bonus_list)
     character.json_list_grabber( bonus_list, ",", bonus)
     remove_parentheses(character, bonus_list)
 
@@ -197,10 +197,10 @@ def get_feats_without_prerequisites(character, class_1, dataset_name, level= Non
     amount = ceil(character.c_class_level/2)
     
     dataset = dataset_name
-    print("this is your dataset", dataset)
+    # print("this is your dataset", dataset)
     base = dataset.copy()
     base_no_prereq = no_prereq_loop(character, base)
-    print("base no prereq", base_no_prereq)
+    # print("base no prereq", base_no_prereq)
     total_choices = base_no_prereq
 
     if amount == None:
@@ -222,11 +222,11 @@ def choosing_feats(character, amount, base, total_choices):
         if amount == None or amount <= 0:
             return []        
         chosen = random.choice(total_choices)
-        print(f"this is the {i}th choice and this is your {chosen}")
+        # print(f"this is the {i}th choice and this is your {chosen}")
         prereq_list = no_prereq_loop(character, base, "prereq_list")
-        print(character.c_class)
-        print(character.chooseable)
-        print("this is your prereq list", prereq_list)
+        # print(character.c_class)
+        # print(character.chooseable)
+        # print("this is your prereq list", prereq_list)
         chosen_feats.add(chosen.lower())
         i = len(chosen_feats)
         
@@ -242,9 +242,9 @@ def choosing_feats(character, amount, base, total_choices):
 def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_column ):
     if class_1 == character.c_class:
         feat_data = pd.read_csv(f'data/feats.csv', sep='|', on_bad_lines='skip')
-        print("these are all the types", feat_data['type'].unique())
+        # print("these are all the types", feat_data['type'].unique())
         feat_types = feat_data['type'].unique()
-        print("All feat_data types:", feat_types)
+        # print("All feat_data types:", feat_types)
         extraction_list = ['name', 'prerequisites', 'description']
         if casting_level_str in ("mid", "high"):
             query_i = feat_data.loc[
@@ -273,7 +273,7 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
         chosen_feats = get_feats_without_prerequisites(character, character.c_class, feat_result_dict, feat_amount= character.feat_amounts)
         chosen_feats.remove("")
         cleaned_chosen_feats = capitalize_feats(character, chosen_feats)
-        print("cleaned_chosen_feats: ",cleaned_chosen_feats)
+        # print("cleaned_chosen_feats: ",cleaned_chosen_feats)
         character.chosen_feats = cleaned_chosen_feats
 
         return cleaned_chosen_feats
@@ -287,7 +287,7 @@ def capitalize_feats(character, chosen_feats):
         for word in words:
             if '-' in word:
                 parts = word.split('-')
-                print("these are the parts " + str(parts))
+                # print("these are the parts " + str(parts))
                 capitalized_parts = [part.capitalize() for part in parts]
                 capitalized_words.append('-'.join(capitalized_parts))
             else:
@@ -306,18 +306,18 @@ def simple_list_chooser(character, class_1, *dataset_names, max_num=float('inf')
         for dataset_name in dataset_names:
             dataset_input = getattr(data, dataset_name)
             dataset = character.json_list_grabber(dataset_input, ',', **kwargs)
-            print(f"This is your dataset for {dataset_name}: {dataset}")
+            # print(f"This is your dataset for {dataset_name}: {dataset}")
             formula_calc = formula_grabber(character, dataset_name, **kwargs)
             if isinstance(dataset, dict):
                 dataset = list(dataset.keys())
             # chosen.append(random.sample(dataset, k=min(formula_calc, max_num)))
             chosen_dict[dataset_name] = random.sample(dataset, k=min(formula_calc, max_num))
             character.data_dict.update({'class features': chosen_dict})
-        print(chosen)
+        # print(chosen)
         return chosen
 
 def formula_grabber(character, dataset_name):
     formula = getattr(data, 'formulas').get(dataset_name,1)
-    print(f'this is your formula {formula}')
+    # print(f'this is your formula {formula}')
     amount = eval(formula)
     return amount  

@@ -127,7 +127,7 @@ character_json_config = {
 }
 
 # Add a function which allows warpriests to use their caster level + functions but grab cleric spells (possiby use class for spells)
-def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='rogue', multi_class='N', alignment_input = 'N' , userInput_gender='', truly_random_feats = "N", num_dice=3, num_sides=6, high_level=30, low_level=30, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=10, userInput_race='orc', class_choice='fighter', multi_class='N', alignment_input = 'N' , userInput_gender='', truly_random_feats = "N", num_dice=3, num_sides=6, high_level=10, low_level=10, gold_num=1000000):
 
 	try:
 			# userInput = input('Create a new character? (y/n): ').lower()
@@ -522,16 +522,16 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			# Start of Extra feats selection Section
    
 			extra_feats = extra_feat_number(character, character.total_feats, character.class_feats)
-			print("this is character.class_feats", character.class_feats)
-			print("this is chracter.total_feats")
+			# print("this is character.class_feats", character.class_feats)
+			# print("this is chracter.total_feats")
 			character.feats.extend(extra_feats)
 
 			#class specific feats choosers
-			ranger_feats_chooser(character)
-			monk_feats_chooser(character)
+			# ranger_feats_chooser(character)
+			# monk_feats_chooser(character)
 				
 			# feat selector
-			print(f"this is your chosen feat amount {character.feat_amounts}")
+			# print(f"this is your chosen feat amount {character.feat_amounts}")
 			
 			# feat selector(s)
 			print("this is the value of truly random feats", truly_random_feats.upper())
@@ -558,11 +558,11 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 				build_selector_feats = build_selector(character)
 				character.feats.extend(build_selector_feats)
 
-			print(f"this is your chosen feats {character.feats}")
-			print("this is your language text", language_text)
+			# print(f"this is your chosen feats {character.feats}")
+			# print("this is your language text", language_text)
 
 			feats = character.feats
-			print("these are your feats being sent", feats)
+			# print("these are your feats being sent", feats)
 			print(hero_points)
 
 
@@ -576,15 +576,15 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 
 			older_brothers, younger_brothers, older_sisters, younger_sisters = randomize_siblings(character)
 			parents = randomize_parents(character)
-			print("this is your parents:", parents)
-			print("this is your older brothers:", older_brothers)
-			print("this is your younger brothers:", younger_brothers)
-			print("this is your older sisters:", older_sisters)
-			print("this is your younger sisters:", younger_sisters)
+			# print("this is your parents:", parents)
+			# print("this is your older brothers:", older_brothers)
+			# print("this is your younger brothers:", younger_brothers)
+			# print("this is your older sisters:", older_sisters)
+			# print("this is your younger sisters:", younger_sisters)
 
 
-			print("this is the class ability", class_ability)
-			print("this is the class ability desc", class_ability_desc)
+			# print("this is the class ability", class_ability)
+			# print("this is the class ability desc", class_ability_desc)
 
 			class_features = character.data_dict['class features']
 			export_list_non_dict = [character.region, character.chosen_race,
@@ -667,7 +667,10 @@ def generate_random_char(create_new_char='Y', userInput_region=10, userInput_rac
 			character.export_list_non_dict(export_list_non_dict, string_export_list_non_dict)		
 			character.export_list_dict(export_list_dict, string_export_list_dict)		
 
-			print(f'this is your character data {character.data_dict}')
+			# print(f'this is your character data {character.data_dict}')
+
+
+			print(f'this is the end of the generate_random_char function: ')
 
 			return character.data_dict
 	except Exception as e:

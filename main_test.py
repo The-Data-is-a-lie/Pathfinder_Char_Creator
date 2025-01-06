@@ -134,7 +134,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='monk', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=1, num_sides=1, high_level=2, low_level=2, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='fighter', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=1, num_sides=1, high_level=2, low_level=2, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()
@@ -151,7 +151,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		 
 		region = region_chooser(character,userInput_region)
 		chosen_race = race_chooser(character,userInput_race)
-		print("this is your race: " + chosen_race)
+		# print("this is your race: " + chosen_race)
 		# weapon_chooser(character) # We don't use this anymore, but leave it uncommented for now
 		f_name, l_name =name_chooser(character)
 		c_class = chooseClass(character,class_choice)
@@ -160,10 +160,10 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		#add an optional flaws rule function	
 		alignment = choose_alignment(character, 'alignments', alignment_input)
 		alignment = alignment.title()
-		print(f"This is your randomly selected alignment: {alignment}")
+		# print(f"This is your randomly selected alignment: {alignment}")
 		
 		deity = randomize_deity(character)
-		print(f"This is your randomly selected deity: {deity}")
+		# print(f"This is your randomly selected deity: {deity}")
 
 		age, age_number = randomize_body_feature(character, 'age')
 		height, height_number = randomize_body_feature(character, 'height')
@@ -216,17 +216,26 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		# it won't pull any 0th spells for casters with orisons/cantrips
 		character.highest_spell_known_1 = caster_formula(character, character.c_class_level)
 		character.highest_spell_known_2 = caster_formula(character, character.c_class_2_level, character.c_class_2)
-		print(type(character.c_class_2))
-		print(character.c_class_2)
+		# print(type(character.c_class_2))
+		# print(character.c_class_2)
 
 		#Divine Casters have all spells known (don't make this function for them)
-		print(f'This is your spells known list {spells_known_attr(character, "base_classes", "divine_casters")}')
-		print(f'This is your spells per day {spells_per_day_attr(character, "base_classes")}')
-		print(f'This is your spells per day from ability mods {spells_per_day_from_ability_mod(character, "caster_mod")}')
-		print(f'Spells known + extra randomized spells known [spell book learners only] {spells_known_extra_roll(character )}')		
+
+		spells_known_attr(character, "base_classes", "divine_casters")
+		spells_per_day_attr(character, "base_classes")
+		spells_per_day_from_ability_mod(character, "caster_mod")
+		spells_known_extra_roll(character )
 
 		character.spell_list_choose_from, day_list, known_list = spells_known_selection(character, 'base_classes','divine_casters')
-		print(f"This is your spells list you can choose from {character.spell_list_choose_from}")
+
+
+		# print(f'This is your spells known list {spells_known_attr(character, "base_classes", "divine_casters")}')
+		# print(f'This is your spells per day {spells_per_day_attr(character, "base_classes")}')
+		# print(f'This is your spells per day from ability mods {spells_per_day_from_ability_mod(character, "caster_mod")}')
+		# print(f'Spells known + extra randomized spells known [spell book learners only] {spells_known_extra_roll(character )}')		
+
+		# character.spell_list_choose_from, day_list, known_list = spells_known_selection(character, 'base_classes','divine_casters')
+		# print(f"This is your spells list you can choose from {character.spell_list_choose_from}")
 
 
 
@@ -449,12 +458,12 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 
 		skill_ranks = json.dumps(skill_ranks)		
-		print("this is your items list", character.items.keys())
-		print("this is your equipment list length", len(equipment_list))
-		print("this is your equipment list length", len(character.items.keys()))
+		# print("this is your items list", character.items.keys())
+		# print("this is your equipment list length", len(equipment_list))
+		# print("this is your equipment list length", len(character.items.keys()))
 
-		print("this is your armor dict", character.armor_dict)
-		print("this is your shield dict", character.shield_dict)
+		# print("this is your armor dict", character.armor_dict)
+		# print("this is your shield dict", character.shield_dict)
 
 
 		if isinstance(character.armor_dict, dict):
@@ -473,7 +482,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 			armor_weight = 0
 			armor_max_dex_bonus = 0
 
-		print("This is your armor variables: ",armor_name, armor_spell_failure, armor_weight, armor_armor_check_penalty)
+		# print("This is your armor variables: ",armor_name, armor_spell_failure, armor_weight, armor_armor_check_penalty)
 		print(character.armor_dict.keys())
 
 
@@ -528,12 +537,12 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 
 
-		print('school + domain + bloodline + opposing school')
-		print(school)
-		print(opposing_school)
-		print(bloodline)
+		# print('school + domain + bloodline + opposing school')
+		# print(school)
+		# print(opposing_school)
+		# print(bloodline)
 		character.bloodline = bloodline
-		print(full_domain)
+		# print(full_domain)
 
 
 	# end of pre export data manip
@@ -557,7 +566,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		monk_feats_chooser(character)
 			
 		# feat selector
-		print(f"this is your chosen feat amount {character.feat_amounts}")
+		# print(f"this is your chosen feat amount {character.feat_amounts}")
 		
 		# # feat selector(s)
   
@@ -668,7 +677,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		character.export_list_non_dict(export_list_non_dict, string_export_list_non_dict)		
 		character.export_list_dict(export_list_dict, string_export_list_dict)		
 
-		print(f'this is your character data {character.data_dict}')
+		# print(f'this is your character data {character.data_dict}')
 
 		return character.data_dict
 
