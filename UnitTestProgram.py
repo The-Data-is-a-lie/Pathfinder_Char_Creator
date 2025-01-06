@@ -5,6 +5,8 @@ from main_test import generate_random_char
 
 class TestGenerateRandomChar(unittest.TestCase):
 
+# Rangers break at high level (b/c specific feat chooser is broken)
+
     def setUp(self):
         # Define default values for each parameter
         self.default_values = {
@@ -18,8 +20,8 @@ class TestGenerateRandomChar(unittest.TestCase):
             'truly_random_feats': 'Y',
             'num_dice': 1,
             'num_sides': 1,
-            'high_level': 1,
-            'low_level': 1,
+            'high_level': 40,
+            'low_level': 40,
             'gold_num': 1000
         }
 
@@ -40,21 +42,22 @@ class TestGenerateRandomChar(unittest.TestCase):
         self.failures = {}
         self.addCleanup(self.write_failures_to_file)  # Ensure this runs after tests
 
-    def test_generate_random_char_combinations(self):
+    def test_generate_random_char_combinations(self, num=1):
         for param, options in self.test_options.items():
-            for option in options:
-                try:
-                    with self.subTest(f"Testing {param} with {option}"):
-                        args = self.default_values.copy()
-                        args[param] = option  # Set the current parameter to the test option
-                        start_time = time.time()
-                        generate_random_char(**args)  # Pass arguments as keyword arguments
-                        end_time = time.time()
-                        execution_time = end_time - start_time
-                        self.assertLess(execution_time, 10, "Execution took too long")
-                except Exception as e:
-                    # Record the failure
-                    self.failures[f"{param}_{option}"] = str(e)
+            for i in range(num):
+                for option in options:
+                    try:
+                        with self.subTest(f"Testing {param} with {option}"):
+                            args = self.default_values.copy()
+                            args[param] = option  # Set the current parameter to the test option
+                            start_time = time.time()
+                            generate_random_char(**args)  # Pass arguments as keyword arguments
+                            end_time = time.time()
+                            execution_time = end_time - start_time
+                            self.assertLess(execution_time, 10, "Execution took too long")
+                    except Exception as e:
+                        # Record the failure
+                        self.failures[f"{param}_{option}"] = str(e)
 
     def write_failures_to_file(self):
         # Save the collected failures to a JSON file

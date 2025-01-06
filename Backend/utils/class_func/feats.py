@@ -248,11 +248,13 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
         extraction_list = ['name', 'prerequisites', 'description']
         if casting_level_str in ("mid", "high"):
             query_i = feat_data.loc[
-                (feat_data['type'] == feat_type.capitalize()) 
+                (feat_data['type'] == feat_type.capitalize())
                 | (feat_data['type'] == 'General') 
                 | (feat_data['type'] == 'Item Creation')
                 | (feat_data['type'] == 'Story') 
-                | (feat_data['type'] == 'Achievement'), 
+                | (feat_data['type'] == 'Achievement')
+                | (feat_data['type'] == 'Combat')
+                | (feat_data['type'] == 'Monster'),
                 extraction_list
             ]
         else:
@@ -260,7 +262,10 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
                 (feat_data['type'] == feat_type.capitalize()) 
                 | (feat_data['type'] == 'General') 
                 | (feat_data['type'] == 'Story') 
-                | (feat_data['type'] == 'Achievement'), 
+                | (feat_data['type'] == 'Achievement')
+                | (feat_data['type'] == 'Item Creation')                
+                | (feat_data['type'] == 'Combat')
+                | (feat_data['type'] == 'Monster'),                
                 extraction_list
             ]
 

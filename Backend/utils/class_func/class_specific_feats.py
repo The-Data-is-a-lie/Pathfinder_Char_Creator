@@ -35,6 +35,11 @@ def ranger_feats_chooser(character):
         ranger_feats = [2,6,10,14,18,22,26,30,34,38,42]              
         choice = list(character.ranger.keys())   
         random_combat_style = random.choice(choice)
+        # creating a 2nd combat style for high level rangers
+        random_combat_style2 = random.choice(choice)
+        while random_combat_style2 == random_combat_style:
+            random_combat_style2 = random.choice(choice)
+
         ranger_feats_chosen_list=set()     
         i=0
 
@@ -46,6 +51,9 @@ def ranger_feats_chooser(character):
                 ranger_feats_list=(character.ranger[random_combat_style]["2"] + character.ranger[random_combat_style]["6"])
             elif ranger_feats[i]>=10:
                 ranger_feats_list=(character.ranger[random_combat_style]["2"] + character.ranger[random_combat_style]["6"] + character.ranger[random_combat_style]["10"])
+
+            if ranger_feats[i]>=18:
+                ranger_feats_list=(character.ranger[random_combat_style2]["2"] + character.ranger[random_combat_style2]["6"] + character.ranger[random_combat_style2]["10"])
 
 
             ranger_feats_chosen=random.choice(ranger_feats_list)
