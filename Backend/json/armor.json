@@ -190,7 +190,7 @@
       "arcane spell failure chance": "20%",
       "speed": "30 ft./20 ft. Description Covering the torso, this shirt is made up of thousands of interlocking metal rings."
     },
-    "Lamellar (leather)": {
+    "Leather lamellar": {
       "source": "Ultimate Equipment pg. 9 , Ultimate Combat pg. 128 Statistics",
       "cost": "60 gp",
       "weight": "25 lbs.",
@@ -262,7 +262,7 @@
       "arcane spell failure chance": "20%",
       "speed": "20 ft./15 ft. Description Kikko armor consists of a clever arrangement of hexagonal plates made from iron and sewn to cloth, granting the wearer greater flexibility than that provided by many armors that afford similar defense. The plates may be left exposed or hidden by a layer of cloth."
     },
-    "Lamellar (horn)": {
+    "Horn lamellar": {
       "source": "Ultimate Equipment pg. 9 , Ultimate Combat pg. 128 Statistics",
       "cost": "100 gp",
       "weight": "30 lbs.",
@@ -322,7 +322,7 @@
       "arcane spell failure chance": "30%",
       "speed": "20 ft./15 ft. Description This armor consists of four plates harnessed together with leather shoulder straps. Two round plates protect your front and back, while two smaller rectangular plates cover the sides of the torso. Four-mirror armor is worn over chainmail to provide added protection, and comes with a spiked helmet with a chainmail hood."
     },
-    "Lamellar (steel)": {
+    "Steel lamellar": {
       "source": "Ultimate Equipment pg. 9 , Ultimate Combat pg. 128 Statistics",
       "cost": "150 gp",
       "weight": "35 lbs.",
@@ -374,7 +374,7 @@
       "arcane spell failure chance": "35%",
       "speed": "20 ft./15 ft. Description Kusari gusoku is similar to tatami-do armor; however, a katabira a type of chain jacketis worn in place of the chest armor."
     },
-    "Lamellar (iron)": {
+    "Iron lamellar": {
       "source": "Ultimate Equipment pg. 9 , Ultimate Combat pg. 128 Statistics",
       "cost": "200 gp",
       "weight": "50 lbs.",
@@ -444,7 +444,7 @@
       "arcane spell failure chance": "40%",
       "speed": "20 ft./15 ft. Description The armor worn by a Hellknight signifer is a vestment of armored plates, chain, and dark fabric. It functions as half-plate, but it can be donned and removed as though it were medium armor. Any spellcaster who wears this armor is treated as if he were wearing Hellknight plate for the purposes of any feats and effects that require one to be wearing Hellknight plate. This armor includes a signifer mask, though signifer masks can be purchased separately."
     },
-    "Lamellar (stone)": {
+    "Stone lamellar": {
       "source": "Ultimate Equipment pg. 9 , Ultimate Combat pg. 128 Statistics",
       "cost": "500 gp",
       "weight": "45 lbs.",

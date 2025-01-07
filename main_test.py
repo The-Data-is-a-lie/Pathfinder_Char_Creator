@@ -399,6 +399,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		
 		weapon_chooser(character)
 		character.weapon_dict = list_selection(character, 'weapons_data', limits=character.weapon_type)
+		character.weapon_name = list(character.weapon_dict.keys())[0]
 		limits = shield_chooser(character, character.weapon_dict)
 		character.shield_flag = shield_flag_func(character, limits=limits)
 		character.shield_dict = list_selection(character, 'armor', limits=limits, shield_flag = character.shield_flag)
@@ -621,7 +622,8 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 				 full_domain, school, opposing_school,
 				 bloodline,
 				 background_traits, professions, mannerisms, flaws,
-				 hero_points, class_ability_desc, class_ability
+				 hero_points, class_ability_desc, class_ability,
+				 character.weapon_name
 				 
 				 ]
 		
@@ -652,7 +654,8 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 				"full_domain", "school", "opposing_school",
 				 "bloodline",
 				 "background_traits", "professions", "mannerisms", "flaws",
-				 "hero_points", "class_ability_desc", "class_ability"
+				 "hero_points", "class_ability_desc", "class_ability",
+				 "weapon_name"
 
 
 				]
@@ -668,7 +671,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		character.export_list_non_dict(export_list_non_dict, string_export_list_non_dict)		
 		character.export_list_dict(export_list_dict, string_export_list_dict)		
 
-		print(f'this is your character data {character.data_dict}')
+		print("this is your equipment list length", equipment_list)
 
 		return character.data_dict
 
