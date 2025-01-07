@@ -1,4 +1,4 @@
-import re, random
+import re, random, json
 # Start of major task: Items and Prices
 def convert_price(character, price_input, name):
     try:
@@ -73,9 +73,10 @@ def adjust_price(character, price):
 
     return price
 
-                            
+def capitalize_first_letter_each_word(s):
+    return ' '.join([word.capitalize() for word in s.split()])
 
-def item_chooser(character):
+def item_chooser(character, data):
     i = 0
     k = 0
     # i = character.determine_start_index()
@@ -86,6 +87,15 @@ def item_chooser(character):
 
     while i < len(select_from_list):
         equipment_name, random_equip, price, equip_descrip = choose_equipment(character, select_from_list[i])
+        print("equipment_name, random_equip, price, equip_descrip ", random_equip)
+        print('this is the anti-loop data: ', data)
+        
+        while random_equip not in data:
+            print("equipment_name, random_equip, price, equip_descrip ", random_equip)
+            log_error(random_equip)
+            equipment_name, random_equip, price, equip_descrip = choose_equipment(character, select_from_list[i])
+
+
         subtract_price_from_gold(character, price)
         i,k = grab_two_rings(character, select_from_list[i], k, i)
         
@@ -126,6 +136,8 @@ def choose_equipment(character, equipment_key):
     price = convert_price(character, price, random_equip)
     equip_descrip = item_dictionary(character, random_equip, equipment_key)
 
+    # capitalize the first letter of each random_equip (B/c it gets exported to foundryVTT and needs to be exact)
+    random_equip = capitalize_first_letter_each_word(random_equip)
     return equipment_name, random_equip, price, equip_descrip
 
 def subtract_price_from_gold(character, price):
@@ -140,7 +152,20 @@ def grab_two_rings(character, equipment_key, k, i):
         k += 10
     return i,k
     
+def log_error(item_name):
+    try:
+        with open(r'Backend\json\items_broken.json', 'r', encoding='utf-8') as f:
+            broken_items = json.load(f)
+    except FileNotFoundError:
+        broken_items = []
 
+    if item_name not in broken_items:
+        broken_items.append(item_name)
+
+        with open(r'Backend\json\items_broken.json', 'w', encoding='utf-8') as f:
+            json.dump(broken_items, f, ensure_ascii=False, indent=4)
+    
+    return None
 
 
 

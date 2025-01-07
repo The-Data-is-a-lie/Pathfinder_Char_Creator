@@ -33,7 +33,7 @@
   "construction requirements": "craft wondrous item, polymorph ",
   "cost": "500"
   },
-  "belt of superior maneuvers1": {
+  "belt of superior maneuvers +1": {
   "source": "advanced class guide pg. 226",
   "aura": "faint evocation",
   "cl": "5th",
@@ -132,7 +132,7 @@
   "construction requirements": "craft wondrous item, cat's grace ",
   "cost": "1,600"
   },
-  "belt of mighty constitution2": {
+  "belt of mighty constitution +2": {
   "source": "ultimate equipment pg. 209 , prpg core rulebook pg. 502",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -143,7 +143,7 @@
   "construction requirements": "craft wondrous item, bear's endurance ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "belt of giant strength2": {
+  "belt of giant strength +2": {
   "source": "ultimate equipment pg. 208 , prpg core rulebook pg. 502",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -154,7 +154,7 @@
   "construction requirements": "craft wondrous item, bull's strength ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "belt of incredible dexterity2": {
+  "belt of incredible dexterity +2": {
   "source": "ultimate equipment pg. 209 , prpg core rulebook pg. 502",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -247,12 +247,12 @@
   "aura": "moderate transmutation",
   "cl": "8th",
   "slot": "belt",
-  "price": "5,000(normal), 31,000(greater)",
+  "price": "5,000(normal), 31,00, greater",
   "weight": "1 lb. ",
   "description": " the entirety of this thick hide belt is scarred with impressions of fiendish visages, each shifting between a scowl and a smile. Commonly used by the servants of asmodeus in cheliax, this belt grants its wearer a +2 enhancement bonus to constitution. Treat this constitution bonus as a temporary ability bonus for the first 24 hours the belt is worn. Whenever an enemy scores a critical hit against the wearer, the wearer gains fast healing 1 for 1 minute. This ability doesn't trigger if the critical hit deals only nonlethal damage. Damage caused by silver weapons, good-aligned weapons, or spells or effects with the good descriptor doesn't trigger the fast healing, and suppresses the fast healing for 1 round if it's already active. The wearer of an infernal cord can be detected as though she were an evil creature, and can sense the item's evil while wearing it. This belt imparts 1 negative level to any nonevil creature that wears it until the belt is removed. ",
   "greater infernal cord": ": this item functions as an infernal cord , but it grants a +4 enhancement bonus to constitution, and the fast healing effect increases to fast healing 4. Treat the constitution bonus as a temporary ability bonus for the first 24 hours the belt is worn. The wearer can be detected as though she were an evil cleric, not just an evil creature. ",
   "construction requirements": "craft wondrous item, bear's endurance , infernal healing iswg ",
-  "cost": "2,500(normal), 15,500(greater)"
+  "cost": "2,500(normal), 15,50, greater"
   },
   "victor's belt": {
   "source": "pathfinder #92: the hill giant's pledge pg. 13",
@@ -320,7 +320,7 @@
   "construction requirements": "craft wondrous item, create water , gaseous form , levitate or water walk , creator must have 5 ranks in swim",
   "cost": "3,500"
   },
-  "belt of superior maneuvers2": {
+  "belt of superior maneuvers +2": {
   "source": "advanced class guide pg. 226",
   "aura": "faint evocation",
   "cl": "5th",
@@ -342,7 +342,7 @@
   "construction requirements": "craft wondrous item, beast form i , neutralize poison , summon\r nature's ally ii ",
   "cost": "4,500"
   },
-  "channel-thieving belt,  greater": {
+  "channel-thieving belt, greater": {
   "source": "horror adventures pg. 219",
   "aura": "moderate conjuration and necromancy",
   "cl": "7th",
@@ -364,7 +364,7 @@
   "construction requirements": "craft wondrous item, beast shape i , cat's grace ",
   "cost": "4,700"
   },
-  "belt of physical might2": {
+  "belt of physical might +2": {
   "source": "ultimate equipment pg. 210 , prpg core rulebook pg. 502",
   "aura": "strong transmutation",
   "cl": "12th",
@@ -419,7 +419,7 @@
   "construction requirements": "craft wondrous items, bull's strength , feather step (advanced\r player's guide)",
   "cost": "5,500"
   },
-  "plague rat belt (greater)": {
+  "plague rat belt, greater": {
   "source": "ultimate equipment pg. 213",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -474,7 +474,7 @@
   "construction requirements": "craft wondrous item, expeditious retreat , barkskin or stoneskin ",
   "cost": "6,500"
   },
-  "belt of mighty hurling (lesser)": {
+  "belt of mighty hurling, lesser": {
   "source": "ultimate equipment pg. 210",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -518,7 +518,7 @@
   "construction requirements": "craft wondrous item, bear's endurance , lesser restoration ",
   "cost": "7,500"
   },
-  "belt of physical perfection2": {
+  "belt of physical perfection +2": {
   "source": "ultimate equipment pg. 210 , prpg core rulebook pg. 502",
   "aura": "strong transmutation",
   "cl": "16th",
@@ -529,7 +529,7 @@
   "construction requirements": "craft wondrous item, bear's endurance , bull's strength , cat's grace ",
   "cost": "8,000(+2), 32,000(+4), 77,000(+6)"
   },
-  "belt of mighty constitution4": {
+  "belt of mighty constitution +4": {
   "source": "ultimate equipment pg. 209 , prpg core rulebook pg. 502",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -540,7 +540,7 @@
   "construction requirements": "craft wondrous item, bear's endurance ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "belt of incredible dexterity4": {
+  "belt of incredible dexterity +4": {
   "source": "ultimate equipment pg. 209 , prpg core rulebook pg. 502",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -551,7 +551,7 @@
   "construction requirements": "craft wondrous item, cat's grace ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "belt of giant strength4": {
+  "belt of giant strength +4": {
   "source": "ultimate equipment pg. 208 , prpg core rulebook pg. 502",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -573,7 +573,7 @@
   "construction requirements": "craft wondrous item, freedom of movement , creator must be a vudrani",
   "cost": "8,000"
   },
-  "belt of superior maneuvers3": {
+  "belt of superior maneuvers +3": {
   "source": "advanced class guide pg. 226",
   "aura": "faint evocation",
   "cl": "5th",
@@ -584,7 +584,7 @@
   "construction requirements": "craft wondrous item, divine favor , creator's caster level must be at least triple the belt's bonus",
   "cost": "1,000(+1), 4,000(+2), 9,000(+3), 16,000(+4), 25,000(+5)"
   },
-  "monkey belt (greater)": {
+  "monkey belt, greater": {
   "source": "ultimate equipment pg. 212",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -617,7 +617,7 @@
   "construction requirements": "craft wondrous item, neutralize poison, remove disease, remove paralysis ",
   "cost": "10,000"
   },
-  "serpent belt (greater)": {
+  "serpent belt, greater": {
   "source": "ultimate equipment pg. 213",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -705,19 +705,19 @@
   "construction requirements": "craft wondrous item, shield other, vampiric touch ",
   "cost": "12,500"
   },
-  "infernal cord greater": {
+  "infernal cord, greater": {
   "source": "inner sea combat pg. 60",
   "aura": "moderate transmutation",
   "cl": "8th",
   "slot": "belt",
-  "price": "5,000(normal), 31,000(greater)",
+  "price": "5,000(normal), 31,00, greater",
   "weight": "1 lb. ",
   "description": " the entirety of this thick hide belt is scarred with impressions of fiendish visages, each shifting between a scowl and a smile. Commonly used by the servants of asmodeus in cheliax, this belt grants its wearer a +2 enhancement bonus to constitution. Treat this constitution bonus as a temporary ability bonus for the first 24 hours the belt is worn. Whenever an enemy scores a critical hit against the wearer, the wearer gains fast healing 1 for 1 minute. This ability doesn't trigger if the critical hit deals only nonlethal damage. Damage caused by silver weapons, good-aligned weapons, or spells or effects with the good descriptor doesn't trigger the fast healing, and suppresses the fast healing for 1 round if it's already active. The wearer of an infernal cord can be detected as though she were an evil creature, and can sense the item's evil while wearing it. This belt imparts 1 negative level to any nonevil creature that wears it until the belt is removed. ",
   "greater infernal cord": ": this item functions as an infernal cord , but it grants a +4 enhancement bonus to constitution, and the fast healing effect increases to fast healing 4. Treat the constitution bonus as a temporary ability bonus for the first 24 hours the belt is worn. The wearer can be detected as though she were an evil cleric, not just an evil creature. ",
   "construction requirements": "craft wondrous item, bear's endurance , infernal healing iswg ",
-  "cost": "2,500(normal), 15,500(greater)"
+  "cost": "2,500(normal), 15,50, greater"
   },
-  "belt of superior maneuvers4": {
+  "belt of superior maneuvers +4": {
   "source": "advanced class guide pg. 226",
   "aura": "faint evocation",
   "cl": "5th",
@@ -739,7 +739,7 @@
   "construction requirements": "craft wondrous item, alter self , water breathing ",
   "cost": "16,000"
   },
-  "belt of mighty constitution6": {
+  "belt of mighty constitution +6": {
   "source": "ultimate equipment pg. 209 , prpg core rulebook pg. 502",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -750,7 +750,7 @@
   "construction requirements": "craft wondrous item, bear's endurance ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "belt of giant strength6": {
+  "belt of giant strength +6": {
   "source": "ultimate equipment pg. 208 , prpg core rulebook pg. 502",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -761,7 +761,7 @@
   "construction requirements": "craft wondrous item, bull's strength ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "belt of incredible dexterity6": {
+  "belt of incredible dexterity +6": {
   "source": "ultimate equipment pg. 209 , prpg core rulebook pg. 502",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -783,7 +783,7 @@
   "construction requirements": "craft wondrous item, mythic crafter, cat's grace , mirror image ",
   "cost": "18,000"
   },
-  "belt of physical might4": {
+  "belt of physical might +4": {
   "source": "ultimate equipment pg. 210 , prpg core rulebook pg. 502",
   "aura": "strong transmutation",
   "cl": "12th",
@@ -794,7 +794,7 @@
   "construction requirements": "craft wondrous item, bear's endurance , bull's strength , and/or cat's grace ",
   "cost": "5,000(+2), 20,000(+4), 45,000(+6)"
   },
-  "belt of mighty hurling (greater)": {
+  "belt of mighty hurling, greater": {
   "source": "ultimate equipment pg. 209",
   "aura": "moderate transmutation",
   "cl": "12th",
@@ -805,7 +805,7 @@
   "construction requirements": "craft wondrous item, bull's strength , longshot (ultimate combat), returning weapon (ultimate combat)",
   "cost": "21,000"
   },
-  "belt of superior maneuvers5": {
+  "belt of superior maneuvers +5": {
   "source": "advanced class guide pg. 226",
   "aura": "faint evocation",
   "cl": "5th",
@@ -838,7 +838,7 @@
   "construction requirements": "craft wondrous item, stoneskin , creator must be an oread or a\r creature with the earth subtype",
   "cost": "30,000"
   },
-  "belt of physical perfection4": {
+  "belt of physical perfection +4": {
   "source": "ultimate equipment pg. 210 , prpg core rulebook pg. 502",
   "aura": "strong transmutation",
   "cl": "16th",
@@ -860,7 +860,7 @@
   "construction requirements": "craft wondrous item, creator must be a changeling or hag",
   "cost": "37,500"
   },
-  "belt of physical might6": {
+  "belt of physical might +6": {
   "source": "ultimate equipment pg. 210 , prpg core rulebook pg. 502",
   "aura": "strong transmutation",
   "cl": "12th",
@@ -882,7 +882,7 @@
   "construction requirements": "craft wondrous item, cat's grace , etherealness ",
   "cost": "55,000"
   },
-  "belt of physical perfection6": {
+  "belt of physical perfection +6": {
   "source": "ultimate equipment pg. 210 , prpg core rulebook pg. 502",
   "aura": "strong transmutation",
   "cl": "16th",
@@ -895,16 +895,16 @@
   }
   },
   "body": {
-  "glorious tabard lesser": {
+  "glorious tabard, lesser": {
   "source": "pathfinder #108: hell comes to westcrown pg. 7",
   "aura": "faint abjuration",
   "cl": "3rd",
   "slot": "body",
-  "price": "400(lesser), 3,250(greater)",
+  "price": "400(lesser), 3,25, greater",
   "weight": "2 lbs. ",
   "description": " this sleeveless white tabard, worn over armor or other clothing, prominently bears the symbol of the glorious reclamation and can be used as a divine focus by members of the glorious reclamation who are followers of iomedae. Once per day, the wearer of a lesser glorious tabard can activate the tabard to gain a +2 sacred bonus to her ac and on saving throws for 10 minutes. Both bonuses apply only against attacks made or effects created by outsiders with the evil subtype or creatures with an evil aura. A greater glorious tabard bears the symbol of the glorious reclamation in gold. It has all the powers of a lesser glorious tabard but can be used twice per day. In addition, whenever a greater glorious tabard is activated, all longswords within 20 feet shed light as per a torch and ignore the dr of evil creatures (except dr/epic) for 3 rounds. When a greater glorious tabard is used as a divine focus to cast a spell, the wearer does not need any material components that cost more than 5. A glorious tabard functions only for wearers who are both members of the glorious reclamation and followers of iomedae. ",
   "construction requirements": "craft wondrous item, veil of heaven , weapons against evil (greater glorious tabard only), creator must be a member of glorious reclamation and follower of iomedae",
-  "cost": "200(lesser), 1,625(greater)"
+  "cost": "200(lesser), 1,62, greater"
   },
   "robe of infinite twine": {
   "source": "ultimate equipment pg. 217",
@@ -1005,7 +1005,7 @@
   "construction requirements": "craft wondrous item, endure elements ",
   "cost": "2,500"
   },
-  "bodywrap of mighty strikes1": {
+  "bodywrap of mighty strikes +1": {
   "source": "ultimate equipment pg. 214",
   "aura": "faint evocation",
   "cl": "5th",
@@ -1027,16 +1027,16 @@
   "construction requirements": "craft wondrous item, grease , squeeze ",
   "cost": "1,500"
   },
-  "glorious tabard greater": {
+  "glorious tabard, greater": {
   "source": "pathfinder #108: hell comes to westcrown pg. 7",
   "aura": "faint abjuration",
   "cl": "3rd",
   "slot": "body",
-  "price": "400(lesser), 3,250(greater)",
+  "price": "400(lesser), 3,25, greater",
   "weight": "2 lbs. ",
   "description": " this sleeveless white tabard, worn over armor or other clothing, prominently bears the symbol of the glorious reclamation and can be used as a divine focus by members of the glorious reclamation who are followers of iomedae. Once per day, the wearer of a lesser glorious tabard can activate the tabard to gain a +2 sacred bonus to her ac and on saving throws for 10 minutes. Both bonuses apply only against attacks made or effects created by outsiders with the evil subtype or creatures with an evil aura. A greater glorious tabard bears the symbol of the glorious reclamation in gold. It has all the powers of a lesser glorious tabard but can be used twice per day. In addition, whenever a greater glorious tabard is activated, all longswords within 20 feet shed light as per a torch and ignore the dr of evil creatures (except dr/epic) for 3 rounds. When a greater glorious tabard is used as a divine focus to cast a spell, the wearer does not need any material components that cost more than 5. A glorious tabard functions only for wearers who are both members of the glorious reclamation and followers of iomedae. ",
   "construction requirements": "craft wondrous item, veil of heaven , weapons against evil (greater glorious tabard only), creator must be a member of glorious reclamation and follower of iomedae",
-  "cost": "200(lesser), 1,625(greater)"
+  "cost": "200(lesser), 1,62, greater"
   },
   "hag's shabble": {
   "source": "inner sea gods pg. 265 , gods and magic pg. 57",
@@ -1326,7 +1326,7 @@
   "construction requirements": "craft wondrous item, heighten spell, resist energy , cone of cold ",
   "cost": "5,500"
   },
-  "bodywrap of mighty strikes2": {
+  "bodywrap of mighty strikes +2": {
   "source": "ultimate equipment pg. 214",
   "aura": "faint evocation",
   "cl": "5th",
@@ -1491,7 +1491,7 @@
   "construction requirements": "craft wondrous item, disguise self , fins to feet arg ",
   "cost": "12,600"
   },
-  "bodywrap of mighty strikes3": {
+  "bodywrap of mighty strikes +3": {
   "source": "ultimate equipment pg. 214",
   "aura": "faint evocation",
   "cl": "5th",
@@ -1579,7 +1579,7 @@
   "construction requirements": "craft wondrous item, fox's cunning , limited wish ",
   "cost": "22,000"
   },
-  "bodywrap of mighty strikes4": {
+  "bodywrap of mighty strikes +4": {
   "source": "ultimate equipment pg. 214",
   "aura": "faint evocation",
   "cl": "5th",
@@ -1656,7 +1656,7 @@
   "construction requirements": "craft wondrous item, recorporeal incarnation ",
   "cost": "35,000"
   },
-  "bodywrap of mighty strikes5": {
+  "bodywrap of mighty strikes +5": {
   "source": "ultimate equipment pg. 214",
   "aura": "faint evocation",
   "cl": "5th",
@@ -1722,7 +1722,7 @@
   "construction requirements": "craft wondrous item, mythic crafter, magic vestment , prayer , resistance ",
   "cost": "47,500"
   },
-  "bodywrap of mighty strikes6": {
+  "bodywrap of mighty strikes +6": {
   "source": "ultimate equipment pg. 214",
   "aura": "faint evocation",
   "cl": "5th",
@@ -1755,7 +1755,7 @@
   "construction requirements": "craft wondrous item, true seeing ",
   "cost": "60,000"
   },
-  "bodywrap of mighty strikes7": {
+  "bodywrap of mighty strikes +7": {
   "source": "ultimate equipment pg. 214",
   "aura": "faint evocation",
   "cl": "5th",
@@ -2175,7 +2175,7 @@
   "construction requirements": "craft wondrous item, cat's grace , freedom of movement ",
   "cost": "5,000"
   },
-  "poisoner's jacket (lesser)": {
+  "poisoner's jacket, lesser": {
   "source": "ultimate equipment pg. 222",
   "aura": "faint conjuration and necromancy",
   "cl": "5th",
@@ -2329,7 +2329,7 @@
   "construction requirements": "craft wondrous item, hide from undead , see invisibility ",
   "cost": "13,000"
   },
-  "coat of the undercity,  greater": {
+  "coat of the undercity, greater": {
   "source": "ultimate intrigue pg. 245",
   "aura": "moderate transmtuation",
   "cl": "9th",
@@ -2351,7 +2351,7 @@
   "construction requirements": "craft wondrous item, greater age resistance ",
   "cost": "25,000"
   },
-  "poisoner's jacket (greater)": {
+  "poisoner's jacket, greater": {
   "source": "ultimate equipment pg. 221",
   "aura": "strong conjuration and necromancy",
   "cl": "15th",
@@ -2969,7 +2969,7 @@
   "construction requirements": "craft wondrous item, darkvision , terrain bond (ultimate magic)",
   "cost": "10,000"
   },
-  "mask of stolen identities (gillman)": {
+  "mask of stolen identities": {
   "source": "inner sea races pg. 233",
   "aura": "moderate transmutation",
   "cl": "9th",
@@ -3057,7 +3057,7 @@
   "construction requirements": "craft wondrous item, darkvision , true seeing ",
   "cost": "23,000"
   },
-  "sniper goggles (greater)": {
+  "sniper goggles, greater": {
   "source": "ultimate equipment pg. 227",
   "aura": "moderate divination",
   "cl": "8th",
@@ -3422,7 +3422,7 @@
   "construction requirements": "craft wondrous item, hypnotism , creator must have bardic performance and 5 ranks in perform (dance)",
   "cost": "1,875"
   },
-  "horseshoes of crushing blows1": {
+  "horseshoes of crushing blows +1": {
   "source": "ultimate equipment pg. 231 , advanced race guide pg. 125",
   "aura": "faint evocation",
   "cl": "5th",
@@ -3444,7 +3444,7 @@
   "construction requirements": "craft wondrous item, daze monster , pass without trace , creator must have 5 ranks in perform (dance) and stealth",
   "cost": "2,000"
   },
-  "burglar boots (minor)": {
+  "burglar boots, minor": {
   "source": "ultimate equipment pg. 230",
   "aura": "faint divination",
   "cl": "1st",
@@ -3928,7 +3928,7 @@
   "construction requirements": "craft wondrous item, gust of wind ",
   "cost": "7,500"
   },
-  "horseshoes of crushing blows2": {
+  "horseshoes of crushing blows +2": {
   "source": "ultimate equipment pg. 231 , advanced race guide pg. 125",
   "aura": "faint evocation",
   "cl": "5th",
@@ -4093,7 +4093,7 @@
   "construction requirements": "craft wondrous item, getaway (advanced player's guide)",
   "cost": "15,000"
   },
-  "horseshoes of crushing blows3": {
+  "horseshoes of crushing blows +3": {
   "source": "ultimate equipment pg. 231 , advanced race guide pg. 125",
   "aura": "faint evocation",
   "cl": "5th",
@@ -4126,7 +4126,7 @@
   "construction requirements": "craft wondrous item, quicken spell, dimension door , fog cloud , creator must be a tiefling",
   "cost": "22,500"
   },
-  "burglar boots (major)": {
+  "burglar boots, major": {
   "source": "ultimate equipment pg. 230",
   "aura": "moderate divination",
   "cl": "10th",
@@ -4159,7 +4159,7 @@
   "construction requirements": "craft wondrous item, ride the waves (ultimate magic)",
   "cost": "28,000"
   },
-  "horseshoes of crushing blows4": {
+  "horseshoes of crushing blows +4": {
   "source": "ultimate equipment pg. 231 , advanced race guide pg. 125",
   "aura": "faint evocation",
   "cl": "5th",
@@ -4214,7 +4214,7 @@
   "construction requirements": "craft wondrous item, flame blade , magic fang , solid fog , creator must be a keleshite",
   "cost": "44,000"
   },
-  "horseshoes of crushing blows5": {
+  "horseshoes of crushing blows +5": {
   "source": "ultimate equipment pg. 231 , advanced race guide pg. 125",
   "aura": "faint evocation",
   "cl": "5th",
@@ -4480,7 +4480,7 @@
   "construction requirements": "craft wondrous item, hydraulic push apg , sanctuary ",
   "cost": "1,800"
   },
-  "gloves of improvised might1": {
+  "gloves of improvised might +1": {
   "source": "adventurer's armory 2 pg. 23",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -5085,7 +5085,7 @@
   "construction requirements": "craft wondrous item, message , silence ",
   "cost": "7,700"
   },
-  "gloves of improvised might2": {
+  "gloves of improvised might +2": {
   "source": "adventurer's armory 2 pg. 23",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -5217,7 +5217,7 @@
   "construction requirements": "craft wondrous item, comprehend languages , control\r summoned creature (ultimate magic)",
   "cost": "15,000"
   },
-  "gauntlet of rust (greater)": {
+  "gauntlet of rust, greater": {
   "source": "ultimate equipment pg. 235",
   "aura": "moderate transmutation",
   "cl": "7th",
@@ -5228,7 +5228,7 @@
   "construction requirements": "craft wondrous item, rusting grasp ",
   "cost": "17,250"
   },
-  "gloves of improvised might3": {
+  "gloves of improvised might +3": {
   "source": "adventurer's armory 2 pg. 23",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -5294,7 +5294,7 @@
   "construction requirements": "craft wondrous item, animate objects , death knell , trap the soul ",
   "cost": "30,000, 2,400 xp"
   },
-  "gloves of improvised might4": {
+  "gloves of improvised might +4": {
   "source": "adventurer's armory 2 pg. 23",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -5327,7 +5327,7 @@
   "construction requirements": "craft wondrous item, eagle's splendor , owl's wisdom , planar ally , telepathic bond ",
   "cost": "47,000, 3,760 xp"
   },
-  "gloves of improvised might5": {
+  "gloves of improvised might +5": {
   "source": "adventurer's armory 2 pg. 23",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -5450,16 +5450,16 @@
   "construction requirements": "craft wondrous item, deathwatch ",
   "cost": "750"
   },
-  "circlet of spell-eatingtype i": {
+  "circlet of spell-eating, type I": {
   "source": "black markets pg. 16",
   "aura": "moderate (no school)",
   "cl": "7th",
   "slot": "head",
-  "price": "1,500(type i), 6,000(type ii), 13,500(type iii), 24,000(type iv)",
+  "price": "1,500(type i), 6,000(type II), 13,500(type III), 24,000(type IV)",
   "weight": " ",
   "description": " iridescent whorls and runes in a flowing eldritch script adorn this golden circlet. The circlet functions as a ring of spell knowledge ue , allowing a spontaneous caster to learn and store an additional arcane spell. However, once the circlet has been worn for 1d6 days, the wearer must succeed at a dc 16 will save each day when meditating to renew her spell slots. Failure indicates that she loses knowledge of a random spell, whose level cannot exceed the maximum level of the circlet of spell-eating . Knowledge of this spell is lost until the circlet is removed, returning at a rate of one spell per day, beginning with the lowest-level spell forgotten. So long as the circlet of spell-eating has caused its wearer to forget at least one spell, its creator can cast the first spell lost to the item once per day as a spell-like ability. ",
   "construction requirements": "craft wondrous item, bestow curse , imbue with spell ability ",
-  "cost": "750(type i), 3,000(type ii), 6,750(type iii), 12,000(type iv)"
+  "cost": "750(type i), 3,000(type II), 6,750(type III), 12,000(type IV)"
   },
   "bridle of tricks4 tricks": {
   "source": "knights of the inner sea pg. 30",
@@ -6011,16 +6011,16 @@
   "construction requirements": "craft wondrous item , air bubble , detect magic ",
   "cost": "3,000"
   },
-  "circlet of spell-eatingtype ii": {
+  "circlet of spell-eating, type II": {
   "source": "black markets pg. 16",
   "aura": "moderate (no school)",
   "cl": "7th",
   "slot": "head",
-  "price": "1,500(type i), 6,000(type ii), 13,500(type iii), 24,000(type iv)",
+  "price": "1,500(type i), 6,000(type II), 13,500(type III), 24,000(type IV)",
   "weight": " ",
   "description": " iridescent whorls and runes in a flowing eldritch script adorn this golden circlet. The circlet functions as a ring of spell knowledge ue , allowing a spontaneous caster to learn and store an additional arcane spell. However, once the circlet has been worn for 1d6 days, the wearer must succeed at a dc 16 will save each day when meditating to renew her spell slots. Failure indicates that she loses knowledge of a random spell, whose level cannot exceed the maximum level of the circlet of spell-eating . Knowledge of this spell is lost until the circlet is removed, returning at a rate of one spell per day, beginning with the lowest-level spell forgotten. So long as the circlet of spell-eating has caused its wearer to forget at least one spell, its creator can cast the first spell lost to the item once per day as a spell-like ability. ",
   "construction requirements": "craft wondrous item, bestow curse , imbue with spell ability ",
-  "cost": "750(type i), 3,000(type ii), 6,750(type iii), 12,000(type iv)"
+  "cost": "750(type i), 3,000(type II), 6,750(type III), 12,000(type IV)"
   },
   "beautiful war paint": {
   "source": "inner sea gods pg. 260",
@@ -6033,7 +6033,7 @@
   "construction requirements": "craft wondrous item, good hope , haste ",
   "cost": "3,150"
   },
-  "crown of blasting (minor)": {
+  "crown of blasting, minor": {
   "source": "ultimate equipment pg. 241 , prpg core rulebook pg. 507",
   "aura": "moderate evocation",
   "cl": "6th",
@@ -6275,16 +6275,16 @@
   "construction requirements": "craft wondrous item, bloodhound apg , platinum ring worth 250",
   "cost": "5,000"
   },
-  "commander's helm (dwarf) lesser": {
+  "commander's helm, lesser": {
   "source": "inner sea races pg. 230",
   "aura": "faint enchantment",
   "cl": "4th",
   "slot": "head",
-  "price": "10,000(lesser), 16,000(greater), 24,000(superior)",
+  "price": "10,000(lesser), 16,00, greater, 24,000(superior)",
   "weight": "1 lb. ",
   "description": " the following wondrous item is generally available only to members of the indicated race or ethnicity. This broad helmet is marked with archaic dwarven military insignia. When each helm is created, it is attuned to one teamwork feat. The wearer gains that feat for as long as she wears the helm and meets its prerequisites. With a command word, the wearer can grant that feat to all allies that meet its prerequisites within 30 feet for 1 minute. The helm can be activated up to three times per day. If the wearer is a dwarf, she can choose any teamwork feat she possesses to grant in this way. The helm can grant no more than one feat at a time; when a new feat is granted, all subjects lose any previously granted feat. A lesser commander's helm can contain a feat with either a base attack bonus prerequisite no greater than +5 or a skill rank prerequisite no greater than 5. A greater commander's helm can contain a feat with a base attack bonus prerequisite no greater than +10 or a skill rank prerequisite no greater than 10. A superior commander's helm can contain any teamwork feat. The same restrictions apply to the feats that a dwarf wearer can grant when choosing from feats she possesses. ",
   "construction requirements": "craft wondrous item, the teamwork feat to be imbued, tactical acumen uc , creator must be a dwarf",
-  "cost": "5,000(lesser), 8,000(greater), 12,000(superior)"
+  "cost": "5,000(lesser), 8,00, greater, 12,000(superior)"
   },
   "mask of a thousand tomes": {
   "source": "ultimate equipment pg. 245",
@@ -6418,16 +6418,16 @@
   "construction requirements": "craft wondrous item, detect thoughts , shout ",
   "cost": "6,400"
   },
-  "circlet of spell-eatingtype iii": {
+  "circlet of spell-eating, type III": {
   "source": "black markets pg. 16",
   "aura": "moderate (no school)",
   "cl": "7th",
   "slot": "head",
-  "price": "1,500(type i), 6,000(type ii), 13,500(type iii), 24,000(type iv)",
+  "price": "1,500(type i), 6,000(type II), 13,500(type III), 24,000(type IV)",
   "weight": " ",
   "description": " iridescent whorls and runes in a flowing eldritch script adorn this golden circlet. The circlet functions as a ring of spell knowledge ue , allowing a spontaneous caster to learn and store an additional arcane spell. However, once the circlet has been worn for 1d6 days, the wearer must succeed at a dc 16 will save each day when meditating to renew her spell slots. Failure indicates that she loses knowledge of a random spell, whose level cannot exceed the maximum level of the circlet of spell-eating . Knowledge of this spell is lost until the circlet is removed, returning at a rate of one spell per day, beginning with the lowest-level spell forgotten. So long as the circlet of spell-eating has caused its wearer to forget at least one spell, its creator can cast the first spell lost to the item once per day as a spell-like ability. ",
   "construction requirements": "craft wondrous item, bestow curse , imbue with spell ability ",
-  "cost": "750(type i), 3,000(type ii), 6,750(type iii), 12,000(type iv)"
+  "cost": "750(type i), 3,000(type II), 6,750(type III), 12,000(type IV)"
   },
   "bitter widow's veil": {
   "source": "daughters of fury pg. 56",
@@ -6495,16 +6495,16 @@
   "construction requirements": "craft wondrous item, alter self , speak with dead ",
   "cost": "8,000"
   },
-  "commander's helm (dwarf) greater": {
+  "commander's helm, greater": {
   "source": "inner sea races pg. 230",
   "aura": "faint enchantment",
   "cl": "4th",
   "slot": "head",
-  "price": "10,000(lesser), 16,000(greater), 24,000(superior)",
+  "price": "10,000(lesser), 16,00, greater, 24,000(superior)",
   "weight": "1 lb. ",
   "description": " the following wondrous item is generally available only to members of the indicated race or ethnicity. This broad helmet is marked with archaic dwarven military insignia. When each helm is created, it is attuned to one teamwork feat. The wearer gains that feat for as long as she wears the helm and meets its prerequisites. With a command word, the wearer can grant that feat to all allies that meet its prerequisites within 30 feet for 1 minute. The helm can be activated up to three times per day. If the wearer is a dwarf, she can choose any teamwork feat she possesses to grant in this way. The helm can grant no more than one feat at a time; when a new feat is granted, all subjects lose any previously granted feat. A lesser commander's helm can contain a feat with either a base attack bonus prerequisite no greater than +5 or a skill rank prerequisite no greater than 5. A greater commander's helm can contain a feat with a base attack bonus prerequisite no greater than +10 or a skill rank prerequisite no greater than 10. A superior commander's helm can contain any teamwork feat. The same restrictions apply to the feats that a dwarf wearer can grant when choosing from feats she possesses. ",
   "construction requirements": "craft wondrous item, the teamwork feat to be imbued, tactical acumen uc , creator must be a dwarf",
-  "cost": "5,000(lesser), 8,000(greater), 12,000(superior)"
+  "cost": "5,000(lesser), 8,00, greater, 12,000(superior)"
   },
   "halo of inner calm": {
   "source": "ultimate equipment pg. 242 , advanced race guide pg. 173",
@@ -6715,7 +6715,7 @@
   "construction requirements": "craft wondrous item, miasmatic form ",
   "cost": "11,500"
   },
-  "crown of blasting (major)": {
+  "crown of blasting, major": {
   "source": "ultimate equipment pg. 241 , prpg core rulebook pg. 507",
   "aura": "strong evocation",
   "cl": "17th",
@@ -6748,27 +6748,27 @@
   "construction requirements": "craft wondrous item, water breathing ",
   "cost": "12,000"
   },
-  "commander's helm (dwarf) superior": {
+  "commander's helm, superior": {
   "source": "inner sea races pg. 230",
   "aura": "faint enchantment",
   "cl": "4th",
   "slot": "head",
-  "price": "10,000(lesser), 16,000(greater), 24,000(superior)",
+  "price": "10,000(lesser), 16,00, greater, 24,000(superior)",
   "weight": "1 lb. ",
   "description": " the following wondrous item is generally available only to members of the indicated race or ethnicity. This broad helmet is marked with archaic dwarven military insignia. When each helm is created, it is attuned to one teamwork feat. The wearer gains that feat for as long as she wears the helm and meets its prerequisites. With a command word, the wearer can grant that feat to all allies that meet its prerequisites within 30 feet for 1 minute. The helm can be activated up to three times per day. If the wearer is a dwarf, she can choose any teamwork feat she possesses to grant in this way. The helm can grant no more than one feat at a time; when a new feat is granted, all subjects lose any previously granted feat. A lesser commander's helm can contain a feat with either a base attack bonus prerequisite no greater than +5 or a skill rank prerequisite no greater than 5. A greater commander's helm can contain a feat with a base attack bonus prerequisite no greater than +10 or a skill rank prerequisite no greater than 10. A superior commander's helm can contain any teamwork feat. The same restrictions apply to the feats that a dwarf wearer can grant when choosing from feats she possesses. ",
   "construction requirements": "craft wondrous item, the teamwork feat to be imbued, tactical acumen uc , creator must be a dwarf",
-  "cost": "5,000(lesser), 8,000(greater), 12,000(superior)"
+  "cost": "5,000(lesser), 8,00, greater, 12,000(superior)"
   },
-  "circlet of spell-eatingtype iv": {
+  "circlet of spell-eating, type IV": {
   "source": "black markets pg. 16",
   "aura": "moderate (no school)",
   "cl": "7th",
   "slot": "head",
-  "price": "1,500(type i), 6,000(type ii), 13,500(type iii), 24,000(type iv)",
+  "price": "1,500(type i), 6,000(type II), 13,500(type III), 24,000(type IV)",
   "weight": " ",
   "description": " iridescent whorls and runes in a flowing eldritch script adorn this golden circlet. The circlet functions as a ring of spell knowledge ue , allowing a spontaneous caster to learn and store an additional arcane spell. However, once the circlet has been worn for 1d6 days, the wearer must succeed at a dc 16 will save each day when meditating to renew her spell slots. Failure indicates that she loses knowledge of a random spell, whose level cannot exceed the maximum level of the circlet of spell-eating . Knowledge of this spell is lost until the circlet is removed, returning at a rate of one spell per day, beginning with the lowest-level spell forgotten. So long as the circlet of spell-eating has caused its wearer to forget at least one spell, its creator can cast the first spell lost to the item once per day as a spell-like ability. ",
   "construction requirements": "craft wondrous item, bestow curse , imbue with spell ability ",
-  "cost": "750(type i), 3,000(type ii), 6,750(type iii), 12,000(type iv)"
+  "cost": "750(type i), 3,000(type II), 6,750(type III), 12,000(type IV)"
   },
   "crown of conquest": {
   "source": "ultimate equipment pg. 241 , advanced race guide pg. 78",
@@ -6935,7 +6935,7 @@
   "construction requirements": "craft wondrous item, heroism ",
   "cost": "15,000"
   },
-  "mask of giants (lesser)": {
+  "mask of giants, lesser": {
   "source": "ultimate equipment pg. 246 , advanced player's guide pg. 307",
   "aura": "moderate transmutation",
   "cl": "6th",
@@ -6962,11 +6962,11 @@
   "aura": "strong evocation",
   "cl": "13th",
   "slot": "head",
-  "price": "32,250(lesser), 42,250(greater)",
+  "price": "32,250(lesser), 42,25, greater",
   "weight": "2 lbs. ",
   "description": " this mithral helm has a faceplate resembling a frost giant's face, complete with a beard formed from layered, thin metal rods. While wearing a thremyr's beard , a creature gains a +5 competence bonus on intimidate checks and a +2 circumstance bonus on disguise checks to impersonate a frost giant or svathurim (though the helm does nothing to increase the wearer's size). Once per day as an immediate action after being successfully hit by a melee weapon, the wearer of a lesser thremyr's beard can order the helm to animate, whereupon the thin metal rods of the helm's beard reach out to grasp the weapon. This functions as a disarm combat maneuver that does not provoke an attack of opportunity. A lesser thremyr's beard has a cmb of +23; the wearer can use the helm's cmb or her own cmb, whichever is higher. A greater thremyr's beard functions identically to the lesser version, but offers more protection for the wearer's vulnerable neck. Once per day as an immediate action after a critical hit is confirmed against the wearer with a melee weapon, the wearer can force the attacker to reroll the confirmation roll and take the worse result. ",
-  "construction requirements": "craft wondrous item, grasping hand (lesser and greater), ill omen apg (greater)",
-  "cost": "17,625(lesser), 21,125(greater)"
+  "construction requirements": "craft wondrous item, grasping hand (lesser and greater), ill omen apg, greater",
+  "cost": "17,625(lesser), 21,12, greater"
   },
   "steel-mind cap": {
   "source": "ultimate equipment pg. 247",
@@ -7001,7 +7001,7 @@
   "construction requirements": "craft wondrous item, telepathic bond, creator must be a yithian",
   "cost": "17,500"
   },
-  "helm of brilliance (lesser)": {
+  "helm of brilliance, lesser": {
   "source": "ultimate equipment pg. 243 , classic treasures revisited pg. 31",
   "aura": "moderate varied",
   "cl": "5th",
@@ -7061,11 +7061,11 @@
   "aura": "strong evocation",
   "cl": "13th",
   "slot": "head",
-  "price": "32,250(lesser), 42,250(greater)",
+  "price": "32,250(lesser), 42,25, greater",
   "weight": "2 lbs. ",
   "description": " this mithral helm has a faceplate resembling a frost giant's face, complete with a beard formed from layered, thin metal rods. While wearing a thremyr's beard , a creature gains a +5 competence bonus on intimidate checks and a +2 circumstance bonus on disguise checks to impersonate a frost giant or svathurim (though the helm does nothing to increase the wearer's size). Once per day as an immediate action after being successfully hit by a melee weapon, the wearer of a lesser thremyr's beard can order the helm to animate, whereupon the thin metal rods of the helm's beard reach out to grasp the weapon. This functions as a disarm combat maneuver that does not provoke an attack of opportunity. A lesser thremyr's beard has a cmb of +23; the wearer can use the helm's cmb or her own cmb, whichever is higher. A greater thremyr's beard functions identically to the lesser version, but offers more protection for the wearer's vulnerable neck. Once per day as an immediate action after a critical hit is confirmed against the wearer with a melee weapon, the wearer can force the attacker to reroll the confirmation roll and take the worse result. ",
-  "construction requirements": "craft wondrous item, grasping hand (lesser and greater), ill omen apg (greater)",
-  "cost": "17,625(lesser), 21,125(greater)"
+  "construction requirements": "craft wondrous item, grasping hand (lesser and greater), ill omen apg, greater",
+  "cost": "17,625(lesser), 21,12, greater"
   },
   "frostwild bridle": {
   "source": "heroes of the wild pg. 28",
@@ -7211,7 +7211,7 @@
   "construction requirements": "craft wondrous item, divide mind , possession , tower of iron will v ",
   "cost": "45,000"
   },
-  "mask of giants (greater)": {
+  "mask of giants, greater": {
   "source": "ultimate equipment pg. 245 , advanced player's guide pg. 307",
   "aura": "strong transmutation",
   "cl": "13th",
@@ -7345,7 +7345,7 @@
   "construction requirements": "craft wondrous item, doom , shrink item ",
   "cost": "1,800"
   },
-  "headband of inspired wisdom2": {
+  "headband of inspired wisdom +2": {
   "source": "ultimate equipment pg. 250 , prpg core rulebook pg. 516",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7356,7 +7356,7 @@
   "construction requirements": "craft wondrous item, owl's wisdom ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "headband of vast intelligence2": {
+  "headband of vast intelligence +2": {
   "source": "ultimate equipment pg. 251 , prpg core rulebook pg. 517",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7367,7 +7367,7 @@
   "construction requirements": "craft wondrous item, fox's cunning ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "headband of alluring charisma2": {
+  "headband of alluring charisma +2": {
   "source": "ultimate equipment pg. 248 , prpg core rulebook pg. 516",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7389,7 +7389,7 @@
   "construction requirements": "craft wondrous item, charm person , sanctuary ",
   "cost": "2,000"
   },
-  "headband of aerial agility2": {
+  "headband of aerial agility +2": {
   "source": "ultimate equipment pg. 248",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7400,7 +7400,7 @@
   "construction requirements": "craft wondrous item, extend spell, fly ",
   "cost": "2,250(+2), 21,000(+4), 40,500(+6)"
   },
-  "shifter's headband2": {
+  "shifter's headband +2": {
   "source": "ultimate equipment pg. 253",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7565,7 +7565,7 @@
   "construction requirements": "craft wondrous item, animal trance , hypnotism , speak with\r animals , summon nature's ally v ",
   "cost": "4,500"
   },
-  "headband of mental prowess2": {
+  "headband of mental prowess +2": {
   "source": "ultimate equipment pg. 250 , prpg core rulebook pg. 517",
   "aura": "strong transmutation",
   "cl": "12th",
@@ -7664,7 +7664,7 @@
   "construction requirements": "craft wondrous item, break enchantment , creator must have the giant subtype",
   "cost": "7,500"
   },
-  "headband mental superiority2": {
+  "headband mental superiority +2": {
   "source": "ultimate equipment pg. 251 , prpg core rulebook pg. 517",
   "aura": "strong transmutation",
   "cl": "16th",
@@ -7675,7 +7675,7 @@
   "construction requirements": "craft wondrous item, eagle's splendor , fox's cunning , owl's wisdom ",
   "cost": "8,000(+2), 32,000(+4), 77,000(+6)"
   },
-  "headband of vast intelligence4": {
+  "headband of vast intelligence +4": {
   "source": "ultimate equipment pg. 251 , prpg core rulebook pg. 517",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7686,7 +7686,7 @@
   "construction requirements": "craft wondrous item, fox's cunning ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "headband of inspired wisdom4": {
+  "headband of inspired wisdom +4": {
   "source": "ultimate equipment pg. 250 , prpg core rulebook pg. 516",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7697,7 +7697,7 @@
   "construction requirements": "craft wondrous item, owl's wisdom ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "headband of alluring charisma4": {
+  "headband of alluring charisma +4": {
   "source": "ultimate equipment pg. 248 , prpg core rulebook pg. 516",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7708,7 +7708,7 @@
   "construction requirements": "craft wondrous item, eagle's splendor ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "shifter's headband4": {
+  "shifter's headband +4": {
   "source": "ultimate equipment pg. 253",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7730,27 +7730,27 @@
   "construction requirements": "craft wondrous item, instant enemy apg , invisibility ",
   "cost": "9,000"
   },
-  "kineticist's diadem lesser": {
+  "kineticist's diadem, lesser": {
   "source": "occult adventures pg. 259",
   "aura": "moderate evocation",
   "cl": "10th",
   "slot": "headband",
-  "price": "18,000(lesser), 50,000(normal), 98,000(greater)",
+  "price": "18,000(lesser), 50,000(normal), 98,00, greater",
   "weight": " ",
   "description": " this metal headband holds a glistening, diamond-shaped gem. A kineticist's diadem includes one of five colors of gem, each corresponding to a different element: blue (water), clear (aether), green (earth), red (fire), and white (air). The diadem's gem grants the wearer greater control over its associated element. While worn by a kineticist, this item increases the damage dealt by the kineticist's simple and composite blasts that match the element of the inlaid gem by 1d6 points (for a lesser kineticist's diadem), 2d6 points (for a kineticist's diadem), or 3d6 points (for a greater kineticist's diadem). If the blast is a physical blast, the extra damage dice from the kineticist's diadem increase to d8s instead of d6s. These extra damage dice do not multiply on a critical hit, and the extra damage dice do not apply to blasts with form infusions that do not apply the extra damage from elemental overflow, like kinetic blade and kinetic whip. ",
   "construction requirements": "craft wondrous item, creator must be a 10th-level kineticist with access to the appropriate element",
-  "cost": "9,000(lesser), 25,000(normal), 49,000(greater)"
+  "cost": "9,000(lesser), 25,000(normal), 49,00, greater"
   },
-  "esoteric diadem lesser": {
+  "esoteric diadem, lesser": {
   "source": "elemental master's handbook pg. 9",
   "aura": "moderate evocation",
   "cl": "10th",
   "slot": "headband",
-  "price": "18,000(lesser), 50,000(normal), 98,000(greater)",
+  "price": "18,000(lesser), 50,000(normal), 98,00, greater",
   "weight": " ",
   "description": " the diamond-shaped gems in these metal headbands are typically one of two colors, each corresponding to a different esoteric element: onyx (void) and pink (wood); these elements are found on pages 69 of pathfinder player companion: occult origins . The diadem's gem grants the wearer greater control over its associated element. While worn by a kineticist, this item increases the damage dealt by the kineticist's simple and composite blasts that match the element of the inlaid gem by 1d6 points (for a lesser esoteric diadem), 2d6 points (for an esoteric diadem), or 3d6 points (for a greater esoteric diadem). If the blast is a physical blast, the extra damage dice from the esoteric diadem increase to d8s instead of d6s. These extra damage dice don't multiply on a critical hit, and they don't apply to blasts with form infusions that don't apply the extra damage from elemental overflow. Other esoteric diadem variants exist for other little-known kineticist elements. ",
   "construction requirements": "craft wondrous item, creator must be a 10th-level kineticist with access to the appropriate element",
-  "cost": "9,000(lesser), 25,000(normal), 49,000(greater)"
+  "cost": "9,000(lesser), 25,000(normal), 49,00, greater"
   },
   "headband of arcane energy": {
   "source": "ultimate equipment pg. 248",
@@ -7829,7 +7829,7 @@
   "construction requirements": "craft wondrous item, beast shape ii , dragon's breath (advanced player's guide), resist energy ",
   "cost": "16,000"
   },
-  "headband of inspired wisdom6": {
+  "headband of inspired wisdom +6": {
   "source": "ultimate equipment pg. 250 , prpg core rulebook pg. 516",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7840,7 +7840,7 @@
   "construction requirements": "craft wondrous item, owl's wisdom ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "headband of vast intelligence6": {
+  "headband of vast intelligence +6": {
   "source": "ultimate equipment pg. 251 , prpg core rulebook pg. 517",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7851,7 +7851,7 @@
   "construction requirements": "craft wondrous item, fox's cunning ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "headband of alluring charisma6": {
+  "headband of alluring charisma +6": {
   "source": "ultimate equipment pg. 248 , prpg core rulebook pg. 516",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7862,7 +7862,7 @@
   "construction requirements": "craft wondrous item, eagle's splendor ",
   "cost": "2,000(+2), 8,000(+4), 18,000(+6)"
   },
-  "shifter's headband6": {
+  "shifter's headband +6": {
   "source": "ultimate equipment pg. 253",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7873,7 +7873,7 @@
   "construction requirements": "craft wondrous item, polymorph self ",
   "cost": "2,250(+2), 8,750(+4), 19,500(+6)"
   },
-  "headband of mental prowess4": {
+  "headband of mental prowess +4": {
   "source": "ultimate equipment pg. 250 , prpg core rulebook pg. 517",
   "aura": "strong transmutation",
   "cl": "12th",
@@ -7906,7 +7906,7 @@
   "construction requirements": "craft wondrous item, unnatural lust ",
   "cost": "20,000"
   },
-  "headband of aerial agility4": {
+  "headband of aerial agility +4": {
   "source": "ultimate equipment pg. 248",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7917,29 +7917,29 @@
   "construction requirements": "craft wondrous item, extend spell, fly ",
   "cost": "2,250(+2), 21,000(+4), 40,500(+6)"
   },
-  "esoteric diadem normal": {
+  "esoteric diadem, normal": {
   "source": "elemental master's handbook pg. 9",
   "aura": "moderate evocation",
   "cl": "10th",
   "slot": "headband",
-  "price": "18,000(lesser), 50,000(normal), 98,000(greater)",
+  "price": "18,000(lesser), 50,000(normal), 98,00, greater",
   "weight": " ",
   "description": " the diamond-shaped gems in these metal headbands are typically one of two colors, each corresponding to a different esoteric element: onyx (void) and pink (wood); these elements are found on pages 69 of pathfinder player companion: occult origins . The diadem's gem grants the wearer greater control over its associated element. While worn by a kineticist, this item increases the damage dealt by the kineticist's simple and composite blasts that match the element of the inlaid gem by 1d6 points (for a lesser esoteric diadem), 2d6 points (for an esoteric diadem), or 3d6 points (for a greater esoteric diadem). If the blast is a physical blast, the extra damage dice from the esoteric diadem increase to d8s instead of d6s. These extra damage dice don't multiply on a critical hit, and they don't apply to blasts with form infusions that don't apply the extra damage from elemental overflow. Other esoteric diadem variants exist for other little-known kineticist elements. ",
   "construction requirements": "craft wondrous item, creator must be a 10th-level kineticist with access to the appropriate element",
-  "cost": "9,000(lesser), 25,000(normal), 49,000(greater)"
+  "cost": "9,000(lesser), 25,000(normal), 49,00, greater"
   },
-  "kineticist's diadem normal": {
+  "kineticist's diadem, normal": {
   "source": "occult adventures pg. 259",
   "aura": "moderate evocation",
   "cl": "10th",
   "slot": "headband",
-  "price": "18,000(lesser), 50,000(normal), 98,000(greater)",
+  "price": "18,000(lesser), 50,000(normal), 98,00, greater",
   "weight": " ",
   "description": " this metal headband holds a glistening, diamond-shaped gem. A kineticist's diadem includes one of five colors of gem, each corresponding to a different element: blue (water), clear (aether), green (earth), red (fire), and white (air). The diadem's gem grants the wearer greater control over its associated element. While worn by a kineticist, this item increases the damage dealt by the kineticist's simple and composite blasts that match the element of the inlaid gem by 1d6 points (for a lesser kineticist's diadem), 2d6 points (for a kineticist's diadem), or 3d6 points (for a greater kineticist's diadem). If the blast is a physical blast, the extra damage dice from the kineticist's diadem increase to d8s instead of d6s. These extra damage dice do not multiply on a critical hit, and the extra damage dice do not apply to blasts with form infusions that do not apply the extra damage from elemental overflow, like kinetic blade and kinetic whip. ",
   "construction requirements": "craft wondrous item, creator must be a 10th-level kineticist with access to the appropriate element",
-  "cost": "9,000(lesser), 25,000(normal), 49,000(greater)"
+  "cost": "9,000(lesser), 25,000(normal), 49,00, greater"
   },
-  "headband of mental superiority4": {
+  "headband of mental superiority +4": {
   "source": "ultimate equipment pg. 251 , prpg core rulebook pg. 517",
   "aura": "strong transmutation",
   "cl": "16th",
@@ -7961,7 +7961,7 @@
   "construction requirements": "craft wondrous item, eagle's splendor , fox's cunning , lesser\r restoration , owl's wisdom ",
   "cost": "32,000"
   },
-  "headband of aerial agility6": {
+  "headband of aerial agility +6": {
   "source": "ultimate equipment pg. 248",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -7972,7 +7972,7 @@
   "construction requirements": "craft wondrous item, extend spell, fly ",
   "cost": "2,250(+2), 21,000(+4), 40,500(+6)"
   },
-  "headband of mental prowess6": {
+  "headband of mental prowess +6": {
   "source": "ultimate equipment pg. 250 , prpg core rulebook pg. 517",
   "aura": "strong transmutation",
   "cl": "12th",
@@ -7983,29 +7983,29 @@
   "construction requirements": "craft wondrous item, eagle's splendor , fox's cunning , owl's wisdom (any two)",
   "cost": "5,000(+2), 20,000(+4), 45,000(+6)"
   },
-  "kineticist's diadem greater": {
+  "kineticist's diadem, greater": {
   "source": "occult adventures pg. 259",
   "aura": "moderate evocation",
   "cl": "10th",
   "slot": "headband",
-  "price": "18,000(lesser), 50,000(normal), 98,000(greater)",
+  "price": "18,000(lesser), 50,000(normal), 98,00, greater",
   "weight": " ",
   "description": " this metal headband holds a glistening, diamond-shaped gem. A kineticist's diadem includes one of five colors of gem, each corresponding to a different element: blue (water), clear (aether), green (earth), red (fire), and white (air). The diadem's gem grants the wearer greater control over its associated element. While worn by a kineticist, this item increases the damage dealt by the kineticist's simple and composite blasts that match the element of the inlaid gem by 1d6 points (for a lesser kineticist's diadem), 2d6 points (for a kineticist's diadem), or 3d6 points (for a greater kineticist's diadem). If the blast is a physical blast, the extra damage dice from the kineticist's diadem increase to d8s instead of d6s. These extra damage dice do not multiply on a critical hit, and the extra damage dice do not apply to blasts with form infusions that do not apply the extra damage from elemental overflow, like kinetic blade and kinetic whip. ",
   "construction requirements": "craft wondrous item, creator must be a 10th-level kineticist with access to the appropriate element",
-  "cost": "9,000(lesser), 25,000(normal), 49,000(greater)"
+  "cost": "9,000(lesser), 25,000(normal), 49,00, greater"
   },
-  "esoteric diadem greater": {
+  "esoteric diadem, greater": {
   "source": "elemental master's handbook pg. 9",
   "aura": "moderate evocation",
   "cl": "10th",
   "slot": "headband",
-  "price": "18,000(lesser), 50,000(normal), 98,000(greater)",
+  "price": "18,000(lesser), 50,000(normal), 98,00, greater",
   "weight": " ",
   "description": " the diamond-shaped gems in these metal headbands are typically one of two colors, each corresponding to a different esoteric element: onyx (void) and pink (wood); these elements are found on pages 69 of pathfinder player companion: occult origins . The diadem's gem grants the wearer greater control over its associated element. While worn by a kineticist, this item increases the damage dealt by the kineticist's simple and composite blasts that match the element of the inlaid gem by 1d6 points (for a lesser esoteric diadem), 2d6 points (for an esoteric diadem), or 3d6 points (for a greater esoteric diadem). If the blast is a physical blast, the extra damage dice from the esoteric diadem increase to d8s instead of d6s. These extra damage dice don't multiply on a critical hit, and they don't apply to blasts with form infusions that don't apply the extra damage from elemental overflow. Other esoteric diadem variants exist for other little-known kineticist elements. ",
   "construction requirements": "craft wondrous item, creator must be a 10th-level kineticist with access to the appropriate element",
-  "cost": "9,000(lesser), 25,000(normal), 49,000(greater)"
+  "cost": "9,000(lesser), 25,000(normal), 49,00, greater"
   },
-  "headband of mental superiority6": {
+  "headband of mental superiority +6": {
   "source": "ultimate equipment pg. 251 , prpg core rulebook pg. 517",
   "aura": "strong transmutation",
   "cl": "16th",
@@ -8040,7 +8040,7 @@
   }
   },
   "neck": {
-  "talisman (lesser)beneficial winds": {
+  "talisman, lesser beneficial winds": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -8089,7 +8089,7 @@
   "construction requirements": "craft wondrous item, darkvision , see invisibility ",
   "cost": "175"
   },
-  "talisman (lesser)akoben": {
+  "talisman, lesser akoben": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -8116,7 +8116,7 @@
   "construction requirements": "craft wondrous item, additional spells (see text)",
   "cost": "225(akoben), 625(ankh), 300(arrow protection), 25(beneficial winds), 375(danger sense), 450(freedom), 840(good fortune), 1,500(hamsa), 1,200(healing power), 1,750(life's breath), 300(pentacle), 625(protection from flames), 300(scarab), 225(sealed summons), 300(triskelion), 225(warrior's courage)"
   },
-  "talisman (lesser)sealed summons": {
+  "talisman, lesser sealed summons": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -8143,7 +8143,7 @@
   "construction requirements": "craft wondrous item, additional spells (see text)",
   "cost": "225(akoben), 625(ankh), 300(arrow protection), 25(beneficial winds), 375(danger sense), 450(freedom), 840(good fortune), 1,500(hamsa), 1,200(healing power), 1,750(life's breath), 300(pentacle), 625(protection from flames), 300(scarab), 225(sealed summons), 300(triskelion), 225(warrior's courage)"
   },
-  "talisman (lesser)warrior's courage": {
+  "talisman, lesser warrior's courage": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -8170,7 +8170,7 @@
   "construction requirements": "craft wondrous item, additional spells (see text)",
   "cost": "225(akoben), 625(ankh), 300(arrow protection), 25(beneficial winds), 375(danger sense), 450(freedom), 840(good fortune), 1,500(hamsa), 1,200(healing power), 1,750(life's breath), 300(pentacle), 625(protection from flames), 300(scarab), 225(sealed summons), 300(triskelion), 225(warrior's courage)"
   },
-  "talisman (greater)beneficial winds": {
+  "talisman, greater beneficial winds": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -8192,7 +8192,7 @@
   "construction requirements": "craft wondrous item, resistance, status ",
   "cost": "250(pair)"
   },
-  "talisman (lesser)arrow protection": {
+  "talisman, lesser arrow protection": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -8219,7 +8219,7 @@
   "construction requirements": "craft wondrous item, additional spells (see text)",
   "cost": "225(akoben), 625(ankh), 300(arrow protection), 25(beneficial winds), 375(danger sense), 450(freedom), 840(good fortune), 1,500(hamsa), 1,200(healing power), 1,750(life's breath), 300(pentacle), 625(protection from flames), 300(scarab), 225(sealed summons), 300(triskelion), 225(warrior's courage)"
   },
-  "talisman (lesser)pentacle": {
+  "talisman, lesser pentacle": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -8246,7 +8246,7 @@
   "construction requirements": "craft wondrous item, additional spells (see text)",
   "cost": "225(akoben), 625(ankh), 300(arrow protection), 25(beneficial winds), 375(danger sense), 450(freedom), 840(good fortune), 1,500(hamsa), 1,200(healing power), 1,750(life's breath), 300(pentacle), 625(protection from flames), 300(scarab), 225(sealed summons), 300(triskelion), 225(warrior's courage)"
   },
-  "talisman (lesser)scarab": {
+  "talisman, lesser scarab": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -8273,7 +8273,7 @@
   "construction requirements": "craft wondrous item, additional spells (see text)",
   "cost": "225(akoben), 625(ankh), 300(arrow protection), 25(beneficial winds), 375(danger sense), 450(freedom), 840(good fortune), 1,500(hamsa), 1,200(healing power), 1,750(life's breath), 300(pentacle), 625(protection from flames), 300(scarab), 225(sealed summons), 300(triskelion), 225(warrior's courage)"
   },
-  "talisman (lesser)trickelion": {
+  "talisman, lesser trickelion": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -8300,7 +8300,7 @@
   "construction requirements": "craft wondrous item, additional spells (see text)",
   "cost": "225(akoben), 625(ankh), 300(arrow protection), 25(beneficial winds), 375(danger sense), 450(freedom), 840(good fortune), 1,500(hamsa), 1,200(healing power), 1,750(life's breath), 300(pentacle), 625(protection from flames), 300(scarab), 225(sealed summons), 300(triskelion), 225(warrior's courage)"
   },
-  "talisman (lesser)danger sense": {
+  "talisman, lesser danger sense": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -8349,7 +8349,7 @@
   "construction requirements": "craft wondrous item, dispel magic ",
   "cost": "450, 36 xp"
   },
-  "talisman (lesser)freedom": {
+  "talisman, lesser freedom": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -8453,7 +8453,7 @@
   "construction requirements": "craft wondrous item, mending ",
   "cost": "500"
   },
-  "talisman (lesser)ankh": {
+  "talisman, lesser ankh": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -8480,7 +8480,7 @@
   "construction requirements": "craft wondrous item, additional spells (see text)",
   "cost": "225(akoben), 625(ankh), 300(arrow protection), 25(beneficial winds), 375(danger sense), 450(freedom), 840(good fortune), 1,500(hamsa), 1,200(healing power), 1,750(life's breath), 300(pentacle), 625(protection from flames), 300(scarab), 225(sealed summons), 300(triskelion), 225(warrior's courage)"
   },
-  "talisman (lesser)protection from flames": {
+  "talisman, lesser protection from flames": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -8518,7 +8518,7 @@
   "construction requirements": "craft wondrous item, animate dead ",
   "cost": "625(10 hd), 875(14 hd), 1,125(18 hd), 1,500(24 hd)"
   },
-  "fetish of natural armor1": {
+  "fetish of natural armor +1": {
   "source": "rivers into darkness pg. 15",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -8529,7 +8529,7 @@
   "construction requirements": "craft wondrous item, barkskin , creator's caster level must be at least 3 times the fetish's bonus",
   "cost": "750, 60 xp (+1), 3,500, 280 xp (+2), 8,250, 660 xp (+3)"
   },
-  "amulet of bullet protection1": {
+  "amulet of bullet protection +1": {
   "source": "ultimate equipment pg. 254 , ultimate combat pg. 143",
   "aura": "faint abjuration",
   "cl": "5th",
@@ -8573,28 +8573,28 @@
   "construction requirements": "craft wondrous item, grease ",
   "cost": "800"
   },
-  "necklace of fireballstype i": {
+  "necklace of fireballs, type I": {
   "source": "ultimate equipment pg. 259 , prpg core rulebook pg. 524",
   "aura": "moderate evocation",
   "cl": "10th",
   "slot": "neck",
   "price": "",
   "weight": "1 lb. ",
-  "description": " this item appears to be a string or\r cluster of spherical beads, sometimes\r with the ends tied together to form a\r necklace. (it does not count as an item\r worn around the neck for the purpose\r of determining which of a character's\r worn magic items is effective.) if a\r character holds it, however, all can see the strand as it really\r isa golden chain from which hang a number of golden\r spheres. The spheres are detachable by the wearer (and only\r by the wearer), who can easily hurl one of them up to 70 feet. \r when a sphere arrives at the end of its trajectory, it detonates\r as a fireball spell (reflex dc 14 half). Spheres come in different strengths, ranging from those that\r deal 2d6 points of fire damage to those that deal 10d6. The price\r of a sphere is 150for each die of damage it deals. Necklace 10d6 9d6 8d6 7d6 6d6 5d6 4d6 3d6 2d6 price type i      1  2  1,650type ii     1  2  2 2,700type iii    1  2  4  4,350type iv   1  2  2  4 5,400type v  1  2  2  2  5,850type vi 1  2  2  4   8,100type vii 1 2  2  2  2  8,700each necklace of fireballs contains a combination of\r spheres of various strengths. Some traditional combinations, \r designated types i through vii, are detailed above. If the necklace is being worn or carried by a character who fails\r her saving throw against a magical fire attack, the item must make\r a saving throw as well (with a save bonus of +7). If the necklace\r fails to save, all its remaining spheres detonate simultaneously, \r often with regrettable consequences for the wearer. Construction",
+  "description": " this item appears to be a string or\r cluster of spherical beads, sometimes\r with the ends tied together to form a\r necklace. (it does not count as an item\r worn around the neck for the purpose\r of determining which of a character's\r worn magic items is effective.) if a\r character holds it, however, all can see the strand as it really\r isa golden chain from which hang a number of golden\r spheres. The spheres are detachable by the wearer (and only\r by the wearer), who can easily hurl one of them up to 70 feet. \r when a sphere arrives at the end of its trajectory, it detonates\r as a fireball spell (reflex dc 14 half). Spheres come in different strengths, ranging from those that\r deal 2d6 points of fire damage to those that deal 10d6. The price\r of a sphere is 150for each die of damage it deals. Necklace 10d6 9d6 8d6 7d6 6d6 5d6 4d6 3d6 2d6 price type i      1  2  1,650type II     1  2  2 2,700type III    1  2  4  4,350type IV   1  2  2  4 5,400type V  1  2  2  2  5,850type VI 1  2  2  4   8,100type VII 1 2  2  2  2  8,700each necklace of fireballs contains a combination of\r spheres of various strengths. Some traditional combinations, \r designated types i through vii, are detailed above. If the necklace is being worn or carried by a character who fails\r her saving throw against a magical fire attack, the item must make\r a saving throw as well (with a save bonus of +7). If the necklace\r fails to save, all its remaining spheres detonate simultaneously, \r often with regrettable consequences for the wearer. Construction",
   "necklace": "",
-  "10d6": "",
-  "9d6": "",
-  "8d6": "",
-  "7d6": "",
-  "6d6": "",
-  "5d6": "",
-  "4d6": "",
-  "3d6": "",
-  "2d6": "",
+  "10d +6": "",
+  "9d +6": "",
+  "8d +6": "",
+  "7d +6": "",
+  "6d +6": "",
+  "5d +6": "",
+  "4d +6": "",
+  "3d +6": "",
+  "2d +6": "",
   "requirements": "craft wondrous item, fireball ",
-  "cost": "825(type i), 1,350(type ii), 2,175(type iii), 2,700(type iv), 2,925(type v), 4,050(type vi), 4,350(type vii)"
+  "cost": "825(type i), 1,350(type II), 2,175(type III), 2,700(type IV), 2,925(type V), 4,050(type VI), 4,350(type VII)"
   },
-  "talisman (lesser)good fortune": {
+  "talisman, lesser good fortune": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -8676,7 +8676,7 @@
   "construction requirements": "craft wondrous item, greater magic fang ",
   "cost": "925"
   },
-  "amulet of natural armor1": {
+  "amulet of natural armor +1": {
   "source": "ultimate equipment pg. 256 , prpg core rulebook pg. 500",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -8753,7 +8753,7 @@
   "construction requirements": "craft wondrous item, alter self, wizened appearance ui or youthful appearance um ",
   "cost": "1,200"
   },
-  "talisman (lesser)healing power": {
+  "talisman, lesser healing power": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -8824,26 +8824,26 @@
   "construction requirements": "craft wondrous item, cure light wounds , summon swarm ",
   "cost": "1,350"
   },
-  "necklace of fireballstype ii": {
+  "necklace of fireballs, type II": {
   "source": "ultimate equipment pg. 259 , prpg core rulebook pg. 524",
   "aura": "moderate evocation",
   "cl": "10th",
   "slot": "neck",
   "price": "",
   "weight": "1 lb. ",
-  "description": " this item appears to be a string or\r cluster of spherical beads, sometimes\r with the ends tied together to form a\r necklace. (it does not count as an item\r worn around the neck for the purpose\r of determining which of a character's\r worn magic items is effective.) if a\r character holds it, however, all can see the strand as it really\r isa golden chain from which hang a number of golden\r spheres. The spheres are detachable by the wearer (and only\r by the wearer), who can easily hurl one of them up to 70 feet. \r when a sphere arrives at the end of its trajectory, it detonates\r as a fireball spell (reflex dc 14 half). Spheres come in different strengths, ranging from those that\r deal 2d6 points of fire damage to those that deal 10d6. The price\r of a sphere is 150for each die of damage it deals. Necklace 10d6 9d6 8d6 7d6 6d6 5d6 4d6 3d6 2d6 price type i      1  2  1,650type ii     1  2  2 2,700type iii    1  2  4  4,350type iv   1  2  2  4 5,400type v  1  2  2  2  5,850type vi 1  2  2  4   8,100type vii 1 2  2  2  2  8,700each necklace of fireballs contains a combination of\r spheres of various strengths. Some traditional combinations, \r designated types i through vii, are detailed above. If the necklace is being worn or carried by a character who fails\r her saving throw against a magical fire attack, the item must make\r a saving throw as well (with a save bonus of +7). If the necklace\r fails to save, all its remaining spheres detonate simultaneously, \r often with regrettable consequences for the wearer. Construction",
+  "description": " this item appears to be a string or\r cluster of spherical beads, sometimes\r with the ends tied together to form a\r necklace. (it does not count as an item\r worn around the neck for the purpose\r of determining which of a character's\r worn magic items is effective.) if a\r character holds it, however, all can see the strand as it really\r isa golden chain from which hang a number of golden\r spheres. The spheres are detachable by the wearer (and only\r by the wearer), who can easily hurl one of them up to 70 feet. \r when a sphere arrives at the end of its trajectory, it detonates\r as a fireball spell (reflex dc 14 half). Spheres come in different strengths, ranging from those that\r deal 2d6 points of fire damage to those that deal 10d6. The price\r of a sphere is 150for each die of damage it deals. Necklace 10d6 9d6 8d6 7d6 6d6 5d6 4d6 3d6 2d6 price type i      1  2  1,650type II     1  2  2 2,700type III    1  2  4  4,350type IV   1  2  2  4 5,400type V  1  2  2  2  5,850type VI 1  2  2  4   8,100type VII 1 2  2  2  2  8,700each necklace of fireballs contains a combination of\r spheres of various strengths. Some traditional combinations, \r designated types i through vii, are detailed above. If the necklace is being worn or carried by a character who fails\r her saving throw against a magical fire attack, the item must make\r a saving throw as well (with a save bonus of +7). If the necklace\r fails to save, all its remaining spheres detonate simultaneously, \r often with regrettable consequences for the wearer. Construction",
   "necklace": "",
-  "10d6": "",
-  "9d6": "",
-  "8d6": "",
-  "7d6": "",
-  "6d6": "",
-  "5d6": "",
-  "4d6": "",
-  "3d6": "",
-  "2d6": "",
+  "10d +6": "",
+  "9d +6": "",
+  "8d +6": "",
+  "7d +6": "",
+  "6d +6": "",
+  "5d +6": "",
+  "4d +6": "",
+  "3d +6": "",
+  "2d +6": "",
   "requirements": "craft wondrous item, fireball ",
-  "cost": "825(type i), 1,350(type ii), 2,175(type iii), 2,700(type iv), 2,925(type v), 4,050(type vi), 4,350(type vii)"
+  "cost": "825(type i), 1,350(type II), 2,175(type III), 2,700(type IV), 2,925(type V), 4,050(type VI), 4,350(type VII)"
   },
   "hero's release pendant": {
   "source": "inner sea gods pg. 265",
@@ -8878,7 +8878,7 @@
   "construction requirements": "craft wondrous item, divine favor ",
   "cost": "1,500"
   },
-  "talisman (lesser)hamsa": {
+  "talisman, lesser hamsa": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -9027,7 +9027,7 @@
   "construction requirements": "craft wondrous item, restoration ",
   "cost": "1,700"
   },
-  "talisman (lesser)life's breath": {
+  "talisman, lesser life's breath": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -9120,7 +9120,7 @@
   "construction requirements": "craft wondrous item, delusional pride ",
   "cost": "1,800"
   },
-  "aegis of recovery,  greater": {
+  "aegis of recovery, greater": {
   "source": "potions and poisons pg. 30",
   "aura": "moderate abjuration and conjuration",
   "cl": "9th",
@@ -9142,7 +9142,7 @@
   "construction requirements": "craft wondrous item, eagle's splendor , light , shocking grasp ",
   "cost": "1,950"
   },
-  "amulet of mighty fists1": {
+  "amulet of mighty fists +1": {
   "source": "ultimate equipment pg. 255 , prpg core rulebook pg. 496",
   "aura": "faint evocation",
   "cl": "5th",
@@ -9219,28 +9219,28 @@
   "construction requirements": "craft wondrous item, chill metal , mending , resist energy , resistance ",
   "cost": "2,100"
   },
-  "necklace of fireballstype iii": {
+  "necklace of fireballs, type III": {
   "source": "ultimate equipment pg. 259 , prpg core rulebook pg. 524",
   "aura": "moderate evocation",
   "cl": "10th",
   "slot": "neck",
   "price": "",
   "weight": "1 lb. ",
-  "description": " this item appears to be a string or\r cluster of spherical beads, sometimes\r with the ends tied together to form a\r necklace. (it does not count as an item\r worn around the neck for the purpose\r of determining which of a character's\r worn magic items is effective.) if a\r character holds it, however, all can see the strand as it really\r isa golden chain from which hang a number of golden\r spheres. The spheres are detachable by the wearer (and only\r by the wearer), who can easily hurl one of them up to 70 feet. \r when a sphere arrives at the end of its trajectory, it detonates\r as a fireball spell (reflex dc 14 half). Spheres come in different strengths, ranging from those that\r deal 2d6 points of fire damage to those that deal 10d6. The price\r of a sphere is 150for each die of damage it deals. Necklace 10d6 9d6 8d6 7d6 6d6 5d6 4d6 3d6 2d6 price type i      1  2  1,650type ii     1  2  2 2,700type iii    1  2  4  4,350type iv   1  2  2  4 5,400type v  1  2  2  2  5,850type vi 1  2  2  4   8,100type vii 1 2  2  2  2  8,700each necklace of fireballs contains a combination of\r spheres of various strengths. Some traditional combinations, \r designated types i through vii, are detailed above. If the necklace is being worn or carried by a character who fails\r her saving throw against a magical fire attack, the item must make\r a saving throw as well (with a save bonus of +7). If the necklace\r fails to save, all its remaining spheres detonate simultaneously, \r often with regrettable consequences for the wearer. Construction",
+  "description": " this item appears to be a string or\r cluster of spherical beads, sometimes\r with the ends tied together to form a\r necklace. (it does not count as an item\r worn around the neck for the purpose\r of determining which of a character's\r worn magic items is effective.) if a\r character holds it, however, all can see the strand as it really\r isa golden chain from which hang a number of golden\r spheres. The spheres are detachable by the wearer (and only\r by the wearer), who can easily hurl one of them up to 70 feet. \r when a sphere arrives at the end of its trajectory, it detonates\r as a fireball spell (reflex dc 14 half). Spheres come in different strengths, ranging from those that\r deal 2d6 points of fire damage to those that deal 10d6. The price\r of a sphere is 150for each die of damage it deals. Necklace 10d6 9d6 8d6 7d6 6d6 5d6 4d6 3d6 2d6 price type i      1  2  1,650type II     1  2  2 2,700type III    1  2  4  4,350type IV   1  2  2  4 5,400type V  1  2  2  2  5,850type VI 1  2  2  4   8,100type VII 1 2  2  2  2  8,700each necklace of fireballs contains a combination of\r spheres of various strengths. Some traditional combinations, \r designated types i through vii, are detailed above. If the necklace is being worn or carried by a character who fails\r her saving throw against a magical fire attack, the item must make\r a saving throw as well (with a save bonus of +7). If the necklace\r fails to save, all its remaining spheres detonate simultaneously, \r often with regrettable consequences for the wearer. Construction",
   "necklace": "",
-  "10d6": "",
-  "9d6": "",
-  "8d6": "",
-  "7d6": "",
-  "6d6": "",
-  "5d6": "",
-  "4d6": "",
-  "3d6": "",
-  "2d6": "",
+  "10d +6": "",
+  "9d +6": "",
+  "8d +6": "",
+  "7d +6": "",
+  "6d +6": "",
+  "5d +6": "",
+  "4d +6": "",
+  "3d +6": "",
+  "2d +6": "",
   "requirements": "craft wondrous item, fireball ",
-  "cost": "825(type i), 1,350(type ii), 2,175(type iii), 2,700(type iv), 2,925(type v), 4,050(type vi), 4,350(type vii)"
+  "cost": "825(type i), 1,350(type II), 2,175(type III), 2,700(type IV), 2,925(type V), 4,050(type VI), 4,350(type VII)"
   },
-  "talisman (greater)akoben": {
+  "talisman, greater akoben": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -9251,7 +9251,7 @@
   "construction requirements": "craft wondrous item, additional spells (see text)",
   "cost": "2,250(akoben), 6,250(ankh), 3,000(arrow protection), 250(beneficial winds), 3,750(danger sense), 4,500(freedom), 8,400(good fortune), 15,000 (hamsa), 12,000(healing power), 17,500(life's breath), 3,000(pentacle), 6,250(protection from flames), 3,000(scarab), 2,250(sealed summons), 3,000(triskelion), 2,250(warrior's courage)"
   },
-  "talisman (greater)sealed summons": {
+  "talisman, greater sealed summons": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -9273,7 +9273,7 @@
   "construction requirements": "craft wondrous item, fox's cunning , ghost sound , guidance , creator must have 5 ranks in perception",
   "cost": "2,250"
   },
-  "talisman (greater)warrior's courage": {
+  "talisman, greater warrior's courage": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -9427,49 +9427,49 @@
   "construction requirements": "craft wondrous item, create soul gem ",
   "cost": "2,700"
   },
-  "necklace of fireballstype iv": {
+  "necklace of fireballs, type IV": {
   "source": "ultimate equipment pg. 259 , prpg core rulebook pg. 524",
   "aura": "moderate evocation",
   "cl": "10th",
   "slot": "neck",
   "price": "",
   "weight": "1 lb. ",
-  "description": " this item appears to be a string or\r cluster of spherical beads, sometimes\r with the ends tied together to form a\r necklace. (it does not count as an item\r worn around the neck for the purpose\r of determining which of a character's\r worn magic items is effective.) if a\r character holds it, however, all can see the strand as it really\r isa golden chain from which hang a number of golden\r spheres. The spheres are detachable by the wearer (and only\r by the wearer), who can easily hurl one of them up to 70 feet. \r when a sphere arrives at the end of its trajectory, it detonates\r as a fireball spell (reflex dc 14 half). Spheres come in different strengths, ranging from those that\r deal 2d6 points of fire damage to those that deal 10d6. The price\r of a sphere is 150for each die of damage it deals. Necklace 10d6 9d6 8d6 7d6 6d6 5d6 4d6 3d6 2d6 price type i      1  2  1,650type ii     1  2  2 2,700type iii    1  2  4  4,350type iv   1  2  2  4 5,400type v  1  2  2  2  5,850type vi 1  2  2  4   8,100type vii 1 2  2  2  2  8,700each necklace of fireballs contains a combination of\r spheres of various strengths. Some traditional combinations, \r designated types i through vii, are detailed above. If the necklace is being worn or carried by a character who fails\r her saving throw against a magical fire attack, the item must make\r a saving throw as well (with a save bonus of +7). If the necklace\r fails to save, all its remaining spheres detonate simultaneously, \r often with regrettable consequences for the wearer. Construction",
+  "description": " this item appears to be a string or\r cluster of spherical beads, sometimes\r with the ends tied together to form a\r necklace. (it does not count as an item\r worn around the neck for the purpose\r of determining which of a character's\r worn magic items is effective.) if a\r character holds it, however, all can see the strand as it really\r isa golden chain from which hang a number of golden\r spheres. The spheres are detachable by the wearer (and only\r by the wearer), who can easily hurl one of them up to 70 feet. \r when a sphere arrives at the end of its trajectory, it detonates\r as a fireball spell (reflex dc 14 half). Spheres come in different strengths, ranging from those that\r deal 2d6 points of fire damage to those that deal 10d6. The price\r of a sphere is 150for each die of damage it deals. Necklace 10d6 9d6 8d6 7d6 6d6 5d6 4d6 3d6 2d6 price type i      1  2  1,650type II     1  2  2 2,700type III    1  2  4  4,350type IV   1  2  2  4 5,400type V  1  2  2  2  5,850type VI 1  2  2  4   8,100type VII 1 2  2  2  2  8,700each necklace of fireballs contains a combination of\r spheres of various strengths. Some traditional combinations, \r designated types i through vii, are detailed above. If the necklace is being worn or carried by a character who fails\r her saving throw against a magical fire attack, the item must make\r a saving throw as well (with a save bonus of +7). If the necklace\r fails to save, all its remaining spheres detonate simultaneously, \r often with regrettable consequences for the wearer. Construction",
   "necklace": "",
-  "10d6": "",
-  "9d6": "",
-  "8d6": "",
-  "7d6": "",
-  "6d6": "",
-  "5d6": "",
-  "4d6": "",
-  "3d6": "",
-  "2d6": "",
+  "10d +6": "",
+  "9d +6": "",
+  "8d +6": "",
+  "7d +6": "",
+  "6d +6": "",
+  "5d +6": "",
+  "4d +6": "",
+  "3d +6": "",
+  "2d +6": "",
   "requirements": "craft wondrous item, fireball ",
-  "cost": "825(type i), 1,350(type ii), 2,175(type iii), 2,700(type iv), 2,925(type v), 4,050(type vi), 4,350(type vii)"
+  "cost": "825(type i), 1,350(type II), 2,175(type III), 2,700(type IV), 2,925(type V), 4,050(type VI), 4,350(type VII)"
   },
-  "necklace of fireballstype v": {
+  "necklace of fireballs, type V": {
   "source": "ultimate equipment pg. 259 , prpg core rulebook pg. 524",
   "aura": "moderate evocation",
   "cl": "10th",
   "slot": "neck",
   "price": "",
   "weight": "1 lb. ",
-  "description": " this item appears to be a string or\r cluster of spherical beads, sometimes\r with the ends tied together to form a\r necklace. (it does not count as an item\r worn around the neck for the purpose\r of determining which of a character's\r worn magic items is effective.) if a\r character holds it, however, all can see the strand as it really\r isa golden chain from which hang a number of golden\r spheres. The spheres are detachable by the wearer (and only\r by the wearer), who can easily hurl one of them up to 70 feet. \r when a sphere arrives at the end of its trajectory, it detonates\r as a fireball spell (reflex dc 14 half). Spheres come in different strengths, ranging from those that\r deal 2d6 points of fire damage to those that deal 10d6. The price\r of a sphere is 150for each die of damage it deals. Necklace 10d6 9d6 8d6 7d6 6d6 5d6 4d6 3d6 2d6 price type i      1  2  1,650type ii     1  2  2 2,700type iii    1  2  4  4,350type iv   1  2  2  4 5,400type v  1  2  2  2  5,850type vi 1  2  2  4   8,100type vii 1 2  2  2  2  8,700each necklace of fireballs contains a combination of\r spheres of various strengths. Some traditional combinations, \r designated types i through vii, are detailed above. If the necklace is being worn or carried by a character who fails\r her saving throw against a magical fire attack, the item must make\r a saving throw as well (with a save bonus of +7). If the necklace\r fails to save, all its remaining spheres detonate simultaneously, \r often with regrettable consequences for the wearer. Construction",
+  "description": " this item appears to be a string or\r cluster of spherical beads, sometimes\r with the ends tied together to form a\r necklace. (it does not count as an item\r worn around the neck for the purpose\r of determining which of a character's\r worn magic items is effective.) if a\r character holds it, however, all can see the strand as it really\r isa golden chain from which hang a number of golden\r spheres. The spheres are detachable by the wearer (and only\r by the wearer), who can easily hurl one of them up to 70 feet. \r when a sphere arrives at the end of its trajectory, it detonates\r as a fireball spell (reflex dc 14 half). Spheres come in different strengths, ranging from those that\r deal 2d6 points of fire damage to those that deal 10d6. The price\r of a sphere is 150for each die of damage it deals. Necklace 10d6 9d6 8d6 7d6 6d6 5d6 4d6 3d6 2d6 price type i      1  2  1,650type II     1  2  2 2,700type III    1  2  4  4,350type IV   1  2  2  4 5,400type V  1  2  2  2  5,850type VI 1  2  2  4   8,100type VII 1 2  2  2  2  8,700each necklace of fireballs contains a combination of\r spheres of various strengths. Some traditional combinations, \r designated types i through vii, are detailed above. If the necklace is being worn or carried by a character who fails\r her saving throw against a magical fire attack, the item must make\r a saving throw as well (with a save bonus of +7). If the necklace\r fails to save, all its remaining spheres detonate simultaneously, \r often with regrettable consequences for the wearer. Construction",
   "necklace": "",
-  "10d6": "",
-  "9d6": "",
-  "8d6": "",
-  "7d6": "",
-  "6d6": "",
-  "5d6": "",
-  "4d6": "",
-  "3d6": "",
-  "2d6": "",
+  "10d +6": "",
+  "9d +6": "",
+  "8d +6": "",
+  "7d +6": "",
+  "6d +6": "",
+  "5d +6": "",
+  "4d +6": "",
+  "3d +6": "",
+  "2d +6": "",
   "requirements": "craft wondrous item, fireball ",
-  "cost": "825(type i), 1,350(type ii), 2,175(type iii), 2,700(type iv), 2,925(type v), 4,050(type vi), 4,350(type vii)"
+  "cost": "825(type i), 1,350(type II), 2,175(type III), 2,700(type IV), 2,925(type V), 4,050(type VI), 4,350(type VII)"
   },
-  "amulet of bullet protection2": {
+  "amulet of bullet protection +2": {
   "source": "ultimate equipment pg. 254 , ultimate combat pg. 143",
   "aura": "faint abjuration",
   "cl": "5th",
@@ -9491,7 +9491,7 @@
   "construction requirements": "craft wondrous items, remove fear ",
   "cost": "3,000"
   },
-  "talisman (greater)arrow protection": {
+  "talisman, greater arrow protection": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -9546,7 +9546,7 @@
   "construction requirements": "craft wondrous item, inflict light wounds, resistance , creator must be an evil worshiper of an evil deity",
   "cost": "3,000"
   },
-  "talisman (greater)pentacle": {
+  "talisman, greater pentacle": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -9557,7 +9557,7 @@
   "construction requirements": "craft wondrous item, additional spells (see text)",
   "cost": "2,250(akoben), 6,250(ankh), 3,000(arrow protection), 250(beneficial winds), 3,750(danger sense), 4,500(freedom), 8,400(good fortune), 15,000 (hamsa), 12,000(healing power), 17,500(life's breath), 3,000(pentacle), 6,250(protection from flames), 3,000(scarab), 2,250(sealed summons), 3,000(triskelion), 2,250(warrior's courage)"
   },
-  "talisman (greater)scarab": {
+  "talisman, greater scarab": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -9579,7 +9579,7 @@
   "construction requirements": "craft wondrous item, greater heroism ",
   "cost": "3,000"
   },
-  "talisman (greater)triskelion": {
+  "talisman, greater triskelion": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -9634,7 +9634,7 @@
   "construction requirements": "craft wondrous item, charm animal , heroes' feast , neutralize poison , remove disease ",
   "cost": "3,275"
   },
-  "fetish of natural armor2": {
+  "fetish of natural armor +2": {
   "source": "rivers into darkness pg. 15",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -9656,7 +9656,7 @@
   "construction requirements": "craft wondrous item, animate rope ",
   "cost": "3,600"
   },
-  "talisman (greater)danger sense": {
+  "talisman, greater danger sense": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -9700,7 +9700,7 @@
   "construction requirements": "craft wondrous items, imbue with spell ability ",
   "cost": "3,750"
   },
-  "amulet of natural armor2": {
+  "amulet of natural armor +2": {
   "source": "ultimate equipment pg. 256 , prpg core rulebook pg. 500",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -9971,47 +9971,47 @@
   "construction requirements": "craft wondrous item, additional spells (see text), creator must be a shaman with the appropriate spirit",
   "cost": "6,000(battle), 6,000(bones), 5,000(flame), 4,000(heavens), 6,000(life), 5,000(stone), 5,000(waves), 4,000(wind)"
   },
-  "necklace of fireballstype vi": {
+  "necklace of fireballstype VI": {
   "source": "ultimate equipment pg. 259 , prpg core rulebook pg. 524",
   "aura": "moderate evocation",
   "cl": "10th",
   "slot": "neck",
   "price": "",
   "weight": "1 lb. ",
-  "description": " this item appears to be a string or\r cluster of spherical beads, sometimes\r with the ends tied together to form a\r necklace. (it does not count as an item\r worn around the neck for the purpose\r of determining which of a character's\r worn magic items is effective.) if a\r character holds it, however, all can see the strand as it really\r isa golden chain from which hang a number of golden\r spheres. The spheres are detachable by the wearer (and only\r by the wearer), who can easily hurl one of them up to 70 feet. \r when a sphere arrives at the end of its trajectory, it detonates\r as a fireball spell (reflex dc 14 half). Spheres come in different strengths, ranging from those that\r deal 2d6 points of fire damage to those that deal 10d6. The price\r of a sphere is 150for each die of damage it deals. Necklace 10d6 9d6 8d6 7d6 6d6 5d6 4d6 3d6 2d6 price type i      1  2  1,650type ii     1  2  2 2,700type iii    1  2  4  4,350type iv   1  2  2  4 5,400type v  1  2  2  2  5,850type vi 1  2  2  4   8,100type vii 1 2  2  2  2  8,700each necklace of fireballs contains a combination of\r spheres of various strengths. Some traditional combinations, \r designated types i through vii, are detailed above. If the necklace is being worn or carried by a character who fails\r her saving throw against a magical fire attack, the item must make\r a saving throw as well (with a save bonus of +7). If the necklace\r fails to save, all its remaining spheres detonate simultaneously, \r often with regrettable consequences for the wearer. Construction",
+  "description": " this item appears to be a string or\r cluster of spherical beads, sometimes\r with the ends tied together to form a\r necklace. (it does not count as an item\r worn around the neck for the purpose\r of determining which of a character's\r worn magic items is effective.) if a\r character holds it, however, all can see the strand as it really\r isa golden chain from which hang a number of golden\r spheres. The spheres are detachable by the wearer (and only\r by the wearer), who can easily hurl one of them up to 70 feet. \r when a sphere arrives at the end of its trajectory, it detonates\r as a fireball spell (reflex dc 14 half). Spheres come in different strengths, ranging from those that\r deal 2d6 points of fire damage to those that deal 10d6. The price\r of a sphere is 150for each die of damage it deals. Necklace 10d6 9d6 8d6 7d6 6d6 5d6 4d6 3d6 2d6 price type i      1  2  1,650type II     1  2  2 2,700type III    1  2  4  4,350type IV   1  2  2  4 5,400type V  1  2  2  2  5,850type VI 1  2  2  4   8,100type VII 1 2  2  2  2  8,700each necklace of fireballs contains a combination of\r spheres of various strengths. Some traditional combinations, \r designated types i through vii, are detailed above. If the necklace is being worn or carried by a character who fails\r her saving throw against a magical fire attack, the item must make\r a saving throw as well (with a save bonus of +7). If the necklace\r fails to save, all its remaining spheres detonate simultaneously, \r often with regrettable consequences for the wearer. Construction",
   "necklace": "",
-  "10d6": "",
-  "9d6": "",
-  "8d6": "",
-  "7d6": "",
-  "6d6": "",
-  "5d6": "",
-  "4d6": "",
-  "3d6": "",
-  "2d6": "",
+  "10d +6": "",
+  "9d +6": "",
+  "8d +6": "",
+  "7d +6": "",
+  "6d +6": "",
+  "5d +6": "",
+  "4d +6": "",
+  "3d +6": "",
+  "2d +6": "",
   "requirements": "craft wondrous item, fireball ",
-  "cost": "825(type i), 1,350(type ii), 2,175(type iii), 2,700(type iv), 2,925(type v), 4,050(type vi), 4,350(type vii)"
+  "cost": "825(type i), 1,350(type II), 2,175(type III), 2,700(type IV), 2,925(type V), 4,050(type VI), 4,350(type VII)"
   },
-  "necklace of fireballstype vii": {
+  "necklace of fireballstype VII": {
   "source": "ultimate equipment pg. 259 , prpg core rulebook pg. 524",
   "aura": "moderate evocation",
   "cl": "10th",
   "slot": "neck",
   "price": "",
   "weight": "1 lb. ",
-  "description": " this item appears to be a string or\r cluster of spherical beads, sometimes\r with the ends tied together to form a\r necklace. (it does not count as an item\r worn around the neck for the purpose\r of determining which of a character's\r worn magic items is effective.) if a\r character holds it, however, all can see the strand as it really\r isa golden chain from which hang a number of golden\r spheres. The spheres are detachable by the wearer (and only\r by the wearer), who can easily hurl one of them up to 70 feet. \r when a sphere arrives at the end of its trajectory, it detonates\r as a fireball spell (reflex dc 14 half). Spheres come in different strengths, ranging from those that\r deal 2d6 points of fire damage to those that deal 10d6. The price\r of a sphere is 150for each die of damage it deals. Necklace 10d6 9d6 8d6 7d6 6d6 5d6 4d6 3d6 2d6 price type i      1  2  1,650type ii     1  2  2 2,700type iii    1  2  4  4,350type iv   1  2  2  4 5,400type v  1  2  2  2  5,850type vi 1  2  2  4   8,100type vii 1 2  2  2  2  8,700each necklace of fireballs contains a combination of\r spheres of various strengths. Some traditional combinations, \r designated types i through vii, are detailed above. If the necklace is being worn or carried by a character who fails\r her saving throw against a magical fire attack, the item must make\r a saving throw as well (with a save bonus of +7). If the necklace\r fails to save, all its remaining spheres detonate simultaneously, \r often with regrettable consequences for the wearer. Construction",
+  "description": " this item appears to be a string or\r cluster of spherical beads, sometimes\r with the ends tied together to form a\r necklace. (it does not count as an item\r worn around the neck for the purpose\r of determining which of a character's\r worn magic items is effective.) if a\r character holds it, however, all can see the strand as it really\r isa golden chain from which hang a number of golden\r spheres. The spheres are detachable by the wearer (and only\r by the wearer), who can easily hurl one of them up to 70 feet. \r when a sphere arrives at the end of its trajectory, it detonates\r as a fireball spell (reflex dc 14 half). Spheres come in different strengths, ranging from those that\r deal 2d6 points of fire damage to those that deal 10d6. The price\r of a sphere is 150for each die of damage it deals. Necklace 10d6 9d6 8d6 7d6 6d6 5d6 4d6 3d6 2d6 price type i      1  2  1,650type II     1  2  2 2,700type III    1  2  4  4,350type IV   1  2  2  4 5,400type V  1  2  2  2  5,850type VI 1  2  2  4   8,100type VII 1 2  2  2  2  8,700each necklace of fireballs contains a combination of\r spheres of various strengths. Some traditional combinations, \r designated types i through vii, are detailed above. If the necklace is being worn or carried by a character who fails\r her saving throw against a magical fire attack, the item must make\r a saving throw as well (with a save bonus of +7). If the necklace\r fails to save, all its remaining spheres detonate simultaneously, \r often with regrettable consequences for the wearer. Construction",
   "necklace": "",
-  "10d6": "",
-  "9d6": "",
-  "8d6": "",
-  "7d6": "",
-  "6d6": "",
-  "5d6": "",
-  "4d6": "",
-  "3d6": "",
-  "2d6": "",
+  "10d +6": "",
+  "9d +6": "",
+  "8d +6": "",
+  "7d +6": "",
+  "6d +6": "",
+  "5d +6": "",
+  "4d +6": "",
+  "3d +6": "",
+  "2d +6": "",
   "requirements": "craft wondrous item, fireball ",
-  "cost": "825(type i), 1,350(type ii), 2,175(type iii), 2,700(type iv), 2,925(type v), 4,050(type vi), 4,350(type vii)"
+  "cost": "825(type i), 1,350(type II), 2,175(type III), 2,700(type IV), 2,925(type V), 4,050(type VI), 4,350(type VII)"
   },
   "amulet of hidden light": {
   "source": "advanced race guide pg. 112",
@@ -10035,7 +10035,7 @@
   "construction requirements": "craft wondrous item, creator must have a ki pool",
   "cost": "4,500"
   },
-  "best friend pendant,  greater": {
+  "best friend pendant, greater": {
   "source": "ultimate intrigue pg. 243",
   "aura": "moderate conjuration and transmutation",
   "cl": "7th",
@@ -10079,7 +10079,7 @@
   "construction requirements": "craft wondrous item, bestow curse , doom , remove curse ",
   "cost": "4,500"
   },
-  "talisman (greater)freedom": {
+  "talisman, greater freedom": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -10704,7 +10704,7 @@
   "requirements": "craft wondrous item, additional spells (see text), creator must be a sorcerer of the appropriate bloodline",
   "cost": "7,500(aberrant), 6,000(abyssal), 6,000(accursed), 6,000(celestial), 5,000(destined), 6,000(draconic), 6,000(elemental), 5,000(fey), 6,000(infernal), 6,000(undead)"
   },
-  "talisman (greater)ankh": {
+  "talisman, greater ankh": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -10715,7 +10715,7 @@
   "construction requirements": "craft wondrous item, additional spells (see text)",
   "cost": "2,250(akoben), 6,250(ankh), 3,000(arrow protection), 250(beneficial winds), 3,750(danger sense), 4,500(freedom), 8,400(good fortune), 15,000 (hamsa), 12,000(healing power), 17,500(life's breath), 3,000(pentacle), 6,250(protection from flames), 3,000(scarab), 2,250(sealed summons), 3,000(triskelion), 2,250(warrior's courage)"
   },
-  "talisman (greater)protection from flames": {
+  "talisman, greater protection from flames": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -10748,7 +10748,7 @@
   "construction requirements": "craft wondrous item, creator must have 5 ranks in knowledge (geography), find the path , know direction , tireless pursuers ",
   "cost": "6,500"
   },
-  "amulet of bullet protection3": {
+  "amulet of bullet protection +3": {
   "source": "ultimate equipment pg. 254 , ultimate combat pg. 143",
   "aura": "faint abjuration",
   "cl": "5th",
@@ -10770,7 +10770,7 @@
   "construction requirements": "craft wondrous item, shield other or unwilling shield apg ",
   "cost": "7,000"
   },
-  "dire collar,  greater": {
+  "dire collar, greater": {
   "source": "advanced class guide pg. 229",
   "aura": "moderate transmutation",
   "cl": "9th",
@@ -10851,7 +10851,7 @@
   "construction requirements": "craft wondrous item, heal ",
   "cost": "7,500"
   },
-  "amulet of mighty fists2": {
+  "amulet of mighty fists +2": {
   "source": "ultimate equipment pg. 255 , prpg core rulebook pg. 496",
   "aura": "faint evocation",
   "cl": "5th",
@@ -10895,7 +10895,7 @@
   "construction requirements": "craft wondrous item, geas/quest , suffocation apg ",
   "cost": "8,000"
   },
-  "fetish of natural armor3": {
+  "fetish of natural armor +3": {
   "source": "rivers into darkness pg. 15",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -10928,7 +10928,7 @@
   "construction requirements": "craft wondrous item, resist energy , shocking grasp ",
   "cost": "8,400"
   },
-  "talisman (greater)good fortune": {
+  "talisman, greater good fortune": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -10961,7 +10961,7 @@
   "construction requirements": "craft wondrous item, bless water ",
   "cost": "8,750"
   },
-  "amulet of natural armor3": {
+  "amulet of natural armor +3": {
   "source": "ultimate equipment pg. 256 , prpg core rulebook pg. 500",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -11038,7 +11038,7 @@
   "construction requirements": "craft wondrous item, spell penetration, magic weapon , jump ",
   "cost": "10,000"
   },
-  "halflight charm (greater)": {
+  "halflight charm, greater": {
   "source": "pathfinder #63: the asylum stone pg. 58",
   "aura": "moderate conjuration",
   "cl": "9th",
@@ -11104,7 +11104,7 @@
   "construction requirements": "craft wondrous item, dispel evil , remove blindness/deafness , resistance ",
   "cost": "11,500"
   },
-  "amulet of bullet protection4": {
+  "amulet of bullet protection +4": {
   "source": "ultimate equipment pg. 254 , ultimate combat pg. 143",
   "aura": "faint abjuration",
   "cl": "5th",
@@ -11137,7 +11137,7 @@
   "construction requirements": "craft wondrous item, life bubble apg , reduce person ",
   "cost": "12,000"
   },
-  "talisman (greater)healing power": {
+  "talisman, greater healing power": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -11214,7 +11214,7 @@
   "construction requirements": "craft wondrous item, modify memory , nightmare , soul bind ",
   "cost": "14,400"
   },
-  "talisman (greater)hamsa": {
+  "talisman, greater hamsa": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -11225,7 +11225,7 @@
   "construction requirements": "craft wondrous item, additional spells (see text)",
   "cost": "2,250(akoben), 6,250(ankh), 3,000(arrow protection), 250(beneficial winds), 3,750(danger sense), 4,500(freedom), 8,400(good fortune), 15,000 (hamsa), 12,000(healing power), 17,500(life's breath), 3,000(pentacle), 6,250(protection from flames), 3,000(scarab), 2,250(sealed summons), 3,000(triskelion), 2,250(warrior's courage)"
   },
-  "amulet of natural armor4": {
+  "amulet of natural armor +4": {
   "source": "ultimate equipment pg. 256 , prpg core rulebook pg. 500",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -11280,7 +11280,7 @@
   "construction requirements": "craft wondrous item, nondetection ",
   "cost": "17,500"
   },
-  "talisman (greater)life's breath": {
+  "talisman, greater life's breath": {
   "source": "occult adventures pg. 263",
   "aura": "varies",
   "cl": "varies",
@@ -11302,7 +11302,7 @@
   "construction requirements": "craft wondrous item, mythic crafter, magic weapon , plane shift ",
   "cost": "17,750"
   },
-  "amulet of mighty fists3": {
+  "amulet of mighty fists +3": {
   "source": "ultimate equipment pg. 255 , prpg core rulebook pg. 496",
   "aura": "faint evocation",
   "cl": "5th",
@@ -11335,7 +11335,7 @@
   "construction requirements": "craft wondrous item, imprisonment , shield other , 6 willing or helpless pixies",
   "cost": "18,000"
   },
-  "amulet of bullet protection5": {
+  "amulet of bullet protection +5": {
   "source": "ultimate equipment pg. 254 , ultimate combat pg. 143",
   "aura": "faint abjuration",
   "cl": "5th",
@@ -11401,7 +11401,7 @@
   "construction requirements": "craft wondrous item, craft (leather) 4 ranks, alter self , hold person , transformation , coven hex",
   "cost": "23,000"
   },
-  "amulet of natural armor5": {
+  "amulet of natural armor +5": {
   "source": "ultimate equipment pg. 256 , prpg core rulebook pg. 500",
   "aura": "faint transmutation",
   "cl": "5th",
@@ -11467,7 +11467,7 @@
   "construction requirements": "craft wondrous item, mythic crafter, speak with animals , speak with plants , tongues ",
   "cost": "30,000"
   },
-  "amulet of mighty fists4": {
+  "amulet of mighty fists +4": {
   "source": "ultimate equipment pg. 255 , prpg core rulebook pg. 496",
   "aura": "faint evocation",
   "cl": "5th",
@@ -11519,11 +11519,11 @@
   "price": "96,000",
   "weight": " ",
   "description": " this turbid blue, teardrop-shaped devil talisman binds a particular devil to a specific location, trapping the fiend in a manner similar to planar binding but without the need for a magic circle and with no chance of the devil escaping. Once bound, the devil cannot move farther than 100 feet from the location it is bound to, and the devil is considered helpful toward the talisman's wearer for the purposes of any request related to the location it is bound to (thus negating the need for an opposed charisma check to convince the bound devil to perform such a service). A creature must be wearing the phlegmatic talisman to make requests of the bound devil. When within 100 feet of each other, the wearer of the phlegmatic talisman and the devil bound to it cannot attack or take offensive actions against one another, even if magically influenced (such as by charm monster or dominate monster). In addition, when within 100 feet of each other, the wearer and the bound devil each gain a +4 profane bonus on will saves against spells and effects that possess or exercise mental control over a creature (including effects with the charm or compulsion descriptors). A phlegmatic talisman is crafted to bind a specific devil, and is not capable of binding any other creature. Any mortal who meets the construction requirements can craft a phlegmatic talisman as long as she knows the true name of the devil to be bound to the talisman, which must be spoken during the item's creation. In order to finally bind the devil to the talisman, the wearer of the talisman must touch the talisman to the devil in the location the devil will be bound to (so the wearer and the devil must both be physically present in the binding location) and speak the devil's true name. If the devil bound to a phlegmatic talisman is destroyed on the same plane as the talisman, the talisman breaks and loses its magic. Conversely, if the phlegmatic talisman binding the devil is destroyed, the devil is freed. Archbaron fex's phlegmatic talisman is tied to the heresy devil visperthul (see page 53) and was crafted to bind visperthul to the inferno gate (see area",
-  "q16": "). ",
+  "q1 +6": "). ",
   "construction requirements": "craft wondrous item, planar binding , protection from evil or protection from law , must know the true name of the devil to be conjured and bound",
   "cost": "48,000"
   },
-  "amulet of mighty fists5": {
+  "amulet of mighty fists +5": {
   "source": "ultimate equipment pg. 255 , prpg core rulebook pg. 496",
   "aura": "faint evocation",
   "cl": "5th",
@@ -11613,7 +11613,7 @@
   "construction requirements": "craft wondrous item, disguise self ",
   "cost": "450"
   },
-  "cloak of resistance1": {
+  "cloak of resistance +1": {
   "source": "ultimate equipment pg. 264 , prpg core rulebook pg. 507",
   "aura": "faint abjuration",
   "cl": "5th",
@@ -11657,7 +11657,7 @@
   "construction requirements": "craft wondrous item, craft magic arms and armor, shield ",
   "cost": "500"
   },
-  "pauldrons of unflinching fortitude 1 fortitude": {
+  "pauldrons of unflinching fortitude +1": {
   "source": "mythic adventures pg. 155",
   "aura": "moderate abjuration",
   "cl": "7th",
@@ -11668,7 +11668,7 @@
   "construction requirements": "craft wondrous item, mythic crafter, resistance , the creator must have the mythic saves ability",
   "cost": "750 (+1), 3,000(+2), 6,750(+3), 12,000(+4), 18,750(+5)"
   },
-  "cloak of quick reflexes 1 reflex": {
+  "cloak of quick reflexes +1": {
   "source": "mythic adventures pg. 149",
   "aura": "moderate abjuration",
   "cl": "7th",
@@ -11679,7 +11679,7 @@
   "construction requirements": "craft wondrous item, mythic crafter, resistance , the creator must have the mythic saves ability",
   "cost": "750 (+1), 3,000(+2), 6,750(+3), 12,000(+4), 18,750(+5)"
   },
-  "cape of free will 1 will": {
+  "cape of free will +1": {
   "source": "mythic adventures pg. 148",
   "aura": "moderate abjuration",
   "cl": "7th",
@@ -11967,7 +11967,7 @@
   "construction requirements": "craft wondrous item, anticipate peril um , resistance ",
   "cost": "2,000(+1), 8,000(+2), 18,500(+3), 32,000(+4), 50,000(+5)"
   },
-  "cloak of resistance2": {
+  "cloak of resistance +2": {
   "source": "ultimate equipment pg. 264 , prpg core rulebook pg. 507",
   "aura": "faint abjuration",
   "cl": "5th",
@@ -12077,7 +12077,7 @@
   "construction requirements": "craft wondrous item, endure elements , resistance ",
   "cost": "2,875"
   },
-  "pauldrons of unflinching fortitude 2fortitude": {
+  "pauldrons of unflinching fortitude +2": {
   "source": "mythic adventures pg. 155",
   "aura": "moderate abjuration",
   "cl": "7th",
@@ -12088,7 +12088,7 @@
   "construction requirements": "craft wondrous item, mythic crafter, resistance , the creator must have the mythic saves ability",
   "cost": "750 (+1), 3,000(+2), 6,750(+3), 12,000(+4), 18,750(+5)"
   },
-  "cloak of quick reflexes 2reflex": {
+  "cloak of quick reflexes +2": {
   "source": "mythic adventures pg. 149",
   "aura": "moderate abjuration",
   "cl": "7th",
@@ -12099,7 +12099,7 @@
   "construction requirements": "craft wondrous item, mythic crafter, resistance , the creator must have the mythic saves ability",
   "cost": "750 (+1), 3,000(+2), 6,750(+3), 12,000(+4), 18,750(+5)"
   },
-  "cape of free will 2will": {
+  "cape of free will +2": {
   "source": "mythic adventures pg. 148",
   "aura": "moderate abjuration",
   "cl": "7th",
@@ -12275,7 +12275,7 @@
   "construction requirements": "craft wondrous item , speak with animals , summon swarm ",
   "cost": "4,000"
   },
-  "cloak of resistance3": {
+  "cloak of resistance +3": {
   "source": "ultimate equipment pg. 264 , prpg core rulebook pg. 507",
   "aura": "faint abjuration",
   "cl": "5th",
@@ -12374,7 +12374,7 @@
   "construction requirements": "craft wondrous item, bull's strength ",
   "cost": "5,000"
   },
-  "stone cloak (minor)": {
+  "stone cloak, minor": {
   "source": "ultimate equipment pg. 269",
   "aura": "faint abjuration",
   "cl": "5th",
@@ -12495,7 +12495,7 @@
   "construction requirements": "craft wondrous item, contagion ",
   "cost": "6,700"
   },
-  "pauldrons of unflinching fortitude 3 fortitude": {
+  "pauldrons of unflinching fortitude +3": {
   "source": "mythic adventures pg. 155",
   "aura": "moderate abjuration",
   "cl": "7th",
@@ -12506,7 +12506,7 @@
   "construction requirements": "craft wondrous item, mythic crafter, resistance , the creator must have the mythic saves ability",
   "cost": "750 (+1), 3,000(+2), 6,750(+3), 12,000(+4), 18,750(+5)"
   },
-  "cloak of quick reflexes 3 reflex": {
+  "cloak of quick reflexes +3": {
   "source": "mythic adventures pg. 149",
   "aura": "moderate abjuration",
   "cl": "7th",
@@ -12517,7 +12517,7 @@
   "construction requirements": "craft wondrous item, mythic crafter, resistance , the creator must have the mythic saves ability",
   "cost": "750 (+1), 3,000(+2), 6,750(+3), 12,000(+4), 18,750(+5)"
   },
-  "cape of free will 3 will": {
+  "cape of free will +3": {
   "source": "mythic adventures pg. 148",
   "aura": "moderate abjuration",
   "cl": "7th",
@@ -12668,7 +12668,7 @@
   "construction requirements": "craft wondrous item, anticipate peril um , resistance ",
   "cost": "2,000(+1), 8,000(+2), 18,500(+3), 32,000(+4), 50,000(+5)"
   },
-  "cloak of resistance4": {
+  "cloak of resistance +4": {
   "source": "ultimate equipment pg. 264 , prpg core rulebook pg. 507",
   "aura": "faint abjuration",
   "cl": "5th",
@@ -12826,7 +12826,7 @@
   "construction requirements": "craft wondrous item, blade barrier ; cost 10,000",
   "cost": "10,000"
   },
-  "stone cloak (major)": {
+  "stone cloak, major": {
   "source": "ultimate equipment pg. 268",
   "aura": "moderate abjuration",
   "cl": "8th",
@@ -12870,7 +12870,7 @@
   "construction requirements": "craft wondrous item, beast shape iii , burrow um ",
   "cost": "11,000"
   },
-  "wings of flying (lesser)": {
+  "wings of flying, lesser": {
   "source": "pathfinder #63: the asylum stone pg. 59",
   "aura": "moderate transmutation",
   "cl": "10th",
@@ -12881,7 +12881,7 @@
   "construction requirements": "craft wondrous item, fly ",
   "cost": "11,000"
   },
-  "pauldrons of unflinching fortitude 4 fortitude": {
+  "pauldrons of unflinching fortitude +4": {
   "source": "mythic adventures pg. 155",
   "aura": "moderate abjuration",
   "cl": "7th",
@@ -12892,7 +12892,7 @@
   "construction requirements": "craft wondrous item, mythic crafter, resistance , the creator must have the mythic saves ability",
   "cost": "750 (+1), 3,000(+2), 6,750(+3), 12,000(+4), 18,750(+5)"
   },
-  "cloak of quick reflexes 4 reflex": {
+  "cloak of quick reflexes +4": {
   "source": "mythic adventures pg. 149",
   "aura": "moderate abjuration",
   "cl": "7th",
@@ -12903,7 +12903,7 @@
   "construction requirements": "craft wondrous item, mythic crafter, resistance , the creator must have the mythic saves ability",
   "cost": "750 (+1), 3,000(+2), 6,750(+3), 12,000(+4), 18,750(+5)"
   },
-  "cape of free will 4 will": {
+  "cape of free will +4": {
   "source": "mythic adventures pg. 148",
   "aura": "moderate abjuration",
   "cl": "7th",
@@ -12925,7 +12925,7 @@
   "construction requirements": "craft wondrous item, beast shape i , speak with animals , creator must be a skinwalker",
   "cost": "12,000(boar, rat, wolf), 20,000(brown bear, bat, crocodile, shark, tiger)"
   },
-  "cloak of displacement (minor)": {
+  "cloak of displacement, minor": {
   "source": "ultimate equipment pg. 262 , prpg core rulebook pg. 507",
   "aura": "faint illusion",
   "cl": "3rd",
@@ -12947,7 +12947,7 @@
   "construction requirements": "craft wondrous item, resistance , creator's caster level must be at least three times the cloak's bonus",
   "cost": "1,350(+1), 5,400(+2), 12,150(+3), 21,600(+4), 33,750(+5)"
   },
-  "cloak of resistance5": {
+  "cloak of resistance +5": {
   "source": "ultimate equipment pg. 264 , prpg core rulebook pg. 507",
   "aura": "faint abjuration",
   "cl": "5th",
@@ -13057,7 +13057,7 @@
   "construction requirements": "craft wondrous item, anticipate peril um , resistance ",
   "cost": "2,000(+1), 8,000(+2), 18,500(+3), 32,000(+4), 50,000(+5)"
   },
-  "pauldrons of unflinching fortitude 5 fortitude": {
+  "pauldrons of unflinching fortitude +5": {
   "source": "mythic adventures pg. 155",
   "aura": "moderate abjuration",
   "cl": "7th",
@@ -13068,7 +13068,7 @@
   "construction requirements": "craft wondrous item, mythic crafter, resistance , the creator must have the mythic saves ability",
   "cost": "750 (+1), 3,000(+2), 6,750(+3), 12,000(+4), 18,750(+5)"
   },
-  "cloak of quick reflexes 5 reflex": {
+  "cloak of quick reflexes +5": {
   "source": "mythic adventures pg. 149",
   "aura": "moderate abjuration",
   "cl": "7th",
@@ -13079,7 +13079,7 @@
   "construction requirements": "craft wondrous item, mythic crafter, resistance , the creator must have the mythic saves ability",
   "cost": "750 (+1), 3,000(+2), 6,750(+3), 12,000(+4), 18,750(+5)"
   },
-  "cape of free will 5 will": {
+  "cape of free will +5": {
   "source": "mythic adventures pg. 148",
   "aura": "moderate abjuration",
   "cl": "7th",
@@ -13156,7 +13156,7 @@
   "construction requirements": "craft wondrous item, death ward ",
   "cost": "24,000"
   },
-  "cloak of displacement (major)": {
+  "cloak of displacement, major": {
   "source": "ultimate equipment pg. 262 , prpg core rulebook pg. 506",
   "aura": "moderate illusion",
   "cl": "7th",
@@ -13323,7 +13323,7 @@
   "construction requirements": "craft wondrous item , status ",
   "cost": "375"
   },
-  "bracers of armor1": {
+  "bracers of armor +1": {
   "source": "ultimate equipment pg. 271 , prpg core rulebook pg. 504",
   "aura": "moderate conjuration",
   "cl": "7th",
@@ -13345,14 +13345,14 @@
   "construction requirements": "craft wondrous item , detect thoughts ",
   "cost": "500"
   },
-  "quickmetal bracerssilver": {
+  "quickmetal bracers, silver": {
   "source": "adventurer's armory 2 pg. 23",
   "aura": "moderate transmutation",
   "cl": "9th",
   "slot": "wrists",
   "price": "1,000(silver), 2,000(cold iron), 5,000(adamantine)",
   "weight": "1 lb. ",
-  "description": " once per day when a user wearing both these bracers speaks a command word, the metal turns entirely liquid and swims over the wearer's hands to cover her weapons. The user can cover a two-handed melee weapon or up to two one-handed or light melee weapons. For the next 10 rounds, the affected weapons can overcome damage reduction as though the weapons were made of adamantine, cold iron, or silver (as determined by the quickmetal bracers' type). The heavy, shifting metal coating affects the balance of manufactured weapons, imposing a 2 penalty on attack rolls. Improvised weapons, however, are already unwieldy, and the metal coating doesn't significantly affect their balance. If the wielder lets go of a weapon affected by the bracers, the liquid metal immediately turns back into a solid metal bracer or bracers, in the case of a two-handed weaponreappearing on the user's wrists. The bracers cannot therefore affect thrown weapons or ranged weapon ammunition. ",
+  "description": " once per day when a user wearing both these bracers speaks a command word, the metal turns entirely liquid and swims over the wearer's hands to cover her weapons. The user can cover a two-handed melee weapon or up to two one-handed or light melee weapons. For the next 10 rounds, the affected weapons can overcome damage reduction as though the weapons were made of adamantine, cold iron, or silver (as determined by the quickmetal bracers, ' type). The heavy, shifting metal coating affects the balance of manufactured weapons, imposing a 2 penalty on attack rolls. Improvised weapons, however, are already unwieldy, and the metal coating doesn't significantly affect their balance. If the wielder lets go of a weapon affected by the bracers, the liquid metal immediately turns back into a solid metal bracer or bracers, in the case of a two-handed weaponreappearing on the user's wrists. The bracers cannot therefore affect thrown weapons or ranged weapon ammunition. ",
   "construction requirements": "craft wondrous item, major creation ",
   "cost": "500(silver), 1,000(cold iron), 2,500(adamantine)"
   },
@@ -13389,14 +13389,14 @@
   "construction requirements": "craft wondrous item, aid ",
   "cost": "1,000"
   },
-  "quickmetal bracerscold iron": {
+  "quickmetal bracers, cold iron": {
   "source": "adventurer's armory 2 pg. 23",
   "aura": "moderate transmutation",
   "cl": "9th",
   "slot": "wrists",
   "price": "1,000(silver), 2,000(cold iron), 5,000(adamantine)",
   "weight": "1 lb. ",
-  "description": " once per day when a user wearing both these bracers speaks a command word, the metal turns entirely liquid and swims over the wearer's hands to cover her weapons. The user can cover a two-handed melee weapon or up to two one-handed or light melee weapons. For the next 10 rounds, the affected weapons can overcome damage reduction as though the weapons were made of adamantine, cold iron, or silver (as determined by the quickmetal bracers' type). The heavy, shifting metal coating affects the balance of manufactured weapons, imposing a 2 penalty on attack rolls. Improvised weapons, however, are already unwieldy, and the metal coating doesn't significantly affect their balance. If the wielder lets go of a weapon affected by the bracers, the liquid metal immediately turns back into a solid metal bracer or bracers, in the case of a two-handed weaponreappearing on the user's wrists. The bracers cannot therefore affect thrown weapons or ranged weapon ammunition. ",
+  "description": " once per day when a user wearing both these bracers speaks a command word, the metal turns entirely liquid and swims over the wearer's hands to cover her weapons. The user can cover a two-handed melee weapon or up to two one-handed or light melee weapons. For the next 10 rounds, the affected weapons can overcome damage reduction as though the weapons were made of adamantine, cold iron, or silver (as determined by the quickmetal bracers, ' type). The heavy, shifting metal coating affects the balance of manufactured weapons, imposing a 2 penalty on attack rolls. Improvised weapons, however, are already unwieldy, and the metal coating doesn't significantly affect their balance. If the wielder lets go of a weapon affected by the bracers, the liquid metal immediately turns back into a solid metal bracer or bracers, in the case of a two-handed weaponreappearing on the user's wrists. The bracers cannot therefore affect thrown weapons or ranged weapon ammunition. ",
   "construction requirements": "craft wondrous item, major creation ",
   "cost": "500(silver), 1,000(cold iron), 2,500(adamantine)"
   },
@@ -13444,7 +13444,7 @@
   "construction requirements": "craft wondrous item, command ",
   "cost": "1,930"
   },
-  "bracers of armor2": {
+  "bracers of armor +2": {
   "source": "ultimate equipment pg. 271 , prpg core rulebook pg. 504",
   "aura": "moderate conjuration",
   "cl": "7th",
@@ -13477,14 +13477,14 @@
   "construction requirements": "craft wondrous item, shield of faith , creator must be an inquisitor\r with access to the protection judgment",
   "cost": "2,000"
   },
-  "quickmetal bracersadamantine": {
+  "quickmetal bracers, adamantine": {
   "source": "adventurer's armory 2 pg. 23",
   "aura": "moderate transmutation",
   "cl": "9th",
   "slot": "wrists",
   "price": "1,000(silver), 2,000(cold iron), 5,000(adamantine)",
   "weight": "1 lb. ",
-  "description": " once per day when a user wearing both these bracers speaks a command word, the metal turns entirely liquid and swims over the wearer's hands to cover her weapons. The user can cover a two-handed melee weapon or up to two one-handed or light melee weapons. For the next 10 rounds, the affected weapons can overcome damage reduction as though the weapons were made of adamantine, cold iron, or silver (as determined by the quickmetal bracers' type). The heavy, shifting metal coating affects the balance of manufactured weapons, imposing a 2 penalty on attack rolls. Improvised weapons, however, are already unwieldy, and the metal coating doesn't significantly affect their balance. If the wielder lets go of a weapon affected by the bracers, the liquid metal immediately turns back into a solid metal bracer or bracers, in the case of a two-handed weaponreappearing on the user's wrists. The bracers cannot therefore affect thrown weapons or ranged weapon ammunition. ",
+  "description": " once per day when a user wearing both these bracers speaks a command word, the metal turns entirely liquid and swims over the wearer's hands to cover her weapons. The user can cover a two-handed melee weapon or up to two one-handed or light melee weapons. For the next 10 rounds, the affected weapons can overcome damage reduction as though the weapons were made of adamantine, cold iron, or silver (as determined by the quickmetal bracers, ' type). The heavy, shifting metal coating affects the balance of manufactured weapons, imposing a 2 penalty on attack rolls. Improvised weapons, however, are already unwieldy, and the metal coating doesn't significantly affect their balance. If the wielder lets go of a weapon affected by the bracers, the liquid metal immediately turns back into a solid metal bracer or bracers, in the case of a two-handed weaponreappearing on the user's wrists. The bracers cannot therefore affect thrown weapons or ranged weapon ammunition. ",
   "construction requirements": "craft wondrous item, major creation ",
   "cost": "500(silver), 1,000(cold iron), 2,500(adamantine)"
   },
@@ -13499,7 +13499,7 @@
   "construction requirements": "craft wondrous item, battlemind link um ",
   "cost": "2,500"
   },
-  "bracers of archery (lesser)": {
+  "bracers of archery, lesser": {
   "source": "ultimate equipment pg. 271 , prpg core rulebook pg. 504",
   "aura": "faint transmutation",
   "cl": "4th",
@@ -13675,7 +13675,7 @@
   "construction requirements": "craft wondrous item, drain poison , neutralize poison ",
   "cost": "4,250"
   },
-  "bracers of armor3": {
+  "bracers of armor +3": {
   "source": "ultimate equipment pg. 271 , prpg core rulebook pg. 504",
   "aura": "moderate conjuration",
   "cl": "7th",
@@ -13785,7 +13785,7 @@
   "construction requirements": "craft wondrous item, craft magic arms and armor, protection\r from arrows , true strike ",
   "cost": "6,950"
   },
-  "vambraces of the genie efreeti": {
+  "vambraces of the genie, efreeti": {
   "source": "ultimate equipment pg. 275",
   "aura": "faint evocation",
   "cl": "5th",
@@ -13862,7 +13862,7 @@
   "construction requirements": "craft wondrous item, breath of life ",
   "cost": "7,875"
   },
-  "bracers of armor4": {
+  "bracers of armor +4": {
   "source": "ultimate equipment pg. 271 , prpg core rulebook pg. 504",
   "aura": "moderate conjuration",
   "cl": "7th",
@@ -13928,7 +13928,7 @@
   "construction requirements": "craft wondrous item, plane shift ",
   "cost": "9,000"
   },
-  "vambraces of the genie djinni": {
+  "vambraces of the genie, djinni": {
   "source": "ultimate equipment pg. 275",
   "aura": "faint evocation",
   "cl": "5th",
@@ -13939,7 +13939,7 @@
   "construction requirements": "craft wondrous item, protection from elements and the three spells the wearer can use",
   "cost": "7,200(efreeti), 9,450(djinni), 9,450(marid), 9,450(shaitan)"
   },
-  "vambraces of the genie marid": {
+  "vambraces of the genie, marid": {
   "source": "ultimate equipment pg. 275",
   "aura": "faint evocation",
   "cl": "5th",
@@ -13950,7 +13950,7 @@
   "construction requirements": "craft wondrous item, protection from elements and the three spells the wearer can use",
   "cost": "7,200(efreeti), 9,450(djinni), 9,450(marid), 9,450(shaitan)"
   },
-  "vambraces of the genie shaitan": {
+  "vambraces of the genie, shaitan": {
   "source": "ultimate equipment pg. 275",
   "aura": "faint evocation",
   "cl": "5th",
@@ -13983,7 +13983,7 @@
   "construction requirements": "combat casting, craft wondrous item, spectral hand ",
   "cost": "10,000"
   },
-  "bracers of armor5": {
+  "bracers of armor +5": {
   "source": "ultimate equipment pg. 271 , prpg core rulebook pg. 504",
   "aura": "moderate conjuration",
   "cl": "7th",
@@ -13994,7 +13994,7 @@
   "construction requirements": "craft wondrous item, mage armor , creator's caster level must\r be at least two times that of the bonus placed on the bracers, \r plus any requirements of the armor special abilities",
   "cost": "500(+1), 2,000(+2), 4,500(+3), 8,000(+4), 12,500(+5), 18,000(+6), 24,500(+7), 32,000(+8)"
   },
-  "bracers of archery (greater)": {
+  "bracers of archery, greater": {
   "source": "ultimate equipment pg. 271 , prpg core rulebook pg. 504",
   "aura": "moderate transmutation",
   "cl": "8th",
@@ -14104,7 +14104,7 @@
   "construction requirements": "craft wondrous item, dimensional anchor , thorn body apg ",
   "cost": "17,800"
   },
-  "bracers of armor6": {
+  "bracers of armor +6": {
   "source": "ultimate equipment pg. 271 , prpg core rulebook pg. 504",
   "aura": "moderate conjuration",
   "cl": "7th",
@@ -14126,7 +14126,7 @@
   "construction requirements": "craft wondrous item, mythic creator, dimension door , shield ",
   "cost": "20,000"
   },
-  "bracers of armor7": {
+  "bracers of armor +7": {
   "source": "ultimate equipment pg. 271 , prpg core rulebook pg. 504",
   "aura": "moderate conjuration",
   "cl": "7th",
@@ -14137,7 +14137,7 @@
   "construction requirements": "craft wondrous item, mage armor , creator's caster level must\r be at least two times that of the bonus placed on the bracers, \r plus any requirements of the armor special abilities",
   "cost": "500(+1), 2,000(+2), 4,500(+3), 8,000(+4), 12,500(+5), 18,000(+6), 24,500(+7), 32,000(+8)"
   },
-  "bracers of armor8": {
+  "bracers of armor +8": {
   "source": "ultimate equipment pg. 271 , prpg core rulebook pg. 504",
   "aura": "moderate conjuration",
   "cl": "7th",
@@ -14260,7 +14260,7 @@
         "requirements": "Forge Ring, death ward ;",
         "cost": "625 gp"
       },
-      "Ring of Resistance1": {
+      "Ring of Resistance +1": {
         "source": "Pathfinder #123: The Flooded Cathedral pg. 44",
         "aura": "faint abjuration",
         "cl": "5th",
@@ -14280,7 +14280,7 @@
         "requirements": "Forge Ring, animal messenger , creator must have 2 ranks in Perception and Survival;",
         "cost": "750 gp"
       },
-      "Ring of Spell Knowledgetype I": {
+      "ring of spell knowledge, type I": {
         "source": "Ultimate Equipment pg. 174",
         "aura": "moderate or strong (no school)",
         "cl": "7th",
@@ -14310,7 +14310,7 @@
         "requirements": "Forge Ring, dancing lights , faerie fire ;",
         "cost": "800 gp"
       },
-      "Ring of Protection1": {
+      "Ring of Protection +1": {
         "source": "Ultimate Equipment pg. 172 , PRPG Core Rulebook pg. 479",
         "aura": "faint abjuration",
         "cl": "5th",
@@ -14580,16 +14580,7 @@
         "requirements": "Forge Ring, beast shape I , shield of faith , summon monster I , creator must be at least 3rd level;",
         "cost": "2,350 gp"
       },
-      "Ring of Delayed Doom1 stone": {
-        "source": "Advanced Player's Guide pg. 292",
-        "aura": "moderate conjuration",
-        "cl": "9th",
-        "slot": "ring;",
-        "price": "5,000 gp (1 stone), 10,000 gp (2 stones), 15,000 gp (3 stones), 20,000 gp (4 stones), 25,000 gp (5 stones), 30,000 gp (6 stones), 35,000 gp (7 stones), 40,000 gp (8 stones), 45,000 gp (9 stones);",
-        "weight": " Description This band has nine garnets embedded along its exterior. Whenever the wearer's mind or body first becomes subject to any harmful effect that allows a saving throw to resist or mitigate it, he may, as an immediate action, choose to delay the onset of that effect for 1 minute, after he fails the saving throw but before its effects occur. This activation causes one of the garnets to turn to powder. When that minute passes, the wearer may continue to delay the onset of this harmful effect an additional minute as an immediate action by willing the ring to do so, which destroys another garnet, thus repeating the cycle for another minute. The delayed harmful effect occurs when the wearer falls unconscious, when the ring is removed, or 1 minute after the last time the ring's power activated; rounds spent delaying the effect do not count toward the effect's duration (for example, a curse that lasts 5 rounds takes effect for a full 5 rounds, even if the wearer delayed its effect several minutes). Effects that protect against or negate the harmful effect work normally while it is delayed, for example, neutralize poison cast on the wearer while he delays the effect of a poisonous bite removes the poison effect. Construction",
-        "requirements": "Forge Ring, heal , time stop ;",
-        "cost": "22,500 gp"
-      },
+
       "Gluttonous Feasting Ring": {
         "source": "Inner Sea Gods pg. 258",
         "aura": "faint necromancy and transmutation",
@@ -14640,7 +14631,7 @@
         "requirements": "Combat Reflexes, Forge Ring, Quicken Spell;",
         "cost": "17,500 gp"
       },
-      "Ring of Resistance2": {
+      "Ring of Resistance +2": {
         "source": "Pathfinder #123: The Flooded Cathedral pg. 44",
         "aura": "faint abjuration",
         "cl": "5th",
@@ -14710,7 +14701,7 @@
         "requirements": "Forge Ring, guidance , creator must be able to sneak attack;",
         "cost": "3,000 gp"
       },
-      "Ring of Spell Knowledgetype II": {
+      "ring of spell knowledge, type II": {
         "source": "Ultimate Equipment pg. 174",
         "aura": "moderate or strong (no school)",
         "cl": "7th",
@@ -14850,7 +14841,7 @@
         "requirements": "Forge Ring, planar ally or planar binding , creator must be neutral with no other alignment components;",
         "cost": "3,900 gp"
       },
-      "Ring of the Godless1": {
+      "Ring of the Godless +1": {
         "source": "People of the Sands pg. 29",
         "aura": "faint abjuration and divination",
         "cl": "5th",
@@ -14860,7 +14851,7 @@
         "requirements": "Forge Ring, arcane sight , detect magic , spell resistance , creator cannot be a divine spellcaster, creator must be of a level at least three times higher than the bonus of the ring;",
         "cost": "4,000 gp (+1), 8,500 gp (+2), 13,500 gp (+3), 19,000 gp (+4), 25,000 gp (+5)"
       },
-      "Ring of Protection2": {
+      "Ring of Protection +2": {
         "source": "Ultimate Equipment pg. 172 , PRPG Core Rulebook pg. 479",
         "aura": "faint abjuration",
         "cl": "5th",
@@ -15080,25 +15071,16 @@
         "requirements": "Forge Ring, eagle's splendor , hypnotic pattern , creator must be good-aligned;",
         "cost": "4,950 gp"
       },
-      "Ring of Delayed Doom2 stones": {
-        "source": "Advanced Player's Guide pg. 292",
-        "aura": "moderate conjuration",
-        "cl": "9th",
-        "slot": "ring;",
-        "price": "5,000 gp (1 stone), 10,000 gp (2 stones), 15,000 gp (3 stones), 20,000 gp (4 stones), 25,000 gp (5 stones), 30,000 gp (6 stones), 35,000 gp (7 stones), 40,000 gp (8 stones), 45,000 gp (9 stones);",
-        "weight": " Description This band has nine garnets embedded along its exterior. Whenever the wearer's mind or body first becomes subject to any harmful effect that allows a saving throw to resist or mitigate it, he may, as an immediate action, choose to delay the onset of that effect for 1 minute, after he fails the saving throw but before its effects occur. This activation causes one of the garnets to turn to powder. When that minute passes, the wearer may continue to delay the onset of this harmful effect an additional minute as an immediate action by willing the ring to do so, which destroys another garnet, thus repeating the cycle for another minute. The delayed harmful effect occurs when the wearer falls unconscious, when the ring is removed, or 1 minute after the last time the ring's power activated; rounds spent delaying the effect do not count toward the effect's duration (for example, a curse that lasts 5 rounds takes effect for a full 5 rounds, even if the wearer delayed its effect several minutes). Effects that protect against or negate the harmful effect work normally while it is delayed, for example, neutralize poison cast on the wearer while he delays the effect of a poisonous bite removes the poison effect. Construction",
-        "requirements": "Forge Ring, heal , time stop ;",
-        "cost": "22,500 gp"
-      },
-      "Ring of Revelationlesser": {
+
+      "Ring of Revelation, lesser": {
         "source": "Ultimate Equipment pg. 173 , Advanced Player's Guide pg. 293",
         "aura": "moderate varies",
         "cl": "11th",
         "slot": "ring;",
-        "price": "10,000 gp (lesser), 16,000 gp (greater), 24,000 gp (superior);",
+        "price": "10,000 gp, lesser, 16,000 gp, greater, 24,000 gp (superior);",
         "weight": " Description A ring of revelation is a divine item attuned to a particular oracular mystery and containing a revelation associated with that mystery (see the oracle class description). While wearing the ring, an oracle has access to that revelation and may use it as if she had it as a normal class feature. The oracle must have the appropriate mystery to use the ring, and must meet the level requirements (if any) of the revelation itself; for example, a ring of revelation (combat healer) is only usable by an oracle of at least 7th level with the battle mystery. If the oracle already has that revelation and the revelation gives an ability with a limited number of uses per day, the oracle can use that ability one additional time per day. The ring has no effect if worn by a non-oracle, and Use Magic Device doesn't allow a character to gain a revelation from this ring. A lesser ring of revelation contains a revelation that has no level prerequisite or a prerequisite that is less than 6th level. A greater ring of revelation contains a revelation that requires the oracle to be 7th level or higher. A superior ring of revelation contains a revelation that requires the oracle to be 11th level or higher. Construction",
         "requirements": "Forge Ring, creator must be an oracle with the desired revelation;",
-        "cost": "5,000 gp (lesser), 8,000 gp (greater), 12,000 gp (superior)"
+        "cost": "5,000 gp, lesser, 8,000 gp, greater, 12,000 gp (superior)"
       },
       "Ring of Climbing (improved)": {
         "source": "Ultimate Equipment pg. 168 , PRPG Core Rulebook pg. 479",
@@ -15250,15 +15232,15 @@
         "requirements": "Forge Ring, mislead ;",
         "cost": "6,000 gp"
       },
-      "Ring of Energy Resistanceminor": {
+      "Ring of Energy Resistance, minor": {
         "source": "Ultimate Equipment pg. 170 , PRPG Core Rulebook pg. 479",
         "aura": "moderate abjuration",
         "cl": "11th",
         "slot": "ring;",
-        "price": "12,000 gp (minor), 28,000 gp (major), 44,000 gp (greater);",
+        "price": "12,000 gp, minor, 28,000 gp, major, 44,000 gp, greater;",
         "weight": " Description Rings of this type come in a wide variety of designs and colorations, typically related to the types of energy they defend against. These rings continually protect their wearers from damage from one type of energyacid, cold, electricity, fire, or sonic (chosen by the creator of the item; determine randomly if found as part of a treasure hoard). Each time the wearer would normally take such damage, subtract the ring's resistance value from the damage dealt. A minor ring of energy resistance grants 10 points of resistance. A major ring of energy resistance grants 20 points of resistance. A greater ring of energy resistance grants 30 points of resistance. Construction",
         "requirements": "Forge Ring, resist energy ;",
-        "cost": "6,000 gp (minor), 14,000 gp (major), 22,000 gp (greater)"
+        "cost": "6,000 gp, minor, 14,000 gp, major, 22,000 gp, greater"
       },
       "Ring of Blood Calling": {
         "source": "Pathfinder #106: For Queen and Empire pg. 18",
@@ -15360,7 +15342,7 @@
         "requirements": "Forge Ring, ghostly disguise UM , haste , sculpt corpse APG ;",
         "cost": "6,500 gp"
       },
-      "Ring of Resistance3": {
+      "Ring of Resistance +3": {
         "source": "Pathfinder #123: The Flooded Cathedral pg. 44",
         "aura": "faint abjuration",
         "cl": "5th",
@@ -15370,7 +15352,7 @@
         "requirements": "Forge Ring , resistance , creator's caster level must be at least three times the ring's bonus;",
         "cost": "750 gp (+1), 3,000 gp (+2), 6,750 gp (+3), 12,000 gp (+4), 17,750 gp (+5)"
       },
-      "Ring of Spell Knowledgetype III": {
+      "ring of spell knowledge, type III": {
         "source": "Ultimate Equipment pg. 174",
         "aura": "moderate or strong (no school)",
         "cl": "7th",
@@ -15410,16 +15392,7 @@
         "requirements": "Forge Ring, eagle's splendor , magic mouth , shield of faith ;",
         "cost": "7,750 gp"
       },
-      "Ring of Delayed Doom3 stones": {
-        "source": "Advanced Player's Guide pg. 292",
-        "aura": "moderate conjuration",
-        "cl": "9th",
-        "slot": "ring;",
-        "price": "5,000 gp (1 stone), 10,000 gp (2 stones), 15,000 gp (3 stones), 20,000 gp (4 stones), 25,000 gp (5 stones), 30,000 gp (6 stones), 35,000 gp (7 stones), 40,000 gp (8 stones), 45,000 gp (9 stones);",
-        "weight": " Description This band has nine garnets embedded along its exterior. Whenever the wearer's mind or body first becomes subject to any harmful effect that allows a saving throw to resist or mitigate it, he may, as an immediate action, choose to delay the onset of that effect for 1 minute, after he fails the saving throw but before its effects occur. This activation causes one of the garnets to turn to powder. When that minute passes, the wearer may continue to delay the onset of this harmful effect an additional minute as an immediate action by willing the ring to do so, which destroys another garnet, thus repeating the cycle for another minute. The delayed harmful effect occurs when the wearer falls unconscious, when the ring is removed, or 1 minute after the last time the ring's power activated; rounds spent delaying the effect do not count toward the effect's duration (for example, a curse that lasts 5 rounds takes effect for a full 5 rounds, even if the wearer delayed its effect several minutes). Effects that protect against or negate the harmful effect work normally while it is delayed, for example, neutralize poison cast on the wearer while he delays the effect of a poisonous bite removes the poison effect. Construction",
-        "requirements": "Forge Ring, heal , time stop ;",
-        "cost": "22,500 gp"
-      },
+
       "Ophidian Coil": {
         "source": "Down the Blighted Path pg. 62",
         "aura": "faint transmutation",
@@ -15490,15 +15463,15 @@
         "requirements": "Forge Ring, freedom of movement ;",
         "cost": "7,500 gp"
       },
-      "Ring of Revelationgreater": {
+      "Ring of Revelation, greater": {
         "source": "Ultimate Equipment pg. 173 , Advanced Player's Guide pg. 293",
         "aura": "moderate varies",
         "cl": "11th",
         "slot": "ring;",
-        "price": "10,000 gp (lesser), 16,000 gp (greater), 24,000 gp (superior);",
+        "price": "10,000 gp, lesser, 16,000 gp, greater, 24,000 gp (superior);",
         "weight": " Description A ring of revelation is a divine item attuned to a particular oracular mystery and containing a revelation associated with that mystery (see the oracle class description). While wearing the ring, an oracle has access to that revelation and may use it as if she had it as a normal class feature. The oracle must have the appropriate mystery to use the ring, and must meet the level requirements (if any) of the revelation itself; for example, a ring of revelation (combat healer) is only usable by an oracle of at least 7th level with the battle mystery. If the oracle already has that revelation and the revelation gives an ability with a limited number of uses per day, the oracle can use that ability one additional time per day. The ring has no effect if worn by a non-oracle, and Use Magic Device doesn't allow a character to gain a revelation from this ring. A lesser ring of revelation contains a revelation that has no level prerequisite or a prerequisite that is less than 6th level. A greater ring of revelation contains a revelation that requires the oracle to be 7th level or higher. A superior ring of revelation contains a revelation that requires the oracle to be 11th level or higher. Construction",
         "requirements": "Forge Ring, creator must be an oracle with the desired revelation;",
-        "cost": "5,000 gp (lesser), 8,000 gp (greater), 12,000 gp (superior)"
+        "cost": "5,000 gp, lesser, 8,000 gp, greater, 12,000 gp (superior)"
       },
       "Heavenly Aegis Ring": {
         "source": "Horror Adventures pg. 216",
@@ -15550,7 +15523,7 @@
         "requirements": "Forge Ring, contingency , protection from chaos , protection from law ;",
         "cost": "8,100 gp"
       },
-      "Ring of the Godless2": {
+      "Ring of the Godless +2": {
         "source": "People of the Sands pg. 29",
         "aura": "faint abjuration and divination",
         "cl": "5th",
@@ -15560,7 +15533,7 @@
         "requirements": "Forge Ring, arcane sight , detect magic , spell resistance , creator cannot be a divine spellcaster, creator must be of a level at least three times higher than the bonus of the ring;",
         "cost": "4,000 gp (+1), 8,500 gp (+2), 13,500 gp (+3), 19,000 gp (+4), 25,000 gp (+5)"
       },
-      "Ring of Protection3": {
+      "Ring of Protection +3": {
         "source": "Ultimate Equipment pg. 172 , PRPG Core Rulebook pg. 479",
         "aura": "faint abjuration",
         "cl": "5th",
@@ -15570,17 +15543,17 @@
         "requirements": "Forge Ring, shield of faith , caster must be of a level at least three times higher than the bonus of the ring;",
         "cost": "1,000 gp (+1), 4,000 gp (+2), 9,000 gp (+3), 16,000 gp (+4), 25,000 gp (+5)"
       },
-      "Ring of Inner Fortitudeminor": {
+      "Ring of Inner Fortitude, minor": {
         "source": "Ultimate Equipment pg. 171",
         "aura": "moderate conjuration",
         "cl": "7th",
         "slot": "ring;",
-        "price": "18,000 gp (minor), 42,000 gp (major), 66,000 gp (greater);",
+        "price": "18,000 gp, minor, 42,000 gp, major, 66,000 gp, greater;",
         "weight": " Description Alternating diamonds and rubies stud this band of white gold. A minor ring of fortitude reduces ability damage or temporary ability penalties the wearer takes by 2 points and ability drain by 1 point. If an effect targets multiple ability scores (for example, exhaustion, fatigue, or touch of idiocy ), the ring reduces the damage, drain, or penalty for all ability scores. A major ring of inner fortitude reduces ability damage or temporary penalties by 4 points and reduces ability drain by 2 points. A greater ring of inner fortitude reduces ability damage or temporary penalties by 6 points and reduces ability drain by 3 points. Wearing a ring of inner fortitude ring does not make the wearer immune to conditions such as fatigued or exhausted even if the wearer ignores all ability damage, drain, or penalties from the condition. If the ring prevents any damage, drain, or penalty that are associated with a beneficial effect, it also negates the beneficial effect. Construction",
         "requirements": "Forge Ring, restoration ;",
-        "cost": "9,000 gp (minor), 21,000 gp (major), 33,000 gp (greater)"
+        "cost": "9,000 gp, minor, 21,000 gp, major, 33,000 gp, greater"
       },
-      "Ring of Spell Storing (minor)": {
+      "Ring of Spell Storing, minor": {
         "source": "Ultimate Equipment pg. 174 , PRPG Core Rulebook pg. 479",
         "aura": "faint evocation",
         "cl": "5th",
@@ -15629,16 +15602,7 @@
         "requirements": "Forge Ring, elemental aura , resist energy ;",
         "cost": "9,750 gp"
       },
-      "Ring of Delayed Doom4 stones": {
-        "source": "Advanced Player's Guide pg. 292",
-        "aura": "moderate conjuration",
-        "cl": "9th",
-        "slot": "ring;",
-        "price": "5,000 gp (1 stone), 10,000 gp (2 stones), 15,000 gp (3 stones), 20,000 gp (4 stones), 25,000 gp (5 stones), 30,000 gp (6 stones), 35,000 gp (7 stones), 40,000 gp (8 stones), 45,000 gp (9 stones);",
-        "weight": " Description This band has nine garnets embedded along its exterior. Whenever the wearer's mind or body first becomes subject to any harmful effect that allows a saving throw to resist or mitigate it, he may, as an immediate action, choose to delay the onset of that effect for 1 minute, after he fails the saving throw but before its effects occur. This activation causes one of the garnets to turn to powder. When that minute passes, the wearer may continue to delay the onset of this harmful effect an additional minute as an immediate action by willing the ring to do so, which destroys another garnet, thus repeating the cycle for another minute. The delayed harmful effect occurs when the wearer falls unconscious, when the ring is removed, or 1 minute after the last time the ring's power activated; rounds spent delaying the effect do not count toward the effect's duration (for example, a curse that lasts 5 rounds takes effect for a full 5 rounds, even if the wearer delayed its effect several minutes). Effects that protect against or negate the harmful effect work normally while it is delayed, for example, neutralize poison cast on the wearer while he delays the effect of a poisonous bite removes the poison effect. Construction",
-        "requirements": "Forge Ring, heal , time stop ;",
-        "cost": "22,500 gp"
-      },
+
       "Nethysian Ring of Minor Spell Storing": {
         "source": "Inner Sea Gods pg. 259",
         "aura": "moderate abjuration and transmutation [chaotic, evil, good, lawful]",
@@ -15699,7 +15663,7 @@
         "requirements": "Forge Ring, aid , resistance , vampiric touch ;",
         "cost": "10,000 gp"
       },
-      "Ring of Wizardrytype I": {
+      "Ring of Wizardry, type I": {
         "source": "Ultimate Equipment pg. 177 , PRPG Core Rulebook pg. 479",
         "aura": "moderate (no school)",
         "cl": "11th",
@@ -15709,17 +15673,17 @@
         "requirements": "Forge Ring, limited wish ;",
         "cost": "10,000 gp (type I), 20,000 gp (type II), 35,000 gp (type III), 50,000 gp (type IV)"
       },
-      "Ring of MysticismType I": {
+      "Ring of Mysticism, type I": {
         "source": "Psychic Anthology pg. 8",
         "aura": "moderate (no school)",
         "cl": "11th",
         "slot": "ring;",
-        "price": "20,000 gp (Type I), 40,000 gp (Type II), 70,000 gp (Type III), 100,000 gp (Type IV);",
+        "price": "20,000 gp (Type I), 40,000 gp (type II), 70,000 gp (type III), 100,000 gp (type IV);",
         "weight": " Description This ring of bone fused with crystal comes in four varieties, all of them useful only to psychic spellcasters. The wearer's number of psychic spells per day is doubled for one specific spell level. A ring of mysticism I doubles 1st-level spells, a ring of mysticism II doubles 2nd-level spells, a ring of mysticism III doubles 3rd-level spells, and a ring of mysticism IV doubles 4th-level spells. Bonus spells from high ability scores are not doubled. Construction",
         "requirements": "Forge Ring, limited wish ;",
-        "cost": "10,000 gp (Type I), 20,000 gp (Type II), 35,000 gp (Type III), 50,000 gp (Type IV)"
+        "cost": "10,000 gp (Type I), 20,000 gp (type II), 35,000 gp (type III), 50,000 gp (type IV)"
       },
-      "Ring of Resistance4": {
+      "Ring of Resistance +4": {
         "source": "Pathfinder #123: The Flooded Cathedral pg. 44",
         "aura": "faint abjuration",
         "cl": "5th",
@@ -15729,17 +15693,17 @@
         "requirements": "Forge Ring , resistance , creator's caster level must be at least three times the ring's bonus;",
         "cost": "750 gp (+1), 3,000 gp (+2), 6,750 gp (+3), 12,000 gp (+4), 17,750 gp (+5)"
       },
-      "Ring of Revelationsuperior": {
+      "Ring of Revelation superior": {
         "source": "Ultimate Equipment pg. 173 , Advanced Player's Guide pg. 293",
         "aura": "moderate varies",
         "cl": "11th",
         "slot": "ring;",
-        "price": "10,000 gp (lesser), 16,000 gp (greater), 24,000 gp (superior);",
+        "price": "10,000 gp, lesser, 16,000 gp, greater, 24,000 gp (superior);",
         "weight": " Description A ring of revelation is a divine item attuned to a particular oracular mystery and containing a revelation associated with that mystery (see the oracle class description). While wearing the ring, an oracle has access to that revelation and may use it as if she had it as a normal class feature. The oracle must have the appropriate mystery to use the ring, and must meet the level requirements (if any) of the revelation itself; for example, a ring of revelation (combat healer) is only usable by an oracle of at least 7th level with the battle mystery. If the oracle already has that revelation and the revelation gives an ability with a limited number of uses per day, the oracle can use that ability one additional time per day. The ring has no effect if worn by a non-oracle, and Use Magic Device doesn't allow a character to gain a revelation from this ring. A lesser ring of revelation contains a revelation that has no level prerequisite or a prerequisite that is less than 6th level. A greater ring of revelation contains a revelation that requires the oracle to be 7th level or higher. A superior ring of revelation contains a revelation that requires the oracle to be 11th level or higher. Construction",
         "requirements": "Forge Ring, creator must be an oracle with the desired revelation;",
-        "cost": "5,000 gp (lesser), 8,000 gp (greater), 12,000 gp (superior)"
+        "cost": "5,000 gp, lesser, 8,000 gp, greater, 12,000 gp (superior)"
       },
-      "Ring of Spell Knowledgetype IV": {
+      "ring of spell knowledge, type IV": {
         "source": "Ultimate Equipment pg. 174",
         "aura": "moderate or strong (no school)",
         "cl": "7th",
@@ -15749,16 +15713,7 @@
         "requirements": "Forge Ring, creator must be able to cast spells of the spell level to be granted;",
         "cost": "750 gp (type I), 3,000 gp (type II), 6,750 gp (type III), 12,000 gp (type IV)"
       },
-      "Ring of Delayed Doom5 stones": {
-        "source": "Advanced Player's Guide pg. 292",
-        "aura": "moderate conjuration",
-        "cl": "9th",
-        "slot": "ring;",
-        "price": "5,000 gp (1 stone), 10,000 gp (2 stones), 15,000 gp (3 stones), 20,000 gp (4 stones), 25,000 gp (5 stones), 30,000 gp (6 stones), 35,000 gp (7 stones), 40,000 gp (8 stones), 45,000 gp (9 stones);",
-        "weight": " Description This band has nine garnets embedded along its exterior. Whenever the wearer's mind or body first becomes subject to any harmful effect that allows a saving throw to resist or mitigate it, he may, as an immediate action, choose to delay the onset of that effect for 1 minute, after he fails the saving throw but before its effects occur. This activation causes one of the garnets to turn to powder. When that minute passes, the wearer may continue to delay the onset of this harmful effect an additional minute as an immediate action by willing the ring to do so, which destroys another garnet, thus repeating the cycle for another minute. The delayed harmful effect occurs when the wearer falls unconscious, when the ring is removed, or 1 minute after the last time the ring's power activated; rounds spent delaying the effect do not count toward the effect's duration (for example, a curse that lasts 5 rounds takes effect for a full 5 rounds, even if the wearer delayed its effect several minutes). Effects that protect against or negate the harmful effect work normally while it is delayed, for example, neutralize poison cast on the wearer while he delays the effect of a poisonous bite removes the poison effect. Construction",
-        "requirements": "Forge Ring, heal , time stop ;",
-        "cost": "22,500 gp"
-      },
+
       "Ring of Evasion": {
         "source": "Ultimate Equipment pg. 170 , PRPG Core Rulebook pg. 479",
         "aura": "moderate transmutation",
@@ -15809,7 +15764,7 @@
         "requirements": "Forge Ring, fire shield , iron body ;",
         "cost": "13,000 gp, 1,040 XP"
       },
-      "Ring of the Godless3": {
+      "Ring of the Godless +3": {
         "source": "People of the Sands pg. 29",
         "aura": "faint abjuration and divination",
         "cl": "5th",
@@ -15829,15 +15784,15 @@
         "requirements": "Forge Ring, blink ;",
         "cost": "13,500 gp"
       },
-      "Ring of Energy Resistancemajor": {
+      "Ring of Energy Resistance, major": {
         "source": "Ultimate Equipment pg. 170 , PRPG Core Rulebook pg. 479",
         "aura": "moderate abjuration",
         "cl": "11th",
         "slot": "ring;",
-        "price": "12,000 gp (minor), 28,000 gp (major), 44,000 gp (greater);",
+        "price": "12,000 gp, minor, 28,000 gp, major, 44,000 gp, greater;",
         "weight": " Description Rings of this type come in a wide variety of designs and colorations, typically related to the types of energy they defend against. These rings continually protect their wearers from damage from one type of energyacid, cold, electricity, fire, or sonic (chosen by the creator of the item; determine randomly if found as part of a treasure hoard). Each time the wearer would normally take such damage, subtract the ring's resistance value from the damage dealt. A minor ring of energy resistance grants 10 points of resistance. A major ring of energy resistance grants 20 points of resistance. A greater ring of energy resistance grants 30 points of resistance. Construction",
         "requirements": "Forge Ring, resist energy ;",
-        "cost": "6,000 gp (minor), 14,000 gp (major), 22,000 gp (greater)"
+        "cost": "6,000 gp, minor, 14,000 gp, major, 22,000 gp, greater"
       },
       "Ring of the Ecclesiarch": {
         "source": "Ultimate Equipment pg. 175",
@@ -15849,16 +15804,7 @@
         "requirements": "Forge Ring, arcane mark , enter image , enthrall , prayer , creator must have 5 ranks of Diplomacy and Knowledge (religion) and the ability to cast divine spells;",
         "cost": "14,250 gp"
       },
-      "Ring of Delayed Doom6 stones": {
-        "source": "Advanced Player's Guide pg. 292",
-        "aura": "moderate conjuration",
-        "cl": "9th",
-        "slot": "ring;",
-        "price": "5,000 gp (1 stone), 10,000 gp (2 stones), 15,000 gp (3 stones), 20,000 gp (4 stones), 25,000 gp (5 stones), 30,000 gp (6 stones), 35,000 gp (7 stones), 40,000 gp (8 stones), 45,000 gp (9 stones);",
-        "weight": " Description This band has nine garnets embedded along its exterior. Whenever the wearer's mind or body first becomes subject to any harmful effect that allows a saving throw to resist or mitigate it, he may, as an immediate action, choose to delay the onset of that effect for 1 minute, after he fails the saving throw but before its effects occur. This activation causes one of the garnets to turn to powder. When that minute passes, the wearer may continue to delay the onset of this harmful effect an additional minute as an immediate action by willing the ring to do so, which destroys another garnet, thus repeating the cycle for another minute. The delayed harmful effect occurs when the wearer falls unconscious, when the ring is removed, or 1 minute after the last time the ring's power activated; rounds spent delaying the effect do not count toward the effect's duration (for example, a curse that lasts 5 rounds takes effect for a full 5 rounds, even if the wearer delayed its effect several minutes). Effects that protect against or negate the harmful effect work normally while it is delayed, for example, neutralize poison cast on the wearer while he delays the effect of a poisonous bite removes the poison effect. Construction",
-        "requirements": "Forge Ring, heal , time stop ;",
-        "cost": "22,500 gp"
-      },
+
       "Elemental Ring": {
         "source": "Cohorts and Companions pg. 11",
         "aura": "strong conjuration",
@@ -15923,7 +15869,7 @@
         "requirements": "Forge Ring, Mythic Crafter, protection from energy , shield other ;",
         "cost": "15,750 gp"
       },
-      "Ring of Protection4": {
+      "Ring of Protection +4": {
         "source": "Ultimate Equipment pg. 172 , PRPG Core Rulebook pg. 479",
         "aura": "faint abjuration",
         "cl": "5th",
@@ -15943,16 +15889,7 @@
         "requirements": "Forge Ring, break enchantment , spell resistance ;",
         "cost": "16,250 gp"
       },
-      "Ring of Delayed Doom7 stones": {
-        "source": "Advanced Player's Guide pg. 292",
-        "aura": "moderate conjuration",
-        "cl": "9th",
-        "slot": "ring;",
-        "price": "5,000 gp (1 stone), 10,000 gp (2 stones), 15,000 gp (3 stones), 20,000 gp (4 stones), 25,000 gp (5 stones), 30,000 gp (6 stones), 35,000 gp (7 stones), 40,000 gp (8 stones), 45,000 gp (9 stones);",
-        "weight": " Description This band has nine garnets embedded along its exterior. Whenever the wearer's mind or body first becomes subject to any harmful effect that allows a saving throw to resist or mitigate it, he may, as an immediate action, choose to delay the onset of that effect for 1 minute, after he fails the saving throw but before its effects occur. This activation causes one of the garnets to turn to powder. When that minute passes, the wearer may continue to delay the onset of this harmful effect an additional minute as an immediate action by willing the ring to do so, which destroys another garnet, thus repeating the cycle for another minute. The delayed harmful effect occurs when the wearer falls unconscious, when the ring is removed, or 1 minute after the last time the ring's power activated; rounds spent delaying the effect do not count toward the effect's duration (for example, a curse that lasts 5 rounds takes effect for a full 5 rounds, even if the wearer delayed its effect several minutes). Effects that protect against or negate the harmful effect work normally while it is delayed, for example, neutralize poison cast on the wearer while he delays the effect of a poisonous bite removes the poison effect. Construction",
-        "requirements": "Forge Ring, heal , time stop ;",
-        "cost": "22,500 gp"
-      },
+
       "Sihedron Ring": {
         "source": "Rise of the Runelords Anniversary Edition pg. 426 , Pathfinder #6: Spires of Xin-Shalast pg. 37",
         "aura": "moderate abjuration and illusion",
@@ -15963,7 +15900,7 @@
         "requirements": "Forge Ring, endure elements , resistance , shield ;",
         "cost": "17,500 gp"
       },
-      "Ring of Resistance5": {
+      "Ring of Resistance +5": {
         "source": "Pathfinder #123: The Flooded Cathedral pg. 44",
         "aura": "faint abjuration",
         "cl": "5th",
@@ -15973,7 +15910,7 @@
         "requirements": "Forge Ring , resistance , creator's caster level must be at least three times the ring's bonus;",
         "cost": "750 gp (+1), 3,000 gp (+2), 6,750 gp (+3), 12,000 gp (+4), 17,750 gp (+5)"
       },
-      "Ring of the Godless4": {
+      "Ring of the Godless +4": {
         "source": "People of the Sands pg. 29",
         "aura": "faint abjuration and divination",
         "cl": "5th",
@@ -15983,16 +15920,7 @@
         "requirements": "Forge Ring, arcane sight , detect magic , spell resistance , creator cannot be a divine spellcaster, creator must be of a level at least three times higher than the bonus of the ring;",
         "cost": "4,000 gp (+1), 8,500 gp (+2), 13,500 gp (+3), 19,000 gp (+4), 25,000 gp (+5)"
       },
-      "Ring of Delayed Doom8 stones": {
-        "source": "Advanced Player's Guide pg. 292",
-        "aura": "moderate conjuration",
-        "cl": "9th",
-        "slot": "ring;",
-        "price": "5,000 gp (1 stone), 10,000 gp (2 stones), 15,000 gp (3 stones), 20,000 gp (4 stones), 25,000 gp (5 stones), 30,000 gp (6 stones), 35,000 gp (7 stones), 40,000 gp (8 stones), 45,000 gp (9 stones);",
-        "weight": " Description This band has nine garnets embedded along its exterior. Whenever the wearer's mind or body first becomes subject to any harmful effect that allows a saving throw to resist or mitigate it, he may, as an immediate action, choose to delay the onset of that effect for 1 minute, after he fails the saving throw but before its effects occur. This activation causes one of the garnets to turn to powder. When that minute passes, the wearer may continue to delay the onset of this harmful effect an additional minute as an immediate action by willing the ring to do so, which destroys another garnet, thus repeating the cycle for another minute. The delayed harmful effect occurs when the wearer falls unconscious, when the ring is removed, or 1 minute after the last time the ring's power activated; rounds spent delaying the effect do not count toward the effect's duration (for example, a curse that lasts 5 rounds takes effect for a full 5 rounds, even if the wearer delayed its effect several minutes). Effects that protect against or negate the harmful effect work normally while it is delayed, for example, neutralize poison cast on the wearer while he delays the effect of a poisonous bite removes the poison effect. Construction",
-        "requirements": "Forge Ring, heal , time stop ;",
-        "cost": "22,500 gp"
-      },
+
       "Ring of Freedom of Movement": {
         "source": "Ultimate Equipment pg. 171 , PRPG Core Rulebook pg. 479",
         "aura": "moderate abjuration",
@@ -16003,17 +15931,17 @@
         "requirements": "Forge Ring, freedom of movement ;",
         "cost": "20,000 gp"
       },
-      "Ring of MysticismType II": {
+      "Ring of Mysticism, type II": {
         "source": "Psychic Anthology pg. 8",
         "aura": "moderate (no school)",
         "cl": "11th",
         "slot": "ring;",
-        "price": "20,000 gp (Type I), 40,000 gp (Type II), 70,000 gp (Type III), 100,000 gp (Type IV);",
+        "price": "20,000 gp (Type I), 40,000 gp (type II), 70,000 gp (type III), 100,000 gp (type IV);",
         "weight": " Description This ring of bone fused with crystal comes in four varieties, all of them useful only to psychic spellcasters. The wearer's number of psychic spells per day is doubled for one specific spell level. A ring of mysticism I doubles 1st-level spells, a ring of mysticism II doubles 2nd-level spells, a ring of mysticism III doubles 3rd-level spells, and a ring of mysticism IV doubles 4th-level spells. Bonus spells from high ability scores are not doubled. Construction",
         "requirements": "Forge Ring, limited wish ;",
-        "cost": "10,000 gp (Type I), 20,000 gp (Type II), 35,000 gp (Type III), 50,000 gp (Type IV)"
+        "cost": "10,000 gp (Type I), 20,000 gp (type II), 35,000 gp (type III), 50,000 gp (type IV)"
       },
-      "Ring of Wizardrytype II": {
+      "Ring of Wizardry, type II": {
         "source": "Ultimate Equipment pg. 177 , PRPG Core Rulebook pg. 479",
         "aura": "moderate (no school)",
         "cl": "11th",
@@ -16023,15 +15951,15 @@
         "requirements": "Forge Ring, limited wish ;",
         "cost": "10,000 gp (type I), 20,000 gp (type II), 35,000 gp (type III), 50,000 gp (type IV)"
       },
-      "Ring of Inner Fortitudemajor": {
+      "Ring of Inner Fortitude, major": {
         "source": "Ultimate Equipment pg. 171",
         "aura": "moderate conjuration",
         "cl": "7th",
         "slot": "ring;",
-        "price": "18,000 gp (minor), 42,000 gp (major), 66,000 gp (greater);",
+        "price": "18,000 gp, minor, 42,000 gp, major, 66,000 gp, greater;",
         "weight": " Description Alternating diamonds and rubies stud this band of white gold. A minor ring of fortitude reduces ability damage or temporary ability penalties the wearer takes by 2 points and ability drain by 1 point. If an effect targets multiple ability scores (for example, exhaustion, fatigue, or touch of idiocy ), the ring reduces the damage, drain, or penalty for all ability scores. A major ring of inner fortitude reduces ability damage or temporary penalties by 4 points and reduces ability drain by 2 points. A greater ring of inner fortitude reduces ability damage or temporary penalties by 6 points and reduces ability drain by 3 points. Wearing a ring of inner fortitude ring does not make the wearer immune to conditions such as fatigued or exhausted even if the wearer ignores all ability damage, drain, or penalties from the condition. If the ring prevents any damage, drain, or penalty that are associated with a beneficial effect, it also negates the beneficial effect. Construction",
         "requirements": "Forge Ring, restoration ;",
-        "cost": "9,000 gp (minor), 21,000 gp (major), 33,000 gp (greater)"
+        "cost": "9,000 gp, minor, 21,000 gp, major, 33,000 gp, greater"
       },
       "Rings of Bondage, Greater": {
         "source": "Ultimate Intrigue pg. 242",
@@ -16043,26 +15971,17 @@
         "requirements": "Forge Ring, bestow curse, detect thoughts, geas/quest, sanctuary, share language APG , status ;",
         "cost": "21,000 gp"
       },
-      "Ring of Energy Resistancegreater": {
+      "Ring of Energy Resistance, greater": {
         "source": "Ultimate Equipment pg. 170 , PRPG Core Rulebook pg. 479",
         "aura": "moderate abjuration",
         "cl": "11th",
         "slot": "ring;",
-        "price": "12,000 gp (minor), 28,000 gp (major), 44,000 gp (greater);",
+        "price": "12,000 gp, minor, 28,000 gp, major, 44,000 gp, greater;",
         "weight": " Description Rings of this type come in a wide variety of designs and colorations, typically related to the types of energy they defend against. These rings continually protect their wearers from damage from one type of energyacid, cold, electricity, fire, or sonic (chosen by the creator of the item; determine randomly if found as part of a treasure hoard). Each time the wearer would normally take such damage, subtract the ring's resistance value from the damage dealt. A minor ring of energy resistance grants 10 points of resistance. A major ring of energy resistance grants 20 points of resistance. A greater ring of energy resistance grants 30 points of resistance. Construction",
         "requirements": "Forge Ring, resist energy ;",
-        "cost": "6,000 gp (minor), 14,000 gp (major), 22,000 gp (greater)"
+        "cost": "6,000 gp, minor, 14,000 gp, major, 22,000 gp, greater"
       },
-      "Ring of Delayed Doom9 stones": {
-        "source": "Advanced Player's Guide pg. 292",
-        "aura": "moderate conjuration",
-        "cl": "9th",
-        "slot": "ring;",
-        "price": "5,000 gp (1 stone), 10,000 gp (2 stones), 15,000 gp (3 stones), 20,000 gp (4 stones), 25,000 gp (5 stones), 30,000 gp (6 stones), 35,000 gp (7 stones), 40,000 gp (8 stones), 45,000 gp (9 stones);",
-        "weight": " Description This band has nine garnets embedded along its exterior. Whenever the wearer's mind or body first becomes subject to any harmful effect that allows a saving throw to resist or mitigate it, he may, as an immediate action, choose to delay the onset of that effect for 1 minute, after he fails the saving throw but before its effects occur. This activation causes one of the garnets to turn to powder. When that minute passes, the wearer may continue to delay the onset of this harmful effect an additional minute as an immediate action by willing the ring to do so, which destroys another garnet, thus repeating the cycle for another minute. The delayed harmful effect occurs when the wearer falls unconscious, when the ring is removed, or 1 minute after the last time the ring's power activated; rounds spent delaying the effect do not count toward the effect's duration (for example, a curse that lasts 5 rounds takes effect for a full 5 rounds, even if the wearer delayed its effect several minutes). Effects that protect against or negate the harmful effect work normally while it is delayed, for example, neutralize poison cast on the wearer while he delays the effect of a poisonous bite removes the poison effect. Construction",
-        "requirements": "Forge Ring, heal , time stop ;",
-        "cost": "22,500 gp"
-      },
+
       "Ring of Delayed Doom": {
         "source": "Ultimate Equipment pg. 169",
         "aura": "moderate conjuration",
@@ -16083,7 +16002,7 @@
         "requirements": "Forge Ring, fear , remove fear , resistance ;",
         "cost": "24,000 gp"
       },
-      "Ring of Protection5": {
+      "Ring of Protection +5": {
         "source": "Ultimate Equipment pg. 172 , PRPG Core Rulebook pg. 479",
         "aura": "faint abjuration",
         "cl": "5th",
@@ -16093,7 +16012,7 @@
         "requirements": "Forge Ring, shield of faith , caster must be of a level at least three times higher than the bonus of the ring;",
         "cost": "1,000 gp (+1), 4,000 gp (+2), 9,000 gp (+3), 16,000 gp (+4), 25,000 gp (+5)"
       },
-      "Ring of the Godless5": {
+      "Ring of the Godless +5": {
         "source": "People of the Sands pg. 29",
         "aura": "faint abjuration and divination",
         "cl": "5th",
@@ -16175,15 +16094,15 @@
         "requirements": "Forge Ring, death ward, dimension door, mislead ;",
         "cost": "25,080 gp"
       },
-      "Ring of Inner Fortitudegreater": {
+      "Ring of Inner Fortitude, greater": {
         "source": "Ultimate Equipment pg. 171",
         "aura": "moderate conjuration",
         "cl": "7th",
         "slot": "ring;",
-        "price": "18,000 gp (minor), 42,000 gp (major), 66,000 gp (greater);",
+        "price": "18,000 gp, minor, 42,000 gp, major, 66,000 gp, greater;",
         "weight": " Description Alternating diamonds and rubies stud this band of white gold. A minor ring of fortitude reduces ability damage or temporary ability penalties the wearer takes by 2 points and ability drain by 1 point. If an effect targets multiple ability scores (for example, exhaustion, fatigue, or touch of idiocy ), the ring reduces the damage, drain, or penalty for all ability scores. A major ring of inner fortitude reduces ability damage or temporary penalties by 4 points and reduces ability drain by 2 points. A greater ring of inner fortitude reduces ability damage or temporary penalties by 6 points and reduces ability drain by 3 points. Wearing a ring of inner fortitude ring does not make the wearer immune to conditions such as fatigued or exhausted even if the wearer ignores all ability damage, drain, or penalties from the condition. If the ring prevents any damage, drain, or penalty that are associated with a beneficial effect, it also negates the beneficial effect. Construction",
         "requirements": "Forge Ring, restoration ;",
-        "cost": "9,000 gp (minor), 21,000 gp (major), 33,000 gp (greater)"
+        "cost": "9,000 gp, minor, 21,000 gp, major, 33,000 gp, greater"
       },
       "Spiritualist Rings": {
         "source": "Ultimate Equipment pg. 177",
@@ -16195,7 +16114,7 @@
         "requirements": "Forge Ring, speak with dead , spectral hand , plane shift ;",
         "cost": "45,000 gp"
       },
-      "Ring of Wizardrytype III": {
+      "Ring of Wizardry, type III": {
         "source": "Ultimate Equipment pg. 177 , PRPG Core Rulebook pg. 479",
         "aura": "moderate (no school)",
         "cl": "11th",
@@ -16205,15 +16124,15 @@
         "requirements": "Forge Ring, limited wish ;",
         "cost": "10,000 gp (type I), 20,000 gp (type II), 35,000 gp (type III), 50,000 gp (type IV)"
       },
-      "Ring of MysticismType III": {
+      "Ring of Mysticism, type III": {
         "source": "Psychic Anthology pg. 8",
         "aura": "moderate (no school)",
         "cl": "11th",
         "slot": "ring;",
-        "price": "20,000 gp (Type I), 40,000 gp (Type II), 70,000 gp (Type III), 100,000 gp (Type IV);",
+        "price": "20,000 gp (Type I), 40,000 gp (type II), 70,000 gp (type III), 100,000 gp (type IV);",
         "weight": " Description This ring of bone fused with crystal comes in four varieties, all of them useful only to psychic spellcasters. The wearer's number of psychic spells per day is doubled for one specific spell level. A ring of mysticism I doubles 1st-level spells, a ring of mysticism II doubles 2nd-level spells, a ring of mysticism III doubles 3rd-level spells, and a ring of mysticism IV doubles 4th-level spells. Bonus spells from high ability scores are not doubled. Construction",
         "requirements": "Forge Ring, limited wish ;",
-        "cost": "10,000 gp (Type I), 20,000 gp (Type II), 35,000 gp (Type III), 50,000 gp (Type IV)"
+        "cost": "10,000 gp (Type I), 20,000 gp (type II), 35,000 gp (type III), 50,000 gp (type IV)"
       },
       "Ring of Telekinesis": {
         "source": "Ultimate Equipment pg. 175 , PRPG Core Rulebook pg. 479",
@@ -16245,17 +16164,17 @@
         "requirements": "Forge Ring, spell turning ;",
         "cost": "50,000 gp"
       },
-      "Ring of MysticismType IV": {
+      "Ring of Mysticism, type IV": {
         "source": "Psychic Anthology pg. 8",
         "aura": "moderate (no school)",
         "cl": "11th",
         "slot": "ring;",
-        "price": "20,000 gp (Type I), 40,000 gp (Type II), 70,000 gp (Type III), 100,000 gp (Type IV);",
+        "price": "20,000 gp (Type I), 40,000 gp (type II), 70,000 gp (type III), 100,000 gp (type IV);",
         "weight": " Description This ring of bone fused with crystal comes in four varieties, all of them useful only to psychic spellcasters. The wearer's number of psychic spells per day is doubled for one specific spell level. A ring of mysticism I doubles 1st-level spells, a ring of mysticism II doubles 2nd-level spells, a ring of mysticism III doubles 3rd-level spells, and a ring of mysticism IV doubles 4th-level spells. Bonus spells from high ability scores are not doubled. Construction",
         "requirements": "Forge Ring, limited wish ;",
-        "cost": "10,000 gp (Type I), 20,000 gp (Type II), 35,000 gp (Type III), 50,000 gp (Type IV)"
+        "cost": "10,000 gp (Type I), 20,000 gp (type II), 35,000 gp (type III), 50,000 gp (type IV)"
       },
-      "Ring of Wizardrytype IV": {
+      "Ring of Wizardry, type IV": {
         "source": "Ultimate Equipment pg. 177 , PRPG Core Rulebook pg. 479",
         "aura": "moderate (no school)",
         "cl": "11th",
@@ -16337,7 +16256,7 @@
         "requirements": "Forge Ring, summon monster VI , all appropriate spells;",
         "cost": "100,000 gp"
       },
-      "Ring of Spell Storing (major)": {
+      "Ring of Spell Storing, major": {
         "source": "Ultimate Equipment pg. 174 , PRPG Core Rulebook pg. 479",
         "aura": "strong evocation",
         "cl": "17th",

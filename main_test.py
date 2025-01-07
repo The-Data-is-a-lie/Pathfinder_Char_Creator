@@ -388,7 +388,13 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		armor_chooser(character)
 		print(f'This is your gold pre items {character.assign_gold("gold", gold_num)}')
 		print(f'This is your armor type {character.armor_type}')
-		equipment_list, equip_descrip = item_chooser(character)
+
+		# Pre-loading JSON data (so we only do it 1x per item and not multiple times)
+		# Open JSON file to see if name is in that list, otherwise reroll and document
+		with open('Backend\\json\\foundry_item_names.json', 'r') as f:
+			foundry_item_names = json.load(f)
+		
+		equipment_list, equip_descrip = item_chooser(character, foundry_item_names)
 		print(f'This is your gold post items {character.gold}')	
 
 		#calculating savings throws based off of class levels

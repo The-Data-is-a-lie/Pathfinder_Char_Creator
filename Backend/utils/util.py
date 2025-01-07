@@ -218,15 +218,21 @@ def chooseClass(character, class_choice):
     """
     # temporarily removing occult classes (they aren't ready yet)
     occult_classes = getattr(data, 'occult_classes')
+    path_of_war_class = getattr(data, 'path_of_war_class')
     available_classes = list(character.class_data.keys())
     #remove occult classes
     for x in available_classes:
         if x in occult_classes:
             available_classes.remove(x)
+
+    #remove path_of_war classes
+    for x in available_classes:
+        if x in path_of_war_class:
+            available_classes.remove(x)            
             
     print("available_classes", available_classes)
     print("these_are_available_classes", available_classes)
-    if not isinstance(class_choice, str) and class_choice not in character.class_data.keys():
+    if not isinstance(class_choice, str) and class_choice not in available_classes:
         class_choice = random.choice(available_classes)
 
     if class_choice in occult_classes:
