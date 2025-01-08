@@ -85,6 +85,8 @@ def item_chooser(character, data):
     equipment_list = []
     equip_dict = {}
 
+    # print("these are your foundry item names: " + str(character.foundry_item_names))
+
     while i < len(select_from_list):
         equipment_name, random_equip, price, equip_descrip = choose_equipment(character, select_from_list[i])
         # print("equipment_name, random_equip, price, equip_descrip ", random_equip)

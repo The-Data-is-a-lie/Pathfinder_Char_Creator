@@ -188,25 +188,25 @@ def name_chooser(character):
 
 
 
-def weapon_chooser(character):
-    """
-    *** Probably want to change to generate based off of what weapons a class could actually use ***
-    Characters are given random weapons selected by region and from all weapon groups
-    Return
-    - weaponz (by region random)
-    - weapons (random)
-    """
-    # random.sample to select 2 random weapons
-    weapons = random.sample(weapon_groups, 2)
-    character.weapons = weapons
-    print(f'weapons not dependent on region {weapons}')
+# def weapon_chooser(character):
+#     """
+#     *** Probably want to change to generate based off of what weapons a class could actually use ***
+#     Characters are given random weapons selected by region and from all weapon groups
+#     Return
+#     - weaponz (by region random)
+#     - weapons (random)
+#     """
+#     # random.sample to select 2 random weapons
+#     weapons = random.sample(weapon_groups, 2)
+#     character.weapons = weapons
+#     print(f'weapons not dependent on region {weapons}')
 
-    # loop through the random abilities and print out each element
-    for reg in character.regions: #regions != region, they are very different, regions is defined in the data tab, region is the user input assigned as a number above
-        if reg == character.region:
-            weaponz = random.choice(weapon_groups_region[reg])
-            character.weaponz = weaponz
-            print(f"Weapon for {reg}: {weaponz}")
+#     # loop through the random abilities and print out each element
+#     for reg in character.regions: #regions != region, they are very different, regions is defined in the data tab, region is the user input assigned as a number above
+#         if reg == character.region:
+#             weaponz = random.choice(weapon_groups_region[reg])
+#             character.weaponz = weaponz
+#             print(f"Weapon for {reg}: {weaponz}")
 
     
 def chooseClass(character, class_choice):

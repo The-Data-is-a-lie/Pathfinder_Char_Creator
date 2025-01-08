@@ -35,8 +35,9 @@ def weapon_type_flag_func(character, dictionary):
 
 def list_selection(character, name, limits=None, shield_flag=True):
     if shield_flag == True:
+        useable_weapons = getattr(data, 'useable_weapons')
         if limits is not None:
-            choice = list_selection_limits(character,name, limits)
+            choice = list_selection_limits(character, name, limits)
         else:
             choice = random.choice(list(getattr(character, name).keys()))  
 
@@ -45,6 +46,10 @@ def list_selection(character, name, limits=None, shield_flag=True):
         result_2 = getattr(character, name).get(choice, {}).get(choice_2, {})   
 
         result_dict = {choice_2: result_2}
+        print('useable weapons ', useable_weapons)
+        print('post useable weapons ', list(result_dict.keys())[0])
+        reroll_weapon(character, name, list(result_dict.keys())[0], useable_weapons)
+
         print(f'This is your result: {result_dict}')
         
         return result_dict
@@ -59,6 +64,14 @@ def list_selection_limits(character, name, limits=None):
         if key is None:
             break
     return key
+
+# Reroll weapon can take a few seconds -> (we may want to just make it output a specific weapon if it doesn't exist in the list rather than a while statement)
+def reroll_weapon(character, name, choice, useable_weapons):
+    if name == 'weapons_data':
+        while choice not in useable_weapons:
+            choice = list_selection(character, name, 'weapon_data')
+            choice = list(choice.keys())[0]
+    return choice
 
 # here to help create AC calculation
 def armor_chooser(character):
@@ -76,6 +89,8 @@ def armor_chooser(character):
 
 
 def weapon_chooser(character):
+    useable_weapons = getattr(data, 'useable_weapons')
+
     weapon_type_data = character.class_data.get(character.c_class, {}).get('weapon and armor proficiency')
     print(character.class_data.get(character.c_class, {}))
     print(weapon_type_data)

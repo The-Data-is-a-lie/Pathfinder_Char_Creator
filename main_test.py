@@ -2,12 +2,9 @@
 from Backend.createACharacter import CreateNewCharacter
 from Backend.utils.markdown import style
 from Backend.utils.data import version
-from Backend.utils.util import  chooseClass, region_chooser, race_chooser, weapon_chooser, name_chooser, dip_function, gender_chooser, format_text, isBool#, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
+from Backend.utils.util import  chooseClass, region_chooser, race_chooser,  name_chooser, dip_function, gender_chooser, format_text, isBool#,, skills, mythic, Archetype_Assigner, flaws, path_of_war_chance, Roll_Level, Total_Hitpoint_Calc, inherent_stats, age_weight_height, various_racial_attr, appearnce_func, personality_and_profession, path_of_war, alignment_and_deities #chooseClass Roll_Level_40, Roll_Level_30, Roll_Level_20, Roll_Level_10, Roll_Level_5,
 import random
-from math import ceil, floor
-from flask import jsonify
 import json
-import traceback
 
 
 # Importing custom functions
@@ -23,6 +20,7 @@ from Backend.utils.class_func.class_specific_feats import class_specific_feats_c
 from Backend.utils.class_func.domain_inquisition import domain_chance, domain_chooser#, inquisition_chooser
 from Backend.utils.class_func.extra_combat_feats import extra_combat_feats
 from Backend.utils.class_func.favored_class import favored_class_calculator, favored_class_option, favored_class_option_chooser
+from Backend.utils.class_func.family_func import randomize_siblings, randomize_parents
 from Backend.utils.class_func.feats import build_selector, chooseable_list, chooseable_list_stats, chooseable_list_class_features, feat_spell_searcher, generic_multi_chooser, simple_list_chooser, generic_feat_chooser
 from Backend.utils.class_func.flag_assign import human_flag_assigner, druidic_flag_assigner
 from Backend.utils.class_func.generic_func import generic_class_option_chooser, get_data_without_prerequisites#, no_prereq_loop, chosen_set_append
@@ -122,6 +120,9 @@ character_json_config = {
 	"witch": "Backend/json/class_data/witch.json",
 
 
+	"foundry_item_names": "Backend/json/foundry_item_names.json",
+
+	
 
 }
 
@@ -292,7 +293,8 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 			full_school, school_desc, associaed_desc, associaed_school = wizard_school_chooser(character)
 			full_opposing_school = wizard_opposing_school(character)	
 
-		
+		archetype_info = character.archetype_data()
+		print("this is your archetype info", archetype_info)		
 			
 		# character.anti_paladin_cruelty_chooser()
 		# character.paladin_mercy_chooser()		
@@ -393,10 +395,10 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		# Open JSON file to see if name is in that list, otherwise reroll and document
 		
 		# This breaks perm server if Double \\ 
-		with open(r'Backend\json\foundry_item_names.json', 'r') as f:
-			foundry_item_names = json.load(f)
+
+		foundry_item_names = character.foundry_item_names
 		
-		equipment_list, equip_descrip = item_chooser(character, foundry_item_names)
+		equipment_list, equip_descrip = item_chooser(character, foundry_item_names)#, foundry_item_names)
 		print(f'This is your gold post items {character.gold}')	
 
 		#calculating savings throws based off of class levels
@@ -414,8 +416,12 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 		character.armor_dict = list_selection(character, 'armor', limits=character.armor_type)
 		
+		# required to set up weapon_type
 		weapon_chooser(character)
 		character.weapon_dict = list_selection(character, 'weapons_data', limits=character.weapon_type)
+
+		weapon_name = list(character.weapon_dict.keys())[0]
+		print("this is your weapon_name " + weapon_name)
 		limits = shield_chooser(character, character.weapon_dict)
 		character.shield_flag = shield_flag_func(character, limits=limits)
 		character.shield_dict = list_selection(character, 'armor', limits=limits, shield_flag = character.shield_flag)
@@ -612,65 +618,83 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		actual_class_abilities = get_class_abilities(character)
 		class_ability_desc, class_ability =get_class_abilties_desc(character, actual_class_abilities)
 
-		export_list_non_dict = [character.region, character.chosen_race,
-				 character_full_name, character.c_class, character.c_class_2, 
-				 alignment,  age_number, 
-				 height_number, weight_number, character.dex, character.str, 
-				 character.con, character.int, character.wis, character.cha, 
-				 flaw, character.Total_HP, character.sheet_health,
-				 character.bab_total,
-				 armor_ac, shield_ac,
-				 armor_name, armor_spell_failure, armor_weight, armor_armor_check_penalty, armor_max_dex_bonus,
-				 shield_name, shield_spell_failure, shield_weight, shield_armor_check_penalty, shield_max_dex_bonus,
-				 fort_saving_throw, reflex_saving_throw, wisdom_saving_throw,
-				 character.spell_list_choose_from,
-				 day_list, known_list,
-				 deity_name, skill_ranks,
-				 weapon_enhancement_chosen_list, armor_enhancement_chosen_list, 
-				 shield_enhancement_chosen_list, professions,
-				 selected_traits, equipment_list, character.c_class_level,
-				#  we don't use these in foundry, comment out if we do (all instances (but will need to fix program issue))
-				#  chosen_subrace, subrace_description, 
-				 character.archetype1,
-				 hair_color, hair_type, eye_color, appearance,
-				 language_text, feats, 
-				 character.gold, character.platnium,
-				 full_domain, school, opposing_school,
-				 bloodline,
-				 background_traits, professions, mannerisms, flaws,
-				 hero_points, class_ability_desc, class_ability
+		older_brothers, younger_brothers, older_sisters, younger_sisters = randomize_siblings(character)
+		parents = randomize_parents(character)		
+
+		print("older_brothers, younger_brothers, older_sisters, younger_sisters", older_brothers, younger_brothers, older_sisters, younger_sisters)
+
+		class_features = character.data_dict['class features']
+		export_list_non_dict = [
+				character.region, character.chosen_race,
+				character_full_name, character.c_class, character.c_class_2, 
+				alignment,  age_number, 
+				height_number, weight_number, character.dex, character.str, 
+				character.con, character.int, character.wis, character.cha, 
+				flaw, character.Total_HP, character.sheet_health,
+				character.bab_total,
+				armor_ac, shield_ac,
+				armor_name, armor_spell_failure, armor_weight, armor_armor_check_penalty, armor_max_dex_bonus,
+				shield_name, shield_spell_failure, shield_weight, shield_armor_check_penalty, shield_max_dex_bonus,
+				fort_saving_throw, reflex_saving_throw, wisdom_saving_throw,
+				character.spell_list_choose_from,
+				day_list, known_list,
+				deity_name, skill_ranks,
+				weapon_enhancement_chosen_list, armor_enhancement_chosen_list, 
+				shield_enhancement_chosen_list, professions,
+				selected_traits, equipment_list, character.c_class_level,
+			#  we don't use these in foundry, comment out if we do (all instances (but will need to fix program issue))
+			#  chosen_subrace, subrace_description, 
+				character.archetype1,
+				hair_color, hair_type, eye_color, appearance,
+				language_text, feats, 
+				character.gold, character.platnium,
+				full_domain, school, opposing_school,
+				bloodline,
+				background_traits, professions, mannerisms, flaws,
+				hero_points, character.chosen_gender, 
+				class_ability_desc, class_ability,
+				class_features, archetype_info,				
+				parents, 
+				older_brothers, younger_brothers, 
+				older_sisters, younger_sisters,				 
+				weapon_name,
 				 
 				 ]
 		
 		string_export_list_non_dict = [
-				"region", "chosen_race", "character_full_name", 
-				"c_class", "c_class_2", 
-				"alignment", "age_number", 
-				"height_number", "weight_number", "dex", "str", 
-				"con", "int", "wis", "cha", 
-				"flaw", "Total_HP", "total_hp_rolls",
-				"bab_total",
-				"armor_ac", "shield_ac",
-				"armor_name", "armor_spell_failure", "armor_weight", "armor_armor_check_penalty", "armor_max_dex_bonus",
-				"shield_name", "shield_spell_failure", "shield_weight", "shield_armor_check_penalty", "shield_max_dex_bonus",				
-				"fort_saving_throw", "reflex_saving_throw", "wisdom_saving_throw",
-				"spell_list_choose_from",
-				"day_list", "known_list",
-				"deity_name", "skill_ranks",
-				"weapon_enhancement_chosen_list", "armor_enhancement_chosen_list", 
-				"shield_enhancement_chosen_list", "professions",
-				"selected_traits", "equipment_list", "level",
-				#  we don't use these in foundry, comment out if we do (all instances (but will need to fix program issue))
-				# "chosen_subrace", "subrace_description", 
-				"archetype1",
-				"hair_color", "hair_type", "eye_color", "appearance",
-				"language_text", "feats", 
-				"gold", "platnium",
-				"full_domain", "school", "opposing_school",
-				"bloodline",
-				"background_traits", "professions", "mannerisms", "flaws",
-				"hero_points", "class_ability_desc", "class_ability"
-
+					"region", "chosen_race", "character_full_name", 
+					"c_class", "c_class_2", 
+					"alignment", "age_number", 
+					"height_number", "weight_number", "dex", "str", 
+					"con", "int", "wis", "cha", 
+					"flaw", "Total_HP", "sheet_health",
+					"bab_total",
+					"armor_ac", "shield_ac",
+					"armor_name", "armor_spell_failure", "armor_weight", "armor_armor_check_penalty", "armor_max_dex_bonus",
+					"shield_name", "shield_spell_failure", "shield_weight", "shield_armor_check_penalty", "shield_max_dex_bonus",				
+					"fort_saving_throw", "reflex_saving_throw", "wisdom_saving_throw",
+					"spell_list_choose_from",
+					"day_list", "known_list",
+					"deity_name", "skill_ranks",
+					"weapon_enhancement_chosen_list", "armor_enhancement_chosen_list", 
+					"shield_enhancement_chosen_list", "professions",
+					"selected_traits", "equipment_list", "level",
+					# We don't use subrace data in foundryVTT (comment these out if we want to (will need to fix their issues first))
+					# "chosen_subrace", "subrace_description", 
+					"archetype1",
+					"hair_color", "hair_type", "eye_color", "appearance",
+					"language_text", "feats", 
+					"gold", "platnium",
+					"full_domain", "school", "opposing_school",
+					"bloodline",
+					"background_traits", "professions", "mannerisms", "flaws",
+					"hero_points", "gender",
+					"class_ability_desc", "class_ability",
+					"class features", "archetype_info",
+					"parents",
+					"older_brothers", "younger_brothers", 
+					"older_sisters", "younger_sisters",	
+					"weapon_name",
 
 				]
 		
