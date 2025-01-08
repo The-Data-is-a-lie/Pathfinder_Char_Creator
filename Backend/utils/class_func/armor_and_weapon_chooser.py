@@ -71,6 +71,11 @@ def reroll_weapon(character, name, choice, useable_weapons):
         while choice not in useable_weapons:
             choice = list_selection(character, name, 'weapon_data')
             choice = list(choice.keys())[0]
+            y = 0
+            y += 1
+            if y > 5:
+                choice = 'longsword'
+                break
     return choice
 
 # here to help create AC calculation
