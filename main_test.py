@@ -391,7 +391,9 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 		# Pre-loading JSON data (so we only do it 1x per item and not multiple times)
 		# Open JSON file to see if name is in that list, otherwise reroll and document
-		with open('Backend\\json\\foundry_item_names.json', 'r') as f:
+		
+		# This breaks perm server if Double \\ 
+		with open(r'Backend\json\foundry_item_names.json', 'r') as f:
 			foundry_item_names = json.load(f)
 		
 		equipment_list, equip_descrip = item_chooser(character, foundry_item_names)
@@ -665,9 +667,9 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 				"language_text", "feats", 
 				"gold", "platnium",
 				"full_domain", "school", "opposing_school",
-				 "bloodline",
-				 "background_traits", "professions", "mannerisms", "flaws",
-				 "hero_points", "class_ability_desc", "class_ability"
+				"bloodline",
+				"background_traits", "professions", "mannerisms", "flaws",
+				"hero_points", "class_ability_desc", "class_ability"
 
 
 				]

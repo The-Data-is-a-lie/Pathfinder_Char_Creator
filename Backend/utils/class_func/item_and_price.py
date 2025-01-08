@@ -87,11 +87,11 @@ def item_chooser(character, data):
 
     while i < len(select_from_list):
         equipment_name, random_equip, price, equip_descrip = choose_equipment(character, select_from_list[i])
-        print("equipment_name, random_equip, price, equip_descrip ", random_equip)
-        print('this is the anti-loop data: ', data)
+        # print("equipment_name, random_equip, price, equip_descrip ", random_equip)
+        # print('this is the anti-loop data: ', data)
         
         while random_equip not in data:
-            print("equipment_name, random_equip, price, equip_descrip ", random_equip)
+            # print("equipment_name, random_equip, price, equip_descrip ", random_equip)
             log_error(random_equip)
             equipment_name, random_equip, price, equip_descrip = choose_equipment(character, select_from_list[i])
 
