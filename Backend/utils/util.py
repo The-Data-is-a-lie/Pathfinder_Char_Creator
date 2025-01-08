@@ -228,10 +228,10 @@ def chooseClass(character, class_choice):
             
     print("available_classes", available_classes)
     print("these_are_available_classes", available_classes)
-    if not isinstance(class_choice, str) and class_choice not in available_classes:
+    if class_choice not in available_classes:
         class_choice = random.choice(available_classes)
 
-    if class_choice in occult_classes:
+    if class_choice in occult_classes or class_choice in path_of_war_class:
         class_choice = random.choice(available_classes)
 
     # userInput_class = input(f'please type a class name to select a class, or type 0 for a random class: ').lower()

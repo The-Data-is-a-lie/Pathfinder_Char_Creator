@@ -18,7 +18,7 @@ def print_metamagic(character):
 def feat_spell_searcher(character, class_1, chosen_set, types, info_column, info_column_2 = None):
     if chosen_set == None:
         return
-    print("this is your chosen_set", chosen_set)
+    # print("this is your chosen_set", chosen_set)
     if character.c_class == class_1:
         data = pd.read_csv(f'data/{types}.csv', sep='|', on_bad_lines='skip')
     
@@ -33,9 +33,9 @@ def feat_spell_searcher(character, class_1, chosen_set, types, info_column, info
 
         result_dict = {}
         result_dict = remove_dots_dashes(character, result_dict, query_result, info_column)
-        print("this is your result dict", result_dict) 
+        # print("this is your result dict", result_dict) 
         character.result_dict.update(result_dict)
-        print("this is your char result dict", character.result_dict)
+        # print("this is your char result dict", character.result_dict)
         
         return character.result_dict         
 
@@ -45,7 +45,7 @@ def remove_mythic(character, types, data, chosen_set, extraction_list):
         return None
 
     chosen_set_upper = {i.upper() for i in chosen_set}
-    print(f'This is your chosen set {chosen_set_upper}')
+    # print(f'This is your chosen set {chosen_set_upper}')
 
     if types == 'feats':
         query_result = data[(data['name'].str.upper().isin(chosen_set_upper)) & (data['type'] != 'Mythic')][extraction_list]
