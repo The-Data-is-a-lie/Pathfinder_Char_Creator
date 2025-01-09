@@ -135,7 +135,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='medium', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=1, num_sides=1, high_level=2, low_level=2, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='paladin', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=1, num_sides=1, high_level=20, low_level=20, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()
@@ -225,7 +225,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		spells_known_attr(character, "base_classes", "divine_casters")
 		spells_per_day_attr(character, "base_classes")
 		spells_per_day_from_ability_mod(character, "caster_mod")
-		spells_known_extra_roll(character )
+		spells_known_extra_roll(character)
 
 		character.spell_list_choose_from, day_list, known_list = spells_known_selection(character, 'base_classes','divine_casters')
 
@@ -710,6 +710,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		character.export_list_dict(export_list_dict, string_export_list_dict)		
 
 		print(character.c_class)
+		print("these are your class features ",  class_features)
 
 		# print(f'this is your character data {character.data_dict}')
 

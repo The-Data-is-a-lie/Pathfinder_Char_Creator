@@ -153,7 +153,7 @@ def spells_known_attr(character,base_classes, divine_casters):
 
 def spells_known_extra_roll(character):
     extra_spell_list = []        
-    if character.c_class_for_spells in ['alchemist','wizard']:
+    if character.c_class_for_spells in ['alchemist','wizard'] :
         for i in range(0,character.highest_spell_known_1 + 1):
             extra_spells = random.randint(1,10)
             extra_spell_list.append(extra_spells)
@@ -250,9 +250,10 @@ def spells_known_selection(character,base_classes,divine_casters):
                 break     
 
     elif character.casting_level_string != 'none' and character.c_class in divine_casters:   
+        day_list = extra_spells_divine(day_list)
         while i <= character.highest_spell_known_1:
             print(f'this is i {i}')
-            print(type(day_list[i]))
+            print('day_list: ', day_list[i])
             print(f"i: {i}, len(day_list): {len(day_list)}")
             print(day_list)
 
@@ -282,6 +283,12 @@ def spells_known_selection(character,base_classes,divine_casters):
 
     return character.spell_list_choose_from, day_list, known_list
 
+# remove if need to give an accurate spells per day (only for foundryVTT (to have more spells populate in list))
+def extra_spells_divine(day_list):
+    for i,num in enumerate(day_list):
+        random_num = random.randint(1,10)
+        day_list[i] = day_list[num] + random_num
+    return day_list
 
 
     
