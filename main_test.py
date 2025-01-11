@@ -135,7 +135,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='paladin', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=1, num_sides=1, high_level=20, low_level=20, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='oracle', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=1, num_sides=1, high_level=1, low_level=1, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()

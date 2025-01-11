@@ -48,7 +48,7 @@ def list_selection(character, name, limits=None, shield_flag=True):
         result_dict = {choice_2: result_2}
         # print('useable weapons ', useable_weapons)
         print('post useable weapons ', list(result_dict.keys())[0])
-        reroll_weapon(character, name, list(result_dict.keys())[0], useable_weapons)
+        reroll_weapon(character, name, list(result_dict.keys())[0], useable_weapons, result)
 
         print(f'This is your result: {result_dict}')
         
@@ -66,12 +66,12 @@ def list_selection_limits(character, name, limits=None):
     return key
 
 # Reroll weapon can take a few seconds -> (we may want to just make it output a specific weapon if it doesn't exist in the list rather than a while statement)
-def reroll_weapon(character, name, choice, useable_weapons):
+def reroll_weapon(character, name, choice, useable_weapons, result):
     if name == 'weapons_data':
         y = 0
         while choice not in useable_weapons:
-            choice = list_selection(character, name, 'weapon_data')
-            choice = list(choice.keys())[0]
+            choice = random.choice(result)
+            print("this is where it keeps erroring out  ", choice)
             y += 1
             if y > 5:
                 choice = 'longsword'

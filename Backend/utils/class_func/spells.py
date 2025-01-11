@@ -285,9 +285,10 @@ def spells_known_selection(character,base_classes,divine_casters):
 
 # remove if need to give an accurate spells per day (only for foundryVTT (to have more spells populate in list))
 def extra_spells_divine(day_list):
-    for i,num in enumerate(day_list):
+    # we need i,num > 0 otherwise it breaks here (B/c divine casters + cantrips/irisons breaks)
+    for i in range(len(day_list) -1):
         random_num = random.randint(1,10)
-        day_list[i] = day_list[num] + random_num
+        day_list[i] = day_list[i] + random_num
     return day_list
 
 
