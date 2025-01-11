@@ -335,6 +335,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		generic_class_option_chooser(character,"samurai", "orders")
 		generic_class_option_chooser(character,"warpriest", "blessing")
 		generic_class_option_chooser(character,"inquisitor", "inquisitions")
+		# Need to add revelations to oracle
 		generic_class_option_chooser(character,"oracle", "curses")
 		generic_class_option_chooser(character,"fighter",  dataset_name="armor_train", multiple='yes')
 		generic_class_option_chooser(character,"fighter", dataset_name="weapon_train", multiple='yes')
