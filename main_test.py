@@ -135,7 +135,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='oracle', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=1, num_sides=1, high_level=1, low_level=1, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='arcanist', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=4, num_sides=6, high_level=5, low_level=5, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()
@@ -624,7 +624,10 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 		print("older_brothers, younger_brothers, older_sisters, younger_sisters", older_brothers, younger_brothers, older_sisters, younger_sisters)
 
+		# For some reason class_features is being created as a dict inside a list, rather than a dict
 		class_features = character.data_dict['class features']
+		class_features = class_features[0]
+
 		export_list_non_dict = [
 				character.region, character.chosen_race,
 				character_full_name, character.c_class, character.c_class_2, 
@@ -712,6 +715,9 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 		print(character.c_class)
 		print("these are your class features ",  class_features)
+		print(class_features.keys())
+		print("length of class features ", len(class_features))
+		print("this is your character level ", character.c_class_level)
 
 		# print(f'this is your character data {character.data_dict}')
 

@@ -50,7 +50,7 @@ def list_selection(character, name, limits=None, shield_flag=True):
         print('post useable weapons ', list(result_dict.keys())[0])
         reroll_weapon(character, name, list(result_dict.keys())[0], useable_weapons, result)
 
-        print(f'This is your result: {result_dict}')
+        print(f'This is your result: {result_dict.keys()}')
         
         return result_dict
 

@@ -10,7 +10,6 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
             dataset = getattr(character, class_1, {}).get(dataset_name, {})
             dataset_list = list(dataset.keys())
             chosen_set = set()
-            chosen_set_desc = []
             i = 0
 
             dataset_2 = getattr(character, class_1, {}).get(dataset_name_2, {})
@@ -31,6 +30,7 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
                 chosen_set.add(chosen)
                 i = len(chosen_set)
 
+            
             chosen_set_desc = {desc: dataset[desc] for desc in chosen_set}
             # character.full_data_dictionary(data_dict, chosen_set, chosen_set_desc)
             character.data_dict['class features'].append(chosen_set_desc)
@@ -106,9 +106,11 @@ def choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, bas
     # added this logic so low level characters don't break
     if amount == None or amount <= 0:
         return [], [], []
-        
+
     chosen_set = set()
-    for i in range(amount):
+    i = 0
+    while i < amount:
+    # for i in range(amount):
         chosen = random.choice(total_choices)
         even = f"{class_1} {2 * (i + 1)}"
         odd = f"{class_1} {2 * i + 1}"
