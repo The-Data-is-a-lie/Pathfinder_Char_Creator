@@ -25,6 +25,7 @@ from Backend.utils.class_func.feats import build_selector, chooseable_list, choo
 from Backend.utils.class_func.flag_assign import human_flag_assigner, druidic_flag_assigner
 from Backend.utils.class_func.generic_func import generic_class_option_chooser, get_data_without_prerequisites#, no_prereq_loop, chosen_set_append
 from Backend.utils.class_func.grand_discovery import grand_discovery_chooser
+from Backend.utils.class_func.gunslinger import choose_gun_func
 from Backend.utils.class_func.hero_point_generator import hero_point_generator
 from Backend.utils.class_func.hp_rolls import roll_hp, total_hp_calc, hit_dice_calc
 from Backend.utils.class_func.item_and_price import item_chooser
@@ -70,6 +71,7 @@ character_json_config = {
 	'profession': 'Backend/json/profession.json',
 	'last_names_regions': 'Backend/json/last_names_regions.json',
 	'first_names_regions': 'Backend/json/first_names_regions.json',
+	'firearms': 'Backend/json/firearms.json',
 	'flaws': 'Backend/json/flaws.json',
 	'archetypes': 'Backend/json/archetypes.json',
 	'spells_known': 'Backend/json/spells_known.json',
@@ -85,7 +87,7 @@ character_json_config = {
 	'animal_companion': 'Backend/json/animal_companion.json',	
 	'animal_choices': 'Backend/json/animal_choices.json',
 	'wizard_schools': 'Backend/json/wizard_schools.json',	
-	'gunslinger_deeds_dares': 'Backend/json/gunslinger_deeds_dares.json',					
+	# 'gunslinger_deeds_dares': 'Backend/json/gunslinger_deeds_dares.json',					
 	"feat_buckets": "Backend/json/feat_buckets.json",
 	"armor": "Backend/json/armor.json",
 	"weapons_data": "Backend/json/weapons_data.json",
@@ -135,7 +137,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='arcanist', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=4, num_sides=6, high_level=5, low_level=5, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='gunslinger', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=4, num_sides=6, high_level=15, low_level=15, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()
@@ -380,6 +382,8 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 		# character.print_metamagic()
 
+		# Choosing guns for gunslinger
+		choose_gun_func(character, character.c_class)
 
 
 
@@ -626,7 +630,9 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 		# For some reason class_features is being created as a dict inside a list, rather than a dict
 		class_features = character.data_dict['class features']
-		class_features = class_features[0]
+		print("class_features", class_features)
+		if isinstance(class_features, list) and len(class_features) > 0:
+			class_features = class_features[0]
 
 		export_list_non_dict = [
 				character.region, character.chosen_race,
@@ -713,11 +719,14 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		character.export_list_non_dict(export_list_non_dict, string_export_list_non_dict)		
 		character.export_list_dict(export_list_dict, string_export_list_dict)		
 
-		print(character.c_class)
-		print("these are your class features ",  class_features)
-		print(class_features.keys())
-		print("length of class features ", len(class_features))
-		print("this is your character level ", character.c_class_level)
+
+		if isinstance(class_features, list) and len(class_features) > 0:
+			print(character.c_class)
+			print("these are your class features ",  class_features)
+			print(class_features.keys())
+			print("length of class features ", len(class_features))
+			print("this is your character level ", character.c_class_level)
+
 
 		# print(f'this is your character data {character.data_dict}')
 

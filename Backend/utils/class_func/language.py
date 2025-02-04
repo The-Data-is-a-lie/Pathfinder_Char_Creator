@@ -32,12 +32,12 @@ def language_splitter(character, language_text):
         pre_language_list = language_text.split(",")
         language_list = []
         for lang in pre_language_list:
-            print("this is your pre lang transform " + lang)
+            # print("this is your pre lang transform " + lang)
             lang = lang.strip()
             lang = remove_word(character, lang, 'and')  # Remove 'and' before splitting
             capitalized_lang = capitalize_after_dash(lang)
             language_list.append(capitalized_lang)
-            print("this is your post lang transform " + capitalized_lang)
+            # print("this is your post lang transform " + capitalized_lang)
 
     return language_list
 
