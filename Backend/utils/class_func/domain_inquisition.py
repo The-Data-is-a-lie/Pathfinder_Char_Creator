@@ -22,9 +22,11 @@ def domain_chooser(character):
     if (character.c_class == 'inquisitor' or character.c_class_2 == 'inquisitor' and character.domain_chance > 90):
 
         deity_choice_list = list(character.deity_choice['Domains'])
-        character.chosen_domain = random.sample(deity_choice_list,k=1)
+        character.chosen_domain = random.sample(deity_choice_list,k=2)
         chosen_first = character.chosen_domain[0].capitalize()
+        chosen_second = character.chosen_domain[1].capitalize()
         print(f'This is your first selected domain {character.chosen_domain[0]} + its info: \n{character.cleric_domains["domains"][chosen_first]}')
+        print(f'This is your second selected domain {character.chosen_domain[1]} + its info: \n{character.cleric_domains["domains"][chosen_second]}')  
 
         return character.chosen_domain    
 
@@ -45,7 +47,7 @@ def inquisition_chooser(character):
             character.domain_chooser()
 
         else:
-            character.inquisition_choice = random.choice(list(valid_inquisitions))
+            character.inquisition_choice = random.sample(list(valid_inquisitions), k=2)
             print(character.inquisition_choice)
 
             return character.inquisition_choice

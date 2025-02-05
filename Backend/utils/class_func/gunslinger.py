@@ -17,6 +17,8 @@ def choose_gun_func(character, c_class):
         if choice in useable_weapons:
             chosen_weapons.add(choice)
 
-    character.data_dict.update({'class features': list(chosen_weapons)})
-    return chosen_weapons 
+    result = {"gun training": list(chosen_weapons)}
+
+    character.data_dict.update({'class features': result})
+    return result 
         

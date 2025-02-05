@@ -262,6 +262,9 @@ amount = {
   },
   'sorcerer': {
         'feats': [7,13,19,25,31,37,43,49]
+  },
+  'inquisitor': {
+        'inquisitions': [1,1]
   }
 }
 

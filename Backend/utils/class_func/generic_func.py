@@ -16,8 +16,10 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
             dataset_2_list = list(dataset_2.keys())
             # print(f'This is dataset {dataset}')    
 
+            print("amount",amount)
+            print(i, amount[i])
+            while i < len(amount) and amount[i] < character.c_class_level:
 
-            while amount[i] < character.c_class_level:
                 if dataset_name_2 != None and character.c_class_level >= level:
                     dataset_list.extend(dataset_2_list)
                     dataset.update(dataset_2)
@@ -29,6 +31,7 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
                 chosen = random.choice(dataset_list)
                 chosen_set.add(chosen)
                 i = len(chosen_set)
+                print(chosen_set)
 
             
             chosen_set_desc = {desc: dataset[desc] for desc in chosen_set}
