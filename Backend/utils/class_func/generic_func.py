@@ -101,6 +101,10 @@ def get_data_without_prerequisites(character, class_1, dataset_name, level= None
         print("dataset", dataset)
         
         chosen_set, chosen_desc, chosen_dict = choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, base, level, total_choices)
+ 
+    # print("chosen_set", chosen_set)
+    print("chosen_desc", chosen_desc)
+    # print("chosen_dict", chosen_dict)
 
     character.data_dict.update({'class features': chosen_dict})
     return base_no_prereq, dataset_no_prereq, chosen_set
@@ -112,6 +116,9 @@ def choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, bas
 
     chosen_set = set()
     i = 0
+    # ensure that all dict keys are lower:
+    dataset = {k.lower(): v for k, v in dataset.items()}
+    
     while i < amount:
     # for i in range(amount):
         chosen = random.choice(total_choices)
@@ -129,7 +136,9 @@ def choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, bas
         total_choices = remove_duplicates_list(character, total_choices)
         total_choices=list(set(total_choices))
 
+        print("post dataset", dataset)
         chosen_desc = {chosen: dataset.get(chosen, {})}
+        print("ultimate chosen", chosen_desc)
         chosen_dict = chosen_set_append(character, dataset, chosen_set, chosen)
 
     return chosen_set, chosen_desc, chosen_dict
