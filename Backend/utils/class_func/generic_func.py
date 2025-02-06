@@ -191,49 +191,49 @@ def remove_duplicates_list(character, input_list):
             result.append(item)
     return result
 
-def generic_multi_chooser(character, class_1, dataset_name, n, n2=None):
-    if character.c_class == class_1:
-        dataset = getattr(character, class_1, {}).get(dataset_name, {})
-        dataset_list = []
-        chosen_set = set()
-        chosen_list = []
-        chosen_set_desc = []
-        i = 0
+def generic_multi_chooser(character, class_1, dataset_name,  n2=None, start_level = 1):
+    if character.c_class != class_1:
+        return None
+    
+    dataset = getattr(character, class_1, {}).get(dataset_name, {})
+    dataset_list = []
+    level = character.c_class_level
 
-        level = character.c_class_level   
-        # Added logic so low level characters can't break at this point
-        ii = floor(level // 3)
-        if ii <= 0:
-            return None        
+    divisor = n2 if isinstance(n2, int) else 3
+    selection_count = max(floor((level - start_level) / divisor) + 1, 0) 
+    chosen_set = set()
 
-        while i < ii:
-            # print(dataset)
-            # print(dataset.keys())
-            if n2 != None:
-                level = (n // n2 * (i + 1))
-                string_level = str(max(level,4))
-            else:
-                string_level = str((n * (i + 1)))
+    i = 0
+    while (i-1) < selection_count:
+        effective_level = start_level + (i*divisor)
+        if effective_level > level:
+            break
 
-            dataset_list += dataset.get(string_level, [])
-            print(f'This is your chooseable dataset {dataset_list}')
-            chosen = random.choice(dataset_list)
-            chosen_set.add(chosen)
+        print(f"Effective level: {effective_level}")
+        dataset_list += dataset.get(str(effective_level), [])
 
-            for condition, item in [('fatigued', 'exhausted'), ('shaken', 'frightened'),
-                                    ('sickened', 'nauseated'), ('enfeebled', 'restorative'),
-                                    ('injured', 'amputated')]:
-                if condition not in chosen_set:
-                    chosen_set.discard(item)
+        print(dataset_list)
 
-            print(chosen_set)
-            i = min(len(chosen_set),ii)
+        # create weights to pick higher level abilities more:
+        list_size = len(dataset_list)
+        # exponentially increase weights [1,4,9,16,25 ...]
+        weights = [(i + 1) ** 2 for i in range(list_size)]
+        chosen = random.choices(dataset_list, weights=weights, k=1)[0]
+        chosen_set.add(chosen)
 
-        chosen_dict = {}
-        pre_chosen_dict = chosen_set_muilt_append(character, dataset, chosen_set, chosen, dataset_name)
-        chosen_dict.update({dataset_name: pre_chosen_dict})
-        character.data_dict.update({'class features': chosen_dict})
-        return chosen_dict  
+        for condition, item in [('fatigued', 'exhausted'), ('shaken', 'frightened'),
+                                ('sickened', 'nauseated'), ('enfeebled', 'restorative'),
+                                ('injured', 'amputated')]:
+            if condition not in chosen_set:
+                chosen_set.discard(item)
+
+        i = len(chosen_set)
+        print("chosen set", chosen_set)
+
+    chosen_dict = {dataset_name: chosen_set}
+    character.data_dict.update({'class features': chosen_dict})
+    return chosen_dict
+
 
 def chosen_set_muilt_append(character, dataset, chosen_set, chosen, dataset_name):
     chosen_dict = {}

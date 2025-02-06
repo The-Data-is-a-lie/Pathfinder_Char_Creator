@@ -137,7 +137,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='investigator', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=4, num_sides=6, high_level=15, low_level=15, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='monk', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=4, num_sides=6, high_level=15, low_level=15, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()
@@ -368,9 +368,9 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 
 		# >2 Choices based on level
-		generic_multi_chooser(character,"paladin", "mercy", n=3)
-		generic_multi_chooser(character,"antipaladin", "cruelty",n=3)
-		ki_powers = generic_multi_chooser(character,"monk", "ki_powers",n=4,n2=2)
+		generic_multi_chooser(character,"paladin", "mercy", n2=3, start_level=3)
+		generic_multi_chooser(character,"antipaladin", "cruelty",n2=3, start_level=3)
+		ki_powers = generic_multi_chooser(character,"monk", "ki_powers",n2=2,start_level=4)
 
 
 		# feat + spell searcher
@@ -720,7 +720,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		character.export_list_dict(export_list_dict, string_export_list_dict)		
 
 
-		if isinstance(class_features, list) and len(class_features) > 0:
+		if (isinstance(class_features, list) or isinstance(class_features, dict)) and len(class_features) > 0:
 			print(character.c_class)
 			print("these are your class features ",  class_features)
 			print(class_features.keys())
