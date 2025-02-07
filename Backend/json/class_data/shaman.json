@@ -1,10 +1,5 @@
 {
   "spirits": {
-      "frost": {
-          "spirit magic spells": "frostbite (1st), elemental touch (cold only, 2nd), elemental aura (cold only, 3rd), ice storm (4th), summon monster V (ice elementals only, 5th), freezing sphere (6th), ice body (7th), polar ray (8th), mass icy prison (9th).",
-          "guardian of the north (su)": "as a standard action, the shaman assumes the form, as beast shape IV, of one of the following animals dire bear, dire tiger, mastodon, or woolly rhinoceros. the duration of this transformation is 1 hour per level. the shaman can use this ability once per day.",
-          "upon reaching 20th level, the shaman becomes a being of ice and snow. the shaman gains immunity to cold. she can also apply any one of the following feats to any spell with the cold descriptor that she casts without increasing the spell’s level or casting time": "enlarge spell, extend spell, silent spell, or still spell. she doesn’t need to have these feats to use this ability."
-      },
       "tribe": {
           "spirit magic spells": "bless (1st), shield other (2nd), create food and water (3rd), spiritual ally (4th), life bubble (5th), battlemind link (6th), vision (7th), discern location (8th), mass heal (9th).",
           "hexes": "a shaman who chooses the tribe spirit can select from the following hexes.",
@@ -16,9 +11,6 @@
           "tribal cooperation (su)": "the shaman gains a teamwork feat as a bonus feat. she must meet the feat’s prerequisites. as a standard action, the shaman can grant one of her teamwork feats to all allies within 30 feet who can see and hear her. allies retain the use of this bonus feat for 3 rounds plus 1 round for every 2 levels the shaman has. allies do not need to meet the prerequisites of this bonus feat. the shaman can use this ability a number of times per day equal to 3 + her charisma modifier.",
           "tribal bond (sp)": "the shaman and her tribe share a transcendent bond. once per day when she communes with her spirit animal to regain spells, the shaman can select a number of creatures equal to half her shaman level to serve as her honorary tribe. these creatures can constantly communicate with each other, as telepathic bond.",
           "guardian of the tribe (su)": "the shaman can cast a harmless spell with a range of touch on a member of her tribal bond as long as that creature is within 30 feet. the shaman can use this ability a number of times per day equal to her charisma modifier (minimum 1). in addition, she is constantly aware of the condition of all members of her tribal bond ability, as status."
-      },
-      "ancestors": {
-          "spirit magic spells": "unseen servant (2nd), spiritual weapon (4th), heroism (6th), spiritual ally (8th), telekinesis (10th), greater heroism (12th), ethereal jaunt (14th), vision (16th), astral projection (18th)."
       },
       "battle": {
           "spirit magic spells": "enlarge person (1st), fog cloud (2nd), magic vestment (3rd), wall of fire (4th), righteous might (5th), mass bull’s strength (6th), control weather (7th), earthquake (8th), storm of vengeance (9th).",
@@ -87,9 +79,6 @@
         "automatic writing (su)": "once per day, the shaman can spend 10 minutes in uninterrupted meditation to tap into greater understanding. during this period, her hands produce mysterious writings pertaining to the future. this writing takes the form of divination with 90% effectiveness. the shaman can use this ability an additional time per day at 12th, 16th, and 20th levels.",
         "perfect knowledge (ex)": "the shaman gains the benefit of the tongues spell permanently. she also gains a +10 competence bonus on all knowledge, linguistics, and spellcraft checks."
       },
-      "mammoth": {
-        "spirit magic spells": "enlarge person (1st), bull’s strength (2nd), rage (3rd), stoneskin (4th), beast shape III (5th), tar pool (6th), summon nature’s ally VII (7th), frightful aspect (8th), polar midnight (9th)."
-      },
       "nature": {
         "spirit magic spells": "charm animal (1st), barkskin (2nd), speak with plants (3rd), grove of respite (4th), awaken (5th), stone tell (6th), creeping doom (7th), animal shapes (8th), world wave (9th).",
         "entangling curse (su)": "the shaman entangles a creature within 30 feet for a number of rounds equal to the shaman’s charisma modifier (minimum 1). a successful reflex saving throw negates this effect. whether or not the save is successful, the creature cannot be the target of this hex again for 24 hours.",
@@ -101,7 +90,6 @@
         "spirit of nature (su)": "whenever the shaman is reduced to below 0 hit points, she automatically stabilizes and gains fast healing 1 for 1d4 rounds. at 15th level, this increases to fast healing 3.",
         "companion animal (su)": "the shaman’s spirit animal takes the form of an animal companion of her choice, using her shaman level as her effective druid level. the animal retains all the special abilities and the intelligence score of the spirit animal, but also has the statistics and abilities of an animal companion. if the animal is dismissed, is lost, or dies, it can be replaced in the same way as a normal spirit animal."
       },
-      "slums": {},
       "stone": {
         "spirit magic spells": "magic stone (1st), stone call (2nd), meld into stone (3rd), wall of stone (4th), stoneskin (5th), stone tell (6th), statue (7th), repel metal and stone (8th), clashing rocks (9th).",
         "crystal sight (ex)": "the shaman sees through stone, earth, or sand as easily as if it were transparent crystal. her gaze can penetrate a number of feet equal to her shaman level (or 1/12th this thickness of metal). the shaman can use this ability a number of rounds per day equal to her shaman level, but these rounds do not need to be consecutive.",
@@ -149,5 +137,219 @@
         "bloody roots (sp)": "as a standard action, the shaman can cause a field of thick roots to burrow up from the ground. this ability functions as black tentacles with a caster level equal to the shaman’s level. the area is centered on the shaman when she activates the ability but remains stationary if she then moves. the shaman is unaffected by the roots. her allies treat the area as difficult terrain, but the roots don’t attack them.",
         "tree form (sp)": "as a standard action, the shaman can assume the form of a plant creature as per plant shape III with a duration of 1 hour per level. she can use this ability once per day."
       }
-  }
+  },
+  "hexes": {
+    "basic": {
+  
+    "Ameliorating (Su)":[ "The witch can touch a creature to suppress or protect it from negative conditions. The witch chooses one of the following conditions each time she uses this hex: dazzled, fatigued, shaken, or sickened. If the target is or later becomes afflicted with the chosen condition, that condition is suppressed for a number of minutes equal to the witch's level. Alternatively, the witch can grant her target a +4 circumstance bonus on saving throws against effects that cause any two of the listed conditions (which condition is always the witch's choice) for 24 hours. Once a creature has benefited from this hex, it cannot benefit from the hex again for 24 hours."
+  ],
+  
+    "Aura of Purity (Su)":[ "The witch's aura purifies the air\r around her. Diseases, inhaled poisons, and noxious\r gaseous effects (such asstinking cloud) are negated in a\r 10-foot aura around the witch for a number of minutes\r equal to her level. This duration does not need to be\r consecutive, but it must be spent in 1-minute increments.\r Effects caused by spells whose level is more than half the\r witch's class level are unaffected."
+  ],
+  
+    "Beast of Ill-Omen (Su)":[ "The witch imbues her familiar with strange magic, putting a minor curse upon the next enemy to see it. The enemy must make a Will save or be affected bybane(caster level equal to the witch's level). The witch can use this hex on her familiar at a range of up to 60 feet. The affected enemy must be no more than 60 feet from the familiar to trigger the effect; seeing the familiar from a greater distance has no effect (though if the enemy and familiar approach to within 60 feet of each other, the hex takes effect). Thebaneaffects the closest creature to the familiar (ties affect the creature with the highest initiative score). Whether or not the target's save is successful, the creature cannot be the target of thebaneeffect for 1 day (later uses of this hex ignore that creature when determining who is affected)."
+  ],
+  
+    "Blight (Su)":[ "The witch can curse an animal, plant creature, or plot of land, causing it to wither and die. Blighting an area takes 1 round, during which time the witch and her familiar must be in contact with the target. If it's used on a plot of land, the land begins to wither the following day, and over the next week all plants in the area die. Nothing will grow in that area so long as the curse persists. A witch can affect an area with a radius equal to her class level × 10 feet. Blighting a creature is a standard action that requires a melee touch attack. If used on a creature of the animal or plant type, the creature gains the following curse: Blight Hex—typecurse;saveWill negates;frequency1/day;effect1 Con damage. Both types of curse can be removed with aremove curseor similar magic, using the save DC as the DC to remove the curse. A witch can only have one blight in effect at a time. If another blight hex is made, the first immediately ends."
+  ],
+  
+    "Cackle (Su)":[ "A witch can cackle madly as a move action. Any creature that is within 30 feet that is under the effects of an agony hex, charm hex, evil eye hex, fortune hex, or misfortune hex caused by the witch has the duration of that hex extended by 1 round."
+  ],
+  
+    "Cauldron (Ex)":[ "The witch receives Brew Potion as a bonus feat and a +4 insight bonus on Craft (alchemy) skill checks."
+  ],
+  
+    "Charm (Su)":[ "A witch can charm an animal or humanoid creature within 30 feet by beckoning and speaking soothing words. This improves the attitude of an animal or humanoid creature by 1 step, as if the witch had successfully used the Diplomacy skill. The effect lasts for a number of rounds equal to the Witch's Intelligence modifier. A Will save negates this effect. Whether or not the save is successful, a creature cannot be the target of this hex again for 1 day. At 8th level, this effect improves the attitude of the target creature by 2 steps. This is a mind-affecting charm effect."
+  ],
+  
+    "Child-Scent (Ex)":[ "The witch gains the scent ability, but only with respect to humanoid children and immature animals. Thus, she could sniff out a child's hiding place or a den of wolf pups, but not the child's parents or the den mother."
+  ],
+  
+    "City Sight (Su)":[ "The witch curses a target with the simple vision of urban mortals. On a failed Fortitude save, the subject loses the use of darkvision, greensight, low-light vision, see in darkness, and other visual abilities beyond simple sight, but not nonvisual means of perception like blindsight, scent, or tremorsense. This effect lasts 1 minute. At 8th level, this effect lasts for 10 minutes instead. Whether or not the creature succeeds at the saving throw, it can't be the target of this hex again for 1 day."
+  ],
+  
+    "Combat Hypnosis (Su)":[ "The witch can lull her enemies into a trance, even in the chaos of combat. This hex functions ashypnotism, except it can affect only one creature at a time, and the target creature does not receive the usual +2 bonus on its saving throw while in combat. Whether or not the save is successful, a creature cannot be the target of this hex again for 1 day."
+  ],
+  
+    "Congeal (Su)":[ "The witch can make the water in a 10-foot radius around her sludgy and viscous for 1 minute, causing it to function as difficult terrain for all swimming creatures except herself. This also provides partial cover against physical effects that pass through the affected area."
+  ],
+  
+    "Coven (Ex)":[ "The witch counts as a hag for the purpose of joining a hag's coven. The coven must contain at least one hag. In addition, whenever the witch with this hex is within 30 feet of another witch with this hex, she can use the aid another action to grant a +1 bonus to the other witch's caster level for 1 round. This bonus applies to the witch's spells and all of her hexes."
+  ],
+  
+    "Cursed Wound (Su)": [ "The witch can curse a living creature, preventing it from healing completely. For a number of days equal to 3 + the witch's Intelligence modifier (minimum 1), whenever the victim is the target of a conjuration (healing) spell or magical healing effect, the caster of the healing effect must succeed at a caster level check (DC = 11 + the witch's level) to end the hex. If the check fails, the healing effect functions as normal, except it cannot remove the last 10 points of damage the victim suffered. Similarly, natural healing, fast healing, and regeneration fail to cure the victim's last 10 points of damage. Thus, the victim's effective maximum number of hit points is 10 fewer than normal. A successful Will save reduces the duration of this hex to 1 round. At 5th level, the victim of this hex also takes a –2 penalty on Fortitude saving throws to avoid contracting a disease or poison from an injury. This is a curse effect and can be removed byremove curse."
+  ],
+  
+    "Dark Apothecary (Ex)":[ "The witches of ancient Iblydos were masters of herbalism, crafting potent drugs and poisons. The witch receives a +4 insight bonus on checks to craft and apply poison."
+  ],
+  
+    "Deathcall (Su)":[ "The witch's presence makes death more likely for wounded foes. Creatures within 120 feet of the witch take a –1 penalty on checks to stabilize when dying. At 8th level, this penalty changes to –2, and at 16th level, it changes to –3."
+  ],
+  
+    "Discord (Su)":[ "The witch can make an animal or humanoid within 30 feet distrust another creature within line of sight. The target's attitude toward the other creature decreases by one step. A successful Will save negates this effect. The effect lasts for a number of rounds equal to the witch's Intelligence modifier. The duration can be extended with the cackle hex. Whether or not the save is successful, a creature cannot be the target of this hex again for 1 day. At 8th level, this effect decreases the attitude of the target creature by two steps. This is a mind-affecting charm effect."
+  ],
+  
+    "Disguise (Sp)":[ "A witch can change her appearance for a number of hours equal to her class level, as if usingdisguise self. These hours do not need to be consecutive, but they must be spent in 1-hour increments."
+  ],
+  
+    "Disrupt Connection (Su)":[ "The hexer disrupts the connection between a summoned creature within 30 feet and its master. The summoned creature must succeed at a Will save or be confused for 1d4 rounds. While it's confused in this way, during any round in which the percentile die roll to determine the creature's confusion result is 76–100, the affected creature instead acts as if the hexer had summoned it (attacking the hexer's enemies or performing such other tasks that the hexer can communicate to it). At 8th level, this hex causes the summoned creature to act as if the hexer had summoned it on a result of 51–100. At 16th level, this hex causes the summoned creature to act this way on a result of 26–100. The cackle hex extends the duration of this hex by 1 round. Once a creature has been the target of this hex, that creature is immune to this hex for 24 hours."
+  ],
+  
+    "Distraction (Su)":[ "The witch can cause a creature within 30 feet to suffer hallucinatory distractions whenever it tries to cast a spell or use a spell-like ability for 1 round. Anytime the creature attempts to do so, it must succeed at a concentration check (DC = 15 + twice the spell level) or lose the spell. A successful Will saving throw negates this hex. At 8th level and 16th level, the duration of this hex is extended by 1 round. Whether or not the save is successful, a creature cannot be the target of this hex again for 1 day. Hexes that affect the misfortune hexAPG, such as cackleAPG, also affect distraction."
+  ],
+  
+    "Enemy Ground (Su)":[ "The witch curses a target with clumsiness when in dangerous terrain. The target takes a –4 penalty on Acrobatics checks to move over slippery or uneven surfaces and to avoid attacks of opportunity while moving through threatened squares. This effect lasts for 1 minute. On a successful Will save, the penalty is reduced by half and the duration is only 1 round. At 8th level, this penalty increases to –8."
+  ],
+  
+    "Evil Eye (Su)":[ "The witch can cause doubt to creep into the mind of a foe within 30 feet that she can see. The target takes a –2 penalty on one of the following (witch's choice): AC, ability checks, attack rolls, saving throws, or skill checks. This hex lasts for a number of rounds equal to 3 + the witch's Intelligence modifier. A Will save reduces this to just 1 round. This is a mind-affecting effect. At 8th level the penalty increases to –4."
+  ],
+  
+    "Feral Speech (Su)":[ "This hex grants the witch the ability to speak with and understand the response of any animal as if usingspeak with animals, though each time she uses the hex, she must decide to communicate with either amphibians, birds, fish, mammals, or reptiles, and can only speak to and understand animals of that type. The witch can make herself understood as far as her voice carries. This hex does not predispose any animal so addressed toward the witch in any way. At 12th level, the witch can use this hex to communicate with vermin."
+  ],
+  
+    "Flight (Su)":[ "The witch grows lighter as she gains power, eventually gaining the ability to fly. At 1st level, the witch can usefeather fallat will and gains a +4 racial bonus on Swim checks. At 3rd level, she can castlevitateonce per day. At 5th level, she can fly, as per the spell, for a number of minutes per day equal to her level. These minutes do not need to be consecutive, but they must be spent in 1-minute increments. This hex only affects the witch."
+  ],
+  
+    "Floating Lotus (Su)":[ "The witch can conjure a large lotus flower that floats by her side for a number of minutes per day equal to her level. This duration doesn't need to be consecutive, but must be spent in 1-minute increments. While summoned, the witch can use the lotus to cross water as if she was affected bywater walk. She can also use the flower for short bursts of flight, gaining a +10 enhancement bonus on Acrobatics checks when attempting high jumps and long jumps. This bonus increases by 10 at 5th level, and again at 9th level."
+  ],
+  
+    "Fortune (Su)":[ "The witch can grant a creature within 30 feet a bit of good luck for 1 round. The target can call upon this good luck once per round, allowing him to reroll any ability check, attack roll, saving throw, or skill check, taking the better result. He must decide to use this ability before the first roll is made. At 8th level and 16th level, the duration of this hex is extended by 1 round. Once a creature has benefited from the fortune hex, it cannot benefit from it again for 24 hours."
+  ],
+  
+    "Gift of Consumption (Su)":[ "The witch curses a creature to share any effects that target her vitality. Whenever the witch is exposed to an effect that requires her to attempt a Fortitude save, as an immediate action she can curse a creature within 30 feet to share the effect. The hexed creature must also attempt a Fortitude save at the same DC as the witch's, and on a failure it is subject to the same effects as the witch. Regardless of the outcome of the saving throw, the creature can't be targeted by this hex again for 1 day. This hex does not function with effects that require additional types of saves, such asphantasmal killer."
+  ],
+  
+    "Greater Gift of Consumption (Su)":[ "The witch can more effectively redirect effects to her proxy chosen by the gift of consumption hex. When the witch succeeds at her Fortitude save against an effect that she has redirected to a proxy, the hexed creature takes a –4 penalty on its Fortitude save against the redirected effect. If the witch ever fails a Fortitude save or intentionally exposes herself to an effect that requires a Fortitude save, such as by ingesting a poison, she can redirect that effect to affect only the hexed creature, though the hexed creature can still attempt a saving throw to resist the effects. Once she has redirected an effect to another creature in this way, that creature cannot be affected by the gift of consumption hex again for 24 hours. The witch must have the gift of consumption hex to select this hex."
+  ],
+  
+    "Healing (Su)":[ "A witch can soothe the wounds of those she touches. This acts as acure light woundsspell, using the witch's caster level. Once a creature has benefited from the healing hex, it cannot benefit from it again for 24 hours. At 5th level, this hex acts likecure moderate wounds."
+  ],
+  
+    "Heralding Bloom (Su)":[ "A witch can compel a plant within 30 feet to spread a message, which must be 25 words or fewer and in a language the witch speaks. This message can't contain verbal spell components, command words, or other magical effects. An intelligent plant that's targeted can attempt a Will save to negate the effect. If the save fails, the plant is magically compelled to \"speak\" this message in an audible voice, repeating it each time one or more intelligent creatures to whom the message has not yet been repeated comes within range, until 24 hours after the hex has been placed. The plant under the effect of the hex does not gain any special intelligence from this hex or gain any ability to understand the message if it does not normally understand the language the message is delivered in, and it is in no way otherwise compelled to act in any way it would not normally. A witch can have a number of heralding blooms active equal to her witch level + her Charisma modifier."
+  ],
+  
+    "Iceplant (Su)":[ "This hex grants the witch and her familiar a +2 natural armor bonus and the constant effects ofendure elements. The effect leaves the witch's skin thick and stiff to the touch."
+  ],
+  
+    "Leshy Summoning (Su)":[ "The witch counts as a plant creature for the purpose of growing leshys. She addsleaf leshys,gourd leshys,fungus leshys,seaweed leshys, andlotus leshysto the list of creatures she can summon withsummon monster I,II,III,IV, andV, respectively."
+  ],
+  
+    "Minor Prophecy (Su)":[ "The witch can call on her prophetic ancestors to castauguryonce per day. She can spend a full hour casting the spell to negate the need for material components, but this reduces the accuracy of the spell by 5%."
+  ],
+  
+    "Misfortune (Su)":[ "The witch can cause a creature within 30 feet to suffer grave misfortune for 1 round. Anytime the creature makes an ability check, attack roll, saving throw, or skill check, it must roll twice and take the worse result. A Will save negates this hex. At 8th level and 16th level, the duration of this hex is extended by 1 round. This hex affects all rolls the target must make while it lasts. Whether or not the save is successful, a creature cannot be the target of this hex again for 1 day."
+  ],
+  
+    "Mother's Eye (Su)":[ "The witch can see through plant matter, as the greensight universal monster ability (Pathfinder RPG Bestiary 4 295), for a number of minutes per day equal to her witch level. These minutes do not need to be consecutive, but must be spent in 1-minute increments."
+  ],
+  
+    "Mud Witch (Su)":[ "A witch with this hex can assume the form of viscous brown mud. The witch's type changes to ooze and she is able to squeeze through even the smallest cracks, but she can't make attacks or cast spells with verbal, somatic, material, or focus components while in this form, and she loses her supernatural abilities. If the witch has a touch spell ready to use, that spell is discharged harmlessly when she uses this hex. While the witch is in mud form, her speed becomes 10 feet and she gains a swim speed of 20 feet. The witch gains DR 10/slashing and cold resistance 10. At 10th level, while the witch is in mud form, her speed increases to 20 feet and her swim speed increases to 40 feet. She can use this ability for a number of minutes per day equal to her level. The duration doesn't need to be consecutive, but it must be spent in 1-minute increments. This hex affects only the witch. The witch must have the swamp hag hexUMto select this hex."
+  ],
+  
+    "Murksight (Su)":[ "The witch can see through natural fog, mist, and rain without penalty, ignoring any concealment bonuses gained from such effects. If the effect is created by magic, the witch can see up to 15 feet without penalty, with normal penalties and effects applying beyond that distance. This ability functions underwater as well, allowing the witch to see in murky water as though it were clear. This does not allow the witch to see anything she could not see otherwise, such as an invisible creature."
+  ],
+  
+    "Nails (Ex)":[ "The witch's nails are long and sharp, and count as natural weapons that deal 1d3 points of damage (1d2 for a Small witch). These attacks are secondary attacks. If trimmed, the witch's nails regrow to their normal size in 1d4 days."
+  ],
+  
+    "No Place Like Home (Su)":[ "The witch fills an ally with the safety he feels at home or inflicts pangs of homesickness to hamper an enemy's defenses. She chooses a target for the hex within 30 feet. If she chooses an ally, that ally gains a +2 dodge bonus to AC against traps and on Reflex saves against traps. If she chooses an opponent, that opponent takes a –2 penalty to AC against traps and on Reflex saves against traps. Either way, the effects last for 1 minute. The target can attempt a Will save to negate the effects of the hex. At 8th level, the bonus or penalty increases to 4. At 16th level, the bonus or penalty increases to 6. A creature targeted by this hex cannot be targeted again by this hex for 1 day."
+  ],
+  
+    "Peacebond (Su)":[ "A witch can use this hex on a creature\r to prevent it from drawing a weapon for a number of\r rounds equal to the witch's level. This hex has no effect\r on natural weapons or weapons already in a creature's\r hands, but does prevent an archer from drawing arrows.\r A Will save negates this effect, and whether or not the save\r is successful, a creature cannot be the target of this hex\r again for 1 day."
+  ],
+  
+    "Poison Steep (Sp)":[ "The witch can use her cauldron to brew a foul toxin in which she can steep fruits and other delicious edibles, transforming them so that when eaten, they have the same effect as a poison spell. Brewing the toxin and then steeping the food takes 1 hour in total; steeping can affect up to 1 pound of food. The food is poisoned for 24 hours, and the poison cannot be transferred to other objects. The food tastes normal, but magic detects it as poisonous. The witch must have the cauldron hex to select this hex."
+  ],
+  
+    "Poison Touch (Ex)":[ "The witch empowers herself or an ally within 30 feet with poisonous nails. The affected creature gains a claw attack as a secondary attack that deals 1d3 points of damage (1d2 for Small creatures) and has the following poison ability:Witch Toxin: Claw—injury;saveFort DC 10 + half the witch's level + the witch's Intelligence modifier;frequency1/round for 6 rounds;effect1d2 Str;cure1 save. The creature gains this claw attack for a number of minutes equal to the witch's level. If the target already has a claw attack, that attack gains the poison ability listed above, but the DC is 1 higher. Once a creature has benefited from this hex, it cannot benefit from it again for 24 hours."
+  ],
+  
+    "Pollute Water (Su)":[ "The witch can corrupt bodies of water with foul energies. This functions as the blight hex, except it affects only either an area of standing water or a creature with the aquatic or water subtype. A creature of any type that drinks water from a polluted area must succeed at a Fortitude saving throw or become nauseated for 1d3 rounds and afflicted as if blighted with the blight hex curse. A creature that succeeds at this saving throw is immune to the effects of polluted water from this area for 24 hours. Polluted water does not quench thirst."
+  ],
+  
+    "Polluting Glance (Su)":[ "The witch can corrupt nonmagical liquid items (such as alchemical remedies) with a look. The witch can choose one liquid item she can see within 30 feet and change its contents into polluted water as per her pollute water hex (see above). The number of polluting glance hexes the witch can have active at one time is equal to her Intelligence bonus (minimum 1).The witch must have the pollute water hex to select this hex."
+  ],
+  
+    "Prehensile Hair (Su)":[ "The witch can instantly cause her hair (or even her eyebrows) to grow up to 10 feet long or to shrink to its normal length, and can manipulate her hair as if it were a limb with a Strength score equal to her Intelligence score. Her hair has reach 10 feet, and she can use it as a secondary natural attack that deals 1d3 points of damage (1d2 for a Small witch). Her hair can manipulate objects (but not weapons) as dexterously as a human hand. The hair cannot be sundered or attacked as a separate creature. Pieces cut from the witch's elongated hair shrink away to nothing. Using her hair does not harm the witch's head or neck, even if she lifts something heavy with it. The witch can manipulate her hair a number of minutes each day equal to her level; these minutes do not need to be consecutive, but must be spent in 1-minute increments. A typical male witch with this hex can also manipulate his beard, moustache, or eyebrows."
+  ],
+  
+    "Protective Luck (Su)":[ "The witch can cause fate to twist so that it benefits a creature within 30 feet for 1 round. Whenever that creature is targeted by an effect that requires an attack roll, including weapon attacks, the attacker must roll twice and take the worse result. At 8th level and 16th level, the duration of this hex is extended by 1 round. A witch cannot use this ability on herself. Hexes that affect the fortune hexAPG, such as cackleAPG, also affect protective luck."
+  ],
+  
+    "Scar (Su)":[ "This hex curses a single target touched with horrible scars of the witch's choosing, whether something as simple as a single letter on the target's forehead or blotchy, burnlike scars on his body. The target may make a Will save to resist this hex. These scars do not interfere with the target's senses or prevent it from using abilities, but may affect social interactions. They persist through disguises and shapechanging. The witch can user her hexes on the scarred target at a range of up to 1 mile, and she is considered to have a body part from the target for the purpose ofscryingand similar divination spells. The witch can withdraw this hex from a target as a move action at any range. The number of supernatural scars the witch can maintain at once is equal to her Intelligence bonus; once she reaches this limit, she must remove the scar from a current victim in order to mark another. Effects that remove curses can remove the scar."
+  ],
+  
+    "Seduction (Su)":[ "The witch uses enthralling movements to fascinate a single creature within 60 feet that can see the witch. A Will save negates this effect. If the target is (or could be) sexually attracted to the witch, the save DC is increased by 2. The effect lasts for 1 round, but the witch can extend this effect for 1 additional round (up to a total number of rounds equal to her class level) by taking a standard action to continue her enthralling movements. Whether or not the target succeeds at its save, it cannot be the target of this ability again for 1 day. At 8th level, the fascination effect lasts for 2 additional rounds after the witch ceases taking a standard action to maintain it. This is a mind-affecting charm effect."
+  ],
+  
+    "Sink (Su)":[ "The witch can cause a creature in water to struggle, imposing a –4 penalty on its Swim checks and reducing its swim speed (if any) by 10 feet for 1 minute unless it succeeds at a Fortitude saving throw; on a successful save, the effect's duration is reduced to 1 round. The duration of this hex can be extended with the cackle hex. This hex does not stack with itself."
+  ],
+  
+    "Slumber (Su)":[ "A witch can cause a creature within 30 feet to fall into a deep, magical sleep, as per the spellsleep. The creature receives a Will save to negate the effect. If the save fails, the creature falls asleep for a number of rounds equal to the witch's level. This hex can affect a creature of any HD. The creature will not wake due to noise or light, but others can rouse it with a standard action. This hex ends immediately if the creature takes damage. Whether or not the save is successful, a creature cannot be the target of this hex again for 1 day."
+  ],
+  
+    "Soothsayer (Su)":[ "The witch's predictions become selffulfilling prophecies. When the witch uses the evil eye hex, fortune hex, misfortune hex, or retribution major hex, she can choose to delay the effect. If she does so, the hex takes effect the next time the target makes a roll that could be affected by the hex (such as an ability check, attack roll, saving throw, or skill check) or is affected by an action that could be modified by the hex (such as being attacked when the hex would affect the target's AC), whichever comes first (ignoring actions that are not in combat and actions that have no penalty for failure). The duration of the hex begins on the same round as the action that causes it to take effect. The hex is wasted if it is not triggered within 24 hours."
+  ],
+  
+    "Summer's Heat (Su)":[ "The witch surrounds her target with oppressive heat, dealing a number of points of nonlethal damage equal to her witch level and causing the target to become fatigued. The target can attempt a Fortitude save to reduce this nonlethal damage by half and negate the fatigued condition. Whether or not the target succeeds at this save, it can't be the target of this hex again for 1 day."
+  ],
+  
+    "Swamp Hag (Sp)":[ "While traveling through swamps, mires, bogs, and similar terrain, the witch leaves no trail and cannot be tracked, as the trackless step druid ability. The witch can walk through mud and even quicksand as if it were normal ground."
+  ],
+  
+    "Swine (Su)":[ "The witch can partially transform an enemy into a pig. The effects of the transformation are mostly cosmetic and do not change the creature's size category or overall shape, but the affected creature takes a –2 penalty on Will saving throws for a number of rounds equal to the witch's Intelligence modifier (Will negates). At 8th level, the affected creature's hands (or paws) turn into hooves, preventing it from using claw attacks or taking any action that would require the creature to use its fingers."
+  ],
+  
+    "Tongues (Su)":[ "A witch with this hex can understand any spoken language for a number of minutes per day equal to her level, ascomprehend languages. This duration does not need to be consecutive, but it must be spent in 1-minute increments. At 5th level, a witch can use this ability to speak any language, as pertongues."
+  ],
+  
+    "Unnerve Beasts (Su)":[ "The target becomes offensive to animals (Will negates). Animals become distraught and aggressive in the victim's presence—horses buck, dogs snap and bark, bulls charge, and so on. The hex lasts a number of hours equal to the witch's Intelligence modifier. A creature that saves against the hex cannot be affected by the hex for 1 day. The reaction of the animals is a mind-affecting charm effect, but the hex on the target is not."
+  ],
+  
+    "Verdant Familiar (Ex)":[ "The witch's familiar's creature type changes to plant, gaining all respectiveplant traits."
+  ],
+  
+    "Ward (Su)":[ "A witch can use this hex to place a protective ward over one creature. The warded creature receives a +2 deflection bonus to AC and a +2 resistance bonus on saving throws. This ward lasts until the warded creature is hit or fails a saving throw. A witch knows when a warded creature is no longer protected. A witch can have only one ward active at a time. If the witch uses this ability again, the previous ward immediately ends. A witch cannot use this ability on herself. At 8th level and 16th level, the bonuses provided by this ward increase by +1."
+  ],
+  
+    "Water Lung (Su)":[ "An air-breathing target can breathe water or an aquatic target can breathe air. This lasts 1 minute. If the witch uses this hex on herself, she can maintain it while she sleeps, allowing her to safely sleep underwater."
+  ],
+  
+    "Witch's Bottle (Su)":[ "Once per day, the witch can perform a 10-minute ritual to create a potion imbued with the power of one of her hexes. Any creature that consumes this potion is affected by the hex as if cast by its creator. The witch can't use that hex until the potion is consumed or rendered inert. Only hexes that can target a creature other than the witch can be distilled in this way. The potion remains potent until consumed or rendered inert by the witch as a free action. A witch must have the cauldron hex to select this hex."
+],
+"Chant (Su)": [
+  "A shaman can chant as a move action. Any creature that is within 30 feet that is under the effects of the shaman’s charm, evil eye, fortune, fury, or misfortune hex has that effect’s duration extended by 1 round. A shaman cannot select both this hex and the witch’s cackle hex."
+],
+
+"Draconic Resilience (Ex)": [
+  "The shaman grants a creature she touches some of the magically resilient nature of dragons, causing the creature to be immune to magical sleep effects for a number of rounds equal to the shaman’s level. At 7th level, the creature is also immune to paralysis for this duration. Once a creature has benefited from the draconic resilience hex, it cannot benefit from this hex again for 24 hours."
+],
+
+"Fetish (Ex)": [
+  "The shaman receives Craft Wondrous Item as a bonus feat and gains a +4 insight bonus on Spellcraft checks to identify magic items permanently."
+],
+
+"Fury (Su)": [
+  "A shaman incites a creature within 30 feet into a primal fury. The target receives a +2 morale bonus on attack rolls and a +2 resistance bonus on saving throws against fear for a number of rounds equal to the shaman’s Wisdom modifier. At 8th and 16th levels, these bonuses increase by 1. Once a creature has benefited from the fury hex, it cannot benefit from it again for 24 hours."
+],
+
+"Intimidating Display (Ex)": [
+  "The shaman can call upon some of the majesty and power of dragons to cow her enemies. The shaman gains Dazzling Display as a bonus feat, even if she does not meet the prerequisites, and she can use it even when not wielding a weapon."
+],
+
+"Secret (Ex)": [
+  "The shaman receives one metamagic feat as a bonus feat. The shaman must meet the prerequisites for the feat."
+],
+"Shapeshift (Su)": [
+  "The shaman transforms herself into another form for a number of minutes per day equal to her level, as alter self. This duration does not need to be consecutive, but must be spent in 1-minute increments. Changing form (including changing back) is a standard action that doesn’t provoke an attack of opportunity. At 8th level, this ability works as beast shape I. At 12th level, this ability works as beast shape II. At 16th level, this ability works as beast shape III. At 20th level, this ability works as beast shape IV."
+],
+"Silkstring Snare (Su)": [
+  "The shaman causes ribbons of spider silk to erupt from the ground beneath a single creature. The target must succeed at a Reflex save or be entangled and anchored in place. The foe can escape the silk as a standard action with a successful Escape Artist or Strength check at the same DC, or by dealing an amount of damage to the silk equal to double the shaman’s class level (the silk has hardness 0). This hex lasts a number of rounds equal to 3 + the shaman’s Wisdom modifier. A creature affected by this hex cannot be affected by it again for 24 hours."
+],
+"Wings (Su)": [
+  "The shaman can grow a pair of wings for a number of minutes per day equal to her level. These minutes do not need to be consecutive, but they must be spent in 1-minute increments. Initially, these wings lack the power to allow the shaman to fly, but the shaman can use them as a secondary natural attack that deals 1d3 points of damage (1d2 for a Small shaman). At 3rd level, she can use the wings to safely descend any distance, as if using the feather fall spell. At 7th level, she can use the wings to fly with poor maneuverability and a fly speed of 30 feet, but the shaman must land at the end of each turn or fall.",
+  "A shaman of 8th level or higher can select the wings hex a second time. This doubles the number of minutes per day the shaman can use her wings (2 minutes per level), and allows her to fly with average maneuverability and a fly speed of 30 feet while the wings are active."
+]
+}  
+}
   }

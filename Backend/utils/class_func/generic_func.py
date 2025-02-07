@@ -13,7 +13,10 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
             description = getattr(character, class_1, {None}).get(dataset_name, {None}).get(choice,{None})
 
             chosen_desc = {choice: description}
-            character.data_dict.update({'class features': chosen_desc})
+            if character.data_dict['class features'] == [] or character.data_dict['class features']== {}:
+                character.data_dict['class features'] = chosen_desc
+            else:
+                character.data_dict['class features'].update(chosen_desc)
 
             character.bonus_feats = bonus_searcher(character, choice, chosen_desc, 'feats')
             character.bonus_spells = bonus_searcher(character, choice, chosen_desc, 'spells')
@@ -22,7 +25,10 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
         else:            
             amount = getattr(data, 'amount', {}).get(character.c_class, {}).get(dataset_name, {})
             dataset = getattr(character, class_1, {}).get(dataset_name, {})
-            if alternate_dataset == True:
+            # Options for if we have a dataset 3 deep or 2 deep with alternate dataset
+            if alternate_dataset == True and not dataset_name_3:
+                dataset = getattr(character, class_1, {}).get(dataset_name, {}).get(dataset_name_2, {})
+            else:  
                 dataset = getattr(character, class_1, {}).get(dataset_name, {}).get(dataset_name_2, {}).get(dataset_name_3, {})
                 
             dataset_list = list(dataset.keys())
@@ -38,17 +44,16 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
                     dataset_list.extend(dataset_2_list)
                     dataset.update(dataset_2)
 
-                if dataset_name_3 != None and character.c_class_level >= level_2 and alternate_dataset == False:
-                    dataset_list.extend(dataset_2_list)
-                    dataset.update(dataset_2)                        
-
                 chosen = random.choice(dataset_list)
                 chosen_set.add(chosen)
                 i = len(chosen_set)
 
             
             chosen_set_desc = {desc: dataset[desc] for desc in chosen_set}
-            character.data_dict.update({'class features': chosen_set_desc})
+            if character.data_dict['class features'] == [] or character.data_dict['class features']== {}:
+                character.data_dict['class features'] = chosen_set_desc
+            else:
+                character.data_dict['class features'].update(chosen_set_desc)
 
             return chosen_set, chosen_set_desc
 
@@ -104,7 +109,10 @@ def get_data_without_prerequisites(character, class_1, dataset_name, level= None
     print("chosen_desc", chosen_desc)
     # print("chosen_dict", chosen_dict)
 
-    character.data_dict.update({'class features': chosen_dict})
+    if character.data_dict['class features'] == [] or character.data_dict['class features']== {}:
+        character.data_dict['class features'] = chosen_dict
+    else:
+        character.data_dict['class features'].update(chosen_dict)
     return base_no_prereq, dataset_no_prereq, chosen_set
 
 def choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, base, level, total_choices):
@@ -229,7 +237,10 @@ def generic_multi_chooser(character, class_1, dataset_name,  n2=None, start_leve
         print("chosen set", chosen_set)
 
     chosen_dict = {dataset_name: chosen_set}
-    character.data_dict.update({'class features': chosen_dict})
+    if character.data_dict['class features'] == [] or character.data_dict['class features']== {}:
+        character.data_dict['class features'] = chosen_dict
+    else:
+        character.data_dict['class features'].update(chosen_dict)
     return chosen_dict
 
 

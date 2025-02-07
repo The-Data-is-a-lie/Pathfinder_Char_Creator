@@ -137,7 +137,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='oracle', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=4, num_sides=6, high_level=15, low_level=15, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='shaman', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=4, num_sides=6, high_level=15, low_level=15, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()
@@ -315,13 +315,6 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 
 
-
-		# character.bloodline_feats_chooser()
-
-		#generic single choices (adds spells?)
-		generic_class_option_chooser(character,"shaman", "spirits")
-
-
 		# generic single choices
 		if character.c_class == 'sorcerer':
 			bloodline_sorc = generic_class_option_chooser(character, "sorcerer", "bloodline")
@@ -356,6 +349,9 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		#need to add patron spells to the witch spell list (like how clerics + druids + s
 		# orcs get their own added)
 		generic_class_option_chooser(character,"witch", dataset_name="basic", dataset_name_2="greater", dataset_name_3="grand", multiple='yes', level=10, level_2=18)
+
+		generic_class_option_chooser(character,"shaman", "spirits")
+		generic_class_option_chooser(character,"shaman", dataset_name="hexes", dataset_name_2 = "basic", multiple='yes', alternate_dataset = True, level = 99)
 
 
 
@@ -640,7 +636,6 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 		# For some reason class_features is being created as a dict inside a list, rather than a dict
 		class_features = character.data_dict['class features']
-		print("class_features", class_features)
 		if isinstance(class_features, list) and len(class_features) > 0:
 			class_features = class_features[0]
 
@@ -736,7 +731,6 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 			print(class_features.keys())
 			print("length of class features ", len(class_features))
 			print("this is your character level ", character.c_class_level)
-
 
 		# print(f'this is your character data {character.data_dict}')
 
