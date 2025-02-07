@@ -137,7 +137,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='monk', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=4, num_sides=6, high_level=15, low_level=15, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='oracle', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=4, num_sides=6, high_level=15, low_level=15, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()
@@ -338,7 +338,17 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		generic_class_option_chooser(character,"warpriest", "blessing")
 		generic_class_option_chooser(character,"inquisitor", "inquisitions", multiple='yes')
 		# Need to add revelations to oracle
-		generic_class_option_chooser(character,"oracle", "curses")
+
+		# Make this populate like how you want it to *********
+		generic_class_option_chooser(character, "oracle", "curses")
+		
+		# Choose Oracle mystery
+		if character.c_class.lower() == 'oracle':
+			pre_oracle_mystery = generic_class_option_chooser(character, "oracle", "mysteries")
+			oracle_mystery = list(pre_oracle_mystery.keys())[0]
+			print(f"this is your oracle mystery: {oracle_mystery}")
+			generic_class_option_chooser(character,"oracle", "mysteries", oracle_mystery, "revelations", multiple='yes', alternate_dataset = True, level = 99, level_2 = 99)
+
 		generic_class_option_chooser(character,"fighter",  dataset_name="armor_train", multiple='yes')
 		generic_class_option_chooser(character,"fighter", dataset_name="weapon_train", multiple='yes')
 		generic_class_option_chooser(character,"arcanist", dataset_name="basic", dataset_name_2="greater", multiple='yes', level=10)
