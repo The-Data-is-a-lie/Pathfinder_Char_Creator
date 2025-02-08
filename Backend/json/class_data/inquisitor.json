@@ -2,375 +2,375 @@
     "inquisitions": {
     
     "anger inquisition": {
-    "deities": "gorum, rovagug. "
+    "deities": "gorum, rovagug."
     ,
-    "granted powers": "holy (or unholy) rage, granted by your patron deity, ensures that when you fight, the battle ends with a bloody victory. "
+    "granted powers": "holy (or unholy) rage, granted by your patron deity, ensures that when you fight, the battle ends with a bloody victory."
     ,
-    "hateful resort (ex)": "once per day, as an immediate action after you have been hit with a melee attack, you can make a melee attack against the creature that hit you. This melee attack is at your highest attack bonus, even if you've already attacked in the round. "
+    "hateful resort (ex)": "once per day, as an immediate action after you have been hit with a melee attack, you can make a melee attack against the creature that hit you. This melee attack is at your highest attack bonus, even if you've already attacked in the round."
     ,
-    "divine anger (ex)": "at 6th level, you gain the ability to rage like a barbarian. Your effective barbarian level for this ability is your inquisitor level  3. If you have levels in barbarian, these levels stack when determining the effect of your rage. You do not gain any rage powers from this granted power, though if you have rage powers from another class, you may use them with these rages. You can rage a number of rounds per day equal to your wisdom bonus, plus 1 round for every inquisitor level above 4th. "
+    "divine anger (ex)": "at 6th level, you gain the ability to rage like a barbarian. Your effective barbarian level for this ability is your inquisitor level  3. If you have levels in barbarian, these levels stack when determining the effect of your rage. You do not gain any rage powers from this granted power, though if you have rage powers from another class, you may use them with these rages. You can rage a number of rounds per day equal to your wisdom bonus, plus 1 round for every inquisitor level above 4th."
     }
     ,
-    " banishment inquisition": {
-    "deities": "iomedae, sarenrae, torag. "
+    "banishment inquisition": {
+    "deities": "iomedae, sarenrae, torag."
     ,
-    "granted powers": "your devotion to your deity is matched only by your hatred for fiends. You know the rites to cast evil outsiders back to the realms from which they hail. "
+    "granted powers": "your devotion to your deity is matched only by your hatred for fiends. You know the rites to cast evil outsiders back to the realms from which they hail."
     ,
-    "righteous awe (su)": "whenever you make an unarmed touch attack against an evil creature, it must succeed at a will save (dc 10 + 1/2 your inquisitor level + your wisdom modifier) or become shaken for 1d4 rounds. If the creature touched is an evil outsider, it becomes frightened instead of shaken. You can use this ability a number of times per day equal to 3 + your wisdom modifier. "
+    "righteous awe (su)": "whenever you make an unarmed touch attack against an evil creature, it must succeed at a will save (dc 10 + 1/2 your inquisitor level + your wisdom modifier) or become shaken for 1d4 rounds. If the creature touched is an evil outsider, it becomes frightened instead of shaken. You can use this ability a number of times per day equal to 3 + your wisdom modifier."
     ,
-    "dismissive touch (sp)": "at 8th level, you can cast dismissal once per day as a spell-like ability (caster level equal to your inquisitor level) upon making a successful unarmed touch attack against an evil outsider. The dc to save against this ability increases by 2. "
+    "dismissive touch (sp)": "at 8th level, you can cast dismissal once per day as a spell-like ability (caster level equal to your inquisitor level) upon making a successful unarmed touch attack against an evil outsider. The dc to save against this ability increases by 2."
     }
     ,
     "black powder inquisition": {
-    "deities": "any (with gm approval). "
+    "deities": "any (with gm approval)."
     ,
-    "granted powers": "you gain exotic weapon proficiency (firearms) and gunsmithing as bonus feats. When you hit an arcane spellcaster or a creature that uses spell-like abilities with a firearm attack, that creature must succeed at a fortitude saving throw. If the spellcaster fails, he takes a 4 penalty on concentration checks for 1 round. "
+    "granted powers": "you gain exotic weapon proficiency (firearms) and gunsmithing as bonus feats. When you hit an arcane spellcaster or a creature that uses spell-like abilities with a firearm attack, that creature must succeed at a fortitude saving throw. If the spellcaster fails, he takes a 4 penalty on concentration checks for 1 round."
     }
     ,
-    " chivalry inquisition": {
-    "deities": "erastil, iomedae, sarenrae, torag. "
+    "chivalry inquisition": {
+    "deities": "erastil, iomedae, sarenrae, torag."
     ,
-    "granted powers": "you embrace the spirit of chivalry, guarding your honor and training a noble mount. "
+    "granted powers": "you embrace the spirit of chivalry, guarding your honor and training a noble mount."
     ,
-    "mount (ex)": "this ability acts as the cavalier ability of the same name. "
+    "mount (ex)": "this ability acts as the cavalier ability of the same name."
     ,
-    "faithful steed (su)": "at 8th level, when you use your judgment ability, your mount gains the benefit of one of your selected judgments. At 16th level, your mount gains the benefits of two of your selected judgments. "
+    "faithful steed (su)": "at 8th level, when you use your judgment ability, your mount gains the benefit of one of your selected judgments. At 16th level, your mount gains the benefits of two of your selected judgments."
     }
     ,
-    " clandestine inquisition": {
-    "deities": "achaekek, desna, iomedae, milani, nethys, norgorber, sarenrae, shelyn, sivanah. "
+    "clandestine inquisition": {
+    "deities": "achaekek, desna, iomedae, milani, nethys, norgorber, sarenrae, shelyn, sivanah."
     ,
-    "granted powers": "secrecy is required of the faithful in lands where your deitys worshipers are hunted. Sleight of hand is a class skill for you. "
+    "granted powers": "secrecy is required of the faithful in lands where your deitys worshipers are hunted. Sleight of hand is a class skill for you."
     ,
-    "disappear (sp)": "you can become invisible as per the spell as a standard action. The invisibility lasts for 1 round per inquisitor level or until you attack. You can use this ability a number of times per day equal to 3 + your wisdom modifier. "
+    "disappear (sp)": "you can become invisible as per the spell as a standard action. The invisibility lasts for 1 round per inquisitor level or until you attack. You can use this ability a number of times per day equal to 3 + your wisdom modifier."
     ,
-    "blessed secrecy (su)": "at 4th level, when you attempt a bluff, disguise, sleight of hand, or stealth skill check, you can roll twice and take the more favorable result. You can use this ability a number of times per day equal to your wisdom bonus. "
+    "blessed secrecy (su)": "at 4th level, when you attempt a bluff, disguise, sleight of hand, or stealth skill check, you can roll twice and take the more favorable result. You can use this ability a number of times per day equal to your wisdom bonus."
     ,
-    "delayed spells (su)": "at 8th level, you can delay the effects of a spell you cast by up to 1 round per inquisitor level. You choose the duration of the delay when you cast the spell and can cause the spell to take effect immediately during the period of delay by concentrating as a standard action. You can use this ability once per day plus an additional time per day for every 4 inquisitor levels you have beyond 8th. "
+    "delayed spells (su)": "at 8th level, you can delay the effects of a spell you cast by up to 1 round per inquisitor level. You choose the duration of the delay when you cast the spell and can cause the spell to take effect immediately during the period of delay by concentrating as a standard action. You can use this ability once per day plus an additional time per day for every 4 inquisitor levels you have beyond 8th."
     }
     ,
-    " conversion inquisition": {
-    "deities": "any deity. "
+    "conversion inquisition": {
+    "deities": "any deity."
     ,
-    "granted powers": "you are a powerful persuader. A honeyed tongue empowered by divine argumentation sways the indifferent and adversarial to your side. "
+    "granted powers": "you are a powerful persuader. A honeyed tongue empowered by divine argumentation sways the indifferent and adversarial to your side."
     ,
-    "charm of wisdom (ex)": "you use your wisdom modifier instead of your charisma modifier when making bluff, diplomacy, and intimidate checks. "
+    "charm of wisdom (ex)": "you use your wisdom modifier instead of your charisma modifier when making bluff, diplomacy, and intimidate checks."
     ,
-    "swaying word (sp)": "at 8th level, once per day you may speak a word of divinely inspired wisdom that causes a single creature to switch its alliance to you. The target must be within line of sight and able to hear you. If he fails his will save, he is affected by dominate person, except the duration is only 1 minute. "
+    "swaying word (sp)": "at 8th level, once per day you may speak a word of divinely inspired wisdom that causes a single creature to switch its alliance to you. The target must be within line of sight and able to hear you. If he fails his will save, he is affected by dominate person, except the duration is only 1 minute."
     }
     ,
-    " crime inquisition": {
+    "crime inquisition": {
     "deities": "calistria, norgorber"
     ,
-    "granted powers": "your connections to the criminal underworld run deeper than the physical, and your spiritual criminality grants you underhanded powers. "
+    "granted powers": "your connections to the criminal underworld run deeper than the physical, and your spiritual criminality grants you underhanded powers."
     ,
-    "criminal minds (sp)": "you can touch a creature and fill its mind with criminal impulses. This otherwise functions as per crime of opportunity, though a target that fails its saving throw and acts on an impulse gets those desires out of its system and becomes immune to the effects of your criminal minds ability for 24 hours. You can use this ability a number of times per day equal to 3 + your wisdom modifier (minimum 1). "
+    "criminal minds (sp)": "you can touch a creature and fill its mind with criminal impulses. This otherwise functions as per crime of opportunity, though a target that fails its saving throw and acts on an impulse gets those desires out of its system and becomes immune to the effects of your criminal minds ability for 24 hours. You can use this ability a number of times per day equal to 3 + your wisdom modifier (minimum 1)."
     ,
-    "thief s soul (ex)": "at 8th level, you gain improved stealapg, greater stealapg, and quick stealapg as bonus feats, even if you dont meet the prerequisites. "
+    "thief s soul (ex)": "at 8th level, you gain improved stealapg, greater stealapg, and quick stealapg as bonus feats, even if you dont meet the prerequisites."
     }
     ,
-    " damnation inquisition": {
-    "deities": "asmodeus, pharasma, zon-kuthon. "
+    "damnation inquisition": {
+    "deities": "asmodeus, pharasma, zon-kuthon."
     ,
-    "granted powers": "the prospect of an afterlife filled with torment can cause even the most stalwart to blanchat least for a moment. "
+    "granted powers": "the prospect of an afterlife filled with torment can cause even the most stalwart to blanchat least for a moment."
     ,
-    "fear the flames (su)": "you can give a creature you can see within 60 feet one chance to avoid an eternity of suffering by ordering it to carry out any one simple action that would take no more than 1 round to complete. Good and neutral creatures that refuse become shaken for 1 round (will negates), while evil creatures that obey gain a +2 morale bonus on all rolls and checks made for 1 round. You can use this ability a number of times per day equal to 3 + your wisdom modifier. This is a language-dependent, mindaffecting effect. "
+    "fear the flames (su)": "you can give a creature you can see within 60 feet one chance to avoid an eternity of suffering by ordering it to carry out any one simple action that would take no more than 1 round to complete. Good and neutral creatures that refuse become shaken for 1 round (will negates), while evil creatures that obey gain a +2 morale bonus on all rolls and checks made for 1 round. You can use this ability a number of times per day equal to 3 + your wisdom modifier. This is a language-dependent, mindaffecting effect."
     ,
-    "collector of souls (sp)": "at 8th level, once per day as a standard action, you call forth an illusory fiend and order it to temporarily drag a living and sentient creature into an afterlife of pain and misery. This otherwise acts identically to phantasmal killer, except targets that fail their fortitude saving throws become paralyzed for a number of rounds equal to 1d4 + your inquisitor level instead of dying. "
+    "collector of souls (sp)": "at 8th level, once per day as a standard action, you call forth an illusory fiend and order it to temporarily drag a living and sentient creature into an afterlife of pain and misery. This otherwise acts identically to phantasmal killer, except targets that fail their fortitude saving throws become paralyzed for a number of rounds equal to 1d4 + your inquisitor level instead of dying."
     }
     ,
-    " excommunication inquisition": {
+    "excommunication inquisition": {
     "deities": "n/a"
     ,
-    "granted powers": "marked by your deity for your impressive will, you are among the few with the wherewithal to carry out the necessary work of removing dangerous influences from your church. "
+    "granted powers": "marked by your deity for your impressive will, you are among the few with the wherewithal to carry out the necessary work of removing dangerous influences from your church."
     ,
-    "touch of silence (su)": "with a melee touch attack, you render a target silent (as the spell silence, but only affecting the target) for 1 round. You can use this ability a number of times per day equal to 3 + your wisdom modifier. "
+    "touch of silence (su)": "with a melee touch attack, you render a target silent (as the spell silence, but only affecting the target) for 1 round. You can use this ability a number of times per day equal to 3 + your wisdom modifier."
     ,
-    "excommunicate (su)": "at 8th level, once per day, you can silence a creature within 30 feet as a standard action. A will save against dc = 10 + 1/2 your inquisitor level + your wisdom modifier negates the effect. A creature that fails its save gets a second save 1 round later. If it fails the second save, the target cannot speak, provide verbal components for spells, make use of language-dependent effects, write, pantomime, or take any other action meant to communicate anything more complex than a simple affirmative or negative for 1 day. "
+    "excommunicate (su)": "at 8th level, once per day, you can silence a creature within 30 feet as a standard action. A will save against dc = 10 + 1/2 your inquisitor level + your wisdom modifier negates the effect. A creature that fails its save gets a second save 1 round later. If it fails the second save, the target cannot speak, provide verbal components for spells, make use of language-dependent effects, write, pantomime, or take any other action meant to communicate anything more complex than a simple affirmative or negative for 1 day."
     }
     ,
-    " execution inquisition": {
-    "deities": "abadar, achaekek, calistria, norgorber, pharasma. "
+    "execution inquisition": {
+    "deities": "abadar, achaekek, calistria, norgorber, pharasma."
     ,
-    "granted powers": "your deity guides you when you deliver death to your chosen targets. "
+    "granted powers": "your deity guides you when you deliver death to your chosen targets."
     ,
-    "chosen victim (sp)": "once per day, you can designate a creature as your chosen victim. You gain a +2 bonus on diplomacy checks to gather information about your target, on bluff and intimidate checks against your target, and on survival checks to track your target. The benefits of your destruction, piercing, purity, and smiting judgments against your chosen victim increase as if your inquisitor level were 3 higher. "
+    "chosen victim (sp)": "once per day, you can designate a creature as your chosen victim. You gain a +2 bonus on diplomacy checks to gather information about your target, on bluff and intimidate checks against your target, and on survival checks to track your target. The benefits of your destruction, piercing, purity, and smiting judgments against your chosen victim increase as if your inquisitor level were 3 higher."
     ,
-    "executioners strike (su)": "at 8th level, your precision in combat has become incredible, and you can strike a lethal blow if your target cannot defend itself properly. Once per day, you can make an attack as a standard action against your chosen victim. If the attack hits and the victim is denied its dexterity bonus to ac against you, any critical threats are automatically confirmed. "
+    "executioners strike (su)": "at 8th level, your precision in combat has become incredible, and you can strike a lethal blow if your target cannot defend itself properly. Once per day, you can make an attack as a standard action against your chosen victim. If the attack hits and the victim is denied its dexterity bonus to ac against you, any critical threats are automatically confirmed."
     }
     ,
-    " fate inquisition": {
-    "deities": "nethys, norgorber, pharasma. "
+    "fate inquisition": {
+    "deities": "nethys, norgorber, pharasma."
     ,
-    "granted powers": "fate is a powerful tool for those who dole out justice for their deity. You can read the strands of fate, and those strands guide your endeavors. "
+    "granted powers": "fate is a powerful tool for those who dole out justice for their deity. You can read the strands of fate, and those strands guide your endeavors."
     ,
-    "augury (sp)": "once per day, you can use augury as a spell-like ability. "
+    "augury (sp)": "once per day, you can use augury as a spell-like ability."
     ,
-    "agent of fate (su)": "at 8th level, when you use your augury spell-like ability, you gain a benefit that lasts until the end of your next combat. If the result was weal, all curing effects used on you cure an additional +1d10 hit points. If the result was woe, your melee attacks deal an additional +1d6 points of damage. If the result is weal and woe or nothing, you gain a +2 insight bonus to your armor class. "
+    "agent of fate (su)": "at 8th level, when you use your augury spell-like ability, you gain a benefit that lasts until the end of your next combat. If the result was weal, all curing effects used on you cure an additional +1d10 hit points. If the result was woe, your melee attacks deal an additional +1d6 points of damage. If the result is weal and woe or nothing, you gain a +2 insight bonus to your armor class."
     }
     ,
-    " fervor inquisition": {
-    "deities": "calistria, cayden cailean, gozreh, shelyn. "
+    "fervor inquisition": {
+    "deities": "calistria, cayden cailean, gozreh, shelyn."
     ,
-    "granted powers": "only a passionate and righteous will such as yours can ensure that justice will be properly done. "
+    "granted powers": "only a passionate and righteous will such as yours can ensure that justice will be properly done."
     ,
-    "fire of belief (sp)": "you can unleash a gout of holy or unholy flame that sears one target within 30 feet as a ranged touch attack. The target takes 1d6 points of fire damage plus half your inquisitor level (minimum +1). If you are good, the flames only harm nongood targets. If you are evil, the flames only harm nonevil targets. If you are neither good nor evil, when you gain this ability you must decide whether the flames harm only nongood or nonevil targets; once you make this decision, it cannot be changed (though if your alignment changes, the effect of the flames changes appropriately). You can use this ability a number of times per day equal to 3 + your wisdom modifier. "
+    "fire of belief (sp)": "you can unleash a gout of holy or unholy flame that sears one target within 30 feet as a ranged touch attack. The target takes 1d6 points of fire damage plus half your inquisitor level (minimum +1). If you are good, the flames only harm nongood targets. If you are evil, the flames only harm nonevil targets. If you are neither good nor evil, when you gain this ability you must decide whether the flames harm only nongood or nonevil targets; once you make this decision, it cannot be changed (though if your alignment changes, the effect of the flames changes appropriately). You can use this ability a number of times per day equal to 3 + your wisdom modifier."
     ,
-    "fervent action (ex)": "at 8th level, once per day as a swift action, you can make a single melee attack at your highest attack bonus, move up to your speed, or cast a prepared inquisitor spell (of a spell level up to one lower than the highest level spell you can cast) as per quickened spell. "
+    "fervent action (ex)": "at 8th level, once per day as a swift action, you can make a single melee attack at your highest attack bonus, move up to your speed, or cast a prepared inquisitor spell (of a spell level up to one lower than the highest level spell you can cast) as per quickened spell."
     }
     ,
     
-    " heresy inquisition": {
-    "deities": "abadar, asmodeus, calistria, desna, erastil, gorum, gozreh, iomedae, lamashtu, nethys, norgorber, pharasma, rovagug, sarenrae, shelyn, torag, urgathoa, zon-kuthon. "
+    "heresy inquisition": {
+    "deities": "abadar, asmodeus, calistria, desna, erastil, gorum, gozreh, iomedae, lamashtu, nethys, norgorber, pharasma, rovagug, sarenrae, shelyn, torag, urgathoa, zon-kuthon."
     ,
-    "granted powers": "often it is hard to tell heretics from the faithful. You use duplicity, stealth, and the heretics' own arguments to root them out and bring them to justice. "
+    "granted powers": "often it is hard to tell heretics from the faithful. You use duplicity, stealth, and the heretics' own arguments to root them out and bring them to justice."
     ,
-    "righteous infiltration (ex)": "you use your wisdom modifier instead of your charisma modifier when making bluff and intimidate checks. "
+    "righteous infiltration (ex)": "you use your wisdom modifier instead of your charisma modifier when making bluff and intimidate checks."
     ,
-    "blessed infiltration (ex)": "at 4th level, when you make a bluff, diplomacy, or stealth check, you may roll twice and take the more favorable result. You can use this ability a number of times per day equal to your wisdom bonus. "
+    "blessed infiltration (ex)": "at 4th level, when you make a bluff, diplomacy, or stealth check, you may roll twice and take the more favorable result. You can use this ability a number of times per day equal to your wisdom bonus."
     ,
-    "word of anathema (sp)": "at 8th level, once per day, you can speak a word of anathema against a single creature within 60 feet (will negates). This acts as bestow curse and lasts for 1 minute, giving the target a 4 penalty on attack rolls, saves, ability checks, and skill checks. "
+    "word of anathema (sp)": "at 8th level, once per day, you can speak a word of anathema against a single creature within 60 feet (will negates). This acts as bestow curse and lasts for 1 minute, giving the target a 4 penalty on attack rolls, saves, ability checks, and skill checks."
     }
     ,
-    " illumination inquisition": {
-    "deities": "desna, erastil, irori, sarenrae. "
+    "illumination inquisition": {
+    "deities": "desna, erastil, irori, sarenrae."
     ,
-    "granted powers": "many times an inquisitor's greatest weapon is pure and unflinching illumination; errors are often illuminated by light and wisdom. "
+    "granted powers": "many times an inquisitor's greatest weapon is pure and unflinching illumination; errors are often illuminated by light and wisdom."
     ,
-    "illuminating touch (sp)": "you cause your hand to shimmer with divine radiance, allowing you to touch a creature as a standard action and give it a bonus equal to 1/2 your inquisitor level on a single will saving throw, knowledge check, perception check, or sense motive check. This ability lasts for 1 hour or until the creature chooses to apply the bonus to a roll. You can use this ability to grant the bonus a number of times per day equal to 3 + your wisdom modifier. "
+    "illuminating touch (sp)": "you cause your hand to shimmer with divine radiance, allowing you to touch a creature as a standard action and give it a bonus equal to 1/2 your inquisitor level on a single will saving throw, knowledge check, perception check, or sense motive check. This ability lasts for 1 hour or until the creature chooses to apply the bonus to a roll. You can use this ability to grant the bonus a number of times per day equal to 3 + your wisdom modifier."
     ,
-    "aura of enlightenment (su)": "at 4th level, you can create a 30-foot-radius aura of normal light. Allies in this aura gain a +2 insight bonus on skill checks. This counts as a 2nd-level light effect for the purpose of countering or dispelling darkness effects. You can use this aura for a number of rounds per day equal to your inquisitor level. These rounds do not need to be consecutive. "
+    "aura of enlightenment (su)": "at 4th level, you can create a 30-foot-radius aura of normal light. Allies in this aura gain a +2 insight bonus on skill checks. This counts as a 2nd-level light effect for the purpose of countering or dispelling darkness effects. You can use this aura for a number of rounds per day equal to your inquisitor level. These rounds do not need to be consecutive."
     }
     ,
-    " imprisonment inquisition": {
-    "deities": "abadar, asmodeus, torag. "
+    "imprisonment inquisition": {
+    "deities": "abadar, asmodeus, torag."
     ,
-    "granted powers": "sometimes it is better to capture foes than to kill themwhether your intention is to punish them for their crimes or to torture them for information. "
+    "granted powers": "sometimes it is better to capture foes than to kill themwhether your intention is to punish them for their crimes or to torture them for information."
     ,
-    "caging strike (su)": "with a devastating weapon strike, spectral chains wrap around your target for a short period of time. Whenever you confirm a critical hit with a melee or ranged weapon attack (including spells that require attack rolls), you can choose to also entangle that target for 1d4 rounds (fortitude negates). You may use this ability a number of times per day equal to 3 + your wisdom modifier. "
+    "caging strike (su)": "with a devastating weapon strike, spectral chains wrap around your target for a short period of time. Whenever you confirm a critical hit with a melee or ranged weapon attack (including spells that require attack rolls), you can choose to also entangle that target for 1d4 rounds (fortitude negates). You may use this ability a number of times per day equal to 3 + your wisdom modifier."
     ,
-    "divine prison": "at 8th level, once per day upon making a successful melee attack, you can affect your target with hold monster (will negates). "
+    "divine prison": "at 8th level, once per day upon making a successful melee attack, you can affect your target with hold monster (will negates)."
     }
     ,
-    " justice inquisition": {
-    "deities": "iomedae, pharasma. "
+    "justice inquisition": {
+    "deities": "iomedae, pharasma."
     ,
-    "granted powers": "some must learn that to submit to one's fate often means submitting to your form of justice. "
+    "granted powers": "some must learn that to submit to one's fate often means submitting to your form of justice."
     ,
-    "judicious force (su)": "if you or an ally within 10 feet makes a critical threat with a melee or ranged attack, as an immediate action you may add +4 to the confirmation roll. This does not stack with the critical focus feat. You may use this ability a number of times per day equal to your wisdom bonus. "
+    "judicious force (su)": "if you or an ally within 10 feet makes a critical threat with a melee or ranged attack, as an immediate action you may add +4 to the confirmation roll. This does not stack with the critical focus feat. You may use this ability a number of times per day equal to your wisdom bonus."
     ,
     "chains of justice (su)": "at 6th level, once per day, you can bind an opponent within 60 feet to you with spectral chains (will negates). When you take damage from an enemy, the bound target takes this damage as well. Whenever the bound target takes damage from you or one of your allies, you take this damage as well. You and the target are not physically bound to each other, and either can end the connection by breaking the line of effect or exceeding the ability's "
     }
     ,
-    " oblivion inquisition": {
-    "deities": "desna, lamashtu, pharasma, zon-kuthon. "
+    "oblivion inquisition": {
+    "deities": "desna, lamashtu, pharasma, zon-kuthon."
     ,
-    "granted powers": "some inquisitors believe that without faith there is only oblivion. But there are some divine servants who know enough about the darkness that lies beyond faith to use it as a tool... And a weapon. "
+    "granted powers": "some inquisitors believe that without faith there is only oblivion. But there are some divine servants who know enough about the darkness that lies beyond faith to use it as a tool... And a weapon."
     ,
-    "life anchor (su)": "you gain a 10-foot-radius aura that helps dying creatures cling to life. Within this aura, a dying creature (including yourself) adds your wisdom bonus to its stabilization checks (in addition to any other modifiers to stabilization checks). "
+    "life anchor (su)": "you gain a 10-foot-radius aura that helps dying creatures cling to life. Within this aura, a dying creature (including yourself) adds your wisdom bonus to its stabilization checks (in addition to any other modifiers to stabilization checks)."
     ,
-    "stare of oblivion (sp)": "at 8th level, you can use feeblemind as a gaze attack against one creature (will negates). This effect lasts 1d4 rounds. You can use this ability once per day at 8th level, and one additional time per day for every four levels beyond 8th. "
+    "stare of oblivion (sp)": "at 8th level, you can use feeblemind as a gaze attack against one creature (will negates). This effect lasts 1d4 rounds. You can use this ability once per day at 8th level, and one additional time per day for every four levels beyond 8th."
     }
     ,
-    " order inquisition": {
-    "deities": "abadar, iomedae, sarenrae. "
+    "order inquisition": {
+    "deities": "abadar, iomedae, sarenrae."
     ,
-    "granted powers": "most inquisitors fight insane aberrations and demonic creatures as well as the chaos of heresy. They use the dictum and the mantles of law in order to aid their struggle. "
+    "granted powers": "most inquisitors fight insane aberrations and demonic creatures as well as the chaos of heresy. They use the dictum and the mantles of law in order to aid their struggle."
     ,
-    "mantle against chaos (sp)": "you can use protection from chaos on yourself or another creature as a spell-like ability. You can use this ability for a number of minutes per day equal to your inquisitor level (minimum 1). This duration does not need to be consecutive, but it must be used in 1 minute increments. "
+    "mantle against chaos (sp)": "you can use protection from chaos on yourself or another creature as a spell-like ability. You can use this ability for a number of minutes per day equal to your inquisitor level (minimum 1). This duration does not need to be consecutive, but it must be used in 1 minute increments."
     ,
-    "commanding order (sp)": "at 8th level, you can use greater command, except it only affects a single target. You can use this ability a number of times per day equal to 3 + your wisdom bonus. "
+    "commanding order (sp)": "at 8th level, you can use greater command, except it only affects a single target. You can use this ability a number of times per day equal to 3 + your wisdom bonus."
     }
     ,
-    " persistence inquisition": {
-    "deities": "asmodeus, iomedae, urgathoa. "
+    "persistence inquisition": {
+    "deities": "asmodeus, iomedae, urgathoa."
     ,
-    "granted powers": "your deity chose you for your persistence. You have vowed to pursue the enemies of the faith to the world's end if necessary. You receive step up as a bonus feat. "
+    "granted powers": "your deity chose you for your persistence. You have vowed to pursue the enemies of the faith to the world's end if necessary. You receive step up as a bonus feat."
     ,
-    "relentless footing (ex)": "as a swift action, you can add 10 feet to your land speed. This increase counts as an enhancement bonus, and it affects your jumping distance as normal for increased speed. You can use this ability a number of times per day equal to 3 + your wisdom bonus (minimum 1). "
+    "relentless footing (ex)": "as a swift action, you can add 10 feet to your land speed. This increase counts as an enhancement bonus, and it affects your jumping distance as normal for increased speed. You can use this ability a number of times per day equal to 3 + your wisdom bonus (minimum 1)."
     ,
-    "inner strength (su)": "at 6th level, once per day, you may heal yourself as a swift action, healing 1d6 hit points for every two inquisitor levels you possess. When you use this ability, you can also remove one of the following conditions from yourself: blinded, confused, dazzled, deafened, frightened, nauseated, shaken, sickened, or staggered. "
+    "inner strength (su)": "at 6th level, once per day, you may heal yourself as a swift action, healing 1d6 hit points for every two inquisitor levels you possess. When you use this ability, you can also remove one of the following conditions from yourself: blinded, confused, dazzled, deafened, frightened, nauseated, shaken, sickened, or staggered."
     }
     ,
-    " politics inquisition": {
-    "deities": "abadar, asmodeus, calistria, norgorber. "
+    "politics inquisition": {
+    "deities": "abadar, asmodeus, calistria, norgorber."
     ,
-    "granted powers": "your divine guidance twists agreements, laws, and policies to suit the interests of the faith. "
+    "granted powers": "your divine guidance twists agreements, laws, and policies to suit the interests of the faith."
     ,
-    "labyrinthine words (ex)": "you add your wisdom modifier in addition to your charisma modifier on bluff checks to lie and diplomacy checks to influence other creatures. "
+    "labyrinthine words (ex)": "you add your wisdom modifier in addition to your charisma modifier on bluff checks to lie and diplomacy checks to influence other creatures."
     ,
-    "hearts desire (sp)": "at 8th level, you receive divine guidance on the goals of your political allies and rivals. Once per day, you can use commune as a spell-like ability using your inquisitor level as your caster level, but only to ask questions about others goals. "
+    "hearts desire (sp)": "at 8th level, you receive divine guidance on the goals of your political allies and rivals. Once per day, you can use commune as a spell-like ability using your inquisitor level as your caster level, but only to ask questions about others goals."
     }
     ,
-    " possession inquisition": {
+    "possession inquisition": {
     "deities": "calistria, lamashtu, nethys, norgorber, urgathoa"
     ,
-    "granted powers": "you can invade the bodies of lesser beings and command them to bend to your will. "
+    "granted powers": "you can invade the bodies of lesser beings and command them to bend to your will."
     ,
-    "self-control (ex)": "you possess remarkable control over your own body, and gain a +2 competence bonus on saving throws made against enchantment spells of the charm or compulsion subschool. "
+    "self-control (ex)": "you possess remarkable control over your own body, and gain a +2 competence bonus on saving throws made against enchantment spells of the charm or compulsion subschool."
     ,
-    "beast ride (su)": "at 4th level, once per day as a standard action, you can vacate your body and inhabit that of any creature belonging to the animal type within 30 feet for a number of rounds up to your inquisitor level. While you are possessing an animal in this way, your own body becomes helpless and unaware. You can travel any distance from your body so long as you remain on the same plane, and can return to your own body as a free action at any time. If the animal or your body takes damage, or you attempt to make the animal attack or do anything out of character, the effect immediately ends and you return to your own body. "
+    "beast ride (su)": "at 4th level, once per day as a standard action, you can vacate your body and inhabit that of any creature belonging to the animal type within 30 feet for a number of rounds up to your inquisitor level. While you are possessing an animal in this way, your own body becomes helpless and unaware. You can travel any distance from your body so long as you remain on the same plane, and can return to your own body as a free action at any time. If the animal or your body takes damage, or you attempt to make the animal attack or do anything out of character, the effect immediately ends and you return to your own body."
     ,
-    "body snatch (sp)": "at 10th level, once per day as an immediate action upon falling unconscious because of dropping below 0 hit points, you can cast your soul from your body and attempt to occupy the body of another creature within 30 feet. This ability otherwise functions identically to magic jar except that your actual body serves as the receptacle and you suppress the consciousness of your target rather than casting it out. Your body continues to bleed as normal unless it is somehow stabilized, and if its hit points drop to a negative number equal to your constitution score, the magic jar effect prematurely ends and you die as normal. "
+    "body snatch (sp)": "at 10th level, once per day as an immediate action upon falling unconscious because of dropping below 0 hit points, you can cast your soul from your body and attempt to occupy the body of another creature within 30 feet. This ability otherwise functions identically to magic jar except that your actual body serves as the receptacle and you suppress the consciousness of your target rather than casting it out. Your body continues to bleed as normal unless it is somehow stabilized, and if its hit points drop to a negative number equal to your constitution score, the magic jar effect prematurely ends and you die as normal."
     }
     ,
     
-    " redemption inquisition": {
+    "redemption inquisition": {
     "deities": "n/a"
     ,
-    "granted powers": "your deity inspires you with hope that wayward members of your faith can be brought back into the fold. You reach out to your misguided fellows and give them every chance to turn back from conflict with the true faith, even if your differences come to violence. "
+    "granted powers": "your deity inspires you with hope that wayward members of your faith can be brought back into the fold. You reach out to your misguided fellows and give them every chance to turn back from conflict with the true faith, even if your differences come to violence."
     ,
-    "patient sensibility (su)": "you gain a +2 bonus on diplomacy, perception, and sense motive checks. "
+    "patient sensibility (su)": "you gain a +2 bonus on diplomacy, perception, and sense motive checks."
     ,
-    "redeemer's mercy (su)": "at 4th level, any weapon you wield gains the merciful magic weapon special ability. The weapon immediately reverts to its original abilities when you cease to wield it. "
+    "redeemer's mercy (su)": "at 4th level, any weapon you wield gains the merciful magic weapon special ability. The weapon immediately reverts to its original abilities when you cease to wield it."
     ,
-    "second chance (sp)": "at 8th level, you can give an enemy a second chance to correct the error of its ways. Once per day as a standard action, you can cast atonement as a spell-like ability, targeting a creature that has violated the tenets of a religion you both share or that freely desires to convert to your alignment. If costly material components are required for the atonement, you may choose to accept a permanent negative level as a sacrifice in place of those components. The target of this effect also receives the benefits of a cure serious wounds spell as part of the effects of the atonement. "
+    "second chance (sp)": "at 8th level, you can give an enemy a second chance to correct the error of its ways. Once per day as a standard action, you can cast atonement as a spell-like ability, targeting a creature that has violated the tenets of a religion you both share or that freely desires to convert to your alignment. If costly material components are required for the atonement, you may choose to accept a permanent negative level as a sacrifice in place of those components. The target of this effect also receives the benefits of a cure serious wounds spell as part of the effects of the atonement."
     }
     ,
-    " reformation inquisition": {
+    "reformation inquisition": {
     "deities": "n/a"
     ,
-    "granted powers": "moved by divine disapproval of your churchs mistakes, you seek to correct them however you can. "
+    "granted powers": "moved by divine disapproval of your churchs mistakes, you seek to correct them however you can."
     ,
-    " granted powers": "you can speak with divine persuasiveness. "
+    " granted powers": "you can speak with divine persuasiveness."
     ,
-    "inspired rhetoric (ex)": "you use your wisdom modifier in place of your charisma modifier when making diplomacy, intimidate, and perform (oratory) checks. Perform (oratory) is an inquisitor class skill for you. "
+    "inspired rhetoric (ex)": "you use your wisdom modifier in place of your charisma modifier when making diplomacy, intimidate, and perform (oratory) checks. Perform (oratory) is an inquisitor class skill for you."
     ,
-    "blessed correction (ex)": "at 4th level, when you make a diplomacy, intimidate, or perform (oratory) check, you may roll twice and take the more favorable result. You can use this ability a number of times per day equal to your wisdom bonus. "
+    "blessed correction (ex)": "at 4th level, when you make a diplomacy, intimidate, or perform (oratory) check, you may roll twice and take the more favorable result. You can use this ability a number of times per day equal to your wisdom bonus."
     ,
-    "awaken discontent (su)": "at 8th level, you can deliver a stirring speech condemning the mistakes of those in power and calling for reform, causing the target of your rhetoric to be affected by charm person with a caster level equal to your inquisitor level and a save dc of 10 + 1/2 your inquisitor level + your wisdom modifier. You may use this ability a number of times per day equal to your wisdom modifier. "
+    "awaken discontent (su)": "at 8th level, you can deliver a stirring speech condemning the mistakes of those in power and calling for reform, causing the target of your rhetoric to be affected by charm person with a caster level equal to your inquisitor level and a save dc of 10 + 1/2 your inquisitor level + your wisdom modifier. You may use this ability a number of times per day equal to your wisdom modifier."
     }
     ,
-    " restoration inquisition": {
-    "deities": "desna, irori, sarenrae, shelyn. "
+    "restoration inquisition": {
+    "deities": "desna, irori, sarenrae, shelyn."
     ,
-    "granted powers": "you are a healer, not just of people but also of sacred sites tainted by enemies of your faith. "
+    "granted powers": "you are a healer, not just of people but also of sacred sites tainted by enemies of your faith."
     ,
-    "mend the broken (su)": "you can touch an object or creature as a standard action, healing it of 1d4 points of damage + 1 for every 2 inquisitor levels you possess. You can use this ability only on a broken object or a creature with fewer than half its maximum hit points. You can use this ability a number of times per day equal to 3 + your wisdom modifier. "
+    "mend the broken (su)": "you can touch an object or creature as a standard action, healing it of 1d4 points of damage + 1 for every 2 inquisitor levels you possess. You can use this ability only on a broken object or a creature with fewer than half its maximum hit points. You can use this ability a number of times per day equal to 3 + your wisdom modifier."
     ,
-    "cleanse impunity (su)": "at 8th level, choose an alignment (chaotic, evil, good, or lawful) that is opposite to one axis of your own. Once chosen, this cannot be changed. Add your wisdom bonus on caster level checks to overcome the spell resistance of creatures with the chosen alignment subtype; dispel effects with the chosen alignment descriptor; and remove curses, diseases, and poisons. A neutral inquisitor gains only the bonus on caster level checks to remove curses, diseases, and poisons. "
+    "cleanse impunity (su)": "at 8th level, choose an alignment (chaotic, evil, good, or lawful) that is opposite to one axis of your own. Once chosen, this cannot be changed. Add your wisdom bonus on caster level checks to overcome the spell resistance of creatures with the chosen alignment subtype; dispel effects with the chosen alignment descriptor; and remove curses, diseases, and poisons. A neutral inquisitor gains only the bonus on caster level checks to remove curses, diseases, and poisons."
     }
     ,
-    " revelation inquisition": {
-    "deities": "desna, irori, sarenrae, shelyn. "
+    "revelation inquisition": {
+    "deities": "desna, irori, sarenrae, shelyn."
     ,
-    "granted powers": "evil often hides itself behind a mask of good. You are an expert at ferreting out those who are not what they seem, and use your powers to reveal the true forms of the unworthy. "
+    "granted powers": "evil often hides itself behind a mask of good. You are an expert at ferreting out those who are not what they seem, and use your powers to reveal the true forms of the unworthy."
     ,
-    "burn shroud (su)": "as a standard action, you can make an unarmed touch attack against a creature. The target takes 1d4 points of fire damage + 1/2 your inquisitor level (minimum 1). If the target is currently the subject of a polymorph effect that changes its appearance (such as by alter self, shapechange, or an innate shapechanging ability such as that possessed by doppelgangers), it instead takes 1d6 points of fire damage + 1/2 your inquisitor level (minimum 1). You can use this ability a number of times per day equal to 3 + your wisdom modifier. "
+    "burn shroud (su)": "as a standard action, you can make an unarmed touch attack against a creature. The target takes 1d4 points of fire damage + 1/2 your inquisitor level (minimum 1). If the target is currently the subject of a polymorph effect that changes its appearance (such as by alter self, shapechange, or an innate shapechanging ability such as that possessed by doppelgangers), it instead takes 1d6 points of fire damage + 1/2 your inquisitor level (minimum 1). You can use this ability a number of times per day equal to 3 + your wisdom modifier."
     ,
-    "reveal form (su)": "at 8th level, once per day as a standard action, you can invoke the name of your deity and order one shapechanged target within 30 feet to reveal its true form. The target must succeed at a will save (dc 10 + 1/2 your inquisitor level + your wisdom modifier) or be forced on its next turn to dispel any ongoing polymorph effects or innate shapechanging abilities to assume its natural form. If a creature affected by this ability fails its save and is for some reason unable to dispel any ongoing polymorph effects or innate shapechanging abilities, it is instead staggered for 1 round. This is a mind-affecting compulsion effect. "
+    "reveal form (su)": "at 8th level, once per day as a standard action, you can invoke the name of your deity and order one shapechanged target within 30 feet to reveal its true form. The target must succeed at a will save (dc 10 + 1/2 your inquisitor level + your wisdom modifier) or be forced on its next turn to dispel any ongoing polymorph effects or innate shapechanging abilities to assume its natural form. If a creature affected by this ability fails its save and is for some reason unable to dispel any ongoing polymorph effects or innate shapechanging abilities, it is instead staggered for 1 round. This is a mind-affecting compulsion effect."
     }
     ,
-    " secrets inquisition": {
+    "secrets inquisition": {
     "deities": "calistria, norgorber"
     ,
-    "granted powers": "you have learned to keep your own secrets close, and your enemies secrets closer. "
+    "granted powers": "you have learned to keep your own secrets close, and your enemies secrets closer."
     ,
-    "detect secrets (su)": "you have learned how to detect any of a creatures secrets, not just its thoughts. Whenever you cast detect anxieties, detect desires, or detect thoughts or use any of those spells as a spell-like ability, you can choose to gain the effects of one of the other two spells instead. You are never overwhelmed by a target of these spells that has a high ability score. "
+    "detect secrets (su)": "you have learned how to detect any of a creatures secrets, not just its thoughts. Whenever you cast detect anxieties, detect desires, or detect thoughts or use any of those spells as a spell-like ability, you can choose to gain the effects of one of the other two spells instead. You are never overwhelmed by a target of these spells that has a high ability score."
     ,
-    "closed book (sp)": "at 8th level, it becomes difficult for your foes to unveil your secrets. You are constantly under the effect of nondetection, as if you cast the spell on yourself. "
+    "closed book (sp)": "at 8th level, it becomes difficult for your foes to unveil your secrets. You are constantly under the effect of nondetection, as if you cast the spell on yourself."
     }
     ,
-    " sedition inquisition": {
-    "deities": "cayden cailean, desna, iomedae, milani, nethys, norgorber, sarenrae, shelyn. "
+    "sedition inquisition": {
+    "deities": "cayden cailean, desna, iomedae, milani, nethys, norgorber, sarenrae, shelyn."
     ,
-    "granted powers": "your deity calls you to cast down a hostile government. Stealth is a class skill for you. "
+    "granted powers": "your deity calls you to cast down a hostile government. Stealth is a class skill for you."
     ,
-    "undermine authority (sp)": "a number of times per day equal to your wisdom bonus, you can worsen the attitude of a character toward any governmental officer or leader acting against your religion. This likewise reduces that officers or leaders influence with that character. The persuasion requires enough conversation to attempt a diplomacy check (usually 1 minute) and you attempt a diplomacy check as normal to influence the targets attitude. However, if you fail the check, the target is subject to a mind-affecting compulsion that alters its attitude for a number of days equal to your inquisitor level. The target can resist the compulsion with a successful will saving throw (dc = 10 + 1/2 your inquisitor level + your wisdom modifier). If the target is under a mind-affecting effect from that officer or leader, the effect is automatically suppressed for 1 minute. "
+    "undermine authority (sp)": "a number of times per day equal to your wisdom bonus, you can worsen the attitude of a character toward any governmental officer or leader acting against your religion. This likewise reduces that officers or leaders influence with that character. The persuasion requires enough conversation to attempt a diplomacy check (usually 1 minute) and you attempt a diplomacy check as normal to influence the targets attitude. However, if you fail the check, the target is subject to a mind-affecting compulsion that alters its attitude for a number of days equal to your inquisitor level. The target can resist the compulsion with a successful will saving throw (dc = 10 + 1/2 your inquisitor level + your wisdom modifier). If the target is under a mind-affecting effect from that officer or leader, the effect is automatically suppressed for 1 minute."
     ,
-    "rebel leader (ex)": "at 8th level, you gain leadership as a bonus feat. "
+    "rebel leader (ex)": "at 8th level, you gain leadership as a bonus feat."
     }
     ,
-    " seduction inquisition": {
-    "deities": "arshea, calistria, cayden cailean, shelyn. "
+    "seduction inquisition": {
+    "deities": "arshea, calistria, cayden cailean, shelyn."
     ,
-    "granted powers": "your deity blesses your attempts to use sex and love for a higher purpose. "
+    "granted powers": "your deity blesses your attempts to use sex and love for a higher purpose."
     ,
-    "disarming flirtation (sp)": "you can attempt a charisma check to entice a target that could be sexually attracted to you into letting you speak for up to 1 minute when it would otherwise be unwilling to consider your words. The dc of this charisma check is equal to 10 + the targets wisdom modifier. If successfully used in combat, this ability instead functions as a successful feint and the target cannot take any actions that would attack you as long as it is denied its dexterity bonus against you. "
+    "disarming flirtation (sp)": "you can attempt a charisma check to entice a target that could be sexually attracted to you into letting you speak for up to 1 minute when it would otherwise be unwilling to consider your words. The dc of this charisma check is equal to 10 + the targets wisdom modifier. If successfully used in combat, this ability instead functions as a successful feint and the target cannot take any actions that would attack you as long as it is denied its dexterity bonus against you."
     ,
-    "inspire devotion (ex)": "by spending at least 1 hour engaged in acts of physical pleasure with a willing partner, you can attempt a diplomacy check to improve that partners attitude or increase your influence with that partner (or reduce a rivals influence with that partner) with no maximum on the number of steps by which you can change that partners attitude or disposition. "
+    "inspire devotion (ex)": "by spending at least 1 hour engaged in acts of physical pleasure with a willing partner, you can attempt a diplomacy check to improve that partners attitude or increase your influence with that partner (or reduce a rivals influence with that partner) with no maximum on the number of steps by which you can change that partners attitude or disposition."
     }
     ,
-    " sin inquisition": {
+    "sin inquisition": {
     "deities": "asmodeus, calistria, norgorber, rovagug, urgathoa, zon-kuthon"
     ,
-    "granted powers": "you know how to stoke the seven sins in others (envy, gluttony, greed, lust, pride, sloth, and wrath), and twist their dark desires to suit your own purposes. "
+    "granted powers": "you know how to stoke the seven sins in others (envy, gluttony, greed, lust, pride, sloth, and wrath), and twist their dark desires to suit your own purposes."
     ,
-    "sin sense (su)": "as a full-round action, you can determine which sin most strongly influences a target by quickly reading its mind. Once you learn this fact, you gain a +4 bonus on your next charisma-based skill check made against the target as long as it somehow incorporates a temptation that relates to that sin. You can use this ability a number of times per day equal to 3 + your wisdom modifier. This is a mindaffecting effect. "
+    "sin sense (su)": "as a full-round action, you can determine which sin most strongly influences a target by quickly reading its mind. Once you learn this fact, you gain a +4 bonus on your next charisma-based skill check made against the target as long as it somehow incorporates a temptation that relates to that sin. You can use this ability a number of times per day equal to 3 + your wisdom modifier. This is a mindaffecting effect."
     ,
-    "indulge (su)": "at 8th level, once per day as a standard action, you can awaken a creatures vice and overwhelm its senses with urgency. You must decide to use this ability before using your sin sense ability on a creature, and the target receives a will save to negate the effect. If the creature fails its saving throw, for the next 24 hours, whenever the affected creature is given an opportunity to indulge in its favored sin, that creature must yield to the impulse or make a second will saving throw to avoid becoming sickened for 1 minute. This is a mind-affecting effect. "
+    "indulge (su)": "at 8th level, once per day as a standard action, you can awaken a creatures vice and overwhelm its senses with urgency. You must decide to use this ability before using your sin sense ability on a creature, and the target receives a will save to negate the effect. If the creature fails its saving throw, for the next 24 hours, whenever the affected creature is given an opportunity to indulge in its favored sin, that creature must yield to the impulse or make a second will saving throw to avoid becoming sickened for 1 minute. This is a mind-affecting effect."
     }
     ,
-    " tactics inquisition": {
-    "deities": "gorum, irori, torag. "
+    "tactics inquisition": {
+    "deities": "gorum, irori, torag."
     ,
-    "granted powers": "it is the cold and tactical mind that often wins the day. A proper, carefully considered sacrifice can inspire one's allies to serve your cause. "
+    "granted powers": "it is the cold and tactical mind that often wins the day. A proper, carefully considered sacrifice can inspire one's allies to serve your cause."
     ,
-    "inquisitor's direction (su)": "at the start of your turn, you can choose to enter a tranquil, reflective state and forgo all actions (standard, move, swift, immediate, and free actions, including attacks of opportunity) for that round; one ally of your choice within 30 feet gains the benefit of haste for 1 round. You can use this ability a number of times per day equal to your 3 + wisdom bonus (minimum 1). "
+    "inquisitor's direction (su)": "at the start of your turn, you can choose to enter a tranquil, reflective state and forgo all actions (standard, move, swift, immediate, and free actions, including attacks of opportunity) for that round; one ally of your choice within 30 feet gains the benefit of haste for 1 round. You can use this ability a number of times per day equal to your 3 + wisdom bonus (minimum 1)."
     ,
-    "grant the initiative (ex)": "at 8th level, you and all allies within 30 feet may add your wisdom bonus to your initiative checks. "
+    "grant the initiative (ex)": "at 8th level, you and all allies within 30 feet may add your wisdom bonus to your initiative checks."
     }
     ,
-    " torture inquisition": {
-    "deities": "asmodeus, calistria, norgorber, zon-kuthon. "
+    "torture inquisition": {
+    "deities": "asmodeus, calistria, norgorber, zon-kuthon."
     ,
-    "granted powers": "only through pain can truth and justice come to the surface. And if that doesn't work, at least you've enacted divine vengeance. "
+    "granted powers": "only through pain can truth and justice come to the surface. And if that doesn't work, at least you've enacted divine vengeance."
     ,
-    "torturer's presence (ex)": "you gain a +2 bonus when using the intimidate skill. This is in addition to your bonus for stern gaze. "
+    "torturer's presence (ex)": "you gain a +2 bonus when using the intimidate skill. This is in addition to your bonus for stern gaze."
     ,
-    "torturer's touch (sp)": "you may use touch of fatigue as a spell-like ability. Creatures that are immune to pain effects are immune to this touch. You can use this ability a number of times per day equal to 3 + your wisdom modifier. "
+    "torturer's touch (sp)": "you may use touch of fatigue as a spell-like ability. Creatures that are immune to pain effects are immune to this touch. You can use this ability a number of times per day equal to 3 + your wisdom modifier."
     ,
-    "critical precision (ex)": "at 8th level, when you roll a critical threat, you may expend one use of your torturer's touch ability to add +4 on your critical confirmation roll. This does not stack with critical focus. "
+    "critical precision (ex)": "at 8th level, when you roll a critical threat, you may expend one use of your torturer's touch ability to add +4 on your critical confirmation roll. This does not stack with critical focus."
     }
     ,
     "true death inquisition": {
-    "deities": "abadar, cayden cailean, pharasma. "
+    "deities": "abadar, cayden cailean, pharasma."
     ,
-    "granted powers": "you see undead as a perversion of the natural order, a misuse of magic, or an unjust enslavement of a departed spirits body, and are sworn to destroying such beings. "
+    "granted powers": "you see undead as a perversion of the natural order, a misuse of magic, or an unjust enslavement of a departed spirits body, and are sworn to destroying such beings."
     ,
-    "back to the graves (su)": "when you cast cure spells (any spells with cure in their name) to deal damage to undead creatures, you add +2 points of damage per caster level instead of +1 point of damage per caster level. The maximum damage for each spell remains unchanged. "
+    "back to the graves (su)": "when you cast cure spells (any spells with cure in their name) to deal damage to undead creatures, you add +2 points of damage per caster level instead of +1 point of damage per caster level. The maximum damage for each spell remains unchanged."
     ,
-    "hallowed rite (su)": "at 8th level, you gain the ability to conduct a sacred funeral rite. This rite takes 1 day, during which you perform the necessary chants and prayers and burn incense. At the end of the rite you must oversee the burial of the corpse. The burial must take place within 24 hours of the preparation or the ritual fails. Once the body is interred, it cannot be turned into an undead creature, as if it were under the effect of a hallow spell (caster level equal to your inquisitor level). "
+    "hallowed rite (su)": "at 8th level, you gain the ability to conduct a sacred funeral rite. This rite takes 1 day, during which you perform the necessary chants and prayers and burn incense. At the end of the rite you must oversee the burial of the corpse. The burial must take place within 24 hours of the preparation or the ritual fails. Once the body is interred, it cannot be turned into an undead creature, as if it were under the effect of a hallow spell (caster level equal to your inquisitor level)."
     }
     ,
-    " truth inquisition": {
-    "deities": "iomedae, pharasma, sarenrae. "
+    "truth inquisition": {
+    "deities": "iomedae, pharasma, sarenrae."
     ,
-    "granted powers": "to find truth, one has to wring honesty from otherswhether in a friendly or hostile manner. "
+    "granted powers": "to find truth, one has to wring honesty from otherswhether in a friendly or hostile manner."
     ,
-    "justice's true path (sp)": "as a standard action, you can touch a creature, granting an insight bonus on one attack roll, skill check, ability check, or saving throw before your next turn; this bonus is equal to half your inquisitor level (minimum 1) and lasts for 1 round. You can use this ability a number of times per day equal to 3 + your wisdom modifier. "
+    "justice's true path (sp)": "as a standard action, you can touch a creature, granting an insight bonus on one attack roll, skill check, ability check, or saving throw before your next turn; this bonus is equal to half your inquisitor level (minimum 1) and lasts for 1 round. You can use this ability a number of times per day equal to 3 + your wisdom modifier."
     ,
-    "grasp of honesty (su)": "at 8th level, any creature you are grappling or pinning is affected by zone of truth (will negates). Outside of combat, you may use this ability by touching a target with both hands. You can use this ability a number of rounds per day equal to your inquisitor level. These rounds do not need to be consecutive. The effect ends if you stop grappling, pinning, or touching the target. "
+    "grasp of honesty (su)": "at 8th level, any creature you are grappling or pinning is affected by zone of truth (will negates). Outside of combat, you may use this ability by touching a target with both hands. You can use this ability a number of rounds per day equal to your inquisitor level. These rounds do not need to be consecutive. The effect ends if you stop grappling, pinning, or touching the target."
     }
     ,
-    " valor inquisition": {
-    "deities": "cayden cailean, erastil, iomedae, sarenrae. "
+    "valor inquisition": {
+    "deities": "cayden cailean, erastil, iomedae, sarenrae."
     ,
-    "granted powers": "it takes courage to confront the enemies of your faith. "
+    "granted powers": "it takes courage to confront the enemies of your faith."
     ,
-    "touch of resolve (sp)": "you may use remove fear on a single creature a number of times per day equal to your 3 + your wisdom bonus. "
+    "touch of resolve (sp)": "you may use remove fear on a single creature a number of times per day equal to your 3 + your wisdom bonus."
     ,
-    "fearless (su)": "at 8th level, you become immune to fear. "
+    "fearless (su)": "at 8th level, you become immune to fear."
     }
     ,
-    " vengeance inquisition": {
-    "deities": "calistria, lamashtu, norgorber, rovagug, urgathoa. "
+    "vengeance inquisition": {
+    "deities": "calistria, lamashtu, norgorber, rovagug, urgathoa."
     ,
-    "granted powers": "vengeance is justice naked of pretense. On your oath, you will deliver justice so unbounded. "
+    "granted powers": "vengeance is justice naked of pretense. On your oath, you will deliver justice so unbounded."
     ,
-    "divine retribution (sp)": "as a standard action, you can point at one creature within 30 feet to indicate that it is the target of divine wrath. A mishap or an accident appropriate to the environment occurs, such as a branch falling on the creature, rocks falling from the ceiling, or some other nonmagical misfortune; regardless of the cause, the mishap deals 1d6 points of damage + 1 point for every two inquisitor levels you possess (reflex half). The gm decides whether this damage is bludgeoning, piercing, or slashing damage. You can use this ability a number of times per day equal to 3 + your wisdom modifier. "
+    "divine retribution (sp)": "as a standard action, you can point at one creature within 30 feet to indicate that it is the target of divine wrath. A mishap or an accident appropriate to the environment occurs, such as a branch falling on the creature, rocks falling from the ceiling, or some other nonmagical misfortune; regardless of the cause, the mishap deals 1d6 points of damage + 1 point for every two inquisitor levels you possess (reflex half). The gm decides whether this damage is bludgeoning, piercing, or slashing damage. You can use this ability a number of times per day equal to 3 + your wisdom modifier."
     ,
-    "final vengeance (su)": "at 8th level, once per day, you can make one melee attack against an opponent within reach in response to an attack that would reduce you to negative hit points. Once your attack is resolved, you suffer the normal effect of the attack that provoked this ability. Effects that kill you or do not reduce you to negative hit points (such as ability damage or drain, negative levels, and disintegrate) do not trigger this ability. "
+    "final vengeance (su)": "at 8th level, once per day, you can make one melee attack against an opponent within reach in response to an attack that would reduce you to negative hit points. Once your attack is resolved, you suffer the normal effect of the attack that provoked this ability. Effects that kill you or do not reduce you to negative hit points (such as ability damage or drain, negative levels, and disintegrate) do not trigger this ability."
     }
     ,
-    " zeal inquisition": {
-    "deities": "erastil, nethys. "
+    "zeal inquisition": {
+    "deities": "erastil, nethys."
     ,
-    "granted powers": "an inquisitor needs unyielding zeal in order to make sure her deity's work is done. "
+    "granted powers": "an inquisitor needs unyielding zeal in order to make sure her deity's work is done."
     ,
-    "zealous surge (sp)": "once per day, when you are reduced to 0 or fewer hit points, you heal a number of hit points equal to your inquisitor level + your wisdom modifier. "
+    "zealous surge (sp)": "once per day, when you are reduced to 0 or fewer hit points, you heal a number of hit points equal to your inquisitor level + your wisdom modifier."
     ,
-    "scourge of the enemy (ex)": "at 8th level, select one religion that is a rival or opponent of your religion. You treat members of this religion as if they were your favored enemy (as the ranger class ability), gaining a +2 bonus on the appropriate rolls. At 13th level, these bonuses increase to +4, and at 18th level, the bonuses increase to +6. These bonuses do not stack with other favored enemy bonuses (use the highest bonus that applies). "
+    "scourge of the enemy (ex)": "at 8th level, select one religion that is a rival or opponent of your religion. You treat members of this religion as if they were your favored enemy (as the ranger class ability), gaining a +2 bonus on the appropriate rolls. At 13th level, these bonuses increase to +4, and at 18th level, the bonuses increase to +6. These bonuses do not stack with other favored enemy bonuses (use the highest bonus that applies)."
     }
     
     }

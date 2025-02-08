@@ -41,7 +41,7 @@ class TestGenerateRandomChar(unittest.TestCase):
         self.addCleanup(self.write_failures_to_file)  # Ensure this runs after tests
 
     def test_generate_random_char_combinations(self):
-        for _ in range(5):
+        for _ in range(30):
             for param, options in self.test_options.items():
                 for option in options:
                     try:

@@ -26,26 +26,35 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
             amount = getattr(data, 'amount', {}).get(character.c_class, {}).get(dataset_name, {})
             dataset = getattr(character, class_1, {}).get(dataset_name, {})
             # Options for if we have a dataset 3 deep or 2 deep with alternate dataset
-            if alternate_dataset == True and not dataset_name_3:
+            if alternate_dataset == True and not (dataset_name_2 or dataset_name_3):
+                dataset = getattr(character, class_1, {}).get(dataset_name, {})
+                print("1")
+            elif alternate_dataset == True and not dataset_name_3:
                 dataset = getattr(character, class_1, {}).get(dataset_name, {}).get(dataset_name_2, {})
-            else:  
+                print("2")
+            elif alternate_dataset == True and not dataset_name_3:  
                 dataset = getattr(character, class_1, {}).get(dataset_name, {}).get(dataset_name_2, {}).get(dataset_name_3, {})
-                
+                print("3")
+            
             dataset_list = list(dataset.keys())
+            print("dataset_list", dataset_list)
             chosen_set = set()
             i = 0
 
             dataset_2 = getattr(character, class_1, {}).get(dataset_name_2, {})
             dataset_2_list = list(dataset_2.keys())
 
-            while i <= len(amount) and amount[i] <= character.c_class_level:
-
+            print(len(amount))
+            print(amount[i])
+            while i < len(amount) and amount[i] <= character.c_class_level:
                 if dataset_name_2 != None and character.c_class_level >= level and alternate_dataset == False:
                     dataset_list.extend(dataset_2_list)
                     dataset.update(dataset_2)
 
                 chosen = random.choice(dataset_list)
+                print(chosen)
                 chosen_set.add(chosen)
+                print(chosen_set)
                 i = len(chosen_set)
 
             
@@ -75,20 +84,21 @@ def chosen_set_append(character, dataset, chosen_set, chosen):
 # End of Generic Class Option Chooser
 
 
-def get_data_without_prerequisites(character, class_1, dataset_name, level= None, level_2 = None, dataset_name_2 = None, odd=None):
+def get_data_without_prerequisites(character, class_1, dataset_name, level= None, level_2 = None, dataset_name_2 = None, odd=None, divisor = 2):
 
     if character.c_class != class_1:
         return None
 
     dataset_no_prereq = []
     base_no_prereq = []
-    amount = floor(character.c_class_level/2)
+
+    amount = floor(character.c_class_level/divisor)
     # fail safe to not break if any character with amount = 0 tries to use this
     if amount == 0:
         return None
     
     if odd == True:
-        amount = ceil(character.c_class_level/2)
+        amount = ceil(character.c_class_level/divisor)
 
     if character.c_class == class_1:
         dataset = getattr(character, class_1, {}).get(dataset_name, {})
