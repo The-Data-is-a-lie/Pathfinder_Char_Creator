@@ -1,608 +1,462 @@
 {
     "basic": {
-
-    "acid bomb": {
-    "prerequisites": "",
-    "benefits": "deal acid damage with your bombs"
-    },
-    "alchemical simulacrum": {
-    "prerequisites": "alchemist 8",
-    "benefits": "create a lesser simulacrum"
-    },
-    "alchemical zombie": {
-    "prerequisites": "alchemist 8",
-    "benefits": "create a zombie as if created by animate dead"
-    },
-    "anarchic bomb": {
-    "prerequisites": "alchemist 8",
-    "benefits": "create bombs which deal chaotic divine damage, possibly staggering lawful creatures on their next turn if they take a direct hit. Anarchic bombs deal 1/2 damage vs. Neutral creatures and such targets are not affected by the staggering effect. Anarchic bombs have no effect on chaotic-aligned creatures. "
-    },
-    "axiomatic bomb": {
-    "prerequisites": "alchemist 8",
-    "benefits": "create bombs which deal lawful divine damage, possibly staggering chaotic creatures on their next turn if they take a direct hit. Axiomatic bombs deal 1/2 damage vs. Neutral creatures and such targets are not affected by the staggering effect. Axiomatic bombs have no effect on lawful-aligned creatures. "
-    },
-    "bitter pill": {
-    "prerequisites": "",
-    "benefits": "creatures get sick if they bite you. "
-    },
-    "blackstar bomb": {
-    "prerequisites": "drow, void bomb",
-    "benefits": "this bomb crushes the target like a void bomb, then repels nearby creatures with a burst of gravity. "
-    },
-    "blinding bomb": {
-    "prerequisites": "alchemist 8",
-    "benefits": "blind enemies with your bombs"
-    },
-    "boneshard bomb": {
-    "prerequisites": "alchemical zombie",
-    "benefits": "bomb deals piercing damage instead of fire, and creatures that take a direct hit from a boneshard bomb must succeed at a fortitude save or take 1d4 bleed in addition to normal damage. Creatures killed by a boneshard bomb or the bleed effect immediately reanimate as an undead creature with the skeleton template and count as undead created by animate dead for the purposes of determining how many undead the alchemist can control. "
-    },
-    "bottled ooze": {
-    "prerequisites": "alchemist 6",
-    "benefits": "preserve an ooze so it can be summoned later"
-    },
-    "breath weapon bomb": {
-    "prerequisites": "alchemist 6",
-    "benefits": "you can use a bomb as a breath weapon"
-    },
-    "celestial poisons": {
-    "prerequisites": "alchemist 8",
-    "benefits": "you can make poisons which affect undead and evil outsiders (which are normally immune to poisons. )"
-    },
-    "chameleon": {
-    "prerequisites": "",
-    "benefits": "your skin changes colors, granting you a bonus on stealth checks"
-    },
-    "change alignment": {
-    "prerequisites": "alchemist 12, infusion",
-    "benefits": "once/day brew an infusion which changes drinkers alignment to good for 10 min. /alchemist level (unwilling drinkers gain save to resist. )"
-    },
-    "cognatogen": {
-    "prerequisites": "",
-    "benefits": "increase a mental score and decrease a physical score"
-    },
-    "collective memory": {
-    "prerequisites": "cognatogen",
-    "benefits": "while under the effects of a cognatogen, the alchemist adds half his class level on all knowledge skill checks and may attempt all knowledge skill checks untrained. This bonus does not stack with the second intelligence bonus granted by the mindchemist archetypes perfect recall class feature. "
-    },
-    "combine extracts": {
-    "prerequisites": "alchemist 8",
-    "benefits": "use two formulae at once"
-    },
-    "concentrate poison": {
-    "prerequisites": "",
-    "benefits": "combine two poisons for increased effect"
-    },
-    "concussive bomb": {
-    "prerequisites": "alchemist 6",
-    "benefits": "deal sonic damage with your bombs"
-    },
-    "confusion bomb": {
-    "prerequisites": "alchemist 8",
-    "benefits": "cause confusion with your bombs"
-    },
-    "constructive dyes": {
-    "prerequisites": "alchemist 8, divine inks",
-    "benefits": "the alchemists dyes congeal and solidify, allowing him to make physical objects from them. The alchemist can expend two uses of his daily bombs to create a non-magical object, as minor creation, using his alchemist level as the spells caster level. "
-    },
-    "greater constructive dyes": {
-    "prerequisites": "alchemist 10, constructive dyes, divine inks",
-    "benefits": "the alchemist expands the set of objects he can create with his constructive dyes. The alchemist can expend one additional use of his daily bombs when using his constructive dyes discovery to create objects, as major creation. "
-    },
-    "cursed bomb": {
-    "prerequisites": "alchemist 12",
-    "benefits": "deliver a curse with a bomb attack. "
-    },
-    "cytillesh bomb": {
-    "prerequisites": "",
-    "benefits": "cytillesh bombs deal 1d4 points of damage, plus 1d4 points of damage for every odd-numbered level, instead of 1d6 and are possibly sickened or become unconscious. "
-    },
-    "darkness bomb": {
-    "prerequisites": "",
-    "benefits": "you can choose to have a bomb extinguish non-magical light sources carried by the target and dispel magical light sources carried by the target for 1 round/level (as deeper darkness. )"
-    },
-    "deadly excretions": {
-    "prerequisites": "alchemist 8",
-    "benefits": "your toxic skin poison deals constitution damage"
-    },
-    "defoliant bomb": {
-    "prerequisites": "",
-    "benefits": "you can create a bomb that deals extra damage to plant creatures"
-    },
-    "delayed bomb": {
-    "prerequisites": "alchemist 8",
-    "benefits": "you can choose to delay the explosion of your bombs"
-    },
-    "demolition charge": {
-    "prerequisites": "alchemist 8",
-    "benefits": "when you create a bomb, you can choose to have it deal damage to an object as if by a sunder combat maneuver. "
-    },
-    "dilution": {
-    "prerequisites": "alchemist 12",
-    "benefits": "create two doses of a potion or elixir from one set of ingredients"
-    },
-    "directed bomb": {
-    "prerequisites": "point blank shot, precise shot",
-    "benefits": "you can throw bombs to within 30 feet of yourself without any chance to hit yourself, even if you miss. "
-    },
-    "dispelling bomb": {
-    "prerequisites": "alchemist 10",
-    "benefits": "you can use your bomb to dispel magic"
-    },
-    "divine inks": {
-    "prerequisites": "alchemist 8",
-    "benefits": "the alchemist can expend one use of his daily bombs when scribing scrolls of spells. Doing so allows him to scribe scrolls containing divine spells. "
-    },
-    "dust bomb": {
-    "prerequisites": "",
-    "benefits": "the bomb explodes into a cloud of dust, dealing no damage, but forcing creatures within the cloud to succeed on a fortitude save or be blinded for 1 round. "
-    },
-    "dye bomb": {
-    "prerequisites": "",
-    "benefits": "the bomb creates a burst of colorful dye when it detonates"
-    },
-    "greater dye bomb": {
-    "prerequisites": "dye bomb",
-    "benefits": "the dye clings and is hard to remove. "
-    },
-    "elemental wall": {
-    "prerequisites": "alchemist 10",
-    "benefits": "you can create a wall of elemental energy"
-    },
-    "elixir of the thundering heavens": {
-    "prerequisites": "alchemist 8, touch injection",
-    "benefits": "the alchemist creates a masterpiece of material and arcane engineeringa small figurine whose head or tail can be broken off to create a breath weapon, as the breath weapon bomb discovery. "
-    },
-    "energy mutagen": {
-    "prerequisites": "cognatogen, mutagen",
-    "benefits": "the alchemist adds a blast of his chosen energy type to his bombs or mutagen. "
-    },
-    "energy touch": {
-    "prerequisites": "alchemist 8",
-    "benefits": "your attacks carry a deadly charge of elemental energy. "
-    },
-    "entropic admirer (apg)": {
-    "prerequisites": "",
-    "benefits": "add +1/2 level on disable device checks, knowledge checks"
-    },
-    "entropic storm (apg)": {
-    "prerequisites": "alchemist 12, entropic admirer",
-    "benefits": "add +1/2 level to damage dealt by splash weapons. "
-    },
-    "explosive missile": {
-    "prerequisites": "point-blank shot, precise shot",
-    "benefits": "you can use your bombs as ranged attacks"
-    },
-    "explosive missile, delayed": {
-    "prerequisites": "alchemist 10, explosive missile",
-    "benefits": "when the alchemist hits with an explosive missile, the missile detonates on his next turn, dealing its damage to the target and to all creatures adjacent to the target. "
-    },
-    "explosive missile, smoke": {
-    "prerequisites": "alchemist 8, explosive missile",
-    "benefits": "the missile creates a 10-foot-radius burst of smoke. "
-    },
-    "explosive missile, spark": {
-    "prerequisites": "alchemist 8, explosive missile",
-    "benefits": "the missile creates a 20-foot-radius burst of electricity. "
-    },
-    "extract alterer": {
-    "prerequisites": "alchemist 10",
-    "benefits": "you can modify extracts to have different effects"
-    },
-    "fast bombs": {
-    "prerequisites": "alchemist 8",
-    "benefits": "you can throw multiple bombs in a round"
-    },
-    "feral mutagen": {
-    "prerequisites": "alchemist 8, mutagen",
-    "benefits": "your mutagen enhances your physical abilities at the cost of your reason"
-    },
-    "fire bomb": {
-    "prerequisites": "",
-    "benefits": "the bomb creates a burst of fire when it detonates"
-    },
-    "flask admixture": {
-    "prerequisites": "concentrate poison",
-    "benefits": "when the alchemist creates a bomb, he can choose to have it infused with a dose of one poison he has created. The alchemist cannot use this ability if he has applied a poison to himself. "
-    },
-    "force bomb": {
-    "prerequisites": "alchemist 8 ",
-    "benefits": "the bomb creates a burst of force when it detonates"
-    },
-    "greater force bomb": {
-    "prerequisites": "force bomb",
-    "benefits": "the alchemists bombs with the force bomb ability explode with such power that they can affect creatures normally immune to such effects. "
-    },
-    "frost bomb": {
-    "prerequisites": "alchemist 6",
-    "benefits": "the bomb creates a burst of cold when it detonates"
-    },
-    "greater frost bomb": {
-    "prerequisites": "alchemist 10, frost bomb",
-    "benefits": "the bomb explodes in an icy burst. "
-    },
-    "fungal poison": {
-    "prerequisites": "alchemist 6",
-    "benefits": "you can create a poison that infects creatures with fungal growth"
-    },
-    "fungal mutagen": {
-    "prerequisites": "alchemist 10, fungal poison",
-    "benefits": "your mutagen enhances your natural armor and creates fungal growths on your body. "
-    },
-    "giant infusion": {
-    "prerequisites": "alchemist 8, mutagen",
-    "benefits": "your mutagen can temporarily enlarge you. "
-    },
-    "giant form": {
-    "prerequisites": "alchemist 16, giant infusion, mutagen",
-    "benefits": "your mutagen can temporarily transform you into a giant. "
-    },
-    "grand mutagen": {
-    "prerequisites": "alchemist 16",
-    "benefits": "your mutagen enhances two physical ability scores. "
-    },
-    "grandfather's gift (apg)": {
-    "prerequisites": "alchemist 16, stone to flesh",
-    "benefits": "add one to your age category for purposes of detecting, resisting, or removing transmutations. "
-    },
-    "healing bomb": {
-    "prerequisites": "alchemist 6",
-    "benefits": "you can throw bombs which heal damage instead of dealing it"
-    },
-    "holy bombs": {
-    "prerequisites": "alchemist 8, celestial poisons",
-    "benefits": "the alchemist creates holy water as a splash weapon or a bomb. "
-    },
-    "immolation bomb": {
-    "prerequisites": "alchemist 3",
-    "benefits": "deal damage over time with your bombs"
-    },
-    "inferno bomb": {
-    "prerequisites": "alchemist 16, smoke bomb",
-    "benefits": "create an incendiary cloud effect with your bombs"
-    },
-    "infuse mutagen": {
-    "prerequisites": "",
-    "benefits": "you can have multiple mutagens prepared"
-    },
-    "infusion": {
-    "prerequisites": "",
-    "benefits": "your extracts can be used by others"
-    },
-    "inspired bomb": {
-    "prerequisites": "",
-    "benefits": "you can expend two uses of inspiration to increase a bombs damage by 1d6. "
-    },
-    "inspiring cognatogen": {
-    "prerequisites": "",
-    "benefits": "you learn how to make an inspiring cognatogen, a mutagen-like mixture that grants him inspiration (as the investigators class feature) at the expense of strength and constitution. "
-    },
-    "intuitive understanding": {
-    "prerequisites": "alchemist 4, cognatogen",
-    "benefits": "if you drink an extract of the divination school while under the effects of a cognatogen, your effective cl temporarily increases by +2. In addition, while under the effects of a cognatogen, you may use augury once as a spell-like ability ( caster level equal to his alchemist level). At 10th level, you can use divination instead. "
-    },
-    "lingering plague": {
-    "prerequisites": "alchemist 8",
-    "benefits": "creatures have to save more often against your disease-causing bombs"
-    },
-    "lingering spirit": {
-    "prerequisites": "alchemist 4",
-    "benefits": "you can take more damage before being killed"
-    },
-    "living pigment": {
-    "prerequisites": "divine inks",
-    "benefits": ""
-    },
-    "madness bomb": {
-    "prerequisites": "alchemist 12",
-    "benefits": "deal wisdom damage with your bombs"
-    },
-    "malignant poison": {
-    "prerequisites": "alchemist 10",
-    "benefits": "as a full-round action, you can increase the save dc of any poison and increase its duration"
-    },
-    "material mastery (ex)": {
-    "prerequisites": "",
-    "benefits": "by expending an extract of the same school and level as a spell prerequisite when crafting a magic item, you take only a 2 penalty for ignoring that requirement, instead of 5. "
-    },
-    "mummification": {
-    "prerequisites": "alchemist 10, preserve organs",
-    "benefits": "gain mummy-like immunities"
-    },
-    "mutagen": {
-    "prerequisites": "",
-    "benefits": "increase physical scores and decrease mental scores"
-    },
-    "nauseating flesh": {
-    "prerequisites": "alchemist 12",
-    "benefits": "anything that bites the alchemist is nauseated"
-    },
-    "neutralizing bomb": {
-    "prerequisites": "",
-    "benefits": "when the alchemist creates a bomb, he can choose to give it the potential to end certain ongoing effects instead of dealing damage. "
-    },
-    "ooze blight": {
-    "prerequisites": "",
-    "benefits": "a target hit by your bomb loses the split special quality for 1d4 rounds. In addition, against creatures with the ooze type, this bomb deals untyped damage that bypasses all resistances. "
-    },
-    "parasitic twin": {
-    "prerequisites": "vestigial arm",
-    "benefits": "you can reroll your saves against certain mental effects"
-    },
-    "phantom limb": {
-    "prerequisites": "alchemist 8",
-    "benefits": "manifest a ghostly, incorporeal arm. "
-    },
-    "pheromones": {
-    "prerequisites": "",
-    "benefits": "you gain a permanent +3 competence bonus on bluff, diplomacy, and intimidate checks. "
-    },
-    "pickled quasit": {
-    "prerequisites": "alchemist 10",
-    "benefits": "you seal a quasit in a bottle, which you can throw at a square within 30 feet and release the quasit (it is not under your control. )"
-    },
-    "plague bomb": {
-    "prerequisites": "alchemist 8, smoke bomb",
-    "benefits": "duplicate the effects of contagion with your bombs"
-    },
-    "plague vector": {
-    "prerequisites": "alchemist 14, plague bomb",
-    "benefits": "cause those affected by your plague bomb to become carriers for the disease, infecting those they come into physical contact with. "
-    },
-    "poison bomb": {
-    "prerequisites": "alchemist 12, smoke bomb",
-    "benefits": "duplicate the effects of cloudkill with your bombs"
-    },
-    "poison conversion": {
-    "prerequisites": "alchemist 6",
-    "benefits": "you can convert one form of poison to another form"
-    },
-    "precise bombs": {
-    "prerequisites": "",
-    "benefits": "choose which squares are missed by your bombs splash damage"
-    },
-    "preserve organs": {
-    "prerequisites": "",
-    "benefits": "sneak attacks and critical hits are less likely to do damage"
-    },
-    "profane bomb": {
-    "prerequisites": "alchemist 8",
-    "benefits": "you can have your bomb deal evil divine damage. Good creatures that take a direct hit from a profane bomb must make a fort save or be staggered on their next turn. Against a neutral creature, a profane bomb deals half damage, and the target is not affected by the bombs staggering effect. A profane bomb has no effect against evil-aligned creatures. "
-    },
-    "promethean disciple": {
-    "prerequisites": "alchemist 6",
-    "benefits": "you know how to craft constructs by way of alchemical research rather than arcane magic. You gain craft construct as a bonus feat without needing to meet its requirements and you substitute the number of ranks in craft (alchemy) you have for your total caster level and must use craft (alchemy) to create the construct. "
-    },
-    "psychoactive bomb": {
-    "prerequisites": "alchemist 6",
-    "benefits": "your bombs make it easier to manipulate others"
-    },
-    "psychokinetic tincture": {
-    "prerequisites": "alchemist 4",
-    "benefits": "1/day, concoct a tincture as a standard action, and channel one spirit for every 4 alchemist levels possessed (see details). "
-    },
-    "purging mutagen": {
-    "prerequisites": "",
-    "benefits": "the alchemists mutagen combines ipecac and other purgative components. "
-    },
-    "rag doll mutagen": {
-    "prerequisites": "goblin",
-    "benefits": "your body becomes rubbery and easy to contort"
-    },
-    "ranged baptism": {
-    "prerequisites": "alchemist 4",
-    "benefits": "you can use holy water as a splash weapon and any squares subject to its effects (including creatures affected by splash damage) or that contain creatures subject to its effects are also affected as if by the consecrate spell. "
-    },
-    "remedy extract": {
-    "prerequisites": "alchemist 4",
-    "benefits": "when the alchemist creates an extract, he can add one non-magical alchemical remedy (such as an antitoxin) to it. "
-    },
-    "rocket bomb": {
-    "prerequisites": "goblin, alchemist 6th",
-    "benefits": "create bombs with less accuracy but more ka-boom! "
-    },
-    "sandstone solution": {
-    "prerequisites": "",
-    "benefits": "use a potion to make sand or dirt as hard as stone. "
-    },
-    "scrap bomb": {
-    "prerequisites": "goblin",
-    "benefits": "your bombs create shrapnel and cause bleed damage"
-    },
-    "shock bomb": {
-    "prerequisites": "",
-    "benefits": "deal electricity damage with your bombs"
-    },
-    "siege bomb": {
-    "prerequisites": "alchemist 12, explosive bomb",
-    "benefits": "deal bomb damage with siege weapons"
-    },
-    "smoke bomb": {
-    "prerequisites": "",
-    "benefits": "create a fog cloud effect with your bombs"
-    },
-    "solid ground": {
-    "prerequisites": "",
-    "benefits": "creatures cant burrow, earthglide, or meld (as meld into stone) in a 5-ft. Area. "
-    },
-    "spell knowledge": {
-    "prerequisites": "",
-    "benefits": "select a single spell from the sorcerer/wizard spell list that is at least 2 levels lower than your highest-level extract known. You can prepare and cast this spell as an arcane spell. "
-    },
-    "splitting mutagen": {
-    "prerequisites": "alchemist 12",
-    "benefits": "you can split into two identical copies of yourself. "
-    },
-    "spontaneous healing": {
-    "prerequisites": "",
-    "benefits": "you can heal more rapidly"
-    },
-    "sticky bomb": {
-    "prerequisites": "alchemist 10",
-    "benefits": "deal splash damage one extra round"
-    },
-    "sticky poison": {
-    "prerequisites": "alchemist 6",
-    "benefits": "poison applied to a weapon lasts longer"
-    },
-    "stink bomb": {
-    "prerequisites": "smoke bomb",
-    "benefits": "create a stinking cloud effect with your bombs"
-    },
-    "strafe bomb": {
-    "prerequisites": "",
-    "benefits": "your bomb splash damage affects a line"
-    },
-    "sunlight bomb": {
-    "prerequisites": "alchemist 10, blinding bomb",
-    "benefits": "create a bright sunlight effect with your bombs"
-    },
-    "syringe stirge": {
-    "prerequisites": "alchemist 6",
-    "benefits": "as a full-round action, you can expend two daily uses of bombs to create a syringe stirge, a tiny construct primed with a bomb (if you have multiple types of bombs, you must select which type the syringe stirge carries when created). "
-    },
-    "tainted infusion": {
-    "prerequisites": "delayed bomb, infusion",
-    "benefits": "when you prepare an extract with the infusion discovery, you can lace the extract with one of your bombs as long as the extract has a duration greater than instantaneous. You can reduce the duration of the extract to 1 round. As soon as the extracts duration expires, it detonates, dealing 150% of the normal bomb damage to the drinker. This effect does not produce a splash radius. Producing a tainted extract consumes both an infusion slot and a daily bomb use. "
-    },
-    "tanglefoot bomb": {
-    "prerequisites": "",
-    "benefits": "entangle foes with your bombs"
-    },
-    "tentacle": {
-    "prerequisites": "",
-    "benefits": "gain an extra limb"
-    },
-    "thorny bomb": {
-    "prerequisites": "",
-    "benefits": "you can make a bomb do piercing damage (that also counts as a magic weapon). "
-    },
-    "tumor familiar": {
-    "prerequisites": "",
-    "benefits": "gain a familiar that is part of the alchemists body"
-    },
-    "underwater demolition": {
-    "prerequisites": "",
-    "benefits": "you can create and throw bombs underwater"
-    },
-    "vestigial arm": {
-    "prerequisites": "",
-    "benefits": "gain an extra arm"
-    },
-    "void bomb": {
-    "prerequisites": "drow, alchemist 6",
-    "benefits": "by combining the spores from strange fungi with slivers from extradimensional voids, some drow alchemists create bombs that cause bursts of gravity capable of crushing those inside. "
-    },
-    "volumizer": {
-    "prerequisites": "",
-    "benefits": "you can use an extract slot of any level to create a reactive tablet that purifies water and doubles its volume. "
-    },
-    "wings": {
-    "prerequisites": "alchemist 6",
-    "benefits": "gain wings that let you fly"
-    },
-    
-    "alter simulacrum": {
-    "prerequisites": "alchemist 10, alchemical simulacrum",
-    "benefits": "alter the physical appearance of your alchemical simulacra. "
-    },
-    "blending body": {
-    "prerequisites": "",
-    "benefits": "increased miss chance while in dim light. "
-    },
-    "bottled assistant": {
-    "prerequisites": "alchemist 8",
-    "benefits": "create an alchemical assistant to help identify and create items. "
-    },
-    "extinguishing touch": {
-    "prerequisites": "",
-    "benefits": "extinguish small fires and light sources with a touch. "
-    },
-    "keen sight": {
-    "prerequisites": "",
-    "benefits": "gain low-light vision and darkvision. "
-    },
-    "perfect sight": {
-    "prerequisites": "alchemist 12, keen sight",
-    "benefits": "gain immunity to blindness. "
-    },
-    "shadowmeld compound": {
-    "prerequisites": "alchemist 8",
-    "benefits": "create an alchemical substance that can turn objects into shadowstuff. "
-    },
-    "terror bomb": {
-    "prerequisites": "alchemist 8",
-    "benefits": "bomb incites fear in those struck. "
-    },
-    "umbral bomb": {
-    "prerequisites": "alchemist 6, darkness bomb",
-    "benefits": "bomb creates supernatural darkness, exhausts target and fatigues those in splash radius. "
-    },
-    "compounding formulary": {
-    "prerequisites": "alchemist 4",
-    "benefits": "the alchemist can create alchemical items in powdered rather than liquid form and can infuse powders and liquids together into a variety of stable magical compounds. "
-    },
-    "effectual invisibility": {
-    "prerequisites": "alchemist 4",
-    "benefits": "whenever using an extract, potion, spell-completion, or spell-trigger item to create an invisibility effect, use alchemist level as caster level rather than the caster level of the item. "
-    },
-    "invisible bomb": {
-    "prerequisites": "alchemist 8",
-    "benefits": "when creating a bomb, can choose to render the bomb and its explosion invisible until thrown denying opponent its dexterity bonus to ac against the attack and creatures struck or within the blast radius suffer a -2 to reflex saves against the bomb. "
-    },
-    "tenacious invisibility": {
-    "prerequisites": "alchemist 6",
-    "benefits": "when creating an extract or mutagen that provides invisibility, whenever the invisibility effect would be ended prior to the end of its duration, including being dispelled or being broken by making an attack, the invisibility effect lingers for a number of additional rounds and the dc to dispel an extract that provides invisibility is increased. "
-    },
-    "transparency mutagen": {
-    "prerequisites": "alchemist 10",
-    "benefits": "become invisible when imbibing a mutagen and invisibility lasts for the duration of the mutagen. "
-    },
-    "true invisibility": {
-    "prerequisites": "alchemist 14",
-    "benefits": "when creating an extract or mutagen that provides invisibility, the target of that extract or mutagen is also protected against all devices and spells that gather information about the target through divination magic for as long as the invisibility effect lasts. "
-    },
-    "expelling bomb": {
-    "prerequisites": "alchemist 8",
-    "benefits": "expelling bomb deals full damage to incorporeal creatures, including splash damage and a creature struck by a direct hit is affected as by exorcise spirit binder secret. An expelling bombs damage dice are reduced by one step: d6s to d4s or d4s to d3s. "
-    },
-    "occult mutagen": {
-    "prerequisites": "alchemist 6",
-    "benefits": "when preparing your mutagen, can choose to forgo normal benefits to seal a spirit within the concoction. "
+     "acid bomb": {
+       "benefit":"when the alchemist creates a bomb, he can choose to have it inflict acid damage. creatures that take a direct hit from an acid bomb take an additional 1d6 points of acid damage 1 round later."
+      },
+     "alchemical simulacrum (su)": {
+       "prerequisite":"alchemist 8",
+       "benefit":"the alchemist gains the ability to create a lesser simulacrum. this works like the lesser simulacrum spell, except it costs 100 gp in alchemical materials per hit die of the simulacrum, requires 24 hours to grow, and decays into inert flesh rather than ice or snow if killed. the created simulacrum is a creature, not a supernatural effect."
+      },
+     "alchemical zombie (su)": {
+       "prerequisite":"alchemist 8",
+       "benefit":"the alchemist gains the ability to animate a relatively complete corpse as an alchemy-powered zombie. this process takes 1 hour and costs 100 gp in alchemical reagents per hd of the corpse being animated; the dead creature gains the zombie template. zombies that are created in this manner count as undead created by animate dead for the purposes of determining how many undead the alchemist can control. the created zombie is a creature, not a supernatural effect."
+      },
+     "anarchic bombs*": {
+       "prerequisite":"alchemist 8",
+       "benefit":"when the alchemist creates a bomb, he can choose to have it deal chaotic divine damage. lawful creatures that take a direct hit from an anarchic bomb must succeed at a fortitude save or be staggered on their next turn. against neutral creatures, anarchic bombs deal half damage, and such targets are not affected by their staggering effect. anarchic bombs have no effect on chaotic-aligned creatures."
+      },
+     "axiomatic bombs*": {
+       "prerequisite":"alchemist 8",
+       "benefit":"when the alchemist creates a bomb, he can choose to have it deal lawful divine damage. chaotic creatures that take a direct hit from an axiomatic bomb must succeed at a fortitude save or be staggered on their next turn. against neutral creatures, axiomatic bombs deal half damage, and such targets are not affected by their staggering effect. axiomatic bombs have no effect on lawful creatures."
+      },
+     "bitter pill (su)": {
+       "benefit":"the alchemist becomes bitter in flavor. any creature that hits the bitter alchemist with a bite attack gains the sickened condition for 1 round unless it succeeds at a fortitude save (dc = 10 + half the alchemists level + the alchemists constitution modifier). any creature that swallows the alchemist whole gains the nauseated condition for 1 round unless it succeeds at a fortitude save (same dc as above). if the alchemist is trapped in the creatures gullet and it becomes nauseated, the creature vomits him back out immediately as a free action at the start of the creatures turn; the alchemist lands prone adjacent to the creature."
+      },
+     "blackstar bomb (su)": {
+       "prerequisite":"void bomb",
+       "benefit":"this bomb crushes the target like a void bomb, then repels nearby creatures with a burst of gravity. the target takes damage as if hit by a void bomb. all other creatures within 5 feet of the target are subject to a bull rush. the alchemist uses his alchemist class level in place of his combat maneuver bonus, and adds his intelligence modifier in place of his strength or dexterity modifier to resolve the bull rush attempts. creatures moved by a blackstar bomb are pushed directly away from the targets square."
+      },
+     "void bomb (su)": {
+       "prerequisite":"alchemist 6",
+       "benefit":"by combining the spores from strange fungi with slivers from extradimensional voids, some drow alchemists create bombs that cause bursts of gravity capable of crushing those inside. void bombs deals 1d4 points of bludgeoning damage, plus 1d4 points of bludgeoning damage for every 2 alchemist levels beyond 1st, instead of 1d6. a creature hit by the bomb must succeed at a reflex save against the bombs dc. if it fails, it is knocked prone and cant get up for 1 round. if it succeeds, all of its movement speeds are reduced to 5 feet for 1 round. other creatures within 5 feet of the bombs target take no damage, but must succeed at a reflex save against the bombs dc or have all their movement speeds reduced to 5 feet for 1 round.  "
+      },
+     "blinding bomb (su)": {
+       "prerequisite":"alchemist 8",
+       "benefit":"when the alchemist creates a bomb, he can choose for it to detonate very brightly. creatures that take a direct hit from a blinding bomb are blinded for 1 minute unless they succeed at a fortitude save. creatures in the splash area that fail their saves against the bomb are dazzled for 1 minute. this is a light effect."
+      },
+     "boneshard bomb*": {
+       "prerequisite":"alchemical zombie",
+       "benefit":"the alchemists bomb deals piercing damage instead of fire damage, and creatures that take a direct hit from a boneshard bomb must succeed at a fortitude save or take 1d4 points of bleed damage in addition to normal damage. if a creature is killed by a boneshard bomb or the resulting bleed effect, its corpse immediately reanimates as an undead creature with the skeleton template. skeletons that are created in this manner count as undead created by animate dead for the purposes of determining how many undead the alchemist can control."
+      },
+     "bottled ooze (su)": {
+       "prerequisite":"alchemist 6",
+       "benefit":"the alchemist has learned how to preserve a sample of oozes in a sealed bottle, which he can prepare for use as an extract. when the alchemist activates the extract, he actually throws the bottle at a square within 30 feet, releasing the ooze, which reconstitutes and attacks the closest creature. the ooze is not under the alchemists control, but is otherwise treated as a summoned creature. the ooze remains for 1 round per caster level, and decays into powder when the duration expires. if the alchemist has the infusion discovery, another character can use the infused specimen. creating a bottled ooze requires an extract with a level equal to the oozes cr (so a cr 4 gray ooze requires a 4th-level extract)."
+      },
+     "breath weapon bomb": {
+       "prerequisite":"alchemist 6",
+       "benefit":"instead of drawing the components of, creating, and throwing a bomb, the alchemist can draw the components, drink them, mix them within his body, and then expel them as a breath weapon as a standard action. this breath weapon is a 15-foot cone and has the same dc as the bomb. each creature within the cone takes damage as if it had suffered a direct hit from the alchemists bomb, but succeeding at a reflex save (dc = 10 + 1/2 the alchemists level + the alchemists intelligent modifier) halves the damage. unlike throwing normal bombs, drawing, drinking, and expelling breath weapon bombs does not provoke attacks of opportunity."
+      },
+     "celestial poisons (su)": {
+       "prerequisite":"alchemist 8",
+       "benefit":"the alchemist is able to infuse poisons with celestial power so they can affect evil creatures that are normally immune to poison. any poison the alchemist administers to a weapon can affect undead and evil outsiders, bypassing their inherent immunities. magical effects that negate poisons still apply. if a creature fails its save, the poison acts as normal, but may have no effect on the creature, depending on the effect of the poison (such as dealing constitution damage to undead)."
+      },
+     "change alignment (su)": {
+       "prerequisite":"alchemist 12, infusion",
+       "benefit":"once per day as part of his preparation of infusions, the alchemist can brew an infusion that shifts the imbibers alignment to good. this change in alignment lasts for 10 minutes per alchemist level. an unwilling creature receives a will save to resist this change. the alchemist may have only one such infusion at any one time. the effects of this infusion may have serious repercussions for a creature suddenly struggling with a new outlook. many see it as little more than forced insanity, and some good faiths outlaw its use."
+      },
+     "infusion": {
+       "benefit":"when the alchemist creates an extract, he can infuse it with an extra bit of his own magical power. the extract created now persists even after the alchemist sets it down. as long as the extract exists, it continues to occupy one of the alchemists daily extract slots. an infused extract can be imbibed by a non-alchemist to gain its effects. editors note can i use the infusion discovery to create an infused extract of a personal-range formula (such as true strike), which someone else can drink? yes, you can. the design team may decide to close this loophole in the next printing of the advanced players guide. [source]"
+      },
+     "cognatogen (su)": {
+       "benefit":"the alchemist gains the ability to create a cognatogen, a mutagen-like mixture that heightens one mental ability score at the expense of a physical ability score. if the cognatogen enhances his intelligence, it applies a penalty to his strength. if it enhances his wisdom, it applies a penalty to his dexterity. if it enhances his charisma, it applies a penalty to his constitution. otherwise, this ability works just like the mutagen ability (including the natural armor bonus). anytime the alchemist would prepare a mutagen, he may instead prepare a cognatogen. all limitations of mutagens apply to cognatogens as if they were the same substancean alchemist can only maintain one mutagen or cognatogen at a time, a cognatogen that is not in an alchemists possession becomes inert, drinking a cognatogen makes a non-alchemist sick, and so on. when the effect of the cognatogen ends, the alchemist takes 2 points of ability damage to the ability score penalized by the cognatogen. the infuse mutagen discovery and the persistent mutagen class ability apply to cognatogens."
+      },
+     "collective memory (su)": {
+       "prerequisite":"cognatogen",
+       "benefit":"while under the effects of a cognatogen, the alchemist adds half his class level on all knowledge skill checks and may attempt all knowledge skill checks untrained. this bonus does not stack with the second intelligence bonus granted by the mindchemist archetypes perfect recall class feature."
+      },
+     "combine extracts": {
+       "prerequisite":"alchemist 8",
+       "benefit":"when the alchemist creates an extract, he can place two formulae into one extract. when the extract is consumed, both formulae take effect. this extract has a level two levels higher than the highest-level formulae placed in the extract."
+      },
+     "concentrate poison": {
+       "benefit":"the alchemist can combine two doses of the same poison to increase their effects. this requires two doses of the poison and 1 minute of concentration. when completed, the alchemist has one dose of poison. the poisons frequency is extended by 50% and the save dc increases by +2. this poison must be used within 1 hour of its creation or it is ruined."
+      },
+     "concussive bomb": {
+       "prerequisite":"alchemist 6",
+       "benefit":"when the alchemist creates a bomb, he can choose to have it inflict sonic damage. concussive bombs deal 1d4 points of sonic damage, plus 1d4 points of sonic damage for every odd-numbered level, instead of 1d6. creatures that take a direct hit from a concussive bomb are deafened for 1 minute unless they succeed at a fortitude save."
+      },
+     "confusion bomb (su)": {
+       "prerequisite":"alchemist 8",
+       "benefit":"the alchemists bombs twist the targets perception of friend and foe. a creature that takes a direct hit from a confusion bomb takes damage from the bomb and is under the effect of a confusion spell for 1 round per caster level of the alchemist. reduce the amount of normal damage dealt by the bomb by 2d6 (so a bomb that would normally deal 6d6+4 points of damage deals 4d6+4 points of damage instead).  faq \n  should the confusion discovery require a saving throw? yes. the target of the bomb may attempt at a save against the confusion effect (will negates, using the bombs dc). this will be corrected in the next printing of prg:um. [source]"
+      },
+     "cursed bomb*": {
+       "prerequisite":"alchemist 12",
+       "benefit":"when an alchemist creates a bomb, he can choose to have it deliver a debilitating curse. a creature that takes a direct hit from a cursed bomb must succeed at a will save or be affected by bestow curse."
+      },
+     "cytillesh bomb": {
+       "benefit":"when the alchemist creates a bomb, he can infuse it with cytillesh extract. cytillesh bombs deal 1d4 points of damage, plus 1d4 points of damage for every odd-numbered level, instead of 1d6. creatures that take a direct hit from a cytillesh bomb are sickened for 1 round per alchemist level unless they succeed at fortitude saves. if a creature is rendered unconscious from this bomb or any other attack before it is able to remove the sickened condition, the victim loses all memory from the last hour and cannot form new memories for 8 hours. the lost and prevented memories might return later as dreams, and can be restored with a restoration spell. this discovery doesnt stack with other discoveries that alter an alchemists bomb."
+      },
+     "delayed bomb": {
+       "prerequisite":"alchemist 8",
+       "benefit":"the alchemist can place a bomb so that it explodes a number of rounds after the alchemist ceases contact with the bomb. this delay can be any number of rounds as chosen by the alchemist, up to a number of rounds equal to his level. if at any point the alchemist reclaims possession of the delayed bomb, he can end the timer and prevent the bombs detonation. a delayed bomb detonates immediately if any other creature attempts to touch or move it, or if the bombs contents are removed from the vial (such as if the vial breaks). the bomb deals damage as if it scored a direct hit to any creature in the square with the bomb when it detonates, and splash damage (see throw splash weapon) to all adjacent creatures as normal. an alchemist cannot have more than one delayed bomb at one time. if he creates another delayed bomb, the previous bomb becomes inert. dispel magic can neutralize a delayed bomb, as can a successful disable device check (dc equals 10 + the alchemists level + the alchemists intelligence modifier)."
+      },
+     "demolition charge": {
+       "prerequisite":"alchemist 8.",
+       "benefit":"when the alchemist creates a bomb, he can choose to have it deal damage to an object as if by a sunder combat maneuver. if the item is worn or held by an opponent, the item is considered the direct target, and the wearer/holder takes splash damage from the blast. if the object is unattended, a demolition charge deals an additional 2d6 points of damage on a direct hit. this bonus doesnt affect the bombs splash damage."
+      },
+     "dilution": {
+       "prerequisite":"alchemist 12",
+       "benefit":"once per day, the alchemist can dilute any one potion or elixir, creating two doses of the same potion from one. diluting a potion costs a number of gp equal to one-quarter of the potions market value. a potion that has been diluted cannot be diluted again. this discovery cannot be used to dilute extracts or mutagens."
+      },
+     "directed bomb": {
+       "benefit":"the alchemist can cause his bombs to splash in a 15-foot cone instead of a 5-foot-radius burst. the alchemist chooses the direction of the cone. if the attack misses, roll an additional 1d8 to determine the direction of the blast from where the bomb lands. this discovery cant be combined with the explosive bomb discovery."
+      },
+     "dispelling bomb": {
+       "prerequisite":"alchemist 6",
+       "benefit":"when the alchemist creates a bomb, he can choose to have it dispel magic effects instead of deal damage. creatures that take a direct hit from a dispelling bomb are subject to a targeted dispel magic spell, using the alchemists level as the caster level. this cannot be used to target a specific spell effect."
+      },
+     "doppelganger simulacrum (su)": {
+       "prerequisite":"alchemist 10, alchemical simulacrum",
+       "benefit":"the alchemist learns how to create a simulacrum, a soulless duplicate of his body, into which he can project his consciousness. as a full-round action, he may shift his consciousness from his current body to any one of his available doppelganger simulacra, which must be on the same plane as the alchemist. if killed in a simulacrum, he transfers to his own body automatically; if killed in his own body, he is dead. unused simulacra (including his abandoned original body) appear to be lifeless corpses, though they do not decay. creating a duplicate costs 1,000 gp in alchemical materials and requires 1 week to grow. the created simulacrum is a creature, not a supernatural effect."
+      },
+     "ectoplasmic bomb*": {
+       "benefit":"the alchemist can infuse her bombs with a special unction that damages incorporeal creatures and reveals the presence of undead creatures hiding in the area. incorporeal creatures struck by an ectoplasmic bomb take full damage from the bomb. in addition, squares in the affected area of the bomb begin to faintly glow in the spaces where undead creatures have traveled in the last minute, including undead benefiting from invisibility or other forms of obscurity (such as ethereal jaunt), effectively creating a glowing trail. any undead creatures in the affected area at the time of the explosion likewise glow faintly. this glowing effect lasts for 1 minute, and is otherwise identical to faerie fire."
+      },
+     "elemental mutagen": {
+       "benefit":"the alchemist chooses an element (air, earth, fire, or water). whenever the alchemist imbibes a mutagen, he gains resistance 5 to the associated energy type and a +2 competence bonus on an associated skill check. this resistance increases by 5 and the competence bonus by 2 for each of the following discoveries the alchemist possesses: grand mutagen, greater mutagen, and true mutagen. the elements and their associated energies and skills are air (electricity, fly), earth (acid, climb), fire (fire, acrobatics), and water (cold, swim). an alchemist can select this discovery up to four times, but must choose a different element each time. an alchemist can gain the benefits of only one elemental mutagen at a time, selected when he imbibes the mutagen."
+      },
+     "mutagen (su)": {
+       "benefit":"this discovery gives the alchemist the mutagen class ability. (this discovery exists so alchemist archetypes who have variant mutagens, such as the mindchemist, can learn how to make standard mutagens.)"
+      },
+     "elixir of life": {
+       "prerequisite":"alchemist 16",
+       "benefit":"once per day, the alchemist can brew an elixir of life. this special concoction costs 25,000 gp to create and takes 1 hour of work. an elixir of life, when administered by the alchemist who brewed it, restores life to a dead creature as per the spell true resurrection. alternatively, the alchemist himself may drink the elixir of life, after which point he is immediately targeted with a resurrection spell the next time he is killed. used in this manner, the effects of an elixir of life persist only for a number of days equal to the alchemists intelligence modifier; if he does not die before that time expires, the effects of the elixir of life end."
+      },
+     "enhance potion": {
+       "benefit":"a number of times per day equal to his intelligence modifier, the alchemist can cause any potion he drinks to function at a caster level equal to his class level."
+      },
+     "eternal potion": {
+       "prerequisite":"alchemist 16, extend potion",
+       "benefit":"if an alchemist drinks a potion that he extends, the effects of that potion become permanent until he chooses to make another potion effect permanent."
+      },
+     "extend potion": {
+       "benefit":"a number of times per day equal to his intelligence modifier, the alchemist can cause any potion he drinks that does not have an instantaneous duration to function at twice its normal duration. this does not apply to extracts."
+      },
+     "explosive bomb": {
+       "benefit":"the alchemists bombs now have a splash radius of 10 feet rather than 5 feet (see throw splash weapon). creatures that take a direct hit from an explosive bomb catch fire, taking 1d6 points of fire damage each round until the fire is extinguished. extinguishing the flames is a full-round action that requires a reflex save. rolling on the ground provides the target with a +2 to the save. dousing the target with at least 2 gallons of water automatically extinguishes the flames."
+      },
+     "explosive missile": {
+       "prerequisite":"alchemist 4",
+       "benefit":"as a standard action, the alchemist can infuse a single arrow, crossbow bolt, or one-handed firearm bullet with the power of his bomb, load the ammunition, and shoot the ranged weapon. he must be proficient with the weapon in order to accomplish this. when the infused ammunition hits its target, it deals damage normally and detonates as if the alchemist had thrown the bomb at the target. if the explosive missile misses, it does not detonate."
+      },
+     "fast bombs": {
+       "prerequisite":"alchemist 8",
+       "benefit":"an alchemist with this discovery can quickly create enough bombs to throw more than one in a single round. the alchemist can prepare and throw additional bombs as a full-round action if his base attack bonus is high enough to grant him additional attacks. this functions just like a full-attack with a ranged weapon. editors note if an alchemist has the fast bombs discovery, can he use rapid shot, two-weapon fighting, improved two-weapon fighting, haste, and similar abilities and effects to add more attacks? as written, yes, all of these apply because fast bombs functions just like a full-attack with a ranged weapon. [source]"
+      },
+     "feral mutagen": {
+       "benefit":"whenever the alchemist imbibes a mutagen, he gains two claw attacks and a bite attack. these are primary attacks and are made using the alchemists full base attack bonus. the claw attacks deal 1d6 points of damage (1d4 if the alchemist is small) and the bite attack deals 1d8 points of damage (1d6 if the alchemist is small). while the mutagen is in effect, the alchemist gains a +2 competence bonus on intimidate skill checks."
+      },
+     "flesh-eating bomb*": {
+       "benefit":"your bomb deals damage one die step higher than normal (regular bombs deal d8s, concussive bombs deal 1d6, and so on), but they have no effect on inorganic matter. in addition, a creature with at least a +1 armor bonus to ac is less likely to be harmed; such creatures in the bombs splash radius take no damage on a successful reflex save, and the target of a direct hit can attempt a reflex save against the bombs save dc to take only half damage."
+      },
+     "force bomb": {
+       "prerequisite":"alchemist 8",
+       "benefit":"when the alchemist creates a bomb, he can choose to have it inflict force damage. force bombs deal 1d4 points of force damage, plus 1d4 points of force damage for every odd-numbered level, instead of 1d6. creatures that take a direct hit from a force bomb are knocked prone unless they succeed on a reflex save."
+      },
+     "frost bomb": {
+       "benefit":"when the alchemist creates a bomb, he can choose to have it inflict cold damage. creatures that take a direct hit from a frost bomb are staggered on their next turn unless they succeed on a fortitude save."
+      },
+     "glimmering infusion (sp)": {
+       "prerequisite":"infusion",
+       "benefit":"the alchemist can expend any prepared extract to produce a cube of glowing motes that act as per glitterdust. the area must be adjacent to the alchemist and covers one 5-foot square per level of extract sacrificed, and the effects save dc is calculated using the level of the sacrificed extract."
+      },
+     "grand cognatogen (su)": {
+       "prerequisite":"alchemist 16, greater cognatogen discovery or greater cognatogen class ability",
+       "benefit":"the alchemists cognatogen now grants a +6 natural armor bonus, a +8 alchemical bonus to one mental ability score (intelligence, wisdom, or charisma), a +6 alchemical bonus to a second mental ability score, and a +4 alchemical bonus to a third mental ability score. the alchemist takes a 2 penalty to his strength, dexterity, and constitution as long as the cognatogen persists, and takes 2 points of ability damage to each physical ability score when the cognatogen ends."
+      },
+     "greater cognatogen (su)": {
+       "prerequisite":"alchemist 12, cognatogen discovery or cognatogen class ability",
+       "benefit":"the alchemists mutagen now grants a +4 natural armor bonus, a +6 alchemical bonus to one mental ability score (intelligence, wisdom, or charisma), and a +4 alchemical bonus to a second mental ability score. the alchemist takes a 2 penalty on both associated physical ability scores as long as the mutagen persists, and takes 2 points of ability damage to both associated physical ability scores when the cognatogen ends."
+      },
+     "grand inspiring cognatogen (su)": {
+       "prerequisite":"alchemist 16, greater inspiring cognatogen",
+       "benefit":"the alchemists inspiring cognatogen now grants a +4 dodge bonus to ac and a +4 bonus to reflex saving throws; a 6 penalty to strength and constitution; and the effects of having the item lore, tenacious inspiration, and underworld inspiration investigator talents."
+      },
+     "greater inspiring cognatogen (su)": {
+       "prerequisite":"alchemist 12, inspiring cognatogen",
+       "benefit":"the alchemists inspiring cognatogen now grants a +2 dodge bonus to ac and a +2 bonus to reflex saving throws; a 4 penalty to strength and constitution; and the effects of having the amazing inspiration, eidetic recollection, and expanded inspiration investigator discoveries."
+      },
+     "inspiring cognatogen (su)": {
+       "benefit":"an alchemist with this discovery learns how to make an inspiring cognatogen, a mutagen-like mixture that grants him inspiration (as the investigators class feature) at the expense of strength and constitution. upon drinking the inspiring cognatogen, the alchemist gains a pool of inspiration equal to 1/2 his alchemist level + his intelligence modifier (minimum 1). he also gains a +2 dodge bonus to ac and takes a 2 penalty to both strength and constitution. as a free action, the alchemist can add 1d6 to the result of an ability or skill check (including any he takes 10 or 20 on) by expending one use of inspiration. this ability works exactly like the investigators inspiration ability, except that the alchemist gains the pool of inspiration upon drinking the inspiring cognatogen, and any unspent inspiration is lost at the end of the cognatogens duration. if the alchemist already has access to inspiration, the inspiration added by the inspiring cognatogen is added to his inspiration pool, but each time he expends at least one use of inspiration while this ability is active, he must succeed at a dc 20 will saving throw or become dazed for 1 round. he cannot use inspiration to augment this saving throw. all limitations of mutagens apply to an inspiring cognatogen as if they were the same substancean alchemist can only maintain one mutagen or cognatogen (either the standard cognatogen or the inspired cognatogen) at a time, a cognatogen not in an alchemists possession becomes inert, drinking a cognatogen makes non-alchemists sick, and so on. when the effect of an inspiring cognatogen ends, the alchemist takes 2 points of ability damage to strength and dexterity. the infuse mutagen discovery and the persistent mutagen class ability apply to an inspiring cognatogen."
+      },
+     "grand mutagen": {
+       "prerequisite":"alchemist 16, greater mutagen",
+       "benefit":"the alchemists mutagen now grants a +6 natural armor bonus, a +8 alchemical bonus to one ability score (strength, dexterity, or constitution), a +6 alchemical bonus to a second physical ability score, and a +4 alchemical bonus to a third physical ability score. the alchemist takes a 2 penalty to his intelligence, wisdom, and charisma as long as the mutagen persists."
+      },
+     "greater mutagen": {
+       "prerequisite":"alchemist 12",
+       "benefit":"the alchemists mutagen now grants a +4 natural armor bonus, a +6 alchemical bonus to one physical ability score (strength, dexterity, or constitution), and a +4 alchemical bonus to a second physical ability score. the alchemist takes a 2 penalty on both associated mental ability scores as long as the mutagen persists."
+      },
+     "grease bomb": {
+       "prerequisite":"alchemist 6.",
+       "benefit":"when the alchemist creates a bomb, he can choose to have it create a grease slick upon detonation. when a grease bomb detonates, it coats an area equal to the bombs splash radius in grease (as the grease spell) for 1 round per level. the dc of the reflex save to avoid falling after a failed acrobatics check is equal to 10 + 1/2 the alchemists level + the alchemists intelligence modifier. a grease bomb cant affect items or armor."
+      },
+     "plague bomb (su)": {
+       "prerequisite":"alchemist 8, smoke bomb",
+       "benefit":"the effects of the smoke created by an alchemists bomb duplicates the effects of contagion instead of fog cloud, filling an area equal to twice the bombs splash area for 1 round per level. editors note \n    does an alchemists inferno bomb, poison bomb, smoke bomb, or stink bomb cause bomb damage in addition to the special effect listed for those discoveries? \n "
+      },
+     "smoke bomb": {
+       "benefit":"when the alchemist creates a bomb, he can choose to have it create a cloud of thick smoke when it detonates. the cloud functions as fog cloud, filling an area equal to twice the bombs splash radius for 1 round per level. faq does an alchemists inferno bomb, poison bomb, smoke bomb, or stink bomb cause bomb damage in addition to the special effect listed for those discoveries? yes. for example, a smoke bomb deals bomb damage and creates an area of smoke. [source]"
+      },
+     "greater alchemical simulacrum (su)": {
+       "prerequisite":"alchemist 14, alchemical simulacrum",
+       "benefit":"the alchemist gains the ability to create a simulacrum. this works like the simulacrum spell, except it costs 100 gp in alchemical materials per hit die of the simulacrum, requires 24 hours to grow, and decays into inert flesh rather than ice or snow if killed. the created simulacrum is a creature, not a supernatural effect."
+      },
+     "grounding goo (su)": {
+       "benefit":"the alchemists bomb applies a sticky residue after any damage from the bomb is resolved. if a creature damaged by the bomb has a non-magical fly speed, its flight is severely impaired, and it takes a penalty equal to the alchemists level on fly checks for 1 minute."
+      },
+     "healing bomb": {
+       "benefit":"when the alchemist creates a bomb, he can choose to have it heal damage instead of dealing it. creating a healing bomb requires the alchemist to expend an infused extract or potion containing a cure spell. a creature that takes a direct hit from a healing bomb is healed as if she had imbibed the infusion or potion used to create the bomb. creatures in the splash radius are healed for the minimum amount of damage the cure spell is capable of healing. a healing bomb damages undead instead of healing them."
+      },
+     "healing touch (ex)": {
+       "prerequisite":"alchemist 6, spontaneous healing discovery or spontaneous healing class ability",
+       "benefit":"the alchemist gains the ability to heal other creatures. as a standard action, he may touch a creature and apply 1 rounds effect of his spontaneous healing discovery to that creature; this counts toward his spontaneous healing limit for the day. the alchemists daily limit for hit points healed by spontaneous healing increases to 5  his alchemist level. this ability only functions if the target is the same type of creature (humanoid, undead, and so on) as the alchemist."
+      },
+     "spontaneous healing (ex)": {
+       "benefit":"the alchemist gains the ability to heal from wounds rapidly. as a free action once per round, he can heal 5 hit points as if he had the fast healing ability. he can heal 5 hit points per day in this manner for every 2 alchemist levels he possesses. if the alchemist falls unconscious because of hit point damage and he still has healing available from this ability, the ability activates automatically each round until he is conscious again or the ability is depleted for the day."
+      },
+     "hellfire bomb": {
+       "prerequisite":"alchemist 9, explosive bomb, tiefling",
+       "benefit":"when the alchemist creates a bomb, he can have it act as an explosive bomb, but deal half of its damage as fire damage and half as unholy damage that is not subject to fire resistance or immunity."
+      },
+     "holy bombs": {
+       "prerequisite":"alchemist 8",
+       "benefit":"when the alchemist creates a bomb, he can choose to have it deal good divine damage. evil creatures that take a direct hit from a holy bomb must succeed at a fortitude save or be staggered on their next turn. against neutral creatures, holy bombs deal half damage, and such targets are not affected by their staggering effect. holy bombs have no effect on good-aligned creatures."
+      },
+     "immolation bomb": {
+       "prerequisite":"alchemist 3",
+       "benefit":"when the alchemist creates a bomb, he can choose to have its substance coat the direct targets body, causing the bomb to deal its damage over time instead of all at once. the bombs effect lasts for a number of rounds equal to the number of damage dice the bomb would normally deal (for instance, a 5d6 bomb lasts for 5 rounds). when the bomb hits the direct target, the bomb deals 1d6 + the alchemists intelligence modifier in damage, and those within the splash zone take damage equal to 1 + the alchemists intelligence modifier. it repeats this damage against the direct target of the bomb each round the immolation bomb lasts, dealing the damage at the start of the alchemists turn. splash damage is dealt again to any creature that is adjacent to the direct target when it takes damage from the immolation bomb. a creature taking damage from an immolation bombs direct hit can attempt to extinguish the flames as a full-round action that requires a reflex save (dc = 10 + 1/2 the alchemists level + the alchemists intelligence modifier). because of the alchemical nature of this bomb, rolling on the ground does not grant a bonus on the saving throw, and dousing a creature with water does not stop it from burning. these bombs can be used underwater."
+      },
+     "inferno bomb": {
+       "prerequisite":"alchemist 16, smoke bomb",
+       "benefit":"the effects of the smoke created by an alchemists bomb duplicate the effects of incendiary cloud instead of fog cloud, filling an area equal to twice the bombs splash radius for 1 round per level (see throw splash weapon). editors note \n    does an alchemists inferno bomb, poison bomb, smoke bomb, or stink bomb cause bomb damage in addition to the special effect listed for those discoveries? \n "
+      },
+     "infuse mutagen": {
+       "benefit":"when the alchemist creates a mutagen he can infuse it with an extra bit of his own magical power. this inflicts 2 points of intelligence damage to the alchemist and costs 1,000 gp in rare reagents, but the mutagen created persists on its own and is not rendered inert if the alchemist creates another mutagen. this allows an alchemist to create different types of mutagens and keep them handy for emergencies. this does not allow an alchemist to gain the effects of multiple mutagensonly the most recently imbibed mutagen has any effect."
+      },
+     "inspired bomb (su)": {
+       "benefit":"an alchemist with this discovery and a pool of inspiration (by way of a class feature, a feat, or the inspiring cognatogen discovery) can expend two uses of inspiration to increase the bombs damage by 1d6. the type of damage the bomb deals does not change. unlike other a discoveries that affect bombs, this one can be applied to a bomb with another bomb discovery, though it cannot be applied to the same bomb more than once."
+      },
+     "intuitive understanding (sp)": {
+       "prerequisite":"alchemist 4, cognatogen",
+       "benefit":"if the alchemist drinks an extract of the divination school while under the effects of a cognatogen, his effective caster level temporarily increases by 2. in addition, while under the effects of a cognatogen, the alchemist may use augury once as a spell-like ability (caster level equal to his alchemist level). at 10th level, he can use divination instead."
+      },
+     "lingering spirit (ex)": {
+       "prerequisite":"alchemist 4",
+       "benefit":"the alchemist is familiar enough with the ties between his body and spirit that he lingers at deaths door far longer than a normal person. he treats his constitution as 10 points higher than normal for the purpose of determining when hit point damage kills him (so an alchemist with a constitution of 10 and this discovery dies at 20 hit points instead of 10). reducing him to 0 constitution or its equivalent (from ability damage, ability drain, constitution penalties, and so on) makes him unconscious and comatose, but he is only killed after taking an additional 5 points of constitution damage, drain, or penalty (in effect, the alchemist must be brought to 5 constitution in order to be killed by these attacks)."
+      },
+     "madness bomb": {
+       "prerequisite":"alchemist 12",
+       "benefit":"the alchemists bombs do more than sear fleshthey sear the mind. a creature that takes a direct hit from a madness bomb takes damage from the bomb plus 1d4 points of wisdom damage. reduce the amount of normal damage dealt by the bomb by 2d6 (so a bomb that would normally deal 6d6+4 points of damage deals 4d6+4 points of damage instead). the amount of wisdom damage dealt by a madness bomb is reduced by 1 for each madness bomb that hit the target in the past 24 hours, to a minimum of 1 point of wisdom damage."
+      },
+     "malignant poison": {
+       "prerequisite":"alchemist 10.",
+       "benefit":"as a full-round action, the alchemist can increase the save dc of any poison by 4 and increase its duration by 2 frequency increments (for example, large scorpion venom lasts 8 rounds instead of 6 and drow poison lasts 4 minutes instead of 2). additionally, malignant poisons take effect immediately and do not have an onset time. this alchemical change lasts until the poisons extended duration ends or for a number of minutes equal to the alchemists level, whichever comes first. after that, the poison reverts back to its original state."
+      },
+     "material mastery (ex)": {},
+     "mummification (ex)": {
+       "prerequisite":"alchemist 10, preserve organs",
+       "benefit":"the alchemist has mastered preserving flesh and applied this knowledge to his own body, turning himself into an undead-like creature. after learning this discovery, the alchemist must perform a 30-day regimen of a special diet, rigorous exercise, and drinking a mildly poisonous alchemical tea. at the end of this regimen, he falls unconscious for 24 hours, then awakens as a living mummy. the alchemists type does not change, but he becomes immune to cold, nonlethal damage, paralysis, and sleep."
+      },
+     "preserve organs (ex)": {
+       "benefit":"the alchemist learns how to preserve and protect his vital organs, reducing the chance of a mortal wound. when a critical hit or sneak attack is scored on the alchemist, there is a 25% chance that the critical hit or sneak attack is negated and damage is instead rolled normally. special: this does not stack with similar abilities that negate critical hits and sneak attacks (such as fortification armor). an alchemist can take this discovery up to three times; the effects stack, increasing this chance to 50% and then 75%."
+      },
+     "nauseating flesh": {
+       "prerequisite":"alchemist 12",
+       "benefit":"the alchemists body is suffused with poison. any creature that bites, engulfs, or swallows the alchemist must make a fortitude saving throw or be nauseated for 1d4 rounds. the alchemist with this discovery does not suffer the effect of the poison of his own nauseating flesh."
+      },
+     "neutralizing bomb": {},
+     "ooze blight*": {
+       "benefit":"a target hit by your bomb loses the split special quality for 1d4 rounds. in addition, against creatures with the ooze type, this bomb deals untyped damage that bypasses all resistances."
+      },
+     "parasitic twin (ex)": {
+       "prerequisite":"vestigial arm discovery x2",
+       "benefit":"the alchemists vestigial arms are part of a parasitic twin on his torso, consisting of a head, a torso, and two arms (from the vestigial arm discovery). normally, the twin is mostly recessed within the alchemists body, with the visible arms acting like the vestigial arm discovery, though the alchemist can manifest or hide the twin as a standard action. the twin is helpless, fully subservient to the alchemist, and cannot be targeted or harmed. once per day, if the alchemist succumbs to a mental effect that would make him unconscious, helpless, or not in control of his own actions (such as charm person, feeblemind, or hold person), he can reroll his saving throw; success means the twin absorbs the effect and the alchemist can ignore it. using this ability sickens the alchemist for the duration of the absorbed effect (removing the effect from the twin ends the sickened condition), and he cannot use the twins arms during that time, though passive effects (such as from rings worn on the vestigial arm) continue normally."
+      },
+     "vestigial arm (ex)": {
+       "benefit":"the alchemist gains a new arm (left or right) on his torso. the arm is fully under his control and cannot be concealed except with magic or bulky clothing. the arm does not give the alchemist any extra attacks or actions per round, though the arm can wield a weapon and make attacks as part of the alchemists attack routine (using two-weapon fighting). the arm can manipulate or hold items as well as the alchemists original arms (for example, allowing the alchemist to use one hand to wield a weapon, another hand to hold a potion, and the third hand to throw a bomb). the arm has its own hand and ring magic item slots (though the alchemist can still only wear two rings and two hand magic items at a time). special: an alchemist may take this discovery up to two times."
+      },
+     "phantom limb": {
+       "prerequisite":"alchemist 8",
+       "benefit":"the alchemist can manifest a ghostly, incorporeal arm that juts out from his torso. this phantom limb does not grant the alchemist any extra attacks or actions per round, and it cannot hold or grab anything (including incorporeal objects). the alchemist may use his phantom limb to make a touch attack against a foe as a standard action, scraping away at the very fibers of the victims soul. this attack deals 1d4 points of damage per alchemist level (fortitude half ). creatures that are immune to incorporeal attacks are immune to this damage, but otherwise the damage bypasses all forms of damage reduction except dr/epic. the alchemist may suppress or activate this ability as a free action, and can use his phantom limb for a number of rounds per day equal to 3 + his intelligence modifier (these rounds need not be consecutive)."
+      },
+     "pheromones (su)": {
+       "benefit":"the alchemist exudes an imperceptible musk that grants him a permanent +3 competence bonus on bluff, diplomacy, and intimidate checks."
+      },
+     "pickled quasit": {
+       "prerequisite":"alchemist 10",
+       "benefit":"the alchemist has learned how to seal a quasit in a bottle, which he can prepare for use as an extract. when the alchemist activates the extract, he throws the bottle at a square within 30 feet, releasing the quasit. the quasit is not under the alchemists control, but is otherwise treated as a summoned creature. the quasit remains for 1 round per caster level, then collapses into its associated elements. if the alchemist has the infusion discovery, another character can use the infused specimen. creating a pickled quasit requires a 4th-level extract."
+      },
+     "plague vector": {
+       "prerequisite":"alchemist 14, plague bomb",
+       "benefit":"the effects of the alchemists plague bomb operate as normal except for the following changes. the chosen diseases save dc is equal to 10 + 1/2 the alchemists level + his intelligence modifier. any creatures affected by the chosen disease become vectors for it, spreading the disease to any creatures they come in physical contact with for a number of days equal to the alchemists intelligence modifier (minimum 1). the save dc to avoid contracting the disease from the vector is the same as the dc used for this discovery."
+      },
+     "poison bomb": {
+       "prerequisite":"alchemist 12, smoke bomb",
+       "benefit":"the effects of the smoke created by an alchemists bomb duplicates the effects of cloudkill instead of fog cloud, filling an area equal to twice the bombs splash radius for 1 round per level. editors note \n    does an alchemists inferno bomb, poison bomb, smoke bomb, or stink bomb cause bomb damage in addition to the special effect listed for those discoveries? \n "
+      },
+     "poison conversion": {
+       "prerequisite":"alchemist 6",
+       "benefit":"by spending 1 minute, the alchemist can convert 1 dose of poison from its current type (contact, ingested, inhaled, or injury) to another type. for example, the alchemist can convert a dose of small centipede poison (an injury poison) to an inhaled poison. this process requires an alchemy lab."
+      },
+     "precise bombs": {
+       "benefit":"whenever the alchemist throws a bomb, he can select a number of squares equal to his intelligence modifier that are not affected by the splash damage from his bombs. if the bomb misses, this discovery has no effect."
+      },
+     "profane bomb*": {
+       "prerequisite":"alchemist 8",
+       "benefit":"when the alchemist creates a bomb, he can choose to have it deal evil divine damage. good creatures that take a direct hit from a profane bomb must succeed at a fortitude save or be staggered on their next turn. against a neutral creature, a profane bomb deals half damage, and the target is not affected by the bombs staggering effect. a profane bomb has no effect against evil-aligned creatures."
+      },
+     "promethean disciple": {
+       "prerequisite":"alchemist 6",
+       "benefit":"an alchemist with this discovery learns how to craft constructs by way of alchemical research rather than arcane magic. the alchemist gains craft construct as a bonus feat without needing to meet its requirements. the alchemist substitutes his number of ranks in craft (alchemy) for his total caster level and must use craft (alchemy) to create the construct. the dc to create the construct still increases for any necessary spells that the alchemist does not have access to. however, the alchemist can use extracts in place of spells as spell prerequisites."
+      },
+     "psychoactive bomb": {
+       "prerequisite":"alchemist 6",
+       "benefit":"psychoactive bombs are mixed with neurotoxic extracts that heighten certain sensations. a creature struck by a psychoactive bomb takes a 1 penalty on saving throws against charm, emotion, fear, and pain effects, and the dc for intimidate checks against the victim decreases by 2. this effect lasts for 1 hour per alchemist level. these penalties do not stack, and a creature can only be affected by a single psychoactive bomb at a time. a psychoactive bomb deals 1d6 fewer hit points of damage than normal. an alchemist must be at least 6th level before selecting this discovery."
+      },
+     "psychokinetic tincture": {},
+     "purging mutagen": {},
+     "ranged baptism (su)": {
+       "prerequisite":"alchemist 4",
+       "benefit":"when the alchemist uses holy water as a splash weapon, any squares subject to its effects (including creatures affected by splash damage) or that contain creatures subject to its effects are also affected as if by consecrate, for a number of rounds equal to the alchemists intelligence modifier. undead struck by holy water remain affected by the consecrate effect even if they leave the affected area."
+      },
+     "remedy extract": {
+       "prerequisite":"alchemist 4",
+       "benefit":"when the alchemist creates an extract, he can add one non-magical alchemical remedy (such as an antitoxin) to it. when the extract is consumed, both the formula and the alchemical remedy take effect. the extract has a level 1 higher than normal. this discovery cannot be combined with other methods of combining multiple consumed items or extracts into one."
+      },
+     "sandstone solution (su)": {
+       "benefit":"as a full-round action, the alchemist can convert any potion or extract into a solution that, when thrown or applied, solidifies sand or dirt to the hardness of stone for 1 hour, affecting an area with a radius of 10 feet  the level of the potion or extract. if this solution is thrown at or applied to stone, it instead causes a 5-foot cube of stone to become crumbly and soft for 1 minute, reducing its hardness by double the level of the potion or extract."
+      },
+     "shock bomb": {
+       "benefit":"when the alchemist creates a bomb, he can choose to have it inflict electricity damage. creatures that take a direct hit from a shock bomb are dazzled for 1d4 rounds."
+      },
+     "siege bomb": {
+       "prerequisite":"alchemist 12, explosive bomb",
+       "benefit":"as a standard action, the alchemist infuses a single piece of ammunition on a loaded siege weapon with the power of his bomb. as long as the siege weapon with this ammunition is fired before the start of the alchemists next turn, the ammunition does damage normally, and also deals the damage of the alchemists bomb. the splash radius of the bomb effect is 20 feet rather than 5 feet. creatures that take the bombs damage (either direct damage or splash damage), take 1d6 points of fire damage each round until the fire is extinguished. extinguishing the flames is a full-round action that requires a reflex save. rolling on the ground provides the target with a +2 bonus on the save. dousing the target with at least 2 gallons of water automatically extinguishes the flames."
+      },
+     "solid ground (su)": {
+       "benefit":"the alchemist launches an explosive paste bomb that bonds with any earthen surface. each application of this paste deals no damage and affects a 5-foot-cube of dirt, loose soil, or stone, transmuting the earth for a number of minutes equal to the alchemists level. creatures cannot use burrow, earthglide, or similar abilities (such as the meld into stone spell) while the ground remains transmuted in this way."
+      },
+     "spell knowledge": {},
+     "splitting mutagen": {
+       "prerequisite":"alchemist 12",
+       "benefit":"once per day while under the effects of your mutagen, you can split into two identical copies of yourself as an immediate action after being damaged by a piercing or slashing weapon. each copy has an ooze-like complexion, most often manifesting as a slimy sheen to his skin. you split your current hit points evenly between the copies. the copies use the same statistics, share the same resources, and have identical equipment (except artifacts, which only one copy has). similarly, if one of the copies expends a charge or daily use from a magic item that a copy has, the charge or daily use is expended from both copies. if one copy drops or gives away an item, the duplicate item disappears from the other copy as well. the two copies act independently and each one has a full set of actions. at the end of your next turn, select one of the copies, which loses its ooze-like complexion as it becomes the alchemist; the other copy dissolves into a fine mist and dissipates. if one of the copies is destroyed before this happens, the remaining copy immediately becomes the alchemist, and you gain 1 permanent negative level. if both copies are destroyed simultaneously (such as from a fireball), both copies collapse into formless goo and you can only be restored to life via resurrection or similarly powerful magic."
+      },
+     "sticky bomb": {
+       "prerequisite":"alchemist 10",
+       "benefit":"the effects of the alchemists bombs are persistent and continue to damage creatures for 1 round after the initial damage. creatures that take a direct hit from a sticky bomb take the splash damage 1 round later. bombs that have effects that would normally occur 1 round later instead have those effects occur 2 rounds later."
+      },
+     "sticky poison": {
+       "prerequisite":"alchemist 6",
+       "benefit":"any poison the alchemist creates is stickywhen the alchemist applies it to a weapon, the weapon remains poisoned for a number of strikes equal to the alchemists intelligence modifier."
+      },
+     "stink bomb": {
+       "prerequisite":"smoke bomb",
+       "benefit":"the effects of the smoke created by an alchemists bomb can duplicate the effects of stinking cloud instead of fog cloud, filling an area equal to twice the bombs splash radius for 1 round. editors note \n    does an alchemists inferno bomb, poison bomb, smoke bomb, or stink bomb cause bomb damage in addition to the special effect listed for those discoveries? \n "
+      },
+     "strafe bomb (su)": {
+       "benefit":"the alchemist can throw bombs that splash in a 40-foot line rather than affecting a radius. the line starts at the alchemist and extends away from him in the direction he chooses. the alchemist designates one creature in the squares affected by the line to be the target of the bomb and makes his attack roll against that creature; all other squares in the line take splash damage. special: if the alchemist has the explosive bomb discovery and throws an explosive strafe bomb, the line of splash damage is 80 feet long instead of 40 feet."
+      },
+     "sunlight bomb (su)": {
+       "prerequisite":"alchemist 10, blinding bomb",
+       "benefit":"the alchemist can throw bombs that explode with a searing radiance equivalent to that of sunlight and that act as blinding bombs. undead, fungi, molds, oozes, slimes, and creatures to which sunlight is harmful or unnatural take +2 damage per die from the bomb. undead that are harmed by sunlight and that fail their saves against the bomb are staggered for 1 round."
+      },
+     "syringe stirge (su)": {
+       "prerequisite":"alchemist 6",
+       "benefit":"as a full-round action, you can expend two daily uses of bombs to create a syringe stirge, a tiny construct primed with a bomb (if you have multiple types of bombs, you must select which type the syringe stirge carries when created). undirected, they take no actions except to flock around you in your square and follow you as best they can. they can be attacked normally, but gain cover while occupying your square. as a swift action, you can order one of your syringe stirges to attack an enemy it can see. once ordered to attack that enemy, the syringe stirge will continue to attack every round, attempting to attach and deliver its payload a syringe stirge has all of the statistics of a stirge but lacks the blood drain ability. if it ends its turn attached to an opponent, it injects your bomb into the opponents bloodstream, dealing damage as a direct hit plus the alchemists intelligence modifier (as the throw anything featthis injection is a direct attack and doesnt deal splash damage. a syringe stirge dies immediately after injecting its bomb. a syringe stirge lasts for 1 minute per alchemist level or until destroyed; if it has not attached to an enemy before the end of its life span, it and its bomb payload fall inert."
+      },
+     "tainted infusion": {
+       "prerequisite":"delayed bomb, infusion",
+       "benefit":"the alchemist can mask murder behind beneficence. when preparing an extract with the infusion discovery, he can lace the extract with one of his bombs as long as the extract has a duration greater than instantaneous. if he chooses, the alchemist can reduce the duration of the extract to 1 round. as soon as the extracts duration expires, it detonates, dealing 150% of the alchemists bomb damage to the drinker. this effect does not produce a splash radius. producing a tainted extract consumes both an infusion slot and a daily bomb use."
+      },
+     "tanglefoot bomb (su)": {
+       "benefit":"a creature that takes a direct hit from a tanglefoot bomb must save against the bombs dc or be entangled and glued to the floor as if it had failed its save against a tanglefoot bag. creatures in the splash area that fail their saves are entangled but not glued to the floor; those who make this save are not entangled at all."
+      },
+     "tentacle (ex)": {
+       "benefit":"the alchemist gains a prehensile, arm-length tentacle on his body. the tentacle is fully under his control and cannot be concealed except with magic or bulky clothing. the tentacle does not give the alchemist any extra attacks or actions per round, though he can use it to make a tentacle attack (1d4 damage for a medium alchemist, 1d3 damage for a small one) with the grab ability. the tentacle can manipulate or hold items as well as the alchemists original arms can (for example, allowing the alchemist to use one hand to wield a weapon, the tentacle to hold a potion, and the third hand to throw a bomb). unlike an arm, the tentacle has no magic item slots."
+      },
+     "thorny bomb (su)": {
+       "benefit":"when the alchemist creates a bomb, he can choose to have it deal piercing damage. thorny bombs count as magic weapons for the purpose of overcoming damage reduction."
+      },
+     "tumor familiar (ex)": {
+       "benefit":"the alchemist creates a diminutive or tiny tumor on his body, usually on his back or stomach. as a standard action, the alchemist can have the tumor detach itself from his body as a separate creature vaguely resembling a kind of animal suitable for a familiar (bat, cat, and so on) and move about as if it were an independent creature. the tumor can reattach itself to the alchemist as a standard action. the tumor has all the abilities of the animal it resembles (for example, a batlike tumor can fly) and familiar abilities based on the alchemists caster level (though some familiar abilities may be useless to an alchemist). the tumor acts as the alchemists familiar whether attached or separated (providing a skill bonus, the alertness feat, and so on). when attached to the alchemist, the tumor has fast healing 5. an alchemists extracts and mutagens are considered spells for the purposes of familiar abilities like share spells and deliver touch spells. if a tumor familiar is lost or dies, it can be replaced 1 week later through a specialized procedure that costs 200 gp per alchemist level. the ritual takes 8 hours to complete."
+      },
+     "volumizer (su)": {
+       "benefit":"the alchemist can use an extract slot of any level to create a reactive tablet that purifies water and doubles its volume. this works like purify food and drink for a maximum volume of water equal to 1 gallon for each level the alchemist has  the level of the extract slot the alchemist used to create the tablet. additionally, if the alchemist has a receptacle of sufficient volume to gather the water, the tablet doubles the volume of pure water. the water volume increases over the course of 1 minute, but the effect stops before it can create significant water pressure on a container thats not large enough to hold the entire volume. an unused tablet remains usable until the next time the alchemist recovers extract slots."
+      },
+     "wings (ex)": {
+       "prerequisite":"alchemist 6",
+       "benefit":"the alchemist gains bat-like, bird-like, or insect-like functional wings, allowing him to fly as the fly spell for a number of minutes per day equal to his caster level. these minutes do not need to be consecutive, but they must be spent in 1-minute increments. special: an alchemist can select this discovery multiple times; each time he does so, he adds his caster level to the number of minutes per day that he can fly with the wings. this flight is an extraordinary ability."
+      },
+     "change alignment, greater (su)": {
+       "prerequisite":"alchemist 20, change alignment discovery, infusion",
+       "benefit":"the effects of the alchemists change alignment infusion become permanent and can only be reversed by a wish or miracle. a permanent, forced change of alignment may be devastating, and some believe it is little better than zealous slavery or mind control. others consider a good alignment brought about by any means but purity of heart an affront to freedom. this discovery remains controversial at best."
+      },
+     "alter simulacrum (su)": {
+       "prerequisite":"alchemist 10, alchemical simulacrum",
+       "benefit":"the alchemist gains the ability to alter the physical appearance of any alchemical simulacrum he creates. this functions as a sculpt simulacrum spell. this process requires careful application, taking 10 minutes to complete and alchemical components worth 50 gp. the simulacrum cannot move and is considered helpless while being altered in this manner."
+      },
+     "blending body (ex)": {
+       "prerequisite":"none",
+       "benefit":"the color of the alchemists skin better absorbs light, letting him remain better hidden in darkness. when in dim light, the miss chance due to concealment increases to 50% (rather than 20%); this does not grant total concealment, it just increases the miss chance."
+      },
+     "bottled assistant (sp)": {
+       "prerequisite":"alchemist 8",
+       "benefit":"the alchemist learns to create an alchemical assistant to aid him on routine tasks of alchemy and medicine. creating a bottled assistant takes 10 minutes, and the alchemist can only have one bottled assistant created or in use at a time. at any point as a standard action, he may pour out the contents of the bottle into an open space to grow his bottled assistant nearly instantly; this functions as a phantom caretaker spell, using the alchemists level as his caster level. in addition to its normal abilities, the assistant has a craft (alchemy) skill bonus equal to the alchemists skill bonus. it can identify the properties of a magical potion using craft (alchemy) the same way the alchemist can, and can create alchemical items using its skills (though it must be given materials). it is treated as having both the brew potion and cooperative crafting feats in order to help the alchemist create potions, but it cannot make use of the brew potion feat on its own to make potions (only to help the alchemist via the cooperative crafting feat)."
+      },
+     "darkness bomb (su)": {
+       "prerequisite":"none",
+       "benefit":"when the alchemist creates a bomb, he can choose to have it create an area of shadows when it detonates. the shadows function as darkness, lowering the light level in an area equal to twice the bombs splash radius for 1 round per level. a creature hit directly by the darkness bomb has its energy sapped by the magical darkness, making it fatigued for 1 minute. this cannot cause a creature that is already fatigued to become exhausted."
+      },
+     "extinguishing touch (ex)": {
+       "prerequisite":"none",
+       "benefit":"the alchemist can create a fine black powder from his hand that extinguishes fires and small light sources. this essentially allows him to cast snuff at will, but with a range of touch. touching a small fire to extinguish it does not damage the alchemist."
+      },
+     "keen sight (ex)": {
+       "prerequisite":"none",
+       "benefit":"the alchemist makes alterations to his senses to greatly improve his visual perception. the alchemist gains low-light vision and darkvision 60 feet. if the alchemist already has darkvision, its range is increased by 30 feet instead."
+      },
+     "perfect sight (ex)": {
+       "prerequisite":"alchemist 12, keen sight",
+       "benefit":"the alchemist wards his vision with alchemical protection, making him immune to blindness."
+      },
+     "shadowmeld compound (sp)": {
+       "prerequisite":"alchemist 8",
+       "benefit":"the alchemist can create an alchemical compound infused with shadowstuff that, when coated on an object, melds it into darkness. creating this compound takes 10 minutes, and the alchemist can only create one shadowmeld compound every 24 hours. he can only have one shadowmeld compound in existence at a time; creating another renders any previously made compound that has not yet been used inert (a compound that has already been used and is still in effect continues to function). the compound acts as a shadow courier spell, using the alchemists level as his caster level, letting him hide an object within the shadow of a creature. the object must be on the shadow of the recipient of the shadow courier effect at the time of applying the compound."
+      },
+     "terror bomb (su)": {
+       "prerequisite":"alchemist 8",
+       "benefit":"the alchemist can create a bomb containing psychotropic chemicals that instill fear in those exposed to it. a creature hit directly by the bomb must make a will save or become frightened for 2d4 rounds. a creature caught in the splash area must make a will save or be shaken for 1d4 rounds instead. this is a mind-affecting fear effect."
+      },
+     "umbral bomb (su)": {
+       "prerequisite":"alchemist 6, darkness bomb",
+       "benefit":"the alchemists bomb creates shadows as deeper darkness, lowering the light level in an area equal to twice the bombs splash radius for 1 round per level. a creature hit directly by the umbral bomb has its energy sapped by the magical darkness, making it exhausted for 1 minute. creatures caught in the blast radius that fail their reflex save are fatigued for 1 minute; this cannot make a creature already fatigued become exhausted."
+      }
+    },
+    "grand": {
+      "awakened intellect": {
+        "prerequisite": "grand discovery",
+        "benefit": "the alchemists constant exposure to strange chemicals has expanded his mind. his intelligence score permanently increases by 2 points."
+      },
+      "true mutagen": {
+        "prerequisite": "grand discovery, grand mutagen discovery",
+        "benefit": "the alchemists mutagen now grants a +8 natural armor bonus and a +8 alchemical bonus to strength, dexterity, and constitution. the alchemist takes a 2 penalty to his intelligence, wisdom, and charisma as long as the mutagen persists."
+      },
+      "fast healing": {
+        "prerequisite": "grand discovery",
+        "benefit": "the alchemists flesh responds to damage with shocking speedhe gains fast healing 5."
+      },
+      "eternal youth": {
+        "prerequisite": "grand discovery",
+        "benefit": "the alchemist has discovered a cure for aging, and from this point forward he takes no penalty to his physical ability scores from advanced age. if the alchemist is already taking such penalties, they are removed at this time."
+      },
+      "philosophers stone": {
+        "prerequisite": "grand discovery",
+        "benefit": "the alchemist learns how to create a philosophers stone, and can do so once per month at no cost. creating a philosophers stone takes 1 day of work."
+      },
+      "poison touch": {
+        "prerequisite": "grand discovery",
+        "benefit": "the alchemist gains a poisonous touch, as if under the effects of a poison spell. he can suppress or activate this ability as a free action. the physical appearance of how the alchemist generates and delivers his poisonous touch varies from alchemist to alchemist."
+      }
     }
-    
-    },
-    
-    "grand" : {
-    "awakened intellect": {
-    "prerequisites": "",
-    "benefits": "gain 2 points of intelligence"
-    },
-    "greater change alignment": {
-    "prerequisites": "change alignment, infusion",
-    "benefits": "change alignment infusion effects are permanent (but can be removed by wish or miracle.)"
-    },
-    "eternal youth": {
-    "prerequisites": "",
-    "benefits": "stop aging"
-    },
-    "fast healing": {
-    "prerequisites": "",
-    "benefits": "gain fast healing 5"
-    },
-    "philosophers stone": {
-    "prerequisites": "",
-    "benefits": "learn how to make a philosophers stone"
-    },
-    "poison touch": {
-    "prerequisites": "",
-    "benefits": "gain a poison touch attack"
-    },
-    "true mutagen": {
-    "prerequisites": "grand mutagen",
-    "benefits": "gain a more powerful mutagen"
-    }
-    
-    }
-    
     }

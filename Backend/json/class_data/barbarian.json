@@ -1,719 +1,646 @@
 {
-   "basic":{
-      "Ancestor Totem, Lesser (Su)":{
-         "benefits":"When she enters a rage, the barbarian selects a skill of her choice, which must be one she can use while raging, such as Climb or Intimidate. While raging, she gains a +2 insight bonus to the chosen skill."
+   "basic": {
+      
+   "beast totem (su)": {
+     "prerequisite": "barbarian 6, lesser beast totem rage power",
+     "benefit": "while raging, the barbarian gains a +1 natural armor bonus. this bonus increases by +1 for every four levels the barbarian has attained."
    },
-      "Ancestor Totem (Su)":{
-         "prerequisites":"Barbarian 6, lesser ancestor totem rage power",
-         "benefits":"The barbarian’s insight bonus to her chosen skill increases to +4. The barbarian can now select any skill to receive this bonus, even a Charisma-, Dexterity-, or Intelligence-based skill or a skill that requires patience or concentration; if she selects such a skill, she can use it even while raging."
+   "ancestor totem, lesser (su)": {
+     "benefit": "when she enters a rage, the barbarian selects a skill of her choice, which must be one she can use while raging, such as climb or intimidate. while raging, she gains a +2 insight bonus to the chosen skill."
    },
-      "Ancestor Totem, Greater (Su)":{
-         "prerequisites":"Barbarian 10, ancestor totem rage power",
-         "benefits":"The barbarian’s insight bonus to her chosen skill increases to +6. Once per rage, she can spend one round of rage as an immediate action to reroll a skill check in the chosen skill. She must take the result of the second roll, even if it is lower."
+   "ancestor totem (su)": {
+     "prerequisite": "barbarian 6, lesser ancestor totem rage power",
+     "benefit": "the barbarianas insight bonus to her chosen skill increases to +4. the barbarian can now select any skill to receive this bonus, even a charisma-, dexterity-, or intelligence-based skill or a skill that requires patience or concentration; if she selects such a skill, she can use it even while raging.a "
    },
-      "Animal Fury (Ex)":{
-         "benefits":"While raging, the barbarian gains a bite attack. If used as part of a full attack action, the bite attack is made at the barbarian’s full base attack bonus –5. If the bite hits, it deals 1d4 points of damage (assuming the barbarian is Medium; 1d3 points of damage if Small) plus half the barbarian’s Strength modifier. A barbarian can make a bite attack as part of the action to maintain or break free from a grapple. This attack is resolved before the grapple check is made. If the bite attack hits, any grapple checks made by the barbarian against the target this round are at a +2 bonus."
+   "ancestor totem, greater (su)": {
+     "prerequisite": "barbarian 10, ancestor totem rage power",
+     "benefit": "the barbarianas insight bonus to her chosen skill increases to +6. once per rage, she can spend one round of rage as an immediate action to reroll a skill check in the chosen skill. she must take the result of the second roll, even if it is lower."
    },
-      "Armor Ripper":{
-         "benefits":"While raging, you gain a +2 bonus on combat maneuver checks made to sunder with any of your natural attacks.",
-         "Special":"This rage power is available to wereboars, wereboar-kin and those who associate with these creatures."
+   "animal fury (ex)": {
+     "benefit": "while raging, the barbarian gains a bite attack. if used as part of a full attack action, the bite attack is made at the barbarians full base attack bonus a5. if the bite hits, it deals 1d4 points of damage (assuming the barbarian is medium; 1d3 points of damage if small) plus half the barbarians strength modifier. a barbarian can make a bite attack as part of the action to maintain or break free from a grapple. this attack is resolved before the grapple check is made. if the bite attack hits, any grapple checks made by the barbarian against the target this round are at a +2 bonus."
    },
-      "Atavism Totem, Lesser (Su)":{
-         "benefits":" The barbarian gains a bite attack; if she already has a bite attack, it deals damage as if the barbarian were one size larger."
+   "armor ripper": {
+     "benefit": "while raging, you gain a +2 bonus on combat maneuver checks made to sunder with any of your natural attacks. special: this rage power is available to wereboars, wereboar-kin and those who associate with these creatures."
    },
-      "Atavism Totem (Su)":{
-         "prerequisites":"Barbarian 6",
-         "benefits":" The barbarian gains ferocity."
+   "atavism totem, lesser (su)": {
+     "benefit": "the barbarian gains a bite attack; if she already has a bite attack, it deals damage as if the barbarian were one size larger."
    },
-      "Atavism Totem, Greater (Su)":{
-         "prerequisites":"Barbarian 10",
-         "benefits":" The barbarian gains trample."
+   "atavism totem (su)": {
+     "prerequisite": "barbarian 6",
+     "benefit": "the barbarian gains ferocity."
    },
-      "Auspicious Mark (Su)":{
-         "benefits":"The barbarian has been marked by the spirits, as indicated by an impressive tattoo, scar, or birthmark she possesses. Once per rage, as a swift action that costs 2 rounds of rage, the barbarian can call upon the spirits’ favor. Using auspicious mark grants her a +1d6 bonus on one d20 roll she has just made. She can call on the auspicious mark after seeing the result of the d20 roll."
+   "atavism totem, greater (su)": {
+     "prerequisite": "barbarian 10",
+     "benefit": "the barbarian gains trample."
    },
-      "Battle Roar (Su)":{
-         "prerequisites":"Barbarian 6, intimidating glare",
-         "benefits":"When the character successfully demoralizes an opponent using intimidating glare, he also deals 1d6 points of sonic damage to that opponent."
+   "auspicious mark (su)": {
+     "benefit": "the barbarian has been marked by the spirits, as indicated by an impressive tattoo, scar, or birthmark she possesses. once per rage, as a swift action that costs 2 rounds of rage, the barbarian can call upon the spiritsa favor. using auspicious mark grants her a +1d6 bonus on one d20 roll she has just made. she can call on the auspicious mark after seeing the result of the d20 roll."
    },
-
-      "Intimidating Glare (Ex)":{
-         "benefits":"The barbarian can make an Intimidate check against one adjacent foe as a move action. If the barbarian successfully demoralizes her opponent, the foe is shaken for 1d4 rounds + 1 round for every 5 points by which the barbarian’s check exceeds the DC."
+   "battle roar (su)": {
+     "prerequisite": "barbarian 6, intimidating glare",
+     "benefit": "when the character successfully demoralizes an opponent using intimidating glare, he also deals 1d6 points of sonic damage to that opponent."
    },
-
-
-      "Beast Totem, Lesser (Su)":{
-         "benefits":"While raging, the barbarian gains two claw attacks. These attacks are considered primary attacks and are made at the barbarian’s full base attack bonus. The claws deal 1d6 points of slashing damage (1d4 if Small) plus the barbarian’s Strength modifier."
+   "intimidating glare (ex)": {
+     "benefit": "the barbarian can make an intimidate check against one adjacent foe as a move action. if the barbarian successfully demoralizes her opponent, the foe is shaken for 1d4 rounds + 1 round for every 5 points by which the barbarians check exceeds the dc."
    },
-      "Beast Totem, Greater (Su)":{
-         "prerequisites":"Barbarian 10, beast totem rage power",
-         "benefits":"While raging, the barbarian gains the pounce special ability, allowing her to make a full attack at the end of a charge. In addition, the damage from her claws increases to 1d8 (1d6 if Small) and the claws deal x 3 damage on a critical hit."
+   "beast totem, lesser (su)": {
+     "benefit": "while raging, the barbarian gains two claw attacks. these attacks are considered primary attacks and are made at the barbarianas full base attack bonus. the claws deal 1d6 points of slashing damage (1d4 if small) plus the barbarianas strength modifier."
    },
-      "Beast Totem (Su)":{
-         "prerequisites":"Barbarian 6, lesser beast totem rage power",
-         "benefits":"While raging, the barbarian gains a +1 natural armor bonus. This bonus increases by +1 for every four levels the barbarian has attained."
+   "beast totem, greater (su)": {
+     "prerequisite": "barbarian 10, beast totem rage power",
+     "benefit": "while raging, the barbarian gains the pounce special ability, allowing her to make a full attack at the end of a charge. in addition, the damage from her claws increases to 1d8 (1d6 if small) and the claws deal x 3 damage on a critical hit. faq if a creature with pounce is under a slow effect, and it charges, does it still get its full attack from pounce? according to the rules as written, pounce would allow the creature its full attack, despite the slow effect. (this happens because there is no partial charge action in the pathfinder rpg.) source"
    },
-      "Bestial Climber (Ex)":{
-         "prerequisites":"Barbarian 6, raging climber rage power",
-         "benefits":"While raging, the barbarian gains a natural climb speed equal to her land speed."
+   "bestial climber (ex)": {
+     "prerequisite": "barbarian 6, raging climber rage power",
+     "benefit": "while raging, the barbarian gains a natural climb speed equal to her land speed."
    },
-      "Raging Climber (Ex)":{
-         "benefits":"When raging, the barbarian adds her level as an enhancement bonus on all Climb skill checks."
+   "raging climber (ex)": {
+     "benefit": "when raging, the barbarian adds her level as an enhancement bonus on all climb skill checks."
    },
-      "Bestial Leaper (Ex)":{
-         "prerequisites":"Barbarian 6, raging leaper rage power",
-         "benefits":"While raging, the barbarian can take a move action to move and can take her normal standard action at any point during the move."
+   "bestial leaper (ex)": {
+     "prerequisite": "barbarian 6, raging leaper rage power",
+     "benefit": "while raging, the barbarian can take a move action to move and can take her normal standard action at any point during the move."
    },
-      "Raging Leaper (Ex)":{
-         "benefits":"When raging, the barbarian adds her level as an enhancement bonus on all Acrobatics skill checks made to jump. When making a jump in this way, the barbarian is always considered to have a running start."
+   "raging leaper (ex)": {
+     "benefit": "when raging, the barbarian adds her level as an enhancement bonus on all acrobatics skill checks made to jump. when making a jump in this way, the barbarian is always considered to have a running start."
    },
-      "Bestial Swimmer (Ex)":{
-         "prerequisites":"Barbarian 6, raging swimmer rage power",
-         "benefits":"While raging, the barbarian gains a natural swim speed equal to her normal land speed."
+   "bestial swimmer (ex)": {
+     "prerequisite": "barbarian 6, raging swimmer rage power",
+     "benefit": "while raging, the barbarian gains a natural swim speed equal to her normal land speed."
    },
-      "Raging Swimmer (Ex)":{
-         "benefits":"When raging, the barbarian adds her level as an enhancement bonus on all Swim skill checks."
+   "raging swimmer (ex)": {
+     "benefit": "when raging, the barbarian adds her level as an enhancement bonus on all swim skill checks."
    },
-      "Bleeding Blow (Ex)":{
-         "prerequisites":"Barbarian 8, powerful blow rage power",
-         "benefits":"When she uses her powerful blow rage power, the barbarian also deals bleed damage equal to her bonus damage with the powerful blow. This bleed damage bypasses damage reduction."
+   "bleeding blow (ex)": {
+     "prerequisite": "barbarian 8, powerful blow rage power",
+     "benefit": "when she uses her powerful blow rage power, the barbarian also deals bleed damage equal to her bonus damage with the powerful blow. this bleed damage bypasses damage reduction."
    },
-
-      "Bloody Bite (Ex)":{
-         "prerequisites":"Half-orc, animal fury rage power or a natural bite attack",
-         "benefits":"The barbarian’s bite attack deals 1d6 points of bleed damage in addition to its other effects."
+   "powerful blow (ex)": {
+     "benefit": "the barbarian gains a +1 bonus on a single damage roll. this bonus increases by +1 for every 4 levels the barbarian has attained. this power is used as a swift action before the roll to hit is made. special: this power can only be used once per rage."
    },
-      "Bloody Fist (Ex)":{
-         "prerequisites":"Barbarian 12",
-         "benefits":"While raging, the barbarian may attempt to punch through an opponent’s flesh and rip out one of its vital organs. In order to do so, the barbarian must confirm a critical hit against an opponent with a natural attack or unarmed strike. The barbarian deals damage as normal for a critical hit and the opponent must succeed at a Fortitude save (DC = 10 + 1/2 the barbarian’s class level + the barbarian’s Strength modifier) or take 1d4 points of Constitution damage as one of its vital organs is ripped free from its body."
+   "bloody bite (ex)": {
+     "prerequisite": "half-orc, animal fury rage power or a natural bite attack",
+     "benefit": "the barbarians bite attack deals 1d6 points of bleed damage in addition to its other effects."
    },
-      "Boar’s Charge":{
-         "prerequisites":"Barbarian 12",
-         "benefits":"While raging, when you hit with a gore attack as part of a charge, you automatically score a critical threat. You must still confirm the critical hit as normal.",
-         "Special":"This rage power is available to wereboars, wereboar-kin and those who associate with these creatures."
+   "bloody fist (ex)": {
+     "prerequisite": "barbarian 12",
+     "benefit": "while raging, the barbarian may attempt to punch through an opponents flesh and rip out one of its vital organs. in order to do so, the barbarian must confirm a critical hit against an opponent with a natural attack or unarmed strike. the barbarian deals damage as normal for a critical hit and the opponent must succeed at a fortitude save (dc = 10 + 1/2 the barbarians class level + the barbarians strength modifier) or take 1d4 points of constitution damage as one of its vital organs is ripped free from its body. this power can only be used once per rage."
    },
-      "Boasting Taunt (Ex)":{
-         "prerequisites":"Barbarian 6",
-         "benefits":"While raging, the barbarian can incite a creature to attack her by making an Intimidate check to demoralize. If the check succeeds, the target is also shaken as long as the barbarian is visible and raging or until it makes a melee attack against the barbarian. The barbarian receives a +2 circumstance bonus on this check for every alcoholic drink she has consumed during this rage. This is a language-dependent mind-affecting effect, and it relies on audible components."
+   "boars charge": {
+     "prerequisite": "barbarian 12",
+     "benefit": "while raging, when you hit with a gore attack as part of a charge, you automatically score a critical threat. you must still confirm the critical hit as normal. special: this rage power is available to wereboars, wereboar-kin and those who associate with these creatures."
    },
-      "Body Bludgeon (Ex)":{
-         "prerequisites":"Barbarian 10",
-         "benefits":"While raging, if the barbarian pins an opponent that is smaller than her, she can then use that opponent as a two-handed improvised weapon that deals 1d8 points of bludgeoning damage, assuming the opponent is sized Small. Larger or smaller creatures used as a bludgeon deal damage based on their size using this base damage. A size Tiny creature deals 1d6 points of damage, a size Medium creature deals 1d10 points of damage, and so on. The barbarian can make a single attack using the pinned opponent as part of the action she uses to maintain the grapple, using her highest attack bonus. Whenever the barbarian hits using the pinned opponent as a weapon, she deals damage to her target normally, and the grappled opponent used as a bludgeon also takes the same damage she dealt to the target. If the pinned opponent is unable to resist being pinned for any reason, the barbarian can use that opponent as an improvised weapon without grappling or pinning the opponent, until the creature is reduced to 0 or fewer hit points, at which point the creature becomes useless as an improvised weapon."
+   "boasting taunt (ex)": {
+     "prerequisite": "barbarian 6",
+     "benefit": "while raging, the barbarian can incite a creature to attack her by making an intimidate check to demoralize. if the check succeeds, the target is also shaken as long as the barbarian is visible and raging or until it makes a melee attack against the barbarian. the barbarian receives a +2 circumstance bonus on this check for every alcoholic drink she has consumed during this rage. this is a language-dependent mind-affecting effect, and it relies on audible components."
    },
-
-      "Brawler, Greater":{
-         "prerequisites":"Brawler rage power",
-         "benefits":"While raging, the barbarian is treated as if she has Two-Weapon Fighting when making unarmed strike attacks."
-   },
-      "Brawler":{
-         "benefits":"While raging, the barbarian is treated as if she has Improved Unarmed Strike. If she already has the feat, her unarmed strikes deal 1d6 points of damage (1d4 if she is Small)."
-   },
-      "Breathtaker (Ex)":{
-         "benefits":"While raging, whenever you make a successful melee attack against an opponent that is holding its breath, in addition to any other effects caused by that attack, the opponent loses a number of rounds of breath equal to your Strength modifier."
-   },
-      "Celestial Totem, Lesser (Su)":{
-         "benefits":"Whenever she is subject to a spell that cures hit point damage, she heals 1 additional point of damage per caster level. In the case of non-spell healing effects (such as channeled energy or lay on hands), she heals a number of additional points equal to the class level of the character performing the magical healing. This does not affect fast healing or regeneration."
-   },
-      "Celestial Totem (Su)":{
-         "prerequisites":"Barbarian 8",
-         "benefits":"This effect bestows upon the barbarian a halo of gleaming light that shines as if it were daylight and triggers an invisibility purge effect in the barbarian’s square and each adjacent square. The invisibility purge only affects non-good creatures."
-   },
-      "Celestial Totem, Greater (Su)":{
-         "prerequisites":"Barbarian 12, celestial totem",
-         "benefits":"While raging, the barbarian gains spell resistance equal to 11 + the barbarian’s class level against spells with the evil descriptor. She also gains a +2 bonus on all saving throws against spells and effects from evil creatures."
-   },
-      "Chaos Totem, Lesser (Su)":{
-         "benefits":"While raging, the barbarian gains a +1 deflection bonus to AC against the attacks of lawful creatures and a +1 resistance bonus on saving throws against confusion, insanity, polymorph, and effects with the lawful descriptor. This bonus increases by +1 for each chaos totem rage power she possesses."
-   },
-      "Chaos Totem, Greater (Su)":{
-         "prerequisites":"Barbarian 10, chaos totem rage power",
-         "benefits":"While raging, the barbarian gains DR/lawful equal to 1/2 her barbarian level. Her weapons and natural weapons are considered chaotic for the purpose of overcoming damage reduction."
-   },
-      "Chaos Totem (Su)":{
-         "prerequisites":"Barbarian 6, lesser chaos totem rage power",
-         "benefits":"While raging, the barbarian’s form becomes infused with chaos. She gains a +4 bonus on Escape Artist checks and has a 25% chance to ignore extra damage from critical hits and sneak attacks."
-   },
-      "Clear Mind (Ex)":{
-         "prerequisites":"Barbarian 8",
-         "benefits":"A barbarian may reroll a failed Will save. This power is used as an immediate action after the first save is attempted, but before the results are revealed by the GM. The barbarian must take the second result, even if it is worse.",
-         "Special":"This power can only be used once per rage."
-   },
-      "Come and Get Me (Ex)":{
-         "prerequisites":"Barbarian 12",
-         "benefits":"While raging, as a free action the barbarian may leave herself open to attack while preparing devastating counterattacks. Enemies gain a +4 bonus on attack and damage rolls against the barbarian until the beginning of her next turn, but every attack against the barbarian provokes an attack of opportunity from her, which is resolved prior to resolving each enemy attack."
-   },
-      "Crippling Blow (Ex)":{
-         "prerequisites":"Barbarian 8, powerful blow",
-         "benefits":"When using her powerful blow rage power, the barbarian can forgo the normal bonus to damage (including any bleed damage granted by the bleeding blow rage power or similar boosts to the damage of the powerful blow rage power) and instead deals 1 point of ability damage to the target’s Strength or Dexterity score for every four class levels the barbarian has attained. The target can attempt a Fortitude saving throw (DC 10 + 1/2 the barbarian’s level + the barbarian’s Strength modifier) to halve this ability damage."
-   },
-      "powerful Blow (Ex)":{
-         "benefits":"The barbarian gains a +1 bonus on a single damage roll. This bonus increases by +1 for every 4 levels the barbarian has attained. This power is used as a swift action before the roll to hit is made.",
-         "Special":"This power can only be used once per rage."
-   },
-      "Cult Totem, Lesser (Ex)":{
-         "benefits":"While the barbarian is raging, any morale bonuses or bonuses for flanking she gains on attacks rolls are added to her damage rolls instead of her attack rolls. They are still morale bonuses, and they don’t stack with other morale bonuses on damage rolls."
-   },
-      "Cult Totem (Ex)":{
-         "prerequisites":"Barbarian 6, lesser cult totem rage power",
-         "benefits":"The barbarian can make an attack of opportunity against a creature within her reach who damages an ally of the barbarian with a melee attack. Only the enemy, not the barbarian’s ally, needs to be within the barbarian’s melee reach in order for the barbarian to make this attack of opportunity. Once the barbarian makes an attack of opportunity against a creature with this ability, she can’t use this ability to make an attack of opportunity against the same creature for 24 hours."
-   },
-      "Cult Totem, Greater (Su)":{
-         "prerequisites":"Barbarian 10, lesser cult totem and cult totem rage powers",
-         "benefits":"While the barbarian is raging, when she takes hit point damage that would render her dying or dead, she remains conscious and raging until the end of her next turn after taking that damage, though she is disabled during that turn. She becomes dying or dead at the end of her next turn as normal for her current hit point total."
-   },
-      "Daemon Totem, Lesser (Su)":{
-         "benefits":"While raging, the barbarian gains a +2 bonus on saving throws against acid damage, death effects, disease, and poison. This bonus increases by 1 for each daemon totem rage power the barbarian has, excluding this one."
-   },
-      "Daemon Totem (Su)":{
-         "prerequisites":"Barbarian 6, lesser daemon totem rage power",
-         "benefits":"While the barbarian is raging, her melee attacks impose a temporary negative level on her opponent on a successful critical hit. After 1 hour, these temporary negative levels disappear automatically (without a saving throw)."
-   },
-      "Daemon Totem, Greater (Su)":{
-         "prerequisites":"Barbarian 10, lesser daemon totem, daemon totem rage powers",
-         "benefits":"If the barbarian kills an intelligent creature with a CR equal to at least half her character level while raging, she heals 5 hit points. If she is already at her maximum number of hit points, she instead gains 5 temporary hit points, which don’t stack if she kills multiple creatures."
-   },
-
-
-
-      "Deathless Frenzy":{
-         "prerequisites":"Barbarian 12",
-         "benefits":"While raging, you ignore the effects of being at 0 or fewer hit points until you have been at 0 or fewer hit points for 1 round, at which point the appropriate consequences for your current hit point total take effect. Even death can be postponed this way, potentially allowing you to survive if you receive sufficient healing before the round is up.",
-         "Special":"This rage power is available to wereboars, wereboar-kin and those who associate with these creatures."
-   },
-      "Disemboweling Tusks":{
-         "prerequisites":"Barbarian 10",
-         "benefits":"While raging, when you confirm a critical hit with your gore attack, you deal 1d4 points of Constitution damage in addition to the normal damage for the gore attack.",
-         "Special":"This rage power is available to wereboars, wereboar-kin and those who associate with these creatures."
-   },
-
-      "Dragon Totem (Su)":{
-         "prerequisites":"Barbarian 6, animal fury rage power, intimidating glare rage power",
-         "benefits":"The barbarian must select a single color of dragon (black, blue, brass, bronze, copper, gold, green, red, silver, or white) as her totem. While raging, she gains a +1 bonus on Perception checks and a +1 morale bonus on saving throws against fear, paralysis, and sleep effects. This bonus increases by +1 for each additional dragon totem rage power (such as dragon totem resilience and dragon totem wings) the barbarian possesses."
-   },
- 
-      "Dragon Totem Wings (Su)":{
-         "prerequisites":"Barbarian 10, dragon totem rage power, dragon totem resilience rage power",
-         "benefits":"When a barbarian selects this rage power, the Fly (Dex) skill becomes a class skill for her. While raging and wearing medium or lighter armor, the barbarian can spend a standard action to manifest a pair of spiritual dragon wings that grant her a fly speed equal to her base speed (average maneuverability). She can expend 2 rounds of her rage to instead spend an immediate action to gain this fly speed. She can end her fly speed at any time, even when it is not her turn. Each round she spends raging and flying counts as 2 rounds of rage. Her ability to fly ends automatically when she ceases raging."
-   },
-      "Dragon Totem Resilience (Su)":{
-         "prerequisites":"Barbarian 8, dragon totem rage power",
-         "benefits":"While raging, the barbarian gains resistance to the energy type that is associated with her dragon totem—acid (black, copper, green), cold (silver, white), electricity (blue, bronze), or fire (brass, gold, red). This resistance equals double her current DR/— from her barbarian damage reduction class feature; this energy resistance increases by 2 for each dragon totem rage power she possesses, including this one."
-   },
-      "Eater of Magic (Su)":{
-         "prerequisites":"Barbarian 10, superstition rage power",
-         "benefits":"Once per rage, when a barbarian fails a saving throw against a spell, supernatural ability, or spell-like ability, she can reroll the saving throw against the effect (this is not an action). If she succeeds at the second saving throw, she is not affected by the spell, supernatural ability, or spell-like ability and gains a number of temporary hit points equal to the effect’s caster level (in the case of spell or spell-like abilities) or the CR of the effect’s creator (in the case of supernatural abilities). These temporary hit points last until damage is applied to them or 1 minute, whichever occurs first."
-   },
- 
-      "Elemental Rage, Greater (Su)":{
-         "prerequisites":"Barbarian 12, elemental rage power",
-         "benefits":"While raging, all of the barbarian’s critical hits made with melee weapons deal an additional 1d10 points of energy damage (2d10 if the weapon deals ×3 damage on a critical hit, 3d10 if the weapon deals ×4 on a critical hit). The type of this damage is the same as the type chosen for the elemental rage power."
-   },
-      "Elemental Rage (Su)":{
-         "prerequisites":"Barbarian 8, lesser elemental rage power",
-         "benefits":"While raging, all of the barbarian’s melee attacks deal an additional 1d6 points of energy damage (acid, cold, electricity, or fire). The type is chosen when the barbarian begins her rage.",
-         "Special":"Note that the barbarian can still use her lesser elemental rage power while using this rage power, but she must select a different energy type."
-   },
-
-      "Energy Eruption (Su)":{
-         "prerequisites":"Barbarian 16, energy absorption rage power",
-         "benefits":"While raging, the barbarian can absorb energy from a single attack and unleash it upon her enemies once per rage. She does not make a saving throw against the effect but takes no damage from it. At any point during the remainder of her rage she can unleash the stored energy as a breath weapon in either a 60-foot line or 30-foot cone. The breath weapon inflicts damage equal to the damage from the attack absorbed by the barbarian, but creatures within the area may make a Reflex save (DC 10 + 1/2 the barbarian’s level + the barbarian’s Constitution modifier) for half damage even if the original effect did not allow a save."
-   },
-      "Energy Absorption (Su)":{
-         "prerequisites":"Barbarian 12, greater energy resistance rage power",
-         "benefits":"While raging, the barbarian can absorb energy from a single attack of her chosen energy type once per rage. She does not make a saving throw against the effect but takes no damage from it, instead gaining 1 temporary hit point per 3 points of damage the attack would have inflicted. These temporary hit points last until the end of the barbarian’s rage."
-   },
-
-      "Energy Resistance, Greater (Ex)":{
-         "prerequisites":"Barbarian 8, energy resistance rage power",
-         "benefits":"Once per rage, a barbarian can reduce damage by half from a single attack against which she has energy resistance (halve the damage, then apply resistance)."
-   },
-      "Energy Resistance (Ex)":{
-         "benefits":"While raging, the barbarian gains resistance to one energy type (acid, cold, electricity, fire, or sonic) equal to 1/2 her barbarian level (minimum 1). The energy type is chosen when this rage power is selected and it cannot be changed.",
-         "Special":"This rage power can be selected more than once. Its effects do not stack. Each time is applies to a different energy type."
-   },
-      "Fearless Rage (Ex)":{
-         "prerequisites":"Barbarian 12",
-         "benefits":"While raging, the barbarian is immune to the shaken and frightened conditions."
-   },
-      "Feasting Bite (Ex)":{
-         "prerequisites":"Half-orc, bloody bite rage power and either the animal fury rage power or a natural bite attack",
-         "benefits":"When the barbarian confirms a critical hit with her bite attack, she regains a number of hit points equal to half the damage dealt. Activating this ability consumes 1 round of rage."
-   },
-      "Feast of Blood (Su)":{
-         "prerequisites":"Bloody fist rage power, barbarian 14",
-         "benefits":"After successfully ripping out a creature’s vital organ, the barbarian may eat the organ within 1 minute of extracting it as a full-round action that provokes attacks of opportunity."
-   },
-
-      "Ferocious Beast, Greater (Ex)":{
-         "prerequisites":"Barbarian 8, Ferocious Beast.",
-         "benefits":"While the barbarian is raging, her animal companion shares the benefits of the barbarian’s rage powers that are constant in effect. It gains no benefit from rage powers that require actions to activate, even if they are free actions."
-   },
-      "Ferocious Beast (Ex)":{
-         "benefits":"While the barbarian is raging, her animal companion also gains the benefits of rage (including greater rage, mighty rage, and tireless rage), though the barbarian must spend 1 additional round of rage per round if her companion begins or ends its turn adjacent to her, and 2 additional rounds of rage per round if not."
-   },
-
-      "Ferocious Mount, Greater (Ex)":{
-         "prerequisites":"Barbarian 8, ferocious mount rage power",
-         "benefits":"While raging and mounted, the barbarian’s mount gains the benefits of any rage powers that are constant in effect when the barbarian is raging. It does not gain the benefit of any rage powers that require actions to activate, even if they are free actions."
-   },
-      "Ferocious Mount (Ex)":{
-         "benefits":"While raging and mounted, the barbarian’s mount also gains the benefits of rage (including greater rage and mighty rage) as long as the barbarian is mounted or adjacent to it. While her mount is raging in this way, she must spend one additional round of rage per round. She can elect not to pay this cost, in which case her mount does not rage."
-   },
-
-      "Ferocious Trample, Greater (Ex)":{
-         "prerequisites":"Barbarian 12, ferocious trample rage power",
-         "benefits":"A barbarian’s mount can affect creatures up to its own size with its ferocious trample. In addition, it can make an overrun combat maneuver check as a free action against a creature that fails its Reflex save (or chooses not to save in order to take an attack of opportunity) against its trample."
-   },
-      "Ferocious Trample (Ex)":{
-         "prerequisites":"Barbarian 8, ferocious mount rage power",
-         "benefits":"While raging and mounted, the barbarian’s mount gains the trample special attack. This attack inflicts 1d8 points of damage for a Medium mount, 2d6 for a Large mount, or 2d8 for a Huge mount, plus 1–1/2 times the mount’s Strength modifier. A successful Reflex save (DC 10 + 1/2 the barbarian’s level + the mount’s Strength modifier) halves this damage. Creatures in the mount’s path or that threaten squares it passes through may make attacks of opportunity against either the barbarian or the mount, but not both."
-   },
-
-      "Fiend Totem, Greater (Su)":{
-         "prerequisites":"Barbarian 10, fiend totem rage power",
-         "benefits":"While raging, the barbarian is surrounded by an aura of menace. Good creatures adjacent to the barbarian are shaken and take 2d6 points of slashing damage at the beginning of the barbarian’s turn as dozens of small cuts open across their flesh. Neutral creatures that are adjacent to the barbarian are shaken, but do not take any damage. Evil creatures are unaffected."
-   },
-      "Fiend Totem (Su)":{
-         "prerequisites":"Barbarian 6, lesser fiend totem rage power",
-         "benefits":"While raging, the barbarian sprouts dozens of wicked barbs from her body. Anyone striking the barbarian with a melee weapon, an unarmed strike, or a natural weapon takes 1d6 points of piercing damage."
-   },
-      "Fiend Totem, Lesser (Su)":{
-         "benefits":"While raging, the barbarian grows a pair of large horns, gaining a gore attack. This attack is a primary attack (unless she is also attacking with weapons, in which case it is a secondary attack) and is made at the barbarian’s full base attack bonus (–5 if it is a secondary attack). The gore attack deals 1d8 points of piercing damage (1d6 if Small) plus the barbarian’s Strength modifier (1/2 if it is a secondary attack)."
-   },
-      "Fierce Fortitude (Ex)":{
-         "prerequisites":"Barbarian 8; if skald, must be trained in Intimidate",
-         "benefits":"The character gains a +4 bonus on saving throws against diseases and poison."
-   },
-      "Fight Response (Ex)":{
-         "benefits":"When a barbarian with this rage power attempts a saving throw against a fear effect, she can enter a rage as an immediate action (as long as she would normally be able to enter rage). This consumes 3 rounds of the barbarian’s daily allotment of rage rounds, but the barbarian can maintain the rage each round on her turn normally. Any benefits from the barbarian’s rage apply immediately, so she gains her bonus on Will saves against the effect that required the initial saving throw. Unlike most rage powers, this rage power’s effects are useful only when the barbarian is not raging, so a skald can’t grant this rage power to allies with raging song."
-   },
-      "Flesh Wound (Ex)":{
-         "prerequisites":"Barbarian 10",
-         "benefits":"Once per rage, the barbarian can try to avoid serious harm from an attack. The barbarian must make a Fortitude save with a DC equal to the damage that would be dealt by the attack. The barbarian’s armor check penalty applies on this saving throw. If the save succeeds, the barbarian takes half damage from the attack and the damage is nonlethal. The barbarian must elect to use this ability after the attack roll is made, but before the damage is rolled."
-   },
-      "Fueled by Vengeance":{
-         "prerequisites":"Barbarian 6",
-         "benefits":"While raging, whenever you deal weapon damage to a creature that dealt damage to you since the end of your last turn, add 1 round to your remaining number of rounds of rage for the current day. You can gain no more than 1 extra round of rage each round.",
-         "Special":"This rage power is available to wereboars, wereboar-kin and those who associate with these creatures."
-   },
-      "Gearbreaker (Ex)":{
-         "prerequisites":"Smasher rage power.",
-         "benefits":"Once per round while raging, whenever you make an attack against a construct, you can ignore an amount of that construct’s hardness equal to your barbarian level. This ability must be used before the attack roll is made. This power stacks with hard hitter."
-   },
-
-      "Ghost Rager (Su)":{
-         "prerequisites":"Barbarian 6, superstition rage power",
-         "benefits":"While raging, the barbarian deals normal damage to incorporeal creatures even when using nonmagical weapons."
-   },
-
-      "Good for What Ails You (Ex)":{
-         "benefits":"While raging, the barbarian who takes a drink of alcohol may attempt a new saving throw against one of the following conditions that may be affecting her"
-   },
-      "Greater Animal Fury (Ex)":{
-         "prerequisites":"Animal fury rage power",
-         "benefits":"This power works as animal fury, but the barbarian’s bite attack deals damage as if she were one size larger."
-   },
-
-      "Ground Breaker, Greater (Ex)":{
-         "prerequisites":"Barbarian 8, ground breaker rage power",
-         "benefits":"When using the ground breaker rage power, the barbarian can extend the radius of the effect by 5 feet.",
-         "Special":"This rage power can be selected up to three times, and its effects stack."
-   },
-      "Ground Breaker (Ex)":{
-         "prerequisites":"Barbarian 6",
-         "benefits":"Once per rage, the barbarian can attack the floor around her as a standard action. This attack automatically hits and deals damage normally. If the barbarian manages to deal more damage than the floor’s hardness, the space she occupies and all of the squares adjacent to her become difficult terrain. Creatures in these squares, except the barbarian, must make a DC 15 Reflex save or be knocked prone."
-   },
-
-
-      "Guarded Life, Greater (Ex)":{
-         "prerequisites":"Barbarian 6, guarded life rage power",
-         "benefits":"When using the guarded life rage power, 1 additional hit point of lethal damage per barbarian level is converted to nonlethal damage."
-   },
-      "Guarded Life (Ex)":{
-         "benefits":"While raging, if the barbarian is reduced below 0 hit points, 1 hit point of lethal damage per barbarian level is converted to nonlethal damage. If the barbarian is at negative hit points due to lethal damage, she immediately stabilizes."
-   },
-      "Guarded Stance (Ex)":{
-         "benefits":"The barbarian gains a +1 dodge bonus to her Armor Class against melee attacks for a number of rounds equal to the barbarian’s current Constitution modifier (minimum 1). This bonus increases by +1 for every 6 levels the barbarian has attained. Activating this ability is a move action that does not provoke an attack of opportunity."
-   },
-
-      "Hive Totem (Su)":{
-         "prerequisites":"Barbarian 4, animal fury rage power",
-         "benefits":"While raging, the barbarian takes half damage from attacks by swarms of vermin, including spells and effects that act like a swarm of vermin (like summon swarm used to summon spiders or insect plague). She also gains a +1 bonus on Strength ability checks and to CMD against bull rush, drag, and trip attacks for every four barbarian levels she has (maximum +5)."
-   },
-      "Hive Totem Toxicity (Su)":{
-         "prerequisites":"Barbarian 8, hive totem rage power, hive totem resilience rage power",
-         "benefits":"While raging, the barbarian increases her bite damage die type with the animal fury rage power by one die type and decreases the penalty on attack rolls with that bite to –2. Once per rage, a bite that hits can deliver an injury toxin that has a frequency of once per round for 4 rounds, deals 1d3 points of Constitution damage, and has a cure of one save. The saving throw has a Fortitude save DC of 10 + 1/2 the barbarian’s level + the barbarian’s Constitution modifier."
-   },
-
-      "Hive Totem Resilience (Su)":{
-         "prerequisites":"Barbarian 6, hive totem rage power",
-         "benefits":"While raging, the barbarian takes no damage from attacks by swarms of vermin, preventing harmful secondary effects of such attacks like poison or bleed. She also gains a +1 bonus on combat maneuver checks and to CMD when grappling for every four barbarian levels she has (maximum +5)."
-   },
-
-      "Hurling, Greater (Ex)":{
-         "prerequisites":"Barbarian 12, hurling rage power",
-         "benefits":"As hurling, but the barbarian can increase the range increment to 30 feet or increase the size of a hurled object by two size categories."
-   },
-      "Hurling (Ex)":{
-         "prerequisites":"Barbarian 8, lesser hurling rage power",
-         "benefits":"As lesser hurling, but the barbarian can increase the range increment to 20 feet or increase the size of a hurled object by one size category."
-   },
-
-      "Hurling Charge (Ex)":{
-         "prerequisites":"Barbarian 6, lesser hurling rage power",
-         "benefits":"While raging and making a charge attack, the barbarian may draw and throw a hurled weapon during her charge, gaining the normal +2 attack roll bonus on the thrown weapon attack as well as on the melee attack at the end of the charge. The barbarian must move at least 10 feet before using a thrown weapon and at least 10 additional feet before making a melee attack at the end of her charge. The barbarian must have a thrown weapon in hand or have one hand free at the beginning of her charge."
-   },
-      "Hurling, Lesser (Ex)":{
-         "benefits":"As a full-round action while raging, the barbarian can lift and hurl an object up to one size category smaller than herself with both hands or two size categories smaller with one hand as an improvised weapon with a range increment of 10 feet. This inflicts damage as a falling object plus the barbarian’s Strength bonus. This damage is halved if the object is not made of stone, metal, or similar material. This is a ranged touch attack, and the target may attempt a Reflex save (DC 10 + 1/2 the barbarian’s level + the barbarian’s Strength modifier) for half damage. The barbarian may apply Power Attack to this attack as a one- or two-handed weapon, as appropriate."
-   },
-      "Impelling Disarm (Ex)":{
-         "prerequisites":"Barbarian 4",
-         "benefits":"Once per rage, the barbarian can make a disarm attempt against a target in place of a melee attack. This attempt does not provoke attacks of opportunity. If successful, the barbarian sends the target’s weapon flying—either straight at the target, or spinning away to strike another foe up to 20 feet away."
-   },
-      "Increased Damage Reduction (Ex)":{
-         "prerequisites":"Barbarian 8",
-         "benefits":"The barbarian’s damage reduction increases by 1/—. This increase is always active while the barbarian is raging.",
-         "Special":"A barbarian can select this rage power up to three times. Its effects stack."
-   },
-      "Inspire Ferocity (Ex)":{
-         "prerequisites":"Reckless abandon rage power",
-         "benefits":"While raging, the barbarian can use a move action to impart her reckless abandon modifier to all willing allies within 30 feet for a number of rounds equal to her Charisma modifier (minimum 1)."
-   },
-
-      "Internal Fortitude (Ex)":{
-         "prerequisites":"Barbarian 8",
-         "benefits":"While raging, the barbarian is immune to the sickened and nauseated conditions."
-   },
-
-      "Knockback (Ex)":{
-         "benefits":"Once per round, the barbarian can make a bull rush attempt against one target in place of a melee attack. If successful, the target takes damage equal to the barbarian’s Strength modifier and is moved back as normal. The barbarian does not need to move with the target if successful. This does not provoke an attack of opportunity."
-   },
-      "Knockdown (Ex)":{
-         "benefits":"Once per rage, the barbarian can make a trip attack against one target in place of a melee attack. If successful, the target takes damage equal to the barbarian’s Strength modifier and is knocked prone. This does not provoke an attack of opportunity."
-   },
-      "Lethal Accuracy (Ex)":{
-         "prerequisites":"Barbarian 16, deadly accuracy rage power, surprise accuracy rage power",
-         "benefits":"When using her surprise accuracy rage power, the barbarian’s critical multiplier for damage increases by 1 (a ×2 multiplier becomes ×3, a 19–20/×2 multiplier becomes 19–20/×3, a ×3 multiplier becomes ×4, and a ×4 multiplier becomes ×5). A barbarian must have the surprise accuracy and deadly accuracy rage powers and be 16th level before selecting this rage power."
-   },
-      "Deadly Accuracy (Ex)":{
-         "prerequisites":"Barbarian 4, surprise accuracy rage power",
-         "benefits":"If the barbarian scores a critical threat when using her surprise accuracy rage power, she applies double the surprise accuracy bonus when rolling to confirm the critical."
-   },
-
-
-      "Linnorm Death Curse, Cairn (Su)":{
-         "prerequisites":"Barbarian 8",
-         "Curse of Decay":"save Will DC 10 + 1/2 character’s level + character’s Charisma bonus; effect target takes 1 point of Con damage per day and ages at a rate of 1 year per day (eventually incurring all of the penalties of old age but none of the bonuses)."
-   },
-      "Linnorm Death Curse, Crag (Su)":{
-         "prerequisites":"Barbarian 4",
-         "benefits":"The character channels the power of a crag linnorm. The character’s melee attacks deal an additional 1 point of fire damage. If the character is knocked unconscious or killed by an attack or spell, the attacker suffers the curse of fire (Will negates) Curse of Fire. save Will DC 10 + 1/2 character’s level + character’s Charisma bonus; effect target gains vulnerability to fire."
-   },
-      "Linnorm Death Curse, Fjord (Su)":{
-         "prerequisites":"Barbarian 4",
-         "benefits":"The character channels the power of a fjord linnorm. The character’s melee attacks deal an additional 1 point of cold damage. If the character is knocked unconscious or killed by an attack or spell, the attacker suffers the curse of drowning (Will negates) Curse of Drowning. save Will DC 10 + 1/2 character’s level + character’s Charisma bonus; effect target is unable to breathe water (even with magic), can hold its breath only half as long as normal, and is sickened whenever it holds its breath."
-   },
-      "Linnorm Death Curse, Ice (Su)":{
-         "prerequisites":"Barbarian 4",
-         "benefits":"The character channels the power of an ice linnorm. The character’s melee attacks deal an additional 1 point of cold damage. If the character is knocked unconscious or killed, the attacker suffers the curse of frost Curse of Frost. save Will DC 10 + 1/2 character’s level + character’s Charisma bonus; effect target gains vulnerability to cold."
-   },
-      "Linnorm Death Curse, Taiga (Su)":{
-         "prerequisites":"Barbarian 4",
-         "benefits":"The character channels the power of a taiga linnorm. The character’s melee attacks deal an additional 1 point of electricity damage. If the character is knocked unconscious or killed by an attack or spell, the attacker suffers the curse of electricity (Will negates) Curse of Electricity. save Will DC 10 + 1/2 character’s level + character’s Charisma bonus; effect target gains vulnerability to electricity."
-   },
-      "Linnorm Death Curse, Tarn (Su)":{
-         "prerequisites":"Barbarian 4",
-         "benefits":"The character channels the power of a tarn linnorm. The character’s melee attacks deal an additional 1 point of acid damage. If the character is knocked unconscious or killed by an attack or spell, the attacker suffers the curse of death (Will negates) Curse of Death. save Will DC 10 + 1/2 character’s level + character’s Charisma bonus; effect target is no longer affected by healing spells and can’t heal damage naturally by resting."
-   },
-      "Linnorm Death Curse, Tor (Su)":{
-         "prerequisites":"Barbarian 8",
-         "benefits":"The character channels the power of a tor linnorm. The character’s melee attacks deal an additional 1 point of fire damage. If the character is knocked unconscious or killed by an attack or spell, the attacker suffers the curse of boiling blood (Will negates) Curse of Boiling Blood. save Will DC 10 + 1/2 character’s level + character’s Charisma bonus; effect target gains vulnerability to fire and is permanently staggered from the pain of its boiling blood (this is a pain effect)."
-   },
-      "Liquid Courage (Ex)":{
-         "benefits":"While raging, the barbarian increases her morale bonus on saving throws against mind-affecting effects by +1 for each alcoholic drink she consumes during her rage, to a maximum of +1 increase per four barbarian levels."
-   },
-
-      "Mighty Swing (Ex)":{
-         "prerequisites":"Barbarian 12",
-         "benefits":"The barbarian automatically confirms a critical hit. This power is used as an immediate action once a critical threat has been determined.",
-         "Special":"This power can only be used once per rage."
-   },
-
-      "Moon Totem (Su)":{
-         "prerequisites":"Barbarian 6, lesser moon totem rage power",
-         "benefits":"While raging, the barbarian gains a bonus equal to half her level on Perception checks to pinpoint the location of an unseen creature, and unseen attackers gain no bonus on attacks against the barbarian."
-   },
-      "Moon Totem, Greater (Su)":{
-         "prerequisites":"Barbarian 10, moon totem rage power",
-         "benefits":"While raging, the barbarian ignores the miss chance for concealment and treats total concealment as concealment."
-   },
-      "Moon Totem, Lesser (Su)":{
-         "benefits":"While raging, the barbarian gains darkvision with a range of 30 feet. If the barbarian already has darkvision, the range of her darkvision increases by 30 feet while she is raging."
-   },
-      "Night Vision (Ex)":{
-         "prerequisites":"low-light vision rage power or racial low-light vision",
-         "benefits":"The barbarian’s senses grow incredibly sharp while raging and she gains darkvision 60 feet."
-   },
-      "Low-Light Vision (Ex)":{
-         "benefits":"The barbarian’s senses sharpen and she gains low-light vision while raging."
-   },
-      "No Escape (Ex)":{
-         "benefits":"The barbarian can move up to double her normal speed as an immediate action but she can only use this ability when an adjacent foe uses a withdraw action to move away from her. She must end her movement adjacent to the enemy that used the withdraw action. The barbarian provokes attacks of opportunity as normal during this movement.",
-         "Special":"This power can only be used once per rage."
-   },
-
-      "Overbearing Onslaught (Ex)":{
-         "prerequisites":"Barbarian 6, overbearing advance rage power",
-         "benefits":"While raging, the barbarian may overrun more than one target per round, with a –2 penalty on her CMB for each overrun check after the first."
-   },
-      "Overbearing Advance (Ex)":{
-         "benefits":"While raging, the barbarian inflicts damage equal to her Strength bonus whenever she succeeds at an overrun combat maneuver."
-   },
-      "penetrating Bite (Ex)":{
-         "prerequisites":"Barbarian 4, animal fury rage power.",
-         "benefits":"When using the animal fury rage power while raging, the barbarian’s bite is able to pierce most resistances. At 4th level, her bite is treated as a magic weapon for the purpose of overcoming damage reduction."
-   },
-
-      "primal Scent (Ex)":{
-         "prerequisites":"Barbarian 8, scent rage power",
-         "benefits":"When using her scent rage power, the barbarian adds half her barbarian level on Survival checks made to track by scent and on Perception checks to pinpoint the location of creatures she cannot see. If she pinpoints the location of a creature that has total concealment, she treats it as having concealment."
-   },
-
-      "Quick Reflexes (Ex)":{
-         "benefits":"While raging, the barbarian can make one additional attack of opportunity per round."
-   },
-
-      "Raging Flier (Su)":{
-         "prerequisites":"Barbarian 6, raging leaper",
-         "benefits":"Once per rage, the character can fly up to her base speed as a move action. If she uses the charge action, she can use this flight as part of her movement during the charge."
-   },
-
-      "Raging Grappler (Ex)":{
-         "benefits":"As long as you are raging, whenever you succeed at a check to start a grapple, you can choose to deal damage as if you had also succeeded at a check to maintain the grapple. In addition, while raging, whenever you succeed at a combat maneuver check to maintain a grapple, you can choose to give yourself, the target of your grapple, or both the prone condition as a free action while continuing to maintain the grapple."
-   },
-
-      "Reckless Abandon (Ex)":{
-         "benefits":"While raging, the barbarian can take a –1 penalty to AC to gain a +1 bonus on attack rolls. The AC penalty increases by –1 and the attack roll bonus increases by +1 at 4th level and every four levels thereafter."
-   },
-      "Reflexive Dodge (Ex)":{
-         "prerequisites":"Barbarian 6, rolling dodge rage power",
-         "benefits":"While using her rolling dodge rage power, the barbarian may apply her dodge bonus to AC as a bonus on Reflex saving throws."
-   },
-
-      "Regenerative Vigor (Ex)":{
-         "prerequisites":"Barbarian 6, renewed vigor rage power",
-         "benefits":"After using her renewed vigor rage power until her current rage ends, the barbarian gains fast healing 1 for every 6 barbarian levels she has (maximum fast healing 3). She regains hit points from fast healing at the start of each of her turns."
-   },
-
-      "Renewed Life (Ex)":{
-         "prerequisites":"Barbarian 6, renewed vitality rage power",
-         "benefits":"While raging, the barbarian ignores the effect of one temporary negative level per four barbarian levels she has (maximum 5). Once per day, when a barbarian with temporary negative levels ends her rage, she can attempt saving throws to remove a number of negative levels equal to the number of levels she could ignore while raging."
-   },
-
-      "Renewed Vitality (Ex)":{
-         "prerequisites":"Barbarian 4, renewed vigor rage power",
-         "benefits":"While raging, the barbarian ignores the effect of 1 point of ability penalty or damage per two barbarian levels she has (maximum 10). Once per day, when a barbarian with ability penalties or damage ends her rage, she can reroll a saving throw, if any, against an effect that imposed an ability penalty or dealt her ability damage. If successful, she removes an amount of ability penalty or damage equal to the amount she can ignore while raging."
-   },
-      "Renewed Vigor (Ex)":{
-         "prerequisites":"Barbarian 4",
-         "benefits":"As a standard action, the barbarian heals 1d8 points of damage + her Constitution modifier. For every four levels the barbarian has attained above 4th, this amount of damage healed increases by 1d8, to a maximum of 5d8 at 20th level.",
-         "Special":"This power can be used only once per day and only while raging."
-   },
-      "Roaring Drunk (Ex)":{
-         "benefits":"While raging, the barbarian gains a +1 morale bonus on Intimidate checks and to the save DC of any fear effects she creates for each alcoholic drink she has consumed during her rage, to a maximum of +1 per four barbarian levels."
-   },
-      "Rolling Dodge (Ex)":{
-         "benefits":"The barbarian gains a +1 dodge bonus to her Armor Class against ranged attacks for a number of rounds equal to the barbarian’s current Constitution modifier (minimum 1). This bonus increases by +1 for every 6 levels the barbarian has attained. Activating this ability is a move action that does not provoke an attack of opportunity."
-   },
-      "Roused Anger (Ex)":{
-         "benefits":"The barbarian may enter a rage even if fatigued. While raging after using this ability, the barbarian is immune to the fatigued condition. Once this rage ends, the barbarian is exhausted for 10 minutes per round spent raging."
-   },
-      "Savage Dirty Trick (Ex)":{
-         "prerequisites":"Barbarian 6",
-         "benefits":"Once per round while raging, the barbarian can attempt a dirty trick combat maneuver in place of a melee attack. This attempt does not provoke attacks of opportunity. If successful, the target takes an amount of damage equal to the barbarian’s Strength modifier and must succeed at a Fortitude save (DC 10 + 1/2 the barbarian’s level + the barbarian’s Strength modifier) or take an additional penalty from the dirty trick based on the type of dirty trick performed and the following table."
-   },
-      "Savage Intuition":{
-         "benefits":"Your bestial senses allow you to sense danger and become enraged before you even have time to consciously react to danger. When combat begins, if you have rounds of rage remaining, you may automatically enter a rage without using an action at the start of the first round of combat (or at the start of the surprise round, if there is one), even if you are not otherwise aware that combat has begun.",
-         "Special":"This rage power is available to wereboars, wereboar-kin and those who associate with these creatures."
-   },
-      "Savage Jaw (Ex)":{
-         "prerequisites":"Animal fury rage power",
-         "benefits":"While raging, the barbarian can open her jaw wide and latch her teeth firmly onto her opponent."
-   },
-
-      "Scent (Ex)":{
-         "benefits":"The barbarian gains the scent ability while raging and can use this ability to locate unseen foes (see Special Abilities for rules on the scent ability)."
-   },
-      "Sharpened Accuracy (Ex)":{
-         "prerequisites":"Barbarian 8, surprise accuracy rage power",
-         "benefits":"When using her surprise accuracy rage power, the barbarian ignores the miss chance for concealment and treats total concealment as concealment. She also ignores cover penalties except those from total cover."
-   },
-
-
-      "Smasher (Ex)":{
-         "benefits":"Once per rage, whenever the barbarian makes an attack against an unattended object or a sunder combat maneuver, she can ignore the object’s hardness. This ability must be used before the attack roll or sunder check is made."
-   },
-
-
-      "Spellbreaker":{
-         "prerequisites":"Barbarian 12, disruptive rage power",
-         "benefits":"When raging, the barbarian gains Spellbreaker as a bonus feat. A barbarian must have the Disruptive rage power and be at least 12th level to select this rage power."
-   },
-      "Disruptive":{
-         "prerequisites":"Barbarian 8, superstition rage power",
-         "benefits":"When raging, the barbarian gains Disruptive as a bonus feat."
-   },
-      "Spire Totem (Su)":{
-         "prerequisites":"Barbarian 6, lesser spire totem rage power",
-         "benefits":"While raging, the barbarian takes no penalties for using a weapon to deal nonlethal damage."
-   },
-      "Spire Totem, Greater (Su)":{
-         "prerequisites":"Barbarian 10, spire totem rage power",
-         "benefits":"While the barbarian is raging, all allies within 30 feet gain a +2 morale bonus on Will saves."
-   },
-      "Spire Totem, Lesser (Su)":{
-         "benefits":"While raging, the barbarian gains a +1 morale bonus on attacks against any creature that has targeted one of her allies with an attack or a harmful spell within the last round."
-   },
-      "Spirit Steed (Su)":{
-         "prerequisites":"Barbarian 6, ferocious mount rage power",
-         "benefits":"While raging and mounted, the barbarian’s mount gains DR/magic equal to 1/2 the barbarian’s level. The mount’s natural weapons count as magical for the purpose of overcoming damage reduction."
-   },
-
-      "Spirit Totem, Greater (Su)":{
-         "prerequisites":"Barbarian 10, spirit totem rage power",
-         "benefits":"While raging, the spirits that surround the barbarian become dangerous to any enemy adjacent to the barbarian. Living enemies adjacent to the barbarian at the start of her turn take 1d8 points of negative energy damage. In addition, the spirit wisps can now attack foes that are up to 15 feet away from the barbarian and the slam attack deals 1d6 points of negative energy damage."
-   },
-      "Spirit Totem (Su)":{
-         "prerequisites":"Barbarian 6, lesser spirit totem rage power",
-         "benefits":"While raging, the spirits that surround the barbarian make it difficult for her enemies to see her. The spirits grant the barbarian a 20% miss chance against ranged attacks and melee attacks made by creatures that are not adjacent to the barbarian (typically due to reach)."
-   },
-      "Spirit Totem, Lesser (Su)":{
-         "benefits":"While raging, the barbarian is surrounded by spirit wisps that harass her foes. These spirits make one slam attack each round against a living foe that is adjacent to the barbarian. This slam attack is made using the barbarian’s full base attack bonus, plus the barbarian’s Charisma modifier. The slam deals 1d4 points of negative energy damage, plus the barbarian’s Charisma modifier."
-   },
-      "Sprint (Ex)":{
-         "prerequisites":"Barbarian 4, swift foot rage power",
-         "benefits":"Once per rage, the barbarian can use a single full-round run action to move up to 6 times her speed or a single full-round charge action to move up to 3 times her speed."
-   },
-
-      "Staggering Drunk (Ex)":{
-         "benefits":"While raging, a barbarian gains a +1 dodge bonus to AC against attacks of opportunity for each alcoholic drink she has consumed during her rage, to a maximum of +1 per four barbarian levels."
-   },
-      "Strength Surge (Ex)":{
-         "benefits":"The barbarian adds her barbarian level on one Strength check or combat maneuver check, or to her Combat Maneuver Defense when an opponent attempts a maneuver against her. This power is used as an immediate action.",
-         "Special":"This power can only be used once per rage."
-   },
-      "Sunder Enchantment (Su)":{
-         "prerequisites":"Barbarian 8, spell sunder rage power",
-         "benefits":"While raging, whenever the barbarian succeeds at a sunder combat maneuver on a magical item, that item’s magical abilities are suppressed for 1 round, plus 1 round for every 5 points by which her combat maneuver check exceeded the target’s CMD."
-   },
-      "Spell Sunder (Su)":{
-         "prerequisites":"Barbarian 6, witch hunter rage power",
-         "benefits":"Once per rage, the barbarian can attempt to sunder an ongoing spell effect by succeeding at a combat maneuver check. For any effect other than one on a creature, the barbarian must make her combat maneuver check against a CMD of 15 plus the effect’s caster level. To sunder an effect on a creature, the barbarian must succeed at a normal sunder combat maneuver against the creature’s CMD + 5, ignoring any miss chance caused by a spell or spell-like ability. If successful, the barbarian suppresses the effect for 1 round, or 2 rounds if she exceeded the CMD by 5 to 9. If she exceeds the CMD by 10 or more, the effect is dispelled."
-   },
-
-      "Surprise Accuracy (Ex)":{
-         "benefits":"The barbarian gains a +1 morale bonus on one attack roll. This bonus increases by +1 for every 4 levels the barbarian has attained. This power is used as a swift action before the roll to hit is made.",
-         "Special":"This power can only be used once per rage."
-   },
-      "Swift Foot (Ex)":{
-         "benefits":"The barbarian gains a 5-foot enhancement bonus to her speed. This increase is always active while the barbarian is raging.",
-         "Special":"A barbarian can select this rage power up to three times. Its effects stack."
-   },
-      "Terrifying Howl (Ex)":{
-         "prerequisites":"Barbarian 8, intimidating glare rage power",
-         "benefits":"The barbarian unleashes a terrifying howl as a standard action. All shaken enemies within 30 feet must make a Will save (DC equal to 10 + 1/2 the barbarian’s level + the barbarian’s Strength modifier) or be panicked for 1d4+1 rounds.",
-         "Special":"Once an enemy has made a save versus terrifying howl (successful or not), it is immune to this power for 24 hours."
-   },
-
-      "Ultimate Clarity (Su)":{
-         "prerequisites":"Barbarian 6, moment of clarity, perfect clarity",
-         "benefits":"Once per rage, the character can refine her senses, seeing through normal and magical darkness (including from magical effects such as blur and displacement), invisibility, and illusions; she can also discern the exact locations of creatures with concealment. This lasts for 1 round."
-   },
-      "Moment of Clarity (Ex)":{
-         "benefits":"The barbarian does not gain any benefits or take any of the penalties from rage for 1 round. Activating this power is a swift action. This includes the penalty to Armor Class and the restriction on what actions can be performed. This round still counts against her total number of rounds of rage per day.",
-         "Special":"This power can only be used once per rage."
-   },
-      "perfect Clarity (Ex)":{
-         "prerequisites":"Moment of clarity rage power",
-         "benefits":"While using her moment of clarity rage power, the barbarian can roll twice for any miss chance or Will saving throws to disbelieve illusions, taking the better result."
-   },
-      "Unexpected Strike (Ex)":{
-         "prerequisites":"Barbarian 8",
-         "benefits":"The barbarian can make an attack of opportunity against a foe that moves into any square threatened by the barbarian, regardless of whether or not that movement would normally provoke an attack of opportunity.",
-         "Special":"This power can only be used once per rage."
-   },
-      "Water Sense (Ex)":{
-         "benefits":"While you are raging and on land, opponents in the water gain only partial cover from you attacks, instead of improved cover."
-   },
-      "Witch Hunter (Ex)":{
-         "prerequisites":"Superstition rage power",
-         "benefits":"While raging, the barbarian gains a +1 bonus on damage rolls against creatures possessing spells or spell-like abilities. This damage bonus increases by +1 for every four levels the barbarian has obtained."
-   },
-      "Superstition (Ex)":{
-         "benefits":"The barbarian gains a +2 morale bonus on saving throws made to resist spells, supernatural abilities, and spell-like abilities. This bonus increases by +1 for every 4 levels the barbarian has attained. While raging, the barbarian cannot be a willing target of any spell and must make saving throws to resist all spells, even those cast by allies."
-   },
-
-      "World Serpent Totem Unity (Su)":{
-         "prerequisites":"Barbarian 6, world serpent spirit rage power, world serpent totem rage power",
-         "benefits":"While raging, the barbarian doubles her fast movement bonus to land speed and cannot be knocked prone. She also doubles her world serpent totem insight bonus to AC against attack rolls made by an outsider or aberration to confirm a critical hit against her."
-   },
-      "World Serpent Spirit (Su)":{
-         "prerequisites":"Barbarian 6, world serpent totem rage power",
-         "benefits":"While raging, the barbarian considers her weapons to be chaotic-, evil-, good-, and lawful-aligned for the purposes of overcoming damage reduction. She also gains a +1 resistance bonus on saving throws against spells and effects that have an alignment descriptor or come from an outsider or aberration. This bonus increases by +1 for each world serpent rage power the barbarian possesses, excluding this one."
-   },
-      "World Serpent Totem (Su)":{
-         "benefits":"While raging, the barbarian gains a +1 insight bonus to AC against outsiders and aberrations. This bonus increases by +1 for each world serpent rage power the barbarian possesses, excluding this one."
-   },
-
-      "Lunar Totem, Greater (Su)":{
-         "prerequisites":"Barbarian 10, lunar totem rage power",
-         "benefits":"When raging, the barbarian gains DR/silver equal to half her barbarian level. She also gains a +4 bonus on saving throws against curses while raging."
-   },
-      "Lunar Totem (Su)":{
-         "prerequisites":"Barbarian 6, lesser lunar totem rage power",
-         "benefits":"While raging, the barbarian increases her bite damage die type with her bite attack by one die type, and the bite deals x3 damage on a critical hit. She always adds her full strength bonus to her bite attack, even when performing a full attack with other weapons. When making a full attack with manufactured weapons and her bite attack (and no other natural weapons), the penalty for using her bite decreases to -2."
-   },
-      "Lunar Totem, Lesser (Su)":{
-         "prerequisites":"Barbarian 4, must have a bite attack (either from Animal Fury rage power or some other source)",
-         "benefits":"While raging, the barbarian gains a +1 insight bonus to AC and on saving throws against undead and creatures with the shapechanger subtype. This bonus increases by +1 for each lunar totem rage power the barbarian possesses, excluding this one."
-   },
-
-      "Shadow Totem, Greater (Su)":{
-         "prerequisites":"Barbarian 12, shadow totem rage power",
-         "benefits":"While raging, the barbarian gains the see in darkness ability, allowing her to see perfectly to any distance in darkness, including magical darkness. She is immune to blindness while raging. In addition, the Strength damage she deals on critical hits from her lesser shadow totem increases to 1d6."
-   },
-      "Shadow Totem (Su)":{
-         "prerequisites":"Barbarian 10, lesser shadow totem rage power",
-         "benefits":"Once per rage as a swift action, the barbarian can take on a shadowy form until the end of her turn. While in this form, she gains the incorporeal subtype. She takes half damage from corporeal sources as long as they are magic (and no damage from non-magic weapons and objects). Likewise, any magical effects she creates deal only half damage to corporeal creatures. Her manufactured and natural weapons count as ghost touch weapons while incorporeal in this manner. Spells and other effects that do not deal damage function normally. She can pass through a wall or other surface that is up to 5 feet thick per barbarian level while she is incorporeal. She must exit the solid material by the end of her turn."
-   },
-      "Shadow Totem, Lesser (Su)":{
-         "prerequisites":"Barbarian 6, darkvision 60 ft.",
-         "benefits":"While raging, each time the barbarian confirms a critical hit her weapon surges with draining shadows. The target must succeed at a Fortitude saving throw (DC = 10 + 1/2 the barbarian’s level + her Constitution modifier) or take 1d4 Strength damage. This is a negative energy effect."
-   },
-
-      "Death Totem, Greater (Ex)":{
-         "prerequisites":"Barbarian or savage 12, lesser death totem and death totem rage powers",
-         "benefits":"While raging, the death energy that surrounds the barbarian becomes dangerous to any enemy adjacent to the savage. Living enemies adjacent to the barbarian at the start of her turn take 1d8 points of damage from their flesh withering and crumbling to dust. In addition, any living enemy within 10 feet of the barbarian must make a Fortitude saving throw (DC 10 + ½ the barbarian’s level + the barbarian’s Constitution modifier) or become sickened for 1d6 rounds."
-   },
-      "Death Totem (Ex)":{
-         "prerequisites":"Barbarian or savage 6, lesser death totem rage power",
-         "benefits":"While raging, whenever the barbarian makes a Fortitude saving throw, she can roll twice and choose the best result."
-   },
-      "Death Totem, Lesser (Ex)":{
-         "prerequisites":"Barbarian or savage",
-         "benefits":"While raging, the barbarian gains DR 5/bludgeoning and a +2 resistance bonus against cold-based spells and effects."
-   },
-      "Raging Skald (Ex)":{
-         "prerequisites":"A barbarian must be at least 6th level before selecting this rage power.",
-         "benefits":"If you unleash a berserker’s cry (with the Berserker’s Cry feat) as you enter a rage or during a rage, the bonus granted increases to +2 and lasts an additional number of rounds equal to your Constitution bonus (if any)."
-   },
-      "Improved Totemic Alignment (Su)":{
-         "prerequisites":"Barbarian 6, must possess the totemic sage archetype.",
-         "benefits":"Whenever you enter a rage while bound to a spirit that belongs to your associated constellation, you may select 1 constellation aspect and gain its benefits for the duration of the rage. You are treated as an occultist with a level equal to your barbarian level for the purpose of this constellation aspect."
-   },
-      "Totemic Mettle (Su)":{
-         "prerequisites":"Must possess the totemic sage archetype.",
-         "benefits":"Whenever you enter a rage while bound to a spirit that belongs to your associated constellation, whenever you succeed on a Fortitude save that would normally have a lesser effect on a successful save, you instead completely negate the effect. You are still harmed by the effects that do not allow a saving throw."
-      }
+   "body bludgeon (ex)": {
+     "prerequisite": "barbarian 10",
+     "benefit": "while raging, if the barbarian pins an opponent that is smaller than her, she can then use that opponent as a two-handed improvised weapon that deals 1d8 points of bludgeoning damage, assuming the opponent is sized small. larger or smaller creatures used as a bludgeon deal damage based on their size using this base damage. a size tiny creature deals 1d6 points of damage, a size medium creature deals 1d10 points of damage, and so on. the barbarian can make a single attack using the pinned opponent as part of the action she uses to maintain the grapple, using her highest attack bonus. whenever the barbarian hits using the pinned opponent as a weapon, she deals damage to her target normally, and the grappled opponent used as a bludgeon also takes the same damage she dealt to the target. if the pinned opponent is unable to resist being pinned for any reason, the barbarian can use that opponent as an improvised weapon without grappling or pinning the opponent, until the creature is reduced to 0 or fewer hit points, at which point the creature becomes useless as an improvised weapon."
+   },
+   "brawler": {
+     "benefit": "while raging, the barbarian is treated as if she has improved unarmed strike. if she already has the feat, her unarmed strikes deal 1d6 points of damage (1d4 if she is small)."
+   },
+   "brawler, greater": {
+     "prerequisite": "brawler rage power",
+     "benefit": "while raging, the barbarian is treated as if she has two-weapon fighting when making unarmed strike attacks."
+   },
+   "breathtaker (ex)": {
+     "benefit": "while raging, whenever you make a successful melee attack against an opponent that is holding its breath, in addition to any other effects caused by that attack, the opponent loses a number of rounds of breath equal to your strength modifier."
+   },
+   "celestial totem (su)": {
+     "prerequisite": "barbarian 8 this effect bestows upon the barbarian a halo of gleaming light that shines as if it were daylight and triggers an invisibility purge effect in the barbarians square and each adjacent square. the invisibility purge only affects non-good creatures."
+   },
+   "celestial totem, greater (su)": {
+     "prerequisite": "barbarian 12, celestial totem while raging, the barbarian gains spell resistance equal to 11 + the barbarians class level against spells with the evil descriptor. she also gains a +2 bonus on all saving throws against spells and effects from evil creatures."
+   },
+   "chaos totem, lesser (su)": {
+     "benefit": "while raging, the barbarian gains a +1 deflection bonus to ac against the attacks of lawful creatures and a +1 resistance bonus on saving throws against confusion, insanity, polymorph, and effects with the lawful descriptor. this bonus increases by +1 for each chaos totem rage power she possesses."
+   },
+   "chaos totem (su)": {
+     "prerequisite": "barbarian 6, lesser chaos totem rage power",
+     "benefit": "while raging, the barbarianas form becomes infused with chaos. she gains a +4 bonus on escape artist checks and has a 25% chance to ignore extra damage from critical hits and sneak attacks."
+   },
+   "chaos totem, greater (su)": {
+     "prerequisite": "barbarian 10, chaos totem rage power",
+     "benefit": "while raging, the barbarian gains dr/lawful equal to 1/2 her barbarian level. her weapons and natural weapons are considered chaotic for the purpose of overcoming damage reduction."
+   },
+   "clear mind (ex)": {
+     "prerequisite": "barbarian 8",
+     "benefit": "a barbarian may reroll a failed will save. this power is used as an immediate action after the first save is attempted, but before the results are revealed by the gm. the barbarian must take the second result, even if it is worse. special: this power can only be used once per rage."
+   },
+   "come and get me (ex)": {
+     "prerequisite": "barbarian 12",
+     "benefit": "while raging, as a free action the barbarian may leave herself open to attack while preparing devastating counterattacks. enemies gain a +4 bonus on attack and damage rolls against the barbarian until the beginning of her next turn, but every attack against the barbarian provokes an attack of opportunity from her, which is resolved prior to resolving each enemy attack."
+   },
+   "crippling blow (ex)": {
+     "prerequisite": "barbarian 8, powerful blow",
+     "benefit": "when using her powerful blow rage power, the barbarian can forgo the normal bonus to damage (including any bleed damage granted by the bleeding blow rage power or similar boosts to the damage of the powerful blow rage power) and instead deals 1 point of ability damage to the targetas strength or dexterity score for every four class levels the barbarian has attained. the target can attempt a fortitude saving throw (dc 10 + 1/2 the barbarians level + the barbarians strength modifier) to halve this ability damage."
+   },
+   "cult totem, lesser (ex)": {
+     "benefit": "while the barbarian is raging, any morale bonuses or bonuses for flanking she gains on attacks rolls are added to her damage rolls instead of her attack rolls. they are still morale bonuses, and they donat stack with other morale bonuses on damage rolls."
+   },
+   "cult totem (ex)": {
+     "prerequisite": "barbarian 6, lesser cult totem rage power",
+     "benefit": "the barbarian can make an attack of opportunity against a creature within her reach who damages an ally of the barbarian with a melee attack. only the enemy, not the barbarianas ally, needs to be within the barbarianas melee reach in order for the barbarian to make this attack of opportunity. once the barbarian makes an attack of opportunity against a creature with this ability, she canat use this ability to make an attack of opportunity against the same creature for 24 hours."
+   },
+   "cult totem, greater (su)": {
+     "prerequisite": "barbarian 10, lesser cult totem and cult totem rage powers",
+     "benefit": "while the barbarian is raging, when she takes hit point damage that would render her dying or dead, she remains conscious and raging until the end of her next turn after taking that damage, though she is disabled during that turn. she becomes dying or dead at the end of her next turn as normal for her current hit point total. this ability has no effect if the barbarian dies from a cause other than hit point damage, such as from a death effect or if her constitution damage exceeds her constitution score. "
+   },
+   "daemon totem, lesser (su)": {
+     "benefit": "while raging, the barbarian gains a +2 bonus on saving throws against acid damage, death effects, disease, and poison. this bonus increases by 1 for each daemon totem rage power the barbarian has, excluding this one."
+   },
+   "daemon totem (su)": {
+     "prerequisite": "barbarian 6, lesser daemon totem rage power",
+     "benefit": "while the barbarian is raging, her melee attacks impose a temporary negative level on her opponent on a successful critical hit. after 1 hour, these temporary negative levels disappear automatically (without a saving throw)."
+   },
+   "daemon totem, greater (su)": {
+     "prerequisite": "barbarian 10, lesser daemon totem, daemon totem rage powers",
+     "benefit": "if the barbarian kills an intelligent creature with a cr equal to at least half her character level while raging, she heals 5 hit points. if she is already at her maximum number of hit points, she instead gains 5 temporary hit points, which donat stack if she kills multiple creatures."
+   },
+   "deadly accuracy (ex)": {
+     "prerequisite": "barbarian 4, surprise accuracy rage power",
+     "benefit": "if the barbarian scores a critical threat when using her surprise accuracy rage power, she applies double the surprise accuracy bonus when rolling to confirm the critical."
+   },
+   "surprise accuracy (ex)": {
+     "benefit": "the barbarian gains a +1 morale bonus on one attack roll. this bonus increases by +1 for every 4 levels the barbarian has attained. this power is used as a swift action before the roll to hit is made. special: this power can only be used once per rage."
+   },
+   "deathless frenzy": {
+     "prerequisite": "barbarian 12",
+     "benefit": "while raging, you ignore the effects of being at 0 or fewer hit points until you have been at 0 or fewer hit points for 1 round, at which point the appropriate consequences for your current hit point total take effect. even death can be postponed this way, potentially allowing you to survive if you receive sufficient healing before the round is up. special: this rage power is available to wereboars, wereboar-kin and those who associate with these creatures."
+   },
+   "disemboweling tusks": {
+     "prerequisite": "barbarian 10",
+     "benefit": "while raging, when you confirm a critical hit with your gore attack, you deal 1d4 points of constitution damage in addition to the normal damage for the gore attack. special: this rage power is available to wereboars, wereboar-kin and those who associate with these creatures."
+   },
+   "disruptive": {
+     "prerequisite": "barbarian 8, superstition rage power",
+     "benefit": "when raging, the barbarian gains disruptive as a bonus feat."
+   },
+   "superstition (ex)": {
+     "benefit": "the barbarian gains a +2 morale bonus on saving throws made to resist spells, supernatural abilities, and spell-like abilities. this bonus increases by +1 for every 4 levels the barbarian has attained. while raging, the barbarian cannot be a willing target of any spell and must make saving throws to resist all spells, even those cast by allies."
+   },
+   "dragon totem (su)": {
+     "prerequisite": "barbarian 6, animal fury rage power, intimidating glare rage power",
+     "benefit": "the barbarian must select a single color of dragon (black, blue, brass, bronze, copper, gold, green, red, silver, or white) as her totem. while raging, she gains a +1 bonus on perception checks and a +1 morale bonus on saving throws against fear, paralysis, and sleep effects. this bonus increases by +1 for each additional dragon totem rage power (such as dragon totem resilience and dragon totem wings) the barbarian possesses."
+   },
+   "dragon totem resilience (su)": {
+     "prerequisite": "barbarian 8, dragon totem rage power",
+     "benefit": "while raging, the barbarian gains resistance to the energy type that is associated with her dragon totemaacid (black, copper, green), cold (silver, white), electricity (blue, bronze), or fire (brass, gold, red). this resistance equals double her current dr/a from her barbarian damage reduction class feature; this energy resistance increases by 2 for each dragon totem rage power she possesses, including this one."
+   },
+   "dragon totem wings (su)": {
+     "prerequisite": "barbarian 10, dragon totem rage power, dragon totem resilience rage power",
+     "benefit": "when a barbarian selects this rage power, the fly (dex) skill becomes a class skill for her. while raging and wearing medium or lighter armor, the barbarian can spend a standard action to manifest a pair of spiritual dragon wings that grant her a fly speed equal to her base speed (average maneuverability). she can expend 2 rounds of her rage to instead spend an immediate action to gain this fly speed. she can end her fly speed at any time, even when it is not her turn. each round she spends raging and flying counts as 2 rounds of rage. her ability to fly ends automatically when she ceases raging."
+   },
+   "eater of magic (su)": {
+     "prerequisite": "barbarian 10, superstition rage power",
+     "benefit": "once per rage, when a barbarian fails a saving throw against a spell, supernatural ability, or spell-like ability, she can reroll the saving throw against the effect (this is not an action). if she succeeds at the second saving throw, she is not affected by the spell, supernatural ability, or spell-like ability and gains a number of temporary hit points equal to the effectas caster level (in the case of spell or spell-like abilities) or the cr of the effectas creator (in the case of supernatural abilities). these temporary hit points last until damage is applied to them or 1 minute, whichever occurs first."
+   },
+   "elemental rage, lesser (su)": {
+     "prerequisite": "barbarian 4",
+     "benefit": "as a swift action, the barbarian can cause her melee attacks to deal an additional 1d6 points of energy damage (acid, cold, electricity, or fire) for 1 round. special: this power can only be used once per rage."
+   },
+   "elemental rage (su)": {
+     "prerequisite": "barbarian 8, lesser elemental rage power",
+     "benefit": "while raging, all of the barbarianas melee attacks deal an additional 1d6 points of energy damage (acid, cold, electricity, or fire). the type is chosen when the barbarian begins her rage. special: note that the barbarian can still use her lesser elemental rage power while using this rage power, but she must select a different energy type."
+   },
+   "elemental rage, greater (su)": {
+     "prerequisite": "barbarian 12, elemental rage power",
+     "benefit": "while raging, all of the barbarianas critical hits made with melee weapons deal an additional 1d10 points of energy damage (2d10 if the weapon deals a3 damage on a critical hit, 3d10 if the weapon deals a4 on a critical hit). the type of this damage is the same as the type chosen for the elemental rage power."
+   },
+   "energy absorption (su)": {
+     "prerequisite": "barbarian 12, greater energy resistance rage power",
+     "benefit": "while raging, the barbarian can absorb energy from a single attack of her chosen energy type once per rage. she does not make a saving throw against the effect but takes no damage from it, instead gaining 1 temporary hit point per 3 points of damage the attack would have inflicted. these temporary hit points last until the end of the barbarianas rage."
+   },
+   "energy resistance, greater (ex)": {
+     "prerequisite": "barbarian 8, energy resistance rage power",
+     "benefit": "once per rage, a barbarian can reduce damage by half from a single attack against which she has energy resistance (halve the damage, then apply resistance)."
+   },
+   "energy eruption (su)": {
+     "prerequisite": "barbarian 16, energy absorption rage power",
+     "benefit": "while raging, the barbarian can absorb energy from a single attack and unleash it upon her enemies once per rage. she does not make a saving throw against the effect but takes no damage from it. at any point during the remainder of her rage she can unleash the stored energy as a breath weapon in either a 60-foot line or 30-foot cone. the breath weapon inflicts damage equal to the damage from the attack absorbed by the barbarian, but creatures within the area may make a reflex save (dc 10 + 1/2 the barbarianas level + the barbarianas constitution modifier) for half damage even if the original effect did not allow a save."
+   },
+   "energy resistance (ex)": {
+     "benefit": "while raging, the barbarian gains resistance to one energy type (acid, cold, electricity, fire, or sonic) equal to 1/2 her barbarian level (minimum 1). the energy type is chosen when this rage power is selected and it cannot be changed. special: this rage power can be selected more than once. its effects do not stack. each time is applies to a different energy type."
+   },
+   "fearless rage (ex)": {
+     "prerequisite": "barbarian 12",
+     "benefit": "while raging, the barbarian is immune to the shaken and frightened conditions."
+   },
+   "feasting bite (ex)": {
+     "prerequisite": "half-orc, bloody bite rage power and either the animal fury rage power or a natural bite attack",
+     "benefit": "when the barbarian confirms a critical hit with her bite attack, she regains a number of hit points equal to half the damage dealt. activating this ability consumes 1 round of rage."
+   },
+   "feast of blood (su)": {
+     "prerequisite": "bloody fist rage power, barbarian 14",
+     "benefit": "after successfully ripping out a creatures vital organ, the barbarian may eat the organ within 1 minute of extracting it as a full-round action that provokes attacks of opportunity. once the organ is consumed, the barbarian recovers a number of hit points equal to the hit dice of the organs owner. in addition, the barbarian gains any energy immunities or resistances the victim had, though the effectiveness of these resistances is halved (for instance, a barbarian who eats the heart of a creature with resist cold 10 would gain resist cold 5; energy immunities are reduced to resist energy 20). this energy resistance lasts for a number of rounds equal to half the hit dice of the creature whose organ was consumed."
+   },
+   "ferocious beast (ex)": {
+     "benefit": "while the barbarian is raging, her animal companion also gains the benefits of rage (including greater rage, mighty rage, and tireless rage), though the barbarian must spend 1 additional round of rage per round if her companion begins or ends its turn adjacent to her, and 2 additional rounds of rage per round if not."
+   },
+   "ferocious beast, greater (ex)": {
+     "prerequisite": "barbarian 8, ferocious beast.",
+     "benefit": "while the barbarian is raging, her animal companion shares the benefits of the barbarians rage powers that are constant in effect. it gains no benefit from rage powers that require actions to activate, even if they are free actions."
+   },
+   "ferocious mount (ex)": {
+     "benefit": "while raging and mounted, the barbarianas mount also gains the benefits of rage (including greater rage and mighty rage) as long as the barbarian is mounted or adjacent to it. while her mount is raging in this way, she must spend one additional round of rage per round. she can elect not to pay this cost, in which case her mount does not rage."
+   },
+   "ferocious mount, greater (ex)": {
+     "prerequisite": "barbarian 8, ferocious mount rage power",
+     "benefit": "while raging and mounted, the barbarianas mount gains the benefits of any rage powers that are constant in effect when the barbarian is raging. it does not gain the benefit of any rage powers that require actions to activate, even if they are free actions."
+   },
+   "ferocious trample (ex)": {
+     "prerequisite": "barbarian 8, ferocious mount rage power",
+     "benefit": "while raging and mounted, the barbarianas mount gains the trample special attack. this attack inflicts 1d8 points of damage for a medium mount, 2d6 for a large mount, or 2d8 for a huge mount, plus 1a1/2 times the mountas strength modifier. a successful reflex save (dc 10 + 1/2 the barbarianas level + the mountas strength modifier) halves this damage. creatures in the mountas path or that threaten squares it passes through may make attacks of opportunity against either the barbarian or the mount, but not both."
+   },
+   "ferocious trample, greater (ex)": {
+     "prerequisite": "barbarian 12, ferocious trample rage power",
+     "benefit": "a barbarianas mount can affect creatures up to its own size with its ferocious trample. in addition, it can make an overrun combat maneuver check as a free action against a creature that fails its reflex save (or chooses not to save in order to take an attack of opportunity) against its trample."
+   },
+   "fiend totem (su)": {
+     "prerequisite": "barbarian 6, lesser fiend totem rage power",
+     "benefit": "while raging, the barbarian sprouts dozens of wicked barbs from her body. anyone striking the barbarian with a melee weapon, an unarmed strike, or a natural weapon takes 1d6 points of piercing damage."
+   },
+   "fiend totem, lesser (su)": {
+     "benefit": "while raging, the barbarian grows a pair of large horns, gaining a gore attack. this attack is a primary attack (unless she is also attacking with weapons, in which case it is a secondary attack) and is made at the barbarianas full base attack bonus (a5 if it is a secondary attack). the gore attack deals 1d8 points of piercing damage (1d6 if small) plus the barbarianas strength modifier (1/2 if it is a secondary attack)."
+   },
+   "fiend totem, greater (su)": {
+     "prerequisite": "barbarian 10, fiend totem rage power",
+     "benefit": "while raging, the barbarian is surrounded by an aura of menace. good creatures adjacent to the barbarian are shaken and take 2d6 points of slashing damage at the beginning of the barbarianas turn as dozens of small cuts open across their flesh. neutral creatures that are adjacent to the barbarian are shaken, but do not take any damage. evil creatures are unaffected."
+   },
+   "fierce fortitude (ex)": {
+     "prerequisite": "barbarian 8; if skald, must be trained in intimidate",
+     "benefit": "the character gains a +4 bonus on saving throws against diseases and poison."
+   },
+   "fight response (ex)": {
+     "benefit": "when a barbarian with this rage power attempts a saving throw against a fear effect, she can enter a rage as an immediate action (as long as she would normally be able to enter rage). this consumes 3 rounds of the barbarianas daily allotment of rage rounds, but the barbarian can maintain the rage each round on her turn normally. any benefits from the barbarianas rage apply immediately, so she gains her bonus on will saves against the effect that required the initial saving throw. unlike most rage powers, this rage poweras effects are useful only when the barbarian is not raging, so a skald canat grant this rage power to allies with raging song."
+   },
+   "flesh wound (ex)": {
+     "prerequisite": "barbarian 10",
+     "benefit": "once per rage, the barbarian can try to avoid serious harm from an attack. the barbarian must make a fortitude save with a dc equal to the damage that would be dealt by the attack. the barbarianas armor check penalty applies on this saving throw. if the save succeeds, the barbarian takes half damage from the attack and the damage is nonlethal. the barbarian must elect to use this ability after the attack roll is made, but before the damage is rolled."
+   },
+   "fueled by vengeance": {
+     "prerequisite": "barbarian 6",
+     "benefit": "while raging, whenever you deal weapon damage to a creature that dealt damage to you since the end of your last turn, add 1 round to your remaining number of rounds of rage for the current day. you can gain no more than 1 extra round of rage each round. special: this rage power is available to wereboars, wereboar-kin and those who associate with these creatures."
+   },
+   "gearbreaker (ex)": {
+     "prerequisite": "smasher rage power.",
+     "benefit": "once per round while raging, whenever you make an attack against a construct, you can ignore an amount of that constructs hardness equal to your barbarian level. this ability must be used before the attack roll is made. this power stacks with hard hitter."
+   },
+   "smasher (ex)": {
+     "benefit": "once per rage, whenever the barbarian makes an attack against an unattended object or a sunder combat maneuver, she can ignore the objectas hardness. this ability must be used before the attack roll or sunder check is made."
+   },
+   "ghost rager (su)": {
+     "prerequisite": "barbarian 6, superstition rage power",
+     "benefit": "while raging, the barbarian deals normal damage to incorporeal creatures even when using nonmagical weapons. she also gains a +3 morale bonus to touch ac, which increases by 1 at 8th level and every 4 levels thereafter (to a maximum of +7 at 20th level). this canat raise her touch ac above her full ac."
+   },
+   "good for what ails you (ex)": {
+     "benefit": "while raging, the barbarian who takes a drink of alcohol may attempt a new saving throw against one of the following conditions that may be affecting her: blinded, confused, dazzled, deafened, exhausted, fatigued, frightened, nauseated, panicked, shaken, or sickened. if she succeeds at the save, the effect is suppressed for the duration of the rage. she also may attempt a new saving throw if poisoned; a successful save counts against those required for a cure, but a failed save has no ill effect."
+   },
+   "greater animal fury (ex)": {
+     "prerequisite": "animal fury rage power",
+     "benefit": "this power works as animal fury, but the barbarians bite attack deals damage as if she were one size larger."
+   },
+   "ground breaker (ex)": {
+     "prerequisite": "barbarian 6",
+     "benefit": "once per rage, the barbarian can attack the floor around her as a standard action. this attack automatically hits and deals damage normally. if the barbarian manages to deal more damage than the flooras hardness, the space she occupies and all of the squares adjacent to her become difficult terrain. creatures in these squares, except the barbarian, must make a dc 15 reflex save or be knocked prone."
+   },
+   "ground breaker, greater (ex)": {
+     "prerequisite": "barbarian 8, ground breaker rage power",
+     "benefit": "when using the ground breaker rage power, the barbarian can extend the radius of the effect by 5 feet. special: this rage power can be selected up to three times, and its effects stack."
+   },
+   "guarded life (ex)": {
+     "benefit": "while raging, if the barbarian is reduced below 0 hit points, 1 hit point of lethal damage per barbarian level is converted to nonlethal damage. if the barbarian is at negative hit points due to lethal damage, she immediately stabilizes."
+   },
+   "guarded life, greater (ex)": {
+     "prerequisite": "barbarian 6, guarded life rage power",
+     "benefit": "when using the guarded life rage power, 1 additional hit point of lethal damage per barbarian level is converted to nonlethal damage."
+   },
+   "guarded stance (ex)": {
+     "benefit": "the barbarian gains a +1 dodge bonus to her armor class against melee attacks for a number of rounds equal to the barbarians current constitution modifier (minimum 1). this bonus increases by +1 for every 6 levels the barbarian has attained. activating this ability is a move action that does not provoke an attack of opportunity."
+   },
+   "hive totem (su)": {
+     "prerequisite": "barbarian 4, animal fury rage power",
+     "benefit": "while raging, the barbarian takes half damage from attacks by swarms of vermin, including spells and effects that act like a swarm of vermin (like summon swarm used to summon spiders or insect plague). she also gains a +1 bonus on strength ability checks and to cmd against bull rush, drag, and trip attacks for every four barbarian levels she has (maximum +5)."
+   },
+   "hive totem resilience (su)": {
+     "prerequisite": "barbarian 6, hive totem rage power",
+     "benefit": "while raging, the barbarian takes no damage from attacks by swarms of vermin, preventing harmful secondary effects of such attacks like poison or bleed. she also gains a +1 bonus on combat maneuver checks and to cmd when grappling for every four barbarian levels she has (maximum +5)."
+   },
+   "hive totem toxicity (su)": {
+     "prerequisite": "barbarian 8, hive totem rage power, hive totem resilience rage power",
+     "benefit": "while raging, the barbarian increases her bite damage die type with the animal fury rage power by one die type and decreases the penalty on attack rolls with that bite to a2. once per rage, a bite that hits can deliver an injury toxin that has a frequency of once per round for 4 rounds, deals 1d3 points of constitution damage, and has a cure of one save. the saving throw has a fortitude save dc of 10 + 1/2 the barbarians level + the barbarians constitution modifier."
+   },
+   "hurling (ex)": {
+     "prerequisite": "barbarian 8, lesser hurling rage power",
+     "benefit": "as lesser hurling, but the barbarian can increase the range increment to 20 feet or increase the size of a hurled object by one size category."
+   },
+   "hurling, lesser (ex)": {
+     "benefit": "as a full-round action while raging, the barbarian can lift and hurl an object up to one size category smaller than herself with both hands or two size categories smaller with one hand as an improvised weapon with a range increment of 10 feet. this inflicts damage as a falling object plus the barbarianas strength bonus. this damage is halved if the object is not made of stone, metal, or similar material. this is a ranged touch attack, and the target may attempt a reflex save (dc 10 + 1/2 the barbarianas level + the barbarianas strength modifier) for half damage. the barbarian may apply power attack to this attack as a one- or two-handed weapon, as appropriate."
+   },
+   "hurling, greater (ex)": {
+     "prerequisite": "barbarian 12, hurling rage power",
+     "benefit": "as hurling, but the barbarian can increase the range increment to 30 feet or increase the size of a hurled object by two size categories."
+   },
+   "hurling charge (ex)": {
+     "prerequisite": "barbarian 6, lesser hurling rage power",
+     "benefit": "while raging and making a charge attack, the barbarian may draw and throw a hurled weapon during her charge, gaining the normal +2 attack roll bonus on the thrown weapon attack as well as on the melee attack at the end of the charge. the barbarian must move at least 10 feet before using a thrown weapon and at least 10 additional feet before making a melee attack at the end of her charge. the barbarian must have a thrown weapon in hand or have one hand free at the beginning of her charge."
+   },
+   "impelling disarm (ex)": {
+     "prerequisite": "barbarian 4",
+     "benefit": "once per rage, the barbarian can make a disarm attempt against a target in place of a melee attack. this attempt does not provoke attacks of opportunity. if successful, the barbarian sends the targets weapon flyingaeither straight at the target, or spinning away to strike another foe up to 20 feet away. this ranged attack counts as throwing a weapon that isnt designed to be thrown, even if the weapon disarmed is a thrown weapon. the barbarian makes a ranged attack, which doesnt provoke attacks of opportunity, at either the target of his disarm maneuver or another creature within 20 feet. if the barbarian is aiming for the disarmed creature, the foe doesnt count as being in melee for determining any penalty on the ranged attack from throwing a ranged weapon into melee. if the ranged attack hits, the disarmed weapon deals damage as if the barbarian had thrown it. the barbarian can choose to aim the disarmed weapon at a square rather than at a foe."
+   },
+   "increased damage reduction (ex)": {
+     "prerequisite": "barbarian 8",
+     "benefit": "the barbarians damage reduction increases by 1/a. this increase is always active while the barbarian is raging. special: a barbarian can select this rage power up to three times. its effects stack."
+   },
+   "inspire ferocity (ex)": {
+     "prerequisite": "reckless abandon rage power",
+     "benefit": "while raging, the barbarian can use a move action to impart her reckless abandon modifier to all willing allies within 30 feet for a number of rounds equal to her charisma modifier (minimum 1)."
+   },
+   "reckless abandon (ex)": {
+     "benefit": "while raging, the barbarian can take a a1 penalty to ac to gain a +1 bonus on attack rolls. the ac penalty increases by a1 and the attack roll bonus increases by +1 at 4th level and every four levels thereafter."
+   },
+   "internal fortitude (ex)": {
+     "prerequisite": "barbarian 8",
+     "benefit": "while raging, the barbarian is immune to the sickened and nauseated conditions."
+   },
+   "knockback (ex)": {
+     "benefit": "once per round, the barbarian can make a bull rush attempt against one target in place of a melee attack. if successful, the target takes damage equal to the barbarians strength modifier and is moved back as normal. the barbarian does not need to move with the target if successful. this does not provoke an attack of opportunity."
+   },
+   "knockdown (ex)": {
+     "benefit": "once per rage, the barbarian can make a trip attack against one target in place of a melee attack. if successful, the target takes damage equal to the barbarianas strength modifier and is knocked prone. this does not provoke an attack of opportunity."
+   },
+   "lethal accuracy (ex)": {
+     "prerequisite": "barbarian 16, deadly accuracy rage power, surprise accuracy rage power",
+     "benefit": "when using her surprise accuracy rage power, the barbarians critical multiplier for damage increases by 1 (a a2 multiplier becomes a3, a 19a20/a2 multiplier becomes 19a20/a3, a a3 multiplier becomes a4, and a a4 multiplier becomes a5). a barbarian must have the surprise accuracy and deadly accuracy rage powers and be 16th level before selecting this rage power."
+   },
+   "linnorm death curse, cairn (su)": {
+     "prerequisite": "barbarian 8 the character channels the power of a cairn linnorm. the characters melee attacks deal an additional 1 point of negative energy damage. if the character is knocked unconscious or killed by an attack or spell, the attacker suffers the curse of decay (will negates). curse of decay: save will dc 10 + 1/2 characters level + characters charisma bonus; effect target takes 1 point of con damage per day and ages at a rate of 1 year per day (eventually incurring all of the penalties of old age but none of the bonuses)."
+   },
+   "linnorm death curse, crag (su)": {
+     "prerequisite": "barbarian 4",
+     "benefit": "the character channels the power of a crag linnorm. the characters melee attacks deal an additional 1 point of fire damage. if the character is knocked unconscious or killed by an attack or spell, the attacker suffers the curse of fire (will negates). curse of fire: save will dc 10 + 1/2 characters level + characters charisma bonus; effect target gains vulnerability to fire."
+   },
+   "linnorm death curse, fjord (su)": {
+     "prerequisite": "barbarian 4",
+     "benefit": "the character channels the power of a fjord linnorm. the characters melee attacks deal an additional 1 point of cold damage. if the character is knocked unconscious or killed by an attack or spell, the attacker suffers the curse of drowning (will negates). curse of drowning: save will dc 10 + 1/2 characters level + characters charisma bonus; effect target is unable to breathe water (even with magic), can hold its breath only half as long as normal, and is sickened whenever it holds its breath."
+   },
+   "linnorm death curse, ice (su)": {
+     "prerequisite": "barbarian 4",
+     "benefit": "the character channels the power of an ice linnorm. the characters melee attacks deal an additional 1 point of cold damage. if the character is knocked unconscious or killed, the attacker suffers the curse of frost. curse of frost: save will dc 10 + 1/2 characters level + characters charisma bonus; effect target gains vulnerability to cold."
+   },
+   "linnorm death curse, taiga (su)": {
+     "prerequisite": "barbarian 4",
+     "benefit": "the character channels the power of a taiga linnorm. the characters melee attacks deal an additional 1 point of electricity damage. if the character is knocked unconscious or killed by an attack or spell, the attacker suffers the curse of electricity (will negates). curse of electricity: save will dc 10 + 1/2 characters level + characters charisma bonus; effect target gains vulnerability to electricity."
+   },
+   "linnorm death curse, tarn (su)": {
+     "prerequisite": "barbarian 4",
+     "benefit": "the character channels the power of a tarn linnorm. the characters melee attacks deal an additional 1 point of acid damage. if the character is knocked unconscious or killed by an attack or spell, the attacker suffers the curse of death (will negates). curse of death: save will dc 10 + 1/2 characters level + characters charisma bonus; effect target is no longer affected by healing spells and cant heal damage naturally by resting."
+   },
+   "linnorm death curse, tor (su)": {
+     "prerequisite": "barbarian 8",
+     "benefit": "the character channels the power of a tor linnorm. the characters melee attacks deal an additional 1 point of fire damage. if the character is knocked unconscious or killed by an attack or spell, the attacker suffers the curse of boiling blood (will negates). curse of boiling blood: save will dc 10 + 1/2 characters level + characters charisma bonus; effect target gains vulnerability to fire and is permanently staggered from the pain of its boiling blood (this is a pain effect)."
+   },
+   "liquid courage (ex)": {
+     "benefit": "while raging, the barbarian increases her morale bonus on saving throws against mind-affecting effects by +1 for each alcoholic drink she consumes during her rage, to a maximum of +1 increase per four barbarian levels."
+   },
+   "low-light vision (ex)": {
+     "benefit": "the barbarians senses sharpen and she gains low-light vision while raging."
+   },
+   "mighty swing (ex)": {
+     "prerequisite": "barbarian 12",
+     "benefit": "the barbarian automatically confirms a critical hit. this power is used as an immediate action once a critical threat has been determined. special: this power can only be used once per rage."
+   },
+   "moment of clarity (ex)": {
+     "benefit": "the barbarian does not gain any benefits or take any of the penalties from rage for 1 round. activating this power is a swift action. this includes the penalty to armor class and the restriction on what actions can be performed. this round still counts against her total number of rounds of rage per day. special: this power can only be used once per rage."
+   },
+   "moon totem (su)": {
+     "prerequisite": "barbarian 6, lesser moon totem rage power",
+     "benefit": "while raging, the barbarian gains a bonus equal to half her level on perception checks to pinpoint the location of an unseen creature, and unseen attackers gain no bonus on attacks against the barbarian."
+   },
+   "moon totem, greater (su)": {
+     "prerequisite": "barbarian 10, moon totem rage power",
+     "benefit": "while raging, the barbarian ignores the miss chance for concealment and treats total concealment as concealment."
+   },
+   "moon totem, lesser (su)": {
+     "benefit": "while raging, the barbarian gains darkvision with a range of 30 feet. if the barbarian already has darkvision, the range of her darkvision increases by 30 feet while she is raging."
+   },
+   "night vision (ex)": {
+     "prerequisite": "low-light vision rage power or racial low-light vision",
+     "benefit": "the barbarians senses grow incredibly sharp while raging and she gains darkvision 60 feet."
+   },
+   "no escape (ex)": {
+     "benefit": "the barbarian can move up to double her normal speed as an immediate action but she can only use this ability when an adjacent foe uses a withdraw action to move away from her. she must end her movement adjacent to the enemy that used the withdraw action. the barbarian provokes attacks of opportunity as normal during this movement. special: this power can only be used once per rage."
+   },
+   "overbearing advance (ex)": {
+     "benefit": "while raging, the barbarian inflicts damage equal to her strength bonus whenever she succeeds at an overrun combat maneuver."
+   },
+   "overbearing onslaught (ex)": {
+     "prerequisite": "barbarian 6, overbearing advance rage power",
+     "benefit": "while raging, the barbarian may overrun more than one target per round, with a a2 penalty on her cmb for each overrun check after the first."
+   },
+   "penetrating bite (ex)": {
+     "prerequisite": "barbarian 4, animal fury rage power.",
+     "benefit": "when using the animal fury rage power while raging, the barbarians bite is able to pierce most resistances. at 4th level, her bite is treated as a magic weapon for the purpose of overcoming damage reduction. at 7th level, her bite is also treated as cold iron and silver for the purpose of overcoming damage reduction. at 10th level, her bite is also treated as a chaotic weapon for the purpose of overcoming damage reduction. at 16th level, her bite is treated as an adamantine weapon for the purpose of overcoming damage reduction and bypassing hardness."
+   },
+   "perfect clarity (ex)": {
+     "prerequisite": "moment of clarity rage power",
+     "benefit": "while using her moment of clarity rage power, the barbarian can roll twice for any miss chance or will saving throws to disbelieve illusions, taking the better result."
+   },
+   "primal scent (ex)": {
+     "prerequisite": "barbarian 8, scent rage power",
+     "benefit": "when using her scent rage power, the barbarian adds half her barbarian level on survival checks made to track by scent and on perception checks to pinpoint the location of creatures she cannot see. if she pinpoints the location of a creature that has total concealment, she treats it as having concealment."
+   },
+   "scent (ex)": {
+     "benefit": "the barbarian gains the scent ability while raging and can use this ability to locate unseen foes (see special abilities for rules on the scent ability)."
+   },
+   "quick reflexes (ex)": {
+     "benefit": "while raging, the barbarian can make one additional attack of opportunity per round."
+   },
+   "raging flier (su)": {
+     "prerequisite": "barbarian 6, raging leaper",
+     "benefit": "once per rage, the character can fly up to her base speed as a move action. if she uses the charge action, she can use this flight as part of her movement during the charge."
+   },
+   "raging grappler (ex)": {
+     "benefit": "as long as you are raging, whenever you succeed at a check to start a grapple, you can choose to deal damage as if you had also succeeded at a check to maintain the grapple. in addition, while raging, whenever you succeed at a combat maneuver check to maintain a grapple, you can choose to give yourself, the target of your grapple, or both the prone condition as a free action while continuing to maintain the grapple."
+   },
+   "reflexive dodge (ex)": {
+     "prerequisite": "barbarian 6, rolling dodge rage power",
+     "benefit": "while using her rolling dodge rage power, the barbarian may apply her dodge bonus to ac as a bonus on reflex saving throws."
+   },
+   "rolling dodge (ex)": {
+     "benefit": "the barbarian gains a +1 dodge bonus to her armor class against ranged attacks for a number of rounds equal to the barbarians current constitution modifier (minimum 1). this bonus increases by +1 for every 6 levels the barbarian has attained. activating this ability is a move action that does not provoke an attack of opportunity."
+   },
+   "regenerative vigor (ex)": {
+     "prerequisite": "barbarian 6, renewed vigor rage power",
+     "benefit": "after using her renewed vigor rage power until her current rage ends, the barbarian gains fast healing 1 for every 6 barbarian levels she has (maximum fast healing 3). she regains hit points from fast healing at the start of each of her turns."
+   },
+   "renewed vigor (ex)": {
+     "prerequisite": "barbarian 4",
+     "benefit": "as a standard action, the barbarian heals 1d8 points of damage + her constitution modifier. for every four levels the barbarian has attained above 4th, this amount of damage healed increases by 1d8, to a maximum of 5d8 at 20th level. special: this power can be used only once per day and only while raging."
+   },
+   "renewed life (ex)": {
+     "prerequisite": "barbarian 6, renewed vitality rage power",
+     "benefit": "while raging, the barbarian ignores the effect of one temporary negative level per four barbarian levels she has (maximum 5). once per day, when a barbarian with temporary negative levels ends her rage, she can attempt saving throws to remove a number of negative levels equal to the number of levels she could ignore while raging."
+   },
+   "renewed vitality (ex)": {
+     "prerequisite": "barbarian 4, renewed vigor rage power",
+     "benefit": "while raging, the barbarian ignores the effect of 1 point of ability penalty or damage per two barbarian levels she has (maximum 10). once per day, when a barbarian with ability penalties or damage ends her rage, she can reroll a saving throw, if any, against an effect that imposed an ability penalty or dealt her ability damage. if successful, she removes an amount of ability penalty or damage equal to the amount she can ignore while raging."
+   },
+   "roaring drunk (ex)": {
+     "benefit": "while raging, the barbarian gains a +1 morale bonus on intimidate checks and to the save dc of any fear effects she creates for each alcoholic drink she has consumed during her rage, to a maximum of +1 per four barbarian levels."
+   },
+   "roused anger (ex)": {
+     "benefit": "the barbarian may enter a rage even if fatigued. while raging after using this ability, the barbarian is immune to the fatigued condition. once this rage ends, the barbarian is exhausted for 10 minutes per round spent raging."
+   },
+   "savage dirty trick (ex)": {
+     "prerequisite": "barbarian 6",
+     "benefit": "once per round while raging, the barbarian can attempt a dirty trick combat maneuver in place of a melee attack. this attempt does not provoke attacks of opportunity. if successful, the target takes an amount of damage equal to the barbarians strength modifier and must succeed at a fortitude save (dc 10 + 1/2 the barbarians level + the barbarians strength modifier) or take an additional penalty from the dirty trick based on the type of dirty trick performed and the following table. on a failed fortitude save, the opponent takes this additional penalty on top of the dirty tricks original effect. the additional penalty lasts for 1 round (though the initial penalty lasts as long as normal), and can be removed with a move action. the initial effect cannot be removed via mundane means until the additional penalty is removed (though magical effects like remove blindness/ deafness work). removing the initial effect also removes the additional penalty. if the target is immune to the initial penalty, then it is unaffected by the additional penalty. for example, a barbarian using this rage power attempts a dirty trick combat maneuver against her opponent to blind him. she succeeds and her opponent fails his fortitude save, so he becomes staggered as well as blinded. regardless of whether he had succeeded at his saving throw, the opponent still takes an amount of damage from the barbarians combat maneuver equal to the barbarians strength modifier (unless he has damage reduction or would otherwise be able to prevent this damage). likewise, if her opponent were immune to blinding effects, he would not suffer from the blindness or the staggering effect, regardless of his saving throw. this power can only be used once per opponent per rage."
+   },
+   "savage intuition": {
+     "benefit": "your bestial senses allow you to sense danger and become enraged before you even have time to consciously react to danger. when combat begins, if you have rounds of rage remaining, you may automatically enter a rage without using an action at the start of the first round of combat (or at the start of the surprise round, if there is one), even if you are not otherwise aware that combat has begun. special: this rage power is available to wereboars, wereboar-kin and those who associate with these creatures."
+   },
+   "savage jaw (ex)": {
+     "prerequisite": "animal fury rage power",
+     "benefit": "while raging, the barbarian can open her jaw wide and latch her teeth firmly onto her opponent. while using the animal fury rage power, the barbarian can activate this power as a free action and gain the grab ability with her bite attack until the start of her next turn. this power can be used only once per rage."
+   },
+   "sharpened accuracy (ex)": {
+     "prerequisite": "barbarian 8, surprise accuracy rage power",
+     "benefit": "when using her surprise accuracy rage power, the barbarian ignores the miss chance for concealment and treats total concealment as concealment. she also ignores cover penalties except those from total cover."
+   },
+   "spell sunder (su)": {
+     "prerequisite": "barbarian 6, witch hunter rage power",
+     "benefit": "once per rage, the barbarian can attempt to sunder an ongoing spell effect by succeeding at a combat maneuver check. for any effect other than one on a creature, the barbarian must make her combat maneuver check against a cmd of 15 plus the effectas caster level. to sunder an effect on a creature, the barbarian must succeed at a normal sunder combat maneuver against the creatureas cmd + 5, ignoring any miss chance caused by a spell or spell-like ability. if successful, the barbarian suppresses the effect for 1 round, or 2 rounds if she exceeded the cmd by 5 to 9. if she exceeds the cmd by 10 or more, the effect is dispelled."
+   },
+   "witch hunter (ex)": {
+     "prerequisite": "superstition rage power",
+     "benefit": "while raging, the barbarian gains a +1 bonus on damage rolls against creatures possessing spells or spell-like abilities. this damage bonus increases by +1 for every four levels the barbarian has obtained."
+   },
+   "spellbreaker": {
+     "prerequisite": "barbarian 12, disruptive rage power",
+     "benefit": "when raging, the barbarian gains spellbreaker as a bonus feat. a barbarian must have the disruptive rage power and be at least 12th level to select this rage power."
+   },
+   "spire totem (su)": {
+     "prerequisite": "barbarian 6, lesser spire totem rage power",
+     "benefit": "while raging, the barbarian takes no penalties for using a weapon to deal nonlethal damage. when dealing nonlethal damage, the barbarian adds a bonus equal to half her barbarian level on her damage rolls. a barbarian must have the lesser spire totem rage power and be at least 6th level to select this rage power."
+   },
+   "spire totem, greater (su)": {
+     "prerequisite": "barbariana 10, spire totem rage power",
+     "benefit": "while the barbarian is raging, all allies within 30 feet gain a +2 morale bonus on will saves. when attempting a will save against a fear effect, all allies within this area can roll twice and use the better result."
+   },
+   "spire totem, lesser (su)": {
+     "benefit": "while raging, the barbarian gains a +1 morale bonus on attacks against any creature that has targeted one of her allies with an attack or a harmful spell within the last round."
+   },
+   "spirit steed (su)": {
+     "prerequisite": "barbarian 6, ferocious mount rage power",
+     "benefit": "while raging and mounted, the barbarianas mount gains dr/magic equal to 1/2 the barbarianas level. the mountas natural weapons count as magical for the purpose of overcoming damage reduction."
+   },
+   "spirit totem (su)": {
+     "prerequisite": "barbarian 6, lesser spirit totem rage power",
+     "benefit": "while raging, the spirits that surround the barbarian make it difficult for her enemies to see her. the spirits grant the barbarian a 20% miss chance against ranged attacks and melee attacks made by creatures that are not adjacent to the barbarian (typically due to reach)."
+   },
+   "spirit totem, lesser (su)": {
+     "benefit": "while raging, the barbarian is surrounded by spirit wisps that harass her foes. these spirits make one slam attack each round against a living foe that is adjacent to the barbarian. this slam attack is made using the barbarianas full base attack bonus, plus the barbarianas charisma modifier. the slam deals 1d4 points of negative energy damage, plus the barbarianas charisma modifier. editors note who decides who the spirits attack, and what effects affect the spirits? the barbarian decides who the spirits attack each round. the spirits are not affected by effects that aid their attacks or damage (such as bardic performance or bless) or penalize their attacks or damage (such as bane or darkness). the spirits always strike from your direction. they do not get flanking bonuses or help a combatant get one. [source]"
+   },
+   "spirit totem, greater (su)": {
+     "prerequisite": "barbarian 10, spirit totem rage power",
+     "benefit": "while raging, the spirits that surround the barbarian become dangerous to any enemy adjacent to the barbarian. living enemies adjacent to the barbarian at the start of her turn take 1d8 points of negative energy damage. in addition, the spirit wisps can now attack foes that are up to 15 feet away from the barbarian and the slam attack deals 1d6 points of negative energy damage. editors note who decides who the spirits (from lesser spirit totem) attack, and what effects affect the spirits? the barbarian decides who the spirits attack each round. the spirits are not affected by effects that aid their attacks or damage (such as bardic performance or bless) or penalize their attacks or damage (such as bane or darkness). the spirits always strike from your direction. they do not get flanking bonuses or help a combatant get one. [source]"
+   },
+   "sprint (ex)": {
+     "prerequisite": "barbarian 4, swift foot rage power",
+     "benefit": "once per rage, the barbarian can use a single full-round run action to move up to 6 times her speed or a single full-round charge action to move up to 3 times her speed."
+   },
+   "swift foot (ex)": {
+     "benefit": "the barbarian gains a 5-foot enhancement bonus to her speed. this increase is always active while the barbarian is raging. special: a barbarian can select this rage power up to three times. its effects stack."
+   },
+   "staggering drunk (ex)": {
+     "benefit": "while raging, a barbarian gains a +1 dodge bonus to ac against attacks of opportunity for each alcoholic drink she has consumed during her rage, to a maximum of +1 per four barbarian levels."
+   },
+   "strength surge (ex)": {
+     "benefit": "the barbarian adds her barbarian level on one strength check or combat maneuver check, or to her combat maneuver defense when an opponent attempts a maneuver against her. this power is used as an immediate action. special: this power can only be used once per rage."
+   },
+   "sunder enchantment (su)": {
+     "prerequisite": "barbarian 8, spell sunder rage power",
+     "benefit": "while raging, whenever the barbarian succeeds at a sunder combat maneuver on a magical item, that itemas magical abilities are suppressed for 1 round, plus 1 round for every 5 points by which her combat maneuver check exceeded the targetas cmd."
+   },
+   "terrifying howl (ex)": {
+     "prerequisite": "barbarian 8, intimidating glare rage power",
+     "benefit": "the barbarian unleashes a terrifying howl as a standard action. all shaken enemies within 30 feet must make a will save (dc equal to 10 + 1/2 the barbarians level + the barbarians strength modifier) or be panicked for 1d4+1 rounds. special: once an enemy has made a save versus terrifying howl (successful or not), it is immune to this power for 24 hours."
+   },
+   "ultimate clarity (su)": {
+     "prerequisite": "barbarian 6, moment of clarity, perfect clarity",
+     "benefit": "once per rage, the character can refine her senses, seeing through normal and magical darkness (including from magical effects such as blur and displacement), invisibility, and illusions; she can also discern the exact locations of creatures with concealment. this lasts for 1 round. the character does not need to be using moment of clarity to use this rage power."
+   },
+   "unexpected strike (ex)": {
+     "prerequisite": "barbarian 8",
+     "benefit": "the barbarian can make an attack of opportunity against a foe that moves into any square threatened by the barbarian, regardless of whether or not that movement would normally provoke an attack of opportunity. special: this power can only be used once per rage. "
+   },
+   "water sense (ex)": {
+     "benefit": "while you are raging and on land, opponents in the water gain only partial cover from you attacks, instead of improved cover. in addition, while on land and targeting an opponent in water, you take only a a1 penalty on attacks with ranged weapons (including thrown weapons) for every 5 feet of water they pass through (instead of the usual a2 penalty for every 5 feet of water)."
+   },
+   "world serpent totem (su)": {
+     "benefit": "while raging, the barbarian gains a +1 insight bonus to ac against outsiders and aberrations. this bonus increases by +1 for each world serpent rage power the barbarian possesses, excluding this one."
+   },
+   "world serpent spirit (su)": {
+     "prerequisite": "barbarian 6, world serpent totem rage power",
+     "benefit": "while raging, the barbarian considers her weapons to be chaotic-, evil-, good-, and lawful-aligned for the purposes of overcoming damage reduction. she also gains a +1 resistance bonus on saving throws against spells and effects that have an alignment descriptor or come from an outsider or aberration. this bonus increases by +1 for each world serpent rage power the barbarian possesses, excluding this one."
+   },
+   "world serpent totem unity (su)": {
+     "prerequisite": "barbarian 6, world serpent spirit rage power, world serpent totem rage power",
+     "benefit": "while raging, the barbarian doubles her fast movement bonus to land speed and cannot be knocked prone. she also doubles her world serpent totem insight bonus to ac against attack rolls made by an outsider or aberration to confirm a critical hit against her."
+   },
+   "lunar totem (su)": {
+     "prerequisite": "barbarian 6, lesser lunar totem rage power",
+     "benefit": "while raging, the barbarian increases her bite damage die type with her bite attack by one die type, and the bite deals x3 damage on a critical hit. she always adds her full strength bonus to her bite attack, even when performing a full attack with other weapons. when making a full attack with manufactured weapons and her bite attack (and no other natural weapons), the penalty for using her bite decreases to -2."
+   },
+   "lunar totem, lesser (su)": {
+     "prerequisite": "barbarian 4, must have a bite attack (either from animal fury rage power or some other source)",
+     "benefit": "while raging, the barbarian gains a +1 insight bonus to ac and on saving throws against undead and creatures with the shapechanger subtype. this bonus increases by +1 for each lunar totem rage power the barbarian possesses, excluding this one."
+   },
+   "lunar totem, greater (su)": {
+     "prerequisite": "barbarian 10, lunar totem rage power",
+     "benefit": "when raging, the barbarian gains dr/silver equal to half her barbarian level. she also gains a +4 bonus on saving throws against curses while raging."
+   },
+   "shadow totem (su)": {
+     "prerequisite": "barbarian 10, lesser shadow totem rage power",
+     "benefit": "once per rage as a swift action, the barbarian can take on a shadowy form until the end of her turn. while in this form, she gains the incorporeal subtype. she takes half damage from corporeal sources as long as they are magic (and no damage from non-magic weapons and objects). likewise, any magical effects she creates deal only half damage to corporeal creatures. her manufactured and natural weapons count as ghost touch weapons while incorporeal in this manner. spells and other effects that do not deal damage function normally. she can pass through a wall or other surface that is up to 5 feet thick per barbarian level while she is incorporeal. she must exit the solid material by the end of her turn."
+   },
+   "shadow totem, lesser (su)": {
+     "prerequisite": "barbarian 6, darkvision 60 ft.",
+     "benefit": "while raging, each time the barbarian confirms a critical hit her weapon surges with draining shadows. the target must succeed at a fortitude saving throw (dc = 10 + 1/2 the barbarianas level + her constitution modifier) or take 1d4 strength damage. this is a negative energy effect."
+   },
+   "shadow totem, greater (su)": {
+     "prerequisite": "barbarian 12, shadow totem rage power",
+     "benefit": "while raging, the barbarian gains the see in darkness ability, allowing her to see perfectly to any distance in darkness, including magical darkness. she is immune to blindness while raging. in addition, the strength damage she deals on critical hits from her lesser shadow totem increases to 1d6."
+   },
+   "death totem (ex)": {
+     "prerequisite": "barbarian or savage 6, lesser death totem rage power",
+     "benefit": "while raging, whenever the barbarian makes a fortitude saving throw, she can roll twice and choose the best result."
+   },
+   "death totem, lesser (ex)": {
+     "prerequisite": "barbarian or savage",
+     "benefit": "while raging, the barbarian gains dr 5/bludgeoning and a +2 resistance bonus against cold-based spells and effects."
+   },
+   "death totem, greater (ex)": {
+     "prerequisite": "barbarian or savage 12, lesser death totem and death totem rage powers",
+     "benefit": "while raging, the death energy that surrounds the barbarian becomes dangerous to any enemy adjacent to the savage. living enemies adjacent to the barbarian at the start of her turn take 1d8 points of damage from their flesh withering and crumbling to dust. in addition, any living enemy within 10 feet of the barbarian must make a fortitude saving throw (dc 10 + a12 the barbarianas level + the barbarianas constitution modifier) or become sickened for 1d6 rounds."
+   },
+   "raging skald (ex)": {
+     "prerequisite": "a barbarian must be at least 6th level before selecting this rage power.",
+     "benefit": "if you unleash a berserkers cry (with the berserkers cry feat) as you enter a rage or during a rage, the bonus granted increases to +2 and lasts an additional number of rounds equal to your constitution bonus (if any)."
+   },
+   "improved totemic alignment (su)": {
+     "prerequisite": "barbarian 6, must possess the totemic sage archetype.",
+     "benefit": "whenever you enter a rage while bound to a spirit that belongs to your associated constellation, you may select 1 constellation aspect and gain its benefits for the duration of the rage. you are treated as an occultist with a level equal to your barbarian level for the purpose of this constellation aspect."
+   },
+   "totemic mettle (su)": {
+     "prerequisite": "must possess the totemic sage archetype.",
+     "benefit": "whenever you enter a rage while bound to a spirit that belongs to your associated constellation, whenever you succeed on a fortitude save that would normally have a lesser effect on a successful save, you instead completely negate the effect. you are still harmed by the effects that do not allow a saving throw."
+   },
+   "rage powers  samurai sheepdog": {
+     "prerequisite": "roninas resolve, barbarian level 10th. while raging, a barbarian with this rage power adds the exhausted, frightened, nauseated, and staggered conditions those which she can remove with the roninas resolve rage power. when she removes the fatigued or exhausted conditions, the barbarian can use her swift action on the same turn to make a single attack at her highest attack bonus against one creature she can reach. as a swift action while raging, a barbarian with this rage power can issue a challenge to one target within sight. if the target is able to reach and attack the barbarian on its next turn without putting itself directly in harmas way, it must either do so or become demoralized as if the barbarian successfully intimidated it and beat the dc by 1d10 for every two roninas instinct rage powers the barbarian possesses."
    }
+ }
 }
