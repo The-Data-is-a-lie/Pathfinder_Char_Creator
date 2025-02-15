@@ -1,120 +1,635 @@
-{
-  "basic":{
-     "aligned sneak attack (su)":{
-        "benefit":"When making a sneak attack against a creature that has damage reduction that can be overcome by weapons of a particular alignment (such as DR 5/good), the rogue’s (or slayer’s) attack reduces that damage reduction by an amount equal to the number of sneak attack dice rolled until the end of the rogue’s turn."
-     },
-     "blood reader":{
-        "benefit":"While able to see a studied target, a slayer with this talent knows exactly how many hit points his opponent has remaining. This only works against living targets."
-     },
-     "catfolk slayer":{
-        "prerequisite":"Catfolk",
-        "benefit":"A catfolk slayer can select deadly scratch, graceful faller, nimble climber, or vicious claws in place of a slayer talent. Any talent effects based on rogue level use the slayer’s class level. The slayer must fulfill any prerequisites as normal. This talent can be selected multiple times; each time, it grants a new catfolk rogue talent."
-     },
-     "deadly range":{
-        "prerequisite":"slayer 4",
-        "benefit":"A slayer with this talent increases the range at which he can deal sneak attack damage by 10 feet. A slayer can select this talent more than once; its effects stack."
-     },
-     "eternal opposition":{
-        "prerequisite":"samsaran",
-        "benefit":"While most imperial dragons, undead, and other long-enduring foes can count on outlasting their mortal adversaries, the samsaran slayer has pledged to oppose their machinations across all his lifetimes. When his studied target is of the dragon, fey, outsider, or undead type, the slayer gains a +2 insight bonus to his AC against its attacks and on saving throws against its abilities."
-     },
-     "experience across ages":{
-        "prerequisite":"samsaran",
-        "benefit":"Once per day, a samsaran slayer can draw upon insights from his previous lifetimes to help identify a foe or recall a key piece of information. As a swift action, the slayer can attempt a Knowledge check as if he had a number of ranks in the appropriate Knowledge skill equal to his slayer level. A slayer can use this talent one additional time per day for every 5 slayer levels he has."
-     },
-     "focused poison":{
-        "prerequisite":"slayer 6, poison use",
-        "benefit":"When the slayer studies a target, he can immediately reduce the number of additional studied targets he can maintain. Reducing this number does not require an action. For each target reduced in this way, the DC of poisons used against his studied target increases by 1."
-     },
-     "foil scrutiny":{
-        "benefit":"A slayer with this talent is able to obscure his thoughts and intentions. He gains a +2 bonus on all Bluff and Disguise checks, as well as on Will saving throws to resist mind-reading spells and effects (such as detect thoughts and discern lies)."
-     },
-     "inured to terror":{
-        "prerequisite":"samsaran",
-        "benefit":"With their knowledge of the cyclical nature of existence, there are few experiences that can daunt samsaran slayers for long. As an immediate action when a slayer fails a saving throw against a fear effect, he can attempt the saving throw a second time to reduce the severity of the effect from panicked to frightened, frightened to shaken, or shaken to unaffected. Additionally, the DC of Intimidate checks to demoralize him increases by 2."
-     },
-     "jaguar’s grace":{
-        "prerequisite":"slayer 4",
-        "benefit":"A slayer with this talent does not take the normal –4 penalty when dealing nonlethal damage using a weapon that normally deals lethal damage. Attacks made this way can apply nonlethal sneak attack damage."
-     },
-     "jaguar’s pounce":{
-        "prerequisite":"jaguar’s grace",
-        "benefit":"When a slayer with this talent deals sneak attack damage, he can attempt a disarm or trip combat maneuver as an immediate action as if the target were flatfooted (losing its Dexterity bonus to CMD). This combat maneuver does not provoke attacks of opportunity."
-     },
-     "jaguar’s protection":{
-        "prerequisite":"jaguar’s grace, jaguar’s pounce",
-        "benefit":"When a slayer with this talent deals sneak attack damage, he draws the target’s attention away from his allies. The affected enemy takes a –2 penalty on attack rolls made against anyone other than the slayer for 1 minute."
-     },
-     "mountainside ambush":{
-        "prerequisite":"samsaran",
-        "benefit":"samsaran slayers often strike with deadly attacks from above. If a slayer deals sneak attack damage to a creature that is unaware of his presence while he is standing on higher ground than his target, he does not have to roll sneak attack damage; instead, the sneak attack deals maximum damage. The samsaran must be standing on solid ground to use this ability."
-     },
-     "mystic veil":{
-        "prerequisite":"samsaran, int 11",
-        "benefit":"samsaran slayers are adept at obscuring the passes of their mountain homes from intruders. The slayer can cast silent image as a spell-like ability once per day for every 2 slayer levels he has, using his slayer level as his caster level. The slayer uses his Intelligence modifier on concentration checks when using this ability, and the DC to disbelieve the illusion is equal to 11 + the slayer’s Intelligence modifier."
-     },
-     "ranger combat style":{
-        "benefit":"The slayer selects a ranger combat style (such as archery or two-weapon combat) and gains a combat feat from the first feat list of that style. He can choose feats from his selected combat style, even if he does not have the normal prerequisites. At th level, he may select this talent again and add the 6th-level ranger combat feats from his chosen style to the list. At 1th level, he may select this talent again and add the 10th-level ranger combat feats from his chosen style to the list."
-     },
-     "recall training":{
-        "prerequisite":"samsaran",
-        "benefit":"By calling on the memories of previous incarnations, a samsaran slayer can use martial techniques that transcend his usual capabilities. Once per day, the slayer can take a move action to gain the benefit of a combat feat he doesn’t have. This effect lasts for 1 minute per slayer level he has. The slayer must meet all the feat’s prerequisites."
-     },
-     "redirect poison":{
-        "benefit":"When a creature unsuccessfully attacks the slayer with a poisoned weapon or a natural weapon that would poison him, the slayer can attempt to redirect the attack to a creature within his reach (including, possibly, the creature that unsuccessfully attacked the slayer). As an immediate action, the slayer can make an attack roll against the creature to which he would redirect the poison. On a success, the poison is redirected to the target, and the target must attempt a saving throw against the poison as normal. This attack only redirects the poison and does not otherwise damage the targeted creature. This ability cannot affect a creature that attacked the slayer with a poisoned natural weapon, but it can affect a creature that attacked him with a poisoned manufactured weapon."
-     },
-     "rogue talent":{
-        "benefit":"A slayer can select one of the following rogue talents in place of a slayer talent. Any talent effects based on rogue level use the slayer’s class level. If the rogue talent has a prerequisite, the slayer must fulfill the prerequisite before taking that rogue talent. This talent can be selected multiple times; each time, it grants the slayer a new rogue talent."
-     },
-     "scrying familiarity":{
-        "benefit":"You are well acquainted with scrying sensors. You can roll twice and take the better result on saving throws against divination (scrying) spells and effects, on Perception checks to notice scrying sensors, and on caster level checks to overcome spell resistance when you use a scrying spell or effect. If you notice a magical sensor, you can attempt a Stealth check opposed by the caster’s caster level check to avoid being detected by the sensor."
-     },
-     "sever alignment* (su)":{
-        "prerequisite":"aligned sneak attack",
-        "benefit":"When making a sneak attack against an opponent with an alignment subtype, a rogue (or slayer) with this talent can forgo her sneak attack damage to scramble the creature’s metaphysical nature. If the attack succeeds, the rogue deals weapon damage as normal, and the target must succeed at a Fortitude save (DC = 10 + half the rogue’s level + the rogue’s (or slayer’s) Intelligence modifier) or lose all damage reduction overcome by aligned weapons (such as DR 10/good), lose all regeneration overcome by aligned sources (such as regeneration 10 [good]), and lose the ability to cast spells and use spell-like abilities with alignment descriptors for 1 round for every 2d6 points of sneak attack damage the rogue (or slayer) would have dealt (minimum 1 round)."
-     },
-     "slowing strike*":{
-        "benefit":"An opponent damaged by the slayer‘s sneak attack has its speed halved for 1d4 rounds. A successful Fortitude saving throw negates this effect (DC = 10 + 1/2 of the slayer’s level + the slayer’s Intelligence modifier). Against creatures with multiple types of movement, the slayer must choose which movement type to affect. If the slayer affects a creature’s flight movement, its maneuverability is reduced by one step; if it’s airborne at the time, it falls unless it succeeds at a DC 10 Fly check. If the slayer targets a creature already affected by this ability, its speed and maneuverability are not further reduced; the slayer may either extend the duration of that effect by 1d4 rounds or choose another movement type to affect (keeping track of the duration of each affected movement separately)."
-     },
-     "studied ally":{
-        "benefit":"The slayer can study an ally or friendly creature he can see as a move action. The slayer gains a +1 bonus on checks and attack rolls to use the aid another action to help with that ally’s skill checks, attacks, or AC. This bonus increases at the same rate as a slayer’s studied target bonus. At th level, a slayer can study an ally as a move or swift action. A slayer’s studied ally counts against the number of studied targets he can have active at once."
-     },
-     "toxin training":{
-        "prerequisite":"slayer 4, poison use"
-     },
-     "poison use":{
-        "benefit":"The slayer is trained in the use of poison, and cannot accidentally poison himself when applying poison to a weapon."
-     },
-     "trapfinding":{
-        "benefit":"The slayer gains Disable Device as a class skill. The slayer also gains the trapfinding and trap sense rogue abilities, using his slayer level as his effective rogue level."
-     }
-
+{ "basic": {
+  "blood reader": {
+    "benefit": "while able to see a studied target, a slayer with this talent knows exactly how many hit points his opponent has remaining. this only works against living targets."
     },
-    "advanced": {
-     "armored marauder":{
-        "benefit":"The slayer gains proficiency with heavy armor. In addition, the armor check penalty of any heavy armor the slayer wears is reduced by 1 for every 6 slayer levels he has."
-     },
-     "armored swiftness":{
-        "benefit":"A slayer with this talent can move at full speed in heavy armor. In addition, the maximum Dexterity bonus of heavy armor the slayer wears increases by 1 for every 6 class levels he has. A slayer must have the armored marauder slayer talent to select this talent."
-     },
-     "assassinate":{
-        "benefit":"A slayer with this advanced talent can kill foes that are unable to defend themselves. To attempt to assassinate a target, the slayer must first study his target for 1 round as a standard action. On the following round, if the slayer makes a sneak attack against the target and that target is denied its Dexterity bonus to AC, the sneak attack has the additional effect of possibly killing the target. This attempt automatically fails if the target recognizes the slayer as an enemy. If the sneak attack is successful, the target must attempt a Fortitude saving throw with a DC equal to 10 + 1/2 the slayer’s level + the slayer’s Intelligence modifier. If the target fails this save, it dies; otherwise, the target takes the sneak attack damage as normal and is then immune to that slayer’s assassinate ability for 24 hours."
-     },
-     "marksman’s shot":{
-        "benefit":"As an attack action, the slayer makes a single ranged attack at his highest attack bonus with a ranged weapon he wields. The target of the attack must be the slayer’s studied target. On a successful hit, the slayer doubles the number of sneak attack dice applied to the attack; if the attack was not a sneak attack, this benefit does not apply."
-     },
-     "reaping stalker":{
-        "benefit":"A slayer with this talent treats any sickle or scythe he wields as though it were one size larger for the purpose of determining its damage dice."
-     },
-     "slayer camouflage":{
-        "prerequisite":"terrain mastery",
-        "benefit":"A slayer can use the Stealth skill to hide in any of his favored terrains, even if the terrain doesn’t grant cover or concealment."
-     },
-     "swallow reversal":{
-        "benefit":"As an attack action, the slayer can make a single melee attack against his studied target at his highest base attack bonus. When attempting a swallow reversal, the slayer rolls two attack rolls and uses the highest result. If the attack is a critical threat, the slayer attempts to confirm the critical hit as normal. The slayer can use swallow reversal at will, but it can only be used against a given target once per day."
-     },
-     "woodland stride":{
-        "benefit":"A slayer with this talent may move through any sort of undergrowth (such as natural thorns, briars, overgrown areas, and similar terrain) at his normal speed and without taking damage or suffering any other impairment. Terrain that is enchanted"
-     }
+  "catfolk slayer": {
+    "prerequisite": "catfolk, varies",
+    "benefit": "a catfolk slayer can select deadly scratch, graceful faller, nimble climber, or vicious claws in place of a slayer talent. any talent effects based on rogue level use the slayers class level. the slayer must fulfill any prerequisites as normal. this talent can be selected multiple times; each time, it grants a new catfolk rogue talent."
+    },
+  "deadly range": {
+    "prerequisite": "slayer 4th level",
+    "benefit": "a slayer with this talent increases the range at which he can deal sneak attack damage by 10 feet. a slayer can select this talent more than once; its effects stack."
+  },
+  "eternal opposition (ex; samsaran)": {
+    "prerequisite": "samsaran",
+    "benefit": "while most imperial dragons, undead, and other long-enduring foes can count on outlasting their mortal adversaries, the samsaran slayer has pledged to oppose their machinations across all his lifetimes. when his studied target is of the dragon, fey, outsider, or undead type, the slayer gains a +2 insight bonus to his ac against its attacks and on saving throws against its abilities."
+    },
+  "experience across ages (ex; samsaran)": {
+    "prerequisite": "samsaran",
+    "benefit": "once per day, a samsaran slayer can draw upon insights from his previous lifetimes to help identify a foe or recall a key piece of information. as a swift action, the slayer can attempt a knowledge check as if he had a number of ranks in the appropriate knowledge skill equal to his slayer level. a slayer can use this talent one additional time per day for every 5 slayer levels he has."
+    },
+  "focused poison": {
+    "prerequisite": "slayer 6, poison use",
+    "benefit": "when the slayer studies a target, he can immediately reduce the number of additional studied targets he can maintain. reducing this number does not require an action. for each target reduced in this way, the dc of poisons used against his studied target increases by 1."
+    },
+  "poison use": {
+    "benefit": "the slayer is trained in the use of poison, and cannot accidentally poison himself when applying poison to a weapon."
+  },
+  "foil scrutiny": {
+    "benefit": "a slayer with this talent is able to obscure his thoughts and intentions. he gains a +2 bonus on all bluff and disguise checks, as well as on will saving throws to resist mind-reading spells and effects (such as detect thoughts and discern lies)."
+  },
+  "inured to terror (ex; samsaran)": {
+    "prerequisite": "samsaran",
+    "benefit": "with their knowledge of the cyclical nature of existence, there are few experiences that can daunt samsaran slayers for long. as an immediate action when a slayer fails a saving throw against a fear effect, he can attempt the saving throw a second time to reduce the severity of the effect from panicked to frightened, frightened to shaken, or shaken to unaffected. additionally, the dc of intimidate checks to demoralize him increases by 2."
+    },
+  "jaguars grace": {
+    "prerequisite": "slayer 4",
+    "benefit": "a slayer with this talent does not take the normal 4 penalty when dealing nonlethal damage using a weapon that normally deals lethal damage. attacks made this way can apply nonlethal sneak attack damage."
+    },
+  "jaguars pounce": {
+    "prerequisite": "jaguars grace",
+    "benefit": "when a slayer with this talent deals sneak attack damage, he can attempt a disarm or trip combat maneuver as an immediate action as if the target were flatfooted (losing its dexterity bonus to cmd). this combat maneuver does not provoke attacks of opportunity."
+    },
+  "jaguars protection": {
+    "prerequisite": "jaguars grace, jaguars pounce",
+    "benefit": "when a slayer with this talent deals sneak attack damage, he draws the targets attention away from his allies. the affected enemy takes a 2 penalty on attack rolls made against anyone other than the slayer for 1 minute."
+    },
+  "mountainside ambush (ex; samsaran)": {
+    "prerequisite": "samsaran",
+    "benefit": "samsaran slayers often strike with deadly attacks from above. if a slayer deals sneak attack damage to a creature that is unaware of his presence while he is standing on higher ground than his target, he does not have to roll sneak attack damage; instead, the sneak attack deals maximum damage. the samsaran must be standing on solid ground to use this ability."
+    },
+  "mystic veil (sp; samsaran)": {
+    "prerequisite": "samsaran, int 11",
+    "benefit": "samsaran slayers are adept at obscuring the passes of their mountain homes from intruders. the slayer can cast silent image as a spell-like ability once per day for every 2 slayer levels he has, using his slayer level as his caster level. the slayer uses his intelligence modifier on concentration checks when using this ability, and the dc to disbelieve the illusion is equal to 11 + the slayers intelligence modifier."
+    },
+  "ranger combat style": {
+    "benefit": "the slayer selects a ranger combat style (such as archery or two-weapon combat) and gains a combat feat from the first feat list of that style. he can choose feats from his selected combat style, even if he does not have the normal prerequisites. at 6th level, he may select this talent again and add the 6th-level ranger combat feats from his chosen style to the list. at 10th level, he may select this talent again and add the 10th-level ranger combat feats from his chosen style to the list."
+  },
+  "recall training (ex; samsaran)": {
+    "prerequisite": "samsaran",
+    "benefit": "by calling on the memories of previous incarnations, a samsaran slayer can use martial techniques that transcend his usual capabilities. once per day, the slayer can take a move action to gain the benefit of a combat feat he doesnt have. this effect lasts for 1 minute per slayer level he has. the slayer must meet all the feats prerequisites."
+    },
+  "redirect poison": {
+    "benefit": "when a creature unsuccessfully attacks the slayer with a poisoned weapon or a natural weapon that would poison him, the slayer can attempt to redirect the attack to a creature within his reach (including, possibly, the creature that unsuccessfully attacked the slayer). as an immediate action, the slayer can make an attack roll against the creature to which he would redirect the poison. on a success, the poison is redirected to the target, and the target must attempt a saving throw against the poison as normal. this attack only redirects the poison and does not otherwise damage the targeted creature. this ability cannot affect a creature that attacked the slayer with a poisoned natural weapon, but it can affect a creature that attacked him with a poisoned manufactured weapon."
+    },
+  "rogue": {
+    "benefit": "a slayer can select one of the following rogue talents in place of a slayer talent. any talent effects based on rogue level use the slayers class level. if the rogue talent has a prerequisite, the slayer must fulfill the prerequisite before taking that rogue talent. this talent can be selected multiple times; each time, it grants the slayer a new rogue talent. talents marked with an asterisk (*) add effects to a slayers sneak attack. only one of these talents can be applied to an individual attack, and the decision of which to use must be made before the attack roll is made. "
+  },
+  "slowing strike*": {
+    "benefit": "an opponent damaged by the slayers sneak attack has its speed halved for 1d4 rounds. a successful fortitude saving throw negates this effect (dc = 10 + 1/2 of the slayers level + the slayers intelligence modifier). against creatures with multiple types of movement, the slayer must choose which movement type to affect. if the slayer affects a creatures flight movement, its maneuverability is reduced by one step; if its airborne at the time, it falls unless it succeeds at a dc 10 fly check. if the slayer targets a creature already affected by this ability, its speed and maneuverability are not further reduced; the slayer may either extend the duration of that effect by 1d4 rounds or choose another movement type to affect (keeping track of the duration of each affected movement separately)."
+  },
+  "sticks and stones": {
+    "benefit": "the slayer gains catch off-guard as a bonus feat."
+    },
+  "studied ally": {
+    "benefit": "the slayer can study an ally or friendly creature he can see as a move action. the slayer gains a +1 bonus on checks and attack rolls to use the aid another action to help with that allys skill checks, attacks, or ac. this bonus increases at the same rate as a slayers studied target bonus. at 7th level, a slayer can study an ally as a move or swift action. a slayers studied ally counts against the number of studied targets he can have active at once."
+  },
+  "sunlight strike": {
+    "benefit": "the slayer can reflect sunlight (or other sources of bright light) into the eyes of an adjacent target as a swift action, causing it to gain the dazzled condition for 1 round."
+    },
+  "sure footing": {
+    "benefit": "the slayer gains a +5 bonus on acrobatics checks to move on narrow surfaces and loose or uneven ground."
+    },
+  "toxin training": {
+    "prerequisite": "slayer 4, poison use",
+    "benefit": "the slayer builds resistance to certain poisons over time. each time he chooses this talent, he chooses one ability score. he gains a +4 bonus on saving throws against poisons that deal damage to the chosen ability score. the slayer can choose this talent multiple times. each time he does, he chooses a new ability score and gains the bonus on saves against poisons that target that ability."
+    },
+  "trapfinding": {
+    "benefit": "the slayer gains disable device as a class skill. the slayer also gains the trapfinding and trap sense rogue abilities, using his slayer level as his effective rogue level."
+  },
+  "armored marauder": {
+    "benefit": "the slayer gains proficiency with heavy armor. in addition, the armor check penalty of any heavy armor the slayer wears is reduced by 1 for every 6 slayer levels he has."
+    },
+  "armored swiftness": {
+    "benefit": "a slayer with this talent can move at full speed in heavy armor. in addition, the maximum dexterity bonus of heavy armor the slayer wears increases by 1 for every 6 class levels he has. a slayer must have the armored marauder slayer talent to select this talent."
+    },
+  "acrobatic assist": {
+    "benefit": "you can expend an attack of opportunity to perform an aid another action to assist an adjacent allys acrobatics check, so long as he makes the check as part of movement that passes through your space or an adjacent space. additionally, whenever you use the aid another action to assist an ally in making an acrobatics check and you succeed, your ally gains a +1 dodge bonus to ac against attacks of opportunity caused when he moves out of or within a threatened area, until the end of his turn. special: investigators can select the acrobatic assist rogue talent using the rogue talent option for investigator talents."
+    },
+  "acrobatic stunt": {
+    "benefit": "once per day, when flanked by at least two opponents, a rogue with this talent can, as an immediate action when any of the threatening opponents attacks her, attempt an acrobatics check against the highest cmd of the threatening creatures plus 2 per threatening creature beyond the second. if successful, the rogue may take a 5-foot step in any direction, so long as she remains within the reach of the attacker triggering the movement. the rogues final position is used to determine whether the attacker benefits from flanking. on a failed check, the rogue falls prone in her original position and the attack resolves as normal (the opponent gains a +4 bonus for attacking a prone target). a rogue may use this ability one additional time per day for every 5 rogue levels she possesses."
+    },
+  "accurate poisoner": {
+    "benefit": "when the rogue successfully hits an opponent with a poisoned weapon and would deal sneak attack damage, she can forgo the sneak attack damage and increase the poisons potency. if she does, the poisons duration increases by 2 (for example, large scorpion venom lasts for 8 rounds instead of 6 rounds, and drow poison lasts for 4 minutes instead of 2 minutes)."
+    },
+  "ambuscading grapple": {
+    "benefit": "when you succeed at a combat maneuver check to grapple an unaware opponent, you can immediately deal sneak attack damage to the target. this counts as having hit with a sneak attack for the purpose of other abilities and talents."
+    },
+  "armor piercer": {
+    "benefit": "when you hit with an attack that deals sneak attack damage, you can forgo one or more sneak attack dice to reduce the targets natural armor bonus by that amount (minimum natural armor bonus of +0) until the end of your next turn. a creature cannot be affected by this ability again for 1 minute."
+    },
+  "assault leader": {
+    "benefit": "once per day, when the rogue misses with an attack on a flanked opponent, she can designate a single ally who is also flanking the target that her attack missed. that ally can make a single melee attack against the opponent as an immediate action."
+  },
+  "befuddling strike": {
+    "benefit": "when the rogue deals sneak attack damage against an opponent, that opponent takes a 2 penalty on attack rolls against the rogue for 1d4 rounds."
+    },
+  "black market connections": {
+    "benefit": "a rogue with this talent gains better access to magic items from black market connections. she treats every settlement as one size greater (see table: settlement statistics) for the purpose of determining the gp limit of the base value of items for sale, as well as the number of minor, medium, and major magic items for sale in the settlement. if the settlement is already a metropolis, all minor and medium magic items are for sale, as well as 3d8 major magic items. with a successful diplomacy check, the rogue can treat the settlement as two sizes larger. if the settlement is already a metropolis and she succeeds at the check, all magic items are for sale. if the settlement is already a large city and she succeeds at the check, all minor and medium magic items are for sale, as well as 3d8 major magic items. with a successful check, the rogue can also sell stolen items on the black market. if the check fails by 5 or more, the rogue does something to spook the market, and treats the city as normal for 1 week. furthermore, those in control of the black market may alert the authorities to the rogues presence in an act of reprisal for spooking the market or to divert attention away from their illicit activities. the dcs of the checks are by settlement size and are given in the table."
+    },
+  "bleeding attack": {
+    "benefit": "a rogue with this ability can cause living opponents to bleed by hitting them with a sneak attack. this attack causes the target to take 1 additional point of damage each round for each die of the rogues sneak attack (e.g., 4d6 equals 4 points of bleed). bleeding creatures take that amount of damage every round at the start of each of their turns. the bleeding can be stopped by a dc 15 heal check or the application of any effect that heals hit point damage. special: bleeding damage from this ability does not stack with itself. bleeding damage bypasses any damage reduction the creature might possess."
+    },
+  "bomber": {
+    "benefit": "a rogue with this talent can make a number of bombs per day equal to her intelligence modifier (minimum 1). these bombs act as alchemists bombs, except they deal damage equal to the damage dealt by the rogues sneak attack (the rogue doesnt add her intelligence modifier to this damage)."
+    },
+  "bombers discovery": {
+    "prerequisite": "bomber",
+    "benefit": "a rogue with this talent gains an alchemists discovery that modifies a bomb."
+    },
+  "camouflage": {
+    "benefit": "once per day, a rogue with this talent can craft simple but effective camouflage from the surrounding foliage. the rogue needs 1 minute to prepare the camouflage, but once she does, it is good for the rest of the day or until the rogue fails a saving throw against an area effect spell that deals fire, cold, or acid damage, whichever comes first. the rogue gains a +4 bonus on stealth checks while within terrain that matches the foliage used to make the camouflage. this ability cannot be used in areas without natural foliage."
+    },
+  "canny observer": {
+    "benefit": "when a rogue with this talent makes a perception check to hear the details of a conversation or to find concealed or secret objects (including doors and traps), she gains a +4 bonus."
+  },
+  "card sharp": {
+    "benefit": "the rogue gains deadly dealer as a bonus feat, even if she does not meet the prerequisites. thrown cards are treated as darts, but the rogue cannot imbue cards with additional power unless she has the arcane strike feat. this talent otherwise functions as the deadly dealer feat."
+    },
+  "charmer": {
+    "benefit": "once per day, the rogue can roll two dice while making a diplomacy check, and take the better result. she must choose to use this talent before making the diplomacy check. a rogue can use this ability one additional time per day for every 5 rogue levels she possesses."
+    },
+  "climbing stunt": {
+    "benefit": "a rogue with this talent can take a 10 penalty on a climb check to move at full speed while climbing."
+    },
+  "cloying shades": {
+    "prerequisite": "able to cast dimension door as a spell or spell-like ability (including the abundant step or shadow jump class feature)",
+    "benefit": "when a rogue with this talent uses dimension door as a spell or spell-like ability, including the abundant step or shadow jump class feature, then all creatures adjacent to the rogue at the start and end of her teleportation are entangled by grasping shadows for 1 round (although the creatures are not anchored in place). a successful reflex saving throw negates this effect. the dc of this saving throw is equal to 10 + 1/2 the rogues level + the rogues intelligence or charisma modifier (whichever is higher)."
+    },
+  "coax information": {
+    "benefit": "a rogue with this talent can use bluff or diplomacy in place of intimidate to force an opponent to act friendly toward her."
+  },
+  "combat swipe": {
+    "benefit": "a rogue who selects this talent gains improved steal as a bonus feat."
+  },
+  "combat trick": {
+    "benefit": "a rogue that selects this talent gains a bonus combat feat (see feats)."
+    },
+  "convincing lie": {
+    "benefit": "when a rogue with this talent lies, she creates fabrications so convincing that others treat them as truth. when a rogue with this talent successfully uses the bluff skill to convince someone that what she is saying is true, if that individual is questioned later about the statement or story, that person uses the rogues bluff skill modifier to convince the questioner, rather than his own. if his bluff skill modifier is better than the rogues, the individual can use his own modifier and gain a +2 bonus on any check to convince others of the lie. this effect lasts for a number of days equal to 1/2 the rogues level + the rogues charisma modifier."
+    },
+  "cunning trigger": {
+    "benefit": "a rogue with this talent can use a swift action to set off any trap within 30 feet that she constructed."
+    },
+  "dampen presence": {
+    "benefit": "a rogue who selects this talent gains dampen presence as a bonus feat. the rogue does not need to meet the feats prerequisites. the rogue is also considered to have the skill focus (stealth) feat for the purpose of satisfying the prerequisites of any feat that lists dampen presence as a prerequisite."
+    },
+  "deft palm": {
+    "benefit": "a rogue with this talent can make a sleight of hand check to conceal a weapon while holding it in plain sight, even while she is being observed."
+  },
+  "demand attention": {
+    "benefit": "the first time each round that you deal sneak attack damage to an opponent, you can forgo sneak attack damage to distract the creature. the target must succeed at a will save (dc = 10 + the number of sneak attack dice sacrificed + your charisma modifier) or become distracted until the start of your next turn. distracted opponents are entirely focused on you, and pay little attention to their surroundings; they are not considered to be observing other characters within 30 feet, allowing them to attempt stealth checks to hide. a distracted opponent automatically fails perception checks against creatures more than 30 feet away. special: investigators and slayers can select the demand attention rogue talent using their respective rogue talent options."
+    },
+  "demon lantern": {
+    "prerequisite": "int 11, minor magic",
+    "benefit": "once per day when she casts dancing lights, the rogue can conjure a single demons lantern instead of the usual four lights. a demon lantern acts in all ways as a hypnotic pattern spell cast by a wizard, except it also casts light as a torch and it fascinates only a single target whose hit dice do not exceed the rogues class level. the save dc of this effect is equal to 11 + the rogues intelligence modifier."
+    },
+  "minor magic": {
+    "prerequisite": "int 10",
+    "benefit": "a rogue with this talent gains the ability to cast a 0-level spell from the sorcerer/wizard spell list. this spell can be cast three times a day as a spell-like ability. the caster level for this ability is equal to the rogues level. the save dc for this spell is 10 + the rogues intelligence modifier."
+    },
+  "developed poison immunity": {
+    "benefit": "when this talent is taken, select a single animal or plant poison that the rogue has been poisoned with but survived. the rogue automatically succeeds at all fortitude saves against exposure to the selected poison."
+    },
+  "disabling stunt": {
+    "benefit": "a rogue with this talent can attempt a disable device check against a constructs cmd as a standard action that does not provoke attacks of opportunity. if the check is successful, the rogue can ignore the constructs damage reduction when dealing sneak attack damage for 1 minute. the normal penalties apply to this check if the rogue attempts it without using thieves tools."
+    },
+  "disease use": {
+    "benefit": "a rogue with this talent can apply filth from garbage, a sewer, a city street, a polluted area, or long-unwashed clothing or fur to a weapon as a standard action. doing so causes the weapon to inflict filth fever on its next strike. the rogue does not risk exposure to this disease unless she is damaged by the weapon. after a successful attack with the weapon, the filth is dispersed and must be reapplied."
+    },
+  "distracting attack": {
+    "benefit": "a rogue with this talent can make sneak attacks with subtle flourishes that disorient and distract her enemy. when she hits a creature with a melee attack that deals sneak attack damage, she can forgo the additional damage to cause the creature to become flat-footed against one target of her choosing until the beginning of her next turn. the rogue cannot designate herself as the creature gaining the benefit of this talent. creatures with uncanny dodge are immune to distracting attack."
+    },
+  "eerie disappearance": {
+    "prerequisite": "rogue 6",
+    "benefit": "as a full-round action, the rogue can move up to her speed. if she successfully reaches a location that offers her cover or concealment, any creature observing her must attempt a perception check opposed by the rogues stealth check. on a failed check, the observer loses track of the rogue and fails to note where she moved to. the rogue does not take a penalty on this stealth check for moving up to her speed. at the end of her movement, the rogue can attempt an intimidate check to demoralize all foes within 60 feet who were aware of her at any point during her movement and are unaware of her current location. she rolls the intimidate check only once and compares her result to the dc for each opponent."
+    },
+  "eldritch conduit": {
+    "benefit": "as a full-round action, a rogue with this talent can use two potions, two wands, or two scrolls. each item is expended or loses a charge as if used normally. the rogue chooses to gain the magical effect of one, but calculates its effects using the caster level of the other. the rogue must still succeed at a use magic device check to operate scrolls or wands unless some other ability allows him to do so, but makes only one skill check to operate both items."
+    },
+  "escaping stunt": {
+    "benefit": "a rogue with this talent can, as an immediate action, attempt an escape artist check in place of a reflex saving throw against any effect that would impose the entangled condition on her. additionally, once per day when she is the target of a grapple combat maneuver, a rogue with this talent can attempt an escape artist check as an immediate action, using the result of the skill check in place of her cmd against that combat maneuver attempt. a rogue can use this second ability one additional time per day for every 5 rogue levels she possesses."
+    },
+  "esoteric scholar": {
+  },
+  "expert leaper": {
+    "benefit": "when making jump checks, the rogue is always considered to have a running start. also, when the rogue deliberately falls, a dc 15 acrobatics check allows her to ignore the first 20 feet fallen, instead of the first 10 feet."
+    },
+  "extra earthcraft": {
+    "prerequisite": "earthcraft",
+    "benefit": "the rogue gains 2 additional earthcraft points each day."
+    },
+  "face in the crowd": {
+    "benefit": "a rogue with this talent can blend into groups easily. opposed perception and sense motive checks take a 2 penalty when made against the rogues bluff, disguise, sleight of hand, or stealth checks if shes within 30 feet of at least two non-hostile characters of her apparent creature type. this penalty increases to 4 if shes within 30 feet of at least eight such creatures or is currently in a square occupied by a crowd."
+    },
+  "false attacker": {
+    "benefit": "whenever the rogue strikes a foe from hiding, she can attempt a bluff check as an immediate action (opposed by the targets sense motive or perception check, whichever has a higher bonus) before rolling damage to convince the foe that another creature was the attacker. this bluff check applies the normal modifiers for convincing a creature of a falsehood, but can be accomplished with just physical trickery (a shared language is not required). if the bluff is successful, and the rogue maintains concealment or cover, the rogues stealth does not end."
+    },
+  "fast fingers": {
+    "benefit": "once per day, a rogue with this talent can roll two dice while making a sleight of hand check and take the better result. she must choose to use this talent before making the sleight of hand check. special: a rogue can use this ability one additional time per day for every 5 rogue levels she possesses."
+    },
+  "fast getaway": {
+    "benefit": "after successfully making a sneak attack or sleight of hand check, a rogue with this talent can spend a move action to take the withdraw action. she can move no more than her speed during this movement."
+    },
+  "fast picks": {
+    "benefit": "a rogue with this talent can use the disable device skill to attempt to open a lock as a standard action instead of a full-round action. normal: picking a lock takes a full-round action."
+    },
+  "fast stealth": {
+    "benefit": "this ability allows a rogue to move at full speed using the stealth skill without penalty."
+    },
+  "favored terrain": {
+    "benefit": "the rogue selects one terrain from the rangers favored terrain list; she gains this as a favored terrain, as the ranger class feature. if the rogue also has or later takes the hide in plain sight advanced talent, her favored terrain must match a terrain she has selected for that advanced talent. if the rogue has ranger levels, her effective ranger level is equal to her ranger level + 5 for purposes of improving the bonuses from this favored terrain and gaining new favored terrains. a rogue must be at least 5th level to select this talent."
+    },
+  "finesse rogue": {
+    "benefit": "a rogue that selects this talent gains weapon finesse as a bonus feat."
+    },
+  "firearm training": {
+    "benefit": "a rogue with this talent gains exotic weapon proficiency (firearms)."
+    },
+  "flying stunt": {
+    "benefit": "a rogue with this talent can attempt a fly check against a targets cmd as a swift action when charging from above that target. success allows the rogue to add an amount damage equal to her dexterity modifier to the attacks damage. this additional damage is precision damage and is not multiplied on a critical hit. a creature immune to sneak attacks is immune to this additional damage."
+    },
+  "follow clues": {
+    "benefit": "a rogue with this talent can use perception to follow tracks as per the survival skill."
+    },
+  "getaway artist": {
+    "benefit": "a rogue with this talent adds fly, handle animal, and ride to her list of class skills, and gains a +2 bonus on all driving checks."
+    },
+  "got your back": {
+    "benefit": "once per round as an immediate action, you may expend an attack of opportunity to attempt an aid another check to improve an allys attack. you and your ally must both be flanking the same opponent. this counts as an attack of opportunity. special: investigators can select the got your back rogue talent using the rogue talent option for investigator talents."
+    },
+  "green tongue": {
+    "benefit": "the rogue gains aklo, aquan, auran, giant, ignan, sylvan, or terran as a bonus language. in addition, the rogue can attempt a dc 15 linguistics check to communicate basic concepts with magical beasts and monstrous humanoids with which she does not share a common language."
+    },
+  "grig jig": {
+    "prerequisite": "int 12",
+    "benefit": "once per day the rogue can target one humanoid within 30 feet and attempt a perform (dance) check as a full-round action that does not provoke an attack of opportunity. her target must succeed at a will save (dc equal to the rogues perform [dance] check) or it begins to dance uncontrollably. so long as the rogue continues to spend a full-round action dancing each round, the affected target does so as well. if the target is attacked or otherwise in immediate danger while dancing, the effect ends. each round on its turn, the target can attempt an acrobatics or perform (dance) check or a will save (targets choice) against the rogues perform (dance) check to end the effect. a target who resists the jig can not be affected by the same rogues jig for 24 hours. the grig jig is a mind-affecting effect. a rogue can use this ability once per day, plus one additional time per day for every 5 rogue levels she possesses."
+    },
+  "grit": {
+    "prerequisite": "firearm training",
+    "benefit": "a rogue with this talent gains the amateur gunslinger feat and one grit feat of her choice. she must fulfill the prerequisites of the grit feat in order to choose it."
+    },
+  "guileful polyglot": {
+    "benefit": "a rogue with this talent who has at least one rank in linguistics gains four additional languages. a rogue with this talent who does not have any ranks in linguistics gains two additional languages. if the rogue later gains ranks in linguistics, she gains two additional languages, to a total of four additional languages above those granted by the linguistics skill itself."
+    },
+  "hard to fool": {
+    "benefit": "once per day, a rogue with this talent can roll two dice while making a sense motive check, and take the better result. she must choose to use this talent before making the sense motive check. special:  a rogue can use this ability one additional time per day for every 5 rogue levels she possesses."
+  },
+  "heads up": {
+    "benefit": "when you make a perception check, as an immediate or swift action you can allow one adjacent ally to act as if they had also made a perception check with the same result."
+    },
+  "hold breath": {
+    "benefit": "a rogue with this talent increases the number of rounds she can hold her breath by 2. special: a rogue can take this talent multiple times. "
+    },
+  "honeyed words": {
+    "benefit": "once per day, the rogue can roll two dice while making a bluff check, and take the better result. she must choose to use this talent before making the bluff check. special: a rogue can use this ability one additional time per day for every five rogue levels she possesses."
+    },
+  "innocent facade": {
+    "prerequisite": "minor magic",
+    "benefit": "once per day, a rogue with this talent can use innocence as a spell-like ability, using her rogue level as the spells caster level. an investigator can select the innocent facade rogue talent in place of an investigator talent. she must have the underworld inspiration investigator talent before selecting this talent, instead of minor magic."
+    },
+  "iron guts": {
+    "benefit": "a rogue with this talent has a cast-iron stomach or has trained herself to withstand poisons, especially ingested ones. she gains a +1 bonus on all saves against ingested poisons as well as a +4 bonus on saves against all spells and effects that cause the rogue to be nauseated or sickened."
+    },
+  "just a face in the crowd": {
+    "benefit": "the rogue gains a bonus equal to half his class level on disguise and perception checks when 10 or more creatures of his size are within 30 feet of him."
+    },
+  "ki pool": {
+    "benefit": "a rogue with this talent gains a small ki pool. this ki pool is similar to a ninjas ki pool, but the rogues ki pool does not grant any extra attacks. the rogue gains a number of ki points equal to her wisdom modifier (minimum 1). these ki points replenish at the start of each day. if she already has a ki pool, or gains a ki pool later, she gains half her wisdom bonus (minimum 1) as bonus ki points to her ki pool. she can spend a ki point to gain a +10-foot bonus to movement until the end of her turn."
+    },
+  "last ditch effort": {
+    "benefit": "once per day, a rogue with this ability who accidentally activates a trap while attempting to disarm it may immediately attempt another disable device check to disarm it, albeit at a 5 penalty. the result of the second check is taken even if the result is lower."
+    },
+  "lasting poison": {
+    "benefit": "a rogue with this talent can apply poison to a weapon in such a way that it is effective for two successful attacks instead of one. the poison has a reduced effect, however, and saves made against the poison receive a +2 circumstance bonus. special:  applying poison in this way requires a full-round action, or a standard action if the rogue has the swift poison talent. "
+  },
+  "ledge walker": {
+    "benefit": "this ability allows a rogue to move along narrow surfaces at full speed using the acrobatics skill without penalty. in addition, a rogue with this talent is not flat-footed when using acrobatics to move along narrow surfaces."
+    },
+  "lingering poison": {
+    "benefit": "when she delivers a contact or injury poison, instead of the poisons normal onset time, the rogue can delay the poisons effects until up to 1 day from when it is delivered (minimum 1 round). the delayed poison can be detected as normal by spells such as detect poison and similar abilities."
+    },
+  "major magic": {
+    "prerequisite": "int 11, minor magic",
+    "benefit": "a rogue with this talent gains the ability to cast a 1st-level spell from the sorcerer/wizard spell list two times a day as a spell-like ability. the caster level for this ability is equal to the rogues level. the save dc for this spell is 11 + the rogues intelligence modifier."
+    },
+  "nimble climber": {
+    "benefit": "when a rogue with this talent fails a climb check by 5 or more, she can immediately make another climb check at the surfaces base dc +10. if successful, she stops her fall by clinging onto the surface. the rogue does not take falling damage when she stops her fall in this manner."
+    },
+  "ninja trick": {
+    "benefit": "a rogue with this talent can choose a trick from the ninja trick list. the rogue can choose but cannot use talents that require ki points, unless she has a ki pool. special:  a rogue can pick this talent more than once. note: a rogue cannot choose a ninja trick with the same name as a rogue talent."
+    },
+  "occult dungeoneer": {
+    "benefit": "a rogue with this ability can use spell-trigger and spell-completion items as if the following spells were on a spell list to which he has accesdetect secret doors, detect traps, knock, locate object, and obscure object. if the spell-trigger device allows a wielder to apply his own caster level (such as with a staff ), the rogue may use his class level as his caster level. the rogue may also use knock as a supernatural ability once per day, using his rogue level as his caster level."
+    },
+  "offensive defense": {
+    "benefit": "when a rogue with this talent hits a creature with a melee attack that deals sneak attack damage, the rogue gains a +1 dodge bonus to ac for each sneak attack die rolled for one round. the dodge bonus only applies against the creature you sneak attacked, and the dodge bonus does not stack with itself."
+    },
+  "papercraft tools": {
+    "benefit": "so long has the rogue has access to a deck of cards, she can destroy one card to attempt a single disable device check as if she had a set of thieves tools. if she uses a harrow card for this purpose, she can treat the card as a set of masterwork thieves tools (granting her a +2 circumstance bonus on the disable device check), though the card is still destroyed after use."
+    },
+  "peerless maneuver": {
+    "benefit": "once per day, a rogue with this talent can roll two dice while making an acrobatics check, and take the better result. she must choose to use this talent before making the acrobatics check. special: a rogue can use this ability one additional time per day for every 5 rogue levels she possesses."
+    },
+  "philologist": {
+    "benefit": "a rogue with this talent can reroll any linguistics skill check made to decipher writing in an unfamiliar language, and never risks drawing a false conclusion from a failed wisdom check after a failed linguistics check. a rogue with this talent is allowed only one reroll per inscription, message, or text encountered."
+    },
+  "pierce the darkness": {
+    "benefit": "the rogue can extend her senses of hearing and smell in darkness or when blinded. she gains blindsense out to a range of 5 feet, but only against creatures concealed by darkness or her own blindness. she still suffers the normal miss chance for attacking creatures with concealment."
+    },
+  "positioning attack": {
+    "benefit": "once per day, when a rogue with this talent hits a creature with a melee attack, she can move up to 30 feet without provoking attacks of opportunity. the movement must end in a space adjacent to the creature hit with the melee attack."
+    },
+  "powerful sneak": {
+    "benefit": "whenever a rogue with this talent takes a full attack action, she can elect to take a 2 penalty on all attack rolls until the start of her next turn. if an attack during this time is a sneak attack, she treats all 1s on the sneak attack damage dice as 2s."
+    },
+  "quick disable": {
+    "benefit": "it takes a rogue with this ability half the normal amount of time to disable a trap using the disable device skill (minimum 1 round)."
+    },
+  "quick disguise": {
+    "benefit": "a rogue with this talent can use the items at hand and seemingly innocuous material hidden on her person to create startlingly effective disguises, reducing the amount of time it takes to create a disguise using the disguise skill. the time needed for the rogue to alter her appearance in this manner is based on the complexity of the disguise, as noted on the following table. the times are cumulative, so if a female rogue wants to disguise herself as a male of a different race, that takes 2 minutes."
+  },
+  "quick scrounge": {
+    "benefit": "the rogue can search a creature, object, or area in half as much time as normal. if her perception check would normally require a full-round action or less, it becomes one step shorter along the following progression: full-round action, standard action, move action, swift action, immediate action. this talent has no effect on perception checks that are attempted as free actions or perception checks that dont require an action."
+    },
+  "quick trapsmith": {
+    "benefit": "as a full-round action, a rogue with this talent can set a simple trap with a cr no greater than 1/2 her rogue level. to do this, she must purchase the components, spend the required time constructing the trap in advance, and have its components at hand. special: the type of trap that can be constructed in this way is subject to gm discretion."
+    },
+  "rapid boost": {
+    "benefit": "once per day, the rogue can roll two dice while attempting a sleight of hand check and take the better result. she must choose to use this talent before attempting the sleight of hand check. a rogue can use this ability one additional time per day for every 5 rogue levels she has."
+    },
+  "rapid perception": {
+    "benefit": "a rogue with this talent can attempt a perception check to intentionally search for a specific item or creature as a swift action instead of a move action. if she is intentionally searching for an invisible creature, the creatures bonus on its stealth check from its invisibility is halved. an investigator can select this rogue talent in place of an investigator talent. she must have the expanded inspiration investigator talent before selecting this talent."
+    },
+  "resiliency": {
+    "benefit": "once per day, a rogue with this ability can gain a number of temporary hit points equal to the rogues level. activating this ability is an immediate action that can only be performed when she is brought to below 0 hit points. this ability can be used to prevent her from dying. these temporary hit points last for 1 minute. if the rogues hit points drop below 0 due to the loss of these temporary hit points, she falls unconscious and is dying as normal."
+    },
+  "riding stunt": {
+    "benefit": "a rogue with this talent takes only a 2 penalty on ride checks when riding a mount bareback instead of the normal 5 penalty. when using the ride skill to make a mount leap, a rogue with this talent can use her ride modifier or her mounts jump modifier, whichever is higher, instead of using the lower of the two. a rogue with this talent gains a +5 competence bonus when using the ride skill to soften a fall from her mount or to perform a fast mount or dismount. finally, a rogue with this talent can attempt a dc 15 ride check to recover from a position of cover as a free action instead of as a move action. failing this check results in the recovery requiring a move action as normal."
+    },
+  "rogue crawl": {
+    "benefit": "while prone, a rogue with this ability can move at half speed. this movement provokes attacks of opportunity as normal. a rogue with this talent can take a 5-foot step while crawling."
+    },
+  "rope master": {
+    "benefit": "a rogue with this ability can move at her normal speed when using rope on a climb check, can take 10 when using acrobatics to move over narrow surfaces even when in danger or distracted, and gains a +4 bonus when determining the dc to escape bonds when she ties up a creature."
+    },
+  "sacred sneak attack": {
+    "prerequisite": "good alignment",
+    "benefit": "when making a sneak attack against an undead creature or evil outsider, the rogues sneak attack damage is considered good-aligned for the purpose of overcoming damage reduction. normal weapon damage is unaffected for this attack."
+    },
+  "sacrifice self": {
+    "prerequisite": "evasion, improved evasion",
+    "benefit": "a rogue who makes a successful reflex save against an area effect can ignore the benefits of her evasion ability to shield an adjacent ally against the effect, essentially halving the damage that ally would normally take. a rogue with improved evasion can attempt a secondary save against her allys damage. if the save is successful, neither she nor her ally takes any damage. a rogue must have evasion in order to select this talent, and she must have improved evasion to benefit from the secondary effect."
+    },
+  "scavenger": {
+    "benefit": "a rogue with this talent can pick up and stow an object as a swift action instead of two separate move actions. she gains a +2 bonus on sleight of hand checks to pick the pockets of creatures that are stunned or disabled."
+    },
+  "scrying familiarity": {
+    "benefit": "you are well acquainted with scrying sensors. you can roll twice and take the better result on saving throws against divination (scrying) spells and effects, on perception checks to notice scrying sensors, and on caster level checks to overcome spell resistance when you use a scrying spell or effect. if you notice a magical sensor, you can attempt a stealth check opposed by the casters caster level check to avoid being detected by the sensor."
+    },
+  "scry slip": {
+    "benefit": "whenever a rogue with this talent is targeted by a scrying effect that allows a will save, the caster of the divination must succeed at a caster level check (dc = 15 + the rogues class level). this talent wards the rogue and any objects she is holding or carrying. an investigator can select this talent in place of an investigator talent."
+    },
+  "set-up": {
+    "benefit": "when you successfully hit a target with a sneak attack in melee, you can choose to forgo your additional sneak attack damage to make the target more vulnerable to one of your allies adjacent to it. the first melee attack that ally makes against the target before the beginning of your next turn treats the target as flanked, even if your ally is not flanking the target. this has no effect on creatures you could not flank with that ally, even if the ally was properly positioned."
+    },
+  "shove aside": {
+    "prerequisite": "evasion",
+    "benefit": "when you and an adjacent ally are both in the area of an attack that requires a saving throw, you can take a 4 penalty on your saving throw to grant your ally a +4 bonus on his saving throw. you lose the evasion ability against this attack. if you have improved evasion, it is reduced to evasion for this attack instead."
+    },
+  "signature poison": {
+    "benefit": "a rogue with this talent chooses one poison (such as bloodroot or oil of taggit) as her signature poison. when she uses the chosen poison, the poisons saving throw dc increases by +2. a rogue can take this talent multiple times, each time applying it to a new poison."
+    },
+  "sleight of hand stunt": {
+    "benefit": "in place of an attack of opportunity, a rogue with this talent can attempt a sleight of hand check against the cmd of an opponent that provokes an attack of opportunity by firing a projectile weapon while threatened. if successful, the rogue plucks the ammunition from the provoking weapon, negating the attack. the rogue may use this ability as many times in a round as she could make attacks of opportunity. at the gms discretion, certain projectile weapons may not be susceptible to this ability, such as siege engines or firearms."
+    },
+  "slow reactions": {
+    "benefit": "opponents damaged by the rogues sneak attack cant make attacks of opportunity for 1 round."
+    },
+  "snap shot": {
+    "benefit": "a rogue with this talent may treat her initiative roll as a 20 for a surprise round, regardless of her initiative, but she may only take an attack action with a ranged weapon. her normal initiative roll is used in subsequent rounds. if two or more rogues possess this talent, their initiative determines the order in which they act, but they all go before any other creature. if a rogue is prevented from acting in the surprise round, this talent has no effect."
+    },
+  "sneaky maneuver": {
+    "benefit": "anytime a rogue with this talent could hit an opponent with a melee sneak attack on her turn, she may take a 2 penalty on her attack roll and attempt a dirty trick, disarm, steal, sunder, or trip combat maneuver instead of dealing sneak attack damage. if the attack succeeds, the rogue deals weapon damage as normal and then attempts a combat maneuver check as a swift action (the 2 penalty only applies to the initial attack roll, not the combat maneuver check). this combat maneuver still provokes attacks of opportunity unless the rogue has a feat or ability that allows her to perform it without provoking attacks of opportunity."
+    },
+  "sniper20s eye": {
+    "benefit": "a rogue with this talent can apply her sneak attack damage on ranged attacks targeting foes within 30 feet that benefit from concealment. foes with total concealment are still immune."
+    },
+  "spell storing": {
+    "benefit": "the rogue can store within himself a single targeted harmless spell of up to 2nd level. the spell must have a casting time of 1 standard action. anytime a spell that meets these conditions is cast on the rogue, and he does not already have a spell stored, he can choose to store it rather than have it take effect immediately. anytime afterward, as a standard action, the rogue can have the spell take effect (acting in all ways as if it had just been cast on him)."
+    },
+  "stand up": {
+    "benefit": "a rogue with this ability can stand up from a prone position as a free action. this still provokes attacks of opportunity for standing up while threatened by a foe."
+    },
+  "stealth stunt": {
+    "benefit": "when benefiting from concealment, a rogue with this talent can forgo an attack of opportunity to attempt a stealth check against the provoking opponents cmd. success allows the rogue to treat her opponent as flat-footed against the rogues first melee attack before the end of her next turn. using this ability does not count against the rogues available attacks of opportunity for the round."
+    },
+  "stem the flow": {
+    "benefit": "when making a successful sneak attack against a creature with the ability to channel energy, the rogue may forgo 3d6 points of sneak attack damage to instead prevent the target from channeling energy for a number of rounds equal to half her rogue level."
+    },
+  "strong impression": {
+    "benefit": "a rogue who selects this talent gains intimidating prowess as a bonus feat."
+    },
+  "strong stroke": {
+    "benefit": "a rogue with this talent rolls twice when making swim checks and takes the better result. if she already rolls twice while making a swim check because of another ability or effect, she gains a +2 insight bonus on both of those rolls instead. if the rogue is under the effect of a spell or ability that forces her to roll two dice and take the worse result, she only needs to roll 1d20 while making swim checks."
+    },
+  "superior sniper": {
+    "benefit": "a rogue who selects this talent gains expert sniper as a bonus feat. if she already has this feat, she can instead select any feat that lists expert sniper as a prerequisite, as long as she meets the feats prerequisites."
+    },
+  "suppress poison": {
+    "benefit": "as an immediate action when she fails a saving throw against a poison, the rogue can attempt the saving throw a second time. if she succeeds at this second saving throw, the poison does not affect her for a number of rounds equal to her constitution modifier (minimum 1 round), but this time it counts against the poisons duration. this talent has no effect on poisons with an onset longer than immediate."
+    },
+  "surprise attack": {
+    "benefit": "during the surprise round, opponents are always considered flat-footed to a rogue with this ability, even if they have already acted."
+    },
+  "survivalist": {
+    "benefit": "a rogue with this talent adds heal and survival to her list of class skills."
+    },
+  "swift poison": {
+    "benefit": "a rogue with this talent can apply poison to a weapon as a move action, instead of a standard action."
+    },
+  "swift tracker": {
+    "benefit": "while following tracks, the rogue can move at her normal speed without penalty while using the survival skill. in addition, the penalty for moving at up to twice her normal speed while following tracks is reduced to 10. get this book and support this site!"
+    },
+  "swimming stunt": {
+    "benefit": "once per round, when making an attack against an opponent underwater that qualifies for sneak attack damage, a rogue with this talent can attempt a swim check as a free action against her opponents cmd. if the attack and swim check are both successful, and the attack deals sneak attack damage, the rogue can choose to forgo one or more of her sneak attack dice to reduce the number of total rounds her opponent can hold its breath by 1 round per die."
+    },
+  "terrain mastery": {
+    "benefit": "a rogue with this talent gains a favored terrain as the ranger ability of the same name, though the favored terrain ability does not increase with her level as the rangers ability does. special: a rogue can take this ability multiple times, each time applying it to a new terrain. "
+    },
+  "the whole time": {
+    "benefit": "a rogue with this ability is practiced at attacking from magical concealment. he can use spell-trigger and spell-completion items as if the following spells were on a spell list to which he has accesgreater invisibility, invisibility, and vanish. additionally, if the rogue becomes visible as a result of a weapon or spell attack, he can sheathe his weapon as a free action and instantly adopt a neutral posture. with a successful bluff or disguise check (opposed by witnesses sense motive or perception checks, whichever is higher), there is no obvious sign that the rogue is the source of the attack (though a lack of any other reasonable candidate can still lead observers to draw the correct conclusion)."
+    },
+  "toxic regurgitation": {
+    "benefit": "a rogue with this talent can drink a noninhaled poison as a standard action and suspend it within her body. she is not affected by the poison while it is suspended within her, and she doesnt need to attempt saving throws against it. she can suspend a poison within herself in this way for a number of hours equal to her constitution modifier (minimum 1), after which she must immediately expel the poison or be affected by it as normal. at any time while the poison is suspended within her, the rogue can spit up the poison as a ranged touch attack at any creature within 10 feet. this does not provoke attacks of opportunity. on a successful hit, the struck creature is exposed to the poison as if it were a contact poison. the rogue can maintain only a single suspended poison at a time. if she suspends a new poison, any older suspended poison immediately affects her as normal."
+    },
+  "trap spotter": {
+    "benefit": "whenever a rogue with this talent comes within 10 feet of a trap, she receives an immediate perception skill check to notice the trap. this check should be made in secret by the gm."
+    },
+  "underhanded": {
+    "benefit": "a rogue with this talent gains a +4 circumstance bonus on all sleight of hand checks made to conceal a weapon. furthermore, if she makes a sneak attack during the surprise round using a concealed weapon that her opponent didnt know about, she does not have to roll sneak attack damage, and the sneak attack deals maximum damage. a rogue can only use the underhanded talent a number of times per day equal to her charisma modifier (minimum 0)."
+    },
+  "wall scramble": {
+    "benefit": "a rogue with this talent rolls twice when making climb checks and takes the better of the two rolls. if she already rolls twice while making a climb check because of another ability or effect, she gains a +2 insight bonus on both of those rolls instead. if the rogue is under the effect of a spell or ability that forces her to roll two dice and take the worse result, she only needs to roll 1d20 while making climb checks."
+    },
+  "weapon training": {
+    "benefit": "a rogue that selects this talent gains weapon focus as a bonus feat."
+    },
+  "wild magic": {
+    "benefit": "a rogue with this talent gains the ability to cast a 0-level spell from the druid spell list. this spell can be cast three times per day as a spell-like ability. the caster level for this ability is equal to the rogues level. the save dc for this spell is 10 + the rogues wisdom modifier. the rogue must have a wisdom score of at least 10 to select this talent. get this book and support this site!"
+    },
+  "without a trace": {
+    "benefit": "when the rogue successfully uses evasion or improved evasion to avoid taking damage, she can attempt to hide as an immediate action. the rogue attempts a stealth check with a 20 penalty, but gains a +1 bonus on her check for every die of damage the avoided attack would have dealt. the rogue can attempt this check even while being observed, as long as she has cover or concealment or an ability that allows her to use the stealth skill while being observed without cover or concealment.   get this book and support this site!"
+    },
+  "hamstring strike": {
+    "benefit": "anytime a rogue with this talent successfully hits an opponent with a sneak attack, she may forgo her sneak attack damage to try to hamstring her opponent. if the attack succeeds, the rogue deals weapon damage as normal, but instead of the rogue dealing sneak attack damage, the target is knocked prone and is unable to take move actions during its next turn. a successful fortitude save (dc = 10 + 1/2 the rogues level + the rogues dexterity modifier) negates this effect."
+    }  
+},
+
+"advanced": {
+  "armored marauder": {
+    "benefit": "the slayer gains proficiency with heavy armor. in addition, the armor check penalty of any heavy armor the slayer wears is reduced by 1 for every 6 slayer levels he has."
+    },
+  "armored swiftness": {
+    "benefit": "a slayer with this talent can move at full speed in heavy armor. in addition, the maximum dexterity bonus of heavy armor the slayer wears increases by 1 for every 6 class levels he has. a slayer must have the armored marauder slayer talent to select this talent."
+    },
+  "assassinate": {
+    "prerequisite": "advanced talents",
+    "benefit": "a slayer with this advanced talent can kill foes that are unable to defend themselves. to attempt to assassinate a target, the slayer must first study his target for 1 round as a standard action. on the following round, if the slayer makes a sneak attack against the target and that target is denied its dexterity bonus to ac, the sneak attack has the additional effect of possibly killing the target. this attempt automatically fails if the target recognizes the slayer as an enemy. if the sneak attack is successful, the target must attempt a fortitude saving throw with a dc equal to 10 + 1/2 the slayers level + the slayers intelligence modifier. if the target fails this save, it dies; otherwise, the target takes the sneak attack damage as normal and is then immune to that slayers assassinate ability for 24 hours."
+  },
+  "marksmans shot": {
+    "benefit": "as an attack action, the slayer makes a single ranged attack at his highest attack bonus with a ranged weapon he wields. the target of the attack must be the slayers studied target. on a successful hit, the slayer doubles the number of sneak attack dice applied to the attack; if the attack was not a sneak attack, this benefit does not apply."
+    },
+  "reaping stalker": {
+    "benefit": "a slayer with this talent treats any sickle or scythe he wields as though it were one size larger for the purpose of determining its damage dice. in addition, the slayer increases the critical threat range of any sickle or scythe he wields by 1; this does not stack with other effects that alter a weapons threat range."
+    },
+  "slayer camouflage": {
+    "prerequisite": "advanced talents, terrain mastery",
+    "benefit": "a slayer can use the stealth skill to hide in any of his favored terrains, even if the terrain doesnt grant cover or concealment."
+    },
+  "swallow reversal": {
+    "benefit": "as an attack action, the slayer can make a single melee attack against his studied target at his highest base attack bonus. when attempting a swallow reversal, the slayer rolls two attack rolls and uses the highest result. if the attack is a critical threat, the slayer attempts to confirm the critical hit as normal. the slayer can use swallow reversal at will, but it can only be used against a given target once per day."
+    },
+  "woodland stride": {
+    "prerequisite": "advanced talents",
+    "benefit": "a slayer with this talent may move through any sort of undergrowth (such as natural thorns, briars, overgrown areas, and similar terrain) at his normal speed and without taking damage or suffering any other impairment. terrain that is enchanted or magically manipulated to impede motion still affects the slayer as normal."
+    },
+  "aligned disguise": {
+    "prerequisite": "disguise self",
+    "benefit": "when a rogue with this talent uses the disguise self spell-like ability, she can also alter her alignment aura to deceive spells that discern alignment (such as detect evil) for the duration of the disguise self effect. she can choose to detect as any specific alignment, or to detect as no alignment at all. this ability does not protect against spells or effects that cause harm based on alignment."
+    },
+  "another day": {
+    "benefit": "once per day, when the rogue would be reduced to 0 or fewer hit points by a melee attack, she can take a 5-foot step as an immediate action. if the movement takes her out of the reach of the attack, she takes no damage from the attack. the rogue is staggered for 1 round on her next turn."
+    },
+  "blinding strike": {
+    "prerequisite": "obscuring blow, 15th level",
+    "benefit": "a rogue who selects this talent gains blinding critical as a bonus feat, even if she doesnt meet the prerequisites."
+    },
+  "confounding blades": {
+    "prerequisite": "slow reactions",
+    "benefit": "when a rogue with this talent hits a creature with a melee weapon that deals sneak attack damage, her target cannot make attacks of opportunity for 1d4+1 rounds."
+    },
+  "crippling strike": {
+    "benefit": "a rogue with this ability can sneak attack opponents with such precision that her blows weaken and hamper them. an opponent damaged by one of her sneak attacks also takes 2 points of strength damage."
+  },
+  "dance of disorienting shadows": {
+    "benefit": "a rogue with this talent can attempt a perform (dance) check in place of a combat maneuver check when attempting a reposition combat maneuver."
+    },
+  "deadly cocktail": {
+    "benefit": "a rogue with this talent can apply two doses of poison to a weapon at once. these can be separate poisons, in which case they both affect the target individually, or two doses of the same toxin, in which case the poisons frequency is extended by 50% and the save dc increases by +2. this talent is an exception to the rule that injury poisons can only be delivered one dose at a time."
+    },
+  "deadly sneak": {
+    "prerequisite": "powerful sneak",
+    "benefit": "whenever a rogue with this talent uses the powerful sneak rogue talent, she treats all 1s and 2s on the sneak attack damage dice as 3s."
+    },
+  "defensive roll": {
+    "benefit": "with this advanced talent, the rogue can roll with a potentially lethal blow to take less damage from it than she otherwise would. once per day, when she would be reduced to 0 or fewer hit points by damage in combat (from a weapon or other blow, not a spell or special ability), the rogue can attempt to roll with the damage. to use this ability, the rogue must attempt a reflex saving throw (dc = damage dealt). if the save succeeds, she takes only half damage from the blow; if it fails, she takes full damage. she must be aware of the attack and able to react to it in order to execute her defensive rollif she is denied her dexterity bonus to ac, she cant use this ability. since this effect would not normally allow a character to make a reflex save for half damage, the rogues evasion ability does not apply to the defensive roll."
+    },
+  "dispelling attack": {
+    "prerequisite": "major magic",
+    "benefit": "opponents that are dealt sneak attack damage by a rogue with this ability are affected by a targeted dispel magic, targeting the lowest-level spell effect active on the target. the caster level for this ability is equal to the rogues level."
+    },
+  "entanglement of blades": {
+    "benefit": "when a rogue with this talent hits a creature with a melee attack that deals sneak attack damage, the target cannot take a 5-foot step until the beginning of the rogues next turn."
+    },
+  "familiar": {
+    "prerequisite": "major magic, minor magic",
+    "benefit": "a rogue with this talent gains a familiar as the familiar option of the wizards arcane bond class feature. this ability functions exactly like that part of the class feature, but the rogues effective wizard level is her rogue level 4."
+    },
+  "fast tumble": {
+    "benefit": "when a rogue with this talent uses acrobatics to move at full speed through a threatened square without provoking an attack of opportunity, the dc of the acrobatics check does not increase by 10."
+    },
+  "frugal trapsmith": {
+    "benefit": "when a rogue with this talent constructs a mechanical trap, she only pays 75% of the normal cost."
+    },
+  "feat": {
+    "benefit": "a rogue may gain any feat that she qualifies for in place of a rogue talent."
+    },
+  "getaway master": {
+    "prerequisite": "getaway artist",
+    "benefit": "a rogue with this talent gains a +10 bonus on all drive checks."
+    },
+  "glib facade": {
+    "prerequisite": "innocent facade",
+    "benefit": "once per day, a rogue with this advanced talent can use glibness as a spell-like ability, using her rogue level as the spells caster level."
+    },
+  "hard minded": {
+    "benefit": "a rogue with this talent is hard to fool with illusions. she automatically receives a save to disbelieve any illusion she can see each round at the start of her turn, even if she hasnt interacted with it. if she fails a saving throw against an illusion that is not to disbelieve, she can attempt to save again again 1 round later at the same dc. she gets only one extra chance to succeed at her saving throw."
+    },
+  "harrow strike": {
+    "benefit": "once per day while making a sneak attack against a creature, you can draw a random card from a harrow deck you own. if your attack hits, instead of dealing sneak attack damage as normal, you deal a number of points of ability damage equal to your number of sneak attack dice. the ability score damaged is the score affiliated with the suit of the harrow card drawn. you can use this ability an additional time per day at 15th level and 20th level."
+    },
+  "hide in plain sight": {
+    "benefit": "a rogue with this talent can select a single terrain from the rangers favored terrain list. she is a master at hiding in that terrain, and while within that terrain, she can use the stealth skill to hide, even while being observed. special: a rogue may take this advanced talent more than once, each time selecting a different terrain from the favored terrain list."
+    },
+  "hunters surprise": {
+    "benefit": "once per day, a rogue with this talent can designate a single enemy she is adjacent to as her prey. until the end of her next turn, she can add her sneak attack damage to all attacks made against her prey, even if she is not flanking it or it is not flat-footed."
+    },
+  "improved shadows chill": {
+    "prerequisite": "cold resistance racial trait, shadows chill.",
+    "benefit": "when a rogue with this talent hits a creature with a melee weapon that deals sneak attack damage, the sneak attack damage is cold damage. normal weapon damage is unaffected."
+    },
+  "knock-out blow": {
+    "benefit": "once per day, the rogue can forgo her sneak attack damage to attempt to knock out an opponent. she must declare the use of knock-out blow before she makes the attack. if the attack hits, it does normal damage, but instead of dealing sneak attack damage (and instead of any effect that triggers when the rogue deals sneak attack damage), the target falls unconscious for 1d4 rounds. a successful fortitude save reduces this effect to staggered for 1 round. the dc of this save is equal to 10 + 1/2 the rogues level + the rogues intelligence modifier."
+    },
+  "improved evasion": {
+    "benefit": "this works like evasion, except that while the rogue still takes no damage on a successful reflex saving throw against attacks, she henceforth takes only half damage on a failed save. a helpless rogue does not gain the benefit of improved evasion."
+    },
+  "master of disguise": {
+    "benefit": "once per day, a rogue with this talent gains a +10 bonus on a single disguise check."
+    },
+  "master tricks": {
+    "benefit": "the rogue can select a ninja trick from the list of master tricks in place of a rogue talent. the rogue cannot select a ninja trick that has the same name as a rogue talent. the rogue can choose but cannot use tricks that require ki points, unless she has a ki pool."
+    },
+  "opportunist": {
+    "benefit": "once per round, the rogue can make an attack of opportunity against an opponent who has just been struck for damage in melee by another character. this attack counts as an attack of opportunity for that round. even a rogue with the combat reflexes feat cant use the opportunist ability more than once per round."
+    },
+  "redirect attack": {
+    "benefit": "once per day, when a rogue with this talent is hit with a melee attack, she can redirect the attack to strike at an adjacent creature with a free action. the creature targeted must be within melee reach of the attack that hit the rogue, and the creature that made the attack against the rogue must make a new attack roll against the new target."
+    },
+  "reflexive shadow shield": {
+    "prerequisite": "resiliency rogue talent.",
+    "benefit": "once per day as an immediate action, the rogue can gain an amount of cold resistance or electricity resistance equal to half the rogues level. this resistance lasts for 1 round. if the rogue has the shadowy resistance racial trait, the cold or electricity resistance stacks with the resistance that trait grants; otherwise, the energy resistance does not stack with any cold or electricity resistance the rogue has."
+    },
+  "rumormonger": {
+    "benefit": "a rogue with this talent can attempt to spread a rumor through a small town or larger settlement by making a bluff check. she can do so a number of times per week equal to her charisma modifier (minimum 0). the dc is based on the size of the settlement, and it takes a week for the rumor to propagate through the settlement. if the check succeeds, the rumor is practically accepted as fact within the community; succeeding by 5 or more over the dc decreases the time it takes the rumor to propagate by 1d4 days. a failed check means the rumor failed to gain traction, while failing by 5 or more causes the opposite of the rumor or some other competing theory involving the rumors subject to take hold."
+    },
+  "see in darkness": {
+    "prerequisite": "darkvision.",
+    "benefit": "the rogue gains the see in darkness ability."
+    },
+  "skill mastery": {
+    "benefit": "the rogue becomes so confident in the use of certain skills that she can use them reliably even under adverse conditions. upon gaining this ability, she selects a number of skills equal to 3 + her intelligence modifier. when making a skill check with one of these skills, she may take 10 even if stress and distractions would normally prevent her from doing so. special: a rogue may gain this special ability multiple times, selecting additional skills for skill mastery to apply to each time."
+    },
+  "slippery mind": {
+    "benefit": "this ability represents the rogues ability to wriggle free from magical effects that would otherwise control or compel her. if a rogue with slippery mind is affected by an enchantment spell or effect and fails her saving throw, she can attempt it again 1 round later at the same dc. she gets only this one extra chance to succeed on her saving throw."
+    },
+  "stealthy sniper": {
+    "benefit": "when a rogue with this talent uses the stealth skill to snipe, she only suffers a 10 penalty on the stealth check, instead of 20."
+    },
+  "thoughtful reexamining": {
+    "benefit": "once per day, a rogue with this talent can reroll a knowledge, sense motive, or perception skill check to try to gain new or better information from the roll. this reroll can be made any time during the same day as the original check."
+    },
+  "unlock ki": {
+    "prerequisite": "ki pool.",
+    "benefit": "a rogue with this advanced talent increases the number of points in the ki pool that she gains from the ki pool rogue talent to be equal to 1/2 her rogue level + her highest mental ability score modifier (intelligence, wisdom, or charisma). in addition, she can spend 2 points from her ki pool as a swift action to gain the skill unlocks for one skill of her choice as appropriate for her number of ranks in that skill. this benefit lasts for 1 minute."
+    },
+  "unwitting ally": {
+    "benefit": "a rogue with this talent can spend a swift action to attempt to make an opponent act like an ally for purposes of providing a flank until the beginning of the rogues next turn. the opponent must be able to hear and see the rogue, and the rogue must succeed at a bluff check opposed by the opponents sense motive. if the check succeeds, the opponent acts as an ally for the purpose of providing a flank. whether or not the check succeeds, the rogue cannot use this trick again on the same opponent for the next 24 hours. if the rogue fails the check by 5 or more, she cannot use the unwitting ally ability on any opponent within line of sight of the failed attempt for 24 hours."
+    },
+  "weapon snatcher": {
+    "benefit": "a rogue with this talent can make a sleight of hand check in place of a combat maneuver check when attempting to disarm an opponent."
     }
-  }
+}
+
+}

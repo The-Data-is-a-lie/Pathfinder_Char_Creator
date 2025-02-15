@@ -1,0 +1,29 @@
+{
+  "Armored Marauder (Ex)": {
+    "Benefit": "The slayer gains proficiency with heavy armor. In addition, the armor check penalty of any heavy armor the slayer wears is reduced by 1 for every 6 slayer levels he has. Pathfinder Player Companion: Chronicle of Legends  2019, Paizo Inc.; AuthorCalder CaDavid, Vanessa Hoskins, Mike Kimmel, Isabelle Lee, Matt Morris, Mikhail Rekun, and Michael Sayre."
+  },
+  "Armored Swiftness (Ex)": {
+    "Benefit": "A slayer with this talent can move at full speed in heavy armor. In addition, the maximum Dexterity bonus of heavy armor the slayer wears increases by 1 for every 6 class levels he has. A slayer must have the armored marauder slayer talent to select this talent. Pathfinder Player Companion: Chronicle of Legends  2019, Paizo Inc.; AuthorCalder CaDavid, Vanessa Hoskins, Mike Kimmel, Isabelle Lee, Matt Morris, Mikhail Rekun, and Michael Sayre."
+  },
+  "Assassinate (Ex)": {
+    "Prerequisite": "Advanced talents",
+    "Benefit": "A slayer with this advanced talent can kill foes that are unable to defend themselves. To attempt to assassinate a target, the slayer must first study his target for 1 round as a standard action. On the following round, if the slayer makes a sneak attack against the target and that target is denied its Dexterity bonus to AC, the sneak attack has the additional effect of possibly killing the target. This attempt automatically fails if the target recognizes the slayer as an enemy. If the sneak attack is successful, the target must attempt a Fortitude saving throw with a DC equal to 10 + 1/2 the slayers level + the slayers Intelligence modifier. If the target fails this save, it dies; otherwise, the target takes the sneak attack damage as normal and is then immune to that slayers assassinate ability for 24 hours."
+  },
+  "Marksman\u00e2\u0080\u0099s Shot (Ex)": {
+    "Benefit": "As an attack action, the slayer makes a single ranged attack at his highest attack bonus with a ranged weapon he wields. The target of the attack must be the slayers studied target. On a successful hit, the slayer doubles the number of sneak attack dice applied to the attack; if the attack was not a sneak attack, this benefit does not apply. Pathfinder Player Companion: Chronicle of Legends  2019, Paizo Inc.; AuthorCalder CaDavid, Vanessa Hoskins, Mike Kimmel, Isabelle Lee, Matt Morris, Mikhail Rekun, and Michael Sayre."
+  },
+  "Reaping Stalker (Ex)": {
+    "Benefit": "A slayer with this talent treats any sickle or scythe he wields as though it were one size larger for the purpose of determining its damage dice. In addition, the slayer increases the critical threat range of any sickle or scythe he wields by 1; this does not stack with other effects that alter a weapons threat range. Pathfinder Player Companion: Chronicle of Legends  2019, Paizo Inc.; AuthorCalder CaDavid, Vanessa Hoskins, Mike Kimmel, Isabelle Lee, Matt Morris, Mikhail Rekun, and Michael Sayre."
+  },
+  "Slayer Camouflage": {
+    "Prerequisite": "Advanced talents, terrain mastery",
+    "Benefit": "A slayer can use the Stealth skill to hide in any of his favored terrains, even if the terrain doesnt grant cover or concealment. Pathfinder Roleplaying Game: Advanced Class Guide  2014, Paizo Inc.; AuthorDennis Baker, Ross Byers, Jesse Benner, Savannah Broadway, Jason Bulmahn, Jim Groves, Tim Hitchcock, Tracy Hurley, Jonathan H. Keith, Will McCardell, Dale C. McCoy, Jr., Tom Phillips, Stephen Radney-MacFarland, Thomas M. Reid, Sean K Reynolds, Tork Shaw, Owen K.C. Stephens, and Russ Taylor."
+  },
+  "Swallow Reversal (Ex)": {
+    "Benefit": "As an attack action, the slayer can make a single melee attack against his studied target at his highest base attack bonus. When attempting a swallow reversal, the slayer rolls two attack rolls and uses the highest result. If the attack is a critical threat, the slayer attempts to confirm the critical hit as normal. The slayer can use swallow reversal at will, but it can only be used against a given target once per day. Pathfinder Player Companion: Chronicle of Legends  2019, Paizo Inc.; AuthorCalder CaDavid, Vanessa Hoskins, Mike Kimmel, Isabelle Lee, Matt Morris, Mikhail Rekun, and Michael Sayre."
+  },
+  "Woodland Stride (Ex)": {
+    "Prerequisite": "Advanced talents",
+    "Benefit": "A slayer with this talent may move through any sort of undergrowth (such as natural thorns, briars, overgrown areas, and similar terrain) at his normal speed and without taking damage or suffering any other impairment. Terrain that is enchanted or magically manipulated to impede motion still affects the slayer as normal. Pathfinder Roleplaying Game: Advanced Class Guide  2014, Paizo Inc.; AuthorDennis Baker, Ross Byers, Jesse Benner, Savannah Broadway, Jason Bulmahn, Jim Groves, Tim Hitchcock, Tracy Hurley, Jonathan H. Keith, Will McCardell, Dale C. McCoy, Jr., Tom Phillips, Stephen Radney-MacFarland, Thomas M. Reid, Sean K Reynolds, Tork Shaw, Owen K.C. Stephens, and Russ Taylor."
+  }
+}
