@@ -3,7 +3,7 @@ import random, re
 from math import floor, ceil
 
 # Start of Generic class options chooser
-def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name_2 = None, dataset_name_3 = None, multiple = None, level=None, level_2 = None, alternate_dataset = False):
+def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name_2 = None, dataset_name_3 = None, multiple = None, level=None, level_2 = None, alternate_dataset = False, dict_name="Talents") :
     if character.c_class == class_1: 
         dataset = getattr(character, class_1, {}).get(dataset_name, {}).keys()
         from Backend.utils.class_func.feats import bonus_searcher
@@ -12,29 +12,36 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
             choice = random.choice(list(dataset))
             description = getattr(character, class_1, {None}).get(dataset_name, {None}).get(choice,{None})
 
-            chosen_desc = {choice: description}
-            if character.data_dict['class features'] == [] or character.data_dict['class features']== {}:
-                character.data_dict['class features'] = chosen_desc
-            else:
-                character.data_dict['class features'].update(chosen_desc)
 
+            character.data_dict['class features'].append({dict_name: {choice: description}})
+            
+            print("character.data_dict", character.data_dict)
+
+            chosen_desc = {choice: description}
             character.bonus_feats = bonus_searcher(character, choice, chosen_desc, 'feats')
             character.bonus_spells = bonus_searcher(character, choice, chosen_desc, 'spells')
             return chosen_desc
         
-        else:            
+        else:
+            # Get amount
             amount = getattr(data, 'amount', {}).get(character.c_class, {}).get(dataset_name, {})
+
+            # Start with base dataset
             dataset = getattr(character, class_1, {}).get(dataset_name, {})
-            # Options for if we have a dataset 3 deep or 2 deep with alternate dataset
-            if alternate_dataset == True and not (dataset_name_2 or dataset_name_3):
-                dataset = getattr(character, class_1, {}).get(dataset_name, {})
-                print("1")
-            elif alternate_dataset == True and not dataset_name_3:
-                dataset = getattr(character, class_1, {}).get(dataset_name, {}).get(dataset_name_2, {})
-                print("2")
-            elif alternate_dataset == True and not dataset_name_3:  
-                dataset = getattr(character, class_1, {}).get(dataset_name, {}).get(dataset_name_2, {}).get(dataset_name_3, {})
-                print("3")
+
+            # Debugging print
+            print(f"dataset_name_2: {dataset_name_2}, dataset_name_3: {dataset_name_3}, alternate_dataset: {alternate_dataset}")
+
+            # If alternate_dataset is True, determine depth
+            if alternate_dataset:
+                if not (dataset_name_2 and dataset_name_3):
+                    print("1")
+                elif dataset_name_2 and not dataset_name_3:
+                    dataset = dataset.get(dataset_name_2, {})
+                    print("2")
+                elif dataset_name_3:
+                    dataset = dataset.get(dataset_name_2, {}).get(dataset_name_3, {})
+                    print("3")
             
             dataset_list = list(dataset.keys())
             print("dataset_list", dataset_list)
@@ -57,14 +64,10 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
                 print(chosen_set)
                 i = len(chosen_set)
 
-            
-            chosen_set_desc = {desc: dataset[desc] for desc in chosen_set}
-            if character.data_dict['class features'] == [] or character.data_dict['class features']== {}:
-                character.data_dict['class features'] = chosen_set_desc
-            else:
-                character.data_dict['class features'].update(chosen_set_desc)
-
-            return chosen_set, chosen_set_desc
+            chosen_dict = chosen_set_append(character, dataset, chosen_set, chosen, dict_name)
+            print(chosen_dict)
+            # character.data_dict['class features'] = chosen_dict
+            return chosen_dict
 
 
 

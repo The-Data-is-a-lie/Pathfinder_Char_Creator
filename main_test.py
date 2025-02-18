@@ -137,7 +137,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='rogue', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=16, low_level=16, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='barbarian', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=16, low_level=16, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()
@@ -333,25 +333,27 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		# Need to add revelations to oracle
 
 		# Make this populate like how you want it to *********
-		generic_class_option_chooser(character, "oracle", "curses")
 		
 		# Choose Oracle mystery
 		if character.c_class.lower() == 'oracle':
-			pre_oracle_mystery = generic_class_option_chooser(character, "oracle", "mysteries")
+			pre_oracle_mystery = generic_class_option_chooser(character, "oracle", "mysteries", dict_name = 'mysteries')
 			oracle_mystery = list(pre_oracle_mystery.keys())[0]
 			print(f"this is your oracle mystery: {oracle_mystery}")
-			generic_class_option_chooser(character,"oracle", "mysteries", oracle_mystery, "revelations", multiple='yes', alternate_dataset = True, level = 99, level_2 = 99)
+			generic_class_option_chooser(character,"oracle", dataset_name="mysteries", dataset_name_2=oracle_mystery, dataset_name_3="revelations", multiple='yes', alternate_dataset = True, level = 99, level_2 = 99, dict_name = 'mysteries')
 
-		generic_class_option_chooser(character,"fighter",  dataset_name="armor_train", multiple='yes')
-		generic_class_option_chooser(character,"fighter", dataset_name="weapon_train", multiple='yes')
-		generic_class_option_chooser(character,"arcanist", dataset_name="basic", dataset_name_2="greater", multiple='yes', level=10)
+		generic_class_option_chooser(character, "oracle", "curses", dict_name = "curses")
+
+
+		generic_class_option_chooser(character,"fighter",  dataset_name="armor_train", multiple='yes', dict_name = 'armor_training')
+		generic_class_option_chooser(character,"fighter", dataset_name="weapon_train", multiple='yes', dict_name = 'weapon_training')
+		generic_class_option_chooser(character,"arcanist", dataset_name="basic", dataset_name_2="greater", multiple='yes', level=10, dict_name = 'exploits')
 		
 		#need to add patron spells to the witch spell list (like how clerics + druids + s
 		# orcs get their own added)
-		generic_class_option_chooser(character,"witch", dataset_name="basic", dataset_name_2="greater", dataset_name_3="grand", multiple='yes', level=10, level_2=18)
+		generic_class_option_chooser(character,"witch", dataset_name="basic", dataset_name_2="greater", dataset_name_3="grand", multiple='yes', level=10, level_2=18, dict_name = 'hexes')
 
-		generic_class_option_chooser(character,"shaman", "spirits")
-		generic_class_option_chooser(character,"shaman", dataset_name="hexes", dataset_name_2 = "basic", multiple='yes', alternate_dataset = True, level = 99)
+		generic_class_option_chooser(character,"shaman", "spirits", dict_name = 'spirits')
+		generic_class_option_chooser(character,"shaman", dataset_name="hexes", dataset_name_2 = "basic", multiple='yes', alternate_dataset = True, level = 99, dict_name = 'hexes')
 
 
 
@@ -636,8 +638,26 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 		# For some reason class_features is being created as a dict inside a list, rather than a dict
 		class_features = character.data_dict['class features']
+
+		# Start of turning class_features into a dictionary for oracle
 		if isinstance(class_features, list) and len(class_features) > 0:
-			class_features = class_features[0]
+			combined_dict = {}
+			for i, feature in enumerate(class_features):
+				print(f"Processing {i}th class feature:")
+				print(feature)
+				
+				# Check if the feature is a dictionary before attempting to update
+				if isinstance(feature, dict):
+					combined_dict.update(feature)
+				else:
+					print(f"Skipping non-dictionary element at index {i}")
+					
+			# After updating combined_dict with all valid features
+			print(combined_dict)
+
+			# Assign the merged dictionary back to class_features
+			class_features = combined_dict
+		#End of turning class_features into a dictionary for oracle
 
 		export_list_non_dict = [
 				character.region, character.chosen_race,
@@ -725,12 +745,12 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		character.export_list_dict(export_list_dict, string_export_list_dict)		
 
 
-		if (isinstance(class_features, list) or isinstance(class_features, dict)) and len(class_features) > 0:
-			print(character.c_class)
-			print("these are your class features ",  class_features)
-			print(class_features.keys())
-			print("length of class features ", len(class_features))
-			print("this is your character level ", character.c_class_level)
+		# if (isinstance(class_features, list) or isinstance(class_features, dict)) and len(class_features) > 0:
+		# 	print(character.c_class)
+		# 	print("these are your class features ",  class_features)
+		# 	print(class_features.keys())
+		# 	print("length of class features ", len(class_features))
+		# 	print("this is your character level ", character.c_class_level)
 
 		print("class_features", class_features)
 		print("class_features", type(class_features))
