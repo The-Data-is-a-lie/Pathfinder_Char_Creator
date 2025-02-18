@@ -73,18 +73,18 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
 
         
 
-def chosen_set_append(character, dataset, chosen_set, chosen):
-    chosen_dict = {}
+def chosen_set_append(character, dataset, chosen_set, chosen, dict_name):
+    chosen_dict = {dict_name: {}}
     for chosen in chosen_set:
         chosen_desc = dataset.get(chosen, {})
-        chosen_dict.update({chosen: chosen_desc})
+        chosen_dict[dict_name][chosen] = chosen_desc
 
     return chosen_dict            
 
 # End of Generic Class Option Chooser
 
 
-def get_data_without_prerequisites(character, class_1, dataset_name, level= None, level_2 = None, dataset_name_2 = None, odd=None, divisor = 2):
+def get_data_without_prerequisites(character, class_1, dataset_name, level= None, level_2 = None, dataset_name_2 = None, odd=None, divisor = 2, dict_name="Talents"):
 
     if character.c_class != class_1:
         return None
@@ -113,7 +113,7 @@ def get_data_without_prerequisites(character, class_1, dataset_name, level= None
 
         print("dataset", dataset)
         
-        chosen_set, chosen_desc, chosen_dict = choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, base, level, total_choices)
+        chosen_set, chosen_desc, chosen_dict = choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, base, level, total_choices, dict_name)
  
     # print("chosen_set", chosen_set)
     print("chosen_desc", chosen_desc)
@@ -125,7 +125,7 @@ def get_data_without_prerequisites(character, class_1, dataset_name, level= None
         character.data_dict['class features'].update(chosen_dict)
     return base_no_prereq, dataset_no_prereq, chosen_set
 
-def choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, base, level, total_choices):
+def choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, base, level, total_choices, dict_name="Talents"):
     # added this logic so low level characters don't break
     if amount == None or amount <= 0:
         return [], [], []
@@ -155,7 +155,7 @@ def choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, bas
         print("post dataset", dataset)
         chosen_desc = {chosen: dataset.get(chosen, {})}
         print("ultimate chosen", chosen_desc)
-        chosen_dict = chosen_set_append(character, dataset, chosen_set, chosen)
+        chosen_dict = chosen_set_append(character, dataset, chosen_set, chosen, dict_name)
 
     return chosen_set, chosen_desc, chosen_dict
 
@@ -246,7 +246,15 @@ def generic_multi_chooser(character, class_1, dataset_name,  n2=None, start_leve
         i = len(chosen_set)
         print("chosen set", chosen_set)
 
-    chosen_dict = {dataset_name: chosen_set}
+    # changing to a list, allows for it to be json serializable -> can export to foundryVTT
+    # But, we want descriptions as well -> not just a list/set
+    chosen_list = list(chosen_set)
+    for item in chosen_list:
+        description = dataset.get(item, {}).get('description', '')
+        print(f"Item: {item}, Description: {description}")
+    chosen_dict = chosen_set_muilt_append(character, dataset, chosen_set, chosen_list, dataset_name)
+
+    # chosen_dict = {dataset_name: list(chosen_set)}
     if character.data_dict['class features'] == [] or character.data_dict['class features']== {}:
         character.data_dict['class features'] = chosen_dict
     else:
@@ -255,10 +263,12 @@ def generic_multi_chooser(character, class_1, dataset_name,  n2=None, start_leve
 
 
 def chosen_set_muilt_append(character, dataset, chosen_set, chosen, dataset_name):
-    chosen_dict = {}
+    chosen_dict = {dataset_name: {}}
     for chosen in chosen_set:
         chosen_desc = get_description(character, chosen, dataset)
-        chosen_dict.update({chosen: chosen_desc})
+        # Store with benefit -> allows to act as an object in foundryVTT
+        chosen_dict[dataset_name][chosen] = {"benefit": chosen_desc}
+
     return chosen_dict  
 
 def get_description(character, key, dataset):

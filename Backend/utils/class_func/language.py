@@ -13,8 +13,8 @@ def language_chooser(character):
 
 def regex_search(character, string, regex):
     print("this is your race" + character.chosen_race)
-    print(f'this is your string {string}')
-    print(f'this is your regex {regex}')
+    # print(f'this is your string {string}')
+    # print(f'this is your regex {regex}')
     pattern = rf"{regex}"
     match = re.search(pattern, string)
     if match:
@@ -22,7 +22,7 @@ def regex_search(character, string, regex):
     else:
         captured_content = languages
 
-    print(f'this is your captured_content {captured_content}')
+    # print(f'this is your captured_content {captured_content}')
     return captured_content
 
 def language_splitter(character, language_text):

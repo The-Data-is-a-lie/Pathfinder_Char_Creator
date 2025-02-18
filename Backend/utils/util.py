@@ -219,15 +219,15 @@ def chooseClass(character, class_choice):
     # temporarily removing occult classes (they aren't ready yet)
     occult_classes = [x.lower() for x in getattr(data, 'occult_classes')]
     path_of_war_class = [x.lower() for x in getattr(data, 'path_of_war_class')]
-    print('path_of_war_class', path_of_war_class)
-    print('occult_classes', occult_classes)
+    # print('path_of_war_class', path_of_war_class)
+    # print('occult_classes', occult_classes)
     available_classes = list(character.class_data.keys())
     #remove occult classes
     available_classes = [x for x in available_classes if x not in occult_classes]
     available_classes = [x for x in available_classes if x not in path_of_war_class]
             
-    print("available_classes", available_classes)
-    print("these_are_available_classes", available_classes)
+    # print("available_classes", available_classes)
+    # print("these_are_available_classes", available_classes)
     if class_choice not in available_classes:
         class_choice = random.choice(available_classes)
 

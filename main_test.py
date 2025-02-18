@@ -137,7 +137,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='slayer', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=4, num_sides=6, high_level=15, low_level=15, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='rogue', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=16, low_level=16, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()
@@ -357,16 +357,16 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 		# generic multi choices (with pre-reqs)
 		# This isn't properly adding data with prerequisites, it's only grabbing those without
-		get_data_without_prerequisites(character, class_1="rogue",dataset_name="basic", level=10, dataset_name_2="advanced")
-		get_data_without_prerequisites(character, class_1="ninja",dataset_name="basic", level=10, dataset_name_2="advanced")
-		get_data_without_prerequisites(character, class_1="slayer",dataset_name="basic", level=10, dataset_name_2="advanced")
-		get_data_without_prerequisites(character, class_1="alchemist",dataset_name="basic")
-		get_data_without_prerequisites(character, class_1="investigator",dataset_name="basic")
-		get_data_without_prerequisites(character, class_1="vigilante",dataset_name="basic")
-		get_data_without_prerequisites(character, class_1="vigilante",dataset_name="social",odd=True)
-		get_data_without_prerequisites(character, class_1="barbarian",dataset_name="basic")
-		get_data_without_prerequisites(character, class_1="skald",dataset_name="basic", divisor = 3)
-		get_data_without_prerequisites(character, class_1="magus",dataset_name="basic")
+		get_data_without_prerequisites(character, class_1="rogue",dataset_name="basic", level=10, dataset_name_2="advanced", dict_name = 'rogue_talents')
+		get_data_without_prerequisites(character, class_1="ninja",dataset_name="basic", level=10, dataset_name_2="advanced", dict_name = 'ninja_talents')
+		get_data_without_prerequisites(character, class_1="slayer",dataset_name="basic", level=10, dataset_name_2="advanced", dict_name = 'slayer_talents')
+		get_data_without_prerequisites(character, class_1="alchemist",dataset_name="basic", dict_name = 'discoveries')
+		get_data_without_prerequisites(character, class_1="investigator",dataset_name="basic", dict_name = 'investigator_talents')
+		get_data_without_prerequisites(character, class_1="vigilante",dataset_name="basic", dict_name = 'vigilante_talents')
+		get_data_without_prerequisites(character, class_1="vigilante",dataset_name="social",odd=True, dict_name = 'social_talents')
+		get_data_without_prerequisites(character, class_1="barbarian",dataset_name="basic", dict_name = 'rage_powers')
+		get_data_without_prerequisites(character, class_1="skald",dataset_name="basic", divisor = 3, dict_name = 'rage_powers')
+		get_data_without_prerequisites(character, class_1="magus",dataset_name="basic", dict_name = 'arcana')
 
 		grand_discovery_chooser(character) #fix this later
 
@@ -732,6 +732,8 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 			print("length of class features ", len(class_features))
 			print("this is your character level ", character.c_class_level)
 
+		print("class_features", class_features)
+		print("class_features", type(class_features))
 		# print(f'this is your character data {character.data_dict}')
 
 		return character.data_dict
