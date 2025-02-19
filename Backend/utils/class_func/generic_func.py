@@ -64,9 +64,13 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
                 print(chosen_set)
                 i = len(chosen_set)
 
+            if len(chosen_set) <= 0:
+                return []
+
             chosen_dict = chosen_set_append(character, dataset, chosen_set, chosen, dict_name)
-            print(chosen_dict)
-            # character.data_dict['class features'] = chosen_dict
+            print("chosen_dict", chosen_dict)
+            # character.data_dict['class features'] = chosen_dict 
+            character.data_dict['class features'].append(chosen_dict)           
             return chosen_dict
 
 

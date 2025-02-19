@@ -137,7 +137,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='barbarian', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=16, low_level=16, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='arcanist', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=16, low_level=16, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()
@@ -640,6 +640,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		class_features = character.data_dict['class features']
 
 		# Start of turning class_features into a dictionary for oracle
+		
 		if isinstance(class_features, list) and len(class_features) > 0:
 			combined_dict = {}
 			for i, feature in enumerate(class_features):
@@ -653,7 +654,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 					print(f"Skipping non-dictionary element at index {i}")
 					
 			# After updating combined_dict with all valid features
-			print(combined_dict)
+			print("combined_dict", combined_dict)
 
 			# Assign the merged dictionary back to class_features
 			class_features = combined_dict
