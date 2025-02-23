@@ -34,7 +34,7 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
 
             # If alternate_dataset is True, determine depth
             if alternate_dataset:
-                if not (dataset_name_2 and dataset_name_3):
+                if dataset_name_2 is None and dataset_name_3 is None:
                     print("1")
                 elif dataset_name_2 and not dataset_name_3:
                     dataset = dataset.get(dataset_name_2, {})
@@ -42,9 +42,10 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
                 elif dataset_name_3:
                     dataset = dataset.get(dataset_name_2, {}).get(dataset_name_3, {})
                     print("3")
-            
+                
+
             dataset_list = list(dataset.keys())
-            print("dataset_list", dataset_list)
+            # print("dataset_list", dataset_list)
             chosen_set = set()
             i = 0
 

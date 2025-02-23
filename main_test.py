@@ -137,7 +137,7 @@ character_json_config = {
 
 # 	if userInput == 'y':
 
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='arcanist', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=16, low_level=16, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='shaman', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=16, low_level=16, gold_num=1000000):
 
 
 		# userInput = input('Create a new character? (y/n): ').lower()
@@ -654,7 +654,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 					print(f"Skipping non-dictionary element at index {i}")
 					
 			# After updating combined_dict with all valid features
-			print("combined_dict", combined_dict)
+			# print("combined_dict", combined_dict)
 
 			# Assign the merged dictionary back to class_features
 			class_features = combined_dict
@@ -755,6 +755,10 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 		print("class_features", class_features)
 		print("class_features", type(class_features))
+		print("character.c_class_level", character.c_class_level)
+		print("character.c_class", character.c_class)
+		print("character.c_class_2", character.c_class_2)
+		print("archetype_info", archetype_info)
 		# print(f'this is your character data {character.data_dict}')
 
 		return character.data_dict
