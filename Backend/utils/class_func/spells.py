@@ -288,6 +288,11 @@ def extra_spells_divine(day_list):
     # we need i,num > 0 otherwise it breaks here (B/c divine casters + cantrips/irisons breaks)
     for i in range(len(day_list) -1):
         random_num = random.randint(1,10)
+        print("day_list[i]: ", day_list[i])
+        # me sure we don't break for mid/low casters
+        if day_list[i] == 'null':
+            return day_list
+
         day_list[i] = day_list[i] + random_num
     return day_list
 
