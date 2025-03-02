@@ -27,26 +27,6 @@ def class_for_spells_attr(character):
         character.c_class_for_spells = character.c_class     
     return character.c_class_for_spells
 
-# def high_caster_formula(character,n):
-#     if n % 2 == 0:
-#         character.cast_level=n // 2
-#     else:
-#         character.cast_level=(n + 1) // 2
-#     character.cast_level = min(character.cast_level,9)
-#     return character.cast_level
-
-# def mid_caster_formula(character,n):
-#     if n % 3 == 1:
-#         character.cast_level= ceil(n // 3)+1
-#     else:
-#         character.cast_level= ceil(n / 3)
-#     character.cast_level = min(n,6)
-#     return character.cast_level
-
-# def low_caster_formula(character,n):
-#     character.cast_level= ceil(n / 3)-1
-#     character.cast_level = min(character.cast_level,4)
-#     return character.cast_level
 
 
 def caster_formula(character,n, class_2 = 'missing'):
@@ -85,32 +65,6 @@ def caster_formula(character,n, class_2 = 'missing'):
         character.highest_spell_known_2 = highest_spell_known
         return character.highest_spell_known_2
 
-# def choose_caster_formula_1(character): 
-#     character.highest_spell_known_1=0        
-#     if character.casting_level_string == 'high':
-#         character.highest_spell_known_1 = character.high_caster_formula(character.c_class_level)
-#     elif character.casting_level_string == 'mid':
-#         character.highest_spell_known_1 = character.mid_caster_formula(character.c_class_level)
-#     elif character.casting_level_string == 'low':
-#         character.highest_spell_known_1 = character.low_caster_formula(character.c_class_level)  
-#     else:
-#         print('No caster_1 level')
-#     return character.highest_spell_known_1
-
-# def choose_caster_formula_2(character):  
-#     character.highest_spell_known_2=0                         
-#     if character.c_class_2 != '':
-#         casting_level_2 = str(character.classes[character.c_class_2]["casting level"].lower())              
-#         if casting_level_2 == 'high':
-#             character.highest_spell_known_2 = character.high_caster_formula(character.c_class_level)
-#         elif casting_level_2 == 'mid':
-#             character.highest_spell_known_2 = character.mid_caster_formula(character.c_class_level)
-#         elif casting_level_2 == 'low':
-#             character.highest_spell_known_2 = character.low_caster_formula(character.c_class_level)    
-#         else:
-#             print('No caster_2 level')
-    
-#     return character.highest_spell_known_2
 
 #need to create this for casting_level_2 as well
 def spells_known_attr(character,base_classes, divine_casters):     
@@ -185,14 +139,13 @@ def alignment_spell_limits(character, spell_data, i, alignment_exclusion):
     params: spell_data (pandas file), i (number)
     """
     alignment = character.alignment.lower()
-    extraction_list = ['name']#, character.c_class_for_spells 'lawful', 'chaotic', 'evil', 'good']
+    extraction_list = ['name', 'school']#, character.c_class_for_spells 'lawful', 'chaotic', 'evil', 'good']
     alignment_exclusion = getattr(data, alignment_exclusion)
 
 
     excluded_columns = set()
 
     for alignment_part in alignment.split(' '):
-        print(f'This is your alignment part {alignment_part}')
         excluded_column = alignment_exclusion.get(alignment_part)
         if excluded_column:
             excluded_columns.add(excluded_column)
@@ -203,16 +156,41 @@ def alignment_spell_limits(character, spell_data, i, alignment_exclusion):
         condition &= (spell_data[col] == 0)
 
     query_i = spell_data.loc[condition, extraction_list]
+    # selecting spells by randomly selected thematic schools
+    query_i = limit_school_func(character, query_i)
 
     return query_i
 
+def spell_theme_func(character, spell_data):
+    character.available_schools = spell_data['school'].value_counts()
+    character.available_schools = character.available_schools[character.available_schools > 30].index.tolist()    
+    # grab a list of chooseable spell schools
+    num_of_schools = random.randint(1,2)
+    specialty_schools = random.sample(character.available_schools, num_of_schools)
+    for school in specialty_schools:
+        print(school)
+        character.available_schools.remove(school)
+    remaining_schools = character.available_schools
+    counter_schools = random.sample(remaining_schools, num_of_schools)
 
+    character.specialty_schools = specialty_schools
+    character.counter_schools = counter_schools
 
+def limit_school_func(character, query_i):
+    #apply weights
+    query_i['weight'] = 1
+    query_i.loc[query_i['school'].isin(character.specialty_schools), 'weight'] = 100
+    query_i.loc[query_i['school'].isin(character.counter_schools), 'weight'] = .1
+
+    return query_i.sort_values(by='weight', ascending=False)
+    
 
 
 
 def spells_known_selection(character,base_classes,divine_casters):
     spell_data=pd.read_csv('data/spells.csv', sep='|')
+    spell_theme_func(character, spell_data)
+
     #extraction_list = ['name', character.c_class]                
     character.spell_list = []
     character.casting_level_string = str(character.classes[character.c_class]["casting level"].lower())         
@@ -235,7 +213,7 @@ def spells_known_selection(character,base_classes,divine_casters):
                 select_spell=known_list[i]             
 
                 query_i = alignment_spell_limits(character, spell_data, i, "alignment_exclusion")
-                query_i = query_i.sample(frac=1.0)
+                query_i = query_i.sample(weights=query_i['weight'], frac=1.0)
                 spells = query_i[:select_spell]
                 spell_list = spells['name'].tolist()
 
@@ -263,7 +241,7 @@ def spells_known_selection(character,base_classes,divine_casters):
                 select_spell=day_list[i]         
 
                 query_i = alignment_spell_limits(character, spell_data, i, "alignment_exclusion")                        
-                query_i = query_i.sample(frac=1.0)
+                query_i = query_i.sample(weights=query_i['weight'], frac=1.0)
                 spells = query_i[:select_spell]
                 spell_list = spells['name'].tolist()
                 character.spell_list_choose_from.append(spell_list)

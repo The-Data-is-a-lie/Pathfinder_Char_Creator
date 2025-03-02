@@ -694,6 +694,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 				older_brothers, younger_brothers, 
 				older_sisters, younger_sisters,				 
 				weapon_name,
+				character.specialty_schools, character.counter_schools,
 				 
 				 ]
 		
@@ -731,6 +732,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 					"older_brothers", "younger_brothers", 
 					"older_sisters", "younger_sisters",	
 					"weapon_name",
+					"specialty_schools", "counter_schools",
 
 				]
 		
@@ -761,6 +763,8 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		print("archetype_info", archetype_info)
 		# print(f'this is your character data {character.data_dict}')
 
+		print("character.specialty_schools", character.specialty_schools)
+		print("character.counter_schools", character.counter_schools)
 		return character.data_dict
 
 generate_random_char()
