@@ -695,6 +695,8 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 				older_sisters, younger_sisters,				 
 				weapon_name,
 				character.specialty_schools, character.counter_schools,
+				character.chosen_descriptors, character.counter_descriptors,
+
 				 
 				 ]
 		
@@ -733,6 +735,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 					"older_sisters", "younger_sisters",	
 					"weapon_name",
 					"specialty_schools", "counter_schools",
+					"chosen_spell_descriptor", "counter_spell_descriptor",
 
 				]
 		
@@ -765,6 +768,8 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 		print("character.specialty_schools", character.specialty_schools)
 		print("character.counter_schools", character.counter_schools)
+		print("character.chosen_descriptors", character.chosen_descriptors)
+		print("character.counter_descriptors", character.counter_descriptors)
 		return character.data_dict
 
 generate_random_char()
