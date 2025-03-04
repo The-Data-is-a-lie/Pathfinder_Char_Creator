@@ -139,7 +139,7 @@ def alignment_spell_limits(character, spell_data, i, alignment_exclusion):
     params: spell_data (pandas file), i (number)
     """
     alignment = character.alignment.lower()
-    extraction_list = ['name', 'school']#, character.c_class_for_spells 'lawful', 'chaotic', 'evil', 'good']
+    extraction_list = ['name', 'school', 'descriptor']#, character.c_class_for_spells 'lawful', 'chaotic', 'evil', 'good']
     alignment_exclusion = getattr(data, alignment_exclusion)
 
 
@@ -187,7 +187,7 @@ def limit_school_func(character, query_i):
     return query_i.sort_values(by='weight', ascending=False)
 
 def limit_descriptor_func(character, query_i):
-    query_i.loc[query_i['school'].isin(character.chosen_descriptors), 'weight'] = 100
+    query_i.loc[query_i['descriptor'].isin(character.chosen_descriptors), 'weight'] = 300
     return query_i
 
 def remove_commas_func(spell_data):
