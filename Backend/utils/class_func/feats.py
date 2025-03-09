@@ -189,7 +189,10 @@ def get_feats_without_prerequisites(character, class_1, dataset_name, level= Non
         return None
 
     base_no_prereq = []
-    amount = ceil(character.c_class_level/2)
+    amount = feat_amount
+    print("this is your amount", amount)
+    # amount = ceil(character.c_class_level/2)
+    # print("this is your amount", amount)
     
     dataset = dataset_name
     # print("this is your dataset", dataset)
@@ -239,10 +242,14 @@ def special_feats_func(feat_data, extraction_type, special_type):
         feat_data[special_type] == 1,
         extraction_type
     ]
+    print("this is your query", query_i)
     return query_i
-def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_column, override = None, special_type = None):
+def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_column, override = None, special_type = None, feat_amount = None):
     if class_1 == character.c_class:
         feat_data = pd.read_csv(f'data/feats.csv', sep='|', on_bad_lines='skip')
+        # makes prereq NaNs -> empty strings. Without this we can't grab feats with blank prereqs
+        feat_data.fillna({'prerequisites': ''}, inplace=True)  
+
         extraction_list = ['name', 'prerequisites', 'description']
         if casting_level_str in ("mid", "high"):
             query_i = feat_data.loc[
@@ -262,17 +269,19 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
                 extraction_list
             ]
 
+
         if override is not None:
             query_i = special_feats_func(feat_data, extraction_list, special_type)
             
         query_i = query_i.drop_duplicates(subset='name', keep='first')
         feat_result_dict = query_i.set_index('name')[['prerequisites', 'description']].to_dict(orient='index')
         feat_result_dict = transform_result_dict(character, feat_result_dict)
-
+        print("this is your feat result dict", feat_result_dict)
         feat_result_dict.update(feat_result_dict)
-
-        chosen_feats = get_feats_without_prerequisites(character, character.c_class, feat_result_dict, feat_amount= character.feat_amounts)
-        chosen_feats.remove("")
+        print("this is your feat amount", feat_amount)
+        chosen_feats = get_feats_without_prerequisites(character, character.c_class, feat_result_dict, feat_amount=feat_amount)
+        print("chosen_feats: ",chosen_feats)
+        # chosen_feats.remove("")
         cleaned_chosen_feats = capitalize_feats(character, chosen_feats)
         # print("cleaned_chosen_feats: ",cleaned_chosen_feats)
         # character.chosen_feats = cleaned_chosen_feats

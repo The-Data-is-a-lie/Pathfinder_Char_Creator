@@ -168,32 +168,54 @@ def choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, bas
     return chosen_set, chosen_desc, chosen_dict
 
 def no_prereq_loop(character, dataset_type, return_choice=None):
+    import pandas as pd
+
     dataset_without_prerequisites = []
     prereq_list = set()
-    # print(dataset_type.items())
+    skipped_feats = []
 
     for name, info in dataset_type.items():
-            prerequisites = str(info.get("prerequisites", "")).lower()
-            try:
-                print("name, info, prerequisites:", name, info, prerequisites)
-                prerequisites = re.sub(r'\.', '', prerequisites)
-                # print("prerequisites loop:", prerequisites)
+        # Retrieve prerequisites and sanitize input
+        prerequisites = info.get("prerequisites", None)
 
-                prerequisites_components = set(p.strip().lower() for p in prerequisites.split(","))
-            except Exception as e:
-                print("Error:", e)
-                print("prerequisites:", prerequisites)
+        # Handle NaN or missing prerequisites
+        if pd.isna(prerequisites) or not prerequisites or str(prerequisites).strip() == "":
+            dataset_without_prerequisites.append(name.lower())
+            print(f"[NO PREREQ] Added: {name}")
+            continue
 
-            if prerequisites_components.issubset(character.chooseable) == True:
-                prereq_list.add(name.lower())
+        try:
+            # Clean up prerequisites
+            prerequisites = str(prerequisites).lower()
+            prerequisites = re.sub(r'\.', '', prerequisites)
+            prerequisites_components = set(p.strip().lower() for p in prerequisites.split(","))
 
-            if not prerequisites:
+            # Special case: if the only component is "" (blank), treat as no prerequisite
+            if prerequisites_components == {""}:
                 dataset_without_prerequisites.append(name.lower())
+                print(f"[NO PREREQ] (Blank) Added: {name}")
+                continue
+
+        except Exception as e:
+            print("Error processing prerequisites:", e)
+            print("Problematic prerequisites:", prerequisites)
+            continue
+
+        # Check if prerequisites are satisfied
+        if prerequisites_components.issubset(character.chooseable):
+            prereq_list.add(name.lower())
+            print(f"[VALID PREREQ] Added: {name}")
+        else:
+            skipped_feats.append(name)
+
+    print("\n[SKIPPED FEATS - Unmet Prerequisites]")
+    for feat in skipped_feats:
+        print(f"- {feat}")
 
     if return_choice == 'prereq_list':
         return prereq_list
     else:
-        return dataset_without_prerequisites                
+        return dataset_without_prerequisites
 
 def generic_class_talent_chooser(character, class_1, dataset_name, dataset_name_2 = None):
     if character.c_class == class_1: 

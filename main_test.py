@@ -127,7 +127,7 @@ character_json_config = {
 	
 
 }
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='cavalier', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=8, low_level=8, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='hunter', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=42, low_level=42, gold_num=1000000):
 
 		userInput = create_new_char
 		print(f'Create a new character? ({create_new_char.lower()})')
@@ -552,22 +552,23 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		extra_combat_feats(character)
 
 		# Feat Selector
+		print("this is your character feat amount", character.feat_amounts)
 		if truly_random_feats.upper() == "Y":
 		# Truly Random Feats
 		# full casters + mid casters with low BAB
 			casting_level_str = character.classes[character.c_class]['casting level'].lower()
 			if character.bab == "L" and casting_level_str in ("mid", "high"):
-					character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'metamagic',info_column = 'description')
+					character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'metamagic',info_column = 'description', feat_amount = character.feat_amounts)
 
 			# full casters + mid casters with med BAB
 			elif character.bab == "M" and casting_level_str in ("mid", "high"):
 				random_dice = random.randint(1, 100)
 				if random_dice <= 50:
-					character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'metamagic',info_column = 'description')					
+					character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'metamagic',info_column = 'description', feat_amount = character.feat_amounts)					
 				else:
-					character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'combat',info_column = 'description')
+					character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'combat',info_column = 'description', feat_amount = character.feat_amounts)
 			else:
-				character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'combat', info_column = 'description')
+				character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'combat', info_column = 'description', feat_amount = character.feat_amounts)
 
 		else:
 			# Curated List of feats
@@ -578,11 +579,13 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 		# Teamwork feats selector
 		if character.teamwork_feats > 0:
-			teamwork_feats = generic_feat_chooser(character, character.c_class, casting_level_str, 'Null', info_column = 'description', override=True, special_type="teamwork")
+			teamwork_feats = generic_feat_chooser(character, character.c_class, casting_level_str, 'Null', info_column = 'description', override=True, special_type="teamwork", feat_amount = character.teamwork_feats)
 			character.feats.extend(teamwork_feats)
 
 		feats = character.feats 
-		print("final feats", feats)
+		print("number of teamwork_feats", character.teamwork_feats)
+		print("teamwork_feats", teamwork_feats)
+		# print("final feats", feats)
 
 		background_traits = randomize_personality_attr(character, "background_traits",4)
 		professions = randomize_personality_attr(character, "professions", 3)
@@ -731,6 +734,8 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		print("character.counter_schools", character.counter_schools)
 		print("character.chosen_descriptors", character.chosen_descriptors)
 		print("character.counter_descriptors", character.counter_descriptors)
+
+		print("teamwork_feats", teamwork_feats)
 		return character.data_dict
 
 generate_random_char()
