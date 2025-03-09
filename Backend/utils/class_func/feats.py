@@ -126,8 +126,11 @@ def build_selector(character):
         add_specialty_feats(character, feat_list)
 
     result_dict_pre = feat_spell_searcher(character, character.c_class, feat_list, "feats", "prerequisites", "description")
+    print("this is your result dict pre", result_dict_pre)
     result_dict = transform_result_dict(character, result_dict_pre)
-    chosen_feats = get_feats_without_prerequisites(character, character.c_class, result_dict, character.feat_amounts)
+    print("this is your result dict", result_dict)
+    chosen_feats = get_feats_without_prerequisites(character, character.c_class, result_dict, feat_amount=character.feat_amounts)
+    print("this is your chosen feats", chosen_feats)
     cleaned_chosen_feats = capitalize_feats(character, chosen_feats)
     return cleaned_chosen_feats
 
@@ -242,7 +245,6 @@ def special_feats_func(feat_data, extraction_type, special_type):
         feat_data[special_type] == 1,
         extraction_type
     ]
-    print("this is your query", query_i)
     return query_i
 def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_column, override = None, special_type = None, feat_amount = None):
     if class_1 == character.c_class:

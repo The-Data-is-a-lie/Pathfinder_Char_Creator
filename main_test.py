@@ -127,7 +127,7 @@ character_json_config = {
 	
 
 }
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='fighter', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=42, low_level=42, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='hunter', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "N", num_dice=6, num_sides=6, high_level=42, low_level=42, gold_num=1000000):
 
 		userInput = create_new_char
 		print(f'Create a new character? ({create_new_char.lower()})')
@@ -553,10 +553,10 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 		# Feat Selector
 		print("this is your character feat amount", character.feat_amounts)
+		casting_level_str = character.classes[character.c_class]['casting level'].lower()
 		if truly_random_feats.upper() == "Y":
 		# Truly Random Feats
 		# full casters + mid casters with low BAB
-			casting_level_str = character.classes[character.c_class]['casting level'].lower()
 			if character.bab == "L" and casting_level_str in ("mid", "high"):
 					character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'metamagic',info_column = 'description', feat_amount = character.feat_amounts)
 
@@ -576,6 +576,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 			# because we run get_data_without_prerequisites before build_selector -> updating character.chooseable
 			build_selector_feats = build_selector(character)
 			character.feats.extend(build_selector_feats)
+			print("build selector feats", build_selector_feats)
 
 		# Teamwork feats selector
 		if character.teamwork_feats > 0:
@@ -733,6 +734,8 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		print("character.counter_schools", character.counter_schools)
 		print("character.chosen_descriptors", character.chosen_descriptors)
 		print("character.counter_descriptors", character.counter_descriptors)
+
+		print("character.feats", character.feats)
 
 		return character.data_dict
 
