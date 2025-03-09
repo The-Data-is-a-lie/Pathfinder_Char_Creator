@@ -15,10 +15,10 @@ from Backend.utils.class_func.armor_and_enhancements import enhancement_calculat
 from Backend.utils.class_func.armor_and_weapon_chooser import armor_chooser, weapon_chooser, list_selection, shield_chooser, shield_flag_func, ac_bonus_calculator, weapon_type_flag_func
 from Backend.utils.class_func.chooseable import chooseable_list, chooseable_list_race#, chooseable_list_class 
 from Backend.utils.class_func.class_abilities import get_class_abilities, get_class_abilties_desc  
-from Backend.utils.class_func.class_ability_amount import class_abilities_amount
+# from Backend.utils.class_func.class_ability_amount import class_abilities_amount
 from Backend.utils.class_func.class_specific_feats import class_specific_feats_chooser, extra_feat_number, monk_feats_chooser, ranger_feats_chooser
 from Backend.utils.class_func.domain_inquisition import domain_chance, domain_chooser#, inquisition_chooser
-from Backend.utils.class_func.extra_combat_feats import extra_combat_feats
+from Backend.utils.class_func.extra_combat_feats import extra_combat_feats, extra_teamwork_feats
 from Backend.utils.class_func.favored_class import favored_class_calculator, favored_class_option, favored_class_option_chooser
 from Backend.utils.class_func.family_func import randomize_siblings, randomize_parents
 from Backend.utils.class_func.feats import build_selector, chooseable_list, chooseable_list_stats, chooseable_list_class_features, feat_spell_searcher, generic_multi_chooser, simple_list_chooser, generic_feat_chooser
@@ -127,25 +127,11 @@ character_json_config = {
 	
 
 }
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='cavalier', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=8, low_level=8, gold_num=1000000):
 
-
-# Add a function which allows warpriests to use their caster level + functions but grab cleric spells (possiby use class for spells)
-
-
-# while userInput.lower() == 'y':
-# 	isTrue = isBool(userInput)
-
-# 	if userInput == 'y':
-
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='warpriest', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=11, low_level=11, gold_num=1000000):
-
-
-		# userInput = input('Create a new character? (y/n): ').lower()
 		userInput = create_new_char
 		print(f'Create a new character? ({create_new_char.lower()})')
 
-		#end of region macro
-		# format_text(text, bold=False, color=None)
 		character = CreateNewCharacter(
 			character_json_config)
 		character.instantiate_full_data_dict()
@@ -241,13 +227,6 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		# print(f"This is your spells list you can choose from {character.spell_list_choose_from}")
 
 
-
-
-		# Extra class choices:
-		extra_combat_feats(character)
-		class_abilities_amount(character)
-
-
 		# print(f"This is your selected feats: {character.feats_selector()}")
 
 		#this is to allow for talent choice stat pre-reqs (self.chooseable)
@@ -272,19 +251,6 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		#decides if druids go animal companion or domain
 		# or if inquisitors go inquisitions or domains
 		domain_chance(character)
-
-		#class specific choices
-		# character.monk_ki_power_chooser()
-		# character.bloodline_chooser()
-
-		# character.fighter_armor_train_chooser()
-		# character.fighter_weapon_train_chooser()	
-		# character.rogue_talent_chooser()
-		# character.rage_power_chooser()
-		# character.discovery_chooser()
-		# character.grand_discovery_chooser()
-		# character.arcanist_exploits_chooser()
-
 		domain_chooser(character)	
 		full_domain = character.chosen_domain
 		versatile_perfomance(character)	
@@ -575,28 +541,17 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 	# end of pre export data manip
 
 		# Start of Extra feats list generation section
-		
 		class_specific_feats_chooser(character, "sorcerer", "bloodline", character.bloodline, name_3="bonus feats")
 		class_specific_feats_chooser(character, "bloodrager", "bloodline", character.bloodline, name_3="bonus feats")
-		# class_specific_feats_chooser(character, "monk", "feats", "2", class_level= 2)
-		# class_specific_feats_chooser(character, "monk", "feats", "6", class_level= 6)
-		# class_specific_feats_chooser(character, "monk", "feats", "10", class_level= 10)
-		
-
-		#End of Extra feats list generation section
-
-		# Start of Extra feats selection Section
-		
-
 		#class specific feats choosers
 		ranger_feats_chooser(character)
 		monk_feats_chooser(character)
-			
-		# feat selector
-		# print(f"this is your chosen feat amount {character.feat_amounts}")
-		
-		# # feat selector(s)
-  
+		# Determine extra teamwork feats
+		extra_teamwork_feats(character)
+		# determine extra combat feats
+		extra_combat_feats(character)
+
+		# Feat Selector
 		if truly_random_feats.upper() == "Y":
 		# Truly Random Feats
 		# full casters + mid casters with low BAB
@@ -621,7 +576,13 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 			build_selector_feats = build_selector(character)
 			character.feats.extend(build_selector_feats)
 
-		feats = character.feats
+		# Teamwork feats selector
+		if character.teamwork_feats > 0:
+			teamwork_feats = generic_feat_chooser(character, character.c_class, casting_level_str, 'Null', info_column = 'description', override=True, special_type="teamwork")
+			character.feats.extend(teamwork_feats)
+
+		feats = character.feats 
+		print("final feats", feats)
 
 		background_traits = randomize_personality_attr(character, "background_traits",4)
 		professions = randomize_personality_attr(character, "professions", 3)

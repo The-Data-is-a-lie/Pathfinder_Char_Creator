@@ -1,3 +1,4 @@
+# This file will handle all class specific feats possible
 import random
 # Start of class specific feats chooser
 def class_specific_feats_chooser(character, c_class, name_1, name_2, name_3=None, class_level = None):

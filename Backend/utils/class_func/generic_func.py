@@ -175,6 +175,7 @@ def no_prereq_loop(character, dataset_type, return_choice=None):
     for name, info in dataset_type.items():
             prerequisites = str(info.get("prerequisites", "")).lower()
             try:
+                print("name, info, prerequisites:", name, info, prerequisites)
                 prerequisites = re.sub(r'\.', '', prerequisites)
                 # print("prerequisites loop:", prerequisites)
 

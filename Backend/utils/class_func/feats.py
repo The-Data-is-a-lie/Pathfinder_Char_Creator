@@ -7,14 +7,6 @@ from math import ceil, floor
 from Backend.utils.class_func.generic_func import *
 from Backend.utils.class_func.chooseable import *
 
-
-
-def print_metamagic(character):
-    data = pd.read_csv(f'data/feats.csv', sep='|', on_bad_lines='skip')
-    Metamagic_feats = data[data['type']=='Metamagic']
-    extraction_list = ['name']        
-    # print(Metamagic_feats[extraction_list])
-
 def feat_spell_searcher(character, class_1, chosen_set, types, info_column, info_column_2 = None):
     if chosen_set == None:
         return
@@ -123,9 +115,12 @@ def build_selector(character):
     if character.bab == 'L' and casting_level_str != 'none':
         add_magical_feats(character, feat_list)
     if character.bab == 'M' and casting_level_str != 'none':
-        if type_chance >= 50:
+        if 50 >= type_chance >= 75:
             add_martial_feats(character, feat_list)
+        if 76 >= type_chance:
+            add_magical_feats(character, feat_list)
         else:
+            add_martial_feats(character, feat_list)
             add_magical_feats(character, feat_list)
     if character.c_class in specialty_set:
         add_specialty_feats(character, feat_list)
@@ -239,12 +234,15 @@ def choosing_feats(character, amount, base, total_choices):
         
     return chosen_feats
 
-def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_column ):
+def special_feats_func(feat_data, extraction_type, special_type):
+    query_i = feat_data.loc[
+        feat_data[special_type] == 1,
+        extraction_type
+    ]
+    return query_i
+def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_column, override = None, special_type = None):
     if class_1 == character.c_class:
         feat_data = pd.read_csv(f'data/feats.csv', sep='|', on_bad_lines='skip')
-        # print("these are all the types", feat_data['type'].unique())
-        feat_types = feat_data['type'].unique()
-        # print("All feat_data types:", feat_types)
         extraction_list = ['name', 'prerequisites', 'description']
         if casting_level_str in ("mid", "high"):
             query_i = feat_data.loc[
@@ -264,6 +262,9 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
                 extraction_list
             ]
 
+        if override is not None:
+            query_i = special_feats_func(feat_data, extraction_list, special_type)
+            
         query_i = query_i.drop_duplicates(subset='name', keep='first')
         feat_result_dict = query_i.set_index('name')[['prerequisites', 'description']].to_dict(orient='index')
         feat_result_dict = transform_result_dict(character, feat_result_dict)
@@ -274,7 +275,7 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
         chosen_feats.remove("")
         cleaned_chosen_feats = capitalize_feats(character, chosen_feats)
         # print("cleaned_chosen_feats: ",cleaned_chosen_feats)
-        character.chosen_feats = cleaned_chosen_feats
+        # character.chosen_feats = cleaned_chosen_feats
 
         return cleaned_chosen_feats
     
