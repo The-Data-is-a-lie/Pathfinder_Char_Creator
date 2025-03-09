@@ -127,7 +127,7 @@ character_json_config = {
 	
 
 }
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='hunter', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=42, low_level=42, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='fighter', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=42, low_level=42, gold_num=1000000):
 
 		userInput = create_new_char
 		print(f'Create a new character? ({create_new_char.lower()})')
@@ -584,7 +584,6 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 		feats = character.feats 
 		print("number of teamwork_feats", character.teamwork_feats)
-		print("teamwork_feats", teamwork_feats)
 		# print("final feats", feats)
 
 		background_traits = randomize_personality_attr(character, "background_traits",4)
@@ -735,7 +734,6 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		print("character.chosen_descriptors", character.chosen_descriptors)
 		print("character.counter_descriptors", character.counter_descriptors)
 
-		print("teamwork_feats", teamwork_feats)
 		return character.data_dict
 
 generate_random_char()

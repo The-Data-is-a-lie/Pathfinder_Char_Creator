@@ -181,7 +181,7 @@ def no_prereq_loop(character, dataset_type, return_choice=None):
         # Handle NaN or missing prerequisites
         if pd.isna(prerequisites) or not prerequisites or str(prerequisites).strip() == "":
             dataset_without_prerequisites.append(name.lower())
-            print(f"[NO PREREQ] Added: {name}")
+            # print(f"[NO PREREQ] Added: {name}")
             continue
 
         try:
@@ -193,7 +193,7 @@ def no_prereq_loop(character, dataset_type, return_choice=None):
             # Special case: if the only component is "" (blank), treat as no prerequisite
             if prerequisites_components == {""}:
                 dataset_without_prerequisites.append(name.lower())
-                print(f"[NO PREREQ] (Blank) Added: {name}")
+                # print(f"[NO PREREQ] (Blank) Added: {name}")
                 continue
 
         except Exception as e:
@@ -204,13 +204,13 @@ def no_prereq_loop(character, dataset_type, return_choice=None):
         # Check if prerequisites are satisfied
         if prerequisites_components.issubset(character.chooseable):
             prereq_list.add(name.lower())
-            print(f"[VALID PREREQ] Added: {name}")
+            # print(f"[VALID PREREQ] Added: {name}")
         else:
             skipped_feats.append(name)
 
-    print("\n[SKIPPED FEATS - Unmet Prerequisites]")
-    for feat in skipped_feats:
-        print(f"- {feat}")
+    # print("\n[SKIPPED FEATS - Unmet Prerequisites]")
+    # for feat in skipped_feats:
+    #     print(f"- {feat}")
 
     if return_choice == 'prereq_list':
         return prereq_list
