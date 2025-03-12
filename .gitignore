@@ -1,3 +1,14 @@
 /Lib/
+
+# Hides password
 Backend\instance\config.py
+
+# ignore all pycache files
+*.pyc
+*.pyo
+*.pyd
+
+# ignore virtual environment
+.venv/
+
 Lib/

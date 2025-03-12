@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, jsonify, session, abort
 from flask_cors import CORS
 from flask_session import Session
 import os
+import redis
 from Backend.start_py import create_app, SECRET_KEY
 
 
@@ -12,9 +13,17 @@ app = create_app()
 # app.secret_key = SECRET_KEY
 CORS(app, supports_credentials=True, origins="*", methods=["GET", "POST", "PUT", "DELETE"], allow_headers=["*"])
 app.config['SECRET_KEY'] = SECRET_KEY
-app.config['SESSION_TYPE'] = 'filesystem'
-app.config['SESSION_COOKIE_SECURE'] = False  # Mark the cookie as secure
+app.config['SESSION_TYPE'] = 'redis'
+app.config['SESSION_KEY_PREFIX'] = 'pathfinder_char_creator:'  # Helps avoid key collisions
+app.config['SESSION_COOKIE_SECURE'] = True 
 app.config['SESSION_COOKIE_SAMESITE'] = 'None'  # Set SameSite attribute to None
+app.config['SESSION_REDIS'] = redis.StrictRedis(host='localhost', port=6739, db=0, decode_responses=True)
+
+# old method
+# app.config['SECRET_KEY'] = SECRET_KEY
+# app.config['SESSION_TYPE'] = 'filesystem'
+# app.config['SESSION_COOKIE_SECURE'] = False
+# app.config['SESSION_COOKIE_SAMESITE'] = 'None'  # Set SameSite attribute to None
 
 Session(app)
 
