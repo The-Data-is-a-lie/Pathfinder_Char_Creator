@@ -16,7 +16,7 @@ from Backend.utils.class_func.armor_and_weapon_chooser import armor_chooser, wea
 from Backend.utils.class_func.chooseable import chooseable_list, chooseable_list_race#, chooseable_list_class 
 from Backend.utils.class_func.class_abilities import get_class_abilities, get_class_abilties_desc  
 # from Backend.utils.class_func.class_ability_amount import class_abilities_amount
-from Backend.utils.class_func.class_specific_feats import class_specific_feats_chooser, extra_feat_number, monk_feats_chooser, ranger_feats_chooser
+from Backend.utils.class_func.class_specific_feats import class_specific_feats_chooser, monk_feats_chooser, ranger_feats_chooser
 from Backend.utils.class_func.domain_inquisition import domain_chance, domain_chooser#, inquisition_chooser
 from Backend.utils.class_func.extra_combat_feats import extra_combat_feats, extra_teamwork_feats
 from Backend.utils.class_func.favored_class import favored_class_calculator, favored_class_option, favored_class_option_chooser
@@ -128,8 +128,9 @@ character_json_config = {
 
 }
 # Non random feats sometiems break at 20+
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='human', class_choice='hunter', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "N", num_dice=6, num_sides=6, high_level=55, low_level=55, gold_num=1000000):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='half-elf', class_choice='hunter', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=12, low_level=12, gold_num=1000000, homebrew_amount=None):
 
+		teamwork_feats = 0
 		userInput = create_new_char
 		print(f'Create a new character? ({create_new_char.lower()})')
 
@@ -181,16 +182,12 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 		flaw = randomize_flaw(character)
 
-		# max_num = int(input("Enter the highest level you want the char to be: "))
-		# min_num = int(input("Enter the lowest level (minimum 2) you want the char to be: "))
-		# character.randomize_level(min_num, max_num)
-
 		# I don't know why, but these keep breaking the game (if low enough level and stats)
 		if character.c_class in ('rogue (unchained)', 'vigilante') and low_level <= 1:
 			low_level = 2
 		if character.c_class == ('rogue (unchained)', 'vigilante') and high_level <= 1:
 			high_level = 2
-		randomize_level(character, low_level, high_level)
+		randomize_level(character, low_level, high_level, len(flaw))
 
 		#hp calculations
 		hit_dice_calc(character)
@@ -579,6 +576,11 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 			character.feats.extend(build_selector_feats)
 			print("build selector feats", build_selector_feats)
 
+		print("character.feats 1_", len(character.feats))
+		print("this is your character feat amount", character.feat_amounts)
+		print("this is your character flaws feat amount", character.flaw_feat_amount)
+		print("this is your character feat amount", character.normal_feat_amount)
+		print("this is your character teamwork_feats", character.teamwork_feats)		
 		# Teamwork feats selector
 		if character.teamwork_feats > 0:
 			teamwork_feats = generic_feat_chooser(character, character.c_class, casting_level_str, 'Null', info_column = 'description', override=True, special_type="teamwork", feat_amount = character.teamwork_feats)
@@ -587,6 +589,11 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		feats = character.feats 
 		print("number of teamwork_feats", character.teamwork_feats)
 		# print("final feats", feats)
+		print("character.feats 2_", len(character.feats))
+		print("this is your character feat amount", character.feat_amounts)
+		print("this is your character flaws feat amount", character.flaw_feat_amount)
+		print("this is your character feat amount", character.normal_feat_amount)
+		print("this is your character teamwork_feats", character.teamwork_feats)		
 
 		background_traits = randomize_personality_attr(character, "background_traits",4)
 		professions = randomize_personality_attr(character, "professions", 3)
@@ -737,7 +744,10 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		print("character.counter_descriptors", character.counter_descriptors)
 
 		print("character.feats", character.feats)
-
+		print("this is your character feat amount", character.feat_amounts)
+		print("this is your character flaws feat amount", character.flaw_feat_amount)
+		print("this is your character feat amount", character.normal_feat_amount)
+		print("this is your character teamwork_feats", character.teamwork_feats)
 		return character.data_dict
 
 generate_random_char()

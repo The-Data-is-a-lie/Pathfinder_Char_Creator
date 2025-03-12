@@ -19,18 +19,6 @@ def class_specific_feats_chooser(character, c_class, name_1, name_2, name_3=None
         print(character.total_feats)
         return character.total_feats
     
-
-def extra_feat_number(character, feat_list, num):
-    feats_chosen = []
-    if character.c_class not in ["ranger", "monk", "unchained_monk"]:
-        if feat_list != []:
-            k = min(num, len(feat_list))
-            feats_chosen = random.sample(feat_list, k)
-            print(feats_chosen)
-        else:
-            character.feat_amounts += num
-    return feats_chosen   
-
 def ranger_feats_chooser(character):
     if character.c_class == 'ranger':
         ranger_feats = [2,6,10,14,18,22,26,30,34,38,42]              

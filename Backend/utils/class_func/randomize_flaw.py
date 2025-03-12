@@ -12,3 +12,4 @@ def randomize_flaw(self):
     else:
         flaw = random.sample(list(self.flaws),4)
     self.flaw = flaw
+    return flaw

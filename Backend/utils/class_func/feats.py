@@ -248,6 +248,7 @@ def special_feats_func(feat_data, extraction_type, special_type):
     return query_i
 def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_column, override = None, special_type = None, feat_amount = None):
     if class_1 == character.c_class:
+        feat_amount -= 1 #otherwise prints out 1 too many feats
         feat_data = pd.read_csv(f'data/feats.csv', sep='|', on_bad_lines='skip')
         # makes prereq NaNs -> empty strings. Without this we can't grab feats with blank prereqs
         feat_data.fillna({'prerequisites': ''}, inplace=True)  
@@ -278,7 +279,7 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
         query_i = query_i.drop_duplicates(subset='name', keep='first')
         feat_result_dict = query_i.set_index('name')[['prerequisites', 'description']].to_dict(orient='index')
         feat_result_dict = transform_result_dict(character, feat_result_dict)
-        print("this is your feat result dict", feat_result_dict)
+        # print("this is your feat result dict", feat_result_dict)
         feat_result_dict.update(feat_result_dict)
         print("this is your feat amount", feat_amount)
         chosen_feats = get_feats_without_prerequisites(character, character.c_class, feat_result_dict, feat_amount=feat_amount)
