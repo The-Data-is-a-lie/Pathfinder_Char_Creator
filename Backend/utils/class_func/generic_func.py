@@ -184,11 +184,18 @@ def no_prereq_loop(character, dataset_type, return_choice=None):
             # print(f"[NO PREREQ] Added: {name}")
             continue
 
+        # if any of these words appear, remove that prerequisite component
+        filter_words = ["ranks", "worship", "craft", "profession", "rank",
+                        "ability to", "skill", "cast", "proficiency",]
+
         try:
             # Clean up prerequisites
             prerequisites = str(prerequisites).lower()
             prerequisites = re.sub(r'\.', '', prerequisites)
-            prerequisites_components = set(p.strip().lower() for p in prerequisites.split(","))
+            prerequisites_components = set(
+                p.strip().lower() for p in prerequisites.split(",")
+                if not any(word in p.strip().lower() for word in filter_words)
+            )
 
             # Special case: if the only component is "" (blank), treat as no prerequisite
             if prerequisites_components == {""}:

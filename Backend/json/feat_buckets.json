@@ -28,20 +28,27 @@
     
             ],
             "full attack": [
-                "two weapon fighting",
-                "improved two weapon fighting",
-                "greater two weapon fighting",
+                "two-weapon fighting",
+                "improved two-weapon fighting",
+                "greater two-weapon fighting",
                 "power attack",
-                "two weapon defense",
-                "improved two weapon defense",
-                "greater two weapon defense",
+                "improved two-weapon defense",
+                "greater two-weapon defense",
                 "vital strike",
                 "improved vital strike",
                 "greater vital strike",
                 "weapon focus",
                 "greater weapon focus",
                 "weapon specialization",
-                "greater weapon specialization"
+                "greater weapon specialization",
+                "power attack",
+                "two-weapon defense",
+                "two-weapon rend",
+                "break guard",
+                "two-weapon feint",
+                "improved two-weapon feint",
+                "cornugon smash"                
+
     
             ],
             "cmb": [
@@ -104,7 +111,8 @@
                 "outflank",
                 "precise strike",
                 "aid another",
-                "deathless initiate"
+                "deathless initiate",
+                "ironguts"
 
                 ]
     },
@@ -236,13 +244,29 @@
                 "improved lightning reflexes",
                 "great fortitude",
                 "improved great fortitude",
+                "lightning reflexes",
+                "improved lightning reflexes",
                 "toughness",
                 "improved toughness",
+                "lunge",
                 "dodge",
                 "endurance",
                 "diehard",
                 "greater diehard",
-                "run"
+                "run",
+                "nemesis",
+                "noble scion",
+                "porcupine defense",
+                "stand still",
+                "step up",
+                "improved step up",
+                "greater step up",
+                "combat reflexes",
+                "mobility",
+                "seize the opportunity",
+                "aid another",
+                "combat expertise"
+
             ],
             "roleplay": [
                 "blind fight",
@@ -273,7 +297,8 @@
                 "demon hunter",
                 "demonic nemsis",
                 "demonologist",
-                "friend to animals"
+                "friend to animals",
+                "noble scion"
 
             ]
     }
