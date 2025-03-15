@@ -1,10 +1,10 @@
 #Internal Imports
-from Backend.utils import data
+from utils import data
 import json
-from Backend.utils.data import regions, weapon_groups_region, skills,  languages, hair_colors, hair_types, appearance, eye_colors#, path_of_war_class,evil_deities, good_deities, neutral_deities,
-#from Backend.utils.data import archetypes
-from Backend.utils.util import   roll_dice#,format_text, chooseClass, appendAttrData,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
-from Backend.utils.markdown import style
+from utils.data import regions, weapon_groups_region, skills,  languages, hair_colors, hair_types, appearance, eye_colors#, path_of_war_class,evil_deities, good_deities, neutral_deities,
+#from utils.data import archetypes
+from utils.util import   roll_dice#,format_text, chooseClass, appendAttrData,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
+from utils.markdown import style
 import random
 import sys
 import re
@@ -17,9 +17,9 @@ import pandas as pd
 from operator import add
 
 
-from Backend.utils.class_func.extra_combat_feats import *
-from Backend.utils.class_func.generic_func import *
-from Backend.utils.class_func.chooseable import *
+from utils.class_func.extra_combat_feats import *
+from utils.class_func.generic_func import *
+from utils.class_func.chooseable import *
 
 # simply create a new character
 class Character:

@@ -1,6 +1,6 @@
 import random, re
-from Backend.utils.class_func.race_func import *
-from Backend.utils.data import languages
+from utils.class_func.race_func import *
+from utils.data import languages
 def language_chooser(character):
     full_race_data_grab = full_race_data(character)
     language_text = full_race_data_grab.get(character.chosen_race, {}).get('Languages', [])        

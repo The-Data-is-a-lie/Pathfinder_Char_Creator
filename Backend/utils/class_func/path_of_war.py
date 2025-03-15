@@ -1,5 +1,5 @@
 import random
-from Backend.utils import data
+from utils import data
 def randomize_path_of_war_num(self, path_of_war_class):
     self.path = 0
     chance = random.randint(1,100)

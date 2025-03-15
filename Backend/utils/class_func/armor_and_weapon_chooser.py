@@ -1,5 +1,5 @@
 import random
-from Backend.utils import data
+from utils import data
 # start of Armor + Weapon choosing
     
 # Start of AC calculation

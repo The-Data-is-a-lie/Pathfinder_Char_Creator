@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, jsonify, session, abort
 from flask_cors import CORS
 from flask_session import Session
 import os
-from Backend.start_py import create_app, SECRET_KEY
+from start_py import create_app, SECRET_KEY
 
 
 app = create_app()
@@ -48,7 +48,7 @@ def process_input_values(input_values):
 
         # Import and call generate_random_char
         # uncomment below if you want to use permanent website
-        # from Backend.main import generate_random_char
+        # from main import generate_random_char
 
         # Need to use main_test for localhost testing
         # Need to use Backend.main for permanent websites

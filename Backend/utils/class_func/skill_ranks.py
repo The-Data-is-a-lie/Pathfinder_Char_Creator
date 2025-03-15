@@ -1,4 +1,4 @@
-from Backend.utils import data
+from utils import data
 import random, re
 # Start of major task: skills assignment
 

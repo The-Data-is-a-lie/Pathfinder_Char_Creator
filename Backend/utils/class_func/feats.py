@@ -4,8 +4,8 @@ from math import ceil, floor
 
 
 # Importing custom functions
-from Backend.utils.class_func.generic_func import *
-from Backend.utils.class_func.chooseable import *
+from utils.class_func.generic_func import *
+from utils.class_func.chooseable import *
 
 def feat_spell_searcher(character, class_1, chosen_set, types, info_column, info_column_2 = None):
     if chosen_set == None:
@@ -283,7 +283,7 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
         feat_result_dict.update(feat_result_dict)
         #remove feats if not spellcaster
         if casting_level_str not in ("low", "mid", "high"):
-            feat_result_dict = remove_spell_caster_feats(feat_result_dict)
+            fet_result_dict = remove_spell_caster_feats(feat_result_dict)
 
         print("this is your feat amount", feat_amount)
         chosen_feats = get_feats_without_prerequisites(character, character.c_class, feat_result_dict, feat_amount=feat_amount)

@@ -1,4 +1,4 @@
-from Backend.utils.data import languages
+from utils.data import languages
 def druidic_flag_assigner(character):
     if character.c_class.lower() == 'druid':
         character.languages = languages.append('Druidic')

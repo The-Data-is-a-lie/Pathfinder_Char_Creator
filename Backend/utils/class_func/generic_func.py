@@ -1,4 +1,4 @@
-from Backend.utils import data
+from utils import data
 import random, re
 from math import floor, ceil
 
@@ -6,7 +6,7 @@ from math import floor, ceil
 def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name_2 = None, dataset_name_3 = None, multiple = None, level=None, level_2 = None, alternate_dataset = False, dict_name="Talents") :
     if character.c_class == class_1: 
         dataset = getattr(character, class_1, {}).get(dataset_name, {}).keys()
-        from Backend.utils.class_func.feats import bonus_searcher
+        from utils.class_func.feats import bonus_searcher
 
         if not multiple:
             choice = random.choice(list(dataset))

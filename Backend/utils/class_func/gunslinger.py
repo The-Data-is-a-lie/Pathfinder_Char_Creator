@@ -1,6 +1,6 @@
 from math import floor, ceil
 import random
-from Backend.utils import data
+from utils import data
 
 def choose_gun_func(character, c_class):
     if c_class.lower() != 'gunslinger':

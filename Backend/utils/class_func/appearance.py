@@ -1,6 +1,6 @@
 import random
-from Backend.utils import data
-from Backend.utils.util import roll_dice
+from utils import data
+from utils.util import roll_dice
 def randomize_apperance_attr(character, apperance_attribute, upper_limit=1):
     random_app_number = random.randint(1,upper_limit)
     potential_apperances = getattr(data,apperance_attribute)

@@ -1,6 +1,6 @@
 
 from flask import Flask
-from instance.config import SECRET_KEY
+from config.config import SECRET_KEY
 
 
 def check_origin(origin):

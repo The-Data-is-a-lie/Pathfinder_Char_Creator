@@ -1,5 +1,5 @@
 import random
-from Backend.utils import data
+from utils import data
 
 def randomize_personality_attr(self, personality_attribute, upper_limit=1):
     # redundant, JAVASCRIPT has a CSV file with all of these

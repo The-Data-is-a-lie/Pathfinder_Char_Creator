@@ -1,6 +1,6 @@
 import random
 from math import floor
-from Backend.utils.util import roll_dice
+from utils.util import roll_dice
 
 def roll_stats(character, num_dice, num_sides):
     if not isinstance(num_dice, int) or num_dice <= 0: 
