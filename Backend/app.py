@@ -1,5 +1,6 @@
 # # To run this you either need to go into CMD or terminal (after typing C:\Python312) and enter this set PYTHONPATH=C:\Python312\Lib\site-packages (because it makes sure we use the right location)
 
+# External imports
 from flask import Flask, render_template, request, jsonify, session, abort
 from flask_cors import CORS
 from flask_session import Session
@@ -10,6 +11,8 @@ from flask_limiter.util import get_remote_address
 from redis import Redis
 from datetime import timedelta
 import os
+
+# custom function imports
 from start_py import create_app, SECRET_KEY
 
 
