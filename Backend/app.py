@@ -3,6 +3,9 @@
 from flask import Flask, render_template, request, jsonify, session, abort
 from flask_cors import CORS
 from flask_session import Session
+# limits total calls per IP per minute:
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 # from flask.sessions import SecureCookieSessionInterface
 from redis import Redis
 from datetime import timedelta
@@ -11,8 +14,14 @@ from start_py import create_app, SECRET_KEY
 
 
 app = create_app()
-# app = Flask(__name__)
-# app.secret_key = SECRET_KEY
+#limit total # of calls
+# Initialize Flask-Limiter
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=["2000 per day", "50 per hour"]
+)
+
 CORS(app, supports_credentials=True, origins="*", methods=["GET", "POST", "PUT", "DELETE"], allow_headers=["*"])
 app.config['SECRET_KEY'] = SECRET_KEY
 app.config['SESSION_PERMANENT'] = False  # so sessions can expire
@@ -23,7 +32,12 @@ app.config['SESSION_COOKIE_SAMESITE'] = 'None'  # Allows for host + requestor to
 
 # Configure session to use Redis
 app.config['SESSION_TYPE'] = 'redis'
-app.config['SESSION_REDIS'] = Redis(host=os.getenv('REDIS_HOST', 'localhost'), port=int(os.getenv('REDIS_PORT', 6379)))
+# dev
+# app.config['SESSION_REDIS'] = Redis(host=os.getenv('REDIS_HOST', 'localhost'), port=int(os.getenv('REDIS_PORT', 6379))) 
+
+# prod
+app.config['SESSION_REDIS'] = Redis.from_url(os.getenv('REDIS_URL', 'redis://localhost:6379')) 
+
 Session(app)
 
 # May break browsers because data sent is too large
@@ -90,7 +104,8 @@ def process_input_values(input_values):
 
 # Define execute route
 @app.route('/execute', methods=['POST'])
-def execute():
+@limiter.limit("20 per minute")
+def execute():    
     input_values = list(request.form.get(f'input{i}') for i in range(1, 14))
     results = process_input_values(input_values)
     return jsonify(results)
@@ -98,6 +113,7 @@ def execute():
 
 # Define get_character_data route
 @app.route('/get_character_data', methods=['GET', 'POST'])
+@limiter.limit("20 per minute")
 def get_character_data():
     try:
         character_data = session.get('character_data', {})
@@ -110,6 +126,7 @@ def get_character_data():
 
 
 @app.route('/update_character_data', methods=['GET', 'POST'])
+@limiter.limit("20 per minute")
 def update_character_data():
     data = request.json
     non_input_data = []
@@ -127,4 +144,5 @@ def update_character_data():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    # app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=port, debug=False) # debug when production = dangerous
