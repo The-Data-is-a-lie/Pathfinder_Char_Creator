@@ -4,6 +4,9 @@ FROM python:3.10-slim
 # Set the working directory in the container
 WORKDIR /app
 
+# Set PYTHONPATH to include the Backend directory
+ENV PYTHONPATH=/app/Backend
+
 # Copy the requirements file into the container
 COPY requirements-docker.txt .
 

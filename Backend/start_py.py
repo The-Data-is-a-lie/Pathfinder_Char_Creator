@@ -1,5 +1,5 @@
 from flask import Flask
-from config.config import SECRET_KEY
+from config.config import SECRET_KEY, redis_url
 
 
 def create_app():

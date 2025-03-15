@@ -1,19 +1,20 @@
 # # To run this you either need to go into CMD or terminal (after typing C:\Python312) and enter this set PYTHONPATH=C:\Python312\Lib\site-packages (because it makes sure we use the right location)
 
 # External imports
-from flask import Flask, render_template, request, jsonify, session, abort
-from flask_cors import CORS
-from flask_session import Session
+from flask                  import Flask, render_template, request, jsonify, session, abort
+from flask_cors             import CORS
+from flask_session          import Session
 # limits total calls per IP per minute:
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
+from flask_limiter          import Limiter
+from flask_limiter.util     import get_remote_address
 # from flask.sessions import SecureCookieSessionInterface
-from redis import Redis
-from datetime import timedelta
+from redis                  import Redis
+from datetime               import timedelta
 import os
 
 # custom function imports
-from start_py import create_app, SECRET_KEY
+from start_py import create_app, SECRET_KEY, redis_url
+from main_test import generate_random_char
 
 
 app = create_app()
@@ -24,21 +25,18 @@ limiter = Limiter(
     app=app,
     default_limits=["200000 per day", "200 per hour"]
 )
+# Check if the app is running locally or in production
 
-CORS(app, supports_credentials=True, origins="*", methods=["GET", "POST", "PUT", "DELETE"], allow_headers=["*"])
-app.config['SECRET_KEY'] = SECRET_KEY
-app.config['SESSION_PERMANENT'] = False  # so sessions can expire
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)  # Session expires after 30 minutes
-app.config['SESSION_COOKIE_SECURE'] = True  # Mark the cookie as secure
-app.config['SESSION_COOKIE_SAMESITE'] = 'None'  # Allows for host + requestor to be on diff. servers
+redis = Redis.from_url(redis_url)
 
-
-# Configure session to use Redis
+# Flask Configuration
 app.config['SESSION_TYPE'] = 'redis'
-app.config['SESSION_REDIS'] = Redis(
-    host=os.getenv('REDIS_HOST', 'localhost'),
-    port=int(os.getenv('REDIS_PORT', 6379))
-)
+app.config['SESSION_REDIS'] = Redis.from_url(redis_url)
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_secret')
+app.config['SESSION_PERMANENT'] = False
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)
+app.config['SESSION_COOKIE_SECURE'] = True
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'
 # dev
 # app.config['SESSION_REDIS'] = Redis(host=os.getenv('REDIS_HOST', 'localhost'), port=int(os.getenv('REDIS_PORT', 6379))) 
 
@@ -88,7 +86,6 @@ def process_input_values(input_values):
 
         # Need to use main_test for localhost testing
         # Need to use Backend.main for permanent websites
-        from main_test import generate_random_char
         # global character_data
         # character_data = generate_random_char(create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, userInput_gender, truly_random_feats, num_dice, num_sides, high_level, low_level, gold_num)
 
