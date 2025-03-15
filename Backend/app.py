@@ -22,7 +22,7 @@ app = create_app()
 limiter = Limiter(
     get_remote_address,
     app=app,
-    default_limits=["2000 per day", "50 per hour"]
+    default_limits=["200000 per day", "200 per hour"]
 )
 
 CORS(app, supports_credentials=True, origins="*", methods=["GET", "POST", "PUT", "DELETE"], allow_headers=["*"])
@@ -35,11 +35,15 @@ app.config['SESSION_COOKIE_SAMESITE'] = 'None'  # Allows for host + requestor to
 
 # Configure session to use Redis
 app.config['SESSION_TYPE'] = 'redis'
+app.config['SESSION_REDIS'] = Redis(
+    host=os.getenv('REDIS_HOST', 'localhost'),
+    port=int(os.getenv('REDIS_PORT', 6379))
+)
 # dev
 # app.config['SESSION_REDIS'] = Redis(host=os.getenv('REDIS_HOST', 'localhost'), port=int(os.getenv('REDIS_PORT', 6379))) 
 
 # prod
-app.config['SESSION_REDIS'] = Redis.from_url(os.getenv('REDIS_URL', 'redis://localhost:6379')) 
+# app.config['SESSION_REDIS'] = Redis.from_url(os.getenv('REDIS_URL', 'redis://localhost:6379')) 
 
 Session(app)
 
@@ -107,7 +111,7 @@ def process_input_values(input_values):
 
 # Define execute route
 @app.route('/execute', methods=['POST'])
-@limiter.limit("20 per minute")
+@limiter.limit("60 per minute")
 def execute():    
     input_values = list(request.form.get(f'input{i}') for i in range(1, 14))
     results = process_input_values(input_values)
@@ -116,7 +120,7 @@ def execute():
 
 # Define get_character_data route
 @app.route('/get_character_data', methods=['GET', 'POST'])
-@limiter.limit("20 per minute")
+@limiter.limit("60 per minute")
 def get_character_data():
     try:
         character_data = session.get('character_data', {})
@@ -129,7 +133,7 @@ def get_character_data():
 
 
 @app.route('/update_character_data', methods=['GET', 'POST'])
-@limiter.limit("20 per minute")
+@limiter.limit("60 per minute")
 def update_character_data():
     data = request.json
     non_input_data = []
