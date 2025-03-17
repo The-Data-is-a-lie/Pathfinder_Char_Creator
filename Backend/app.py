@@ -23,7 +23,7 @@ app = create_app()
 limiter = Limiter(
     get_remote_address,
     app=app,
-    default_limits=["200000 per day", "200 per hour"]
+    default_limits=["4000 per day", "500 per hour", "120 per minute"]
 )
 # Check if the app is running locally or in production
 

@@ -186,7 +186,9 @@ def no_prereq_loop(character, dataset_type, return_choice=None):
 
         # if any of these words appear, remove that prerequisite component
         filter_words = ["ranks", "worship", "craft", "profession", "rank",
-                        "ability to", "skill", "cast", "proficiency",]
+                        "ability to", "skill", "cast", "proficiency", "member"
+                        "combat expertise", "power attack", "piranha strike",
+                        "attuned"]
 
         try:
             # Clean up prerequisites

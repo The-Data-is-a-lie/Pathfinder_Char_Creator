@@ -252,6 +252,8 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
         feat_data = pd.read_csv(f'data/feats.csv', sep='|', on_bad_lines='skip')
         # makes prereq NaNs -> empty strings. Without this we can't grab feats with blank prereqs
         feat_data.fillna({'prerequisites': ''}, inplace=True)  
+        #----- grab divine casters list
+        divine_casters=getattr(data, "divine_casters")        
 
         extraction_list = ['name', 'prerequisites', 'description']
         if casting_level_str in ("mid", "high"):
@@ -281,9 +283,16 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
         feat_result_dict = transform_result_dict(character, feat_result_dict)
         # print("this is your feat result dict", feat_result_dict)
         feat_result_dict.update(feat_result_dict)
-        #remove feats if not spellcaster
+
+        # remove feats if not spellcaster
         if casting_level_str not in ("low", "mid", "high"):
-            fet_result_dict = remove_spell_caster_feats(feat_result_dict)
+            feat_result_dict = remove_spell_caster_feats(feat_result_dict)
+        # remove feats with 'arcane' words if a divine caster
+        if character.c_class in divine_casters and casting_level_str in ("low", "mid", "high"):
+            feat_result_dict = remove_arcane_feats(feat_result_dict)
+        # remove feats with 'divine' words if a arcane caster
+        if character.c_class not in divine_casters and casting_level_str in ("low", "mid", "high"):
+            feat_result_dict = remove_divine_feats(feat_result_dict)
 
         print("this is your feat amount", feat_amount)
         chosen_feats = get_feats_without_prerequisites(character, character.c_class, feat_result_dict, feat_amount=feat_amount)
@@ -296,7 +305,25 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
         return cleaned_chosen_feats
 
 def remove_spell_caster_feats(feats):
-    spell_word_list = ['spell', 'cast', 'dispel']
+    spell_word_list = ['spell', 'cast', 'dispel', 'aracane', 'summon', 'teleport']
+    feats = {name: info for name, info in feats.items()
+            if not  any(word in name.lower() or
+                        word in info.get('description', '').lower() or
+                        word in info.get('benefits', '').lower()
+                        for word in spell_word_list)}
+    return feats
+
+def remove_arcane_feats(feats):
+    spell_word_list = ['arcane']
+    feats = {name: info for name, info in feats.items()
+            if not  any(word in name.lower() or
+                        word in info.get('description', '').lower() or
+                        word in info.get('benefits', '').lower()
+                        for word in spell_word_list)}
+    return feats
+
+def remove_divine_feats(feats):
+    spell_word_list = ['divine']
     feats = {name: info for name, info in feats.items()
             if not  any(word in name.lower() or
                         word in info.get('description', '').lower() or
