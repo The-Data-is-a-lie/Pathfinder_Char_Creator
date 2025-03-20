@@ -278,7 +278,6 @@ def spells_known_selection(character,base_classes,divine_casters):
                 select_spell=day_list[i]         
 
                 query_i = alignment_spell_limits(character, spell_data, i, "alignment_exclusion") 
-                print('weight', query_i['weight'])                       
                 query_i = query_i.sample(weights=query_i['weight'], frac=1.0)
                 spells = query_i[:select_spell]
                 spell_list = spells['name'].tolist()

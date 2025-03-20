@@ -136,7 +136,9 @@ character_json_config = {
 
 }
 # Non random feats sometiems break at 20+
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='half-elf', class_choice='paladin', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=45, low_level=45, gold_num=1000000, homebrew_amount=None):
+# Make sure to make a flag for adding metzofitz feats later
+# Make sure to add a flag for path of war feats later
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='half-elf', class_choice='hunter', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=45, low_level=45, gold_num=1000000, homebrew_amount=None):
 
 		teamwork_feats = 0
 		userInput = create_new_char
@@ -758,7 +760,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		print("this is your character teamwork_feats", character.teamwork_feats)
 
 
-		print("character.spell_list_choose_from", character.spell_list_choose_from)
+		# print("character.spell_list_choose_from", character.spell_list_choose_from)
 		return character.data_dict
 
 generate_random_char()
