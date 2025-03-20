@@ -9,6 +9,7 @@ from flask_limiter          import Limiter
 from flask_limiter.util     import get_remote_address
 # from flask.sessions import SecureCookieSessionInterface
 from redis                  import Redis
+import redis
 from datetime               import timedelta
 import os
 
@@ -33,7 +34,6 @@ limiter = Limiter(
     default_limits=["4000 per day", "500 per hour", "120 per minute"]
 )
 # Check if the app is running locally or in production
-
 redis = Redis.from_url(redis_url)
 
 # Flask Configuration
@@ -41,7 +41,7 @@ app.config['SESSION_TYPE'] = 'redis'
 app.config['SESSION_REDIS'] = Redis.from_url(redis_url)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_secret')
 app.config['SESSION_PERMANENT'] = False
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=5)
 app.config['SESSION_COOKIE_SECURE'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'None'
 # dev
@@ -63,6 +63,7 @@ Session(app)
 
 
 # Ping redis to check if it's working
+print(f"Redis URL: {redis_url}")  # Debugging step to check if the Redis URL is being set correctly
 try:
     redis = Redis.from_url(redis_url)
     # Check if Redis is connected
