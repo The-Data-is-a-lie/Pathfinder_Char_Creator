@@ -269,8 +269,8 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
         if extra_feats_flag:
             metzofitz_feat_data = grab_and_clean_feats('data/metzofitz_feats.csv')
             feat_data = pd.concat([feat_data, metzofitz_feat_data], ignore_index=True)
-            print("Added Mezofitz feats", metzofitz_feat_data)
-            print("Added Mezofitz feats Electric Boogaloo", feat_data)
+            # print("Added Mezofitz feats", metzofitz_feat_data)
+            # print("Added Mezofitz feats Electric Boogaloo", feat_data)
 
         #----- grab divine casters list
         divine_casters=getattr(data, "divine_casters")        
@@ -298,7 +298,7 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
         if override is not None:
             query_i = special_feats_func(feat_data, extraction_list, special_type)
         
-        print("added feats", query_i)
+        # print("added feats", query_i)
         query_i = query_i.drop_duplicates(subset='name', keep='first')
         feat_result_dict = query_i.set_index('name')[['prerequisites', 'description']].to_dict(orient='index')
         feat_result_dict = transform_result_dict(character, feat_result_dict)
