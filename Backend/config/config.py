@@ -4,10 +4,10 @@ SECRET_KEY = 'ldkaf0-92ui0[9kl;jlk;jdf98ashj9f8das]l;jfads0989uyio3aw98ioph'
 # prod
 # orig
 # redis_url = "redis://red-cvakqvtrie7s7395c1m0:6379"  # Your Redis URL
-# 2ndary
-# redis_url = "redis://red-cvdsbdqn91rc73bb4tq0:6379"  # Your Redis URL
+# Public working REDIS
+redis_url = "redis://default:0Ssx3oi5ZgVlvPhLzcs2jtxHKQpmb0ob@redis-14319.c270.us-east-1-3.ec2.redns.redis-cloud.com:14319"  # Your Redis URL
 # dev
-redis_url = os.getenv("REDIS_URL", "redis://redis:6379")
+# redis_url = os.getenv("REDIS_URL", "redis://redis:6379")
 
 
 class Config:
