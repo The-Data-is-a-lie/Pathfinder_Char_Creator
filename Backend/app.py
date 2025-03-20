@@ -18,6 +18,13 @@ from main_test import generate_random_char
 
 
 app = create_app()
+
+#for allowing all origins
+CORS(app)
+
+# When we want to limit
+# CORS(app, origins=['http://localhost:30000', 'http://localhost:3000', 'http://localhost:5000'], supports_credentials=True)  # Allow CORS for the frontend
+
 #limit total # of calls
 # Initialize Flask-Limiter
 limiter = Limiter(
@@ -52,6 +59,16 @@ Session(app)
 # app.config['SESSION_TYPE'] = 'filesystem'
 # app.config['SESSION_FILE_DIR'] = 'flask_session_data/'  # Where session files will be stored
 # Session(app)
+
+
+
+# Ping redis to check if it's working
+try:
+    redis = Redis.from_url(redis_url)
+    # Check if Redis is connected
+    redis.ping()
+except Exception as e:
+    print(f"Error connecting to Redis: {e}")
 
 @app.route('/', methods=['GET', 'POST'])
 
@@ -149,4 +166,4 @@ def update_character_data():
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     # app.run(host='0.0.0.0', port=port, debug=True)
-    app.run(host='0.0.0.0', port=port, debug=False) # debug when production = dangerous
+    app.run(host='0.0.0.0', port=port, debug=True) # debug when production = dangerous
