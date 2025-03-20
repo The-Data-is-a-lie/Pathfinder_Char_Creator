@@ -151,11 +151,16 @@ def alignment_spell_limits(character, spell_data, i, alignment_exclusion):
             excluded_columns.add(excluded_column)
 
     condition = spell_data[character.c_class_for_spells] == i
+    print("condition", condition)
 
     for col in excluded_columns:
         condition &= (spell_data[col] == 0)
-
+    # Check if any condition is True
+    if condition.any():
+        print("condition", condition)
+    print("extraction_list", extraction_list)
     query_i = spell_data.loc[condition, extraction_list]
+    print('alignment_spell_limits query_i', query_i)
     # selecting spells by randomly selected thematic schools + descriptors
     query_i = limit_school_func(character, query_i)
     query_i = limit_descriptor_func(character, query_i)
@@ -176,14 +181,16 @@ def spell_theme_func(character, spell_data):
 
     character.specialty_schools = specialty_schools
     character.counter_schools = counter_schools
-
+    return []
 
 
 def limit_school_func(character, query_i):
     #apply weights
+    print("paladin running")
     query_i['weight'] = 1
     query_i.loc[query_i['school'].isin(character.specialty_schools), 'weight'] = 100
     query_i.loc[query_i['school'].isin(character.counter_schools), 'weight'] = .1
+    print('weight', query_i['weight'])
     return query_i.sort_values(by='weight', ascending=False)
 
 def limit_descriptor_func(character, query_i):
@@ -221,15 +228,22 @@ def spells_known_selection(character,base_classes,divine_casters):
     #extraction_list = ['name', character.c_class]                
     character.spell_list = []
     character.casting_level_string = str(character.classes[character.c_class]["casting level"].lower())         
+        # the character has no cantrips, so they need to start at level 1 spells (slot 1)
+
     base_classes=getattr(data,base_classes)
     divine_casters=getattr(data, divine_casters)
+    # instantiate the spell list counter
     i=0
+    if character.casting_level_string.lower() == 'low':
+        i = 1
+
     character.spell_list_choose_from=[]
     all_spell_names = []
     
     #separating the lists
     known_list = character.spells_known_list
     day_list = character.spells_per_day_list
+
 
     #we need to make sure we aren't grabbing null or our program will break
     if character.casting_level_string != 'none' and character.c_class in base_classes and character.c_class not in divine_casters:
@@ -247,10 +261,6 @@ def spells_known_selection(character,base_classes,divine_casters):
                 character.spell_list_choose_from.append(spell_list)
 
                 i += 1 
-
-
-
-
             else:
                 break     
 
@@ -267,7 +277,8 @@ def spells_known_selection(character,base_classes,divine_casters):
                 
                 select_spell=day_list[i]         
 
-                query_i = alignment_spell_limits(character, spell_data, i, "alignment_exclusion")                        
+                query_i = alignment_spell_limits(character, spell_data, i, "alignment_exclusion") 
+                print('weight', query_i['weight'])                       
                 query_i = query_i.sample(weights=query_i['weight'], frac=1.0)
                 spells = query_i[:select_spell]
                 spell_list = spells['name'].tolist()

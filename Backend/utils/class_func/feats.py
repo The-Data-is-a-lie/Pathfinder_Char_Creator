@@ -246,12 +246,33 @@ def special_feats_func(feat_data, extraction_type, special_type):
         extraction_type
     ]
     return query_i
-def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_column, override = None, special_type = None, feat_amount = None):
+
+def grab_and_clean_feats(location):
+    feat_data = pd.read_csv(f'{location}', sep='|', on_bad_lines='skip')
+    # makes prereq NaNs -> empty strings. Without this we can't grab feats with blank prereqs
+    feat_data.fillna({'prerequisites': ''}, inplace=True)
+    feat_data.fillna({'description': ''}, inplace=True)
+    feat_data.fillna({'benefits': ''}, inplace=True)
+    return feat_data
+
+def create_feat_dict(feat_data, extraction_list):
+    print("baba booey")
+
+def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_column, override = None, special_type = None, feat_amount = None, extra_feats_flag = False):
     if class_1 == character.c_class:
         feat_amount -= 1 #otherwise prints out 1 too many feats
-        feat_data = pd.read_csv(f'data/feats.csv', sep='|', on_bad_lines='skip')
-        # makes prereq NaNs -> empty strings. Without this we can't grab feats with blank prereqs
-        feat_data.fillna({'prerequisites': ''}, inplace=True)  
+        feat_data = grab_and_clean_feats('data/feats.csv')
+
+        # Temporary add mezofitz feats
+        extra_feats_flag = True
+        # Add metzofitz feats (if we want them)
+        if extra_feats_flag:
+            metzofitz_feat_data = grab_and_clean_feats('data/metzofitz_feats.csv')
+            # feat_data = pd.concat([feat_data, metzofitz_feat_data], ignore_index=True)
+            feat_data = metzofitz_feat_data
+            print("Added Mezofitz feats", metzofitz_feat_data)
+            print("Added Mezofitz feats Electric Boogaloo", feat_data)
+
         #----- grab divine casters list
         divine_casters=getattr(data, "divine_casters")        
 
