@@ -4,18 +4,26 @@
 from flask                  import Flask, render_template, request, jsonify, session, abort
 from flask_cors             import CORS
 from flask_session          import Session
+from dotenv                 import load_dotenv
 # limits total calls per IP per minute:
 from flask_limiter          import Limiter
 from flask_limiter.util     import get_remote_address
 # from flask.sessions import SecureCookieSessionInterface
 from redis                  import Redis
-import redis
 from datetime               import timedelta
 import os
 
 # custom function imports
-from start_py import create_app, SECRET_KEY, redis_url
+from start_py import create_app
 from main_test import generate_random_char
+
+
+
+#load environment variables
+load_dotenv()
+# Access redis URL
+redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379')
+secret_key = os.getenv('SECRET_KEY')
 
 
 app = create_app()
@@ -31,7 +39,7 @@ CORS(app)
 limiter = Limiter(
     get_remote_address,
     app=app,
-    default_limits=["4000 per day", "500 per hour", "120 per minute"]
+    default_limits=["4000 per day", "500 per hour", "60 per minute"]
 )
 # Check if the app is running locally or in production
 redis = Redis.from_url(redis_url)
@@ -41,7 +49,7 @@ app.config['SESSION_TYPE'] = 'redis'
 app.config['SESSION_REDIS'] = Redis.from_url(redis_url)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_secret')
 app.config['SESSION_PERMANENT'] = False
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=5)
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(seconds=10)
 app.config['SESSION_COOKIE_SECURE'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'None'
 # dev
@@ -59,17 +67,6 @@ Session(app)
 # app.config['SESSION_TYPE'] = 'filesystem'
 # app.config['SESSION_FILE_DIR'] = 'flask_session_data/'  # Where session files will be stored
 # Session(app)
-
-
-
-# Ping redis to check if it's working
-print(f"Redis URL: {redis_url}")  # Debugging step to check if the Redis URL is being set correctly
-try:
-    redis = Redis.from_url(redis_url)
-    # Check if Redis is connected
-    redis.ping()
-except Exception as e:
-    print(f"Error connecting to Redis: {e}")
 
 @app.route('/', methods=['GET', 'POST'])
 

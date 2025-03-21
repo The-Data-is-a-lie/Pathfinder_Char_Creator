@@ -3,13 +3,11 @@ services:
     build: .
     ports:
       - "5000:5000"
+    environment:
+      - REDIS_URL=${REDIS_URL}
     depends_on:
       - redis
-    environment:
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-
   redis:
-    image: "redis:alpine"
+    image: redis:alpine
     ports:
       - "6379:6379"
