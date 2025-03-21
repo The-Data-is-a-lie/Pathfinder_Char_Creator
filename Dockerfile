@@ -7,11 +7,14 @@ WORKDIR /app
 # Set PYTHONPATH to include the Backend directory
 ENV PYTHONPATH=/app/Backend
 
+# install uv (runs much faster than pip)
+RUN pip install uv
+
 # Copy the requirements file into the container
 COPY requirements-docker.txt .
 
 # Install the dependencies
-RUN pip install --no-cache-dir -r requirements-docker.txt
+RUN uv pip install --no-cache-dir --system -r requirements-docker.txt
 
 # Copy the rest of the application code into the container
 COPY . .
