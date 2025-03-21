@@ -17,7 +17,6 @@ from main_test import generate_random_char
 load_dotenv()
 # Access redis URL
 redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379')
-secret_key = os.getenv('SECRET_KEY')
 
 app = create_app()
 
@@ -28,15 +27,17 @@ CORS(app)
 limiter = Limiter(
     get_remote_address,
     app=app,
-    default_limits=["4000 per day", "500 per hour", "60 per minute"]
+    default_limits=["4000 per day", "500 per hour", "60 per minute"],
+    storage_uri=redis_url  # Set the Redis URL as the storage backend
 )
 
 # Flask Configuration
 app.config['SESSION_TYPE'] = 'redis'
 app.config['SESSION_REDIS'] = Redis.from_url(redis_url)
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_secret')
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['SESSION_PERMANENT'] = False
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(seconds=10)
+# Needs enough time or multiple workers break
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(seconds=100)
 app.config['SESSION_COOKIE_SECURE'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'None'
 
@@ -90,4 +91,4 @@ def update_character_data():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)  # debug when production = dangerous
+    app.run(host='0.0.0.0', port=port, debug=False)  # debug when production = dangerous
