@@ -174,15 +174,14 @@ class Character:
         
 
     def _load_jsons(self, json_config):
-            for key, file_path in json_config.items():
-                with open(file_path) as f:
-                    data = json.load(f)
-                    setattr(self, key, data)
-                    if isinstance(data, list):
-                        random.shuffle(getattr(self, key))
-                    if key == 'last_names_regions':
-                        setattr(self, 'last_names_regions', data)
-                        setattr(self, 'regions', [k for k in data.keys()])
+        for key, loader in json_config.items():
+            data = loader.load()  # Call the load method of LazyLoader
+            setattr(self, key, data)
+            if isinstance(data, list):
+                random.shuffle(getattr(self, key))
+            if key == 'last_names_regions':
+                setattr(self, 'last_names_regions', data)
+                setattr(self, 'regions', [k for k in data.keys()])
 
 
     def assign_gold(self,gold, gold_num):
@@ -264,4 +263,16 @@ class Character:
 def CreateNewCharacter(character_json_config):
     new_char = Character(character_json_config)
     return new_char
+
+# Only loads when we need to use the file
+class Load_when_needed:
+    def __init__(self, file_path):
+        self.file_path = file_path
+        self.data = None
+
+    def load(self):
+        if self.data is None:
+            with open(self.file_path, 'r') as file:
+                self.data = json.load(file)
+        return self.data
 
