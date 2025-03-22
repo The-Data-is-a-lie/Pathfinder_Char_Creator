@@ -7,13 +7,8 @@ def choose_alignment(self, alignments, alignment_input):
     self.alignment = alignment_data.get(alignment_input, None)
 
     if self.alignment is None:
-        print("Invalid alignment input. Randomizing alignment:")
         random_alignment_code = random.choice(list(alignment_data.keys()))
-        print(alignment_data)
-        print(random_alignment_code)
         self.alignment = alignment_data[random_alignment_code].lower()
-
-        print(self.alignment)
     else:
         self.alignment = self.alignment.lower()
 

@@ -26,4 +26,4 @@ EXPOSE 5000
 # Simple dev
 # CMD ["python", "Backend/app.py"]
 # Prod code
-CMD ["sh", "-c", "PYTHONPATH=/app/Backend gunicorn -w 4 -b 0.0.0.0:5000 Backend.app:app"]
+CMD ["sh", "-c", "PYTHONPATH=/app/Backend gunicorn -w 4 --preload -b 0.0.0.0:5000 Backend.app:app"]

@@ -8,7 +8,6 @@ def randomize_level(character, min_num, max_num, len_flaw=0):
         max_num = 20    
     # for now (we won't deal with multiclasses)
     if character.c_class_2 == '':
-        print('this is is blank class_2')
         pre_level = random.randint(min_num, max(min_num, max_num))
         level = min(pre_level,40)
         c_class_level = level

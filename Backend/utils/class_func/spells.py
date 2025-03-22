@@ -30,7 +30,6 @@ def class_for_spells_attr(character):
 
 
 def caster_formula(character,n, class_2 = 'missing'):
-    print(f'this is your damn class 2: {class_2}')
     character.casting_level_string = str(character.classes.get(character.c_class, "").get("casting level", "").lower())
     character.casting_level_num = character.c_class_level
 
@@ -118,16 +117,10 @@ def spells_known_extra_roll(character):
 
             if filtered_spells_known[i] == 0:
                 filtered_extra_spells[i] = 0
-
-            print(filtered_extra_spells)
-            print(f'This is the spells known {filtered_spells_known}')
-
             # Add corresponding elements of both lists
             result = [x + y for x, y in zip(filtered_spells_known, filtered_extra_spells)]
 
         character.spells_known_list=result
-        print(f'This is the spells known list {character.spells_known_list}')
-
     return character.spells_known_list
 
 def alignment_spell_limits(character, spell_data, i, alignment_exclusion):
@@ -151,17 +144,10 @@ def alignment_spell_limits(character, spell_data, i, alignment_exclusion):
             excluded_columns.add(excluded_column)
 
     condition = spell_data[character.c_class_for_spells] == i
-    print("condition", condition)
 
     for col in excluded_columns:
         condition &= (spell_data[col] == 0)
-    # Check if any condition is True
-    if condition.any():
-        print("condition", condition)
-    print("extraction_list", extraction_list)
     query_i = spell_data.loc[condition, extraction_list]
-    print('alignment_spell_limits query_i', query_i)
-    # selecting spells by randomly selected thematic schools + descriptors
     query_i = limit_school_func(character, query_i)
     query_i = limit_descriptor_func(character, query_i)
 
@@ -174,7 +160,6 @@ def spell_theme_func(character, spell_data):
     num_of_schools = random.randint(1,2)
     specialty_schools = random.sample(character.available_schools, num_of_schools)
     for school in specialty_schools:
-        print(school)
         character.available_schools.remove(school)
     remaining_schools = character.available_schools
     counter_schools = random.sample(remaining_schools, num_of_schools)
@@ -186,11 +171,10 @@ def spell_theme_func(character, spell_data):
 
 def limit_school_func(character, query_i):
     #apply weights
-    print("paladin running")
-    query_i['weight'] = 1
+    # intialize with a float (1.0) so we don;'t encounter a pandas issue later (since intialize as int64 but uses float later)
+    query_i['weight'] = 1.0
     query_i.loc[query_i['school'].isin(character.specialty_schools), 'weight'] = 100
     query_i.loc[query_i['school'].isin(character.counter_schools), 'weight'] = .1
-    print('weight', query_i['weight'])
     return query_i.sort_values(by='weight', ascending=False)
 
 def limit_descriptor_func(character, query_i):
@@ -205,12 +189,9 @@ def spell_theme_descriptor_func(character, spell_data):
     all_descriptors = remove_commas_func(spell_data)
     descriptor_counts = all_descriptors.value_counts()
     character.available_descriptors = descriptor_counts[descriptor_counts > 30].index.tolist()
-    print("character.available_descriptors", character.available_descriptors)
-    # grab a list of chooseable spell schools
     num_of_descriptors = random.randint(1,2)
     chosen_descriptors = random.sample(character.available_descriptors, num_of_descriptors)
     for school in chosen_descriptors:
-        print(school)
         character.available_descriptors.remove(school)
     remaining_descriptors = character.available_descriptors
     counter_descriptors = random.sample(remaining_descriptors, num_of_descriptors)
@@ -248,8 +229,8 @@ def spells_known_selection(character,base_classes,divine_casters):
     #we need to make sure we aren't grabbing null or our program will break
     if character.casting_level_string != 'none' and character.c_class in base_classes and character.c_class not in divine_casters:
         while i <= character.highest_spell_known_1:
-            print(known_list)
-            print(i)
+            # print(known_list)
+            # print(i)
             if known_list[i] != 'null':
                 select_spell=known_list[i]             
 
@@ -267,10 +248,10 @@ def spells_known_selection(character,base_classes,divine_casters):
     elif character.casting_level_string != 'none' and character.c_class in divine_casters:   
         day_list = extra_spells_divine(day_list)
         while i <= character.highest_spell_known_1:
-            print(f'this is i {i}')
-            print('day_list: ', day_list[i])
-            print(f"i: {i}, len(day_list): {len(day_list)}")
-            print(day_list)
+            # print(f'this is i {i}')
+            # print('day_list: ', day_list[i])
+            # print(f"i: {i}, len(day_list): {len(day_list)}")
+            # print(day_list)
 
 
             if day_list[i] != 'null':
@@ -303,7 +284,7 @@ def extra_spells_divine(day_list):
     # we need i,num > 0 otherwise it breaks here (B/c divine casters + cantrips/irisons breaks)
     for i in range(len(day_list) -1):
         random_num = random.randint(1,10)
-        print("day_list[i]: ", day_list[i])
+        # print("day_list[i]: ", day_list[i])
         # me sure we don't break for mid/low casters
         if day_list[i] == 'null':
             return day_list
@@ -323,7 +304,6 @@ def spells_per_day_attr(character, base_classes):
     if character.c_class in base_classes and character.casting_level_string == 'high':
         for i in range(0,character.highest_spell_known_1+1):
             key = str(i)
-            print(character.c_class)
             list=character.spells_per_day[character.c_class][key][character.capped_level_1-1]
             character.spells_per_day_list.append(list)
     elif character.c_class in base_classes and character.casting_level_string == 'mid' and character.c_class != 'alchemist':
@@ -370,13 +350,13 @@ def spells_per_day_from_ability_mod(character, caster_mod):
             i+=1
             spells= list[i]
             bonus_spells.append(spells)
-    if character.c_class in caster_mod["wis_casters"]:
+    elif character.c_class in caster_mod["wis_casters"]:
         list=dataset[wis_str]         
         for i in range (character.highest_spell_known_1):
             i+=1
             spells= list[i]
             bonus_spells.append(spells)
-    if character.c_class in caster_mod["cha_casters"]:
+    elif character.c_class in caster_mod["cha_casters"]:
         list=dataset[cha_str]          
         for i in range (character.highest_spell_known_1):
             i+=1

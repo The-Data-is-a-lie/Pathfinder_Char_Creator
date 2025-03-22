@@ -214,9 +214,9 @@ all_deities = {
 
 #types of casters
 caster_mod = {
-        "int_casters": ['alchemist','wizard' ],
-        "wis_casters": ['cleric','druid'],
-        "cha_casters": ['bard','paladin','sorcerer']
+        "int_casters": ['alchemist', 'arcanist', 'investigator', 'magus',  'witch', 'wizard',],
+        "wis_casters": ['cleric','druid', 'hunter', 'inquisitor','ranger', 'shaman', 'warpriest'],
+        "cha_casters": ['bloodrager', 'bard','oracle','paladin','shaman','skald','sorcerer','summoner', 'summoner (unchained)']
 
 }
 

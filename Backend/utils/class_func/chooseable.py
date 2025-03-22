@@ -12,9 +12,6 @@ def chooseable_list_stats(character,attr,stat_name,base,th = None):
         stat = str(stat_name) + str(base) + (suffix if th else "")
         character.chooseable.add(stat)
         base += 1
-
-        # print(character.chooseable)
-
         if base == 25:
             break
 
@@ -48,4 +45,3 @@ def chooseable_list_class_features(character):
     
     character.chooseable.update(class_keys_list)
     character.chooseable.update(class_keys_list_class_feature)
-    # print(character.chooseable)

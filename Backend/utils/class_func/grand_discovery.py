@@ -22,6 +22,4 @@ def grand_discovery_chooser(character):
             grand_discovery_chosen = random.choice(grand_discoveries)
                     
         discovery_list_chosen.add(grand_discovery_chosen)
-        print(f'This is your chosen grand discovery {grand_discovery_chosen}')
-        print(f'This is the description: {grand[grand_discovery_chosen]["benefits"]}')
         return discovery_list_chosen

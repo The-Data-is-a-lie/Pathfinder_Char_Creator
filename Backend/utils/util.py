@@ -19,87 +19,10 @@ def roll_dice(num_dice, num_sides):
     for _ in range(num_dice):
         rolls.append(random.randint(1, num_sides))
     total = sum(rolls)   
-    #print(f"{stat} = {total}")
     return total
 
 def roll_inherent(sides,size):
     return random.randint(sides,size)
-    
-
-# def Roll_Level(high_level, low_level):
-#     from main import filename
-#     with open(filename, 'a') as f, open("utils/class.json", 'r') as c:
-#         class_data = json.load(c)
-#         """
-#         Rolls for a random character level
-#         """
-#         # Prompt user for level range
-#         if isinstance(high_level, int) and isinstance(low_level, int):
-#             max_num = int(high_level)
-#             min_num = int(low_level)
-#         else:
-#             max_num = 20
-#             min_num = 1
-#         level = random.randint(min_num, max_num)
-#         return level
-
-
-		# #randomized NPC level generator
-        # npcInput = input('enable npc class levels (y/n)').lower()
-        # npcEnabled = False
-        # global npc_level
-        # for npc_level in range(1, level):
-        #     if random.randint(1, 100) >= 75 and npcInput == 'y':
-        #         if not npcEnabled:
-        #             npcEnabled = True
-        #         npc_level += 1
-        #         character_class_level = (level - npc_level)
-        # else:
-        #     character_class_level = level - npc_level
-        
-        # if npcEnabled:
-        #     print(f'This is your number of npc levels: {npc_level}')
-        #     print(f'This is your non-npc levels: {character_class_level}')
-        #     print(f'This is your number of npc levels: {npc_level}',file=f)
-        #     print(f'This is your non-npc levels: {character_class_level}',file=f)
-        # elif npcInput == 'n':
-        #     character_class_level = level
-        #     print('No NPC class levels')
-        #     print('No NPC class levels',file=f)
-        #     npc_level = 0
-        # else:
-        #     print('Invalid input. Please enter "y" or "n".')
-        #     npc_level = 0
-
-        # # Creating a BAB total for printing out
-        # if BAB == 'L':
-        #     BAB_total = floor(character_class_level *.5) #+ floor(npc_level * .5)
-        # elif BAB == 'M':
-        #     BAB_total = floor(character_class_level *.75) #+ floor(npc_level * .5)
-        # else: 
-        #     BAB_total = character_class_level * 1 #+ floor(npc_level * .5)
-
-            # end of npc class level macro
-
-            #adding flaws to help calculate total feats
-
-    #     print("this is the total character level ")
-    #     print(level)
-    #     print("this is the total character level ", file=f)
-    #     print(level, file=f)
-    #     global feats      
-    #     if len(flaw) == 2 or len(flaw) == 3:
-    #         feats = (4 + floor(level/2) + floor(level/5))
-    #     elif len(flaw) == 4:
-    #         #add 1 extra feat because of 2 extra flaws
-    #         feats = (4 + 1 + floor(level/2) + floor(level/5))
-    #     elif len(flaw) == 1:
-    #         #remove 1 extra feat because of 1 less flaw
-    #         feats = (4 - 1 + floor(level/2) + floor(level/5))
-    #     else:
-    #         #remove 2 extra feats because of no flaws
-    #         feats = (4 - 2 + floor(level/2) + floor(level/5))
-    # return feats
 
 def region_chooser(character, userInput_region):
     """
@@ -107,15 +30,12 @@ def region_chooser(character, userInput_region):
     Return
     - region
     """
-    print(f"Please make sure below matches this list: {character.first_names_regions.keys()}")
     regions = list(character.first_names_regions.keys())
 
     if isinstance(userInput_region, int) and ( 0 <= int(userInput_region) <= len(regions) ):
         region_index = int(userInput_region) - 1
         region_selected = regions[region_index]        
-        print('You have selected this region: ' + region_selected)
     else:
-        print('You have selected no region, you will be given a random region.')
         region_selected = random.randint(1,len(regions)-1)
     character.region = region_selected
     return character.region
@@ -131,7 +51,6 @@ def race_chooser(character, userInput_race):
     if isinstance(userInput_race, str) and (userInput_race in races):
         userInput_race = userInput_race.capitalize()
     else:
-        print('You have selected no race, you will be given a random race.')
         userInput_race = random.choice(races).capitalize()
     character.chosen_race = userInput_race
     return character.chosen_race
@@ -143,14 +62,10 @@ def gender_chooser(character, userInput_gender):
     - userInput_gender
     """
     genders = ("Male", "Female")
-    print('Select gender from the above list: (or 0 if random)')
     if isinstance(userInput_gender, str):
         userInput_gender = userInput_gender.capitalize()
-    if userInput_gender in genders:
-        print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_gender: {userInput_gender}')
-    else:
+    if userInput_gender not in genders:
         userInput_gender = random.choice(genders).capitalize()
-        print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_gender: {userInput_gender}')
     character.chosen_gender = userInput_gender
     return character.chosen_gender
 
@@ -170,7 +85,6 @@ def name_chooser(character):
         character.f_name = random.choice(f_names)
         character.l_name = random.choice(l_names) 
         character.full_name = character.f_name + character.l_name
-        print(f"Name for {character.region}: {character.f_name} {character.l_name}")
 
     else:
         # wehave this section in case of an emergency and region isn't selected. But this should never occur
@@ -181,32 +95,8 @@ def name_chooser(character):
         character.f_name = random.choice(f_names)
         character.l_name = random.choice(l_names) 
         character.full_name = character.f_name + character.l_name
-        print(f"Name for {character.region}: {character.f_name} {character.l_name}")
 
     return character.f_name, character.l_name
-
-
-
-
-# def weapon_chooser(character):
-#     """
-#     *** Probably want to change to generate based off of what weapons a class could actually use ***
-#     Characters are given random weapons selected by region and from all weapon groups
-#     Return
-#     - weaponz (by region random)
-#     - weapons (random)
-#     """
-#     # random.sample to select 2 random weapons
-#     weapons = random.sample(weapon_groups, 2)
-#     character.weapons = weapons
-#     print(f'weapons not dependent on region {weapons}')
-
-#     # loop through the random abilities and print out each element
-#     for reg in character.regions: #regions != region, they are very different, regions is defined in the data tab, region is the user input assigned as a number above
-#         if reg == character.region:
-#             weaponz = random.choice(weapon_groups_region[reg])
-#             character.weaponz = weaponz
-#             print(f"Weapon for {reg}: {weaponz}")
 
     
 def chooseClass(character, class_choice):
@@ -219,15 +109,11 @@ def chooseClass(character, class_choice):
     # temporarily removing occult classes (they aren't ready yet)
     occult_classes = [x.lower() for x in getattr(data, 'occult_classes')]
     path_of_war_class = [x.lower() for x in getattr(data, 'path_of_war_class')]
-    # print('path_of_war_class', path_of_war_class)
-    # print('occult_classes', occult_classes)
     available_classes = list(character.class_data.keys())
     #remove occult classes
     available_classes = [x for x in available_classes if x not in occult_classes]
     available_classes = [x for x in available_classes if x not in path_of_war_class]
             
-    # print("available_classes", available_classes)
-    # print("these_are_available_classes", available_classes)
     if class_choice not in available_classes:
         class_choice = random.choice(available_classes)
 
@@ -235,14 +121,11 @@ def chooseClass(character, class_choice):
         class_choice = random.choice(available_classes)
 
     # userInput_class = input(f'please type a class name to select a class, or type 0 for a random class: ').lower()
-    print('please type a class name to select a class, or type 0 for a random class: ')
     userInput_class = class_choice.lower()
-    print(f'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! assign userInput_class: {userInput_class}')
     character.c_class = userInput_class
     character.c_class_2 = ''
 
     all_classes = list(character.class_data.keys()) # + list(character.class_data["Path of War"].keys())
-    print("these are all_classes: ",all_classes)
 
     if userInput_class not in all_classes:
         bab = random.choice(('H','M','L'))
@@ -288,81 +171,6 @@ def dip_function(character, base_classes, multi_class = False):
         else:
             c_class_2 = random.choice(classes.lower())
             character.dip = True
-
-    else:
-        print(f"This is your only class: {character.c_class}")
             
     character.c_class_2 = c_class_2
     return character.c_class_2
-
-
-def isBool(strBool: bool): return True if strBool == 'yes' or strBool == 'y' else False
-
-def printAttributes(title: str, attributeList: list) -> None:
-    print(f'\n{title}:', end=' ')
-    
-    for i in range(len(attributeList) - 1): print(f'{attributeList[i]}, ', end='')
-    print(f'{attributeList[-1]}')
-
-def appendAttr(attributeList: list, dataList: list):
-    
-    for attr in dataList: attributeList.append(attr)
-
-def appendAttrData(attributeList: list, dataList):
-    
-    for attr in dataList: attributeList.append(attr)
-    
-    return attributeList[randrange(0, len(attributeList))]
-
-
-
-
-
-def format_text(text, bold=False, color=None):
-    """
-    Format text with optional bold and color for HTML.
-    
-    Args:
-        text (str): The input text.
-        bold (bool): Whether to make the text bold.
-        color (str): The color of the text (e.g., 'red', 'green', 'blue').
-
-    Returns:
-        str: The formatted HTML text.
-    """
-    style = []
-    
-    # Add CSS style for bold
-    if bold:
-        style.append('font-weight: bold')
-    
-    # Add CSS style for color
-    if color:
-        style.append(f'color: {color}')
-    
-    # Create HTML span element with inline style
-    if style:
-        return f'<span style="{"; ".join(style)}">{text}</span>'
-    else:
-        return text
-
-
-    
-
-#updating Character data
-
-# character_data.update({"level": level})
-# character_data.update({"feats": feats})
-# character_data.update({"BAB": BAB})
-# character_data.update({"race": c_race})
-# character_data.update({"weapons_no_region": weapons})
-# character_data.update({"weapons": weaponz})
-# character_data.update({"luck": luck_score})
-# character_data.update({"mythic": mythic_rank})
-# character_data.update({"class": c_class})
-# character_data.update({"class_secondary": c_class_2})
-# character_data.update({"flaws": flaw})
-
-#
-
-

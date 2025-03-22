@@ -8,11 +8,8 @@ def convert_price(character, price_input, name):
         dynamic_variable_word = extract_dynamic_variable_word(character, name)
         if dynamic_variable:
             price = find_number(character, price_input, dynamic_variable)
-            print(f'1st case price {price}')
         elif dynamic_variable_word:
-            print(f"Target word: {dynamic_variable_word[-1]}")
             price = find_word(character, price_input, dynamic_variable_word[-1])
-            print(f"Matched price: {price}")
             price = int(price) if price is not None else 0
         else:
             price = handle_invalid_price_input(character, price_input, name)
@@ -23,14 +20,12 @@ def convert_price(character, price_input, name):
 def extract_dynamic_variable(character, name):
     number_pull = r'\d+'
     dynamic_variable = re.findall(number_pull, name)
-    print(f'This is the dynamic variable {dynamic_variable}')
     return dynamic_variable
 
 def find_number(character, price_input, dynamic_variable):
     price_input = str(price_input)  # Ensure price_input is a string
     pattern = rf'(\d{{1,3}}(?:,\d{{3}})*)\s*\(\s*\+{dynamic_variable}\)'
     price_list = re.findall(pattern, price_input)
-    print(f'this is the price_list {price_list}')
     
     if price_list:
         price = int(price_list[0].replace(',', ''))
@@ -51,15 +46,12 @@ def find_word(character, text, target_word):
 def extract_dynamic_variable_word(character, name):
     word_pull = r'\b(lesser|greater|superior|major|minor|normal|djinni|efreeti|marid|shaitan|destined|fey|abyssal|accursed|celestial|draconic|elemental|infernal|undead|aberrant|adamantine|silver|cold iron|type i|type ii|type iii|type iv|)\b(?![()])'
     dynamic_variable_word = re.findall(word_pull, name)
-    print(f'This is the dynamic variable word {dynamic_variable_word}')
     return dynamic_variable_word
 
 def handle_invalid_price_input(character, price_input, name):
     if price_input is None or '(' in str(price_input):
-        print(f'no price detected for {name} + {price_input}')
         price_input = 0
     else:
-        print(f'invalid price format for {name} + {price_input}')
         price_input = 0
     return price_input
 
@@ -85,15 +77,9 @@ def item_chooser(character, data):
     equipment_list = []
     equip_dict = {}
 
-    # print("these are your foundry item names: " + str(character.foundry_item_names))
-
     while i < len(select_from_list):
         equipment_name, random_equip, price, equip_descrip = choose_equipment(character, select_from_list[i])
-        # print("equipment_name, random_equip, price, equip_descrip ", random_equip)
-        # print('this is the anti-loop data: ', data)
-        
         while random_equip not in data:
-            # print("equipment_name, random_equip, price, equip_descrip ", random_equip)
             log_error(random_equip)
             equipment_name, random_equip, price, equip_descrip = choose_equipment(character, select_from_list[i])
 
@@ -112,8 +98,6 @@ def item_chooser(character, data):
 
         i += 1
 
-    print(equipment_list)
-    print(price_total)
     return equipment_list, equip_dict
 
 def item_dictionary(character, random_equip, equipment_key):

@@ -4,21 +4,17 @@ import random
 def class_specific_feats_chooser(character, c_class, name_1, name_2, name_3=None, class_level = None):
     if character.c_class == c_class and (class_level == None or character.c_class_level >= class_level):
         try:
-            print("start of the class_specific_feats_chooser _____________________")
             if name_3 != None:
                 extra_feat_list = getattr(character, character.c_class, {}).get(name_1, {}).get(name_2, {}).get(name_3, [])
             else:
                 extra_feat_list = getattr(character, character.c_class, {}).get(name_1, {}).get(name_2, [])
-                print('no name_3')
-
             
         except AttributeError:
             extra_feat_list = []
 
         character.total_feats.extend(extra_feat_list)
-        print(character.total_feats)
-        return character.total_feats
-    
+    return []
+
 def ranger_feats_chooser(character):
     if character.c_class == 'ranger':
         ranger_feats = [2,6,10,14,18,22,26,30,34,38,42]              
@@ -45,7 +41,6 @@ def ranger_feats_chooser(character):
             if ranger_feats_chosen_list == 7:
                 break
 
-        print(ranger_feats_chosen_list)
         character.feats.extend(ranger_feats_chosen_list)
         return ranger_feats_chosen_list
 
@@ -70,6 +65,5 @@ def monk_feats_chooser(character):
                 
             i=len(monk_feats_chosen_list)
 
-        print(monk_feats_chosen_list)
         character.feats.extend(monk_feats_chosen_list)
         return monk_feats_chosen_list

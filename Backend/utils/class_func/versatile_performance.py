@@ -47,11 +47,7 @@ def versatile_perfomance(character):
                 
                 martial_choice = random.choice(martial_data)
                 martial_set.add(martial_choice)
-                print(f'This is your martial choice: {martial_choice}')
-                print(f'This is your martial choice: {martial_set}')                    
                 i=len(character.performance_chosen_list) + len(martial_set)
-                print(f'character.performance_chosen_list {character.performance_chosen_list}')
-                print(martial_set.issubset(character.performance_chosen_list))
 
                 if martial_set.issubset(character.performance_chosen_list) == True:
                     character.martial_performance_choice.add(martial_choice)
@@ -64,7 +60,6 @@ def versatile_perfomance(character):
                 else:
                     random_chance_martial = random.randint(51,100)
                     martial_set.discard(martial_choice)
-                    print(f'martial_set has bee removed {martial_set}')
                 #reroll performance
             else:
                 random_chance_martial=random.randint(1,50)
@@ -73,20 +68,11 @@ def versatile_perfomance(character):
     #sometimes a bard will focus on one performance
         while choose_list[i] <= character.c_class_level and random_chance > 50:
             expanded_choice = random.choice(expanded_data)
-            print(f'This is your expanded choice {expanded_choice}')                
             expanded_choice_check.add(expanded_choice)
             character.performance_chosen_description_list.append(expanded_choice)
             i=len(expanded_choice_check) + len(character.performance_chosen_list)
-            print(f'the number of elements in expanded choices {i}')
 
             if len(expanded_choice_check)>7:
                 break
-
-
-    print('!!!!!!!!!!!!versatile performance choices !!!!!!!!!!!!!!')
-    print(character.performance_chosen_list) 
-    print(character.performance_chosen_description_list)  
-    print(character.martial_performance_choice)
-    print(character.martial_performance_choice_description)     
 
     return character.performance_chosen_list, character.performance_chosen_description_list, character.martial_performance_choice, character.martial_performance_choice_description   

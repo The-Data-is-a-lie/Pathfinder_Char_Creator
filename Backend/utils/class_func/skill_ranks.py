@@ -21,10 +21,9 @@ def skills_selector(character, skills, skill_rank_level):
     assign_dummy_zeroes(not_selectable_skills, skill_ranks)
 
 
-    print("these are your skill_ranks", skill_ranks)
-    print(f'This is your int mod {character.int_mod}')
-    total_ranks = sum(skill_ranks.values())
-    print("The total sum of ranks is:", total_ranks)
+    # print(f'This is your int mod {character.int_mod}')
+    # total_ranks = sum(skill_ranks.values())
+    # print("The total sum of ranks is:", total_ranks)
 
     return skill_ranks
 
@@ -34,12 +33,10 @@ def get_selectable_skills(character,all_skills, skill_ranks_level):
     scaling = int(skill_points) + character.int_mod
     dummy_skill_ranks = (scaling * character.c_class_level) + skill_ranks_level
 
-    print(scaling)
 
     if character.c_class not in character.class_data.keys():
         scaling = 2 + abs(character.int_mod)
     skill_number = scaling + random.randint(abs(character.int_mod), abs(character.int_mod)+8)
-    print(skill_number)
     skill_number = min(skill_number, len(all_skills))
     selectable_skills = random.sample(all_skills, k=skill_number)
     not_selectable_skills = []
@@ -66,7 +63,7 @@ def assign_skill_ranks(character, selectable_skills, not_selectable_skills, dumm
 def assign_dummy_zeroes(not_selectable_skills, skill_ranks):
     for unassigned_skill in not_selectable_skills:
         skill_ranks[unassigned_skill] = 0       
-        print("breaking at unassigned") 
+        # print("breaking at unassigned") 
 
     return skill_ranks
 

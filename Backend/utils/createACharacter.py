@@ -192,15 +192,10 @@ class Character:
             self.gold = gold_input            
         else:
             gold = getattr(data,gold)
-            print(type(gold))     
             if self.level>20:
                 self.gold = gold[-1]
             else:
                 self.gold = gold[self.level-2]
-
-
-
-        print(self.gold)
         return self.gold
 
     def json_list_grabber(self, string_list, separator, output_list=None):
@@ -214,9 +209,7 @@ class Character:
             output_list = []
 
         for string in string_list:
-            print("string", string)
             elements = [element.strip() for element in string.split(separator)]
-            print("elements", elements)
             stop_grabbing = False
 
             for element in elements:

@@ -7,7 +7,6 @@ def roll_stats(character, num_dice, num_sides):
         num_dice = 4
     if not isinstance(num_sides, int) or num_sides <= 0:
         num_sides = 6     
-    # Define the main stat for the class (replace 'main_stat' with the actual main stat for your class)
     main_stat = character.class_data[character.c_class]['main_stat']
     main_stat_2 = character.class_data[character.c_class].get('main_stat_2', None)
 
@@ -20,13 +19,10 @@ def roll_stats(character, num_dice, num_sides):
 
     # Identify the original main stat
     stats = swap_stats(character, main_stat, stats)
-    print(main_stat)
 
     if main_stat_2 != None:
         main_stat_parts_2 = main_stat_2.split('/')
-        print(main_stat_parts_2)
         main_stat_2 = random.choice(main_stat_parts_2)      
-        print(f'main_stat 2 {main_stat_2}')
         stats = swap_stats(character, main_stat_2, stats, new=True)   
 
     return stats

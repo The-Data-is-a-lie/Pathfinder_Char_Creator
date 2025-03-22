@@ -29,9 +29,6 @@ def animal_chooser(character):
 
         character.companion_info = character.animal_companion["companion"][level]
 
-        print(character.companion_info)
-        print(character.chosen_animal)
-        print(character.chosen_animal_description)
         return character.chosen_animal         
 
 
@@ -53,5 +50,4 @@ def animal_feats(character):
             if i == 26:
                 break
 
-        print(animal_chosen_feat_list)
         return animal_chosen_feat_list

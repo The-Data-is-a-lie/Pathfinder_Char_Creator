@@ -46,11 +46,8 @@ def list_selection(character, name, limits=None, shield_flag=True):
         result_2 = getattr(character, name).get(choice, {}).get(choice_2, {})   
 
         result_dict = {choice_2: result_2}
-        # print('useable weapons ', useable_weapons)
-        print('post useable weapons ', list(result_dict.keys())[0])
         reroll_weapon(character, name, list(result_dict.keys())[0], useable_weapons, result)
 
-        # print(f'This is your result: {result_dict.keys()}')
         
         return result_dict
 
@@ -71,7 +68,6 @@ def reroll_weapon(character, name, choice, useable_weapons, result):
         y = 0
         while choice not in useable_weapons:
             choice = random.choice(result)
-            print("this is where it keeps erroring out  ", choice)
             y += 1
             if y > 5:
                 choice = 'longsword'
@@ -97,10 +93,7 @@ def weapon_chooser(character):
     useable_weapons = getattr(data, 'useable_weapons')
 
     weapon_type_data = character.class_data.get(character.c_class, {}).get('weapon and armor proficiency')
-    # print(character.class_data.get(character.c_class, {}))
-    print(weapon_type_data)
     character.weapon_type = 'M' if 'martial' in weapon_type_data else 'S'
-    print(character.weapon_type)
     return character.weapon_type
 
 

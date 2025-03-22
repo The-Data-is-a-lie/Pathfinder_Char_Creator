@@ -15,8 +15,6 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
 
             character.data_dict['class features'].append({dict_name: {choice: description}})
             
-            print("character.data_dict", character.data_dict)
-
             chosen_desc = {choice: description}
             character.bonus_feats = bonus_searcher(character, choice, chosen_desc, 'feats')
             character.bonus_spells = bonus_searcher(character, choice, chosen_desc, 'spells')
@@ -28,10 +26,6 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
 
             # Start with base dataset
             dataset = getattr(character, class_1, {}).get(dataset_name, {})
-
-            # Debugging print
-            print(f"dataset_name_2: {dataset_name_2}, dataset_name_3: {dataset_name_3}, alternate_dataset: {alternate_dataset}")
-
             # If alternate_dataset is True, determine depth
             if alternate_dataset:
                 if dataset_name_2 is None and dataset_name_3 is None:
@@ -45,31 +39,25 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
                 
 
             dataset_list = list(dataset.keys())
-            # print("dataset_list", dataset_list)
             chosen_set = set()
             i = 0
 
             dataset_2 = getattr(character, class_1, {}).get(dataset_name_2, {})
             dataset_2_list = list(dataset_2.keys())
 
-            print(len(amount))
-            print(amount[i])
             while i < len(amount) and amount[i] <= character.c_class_level:
                 if dataset_name_2 != None and character.c_class_level >= level and alternate_dataset == False:
                     dataset_list.extend(dataset_2_list)
                     dataset.update(dataset_2)
 
                 chosen = random.choice(dataset_list)
-                print(chosen)
                 chosen_set.add(chosen)
-                print(chosen_set)
                 i = len(chosen_set)
 
             if len(chosen_set) <= 0:
                 return []
 
             chosen_dict = chosen_set_append(character, dataset, chosen_set, chosen, dict_name)
-            print("chosen_dict", chosen_dict)
             # character.data_dict['class features'] = chosen_dict 
             character.data_dict['class features'].append(chosen_dict)           
             return chosen_dict
@@ -115,18 +103,12 @@ def get_data_without_prerequisites(character, class_1, dataset_name, level= None
         total_choices = base_no_prereq
 
         if level != None and character.c_class_level >= level:
-            print("this is occuring, the advanced talents portion")
             dataset.update( getattr(character, class_1, {}).get(dataset_name_2,{}) )
             dataset_no_prereq = no_prereq_loop(character, dataset)            
 
-        print("dataset", dataset)
         
         chosen_set, chosen_desc, chosen_dict = choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, base, level, total_choices, dict_name)
  
-    # print("chosen_set", chosen_set)
-    print("chosen_desc", chosen_desc)
-    # print("chosen_dict", chosen_dict)
-
     if character.data_dict['class features'] == [] or character.data_dict['class features']== {}:
         character.data_dict['class features'] = chosen_dict
     else:
@@ -160,9 +142,7 @@ def choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, bas
         total_choices = remove_duplicates_list(character, total_choices)
         total_choices=list(set(total_choices))
 
-        print("post dataset", dataset)
         chosen_desc = {chosen: dataset.get(chosen, {})}
-        print("ultimate chosen", chosen_desc)
         chosen_dict = chosen_set_append(character, dataset, chosen_set, chosen, dict_name)
 
     return chosen_set, chosen_desc, chosen_dict
@@ -181,7 +161,6 @@ def no_prereq_loop(character, dataset_type, return_choice=None):
         # Handle NaN or missing prerequisites
         if pd.isna(prerequisites) or not prerequisites or str(prerequisites).strip() == "":
             dataset_without_prerequisites.append(name.lower())
-            # print(f"[NO PREREQ] Added: {name}")
             continue
 
         # if any of these words appear, remove that prerequisite component
@@ -202,8 +181,6 @@ def no_prereq_loop(character, dataset_type, return_choice=None):
             # Special case: if the only component is "" (blank), treat as no prerequisite
             if prerequisites_components == {""}:
                 dataset_without_prerequisites.append(name.lower())
-                # print(f"[NO PREREQ] (Blank) Added: {name}")
-                continue
 
         except Exception as e:
             print("Error processing prerequisites:", e)
@@ -213,13 +190,8 @@ def no_prereq_loop(character, dataset_type, return_choice=None):
         # Check if prerequisites are satisfied
         if prerequisites_components.issubset(character.chooseable):
             prereq_list.add(name.lower())
-            # print(f"[VALID PREREQ] Added: {name}")
         else:
             skipped_feats.append(name)
-
-    # print("\n[SKIPPED FEATS - Unmet Prerequisites]")
-    # for feat in skipped_feats:
-    #     print(f"- {feat}")
 
     if return_choice == 'prereq_list':
         return prereq_list
@@ -231,10 +203,6 @@ def generic_class_talent_chooser(character, class_1, dataset_name, dataset_name_
         dataset = getattr(character, class_1, {}).get(dataset_name, {}).keys()
         choice = random.choice(list(dataset)).get(dataset_name,{})
         description = getattr(character, class_1, {None}).get(dataset_name, {None}).get(choice,{None})
-
-        print(choice)
-        print(description)   
-
         return choice, description     
 
 
@@ -265,11 +233,7 @@ def generic_multi_chooser(character, class_1, dataset_name,  n2=None, start_leve
         if effective_level > level:
             break
 
-        print(f"Effective level: {effective_level}")
         dataset_list += dataset.get(str(effective_level), [])
-
-        print(dataset_list)
-
         # create weights to pick higher level abilities more:
         list_size = len(dataset_list)
         # exponentially increase weights [1,4,9,16,25 ...]
@@ -284,14 +248,13 @@ def generic_multi_chooser(character, class_1, dataset_name,  n2=None, start_leve
                 chosen_set.discard(item)
 
         i = len(chosen_set)
-        print("chosen set", chosen_set)
 
     # changing to a list, allows for it to be json serializable -> can export to foundryVTT
     # But, we want descriptions as well -> not just a list/set
     chosen_list = list(chosen_set)
-    for item in chosen_list:
-        description = dataset.get(item, {}).get('description', '')
-        print(f"Item: {item}, Description: {description}")
+    # for item in chosen_list:
+    #     description = dataset.get(item, {}).get('description', '')
+    #     print(f"Item: {item}, Description: {description}")
     chosen_dict = chosen_set_muilt_append(character, dataset, chosen_set, chosen_list, dataset_name)
 
     # chosen_dict = {dataset_name: list(chosen_set)}

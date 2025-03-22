@@ -12,7 +12,6 @@ def wizard_opposing_school(character):
 
     if character.c_class == 'wizard' or character.c_class_2 == 'wizard':
         random_school, description, associated, associated_school = wizard_school_chooser(character) 
-        print(random_school)            
         
         if random_school in elemental_list:
             elemental_opposing_schools = {'metal': 'wood', 'wood': 'metal', 'fire': 'water', 'water': 'fire', 'earth': 'air', 'air': 'earth'}
@@ -21,8 +20,6 @@ def wizard_opposing_school(character):
             school_list = (list(character.wizard_schools["schools"].keys()))
             school_list.remove('universalist')
             opposing_school = random.sample(school_list, k=2)
-
-        print(f"THIS IS YOUR OPPOSING SCHOOL: {opposing_school}")
 
         return opposing_school
 
@@ -38,7 +35,6 @@ def wizard_school_chooser(character):
         associated = None
 
         random_choice = random.randint(1,4)
-        print(f"This is the random wizard school % chance {random_choice}")
 
 
         if random_choice == 1:
@@ -60,10 +56,5 @@ def wizard_school_chooser(character):
             description = subschools_data[random_school]
             associated = subschools_data[random_school]["associated school"]
             associated_school = schools_data[associated]            
-
-        print(random_school)
-        print(description)
-        print(associated)
-        print(associated_school)
 
         return random_school, description, associated, associated_school

@@ -60,11 +60,6 @@ def process_input_values(input_values):
         print("correct session_dta", session['character_data'])
 
         return session['character_data'] 
-    
-        # print("this is input values pre ", create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, userInput_gender, truly_random_feats, num_dice, num_sides, high_level, low_level, gold_num)
-        # print("Input values:", input_values)
-        # print("Character data:", character_data)
-
 
     except ValueError as ve:
         return {"error": str(ve)}

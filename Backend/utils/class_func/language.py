@@ -12,17 +12,12 @@ def language_chooser(character):
     return languages
 
 def regex_search(character, string, regex):
-    print("this is your race" + character.chosen_race)
-    # print(f'this is your string {string}')
-    # print(f'this is your regex {regex}')
     pattern = rf"{regex}"
     match = re.search(pattern, string)
     if match:
         captured_content = match.group(1)
     else:
         captured_content = languages
-
-    # print(f'this is your captured_content {captured_content}')
     return captured_content
 
 def language_splitter(character, language_text):
@@ -32,12 +27,10 @@ def language_splitter(character, language_text):
         pre_language_list = language_text.split(",")
         language_list = []
         for lang in pre_language_list:
-            # print("this is your pre lang transform " + lang)
             lang = lang.strip()
             lang = remove_word(character, lang, 'and')  # Remove 'and' before splitting
             capitalized_lang = capitalize_after_dash(lang)
             language_list.append(capitalized_lang)
-            # print("this is your post lang transform " + capitalized_lang)
 
     return language_list
 

@@ -12,7 +12,6 @@ def favored_class_option(character):
 def favored_class_option_chooser(character, favored_class_list, human_flag):
     if human_flag == True:
         favored_class = ['health', 'skill ranks']
-        print(f'this is your human_flag {human_flag}!!!!!!!!!!')
     else:
         favored_class = random.sample(favored_class_list, k=1)
     return favored_class

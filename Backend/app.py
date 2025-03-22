@@ -37,7 +37,7 @@ app.config['SESSION_REDIS'] = Redis.from_url(redis_url)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['SESSION_PERMANENT'] = False
 # Needs enough time or multiple workers break
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(seconds=100)
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(seconds=60)
 app.config['SESSION_COOKIE_SECURE'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'None'
 
@@ -63,8 +63,8 @@ def process_input_values(input_values):
         # Unpack input_values
         create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, userInput_gender, truly_random_feats, num_dice, num_sides, high_level, low_level, gold_num = input_values
         session['character_data'] = generate_random_char(create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, userInput_gender, truly_random_feats, num_dice, num_sides, high_level, low_level, gold_num)
-        print("correct session_data", session['character_data'])
         return session['character_data']
+
     except ValueError as ve:
         return {"error": str(ve)}
     except IndexError as ie:
