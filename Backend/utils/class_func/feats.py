@@ -185,43 +185,38 @@ def get_feats_without_prerequisites(character, class_1, dataset_name, level= Non
     base_no_prereq = []
     amount = feat_amount
     # amount = ceil(character.c_class_level/2)
-    
-    dataset = dataset_name
-    base = dataset.copy()
-    base_no_prereq = no_prereq_loop(character, base)
+    base_no_prereq = no_prereq_loop(character, dataset_name)
     total_choices = base_no_prereq
 
     if amount == None:
         amount = 0
 
-    chosen_feats = choosing_feats(character, amount, base, total_choices)
+    chosen_feats = choosing_feats(character, amount, dataset_name, total_choices)
 
     return chosen_feats
 
 def choosing_feats(character, amount, base, total_choices):
-    chosen_feats = set()
-    i = 0
-    # added this logic so low level characters don't break
-    if amount == None or amount <= 0:
+    if amount is None or amount <= 0:
         return []
-    
-    while i < amount + 1:
-        # added this logic so low level characters don't break
-        if amount == None or amount <= 0:
-            return []        
-        chosen = random.choice(total_choices)
-        prereq_list = no_prereq_loop(character, base, "prereq_list")
-        chosen_feats.add(chosen.lower())
-        i = len(chosen_feats)
-        
-        total_choices.append(chosen.lower()) 
-        total_choices.extend(prereq_list)
-        total_choices = remove_duplicates_list(character, total_choices)
-        total_choices=list(set(total_choices))
 
+    chosen_feats = set()
+    total_choices_set = set(total_choices)
+
+    while len(chosen_feats) < amount:
+        chosen = random.choice(list(total_choices_set))
+        chosen_feats.add(chosen.lower())
+        
+        # Update character's chooseable feats
         character.chooseable.add(chosen)
         
-    return chosen_feats
+        # Recompute the prereq_list after adding the chosen feat
+        prereq_list = no_prereq_loop(character, base, "prereq_list")
+        
+        # Update total_choices_set with new prerequisites
+        total_choices_set.add(chosen.lower())
+        total_choices_set.update(prereq_list)
+
+    return list(chosen_feats)
 
 def special_feats_func(feat_data, extraction_type, special_type):
     query_i = feat_data.loc[
@@ -285,10 +280,10 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
         if casting_level_str not in ("low", "mid", "high"):
             feat_result_dict = remove_spell_caster_feats(feat_result_dict)
         # remove feats with 'arcane' words if a divine caster
-        if character.c_class in divine_casters and casting_level_str in ("low", "mid", "high"):
+        elif character.c_class in divine_casters:
             feat_result_dict = remove_arcane_feats(feat_result_dict)
         # remove feats with 'divine' words if a arcane caster
-        if character.c_class not in divine_casters and casting_level_str in ("low", "mid", "high"):
+        else:
             feat_result_dict = remove_divine_feats(feat_result_dict)
 
         chosen_feats = get_feats_without_prerequisites(character, character.c_class, feat_result_dict, feat_amount=feat_amount)

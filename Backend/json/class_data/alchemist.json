@@ -435,27 +435,31 @@
     },
     "grand": {
       "awakened intellect": {
-        "prerequisite": "grand discovery",
+        "prerequisite": "",
         "benefit": "the alchemists constant exposure to strange chemicals has expanded his mind. his intelligence score permanently increases by 2 points."
       },
       "true mutagen": {
-        "prerequisite": "grand discovery, grand mutagen discovery",
+        "prerequisite": "grand mutagen discovery",
         "benefit": "the alchemists mutagen now grants a +8 natural armor bonus and a +8 alchemical bonus to strength, dexterity, and constitution. the alchemist takes a 2 penalty to his intelligence, wisdom, and charisma as long as the mutagen persists."
       },
       "fast healing": {
-        "prerequisite": "grand discovery",
+        "prerequisite": "",
         "benefit": "the alchemists flesh responds to damage with shocking speedhe gains fast healing 5."
       },
       "eternal youth": {
-        "prerequisite": "grand discovery",
+        "prerequisite": "",
         "benefit": "the alchemist has discovered a cure for aging, and from this point forward he takes no penalty to his physical ability scores from advanced age. if the alchemist is already taking such penalties, they are removed at this time."
       },
-      "philosophers stone": {
-        "prerequisite": "grand discovery",
+      "greater change alignment": {
+        "prerequisite": "",
+        "benefit": "the effects of the alchemists change alignment infusion become permanent and can only be reversed by a wish or miracle. a permanent, forced change of alignment may be devastating, and some believe it is little better than"
+      },
+        "philosophers stone": {
+        "prerequisite": "",
         "benefit": "the alchemist learns how to create a philosophers stone, and can do so once per month at no cost. creating a philosophers stone takes 1 day of work."
       },
       "poison touch": {
-        "prerequisite": "grand discovery",
+        "prerequisite": "",
         "benefit": "the alchemist gains a poisonous touch, as if under the effects of a poison spell. he can suppress or activate this ability as a free action. the physical appearance of how the alchemist generates and delivers his poisonous touch varies from alchemist to alchemist."
       }
     }

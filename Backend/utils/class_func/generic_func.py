@@ -1,6 +1,7 @@
 from utils import data
 import random, re
 from math import floor, ceil
+import pandas as pd
 
 # Start of Generic class options chooser
 def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name_2 = None, dataset_name_3 = None, multiple = None, level=None, level_2 = None, alternate_dataset = False, dict_name="Talents") :
@@ -121,26 +122,24 @@ def choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, bas
         return [], [], []
 
     chosen_set = set()
-    i = 0
+    total_choices_set = set(total_choices)
+    chosen_desc = {}
+    chosen_dict = {}
     # ensure that all dict keys are lower:
     dataset = {k.lower(): v for k, v in dataset.items()}
     
-    while i < amount:
+    while len(chosen_set) < amount:
     # for i in range(amount):
-        chosen = random.choice(total_choices)
-        even = f"{class_1} {2 * (i + 1)}"
-        odd = f"{class_1} {2 * i + 1}"
+        chosen = random.choice(list(total_choices))
+        even = f"{class_1} {2 * (len(chosen_set) + 1)}"
+        odd = f"{class_1} {2 * len(chosen_set) + 1}"
         character.chooseable.update([even, odd, chosen])
 
         prereq_list = no_prereq_loop(character, base, "prereq_list")
 
         chosen_set.add(chosen.lower())
-        i = len(chosen_set)
-
-        total_choices.append(chosen.lower()) 
-        total_choices.extend(prereq_list)
-        total_choices = remove_duplicates_list(character, total_choices)
-        total_choices=list(set(total_choices))
+        total_choices_set.add(chosen.lower())
+        total_choices_set.update(prereq_list)
 
         chosen_desc = {chosen: dataset.get(chosen, {})}
         chosen_dict = chosen_set_append(character, dataset, chosen_set, chosen, dict_name)
@@ -148,39 +147,41 @@ def choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, bas
     return chosen_set, chosen_desc, chosen_dict
 
 def no_prereq_loop(character, dataset_type, return_choice=None):
-    import pandas as pd
-
-    dataset_without_prerequisites = []
-    prereq_list = set()
-    skipped_feats = []
+    new_feats = character.chooseable - character.processed_feats
+    if not new_feats:
+        if return_choice == 'prereq_list':
+            return character.cached_prereq_list
+        else:
+            return character.cached_dataset_without_prerequisites    
 
     for name, info in dataset_type.items():
+        if name.lower() in character.processed_feats:
+            continue
+
         # Retrieve prerequisites and sanitize input
         prerequisites = info.get("prerequisites", None)
 
         # Handle NaN or missing prerequisites
         if pd.isna(prerequisites) or not prerequisites or str(prerequisites).strip() == "":
-            dataset_without_prerequisites.append(name.lower())
+            character.cached_dataset_without_prerequisites.append(name.lower())
+            character.processed_feats.add(name.lower())
             continue
-
-        # if any of these words appear, remove that prerequisite component
-        filter_words = ["ranks", "worship", "craft", "profession", "rank",
-                        "ability to", "skill", "cast", "proficiency", "member"
-                        "combat expertise", "power attack", "piranha strike",
-                        "attuned"]
 
         try:
             # Clean up prerequisites
             prerequisites = str(prerequisites).lower()
             prerequisites = re.sub(r'\.', '', prerequisites)
             prerequisites_components = set(
-                p.strip().lower() for p in prerequisites.split(",")
-                if not any(word in p.strip().lower() for word in filter_words)
+                p.strip() for p in prerequisites.split(",")
+                if not character.filter_pattern.search(p.strip())
             )
+
 
             # Special case: if the only component is "" (blank), treat as no prerequisite
             if prerequisites_components == {""}:
-                dataset_without_prerequisites.append(name.lower())
+                character.cached_dataset_without_prerequisites.append(name.lower())
+                character.processed_feats.add(name.lower())
+                continue
 
         except Exception as e:
             print("Error processing prerequisites:", e)
@@ -189,14 +190,13 @@ def no_prereq_loop(character, dataset_type, return_choice=None):
 
         # Check if prerequisites are satisfied
         if prerequisites_components.issubset(character.chooseable):
-            prereq_list.add(name.lower())
-        else:
-            skipped_feats.append(name)
+            character.cached_prereq_list.add(name.lower())
+        character.processed_feats.add(name.lower())
 
     if return_choice == 'prereq_list':
-        return prereq_list
+        return character.cached_prereq_list
     else:
-        return dataset_without_prerequisites
+        return character.cached_dataset_without_prerequisites
 
 def generic_class_talent_chooser(character, class_1, dataset_name, dataset_name_2 = None):
     if character.c_class == class_1: 
@@ -279,3 +279,14 @@ def get_description(character, key, dataset):
         if key in level_data:
             return level_data[key]
     return None 
+
+
+
+def no_prereq_prep(character):
+        # Compile regex pattern once
+    filter_words = ["ranks", "worship", "craft", "profession", "rank",
+                    "ability to", "skill", "cast", "proficiency", "member",
+                    "combat expertise", "power attack", "piranha strike",
+                    "attuned"]
+    character.filter_pattern = re.compile(r'|'.join(map(re.escape, filter_words)))
+    return []

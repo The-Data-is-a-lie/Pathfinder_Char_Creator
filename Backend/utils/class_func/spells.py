@@ -194,21 +194,20 @@ def spell_theme_descriptor_func(character, spell_data):
 
 
 
-def spells_known_selection(character,base_classes,divine_casters):
+def spells_known_selection(character):
     spell_data=pd.read_csv('data/spells.csv', sep='|')
     spell_theme_func(character, spell_data)
     spell_theme_descriptor_func(character, spell_data)
 
     #extraction_list = ['name', character.c_class]                
     character.spell_list = []
-    character.casting_level_string = str(character.classes[character.c_class]["casting level"].lower())         
     # the character has no cantrips, so they need to start at level 1 spells (slot 1)
 
-    base_classes=getattr(data,base_classes)
-    divine_casters=getattr(data, divine_casters)
+    base_classes=getattr(data,'base_classes')
+    divine_casters=getattr(data, 'divine_casters')
     # instantiate the spell list counter
     i=0
-    if character.casting_level_string.lower() == 'low':
+    if character.casting_level_string.lower() == 'low' or character.c_class in ('alchemist', 'investigator'):
         i = 1
 
     character.spell_list_choose_from=[]
@@ -218,7 +217,7 @@ def spells_known_selection(character,base_classes,divine_casters):
     day_list = character.spells_per_day_list
 
     if character.c_class not in base_classes or character.casting_level_string == 'none':
-        return []
+        return [], [], []
     
     if character.c_class not in divine_casters:
         select_spell_list = known_list
