@@ -73,34 +73,27 @@ def spells_known_attr(character,base_classes, divine_casters):
     character.spells_known_list = []
     list = []    
 
+    if character.c_class not in base_classes:
+        print('Not a base class')
+        return []
 
-    if character.c_class in base_classes and character.casting_level_string == 'high' and character.c_class not in divine_casters:
-        for i in range(0,character.highest_spell_known_1+1):
-            key = str(i)
-            list=character.spells_known[character.c_class][key][character.capped_level_1-1]
-            character.spells_known_list.append(list)
-    elif character.c_class in base_classes and character.casting_level_string == 'mid' and character.c_class not in divine_casters and character.c_class != 'alchemist':
-        for i in range(0,character.highest_spell_known_1+1):
-            key = str(i)                
-            list=character.spells_known[character.c_class][key][character.capped_level_1-1]
-            character.spells_known_list.append(list)
-
-    #Low casters + some mid casters don't have orisons/cantrips [but we just have 0 for spells known + spells per day so it doesn't select any]
+    elif character.c_class in divine_casters:
+        print('Divine Casters know all spells')
+        return []
+    
     elif character.c_class == 'alchemist':
         for i in range(0,character.highest_spell_known_1+1):
             key = str(i)                
             list=character.spells_known[character.c_class][key][character.capped_level_1-1]
             character.spells_known_list.append(list)
 
-    elif character.c_class in base_classes and character.casting_level_string == 'low' and character.c_class not in divine_casters:
+    elif character.casting_level_string in ('low', 'mid', 'high'):
         for i in range(0,character.highest_spell_known_1+1):
-            key = str(i)                
+            key = str(i)
             list=character.spells_known[character.c_class][key][character.capped_level_1-1]
             character.spells_known_list.append(list)
-    elif character.c_class in divine_casters:
-        print('Divine Casters know all spells')
     else:
-        print('Not an Arcane caster')
+        print('Not an arcane caster')
 
     return character.spells_known_list
 
@@ -209,7 +202,7 @@ def spells_known_selection(character,base_classes,divine_casters):
     #extraction_list = ['name', character.c_class]                
     character.spell_list = []
     character.casting_level_string = str(character.classes[character.c_class]["casting level"].lower())         
-        # the character has no cantrips, so they need to start at level 1 spells (slot 1)
+    # the character has no cantrips, so they need to start at level 1 spells (slot 1)
 
     base_classes=getattr(data,base_classes)
     divine_casters=getattr(data, divine_casters)
@@ -219,54 +212,36 @@ def spells_known_selection(character,base_classes,divine_casters):
         i = 1
 
     character.spell_list_choose_from=[]
-    all_spell_names = []
     
     #separating the lists
     known_list = character.spells_known_list
     day_list = character.spells_per_day_list
 
+    if character.c_class not in base_classes or character.casting_level_string == 'none':
+        return []
+    
+    if character.c_class not in divine_casters:
+        select_spell_list = known_list
+    else:
+        select_spell_list = day_list
 
-    #we need to make sure we aren't grabbing null or our program will break
-    if character.casting_level_string != 'none' and character.c_class in base_classes and character.c_class not in divine_casters:
-        while i <= character.highest_spell_known_1:
-            # print(known_list)
-            # print(i)
-            if known_list[i] != 'null':
-                select_spell=known_list[i]             
+#we need to make sure we aren't grabbing null or our program will break
+    while i <= character.highest_spell_known_1:
+        if select_spell_list[i] == 'null':
+            break
 
-                query_i = alignment_spell_limits(character, spell_data, i, "alignment_exclusion")
-                query_i = query_i.sample(weights=query_i['weight'], frac=1.0)
-                spells = query_i[:select_spell]
-                spell_list = spells['name'].tolist()
+        select_spell = select_spell_list[i]
 
-                character.spell_list_choose_from.append(spell_list)
+        query_i = alignment_spell_limits(character, spell_data, i, "alignment_exclusion")
+        # Don't want more spells selected than there are in the list
+        select_spell=min(select_spell_list[i], len(query_i), select_spell)             
+        # only sample required number of spells
+        spells = query_i.sample(n=select_spell, weights=query_i['weight'])
 
-                i += 1 
-            else:
-                break     
+        spell_list = spells['name'].tolist()
+        character.spell_list_choose_from.append(spell_list)
 
-    elif character.casting_level_string != 'none' and character.c_class in divine_casters:   
-        day_list = extra_spells_divine(day_list)
-        while i <= character.highest_spell_known_1:
-            # print(f'this is i {i}')
-            # print('day_list: ', day_list[i])
-            # print(f"i: {i}, len(day_list): {len(day_list)}")
-            # print(day_list)
-
-
-            if day_list[i] != 'null':
-                
-                select_spell=day_list[i]         
-
-                query_i = alignment_spell_limits(character, spell_data, i, "alignment_exclusion") 
-                query_i = query_i.sample(weights=query_i['weight'], frac=1.0)
-                spells = query_i[:select_spell]
-                spell_list = spells['name'].tolist()
-                character.spell_list_choose_from.append(spell_list)
-
-                i += 1 
-            else:
-                break                 
+        i += 1 
 
     else:
         print('cannot select spells_known_selection')
@@ -280,17 +255,25 @@ def spells_known_selection(character,base_classes,divine_casters):
     return character.spell_list_choose_from, day_list, known_list
 
 # remove if need to give an accurate spells per day (only for foundryVTT (to have more spells populate in list))
-def extra_spells_divine(day_list):
-    # we need i,num > 0 otherwise it breaks here (B/c divine casters + cantrips/irisons breaks)
-    for i in range(len(day_list) -1):
-        random_num = random.randint(1,10)
-        # print("day_list[i]: ", day_list[i])
-        # me sure we don't break for mid/low casters
-        if day_list[i] == 'null':
-            return day_list
+def extra_spells_divine(character):
+    if character.casting_level_string == 'none':
+        return []
 
-        day_list[i] = day_list[i] + random_num
-    return day_list
+    if character.casting_level_string == 'low':
+        i = 1
+        subtract_num = 1
+    else:
+        i = 0
+        subtract_num = 0
+
+    while i in range(len(character.spells_per_day_list) - subtract_num):
+        random_num = random.randint(1,10)
+        if character.spells_per_day_list[i] == 'null':
+            continue
+        character.spells_per_day_list[i] = character.spells_per_day_list[i] + random_num
+        i+=1
+
+    return character.spells_per_day_list
 
 
     
@@ -301,37 +284,26 @@ def spells_per_day_attr(character, base_classes):
     character.spells_per_day_list = []
     list = []            
 
-    if character.c_class in base_classes and character.casting_level_string == 'high':
-        for i in range(0,character.highest_spell_known_1+1):
-            key = str(i)
-            list=character.spells_per_day[character.c_class][key][character.capped_level_1-1]
-            character.spells_per_day_list.append(list)
-    elif character.c_class in base_classes and character.casting_level_string == 'mid' and character.c_class != 'alchemist':
-        for i in range(0,character.highest_spell_known_1+1):
-            key = str(i)                
-            list=character.spells_per_day[character.c_class][key][character.capped_level_1-1]
-            character.spells_per_day_list.append(list)
+    if character.c_class not in base_classes:
+        print('Not a base class')
+        return []
 
-    #adding an exception for alchemist (+ other classes that don't receive cantrips)
     elif character.c_class == 'alchemist':
-        for i in range(0,character.highest_spell_known_1+1):
-            key = str(i)                
-            list=character.spells_per_day[character.c_class][key][character.capped_level_1-1]
-            character.spells_per_day_list.append(list)        
-    elif character.c_class in base_classes and character.casting_level_string == 'low':
         for i in range(0,character.highest_spell_known_1+1):
             key = str(i)                
             list=character.spells_per_day[character.c_class][key][character.capped_level_1-1]
             character.spells_per_day_list.append(list)                
 
-
+    elif character.casting_level_string in ('low', 'mid', 'high'):
+        for i in range(0,character.highest_spell_known_1+1):
+            key = str(i)
+            list=character.spells_per_day[character.c_class][key][character.capped_level_1-1]
+            character.spells_per_day_list.append(list)
 
     else:
         print('Not an spell list caster')
 
     return character.spells_per_day_list            
-
-
 
 
 def spells_per_day_from_ability_mod(character, caster_mod):

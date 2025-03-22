@@ -43,7 +43,8 @@ from utils.class_func.profession_chooser 			import profession_chooser
 from utils.class_func.randomize_flaw 				import randomize_flaw
 from utils.class_func.saving_throws 				import saving_throw_calc
 from utils.class_func.skill_ranks 					import skills_selector
-from utils.class_func.spells 						import (spells_known_attr, spells_known_extra_roll, spells_known_selection, 
+from utils.class_func.spells 						import (extra_spells_divine, spells_known_attr, 
+										   					spells_known_extra_roll, spells_known_selection, 
                                                    	        spells_per_day_attr, spells_per_day_from_ability_mod,
                                                             class_for_spells_attr, caster_formula)#, alignment_spell_limits
 from utils.class_func.stats 						import roll_stats, assign_stats, calc_ability_mod 
@@ -144,7 +145,7 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='half-elf', class_choice='hunter', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=45, low_level=45, gold_num=1000000, homebrew_amount=None):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='half-elf', class_choice='paladin', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=45, low_level=45, gold_num=1000000, homebrew_amount=None):
 
 		teamwork_feats = 0
 		userInput = create_new_char
@@ -207,11 +208,12 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		#Divine Casters have all spells known (don't make this function for them)
 
 		spells_known_attr(character, "base_classes", "divine_casters")
-		spells_per_day_attr(character, "base_classes")
+		day_list = spells_per_day_attr(character, "base_classes")
 		spells_per_day_from_ability_mod(character, "caster_mod")
 		spells_known_extra_roll(character)
-
+		extra_spells_divine(character)
 		character.spell_list_choose_from, day_list, known_list = spells_known_selection(character, 'base_classes','divine_casters')
+
 
 		#this is to allow for talent choice stat pre-reqs (self.chooseable)
 		chooseable_list(character) 		
@@ -525,7 +527,6 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		if isinstance(class_features, list) and len(class_features) > 0:
 			combined_dict = {}
 			for i, feature in enumerate(class_features):
-				print(feature)
 				if not isinstance(feature, dict):
 					continue
 				combined_dict.update(feature)
@@ -645,7 +646,10 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		# print("this is your character teamwork_feats", character.teamwork_feats)
 
 
-		# print("character.spell_list_choose_from", character.spell_list_choose_from)
+		print("character.spell_list_choose_from", character.spell_list_choose_from)
+
+
+
 		return character.data_dict
 
 generate_random_char()

@@ -7,5 +7,4 @@ def saving_throw_calc(character, saving_throw):
         character.saving_throw = high_saving_throw            
     else:
         character.saving_throw = low_saving_throw
-    print(f'{saving_throw} is {character.saving_throw}')
     return character.saving_throw

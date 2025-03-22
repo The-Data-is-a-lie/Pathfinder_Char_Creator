@@ -25,7 +25,6 @@ def subrace_chooser(character):
 def race_traits_chooser(character):
     race_data = full_race_data(character)
     if race_data.get(character.chosen_race.capitalize(), None) == None:
-            print(character.chosen_race + " has no traits")
             return '', ''
     
     data_list = list(race_data.get(character.chosen_race.capitalize(), None).keys())
