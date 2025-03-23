@@ -171,7 +171,7 @@ def limit_school_func(character, query_i):
     return query_i.sort_values(by='weight', ascending=False)
 
 def limit_descriptor_func(character, query_i):
-    query_i.loc[query_i['descriptor'].isin(character.chosen_descriptors), 'weight'] *= 4
+    query_i.loc[query_i['descriptor'].isin(character.chosen_descriptors), 'weight'] *= 100
     return query_i
 
 def remove_commas_func(spell_data):
