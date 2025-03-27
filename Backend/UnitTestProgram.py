@@ -1,7 +1,7 @@
-import unittest
-import time
-import json
-from main_test import generate_random_char
+import  unittest
+import  time
+import  json
+from    main_test import generate_random_char
 
 class TestGenerateRandomChar(unittest.TestCase):
 
@@ -41,7 +41,8 @@ class TestGenerateRandomChar(unittest.TestCase):
         self.addCleanup(self.write_failures_to_file)  # Ensure this runs after tests
 
     def test_generate_random_char_combinations(self):
-        for _ in range(5):
+        i = 0
+        for _ in range(25):
             for param, options in self.test_options.items():
                 for option in options:
                     try:
@@ -53,9 +54,11 @@ class TestGenerateRandomChar(unittest.TestCase):
                             end_time = time.time()
                             execution_time = end_time - start_time
                             self.assertLess(execution_time, 10, "Execution took too long")
+                            i += 1
                     except Exception as e:
                         # Record the failure
                         self.failures[f"{param}_{option}"] = str(e)
+        print(f"Total loops executed: {i}")                        
 
     def write_failures_to_file(self):
         # Save the collected failures to a JSON file

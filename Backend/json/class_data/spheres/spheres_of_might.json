@@ -8,10 +8,6 @@
             "prerequisite": "",
             "benefit": "You may create a special poison as a standard action, or a move action if you have access to an alchemists lab or alchemists crafting kit. This special poison forces the opponent to make a successful Fortitude save against it (saving throw DCs are determined using the normal formula for combat sphere talents but substituting ranks in Craft (alchemy) for base attack bonus) or become fatigued for 1 minute. This poison may be contact, ingested, inhaled, or injury (chosen when created), but you cannot increase its DC by using multiple doses. Some (toxin) talents have additional effects when a creature fails multiple saving throws against a poison; these toxins can affect a creature who has already failed a saving throw against their effects if the target is exposed to additional applications of the same toxin on subsequent rounds, requiring an additional saving throw, though a single target cannot be affected by the same (toxin) more than once per round. The necessary ingredients for creating poison are contained within an alchemy crafting kit or alchemists lab and are otherwise gathered over the course of a given day; there is no monetary cost to creating a poison. You may apply this poison to a weapon as part of the same standard or move action used to create it and do not risk poisoning yourself when doing so. After creating a poison, you may make a melee touch attack against a target (if using a contact poison) or throw the poison (if using an inhaled poison) as a standard action. Thrown poisons have a 10 foot range increment. A poison remains potent until used or for 1 round +1 per 4 ranks in Craft (alchemy) you possess, whichever comes first. Inhaled poisons are considered splash weapons that fill up a 10 ft. cube when used. (Toxin) talents modify your poison in some way, causing it to have a variety of different effects. You may apply a single (toxin) talent to your poison at the time of creation. You cannot gain a (formulae) talent unless you possess the (formulae) package, nor a (toxin) talent unless you possess the (poison) package."
         },
-        "alchemy talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "billowing poison": {
             "prerequisite": "",
             "benefit": "Whenever you create an inhaled poison, the radius of its area of effect increases by 5 ft. For every 10 ranks in Craft (alchemy) you possess, its area of effect increases by an additional 5 ft."
@@ -132,10 +128,6 @@
             "prerequisite": "",
             "benefit": "You channel the basilisk, wrapping yourself in virulent toxins. As part of entering this stance, you must expend one Alchemy sphere poison. If you expend your martial focus as part of activating this stance to extend this stances duration, you may create one Alchemy sphere poison as part of the same action used to activate this stance (expending the poison for the stances normal effects). A poison expended to enter this stance lasts for the stances duration. While in this stance, any other creature that begins its turn within your natural reach or attacks you with a melee attack must attempt a saving throw against the expended poison used to enter this stance. In addition, whenever you successfully attack a creature you have poisoned with the Alchemy sphere, that creature takes a -2 penalty on their next saving throw against your Alchemy sphere poisons made within the next minute. Author's Note: The penalty from this talent does not stack with itself, as it is a penalty from the same source."
         },
-        "formulae talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "aligned liquid (formulae)": {
             "prerequisite": "",
             "benefit": "Craft DC: 20 You create a vial of aligned liquid, imbuing it with the powers of its associated alignment (chaotic, evil, good, or lawful) chosen at the time the formulae is crafted. You may attack a creature with this liquid as a ranged touch attack with a range increment of 10 ft. A flask breaks if thrown against the body of a corporeal creature, but to use it against an incorporeal creature, you must open the flask and pour the liquid out onto the target. Thus, you can douse an incorporeal creature with aligned liquid only if you are adjacent to it. Doing so is a ranged touch attack that does not provoke attacks of opportunity. Aligned liquids have the following effects based on their associated alignment: Good: A direct hit by a flask of good aligned liquid deals 2d4 points of damage +1d4 per two ranks in Craft (alchemy) you possess to undead creatures or evil outsiders. Each such creature within 5 ft. of the point where the flask hits takes 1 point of damage from the splash. Evil: A direct hit by a flask of evil aligned liquid deals 2d4 points of damage +1d4 per two ranks in Craft (alchemy) you possess to living creatures or good outsiders. Each such creature within 5 ft. of the point where the flask hits takes 1 point of damage from the splash. Chaotic: A direct hit by a flask of chaotic aligned liquid deals 2d4 points of damage +1d4 per two ranks in Craft (alchemy) you possess to constructs or lawful outsiders. Each such creature within 5 ft. of the point where the flask hits takes 1 point of damage from the splash. Lawful: A direct hit by a flask of lawful aligned liquid deals 2d4 points of damage +1d4 per two ranks in Craft (alchemy) you possess to elementals or chaotic outsiders. Each such creature within 5 ft. of the point where the flask hits takes 1 point of damage from the splash. You can increase the Craft DC for this weapon in increments of 10; each time you do so, the range for each damage increment increases by 5 ft. (for example, if you increase the Craft DC to 30, you would deal full damage to all affected targets within 5 ft. of the point of contact and 1 point of damage to all other affected creatures within 10 ft.)."
@@ -240,10 +232,6 @@
             "prerequisite": "",
             "benefit": "Craft DC: 15 You gain the knowledge of two types of war paint when you gain this talent; you may create any one type of war paint you know, chosen at the time the formulae is crafted. There are eleven common variations of war paint, each providing a specific benefit to aid their hunters, warriors, and heroes in a variety of tasks. War paint can be applied to any visible part of the body typically the face, shoulders, legs, or arms. While normally applied to the skin, it can be applied to armor or clothing. Applying a dose of war paint is a full-round action that provokes an attack of opportunity. War paint does not take up an item slot, but you can only benefit from one color of war paint at a timeapplying a dose of a different color replaces the effects of the previous application. Once applied, the effects granted by the war paint last for 2 hours. You may select this talent multiple times; each time you gain knowledge of two more types of war paint. War paint have the following effects based on their color: You can increase the Craft DC for this formulae in increments of 5 to increase the duration of the war paints effects by 2 additional hours."
         },
-        "toxin talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "academic enhancer (toxin) [apoc]": {
             "prerequisite": "",
             "benefit": "Alchemy Poisons 2 You may choose for your poison to not cause fatigue, but instead to enhance the mental aptitude of those subjected to it (this talent cannot be used with a contact or inhaled poison). Those who are under the effects of this poison gain a +2 alchemical bonus to either their Intelligence, Wisdom, or Charisma (chosen upon creation) and a -2 penalty to one of the creatures physical scores for 1 minute. If this enhances the creatures Intelligence, it applies a penalty to their Strength. If it enhances the creatures Wisdom, it applies a penalty to their Dexterity. If it enhances the creatures Charisma, it applies a penalty to their Constitution. At the end of this talents duration, the creature must succeed at a Fortitude save or be sickened for 10 minutes. If you possess at least 10 ranks in Craft (alchemy), this bonus increases by +2. A creature cannot benefit from an Academic Enhancer more than once per hour."
@@ -327,10 +315,6 @@
         "witchbane (toxin) [high. hb]": {
             "prerequisite": "",
             "benefit": "You may choose for your poison to make the creature suffer 10% spell failure instead of fatigue. Creatures who fail two consecutive saving throws against this poison instead suffer 20% spell failure, and creatures who fail three consecutive saving throws suffer 50% spell failure. If a creature is suffering spell failure chance from another source (such as spell failure from the Somatic Casting general drawback), add this spell failure to the other source to get a single spell failure source. This spell failure applies to all spells, spell-like, supernatural, and spherecasting abilities that the creature possesses."
-        },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "aboleth mucus (toxin) [alienist hb]": {
             "prerequisite": " .",
@@ -421,10 +405,6 @@
         "motion": {
             "prerequisite": "",
             "benefit": "Some talents have the (motion) tag. You cannot apply more than one talent with the (motion) tag to a given movement."
-        },
-        "athletics talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "ace pilot [eo2]": {
             "prerequisite": "",
@@ -526,10 +506,6 @@
             "prerequisite": "",
             "benefit": "Whenever you succeed at an Acrobatics check to move through the threatened area of a creature whose CR is no less than 1/2 your total character level as part of a move action, you regain your martial focus."
         },
-        "climb talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "rope swing (climb)": {
             "prerequisite": "",
             "benefit": "If you have a secured rope, a set piton, thrown a grappling hook, or wrapped a whip or similar weapon around a point, you may use the attached rope or weapon to spring around the battlefield. There are five methods for securing a rope: Flail Group Weapon: Weapons from the flails weapon group may be used as if they were a grappling hook, though applying them requires a melee attack roll rather than a ranged attack roll. A length of rope may be used in this way also, taking improvised weapon penalties as appropriate. Grappling Hook: You may throw a held grappling hook as a swift action, making a grapple check against a creature or a ranged attack roll against an unattended object. This deals no damage. You may use your Dexterity modifier in place of your Strength modifier on this grapple check. A creature may remove a grappling hook as a move action with a Strength or Escape Artist check against this spheres DC or a grapple check against your grapple CMD. The range increment of a grappling hook is improved to 20 ft. Grappling Weapon: If you are grappling a creature via the grappling special feature of a weapon, a rope attached to that weapon counts as secure for the duration of the grapple. Piton: You may draw a piton and rope and attempt to set it in an object or creature within reach as a standard action, dealing 1d4 + Strength modifier damage. This does not provoke an attack of opportunity. You must succeed on a melee attack to place the piton on a creature. A creature can remove a set piton as a move action with a Strength check equal to this spheres DC. If you fail to deal damage, your attempt fails. Tie: You also may simply secure a rope to a suitable point within reach (a pillar, post, chandelier, etc.) as a standard action. Any creature within reach may untie this rope as a standard action. Once your rope is secured by any of the above methods, you may, as a move action, attempt to move to any other legal square within the rope or weapons reach (as determined from the anchor point), to a maximum of 30 ft. without provoking an attack of opportunity, regardless of your normal move speed, by making a Climb check and comparing the result to the CMD of each creature adjacent to the start and destination points; success on this check allows you to complete the movement, and failure causes you to fall prone in a square adjacent to the creature whose CMD you failed to beat. Use your reach (not threatened area) to determine the maximum movement length when using a weapon from the flail group for this ability. This movement can include squares on elevated or recessed surfaces, or even walls. You may even end this movement on a wall or ceiling if you succeed on a Climb check against the surfaces DC. You must have a clear path towards the destination (this ability does not allow you to pass through solid obstacles or creatures, though it may allow you to circumvent an enemy if you have a clear path around them within the ropes reach). You must have a free hand to use this ability. Movement using this ability counts as climbing for the purpose of the (climb) packages movement bonuses. For every 4 ranks in Climb you possess, you may move an additional 5 ft. with this talent. If you possess the Mobile Striker talent, you may replace the movement portion of that talent with the movement granted by this talent. Ropes or weapons affixed to creatures by any method above allow both the creature to which the rope is affixed (the target) and the creature holding the rope or weapon (the holder) to attempt drag and reposition combat maneuvers against each other. The holder may always choose to drop the rope or weapon as a free action on his turn or as an immediate action off-turn. Example: Azeem the conscript is facing a force of kobolds in a tunnel. Two of them, wielding clubs, have moved adjacent to attack him, while two more are behind a barricade 30 ft. down the tunnel with crossbows. Jorr draws (a move action) and throws (a swift action) his grappling hook to attach it to the overhead scaffolding 25 ft. away, then attempts to swing to just behind the crossbow-wielding kobolds to a space 35 ft. from his current position, 10 ft. beyond the anchor point. Jorr must make a Climb check and compare it to the CMDs of all four kobolds, since two are adjacent to his starting position and two adjacent to his ending position. If he succeeds, he moves without provoking attacks of opportunity, springing over the heads of the nearby kobolds, swinging over the barricade and kicking off the tunnel wall to land beyond the far foe. Errata: Releasing or unsecuring a rope after a swing is a free action. (Source)"
@@ -542,10 +518,6 @@
             "prerequisite": "",
             "benefit": "Once per round when a creature attempts a disarm or steal combat maneuver against you, or uses a similar ability that would remove a weapon or item from your grasp, you may attempt a Climb check as a free action that can be taken even when its not your turn, using the result in place of your CMD for the triggering maneuver. In addition, you never drop held items when subject to the panicked, unconscious, or stunned conditions and gain a +10 competence bonus on Climb checks to catch yourself or another creature when falling (or when ending your movement when using the Rope Swinger or Wall Stunt talents)."
         },
-        "fly talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "diving strike (leap or fly)": {
             "prerequisite": "",
             "benefit": "You may charge an enemy by rapidly descending from above them (such as when jumping out of a tree or deliberately entering a fall while flying or gliding). You may fly above the target or use the Acrobatics skill to leap as part of this charge. If the attack at the end of your charge hits, the attack deals damage as normal and also adds the appropriate amount of falling damage (1d6 points for a 10-ft. fall, 2d6 points for a 20-ft. fall, and so on), to your damage roll, to a maximum of 1d6 per rank in Acrobatics or Fly (whichever is higher) you possess. This falling damage is not multiplied on a critical hit. After the attack is resolved, you land in an unoccupied square of your choosing adjacent to the target, and you take falling damage as if you had fallen 10 fewer ft. You can attempt an Acrobatics check as normal to treat the fall as being shorter for the purpose of determining the damage you take from the fall, and you treat the first 1d6 points of damage you take from the fall as nonlethal damage. If your attack misses, you land prone in a random square adjacent to the target and automatically take the full amount of falling damage. If you are subject to an ability or effect that negates or reduces falling damage (other than the normal Acrobatics check to reduce fall height), such as the feather fall spell or the boots of the cat, your bonus damage dice from this talent are also negated or reduced in a similar fashion. Associated Feat: Branch Pounce. You may charge an enemy by rapidly descending from above them (such as when jumping out of a tree or deliberately entering a fall while flying or gliding). You may fly above the target or use the Acrobatics skill to leap as part of this charge. If the attack at the end of your charge hits, the attack deals damage as normal and also adds the appropriate amount of falling damage (1d6 points for a 10-ft. fall, 2d6 points for a 20-ft. fall, and so on), to your damage roll, to a maximum of 1d6 per rank in Acrobatics or Fly (whichever is higher) you possess. This falling damage is not multiplied on a critical hit. After the attack is resolved, you land in an unoccupied square of your choosing adjacent to the target, and you take falling damage as if you had fallen 10 fewer ft. You can attempt an Acrobatics check as normal to treat the fall as being shorter for the purpose of determining the damage you take from the fall, and you treat the first 1d6 points of damage you take from the fall as nonlethal damage. If your attack misses, you land prone in a random square adjacent to the target and automatically take the full amount of falling damage. If you are subject to an ability or effect that negates or reduces falling damage (other than the normal Acrobatics check to reduce fall height), such as the feather fall spell or the boots of the cat, your bonus damage dice from this talent are also negated or reduced in a similar fashion. Associated Feat: Branch Pounce."
@@ -557,10 +529,6 @@
         "sinking blow (fly, swim) [youxia hb]": {
             "prerequisite": "",
             "benefit": "If you are flying or swimming, whenever you make a successful attack action against a creature employing the same movement mode as you while you have martial focus, that creature must succeed at a Reflex saving throw or lose 30 feet of distance to the ground. If you have 10 or more ranks in the used movement mode, a creature who fails this saving throw also has their speed for that movement mode reduced by 1/2 for a number of rounds equal to your practitioner modifier (minimum 1). If you are flying or swimming, whenever you make a successful attack action against a creature employing the same movement mode as you while you have martial focus, that creature must succeed at a Reflex saving throw or lose 30 feet of distance to the ground. If you have 10 or more ranks in the used movement mode, a creature who fails this saving throw also has their speed for that movement mode reduced by 1/2 for a number of rounds equal to your practitioner modifier (minimum 1)."
-        },
-        "leap talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "armored drop (leap) [apoc]": {
             "prerequisite": "",
@@ -589,10 +557,6 @@
         "wall stunt (leap or run)": {
             "prerequisite": "",
             "benefit": "If you possess the (leap) package, when jumping or falling, you may make an Acrobatics check to jump as a swift action, provided there is a solid surface other than a ceiling (wall, floor, etc.) adjacent to you at that point. You may treat spaces occupied by creatures of your size or larger as containing such an object but your movement provokes attacks of opportunity as normal. Any fall damage that would be incurred is calculated after removing the height of the swift action jump. If you possess the (run) package, as long as there is a wall adjacent to you, you may run along the wall for all or part of your movement, including vertically. A square of vertical movement costs two squares of movement. You may treat spaces occupied by creatures of your size or larger as containing a wall, but your movement provokes attacks of opportunity as normal. Doing so bypasses any obstacle on the ground. You must end your movement on the ground as normal; if there is no ground present, you fall. If you also possess the (climb) package, you may attempt to cling to the wall at the end of your movement. If you possess the (leap) package, you may make Acrobatics checks to jump as part of this movement as normal. If you possess the Mobile Striker talent, you can kick off of a wall for the rest of your movement, gaining a +1 circumstance bonus to your damage roll if you make an attack while airborne. For every 5 ranks in Acrobatics you possess, this bonus increases by +1. If you possess the (leap) package, when jumping or falling, you may make an Acrobatics check to jump as a swift action, provided there is a solid surface other than a ceiling (wall, floor, etc.) adjacent to you at that point. You may treat spaces occupied by creatures of your size or larger as containing such an object but your movement provokes attacks of opportunity as normal. Any fall damage that would be incurred is calculated after removing the height of the swift action jump. If you possess the (run) package, as long as there is a wall adjacent to you, you may run along the wall for all or part of your movement, including vertically. A square of vertical movement costs two squares of movement. You may treat spaces occupied by creatures of your size or larger as containing a wall, but your movement provokes attacks of opportunity as normal. Doing so bypasses any obstacle on the ground. You must end your movement on the ground as normal; if there is no ground present, you fall. If you also possess the (climb) package, you may attempt to cling to the wall at the end of your movement. If you possess the (leap) package, you may make Acrobatics checks to jump as part of this movement as normal. If you possess the Mobile Striker talent, you can kick off of a wall for the rest of your movement, gaining a +1 circumstance bonus to your damage roll if you make an attack while airborne. For every 5 ranks in Acrobatics you possess, this bonus increases by +1."
-        },
-        "motion talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "bewildering blow (motion) [apoc]": {
             "prerequisite": "",
@@ -634,10 +598,6 @@
             "prerequisite": "",
             "benefit": "As long as you move no more than half your base speed, when you succeed at an Acrobatics check to avoid provoking an attack of opportunity from an opponent when you move through its threatened area or its space, any damage the next attack that creature makes against you until the beginning of your next turn deals nonlethal damage. If you are damaged by the attack, you may immediately spend an attack of opportunity to move 5 feet without provoking an attack of opportunity using a movement mode associated with any Athletics package you possess. This talent cannot be used with the 5-foot step action, and you do not convert lethal damage to nonlethal damage with this talent if you are immune to nonlethal damage. For every 6 ranks in a skill granted by an Athletics package you possess, you may move an additional 5 feet when spending an attack of opportunity to move with this talent."
         },
-        "run talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "chargethrough (run) [youxia hb]": {
             "prerequisite": "",
             "benefit": "Whenever you successfully attack a creature with a charge, you may roll an Acrobatics check against the CMD of the creature as a free action, adding the attack bonus from charging to your roll. If you succeed, you may continue your charges movement any distance as long as you still have movement remaining. This movement does not provoke an attack of opportunity from the attacked creature nor is it halved for moving through squares threatened or occupied by the attacked creature. If you fail this check, you instead provoke an attack of opportunity from the attacked creature and not move further."
@@ -654,17 +614,9 @@
             "prerequisite": "",
             "benefit": "You may drop prone as a free action, even when it is not your turn. Whenever you are knocked prone or drop prone, you may spend an immediate action to move up to 10 ft. in any direction. If used to avoid an attack or area effect, this talent grants you a dodge bonus to AC and Reflex saves equal to half your ranks in Acrobatics (minimum 1). You may expend your martial focus to perform this movement without provoking attacks of opportunity. For every 5 ranks in Acrobatics you possess, you may move an additional 5 ft. with this talent. Additionally, at any time you may expend your martial focus to stand up from prone as an immediate action that does not provoke attacks of opportunity."
         },
-        "swim talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "terror below (swim) [youxia hb]": {
             "prerequisite": "",
             "benefit": "While beneath the surface of water or another liquid, as an attack action, you can move through the water up to 1/4 your base land speed or 1/2 your swim speed if you possess one and make a melee attack against a creature above the surface of the water. If you do, that creature must succeed at a Reflex saving throw or fall into the water in a square of your choice adjacent to you (even if they are standing on solid ground). If you have 10 or more ranks in Swim, when a creature is forced into water by this attack, they are unable to hold their breath beforehand, and must instantly start attempting checks upon the beginning of their round to avoid drowning."
-        },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "aerial hang (leap, stance) [youxia hb]": {
             "prerequisite": "Prerequisite: .",
@@ -772,10 +724,6 @@
             "prerequisite": "Some talents are marked blitz. You may apply a maximum of one blitz per extra attack to a barrage, but only if the barrage meets the prerequisites, including that attack for example, if a blitz requires a target be struck twice, you can only apply that blitz to a target that has been struck twice. If he is struck a third time, you could apply a second blitz that requires at least two attacks to that target. Associated Feat: Rapid Shot",
             "benefit": "As a special attack action, you may make two ranged attacks at your full base attack bonus -2. Beginning at 6 base attack bonus, you may expend your martial focus to make an additional extra attack, increasing the penalty to all your attacks from -2 to -4. For every 5 points of base attack bonus you possess beyond 6, when expending your martial focus you may increase this penalty by an additional -2 to make an additional extra attack. Wiki Note: You do not need to expend martial focus to apply a (blitz). You cannot apply a (blitz) to the first attack you make in a barrage, but can to each additional attack, including the second attack."
         },
-        "barrage talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "100,000 arrows (stance) [youxia hb]": {
             "prerequisite": "",
             "benefit": "While in this stance, whenever you use the barrage action you can expend twice the number of thrown weapons or ammunition for each ranged attack while taking a -2 penalty to those attack rolls. If you do, striking a target for the first time in the barrage counts as striking a target twice with the same barrage for the purposes of barrage talents."
@@ -828,10 +776,6 @@
             "prerequisite": "",
             "benefit": "When attacking the same target multiple times during a barrage, each attack after the first gains a cumulative +1 bonus against that target (for example, the second attack would gain a +1 bonus, the third would gain a +2 bonus, etc.). This cannot exceed the penalty to attack applied by the barrage itself."
         },
-        "blitz talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "arrow split (blitz)": {
             "prerequisite": "",
             "benefit": "You are accurate enough to follow one shot with another, striking the same spot for greater damage. If you strike a target twice during a barrage, only apply its damage reduction or hardness once, rather than individually to each attack. This stacks with each additional shot given this (blitz). In addition, your attacks deal full damage if the target is an object, rather than half."
@@ -859,10 +803,6 @@
         "suppressing fire (blitz)": {
             "prerequisite": "",
             "benefit": "When performing a barrage, you may make 2 extra attacks instead of one, but must target the same creature with both of these extra attacks. However, your shots are wild, and the target can easily duck, causing both of your extra attacks to miss. However, doing so causes the target to have its movement speed reduced by half and to suffer a -3 penalty to Perception checks and to all attack rolls until the end of their next round, -1 for each additional extra attack augmented with the suppressing fire (blitz) that targets this creature. The target can choose not to avoid these attacks, in which case you may roll the attacks as normal, and the target doesnt suffer the penalties."
-        },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "ceaseless ammo": {
             "prerequisite": "Prerequisite: .",
@@ -897,10 +837,6 @@
         "improvised weapon damage": {
             "prerequisite": "",
             "benefit": "Improvised weapons generally follow this chart for determining their damage. See Using Spheres of Might for more information about them."
-        },
-        "barroom talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "barroom expert": {
             "prerequisite": "",
@@ -982,10 +918,6 @@
             "prerequisite": "",
             "benefit": "Dipsomania If you have an alcoholic beverage (or other non-directly harmful liquid) in one hand when you make an attack action, you can force the target of the attack action to drink from it if you succeed on the attack action and the target is within your natural reach. Forcing a creature to drink an alcoholic beverage grants them a Reflex save to avoid drinking, and on failure makes that creature sickened for 1 round, and potentially other effects based off the drink (such as gaining the drunk condition). Additionally, when you succeed on a check made to maintain a grapple, you can choose to force a creature to drink from an alcoholic beverage you have in your hand instead of the other options, or you can make a joint move action as part of the grapple check to draw a beverage and force the creature to drink from it, applying the same effects as above. At +10 base attack bonus, you can instead force a creature to drink a magical potion or beverage, or any other directly harmful drink (such as a mug of lava or acid, or a poisoned mug of alcohol)."
         },
-        "drunk talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "drunken insight (drunk) [utility]": {
             "prerequisite": "",
             "benefit": "You can reroll one Intelligence or Wisdom-based skill check as a free action, but you must take the new result, even if it is worse. Each time you use this talent during the same day beyond the first, you take a cumulative -2 penalty on the reroll granted by this talent."
@@ -1026,10 +958,6 @@
             "prerequisite": "",
             "benefit": "Pugilists As an immediate action, you fall prone and gain the benefits of the evasion ability until the start of your next turn. At the beginning of your next turn, if you have martial focus, you may stand up as a move action without provoking attacks of opportunity. At 10 base attack bonus, you may use this talent as a free action that can be taken even when it is not your turn and gain improved evasion."
         },
-        "smash talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "interceding crash (smash) [eo3]": {
             "prerequisite": "",
             "benefit": "When a creature makes a melee or ranged attack against you, you may spend an attack of opportunity to break a weapon you are wielding. Make an attack roll as if you were making an attack of opportunity. If the result is greater than the attack roll total of the attack roll, you may roll your weapons damage die + your practitioner modifier (minimum 1) and reduce the damage taken by that result. If this would reduce the damage taken to 0, the attack counts as a miss for the purposes of abilities that trigger on a hit or a miss. If you have the ability to draw weapons as a free action (such as the Quick Draw feat or Equipment sphere Fast Draw talent), you may draw a weapon (or improvised weapon) as part of using this ability."
@@ -1049,10 +977,6 @@
         "take to go (smash) [eo3]": {
             "prerequisite": "",
             "benefit": "As part of performing an attack action, you may break a weapon. If your attack is successful, you may move into any square the target threatens (to a maximum of half your movement speed). This movement does not provoke attacks of opportunity from that creature, but otherwise provokes attacks of opportunity as normal. If you were not within the creatures threatened area (such as by breaking and throwing an improvised thrown weapon at range or because the creature does not threaten the square you made the attack from), you may instead take a 5-foot step and subtract 5 feet from your total movement during your next turn. In addition, whenever you move, you can pick up an unattended item as part of that movement. You must have a free hand to pick up an item this way. Picking up an item this way does not provoke attacks of opportunity. Whenever you would use this ability, you may attempt to instead pick up multiple, smaller and closely gathered items that could be held in one hand (such as a stack of plates or a fistful of nails) this way equal to your practitioner modifier (minimum 1). Smaller items are generally two sizes smaller (or smaller) than the practitioner. Associated Feat: Grab and Go."
-        },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "alchemical dragon": {
             "prerequisite": ".",
@@ -1120,10 +1044,6 @@
             "prerequisite": "",
             "benefit": "When your mount is targeted by an attack or subject to a Reflex save, you may spend an attack of opportunity to make a Ride check and use the result in place of your mounts AC or Reflex save result, if higher. Associated Feat: Mounted Combat."
         },
-        "beastmastery talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "accomplice": {
             "prerequisite": "",
             "benefit": "While within the threatened area of an animal ally, when you or the animal ally performs a combat maneuver, the other may make an aid another check to boost the combat maneuver check as an immediate action."
@@ -1188,10 +1108,6 @@
             "prerequisite": "",
             "benefit": "While in this stance, you may occupy the same square(s) as your animal allies at no penalty. Whenever you occupy the same square as an animal ally during this stance, you may expend an attack of opportunity to change the target of an attack targeting that animal ally to you as a free action that can be taken even outside your normal turn. Additionally, animal allies who occupy the same square as you in this manner may substitute your base attack bonus for their own, up to their number of Hit Dice, as long as the stance lasts."
         },
-        "handle animal talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "animal empathy (handle animal) [utility]": {
             "prerequisite": "",
             "benefit": "You can improve the attitude of an animal. This ability functions just like a Diplomacy check made to improve the attitude of a person, using your Handle Animal skill in place of Diplomacy. If you possess the wild empathy class feature, you may add your Handle Animal ranks to your levels in the class that grants the class feature (with a maximum equal to your Hit Dice) to determine the result. The typical domestic animal has a starting attitude of indifferent, while wild animals are usually unfriendly. To use this ability, you and the animal must be able to study each other, which means that you must be within 30 ft. of one another under normal conditions. Generally, influencing an animal in this way takes 1 minute but, as with influencing people, it might take more or less time."
@@ -1223,10 +1139,6 @@
         "purposeful training (handle animal)": {
             "prerequisite": "",
             "benefit": "When you tame a creature, you may automatically grant them one general purpose from the Handle Animal skill. For every 4 ranks in Handle Animal you possess, you can teach tamed creatures 1 additional trick using the Handle Animal skill. In addition, any trick learned from a general purpose does not count against the maximum number of tricks a tamed creature can learn. If you possess the Broad Skills talent, you do not increase the Handle Animal DC to teach a trick or grant a general purpose to a creature that does not possess the animal type. You may retrain feats, skill ranks, and other options possessed by an animal ally. You may retrain one feat, general purpose, trick, or a number of skill ranks equal to your ranks in Handle Animal with 4 hours of training. The new feats and skills must be appropriate for the animal ally. Animal allies treat the Extra Combat Talent feat as an appropriate feat when retraining this way, even if it is not a practitioner, although some spheres are more appropriate for certain creatures than others. The GM is the final arbiter of what feats and skills are suitable for an animal ally. With 8 hours of training, you may instead retrain a number of feats equal to half your ranks in Handle Animal (minimum 2 feats). Note: You may retrain anything your animal ally possesses that could be retrained normally, and the examples presented in the Purposeful Training talent is not exhaustive. For example, a practitioner with this talent could retrain combat talents chosen by an animal companion with the martial beast archetype (Champions of the Spheres)."
-        },
-        "ride talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "acrobatic mount (ride)": {
             "prerequisite": "",
@@ -1275,10 +1187,6 @@
         "wild rider (ride)": {
             "prerequisite": "",
             "benefit": "Any creature serving as your mount counts as tame and an animal ally and as having been combat trained per the Handle Animal skill. This does not allow you to handle or push a creature of greater than animal Intelligence (Intelligence 3 or higher), but does allow them to benefit from some talents, such as Lookout or Pack Attack, though not from any that grant additional tricks, purposes, or Hit Dice. The creature no longer counts as tame or an animal ally once you dismount. Additionally, you may add half your base attack bonus (minimum +1) as a competence bonus on all checks to stay mounted and never fall off your mount when you become unconscious unless you choose to at the time you fall unconscious. You never take a penalty on ride checks for lacking a saddle, bit, or bridle."
-        },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "beast tamer (handle animal)": {
             "prerequisite": " Handle Animal 5 ranks,  handle animal .",
@@ -1366,10 +1274,6 @@
             "prerequisite": "",
             "benefit": "As a special attack action, you may make a melee attack against a target. Creatures damaged by a brutal strike gain the battered condition until the end of your next turn. You may expend martial focus to have the attack deal additional damage equal to twice your base attack bonus. Each brutal strike may be modified by a single (exertion) talent."
         },
-        "berserker talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "advancing carnage": {
             "prerequisite": "You can take this talent a second time, allowing you to take a single 5-ft. step as a free action after making an attack when using this ability. If doing so places a creature within your threatened area, that creature becomes a legal target for your additional attacks as long as it meets all the other prerequisites. Your movement with this talent cannot exceed your move speed. Associated Feats: Cleave, Great Cleave, Cleave Through when taken twice.",
             "benefit": "Whenever you make a melee attack using the attack action, you may choose to take a -2 penalty on all attack rolls made that round. If your attack hits, you may make an additional attack as a free action against a creature that is adjacent to the first and also within your reach. If this additional attack hits, you may make another additional attack against a new target adjacent to the struck target. You may continue attacking targets adjacent to your most recent struck target as long as you still have a valid target for this ability, but you cannot attack the same creature twice. The number of additional attacks made with this ability cannot exceed 1/2 your base attack bonus (minimum 1)."
@@ -1430,10 +1334,6 @@
             "prerequisite": "",
             "benefit": "While in this stance, when a creature targets you with a manufactured melee weapon attack, you may attempt to sunder the weapon used to make the attack as an attack of opportunity after it resolves. If the creature attacking you is battered, you may resolve your sunder attempt prior to their attack being resolved."
         },
-        "adrenaline talents": {
-            "prerequisite": "",
-            "benefit": "While berserking, instead of gaining temporary hit points, you may choose to benefit from one (adrenaline) talent. You must choose which (adrenaline) talent to use at the start of each turn, if any, and may only use one (adrenaline) talent each round. You still take a -2 penalty to AC as normal and any benefits you gain end at the start of your next turn. Some (adrenaline) talents require you to expend martial focus as part of the same action as berserking and must be expended each round you choose to use it. (Note: You may retain the temporary hit points if you take the True Rage (combat) feat. See Practitioner Feats for this option.)"
-        },
         "absolute determination (adrenaline) [alienist hb]": {
             "prerequisite": "",
             "benefit": "No doubt stops your onslaught. You gain a +1 bonus on saving throws against mind-affecting effects and the DC to Intimidate you, increasing by +1 for every 6 base attack bonus you possess. Whenever you would attempt a save against a mind-affecting effect, you may roll twice, taking the better result. In addition, you may expend martial focus as an immediate action to attempt a save against a mind-affecting effect (using the effects original DC) or reduce your current level of fear by 1 step (panicked to frightened, frightened to shaken, shaken to not affected by a fear effect). You may only attempt a new save against a specific mind-affecting effect (for example, a specific instance of charm) once per day."
@@ -1461,10 +1361,6 @@
         "specter (adrenaline) [conq. hb]": {
             "prerequisite": "",
             "benefit": "You close in on foes with an unnerving alacrity. You must expend martial focus each round you start berserking to use this talent. At the start of your turn, you may designate one foe within 20 feet that is not adjacent to you, increasing by +5 feet for every 4 points of base attack bonus you possess. Your movement does not provoke attacks of opportunity from that foe as long as you end your movement adjacent to that foe. In addition, you gain a +2 dodge bonus to your AC against all attacks of opportunity that you provoke, not just against those that are caused when you move out of or within a threatened area, increasing by +1 for every 4 points of base attack bonus you possess."
-        },
-        "exertion talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "bell-ringer (exertion)": {
             "prerequisite": "",
@@ -1501,10 +1397,6 @@
         "shrapnel (exertion)": {
             "prerequisite": "",
             "benefit": "When you attack an unattended object with a brutal strike, if you destroy the object, you may send fragments of it flying in a cone dealing damage to any creature in an area based on its size. Small or smaller objects create a 10 ft. cone and the size of the cone increases by 5 ft. for every size category above Small. This shrapnel does 1d6 points of bludgeoning, piercing, and slashing damage dealt by the same material or materials that the object was primarily composed of. This damage increases by 1d6 at +3 base attack bonus and every 2 points of base attack bonus thereafter. The damage also increases by 1d6 for every 5 points of hardness the object possessed, to a maximum increase of 10d6 additional damage. Creatures that take damage are also battered. A Reflex save halves this damage and prevents the battered condition. A battered creature must roll twice and take the worse result on their Reflex save."
-        },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "alter terrain": {
             "prerequisite": "Shatter Earth, base attack bonus +7.",
@@ -1553,10 +1445,6 @@
             "benefit": "Practitioners who train in certain spheres focused on unarmed combat, such as Boxing, deal additional damage with their unarmed strikes based on the total number of unarmed spheres and talents they possess, as shown in the following table. Practitioners from a class that already grants an unarmed damage progression, such as the brawler or monk, may treat their unarmed strike as one size category larger if they have 3 or more talents in an unarmed combat sphere, but receive no further benefits. In addition, any practitioner with at least 1 talent in an unarmed sphere gains the benefits of the Improved Unarmed Strike feat."
         },
         "table: practitioner unarmed damage": {
-            "prerequisite": "",
-            "benefit": ""
-        },
-        "boxing talents": {
             "prerequisite": "",
             "benefit": ""
         },
@@ -1652,10 +1540,6 @@
             "prerequisite": "",
             "benefit": "Whenever you ready a counter punch, you may spend a swift action to select one creature within 30 ft. of yourself; that creature must make a successful Will save or be shaken for 1 round. For every 5 points of base attack bonus you possess, the duration of this condition increase by 1 round. You may only target an individual creature once per day with this talent."
         },
-        "counter talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "clinch (counter)": {
             "prerequisite": "",
             "benefit": "Whenever you successfully attack with your counter punch, you may attempt to grapple that creature as a free action (even if it is not your turn) that does not provoke attacks of opportunity."
@@ -1704,10 +1588,6 @@
             "prerequisite": "",
             "benefit": "Whenever you successfully attack with your counter punch, you may force the creature to succeed at a Fortitude save or be unable to make attacks of opportunities for 1 round, and have all the air forced from their lungs, reducing the amount of time they can hold their breath to 1 round, for a number of rounds equal to 1/2 your base attack bonus (minimum 1 round). This effect can be ended early by using the Restore Capacity function of the Life sphere."
         },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "chasing assault": {
             "prerequisite": "counter punch ability, Launching Uppercut.",
             "benefit": "Whenever you launch a hostile creature into the air with your Launching Uppercut talent, you may make an Acrobatics check to jump into the air next to them as an immediate action (this movement does not provoke attacks of opportunity). If you manage to jump at least as high as the target was launched, you may make an attack of opportunity against that creature, knocking them back to the ground immediately where they suffer falling damage and are not allowed a saving throw to avoid falling prone. You descend back to the ground at the end of the targets turn, and do not suffer falling damage for the distance you jumped."
@@ -1739,10 +1619,6 @@
             "benefit": "Practitioners who train in certain spheres focused on unarmed combat, such as Boxing, deal additional damage with their unarmed strikes based on the total number of unarmed spheres and talents they possess, as shown in the following table. Practitioners from a class that already grants an unarmed damage progression, such as the brawler or monk, may treat their unarmed strike as one size category larger if they have 3 or more talents in an unarmed combat sphere, but receive no further benefits. In addition, any practitioner with at least 1 talent in an unarmed sphere gains the benefits of the Improved Unarmed Strike feat."
         },
         "table: practitioner unarmed damage": {
-            "prerequisite": "",
-            "benefit": ""
-        },
-        "brute talents": {
             "prerequisite": "",
             "benefit": ""
         },
@@ -1846,10 +1722,6 @@
             "prerequisite": "",
             "benefit": "When making a charge, you can push your way through obstacles blocking your path, be they creatures, objects, or others. You may charge over difficult terrain. This movement still costs twice as much as normal. Additionally, when making a charge, you may attempt to overrun a creature in the path of the charge, or to make a Strength check to break an unattended object such as a door or wall that is in your way, as a free action that does not provoke an attack of opportunity. If the check is successful, you may complete the charge. If the check is unsuccessful, the charge ends in the space directly in front of that creature or object. For every 5 base attack bonus you possess you may attempt to break or overrun an additional target, but suffer a cumulative -2 penalty on each additional check made. This can allow you to initiate a charge through squares that you do not have line of sight to. You may resolve your charge attack against any valid target within reach of the charges path after passing through the barriers (creature or object) blocking your line of sight. Associated Feat: Charge Through."
         },
-        "manhandle talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "dazed and confused (manhandle)": {
             "prerequisite": "",
             "benefit": "The creature must pass a Will save or be staggered for 1 round. At +10 base attack bonus, the duration increases to 2 rounds."
@@ -1881,10 +1753,6 @@
         "throw (manhandle)": {
             "prerequisite": "",
             "benefit": "Whenever you succeed on a bull rush, drag, or reposition maneuver, you may expend your martial focus to throw the creature. The creature travels an additional 5 ft. in any direction and must pass a Reflex save or fall prone. At +10 base attack bonus, the creature travels an additional 5 ft."
-        },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "destructive force [eo3]": {
             "prerequisite": "  Hammer or  Shatter Earth, base attack bonus +10.",
@@ -1931,10 +1799,6 @@
         "dual attack": {
             "prerequisite": "",
             "benefit": "Whenever you make an attack action with a light or one-handed weapon, you can make an additional attack with a light or one-handed weapon held in your off-hand, though both attacks take a -2 penalty on their attack rolls when doing so; only your initial main hand attack qualifies as an attack action, and the additional attack cannot be made with the same weapon as your initial main hand attack. Your off-hand attack only applies 1/2 your Strength modifier, and if your off-hand attack is made with anything other than a light weapon, both attacks take an additional -2 penalty. Associated Feat: Two-Weapon Fighting"
-        },
-        "dual wielding talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "asynchronous swing": {
             "prerequisite": "",
@@ -2052,10 +1916,6 @@
             "prerequisite": "",
             "benefit": "Whenever you use dual attack and successfully strike a creature with your main-hand attack, you may increase your reach by +5 feet when making your off-hand attack. At +10 base attack bonus, your reach increases by +10 feet instead."
         },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "cyclone cut": {
             "prerequisite": " Dualbase attack bonus +5.",
             "benefit": "While wielding two weapons, as a standard action you expend your martial focus to twirl the two weapons with enough force to create a damaging cyclone of air. Each creature within 10 ft. of you takes damage equal to your weapon damage for both your primary and one of your off-hand attacks. A successful Reflex save reduces this damage by half. For every 5 additional base attack bonus you possess, you may increase the radius by an additional 5 ft."
@@ -2089,10 +1949,6 @@
         "blooded strike": {
             "prerequisite": "",
             "benefit": "Whenever you use the attack action or an attack of opportunity to attack or disarm a creature, you deal an additional 1 point of bleed damage to the target on a successful attempt, +1 for every 3 points of base attack bonus you possess; this stacks with any other bleed damage you are capable of dealing. Practitioners of the Duelist sphere never provoke attacks of opportunity when attempting combat maneuvers against a target currently taking bleed damage. Bleed: Some talents have the (bleed) descriptor; these talents are triggered when you deal bleed damage to a creature using your blooded strike. You may only apply the effects of a single (bleed) talent to a given attack. A target that is immune to bleed damage is also immune to all other effects of talents with this descriptor. For the purpose of these talents, only bleed damage you deal with your blooded strike is considered when determining their effects. Disarm: Some talents have the (disarm) descriptor; these talents trigger whenever you succeed at a disarm attempt against a creature. You may only apply the effects of a single (disarm) talent to a given disarm attempt. (Disarm) talents cannot be applied to maneuvers performed as a free action."
-        },
-        "duelist talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "and stay down! [crimdan]": {
             "prerequisite": "",
@@ -2162,10 +2018,6 @@
             "prerequisite": "",
             "benefit": "While in this stance, whenever you deal bleed damage to a creature in the same round that you draw the weapon used to deal that damage, the first melee attack a creature damaged this way makes against you within your reach provokes an attack of opportunity from you until the beginning of your next turn. You may not use this talent in conjunction with (deflect) talents or any other ability that would grant you an attack or combat maneuver due to a missed attack against you."
         },
-        "bleed talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "blood fountain (bleed) [crimdan]": {
             "prerequisite": "",
             "benefit": "Blood you spill tends to splatter. Creatures suffering from your bleed damage spill blood into any squares they occupy at the beginning of their turns, causing it to become slick and slippery. Moving into a square with slippery terrain requires a Reflex save to move at more than half speed for that action. Failure causes the creature to become flat-footed until the end of their turn, and stops their movement for that action. Failure by 5 or more causes the creature to fall prone and be considered flat-footed until the start of their next turn. Slippery terrain created by this talent dries up and becomes normal terrain after 10 minutes."
@@ -2206,10 +2058,6 @@
             "prerequisite": "",
             "benefit": "When you deal bleed damage to a creature, they take a penalty to their CMD equal to the amount of bleed damage dealt by your blooded strike. This penalty is doubled when applied to the creatures disarm or sunder CMD."
         },
-        "disarm talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "finger cutter (disarm)": {
             "prerequisite": "",
             "benefit": "Whenever you succeed at a disarm attempt against a creature, they take 1 additional point of bleed damage, +1 additional point for every 3 points of base attack bonus you possess. This stacks with other bleed damage granted by the Duelist sphere. In addition, you no longer provoke attacks of opportunity for attempting the disarm combat maneuver. Associated Feat: Improved Disarm. Author's Note: Finger Cutter \"stacks\" with other sources of duelist bleed, but only with other Duelist sphere bleeds (such as blooded strike and Open Vein)."
@@ -2237,10 +2085,6 @@
         "whisking disarm (disarm) [apoc]": {
             "prerequisite": "",
             "benefit": "Pugilists Whenever you succeed at a disarm attempt against a creature, you may have the disarmed weapon or object land up to 10 feet away from its previous wielder in a direction of your choice. The distance you may have the weapon or object travel before landing increases by 5 feet for every 5 points of base attack bonus you possess. In addition, creatures you succeed at a disarm attempt against gain the battered condition until the end of your next turn. Associated Feat: Greater Disarm. Normal: Disarmed weapons and gear land at the feet of the disarmed creature."
-        },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "blackblood strike (bleed) [crimdan]": {
             "prerequisite": " Long Cuts, base attack bonus +5.",
@@ -2358,10 +2202,6 @@
             "prerequisite": "",
             "benefit": "Whenever you make an attack action or an attack of opportunity against a target that is within 30 ft. and that you are flanking, that is flat-footed, or that has lost its Dexterity bonus to AC (such as through a successful feint), you deal an additional +1d6 precision damage to the target. This damage is not multiplied on a critical hit. This damage increases by an additional 1d6 precision damage for every 5 points of base attack bonus you possess. A fencer may apply the effects of a single (exploit) talent to any fatal thrust."
         },
-        "fencing talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "darting crane (stance) [youxia hb]": {
             "prerequisite": "",
             "benefit": "While in this stance, whenever a creature within reach misses you with a melee attack, you may expend an attack of opportunity to perform a feint against that creature as a free action that can be taken outside of your normal turn. You may not use this talent in conjunction with (deflect) talents or any other ability that would grant you an attack or combat maneuver due to a missed attack against you."
@@ -2446,10 +2286,6 @@
             "prerequisite": "",
             "benefit": "You may throw people off their guard with simple motions and well-placed words. You do not need a weapon in order to attempt a feint check, and can feint targets within 30 ft. Only targets that can hear you may be targeted with a verbal feint."
         },
-        "exploit talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "ankle strike (exploit)": {
             "prerequisite": "",
             "benefit": "You may attempt a trip combat maneuver against the target as a free action which does not provoke an attack of opportunity."
@@ -2493,10 +2329,6 @@
         "wide open (exploit)": {
             "prerequisite": "",
             "benefit": "The target suffers a -2 penalty to its armor class until the end of your next turn. For every 5 points of base attack bonus you possess, this penalty increases by 1."
-        },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "master of deception": {
             "prerequisite": "Expert Feint, Bluff 10 ranks.",
@@ -2547,10 +2379,6 @@
         "strike fear (demoralization)": {
             "prerequisite": "",
             "benefit": "As a full-round action, you may expend martial focus to make an Intimidate check to demoralize all targets within 30 ft. of you who can both see and hear you. You may choose to take a -10 penalty on the check; if you do so you do not have to expend martial focus. Associated Feat: Dazzling Display."
-        },
-        "gladiator talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "awesome impression (utility) [lots]": {
             "prerequisite": "",
@@ -2603,10 +2431,6 @@
         "vengeful boast [apoc]": {
             "prerequisite": "",
             "benefit": "You may perform a boast as an immediate action whenever an ally you can perceive and is within the range of your boasts takes damage from an enemy attack that results in the ally being at or below half their maximum hit points."
-        },
-        "boast talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "battering banter (boast) [youxia hb]": {
             "prerequisite": "",
@@ -2671,10 +2495,6 @@
         "unsettling visage (boast) [conq. hb]": {
             "prerequisite": "",
             "benefit": "Your excessive brutality is unnerving, and makes your enemies uneasy around you. Until the end of your next turn, you may spend an attack of opportunity to attempt an Intimidate check to demoralize an opponent within range of this boast that targets you with an attack, including a targeted spell. You may expend your martial focus to attempt this Intimidate check in place of spending an attack of opportunity. You may not use this talent in conjunction with Frightful or any other ability that would allow you to use the Intimidate skill to demoralize beyond the shaken condition."
-        },
-        "demoralization talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "abandon all hope (demoralization) [alienist hb]": {
             "prerequisite": "",
@@ -2744,10 +2564,6 @@
             "prerequisite": "",
             "benefit": "Any time you confirm a critical hit or reduce an enemy to 0 or fewer hit points, you may use your strike fear ability as an immediate action."
         },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "aura of fear (demoralization)": {
             "prerequisite": "Intimidate 7 ranks.",
             "benefit": "All hostile creatures that come within close range (25 ft. + 5 ft. per 2 base attack bonus) must make a Will save or be shaken for as long as they remain within the area of effect, +1d4 rounds. Once a creature has succeeded on this save, it is immune to your use of this ability for 24 hrs. If the creature is already shaken, it instead becomes frightened. Frightened creatures become panicked. Creatures with more Hit Dice than you are immune to this effect. This is an extraordinary (fear) effect. You may suppress or resume this ability as a free action. This ability ceases to function if you are stunned, paralyzed, unconscious, dead, or otherwise incapacitated."
@@ -2801,10 +2617,6 @@
         "patrol": {
             "prerequisite": "",
             "benefit": "As long as you have martial focus, as a full-round action you may increase your threatened area by 5 ft., +5 ft. for every 4 points of base attack bonus you possess. This increased threatened area is applied after the effects of the reach weapon special feature. Until the beginning of your next turn, you may make attacks of opportunity against any creature in this threatened area that provokes attacks of opportunity. You may move to bring the creature that provokes the attack of opportunity within your reach as part of these attacks, provided your total movement before your next turn does not exceed your base speed. Any movement you make provokes attacks of opportunity as normal. Associated Feat: Combat Patrol. Talents with the (zone) tag grant additional effects to this ability. Each patrol may only benefit from one (zone) talent."
-        },
-        "guardian talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "cold iron call": {
             "prerequisite": "",
@@ -2882,10 +2694,6 @@
             "prerequisite": "",
             "benefit": "As long as you have martial focus, you gain +1 attack of opportunity per round. You may make attacks of opportunity even when flat-footed. These additional attacks of opportunity stack with those granted by the Combat Reflexes or Muscular Reflexes feat. For every 4 points of base attack bonus you possess, you gain an additional attack of opportunity."
         },
-        "zone talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "assist (zone)": {
             "prerequisite": "",
             "benefit": "When an ally within the area of your patrol makes an attack, is targeted by an attack, or attempts a saving throw, you may spend an attack of opportunity to move to put that ally within reach (with the normal limits for moving as part of your patrol) and use the aid another action to improve that allys attack roll, AC, or saving throw as appropriate to the triggering action. Associated Feat: Bodyguard."
@@ -2909,10 +2717,6 @@
         "steel hedge (zone)": {
             "prerequisite": "",
             "benefit": "All hostile creatures treat your threatened area as difficult terrain until the end of your patrol."
-        },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "challenge the masses [eo3]": {
             "prerequisite": "  Mass Challenge, base attack bonus +7.",
@@ -2968,10 +2772,6 @@
             "prerequisite": "",
             "benefit": "When making a melee attack with the attack action that deals lethal damage, you can take a -2 penalty on the attack roll; if the attack is successful, your weapon impales the creature, forcing it into a square within your reach if it was not already. An impaled creature cannot move and is battered for as long as it remains impaled. An impaled creature who attempts to cast a spell or use a spell-like ability must make a concentration check (DC 10 + your CMB + spell level), or lose the spell. Weapons used to impale a creature cannot be used for attacks except for those against the impaled creature (you cannot impale more than a single creature with your unarmed strikes), ignoring armor, natural armor, and shield bonuses to AC. A creature can only be impaled by a single weapon; attempting to impale an already impaled creature automatically fails. Controlling an impaling weapon requires the same amount of hands as wielding the weapon does. This impalement may be broken when you lose control of the weapon used for the attack (such as by being disarmed), or by the impaled creature making a combat maneuver check as a standard action with a DC equal to your CMD. If you control the weapon being used to impale a creature, you may choose to automatically remove the weapon as a move action. When the impaled creature loses the impaled condition, they take bleed damage equal to the damage dice of the weapon used to impale the creature. If a creature is impaled by a weapon that is not controlled by another creature, they are able to move, but all movement speeds they possess are reduced by 1/2 (minimum 5 ft.). You must make an opposed Strength check against the impaled creature to move as a part of the move action (this Strength check is made by your mount if you are mounted), moving up to half of your base speed while the impaled creature is dragged along with you (this movement does not provoke attacks of opportunity). If you are impaling two or more creatures, you must make an opposed Strength check against all currently impaled creatures in order to move, and if you are subjected to forced movement, you must make an opposed Strength check against all impaled creature; failing this check against any impaled creature forces you to release any weapons youre using to impale a creature (or to end impaling a creature with your unarmed strikes or natural attacks) immediately, while success drags any impaled creatures with you during this forced movement. You can also choose to release the weapon as a free action without dealing damage (although you cannot release natural weapons). A creature may attempt a grapple check against an impaled creatures CMD to assume control of the weapon impaling that creature as long as another creature is not controlling it. If so, the creature making the attempt receives a +4 bonus on the grapple check. Talents with the (impale) tag can only be used against creatures who are impaled by this ability when you are controlling the impaling weapon."
         },
-        "lancer talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "adamant stalker": {
             "prerequisite": "",
             "benefit": "Whenever a creature within your threatened area attempts to take a 5-foot step away from you, you may also make a 5-foot step as an immediate action so long as you end your movement with the creature in your threatened range. If you take this step, you cannot take a 5-foot step during your next turn. If you take an action to move during your next turn, subtract 5 ft. from your total movement. You can select this talent a second time; if you do, the creature also provokes an attack of opportunity from you at the end of your movement."
@@ -3020,10 +2820,6 @@
             "prerequisite": "",
             "benefit": "As an attack action, you can attempt a single trip combat maneuver check against all creatures you threaten, tripping each creature whose CMD you successfully overcome. For each creature you target with this talent, you take a -1 penalty to your combat maneuver check. At +10 base attack bonus, all creatures knocked prone by this talent take damage equal to your base attack bonus."
         },
-        "impale talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "bloody rip (impale)": {
             "prerequisite": "",
             "benefit": "Whenever you make an attack using the attack action against a creature using the weapon currently impaling them, you may remove the impaling weapon as a swift action, dealing damage as appropriate and causing them to retain all penalties for being impaled (except for being unable to move) until the end of their next turn."
@@ -3060,10 +2856,6 @@
             "prerequisite": "",
             "benefit": "As long as you have martial focus, you can cause an impaled creature to provoke an attack of opportunity from one ally of your choice (except for yourself) as a move action. For every 5 points of base attack bonus you possess, you can select an additional ally with this talent."
         },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "dimensional pierce": {
             "prerequisite": "impale ability, base attack bonus +15.",
             "benefit": "Creatures impaled by you are affected as though by a dimensional lock spell as long as you control a weapon impaling that creature. This means that the target cannot use teleportation effects, turn ethereal, or otherwise travel from the spot they are at except through mundane means. This is a supernatural effect."
@@ -3099,10 +2891,6 @@
             "benefit": "Practitioners who train in certain spheres focused on unarmed combat, such as Boxing, deal additional damage with their unarmed strikes based on the total number of unarmed spheres and talents they possess, as shown in the following table. Practitioners from a class that already grants an unarmed damage progression, such as the brawler or monk, may treat their unarmed strike as one size category larger if they have 3 or more talents in an unarmed combat sphere, but receive no further benefits. In addition, any practitioner with at least 1 talent in an unarmed sphere gains the benefits of the Improved Unarmed Strike feat."
         },
         "table: practitioner unarmed damage": {
-            "prerequisite": "",
-            "benefit": ""
-        },
-        "open hand talents": {
             "prerequisite": "",
             "benefit": ""
         },
@@ -3254,10 +3042,6 @@
             "prerequisite": "",
             "benefit": "Whenever a creature within your threatened area misses you with a melee attack, you may expend an attack of opportunity as a free action that can be taken even when it is not your turn to force the creature to succeed at a Fortitude saving throw or become fatigued for 1 round. This fatigue lasts for 1 additional round for each 4 points of base attack bonus you possess. If your base attack bonus is +10 or higher, a fatigued creature that fails its save becomes exhausted instead of fatigued. You may not use this talent in conjunction with (deflect) talents or any other ability that would grant you an attack or combat maneuver due to a missed attack against you."
         },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "air cannon": {
             "prerequisite": " Openbase attack bonus +5.",
             "benefit": "You can make unarmed strikes with such force that it creates howling winds. As a standard action, you may expend your martial focus to create a cone of air. This deals bludgeoning damage equal to twice your base unarmed strike damage die to all creatures within a close range cone (25 ft. + 5 ft. per 2 base attack bonus). Targets are allowed a Reflex save for half damage."
@@ -3299,10 +3083,6 @@
         "marked target": {
             "prerequisite": "",
             "benefit": "You may make a melee touch attack against a creature as a swift action; if this attack is successful, the creature is battered and takes a -1 penalty on Perception checks for 1 round. For every 4 ranks in Sleight of Hand you possess, this penalty is increased by 1. Trick: Whenever you perform a steal or dirty trick combat maneuver, or make a Sleight of Hand check to take an object from a target unnoticed, you may apply one (trick) talent to it. (Trick) talents cannot be applied to maneuvers performed as a free action."
-        },
-        "scoundrel talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "bob and weave": {
             "prerequisite": "",
@@ -3416,10 +3196,6 @@
             "prerequisite": "",
             "benefit": "While in this stance, whenever you successfully use a dirty trick or steal combat maneuver against a creature, you also deal damage equal to 1/2 your ranks in Sleight of Hand + your practitioner modifier. At 10 ranks in Sleight of Hand, whenever you deal damage with this stance, you can move up to half your speed (this movement does not provoke attacks of opportunity from creatures damaged by this talent)."
         },
-        "trick talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "blustering shenanigans (trick)": {
             "prerequisite": "",
             "benefit": "Whenever you successfully perform a dirty trick combat maneuver, you may attempt an Intimidate check to demoralize that foe."
@@ -3459,10 +3235,6 @@
         "tunnel vision (trick)": {
             "prerequisite": "",
             "benefit": "Whenever you successfully perform a steal combat maneuver the target must make a successful Reflex save or treat all creatures as having concealment until the end of its next turn. When you have at least 10 ranks in Sleight of Hand, this instead becomes total concealment."
-        },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "catnapping (trick) [catgirl hb]": {
             "prerequisite": " Sleight of Hand 5 ranks,  Master Thief.",
@@ -3513,10 +3285,6 @@
         "scout": {
             "prerequisite": "",
             "benefit": "As a swift action, you may identify a creatures weaknesses (DC 10 + creatures CR) as described under the Knowledge skill, but may substitute a Perception check for the appropriate Knowledge check at a -5 penalty. This only reveals the targets weaknesses, or lack thereof, (such as damage reduction types and vulnerabilities), and does not reveal any additional information about the target. Once you have succeeded at a scout attempt or Knowledge check against a target, any talents or effects that require you to scout a target may be used against the target for the next 24 hours; after this period you must successfully use the scout ability against the target again to continue benefiting from related effects."
-        },
-        "scout talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "active camouflage": {
             "prerequisite": "",
@@ -3638,10 +3406,6 @@
             "prerequisite": "",
             "benefit": "You can use your trained senses to read the movements of the wind and other factors in the environment to improve your accuracy with ranged attacks. As long as you have martial focus, you may spend a swift action to halve the penalties to ranged attacks inflicted by wind, rain, or other weather in regard to your next ranged attack, made before the end of your turn."
         },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "by the scruff of your neck [catgirl hb]": {
             "prerequisite": " Stealth 3 ranks or Perception 3 ranks; .",
             "benefit": "Whenever a scouted target attacks you or includes you in an area of effect which deals hit point damage, as an immediate action, you may attempt a Stealth or Perception check with a DC equal to the scouted targets attack roll or the abilitys saving throw DC. If your check is successful, you only suffer 1/2 the hit point damage dealt by the incoming attack and do not suffer any additional effects dealt by that attack (such as an additional saving throw against a negative condition). You may use this ability after the results of the attack roll are revealed or after you roll a saving throw to avoid or resist the area of effect. You may only use this ability once per day for each scouted target."
@@ -3687,10 +3451,6 @@
         "active defense": {
             "prerequisite": "",
             "benefit": "If you are using a shield and you are attacked by a creature you are aware of while not flat-footed, you may spend an attack of opportunity to increase your shield bonus to AC against that attack by +2. This decision must be made before the roll is made. For every 4 points of base attack bonus you possess, the increase to your shield bonus provided by this talent increases by 1. Talents with the (deflect) tag grant additional effects to this ability. Each use of active defense may only benefit from one (deflect) talent. You may expend your martial focus to use active defense in place of spending an attack of opportunity."
-        },
-        "shield talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "bashing shield": {
             "prerequisite": "",
@@ -3764,10 +3524,6 @@
             "prerequisite": "",
             "benefit": "You add your shield bonus to AC as a shield bonus to your CMD. You can use active defense against combat maneuvers, allowing creatures benefiting from your active defense (including yourself) to add your active defense bonus to their CMD (not including the benefit of the base shield)."
         },
-        "deflect talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "catch blade (deflect)": {
             "prerequisite": "",
             "benefit": "Whenever an attack misses a creature benefiting from your active defense, if the attack was made with a piercing or slashing melee weapon, you can allow the weapon to strike your shield. If you do, the attack hits your shield, dealing damage to the shield as normal, and the weapon becomes bound. As long as the creatures weapon is bound, they cannot move from the square they currently occupy. A creature whose weapon is bound may release the weapon as a free action or attempt to break the bind as a standard action by making a successful combat maneuver check against your disarm CMD. If the bound weapon is a natural attack or unarmed strike, the creature must succeed at a successful combat maneuver check to break the bind. You cannot attack with, receive any shield bonus from, nor use active defense with the shield used to bind a creature as long as the bind is in effect. If any effect, including this attack, renders the shield broken or destroyed, this effect ends immediately."
@@ -3791,10 +3547,6 @@
         "smashing counter (deflect)": {
             "prerequisite": "",
             "benefit": "Whenever an attack misses a creature benefiting from your active defense, you may make a shield bash attack against the attacking creature as a free action that can be taken even when its not your turn."
-        },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "lifes shield": {
             "prerequisite": "Sacrificial Shield, base attack bonus +5.",
@@ -3834,10 +3586,6 @@
             "prerequisite": "",
             "benefit": "As a special attack action, you may make an attack with a ranged weapon. You may add any one (snipe) talent you know to this attack. In addition, you may expend your martial focus to increase the damage dealt by the attack by 1d10, or 1d6 if the attack targets touch AC or is made with a scatter weapon. You must choose whether or not to use this ability before making your attack roll. These extra damage dice are not multiplied on a critical hit, but are added to the total. For every 4 points of base attack bonus you possess, you deal an additional 1d10 damage, or an additional 1d6 if the attack targets touch AC or is made with a scatter weapon. Some talents are marked (snipe). These talents add additional effects when you perform a deadly shot. You may only apply the effects of one (snipe) talent to each deadly shot."
         },
-        "sniper talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "breaking blast": {
             "prerequisite": "",
             "benefit": "Your ranged attacks deal full damage to objects."
@@ -3873,10 +3621,6 @@
         "unblockable": {
             "prerequisite": "",
             "benefit": "Your ranged attacks are launched with devastating accuracy; whenever you make a ranged attack using the attack action and a spell or ability (such as wind wall or the Deflect Arrows feat) would allow a creature to prevent or deflect it, that creature must succeed at a caster level check (if the blocking effect is a spell or supernatural ability) or a combat maneuver check against your attack roll. Failure on this check means that your attack is not impeded by the ability."
-        },
-        "snipe talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "bouncing shot (snipe)": {
             "prerequisite": "",
@@ -3938,10 +3682,6 @@
             "prerequisite": "",
             "benefit": "On a successful deadly shot, you may make a free ranged disarm attempt against the target, using your original attack roll for the deadly shot as your combat maneuver check. You do not provoke an attack of opportunity for this combat maneuver, except as usual when making ranged attacks."
         },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "eviscerating shot (snipe) [conq. hb]": {
             "prerequisite": "base attack bonus +15.",
             "benefit": "You fire your weapon in such a way that it shreds through the hard plate and scales of your enemies. Your deadly shot ignores all armor, natural armor, and shield bonuses the target may have. Associated Feat: Pinpoint Targeting."
@@ -3979,10 +3719,6 @@
         "tripwire (snare)": {
             "prerequisite": "",
             "benefit": "A creature that fails its save against a tripwire snare falls prone. Once knocked prone, a creature is no longer at risk of triggering the trap in that square. This trap is not destroyed when triggered; instead the duration is reduced by 5 rounds per creature that fails its save. Running and charging creatures take a -2 penalty on their Reflex saves against this trap."
-        },
-        "trap talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "aerial trigger [apoc]": {
             "prerequisite": "",
@@ -4088,10 +3824,6 @@
             "prerequisite": "",
             "benefit": "You may reveal a plan to announce that a dart or snare trap was placed somewhere within a square which you have both line of sight and line of effect to. This trap must be a trap you can create and which you can place in 1 round or less. You must still succeed at the skill check to place the trap successfully. If a creature in that square has the ability to notice the presence of traps without actively searching (such as with the Heightened Awareness talent or See Hazard sense), they get to make a free Perception check against the DC to spot the trap, and if they succeed, do not trigger the trap."
         },
-        "dart talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "barbed dart (dart) [apoc]": {
             "prerequisite": "",
             "benefit": "Debilitating Talents This dart deals 1 point of bleed damage per die rolled to the target. This bleed damage cannot be healed unless the dart is removed as a full-round action. The creature can remove the dart as a swift action, but doing so deals 1d6 points of bleed damage."
@@ -4115,10 +3847,6 @@
         "tethered dart (dart) [eo3]": {
             "prerequisite": "",
             "benefit": "A creature that is struck by your dart must succeed at a Reflex save or be tethered to the corner chosen when placing a dart, and is subject to a drag combat maneuver, using your practitioner modifier and Craft (traps) ranks instead of your Strength and base attack bonus respectively, dragging them towards the corners square. Each round the target remains tethered, they are subjected to the same drag combat maneuver (attempting a new roll every time). The tether has 10 hit points plus 2 hit points per rank in Craft (traps) you possess, an AC of 5, hardness equal to 1/2 your ranks in Craft (ranks), and a Break DC equal to your Trap sphere DC. The target cannot move further away from the trap without first breaking the tether or succeeding at a drag or reposition combat maneuver against your Trap sphere DC + 5, pulling the trap along with them. If you possess the Trap Wielder talent, you can instead have the tether applied to yourself instead of a designated corner."
-        },
-        "snare talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "alarm trap (snare)": {
             "prerequisite": "",
@@ -4171,10 +3899,6 @@
         "tricky traps (snare) [apoc]": {
             "prerequisite": "",
             "benefit": "A creature that fails its Reflex save to avoid this snare is subject to a dirty trick maneuver as if the trap successfully beat their CMD. This counts as you performing the dirty trick for the purposes of Scoundrel sphere abilities that depend on you triggering the dirty trick. Creatures targeted by this trap get a +1 circumstance bonus on their saving throw for each size category they are larger than Medium."
-        },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "a better mouse trap (snare) [jester's hb]": {
             "prerequisite": " Craft traps 5 ranks, .",
@@ -4245,10 +3969,6 @@
             "benefit": "Practitioners who train in certain spheres focused on unarmed combat, such as Boxing, deal additional damage with their unarmed strikes based on the total number of unarmed spheres and talents they possess, as shown in the following table. Practitioners from a class that already grants an unarmed damage progression, such as the brawler or monk, may treat their unarmed strike as one size category larger if they have 3 or more talents in an unarmed combat sphere, but receive no further benefits. In addition, any practitioner with at least 1 talent in an unarmed sphere gains the benefits of the Improved Unarmed Strike feat."
         },
         "table: practitioner unarmed damage": {
-            "prerequisite": "",
-            "benefit": ""
-        },
-        "wrestling talents": {
             "prerequisite": "",
             "benefit": ""
         },
@@ -4352,10 +4072,6 @@
             "prerequisite": "",
             "benefit": "If you are adjacent to a willing ally, you may make an Intimidate check as a full-round action against all hostile creatures watching you to influence their attitude, using dangerous looking moves against your ally while not dealing any actual damage to them. You gain a +2 to this Intimidate check for every 4 points of base attack bonus you possess. Creatures who have their attitude shifted by this talent have their attitude reverted to neutral rather than unfriendly, and any creature whose attitude is shifted by this talent takes a -2 penalty to saving throws against fear effects which originate from you for 1 day. You can also use a grapple check with a willing ally as a Perform check for the purposes of making money gaining a +2 bonus for every 4 points of base attack bonus you possess (this is treated as a performance check for bonuses that would apply to making performance checks). Each willing ally who participates in this talent for either use of it gives you an additional +2 bonus on this check (up to 5 additional allies), allowing you to further demonstrate your grappling prowess. Those observing you using this talent can make a Perception check with a DC of 10 + your grapple check to see that it is fake, which shifts their attitude 1 step closer towards hostile towards you and any ally who participated in this talent."
         },
-        "slam talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "armbar (slam) [apoc]": {
             "prerequisite": "",
             "benefit": "Armor Talents When you successfully maintain a grapple against a creature you have already pinned, you may expend your martial focus as an immediate action to attempt to damage one of the creatures limbs; the creature must succeed at a Fortitude save or have one of its limbs damaged by you (arms, legs, tentacles, or wings), ending the grapple. The penalties for a damaged limb are identical to the effects of a removed limb from the Limb Ripper talent except as follows: Note: Undead are not immune to this effect and must make the saving throw."
@@ -4391,10 +4107,6 @@
         "tag team (slam) [jester's hb]": {
             "prerequisite": "",
             "benefit": "You force the target of your grapple to provoke an attack of opportunity from one other ally threatening the target with a +2 circumstance bonus on their attack roll, breaking your grapple. If the target takes damage from the attack of opportunity, you regain martial focus and may move up to 10 feet. This movement does not provoke an attack of opportunity."
-        },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "death valley driver (slam) [gravecaller's hb]": {
             "prerequisite": "base attack bonus +10.",
@@ -4474,10 +4186,6 @@
             "prerequisite": "",
             "benefit": "Followers are normally intended to be governed by the abilities listed in the followers package and relevant talents. Using the statistics for commoners, experts, and troops are intended for use primarily when interactions cannot be easily handled narratively. Followers are not intended to be expendable operatives, skilled infiltrators, or massed alchemical bombers. If a PC's actions cause the unnecessary death of followers, follower recruitment may be slowed. Losses in the normal course of events should not have an effect; ambushes and unforeseen events occur, but repeated and extended abuse will discourage others from joining you."
         },
-        "leadership talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "expanded leadership": {
             "prerequisite": "",
             "benefit": "Choose a Leadership package you do not possess. You gain that package."
@@ -4485,10 +4193,6 @@
         "military training [utility]": {
             "prerequisite": "",
             "benefit": "You gain 5 ranks in the Profession (soldier) skill, plus 5 ranks per additional talent spent in the Leadership sphere (maximum ranks equal to your total Hit Dice). If you already have ranks in the Profession (soldier) skill you may immediately retrain them, but you do not get to retrain when only temporarily gaining talents, such as through the armigers customized weapons class feature."
-        },
-        "cohort talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "additional contacts (cohort)": {
             "prerequisite": "",
@@ -4545,10 +4249,6 @@
         "team lookout (cohort)": {
             "prerequisite": "",
             "benefit": "When within close range (25 feet + 5 feet per 2 ranks in Diplomacy) of any cohort, when making a Perception check, you and the cohorts may share the result of the check of the creature with the highest result."
-        },
-        "follower talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "alchemists (followers) [utility]": {
             "prerequisite": "",
@@ -4613,10 +4313,6 @@
         "scholars (followers) [utility]": {
             "prerequisite": "",
             "benefit": "Some of your followers are well-versed in lore and arcane studies. Any allied creature may treat the followers as an extensive library for the purpose of researching knowledge checks (normally requiring 1d4 hours). Scholars can identify magic items with a Spellcraft check of 15 + your ranks in Diplomacy. Any Knowledge, Linguistics, Spellcraft, or Use Magic Device checks made while with the followers automatically gain a +2 circumstance bonus from the scholars aid. This bonus increases by +1 for every 8 ranks in Diplomacy that you possess. If you possess the Merchants talent, you gain a 25% discount on scrolls purchased from the caravan. If using the Downtime rules from Ultimate Campaign, your followers may generate Magic capital in place of earning gold, with 50 gp equaling 1 Magic. Use your Diplomacy modifier for making the earnings checks. This stacks with capital gains from other talents."
-        },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "advanced cohorts (cohort)": {
             "prerequisite": "cohortDiplomacy 5 ranks.",
@@ -4756,10 +4452,6 @@
             "prerequisite": "",
             "benefit": "The Arcforge Campaign Setting: Spheres of Influence by Legendary Games introduced the Technomancy sphere. The sphere creates magical sprites to infest, control, or boost technological items. The sphere was not designed with routines or Tech sphere gadgets in mind, so the following clarifies their interactions, as well as other interactions that deal with routines and hacking: Effects that affect routines also affect sprites, and vice versa. Use your ranks in Craft (mechanical) in place of your magic skill bonus, and use your ranks in Craft (mechanical) + 11 in place of your magic skill defense for effects that require it. If a drone possesses a routine as an innate gadget it cannot be targeted by effects that target routines. If an AI would be installed in a drone or construct (granting it an aggregate template), it cannot be targeted by effects that target routines (but is targeted as a construct instead). A sprite's creator counts as its source of origin. If a sprite is required to attempt a saving throw, it uses its casters saving throw modifier. If an effect would destroy a Beta AI or stronger (such as a Gamma or Delta AI), with a single save or check (such as the Consume Sprite (program)), the effect instead deals 1d4 Charisma damage to the AI, +1d4 damage for every 5 caster levels or ranks in Craft (mechanical) the effect possesses. If an AI takes too much ability damage it is destroyed as normal."
         },
-        "tech talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "collapsible drone": {
             "prerequisite": "",
             "benefit": "When deactivated, drones you create are collapsed into a more portable object that is three size categories smaller than they normally are; this has no effect on the drones weight. When activated, the drone expands out of its collapsed state."
@@ -4799,10 +4491,6 @@
         "tech savvy": {
             "prerequisite": "",
             "benefit": "You are considered to be trained in any skill used against a technology-based subject. If the skill in question requires training to use even against non-technological subjects, you may instead make a Craft (mechanical) check in its place with a -5 penalty. Associated Feat: Technologist."
-        },
-        "accessory talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "alternate element pack (accessory, gadget)": {
             "prerequisite": "",
@@ -4875,10 +4563,6 @@
         "weapon upgrade (accessory, gadget)": {
             "prerequisite": "",
             "benefit": "This accessory can only be granted to melee weapons. The weapon gains one of the following weapon special features: Blocking, brace, deadly, disarm, distracting, reach, sunder, trip. This accessory can be attached multiple times. Each time it is attached, the weapon gains a different special feature. This accessory cannot grant a weapon a special feature it already possesses. This accessory can only be granted to melee weapons. The weapon gains one of the following weapon special features: Blocking, brace, deadly, disarm, distracting, reach, sunder, trip. This accessory can be attached multiple times. Each time it is attached, the weapon gains a different special feature. This accessory cannot grant a weapon a special feature it already possesses."
-        },
-        "gadget talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "accessory suit (gadget, moddable)": {
             "prerequisite": "",
@@ -5063,10 +4747,6 @@
         "virus (gadget, routine)": {
             "prerequisite": "",
             "benefit": "When activated, this routine begins to cause malfunction to the gadget it is uploaded to. A virus will automatically activate if the gadget it is uploaded into is activated. You select the kind of virus this routine is when you first create it from the list below:"
-        },
-        "legendary talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "alchemical drone": {
             "prerequisite": "  Drone.",
@@ -5430,10 +5110,6 @@
             "prerequisite": "",
             "benefit": "Packages: Some talents are marked (augmentation), (computation), (modification), (transmission) and (transportation). You must possess at least one of the packages noted by the talent to gain that talent (such as possessing the (augmentation) package to take a talent marked with (augmentation)). Individual abilities may also have a package as a prefix (i.e. Modification: Armor Donner (gizmo)). An abilitys prefix indicates that the character must possess that package to use the associated ability - usually because that ability relies on that packages base effects (i.e. being able to build modifications to use an ability with Modification as a prefix). Other Talent Tags: Many talents offer multiple types of gizmos at once. Some of these gizmos have a listed requisite package before it is gained as part of the talent."
         },
-        "tinker talents": {
-            "prerequisite": "",
-            "benefit": ""
-        },
         "disguised gizmo [utility]": {
             "prerequisite": "",
             "benefit": "You are a master of disguising your gizmos as otherwise normal objects that only expose their true functionality while used. You may apply a disguise to a gizmo as part of crafting that gizmo. A disguise applied this way is immediately broken while the gizmo is activated, and the disguise is immediately reapplied when the gizmo is deactivated. In addition, you gain a circumstance bonus on Disguise checks to apply a disguise to a gizmo equal to 1/2 ranks in the associated skill (minimum 1), and may take 10 when applying a disguise to a gizmo. You take no penalties for disguising a gizmo as a related object, unrelated object, or as being made from a different material. A prosthetic disguised with this talent only loses the benefits of its disguise when one of its secondary functions is in-use (such as retrieving a weapon from its storage capacity secondary function) and otherwise can remain disguised. A mechanoid disguised with this talent to appear as another creature does not break its disguise unless it visibly displays a disguise-breaking action (such as another creature entering the cockpit of a mechanoid disguised as a troll, or a mechanoid disguised as a horse propelling itself 200 feet vertically with a lifter gizmo). Special - Tinker Savvy: If you possess the Tinker Savvy talent (or another way to replace skill checks relating to mechanical creatures, objects, and similar subject matter with an associated skill check), when disguising a gizmo, you may use your total associated skill bonus in place of your Disguise bonus (before including the bonus from this talent and other conditional bonuses or penalties to Disguise checks you perform)."
@@ -5469,10 +5145,6 @@
         "tinker savvy [utility]": {
             "prerequisite": "",
             "benefit": "Your expertise gives you immense intuition for anything technological. Whenever you attempt a skill check to interact with a mechanical creature, object, or subject matter (including constructs, traps, locks, etc.), you may instead attempt an associated skill check with a -5 penalty. This does not allow you to perform checks you could not do with the original skill. You may expend your martial focus to take 13 when attempting a skill check with your associated skill. This is treated as taking 10, and can be used even when distracted or threatened (such as combat). Note: This talent also includes any skill checks you would perform related to a gizmo (or prompted by that gizmo), such as Heal checks made to implant a prosthetic, Craft or Knowledge checks made to identify something detected with a detector, etc."
-        },
-        "gizmo talents": {
-            "prerequisite": "",
-            "benefit": ""
         },
         "armor modifications (gizmo, modification)": {
             "prerequisite": "",
@@ -5593,10 +5265,6 @@
         "weapon modifications (gizmo, modification)": {
             "prerequisite": "",
             "benefit": "You learn a number of modifications which modify basic weapon abilities or adjust other fundamental properties of your weapons. Modification: Rapid Refiner (gizmo): This modification is attached to a weapon or sheath (such as a scabbard, ammunition pouch, quiver, etc.). The user may spend a swift action to refine the attached equipment (such as becoming rapidly sharpened, polished, etc.). A refined weapon gains a +1 circumstance bonus to 1 damage roll made within the next 1 minute, +1 damage roll per 3 gizmo levels. This damage is multiplied on a critical hit. Modification: Retractable Cording (gizmo): This modification is attached to a weapon (except ammunition and siege weapons). This modifications cord is worn by the user (such as wearing a bracer with the retractable cording attached). The cords length is up to 10 feet, + 5 feet per 2 gizmo levels, determined when crafted (referred to as the cord length; minimum 5 feet). The attached weapon cannot move further than the cords length from the user unless the modification or modifications cord is destroyed, or unless another creature succeeds at a Strength check to snap the cord (DC 10 + 1/2 the gizmos level). This modifications cord is not strong enough to bear weight (other than the attached weapons weight) and cannot be used as a rope or other similar object. The user may perform any the following as swift action (or each as a free action once per round): Modification: Weapon Amplifier (gizmo): A weapon amplifier shares and distributes attached modifications to the users other weapons. Rather than attaching the weapon amplifier to a weapon, modifications are attached to the weapon amplifier (as though it were an appropriate weapon) and the weapon modifier shares the effects of each attached modification to weapons in the users possession. Modification effects granted this way only apply to weapons each attached modification could normally attach to (if it could be affected by the modification normally; this excludes siege weapons). A weapon amplifier is treated as though it were attached to the user for the purposes of other effects. Any benefits granted by a weapon amplifier to the users weapons are lost 1 round after the weapon or ammunition leaves the users possession. As a swift action, the weapon amplifiers user may enable or disable any number of modifications from applying to a weapon they are wielding (such as disabling a retractable cording modification on their thrown axe). Modification: Weapon Customization (gizmo, minor): This modification is attached to a melee or ranged weapon. The attached weapon gains one of the following weapon special features (chosen at the time of the gizmo's creation): blocking, brace, deadly, disarm, distracting, grapple, nonlethal, performance, sunder, trip. The weapon must be able to normally have the chosen weapon special feature (such as distracting, nonlethal, or performance on a ranged weapon, but not reach or trip). Modification: Weapon Hybrid (gizmo, minor): This modification is attached to one or more manufactured weapons (except siege weapons). The attached weapons may be wielded simultaneously, requiring the handedness of the largest component weapon (such as requiring 2 hands if it were a dagger and a greatsword). Shields may be attached in place of a weapon (the user loses the benefits of an attached shield any round they attack with one or more of the attached weapons unless the user possesses an ability to retain their shield bonus to AC when making a shield bash attack, such as the Shield sphere Bashing Shield talent or the Improved Shield Bash feat). Modification: Weapon Shifter (gizmo): This modification is attached to a manufactured weapon (except siege weapons); when this modification is crafted, the crafter selects 1 weapon, +1 weapon per 5 gizmo levels. As a swift action, the user may make the attached weapon shift into one of the chosen weapons (or back to the original weapon). The weapon retains all of its abilities, including being masterwork, enhancement bonuses, and weapon special abilities, except those prohibited by its current shape (such as a keen longsword shifting into a greatclub would temporarily lose the keen special ability). If the original weapon is a double weapon and shifts into a weapon without the double special feature, you choose which end of the weapons enhancement bonuses are retained. If the original weapon shifts into a weapon with the double special feature, you choose which end of the double weapon inherits the weapons abilities. Ammunition may only shift into other ammunition meant for the same weapon; non-ammunition weapons cannot shift into ammunition and vice versa (subject to GM discretion)."
-        },
-        "tinker sphere legendary talents": {
-            "prerequisite": "Additional Talent  Many of the legendary talents included in this section list their initial prerequisites, which allow a character to qualify and select that talent. In addition to any prerequisites required to select a legendary talent, some abilities new gizmos, improvements to previous gizmos, etc. may list an additional prerequisite on the ability itself, including requiring certain talents or ranks in the users  associated skill. For example, the Advanced Augmentation legendary talents legendary load bearer requires the character to have the Pressure Jack talent, which grants the normal load bearer ability.",
-            "benefit": "Legendary talents are presumed to be by GM discretion only. Many effects produced by legendary talents range from having major setting implications (such as creating water from nothing) to simply being powerful (such as additional mechanoids or powerful teleportation effects). Due to the nature of the Tinker sphere offering many abilities as part of individual talents, GMs are encouraged to individually allow and disallow individual abilities from a legendary talent if they would be comfortable with one effect, but not another, granted by a single Tinker legendary talent. If a majority of a Tinker legendary talent would be disallowed, it is recommended to add the allowed portions of that talent to another relevant talent (such as, for example, if everything but the Advanced Computation fractional AI ability were to be disallowed, adding the fractional AI ability to Extra Automatons or another similar legendary talent). GMs are further encouraged to remix and reorganize the abilities granted by both basic and legendary talents, depending on their setting and needs, but should consider the default arrangement of the Tinker sphere to be the presumed and intended strength, breadth, and depth of the talents offered in this book."
         },
         "advanced arsenal (gizmo)": {
             "prerequisite": "Prerequisite: .",

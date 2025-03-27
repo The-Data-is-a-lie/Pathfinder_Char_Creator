@@ -2,6 +2,7 @@
   "Epilektoi": {
     "Roles": "Like an oracle, an epilektoi (the term is both singular and plural) is a mortal imbued with divine power. However, where an oracle is a master of divine magic, an epilektoi focuses their attention on martial prowess. Though rare, epilektoi are instantly recognizable on the battlefield, as they are often the warriors still standing after taking so many blows theyre more wound than flesh, or stuck with so many arrows they look like a macabre pincushion. These unstoppable adepts are the epitome of the term chosen one.",
     "HD": "d12",
+    "bab": "H",
     "Class Features": "An epilektoi is proficient with all simple and martial weapons, and with all armor and shields (including tower shields). Epilektoi are also proficient with the favored weapon of their deity (gaining the Improved Unarmed Strike feat if their deitys favored weapon is an unarmed strike, as normal). Additionally, the favored weapon of their deity is always considered an associated weapon for any maneuvers from disciplines they gain access to from this class.",
     "Weapon and Armor Proficiency": "An epilektoi is proficient with all simple and martial weapons, and with all armor and shields (including tower shields). Epilektoi are also proficient with the favored weapon of their deity (gaining the Improved Unarmed Strike feat if their deitys favored weapon is an unarmed strike, as normal). Additionally, the favored weapon of their deity is always considered an associated weapon for any maneuvers from disciplines they gain access to from this class.",
     "Aura (Ex)": "An epilektoi of a chaotic, evil, good, or lawful deity has a particularly powerful aura corresponding to the deity's alignment (see thedetect evilspell for details).",
@@ -22,7 +23,8 @@
   },
   "medic": {
     "Roles": "While everyone would love the opportunity to receive the healing magics of the great churches, genius alchemists or noble paladins, the service of such heroes is a rare and valuable thing. Not everyone can afford the cost of such potent magics. For the rest of the world, natural healers great and small service those who are in need of care. On the battlefield, where wounds, disease and death run rampant, the ones who answer this call are known as medics. These brave warriors possess a keen wisdom and insight into the healing arts, which they use to aid their brothers on the field of combat. Though a medics hands can heal, they are no slouches in combat, and their strength in arms can rival any warrior.",
-    "HD": "d6",
+    "HD": "d8",
+    "bab": "M",
     "Class Features": "The following are the class features of the medic.",
     "Weapon and Armor Proficiency": "A medic is proficient with all simple and martial weapons, with light and medium armor, and with shields (except for tower shields).",
     "Maneuvers": "A medic begins her career with knowledge of five martial maneuvers. The disciplines available to her areBroken Blade,Iron Tortoise,Golden Lion,Steel Serpent, andTempest Gale.",
@@ -42,7 +44,8 @@
   },
   "mystic": {
     "Roles": "Born with an untamed magical power buried deep within his soul, the mystic is a warrior who, much like a sorcerer, is filled with untapped energies. This power however, is too primal and unstable, and is difficult to be formed effectively into a spell. By following a martial medium to tame this energy, the mystic is able to shape his wild power into martial maneuvers and this allows him to discover the deeper mysteries of his own inborn power.",
-    "HD": "d6",
+    "HD": "d8",
+    "bab": "M",
     "Class Features": "All of the following are class features of the Mystic.",
     "Weapon and Armor Proficiency": "A mystic is proficient with all simple and martial weapons, katanas and wakizashis, and with light armor and shields (except tower shields).",
     "Maneuvers": "A mystic begins her career with knowledge of seven martial maneuvers. The disciplines available to her areElemental Flux,Mithral Current,Riven Hourglass,Shattered Mirror,Solar Wind, andVeiled Moon.",
@@ -63,7 +66,8 @@
   },
   "parasite": {
     "Roles": "Warfare constantly evolves, and so too must those who practice it. The most dangerous soldiers areoften the ones who indulge in the constant escalation of battle, altering themselves in body and mind to accommodate the shifting tides of misery so that they may champion it. Thriving off the misery of others, these beings known as parasites immerse themselves in carnage and disarray in order to emerge from the crucible like steel from the forge.",
-    "HD": "d6",
+    "HD": "d8",
+    "bab": "M",
     "Class Features": "The following are the class features of the parasite.",
     "Weapon and Armor Proficiency": "A parasite is proficient with all simple and martial weapons, with light armor, and with shields (except tower shields).",
     "Maneuvers": "A parasite begins their career with knowledge of seven martial maneuvers. The disciplines available to them areElemental Flux,Cursed Razor,Leaden Hyena,Steel Serpent,Shattered Mirror, andVeiled Moon. Undead and other parasites healed by negative energy can exchange one of these disciplines forUnquiet Graveinstead.",
@@ -82,6 +86,7 @@
   "rajah": {
     "Roles": "King. Pharaoh. Empress. Ruler. These are the natural aliases of the Rajah. Rising above their peers on both the battlefield and off, the rajah blends their Akashic might with martial prowess to control the tide of battle. No single mortal can win a war, and the rajah knows this better than anyone. With their unique akashic gifts, they bring out the potential of their allies, turning even the most inexperienced soldier into a dervish of steel and death. These few marked by fate are destined to be remembered by historyeither as benevolent kings, or conquering tyrants.",
     "HD": "d6",
+    "bab": "L",
     "Class Features": "The following are the rajahs class features. Some rajah class features refer to entitled creatures; an entitled creature is one with one or more of the rajahs titles shaped onto them. Unless otherwise noted, these class features only refer to creatures the rajah herself has entitled, not those entitled by other veilweavers.",
     "Weapon and Armor Proficiencies": "A rajah is proficient with all simple and martial weapons, with light armor, and with shields (except tower shields).",
     "Maneuvers": "A rajah begins her career with knowledge of five martial maneuvers. The disciplines available to her areGolden Lion,Radiant Dawn,Scarlet Throne,Solar Wind, and one discipline of the initiators choice.",
@@ -103,7 +108,8 @@
   },
   "stalker": {
     "Roles": "An effective warrior wielding both skill and stealth, the stalker is a martial disciple who battles in the deep shadows and the hidden underworld of night. Through rigorous training and deep, intuitive instincts, the stalker is a trained killer whose very art is considered illegal in some places. Part mystic, part warrior, and part assassin, the stalkers arts are varied, but always deadly.",
-    "HD": "d6",
+    "HD": "d8",
+    "bab": "M",
     "Class Features": "All of the following are class features of the stalker.",
     "Weapon and Armor Proficiency": "Stalkers are proficient with all simple and martial weapons, and with light armor. Stalkers are not proficient with shields of any kind.",
     "Maneuvers": "A stalker begins his career with knowledge of six martial maneuvers. The disciplines available to him areBroken Blade,Solar Wind,Steel Serpent,Thrashing Dragon,Veiled Moon, andeitherRiven HourglassorTempest Gale. If he does not have that disciplines associated skill as a class skill, he gains it as a class skill.",
@@ -121,6 +127,7 @@
   "voltaic": {
     "Roles": "I am the storm, lightning is my blade, and thunder echoes in my steps.",
     "HD": "d10",
+    "bab": "H",
     "Class Features": "The following are the class features of the voltaic.",
     "Weapon and Armor Proficiency": "A voltaic is proficient with all simple and martial weapons and with all armor (heavy, light, and medium) and shields (including tower shields).",
     "Martial Flexibility": "A voltaic can take a move action to gain the benefit of a combat feat they dont possess. This effect lasts for 1 minute. The voltaic must meet all the feats prerequisites. They may use this ability a number of times per day equal to 3+1/2 their voltaic level (minimum 1).",
@@ -132,7 +139,8 @@
   },
   "warder": {
     "Roles": "Protective and disciplined warriors, warders are fighting men and women who use their knowledge of warfare, tactics, and strategy combined with superior combat training to accomplish their goals in defending others. Their intellect guides them through battle, and their skill at arms achieves their success.",
-    "HD": "d6",
+    "HD": "d12",
+    "bab": "H",
     "Class Features": "All of the following are class features of the warder.",
     "Weapon and Armor Proficiency": "Warders are proficient with all simple and martial melee weapons, with all armor, and with shields (including tower shields).",
     "Maneuvers": "A warder begins her career with knowledge of five martial maneuvers. The disciplines available to her areBroken Blade,Golden Lion,Iron Tortoise,Primal Fury, and eitherEternal GuardianorPiercing Thunderto her list of available disciplines. If she does not have that disciplines associated skill as a class skill, she gains it as a class skill.",
@@ -154,6 +162,7 @@
   "warlord": {
     "Roles": "Dynamos on the field of combat, warlords walk the line of victory and ruin through their determination to achieve glory. Where some may talk tactics, the warlord dives in. Where some may fight in strategic units, the warlord shines alone as an inspirational beacon on the field of combat; to be a warlord is to be a lord of war.",
     "HD": "d10",
+    "bab": "H",
     "Class Features": "All of the following are class features of the warlord.",
     "Weapon and Armor Proficiency": "Warlords are proficient with all simple weapons and martial weapons, and with light and medium armor, and with shields.",
     "Maneuvers": "A warlord begins his career with knowledge of six martialmaneuvers. The disciplines available to him areGolden Lion,Primal Fury,Scarlet Throne,Solar Wind,Thrashing Dragon, and eitherPiercing ThunderorTempest Gale. If he does not have that disciplines associated skill as a class skill, he gains it as a class skill.",
@@ -176,7 +185,8 @@
   },
   "zealot": {
     "Roles": "A warhawk politician grimly but eloquently calls for the destruction of a hated enemy. A loyal guard lays down his life for his homeland without hesitation. A cultist is driven to greater and greater ecstasies of blood to satisfy the wicked whispers that fill his mind day and night. All believe that if they sacrifice enough for their dreams, even the impossible can be realized. These dreams are enough to shape those around themand, if realizedthe world",
-    "HD": "d6",
+    "HD": "d10",
+    "bab": "H",
     "Class Features": "All of the following are class features of the zealot.",
     "Weapon and Armor Proficiency": "A zealot is proficient with all simple and martial weapons and with all armor (heavy, light, and medium) and shields (except tower shields).",
     "Maneuvers": "A zealot begins his career with knowledge of five martial maneuvers. The disciplines available to him areEternal Guardian,Golden Lion,Piercing Thunder,Sleeping Goddess, andSolar Wind.",
