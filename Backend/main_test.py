@@ -44,7 +44,7 @@ from utils.class_func.profession_chooser 			import profession_chooser
 # from utils.class_func.race_func 					import (race_ability_score_changes, race_ability_split, 
 #                                                      		race_traits_chooser, subrace_chooser)#, full_race_data
 from utils.class_func.randomize_flaw 				import randomize_flaw
-from utils.class_func.saving_throws 				import saving_throw_calc
+# from utils.class_func.saving_throws 				import saving_throw_calc
 from utils.class_func.skill_ranks 					import skills_selector
 from utils.class_func.spells 						import (extra_spells_divine, spells_known_attr, 
 										   					spells_known_extra_roll, spells_known_selection, 
@@ -90,7 +90,7 @@ character_json_config = {
 	'bard_choices': Load_when_needed('Backend/json/bard_choices.json'),	
 	'bloodlines': Load_when_needed('Backend/json/bloodlines.json'),
 	'class_features': Load_when_needed('Backend/json/class_features.json'),	
-	'classes': Load_when_needed('Backend/json/class.json'),
+	# 'classes': Load_when_needed('Backend/json/class.json'),
 	'class_data': Load_when_needed('Backend/json/class_data.json'),
 	'cleric_domains': Load_when_needed('Backend/json/cleric_domains.json'),				
 	'deity': Load_when_needed('Backend/json/deity.json'),	
@@ -147,7 +147,7 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='half-elf', class_choice='rogue', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=45, low_level=45, gold_num=1000000, homebrew_amount=None):
+def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='half-elf', class_choice='cleric', multi_class='N', alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", num_dice=6, num_sides=6, high_level=45, low_level=45, gold_num=1000000, homebrew_amount=None):
 		character = CreateNewCharacter(
 			character_json_config)
 		character.instantiate_full_data_dict()
@@ -483,7 +483,7 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		extra_combat_feats(character)
 
 		# Feat Selector
-		casting_level_str = character.classes[character.c_class]['casting level'].lower()
+		casting_level_str = character.class_data[character.c_class]['casting level'].lower()
 		if truly_random_feats.upper() == "Y":
 		# Truly Random Feats
 		# full casters + mid casters with low BAB

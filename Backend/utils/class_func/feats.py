@@ -99,7 +99,7 @@ def remove_duplicates_list(character,lst):
     return result
 
 def build_selector(character):
-    casting_level_str = character.classes[character.c_class]['casting level'].lower()
+    casting_level_str = character.class_data[character.c_class]['casting level'].lower()
     specialty_set = {'cleric', 'druid'}
     type_chance = random.choices(range(1, 101))[0]
     feat_list = []

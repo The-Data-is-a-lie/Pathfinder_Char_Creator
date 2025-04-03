@@ -1,7 +1,8 @@
 {  "alchemist": {
   "main_stat": "int",
   "bab": "M",
-    "role": "The alchemist's reputation is not softened by his exuberance (some would say dangerous recklessness) in perfecting his magical extracts and potion-like creations, infusing these substances with magic siphoned from his aura and using his own body as experimental stock. Nor is it mollified by the alchemist's almost gleeful passion for building explosive bombs and discovering strange new poisons and methods for their use. These traits, while making him a liability and risk for most civilized organizations and institutions of higher learning, seem to fit quite well with most adventuring groups.",
+  "casting level": "mid",
+  "role": "The alchemist's reputation is not softened by his exuberance (some would say dangerous recklessness) in perfecting his magical extracts and potion-like creations, infusing these substances with magic siphoned from his aura and using his own body as experimental stock. Nor is it mollified by the alchemist's almost gleeful passion for building explosive bombs and discovering strange new poisons and methods for their use. These traits, while making him a liability and risk for most civilized organizations and institutions of higher learning, seem to fit quite well with most adventuring groups.",
     "alignment": "Any.",
     "hit die": "d8.",
     "starting wealth": "3d6 x 10 gp (average 105 gp). Class Skills The Alchemist's class skills are Appraise (Int), Craft (any) (Int), Disable Device (Dex), Fly (Dex), Heal (Wis), Knowledge (arcana) (Int), Knowledge (nature) (Int), Perception (Wis), Profession (Wis), Sleight of Hand (Dex), Spellcraft (Int), Survival (Wis), Use Magic Device (Cha).",
@@ -51,7 +52,8 @@
     "antipaladin": {
       "main_stat": "cha",
       "bab": "H",      
-    "role": "Antipaladins are villains at their most dangerous. They care nothing for the lives of others and actively seek to bring death and destruction to ordered society. They rarely travel with those that they do not subjugate, unless as part of a ruse to bring ruin from within. As an alternate paladin class, the antipaladin uses Table: Antipaladin to determine its base attack bonus, saving throw bonuses, and spells per day. These details, along with the class's new special abilities, can be found on Table 2-13.",
+      "casting level": "low",
+      "role": "Antipaladins are villains at their most dangerous. They care nothing for the lives of others and actively seek to bring death and destruction to ordered society. They rarely travel with those that they do not subjugate, unless as part of a ruse to bring ruin from within. As an alternate paladin class, the antipaladin uses Table: Antipaladin to determine its base attack bonus, saving throw bonuses, and spells per day. These details, along with the class's new special abilities, can be found on Table 2-13.",
     "alignment": "Chaotic evil.",
     "hit die": "d10.",
     "parent class(es)": "Paladin.",
@@ -83,7 +85,8 @@
     "arcanist": {
       "main_stat": "int",
       "bab": "L",      
-    "role": "Arcanists are scholars of all things magical. They constantly seek out new forms of magic to discover how they work, and in many cases, to collect the energy of such magic for their own uses. Many arcanists are seen as reckless, more concerned with the potency of magic than the ramifications of unleashing such power.",
+      "casting level": "high",
+      "role": "Arcanists are scholars of all things magical. They constantly seek out new forms of magic to discover how they work, and in many cases, to collect the energy of such magic for their own uses. Many arcanists are seen as reckless, more concerned with the potency of magic than the ramifications of unleashing such power.",
     "alignment": "Any.",
     "hit die": "d6.",
     "parent class(es)": "Sorcerer and wizard.",
@@ -116,7 +119,8 @@
     "barbarian": {
       "main_stat": "str",
       "bab": "H",      
-    "role": "Barbarians excel in combat, possessing the martial prowess and fortitude to take on foes seemingly far superior to themselves. With rage granting them boldness and daring beyond that of most other warriors, barbarians charge furiously into battle and ruin all who would stand in their way.",
+      "casting level": "none",
+      "role": "Barbarians excel in combat, possessing the martial prowess and fortitude to take on foes seemingly far superior to themselves. With rage granting them boldness and daring beyond that of most other warriors, barbarians charge furiously into battle and ruin all who would stand in their way.",
     "alignment": "Any nonlawful.",
     "hit die": "d12.",
     "starting wealth": "3d6 x 10 gp (average 105 gp). Class Skills The Barbarian's class skills are Acrobatics (Dex), Climb (Str), Craft (Int), Handle Animal (Cha), Intimidate (Cha), Knowledge (nature) (Int), Perception (Wis), Ride (Dex), Survival (Wis), and Swim (Str).",
@@ -156,7 +160,8 @@
     "barbarian (unchained)": {
       "main_stat": "str",
       "bab": "H",      
-    "unchained": "The unchained barbarian is similar in many regards to its counterpart in the Core Rulebook-she still goes into a rage and gains rage powers, but many of the details have been changed. Rage now grants temporary hit points and static bonuses on attack and damage rolls, rather than bonuses to ability scores that force players to recalculate a number of statistics. Additionally, many rage powers now function whenever the barbarian is raging, as opposed to just once per rage. Finally, the overall utility of many of the rage powers has been adjusted to make them more useful and interesting.",
+      "casting level": "none",
+      "unchained": "The unchained barbarian is similar in many regards to its counterpart in the Core Rulebook-she still goes into a rage and gains rage powers, but many of the details have been changed. Rage now grants temporary hit points and static bonuses on attack and damage rolls, rather than bonuses to ability scores that force players to recalculate a number of statistics. Additionally, many rage powers now function whenever the barbarian is raging, as opposed to just once per rage. Finally, the overall utility of many of the rage powers has been adjusted to make them more useful and interesting.",
     "alignment": "Any nonlawful.",
     "hit die": "d12.",
     "starting wealth": "3d6 x 10 gp (average 105 gp). Class Skills The Barbarian (unchained)'s class skills are Acrobatics (Dex), Climb (Str), Craft (Int), Handle Animal (Cha), Intimidate (Cha), Knowledge (nature) (Int), Perception (Wis), Ride (Dex), Survival (Wis), and Swim (Str).",
@@ -179,6 +184,7 @@
     "bard": {
       "main_stat": "cha",
       "bab": "M",      
+      "casting level": "mid",
     "role": "Bards capably confuse and confound their foes while inspiring their allies to ever-greater daring. While accomplished with both weapons and magic, the true strength of bards lies outside melee, where they can support their companions and undermine their foes without fear of interruptions to their performances.",
     "alignment": "Any.",
     "hit die": "d8.",
@@ -228,6 +234,7 @@
   "bloodrager": {
     "main_stat": "cha",
     "bab": "H",      
+    "casting level": "low",
     "role": "Masters of the battlefield, bloodragers unleash fearful carnage on their enemies using their bloodlines and combat prowess. The bloodrager's place is on the front lines, right in his enemies' faces, supplying tremendous martial force bolstered by a trace of arcane magic.",
     "alignment": "Any.",
     "hit die": "d10.",
@@ -267,6 +274,7 @@
     "brawler": {
       "main_stat": "str",
       "bab": "H",      
+      "casting level": "none",
     "role": "Brawlers are maneuverable and well suited for creating flanking situations or dealing with lightly armored enemies, as well as quickly adapting to a rapidly changing battlefield.",
     "alignment": "Any.",
     "hit die": "d10.",
@@ -302,6 +310,7 @@
     "cavalier": {
       "main_stat": "str",
       "bab": "H",      
+      "casting level": "none",
     "role": "Cavaliers tend to marshal forces on the battlefield, using their mounted talents and challenges to control the flow of the fight. Outside of battle, cavaliers can be found advancing their cause through diplomacy and, if needed, subterfuge. The cavalier is no stranger to courtly intrigue and can hold his own in even the most delicate of social situations.",
     "alignment": "Any.",
     "hit die": "d10.",
@@ -347,6 +356,7 @@
     "cleric": {
       "main_stat": "wis",
       "bab": "M",      
+      "casting level": "high",
     "role": "More than capable of upholding the honor of their deities in battle, clerics often prove stalwart and capable combatants. Their true strength lies in their capability to draw upon the power of their deities, whether to increase their own and their allies' prowess in battle, to vex their foes with divine magic, or to lend healing to companions in need. As their powers are influenced by their faith, all clerics must focus their worship upon a divine source. While the vast majority of clerics revere a specific deity, a small number dedicate themselves to a divine concept worthy of devotion-such as battle, death, justice, or knowledge-free of a deific abstraction. (Work with your GM if you prefer this path to selecting a specific deity.)",
     "alignment": "A cleric's alignment must be within one step of her deity's, along either the law/chaos axis or the good/evil axis (see Additional Rules).",
     "hit die": "d8.",
@@ -390,6 +400,7 @@
     "druid": {
       "main_stat": "wis",
       "bab": "M",      
+      "casting level": "high",
     "role": "While some druids might keep to the fringe of battle, allowing companions and summoned creatures to fight while they confound foes with the powers of nature, others transform into deadly beasts and savagely wade into combat. Druids worship personifications of elemental forces, natural powers, or nature itself. Typically this means devotion to a nature deity, though druids are just as likely to revere vague spirits, animalistic demigods, or even specific awe-inspiring natural wonders.",
     "alignment": "Any neutral.",
     "hit die": "d8.",
@@ -445,6 +456,7 @@
     "fighter": {
       "main_stat": "str/dex",
       "bab": "H",      
+      "casting level": "none",
     "role": "Fighters excel at combat-defeating their enemies, controlling the flow of battle, and surviving such sorties themselves. While their specific weapons and methods grant them a wide variety of tactics, few can match fighters for sheer battle prowess.",
     "alignment": "Any.",
     "hit die": "d10.",
@@ -488,6 +500,7 @@
     "gunslinger": {
       "main_stat": "dex",
       "bab": "H",      
+      "casting level": "none",
     "role": "Gunslingers are thunderous artillery, often found where the fighting is fiercest. Brave, clever, and frequently foolhardy, many gunslingers push to position themselves at close range, barrels blazing, to take down their foes and demoralize their enemies. Other gunslingers are masters of distant death, picking off enemies from afar with their strange and wondrous weapons.",
     "alignment": "Any.",
     "hit die": "d10.",
@@ -522,7 +535,8 @@
       "main_stat": "wis",
       "main_stat_2": "dex",
   "bab": "M",      
-    "role": "Hunters can adapt their tactics to many kinds of opponents, and cherish their highly trained animal companions. As a team, the hunter and her companion can react to danger with incredible speed, making them excellent scouts, explorers, and saboteurs.",
+  "casting level": "mid",
+  "role": "Hunters can adapt their tactics to many kinds of opponents, and cherish their highly trained animal companions. As a team, the hunter and her companion can react to danger with incredible speed, making them excellent scouts, explorers, and saboteurs.",
     "alignment": "Any neutral.",
     "hit die": "d8.",
     "parent class(es)": "Druid and ranger.",
@@ -572,7 +586,8 @@
     "inquisitor": {
       "main_stat": "wis",
   "bab": "M",      
-    "role": "Inquisitors tend to move from place to place, chasing down enemies and researching emerging threats. As a result, they often travel with others, if for no other reason than to mask their presence. Inquisitors work with members of their faith whenever possible, but even such allies are not above suspicion.",
+  "casting level": "mid",
+  "role": "Inquisitors tend to move from place to place, chasing down enemies and researching emerging threats. As a result, they often travel with others, if for no other reason than to mask their presence. Inquisitors work with members of their faith whenever possible, but even such allies are not above suspicion.",
     "alignment": "An inquisitor's alignment must be within one step of her deity's, along either the law/chaos axis or the good/evil axis.",
     "hit die": "d8.",
     "starting wealth": "4d6 x 10 gp (average 140 gp). Class Skills The Inquisitor's class skills are Bluff (Cha), Climb (Str), Craft (Int), Diplomacy (Cha), Disguise (Cha), Heal (Wis), Intimidate (Cha), Knowledge (arcana) (Int), Knowledge (dungeoneering) (Int), Knowledge (nature) (Int), Knowledge (planes) (Int), Knowledge (religion) (Int), Perception (Wis), Profession (Wis), Ride (Dex), Sense Motive (Wis), Spellcraft (Int), Stealth (Dex), Survival (Wis), and Swim (Str).",
@@ -624,6 +639,7 @@
     "investigator": {
       "main_stat": "int/dex",
   "bab": "M",      
+      "casting level": "mid",
     "role": "Investigators live to solve mysteries and find inventive ways to get out of jams. They serve as advisors and support for their adventuring parties, but can take center stage when knowledge and cunning are needed. No slouches in battle, they know how to make surprise attacks and use inspiration to bring those attacks home.",
     "alignment": "Any.",
     "hit die": "d8.",
@@ -665,6 +681,7 @@
     "kineticist": {
       "main_stat": "con",
   "bab": "M",      
+  "casting level": "mid",
     "role": "Kineticists generally use their powers to assail their foes from range, but based on the way their talents develop, they can channel their kinetic abilities for a variety of situations. Kineticists are usually quite different from their families and friends, so they often strike out on their own or alongside others with extraordinary talents.",
     "alignment": "Any.",
     "hit die": "d8.",
@@ -704,9 +721,10 @@
     "wayang": "Add 1/4 to the save DC of the kineticist's void infusions and wild talents ( Pathfinder Player Companion: Occult Origins 6)."
   },
     "magus": {
-      "main_stat": "int",
-      "main_stat_2": "str/dex",
-  "bab": "M",      
+    "main_stat": "int",
+    "main_stat_2": "str/dex",
+    "bab": "M",      
+    "casting level": "mid",
     "role": "Magi spend much of their time traveling the world, learning whatever martial or arcane secrets they can find. They might spend months learning a new sword-fighting style from a master warrior, while simultaneously moonlighting in the local library, poring through tomes of ancient lore. Most who take this path dabble in all sorts of lore, picking up anything that might aid them in their search for perfection.",
     "alignment": "Any.",
     "hit die": "d8.",
@@ -751,7 +769,8 @@
     "medium": {
       "main_stat": "cha",
   "bab": "M",      
-    "role": "Mediums are very versatile, filling whatever role the party needs at the moment by channeling the right spirit.",
+  "casting level": "mid",
+  "role": "Mediums are very versatile, filling whatever role the party needs at the moment by channeling the right spirit.",
     "alignment": "Any.",
     "hit die": "d8.",
     "starting wealth": "4d6 x 10 gp (average 140 gp). Class Skills The Medium's class skills are Bluff (Cha), Craft (Int), Diplomacy (Cha), Fly (Dex), Heal (Wis), Intimidate (Cha), Knowledge (arcana) (Int), Knowledge (planes) (Int), Knowledge (religion) (Int), Linguistics (Int), Perception (Wis), Perform (Cha), Profession (Wis), Sense Motive (Wis), Spellcraft (Int), and Use Magic Device (Cha).",
@@ -792,7 +811,8 @@
     "mesmerist": {
       "main_stat": "cha",
   "bab": "M",      
-    "role": "Mesmerists wield power over lesser minds, suppressing foes' wills to weaken them. Priding themselves on their trickery and inventiveness, they also support their allies-and often themselves-with magical tricks, most of which offer protection. Their limited healing ability primarily provides temporary hit points, so mesmerists aren't the strongest primary healers, but they can easily remove conditions that typically affect the mind.",
+  "casting level": "mid",
+  "role": "Mesmerists wield power over lesser minds, suppressing foes' wills to weaken them. Priding themselves on their trickery and inventiveness, they also support their allies-and often themselves-with magical tricks, most of which offer protection. Their limited healing ability primarily provides temporary hit points, so mesmerists aren't the strongest primary healers, but they can easily remove conditions that typically affect the mind.",
     "alignment": "Any.",
     "hit die": "d8.",
     "starting wealth": "3d6 x 10 gp (average 105 gp). Class Skills The Mesmerist's class skills are Appraise (Int), Bluff (Cha), Craft (Int), Diplomacy (Cha), Disguise (Cha), Escape Artist (Dex), Intimidate (Cha), Knowledge (arcana) (Int), Knowledge (dungeoneering) (Int), Knowledge (history) (Int), Knowledge (local) (Int), Knowledge (nobility) (Int), Knowledge (religion) (Int), Linguistics (Int), Perception (Wis), Perform (Cha), Profession (Wis), Sense Motive (Wis), Sleight of Hand (Dex), Spellcraft (Int), Stealth (Dex), and Use Magic Device (Cha).",
@@ -832,7 +852,8 @@
       "main_stat": "wis",
       "main_stat_2": "dex",
   "bab": "M",      
-    "role": "Monks excel at overcoming even the most daunting perils, striking where it's least expected, and taking advantage of enemy vulnerabilities. Fleet of foot and skilled in combat, monks can navigate any battlefield with ease, aiding allies wherever they are needed most.",
+  "casting level": "none",
+  "role": "Monks excel at overcoming even the most daunting perils, striking where it's least expected, and taking advantage of enemy vulnerabilities. Fleet of foot and skilled in combat, monks can navigate any battlefield with ease, aiding allies wherever they are needed most.",
     "alignment": "Any lawful.",
     "hit die": "d8.",
     "starting wealth": "1d6 x 10 gp (average 35 gp). Class Skills The Monk's class skills are Acrobatics (Dex), Climb (Str), Craft (Int), Escape Artist (Dex), Intimidate (Cha), Knowledge (history) (Int), Knowledge (religion) (Int), Perception (Wis), Perform (Cha), Profession (Wis), Ride (Dex), Sense Motive (Wis), Stealth (Dex), and Swim (Str).",
@@ -892,6 +913,7 @@
       "main_stat": "wis",
       "main_stat_2": "dex",
   "bab": "H",      
+      "casting level": "none",
     "unchained": "Much of the monk has been reworked, including its base attack bonus, Hit Die, saves, and many of its special abilities. The result is a version of the monk that not only is easier to play, but also possesses a great deal more versatility. Flurry of blows is now much simpler to use in play. Many of the higher-level abilities of the monk, such as abundant step and quivering palm, have been incorporated into the new system of ki powers. As a monk advances in level, he can select from a variety of ki powers, allowing the player to truly customize his character.",
     "alignment": "Any lawful.",
     "hit die": "d10.",
@@ -921,6 +943,7 @@
       "main_stat": "wis",
       "main_stat_2": "dex",
       "bab": "M",      
+      "casting level": "none",
     "role": "The ninja spends almost all of her time honing her skills, practicing her art, or working on her next assignment. Even when not specifically working, the ninja is ever vigilant and ready for the situation to turn deadly. Her line of work earns her many enemies, but it is a list that she frequently reduces through assassination and misdirection. The ninja is an alternate class for the rogue core class.",
     "alignment": "Any.",
     "hit die": "d8.",
@@ -943,6 +966,7 @@
     "occultist": {
       "main_stat": "int",
   "bab": "M",      
+      "casting level": "mid",
     "role": "Occultists are always eager to travel in the company of adventurers, explorers, and archaeologists, as those three groups of people have a knack for finding items with rich histories and great significance.",
     "alignment": "Any.",
     "hit die": "d8.",
@@ -977,6 +1001,7 @@
     "oracle": {
       "main_stat": "cha",
   "bab": "M",      
+      "casting level": "high",
     "role": "Oracles do not usually associate with any one church or temple, instead preferring to strike out on their own, or with a small group of like-minded individuals. Oracles typically use their spells and revelations to further their understanding of their mystery, be it through fighting mighty battles or tending to the poor and sick.",
     "alignment": "Any.",
     "hit die": "d8.",
@@ -1025,6 +1050,7 @@
       "main_stat": "cha",
       "main_stat_2": "str",
   "bab": "H",      
+      "casting level": "low",
     "role": "Paladins serve as beacons for their allies within the chaos of battle. While deadly opponents of evil, they can also empower goodly souls to aid in their crusades. Their magic and martial skills also make them well suited to defending others and blessing the fallen with the strength to continue fighting.",
     "alignment": "Lawful good.",
     "hit die": "d10.",
@@ -1075,6 +1101,7 @@
     "psychic": {
       "main_stat": "int",
   "bab": "L",      
+      "casting level": "high",
     "role": "With a large suite of spells, psychics can handle many situations, but they excel at moving and manipulating objects, as well as reading and influencing thoughts.",
     "alignment": "Any.",
     "hit die": "d6.",
@@ -1109,7 +1136,8 @@
       "main_stat": "wis",
       "main_stat_2": "dex",
   "bab": "H",      
-    "role": "Rangers are deft skirmishers, either in melee or at range, capable of skillfully dancing in and out of battle. Their abilities allow them to deal significant harm to specific types of foes, but their skills are valuable against all manner of enemies.",
+  "casting level": "low",
+  "role": "Rangers are deft skirmishers, either in melee or at range, capable of skillfully dancing in and out of battle. Their abilities allow them to deal significant harm to specific types of foes, but their skills are valuable against all manner of enemies.",
     "alignment": "Any.",
     "hit die": "d10.",
     "starting wealth": "5d6 x 10 gp (average 175 gp). Class Skills The Ranger's class skills are Climb (Str), Craft (Int), Handle Animal (Cha), Heal (Wis), Intimidate (Cha), Knowledge (dungeoneering) (Int), Knowledge (geography) (Int), Knowledge (nature) (Int), Perception (Wis), Profession (Wis), Ride (Dex), Spellcraft (Int), Stealth (Dex), Survival (Wis), and Swim (Str).",
@@ -1170,6 +1198,7 @@
     "rogue": {
       "main_stat": "dex",
   "bab": "M",      
+      "casting level": "none",
     "role": "Rogues excel at moving about unseen and catching foes unaware, and tend to avoid head-to-head combat. Their varied skills and abilities allow them to be highly versatile, with great variations in expertise existing between different rogues. Most, however, excel in overcoming hindrances of all types, from unlocking doors and disarming traps to outwitting magical hazards and conning dull-witted opponents.",
     "alignment": "Any.",
     "hit die": "d8.",
@@ -1225,6 +1254,7 @@
     "rogue (unchained)": {
       "main_stat": "dex",
   "bab": "M",      
+      "casting level": "none",
     "unchained": "While much of the unchained rogue will be familiar to those who have played the class from the Core Rulebook , there are a number of new class features that greatly enhance the power and flexibility of the rogue. Chief among these is the debilitating injury class feature. A rogue with this ability can severely hamper her foes, giving her a much-needed boost to her offense or defense, depending on the situation. In addition, with finesse training, the rogue now gains Weapon Finesse for free at 1st level. This ability also lets her add her Dexterity to damage rolls with one weapon starting at 3rd level. Finally, the rogue's edge ability ties into a new system presented in Chapter 2 of this book called skill unlocks. With this feature, the rogue can master a small set of chosen skills, outperforming all those characters without access to such talents.",
     "alignment": "Any.",
     "hit die": "d8.",
@@ -1247,6 +1277,7 @@
   },
     "samurai": {
       "main_stat": "str/dex",
+      "casting level": "none",
   "bab": "H",      
     "role": "While typically sworn to the service of a lord, a samurai is usually given free reign as to how he performs that service. As such, samurai can sometimes be found with other adventurers, taking the fight to the enemies of their masters. Other samurai become ronin, striving to serve an ideal without paying fealty to a lord. In either case, samurai make powerful allies, capable of withstanding nearly any harm while dispatching their foes with deadly precision. The samurai is an alternate class for the cavalier base class.",
     "alignment": "Any.",
@@ -1273,6 +1304,7 @@
   },
     "shaman": {
       "main_stat": "wis",
+      "casting level": "high",
   "bab": "M",      
     "role": "Shamans make for potent divine spellcasters, capable of using divine spells and the power of their spirits to aid their allies and destroy their foes. While they aren't the healers that clerics are, they can still fill that role when needed.",
     "alignment": "Any.",
@@ -1312,6 +1344,7 @@
     "shifter": {
       "main_stat": "wis",
       "main_stat_2": "dex/str",
+      "casting level": "none",
   "bab": "H",      
     "role": "The shifter is so attuned to nature and the wild beasts of the world that she can call upon those powers to mystically fortify her being. Fluid in form and function, she can shape herself to overcome hardships and support those she befriends or serves.",
     "alignment": "Any neutral.",
@@ -1386,6 +1419,7 @@
     "skald": {
       "main_stat": "cha",
       "main_stat_2": "con",
+      "casting level": "mid",
   "bab": "M",      
     "role": "A skald inspires his allies, and often presses forward to fight enemies in melee. Outside of combat, he's useful as a healer and scholar, less versatile but more durable than a bard.",
     "alignment": "Any.",
@@ -1424,6 +1458,7 @@
   },
     "slayer": {
       "main_stat": "dex",
+      "casting level": "none",
   "bab": "H",      
     "role": "The slayer is elusive, and good at finding the opportune time and location to strike. Combining the deadliest talents of rangers and rogues, a slayer's abilities are all about getting into combat, dealing with a target, and then getting back out again.",
     "alignment": "Any.",
@@ -1464,6 +1499,7 @@
     "sorcerer": {
       "main_stat": "cha",
   "bab": "L",      
+      "casting level": "high",
     "role": "Sorcerers excel at casting a selection of favored spells frequently, making them powerful battle mages. As they become familiar with a specific and ever-widening set of spells, sorcerers often discover new and versatile ways of making use of magics other spellcasters might overlook. Their bloodlines also grant them additional abilities, assuring that no two sorcerers are ever quite alike.",
     "alignment": "Any.",
     "hit die": "d6.",
@@ -1506,6 +1542,7 @@
     "spiritualist": {
       "main_stat": "wis",
       "main_stat_2": "con",
+      "casting level": "mid",
   "bab": "M",      
     "role": "The spiritualist seeks the occult and esoteric truth about life, death, and the passage beyond, using her phantom as a guide and tool. The connection with her phantom allows her to harness the powers of life and death, thought and nightmare, shadow and revelation.",
     "alignment": "Any.",
@@ -1547,6 +1584,7 @@
   },
     "summoner": {
       "main_stat": "int",
+      "casting level": "mid",
   "bab": "M",      
     "role": "Summoners spend much of their time exploring the arcane arts alongside their eidolons. While their power comes from within, they rely heavily on their eidolon companions in dangerous situations. While a summoner and his eidolon function as individuals, their true power lies in what they can accomplish together.",
     "alignment": "Any.",
@@ -1594,6 +1632,7 @@
   },
     "summoner (unchained)": {
       "main_stat": "int",
+      "casting level": "mid",
   "bab": "M",      
     "unchained": "Most of the summoner's class features are the same as those of the class's original design-the biggest change comes to the eidolon. The unchained summoner selects a subtype for his eidolon (such as angel, demon, or protean), which determines a number of its evolutions and helps to shape the eidolon's general attitude and appearance. In addition, some of the evolutions are now tied to one or more subtypes and base forms, to make eidolons that better match the expected appearances and abilities of such creatures. Finally, the summoner spell list has been greatly revised, removing a number of imbalances.",
     "alignment": "Any.",
@@ -1621,6 +1660,7 @@
     "swashbuckler": {
       "main_stat": "dex",
       "bab": "H",      
+      "casting level": "none",
     "role": "Combining fancy footwork with quick and precise lunges, swashbucklers dart in and out of battle, harassing and thwarting their opponents. These fast and agile combatants serve as protectors for spellcasters and flank mates for rogues and slayers, while waiting for the opportunity to show panache and score the killing blow on some lumbering hulk. Swashbucklers often face death with wry humor, mocking it with jabbing wit.",
     "alignment": "Any.",
     "hit die": "d10.",
@@ -1650,6 +1690,7 @@
   },
     "vigilante": {
       "main_stat": "dex",
+      "casting level": "none",
   "bab": "M",      
     "role": "A vigilante can take on many tasks within a group. Most are skilled at negotiating delicate social situations and courtly intrigue, but they can also serve as stealthy spies or even brutish warriors in dangerous environments.",
     "alignment": "Any.",
@@ -1680,6 +1721,7 @@
     "warpriest": {
       "main_stat": "wis",
       "main_stat_2": "str",
+      "casting level": "mid",
   "bab": "M",      
     "role": "Warpriests can serve as capable healers or spellcasters, calling upon their divine powers from the center of the fight, where their armor and martial skills are put to the test.",
     "alignment": "A warpriest's alignment must be within one step of his deity's, along either the law/chaos axis or the good/ evil axis (see page 166 of the Pathfinder RPG Core Rulebook ).",
@@ -1716,6 +1758,7 @@
   },
     "witch": {
       "main_stat": "int",
+      "casting level": "high",
   "bab": "L",      
     "role": "While many witches are recluses, living on the edge of civilization, some live within society, openly or in hiding. The blend of witches' spells makes them adept at filling a number of different roles, from seer to healer, and their hexes grant them a number of abilities that are useful in a fight. Some witches travel about, seeking greater knowledge and better understanding of the mysterious powers that guide them.",
     "alignment": "Any.",
@@ -1763,6 +1806,7 @@
   },
     "wizard": {
       "main_stat": "int",
+      "casting level": "high",
   "bab": "L",      
     "role": "While universalist wizards might study to prepare themselves for any manner of danger, specialist wizards research schools of magic that make them exceptionally skilled within a specific focus. Yet no matter their specialty, all wizards are masters of the impossible and can aid their allies in overcoming any danger.",
     "alignment": "Any.",

@@ -2,11 +2,14 @@ import random
 from math import ceil, floor
 def hit_dice_calc(character):
     if character.c_class_2 != '':
-        character.Hit_dice1 = character.classes[character.c_class]["hp"]
-        character.Hit_dice2 = character.classes[character.c_class_2]["hp"]                    
+        character.Hit_dice1 = extract_num(character.class_data[character.c_class]["hit die"])
+        character.Hit_dice2 = extract_num(character.class_data[character.c_class_2]["hit die"])            
     else:
-        character.Hit_dice1 = character.classes[character.c_class]["hp"]         
+        character.Hit_dice1 = extract_num(character.class_data[character.c_class]["hit die"])
 
+def extract_num(hit_die):
+    hit_die = hit_die.replace(".", "").replace("d", "")
+    return int(hit_die)
 
 def roll_hp(character):
     hp_rolls = []

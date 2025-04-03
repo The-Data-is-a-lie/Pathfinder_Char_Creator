@@ -30,7 +30,7 @@ def class_for_spells_attr(character):
 
 
 def caster_formula(character,n, class_2 = 'missing'):
-    character.casting_level_string = str(character.classes.get(character.c_class, "").get("casting level", "").lower())
+    character.casting_level_string = str(character.class_data.get(character.c_class, "").get("casting level", "").lower())
     character.casting_level_num = character.c_class_level
 
     if character.casting_level_string == 'high':
@@ -69,7 +69,7 @@ def caster_formula(character,n, class_2 = 'missing'):
 def spells_known_attr(character,base_classes, divine_casters):     
     base_classes = getattr(data,base_classes)
     divine_casters=getattr(data, divine_casters)    
-    character.casting_level_string = str(character.classes[character.c_class]["casting level"].lower())         
+    character.casting_level_string = str(character.class_data[character.c_class]["casting level"].lower())         
     character.spells_known_list = []
     list = []    
 
