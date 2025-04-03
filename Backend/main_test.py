@@ -36,6 +36,9 @@ from utils.class_func.language 						import language_chooser
 from utils.class_func.level_and_bab 				import randomize_level
 # from utils.class_func.luck_and_mythic 				import randomize_luck, randomize_mythic
 # from utils.class_func.path_of_war 					import randomize_path_of_war_num, choose_path_of_war_attr
+
+from utils.class_func.path_of_war					import *
+
 from utils.class_func.personality 					import randomize_personality_attr
 from utils.class_func.profession_chooser 			import profession_chooser
 # from utils.class_func.race_func 					import (race_ability_score_changes, race_ability_split, 
@@ -79,36 +82,38 @@ print(
 # character = Character()
 
 character_json_config = {
-	'races': Load_when_needed('Backend/json/races.json'),
+	'animal_companion': Load_when_needed('Backend/json/animal_companion.json'),	
+	'animal_choices': Load_when_needed('Backend/json/animal_choices.json'),
+	'archetypes': Load_when_needed('Backend/json/archetypes.json'),
+	'armor_qualities': Load_when_needed('Backend/json/armor_qualities.json'),
+	'armor': Load_when_needed('Backend/json/armor.json'),
+	'bard_choices': Load_when_needed('Backend/json/bard_choices.json'),	
+	'bloodlines': Load_when_needed('Backend/json/bloodlines.json'),
+	'class_features': Load_when_needed('Backend/json/class_features.json'),	
 	'classes': Load_when_needed('Backend/json/class.json'),
 	'class_data': Load_when_needed('Backend/json/class_data.json'),
-	'traits': Load_when_needed('Backend/json/traits_abilities.json'),
-	'profession': Load_when_needed('Backend/json/profession.json'),
-	'last_names_regions': Load_when_needed('Backend/json/last_names_regions.json'),
+	'cleric_domains': Load_when_needed('Backend/json/cleric_domains.json'),				
+	'deity': Load_when_needed('Backend/json/deity.json'),	
+	'druid_domains': Load_when_needed('Backend/json/druid_domains.json'),		
+	'feat_buckets': Load_when_needed('Backend/json/feat_buckets.json'),
 	'first_names_regions': Load_when_needed('Backend/json/first_names_regions.json'),
 	'firearms': Load_when_needed('Backend/json/firearms.json'),
 	'flaws': Load_when_needed('Backend/json/flaws.json'),
-	'archetypes': Load_when_needed('Backend/json/archetypes.json'),
+	'foundry_item_names': Load_when_needed('Backend/json/foundry_item_names.json'),
+	'items': Load_when_needed('Backend/json/items_best.json'),
+	'last_names_regions': Load_when_needed('Backend/json/last_names_regions.json'),
+	'PlayableRaces': Load_when_needed('Backend/json/PlayableRaces.json'),
+	'profession': Load_when_needed('Backend/json/profession.json'),
+	'races': Load_when_needed('Backend/json/races.json'),
 	'spells_known': Load_when_needed('Backend/json/spells_known.json'),
 	'spells_per_day': Load_when_needed('Backend/json/spells_per_day.json'),
 	'spells_from_ability_mod': Load_when_needed('Backend/json/spells_from_ability_mod.json'),
-	'class_features': Load_when_needed('Backend/json/class_features.json'),	
-	'bloodlines': Load_when_needed('Backend/json/bloodlines.json'),
-	'cleric_domains': Load_when_needed('Backend/json/cleric_domains.json'),				
-	'druid_domains': Load_when_needed('Backend/json/druid_domains.json'),		
-	'deity': Load_when_needed('Backend/json/deity.json'),	
-	'items': Load_when_needed('Backend/json/items_best.json'),
-	'bard_choices': Load_when_needed('Backend/json/bard_choices.json'),	
-	'animal_companion': Load_when_needed('Backend/json/animal_companion.json'),	
-	'animal_choices': Load_when_needed('Backend/json/animal_choices.json'),
-	'wizard_schools': Load_when_needed('Backend/json/wizard_schools.json'),	
-	# 'gunslinger_deeds_dares': Load_when_needed('Backend/json/gunslinger_deeds_dares.json'),					
-	'feat_buckets': Load_when_needed('Backend/json/feat_buckets.json'),
-	'armor': Load_when_needed('Backend/json/armor.json'),
+	'traits': Load_when_needed('Backend/json/traits_abilities.json'),
 	'weapons_data': Load_when_needed('Backend/json/weapons_data.json'),
 	'weapon_qualities': Load_when_needed('Backend/json/weapon_qualities.json'),
-	'armor_qualities': Load_when_needed('Backend/json/armor_qualities.json'),
-	'PlayableRaces': Load_when_needed('Backend/json/PlayableRaces.json'),
+	'wizard_schools': Load_when_needed('Backend/json/wizard_schools.json'),	
+
+	# Class portion					
 	'alchemist': Load_when_needed('Backend/json/class_data/alchemist.json'),
 	'antipaladin': Load_when_needed('Backend/json/class_data/antipaladin.json'),
 	'arcanist': Load_when_needed('Backend/json/class_data/arcanist.json'),
@@ -133,8 +138,10 @@ character_json_config = {
 	'vigilante': Load_when_needed('Backend/json/class_data/vigilante.json'),
 	'warpriest': Load_when_needed('Backend/json/class_data/warpriest.json'),
 	'witch': Load_when_needed('Backend/json/class_data/witch.json'),
-	'foundry_item_names': Load_when_needed('Backend/json/foundry_item_names.json'),
 
+
+	# Path of War section
+	'path_of_war_classes': Load_when_needed('Backend\json\class_data\path_of_war\path_of_war_classes.json'),
 }
 
 # Non random feats sometiems break at 20+
