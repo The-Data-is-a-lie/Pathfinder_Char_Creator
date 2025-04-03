@@ -4,7 +4,6 @@ import json
 from utils.data import regions, weapon_groups_region, skills,  languages, hair_colors, hair_types, appearance, eye_colors#, path_of_war_class,evil_deities, good_deities, neutral_deities,
 #from utils.data import archetypes
 from utils.util import   roll_dice#,format_text, chooseClass, appendAttrData,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
-from utils.markdown import style
 import random
 import sys
 import re

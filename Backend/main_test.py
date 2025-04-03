@@ -1,6 +1,5 @@
 #Custom Made Imports
 from utils.createACharacter 						import CreateNewCharacter, Load_when_needed
-from utils.markdown 								import style
 from utils.data 									import version
 from utils.util 									import  (chooseClass, region_chooser, race_chooser,  name_chooser, 
 										  					dip_function, gender_chooser) 
@@ -37,14 +36,13 @@ from utils.class_func.level_and_bab 				import randomize_level
 # from utils.class_func.luck_and_mythic 				import randomize_luck, randomize_mythic
 # from utils.class_func.path_of_war 					import randomize_path_of_war_num, choose_path_of_war_attr
 
-from utils.class_func.path_of_war					import *
+from utils.class_func.path_of_war_funcs				import select_random_manuevers
 
 from utils.class_func.personality 					import randomize_personality_attr
 from utils.class_func.profession_chooser 			import profession_chooser
 # from utils.class_func.race_func 					import (race_ability_score_changes, race_ability_split, 
 #                                                      		race_traits_chooser, subrace_chooser)#, full_race_data
 from utils.class_func.randomize_flaw 				import randomize_flaw
-# from utils.class_func.saving_throws 				import saving_throw_calc
 from utils.class_func.skill_ranks 					import skills_selector
 from utils.class_func.spells 						import (extra_spells_divine, spells_known_attr, 
 										   					spells_known_extra_roll, spells_known_selection, 
@@ -62,12 +60,7 @@ from utils.class_func.wizard_school 				import wizard_school_chooser, wizard_opp
 global character_data 
 global filename
 character_data = {}
-#Adding in Text to PDF Imports
-# import fillpdf        
-# from fillpdf import fillpdfs
-# from utils.Text_to_pdf_Best_Version_9_28_23
 
-#only location you need to specify where you want text files to be created at
 print(
 "*******************************************************************"
 "*******************************************************************"
@@ -78,8 +71,6 @@ print(
 "*******************************************************************"
 "*******************************************************************"
 )
-# assuming we are creating new character
-# character = Character()
 
 character_json_config = {
 	'animal_companion': Load_when_needed('Backend/json/animal_companion.json'),	
@@ -661,104 +652,12 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 
 generate_random_char()
 
-
-# Add a Subrace Chooser (+ race benefits -> webscrape race data)
-# Add an attack macro section (so we know what attack macros someone will get (like +22/+22/+17/+17/+12/+12/+7/+7/+2/ or similar))
-
-							
-
-
-# ----- Planned add ons ???? ----- #
-# choose from the following
-
-
-#		character.get_all_prerequisites()
-#		character.get_talents_without_prerequisites()
-#		character.get_talents_with_prerequisites()
-		#Create a prepared spell list (dependent on spells known)
-
-
-		# inherent_stats() [Skip for now, make OOP later]
-		# add a spontaneous caster option as well (so sorcs + wizs get spells known at right level)
-
-
-		# print(f"Racial traits: {character.get_racial_attr('traits')}")	
-
-		# print(f"racial languages: {character.get_racial_attr('languages')}")
-		# print(f"racial size: {character.get_racial_attr('size')}")
-		# print(f"racial speed: {character.get_racial_attr('speed')}")					
-		# print(f"Ability Scores for {character.get_racial_attr('ability scores')}")												
-		
-							
-
-
-
-		# print(f' This is your alignment {character.randomize_alignment("alignments")}')
-
-		# print(f'This is your Deity {character.randomize_deity("all_deities")}')
-
-		# # skill rank generator (class ranks + int)*level
-
-
-
-		# Archetype_Assigner(character)
-		# print(f'This is your gold {character.assign_gold("gold")}')
-		# #use gold to randomly select items
-
-
-
-		
-
-		# print(f'This is your mythic rank {randomize_mythic(character)}')
-
-		# #creating quick race/class specific flags 
-
-
-		# #3PP Content Only
-		# # Path of War Content
-		# randomize_path_of_war_num(character, "path_of_war_class")
-		# print(f'This is your Path of War Path {choose_path_of_war_attr(character, "disciplines")}')
-
-		# #Luck Content
-		# print(f'this is your luck score {randomize_luck(character)}')
-
-
-
-							# Want to Add:
-		# Find a way to print all main class info
-
-
-		# Add a note (everything is calculated off of base classes, will need to 
-		## add archetype changes manually) [e.g. skills, spells, feats]
-
-		# create a list for feats chosen to export over to Javascript					
-		# randomize_feats() -> probably create baby buckets per BAB to make it 
-		## simple yet not garbage randomly assigned feats
-
-		# Create a List for spells chosen to export over to Javascript
-		# randomize_spells() -> will be a bit complex, need to assign per 
-		## full caster, mid caster, low caster 
-		### (Can pull spells per class and assign them truly randomly)
-		#### + add spontaneous caster function + prepared caster function
-
-		#randomly generate armor + ?Shield?
-		#randomly generate consumables
-		#randomly generate magic items
-		#create gold assigned per level (based off of 1 of 3 pathfinder gold progressions)
-		#use gold assigned per level to randomly assign magic items (buckets? or true random?)
-
-		#auto add saving throws
-		#auto add exp (based off of random level (just set it to fresh level))
-		#auto add CMD
-		#auto add CMB
-		#auto add DR
-		#auto add SR
-		#auto add Resource Pool
-		#auto add Resistances
-
-		# human_feat()
-		# druidic_language()
-		
-
-
-
+# ----- Planned add ons  ----- #
+	# Stuff to add later
+		# Inherents option
+		# path of war
+		# Spheres of power
+		# Mythic
+		# Luck
+		# Attack Macros???
+		# Subrace???
