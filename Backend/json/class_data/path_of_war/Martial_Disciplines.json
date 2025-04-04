@@ -2,7 +2,7 @@
   "Black_Seraph": {
     "Black_Seraphs_Glare": {
       "Discipline": ": Black Seraph Stance;Level: 1",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Stance",
@@ -18,7 +18,7 @@
     },
     "Ravaging_Blow": {
       "Discipline": ": Black Seraph Strike [evil, fear];Level: 1",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": One round",
@@ -27,7 +27,7 @@
     },
     "Savage_Stance": {
       "Discipline": ": Black Seraph Stance;Level: 1",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Stance",
@@ -35,7 +35,7 @@
     },
     "Strength_of_Hell": {
       "Discipline": ": Black Seraph Boost;Level: 1",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": One round",
@@ -51,7 +51,7 @@
     },
     "Fear_Eating_Technique": {
       "Discipline": ": Black Seraph Boost [evil] Level: 2",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Instant",
@@ -59,7 +59,7 @@
     },
     "Inner_Demon_Strike": {
       "Discipline": ": Black Seraph Strike [evil] Level: 2",
-      "Initiation Action": ": 1standard action",
+      "Initiation Action": ": 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -67,7 +67,7 @@
     },
     "Intimidating_Force": {
       "Discipline": ": Black Seraph Counter Level: 2",
-      "Initiation Action": ": 1swift action",
+      "Initiation Action": ": 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Instant",
@@ -75,7 +75,7 @@
     },
     "Seraphs_Wrath": {
       "Discipline": ": Black Seraph Strike Level: 2",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -84,7 +84,7 @@
     },
     "Shadow_Feather_Strike": {
       "Discipline": ": Black Seraph Strike [evil];Level: 2",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": 30-ft",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -93,7 +93,7 @@
     "Black_Seraph_Battle_Stance": {
       "Discipline": ": Black Seraph Stance [evil];Level: 3",
       "Prerequisites": ": One Black Seraph maneuver",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Stance",
@@ -111,7 +111,7 @@
     "Taunting_Laugh": {
       "Discipline": ": Black Seraph Boost;Level: 3",
       "Prerequisites": ": One Black Seraph maneuver",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": 30-ft",
       "Target": ": One creature",
       "Duration": ": One round",
@@ -120,7 +120,7 @@
     "Tendon_Rip": {
       "Discipline": ": Black Seraph Strike;Level: 3",
       "Prerequisites": ": One Black Seraph maneuver",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -129,7 +129,7 @@
     "Unfettered_Progression": {
       "Discipline": ": Black Seraph Boost;Level: 3",
       "Prerequisites": ": One Black Seraph maneuver",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Instant",
@@ -138,7 +138,7 @@
     "Bilious_Strike": {
       "Discipline": ": Black Seraph Strike [evil];Level: 4",
       "Prerequisites": ": One Black Seraph maneuver",
-      "Initiation": "Action: 1standard action Range: Melee",
+      "Initiation": "Action: 1 standard action Range: Melee",
       "Target": ": One creature",
       "Duration": ": Instant",
       "Saving": "Throw:Fortitudepartial",
@@ -147,7 +147,7 @@
     "Circle_of_Razor_Feathers": {
       "Discipline": ": Black Seraph Strike [evil];Level: 4",
       "Prerequisites": ": One Black Seraph maneuver",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": 30 ft",
       "Area": ": 30-ft.-radius burst centered on you.",
       "Duration": ": Instant",
@@ -157,7 +157,7 @@
     "Vengeful_Riposte": {
       "Discipline": ": Black Seraph Counter;Level: 4",
       "Prerequisites": ": One Black Seraph maneuver",
-      "Initiation": "Action: 1immediate action",
+      "Initiation": "Action: 1 immediate action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Instant",
@@ -166,7 +166,7 @@
     "Walk_in_the_Dark": {
       "Discipline": ": Black Seraph Stance;Level: 4",
       "Prerequisites": ": One Black Seraph maneuver",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Instant",
@@ -175,7 +175,7 @@
     "Abyssal_Lance": {
       "Discipline": ": Black Seraph Strike [evil];Level: 5",
       "Prerequisites": ": Two Black Seraph maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Close 25 ft + 5-ft/initiator level",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -184,7 +184,7 @@
     "Sensory_Rip": {
       "Discipline": ": Black Seraph Strike;Level: 5",
       "Prerequisites": ": Two Black Seraph maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee Target: One creature",
       "Duration": ": Instant",
       "Saving": "Throw:Reflexpartial",
@@ -193,7 +193,7 @@
     "Sharing_the_Dark_Soul": {
       "Discipline": ": Black Seraph Strike [evil, mind-affecting];Level: 5",
       "Prerequisites": ": Two Black Seraph maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": One round",
@@ -202,7 +202,7 @@
     "Soul_Consumption": {
       "Discipline": ": Black Seraph Boost [evil];Level: 5",
       "Prerequisites": ": Two Black Seraph maneuvers",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -220,7 +220,7 @@
     "Black_Seraphs_Wrath": {
       "Discipline": ": Black Seraph Boost [evil];Level: 6",
       "Prerequisites": ": Two Black Seraph maneuvers",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": One round",
@@ -229,7 +229,7 @@
     "Razor_Wings_of_the_Black_Seraph": {
       "Discipline": ": Black Seraph Stance [evil];Level: 6",
       "Prerequisites": ": Two Black Seraph maneuvers",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Stance",
@@ -238,7 +238,7 @@
     "Shadow_Raptor_Swarm": {
       "Discipline": ": Black Seraph Strike [evil, mind-affecting];Level: 6",
       "Prerequisites": ": Two Black Seraph maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": 30-ft cone",
       "Duration": ": Instant",
       "Saving": "Throw:Reflexhalf",
@@ -247,7 +247,7 @@
     "Armageddon_Lance": {
       "Discipline": ": Black Seraph Strike [evil, mind-affecting];Level: 7",
       "Prerequisites": ": Three Black Seraph maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Close 25-ft + 5-ft/initiator level",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -265,7 +265,7 @@
     "Consumption_Strike": {
       "Discipline": ": Black Seraph Strike [evil];Level: 7",
       "Prerequisites": ": Two Black Seraph maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -274,7 +274,7 @@
     "Devastating_Riposte": {
       "Discipline": ": Black Seraph Counter;Level: 7",
       "Prerequisites": ": Two Black Seraph maneuvers",
-      "Initiation": "Action: 1immediate action",
+      "Initiation": "Action: 1 immediate action",
       "Range": ": Personal",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -283,7 +283,7 @@
     "Apocalyptic_Strike": {
       "Discipline": ": Black Seraph Strike [evil];Level: 8",
       "Prerequisites": ": Three Black Seraph maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": 40-ft",
       "Area": ": 40-ft-radius burst centered on you",
       "Duration": ": Instant",
@@ -293,7 +293,7 @@
     "Soul_Crusher": {
       "Discipline": ": Black Seraph Strike [evil];Level: 8",
       "Prerequisites": ": Three Black Seraph maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -302,7 +302,7 @@
     "Vampiric_Aura": {
       "Discipline": ": Black Seraph Stance [evil];Level: 8",
       "Prerequisites": ": Three Black Seraph maneuvers",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": 20-ft radius centered on the initiator",
       "Target": ": You",
       "Duration": ": Stance",
@@ -311,7 +311,7 @@
     "Void_Seraph_Strike": {
       "Discipline": ": Black Seraph Strike [evil];Level: 8",
       "Prerequisites": ": Three Black Seraph maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": 30-ft",
       "Target": ": One creature",
       "Duration": ": 1d4 rounds",
@@ -331,7 +331,7 @@
   "Broken_Blade": {
     "Brawlers_Attitude": {
       "Discipline": ": Broken Blade Boost;Level: 1",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Instant",
@@ -339,7 +339,7 @@
     },
     "Flurry_Strike": {
       "Discipline": ": Broken Blade Strike;Level: 1",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -347,7 +347,7 @@
     },
     "Iron_Hand_Stance": {
       "Discipline": ": Broken Blade Stance;Level: 1",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Stance",
@@ -355,7 +355,7 @@
     },
     "Pommel_Bash": {
       "Discipline": ": Broken Blade Strike;Level: 1",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -363,7 +363,7 @@
     },
     "Pugilist_Stance": {
       "Discipline": ": Broken Blade Stance;Level: 1",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Stance",
@@ -371,7 +371,7 @@
     },
     "Shards_of_Iron_Strike": {
       "Discipline": ": Broken Blade Strike;Level: 1",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -379,7 +379,7 @@
     },
     "Bronze_Knuckle": {
       "Discipline": ": Broken Blade Boost;Level: 2",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": One turn",
@@ -387,7 +387,7 @@
     },
     "Cartwheel_Axe_Kick": {
       "Discipline": ": Broken Blade Strike;Level: 2",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -395,7 +395,7 @@
     },
     "Counter_Step": {
       "Discipline": ": Broken Blade Counter;Level: 2",
-      "Initiation": "Action: 1immediate action",
+      "Initiation": "Action: 1 immediate action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Instant",
@@ -403,7 +403,7 @@
     },
     "Knuckle_to_the_Blade": {
       "Discipline": ": Broken Blade Strike;Level: 2",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -411,7 +411,7 @@
     },
     "Leg_Sweeping_Hilt": {
       "Discipline": ": Broken Blade Strike;Level: 2",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -420,7 +420,7 @@
     "Broken_Blade_Stance": {
       "Discipline": ": Broken Blade Stance;Level: 3",
       "Prerequisites": ": One Broken Blade maneuver",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Stance",
@@ -429,7 +429,7 @@
     "Flat_Iron_Riposte": {
       "Discipline": ": Broken Blade Counter;Level: 3",
       "Prerequisites": ": One Broken Blade maneuver",
-      "Initiation": "Action: 1immediate action",
+      "Initiation": "Action: 1 immediate action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -439,7 +439,7 @@
     "Iron_Dust": {
       "Discipline": ": Broken Blade Boost;Level: 3",
       "Prerequisites": ": One Broken Blade maneuver",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Melee attack",
       "Target": ": One martial strike",
       "Duration": ": Instant",
@@ -448,7 +448,7 @@
     "Steel_Flurry_Strike": {
       "Discipline": ": Broken Blade Strike;Level: 3",
       "Prerequisites": ": One Broken Blade maneuver",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -457,7 +457,7 @@
     "Broken_Blade_Riposte": {
       "Discipline": ": Broken Blade Counter;Level: 4",
       "Prerequisites": ": One Broken Blade maneuver",
-      "Initiation": "Action: 1immediate action",
+      "Initiation": "Action: 1 immediate action",
       "Range": ": Personal",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -466,7 +466,7 @@
     "Iron-Breaking_Palm": {
       "Discipline": ": Broken Blade Strike;Level: 4",
       "Prerequisites": ": One Broken Blade maneuver",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -475,7 +475,7 @@
     "Iron_Axe_Kick": {
       "Discipline": ": Broken Blade Strike;Level: 4",
       "Prerequisites": ": One Broken Blade maneuver",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -485,7 +485,7 @@
     "Iron_Knuckle": {
       "Discipline": ": Broken Blade Boost;Level: 4",
       "Prerequisites": ": One Broken Blade maneuver",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": One turn",
@@ -494,7 +494,7 @@
     "Iron_Mongers_Throw": {
       "Discipline": ": Broken Blade Strike;Level: 5",
       "Prerequisites": ": Two Broken Blade maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -503,7 +503,7 @@
     "Shards_of_Steel_Strike": {
       "Discipline": ": Broken Blade Strike;Level: 5",
       "Prerequisites": ": Two Broken Blade maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -512,7 +512,7 @@
     "Steel_Grapplers_Attitude": {
       "Discipline": ": Broken Blade Stance;Level: 5",
       "Prerequisites": ": Two Broken Blade maneuvers",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Stance",
@@ -521,7 +521,7 @@
     "Throw_the_Blade_Down": {
       "Discipline": ": Broken Blade Counter;Level: 5",
       "Prerequisites": ": Two Broken Blade maneuvers",
-      "Initiation": "Action: 1immediate action",
+      "Initiation": "Action: 1 immediate action",
       "Range": ": One melee attack",
       "Target": ": You",
       "Duration": ": Instant",
@@ -531,7 +531,7 @@
     "Finishing_Kick": {
       "Discipline": ": Broken Blade Boost;Level: 6",
       "Prerequisites": "Two Broken Blade maneuvers",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": One full melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -540,7 +540,7 @@
     "Pit_Fighters_Stance": {
       "Discipline": ": Broken Blade Stance;Level: 6",
       "Prerequisites": ": Two Broken Blade maneuvers",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Stance",
@@ -549,7 +549,7 @@
     "Singing_Steel_Strike": {
       "Discipline": ": Broken Blade Strike;Level: 6",
       "Prerequisites": ": Two Broken Blade maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": 1d4 rounds",
@@ -559,7 +559,7 @@
     "Steel_Axe_Kick": {
       "Discipline": ": Broken Blade Strike;Level: 6",
       "Prerequisites": ": Two Broken Blade maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -569,7 +569,7 @@
     "Adamantine_Knuckle": {
       "Discipline": ": Broken Blade Boost;Level: 7",
       "Prerequisites": ": Two Broken Blade maneuvers",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": One turn",
@@ -578,7 +578,7 @@
     "Shards_of_Adamantine_Strike": {
       "Discipline": ": Broken Blade Strike;Level: 7",
       "Prerequisites": ": Two Broken Blade maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature or object",
       "Duration": ": Instant",
@@ -588,7 +588,7 @@
     "Spinning_Flurry_Rush": {
       "Discipline": ": Broken Blade Strike;Level: 7",
       "Prerequisites": ": Two Broken Blade maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": All adjacent enemies",
       "Duration": ": Instant",
@@ -597,7 +597,7 @@
     "Meteoric_Throw": {
       "Discipline": ": Broken Blade Strike;Level: 8",
       "Prerequisites": ": Three Broken Blade maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack and 25-ft.",
       "Target": ": One creature to be thrown at another target creature",
       "Duration": ": Instant",
@@ -607,7 +607,7 @@
     "Spinning_Adamantine_Axe": {
       "Discipline": ": Broken Blade Strike;Level: 8",
       "Prerequisites": ": Three Broken Blade maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": All adjacent enemies",
       "Duration": ": Instant",
@@ -616,7 +616,7 @@
     "Unbreakable_Stride_Stance": {
       "Discipline": ": Broken Blade Stance;Level: 8",
       "Prerequisites": ": Three Broken Blade maneuvers",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": You",
       "Duration": ": Stance",
@@ -977,7 +977,7 @@
   "Cursed_Razor": {
     "Aura_of_Misfortune": {
       "Discipline": ": Cursed Razor Stance;Level: 1",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": Self",
       "Duration": ": Stance",
@@ -985,7 +985,7 @@
     },
     "Luck_Shifting": {
       "Discipline": ": Cursed Razor Boost;Level: 1",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": Self",
       "Duration": ": 1 round",
@@ -993,7 +993,7 @@
     },
     "Spilled_Salt": {
       "Discipline": ": Cursed Razor Counter;Level: 1",
-      "Initiation": "Action: 1immediate action",
+      "Initiation": "Action: 1 immediate action",
       "Range": ": Medium 100 + 10/level",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1001,7 +1001,7 @@
     },
     "Stutter_Strike": {
       "Discipline": ": Cursed Razor Strike;Level: 1",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1009,7 +1009,7 @@
     },
     "Touch_of_the_Witch": {
       "Discipline": ": Cursed Razor Stance[curse];Level: 1",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": Self",
       "Duration": ": Stance",
@@ -1017,7 +1017,7 @@
     },
     "Woeful_Burden": {
       "Discipline": ": Cursed Razor Strike[curse];Level: 1",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1025,7 +1025,7 @@
     },
     "Bad_Karma": {
       "Discipline": ": Cursed Razor Counter[curse];Level: 2",
-      "Initiation": "Action: 1immediate action",
+      "Initiation": "Action: 1 immediate action",
       "Range": ": Personal",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1033,7 +1033,7 @@
     },
     "Mockery": {
       "Discipline": ": Cursed Razor Strike;Level: 2",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1041,7 +1041,7 @@
     },
     "Murderous_Spite": {
       "Discipline": ": Cursed Razor Boost;Level: 2",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": Self",
       "Duration": ": 1 round",
@@ -1049,7 +1049,7 @@
     },
     "Torment_the_Weak": {
       "Discipline": ": Cursed Razor Strike;Level: 2",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1057,7 +1057,7 @@
     },
     "Word_of_Retribution": {
       "Discipline": ": Cursed Razor Counter;Level: 2",
-      "Initiation": "Action: 1immediate action",
+      "Initiation": "Action: 1 immediate action",
       "Range": ": Personal see text",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1066,7 +1066,7 @@
     "Aura_of_Shared_Misery": {
       "Discipline": ": Cursed Razor Stance[curse];Level: 3",
       "Prerequisites": ": One cursed razor maneuver",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": Self",
       "Duration": ": Stance",
@@ -1075,7 +1075,7 @@
     "Dogpile_Strike": {
       "Discipline": ": Cursed Razor Strike[curse];Level: 3",
       "Prerequisites": ": One cursed razor maneuver",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1084,7 +1084,7 @@
     "Huntsmans_Curse": {
       "Discipline": ": Cursed Razor Strike[curse];Level: 3",
       "Prerequisites": ": One cursed razor maneuver",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1093,7 +1093,7 @@
     "Sorcerers_Sidestep": {
       "Discipline": ": Cursed Razor Counter;Level: 3",
       "Prerequisites": ": One cursed razor maneuver",
-      "Initiation": "Action: 1immediate action",
+      "Initiation": "Action: 1 immediate action",
       "Range": ": Personal",
       "Target": ": Self",
       "Duration": ": 1 round",
@@ -1102,7 +1102,7 @@
     "Hangmans_Curse": {
       "Discipline": ": Cursed Razor Strike[curse];Level: 4",
       "Prerequisites": ": One cursed razor maneuver",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1111,7 +1111,7 @@
     "Persecution": {
       "Discipline": ": Cursed Razor Strike;Level: 4",
       "Prerequisites": ": One cursed razor maneuver",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1120,7 +1120,7 @@
     "Warlocks_Stride": {
       "Discipline": ": Cursed Razor Boost[curse];Level: 4",
       "Prerequisites": ": One cursed razor maneuver",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": Self",
       "Duration": ": 1 round",
@@ -1129,7 +1129,7 @@
     "Witchfinders_Brand": {
       "Discipline": ": Cursed Razor Boost;Level: 4",
       "Prerequisites": ": One cursed razor maneuver",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Medium 100 + 10/level",
       "Target": ": Self",
       "Duration": ": 1 round",
@@ -1138,7 +1138,7 @@
     "Festering_Curse": {
       "Discipline": ": Cursed Razor Strike;Level: 5",
       "Prerequisites": ": Two cursed razor maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1147,7 +1147,7 @@
     "Shadow_Pin": {
       "Discipline": ": Cursed Razor Counter[curse];Level: 5",
       "Prerequisites": ": Two cursed razor maneuvers",
-      "Initiation": "Action: 1immediate action",
+      "Initiation": "Action: 1 immediate action",
       "Range": ": Medium 100 + 10/level",
       "Target": ": One creature",
       "Duration": ": 1 round",
@@ -1156,7 +1156,7 @@
     "The_Dragon_Knows": {
       "Discipline": ": Cursed Razor Stance;Level: 5",
       "Prerequisites": ": Two cursed razor maneuvers",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": Self",
       "Duration": ": Stance",
@@ -1165,7 +1165,7 @@
     "Witchs_Revenge": {
       "Discipline": ": Cursed Razor Strike[curse];Level: 5",
       "Prerequisites": ": Two cursed razor maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1174,7 +1174,7 @@
     "Curse_of_Chains": {
       "Discipline": ": Cursed Razor Strike[curse];Level: 6",
       "Prerequisites": ": Two cursed razor maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1183,7 +1183,7 @@
     "Eye_for_an_Eye": {
       "Discipline": ": Cursed Razor Counter;Level: 6",
       "Prerequisites": ": Two cursed razor maneuvers",
-      "Initiation": "Action: 1immediate action",
+      "Initiation": "Action: 1 immediate action",
       "Range": ": See text",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1192,7 +1192,7 @@
     "Oathbreakers_Aura": {
       "Discipline": ": Cursed Razor Stance;Level: 6",
       "Prerequisites": ": Two cursed razor maneuvers",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": Self",
       "Duration": ": Stance",
@@ -1201,7 +1201,7 @@
     "Sorcerers_Gaze": {
       "Discipline": ": Cursed Razor Boost;Level: 6",
       "Prerequisites": ": Two cursed razor maneuvers",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": Self",
       "Duration": ": 1 round",
@@ -1210,7 +1210,7 @@
     "Warlocks_Blow": {
       "Discipline": ": Cursed Razor Strike[teleportation];Level: 6",
       "Prerequisites": ": Two cursed razor maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Long 400 + 40/level",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1219,7 +1219,7 @@
     "Black_Dogs_Due": {
       "Discipline": ": Cursed Razor Strike;Level: 7",
       "Prerequisites": ": Three cursed razor maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1228,7 +1228,7 @@
     "Traitors_Roar": {
       "Discipline": ": Cursed Razor Strike[compulsion, curse,mind-affecting];Level: 7",
       "Prerequisites": ": Three cursed razor maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1237,7 +1237,7 @@
     "Woedrinker": {
       "Discipline": ": Cursed Razor untyped;Level: 7",
       "Prerequisites": ": Three cursed razor maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Personal",
       "Target": ": Self",
       "Duration": ": 1 minute",
@@ -1246,7 +1246,7 @@
     "Luckdrinker_Aura": {
       "Discipline": ": Cursed Razor Stance;Level: 8",
       "Prerequisites": ": Three cursed razor maneuvers",
-      "Initiation": "Action: 1swift action",
+      "Initiation": "Action: 1 swift action",
       "Range": ": Personal",
       "Target": ": Self",
       "Duration": ": Stance",
@@ -1255,7 +1255,7 @@
     "Unending_Nightmare_Strike": {
       "Discipline": ": Cursed Razor Strike;Level: 8",
       "Prerequisites": ": Three cursed razor maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Melee attack",
       "Target": ": One creature",
       "Duration": ": Instant",
@@ -1264,7 +1264,7 @@
     "Warlocks_Mirror": {
       "Discipline": ": Cursed Razor Counter;Level: 8",
       "Prerequisites": ": Three cursed razor maneuvers",
-      "Initiation": "Action: 1immediate action",
+      "Initiation": "Action: 1 immediate action",
       "Range": ": Medium 100 + 10/level",
       "Target": ": One cursed creature",
       "Duration": ": Instant",
@@ -1273,7 +1273,7 @@
     "Festival_of_Shadows": {
       "Discipline": ": Cursed Razor Strike;Level: 9",
       "Prerequisites": ": Four cursed razor maneuvers",
-      "Initiation": "Action: 1standard action",
+      "Initiation": "Action: 1 standard action",
       "Range": ": Close 25 + 5/2 levels",
       "Target": ": Opponents within range",
       "Duration": ": Instantaneous",
@@ -6950,7 +6950,7 @@
   "Sleeping_Goddess": {
     "Battle_Mantra": {
       "Discipline": "Sleeping Goddess Stance;Level: 1",
-      "Initiation Action": "1swift action",
+      "Initiation Action": "1 swift action",
       "Range": "Personal",
       "Target": "Self",
       "Duration": "Stance",

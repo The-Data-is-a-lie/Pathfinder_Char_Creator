@@ -130,9 +130,11 @@ character_json_config = {
 	'warpriest': Load_when_needed('Backend/json/class_data/warpriest.json'),
 	'witch': Load_when_needed('Backend/json/class_data/witch.json'),
 
-
 	# Path of War section
 	'path_of_war_classes': Load_when_needed('Backend\json\class_data\path_of_war\path_of_war_classes.json'),
+	'path_of_war_archetypes': Load_when_needed('Backend\json\class_data\path_of_war\path_of_war_archetypes.json'),
+	'martial_disciplines': Load_when_needed('Backend\json\class_data\path_of_war\martial_disciplines.json'),
+	'path_of_war_maneuvers_known': Load_when_needed('Backend\json\class_data\path_of_war\path_of_war_maneuvers_known.json'),
 }
 
 # Non random feats sometiems break at 20+
