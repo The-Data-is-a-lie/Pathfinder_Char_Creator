@@ -36,7 +36,7 @@ from utils.class_func.level_and_bab 				import randomize_level
 # from utils.class_func.luck_and_mythic 				import randomize_luck, randomize_mythic
 # from utils.class_func.path_of_war 					import randomize_path_of_war_num, choose_path_of_war_attr
 
-from utils.class_func.path_of_war_funcs				import select_random_manuevers
+git# from utils.class_func.path_of_war_funcs				import select_disciplines
 
 from utils.class_func.personality 					import randomize_personality_attr
 from utils.class_func.profession_chooser 			import profession_chooser

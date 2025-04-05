@@ -19,8 +19,8 @@ def clean_disciplines_string_func(disciplines_string):
     disciplines = [disc.strip() for disc in disciplines_string.split(",") if disc.strip()]
     
     for i, discipline in enumerate(disciplines):
-        if " or " in discipline:
-            options = [opt.strip() for opt in discipline.split(" or ")]
+        if "or" in discipline:
+            options = [opt.strip() for opt in discipline.split("or")]
             disciplines[i] = random.choice(options)  # Randomly select one option
     
     return disciplines
