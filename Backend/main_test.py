@@ -36,7 +36,7 @@ from utils.class_func.level_and_bab 				import randomize_level
 # from utils.class_func.luck_and_mythic 				import randomize_luck, randomize_mythic
 # from utils.class_func.path_of_war 					import randomize_path_of_war_num, choose_path_of_war_attr
 
-git# from utils.class_func.path_of_war_funcs				import select_disciplines
+# from utils.class_func.path_of_war_funcs				import select_disciplines
 
 from utils.class_func.personality 					import randomize_personality_attr
 from utils.class_func.profession_chooser 			import profession_chooser
@@ -131,10 +131,10 @@ character_json_config = {
 	'witch': Load_when_needed('Backend/json/class_data/witch.json'),
 
 	# Path of War section
-	'path_of_war_classes': Load_when_needed('Backend\json\class_data\path_of_war\path_of_war_classes.json'),
-	'path_of_war_archetypes': Load_when_needed('Backend\json\class_data\path_of_war\path_of_war_archetypes.json'),
-	'martial_disciplines': Load_when_needed('Backend\json\class_data\path_of_war\martial_disciplines.json'),
-	'path_of_war_maneuvers_known': Load_when_needed('Backend\json\class_data\path_of_war\path_of_war_maneuvers_known.json'),
+	# 'path_of_war_classes': Load_when_needed('Backend\json\class_data\path_of_war\path_of_war_classes.json'),
+	# 'path_of_war_archetypes': Load_when_needed('Backend\json\class_data\path_of_war\path_of_war_archetypes.json'),
+	# 'martial_disciplines': Load_when_needed('Backend\json\class_data\path_of_war\martial_disciplines.json'),
+	# 'path_of_war_maneuvers_known': Load_when_needed('Backend\json\class_data\path_of_war\path_of_war_maneuvers_known.json'),
 }
 
 # Non random feats sometiems break at 20+

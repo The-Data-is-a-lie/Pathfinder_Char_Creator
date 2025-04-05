@@ -239,11 +239,11 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
         feat_data = grab_and_clean_feats('data/feats.csv')
 
         # Temporary add mezofitz feats
-        extra_feats_flag = True
-        # Add metzofitz feats (if we want them)
-        if extra_feats_flag:
-            metzofitz_feat_data = grab_and_clean_feats('data/metzofitz_feats.csv')
-            feat_data = pd.concat([feat_data, metzofitz_feat_data], ignore_index=True)
+        # extra_feats_flag = True
+        # # Add metzofitz feats (if we want them)
+        # if extra_feats_flag:
+        #     metzofitz_feat_data = grab_and_clean_feats('data/metzofitz_feats.csv')
+        #     feat_data = pd.concat([feat_data, metzofitz_feat_data], ignore_index=True)
 
         #----- grab divine casters list
         divine_casters=getattr(data, "divine_casters")        
