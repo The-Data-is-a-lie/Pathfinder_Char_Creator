@@ -49,11 +49,11 @@ def index():
 
 def process_input_values(input_values):
     try:
-        if len(input_values) < 14:
+        if len(input_values) < 15:
             raise IndexError("Not enough elements in input_values")
         
         # Convert specific elements to integers
-        for i in [1, 9, 10, 11, 12, 13]:
+        for i in [1, 10, 11, 12, 13, 14]:
             value = input_values[i]
             if value is not None and value != "":
                 input_values[i] = int(value)
@@ -61,8 +61,8 @@ def process_input_values(input_values):
                 input_values[i] = 0
 
         # Unpack input_values
-        create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, userInput_gender, truly_random_feats, inherents, num_dice, num_sides, high_level, low_level, gold_num = input_values
-        session['character_data'] = generate_random_char(create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, inherents, userInput_gender, truly_random_feats, num_dice, num_sides, high_level, low_level, gold_num)
+        create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, deity, userInput_gender, truly_random_feats, inherents, num_dice, num_sides, high_level, low_level, gold_num = input_values
+        session['character_data'] = generate_random_char(create_new_char, userInput_region, userInput_race, class_choice, multi_class, alignment_input, deity, inherents, userInput_gender, truly_random_feats, num_dice, num_sides, high_level, low_level, gold_num)
         return session['character_data']
 
     except ValueError as ve:
@@ -78,7 +78,7 @@ def update_character_data():
     data = request.json
     non_input_data = []
     for key, value in data.items():
-        if key in ('input2', 'input10', 'input11', 'input12', 'input13', 'input14'):
+        if key in ('input2', 'input11', 'input12', 'input13', 'input14', 'input15'):
             value = int(value)
         else:
             value = value.strip()

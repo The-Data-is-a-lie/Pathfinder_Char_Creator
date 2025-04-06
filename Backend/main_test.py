@@ -140,8 +140,8 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race='half-elf', class_choice='arcanist', multi_class='N', 
-						 alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=6, num_sides=6, 
+def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race='half-elf', class_choice='bloodrager', multi_class='N', 
+						 alignment_input = 'random' , deity_flag = 'random', userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=6, num_sides=6, 
 						 high_level=45, low_level=45, gold_num=1000000, homebrew_amount=None):
 		character = CreateNewCharacter(
 			character_json_config)
@@ -165,7 +165,12 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 		#add an optional flaws rule function	
 		alignment = choose_alignment(character, 'alignments', alignment_input)
 		alignment = alignment.title()
-		deity = randomize_deity(character)
+
+		if deity_flag.lower() == 'random':
+			deity = randomize_deity(character)
+		else:
+			deity = deity_flag.lower()
+
 
 		age_number = randomize_body_feature(character, 'age')
 		height_number = randomize_body_feature(character, 'height')
@@ -193,7 +198,7 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 
 		#hp calculations
 		hit_dice_calc(character)
-		roll_hp(character)
+		total_rolled_hp = roll_hp(character)
 		character.Total_HP = total_hp_calc(character)
 
 		# Choosing character class for spells
@@ -574,6 +579,7 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 				weapon_name,
 				character.specialty_schools, character.counter_schools,
 				character.chosen_descriptors, character.counter_descriptors,
+				total_rolled_hp,
 
 				 
 				 ]
@@ -614,7 +620,7 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 					"weapon_name",
 					"specialty_schools", "counter_schools",
 					"chosen_spell_descriptor", "counter_spell_descriptor",
-
+					"total_rolled_hp",
 				]
 		
 		export_list_dict = [ 
@@ -653,7 +659,8 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 		# print("chosen_feats", feats)
 
 
-
+		print("alignment", alignment)
+		print("deity_name", deity_name)
 		return character.data_dict
 
 generate_random_char()

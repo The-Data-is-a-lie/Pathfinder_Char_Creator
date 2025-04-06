@@ -23,7 +23,8 @@ def roll_hp(character):
             hp_rolls.append(random.randint(1,character.Hit_dice2))
         character.total_hp_rolls = sum(hp_rolls)         
 
-    return character.total_hp_rolls
+    total_hp_rolls = character.total_hp_rolls
+    return total_hp_rolls
 
 
 def total_hp_calc(character):               
