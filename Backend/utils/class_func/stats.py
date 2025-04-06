@@ -2,7 +2,7 @@ import random
 from math import floor
 from utils.util import roll_dice
 
-def roll_stats(character, num_dice, num_sides, inherent_flag=True):
+def roll_stats(character, num_dice, num_sides, inherent_flag='Y'):
     if not isinstance(num_dice, int) or num_dice <= 0: 
         num_dice = 4
     if not isinstance(num_sides, int) or num_sides <= 0:
@@ -22,20 +22,21 @@ def roll_stats(character, num_dice, num_sides, inherent_flag=True):
 
     # Identify the original main stat
     orig_stats = swap_stats(character, main_stat, orig_stats)
-    stats = orig_stats.copy()
-    print("pre_stats", stats)
-
-    # (if flagged) Distribute the inherents
-    if inherent_flag == True:
-        inherents = roll_inherents_func(character)
-        inherents = 1000
-        stats = distribute_inherents_func(inherents, stats, orig_stats)
-    print("post_stats", stats)
 
     if main_stat_2 != None:
         main_stat_parts_2 = main_stat_2.split('/')
         main_stat_2 = random.choice(main_stat_parts_2)      
-        stats = swap_stats(character, main_stat_2, stats, new=True)   
+        orig_stats = swap_stats(character, main_stat_2, orig_stats, new=True)   
+
+    stats = orig_stats.copy()
+
+    print("pre_stats: ", stats)
+    inherent_flag = inherent_flag.lower()
+    # (if flagged) Distribute the inherents
+    if inherent_flag == 'y':
+        inherents = roll_inherents_func(character)
+        stats = distribute_inherents_func(inherents, stats, orig_stats)
+    print("post_stats: ", stats)
 
     return stats
 
@@ -81,18 +82,26 @@ def roll_inherents_func(character):
     return random_number
 
 def distribute_inherents_func(inherents, stats, orig_stats):
+    inherents = min(inherents, 60) #cap at 60 can never go above +10 each stat currently
     attributes = list(stats.keys())
+    
     while inherents > 0:
         if len(attributes) == 0:
             break
+
+        # Randomly pick an attribute
         attribute = random.choice(attributes)
-        if stats[attribute] < orig_stats[attribute] + 10:
-            stats[attribute] += 1
-            inherents -= 1
-        elif stats[attribute] >= orig_stats[attribute] + 10:
-            attributes.remove(attribute)
-        elif len(attributes) == 0:
-            break
+        
+        # Calculate the maximum allowable increase for the selected attribute
+        max_increase = orig_stats[attribute] + 10 - stats[attribute]
+        
+        if max_increase > 0:
+            # Allocate a random amount of inherents to this attribute, up to the maximum allowable increase
+            allocation = min(inherents, random.randint(1, max_increase))
+            stats[attribute] += allocation
+            inherents -= allocation
         else:
-            break
+            # Remove the attribute if it can't be increased further
+            attributes.remove(attribute)
+    
     return stats
