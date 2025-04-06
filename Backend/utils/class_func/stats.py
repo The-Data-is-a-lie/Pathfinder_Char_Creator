@@ -2,7 +2,7 @@ import random
 from math import floor
 from utils.util import roll_dice
 
-def roll_stats(character, num_dice, num_sides):
+def roll_stats(character, num_dice, num_sides, inherent_flag=True):
     if not isinstance(num_dice, int) or num_dice <= 0: 
         num_dice = 4
     if not isinstance(num_sides, int) or num_sides <= 0:
@@ -14,11 +14,23 @@ def roll_stats(character, num_dice, num_sides):
         main_stat_parts = main_stat.split('/')
         main_stat = random.choice(main_stat_parts)
 
+
+
     # Roll stats for all attributes
-    stats = {attr: roll_dice(num_dice, num_sides) for attr in ['str', 'dex', 'con', 'int', 'wis', 'cha']}
+    orig_stats = {attr: roll_dice(num_dice, num_sides) for attr in ['str', 'dex', 'con', 'int', 'wis', 'cha']}
+
 
     # Identify the original main stat
-    stats = swap_stats(character, main_stat, stats)
+    orig_stats = swap_stats(character, main_stat, orig_stats)
+    stats = orig_stats.copy()
+    print("pre_stats", stats)
+
+    # (if flagged) Distribute the inherents
+    if inherent_flag == True:
+        inherents = roll_inherents_func(character)
+        inherents = 1000
+        stats = distribute_inherents_func(inherents, stats, orig_stats)
+    print("post_stats", stats)
 
     if main_stat_2 != None:
         main_stat_parts_2 = main_stat_2.split('/')
@@ -58,3 +70,29 @@ def calc_ability_mod(character):
     character.int_mod = floor((character.int-10)/2)
     character.wis_mod = floor((character.wis-10)/2)
     character.cha_mod = floor((character.cha-10)/2)
+
+
+
+def roll_inherents_func(character):
+    amount = floor(character.c_class_level / 2)
+    random_number = 0
+    for _ in range(amount):
+        random_number += random.randint(0, 5)
+    return random_number
+
+def distribute_inherents_func(inherents, stats, orig_stats):
+    attributes = list(stats.keys())
+    while inherents > 0:
+        if len(attributes) == 0:
+            break
+        attribute = random.choice(attributes)
+        if stats[attribute] < orig_stats[attribute] + 10:
+            stats[attribute] += 1
+            inherents -= 1
+        elif stats[attribute] >= orig_stats[attribute] + 10:
+            attributes.remove(attribute)
+        elif len(attributes) == 0:
+            break
+        else:
+            break
+    return stats

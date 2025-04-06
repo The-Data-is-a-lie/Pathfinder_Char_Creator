@@ -168,15 +168,11 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		age_number = randomize_body_feature(character, 'age')
 		height_number = randomize_body_feature(character, 'height')
 		weight_number = randomize_body_feature(character, 'weight')			
-		stats = roll_stats(character, num_dice, num_sides)
-		assign_stats(character, stats)
 
 		# We don't use subrace data in foundryVTT (comment these out if we want to (will need to fix their issues first))
 		# chosen_subrace, subrace_description = subrace_chooser(character)
 		# race_traits_list, race_traits_description_list = race_traits_chooser(character)
 		# split_race_traits_list = race_ability_split(character, race_traits_list)
-
-		calc_ability_mod(character)
 
 		flaw = randomize_flaw(character)
 
@@ -186,6 +182,12 @@ def generate_random_char(create_new_char='Y', userInput_region=14, userInput_rac
 		if character.c_class == ('rogue (unchained)', 'vigilante') and high_level <= 1:
 			high_level = 2
 		randomize_level(character, low_level, high_level, len(flaw))
+
+		#stats after level (because we roll inherents which depend on level)
+		stats = roll_stats(character, num_dice, num_sides)
+		assign_stats(character, stats)
+		calc_ability_mod(character)
+
 
 		#hp calculations
 		hit_dice_calc(character)
