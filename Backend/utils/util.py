@@ -32,11 +32,12 @@ def region_chooser(character, userInput_region):
     """
     regions = list(character.first_names_regions.keys())
 
-    if isinstance(userInput_region, int) and ( 0 <= int(userInput_region) <= len(regions) ):
-        region_index = int(userInput_region) - 1
-        region_selected = regions[region_index]        
-    else:
+    if not isinstance(userInput_region, int):
         region_selected = random.randint(1,len(regions)-1)
+    if userInput_region > len(regions)-1 or userInput_region <= 0:
+        region_selected = random.randint(1, len(regions)-1)
+    else:
+        region_selected = regions[userInput_region - 1]
     character.region = region_selected
     return character.region
 

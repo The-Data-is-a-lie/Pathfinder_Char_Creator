@@ -140,7 +140,7 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region=14, userInput_race='half-elf', class_choice='arcanist', multi_class='N', 
+def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race='half-elf', class_choice='arcanist', multi_class='N', 
 						 alignment_input = 'LE' , userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=6, num_sides=6, 
 						 high_level=45, low_level=45, gold_num=1000000, homebrew_amount=None):
 		character = CreateNewCharacter(
