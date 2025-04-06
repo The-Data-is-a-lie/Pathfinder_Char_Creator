@@ -30,14 +30,13 @@ def roll_stats(character, num_dice, num_sides, inherent_flag='Y'):
 
     stats = orig_stats.copy()
 
-    print("pre_stats: ", stats)
     inherent_flag = inherent_flag.lower()
     # (if flagged) Distribute the inherents
     if inherent_flag == 'y':
         inherents = roll_inherents_func(character)
         stats = distribute_inherents_func(inherents, stats, orig_stats)
-    print("post_stats: ", stats)
 
+    stats = level_up_stats(stats, character)
     return stats
 
 def assign_stats(character, stats):
@@ -104,4 +103,12 @@ def distribute_inherents_func(inherents, stats, orig_stats):
             # Remove the attribute if it can't be increased further
             attributes.remove(attribute)
     
+    return stats
+
+
+def level_up_stats(stats, character):
+    num_of_stats = floor(character.c_class_level / 4)
+    for i in range(num_of_stats):
+        attribute = random.choice(list(stats.keys()))
+        stats[attribute] += 1
     return stats
