@@ -14,7 +14,8 @@ def roll_stats(character, num_dice, num_sides, inherent_flag='Y'):
         main_stat_parts = main_stat.split('/')
         main_stat = random.choice(main_stat_parts)
 
-
+    character.main_stat = main_stat
+    character.main_stat_2 = main_stat_2
 
     # Roll stats for all attributes
     orig_stats = {attr: roll_dice(num_dice, num_sides) for attr in ['str', 'dex', 'con', 'int', 'wis', 'cha']}

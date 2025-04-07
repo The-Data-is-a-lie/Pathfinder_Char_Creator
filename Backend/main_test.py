@@ -537,7 +537,6 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 		elif casting_level_str == "mid":
 			casting_level_str_foundry = "med"
 
-		print("casting_level_str_foundry: ", casting_level_str_foundry)
 
 		# Start of turning class_features into a dictionary for oracle
 		
@@ -589,7 +588,7 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 				character.specialty_schools, character.counter_schools,
 				character.chosen_descriptors, character.counter_descriptors,
 				total_rolled_hp, mini_alignment, 
-				casting_level_str_foundry,
+				casting_level_str_foundry, character.main_stat,
 
 				 
 				 ]
@@ -631,7 +630,7 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 					"specialty_schools", "counter_schools",
 					"chosen_spell_descriptor", "counter_spell_descriptor",
 					"total_rolled_hp", "mini_alignment",
-					"casting_level_str_foundry",
+					"casting_level_str_foundry", "main_stat",
 				]
 		
 		export_list_dict = [ 
