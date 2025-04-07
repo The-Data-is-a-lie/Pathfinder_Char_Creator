@@ -1,0 +1,12 @@
+{
+    "feat_tax": {
+        "two-weapon fighting": {
+            "1": "improved two-weapon fighting",
+            "2": "greater two-weapon fighting"                
+        },
+        "two-weapon defense": {
+            "1": "improved two-weapon defense",
+            "2": "greater two-weapon defense"                
+        }
+    }
+}

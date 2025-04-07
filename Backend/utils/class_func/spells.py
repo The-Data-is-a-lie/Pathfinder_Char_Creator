@@ -57,8 +57,6 @@ def caster_formula(character,n, class_2 = 'missing'):
         highest_spell_known = 0 
         character.casting_level_num = 0
 
-    print("highest_spell_known", highest_spell_known)
-
     if class_2 == 'missing':
         character.highest_spell_known_1 = highest_spell_known
         return character.highest_spell_known_1    
@@ -101,7 +99,6 @@ def spells_known_attr(character,base_classes, divine_casters):
 
 def spells_known_extra_roll(character):
     extra_spell_list = []        
-    print("character.highest_spell_known_1", character.highest_spell_known_1)
     if character.c_class_for_spells in ['alchemist','wizard'] :
         for i in range(0,character.highest_spell_known_1 + 1):
             extra_spells = random.randint(1,10)

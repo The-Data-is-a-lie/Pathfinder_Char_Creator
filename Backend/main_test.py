@@ -42,7 +42,7 @@ from utils.class_func.personality 					import randomize_personality_attr
 from utils.class_func.profession_chooser 			import profession_chooser
 # from utils.class_func.race_func 					import (race_ability_score_changes, race_ability_split, 
 #                                                      		race_traits_chooser, subrace_chooser)#, full_race_data
-from utils.class_func.randomize_flaw 				import randomize_flaw
+from utils.class_func.randomize_flaw 				import randomize_flaw_amount
 from utils.class_func.skill_ranks 					import skills_selector
 from utils.class_func.spells 						import (extra_spells_divine, spells_known_attr, 
 										   					spells_known_extra_roll, spells_known_selection, 
@@ -140,7 +140,7 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race='half-elf', class_choice='alchemist', multi_class='N', 
+def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_race='half-elf', class_choice='alchemist', multi_class='N', 
 						 alignment_input = 'TN' , deity_flag = 'random', userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=6, num_sides=6, 
 						 high_level=13, low_level=13, gold_num=1000000, homebrew_amount=None):
 		character = CreateNewCharacter(
@@ -181,14 +181,21 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 		# race_traits_list, race_traits_description_list = race_traits_chooser(character)
 		# split_race_traits_list = race_ability_split(character, race_traits_list)
 
-		flaw = randomize_flaw(character)
+		flaw_amount = randomize_flaw_amount()
+		flaw = randomize_personality_attr(character, "flaws", flaw_amount,flaw_amount)
+		background_traits = randomize_personality_attr(character, "background_traits",1,4)
+		professions = randomize_personality_attr(character, "professions",1, 3)
+		mannerisms = randomize_personality_attr(character, "mannerisms",2,4)
+		personality_traits = randomize_personality_attr(character, "personality_traits",3,6)
+		# Flaws chosen earlier in it's own function
+
 
 		# I don't know why, but these keep breaking the game (if low enough level and stats)
 		if character.c_class in ('rogue (unchained)', 'vigilante') and low_level <= 1:
 			low_level = 2
 		if character.c_class == ('rogue (unchained)', 'vigilante') and high_level <= 1:
 			high_level = 2
-		randomize_level(character, low_level, high_level, len(flaw))
+		randomize_level(character, low_level, high_level, flaw_amount)
 
 		#stats after level (because we roll inherents which depend on level)
 		stats = roll_stats(character, num_dice, num_sides, inherents)
@@ -517,10 +524,7 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 
 		feats = character.feats 
 
-		background_traits = randomize_personality_attr(character, "background_traits",4)
-		professions = randomize_personality_attr(character, "professions", 3)
-		mannerisms = randomize_personality_attr(character, "mannerisms", 3)
-		flaws = randomize_personality_attr(character, "flaws", 3)
+
 
 		actual_class_abilities = get_class_abilities(character)
 		class_ability_desc, class_ability =get_class_abilties_desc(character, actual_class_abilities)
@@ -537,6 +541,7 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 		elif casting_level_str == "mid":
 			casting_level_str_foundry = "med"
 
+		
 
 		# Start of turning class_features into a dictionary for oracle
 		
@@ -567,7 +572,7 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 				day_list, known_list,
 				deity_name, skill_ranks,
 				weapon_enhancement_chosen_list, armor_enhancement_chosen_list, 
-				shield_enhancement_chosen_list, professions,
+				shield_enhancement_chosen_list,
 				selected_traits, equipment_list, character.c_class_level,
 			#  we don't use these in foundry, comment out if we do (all instances (but will need to fix program issue))
 			#  chosen_subrace, subrace_description, 
@@ -577,7 +582,8 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 				character.gold, character.platnium,
 				full_domain, school, opposing_school,
 				bloodline,
-				background_traits, professions, mannerisms, flaws,
+				background_traits, professions, mannerisms, 
+				personality_traits,
 				hero_points, character.chosen_gender, 
 				class_ability_desc, class_ability,
 				class_features, archetype_info,				
@@ -609,7 +615,7 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 					"day_list", "known_list",
 					"deity_name", "skill_ranks",
 					"weapon_enhancement_chosen_list", "armor_enhancement_chosen_list", 
-					"shield_enhancement_chosen_list", "professions",
+					"shield_enhancement_chosen_list",
 					"selected_traits", "equipment_list", "level",
 					# We don't use subrace data in foundryVTT (comment these out if we want to (will need to fix their issues first))
 					# "chosen_subrace", "subrace_description", 
@@ -619,7 +625,8 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 					"gold", "platnium",
 					"full_domain", "school", "opposing_school",
 					"bloodline",
-					"background_traits", "professions", "mannerisms", "flaws",
+					"background_traits", "professions", "mannerisms",
+					"personality_traits",
 					"hero_points", "gender",
 					"class_ability_desc", "class_ability",
 					"class_features", "archetype_info",
@@ -671,6 +678,9 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 
 		print("alignment", alignment)
 		print("deity_name", deity_name)
+		print("character.region", character.region)
+		print("flaw", flaw)
+
 		return character.data_dict
 
 generate_random_char()
