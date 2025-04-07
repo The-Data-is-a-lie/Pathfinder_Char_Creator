@@ -140,9 +140,9 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race='half-elf', class_choice='paladin', multi_class='N', 
+def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race='half-elf', class_choice='alchemist', multi_class='N', 
 						 alignment_input = 'TN' , deity_flag = 'random', userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=6, num_sides=6, 
-						 high_level=5, low_level=5, gold_num=1000000, homebrew_amount=None):
+						 high_level=13, low_level=13, gold_num=1000000, homebrew_amount=None):
 		character = CreateNewCharacter(
 			character_json_config)
 		character.instantiate_full_data_dict()
@@ -531,6 +531,14 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 		# For some reason class_features is being created as a dict inside a list, rather than a dict
 		class_features = character.data_dict['class features']
 
+		# Prep casting level string for foundry:
+		if casting_level_str.lower() in ("low", "high"):
+			casting_level_str_foundry = casting_level_str.lower()
+		elif casting_level_str == "mid":
+			casting_level_str_foundry = "med"
+
+		print("casting_level_str_foundry: ", casting_level_str_foundry)
+
 		# Start of turning class_features into a dictionary for oracle
 		
 		if isinstance(class_features, list) and len(class_features) > 0:
@@ -580,7 +588,8 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 				weapon_name,
 				character.specialty_schools, character.counter_schools,
 				character.chosen_descriptors, character.counter_descriptors,
-				total_rolled_hp, mini_alignment
+				total_rolled_hp, mini_alignment, 
+				casting_level_str_foundry,
 
 				 
 				 ]
@@ -621,7 +630,8 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 					"weapon_name",
 					"specialty_schools", "counter_schools",
 					"chosen_spell_descriptor", "counter_spell_descriptor",
-					"total_rolled_hp", "mini_alignment"
+					"total_rolled_hp", "mini_alignment",
+					"casting_level_str_foundry",
 				]
 		
 		export_list_dict = [ 

@@ -41,11 +41,11 @@ def caster_formula(character,n, class_2 = 'missing'):
         highest_spell_known = min(highest_spell_known,9)
 
     elif character.casting_level_string == 'mid':
-        if n % 3 == 1:
-            highest_spell_known= ceil(n // 3)+1
+        if n % 3 != 0:
+            highest_spell_known= ceil(n // 3) + 1
         else:
-            highest_spell_known= ceil(n / 3)
-        highest_spell_known = min(n,6)           
+            highest_spell_known= ceil(n // 3)
+        highest_spell_known = min(highest_spell_known,6)           
     
     elif character.casting_level_string == 'low':
         highest_spell_known= ceil(n / 3)-1
@@ -56,6 +56,8 @@ def caster_formula(character,n, class_2 = 'missing'):
     else:
         highest_spell_known = 0 
         character.casting_level_num = 0
+
+    print("highest_spell_known", highest_spell_known)
 
     if class_2 == 'missing':
         character.highest_spell_known_1 = highest_spell_known
@@ -99,6 +101,7 @@ def spells_known_attr(character,base_classes, divine_casters):
 
 def spells_known_extra_roll(character):
     extra_spell_list = []        
+    print("character.highest_spell_known_1", character.highest_spell_known_1)
     if character.c_class_for_spells in ['alchemist','wizard'] :
         for i in range(0,character.highest_spell_known_1 + 1):
             extra_spells = random.randint(1,10)
@@ -268,6 +271,7 @@ def extra_spells_divine(character):
     else:
         i = 0
         subtract_num = 0
+
 
     # We need to make sure we aren't grabbing null or our program will break
     while i in range(len(character.spells_per_day_list) - subtract_num):
