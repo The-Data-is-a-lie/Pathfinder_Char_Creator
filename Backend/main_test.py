@@ -140,9 +140,9 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_race='half-elf', class_choice='cleric', multi_class='N', 
-						 alignment_input = 'TN' , deity_flag = 'random', userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=26, num_sides=26, 
-						 high_level=20, low_level=20, gold_num=1000000, homebrew_amount=None):
+def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_race='half-elf', class_choice='wizard', multi_class='N', 
+						 alignment_input = 'TN' , deity_flag = 'random', userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=3, num_sides=6, 
+						 high_level=7, low_level=7, gold_num=1000000, homebrew_amount=None):
 		character = CreateNewCharacter(
 			character_json_config)
 		character.instantiate_full_data_dict()
@@ -682,7 +682,7 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		print("flaw", flaw)
 		print("personality_traits", personality_traits)
 		print("skill_ranks", skill_ranks)
-		print("character.spell_list_choose_from", character.spell_list_choose_from)
+		# print("character.spell_list_choose_from", character.spell_list_choose_from)
 
 		return character.data_dict
 

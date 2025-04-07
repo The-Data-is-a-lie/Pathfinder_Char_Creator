@@ -1,8 +1,8 @@
 {
     "Human": {
-        "age": [15, "5d6"],
+        "age": [5, "8d10"],
         "height": [58, "2d10"],
-        "weight": [120, "3d31"],
+        "weight": [120, "4d31"],
         "size": "Medium",
         "speed": 30,
         "traits": ["Versatility"],
@@ -13,9 +13,9 @@
     },
 
      "Aasimar": {
-        "age": [20, "5d4"],
+        "age": [12, "6d10"],
         "height": [64, "2d10"],
-        "weight": [120, "3d31"],
+        "weight": [120, "5d31"],
         "size": "Medium",
         "speed": 30,
         "traits": ["Darkvision", "Celestial Resistance", "Skilled", "Daylight"],
@@ -28,9 +28,9 @@
     },
 
         "Catfolk": {
-        "age": [18, "5d6"],
+        "age": [10, "5d6"],
         "height": [58, "2d10"],
-        "weight": [90, "3d31"],
+        "weight": [120, "3d31"],
         "size": "Medium",
         "speed": 40,
         "traits": ["Low-Light Vision", "Natural Hunter", "Sprinter", "Cat's Luck"],
@@ -42,28 +42,10 @@
         }
     },
 
-
-		"Dragonborn": {
-			"age": [79,"6d6"],
-			"height": [182, "3d31"],
-			"weight": [210, "3d31"],
-			"size": "Medium",
-			"speed": 30,
-			"traits": ["Draconic Ancestory", "Increased Resistance", "Bite", "Draconic Resistances", "Energy Resistance", "Natural Armor", "Draconic Mein", "Fearless"],
-			"languages": ["Draconic", "Undercommon"],
-            "ability scores": {
-                "Strength": "+2",
-                "Charisma": "+2",
-                "Constitution": "-2"
-            }
-		},
-
-
-
     "Dhampir": {
-        "age": [16, "5d6"],
-        "height": [62, "2d10"],
-        "weight": [100, "3d31"],
+        "age": [10, "5d20"],
+        "height": [58, "2d10"],
+        "weight": [120, "3d31"],
         "size": "Medium",
         "speed": 30,
         "traits": ["Darkvision", "Negative Energy Affinity", "Resist Level Drain", "Low-Light Vision", "Manipulative", "Undead Resistance", "Detect Undead", "Light Sensitivity"],
@@ -77,7 +59,7 @@
 
 
 "Drow": {
-        "age": [20, "30d6"],
+        "age": [10, "20d10"],
         "height": [53, "2d10"],
         "weight": [75, "3d31"],
         "size": "Medium",
@@ -92,8 +74,8 @@
     },
 
 "Duergar": {
-        "age": [40, "5d6"],
-        "height": [48, "2d10"],
+        "age": [30, "10d6"],
+        "height": [48, "2d5"],
         "weight": [150, "3d31"],
         "size": "Medium",
         "speed": 20,
@@ -108,9 +90,9 @@
 
 
     "Elf": {
-        "age": [110, "30d6"],
-        "height": [58, "2d10"],
-        "weight": [85, "3d31"],
+        "age": [10, "20d10"],
+        "height": [53, "2d10"],
+        "weight": [75, "3d31"],
         "size": "Medium",
         "speed": 30,
         "traits": ["Low-light vision","Elven Magic", "Elven Immunities", "Keen senses", "Weapon familiarity"],
@@ -123,9 +105,9 @@
     },
 
     "Fetchling": {
-        "age": [20, "5d6"],
-        "height": [62, "2d10"],
-        "weight": [110, "3d31"],
+        "age": [10, "5d6"],
+        "height": [64, "2d6"],
+        "weight": [70, "3d20"],
         "size": "Medium",
         "speed": 30,
         "traits": ["Darkvision", "Shadow Blending", "Shadow Resistance", "Skilled","Low-Light Vision","Spell-Like Abilities"],
@@ -138,9 +120,9 @@
     },
 
     "Goblin": {
-        "age": [10, "5d6"],
-        "height": [38, "2d10"],
-        "weight": [30, "3d31"],
+        "age": [10, "2d6"],
+        "height": [32, "2d6"],
+        "weight": [30, "1d20"],
         "size": "Small",
         "speed": 30,
         "traits": ["Darkvision","Fast movement","Skilled"],
@@ -153,9 +135,9 @@
     },
 
     "Gnome": {
-        "age": [40, "5d6"],
-        "height": [36, "2d10"],
-        "weight": [40, "3d31"],
+        "age": [30, "4d20"],
+        "height": [36, "2d6"],
+        "weight": [30, "2d10"],
         "size": "Small",
         "speed": 20,
         "traits": ["Gnome Magic", "Defensive Training","Illusion Resistance","Keen senses","Gnome Magic","Hatred","Weapon familiarity","Low-Light Vision"],
@@ -168,9 +150,9 @@
     },
 
     "Halfling": {
-        "age": [20, "3d6"],
-        "height": [32, "2d10"],
-        "weight": [30, "3d31"],
+        "age": [12, "5d6"],
+        "height": [32, "2d6"],
+        "weight": [25, "2d10"],
         "size": "Small",
         "speed": 20,
         "traits": ["Fearless","Halfling Luck","Sure footed", "Weapon familiarity","Keen senses"],
@@ -184,8 +166,8 @@
 
     "Dwarf": {
         "clans": ["Balderk", "Dankil", "Gorunn", " Holderhek", "Loderr", "Lutgehr", "Rumnaheim", "Strakeln", "Torunn", "Ungart"],
-        "age": [40, "15d6"],
-        "height": [45, "2d10"],
+        "age": [30, "7d10"],
+        "height": [45, "2d6"],
         "weight": [130, "3d31"],
         "size": "Medium",
         "speed": 20,
@@ -199,9 +181,9 @@
         },
     
     "Half-elf": {
-        "age": [20, "3d31"],
-        "height": [55, "2d10"],
-        "weight": [100, "3d31"],
+        "age": [5, "8d10"],
+        "height": [62, "2d10"],
+        "weight": [100, "4d31"],
         "size": "Medium",
         "speed": 30,
         "traits": ["Low-Light Vision","Elven Immunities","Keen senses","adaptibility","elf blood","multi-talented"],
@@ -213,8 +195,8 @@
 
     "Half-orc": {
         "age": [10, "2d20"],
-        "height": [58, "2d10"],
-        "weight": [150, "3d31"],
+        "height": [68, "2d12"],
+        "weight": [180, "5d31"],
         "size": "Medium",
         "speed": 30,
         "traits": ["Darkvision","Imtimidating","Orc Ferocity","Orc blood"],
@@ -227,9 +209,9 @@
     },
 
 "Hobgoblin": {
-    "age": [15, "5d6"],
-    "height": [56, "2d10"],
-    "weight": [120, "3d31"],
+    "age": [10, "5d6"],
+    "height": [50, "2d6"],
+    "weight": [120, "4d31"],
     "size": "Medium",
     "speed": 30,
     "traits": ["Sneaky","Darkvision"],
@@ -242,9 +224,9 @@
 },
 
 "Ifrit": {
-    "age": [16, "5d6"],
-    "height": [58, "2d10"],
-    "weight": [120, "3d31"],
+    "age": [50, "5d20"],
+    "height": [62, "2d10"],
+    "weight": [100, "3d31"],
     "size": "Medium",
     "speed": 30,
     "traits": ["Darkvision", "Energy Resistance","Fire Affinity","Spell-Like Abilities"],
@@ -257,8 +239,8 @@
 },
 
 "Kitsune": {
-        "age": [16, "10d10"],
-        "height": [48, "2d10"],
+        "age": [12, "6d6"],
+        "height": [58, "2d10"],
         "weight": [80, "3d31"],
         "size": "Medium",
         "speed": 30,
@@ -272,9 +254,9 @@
     },
 
     "Kobold": {
-        "age": [6, "5d6"],
-        "height": [27, "2d10"],
-        "weight": [25, "3d31"],
+        "age": [10, "5d6"],
+        "height": [32, "2d6"],
+        "weight": [30, "1d20"],
         "size": "Small",
         "speed": 30,
         "traits": ["Crafty", "Light Sensitivity","Armor","Darkvision"],
@@ -287,9 +269,9 @@
     },
 
     "Monkey goblin": {
-        "age": [16, "5d4"],
-        "height": [42, "2d10"],
-        "weight": [35, "3d31"],
+        "age": [10, "2d6"],
+        "height": [32, "2d6"],
+        "weight": [30, "1d20"],
         "size": "Small",
         "speed": 20,
         "traits": ["Low-Light Vision","Fearless","acrobatic","Prehensile Tail","Natural Climber"],
@@ -303,8 +285,8 @@
 
     "Orc": {
         "age": [14, "5d6"],
-        "height": [58, "2d10"],
-        "weight": [150, "3d31"],
+        "height": [68, "4d10"],
+        "weight": [200, "8d31"],
         "size": "Medium",
         "speed": 30,
         "traits": ["Darkvision", "Orc Ferocity", "Weapon familiarity","Light Sensitivity"],
@@ -318,9 +300,9 @@
     },
 
     "Oread": {
-        "age": [20, "5d6"],
-        "height": [56, "2d10"],
-        "weight": [130, "3d31"],
+        "age": [40, "5d30"],
+        "height": [68, "4d10"],
+        "weight": [200, "8d300"],
         "size": "Medium",
         "speed": 30,
         "traits": ["Darkvision", "Spell-Like Abilities", "Acid Resistance", "Earth Affinity"],
@@ -333,9 +315,9 @@
     },
 
 "Ratfolk": {
-    "age": [14, "5d6"],
-    "height": [33, "2d10"],
-    "weight": [20, "3d31"],
+    "age": [10, "2d6"],
+    "height": [32, "2d6"],
+    "weight": [30, "1d20"],
     "size": "Small",
     "speed": 20,
     "traits": ["Darkvision", "Swarming","Rodent Empathy","Tinker"],
@@ -348,8 +330,8 @@
 },
 
 "Sylph": {
-    "age": [18, "5d6"],
-    "height": [60, "2d10"],
+    "age": [50, "5d20"],
+    "height": [62, "2d10"],
     "weight": [95, "3d31"],
     "size": "Medium",
     "speed": 30,
@@ -363,9 +345,9 @@
 },
 
 "Tengu": {
-    "age": [16, "5d6"],
-    "height": [58, "2d10"],
-    "weight": [90, "3d31"],
+    "age": [10, "5d6"],
+    "height": [48, "2d10"],
+    "weight": [60, "3d20"],
     "size": "Medium",
     "speed": 30,
     "traits": ["Low-Light Vision", "Sneaky", "Swordtrained", "Gifted Linguist","Natural weapons","Senses"],
@@ -378,9 +360,9 @@
 },
 
 "Tiefling": {
-    "age": [18, "5d6"],
-    "height": [57, "2d10"],
-    "weight": [110, "3d31"],
+    "age": [40, "5d20"],
+    "height": [58, "2d15"],
+    "weight": [110, "4d31"],
     "size": "Medium",
     "speed": 30,
     "traits": ["Darkvision", "Fiendish Sorcery","Skilled","Fiendish Resistance","Spell-Like Abilities"],
@@ -393,9 +375,9 @@
 },
 
 "Undine": {
-    "age": [18, "5d6"],
-    "height": [56, "2d10"],
-    "weight": [85, "3d31"],
+    "age": [40, "5d20"],
+    "height": [58, "2d15"],
+    "weight": [110, "4d31"],
     "size": "Medium",
     "speed": 30,
     "traits": ["5 cold resistance", "Darkvision", "Water affinity", "30 Swim Speed", "Water Sense"],
@@ -408,9 +390,9 @@
 },
 
 "Wayang": {
-    "age": [20, "5d6"],
-    "height": [44, "2d10"],
-    "weight": [40, "3d31"],
+    "age": [30, "5d10"],
+    "height": [36, "2d6"],
+    "weight": [30, "2d10"],
     "size": "Small",
     "speed": 20,
     "traits": ["Darkvision", "Lurker","Shadow Magic","Light and Dark", "Shadow Resistance"],

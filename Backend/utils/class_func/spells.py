@@ -339,7 +339,6 @@ def spells_per_day_from_ability_mod(character, caster_mod):
     else:
         print('Not a caster sorry bucko')
 
-    print(len(bonus_spells), bonus_spells, len(character.spells_per_day_list))
     #  adding a section for low casterse since they don't have cantrips
     for i,bonus in enumerate(bonus_spells):
         if bonus == 'null':

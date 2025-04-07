@@ -36,8 +36,11 @@ def get_selectable_skills(character,all_skills, skill_ranks_level):
     print("Dummy skill ranks:", dummy_skill_ranks)
 
 
+    # For if we don't find a character, just assign them minimum skills
     if character.c_class not in character.class_data.keys():
-        scaling = 2 + abs(character.int_mod)
+        scaling = 2 + abs(max(character.int_mod, character.wis_mod, character.cha_mod))
+        print("couldn't find this character's skills using default scaling", scaling)
+
     skill_number = scaling + random.randint(abs(character.int_mod), abs(character.int_mod)+8)
     skill_number = min(skill_number, len(all_skills))
     selectable_skills = random.sample(all_skills, k=skill_number)
