@@ -30,8 +30,10 @@ def skills_selector(character, skills, skill_rank_level):
 
 def get_selectable_skills(character,all_skills, skill_ranks_level):
     skill_points = character.class_data[character.c_class]["skill points at each level"]
-    scaling = int(skill_points) + character.int_mod
+    scaling = int(skill_points) + max(character.int_mod, character.wis_mod, character.cha_mod)
+
     dummy_skill_ranks = (scaling * character.c_class_level) + skill_ranks_level
+    print("Dummy skill ranks:", dummy_skill_ranks)
 
 
     if character.c_class not in character.class_data.keys():

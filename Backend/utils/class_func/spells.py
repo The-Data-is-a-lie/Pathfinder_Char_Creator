@@ -262,12 +262,9 @@ def extra_spells_divine(character):
     if character.casting_level_string == 'none':
         return []
 
-    if character.casting_level_string == 'low':
-        i = 1
-        subtract_num = 1
-    else:
-        i = 0
-        subtract_num = 0
+
+    i = 0
+    subtract_num = 0
 
 
     # We need to make sure we aren't grabbing null or our program will break
@@ -319,27 +316,34 @@ def spells_per_day_from_ability_mod(character, caster_mod):
     wis_str = str(min(character.wis_mod,17))
     cha_str = str(min(character.cha_mod,17))
     i=0
-    i_2=0
     bonus_spells = []
     if character.c_class in caster_mod["int_casters"]:
         list=dataset[int_str]          
-        for i in range (character.highest_spell_known_1):
-            i+=1
+        for i in range (character.highest_spell_known_1 + 1):
             spells= list[i]
             bonus_spells.append(spells)
+            i+=1
     elif character.c_class in caster_mod["wis_casters"]:
         list=dataset[wis_str]         
-        for i in range (character.highest_spell_known_1):
-            i+=1
+        print("list", list)
+        for i in range (character.highest_spell_known_1 + 1):
             spells= list[i]
             bonus_spells.append(spells)
+            i+=1
     elif character.c_class in caster_mod["cha_casters"]:
         list=dataset[cha_str]          
-        for i in range (character.highest_spell_known_1):
-            i+=1
+        for i in range (character.highest_spell_known_1 + 1):
             spells= list[i]
             bonus_spells.append(spells)                                
+            i+=1
     else:
         print('Not a caster sorry bucko')
+
+    print(len(bonus_spells), bonus_spells, len(character.spells_per_day_list))
+    #  adding a section for low casterse since they don't have cantrips
+    for i,bonus in enumerate(bonus_spells):
+        if bonus == 'null':
+            break
+        character.spells_per_day_list[i] = character.spells_per_day_list[i] + bonus
 
     return bonus_spells
