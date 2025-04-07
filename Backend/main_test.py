@@ -680,6 +680,7 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		print("deity_name", deity_name)
 		print("character.region", character.region)
 		print("flaw", flaw)
+		print("personality_traits", personality_traits)
 
 		return character.data_dict
 
