@@ -13,7 +13,15 @@ def randomize_body_feature(self, body_attribute):
     dice_roll = roll_dice(num_dice, num_sides)
     total_number = dice_roll + base_stat
     
-    return body_attribute, total_number
+    if body_attribute == 'height':
+        total_number = Convert_to_feet_inches(total_number)
+
+    return total_number
+
+def Convert_to_feet_inches(height):
+    feet = height // 12
+    inches = height % 12
+    return f"{feet}'{inches}\""
 
 
 def get_racial_attr(self, racial_attribute):
