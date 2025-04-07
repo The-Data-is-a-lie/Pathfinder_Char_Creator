@@ -228,7 +228,7 @@ alignments = {
         "CN": "chaotic neutral",
         "CE": "chaotic evil",
         "NG": "neutral good",
-        "N": "true neutral",
+        "TN": "true neutral",
         "NE": "neutral evil",
         "LG": "lawful good",
         "LN": "lawful neutral",

@@ -9,29 +9,14 @@ def choose_alignment(self, alignments, alignment_input):
     if self.alignment is None:
         random_alignment_code = random.choice(list(alignment_data.keys()))
         self.alignment = alignment_data[random_alignment_code].lower()
+        mini_alignment = random_alignment_code.lower()
     else:
         self.alignment = self.alignment.lower()
+        mini_alignment = alignment_input.lower()
 
+    print("mini_alignment", mini_alignment)
     return self.alignment
 
 def randomize_deity(self):
     self.deity_choice = random.choice(list(self.deity[self.alignment]))
     return self.deity_choice
-
-# def print_all_deities(self):
-#     all_deities = []
-
-#     for alignment, deities in self.deity.items():
-#         # Iterate through each deity in the list for the alignment
-#         for deity in deities:
-#             if isinstance(deity, dict) and "Name" in deity:
-#                 # Add all names from the "Name" list
-#                 all_deities.extend(deity["Name"])
-#             elif isinstance(deity, str):
-#                 # If the deity is a string, add it directly
-#                 all_deities.append(deity)
-
-#     # Remove duplicates and sort the list for consistent output
-#     unique_deities = sorted(set(all_deities))
-#     print("All Unique Deities:", unique_deities)
-#     return unique_deities

@@ -27,7 +27,7 @@ CORS(app)
 limiter = Limiter(
     get_remote_address,
     app=app,
-    default_limits=["4000 per day", "500 per hour", "60 per minute"],
+    default_limits=["1000 per day", "500 per hour", "60 per minute"],
     storage_uri=redis_url  # Set the Redis URL as the storage backend
 )
 

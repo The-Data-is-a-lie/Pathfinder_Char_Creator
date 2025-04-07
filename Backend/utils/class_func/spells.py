@@ -255,6 +255,10 @@ def spells_known_selection(character):
 
 # remove if need to give an accurate spells per day (only for foundryVTT (to have more spells populate in list))
 def extra_spells_divine(character):
+    divine_casters = getattr(data, 'divine_casters')
+
+    if character.c_class not in divine_casters:
+        return character.spells_per_day_list
     if character.casting_level_string == 'none':
         return []
 
@@ -265,10 +269,11 @@ def extra_spells_divine(character):
         i = 0
         subtract_num = 0
 
+    # We need to make sure we aren't grabbing null or our program will break
     while i in range(len(character.spells_per_day_list) - subtract_num):
         random_num = random.randint(1,10)
         if character.spells_per_day_list[i] == 'null':
-            continue
+            break
         character.spells_per_day_list[i] = character.spells_per_day_list[i] + random_num
         i+=1
 
