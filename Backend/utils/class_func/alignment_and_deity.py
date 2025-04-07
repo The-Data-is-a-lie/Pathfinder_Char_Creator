@@ -14,8 +14,7 @@ def choose_alignment(self, alignments, alignment_input):
         self.alignment = self.alignment.lower()
         mini_alignment = alignment_input.lower()
 
-    print("mini_alignment", mini_alignment)
-    return self.alignment
+    return self.alignment, mini_alignment.lower()
 
 def randomize_deity(self):
     self.deity_choice = random.choice(list(self.deity[self.alignment]))

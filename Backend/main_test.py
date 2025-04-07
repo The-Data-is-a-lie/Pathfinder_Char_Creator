@@ -163,7 +163,7 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 		dip_function(character,'base_classes', multi_class)
 
 		#add an optional flaws rule function	
-		alignment = choose_alignment(character, 'alignments', alignment_input)
+		alignment, mini_alignment = choose_alignment(character, 'alignments', alignment_input)
 		alignment = alignment.title()
 
 		if deity_flag.lower() == 'random':
@@ -580,7 +580,7 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 				weapon_name,
 				character.specialty_schools, character.counter_schools,
 				character.chosen_descriptors, character.counter_descriptors,
-				total_rolled_hp,
+				total_rolled_hp, mini_alignment
 
 				 
 				 ]
@@ -621,7 +621,7 @@ def generate_random_char(create_new_char='Y', userInput_region=1, userInput_race
 					"weapon_name",
 					"specialty_schools", "counter_schools",
 					"chosen_spell_descriptor", "counter_spell_descriptor",
-					"total_rolled_hp",
+					"total_rolled_hp", "mini_alignment"
 				]
 		
 		export_list_dict = [ 
