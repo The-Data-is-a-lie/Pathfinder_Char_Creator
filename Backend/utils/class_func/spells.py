@@ -343,6 +343,7 @@ def spells_per_day_from_ability_mod(character, caster_mod):
     for i,bonus in enumerate(bonus_spells):
         if bonus == 'null':
             break
-        character.spells_per_day_list[i] = character.spells_per_day_list[i] + bonus
+        if not isinstance(character.spells_per_day_list[i], str):
+            character.spells_per_day_list[i] = character.spells_per_day_list[i] + bonus
 
     return bonus_spells

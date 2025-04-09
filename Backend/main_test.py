@@ -140,9 +140,11 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_race='half-elf', class_choice='wizard', multi_class='N', 
+def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_race='half-elf', class_choice='oracle', multi_class='N', 
 						 alignment_input = 'TN' , deity_flag = 'random', userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=3, num_sides=6, 
 						 high_level=7, low_level=7, gold_num=1000000, homebrew_amount=None):
+		casting_level_str_foundry = 'None'
+		
 		character = CreateNewCharacter(
 			character_json_config)
 		character.instantiate_full_data_dict()
@@ -657,7 +659,6 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		# print("character.c_class_level", character.c_class_level)
 		# print("character.c_class", character.c_class)
 		# print("character.c_class_2", character.c_class_2)
-		# print("archetype_info", archetype_info)
 		# # print(f'this is your character data {character.data_dict}')
 
 		# print("character.specialty_schools", character.specialty_schools)
@@ -676,12 +677,14 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		# print("chosen_feats", feats)
 
 
-		print("alignment", alignment)
-		print("deity_name", deity_name)
-		print("character.region", character.region)
-		print("flaw", flaw)
-		print("personality_traits", personality_traits)
-		print("skill_ranks", skill_ranks)
+		# print("alignment", alignment)
+		# print("deity_name", deity_name)
+		# print("character.region", character.region)
+		# print("flaw", flaw)
+		# print("personality_traits", personality_traits)
+		# print("skill_ranks", skill_ranks)
+		print("archetype_info", archetype_info)
+
 		# print("character.spell_list_choose_from", character.spell_list_choose_from)
 
 		return character.data_dict
