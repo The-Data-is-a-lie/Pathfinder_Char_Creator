@@ -19,6 +19,8 @@ load_dotenv()
 redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379')
 
 app = create_app()
+app.config['JSON_SORT_KEYS'] = False  # Disable sorting of JSON keys
+app.json.sort_keys = False  # Disable sorting of JSON keys
 
 # For allowing all origins
 CORS(app)

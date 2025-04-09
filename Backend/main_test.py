@@ -558,6 +558,7 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 			class_features = combined_dict
 		#End of turning class_features into a dictionary for oracle
 
+		archetype_info = json.dumps(archetype_info, indent=4)
 		export_list_non_dict = [
 				character.region, character.chosen_race,
 				character_full_name, character.c_class, character.c_class_2, 
