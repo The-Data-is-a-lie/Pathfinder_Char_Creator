@@ -22,9 +22,6 @@ app = create_app()
 app.config['JSON_SORT_KEYS'] = False  # Disable sorting of JSON keys
 app.json.sort_keys = False  # Disable sorting of JSON keys
 
-# For allowing all origins
-CORS(app)
-
 # Initialize Flask-Limiter
 limiter = Limiter(
     get_remote_address,
@@ -44,6 +41,27 @@ app.config['SESSION_COOKIE_SECURE'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'None'
 
 Session(app)
+
+# allowing many routes:
+# For allowing all origins
+CORS(app, 
+     supports_credentials=True, 
+     origins=["http://192.168.1.164:30000", 
+             "http://72.180.6.78:30000", 
+             "http://localhost:3000",
+             "http://localhost:30000",
+             "http://127.0.0.1:30000",
+             "http://127.0.0.1:3000",
+             "http://localhost:4000",
+             "http://localhost:5000",
+             "http://localhost:6000",
+             "http://localhost:7000",
+             "http://localhost:8000",
+             "http://localhost:9000"], 
+             
+     methods=["GET", "POST", "PUT", "DELETE"], 
+     allow_headers=["Content-Type", "Authorization"]
+     )
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

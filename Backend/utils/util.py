@@ -51,10 +51,11 @@ def race_chooser(character, userInput_race):
     """
     race_data = full_race_data(character)
     races = list(race_data.keys())
-    if isinstance(userInput_race, str) and (userInput_race in races):
-        userInput_race = userInput_race.capitalize()
-    else:
+    print("races", races)
+    if not (isinstance(userInput_race, str) or userInput_race in races):
         userInput_race = random.choice(races).capitalize()
+    else:
+        userInput_race = userInput_race.capitalize()
     character.chosen_race = userInput_race
     return character.chosen_race
         
