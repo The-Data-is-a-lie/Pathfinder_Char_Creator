@@ -685,7 +685,7 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		# print("personality_traits", personality_traits)
 		# print("skill_ranks", skill_ranks)
 		print("archetype_info", archetype_info)
-		print("character.chosen_race", character.chosen_race)
+		print("character.c_class", character.c_class)
 
 		# print("character.spell_list_choose_from", character.spell_list_choose_from)
 
