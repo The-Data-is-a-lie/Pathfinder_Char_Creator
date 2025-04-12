@@ -141,7 +141,7 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_race='human', class_choice='wizard', multi_class='N', 
+def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_race='Random', class_choice='barbarian', multi_class='N', 
 						 alignment_input = 'TN' , deity_flag = 'random', userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=3, num_sides=6, 
 						 high_level=7, low_level=7, gold_num=1000000, homebrew_amount=None):
 		casting_level_str_foundry = 'None'
@@ -149,6 +149,7 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		character = CreateNewCharacter(
 			character_json_config)
 		character.instantiate_full_data_dict()
+		character.data_dict['class features'] = {}
 
 		# prep variables
 		no_prereq_prep(character)
@@ -560,6 +561,8 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 
 			# Assign the merged dictionary back to class_features
 			class_features = combined_dict
+
+		# print("class features 1st check", class_features)
 		#End of turning class_features into a dictionary for oracle
 
 
@@ -575,6 +578,7 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 			for i, domain in enumerate(full_domain):
 				bonus_spells = character.data_dict['class features'].get(domain).get("bonus spells", [])
 				add_bonus_spells(character, bonus_spells)
+				print(domain, character.data_dict['class features'].get(domain))
 
 		if full_domain not in ([], None) and character.c_class.lower() in ("druid"):
 			print("full_domain", full_domain)
@@ -589,8 +593,8 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 			try:
 				bonus_spells_dict = character.data_dict['class features'].get(full_school).get("spells", [])
 				add_bonus_spells_from_dict(character, bonus_spells_dict)
-				print("bonus_spells_dict", bonus_spells_dict)
-				print("character.spell_list_choose_from", character.spell_list_choose_from)
+				# print("bonus_spells_dict", bonus_spells_dict)
+				# print("character.spell_list_choose_from", character.spell_list_choose_from)
 			except:
 				print("wizard, but wizard spell list has no bonus spells")
 
@@ -692,8 +696,6 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		character.export_list_dict(export_list_dict, string_export_list_dict)		
 
 		# ----- debugging section ----- #
-		# print("class_features", class_features)
-		# print("class_features", type(class_features))
 		# print("character.c_class_level", character.c_class_level)
 		# print("character.c_class", character.c_class)
 		# print("character.c_class_2", character.c_class_2)
@@ -725,7 +727,6 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		# print("character.c_class", character.c_class)
 
 		# print("character.spell_list_choose_from", character.spell_list_choose_from)
-
 		return character.data_dict
 
 generate_random_char()

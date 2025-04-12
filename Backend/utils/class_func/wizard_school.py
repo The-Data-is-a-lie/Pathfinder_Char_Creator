@@ -33,7 +33,7 @@ def wizard_school_chooser(character):
         associated_school = []
         associated = None
 
-        random_choice = random.randint(1,1)
+        random_choice = random.randint(1,4)
 
 
         if random_choice == 1:
@@ -56,10 +56,10 @@ def wizard_school_chooser(character):
             associated = subschools_data[random_school]["associated school"]
             associated_school = schools_data[associated]            
 
-        print(f"random school: {random_school}")
-        print(f"description: {description}")
-        print(f"associated: {associated}")
-        print(f"associated school: {associated_school}")
+        # print(f"random school: {random_school}")
+        # print(f"description: {description}")
+        # print(f"associated: {associated}")
+        # print(f"associated school: {associated_school}")
 
         chosen_dict[random_school]      = description
         if associated != None and associated_school != []:
