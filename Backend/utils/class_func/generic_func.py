@@ -60,7 +60,11 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
 
             chosen_dict = chosen_set_append(character, dataset, chosen_set, chosen, dict_name)
             # character.data_dict['class features'] = chosen_dict 
-            character.data_dict['class features'].append(chosen_dict)           
+            # Adding to the base class features
+            if character.data_dict['class features'] == [] or character.data_dict['class features']== {}:
+                character.data_dict['class features'] = chosen_dict
+            else:
+                character.data_dict['class features'].update(chosen_dict)       
             return chosen_dict
 
 

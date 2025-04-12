@@ -1,5 +1,6 @@
 import random
 def domain_chooser(character):
+    chosen_dict = {}
     character.chosen_domain = []
     if character.c_class == 'cleric' or character.c_class_2 == 'cleric':  
         deity_choice_list = list(character.deity_choice['Domains'])
@@ -18,26 +19,28 @@ def domain_chooser(character):
         character.chosen_domain = random.sample(deity_choice_list,k=2)
         chosen_first = character.chosen_domain[0].capitalize()
         chosen_second = character.chosen_domain[1].capitalize()
-        return character.chosen_domain    
 
+    if len(character.chosen_domain) <= 0:
+        return
+    
+    # Grabbing full domain info from their respetive domain lists
+    if character.c_class == 'cleric':
+        for d in character.chosen_domain:
+            domain_info = character.cleric_domains.get("domains", {}).get(d, None)
+            chosen_dict[d] = domain_info
 
-def inquisition_chooser(character):
-    if character.c_class == 'inquisitor' or character.c_class_2 == 'inquisitor' and character.domain_chance <= 90:
-        inquisitions = character.inquisitions.get("inquisitions", {})
-        chosen_deity = character.deity_choice['Name'][0].lower()
-        valid_inquisitions = {
-            inq: data for inq, data in inquisitions.items() if chosen_deity in data.get("deities", "")
-        }
+    if character.c_class == 'druid':
+        for d in character.chosen_domain:
+            domain_info = character.druid_domains.get(d, None)
+            chosen_dict[d] = domain_info
 
-        if not valid_inquisitions:
-            character.domain_chance = 100
-            character.domain_chooser()
-
-        else:
-            character.inquisition_choice = random.sample(list(valid_inquisitions), k=2)
-            return character.inquisition_choice
-        
-
+    # Adding to the base class features
+    if character.data_dict['class features'] == [] or character.data_dict['class features']== {}:
+        character.data_dict['class features'] = chosen_dict
+    else:
+        character.data_dict['class features'].update(chosen_dict)
+    
+    return character.chosen_domain    
 
 def domain_chance(character):
     """

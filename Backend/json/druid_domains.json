@@ -3,34 +3,34 @@
     "subdomains": ["cloud", "lightning", "wind"],
     "lightning arc (sp)": ["as a standard action, you can unleash an arc of electricity targeting any foe within 30 feet as a ranged touch attack. This arc of electricity deals 1d6 points of electricity damage + 1 point for every two cleric levels you possess. You can use this ability a number of times per day equal to 3 + your wisdom modifier. "],
     "electricity resistance (ex)": ["at 6th level, you gain resist electricity 10. This resistance increases to 20 at 12th level. At 20th level, you gain immunity to electricity. "],
-    "domain spells": ["obscuring mist", "wind wall", "gaseous form", "air walk", "control winds", "chain lightning", "whirlwind", "elemental swarm"]
+    "bonus spells": ["obscuring mist", "wind wall", "gaseous form", "air walk", "control winds", "chain lightning", "whirlwind", "elemental swarm"]
     },
     
     "animal": {
     "subdomains": ["feather", "fur", "insect"],
     "speak with animals (sp)": ["you can speak with animals, as per the spell, for a number of rounds per day equal to 3 + your cleric level. "],
     "animal companion (ex)": ["at 4th level, you gain the service of an animal companion. Your effective druid level for this animal companion is equal to your cleric level  3. (druids who take this ability through their nature bond class feature use their druid level  3 to determine the abilities of their animal companions). "],
-    "domain spells": ["speak with animals", "calm animals", "hold animal", "dominate animal", "summon natures ally iv", "beast shape iii", "antilife shell", "animal shapes", "summon natures ally viii", "shapechange"]
+    "bonus spells": ["speak with animals", "calm animals", "hold animal", "dominate animal", "summon natures ally iv", "beast shape iii", "antilife shell", "animal shapes", "summon natures ally viii", "shapechange"]
     },
     
     "fire": {
     "subdomains": ["arson", "ash", "smoke"],
     "fire bolt (sp)": ["as a standard action, you can unleash a scorching bolt of divine fire from your outstretched hand. You can target any single foe within 30 feet as a ranged touch attack with this bolt of fire. If you hit the foe, the fire bolt deals 1d6 points of fire damage + 1 point for every two cleric levels you possess. You can use this ability a number of times per day equal to 3 + your wisdom modifier. "],
     "fire resistance (ex)": ["at 6th level, you gain resist fire 10. This resistance increases to 20 at 12th level. At 20th level, you gain immunity to fire. "],
-    "domain spells": ["burning hands", "produce flame", "fireball", "wall of fire", "fire shield", "fire seeds", "elemental body iv", "incendiary cloud", "elemental swarm"]
+    "bonus spells": ["burning hands", "produce flame", "fireball", "wall of fire", "fire shield", "fire seeds", "elemental body iv", "incendiary cloud", "elemental swarm"]
     },
     "earth": {
     "subdomains": ["caves", "metal", "petrification", "radiation"],
     "acid dart (sp)": ["as a standard action, you can unleash an acid dart targeting any foe within 30 feet as a ranged touch attack. This acid dart deals 1d6 points of acid damage + 1 point for every two cleric levels you possess. You can use this ability a number of times per day equal to 3 + your wisdom modifier. "],
     "acid resistance (ex)": ["at 6th level, you gain resist acid 10. This resistance increases to 20 at 12th level. At 20th level, you gain immunity to acid. "],
-    "domain spells": ["magic stone", "soften earth and stone", "stone shape", "spike stones", "wall of stone", "stoneskin", "elemental body iv", "earthquake", "elemental swarm"]
+    "bonus spells": ["magic stone", "soften earth and stone", "stone shape", "spike stones", "wall of stone", "stoneskin", "elemental body iv", "earthquake", "elemental swarm"]
     },
     
     "water": {
     "subdomains": ["flotsam", "flowing", "ice", "oceans", "rivers"],
     "icicle (sp)": ["as a standard action, you can fire an icicle from your finger, targeting any foe within 30 feet as a ranged touch attack. The icicle deals 1d6 points of cold damage + 1 point for every two cleric levels you possess. You can use this ability a number of times per day equal to 3 + your wisdom modifier. "],
     "cold resistance (ex)": ["at 6th level, you gain resist cold 10. This resistance increases to 20 at 12th level. At 20th level, you gain immunity to cold. "],
-    "domain spells": ["obscuring mist", "fog cloud", "water breathing", "control water", "ice storm", "cone of cold", "elemental body iv", "horrid wilting", "elemental swarm"]
+    "bonus spells": ["obscuring mist", "fog cloud", "water breathing", "control water", "ice storm", "cone of cold", "elemental body iv", "horrid wilting", "elemental swarm"]
     },
     
     "aquatic domain": {
@@ -38,7 +38,7 @@
     "sealord (su)": "you can channel energy (as a cleric of your druid level) a number of times per day equal to 3 + your charisma modifier, but only to heal creatures with the aquatic or water subtype or to command them (similar to using the command undead feat against undead). You can take other feats to add to this ability, such as extra channel and improved channel, but not feats that alter this ability, such as elemental channel and alignment channel. The dc to save against this ability is equal to 10 + 1/2 your druid level + your charisma modifier. "
     },
     "seastrike (su)": "at 6th level, as a free action, you may use natural and manufactured weapons in water as if you had continuous freedom of movement. As a standard action, you can throw a weapon underwater without the normal penalties for throwing weapons; if your target is in or under the water, the weapon also acts as a returning weapon for that attack. ",
-    "domain spells": [
+    "bonus spells": [
     "hydraulic push",
     "slipstream",
     "water breathing",
@@ -55,7 +55,7 @@
     "call cold (su)": "you can channel energy (as a cleric of your druid level) a number of times per day equal to 3 + your charisma modifier, but only to heal creatures with the cold subtype or to command them (similar to using the command undead feat against undead). You can take other feats that add to this ability, such as extra channel and improved channel, but not feats that alter this ability, such as elemental channel and alignment channel. The dc to save against this ability is equal to 10 + 1/2 your druid level + your charisma modifier. "
     },
     "banish flame (su)": "at 6th level, you may use your call cold ability to damage creatures with the fire subtype (as a cleric channeling negative energy) or to cause them to flee from you (as the turn undead feat). Alternatively, you may use this ability to negate magical fire effects as if using a targeted dispel magic; at 12th level, this functions as targeted or area greater dispel magic instead of dispel magic. ",
-    "domain spells": [
+    "bonus spells": [
     "frostbite",
     "aspect of the bear",
     "sleet storm",
@@ -73,7 +73,7 @@
     "wasteland stride (ex)": "at 2nd level, you may move through light or dense rubble, as well as up or down steep slopes, at your normal speed without suffering any impairment. Areas that have been magically manipulated to impede motion still affect you, however. This replaces woodland stride. ",
     "badlands spirit (su)": "at 8th level, whenever you use wild shape to take on the form of an earth elemental, you also gain the following spell-like abilities, depending on your druid class level: geyser (8th); sirocco (12th), scouring winds (15th). Each spell-like ability is usable once per day. "
     },
-    "domain spells": [
+    "bonus spells": [
     "cloak of shade",
     "feast of ashes",
     "cloak of winds",
@@ -91,7 +91,7 @@
     "cavesight (sp)": "you can grant darkvision 60 feet to a willing creature you touch. This effect lasts 1 minute, or 1 hour if used on yourself. You can use this ability a number of times per day equal to 3 + your wisdom modifier. ",
     "tremorsense (ex)": "at 6th level, you gain tremorsense 30 feet. At 12th level, you gain tremorsense 60 feet. "
     },
-    "domain spells": [
+    "bonus spells": [
     "detect aberration",
     "stone call",
     "deeper darkness",
@@ -109,7 +109,7 @@
     "death roll (ex)": "while grappling an enemy up to one size category larger than you, you may make a grapple check to roll wildly, knocking your enemy prone and dealing 1d8 points of damage. When using this ability, you gain a bonus to your cmb equal to one half your druid level (minimum 1). You can use this ability a number of times per day equal to 3 + your wisdom modifier. ",
     "ambush (ex)": "at 6th level, you gain sneak attack +1d6. This increase to sneak attack damage stacks with sneak attack damage you may have from other sources. This sneak attack damage increases by +1d6 for every 5 druid levels you possess beyond 6th, to a maximum of +3d6 at 16th level. "
     },
-    "domain spells": [
+    "bonus spells": [
     "touch of the sea",
     "savage maw",
     "water walk",
@@ -126,7 +126,7 @@
     "heat shimmer (su)": "as a free action, you can surround yourself with heat distortion that acts as the blur spell. Creatures that strike you in melee while youre using this ability are dazzled for 1 round (fortitude negates). You may use this ability for a number of rounds per day equal to 3 + your wisdom modifier. These rounds need not be consecutive. ",
     "servant of the sands (sp)": "at 8th level, once per day, you may call upon the aid of a janni as if using lesser planar ally. At 12th level, you may call upon the aid of any type of common (non-noble) genie as if using planar ally. At 16th level, you may call upon the aid of a noble genie as if using greater planar ally. If you use this power while in desert terrain, you need not make an offering to call the creature(s), and the cost of any service is halved. "
     },
-    "domain spells": [
+    "bonus spells": [
     "cloak of shade",
     "shifting sand",
     "cup of dust",
@@ -144,7 +144,7 @@
     "hawkeye (su)": "as a swift action, you may add a bonus equal to half your druid level (minimum +1) on one ranged attack or on one perception check. You can use this ability a number of times per day equal to 3 + your wisdom modifier. ",
     "aerial evasion (ex)": "at 6th level, you gain the evasion ability (as a rogue) when you are flying. At 12th level, you gain improved evasion while flying. "
     },
-    "domain spells": [
+    "bonus spells": [
     "aspect of the falcon",
     "eagles splendor",
     "fly",
@@ -163,7 +163,7 @@
     "sticky strike (su)": "as a standard action, you can attempt a ranged touch attack with a sticky tendril against a target up to 15 feet away, then use the pull universal monster ability to pull the target 5 feet toward you. You gain a bonus on the pulls combat maneuver check equal to 1/2 your druid level. If the target is larger than you, you may pull yourself 5 feet toward the target without making a check. The target can remove the tendril by making an opposed strength check as a standard action, or by dealing enough slashing damage to the tendril (hit points equal to your druid level, armor class equal to your touch armor class). You can dissolve the tendril as a free action. You can use this ability a number of times per day equal to 3 + your wisdom modifier. ",
     "webfoot (ex)": "at 6th level, you gain the amphibious special quality and a swim speed equal to your land speed. At 12th level, you gain a climb speed equal to your land speed. "
     },
-    "domain spells": [
+    "bonus spells": [
     "jump",
     "delay poison",
     "lily pad stride",
@@ -180,7 +180,7 @@
     "brachiation (ex)": "as a free action for a number of rounds per day equal to your druid level, you may climb with a climb speed equal to your land speed, and gain a bonus on acrobatics checks equal to your druid level. These rounds do not have to be consecutive. ",
     "trap sense (ex)": "at 3rd level, you gain the trap sense ability. This is identical to the rogue class ability. Your effective rogue level is equal to your druid level for the purpose of determining your trap sense bonus. Trap sense bonuses gained from multiple classes stack. "
     },
-    "domain spells": [
+    "bonus spells": [
     "glide",
     "tar ball",
     "venomous bolt",
@@ -198,7 +198,7 @@
     "monkey athletics (su)": "as a free action, you may add a competence bonus equal to half your druid level (minimum of +1) on one acrobatics, climb, disable device, or sleight of hand check. You can use this ability a number of times per day equal to 3 + your wisdom modifier. ",
     "ranged legerdemain (su)": "at 6th level, you can use the disable device and sleight of hand skills at a range of 30 feet. Working at a distance increases the normal skill check dc by 5, and you cannot take 10 on this check. Any object to be manipulated must weigh 5 pounds or less. You can only use this ability if you have at least 1 rank in the skill being used. "
     },
-    "domain spells": [
+    "bonus spells": [
     "beguiling gift",
     "spider climb",
     "cacophonous call",
@@ -215,7 +215,7 @@
     "foothold (su)": "as a standard action, you can cause an adjacent stone surface up to 10 feet square to mold itself into ridges and creases. A foothold that is created on a horizontal surface is treated as difficult terrain, and a medium or smaller creature standing in the area or moving through it takes a 2 penalty on acrobatics checks and to cmd due to poor footing. A foothold that is created on a vertical surface grants a +10 bonus on climb checks to climb it. The stone remains altered for 1 hour. You can use this ability a number of times per day equal to 3 + your wisdom modifier. ",
     "thin air (su)": "at 8th level, as a free action, you can surround yourself with a 5-foot aura of supernaturally thin air that draws the breath from creatures adjacent to you. Creatures beginning their turn in the aura are fatigued (fortitude negates). A fatigued creature that begins its turn in the aura must save or suffer from altitude sickness, taking 1 point of ability damage to all ability scores. At 16th level, the aura increases to 10 feet. Creatures that do not breathe are immune to this aura. You can use this ability for a number of rounds per day equal to your druid level; the rounds need not be consecutive. "
     },
-    "domain spells": [
+    "bonus spells": [
     "stone fist",
     "stone call",
     "cloak of winds",
@@ -233,7 +233,7 @@
     "hunters senses (ex)": "you gain the ability to augment your senses on command. As a standard action, you grant yourself the scent special ability and improved vision. If you have normal vision, you gain low-light vision. If you have low-light vision, you gain darkvision out to a range of 30 feet. If you have darkvision, the range of your darkvision increases by 30 feet. You may use this ability a number of minutes per day equal to your druid level, in 1 minute increments. Dismissing these augmented senses is a free action. ",
     "move in darkness (ex)": "at 8th level, in areas of normal or magical darkness, you gain a +2 bonus on stealth skill checks and initiative checks for every 4 druid levels you possess, to a maximum bonus of +10 at 20th level. "
     },
-    "domain spells": [
+    "bonus spells": [
     "true strike",
     "darkness",
     "deeper darkness",
@@ -250,7 +250,7 @@
     "migrating herd (su)": "when you summon an aurochs, bison, elephant, horse, mastodon, pony, or similar quadruped herbivore with a summoning spell, the duration of the spell is increased by 100% (this does not stack with extend spell). The creatures land speed is increased by 10 feet. ",
     "pounce (ex)": "at 6th level, you may use the pounce special attack once per day. You may pounce one additional time per day for every 3 levels after 6th. "
     },
-    "domain spells": [
+    "bonus spells": [
     "mount",
     "chameleon stride",
     "haste",
@@ -267,7 +267,7 @@
     "aerial agility (ex)": "you can navigate the air unhindered. As a free action, you automatically succeed at your wisdom check to change your direction in an area of subjective gravity, and you can increase or decrease your falling speed by 10 feet per druid level during the first round after you change the direction of gravity. When you are in areas of light, normal, or heavy gravity, activating this ability instead grants you a bonus equal to your druid level on fly checks and acrobatics checks to jump for a number of rounds equal to your wisdom modifier. You can use this ability a number of times equal to 3 + your wisdom modifier. ",
     "wind savant (su)": "at 8th level, you treat the penalties from natural or magical wind effects as two steps less severe. In addition, you are surrounded by a cushion of air that grants you a bonus equal to 1/2 your druid level on saving throws against gases, gaseous breath weapons, inhaled poisons, and similar effects. "
     },
-    "domain spells": [
+    "bonus spells": [
     "feather fall",
     "elemental speech",
     "fly",
@@ -284,7 +284,7 @@
     "spelunker (su)": "you ably clamber through underground areas. As a free action, you can ignore difficult terrain from stony surfaces, you take no penalties for squeezing through rocky areas, and you gain damage reduction 5/ against rocky hazards such as spike growth. This effect lasts for 1 round, and you can use this ability a number of times per day equal to 3 + your wisdom modifier. ",
     "one with the stone (su)": "at 8th level as a swift action, you gain the earth glide universal monster ability with a speed equal to your base speed. You can breathe normally while using this ability. You can use this ability for a number of rounds per day equal to your druid level, and these rounds dont need to be consecutive. "
     },
-    "domain spells": [
+    "bonus spells": [
     "stone fist",
     "elemental speech",
     "burrow",
@@ -302,7 +302,7 @@
     "fire hardened (ex)": "you ignore fire damage from the fire-dominant planar trait, and you gain fire resistance 5. If you have natural fire resistance, it increases by 5 instead, and if you are naturally immune to fire, you heal hit points and ability damage at twice the normal rate when resting on a fire-dominant plane. You can touch a willing creature to grant these benefits for 1 hour. You can use this ability a number of times per day equal to 3 + your wisdom modifier. ",
     "all-consuming flames (su)": "at 8th level, you can channel the extraplanar heat into your allies weapons within 30 feet as a standard action. For 1 minute, the affected weapons gain the cold-outsiderbane, fire-outsiderbane, or flaming weapon special abilities. You must grant each weapon the same ability, and this ability affects no more than two of any allys weapons. You can use this ability once per day, plus an additional time per day for every four levels beyond 8th. "
     },
-    "domain spells": [
+    "bonus spells": [
     "obscuring mist (creates smoke)",
     "elemental speech",
     "ash storm",
@@ -319,7 +319,7 @@
     "aquatic veil (su)": "as a standard action, you can sheathe your body in a thin layer of water for a number of rounds equal to your wisdom modifier. This grants you a bonus on swim checks equal to 1/2 your druid level and allows you to breathe normally underwater. You can end the effect when delivering a touch spell to create a pseudopod of water that extends your effective reach by 5 feet for that attack. When used underwater, the pseudopod instead increases your reach by 10 feet. You can use this ability a number of times per day equal to 3 + your wisdom modifier. ",
     "hydraulic crush (sp)": "at 8th level, you can strike an area with a pressurized blast of water in a 5-foot-radius column 30 feet tall with a range of 60 feet. Creatures in the area take 1d6 bludgeoning damage per druid level and are knocked prone. When used underwater, the radius and height double, and the effect instead creates a powerful eddy that causes affected creatures to lose their dexterity bonus to armor class for 1 round instead of knocking them prone. A successful reflex save halves the damage and prevents the secondary effect. You can use this ability once per day, plus an additional time for every 6 levels beyond 8th. "
     },
-    "domain spells": [
+    "bonus spells": [
     "touch of the sea",
     "elemental speech",
     "water breathing",
@@ -336,7 +336,7 @@
     "slither (ex)": "as a free action, you can distend and stretch your body to fit easily through narrow spaces for 1 round. You can move freely through a tight space that would normally require a creature of your size to squeeze through. While slithering, you gain a +2 dodge bonus to armor class against attacks of opportunity provoked by your movement and a +2 bonus on cmb and on escape artist checks made to escape from a grapple. You can use this ability a number of times per day equal to 3 + your wisdom modifier. ",
     "venom immunity (ex)": "at 6th level, you gain immunity to poisons from snakes, reptiles, and creatures with the reptilian subtype. At 12th level, you gain immunity to all poisons. This replaces venom immunity. "
     },
-    "domain spells": [
+    "bonus spells": [
     "charm animal",
     "animal trance",
     "poison",
@@ -353,7 +353,7 @@
     "natural healing (su)": "you can channel energy (as a cleric of your druid level) a number of times per day equal to 3 + your charisma modifier, but only to heal animals, plants, and vermin. You may reduce the number of dice healed to cure ability damage (your choice) to all affected creatures, curing 1 point of ability damage for each d6 that the channel energy is reduced. You can take other feats to add to this ability, such as extra channel, but not feats that alter this ability, such as elemental channel and alignment channel. ",
     "reed hunter (ex)": "at 6th level, you gain blindsense 30 feet with respect to concealment and cover from fog, vegetation, or water. At 12th level, this improves to blindsight 30 feet with respect to these conditions. "
     },
-    "domain spells": [
+    "bonus spells": [
     "hydraulic push",
     "burst of nettles",
     "lily pad stride",
@@ -370,7 +370,7 @@
     "deaths companion (ex)": "your totem grants you protection from the harbingers of death. As an immediate action, you gain a +2 bonus on saving throws against disease, death spells, and death effects that lasts a number of rounds equal to your druid level. This bonus increases by 2 at 6th level and every 5 levels thereafter, to a maximum of +8 at 16th level. You may use this ability a number of times per day equal to 3 + your wisdom modifier. ",
     "agent of rebirth (sp)": "at 8th level, you may expend a quantity of special oils worth 1,000 gp to cast reincarnate as a spell-like ability usable once per day. Additionally, when using this ability or casting reincarnate as a prepared spell, you have some influence over the physical form that the reincarnated spirit will take. When rolling against the spells incarnation table, you may roll twice and choose between the two results. "
     },
-    "domain spells": [
+    "bonus spells": [
     "deathwatch",
     "glide",
     "death knell",
@@ -387,7 +387,7 @@
     "improved trip": "you gain improved trip as a bonus feat. ",
     "pack tactics (ex)": "at 8th level, as a free action on your turn, you can designate an adjacent square; your attacks are treated as coming from that square for the purposes of determining whether or not you are flanking (this applies even if that square is occupied by an object or creature). This ends at the start of your next turn or if you move. If you are flanking a creature without using this ability, you may add your wisdom bonus to your attack roll rather than the normal +2 flanking bonus. You can use this ability a number of times per day equal to 3 + your wisdom modifier. "
     },
-    "domain spells": [
+    "bonus spells": [
     "hunters howl",
     "bloodhound",
     "aspect of the wolf",

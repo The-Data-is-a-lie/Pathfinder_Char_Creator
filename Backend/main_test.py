@@ -8,6 +8,7 @@ import json
 
 
 # Importing custom functions
+from utils.adding_bonus_spells						import add_bonus_spells
 from utils.class_func.alignment_and_deity 			import randomize_deity, choose_alignment
 from utils.class_func.animal_companions 			import animal_chooser, animal_feats
 from utils.class_func.appearance 					import randomize_apperance_attr, randomize_body_feature, get_racial_attr
@@ -140,7 +141,7 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_race='human', class_choice='oracle', multi_class='N', 
+def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_race='human', class_choice='druid', multi_class='N', 
 						 alignment_input = 'TN' , deity_flag = 'random', userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=3, num_sides=6, 
 						 high_level=7, low_level=7, gold_num=1000000, homebrew_amount=None):
 		casting_level_str_foundry = 'None'
@@ -335,8 +336,8 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		feat_spell_searcher(character, "monk", ki_powers, "feats", "benefit")
 		feat_spell_searcher(character, "monk", ki_powers, "spells", "description")
 		feat_spell_searcher(character, "bloodrager", character.bonus_feats , "feats", "benefit")
-		feat_spell_searcher(character, "bloodrager", character.bonus_spells, "spells", "description")
-		feat_spell_searcher(character, "sorcerer", character.bonus_spells, "spells", "description")
+		# feat_spell_searcher(character, "bloodrager", character.bonus_spells, "spells", "description")
+		# feat_spell_searcher(character, "sorcerer", character.bonus_spells, "spells", "description")
 
 		# Choosing guns for gunslinger
 		choose_gun_func(character, character.c_class)
@@ -447,10 +448,10 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 
 		character.platnium = character.gold / 10
 	
-		try:
-			domain = next(iter(full_domain.keys()), "N/A")
-		except (NameError, AttributeError):
-			domain = "N/A"
+		# try:
+		# 	domain = next(iter(full_domain.keys()), "N/A")
+		# except (NameError, AttributeError):
+		# 	domain = "N/A"
 
 
 
@@ -493,6 +494,7 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		extra_teamwork_feats(character)
 		# determine extra combat feats
 		extra_combat_feats(character)
+
 
 		# Feat Selector
 		casting_level_str = character.class_data[character.c_class]['casting level'].lower()
@@ -557,6 +559,30 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 			# Assign the merged dictionary back to class_features
 			class_features = combined_dict
 		#End of turning class_features into a dictionary for oracle
+
+
+	#--------------- Spell addition options ---------------#
+	# Bloodlines
+		if character.c_class.lower() in ('sorcerer', 'bloodrager'):
+			bonus_spells = character.data_dict['class features'][0].get("Talents").get(bloodline).get("bonus spells", [])
+			add_bonus_spells(character, bonus_spells)
+	# Domains
+		print("full_domain", full_domain)
+		if full_domain not in ([], None) and character.c_class.lower() in ("cleric"):
+			print("full_domain", full_domain)
+			for i, domain in enumerate(full_domain):
+				bonus_spells = character.data_dict['class features'].get(domain).get("bonus spells", [])
+				add_bonus_spells(character, bonus_spells)
+
+		if full_domain not in ([], None) and character.c_class.lower() in ("druid"):
+			print("full_domain", full_domain)
+			for i, domain in enumerate(full_domain):
+				bonus_spells = character.data_dict['class features'].get(domain).get("bonus spells", [])
+				add_bonus_spells(character, bonus_spells)
+	# Inquisitions
+		# Don't get bonus spells
+	# Schools
+
 
 		archetype_info = json.dumps(archetype_info, indent=4)
 		export_list_non_dict = [
@@ -684,8 +710,8 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		# print("flaw", flaw)
 		# print("personality_traits", personality_traits)
 		# print("skill_ranks", skill_ranks)
-		print("archetype_info", archetype_info)
-		print("character.c_class", character.c_class)
+		# print("archetype_info", archetype_info)
+		# print("character.c_class", character.c_class)
 
 		# print("character.spell_list_choose_from", character.spell_list_choose_from)
 
