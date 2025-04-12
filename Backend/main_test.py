@@ -8,7 +8,7 @@ import json
 
 
 # Importing custom functions
-from utils.adding_bonus_spells						import add_bonus_spells
+from utils.class_func.adding_bonus_spells			import add_bonus_spells, add_bonus_spells_from_dict
 from utils.class_func.alignment_and_deity 			import randomize_deity, choose_alignment
 from utils.class_func.animal_companions 			import animal_chooser, animal_feats
 from utils.class_func.appearance 					import randomize_apperance_attr, randomize_body_feature, get_racial_attr
@@ -141,7 +141,7 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_race='human', class_choice='druid', multi_class='N', 
+def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_race='human', class_choice='wizard', multi_class='N', 
 						 alignment_input = 'TN' , deity_flag = 'random', userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=3, num_sides=6, 
 						 high_level=7, low_level=7, gold_num=1000000, homebrew_amount=None):
 		casting_level_str_foundry = 'None'
@@ -262,9 +262,11 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		animal_chooser(character)
 		animal_feats(character)	
 
+
+		full_school = None
 		if character.c_class.lower() == 'wizard':
-			full_school, school_desc, associaed_desc, associaed_school = wizard_school_chooser(character)
-			full_opposing_school = wizard_opposing_school(character)	
+			full_school = wizard_school_chooser(character)
+			full_opposing_school = wizard_opposing_school(character, full_school)	
 
 		archetype_info = character.archetype_data()
 		character.archetype_data()
@@ -582,8 +584,17 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 	# Inquisitions
 		# Don't get bonus spells
 	# Schools
+		# Schools spells are just recommended spells (not bonus spells), but we'll mnake sure wizards take them
+		if full_school not in ([], None) and character.c_class.lower() in ("wizard"):
+			try:
+				bonus_spells_dict = character.data_dict['class features'].get(full_school).get("spells", [])
+				add_bonus_spells_from_dict(character, bonus_spells_dict)
+				print("bonus_spells_dict", bonus_spells_dict)
+				print("character.spell_list_choose_from", character.spell_list_choose_from)
+			except:
+				print("wizard, but wizard spell list has no bonus spells")
 
-
+	#-------------------- Start of export process --------------------#
 		archetype_info = json.dumps(archetype_info, indent=4)
 		export_list_non_dict = [
 				character.region, character.chosen_race,

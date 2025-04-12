@@ -106,7 +106,7 @@
 "shrapnel burst": {
 "description": "causes metal shards to explode outward from your body, dealing piercing damage. Can be used once per day, with more uses at higher levels. At 10th level, the shrapnel bypasses damage reduction. "
 },
-"metal elementalist spells": {
+"spells": {
 "0": ["mending"],
 "1st": ["gravity bow", "magic weapon", "shocking grasp"],
 "2nd": ["defensive shock", "glitterdust", "make whole", "shatter", "silk to steel"],
@@ -131,7 +131,7 @@
 "aura of prescience": {
 "description": "emits a 30-foot aura of void energy, granting allies an insight bonus on various rolls. Rounds do not need to be consecutive. "
 },
-"void elementalist spells": {
+"spells": {
 "0": ["guidance"],
 "1st": ["gravity bow", "keen senses", "shield", "true strike"],
 "2nd": ["continual flame", "haunting mists", "invisibility", "masterwork transformation", "see invisibility", "share memory"],
@@ -156,7 +156,7 @@
 "wave": {
 "description": "creates a wave of water, knocking down and pushing away creatures. Usable for a limited number of rounds per day. "
 },
-"water elementalist spells": {
+"spells": {
 "0": ["ray of frost"],
 "1st": ["hydraulic push", "obscuring mist", "touch of the sea"],
 "2nd": ["accelerate poison", "elemental speech", "elemental touch", "fog cloud", "resist energy", "slipstream", "summon monster ii"],
@@ -181,7 +181,7 @@
 "cooperative defense": {
 "description": "allows allies to use your saving throw against spells and effects that target both you and your allies within 30 feet. Usable once per day at 8th level, with additional uses at higher wizard levels. "
 },
-"wood elementalist wizard spells": {
+"spells": {
 "0": ["light"],
 "1st": ["alter winds", "animate rope", "charm person"],
 "2nd": ["cat's grace", "entangle", "protection from arrows", "web", "whispering wind"],
