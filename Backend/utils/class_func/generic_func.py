@@ -74,133 +74,113 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
 
         
 
+      
+
+# End of Generic Class Option Chooser
+
+
+def get_data_without_prerequisites(character, class_1, dataset_name, level= None, dataset_name_2 = None, odd=None, divisor = 2, dict_name="Talents"):
+    if character.c_class != class_1:
+        return None
+
+    dataset_no_prereq   = []
+
+    # Deciding if talents are every odd or even level
+    amount = floor(character.c_class_level / divisor)
+    if odd == True:
+        amount = ceil(character.c_class_level / divisor)
+
+    if amount == 0:
+        return None
+    
+    # Pulling in normal talents into dataset
+    dataset = getattr(character, class_1, {}).get(dataset_name, {})
+
+    # Allowing for special talents to be added (e.g. rogue advanced talents)
+    if level != None and character.c_class_level >= level:
+        dataset.update( getattr(character, class_1, {}).get(dataset_name_2,{}) )
+
+    # Need to loop through choosing talents (which loops through no_prereq_loop -> to properly select class talents)
+    chosen_dict = choosing_talents(character, amount, dataset, dict_name)
+    update_class_features(character, chosen_dict)
+
+    return 
+
+def choosing_talents(character, amount, dataset, dict_name = "Talents"):
+    # Choose from a list of talents that are selectable (decied by no_prereq_loop)
+    if amount == None or amount == 0:
+        return None
+    
+    chooseable_talents = no_prereq_loop(character, dataset)
+    chosen_set = set()
+
+    while len(chosen_set) < amount:
+        chosen = random.choice(chooseable_talents)
+        if chosen in chosen_set:
+            continue
+
+        even = f"{character.c_class} {2 * (len(chosen_set) + 1)}"
+        odd = f"{character.c_class} {2 * len(chosen_set) + 1}"
+        character.chooseable.update([even, odd, chosen])
+
+        chosen_set.add(chosen)
+        # Adjusting the dataset we choose from (+ adding prereqs to character.chooseable)
+        character.chooseable.add(chosen.lower())
+        chooseable_talents.remove(chosen)
+
+        # Adding descriptions to class features name -> turning into dict
+        chosen_dict = chosen_set_append(character, dataset, chosen_set, chosen, dict_name)
+
+        # re-run no_prereq_loop everytime a talent is chosen
+        chooseable_talents = no_prereq_loop(character, dataset)
+
+    return chosen_dict
+
+ 
+def no_prereq_loop(character, dataset):
+    chooseable_talents = []
+
+    for name, info in dataset.items():
+        name_lower = name.lower()
+        if name_lower in character.chooseable:
+            continue
+
+        prerequisites_clean = determine_prerequisite_name(info)
+
+        # Split by comma and strip each part
+        prereq_parts = [
+            part.strip() for part in prerequisites_clean.split(",")
+            if part.strip() and not character.filter_pattern.search(part.strip())
+        ]
+
+
+        # Check if all prereqs are met
+        if not prereq_parts or set(prereq_parts).issubset(character.chooseable):
+            chooseable_talents.append(name_lower)
+
+    return chooseable_talents
+
+def determine_prerequisite_name(info):
+    prerequisites_raw = info.get("prerequisites", "").lower().strip()
+    if prerequisites_raw == [] or prerequisites_raw == None:
+        prerequisites_raw = info.get("prerequisite", "").lower().strip()
+
+    return re.sub(r'\.', '', prerequisites_raw)
+
 def chosen_set_append(character, dataset, chosen_set, chosen, dict_name):
     chosen_dict = {dict_name: {}}
     for chosen in chosen_set:
         chosen_desc = dataset.get(chosen, {})
         chosen_dict[dict_name][chosen] = chosen_desc
 
-    return chosen_dict            
+    return chosen_dict     
 
-# End of Generic Class Option Chooser
-
-
-def get_data_without_prerequisites(character, class_1, dataset_name, level= None, level_2 = None, dataset_name_2 = None, odd=None, divisor = 2, dict_name="Talents"):
-
-    if character.c_class != class_1:
-        return None
-
-    dataset_no_prereq = []
-    base_no_prereq = []
-
-    amount = floor(character.c_class_level/divisor)
-    # fail safe to not break if any character with amount = 0 tries to use this
-    if amount == 0:
-        return None
-    
-    if odd == True:
-        amount = ceil(character.c_class_level/divisor)
-
-    if character.c_class == class_1:
-        dataset = getattr(character, class_1, {}).get(dataset_name, {})
-        base = dataset.copy()
-        base_no_prereq = no_prereq_loop(character, base)
-        total_choices = base_no_prereq
-
-        if level != None and character.c_class_level >= level:
-            dataset.update( getattr(character, class_1, {}).get(dataset_name_2,{}) )
-            dataset_no_prereq = no_prereq_loop(character, dataset)            
-
-        
-        chosen_set, chosen_desc, chosen_dict = choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, base, level, total_choices, dict_name)
- 
+def update_class_features(character, chosen_dict):
     if character.data_dict['class features'] == [] or character.data_dict['class features']== {}:
         character.data_dict['class features'] = chosen_dict
     else:
         character.data_dict['class features'].update(chosen_dict)
-    return base_no_prereq, dataset_no_prereq, chosen_set
-
-def choosing_talents(character, amount, class_1, dataset, dataset_no_prereq, base, level, total_choices, dict_name="Talents"):
-    # added this logic so low level characters don't break
-    if amount == None or amount <= 0:
-        return [], [], []
-
-    chosen_set = set()
-    total_choices_set = set(total_choices)
-    chosen_desc = {}
-    chosen_dict = {}
-    # ensure that all dict keys are lower:
-    dataset = {k.lower(): v for k, v in dataset.items()}
-    
-    while len(chosen_set) < amount:
-    # for i in range(amount):
-        chosen = random.choice(list(total_choices))
-        even = f"{class_1} {2 * (len(chosen_set) + 1)}"
-        odd = f"{class_1} {2 * len(chosen_set) + 1}"
-        character.chooseable.update([even, odd, chosen])
-
-        prereq_list = no_prereq_loop(character, base, "prereq_list")
-
-        chosen_set.add(chosen.lower())
-        total_choices_set.add(chosen.lower())
-        total_choices_set.update(prereq_list)
-
-        chosen_desc = {chosen: dataset.get(chosen, {})}
-        chosen_dict = chosen_set_append(character, dataset, chosen_set, chosen, dict_name)
-
-    return chosen_set, chosen_desc, chosen_dict
-
-def no_prereq_loop(character, dataset_type, return_choice=None):
-    new_feats = character.chooseable - character.processed_feats
-    if not new_feats:
-        if return_choice == 'prereq_list':
-            return character.cached_prereq_list
-        else:
-            return character.cached_dataset_without_prerequisites    
-
-    for name, info in dataset_type.items():
-        if name.lower() in character.processed_feats:
-            continue
-
-        # Retrieve prerequisites and sanitize input
-        prerequisites = info.get("prerequisites", None)
-
-        # Handle NaN or missing prerequisites
-        if pd.isna(prerequisites) or not prerequisites or str(prerequisites).strip() == "":
-            character.cached_dataset_without_prerequisites.append(name.lower())
-            character.processed_feats.add(name.lower())
-            continue
-
-        try:
-            # Clean up prerequisites
-            prerequisites = str(prerequisites).lower()
-            prerequisites = re.sub(r'\.', '', prerequisites)
-            prerequisites_components = set(
-                p.strip() for p in prerequisites.split(",")
-                if not character.filter_pattern.search(p.strip())
-            )
-
-
-            # Special case: if the only component is "" (blank), treat as no prerequisite
-            if prerequisites_components == {""}:
-                character.cached_dataset_without_prerequisites.append(name.lower())
-                character.processed_feats.add(name.lower())
-                continue
-
-        except Exception as e:
-            print("Error processing prerequisites:", e)
-            print("Problematic prerequisites:", prerequisites)
-            continue
-
-        # Check if prerequisites are satisfied
-        if prerequisites_components.issubset(character.chooseable):
-            character.cached_prereq_list.add(name.lower())
-        character.processed_feats.add(name.lower())
-
-    if return_choice == 'prereq_list':
-        return character.cached_prereq_list
-    else:
-        return character.cached_dataset_without_prerequisites
+    return 
 
 def generic_class_talent_chooser(character, class_1, dataset_name, dataset_name_2 = None):
     if character.c_class == class_1: 

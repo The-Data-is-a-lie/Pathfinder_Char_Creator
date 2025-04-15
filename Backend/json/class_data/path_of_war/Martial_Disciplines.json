@@ -727,7 +727,7 @@
     "Catfish_Hold": {
       "Discipline": "Brutal Crocodile Stance",
       "Level": "3",
-      "Prerequisite": "One Brutal Crocodile Maneuver",
+      "prerequisites": "One Brutal Crocodile Maneuver",
       "Initiation Action": "1 swift action",
       "Range": "Personal",
       "Target": "You",
@@ -737,7 +737,7 @@
     "Into_the_Earth": {
       "Discipline": "Brutal Crocodile Strike",
       "Level": "3",
-      "Prerequisite": "One Brutal Crocodile Maneuver",
+      "prerequisites": "One Brutal Crocodile Maneuver",
       "Initiation Action": "1 standard action or [G]",
       "Range": "Melee",
       "Target": "Creature you are grappling",
@@ -747,7 +747,7 @@
     "Monkey_Vault": {
       "Discipline": "Brutal Crocodile Boost",
       "Level": "3",
-      "Prerequisite": "One Brutal Crocodile Maneuver",
+      "prerequisites": "One Brutal Crocodile Maneuver",
       "Initiation Action": "1 swift action",
       "Range": "Melee",
       "Target": "You and one creature or object",
@@ -757,7 +757,7 @@
     "Trapping_Jaws": {
       "Discipline": "Brutal Crocodile Counter",
       "Level": "3",
-      "Prerequisite": "One Brutal Crocodile Maneuver",
+      "prerequisites": "One Brutal Crocodile Maneuver",
       "Initiation Action": "1 immediate action",
       "Range": "Melee",
       "Target": "Attacking Creature",
@@ -767,7 +767,7 @@
     "Alligator_Suplex": {
       "Discipline": "Brutal Crocodile Strike",
       "Level": "4",
-      "Prerequisite": "One Brutal Crocodile Maneuver",
+      "prerequisites": "One Brutal Crocodile Maneuver",
       "Initiation Action": "1 standard action or [G]",
       "Range": "Melee",
       "Target": "Creature you are grappling",
@@ -777,7 +777,7 @@
     "Bonebreaker_Riposte": {
       "Discipline": "Brutal Crocodile Counter",
       "Level": "4",
-      "Prerequisite": "One Brutal Crocodile Maneuver",
+      "prerequisites": "One Brutal Crocodile Maneuver",
       "Initiation Action": "1 immediate action",
       "Range": "Melee",
       "Target": "Attacking Creature",
@@ -787,7 +787,7 @@
     "Magebreaker": {
       "Discipline": "Brutal Crocodile Boost",
       "Level": "4",
-      "Prerequisite": "One Brutal Crocodile Maneuver",
+      "prerequisites": "One Brutal Crocodile Maneuver",
       "Initiation Action": "1 swift action",
       "Range": "Personal",
       "Target": "You",
@@ -797,7 +797,7 @@
     "Silencing_Grip": {
       "Discipline": "Brutal Crocodile Strike",
       "Level": "4",
-      "Prerequisite": "One Brutal Crocodile Maneuver",
+      "prerequisites": "One Brutal Crocodile Maneuver",
       "Initiation Action": "1 standard action",
       "Range": "Melee",
       "Target": "One creature",
@@ -807,7 +807,7 @@
     "Gut_Crusher": {
       "Discipline": "Brutal Crocodile Strike",
       "Level": "5",
-      "Prerequisite": "Two Brutal Crocodile Maneuvers",
+      "prerequisites": "Two Brutal Crocodile Maneuvers",
       "Initiation Action": "1 standard action or [G]",
       "Range": "Melee",
       "Target": "Creature you are grappling.",
@@ -845,7 +845,7 @@
     "Wing_Ripper": {
       "Discipline": "Brutal Crocodile Strike",
       "Level": "5",
-      "Prerequisite": "Two Brutal Crocodile Maneuvers",
+      "prerequisites": "Two Brutal Crocodile Maneuvers",
       "Initiation Action": "1 standard action or [G]",
       "Range": "Melee",
       "Target": "Creature you are grappling",
@@ -865,7 +865,7 @@
     "Blood_in_the_Water": {
       "Discipline": "Brutal Crocodile Boost",
       "Level": "6",
-      "Prerequisite": "Two Brutal Crocodile Maneuvers",
+      "prerequisites": "Two Brutal Crocodile Maneuvers",
       "Initiation Action": "1 swift action",
       "Range": "Melee",
       "Target": "Creature you are grappling",
@@ -3040,7 +3040,7 @@
     "Erode_Resolve": {
       "Discipline": "Leaden Hyena Strike",
       "Level": "3",
-      "Prerequisite": "One Leaden Hyena Maneuver",
+      "prerequisites": "One Leaden Hyena Maneuver",
       "Initiation Action": "1 standard action",
       "Range": "Melee or Ranged",
       "Target": "One creature",
@@ -3050,7 +3050,7 @@
     "Leverage_Dismay": {
       "Discipline": "Leaden Hyena Boost",
       "Level": "3",
-      "Prerequisite": "One Leaden Hyena Maneuver",
+      "prerequisites": "One Leaden Hyena Maneuver",
       "Initiation Action": "1 swift action",
       "Range": "Personal",
       "Target": "You",
@@ -3060,7 +3060,7 @@
     "Precarious_Doubt": {
       "Discipline": "Leaden Hyena Boost",
       "Level": "3",
-      "Prerequisite": "One Leaden Hyena Maneuver",
+      "prerequisites": "One Leaden Hyena Maneuver",
       "Initiation Action": "1 swift action",
       "Range": "Personal",
       "Target": "You",
@@ -3080,7 +3080,7 @@
     "Bring_to_Knee": {
       "Discipline": "Leaden Hyena Strike",
       "Level": "4",
-      "Prerequisite": "One Leaden Hyena Maneuver",
+      "prerequisites": "One Leaden Hyena Maneuver",
       "Initiation Action": "1 standard action",
       "Range": "Melee or Ranged",
       "Target": "One creature",
@@ -3100,7 +3100,7 @@
     "Foment_Helplessness": {
       "Discipline": "Leaden Hyena Boost",
       "Level": "4",
-      "Prerequisite": "One Leaden Hyena Maneuver",
+      "prerequisites": "One Leaden Hyena Maneuver",
       "Initiation Action": "1 swift action",
       "Range": "Close 25 ft + 5 ft/level",
       "Target": "One creature",
@@ -3110,7 +3110,7 @@
     "Pinning_Iron": {
       "Discipline": "Leaden Hyena Strike",
       "Level": "4",
-      "Prerequisite": "One Leaden Hyena Maneuver",
+      "prerequisites": "One Leaden Hyena Maneuver",
       "Initiation Action": "1 standard action",
       "Range": "Melee or Ranged",
       "Target": "One creature",
@@ -3120,7 +3120,7 @@
     "Brutal_Misdirection": {
       "Discipline": "Leaden Hyena Counter",
       "Level": "5",
-      "Prerequisite": "Two Leaden Hyena Maneuvers",
+      "prerequisites": "Two Leaden Hyena Maneuvers",
       "Initiation Action": "1 immediate action",
       "Range": "Close 25 ft + 5 ft/level",
       "Target": "One creature",
@@ -3249,7 +3249,7 @@
     "Leaden_Hyena_Stance": {
       "Discipline": "Leaden Hyena Stance",
       "Level": "8",
-      "Prerequisite": "Three Leaden Hyena Maneuvers",
+      "prerequisites": "Three Leaden Hyena Maneuvers",
       "Initiation Action": "1 swift action",
       "Range": "Personal",
       "Target": "You",
@@ -5068,7 +5068,7 @@
     "Flickering_Defense": {
       "Discipline": "Riven Hourglass Counter",
       "Level": "3",
-      "Prerequisite": "One Riven Hourglass maneuver",
+      "prerequisites": "One Riven Hourglass maneuver",
       "Initiation Action": "1 immediate action",
       "Range": "60 ft.",
       "Target": "You or an ally within 60 ft.",
@@ -5078,7 +5078,7 @@
     "Probability_Twist": {
       "Discipline": "Riven Hourglass Counter",
       "Level": "3",
-      "Prerequisite": "One Riven Hourglass maneuver",
+      "prerequisites": "One Riven Hourglass maneuver",
       "Initiation Action": "1 immediate action",
       "Range": "Personal",
       "Target": "You",
@@ -5088,7 +5088,7 @@
     "Riven_Hourglass_Stance": {
       "Discipline": "Riven Hourglass Stance",
       "Level": "3",
-      "Prerequisite": "One Riven Hourglass maneuver",
+      "prerequisites": "One Riven Hourglass maneuver",
       "Initiation Action": "1 swift action",
       "Range": "Personal",
       "Target": "You",
@@ -5098,7 +5098,7 @@
     "Temporal_Fury": {
       "Discipline": "Riven Hourglass Strike",
       "Level": "3",
-      "Prerequisite": "One Riven Hourglass maneuver",
+      "prerequisites": "One Riven Hourglass maneuver",
       "Initiation Action": "1 standard action",
       "Range": "Melee or ranged attack",
       "Target": "One living creature",
@@ -5108,7 +5108,7 @@
     "Time_Skitter": {
       "Discipline": "Riven Hourglass Boost",
       "Level": "3",
-      "Prerequisite": "One Riven Hourglass maneuver",
+      "prerequisites": "One Riven Hourglass maneuver",
       "Initiation Action": "1 swift action",
       "Range": "Personal",
       "Target": "You",
@@ -5118,7 +5118,7 @@
     "Chronal_Draw": {
       "Discipline": "Riven Hourglass Strike",
       "Level": "4",
-      "Prerequisite": "One Riven Hourglass maneuver",
+      "prerequisites": "One Riven Hourglass maneuver",
       "Initiation Action": "1 standard action",
       "Range": "Melee or ranged attack",
       "Target": "One creature",
@@ -5128,7 +5128,7 @@
     "Gift_of_Time": {
       "Discipline": "Riven Hourglass Boost",
       "Level": "4",
-      "Prerequisite": "One Riven Hourglass maneuver",
+      "prerequisites": "One Riven Hourglass maneuver",
       "Initiation Action": "1 swift action",
       "Range": "Touch",
       "Target": "One ally",
@@ -5138,7 +5138,7 @@
     "Temporal_Body_Adjustment": {
       "Discipline": "Riven Hourglass Counter",
       "Level": "4",
-      "Prerequisite": "One Riven Hourglass maneuver",
+      "prerequisites": "One Riven Hourglass maneuver",
       "Initiation Action": "1 immediate action",
       "Range": "Personal",
       "Target": "You",
@@ -5148,7 +5148,7 @@
     "Tip_the_Hourglass": {
       "Discipline": "Riven Hourglass Strike",
       "Level": "4",
-      "Prerequisite": "One Riven Hourglass maneuver",
+      "prerequisites": "One Riven Hourglass maneuver",
       "Initiation Action": "1 standard action",
       "Range": "Melee or ranged attack",
       "Target": "One creature",
@@ -5168,7 +5168,7 @@
     "Hour_Hand": {
       "Discipline": "Riven Hourglass Boost",
       "Level": "5",
-      "Prerequisite": "Two Riven Hourglass maneuvers",
+      "prerequisites": "Two Riven Hourglass maneuvers",
       "Initiation Action": "1 swift action",
       "Range": "Personal",
       "Target": "You",
@@ -5178,7 +5178,7 @@
     "Sands_of_Time_Tornado": {
       "Discipline": "Riven Hourglass Strike",
       "Level": "5",
-      "Prerequisite": "Two Riven Hourglass maneuvers",
+      "prerequisites": "Two Riven Hourglass maneuvers",
       "Initiation Action": "1 standard action",
       "Range": "Melee attack",
       "Target": "Adjacent opponents",
@@ -5188,7 +5188,7 @@
     "Time-Thiefs_Talons": {
       "Discipline": "Riven Hourglass Strike",
       "Level": "5",
-      "Prerequisite": "Two Riven Hourglass maneuvers",
+      "prerequisites": "Two Riven Hourglass maneuvers",
       "Initiation Action": "1 standard action",
       "Range": "Melee or ranged attack",
       "Target": "One creature",
@@ -5198,7 +5198,7 @@
     "Relativity_Burst": {
       "Discipline": "Riven Hourglass Counter",
       "Level": "5",
-      "Prerequisite": "Two Riven Hourglass maneuvers",
+      "prerequisites": "Two Riven Hourglass maneuvers",
       "Initiation Action": "1 immediate action",
       "Range": "Personal",
       "Target": "You",
@@ -5208,7 +5208,7 @@
     "Sand-Bearers_Swiftness": {
       "Discipline": "Riven Hourglass Stance",
       "Level": "6",
-      "Prerequisite": "Two Riven Hourglass maneuvers",
+      "prerequisites": "Two Riven Hourglass maneuvers",
       "Initiation Action": "1 swift action",
       "Range": "Personal",
       "Target": "You",
@@ -5218,7 +5218,7 @@
     "Shatter_the_Hourglass": {
       "Discipline": "Riven Hourglass Strike",
       "Level": "6",
-      "Prerequisite": "Two Riven Hourglass maneuvers",
+      "prerequisites": "Two Riven Hourglass maneuvers",
       "Initiation Action": "1 standard action",
       "Range": "Melee attack",
       "Target": "One creature",
@@ -5228,7 +5228,7 @@
     "Temporal_Distortion": {
       "Discipline": "Riven Hourglass Counter",
       "Level": "6",
-      "Prerequisite": "Two Riven Hourglass maneuvers",
+      "prerequisites": "Two Riven Hourglass maneuvers",
       "Initiation Action": "1 immediate action",
       "Range": "Personal",
       "Target": "You",
@@ -5238,7 +5238,7 @@
     "Temporal_Wave": {
       "Discipline": "Riven Hourglass Strike",
       "Level": "6",
-      "Prerequisite": "Two Riven Hourglass maneuvers",
+      "prerequisites": "Two Riven Hourglass maneuvers",
       "Initiation Action": "1 standard action",
       "Range": "30 ft.",
       "Area": "30-ft. cone",
@@ -5248,7 +5248,7 @@
     "Beat_the_Clock": {
       "Discipline": "Riven Hourglass Counter",
       "Level": "7",
-      "Prerequisite": "Two Riven Hourglass maneuvers",
+      "prerequisites": "Two Riven Hourglass maneuvers",
       "Initiation Action": "1 immediate action",
       "Range": "Personal",
       "Target": "You",
@@ -5258,7 +5258,7 @@
     "Sands_of_Time_Hurricane": {
       "Discipline": "Riven Hourglass Strike",
       "Level": "7",
-      "Prerequisite": "Two Riven Hourglass maneuvers",
+      "prerequisites": "Two Riven Hourglass maneuvers",
       "Initiation Action": "1 standard action",
       "Range": "Melee attack",
       "Target": "All opponents within reach",
@@ -5268,7 +5268,7 @@
     "Temporal_Dilation": {
       "Discipline": "Riven Hourglass Strike",
       "Level": "7",
-      "Prerequisite": "Two Riven Hourglass maneuvers",
+      "prerequisites": "Two Riven Hourglass maneuvers",
       "Initiation Action": "1 standard action",
       "Range": "Melee attack",
       "Target": "One creature",
@@ -5278,7 +5278,7 @@
     "God_of_the_Hourglass_Stance": {
       "Discipline": "Riven Hourglass Stance",
       "Level": "8",
-      "Prerequisite": "Three Riven Hourglass maneuvers",
+      "prerequisites": "Three Riven Hourglass maneuvers",
       "Initiation Action": "1 swift action",
       "Range": "Personal",
       "Target": "You",
@@ -5288,7 +5288,7 @@
     "Heart_of_the_Time_Lord": {
       "Discipline": "Riven Hourglass Counter",
       "Level": "8",
-      "Prerequisite": "Two Riven Hourglass maneuvers",
+      "prerequisites": "Two Riven Hourglass maneuvers",
       "Initiation Action": "1 immediate action",
       "Range": "Personal",
       "Target": "You",
@@ -5298,7 +5298,7 @@
     "Wrath_of_Time": {
       "Discipline": "Riven Hourglass Strike",
       "Level": "8",
-      "Prerequisite": "Three Riven Hourglass maneuvers",
+      "prerequisites": "Three Riven Hourglass maneuvers",
       "Initiation Action": "1 standard action",
       "Range": "60 ft.",
       "Area": "Cone-shaped burst",
@@ -5308,7 +5308,7 @@
     "Break_the_Hourglass": {
       "Discipline": "Riven Hourglass Counter",
       "Level": "9",
-      "Prerequisite": "Four Riven Hourglass maneuvers",
+      "prerequisites": "Four Riven Hourglass maneuvers",
       "Initiation Action": "1 immediate action",
       "Range": "Personal",
       "Target": "You",

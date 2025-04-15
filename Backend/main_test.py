@@ -143,7 +143,7 @@ character_json_config = {
 # Make sure to add a flag for path of war feats later
 def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_race='Random', class_choice='barbarian', multi_class='N', 
 						 alignment_input = 'TN' , deity_flag = 'random', userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=3, num_sides=6, 
-						 high_level=7, low_level=7, gold_num=1000000, homebrew_amount=None):
+						 high_level=6, low_level=6, gold_num=1000000, homebrew_amount=None):
 		casting_level_str_foundry = 'None'
 		
 		character = CreateNewCharacter(
@@ -499,6 +499,10 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		extra_combat_feats(character)
 
 
+		# Cached dataset without prerequisites -> allows them to take rage powers / rogue talents / etc. without normal feats ()
+		print("cached dataset without prereqs allows for feats to buy class specific talents ")
+		print("character.cached_dataset_without_prerequisites", sorted(character.cached_dataset_without_prerequisites))
+
 		# Feat Selector
 		casting_level_str = character.class_data[character.c_class]['casting level'].lower()
 		if truly_random_feats.upper() == "Y":
@@ -727,6 +731,25 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		# print("character.c_class", character.c_class)
 
 		# print("character.spell_list_choose_from", character.spell_list_choose_from)
+		# print("character.feats", character.feats)
+		# # Why are character.feats different from feats??????????? -> B/c cached dataset without prereqs allows for feats to buy class specific talents (rage powers / rogue talents / etc.)
+		# print("feats", feats)
+		# print("class_features", class_features)
+		# print("character.chooseable", character.chooseable)
+		# print("character.skipped_feats", character.skipped_feats)
+		# for key in class_features["rage_powers"].keys():
+		# 	print("key", key, "prereqs", class_features["rage_powers"][key])
+
+		# print(sorted(list(class_features["rage_powers"].keys())))
+
+		print(".")
+		print(".")
+		print(".")
+		print(".")
+		# print("character.chooseable", sorted(list(character.chooseable)))
+		# print("character.feats", sorted(list(character.feats)))
+		# print("character.class_features", class_features)
+		# print("character.processed_feats", character.processed_feats)
 		return character.data_dict
 
 generate_random_char()

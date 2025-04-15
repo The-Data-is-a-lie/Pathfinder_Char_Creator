@@ -1,339 +1,339 @@
 {
   "aspects": {
     "bat": {
-      "prerequisite": "",
+      "prerequisites": "",
       "description": "The creature gains darkvision to a range of 60 feet. At 8th level, the range increases by 30 feet. At 15th level, the creature also gains blindsense to a range of 10 feet."
     },
     "bear": {
-      "prerequisite": "",
+      "prerequisites": "",
       "description": "The creature gains a +2 enhancement bonus to Constitution. This bonus increases to +4 at 8th level and +6 at 15th level."
     },
     "bull": {
-      "prerequisite": "",
+      "prerequisites": "",
       "description": "The creature gains a +2 enhancement bonus to Strength. This bonus increases to +4 at 8th level and +6 at 15th level."
     },
     "falcon": {
-      "prerequisite": "",
+      "prerequisites": "",
       "description": "The creature gains a +4 competence bonus on Perception checks. This bonus increases to +6 at 8th level and +8 at 15th level."
     },
     "frog": {
-      "prerequisite": "",
+      "prerequisites": "",
       "description": "The creature gains a +4 competence bonus on Swim checks and on Acrobatics checks to jump. These bonuses increase to +6 at 8th level and +8 at 15th level."
     },
     "monkey": {
-      "prerequisite": "",
+      "prerequisites": "",
       "description": "The creature gains a +4 competence bonus on Climb checks. This bonus increases to +6 at 8th level and +8 at 15th level."
     },
     "mouse": {
-      "prerequisite": "",
+      "prerequisites": "",
       "description": "The creature gains evasion, as the rogue class feature. At 12th level, this increases to improved evasion, as the rogue advanced talent."
     },
     "owl": {
-      "prerequisite": "",
+      "prerequisites": "",
       "description": "The creature gains a +4 competence bonus on Stealth checks. This bonus increases to +6 at 8th level and +8 at 15th level."
     },
     " ": {
-      "prerequisite": "",
+      "prerequisites": "",
       "description": "The creature gains a +2 bonus on attack rolls when making attacks of opportunity and a +2 dodge bonus to AC against attacks of opportunity. These bonuses increase to +4 at 8th level and +6 at 15th level."
     },
     "stag": {
-      "prerequisite": "",
+      "prerequisites": "",
       "description": "The creature gains a 5-foot enhancement bonus to its base land speed. This bonus increases to 10 feet at 8th level and 20 feet at 15th level."
     },
     "tiger": {
-      "prerequisite": "",
+      "prerequisites": "",
       "description": "The creature gains a +2 enhancement bonus to Dexterity. This bonus increases to +4 at 8th level and +6 at 15th level."
     },
     "wolf": {
-      "prerequisite": "",
+      "prerequisites": "",
       "description": "The creature gains the scent ability with a range of 10 feet. The range of this sense increases to 20 feet at 8th level and 30 feet at 15th level. The range doubles if the opponent is upwind, and is halved if the opponent is downwind."
     },
     "aboleth": {
-        "prerequisite": "Pelagic Hunter",
+        "prerequisites": "Pelagic Hunter",
         "description": "The creature gains a +1 morale bonus on saves against divine spells and spell-like abilities. This bonus increases to +2 at 8th level and +3 at 15th level."
       },
       "ant": {
-        "prerequisite": "Verminous Hunter",
+        "prerequisites": "Verminous Hunter",
         "description": "The creature gains a +2 enhancement bonus to Strength. This bonus increases to +4 at 8th level and +6 at 15th level."
       },
       "assassin vine": {
-        "prerequisite": "Plant Master",
+        "prerequisites": "Plant Master",
         "description": "The creature gains a +2 bonus on combat maneuver checks to grapple. This bonus increases to +3 at 8th level and +4 at 15th level."
       },
       "beaver": {
-        "prerequisite": "Courtly Hunter",
+        "prerequisites": "Courtly Hunter",
         "description": "The creature gains a +4 competence bonus on Craft checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "bee": {
-        "prerequisite": "Scarab Stalker",
+        "prerequisites": "Scarab Stalker",
         "description": "The creature gains a +4 competence bonus on Fly checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "beetle": {
-        "prerequisite": "Verminous Hunter",
+        "prerequisites": "Verminous Hunter",
         "description": "The creature gains a +2 enhancement bonus to its natural armor bonus. This bonus increases to +4 at 8th level and +6 at 15th level. (A creature without natural armor has an effective natural armor bonus of +0.)"
       },
       "brambles": {
-        "prerequisite": "Plant Master",
+        "prerequisites": "Plant Master",
         "description": "When the creature is hit by an unarmed strike or natural attack, the attacker takes 1 point of piercing damage. This increases to 2 points at 8th level and 3 points at 15th level."
       },
       "cat": {
-        "prerequisite": "Scarab Stalker",
+        "prerequisites": "Scarab Stalker",
         "description": "The creature gains a +4 competence bonus on Acrobatics checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "centipede": {
-        "prerequisite": "Verminous Hunter",
+        "prerequisites": "Verminous Hunter",
         "description": "The creature gains a +2 competence bonus on Climb checks and a +2 bonus to CMD against pull, push, reposition, and trip combat maneuvers. These bonuses increase to +4 at 8th level and +6 at 15th level."
       },
       "cetus": {
-        "prerequisite": "Pelagic Hunter",
+        "prerequisites": "Pelagic Hunter",
         "description": "The creature gains Lunge as a bonus feat. At 12th level, instead of gaining Lunge, the creature increases its reach by 5 feet."
       },
       "chameleon": {
-        "prerequisite": "Courtly Hunter",
+        "prerequisites": "Courtly Hunter",
         "description": "The creature gains a +4 competence bonus on Disguise checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "charybdis": {
-        "prerequisite": "Pelagic Hunter",
+        "prerequisites": "Pelagic Hunter",
         "description": "The creature’s attacks ignore the first 5 points of hardness. This improves to ignore the first 7 points of hardness at 8th level and the first 10 points of hardness at 15th level."
       },
       "cockroach": {
-        "prerequisite": "Verminous Hunter",
+        "prerequisites": "Verminous Hunter",
         "description": "The creature gains a +4 bonus on saves against cold dangers, disease, heat dangers, starvation, thirst, and on Constitution checks to avoid suffocation. These bonuses increase to +6 at 8th level and +8 at 15th level."
       },
       "cow": {
-        "prerequisite": "Scarab Stalker",
+        "prerequisites": "Scarab Stalker",
         "description": "The creature gains a +1 resistance bonus on Fortitude saving throws. This bonus increases to +2 at 8th level and +3 at 15th level."
       },
       "crab ": {
-        "prerequisite": "Verminous Hunter",
+        "prerequisites": "Verminous Hunter",
         "description": "The creature gains a +4 competence bonus on Swim checks and a +2 competence bonus on grapple combat maneuver checks. These bonuses increase to +6 and +4 respectively at 8th level, and +8 and +6 at 15th level."
       },
       "crab": {
-        "prerequisite": "Aquatic Beastmaster",
+        "prerequisites": "Aquatic Beastmaster",
         "description": "The creature gains a +4 competence bonus on Swim checks and a +2 competence bonus on grapple combat maneuver checks. These bonuses increase to +6 and +4, respectively, at 8th level and to +8 and +6 at 15th level."
       },
       "creeping vine": {
-        "prerequisite": "Plant Master",
+        "prerequisites": "Plant Master",
         "description": "The creature gains a +4 competence bonus on Climb checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "crocodile": {
-        "prerequisite": "Scarab Stalker",
+        "prerequisites": "Scarab Stalker",
         "description": "The creature gains a +4 competence bonus on Swim checks. This bonus increases to +6 at 8th level and +3 at 15th level."
       },
       "crow": {
-        "prerequisite": "Feykiller",
+        "prerequisites": "Feykiller",
         "description": "The creature gains a +4 competence bonus on Knowledge checks to identify the abilities and weaknesses of creatures. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "deep one": {
-        "prerequisite": "Pelagic Hunter",
+        "prerequisites": "Pelagic Hunter",
         "description": "The creature reduces pressure damage it takes (see page 48) by 10. At 12th level, the creature is immune to damage from changing pressure."
       },
       "dolphin": {
-        "prerequisite": "Aquatic Beastmaster",
+        "prerequisites": "Aquatic Beastmaster",
         "description": "The creature gains a +4 competence bonus on Knowledge checks to identify the abilities and weaknesses of creatures. This bonus increases to +6 at 8th level and to +8 at 15th level."
       },
       "eagle": {
-        "prerequisite": "Courtly Hunter",
+        "prerequisites": "Courtly Hunter",
         "description": "The creature gains a +2 enhancement bonus to Charisma. This bonus increases to +4 at 8th level and +6 at 15th level."
       },
       "eel": {
-        "prerequisite": "Aquatic Beastmaster",
+        "prerequisites": "Aquatic Beastmaster",
         "description": "The creature gains a +2 enhancement bonus to Dexterity. This bonus increases to +4 at 8th level and to +6 at 15th level."
       },
       "flea": {
-        "prerequisite": "Verminous Hunter",
+        "prerequisites": "Verminous Hunter",
         "description": "The creature gains a +4 competence bonus on saves against disease and Acrobatics checks to jump. These bonuses increase to +6 at 8th level and +8 at 15th level."
       },
       "fly": {
-        "prerequisite": "Verminous Hunter",
+        "prerequisites": "Verminous Hunter",
         "description": "The creature gains a +2 bonus on Perception checks and on Acrobatics checks to balance or fall safely. These bonuses increase to +4 at 8th level and +6 at 15th level."
       },
       "fox": {
-        "prerequisite": "Courtly Hunter",
+        "prerequisites": "Courtly Hunter",
         "description": "The creature gains a +4 competence bonus on Bluff checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "frilled lizard": {
-        "prerequisite": "Courtly Hunter",
+        "prerequisites": "Courtly Hunter",
         "description": "The creature gains a +4 competence bonus on Intimidate checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "giant flytrap": {
-        "prerequisite": "Plant Master",
+        "prerequisites": "Plant Master",
         "description": "The creature gains a +4 competence bonus on Stealth checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "goat": {
-        "prerequisite": "Feykiller",
+        "prerequisites": "Feykiller",
         "description": "The creature gains a +2 competence bonus on saving throws against enchantment spells and spell-like abilities. This bonus increases to +4 at 8th level and +6 at 15th level."
       },
       "hippocampus": {
-        "prerequisite": "Pelagic Hunter",
+        "prerequisites": "Pelagic Hunter",
         "description": "The creature gains a +4 competence bonus on Swim checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "ibis": {
-        "prerequisite": "Scarab Stalker",
+        "prerequisites": "Scarab Stalker",
         "description": "The creature gains a +2 resistance bonus on saving throws against disease. This bonus increases to +4 at 8th level and +6 at 15th level."
       },
       "jackal": {
-        "prerequisite": "Scarab Stalker",
+        "prerequisites": "Scarab Stalker",
         "description": "The creature gains a +4 competence bonus on Survival checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "kite": {
-        "prerequisite": "Scarab Stalker",
+        "prerequisites": "Scarab Stalker",
         "description": "The creature recovers 1 additional hit point whenever it receives magical healing. This increases to 2 additional hit points at 8th level and 3 additional hit points at 15th level."
       },
       "kraken": {
-        "prerequisite": "Pelagic Hunter",
+        "prerequisites": "Pelagic Hunter",
         "description": "The creature gains the jet ability with a speed equal to its unmodified base land speed or four times its swim speed (if it has one), whichever is higher. If it has a swim speed, at 8th level, the jet ability’s speed increases to five times its swim speed, and at 15th level, the speed increases to seven times its swim speed."
       },
       "leech": {
-        "prerequisite": "Verminous Hunter",
+        "prerequisites": "Verminous Hunter",
         "description": "The creature gains a +2 competence bonus on grapple combat maneuver checks, and deals 1 point of bleed damage every time it succeeds at a grapple combat maneuver check to damage an opponent. These benefits increase to a +4 bonus and 3 points of bleed at 8th level, and a +6 bonus and 5 points of bleed at 15th level. Bleed damage from this ability does not stack with itself."
       },
       "leopard": {
-        "prerequisite": "Scarab Stalker",
+        "prerequisites": "Scarab Stalker",
         "description": "The creature gains a +4 competence bonus on Escape Artist checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "lion": {
-        "prerequisite": "Scarab Stalker",
+        "prerequisites": "Scarab Stalker",
         "description": "The creature gains a +4 competence bonus on Intimidate checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "manta ray": {
-        "prerequisite": "Aquatic Beastmaster",
+        "prerequisites": "Aquatic Beastmaster",
         "description": "The creature gains a +4 competence bonus on Stealth checks and a +2 bonus on saving throws against poison. These bonuses increase to +6 and +4, respectively, at 8th level and to +8 and +6 at 15th level."
       },
       "mantis": {
-        "prerequisite": "Verminous Hunter",
+        "prerequisites": "Verminous Hunter",
         "description": "The creature gains a +2 bonus on attack of opportunity attack rolls and a +2 competence bonus on grapple combat maneuver checks. These bonuses increase to +4 at 8th level and +6 at 15th level."
       },
       "mongoose": {
-        "prerequisite": "Feykiller",
+        "prerequisites": "Feykiller",
         "description": "The creature gains a +2 competence bonus on grapple combat maneuver checks and on saving throws against poison. These bonuses increase to +4 at 8th level and +6 at 15th level."
       },
       "moth": {
-        "prerequisite": "Verminous Hunter",
+        "prerequisites": "Verminous Hunter",
         "description": "The creature gains darkvision to a range of 60 feet. At 8th level, the range increases by 30 feet. At 15th level, the creature gains blindsense to a range of 10 feet."
       },
       "mushroom": {
-        "prerequisite": "Plant Master",
+        "prerequisites": "Plant Master",
         "description": "The creature gains a +4 enhancement bonus on saves against poison. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "oak": {
-        "prerequisite": "Plant Master",
+        "prerequisites": "Plant Master",
         "description": "The creature gains a +2 enhancement bonus to CMD. This bonus increases to +4 at 8th level and +6 at 15th level."
       },
       "octopus ": {
-        "prerequisite": "Aquatic Beastmaster",
+        "prerequisites": "Aquatic Beastmaster",
         "description": "The creature gains a +4 competence bonus on Swim checks and a +2 competence bonus on grapple combat maneuver checks. These bonuses increase to +6 and +4, respectively, at 8th level and to +8 and +6 at 15th level."
       },
       "octopus": {
-        "prerequisite": "Courtly Hunter",
+        "prerequisites": "Courtly Hunter",
         "description": "The creature gains a +4 competence bonus on Escape Artist checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "orca": {
-        "prerequisite": "Aquatic Beastmaster",
+        "prerequisites": "Aquatic Beastmaster",
         "description": "The creature gains a +2 enhancement bonus to Strength. This bonus increases to +4 at 8th level and to +6 at 15th level."
       },
       "phasmid": {
-        "prerequisite": "Verminous Hunter",
+        "prerequisites": "Verminous Hunter",
         "description": "The creature gains low-light vision and a +4 competence bonus on Stealth checks in forests or plains. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "raccoon": {
-        "prerequisite": "Courtly Hunter",
+        "prerequisites": "Courtly Hunter",
         "description": "The creature gains a +4 competence bonus on Sleight of Hand checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "ram": {
-        "prerequisite": "Scarab Stalker",
+        "prerequisites": "Scarab Stalker",
         "description": "The creature gains a +1 bonus on damage rolls when making charge attacks. This bonus increases to +2 at 8th level and +3 at 15th level."
       },
       "reefclaw": {
-        "prerequisite": "Pelagic Hunter",
+        "prerequisites": "Pelagic Hunter",
         "description": "The creature gains Diehard as a bonus feat. At 12th level, instead of gaining Diehard, the creature gains the ferocity ability."
       },
       "scarab beetle": {
-        "prerequisite": "Scarab Stalker",
+        "prerequisites": "Scarab Stalker",
         "description": "The creature gains a +1 enhancement bonus to its natural armor bonus. This bonus increases to +2 at 8th level and +3 at 15th level."
       },
       "scorpion ": {
-        "prerequisite": "Aquatic Beastmaster",
+        "prerequisites": "Aquatic Beastmaster",
         "description": "The creature gains a +4 competence bonus on Stealth checks and a +2 bonus on saving throws against poison. These bonuses increase to +6 and +4, respectively, at 8th level and to +8 and +6 at 15th level."
       },
       "scorpion": {
-        "prerequisite": "Courtly Hunter",
+        "prerequisites": "Courtly Hunter",
         "description": "The creature gains a +4 competence bonus on Escape Artist checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "scylla": {
-        "prerequisite": "Pelagic Hunter",
+        "prerequisites": "Pelagic Hunter",
         "description": "The creature’s attacks deal 1 point of bleed damage in addition to their normal damage. At 8th level, the bleed damage increases to 1d3, and at 15th level, it increases to 1d6."
       },
       "sea serpent": {
-        "prerequisite": "Pelagic Hunter",
+        "prerequisites": "Pelagic Hunter",
         "description": "The creature is considered to be under a nondetection spell it cast on itself, with a caster level equal to the pelagic hunter’s class level."
       },
       "selkie": {
-        "prerequisite": "Pelagic Hunter",
+        "prerequisites": "Pelagic Hunter",
         "description": "The creature gains a +4 competence bonus on Bluff checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "sha": {
-        "prerequisite": "Scarab Stalker",
+        "prerequisites": "Scarab Stalker",
         "description": "The creature ignores the Perception penalty from sandstorms and can see twice as far in sandstorms. This increases to three times as far at 8th level and four times as far at 15th level."
       },
       "shark ": {
-        "prerequisite": "Feykiller",
+        "prerequisites": "Feykiller",
         "description": "The creature gains a +4 competence bonus on Survival checks to track a creature that has taken damage from the hunter or her animal companion in the past 24 hours. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "shark": {
-        "prerequisite": "Aquatic Beastmaster",
+        "prerequisites": "Aquatic Beastmaster",
         "description": "The creature gains a +4 competence bonus on Survival checks to track a creature to which the hunter or her animal companion has dealt damage in the past 24 hours. This bonus increases to +6 at 8th level and to +8 at 15th level."
       },
       "shoggoth": {
-        "prerequisite": "Pelagic Hunter",
+        "prerequisites": "Pelagic Hunter",
         "description": "The creature gains a +2 competence bonus on Perception checks and reduces the flanking bonuses of creatures flanking it by 1. This Perception bonus increases to +3 at 8th level and +4 at 15th level. At 12th level, the creature can’t be flanked."
       },
       "shrieker": {
-        "prerequisite": "Plant Master",
+        "prerequisites": "Plant Master",
         "description": "The creature gains darkvision with a range of 60 feet. At 8th level, the range increases by 30 feet. At 15th level, the creature also gains blindsense with a range of 10 feet."
       },
       "siyokoy": {
-        "prerequisite": "Pelagic Hunter",
+        "prerequisites": "Pelagic Hunter",
         "description": "The creature’s attacks deal 1 additional point of electricity damage. At 8th level, the electricity damage increases to 1d3, and at 15th level, it increases to 1d6."
       },
       "snake ": {
-        "prerequisite": "Aquatic Beastmaster",
+        "prerequisites": "Aquatic Beastmaster",
         "description": "The creature gains a +2 bonus on attack rolls when making attacks of opportunity and a +2 dodge bonus to AC against attacks of opportunity. These bonuses increase to +4 at 8th level and to +6 at 15th level."
       },
       "songbird": {
-        "prerequisite": "Courtly Hunter",
+        "prerequisites": "Courtly Hunter",
         "description": "The creature gains a +4 competence bonus on Perform checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "spider": {
-        "prerequisite": "Verminous Hunter",
+        "prerequisites": "Verminous Hunter",
         "description": "The creature gains a +2 competence bonus on Stealth checks, saving throws against web effects (magical or otherwise), and checks to break free of webs. This bonus increases to +4 at 8th level and +6 at 15th level."
       },
       "spore": {
-        "prerequisite": "Plant Master",
+        "prerequisites": "Plant Master",
         "description": "The creature gains a +4 competence bonus on Fly checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "turtle": {
-        "prerequisite": "Aquatic Beastmaster",
+        "prerequisites": "Aquatic Beastmaster",
         "description": "The creature gains a +2 enhancement bonus to its natural armor bonus. This bonus increases to +4 at 8th level and to +6 at 15th level. (A creature without natural armor has an effective natural armor bonus of +0.)"
       },
       "turtle ": {
-        "prerequisite": "Feykiller",
+        "prerequisites": "Feykiller",
         "description": "The creature gains a +2 enhancement bonus to its natural armor bonus. This bonus increases to +4 at 8th level and +6 at 15th level. (A creature without natural armor has an effective natural armor bonus of +0.)"
       },
       "uraeus": {
-        "prerequisite": "Scarab Stalker",
+        "prerequisites": "Scarab Stalker",
         "description": "The creature gains a +2 resistance bonus on saving throws against breath weapons. This bonus increases to +4 at 8th level and +6 at 15th level."
       },
       "wasp": {
-        "prerequisite": "Verminous Hunter",
+        "prerequisites": "Verminous Hunter",
         "description": "The creature gains a +4 competence bonus on Perception checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "water lily": {
-        "prerequisite": "Plant Master",
+        "prerequisites": "Plant Master",
         "description": "The creature gains a +4 competence bonus on Swim checks. This bonus increases to +6 at 8th level and +8 at 15th level."
       },
       "worm": {
-        "prerequisite": "Verminous Hunter",
+        "prerequisites": "Verminous Hunter",
         "description": "The creature gains a 25% chance to treat any critical hit or sneak attack as a normal hit (as the fortification armor special ability). This increases to 50% at 8th level, and 75% at 15th level."
       }                
   }

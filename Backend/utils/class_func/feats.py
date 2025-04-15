@@ -184,9 +184,11 @@ def get_feats_without_prerequisites(character, class_1, dataset_name, level= Non
 
     base_no_prereq = []
     amount = feat_amount
+    # print("dataset_name", dataset_name)
     # amount = ceil(character.c_class_level/2)
     base_no_prereq = no_prereq_loop(character, dataset_name)
     total_choices = base_no_prereq
+
 
     if amount == None:
         amount = 0
@@ -210,7 +212,7 @@ def choosing_feats(character, amount, base, total_choices):
         character.chooseable.add(chosen)
         
         # Recompute the prereq_list after adding the chosen feat
-        prereq_list = no_prereq_loop(character, base, "prereq_list")
+        prereq_list = no_prereq_loop(character, base)
         
         # Update total_choices_set with new prerequisites
         total_choices_set.add(chosen.lower())
