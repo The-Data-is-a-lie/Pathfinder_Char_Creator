@@ -157,6 +157,7 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		character.processed_feats = set()
 		character.cached_dataset_without_prerequisites = []
 		character.cached_prereq_list = set()
+		character.chooseable_talents = []
 				
 		character.chosen_gender = gender_chooser(character, userInput_gender)
 		 
@@ -746,10 +747,10 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		print(".")
 		print(".")
 		print(".")
-		# print("character.chooseable", sorted(list(character.chooseable)))
-		# print("character.feats", sorted(list(character.feats)))
-		# print("character.class_features", class_features)
-		# print("character.processed_feats", character.processed_feats)
+		print("character.chooseable", sorted(list(character.chooseable)))
+		print("character.feats", sorted(list(character.feats)))
+		print("character.processed_feats", character.processed_feats)
+		print("character.chooseable_talents", sorted(character.chooseable_talents))
 		return character.data_dict
 
 generate_random_char()

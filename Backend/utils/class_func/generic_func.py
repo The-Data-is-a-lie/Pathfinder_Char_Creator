@@ -111,11 +111,11 @@ def choosing_talents(character, amount, dataset, dict_name = "Talents"):
     if amount == None or amount == 0:
         return None
     
-    chooseable_talents = no_prereq_loop(character, dataset)
+    character.chooseable_talents = no_prereq_loop(character, dataset)
     chosen_set = set()
 
     while len(chosen_set) < amount:
-        chosen = random.choice(chooseable_talents)
+        chosen = random.choice(character.chooseable_talents)
         if chosen in chosen_set:
             continue
 
@@ -126,19 +126,18 @@ def choosing_talents(character, amount, dataset, dict_name = "Talents"):
         chosen_set.add(chosen)
         # Adjusting the dataset we choose from (+ adding prereqs to character.chooseable)
         character.chooseable.add(chosen.lower())
-        chooseable_talents.remove(chosen)
+        character.chooseable_talents.remove(chosen)
 
         # Adding descriptions to class features name -> turning into dict
         chosen_dict = chosen_set_append(character, dataset, chosen_set, chosen, dict_name)
 
         # re-run no_prereq_loop everytime a talent is chosen
-        chooseable_talents = no_prereq_loop(character, dataset)
+        character.chooseable_talents = no_prereq_loop(character, dataset)
 
     return chosen_dict
 
  
 def no_prereq_loop(character, dataset):
-    chooseable_talents = []
 
     for name, info in dataset.items():
         name_lower = name.lower()
@@ -156,13 +155,16 @@ def no_prereq_loop(character, dataset):
 
         # Check if all prereqs are met
         if not prereq_parts or set(prereq_parts).issubset(character.chooseable):
-            chooseable_talents.append(name_lower)
+            character.chooseable_talents.append(name_lower)
 
-    return chooseable_talents
+        # dedupe
+        character.chooseable_talents = remove_duplicates_list(character, character.chooseable_talents)
+
+    return character.chooseable_talents
 
 def determine_prerequisite_name(info):
     prerequisites_raw = info.get("prerequisites", "").lower().strip()
-    if prerequisites_raw == [] or prerequisites_raw == None:
+    if not prerequisites_raw:
         prerequisites_raw = info.get("prerequisite", "").lower().strip()
 
     return re.sub(r'\.', '', prerequisites_raw)
