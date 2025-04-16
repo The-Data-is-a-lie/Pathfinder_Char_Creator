@@ -244,7 +244,7 @@
     "subdomains":
             
             {
-                "ice subdomain": {
+                "Ice subdomain": {
                     "subdomains": ["Flotsam", "Flowing", "Ice", "Oceans", "Rivers"],
                     "Icicle (Sp)": ["As a standard action, you can fire an icicle from your finger, targeting any foe within 30 feet as a ranged touch attack. The icicle deals 1d6 points of cold damage + 1 point for every two cleric levels you possess. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."],
                     "Cold Resistance (Ex)": ["At 6th level, you gain resist cold 10. This resistance increases to 20 at 12th level. At 20th level, you gain immunity to cold."],

@@ -141,9 +141,9 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_race='Random', class_choice='barbarian', multi_class='N', 
-						 alignment_input = 'TN' , deity_flag = 'random', userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=3, num_sides=6, 
-						 high_level=6, low_level=6, gold_num=1000000, homebrew_amount=None):
+def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_race='Random', class_choice='cleric', multi_class='N', 
+						 alignment_input = 'TN' , deity_flag = 'random', userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=8, num_sides=8, 
+						 high_level=40, low_level=40, gold_num=1000000, homebrew_amount=None):
 		casting_level_str_foundry = 'None'
 		
 		character = CreateNewCharacter(
@@ -574,16 +574,17 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 	#--------------- Spell addition options ---------------#
 	# Bloodlines
 		if character.c_class.lower() in ('sorcerer', 'bloodrager'):
-			bonus_spells = character.data_dict['class features'][0].get("Talents").get(bloodline).get("bonus spells", [])
+			bonus_spells = character.data_dict['class features'].get("Talents").get(bloodline).get("bonus spells", [])
 			add_bonus_spells(character, bonus_spells)
 	# Domains
 		print("full_domain", full_domain)
 		if full_domain not in ([], None) and character.c_class.lower() in ("cleric"):
 			print("full_domain", full_domain)
+			print("character.deity_choice_list", character.deity_choice_list)
 			for i, domain in enumerate(full_domain):
-				bonus_spells = character.data_dict['class features'].get(domain).get("bonus spells", [])
+				bonus_spells = character.data_dict.get('class features', {}).get(domain.title(), {}).get("bonus spells", {})
 				add_bonus_spells(character, bonus_spells)
-				print(domain, character.data_dict['class features'].get(domain))
+				print(domain.title(), character.data_dict.get('class features', {}).get(domain.title(), {}))
 
 		if full_domain not in ([], None) and character.c_class.lower() in ("druid"):
 			print("full_domain", full_domain)
@@ -747,10 +748,10 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		print(".")
 		print(".")
 		print(".")
-		print("character.chooseable", sorted(list(character.chooseable)))
-		print("character.feats", sorted(list(character.feats)))
-		print("character.processed_feats", character.processed_feats)
-		print("character.chooseable_talents", sorted(character.chooseable_talents))
+		# print("character.chooseable", sorted(list(character.chooseable)))
+		# print("character.feats", sorted(list(character.feats)))
+		# print("character.processed_feats", character.processed_feats)
+		# print("character.chooseable_talents", sorted(character.chooseable_talents))
 		return character.data_dict
 
 generate_random_char()

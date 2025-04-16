@@ -4,6 +4,7 @@ def domain_chooser(character):
     character.chosen_domain = []
     if character.c_class == 'cleric' or character.c_class_2 == 'cleric':  
         deity_choice_list = list(character.deity_choice['Domains'])
+        character.deity_choice_list = deity_choice_list
         character.chosen_domain = random.sample(deity_choice_list,k=2)
         chosen_first = character.chosen_domain[0].capitalize()
         chosen_second = character.chosen_domain[1].capitalize()

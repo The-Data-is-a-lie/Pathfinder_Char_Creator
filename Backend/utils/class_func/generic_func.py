@@ -14,7 +14,7 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
             description = getattr(character, class_1, {None}).get(dataset_name, {None}).get(choice,{None})
 
 
-            character.data_dict['class features'].append({dict_name: {choice: description}})
+            character.data_dict['class features'] = {dict_name: {choice: description}}
             
             chosen_desc = {choice: description}
             character.bonus_feats = bonus_searcher(character, choice, chosen_desc, 'feats')
