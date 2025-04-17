@@ -27,8 +27,8 @@ def domain_chooser(character):
     # Grabbing full domain info from their respetive domain lists
     if character.c_class == 'cleric':
         for d in character.chosen_domain:
-            domain_info = character.cleric_domains.get("domains", {}).get(d, None)
-            chosen_dict[d] = domain_info
+            domain_info = character.cleric_domains.get("domains", {}).get(d.title(), None)
+            chosen_dict[d.title()] = domain_info
 
     if character.c_class == 'druid':
         for d in character.chosen_domain:
