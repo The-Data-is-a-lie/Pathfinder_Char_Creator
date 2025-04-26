@@ -26,7 +26,7 @@ class TestGenerateRandomChar(unittest.TestCase):
         # Define options to test for each parameter
         self.test_options = {
             'userInput_region': [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20, 'ABAC', 0, -100, 'N/A', None],
-            'userInput_race': ["Random", "Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Half-orc", "Human", "Aasimar", "Catfolk", "Dhampir", "Drow", "Fetchling", "Goblin", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Wayang", 'ABAC', 0, -100, 'N/A', None],
+            'userInput_race': ["Random", "Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Half-Orc", "Human", "Aasimar", "Catfolk", "Dhampir", "Drow", "Fetchling", "Goblin", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Wayang", 'ABAC', 0, -100, 'N/A', None],
             'class_choice': ['cleric', 'druid', 'fighter', 'gunslinger', 'hunter', 'inquisitor', 'investigator', 'kineticist', 'magus', 'medium', 'mesmerist', 'monk', 'monk (unchained)', 'ninja', 'occultist', 'oracle', 'paladin', 'psychic', 'ranger', 'rogue', 'rogue (unchained)', 'samurai', 'shaman', 'shifter', 'skald', 'slayer', 'sorcerer', 'spiritualist', 'summoner', 'summoner (unchained)', 'swashbuckler', 'vigilante', 'warpriest', 'witch', 'wizard', 'harbinger', 'mystic', 'stalker', 'warder', 'warlord', 'zealot', 'ABAC', 0, -100, 'N/A', None],
             'multi_class': ['N'],
             'alignment_input': ['LG', 'LN', 'LE', 'NG', 'TN', 'NE', 'CG', 'CN', 'CE', 'ABAC', 0, -100, 'N/A', None],

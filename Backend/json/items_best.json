@@ -2738,15 +2738,15 @@
   "construction requirements": "craft wondrous item, death knell , deathwatch ",
   "cost": "4,500, 360 xp"
   },
-  "eye patch of infamy (half-orc)": {
+  "eye patch of infamy (Half-Orc)": {
   "source": "inner sea races pg. 231",
   "aura": "strong transmutation",
   "cl": "3rd",
   "slot": "eyes",
   "price": "10,000",
   "weight": " ",
-  "description": " the following wondrous item is generally available only to members of the indicated race or ethnicity. This green leather eye patch allows a half-orc wearer to use the intimidate skill from 30 feet farther away. Whenever the wearer successfully intimidates a target into giving aid, the duration of the change in disposition is doubled. The wearer gains a +5 competence bonus on intimidate checks to generate capital (pathfinder rpg ultimate campaign 7779) and to coerce others into giving aid. ",
-  "construction requirements": "craft wondrous item, eagle's splendor , creator must be a half-orc",
+  "description": " the following wondrous item is generally available only to members of the indicated race or ethnicity. This green leather eye patch allows a Half-Orc wearer to use the intimidate skill from 30 feet farther away. Whenever the wearer successfully intimidates a target into giving aid, the duration of the change in disposition is doubled. The wearer gains a +5 competence bonus on intimidate checks to generate capital (pathfinder rpg ultimate campaign 7779) and to coerce others into giving aid. ",
+  "construction requirements": "craft wondrous item, eagle's splendor , creator must be a Half-Orc",
   "cost": "5,000"
   },
   "eyes of mind reading (android)": {
@@ -8694,8 +8694,8 @@
   "slot": "neck",
   "price": "2,000",
   "weight": " ",
-  "description": " occasionally, half-elves find it socially advantageous to blend in fully with either elves or humans. As a standard action, the wearer of this brooch can transform his features to appear either entirely elven or entirely human. The magic of this brooch actually changes the wearer's features physically, granting him a +20 circumstance bonus on disguise checks to appear as a member of the selected race. The transformation does not otherwise alter the wearer's features, and those who know him recognize him without a perception check. This change remains until the brooch is used again or removed. This change does not radiate magic and cannot be seen with detect magic , although true seeing does reveal the alteration. This item only functions for half-elves, but there are versions that exist for half-orcs as well. ",
-  "construction requirements": "craft wondrous item, alter self , creator must be a half-elf",
+  "description": " occasionally, half-elves find it socially advantageous to blend in fully with either elves or humans. As a standard action, the wearer of this brooch can transform his features to appear either entirely elven or entirely human. The magic of this brooch actually changes the wearer's features physically, granting him a +20 circumstance bonus on disguise checks to appear as a member of the selected race. The transformation does not otherwise alter the wearer's features, and those who know him recognize him without a perception check. This change remains until the brooch is used again or removed. This change does not radiate magic and cannot be seen with detect magic , although true seeing does reveal the alteration. This item only functions for half-elves, but there are versions that exist for Half-Orcs as well. ",
+  "construction requirements": "craft wondrous item, alter self , creator must be a Half-Elf",
   "cost": "1,000"
   },
   "charlatan's symbol": {
@@ -10303,15 +10303,15 @@
   "construction requirements": "craft wondrous item, cure light wounds, delay poison (leech only), remove sickness (mosquito only), summon swarm ",
   "cost": "4,000(ant), 4,000(centipede), 4,000(spider), 5,000(leech), 5,000(scarab)"
   },
-  "locket of true and false friends (half-elf)": {
+  "locket of true and false friends (Half-Elf)": {
   "source": "inner sea races pg. 232",
   "aura": "moderate divination",
   "cl": "9th",
   "slot": "neck",
   "price": "10,000",
   "weight": " ",
-  "description": " the following wondrous item is generally available only to members of the indicated race or ethnicity. This silver locket contains two scraps of parchment with inspirational quotes from holy or philosophical texts written on them in fine lettering. Once per day, with a command word, the words transform momentarily into the names of the last creature to lie to the wearer and the last creature to perform a favor on her behalf. It can see only 1 day into the past. Each person whose name would be revealed attempts a dc 17 will save, with success indicating that the locket skips that person and moves to the next-mostrecent creature. If the wearer is a half-elf, she gains a +2 insight bonus to ac and on saving throws and sense motive checks against allies, people pretending to be her allies, and former allies who changed allegiance no more than 1 week ago. ",
-  "construction requirements": "craft wondrous item, contact other plane , creator must be a half-elf",
+  "description": " the following wondrous item is generally available only to members of the indicated race or ethnicity. This silver locket contains two scraps of parchment with inspirational quotes from holy or philosophical texts written on them in fine lettering. Once per day, with a command word, the words transform momentarily into the names of the last creature to lie to the wearer and the last creature to perform a favor on her behalf. It can see only 1 day into the past. Each person whose name would be revealed attempts a dc 17 will save, with success indicating that the locket skips that person and moves to the next-mostrecent creature. If the wearer is a Half-Elf, she gains a +2 insight bonus to ac and on saving throws and sense motive checks against allies, people pretending to be her allies, and former allies who changed allegiance no more than 1 week ago. ",
+  "construction requirements": "craft wondrous item, contact other plane , creator must be a Half-Elf",
   "cost": "5,000"
   },
   "missive stone": {
@@ -10674,7 +10674,7 @@
   "slot": "neck",
   "price": "12,000",
   "weight": "2 lbs. ",
-  "description": " this small statuettecarved from the tusk of a dire boar, chunks of twisted metal, or some manner of dark stoneis a simplistic depiction of a pregnant deity, fiend, or orc. Dark stains mark the face of the crude icon, typically smears of a fallen orc's blood. A simple strand of leather affixes the amulet around the neck. The figurine allows the wearer to act normally for a single round after being reduced to less than 0 hit points, as though he had the orc ferocity half-orc racial ability. A wearer with orc blood is instead treated as though he had the diehard feat. If the wearer is of orc blood and already has the diehard feat, he may act normally for an additional round after being reduced to below 0 hit points. Whenever the wearer of the talisman is reduced to less than 0 hit points, the amulet weeps tears of blood. Should the wearer be slain, the talisman screams and shatters. ",
+  "description": " this small statuettecarved from the tusk of a dire boar, chunks of twisted metal, or some manner of dark stoneis a simplistic depiction of a pregnant deity, fiend, or orc. Dark stains mark the face of the crude icon, typically smears of a fallen orc's blood. A simple strand of leather affixes the amulet around the neck. The figurine allows the wearer to act normally for a single round after being reduced to less than 0 hit points, as though he had the orc ferocity Half-Orc racial ability. A wearer with orc blood is instead treated as though he had the diehard feat. If the wearer is of orc blood and already has the diehard feat, he may act normally for an additional round after being reduced to below 0 hit points. Whenever the wearer of the talisman is reduced to less than 0 hit points, the amulet weeps tears of blood. Should the wearer be slain, the talisman screams and shatters. ",
   "construction requirements": "craft wondrous item, creator must be female and possess orc blood, cure moderate wounds ",
   "cost": "6,000"
   },
@@ -11609,7 +11609,7 @@
   "slot": "shoulders",
   "price": "900",
   "weight": "1 lb. ",
-  "description": " this plain cloak only has any effect when worn by a member\r of a half-human race, such as a half-orc or half-elf. It alters\r the wearer's appearance similarly to a hat of disguise , but\r only to the extent that it conceals or alters the wearer's nonhuman\r physical traits so the creature appears fully human. \r any feature that is plausibly human remains. For example, \r a half-orc wearing the cloak loses his green or gray skin\r color and pointed ears, has no visible tusks, and is otherwise\r completely able to pass as a human version of his normal\r self. Likewise, a half-elf wearing the cloak has round ears, \r humanlike eyes, and no other traits indicating elven ancestry. \r the wearer has no control over the specific guise, and those\r familiar with his normal appearance can recognize him in his\r human guise. ",
+  "description": " this plain cloak only has any effect when worn by a member\r of a half-human race, such as a Half-Orc or Half-Elf. It alters\r the wearer's appearance similarly to a hat of disguise , but\r only to the extent that it conceals or alters the wearer's nonhuman\r physical traits so the creature appears fully human. \r any feature that is plausibly human remains. For example, \r a Half-Orc wearing the cloak loses his green or gray skin\r color and pointed ears, has no visible tusks, and is otherwise\r completely able to pass as a human version of his normal\r self. Likewise, a Half-Elf wearing the cloak has round ears, \r humanlike eyes, and no other traits indicating elven ancestry. \r the wearer has no control over the specific guise, and those\r familiar with his normal appearance can recognize him in his\r human guise. ",
   "construction requirements": "craft wondrous item, disguise self ",
   "cost": "450"
   },
@@ -12194,7 +12194,7 @@
   "slot": "shoulders",
   "price": "6,500",
   "weight": "2 lbs. ",
-  "description": " snowborn frequently fight off hostile enemies of both the intelligent and animalistic varieties. The smart half-elf knows that he can't lose a fight that never begins and makes every attempt to stave off combat. This white fur stole helps the wary snowborn, or anyone else, temporarily calm down opponents. While wearing this stole, the wearer gains a +2 competence bonus on diplomacy checks to improve someone's attitude and on wild empathy checks to improve an animal's attitude. Three times per day on command, the wearer can activate the stole to gain a 20-foot radius aura of either calm animals or calm emotions for 1 minute (will dc 13 negates). The stole also functions as cold weather clothing. ",
+  "description": " snowborn frequently fight off hostile enemies of both the intelligent and animalistic varieties. The smart Half-Elf knows that he can't lose a fight that never begins and makes every attempt to stave off combat. This white fur stole helps the wary snowborn, or anyone else, temporarily calm down opponents. While wearing this stole, the wearer gains a +2 competence bonus on diplomacy checks to improve someone's attitude and on wild empathy checks to improve an animal's attitude. Three times per day on command, the wearer can activate the stole to gain a 20-foot radius aura of either calm animals or calm emotions for 1 minute (will dc 13 negates). The stole also functions as cold weather clothing. ",
   "construction requirements": "craft wondrous item , calm animals , calm emotions ",
   "cost": "3,250"
   },
@@ -14817,7 +14817,7 @@
         "cl": "7th",
         "slot": "ring;",
         "price": "7,800 gp;",
-        "weight": " Description This ornately carved ironwood ring is sometimes gifted to half-elves leaving their elven communities so as to ease transition into human culture. A ring of culturemeld slightly alters the wearer's words to be more appropriate to the listener's culture and expectations, granting the wearer a +5 competence bonus on language-based Diplomacy checks. If worn by a half-elf, a ring of culturemeld grants the wearer the ability to speak and understand an additional language dependent on the local area. If the wearer spends 1 day in a settlement the size of a village or larger, the ring becomes attuned to any dominant language spoken there other than Common (such as Hallit, Skald, or Vudrani). After the ring is attuned, the wearer gains that language as a bonus language (if she didn't already know it), though she can only speak and understand it. After 4 more days of attunement, the wearer gains the ability to read the language as well, though not the ability to write that language, and gains a +5 competence bonus on opposed Sense Motive checks against speakers of the attuned language. These benefits expire once the wearer has been out of contact with people who speak the attuned language for longer than 1 day or when the ring becomes attuned to a new language. Construction",
+        "weight": " Description This ornately carved ironwood ring is sometimes gifted to half-elves leaving their elven communities so as to ease transition into human culture. A ring of culturemeld slightly alters the wearer's words to be more appropriate to the listener's culture and expectations, granting the wearer a +5 competence bonus on language-based Diplomacy checks. If worn by a Half-Elf, a ring of culturemeld grants the wearer the ability to speak and understand an additional language dependent on the local area. If the wearer spends 1 day in a settlement the size of a village or larger, the ring becomes attuned to any dominant language spoken there other than Common (such as Hallit, Skald, or Vudrani). After the ring is attuned, the wearer gains that language as a bonus language (if she didn't already know it), though she can only speak and understand it. After 4 more days of attunement, the wearer gains the ability to read the language as well, though not the ability to write that language, and gains a +5 competence bonus on opposed Sense Motive checks against speakers of the attuned language. These benefits expire once the wearer has been out of contact with people who speak the attuned language for longer than 1 day or when the ring becomes attuned to a new language. Construction",
         "requirements": "Forge Ring, comprehend languages ;",
         "cost": "3,900 gp"
       },

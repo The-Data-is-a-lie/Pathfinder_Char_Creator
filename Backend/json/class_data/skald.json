@@ -79,7 +79,7 @@
     "benefit": "the barbarian gains a +1 bonus on a single damage roll. this bonus increases by +1 for every 4 levels the barbarian has attained. this power is used as a swift action before the roll to hit is made. special: this power can only be used once per rage."
   },
   "bloody bite": {
-    "prerequisites": "half-orc, animal fury",
+    "prerequisites": "Half-Orc, animal fury",
     "benefit": "the barbarians bite attack deals 1d6 points of bleed damage in addition to its other effects."
   },
   "bloody fist": {
@@ -229,7 +229,7 @@
     "benefit": "while raging, the barbarian is immune to the shaken and frightened conditions."
   },
   "feasting bite": {
-    "prerequisites": "half-orc, bloody bite rage power and either the animal fury rage power or a natural bite attack",
+    "prerequisites": "Half-Orc, bloody bite rage power and either the animal fury rage power or a natural bite attack",
     "benefit": "when the barbarian confirms a critical hit with her bite attack, she regains a number of hit points equal to half the damage dealt. activating this ability consumes 1 round of rage."
   },
   "feast of blood": {

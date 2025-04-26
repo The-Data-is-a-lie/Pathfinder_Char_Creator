@@ -143,9 +143,26 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userInput_race='Random', class_choice='fighter', multi_class='N', 
-						 alignment_input = 'cg' , deity_flag = 'random', userInput_gender='FeMale', truly_random_feats = "Y", inherents = "Y", num_dice=8, num_sides=8, 
+def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Half-Orc', class_choice='fighter', multi_class='N', 
+						 alignment_input = 'LG' , deity_flag = 'Pharasma', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", num_dice=4, num_sides=6, 
 						 high_level=15, low_level=15, gold_num=1000000, homebrew_feat_amount="Y"):
+		
+		print(create_new_char)
+		print(userInput_region)
+		print(userInput_race)
+		print(class_choice)
+		print(multi_class)
+		print(alignment_input)
+		print(deity_flag)
+		print(userInput_gender)
+		print(truly_random_feats)
+		print(inherents)
+		print(num_dice)
+		print(num_sides)
+		print(high_level)
+		print(low_level)
+		print(gold_num)
+		print(homebrew_feat_amount)
 		casting_level_str_foundry = 'None'
 		
 		character = CreateNewCharacter(
@@ -181,8 +198,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userIn
 
 		if deity_flag.lower() == 'random':
 			deity = randomize_deity(character, random_flag=True)
+			print("deity 1", deity)
 		else:
 			deity = randomize_deity(character, random_flag=False, deity_choice=deity_flag)
+			print("deity 2", deity)
 
  
 		age_number = randomize_body_feature(character, 'age')
@@ -423,6 +442,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userIn
 		language_chooser(character)
 		character_full_name = f_name + ' ' + l_name
 		deity_name = deity["Name"]
+		print("deity_name", deity_name)
+		print("deity", deity)
 		skill_ranks = json.dumps(skill_ranks)		
 
 		if isinstance(character.armor_dict, dict):
@@ -771,6 +792,17 @@ def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userIn
 		# print("character.teamwork_feats", sorted(list(teamwork_feats)))
 		# print("character.processed_feats", character.processed_feats)
 		# print("character.chooseable_talents", sorted(character.chooseable_talents))
+
+
+
+
+		print("region", character.region)
+		print("character.chosen_race", character.chosen_race)
+		print("alignment", alignment)
+		print("mini_alignment", mini_alignment)
+		print("deity_name", deity_name)
+		# print("race", character.races)
+
 		return character.data_dict
 
 generate_random_char()

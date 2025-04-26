@@ -30,16 +30,17 @@ def region_chooser(character, userInput_region):
     Return
     - region
     """
-    regions = list(character.first_names_regions.keys())
+    pre_regions = list(character.first_names_regions.keys())
+    regions = []
+    for region in pre_regions:
+        regions.append(region.title())
 
-    if not isinstance(userInput_region, int):
-        random_number = random.randint(1,len(regions)-1)
-    elif userInput_region > len(regions)-1 or userInput_region <= 0:
-        random_number = random.randint(1, len(regions)-1)
+    regions.remove(region)
+    if isinstance(userInput_region, str) and userInput_region.title() in regions:
+        region_selected = userInput_region.title()        
     else:
-        random_number = random.randint(1, len(regions)-1)
-    
-    region_selected =regions[random_number]
+        region_selected = random.choice(regions).title()
+
     character.region = region_selected
     return character.region
 
@@ -50,11 +51,15 @@ def race_chooser(character, userInput_race):
     - userInput_race
     """
     race_data = full_race_data(character)
-    races = list(race_data.keys())
-    if not isinstance(userInput_race, str) or not userInput_race in races: 
+    pre_races = list(race_data.keys())
+    races = []
+    for race in pre_races:
+        races.append(race.title())
+        
+    if not isinstance(userInput_race, str) or not userInput_race.title() in races: 
         userInput_race = random.choice(races).capitalize()
     else:
-        userInput_race = userInput_race.capitalize()
+        userInput_race = userInput_race.title()
     character.chosen_race = userInput_race
     return character.chosen_race
         

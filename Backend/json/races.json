@@ -180,7 +180,7 @@
         }
         },
     
-    "Half-elf": {
+    "Half-Elf": {
         "age": [5, "8d10"],
         "height": [62, "2d10"],
         "weight": [100, "4d31"],
@@ -193,7 +193,7 @@
         }
     },
 
-    "Half-orc": {
+    "Half-Orc": {
         "age": [10, "2d20"],
         "height": [68, "2d12"],
         "weight": [180, "5d31"],

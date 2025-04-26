@@ -4,7 +4,8 @@ from utils import data
 def choose_alignment(self, alignments, alignment_input):
     alignment_data = getattr(data,alignments)
     # alignment_input = input("If you want to choose an alignment, type: CG CN CE NG N NE LG LN LE ").upper()
-    self.alignment = alignment_data.get(alignment_input, None)
+    self.alignment = alignment_data.get(alignment_input.upper(), None)
+    print("Alignment data: ", alignment_data)
 
     if self.alignment is None:
         random_alignment_code = random.choice(list(alignment_data.keys()))
@@ -17,22 +18,18 @@ def choose_alignment(self, alignments, alignment_input):
     return self.alignment, mini_alignment.lower()
 
 def randomize_deity(self, random_flag=True, deity_choice=None):
-    if not random_flag:
-        found = None
-        # Search through all alignments and deities
-        for alignment, deity_list in self.deity.items():
-            for deity in deity_list:
-                if deity_choice in deity.get("Name", []):
-                    found = deity
-                    break
-            if found:
+    # Check if a deity name is provided
+    if deity_choice:
+        # Find the deity based on its 'Name'
+        for deity in self.deity["All"]:
+            if deity["Name"][0] == deity_choice:
+                self.deity_choice = deity
                 break
-
-        if found:
-            self.deity_choice = found
         else:
-            self.deity_choice = random.choice(self.deity[self.alignment])
+            print(f"Deity {deity_choice} not found.")
     else:
-        self.deity_choice = random.choice(self.deity[self.alignment])
-
+        # If no deity_choice is provided, you could choose randomly
+        self.deity_choice = random.choice(self.deity["Other"])
+    
     return self.deity_choice
+
