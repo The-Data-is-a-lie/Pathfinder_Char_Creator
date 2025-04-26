@@ -88,6 +88,7 @@ character_json_config = {
 	'deity': Load_when_needed('Backend/json/deity.json'),	
 	'druid_domains': Load_when_needed('Backend/json/druid_domains.json'),		
 	'feat_buckets': Load_when_needed('Backend/json/feat_buckets.json'),
+	'feat_tax': Load_when_needed('Backend/json/feat_tax.json'),
 	'first_names_regions': Load_when_needed('Backend/json/first_names_regions.json'),
 	'firearms': Load_when_needed('Backend/json/firearms.json'),
 	'flaws': Load_when_needed('Backend/json/flaws.json'),
@@ -141,8 +142,8 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_race='Random', class_choice='cleric', multi_class='N', 
-						 alignment_input = 'TN' , deity_flag = 'random', userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=8, num_sides=8, 
+def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userInput_race='Random', class_choice='cleric', multi_class='N', 
+						 alignment_input = 'cg' , deity_flag = 'random', userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=8, num_sides=8, 
 						 high_level=40, low_level=40, gold_num=1000000, homebrew_amount=None):
 		casting_level_str_foundry = 'None'
 		
@@ -172,9 +173,12 @@ def generate_random_char(create_new_char='Y', userInput_region="XX", userInput_r
 		alignment = alignment.title()
 
 		if deity_flag.lower() == 'random':
-			deity = randomize_deity(character)
+			deity = randomize_deity(character, random_flag=True)
 		else:
-			deity = deity_flag.lower()
+			deity = randomize_deity(character, random_flag=False, deity_choice=deity_flag)
+
+		print(f"Deity: {deity}")
+
 
 
 		age_number = randomize_body_feature(character, 'age')

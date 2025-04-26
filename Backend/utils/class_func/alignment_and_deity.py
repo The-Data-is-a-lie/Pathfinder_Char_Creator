@@ -16,6 +16,23 @@ def choose_alignment(self, alignments, alignment_input):
 
     return self.alignment, mini_alignment.lower()
 
-def randomize_deity(self):
-    self.deity_choice = random.choice(list(self.deity[self.alignment]))
+def randomize_deity(self, random_flag=True, deity_choice=None):
+    if not random_flag:
+        found = None
+        # Search through all alignments and deities
+        for alignment, deity_list in self.deity.items():
+            for deity in deity_list:
+                if deity_choice in deity.get("Name", []):
+                    found = deity
+                    break
+            if found:
+                break
+
+        if found:
+            self.deity_choice = found
+        else:
+            self.deity_choice = random.choice(self.deity[self.alignment])
+    else:
+        self.deity_choice = random.choice(self.deity[self.alignment])
+
     return self.deity_choice
