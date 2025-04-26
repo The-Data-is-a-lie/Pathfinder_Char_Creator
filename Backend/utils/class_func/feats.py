@@ -282,10 +282,10 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
         if casting_level_str not in ("low", "mid", "high"):
             feat_result_dict = remove_spell_caster_feats(feat_result_dict)
         # remove feats with 'arcane' words if a divine caster
-        elif character.c_class in divine_casters:
+        if character.c_class in divine_casters:
             feat_result_dict = remove_arcane_feats(feat_result_dict)
         # remove feats with 'divine' words if a arcane caster
-        else:
+        if character.c_class not in divine_casters:
             feat_result_dict = remove_divine_feats(feat_result_dict)
 
         chosen_feats = get_feats_without_prerequisites(character, character.c_class, feat_result_dict, feat_amount=feat_amount)
@@ -300,6 +300,8 @@ def remove_spell_caster_feats(feats):
     feats = {name: info for name, info in feats.items()
             if not  any(word in name.lower() or
                         word in info.get('description', '').lower() or
+                        word in info.get('prerequisites', '').lower() or
+                        word in info.get('prerequisite', '').lower() or
                         word in info.get('benefits', '').lower()
                         for word in spell_word_list)}
     return feats
@@ -309,6 +311,8 @@ def remove_arcane_feats(feats):
     feats = {name: info for name, info in feats.items()
             if not  any(word in name.lower() or
                         word in info.get('description', '').lower() or
+                        word in info.get('prerequisites', '').lower() or
+                        word in info.get('prerequisite', '').lower() or
                         word in info.get('benefits', '').lower()
                         for word in spell_word_list)}
     return feats
@@ -318,6 +322,8 @@ def remove_divine_feats(feats):
     feats = {name: info for name, info in feats.items()
             if not  any(word in name.lower() or
                         word in info.get('description', '').lower() or
+                        word in info.get('prerequisites', '').lower() or
+                        word in info.get('prerequisite', '').lower() or
                         word in info.get('benefits', '').lower()
                         for word in spell_word_list)}
     return feats

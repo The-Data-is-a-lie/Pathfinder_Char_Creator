@@ -32,21 +32,25 @@ def randomize_level(character, min_num, max_num, flaw_amount=0):
 
         # we create capped levels for things like spells just in case we'll need it for many functions
 #should this be update feats, since we're updating feat amount [it 100% depends on level]
-def update_level(character, level, c_class_level, c_class_2_level, flaw_amount=None, homebrew_amount=None):
+def update_level(character, level, c_class_level, c_class_2_level, flaw_amount=None):
     character.level = level
     character.c_class_level = c_class_level
     character.c_class_2_level = c_class_2_level              
 
     character.flaw_feat_amount = 0
+    character.story_feat_amount = 0
+    character.flavor_feat_amount = 0
     character.normal_feat_amount = ( ceil(character.level/2) )
     if flaw_amount != 0:
         character.normal_feat_amount = ceil(character.level/2)
         character.flaw_feat_amount = min(max(floor(flaw_amount/2 + 1),1), 3) #So it's always 1<feats<3
-    if homebrew_amount != None:
-        character.normal_feat_amount = 4 + ceil(character.level/2) + floor(character.level/5)
+    if character.homebrew_feat_amount not in ('N', 'n'):
+        character.normal_feat_amount = ceil(character.level/2)
+        character.story_feat_amount = 1 + floor(character.level/5)
         character.flaw_feat_amount = min(max(floor(flaw_amount/2 + 1),1), 3) #So it's always 1<feats<3
+        character.flavor_feat_amount = 1
     
-    character.feat_amounts = character.normal_feat_amount + character.flaw_feat_amount
+    character.feat_amounts = character.normal_feat_amount + character.flaw_feat_amount + character.story_feat_amount + character.flavor_feat_amount
 
 
     _update_bab_total(character)

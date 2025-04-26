@@ -12,6 +12,7 @@ def extra_combat_feats(character):
     #fighter section
     if character.c_class == 'fighter':
         extra_feats +=  1 + floor((character.c_class_level)/2)
+
     #warpriest section
     if character.c_class == 'warpriest':
         extra_feats += floor((character.c_class_level)/3)        
@@ -68,8 +69,8 @@ def extra_combat_feats(character):
 
     #currently we're just adding combat feats to total feats, 
     # but we may want to have them be their own separate entity
-    character.class_feats = extra_feats 
-    return character.class_feats   
+    character.class_feats_amount = extra_feats 
+    return character.class_feats_amount   
 
 
 def extra_teamwork_feats(character):

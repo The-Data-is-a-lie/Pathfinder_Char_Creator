@@ -50,6 +50,7 @@ from utils.class_func.spells 						import (extra_spells_divine, spells_known_att
                                                    	        spells_per_day_attr, spells_per_day_from_ability_mod,
                                                             class_for_spells_attr, caster_formula)#, alignment_spell_limits
 from utils.class_func.stats 						import roll_stats, assign_stats, calc_ability_mod 
+from utils.class_func.separate_feats_func 			import separate_feats_func
 from utils.class_func.traits 						import trait_selector
 from utils.class_func.versatile_performance 		import versatile_perfomance
 from utils.class_func.wizard_school 				import wizard_school_chooser, wizard_opposing_school
@@ -142,9 +143,9 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userInput_race='Random', class_choice='cleric', multi_class='N', 
+def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userInput_race='Random', class_choice='fighter', multi_class='N', 
 						 alignment_input = 'cg' , deity_flag = 'random', userInput_gender='FeMale', truly_random_feats = "Y", inherents = "Y", num_dice=8, num_sides=8, 
-						 high_level=40, low_level=40, gold_num=1000000, homebrew_amount=None):
+						 high_level=15, low_level=15, gold_num=1000000, homebrew_feat_amount="Y"):
 		casting_level_str_foundry = 'None'
 		
 		character = CreateNewCharacter(
@@ -152,9 +153,15 @@ def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userIn
 		character.instantiate_full_data_dict()
 		character.data_dict['class features'] = {}
 
+		# Flag that allows for homebrew feats to be added
+		character.homebrew_feat_amount = homebrew_feat_amount
+		# Instantitae character.class_feats_amount
+		character.class_feats_amount = 0
+		# Instantitae teamwork_feats
+		teamwork_feats = 0
+
 		# prep variables
 		no_prereq_prep(character)
-		teamwork_feats = 0
 		character.processed_feats = set()
 		character.cached_dataset_without_prerequisites = []
 		character.cached_prereq_list = set()
@@ -177,7 +184,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userIn
 		else:
 			deity = randomize_deity(character, random_flag=False, deity_choice=deity_flag)
 
-
+ 
 		age_number = randomize_body_feature(character, 'age')
 		height_number = randomize_body_feature(character, 'height')
 		weight_number = randomize_body_feature(character, 'weight')			
@@ -507,6 +514,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userIn
 
 		# Feat Selector
 		casting_level_str = character.class_data[character.c_class]['casting level'].lower()
+		print("character.chooseable", character.chooseable)
+		character.feat_amounts += character.class_feats_amount
 		if truly_random_feats.upper() == "Y":
 		# Truly Random Feats
 		# full casters + mid casters with low BAB
@@ -532,8 +541,12 @@ def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userIn
 
 		# Teamwork feats selector
 		if character.teamwork_feats > 0:
+			character.teamwork_feats += 1
 			teamwork_feats = generic_feat_chooser(character, character.c_class, casting_level_str, 'Null', info_column = 'description', override=True, special_type="teamwork", feat_amount = character.teamwork_feats)
-			character.feats.extend(teamwork_feats)
+
+		# Add later -> to allow for specialized class feats
+		# if character.class_feats_amount > 0:
+		# 	class_feats = generic_feat_chooser(character, character.c_class, casting_level_str, 'Null', info_column = 'description', override=True, special_type="teamwork", feat_amount = character.teamwork_feats)
 
 		feats = character.feats 
 
@@ -600,6 +613,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userIn
 			except:
 				print("wizard, but wizard spell list has no bonus spells")
 
+
+	# ------------------- Last minute Feat swapping process -------------------#
+		story_feats, flaw_feats, flavor_feats, class_feats, feats = separate_feats_func(character, feats)
+
 	#-------------------- Start of export process --------------------#
 		archetype_info = json.dumps(archetype_info, indent=4)
 		export_list_non_dict = [
@@ -624,7 +641,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userIn
 			#  chosen_subrace, subrace_description, 
 				character.archetype1,
 				hair_color, hair_type, eye_color, appearance,
-				language_text, feats, 
+				language_text, 
+				feats, teamwork_feats, story_feats, flaw_feats, class_feats, flavor_feats,
 				character.gold, character.platnium,
 				full_domain, school, opposing_school,
 				bloodline,
@@ -667,7 +685,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userIn
 					# "chosen_subrace", "subrace_description", 
 					"archetype1",
 					"hair_color", "hair_type", "eye_color", "appearance",
-					"language_text", "feats", 
+					"language_text", 
+					"feats", "teamwork_feats", "story_feats", "flaw_feats", "class_feats", "flavor_feats",
 					"gold", "platnium",
 					"full_domain", "school", "opposing_school",
 					"bloodline",
@@ -745,7 +764,11 @@ def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userIn
 		print(".")
 		print(".")
 		# print("character.chooseable", sorted(list(character.chooseable)))
-		# print("character.feats", sorted(list(character.feats)))
+		print("character.feats", sorted(list(feats)))
+		print("story_feats", sorted(list(story_feats)))
+		print("flaw_feats", sorted(list(flaw_feats)))
+		print("class_feats", sorted(list(class_feats)))
+		# print("character.teamwork_feats", sorted(list(teamwork_feats)))
 		# print("character.processed_feats", character.processed_feats)
 		# print("character.chooseable_talents", sorted(character.chooseable_talents))
 		return character.data_dict
