@@ -144,7 +144,7 @@ character_json_config = {
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
 def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Half-Orc', class_choice='fighter', multi_class='N', 
-						 alignment_input = 'LG' , deity_flag = 'Pharasma', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", num_dice=4, num_sides=6, 
+						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", num_dice=4, num_sides=6, 
 						 high_level=15, low_level=15, gold_num=1000000, homebrew_feat_amount="Y"):
 		
 		print(create_new_char)
@@ -176,6 +176,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		character.class_feats_amount = 0
 		# Instantitae teamwork_feats
 		teamwork_feats = 0
+		# insantiate character.deity_choice
+		character.deity_choice = deity_flag
 
 		# prep variables
 		no_prereq_prep(character)
