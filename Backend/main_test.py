@@ -143,7 +143,7 @@ character_json_config = {
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
 def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userInput_race='Random', class_choice='cleric', multi_class='N', 
-						 alignment_input = 'cg' , deity_flag = 'random', userInput_gender='', truly_random_feats = "Y", inherents = "Y", num_dice=8, num_sides=8, 
+						 alignment_input = 'cg' , deity_flag = 'random', userInput_gender='FeMale', truly_random_feats = "Y", inherents = "Y", num_dice=8, num_sides=8, 
 						 high_level=40, low_level=40, gold_num=1000000, homebrew_amount=None):
 		casting_level_str_foundry = 'None'
 		
@@ -176,9 +176,6 @@ def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userIn
 			deity = randomize_deity(character, random_flag=True)
 		else:
 			deity = randomize_deity(character, random_flag=False, deity_choice=deity_flag)
-
-		print(f"Deity: {deity}")
-
 
 
 		age_number = randomize_body_feature(character, 'age')
@@ -581,17 +578,12 @@ def generate_random_char(create_new_char='Y', userInput_region="Sojoria", userIn
 			bonus_spells = character.data_dict['class features'].get("Talents").get(bloodline).get("bonus spells", [])
 			add_bonus_spells(character, bonus_spells)
 	# Domains
-		print("full_domain", full_domain)
 		if full_domain not in ([], None) and character.c_class.lower() in ("cleric"):
-			print("full_domain", full_domain)
-			print("character.deity_choice_list", character.deity_choice_list)
 			for i, domain in enumerate(full_domain):
 				bonus_spells = character.data_dict.get('class features', {}).get(domain.title(), {}).get("bonus spells", {})
 				add_bonus_spells(character, bonus_spells)
-				print(domain.title(), character.data_dict.get('class features', {}).get(domain.title(), {}))
 
 		if full_domain not in ([], None) and character.c_class.lower() in ("druid"):
-			print("full_domain", full_domain)
 			for i, domain in enumerate(full_domain):
 				bonus_spells = character.data_dict['class features'].get(domain).get("bonus spells", [])
 				add_bonus_spells(character, bonus_spells)
