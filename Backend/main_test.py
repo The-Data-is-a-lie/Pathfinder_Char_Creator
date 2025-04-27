@@ -147,22 +147,22 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", num_dice=4, num_sides=6, 
 						 high_level=15, low_level=15, gold_num=1000000, homebrew_feat_amount="Y"):
 		
-		print(create_new_char)
-		print(userInput_region)
-		print(userInput_race)
-		print(class_choice)
-		print(multi_class)
-		print(alignment_input)
-		print(deity_flag)
-		print(userInput_gender)
-		print(truly_random_feats)
-		print(inherents)
-		print(num_dice)
-		print(num_sides)
-		print(high_level)
-		print(low_level)
-		print(gold_num)
-		print(homebrew_feat_amount)
+		# print(create_new_char)
+		# print(userInput_region)
+		# print(userInput_race)
+		# print(class_choice)
+		# print(multi_class)
+		# print(alignment_input)
+		# print(deity_flag)
+		# print(userInput_gender)
+		# print(truly_random_feats)
+		# print(inherents)
+		# print(num_dice)
+		# print(num_sides)
+		# print(high_level)
+		# print(low_level)
+		# print(gold_num)
+		# print(homebrew_feat_amount)
 		casting_level_str_foundry = 'None'
 		
 		character = CreateNewCharacter(
@@ -200,10 +200,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 		if deity_flag.lower() == 'random':
 			deity = randomize_deity(character, random_flag=True)
-			print("deity 1", deity)
 		else:
 			deity = randomize_deity(character, random_flag=False, deity_choice=deity_flag)
-			print("deity 2", deity)
 
  
 		age_number = randomize_body_feature(character, 'age')
@@ -537,7 +535,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 		# Feat Selector
 		casting_level_str = character.class_data[character.c_class]['casting level'].lower()
-		print("character.chooseable", character.chooseable)
+		# print("character.chooseable", character.chooseable)
 		character.feat_amounts += character.class_feats_amount
 		if truly_random_feats.upper() == "Y":
 		# Truly Random Feats
@@ -648,6 +646,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				alignment,  age_number, 
 				height_number, weight_number, character.dex, character.str, 
 				character.con, character.int, character.wis, character.cha, 
+				character.inherents,
 				flaw, character.Total_HP, character.sheet_health,
 				character.bab_total,
 				armor_ac, shield_ac,
@@ -692,6 +691,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 					"alignment", "age_number", 
 					"height_number", "weight_number", "dex", "str", 
 					"con", "int", "wis", "cha", 
+					"inherents",					
 					"flaw", "Total_HP", "sheet_health",
 					"bab_total",
 					"armor_ac", "shield_ac",
@@ -786,11 +786,13 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		print(".")
 		print(".")
 		print(".")
+		print("character.inherents", character.inherents)
+		print("character.stats", stats)
 		# print("character.chooseable", sorted(list(character.chooseable)))
-		print("character.feats", sorted(list(feats)))
-		print("story_feats", sorted(list(story_feats)))
-		print("flaw_feats", sorted(list(flaw_feats)))
-		print("class_feats", sorted(list(class_feats)))
+		# print("character.feats", sorted(list(feats)))
+		# print("story_feats", sorted(list(story_feats)))
+		# print("flaw_feats", sorted(list(flaw_feats)))
+		# print("class_feats", sorted(list(class_feats)))
 		# print("character.teamwork_feats", sorted(list(teamwork_feats)))
 		# print("character.processed_feats", character.processed_feats)
 		# print("character.chooseable_talents", sorted(character.chooseable_talents))
@@ -798,11 +800,11 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 
 
-		print("region", character.region)
-		print("character.chosen_race", character.chosen_race)
-		print("alignment", alignment)
-		print("mini_alignment", mini_alignment)
-		print("deity_name", deity_name)
+		# print("region", character.region)
+		# print("character.chosen_race", character.chosen_race)
+		# print("alignment", alignment)
+		# print("mini_alignment", mini_alignment)
+		# print("deity_name", deity_name)
 		# print("race", character.races)
 
 		return character.data_dict

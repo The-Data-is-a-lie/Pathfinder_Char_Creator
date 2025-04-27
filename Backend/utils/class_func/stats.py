@@ -33,9 +33,10 @@ def roll_stats(character, num_dice, num_sides, inherent_flag='Y'):
 
     inherent_flag = inherent_flag.lower()
     # (if flagged) Distribute the inherents
-    if inherent_flag == 'y':
+    if inherent_flag != 'n':
         inherents = roll_inherents_func(character)
-        stats = distribute_inherents_func(inherents, stats, orig_stats)
+        create_inherents_func(character, stats, inherents)
+        # stats = distribute_inherents_func(inherents, stats, orig_stats)
 
     stats = level_up_stats(stats, character)
     return stats
@@ -81,10 +82,16 @@ def roll_inherents_func(character):
         random_number += random.randint(0, 5)
     return random_number
 
-def distribute_inherents_func(inherents, stats, orig_stats):
-    inherents = min(inherents, 60) #cap at 60 can never go above +10 each stat currently
-    attributes = list(stats.keys())
-    
+def create_inherents_func(character, stats, inherents=0):
+    print("pre stats", stats)
+    inherent_stats = stats.copy()
+    #cap at 60 can never go above +10 each stat currently
+    inherents = min(inherents, 60) 
+    attributes = list(inherent_stats.keys())
+    # Set = 0, so we can create a dictionary of 0s -> create a buff later on
+    for stat in inherent_stats:
+        inherent_stats[stat] = 0
+
     while inherents > 0:
         if len(attributes) == 0:
             break
@@ -93,18 +100,46 @@ def distribute_inherents_func(inherents, stats, orig_stats):
         attribute = random.choice(attributes)
         
         # Calculate the maximum allowable increase for the selected attribute
-        max_increase = orig_stats[attribute] + 10 - stats[attribute]
+        max_increase = 10 - inherent_stats[attribute]
         
         if max_increase > 0:
             # Allocate a random amount of inherents to this attribute, up to the maximum allowable increase
             allocation = min(inherents, random.randint(1, max_increase))
-            stats[attribute] += allocation
+            inherent_stats[attribute] += allocation
             inherents -= allocation
         else:
             # Remove the attribute if it can't be increased further
             attributes.remove(attribute)
+
+    character.inherents = inherent_stats
+    print("post stats", stats)
+    return None
+
+
+# def distribute_inherents_func(inherents, stats, orig_stats):
+#     inherents = min(inherents, 60) #cap at 60 can never go above +10 each stat currently
+#     attributes = list(stats.keys())
     
-    return stats
+#     while inherents > 0:
+#         if len(attributes) == 0:
+#             break
+
+#         # Randomly pick an attribute
+#         attribute = random.choice(attributes)
+        
+#         # Calculate the maximum allowable increase for the selected attribute
+#         max_increase = orig_stats[attribute] + 10 - stats[attribute]
+        
+#         if max_increase > 0:
+#             # Allocate a random amount of inherents to this attribute, up to the maximum allowable increase
+#             allocation = min(inherents, random.randint(1, max_increase))
+#             stats[attribute] += allocation
+#             inherents -= allocation
+#         else:
+#             # Remove the attribute if it can't be increased further
+#             attributes.remove(attribute)
+    
+#     return stats
 
 
 def level_up_stats(stats, character):

@@ -108,7 +108,6 @@ def update_character_data():
     session['character_data'] = results
 
     # Print raw data to terminal for debugging
-    print("Character Data: ", session['character_data'])
     return jsonify(session['character_data'])
 
 if __name__ == '__main__':
