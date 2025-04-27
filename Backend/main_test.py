@@ -49,6 +49,7 @@ from utils.class_func.spells 						import (extra_spells_divine, spells_known_att
 										   					spells_known_extra_roll, spells_known_selection, 
                                                    	        spells_per_day_attr, spells_per_day_from_ability_mod,
                                                             class_for_spells_attr, caster_formula)#, alignment_spell_limits
+from utils.class_func.spell_alphabetize_and_dedupe 	import spell_alphabetize_and_dedupe_func
 from utils.class_func.stats 						import roll_stats, assign_stats, calc_ability_mod 
 from utils.class_func.separate_feats_func 			import separate_feats_func
 from utils.class_func.traits 						import trait_selector
@@ -143,28 +144,28 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Half-Orc', class_choice='fighter', multi_class='N', 
+def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Half-Orc', class_choice='wizard', multi_class='N', 
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", homebrew_feat_amount="Y",num_dice="SADF", num_sides="DSFAWEF", 
 						 high_level=15, low_level=15, gold_num=1000000):
 		
-		print(create_new_char)
-		print(userInput_region)
-		print(userInput_race)
-		print(class_choice)
-		print(multi_class)
-		print(alignment_input)
-		print(deity_flag)
-		print(userInput_gender)
-		print(truly_random_feats)
-		print(inherents)
-		print(num_dice)
-		print("Type num_dice", type(num_dice))
-		print(num_sides)
-		print("Type num_sides", type(num_sides))
-		print(high_level)
-		print(low_level)
-		print(gold_num)
-		print(homebrew_feat_amount)
+		# print(create_new_char)
+		# print(userInput_region)
+		# print(userInput_race)
+		# print(class_choice)
+		# print(multi_class)
+		# print(alignment_input)
+		# print(deity_flag)
+		# print(userInput_gender)
+		# print(truly_random_feats)
+		# print(inherents)
+		# print(num_dice)
+		# print("Type num_dice", type(num_dice))
+		# print(num_sides)
+		# print("Type num_sides", type(num_sides))
+		# print(high_level)
+		# print(low_level)
+		# print(gold_num)
+		# print(homebrew_feat_amount)
 		casting_level_str_foundry = 'None'
 		
 		character = CreateNewCharacter(
@@ -639,6 +640,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 	# ------------------- Last minute Feat swapping process -------------------#
 		story_feats, flaw_feats, flavor_feats, class_feats, feats = separate_feats_func(character, feats)
+
+	# ------------------- Last minute Spell Alphabetize + dedupe process -------------------#
+
+		character.spell_list_choose_from = spell_alphabetize_and_dedupe_func(character.spell_list_choose_from)
 
 	#-------------------- Start of export process --------------------#
 		archetype_info = json.dumps(archetype_info, indent=4)
