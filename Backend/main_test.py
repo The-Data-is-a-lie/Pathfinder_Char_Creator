@@ -642,8 +642,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		story_feats, flaw_feats, flavor_feats, class_feats, feats = separate_feats_func(character, feats)
 
 	# ------------------- Last minute Spell Alphabetize + dedupe process -------------------#
+		print("pre character.spell_list_choose_from", character.spell_list_choose_from)
 
 		character.spell_list_choose_from = spell_alphabetize_and_dedupe_func(character.spell_list_choose_from)
+		print("post character.spell_list_choose_from", character.spell_list_choose_from)
 
 	#-------------------- Start of export process --------------------#
 		archetype_info = json.dumps(archetype_info, indent=4)

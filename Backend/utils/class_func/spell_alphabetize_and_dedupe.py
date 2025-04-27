@@ -12,4 +12,4 @@ def spell_alphabetize_and_dedupe_func(spell_list):
 
     except: 
         return None   
-    return unique_spells
+    return spell_list
