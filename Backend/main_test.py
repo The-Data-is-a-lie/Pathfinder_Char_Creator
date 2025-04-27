@@ -646,7 +646,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				alignment,  age_number, 
 				height_number, weight_number, character.dex, character.str, 
 				character.con, character.int, character.wis, character.cha, 
-				character.inherents,
+				character.inherents, character.level_up_stats,
 				flaw, character.Total_HP, character.sheet_health,
 				character.bab_total,
 				armor_ac, shield_ac,
@@ -691,7 +691,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 					"alignment", "age_number", 
 					"height_number", "weight_number", "dex", "str", 
 					"con", "int", "wis", "cha", 
-					"inherents",					
+					"inherents", "level_up_stats",			
 					"flaw", "Total_HP", "sheet_health",
 					"bab_total",
 					"armor_ac", "shield_ac",
@@ -788,6 +788,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		print(".")
 		print("character.inherents", character.inherents)
 		print("character.stats", stats)
+		print("character.level_up_stats", character.level_up_stats)
 		# print("character.chooseable", sorted(list(character.chooseable)))
 		# print("character.feats", sorted(list(feats)))
 		# print("story_feats", sorted(list(story_feats)))

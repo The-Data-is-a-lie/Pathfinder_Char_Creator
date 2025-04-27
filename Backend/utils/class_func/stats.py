@@ -38,7 +38,7 @@ def roll_stats(character, num_dice, num_sides, inherent_flag='Y'):
         create_inherents_func(character, stats, inherents)
         # stats = distribute_inherents_func(inherents, stats, orig_stats)
 
-    stats = level_up_stats(stats, character)
+    level_up_stats(stats, character)
     return stats
 
 def assign_stats(character, stats):
@@ -112,39 +112,20 @@ def create_inherents_func(character, stats, inherents=0):
             attributes.remove(attribute)
 
     character.inherents = inherent_stats
-    print("post stats", stats)
     return None
 
-
-# def distribute_inherents_func(inherents, stats, orig_stats):
-#     inherents = min(inherents, 60) #cap at 60 can never go above +10 each stat currently
-#     attributes = list(stats.keys())
-    
-#     while inherents > 0:
-#         if len(attributes) == 0:
-#             break
-
-#         # Randomly pick an attribute
-#         attribute = random.choice(attributes)
-        
-#         # Calculate the maximum allowable increase for the selected attribute
-#         max_increase = orig_stats[attribute] + 10 - stats[attribute]
-        
-#         if max_increase > 0:
-#             # Allocate a random amount of inherents to this attribute, up to the maximum allowable increase
-#             allocation = min(inherents, random.randint(1, max_increase))
-#             stats[attribute] += allocation
-#             inherents -= allocation
-#         else:
-#             # Remove the attribute if it can't be increased further
-#             attributes.remove(attribute)
-    
-#     return stats
+def level_up_stats(stats, character, main_stat=None):
+    level_up_stats = stats.copy()
+    for stat in level_up_stats:
+        level_up_stats[stat] = 0
 
 
-def level_up_stats(stats, character):
     num_of_stats = floor(character.c_class_level / 4)
     for i in range(num_of_stats):
-        attribute = random.choice(list(stats.keys()))
-        stats[attribute] += 1
-    return stats
+        attribute = random.choice(list(level_up_stats.keys()))
+        level_up_stats[attribute] += 1
+
+    character.level_up_stats = level_up_stats
+    return
+
+
