@@ -12,8 +12,9 @@ from utils.class_func.race_func import *
 character_data = {}
 
 def roll_dice(num_dice, num_sides):
-    if not (isinstance(num_dice, int) or isinstance(num_sides, int)):
+    if not (isinstance(num_dice, int)):
         num_dice = 4
+    if not isinstance(num_sides, int):
         num_sides = 6
     rolls = []
     for _ in range(num_dice):
