@@ -108,7 +108,7 @@ def name_chooser(character):
     return character.f_name, character.l_name
 
     
-def chooseClass(character, class_choice):
+def chooseClass(character, class_choice, chosen_BAB, chosen_caster_level=None):
     """
     Select a class or 
     Gives the Character a random class based off of BAB selection
@@ -122,11 +122,20 @@ def chooseClass(character, class_choice):
     #remove occult classes
     available_classes = [x for x in available_classes if x not in occult_classes]
     available_classes = [x for x in available_classes if x not in path_of_war_class]
-            
-    if class_choice not in available_classes:
-        class_choice = random.choice(available_classes)
 
-    if class_choice in occult_classes or class_choice in path_of_war_class:
+
+
+    if not class_choice in available_classes:
+        available_classes_manip = ensure_BAB_and_caster_level(character, available_classes, "bab", chosen_BAB)
+        print("available_classes_manip 1", available_classes_manip)
+        available_classes_manip = ensure_BAB_and_caster_level(character, available_classes_manip, "casting level", chosen_caster_level)
+        print("available_classes_manip 2", available_classes_manip)
+        class_choice = random.choice(available_classes_manip)
+
+    # if no class is specified, allow for people to specify BAB and caster level
+
+    # looping to ensure we don't have a class we don't want included
+    while (class_choice in occult_classes or class_choice in path_of_war_class) and class_choice not in available_classes:
         class_choice = random.choice(available_classes)
 
     # userInput_class = input(f'please type a class name to select a class, or type 0 for a random class: ').lower()
@@ -160,6 +169,20 @@ def chooseClass(character, class_choice):
     return character.c_class
 
 
+def ensure_BAB_and_caster_level(character, available_classes, BAB_or_caster_level, pre_chosen_bab = ['H', 'M', 'L']):
+    chooseable_classes_bab = []
+    if not isinstance(pre_chosen_bab, list):
+        chosen_bab = [pre_chosen_bab.upper()]
+
+    if not isinstance(pre_chosen_bab, list) and BAB_or_caster_level not in ('bab'):
+        pre_chosen_bab = ['none', 'low', 'mid', 'high']
+
+    for c in available_classes:
+        if not character.class_data[c.lower()][str(BAB_or_caster_level)].upper() in chosen_bab:
+            continue
+        chooseable_classes_bab.append(c.lower())
+
+    return chooseable_classes_bab
 
 def dip_function(character, base_classes, multi_class = False):
     """

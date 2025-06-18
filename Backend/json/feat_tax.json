@@ -1,12 +1,491 @@
 {
     "feat_tax": {
-        "two-weapon fighting": {
-            "1": "improved two-weapon fighting",
-            "2": "greater two-weapon fighting"                
+        "airy step": {
+            "1": "wings of air"
         },
-        "two-weapon defense": {
-            "1": "improved two-weapon defense",
-            "2": "greater two-weapon defense"                
-        }
+        "alertness": {
+            "1": "one eye open",
+            "2": "shrewd tactician"
+        },
+        "angel wings": {
+            "1": "metallic wings"
+        },
+        "anticipate dodge": {
+            "1": "counter reflexes"
+        },
+        "arcane armor training": {
+            "1": "arcane armor mastery"
+        },
+        "arcane shield": {
+            "1": "reactive arcane shield"
+        },
+        "arcane strike": {
+            "1": "riving strike",
+            "2": "blooded arcane strike"
+        },
+        "armor adept": {
+            "1": "creative armorsmith",
+            "2": "modification master"
+        },
+        "armor focus": {
+            "1": "improved armor focus"
+        },
+        "armor material expertise": {
+            "1": "armor material mastery"
+        },
+        "back to back": {
+            "1": "improved back to back"
+        },
+        "balor whip": {
+            "1": "improved balor whip",
+            "2": "greater balor whip"
+        },
+        "banishing critical": {
+            "1": "dimensional awareness",
+            "2": "dimensional disruption"
+        },
+        "basic harmony": {
+            "1": "compelling harmonies",
+            "2": "counterpoint to inspiration"
+        },
+        "beartrap bite": {
+            "1": "bear hug"
+        },
+        "believer’s boon": {
+            "1": "believer’s hands"
+        },
+        "bodyguard": {
+            "1": "in harm's way"
+        },
+        "bonded mind": {
+            "1": "exceptional aid"
+        },
+        "blind fight": {
+            "1": "improved blind fight",
+            "2": "aural insight",
+            "3": "greater blind fight"
+        },
+        "broken wing gambit": {
+            "1": "wounded paw gambit"
+        },
+        "careful sneak": {
+            "1": "exquisite sneak"
+        },
+        "catch off-guard": {
+            "1": "improvised weapon mastery"
+        },
+        "throw anything": {
+            "1": "improvised weapon mastery"
+        },
+        "chakra initiate": {
+            "1": "chakra adept",
+            "2": "chakra mandala",
+            "3": "chakra master"
+        },
+        "channel force": {
+            "1": "improved channel force",
+            "2": "greater channel force"
+        },
+        "charging hurler": {
+            "1": "improved charging hurler"
+        },
+        "clarity of pain": {
+            "1": "exorcising mutilation"
+        },
+        "cleave": {
+            "1": "great cleave",
+            "2": "whirlwind attack"
+        },
+        "cleaving finish": {
+            "1": "improved cleaving finish"
+        },
+        "combat meditation": {
+            "1": "meditative concentration",
+            "2": "slow time",
+            "3": "perfect awareness",
+            "4": "perfect center"
+        },
+        "combat vigor": {
+            "1": "take a breather",
+            "2": "vim and vigor",
+            "3": "fortuitous vigor",
+            "4": "restorative vigor"
+        },
+        "covering shield": {
+            "1": "covering defense"
+        },
+        "cut from the air": {
+            "1": "smash from the air"
+        },
+        "deathless initiate": {
+            "1": "deathless master",
+            "2": "deathless zealot"
+        },
+        "defiant luck": {
+            "1": "inexplicable luck",
+            "2": "bestow luck"
+        },
+        "deflect arrows": {
+            "1": "snatch arrows",
+            "2": "throw back arrows"
+        },
+        "demoralizing lash": {
+            "1": "taskmaster",
+            "2": "terrorizing display"
+        },
+        "devastating strike": {
+            "1": "improved devastating strike"
+        },
+        "dimensional agility": {
+            "1": "dimensional assault",
+            "2": "dimensional dervish",
+            "3": "dimensional savant",
+            "4": "dimensional maneuvers"
+        },
+        "disarm partner": {
+            "1": "improved disarm partner"
+        },
+        "disengaging feint": {
+            "1": "disengaging flourish",
+            "2": "disengaging shot"
+        },
+        "disorienting maneuver": {
+            "1": "canny tumble"
+        },
+        "disruptive": {
+            "1": "spellbreaker"
+        },
+        "double_slice": {
+            "1": "two-weapon rend"
+        },
+        "draconic aspect": {
+            "1": "draconic breath",
+            "2": "draconic glide",
+            "3": "draconic paragon"
+        },
+        "drow nobility": {
+            "1": "improved drow nobility",
+            "2": "greater drow nobility"
+        },
+        "duck and cover": {
+            "1": "improved duck and cover"
+        },
+        "echoes of stone": {
+            "1": "murmurs of earth"
+        },
+        "endurance": {
+            "1": "diehard",
+            "2": "fast healer"
+        },
+        "escape route": {
+            "1": "swing about"
+        },
+        "familiar bond": {
+            "1": "improved familiar bond"
+        },
+        "favored prestige class": {
+            "1": "prestigious spellcaster"
+        },
+        "fast learner": {
+            "1": "improvisation",
+            "2": "improved improvisation"
+        },
+        "fearless curiosity": {
+            "1": "intimidating confidence",
+            "2": "dauntless destiny"
+        },
+        "feint partner": {
+            "1": "improved feint partner"
+        },
+        "feinting flurry": {
+            "1": "improved feinting flurry"
+        },
+        "final embrace": {
+            "1": "final embrace horror",
+            "2": "final embrace master"
+        },
+        "fury of the tainted": {
+            "1": "improved fury of the tainted"
+        },
+        "gang up": {
+            "1": "team up",
+            "2": "merciless beating"
+        },
+        "gate breaker": {
+            "1": "relic breaker"
+        },
+        "goblin cleaver": {
+            "1": "orc hewer",
+            "2": "giant killer"
+        },
+        "great fortitude": {
+            "1": "improved great fortitude"
+        },
+        "hard headed": {
+            "1": "dented helm",
+            "2": "cloven helm"
+        },
+        "harvest parts": {
+            "1": "grisly ornament",
+            "2": "monstrous crafter"
+        },
+        "heroic recovery": {
+            "1": "heroic defiance"
+        },
+        "hurtful": {
+            "1": "pile on"
+        },
+        "improved called shot": {
+            "1": "greater called shot",
+            "2": "perfect called shot"
+        },
+        "impaling critical": {
+            "1": "improved impaling critical"
+        },
+        "improved initiative": {
+            "1": "befuddling initiative"
+        },
+        "improved reposition": {
+            "1": "tactical reposition"
+        },
+        "improved shield bash": {
+            "1": "shield slam",
+            "2": "shield snag",
+            "3": "shield master"
+        },
+        "improved stonecunning": {
+            "1": "stone sense"
+        },
+        "intense blows": {
+            "1": "knocking blows"
+        },
+        "intimidating prowess": {
+            "1": "visceral threat",
+            "2": "shocking bellow",
+            "3": "strongarm"
+        },
+        "iron will": {
+            "1": "improved iron will"
+        },
+        "ironclad logic": {
+            "1": "play to the crowd"
+        },
+        "ironclad reactions": {
+            "1": "greater ironclad reactions"
+        },
+        "jawbreaker": {
+            "1": "bonebreaker",
+            "2": "neckbreaker"
+        },
+        "ki throw": {
+            "1": "improved ki throw",
+            "2": "binding throw",
+            "3": "spinning throw",
+            "4": "enhanced ki throw"
+        },
+        "killing flourish": {
+            "1": "gruesome slaughter"
+        },
+        "lightning reflexes": {
+            "1": "improved lightning reflexes"
+        },
+        "lunge": {
+            "1": "monkey lunge"
+        },
+        "marksman’s utility": {
+            "1": "finesse shot",
+            "2": "impressive grit"
+        },
+        "martial training 1": {
+            "1": "martial training 2"
+        },
+        "martial training 3": {
+            "1": "martial training 4"
+        },
+        "martial training 5": {
+            "1": "martial training 6"
+        },
+        "meditation master": {
+            "1": "body control",
+            "2": "bend with the wind",
+            "3": "body mastery"
+        },
+        "misdirection tactics": {
+            "1": "misdirection redirection",
+            "2": "misdirection attack"
+        },
+        "missile shield": {
+            "1": "ray shield",
+            "2": "greater ray shield"
+        },
+        "monstrous disguise": {
+            "1": "monstrous masquerade"
+        },
+        "monstrous mask": {
+            "1": "terrifying mask"
+        },
+        "monstrous mount": {
+            "1": "monstrous mount mastery"
+        },
+        "moonlight stalker": {
+            "1": "moonlight stalker feint",
+            "2": "moonlight stalker master"
+        },
+        "nature soul": {
+            "1": "friend to animals",
+            "2": "boon companion"
+        },
+        "net adept": {
+            "1": "net maneuvering",
+            "2": "net and trident",
+            "3": "net trickery"
+        },
+        "nightmare fist": {
+            "1": "nightmare weaver",
+            "2": "nightmare striker"
+        },
+        "nimble moves": {
+            "1": "bounding step",
+            "2": "mystic stride",
+            "3": "gliding steps",
+            "4": "acrobatic steps",
+            "5": "light step"
+        },
+        "noble scion": {
+            "1": "enlightened noble"
+        },
+        "opportune aid": {
+            "1": "swift aid"
+        },
+        "penetrating strike": {
+            "1": "greater penetrating strike"
+        },
+        "poised bearing": {
+            "1": "imposing bearing"
+        },
+        "point blank shot": {
+            "1": "precise shot",
+            "2": "rapid shot",
+            "3": "manyshot"
+        },
+        "possessed hand": {
+            "1": "hand’s autonomy",
+            "2": "hand’s knowledge",
+            "3": "hand’s sight"
+        },
+        "position of strength": {
+            "1": "improved position of strength"
+        },
+        "punishing step": {
+            "1": "improved punishing step"
+        },
+        "quick draw": {
+            "1": "improved quick draw",
+            "2": "quick sheath",
+            "3": "lightning swap"
+        },
+        "ranged disarm": {
+            "1": "ace disarm"
+        },
+        "ranged trip": {
+            "1": "ace trip"
+        },
+        "ready for anything": {
+            "1": "cunning intuition"
+        },
+        "rending fury": {
+            "1": "improved rending fury",
+            "2": "greater rending fury"
+        },
+        "sap adept": {
+            "1": "sap master"
+        },
+        "scorpion style": {
+            "1": "gorgon’s fist",
+            "2": "medusa’s wrath",
+            "3": "cockatrice strike"
+        },
+        "second chance": {
+            "1": "improved second chance"
+        },
+        "seething hatred": {
+            "1": "extreme prejudice"
+        },
+        "serpent’s lash": {
+            "1": "greater serpent’s lash"
+        },
+        "stalwart": {
+            "1": "improved stalwart"
+          },
+          "stand still": {
+            "1": "steady engagement",
+            "2": "pin down"
+          },
+          "step up": {
+            "1": "following step",
+            "2": "step up and strike"
+          },
+          "street smarts": {
+            "1": "measure foe"
+          },
+          "stony step": {
+            "1": "oread burrower",
+            "2": "oread earth glider"
+          },
+          "studied combatant": {
+            "1": "improved studied combatant"
+          },
+          "stumbling bash": {
+            "1": "toppling bash"
+          },
+          "surprise follow-through": {
+            "1": "improved surprise follow-through"
+          },
+          "swap places": {
+            "1": "improved swap places"
+          },
+          "tengu wings": {
+            "1": "tengu raven form"
+          },
+          "toxicological timing": {
+            "1": "improved toxicological timing"
+          },
+          "tripping staff": {
+            "1": "tripping twirl"
+          },
+          "two-weapon fighting": {
+            "1": "improved two-weapon fighting",
+            "2": "greater two-weapon fighting"
+          },
+          "umbral scion": {
+            "1": "improved umbral scion"
+          },
+          "vital strike": {
+            "1": "improved vital strike",
+            "2": "greater vital strike"
+          },
+          "weapon adept": {
+            "1": "creative weaponsmith",
+            "2": "modification master"
+          },
+          "weapon focus": {
+            "1": "martial focus",
+            "2": "greater weapon focus"
+          },
+          "weapon of the chosen": {
+            "1": "improved weapon of the chosen",
+            "2": "greater weapon of the chosen"
+          },
+          "weapon specialization": {
+            "1": "greater weapon specialization"
+          },
+          "whip mastery": {
+            "1": "improved whip mastery",
+            "2": "greater whip mastery"
+          },
+          "wind stance": {
+            "1": "lightning stance"
+        }      
     }
 }
+  

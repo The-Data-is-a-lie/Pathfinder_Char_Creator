@@ -25,6 +25,7 @@ from utils.class_func.family_func 					import randomize_siblings, randomize_pare
 from utils.class_func.feats 						import (build_selector, chooseable_list, chooseable_list_stats, 
                                                   			chooseable_list_class_features, feat_spell_searcher, generic_multi_chooser, 
                                                             simple_list_chooser, generic_feat_chooser)
+from utils.class_func.feat_tax 						import feat_tax_func
 from utils.class_func.flag_assign 					import human_flag_assigner, druidic_flag_assigner
 from utils.class_func.generic_func 					import generic_class_option_chooser, get_data_without_prerequisites, no_prereq_prep#, no_prereq_loop, chosen_set_append
 from utils.class_func.grand_discovery 				import grand_discovery_chooser
@@ -144,7 +145,7 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Half-Orc', class_choice='wizard', multi_class='N', 
+def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Half-Orc', class_choice='dasfasd', chosen_BAB='L', chosen_caster_level = 'HigH', multi_class='N', 
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", homebrew_feat_amount="Y",num_dice="SADF", num_sides="DSFAWEF", 
 						 high_level=15, low_level=15, gold_num=1000000):
 		
@@ -194,7 +195,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		region_chooser(character,userInput_region)
 		race_chooser(character,userInput_race)
 		f_name, l_name =name_chooser(character)
-		chooseClass(character,class_choice)
+		chooseClass(character,class_choice, chosen_BAB ,chosen_caster_level)
 		dip_function(character,'base_classes', multi_class)
 
 		#add an optional flaws rule function	
@@ -638,8 +639,19 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				print("wizard, but wizard spell list has no bonus spells")
 
 
+		feats.append("two-weapon fighting")
+		feats.append("two-weapon defense")
 	# ------------------- Last minute Feat swapping process -------------------#
 		story_feats, flaw_feats, flavor_feats, class_feats, feats = separate_feats_func(character, feats)
+
+		# Feat tax portion
+		story_feat_tax_dict  = feat_tax_func(character, story_feats)
+		flaw_feat_tax_dict   = feat_tax_func(character, flaw_feats)
+		flavor_feat_tax_dict = feat_tax_func(character, flavor_feats)
+		class_feat_tax_dict  = feat_tax_func(character, class_feats)
+		feats_feat_tax_dict  = feat_tax_func(character, feats)
+
+
 
 	# ------------------- Last minute Spell Alphabetize + dedupe process -------------------#
 		print("pre character.spell_list_choose_from", character.spell_list_choose_from)
@@ -816,6 +828,16 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# print("mini_alignment", mini_alignment)
 		# print("deity_name", deity_name)
 		# print("race", character.races)
+
+		print(".")
+		print(".")
+		print(".")
+		print(".")
+		print("story_feat_tax_dict", story_feat_tax_dict)
+		print("flaw_feat_tax_dict", flaw_feat_tax_dict)
+		print("flavor_feat_tax_dict", flavor_feat_tax_dict)
+		print("class_feat_tax_dict", class_feat_tax_dict)
+		print("feats_feat_tax_dict", feats_feat_tax_dict)
 
 		return character.data_dict
 
