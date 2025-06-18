@@ -123,7 +123,9 @@ def chooseClass(character, class_choice, chosen_BAB, chosen_caster_level=None):
     available_classes = [x for x in available_classes if x not in occult_classes]
     available_classes = [x for x in available_classes if x not in path_of_war_class]
 
-
+    if isinstance(class_choice, str):
+        # To handle incorrectly cased class names
+        class_choice = class_choice.lower()
 
     if not class_choice in available_classes:
         available_classes_manip = ensure_BAB_and_caster_level(character, available_classes, "bab", chosen_BAB)

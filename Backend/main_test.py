@@ -145,7 +145,7 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Half-Orc', class_choice='dasfasd', chosen_BAB='L', chosen_caster_level = 'HigH', multi_class='N', 
+def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Half-Orc', class_choice='FiGHTER', chosen_BAB='L', chosen_caster_level = 'HigH', multi_class='N', 
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", homebrew_feat_amount="Y",num_dice="SADF", num_sides="DSFAWEF", 
 						 high_level=15, low_level=15, gold_num=1000000):
 		
@@ -833,11 +833,12 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		print(".")
 		print(".")
 		print(".")
-		print("story_feat_tax_dict", story_feat_tax_dict)
-		print("flaw_feat_tax_dict", flaw_feat_tax_dict)
-		print("flavor_feat_tax_dict", flavor_feat_tax_dict)
-		print("class_feat_tax_dict", class_feat_tax_dict)
-		print("feats_feat_tax_dict", feats_feat_tax_dict)
+		# print("story_feat_tax_dict", story_feat_tax_dict)
+		# print("flaw_feat_tax_dict", flaw_feat_tax_dict)
+		# print("flavor_feat_tax_dict", flavor_feat_tax_dict)
+		# print("class_feat_tax_dict", class_feat_tax_dict)
+		# print("feats_feat_tax_dict", feats_feat_tax_dict)
+		print("character.c_class", character.c_class)
 
 		return character.data_dict
 
