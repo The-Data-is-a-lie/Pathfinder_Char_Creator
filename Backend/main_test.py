@@ -145,28 +145,30 @@ character_json_config = {
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
-def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Half-Orc', class_choice='FiGHTER', chosen_BAB='L', chosen_caster_level = 'HigH', multi_class='N', 
+def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Orc', class_choice='random', chosen_BAB='random', chosen_caster_level = 'random', multi_class='N', 
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", homebrew_feat_amount="Y",num_dice="SADF", num_sides="DSFAWEF", 
 						 high_level=15, low_level=15, gold_num=1000000):
 		
-		# print(create_new_char)
-		# print(userInput_region)
-		# print(userInput_race)
-		# print(class_choice)
-		# print(multi_class)
-		# print(alignment_input)
-		# print(deity_flag)
-		# print(userInput_gender)
-		# print(truly_random_feats)
-		# print(inherents)
-		# print(num_dice)
-		# print("Type num_dice", type(num_dice))
-		# print(num_sides)
-		# print("Type num_sides", type(num_sides))
-		# print(high_level)
-		# print(low_level)
-		# print(gold_num)
-		# print(homebrew_feat_amount)
+		print(create_new_char)
+		print(userInput_region)
+		print(userInput_race)
+		print(class_choice)
+		print(chosen_BAB)
+		print(chosen_caster_level)
+		print(multi_class)
+		print(alignment_input)
+		print(deity_flag)
+		print(userInput_gender)
+		print(truly_random_feats)
+		print(inherents)
+		print(num_dice)
+		print("Type num_dice", type(num_dice))
+		print(num_sides)
+		print("Type num_sides", type(num_sides))
+		print(high_level)
+		print(low_level)
+		print(gold_num)
+		print(homebrew_feat_amount)
 		casting_level_str_foundry = 'None'
 		
 		character = CreateNewCharacter(
