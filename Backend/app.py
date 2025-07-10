@@ -46,18 +46,20 @@ Session(app)
 # For allowing all origins
 CORS(app, 
      supports_credentials=True, 
-     origins=["http://192.168.1.164:30000", 
-             "http://72.180.6.78:30000", 
-             "http://localhost:3000",
-             "http://localhost:30000",
-             "http://127.0.0.1:30000",
-             "http://127.0.0.1:3000",
-             "http://localhost:4000",
-             "http://localhost:5000",
-             "http://localhost:6000",
-             "http://localhost:7000",
-             "http://localhost:8000",
-             "http://localhost:9000"], 
+    origins=["*"],  # Allow all origins [works]
+
+    #  origins=["http://192.168.1.164:30000", 
+    #          "http://72.180.6.78:30000", 
+    #          "http://localhost:3000",
+    #          "http://localhost:30000",
+    #          "http://127.0.0.1:30000",
+    #          "http://127.0.0.1:3000",
+    #          "http://localhost:4000",
+    #          "http://localhost:5000",
+    #          "http://localhost:6000",
+    #          "http://localhost:7000",
+    #          "http://localhost:8000",
+    #          "http://localhost:9000"], 
              
      methods=["GET", "POST", "PUT", "DELETE"], 
      allow_headers=["Content-Type", "Authorization"]
@@ -111,5 +113,5 @@ def update_character_data():
     return jsonify(session['character_data'])
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 5001))
     app.run(host='0.0.0.0', port=port, debug=False)  # debug when production = dangerous
