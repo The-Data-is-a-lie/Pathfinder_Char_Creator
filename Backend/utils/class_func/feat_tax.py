@@ -17,11 +17,8 @@ def feat_tax_func(character, feats):
 
     for feat in feats:
         if feat in feat_tax_data:
-            # print("Taxed Feat Found:", feat)
             feat_taxed_dict[feat] = list(feat_tax_data[feat].values())
             pre_eligible_feat_taxed_list = list(feat_tax_data[feat].values())
-            # pre_eligible_feat_taxed_list = list(set(pre_eligible_feat_taxed_list))  # Ensure uniqueness
-            # print("Taxable feat list:", list(feat_tax_data[feat].values()))
 
     for feat in pre_eligible_feat_taxed_list:
         eliblibility_req_dict = feat_spell_searcher(character, character.c_class, pre_eligible_feat_taxed_list, "feats", "prerequisites", "description", feat_desc_dict)
@@ -29,12 +26,37 @@ def feat_tax_func(character, feats):
     # confirm eligible feats 
     eligible_feat_taxed_list = confirm_eligible(character, eliblibility_req_dict, eligible_feat_taxed_list)
     print("Eligible feats after confirmation:", eligible_feat_taxed_list)
-    # print("character.chooseable:", character.chooseable)
 
-    return eliblibility_req_dict
+    print("PRE", feat_taxed_dict)
+    remove_untaxed_feats(feat_taxed_dict, eligible_feat_taxed_list)
+    print("POST", feat_taxed_dict)
+
+    return feat_taxed_dict
 
 
+def remove_untaxed_feats(feat_taxed_dict, eligible_feat_taxed_list):
+    ''' remove feats that are not in the eligible_feat_taxed_list from feat_taxed_dict '''
+    for feat, taxed_feats in feat_taxed_dict.items():
+        filtered_feats = []
+        for taxed_feat in taxed_feats:
+            if taxed_feat not in eligible_feat_taxed_list:
+                print("not eligible:", taxed_feat)
+                continue
+            filtered_feats.append(taxed_feat)
+        feat_taxed_dict[feat] = filtered_feats
 
+    # remove empty lists
+    keys_to_delete = []
+
+    for feat, taxed_feats in feat_taxed_dict.items():
+        if not taxed_feats:
+            keys_to_delete.append(feat)
+
+    for key in keys_to_delete:
+        print("Removing key with no taxed feats:", key)
+        del feat_taxed_dict[key]
+
+    return feat_taxed_dict
 
 def confirm_eligible(character, feat_taxed_dict, eligible_feat_taxed_list):
     '''a quick and dirty no_prereq_loop method'''

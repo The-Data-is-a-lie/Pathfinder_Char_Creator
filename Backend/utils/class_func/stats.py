@@ -3,10 +3,17 @@ from math import floor
 from utils.util import roll_dice
 
 def roll_stats(character, num_dice, num_sides, inherent_flag='Y'):
-    if not isinstance(num_dice, int) or num_dice <= 0: 
-        num_dice = 4
+    if not isinstance(num_dice, int) or num_dice <= 0:
+        try:
+            num_dice = int(num_dice)
+        except:
+            num_dice = 4
     if not isinstance(num_sides, int) or num_sides <= 0:
-        num_sides = 6     
+        try:
+            num_sides = int(num_sides)
+        except:
+            num_sides = 6     
+
     main_stat = character.class_data[character.c_class]['main_stat']
     main_stat_2 = character.class_data[character.c_class].get('main_stat_2', None)
 
