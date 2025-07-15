@@ -178,14 +178,14 @@ def ensure_BAB_and_caster_level(character, available_classes, BAB_or_caster_leve
     if not isinstance(pre_chosen_bab, list):
         chosen_bab = [pre_chosen_bab.upper()]
 
-    print("chosen_bab", chosen_bab)
+    # print("chosen_bab", chosen_bab)
     if not isinstance(pre_chosen_bab, list) and BAB_or_caster_level not in ('bab'):
         pre_chosen_bab = ['none', 'low', 'mid', 'high']
 
-    print("pre_chosen_bab", pre_chosen_bab)
+    # print("pre_chosen_bab", pre_chosen_bab)
 
     for c in available_classes:
-        print("c.lower()", c.lower())
+        # print("c.lower()", c.lower())
         if not character.class_data[c.lower()][str(BAB_or_caster_level)].upper() in chosen_bab:
             continue
         chooseable_classes_bab.append(c.lower())

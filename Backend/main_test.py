@@ -25,6 +25,7 @@ from utils.class_func.family_func 					import randomize_siblings, randomize_pare
 from utils.class_func.feats 						import (build_selector, chooseable_list, chooseable_list_stats, 
                                                   			chooseable_list_class_features, feat_spell_searcher, generic_multi_chooser, 
                                                             simple_list_chooser, generic_feat_chooser)
+from utils.class_func.feats_to_chooseable 			import add_feats_to_chooseable
 from utils.class_func.feat_tax 						import feat_tax_func
 from utils.class_func.flag_assign 					import human_flag_assigner, druidic_flag_assigner
 from utils.class_func.generic_func 					import generic_class_option_chooser, get_data_without_prerequisites, no_prereq_prep#, no_prereq_loop, chosen_set_append
@@ -146,7 +147,7 @@ character_json_config = {
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
 def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Orc', class_choice='random', chosen_BAB='random', chosen_caster_level = 'random', multi_class='N', 
-						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", homebrew_feat_amount="Y",num_dice="SADF", num_sides="DSFAWEF", 
+						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", homebrew_feat_amount="Y",num_dice="8", num_sides="8", 
 						 high_level=15, low_level=15, gold_num=1000000):
 		
 		print(create_new_char)
@@ -645,6 +646,15 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		feats.append("two-weapon defense")
 	# ------------------- Last minute Feat swapping process -------------------#
 		story_feats, flaw_feats, flavor_feats, class_feats, feats = separate_feats_func(character, feats)
+		print("story_feats", story_feats)
+		print("flaw_feats", flaw_feats)
+		print("flavor_feats", flavor_feats)
+		print("class_feats", class_feats)
+		print("feats", feats)
+
+		add_feats_to_chooseable(character, story_feats, flaw_feats, flavor_feats, class_feats, feats)
+		# add all feats to character.chooseable (for feat taxing purposes)
+
 
 		# Feat tax portion
 		story_feat_tax_dict  = feat_tax_func(character, story_feats)
@@ -653,13 +663,18 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		class_feat_tax_dict  = feat_tax_func(character, class_feats)
 		feats_feat_tax_dict  = feat_tax_func(character, feats)
 
+		print("story_feat_tax_dict", story_feat_tax_dict)
+		print("flaw_feat_tax_dict", flaw_feat_tax_dict)
+		print("flavor_feat_tax_dict", flavor_feat_tax_dict)
+		print("class_feat_tax_dict", class_feat_tax_dict)
+		print("feats_feat_tax_dict", feats_feat_tax_dict)
 
 
 	# ------------------- Last minute Spell Alphabetize + dedupe process -------------------#
-		print("pre character.spell_list_choose_from", character.spell_list_choose_from)
+		# print("pre character.spell_list_choose_from", character.spell_list_choose_from)
 
 		character.spell_list_choose_from = spell_alphabetize_and_dedupe_func(character.spell_list_choose_from)
-		print("post character.spell_list_choose_from", character.spell_list_choose_from)
+		# print("post character.spell_list_choose_from", character.spell_list_choose_from)
 
 	#-------------------- Start of export process --------------------#
 		archetype_info = json.dumps(archetype_info, indent=4)
@@ -809,9 +824,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		print(".")
 		print(".")
 		print(".")
-		print("character.inherents", character.inherents)
-		print("character.stats", stats)
-		print("character.level_up_stats", character.level_up_stats)
+		# print("character.inherents", character.inherents)
+		# print("character.stats", stats)
+		# print("character.level_up_stats", character.level_up_stats)
 		# print("character.chooseable", sorted(list(character.chooseable)))
 		# print("character.feats", sorted(list(feats)))
 		# print("story_feats", sorted(list(story_feats)))
