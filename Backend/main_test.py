@@ -39,6 +39,7 @@ from utils.class_func.level_and_bab 				import randomize_level
 # from utils.class_func.luck_and_mythic 				import randomize_luck, randomize_mythic
 # from utils.class_func.path_of_war 					import randomize_path_of_war_num, choose_path_of_war_attr
 
+from utils.class_func.modded_char_sheet 			import modded_char_sheet_func
 # from utils.class_func.path_of_war_funcs				import select_disciplines
 
 from utils.class_func.personality 					import randomize_personality_attr
@@ -147,8 +148,8 @@ character_json_config = {
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
 def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Orc', class_choice='wizard', chosen_BAB='low', chosen_caster_level = 'random', multi_class='N', 
-						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", homebrew_feat_amount="Y",num_dice="8", num_sides="8", 
-						 high_level=15, low_level=15, gold_num=1000000):
+						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", modded_char_sheet = 'n', 
+						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, ):
 		
 		print(create_new_char)
 		print(userInput_region)
@@ -162,6 +163,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		print(userInput_gender)
 		print(truly_random_feats)
 		print(inherents)
+		print(modded_char_sheet)
 		print(num_dice)
 		print("Type num_dice", type(num_dice))
 		print(num_sides)
@@ -646,12 +648,6 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		feats.append("two-weapon defense")
 	# ------------------- Last minute Feat swapping process -------------------#
 		story_feats, flaw_feats, flavor_feats, class_feats, feats = separate_feats_func(character, feats)
-		print("story_feats", story_feats)
-		print("flaw_feats", flaw_feats)
-		print("flavor_feats", flavor_feats)
-		print("class_feats", class_feats)
-		print("feats", feats)
-
 		add_feats_to_chooseable(character, story_feats, flaw_feats, flavor_feats, class_feats, feats)
 		# add all feats to character.chooseable (for feat taxing purposes)
 
@@ -663,11 +659,6 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		class_feat_tax_dict  = feat_tax_func(character, class_feats)
 		feats_feat_tax_dict  = feat_tax_func(character, feats)
 
-		print("story_feat_tax_dict", story_feat_tax_dict)
-		print("flaw_feat_tax_dict", flaw_feat_tax_dict)
-		print("flavor_feat_tax_dict", flavor_feat_tax_dict)
-		print("class_feat_tax_dict", class_feat_tax_dict)
-		print("feats_feat_tax_dict", feats_feat_tax_dict)
 
 
 	# ------------------- Last minute Spell Alphabetize + dedupe process -------------------#
@@ -676,6 +667,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		character.spell_list_choose_from = spell_alphabetize_and_dedupe_func(character.spell_list_choose_from)
 		# print("post character.spell_list_choose_from", character.spell_list_choose_from)
 
+
+	# ------------------- Last minute modded char sheet -------------------#
+		mod_char_sheet_var = modded_char_sheet_func(modded_char_sheet)
 	#-------------------- Start of export process --------------------#
 		archetype_info = json.dumps(archetype_info, indent=4)
 		export_list_non_dict = [
@@ -719,51 +713,55 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				character.chosen_descriptors, character.counter_descriptors,
 				total_rolled_hp, mini_alignment, 
 				casting_level_str_foundry, character.main_stat,
+				story_feat_tax_dict , flaw_feat_tax_dict, flavor_feat_tax_dict, class_feat_tax_dict, feats_feat_tax_dict,
+				mod_char_sheet_var,
 
-				 
 				 ]
 		
 		string_export_list_non_dict = [
-					"region", "chosen_race", "character_full_name", 
-					"c_class", "c_class_2", 
-					"alignment", "age_number", 
-					"height_number", "weight_number", "dex", "str", 
-					"con", "int", "wis", "cha", 
-					"inherents", "level_up_stats",			
-					"flaw", "Total_HP", "sheet_health",
-					"bab_total",
-					"armor_ac", "shield_ac",
-					"armor_name", "armor_spell_failure", "armor_weight", "armor_armor_check_penalty", "armor_max_dex_bonus",
-					"shield_name", "shield_spell_failure", "shield_weight", "shield_armor_check_penalty", "shield_max_dex_bonus",				
-					# "fort_saving_throw", "reflex_saving_throw", "wisdom_saving_throw",
-					"spell_list_choose_from",
-					"day_list", "known_list",
-					"deity_name", "skill_ranks",
-					"weapon_enhancement_chosen_list", "armor_enhancement_chosen_list", 
-					"shield_enhancement_chosen_list",
-					"selected_traits", "equipment_list", "level",
-					# We don't use subrace data in foundryVTT (comment these out if we want to (will need to fix their issues first))
-					# "chosen_subrace", "subrace_description", 
-					"archetype1",
-					"hair_color", "hair_type", "eye_color", "appearance",
-					"language_text", 
-					"feats", "teamwork_feats", "story_feats", "flaw_feats", "class_feats", "flavor_feats",
-					"gold", "platnium",
-					"full_domain", "school", "opposing_school",
-					"bloodline",
-					"background_traits", "professions", "mannerisms",
-					"personality_traits",
-					"hero_points", "gender",
-					"class_ability_desc", "class_ability",
-					"class_features", "archetype_info",
-					"parents",
-					"older_brothers", "younger_brothers", 
-					"older_sisters", "younger_sisters",	
-					"weapon_name",
-					"specialty_schools", "counter_schools",
-					"chosen_spell_descriptor", "counter_spell_descriptor",
-					"total_rolled_hp", "mini_alignment",
-					"casting_level_str_foundry", "main_stat",
+				"region", "chosen_race", "character_full_name", 
+				"c_class", "c_class_2", 
+				"alignment", "age_number", 
+				"height_number", "weight_number", "dex", "str", 
+				"con", "int", "wis", "cha", 
+				"inherents", "level_up_stats",			
+				"flaw", "Total_HP", "sheet_health",
+				"bab_total",
+				"armor_ac", "shield_ac",
+				"armor_name", "armor_spell_failure", "armor_weight", "armor_armor_check_penalty", "armor_max_dex_bonus",
+				"shield_name", "shield_spell_failure", "shield_weight", "shield_armor_check_penalty", "shield_max_dex_bonus",				
+				# "fort_saving_throw", "reflex_saving_throw", "wisdom_saving_throw",
+				"spell_list_choose_from",
+				"day_list", "known_list",
+				"deity_name", "skill_ranks",
+				"weapon_enhancement_chosen_list", "armor_enhancement_chosen_list", 
+				"shield_enhancement_chosen_list",
+				"selected_traits", "equipment_list", "level",
+				# We don't use subrace data in foundryVTT (comment these out if we want to (will need to fix their issues first))
+				# "chosen_subrace", "subrace_description", 
+				"archetype1",
+				"hair_color", "hair_type", "eye_color", "appearance",
+				"language_text", 
+				"feats", "teamwork_feats", "story_feats", "flaw_feats", "class_feats", "flavor_feats",
+				"gold", "platnium",
+				"full_domain", "school", "opposing_school",
+				"bloodline",
+				"background_traits", "professions", "mannerisms",
+				"personality_traits",
+				"hero_points", "gender",
+				"class_ability_desc", "class_ability",
+				"class_features", "archetype_info",
+				"parents",
+				"older_brothers", "younger_brothers", 
+				"older_sisters", "younger_sisters",	
+				"weapon_name",
+				"specialty_schools", "counter_schools",
+				"chosen_spell_descriptor", "counter_spell_descriptor",
+				"total_rolled_hp", "mini_alignment",
+				"casting_level_str_foundry", "main_stat",
+				"story_feat_tax_dict" , "flaw_feat_tax_dict", "flavor_feat_tax_dict", "class_feat_tax_dict", "feats_feat_tax_dict",
+				"mod_char_sheet_var",
+
 				]
 		
 		export_list_dict = [ 

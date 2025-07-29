@@ -71,11 +71,11 @@ def index():
 
 def process_input_values(input_values):
     try:
-        if len(input_values) < 15:
+        if len(input_values) < 16:
             raise IndexError("Not enough elements in input_values")
         
         # Convert specific elements to integers
-        for i in [13, 14, 15, 16, 17]:
+        for i in [14, 15, 16, 17, 18]:
             value = input_values[i]
             if value is not None and value != "":
                 input_values[i] = int(value)
@@ -83,8 +83,10 @@ def process_input_values(input_values):
                 input_values[i] = 0
 
         # Unpack input_values
-        create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num = input_values
-        session['character_data'] = generate_random_char(create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, inherents, homebrew_feat_amount, userInput_gender, truly_random_feats, num_dice, num_sides, high_level, low_level, gold_num)
+        create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num = input_values
+        session['character_data'] = generate_random_char(
+        create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num
+        )
         return session['character_data']
 
     except ValueError as ve:
@@ -100,7 +102,7 @@ def update_character_data():
     data = request.json
     non_input_data = []
     for key, value in data.items():
-        if key in ('input14', 'input15', 'input16', 'input17', 'input18'):
+        if key in ('input15', 'input16', 'input17', 'input18', 'input19'):
             value = int(value)
         else:
             value = value.strip()
