@@ -71,11 +71,12 @@ def index():
 
 def process_input_values(input_values):
     try:
-        if len(input_values) < 16:
+        if len(input_values) < 19:
             raise IndexError("Not enough elements in input_values")
         
         # Convert specific elements to integers
-        for i in [14, 15, 16, 17, 18]:
+        for i in range(-5, 0):
+        # for i in [14, 15, 16, 17, 18]:
             value = input_values[i]
             if value is not None and value != "":
                 input_values[i] = int(value)
@@ -101,9 +102,16 @@ def process_input_values(input_values):
 def update_character_data():
     data = request.json
     non_input_data = []
+    # Calculate last 5 keys dynamically
+    items = list(data.items())
+    last_5_keys = set(key for key, _ in items[-5:])
+
     for key, value in data.items():
-        if key in ('input15', 'input16', 'input17', 'input18', 'input19'):
-            value = int(value)
+        if key in last_5_keys:
+            try:
+                value = int(value)
+            except:
+                value = value
         else:
             value = value.strip()
         non_input_data.append(value)
