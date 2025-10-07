@@ -1,81 +1,47 @@
 # Pathfinder 1E Randomized Character Generator  
+Hello everyone. This is a module I created to randomly generate (mostly) Paizo official rules following Pathfinder 1E characters. This is the Backend portion created mostly in Python to utilize it to it's fullest potential, you can combine this with the add-on module I created for the FoundryVTT app (link: https://foundryvtt.com/packages/pf1e-random-char-generator) and it will generate a fully functioning character sheets within seconds.  
 
-## This is a Pathfinder 1E character generator that requires these inputs per character
+It works by taking in a set of inputs (see below screenshot) from FoundryVTT and generates a character sheet (in JSON data) then sends it back over where it is used to fill in a character sheet.
 
-1) Region
-2) Race
-3) Class
-4) Multi-Class
-5) Alignment
-6) True Randomization selection for feats
-7) Gender
-8) Number of stat dice
-9) Size of stat dice
-10) Highest possible level character
-11) Lowest possible level character
-12) Starting Gold
+<img width="429" height="687" alt="image" src="https://github.com/user-attachments/assets/d2fa6c93-8cf0-4ff1-8270-7d91f650c27f" />
 
-Currently, it allows for selection of Pathfinder Base classes + Path of War Base classes
+Detailed list of what each button does:
+https://gitlab.com/pathfinder_1e_randomized_character_generator/FoundryVTT_Random_Pf1e_Char_Generator/-/wikis/How-to-use
 
-All necessary data has been webscraped from a mix of Archive of Nethys, d20SRD, and library of Metzofitz
-- Webscraper code is located in ( Backend/Web Scrapers ) 
+All necessary data have been webscraped from a mix of Archive of Nethys, d20SRD, and library of Metzofitz.
 
-When combined with the Frontend pathfinder character sheets (awesome sheet), it becomes a complete character sheet generator for Pathfinder 1E characters.
+**Future Additions:**
+- Working on Path of War
+- Spheres of Power
+- If you want something added, please contact me via my info below
 
-## Instructions to Run:
-To run, you simply need to download the github repository and you can do 1 of 3 things.
-
-1) You can run the main_test.py file to make sure it's running properly on your machine (you will need to install the requirements.txt file first)
-
-2) You can run the app.py file, which will generate a simple HTML / JSON display of all your character data
-
-3) In addition with step 2), you can download the awesome sheet github repository and after following those instructions you should be able to generate sheets on your own servers:
-   ( http://localhost:9000/, http://localhost:5000/ )
-
-Pending:
-1) Soon, you will be able to visit this website and just click + run there to fulfill all your random character generation needs
-https://pathfinder-1e-character-sheet.netlify.app/
-2) GPT API call to generate a randomized fully fleshed out character backstory
-
-## More in-depth explanation
-What it does:
-Randomly generates a complete Pathfinder 1E base character by doing the following:
-- The program takes in your 12 inputs (listed above)
-- It randomly generates all the data necessary for a Pathfinder 1E character
-  ( Age, Height, Weight, Worshipped Deity, Region of origin, Alignment, Character stats, Background traits, Racial traits, Ability Mods, Randomized Character Flaws, Level, Hit points, Spell lists based off of selected class (With exclusions based off of Alignment), Feat lists (Truly Random or Buckets appropriate for class), Extra feats (depending on class + race), Languages known, Randomly assigned skill ranks, Random professions, favored class options, Selected Domains, Selected Class abilities ( Rage powers, arcanist exploits, discoveries, rogue talents, wizard school, bloodlines, domains, mercies, cruelties, favored terrains, favored enemies, ... ), Random Magic Items, Armor/Shield Selection, Weapon Selection, Armor/Shield/Weapon Enhancements, Appearance (hair color, hair type, eye color), Mannerisms, Hero Points )
-- This data is generated as JSON data
-- The data is sent onto a FLASK server on ( http://localhost:9000/ )
-- Communication between ( http://localhost:5000/ ) is opened to allow for better frontend experience
-Example:
-![image](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/assets/129898955/eeed6327-5630-4bed-b3f7-f3aac8db7fe7)
+**Cool things I did:**
+- Used a Docker to generate a Docker image -> creating your own backend is a copy + paste process (link below)
+- In case something happens to the usual sources of information, I have scraped 10K+ links to gather nearly all possible Pathfinder information involved in generating a character (including race, classes, items, weapons, armor, domains, deities, ... )
 
 
-## Custom Functions used in the program located in:
-- Utils/
-- Utils/class_func
+**Links Section:**
 
-## Webscraped data located in:
-- json
-- json/class_data
-- json/class_data/path_of_war
+How to set up your backend:
+https://gitlab.com/pathfinder_1e_randomized_character_generator/FoundryVTT_Random_Pf1e_Char_Generator/-/wikis/home
 
-## HTML files located in:
-- templates
+How it works:
+https://gitlab.com/pathfinder_1e_randomized_character_generator/FoundryVTT_Random_Pf1e_Char_Generator/-/wikis/How-it-works
 
-## csv data files located in:
-- data
-- data/archetype_csv
+How to use:
+https://gitlab.com/pathfinder_1e_randomized_character_generator/FoundryVTT_Random_Pf1e_Char_Generator/-/wikis/How-to-use
 
-In the Works:
-- Spheres of Power / Might (classes + abilities + archetypes )
-- Fully Flesh out Path of War
-- Homebrew feats / races ( Feats + Races that I use in my Pathfinder 1E games)
-- Mythic
+Known Bug Fixes:
+https://gitlab.com/pathfinder_1e_randomized_character_generator/FoundryVTT_Random_Pf1e_Char_Generator/-/wikis/How-to-Bug-Fix
 
-- Download the Files or Clone the Repo from here [main.py](https://github.com/Daniel-Grkinich/Pathfinder_Char_Creator.git)  
+Current Backend (Only works when communicating with the Frontend):
+https://pathfinder-char-creator-web-public-use.onrender.com
 
-## Contact
-Please contact me at tapletopsoftware@gmail.com if you have any questions regarding this. My dream is to make this an open-source website that anyone can use to play pathfinder 1e more easily.
+FoundryVTT module Download location:
+https://foundryvtt.com/packages/pf1e-random-char-generator
 
-## Requirements
- - Python (>= 3.10)
+FoundryVTT module instructions:
+https://gitlab.com/pathfinder_1e_randomized_character_generator/FoundryVTT_Random_Pf1e_Char_Generator/-/wikis/home
+
+Contact me:
+tabletopsoftware@gmail.com
