@@ -61,8 +61,9 @@ CORS(app,
     #          "http://localhost:8000",
     #          "http://localhost:9000"], 
              
-     methods=["GET", "POST", "PUT", "DELETE"], 
-     allow_headers=["Content-Type", "Authorization"]
+     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+     allow_headers=["Content-Type", "Authorization", "X-Requested-With"], 
+     expose_headers=["Content-Type", "Authorization"] 
      )
 
 @app.route('/', methods=['GET', 'POST'])
@@ -124,4 +125,4 @@ def update_character_data():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5001))
-    app.run(host='0.0.0.0', port=port, debug=False)  # debug when production = dangerous
+    app.run(host='0.0.0.0', port=port, debug=True)  # debug when production = dangerous

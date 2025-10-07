@@ -7,6 +7,9 @@ Backend\instance\config.py
 *.pyc
 *.pyo
 *.pyd
+*.env
+__pycache__/
+.pytest_cache/
 
 # ignore virtual environment
 .venv/
