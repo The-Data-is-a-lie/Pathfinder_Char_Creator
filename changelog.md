@@ -18,6 +18,11 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 
 ## [Unreleased]
 
+### Added
+- `class_feat_labels` in the `/update_character_data` response: each class bonus feat is tagged with
+  its granting class and level (e.g. "Fighter 1") via a new `class_bonus_feat_levels()` schedule
+  helper, so the sheet can show class feats as "Fighter 1: Weapon Focus".
+
 ### Fixed
 - `skill_ranks` is no longer double-JSON-encoded in the `/update_character_data` response, so the
   FoundryVTT module can read the generated skill ranks (they previously arrived as an un-parseable string).

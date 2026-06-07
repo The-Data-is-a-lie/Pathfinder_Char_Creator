@@ -19,7 +19,7 @@ from utils.class_func.chooseable 					import chooseable_list, chooseable_list_ra
 from utils.class_func.class_abilities 				import get_class_abilities, get_class_abilties_desc  
 from utils.class_func.class_specific_feats 			import class_specific_feats_chooser, monk_feats_chooser, ranger_feats_chooser
 from utils.class_func.domain_inquisition 			import domain_chance, domain_chooser#, inquisition_chooser
-from utils.class_func.extra_combat_feats 			import extra_combat_feats, extra_teamwork_feats
+from utils.class_func.extra_combat_feats 			import extra_combat_feats, extra_teamwork_feats, class_bonus_feat_levels
 from utils.class_func.favored_class 				import favored_class_calculator, favored_class_option, favored_class_option_chooser
 from utils.class_func.family_func 					import randomize_siblings, randomize_parents
 from utils.class_func.feats 						import (build_selector, chooseable_list, chooseable_list_stats, 
@@ -649,6 +649,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 	# ------------------- Last minute Feat swapping process -------------------#
 		story_feats, flaw_feats, flavor_feats, class_feats, feats = separate_feats_func(character, feats)
 		add_feats_to_chooseable(character, story_feats, flaw_feats, flavor_feats, class_feats, feats)
+		# Label each class bonus feat with its granting class + level (e.g. "Fighter 1"), parallel to class_feats
+		_class_feat_levels = class_bonus_feat_levels(character.c_class, character.c_class_level)
+		_class_display = character.c_class.replace('_', ' ').title()
+		class_feat_labels = [f"{_class_display} {lvl}" for lvl in _class_feat_levels][:len(class_feats)]
 		# add all feats to character.chooseable (for feat taxing purposes)
 
 
@@ -696,7 +700,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				character.archetype1,
 				hair_color, hair_type, eye_color, appearance,
 				language_text, 
-				feats, teamwork_feats, story_feats, flaw_feats, class_feats, flavor_feats,
+				feats, teamwork_feats, story_feats, flaw_feats, class_feats, class_feat_labels, flavor_feats,
 				character.gold, character.platnium,
 				full_domain, school, opposing_school,
 				bloodline,
@@ -742,7 +746,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"archetype1",
 				"hair_color", "hair_type", "eye_color", "appearance",
 				"language_text", 
-				"feats", "teamwork_feats", "story_feats", "flaw_feats", "class_feats", "flavor_feats",
+				"feats", "teamwork_feats", "story_feats", "flaw_feats", "class_feats", "class_feat_labels", "flavor_feats",
 				"gold", "platnium",
 				"full_domain", "school", "opposing_school",
 				"bloodline",
