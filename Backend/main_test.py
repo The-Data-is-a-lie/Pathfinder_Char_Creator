@@ -453,7 +453,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		deity_name = deity["Name"]
 		print("deity_name", deity_name)
 		print("deity", deity)
-		skill_ranks = json.dumps(skill_ranks)		
+		# skill_ranks = json.dumps(skill_ranks)  # disabled: ship the dict so Flask serializes it as a JSON object and the Foundry module parses it		
 
 		if isinstance(character.armor_dict, dict):
 			armor_name = list(character.armor_dict.keys())[0]

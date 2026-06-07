@@ -18,4 +18,6 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 
 ## [Unreleased]
 
-_No changes yet._
+### Fixed
+- `skill_ranks` is no longer double-JSON-encoded in the `/update_character_data` response, so the
+  FoundryVTT module can read the generated skill ranks (they previously arrived as an un-parseable string).
