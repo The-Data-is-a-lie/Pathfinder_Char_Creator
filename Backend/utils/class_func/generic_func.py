@@ -102,9 +102,10 @@ def get_data_without_prerequisites(character, class_1, dataset_name, level= None
 
     # Need to loop through choosing talents (which loops through no_prereq_loop -> to properly select class talents)
     chosen_dict = choosing_talents(character, amount, dataset, dict_name)
-    update_class_features(character, chosen_dict)
+    if chosen_dict is not None:  # None when amount is 0/None or the talent pool was empty
+        update_class_features(character, chosen_dict)
 
-    return 
+    return
 
 def choosing_talents(character, amount, dataset, dict_name = "Talents"):
     # Choose from a list of talents that are selectable (decied by no_prereq_loop)
@@ -113,10 +114,18 @@ def choosing_talents(character, amount, dataset, dict_name = "Talents"):
     
     character.chooseable_talents = no_prereq_loop(character, dataset)
     chosen_set = set()
+    chosen_dict = None  # stays None if the pool is empty -> caller skips update_class_features
 
     while len(chosen_set) < amount:
+        # The pool can run dry before `amount` is reached at high level (more talent slots
+        # than distinct talents). Stop instead of calling random.choice([]) (IndexError) or
+        # spinning on duplicates.
+        if not character.chooseable_talents:
+            break
+
         chosen = random.choice(character.chooseable_talents)
         if chosen in chosen_set:
+            character.chooseable_talents.remove(chosen)  # make progress; never spin
             continue
 
         even = f"{character.c_class} {2 * (len(chosen_set) + 1)}"
@@ -138,10 +147,15 @@ def choosing_talents(character, amount, dataset, dict_name = "Talents"):
 
  
 def no_prereq_loop(character, dataset):
+    # Dedupe in a single O(n) pass via a `seen` set seeded from the already-accumulated list,
+    # instead of calling remove_duplicates_list on every iteration (which made this O(n^2) and
+    # was the main reason generation crawled above level 20). Same append order, same prereq
+    # gating, same cross-call accumulation of character.chooseable_talents.
+    seen = set(character.chooseable_talents)
 
     for name, info in dataset.items():
         name_lower = name.lower()
-        if name_lower in character.chooseable:
+        if name_lower in character.chooseable or name_lower in seen:
             continue
 
         prerequisites_clean = determine_prerequisite_name(info)
@@ -156,9 +170,7 @@ def no_prereq_loop(character, dataset):
         # Check if all prereqs are met
         if not prereq_parts or set(prereq_parts).issubset(character.chooseable):
             character.chooseable_talents.append(name_lower)
-
-        # dedupe
-        character.chooseable_talents = remove_duplicates_list(character, character.chooseable_talents)
+            seen.add(name_lower)
 
     return character.chooseable_talents
 

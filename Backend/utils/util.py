@@ -56,8 +56,8 @@ def race_chooser(character, userInput_race):
     races = []
     for race in pre_races:
         races.append(race.title())
-        
-    if not isinstance(userInput_race, str) or not userInput_race.title() in races: 
+
+    if not isinstance(userInput_race, str) or not userInput_race.title() in races:
         userInput_race = random.choice(races).capitalize()
     else:
         userInput_race = userInput_race.title()
@@ -124,8 +124,12 @@ def chooseClass(character, class_choice, chosen_BAB, chosen_caster_level=None):
     available_classes = [x for x in available_classes if x not in path_of_war_class]
 
     if isinstance(class_choice, str):
-        # To handle incorrectly cased class names
-        class_choice = class_choice.lower()
+        # Lower-case for case-insensitivity, and turn the frontend's slug form (spaces -> hyphens,
+        # e.g. "barbarian-(unchained)") back into the space-separated keys used in class_data
+        # ("barbarian (unchained)"). No class name contains a hyphen, so this is safe. Without this
+        # the four space-named classes (the Unchained variants) never matched and fell back to a
+        # random class.
+        class_choice = class_choice.lower().replace('-', ' ')
 
     if not class_choice in available_classes:
         available_classes_manip = ensure_BAB_and_caster_level(character, available_classes, "bab", chosen_BAB)
@@ -170,6 +174,10 @@ def chooseClass(character, class_choice, chosen_BAB, chosen_caster_level=None):
     
         classes = list(all_classes)
         character.c_class = classes[randrange(0,len(classes))]
+    # Display name for the FoundryVTT class item, captured BEFORE archetype_data() later strips
+    # " (unchained)" for data lookups. .title() matches every_class.json exactly, e.g.
+    # "barbarian (unchained)" -> "Barbarian (Unchained)", "fighter" -> "Fighter".
+    character.c_class_display = character.c_class.title()
     return character.c_class
 
 

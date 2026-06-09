@@ -23,10 +23,9 @@ def extra_combat_feats(character):
     if character.c_class in ['cavalier', 'samurai']:
         extra_feats += floor((character.c_class_level)/6)
     #monk section
-    if character.c_class == 'monk' or character.c_class == 'unchained_monk':
-        while i < len(monk_feats) and monk_feats[i] <= character.c_class_level:
-            i += 1
-        extra_feats += i
+    # Monk bonus feats are granted by monk_feats_chooser (the real monk bonus-feat list), and any
+    # slots it can't fill are reallocated to normal feats in main_test. They must NOT also be
+    # counted here, which previously double-granted monks their bonus-feat allotment.
     #magus section
     if character.c_class == 'magus':
         while i < len(magus_feats) and magus_feats[i] <= character.c_class_level:
@@ -100,6 +99,27 @@ def class_bonus_feat_levels(c_class, level):
         return list(range(2, level + 1, 5)) if level >= 2 else []
     if c_class in arrays:
         return [lvl for lvl in arrays[c_class] if lvl <= level]
+    return []
+
+
+def teamwork_feat_levels(c_class, level):
+    """Ordered list of class levels at which a class grants a teamwork feat
+    (mirrors extra_teamwork_feats()); used to label teamwork feats."""
+    if c_class in ('hunter', 'inquisitor'):
+        return list(range(3, level + 1, 3))      # floor(level / 3)
+    if c_class in ('cavalier', 'samurai'):
+        return [1]
+    return []
+
+
+def bloodline_bonus_feat_levels(c_class, level):
+    """Ordered list of class levels at which a bloodline grants a bonus feat.
+    Sorcerer: 7, 13, 19, 25, ...  ·  Bloodrager: 6, 9, 12, ...  Both are range-based
+    so they extend past 20 for high-level NPCs; used to size + label bloodline feats."""
+    if c_class == 'sorcerer':
+        return list(range(7, level + 1, 6))      # 7, 13, 19, 25, 31, 37, ...
+    if c_class == 'bloodrager':
+        return list(range(6, level + 1, 3))      # 6, 9, 12, 15, ..., (>20)
     return []
 
 

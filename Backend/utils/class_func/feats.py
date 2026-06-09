@@ -203,20 +203,35 @@ def choosing_feats(character, amount, base, total_choices):
 
     chosen_feats = set()
     total_choices_set = set(total_choices)
+    stale = 0
 
     while len(chosen_feats) < amount:
-        chosen = random.choice(list(total_choices_set))
+        if not total_choices_set:
+            break
+        before = len(chosen_feats)
+        chosen = random.choice(tuple(total_choices_set))
         chosen_feats.add(chosen.lower())
-        
+
         # Update character's chooseable feats
         character.chooseable.add(chosen)
-        
+
         # Recompute the prereq_list after adding the chosen feat
         prereq_list = no_prereq_loop(character, base)
-        
+
         # Update total_choices_set with new prerequisites
         total_choices_set.add(chosen.lower())
         total_choices_set.update(prereq_list)
+
+        # Termination guard: if we keep drawing feats we already have and the candidate pool
+        # isn't growing, stop instead of looping forever. This can happen at high level when
+        # more feats are requested (incl. reallocated bonus-feat slots) than the filtered pool
+        # can supply. Returns fewer feats rather than hanging; never inflates.
+        if len(chosen_feats) == before:
+            stale += 1
+            if stale > len(total_choices_set):
+                break
+        else:
+            stale = 0
 
     return list(chosen_feats)
 
@@ -227,13 +242,45 @@ def special_feats_func(feat_data, extraction_type, special_type):
     ]
     return query_i
 
+_FEAT_DATA_CACHE = {}
+
 def grab_and_clean_feats(location):
+    # The feat CSV is static during a run, but this used to be re-parsed on every
+    # generic_feat_chooser call. Cache the cleaned DataFrame by path and hand back a copy
+    # so callers can filter/drop_duplicates without mutating the cached frame.
+    cached = _FEAT_DATA_CACHE.get(location)
+    if cached is not None:
+        return cached.copy()
     feat_data = pd.read_csv(f'{location}', sep='|', on_bad_lines='skip')
     # makes prereq NaNs -> empty strings. Without this we can't grab feats with blank prereqs
     feat_data.fillna({'prerequisites': ''}, inplace=True)
     feat_data.fillna({'description': ''}, inplace=True)
     feat_data.fillna({'benefits': ''}, inplace=True)
-    return feat_data
+    _FEAT_DATA_CACHE[location] = feat_data
+    return feat_data.copy()
+
+def teamwork_pool_size(character, casting_level_str):
+    """Number of teamwork feats this character could actually take, after the same
+    caster / arcane / divine filters generic_feat_chooser applies. Lets us detect when a
+    class is granted more teamwork slots than there are eligible teamwork feats, so the
+    surplus can be reallocated to normal feats. (No prereq filtering -> upper bound, so we
+    only ever under-count the surplus, never over-reallocate.)"""
+    feat_data = grab_and_clean_feats('data/feats.csv')
+    extraction_list = ['name', 'prerequisites', 'description']
+    query_i = special_feats_func(feat_data, extraction_list, 'teamwork')
+    query_i = query_i.drop_duplicates(subset='name', keep='first')
+    feat_result_dict = query_i.set_index('name')[['prerequisites', 'description']].to_dict(orient='index')
+    feat_result_dict = transform_result_dict(character, feat_result_dict)
+
+    divine_casters = getattr(data, "divine_casters")
+    if casting_level_str not in ("low", "mid", "high"):
+        feat_result_dict = remove_spell_caster_feats(feat_result_dict)
+    if character.c_class in divine_casters:
+        feat_result_dict = remove_arcane_feats(feat_result_dict)
+    if character.c_class not in divine_casters:
+        feat_result_dict = remove_divine_feats(feat_result_dict)
+
+    return len(feat_result_dict)
 
 def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_column, override = None, special_type = None, feat_amount = None, extra_feats_flag = False):
     if class_1 == character.c_class:
@@ -347,6 +394,30 @@ def capitalize_feats(character, chosen_feats):
     return cleaned_chosen_feats
 
 
+def bloodline_feat_chooser(character, c_class, bloodline_name, feat_amount):
+    """Pick up to ``feat_amount`` bonus feats from this bloodline's own list.
+
+    Each bloodline stores its bonus feats as a list holding one comma-joined
+    string, e.g. ``["Combat Casting, Improved Disarm, ..."]``; a few entries omit
+    the space after a comma (``"Steam Spell,Toughness"``) and some carry a
+    parenthetical specialization (``"Skill Focus (Knowledge [dungeoneering])"``).
+    We flatten + split on commas, strip the parenthetical so the base feat
+    resolves in the pf1e compendium (Foundry matches the part before ``" ("``),
+    dedupe, capitalize, then randomly sample. The sample is capped at the list
+    size — you can't take more feats than the bloodline offers.
+    """
+    raw = getattr(character, c_class, {}).get('bloodline', {}).get(bloodline_name, {}).get('bonus feats', [])
+    if not raw:
+        return []
+    # Flatten the one-element (comma-joined) list into individual feat names.
+    joined = ','.join(raw) if isinstance(raw, list) else str(raw)
+    feats = [f.strip() for f in joined.split(',') if f.strip()]
+    feats = remove_duplicates_list(character, feats)
+    # Drop trailing parenthetical specializations: "Skill Focus (Knowledge [...])" -> "Skill Focus".
+    feats = [re.sub(r'\s*\(.*\)$', '', f).strip() for f in feats]
+    feats = remove_duplicates_list(character, feats)
+    feats = capitalize_feats(character, feats)
+    return random.sample(feats, k=min(feat_amount, len(feats)))
 
 
 def simple_list_chooser(character, class_1, *dataset_names, max_num=float('inf'), **kwargs):

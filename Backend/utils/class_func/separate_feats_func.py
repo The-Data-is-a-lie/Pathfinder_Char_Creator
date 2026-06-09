@@ -1,35 +1,22 @@
 def separate_feats_func(character, feats):
-   # Instantiate empty lists for story and flaw feats
-   story_feats = []
-   flaw_feats = []
-   flavor_feats = []
-   class_feats = []
+   # Pull each feat bucket off the FRONT of the list, bounded by what's actually available.
+   # The old version did `feats[i]; feats.pop(i); i -= 1` in range() loops: the `i -= 1` is a
+   # no-op inside a `for`, which caused an every-other selection bug AND a "list index out of
+   # range" crash whenever fewer feats were produced than requested (e.g. the curated path for a
+   # high-level Fighter/Brawler). Front-popping is bounded, takes the correct count, and degrades
+   # gracefully (later buckets just get fewer) instead of crashing.
+   def take(n):
+      out = []
+      for _ in range(max(n, 0)):
+         if not feats:
+            break
+         out.append(feats.pop(0))
+      return out
 
-   i = 0
-
-   for i in range(character.story_feat_amount):
-      story_feat = feats[i]
-      story_feats.append(story_feat)
-      feats.pop(i)
-      i -= 1 
-
-   for i in range(character.flaw_feat_amount):
-      flaw_feat = feats[i]
-      flaw_feats.append(flaw_feat)
-      feats.pop(i)
-      i -= 1 
-
-   for i in range(character.flavor_feat_amount):
-      flavor_feat = feats[i]
-      flavor_feats.append(flavor_feat)
-      feats.pop(i)
-      i -= 1
-
-   for i in range(character.class_feats_amount):
-      class_feat = feats[i]
-      class_feats.append(class_feat)
-      feats.pop(i)
-      i -= 1
+   story_feats  = take(character.story_feat_amount)
+   flaw_feats   = take(character.flaw_feat_amount)
+   flavor_feats = take(character.flavor_feat_amount)
+   class_feats  = take(character.class_feats_amount)
 
    print("character.class_feats_amount: ", character.class_feats_amount)
 
