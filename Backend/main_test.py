@@ -1,5 +1,6 @@
 #Custom Made Imports
 from utils.createACharacter 						import CreateNewCharacter, Load_when_needed
+from utils 											import data
 from utils.data 									import version
 from utils.util 									import  (chooseClass, region_chooser, race_chooser,  name_chooser, 
 										  					dip_function, gender_chooser) 
@@ -19,12 +20,13 @@ from utils.class_func.chooseable 					import chooseable_list, chooseable_list_ra
 from utils.class_func.class_abilities 				import get_class_abilities, get_class_abilties_desc  
 from utils.class_func.class_specific_feats 			import class_specific_feats_chooser, monk_feats_chooser, ranger_feats_chooser
 from utils.class_func.domain_inquisition 			import domain_chance, domain_chooser#, inquisition_chooser
-from utils.class_func.extra_combat_feats 			import extra_combat_feats, extra_teamwork_feats
+from utils.class_func.extra_combat_feats 			import extra_combat_feats, extra_teamwork_feats, class_bonus_feat_levels, teamwork_feat_levels, bloodline_bonus_feat_levels
 from utils.class_func.favored_class 				import favored_class_calculator, favored_class_option, favored_class_option_chooser
 from utils.class_func.family_func 					import randomize_siblings, randomize_parents
-from utils.class_func.feats 						import (build_selector, chooseable_list, chooseable_list_stats, 
-                                                  			chooseable_list_class_features, feat_spell_searcher, generic_multi_chooser, 
-                                                            simple_list_chooser, generic_feat_chooser)
+from utils.class_func.feats 						import (build_selector, chooseable_list, chooseable_list_stats,
+                                                  			chooseable_list_class_features, feat_spell_searcher, generic_multi_chooser,
+                                                            simple_list_chooser, generic_feat_chooser, bloodline_feat_chooser, teamwork_pool_size,
+                                                            capitalize_feats)
 from utils.class_func.feats_to_chooseable 			import add_feats_to_chooseable
 from utils.class_func.feat_tax 						import feat_tax_func
 from utils.class_func.flag_assign 					import human_flag_assigner, druidic_flag_assigner
@@ -406,7 +408,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# wisdom_saving_throw = saving_throw_calc(character, 'Will')	
 
 		skill_ranks = skills_selector(character, 'skills', skill_rank_level)
-		professions = profession_chooser(character, "professions")		
+		professions = profession_chooser(character, "professions")
+		# One Craft specialization per character, displayed as "Craft: <type>" on the sheet.
+		character.craft_chosen = random.choice(data.crafts)
 
 		simple_list_chooser(character, 'ranger','favored_terrains', 'favored_enemies')
 		simple_list_chooser(character, 'brawler','manuevers',max_num=8)
@@ -453,7 +457,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		deity_name = deity["Name"]
 		print("deity_name", deity_name)
 		print("deity", deity)
-		skill_ranks = json.dumps(skill_ranks)		
+		# skill_ranks = json.dumps(skill_ranks)  # disabled: ship the dict so Flask serializes it as a JSON object and the Foundry module parses it		
 
 		if isinstance(character.armor_dict, dict):
 			armor_name = list(character.armor_dict.keys())[0]
@@ -527,11 +531,23 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 	# end of pre export data manip
 
 		# Start of Extra feats list generation section
-		class_specific_feats_chooser(character, "sorcerer", "bloodline", character.bloodline, name_3="bonus feats")
-		class_specific_feats_chooser(character, "bloodrager", "bloodline", character.bloodline, name_3="bonus feats")
-		#class specific feats choosers
-		ranger_feats_chooser(character)
-		monk_feats_chooser(character)
+		# Bloodline bonus feats (Sorcerer & Bloodrager): drawn from this bloodline's own list and
+		# labeled by granting class + level (e.g. "Sorcerer 7", "Bloodrager 6"); levels extend past 20.
+		# Non-bloodline classes -> empty schedule -> empty lists, so the export stays well-formed.
+		_bl_levels = bloodline_bonus_feat_levels(character.c_class, character.c_class_level)
+		bloodline_feats = bloodline_feat_chooser(character, character.c_class, character.bloodline, len(_bl_levels))
+		bloodline_feat_labels = [f"{character.c_class.title()} {lvl}" for lvl in _bl_levels][:len(bloodline_feats)]
+		# If the bloodline list is too short to fill every granted slot (e.g. a high-level
+		# Bloodrager whose ~7-feat list runs out), reallocate the unfilled slots to normal feats
+		# so the total feat count is preserved. No-op when the list covers every slot.
+		character.feat_amounts += max(len(_bl_levels) - len(bloodline_feats), 0)
+		#class specific feats choosers (capture results; they are merged into character.feats after
+		# the normal-feat selection below, which would otherwise reassign over them)
+		ranger_style_feats = ranger_feats_chooser(character) or []
+		monk_bonus_feats = monk_feats_chooser(character) or []
+		# Reallocate monk/ranger bonus-feat slots their lists couldn't fill to normal feats (monk's
+		# total is preserved; ranger now actually gains its combat-style feats). No-op otherwise.
+		character.feat_amounts += getattr(character, 'ranger_feat_surplus', 0) + getattr(character, 'monk_feat_surplus', 0)
 		# Determine extra teamwork feats
 		extra_teamwork_feats(character)
 		# determine extra combat feats
@@ -544,6 +560,12 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 		# Feat Selector
 		casting_level_str = character.class_data[character.c_class]['casting level'].lower()
+		# If a class is granted more teamwork-feat slots than the (filtered) teamwork pool can
+		# fill, reallocate the unfilled slots to normal feats. Normally a no-op (~53 teamwork
+		# feats vs <=13 requested); fires only for filtered caster builds. Computed here because
+		# teamwork feats themselves are chosen after the normal-feat selection below.
+		if character.teamwork_feats > 0:
+			character.feat_amounts += max(character.teamwork_feats - teamwork_pool_size(character, casting_level_str), 0)
 		# print("character.chooseable", character.chooseable)
 		character.feat_amounts += character.class_feats_amount
 		if truly_random_feats.upper() == "Y":
@@ -568,11 +590,35 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			# because we run get_data_without_prerequisites before build_selector -> updating character.chooseable
 			build_selector_feats = build_selector(character)
 			character.feats.extend(build_selector_feats)
+			# The curated buckets can be smaller than the requested feat count at high level, which
+			# would leave the character under-fed (and previously crashed separate_feats_func). Top up
+			# the shortfall from the general pool. choosing_feats dedupes via character.chooseable, so
+			# top-up feats won't repeat the curated picks.
+			_feat_shortfall = character.feat_amounts - len(character.feats)
+			if _feat_shortfall > 0:
+				_topup_type = 'metamagic' if (casting_level_str in ('mid', 'high') and character.bab in ('L', 'M')) else 'combat'
+				_topup_feats = generic_feat_chooser(character, character.c_class, casting_level_str, _topup_type, info_column='description', feat_amount=_feat_shortfall + 1)
+				if isinstance(_topup_feats, list):
+					character.feats.extend(_topup_feats)
+
+		# Merge the class-specific bonus feats selected above (monk bonus feats / ranger combat-style
+		# feats) into the feat list. The truly-random branch reassigns character.feats, so we add them
+		# here for BOTH paths so they survive (single merge point, replacing the choosers' old extend).
+		# capitalize_feats normalizes names so they match Foundry's compendium lookup (as bloodline feats do).
+		character.feats.extend(capitalize_feats(character, list(ranger_style_feats)))
+		character.feats.extend(capitalize_feats(character, list(monk_bonus_feats)))
 
 		# Teamwork feats selector
 		if character.teamwork_feats > 0:
 			character.teamwork_feats += 1
 			teamwork_feats = generic_feat_chooser(character, character.c_class, casting_level_str, 'Null', info_column = 'description', override=True, special_type="teamwork", feat_amount = character.teamwork_feats)
+
+		# Label teamwork feats with their granting class + level (e.g. "Inquisitor 3"), parallel to teamwork_feats
+		teamwork_feat_labels = []
+		if isinstance(teamwork_feats, list):
+			_tw_levels = teamwork_feat_levels(character.c_class, character.c_class_level)
+			_tw_display = character.c_class.replace('_', ' ').title()
+			teamwork_feat_labels = [f"{_tw_display} {lvl}" for lvl in _tw_levels][:len(teamwork_feats)]
 
 		# Add later -> to allow for specialized class feats
 		# if character.class_feats_amount > 0:
@@ -649,15 +695,43 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 	# ------------------- Last minute Feat swapping process -------------------#
 		story_feats, flaw_feats, flavor_feats, class_feats, feats = separate_feats_func(character, feats)
 		add_feats_to_chooseable(character, story_feats, flaw_feats, flavor_feats, class_feats, feats)
+		# Label each class bonus feat with its granting class + level (e.g. "Fighter 1"), parallel to class_feats
+		_class_feat_levels = class_bonus_feat_levels(character.c_class, character.c_class_level)
+		_class_display = character.c_class.replace('_', ' ').title()
+		class_feat_labels = [f"{_class_display} {lvl}" for lvl in _class_feat_levels][:len(class_feats)]
 		# add all feats to character.chooseable (for feat taxing purposes)
 
 
-		# Feat tax portion
-		story_feat_tax_dict  = feat_tax_func(character, story_feats)
-		flaw_feat_tax_dict   = feat_tax_func(character, flaw_feats)
-		flavor_feat_tax_dict = feat_tax_func(character, flavor_feats)
-		class_feat_tax_dict  = feat_tax_func(character, class_feats)
-		feats_feat_tax_dict  = feat_tax_func(character, feats)
+		# Feat tax portion — pass per-feat acquisition levels so each progression chain releases
+		# one free feat every two levels since the primary was gained (feat-tax rule e).
+		# Normal feats land at L1,3,5,…; story feats at L1,5,10,15,…; flaw/flavor at creation (L1);
+		# class bonus feats at their granting levels (_class_feat_levels, e.g. Fighter 1/2/4).
+		_story_levels  = ([1] + [5 * k for k in range(1, len(story_feats) + 1)])[:len(story_feats)]
+		_normal_levels = [2 * i + 1 for i in range(len(feats))]
+		story_feat_tax_dict  = feat_tax_func(character, story_feats,  feat_levels=_story_levels)
+		flaw_feat_tax_dict   = feat_tax_func(character, flaw_feats,   feat_levels=[1] * len(flaw_feats))
+		flavor_feat_tax_dict = feat_tax_func(character, flavor_feats, feat_levels=[1] * len(flavor_feats))
+		class_feat_tax_dict  = feat_tax_func(character, class_feats,  feat_levels=_class_feat_levels[:len(class_feats)])
+		feats_feat_tax_dict  = feat_tax_func(character, feats,        feat_levels=_normal_levels)
+
+		# Strip feats now bundled as a tax-child onto a primary so they don't ALSO render as their
+		# own standalone entry (children are granted cross-group via character.chooseable).
+		_taxed_children = {
+			c.lower()
+			for d in (story_feat_tax_dict, flaw_feat_tax_dict, flavor_feat_tax_dict,
+					  class_feat_tax_dict, feats_feat_tax_dict)
+			for children in d.values() for c in children
+		}
+		if _taxed_children:
+			story_feats  = [f for f in story_feats  if f.lower() not in _taxed_children]
+			flaw_feats   = [f for f in flaw_feats   if f.lower() not in _taxed_children]
+			flavor_feats = [f for f in flavor_feats if f.lower() not in _taxed_children]
+			feats        = [f for f in feats        if f.lower() not in _taxed_children]
+			# class_feats carries a parallel label list -> filter in lockstep
+			_labels = list(class_feat_labels) + [None] * (len(class_feats) - len(class_feat_labels))
+			_kept = [(f, lbl) for f, lbl in zip(class_feats, _labels) if f.lower() not in _taxed_children]
+			class_feats = [f for f, _ in _kept]
+			class_feat_labels = [lbl for _, lbl in _kept if lbl is not None]
 
 
 
@@ -672,9 +746,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		mod_char_sheet_var = modded_char_sheet_func(modded_char_sheet)
 	#-------------------- Start of export process --------------------#
 		archetype_info = json.dumps(archetype_info, indent=4)
+		character.land_speed = character.races.get(character.chosen_race, {}).get('speed', 30)
 		export_list_non_dict = [
-				character.region, character.chosen_race,
-				character_full_name, character.c_class, character.c_class_2, 
+				character.region, character.chosen_race, character.land_speed,
+				character_full_name, character.c_class, character.c_class_display, character.c_class_2,
 				alignment,  age_number, 
 				height_number, weight_number, character.dex, character.str, 
 				character.con, character.int, character.wis, character.cha, 
@@ -696,11 +771,12 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				character.archetype1,
 				hair_color, hair_type, eye_color, appearance,
 				language_text, 
-				feats, teamwork_feats, story_feats, flaw_feats, class_feats, flavor_feats,
+				feats, teamwork_feats, teamwork_feat_labels, story_feats, flaw_feats, class_feats, class_feat_labels, flavor_feats,
+				bloodline_feats, bloodline_feat_labels,
 				character.gold, character.platnium,
 				full_domain, school, opposing_school,
 				bloodline,
-				background_traits, professions, mannerisms, 
+				background_traits, professions, character.craft_chosen, mannerisms,
 				personality_traits,
 				hero_points, character.chosen_gender, 
 				class_ability_desc, class_ability,
@@ -719,8 +795,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				 ]
 		
 		string_export_list_non_dict = [
-				"region", "chosen_race", "character_full_name", 
-				"c_class", "c_class_2", 
+				"region", "chosen_race", "land_speed", "character_full_name",
+				"c_class", "c_class_display", "c_class_2",
 				"alignment", "age_number", 
 				"height_number", "weight_number", "dex", "str", 
 				"con", "int", "wis", "cha", 
@@ -742,11 +818,12 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"archetype1",
 				"hair_color", "hair_type", "eye_color", "appearance",
 				"language_text", 
-				"feats", "teamwork_feats", "story_feats", "flaw_feats", "class_feats", "flavor_feats",
+				"feats", "teamwork_feats", "teamwork_feat_labels", "story_feats", "flaw_feats", "class_feats", "class_feat_labels", "flavor_feats",
+				"bloodline_feats", "bloodline_feat_labels",
 				"gold", "platnium",
 				"full_domain", "school", "opposing_school",
 				"bloodline",
-				"background_traits", "professions", "mannerisms",
+				"background_traits", "professions", "craft_type", "mannerisms",
 				"personality_traits",
 				"hero_points", "gender",
 				"class_ability_desc", "class_ability",
@@ -764,7 +841,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 				]
 		
-		export_list_dict = [ 
+		assert len(export_list_non_dict) == len(string_export_list_non_dict), f"export key/value mismatch: {len(string_export_list_non_dict)} keys vs {len(export_list_non_dict)} values"
+		export_list_dict = [
 				character.spell_list_choose_from, equip_descrip,
 				 ] 
 

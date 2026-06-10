@@ -1,6 +1,25 @@
 from utils import data
 import random, re
+from math import floor
 # Start of major task: skills assignment
+
+
+def highest_mental_mod(character):
+    """Highest mental ability modifier using each stat's FINAL score
+    (base roll + inherent bonuses + level-up bumps), not just the base roll.
+
+    Bonus skill ranks scale off the best mental ability, so an Int/Wis/Cha that
+    was boosted by inherents or level-up bumps now grants the extra ranks it
+    should. ``inherents`` / ``level_up_stats`` are ``{stat: bonus}`` dicts and may
+    be absent (e.g. inherents disabled), so we read them defensively.
+    """
+    def final_mod(stat):
+        inherents = getattr(character, 'inherents', {}) or {}
+        level_ups = getattr(character, 'level_up_stats', {}) or {}
+        inh = inherents.get(stat, 0) if isinstance(inherents, dict) else 0
+        lvl = level_ups.get(stat, 0) if isinstance(level_ups, dict) else 0
+        return floor((getattr(character, stat) + inh + lvl - 10) / 2)
+    return max(final_mod('int'), final_mod('wis'), final_mod('cha'))
 
 def skills_selector(character, skills, skill_rank_level):
     """
@@ -30,7 +49,9 @@ def skills_selector(character, skills, skill_rank_level):
 
 def get_selectable_skills(character,all_skills, skill_ranks_level):
     skill_points = character.class_data[character.c_class]["skill points at each level"]
-    scaling = int(skill_points) + max(character.int_mod, character.wis_mod, character.cha_mod)
+    # Use the FINAL highest mental mod (base + inherents + level-ups), not the base roll.
+    mental_mod = highest_mental_mod(character)
+    scaling = int(skill_points) + mental_mod
 
     dummy_skill_ranks = (scaling * character.c_class_level) + skill_ranks_level
     print("Dummy skill ranks:", dummy_skill_ranks)
@@ -38,10 +59,10 @@ def get_selectable_skills(character,all_skills, skill_ranks_level):
 
     # For if we don't find a character, just assign them minimum skills
     if character.c_class not in character.class_data.keys():
-        scaling = 2 + abs(max(character.int_mod, character.wis_mod, character.cha_mod))
+        scaling = 2 + abs(mental_mod)
         print("couldn't find this character's skills using default scaling", scaling)
 
-    skill_number = scaling + random.randint(abs(character.int_mod), abs(character.int_mod)+8)
+    skill_number = scaling + random.randint(abs(mental_mod), abs(mental_mod)+8)
     skill_number = min(skill_number, len(all_skills))
     selectable_skills = random.sample(all_skills, k=skill_number)
     not_selectable_skills = []

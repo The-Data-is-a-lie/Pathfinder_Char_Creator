@@ -77,6 +77,7 @@ class Character:
         self.npc_level=None
         self.bab_total=None
         self.c_class=None
+        self.c_class_display=None  # class name incl. " (Unchained)" for the Foundry class item
         self.c_class_2=None
         self.c_class_level=None
         self.c_class_2_level=None     
