@@ -1,4 +1,33 @@
 {
+    "tax_primary_blocklist": [
+        "power attack",
+        "combat expertise",
+        "dodge",
+        "weapon finesse",
+        "improved unarmed strike",
+        "critical focus"
+    ],
+    "tax_chain_override": {
+        "weapon focus": [
+            "greater weapon focus",
+            "martial focus",
+            "weapon specialization",
+            "greater weapon specialization"
+        ],
+        "two-weapon fighting": [
+            "improved two-weapon fighting",
+            "greater two-weapon fighting"
+        ],
+        "two-weapon defense": [
+            "improved two-weapon defense",
+            "greater two-weapon defense"
+        ],
+        "vital strike": [
+            "improved vital strike",
+            "greater vital strike"
+        ]
+    },
+    "tax_exclude_grants": [],
     "feat_tax": {
         "airy step": {
             "1": "wings of air"

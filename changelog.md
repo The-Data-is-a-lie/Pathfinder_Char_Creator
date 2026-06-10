@@ -19,6 +19,31 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Feat taxes** now resolve end-to-end. `feat_tax_func()` (`Backend/utils/class_func/feat_tax.py`)
+  grants a primary feat's progression chain (from `Backend/json/feat_tax.json`) for free once its
+  prerequisites are met, releasing **one chain feat per two levels** since the primary was gained;
+  the FoundryVTT module bundles them onto the primary's sheet entry as
+  `"<Label> Primary > Tax1 > Tax2"` (e.g. "Fighter 14: Net Adept > Net Maneuvering > Net and
+  Trident"). Exceptions handled: "Extra …" feats grant one free self-duplicate, and Mythic feats
+  never tax. (Path-of-War Martial Training and Sphere-of-Power talent taxes are deferred until those
+  systems are integrated — see `docs/feature_spec_todo.md`.)
+- `data/feats_new.csv` — a unified feat pool compiling every feat the project knows about into the
+  canonical pipe-delimited schema plus a new trailing `source_dataset` provenance column: the official
+  set (`AoN`, from `data/feats.csv`), the homebrew library (`Metzofitz`, from
+  `data/Metzofitz_Feats.csv`), 91 net-new feats parsed from the campaign "Sieg's Guide" Feats Google
+  Doc (`Sieg's Feats Doc`), and 8 net-new 3.5-only feats scraped from the d20 SRD (`d20srd`: Agile,
+  Diligent, Extra/Improved Turning, Investigator, Negotiator, Nimble Fingers, Track). 3,306 feats
+  total; AoN/Metzofitz rows are preserved exactly, so same-name entries like a base feat and its
+  Mythic version are both kept.
+- `Backend/scripts/compile_feats_new.py` — reusable, stdlib-only (+ pandas) compiler that builds
+  `feats_new.csv`: maps the Metzofitz schema onto the canonical columns, best-effort-parses the
+  freeform Google Doc, scrapes the d20 SRD feats page, dedupes the additive sources against existing
+  names (the SRD via an order-insensitive token key, so "Armor Proficiency (Heavy)" matches "Heavy
+  Armor Proficiency"), and verifies the output round-trips through the backend's
+  `pd.read_csv(sep='|', on_bad_lines='skip')` loader.
+- `docs/feature_spec_todo.md` — a TODO doc capturing six partially-scaffolded features awaiting design
+  input (Path of War, Spheres of Power/Might, weapon attacks, weapon conditionals, free feats, feat
+  taxes), each with its verified current state and a `Your spec:` prompt.
 - `class_feat_labels` in the `/update_character_data` response: each class bonus feat is tagged with
   its granting class and level (e.g. "Fighter 1") via a new `class_bonus_feat_levels()` schedule
   helper, so the sheet can show class feats as "Fighter 1: Weapon Focus".
@@ -37,6 +62,20 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   module uses it to create the correct class item.
 
 ### Changed
+- Feat taxes gained **manual override knobs** in `feat_tax.json` (no code per caveat):
+  `tax_chain_override` pins a primary's exact chain (e.g. Weapon Focus now taxes only to Greater
+  Weapon Focus, Martial Focus, Weapon Specialization and Greater Weapon Specialization instead of its
+  full ~31-feat derived tree), and `tax_exclude_grants` lists feats never granted as a tax child.
+  **Critical feats no longer tax** — the `critical`-flagged feats (Blinding Critical, Staggering
+  Critical, …) plus the Critical Focus gateway — matching the Mythic exclusion.
+- Feat-tax chains are now **derived from the feats.csv prerequisite graph** rather than only the
+  hand-listed `feat_tax.json` entries. Any selected "base" feat (has dependents but no feat-prereq of
+  its own) or base Style feat auto-grants every feat that transitively requires it — Mounted Combat →
+  Mounted Archery / Ride-By Attack / Trample / Spirited Charge / …, Dragon Style → Dragon Ferocity /
+  Dragon Roar, Weapon Focus → Greater Weapon Focus / … — gated by the 2-level timing. A tunable
+  `tax_primary_blocklist` in `feat_tax.json` tames mega-hubs (Power Attack, Combat Expertise, Dodge,
+  Weapon Finesse, Improved Unarmed Strike); the existing `feat_tax` chains remain an optional homebrew
+  override layer. (`feat_spell_searcher` now caches the feats.csv read, keeping generation ~fast.)
 - Bonus skill ranks now scale off the FINAL highest mental ability — base score plus inherent bonuses
   and level-up bumps — instead of the base roll, via a new `highest_mental_mod()` helper. An Int/Wis/Cha
   boosted by inherents or level-ups now grants the extra ranks it should.
@@ -49,6 +88,31 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   re-parsed on every feat-selection call.
 
 ### Fixed
+- Feat-tax chains are now ordered by a **stable topological sort** (each feat after all its in-chain
+  prerequisites) instead of BFS shortest-path depth, fixing chains that rendered "Greater X > Improved
+  X" (e.g. Two-Weapon Fighting, whose Greater feat lists the base feat directly and so tied with
+  Improved and lost the alphabetical tiebreak). Two-Weapon Fighting, Two-Weapon Defense and Vital
+  Strike also got `tax_chain_override` entries so they tax only to their improved/greater line instead
+  of their full derived tree.
+- Feat-tax resolution no longer stops at the first ineligible chain link. A link whose prerequisites
+  aren't met (e.g. the Spheres-of-Might side-feat "Martial Focus" that sat in the Weapon Focus chain)
+  is now skipped instead of blocking the rest, so "Weapon Focus > Greater Weapon Focus" bundles.
+  Level / BAB prerequisites are treated as satisfied by the 2-level release cadence.
+- Feat-tax chains whose feat also has a Mythic same-name variant (Iron Will, Lightning Reflexes, …)
+  now bundle. `feat_tax.py` treated any feat with a Mythic row in `feats.csv` as Mythic (and Mythic
+  feats don't tax), so those primaries were silently skipped; it now skips only feats that are
+  Mythic-*only*.
+- Independently-selected chain children no longer render as their own standalone feat — they're
+  stripped from the feat lists and bundled onto the primary entry (e.g. "Iron Will > Improved Iron
+  Will"). An already-owned child bundles regardless of the 2-level timing, which now gates only
+  genuinely-free grants.
+- The FoundryVTT module merges each bundled feat's benefit text into the primary feat's description
+  (under a labeled separator) and clones template items before editing them, so the shared compendium
+  template is no longer mutated across generations.
+- Feat-tax eligibility no longer keeps only the LAST primary feat's chain. `feat_tax_func` overwrote
+  its candidate list each iteration (`pre_eligible_feat_taxed_list = …` at `feat_tax.py:21`), so
+  every primary feat but the last had its granted feats stripped; each primary is now resolved
+  independently.
 - Unchained classes (Barbarian/Monk/Rogue/Summoner) selected in the FoundryVTT dialog no longer
   produce a random class. The dialog sends a slug (e.g. `barbarian-(unchained)`, spaces→hyphens) but
   `chooseClass` only matched the space-separated `class_data` keys, so the four space-named classes

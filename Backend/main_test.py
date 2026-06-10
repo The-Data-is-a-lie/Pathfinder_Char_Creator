@@ -702,12 +702,36 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# add all feats to character.chooseable (for feat taxing purposes)
 
 
-		# Feat tax portion
-		story_feat_tax_dict  = feat_tax_func(character, story_feats)
-		flaw_feat_tax_dict   = feat_tax_func(character, flaw_feats)
-		flavor_feat_tax_dict = feat_tax_func(character, flavor_feats)
-		class_feat_tax_dict  = feat_tax_func(character, class_feats)
-		feats_feat_tax_dict  = feat_tax_func(character, feats)
+		# Feat tax portion — pass per-feat acquisition levels so each progression chain releases
+		# one free feat every two levels since the primary was gained (feat-tax rule e).
+		# Normal feats land at L1,3,5,…; story feats at L1,5,10,15,…; flaw/flavor at creation (L1);
+		# class bonus feats at their granting levels (_class_feat_levels, e.g. Fighter 1/2/4).
+		_story_levels  = ([1] + [5 * k for k in range(1, len(story_feats) + 1)])[:len(story_feats)]
+		_normal_levels = [2 * i + 1 for i in range(len(feats))]
+		story_feat_tax_dict  = feat_tax_func(character, story_feats,  feat_levels=_story_levels)
+		flaw_feat_tax_dict   = feat_tax_func(character, flaw_feats,   feat_levels=[1] * len(flaw_feats))
+		flavor_feat_tax_dict = feat_tax_func(character, flavor_feats, feat_levels=[1] * len(flavor_feats))
+		class_feat_tax_dict  = feat_tax_func(character, class_feats,  feat_levels=_class_feat_levels[:len(class_feats)])
+		feats_feat_tax_dict  = feat_tax_func(character, feats,        feat_levels=_normal_levels)
+
+		# Strip feats now bundled as a tax-child onto a primary so they don't ALSO render as their
+		# own standalone entry (children are granted cross-group via character.chooseable).
+		_taxed_children = {
+			c.lower()
+			for d in (story_feat_tax_dict, flaw_feat_tax_dict, flavor_feat_tax_dict,
+					  class_feat_tax_dict, feats_feat_tax_dict)
+			for children in d.values() for c in children
+		}
+		if _taxed_children:
+			story_feats  = [f for f in story_feats  if f.lower() not in _taxed_children]
+			flaw_feats   = [f for f in flaw_feats   if f.lower() not in _taxed_children]
+			flavor_feats = [f for f in flavor_feats if f.lower() not in _taxed_children]
+			feats        = [f for f in feats        if f.lower() not in _taxed_children]
+			# class_feats carries a parallel label list -> filter in lockstep
+			_labels = list(class_feat_labels) + [None] * (len(class_feats) - len(class_feat_labels))
+			_kept = [(f, lbl) for f, lbl in zip(class_feats, _labels) if f.lower() not in _taxed_children]
+			class_feats = [f for f, _ in _kept]
+			class_feat_labels = [lbl for _, lbl in _kept if lbl is not None]
 
 
 
