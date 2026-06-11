@@ -57,6 +57,7 @@ from utils.class_func.spells 						import (extra_spells_divine, spells_known_att
 from utils.class_func.spell_alphabetize_and_dedupe 	import spell_alphabetize_and_dedupe_func
 from utils.class_func.stats 						import roll_stats, assign_stats, calc_ability_mod 
 from utils.class_func.separate_feats_func 			import separate_feats_func
+from utils.class_func.feat_level_assignment import assign_feats_to_levels
 from utils.class_func.traits 						import trait_selector
 from utils.class_func.versatile_performance 		import versatile_perfomance
 from utils.class_func.wizard_school 				import wizard_school_chooser, wizard_opposing_school
@@ -732,6 +733,22 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			_kept = [(f, lbl) for f, lbl in zip(class_feats, _labels) if f.lower() not in _taxed_children]
 			class_feats = [f for f, _ in _kept]
 			class_feat_labels = [lbl for _, lbl in _kept if lbl is not None]
+
+		# Reorder the surviving normal + class-bonus feats (one combined pool) onto their level slots so
+		# each lands at a level whose prerequisites are actually met: prereq feats placed at earlier (lower)
+		# levels, and BAB / class-level gates respected (e.g. Greater Feint never before Improved Feint nor
+		# before its +6 BAB level). Done AFTER the tax-child strip because removing children reindexes the
+		# positional normal-feat levels. class_feat_labels are rebuilt in lockstep. Falls back (except) to
+		# the post-strip positional order if anything goes wrong, so a generation never crashes here.
+		try:
+			_post_class_levels = class_bonus_feat_levels(character.c_class, character.c_class_level)[:len(class_feats)]
+			feats, class_feats, _normal_levels, _post_class_levels = assign_feats_to_levels(
+				character, feats, class_feats,
+				[2 * i + 1 for i in range(len(feats))], _post_class_levels)
+			_class_display = character.c_class.replace('_', ' ').title()
+			class_feat_labels = [f"{_class_display} {lvl}" for lvl in _post_class_levels][:len(class_feats)]
+		except Exception:
+			pass
 
 
 
