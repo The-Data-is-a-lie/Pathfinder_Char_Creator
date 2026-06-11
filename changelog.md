@@ -88,6 +88,15 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   re-parsed on every feat-selection call.
 
 ### Fixed
+- Feats are now acquired at levels where their prerequisites are actually met. Selected feats (already
+  legal at the character's final level) were dropped onto acquisition levels by list position, so a feat
+  could surface before its prerequisite feat or before the required base attack bonus — e.g. a Fighter
+  showing Greater Feint at level 4 (needs Improved Feint **and** BAB +6) ahead of Improved Feint. A new
+  `assign_feats_to_levels()` (`Backend/utils/class_func/feat_level_assignment.py`) reorders the normal
+  and class-bonus feats as one pool so each lands at a level slot that satisfies its BAB / class-level
+  gates and follows its prerequisite feats; `class_feat_labels` (e.g. "Fighter 6") follow suit. Runs
+  after the feat-tax child strip (which reindexes the positional levels) and reuses the cached
+  prerequisite graph, so generation time is unchanged (sub-millisecond per character).
 - Feat-tax chains are now ordered by a **stable topological sort** (each feat after all its in-chain
   prerequisites) instead of BFS shortest-path depth, fixing chains that rendered "Greater X > Improved
   X" (e.g. Two-Weapon Fighting, whose Greater feat lists the base feat directly and so tied with
