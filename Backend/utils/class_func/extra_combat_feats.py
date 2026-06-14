@@ -43,24 +43,18 @@ def extra_combat_feats(character):
 
 
     # path of war section
-    #Warder section
+    #Warder section -- bonus combat/teamwork feat at 3rd and every 5 levels after. Must fall
+    # through to the class_feats_amount assignment below (the old early returns skipped it,
+    # leaving warder/mystic class feats silently at 0 while their label schedules existed).
     if character.c_class == 'warder':
-        if character.c_class_level < 3:
-            extra_feats = 0
-            return extra_feats
-        else:
+        if character.c_class_level >= 3:
             extra_feats = floor((character.c_class_level - 3) / 5) + 1
-            return 
-    #mystic section
+    #mystic section -- bonus combat/item-creation feat at 2nd and every 5 levels after
     if character.c_class == 'mystic':
-        if character.c_class_level < 2:
-            extra_feats = 0
-            return extra_feats
-        else:
+        if character.c_class_level >= 2:
             extra_feats = floor((character.c_class_level - 2) / 5) + 1
-            return         
     #warlord section
-    if character.c_class == 'warlord' or character.c_class == 'warlord':
+    if character.c_class == 'warlord':
         while i < len(warlord_feats) and warlord_feats[i] <= character.c_class_level:
             i += 1
         extra_feats += i

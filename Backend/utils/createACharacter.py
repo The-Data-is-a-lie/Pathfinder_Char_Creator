@@ -234,8 +234,10 @@ class Character:
             self.c_class = self.c_class.replace(" (unchained)", "")
 
         c_class = self.c_class.capitalize()
-        json = self.archetypes[c_class]
+        json = self.archetypes.get(c_class, {})
         archetypes_list = list(json.keys())
+        if not archetypes_list:
+            return {}                                  # class has no archetypes (e.g. Metzofitz Medic)
         archetypes_choice = random.choice(archetypes_list)
         archetypes_description = json[archetypes_choice]
         archetype_info = {archetypes_choice: archetypes_description}

@@ -8,6 +8,15 @@
         "critical focus"
     ],
     "tax_chain_override": {
+        "martial training i": [
+            "martial training ii"
+        ],
+        "martial training iii": [
+            "martial training iv"
+        ],
+        "martial training v": [
+            "martial training vi"
+        ],
         "weapon focus": [
             "greater weapon focus",
             "martial focus",
@@ -325,15 +334,6 @@
             "1": "finesse shot",
             "2": "impressive grit"
         },
-        "martial training 1": {
-            "1": "martial training 2"
-        },
-        "martial training 3": {
-            "1": "martial training 4"
-        },
-        "martial training 5": {
-            "1": "martial training 6"
-        },
         "meditation master": {
             "1": "body control",
             "2": "bend with the wind",
@@ -430,8 +430,8 @@
             "1": "sap master"
         },
         "scorpion style": {
-            "1": "gorgon’s fist",
-            "2": "medusa’s wrath",
+            "1": "gorgon's fist",
+            "2": "medusa's wrath",
             "3": "cockatrice strike"
         },
         "second chance": {
@@ -440,8 +440,8 @@
         "seething hatred": {
             "1": "extreme prejudice"
         },
-        "serpent’s lash": {
-            "1": "greater serpent’s lash"
+        "serpent lash": {
+            "1": "greater serpent lash"
         },
         "stalwart": {
             "1": "improved stalwart"

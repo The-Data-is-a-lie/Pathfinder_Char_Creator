@@ -1,0 +1,9 @@
+{
+    "_comment": "Cumulative Martial Training I-VI progression for non-initiator characters. Index = chain depth - 1 (depth 1 = MT I owned, ... depth 6 = MT VI). Numbers from the d20pfsrd Martial Training I-VI feat texts; where a feat offers '2 maneuvers OR 1 maneuver + 1 stance' (V, VI) the stance is preferred per the campaign spec. No ability-modifier bonuses apply.",
+    "martial_training": {
+        "known":              [2, 4, 5, 7, 8, 9],
+        "stances":            [0, 1, 2, 2, 3, 4],
+        "readied":            [1, 2, 3, 4, 5, 6],
+        "max_maneuver_level": [1, 2, 3, 4, 5, 6]
+    }
+}

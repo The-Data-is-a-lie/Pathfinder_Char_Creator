@@ -115,13 +115,17 @@ def chooseClass(character, class_choice, chosen_BAB, chosen_caster_level=None):
     Returns
     - c_class (String)
     """
-    # temporarily removing occult classes (they aren't ready yet)
+    # temporarily removing occult classes (they aren't ready yet). Path of War classes are
+    # generatable and stay in the random pool.
     occult_classes = [x.lower() for x in getattr(data, 'occult_classes')]
-    path_of_war_class = [x.lower() for x in getattr(data, 'path_of_war_class')]
     available_classes = list(character.class_data.keys())
     #remove occult classes
     available_classes = [x for x in available_classes if x not in occult_classes]
-    available_classes = [x for x in available_classes if x not in path_of_war_class]
+    # remove Path of War classes not yet in the pf1-pow Foundry compendium (they'd generate fine
+    # here, but the Foundry sheet can't resolve a class item the module doesn't ship). Re-enable
+    # by emptying pow_classes_pending_foundry in data.py once the module includes them.
+    pending = [x.lower() for x in getattr(data, 'pow_classes_pending_foundry', [])]
+    available_classes = [x for x in available_classes if x not in pending]
 
     if isinstance(class_choice, str):
         # Lower-case for case-insensitivity, and turn the frontend's slug form (spaces -> hyphens,
@@ -143,7 +147,7 @@ def chooseClass(character, class_choice, chosen_BAB, chosen_caster_level=None):
     # if no class is specified, allow for people to specify BAB and caster level
 
     # looping to ensure we don't have a class we don't want included
-    while (class_choice in occult_classes or class_choice in path_of_war_class) and class_choice not in available_classes:
+    while class_choice in occult_classes and class_choice not in available_classes:
         class_choice = random.choice(available_classes)
 
     # userInput_class = input(f'please type a class name to select a class, or type 0 for a random class: ').lower()
