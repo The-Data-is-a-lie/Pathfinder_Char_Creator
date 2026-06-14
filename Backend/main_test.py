@@ -905,6 +905,22 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				f"readied {sum(maneuvers_readied_list)}, "
 				f"stances {len(stances_chosen)}, mt {mt_feats}, styles {style_feats}")
 
+		# Reorder the surviving normal + class-bonus feats (one combined pool) onto their level slots so
+		# each lands at a level whose prerequisites are actually met: prereq feats placed at earlier (lower)
+		# levels, and BAB / class-level gates respected (e.g. Greater Feint never before Improved Feint nor
+		# before its +6 BAB level). Done AFTER the tax-child strip because removing children reindexes the
+		# positional normal-feat levels. class_feat_labels are rebuilt in lockstep. Falls back (except) to
+		# the post-strip positional order if anything goes wrong, so a generation never crashes here.
+		try:
+			_post_class_levels = class_bonus_feat_levels(character.c_class, character.c_class_level)[:len(class_feats)]
+			feats, class_feats, _normal_levels, _post_class_levels = assign_feats_to_levels(
+				character, feats, class_feats,
+				[2 * i + 1 for i in range(len(feats))], _post_class_levels)
+			_class_display = character.c_class.replace('_', ' ').title()
+			class_feat_labels = [f"{_class_display} {lvl}" for lvl in _post_class_levels][:len(class_feats)]
+		except Exception:
+			pass
+
 
 
 	# ------------------- Last minute Spell Alphabetize + dedupe process -------------------#
