@@ -17,7 +17,10 @@ randomization, gender, stat dice count/size, level range, starting gold) and ret
 - **Consumers:** the FoundryVTT module `pf1e_random_char_generator` POSTs to the deployed backend
   (Render) and injects the result as a Foundry Actor; the "awesome sheet" frontend renders sheets.
 - **Homebrew status:** a story-feats flag exists; Metzofitz feat selection is still commented out in
-  `Backend/utils/class_func/feats.py`; Path of War / Spheres / Mythic / homebrew races are in progress.
+  `Backend/utils/class_func/feats.py`; **Path of War is wired in** (six base initiator classes in the
+  random pool + "martial paths" via the Martial Training chain for everyone else —
+  `Backend/utils/class_func/path_of_war.py`, spec in `docs/feature_spec_todo.md` §1; Metzofitz
+  initiator classes & PoW archetypes pending); Spheres / Mythic / homebrew races are in progress.
 
 ## Run / test
 ```

@@ -1,0 +1,650 @@
+{
+  "Razor Wings of the Black Seraph": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "ac",
+        "type": "profane",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Black Seraph",
+    "_level": 6,
+    "_snippets": [
+      "peed equal to his movement speed average maneuverability, a +2profane bonus to AC"
+    ]
+  },
+  "Stance of the Eternal Guardian": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "deflection",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "allSavingThrows",
+        "type": "deflection",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_level": 3,
+    "_snippets": [
+      "as long as that ally is within 60 feet of you, that gains a +1 deflection bonus to its AC and a +1 bonus on all saving throws"
+    ]
+  },
+  "Jailer of the Damned": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "allSavingThrows",
+        "type": "resistance",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "cmb",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_level": 5,
+    "_snippets": [
+      " Such creatures gain a +5 resistance bonus on saving throws against these effects",
+      "ure that is shaken, frightened, or panicked, and you gain a +2 bonus on your combat maneuver checks against such creatures"
+    ]
+  },
+  "Golden Generals Attitude": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Golden Lion",
+    "_level": 6,
+    "_snippets": [
+      " of the initiator gain a +1 morale bonus to attack and damage rolls"
+    ]
+  },
+  "Stance of the Defending Shell": {
+    "changes": [
+      {
+        "formula": "1 + 1 * max(0, floor((@pow.initLevel - 0) / 4))",
+        "target": "ac",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_level": 1,
+    "_snippets": [
+      " The initiator gains an additional +1 bonus to his shield AC while in this stance ... increases by +1 for every 4 initiator levels"
+    ]
+  },
+  "Mithral Tortoise Stance": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "ac",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "cmd",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_level": 6,
+    "_snippets": [
+      "metal so much, the initiator moves more freely, and gains a +2 dodge bonus to his AC and to his CMD"
+    ]
+  },
+  "Turtle Generals Stance": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "ac",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_level": 8,
+    "_snippets": [
+      " Additionally, while in this stance the initiator gains a +2 bonus to his shield armor class bonus"
+    ]
+  },
+  "Malignant Punisher Stance": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Leaden Hyena",
+    "_level": 1,
+    "_snippets": [
+      " While in this stance, you gain a +1 dodge bonus to AC"
+    ]
+  },
+  "Flowing Water Stance": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "ac",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "4",
+        "target": "init",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_level": 3,
+    "_snippets": [
+      " While you maintain this stance, you gain a +4 dodge bonus to your AC and a +4 bonus on initiative checks"
+    ]
+  },
+  "Mithral Lightning Stance": {
+    "changes": [
+      {
+        "formula": "6",
+        "target": "ac",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_level": 8,
+    "_snippets": [
+      "gain a +10-foot enhancement bonus to each of your speeds and a +6 dodge bonus to your AC against attacks of opportunity"
+    ]
+  },
+  "Stance of the Thunderbrand": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "ac",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_level": 5,
+    "_snippets": [
+      " While you maintain this stance, you gain a +4 dodge bonus to your AC and your weapons reach increases by 5 feet"
+    ]
+  },
+  "Running Hunters Stance": {
+    "changes": [
+      {
+        "formula": "10",
+        "target": "landSpeed",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_level": 1,
+    "_snippets": [
+      " While in this stance, the initiator gains a +10 enhancement bonus to his base land speed and gains the scent special ability"
+    ]
+  },
+  "Skirmishers Stance": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "ac",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_level": 6,
+    "_snippets": [
+      "m inflict an additional 2d6 points of damage and he gains a +2 dodge bonus to his Armor Class"
+    ]
+  },
+  "Distorted Clock": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "allSavingThrows",
+        "type": "circumstance",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Riven Hourglass",
+    "_level": 1,
+    "_snippets": [
+      " In addition, you gain a +2 circumstance bonus on saving throws against harmful effects with a duration of lon"
+    ]
+  },
+  "Sands of Time Stance": {
+    "changes": [
+      {
+        "formula": "2 + ifelse(gte(@pow.initLevel, 12), 2, 0)",
+        "target": "init",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2 + ifelse(gte(@pow.initLevel, 12), 2, 0)",
+        "target": "ref",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Riven Hourglass",
+    "_level": 1,
+    "_snippets": [
+      " While you maintain this stance, you gain a +2 bonus on Initiative checks and Reflex saves ... At initiator level 12th, these bonuses increase to +4"
+    ]
+  },
+  "Riven Hourglass Stance": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "ac",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "4",
+        "target": "init",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Riven Hourglass",
+    "_level": 3,
+    "_snippets": [
+      " While you maintain this stance, you gain a +4 dodge bonus to your AC and a +4 bonus on Initiative checks"
+    ]
+  },
+  "Slivers of a Shattered Star": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Sagitta Stellaris",
+    "_level": 1,
+    "_snippets": [
+      "elf, and immediately applies to any current movement, and a +1 sacred bonus to their attack and damage rolls for 1 round this bonus does no"
+    ]
+  },
+  "Celestrial Orrery Stance": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "init",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Sagitta Stellaris",
+    "_level": 5,
+    "_snippets": [
+      " You gain a +4 insight bonus to initiative"
+    ]
+  },
+  "Scarlet Einhander": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "ac",
+        "type": "shield",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Scarlet Throne",
+    "_level": 1,
+    "_snippets": [
+      " The initiator gains a +2 shield bonus to his Armor Class and inflicts an additional 1d6 points of dam"
+    ]
+  },
+  "Unfettered Movement": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "ac",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Scarlet Throne",
+    "_level": 3,
+    "_snippets": [
+      " bonus to his base speed and gains a +4 dodge bonus to his armor class against attacks of opportunity"
+    ]
+  },
+  "Scarlet Duelist Attitude": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "ac",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Scarlet Throne",
+    "_level": 6,
+    "_snippets": [
+      " By adopting this stance, the disciple may add +5 insight bonus to his Armor Class"
+    ]
+  },
+  "Obsidian Reflection Stance": {
+    "changes": [
+      {
+        "formula": "1 + 1 * max(0, floor((@pow.initLevel - 0) / 4))",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Shattered Mirror",
+    "_level": 1,
+    "_snippets": [
+      "creatures including you within 20 feet of you gain either a +1 bonus on attack and damage rolls or a 1 penalty on attack and damage  ... increase by +1 for every four initiator levels"
+    ]
+  },
+  "Silver Crane Waltz": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "init",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "ref",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "ac",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Silver Crane",
+    "_level": 1,
+    "_snippets": [
+      " The initiator gains a +4 insight bonus to initiative checks if he is in this stance before combat begi",
+      "ns, and a +2 insight bonus to Reflex saves and to AC"
+    ]
+  },
+  "Diamond Wings of the Imperial Crane": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "allSavingThrows",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Silver Crane",
+    "_level": 8,
+    "_snippets": [
+      "im spell resistance equal to 15 + his initiator level and a +4 sacred bonus to saving throws"
+    ]
+  },
+  "Inarguable Presence of the Sleeping Goddess": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "allSavingThrows",
+        "type": "resistance",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Sleeping Goddess",
+    "_level": 5,
+    "_snippets": [
+      " Such creatures gain a +5 resistance bonus on saving throws against your mind-affecting effects"
+    ]
+  },
+  "Sunwalker Stance": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "ac",
+        "type": "circumstance",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_level": 3,
+    "_snippets": [
+      "need to meet the prerequisites of this feat, and he gains a +2 circumstance bonus to his armor class against attacks if he moves more than 10-ft"
+    ]
+  },
+  "Body of the Night": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "attack",
+        "type": "competence",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_level": 1,
+    "_snippets": [
+      "been denied its Dexterity bonus to AC, the disciple gains a +4 competence bonus to attack rolls and inflicts an additional 1d6 points of damage"
+    ]
+  },
+  "Snipers Eye Stance": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "cmb",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_level": 1,
+    "_snippets": [
+      "ond your weapons first range increment by 2, and you gain a +2 bonus on combat maneuver checks made with ranged attacks"
+    ]
+  },
+  "Inner Sphere Stance": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "ac",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "will",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_level": 1,
+    "_snippets": [
+      "ding two weapons while in this stance, the disciple gains a +2 dodge bonus to AC and a +2 morale bonus to Will saves"
+    ]
+  },
+  "Battle Dragons Stance": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "init",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_level": 3,
+    "_snippets": [
+      "reduces his two-weapon fighting penalties by 2, and gains a +4 bonus to Initiative checks and adds 1d6 + initiation modifier to mele"
+    ]
+  },
+  "Bean nighe Attitude": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "allSavingThrows",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Unquiet Grave",
+    "_level": 1,
+    "_snippets": [
+      " you have been horrifically slain; additionally, you gain a +1 insight bonus on saving throws"
+    ]
+  },
+  "Leaping Spirit Dance": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "ac",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "ref",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_discipline": "Veiled Moon",
+    "_level": 1,
+    "_snippets": [
+      " The disciple gains a +2 dodge bonus to AC and a +2 competence bonus to Reflex saves while in this s"
+    ]
+  }
+}

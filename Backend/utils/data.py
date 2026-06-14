@@ -2234,9 +2234,17 @@ skill_spheres = ["Artifice", "Bluster", "Body Control", "Communication", "Factio
 
 
 
-#path of war classes:
-path_of_war_class = ["warder", "harbinger", "mystic", 'warlord', "zealot", "stalker"]
-occult_classes = ["occultist", "kineticist", "medium", "mesmerist", "psychic", "spiritualist", "mystic", ]
+#path of war classes (initiator classes -- routed through the maneuver branch, not martial-paths):
+path_of_war_class = ["warder", "harbinger", "mystic", 'warlord', "zealot", "stalker", "medic"]
+# PoW classes that are fully defined here but NOT yet in the pf1-pow FoundryVTT compendium, so the
+# Foundry sheet can't resolve their class item. chooseClass excludes these from selection (random
+# + explicit) so we don't generate a character Foundry can't render. Empty this list once the
+# module ships them, and uncomment the matching dropdown entries in the FoundryVTT module's
+# button.js / html_dialog.js. (Stalker & Zealot missing as of 2026-06.)
+pow_classes_pending_foundry = ["stalker", "zealot"]
+# NOTE: no "mystic" here -- the Path of War mystic is a generatable class; listing it would
+# silently re-filter it out of the random class pool (chooseClass excludes occult_classes).
+occult_classes = ["occultist", "kineticist", "medium", "mesmerist", "psychic", "spiritualist", ]
 disciplines = ["Black Seraph", "Broken Blade", "Brutal Crocodile", "Cursed Razor", "Elemental Flux", "Eternal Guardian", "Fools Errand", "Golden Lion", "Iron Tortoise", "Leaden Hyena", "Mangled Gear", "Mithral Current", "Piercing Thunder", "Primal Fury", "Radiant Dawn", "Riven Hourglass", "Roaring Mouse", "Sagitta Stellaris", "Scarlet Throne", "Shattered Mirror", "Silver Crane", "Sleeping Goddess", "Solar Wind", "Spark of Battle", "Steel Serpent", "Surging Shark", "Tempest Gale", "Thrashing Dragon", "Unquiet Grave", "Veiled Moon"]
 
 # Craft specializations (the "<type>" in "Craft: <type>"). One is rolled per character.

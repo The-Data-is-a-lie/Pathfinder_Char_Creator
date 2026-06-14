@@ -36,7 +36,7 @@
     ,
 
     "mounted combat": {
-        "2": ["Mounted Combat", "Mounted Archery", "Ride-By Attack"," Trick Riding"],
+        "2": ["Mounted Combat", "Mounted Archery", "Ride-By Attack", "Trick Riding"],
         "6": ["Mounted Shield", "Spirited Charge"],
         "10": ["Mounted Skirmisher", "Unseat"]
     }

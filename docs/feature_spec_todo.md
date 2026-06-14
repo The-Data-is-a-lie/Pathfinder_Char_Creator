@@ -13,21 +13,80 @@
 
 ---
 
-## 1. Path of War
-**Current state (verified):** data is fully scraped — `Backend/json/class_data/path_of_war/`
-(`Martial_Disciplines.json`, `path_of_war_classes.json`, `path_of_war_archetypes.json`,
-`path_of_war_maneuvers_known.json`). `Backend/utils/class_func/path_of_war_funcs.py` defines
-`select_disciplines()` (+ `clean_disciplines_string_func()`), but **nothing calls it**. The PoW
-classes (`warder, harbinger, mystic, warlord, zealot, stalker`) are deliberately **filtered out of
-random class selection** (`Backend/utils/util.py:120-146`), and the PoW imports/data-loads are
-**commented out** in `Backend/main_test.py` (L42–45, L143–146). → not wired into generation or export.
-Reference: [homebrew_rules.md §5](homebrew_rules.md).
+## 1. Path of War — ✅ IMPLEMENTED (base classes + martial paths)
+**Current state:** wired into generation and export. The six base PoW classes (`stalker, warlord,
+warder, harbinger, mystic, zealot`) generate end-to-end and are **back in the random class pool**
+(entries built into `Backend/json/class_data.json` by `Backend/scripts/build_pow_class_data.py`);
+`Backend/utils/class_func/path_of_war.py` selects disciplines (via `select_disciplines()`),
+maneuvers, stances, and readied sets.
 
-**Needs from you:** how to choose disciplines, maneuvers-known, and stances per class + level; whether
-PoW classes should re-enter the random pool; and what the NPC export should include (maneuver list?
-readied vs known? stances?).
+**Spec (as agreed, 2026-06-11):**
+- **Non-PoW characters** roll "martial paths": BAB `L` → 0–1 disciplines, `M`/`H` → 0–2 (casting
+  level ignored); at level 20+ both bounds gain +1. Chain depth by `bab_total` (I needs BAB +3,
+  III +7, V +11; below +3 → no paths). **Each rolled discipline is its OWN full Martial Training
+  chain** (MT I..depth) drawing only from that discipline; **each chain costs its own paid feats**
+  (I/III/V = `depth//2` per chain) and the chain count is **capped by available normal feat slots**
+  — a feat-poor build gets fewer disciplines than it rolled. II/IV/VI arrive free via a hand-built
+  tax bundle (the chain feats are discipline-labeled — "Martial Training I (Broken Blade)" — so
+  repeats don't collapse; the base six rows in `data/feats.csv` carry sentinel `type = "Path of
+  War"` so random pools never pick them).
+- Counts mirror the spellcaster tables (known ≈ spells known, readied ≈ spells per day, **no
+  ability-mod bonuses**): MT users read `martial_training_progression.json` (cumulative per chain
+  depth, stance-preferred at V/VI) **per chain** — N disciplines ≈ N× the maneuvers; initiator
+  classes read `path_of_war_maneuvers_known.json` at class level over one shared pool
+  (Metzofitz-scraped tables are authoritative). **For MT users the FEAT TIER is the maneuver-level
+  gate: max maneuver level = depth, and tier t grants level-t maneuvers** (per-tier deltas of the
+  cumulative table). Initiators: max maneuver level = min(ceil(IL/2), 9). IL = class level for
+  initiators, floor(level/2) for MT users (display / stance scaling only).
+- **Export** (`/update_character_data`): `martial_disciplines`, `initiator_level`,
+  `maneuvers_known_list` / `maneuvers_readied_list` (per-maneuver-level counts),
+  `maneuvers_choose_from` / `maneuvers_readied_names` (names grouped by level),
+  `stances_chosen`, `mt_feats`, `initiation_stat` (arg-max of FINAL Int/Wis/Cha — same calc as
+  the skill-rank scaling; pf1-pow initiating ability), and `maneuvers_desc_dict` (per-maneuver
+  description/type/level/discipline/action/range/duration — the Foundry module prefers the
+  pf1-pow.disciplines compendium and falls back to this for unmatched names).
 
-**Your spec:**
+**Done since:** **Medic** (Metzofitz) is now fully wired (class_data + dropdown + metzofitz maneuver
+table). The FoundryVTT side is live too — the 6 base classes + Medic are exported into
+`every_class.json` from the everyClassPerson actor via `tools/export_every_class.macro.js`.
+**Selection v2 (2026-06-12):** initiators specialize in randint(2,3) class disciplines; all
+maneuver/stance picks are prerequisite-legal (same-discipline counts, stances count, bootstrap
+for the three no-prereq-0 disciplines); initiators take 1..N(specialized) Metzofitz style feat
+chains (base paid like MT, followers always feat-taxed through); homebrew feats are synthesized
+from `homebrew_feat_desc_dict`. See `.claude/skills/path-of-war/SKILL.md`.
+**Native pf1-pow items (2026-06-12):** the Foundry module now creates native `pf1-pow.maneuver`
+items (compendium-first from `pf1-pow.disciplines`, synthesized fallback), so maneuvers render in
+pf1-pow's own Path of War tab — names prefixed `(Strike)/(Boost)/(Counter)/(Stance)`,
+`system.class` = class item name for tab grouping, readied maneuvers start ready/charged. Martial
+Training characters get `system.maneuverProgression = {archetype, regular, initiatorAttr:
+initiation_stat}` on the class item + the `flags['pf1-pow'].maneuverAttr` actor flag (initiator
+classes untouched — every_class.json already carries theirs). Each stance also becomes an
+inactive temp buff under a "____ Path of War ____" buff divider; mechanical changes from
+`stance_changes.json` (curated via `Backend/scripts/build_stance_changes.py`, `@pow.initLevel`
+scaling with `ifelse()/gte()`), description-only otherwise. The PoW tab's `sortManeuvers` helper
+is overridden (discipline → Strike/Boost/Counter/Stance → level inside each level section). With
+pf1-pow disabled, the legacy "____ Path of War ____" feat-item section is the fallback.
+**Stalker & Zealot are temporarily shelved** (`pow_classes_pending_foundry` in `data.py` + commented
+dropdown entries): they generate on the backend but aren't in the pf1-pow Foundry compendium yet
+(module not shipping them as of 2026-06 — maintainer may need a ping). Re-enable when they appear.
+
+**Still open (follow-ups):** the other Metzofitz initiators (`epilektoi, parasite, rajah, voltaic`
+— note rajah's nested JSON shape); PoW archetypes (`path_of_war_archetypes.json` is
+loaded-but-unused); class-feature choosers (stalker arts / warder defenses / warlord gambits /
+zealot convictions).
+**Maneuver conditionals on the main weapon (2026-06-13, implemented):** each known
+strike/boost/counter with a clean numeric combat effect is now a **pf1 conditional modifier on the
+main weapon's attack action** (main weapon = the `weapon_name` export), named with the same
+`(Strike)`/`(Boost)`/`(Counter)` prefix as its maneuver item, **default off** — toggled per-roll
+from the attack dialog (e.g. "(Strike) Sting of the Rattler" → +1d4 damage). `formula` keeps real
+dice (`2d6`), unlike buff changes which collapse to a flat maximized number. Data:
+`Backend/scripts/build_maneuver_changes.py` (manual tool) drafts modifiers from
+`Martial_Disciplines.json` Descriptions (conservative damage-dice / attack-bonus regexes) →
+`maneuver_changes.draft.json`; the curated high-confidence subset lives in the Foundry module's
+`templates/character_sheet_folder/maneuver_changes.json` and is attached by
+`addManeuverConditionals()` in `modify-abilities.js`. **Stance dice damage stays description-only**
+(buff `changes` can't roll per-hit dice). Non-numeric maneuvers (double damage, saves, conditions,
+skill-replaces-attack) have no conditional — their pf1-pow item + description is the reference.
 
 ---
 

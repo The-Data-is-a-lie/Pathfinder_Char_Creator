@@ -4,22 +4,31 @@ from math import floor
 # Start of major task: skills assignment
 
 
+def final_ability_score(character, stat):
+    """FINAL ability score for ``stat``: base roll + inherent bonuses + level-up
+    bumps. ``inherents`` / ``level_up_stats`` are ``{stat: bonus}`` dicts and may
+    be absent (e.g. inherents disabled), so we read them defensively."""
+    inherents = getattr(character, 'inherents', {}) or {}
+    level_ups = getattr(character, 'level_up_stats', {}) or {}
+    inh = inherents.get(stat, 0) if isinstance(inherents, dict) else 0
+    lvl = level_ups.get(stat, 0) if isinstance(level_ups, dict) else 0
+    return getattr(character, stat) + inh + lvl
+
+
+def final_ability_mod(character, stat):
+    """Ability modifier derived from the FINAL score (see final_ability_score)."""
+    return floor((final_ability_score(character, stat) - 10) / 2)
+
+
 def highest_mental_mod(character):
     """Highest mental ability modifier using each stat's FINAL score
     (base roll + inherent bonuses + level-up bumps), not just the base roll.
 
     Bonus skill ranks scale off the best mental ability, so an Int/Wis/Cha that
     was boosted by inherents or level-up bumps now grants the extra ranks it
-    should. ``inherents`` / ``level_up_stats`` are ``{stat: bonus}`` dicts and may
-    be absent (e.g. inherents disabled), so we read them defensively.
+    should.
     """
-    def final_mod(stat):
-        inherents = getattr(character, 'inherents', {}) or {}
-        level_ups = getattr(character, 'level_up_stats', {}) or {}
-        inh = inherents.get(stat, 0) if isinstance(inherents, dict) else 0
-        lvl = level_ups.get(stat, 0) if isinstance(level_ups, dict) else 0
-        return floor((getattr(character, stat) + inh + lvl - 10) / 2)
-    return max(final_mod('int'), final_mod('wis'), final_mod('cha'))
+    return max(final_ability_mod(character, s) for s in ('int', 'wis', 'cha'))
 
 def skills_selector(character, skills, skill_rank_level):
     """

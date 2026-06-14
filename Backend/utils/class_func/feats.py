@@ -202,7 +202,11 @@ def choosing_feats(character, amount, base, total_choices):
         return []
 
     chosen_feats = set()
-    total_choices_set = set(total_choices)
+    # character.chooseable_talents (which feeds total_choices) accumulates across selection
+    # passes -- the talent/feat cross-pollination relies on that -- so feats already picked by
+    # an EARLIER pass (main pool vs teamwork, class-granted bonus feats, ...) are still in the
+    # pool. Drop owned feats so no pass can re-pick another pass's selection (duplicate feats).
+    total_choices_set = {c for c in total_choices if c not in character.chooseable}
     stale = 0
 
     while len(chosen_feats) < amount:
@@ -220,7 +224,7 @@ def choosing_feats(character, amount, base, total_choices):
 
         # Update total_choices_set with new prerequisites
         total_choices_set.add(chosen.lower())
-        total_choices_set.update(prereq_list)
+        total_choices_set.update(c for c in prereq_list if c not in character.chooseable)
 
         # Termination guard: if we keep drawing feats we already have and the candidate pool
         # isn't growing, stop instead of looping forever. This can happen at high level when
@@ -284,7 +288,6 @@ def teamwork_pool_size(character, casting_level_str):
 
 def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_column, override = None, special_type = None, feat_amount = None, extra_feats_flag = False):
     if class_1 == character.c_class:
-        feat_amount -= 1 #otherwise prints out 1 too many feats
         feat_data = grab_and_clean_feats('data/feats.csv')
 
         # Temporary add mezofitz feats
@@ -342,6 +345,29 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
 
         return cleaned_chosen_feats
 
+def topup_feat_chooser(character, casting_level_str, amount):
+    """Draw `amount` additional feats from progressively wider pools. Used to top up a
+    shortfall after the main selection (the type/caster-filtered pools can exhaust at high
+    level) and to backfill slots freed by the feat-tax child strip. choosing_feats registers
+    every pick in character.chooseable, so repeated calls never duplicate earlier picks."""
+    if not amount or amount <= 0:
+        return []
+    primary = 'metamagic' if (casting_level_str in ('mid', 'high') and character.bab in ('L', 'M')) else 'combat'
+    # widen: preferred type -> combat -> 'Null' (matches no type -> General/Story-heavy pool)
+    attempts = [primary] + (['combat'] if primary == 'metamagic' else []) + ['Null']
+    picked = []
+    for feat_type in attempts:
+        remaining = amount - len(picked)
+        if remaining <= 0:
+            break
+        extra = generic_feat_chooser(character, character.c_class, casting_level_str, feat_type,
+                                     info_column='description', feat_amount=remaining)
+        if isinstance(extra, list):
+            picked.extend(extra)
+    if len(picked) < amount:
+        print(f"feat top-up: pools exhausted, {amount - len(picked)} slot(s) unfilled")
+    return picked
+
 def remove_spell_caster_feats(feats):
     spell_word_list = ['spell', 'cast', 'dispel', 'aracane', 'summon', 'teleport']
     feats = {name: info for name, info in feats.items()
@@ -374,6 +400,21 @@ def remove_divine_feats(feats):
                         word in info.get('benefits', '').lower()
                         for word in spell_word_list)}
     return feats
+
+
+def dedupe_feats_case_insensitive(feats):
+    """Order-preserving dedup keyed on lower().strip(). The general pool already avoids
+    re-picking feats registered in character.chooseable, so this is a safety net for the
+    same feat arriving from two sources with different casing/whitespace (ranger style vs
+    main pool, hardcoded appends, ...). Also drops empty-string artifacts."""
+    seen = set()
+    out = []
+    for f in feats:
+        key = str(f).lower().strip()
+        if key and key not in seen:
+            seen.add(key)
+            out.append(f)
+    return out
 
 
 def capitalize_feats(character, chosen_feats):

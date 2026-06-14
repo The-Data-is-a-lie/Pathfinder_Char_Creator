@@ -1,0 +1,6167 @@
+{
+  "Strength of Hell": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Black Seraph",
+    "_kind": "boost",
+    "_level": 1,
+    "_snippets": [
+      "additional 1d6 points of damage"
+    ]
+  },
+  "Voracious Drive": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Black Seraph",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "inflicts an additional 1d6 points of damage"
+    ]
+  },
+  "Inner Demon Strike": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Black Seraph",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "deals 1d6 points of damage"
+    ]
+  },
+  "Seraphs Wrath": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Black Seraph",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Savage Drive": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Black Seraph",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "inflicts an additional 4d6 points of damage"
+    ]
+  },
+  "Tendon Rip": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Black Seraph",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Unfettered Progression": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Black Seraph",
+    "_kind": "boost",
+    "_level": 3,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Abyssal Drive": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Black Seraph",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "inflicts an additional 8d6 points of damage"
+    ]
+  },
+  "Charge of the Ravager": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Black Seraph",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "inflict an additional 2d6 points of damage"
+    ]
+  },
+  "Devastating Riposte": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Black Seraph",
+    "_kind": "counter",
+    "_level": 7,
+    "_snippets": [
+      "inflicts an additional 8d6 points of damage"
+    ]
+  },
+  "Bronze Knuckle": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Broken Blade",
+    "_kind": "boost",
+    "_level": 2,
+    "_snippets": [
+      "inflict an additional 2d6 points of damage"
+    ]
+  },
+  "Cartwheel Axe Kick": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Broken Blade",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Steel Flurry Strike": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Broken Blade",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "inflict an additional 3d6 points of damage"
+    ]
+  },
+  "Broken Blade Riposte": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Broken Blade",
+    "_kind": "counter",
+    "_level": 4,
+    "_snippets": [
+      "inflicts an additional 3d6 points of damage"
+    ]
+  },
+  "Iron-Breaking Palm": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Broken Blade",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "inflicts an additional 3d6 points of damage"
+    ]
+  },
+  "Iron Axe Kick": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Broken Blade",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "inflicts an additional 6d6 points of damage"
+    ]
+  },
+  "Iron Knuckle": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Broken Blade",
+    "_kind": "boost",
+    "_level": 4,
+    "_snippets": [
+      "inflict an additional 4d6 points of damage"
+    ]
+  },
+  "Shards of Steel Strike": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Broken Blade",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "inflicts an additional 8d6 points of damage"
+    ]
+  },
+  "Finishing Kick": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Broken Blade",
+    "_kind": "boost",
+    "_level": 6,
+    "_snippets": [
+      "inflicting an additional 6d6 points of damage"
+    ]
+  },
+  "Singing Steel Strike": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Broken Blade",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "inflicts an additional 8d6 points of damage"
+    ]
+  },
+  "Steel Axe Kick": {
+    "modifiers": [
+      {
+        "formula": "10d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Broken Blade",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "inflicts an additional 10d6 points of damage"
+    ]
+  },
+  "Adamantine Knuckle": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Broken Blade",
+    "_kind": "boost",
+    "_level": 7,
+    "_snippets": [
+      "inflict an additional 6d6 points of damage"
+    ]
+  },
+  "Shards of Adamantine Strike": {
+    "modifiers": [
+      {
+        "formula": "12d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Broken Blade",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "inflicts an additional 12d6 points of damage"
+    ]
+  },
+  "Spinning Flurry Rush": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Broken Blade",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "inflicts an additional 4d6 points of damage"
+    ]
+  },
+  "Spinning Adamantine Axe": {
+    "modifiers": [
+      {
+        "formula": "10d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Broken Blade",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "inflicting an additional 10d6 points of damage"
+    ]
+  },
+  "Storm of Iron Fists Strike": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Broken Blade",
+    "_kind": "strike",
+    "_level": 9,
+    "_snippets": [
+      "inflicts an additional 4d6 points of damage"
+    ]
+  },
+  "Snatching Talons": {
+    "modifiers": [
+      {
+        "formula": "1d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Brutal Crocodile",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "deal 1d8 points of damage"
+    ]
+  },
+  "Trampling Pin": {
+    "modifiers": [
+      {
+        "formula": "2d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Brutal Crocodile",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "deals 2d8 points of damage"
+    ]
+  },
+  "Gar Rush": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Brutal Crocodile",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "deal 2d6 points of damage"
+    ]
+  },
+  "Trapping Jaws": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Brutal Crocodile",
+    "_kind": "counter",
+    "_level": 3,
+    "_snippets": [
+      "deal 2d6 points of damage"
+    ]
+  },
+  "Gut Crusher": {
+    "modifiers": [
+      {
+        "formula": "3d12",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Brutal Crocodile",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "dealing 3d12 damage"
+    ]
+  },
+  "Atrophic Brutalization": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Brutal Crocodile",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "dealing 1d4 points of strength damage and 8d6 points of damage"
+    ]
+  },
+  "Disfiguring Gouge": {
+    "modifiers": [
+      {
+        "formula": "4d10",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Brutal Crocodile",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "deals 4d10 damage"
+    ]
+  },
+  "Meteoric Suplex": {
+    "modifiers": [
+      {
+        "formula": "10d10",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Brutal Crocodile",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "deals 10d10 damage"
+    ]
+  },
+  "Mockery": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Cursed Razor",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "additional 1d6 points of damage"
+    ]
+  },
+  "Torment the Weak": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Cursed Razor",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "additional 1d6 points of damage"
+    ]
+  },
+  "Dogpile Strike": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Cursed Razor",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "additional 2d6 points of damage"
+    ]
+  },
+  "Persecution": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Cursed Razor",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 4d6 points of damage"
+    ]
+  },
+  "Festering Curse": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Cursed Razor",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "additional 4d6 points of damage"
+    ]
+  },
+  "Warlocks Blow": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Cursed Razor",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "additional 8d6 points of damage"
+    ]
+  },
+  "Black Dogs Due": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Cursed Razor",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "additional 8d6 points of damage"
+    ]
+  },
+  "Unending Nightmare Strike": {
+    "modifiers": [
+      {
+        "formula": "4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Cursed Razor",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "additional 4 points of damage"
+    ]
+  },
+  "Festival of Shadows": {
+    "modifiers": [
+      {
+        "formula": "10d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Cursed Razor",
+    "_kind": "strike",
+    "_level": 9,
+    "_snippets": [
+      "additional 10d6 points of damage"
+    ]
+  },
+  "Spark Strike": {
+    "modifiers": [
+      {
+        "formula": "2d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Elemental Flux",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "additional 2d4 points of damage"
+    ]
+  },
+  "Eldritch Fang": {
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "force"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Elemental Flux",
+    "_kind": "boost",
+    "_level": 2,
+    "_snippets": [
+      "deals an additional 1d4 points of force damage"
+    ]
+  },
+  "Energy Spark": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Elemental Flux",
+    "_kind": "boost",
+    "_level": 2,
+    "_snippets": [
+      "deals 3d6 points of damage"
+    ]
+  },
+  "Energy Jolt": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Elemental Flux",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "deals 3d6 points of damage"
+    ]
+  },
+  "Lance of Power": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Elemental Flux",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "deals 5d6 points of damage"
+    ]
+  },
+  "Raging Flux": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Elemental Flux",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "additional 4d6 points of damage"
+    ]
+  },
+  "Arcane Torrent": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "force"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Elemental Flux",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "dealing 6d6 points of force damage"
+    ]
+  },
+  "Assay Resistance": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Elemental Flux",
+    "_kind": "boost",
+    "_level": 4,
+    "_snippets": [
+      "deals an additional 2d6 points of damage"
+    ]
+  },
+  "Energy Hammer": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Elemental Flux",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 6d6 points of damage"
+    ]
+  },
+  "Elemental Drive": {
+    "modifiers": [
+      {
+        "formula": "9d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Elemental Flux",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "deals 9d6 points of damage"
+    ]
+  },
+  "Elemental Vortex": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Elemental Flux",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "additional 8d6 points of damage"
+    ]
+  },
+  "Elemental Destruction Ring": {
+    "modifiers": [
+      {
+        "formula": "12d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Elemental Flux",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "deals 12d6 points of damage"
+    ]
+  },
+  "Eldritch Fang Flurry": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "force"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Elemental Flux",
+    "_kind": "boost",
+    "_level": 6,
+    "_snippets": [
+      "deal an additional 3d6 points of force damage"
+    ]
+  },
+  "Shatter Resistance": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Elemental Flux",
+    "_kind": "boost",
+    "_level": 6,
+    "_snippets": [
+      "deal an additional 4d6 points of damage"
+    ]
+  },
+  "Force Majeure": {
+    "modifiers": [
+      {
+        "formula": "14d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Elemental Flux",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "additional 14d6 points of damage"
+    ]
+  },
+  "Zephyr Flux": {
+    "modifiers": [
+      {
+        "formula": "14d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Elemental Flux",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "deals 14d6 points of damage"
+    ]
+  },
+  "Terrifying Blow": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "deals an additional 1d6 points of damage"
+    ]
+  },
+  "Relentless Wardens Strike": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "additional 2d6 points of damage"
+    ]
+  },
+  "Intruders End": {
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "circumstance",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "counter",
+    "_level": 3,
+    "_snippets": [
+      "+2 circumstance bonus on attack rolls"
+    ]
+  },
+  "Grim Guards Laughter": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 4d6 points of damage"
+    ]
+  },
+  "Shackles of the Condemned": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "additional 5d6 points of damage"
+    ]
+  },
+  "Charge of Dismay": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "additional 6d6 points of damage"
+    ]
+  },
+  "Strike of Sacrifice": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "additional 6d6 points of damage"
+    ]
+  },
+  "Curse of Impending Doom maneuver": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "additional 6d6 points of damage"
+    ]
+  },
+  "Hammer of the Immortal": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "additional 8d6 points of damage"
+    ]
+  },
+  "Oath of Eternity": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "counter",
+    "_level": 9,
+    "_snippets": [
+      "deal an additional 3d6 points of damage"
+    ]
+  },
+  "Call to Action": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Golden Lion",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "inflicting an additional 2d6 points of damage"
+    ]
+  },
+  "Distracting Strike": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Golden Lion",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Pyrite Strike": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Golden Lion",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "inflicts an additional 1d6 points of damage"
+    ]
+  },
+  "Kill the Wounded": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Golden Lion",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "inflict an additional 2d6 points of damage"
+    ]
+  },
+  "Pack Pounce": {
+    "modifiers": [
+      {
+        "formula": "15",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Golden Lion",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "additional 15 points of damage"
+    ]
+  },
+  "Charge of the Battle Cat": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Golden Lion",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "inflicting an additional 4d6 points of damage"
+    ]
+  },
+  "Golden Swipe": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Golden Lion",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "inflicting an additional 6d6 points of damage"
+    ]
+  },
+  "Roar of Battle": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Golden Lion",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "inflicting an additional 6d6 points of damage"
+    ]
+  },
+  "Strategic Blow": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Golden Lion",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "inflicting an additional 8d6 points of damage"
+    ]
+  },
+  "Orichalcum Swipe": {
+    "modifiers": [
+      {
+        "formula": "12d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Golden Lion",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "inflicting an additional 12d6 points of damage"
+    ]
+  },
+  "War Lions Charge": {
+    "modifiers": [
+      {
+        "formula": "14d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Golden Lion",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "inflicts an additional 14d6 points of damage"
+    ]
+  },
+  "Snapping Strike": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "inflicts an additional 1d6 points of damage"
+    ]
+  },
+  "Throwing Shell": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "inflicting an additional 1d6 points of damage"
+    ]
+  },
+  "Enraging Strike": {
+    "modifiers": [
+      {
+        "formula": "10",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "additional 10 points of damage"
+    ]
+  },
+  "Greater Snapping Strike": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "inflicts an additional 3d6 points of damage"
+    ]
+  },
+  "Ricochet Shell": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "inflicts an additional 3d6 points of damage"
+    ]
+  },
+  "Smashing Shell": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "inflicts an additional 4d6 points of damage"
+    ]
+  },
+  "Shell Shock": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "inflicts an additional 6d6 points of damage"
+    ]
+  },
+  "Vicious Snapping Strike": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "inflicts an additional 5d6 points of damage"
+    ]
+  },
+  "Snapping Turtle Rush": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "inflicts an additional 8d6 points of damage"
+    ]
+  },
+  "Throwing Shell Cyclone": {
+    "modifiers": [
+      {
+        "formula": "12d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "inflicts 12d6 points of damage"
+    ]
+  },
+  "Cyclonic Shell Crush": {
+    "modifiers": [
+      {
+        "formula": "7d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "inflicts an additional +7d6 points of damage"
+    ]
+  },
+  "Iron Defenders Riposte": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_kind": "counter",
+    "_level": 7,
+    "_snippets": [
+      "inflicts an additional +4d6 points of damage"
+    ]
+  },
+  "Glorious Shell Shock": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "inflict an additional +8d6 points of damage"
+    ]
+  },
+  "Erode Resolve": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Leaden Hyena",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "deals an additional 3d6 points of damage"
+    ]
+  },
+  "Leverage Dismay": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Leaden Hyena",
+    "_kind": "boost",
+    "_level": 3,
+    "_snippets": [
+      "deals an additional 1d6 points of damage"
+    ]
+  },
+  "Pinning Iron": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Leaden Hyena",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "deals an additional 4d6 points of damage"
+    ]
+  },
+  "Crippling Wound": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Leaden Hyena",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "dealing 8d6 damage"
+    ]
+  },
+  "Optimum Performance": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mangled Gear",
+    "_kind": "boost",
+    "_level": 3,
+    "_snippets": [
+      "deals an additional +2d6 damage"
+    ]
+  },
+  "Shatter the Barrier": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mangled Gear",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "deals and additional 4d6 points of damage"
+    ]
+  },
+  "Energized Doom": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mangled Gear",
+    "_kind": "boost",
+    "_level": 6,
+    "_snippets": [
+      "deals 1d6 points of damage"
+    ]
+  },
+  "Fearsome Backfire": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mangled Gear",
+    "_kind": "counter",
+    "_level": 7,
+    "_snippets": [
+      "dealing 1d6 damage"
+    ]
+  },
+  "Shockwave Breakdown": {
+    "modifiers": [
+      {
+        "formula": "10d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mangled Gear",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "takes an additional +10d6 damage"
+    ]
+  },
+  "Swift Current": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "additional 1d6 points of damage"
+    ]
+  },
+  "Iron Wave": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "additional 2d6 points of damage"
+    ]
+  },
+  "Riptide Strike": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "additional 2d6 points of damage"
+    ]
+  },
+  "Rippling Current": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "additional 3d6 points of damage"
+    ]
+  },
+  "Salt Breeze Strike": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "additional 3d6 points of damage"
+    ]
+  },
+  "Blinding Reflection": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 6d6 points of damage"
+    ]
+  },
+  "Silver Wave": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 6d6 points of damage"
+    ]
+  },
+  "Flowing Stream": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "counter",
+    "_level": 5,
+    "_snippets": [
+      "additional 3d6 points of damage"
+    ]
+  },
+  "Mithral Flash": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "counter",
+    "_level": 5,
+    "_snippets": [
+      "additional 5d6 points of damage"
+    ]
+  },
+  "Rapid Current": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "additional 3d6 points of damage"
+    ]
+  },
+  "Whirlpool Strike": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "additional 3d6 points of damage"
+    ]
+  },
+  "Crashing Wake": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "additional 4d6 points of damage"
+    ]
+  },
+  "Quicksilver Wave": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "additional 8d6 points of damage"
+    ]
+  },
+  "Blade of the Silver Sea": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "additional 8d6 points of damage"
+    ]
+  },
+  "Flowing River": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "counter",
+    "_level": 7,
+    "_snippets": [
+      "additional 5d6 points of damage"
+    ]
+  },
+  "Raging Whirlpool Strike": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "additional 5d6 points of damage"
+    ]
+  },
+  "Mithral Wave": {
+    "modifiers": [
+      {
+        "formula": "14d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "additional 14d6 points of damage"
+    ]
+  },
+  "Riptide Slice": {
+    "modifiers": [
+      {
+        "formula": "12d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "additional 12d6 points of damage"
+    ]
+  },
+  "Dance of the Silver Hurricane": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "counter",
+    "_level": 9,
+    "_snippets": [
+      "takes an additional 1d6 points of damage"
+    ]
+  },
+  "Bronze Lancers Edge": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "boost",
+    "_level": 1,
+    "_snippets": [
+      "deals an additional 1d6 points of damage"
+    ]
+  },
+  "Bronze Lancet Charge": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "additional 1d6 points of damage"
+    ]
+  },
+  "Throwing Thunder": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "additional 2d6 points of damage"
+    ]
+  },
+  "Thunderous Fall": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "additional 2d6 points of damage"
+    ]
+  },
+  "Goring Strike": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "additional 2d6 points of damage"
+    ]
+  },
+  "Iron Lancers Edge": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "boost",
+    "_level": 3,
+    "_snippets": [
+      "deals an additional 3d6 points of damage"
+    ]
+  },
+  "Piercing Thunder Hammer": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "additional 2d6 points of damage"
+    ]
+  },
+  "Iron Lancet Charge": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 6d6 points of damage"
+    ]
+  },
+  "Leaping Strike": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 6d6 points of damage"
+    ]
+  },
+  "Twisting Lance": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 5d6 points of damage"
+    ]
+  },
+  "Meteor Spiral Thrust": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "additional 8d6 points of damage"
+    ]
+  },
+  "Throwing Comet": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "additional 8d6 points of damage"
+    ]
+  },
+  "Glorious Thunder Charge": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "additional 8d6 points of damage"
+    ]
+  },
+  "Impaling Comet Strike": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "additional 6d6 points of damage"
+    ]
+  },
+  "Steel Lancers Edge": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "additional 8d6 points of damage"
+    ]
+  },
+  "Breaking the Charge": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "counter",
+    "_level": 7,
+    "_snippets": [
+      "additional 5d6 points of damage"
+    ]
+  },
+  "Leaping Thunder Crash": {
+    "modifiers": [
+      {
+        "formula": "35",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "additional 35 points of damage"
+    ]
+  },
+  "Rush to the Fray": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "additional 5d6 points of damage"
+    ]
+  },
+  "Adamantine Lancers Edge": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "boost",
+    "_level": 8,
+    "_snippets": [
+      "deals an additional 8d6 points of damage"
+    ]
+  },
+  "Thundering Lancers Blow": {
+    "modifiers": [
+      {
+        "formula": "12d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "additional 12d6 points of damage"
+    ]
+  },
+  "Piercing Charge of the Dread Lancer": {
+    "modifiers": [
+      {
+        "formula": "15d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Piercing Thunder",
+    "_kind": "strike",
+    "_level": 9,
+    "_snippets": [
+      "take an additional 15d6 points of damage"
+    ]
+  },
+  "Crushing Blow": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "inflicts an additional 1d6 points of damage"
+    ]
+  },
+  "Primal Wrath": {
+    "modifiers": [
+      {
+        "formula": "4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "additional 4 points of damage"
+    ]
+  },
+  "Bloody Riposte": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "counter",
+    "_level": 2,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Crippling Strike": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Devastating Rush": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Momentum Crash": {
+    "modifiers": [
+      {
+        "formula": "10",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "boost",
+    "_level": 2,
+    "_snippets": [
+      "additional 10 points of damage"
+    ]
+  },
+  "Disparity Blow": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Frenzy Strike": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Furious Primal Wrath": {
+    "modifiers": [
+      {
+        "formula": "20",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 20 points of damage"
+    ]
+  },
+  "Impaling Strike": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "inflicts an additional 4d6 points of damage"
+    ]
+  },
+  "Cornered Frenzy Strike": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "inflicts an additional 4d6 points of damage"
+    ]
+  },
+  "Dizzying Blow": {
+    "modifiers": [
+      {
+        "formula": "10d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "inflicts an additional 10d6 points of damage"
+    ]
+  },
+  "Meteoric Collision": {
+    "modifiers": [
+      {
+        "formula": "7d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "inflicts 7d6 points of damage"
+    ]
+  },
+  "Charge of the Battle Panthera": {
+    "modifiers": [
+      {
+        "formula": "12d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "inflicts an additional 12d6 points of damage"
+    ]
+  },
+  "Blood-Spray Strike": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "inflicts an additional 8d6 points of damage"
+    ]
+  },
+  "Devastating Momentum": {
+    "modifiers": [
+      {
+        "formula": "40",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "boost",
+    "_level": 7,
+    "_snippets": [
+      "additional 40 points of damage"
+    ]
+  },
+  "Primal Frenzy": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "inflicts an additional 6d6 points of damage"
+    ]
+  },
+  "Meteoric Crash": {
+    "modifiers": [
+      {
+        "formula": "10d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "inflicts 10d6 points of damage"
+    ]
+  },
+  "Wrath of the Primal Hunter": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Primal Fury",
+    "_kind": "strike",
+    "_level": 9,
+    "_snippets": [
+      "additional 4d6 points of damage"
+    ]
+  },
+  "Lifeburst Strike": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Radiant Dawn",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "additional 1d6 points of damage"
+    ]
+  },
+  "Lifeburst Imbuement": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Radiant Dawn",
+    "_kind": "boost",
+    "_level": 4,
+    "_snippets": [
+      "deals an additional 2d6 points of damage"
+    ]
+  },
+  "Shatter Spell": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Radiant Dawn",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 2d6 points of damage"
+    ]
+  },
+  "Divide and Conquer": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Radiant Dawn",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "deals an additional 3d6 points of damage"
+    ]
+  },
+  "Karmic Strike": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Radiant Dawn",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "deals an extra 4d6 points of damage"
+    ]
+  },
+  "Harsh Light of Day": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Radiant Dawn",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "additional 5d6 points of damage"
+    ]
+  },
+  "Tyrant's End": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Radiant Dawn",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "additional 6d6 points of damage"
+    ]
+  },
+  "Chronal Aggression": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Riven Hourglass",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "deals 2d6 points of damage"
+    ]
+  },
+  "Temporal Burn": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Riven Hourglass",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "additional 2d6 points of damage"
+    ]
+  },
+  "Temporal Fury": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Riven Hourglass",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "additional 2d6 points of damage"
+    ]
+  },
+  "Chronal Draw": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Riven Hourglass",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 3d6 points of damage"
+    ]
+  },
+  "Tip the Hourglass": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Riven Hourglass",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 4d6 points of damage"
+    ]
+  },
+  "Hour Hand": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Riven Hourglass",
+    "_kind": "boost",
+    "_level": 5,
+    "_snippets": [
+      "additional 4d6 points of damage"
+    ]
+  },
+  "Distraction Strike": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Roaring Mouse",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "deal an additional 1d6 damage"
+    ]
+  },
+  "Rat in a Cage": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Roaring Mouse",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "deal an additional 4d6 damage"
+    ]
+  },
+  "Bell the Cat": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Roaring Mouse",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "deals damage as normal plus an additional 5d6 damage"
+    ]
+  },
+  "Dormouse Strike": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Roaring Mouse",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "additional 5d6 damage"
+    ]
+  },
+  "Black Cat's Trail": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sagitta Stellaris",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "additional 1d6 points of damage"
+    ]
+  },
+  "Vacuum Imbuement Trail": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sagitta Stellaris",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "additional 1d6 points of damage"
+    ]
+  },
+  "Heaven's Binding Trail": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sagitta Stellaris",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "additional 2d6 points of damage"
+    ]
+  },
+  "Aeon Rift Trail": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sagitta Stellaris",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 3d6 points of damage"
+    ]
+  },
+  "Music of the Spheres": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sagitta Stellaris",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 6d6 points of damage"
+    ]
+  },
+  "Dual Eclipse Trail": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sagitta Stellaris",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "additional 4d6 points of damage"
+    ]
+  },
+  "Localized Wormhole Trail": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sagitta Stellaris",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "additional 5d6 points of damage"
+    ]
+  },
+  "Aurora Fortress Trail": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sagitta Stellaris",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "additional 5d6 points of damage"
+    ]
+  },
+  "When the Stars Align": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sagitta Stellaris",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "dealing an additional 4d6 points of damage"
+    ]
+  },
+  "Fate's Rail Gun": {
+    "modifiers": [
+      {
+        "formula": "14d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sagitta Stellaris",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "additional 14d6 points of damage"
+    ]
+  },
+  "Timeless Army Across Heaven": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sagitta Stellaris",
+    "_kind": "strike",
+    "_level": 9,
+    "_snippets": [
+      "deals 3d6 damage"
+    ]
+  },
+  "Garnet Lance": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Scarlet Throne",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Regal Blade": {
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "insight",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Scarlet Throne",
+    "_kind": "boost",
+    "_level": 2,
+    "_snippets": [
+      "+2 insight bonus to his attack roll"
+    ]
+  },
+  "Dazing Attack": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Scarlet Throne",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "inflicts an additional 3d6 points of damage"
+    ]
+  },
+  "Strike of Defeat": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Scarlet Throne",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "inflicts an additional 4d6 points of damage"
+    ]
+  },
+  "Noble Blade": {
+    "modifiers": [
+      {
+        "formula": "5",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "insight",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Scarlet Throne",
+    "_kind": "boost",
+    "_level": 4,
+    "_snippets": [
+      "+5 insight bonus to his attack roll"
+    ]
+  },
+  "Weeping Scarlet Razor": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Scarlet Throne",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "inflicts an additional 4d6 points of damage"
+    ]
+  },
+  "Riddle of Iron": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Scarlet Throne",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "inflicts an additional 5d6 points of damage"
+    ]
+  },
+  "Scarlet Riposte": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Scarlet Throne",
+    "_kind": "counter",
+    "_level": 5,
+    "_snippets": [
+      "inflict an additional 3d6 points of damage"
+    ]
+  },
+  "Royal Blade": {
+    "modifiers": [
+      {
+        "formula": "5",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "insight",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Scarlet Throne",
+    "_kind": "boost",
+    "_level": 7,
+    "_snippets": [
+      "+5 insight bonus to his attack roll"
+    ]
+  },
+  "Sanguine Proclamation": {
+    "modifiers": [
+      {
+        "formula": "10d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Scarlet Throne",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "inflicts an additional 10d6 points of damage"
+    ]
+  },
+  "Riddle of Steel": {
+    "modifiers": [
+      {
+        "formula": "10d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Scarlet Throne",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "deals an additional 10d6 points of damage"
+    ]
+  },
+  "Heavenly Blade of the Scarlet Throne": {
+    "modifiers": [
+      {
+        "formula": "100",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Scarlet Throne",
+    "_kind": "strike",
+    "_level": 9,
+    "_snippets": [
+      "additional 100 points of damage"
+    ]
+  },
+  "Copycat Cut": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Shattered Mirror",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "additional 1d6 points of damage"
+    ]
+  },
+  "Left-Hand Strike": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Shattered Mirror",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "deals an additional 1d6 points of damage"
+    ]
+  },
+  "Fetchs Wrath": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Shattered Mirror",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 4d6 points of damage"
+    ]
+  },
+  "Gleaming Imprisonment": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Shattered Mirror",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "additional 4d6 points of damage"
+    ]
+  },
+  "Murderous Reflection": {
+    "modifiers": [
+      {
+        "formula": "7d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Shattered Mirror",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "additional 7d6 points of damage"
+    ]
+  },
+  "Shattered Mirror Strike": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Shattered Mirror",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "additional 6d6 points of damage"
+    ]
+  },
+  "Flashing Wings": {
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Silver Crane",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "inflicts an additional 1d4 points of damage"
+    ]
+  },
+  "Blazing Cranes Wing": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Silver Crane",
+    "_kind": "boost",
+    "_level": 2,
+    "_snippets": [
+      "inflict an additional 2d6 points of damage"
+    ]
+  },
+  "Exorcism Strike": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Silver Crane",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Sacred Pinions": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Silver Crane",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "inflicts an additional 5d6 points of damage"
+    ]
+  },
+  "Argent Knights Banner": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Silver Crane",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "inflicts an additional 8d6 points of damage"
+    ]
+  },
+  "Argent Kings Scepter": {
+    "modifiers": [
+      {
+        "formula": "12d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Silver Crane",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "inflicts an additional 12d6 points of damage"
+    ]
+  },
+  "Holy Pinions": {
+    "modifiers": [
+      {
+        "formula": "10d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Silver Crane",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "inflicts and additional 10d6 points of damage"
+    ]
+  },
+  "Celestial Pinions": {
+    "modifiers": [
+      {
+        "formula": "15d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Silver Crane",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "inflicts an additional 15d6 points of damage"
+    ]
+  },
+  "Harmony-Shattering Strike": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sleeping Goddess",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "deal an additional 1d6 points of damage"
+    ]
+  },
+  "Mind-Revealing Strike": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sleeping Goddess",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "deals an additional 1d6 points of damage"
+    ]
+  },
+  "Twofold Assault": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sleeping Goddess",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "additional 1d6 points of damage"
+    ]
+  },
+  "Inexorable Embrace of Sleep": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sleeping Goddess",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "additional 2d6 points of damage"
+    ]
+  },
+  "Puppet of the Goddess": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sleeping Goddess",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 4d6 points of damage"
+    ]
+  },
+  "The Ties that Bind": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sleeping Goddess",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "additional 5d6 points of damage"
+    ]
+  },
+  "Strike of Transfixed Awe": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sleeping Goddess",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "additional 6d6 points of damage"
+    ]
+  },
+  "Pierce the Soul": {
+    "modifiers": [
+      {
+        "formula": "7d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sleeping Goddess",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "additional 7d6 points of damage"
+    ]
+  },
+  "Immortal Truths of the Sleeping Goddess": {
+    "modifiers": [
+      {
+        "formula": "10d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Sleeping Goddess",
+    "_kind": "strike",
+    "_level": 9,
+    "_snippets": [
+      "deals an additional 10d6 points of damage"
+    ]
+  },
+  "Horizon Wind Lancet": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "boost",
+    "_level": 1,
+    "_snippets": [
+      "inflicts an additional 1d6 points of damage"
+    ]
+  },
+  "Solar Sting": {
+    "modifiers": [
+      {
+        "formula": "1d2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "inflicting 1d2 points of damage"
+    ]
+  },
+  "Solar Flare maneuver": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "inflicts an additional 2d6 points of fire damage"
+    ]
+  },
+  "Solar Lance": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Solar Reflection": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Dazzling Solar Flare": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "inflicts an additional 4d6 points of fire damage"
+    ]
+  },
+  "Disarming Gust": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "inflicts 3d6 points of damage"
+    ]
+  },
+  "Searing Break": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "boost",
+    "_level": 4,
+    "_snippets": [
+      "additional 3d6 points of fire damage"
+    ]
+  },
+  "Double Solar Reflection": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "additional +4d6 points to the first target, +2d6 points of damage"
+    ]
+  },
+  "Focused Solar Lance": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "inflicts an additional 4d6 points of damage"
+    ]
+  },
+  "Solar Wind Lancet": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "boost",
+    "_level": 5,
+    "_snippets": [
+      "inflicts an additional 4d6 points of damage"
+    ]
+  },
+  "Burning Break": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "boost",
+    "_level": 6,
+    "_snippets": [
+      "inflict an additional 5d6 points of fire damage"
+    ]
+  },
+  "Solar Meteor Blow": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "inflicting an additional 6d6 damage"
+    ]
+  },
+  "Stunning Solar Flare": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "inflicts an additional 8d6 points of damage"
+    ]
+  },
+  "Triple Solar Reflection": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "additional +6d6 points to the first target, +4d6 points of damage"
+    ]
+  },
+  "Aurora Break": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "boost",
+    "_level": 8,
+    "_snippets": [
+      "inflict an additional 8d6 points of fire damage"
+    ]
+  },
+  "Solar Wind Nova": {
+    "modifiers": [
+      {
+        "formula": "10d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "strike",
+    "_level": 9,
+    "_snippets": [
+      "inflicting 10d6 points of damage"
+    ]
+  },
+  "Sparking Blow": {
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "electricity"
+        ],
+        "critical": "normal"
+      },
+      {
+        "formula": "3",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "circumstance",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Spark of Battle",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "deal an additional 1d4 electricity damage",
+      "+3 circumstance bonus to his attack roll"
+    ]
+  },
+  "Thunder Walk": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "sonic"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Spark of Battle",
+    "_kind": "boost",
+    "_level": 3,
+    "_snippets": [
+      "deal 2d6 sonic damage"
+    ]
+  },
+  "Incandescent Strike": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "electricity"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Spark of Battle",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "deals an extra 3d6 electricity damage"
+    ]
+  },
+  "Spin Kick": {
+    "modifiers": [
+      {
+        "formula": "3d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "sonic"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Spark of Battle",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 3d8 sonic damage"
+    ]
+  },
+  "Sundered Falcon Swing": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "sonic"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Spark of Battle",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "dealing 5d6 sonic damage"
+    ]
+  },
+  "Charged Wheel": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "electricity"
+        ],
+        "critical": "normal"
+      },
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Spark of Battle",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "additional 5d6 electricity damage",
+      "+2 bonus on the attack roll"
+    ]
+  },
+  "Skyscream": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "electricity"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Spark of Battle",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "deal an additional 6d6 points of electricity damage"
+    ]
+  },
+  "Soaring Falcon Flurry": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "sonic"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Spark of Battle",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "dealing 5d6 sonic damage"
+    ]
+  },
+  "Electric Pinwheel": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "electricity"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Spark of Battle",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "deals an additional 1d6 electricity damage"
+    ]
+  },
+  "Skyscream Dance": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "electricity"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Spark of Battle",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "deal an additional 4d6 points of electricity damage"
+    ]
+  },
+  "Hunting Serpent Blow": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "inflicting an additional 1d6 points of damage"
+    ]
+  },
+  "Sting of the Rattler": {
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "inflicts an additional 1d4 points of damage"
+    ]
+  },
+  "Iron Fang": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Sting of the Asp": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "inflicts an additional 1d6 points of damage"
+    ]
+  },
+  "Sight Piercing Fang": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Sting of the Adder": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "inflicts an additional 5d6 points of damage"
+    ]
+  },
+  "Tearing Fang": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "boost",
+    "_level": 4,
+    "_snippets": [
+      "deals an additional 2d6 points of damage"
+    ]
+  },
+  "Pressure Point Break": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "boost",
+    "_level": 5,
+    "_snippets": [
+      "additional 2d6 points of damage"
+    ]
+  },
+  "Steel Fang": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "deals an additional 8d6 points of damage"
+    ]
+  },
+  "Sting of the Viper": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "inflicts an additional 8d6 points of damage"
+    ]
+  },
+  "Bite The Mongoose": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "counter",
+    "_level": 7,
+    "_snippets": [
+      "inflicts an additional 6d6 points of damage"
+    ]
+  },
+  "Silencing Strike": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "inflicts an additional 5d6 points of damage"
+    ]
+  },
+  "Adamantine Fang": {
+    "modifiers": [
+      {
+        "formula": "12d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "deals an additional 12d6 points of damage"
+    ]
+  },
+  "Sting of the Cobra": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "inflicts an additional 8d6 points of damage"
+    ]
+  },
+  "Five-Fold Hydra Sting": {
+    "modifiers": [
+      {
+        "formula": "50",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "strike",
+    "_level": 9,
+    "_snippets": [
+      "additional 50 points of damage"
+    ]
+  },
+  "Sand Shark Rush": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "deal an additional 1d6 damage"
+    ]
+  },
+  "Breathless Strike": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "deals an additional 1d6 damage"
+    ]
+  },
+  "Crab Snap": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "deals an additional 1d6 damage"
+    ]
+  },
+  "Hammerhead Rush": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "deal an additional 2d6 damage"
+    ]
+  },
+  "Walrus Rampage": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "deal an additional 2d6 damage"
+    ]
+  },
+  "Coral Shatter": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "deal an additional 4d6 damage"
+    ]
+  },
+  "Great White Rush": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "deal an additional 4d6 damage"
+    ]
+  },
+  "Riptide Slash": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "takes an additional 1d6 damage"
+    ]
+  },
+  "Vicegrip Snap": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "boost",
+    "_level": 5,
+    "_snippets": [
+      "deals an additional 4d6 damage"
+    ]
+  },
+  "Shark Frenzy Rush": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "deal an additional 6d6 damage"
+    ]
+  },
+  "Crab Cruncher": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "deals an additional 3d6 damage"
+    ]
+  },
+  "Mantis Shrimp Retaliation": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "counter",
+    "_level": 7,
+    "_snippets": [
+      "deal an additional 4d6 damage"
+    ]
+  },
+  "Disrupting Jaws": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "boost",
+    "_level": 7,
+    "_snippets": [
+      "takes an additional 6d6 damage"
+    ]
+  },
+  "Leviathan Annihilation": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "deal an additional 8d6 damage"
+    ]
+  },
+  "Distracting Draft": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_kind": "boost",
+    "_level": 2,
+    "_snippets": [
+      "deals an additional 1d6 points of damage"
+    ]
+  },
+  "Dustcatching Breeze": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "additional 2d6 points of damage"
+    ]
+  },
+  "Piercing Shot": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "deals 3d6 points of damage"
+    ]
+  },
+  "Sudden Gust": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "additional 2d6 points of damage"
+    ]
+  },
+  "Battering Gale": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "additional 3d6 points of damage"
+    ]
+  },
+  "Disarming Blast": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "additional 3d6 points of damage"
+    ]
+  },
+  "Cutting Gale": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 5d6 points of damage"
+    ]
+  },
+  "Exploding Gale": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 4d6 points of damage"
+    ]
+  },
+  "Iron Wind": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "additional 4d6 points of damage"
+    ]
+  },
+  "Blinding Shot maneuver": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "additional 5d6 points of damage"
+    ]
+  },
+  "Grounding Shot": {
+    "modifiers": [
+      {
+        "formula": "5d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "additional 5d6 points of damage"
+    ]
+  },
+  "Piercing Gale": {
+    "modifiers": [
+      {
+        "formula": "10d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "deals 10d6 points of damage"
+    ]
+  },
+  "Razor Tempest": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "additional 8d6 points of damage"
+    ]
+  },
+  "Black Wind": {
+    "modifiers": [
+      {
+        "formula": "15d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "deals 15d6 points of damage"
+    ]
+  },
+  "Steel Tornado": {
+    "modifiers": [
+      {
+        "formula": "10d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "additional 10d6 points of damage"
+    ]
+  },
+  "Vicious Tempest Volley": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Tempest Gale",
+    "_kind": "strike",
+    "_level": 9,
+    "_snippets": [
+      "deals an additional 2d6 points of damage"
+    ]
+  },
+  "Offensive Roll": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "inflicts an additional 1d6 points of damage"
+    ]
+  },
+  "Wyrmlings Fang": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [
+      "inflicts an additional 1d6 points of damage"
+    ]
+  },
+  "Flash Kick": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "boost",
+    "_level": 2,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Ancients Fang": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "inflicts an additional 4d6 points of damage"
+    ]
+  },
+  "Vicious Swipe": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "inflicts an additional 3d6 points of damage"
+    ]
+  },
+  "Devastation Roll": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "inflicts an additional 6d6 points of damage"
+    ]
+  },
+  "Dragon Assault": {
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [
+      "inflicts an additional 1d6 points of damage"
+    ]
+  },
+  "Dragon Rush": {
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "boost",
+    "_level": 4,
+    "_snippets": [
+      "inflicts an additional 3d6 points of damage"
+    ]
+  },
+  "Sharpened Talons": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "boost",
+    "_level": 4,
+    "_snippets": [
+      "inflict an additional 2d6 points of damage"
+    ]
+  },
+  "Great Wyrms Fang": {
+    "modifiers": [
+      {
+        "formula": "9d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "inflicts an additional 9d6 points of damage"
+    ]
+  },
+  "Rending Claws": {
+    "modifiers": [
+      {
+        "formula": "8d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "boost",
+    "_level": 6,
+    "_snippets": [
+      "inflicting an additional 8d6 points of damage"
+    ]
+  },
+  "Tail Slap": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "additional 6d6 points of damage"
+    ]
+  },
+  "Unbreakable Talons": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "boost",
+    "_level": 6,
+    "_snippets": [
+      "inflict an additional 4d6 points of damage"
+    ]
+  },
+  "Alacrity on Wing": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "counter",
+    "_level": 7,
+    "_snippets": [
+      "dealing an additional +2d6 points of damage"
+    ]
+  },
+  "Doom Talon": {
+    "modifiers": [
+      {
+        "formula": "4d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "boost",
+    "_level": 8,
+    "_snippets": [
+      "inflict an additional 4d6 points of damage"
+    ]
+  },
+  "Thrashing Blades": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "inflicts an additional 2d6 points of damage"
+    ]
+  },
+  "Deadly Dragon Strike": {
+    "modifiers": [
+      {
+        "formula": "12d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "strike",
+    "_level": 9,
+    "_snippets": [
+      "inflicts his weapons damage plus an additional 12d6 points of damage"
+    ]
+  },
+  "Headstone Breaking Strike": {
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Unquiet Grave",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "additional 1d4 points of damage"
+    ]
+  },
+  "Cursed Fate": {
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Veiled Moon",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [
+      "inflicting an additional 2d6 points of damage"
+    ]
+  },
+  "Brilliant Moon": {
+    "modifiers": [
+      {
+        "formula": "4d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "force"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Veiled Moon",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [
+      "inflicts an additional 4d4 points of force damage"
+    ]
+  },
+  "Essence Shattering Strike": {
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "force"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Veiled Moon",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "inflicts an additional 6d6 points of force damage"
+    ]
+  },
+  "Warp Worm": {
+    "modifiers": [
+      {
+        "formula": "10d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "force"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Veiled Moon",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [
+      "inflicting 10d6 points of force damage"
+    ]
+  },
+  "Ether Wave": {
+    "modifiers": [
+      {
+        "formula": "12d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "force"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Veiled Moon",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [
+      "inflicts 12d6 points of force damage"
+    ]
+  },
+  "Dispersal Strike": {
+    "modifiers": [
+      {
+        "formula": "12d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "force"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Veiled Moon",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [
+      "inflicts 12d6 points of force damage"
+    ]
+  },
+  "Eclipsing Moon": {
+    "modifiers": [
+      {
+        "formula": "4d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "force"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_discipline": "Veiled Moon",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [
+      "inflicts an additional 4d4 points of force damage"
+    ]
+  }
+}

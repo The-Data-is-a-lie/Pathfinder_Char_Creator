@@ -26,7 +26,7 @@ from utils.class_func.family_func 					import randomize_siblings, randomize_pare
 from utils.class_func.feats 						import (build_selector, chooseable_list, chooseable_list_stats,
                                                   			chooseable_list_class_features, feat_spell_searcher, generic_multi_chooser,
                                                             simple_list_chooser, generic_feat_chooser, bloodline_feat_chooser, teamwork_pool_size,
-                                                            capitalize_feats)
+                                                            capitalize_feats, dedupe_feats_case_insensitive, topup_feat_chooser)
 from utils.class_func.feats_to_chooseable 			import add_feats_to_chooseable
 from utils.class_func.feat_tax 						import feat_tax_func
 from utils.class_func.flag_assign 					import human_flag_assigner, druidic_flag_assigner
@@ -39,7 +39,7 @@ from utils.class_func.item_and_price 				import item_chooser
 from utils.class_func.language 						import language_chooser
 from utils.class_func.level_and_bab 				import randomize_level
 # from utils.class_func.luck_and_mythic 				import randomize_luck, randomize_mythic
-# from utils.class_func.path_of_war 					import randomize_path_of_war_num, choose_path_of_war_attr
+from utils.class_func.path_of_war 					import randomize_path_of_war_num, choose_path_of_war_attr
 
 from utils.class_func.modded_char_sheet 			import modded_char_sheet_func
 # from utils.class_func.path_of_war_funcs				import select_disciplines
@@ -140,12 +140,21 @@ character_json_config = {
 	'warpriest': Load_when_needed('Backend/json/class_data/warpriest.json'),
 	'witch': Load_when_needed('Backend/json/class_data/witch.json'),
 
-	# Path of War section
-	# 'path_of_war_classes': Load_when_needed('Backend\json\class_data\path_of_war\path_of_war_classes.json'),
-	# 'path_of_war_archetypes': Load_when_needed('Backend\json\class_data\path_of_war\path_of_war_archetypes.json'),
-	# 'martial_disciplines': Load_when_needed('Backend\json\class_data\path_of_war\martial_disciplines.json'),
-	# 'path_of_war_maneuvers_known': Load_when_needed('Backend\json\class_data\path_of_war\path_of_war_maneuvers_known.json'),
+	# Path of War section (forward slashes + exact on-disk casing -- backslash literals and
+	# 'martial_disciplines.json' lowercase would break on the Linux/Render deploy)
+	'path_of_war_classes': Load_when_needed('Backend/json/class_data/path_of_war/path_of_war_classes.json'),
+	# 'path_of_war_archetypes': Load_when_needed('Backend/json/class_data/path_of_war/path_of_war_archetypes.json'),
+	'martial_disciplines': Load_when_needed('Backend/json/class_data/path_of_war/Martial_Disciplines.json'),
+	'path_of_war_maneuvers_known': Load_when_needed('Backend/json/class_data/path_of_war/path_of_war_maneuvers_known.json'),
+	'martial_training_progression': Load_when_needed('Backend/json/class_data/path_of_war/martial_training_progression.json'),
 }
+
+def strip_labeled_bucket(feat_list, label_list, children):
+	'''Filter a feat list and its parallel label list in lockstep, dropping feats whose
+	lower() is in `children` (feats now bundled onto a feat-tax primary).'''
+	lbls = list(label_list) + [None] * (len(feat_list) - len(label_list))
+	kept = [(f, lbl) for f, lbl in zip(feat_list, lbls) if str(f).lower() not in children]
+	return [f for f, _ in kept], [lbl for _, lbl in kept if lbl is not None]
 
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
@@ -549,11 +558,46 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# Reallocate monk/ranger bonus-feat slots their lists couldn't fill to normal feats (monk's
 		# total is preserved; ranger now actually gains its combat-style feats). No-op otherwise.
 		character.feat_amounts += getattr(character, 'ranger_feat_surplus', 0) + getattr(character, 'monk_feat_surplus', 0)
+		# Register the class-granted picks (bloodline / ranger style / monk bonus) in
+		# character.chooseable BEFORE the normal-feat selection: no_prereq_loop skips chooseable
+		# members, so the general pool can no longer re-pick the same feat (duplicate Weapon
+		# Focus etc.), and the feat-tax engine correctly sees them as owned.
+		add_feats_to_chooseable(character, bloodline_feats, ranger_style_feats, monk_bonus_feats)
 		# Determine extra teamwork feats
 		extra_teamwork_feats(character)
 		# determine extra combat feats
 		extra_combat_feats(character)
 
+	# ------------------- Path of War section -------------------#
+		# Initiator classes (stalker/warlord/...) draw disciplines + maneuver counts from their
+		# own class tables; everyone else may roll "martial paths" (house rule: BAB L 0-1,
+		# M/H 0-2, +1 to both bounds at level 20+) accessed via the Martial Training feat chain
+		# taken as deep as bab_total allows (I/III/V paid; II/IV/VI free via feat tax).
+		randomize_path_of_war_num(character)
+		pow_data = choose_path_of_war_attr(character)
+		martial_disciplines     = pow_data['martial_disciplines']
+		initiator_level         = pow_data['initiator_level']
+		maneuvers_known_list    = pow_data['maneuvers_known_list']
+		maneuvers_readied_list  = pow_data['maneuvers_readied_list']
+		maneuvers_choose_from   = pow_data['maneuvers_choose_from']
+		maneuvers_readied_names = pow_data['maneuvers_readied_names']
+		stances_chosen          = pow_data['stances_chosen']
+		mt_feats                = pow_data['mt_feats']
+		mt_feat_tax             = pow_data['mt_feat_tax']
+		initiation_stat         = pow_data['initiation_stat']
+		maneuvers_desc_dict     = pow_data['maneuvers_desc_dict']
+		style_feats             = pow_data['style_feats']
+		style_feat_tax          = pow_data['style_feat_tax']
+		homebrew_feat_desc_dict = pow_data['homebrew_feat_desc_dict']
+		# Paid Martial Training picks and style-chain base feats consume normal feat slots
+		# ("3 feats for all 6" / one paid feat per style chain): reserve them out of the ask
+		# before the chooser runs; the feats themselves are appended to the normal bucket after
+		# separation. mt_feats is already budget-capped to WHOLE chains inside
+		# _build_martial_training (each chain costs its paid feats), so only the initiator style
+		# bases still need the starvation clamp here (the branches are mutually exclusive).
+		style_feats = style_feats[:max(0, character.normal_feat_amount - 1 - len(mt_feats))]
+		style_feat_tax = {k: v for k, v in style_feat_tax.items() if k in style_feats}
+		character.feat_amounts -= len(mt_feats) + len(style_feats)
 
 		# Cached dataset without prerequisites -> allows them to take rage powers / rogue talents / etc. without normal feats ()
 		print("cached dataset without prereqs allows for feats to buy class specific talents ")
@@ -591,16 +635,6 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			# because we run get_data_without_prerequisites before build_selector -> updating character.chooseable
 			build_selector_feats = build_selector(character)
 			character.feats.extend(build_selector_feats)
-			# The curated buckets can be smaller than the requested feat count at high level, which
-			# would leave the character under-fed (and previously crashed separate_feats_func). Top up
-			# the shortfall from the general pool. choosing_feats dedupes via character.chooseable, so
-			# top-up feats won't repeat the curated picks.
-			_feat_shortfall = character.feat_amounts - len(character.feats)
-			if _feat_shortfall > 0:
-				_topup_type = 'metamagic' if (casting_level_str in ('mid', 'high') and character.bab in ('L', 'M')) else 'combat'
-				_topup_feats = generic_feat_chooser(character, character.c_class, casting_level_str, _topup_type, info_column='description', feat_amount=_feat_shortfall + 1)
-				if isinstance(_topup_feats, list):
-					character.feats.extend(_topup_feats)
 
 		# Merge the class-specific bonus feats selected above (monk bonus feats / ranger combat-style
 		# feats) into the feat list. The truly-random branch reassigns character.feats, so we add them
@@ -608,10 +642,20 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# capitalize_feats normalizes names so they match Foundry's compendium lookup (as bloodline feats do).
 		character.feats.extend(capitalize_feats(character, list(ranger_style_feats)))
 		character.feats.extend(capitalize_feats(character, list(monk_bonus_feats)))
+		# Belt-and-braces: same feat arriving from two sources with different casing would
+		# otherwise survive to the sheet as a duplicate entry.
+		character.feats = dedupe_feats_case_insensitive(character.feats)
+
+		# Shared shortfall top-up (both feat paths): the type/caster-filtered pools can run dry
+		# before the budget is met (and the dedupe above can drop a cross-source duplicate).
+		# Target = the requested budget plus the class-granted ranger/monk merges, which sit on
+		# top of character.feat_amounts (only their unfilled surplus was folded into it).
+		_expected_feat_total = character.feat_amounts + len(ranger_style_feats) + len(monk_bonus_feats)
+		if len(character.feats) < _expected_feat_total:
+			character.feats.extend(topup_feat_chooser(character, casting_level_str, _expected_feat_total - len(character.feats)))
 
 		# Teamwork feats selector
 		if character.teamwork_feats > 0:
-			character.teamwork_feats += 1
 			teamwork_feats = generic_feat_chooser(character, character.c_class, casting_level_str, 'Null', info_column = 'description', override=True, special_type="teamwork", feat_amount = character.teamwork_feats)
 
 		# Label teamwork feats with their granting class + level (e.g. "Inquisitor 3"), parallel to teamwork_feats
@@ -691,15 +735,32 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				print("wizard, but wizard spell list has no bonus spells")
 
 
-		feats.append("two-weapon fighting")
-		feats.append("two-weapon defense")
 	# ------------------- Last minute Feat swapping process -------------------#
 		story_feats, flaw_feats, flavor_feats, class_feats, feats = separate_feats_func(character, feats)
+		# Paid Martial Training picks and style-chain bases join the normal bucket (their slots
+		# were reserved out of the ask before the chooser ran); the feat-tax passes below bundle
+		# the free partners/followers. Style children register as owned so nothing re-picks them.
+		feats.extend(mt_feats)
+		feats.extend(style_feats)
 		add_feats_to_chooseable(character, story_feats, flaw_feats, flavor_feats, class_feats, feats)
+		add_feats_to_chooseable(character, [c for ch in style_feat_tax.values() for c in ch])
 		# Label each class bonus feat with its granting class + level (e.g. "Fighter 1"), parallel to class_feats
 		_class_feat_levels = class_bonus_feat_levels(character.c_class, character.c_class_level)
 		_class_display = character.c_class.replace('_', ' ').title()
 		class_feat_labels = [f"{_class_display} {lvl}" for lvl in _class_feat_levels][:len(class_feats)]
+		# Per-bucket feat-row budget: what the sheet SHOULD show. Captured pre-tax-strip; normal
+		# absorbs the human bonus, reallocated surpluses, and the ranger/monk merges.
+		feat_budget = {
+			"story": character.story_feat_amount,
+			"flaw": character.flaw_feat_amount,
+			"flavor": character.flavor_feat_amount,
+			"class": character.class_feats_amount,
+			"normal": character.feat_amounts - character.story_feat_amount - character.flaw_feat_amount
+				- character.flavor_feat_amount - character.class_feats_amount
+				+ len(ranger_style_feats) + len(monk_bonus_feats) + len(mt_feats) + len(style_feats),
+			"teamwork": character.teamwork_feats,
+			"bloodline": len(bloodline_feats),
+		}
 		# add all feats to character.chooseable (for feat taxing purposes)
 
 
@@ -709,11 +770,30 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# class bonus feats at their granting levels (_class_feat_levels, e.g. Fighter 1/2/4).
 		_story_levels  = ([1] + [5 * k for k in range(1, len(story_feats) + 1)])[:len(story_feats)]
 		_normal_levels = [2 * i + 1 for i in range(len(feats))]
-		story_feat_tax_dict  = feat_tax_func(character, story_feats,  feat_levels=_story_levels)
-		flaw_feat_tax_dict   = feat_tax_func(character, flaw_feats,   feat_levels=[1] * len(flaw_feats))
-		flavor_feat_tax_dict = feat_tax_func(character, flavor_feats, feat_levels=[1] * len(flavor_feats))
-		class_feat_tax_dict  = feat_tax_func(character, class_feats,  feat_levels=_class_feat_levels[:len(class_feats)])
-		feats_feat_tax_dict  = feat_tax_func(character, feats,        feat_levels=_normal_levels)
+		# One shared granted-set across all five calls: overlapping chains (e.g. riptide attack
+		# under both Improved Drag and Improved Trip) bundle a child onto exactly one primary;
+		# call order below decides which primary wins it.
+		_tax_already_granted = set()
+		story_feat_tax_dict  = feat_tax_func(character, story_feats,  feat_levels=_story_levels, already_granted=_tax_already_granted)
+		flaw_feat_tax_dict   = feat_tax_func(character, flaw_feats,   feat_levels=[1] * len(flaw_feats), already_granted=_tax_already_granted)
+		flavor_feat_tax_dict = feat_tax_func(character, flavor_feats, feat_levels=[1] * len(flavor_feats), already_granted=_tax_already_granted)
+		class_feat_tax_dict  = feat_tax_func(character, class_feats,  feat_levels=_class_feat_levels[:len(class_feats)], already_granted=_tax_already_granted)
+		feats_feat_tax_dict  = feat_tax_func(character, feats,        feat_levels=_normal_levels, already_granted=_tax_already_granted)
+		# Martial Training chains are taken once PER DISCIPLINE and discipline-labeled (e.g.
+		# "Martial Training I (Broken Blade)"), so they aren't in data/feats.csv and feat_tax_func
+		# can't resolve them. Merge the hand-built bundle directly (paid I/III/V -> free II/IV/VI
+		# per chain) and register the free partners in the shared granted-set, mirroring the
+		# style-chain handling below.
+		for _mt_children in mt_feat_tax.values():
+			_tax_already_granted.update(str(c).lower() for c in _mt_children)
+		feats_feat_tax_dict.update(mt_feat_tax)
+		# Style-chain followers are ALWAYS granted in full ("feat tax all the way through").
+		# They are Metzofitz homebrew absent from data/feats.csv, so feat_tax_func can't see
+		# them -- merge the hand-built bundle directly; registering the children in the shared
+		# granted-set keeps the strip/backfill/no-duplicate invariants intact.
+		for _style_children in style_feat_tax.values():
+			_tax_already_granted.update(str(c).lower() for c in _style_children)
+		feats_feat_tax_dict.update(style_feat_tax)
 
 		# Strip feats now bundled as a tax-child onto a primary so they don't ALSO render as their
 		# own standalone entry (children are granted cross-group via character.chooseable).
@@ -729,10 +809,101 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			flavor_feats = [f for f in flavor_feats if f.lower() not in _taxed_children]
 			feats        = [f for f in feats        if f.lower() not in _taxed_children]
 			# class_feats carries a parallel label list -> filter in lockstep
-			_labels = list(class_feat_labels) + [None] * (len(class_feats) - len(class_feat_labels))
-			_kept = [(f, lbl) for f, lbl in zip(class_feats, _labels) if f.lower() not in _taxed_children]
-			class_feats = [f for f, _ in _kept]
-			class_feat_labels = [lbl for _, lbl in _kept if lbl is not None]
+			class_feats, class_feat_labels = strip_labeled_bucket(class_feats, class_feat_labels, _taxed_children)
+			# teamwork / bloodline lists are exported separately -> strip bundled children there
+			# too (labels in lockstep), so a tax child never doubles as its own standalone entry.
+			if isinstance(teamwork_feats, list) and teamwork_feats:
+				teamwork_feats, teamwork_feat_labels = strip_labeled_bucket(teamwork_feats, teamwork_feat_labels, _taxed_children)
+			if isinstance(bloodline_feats, list) and bloodline_feats:
+				bloodline_feats, bloodline_feat_labels = strip_labeled_bucket(bloodline_feats, bloodline_feat_labels, _taxed_children)
+
+		# Backfill: tax children are FREE under the house rule, so a slot freed by the strip (its
+		# feat now renders bundled on its primary) is refilled with a fresh pick. Draws are sized
+		# by budget distance rather than strip counts, so they also heal any residual selection
+		# shortfall. Normal + class buckets only; other buckets stay visible in the budget log.
+		# Granted children are NOT in character.chooseable -- register them first, or the draw
+		# below could re-pick one (instant standalone+bundled duplicate).
+		add_feats_to_chooseable(character, sorted(_tax_already_granted))
+		need_class  = max(0, feat_budget["class"]  - len(class_feats))
+		need_normal = max(0, feat_budget["normal"] - len(feats))
+		if need_class + need_normal > 0:
+			replacements = topup_feat_chooser(character, casting_level_str, need_class + need_normal)
+			add_feats_to_chooseable(character, replacements)
+			class_repl, normal_repl = replacements[:need_class], replacements[need_class:]
+			class_feats.extend(class_repl)
+			feats.extend(normal_repl)
+			class_feat_labels = [f"{_class_display} {lvl}" for lvl in _class_feat_levels][:len(class_feats)]
+			# One feat-tax pass over the replacements only (same shared granted-set, so overlapping
+			# chains still bundle a child exactly once); positional levels match the convention above.
+			_repl_class_levels = [_class_feat_levels[i] if i < len(_class_feat_levels) else character.c_class_level
+								  for i in range(len(class_feats) - len(class_repl), len(class_feats))]
+			_repl_normal_levels = [2 * i + 1 for i in range(len(feats) - len(normal_repl), len(feats))]
+			class_feat_tax_dict.update(feat_tax_func(character, class_repl, feat_levels=_repl_class_levels, already_granted=_tax_already_granted))
+			feats_feat_tax_dict.update(feat_tax_func(character, normal_repl, feat_levels=_repl_normal_levels, already_granted=_tax_already_granted))
+			# Second (terminal) strip round: a replacement can itself be a tax primary whose chain
+			# bundles an EXISTING standalone feat. Strip those and draw once more WITHOUT another
+			# tax pass (terminal draws never tax -> guaranteed convergence).
+			_children_2 = {c for d in (class_feat_tax_dict, feats_feat_tax_dict)
+						   for ch in d.values() for c in ch} - _taxed_children
+			if _children_2:
+				story_feats  = [f for f in story_feats  if f.lower() not in _children_2]
+				flaw_feats   = [f for f in flaw_feats   if f.lower() not in _children_2]
+				flavor_feats = [f for f in flavor_feats if f.lower() not in _children_2]
+				feats        = [f for f in feats        if f.lower() not in _children_2]
+				class_feats, class_feat_labels = strip_labeled_bucket(class_feats, class_feat_labels, _children_2)
+				if isinstance(teamwork_feats, list) and teamwork_feats:
+					teamwork_feats, teamwork_feat_labels = strip_labeled_bucket(teamwork_feats, teamwork_feat_labels, _children_2)
+				if isinstance(bloodline_feats, list) and bloodline_feats:
+					bloodline_feats, bloodline_feat_labels = strip_labeled_bucket(bloodline_feats, bloodline_feat_labels, _children_2)
+				add_feats_to_chooseable(character, sorted(_children_2))
+				need2_class  = max(0, feat_budget["class"]  - len(class_feats))
+				need2_normal = max(0, feat_budget["normal"] - len(feats))
+				if need2_class + need2_normal > 0:
+					final_repl = topup_feat_chooser(character, casting_level_str, need2_class + need2_normal)
+					add_feats_to_chooseable(character, final_repl)
+					class_feats.extend(final_repl[:need2_class])
+					feats.extend(final_repl[need2_class:])
+					class_feat_labels = [f"{_class_display} {lvl}" for lvl in _class_feat_levels][:len(class_feats)]
+
+		# Reorder the surviving normal + class-bonus feats (one combined pool) onto their level slots so
+		# each lands at a level whose prerequisites are actually met: prereq feats placed at earlier (lower)
+		# levels, and BAB / class-level gates respected (e.g. Greater Feint never before Improved Feint nor
+		# before its +6 BAB level). Done AFTER the tax-child strip because removing children reindexes the
+		# positional normal-feat levels. class_feat_labels are rebuilt in lockstep. Falls back (except) to
+		# the post-strip positional order if anything goes wrong, so a generation never crashes here.
+		try:
+			_post_class_levels = class_bonus_feat_levels(character.c_class, character.c_class_level)[:len(class_feats)]
+			feats, class_feats, _normal_levels, _post_class_levels = assign_feats_to_levels(
+				character, feats, class_feats,
+				[2 * i + 1 for i in range(len(feats))], _post_class_levels)
+			_class_display = character.c_class.replace('_', ' ').title()
+			class_feat_labels = [f"{_class_display} {lvl}" for lvl in _post_class_levels][:len(class_feats)]
+		except Exception:
+			pass
+
+		# The reorder treats normal + class-bonus feats as ONE pool, so a feat can migrate
+		# between the two buckets -- but its feat-tax bundle was filed under the PRE-reorder
+		# bucket's dict (the sheet applies each dict to its own bucket). Re-home each primary's
+		# bundle to the dict of the bucket it actually ended up in, so "Primary > Child"
+		# bundling follows the feat (e.g. a paid Martial Training I reseated as a class row).
+		_feats_l = {str(f).lower() for f in feats}
+		_class_l = {str(f).lower() for f in class_feats}
+		for _moved in [k for k in feats_feat_tax_dict if str(k).lower() in _class_l and str(k).lower() not in _feats_l]:
+			class_feat_tax_dict[_moved] = feats_feat_tax_dict.pop(_moved)
+		for _moved in [k for k in class_feat_tax_dict if str(k).lower() in _feats_l and str(k).lower() not in _class_l]:
+			feats_feat_tax_dict[_moved] = class_feat_tax_dict.pop(_moved)
+
+		# Row-count audit: actual/budget per bucket. Normal and class are backfilled, so a
+		# deficit there means a regression; other buckets may legally run under (tax-bundled).
+		print(f"feat rows -> normal {len(feats)}/{feat_budget['normal']}, story {len(story_feats)}/{feat_budget['story']}, "
+			f"flaw {len(flaw_feats)}/{feat_budget['flaw']}, flavor {len(flavor_feats)}/{feat_budget['flavor']}, "
+			f"class {len(class_feats)}/{feat_budget['class']}, teamwork {(len(teamwork_feats) if isinstance(teamwork_feats, list) else 0)}/{feat_budget['teamwork']}, "
+			f"bloodline {len(bloodline_feats)}/{feat_budget['bloodline']}")
+		if martial_disciplines or mt_feats or style_feats:
+			print(f"PoW -> disciplines {martial_disciplines}, IL {initiator_level}, "
+				f"known {sum(maneuvers_known_list)} by-level {maneuvers_known_list}, "
+				f"readied {sum(maneuvers_readied_list)}, "
+				f"stances {len(stances_chosen)}, mt {mt_feats}, styles {style_feats}")
 
 		# Reorder the surviving normal + class-bonus feats (one combined pool) onto their level slots so
 		# each lands at a level whose prerequisites are actually met: prereq feats placed at earlier (lower)
@@ -779,6 +950,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				# fort_saving_throw, reflex_saving_throw, wisdom_saving_throw,
 				character.spell_list_choose_from,
 				day_list, known_list,
+				martial_disciplines, initiator_level,
+				maneuvers_known_list, maneuvers_readied_list,
+				maneuvers_choose_from, maneuvers_readied_names,
+				stances_chosen, mt_feats, initiation_stat,
 				deity_name, skill_ranks,
 				weapon_enhancement_chosen_list, armor_enhancement_chosen_list, 
 				shield_enhancement_chosen_list,
@@ -807,6 +982,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				total_rolled_hp, mini_alignment, 
 				casting_level_str_foundry, character.main_stat,
 				story_feat_tax_dict , flaw_feat_tax_dict, flavor_feat_tax_dict, class_feat_tax_dict, feats_feat_tax_dict,
+				feat_budget,
 				mod_char_sheet_var,
 
 				 ]
@@ -826,6 +1002,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				# "fort_saving_throw", "reflex_saving_throw", "wisdom_saving_throw",
 				"spell_list_choose_from",
 				"day_list", "known_list",
+				"martial_disciplines", "initiator_level",
+				"maneuvers_known_list", "maneuvers_readied_list",
+				"maneuvers_choose_from", "maneuvers_readied_names",
+				"stances_chosen", "mt_feats", "initiation_stat",
 				"deity_name", "skill_ranks",
 				"weapon_enhancement_chosen_list", "armor_enhancement_chosen_list", 
 				"shield_enhancement_chosen_list",
@@ -854,18 +1034,19 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"total_rolled_hp", "mini_alignment",
 				"casting_level_str_foundry", "main_stat",
 				"story_feat_tax_dict" , "flaw_feat_tax_dict", "flavor_feat_tax_dict", "class_feat_tax_dict", "feats_feat_tax_dict",
+				"feat_budget",
 				"mod_char_sheet_var",
 
 				]
 		
 		assert len(export_list_non_dict) == len(string_export_list_non_dict), f"export key/value mismatch: {len(string_export_list_non_dict)} keys vs {len(export_list_non_dict)} values"
 		export_list_dict = [
-				character.spell_list_choose_from, equip_descrip,
-				 ] 
+				character.spell_list_choose_from, equip_descrip, maneuvers_desc_dict, homebrew_feat_desc_dict,
+				 ]
 
-		string_export_list_dict = [ 
-				"spell_list_choose_from_dict", "equip_descrip",
-				 ] 
+		string_export_list_dict = [
+				"spell_list_choose_from_dict", "equip_descrip", "maneuvers_desc_dict", "homebrew_feat_desc_dict",
+				 ]
 
 		character.export_list_non_dict(export_list_non_dict, string_export_list_non_dict)		
 		character.export_list_dict(export_list_dict, string_export_list_dict)		
