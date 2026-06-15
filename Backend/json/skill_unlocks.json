@@ -1,0 +1,159 @@
+{
+  "_source": "Pathfinder Unchained skill unlocks (legacy.aonprd.com/unchained/skillsAndOptions/skillUnlocks.html). Keyed by base skill; the picker maps 'knowledge <field>' -> 'knowledge'. Each entry gives the benefit gained at 5/10/15/20 ranks in that skill.",
+  "acrobatics": {
+    "5": "You can move at normal speed through a threatened square without provoking an attack of opportunity by increasing the DC of the check by 5 (instead of moving at half speed).",
+    "10": "You can use your Acrobatics modifier as your CMD against trip maneuvers, use an Acrobatics check in place of a Reflex save to avoid falling, and reduce falling damage.",
+    "15": "You do not provoke attacks of opportunity when standing up from prone.",
+    "20": "Double your Acrobatics result when jumping, and you never fall prone from falls as long as you are conscious."
+  },
+  "appraise": {
+    "5": "You can detect whether an item is magical (DC 20) and reveal its properties (DC 25 + caster level), and you automatically identify non-written forgeries.",
+    "10": "As a standard action you can determine the most expensive object a creature wears or wields (DC 20); you never make wildly inaccurate appraisals.",
+    "15": "Determining the most expensive object is a move action, and you may substitute an Appraise check at -10 for a Will save against figments and glamers.",
+    "20": "Identifying the priciest object is a move action, and observing an item grants a +2 circumstance bonus on steal and disarm checks against its bearer for 1 minute."
+  },
+  "bluff": {
+    "5": "The penalty to Bluff a creature after a failed check is halved unless you failed by 5 or more.",
+    "10": "You take no penalty to Bluff a creature after a failed check unless you failed by 5 or more.",
+    "15": "Creatures magically attempting to read your thoughts, detect your alignment, or reveal when you are lying must succeed at a caster level check (DC 11 + your Bluff ranks) or the effect reveals nothing.",
+    "20": "As a full-round action you can make a suggestion (as the spell, max 1 hour) to a creature within 30 feet (Will negates, DC 15 + Cha mod). This is an extraordinary mind-affecting compulsion."
+  },
+  "climb": {
+    "5": "You are no longer denied your Dexterity bonus to AC when climbing.",
+    "10": "You gain a climb speed of 10 feet on surfaces with a Climb DC of 20 or lower.",
+    "15": "Your climb speed equals your base speed on surfaces of DC 20 or lower, and 10 feet on other surfaces.",
+    "20": "Your climb speed equals your base speed on all surfaces, and you gain a +8 racial bonus on Climb checks with both hands free."
+  },
+  "craft": {
+    "5": "When crafting, double the result of your Craft check before multiplying by the item's DC.",
+    "10": "You do not ruin any of your raw materials unless you fail a Craft check by 10 or more.",
+    "15": "The result of your Craft check is how much work you complete each day, in silver pieces.",
+    "20": "You can craft magic armor, magic weapons, magic rings, and wondrous items using the normal Craft rules (no item-creation feat required for these)."
+  },
+  "diplomacy": {
+    "5": "The time required to influence a creature's attitude or gather information with Diplomacy is halved.",
+    "10": "You can adjust a creature's attitude in 1 round at a -10 penalty; 1-minute adjustments add your Cha bonus to how long the attitude persists.",
+    "15": "You can adjust attitude in 1 round with no penalty; 1-minute changes last days, and you can gather information in 10 minutes at -5.",
+    "20": "1-round attitude adjustments take no penalty, 1-minute changes last weeks, and you can gather information in 1d4 minutes with no penalty."
+  },
+  "disable device": {
+    "5": "You can reduce the time to disarm a trap or open a lock by taking a -5 penalty per step (down to a swift action).",
+    "10": "You can disarm magical traps at a -10 penalty, and with trapfinding you never accidentally trigger a trap even while performing its trigger action.",
+    "15": "When attacked by a trap, you can attempt an immediate-action Disable Device check opposed by the trap's attack roll or save DC to take half or no damage.",
+    "20": "Halve the penalties for quickly disarming, and with trapfinding you can take a -20 penalty to let allies benefit and disable a trap before it triggers (DC +10)."
+  },
+  "disguise": {
+    "5": "You can create a disguise in 1d3 minutes.",
+    "10": "You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.",
+    "15": "You can create a disguise as a full-round action.",
+    "20": "You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight."
+  },
+  "escape artist": {
+    "5": "Take a -10 penalty to halve the time an Escape Artist check requires; escaping a grapple or pin is a move action, and escaping entangling spells is a standard action.",
+    "10": "You can escape any entangling effect as a standard action (DC = effect's save DC + 10), and you set the escape DC for ropes and bindings.",
+    "15": "You can escape entangling effects as a move action and suppress slow or paralysis as a standard action (DC = save DC + 20) for a short time.",
+    "20": "You can escape as an immediate action (DC = effect's DC/CMB + 10) and suppress slow or paralysis as a standard, move, or immediate action."
+  },
+  "fly": {
+    "5": "A successful DC 20 Fly check lets you make a 45-degree turn without sacrificing movement.",
+    "10": "A DC 30 check lets you ascend at a 45-degree angle at full speed, and a DC 10 check treats falls after a midair collision as 10 feet shorter.",
+    "15": "A DC 30 check allows a 90-degree turn without sacrificing movement (or a 180-degree turn for 5 feet), and you are treated as one size larger versus wind.",
+    "20": "A DC 35 check lets you fly straight up at full speed, and you are treated as two size categories larger versus wind effects."
+  },
+  "handle animal": {
+    "5": "Creatures you have trained gain a +2 bonus on Will saves while adjacent to you.",
+    "10": "Trained creatures gain the +2 Will bonus within 30 feet while they can clearly see you, and you can teach a trick in 1 day at DC +20.",
+    "15": "With a week and a DC 30 check you can train an animal to understand speech (as speak with animals); you can teach a trick in 1 day (DC +10) or 1 hour (DC +20).",
+    "20": "You can make your speech understandable to any animal for 24 hours (DC 30, or DC 40 for magical beasts/vermin), and teach tricks in as little as 1 minute."
+  },
+  "heal": {
+    "5": "When you treat deadly wounds, the target recovers hit points and ability damage as if it had rested for a full day.",
+    "10": "When you treat deadly wounds, the target recovers as if it had rested a full day with long-term care.",
+    "15": "When you treat deadly wounds, the target recovers hit points and ability damage as if it had rested for 3 days.",
+    "20": "When you treat deadly wounds, the target recovers as if it had rested 3 days with long-term care."
+  },
+  "intimidate": {
+    "5": "If you exceed the Intimidate DC by 10 or more, the target is frightened for 1 round and then shaken; a Will save (DC 10 + your ranks) negates the frightened condition.",
+    "10": "Exceed the DC by 10+ to make the target panicked for 1 round or frightened for 1d4 rounds (your choice), then shaken.",
+    "15": "Exceed the DC by 20+ to make the target cowering for 1 round or panicked for 1d4 rounds (your choice), then frightened.",
+    "20": "Exceed the DC by 20+ to make the target cowering for 1d4 rounds and then panicked."
+  },
+  "knowledge": {
+    "5": "You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill.",
+    "10": "After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.",
+    "15": "You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.",
+    "20": "You can roll twice and take the better result on Knowledge checks."
+  },
+  "linguistics": {
+    "5": "You can use Linguistics in place of Sense Motive to intercept secret messages, and gain a scaling insight bonus on Perception/Disable Device checks for written magical traps.",
+    "10": "Exceed a writing-examination check by 10 to learn its precise meaning, never draw false conclusions on a failure, and decipher spoken meaning at high DCs.",
+    "15": "You can decipher magical writings (DC 25 + caster level) as if using read magic, and gain a +2 bonus on Disable Device for identified magical traps.",
+    "20": "You decipher text at one page per round, and spending 1 minute per page lets you roll twice and take the better result."
+  },
+  "perception": {
+    "5": "You remain alert to sounds even while asleep (the sleeping DC increase is halved), and the distance penalty is reduced to +1 per 20 feet.",
+    "10": "The distance penalty drops to +1 per 30 feet, and you gain a +5 bonus to notice or locate invisible creatures and objects.",
+    "15": "You remain alert to sounds in your sleep with no DC increase, and the distance penalty drops to +1 per 40 feet.",
+    "20": "You gain a +10 bonus to notice invisible creatures and objects, and the distance penalty drops to +1 per 60 feet."
+  },
+  "perform": {
+    "5": "A DC 20 Perform check grants a +2 circumstance bonus on a Bluff, Diplomacy, Handle Animal, or Intimidate check.",
+    "10": "A DC 25 Perform check while casting an emotion or language-dependent spell increases its save DC by 1.",
+    "15": "A DC 30 Perform check while casting an emotion or language-dependent spell increases its caster level by 1 (choose this or the 10-rank ability).",
+    "20": "Choose Bluff, Diplomacy, or Intimidate; you may use the better result between Perform and that skill."
+  },
+  "profession": {
+    "5": "When using Profession to earn income, you earn gold pieces (instead of half) equal to your check result each week.",
+    "10": "You can roll twice and take the better result on Profession checks, and you always take 10 when answering questions about your profession.",
+    "15": "You can attempt checks to earn income once per day instead of once per week.",
+    "20": "You may choose to roll once; if the result is less than 10, treat it as 10, and you always take 20 answering profession questions."
+  },
+  "ride": {
+    "5": "Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted.",
+    "10": "When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.",
+    "15": "While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.",
+    "20": "Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC."
+  },
+  "sense motive": {
+    "5": "If aware of an opponent before initiative, you can attempt a Sense Motive check as part of initiative to gain a scaling initiative bonus.",
+    "10": "After conversing for 1 minute, you can read a creature's surface thoughts at a -20 penalty opposed by its Bluff (as detect thoughts).",
+    "15": "You can read surface thoughts after 1 round, and when attacked may attempt an immediate-action Sense Motive check to gain a +2 insight bonus to AC against that foe.",
+    "20": "You can read surface thoughts as a standard action, and a successful insight-bonus check negates the triggering attack."
+  },
+  "sleight of hand": {
+    "5": "A successful Sleight of Hand check against a target's CMD grants a +2 circumstance bonus on your disarm or steal combat maneuver check.",
+    "10": "The penalty for a Sleight of Hand check (including drawing a hidden weapon) as a move action is reduced to -10.",
+    "15": "You can attempt a Sleight of Hand check (including drawing a hidden weapon) as a swift action at a -20 penalty.",
+    "20": "You take no penalty for using Sleight of Hand as a move action, and only a -10 penalty when using it as a swift action."
+  },
+  "spellcraft": {
+    "5": "Identifying magic items takes 1 full round, and the time to learn a spell from a spellbook is halved.",
+    "10": "You can identify magic items without using detect magic, though the DC is increased by 10.",
+    "15": "Identifying magic items is a standard action, and learning a spell takes 1 minute per spell level.",
+    "20": "When attempting a caster level check, you can attempt a Spellcraft check at -20 against the same DC; success grants a +2 circumstance bonus."
+  },
+  "stealth": {
+    "5": "Reduce the Stealth penalty from sniping by 10.",
+    "10": "Stealth penalties for moving at full speed are halved (including the 5-rank sniping ability).",
+    "15": "After a successful Stealth-based attack, your target is denied its Dexterity bonus against all attacks you make before the end of your turn.",
+    "20": "After a successful Stealth-based attack, your target is denied its Dexterity bonus against all your attacks before the beginning of your next turn."
+  },
+  "survival": {
+    "5": "Reduce all nonlethal damage you take from heat, cold, starvation, or thirst by 1 point per 5 ranks.",
+    "10": "You can track creatures that leave no tracks (including flying/swimming creatures and those using trackless step or pass without trace) at a -20 penalty.",
+    "15": "Once per day you can spend 1 hour and succeed at a DC 30 check to gain cold or fire resistance 5 for 24 hours, sharing it with allies.",
+    "20": "You take only a -10 penalty when tracking creatures that leave no tracks."
+  },
+  "swim": {
+    "5": "You gain a swim speed of 10 feet in water with a Swim DC of 15 or lower.",
+    "10": "Your swim speed equals your base speed in water of DC 15 or lower, and 10 feet in other water.",
+    "15": "You ignore the penalties for using slashing or bludgeoning weapons underwater, as freedom of movement.",
+    "20": "Your swim speed equals your base speed in all water, and you gain a +8 racial bonus on Swim checks with both hands free."
+  },
+  "use magic device": {
+    "5": "You can use the aid another action to assist another creature's Use Magic Device check by succeeding at a check against the item's DC.",
+    "10": "Rolling a natural 1 while activating an item only gives you a -10 penalty on Use Magic Device checks with that item for 24 hours (instead of locking you out).",
+    "15": "You can emulate two races or two alignments simultaneously.",
+    "20": "After rolling a natural 1, you may reroll the check at a -10 penalty to activate the item (you must accept the second result)."
+  }
+}
