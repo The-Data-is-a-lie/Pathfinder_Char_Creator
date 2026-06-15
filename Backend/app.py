@@ -74,7 +74,13 @@ def process_input_values(input_values):
     try:
         if len(input_values) < 19:
             raise IndexError("Not enough elements in input_values")
-        
+
+        # Optional 20th input: the "use backstory API" toggle (the button that decides whether the
+        # Ollama backstory call runs at all). Older clients send 19 fields -> default to "Y" (on).
+        # Trim to the core 19 so the integer conversion + unpack below stay aligned.
+        use_backstory_api = input_values[19] if len(input_values) >= 20 else "Y"
+        input_values = input_values[:19]
+
         # Convert specific elements to integers
         for i in range(-5, 0):
         # for i in [14, 15, 16, 17, 18]:
@@ -87,7 +93,7 @@ def process_input_values(input_values):
         # Unpack input_values
         create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num = input_values
         session['character_data'] = generate_random_char(
-        create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num
+        create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num, use_backstory_api
         )
         return session['character_data']
 
@@ -125,4 +131,7 @@ def update_character_data():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5001))
-    app.run(host='0.0.0.0', port=port, debug=True)  # debug when production = dangerous
+    # use_reloader=False: the project's .venv redirects to the base C:\Python310 interpreter, which
+    # makes Werkzeug's debug auto-reloader spawn a runaway cascade of nested processes that fight over
+    # the port and serve stale code. Keep the debugger, drop the reloader; restart manually after edits.
+    app.run(host='0.0.0.0', port=port, debug=True, use_reloader=False)  # debug when production = dangerous

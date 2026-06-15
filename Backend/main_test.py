@@ -28,7 +28,7 @@ from utils.class_func.feats 						import (build_selector, chooseable_list, choos
                                                             simple_list_chooser, generic_feat_chooser, bloodline_feat_chooser, teamwork_pool_size,
                                                             capitalize_feats, dedupe_feats_case_insensitive, topup_feat_chooser)
 from utils.class_func.feats_to_chooseable 			import add_feats_to_chooseable
-from utils.class_func.feat_tax 						import feat_tax_func
+from utils.class_func.feat_tax 						import feat_tax_func, feat_spell_searcher
 from utils.class_func.flag_assign 					import human_flag_assigner, druidic_flag_assigner
 from utils.class_func.generic_func 					import generic_class_option_chooser, get_data_without_prerequisites, no_prereq_prep#, no_prereq_loop, chosen_set_append
 from utils.class_func.grand_discovery 				import grand_discovery_chooser
@@ -40,12 +40,16 @@ from utils.class_func.language 						import language_chooser
 from utils.class_func.level_and_bab 				import randomize_level
 # from utils.class_func.luck_and_mythic 				import randomize_luck, randomize_mythic
 from utils.class_func.path_of_war 					import randomize_path_of_war_num, choose_path_of_war_attr
+from utils.class_func.backstory 					import generate_backstory
 
 from utils.class_func.modded_char_sheet 			import modded_char_sheet_func
 # from utils.class_func.path_of_war_funcs				import select_disciplines
 
 from utils.class_func.personality 					import randomize_personality_attr
 from utils.class_func.profession_chooser 			import profession_chooser
+from utils.class_func.profession_abilities 			import build_profession_ability_items
+from utils.class_func.trainers 						import select_trainer_feats, CALIBER_NAMES
+from utils.class_func.skill_unlocks 				import choose_skill_unlock
 # from utils.class_func.race_func 					import (race_ability_score_changes, race_ability_split, 
 #                                                      		race_traits_chooser, subrace_chooser)#, full_race_data
 from utils.class_func.randomize_flaw 				import randomize_flaw_amount
@@ -161,7 +165,7 @@ def strip_labeled_bucket(feat_list, label_list, children):
 # Make sure to add a flag for path of war feats later
 def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Orc', class_choice='wizard', chosen_BAB='low', chosen_caster_level = 'random', multi_class='N', 
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", modded_char_sheet = 'n', 
-						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, ):
+						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", ):
 		
 		print(create_new_char)
 		print(userInput_region)
@@ -418,9 +422,15 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# wisdom_saving_throw = saving_throw_calc(character, 'Will')	
 
 		skill_ranks = skills_selector(character, 'skills', skill_rank_level)
-		professions = profession_chooser(character, "professions")
 		# One Craft specialization per character, displayed as "Craft: <type>" on the sheet.
+		# Chosen before professions so a profession can be themed around it.
 		character.craft_chosen = random.choice(data.crafts)
+		# Professions sub-system (ranks 5 + level + 10/profession-feat; >=2 profession feats when
+		# feats aren't randomized). Returns the legacy list of profession names; rich data + the
+		# profession feats are recorded on the character.
+		professions = profession_chooser(character, "professions", truly_random_feats)
+		# Every character gets exactly one skill unlock, drawn from a skill they have ranks in.
+		skill_unlock = choose_skill_unlock(character, skill_ranks)
 
 		simple_list_chooser(character, 'ranger','favored_terrains', 'favored_enemies')
 		simple_list_chooser(character, 'brawler','manuevers',max_num=8)
@@ -704,6 +714,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 		# print("class features 1st check", class_features)
 		#End of turning class_features into a dictionary for oracle
+		# NOTE: the homebrew Trainers / Professions / Skill Unlock entries are injected into
+		# class_features further down (inject_homebrew_class_features), after the feat section has
+		# computed the trainer feats + tax chains.
 
 
 	#--------------- Spell addition options ---------------#
@@ -744,6 +757,20 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		feats.extend(style_feats)
 		add_feats_to_chooseable(character, story_feats, flaw_feats, flavor_feats, class_feats, feats)
 		add_feats_to_chooseable(character, [c for ch in style_feat_tax.values() for c in ch])
+
+		# ------------------- Trainer & profession bonus feats (homebrew, additive) -------------------#
+		# Trainers teach feats grouped under "(Trainer N)" tags; profession feats are named homebrew
+		# feats (True Calling / Multi Talented / Always Improving). Both sit ON TOP of the normal
+		# budget (like bloodline/teamwork) and are registered as owned so nothing re-picks them. Chosen
+		# AFTER the normal feats are in chooseable, so trainer picks never duplicate the main list.
+		trainer_feats, trainer_feat_labels, trainer_calibers = select_trainer_feats(character, casting_level_str)
+		add_feats_to_chooseable(character, trainer_feats)
+		profession_feats = list(getattr(character, 'profession_feats', []) or [])
+		profession_feat_desc = dict(getattr(character, 'profession_feat_desc', {}) or {})
+		profession_ranks = list(getattr(character, 'profession_data', []) or [])
+		profession_pool = getattr(character, 'profession_pool', 0)
+		add_feats_to_chooseable(character, profession_feats)
+
 		# Label each class bonus feat with its granting class + level (e.g. "Fighter 1"), parallel to class_feats
 		_class_feat_levels = class_bonus_feat_levels(character.c_class, character.c_class_level)
 		_class_display = character.c_class.replace('_', ' ').title()
@@ -760,6 +787,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				+ len(ranger_style_feats) + len(monk_bonus_feats) + len(mt_feats) + len(style_feats),
 			"teamwork": character.teamwork_feats,
 			"bloodline": len(bloodline_feats),
+			"trainer": len(trainer_feats),
+			"profession": len(profession_feats),
 		}
 		# add all feats to character.chooseable (for feat taxing purposes)
 
@@ -779,6 +808,22 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		flavor_feat_tax_dict = feat_tax_func(character, flavor_feats, feat_levels=[1] * len(flavor_feats), already_granted=_tax_already_granted)
 		class_feat_tax_dict  = feat_tax_func(character, class_feats,  feat_levels=_class_feat_levels[:len(class_feats)], already_granted=_tax_already_granted)
 		feats_feat_tax_dict  = feat_tax_func(character, feats,        feat_levels=_normal_levels, already_granted=_tax_already_granted)
+		# Trainer feats are feat-taxed too (a trainer who teaches a base feat also imparts its chain),
+		# treated as learned early in the career ([1]*) like flaw/flavor feats.
+		trainer_feat_tax_dict = feat_tax_func(character, trainer_feats, feat_levels=[1] * len(trainer_feats), already_granted=_tax_already_granted)
+		# Profession feats (True Calling / Multi Talented / Always Improving) are named homebrew (not in
+		# feats.csv). Rather than list them as their own "Profession Feat:" entries, attribute them to a
+		# dedicated trainer slot — a mentor who taught these advanced profession techniques: one extra
+		# "(Trainer N)" whose chain IS the profession feats (base + the rest as its tax children). The
+		# FoundryVTT module synthesizes their descriptions from homebrew_feat_desc_dict, so register
+		# them there (keys resolve case-insensitively).
+		if profession_feats:
+			_prof_base = profession_feats[0]
+			trainer_feats.append(_prof_base)
+			trainer_feat_labels.append(f"(Trainer {len(trainer_calibers) + 1})")
+			trainer_feat_tax_dict[_prof_base] = list(profession_feats[1:])
+			for _pf_name, _pf_desc in profession_feat_desc.items():
+				homebrew_feat_desc_dict[_pf_name] = _pf_desc
 		# Martial Training chains are taken once PER DISCIPLINE and discipline-labeled (e.g.
 		# "Martial Training I (Broken Blade)"), so they aren't in data/feats.csv and feat_tax_func
 		# can't resolve them. Merge the hand-built bundle directly (paid I/III/V -> free II/IV/VI
@@ -898,7 +943,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		print(f"feat rows -> normal {len(feats)}/{feat_budget['normal']}, story {len(story_feats)}/{feat_budget['story']}, "
 			f"flaw {len(flaw_feats)}/{feat_budget['flaw']}, flavor {len(flavor_feats)}/{feat_budget['flavor']}, "
 			f"class {len(class_feats)}/{feat_budget['class']}, teamwork {(len(teamwork_feats) if isinstance(teamwork_feats, list) else 0)}/{feat_budget['teamwork']}, "
-			f"bloodline {len(bloodline_feats)}/{feat_budget['bloodline']}")
+			f"bloodline {len(bloodline_feats)}/{feat_budget['bloodline']}, "
+			f"trainer {len(trainer_feats)}/{feat_budget['trainer']}, profession {len(profession_feats)}/{feat_budget['profession']}")
 		if martial_disciplines or mt_feats or style_feats:
 			print(f"PoW -> disciplines {martial_disciplines}, IL {initiator_level}, "
 				f"known {sum(maneuvers_known_list)} by-level {maneuvers_known_list}, "
@@ -923,6 +969,23 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 
 
+	# ------------------- Homebrew Trainers / Professions (feat section) + Skill Unlock (class features) -------------------#
+		# Built here (after the feat section) so trainer feats + their tax chains exist.
+		# Professions render as their own feat-section items (Rank 5 / Rank 15 + profession feats),
+		# each carrying pf1 changes/contextNotes/uses -- see profession_abilities.build_profession_ability_items.
+		# Trainers render through the normal feat pipeline in the FoundryVTT module (trainer_feats +
+		# trainer_feat_labels + trainer_feat_tax_dict) -> full feat text, no caliber line. Neither rides
+		# the class-features renderer anymore; only the Skill Unlock still does.
+		profession_ability_items = build_profession_ability_items(character)
+
+		if isinstance(class_features, dict):
+
+			# 3) Skill unlock: dict of "{N} Ranks" -> benefit (rendered as bold-labelled bullets).
+			if skill_unlock:
+				_unlock = skill_unlock.get("unlock") or {}
+				_su_val = {f"{_r} Ranks": _unlock[_r] for _r in ("5", "10", "15", "20") if _unlock.get(_r)}
+				class_features["Skill Unlock: " + skill_unlock["skill"]] = _su_val or {"Skill Unlock": skill_unlock["skill"]}
+
 	# ------------------- Last minute Spell Alphabetize + dedupe process -------------------#
 		# print("pre character.spell_list_choose_from", character.spell_list_choose_from)
 
@@ -935,6 +998,33 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 	#-------------------- Start of export process --------------------#
 		archetype_info = json.dumps(archetype_info, indent=4)
 		character.land_speed = character.races.get(character.chosen_race, {}).get('speed', 30)
+
+	# ------------------- Backstory (coherent prose via Ollama, template fallback) -------------------#
+		# Richer profession + trainer context so the prose can give these vocations real weight.
+		_bs_professions = [f"{p['name']} (Profession rank {p['ranks']})" for p in profession_ranks] or professions
+		_trainer_groups = {}
+		for _lbl, _ft in zip(trainer_feat_labels, trainer_feats):
+			_trainer_groups.setdefault(_lbl, []).append(_ft)
+		_bs_trainers = []
+		for _fts in _trainer_groups.values():
+			_cal_name = CALIBER_NAMES.get(len(_fts), "skilled") or "skilled"
+			_article = "an" if _cal_name[0] in "aeiou" else "a"
+			_bs_trainers.append(f"{_article} {_cal_name} trainer who taught them {', '.join(_fts)}")
+		backstory = generate_backstory({
+			'name': character_full_name, 'race': character.chosen_race,
+			'gender': character.chosen_gender, 'age': age_number, 'region': character.region,
+			'alignment': alignment, 'deity': deity_name,
+			'char_class': character.c_class_display, 'class_2': character.c_class_2,
+			'level': character.c_class_level, 'main_stat': character.main_stat,
+			'martial_disciplines': martial_disciplines, 'notable_feats': feats,
+			'traits': getattr(character, 'selected_traits_desc', None) or selected_traits,
+			'personality_traits': personality_traits, 'mannerisms': mannerisms, 'flaw': flaw,
+			'background_traits': background_traits, 'professions': _bs_professions,
+			'craft': character.craft_chosen, 'trainers': _bs_trainers,
+			'appearance': appearance, 'parents': parents,
+			'siblings': [older_brothers, younger_brothers, older_sisters, younger_sisters],
+		}, use_api=str(use_backstory_api).upper() == "Y")
+
 		export_list_non_dict = [
 				character.region, character.chosen_race, character.land_speed,
 				character_full_name, character.c_class, character.c_class_display, character.c_class_2,
@@ -965,6 +1055,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				language_text, 
 				feats, teamwork_feats, teamwork_feat_labels, story_feats, flaw_feats, class_feats, class_feat_labels, flavor_feats,
 				bloodline_feats, bloodline_feat_labels,
+				trainer_feats, trainer_feat_labels, trainer_feat_tax_dict, trainer_calibers,
+				profession_feats, profession_feat_desc, profession_ranks, profession_pool, profession_ability_items,
+				skill_unlock,
 				character.gold, character.platnium,
 				full_domain, school, opposing_school,
 				bloodline,
@@ -984,6 +1077,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				story_feat_tax_dict , flaw_feat_tax_dict, flavor_feat_tax_dict, class_feat_tax_dict, feats_feat_tax_dict,
 				feat_budget,
 				mod_char_sheet_var,
+				backstory,
 
 				 ]
 		
@@ -1017,6 +1111,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"language_text", 
 				"feats", "teamwork_feats", "teamwork_feat_labels", "story_feats", "flaw_feats", "class_feats", "class_feat_labels", "flavor_feats",
 				"bloodline_feats", "bloodline_feat_labels",
+				"trainer_feats", "trainer_feat_labels", "trainer_feat_tax_dict", "trainer_calibers",
+				"profession_feats", "profession_feat_desc", "profession_ranks", "profession_pool", "profession_ability_items",
+				"skill_unlock",
 				"gold", "platnium",
 				"full_domain", "school", "opposing_school",
 				"bloodline",
@@ -1036,6 +1133,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"story_feat_tax_dict" , "flaw_feat_tax_dict", "flavor_feat_tax_dict", "class_feat_tax_dict", "feats_feat_tax_dict",
 				"feat_budget",
 				"mod_char_sheet_var",
+				"backstory",
 
 				]
 		
