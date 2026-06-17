@@ -1,0 +1,273 @@
+{
+ "bonus_spell_point_chart": [
+  {
+   "bonus_spell_points": 0,
+   "drawbacks": 0
+  },
+  {
+   "bonus_spell_points": 1,
+   "drawbacks": 1
+  },
+  {
+   "bonus_spell_points": 3,
+   "drawbacks": 2
+  },
+  {
+   "bonus_spell_points": 6,
+   "drawbacks": 3
+  },
+  {
+   "bonus_spell_points": 10,
+   "drawbacks": 4
+  },
+  {
+   "bonus_spell_points": 15,
+   "drawbacks": 5
+  },
+  {
+   "bonus_spell_points": 21,
+   "drawbacks": 6
+  },
+  {
+   "bonus_spell_points": 28,
+   "drawbacks": 7
+  },
+  {
+   "bonus_spell_points": 36,
+   "drawbacks": 8
+  },
+  {
+   "bonus_spell_points": 45,
+   "drawbacks": 9
+  },
+  {
+   "bonus_spell_points": 55,
+   "drawbacks": 10
+  },
+  {
+   "bonus_spell_points": 66,
+   "drawbacks": 11
+  }
+ ],
+ "boons": [
+  {
+   "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
+   "name": "Easy Focus"
+  },
+  {
+   "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
+   "name": "Empowered Abilities"
+  },
+  {
+   "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
+   "name": "Fortified Casting"
+  },
+  {
+   "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+   "name": "Overcharge"
+  }
+ ],
+ "casting_ability_modifiers": [
+  "Intelligence",
+  "Wisdom",
+  "Charisma"
+ ],
+ "drawback_to_boon_rule": "A casting tradition must possess 2 general drawbacks for each boon it gains (2 general drawbacks = 1 boon). General drawbacks and boons are locked in when the caster gains their first level in a casting class. Drawbacks spent to purchase boons do NOT also grant bonus spell points; only the leftover (unspent) general drawbacks convert to bonus spell points on the rising chart. Some drawbacks count as two drawbacks for both purposes. (This campaign's house rule removes the usual cap, so a casting tradition may stack unlimited drawbacks. Sphere-specific drawbacks, taken when a sphere is gained, instead grant bonus talents and are tracked separately.)",
+ "general_drawbacks": [
+  {
+   "associated_boons": [
+    "Fortified Casting"
+   ],
+   "counts_as": 2,
+   "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
+   "name": "Addictive Casting"
+  },
+  {
+   "associated_boons": [
+    "Fortified Casting"
+   ],
+   "counts_as": 1,
+   "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
+   "name": "Draining Casting"
+  },
+  {
+   "associated_boons": [],
+   "counts_as": 2,
+   "description": "Every sphere ability takes one step longer to activate than normal (swift to move, move to standard, standard to full-round, etc.).",
+   "name": "Extended Casting"
+  },
+  {
+   "associated_boons": [
+    "Easy Focus",
+    "Bound Creature"
+   ],
+   "counts_as": 1,
+   "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
+   "name": "Focus Casting"
+  },
+  {
+   "associated_boons": [],
+   "counts_as": 1,
+   "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
+   "name": "Magical Signs"
+  },
+  {
+   "associated_boons": [],
+   "counts_as": 1,
+   "description": "Your magic requires expending consumable materials/components worth roughly 1 sp per caster level each time you use a sphere ability.",
+   "name": "Material Casting"
+  },
+  {
+   "associated_boons": [],
+   "counts_as": 1,
+   "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
+   "name": "Painful Magic"
+  },
+  {
+   "associated_boons": [],
+   "counts_as": 1,
+   "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
+   "name": "Prepared Caster"
+  },
+  {
+   "associated_boons": [
+    "Virtuoso"
+   ],
+   "counts_as": 1,
+   "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
+   "name": "Skilled Casting"
+  },
+  {
+   "associated_boons": [],
+   "counts_as": 1,
+   "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
+   "name": "Somatic Casting"
+  },
+  {
+   "associated_boons": [],
+   "counts_as": 1,
+   "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
+   "name": "Verbal Casting"
+  },
+  {
+   "associated_boons": [
+    "Wild Surge"
+   ],
+   "counts_as": 1,
+   "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
+   "name": "Wild Magic"
+  }
+ ],
+ "sphere_specific_drawbacks": [
+  {
+   "description": "Your Alteration magic / shapeshift ability can only target yourself (models a lycanthropic curse); you gain a bonus (form) talent in exchange.",
+   "name": "Lycanthropic",
+   "sphere": "Alteration"
+  },
+  {
+   "description": "You cannot bestow the Blank Form/Transformation; the bonus talent gained from this drawback must be one that grants a form.",
+   "name": "Beast Soul",
+   "sphere": "Alteration"
+  },
+  {
+   "description": "Summoning a companion takes longer than normal, restricting quick conjuration, in exchange for a bonus Conjuration talent.",
+   "name": "Elongated Summoning",
+   "sphere": "Conjuration"
+  },
+  {
+   "description": "You may only create or alter objects of a single special substance, or your created objects are limited by a material focus; you gain a bonus Creation talent in exchange.",
+   "name": "Material Focus",
+   "sphere": "Creation"
+  },
+  {
+   "description": "You may only create a narrowed set of materials/objects (choose either alter or create, losing the other base ability); you gain a bonus Creation talent in exchange.",
+   "name": "Limited Creation",
+   "sphere": "Creation"
+  },
+  {
+   "description": "Your Death sphere abilities are limited to touch range; you gain a bonus Death talent in exchange.",
+   "name": "Deathful Touch",
+   "sphere": "Death"
+  },
+  {
+   "description": "You may use only a narrowed scope of Death effects (choose either ghost strike or reanimate, capping the undead you can produce/control); you gain a bonus Death talent in exchange.",
+   "name": "Necromantic Limit",
+   "sphere": "Death"
+  },
+  {
+   "description": "Your destructive blasts are locked to a single energy/damage type; you gain a bonus (energy) Destruction talent for that element in exchange.",
+   "name": "Energy Focus",
+   "sphere": "Destruction"
+  },
+  {
+   "description": "Your destructive blast can only be delivered as a melee touch attack; you gain a bonus Destruction talent in exchange.",
+   "name": "Destructive Touch",
+   "sphere": "Destruction"
+  },
+  {
+   "description": "Your destructive magic only fully harms creatures of a chosen alignment; you gain a bonus Destruction talent in exchange.",
+   "name": "Aligned Combatant",
+   "sphere": "Destruction"
+  },
+  {
+   "description": "You may use only a narrowed set of Divination senses/options (choose either sense or divine); you gain a bonus Divination talent in exchange.",
+   "name": "Limited Divination",
+   "sphere": "Divination"
+  },
+  {
+   "description": "Your Life sphere cannot remove the full range of conditions normally curable (choose either restore or cure/invigorate); you gain a bonus Life talent in exchange.",
+   "name": "Limited Restoration",
+   "sphere": "Life"
+  },
+  {
+   "description": "Your Life sphere abilities are reshaped toward a regeneration model or may only target yourself; you gain a bonus Life talent in exchange.",
+   "name": "Regenerate",
+   "sphere": "Life"
+  },
+  {
+   "description": "Your Mind magic is restricted to emotion-reading/empathic effects and cannot plant suggestions into a target's mind; you gain a bonus Mind talent in exchange.",
+   "name": "Empath",
+   "sphere": "Mind"
+  },
+  {
+   "description": "You may use only a narrowed set of wards (choose either ward or aegis); you gain a bonus Protection talent in exchange.",
+   "name": "Limited Protection",
+   "sphere": "Protection"
+  },
+  {
+   "description": "Your wards are most effective only against a chosen alignment or energy; you gain a bonus Protection talent in exchange.",
+   "name": "Aligned Protection",
+   "sphere": "Protection"
+  },
+  {
+   "description": "Your telekinesis is restricted to a narrowed set of objects/effects or a single material; you gain a bonus Telekinesis talent in exchange.",
+   "name": "Limited Telekinesis",
+   "sphere": "Telekinesis"
+  },
+  {
+   "description": "Your Time effects can only affect yourself; you gain a bonus Time talent in exchange.",
+   "name": "Personal Time",
+   "sphere": "Time"
+  },
+  {
+   "description": "Your teleportation is restricted to a narrowed category (e.g., a single material or only when a specific condition is met); you gain a bonus Warp talent in exchange.",
+   "name": "Limited Warp",
+   "sphere": "Warp"
+  },
+  {
+   "description": "You cannot teleport and may only bend space; you gain a bonus Warp talent in exchange.",
+   "name": "Bender",
+   "sphere": "Warp"
+  },
+  {
+   "description": "Your illusions can only be centered on or affect yourself; you gain a bonus Illusion talent in exchange.",
+   "name": "Personal Illusion",
+   "sphere": "Illusion"
+  },
+  {
+   "description": "You may only affect one weather category (a localized/single-category limit); you gain a bonus Weather talent in exchange.",
+   "name": "Focused Weather",
+   "sphere": "Weather"
+  }
+ ]
+}

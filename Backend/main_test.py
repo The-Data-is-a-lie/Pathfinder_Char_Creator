@@ -551,11 +551,18 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 	# end of pre export data manip
 
 		# Start of Extra feats list generation section
+		# Campaign feat-tax rule (homebrew_rules.md §4): Combat Expertise / Power Attack / Deadly Aim /
+		# Piranha Strike are FREE for anyone with BAB >= 1, so they're never spent as a chosen feat.
+		# Seeding them into chooseable BEFORE any feat selection makes every chooser skip them, while
+		# feats that list them as a prerequisite still qualify (no_prereq_loop treats chooseable as owned).
+		if getattr(character, 'bab_total', 0) >= 1:
+			add_feats_to_chooseable(character, FREE_AT_BAB1)
 		# Bloodline bonus feats (Sorcerer & Bloodrager): drawn from this bloodline's own list and
 		# labeled by granting class + level (e.g. "Sorcerer 7", "Bloodrager 6"); levels extend past 20.
 		# Non-bloodline classes -> empty schedule -> empty lists, so the export stays well-formed.
 		_bl_levels = bloodline_bonus_feat_levels(character.c_class, character.c_class_level)
 		bloodline_feats = bloodline_feat_chooser(character, character.c_class, character.bloodline, len(_bl_levels))
+		bloodline_feats = filter_free_feats(bloodline_feats)  # safety net (bonus lists may bypass chooseable)
 		bloodline_feat_labels = [f"{character.c_class.title()} {lvl}" for lvl in _bl_levels][:len(bloodline_feats)]
 		# If the bloodline list is too short to fill every granted slot (e.g. a high-level
 		# Bloodrager whose ~7-feat list runs out), reallocate the unfilled slots to normal feats
@@ -608,6 +615,28 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		style_feats = style_feats[:max(0, character.normal_feat_amount - 1 - len(mt_feats))]
 		style_feat_tax = {k: v for k, v in style_feat_tax.items() if k in style_feats}
 		character.feat_amounts -= len(mt_feats) + len(style_feats)
+
+	# ------------------- Spheres (Power / Might) section -------------------#
+		# Opt-in (spheres_flag): a normal NPC dabbles into 0-3 spheres, each rolled might-vs-power off
+		# caster level. Talents are FEAT-FUNDED -- Basic Magic Training / Extra Magic|Combat Talent feats
+		# are reserved out of the normal budget here (like Path of War's MT feats) and appended to the
+		# normal bucket below; sphere_feat_tax bundles the HR1 "Extra Talent > Extra Talent" duplicate.
+		character.spheres_flag = spheres_flag
+		randomize_spheres_num(character)
+		sphere_data          = choose_spheres_attr(character)
+		magic_talent_items   = sphere_data['magic_talent_items']
+		combat_talent_items  = sphere_data['combat_talent_items']
+		sphere_feats         = sphere_data['sphere_feats']
+		sphere_feat_tax      = sphere_data['sphere_feat_tax']
+		sphere_mana_pool     = sphere_data['sphere_mana_pool']
+		spheres_chosen       = sphere_data['spheres_chosen']
+		sphere_counts        = sphere_data['sphere_counts']
+		casting_tradition    = sphere_data['casting_tradition']
+		sphere_drawbacks     = sphere_data['sphere_drawbacks']
+		sphere_boons         = sphere_data['sphere_boons']
+		sphere_traits        = sphere_data['sphere_traits']
+		homebrew_feat_desc_dict.update(sphere_data['homebrew_feat_desc_dict'])
+		character.feat_amounts -= len(sphere_feats)
 
 		# Cached dataset without prerequisites -> allows them to take rage powers / rogue talents / etc. without normal feats ()
 		print("cached dataset without prereqs allows for feats to buy class specific talents ")
@@ -663,6 +692,14 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		_expected_feat_total = character.feat_amounts + len(ranger_style_feats) + len(monk_bonus_feats)
 		if len(character.feats) < _expected_feat_total:
 			character.feats.extend(topup_feat_chooser(character, casting_level_str, _expected_feat_total - len(character.feats)))
+
+		# Free combat feats (homebrew §4) are seeded into chooseable above so no chooser picks them;
+		# this is a belt-and-braces filter for class bonus-feat lists (ranger/monk) merged in that may
+		# have bypassed the pool.
+		character.feats = filter_free_feats(character.feats)
+		# Skill-choosing feats (Skill Focus / Prodigy) -> point them at the character's professions
+		# (highest rank first); their numeric bonus is recorded on the chosen profession.
+		specialize_skill_choice_feats(character, character.feats, skill_ranks)
 
 		# Teamwork feats selector
 		if character.teamwork_feats > 0:
@@ -755,6 +792,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# the free partners/followers. Style children register as owned so nothing re-picks them.
 		feats.extend(mt_feats)
 		feats.extend(style_feats)
+		feats.extend(sphere_feats)
 		add_feats_to_chooseable(character, story_feats, flaw_feats, flavor_feats, class_feats, feats)
 		add_feats_to_chooseable(character, [c for ch in style_feat_tax.values() for c in ch])
 
@@ -839,6 +877,11 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		for _style_children in style_feat_tax.values():
 			_tax_already_granted.update(str(c).lower() for c in _style_children)
 		feats_feat_tax_dict.update(style_feat_tax)
+		# Spheres Extra-Talent feats (HR1): one slot grants a free duplicate ("Extra Talent > Extra
+		# Talent"), bundling 2 talents. Hand-built (homebrew, not in feats.csv) -> merge like style chains.
+		for _sphere_children in sphere_feat_tax.values():
+			_tax_already_granted.update(str(c).lower() for c in _sphere_children)
+		feats_feat_tax_dict.update(sphere_feat_tax)
 
 		# Strip feats now bundled as a tax-child onto a primary so they don't ALSO render as their
 		# own standalone entry (children are granted cross-group via character.chooseable).
@@ -1044,6 +1087,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				maneuvers_known_list, maneuvers_readied_list,
 				maneuvers_choose_from, maneuvers_readied_names,
 				stances_chosen, mt_feats, initiation_stat,
+				magic_talent_items, combat_talent_items, sphere_feats, sphere_feat_tax,
+				sphere_mana_pool, spheres_chosen, sphere_counts, casting_tradition,
+				sphere_drawbacks, sphere_boons, sphere_traits,
 				deity_name, skill_ranks,
 				weapon_enhancement_chosen_list, armor_enhancement_chosen_list, 
 				shield_enhancement_chosen_list,
@@ -1100,6 +1146,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"maneuvers_known_list", "maneuvers_readied_list",
 				"maneuvers_choose_from", "maneuvers_readied_names",
 				"stances_chosen", "mt_feats", "initiation_stat",
+				"magic_talent_items", "combat_talent_items", "sphere_feats", "sphere_feat_tax",
+				"sphere_mana_pool", "spheres_chosen", "sphere_counts", "casting_tradition",
+				"sphere_drawbacks", "sphere_boons", "sphere_traits",
 				"deity_name", "skill_ranks",
 				"weapon_enhancement_chosen_list", "armor_enhancement_chosen_list", 
 				"shield_enhancement_chosen_list",

@@ -91,16 +91,36 @@ skill-replaces-attack) have no conditional — their pf1-pow item + description 
 ---
 
 ## 2. Spheres of Power / Spheres of Might
-**Current state (verified):** data exists under `Backend/json/class_data/spheres/`
-(`spheres_of_might.json`). **No chooser code, nothing exported.** Connects to
-[homebrew_rules.md §1](homebrew_rules.md) (proficiency rule: *one free weapon proficiency, or trade
-all base proficiencies for a Martial Tradition*) — that trade lives at
-`Backend/utils/class_func/armor_and_weapon_chooser.py` — and to the Spheres systems listed in §5.
+**Status: IMPLEMENTED (v1 — dabbling).** Chooser `Backend/utils/class_func/spheres.py`
+(`randomize_spheres_num` / `choose_spheres_attr`), wired into `Backend/main_test.py` after the Path of
+War block (feat-slot reservation) and exported as `magic_talent_items`, `combat_talent_items`,
+`sphere_feats`, `sphere_feat_tax`, `sphere_mana_pool`, `spheres_chosen`, `sphere_counts`,
+`casting_tradition`, `sphere_drawbacks`, `sphere_boons`, `sphere_traits`. Data is extracted from the
+FoundryVTT `pf1spheres` compendium by `Backend/scripts/extract_spheres_talents.py`
+(`spheres_of_power.json`, `spheres_of_might_enriched.json`, `sphere_feats.json`, `advanced_talents.json`,
+plus harvested `spheres_traditions.json`). Still connects to
+[homebrew_rules.md §1](homebrew_rules.md) (proficiency → Martial Tradition trade at
+`armor_and_weapon_chooser.py`) and the Spheres systems in §5.
 
-**Needs from you:** which characters get Spheres (casters → Spheres of Power talents; martials →
-Spheres of Might / Martial Traditions?); how many talents/spheres by level; and the export shape.
+**Spec as built (locked with the user):**
+- **Trigger:** opt-in `spheres_flag` (default off). Real spherecasting *classes* and Spheres of *Guile*
+  are out of scope.
+- **Who/how many:** a flagged normal NPC dabbles into **0–3 spheres**; per sphere, **Might vs Power**
+  by caster level (none→Might; low→50/50; mid/¾→Power 75%; high/full→Power 90%).
+- **Talents are feat-funded:** `Basic Magic Training` (magic entry: sphere + tradition + pool, 1 talent)
+  and `Extra Magic|Combat Talent` feats (each = 2 talents via the HR1 `Extra Talent > Extra Talent`
+  duplicate); reserved out of the normal feat budget like Path of War MT feats.
+- **§8 advanced gate (hard invariant):** per sphere, advanced/legendary allowed =
+  `(normal_talents + 2 × sphere_feats) // 7`, enforced at selection and re-asserted on the final list.
+- **Casting tradition + HR4 mana pool** built for magic dabblers (CAM = highest mental stat; drawbacks →
+  boons → bonus spell points on the triangular chart; pool = highest mental mod (min 1) + bonus SP).
+- **Export shape:** talents as `{name, sphere, system, type, description, changes, contextNotes, uses}`
+  item dicts (rendered like profession ability items); sphere feats join the feats section with the
+  `sphere_feat_tax` HR1 bundle.
 
-**Your spec:**
+**Deferred (v2):** real spherecasting base classes (front-end / everyClass), Spheres of Guile,
+mechanical `changes`/`uses` wiring on individual talents, and richer combat-legendary classification
+(`advanced_talents.json["might"]` is the editable registry).
 
 ---
 
