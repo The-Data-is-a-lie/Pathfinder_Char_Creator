@@ -287,16 +287,6 @@ def build_profession_ability_items(character):
             if assoc:
                 header += f" Associate skills (ranks 1/4/7/10): {assoc}."
             changes, notes, uses = _bundle(r5)
-            # Fold in any Skill Focus / Prodigy bonus that a feat pointed at this profession (recorded by
-            # feat_skill_choice.specialize_skill_choice_feats). Same-skill bonuses don't stack -> take the
-            # largest; target the Profession skill (pf1 can't target a single sub-profession).
-            sf = prof.get("skill_focus_bonuses") or []
-            if sf:
-                best = max(int(b.get("bonus", 0) or 0) for b in sf)
-                feats_txt = ", ".join(sorted({str(b.get("feat", "")) for b in sf if b.get("feat")}))
-                header += f" {feats_txt}: +{best} to Profession ({name})."
-                changes = changes + [{"formula": str(best), "target": "skill.pro",
-                                      "type": "untyped", "operator": "add", "priority": 0}]
             items.append({
                 "name": f"Profession Rank 5: ({name})",
                 "description": _entry_html(header, r5),
