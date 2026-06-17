@@ -19,6 +19,24 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Spheres of Power / Spheres of Might (dabbling).** A new opt-in input flag (`spheres_flag`, default
+  off) lets a **normal, non-spherecasting NPC** dabble into the Spheres ecosystem (Drop Dead Studios
+  3pp). A dabbler focuses on **0–3 spheres**; each sphere independently rolls **Spheres of Might vs
+  Spheres of Power** off the character's caster level — *no caster → Might; low → 50/50; ¾ → Power 75%;
+  full → Power 90%*. Talents are **feat-funded**: the `Basic Magic Training` feat opens the magic side
+  (sphere base + a casting tradition + a "mana" pool), and `Extra Magic Talent` / `Extra Combat Talent`
+  feats add talents — each **bundles a free duplicate** (house rule: one slot → two talents, rendered
+  `Extra Talent > Extra Talent`). Talents render in new **Magic-Talent** and **Combat-Talent** sections
+  (`magic_talent_items` / `combat_talent_items`), split by sphere and system. Taking any magic content
+  builds a **casting tradition** (casting ability mod + drawbacks → boons → bonus spell points) and a
+  **mana pool** = highest mental modifier (min 1) + tradition bonus points. The **advanced/legendary
+  talent gate is a hard invariant**: per sphere, advanced talents allowed = `(normal talents + 2 ×
+  sphere feats) // 7` — enforced during selection and re-asserted on the final list, so it can never be
+  exceeded. Magic-talent, combat-talent, and sphere-feat data are extracted from the FoundryVTT
+  `pf1spheres` compendium by `Backend/scripts/extract_spheres_talents.py`
+  (`spheres_of_power.json`, `spheres_of_might_enriched.json`, `sphere_feats.json`,
+  `advanced_talents.json`); the chooser lives at `Backend/utils/class_func/spheres.py`. Real
+  spherecasting base classes and Spheres of Guile are intentionally out of scope for now.
 - **Professions sub-system.** Every character now gets one or more themed professions (e.g. a smith
   tends toward a smithing vocation) modelled as `Profession (X)` skills with ranks. The rank pool
   follows the campaign heuristic `5 + level + 10 per profession feat` and is spread across as many
@@ -83,6 +101,19 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   description-only).
 
 ### Changed
+- **Feat selection: "free at BAB ≥ 1" combat feats are no longer spent.** Per the campaign feat-tax
+  rules (`docs/homebrew_rules.md §4`), **Combat Expertise, Power Attack, Deadly Aim, and Piranha
+  Strike** are free for anyone with BAB ≥ 1, so the generator never picks them as a chosen feat — they
+  are seeded into `character.chooseable` before feat selection (so every chooser skips them) while
+  feats that list them as a *prerequisite* still qualify (treated as owned). New
+  `Backend/utils/class_func/feat_skill_choice.py`.
+- **Skill-choosing feats now point at the character's professions.** Feats that require choosing a
+  skill (**Skill Focus**, **Prodigy**) target the character's professions, **highest-rank profession
+  first** (spreading across professions, then doubling up), e.g. `Skill Focus (Profession (Warlord))`.
+  Each one's numeric bonus (**+3/+6** for Skill Focus, **+2/+4** for Prodigy, improved at ≥ 10 ranks)
+  is applied to that profession — folded into its `Profession Rank 5: (X)` item as a `skill.pro`
+  change plus a `Skill Focus: +N to Profession (X)` line. Surplus picks fall back to the
+  highest-ranked (profession-relevant) regular skill.
 - **Dev server: disabled the Flask auto-reloader (`use_reloader=False` in `Backend/app.py`).** Under
   the project's `.venv` (which redirects to the base `C:\Python310` interpreter), Werkzeug's debug
   reloader spawned a runaway cascade of nested processes that fought over port 5001 and served stale

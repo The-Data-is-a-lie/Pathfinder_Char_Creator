@@ -40,6 +40,7 @@ from utils.class_func.language 						import language_chooser
 from utils.class_func.level_and_bab 				import randomize_level
 # from utils.class_func.luck_and_mythic 				import randomize_luck, randomize_mythic
 from utils.class_func.path_of_war 					import randomize_path_of_war_num, choose_path_of_war_attr
+from utils.class_func.spheres 						import randomize_spheres_num, choose_spheres_attr
 from utils.class_func.backstory 					import generate_backstory
 
 from utils.class_func.modded_char_sheet 			import modded_char_sheet_func
@@ -48,6 +49,7 @@ from utils.class_func.modded_char_sheet 			import modded_char_sheet_func
 from utils.class_func.personality 					import randomize_personality_attr
 from utils.class_func.profession_chooser 			import profession_chooser
 from utils.class_func.profession_abilities 			import build_profession_ability_items
+from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feats, specialize_skill_choice_feats
 from utils.class_func.trainers 						import select_trainer_feats, CALIBER_NAMES
 from utils.class_func.skill_unlocks 				import choose_skill_unlock
 # from utils.class_func.race_func 					import (race_ability_score_changes, race_ability_split, 
@@ -165,7 +167,7 @@ def strip_labeled_bucket(feat_list, label_list, children):
 # Make sure to add a flag for path of war feats later
 def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Orc', class_choice='wizard', chosen_BAB='low', chosen_caster_level = 'random', multi_class='N', 
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", modded_char_sheet = 'n', 
-						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", ):
+						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", spheres_flag="N", ):
 		
 		print(create_new_char)
 		print(userInput_region)
@@ -551,11 +553,18 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 	# end of pre export data manip
 
 		# Start of Extra feats list generation section
+		# Campaign feat-tax rule (homebrew_rules.md §4): Combat Expertise / Power Attack / Deadly Aim /
+		# Piranha Strike are FREE for anyone with BAB >= 1, so they're never spent as a chosen feat.
+		# Seeding them into chooseable BEFORE any feat selection makes every chooser skip them, while
+		# feats that list them as a prerequisite still qualify (no_prereq_loop treats chooseable as owned).
+		if getattr(character, 'bab_total', 0) >= 1:
+			add_feats_to_chooseable(character, FREE_AT_BAB1)
 		# Bloodline bonus feats (Sorcerer & Bloodrager): drawn from this bloodline's own list and
 		# labeled by granting class + level (e.g. "Sorcerer 7", "Bloodrager 6"); levels extend past 20.
 		# Non-bloodline classes -> empty schedule -> empty lists, so the export stays well-formed.
 		_bl_levels = bloodline_bonus_feat_levels(character.c_class, character.c_class_level)
 		bloodline_feats = bloodline_feat_chooser(character, character.c_class, character.bloodline, len(_bl_levels))
+		bloodline_feats = filter_free_feats(bloodline_feats)  # safety net (bonus lists may bypass chooseable)
 		bloodline_feat_labels = [f"{character.c_class.title()} {lvl}" for lvl in _bl_levels][:len(bloodline_feats)]
 		# If the bloodline list is too short to fill every granted slot (e.g. a high-level
 		# Bloodrager whose ~7-feat list runs out), reallocate the unfilled slots to normal feats
@@ -608,6 +617,28 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		style_feats = style_feats[:max(0, character.normal_feat_amount - 1 - len(mt_feats))]
 		style_feat_tax = {k: v for k, v in style_feat_tax.items() if k in style_feats}
 		character.feat_amounts -= len(mt_feats) + len(style_feats)
+
+	# ------------------- Spheres (Power / Might) section -------------------#
+		# Opt-in (spheres_flag): a normal NPC dabbles into 0-3 spheres, each rolled might-vs-power off
+		# caster level. Talents are FEAT-FUNDED -- Basic Magic Training / Extra Magic|Combat Talent feats
+		# are reserved out of the normal budget here (like Path of War's MT feats) and appended to the
+		# normal bucket below; sphere_feat_tax bundles the HR1 "Extra Talent > Extra Talent" duplicate.
+		character.spheres_flag = spheres_flag
+		randomize_spheres_num(character)
+		sphere_data          = choose_spheres_attr(character)
+		magic_talent_items   = sphere_data['magic_talent_items']
+		combat_talent_items  = sphere_data['combat_talent_items']
+		sphere_feats         = sphere_data['sphere_feats']
+		sphere_feat_tax      = sphere_data['sphere_feat_tax']
+		sphere_mana_pool     = sphere_data['sphere_mana_pool']
+		spheres_chosen       = sphere_data['spheres_chosen']
+		sphere_counts        = sphere_data['sphere_counts']
+		casting_tradition    = sphere_data['casting_tradition']
+		sphere_drawbacks     = sphere_data['sphere_drawbacks']
+		sphere_boons         = sphere_data['sphere_boons']
+		sphere_traits        = sphere_data['sphere_traits']
+		homebrew_feat_desc_dict.update(sphere_data['homebrew_feat_desc_dict'])
+		character.feat_amounts -= len(sphere_feats)
 
 		# Cached dataset without prerequisites -> allows them to take rage powers / rogue talents / etc. without normal feats ()
 		print("cached dataset without prereqs allows for feats to buy class specific talents ")
@@ -663,6 +694,14 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		_expected_feat_total = character.feat_amounts + len(ranger_style_feats) + len(monk_bonus_feats)
 		if len(character.feats) < _expected_feat_total:
 			character.feats.extend(topup_feat_chooser(character, casting_level_str, _expected_feat_total - len(character.feats)))
+
+		# Free combat feats (homebrew §4) are seeded into chooseable above so no chooser picks them;
+		# this is a belt-and-braces filter for class bonus-feat lists (ranger/monk) merged in that may
+		# have bypassed the pool.
+		character.feats = filter_free_feats(character.feats)
+		# Skill-choosing feats (Skill Focus / Prodigy) -> point them at the character's professions
+		# (highest rank first); their numeric bonus is recorded on the chosen profession.
+		specialize_skill_choice_feats(character, character.feats, skill_ranks)
 
 		# Teamwork feats selector
 		if character.teamwork_feats > 0:
@@ -755,8 +794,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# the free partners/followers. Style children register as owned so nothing re-picks them.
 		feats.extend(mt_feats)
 		feats.extend(style_feats)
+		feats.extend(sphere_feats)
 		add_feats_to_chooseable(character, story_feats, flaw_feats, flavor_feats, class_feats, feats)
 		add_feats_to_chooseable(character, [c for ch in style_feat_tax.values() for c in ch])
+		add_feats_to_chooseable(character, [c for ch in sphere_feat_tax.values() for c in ch])
 
 		# ------------------- Trainer & profession bonus feats (homebrew, additive) -------------------#
 		# Trainers teach feats grouped under "(Trainer N)" tags; profession feats are named homebrew
@@ -765,6 +806,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# AFTER the normal feats are in chooseable, so trainer picks never duplicate the main list.
 		trainer_feats, trainer_feat_labels, trainer_calibers = select_trainer_feats(character, casting_level_str)
 		add_feats_to_chooseable(character, trainer_feats)
+		# Trainers can also teach a skill-choosing feat -> specialize it to a profession too (in-place
+		# rename keeps trainer_feats / trainer_feat_labels aligned). Free feats are already excluded via
+		# the chooseable seeding above, so trainers never teach them.
+		specialize_skill_choice_feats(character, trainer_feats, skill_ranks)
 		profession_feats = list(getattr(character, 'profession_feats', []) or [])
 		profession_feat_desc = dict(getattr(character, 'profession_feat_desc', {}) or {})
 		profession_ranks = list(getattr(character, 'profession_data', []) or [])
@@ -839,6 +884,11 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		for _style_children in style_feat_tax.values():
 			_tax_already_granted.update(str(c).lower() for c in _style_children)
 		feats_feat_tax_dict.update(style_feat_tax)
+		# Spheres Extra-Talent feats (HR1): one slot grants a free duplicate ("Extra Talent > Extra
+		# Talent"), bundling 2 talents. Hand-built (homebrew, not in feats.csv) -> merge like style chains.
+		for _sphere_children in sphere_feat_tax.values():
+			_tax_already_granted.update(str(c).lower() for c in _sphere_children)
+		feats_feat_tax_dict.update(sphere_feat_tax)
 
 		# Strip feats now bundled as a tax-child onto a primary so they don't ALSO render as their
 		# own standalone entry (children are granted cross-group via character.chooseable).
@@ -1044,6 +1094,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				maneuvers_known_list, maneuvers_readied_list,
 				maneuvers_choose_from, maneuvers_readied_names,
 				stances_chosen, mt_feats, initiation_stat,
+				magic_talent_items, combat_talent_items, sphere_feats, sphere_feat_tax,
+				sphere_mana_pool, spheres_chosen, sphere_counts, casting_tradition,
+				sphere_drawbacks, sphere_boons, sphere_traits,
 				deity_name, skill_ranks,
 				weapon_enhancement_chosen_list, armor_enhancement_chosen_list, 
 				shield_enhancement_chosen_list,
@@ -1100,6 +1153,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"maneuvers_known_list", "maneuvers_readied_list",
 				"maneuvers_choose_from", "maneuvers_readied_names",
 				"stances_chosen", "mt_feats", "initiation_stat",
+				"magic_talent_items", "combat_talent_items", "sphere_feats", "sphere_feat_tax",
+				"sphere_mana_pool", "spheres_chosen", "sphere_counts", "casting_tradition",
+				"sphere_drawbacks", "sphere_boons", "sphere_traits",
 				"deity_name", "skill_ranks",
 				"weapon_enhancement_chosen_list", "armor_enhancement_chosen_list", 
 				"shield_enhancement_chosen_list",

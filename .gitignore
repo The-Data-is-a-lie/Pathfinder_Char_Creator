@@ -18,3 +18,10 @@ Lib/
 
 # ephemeral per-session goals (recreated each session)
 SESSION_PLAN.md
+
+# Spheres extractor scratch (unpacked pf1spheres packs) + ad-hoc verification scripts +
+# the harvest-workflow snapshot (transient input to merge_spheres_harvest.py)
+Backend/scripts/_spheres_scratch/
+Backend/scripts/_smoke_spheres.py
+Backend/scripts/_verify_spheres_integration.py
+Backend/scripts/_spheres_harvest_result.json
