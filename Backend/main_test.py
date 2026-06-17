@@ -1,4 +1,11 @@
 #Custom Made Imports
+# Load .env so direct CLI runs (python Backend/main_test.py) pick up OLLAMA_* like the Flask app does
+# (app.py / start_py.py already call load_dotenv()). Guarded so a missing python-dotenv never breaks the CLI.
+try:
+	from dotenv import load_dotenv
+	load_dotenv()
+except Exception:
+	pass
 from utils.createACharacter 						import CreateNewCharacter, Load_when_needed
 from utils 											import data
 from utils.data 									import version
