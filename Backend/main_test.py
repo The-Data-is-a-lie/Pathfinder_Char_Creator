@@ -47,7 +47,6 @@ from utils.class_func.language 						import language_chooser
 from utils.class_func.level_and_bab 				import randomize_level
 # from utils.class_func.luck_and_mythic 				import randomize_luck, randomize_mythic
 from utils.class_func.path_of_war 					import randomize_path_of_war_num, choose_path_of_war_attr
-from utils.class_func.spheres 						import randomize_spheres_num, choose_spheres_attr
 from utils.class_func.backstory 					import generate_backstory
 
 from utils.class_func.modded_char_sheet 			import modded_char_sheet_func
@@ -56,7 +55,6 @@ from utils.class_func.modded_char_sheet 			import modded_char_sheet_func
 from utils.class_func.personality 					import randomize_personality_attr
 from utils.class_func.profession_chooser 			import profession_chooser
 from utils.class_func.profession_abilities 			import build_profession_ability_items
-from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feats, specialize_skill_choice_feats
 from utils.class_func.trainers 						import select_trainer_feats, CALIBER_NAMES
 from utils.class_func.skill_unlocks 				import choose_skill_unlock
 # from utils.class_func.race_func 					import (race_ability_score_changes, race_ability_split, 
@@ -174,7 +172,7 @@ def strip_labeled_bucket(feat_list, label_list, children):
 # Make sure to add a flag for path of war feats later
 def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Orc', class_choice='wizard', chosen_BAB='low', chosen_caster_level = 'random', multi_class='N', 
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", modded_char_sheet = 'n', 
-						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", spheres_flag="N", ):
+						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", ):
 		
 		print(create_new_char)
 		print(userInput_region)
@@ -804,7 +802,6 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		feats.extend(sphere_feats)
 		add_feats_to_chooseable(character, story_feats, flaw_feats, flavor_feats, class_feats, feats)
 		add_feats_to_chooseable(character, [c for ch in style_feat_tax.values() for c in ch])
-		add_feats_to_chooseable(character, [c for ch in sphere_feat_tax.values() for c in ch])
 
 		# ------------------- Trainer & profession bonus feats (homebrew, additive) -------------------#
 		# Trainers teach feats grouped under "(Trainer N)" tags; profession feats are named homebrew
@@ -813,10 +810,6 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# AFTER the normal feats are in chooseable, so trainer picks never duplicate the main list.
 		trainer_feats, trainer_feat_labels, trainer_calibers = select_trainer_feats(character, casting_level_str)
 		add_feats_to_chooseable(character, trainer_feats)
-		# Trainers can also teach a skill-choosing feat -> specialize it to a profession too (in-place
-		# rename keeps trainer_feats / trainer_feat_labels aligned). Free feats are already excluded via
-		# the chooseable seeding above, so trainers never teach them.
-		specialize_skill_choice_feats(character, trainer_feats, skill_ranks)
 		profession_feats = list(getattr(character, 'profession_feats', []) or [])
 		profession_feat_desc = dict(getattr(character, 'profession_feat_desc', {}) or {})
 		profession_ranks = list(getattr(character, 'profession_data', []) or [])
