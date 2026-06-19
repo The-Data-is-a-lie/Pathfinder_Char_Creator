@@ -81,6 +81,15 @@ def norm(s):
     return _WS.sub(" ", s).strip()
 
 
+def match_norm(s):
+    """Allowlist key: like ``norm`` but ALSO drops a trailing ``(variant)`` and apostrophes -- mirrors
+    spheres.py ``_talent_match_norm`` and the FoundryVTT module's ``sphereNorm``."""
+    s = str(s).split(" (")[0]
+    s = re.sub(r"\s*\[[^\]]*\]\s*", " ", s.lower())
+    s = s.replace("'", "").replace("’", "").replace("`", "")
+    return re.sub(r"\s+", " ", s).strip()
+
+
 def camel_to_words(s):
     """``dualWielding`` -> ``dual wielding``; ``fallenFey`` -> ``fallen fey``; plain words pass through."""
     s = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", " ", str(s))
@@ -162,17 +171,25 @@ def collect_descriptor_refs(texts, word):
 # Main
 # --------------------------------------------------------------------------- #
 def main():
-    module_dir = os.environ.get("PF1SPHERES_PACKS", DEFAULT_MODULE)
-    print(f"pf1spheres module: {module_dir}")
-    json_out = unpack_packs(module_dir)
+    # Reuse the already-unpacked docs when PF1SPHERES_REUSE_SCRATCH is set (lets the data be rebuilt
+    # without Node/foundryvtt-cli, as long as a prior run left _spheres_scratch/json_out in place).
+    json_out = os.path.join(SCRATCH, "json_out")
+    if os.environ.get("PF1SPHERES_REUSE_SCRATCH") and os.path.isdir(json_out):
+        print(f"reusing existing unpack at {json_out} (PF1SPHERES_REUSE_SCRATCH set)")
+    else:
+        module_dir = os.environ.get("PF1SPHERES_PACKS", DEFAULT_MODULE)
+        print(f"pf1spheres module: {module_dir}")
+        json_out = unpack_packs(module_dir)
 
     # ---- magic talents -> spheres_of_power.json -------------------------- #
     magic_docs = load_docs(os.path.join(json_out, "magic-talents"))
     magic_text = {}   # norm name -> {sphere, name, prereq, benefit}
+    power_names = set()   # match-normalized compendium magic-talent names (-> compendium_talent_names.json)
     for d in magic_docs:
         name = d.get("name", "")
         if name.lower().startswith("advanced "):    # per-sphere header docs, not talents
             continue
+        power_names.add(match_norm(name))
         sphere = camel_to_words(d.get("flags", {}).get("pf1spheres", {}).get("sphere") or "")
         body = html_to_text(d.get("system", {}).get("description", {}).get("value", ""))
         prereq, benefit = split_prereq_and_benefit(body)
@@ -191,45 +208,35 @@ def main():
         if is_adv:
             power_adv[v["sphere"]].append(v["name"])
 
-    # ---- combat talents: build legendary set + description lookup -------- #
+    # ---- combat talents -> spheres_of_might_enriched.json (compendium-sourced, like magic) -------- #
+    # Build directly from the pf1spheres combat-talents compendium. (The old path enriched a wiki
+    # scrape, which was incomplete + name-mismatched and leaked non-talent "Optional Rule"/
+    # "Variant Rule" sidebars into the pool; sourcing from the compendium gives the complete, clean set.)
     combat_docs = load_docs(os.path.join(json_out, "combat-talents"))
-    combat_desc = {}   # norm name -> (sphere, clean description)
+    combat_text = {}   # norm name -> {sphere, name, prereq, benefit}
+    might_names = set()   # match-normalized compendium combat-talent names (-> compendium_talent_names.json)
     for d in combat_docs:
         name = d.get("name", "")
-        if name.lower().startswith("legendary "):
+        if name.lower().startswith("legendary "):    # per-sphere header docs, not talents
             continue
+        might_names.add(match_norm(name))
         sphere = camel_to_words(d.get("flags", {}).get("pf1spheres", {}).get("sphere") or "")
-        combat_desc[norm(name)] = (sphere, html_to_text(d.get("system", {}).get("description", {}).get("value", "")))
+        body = html_to_text(d.get("system", {}).get("description", {}).get("value", ""))
+        prereq, benefit = split_prereq_and_benefit(body)
+        combat_text[norm(name)] = {"sphere": sphere, "name": name, "prereq": prereq, "benefit": benefit}
 
-    # ---- enrich scraped spheres_of_might.json --------------------------- #
-    with open(SCRAPED_MIGHT, encoding="utf-8") as fh:
-        scraped = json.load(fh)
-    legend_refs = collect_descriptor_refs(
-        [t for _, t in combat_desc.values()]
-        + [str(info.get("benefit", "")) for talents in scraped.values() for info in talents.values()],
-        "legendary",
-    )
-    might = {}
+    leg_refs = collect_descriptor_refs([v["prereq"] + " " + v["benefit"] for v in combat_text.values()],
+                                       "legendary")
+    might = defaultdict(dict)
     might_adv = defaultdict(list)
-    matched = unmatched = 0
-    for sphere, talents in scraped.items():
-        might[sphere] = {}
-        for name, info in talents.items():
-            key = norm(name)
-            sphere_desc = combat_desc.get(key)
-            description = sphere_desc[1] if sphere_desc else str(info.get("benefit", ""))
-            matched += 1 if sphere_desc else 0
-            unmatched += 0 if sphere_desc else 1
-            is_leg = key in legend_refs or re.search(r"\blegendary talent\b", str(info.get("benefit", "")), re.I) is not None
-            t = "advanced" if is_leg else "base"
-            might[sphere][name] = {
-                "prerequisites": info.get("prerequisites", ""),
-                "benefit": info.get("benefit", ""),
-                "description": description,
-                "type": t,
-            }
-            if is_leg:
-                might_adv[sphere].append(name)
+    for key, v in combat_text.items():
+        is_leg = key in leg_refs
+        t = "advanced" if is_leg else "base"
+        might[v["sphere"]][v["name"].lower()] = {
+            "prerequisites": v["prereq"], "benefit": v["benefit"], "description": v["benefit"], "type": t,
+        }
+        if is_leg:
+            might_adv[v["sphere"]].append(v["name"])
 
     # ---- sphere feats -> sphere_feats.json ------------------------------ #
     feat_docs = load_docs(os.path.join(json_out, "sphere-feats"))
@@ -251,19 +258,23 @@ def main():
             json.dump(obj, fh, ensure_ascii=False, indent=1, sort_keys=True)
 
     dump("spheres_of_power.json", {k: power[k] for k in sorted(power)})
-    dump("spheres_of_might_enriched.json", might)
+    dump("spheres_of_might_enriched.json", {k: might[k] for k in sorted(might)})
     dump("sphere_feats.json", sphere_feats)
     dump("advanced_talents.json", {
         "power": {k: sorted(power_adv[k]) for k in sorted(power_adv)},
         "might": {k: sorted(might_adv[k]) for k in sorted(might_adv)},
     })
+    # Authoritative allowlist of real compendium talent names -- the generator filters its (wiki-scraped)
+    # talent pool against this so non-talents (optional/variant-rule sidebars, archetype listings) never
+    # get picked. See spheres.py _compendium_allow / _sphere_dataset.
+    dump("compendium_talent_names.json", {"power": sorted(power_names), "might": sorted(might_names)})
 
     n_power_adv = sum(len(v) for v in power_adv.values())
     n_might_adv = sum(len(v) for v in might_adv.values())
     print(f"\nspheres_of_power.json:        {sum(len(v) for v in power.values())} talents, "
           f"{len(power)} spheres, {n_power_adv} advanced")
     print(f"spheres_of_might_enriched.json: {sum(len(v) for v in might.values())} talents, "
-          f"{len(might)} spheres, {n_might_adv} legendary  (Foundry desc matched {matched}, unmatched {unmatched})")
+          f"{len(might)} spheres, {n_might_adv} legendary (compendium-sourced)")
     print(f"sphere_feats.json:            {len(sphere_feats)} feats")
     print(f"advanced_talents.json:        registry written (edit to add any missed legendary talents)")
 

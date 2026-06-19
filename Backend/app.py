@@ -1,3 +1,13 @@
+# Anchor the CWD to the repo root so root-relative data paths (Backend/json/*, data/*.csv) resolve
+# regardless of where the server is launched from (e.g. `python app.py` from inside Backend/). Pin the
+# absolute Backend dir on sys.path first so sibling imports (start_py/main_test/utils) still resolve
+# after the chdir relativizes any "" entry. Must run before importing main_test. No-op on Render.
+import os, sys
+_BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
+if _BACKEND_DIR not in sys.path:
+    sys.path.insert(0, _BACKEND_DIR)
+os.chdir(os.path.dirname(_BACKEND_DIR))
+
 # External imports
 from flask import Flask, render_template, request, jsonify, session, abort
 from flask_cors import CORS
@@ -11,7 +21,7 @@ import os
 
 # Custom function imports
 from start_py import create_app
-from main_test import generate_random_char
+from main_test import generate_random_char, GENERATOR_VERSION
 
 # Load environment variables
 load_dotenv()
@@ -70,7 +80,7 @@ CORS(app,
 def index():
     return render_template('index.html')
 
-def process_input_values(input_values):
+def process_input_values(input_values, spheres_flag="N"):
     try:
         if len(input_values) < 19:
             raise IndexError("Not enough elements in input_values")
@@ -93,7 +103,7 @@ def process_input_values(input_values):
         # Unpack input_values
         create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num = input_values
         session['character_data'] = generate_random_char(
-        create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num, use_backstory_api
+        create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num, use_backstory_api, spheres_flag
         )
         return session['character_data']
 
@@ -108,6 +118,9 @@ def process_input_values(input_values):
 @limiter.limit("60 per minute")
 def update_character_data():
     data = request.json
+    # Spheres opt-in is read by NAME (not positionally) and removed so the fixed 19-field positional
+    # unpack below stays aligned regardless of where the client puts it / whether older clients send it.
+    spheres_flag = (data.pop('spheres_of_power', 'n') or 'n')
     non_input_data = []
     # Calculate last 5 keys dynamically
     items = list(data.items())
@@ -123,7 +136,7 @@ def update_character_data():
             value = value.strip()
         non_input_data.append(value)
 
-    results = process_input_values(non_input_data)
+    results = process_input_values(non_input_data, spheres_flag)
     session['character_data'] = results
 
     # Print raw data to terminal for debugging
@@ -131,6 +144,11 @@ def update_character_data():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5001))
+    # Loud freshness banner: if a regenerated character looks stale, confirm this line shows the latest
+    # GENERATOR_VERSION -- if not, THIS process wasn't restarted after the code change.
+    print("=" * 80)
+    print(f"  Pathfinder character generator backend  |  generator {GENERATOR_VERSION}  |  port {port}")
+    print("=" * 80)
     # use_reloader=False: the project's .venv redirects to the base C:\Python310 interpreter, which
     # makes Werkzeug's debug auto-reloader spawn a runaway cascade of nested processes that fight over
     # the port and serve stale code. Keep the debugger, drop the reloader; restart manually after edits.

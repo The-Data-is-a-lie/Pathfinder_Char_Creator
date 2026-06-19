@@ -4,8 +4,8 @@ Each profession a character carries is worth more than a skill rank: it unlocks 
 campaign's design, a profession's power **tier** is fixed by the prestige of its name (Pope/Royal →
 top, Bishop/Cardinal/Inquisitor → high, Knight/Guard/Soldier & skilled smiths → good, most artisans
 and performers → average, Acolyte/Nun → bad, Custodian/Pool-cleaner → garbage), and its **theme**
-(martial / ki / divine / arcane / alchemy / skill / craft / scholar / nature / medical / menial) is
-read from the same name. The strongest professions are meant to *supercharge the character's actual
+(martial / ki / divine / arcane / alchemy / skill / craft / scholar / nature / medical / menial /
+performance / trade / service) is read from the same name. The strongest professions are meant to *supercharge the character's actual
 build*, so for **high/top tier** professions we swap in the character's class theme when one is known.
 
 Within a profession, the **rank-5** entry grants a *weaker* band of abilities and the **rank-15**
@@ -29,6 +29,11 @@ import random
 # skill_unlocks.py.
 _JSON_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "json", "profession_abilities.json")
 _LIBRARY = None
+# Curated professions tagged with an explicit (genre, tier) -- consulted BEFORE the keyword heuristics
+# so new/epic/low-tier names classify deterministically into the cell they were authored for.
+_CATALOG_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "json", "profession_catalog.json")
+_EXPLICIT = None
+_CATALOG_NAMES = None
 
 _TIER_INDEX = {"garbage": 0, "bad": 1, "average": 2, "good": 3, "high": 4, "top": 5}
 
@@ -72,11 +77,27 @@ _THEME_RULES = [
                  "chronicler", "curator", "writer", "playwright", "clerk", "accountant", "bookkeep",
                  "barrister", "map maker", "bookseller", "book seller", "diplomat", "courtier",
                  "herald", "burgomaster", "mayor", "bailiff"]),
-    ("skill", ["bard", "minstrel", "troubadour", "jester", "actor", "dancer", "acrobat", "tumbler",
-               "fire-eater", "juggler", "clown", "performer", "contortionist", "tightrope",
-               "knife thrower", "noble", "merchant", "trader", "banker", "moneylender", "spy",
-               "thief", "burglar", "smuggler", "fool", "piper", "circus", "street performer",
-               "prostitute", "urchin", "wanderer", "innkeeper", "barkeep", "alewife", "grocer"]),
+    ("performance", ["bard", "bardess", "minstrel", "troubadour", "balladeer", "gleeman", "skald",
+                     "jester", "fool", "clown", "harlequin", "mummer", "actor", "actress", "mime",
+                     "dancer", "acrobat", "tumbler", "contortionist", "tightrope", "fire-eater",
+                     "fire eater", "juggler", "knife thrower", "singer", "vocalist", "musician",
+                     "fiddler", "drummer", "lutenist", "harpist", "piper", "flautist", "storyteller",
+                     "poet", "entertainer", "performer", "circus", "street performer", "courtesan",
+                     "geisha"]),
+    ("trade", ["merchant", "monger", "vendor", "peddler", "pedlar", "trader", "shopkeep",
+               "shop keeper", "grocer", "pawnbroker", "auctioneer", "broker", "draper", "importer",
+               "exporter", "costermonger", "chapman", "banker", "moneylender", "money lender",
+               "moneychanger", "money changer", "haberdasher", "tradesman", "tradeswoman",
+               "saleswoman", "salesman", "caravan master", "caravaneer", "trafficker", "usurer",
+               "financier"]),
+    ("service", ["innkeep", "inn-keep", "inn keep", "tavern", "taverner", "cook", "chef", "baker",
+                 "bakery", "brewer", "brewster", "brewmaster", "butcher", "victualer", "victualler",
+                 "vintner", "barkeep", "bartender", "publican", "caterer", "confectioner",
+                 "chocolatier", "miller", "alewife", "steward", "cellarer", "innholder"]),
+    ("skill", ["noble", "spy", "thief", "burglar", "smuggler", "prostitute", "wanderer", "urchin",
+               "cutpurse", "pickpocket", "footpad", "fence", "con artist", "con-artist", "swindler",
+               "grifter", "gambler", "cardsharp", "card sharp", "forger", "counterfeiter", "rogue",
+               "scoundrel", "rake", "charlatan", "mountebank", "informant", "blackmailer"]),
 ]
 
 # Tier classification. Ordered top -> garbage; the FIRST matching rule wins. Single-word keywords are
@@ -134,8 +155,36 @@ def _load_library():
     return _LIBRARY
 
 
+def _load_catalog():
+    """Curated professions -> {name_lower: (genre, tier)}. Authored explicitly in
+    profession_catalog.json so new/epic/low-tier names classify deterministically (no keyword guessing).
+    Missing/invalid file -> empty dict (legacy keyword rules handle everything)."""
+    global _EXPLICIT, _CATALOG_NAMES
+    if _EXPLICIT is None:
+        _EXPLICIT, _CATALOG_NAMES = {}, []
+        try:
+            with open(_CATALOG_PATH, "r", encoding="utf-8") as fh:
+                for entry in json.load(fh):
+                    nm = str(entry.get("name", "")).strip()
+                    if nm:
+                        _EXPLICIT[nm.lower()] = (entry.get("genre", "craft"), entry.get("tier", "average"))
+                        _CATALOG_NAMES.append(nm)
+        except (OSError, ValueError):
+            _EXPLICIT, _CATALOG_NAMES = {}, []
+    return _EXPLICIT
+
+
+def catalog_professions():
+    """Display-case names of the curated catalog professions, for the generation pool."""
+    _load_catalog()
+    return list(_CATALOG_NAMES or [])
+
+
 def _theme_for(name):
     n = str(name).strip().lower()
+    explicit = _load_catalog().get(n)
+    if explicit:
+        return explicit[0]
     for theme, keywords in _THEME_RULES:
         if any(kw in n for kw in keywords):
             return theme
@@ -144,6 +193,9 @@ def _theme_for(name):
 
 def _tier_for(name):
     n = str(name).strip().lower()
+    explicit = _load_catalog().get(n)
+    if explicit:
+        return explicit[1]
     words = set(n.replace("(", " ").replace(")", " ").replace("-", " ").split())
     for tier, keywords in _TIER_RULES:
         for kw in keywords:

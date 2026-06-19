@@ -1,4 +1,13 @@
 #Custom Made Imports
+import os, sys
+# Anchor the CWD to the repo root so root-relative data paths (Backend/json/*, data/*.csv) resolve no
+# matter where the process is launched from. VS Code runs from the repo root; `python main_test.py` from
+# inside Backend/ would otherwise resolve "Backend/json/..." to "Backend/Backend/json/...". Pin the
+# absolute Backend dir on sys.path first so utils.* imports survive the chdir. No-op on Render.
+_BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
+if _BACKEND_DIR not in sys.path:
+	sys.path.insert(0, _BACKEND_DIR)
+os.chdir(os.path.dirname(_BACKEND_DIR))
 # Load .env so direct CLI runs (python Backend/main_test.py) pick up OLLAMA_* like the Flask app does
 # (app.py / start_py.py already call load_dotenv()). Guarded so a missing python-dotenv never breaks the CLI.
 try:
@@ -13,6 +22,12 @@ from utils.util 									import  (chooseClass, region_chooser, race_chooser,  na
 										  					dip_function, gender_chooser) 
 import random
 import json
+
+# Bump on every generator-logic change. Printed at startup (app.py) + in the per-generation log, and
+# stamped onto each result (data_dict['generator_version']) so a running backend's freshness is verifiable
+# at a glance: a restart shows the new version, and any exported actor reveals which build produced it
+# (the recurring "I restarted but it's still wrong" was a stale backend serving old code).
+GENERATOR_VERSION = "2026-06-18 feat-count-guarantee"
 
 
 # Importing custom functions
@@ -36,6 +51,8 @@ from utils.class_func.feats 						import (build_selector, chooseable_list, choos
                                                             capitalize_feats, dedupe_feats_case_insensitive, topup_feat_chooser)
 from utils.class_func.feats_to_chooseable 			import add_feats_to_chooseable
 from utils.class_func.feat_tax 						import feat_tax_func, feat_spell_searcher
+from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feats, specialize_skill_choice_feats
+from utils.class_func.spheres 						import randomize_spheres_num, choose_spheres_attr, add_overflow_talents, MAX_EXTRA_TALENT_FEATS, mentor_sphere_summary
 from utils.class_func.flag_assign 					import human_flag_assigner, druidic_flag_assigner
 from utils.class_func.generic_func 					import generic_class_option_chooser, get_data_without_prerequisites, no_prereq_prep#, no_prereq_loop, chosen_set_append
 from utils.class_func.grand_discovery 				import grand_discovery_chooser
@@ -46,7 +63,7 @@ from utils.class_func.item_and_price 				import item_chooser
 from utils.class_func.language 						import language_chooser
 from utils.class_func.level_and_bab 				import randomize_level
 # from utils.class_func.luck_and_mythic 				import randomize_luck, randomize_mythic
-from utils.class_func.path_of_war 					import randomize_path_of_war_num, choose_path_of_war_attr
+from utils.class_func.path_of_war 					import randomize_path_of_war_num, choose_path_of_war_attr, martial_training_depth
 from utils.class_func.backstory 					import generate_backstory
 
 from utils.class_func.modded_char_sheet 			import modded_char_sheet_func
@@ -55,7 +72,7 @@ from utils.class_func.modded_char_sheet 			import modded_char_sheet_func
 from utils.class_func.personality 					import randomize_personality_attr
 from utils.class_func.profession_chooser 			import profession_chooser
 from utils.class_func.profession_abilities 			import build_profession_ability_items
-from utils.class_func.trainers 						import select_trainer_feats, CALIBER_NAMES
+from utils.class_func.trainers 						import select_trainer_feats, CALIBER_NAMES, roll_caliber
 from utils.class_func.skill_unlocks 				import choose_skill_unlock
 # from utils.class_func.race_func 					import (race_ability_score_changes, race_ability_split, 
 #                                                      		race_traits_chooser, subrace_chooser)#, full_race_data
@@ -172,7 +189,7 @@ def strip_labeled_bucket(feat_list, label_list, children):
 # Make sure to add a flag for path of war feats later
 def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Orc', class_choice='wizard', chosen_BAB='low', chosen_caster_level = 'random', multi_class='N', 
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", modded_char_sheet = 'n', 
-						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", ):
+						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", spheres_flag="N", ):
 		
 		print(create_new_char)
 		print(userInput_region)
@@ -597,8 +614,59 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# own class tables; everyone else may roll "martial paths" (house rule: BAB L 0-1,
 		# M/H 0-2, +1 to both bounds at level 20+) accessed via the Martial Training feat chain
 		# taken as deep as bab_total allows (I/III/V paid; II/IV/VI free via feat tax).
+		# ----- PoW + Spheres selection guarantee (house rule) -----
+		# Roll both systems' COUNTS uncapped, then guarantee delivery with feat-budget PRIORITY over
+		# normal feats. 75% "lean": realize ceil(half) of the desired homebrew feats. 25%
+		# "trainer-backed": realize >= half, with 2 dedicated trainers funding the rest off-budget
+		# (their caliber rolls) and any surplus capacity becoming bonus sphere talents.
 		randomize_path_of_war_num(character)
-		pow_data = choose_path_of_war_attr(character)
+		character.spheres_flag = spheres_flag
+		randomize_spheres_num(character)
+		_is_initiator = character.c_class in data.path_of_war_class
+		_sc = int(getattr(character, 'sphere_count', 0) or 0)
+		desired_sphere = (_sc + random.randint(0, MAX_EXTRA_TALENT_FEATS)) if _sc > 0 else 0
+		_mt_depth = martial_training_depth(character)
+		_paid_per_chain = (_mt_depth // 2) if _mt_depth else 0
+		_paths = int(getattr(character, 'path_of_war_paths', 0) or 0)
+		desired_pow = (_paths * _paid_per_chain) if (not _is_initiator and _mt_depth and _paths) else 0
+		if _is_initiator:
+			pow_data = choose_path_of_war_attr(character)        # maneuvers/stances free from the class
+			desired_style = len(pow_data.get('style_feats', []))
+		else:
+			pow_data = None
+			desired_style = 0
+		selected_amount = desired_pow + desired_style + desired_sphere
+		dedicated_trainer_calibers, _overflow_n, _priority_reserve = [], 0, 0
+		realize_pow, realize_style, realize_sphere = desired_pow, desired_style, desired_sphere
+		if selected_amount > 0:
+			_half = (selected_amount + 1) // 2          # ceil(selected_amount / 2)
+			if random.random() < 0.25:
+				dedicated_trainer_calibers = [roll_caliber(), roll_caliber()]
+				_capacity = sum(dedicated_trainer_calibers)
+				_rest = selected_amount - _half
+				realize_total = _half + min(_capacity, _rest)
+				_overflow_n = max(0, _capacity - _rest)     # trainer capacity beyond the rest -> talents
+			else:
+				realize_total = _half
+			_priority_reserve = min(_half, realize_total)   # the budget-funded portion (rest is off-budget)
+			if realize_total < selected_amount:
+				_dpow = desired_pow + desired_style
+				_rpow = max(0, min(round(realize_total * _dpow / selected_amount), _dpow))
+				realize_sphere = max(0, min(realize_total - _rpow, desired_sphere))
+				# Don't let the proportional split zero out a system that WAS selected: keep each
+				# present system its minimum unit (1 sphere feat / one whole PoW chain or style feat)
+				# when the realized budget can still cover it.
+				if desired_sphere > 0 and realize_sphere == 0 and realize_total >= 1:
+					realize_sphere = 1
+				_rpow = max(0, min(realize_total - realize_sphere, _dpow))
+				_pow_min = _paid_per_chain if (not _is_initiator and desired_pow > 0) else (1 if (_is_initiator and desired_style > 0) else 0)
+				if _pow_min and _rpow < _pow_min and (realize_total - realize_sphere) >= _pow_min:
+					_rpow = _pow_min
+					realize_sphere = max(0, min(realize_total - _rpow, desired_sphere))
+				realize_style, realize_pow = (_rpow, 0) if _is_initiator else (0, _rpow)
+		if not _is_initiator:
+			pow_data = choose_path_of_war_attr(
+				character, max_chains=((realize_pow // _paid_per_chain) if _paid_per_chain else 0))
 		martial_disciplines     = pow_data['martial_disciplines']
 		initiator_level         = pow_data['initiator_level']
 		maneuvers_known_list    = pow_data['maneuvers_known_list']
@@ -613,24 +681,17 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		style_feats             = pow_data['style_feats']
 		style_feat_tax          = pow_data['style_feat_tax']
 		homebrew_feat_desc_dict = pow_data['homebrew_feat_desc_dict']
-		# Paid Martial Training picks and style-chain base feats consume normal feat slots
-		# ("3 feats for all 6" / one paid feat per style chain): reserve them out of the ask
-		# before the chooser runs; the feats themselves are appended to the normal bucket after
-		# separation. mt_feats is already budget-capped to WHOLE chains inside
-		# _build_martial_training (each chain costs its paid feats), so only the initiator style
-		# bases still need the starvation clamp here (the branches are mutually exclusive).
-		style_feats = style_feats[:max(0, character.normal_feat_amount - 1 - len(mt_feats))]
+		# Cap initiator style chains to the realized amount decided by the guarantee block above
+		# (PoW maneuvers are class-free; only the feat-funded style bases are scaled). Non-initiators
+		# have no style feats. The feat-budget reservation now happens after the Spheres section.
+		style_feats = style_feats[:realize_style]
 		style_feat_tax = {k: v for k, v in style_feat_tax.items() if k in style_feats}
-		character.feat_amounts -= len(mt_feats) + len(style_feats)
 
 	# ------------------- Spheres (Power / Might) section -------------------#
-		# Opt-in (spheres_flag): a normal NPC dabbles into 0-3 spheres, each rolled might-vs-power off
-		# caster level. Talents are FEAT-FUNDED -- Basic Magic Training / Extra Magic|Combat Talent feats
-		# are reserved out of the normal budget here (like Path of War's MT feats) and appended to the
-		# normal bucket below; sphere_feat_tax bundles the HR1 "Extra Talent > Extra Talent" duplicate.
-		character.spheres_flag = spheres_flag
-		randomize_spheres_num(character)
-		sphere_data          = choose_spheres_attr(character)
+		# Build the spheres: flat-8 talents + a feat slot per BUDGET-PAID talent (Extra Talent feats,
+		# 2 talents each, HR1). trainer_backed (25% branch) -> only ~half the talents are budget-paid
+		# (the rest ride the Spheres Mentor trainers below); lean chars pay for all their talents.
+		sphere_data          = choose_spheres_attr(character, trainer_backed=bool(dedicated_trainer_calibers))
 		magic_talent_items   = sphere_data['magic_talent_items']
 		combat_talent_items  = sphere_data['combat_talent_items']
 		sphere_feats         = sphere_data['sphere_feats']
@@ -643,7 +704,54 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		sphere_boons         = sphere_data['sphere_boons']
 		sphere_traits        = sphere_data['sphere_traits']
 		homebrew_feat_desc_dict.update(sphere_data['homebrew_feat_desc_dict'])
-		character.feat_amounts -= len(sphere_feats)
+		# 25% "trainer-backed" branch: surplus trainer capacity -> bonus sphere talents, and up to 2
+		# dedicated mentors (rendered in the Trainers block). Only the Spheres Mentor NAMES genuinely
+		# off-budget homebrew it funded (talents beyond the character's own budget); Path of War feats are
+		# real feats on the sheet and always budget-paid, so they get no mentor (it would only re-list
+		# feats already bought with the normal/class feat budget).
+		dedicated_trainer_specs = []
+		if dedicated_trainer_calibers:
+			_overflow_talent_items = []
+			if _overflow_n > 0 and sphere_data.get('_chosen'):
+				_ov_magic, _ov_combat = add_overflow_talents(
+					character, sphere_data['_chosen'], sphere_data['_counts'], _overflow_n)
+				magic_talent_items = magic_talent_items + _ov_magic
+				combat_talent_items = combat_talent_items + _ov_combat
+				_overflow_talent_items = _ov_magic + _ov_combat
+			_mentors = []
+			# No "Path of War Mentor": a non-initiator's Martial Training feats and an initiator's style
+			# feats MUST be real feats on the sheet (they grant the maneuvers), so they're always
+			# budget-paid and appear in the normal/class Feats list. A PoW mentor would only re-list those
+			# already-bought feats -- duplicate, misleading "funding" -- so PoW gets no mentor. (Unlike
+			# Spheres, whose talents can be granted off-budget; see the Spheres Mentor just below.)
+			# Off-budget talents the mentor funded (non-budget-paid flat-8 + overflow) -> HR1
+			# Extra-Talent feats + the talent names (user's requested format). Only emit a Spheres Mentor
+			# when it actually funded something off-budget; otherwise there is nothing for it to teach.
+			_mentor_talents = list(sphere_data.get('mentor_funded_talents', [])) + _overflow_talent_items
+			if _mentor_talents:
+				_mentors.append(("Spheres Mentor", mentor_sphere_summary(spheres_chosen, _mentor_talents)))
+			# Never pad to a fixed count and never add a content-free fallback mentor: a dedicated trainer
+			# that funded nothing would render as a blank "(Continued Study)" / generic slot. Emit only the
+			# mentors that have real off-budget content (0 or 1 here now that PoW gets no mentor).
+			dedicated_trainer_specs = list(_mentors)
+		# Priority funding (reserve EXACTLY the homebrew feats that get appended into the normal feat
+		# list, so each one REPLACES a normal feat -- the "consume feat budget" house rule -- and the
+		# track lands at precisely normal_feat_amount). Those appended feats are: paid Martial Training
+		# picks (mt_feats) + initiator style-chain bases (style_feats), both extended into `feats` just
+		# below, and the budget-paid sphere Extra-Talent / magic bonus feats (sphere_feats) appended
+		# after the feat-tax pass. The previous formula reserved a proportional roll-estimate
+		# (_priority_reserve + max(0, sphere_feat_budget_count - realize_sphere)) that drifted off this
+		# true count: over-reserving silently dropped the top "(Feat N)" slots (the "missing feats"
+		# bug), under-reserving spilled feats past the character's top level. trainer-backed/mentor
+		# funding is already off-budget (those feats are not in these three lists), so it needs no term.
+		_prof_feat_n = len(getattr(character, 'profession_feats', []) or [])
+		character.feat_amounts = max(0, character.feat_amounts - len(mt_feats) - len(style_feats) - len(sphere_feats) - _prof_feat_n)
+		# Profession feats (True Calling / Multi Talented / Always Improving) are appended into the feat
+		# list AFTER the feat-count guarantee, so -- unlike the homebrew feats above -- they can't be
+		# trimmed to fit. Reserve their slots by ALSO lowering the guarantee target (normal_feat_amount):
+		# each profession feat then REPLACES a normal feat (the "feat cost" house rule), or, when the
+		# budget is too small, takes over the track and clamps the normal feats down to 0.
+		character.normal_feat_amount = max(0, character.normal_feat_amount - _prof_feat_n)
 
 		# Cached dataset without prerequisites -> allows them to take rage powers / rogue talents / etc. without normal feats ()
 		print("cached dataset without prereqs allows for feats to buy class specific talents ")
@@ -799,8 +907,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# the free partners/followers. Style children register as owned so nothing re-picks them.
 		feats.extend(mt_feats)
 		feats.extend(style_feats)
-		feats.extend(sphere_feats)
+		# NOTE: sphere_feats are appended AFTER the feat-tax pass (below), not here -- they share a base
+		# name ("Extra Combat Talent") that feat_tax_func would wrongly chain/strip together.
 		add_feats_to_chooseable(character, story_feats, flaw_feats, flavor_feats, class_feats, feats)
+		add_feats_to_chooseable(character, sphere_feats)
 		add_feats_to_chooseable(character, [c for ch in style_feat_tax.values() for c in ch])
 
 		# ------------------- Trainer & profession bonus feats (homebrew, additive) -------------------#
@@ -856,19 +966,22 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# Trainer feats are feat-taxed too (a trainer who teaches a base feat also imparts its chain),
 		# treated as learned early in the career ([1]*) like flaw/flavor feats.
 		trainer_feat_tax_dict = feat_tax_func(character, trainer_feats, feat_levels=[1] * len(trainer_feats), already_granted=_tax_already_granted)
-		# Profession feats (True Calling / Multi Talented / Always Improving) are named homebrew (not in
-		# feats.csv). Rather than list them as their own "Profession Feat:" entries, attribute them to a
-		# dedicated trainer slot — a mentor who taught these advanced profession techniques: one extra
-		# "(Trainer N)" whose chain IS the profession feats (base + the rest as its tax children). The
-		# FoundryVTT module synthesizes their descriptions from homebrew_feat_desc_dict, so register
-		# them there (keys resolve case-insensitively).
-		if profession_feats:
-			_prof_base = profession_feats[0]
-			trainer_feats.append(_prof_base)
-			trainer_feat_labels.append(f"(Trainer {len(trainer_calibers) + 1})")
-			trainer_feat_tax_dict[_prof_base] = list(profession_feats[1:])
-			for _pf_name, _pf_desc in profession_feat_desc.items():
-				homebrew_feat_desc_dict[_pf_name] = _pf_desc
+		# Profession feats (True Calling / Multi Talented / Always Improving) are named homebrew feats
+		# (not in feats.csv). They are NOT attributed to a trainer and are never feat-taxed: each renders
+		# as its own ordinary feat in the general feat track and costs a feat -- see the append AFTER the
+		# feat-count guarantee below (the slot cost was reserved out of feat_amounts / normal_feat_amount
+		# above).
+		# Dedicated PoW/Spheres mentors (25% "trainer-backed" branch): up to 2 extra "(Trainer N)"
+		# slots whose off-budget caliber rolls funded the homebrew training (the feats/talents/maneuvers
+		# render in their own sections; these entries are the funding source + flavor). Descriptions
+		# resolve from homebrew_feat_desc_dict.
+		_next_trainer_n = len(trainer_calibers) + 1
+		for _mentor_name, _mentor_desc in dedicated_trainer_specs:
+			trainer_feats.append(_mentor_name)
+			trainer_feat_labels.append(f"(Trainer {_next_trainer_n})")
+			_next_trainer_n += 1
+			trainer_feat_tax_dict.setdefault(_mentor_name, [])
+			homebrew_feat_desc_dict[_mentor_name] = _mentor_desc
 		# Martial Training chains are taken once PER DISCIPLINE and discipline-labeled (e.g.
 		# "Martial Training I (Broken Blade)"), so they aren't in data/feats.csv and feat_tax_func
 		# can't resolve them. Merge the hand-built bundle directly (paid I/III/V -> free II/IV/VI
@@ -976,20 +1089,21 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		except Exception:
 			pass
 
-		# The reorder treats normal + class-bonus feats as ONE pool, so a feat can migrate
-		# between the two buckets -- but its feat-tax bundle was filed under the PRE-reorder
-		# bucket's dict (the sheet applies each dict to its own bucket). Re-home each primary's
-		# bundle to the dict of the bucket it actually ended up in, so "Primary > Child"
-		# bundling follows the feat (e.g. a paid Martial Training I reseated as a class row).
-		_feats_l = {str(f).lower() for f in feats}
-		_class_l = {str(f).lower() for f in class_feats}
-		for _moved in [k for k in feats_feat_tax_dict if str(k).lower() in _class_l and str(k).lower() not in _feats_l]:
-			class_feat_tax_dict[_moved] = feats_feat_tax_dict.pop(_moved)
-		for _moved in [k for k in class_feat_tax_dict if str(k).lower() in _feats_l and str(k).lower() not in _class_l]:
-			feats_feat_tax_dict[_moved] = class_feat_tax_dict.pop(_moved)
+		# Story / flaw / flavor buckets are thinned by the same tax-child strip above but were never
+		# refilled (only class/normal were), so a story feat that chained into another feat's tax left a
+		# hole and dropped the top "(Story Feat N)" slot (e.g. the level-20 story feat). Top them back up
+		# to their budgeted counts -- terminal draw, no further tax (convergence); fresh picks render
+		# standalone, and the sheet labels these buckets positionally so restoring the COUNT brings the
+		# high slots back.
+		for _sb_list, _sb_key in ((story_feats, "story"), (flaw_feats, "flaw"), (flavor_feats, "flavor")):
+			_sb_need = max(0, feat_budget[_sb_key] - len(_sb_list))
+			if _sb_need:
+				_sb_fill = topup_feat_chooser(character, casting_level_str, _sb_need)
+				add_feats_to_chooseable(character, _sb_fill)
+				_sb_list.extend(_sb_fill)
 
-		# Row-count audit: actual/budget per bucket. Normal and class are backfilled, so a
-		# deficit there means a regression; other buckets may legally run under (tax-bundled).
+		# Row-count audit: actual/budget per bucket. Normal, class, story, flaw, and flavor are all
+		# backfilled, so a deficit there means a regression; other buckets may legally run under (tax-bundled).
 		print(f"feat rows -> normal {len(feats)}/{feat_budget['normal']}, story {len(story_feats)}/{feat_budget['story']}, "
 			f"flaw {len(flaw_feats)}/{feat_budget['flaw']}, flavor {len(flavor_feats)}/{feat_budget['flavor']}, "
 			f"class {len(class_feats)}/{feat_budget['class']}, teamwork {(len(teamwork_feats) if isinstance(teamwork_feats, list) else 0)}/{feat_budget['teamwork']}, "
@@ -1017,12 +1131,71 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		except Exception:
 			pass
 
+		# Re-home feat-tax bundles to the bucket each primary ACTUALLY ended in -- done AFTER the FINAL
+		# reorder above. assign_feats_to_levels treats normal + class-bonus feats as one pool, so a feat
+		# can migrate between the two buckets; the sheet applies each bucket's tax dict only to its own
+		# bucket, so a migrated primary (e.g. a Martial Training tier reseated as a class row) would lose
+		# its "Primary > Child" chain unless its tax bundle moves with it. (Previously this ran after the
+		# first of the two reorders, so the second reorder's migrations left tax in the wrong dict.)
+		_feats_l = {str(f).lower() for f in feats}
+		_class_l = {str(f).lower() for f in class_feats}
+		for _moved in [k for k in feats_feat_tax_dict if str(k).lower() in _class_l and str(k).lower() not in _feats_l]:
+			class_feat_tax_dict[_moved] = feats_feat_tax_dict.pop(_moved)
+		for _moved in [k for k in class_feat_tax_dict if str(k).lower() in _feats_l and str(k).lower() not in _class_l]:
+			feats_feat_tax_dict[_moved] = class_feat_tax_dict.pop(_moved)
+
+		# Append the sphere Extra-Talent feats LAST -- after the level-assignment reorder so they keep
+		# their hand-built HR1 tax (sphere_feat_tax, merged into feats_feat_tax_dict above) and aren't
+		# migrated into the class-bonus pool / chained by feat_tax_func. They land at the end of the
+		# Feats list (highest "(Feat N)" numbers). Their budget cost was already reserved out of
+		# feat_amounts above, so the normal chooser/backfill left room for them.
+		feats.extend(sphere_feats)
+
+		# ---- Final feat-count guarantee: the general feat track == normal_feat_amount EXACTLY ----
+		# The sheet labels feats positionally (1,3,5,…), so a list of length N renders feats at the
+		# character's real feat levels with no gaps and nothing past their level. Never short (defensive
+		# backfill -- RC1 should already prevent it) and never over: when homebrew (Martial Training +
+		# sphere Extra-Talent feats) outnumbers the slots, trim the lowest-priority excess -- the sphere
+		# Extra-Talent feat SLOTS first (their talents stay on the sheet as native combat/magic talents;
+		# only the tracking feat is dropped), then any remaining tail. (House rule: cap to exact.)
+		_feat_target = int(getattr(character, "normal_feat_amount", len(feats)) or 0)
+		if len(feats) > _feat_target:
+			_over = len(feats) - _feat_target
+			_sphere_lower = {str(s).lower() for s in sphere_feats}
+			_kept = []
+			for _f in reversed(feats):                       # sphere Extra-Talent feats are the appended tail
+				if _over > 0 and str(_f).lower() in _sphere_lower:
+					_over -= 1
+					continue
+				_kept.append(_f)
+			feats = list(reversed(_kept))
+			if len(feats) > _feat_target:                    # rare: homebrew exceeds slots even after trimming sphere slots
+				feats = feats[:_feat_target]
+		elif len(feats) < _feat_target:                      # defensive guarantee against any future regression
+			_fill = topup_feat_chooser(character, casting_level_str, _feat_target - len(feats))
+			add_feats_to_chooseable(character, _fill)
+			feats.extend(_fill)
+		print(f"feat guarantee -> general {len(feats)}/{_feat_target}, story {len(story_feats)}/{feat_budget['story']}"
+			f", class {len(class_feats)}/{feat_budget['class']} | generator {GENERATOR_VERSION}")
+
+		# Now drop the profession feats into the general feat track -- AFTER the feat-tax passes and the
+		# count guarantee, so they are never chained/taxed and never trimmed (their slots were reserved
+		# out of feat_amounts / normal_feat_amount above, so each costs a feat). Each renders as its own
+		# ordinary feat; register descriptions in homebrew_feat_desc_dict (case-insensitive) so the
+		# module / description backfill resolve them instead of hitting the CSV.
+		if profession_feats:
+			feats.extend(profession_feats)
+			for _pf_name, _pf_desc in profession_feat_desc.items():
+				homebrew_feat_desc_dict[_pf_name] = _pf_desc
+
 
 
 	# ------------------- Homebrew Trainers / Professions (feat section) + Skill Unlock (class features) -------------------#
 		# Built here (after the feat section) so trainer feats + their tax chains exist.
-		# Professions render as their own feat-section items (Rank 5 / Rank 15 + profession feats),
-		# each carrying pf1 changes/contextNotes/uses -- see profession_abilities.build_profession_ability_items.
+		# Professions render their Rank 5 / Rank 15 ability items as their own feat-section items, each
+		# carrying pf1 changes/contextNotes/uses -- see profession_abilities.build_profession_ability_items.
+		# (The profession FEATS themselves render as ordinary feats in the general feat track -- see the
+		# feats.extend(profession_feats) right after the feat-count guarantee above.)
 		# Trainers render through the normal feat pipeline in the FoundryVTT module (trainer_feats +
 		# trainer_feat_labels + trainer_feat_tax_dict) -> full feat text, no caliber line. Neither rides
 		# the class-features renderer anymore; only the Skill Unlock still does.
@@ -1202,6 +1375,30 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"spell_list_choose_from_dict", "equip_descrip", "maneuvers_desc_dict", "homebrew_feat_desc_dict",
 				 ]
 
+		# Make EVERY placed feat renderable by the FoundryVTT module. The module silently DROPS any feat
+		# name it can't resolve against its every_feat.json compendium AND that has no description to
+		# synthesize from -- and since it labels feats positionally, a dropped feat removes the TOP slot
+		# (the "missing 1-2 feats" the sheet showed). every_feat.json is an incomplete export, so real
+		# Paizo feats (Mighty Conditioning, Pet, Leg Slash, …) were being dropped. Supplying a description
+		# entry for every rendered feat lets the module's existing fallback synthesize the row instead of
+		# dropping it -> the visible count always equals what we exported. Descriptions are best-effort
+		# from data/feats.csv; an empty entry is still enough to keep the row (name preserved). Feats
+		# already described (homebrew / sphere / profession) are left untouched.
+		_render_feat_names = []
+		for _b in (feats, story_feats, flaw_feats, flavor_feats, class_feats,
+				   trainer_feats, bloodline_feats, teamwork_feats):
+			if isinstance(_b, list):
+				_render_feat_names.extend(str(_x) for _x in _b)
+		_have_desc = {str(_k).lower() for _k in homebrew_feat_desc_dict}
+		_need_desc = [_n for _n in dict.fromkeys(_render_feat_names) if _n.lower() not in _have_desc]
+		if _need_desc:
+			_desc_info = feat_spell_searcher(character, character.c_class, list(_need_desc),
+											 "feats", "description", None, {}) or {}
+			_desc_ci = {str(_k).lower(): (_v.get("description", "") if isinstance(_v, dict) else "")
+						for _k, _v in _desc_info.items()}
+			for _n in _need_desc:
+				homebrew_feat_desc_dict[_n] = _desc_ci.get(_n.lower(), "")
+
 		character.export_list_non_dict(export_list_non_dict, string_export_list_non_dict)		
 		character.export_list_dict(export_list_dict, string_export_list_dict)		
 
@@ -1285,9 +1482,14 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# print("feats_feat_tax_dict", feats_feat_tax_dict)
 		print("character.c_class", character.c_class)
 
+		# Freshness stamp -- lets a restart (and any exported actor) reveal which backend build ran.
+		character.data_dict['generator_version'] = GENERATOR_VERSION
 		return character.data_dict
 
-generate_random_char()
+# CLI smoke test only: importing this module (e.g. app.py does `from main_test import ...`) must NOT
+# run a full generation -- it just defines generate_random_char for the Flask request handler to call.
+if __name__ == "__main__":
+	generate_random_char()
 
 # ----- Planned add ons  ----- #
 	# Stuff to add later

@@ -19,6 +19,117 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Five new profession genres + a curated profession catalog.** Added the themes **`noble`** (royalty,
+  courtiers, regents), **`occult`** (witches, necromancers, cultists, warlocks), **`wayfarer`** (sellswords,
+  treasure-hunters, monster-slayers), **`elementalist`** (fire/ice/storm/earth specialists), and
+  **`villain`** (brigands, terrorists, tyrants, torturers) — each with its own ~20-ability power-0..5
+  ladder (now 19 themes / 380 abilities). A new curated catalog (`Backend/json/profession_catalog.json`,
+  359 professions tagged with an explicit genre + power tier) feeds the generation pool and is consulted
+  before the keyword heuristics, so new/epic/low-tier names classify deterministically. Tier-4/5
+  professions now have epic titles (Royal Bloodline, Divine Vessel, Avatar of the Storm, Necromancer-Lord,
+  Thousand Fists Champion, …). (`profession_abilities.json`, `profession_catalog.json`,
+  `profession_abilities.py`.)
+- **`fantasy-expert` skill.** A reusable D&D/Pathfinder/fantasy-lore skill (`.claude/skills/fantasy-expert/`)
+  encoding the profession genre roster, fantasy-commonality weights, the tier ladder, and epic naming
+  conventions — used to drive the genre/name/ability authoring above.
+- **Profession abilities are far more varied (98 → 279 abilities, 11 → 14 themes).** The tiered
+  Rank 5 / Rank 15 profession-ability library (`Backend/json/profession_abilities.json`) roughly tripled
+  — every theme now carries ~16-21 abilities across the full power 0-5 ladder (was 4-9), so professions
+  no longer repeat the same handful of abilities across the generated population, and a character with
+  several same-theme professions gets distinct picks instead of draining a tiny ladder. Three new themes
+  were added — **`trade`** (merchants/mongers/peddlers: haggling, appraisal, contacts, gold from wares),
+  **`performance`** (bards/minstrels/dancers/jesters: inspire, fascinate, demoralize, fame), and
+  **`service`** (innkeepers/cooks/brewers/butchers: food-and-drink buffs, rumors, hospitality) — and
+  these vocations were pulled out of the overloaded catch-all `skill`/`craft` themes so dissimilar
+  professions (e.g. Embroiderer vs Fishmonger, now `craft` vs `trade`) stop sharing one pool. New
+  abilities carry real pf1 v11 `changes`/`contextNotes`/`uses` where the effect is mechanical.
+  Every ability is **specific**: limited-use abilities state their exact per-day count in the text (no
+  "a few times"), and none are flavor-only — each grants a concrete, defined effect (e.g. a crafter's
+  *Honest Materials* gives crafted objects hardness equal to half the relevant Craft ranks; a merchant's
+  *Coin From Wares* earns gold equal to Profession ranks × 10).
+  (`profession_abilities.json` data; `profession_abilities.py` theme routing.)
+- **Spheres now render natively on the Foundry sheet.** Sphere talents are placed in the pf1spheres
+  module's **Combat/Magic Talents** section (grouped by sphere, with the real compendium icons and
+  text) — exactly as if dragged in from the pf1spheres compendium — instead of as plain feats in the
+  Features list. Each talent is cloned from the `pf1spheres.combat-talents` / `magic-talents` pack by
+  name (or synthesized as a `combatTalent`/`magicTalent` feat tagged with its sphere when the module is
+  off or a talent is missing). Magic dabblers still get a casting-tradition / mana-pool summary feat;
+  the sphere *feats* ride the normal feat pipeline. (`modify-abilities.js` → `processSpheres`.)
+- **Magic-side bonus sphere feat.** A Spheres-of-Power dabbler now has a 50% chance to pick up a
+  sphere-specific feat tied to their most-taken sphere (favoring exactly one), drawn prereq-aware from
+  `sphere_feats.json`. (`spheres.py` → `_roll_magic_sphere_feats`.)
+- **Advanced sphere talents are labeled and sorted last.** On the sheet, an advanced talent now shows
+  as `(Advanced) <Name>` and sorts to the bottom of its sphere, with the normal talents alphabetical
+  above it. The backend marks each talent's advanced status (`_talent_item`); the FoundryVTT module
+  applies the `(Advanced)` prefix and orders each sphere (normals alphabetical, advanced last) via the
+  item `sort` field. (`spheres.py`, `modify-abilities.js` → `processSpheres`.)
+- **Only real compendium talents are picked.** The combat (Spheres of Might) talent data is now built
+  directly from the pf1spheres **combat-talents compendium** instead of a wiki scrape, so non-talent
+  entries that used to leak in (e.g. "Optional Rule: Vehicles as Mounts", variant-rule sidebars, empty
+  stubs) are gone, and previously thin/mismatched spheres are complete (Equipment went 16→103 talents,
+  Warleader 6→54). A committed allowlist (`compendium_talent_names.json`, emitted by
+  `extract_spheres_talents.py`) backs a defensive filter in `spheres.py` so only compendium talents are
+  ever selected. (Magic data was already compendium-sourced and is unchanged.)
+
+### Changed
+- **Generated professions now follow tunable power-tier and genre distributions.** Previously 85% of
+  professions were "average" tier and 61% fell into the catch-all `craft` genre. Profession selection
+  (`profession_chooser._themed_profession_names`) now rolls a target **tier** then **genre** from weight
+  tables: tiers land at ~**5% / 35% / 35% / 20% / 3% / 2%** (garbage→top), and `craft` stays the single
+  most common but drops to ~**15%**, with the rest spread across the other genres by how common each
+  archetype is in fantasy. Implemented as weighted selection over a cached `(tier, genre)` index of the
+  pool (so the marginals are precise and easy to retune via `_TIER_WEIGHTS` / `_GENRE_WEIGHTS`); the raw
+  master list is unchanged. (`profession_chooser.py`.)
+- **Profession feats now cost a feat and each render as their own feat (no more "feat-tax" chain).**
+  The three homebrew profession feats (True Calling / Multi Talented / Always Improving) used to be
+  attributed to a fake trainer slot and bundled as one `(Trainer N): True Calling > Multi Talented >
+  Always Improving` feat-tax chain *on top of* the normal budget (free). Each now renders as its **own
+  ordinary feat** in the Feats list and **consumes a normal feat slot** (like the Path of War / Spheres
+  feats): the profession-feat count is reserved out of both `feat_amounts` and `normal_feat_amount`, so
+  each one replaces a normal feat — or, at very low level, the profession feats take over the general
+  feat track and clamp the normal feats down to 0. They are appended after every `feat_tax_func` pass
+  and the feat-count guarantee, so they are never chained or trimmed. (`main_test.py`. No front-end
+  change — they ride the normal feat pipeline.)
+- **Dedicated mentor trainers now list what they funded.** In the 25% "trainer-backed" branch, the
+  "Path of War Mentor" and "Spheres Mentor" trainer entries previously showed only generic flavor text.
+  Now each names the off-budget homebrew it taught: the **Path of War Mentor** lists every PoW feat
+  (style feats + Martial Training tiers) with its description, written like a normal PoW feat; the
+  **Spheres Mentor** lists the spheres funded plus the off-budget talents it provided — presented as HR1
+  `Extra Combat/Magic Talent > Extra Combat/Magic Talent` feats (one per 2 talents) followed by the
+  talent names — i.e. only the talents *beyond* what the character paid for themselves (no duplication of
+  the budget-paid Extra-Talent feats already in the main Feats list). Single-type characters now get one
+  correctly-named mentor (padded to two with a uniquely-named "(Continued Study)" entry when needed) so
+  the per-name descriptions never collide. (`spheres.py` → `mentor_sphere_summary` + `mentor_funded_talents`;
+  `main_test.py` mentor block. No front-end change — the module synthesizes the trainer row from the
+  description.)
+- **Budget-paid sphere talents now show a feat slot for tracking.** Each talent paid from the feat
+  budget is bundled onto an HR1 `Extra Combat Talent > Extra Combat Talent` feat (2 talents per slot;
+  the first magic talent rides `Basic Magic Training`), listed in the Feats tab with the talents it
+  paid for in the description — like any other feat-taxed feat. Talents funded by the 25% Spheres
+  Mentor trainers stay tracked by that trainer entry (no Extra-Talent feat). The feats consume feat
+  budget. (`spheres.py` → `choose_spheres_attr`, `main_test.py`.)
+- **Path of War & Spheres are now guaranteed when selected, with priority over normal feats.** Previously
+  their counts were capped by whatever feat budget remained after everything else, so a feat-heavy NPC
+  (e.g. a PoW-loaded martial) could silently lose them entirely. Now, when an NPC is rolled to have PoW
+  and/or Spheres, those selections are funded **first** and the normal feat chooser takes whatever
+  remains (down to zero). The realized amount scales per character: a **75%** chance to take a "lean"
+  dose (about half the rolled homebrew feats), and a **25%** chance to be "trainer-backed" — keeping at
+  least the lean half and gaining **2 dedicated mentor trainers** whose off-budget rolls fund the rest,
+  with any surplus becoming bonus sphere talents. (`main_test.py`, `spheres.py`, `path_of_war.py`.)
+- **Sphere talent count is now a flat 8 (7 normal + 1 advanced)** for a spheres-selected NPC,
+  prerequisite-legal (decoupled from the feat count; backfills a normal if no advanced qualifies).
+  Trainer-backed NPCs still get overflow talents on top. For testing, a `SINGLE_SPHERE_TESTING` flag
+  (on) forces all 8 talents to come from **one** sphere so the 7 normals satisfy the same-sphere
+  prerequisites that gate advanced talents. Both are testing values — a level-scaled model (groups of
+  two, capped at 16) is planned later. (`spheres.py` → `_pick_flat_talents` / `randomize_spheres_num`.)
+
+- **Spheres of Power/Might toggle in the generator UI.** The FoundryVTT character-generator dialog now
+  has a "Do you want Spheres of Power/Might" yes/no option (default No). Choosing **Yes** activates the
+  existing Spheres dabbling logic, so generated NPCs can now actually pick up sphere feats and talents
+  (and, for casters, a casting tradition + mana pool) — previously the feature was backend-only and the
+  flag always defaulted off, leaving every character with empty sphere data. The flag is read by name in
+  the backend (`spheres_of_power` in the POST body) and threaded through `app.py` to
+  `generate_random_char`'s `spheres_flag`.
 - **Professions sub-system.** Every character now gets one or more themed professions (e.g. a smith
   tends toward a smithing vocation) modelled as `Profession (X)` skills with ranks. The rank pool
   follows the campaign heuristic `5 + level + 10 per profession feat` and is spread across as many
@@ -81,6 +192,97 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   subset drives default-off conditional toggles on the generated character's main weapon in the
   FoundryVTT module (per-hit dice live here because buff changes can't roll dice; stance dice stay
   description-only).
+
+### Fixed
+- **No more blank dedicated-trainer slots.** A trainer-backed NPC could show a content-free trainer like
+  `(Trainer 5): Spheres Mentor (Continued Study)` (generic text, teaches nothing) — an artefact of
+  padding the dedicated mentors to a fixed count of two. Dedicated mentors are now emitted only when they
+  actually funded off-budget content (the Spheres Mentor appears only with a non-empty funded-talent
+  list), and the pad-to-two loop and the generic "Homebrew Mentor" fallback are gone. A trainer-backed
+  PoW-only build simply shows no dedicated mentor rather than a blank one. (`main_test.py`.)
+- **The "Path of War Mentor" trainer no longer re-lists feats the character already paid for.** In the
+  25% "trainer-backed" branch, a dedicated **Path of War Mentor** trainer listed every Martial Training /
+  style feat as though it had *funded* them — but those feats are real feats on the sheet (they grant the
+  maneuvers), so they're always paid from the normal/class feat budget and already appear in the Feats
+  list. The mentor was pure duplication. Unlike sphere talents (which can be granted off-budget, so the
+  **Spheres Mentor** legitimately lists only what it funded), Path of War has nothing genuinely
+  off-budget, so it now gets **no mentor**. Trainer-backed builds keep the Spheres Mentor; a PoW-only
+  trainer-backed build shows a generic "Homebrew Mentor" that lists no feats. (`main_test.py`.)
+- **Sphere talents no longer leak in as bare feats.** Intermittently a sphere talent (e.g. Hurricane
+  Kick, Yoga Strikes, Fragmenting Shot) was being chosen as a normal/flaw/class/trainer feat and rendered
+  as an empty-description row. Cause: `character.chooseable_talents` accumulates across selection passes
+  and feeds the feat chooser, and the sphere-talent picker left its **unpicked** eligible talents in that
+  list — which the chooser's "drop owned" guard didn't catch (they were never added to `chooseable`). The
+  sphere picker now clears `chooseable_talents` when it finishes (in `choose_spheres_attr` and
+  `add_overflow_talents`), so leftover talents can't bleed into the feat pool. (These leaked talents used
+  to be silently dropped by the front-end — part of the earlier "missing feats"; the synthesize-on-unmatched
+  change exposed them, and it correctly stays for genuine feats missing from `every_feat.json`.) Verified
+  0 leaks across 40 generations.
+- **Martial Training feat-tax chains render consistently again.** Within one discipline some tiers showed
+  their free partner (e.g. `Martial Training III > Martial Training IV`) while others didn't. `assign_feats_to_levels`
+  runs twice but the tax-bucket rehoming ran only after the first pass; the second pass re-migrated some
+  feats between the normal/class buckets, leaving their tax bundle in the wrong dict so the sheet (which
+  applies each bucket's tax dict only to its own bucket) dropped the chain. The rehoming now runs after
+  the **final** reorder. Verified 0 mis-homed Martial Training primaries across 99 of them; feat/story
+  counts unchanged. (`main_test.py`, `spheres.py`.)
+- **Feats are no longer silently dropped on the sheet (the real cause of "missing 1-2 feats").** The
+  backend exported the correct number of feats, but the FoundryVTT module's `processFeatTrait` silently
+  dropped any feat name it couldn't resolve against its `every_feat.json` compendium (an incomplete
+  export missing many real Paizo feats — Mighty Conditioning, Pet, Leg Slash, …) — and because feats are
+  labeled positionally, a dropped feat removed the **top** slot (e.g. Feat 19 / Story Feat 20). Measured:
+  every one of 20 generated Fighters dropped 1-4 feats across buckets. (It was not the feat-tax system —
+  `applyFeatTax` only decorates a parent's name with `> Child`, never removes rows.) Fix: the backend now
+  supplies a description entry for **every** placed feat (`homebrew_feat_desc_dict`, best-effort from
+  `data/feats.csv`), so the module's existing fallback **synthesizes** any compendium-missing feat instead
+  of dropping it — backend restart only, no Foundry reload needed. The module was also hardened
+  (`modify-abilities.js`): `every_feat.json` matching is now case/punctuation-insensitive (compendium
+  feats that differ only by casing now resolve to their real item), and an unmatched feat is synthesized
+  rather than dropped as a final safety net. Verified: **0 would-be-dropped feats across 45 generations**
+  (Fighter/Warder/Wizard), down from 1-4 per character, with bucket counts still exact.
+- **Feat counts are now guaranteed exact, and the running backend's version is visible.** A final
+  reconciliation pass (`main_test.py`, just before export) forces the general feat track to exactly
+  `normal_feat_amount` (feats at the character's real levels 1,3,…,19 — no gaps, nothing past their
+  level): it backfills any shortfall (locking in the earlier reservation/strip fixes against future
+  regressions) and, in the rare case where homebrew (Path-of-War Martial Training + Sphere Extra-Talent
+  feats) outnumbers the slots, caps to exact by trimming the lowest-priority excess — sphere Extra-Talent
+  *tracking* feats first (the talents themselves stay on the sheet as native Combat/Magic talents), then
+  any remaining tail. Verified exact (general 10/10, story 5/5) across 90 generations spanning
+  Fighter/Warder/Wizard × both feat-randomization modes, with zero failures. Also added a
+  `GENERATOR_VERSION` stamp: printed in a startup banner by `app.py`, logged per generation, returned on
+  each result, and written by the FoundryVTT module to a hidden actor flag
+  (`flags.pf1e_random_char_generator.version`) — so a restart visibly loads the new code and any exported
+  sheet reveals which backend build produced it (the recurring "I restarted but it's still wrong" was a
+  stale `:5001` backend serving old code).
+- **NPCs with Spheres no longer lose high-level feats (and story feats are no longer dropped).** A
+  Spheres-selected NPC could come out missing the top entries of its feat tracks — e.g. a level-20
+  Fighter showing `(Feat 1…11)` but nothing at 13/15/17/19, and missing the level-20 story feat. Two
+  causes: (1) the sphere/PoW feat-budget **reservation** (`main_test.py`) subtracted a *rolled estimate*
+  (`_priority_reserve + max(0, sphere_feat_budget_count − realize_sphere)`) that drifted off the real
+  number of homebrew feats appended to the list, so it over-reserved (dropping the top "(Feat N)" slots —
+  the bug) or under-reserved (spilling feats past the top level); it now reserves **exactly**
+  `len(mt_feats) + len(style_feats) + len(sphere_feats)` — the Martial-Training, style, and sphere
+  Extra-Talent feats that actually get appended — so the normal track lands at exactly
+  `normal_feat_amount` every time. (2) The tax-child **strip** removed story/flaw/flavor feats that
+  happened to be feat-chain children but, unlike the class/normal buckets, never **backfilled** them, so
+  the story list shrank and its top level slot (15/20) was orphaned; story/flaw/flavor are now topped
+  back up to their budgeted counts after the strip. Verified over 80+ generations (Fighter & Warder,
+  level 20, both feat-randomization modes): no track ever comes up short. (Trainers were ruled out —
+  they're funded off-budget and never consumed the feat allotment.)
+- **Advanced / legendary sphere talents are now reliably labeled, and the registry is comprehensive.**
+  Advanced talents (especially combat *legendary* talents like Bomb Jump) were silently never flagged,
+  so they never showed `(Advanced)` on the sheet and weren't treated as advanced by the §8 picker. Root
+  cause: the `advanced_talents.json` registry stores wiki names with their variant suffix (e.g.
+  `"bomb jump (leap)"`) but the talent datasets are keyed by the clean name (`"bomb jump"`), and the
+  three advanced-matching sites normalized with `_norm` — which strips `[source]` tags but not a
+  trailing `(variant)` — so the names never matched. Now they normalize with `_talent_match_norm` (the
+  same suffix-stripping the compendium filter already uses) in `_advanced_set`, `_is_advanced`, and
+  `_talent_item`. Separately, the registry was rebuilt comprehensively from the Spheres wiki by the new
+  `Backend/scripts/scrape_advanced_talents.py` (every magic sphere's *Advanced … Talents* section + every
+  combat sphere's *Legendary Talents* section), adding 213 names — including whole combat spheres that
+  were missing entirely (Equipment, Warleader) — merged so curated/homebrew-only keys with no wiki page
+  (e.g. power → `bear`) are preserved. Verified end-to-end: advanced talents are now flagged across 15
+  combat spheres and the magic side is unchanged. (`spheres.py`, `advanced_talents.json`,
+  `scrape_advanced_talents.py`.)
 
 ### Changed
 - **Dev server: disabled the Flask auto-reloader (`use_reloader=False` in `Backend/app.py`).** Under

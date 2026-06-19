@@ -88,10 +88,12 @@ def initiation_stat(character):
     return max(('int', 'wis', 'cha'), key=lambda s: final_ability_score(character, s))
 
 
-def choose_path_of_war_attr(character):
+def choose_path_of_war_attr(character, max_chains=None):
     '''Orchestrates discipline choice + prereq-legal maneuver/stance selection + (initiators)
     style feat chains for both branches; returns the export bundle. Empty/zero defaults when
-    the character has no paths.'''
+    the character has no paths. ``max_chains`` (non-initiator Martial Training) caps how many WHOLE
+    discipline chains are realized; ``None`` = all rolled. Initiator style chains are capped by the
+    generator post-build (it slices ``style_feats``), so initiators ignore ``max_chains``.'''
     bundle = {
         'martial_disciplines': [], 'initiator_level': 0,
         'maneuvers_known_list': [], 'maneuvers_readied_list': [],
@@ -116,7 +118,7 @@ def choose_path_of_war_attr(character):
         readied = sorted(chosen, key=lambda m: (-m[1], random.random()))[:min(readied_n, len(chosen))]
         mt_feats = []
     elif getattr(character, 'path_of_war_paths', 0) > 0:
-        mt = _build_martial_training(character)
+        mt = _build_martial_training(character, max_chains=max_chains)
         if mt is None:
             return bundle
         disciplines, il, max_lvl = mt['disciplines'], mt['il'], mt['max_lvl']
@@ -214,7 +216,7 @@ def _level_floor_counts(total, n_levels):
     return per
 
 
-def _build_martial_training(character):
+def _build_martial_training(character, max_chains=None):
     '''Non-initiator Martial Training (house rule): ONE chain per rolled discipline, capped by
     available normal feat slots. Each chain is a full MT I..depth (depth 2/4/6 by BAB) drawing
     ONLY from its own discipline; the FEAT TIER is the level gate -- tier t grants level-t
@@ -246,10 +248,11 @@ def _build_martial_training(character):
     disciplines = _roll_disciplines(character, getattr(character, 'path_of_war_paths', 0))
     if not disciplines:
         return None
-    # Each chain costs paid_per_chain paid feats; keep >=1 normal feat free (the old -1 buffer)
-    # and only take whole chains the budget can pay for.
-    affordable = max(0, getattr(character, 'normal_feat_amount', 0) - 1) // max(paid_per_chain, 1)
-    n_chains = min(len(disciplines), affordable)
+    # The generator guarantees PoW with feat priority, so we no longer clamp chains by the leftover
+    # normal-feat budget. ``max_chains`` (when set) caps how many WHOLE discipline chains we realize;
+    # None = take every rolled discipline.
+    desired_chains = len(disciplines)
+    n_chains = desired_chains if max_chains is None else min(desired_chains, max(0, int(max_chains)))
     if n_chains <= 0:
         return None
     disciplines = disciplines[:n_chains]

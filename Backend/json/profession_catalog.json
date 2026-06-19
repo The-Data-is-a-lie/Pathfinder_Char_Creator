@@ -1,0 +1,1797 @@
+[
+  {
+    "name": "Slag Raker",
+    "genre": "craft",
+    "tier": "garbage"
+  },
+  {
+    "name": "Ash-Bellows Boy",
+    "genre": "craft",
+    "tier": "garbage"
+  },
+  {
+    "name": "Clay Treader",
+    "genre": "craft",
+    "tier": "garbage"
+  },
+  {
+    "name": "Apprentice Smith",
+    "genre": "craft",
+    "tier": "bad"
+  },
+  {
+    "name": "Tinker's Lad",
+    "genre": "craft",
+    "tier": "bad"
+  },
+  {
+    "name": "Hedge Cobbler",
+    "genre": "craft",
+    "tier": "bad"
+  },
+  {
+    "name": "Nail-Cutter",
+    "genre": "craft",
+    "tier": "bad"
+  },
+  {
+    "name": "Tannery Hand",
+    "genre": "craft",
+    "tier": "bad"
+  },
+  {
+    "name": "Novice Potter",
+    "genre": "craft",
+    "tier": "bad"
+  },
+  {
+    "name": "Loom Prentice",
+    "genre": "craft",
+    "tier": "bad"
+  },
+  {
+    "name": "Whittler",
+    "genre": "craft",
+    "tier": "bad"
+  },
+  {
+    "name": "Journeyman Mason",
+    "genre": "craft",
+    "tier": "average"
+  },
+  {
+    "name": "Master Goldsmith",
+    "genre": "craft",
+    "tier": "good"
+  },
+  {
+    "name": "Guild Glasswright",
+    "genre": "craft",
+    "tier": "good"
+  },
+  {
+    "name": "Veteran Bladesmith",
+    "genre": "craft",
+    "tier": "good"
+  },
+  {
+    "name": "Grand Artificer",
+    "genre": "craft",
+    "tier": "high"
+  },
+  {
+    "name": "Forgemaster of the Anvil-Lords",
+    "genre": "craft",
+    "tier": "high"
+  },
+  {
+    "name": "Worldforger Eternal",
+    "genre": "craft",
+    "tier": "top"
+  },
+  {
+    "name": "Battlefield Carrion-Hauler",
+    "genre": "martial",
+    "tier": "garbage"
+  },
+  {
+    "name": "Levy Conscript",
+    "genre": "martial",
+    "tier": "bad"
+  },
+  {
+    "name": "Pike Recruit",
+    "genre": "martial",
+    "tier": "bad"
+  },
+  {
+    "name": "Watch Underling",
+    "genre": "martial",
+    "tier": "bad"
+  },
+  {
+    "name": "Squire-at-Arms",
+    "genre": "martial",
+    "tier": "bad"
+  },
+  {
+    "name": "Camp Drillhand",
+    "genre": "martial",
+    "tier": "bad"
+  },
+  {
+    "name": "Line Soldier",
+    "genre": "martial",
+    "tier": "average"
+  },
+  {
+    "name": "Garrison Guard",
+    "genre": "martial",
+    "tier": "average"
+  },
+  {
+    "name": "Hired Sellsword",
+    "genre": "martial",
+    "tier": "average"
+  },
+  {
+    "name": "Arena Gladiator",
+    "genre": "martial",
+    "tier": "average"
+  },
+  {
+    "name": "Free Company Trooper",
+    "genre": "martial",
+    "tier": "average"
+  },
+  {
+    "name": "Sworn Knight",
+    "genre": "martial",
+    "tier": "good"
+  },
+  {
+    "name": "Veteran Captain",
+    "genre": "martial",
+    "tier": "good"
+  },
+  {
+    "name": "Mercenary Warlord",
+    "genre": "martial",
+    "tier": "good"
+  },
+  {
+    "name": "Banner-Sergeant",
+    "genre": "martial",
+    "tier": "good"
+  },
+  {
+    "name": "Grand Marshal",
+    "genre": "martial",
+    "tier": "high"
+  },
+  {
+    "name": "Champion of the Lists",
+    "genre": "martial",
+    "tier": "high"
+  },
+  {
+    "name": "Lord Castellan",
+    "genre": "martial",
+    "tier": "high"
+  },
+  {
+    "name": "Sword-Sovereign",
+    "genre": "martial",
+    "tier": "top"
+  },
+  {
+    "name": "Warlord Eternal",
+    "genre": "martial",
+    "tier": "top"
+  },
+  {
+    "name": "Carrion Skinner",
+    "genre": "nature",
+    "tier": "garbage"
+  },
+  {
+    "name": "Snare Boy",
+    "genre": "nature",
+    "tier": "bad"
+  },
+  {
+    "name": "Hedge Forager",
+    "genre": "nature",
+    "tier": "bad"
+  },
+  {
+    "name": "Goose-Herd",
+    "genre": "nature",
+    "tier": "bad"
+  },
+  {
+    "name": "Bog Trapper",
+    "genre": "nature",
+    "tier": "bad"
+  },
+  {
+    "name": "Net-Mender",
+    "genre": "nature",
+    "tier": "bad"
+  },
+  {
+    "name": "Game Tracker",
+    "genre": "nature",
+    "tier": "average"
+  },
+  {
+    "name": "Furrow Farmer",
+    "genre": "nature",
+    "tier": "average"
+  },
+  {
+    "name": "Deep-Water Sailor",
+    "genre": "nature",
+    "tier": "average"
+  },
+  {
+    "name": "Hound Master",
+    "genre": "nature",
+    "tier": "average"
+  },
+  {
+    "name": "Wood Warden",
+    "genre": "nature",
+    "tier": "average"
+  },
+  {
+    "name": "Master Falconer",
+    "genre": "nature",
+    "tier": "good"
+  },
+  {
+    "name": "Greenwood Ranger",
+    "genre": "nature",
+    "tier": "good"
+  },
+  {
+    "name": "Storm-Wise Helmsman",
+    "genre": "nature",
+    "tier": "good"
+  },
+  {
+    "name": "Beast-Whisperer Druid",
+    "genre": "nature",
+    "tier": "good"
+  },
+  {
+    "name": "Archdruid of the Wilds",
+    "genre": "nature",
+    "tier": "high"
+  },
+  {
+    "name": "Grand Huntsman",
+    "genre": "nature",
+    "tier": "high"
+  },
+  {
+    "name": "Warden Lord of the Vale",
+    "genre": "nature",
+    "tier": "high"
+  },
+  {
+    "name": "Verdant Sovereign",
+    "genre": "nature",
+    "tier": "top"
+  },
+  {
+    "name": "Avatar of the Wild Hunt",
+    "genre": "nature",
+    "tier": "top"
+  },
+  {
+    "name": "Crypt Censer-Boy",
+    "genre": "divine",
+    "tier": "garbage"
+  },
+  {
+    "name": "Font Acolyte",
+    "genre": "divine",
+    "tier": "bad"
+  },
+  {
+    "name": "Shrine Tender",
+    "genre": "divine",
+    "tier": "bad"
+  },
+  {
+    "name": "Penitent Novice",
+    "genre": "divine",
+    "tier": "bad"
+  },
+  {
+    "name": "Hedge Almoner",
+    "genre": "divine",
+    "tier": "bad"
+  },
+  {
+    "name": "Vow-Sworn Initiate",
+    "genre": "divine",
+    "tier": "bad"
+  },
+  {
+    "name": "Parish Cleric",
+    "genre": "divine",
+    "tier": "average"
+  },
+  {
+    "name": "Temple Priest",
+    "genre": "divine",
+    "tier": "average"
+  },
+  {
+    "name": "Faithful Oracle",
+    "genre": "divine",
+    "tier": "average"
+  },
+  {
+    "name": "Templar Sentinel",
+    "genre": "divine",
+    "tier": "average"
+  },
+  {
+    "name": "Anointed Chaplain",
+    "genre": "divine",
+    "tier": "average"
+  },
+  {
+    "name": "Iomedaean Paladin",
+    "genre": "divine",
+    "tier": "good"
+  },
+  {
+    "name": "High Inquisitor",
+    "genre": "divine",
+    "tier": "good"
+  },
+  {
+    "name": "Cathedral Hierarch",
+    "genre": "divine",
+    "tier": "good"
+  },
+  {
+    "name": "Sanctified Exorcist",
+    "genre": "divine",
+    "tier": "good"
+  },
+  {
+    "name": "Grand Templar Champion",
+    "genre": "divine",
+    "tier": "high"
+  },
+  {
+    "name": "Archcleric of the Dawn",
+    "genre": "divine",
+    "tier": "high"
+  },
+  {
+    "name": "Prophet of Ieso",
+    "genre": "divine",
+    "tier": "high"
+  },
+  {
+    "name": "Living Saint",
+    "genre": "divine",
+    "tier": "top"
+  },
+  {
+    "name": "Avatar of the Divine",
+    "genre": "divine",
+    "tier": "top"
+  },
+  {
+    "name": "Cinder-Sweep Cantripper",
+    "genre": "arcane",
+    "tier": "garbage"
+  },
+  {
+    "name": "Wand-Polisher",
+    "genre": "arcane",
+    "tier": "bad"
+  },
+  {
+    "name": "Apprentice Conjurer",
+    "genre": "arcane",
+    "tier": "bad"
+  },
+  {
+    "name": "Hedge Diviner",
+    "genre": "arcane",
+    "tier": "bad"
+  },
+  {
+    "name": "Scroll Copyist",
+    "genre": "arcane",
+    "tier": "bad"
+  },
+  {
+    "name": "Novice Evoker",
+    "genre": "arcane",
+    "tier": "bad"
+  },
+  {
+    "name": "Spellbinder",
+    "genre": "arcane",
+    "tier": "average"
+  },
+  {
+    "name": "Sigil-Scribe",
+    "genre": "arcane",
+    "tier": "average"
+  },
+  {
+    "name": "Glyphwright",
+    "genre": "arcane",
+    "tier": "average"
+  },
+  {
+    "name": "Far-Sight Diviner",
+    "genre": "arcane",
+    "tier": "average"
+  },
+  {
+    "name": "Wardcaster",
+    "genre": "arcane",
+    "tier": "average"
+  },
+  {
+    "name": "Master Enchanter",
+    "genre": "arcane",
+    "tier": "good"
+  },
+  {
+    "name": "Court Wizard",
+    "genre": "arcane",
+    "tier": "good"
+  },
+  {
+    "name": "Runelord's Adept",
+    "genre": "arcane",
+    "tier": "good"
+  },
+  {
+    "name": "Tower Conjurer",
+    "genre": "arcane",
+    "tier": "good"
+  },
+  {
+    "name": "Archmage of Nethys",
+    "genre": "arcane",
+    "tier": "high"
+  },
+  {
+    "name": "Grand Loremaster",
+    "genre": "arcane",
+    "tier": "high"
+  },
+  {
+    "name": "Weaver of the Aether",
+    "genre": "arcane",
+    "tier": "high"
+  },
+  {
+    "name": "Sovereign of the Spellweave",
+    "genre": "arcane",
+    "tier": "top"
+  },
+  {
+    "name": "Eternal Archmage Supreme",
+    "genre": "arcane",
+    "tier": "top"
+  },
+  {
+    "name": "Page of the Court",
+    "genre": "noble",
+    "tier": "bad"
+  },
+  {
+    "name": "Squire-Ward",
+    "genre": "noble",
+    "tier": "bad"
+  },
+  {
+    "name": "Hostage Heir",
+    "genre": "noble",
+    "tier": "bad"
+  },
+  {
+    "name": "Lesser Cupbearer",
+    "genre": "noble",
+    "tier": "bad"
+  },
+  {
+    "name": "Landed Knight",
+    "genre": "noble",
+    "tier": "average"
+  },
+  {
+    "name": "Court Chamberlain",
+    "genre": "noble",
+    "tier": "average"
+  },
+  {
+    "name": "Baron of the March",
+    "genre": "noble",
+    "tier": "average"
+  },
+  {
+    "name": "Royal Envoy",
+    "genre": "noble",
+    "tier": "average"
+  },
+  {
+    "name": "Castellan of the Keep",
+    "genre": "noble",
+    "tier": "average"
+  },
+  {
+    "name": "Lord of the Realm",
+    "genre": "noble",
+    "tier": "good"
+  },
+  {
+    "name": "High Chancellor",
+    "genre": "noble",
+    "tier": "good"
+  },
+  {
+    "name": "Margrave of the Borderlands",
+    "genre": "noble",
+    "tier": "good"
+  },
+  {
+    "name": "Master of Whispers",
+    "genre": "noble",
+    "tier": "good"
+  },
+  {
+    "name": "Grand Duke",
+    "genre": "noble",
+    "tier": "high"
+  },
+  {
+    "name": "Prince Regent",
+    "genre": "noble",
+    "tier": "high"
+  },
+  {
+    "name": "Archduchess Sovereign",
+    "genre": "noble",
+    "tier": "high"
+  },
+  {
+    "name": "Lord Protector of the Throne",
+    "genre": "noble",
+    "tier": "high"
+  },
+  {
+    "name": "Crowned Sovereign",
+    "genre": "noble",
+    "tier": "top"
+  },
+  {
+    "name": "Empress of a Thousand Banners",
+    "genre": "noble",
+    "tier": "top"
+  },
+  {
+    "name": "Eternal Dynast",
+    "genre": "noble",
+    "tier": "top"
+  },
+  {
+    "name": "Ink-Drudge",
+    "genre": "scholar",
+    "tier": "garbage"
+  },
+  {
+    "name": "Copyist's Boy",
+    "genre": "scholar",
+    "tier": "bad"
+  },
+  {
+    "name": "Margin Scribbler",
+    "genre": "scholar",
+    "tier": "bad"
+  },
+  {
+    "name": "Tallow Clerk",
+    "genre": "scholar",
+    "tier": "bad"
+  },
+  {
+    "name": "Novice Annalist",
+    "genre": "scholar",
+    "tier": "bad"
+  },
+  {
+    "name": "Hedge Lettered",
+    "genre": "scholar",
+    "tier": "bad"
+  },
+  {
+    "name": "Scrivener",
+    "genre": "scholar",
+    "tier": "average"
+  },
+  {
+    "name": "Chartwright",
+    "genre": "scholar",
+    "tier": "average"
+  },
+  {
+    "name": "Codex Keeper",
+    "genre": "scholar",
+    "tier": "average"
+  },
+  {
+    "name": "Ledger Clerk",
+    "genre": "scholar",
+    "tier": "average"
+  },
+  {
+    "name": "Loremonger",
+    "genre": "scholar",
+    "tier": "average"
+  },
+  {
+    "name": "Master Cartographer",
+    "genre": "scholar",
+    "tier": "good"
+  },
+  {
+    "name": "Vaultkeeper of Records",
+    "genre": "scholar",
+    "tier": "good"
+  },
+  {
+    "name": "Seated Sage",
+    "genre": "scholar",
+    "tier": "good"
+  },
+  {
+    "name": "Chronicler Royal",
+    "genre": "scholar",
+    "tier": "good"
+  },
+  {
+    "name": "Grand Lorekeeper",
+    "genre": "scholar",
+    "tier": "high"
+  },
+  {
+    "name": "Archscribe of the Realm",
+    "genre": "scholar",
+    "tier": "high"
+  },
+  {
+    "name": "Keeper of the Eternal Library",
+    "genre": "scholar",
+    "tier": "top"
+  },
+  {
+    "name": "Gutter Sneak",
+    "genre": "skill",
+    "tier": "garbage"
+  },
+  {
+    "name": "Purse-Snatch Urchin",
+    "genre": "skill",
+    "tier": "garbage"
+  },
+  {
+    "name": "Apprentice Cutpurse",
+    "genre": "skill",
+    "tier": "bad"
+  },
+  {
+    "name": "Footpad",
+    "genre": "skill",
+    "tier": "bad"
+  },
+  {
+    "name": "Lookout Boy",
+    "genre": "skill",
+    "tier": "bad"
+  },
+  {
+    "name": "Tavern Cardsharp",
+    "genre": "skill",
+    "tier": "bad"
+  },
+  {
+    "name": "Pickpocket",
+    "genre": "skill",
+    "tier": "bad"
+  },
+  {
+    "name": "Petty Smuggler",
+    "genre": "skill",
+    "tier": "bad"
+  },
+  {
+    "name": "Confidence Trickster",
+    "genre": "skill",
+    "tier": "average"
+  },
+  {
+    "name": "Gambler",
+    "genre": "skill",
+    "tier": "average"
+  },
+  {
+    "name": "Hired Spy",
+    "genre": "skill",
+    "tier": "average"
+  },
+  {
+    "name": "Contraband Runner",
+    "genre": "skill",
+    "tier": "average"
+  },
+  {
+    "name": "Master Thief",
+    "genre": "skill",
+    "tier": "good"
+  },
+  {
+    "name": "Guild Spymaster",
+    "genre": "skill",
+    "tier": "good"
+  },
+  {
+    "name": "Silver-Tongued Grifter",
+    "genre": "skill",
+    "tier": "good"
+  },
+  {
+    "name": "Veteran Cat Burglar",
+    "genre": "skill",
+    "tier": "good"
+  },
+  {
+    "name": "Shadow Guildmaster",
+    "genre": "skill",
+    "tier": "high"
+  },
+  {
+    "name": "Whisper-Lord of Spies",
+    "genre": "skill",
+    "tier": "high"
+  },
+  {
+    "name": "Prince of Thieves",
+    "genre": "skill",
+    "tier": "top"
+  },
+  {
+    "name": "Crypt-Crawler",
+    "genre": "wayfarer",
+    "tier": "garbage"
+  },
+  {
+    "name": "Greenhorn Delver",
+    "genre": "wayfarer",
+    "tier": "bad"
+  },
+  {
+    "name": "Torchbearer",
+    "genre": "wayfarer",
+    "tier": "bad"
+  },
+  {
+    "name": "Trail Scrounger",
+    "genre": "wayfarer",
+    "tier": "bad"
+  },
+  {
+    "name": "Bog Forager",
+    "genre": "wayfarer",
+    "tier": "bad"
+  },
+  {
+    "name": "Wayfarer's Lackey",
+    "genre": "wayfarer",
+    "tier": "bad"
+  },
+  {
+    "name": "Sellsword",
+    "genre": "wayfarer",
+    "tier": "average"
+  },
+  {
+    "name": "Relic Hunter",
+    "genre": "wayfarer",
+    "tier": "average"
+  },
+  {
+    "name": "Dungeon Delver",
+    "genre": "wayfarer",
+    "tier": "average"
+  },
+  {
+    "name": "Trail Pathfinder",
+    "genre": "wayfarer",
+    "tier": "average"
+  },
+  {
+    "name": "Beast Stalker",
+    "genre": "wayfarer",
+    "tier": "average"
+  },
+  {
+    "name": "Veteran Tomb-Breaker",
+    "genre": "wayfarer",
+    "tier": "good"
+  },
+  {
+    "name": "Master Trailblazer",
+    "genre": "wayfarer",
+    "tier": "good"
+  },
+  {
+    "name": "Wyrm-Slayer",
+    "genre": "wayfarer",
+    "tier": "good"
+  },
+  {
+    "name": "Lodestar Cartographer",
+    "genre": "wayfarer",
+    "tier": "good"
+  },
+  {
+    "name": "Grandmaster Delver",
+    "genre": "wayfarer",
+    "tier": "high"
+  },
+  {
+    "name": "Champion of the Lost Vaults",
+    "genre": "wayfarer",
+    "tier": "high"
+  },
+  {
+    "name": "Dread Beast-Reaver",
+    "genre": "wayfarer",
+    "tier": "high"
+  },
+  {
+    "name": "Worldwalker Sovereign",
+    "genre": "wayfarer",
+    "tier": "top"
+  },
+  {
+    "name": "Legend of the Uncharted",
+    "genre": "wayfarer",
+    "tier": "top"
+  },
+  {
+    "name": "Coin-Picker",
+    "genre": "trade",
+    "tier": "garbage"
+  },
+  {
+    "name": "Rag Peddler",
+    "genre": "trade",
+    "tier": "bad"
+  },
+  {
+    "name": "Stall Hawker",
+    "genre": "trade",
+    "tier": "bad"
+  },
+  {
+    "name": "Tally Boy",
+    "genre": "trade",
+    "tier": "bad"
+  },
+  {
+    "name": "Salt Monger",
+    "genre": "trade",
+    "tier": "bad"
+  },
+  {
+    "name": "Pack Drover",
+    "genre": "trade",
+    "tier": "bad"
+  },
+  {
+    "name": "Caravan Trader",
+    "genre": "trade",
+    "tier": "average"
+  },
+  {
+    "name": "Coin-Changer",
+    "genre": "trade",
+    "tier": "average"
+  },
+  {
+    "name": "Spice Monger",
+    "genre": "trade",
+    "tier": "average"
+  },
+  {
+    "name": "Wares Broker",
+    "genre": "trade",
+    "tier": "average"
+  },
+  {
+    "name": "Bonded Factor",
+    "genre": "trade",
+    "tier": "average"
+  },
+  {
+    "name": "Guild Merchant",
+    "genre": "trade",
+    "tier": "good"
+  },
+  {
+    "name": "Master Banker",
+    "genre": "trade",
+    "tier": "good"
+  },
+  {
+    "name": "Caravan Master",
+    "genre": "trade",
+    "tier": "good"
+  },
+  {
+    "name": "Bourse Broker",
+    "genre": "trade",
+    "tier": "good"
+  },
+  {
+    "name": "Grand Trade-Lord",
+    "genre": "trade",
+    "tier": "high"
+  },
+  {
+    "name": "Coffer Sovereign",
+    "genre": "trade",
+    "tier": "high"
+  },
+  {
+    "name": "Merchant Prince of the Golden Road",
+    "genre": "trade",
+    "tier": "top"
+  },
+  {
+    "name": "Cup-Rattler",
+    "genre": "performance",
+    "tier": "garbage"
+  },
+  {
+    "name": "Alley Caper",
+    "genre": "performance",
+    "tier": "garbage"
+  },
+  {
+    "name": "Tavern Warbler",
+    "genre": "performance",
+    "tier": "bad"
+  },
+  {
+    "name": "Corner Fiddler",
+    "genre": "performance",
+    "tier": "bad"
+  },
+  {
+    "name": "Fledgling Jester",
+    "genre": "performance",
+    "tier": "bad"
+  },
+  {
+    "name": "Patch Mummer",
+    "genre": "performance",
+    "tier": "bad"
+  },
+  {
+    "name": "Ribbon Tumbler",
+    "genre": "performance",
+    "tier": "bad"
+  },
+  {
+    "name": "Lute Apprentice",
+    "genre": "performance",
+    "tier": "bad"
+  },
+  {
+    "name": "Stage Player",
+    "genre": "performance",
+    "tier": "average"
+  },
+  {
+    "name": "Court Jester",
+    "genre": "performance",
+    "tier": "average"
+  },
+  {
+    "name": "Festival Dancer",
+    "genre": "performance",
+    "tier": "average"
+  },
+  {
+    "name": "Rope Acrobat",
+    "genre": "performance",
+    "tier": "average"
+  },
+  {
+    "name": "Master Bard",
+    "genre": "performance",
+    "tier": "good"
+  },
+  {
+    "name": "Renowned Tragedian",
+    "genre": "performance",
+    "tier": "good"
+  },
+  {
+    "name": "Grand Illusion Dancer",
+    "genre": "performance",
+    "tier": "good"
+  },
+  {
+    "name": "Maestro of the Reel",
+    "genre": "performance",
+    "tier": "good"
+  },
+  {
+    "name": "Voice of a Thousand Courts",
+    "genre": "performance",
+    "tier": "high"
+  },
+  {
+    "name": "Archfool of the Crown",
+    "genre": "performance",
+    "tier": "high"
+  },
+  {
+    "name": "Muse Incarnate",
+    "genre": "performance",
+    "tier": "top"
+  },
+  {
+    "name": "Slop-Ladler",
+    "genre": "service",
+    "tier": "garbage"
+  },
+  {
+    "name": "Trencher-Licker",
+    "genre": "service",
+    "tier": "garbage"
+  },
+  {
+    "name": "Scullery Hand",
+    "genre": "service",
+    "tier": "bad"
+  },
+  {
+    "name": "Tap-Boy",
+    "genre": "service",
+    "tier": "bad"
+  },
+  {
+    "name": "Spit-Turner",
+    "genre": "service",
+    "tier": "bad"
+  },
+  {
+    "name": "Potboy",
+    "genre": "service",
+    "tier": "bad"
+  },
+  {
+    "name": "Hedge Brewer",
+    "genre": "service",
+    "tier": "bad"
+  },
+  {
+    "name": "Larder Drudge",
+    "genre": "service",
+    "tier": "bad"
+  },
+  {
+    "name": "Taverner",
+    "genre": "service",
+    "tier": "average"
+  },
+  {
+    "name": "Ale-Brewer",
+    "genre": "service",
+    "tier": "average"
+  },
+  {
+    "name": "Master Vintner",
+    "genre": "service",
+    "tier": "good"
+  },
+  {
+    "name": "Hearthmaster",
+    "genre": "service",
+    "tier": "good"
+  },
+  {
+    "name": "Guildhall Steward",
+    "genre": "service",
+    "tier": "good"
+  },
+  {
+    "name": "High Seneschal of the Feast",
+    "genre": "service",
+    "tier": "high"
+  },
+  {
+    "name": "Grand Cupbearer of the Realm",
+    "genre": "service",
+    "tier": "top"
+  },
+  {
+    "name": "Corpse-Washer",
+    "genre": "occult",
+    "tier": "garbage"
+  },
+  {
+    "name": "Hedge Hexer",
+    "genre": "occult",
+    "tier": "bad"
+  },
+  {
+    "name": "Charm-Peddler",
+    "genre": "occult",
+    "tier": "bad"
+  },
+  {
+    "name": "Bone-Reader",
+    "genre": "occult",
+    "tier": "bad"
+  },
+  {
+    "name": "Coven Novice",
+    "genre": "occult",
+    "tier": "bad"
+  },
+  {
+    "name": "Graveyard Acolyte",
+    "genre": "occult",
+    "tier": "bad"
+  },
+  {
+    "name": "Cult Witch",
+    "genre": "occult",
+    "tier": "average"
+  },
+  {
+    "name": "Grave Necromancer",
+    "genre": "occult",
+    "tier": "average"
+  },
+  {
+    "name": "Pact Warlock",
+    "genre": "occult",
+    "tier": "average"
+  },
+  {
+    "name": "Shadow Diabolist",
+    "genre": "occult",
+    "tier": "average"
+  },
+  {
+    "name": "Blood Cultist",
+    "genre": "occult",
+    "tier": "average"
+  },
+  {
+    "name": "Master Hexer",
+    "genre": "occult",
+    "tier": "good"
+  },
+  {
+    "name": "Coven Matron",
+    "genre": "occult",
+    "tier": "good"
+  },
+  {
+    "name": "Necromancer of the Charnel Hall",
+    "genre": "occult",
+    "tier": "good"
+  },
+  {
+    "name": "Infernal Pact-Binder",
+    "genre": "occult",
+    "tier": "good"
+  },
+  {
+    "name": "Archwitch of the Black Sabbat",
+    "genre": "occult",
+    "tier": "high"
+  },
+  {
+    "name": "Necromancer-Lord",
+    "genre": "occult",
+    "tier": "high"
+  },
+  {
+    "name": "Grand Diabolist",
+    "genre": "occult",
+    "tier": "high"
+  },
+  {
+    "name": "Dread Lich-Sovereign",
+    "genre": "occult",
+    "tier": "top"
+  },
+  {
+    "name": "Avatar of the Devourer",
+    "genre": "occult",
+    "tier": "top"
+  },
+  {
+    "name": "Pus-Drainer",
+    "genre": "medical",
+    "tier": "garbage"
+  },
+  {
+    "name": "Leechwife",
+    "genre": "medical",
+    "tier": "bad"
+  },
+  {
+    "name": "Bonesetter's Boy",
+    "genre": "medical",
+    "tier": "bad"
+  },
+  {
+    "name": "Hedge Midwife",
+    "genre": "medical",
+    "tier": "bad"
+  },
+  {
+    "name": "Splint-Binder",
+    "genre": "medical",
+    "tier": "bad"
+  },
+  {
+    "name": "Poultice Maker",
+    "genre": "medical",
+    "tier": "bad"
+  },
+  {
+    "name": "Village Chirurgeon",
+    "genre": "medical",
+    "tier": "average"
+  },
+  {
+    "name": "Field Surgeon",
+    "genre": "medical",
+    "tier": "average"
+  },
+  {
+    "name": "Plague-Doctor",
+    "genre": "medical",
+    "tier": "average"
+  },
+  {
+    "name": "Wound-Dresser",
+    "genre": "medical",
+    "tier": "average"
+  },
+  {
+    "name": "Town Physician",
+    "genre": "medical",
+    "tier": "average"
+  },
+  {
+    "name": "Master Surgeon",
+    "genre": "medical",
+    "tier": "good"
+  },
+  {
+    "name": "Court Physician",
+    "genre": "medical",
+    "tier": "good"
+  },
+  {
+    "name": "Sworn Healer of Ieso",
+    "genre": "medical",
+    "tier": "good"
+  },
+  {
+    "name": "Anatomist Adept",
+    "genre": "medical",
+    "tier": "good"
+  },
+  {
+    "name": "Grand Physician",
+    "genre": "medical",
+    "tier": "high"
+  },
+  {
+    "name": "High Chirurgeon of Ieso",
+    "genre": "medical",
+    "tier": "high"
+  },
+  {
+    "name": "Lifebringer Eternal",
+    "genre": "medical",
+    "tier": "top"
+  },
+  {
+    "name": "Sump-Skimmer",
+    "genre": "alchemy",
+    "tier": "garbage"
+  },
+  {
+    "name": "Retort Scrubber",
+    "genre": "alchemy",
+    "tier": "bad"
+  },
+  {
+    "name": "Bellows Tender",
+    "genre": "alchemy",
+    "tier": "bad"
+  },
+  {
+    "name": "Apprentice Apothecary",
+    "genre": "alchemy",
+    "tier": "bad"
+  },
+  {
+    "name": "Reagent Grinder",
+    "genre": "alchemy",
+    "tier": "bad"
+  },
+  {
+    "name": "Bomb-Maker",
+    "genre": "alchemy",
+    "tier": "average"
+  },
+  {
+    "name": "Mutagenist",
+    "genre": "alchemy",
+    "tier": "average"
+  },
+  {
+    "name": "Tincture Vendor",
+    "genre": "alchemy",
+    "tier": "average"
+  },
+  {
+    "name": "Poison Brewer",
+    "genre": "alchemy",
+    "tier": "average"
+  },
+  {
+    "name": "Master Alchemist",
+    "genre": "alchemy",
+    "tier": "good"
+  },
+  {
+    "name": "Grand Apothecary",
+    "genre": "alchemy",
+    "tier": "good"
+  },
+  {
+    "name": "Venom Master",
+    "genre": "alchemy",
+    "tier": "good"
+  },
+  {
+    "name": "Transmutist Adept",
+    "genre": "alchemy",
+    "tier": "good"
+  },
+  {
+    "name": "Archalchemist",
+    "genre": "alchemy",
+    "tier": "high"
+  },
+  {
+    "name": "Grandmaster of the Crucible",
+    "genre": "alchemy",
+    "tier": "high"
+  },
+  {
+    "name": "Philosopher of the Stone",
+    "genre": "alchemy",
+    "tier": "top"
+  },
+  {
+    "name": "Ditch Skulker",
+    "genre": "villain",
+    "tier": "garbage"
+  },
+  {
+    "name": "Corpse Looter",
+    "genre": "villain",
+    "tier": "garbage"
+  },
+  {
+    "name": "Snitch Rat",
+    "genre": "villain",
+    "tier": "garbage"
+  },
+  {
+    "name": "Footpad Bully",
+    "genre": "villain",
+    "tier": "bad"
+  },
+  {
+    "name": "Press-Gang Thug",
+    "genre": "villain",
+    "tier": "bad"
+  },
+  {
+    "name": "Hedge Extortionist",
+    "genre": "villain",
+    "tier": "bad"
+  },
+  {
+    "name": "Novice Cutthroat",
+    "genre": "villain",
+    "tier": "bad"
+  },
+  {
+    "name": "Mob Kindler",
+    "genre": "villain",
+    "tier": "bad"
+  },
+  {
+    "name": "Backalley Bruiser",
+    "genre": "villain",
+    "tier": "bad"
+  },
+  {
+    "name": "Slave-Driver",
+    "genre": "villain",
+    "tier": "average"
+  },
+  {
+    "name": "Rack Torturer",
+    "genre": "villain",
+    "tier": "average"
+  },
+  {
+    "name": "Raid Marauder",
+    "genre": "villain",
+    "tier": "average"
+  },
+  {
+    "name": "Riot-Stoker",
+    "genre": "villain",
+    "tier": "average"
+  },
+  {
+    "name": "Bandit Chieftain",
+    "genre": "villain",
+    "tier": "good"
+  },
+  {
+    "name": "Master Inquisitor of Pain",
+    "genre": "villain",
+    "tier": "good"
+  },
+  {
+    "name": "Veteran Slaver-Captain",
+    "genre": "villain",
+    "tier": "good"
+  },
+  {
+    "name": "Warlord of the Reaving Horde",
+    "genre": "villain",
+    "tier": "high"
+  },
+  {
+    "name": "Grand Tyrant",
+    "genre": "villain",
+    "tier": "high"
+  },
+  {
+    "name": "Dread Terror-Lord",
+    "genre": "villain",
+    "tier": "high"
+  },
+  {
+    "name": "Sovereign of Chains",
+    "genre": "villain",
+    "tier": "top"
+  },
+  {
+    "name": "Avatar of Atrocity",
+    "genre": "villain",
+    "tier": "top"
+  },
+  {
+    "name": "Cesspit Wader",
+    "genre": "menial",
+    "tier": "garbage"
+  },
+  {
+    "name": "Maggot Picker",
+    "genre": "menial",
+    "tier": "garbage"
+  },
+  {
+    "name": "Corpse Dragger",
+    "genre": "menial",
+    "tier": "garbage"
+  },
+  {
+    "name": "Ash Raker",
+    "genre": "menial",
+    "tier": "garbage"
+  },
+  {
+    "name": "Privy Sluicer",
+    "genre": "menial",
+    "tier": "garbage"
+  },
+  {
+    "name": "Soil Hauler",
+    "genre": "menial",
+    "tier": "bad"
+  },
+  {
+    "name": "Tallow Boy",
+    "genre": "menial",
+    "tier": "bad"
+  },
+  {
+    "name": "Drain Crawler",
+    "genre": "menial",
+    "tier": "bad"
+  },
+  {
+    "name": "Slop Carrier",
+    "genre": "menial",
+    "tier": "bad"
+  },
+  {
+    "name": "Bilge Mopper",
+    "genre": "menial",
+    "tier": "bad"
+  },
+  {
+    "name": "Cinder Sweep",
+    "genre": "menial",
+    "tier": "bad"
+  },
+  {
+    "name": "Rag Gatherer",
+    "genre": "menial",
+    "tier": "bad"
+  },
+  {
+    "name": "Night-Soil Carter",
+    "genre": "menial",
+    "tier": "average"
+  },
+  {
+    "name": "Drudge Warden",
+    "genre": "menial",
+    "tier": "average"
+  },
+  {
+    "name": "Sewer Drudge",
+    "genre": "menial",
+    "tier": "average"
+  },
+  {
+    "name": "Midden Tender",
+    "genre": "menial",
+    "tier": "average"
+  },
+  {
+    "name": "Refuse Hand",
+    "genre": "menial",
+    "tier": "average"
+  },
+  {
+    "name": "Gutterworks Foreman",
+    "genre": "menial",
+    "tier": "good"
+  },
+  {
+    "name": "Master of Drains",
+    "genre": "menial",
+    "tier": "good"
+  },
+  {
+    "name": "Cinder Acolyte",
+    "genre": "elementalist",
+    "tier": "bad"
+  },
+  {
+    "name": "Hedge Stormcaller",
+    "genre": "elementalist",
+    "tier": "bad"
+  },
+  {
+    "name": "Ember Tender",
+    "genre": "elementalist",
+    "tier": "bad"
+  },
+  {
+    "name": "Frost Novice",
+    "genre": "elementalist",
+    "tier": "bad"
+  },
+  {
+    "name": "Flame Binder",
+    "genre": "elementalist",
+    "tier": "average"
+  },
+  {
+    "name": "Stoneshaper",
+    "genre": "elementalist",
+    "tier": "average"
+  },
+  {
+    "name": "Tidecaller",
+    "genre": "elementalist",
+    "tier": "average"
+  },
+  {
+    "name": "Windwright",
+    "genre": "elementalist",
+    "tier": "average"
+  },
+  {
+    "name": "Ashweaver",
+    "genre": "elementalist",
+    "tier": "average"
+  },
+  {
+    "name": "Master Pyromancer",
+    "genre": "elementalist",
+    "tier": "good"
+  },
+  {
+    "name": "Veteran Frostwarden",
+    "genre": "elementalist",
+    "tier": "good"
+  },
+  {
+    "name": "Tempest Adept",
+    "genre": "elementalist",
+    "tier": "good"
+  },
+  {
+    "name": "Magma Sage",
+    "genre": "elementalist",
+    "tier": "good"
+  },
+  {
+    "name": "Archon of Flame",
+    "genre": "elementalist",
+    "tier": "high"
+  },
+  {
+    "name": "Grand Stormlord",
+    "genre": "elementalist",
+    "tier": "high"
+  },
+  {
+    "name": "High Glaciermage",
+    "genre": "elementalist",
+    "tier": "high"
+  },
+  {
+    "name": "Avatar of the Inferno",
+    "genre": "elementalist",
+    "tier": "top"
+  },
+  {
+    "name": "Sovereign of the Four Winds",
+    "genre": "elementalist",
+    "tier": "top"
+  },
+  {
+    "name": "Spittle Disciple",
+    "genre": "ki",
+    "tier": "garbage"
+  },
+  {
+    "name": "Breath Novice",
+    "genre": "ki",
+    "tier": "bad"
+  },
+  {
+    "name": "Sweeping Acolyte",
+    "genre": "ki",
+    "tier": "bad"
+  },
+  {
+    "name": "Stance Initiate",
+    "genre": "ki",
+    "tier": "bad"
+  },
+  {
+    "name": "Cellar Ascetic",
+    "genre": "ki",
+    "tier": "bad"
+  },
+  {
+    "name": "Fasting Aspirant",
+    "genre": "ki",
+    "tier": "bad"
+  },
+  {
+    "name": "Open Palm Adept",
+    "genre": "ki",
+    "tier": "average"
+  },
+  {
+    "name": "Wandering Monk",
+    "genre": "ki",
+    "tier": "average"
+  },
+  {
+    "name": "Iron Body Brother",
+    "genre": "ki",
+    "tier": "average"
+  },
+  {
+    "name": "Inner Flame Striker",
+    "genre": "ki",
+    "tier": "average"
+  },
+  {
+    "name": "Silent Step Ascetic",
+    "genre": "ki",
+    "tier": "average"
+  },
+  {
+    "name": "Master of Five Forms",
+    "genre": "ki",
+    "tier": "good"
+  },
+  {
+    "name": "Ki Forged Sensei",
+    "genre": "ki",
+    "tier": "good"
+  },
+  {
+    "name": "Flowing River Grandmaster",
+    "genre": "ki",
+    "tier": "good"
+  },
+  {
+    "name": "Quivering Palm Master",
+    "genre": "ki",
+    "tier": "good"
+  },
+  {
+    "name": "Grand Ascendant of Ki",
+    "genre": "ki",
+    "tier": "high"
+  },
+  {
+    "name": "Sovereign of the Empty Hand",
+    "genre": "ki",
+    "tier": "high"
+  },
+  {
+    "name": "Thousand Fists Champion",
+    "genre": "ki",
+    "tier": "high"
+  },
+  {
+    "name": "Living Dragon of Ki",
+    "genre": "ki",
+    "tier": "top"
+  },
+  {
+    "name": "Eternal Enlightened One",
+    "genre": "ki",
+    "tier": "top"
+  }
+]

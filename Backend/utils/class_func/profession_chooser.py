@@ -26,7 +26,8 @@ display names for the legacy ``professions`` export field.
 import random
 
 from utils import data
-from utils.class_func.profession_abilities import assign_profession_abilities
+from utils.class_func.profession_abilities import (
+    assign_profession_abilities, _theme_for, _tier_for, catalog_professions)
 
 # Homebrew profession feats. Order matters: prerequisites flow down the list (True Calling gates
 # Always Improving), so we take them top-to-bottom.
@@ -48,6 +49,18 @@ _ASSOCIATE_SKILLS = [
 _BASE_CAP = 10          # every profession caps here ...
 _TRUE_CALLING_CAP = 15  # ... except the one True Calling profession
 _MAX_PROFESSIONS = 6    # safety bound when a big pool needs many vocations to absorb it
+
+# Target distribution of GENERATED professions (weighted selection in _themed_profession_names).
+# The TIER marginal is honored exactly; the GENRE marginal is approximated within each rolled tier
+# (tier and genre are correlated -- there is no top-tier gongfarmer). Tune GENRE_WEIGHTS empirically.
+_TIER_WEIGHTS = {"garbage": 5, "bad": 35, "average": 35, "good": 20, "high": 3, "top": 2}
+_GENRE_WEIGHTS = {   # relative weights (auto-normalised), by how common the archetype is in fantasy
+    "craft": 15, "martial": 13, "nature": 8, "divine": 7, "arcane": 7, "noble": 6,
+    "scholar": 5, "skill": 5, "wayfarer": 5, "trade": 4.5, "performance": 4, "service": 4,
+    "occult": 3.5, "medical": 3, "alchemy": 3, "villain": 3, "menial": 2.5,
+    "elementalist": 2, "ki": 2,
+}
+_PROFESSION_INDEX = None   # {tier: {genre: [display names]}} -- built once from the whole pool
 
 
 def _roll_profession_feat_count(truly_random_feats):
@@ -79,24 +92,53 @@ def _professions_needed(pool, has_true_calling):
     return max(1, needed)
 
 
+def _profession_index():
+    """Classify the whole profession pool (legacy ``data.professions`` + the curated catalog) into a
+    ``{tier: {genre: [names]}}`` index, built once, for target-weighted selection."""
+    global _PROFESSION_INDEX
+    if _PROFESSION_INDEX is None:
+        pool = list(getattr(data, "professions", []) or []) + catalog_professions()
+        idx, seen = {}, set()
+        for name in pool:
+            key = str(name).strip()
+            if not key or key.lower() in seen:
+                continue
+            seen.add(key.lower())
+            idx.setdefault(_tier_for(key), {}).setdefault(_theme_for(key), []).append(key)
+        _PROFESSION_INDEX = idx
+    return _PROFESSION_INDEX
+
+
 def _themed_profession_names(character, count):
-    """Pick ``count`` distinct profession names, lightly biased toward the character's craft/class so
-    a smith tends to get a smithing-flavoured vocation as the primary."""
-    pool = list(getattr(data, "professions", []) or [])
-    if not pool:
-        return ["laborer"] * count
-    theme_words = set()
-    for src in (getattr(character, "craft_chosen", None), getattr(character, "c_class", None)):
-        if src:
-            theme_words.update(str(src).lower().split())
-    themed = [p for p in pool if theme_words & set(str(p).lower().split())]
-    chosen = []
-    if themed and random.random() < 0.6:
-        chosen.append(random.choice(themed))
+    """Pick ``count`` distinct profession names following the target distributions: roll a tier from
+    ``_TIER_WEIGHTS`` (exact marginal), then a genre present at that tier from ``_GENRE_WEIGHTS``
+    (approximate marginal), then a random unused name from that cell. Falls back within the tier, then
+    anywhere, if a cell is exhausted."""
+    idx = _profession_index()
+    if not idx:
+        return ["Laborer"] * count
+    tiers = [t for t in _TIER_WEIGHTS if t in idx]
+    tier_w = [_TIER_WEIGHTS[t] for t in tiers]
+    chosen, chosen_l = [], set()
+    attempts = 0
+    while len(chosen) < count and attempts < count * 40:
+        attempts += 1
+        tier = random.choices(tiers, weights=tier_w, k=1)[0]
+        genres = list(idx[tier].keys())
+        genre = random.choices(genres, weights=[_GENRE_WEIGHTS.get(g, 1) for g in genres], k=1)[0]
+        candidates = [nm for nm in idx[tier][genre] if nm.lower() not in chosen_l]
+        if not candidates:   # relax: any unused at this tier, then any unused anywhere
+            candidates = [nm for g in idx[tier].values() for nm in g if nm.lower() not in chosen_l]
+        if not candidates:
+            candidates = [nm for t in idx.values() for g in t.values() for nm in g
+                          if nm.lower() not in chosen_l]
+        if not candidates:
+            break
+        pick = random.choice(candidates)
+        chosen.append(pick)
+        chosen_l.add(pick.lower())
     while len(chosen) < count:
-        pick = random.choice(pool)
-        if pick not in chosen:
-            chosen.append(pick)
+        chosen.append("Laborer")
     return chosen[:count]
 
 
