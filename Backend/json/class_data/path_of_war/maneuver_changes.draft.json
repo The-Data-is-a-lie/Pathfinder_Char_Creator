@@ -1,4 +1,22 @@
 {
+  "Gutstrike": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Black Seraph",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ 11 + @INITMOD ]] or be sickened for one round"
+  },
+  "Ravaging Blow": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Black Seraph",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [],
+    "rider": "Will Save [[ 11 + @INITMOD ]] negates"
+  },
   "Strength of Hell": {
     "modifiers": [
       {
@@ -7,7 +25,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -26,7 +44,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -45,7 +63,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -64,7 +82,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -83,7 +101,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -102,7 +120,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -121,7 +139,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -140,7 +158,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -159,7 +177,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -178,7 +196,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -197,7 +215,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -216,7 +234,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -235,7 +253,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -254,7 +272,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -273,7 +291,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -292,7 +310,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -311,7 +329,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -330,7 +348,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -349,7 +367,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -368,7 +386,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -387,7 +405,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -406,7 +424,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -425,7 +443,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -444,7 +462,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -463,7 +481,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -482,7 +500,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -501,7 +519,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -520,7 +538,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -539,7 +557,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -558,7 +576,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -569,6 +587,15 @@
       "deal 2d6 points of damage"
     ]
   },
+  "Alligator Suplex": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Brutal Crocodile",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ 14 + @INITMOD ]] or be dazed for one round DC 14 + your i"
+  },
   "Gut Crusher": {
     "modifiers": [
       {
@@ -577,7 +604,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -586,7 +613,8 @@
     "_level": 5,
     "_snippets": [
       "dealing 3d12 damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 15 + @INITMOD ]] or become unable to perform any actions; nauseated [[1]] rounds"
   },
   "Atrophic Brutalization": {
     "modifiers": [
@@ -596,7 +624,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -615,7 +643,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -624,7 +652,8 @@
     "_level": 6,
     "_snippets": [
       "deals 4d10 damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 16 + @INITMOD ]] or become permanently blinded"
   },
   "Meteoric Suplex": {
     "modifiers": [
@@ -634,7 +663,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -643,7 +672,17 @@
     "_level": 7,
     "_snippets": [
       "deals 10d10 damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 17 + @INITMOD ]] or half, DC 17 + your initiation modifie"
+  },
+  "Event Horizon": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Brutal Crocodile",
+    "_kind": "strike",
+    "_level": 9,
+    "_snippets": [],
+    "rider": "Reflex Save [[ ? + @INITMOD ]] or be banished to the Astral Plane"
   },
   "Mockery": {
     "modifiers": [
@@ -653,7 +692,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -672,7 +711,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -691,7 +730,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -710,7 +749,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -729,7 +768,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -748,7 +787,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -767,7 +806,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -805,7 +844,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -824,7 +863,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -845,7 +884,7 @@
         "damageType": [
           "force"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -854,7 +893,8 @@
     "_level": 2,
     "_snippets": [
       "deals an additional 1d4 points of force damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 12 + @INITMOD ]] or become staggered for one round"
   },
   "Energy Spark": {
     "modifiers": [
@@ -864,7 +904,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -883,7 +923,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -902,7 +942,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -911,7 +951,8 @@
     "_level": 3,
     "_snippets": [
       "deals 5d6 points of damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 13 + @INITMOD ]] negate"
   },
   "Raging Flux": {
     "modifiers": [
@@ -921,7 +962,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -942,7 +983,7 @@
         "damageType": [
           "force"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -961,7 +1002,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -980,7 +1021,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -999,7 +1040,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1008,7 +1049,8 @@
     "_level": 5,
     "_snippets": [
       "deals 9d6 points of damage"
-    ]
+    ],
+    "rider": "bull rush [[ d20 + @attributes.cmb.total ]] vs CMD"
   },
   "Elemental Vortex": {
     "modifiers": [
@@ -1018,7 +1060,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1037,7 +1079,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1046,7 +1088,8 @@
     "_level": 6,
     "_snippets": [
       "deals 12d6 points of damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 16 + @INITMOD ]] negate"
   },
   "Eldritch Fang Flurry": {
     "modifiers": [
@@ -1058,7 +1101,7 @@
         "damageType": [
           "force"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1067,7 +1110,8 @@
     "_level": 6,
     "_snippets": [
       "deal an additional 3d6 points of force damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 16 + @INITMOD ]] or become blinded for one round"
   },
   "Shatter Resistance": {
     "modifiers": [
@@ -1077,7 +1121,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1096,7 +1140,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1115,7 +1159,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1124,7 +1168,17 @@
     "_level": 8,
     "_snippets": [
       "deals 14d6 points of damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 18 + @INITMOD ]] negate"
+  },
+  "Guards Oath": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [],
+    "rider": "Will Save [[ 11 + @INITMOD ]] or become cursed and unable to move with"
   },
   "Terrifying Blow": {
     "modifiers": [
@@ -1134,7 +1188,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1143,7 +1197,17 @@
     "_level": 1,
     "_snippets": [
       "deals an additional 1d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 11 + @INITMOD ]] or become frightened for one round"
+  },
+  "Debilitating Fear": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "boost",
+    "_level": 2,
+    "_snippets": [],
+    "rider": "Will Save [[ 12 + @INITMOD ]] or become dazed for 1 round; dazed [[1]] rounds"
   },
   "Relentless Wardens Strike": {
     "modifiers": [
@@ -1153,7 +1217,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1191,7 +1255,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1202,6 +1266,24 @@
       "additional 4d6 points of damage"
     ]
   },
+  "Oath of Torpor": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "boost",
+    "_level": 4,
+    "_snippets": [],
+    "rider": "Will Save [[ 14 + @INITMOD ]] or become slowed as the spell until the"
+  },
+  "Unbearable Gaze": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "counter",
+    "_level": 5,
+    "_snippets": [],
+    "rider": "Reflex Save [[ 15 + @INITMOD ]] or become blinded for one round, avertin"
+  },
   "Shackles of the Condemned": {
     "modifiers": [
       {
@@ -1210,7 +1292,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1229,7 +1311,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1238,7 +1320,17 @@
     "_level": 6,
     "_snippets": [
       "additional 6d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 16 + @INITMOD ]] or become frightened for 1d4 rounds and; frightened [[1d4]] rounds"
+  },
+  "Inescapable Fetters": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "boost",
+    "_level": 6,
+    "_snippets": [],
+    "rider": "Will Save [[ 16 + @INITMOD ]] or be teleported to an unoccupied square"
   },
   "Strike of Sacrifice": {
     "modifiers": [
@@ -1248,7 +1340,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1267,7 +1359,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1276,7 +1368,26 @@
     "_level": 7,
     "_snippets": [
       "additional 6d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 17 + @INITMOD ]] or become panicked for one round, and th"
+  },
+  "Grim Satisfaction": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "boost",
+    "_level": 7,
+    "_snippets": [],
+    "rider": "Will Save [[ 17 + @INITMOD ]] or cower in fear for one round, and you"
+  },
+  "Unbreakable Promise": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Eternal Guardian",
+    "_kind": "counter",
+    "_level": 7,
+    "_snippets": [],
+    "rider": "Will Save [[ 17 + @INITMOD ]] or become cursed for three rounds"
   },
   "Hammer of the Immortal": {
     "modifiers": [
@@ -1286,7 +1397,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1305,7 +1416,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1316,6 +1427,15 @@
       "deal an additional 3d6 points of damage"
     ]
   },
+  "Demoralizing Roar": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Golden Lion",
+    "_kind": "boost",
+    "_level": 1,
+    "_snippets": [],
+    "rider": "Will Save [[ 11 + @INITMOD ]] negates"
+  },
   "Call to Action": {
     "modifiers": [
       {
@@ -1324,7 +1444,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1343,7 +1463,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1362,7 +1482,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1381,7 +1501,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1419,7 +1539,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1428,7 +1548,8 @@
     "_level": 4,
     "_snippets": [
       "inflicting an additional 4d6 points of damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ ? + @INITMOD ]] or be knocked prone from the strike"
   },
   "Golden Swipe": {
     "modifiers": [
@@ -1438,7 +1559,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1457,7 +1578,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1476,7 +1597,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1495,7 +1616,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1514,7 +1635,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1523,7 +1644,17 @@
     "_level": 7,
     "_snippets": [
       "inflicts an additional 14d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 17 + @INITMOD ]] or be stunned for one round"
+  },
+  "Lion Lords Agony": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Golden Lion",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [],
+    "rider": "shaken [[1]] rounds"
   },
   "Snapping Strike": {
     "modifiers": [
@@ -1533,7 +1664,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1552,7 +1683,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1580,7 +1711,17 @@
     "_level": 2,
     "_snippets": [
       "additional 10 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 12 + @INITMOD ]] or it must attack him at its next availa"
+  },
+  "Taunting Turtle": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Iron Tortoise",
+    "_kind": "boost",
+    "_level": 2,
+    "_snippets": [],
+    "rider": "Will Save [[ 12 + @INITMOD ]] or it must attack the initiator on its n"
   },
   "Greater Snapping Strike": {
     "modifiers": [
@@ -1590,7 +1731,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1609,7 +1750,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1628,7 +1769,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1647,7 +1788,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1666,7 +1807,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1685,7 +1826,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1704,7 +1845,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1713,7 +1854,8 @@
     "_level": 6,
     "_snippets": [
       "inflicts 12d6 points of damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 16 + @INITMOD ]] or half damage"
   },
   "Cyclonic Shell Crush": {
     "modifiers": [
@@ -1723,7 +1865,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1732,7 +1874,8 @@
     "_level": 7,
     "_snippets": [
       "inflicts an additional +7d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 17 + @INITMOD ]] or 1d4 rounds"
   },
   "Iron Defenders Riposte": {
     "modifiers": [
@@ -1742,7 +1885,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1761,7 +1904,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1780,7 +1923,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1799,7 +1942,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1810,6 +1953,15 @@
       "deals an additional 1d6 points of damage"
     ]
   },
+  "Bring to Knee": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Leaden Hyena",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [],
+    "rider": "staggered [[1]] rounds"
+  },
   "Pinning Iron": {
     "modifiers": [
       {
@@ -1818,7 +1970,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1827,7 +1979,17 @@
     "_level": 4,
     "_snippets": [
       "deals an additional 4d6 points of damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 14 + @INITMOD ]] or be entangled for one round"
+  },
+  "Conviction Breaker": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Leaden Hyena",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [],
+    "rider": "Will Save [[ 16 + @INITMOD ]] or be shaken for 1 round; shaken [[1]] rounds"
   },
   "Crippling Wound": {
     "modifiers": [
@@ -1837,7 +1999,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1848,6 +2010,24 @@
       "dealing 8d6 damage"
     ]
   },
+  "Jam the Gears": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Mangled Gear",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ ? + @INITMOD ]] or be staggered for 1 round; staggered [[1]] rounds"
+  },
+  "Shutdown Shot": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Mangled Gear",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ ? + @INITMOD ]] or lose the ability to cast spells, mani"
+  },
   "Optimum Performance": {
     "modifiers": [
       {
@@ -1856,7 +2036,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1875,7 +2055,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1894,7 +2074,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1905,6 +2085,15 @@
       "deals 1d6 points of damage"
     ]
   },
+  "Lockdown Strike": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Mangled Gear",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ ? + @INITMOD ]] or be paralyzed for the duration of this"
+  },
   "Fearsome Backfire": {
     "modifiers": [
       {
@@ -1913,7 +2102,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1932,7 +2121,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1951,7 +2140,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1962,6 +2151,15 @@
       "additional 1d6 points of damage"
     ]
   },
+  "Calm the Storm": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Mithral Current",
+    "_kind": "counter",
+    "_level": 2,
+    "_snippets": [],
+    "rider": "Reflex Save [[ 12 + @INITMOD ]] or be unable to target you with any othe"
+  },
   "Iron Wave": {
     "modifiers": [
       {
@@ -1970,7 +2168,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -1979,7 +2177,8 @@
     "_level": 2,
     "_snippets": [
       "additional 2d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 12 + @INITMOD ]] or become vulnerable to silver until the"
   },
   "Riptide Strike": {
     "modifiers": [
@@ -1989,7 +2188,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2008,7 +2207,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2027,7 +2226,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2046,7 +2245,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2055,7 +2254,8 @@
     "_level": 4,
     "_snippets": [
       "additional 6d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 14 + @INITMOD ]] or become blinded for 1 minute"
   },
   "Silver Wave": {
     "modifiers": [
@@ -2065,7 +2265,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2074,7 +2274,8 @@
     "_level": 4,
     "_snippets": [
       "additional 6d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 14 + @INITMOD ]] or become vulnerable to silver until the"
   },
   "Flowing Stream": {
     "modifiers": [
@@ -2084,7 +2285,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2103,7 +2304,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2122,7 +2323,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2141,7 +2342,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2160,7 +2361,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2179,7 +2380,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2188,7 +2389,8 @@
     "_level": 6,
     "_snippets": [
       "additional 8d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 16 + @INITMOD ]] or become vulnerable to silver until the"
   },
   "Blade of the Silver Sea": {
     "modifiers": [
@@ -2198,7 +2400,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2217,7 +2419,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2236,7 +2438,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2255,7 +2457,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2264,7 +2466,8 @@
     "_level": 8,
     "_snippets": [
       "additional 14d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 18 + @INITMOD ]] or become dazed for 1d4 rounds, a Reflex; dazed [[1d4]] rounds"
   },
   "Riptide Slice": {
     "modifiers": [
@@ -2274,7 +2477,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2293,7 +2496,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2312,7 +2515,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2331,7 +2534,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2350,7 +2553,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2359,7 +2562,8 @@
     "_level": 2,
     "_snippets": [
       "additional 2d6 points of damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 12 + @INITMOD ]] or be knocked prone"
   },
   "Thunderous Fall": {
     "modifiers": [
@@ -2369,7 +2573,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2378,7 +2582,8 @@
     "_level": 2,
     "_snippets": [
       "additional 2d6 points of damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 12 + @INITMOD ]] or be dismounted, falling prone in a squ"
   },
   "Goring Strike": {
     "modifiers": [
@@ -2388,7 +2593,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2397,7 +2602,8 @@
     "_level": 3,
     "_snippets": [
       "additional 2d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 13 + @INITMOD ]] or suffer 1d4 points of bleed damage"
   },
   "Iron Lancers Edge": {
     "modifiers": [
@@ -2407,7 +2613,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2426,7 +2632,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2435,7 +2641,8 @@
     "_level": 3,
     "_snippets": [
       "additional 2d6 points of damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 13 + @INITMOD ]] or be knocked prone"
   },
   "Iron Lancet Charge": {
     "modifiers": [
@@ -2445,7 +2652,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2454,7 +2661,8 @@
     "_level": 4,
     "_snippets": [
       "additional 6d6 points of damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 14 + @INITMOD ]] or be knocked prone"
   },
   "Leaping Strike": {
     "modifiers": [
@@ -2464,7 +2672,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2483,7 +2691,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2492,7 +2700,8 @@
     "_level": 4,
     "_snippets": [
       "additional 5d6 points of damage"
-    ]
+    ],
+    "rider": "trip [[ d20 + @attributes.cmb.total ]] vs CMD"
   },
   "Meteor Spiral Thrust": {
     "modifiers": [
@@ -2502,7 +2711,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2511,7 +2720,8 @@
     "_level": 5,
     "_snippets": [
       "additional 8d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 15 + @INITMOD ]] or become nauseated for 1d3 rounds; nauseated [[1d3]] rounds"
   },
   "Throwing Comet": {
     "modifiers": [
@@ -2521,7 +2731,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2540,7 +2750,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2549,7 +2759,8 @@
     "_level": 6,
     "_snippets": [
       "additional 8d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 16 + @INITMOD ]] or become nauseated for 1d3 rounds; nauseated [[1d3]] rounds"
   },
   "Impaling Comet Strike": {
     "modifiers": [
@@ -2559,7 +2770,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2578,7 +2789,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2597,7 +2808,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2606,7 +2817,8 @@
     "_level": 7,
     "_snippets": [
       "additional 5d6 points of damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 17 + @INITMOD ]] or be knocked prone"
   },
   "Leaping Thunder Crash": {
     "modifiers": [
@@ -2625,7 +2837,8 @@
     "_level": 7,
     "_snippets": [
       "additional 35 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 17 + @INITMOD ]] or drop any held items, as though they h"
   },
   "Rush to the Fray": {
     "modifiers": [
@@ -2635,7 +2848,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2654,7 +2867,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2663,7 +2876,8 @@
     "_level": 8,
     "_snippets": [
       "deals an additional 8d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 18 + @INITMOD ]] or become dazed for one round"
   },
   "Thundering Lancers Blow": {
     "modifiers": [
@@ -2673,7 +2887,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2692,7 +2906,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2701,7 +2915,8 @@
     "_level": 9,
     "_snippets": [
       "take an additional 15d6 points of damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 19 + @INITMOD ]] or take an additional 15d6 points of dam"
   },
   "Crushing Blow": {
     "modifiers": [
@@ -2711,7 +2926,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2749,7 +2964,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2768,7 +2983,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2787,7 +3002,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2825,7 +3040,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2844,7 +3059,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2882,7 +3097,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2891,7 +3106,8 @@
     "_level": 4,
     "_snippets": [
       "inflicts an additional 4d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 14 + @INITMOD ]] or suffer an additional 1d4 points of Co"
   },
   "Cornered Frenzy Strike": {
     "modifiers": [
@@ -2901,7 +3117,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2920,7 +3136,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2929,7 +3145,8 @@
     "_level": 5,
     "_snippets": [
       "inflicts an additional 10d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 15 + @INITMOD ]] or be nauseated for 1d4 rounds; nauseated [[1d4]] rounds"
   },
   "Meteoric Collision": {
     "modifiers": [
@@ -2939,7 +3156,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2958,7 +3175,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -2967,7 +3184,8 @@
     "_level": 6,
     "_snippets": [
       "inflicts an additional 12d6 points of damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 16 + @INITMOD ]] or be knocked prone"
   },
   "Blood-Spray Strike": {
     "modifiers": [
@@ -2977,7 +3195,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3005,7 +3223,8 @@
     "_level": 7,
     "_snippets": [
       "additional 40 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 17 + @INITMOD ]] or 1 round this effect does not stack wi; stunned [[1]] rounds"
   },
   "Primal Frenzy": {
     "modifiers": [
@@ -3015,7 +3234,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3034,7 +3253,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3053,7 +3272,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3064,6 +3283,24 @@
       "additional 4d6 points of damage"
     ]
   },
+  "Decree of Torment": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Radiant Dawn",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [],
+    "rider": "grapple [[ d20 + @attributes.cmb.total ]] vs CMD"
+  },
+  "Healer's Bane": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Radiant Dawn",
+    "_kind": "counter",
+    "_level": 2,
+    "_snippets": [],
+    "rider": "Will Save [[ 12 + @INITMOD ]] or have their healing stolen"
+  },
   "Lifeburst Strike": {
     "modifiers": [
       {
@@ -3072,7 +3309,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3083,6 +3320,15 @@
       "additional 1d6 points of damage"
     ]
   },
+  "Disrupt Essence": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Radiant Dawn",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [],
+    "rider": "Will Save [[ 10 + @INITMOD ]] or have a single Extraordinary Ex or sup"
+  },
   "Lifeburst Imbuement": {
     "modifiers": [
       {
@@ -3091,7 +3337,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3110,7 +3356,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3129,7 +3375,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3138,7 +3384,8 @@
     "_level": 5,
     "_snippets": [
       "deals an additional 3d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 15 + @INITMOD ]] or have its essence drawn into one effig"
   },
   "Karmic Strike": {
     "modifiers": [
@@ -3148,7 +3395,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3157,7 +3404,8 @@
     "_level": 6,
     "_snippets": [
       "deals an extra 4d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 16 + @INITMOD ]] or have a brand placed upon them for one"
   },
   "Harsh Light of Day": {
     "modifiers": [
@@ -3167,7 +3415,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3176,7 +3424,8 @@
     "_level": 7,
     "_snippets": [
       "additional 5d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 17 + @INITMOD ]] or have all illusions and polymorph eect"
   },
   "Tyrant's End": {
     "modifiers": [
@@ -3186,7 +3435,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3195,7 +3444,26 @@
     "_level": 8,
     "_snippets": [
       "additional 6d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 18 + @INITMOD ]] negates"
+  },
+  "Sands of Time Approach": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Riven Hourglass",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [],
+    "rider": "Will Save [[ 11 + @INITMOD ]] or become fatigued for 1d4 rounds; fatigued [[1d4]] rounds"
+  },
+  "Strike the Hourglass": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Riven Hourglass",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [],
+    "rider": "Will Save [[ 11 + @INITMOD ]] or it can only take a single move action"
   },
   "Chronal Aggression": {
     "modifiers": [
@@ -3205,7 +3473,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3214,7 +3482,8 @@
     "_level": 2,
     "_snippets": [
       "deals 2d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 12 + @INITMOD ]] or become sickened for one minute"
   },
   "Temporal Burn": {
     "modifiers": [
@@ -3224,7 +3493,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3243,7 +3512,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3252,7 +3521,8 @@
     "_level": 3,
     "_snippets": [
       "additional 2d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 13 + @INITMOD ]] or be affected as if by aslowspell for t"
   },
   "Chronal Draw": {
     "modifiers": [
@@ -3262,7 +3532,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3271,7 +3541,8 @@
     "_level": 4,
     "_snippets": [
       "additional 3d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 14 + @INITMOD ]] or become exhausted for a number of roun"
   },
   "Tip the Hourglass": {
     "modifiers": [
@@ -3281,7 +3552,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3290,7 +3561,8 @@
     "_level": 4,
     "_snippets": [
       "additional 4d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 14 + @INITMOD ]] or be affected as if by aslowspell for a"
   },
   "Hour Hand": {
     "modifiers": [
@@ -3300,7 +3572,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3311,6 +3583,51 @@
       "additional 4d6 points of damage"
     ]
   },
+  "Sands of Time Tornado": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Riven Hourglass",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ 15 + @INITMOD ]] or become sickened for 1d4 rounds; sickened [[1d4]] rounds"
+  },
+  "Shatter the Hourglass": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Riven Hourglass",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ 16 + @INITMOD ]] or become paralyzed for 1d4 rounds; paralyzed [[1d4]] rounds"
+  },
+  "Temporal Wave": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Riven Hourglass",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [],
+    "rider": "Will Save [[ 16 + @INITMOD ]] or become nauseated and affected as if b"
+  },
+  "Sands of Time Hurricane": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Riven Hourglass",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ 17 + @INITMOD ]] or become nauseated for one round"
+  },
+  "Wrath of Time": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Riven Hourglass",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ 18 + @INITMOD ]] halves"
+  },
   "Distraction Strike": {
     "modifiers": [
       {
@@ -3319,7 +3636,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3330,6 +3647,15 @@
       "deal an additional 1d6 damage"
     ]
   },
+  "Chew Through": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Roaring Mouse",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [],
+    "rider": "Reflex Save [[ 15 + @INITMOD ]] or: Exploit: The target gains a -4 on th"
+  },
   "Rat in a Cage": {
     "modifiers": [
       {
@@ -3338,7 +3664,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3357,7 +3683,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3376,7 +3702,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3385,7 +3711,35 @@
     "_level": 6,
     "_snippets": [
       "additional 5d6 damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 16 + @INITMOD ]] or fall unconscious for a number of roun"
+  },
+  "Sick Trick": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Roaring Mouse",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ 17 + @INITMOD ]] or be nauseated for three rounds"
+  },
+  "Undermine": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Roaring Mouse",
+    "_kind": "boost",
+    "_level": 7,
+    "_snippets": [],
+    "rider": "Will Save [[ 17 + @INITMOD ]] negate"
+  },
+  "The Worlds Greatest Trick": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Roaring Mouse",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [],
+    "rider": "Will Save [[ 18 + @INITMOD ]] or be confused as long as the dirty tric"
   },
   "Black Cat's Trail": {
     "modifiers": [
@@ -3395,7 +3749,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3414,7 +3768,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3433,7 +3787,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3452,7 +3806,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3461,7 +3815,17 @@
     "_level": 4,
     "_snippets": [
       "additional 3d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 14 + @INITMOD ]] or immediately end their turn and move t"
+  },
+  "Lucent Flashback": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Sagitta Stellaris",
+    "_kind": "boost",
+    "_level": 4,
+    "_snippets": [],
+    "rider": "Reflex Save [[ 10 + @INITMOD ]] or level + your initiation modifier or t"
   },
   "Music of the Spheres": {
     "modifiers": [
@@ -3471,7 +3835,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3490,7 +3854,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3499,7 +3863,8 @@
     "_level": 5,
     "_snippets": [
       "additional 4d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 15 + @INITMOD ]] or be blinded for 1 round; blinded [[1]] rounds"
   },
   "Localized Wormhole Trail": {
     "modifiers": [
@@ -3509,7 +3874,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3518,7 +3883,8 @@
     "_level": 5,
     "_snippets": [
       "additional 5d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 15 + @INITMOD ]] or be teleported to any other space in t"
   },
   "Aurora Fortress Trail": {
     "modifiers": [
@@ -3528,7 +3894,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3547,7 +3913,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3566,7 +3932,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3575,7 +3941,26 @@
     "_level": 7,
     "_snippets": [
       "additional 14d6 points of damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 17 + @INITMOD ]] or be pushed 15 feet away from it, and f; stunned [[1]] rounds"
+  },
+  "Heaven's Fury": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Sagitta Stellaris",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ 17 + @INITMOD ]] or take 10d6 force damage and receive ne"
+  },
+  "A Blink of the Universe": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Sagitta Stellaris",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [],
+    "rider": "Reflex Save [[ 18 + @INITMOD ]] or be pulled 20 feet in a straight line; blinded [[1]] rounds"
   },
   "Timeless Army Across Heaven": {
     "modifiers": [
@@ -3585,7 +3970,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3604,7 +3989,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3642,7 +4027,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3651,7 +4036,8 @@
     "_level": 3,
     "_snippets": [
       "inflicts an additional 3d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 13 + @INITMOD ]] or one round"
   },
   "Strike of Defeat": {
     "modifiers": [
@@ -3661,7 +4047,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3699,7 +4085,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3718,7 +4104,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3737,7 +4123,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3747,6 +4133,15 @@
     "_snippets": [
       "inflict an additional 3d6 points of damage"
     ]
+  },
+  "Final Blow": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Scarlet Throne",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ ? + @INITMOD ]] or die"
   },
   "Royal Blade": {
     "modifiers": [
@@ -3765,7 +4160,8 @@
     "_level": 7,
     "_snippets": [
       "+5 insight bonus to his attack roll"
-    ]
+    ],
+    "rider": "Will Save [[ 17 + @INITMOD ]] or be left cowering for 1 round; cowering [[1]] rounds"
   },
   "Sanguine Proclamation": {
     "modifiers": [
@@ -3775,7 +4171,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3794,7 +4190,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3822,7 +4218,17 @@
     "_level": 9,
     "_snippets": [
       "additional 100 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 19 + @INITMOD ]] or 1d4 rounds; paralyzed [[1d4]] rounds"
+  },
+  "Breaking Glass Strike": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Shattered Mirror",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [],
+    "rider": "Will Save [[ 11 + @INITMOD ]] or become dazed for one round"
   },
   "Copycat Cut": {
     "modifiers": [
@@ -3832,7 +4238,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3851,7 +4257,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3862,6 +4268,33 @@
       "deals an additional 1d6 points of damage"
     ]
   },
+  "Broken Mirror Strike": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Shattered Mirror",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [],
+    "rider": "Reflex Save [[ 12 + @INITMOD ]] or its armor or shield your choice gains"
+  },
+  "Curse of the Twisted Reflection": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Shattered Mirror",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [],
+    "rider": "Will Save [[ 13 + @INITMOD ]] or become confused for a number of round"
+  },
+  "Blazing Mirror Strike": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Shattered Mirror",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ 14 + @INITMOD ]] or become blinded for a number of rounds"
+  },
   "Fetchs Wrath": {
     "modifiers": [
       {
@@ -3870,7 +4303,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3881,6 +4314,15 @@
       "additional 4d6 points of damage"
     ]
   },
+  "Curse of the Smoking Mirror": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Shattered Mirror",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [],
+    "rider": "Will Save [[ 15 + @INITMOD ]] or fall prey to a reflected curse for a"
+  },
   "Gleaming Imprisonment": {
     "modifiers": [
       {
@@ -3889,7 +4331,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3898,7 +4340,8 @@
     "_level": 5,
     "_snippets": [
       "additional 4d6 points of damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 15 + @INITMOD ]] or become trapped within of two-sided mi"
   },
   "Murderous Reflection": {
     "modifiers": [
@@ -3908,7 +4351,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3919,6 +4362,15 @@
       "additional 7d6 points of damage"
     ]
   },
+  "Warped Glass Strike": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Shattered Mirror",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [],
+    "rider": "Will Save [[ 16 + @INITMOD ]] or lose all ability to tell friend from"
+  },
   "Shattered Mirror Strike": {
     "modifiers": [
       {
@@ -3927,7 +4379,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3938,6 +4390,15 @@
       "additional 6d6 points of damage"
     ]
   },
+  "Septennial Seal": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Shattered Mirror",
+    "_kind": "strike",
+    "_level": 9,
+    "_snippets": [],
+    "rider": "Will Save [[ 19 + @INITMOD ]] or die instantly, their soul becoming tr"
+  },
   "Flashing Wings": {
     "modifiers": [
       {
@@ -3946,7 +4407,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3965,7 +4426,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -3976,6 +4437,15 @@
       "inflict an additional 2d6 points of damage"
     ]
   },
+  "Emerald Displacement Strike": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Silver Crane",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ 12 + @INITMOD ]] or suffer a -4 penalty to Perception che"
+  },
   "Exorcism Strike": {
     "modifiers": [
       {
@@ -3984,7 +4454,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4003,7 +4473,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4014,6 +4484,15 @@
       "inflicts an additional 5d6 points of damage"
     ]
   },
+  "Sapphire Displacement Strike": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Silver Crane",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ 14 + @INITMOD ]] or fail on all Perception checks and suf"
+  },
   "Argent Knights Banner": {
     "modifiers": [
       {
@@ -4022,7 +4501,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4041,7 +4520,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4060,7 +4539,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4069,7 +4548,17 @@
     "_level": 6,
     "_snippets": [
       "inflicts and additional 10d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 16 + @INITMOD ]] or be made corporeal and stunned for the"
+  },
+  "Diamond Displacement Strike": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Silver Crane",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [],
+    "rider": "Will Save [[ 17 + @INITMOD ]] or be permanently blinded and deafened b"
   },
   "Celestial Pinions": {
     "modifiers": [
@@ -4079,7 +4568,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4088,7 +4577,26 @@
     "_level": 8,
     "_snippets": [
       "inflicts an additional 15d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 18 + @INITMOD ]] or be instantly slain"
+  },
+  "Strike of Silver Exorcism": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Silver Crane",
+    "_kind": "strike",
+    "_level": 9,
+    "_snippets": [],
+    "rider": "Will Save [[ 19 + @INITMOD ]] or be instantly slain"
+  },
+  "Ego-Wounding Strike": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Sleeping Goddess",
+    "_kind": "strike",
+    "_level": 1,
+    "_snippets": [],
+    "rider": "Will Save [[ 11 + @INITMOD ]] or take become overwhelmed with agonizin"
   },
   "Harmony-Shattering Strike": {
     "modifiers": [
@@ -4098,7 +4606,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4107,7 +4615,8 @@
     "_level": 1,
     "_snippets": [
       "deal an additional 1d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 11 + @INITMOD ]] or for one round, any attacks from your"
   },
   "Mind-Revealing Strike": {
     "modifiers": [
@@ -4117,7 +4626,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4126,7 +4635,8 @@
     "_level": 2,
     "_snippets": [
       "deals an additional 1d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 12 + @INITMOD ]] or you become able to read their surface"
   },
   "Twofold Assault": {
     "modifiers": [
@@ -4136,7 +4646,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4155,7 +4665,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4164,7 +4674,8 @@
     "_level": 3,
     "_snippets": [
       "additional 2d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 13 + @INITMOD ]] or be forced into a dreamlike trance for"
   },
   "Puppet of the Goddess": {
     "modifiers": [
@@ -4174,7 +4685,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4183,7 +4694,35 @@
     "_level": 4,
     "_snippets": [
       "additional 4d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 14 + @INITMOD ]] or have one of its senses completely ove"
+  },
+  "Traumatic Reversal": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Sleeping Goddess",
+    "_kind": "counter",
+    "_level": 4,
+    "_snippets": [],
+    "rider": "Will Save [[ 14 + @INITMOD ]] or take damage equal to half the damage"
+  },
+  "Reshape the Sculpted Mind": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Sleeping Goddess",
+    "_kind": "strike",
+    "_level": 5,
+    "_snippets": [],
+    "rider": "Will Save [[ 15 + @INITMOD ]] or be affected by one of the following e"
+  },
+  "Reverberation of Defeat": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Sleeping Goddess",
+    "_kind": "boost",
+    "_level": 5,
+    "_snippets": [],
+    "rider": "Will Save [[ 15 + @INITMOD ]] or become shaken and sickened for a numb"
   },
   "The Ties that Bind": {
     "modifiers": [
@@ -4193,7 +4732,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4202,7 +4741,8 @@
     "_level": 5,
     "_snippets": [
       "additional 5d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 15 + @INITMOD ]] or it and one of the targets allies with"
   },
   "Strike of Transfixed Awe": {
     "modifiers": [
@@ -4212,7 +4752,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4221,7 +4761,8 @@
     "_level": 6,
     "_snippets": [
       "additional 6d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 16 + @INITMOD ]] or become stunned for one round"
   },
   "Pierce the Soul": {
     "modifiers": [
@@ -4231,7 +4772,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4240,7 +4781,17 @@
     "_level": 7,
     "_snippets": [
       "additional 7d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 17 + @INITMOD ]] negate"
+  },
+  "Self Beyond the Self": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Sleeping Goddess",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [],
+    "rider": "Will Save [[ 18 + @INITMOD ]] or fall under your complete control for"
   },
   "Immortal Truths of the Sleeping Goddess": {
     "modifiers": [
@@ -4250,7 +4801,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4269,7 +4820,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4288,7 +4839,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4309,7 +4860,7 @@
         "damageType": [
           "fire"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4328,7 +4879,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4339,6 +4890,15 @@
       "inflicts an additional 2d6 points of damage"
     ]
   },
+  "Blinding Ray Shot": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [],
+    "rider": "blinded [[1d4]] rounds"
+  },
   "Solar Reflection": {
     "modifiers": [
       {
@@ -4347,7 +4907,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4368,7 +4928,7 @@
         "damageType": [
           "fire"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4377,7 +4937,8 @@
     "_level": 4,
     "_snippets": [
       "inflicts an additional 4d6 points of fire damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 14 + @INITMOD ]] or 1d4 rounds"
   },
   "Disarming Gust": {
     "modifiers": [
@@ -4387,7 +4948,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4408,7 +4969,7 @@
         "damageType": [
           "fire"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4419,6 +4980,15 @@
       "additional 3d6 points of fire damage"
     ]
   },
+  "Solar Storm": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Solar Wind",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [],
+    "rider": "Reflex Save [[ 14 + @INITMOD ]] or be forced to stay in that space, unab"
+  },
   "Double Solar Reflection": {
     "modifiers": [
       {
@@ -4427,7 +4997,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4446,7 +5016,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4465,7 +5035,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4474,7 +5044,8 @@
     "_level": 5,
     "_snippets": [
       "inflicts an additional 4d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 15 + @INITMOD ]] negates"
   },
   "Burning Break": {
     "modifiers": [
@@ -4486,7 +5057,7 @@
         "damageType": [
           "fire"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4505,7 +5076,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4524,7 +5095,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4533,7 +5104,8 @@
     "_level": 7,
     "_snippets": [
       "inflicts an additional 8d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 17 + @INITMOD ]] or 1d3 rounds"
   },
   "Triple Solar Reflection": {
     "modifiers": [
@@ -4543,7 +5115,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4564,7 +5136,7 @@
         "damageType": [
           "fire"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4583,7 +5155,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4604,7 +5176,7 @@
         "damageType": [
           "electricity"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       },
       {
         "formula": "3",
@@ -4624,6 +5196,15 @@
       "+3 circumstance bonus to his attack roll"
     ]
   },
+  "Crushing Thunder": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Spark of Battle",
+    "_kind": "strike",
+    "_level": 2,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ 12 + @INITMOD ]] or modifier"
+  },
   "Thunder Walk": {
     "modifiers": [
       {
@@ -4634,7 +5215,7 @@
         "damageType": [
           "sonic"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4655,7 +5236,7 @@
         "damageType": [
           "electricity"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4676,7 +5257,7 @@
         "damageType": [
           "sonic"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4697,7 +5278,7 @@
         "damageType": [
           "sonic"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4718,7 +5299,7 @@
         "damageType": [
           "electricity"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       },
       {
         "formula": "2",
@@ -4748,7 +5329,7 @@
         "damageType": [
           "electricity"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4769,7 +5350,7 @@
         "damageType": [
           "sonic"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4790,7 +5371,7 @@
         "damageType": [
           "electricity"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4811,7 +5392,7 @@
         "damageType": [
           "electricity"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4830,7 +5411,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4849,7 +5430,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4868,7 +5449,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4887,7 +5468,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4896,7 +5477,17 @@
     "_level": 2,
     "_snippets": [
       "inflicts an additional 1d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 12 + @INITMOD ]] halves"
+  },
+  "Sickening Venom Strike": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "strike",
+    "_level": 3,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ 13 + @INITMOD ]] negates"
   },
   "Sight Piercing Fang": {
     "modifiers": [
@@ -4906,7 +5497,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4925,7 +5516,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4934,7 +5525,8 @@
     "_level": 4,
     "_snippets": [
       "inflicts an additional 5d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ ? + @INITMOD ]] halve"
   },
   "Tearing Fang": {
     "modifiers": [
@@ -4944,7 +5536,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4963,7 +5555,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4982,7 +5574,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -4991,7 +5583,8 @@
     "_level": 5,
     "_snippets": [
       "deals an additional 8d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 15 + @INITMOD ]] or one round"
   },
   "Sting of the Viper": {
     "modifiers": [
@@ -5001,7 +5594,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5010,7 +5603,8 @@
     "_level": 6,
     "_snippets": [
       "inflicts an additional 8d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ ? + @INITMOD ]] halve"
   },
   "Bite The Mongoose": {
     "modifiers": [
@@ -5020,7 +5614,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5029,7 +5623,17 @@
     "_level": 7,
     "_snippets": [
       "inflicts an additional 6d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 17 + @INITMOD ]] halves"
+  },
+  "Numbing Venom Prana": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Steel Serpent",
+    "_kind": "boost",
+    "_level": 7,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ 17 + @INITMOD ]] halves"
   },
   "Silencing Strike": {
     "modifiers": [
@@ -5039,7 +5643,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5058,7 +5662,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5067,7 +5671,8 @@
     "_level": 8,
     "_snippets": [
       "deals an additional 12d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 18 + @INITMOD ]] or one round"
   },
   "Sting of the Cobra": {
     "modifiers": [
@@ -5077,7 +5682,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5086,7 +5691,8 @@
     "_level": 8,
     "_snippets": [
       "inflicts an additional 8d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ ? + @INITMOD ]] halve"
   },
   "Five-Fold Hydra Sting": {
     "modifiers": [
@@ -5115,7 +5721,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5134,7 +5740,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5143,7 +5749,8 @@
     "_level": 2,
     "_snippets": [
       "deals an additional 1d6 damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 12 + @INITMOD ]] or they lose and you gain a number of ro"
   },
   "Crab Snap": {
     "modifiers": [
@@ -5153,7 +5760,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5172,7 +5779,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5191,7 +5798,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5210,7 +5817,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5219,7 +5826,8 @@
     "_level": 4,
     "_snippets": [
       "deal an additional 4d6 damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 14 + @INITMOD ]] or become stunned for 1 round; stunned [[1]] rounds"
   },
   "Great White Rush": {
     "modifiers": [
@@ -5229,7 +5837,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5238,7 +5846,17 @@
     "_level": 4,
     "_snippets": [
       "deal an additional 4d6 damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 14 + @INITMOD ]] or half damage"
+  },
+  "Breath Bandit": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "boost",
+    "_level": 4,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ 14 + @INITMOD ]] or they lose and you gain a number of ro"
   },
   "Riptide Slash": {
     "modifiers": [
@@ -5248,7 +5866,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5257,7 +5875,8 @@
     "_level": 5,
     "_snippets": [
       "takes an additional 1d6 damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 15 + @INITMOD ]] or half damage"
   },
   "Vicegrip Snap": {
     "modifiers": [
@@ -5267,7 +5886,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5278,6 +5897,15 @@
       "deals an additional 4d6 damage"
     ]
   },
+  "Ink Cloud": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "boost",
+    "_level": 6,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ 16 + @INITMOD ]] or become nauseated for as long as they"
+  },
   "Shark Frenzy Rush": {
     "modifiers": [
       {
@@ -5286,7 +5914,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5305,7 +5933,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5324,7 +5952,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5343,7 +5971,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5354,6 +5982,15 @@
       "takes an additional 6d6 damage"
     ]
   },
+  "Splintered Coral Reef": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Surging Shark",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [],
+    "rider": "Reflex Save [[ 17 + @INITMOD ]] halves"
+  },
   "Leviathan Annihilation": {
     "modifiers": [
       {
@@ -5362,7 +5999,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5371,7 +6008,8 @@
     "_level": 8,
     "_snippets": [
       "deal an additional 8d6 damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 18 + @INITMOD ]] or take an additional 8d6 damage and be; stunned [[1]] rounds"
   },
   "Distracting Draft": {
     "modifiers": [
@@ -5381,7 +6019,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5400,7 +6038,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5419,7 +6057,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5438,7 +6076,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5457,7 +6095,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5476,7 +6114,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5495,7 +6133,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5504,7 +6142,8 @@
     "_level": 4,
     "_snippets": [
       "additional 5d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 14 + @INITMOD ]] or take points of bleed damage equal to"
   },
   "Exploding Gale": {
     "modifiers": [
@@ -5514,7 +6153,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5533,7 +6172,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5542,7 +6181,8 @@
     "_level": 4,
     "_snippets": [
       "additional 4d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 14 + @INITMOD ]] or become staggered for a number of roun"
   },
   "Blinding Shot maneuver": {
     "modifiers": [
@@ -5552,7 +6192,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5561,7 +6201,8 @@
     "_level": 5,
     "_snippets": [
       "additional 5d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 15 + @INITMOD ]] or become blinded for a number of rounds"
   },
   "Grounding Shot": {
     "modifiers": [
@@ -5571,7 +6212,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5590,7 +6231,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5609,7 +6250,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5628,7 +6269,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5637,7 +6278,8 @@
     "_level": 7,
     "_snippets": [
       "deals 15d6 points of damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ ? + @INITMOD ]] or become dazed for one round"
   },
   "Steel Tornado": {
     "modifiers": [
@@ -5647,7 +6289,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5666,7 +6308,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5685,7 +6327,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5704,7 +6346,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5723,7 +6365,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5734,6 +6376,15 @@
       "inflicts an additional 2d6 points of damage"
     ]
   },
+  "Reflexive Twist": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Thrashing Dragon",
+    "_kind": "counter",
+    "_level": 2,
+    "_snippets": [],
+    "rider": "Reflex Save [[ ? + @INITMOD ]] or may instead make an Acrobatics check"
+  },
   "Ancients Fang": {
     "modifiers": [
       {
@@ -5742,7 +6393,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5761,7 +6412,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5770,7 +6421,8 @@
     "_level": 3,
     "_snippets": [
       "inflicts an additional 3d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 13 + @INITMOD ]] negates"
   },
   "Devastation Roll": {
     "modifiers": [
@@ -5780,7 +6432,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5799,7 +6451,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5818,7 +6470,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5837,7 +6489,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5856,7 +6508,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5875,7 +6527,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5894,7 +6546,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5903,7 +6555,8 @@
     "_level": 6,
     "_snippets": [
       "additional 6d6 points of damage"
-    ]
+    ],
+    "rider": "Fortitude Save [[ 16 + @INITMOD ]] or 1d4 rounds; stunned [[1d4]] rounds"
   },
   "Unbreakable Talons": {
     "modifiers": [
@@ -5913,7 +6566,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5932,7 +6585,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5951,7 +6604,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5970,7 +6623,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -5989,7 +6642,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -6000,6 +6653,15 @@
       "inflicts his weapons damage plus an additional 12d6 points of damage"
     ]
   },
+  "Gravekeepers Hood": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Unquiet Grave",
+    "_kind": "boost",
+    "_level": 1,
+    "_snippets": [],
+    "rider": "blinded [[1]] rounds"
+  },
   "Headstone Breaking Strike": {
     "modifiers": [
       {
@@ -6008,7 +6670,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -6019,6 +6681,42 @@
       "additional 1d4 points of damage"
     ]
   },
+  "Hunting Mohrg Strike": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Unquiet Grave",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ ? + @INITMOD ]] or become paralyzed for 1 round; paralyzed [[1]] rounds"
+  },
+  "Wretched Ghast Riposte": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Unquiet Grave",
+    "_kind": "counter",
+    "_level": 4,
+    "_snippets": [],
+    "rider": "Fortitude Save [[ ? + @INITMOD ]] or also become nauseated for 1 round; sickened [[1]] rounds"
+  },
+  "Feasting Wraith Strike": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Unquiet Grave",
+    "_kind": "strike",
+    "_level": 6,
+    "_snippets": [],
+    "rider": "Will Save [[ ? + @INITMOD ]] halves"
+  },
+  "Soul Drinking Strike": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Unquiet Grave",
+    "_kind": "strike",
+    "_level": 8,
+    "_snippets": [],
+    "rider": "Will Save [[ ? + @INITMOD ]] halves"
+  },
   "Cursed Fate": {
     "modifiers": [
       {
@@ -6027,7 +6725,7 @@
         "subTarget": "allDamage",
         "type": "untyped",
         "damageType": [],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -6036,7 +6734,8 @@
     "_level": 2,
     "_snippets": [
       "inflicting an additional 2d6 points of damage"
-    ]
+    ],
+    "rider": "Will Save [[ 12 + @INITMOD ]] or suffer a -4 to all d20 rolls until th"
   },
   "Brilliant Moon": {
     "modifiers": [
@@ -6048,7 +6747,7 @@
         "damageType": [
           "force"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -6058,6 +6757,15 @@
     "_snippets": [
       "inflicts an additional 4d4 points of force damage"
     ]
+  },
+  "Breath of the Moon": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Veiled Moon",
+    "_kind": "strike",
+    "_level": 4,
+    "_snippets": [],
+    "rider": "Will Save [[ 14 + @INITMOD ]] or be confused as the spell confusion fo; confused [[1d4]] rounds"
   },
   "Essence Shattering Strike": {
     "modifiers": [
@@ -6069,7 +6777,7 @@
         "damageType": [
           "force"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -6090,7 +6798,7 @@
         "damageType": [
           "force"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -6111,7 +6819,7 @@
         "damageType": [
           "force"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -6120,7 +6828,8 @@
     "_level": 6,
     "_snippets": [
       "inflicts 12d6 points of force damage"
-    ]
+    ],
+    "rider": "Reflex Save [[ 16 + @INITMOD ]] or half damage"
   },
   "Dispersal Strike": {
     "modifiers": [
@@ -6132,7 +6841,7 @@
         "damageType": [
           "force"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -6141,7 +6850,17 @@
     "_level": 7,
     "_snippets": [
       "inflicts 12d6 points of force damage"
-    ]
+    ],
+    "rider": "Will Save [[ 17 + @INITMOD ]] negate"
+  },
+  "Flashing Ether Touch": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Veiled Moon",
+    "_kind": "strike",
+    "_level": 7,
+    "_snippets": [],
+    "rider": "Will Save [[ 17 + @INITMOD ]] or is teleported up to 60-ft"
   },
   "Eclipsing Moon": {
     "modifiers": [
@@ -6153,7 +6872,7 @@
         "damageType": [
           "force"
         ],
-        "critical": "normal"
+        "critical": "nonCrit"
       }
     ],
     "review": true,
@@ -6163,5 +6882,14 @@
     "_snippets": [
       "inflicts an additional 4d4 points of force damage"
     ]
+  },
+  "Lunar Penumbra": {
+    "modifiers": [],
+    "review": true,
+    "_discipline": "Veiled Moon",
+    "_kind": "counter",
+    "_level": 8,
+    "_snippets": [],
+    "rider": "Reflex Save [[ ? + @INITMOD ]] or is still within the radius of the eff"
   }
 }

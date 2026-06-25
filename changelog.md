@@ -19,6 +19,113 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Combat-maneuver & rider text on spell and maneuver conditionals (the "Inheritor's Smite"
+  pattern).** A weapon conditional can now carry a structured attack/damage bonus **and** `[[ ]]`
+  rider text (a save, condition, or a rollable combat maneuver) in its name at once. (1) Spell
+  conditionals gained a `rider` channel: `addSpellConditionals` in the FoundryVTT module appends an
+  entry's `rider` to the toggle name, so e.g. **Inheritor's Smite** now shows both `+[[5]] sacred
+  attack` and `on hit, free bull rush [[ d20 + @attributes.cmb.total + 5 ]] vs CMD (no AoO)`
+  (Rock Whip likewise gains its caster-level bull rush). (2) **44 Path of War maneuvers** that
+  described a grapple / trip / disarm / sunder / bull rush with no rollable check now carry a
+  `[[ d20 + @attributes.cmb.total … ]] vs CMD` roll (flat bonuses folded in, IL-scaling via
+  `@pow.initLevel`, `@INITMOD`-based CMB for Solar Wind, and Escape Artist for The World's Greatest
+  Trick). (3) The `build_spell_conditionals.py` / `build_maneuver_changes.py` draft builders now
+  detect combat-maneuver / save / condition clauses, and the `foundry-conditionals` skill +
+  `docs/pow_conditional_decision_rules.md` document the pattern and the three CMB-roll forms (plain,
+  skill-in-place-of-CMB, caster-level-in-place-of-BAB).
+- **Spells now carry pf1 conditionals/riders into the Foundry actor.** A generated NPC's chosen
+  spells that buff attack/damage or are themselves a touch-attack are wired into the export so the
+  FoundryVTT module can attach mechanics instead of leaving them description-only. Two new
+  name-keyed dicts ship in the character JSON: `spell_changes_dict` — Bucket A buffs (Bless, Divine
+  Favor, True Strike, Magic Weapon, Flame Arrow) as a default-off conditional toggle / always-on
+  change on the wielder's **weapon**; and `spell_riders_dict` — Bucket B damaging attack-spells
+  (Chill Touch, Frigid Touch, Acid Arrow) as the save block + non-damage riders ([[ ]] inline text)
+  on the **spell's own** action (its attack + damage already come from the compendium). Classified
+  across all 2,827 spells by the new `Backend/scripts/build_spell_conditionals.py`
+  (→ `spell_conditionals.draft.json`) and curated into `Backend/json/spells/spell_changes.json`
+  (121 entries) + `spell_riders.json` (19); selected per-NPC by `spell_conditionals_selection()` in
+  `spells.py`. The curated data is auto-derived from spell text and flagged for ongoing review;
+  consuming it requires a matching update to the (separate-repo) `pf1e_random_char_generator` module.
+- **Path of War maneuvers & stances — full mechanical automation in generated NPCs.** Every PoW
+  strike/boost/counter and stance a generated NPC knows now renders rich mechanics in Foundry instead
+  of description-only text. The FoundryVTT module's curated data was greatly expanded —
+  `templates/character_sheet_folder/maneuver_changes.json` **581 → 846** entries,
+  `stance_changes.json` **19 → 159** — so that, per the new
+  [foundry-conditionals](.claude/skills/foundry-conditionals/SKILL.md) /
+  `docs/pow_conditional_decision_rules.md` convention: on-hit **and** area/burst/cone/line damage are
+  real **damage modifiers** (with damage types) that roll in the damage section; saves / conditions /
+  durations ride the conditional name as `[[ ]]` inline rolls; skill / demoralize / feint checks
+  resolve to the **discipline's main skill** (`[[ d20 + @skills.<id>.mod ]]`); and the
+  formerly-description-only stances gained pf1 buff `changes` (always-on flat self-buffs) +
+  `contextNotes` where expressible (per-die / aura / ally effects stay description-only by design). A
+  1-line `addStanceBuffs` tweak in `scripts/modify-abilities.js` substitutes `@INITMOD` in stance
+  contextNotes (parity with maneuver riders). The expanded data is **LLM-generated** from the scraped
+  maneuver descriptions — review before relying on it. Produced by gitignored personal tooling under
+  `Backend/scripts/_pow_generator/` (which also builds an importable per-discipline "palette" actor
+  and a `promote_to_module.py` that pushes the data into the module's curated files).
+- **Tunable, example-driven Ollama backstories.** The backstory generator
+  (`Backend/utils/class_func/backstory.py`) now uses a proper chat `system` role and supports three new
+  controls without code edits: (1) an editable **`Backend/json/backstory_config.json`** (system prompt,
+  temperature, length, focus phrases — partial/missing file falls back to baked-in defaults);
+  (2) **few-shot examples** — drop `.txt`/`.json` backstories into **`Backend/json/backstory_examples/`**
+  and 1–3 are shown to the model as example turns (optionally matched to the character's class/race/etc.
+  via `smart_match`); an empty folder reproduces the old behavior exactly; (3) an optional
+  **`backstory_focus`** input (comma/space-separated aspects: `combat`, `profession`, `faith`, `family`,
+  `personality`, `appearance`, `region`) that emphasizes chosen facets — threaded through
+  `generate_random_char` and the Flask `update_character_data` endpoint (optional 21st input), and also
+  honored by the deterministic offline template fallback.
+- **Backstory house style — prose + closing list, vocation/family/homeland focus.** The default
+  backstory prompt now centers the prose on **profession → family & upbringing → homeland/where they
+  are from**, deliberately **stops reciting feats and game mechanics**, and ends with a short labeled
+  list (`Personality:` / `Mannerisms:` / `Appearance:` / `Flaws:`); the facts block and offline
+  template were reordered to match. Example backstories now ship as `.json` with `tags`
+  (`Backend/json/backstory_examples/`) so `smart_match` feeds the 2 closest to each NPC, and the
+  default length was raised to 220–400 words (`max_tokens` 1100) to fit the richer prose + closing list.
+- **Numerical feat buffs on the Foundry "Changes" tab.** Selected feats now carry their mechanical
+  effect onto the generated actor instead of being text-only. Two new curated, hand-vetted side-maps
+  keyed by feat name ride the export: **`Backend/json/feats/feat_changes.json`** — always-on pf1
+  `changes` (e.g. Advanced Defensive Combat Training +4 CMD, Tribal Scars +6 HP, scaling skill feats
+  via `ifelse(gte(@skills.X.rank,10),4,2)`) plus situational `contextNotes` for conditional feats
+  (vs undead / while charging / when adjacent to an ally, etc.); and
+  **`Backend/json/feats/feat_conditionals.json`** — default-off **toggle conditionals** for active
+  feats (Power Attack, Deadly Aim, Piranha Strike, Combat Expertise, …) the player ticks per attack.
+  Exported as `feat_changes_dict` / `feat_conditionals_dict` (new keys in `export_list_dict`); the
+  FoundryVTT module overlays the changes onto each feat item (deduped by target) and attaches the
+  toggles to the main weapon's attack action. **Double-apply guard:** buffs are authored ONLY for
+  feats Foundry's `every_feat.json` compendium does not already automate, so nothing stacks twice.
+  Spheres-of-Power magic talents stay text-only by design (they cast effects, not passive self-buffs).
+- **Numerical buffs on combat talents (Spheres of Might).** The previously-empty `changes` /
+  `contextNotes` slots on combat-talent items are now filled from
+  **`Backend/json/class_data/spheres/combat_talent_changes.json`** (e.g. Greater Disarm/Trip/Sunder
+  competence bonuses to CMB/CMD, Compact Frame's situational dodge AC), injected by `_talent_item`
+  in `spheres.py` and honored by the FoundryVTT module's talent builder. (Alchemy "flask/bomb"
+  talents that create separate thrown weapons are deferred — they need their own weapon items.)
+- **Buff authoring tooling.** New manual draft-builders mirroring the Path-of-War pattern:
+  `Backend/scripts/build_feat_changes.py` (text-mines `data/feats.csv`, joins `every_feat.json` for
+  the double-apply guard) and `Backend/scripts/build_talent_changes.py` (`--system might|power`).
+  They emit `*.draft.json` drafts that are classified/verified and hand-curated into the production
+  maps above.
+- **Skill-feat coverage + Skill Focus actually works now.** Added always-on skill `changes` for
+  un-automated fixed skill feats (e.g. **Sea Legs** +2 Acrobatics/Climb/Swim, **Sharp Senses** +4
+  Perception) and situational `contextNotes` for conditional ones (Altitude Affinity, Stone-Faced,
+  Divine Deception/Denouncer, Improved Stonecunning, Casual Illusionist). **Skill Focus / Prodigy**
+  (which `feat_skill_choice.py` points at the NPC's professions) previously recorded a bonus that was
+  never consumed — now `specialize_skill_choice_feats` emits the resolved pf1 change
+  (`skill.pro` +3/+6, or a regular-skill fallback `skill.<id>`) which `main_test.py` folds into
+  `feat_changes_dict`, so the bonus finally lands on the sheet.
+- **Situational combat feats are now default-off toggles.** 41 feats whose bonus only applies under a
+  condition (Bloody Vengeance, Demon Hunter, Ferocious Loyalty, Giant Killer, Moonlight Stalker,
+  Death from Above, …) moved from informational `contextNotes` to **default-off weapon toggle
+  conditionals** in `feat_conditionals.json` — the player ticks them in the attack dialog and the
+  bonus applies numerically, with the trigger spelled out in the conditional name (`[[ ]]` inline
+  rolls where relevant). Non-combat riders (e.g. Demon Hunter's Knowledge (planes) bonus) stay as
+  context notes.
+- **Weapon Focus / Weapon Specialization line.** When an NPC takes Weapon Focus (the feat-tax
+  *primary* that bundles Greater Weapon Focus / Weapon Specialization / Greater Weapon Specialization
+  into one merged item), the chain's bonuses are now summed onto the feat — +1 attack per focus tier
+  and +2 weapon damage per specialization tier (full chain = +2 attack / +4 weapon damage) — via a
+  new `Backend/utils/class_func/weapon_focus_buffs.py` folded into `feat_changes_dict`. The bonus is
+  global to weapon attacks, matching the single main weapon the generator equips.
 - **Five new profession genres + a curated profession catalog.** Added the themes **`noble`** (royalty,
   courtiers, regents), **`occult`** (witches, necromancers, cultists, warlocks), **`wayfarer`** (sellswords,
   treasure-hunters, monster-slayers), **`elementalist`** (fire/ice/storm/earth specialists), and
@@ -72,6 +179,55 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   ever selected. (Magic data was already compendium-sourced and is unchanged.)
 
 ### Changed
+- **Path of War maneuver damage dice no longer multiply on a critical hit.** A maneuver conditional
+  whose damage formula carries dice (e.g. Ravaging Blow `1d6`, Razor Tempest `8d6`, `4d6 + @INITMOD`)
+  is now emitted as a pf1 **"Non-multiplying Bonus Formula"** (`critical:"nonCrit"`) — extra effect
+  dice aren't multiplied on a crit, per the Pathfinder rules. Flat / `@`-only damage modifiers (no
+  dice) stay `critical:"normal"` and scale with the crit like static damage; attack modifiers are
+  untouched. Applied across all PoW maneuver data: the module's curated `maneuver_changes.json`
+  (362 modifiers), the regenerated `maneuver_changes.draft.json`, and the palette's
+  `_pow_generator/maneuver_overrides.json` (123 modifiers) — so both the auto-attached weapon
+  conditionals and the rebuilt PoW palette now read `nonCrit` for dice damage. Enforced going forward
+  by `_crit_for()` in `Backend/scripts/build_maneuver_changes.py` and re-runnable via the new
+  idempotent `Backend/scripts/fix_maneuver_crit.py`. An audit of all 370 dice-bearing maneuvers
+  against their rules text found exactly one genuine crit-tied case — **Doom Talon** (Thrashing
+  Dragon), whose 4d6 fires only on a confirmed critical and isn't doubled — now encoded as the pf1
+  **"On-critical Bonus Formula"** (`critical:"crit"`) in the curated data + palette override. Spheres
+  talents and feat conditionals are intentionally left as-is.
+  (`docs/pow_conditional_decision_rules.md` updated.)
+- **Path of War skill-based attacks & combat maneuvers now roll correctly.** Maneuvers that resolve
+  via a skill emit literal inline `[[ ]]` rolls following three conventions: a skill used **as an
+  attack roll** adds the actor's misc attack bonus (`[[ d20 + @attributes.attack.general +
+  @skills.<id>.mod ]]`); a skill **in place of CMB vs CMD** keeps CMB's size/misc and swaps out
+  BAB + ability (`[[ d20 + @attributes.cmb.total - @abilities.<str|dex>.mod - @attributes.bab.total +
+  @skills.<id>.mod ]] vs CMD`, melee→str / ranged→dex); a plain skill check stays
+  `[[ d20 + @skills.<id>.mod ]]`. Fixed the **Roaring Mouse** discipline skill map (`acr` → `esc`,
+  Escape Artist) and retrofitted 22 affected maneuvers (Roaring Mouse, all of Tempest Gale, Surging
+  Shark's charges, Piercing Thunder leaps, Fool's Errand, Mithral Current, Sleeping Goddess) into the
+  module's `maneuver_changes.json` + palette via the new
+  `Backend/scripts/_pow_generator/apply_skill_rolls.py` → `promote_to_module.py`.
+  (`docs/pow_conditional_decision_rules.md` + `foundry-conditionals` skill updated.)
+- **Path of War stances: IL-scaling damage now mechanical, plus aura markers.** The eight stances that
+  add initiator-level-scaling damage to the wielder's attacks (Savage Stance, Snapping Turtle Stance,
+  Reaching Blade Stance, Stance of Aggression, Scarlet Einhander, Stance of Piercing Rays, Outer
+  Sphere Stance, Phalanx Lancer) now emit that damage as a **rolled-dice, default-on weapon damage
+  conditional** (`critical:"nonCrit"`) whose dice count scales off `@attributes.hd.total` — instead of
+  passive `contextNotes` text (a buff `change` would maximize the dice). New
+  `apply_stance_damage.py` authors them; the module's `addManeuverConditionals` and the palette attach
+  them for known stances; the redundant `wdamage` contextNote was removed from each buff. Separately,
+  ~20 aura / affects-others stances now carry `AuraRange: <feet-or-formula>` (and `onlyOthers;` when
+  the wielder gains nothing) marker lines prepended to their buff description — driven by the new
+  `Backend/json/class_data/path_of_war/stance_auras.json` — for downstream aura/buff-distributor
+  tooling. (Data-only; a stance whose runtime description comes from the pf1-pow compendium won't show
+  the markers — the palette always does.)
+- **The Spheres Mentor now funds far fewer, caliber-scaled talents (~2.5 feats, was ~4.5).** A dedicated
+  Spheres Mentor was funded by the **sum of two** caliber rolls plus overflow, so it could teach ~9
+  off-budget talents (≈ 4.5 feats) and bloat a character past the flat-8. Now a single mentor of caliber
+  C (one roll) teaches exactly **2·C talents** = C feats off-budget (C = 1/2/3/4 → 2/4/6/8 talents),
+  capped at the flat-8, with no overflow — so the character's total talents never exceed 8 and the mentor
+  averages ~2.5 feats. Trainer caliber weights were also retuned from `15/40/30/15` to **`8/45/45/2`**
+  (mean ~2.4): mostly average/excellent, with the occasional terrible and a rare mythical.
+  (`trainers.py` `roll_caliber`, `main_test.py` trainer-backed branch, `spheres.py` `choose_spheres_attr`.)
 - **Generated professions now follow tunable power-tier and genre distributions.** Previously 85% of
   professions were "average" tier and 61% fell into the catch-all `craft` genre. Profession selection
   (`profession_chooser._themed_profession_names`) now rolls a target **tier** then **genre** from weight
@@ -194,6 +350,17 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   description-only).
 
 ### Fixed
+- **Path of War skill-based attack & counter checks now include the general attack bonus.** When a
+  maneuver rolls a skill *in place of an attack roll* (vs AC) or opposes the *triggering attack
+  roll* (a counter), the inline roll now adds `@attributes.attack.general` — e.g. Primal Fury's
+  *Shrug It Off* counter is `[[ d20 + @skills.sur.mod + @attributes.attack.general ]]` instead of
+  `[[ d20 + @skills.sur.mod ]]` — so these to-hit rolls are on equal footing with the enemy's
+  attack. 41 maneuvers were corrected (incl. Leaden Hyena feints rolled vs Sense Motive *or AC*);
+  pure skill checks (vs a DC), combat maneuvers (vs CMD), and Perception-opposed counters (Veiled
+  Moon) are unchanged. The canonical source gained an `@ATTACKCHECK` token (sibling to
+  `@SKILLCHECK`) resolved by `promote_to_module.py` / the palette builder; the new idempotent
+  `Backend/scripts/_pow_generator/apply_attack_general.py` performs the conversion. Re-curates the
+  (separate-repo) module's `maneuver_changes.json`.
 - **No more blank dedicated-trainer slots.** A trainer-backed NPC could show a content-free trainer like
   `(Trainer 5): Spheres Mentor (Continued Study)` (generic text, teaches nothing) — an artefact of
   padding the dedicated mentors to a fixed count of two. Dedicated mentors are now emitted only when they

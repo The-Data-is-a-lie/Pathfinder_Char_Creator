@@ -1,0 +1,1818 @@
+{
+  "Aid": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Aroden's Magic Army": {
+    "changes": [
+      {
+        "formula": "floor(@spells.primary.cl.total/5)",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "floor(@spells.primary.cl.total/5)",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Assumed Likeness": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Atavism": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Aura Of Cannibalism": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "competence",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Baphomet's Blessing": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Barghest Feast": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "profane",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Black Spot": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Blade Of Light": {
+    "name": "Blade Of Light: this spell infuses a weapon with pure sunlight (the weapon need not be a bladed weapon). a weapon enhanced by this spel",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "sacred",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Bless": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Blessed Fist": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Blessing Of Fervor": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Blink": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Blood Scent": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Body Capacitance": {
+    "changes": [
+      {
+        "formula": "3",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Bomber's Eye": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Bone Fists": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Burst Of Glory": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Call Weapon": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "circumstance",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "circumstance",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Contagious Zeal": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Coward's Cowl": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Dahak's Release": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Daybreak Arrow": {
+    "name": "Daybreak Arrow: Targeted ammunition exudes radiant energy.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Deadly Juggernaut": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Delayed Blast Fireball": {
+    "name": "Delayed Blast Fireball: 1d6/level fire damage; you can postpone blast for up to 5 rounds.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Desecrate": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "profane",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "profane",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Desperate Weapon": {
+    "name": "Desperate Weapon: Create an improvised weapon.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Divine Favor": {
+    "changes": [
+      {
+        "formula": "floor(@spells.primary.cl.total/3)",
+        "target": "attack",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "floor(@spells.primary.cl.total/3)",
+        "target": "wdamage",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Divine Power": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Divine Vessel": {
+    "name": "Divine Vessel: (Oracle only.) Change into a huge, otherworldly creature.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Ectoplasmic Eruption": {
+    "name": "Ectoplasmic Eruption: Deal 6d6 points of damage and entangle creatures in a 30-ft. radius, and push ethereal and incorporeal creatures onto the Material Plane.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Elemental Mastery": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "circumstance",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Enlarge Tail": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Face Of The Devourer": {
+    "name": "Face Of The Devourer: you transform the target's face into a hideous shape, such as a half-melted visage with insect legs instead of teeth, s",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Find Fault": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "attack",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Firebelly": {
+    "name": "Firebelly: a magical fire warms your belly, granting fire resistance 5 and making your gut hot to the touch (but not enough to dam",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Flame Arrow": {
+    "name": "Flame Arrow: Arrows deal +1d6 fire damage.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Flames Of The Faithful": {
+    "name": "Flames Of The Faithful: Gives weapon flaming property.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Form Of The Alien Dragon I": {
+    "name": "Form Of The Alien Dragon I: you become a medium esoteric or outer dragon. psychics can choose from the esoteric dragon (astral, dream, etheric, nig",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "6d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Form Of The Alien Dragon II": {
+    "name": "Form Of The Alien Dragon II: this spell functions as per form of the alien dragon i, except it also allows you to assume the form of a large esoteri",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "6d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Form Of The Alien Dragon III": {
+    "name": "Form Of The Alien Dragon III: this spell functions as per form of the alien dragon ii, except it also allows you to take the form of a huge esoteric",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "12d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Form Of The Exotic Dragon I": {
+    "name": "Form Of The Exotic Dragon I: you become a medium imperial or primal dragon. druids can choose from the primal dragon (brine, cloud, crystal, magma,",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "6d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Form Of The Exotic Dragon II": {
+    "name": "Form Of The Exotic Dragon II: this spell functions as per form of the exotic dragon i, except it also allows you to assume the form of a large imperi",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "8d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Form Of The Exotic Dragon III": {
+    "name": "Form Of The Exotic Dragon III: this spell functions as per form of the exotic dragon ii except that it also allows you to take the form of a huge impe",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "12d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Form of the Dragon I": {
+    "name": "Form of the Dragon I: Turns you into a Medium dragon.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "6d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Form of the Dragon II": {
+    "name": "Form of the Dragon II: Turns you into a Large dragon.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "8d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Form of the Dragon III": {
+    "name": "Form of the Dragon III: Turns you into a Huge dragon.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "12d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Geniekind": {
+    "name": "Geniekind: keleshite wizards and clerics have always sought to emulate the genies that they bind. the geniekind spell is the resul",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Gift Of The Deep": {
+    "name": "Gift Of The Deep: you give the targets the appearance and many of the abilities of sahuagin mutants, with effects as described below. cho",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Good Hope": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Gorum's Armor": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Gravity Bow": {
+    "name": "Gravity Bow: Arrows do damage as though one size category bigger.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Guidance": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "competence",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Haste": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Hedging Weapons": {
+    "name": "Hedging Weapons: Floating weapons protect you and make ranged attacks.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "force"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Heroes' Feast": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Heroic Invocation": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "4",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Heroism": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Heroism, Greater": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Holy Ice Weapon": {
+    "name": "Holy Ice Weapon: Create a masterwork weapon made of frozen holy water.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Holy Sword": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "5",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Holy Whisper": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Hunter's Blessing": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Hunter's Howl": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Inheritor's Smite": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "attack",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "rider": "on hit, free bull rush [[ d20 + @attributes.cmb.total + 5 ]] vs CMD (no AoO)"
+  },
+  "Inspiring Recovery": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Invoke Primal Power": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Last Azlanti's Defending Sword": {
+    "name": "Last Azlanti's Defending Sword: you create a sword of force that functions as mage's sword except as described here. the sword does not receive the add",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "force"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Lead Blades": {
+    "name": "Lead Blades: Melee weapons damage as if one size bigger.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Litany Of Vengeance": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Magic Boulder": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Magic Fang": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Magic Siege Engine": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Magic Stone": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Magic Weapon": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Marid's Mastery": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Mirror Strike": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Miserable Pity": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Molten Orb": {
+    "name": "Molten Orb: Molten metal splash weapon deals 2d6 fire damage plus ongoing damage.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Natural Rhythm": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Polypurpose Panacea": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "competence",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Prayer": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Rain Of Arrows": {
+    "name": "Rain Of Arrows: you point your finger and conjure a cloud of magical arrows that rain down on any creatures and objects in the indicate",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "piercing"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Reaper's Coterie": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "profane",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Reduce Person": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Release The Hounds": {
+    "name": "Release The Hounds: this spell summons a pack of canines that respond to the spellcaster's commands and act in perfect unison, causing them",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Rift of Ruin": {
+    "name": "Rift of Ruin: this spell tears a rift in reality, creating an extradimensional hole with a depth of 60 feet. you must create the rift",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Righteous Blood": {
+    "name": "Righteous Blood: the target creature's innate goodness infuses its body with holy energy. while this energy does not directly empower th",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Righteous Vigor": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Rock Whip": {
+    "name": "Rock Whip: a 15-foot-long lash of crumbling crystal and earth emerges from the palm of your hand. this weapon is treated as a nonm",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "bludgeoning"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "rider": "on hit, free bull rush [[ d20 + @attributes.cmb.total - @attributes.bab.total + @spells.primary.cl.total ]] vs CMD"
+  },
+  "Rune Of Rule": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "attack",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Saddle Surge": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Sense Vitals": {
+    "name": "Sense Vitals: this spell makes your eyes shine blood red and allows you to see the vital areas and weak points of creatures within 30",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Shield Of The Dawnflower": {
+    "name": "Shield Of The Dawnflower: you create a disk of sunlight on one arm. any creature that strikes you with a melee attack deals normal damage, but al",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Shield Of The Dawnflower, Greater": {
+    "name": "Shield Of The Dawnflower, Greater: you create a disk of sunlight on one arm. any creature that strikes you with a melee attack deals normal damage, but al",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Shillelagh": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Silver Darts": {
+    "name": "Silver Darts: Cone of silver darts deals 1d6 piercing damage/level, more against unarmored targets.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "piercing"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Spectral Hand": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Sun Metal": {
+    "name": "Sun Metal: Weapon touched bursts into flames.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Sundering Shards": {
+    "name": "Sundering Shards: Sundered item explodes, dealing 1d6 damage to adjacent creatures.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Sword To Snake": {
+    "name": "Sword To Snake: when you make an undulating gesture using your hand, the target item changes slightly in shape and appearance to resemb",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "piercing"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Telekinetic Charge": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Telekinetic Strikes": {
+    "name": "Telekinetic Strikes: the touched creature's limbs are charged with telekinetic force. for the duration of the spell, the target's unarmed at",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "force"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Thorn Body": {
+    "name": "Thorn Body: Your attackers take 1d6 +1 damage/level.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "piercing"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Thorny Entanglement": {
+    "name": "Thorny Entanglement: As entangle, plus plants make ranged attacks.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "piercing"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Timely Inspiration": {
+    "changes": [
+      {
+        "formula": "3",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Transmute Blood To Acid": {
+    "name": "Transmute Blood To Acid: Target takes acid damage each round, and its attackers take acid damage.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "acid"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "True Strike": {
+    "name": "True Strike: +20 on your next attack roll.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "20",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "insight",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Umbral Infusion": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Umbral Weapon": {
+    "name": "Umbral Weapon: a shadowy afterimage trails behind the targeted weapon, potentially damaging foes even when the weapon misses. once per",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "cold"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Unerring Weapon": {
+    "changes": [
+      {
+        "formula": "floor(@spells.primary.cl.total/4)",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Unholy Sword": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "5",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Urgathoa's Beacon": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "profane",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Vengeful Stinger": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Vigor": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "competence",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Vile Dog Transformation": {
+    "name": "Vile Dog Transformation: Transform ordinary dogs into fiendish minions.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "acid"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Wall of Sound": {
+    "name": "Wall of Sound: Sonic wall deflects and damages creatures.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "sonic"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Weapon of Awe": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Wind Blades": {
+    "name": "Wind Blades: you harden the air around the target into jagged invisible blades that deal damage based on how fast the target moves.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "slashing"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  },
+  "Wrath": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Wreath of Blades": {
+    "name": "Wreath of Blades: Four mithral daggers speed around you, attacking nearby creatures and protecting your spellcasting from attacks of opportunity.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "cold"
+        ],
+        "critical": "nonCrit"
+      }
+    ]
+  }
+}

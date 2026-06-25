@@ -70,6 +70,52 @@ _ATK_RE = re.compile(
 # Dice IL-scaling rider, for a curation note only (e.g. "increases to 2d8 ... initiator level 9").
 _DICE_STEP_RE = re.compile(
     r'increases?\s+to\s+(\d+d\d+)[^.]{0,40}?initiator level (\d+)', re.IGNORECASE)
+# A real dice term in a finished damage formula (1d6, 8d6, the "4d6" in "4d6 + @INITMOD").
+_DICE_RE = re.compile(r'\d+d\d+')
+
+# --- Rider detection (saves / conditions / combat maneuvers) -- drafts the inline [[ ]] name text --
+# These feed the curated `rider` field (docs/pow_conditional_decision_rules.md). DRAFT-quality and
+# flagged review:true -- the maneuver re-audit curates them into maneuver_overrides.json.
+_SAVE_RE = re.compile(
+    r'\b(Fortitude|Reflex|Will)\b\s+(?:save|saving throw)[^.]{0,60}?'
+    r'(negates?|halves?|partial|or\b[^.]{0,40})', re.IGNORECASE)
+_SAVE_DC_RE = re.compile(r'\bDC\s*(\d+)\b', re.IGNORECASE)
+_CONDITIONS = ('staggered|sickened|nauseated|shaken|frightened|panicked|dazed|stunned|prone|'
+               'blinded|dazzled|deafened|entangled|paralyzed|fatigued|exhausted|cowering|confused')
+_COND_RE = re.compile(
+    r'\b(' + _CONDITIONS + r')\b[^.]{0,30}?(?:for\s+)?(\d+(?:d\d+)?)\s+rounds?', re.IGNORECASE)
+_CM_KEYWORDS = r'bull\s*rush|trip|disarm|grapple|reposition|drag|dirty trick|sunder|overrun'
+_CM_RE = re.compile(r'\b(' + _CM_KEYWORDS + r')\b[^.]{0,50}?(?:combat maneuver|maneuver check|\bcmb\b)',
+                    re.IGNORECASE)
+_CM_NO_AOO_RE = re.compile(r'without provoking', re.IGNORECASE)
+
+
+def _parse_rider(desc):
+    """Draft a `rider` string of save/condition/combat-maneuver effects, or '' if none. Save DCs use
+    the scraped DC as the IL-scaling base (`[[ <dc> + @INITMOD ]]`); combat maneuvers get a plain
+    CMB roll (the curator swaps in @ATTACKCHECK/@SKILLCHECK or the str/dex CMB form as needed)."""
+    parts = []
+    s = _SAVE_RE.search(desc)
+    if s:
+        dc = _SAVE_DC_RE.search(s.group(0)) or _SAVE_DC_RE.search(desc[max(0, s.start() - 30):s.start()])
+        dc_txt = f"[[ {dc.group(1)} + @INITMOD ]]" if dc else "[[ ? + @INITMOD ]]"
+        result = re.sub(r'\s+', ' ', s.group(2).strip())[:40]
+        parts.append(f"{s.group(1).capitalize()} Save {dc_txt} {result}".strip())
+    c = _COND_RE.search(desc)
+    if c:
+        parts.append(f"{c.group(1).lower()} [[{c.group(2)}]] rounds")
+    cm = _CM_RE.search(desc)
+    if cm:
+        maneuver = re.sub(r'\s+', ' ', cm.group(1).lower())
+        aoo = " (no AoO)" if _CM_NO_AOO_RE.search(desc) else ""
+        parts.append(f"{maneuver} [[ d20 + @attributes.cmb.total ]] vs CMD{aoo}")
+    return "; ".join(parts)
+
+
+def _crit_for(formula):
+    """nonCrit when the damage formula carries dice (extra dice don't multiply on a crit), else
+    normal. Flat / @-reference-only riders stay normal and scale with the crit like static damage."""
+    return 'nonCrit' if _DICE_RE.search(str(formula)) else 'normal'
 
 
 def _display(key):
@@ -97,7 +143,7 @@ def _damage_modifier(formula, dtype):
         'subTarget': 'allDamage',
         'type': 'untyped',
         'damageType': [dtype] if dtype and dtype.lower() != 'untyped' else [],
-        'critical': 'normal',
+        'critical': _crit_for(formula),
     }
 
 
@@ -152,17 +198,21 @@ def build_draft():
             if kind not in ('strike', 'boost', 'counter'):
                 continue
             total += 1
-            mods, snippets, notes = _parse_modifiers(str(entry.get('Description', '')))
-            if not mods:
+            desc = str(entry.get('Description', ''))
+            mods, snippets, notes = _parse_modifiers(desc)
+            rider = _parse_rider(desc)
+            if not mods and not rider:
                 continue
             parsed += 1
             out = {'modifiers': mods, 'review': True,
                    '_discipline': _display(disc_key), '_kind': kind, '_level': level,
                    '_snippets': snippets}
+            if rider:
+                out['rider'] = rider
             if notes:
                 out['_notes'] = notes
             draft[_display(m_key)] = out
-    print(f"strikes/boosts/counters with at least one parsed modifier: {parsed}/{total}")
+    print(f"strikes/boosts/counters with a parsed modifier or rider: {parsed}/{total}")
     return draft
 
 

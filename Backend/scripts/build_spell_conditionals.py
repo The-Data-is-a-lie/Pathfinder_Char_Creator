@@ -1,0 +1,373 @@
+"""Draft-generate pf1 CONDITIONAL / rider data for SPELLS (manual tool, never part of the generation
+pipeline).
+
+Reads data/spells.csv (pipe-delimited; `short_description` holds a clean one-liner, `description`
+the full text) and CONSERVATIVELY classifies every spell into one of two buckets, mirroring the
+repo's house convention (.claude/skills/foundry-conditionals/SKILL.md,
+docs/pow_conditional_decision_rules.md) and the feat split (feat_changes.json vs
+feat_conditionals.json):
+
+  Bucket B -- the spell IS a damaging attack (needs a melee/ranged TOUCH ATTACK and deals dice
+              damage: Shocking Grasp, Scorching Ray, Vampiric Touch, Acid Arrow, Chill Touch). The
+              pf1 compendium spell already carries its own attack + damage, so we DON'T re-emit
+              damage; we surface only a formal `save` block + non-damage `riders` (ability damage,
+              conditions) as inline-[[ ]] text. -> goes to spell_riders.json.
+
+  Bucket A -- a buff that adds to ATTACK and/or DAMAGE rolls, or enhances a weapon (Bless, Divine
+              Favor, True Strike, Magic Weapon, Bless Weapon, Flame Arrow). Becomes a default-off
+              conditional TOGGLE on the wielder's main weapon. Two shapes:
+                "A"        sustained typed bonus -> feat_changes-style {changes, contextNotes}
+                "A-toggle" one-shot ("next attack") or dice-bearing bonus -> feat_conditionals-style
+                           {name, default:false, modifiers:[...]} (a change maximizes dice; a
+                           conditional modifier keeps real dice -- so True Strike's +20 and Flame
+                           Arrow's +1d6 belong here).
+              -> goes to spell_changes.json.
+
+Detection runs B FIRST; a spell lands in at most one bucket (B wins -- e.g. Shocking Grasp also
+grants +3 to-hit vs metal armor, but it's a touch-attack damage spell). Everything the regexes can't
+confidently read stays out -- those spells are description-only (the Foundry module renders the
+spell from the compendium).
+
+Output is a DRAFT keyed by spell display name; every entry carries "_bucket", "review": true, the
+matched "_snippets", and "_spell_level", and is meant to be hand-curated into
+Backend/json/spells/spell_changes.json (bucket A) and Backend/json/spells/spell_riders.json
+(bucket B) -- strip the review/_* keys, keep only entries you trust, finalize scaling formulas/caps.
+
+Caster-level scaling ("+1 per three levels") is drafted as floor(@spells.primary.cl.total/N) (the
+@-path from the foundry-sheet-references skill); caps/minimums are left for curation (flagged review).
+
+Usage:
+    C:\\Python310\\python.exe Backend/scripts/build_spell_conditionals.py [--out PATH]
+"""
+import argparse
+import json
+import re
+from pathlib import Path
+
+import pandas as pd
+
+REPO = Path(__file__).resolve().parents[2]
+SOURCE = REPO / "data" / "spells.csv"
+DEFAULT_OUT = REPO / "Backend" / "json" / "spells" / "spell_conditionals.draft.json"
+
+# pf1 bonus types for a modifier/change "type" field (untyped when absent).
+_BONUS_TYPES = ('dodge|morale|insight|luck|competence|circumstance|profane|sacred|'
+                'deflection|resistance|shield|enhancement|alchemical|racial|size|trait')
+# pf1 built-in damage type ids for a damage modifier's damageType set (empty = untyped).
+_DMG_TYPES = ('fire|cold|acid|electricity|sonic|force|negative|positive|'
+              'bludgeoning|piercing|slashing|untyped')
+_DICE_RE = re.compile(r'\d+d\d+')
+
+# --- Bucket B: spell delivered by an attack roll that deals dice damage ---------------------------
+_RANGED_TOUCH_RE = re.compile(r'ranged touch', re.IGNORECASE)
+_TOUCH_ATTACK_RE = re.compile(r'(?:melee|ranged)?\s*touch attack|ranged attack roll', re.IGNORECASE)
+# Dice damage: "1d6 points of electricity damage", "4d6 fire damage", "1d6/level ... damage".
+_DMG_DICE_RE = re.compile(
+    r'(\d+d\d+)(?:/level)?\s*(?:points?\s+of\s+)?(' + _DMG_TYPES + r')?\s*damage', re.IGNORECASE)
+# Ability damage rider: "1d4 points of Strength damage", "1 point of Constitution damage".
+_ABILITIES = 'strength|dexterity|constitution|intelligence|wisdom|charisma'
+_ABIL_DMG_RE = re.compile(
+    r'(\d+(?:d\d+)?)\s+points?\s+of\s+(' + _ABILITIES + r')\s+(damage|drain)', re.IGNORECASE)
+# Ongoing/secondary damage: "1d6 points of fire damage ... each round for 3 rounds".
+_ONGOING_RE = re.compile(
+    r'(\d+d\d+|\d+)\s*(?:points?\s+of\s+)?(' + _DMG_TYPES + r')?\s*damage[^.]{0,40}?'
+    r'(?:each|per|every)\s+round(?:[^.]{0,30}?for\s+(\d+(?:d\d+)?)\s+rounds?)?', re.IGNORECASE)
+# A condition inflicted for an explicit duration (high-signal): "blinded for 1d4 rounds".
+_CONDITIONS = ('blinded|dazzled|dazed|staggered|stunned|sickened|nauseated|shaken|frightened|'
+               'panicked|entangled|paralyzed|deafened|fatigued|exhausted|confused|cowering|prone')
+_COND_DUR_RE = re.compile(
+    r'(' + _CONDITIONS + r')\s+for\s+(\d+(?:d\d+)?)\s+rounds?', re.IGNORECASE)
+
+# --- Bucket A: buff to attack/damage / weapon enhancement ----------------------------------------
+# "+2 luck bonus on attack rolls" (bonus precedes "attack roll").
+_ATK_FWD_RE = re.compile(
+    r'\+(\d+)\s*(' + _BONUS_TYPES + r')?\s*bonus[^.]{0,40}?attack rolls?', re.IGNORECASE)
+# True-Strike order: "... next single attack roll ... gains a +20 insight bonus" (bonus FOLLOWS it).
+_ATK_REV_RE = re.compile(
+    r'attack rolls?[^.]{0,80}?\+(\d+)\s+(' + _BONUS_TYPES + r')?\s*bonus', re.IGNORECASE)
+# "+N <type> bonus on attack and (weapon) damage rolls" -> same bonus to BOTH.
+_ATK_AND_DMG_RE = re.compile(
+    r'\+(\d+)\s*(' + _BONUS_TYPES + r')?\s*bonus[^.]{0,30}?attack and (?:weapon )?damage rolls?',
+    re.IGNORECASE)
+# "+N <type> bonus on (weapon) damage rolls".
+_DMG_BONUS_RE = re.compile(
+    r'\+(\d+)\s*(' + _BONUS_TYPES + r')?\s*bonus[^.]{0,40}?(?:weapon )?damage rolls?', re.IGNORECASE)
+# Weapon-enhancer that ADDS DICE: "arrows deal an additional 1d6 points of fire damage".
+_WEAPON_CTX_RE = re.compile(
+    r'\b(weapon|blade|sword|arrow|ammunition|projectile)s?\b', re.IGNORECASE)
+_WEAPON_DICE_RE = re.compile(
+    r'(?:deals?|inflicts?|gains?|additional|extra)[^.]{0,40}?(\d+d\d+)\s*(?:points?\s+of\s+)?'
+    r'(' + _DMG_TYPES + r')?\s*damage', re.IGNORECASE)
+# Disqualifiers: an "attack roll" match that's really an AC/crit-confirmation bonus, or a bonus
+# granted to the OPPONENT rather than the caster -- drop those (false positives, not weapon buffs).
+_DISQUALIFY_ATK_RE = re.compile(
+    r'\barmor class\b|\bac\b|confirmation|opponents?\s+gain|enem(?:y|ies)\s+gain|foes?\s+gain',
+    re.IGNORECASE)
+# One-shot ("your next attack") -> must be a toggle, never an always-on change.
+_ONESHOT_RE = re.compile(r'next (?:single )?attack|on your next', re.IGNORECASE)
+# Caster-level scaling: "for every three caster levels", "per two levels".
+_SCALE_RE = re.compile(r'(?:per|every)\s+(two|three|four|five|\d+)\s+(?:caster\s+)?levels?',
+                       re.IGNORECASE)
+_WORD_NUM = {'two': 2, 'three': 3, 'four': 4, 'five': 5}
+
+# --- Combat-maneuver-on-hit riders (Bucket A): "free bull rush", "trip combat maneuver", etc. ----
+# A buff spell that lets you make a combat maneuver gets a [[ ]] CMB roll in its conditional name,
+# mirroring the Path of War convention (docs/pow_conditional_decision_rules.md). High-signal only.
+_CM_KEYWORDS = r'bull\s*rush|trip|disarm|grapple|reposition|drag|dirty trick|sunder|overrun'
+_CM_RE = re.compile(r'\b(' + _CM_KEYWORDS + r')\b[^.]{0,60}?(?:combat maneuver|maneuver check|\bcmb\b)',
+                    re.IGNORECASE)
+_CM_RE2 = re.compile(r'combat maneuver[^.]{0,40}?\b(' + _CM_KEYWORDS + r')\b', re.IGNORECASE)
+# A flat bonus to the maneuver check ("+5 sacred bonus on your combat maneuver check").
+_CM_BONUS_RE = re.compile(
+    r'\+(\d+)\s*(?:' + _BONUS_TYPES + r')?\s*bonus[^.]{0,40}?(?:combat maneuver|maneuver check|\bcmb\b)',
+    re.IGNORECASE)
+# "use your caster level in place of your base attack bonus" -> CL replaces BAB in the CMB roll.
+_CM_CL_FOR_BAB_RE = re.compile(r'caster level in place of [^.]{0,25}?base attack bonus', re.IGNORECASE)
+_CM_NO_AOO_RE = re.compile(r'without provoking', re.IGNORECASE)
+_CM_ONHIT_RE = re.compile(
+    r'if (?:the|this|your|that) (?:attack|spell|ray|strike|weapon|blow)s? (?:hits?|deals?|strikes?)'
+    r'|if it hits|on (?:a |each )?(?:successful )?hit', re.IGNORECASE)
+
+
+def _combat_maneuver_rider(full):
+    """High-signal combat-maneuver-on-hit clause -> a [[ ]] CMB-roll rider string, or None."""
+    m = _CM_RE.search(full) or _CM_RE2.search(full)
+    if not m:
+        return None
+    maneuver = re.sub(r'\s+', ' ', m.group(1).lower())
+    if _CM_CL_FOR_BAB_RE.search(full):
+        roll = "[[ d20 + @attributes.cmb.total - @attributes.bab.total + @spells.primary.cl.total ]]"
+    else:
+        b = _CM_BONUS_RE.search(full)
+        roll = "[[ d20 + @attributes.cmb.total" + (f" + {b.group(1)}" if b else "") + " ]]"
+    prefix = "on hit, " if _CM_ONHIT_RE.search(full) else ""
+    aoo = " (no AoO)" if _CM_NO_AOO_RE.search(full) else ""
+    return f"{prefix}free {maneuver} {roll} vs CMD{aoo}"
+
+
+def _crit_for(formula):
+    """nonCrit when the formula carries dice (extra dice don't multiply on a crit), else normal."""
+    return 'nonCrit' if _DICE_RE.search(str(formula)) else 'normal'
+
+
+def _scale_formula(value, window):
+    """Literal `value` (str) unless THIS bonus's local `window` scales it per N levels ->
+    floor(@CL/N) (curate the cap). `window` must be a small slice anchored on the bonus match -- a
+    global search would wrongly scale a flat bonus off an unrelated "per N levels" clause elsewhere
+    in the description (a temp-HP / healing / duration line)."""
+    m = _SCALE_RE.search(window)
+    if not m:
+        return str(value), False
+    g = m.group(1).lower()
+    n = _WORD_NUM.get(g) or int(g)
+    return f"floor(@spells.primary.cl.total/{n})", True
+
+
+def _win(full, m):
+    """Small slice around bonus match `m` -- where its own per-level scaling clause would live."""
+    return full[max(0, m.start() - 25): m.end() + 60]
+
+
+def _save_block(save_raw):
+    """{type, dc:'', description, harmless} from the saving_throw column, or None if there's no save."""
+    s = (save_raw or '').strip()
+    if not s or s.lower() in ('none', 'no', 'null'):
+        return None
+    m = re.search(r'\b(fortitude|reflex|will)\b', s, re.IGNORECASE)
+    if not m:
+        return None
+    return {'type': m.group(1).lower(), 'dc': '', 'description': s,
+            'harmless': 'harmless' in s.lower()}
+
+
+def _classify_B(name, full, short, save_raw, level):
+    """Bucket B if a touch attack/ranged attack roll delivers dice damage; else None."""
+    if not (_TOUCH_ATTACK_RE.search(full) or _RANGED_TOUCH_RE.search(full)):
+        return None
+    dmg = _DMG_DICE_RE.search(full)
+    if not dmg:
+        return None
+    ranged = bool(_RANGED_TOUCH_RE.search(full))
+    snippets = [dmg.group(0).strip()]
+    riders = []
+
+    def _add(rider, snippet):
+        if rider not in riders:
+            riders.append(rider)
+            snippets.append(snippet.strip())
+
+    for m in _ABIL_DMG_RE.finditer(full):
+        _add(f"[[{m.group(1)}]] {m.group(2).capitalize()} {m.group(3)}.", m.group(0))
+    for m in _ONGOING_RE.finditer(full):
+        dtype = f"{m.group(2)} " if m.group(2) else ""
+        dur = f" for [[{m.group(3)}]] rounds" if m.group(3) else ""
+        _add(f"Ongoing [[{m.group(1)}]] {dtype}damage each round{dur}.", m.group(0))
+    for m in _COND_DUR_RE.finditer(full):
+        _add(f"Target {m.group(1).lower()} for [[{m.group(2)}]] rounds.", m.group(0))
+    entry = {
+        '_bucket': 'B-ranged' if ranged else 'B-melee',
+        'attack': 'ranged' if ranged else 'melee',
+        'save': _save_block(save_raw),
+        'riders': riders,
+        'review': True,
+        '_base_damage': f"{dmg.group(1)} {dmg.group(2) or 'untyped'}",
+        '_spell_level': level,
+        '_snippets': snippets,
+    }
+    return entry
+
+
+def _atk_modifier(value, btype):
+    return {'formula': str(value), 'target': 'attack', 'subTarget': 'allAttack',
+            'type': (btype or 'untyped').lower(), 'damageType': [], 'critical': 'normal'}
+
+
+def _dmg_modifier(formula, btype, dtype):
+    return {'formula': str(formula), 'target': 'damage', 'subTarget': 'allDamage',
+            'type': (btype or 'untyped').lower(),
+            'damageType': [dtype] if dtype and dtype.lower() != 'untyped' else [],
+            'critical': _crit_for(formula)}
+
+
+def _atk_change(formula, btype):
+    return {'formula': str(formula), 'target': 'attack', 'type': (btype or 'untyped').lower(),
+            'operator': 'add', 'priority': 0}
+
+
+def _wdamage_change(formula, btype):
+    return {'formula': str(formula), 'target': 'wdamage', 'type': (btype or 'untyped').lower(),
+            'operator': 'add', 'priority': 0}
+
+
+def _classify_A(name, full, short, level, save_raw=""):
+    """Bucket A if the spell buffs attack/damage rolls or enhances a weapon; else None.
+    Returns a feat_conditionals-style toggle (A-toggle) or a feat_changes-style entry (A).
+    A combat-maneuver-on-hit clause adds a `rider` (CMB roll); a save is surfaced as the review-only
+    `_save_raw` hint (NOT auto-committed -- a buff's save often belongs to a different spell effect)."""
+    snippets = []
+    atk_val = atk_type = atk_win = None
+    dmg_val = dmg_type = dmg_win = None
+    both = False
+
+    m = _ATK_AND_DMG_RE.search(full)
+    if m and not _DISQUALIFY_ATK_RE.search(m.group(0)):
+        atk_val, atk_type, atk_win = m.group(1), m.group(2), _win(full, m)
+        dmg_val, dmg_type, dmg_win = m.group(1), m.group(2), atk_win
+        both = True
+        snippets.append(m.group(0).strip())
+    else:
+        m = _ATK_FWD_RE.search(full) or _ATK_REV_RE.search(full)
+        if m and not _DISQUALIFY_ATK_RE.search(m.group(0)):
+            atk_val, atk_type, atk_win = m.group(1), m.group(2), _win(full, m)
+            snippets.append(m.group(0).strip())
+        md = _DMG_BONUS_RE.search(full)
+        if md and not _DISQUALIFY_ATK_RE.search(md.group(0)):
+            dmg_val, dmg_type, dmg_win = md.group(1), md.group(2), _win(full, md)
+            snippets.append(md.group(0).strip())
+
+    # Weapon-enhancer that adds dice (Flame Arrow): only when a weapon noun is present and it's not
+    # already captured as a flat damage bonus.
+    wpn_dice = None
+    if dmg_val is None and _WEAPON_CTX_RE.search(full):
+        wd = _WEAPON_DICE_RE.search(full)
+        if wd:
+            wpn_dice = (wd.group(1), wd.group(2))
+            snippets.append(wd.group(0).strip())
+
+    if atk_val is None and dmg_val is None and wpn_dice is None:
+        return None
+
+    # Combat-maneuver rider (committed) + a review-only save hint for the curator.
+    _extra = {}
+    cm_rider = _combat_maneuver_rider(full)
+    if cm_rider:
+        _extra['rider'] = cm_rider
+    _sv = (save_raw or '').strip()
+    if _sv and _sv.lower() not in ('none', 'no', 'null'):
+        _extra['_save_raw'] = _sv
+
+    one_shot = bool(_ONESHOT_RE.search(full))
+    has_dice = wpn_dice is not None
+    label = short.strip() or re.sub(r'\s+', ' ', full)[:120].strip()
+
+    if one_shot or has_dice:
+        modifiers = []
+        if atk_val is not None:
+            atk_f, scaled = _scale_formula(atk_val, atk_win)
+            modifiers.append(_atk_modifier(atk_f, atk_type))
+        if dmg_val is not None:
+            dmg_f, _ = _scale_formula(dmg_val, dmg_win)
+            modifiers.append(_dmg_modifier(dmg_f, dmg_type, None))
+        if wpn_dice is not None:
+            modifiers.append(_dmg_modifier(wpn_dice[0], None, wpn_dice[1]))
+        return {'_bucket': 'A-toggle', 'name': f"{name}: {label}", 'default': False,
+                'modifiers': modifiers, 'review': True, '_spell_level': level,
+                '_snippets': snippets, **_extra}
+
+    # Sustained typed bonus -> feat_changes-style always-on change set.
+    changes = []
+    if atk_val is not None:
+        atk_f, _ = _scale_formula(atk_val, atk_win)
+        changes.append(_atk_change(atk_f, atk_type))
+    if dmg_val is not None:
+        dmg_f, _ = _scale_formula(dmg_val, dmg_win)
+        changes.append(_wdamage_change(dmg_f, dmg_type))
+    return {'_bucket': 'A', 'changes': changes, 'contextNotes': [], 'review': True,
+            '_spell_level': level, '_snippets': snippets, **_extra}
+
+
+def build_draft():
+    df = pd.read_csv(SOURCE, sep="|", on_bad_lines="skip", dtype=str, keep_default_na=False)
+    draft = {}
+    total = a_change = a_toggle = b_melee = b_ranged = neither = 0
+    for _, row in df.iterrows():
+        name = str(row.get("name", "")).strip()
+        if not name:
+            continue
+        total += 1
+        short = str(row.get("short_description", ""))
+        desc = str(row.get("description", ""))
+        full = (short + " " + desc).lower()
+        level = str(row.get("spell_level", "")).strip()
+        save_raw = str(row.get("saving_throw", ""))
+
+        entry = _classify_B(name, full, short, save_raw, level)
+        if entry is None:
+            entry = _classify_A(name, full, short, level, save_raw)
+        if entry is None:
+            neither += 1
+            continue
+        b = entry['_bucket']
+        a_change += b == 'A'
+        a_toggle += b == 'A-toggle'
+        b_melee += b == 'B-melee'
+        b_ranged += b == 'B-ranged'
+        draft[name] = entry
+
+    flagged = sum(1 for v in draft.values() if v.get('review'))
+    print(f"spells scanned: {total}")
+    print(f"  Bucket A  (buff to attack/damage):     {a_change + a_toggle}")
+    print(f"      A       sustained changes:         {a_change}")
+    print(f"      A-toggle one-shot/dice conditional: {a_toggle}")
+    print(f"  Bucket B  (spell is a damaging attack): {b_melee + b_ranged}")
+    print(f"      B-melee  melee touch attack:        {b_melee}")
+    print(f"      B-ranged ranged touch attack:       {b_ranged}")
+    print(f"  neither (description-only):             {neither}")
+    print(f"  total drafted (eligible):               {len(draft)}")
+    print(f"  flagged review:                         {flagged}")
+    return draft
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
+    args = ap.parse_args()
+    draft = build_draft()
+    args.out.parent.mkdir(parents=True, exist_ok=True)
+    args.out.write_text(json.dumps(draft, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"wrote {len(draft)} draft entries -> {args.out}")
+
+
+if __name__ == "__main__":
+    main()
