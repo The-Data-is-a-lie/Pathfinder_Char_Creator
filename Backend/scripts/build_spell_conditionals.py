@@ -103,12 +103,25 @@ _WEAPON_DICE_RE = re.compile(
 _DISQUALIFY_ATK_RE = re.compile(
     r'\barmor class\b|\bac\b|confirmation|opponents?\s+gain|enem(?:y|ies)\s+gain|foes?\s+gain',
     re.IGNORECASE)
+# Crit-CONFIRMATION-only idiom: "+N on attack rolls TO CONFIRM a critical hit" (Unerring Weapon).
+# The bonus rides only the confirm roll, not every attack, and pf1 has no crit-confirm-only change
+# target -- so such spells stay description-only. The "to confirm" / "confirm(s) a critical" clause
+# trails just PAST the "attack rolls" the bonus names, so it falls outside the bonus match span (and
+# thus outside _DISQUALIFY_ATK_RE above); _disqualified_attack() looks a little further forward for
+# it. The VERB "confirm" is the tell: Mirror Strike's NOUN "(and confirmation attack roll)" is a real
+# general +N that merely also rides the confirm roll, so it must NOT match here.
+_CRIT_CONFIRM_RE = re.compile(
+    r'\bto\s+confirm\b|\bconfirm(?:s|ing|ed)?\s+(?:a\s+)?critical', re.IGNORECASE)
 # One-shot ("your next attack") -> must be a toggle, never an always-on change.
 _ONESHOT_RE = re.compile(r'next (?:single )?attack|on your next', re.IGNORECASE)
 # Caster-level scaling: "for every three caster levels", "per two levels".
 _SCALE_RE = re.compile(r'(?:per|every)\s+(two|three|four|five|\d+)\s+(?:caster\s+)?levels?',
                        re.IGNORECASE)
 _WORD_NUM = {'two': 2, 'three': 3, 'four': 4, 'five': 5}
+# Stated ceiling on a scaling bonus ("maximum +3", "maximum total bonus +7", "max +5").
+_MAX_RE = re.compile(r'max(?:imum)?(?:\s+total\s+bonus)?\s*(?:of\s+)?\+?(\d+)', re.IGNORECASE)
+# Stated floor on a scaling bonus ("at least +1").
+_MIN_RE = re.compile(r'at least\s*\+?(\d+)', re.IGNORECASE)
 
 # --- Combat-maneuver-on-hit riders (Bucket A): "free bull rush", "trip combat maneuver", etc. ----
 # A buff spell that lets you make a combat maneuver gets a [[ ]] CMB roll in its conditional name,
@@ -152,20 +165,30 @@ def _crit_for(formula):
 
 def _scale_formula(value, window):
     """Literal `value` (str) unless THIS bonus's local `window` scales it per N levels ->
-    floor(@CL/N) (curate the cap). `window` must be a small slice anchored on the bonus match -- a
-    global search would wrongly scale a flat bonus off an unrelated "per N levels" clause elsewhere
-    in the description (a temp-HP / healing / duration line)."""
+    floor(@CL/N), bounded by a stated ceiling/floor when the window names one: a "maximum +3" wraps it
+    in min(..., 3), an "at least +1" wraps it in max(..., 1) (so Divine Favor -> min(max(.,1),3)).
+    `window` must be a small slice anchored on the bonus match -- a global search would wrongly scale
+    a flat bonus off an unrelated "per N levels" clause elsewhere in the description (a temp-HP /
+    healing / duration line) or pick up an unrelated maximum."""
     m = _SCALE_RE.search(window)
     if not m:
         return str(value), False
     g = m.group(1).lower()
     n = _WORD_NUM.get(g) or int(g)
-    return f"floor(@spells.primary.cl.total/{n})", True
+    formula = f"floor(@spells.primary.cl.total/{n})"
+    mn = _MIN_RE.search(window)
+    if mn:
+        formula = f"max({formula}, {int(mn.group(1))})"
+    mx = _MAX_RE.search(window)
+    if mx:
+        formula = f"min({formula}, {int(mx.group(1))})"
+    return formula, True
 
 
 def _win(full, m):
-    """Small slice around bonus match `m` -- where its own per-level scaling clause would live."""
-    return full[max(0, m.start() - 25): m.end() + 60]
+    """Small slice around bonus match `m` -- where its own per-level scaling clause and any
+    "(at least +1, maximum +3)" bound would live (the bound trails the bonus, so reach further out)."""
+    return full[max(0, m.start() - 25): m.end() + 95]
 
 
 def _save_block(save_raw):
@@ -239,7 +262,52 @@ def _wdamage_change(formula, btype):
             'operator': 'add', 'priority': 0}
 
 
-def _classify_A(name, full, short, level, save_raw=""):
+def _disqualified_attack(full, m):
+    """True if the attack-roll bonus matched at `m` is NOT a general to-hit buff and must be dropped:
+    an AC / confirmation / bonus-to-the-opponent false positive inside the matched span
+    (_DISQUALIFY_ATK_RE), OR a crit-CONFIRMATION-only bonus whose "to confirm a critical hit" clause
+    trails just past the "attack rolls" the bonus names (_CRIT_CONFIRM_RE, checked a little past the
+    match end). Keeps Mirror Strike's "(and confirmation attack roll)" -- a real +N that also rides
+    the confirm roll -- because that's the noun, not the verb idiom."""
+    if _DISQUALIFY_ATK_RE.search(m.group(0)):
+        return True
+    return bool(_CRIT_CONFIRM_RE.search(full[m.start(): m.end() + 30]))
+
+
+def _brackify_numbers(text):
+    """Wrap every standalone number in a toggle label in [[ ]] so it renders as a clickable inline
+    roll on the card (foundry-conditionals convention). Dice (NdM) first, then bare integers; an
+    existing `[[ ... ]]` span is protected wholesale and a digit glued to a word (1st, 2d4's 4) is
+    skipped. Signs stay OUTSIDE the brackets ("+5" -> "+[[5]]")."""
+    out = []
+    for i, seg in enumerate(re.split(r'(\[\[.*?\]\])', text)):
+        if i % 2 == 1:                      # an existing [[ ... ]] span -- leave it alone
+            out.append(seg)
+            continue
+        seg = re.sub(r'\b(\d+d\d+)\b', r'[[\1]]', seg)
+        seg = re.sub(r'(?<![\w])(\d+)(?![\w])', r'[[\1]]', seg)
+        out.append(seg)
+    return ''.join(out)
+
+
+def _dedup_rolled_damage(label, modifiers):
+    """Drop a clause that restates a damage modifier's dice from the toggle label -- that damage is
+    on the roll (source-labeled by the module), so it must not also live in the name
+    (foundry-conditionals rule). Removes "deal/inflict <formula> [points of] [type] damage" forms."""
+    for m in modifiers:
+        if m.get('target') != 'damage':
+            continue
+        f = re.escape(str(m.get('formula', '')))
+        if not f:
+            continue
+        label = re.sub(
+            r'(?i)\b(?:deals?|dealing|inflicts?|inflicting|takes?|taking|for)?\s*' + f +
+            r'(?:/level)?\s*(?:points?\s+of\s+)?[a-z]*\s*damage[,.]?', ' ', label)
+    label = re.sub(r'^\s*(?:and|then)\b', '', label, flags=re.IGNORECASE)
+    return re.sub(r'\s+', ' ', label).strip(' ,.;')
+
+
+def _classify_A(name, full, short, level, save_raw="", desc=""):
     """Bucket A if the spell buffs attack/damage rolls or enhances a weapon; else None.
     Returns a feat_conditionals-style toggle (A-toggle) or a feat_changes-style entry (A).
     A combat-maneuver-on-hit clause adds a `rider` (CMB roll); a save is surfaced as the review-only
@@ -250,14 +318,14 @@ def _classify_A(name, full, short, level, save_raw=""):
     both = False
 
     m = _ATK_AND_DMG_RE.search(full)
-    if m and not _DISQUALIFY_ATK_RE.search(m.group(0)):
+    if m and not _disqualified_attack(full, m):
         atk_val, atk_type, atk_win = m.group(1), m.group(2), _win(full, m)
         dmg_val, dmg_type, dmg_win = m.group(1), m.group(2), atk_win
         both = True
         snippets.append(m.group(0).strip())
     else:
         m = _ATK_FWD_RE.search(full) or _ATK_REV_RE.search(full)
-        if m and not _DISQUALIFY_ATK_RE.search(m.group(0)):
+        if m and not _disqualified_attack(full, m):
             atk_val, atk_type, atk_win = m.group(1), m.group(2), _win(full, m)
             snippets.append(m.group(0).strip())
         md = _DMG_BONUS_RE.search(full)
@@ -288,7 +356,9 @@ def _classify_A(name, full, short, level, save_raw=""):
 
     one_shot = bool(_ONESHOT_RE.search(full))
     has_dice = wpn_dice is not None
-    label = short.strip() or re.sub(r'\s+', ' ', full)[:120].strip()
+    # Full, UNTRUNCATED toggle label: prefer the original-case short_description, else the full
+    # description. No character cap -- the name must carry the whole effect (DCs, range, duration).
+    label = (short.strip() or re.sub(r'\s+', ' ', desc).strip())
 
     if one_shot or has_dice:
         modifiers = []
@@ -300,6 +370,8 @@ def _classify_A(name, full, short, level, save_raw=""):
             modifiers.append(_dmg_modifier(dmg_f, dmg_type, None))
         if wpn_dice is not None:
             modifiers.append(_dmg_modifier(wpn_dice[0], None, wpn_dice[1]))
+        # Strip any restated rolled damage from the name, then bracket every remaining number.
+        label = _brackify_numbers(_dedup_rolled_damage(label, modifiers))
         return {'_bucket': 'A-toggle', 'name': f"{name}: {label}", 'default': False,
                 'modifiers': modifiers, 'review': True, '_spell_level': level,
                 '_snippets': snippets, **_extra}
@@ -333,7 +405,7 @@ def build_draft():
 
         entry = _classify_B(name, full, short, save_raw, level)
         if entry is None:
-            entry = _classify_A(name, full, short, level, save_raw)
+            entry = _classify_A(name, full, short, level, save_raw, desc)
         if entry is None:
             neither += 1
             continue

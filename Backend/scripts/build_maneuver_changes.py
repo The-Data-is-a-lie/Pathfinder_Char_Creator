@@ -90,11 +90,44 @@ _CM_RE = re.compile(r'\b(' + _CM_KEYWORDS + r')\b[^.]{0,50}?(?:combat maneuver|m
 _CM_NO_AOO_RE = re.compile(r'without provoking', re.IGNORECASE)
 
 
-def _parse_rider(desc):
-    """Draft a `rider` string of save/condition/combat-maneuver effects, or '' if none. Save DCs use
-    the scraped DC as the IL-scaling base (`[[ <dc> + @INITMOD ]]`); combat maneuvers get a plain
-    CMB roll (the curator swaps in @ATTACKCHECK/@SKILLCHECK or the str/dex CMB form as needed)."""
+def _brackify_numbers(text):
+    """Wrap every standalone number in rider text in [[ ]] (foundry-conditionals convention): dice
+    (NdM) first, then bare integers. Existing `[[ ... ]]` inline-roll spans are protected wholesale
+    (so a DC like `[[ 11 + @INITMOD ]]` is never double-wrapped); a digit glued to a word is skipped;
+    signs stay OUTSIDE the brackets."""
+    out = []
+    for i, seg in enumerate(re.split(r'(\[\[.*?\]\])', text)):
+        if i % 2 == 1:                      # an existing [[ ... ]] span -- leave it alone
+            out.append(seg)
+            continue
+        seg = re.sub(r'\b(\d+d\d+)\b', r'[[\1]]', seg)
+        seg = re.sub(r'(?<![\w])(\d+)(?![\w])', r'[[\1]]', seg)
+        out.append(seg)
+    return ''.join(out)
+
+
+# Structured-field values that add nothing to a rider (an ordinary melee strike on one creature).
+_TRIVIAL_RANGE = {'', 'melee attack', 'melee', 'personal', 'touch'}
+_TRIVIAL_TARGET = {'', 'you', 'self', 'one creature', 'one foe', 'one target', 'one enemy'}
+_TRIVIAL_DURATION = {'', 'instant', 'instantaneous', 'immediate'}
+
+
+def _clean_field(v):
+    return re.sub(r'\s+', ' ', str(v).lstrip(' :').strip())
+
+
+def _parse_rider(entry, desc):
+    """Draft a `rider` string covering the conditional's non-damage effects, or '' if none. Pulls the
+    NON-TRIVIAL structured Range/Target/Duration (so the rider names range/targets/duration per the
+    foundry-conditionals checklist) and the description's save / condition / combat-maneuver. Save DCs
+    use the scraped DC as the IL-scaling base (`[[ <dc> + @INITMOD ]]`); combat maneuvers get a plain
+    CMB roll (the curator swaps in the skill/CL form as needed). Every number ends up in [[ ]]."""
     parts = []
+    rng, tgt, dur = (_clean_field(entry.get(k, '')) for k in ('Range', 'Target', 'Duration'))
+    if tgt and tgt.lower() not in _TRIVIAL_TARGET:
+        parts.append(tgt if rng.lower() in _TRIVIAL_RANGE else f"{tgt} within {rng}")
+    elif rng and rng.lower() not in _TRIVIAL_RANGE:
+        parts.append(f"range {rng}")
     s = _SAVE_RE.search(desc)
     if s:
         dc = _SAVE_DC_RE.search(s.group(0)) or _SAVE_DC_RE.search(desc[max(0, s.start() - 30):s.start()])
@@ -103,13 +136,15 @@ def _parse_rider(desc):
         parts.append(f"{s.group(1).capitalize()} Save {dc_txt} {result}".strip())
     c = _COND_RE.search(desc)
     if c:
-        parts.append(f"{c.group(1).lower()} [[{c.group(2)}]] rounds")
+        parts.append(f"{c.group(1).lower()} {c.group(2)} rounds")
     cm = _CM_RE.search(desc)
     if cm:
         maneuver = re.sub(r'\s+', ' ', cm.group(1).lower())
         aoo = " (no AoO)" if _CM_NO_AOO_RE.search(desc) else ""
         parts.append(f"{maneuver} [[ d20 + @attributes.cmb.total ]] vs CMD{aoo}")
-    return "; ".join(parts)
+    if dur and dur.lower() not in _TRIVIAL_DURATION and dur.lower() != 'stance':
+        parts.append(f"duration {dur}")
+    return _brackify_numbers("; ".join(parts))
 
 
 def _crit_for(formula):
@@ -200,7 +235,7 @@ def build_draft():
             total += 1
             desc = str(entry.get('Description', ''))
             mods, snippets, notes = _parse_modifiers(desc)
-            rider = _parse_rider(desc)
+            rider = _parse_rider(entry, desc)
             if not mods and not rider:
                 continue
             parsed += 1
