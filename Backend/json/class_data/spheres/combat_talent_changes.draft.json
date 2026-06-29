@@ -1,0 +1,1163 @@
+{
+  "Alchemy": {
+    "Aligned Liquid": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Alchemy",
+      "_type": "base",
+      "_snippets": [
+        "deals 2d4 points of damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "2d4",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Cherry Bomb": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Alchemy",
+      "_type": "base",
+      "_snippets": [
+        "dealing 1d4 bludgeoning damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d4",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Fuse Master": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Alchemy",
+      "_type": "base",
+      "_snippets": [
+        "dealing only 1d6 bludgeoning damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Improved Acid Flask": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Alchemy",
+      "_type": "base",
+      "_snippets": [
+        "dealing 1d6 acid damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "acid"
+          ],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Improved Alchemist Fire": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Alchemy",
+      "_type": "base",
+      "_snippets": [
+        "dealing 1d6 fire damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "fire"
+          ],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Improved Bottled Lightning": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Alchemy",
+      "_type": "base",
+      "_snippets": [
+        "deals 1d8 points of electricity damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d8",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "electricity"
+          ],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Improved Fuse Grenade": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Alchemy",
+      "_type": "base",
+      "_snippets": [
+        "dealing 2d6 points of bludgeoning damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "2d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Improved Liquid Ice": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Alchemy",
+      "_type": "base",
+      "_snippets": [
+        "dealing 1d6 cold damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "cold"
+          ],
+          "critical": "normal"
+        }
+      ]
+    },
+    "War Paint": {
+      "changes": [
+        {
+          "formula": "1",
+          "target": "ac",
+          "type": "deflection",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [
+        {
+          "text": "You gain a +1 resistance bonus on all saving throws against level drain",
+          "_target": "allSavingThrows"
+        }
+      ],
+      "review": true,
+      "_sphere": "Alchemy",
+      "_type": "base",
+      "_snippets": [
+        "You gain a +1 deflection bonus to AC",
+        "You gain a +1 resistance bonus on all saving throws against level drain"
+      ],
+      "modifiers": []
+    }
+  },
+  "Athletics": {
+    "Compact Frame": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "you have martial focus, you gain a +1 dodge bonus to AC against ranged attacks",
+          "_target": "ac"
+        }
+      ],
+      "review": true,
+      "_sphere": "Athletics",
+      "_type": "base",
+      "_snippets": [
+        "you have martial focus, you gain a +1 dodge bonus to AC against ranged attacks"
+      ],
+      "modifiers": []
+    },
+    "Dolphin Strike": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Athletics",
+      "_type": "base",
+      "_snippets": [
+        "deals an extra 1d6 points of damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Mobility": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "you possess, you gain a +2 dodge bonus to AC (and thus also to CMD) against any attacks of opportunity",
+          "_target": "ac"
+        }
+      ],
+      "review": true,
+      "_sphere": "Athletics",
+      "_type": "base",
+      "_snippets": [
+        "you possess, you gain a +2 dodge bonus to AC (and thus also to CMD) against any attacks of opportunity"
+      ],
+      "modifiers": []
+    },
+    "Scale Foe": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "you gain a +4 circumstance bonus to CMD against grapple checks made by the target to remove you",
+          "_target": "cmd"
+        }
+      ],
+      "review": true,
+      "_sphere": "Athletics",
+      "_type": "base",
+      "_snippets": [
+        "you gain a +4 circumstance bonus to CMD against grapple checks made by the target to remove you"
+      ],
+      "modifiers": []
+    },
+    "Skillful Charge": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Athletics",
+      "_type": "base",
+      "_snippets": [
+        "+2 bonus on the attack roll"
+      ],
+      "modifiers": [
+        {
+          "formula": "2",
+          "target": "attack",
+          "subTarget": "allAttack",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Slippery Weasel’s Tumble": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "you gain a +1 circumstance bonus on attack rolls made against that opponent until the start of y",
+          "_target": "attack"
+        }
+      ],
+      "review": true,
+      "_sphere": "Athletics",
+      "_type": "base",
+      "_snippets": [
+        "you gain a +1 circumstance bonus on attack rolls made against that opponent until the start of y",
+        "+1 circumstance bonus on attack rolls"
+      ],
+      "modifiers": [
+        {
+          "formula": "1",
+          "target": "attack",
+          "subTarget": "allAttack",
+          "type": "circumstance",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ]
+    }
+  },
+  "Barroom": {
+    "Iron Liver": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "you gain a +2 circumstance bonus on Fortitude saves against poisons and effects that would cause",
+          "_target": "fort"
+        }
+      ],
+      "review": true,
+      "_sphere": "Barroom",
+      "_type": "base",
+      "_snippets": [
+        "you gain a +2 circumstance bonus on Fortitude saves against poisons and effects that would cause"
+      ],
+      "modifiers": []
+    },
+    "Up, Down And…": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Barroom",
+      "_type": "base",
+      "_snippets": [
+        "+2 bonus to attack rolls"
+      ],
+      "modifiers": [
+        {
+          "formula": "2",
+          "target": "attack",
+          "subTarget": "allAttack",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ]
+    }
+  },
+  "Berserker": {
+    "Absolute Determination": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "You gain a +1 bonus on saving throws against mind-affecting effects and the DC to I",
+          "_target": "allSavingThrows"
+        }
+      ],
+      "review": true,
+      "_sphere": "Berserker",
+      "_type": "base",
+      "_snippets": [
+        "You gain a +1 bonus on saving throws against mind-affecting effects and the DC to I"
+      ],
+      "modifiers": []
+    },
+    "Dreadnought": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "You gain a +1 bonus on saving throws and to your CMD against effects that would slo",
+          "_target": "allSavingThrows"
+        }
+      ],
+      "review": true,
+      "_sphere": "Berserker",
+      "_type": "base",
+      "_snippets": [
+        "You gain a +1 bonus on saving throws and to your CMD against effects that would slo"
+      ],
+      "modifiers": []
+    },
+    "Greater Sunder": {
+      "changes": [
+        {
+          "formula": "1",
+          "target": "cmb",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Berserker",
+      "_type": "base",
+      "_snippets": [
+        "You gain a +1 competence bonus to your sunder combat maneuver checks"
+      ],
+      "modifiers": []
+    },
+    "Specter": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "you gain a +2 dodge bonus to your AC against all attacks of opportunity that you provoke",
+          "_target": "ac"
+        }
+      ],
+      "review": true,
+      "_sphere": "Berserker",
+      "_type": "base",
+      "_snippets": [
+        "you gain a +2 dodge bonus to your AC against all attacks of opportunity that you provoke"
+      ],
+      "modifiers": []
+    }
+  },
+  "Boxing": {
+    "Passive Fist": {
+      "changes": [
+        {
+          "formula": "1",
+          "target": "ac",
+          "type": "circumstance",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Boxing",
+      "_type": "base",
+      "_snippets": [
+        "you gain a +1 circumstance bonus to your armor class until the start of your next turn"
+      ],
+      "modifiers": []
+    },
+    "Tight Guard": {
+      "changes": [
+        {
+          "formula": "1",
+          "target": "ac",
+          "type": "shield",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "1",
+          "target": "cmd",
+          "type": "shield",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Boxing",
+      "_type": "base",
+      "_snippets": [
+        "you gain a +1 shield bonus to your armor class and combat maneuver defense until the start"
+      ],
+      "modifiers": []
+    }
+  },
+  "Brute": {
+    "Transonic Smash": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Brute",
+      "_type": "base",
+      "_snippets": [
+        "dealt to 1d6 sonic damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "sonic"
+          ],
+          "critical": "normal"
+        }
+      ]
+    }
+  },
+  "Dual Wielding": {
+    "Mixed Assault": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "you gain a +2 circumstance bonus on damage rolls against each creature until the end of your nex",
+          "_target": "wdamage"
+        }
+      ],
+      "review": true,
+      "_sphere": "Dual Wielding",
+      "_type": "base",
+      "_snippets": [
+        "you gain a +2 circumstance bonus on damage rolls against each creature until the end of your nex"
+      ],
+      "modifiers": []
+    },
+    "Mixed Defense": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "you gain a +2 dodge bonus to AC against that opponent and a +2 circumstance bonus to atta",
+          "_target": "ac"
+        }
+      ],
+      "review": true,
+      "_sphere": "Dual Wielding",
+      "_type": "base",
+      "_snippets": [
+        "you gain a +2 dodge bonus to AC against that opponent and a +2 circumstance bonus to atta",
+        "+2 circumstance bonus to attack rolls"
+      ],
+      "modifiers": [
+        {
+          "formula": "2",
+          "target": "attack",
+          "subTarget": "allAttack",
+          "type": "circumstance",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ]
+    }
+  },
+  "Duelist": {
+    "Bloodied Shark’s Frenzy": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "you gain a +1 morale bonus on attack and damage rolls against bleeding or badly wounded cr",
+          "_target": "wdamage"
+        }
+      ],
+      "review": true,
+      "_sphere": "Duelist",
+      "_type": "base",
+      "_snippets": [
+        "you gain a +1 morale bonus on attack and damage rolls against bleeding or badly wounded cr"
+      ],
+      "modifiers": []
+    },
+    "Curtain Call": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Duelist",
+      "_type": "base",
+      "_snippets": [
+        "additional 2d6 damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "2d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Greater Disarm": {
+      "changes": [
+        {
+          "formula": "1",
+          "target": "cmb",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Duelist",
+      "_type": "base",
+      "_snippets": [
+        "You gain a +1 competence bonus to your disarm combat maneuver checks"
+      ],
+      "modifiers": []
+    }
+  },
+  "Equipment": {
+    "Balanced Defense": {
+      "changes": [
+        {
+          "formula": "1",
+          "target": "ac",
+          "type": "shield",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Equipment",
+      "_type": "base",
+      "_snippets": [
+        "you possess, you gain a +1 shield bonus to AC"
+      ],
+      "modifiers": []
+    },
+    "Cloth Snake Puppetry": {
+      "changes": [
+        {
+          "formula": "1",
+          "target": "cmb",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Equipment",
+      "_type": "base",
+      "_snippets": [
+        "you gain a +1 bonus to CMB for combat maneuvers made with the object"
+      ],
+      "modifiers": []
+    },
+    "Dagger Dancer": {
+      "changes": [
+        {
+          "formula": "3",
+          "target": "attack",
+          "type": "circumstance",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Equipment",
+      "_type": "base",
+      "_snippets": [
+        "you gain a +3 circumstance bonus on attack rolls to confirm critical hits with daggers",
+        "+3 circumstance bonus on attack rolls"
+      ],
+      "modifiers": [
+        {
+          "formula": "3",
+          "target": "attack",
+          "subTarget": "allAttack",
+          "type": "circumstance",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Goblin Heritage": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Equipment",
+      "_type": "base",
+      "_snippets": [
+        "deals an additional 1d4 fire damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d4",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "fire"
+          ],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Guarded Combatant": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "You gain a +1 competence bonus to your CMD vs",
+          "_target": "cmd"
+        }
+      ],
+      "review": true,
+      "_sphere": "Equipment",
+      "_type": "base",
+      "_snippets": [
+        "You gain a +1 competence bonus to your CMD vs"
+      ],
+      "modifiers": []
+    },
+    "Immovable Object": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "you gain a +1 competence bonus to your CMD against bull rush",
+          "_target": "cmd"
+        }
+      ],
+      "review": true,
+      "_sphere": "Equipment",
+      "_type": "base",
+      "_snippets": [
+        "you gain a +1 competence bonus to your CMD against bull rush"
+      ],
+      "modifiers": []
+    },
+    "Rock Toss": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Equipment",
+      "_type": "base",
+      "_snippets": [
+        "deal 1d6 bludgeoning damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Titan’s Shield": {
+      "changes": [
+        {
+          "formula": "1",
+          "target": "cmd",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Equipment",
+      "_type": "base",
+      "_snippets": [
+        "you gain a +1 bonus to your CMD"
+      ],
+      "modifiers": []
+    },
+    "Tower Shield Mastery": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Equipment",
+      "_type": "base",
+      "_snippets": [
+        "dealing 1d8 bludgeoning damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d8",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "normal"
+        }
+      ]
+    }
+  },
+  "Fencing": {
+    "Footwork": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "you gain an extra +2 dodge bonus to your AC and CMD against that attack",
+          "_target": "ac"
+        }
+      ],
+      "review": true,
+      "_sphere": "Fencing",
+      "_type": "base",
+      "_snippets": [
+        "you gain an extra +2 dodge bonus to your AC and CMD against that attack"
+      ],
+      "modifiers": []
+    }
+  },
+  "Guardian": {
+    "Challenge": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Guardian",
+      "_type": "base",
+      "_snippets": [
+        "+2 bonus on attack rolls"
+      ],
+      "modifiers": [
+        {
+          "formula": "2",
+          "target": "attack",
+          "subTarget": "allAttack",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Seeking Challenge": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Guardian",
+      "_type": "base",
+      "_snippets": [
+        "+2 bonus on attack rolls"
+      ],
+      "modifiers": [
+        {
+          "formula": "2",
+          "target": "attack",
+          "subTarget": "allAttack",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ]
+    }
+  },
+  "Leadership": {
+    "Magic Cohort": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Leadership",
+      "_type": "base",
+      "_snippets": [
+        "deal troop damage using 1d6 damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ]
+    }
+  },
+  "Open Hand": {
+    "Greater Trip": {
+      "changes": [
+        {
+          "formula": "1",
+          "target": "cmb",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Open Hand",
+      "_type": "base",
+      "_snippets": [
+        "You gain a +1 competence bonus to your trip combat maneuver checks"
+      ],
+      "modifiers": []
+    },
+    "Judo Throw": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Open Hand",
+      "_type": "base",
+      "_snippets": [
+        "deal +1d10 bludgeoning damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d10",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "normal"
+        }
+      ]
+    }
+  },
+  "Scoundrel": {
+    "Improved Grifting": {
+      "changes": [
+        {
+          "formula": "1",
+          "target": "cmb",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Scoundrel",
+      "_type": "base",
+      "_snippets": [
+        "You gain a +1 competence bonus to your dirty trick and steal combat maneuver checks"
+      ],
+      "modifiers": []
+    }
+  },
+  "Scout": {
+    "Identify Rhythms": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "you gain a +1 dodge bonus to AC against all of their attacks",
+          "_target": "ac"
+        }
+      ],
+      "review": true,
+      "_sphere": "Scout",
+      "_type": "base",
+      "_snippets": [
+        "you gain a +1 dodge bonus to AC against all of their attacks"
+      ],
+      "modifiers": []
+    }
+  },
+  "Sniper": {
+    "Deadly Shot": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Sniper",
+      "_type": "base",
+      "_snippets": [
+        "deal an additional 1d10 damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d10",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ]
+    },
+    "I Miss You My Darling": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "you receive a +2 insight bonus on attack rolls made against your prey",
+          "_target": "attack"
+        }
+      ],
+      "review": true,
+      "_sphere": "Sniper",
+      "_type": "base",
+      "_snippets": [
+        "you receive a +2 insight bonus on attack rolls made against your prey",
+        "+2 insight bonus on attack rolls"
+      ],
+      "modifiers": [
+        {
+          "formula": "2",
+          "target": "attack",
+          "subTarget": "allAttack",
+          "type": "insight",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ]
+    }
+  },
+  "Trap": {
+    "Brutal Traps": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Trap",
+      "_type": "base",
+      "_snippets": [
+        "deals 1d4 damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d4",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Darts": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Trap",
+      "_type": "base",
+      "_snippets": [
+        "deals 1d6 piercing damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "piercing"
+          ],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Razor Wire": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Trap",
+      "_type": "base",
+      "_snippets": [
+        "deal 1d6 slashing damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "slashing"
+          ],
+          "critical": "normal"
+        }
+      ]
+    }
+  },
+  "Warleader": {
+    "Heraldry": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "you gain a +1 bonus on all attack rolls while within the area of a tactic you creat",
+          "_target": "attack"
+        }
+      ],
+      "review": true,
+      "_sphere": "Warleader",
+      "_type": "base",
+      "_snippets": [
+        "you gain a +1 bonus on all attack rolls while within the area of a tactic you creat"
+      ],
+      "modifiers": []
+    },
+    "Masterful Coordination": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Warleader",
+      "_type": "base",
+      "_snippets": [
+        "+3 bonus on attack rolls"
+      ],
+      "modifiers": [
+        {
+          "formula": "3",
+          "target": "attack",
+          "subTarget": "allAttack",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ]
+    },
+    "Resonating Chorus": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Warleader",
+      "_type": "base",
+      "_snippets": [
+        "deal an additional 1d6 points of sonic damage"
+      ],
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "sonic"
+          ],
+          "critical": "normal"
+        }
+      ]
+    }
+  },
+  "Wrestling": {
+    "Iron Grip": {
+      "changes": [
+        {
+          "formula": "1",
+          "target": "cmb",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Wrestling",
+      "_type": "base",
+      "_snippets": [
+        "You gain a +1 competence bonus to your grapple combat maneuver checks"
+      ],
+      "modifiers": []
+    },
+    "Tag Team": {
+      "changes": [],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Wrestling",
+      "_type": "base",
+      "_snippets": [
+        "+2 circumstance bonus on their attack roll"
+      ],
+      "modifiers": [
+        {
+          "formula": "2",
+          "target": "attack",
+          "subTarget": "allAttack",
+          "type": "circumstance",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ]
+    }
+  }
+}

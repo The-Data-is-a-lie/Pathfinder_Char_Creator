@@ -1,0 +1,98 @@
+{
+  "Fallen Fey": {
+    "Natural Blessing": {
+      "changes": [
+        {
+          "formula": "1",
+          "target": "allSavingThrows",
+          "type": "luck",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "1",
+          "target": "allSavingThrows",
+          "type": "luck",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "1",
+          "target": "allSavingThrows",
+          "type": "luck",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Fallen Fey",
+      "_type": "base",
+      "_snippets": [
+        "you gain a +1 luck bonus to all saving throws",
+        "you gain a +1 luck bonus to all saving throws",
+        "you gain a +1 luck bonus to all saving throws"
+      ]
+    },
+    "Nature-connection": {
+      "changes": [
+        {
+          "formula": "1",
+          "target": "init",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Fallen Fey",
+      "_type": "base",
+      "_snippets": [
+        "You gain a +1 bonus on initiative checks and Knowledge (geography)"
+      ]
+    },
+    "Pixie Sticks": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "You gain a +1 insight bonus on attack and damage rolls when using such a weapon or ammuniti",
+          "_target": "wdamage"
+        }
+      ],
+      "review": true,
+      "_sphere": "Fallen Fey",
+      "_type": "base",
+      "_snippets": [
+        "You gain a +1 insight bonus on attack and damage rolls when using such a weapon or ammuniti"
+      ]
+    }
+  },
+  "Telekinesis": {
+    "Forceful Telekinesis": {
+      "changes": [
+        {
+          "formula": "2",
+          "target": "cmb",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "2",
+          "target": "cmd",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [],
+      "review": true,
+      "_sphere": "Telekinesis",
+      "_type": "base",
+      "_snippets": [
+        "you add a +2 bonus to your CMB and CMD"
+      ]
+    }
+  }
+}

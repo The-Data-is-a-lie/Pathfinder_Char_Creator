@@ -1,0 +1,334 @@
+{
+  "Athletics": {
+    "Compact Frame": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "While you have martial focus, +[[1+floor(@attributes.bab.total/7)]] dodge bonus to AC against ranged attacks only.",
+          "target": "ac"
+        }
+      ]
+    },
+    "Mobility": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "When using a movement mode from a package you possess, +[[2+floor(min(@skills.acr.rank,@skills.swm.rank,@skills.fly.rank,@skills.clm.rank)/4)]] dodge bonus to AC (and CMD) against attacks of opportunity provoked by your movement only (base +2, +1 per 4 ranks in the package's associated skill).",
+          "target": "ac"
+        }
+      ]
+    },
+    "Skillful Charge": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "Charge with a thrown weapon (end within 30 ft): +2 attack on the charge attack and -2 AC until your next turn, as the normal charge attack/AC tradeoff. Applies only to the charge attack, not to all attacks.",
+          "target": "attack"
+        }
+      ]
+    },
+    "Slippery Weasel’s Tumble": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "After succeeding at an Acrobatics check to move through an opponent's threatened area/space without provoking, you may shift 5 ft (+5 ft per 10 ranks in an Athletics package skill) inside that opponent's reach, up to your practitioner modifier times/round. You then gain a +1 circumstance bonus on attack rolls against that opponent until the start of your next turn.",
+          "target": "attack"
+        }
+      ]
+    }
+  },
+  "Barroom": {
+    "Iron Liver": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "+2 circumstance bonus on Fortitude saves against poisons and effects that would cause the sickened or nauseated conditions (increases to +5 at +10 BAB). Also doubles drinks before becoming sickened and immunity to alcohol addiction.",
+          "target": "fort"
+        }
+      ]
+    },
+    "Up, Down And…": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "While drunk, eliminate AC and melee-attack penalties for being prone. At +10 BAB you instead gain a +2 untyped bonus to attack rolls made while prone.",
+          "target": "attack"
+        }
+      ]
+    }
+  },
+  "Berserker": {
+    "Absolute Determination": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "+[[1+floor(@attributes.bab.total/6)]] bonus on saving throws against mind-affecting effects, and an equal bonus to the DC to Intimidate you. Roll twice (take better) on saves vs mind-affecting effects.",
+          "target": "will"
+        }
+      ]
+    },
+    "Dreadnought": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "+[[1+floor(@attributes.bab.total/4)]] bonus on saving throws and to CMD against effects that would slow or impair your movement (entangled, grappled, paralyzed, staggered, etc.). Roll twice (take better) on such saves.",
+          "target": "allSavingThrows"
+        }
+      ]
+    },
+    "Greater Sunder": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "+[[1+floor(@attributes.bab.total/4)]] competence bonus to sunder combat maneuver checks and to CMD vs. sunder. Does not stack with Improved/Greater Sunder feats.",
+          "target": "cmb"
+        }
+      ]
+    },
+    "Specter": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "Must expend martial focus each round you start berserking to use this. +[[2+floor(@attributes.bab.total/4)]] dodge bonus to AC against all attacks of opportunity you provoke (not just movement-based). Designated foe within 20 ft (+5 ft per 4 BAB) cannot make AoO against your movement if you end adjacent.",
+          "target": "ac"
+        }
+      ]
+    }
+  },
+  "Boxing": {
+    "Passive Fist": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "When you ready a counter punch, you may forgo selecting additional triggers; for each trigger forgone you gain a +1 circumstance bonus to AC until the start of your next turn. You may also abandon a readied counter punch as a free action to regain martial focus.",
+          "target": "ac"
+        }
+      ]
+    },
+    "Tight Guard": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "After you ready an action, take total defense, or use the attack action to attack with a light weapon, you gain a +[[1+floor(@attributes.bab.total/4)]] shield bonus to AC and to CMD until the start of your next turn.",
+          "target": "ac"
+        }
+      ]
+    }
+  },
+  "Dual Wielding": {
+    "Mixed Assault": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "While wielding a melee weapon in one hand and a ranged weapon in the other, you don't provoke for firing/reloading while threatened. If during your attack action you hit two different creatures more than 5 ft apart, you gain a +[[2+2*floor(@attributes.bab.total/5)]] circumstance bonus on damage rolls against each of those creatures until the end of your next turn.",
+          "target": "damage"
+        }
+      ]
+    },
+    "Mixed Defense": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "While wielding melee in one hand and ranged in the other, you may forgo your dual-attack ranged attack to ready a ranged AoO against a foe attacking you in melee. If that ranged attack hits, you gain a +2 dodge bonus to AC and a +2 circumstance bonus on attack rolls against that opponent until the end of your next turn.",
+          "target": "ac"
+        }
+      ]
+    }
+  },
+  "Duelist": {
+    "Bloodied Shark’s Frenzy": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "Limited scent (detects bleeding or badly-wounded creatures, ≤50% HP). On detection you may expend martial focus to enter a blood frenzy for practitioner-modifier rounds. During the frenzy you gain a +[[1+floor(@attributes.bab.total/6)]] morale bonus on attack and damage rolls against bleeding/badly-wounded creatures, but suffer an equal penalty on attack and damage rolls against all other creatures.",
+          "target": "attack"
+        }
+      ]
+    },
+    "Greater Disarm": {
+      "changes": [
+        {
+          "formula": "1+floor(@attributes.bab.total/4)",
+          "target": "cmb",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "1+floor(@attributes.bab.total/4)",
+          "target": "cmd",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": []
+    }
+  },
+  "Equipment": {
+    "Balanced Defense": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "While wielding a light or one-handed weapon and nothing in any other hand, gain a +[[1+floor(@attributes.bab.total/4)]] shield bonus to AC. Suppressed until your next turn if you attack with an off-hand weapon, make more than one natural attack, or use flurry of blows / spell combat.",
+          "target": "ac"
+        }
+      ]
+    },
+    "Cloth Snake Puppetry": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "While in this stance holding a long flexible object (rope/sash/chain), gain a +[[floor(@attributes.bab.total/4)]] bonus to CMB for combat maneuvers made with the object (bull rush, dirty trick, disarm, drag, steal, trip) and extend reach for those maneuvers up to 10 ft + 5 ft per 4 BAB.",
+          "target": "cmb"
+        }
+      ]
+    },
+    "Dagger Dancer": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "Gain a +3 circumstance bonus on attack rolls to CONFIRM critical hits with daggers; this increases to +6 at +10 base attack bonus. (Also draw/sheathe a dagger as a free action.)",
+          "target": "attack"
+        }
+      ]
+    },
+    "Guarded Combatant": {
+      "changes": [
+        {
+          "formula": "1+floor(@attributes.bab.total/4)",
+          "target": "cmd",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": []
+    },
+    "Immovable Object": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "While wearing heavy armor, gain a +[[1+floor(@attributes.bab.total/4)]] competence bonus to CMD against bull rush, drag, and reposition maneuvers.",
+          "target": "cmd"
+        }
+      ]
+    },
+    "Titan’s Shield": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "While wielding a shield that is one size category larger than you, gain a +1 bonus to CMD (and a larger tower shield lets you provide cover as your shield's size).",
+          "target": "cmd"
+        }
+      ]
+    }
+  },
+  "Fencing": {
+    "Footwork": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "While you have martial focus, you may take a 5-foot step (10 ft if this talent is taken twice) as an immediate action; if done in response to an attack against you, gain a +2 dodge bonus to AC and CMD against that attack. Taking the step normally costs you your next-turn 5-foot step / 5 ft of movement (waived if taken twice).",
+          "target": "ac"
+        }
+      ]
+    }
+  },
+  "Open Hand": {
+    "Greater Trip": {
+      "changes": [
+        {
+          "formula": "1+floor(@attributes.bab.total/4)",
+          "target": "cmb",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "1+floor(@attributes.bab.total/4)",
+          "target": "cmd",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": []
+    }
+  },
+  "Scoundrel": {
+    "Improved Grifting": {
+      "changes": [
+        {
+          "formula": "1+floor(@skills.slt.rank/4)",
+          "target": "cmb",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "1+floor(@skills.slt.rank/4)",
+          "target": "cmd",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": []
+    }
+  },
+  "Scout": {
+    "Identify Rhythms": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "While you have martial focus and have successfully used the scout ability against a creature, gain a +[[1+floor(@skills.per.rank/4)]] dodge bonus to AC against all of that creature's attacks (+1 per 4 Perception ranks).",
+          "target": "ac"
+        }
+      ]
+    }
+  },
+  "Sniper": {
+    "I Miss You My Darling": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "After missing a deadly shot you may expend martial focus to mark that target as your prey: +2 insight bonus on attack rolls against your prey, and you automatically confirm your first critical threat against it (ends on that crit, after 24 hours, or when dismissed). Only one prey at a time.",
+          "target": "attack"
+        }
+      ]
+    }
+  },
+  "Warleader": {
+    "Heraldry": {
+      "changes": [],
+      "contextNotes": [
+        {
+          "text": "While holding your allegiance's flag, gain a +1 bonus on all attack rolls while within the area of a tactic you create (and treat your tactics as having 5 extra Diplomacy ranks). If the standard is taken/destroyed this inverts to a -1 attack penalty and -5 effective Diplomacy ranks for 24 hours or until repaired/replaced.",
+          "target": "attack"
+        }
+      ]
+    }
+  },
+  "Wrestling": {
+    "Iron Grip": {
+      "changes": [
+        {
+          "formula": "1+floor(@attributes.bab.total/4)",
+          "target": "cmb",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "1+floor(@attributes.bab.total/4)",
+          "target": "cmd",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": []
+    }
+  }
+}
