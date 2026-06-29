@@ -1,6 +1,20 @@
 {
     "lawful good": [
       {
+        "Name": ["Ragathiel"],
+        "Portfolio": ["Chivalry", "duty", "vengeance"],
+        "Worshipers": ["Paladins", "soldiers", "the vengeful"],
+        "Domains": ["Destruction", "good", "Law", "Nobility", "War"],
+        "Subdomains": ["Archon", "Leadership", "Rage", "Resolve", "Tactics"]
+      },
+      {
+        "Name": ["Tanagaar"],
+        "Portfolio": ["Night", "owls", "watchfulness", "magic", "writing"],
+        "Worshipers": ["Syrinx", "clergy", "scribes", "inquisitors"],
+        "Domains": ["Darkness", "Knowledge", "Law", "Magic", "Rune"],
+        "Subdomains": ["Arcane", "Inevitable", "Language", "Memory", "Moon", "Wards"]
+      },
+      {
         "Name": ["Erastil"],
         "Portfolio": ["Farming", "Hunting", "Trade", "Family"],
         "Worshipers": ["Farmers", "hunters", "tradesmen"],
@@ -37,6 +51,13 @@
       }
     ],
     "neutral good": [
+      {
+        "Name": ["Ragathiel"],
+        "Portfolio": ["Chivalry", "duty", "vengeance"],
+        "Worshipers": ["Paladins", "soldiers", "the vengeful"],
+        "Domains": ["Destruction", "good", "Law", "Nobility", "War"],
+        "Subdomains": ["Archon", "Leadership", "Rage", "Resolve", "Tactics"]
+      },
       {
         "Name": ["Sarenrae"],
         "Portfolio": ["Sun", "Redemption", "Honesty", "Healing"],
@@ -84,6 +105,20 @@
     ],
     "lawful neutral": [
       {
+        "Name": ["Tanagaar"],
+        "Portfolio": ["Night", "owls", "watchfulness", "magic", "writing"],
+        "Worshipers": ["Syrinx", "clergy", "scribes", "inquisitors"],
+        "Domains": ["Darkness", "Knowledge", "Law", "Magic", "Rune"],
+        "Subdomains": ["Arcane", "Inevitable", "Language", "Memory", "Moon", "Wards"]
+      },
+      {
+        "Name": ["Ragathiel"],
+        "Portfolio": ["Chivalry", "duty", "vengeance"],
+        "Worshipers": ["Paladins", "soldiers", "the vengeful"],
+        "Domains": ["Destruction", "good", "Law", "Nobility", "War"],
+        "Subdomains": ["Archon", "Leadership", "Rage", "Resolve", "Tactics"]
+      },
+      {
         "Name": ["Abadar"],
         "Portfolio": ["Cities", "wealth", "merchants", "law"],
         "Worshipers": ["Judges", "merchants", "lawyers", "aristocrats"],
@@ -113,6 +148,13 @@
       }
     ],
     "true neutral": [
+      {
+        "Name": ["Tanagaar"],
+        "Portfolio": ["Night", "owls", "watchfulness", "magic", "writing"],
+        "Worshipers": ["Syrinx", "clergy", "scribes", "inquisitors"],
+        "Domains": ["Darkness", "Knowledge", "Law", "Magic", "Rune"],
+        "Subdomains": ["Arcane", "Inevitable", "Language", "Memory", "Moon", "Wards"]
+      },
       {
         "Name": ["Gozreh"],
         "Portfolio": ["Nature", "weather", "the sea"],
@@ -187,6 +229,13 @@
       }
     ],
     "lawful evil": [
+      {
+        "Name": ["Tanagaar"],
+        "Portfolio": ["Night", "owls", "watchfulness", "magic", "writing"],
+        "Worshipers": ["Syrinx", "clergy", "scribes", "inquisitors"],
+        "Domains": ["Darkness", "Knowledge", "Law", "Magic", "Rune"],
+        "Subdomains": ["Arcane", "Inevitable", "Language", "Memory", "Moon", "Wards"]
+      },
       {
         "Name": ["Asmodeus"],
         "Portfolio": ["Tyranny", "slavery", "pride", "contracts"],
