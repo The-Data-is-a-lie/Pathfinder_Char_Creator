@@ -637,16 +637,20 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			pow_data = None
 			desired_style = 0
 		selected_amount = desired_pow + desired_style + desired_sphere
-		dedicated_trainer_calibers, _overflow_n, _priority_reserve = [], 0, 0
+		dedicated_trainer_calibers, _overflow_n, _priority_reserve, _mentor_talents_n = [], 0, 0, 0
 		realize_pow, realize_style, realize_sphere = desired_pow, desired_style, desired_sphere
 		if selected_amount > 0:
 			_half = (selected_amount + 1) // 2          # ceil(selected_amount / 2)
 			if random.random() < 0.25:
-				dedicated_trainer_calibers = [roll_caliber(), roll_caliber()]
-				_capacity = sum(dedicated_trainer_calibers)
+				# ONE dedicated mentor of caliber 1-4 (8/45/45/2): it teaches `caliber` feats =
+				# 2*caliber sphere talents off-budget (caps at the flat-8). No overflow -> the character's
+				# total talents never bloat past the flat-8; the mentor just pays for 2*caliber of them.
+				dedicated_trainer_calibers = [roll_caliber()]
+				_capacity = dedicated_trainer_calibers[0]
 				_rest = selected_amount - _half
 				realize_total = _half + min(_capacity, _rest)
-				_overflow_n = max(0, _capacity - _rest)     # trainer capacity beyond the rest -> talents
+				_overflow_n = 0
+				_mentor_talents_n = 2 * dedicated_trainer_calibers[0]
 			else:
 				realize_total = _half
 			_priority_reserve = min(_half, realize_total)   # the budget-funded portion (rest is off-budget)
@@ -692,7 +696,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# Build the spheres: flat-8 talents + a feat slot per BUDGET-PAID talent (Extra Talent feats,
 		# 2 talents each, HR1). trainer_backed (25% branch) -> only ~half the talents are budget-paid
 		# (the rest ride the Spheres Mentor trainers below); lean chars pay for all their talents.
-		sphere_data          = choose_spheres_attr(character, trainer_backed=bool(dedicated_trainer_calibers))
+		sphere_data          = choose_spheres_attr(character, trainer_backed=bool(dedicated_trainer_calibers), mentor_talents=_mentor_talents_n)
 		magic_talent_items   = sphere_data['magic_talent_items']
 		combat_talent_items  = sphere_data['combat_talent_items']
 		sphere_feats         = sphere_data['sphere_feats']
@@ -725,7 +729,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			# budget-paid and appear in the normal/class Feats list. A PoW mentor would only re-list those
 			# already-bought feats -- duplicate, misleading "funding" -- so PoW gets no mentor. (Unlike
 			# Spheres, whose talents can be granted off-budget; see the Spheres Mentor just below.)
-			# Off-budget talents the mentor funded (non-budget-paid flat-8 + overflow) -> HR1
+			# Off-budget talents the mentor funded (the non-budget-paid flat-8 portion = 2*caliber) -> HR1
 			# Extra-Talent feats + the talent names (user's requested format). Only emit a Spheres Mentor
 			# when it actually funded something off-budget; otherwise there is nothing for it to teach.
 			_mentor_talents = list(sphere_data.get('mentor_funded_talents', [])) + _overflow_talent_items

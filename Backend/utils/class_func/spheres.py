@@ -291,8 +291,15 @@ def _choose_casting_tradition(character):
     bonus_sp = leftover * (leftover + 1) // 2        # triangular chart (1->1, 2->3, 3->6, ...)
     return {
         "casting_ability_modifier": cam,
+        # Plain names on drawbacks/boons keep these fields .join()-safe for any older/stale front-end
+        # render (avoids "[object Object]" during backend<->module version skew). The rich
+        # {name, description, counts_as} dicts live in the parallel *_detail keys, which the current
+        # sheet reads to spell out what each one DOES (and its 1-/2-point weight).
         "drawbacks": [d.get("name", "") for d in drawbacks],
         "boons": [b.get("name", "") for b in boons],
+        "drawbacks_detail": [{"name": d.get("name", ""), "description": d.get("description", ""),
+                              "counts_as": int(d.get("counts_as", 1) or 1)} for d in drawbacks],
+        "boons_detail": [{"name": b.get("name", ""), "description": b.get("description", "")} for b in boons],
         "bonus_spell_points": bonus_sp,
     }
 
@@ -312,6 +319,25 @@ def _display_name(name):
     return " ".join(w[:1].upper() + w[1:] for w in name.split())
 
 
+_COMBAT_BUFFS = None
+
+
+def _combat_talent_buffs():
+    """Curated numeric buffs for Spheres-of-MIGHT (combat) talents, keyed {Sphere: {Talent: {...}}}
+    (display-cased to match _display_name). Loaded once; {} if the file is absent. Authored via
+    Backend/scripts/build_talent_changes.py + manual curation. Magic (Power) talents stay
+    description-only -- they cast effects, not passive self-buffs."""
+    global _COMBAT_BUFFS
+    if _COMBAT_BUFFS is None:
+        from pathlib import Path as _Path
+        _p = _Path(__file__).resolve().parents[2] / "json" / "class_data" / "spheres" / "combat_talent_changes.json"
+        try:
+            _COMBAT_BUFFS = json.loads(_p.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            _COMBAT_BUFFS = {}
+    return _COMBAT_BUFFS
+
+
 def _talent_item(sphere, system, name, rec):
     desc = rec.get("description") or rec.get("benefit") or ""
     # Reliable advanced/legendary flag for the sheet (mirrors _is_advanced): the compendium clone the
@@ -319,14 +345,19 @@ def _talent_item(sphere, system, name, rec):
     # and sort advanced talents to the bottom of each sphere.
     advanced = (str(rec.get("type", "")).lower() == "advanced"
                 or _talent_match_norm(name) in _advanced_set(system, sphere))
+    disp_sphere, disp_name = _display_name(sphere), _display_name(name)
+    # Numeric buffs land on the Foundry "Changes" tab for combat talents only (Power = text-only).
+    buff = _combat_talent_buffs().get(disp_sphere, {}).get(disp_name, {}) if system == "might" else {}
     return {
-        "name": _display_name(name),
-        "sphere": _display_name(sphere),
+        "name": disp_name,
+        "sphere": disp_sphere,
         "system": "Spheres of Power" if system == "power" else "Spheres of Might",
         "type": rec.get("type", "base"),
         "advanced": advanced,
         "description": desc,
-        "changes": [], "contextNotes": [], "uses": None,
+        "changes": buff.get("changes", []),
+        "contextNotes": buff.get("contextNotes", []),
+        "uses": None,
     }
 
 
@@ -483,7 +514,7 @@ def _roll_magic_sphere_feats(character, chosen, counts):
     return names, descs
 
 
-def choose_spheres_attr(character, max_feats=None, trainer_backed=False):
+def choose_spheres_attr(character, max_feats=None, trainer_backed=False, mentor_talents=None):
     """Select sphere talents (flat-8) + a feat slot for each BUDGET-PAID talent; return the bundle.
 
     Empty defaults when ``character.sphere_count`` is 0 (flag off). Each budget-paid talent is tracked
@@ -539,7 +570,12 @@ def choose_spheres_attr(character, max_feats=None, trainer_backed=False):
     combat_picks = [p for s, _sy in chosen for p in picks_by_sphere.get(s, []) if p[1] == "might"]
     all_picks = magic_picks + combat_picks            # magic first -> Basic Magic Training stays budget-paid
     n_total = len(all_picks)
-    budget_paid = ((n_total + 1) // 2) if trainer_backed else n_total
+    if trainer_backed and mentor_talents is not None:
+        budget_paid = max(0, n_total - mentor_talents)   # the dedicated mentor funds min(mentor_talents, n_total) off-budget
+    elif trainer_backed:
+        budget_paid = (n_total + 1) // 2                 # fallback: mentor funds the off-budget half
+    else:
+        budget_paid = n_total                            # lean: the character pays for all flat-8 talents
     paid_magic = [p for p in all_picks[:budget_paid] if p[1] == "power"]
     paid_combat = [p for p in all_picks[:budget_paid] if p[1] == "might"]
 
@@ -592,6 +628,8 @@ def choose_spheres_attr(character, max_feats=None, trainer_backed=False):
         "spheres_chosen": [{"sphere": s.title(), "system": "power" if sy == "power" else "might"} for s, sy in chosen],
         "sphere_counts": {s.title(): counts[s] for s, _sy in chosen},
         "casting_tradition": tradition,
+        # Flat name-only mirrors (back-compat surface). casting_tradition.drawbacks/boons are already
+        # name strings; the rich text lives in casting_tradition.drawbacks_detail/boons_detail.
         "sphere_drawbacks": tradition.get("drawbacks", []),
         "sphere_boons": tradition.get("boons", []),
         "sphere_traits": tradition.get("drawbacks", []) + tradition.get("boons", []),
