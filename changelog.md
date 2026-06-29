@@ -19,6 +19,53 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Spheres Casting block now spells out every drawback, boon, and the tradition math.** Previously the
+  generated "Spheres Casting" feat listed a magic dabbler's casting-tradition drawbacks and boons by
+  name only; the rules text already lived in `Backend/json/class_data/spheres/spheres_traditions.json`
+  but was discarded before export. `_choose_casting_tradition` (`Backend/utils/class_func/spheres.py`)
+  now carries each drawback/boon through with full text in parallel
+  `casting_tradition.drawbacks_detail`/`boons_detail` keys (`{name, description, counts_as}`), while the
+  plain-name `drawbacks`/`boons` arrays (and the flat `sphere_drawbacks`/`sphere_boons`/`sphere_traits`
+  exports) stay `.join()`-safe name strings so an older/stale front-end degrades to clean names instead
+  of `[object Object]`. The FoundryVTT module's `processSpheres` (`scripts/modify-abilities.js`) reads
+  the `*_detail` keys (falling back to the name arrays) and renders a fully self-explanatory block: the
+  casting ability + mana-pool breakdown (base modifier + bonus spell points), Drawbacks and Boons as
+  HTML-escaped description lists (each drawback tagged with its 1-/2-point weight), and a "tradition
+  math" line showing drawback points → boons bought → leftover → bonus spell points. Consuming the new
+  data requires the matching (separate-repo) `pf1e_random_char_generator` module update; that module's
+  JS loads once at Foundry startup, so a hard refresh is needed to pick it up.
+- **Spell conditionals bundled onto the Path of War palette actor.** The PoW palette builder
+  (`Backend/scripts/_pow_generator/build_pow_template_actor.py`) now also attaches every spell
+  conditional to the same test actor, so one importable FoundryVTT character shows both the PoW
+  maneuvers/stances and all spell conditionals. Bucket-A buff spells become default-off attack
+  toggles on two new weapons — `Spell Buffs — curated (cast-on-self)` (vetted `spell_changes.json`)
+  and `Spell Buffs — draft/unvetted (cast-on-self)` (draft-only extras) — while Bucket-B damaging
+  touch-attack spells are emitted as real spell items (cloned from the module's `every_spell.json`)
+  carrying their formal save + `[[ ]]` rider conditionals, faithfully mirroring the live module's
+  `addSpellConditionals()` / `addSpellRiders()`. A new `--spells {none,curated,all}` flag (default
+  `all`) controls scope; spells are purely additive, leaving the discipline weapons and stances
+  untouched.
+- **Campaign-lore grounding so generated backstories fit the Fairdell/Cronia setting.** A new optional
+  `Backend/json/campaign_lore.json` encodes the homebrew world (year ~5256) and the well-documented
+  regions — Tal-Falko, Feyador, Sojoria, Ieso, Dolestan, Esterdragon — each with a short setting
+  brief, local faiths/orders, and naming notes, plus per-deity flavor lines. The backstory generator
+  (`Backend/utils/class_func/backstory.py`) now injects a **SETTING / CAMPAIGN CANON** block (world
+  blurb + tone + homeland + faith note + one local order) as a second system message for documented
+  regions, so NPCs read as e.g. Tanagaarian inquisitors of Feyador or guild-bound gunsmiths of
+  Sojoria instead of generic/modern fantasy; the offline template fallback opens with a one-line
+  homeland grounding. Region lookup is case-insensitive (matches the title-cased `character.region`
+  and any `aliases`). Everything degrades to prior behavior when the file is absent or the region is
+  undocumented (Spire, Dust-Cairn, Kaeru no Tochi, Grundy). Five canon few-shot examples (one per
+  documented region) were added under `Backend/json/backstory_examples/`, and example matching now
+  weights `region` (`_match_score`) so a region-matched canon example is preferred alongside the
+  existing examples.
+- **Homebrew deities and region-aware deity selection.** Added **Tanagaar** (the Aurulent Eye of
+  Feyador) and **Ragathiel** to `Backend/json/deity.json` (in the alignment buckets within one step
+  of their own alignment), and a `region_deity_affinity` map in `Backend/utils/data.py`.
+  `randomize_deity` (`Backend/utils/class_func/alignment_and_deity.py`) now biases a random NPC's
+  deity ~70% toward their homeland's documented faiths when those are valid for the rolled alignment
+  — Feyador → Tanagaar, Sojoria → Abadar/Pharasma/Cayden Cailean/Desna/Iomedae/Shelyn, Esterdragon →
+  Iomedae/Pharasma/Desna/Ragathiel — and otherwise falls back to the prior alignment-only random pick.
 - **Combat-maneuver & rider text on spell and maneuver conditionals (the "Inheritor's Smite"
   pattern).** A weapon conditional can now carry a structured attack/damage bonus **and** `[[ ]]`
   rider text (a save, condition, or a rollable combat maneuver) in its name at once. (1) Spell
@@ -43,7 +90,7 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   on the **spell's own** action (its attack + damage already come from the compendium). Classified
   across all 2,827 spells by the new `Backend/scripts/build_spell_conditionals.py`
   (→ `spell_conditionals.draft.json`) and curated into `Backend/json/spells/spell_changes.json`
-  (121 entries) + `spell_riders.json` (19); selected per-NPC by `spell_conditionals_selection()` in
+  (120 entries) + `spell_riders.json` (19); selected per-NPC by `spell_conditionals_selection()` in
   `spells.py`. The curated data is auto-derived from spell text and flagged for ongoing review;
   consuming it requires a matching update to the (separate-repo) `pf1e_random_char_generator` module.
 - **Path of War maneuvers & stances — full mechanical automation in generated NPCs.** Every PoW
@@ -179,6 +226,43 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   ever selected. (Magic data was already compendium-sourced and is unchanged.)
 
 ### Changed
+- **Every conditional damage roll now shows its source on the chat card.** The FoundryVTT module
+  (`scripts/modify-abilities.js`) used to append a `[Source]` flavor label only to *attack*
+  modifiers; it now labels *damage* modifiers too across maneuvers, spells, and feats
+  (`addManeuverConditionals` / `addSpellConditionals` / `addFeatConditionals`), so a rolled `8d6`
+  reads as `8d6 (Circle of Razor Feathers)`. The label rides the formula flavor while the structured
+  `damageType` still drives the type chip (pf1 stores the conditional part as
+  `[formula, damageType, false]`), so no type information is lost. Author formulas stay PLAIN — the
+  module appends the label; the existing no-double-label guard is unchanged.
+- **All 854 in-play Path of War maneuver riders rewritten to the conditionals convention.** Every
+  curated maneuver rider in the module's `maneuver_changes.json` now leads with its contingency
+  (on a charge / on hit / on a failed save), names range / targets / duration / save-DC where they
+  apply, wraps **every number in `[[ ]]`** inline rolls, and no longer restates the rolled modifier
+  damage in the note (secondary/ongoing/aura damage is kept). Many previously empty riders (e.g.
+  Roar of Battle, Iron Defenders Riposte) are now fully described. Modifier formulas are kept plain
+  for the new source label.
+- **All 49 spell-conditional toggle names + 19 attack riders re-curated to the same convention** in
+  `spell_changes.json` / `spell_riders.json`: full (untruncated) descriptions, every number in
+  `[[ ]]`, the rolled damage left on the roll instead of the name, and meaningful range / duration /
+  save criteria folded in.
+- **`build_maneuver_changes.py` and `build_spell_conditionals.py` now emit convention-compliant
+  drafts.** Maneuver riders pull non-trivial Range/Target/Duration from the structured fields and
+  bracket every number; the spell-toggle label is built from the full description with the rolled
+  damage stripped and all numbers bracketed — so newly drafted conditionals are born correct.
+- **The Path of War palette test actor now faithfully showcases the revamp.** The offline builder
+  `build_pow_template_actor.py` now (a) bakes the `[Source]` label onto **damage** formulas — not
+  just attack — so an imported palette actor shows `8d6[Abyssal Drive]` on the card (matching the
+  live module), and (b) sources maneuver riders from the revamped module `maneuver_changes.json`
+  instead of the stale `maneuver_overrides.json` layer (which only masked 327 riders and added no
+  unique modifiers). Regenerating it (`--out …\Downloads\pow_palette.json --spells all`) yields a
+  single importable actor with all 854 revamped maneuver conditionals + the spell conditionals,
+  every damage roll source-labeled.
+- **The `foundry-conditionals` skill is substantially expanded.** It now distinguishes the two
+  bracket syntaxes (`[[ ]]` inline rolls vs the module-applied `formula[Source]` damage label),
+  documents prerequisites/contingencies, adds a "what every conditional must describe" checklist
+  (contingency, DC, range, targets, saves, damage, attack boosts, duration), and states the hard
+  rules (every number bracketed, never restate rolled damage in the note, never bury the dice in the
+  toggle name, no length cap).
 - **Path of War maneuver damage dice no longer multiply on a critical hit.** A maneuver conditional
   whose damage formula carries dice (e.g. Ravaging Blow `1d6`, Razor Tempest `8d6`, `4d6 + @INITMOD`)
   is now emitted as a pf1 **"Non-multiplying Bonus Formula"** (`critical:"nonCrit"`) — extra effect
@@ -350,6 +434,64 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   description-only).
 
 ### Fixed
+- **Truncated and damage-naming spell-conditional toggles.** Spell toggle names were capped at 120
+  characters by `build_spell_conditionals.py`, so entries like **Firebelly** were cut off mid-word
+  ("…not enough to dam"); the cap is removed and the names are rebuilt in full. Toggles that put the
+  rolled dice in the name (e.g. **Ectoplasmic Eruption**'s "Deal 6d6 points of damage…") no longer
+  do — that damage is on the roll (now source-labeled). A new convention check in
+  `test_spell_conditionals.py` asserts the curated spell **and** maneuver data carry no un-`[[ ]]`
+  numbers, no restated rolled damage in a name, and only plain modifier formulas.
+- **Crit-confirmation spells no longer add a bonus to every attack roll.** **Unerring Weapon** —
+  whose rule grants "+2, +1 per four caster levels (max +7), on attack rolls **to confirm a critical
+  hit**" — had been curated in `spell_changes.json` as an always-on general to-hit change; since pf1
+  has no crit-confirm-only change target, it's now dropped (description-only). Root cause: the
+  `build_spell_conditionals.py` draft builder's attack disqualifier only matched the noun
+  "confirmation", so the verb idiom "to confirm a critical hit" (which trails just past the "attack
+  rolls" the bonus names) slipped through. A new `_CRIT_CONFIRM_RE` check looks just past the match
+  for that idiom, while still keeping genuine bonuses like **Mirror Strike**'s "+2 … attack roll
+  (and confirmation attack roll)". Regression-guarded in `test_spell_conditionals.py`.
+- **Spells with "of the"-style names now appear on generated caster sheets — no more orphaned weapon
+  toggles.** ~250 spells (~9%) — e.g. Breath of Life, Shield of the Dawnflower, Wall of Fire,
+  Protection from Evil, Ray of Enfeeblement — were silently dropped from the spell list: the
+  generator's `data/spells.csv` over-title-cased articles/prepositions ("Shield **Of The**
+  Dawnflower") while the Foundry compendium uses canonical casing ("Shield **of the** Dawnflower"),
+  and the module's `processSpell` matched names case-sensitively (`r.name === spell`). Such a spell's
+  weapon **conditional** still attached (it comes from `spell_changes_dict`, no compendium lookup),
+  leaving a toggle with no matching spell on the list. Fixed on both sides: `processSpell` now matches
+  case-insensitively (via a lowercase index, mirroring the rider/feat lookups), and a one-time
+  migration `Backend/scripts/normalize_spell_name_casing.py` — using the module's `every_spell.json`
+  as the casing authority — recased all 250 names in `spells.csv` plus the affected
+  `spell_changes.json` / `spell_riders.json` keys. (module `modify-abilities.js`, `data/spells.csv`,
+  `spell_changes.json`, `spell_riders.json`.)
+- **Six misspelled / source-ambiguous spell names now match the Foundry compendium instead of being
+  dropped.** Beyond the casing migration above, six `data/spells.csv` names had no case-insensitive
+  compendium match and so were silently skipped by `processSpell`: two typos (**Liberating Comand** →
+  Liberating Command, **Suppres Charms and Compulsions** → Suppress Charms and Compulsions), two
+  punctuation/spacing mismatches (**Dead Eye's Arrow** → Deadeye's Arrow, **Winter's Grasp** → Winter
+  Grasp), and two names the compendium disambiguates by source (**Fool's Gold** → Fool's Gold (VC),
+  **Shield Companion** → Shield Companion (ACG) — the correct variant picked by matching each row's own
+  school/level/source columns). Only the name column changed. The two genuinely-absent spells
+  (Adjuring Step, Corpse Hammer) are left as-is. (`data/spells.csv`.)
+- **Caster-level spell buffs are capped at their rules maximum instead of scaling forever.** Divine
+  Favor (`+1 per 3 CL`, max +3), Aroden's Magic Army (`+1 per 5 CL`, max +4), and Unerring Weapon
+  (`+1 per 4 CL`, max +7) had bare `floor(@spells.primary.cl.total/N)` formulas with no ceiling, so a
+  high-CL NPC got an unbounded bonus. Their `spell_changes.json` formulas now wrap in `min(…, cap)`
+  (Divine Favor also honors its "at least +1" floor: `min(max(floor(@CL/3), 1), 3)`). The draft
+  builder `build_spell_conditionals.py` now reads a "maximum +N" / "at least +N" clause and emits the
+  bounded formula, and a new regression check rejects any uncapped `cl.total` / `hd.total` formula.
+  (`spell_changes.json`, `build_spell_conditionals.py`, `test_spell_conditionals.py`.)
+- **Cantrips/orisons are always prepared and infinitely castable.** Every generated caster's
+  level-0 spells (for both prepared and spontaneous casters) are now marked prepared and set to
+  at-will (`system.atWill = true`) so they render with no per-day limit. (Module `modify-abilities.js`.)
+- **Prepared casters now have the right spells marked prepared on the Foundry sheet.** Previously
+  every generated spell sat at `preparation 0`, so a cleric/wizard imported with an empty prepared
+  list. The backend already decides the per-level count (spells/day); it now exports a
+  `spells_prepared_per_level` list aligned to `spell_list_choose_from` (divine casters prepare their
+  whole daily loadout incl. domain spells; spellbook casters like wizard/witch prepare only
+  spells/day out of the larger spellbook), and the FoundryVTT module marks exactly that many spells
+  prepared per level on prepared/hybrid spellbooks. Also corrected the module's caster classification:
+  **Bard, Summoner, Summoner (Unchained), and Skald** are now spontaneous (were wrongly listed as
+  prepared). (`spells.py`, `main_test.py`, module `modify-abilities.js`.)
 - **Path of War skill-based attack & counter checks now include the general attack bonus.** When a
   maneuver rolls a skill *in place of an attack roll* (vs AC) or opposes the *triggering attack
   roll* (a counter), the inline roll now adds `@attributes.attack.general` — e.g. Primal Fury's
