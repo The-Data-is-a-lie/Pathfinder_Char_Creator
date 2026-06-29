@@ -9,36 +9,250 @@ still downloading, or when the cloud free-tier rate limit is hit). The same code
   - Ollama CLOUD:  set OLLAMA_API_KEY (free key from https://ollama.com/settings/keys) -> host
                    defaults to https://ollama.com; set OLLAMA_MODEL="gpt-oss:20b-cloud".
 
+Three things are tunable WITHOUT editing this file:
+  - Backend/json/backstory_config.json   -- the system prompt, temperature, length, focus phrases.
+  - Backend/json/backstory_examples/      -- drop .txt/.json example backstories here and the model
+                                             is shown 1-3 of them as few-shot examples (see the
+                                             folder's README). Empty folder == old behavior.
+  - the ``focus`` argument                -- emphasize chosen facets (combat / profession / family /
+                                             faith / personality / appearance / region) for one NPC.
+
 Env:
   OLLAMA_API_KEY  optional bearer token; presence flips the default host to Ollama Cloud.
   OLLAMA_HOST     explicit host override.
   OLLAMA_MODEL    model name (default "gpt-oss:20b").
+  OLLAMA_THINK    reasoning depth for gpt-oss models (default "low"); set "" for plain models.
 """
 import json
 import os
+import random
 import urllib.error
 import urllib.request
+from pathlib import Path
 
 _DEFAULT_LOCAL_HOST = "http://localhost:11434"
 _DEFAULT_CLOUD_HOST = "https://ollama.com"
 _DEFAULT_MODEL = "gpt-oss:20b"
 _TIMEOUT = 120
 
+# Backend/json/ lives two levels up from this file (utils/class_func/ -> utils/ -> Backend/).
+_JSON_DIR = Path(__file__).resolve().parents[2] / "json"
+_CONFIG_PATH = _JSON_DIR / "backstory_config.json"
+_EXAMPLES_DIR = _JSON_DIR / "backstory_examples"
+_LORE_PATH = _JSON_DIR / "campaign_lore.json"  # optional campaign canon (homeland/faith/factions)
 
-def generate_backstory(brief, use_api=True):
+# Baked-in defaults: the app must work even if the config file is missing or partial. These mirror
+# backstory_config.json so deleting that file is a no-op rather than a regression.
+_DEFAULT_INSTRUCTIONS = (
+    "You are a Pathfinder 1st Edition loremaster. Write a cohesive 2-3 paragraph third-person "
+    "backstory (about {min_words}-{max_words} words) for the NPC described by the facts below. Weave "
+    "the facts into natural narrative prose: ground the character in their homeland, faith and "
+    "alignment, and reflect what their build/class lets them do. {focus_line} Also work in the flavor "
+    "of their traits, personality and history. Use ONLY the given facts — you may add light connective "
+    "color, but do not invent contradictory details, new proper nouns, or specific events. If a "
+    "SETTING / CAMPAIGN CANON block is provided, treat it as the true state of the world: never "
+    "contradict its governments, faiths, social structures, factions, or tone, and avoid modern or "
+    "real-world references — weave its flavor in naturally rather than quoting or listing it. Do NOT "
+    "list stats, labels or bullet points; write flowing prose only. Output only the backstory."
+)
+_DEFAULT_FOCUS_PHRASES = {
+    "profession": "their profession(s), notable craft or trade, and the mentors and trainers who shaped them",
+    "combat": "their martial training, fighting style, and the deeds their feats and maneuvers enable",
+    "faith": "their faith, their deity, and how their alignment guides them",
+    "family": "their family, bloodline, and upbringing",
+    "personality": "their personality, mannerisms, and flaws",
+    "appearance": "their physical appearance, bearing, and presence",
+    "region": "their homeland and how it shaped them",
+}
+_DEFAULT_CONFIG = {
+    "instructions": _DEFAULT_INSTRUCTIONS,
+    "temperature": 0.8,
+    "max_tokens": 800,
+    "word_range": [160, 260],
+    "num_examples": 3,
+    "smart_match": True,
+    "default_focus": ["profession"],
+    "focus_phrases": _DEFAULT_FOCUS_PHRASES,
+}
+
+# Loaded-once caches (config + examples are read from disk only on first use, like a long-lived
+# server would want). Restart the process to pick up edits / newly-added example files.
+_CONFIG_CACHE = None
+_EXAMPLES_CACHE = None
+_LORE_CACHE = None
+
+
+def generate_backstory(brief, use_api=True, focus=None):
     """Return a 1-2 paragraph backstory string for the character described by `brief` (a dict).
 
     When `use_api` is true, tries Ollama (local or cloud) first; when false (the "use API" button is
-    off), the network call is skipped entirely and the deterministic template is used. Always returns
-    a non-empty string."""
-    text = _try_ollama(_build_prompt(brief)) if use_api else ""
+    off), the network call is skipped entirely and the deterministic template is used. `focus` is an
+    optional aspect or list of aspects to emphasize (see _normalize_focus). Always returns a
+    non-empty string."""
+    cfg = _config()
+    text = _try_ollama(_build_messages(brief, focus, cfg), cfg) if use_api else ""
     if not text:
-        text = _template_backstory(brief)
+        text = _template_backstory(brief, focus)
     return (text or "").strip()
 
 
 # --------------------------------------------------------------------------- #
-# helpers
+# config + few-shot examples
+# --------------------------------------------------------------------------- #
+
+def _config():
+    """Load backstory_config.json once, layered over the baked-in defaults (so partial files work)."""
+    global _CONFIG_CACHE
+    if _CONFIG_CACHE is None:
+        cfg = dict(_DEFAULT_CONFIG)
+        try:
+            cfg.update(json.loads(_CONFIG_PATH.read_text(encoding="utf-8")))
+        except (OSError, ValueError):
+            pass  # missing/broken file -> defaults
+        _CONFIG_CACHE = cfg
+    return _CONFIG_CACHE
+
+
+# --------------------------------------------------------------------------- #
+# campaign lore (optional): grounds backstories in the homebrew setting
+# --------------------------------------------------------------------------- #
+
+def _lore():
+    """Load campaign_lore.json once (optional). Returns a dict — {} when the file is missing or
+    unparseable, so the SETTING block is simply omitted and behavior matches the no-lore default."""
+    global _LORE_CACHE
+    if _LORE_CACHE is None:
+        loaded = {}
+        try:
+            parsed = json.loads(_LORE_PATH.read_text(encoding="utf-8-sig"))
+            if isinstance(parsed, dict):
+                loaded = parsed
+        except (OSError, ValueError):
+            pass  # missing / broken file -> no lore
+        _LORE_CACHE = loaded
+    return _LORE_CACHE
+
+
+def _lore_region(lore, region):
+    """Case-insensitively resolve a region (matching keys and any 'aliases') to its lore dict, or {}.
+    character.region is title-cased at runtime (e.g. 'Tal-Falko'), so the match must be lowercased."""
+    regions = (lore or {}).get("regions") or {}
+    key = str(region or "").strip().lower()
+    if not key:
+        return {}
+    for name, info in regions.items():
+        if not isinstance(info, dict):
+            continue
+        if any(str(n).strip().lower() == key for n in [name] + list(info.get("aliases") or [])):
+            return info
+    return {}
+
+
+def _lore_deity_notes(lore, brief, limit=2):
+    """Up to `limit` one-line notes for the character's deity/deities from the lore 'deities' index."""
+    index = {str(k).strip().lower(): v for k, v in ((lore or {}).get("deities") or {}).items()}
+    out = []
+    for nm in _flat(brief.get("deity")).split(","):
+        note = index.get(nm.strip().lower())
+        if note and note not in out:
+            out.append(_flat(note))
+        if len(out) >= limit:
+            break
+    return out
+
+
+def _lore_context(brief):
+    """The SETTING / CAMPAIGN CANON block for this character, or '' when no lore applies. Only
+    documented regions (those with a 'brief') produce a block; everything else degrades to the
+    generic, setting-agnostic behavior. Pulls the world blurb + tone, the homeland brief + naming,
+    deity note(s), and one local order."""
+    lore = _lore()
+    region_info = _lore_region(lore, brief.get("region"))
+    if not region_info.get("brief"):
+        return ""
+    lines = []
+    world = lore.get("world") or {}
+    if world.get("blurb"):
+        lines.append(_flat(world["blurb"]))
+    if world.get("tone"):
+        lines.append("Tone: " + _flat(world["tone"]))
+    homeland = _flat(brief.get("region")) or "their homeland"
+    line = f"Homeland — {homeland}: {_flat(region_info['brief'])}"
+    if region_info.get("naming"):
+        line += " " + _flat(region_info["naming"])
+    lines.append(line)
+    notes = _lore_deity_notes(lore, brief)
+    if notes:
+        lines.append("Faith: " + " ".join(notes))
+    orders = region_info.get("orders") or []
+    if orders:
+        lines.append("A notable local order: " + _flat(random.choice(orders)) + ".")
+    header = "SETTING / CAMPAIGN CANON (treat as true; do not contradict; do not quote verbatim):"
+    return header + "\n" + "\n".join(lines)
+
+
+def _load_examples():
+    """Read every .txt/.json example in backstory_examples/ once. Returns a list of
+    {"backstory", "facts", "tags"} dicts; unparseable files are skipped silently."""
+    global _EXAMPLES_CACHE
+    if _EXAMPLES_CACHE is not None:
+        return _EXAMPLES_CACHE
+    out = []
+    try:
+        paths = sorted(_EXAMPLES_DIR.glob("*"))
+    except OSError:
+        paths = []
+    for p in paths:
+        suffix = p.suffix.lower()
+        try:
+            raw = p.read_text(encoding="utf-8-sig")  # -sig strips a leading BOM (Notepad-saved files)
+        except OSError:
+            continue
+        if suffix == ".txt":
+            if raw.strip():
+                out.append({"backstory": raw.strip(), "facts": "", "tags": {}})
+        elif suffix == ".json":
+            try:
+                data = json.loads(raw)
+            except ValueError:
+                continue
+            for obj in (data if isinstance(data, list) else [data]):
+                if isinstance(obj, dict) and str(obj.get("backstory", "")).strip():
+                    out.append({
+                        "backstory": str(obj["backstory"]).strip(),
+                        "facts": str(obj.get("facts", "")).strip(),
+                        "tags": obj.get("tags") or {},
+                    })
+    _EXAMPLES_CACHE = out
+    return out
+
+
+def _match_score(example, brief):
+    """How well an example's tags resemble the character being generated (higher = closer)."""
+    tags = example.get("tags") or {}
+    weights = {"char_class": 3, "region": 2, "race": 2, "alignment": 1, "main_stat": 1, "gender": 1}
+    score = 0
+    for key, weight in weights.items():
+        bv = str(brief.get(key, "")).lower().strip()
+        tv = str(tags.get(key, "")).lower().strip()
+        if bv and tv and bv == tv:
+            score += weight
+    return score
+
+
+def _select_examples(brief, examples, n, smart_match):
+    """Pick up to `n` few-shot examples: best-matching when smart_match, else random."""
+    if not examples or n <= 0:
+        return []
+    if smart_match:
+        # Stable: examples already in filename order; sort by descending match score only.
+        ranked = sorted(examples, key=lambda e: _match_score(e, brief), reverse=True)
+        return ranked[:n]
+    return random.sample(examples, min(n, len(examples)))
+
+
+# --------------------------------------------------------------------------- #
+# prompt assembly
 # --------------------------------------------------------------------------- #
 
 def _clean(text):
@@ -60,6 +274,69 @@ def _flat(v):
     return str(v).strip()
 
 
+def _first_sentence(text):
+    """First sentence of a blurb (for the offline template's one-line homeland grounding)."""
+    text = _flat(text)
+    cut = text.find(". ")
+    return (text[:cut + 1] if cut != -1 else text).strip()
+
+
+def _normalize_focus(focus):
+    """Coerce a focus argument (str like 'combat, faith', list, or None) into a clean lowercase list
+    of recognized aspect keys. Unknown aspects are dropped."""
+    if not focus:
+        return []
+    if isinstance(focus, str):
+        items = [f for chunk in focus.split(",") for f in chunk.split()]
+    elif isinstance(focus, (list, tuple, set)):
+        items = [str(f) for f in focus]
+    else:
+        return []
+    known = _DEFAULT_FOCUS_PHRASES.keys()
+    seen, out = set(), []
+    for raw in items:
+        a = raw.strip().lower()
+        if a in known and a not in seen:
+            seen.add(a)
+            out.append(a)
+    return out
+
+
+def _join_and(items):
+    """Oxford-comma join: ['a'] -> 'a'; ['a','b'] -> 'a and b'; ['a','b','c'] -> 'a, b, and c'."""
+    items = list(items)
+    if not items:
+        return ""
+    if len(items) == 1:
+        return items[0]
+    if len(items) == 2:
+        return f"{items[0]} and {items[1]}"
+    return ", ".join(items[:-1]) + ", and " + items[-1]
+
+
+def _focus_line(focus, cfg):
+    """Build the dynamic emphasis sentence injected into the system prompt. Falls back to the config's
+    default_focus (profession, matching the historical default) when no focus is requested."""
+    phrases_map = cfg.get("focus_phrases") or _DEFAULT_FOCUS_PHRASES
+    aspects = _normalize_focus(focus) or _normalize_focus(cfg.get("default_focus")) or ["profession"]
+    phrases = [phrases_map[a] for a in aspects if a in phrases_map]
+    if not phrases:
+        return ""
+    return ("IMPORTANT: give particular narrative weight to " + _join_and(phrases)
+            + " — let these sit at the heart of the story rather than receiving a passing mention.")
+
+
+def _build_system(focus, cfg):
+    """The system-role instruction string, with word range and focus line filled in."""
+    rng = cfg.get("word_range") or _DEFAULT_CONFIG["word_range"]
+    lo, hi = (rng + [260, 260])[:2]
+    instr = cfg.get("instructions") or _DEFAULT_INSTRUCTIONS
+    # str.replace (not .format) so a hand-edited config with stray braces can't raise.
+    return (instr.replace("{min_words}", str(lo))
+                 .replace("{max_words}", str(hi))
+                 .replace("{focus_line}", _focus_line(focus, cfg)))
+
+
 def _build_summary(brief):
     """A short phrase describing what the character DOES (class / level / role / notables)."""
     parts = []
@@ -75,11 +352,7 @@ def _build_summary(brief):
     disc = _flat(brief.get("martial_disciplines"))
     if disc:
         parts.append(f"a Path of War initiator versed in {disc}")
-    feats = brief.get("notable_feats") or []
-    if isinstance(feats, (list, tuple)):
-        feats = [str(f) for f in feats if str(f).strip()]
-        if feats:
-            parts.append("notable for " + ", ".join(feats[:3]))
+    # Feats are intentionally omitted -- the house style keeps backstories off game mechanics.
     return ", ".join(parts)
 
 
@@ -105,49 +378,64 @@ def _family_text(brief):
     return ". ".join(parts)
 
 
-def _build_prompt(brief):
+def _build_facts(brief):
+    """The FACTS block (everything after 'FACTS:\\n') describing this specific character."""
     facts = [f"Name: {_flat(brief.get('name')) or 'Unknown'}"]
     for label, key in (("Race", "race"), ("Gender", "gender"), ("Age", "age"),
-                       ("Homeland", "region"), ("Alignment", "alignment"), ("Deity", "deity")):
+                       ("Homeland / where they are from", "region")):
         v = _flat(brief.get(key))
         if v:
             facts.append(f"{label}: {v}")
-    bs = _build_summary(brief)
-    if bs:
-        facts.append(f"Build / what they do: {bs}")
-    tlines = _trait_lines(brief)
-    if tlines:
-        facts.append("Character traits (mechanical flavor to weave in narratively):\n" + "\n".join(tlines))
-    for label, key in (("Personality", "personality_traits"), ("Mannerisms", "mannerisms"),
-                       ("Flaws", "flaw"), ("Background", "background_traits"),
-                       ("Professions / vocations (central to their daily life)", "professions"),
+    # Core of the story (lead with these): vocation, family/upbringing, homeland.
+    for label, key in (("Profession(s) / vocation (the work that defines their days)", "professions"),
                        ("Notable craft / trade", "craft"),
-                       ("Trainers they studied under (who shaped their skills)", "trainers"),
-                       ("Appearance", "appearance")):
+                       ("Trainers / mentors who shaped them", "trainers")):
         v = _flat(brief.get(key))
         if v:
             facts.append(f"{label}: {v}")
     fam = _family_text(brief)
     if fam:
-        facts.append(f"Family: {fam}")
+        facts.append(f"Family & upbringing (situation growing up): {fam}")
+    # Secondary color.
+    for label, key in (("Background", "background_traits"),
+                       ("Alignment", "alignment"), ("Deity / faith", "deity")):
+        v = _flat(brief.get(key))
+        if v:
+            facts.append(f"{label}: {v}")
+    bs = _build_summary(brief)
+    if bs:
+        facts.append(f"Role / what they do: {bs}")
+    tlines = _trait_lines(brief)
+    if tlines:
+        facts.append("Character traits (light flavor only):\n" + "\n".join(tlines))
+    # These feed the short closing list (Personality / Mannerisms / Appearance / Flaws).
+    for label, key in (("Personality", "personality_traits"), ("Mannerisms", "mannerisms"),
+                       ("Appearance", "appearance"), ("Flaws", "flaw")):
+        v = _flat(brief.get(key))
+        if v:
+            facts.append(f"{label}: {v}")
+    return "\n".join(facts)
 
-    return (
-        "You are a Pathfinder 1st Edition loremaster. Write a cohesive 2-3 paragraph third-person "
-        "backstory (about 160-260 words) for the NPC described by the facts below. Weave the facts "
-        "into natural narrative prose: ground the character in their homeland, faith and alignment, "
-        "and reflect what their build/class lets them do. IMPORTANT: devote a substantial part of "
-        "the story to their profession(s), their notable craft or trade, and the trainers who taught "
-        "them — these vocations and mentors define their everyday life and how they came to be who "
-        "they are, so give each real narrative weight rather than a passing mention. Also work in the "
-        "flavor of their traits, personality and history. Use ONLY the given facts — you may add light "
-        "connective color, but do not invent contradictory details, new proper nouns, or specific "
-        "events. Do NOT list stats, labels or bullet points; write flowing prose only. Output only "
-        "the backstory.\n\n"
-        "FACTS:\n" + "\n".join(facts)
-    )
+
+def _build_messages(brief, focus, cfg):
+    """Assemble the /api/chat messages array: system instruction, optional few-shot example turns,
+    then the user turn with this character's facts."""
+    messages = [{"role": "system", "content": _build_system(focus, cfg)}]
+    lore_block = _lore_context(brief)  # campaign canon for the homeland/faith; '' when none applies
+    if lore_block:
+        messages.append({"role": "system", "content": lore_block})
+    examples = _select_examples(brief, _load_examples(),
+                                int(cfg.get("num_examples", 0) or 0), cfg.get("smart_match", True))
+    for ex in examples:
+        user_turn = ("FACTS:\n" + ex["facts"]) if ex.get("facts") else \
+            "Write a Pathfinder NPC backstory in your established style."
+        messages.append({"role": "user", "content": user_turn})
+        messages.append({"role": "assistant", "content": ex["backstory"]})
+    messages.append({"role": "user", "content": "FACTS:\n" + _build_facts(brief)})
+    return messages
 
 
-def _try_ollama(prompt):
+def _try_ollama(messages, cfg):
     api_key = os.environ.get("OLLAMA_API_KEY", "").strip()
     host = (os.environ.get("OLLAMA_HOST", "").strip()
             or (_DEFAULT_CLOUD_HOST if api_key else _DEFAULT_LOCAL_HOST))
@@ -155,9 +443,12 @@ def _try_ollama(prompt):
     url = host.rstrip("/") + "/api/chat"
     payload = {
         "model": model,
-        "messages": [{"role": "user", "content": prompt}],
+        "messages": messages,
         "stream": False,
-        "options": {"temperature": 0.8, "num_predict": 800},
+        "options": {
+            "temperature": cfg.get("temperature", 0.8),
+            "num_predict": cfg.get("max_tokens", 800),
+        },
     }
     # Reasoning models (gpt-oss) otherwise spend the whole token budget "thinking" and return empty
     # or mid-sentence content; "low" keeps reasoning minimal so the prose completes. Set
@@ -183,8 +474,10 @@ def _try_ollama(prompt):
     return ""
 
 
-def _template_backstory(brief):
-    """Deterministic offline composer (the safety net when no model is reachable)."""
+def _template_backstory(brief, focus=None):
+    """Deterministic offline composer (the safety net when no model is reachable): vocation /
+    family / homeland-led prose, then the short closing Personality/Mannerisms/Appearance/Flaws list
+    (the same house style as the model path)."""
     name = _flat(brief.get("name")) or "This character"
     race, region = _flat(brief.get("race")), _flat(brief.get("region"))
     align, deity = _flat(brief.get("alignment")), _flat(brief.get("deity"))
@@ -192,37 +485,50 @@ def _template_backstory(brief):
     pers, mann = _flat(brief.get("personality_traits")), _flat(brief.get("mannerisms"))
     flaw, prof = _flat(brief.get("flaw")), _flat(brief.get("professions"))
     craft, trainers = _flat(brief.get("craft")), _flat(brief.get("trainers"))
+    appearance = _flat(brief.get("appearance"))
     fam = _family_text(brief)
-    trait_names = _flat([t.get("name") if isinstance(t, dict) else t
-                         for t in (brief.get("traits") or [])])
 
-    p1 = [f"{name} is a {race}".rstrip() + (f" hailing from {region}" if region else "") + "."]
-    if summary:
-        p1.append(f"They are {summary}.")
-    if align:
-        p1.append(f"Their alignment is {align}"
-                  + (f", and they keep faith with {deity}." if deity else "."))
-    if fam:
-        p1.append(fam[0].upper() + fam[1:] + ".")
-
-    # Vocation chunk — professions, craft and trainers carry real weight in this character's history.
+    # Paragraph 1 — homeland grounding (when documented), then vocation (the work of their days).
     p_work = []
+    region_info = _lore_region(_lore(), brief.get("region"))
+    if region_info.get("brief"):
+        s = _first_sentence(region_info["brief"])
+        if s and not s.endswith((".", "!", "?")):
+            s += "."
+        if s:
+            p_work.append(s)
     if prof:
-        p_work.append(f"Much of their life has been shaped by their work as {prof}.")
+        p_work.append(f"{name} makes their living as {prof}.")
+    else:
+        p_work.append(f"{name} is a {race}".rstrip() + (f" from {region}" if region else "") + ".")
     if craft:
         p_work.append(f"They are known in particular for their skill at {craft}.")
     if trainers:
-        p_work.append(f"They honed their abilities under the guidance of {trainers}.")
+        p_work.append(f"They learned their trade under {trainers}.")
 
-    p2 = []
-    if trait_names:
-        p2.append(f"Their defining traits include {trait_names}.")
-    if pers:
-        p2.append(f"In temperament they are {pers}.")
-    if mann:
-        p2.append(f"Among their mannerisms: {mann}.")
-    if flaw:
-        p2.append(f"For all that, they are marked by {flaw}.")
+    # Paragraph 2 — homeland, family/upbringing, role, faith.
+    p_home = []
+    if prof and (race or region):
+        p_home.append(f"A {race}".rstrip() + (f" from {region}" if region else "")
+                      + ", they were shaped by where they came from.")
+    if fam:
+        p_home.append(fam[0].upper() + fam[1:] + ".")
+    if summary:
+        p_home.append(f"These days they are {summary}.")
+    if align:
+        p_home.append(f"They hold to a {align} outlook"
+                      + (f", keeping faith with {deity}." if deity else "."))
 
-    paras = [" ".join(p) for p in (p1, p_work, p2) if p]
-    return "\n\n".join(paras).strip()
+    paras = [" ".join(p) for p in (p_work, p_home) if p]
+
+    # Closing short labeled list.
+    tail = []
+    for label, val in (("Personality", pers), ("Mannerisms", mann),
+                       ("Appearance", appearance), ("Flaws", flaw)):
+        if val:
+            tail.append(f"{label}: {val}")
+
+    out = "\n\n".join(paras).strip()
+    if tail:
+        out += "\n\n" + "\n".join(tail)
+    return out.strip()

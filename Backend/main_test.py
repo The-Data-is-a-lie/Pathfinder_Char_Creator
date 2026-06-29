@@ -189,7 +189,7 @@ def strip_labeled_bucket(feat_list, label_list, children):
 # Make sure to add a flag for path of war feats later
 def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Orc', class_choice='wizard', chosen_BAB='low', chosen_caster_level = 'random', multi_class='N', 
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", modded_char_sheet = 'n', 
-						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", spheres_flag="N", ):
+						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", spheres_flag="N", backstory_focus=None, ):
 		
 		print(create_new_char)
 		print(userInput_region)
@@ -1246,7 +1246,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			'craft': character.craft_chosen, 'trainers': _bs_trainers,
 			'appearance': appearance, 'parents': parents,
 			'siblings': [older_brothers, younger_brothers, older_sisters, younger_sisters],
-		}, use_api=str(use_backstory_api).upper() == "Y")
+		}, use_api=str(use_backstory_api).upper() == "Y", focus=backstory_focus)
 
 		export_list_non_dict = [
 				character.region, character.chosen_race, character.land_speed,

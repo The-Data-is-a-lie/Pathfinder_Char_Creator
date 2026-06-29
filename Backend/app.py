@@ -89,6 +89,9 @@ def process_input_values(input_values, spheres_flag="N"):
         # Ollama backstory call runs at all). Older clients send 19 fields -> default to "Y" (on).
         # Trim to the core 19 so the integer conversion + unpack below stay aligned.
         use_backstory_api = input_values[19] if len(input_values) >= 20 else "Y"
+        # Optional 21st input: backstory focus (comma/space-separated aspects to emphasize, e.g.
+        # "combat, faith"). Older clients omit it -> None -> balanced/profession default.
+        backstory_focus = input_values[20] if len(input_values) >= 21 else None
         input_values = input_values[:19]
 
         # Convert specific elements to integers
@@ -103,7 +106,7 @@ def process_input_values(input_values, spheres_flag="N"):
         # Unpack input_values
         create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num = input_values
         session['character_data'] = generate_random_char(
-        create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num, use_backstory_api, spheres_flag
+        create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num, use_backstory_api, spheres_flag, backstory_focus
         )
         return session['character_data']
 

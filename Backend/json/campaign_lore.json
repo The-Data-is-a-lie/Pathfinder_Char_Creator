@@ -1,0 +1,53 @@
+{
+  "_comment": "Campaign canon for the backstory generator (Backend/utils/class_func/backstory.py). OPTIONAL: delete this file and generation falls back to generic, setting-agnostic behavior. Region keys are matched case-insensitively against the title-cased character.region (e.g. 'Tal-Falko', 'Esterdragon'); 'aliases' add extra spellings that resolve to the same region. Only the well-documented regions are encoded here; the others (Spire, Dust-Cairn, Kaeru no Tochi, Grundy) intentionally have no entry and degrade to generic behavior. Keep every value to 1-3 sentences so the assembled SETTING block stays short.",
+
+  "world": {
+    "blurb": "The continent of Fairdell and its rival Cronia, in roughly the year 5256. A late-medieval, sword-and-sorcery world on the cusp of an industrial shift: the mercantile power Sojoria has pioneered firearms and steam while most realms still fight with steel and spell, and potions and alchemy remain uncommon. Fairdell is the dominant human kingdom (capital Amberden) and a colonial power; its great churches of Iomedae and Pharasma are bitter rivals.",
+    "tone": "Grounded medieval high fantasy. No modern, real-world, or anachronistic references (no pizzerias, mailmen, brand names, or technology beyond early firearms and steam)."
+  },
+
+  "regions": {
+    "Tal-falko": {
+      "aliases": ["Tall-Fakho", "Tal Falkho"],
+      "brief": "A harsh desert realm of Arabic and Persian flavor where water is the most precious resource and potions and alchemy are scarce and dear. Power is split among the merchant city-state meritocracy of Ja'arut, the raiding cavalry anarchy of the Darabin Horse Lords (who respect strength above all and traffic in slaves), and the dominant military Hamisab Sultanate.",
+      "naming": "Nasab prefixes mark lineage: Bin/Ibn ('son of') and Ibnot ('daughter of') for Banirga or Darabin descent; 'al' or 'el' for Ja'arut family names; Nezhad/Nejad ('clan') for Hamisab descent.",
+      "orders": ["the merchant houses of Ja'arut", "the Darabin Horse Lords", "the Hamisab Sultanate's host"]
+    },
+    "Feyador": {
+      "brief": "A mountainous avian theocracy ruled by the Council of Tanagaarian Mandates, the 'Rule of Five' (Cardinals over Archbishops over Bishops). A rigid racial hierarchy elevates the winged Syrinx over the warrior Strix over the Tengu, with humans long the enslaved underclass; slavery was abolished only in 5235 after eight rebellions.",
+      "faiths": ["Tanagaar"],
+      "orders": ["the Templars of Tanagaar", "the Talons of Tanagaar (inquisitors)", "the Inquisitorial Forces"],
+      "conflicts": ["a century-long naval war against Sojoria"]
+    },
+    "Sojoria": {
+      "brief": "A mercantile trapezocracy where the guild council, the Sojorian Chamber of Commerce, outweighs the old Conrad royal line. Sojoria pioneered firearms, steam machinery, master archery, and a dominant navy, trading or conquering across the seas.",
+      "faiths": ["Abadar", "Pharasma", "Cayden Cailean", "Desna", "Iomedae", "Shelyn"],
+      "orders": ["the Guild of Abadar", "the Bank of Abadar", "the Sojorian Chamber of Commerce"],
+      "conflicts": ["the hundred-year naval war against Feyador"]
+    },
+    "Ieso": {
+      "brief": "A brutal blood-sport economy where orc war-bands and mercenary companies fight in arena 'Crusher' tournaments. Contracts, wagers, and upkeep are tallied like a ledger, and killing an opponent who will not yield is a disqualifying offense in the ring.",
+      "orders": ["the arena war-bands", "the mercenary companies"]
+    },
+    "Dolestan": {
+      "aliases": ["Dolistan"],
+      "brief": "A socialist revolutionary state, the 'Glorious Union of Dolistani Workers', ruled by a Politburo of generals after the Grey Star faction overthrew the Tsar. It exports revolution, covertly funding socialist movements abroad; a Tsarist pretender lingers in exile.",
+      "orders": ["the Politburo", "the Grey Star", "the Socialist Workers Party"]
+    },
+    "Esterdragon": {
+      "brief": "A colony of the kingdom of Fairdell whose people still look back to the capital Amberden. Fairdell's feuding churches of Iomedae (valor and justice) and Pharasma (death and fate) both hold sway here, with Desna favored by travelers, and the homeland's martial culture runs deep.",
+      "faiths": ["Iomedae", "Pharasma", "Desna"],
+      "orders": ["the Wrathful of Ragathiel (vengeance paladins out of Fort Valorum)"],
+      "conflicts": ["the Iomedae-Pharasma church feud carried from the homeland"]
+    }
+  },
+
+  "deities": {
+    "Tanagaar": "Supreme god of Feyador (Lawful Neutral), the Aurulent Eye, Lord of Divine Words: night, owls, watchfulness, magic, and writing; domains Darkness, Knowledge, Law, Magic, and Rune; symbol a shadowed golden eye. Blasphemy against him is a capital crime in Feyador.",
+    "Abadar": "In Sojoria, worshipped through the Guild of Abadar and the Bank of Abadar, patron of commerce, law, and the trapezocracy itself.",
+    "Iomedae": "In Fairdell and its colonies, the assertive church of valor and justice; it feuds bitterly with the church of Pharasma.",
+    "Pharasma": "In Fairdell, Cronia, and Feyador, the church of birth, death, fate, and prophecy; it feuds with Iomedae's faithful and abhors the undead.",
+    "Desna": "Popular across Fairdell and Sojoria and among travelers and pirates, goddess of dreams, stars, luck, and the open road.",
+    "Ragathiel": "Patron of the Wrathful of Ragathiel, Fairdell's vengeance-sworn paladins and holy mercenaries out of Fort Valorum."
+  }
+}
