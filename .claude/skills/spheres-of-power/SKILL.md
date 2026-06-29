@@ -139,7 +139,12 @@ traditions in v1**, **enrich combat data from the Foundry compendium**.
     talents it granted.
   - `_choose_casting_tradition` / `_mana_pool` — magic dabblers get a CAM (highest mental stat), drawbacks
     → boons (2:1) → bonus spell points (triangular chart), and the **HR4 mana pool** = `highest_mental_mod`
-    (reused from `skill_ranks.py`, min 1) + bonus SP.
+    (reused from `skill_ranks.py`, min 1) + bonus SP. `casting_tradition.drawbacks`/`boons` stay **name
+    strings** (kept `.join()`-safe so a stale/older front-end never renders `[object Object]`); the rich
+    text rides parallel `casting_tradition.drawbacks_detail`/`boons_detail` keys — `{name, description,
+    counts_as}` dicts (sourced from `spheres_traditions.json` / `_FALLBACK_TRADITIONS`) that the sheet
+    reads to spell out what each does and how the drawback→boon→bonus-SP math worked out. The flat
+    `sphere_drawbacks`/`sphere_boons`/`sphere_traits` exports are the same name strings.
 - **Data + extractor:** `Backend/scripts/extract_spheres_talents.py` unpacks the FoundryVTT `pf1spheres`
   ClassicLevel packs (`magic-talents`, `combat-talents`, `sphere-feats`) via
   `npx @foundryvtt/foundryvtt-cli package unpack` (copy the pack out first — Foundry locks the live DB;
@@ -162,6 +167,13 @@ traditions in v1**, **enrich combat data from the Foundry compendium**.
   proficiency→martial-tradition trade stays in `armor_and_weapon_chooser.py`.
 - **Foundry render:** talent items use the profession-item shape (`{name, description, changes,
   contextNotes, uses}` + `sphere`/`system`/`type`); `changes`/`uses` are empty in v1 (description-only).
+  The single **Spheres Casting** summary feat (`processSpheres` in the module's `modify-abilities.js`)
+  now renders a fully self-explanatory block: the casting ability + mana-pool breakdown, and Drawbacks /
+  Boons as description lists (each drawback shows its 1-/2-point weight) followed by a "tradition math"
+  line. It reads `drawbacks_detail`/`boons_detail` and falls back to the name-string `drawbacks`/`boons`
+  arrays, so it degrades to clean names (never `[object Object]`) against an older backend payload.
+  **Note:** the module JS loads once at Foundry startup — after editing `modify-abilities.js` you must
+  hard-refresh (Ctrl+Shift+R / reload the world) and generate a *new* actor (old actors bake the HTML in).
   The mana pool maps to a pf1 resource (`@resources.<tag>.max` = highest mental mod) — see
   `foundry-sheet-references`.
 
