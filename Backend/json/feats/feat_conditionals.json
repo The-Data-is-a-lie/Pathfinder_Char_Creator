@@ -1,0 +1,751 @@
+{
+  "Combat Expertise": {
+    "name": "Combat Expertise: -[[1+floor(@attributes.bab.total/4)]] melee attack & CMB for +[[1+floor(@attributes.bab.total/4)]] dodge AC",
+    "default": false,
+    "modifiers": []
+  },
+  "Deadly Aim": {
+    "name": "Deadly Aim: -[[1+floor(@attributes.bab.total/4)]] ranged attack",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2+2*floor(@attributes.bab.total/4)",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Dramatic Display": {
+    "name": "Dramatic Display: +[[2]] CMB until end of next turn",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Drunken Brawler": {
+    "name": "Drunken Brawler (drunk): +[[2]] alchemical Fort & Will, -[[2]] Reflex",
+    "default": false,
+    "modifiers": []
+  },
+  "Improved Back to Back": {
+    "name": "Improved Back to Back: +2 AC vs flankers [[2]]",
+    "default": false,
+    "modifiers": []
+  },
+  "Multiweapon Defense": {
+    "name": "Multiweapon Defense: forgo off-hand attacks for +[[1]] each (max +5) shield bonus to AC",
+    "default": false,
+    "modifiers": []
+  },
+  "Piranha Strike": {
+    "name": "Piranha Strike: -[[1+floor(@attributes.bab.total/4)]] melee attack (light weapon)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2+2*floor(@attributes.bab.total/4)",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Power Attack": {
+    "name": "Power Attack: -[[1+floor(@attributes.bab.total/4)]] melee attack",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2+2*floor(@attributes.bab.total/4)",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Reward of Grace": {
+    "name": "Reward of Grace: lay on hands used this round",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "sacred",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Risky Striker": {
+    "name": "Risky Striker: -[[1]] AC (vs creatures 2+ sizes larger only)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2+2*floor(@attributes.bab.total/4)",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Savage Display": {
+    "name": "Savage Display: performance combat check made (until end of next turn)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Shield of Swings": {
+    "name": "Shield of Swings: full-attack with a two-handed weapon, reduce your weapon damage by [[1/2]] to gain a +[[4]] shield bonus to AC and a +[[4]] shield bonus to CMD until your next turn",
+    "default": false,
+    "modifiers": []
+  },
+  "Unsanctioned Detection": {
+    "name": "Unsanctioned Detection: +10 sacred Perception & Sense Motive (1 rd, expends detect evil 24h)",
+    "default": false,
+    "modifiers": []
+  },
+  "Demon Hunter": {
+    "name": "Demon Hunter (vs demons): +2 morale on attack rolls",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "morale",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Ferocious Loyalty": {
+    "name": "Ferocious Loyalty: +1 morale on attack rolls vs a foe threatening an ally who also has this feat (+2 morale for 1 min if such an ally is downed/killed within 30 ft)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "morale",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Bloody Vengeance": {
+    "name": "Bloody Vengeance: vs a studied foe that has damaged you within the last minute, your melee hits deal +[[1]] bleed damage",
+    "default": false,
+    "modifiers": []
+  },
+  "Bear Hug": {
+    "name": "Bear Hug: +2 bonus on damage rolls against foes you are grappling.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Bloodstone Manhunter": {
+    "name": "Bloodstone Manhunter: +1 on weapon attack and damage rolls and on Bluff/Knowledge/Perception/Sense Motive/Survival checks against humans (does not stack with a favored enemy bonus vs humans).",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Champion": {
+    "name": "Champion: Swift action to declare single combat on one foe within 50 ft: +1 on attack rolls and +1 dodge AC against that foe (only while no one else threatens it). If another combatant attacks you or that foe, the challenge ends and you tak",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Charging Hurler": {
+    "name": "Charging Hurler: When making a thrown-weapon attack as a charge (end movement within 30 ft of the target): +2 on the attack roll and -2 to AC until the start of your next turn.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Cold Celerity": {
+    "name": "Cold Celerity: In severe cold (below 0F), or for 1 round after taking cold damage: +1 on attack rolls.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Death from Above": {
+    "name": "Death from Above: When you charge an opponent from higher ground, or from above while flying: +5 on attack rolls (in place of the charge and higher-ground bonuses).",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "5",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Deathless Initiate": {
+    "name": "Deathless Initiate: While using the Diehard feat (i.e. at 0 or fewer hit points): +2 on melee attack rolls and +2 on melee damage rolls.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Demonic Nemesis": {
+    "name": "Demonic Nemesis: Against followers of your chosen demon lord (cultists or demons): +2 on damage rolls and on rolls to confirm critical hits.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Desperate Battler": {
+    "name": "Desperate Battler: When no ally is within 10 feet and you are not benefiting from aid another: +1 morale bonus on melee attack rolls and +1 morale bonus on melee damage rolls.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "morale",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Disorienting Maneuver": {
+    "name": "Disorienting Maneuver: After tumbling through an opponent's space with Acrobatics, +2 circumstance on attack rolls vs that opponent (and +4 circumstance on a trip CMB) until your next turn.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "circumstance",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Dog Killer, Horse Hunter": {
+    "name": "Dog Killer, Horse Hunter: +2 morale on all attack rolls against dogs and horses (and doglike/horselike creatures such as nightmares or worgs); also +2 to confirm crits vs them. +2 morale on all damage rolls against dogs and horses (and dogl",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "morale",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "morale",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Dog-Sniff-Hate": {
+    "name": "Dog-Sniff-Hate: Against canines (dogs, goblin dogs, wolves, worgs, yeth hounds, etc.): +1 morale on attack rolls. Against canines (dogs, goblin dogs, wolves, worgs, yeth hounds, etc.): +2 morale on weapon damage rolls.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "morale",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "morale",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Exploit Lore": {
+    "name": "Exploit Lore: Once/day after a successful Knowledge check identifying a creature, +2 on attack rolls against that creature for 1 minute. Once/day after a successful Knowledge check identifying a creature, +2 on damage rolls against that cre",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Fire Hand": {
+    "name": "Fire Hand: +1 on attack rolls with melee weapons that deal fire damage (e.g. a torch).",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Focused Discipline": {
+    "name": "Focused Discipline: +2 morale on attack rolls, weapon damage, and CMB vs a creature whose fear effect you just resisted (1 round).",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "morale",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Giant Killer": {
+    "name": "Giant Killer: +2 circumstance on attack rolls for the extra cleave-style attacks made against humanoids (giant).",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "circumstance",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Gloom Strike": {
+    "name": "Gloom Strike: +1 on attack rolls against enemies in dim light or darkness, while you are also in dim light or darkness.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Gnome Weapon Focus": {
+    "name": "Gnome Weapon Focus: +1 on attack rolls with gnome weapons (weapons with 'gnome' in the name).",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Goblin Cleaver": {
+    "name": "Goblin Cleaver: +2 circumstance on attack rolls for the extra Cleave/Great Cleave attacks made against humanoids (goblinoid).",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "circumstance",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Grudge Fighter": {
+    "name": "Grudge Fighter: +1 morale on attack and damage rolls against any creature that has attacked you in the current combat.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "morale",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Halfling Slinger": {
+    "name": "Halfling Slinger: +1 racial bonus on attack rolls made using a sling.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Hard-Headed": {
+    "name": "Hard-Headed: +1 on attack rolls and combat maneuver checks made using a helmet (improvised weapon).",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Horde Charge": {
+    "name": "Horde Charge: +2 on attack rolls when charging during the same round as an ally with this feat. +2 on damage rolls when charging during the same round as an ally with this feat (first attack only).",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Improved Charging Hurler": {
+    "name": "Improved Charging Hurler: +2 on damage rolls when using Charging Hurler against a target within 30 feet.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Legacy of Ozem": {
+    "name": "Legacy of Ozem: +1 sacred bonus on weapon damage rolls when using good-aligned weapons (including those affected by bless weapon).",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "sacred",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Liberator": {
+    "name": "Liberator: +1 bonus on attack rolls when your actions would directly lead to freeing prisoners or slaves. +1 bonus on weapon damage rolls when your actions would directly lead to freeing prisoners or slaves.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "1",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Mantis Wisdom": {
+    "name": "Mantis Wisdom: +2 bonus on unarmed attack rolls when using a Stunning Fist attempt while in Mantis Style.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Monkey Shine": {
+    "name": "Monkey Shine: +4 bonus on melee attack rolls against the opponent whose space you entered.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "4",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Moonlight Stalker": {
+    "name": "Moonlight Stalker: +2 bonus on attack rolls against an opponent you have concealment from. +2 bonus on damage rolls against an opponent you have concealment from.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Multiweapon Specialist": {
+    "name": "Multiweapon Specialist: +2 bonus on damage rolls when wielding a one-handed or light weapon in each arm with all weapons from the same fighter weapon group.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Net and Trident": {
+    "name": "Net and Trident: +2 bonus on damage rolls and on crit-confirmation attack rolls when attacking an entangled opponent with your light or one-handed melee weapon.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Nightmare Fist": {
+    "name": "Nightmare Fist: +2 bonus on damage rolls with unarmed strikes (or +4 vs shaken/frightened/panicked foes) while fighting within an area of magical darkness.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Orc Hewer": {
+    "name": "Orc Hewer: +2 circumstance bonus on attack rolls for Cleave/Great Cleave additional attacks against humanoids (orc).",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "circumstance",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Planar Hunter": {
+    "name": "Planar Hunter: +2 bonus on weapon attack rolls against outsiders native to a favored planar terrain (and identified extraplanar creatures from it); also ignore up to 5 points of DR against them.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Shamed": {
+    "name": "Shamed: +1 on attack rolls and skill checks while in a conflict observed by uninvolved others",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Town Tamer": {
+    "name": "Town Tamer: In your chosen settlement: +1 on attack rolls and +2 on combat maneuver checks against undesirable elements (criminals/ruffians).",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Twin Thunders Flurry": {
+    "name": "Twin Thunders Flurry: +2 on damage rolls against creatures of the giant subtype.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  },
+  "Vengeance": {
+    "name": "Vengeance: +1 on attack rolls against your chosen foe and its known minions. +1 on weapon damage rolls against your chosen foe and its known minions.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "1",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ]
+  }
+}

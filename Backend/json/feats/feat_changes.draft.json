@@ -1,0 +1,4741 @@
+{
+  "Advanced Defensive Combat Training": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "cmd",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+4 bonus to your CMD"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Airy Step": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on saving throws against effects with the air or electricity descriptors",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on saving throws against effects with the air or electricity descriptors"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Aldori Dueling Mastery": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "shield",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on Initiative checks as long as you start combat with an Aldori dueling s",
+        "_target": "init"
+      },
+      {
+        "text": "+2 shield bonus to your AC-if you wield the sword in two hands",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Initiative checks as long as you start combat with an Aldori dueling s",
+      "+2 shield bonus to your AC-if you wield the sword in two hands",
+      "+1 shield bonus to AC"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Andoren Falconry": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "will",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 dodge bonus to AC",
+      "+1 morale bonus on all attack rolls",
+      "+2 morale bonus on all Will saves"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Angelic Blood": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on saving throws against effects with the evil descriptor and on Constitu",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on saving throws against effects with the evil descriptor and on Constitu"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Arcane Insight": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 insight bonus to your Armor Class for 1 round"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Archon Style": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 dodge bonus to AC against that opponent's next melee attack (as long as that attack c",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 dodge bonus to AC against that opponent's next melee attack (as long as that attack c"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Aspect of the Beast": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "init",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on initiative checks and a +2 bonus on Survival skill checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Back to Back": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 circumstance bonus to AC against attacks from opponents flanking you",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 circumstance bonus to AC against attacks from opponents flanking you"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Bat Shape": {
+    "changes": [
+      {
+        "formula": "10",
+        "target": "skill.dis",
+        "type": "racial",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+10 racial bonus on Disguise checks to appear as a bat"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Bear Hug": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on damage rolls against foes you are grappling",
+        "_target": "wdamage"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on damage rolls against foes you are grappling"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Bewildering Koan": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on all damage rolls you make against that creature for 1 round",
+        "_target": "wdamage"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on all damage rolls you make against that creature for 1 round"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Blood Drinker": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "allSavingThrows",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on Constitution-based skill checks and saving throws does not stack"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Blood Feaster": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on damage rolls and a +1 bonus on Strength-based skill checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Bloodstone Manhunter": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on weapon attack and damage rolls against humans",
+        "_target": "wdamage"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on weapon attack and damage rolls against humans"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Boar Ferocity": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.int",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Intimidate checks to demoralize opponents"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Body Control": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on Fortitude saving throws against poison",
+        "_target": "fort"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on Fortitude saving throws against poison"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Broken Wing Gambit": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on attack and damage rolls against you until the end of your next turn or",
+        "_target": "wdamage"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on attack and damage rolls against you until the end of your next turn or"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Burn! Burn! Burn!": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 competence bonus on Ref lex saving throws made to avoid catching on fire or to put yoursel",
+        "_target": "ref"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 competence bonus on Ref lex saving throws made to avoid catching on fire or to put yoursel"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Calm Disposition": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on saving throws against effects that affect your composure",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on saving throws against effects that affect your composure"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Careful Speaker": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on all Will saves against attempts to scry upon you or read your mind",
+        "_target": "will"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on all Will saves against attempts to scry upon you or read your mind"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Carrion Feeder": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 racial bonus on saving throws against diseases and ingested poisons (but not other poi",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 racial bonus on saving throws against diseases and ingested poisons (but not other poi"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Champion": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on attack rolls and a +1 dodge bonus to AC against that foe as long as no",
+        "_target": "attack"
+      }
+    ],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on attack rolls and a +1 dodge bonus to AC against that foe as long as no"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Charging Hurler": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on the attack roll and taking a -2 penalty to your AC until the start of",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on the attack roll and taking a -2 penalty to your AC until the start of"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Circling Offense": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 dodge bonus to your Armor Class against attacks of opportunity provoked by moving thr",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 dodge bonus to your Armor Class against attacks of opportunity provoked by moving thr"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Cold Celerity": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "init",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on initiative checks and a +1 bonus on attack rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Combat Expertise": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 dodge bonus to your Armor Class"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Coordinated Defense": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "cmd",
+        "type": "competence",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 competence bonus to your Combat Maneuver Defense"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Coordinated Maneuvers": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "cmb",
+        "type": "competence",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 competence bonus on all combat maneuver checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Cornugon Shield": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "shield",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 shield bonus to your AC"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Crane Style": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 dodge bonus to your Armor Class"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Crane Wing": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 dodge bonus to AC against that attack",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 dodge bonus to AC against that attack"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Crisis Of Conscience": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on opposed skill checks and on Will saving throws to resist such effects",
+        "_target": "will"
+      }
+    ],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on opposed skill checks and on Will saving throws to resist such effects"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Critical Focus": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 circumstance bonus on attack rolls made to confirm critical hits",
+        "_target": "attack"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 circumstance bonus on attack rolls made to confirm critical hits"
+    ],
+    "_compendium_automated": true,
+    "_compendium_changes": 1,
+    "_compendium_contextnotes": 0
+  },
+  "Dauntless Destiny": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on saving throws against effects with the emotion descriptor",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on saving throws against effects with the emotion descriptor"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Deadly Aim": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on all ranged damage rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Death from Above": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+5 bonus on attack rolls in place of the bonuses from charging and being on higher"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Deathless Initiate": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on melee attacks and damage rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Defending Eidolon": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 dodge bonus to your Armor Class",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 dodge bonus to your Armor Class"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Defensive Weapon Training": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 dodge bonus on AC when an opponent attacks you using a weapon from that group",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 dodge bonus on AC when an opponent attacks you using a weapon from that group"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Demon Grafter": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.hea",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Item Creation",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Heal checks regarding evil outsiders or creatures that already have a"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Demon Hunter": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 morale bonus on all attack rolls and a +2 morale bonus on caster level checks to penet"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Demonic Nemesis": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on damage rolls and rolls to confirm critical hits against these creature",
+        "_target": "wdamage"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on damage rolls and rolls to confirm critical hits against these creature"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Deny The Reaper": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.hea",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Heal checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Desperate Battler": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 morale bonus on melee attack and damage rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Dimensional Maneuvers": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "cmb",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+4 bonus on combat maneuver checks to bull rush"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Discerning Eye": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 racial bonus on saving throws against illusion spells and effects and a +2 bonus on Li",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 racial bonus on saving throws against illusion spells and effects and a +2 bonus on Li"
+    ],
+    "_compendium_automated": true,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 2
+  },
+  "Disorienting Maneuver": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 circumstance bonus on attack rolls against that opponent until the start of your next turn",
+        "_target": "attack"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 circumstance bonus on attack rolls against that opponent until the start of your next turn"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Divination Guide": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "allSavingThrows",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 sacred bonus on all saving throws for 10 minutes per your caster level in the class yo"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Divine Defiance": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on saving throws against divine spells and the spell-like abilities grant",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on saving throws against divine spells and the spell-like abilities grant"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Djinni Style": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 dodge bonus to Armor Class against attacks of opportunity",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 dodge bonus to Armor Class against attacks of opportunity"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Dodge": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 dodge bonus to your AC"
+    ],
+    "_compendium_automated": true,
+    "_compendium_changes": 1,
+    "_compendium_contextnotes": 0
+  },
+  "Dog Killer, Horse Hunter": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 morale bonus on all attack and damage rolls made against dogs and horses (including do",
+        "_target": "wdamage"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 morale bonus on all attack and damage rolls made against dogs and horses (including do"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Dog-Sniff-Hate": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 morale bonus on attack rolls and a +2 morale bonus on weapon damage rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Dragon Style": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on saving throws against sleep effects",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on saving throws against sleep effects"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Dragonheart": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on all saving throws against auras",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on all saving throws against auras"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Dramatic Display": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "cmb",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on all attack rolls and combat maneuver checks until the end of your next"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Drunken Brawler": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "will",
+        "type": "alchemical",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 alchemical bonus on Fortitude and Will saving throws"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Eagle Knight Candidate": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Achievement",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on attack rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Echoes of Stone": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "skill.per",
+        "type": "racial",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+4 racial bonus on Perception checks underground"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Eldritch Researcher": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.spl",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Spellcraft checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Elven Battle Training": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to your CMD against disarm and sunder maneuvers directed at one of these",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to your CMD against disarm and sunder maneuvers directed at one of these"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Elven Spirit": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 racial bonus on Spellcraft checks made to identify the properties of magic items",
+        "_target": "skill.spl"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 racial bonus on Spellcraft checks made to identify the properties of magic items"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Endurance": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 bonus on the following checks and saves: Swim checks made to resist nonlethal d",
+        "_target": "skill.swm"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 bonus on the following checks and saves: Swim checks made to resist nonlethal d"
+    ],
+    "_compendium_automated": true,
+    "_compendium_changes": 1,
+    "_compendium_contextnotes": 0
+  },
+  "Expanded Resistance": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 racial bonus on saving throws against spells or effects from the selected school",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 racial bonus on saving throws against spells or effects from the selected school"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Exploit Lore": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on attack and damage rolls against that creature for 1 minute",
+        "_target": "wdamage"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on attack and damage rolls against that creature for 1 minute"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Eye of the Arclord": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+8 bonus on Perception checks to notice invisible creatures while the eye is open",
+        "_target": "skill.per"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+8 bonus on Perception checks to notice invisible creatures while the eye is open"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Fearless Curiosity": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on saving throws against effects with the emotion descriptor",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on saving throws against effects with the emotion descriptor"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Feline Grace": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to your CMD against bull rush",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to your CMD against bull rush"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Ferocious Loyalty": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "+1 morale bonus on attack rolls against any foe that currently threatens an ally who also",
+        "_target": "attack"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 morale bonus on attack rolls against any foe that currently threatens an ally who also",
+      "+2 morale bonus on attack rolls for 1 minute or until the foe responsible is rendered hel"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Ferocious Resolve": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.int",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Intimidate checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Fey Foundling": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on all saving throws against death effects",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on all saving throws against death effects"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Fiendish Facade": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+5 racial bonus on Disguise checks when attempting to impersonate a particular race",
+        "_target": "skill.dis"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+5 racial bonus on Disguise checks when attempting to impersonate a particular race"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Fire Hand": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on attack rolls with melee weapons that deal fire damage"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Fire Tamer": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 circumstance bonus on Diplomacy and Intimidate checks when dealing with other goblins",
+        "_target": "skill.int"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 circumstance bonus on Diplomacy and Intimidate checks when dealing with other goblins"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Flagbearer": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 morale bonus on attack rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Focused Discipline": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on all saving throws against fear effects",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on all saving throws against fear effects",
+      "+2 morale bonus on attack rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Foeslayer": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 dodge bonus to AC against their attacks",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 dodge bonus to AC against their attacks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Forgotten Past": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.per",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Perception checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Free Spirit": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 morale bonus on saving throws made against mind-affecting effects and on all Escape Ar",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 morale bonus on saving throws made against mind-affecting effects and on all Escape Ar"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Fury of the Tainted": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 competence bonus on saving throws made against spells and effects with the good descriptor",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 competence bonus on saving throws made against spells and effects with the good descriptor"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Giant Killer": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "circumstance",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 circumstance bonus on attack rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Gloom Strike": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on attack rolls against enemies that are also within dim light or darknes",
+        "_target": "attack"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on attack rolls against enemies that are also within dim light or darknes"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Glorious Heat": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 morale bonus on attack rolls until the end of its next turn"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Gnome Weapon Focus": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on attack rolls with gnome weapons (weapons with \"gnome\" in the title)"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Goblin Cleaver": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "circumstance",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 circumstance bonus on attack rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Great Fortitude": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "fort",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on all Fortitude saving throws"
+    ],
+    "_compendium_automated": true,
+    "_compendium_changes": 1,
+    "_compendium_contextnotes": 0
+  },
+  "Greater Shield Specialization": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to your Armor Class against critical hit confirmation rolls (this bonus s",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to your Armor Class against critical hit confirmation rolls (this bonus s"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Greater Weapon Focus": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on attack rolls you make using the selected weapon"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Greater Weapon Specialization": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on all damage rolls you make using the selected weapon"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Grudge Fighter": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 morale bonus on attack and damage rolls made against any creature that attacked you in",
+        "_target": "wdamage"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 morale bonus on attack and damage rolls made against any creature that attacked you in"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Guardian of the Wild": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "ac",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 dodge bonus to Armor Class"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Halfling Slinger": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "racial",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 racial bonus on attack rolls made using a sling"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Hard-Headed": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "cmb",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on attack rolls and combat maneuver checks made using a helmet"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Harrowed": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "init",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on all Will saves made to resist enchantment effects",
+        "_target": "will"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on all Will saves made to resist enchantment effects",
+      "+2 bonus on an Initiative check"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Hobgoblin Discipline": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "allSavingThrows",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 morale bonus on saving throws"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Horde Charge": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on attack and damage rolls in addition to the normal bonus for charging"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Improved Back to Back": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to AC against all flankers until the start of your next turn",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to AC against all flankers until the start of your next turn"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Improved Bull Rush": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to your Combat Maneuver Defense whenever an opponent tries to bull rush y",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to your Combat Maneuver Defense whenever an opponent tries to bull rush y"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Improved Charging Hurler": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on damage rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Improved Dirty Trick": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to your Combat Maneuver Defense when an opponent tries a dirty trick on y",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to your Combat Maneuver Defense when an opponent tries a dirty trick on y"
+    ],
+    "_compendium_automated": true,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 2
+  },
+  "Improved Disarm": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to your Combat Maneuver Defense whenever an opponent tries to disarm you",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to your Combat Maneuver Defense whenever an opponent tries to disarm you"
+    ],
+    "_compendium_automated": true,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 2
+  },
+  "Improved Drag": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to your Combat Maneuver Defense when an opponent tries to drag you",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to your Combat Maneuver Defense when an opponent tries to drag you"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Improved Grapple": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to your Combat Maneuver Defense whenever an opponent tries to grapple you",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to your Combat Maneuver Defense whenever an opponent tries to grapple you"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Improved Initiative": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "init",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+4 bonus on initiative checks"
+    ],
+    "_compendium_automated": true,
+    "_compendium_changes": 1,
+    "_compendium_contextnotes": 0
+  },
+  "Improved Overrun": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to your Combat Maneuver Defense whenever an opponent tries to overrun you",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to your Combat Maneuver Defense whenever an opponent tries to overrun you"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Improved Reposition": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to your Combat Maneuver Defense when an opponent tries to reposition you",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to your Combat Maneuver Defense when an opponent tries to reposition you"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Improved Steal": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to your Combat Maneuver Defense when an opponent tries to steal an item f",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to your Combat Maneuver Defense when an opponent tries to steal an item f"
+    ],
+    "_compendium_automated": true,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 2
+  },
+  "Improved Stonecunning": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "skill.per",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+4 bonus on Perception checks to notice unusual stonework"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Improved Sunder": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to your Combat Maneuver Defense whenever an opponent tries to sunder your",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to your Combat Maneuver Defense whenever an opponent tries to sunder your"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Improved Trip": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to your Combat Maneuver Defense whenever an opponent tries to trip you",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to your Combat Maneuver Defense whenever an opponent tries to trip you"
+    ],
+    "_compendium_automated": true,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 2
+  },
+  "Innocent Blood": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.int",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Intimidate checks",
+      "+1 bonus on attack rolls and caster level checks for 1 minute (this bonus does not"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Intimidating Confidence": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on saving throws against effects with the emotion descriptor",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on saving throws against effects with the emotion descriptor"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Iron Will": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "will",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on all Will saving throws"
+    ],
+    "_compendium_automated": true,
+    "_compendium_changes": 1,
+    "_compendium_contextnotes": 0
+  },
+  "Ironguts": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 racial bonus on saving throws against any effect causing the nauseated or sickened con",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 racial bonus on saving throws against any effect causing the nauseated or sickened con"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Jackal Heritage": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.per",
+        "type": "racial",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "+2 racial bonus on saving throws against mind-affecting effects",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 racial bonus on saving throws against mind-affecting effects",
+      "+2 racial bonus on Perception checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Janni Style": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on attack rolls against you",
+        "_target": "attack"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on attack rolls against you"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Kirin Style": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on saving throws against that creature's attacks",
+        "_target": "allSavingThrows"
+      },
+      {
+        "text": "+2 dodge bonus to AC against that creature's attacks of opportunity",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on saving throws against that creature's attacks",
+      "+2 dodge bonus to AC against that creature's attacks of opportunity"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Kobold Style": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 bonus on combat maneuver checks against enemies denied their Dexterity bonus to",
+        "_target": "cmb"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 bonus on combat maneuver checks against enemies denied their Dexterity bonus to"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Large Target": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on damage rolls for every size category your opponent is larger than you"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Lead from the Back": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on all weapon damage rolls for 1 round"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Leaping Shot Deed": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on Acrobatics checks made to jump",
+        "_target": "skill.acr"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on Acrobatics checks made to jump"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Ledge Walker": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 bonus on Climb checks to catch yourself or another creature while falling",
+        "_target": "skill.clm"
+      },
+      {
+        "text": "+4 bonus on saving throws against effects that would cause you to fall prone (such",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 bonus on Climb checks to catch yourself or another creature while falling",
+      "+4 bonus on saving throws against effects that would cause you to fall prone (such"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Legacy of Ozem": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 sacred bonus on damage rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Liberator": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on attack rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Lightning Reflexes": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "ref",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on all Ref lex saving throws"
+    ],
+    "_compendium_automated": true,
+    "_compendium_changes": 1,
+    "_compendium_contextnotes": 0
+  },
+  "Low Profile": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 dodge bonus to AC against ranged attacks",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 dodge bonus to AC against ranged attacks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Mantis Wisdom": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on unarmed attack rolls with which you are using Stunning Fist attempts"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Mobility": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 dodge bonus to Armor Class against attacks of opportunity caused when you move out of",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 dodge bonus to Armor Class against attacks of opportunity caused when you move out of"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Monkey Shine": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 dodge bonus to AC and a +4 bonus on melee attack rolls against that opponent",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 dodge bonus to AC and a +4 bonus on melee attack rolls against that opponent"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Monstrous Mask": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+5 racial bonus on Intimidate checks made against all creatures of the humanoid type",
+        "_target": "skill.int"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+5 racial bonus on Intimidate checks made against all creatures of the humanoid type"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Moonlight Stalker": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on attack and damage rolls against that opponent",
+        "_target": "wdamage"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on attack and damage rolls against that opponent"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Mother's Gift": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on attack and damage rolls with your claws"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Motivating Display": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 morale bonus on attack rolls and skill checks for the duration that it would normally",
+        "_target": "attack"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 morale bonus on attack rolls and skill checks for the duration that it would normally"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Multiweapon Defense": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "shield",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 shield bonus to your AC for that round"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Multiweapon Specialist": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on damage rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Mythic Companion": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on all saves against mythic spells and effects",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on all saves against mythic spells and effects"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Nation Builder": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.per",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Perception checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Nature Soul": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.sur",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on all Knowledge (nature) checks and Survival checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Necromantic Affinity": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on saving throws made to resist spells and effects that utilize negative",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on saving throws made to resist spells and effects that utilize negative"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Net and Trident": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on damage rolls and on attack rolls to confirm a critical hit",
+        "_target": "wdamage"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on damage rolls and on attack rolls to confirm a critical hit"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Net Trickery": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "cmb",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on drag and reposition combat maneuver checks you make using your net"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Nightmare Fist": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "skill.int",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on damage rolls with unarmed strikes",
+      "+2 morale bonus on Acrobatics and Intimidate checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "No Name": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.blf",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "10",
+        "target": "skill.dis",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Bluff checks",
+      "+10 bonus on Disguise checks for 10 minutes per your gunslinger level (minimum 10 m"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Oracular Intuition": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.sen",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "skill.spl",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Sense Motive checks and Spellcraft checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Orc Hewer": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "circumstance",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 circumstance bonus on attack rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Orc Weapon Expertise": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on damage rolls against creatures at least one size smaller than you",
+        "_target": "wdamage"
+      },
+      {
+        "text": "+1 shield bonus to your AC (or +2 if wielding a two-handed weapon)",
+        "_target": "ac"
+      },
+      {
+        "text": "+2 competence bonus on attack rolls made to confirm critical hits",
+        "_target": "attack"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on damage rolls against creatures at least one size smaller than you",
+      "+1 shield bonus to your AC (or +2 if wielding a two-handed weapon)",
+      "+2 competence bonus on attack rolls made to confirm critical hits"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Ostentatious Display": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on Bluff checks while wearing a gem-studded tiara (which fills the headba",
+        "_target": "skill.blf"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on Bluff checks while wearing a gem-studded tiara (which fills the headba"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Pass For Human": {
+    "changes": [
+      {
+        "formula": "10",
+        "target": "skill.dis",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+10 bonus on Disguise checks to disguise yourself as a human"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Piranha Strike": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on all melee damage rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Planar Hunter": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on weapon attack rolls against outsiders native to that plane",
+        "_target": "attack"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on weapon attack rolls against outsiders native to that plane"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Planar Traveler": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on Survival checks when outside your home plane",
+        "_target": "skill.sur"
+      }
+    ],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on Survival checks when outside your home plane"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Point-Blank Shot": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on attack and damage rolls with ranged weapons at ranges of up to 30 feet"
+    ],
+    "_compendium_automated": true,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 1
+  },
+  "Porcupine Defense": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to CMD against such maneuvers",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to CMD against such maneuvers"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Power Attack": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on all melee damage rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Practiced Leadership": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 morale bonus on Will saves against enchantment spells and effects",
+        "_target": "will"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 morale bonus on Will saves against enchantment spells and effects"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Prophet": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "profane",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 sacred bonus to AC for 1 round per spell level",
+      "+1 profane bonus to AC for 1 round per spell level"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Pure Faith": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 sacred bonus to saving throws against poison",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 sacred bonus to saving throws against poison"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Reach Defense": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 dodge bonus to Armor Class against attacks of opportunity from opponents that are not",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 dodge bonus to Armor Class against attacks of opportunity from opponents that are not"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Realistic Likeness": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+10 circumstance bonus on Disguise checks made to fool others with your impersonation",
+        "_target": "skill.dis"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+10 circumstance bonus on Disguise checks made to fool others with your impersonation"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Redeemed Kobold": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 circumstance bonus on Diplomacy checks when interacting with good creatures",
+        "_target": "skill.dip"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 circumstance bonus on Diplomacy checks when interacting with good creatures"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Revered Guidance": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 racial bonus on Diplomacy checks made to influence creatures of the selected subtype",
+        "_target": "skill.dip"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 racial bonus on Diplomacy checks made to influence creatures of the selected subtype"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Reward of Grace": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 sacred bonus on all attack rolls for 1 round"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Risky Striker": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on melee damage rolls against creatures two or more size categories large",
+        "_target": "wdamage"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on melee damage rolls against creatures two or more size categories large"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Saddle Shrieker": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on all attack rolls and damage rolls made with natural weapons",
+        "_target": "attack"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on all attack rolls and damage rolls made with natural weapons"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Savage Display": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on your performance combat check and gain a +1d6 bonus on damage rolls un"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Saving Shield": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "ac",
+        "type": "shield",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 shield bonus to AC"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Scavenger's Eye": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.apr",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Appraise checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Scorching Weapons": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on saving throws against fire attacks and spells with the fire descriptor",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on saving throws against fire attacks and spells with the fire descriptor"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Secret Signs": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 bonus on Bluff checks made to pass secret messages",
+        "_target": "skill.blf"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 bonus on Bluff checks made to pass secret messages"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Seeds Of Doubt": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "will",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 luck bonus on Will saving throws and can't help but doubt and resist divine magic"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Seen and Unseen": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on all saving throws against scrying or divination effects",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on all saving throws against scrying or divination effects"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Self-Sufficient": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.sur",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on all Heal checks and Survival checks"
+    ],
+    "_compendium_automated": true,
+    "_compendium_changes": 2,
+    "_compendium_contextnotes": 0
+  },
+  "Sense Link": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 competence bonus on Perception checks for the duration of your bond senses ability",
+        "_target": "skill.per"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 competence bonus on Perception checks for the duration of your bond senses ability"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Shake It Off": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "allSavingThrows",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on saving throws per such ally (maximum +4)"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Shamed": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on attack rolls and skill checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Shared Insight": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.per",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Perception checks for a number of rounds equal to your Wisdom modifier"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Shield of Swings": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "ac",
+        "type": "shield",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "4",
+        "target": "cmd",
+        "type": "shield",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+4 shield bonus to AC and CMD until the beginning of your next turn"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Shield Specialization": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to your Armor Class against critical hit confirmation rolls",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to your Armor Class against critical hit confirmation rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Shrewd Tactician": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "+3 bonus on Sense Motive checks made to resist a foe's Bluff checks to feint in co",
+        "_target": "skill.sen"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on attack rolls for flanking you",
+      "+3 bonus on Sense Motive checks made to resist a foe's Bluff checks to feint in co"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Smell Fear": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "skill.per",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+4 bonus on Perception checks to detect creatures with the shaken"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Snake Style": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.sen",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Sense Motive checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Snapping Turtle Style": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "shield",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 shield bonus to AC"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Sociable": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.dip",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Diplomacy checks for a number of rounds equal to your Charisma modifie"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Solo Maneuvers": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on combat maneuvers against that creature and a +1 bonus to CMD against c",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on combat maneuvers against that creature and a +1 bonus to CMD against c"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Spider Step": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 bonus on saving throws against the web special attacks of spiders and the effec",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 bonus on saving throws against the web special attacks of spiders and the effec"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Spirit of the Wild": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 bonus on Perception checks made to act in the surprise round of combat",
+        "_target": "skill.per"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 bonus on Perception checks made to act in the surprise round of combat"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Starlight Summons": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "skill.ste",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+5 bonus to Perception and Stealth checks in dim light or darkness"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Steel Soul": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 racial bonus on saving throws against spells and spell-like abilities",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 racial bonus on saving throws against spells and spell-like abilities"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Stoic": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on all saving throws against fear effects",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on all saving throws against fear effects"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Stone Read": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.per",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Perception checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Stone-Faced": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "skill.blf",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+4 bonus on Bluff checks to lie or conceal your feelings or true motives"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Storm-Lashed": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on all saving throws against electrical effects",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on all saving throws against electrical effects"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Stronghold": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 morale bonus on attack rolls",
+      "+1 dodge bonus to AC"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Sure and Fleet": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.clm",
+        "type": "racial",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 racial bonus on Acrobatics and Climb checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Sure-Footed": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on Acrobatics checks to keep your balance and Reflex saves to avoid falli",
+        "_target": "skill.acr"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on Acrobatics checks to keep your balance and Reflex saves to avoid falli"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Swarm Scatter": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "circumstance",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 circumstance bonus to AC"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Swift Aid": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on his next attack roll or a +1 bonus to his AC",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on his next attack roll or a +1 bonus to his AC"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Taldan Duelist": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.acr",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Acrobatics checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Taskmaster": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 morale bonus on attack rolls"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Throw Anything": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "circumstance",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 circumstance bonus on attack rolls made with thrown splash weapons"
+    ],
+    "_compendium_automated": true,
+    "_compendium_changes": 1,
+    "_compendium_contextnotes": 0
+  },
+  "Tiger Style": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to your CMD against bull rush",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to your CMD against bull rush"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Topple Foe": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on your CMB check to trip the foe as long as an ally with Topple Foe is f",
+        "_target": "cmb"
+      },
+      {
+        "text": "+2 bonus on your CMD check for each additional ally that's flanking the target",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on your CMB check to trip the foe as long as an ally with Topple Foe is f",
+      "+2 bonus on your CMD check for each additional ally that's flanking the target"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Totem Spirit": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "will",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "skill.int",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "init",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "fort",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "ref",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "skill.acr",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on Will saves and a +2 bonus on Perception checks",
+      "+2 bonus on Intimidate checks",
+      "+2 bonus on Initiative checks and a +2 bonus on Ride checks",
+      "+1 bonus on Fortitude saves and a +2 bonus on Perception checks",
+      "+1 bonus on Ref lex saves and a +2 bonus on Acrobatics checks",
+      "+2 bonus on Acrobatics checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Touched By Sacred Fire": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on all saving throws to resist the effects of fire or heat",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on all saving throws to resist the effects of fire or heat"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Town Tamer": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on attack rolls and a +1 dodge bonus to AC against undesirable elements l",
+        "_target": "attack"
+      }
+    ],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on attack rolls and a +1 dodge bonus to AC against undesirable elements l"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Trample": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 bonus on attack rolls against prone targets",
+        "_target": "attack"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 bonus on attack rolls against prone targets"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Trapper's Setup": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "mattack",
+        "type": "circumstance",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 circumstance bonus on melee attack rolls or a +2 circumstance bonus to its saving throw DC"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Tree Hanger": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to your CMD against all trip attacks",
+        "_target": "cmd"
+      },
+      {
+        "text": "+2 bonus to your CMD against bull rush",
+        "_target": "cmd"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to your CMD against all trip attacks",
+      "+2 bonus to your CMD against bull rush"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Tribal Scars": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "fort",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "cmb",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "ref",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "skill.sur",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "skill.acr",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "will",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on Fortitude saves and a +2 bonus on Intimidate checks",
+      "+2 bonus on combat maneuver checks to make bull rush or overrun maneuvers and a +2",
+      "+1 bonus on Reflex saves and a +2 bonus on Climb checks",
+      "+2 bonus on Perception and Survival checks",
+      "+2 bonus on Acrobatics checks",
+      "+1 bonus on Will saves and a +2 bonus on Handle Animal checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "True Love": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.sen",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on Sense Motive checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Twin Thunders Flurry": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on damage rolls against creatures of the giant subtype",
+        "_target": "wdamage"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on damage rolls against creatures of the giant subtype"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Two-Weapon Defense": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "shield",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 shield bonus to your AC"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Improved Two-Weapon Defense": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "ac",
+        "type": "shield",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 shield bonus to your AC"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Greater Two-Weapon Defense": {
+    "changes": [
+      {
+        "formula": "3",
+        "target": "ac",
+        "type": "shield",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+3 shield bonus to your AC"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Uncanny Alertness": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "skill.sen",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on saving throws against sleep and charm effects",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on Perception and Sense Motive checks",
+      "+2 bonus on saving throws against sleep and charm effects"
+    ],
+    "_compendium_automated": true,
+    "_compendium_changes": 2,
+    "_compendium_contextnotes": 1
+  },
+  "Underfoot": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "skill.acr",
+        "type": "dodge",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "+2 dodge bonus to Armor Class against attacks of opportunity caused when you move out of",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+4 dodge bonus on Acrobatics checks to move past opponents without provoking attacks of",
+      "+2 dodge bonus to Armor Class against attacks of opportunity caused when you move out of"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Unforgotten": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "will",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on Will saves"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Unsanctioned Detection": {
+    "changes": [
+      {
+        "formula": "10",
+        "target": "skill.sen",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+10 sacred bonus on Perception and Sense Motive checks for one round"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Vengeance": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "allSavingThrows",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on saving throws"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Vengeful Banisher": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on saving throws against spells or effects originating from demon worship",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "Story",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on saving throws against spells or effects originating from demon worship"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Vigilant Eidolon": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "skill.per",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "General",
+    "_bucket": 1,
+    "_snippets": [
+      "+4 bonus on Perception checks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Warrior Priest": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on initiative checks and a +2 bonus on concentration checks made to cast",
+        "_target": "init"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+1 bonus on initiative checks and a +2 bonus on concentration checks made to cast"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Weapon Focus": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+1 bonus on all attack rolls you make using the selected weapon"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Weapon Specialization": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on all damage rolls you make using the selected weapon"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Weather Eye": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 bonus on Survival checks made to predict the weather",
+        "_target": "skill.sur"
+      },
+      {
+        "text": "+1 bonus on saving throws to avoid the effects of extreme weather",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "General",
+    "_bucket": 2,
+    "_snippets": [
+      "+4 bonus on Survival checks made to predict the weather",
+      "+1 bonus on saving throws to avoid the effects of extreme weather"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Wings Of The Androsphinx": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to AC against charge attacks",
+        "_target": "ac"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus to AC against charge attacks"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Witchbreaker": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on saving throws against the hexes",
+        "_target": "allSavingThrows"
+      }
+    ],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 2,
+    "_snippets": [
+      "+2 bonus on saving throws against the hexes"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  },
+  "Wolf Trip": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "cmb",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_type": "Combat",
+    "_bucket": 1,
+    "_snippets": [
+      "+2 bonus on all combat maneuver checks to trip as part of an attack of opportunity"
+    ],
+    "_compendium_automated": false,
+    "_compendium_changes": 0,
+    "_compendium_contextnotes": 0
+  }
+}

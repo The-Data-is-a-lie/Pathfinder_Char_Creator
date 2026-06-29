@@ -1,0 +1,1411 @@
+{
+  "Advanced Defensive Combat Training": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "cmd",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Airy Step": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on saving throws against effects with the air or electricity descriptors and effects that deal electricity damage. Ignore the first 30 ft of any fall when determining falling damage.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Aldori Dueling Mastery": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 shield bonus to AC while wielding a single Aldori dueling sword one-handed (+1 if two-handed); +2 on Initiative if you start combat with an Aldori dueling sword in hand.",
+        "target": "ac"
+      }
+    ]
+  },
+  "Angelic Blood": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on saving throws against effects with the evil descriptor and on Constitution checks to stabilize when at negative hp.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Arcane Insight": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "When you use the Arcane Shield feat, you also gain a +1 insight bonus to AC for 1 round.",
+        "target": "ac"
+      }
+    ]
+  },
+  "Boar Ferocity": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on Intimidate checks to demoralize opponents. Also adds piercing to your unarmed strike damage types and (with Boar Style) lets you demoralize as a free action when you tear flesh.",
+        "target": "skill.int"
+      }
+    ]
+  },
+  "Body Control": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "For 24 hours after meditating, +1 on Fortitude saves against poison, disease, starvation, and effects that would fatigue/exhaust you.",
+        "target": "fort"
+      }
+    ]
+  },
+  "Burn! Burn! Burn!": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 competence bonus on Reflex saves made to avoid catching on fire or to put yourself out when on fire; also +1d4 fire damage with alchemical/nonmagical fire attacks (not magical or splash).",
+        "target": "ref"
+      }
+    ]
+  },
+  "Calm Disposition": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on saving throws against effects that affect your composure (all mind-affecting spells, plus fear, nausea, and similar out-of-control effects); not physical effects like fatigue.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Careful Speaker": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on Will saves against attempts to scry on you or read your mind; +2 on Bluff to fool someone or pass secret messages (not to feint in combat).",
+        "target": "will"
+      }
+    ]
+  },
+  "Carrion Feeder": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 racial bonus on saving throws against diseases and ingested poisons (not other poisons); +2 on Survival to find food for yourself only.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Circling Offense": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 dodge bonus to AC against attacks of opportunity provoked by moving through the reach of a creature larger than you, when at least one ally with Circling Offense is also within that creature's reach.",
+        "target": "ac"
+      }
+    ]
+  },
+  "Cold Celerity": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "In severe cold (below 0F), or for 1 round after taking cold damage: +2 on initiative checks.",
+        "target": "init"
+      }
+    ]
+  },
+  "Coordinated Defense": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "While adjacent to an ally who also has this feat: +2 competence bonus to CMD (+4 if the creature attempting the maneuver is larger than both you and your ally).",
+        "target": "cmd"
+      }
+    ]
+  },
+  "Coordinated Maneuvers": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "While adjacent to an ally who also has this feat: +2 competence bonus on all combat maneuver checks (+4 to break free from a grapple).",
+        "target": "cmb"
+      }
+    ]
+  },
+  "Cornugon Shield": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "While wielding a spiked chain: +1 shield bonus to AC (+2 while fighting defensively or using total defense).",
+        "target": "ac"
+      }
+    ]
+  },
+  "Crane Style": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "While fighting defensively or using total defense: the fighting-defensively attack penalty is only -2, and you gain an additional +1 dodge bonus to AC.",
+        "target": "ac"
+      }
+    ]
+  },
+  "Crane Wing": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "Once per round, while fighting defensively with at least one hand free, against one melee attack you designate before the roll: +4 dodge bonus to AC (with total defense instead, deflect one melee attack that would hit, treating it as a miss).",
+        "target": "ac"
+      }
+    ]
+  },
+  "Crisis Of Conscience": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "When someone tries to discern your alignment, loyalties, or intentions (incl. detect thoughts, or your Bluff to send a secret message/feint being read): +2 on opposed skill checks and on Will saving throws to resist such effects.",
+        "target": "will"
+      }
+    ]
+  },
+  "Dauntless Destiny": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on saving throws against effects with the emotion descriptor (the once/day reroll of a natural 1 is an uncomputable option).",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Defensive Weapon Training": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 dodge bonus to AC when an opponent attacks you with a weapon from your chosen weapon group (+3 if you also have weapon training in that group).",
+        "target": "ac"
+      }
+    ]
+  },
+  "Demon Grafter": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on Heal checks regarding evil outsiders or creatures that already have a demonic graft.",
+        "target": "skill.hea"
+      }
+    ]
+  },
+  "Demon Hunter": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on Knowledge (planes) checks to identify demons' powers, and +2 morale on caster level checks to overcome the spell resistance of creatures you recognize as demons.",
+        "target": "skill.kpl"
+      }
+    ]
+  },
+  "Deny The Reaper": {
+    "changes": [
+      {
+        "formula": "ifelse(gte(@skills.hea.rank,10),4,2)",
+        "target": "skill.hea",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Dimensional Maneuvers": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "While using Dimensional Dervish, +4 on combat maneuver checks to bull rush, disarm, reposition, or trip.",
+        "target": "cmb"
+      }
+    ]
+  },
+  "Divination Guide": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "After casting augury or divination, +1 sacred on all saving throws for 10 min/caster level.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Divine Defiance": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on saving throws against divine spells and the spell-like abilities granted by divine casting classes.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Djinni Style": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "While in Djinni Style with remaining Elemental Fist attempts, +2 dodge to AC against attacks of opportunity.",
+        "target": "ac"
+      }
+    ]
+  },
+  "Dragon Style": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "While in Dragon Style, +2 on saving throws against sleep, paralysis, and stunning effects.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Dragonheart": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 on all saving throws against auras, breath weapons, SLAs, spells, supernatural abilities, and other special attacks of creatures with the dragon type.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Echoes of Stone": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 racial on Perception checks while underground, and on Survival checks to avoid getting lost in caverns and rocky areas.",
+        "target": "skills"
+      }
+    ]
+  },
+  "Eldritch Researcher": {
+    "changes": [
+      {
+        "formula": "ifelse(gte(@skills.spl.rank,10),4,2)",
+        "target": "skill.spl",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Elven Battle Training": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 to CMD against disarm and sunder maneuvers directed at a wielded elven weapon (longbow, longsword, rapier, etc.).",
+        "target": "cmd"
+      }
+    ]
+  },
+  "Elven Spirit": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 racial on Spellcraft checks made to identify the properties of magic items (also +2 racial on caster level checks to overcome spell resistance).",
+        "target": "skills"
+      }
+    ]
+  },
+  "Expanded Resistance": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 racial on saving throws against spells or effects from one selected school of magic (chosen at feat selection; cannot be illusion).",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Eye of the Arclord": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "While the third eye is open (1/day standard action, 1 minute), +8 on Perception checks to notice invisible creatures.",
+        "target": "skills"
+      }
+    ]
+  },
+  "Fearless Curiosity": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 on saving throws against effects with the emotion descriptor.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Feline Grace": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 to CMD against bull rush, grapple, overrun, reposition, and trip combat maneuvers.",
+        "target": "cmd"
+      }
+    ]
+  },
+  "Ferocious Resolve": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on Intimidate checks while using ferocity (fighting at negative hit points).",
+        "target": "skills"
+      }
+    ]
+  },
+  "Fey Foundling": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on all saving throws against death effects (also: +1 damage taken from cold iron; +2/die from magical healing).",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Fiendish Facade": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+5 racial on Disguise checks when impersonating the one chosen Medium race.",
+        "target": "skills"
+      }
+    ]
+  },
+  "Fire Tamer": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on saves against spells with the fire descriptor.",
+        "target": "allSavingThrows"
+      },
+      {
+        "text": "+2 circumstance on Diplomacy and Intimidate checks when dealing with other goblins.",
+        "target": "skills"
+      }
+    ]
+  },
+  "Focused Discipline": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on all saving throws against fear effects.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Foeslayer": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 dodge bonus to AC against attacks from the chosen group (and +1 to your spell/ability save DCs vs them).",
+        "target": "ac"
+      }
+    ]
+  },
+  "Forgotten Past": {
+    "changes": [
+      {
+        "formula": "ifelse(gte(@skills.per.rank,10),4,2)",
+        "target": "skill.per",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Free Spirit": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 morale on saving throws against mind-affecting effects, and on Escape Artist/grapple checks to escape a grapple or bonds.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Fury of the Tainted": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "While raging, +4 competence on saving throws against spells/effects with the good descriptor.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Greater Shield Specialization": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 to AC against critical hit confirmation rolls while using the selected shield type (stacks with Shield Specialization).",
+        "target": "ac"
+      }
+    ]
+  },
+  "Guardian of the Wild": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 dodge bonus to AC while in a terrain you chose with Attuned to the Wild.",
+        "target": "ac"
+      }
+    ]
+  },
+  "Hard-Headed": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on saves against spells and special abilities that cause you to become staggered or stunned.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Harrowed": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 on all Will saves made to resist enchantment effects.",
+        "target": "will"
+      }
+    ]
+  },
+  "Hobgoblin Discipline": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 morale bonus on saving throws while within 30 feet of at least two other hobgoblins.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Improved Bull Rush": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on combat maneuver checks made to bull rush a foe.",
+        "target": "cmb"
+      },
+      {
+        "text": "+2 to CMD when an opponent tries to bull rush you.",
+        "target": "cmd"
+      }
+    ]
+  },
+  "Improved Drag": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on combat maneuver checks made to drag a foe.",
+        "target": "cmb"
+      },
+      {
+        "text": "+2 to CMD when an opponent tries to drag you.",
+        "target": "cmd"
+      }
+    ]
+  },
+  "Improved Grapple": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on combat maneuver checks made to grapple a foe.",
+        "target": "cmb"
+      },
+      {
+        "text": "+2 to CMD when an opponent tries to grapple you.",
+        "target": "cmd"
+      }
+    ]
+  },
+  "Improved Overrun": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on combat maneuver checks made to overrun a foe.",
+        "target": "cmb"
+      },
+      {
+        "text": "+2 to CMD when an opponent tries to overrun you.",
+        "target": "cmd"
+      }
+    ]
+  },
+  "Improved Reposition": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on combat maneuver checks made to reposition a foe.",
+        "target": "cmb"
+      },
+      {
+        "text": "+2 to CMD when an opponent tries to reposition you.",
+        "target": "cmd"
+      }
+    ]
+  },
+  "Improved Stonecunning": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 on Perception checks to notice unusual stonework (replaces the stonecunning Perception bonus).",
+        "target": "skill.per"
+      }
+    ]
+  },
+  "Improved Sunder": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on combat maneuver checks made to sunder an item.",
+        "target": "cmb"
+      },
+      {
+        "text": "+2 to CMD when an opponent tries to sunder your gear.",
+        "target": "cmd"
+      }
+    ]
+  },
+  "Innocent Blood": {
+    "changes": [
+      {
+        "formula": "ifelse(gte(@skills.int.rank,10),4,2)",
+        "target": "skill.int",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "After slaying an intelligent creature, +1 on attack rolls and caster level checks for 1 minute (does not stack with itself).",
+        "target": "attack"
+      }
+    ]
+  },
+  "Intimidating Confidence": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 on saving throws against effects with the emotion descriptor (stacks with Fearless Curiosity).",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Ironguts": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 racial bonus on saving throws against any effect causing the nauseated or sickened condition and against all ingested poisons (but not other poisons).",
+        "target": "allSavingThrows"
+      },
+      {
+        "text": "+2 on Survival checks to find food for yourself.",
+        "target": "skills"
+      }
+    ]
+  },
+  "Jackal Heritage": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.per",
+        "type": "racial",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "+2 racial bonus on saving throws against mind-affecting effects.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Kirin Style": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "While using this style, after a successful Knowledge check to ID a creature, +2 on saving throws against that creature's attacks.",
+        "target": "allSavingThrows"
+      },
+      {
+        "text": "While using this style, after a successful Knowledge check to ID a creature, +2 dodge bonus to AC against that creature's attacks of opportunity.",
+        "target": "ac"
+      }
+    ]
+  },
+  "Kobold Style": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 on combat maneuver checks against enemies denied their Dexterity bonus to AC.",
+        "target": "cmb"
+      }
+    ]
+  },
+  "Leaping Shot Deed": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on Acrobatics checks made to jump.",
+        "target": "skills"
+      }
+    ]
+  },
+  "Ledge Walker": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 bonus on Climb checks to catch yourself or another creature while falling.",
+        "target": "skills"
+      },
+      {
+        "text": "+4 bonus on saving throws against effects that would cause you to fall prone (e.g. earthquakes); does not apply to CMD vs bull rush/trip.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Liberator": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on skill checks when your actions would directly lead to freeing prisoners or slaves.",
+        "target": "skills"
+      }
+    ]
+  },
+  "Low Profile": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 dodge bonus to AC against ranged attacks.",
+        "target": "ac"
+      }
+    ]
+  },
+  "Mobility": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 dodge bonus to AC against attacks of opportunity provoked by moving out of or within a threatened area; lost when you lose your Dex bonus to AC.",
+        "target": "ac"
+      }
+    ]
+  },
+  "Monkey Shine": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 dodge bonus to AC against the opponent whose space you entered (via Monkey Style after a Stunning Fist hit).",
+        "target": "ac"
+      }
+    ]
+  },
+  "Monstrous Mask": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+5 racial bonus on Intimidate checks made against creatures of the humanoid type.",
+        "target": "skills"
+      }
+    ]
+  },
+  "Mythic Companion": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 bonus on all saves against mythic spells and effects (only if you become a mythic creature).",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Nation Builder": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus (+4 with 10+ ranks) on Perception checks while in unclaimed wilderness or land under your control.",
+        "target": "skills"
+      },
+      {
+        "text": "+2 bonus (+4 with 10+ ranks) on Stealth checks while in unclaimed wilderness or land under your control.",
+        "target": "skills"
+      },
+      {
+        "text": "+2 bonus (+4 with 10+ ranks) on Survival checks while in unclaimed wilderness or land under your control.",
+        "target": "skills"
+      }
+    ]
+  },
+  "Nature Soul": {
+    "changes": [
+      {
+        "formula": "ifelse(gte(@skills.kna.rank,10),4,2)",
+        "target": "skill.kna",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "ifelse(gte(@skills.sur.rank,10),4,2)",
+        "target": "skill.sur",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Necromantic Affinity": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on saving throws to resist spells/effects that use negative energy, cause negative levels, or cause ability damage/drain/penalties.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Net Trickery": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on drag and reposition combat maneuver checks made using your net.",
+        "target": "cmb"
+      }
+    ]
+  },
+  "Nightmare Fist": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 morale bonus on Acrobatics checks while fighting within an area of magical darkness.",
+        "target": "skills"
+      },
+      {
+        "text": "+2 morale bonus on Intimidate checks while fighting within an area of magical darkness.",
+        "target": "skills"
+      }
+    ]
+  },
+  "No Name": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.blf",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Oracular Intuition": {
+    "changes": [
+      {
+        "formula": "ifelse(gte(@skills.sen.rank,10),4,2)",
+        "target": "skill.sen",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "ifelse(gte(@skills.spl.rank,10),4,2)",
+        "target": "skill.spl",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Pass For Human": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+10 bonus on Disguise checks to disguise yourself as a human (no penalty for the cross-race disguise).",
+        "target": "skills"
+      }
+    ]
+  },
+  "Planar Traveler": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on Survival checks when outside your home plane.",
+        "target": "skills"
+      }
+    ]
+  },
+  "Porcupine Defense": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on attacks of opportunity provoked by a larger (1+ size category) creature's combat maneuver against you; if no AoO is allowed against that maneuver, +2 to CMD against it instead.",
+        "target": "cmd"
+      }
+    ]
+  },
+  "Pure Faith": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 sacred bonus on saving throws against poison.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Reach Defense": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 dodge bonus to AC against attacks of opportunity from opponents that are not adjacent to you.",
+        "target": "ac"
+      }
+    ]
+  },
+  "Realistic Likeness": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+10 circumstance bonus on Disguise checks to impersonate a specific individual when using your racial change shape ability.",
+        "target": "skills"
+      }
+    ]
+  },
+  "Redeemed Kobold": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 circumstance bonus on Diplomacy checks when interacting with good creatures.",
+        "target": "skills"
+      }
+    ]
+  },
+  "Revered Guidance": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 racial bonus on Diplomacy checks to influence creatures of your chosen subtype (dwarf, elf, gnome, halfling, human, or orc).",
+        "target": "skills"
+      }
+    ]
+  },
+  "Scavenger's Eye": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.apr",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Scorching Weapons": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus on saving throws against fire attacks and spells with the fire or light descriptor",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Secret Signs": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 bonus on Bluff checks made to pass secret messages (not other Bluff uses)",
+        "target": "skills"
+      }
+    ]
+  },
+  "Seen and Unseen": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.ste",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Sense Link": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 competence bonus on Perception checks for the duration of your bond senses ability (while sharing your eidolon's senses)",
+        "target": "skills"
+      }
+    ]
+  },
+  "Shake It Off": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 on all saving throws per adjacent ally who also has this feat (maximum +4)",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Shield Specialization": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 to AC against critical hit confirmation rolls (selected shield type only)",
+        "target": "ac"
+      }
+    ]
+  },
+  "Shrewd Tactician": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+3 on Sense Motive checks to resist a foe's feint; opponents gain no flanking attack bonus against you",
+        "target": "skills"
+      }
+    ]
+  },
+  "Smell Fear": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 on Perception checks to detect shaken/frightened/panicked creatures using scent",
+        "target": "skills"
+      }
+    ]
+  },
+  "Snake Style": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.sen",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Snapping Turtle Style": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 shield bonus to AC while using Snapping Turtle Style with at least one hand free",
+        "target": "ac"
+      }
+    ]
+  },
+  "Solo Maneuvers": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 on combat maneuver checks against, and +1 to CMD against, an opponent you alone threaten",
+        "target": "cmb"
+      }
+    ]
+  },
+  "Spider Step": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 on saving throws against spider web special attacks and web-like spells",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Spirit of the Wild": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 on Perception checks to act in the surprise round while in your attuned (Attuned to the Wild) terrain",
+        "target": "skills"
+      }
+    ]
+  },
+  "Steel Soul": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 racial bonus on saving throws against spells and spell-like abilities (replaces dwarf hardy)",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Stoic": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 on all saving throws against fear effects",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Stone Read": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on Perception checks while in a primarily underground or mountainous environment (+4 with 10+ ranks in Knowledge (dungeoneering)).",
+        "target": "skills"
+      }
+    ]
+  },
+  "Stone-Faced": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 on Bluff checks to lie or conceal your feelings/true motives (not to feint or pass secret messages); the DC to read you with Sense Motive is 25.",
+        "target": "skill.blf"
+      }
+    ]
+  },
+  "Storm-Lashed": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on all saving throws against electrical effects.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Sure and Fleet": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.acr",
+        "type": "racial",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "skill.clm",
+        "type": "racial",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Sure-Footed": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on Acrobatics checks to keep your balance.",
+        "target": "skills"
+      },
+      {
+        "text": "+2 on Reflex saves to avoid falling.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Swarm Scatter": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 circumstance bonus to AC for each adjacent ally who also has this feat.",
+        "target": "ac"
+      }
+    ]
+  },
+  "Taldan Duelist": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "While fighting with a falcata and buckler: shield bonus to AC increases by +1 and you gain +2 on Acrobatics checks.",
+        "target": "skills"
+      }
+    ]
+  },
+  "Tiger Style": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "While using Tiger Style, +2 to CMD against bull rush, overrun, and trip maneuvers.",
+        "target": "cmd"
+      }
+    ]
+  },
+  "Topple Foe": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 on CMB checks to trip a larger foe while an ally with Topple Foe flanks it (scales with additional flanking allies and consecutive-round trip attempts).",
+        "target": "cmb"
+      }
+    ]
+  },
+  "Touched By Sacred Fire": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on all saving throws to resist the effects of fire or heat (also grants fire resistance 5; a swift action raises resistance to 10 and the save bonus to +4 until your next turn at the cost of your Dex bonus to AC).",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Town Tamer": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "In your chosen settlement: +1 dodge bonus to AC against undesirable elements (criminals/ruffians).",
+        "target": "ac"
+      }
+    ]
+  },
+  "Tree Hanger": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 to CMD against all trip attacks (while hanging from a branch you also gain +2 to CMD vs bull rush, drag, and reposition).",
+        "target": "cmd"
+      }
+    ]
+  },
+  "Tribal Scars": {
+    "changes": [
+      {
+        "formula": "6",
+        "target": "mhp",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "Also grants one Mammoth Lords tribe sub-benefit (Bearpelt, Greattusk, Ice Chasm, Night Hunt, Raptorscale, or Slothjaw) chosen at selection — a small save/skill/speed bonus that varies by tribe.",
+        "target": "effect"
+      }
+    ]
+  },
+  "True Love": {
+    "changes": [
+      {
+        "formula": "ifelse(gte(@skills.sen.rank,10),4,2)",
+        "target": "skill.sen",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Two-Weapon Defense": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 shield bonus to AC while wielding a double weapon or two weapons; increases to +2 while fighting defensively or using total defense.",
+        "target": "ac"
+      }
+    ]
+  },
+  "Improved Two-Weapon Defense": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 shield bonus to AC while wielding a double weapon or two weapons (not natural/unarmed); increases to +4 while fighting defensively or using total defense.",
+        "target": "ac"
+      }
+    ]
+  },
+  "Greater Two-Weapon Defense": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+3 shield bonus to AC while wielding a double weapon or two weapons (not natural/unarmed); increases to +6 while fighting defensively or using total defense.",
+        "target": "ac"
+      }
+    ]
+  },
+  "Underfoot": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 dodge bonus on Acrobatics checks to move past opponents larger than you without provoking.",
+        "target": "skills"
+      },
+      {
+        "text": "+2 dodge bonus to AC against attacks of opportunity caused when you move out of or within a larger opponent's threatened area.",
+        "target": "ac"
+      }
+    ]
+  },
+  "Unforgotten": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "will",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Vengeance": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+1 on saving throws against your chosen foe and its known minions.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Vengeful Banisher": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on saving throws against spells or effects originating from demon worshipers and creatures of the demon type.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Vigilant Eidolon": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 on Perception checks while your eidolon is within your reach (and not helpless/unconscious); +8 if you have 10+ ranks in Perception.",
+        "target": "skills"
+      }
+    ]
+  },
+  "Warrior Priest": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "init",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "+2 on concentration checks made to cast a spell or use a spell-like ability when casting defensively or while grappled.",
+        "target": "effect"
+      }
+    ]
+  },
+  "Weather Eye": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+4 on Survival checks made to predict the weather.",
+        "target": "skills"
+      },
+      {
+        "text": "+1 on saving throws to avoid the effects of extreme weather.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Wings Of The Androsphinx": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 bonus to AC against charge attacks.",
+        "target": "ac"
+      }
+    ]
+  },
+  "Witchbreaker": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on saving throws against the hexes, spells, spell-like abilities, and supernatural abilities of witches and hags.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "Wolf Trip": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 on combat maneuver checks to trip made as part of an attack of opportunity.",
+        "target": "cmb"
+      }
+    ]
+  },
+  "Sea Legs": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "skill.acr",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "skill.clm",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "skill.swm",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Sharp Senses": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "skill.per",
+        "type": "racial",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "Altitude Affinity": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 competence on Survival checks at altitudes of 5,000 ft or higher (and you are automatically acclimated to high altitude).",
+        "target": "skill.sur"
+      }
+    ]
+  },
+  "Divine Deception": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+5 on Use Magic Device checks to use divine spell-trigger/spell-completion items or to emulate a divine class feature.",
+        "target": "skill.umd"
+      }
+    ]
+  },
+  "Divine Denouncer": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 insight on Bluff, Diplomacy, Intimidate, Knowledge, Perform (oratory), and Sense Motive checks involving a divine spellcaster or a cleric-like outsider.",
+        "target": "skills"
+      }
+    ]
+  },
+  "Casual Illusionist": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+2 racial (+4 at 10th level) on Bluff, Disguise, and Sleight of Hand while you have at least one unused gnome spell-like ability.",
+        "target": "skills"
+      }
+    ]
+  }
+}

@@ -40,6 +40,38 @@ _SKILL_CHOICE_FEATS = {
 }
 
 
+# skill_ranks key ('knowledge local', 'profession sailor') -> pf1 change target id, so the chosen
+# Skill Focus / Prodigy bonus can be emitted as a real always-on `change` (folded into feat_changes_dict
+# by main_test.py). Craft/Perform/Profession subtypes collapse to their base id.
+_PF1_SKILL_IDS = {
+    "acrobatics": "acr", "appraise": "apr", "bluff": "blf", "climb": "clm", "craft": "crf",
+    "diplomacy": "dip", "disable device": "dev", "disguise": "dis", "escape artist": "esc",
+    "fly": "fly", "handle animal": "han", "heal": "hea", "intimidate": "int", "linguistics": "lin",
+    "perception": "per", "perform": "prf", "profession": "pro", "ride": "rid", "sense motive": "sen",
+    "sleight of hand": "slt", "spellcraft": "spl", "stealth": "ste", "survival": "sur", "swim": "swm",
+    "use magic device": "umd", "knowledge arcana": "kar", "knowledge dungeoneering": "kdu",
+    "knowledge engineering": "ken", "knowledge geography": "kge", "knowledge history": "khi",
+    "knowledge local": "klo", "knowledge nature": "kna", "knowledge nobility": "kno",
+    "knowledge planes": "kpl", "knowledge religion": "kre",
+}
+
+
+def _skill_pf1_id(skill_key):
+    """A skill_ranks key -> pf1 change target ('knowledge local' -> 'skill.klo'); None if unmappable."""
+    k = " ".join(str(skill_key).strip().lower().split())
+    if k in _PF1_SKILL_IDS:
+        return "skill." + _PF1_SKILL_IDS[k]
+    for base in ("profession", "craft", "perform"):
+        if k.startswith(base):
+            return "skill." + _PF1_SKILL_IDS[base]
+    return None
+
+
+def _skill_change(target, bonus):
+    """A pf1 always-on change: +bonus to a skill target (value resolved at gen time -> flat number)."""
+    return {"formula": str(int(bonus)), "target": target, "type": "untyped", "operator": "add", "priority": 0}
+
+
 def _norm_skill_name(name):
     """Normalize a display skill name ('Knowledge (local)') to a skill_ranks key ('knowledge local')."""
     return " ".join(str(name).lower().replace("(", " ").replace(")", " ").split())
@@ -97,23 +129,39 @@ def specialize_skill_choice_feats(character, feat_list, skill_ranks=None):
         for s in p.get("associate_skills", []) or []:
             assoc.add(_norm_skill_name(s))
     used_skills = set()
+    changes_by_feat = {}   # specialized feat name -> {"changes": [...], "contextNotes": []}
 
     for i, feat in enumerate(feat_list):
         spec = _SKILL_CHOICE_FEATS.get(_feat_base_name(feat))
         if not spec:
             continue
-        picks = []
+        picks, changes = [], []
         for _ in range(spec["count"]):
             prof = _next_profession(profs)
             if prof is not None:
                 bonus = spec["improved"] if int(prof.get("ranks", 0) or 0) >= 10 else spec["base"]
                 prof.setdefault("skill_focus_bonuses", []).append({"feat": spec["display"], "bonus": bonus})
                 picks.append(f"Profession ({prof['name']})")
+                # Each profession is a Foundry subskill under "skill.pro"; bonus resolved flat at gen time.
+                changes.append(_skill_change("skill.pro", bonus))
             else:
                 fb = _fallback_skill(skill_ranks, assoc, spec["restrict"], used_skills)
                 if fb:
                     used_skills.add(fb)
                     picks.append(_skill_display(character, fb))
+                    sid = _skill_pf1_id(fb)
+                    if sid:
+                        bonus = spec["improved"] if int(skill_ranks.get(fb, 0) or 0) >= 10 else spec["base"]
+                        changes.append(_skill_change(sid, bonus))
         if picks:
             feat_list[i] = f"{spec['display']} ({', '.join(picks)})"
+            if changes:
+                changes_by_feat[feat_list[i]] = {"changes": changes, "contextNotes": []}
+
+    # Stash the resolved changes; main_test folds them into feat_changes_dict so the bonus actually
+    # lands on the Foundry sheet (previously skill_focus_bonuses was recorded but never consumed).
+    if changes_by_feat:
+        existing = getattr(character, "skill_focus_changes", None) or {}
+        existing.update(changes_by_feat)
+        character.skill_focus_changes = existing
     return feat_list
