@@ -1,0 +1,218 @@
+{
+  "Acid Arrow": {
+    "attack": "ranged",
+    "save": null,
+    "riders": [
+      "Ongoing [[2d4]] acid damage each round for [[1]] round + [[1]] round per three caster levels (max [[6]] extra rounds)."
+    ]
+  },
+  "Arrow of Law": {
+    "attack": "ranged",
+    "save": {
+      "type": "will",
+      "dc": "",
+      "description": "Will partial (see text)",
+      "harmless": false
+    },
+    "riders": [
+      "Chaotic outsider dazed for [[1]] round; Will save negates the daze."
+    ]
+  },
+  "Blinding Ray": {
+    "attack": "ranged",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude negates",
+      "harmless": false
+    },
+    "riders": [
+      "Target blinded for [[1]] round (Fort negates).",
+      "Light-vulnerable target instead blinded for [[1d4]] rounds.",
+      "Blinded target sheds light as a sunrod for the duration."
+    ]
+  },
+  "Ceremony": {
+    "attack": "melee",
+    "save": {
+      "type": "will",
+      "dc": "",
+      "description": "Will negates (see text)",
+      "harmless": false
+    },
+    "riders": [
+      "Unholy Gala boon: good foe sickened for [[1]] round on a melee touch hit.",
+      "Rite of Insanity boon: foe confused for [[1d4]] rounds on a melee touch hit (Will negates)."
+    ]
+  },
+  "Chill Touch": {
+    "attack": "melee",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude partial or Will negates; see text",
+      "harmless": false
+    },
+    "riders": [
+      "[[1]] Strength damage to living target unless Fort save succeeds.",
+      "Undead instead flee as if panicked for [[1d4]] rounds + [[1]] round per caster level unless Will save succeeds."
+    ]
+  },
+  "Cosmic Ray": {
+    "attack": "ranged",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude partial",
+      "harmless": false
+    },
+    "riders": [
+      "Target sickened for [[1]] round per caster level on a failed Fort save.",
+      "While sickened, target emits toxic energy; creatures within [[5]] ft. must save or be sickened for [[1]] round per [[2]] caster levels."
+    ]
+  },
+  "Dread Bolt": {
+    "attack": "ranged",
+    "save": {
+      "type": "will",
+      "dc": "",
+      "description": "Will partial (see text)",
+      "harmless": false
+    },
+    "riders": [
+      "Good outsider sickened for [[1]] round; Will save negates the sicken."
+    ]
+  },
+  "Elemental Touch": {
+    "attack": "melee",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "see text",
+      "harmless": false
+    },
+    "riders": [
+      "Acid: ongoing [[1]] acid damage each round for [[1]] round per three caster levels; Fort save or sickened for that duration.",
+      "Cold: Fort save or fatigued.",
+      "Electricity: Fort save or staggered for [[1]] round.",
+      "Fire: target may catch on fire."
+    ]
+  },
+  "Frigid Touch": {
+    "attack": "melee",
+    "save": null,
+    "riders": [
+      "Target staggered for [[1]] round, or [[1]] minute on a critical hit."
+    ]
+  },
+  "Gloomblind Bolts": {
+    "attack": "ranged",
+    "save": {
+      "type": "reflex",
+      "dc": "",
+      "description": "Reflex negates; see text",
+      "harmless": false
+    },
+    "riders": [
+      "Target blinded for [[1]] round on a failed Reflex save."
+    ]
+  },
+  "Inflict Moderate Wounds": {
+    "attack": "melee",
+    "save": {
+      "type": "will",
+      "dc": "",
+      "description": "Will half",
+      "harmless": false
+    },
+    "riders": [
+      "Living target sickened for [[1]] round per caster level (max [[10]] rounds) on a failed save."
+    ]
+  },
+  "Inflict Serious Wounds": {
+    "attack": "melee",
+    "save": {
+      "type": "will",
+      "dc": "",
+      "description": "Will half",
+      "harmless": false
+    },
+    "riders": [
+      "Living target sickened for [[1]] round per caster level (max [[15]] rounds) on a failed save."
+    ]
+  },
+  "Iron Spine": {
+    "attack": "ranged",
+    "save": null,
+    "riders": [
+      "Whenever the target moves it takes [[1d6]] piercing damage and is sickened for [[1]] round.",
+      "A target with DR/cold iron is nauseated instead of sickened."
+    ]
+  },
+  "Iron Stake": {
+    "attack": "ranged",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude partial",
+      "harmless": false
+    },
+    "riders": [
+      "Target with DR/cold iron sickened for [[1]] round.",
+      "On a failed Fort save, for [[1]] round per caster level the target must make a concentration check to cast or lose the spell."
+    ]
+  },
+  "Mark of the Reptile God": {
+    "attack": "ranged",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude negates",
+      "harmless": false
+    },
+    "riders": [
+      "Cursed: [[2]] penalty to AC against your attacks and on saves vs. your spells.",
+      "Each day, Fort save or take [[1d4]] Charisma damage ([[1]] of which is Charisma drain).",
+      "Reduced to [[0]] Charisma, target is polymorphed into a harmless cave lizard."
+    ]
+  },
+  "Polar Ray": {
+    "attack": "ranged",
+    "save": null,
+    "riders": [
+      "[[1d4]] Dexterity drain."
+    ]
+  },
+  "Snowball": {
+    "attack": "ranged",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude partial (see text)",
+      "harmless": false
+    },
+    "riders": [
+      "Target staggered for [[1]] round on a failed Fort save."
+    ]
+  },
+  "Spear of Purity": {
+    "attack": "ranged",
+    "save": {
+      "type": "will",
+      "dc": "",
+      "description": "Will partial (see text)",
+      "harmless": false
+    },
+    "riders": [
+      "Evil outsider blinded for [[1]] round; Will save negates the blindness."
+    ]
+  },
+  "Stricken Heart": {
+    "attack": "melee",
+    "save": null,
+    "riders": [
+      "Target staggered for [[1]] round, or [[1]] minute on a critical hit.",
+      "Creatures immune to precision damage are immune to the staggered effect."
+    ]
+  }
+}

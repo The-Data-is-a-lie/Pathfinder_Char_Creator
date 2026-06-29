@@ -1,0 +1,3759 @@
+{
+  "Acid Arrow": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [
+      "Ongoing [[2d4]] damage each round."
+    ],
+    "review": true,
+    "_base_damage": "2d4 untyped",
+    "_spell_level": "sorcerer/wizard 2, magus 2, bloodrager 2",
+    "_snippets": [
+      "2d4 damage",
+      "2d4 points of damage in each round"
+    ]
+  },
+  "Acid Splash": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d3 acid",
+    "_spell_level": "sorcerer/wizard 0, summoner 0, inquisitor 0, magus 0",
+    "_snippets": [
+      "1d3 acid damage"
+    ]
+  },
+  "Aid": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 2, inquisitor 2, alchemist 2, shaman 2, spiritualist 2",
+    "_snippets": [
+      "+1 morale bonus on attack rolls"
+    ]
+  },
+  "Arcane Cannon": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "4d10 untyped",
+    "_spell_level": "sorcerer/wizard 7",
+    "_snippets": [
+      "4d10 damage"
+    ]
+  },
+  "Aroden's Magic Army": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "floor(@spells.primary.cl.total/5)",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "floor(@spells.primary.cl.total/5)",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "shaman 8, sorcerer/wizard 7",
+    "_snippets": [
+      "+1 enhancement bonus on attack rolls",
+      "+1 enhancement bonus on attack rolls and damage rolls"
+    ],
+    "_save_raw": "Will negates (harmless, object)"
+  },
+  "Arrow of Law": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "will",
+      "dc": "",
+      "description": "Will partial (see text)",
+      "harmless": false
+    },
+    "riders": [
+      "Target dazed for [[1]] rounds."
+    ],
+    "review": true,
+    "_base_damage": "1d8 untyped",
+    "_spell_level": "cleric/oracle 2, paladin 2",
+    "_snippets": [
+      "1d8 points of damage",
+      "dazed for 1 round"
+    ]
+  },
+  "Assumed Likeness": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "4",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "bard 1, magus 2, medium 1, mesmerist 1, occultist 2, psychic 2, sorcerer/wizard 2",
+    "_snippets": [
+      "+4 bonus on intimidate checks hate +2 bonus on attack rolls"
+    ],
+    "_save_raw": "Will disbelief"
+  },
+  "Atavism": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "druid 4",
+    "_snippets": [
+      "+2 bonus on all rolls, including damage rolls"
+    ],
+    "_save_raw": "Fortitude negates"
+  },
+  "Aura Of Cannibalism": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "competence",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 3, sorcerer/wizard 3, witch 3",
+    "_snippets": [
+      "+1 competence bonus on attack rolls"
+    ],
+    "_save_raw": "Fortitude negates"
+  },
+  "Baphomet's Blessing": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 4, druid 4, sorcerer/wizard 4, summoner 4, witch 4",
+    "_snippets": [
+      "+2 bonus on attack and damage rolls"
+    ],
+    "_save_raw": "Fortitude negates"
+  },
+  "Barghest Feast": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "profane",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "alchemist 3",
+    "_snippets": [
+      "+1 profane bonus on attack rolls"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Battering Blast": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "reflex",
+      "dc": "",
+      "description": "Reflex partial (see text)",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 force",
+    "_spell_level": "sorcerer/wizard 3",
+    "_snippets": [
+      "1d6 points of force damage"
+    ]
+  },
+  "Black Spot": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 4, sorcerer/wizard 5, witch 4",
+    "_snippets": [
+      "+2 bonus on weapon attack and damage rolls"
+    ],
+    "_save_raw": "Will negates"
+  },
+  "Blade Of Light": {
+    "_bucket": "A-toggle",
+    "name": "Blade Of Light: this spell infuses a weapon with pure sunlight (the weapon need not be a bladed weapon). a weapon enhanced by this spel",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "sacred",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "cleric/oracle 4, inquisitor 4, paladin 4",
+    "_snippets": [
+      "+2 sacred bonus on attack rolls",
+      "gainst undead and deals +1d6 points of damage"
+    ]
+  },
+  "Bless": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 1, paladin 1, inquisitor 1, shaman 1",
+    "_snippets": [
+      "+1 morale bonus on attack rolls"
+    ]
+  },
+  "Blessed Fist": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 1, paladin 1",
+    "_snippets": [
+      "+1 enhancement bonus on attack rolls",
+      "+1 enhancement bonus on attack rolls and damage rolls"
+    ]
+  },
+  "Blessing Of Fervor": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 4",
+    "_snippets": [
+      "+2 bonus on attack rolls"
+    ],
+    "_save_raw": "Fortitude negates (harmless)"
+  },
+  "Blinding Ray": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude negates",
+      "harmless": false
+    },
+    "riders": [
+      "Target blinded for [[1]] rounds.",
+      "Target blinded for [[1d4]] rounds."
+    ],
+    "review": true,
+    "_base_damage": "1d4 untyped",
+    "_spell_level": "cleric/oracle 2, inquisitor 3, paladin 2",
+    "_snippets": [
+      "1d4 points of damage",
+      "blinded for 1 round",
+      "blinded for 1d4 rounds"
+    ]
+  },
+  "Blink": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "bard 3, sorcerer/wizard 3, magus 3, psychic 3",
+    "_snippets": [
+      "+2 bonus on attack rolls"
+    ]
+  },
+  "Blood Scent": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "alchemist 3, antipaladin 2, cleric/oracle 3, druid 3, inquisitor 3, ranger 2, sorcerer/wizard 3, witch 3, bloodrager 3, psychic 3",
+    "_snippets": [
+      "+2 morale bonus on attack and damage rolls"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Body Capacitance": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "3",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "alchemist 1, sorcerer/wizard 1",
+    "_snippets": [
+      "+3 bonus on the attack roll"
+    ]
+  },
+  "Bomber's Eye": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "alchemist 1",
+    "_snippets": [
+      "+1 insight bonus on attack rolls"
+    ]
+  },
+  "Bone Fists": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "bloodrager 2, cleric/oracle 2, druid 2, psychic 2, shaman 2, sorcerer/wizard 2, witch 2",
+    "_snippets": [
+      "+1 bonus to natural armor and a +2 bonus on damage rolls"
+    ],
+    "_save_raw": "none (harmless)"
+  },
+  "Burst Bonds": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude half (object)",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 untyped",
+    "_spell_level": "inquisitor 1",
+    "_snippets": [
+      "1d6 damage"
+    ]
+  },
+  "Burst Of Glory": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 5, inquisitor 4, paladin 4",
+    "_snippets": [
+      "+1 sacred bonus on attack rolls"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Call Weapon": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "circumstance",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "circumstance",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "bard 1, magus 1, ranger 1",
+    "_snippets": [
+      "+2 circumstance bonus on attack rolls",
+      "+2 circumstance bonus on attack rolls and weapon damage rolls"
+    ]
+  },
+  "Cast Out": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": {
+      "type": "will",
+      "dc": "",
+      "description": "Will partial",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "2d8 untyped",
+    "_spell_level": "inquisitor 3, psychic 4",
+    "_snippets": [
+      "2d8 damage"
+    ]
+  },
+  "Ceremony": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": {
+      "type": "will",
+      "dc": "",
+      "description": "Will negates (see text)",
+      "harmless": false
+    },
+    "riders": [
+      "Target sickened for [[1]] rounds.",
+      "Target confused for [[1d4]] rounds."
+    ],
+    "review": true,
+    "_base_damage": "1d3 untyped",
+    "_spell_level": "cleric/oracle 1",
+    "_snippets": [
+      "1d3 points of damage",
+      "sickened for 1 round",
+      "confused for 1d4 rounds"
+    ]
+  },
+  "Chill Touch": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude partial or Will negates; see text",
+      "harmless": false
+    },
+    "riders": [
+      "[[1]] Strength damage.",
+      "Target panicked for [[1d4]] rounds."
+    ],
+    "review": true,
+    "_base_damage": "1d6 untyped",
+    "_spell_level": "sorcerer/wizard 1, witch 1, magus 1, bloodrager 1, shaman 1, spiritualist 1",
+    "_snippets": [
+      "1d6 damage",
+      "1 point of strength damage",
+      "panicked for 1d4 rounds"
+    ]
+  },
+  "Clashing Rocks": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "reflex",
+      "dc": "",
+      "description": "Reflex partial, see text",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "20d6 untyped",
+    "_spell_level": "druid 9, sorcerer/wizard 9",
+    "_snippets": [
+      "20d6 damage"
+    ]
+  },
+  "Coin Shot": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d4 untyped",
+    "_spell_level": "alchemist 1, antipaladin 1, bard 1, bloodrager 1, magus 1, sorcerer/wizard 1",
+    "_snippets": [
+      "1d4 points of damage"
+    ]
+  },
+  "Contagious Flame": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "4d6 fire",
+    "_spell_level": "sorcerer/wizard 6, magus 6, occultist 6",
+    "_snippets": [
+      "4d6 fire damage"
+    ]
+  },
+  "Contagious Zeal": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "bard 2, cleric/oracle 3, inquisitor 3, psychic 3, sorcerer/wizard 3, spiritualist 3",
+    "_snippets": [
+      "+2 morale bonus on attack rolls",
+      "+2 morale bonus on attack rolls and weapon damage rolls"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Corrosive Touch": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d4 acid",
+    "_spell_level": "magus 1, sorcerer/wizard 1, summoner 1, bloodrager 1",
+    "_snippets": [
+      "1d4 points of acid damage"
+    ]
+  },
+  "Cosmic Ray": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude partial",
+      "harmless": false
+    },
+    "riders": [
+      "Target sickened for [[1]] rounds."
+    ],
+    "review": true,
+    "_base_damage": "1d6 untyped",
+    "_spell_level": "magus 5, sorcerer/wizard 6",
+    "_snippets": [
+      "1d6 points of damage",
+      "sickened for 1 round"
+    ]
+  },
+  "Coward's Cowl": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "alchemist 1, bard 1, cleric/oracle 1, mesmerist 1, psychic 1, shaman 1, sorcerer/wizard 1, witch 1",
+    "_snippets": [
+      "+1 morale bonus on saves and on attack rolls"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Curse Of Unexpected Death": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude partial (see text)",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "8d6 untyped",
+    "_spell_level": "cleric/oracle 4, shaman 5, witch 5",
+    "_snippets": [
+      "8d6 points of damage"
+    ]
+  },
+  "Dahak's Release": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "mesmerist 5, occultist 5, shaman 5, sorcerer/wizard 5, witch 5",
+    "_snippets": [
+      "+2 morale bonus on attack and damage rolls"
+    ],
+    "_save_raw": "Will negates"
+  },
+  "Daybreak Arrow": {
+    "_bucket": "A-toggle",
+    "name": "Daybreak Arrow: Targeted ammunition exudes radiant energy.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "cleric/oracle 3, inquisitor 3, paladin 3, occultist 3",
+    "_snippets": [
+      "additional 1d6 points of damage"
+    ],
+    "_save_raw": "Fortitude negates (harmless, object)"
+  },
+  "Dead Eye's Arrow": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 electricity",
+    "_spell_level": "cleric/oracle 2, inquisitor 1, druid 1, magus 1, paladin 1, ranger 1",
+    "_snippets": [
+      "1d6 points of electricity damage"
+    ]
+  },
+  "Deadly Juggernaut": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "antipaladin 3, cleric/oracle 3, inquisitor 3, paladin 3",
+    "_snippets": [
+      "+1 luck bonus on melee attack rolls",
+      "+1 luck bonus on melee attack rolls, melee weapon damage rolls"
+    ]
+  },
+  "Deafening Song Bolt": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "3d10 untyped",
+    "_spell_level": "bard 5",
+    "_snippets": [
+      "3d10 damage"
+    ]
+  },
+  "Defoliate": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "2d8 untyped",
+    "_spell_level": "druid 2, ranger 1, sorcerer/wizard 2",
+    "_snippets": [
+      "2d8 points of damage"
+    ]
+  },
+  "Delayed Blast Fireball": {
+    "_bucket": "A-toggle",
+    "name": "Delayed Blast Fireball: 1d6/level fire damage; you can postpone blast for up to 5 rounds.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "sorcerer/wizard 7",
+    "_snippets": [
+      "deals 1d6 points of fire damage"
+    ],
+    "_save_raw": "Reflex half"
+  },
+  "Desecrate": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "profane",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "profane",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 2, inquisitor 2, antipaladin 2",
+    "_snippets": [
+      "+1 profane bonus on all attack rolls",
+      "+1 profane bonus on all attack rolls, damage rolls"
+    ]
+  },
+  "Desperate Weapon": {
+    "_bucket": "A-toggle",
+    "name": "Desperate Weapon: Create an improvised weapon.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "antipaladin 1, bard 1, bloodrager 1, cleric/oracle 1, inquisitor 1, magus 1, occultist 1, ranger 1, sorcerer/wizard 1",
+    "_snippets": [
+      "deals 1d6 points of damage"
+    ]
+  },
+  "Destroy Robot": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude partial",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "12d6 untyped",
+    "_spell_level": "druid 5, sorcerer/wizard 6",
+    "_snippets": [
+      "12d6 points of damage"
+    ]
+  },
+  "Disintegrate": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude partial (object)",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "2d6 untyped",
+    "_spell_level": "sorcerer/wizard 6, magus 6, occultist 6, psychic 6, spiritualist 6",
+    "_snippets": [
+      "2d6 points of damage"
+    ]
+  },
+  "Disrupt Undead": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 untyped",
+    "_spell_level": "sorcerer/wizard 0, inquisitor 0, magus 0",
+    "_snippets": [
+      "1d6 damage"
+    ]
+  },
+  "Divine Favor": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "floor(@spells.primary.cl.total/3)",
+        "target": "attack",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "floor(@spells.primary.cl.total/3)",
+        "target": "wdamage",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 1, paladin 1, inquisitor 1",
+    "_snippets": [
+      "+1 luck bonus on attack and weapon damage rolls"
+    ]
+  },
+  "Divine Power": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 4, inquisitor 4, shaman 4",
+    "_snippets": [
+      "+1 luck bonus on attack rolls",
+      "+1 luck bonus on attack rolls, weapon damage rolls"
+    ]
+  },
+  "Divine Vessel": {
+    "_bucket": "A-toggle",
+    "name": "Divine Vessel: (Oracle only.) Change into a huge, otherworldly creature.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "oracle 8",
+    "_snippets": [
+      "gain a bite attack dealing 2d6 points of damage"
+    ]
+  },
+  "Dread Bolt": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "will",
+      "dc": "",
+      "description": "Will partial (see text)",
+      "harmless": false
+    },
+    "riders": [
+      "Target sickened for [[1]] rounds."
+    ],
+    "review": true,
+    "_base_damage": "1d8 untyped",
+    "_spell_level": "cleric/oracle 2",
+    "_snippets": [
+      "1d8 points of damage",
+      "sickened for 1 round"
+    ]
+  },
+  "Ectoplasmic Eruption": {
+    "_bucket": "A-toggle",
+    "name": "Ectoplasmic Eruption: Deal 6d6 points of damage and entangle creatures in a 30-ft. radius, and push ethereal and incorporeal creatures onto the Material Plane.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "psychic 7, spiritualist 6",
+    "_snippets": [
+      "deal 6d6 points of damage"
+    ],
+    "_save_raw": "Reflex half and Will partial; see text"
+  },
+  "Ectoplasmic Hand": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 untyped",
+    "_spell_level": "occultist 5, psychic 5, spiritualist 4",
+    "_snippets": [
+      "1d6 points of damage"
+    ]
+  },
+  "Elemental Assessor": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "2d6 acid",
+    "_spell_level": "cleric/oracle 6, sorcerer/wizard 6",
+    "_snippets": [
+      "2d6 points of acid damage"
+    ]
+  },
+  "Elemental Mastery": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "circumstance",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "bloodrager 4, druid 4, magus 4, ranger 4, sorcerer/wizard 4",
+    "_snippets": [
+      "+1 circumstance bonus (suli, sylph) (average) on attack rolls"
+    ]
+  },
+  "Elemental Touch": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [
+      "Target staggered for [[1]] rounds."
+    ],
+    "review": true,
+    "_base_damage": "1d6 untyped",
+    "_spell_level": "alchemist 2, sorcerer/wizard 2, magus 2, bloodrager 2",
+    "_snippets": [
+      "1d6 points of damage",
+      "staggered for 1 round"
+    ]
+  },
+  "Enlarge Tail": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "alchemist 1, antipaladin 1, druid 1, magus 1, sorcerer/wizard 1, summoner 1, witch 1",
+    "_snippets": [
+      "+1 bonus on attack rolls",
+      "+1 bonus on attack rolls, and a +2 bonus on damage rolls"
+    ]
+  },
+  "Face Of The Devourer": {
+    "_bucket": "A-toggle",
+    "name": "Face Of The Devourer: you transform the target's face into a hideous shape, such as a half-melted visage with insect legs instead of teeth, s",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "adept 1, antipaladin 1, cleric/oracle 1, druid 1, sorcerer/wizard 1",
+    "_snippets": [
+      "deals 1d6 points of damage"
+    ],
+    "_save_raw": "Fortitude negates (harmless)"
+  },
+  "Fiery Shuriken": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d8 fire",
+    "_spell_level": "sorcerer/wizard 2",
+    "_snippets": [
+      "1d8 points of fire damage"
+    ]
+  },
+  "Find Fault": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "5",
+        "target": "attack",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "bard 3, bloodrager 3, inquisitor 3, magus 3, medium 3, oracle 3, psychic 3, shaman 3, sorcerer/wizard 3, witch 3",
+    "_snippets": [
+      "attack roll against the creature before the end of your next turn gains a +5 insight bonus"
+    ]
+  },
+  "Fire Seeds": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "reflex",
+      "dc": "",
+      "description": "none or Reflex half; see text",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d4 fire",
+    "_spell_level": "druid 6, shaman 6",
+    "_snippets": [
+      "1d4 points of fire damage"
+    ]
+  },
+  "Fireball": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "reflex",
+      "dc": "",
+      "description": "Reflex half",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 untyped",
+    "_spell_level": "sorcerer/wizard 3, magus 3, bloodrager 3, occultist 3",
+    "_snippets": [
+      "1d6 damage"
+    ]
+  },
+  "Firebelly": {
+    "_bucket": "A-toggle",
+    "name": "Firebelly: a magical fire warms your belly, granting fire resistance 5 and making your gut hot to the touch (but not enough to dam",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "alchemist 1, cleric/oracle 1, druid 1, paladin 1",
+    "_snippets": [
+      "deals 1d4 points of fire damage"
+    ],
+    "_save_raw": "Reflex half; see text"
+  },
+  "Firebrand": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "will",
+      "dc": "",
+      "description": "Will negates (harmless), but see below",
+      "harmless": true
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 fire",
+    "_spell_level": "sorcerer/wizard 7",
+    "_snippets": [
+      "1d6 points of fire damage"
+    ]
+  },
+  "Flame Arrow": {
+    "_bucket": "A-toggle",
+    "name": "Flame Arrow: Arrows deal +1d6 fire damage.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "sorcerer/wizard 3, magus 3, bloodrager 3, occultist 3",
+    "_snippets": [
+      "deal +1d6 fire damage"
+    ]
+  },
+  "Flame Blade": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d8 fire",
+    "_spell_level": "druid 2, shaman 2",
+    "_snippets": [
+      "1d8 points of fire damage"
+    ]
+  },
+  "Flames Of The Faithful": {
+    "_bucket": "A-toggle",
+    "name": "Flames Of The Faithful: Gives weapon flaming property.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "inquisitor 2",
+    "_snippets": [
+      "extra 1d6 points of fire damage"
+    ],
+    "_save_raw": "Fortitude negates (object, harmless)"
+  },
+  "Force Anchor": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d4 force",
+    "_spell_level": "inquisitor 2, magus 2, sorcerer/wizard 3, summoner 2",
+    "_snippets": [
+      "1d4 points of force damage"
+    ]
+  },
+  "Force Punch": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude partial",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d4 force",
+    "_spell_level": "magus 3, sorcerer/wizard 3, bloodrager 3, psychic 3, spiritualist 3",
+    "_snippets": [
+      "1d4 force damage"
+    ]
+  },
+  "Form Of The Alien Dragon I": {
+    "_bucket": "A-toggle",
+    "name": "Form Of The Alien Dragon I: you become a medium esoteric or outer dragon. psychics can choose from the esoteric dragon (astral, dream, etheric, nig",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "6d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "alchemist 6, magus 6, psychic 7, sorcerer/wizard 6",
+    "_snippets": [
+      "deal 6d8 points of damage"
+    ],
+    "_save_raw": "see text"
+  },
+  "Form Of The Alien Dragon II": {
+    "_bucket": "A-toggle",
+    "name": "Form Of The Alien Dragon II: this spell functions as per form of the alien dragon i, except it also allows you to assume the form of a large esoteri",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "6d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "psychic 8, sorcerer/wizard 7",
+    "_snippets": [
+      "deal 6d8 points of damage"
+    ],
+    "_save_raw": "see text"
+  },
+  "Form Of The Alien Dragon III": {
+    "_bucket": "A-toggle",
+    "name": "Form Of The Alien Dragon III: this spell functions as per form of the alien dragon ii, except it also allows you to take the form of a huge esoteric",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "12d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "psychic 9, sorcerer/wizard 8",
+    "_snippets": [
+      "deal 12d8 points of damage"
+    ],
+    "_save_raw": "see text"
+  },
+  "Form of the Dragon I": {
+    "_bucket": "A-toggle",
+    "name": "Form of the Dragon I: Turns you into a Medium dragon.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "6d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "sorcerer/wizard 6, alchemist 6, magus 6",
+    "_snippets": [
+      "deal 6d8 points of damage"
+    ],
+    "_save_raw": "see below"
+  },
+  "Form of the Dragon II": {
+    "_bucket": "A-toggle",
+    "name": "Form of the Dragon II: Turns you into a Large dragon.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "8d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "sorcerer/wizard 7",
+    "_snippets": [
+      "deal 8d8 points of damage"
+    ],
+    "_save_raw": "see below"
+  },
+  "Form of the Dragon III": {
+    "_bucket": "A-toggle",
+    "name": "Form of the Dragon III: Turns you into a Huge dragon.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "12d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "sorcerer/wizard 8",
+    "_snippets": [
+      "deal 12d8 points of damage"
+    ],
+    "_save_raw": "see below"
+  },
+  "Form Of The Exotic Dragon I": {
+    "_bucket": "A-toggle",
+    "name": "Form Of The Exotic Dragon I: you become a medium imperial or primal dragon. druids can choose from the primal dragon (brine, cloud, crystal, magma,",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "6d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "alchemist 6, druid 7, sorcerer/wizard 6",
+    "_snippets": [
+      "deal 6d8 points of damage"
+    ],
+    "_save_raw": "see below"
+  },
+  "Form Of The Exotic Dragon II": {
+    "_bucket": "A-toggle",
+    "name": "Form Of The Exotic Dragon II: this spell functions as per form of the exotic dragon i, except it also allows you to assume the form of a large imperi",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "8d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "druid 8, sorcerer/wizard 7",
+    "_snippets": [
+      "deal 8d8 points of damage"
+    ],
+    "_save_raw": "see below"
+  },
+  "Form Of The Exotic Dragon III": {
+    "_bucket": "A-toggle",
+    "name": "Form Of The Exotic Dragon III: this spell functions as per form of the exotic dragon ii except that it also allows you to take the form of a huge impe",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "12d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "druid 9, sorcerer/wizard 8",
+    "_snippets": [
+      "deal 12d8 points of damage"
+    ],
+    "_save_raw": "see below"
+  },
+  "Frigid Touch": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [
+      "Target staggered for [[1]] rounds."
+    ],
+    "review": true,
+    "_base_damage": "4d6 cold",
+    "_spell_level": "druid 2, magus 2, sorcerer/wizard 2, bloodrager 2",
+    "_snippets": [
+      "4d6 points of cold damage",
+      "staggered for 1 round"
+    ]
+  },
+  "Frosthammer": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d8 untyped",
+    "_spell_level": "antipaladin 3, cleric 3, inquisitor 3, ranger 3",
+    "_snippets": [
+      "1d8 points of damage"
+    ]
+  },
+  "Geniekind": {
+    "_bucket": "A-toggle",
+    "name": "Geniekind: keleshite wizards and clerics have always sought to emulate the genies that they bind. the geniekind spell is the resul",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "cleric/oracle 5, druid 5, sorcerer/wizard 5, summoner 5",
+    "_snippets": [
+      "deal +1d6 points of fire damage"
+    ]
+  },
+  "Gift Of The Deep": {
+    "_bucket": "A-toggle",
+    "name": "Gift Of The Deep: you give the targets the appearance and many of the abilities of sahuagin mutants, with effects as described below. cho",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "cleric/oracle 4, sorcerer/wizard 5",
+    "_snippets": [
+      "dealing 1d4 points of damage"
+    ],
+    "_save_raw": "Fortitude negate (harmless)"
+  },
+  "Gloomblind Bolts": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "reflex",
+      "dc": "",
+      "description": "Reflex negates; see text",
+      "harmless": false
+    },
+    "riders": [
+      "Target blinded for [[1]] rounds."
+    ],
+    "review": true,
+    "_base_damage": "4d6 untyped",
+    "_spell_level": "magus 3, sorcerer/wizard 3, witch 3, bloodrager 3",
+    "_snippets": [
+      "4d6 points of damage",
+      "blinded for 1 round"
+    ]
+  },
+  "Good Hope": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "bard 3",
+    "_snippets": [
+      "+2 morale bonus on saving throws, attack rolls"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Gorum's Armor": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 1, inquisitor 1, magus 1",
+    "_snippets": [
+      "+1 enhancement bonus on attack and damage rolls"
+    ],
+    "_save_raw": "Fortitude negates (harmless)"
+  },
+  "Gozreh's Trident": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d8 electricity",
+    "_spell_level": "cleric/oracle 2, druid 2, witch 2",
+    "_snippets": [
+      "1d8 points of electricity damage"
+    ]
+  },
+  "Gravity Bow": {
+    "_bucket": "A-toggle",
+    "name": "Gravity Bow: Arrows do damage as though one size category bigger.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "ranger 1, sorcerer/wizard 1, occultist 1",
+    "_snippets": [
+      "deals 1d8 points of damage"
+    ]
+  },
+  "Guidance": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "competence",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 0, druid 0, summoner 0, witch 0, inquisitor 0, summoner 0, witch 0, inquisitor 0, shaman 0, occultist 0, spiritualist 0",
+    "_snippets": [
+      "+1 competence bonus on a single attack roll"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Haste": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "alchemist 3, bard 3, magus 3, sorcerer/wizard 3, summoner 2, bloodrager 3, occultist 3, psychic 3, spiritualist 3",
+    "_snippets": [
+      "+1 bonus on attack rolls"
+    ],
+    "_save_raw": "Fortitude negates (harmless)"
+  },
+  "Hedging Weapons": {
+    "_bucket": "A-toggle",
+    "name": "Hedging Weapons: Floating weapons protect you and make ranged attacks.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "force"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "antipaladin 1, cleric/oracle 1, inquisitor 1, paladin 1",
+    "_snippets": [
+      "deals 2d6 points of force damage"
+    ]
+  },
+  "Hellfire Ray": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 untyped",
+    "_spell_level": "cleric/oracle 6, sorcerer/wizard 6",
+    "_snippets": [
+      "1d6 points of damage"
+    ]
+  },
+  "Hellmouth Lash": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "5d8 untyped",
+    "_spell_level": "sorcerer/wizard 4, witch 4, bloodrager 4",
+    "_snippets": [
+      "5d8 points of damage"
+    ]
+  },
+  "Heroes' Feast": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "bard 6, cleric/oracle 6, inquisitor 6",
+    "_snippets": [
+      "+1 morale bonus on attack rolls"
+    ]
+  },
+  "Heroic Invocation": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "4",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "4",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "sorcerer/wizard 9, witch 9, psychic 9",
+    "_snippets": [
+      "+4 morale bonus on attack and damage rolls"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Heroism": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "bard 2, sorcerer/wizard 3, alchemist 3, summoner 3, witch 3, inquisitor 3, bloodrager 3, psychic 3, spiritualist 3",
+    "_snippets": [
+      "+2 morale bonus on attack rolls"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Heroism, Greater": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "4",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "bard 5, sorcerer/wizard 6, summoner 5, witch 6, psychic 6, spiritualist 6",
+    "_snippets": [
+      "+4 bonus on attack rolls"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Holy Ice Weapon": {
+    "_bucket": "A-toggle",
+    "name": "Holy Ice Weapon: Create a masterwork weapon made of frozen holy water.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "cleric/oracle 2, inquisitor 2",
+    "_snippets": [
+      "dealing 1d4 points of damage"
+    ]
+  },
+  "Holy Javelin": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 untyped",
+    "_spell_level": "cleric/oracle 3, inquisitor 3, paladin 2",
+    "_snippets": [
+      "1d6 points of damage"
+    ]
+  },
+  "Holy Sword": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "5",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "5",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "paladin 4",
+    "_snippets": [
+      "+5 enhancement bonus on attack and damage rolls"
+    ]
+  },
+  "Holy Whisper": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "paladin 3",
+    "_snippets": [
+      "+2 sacred bonus on attack and damage rolls"
+    ],
+    "_save_raw": "Fortitude negates; see text"
+  },
+  "Hunter's Blessing": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 5, druid 5, inquisitor 5",
+    "_snippets": [
+      "+2 sacred bonus on attack rolls",
+      "+2 sacred bonus on attack rolls and damage rolls"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Hunter's Howl": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "ranger 1",
+    "_snippets": [
+      "+2 bonus on weapon attack and damage rolls"
+    ],
+    "_save_raw": "Will negates"
+  },
+  "Inflict Critical Wounds": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": {
+      "type": "will",
+      "dc": "",
+      "description": "Will half",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "4d8 untyped",
+    "_spell_level": "cleric/oracle 4, witch 5, inquisitor 4, shaman 4, occultist 4, spiritualist 4",
+    "_snippets": [
+      "4d8 damage"
+    ]
+  },
+  "Inflict Moderate Wounds": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": {
+      "type": "will",
+      "dc": "",
+      "description": "Will half",
+      "harmless": false
+    },
+    "riders": [
+      "Target sickened for [[1]] rounds."
+    ],
+    "review": true,
+    "_base_damage": "2d8 untyped",
+    "_spell_level": "antipaladin 3, cleric/oracle 2, inquisitor 2, witch 2, shaman 2, occultist 2, spiritualist 2",
+    "_snippets": [
+      "2d8 damage",
+      "sickened for 1 round"
+    ]
+  },
+  "Inflict Serious Wounds": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": {
+      "type": "will",
+      "dc": "",
+      "description": "Will half",
+      "harmless": false
+    },
+    "riders": [
+      "Target sickened for [[1]] rounds."
+    ],
+    "review": true,
+    "_base_damage": "3d8 untyped",
+    "_spell_level": "cleric/oracle 3, witch 4, inquisitor 3, antipaladin 4, shaman 3, occultist 3, spiritualist 3",
+    "_snippets": [
+      "3d8 damage",
+      "sickened for 1 round"
+    ]
+  },
+  "Inheritor's Smite": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "5",
+        "target": "attack",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 2, inquisitor 2, paladin 2",
+    "_snippets": [
+      "+5 sacred bonus on the attack roll"
+    ],
+    "rider": "on hit, free bull rush [[ d20 + @attributes.cmb.total + 5 ]] vs CMD (no AoO)"
+  },
+  "Inspiring Recovery": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 6, inquisitor 6, paladin 4, ranger 4",
+    "_snippets": [
+      "+2 morale bonus on attack rolls",
+      "+2 morale bonus on attack rolls, damage rolls"
+    ],
+    "_save_raw": "Will half (harmless)"
+  },
+  "Invoke Primal Power": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "druid 5",
+    "_snippets": [
+      "+2 insight bonus on attack rolls",
+      "+2 insight bonus on attack rolls and on damage rolls"
+    ],
+    "rider": "free overrun [[ d20 + @attributes.cmb.total ]] vs CMD (no AoO)"
+  },
+  "Iron Spine": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [
+      "Target sickened for [[1]] rounds."
+    ],
+    "review": true,
+    "_base_damage": "1d6 piercing",
+    "_spell_level": "cleric/oracle 4, magus 3, sorcerer/wizard 3, witch 3",
+    "_snippets": [
+      "1d6 points of piercing damage",
+      "sickened for 1 round"
+    ]
+  },
+  "Iron Stake": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude partial",
+      "harmless": false
+    },
+    "riders": [
+      "Target sickened for [[1]] rounds."
+    ],
+    "review": true,
+    "_base_damage": "1d6 piercing",
+    "_spell_level": "cleric/oracle 3, druid 3, inquisitor 2, ranger 2, sorcerer/wizard 3, witch 3",
+    "_snippets": [
+      "1d6 points of piercing damage",
+      "sickened for 1 round"
+    ]
+  },
+  "Jolt": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d3 electricity",
+    "_spell_level": "sorcerer/wizard 0",
+    "_snippets": [
+      "1d3 points of electricity damage"
+    ]
+  },
+  "Last Azlanti's Defending Sword": {
+    "_bucket": "A-toggle",
+    "name": "Last Azlanti's Defending Sword: you create a sword of force that functions as mage's sword except as described here. the sword does not receive the add",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "force"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "magus 6, occultist 6, psychic 7, sorcerer/wizard 6",
+    "_snippets": [
+      "deals 3d6 points of force damage"
+    ]
+  },
+  "Lead Blades": {
+    "_bucket": "A-toggle",
+    "name": "Lead Blades: Melee weapons damage as if one size bigger.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "ranger 1, occultist 1",
+    "_snippets": [
+      "deals 1d8 points of damage"
+    ]
+  },
+  "Lightning Lash": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude negates (harmless)",
+      "harmless": true
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 electricity",
+    "_spell_level": "cleric/oracle 3, inquisitor 3, ranger 2, witch 3",
+    "_snippets": [
+      "1d6 points of electricity damage"
+    ]
+  },
+  "Litany Of Vengeance": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "5",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "antipaladin 4, inquisitor 5, paladin 4",
+    "_snippets": [
+      "+5 bonus on damage rolls"
+    ]
+  },
+  "Magic Boulder": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 2, druid 2",
+    "_snippets": [
+      "+1 enhancement bonus on attack and damage rolls"
+    ],
+    "_save_raw": "Will negates (harmless, object)"
+  },
+  "Magic Fang": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "druid 1, ranger 1, summoner 1, spiritualist 1",
+    "_snippets": [
+      "+1 enhancement bonus on attack and damage rolls"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Magic Siege Engine": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "antipaladin 2, cleric/oracle 2, inquisitor 2, paladin 2, sorcerer/wizard 2, occultist 2",
+    "_snippets": [
+      "+1 enhancement bonus on targeting rolls and damage rolls"
+    ],
+    "_save_raw": "Will negates (harmless, object)"
+  },
+  "Magic Stone": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 1, druid 1, shaman 1",
+    "_snippets": [
+      "+1 enhancement bonus on attack and damage rolls"
+    ],
+    "_save_raw": "Will negates (harmless, object)"
+  },
+  "Magic Weapon": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 1, paladin 1, sorcerer/wizard 1, inquisitor 1, antipaladin 1, magus 1, bloodrager 1, shaman 1, occultist 1",
+    "_snippets": [
+      "+1 enhancement bonus on attack and damage rolls"
+    ],
+    "_save_raw": "Will negates (harmless, object)"
+  },
+  "Marid's Mastery": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 1, druid 1, ranger 1, sorcerer/wizard 1, witch 1",
+    "_snippets": [
+      "+1 bonus on attack and damage rolls"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Mark Of The Reptile God": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude negates",
+      "harmless": false
+    },
+    "riders": [
+      "[[1d4]] Charisma damage."
+    ],
+    "review": true,
+    "_base_damage": "1d6 acid",
+    "_spell_level": "antipaladin 4, cleric/oracle 4, inquisitor 4, oracle 4",
+    "_snippets": [
+      "1d6 points of acid damage",
+      "1d4 points of charisma damage"
+    ]
+  },
+  "Meteor Swarm": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "reflex",
+      "dc": "",
+      "description": "none or Reflex half, see text",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "6d6 fire",
+    "_spell_level": "sorcerer/wizard 9",
+    "_snippets": [
+      "6d6 fire damage"
+    ]
+  },
+  "Mirror Strike": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "magus 1, sorcerer/wizard 1, bloodrager 1, psychic 1",
+    "_snippets": [
+      "+2 bonus on your attack roll"
+    ]
+  },
+  "Miserable Pity": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "bard 2, sorcerer/wizard 2, witch 2, psychic 2, mesmerist 2",
+    "_snippets": [
+      "+2 morale bonus on attack rolls"
+    ],
+    "_save_raw": "Will negates (see text)"
+  },
+  "Molten Orb": {
+    "_bucket": "A-toggle",
+    "name": "Molten Orb: Molten metal splash weapon deals 2d6 fire damage plus ongoing damage.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "bloodrager 2, magus 2, sorcerer/wizard 2, witch 2",
+    "_snippets": [
+      "deals 2d6 fire damage"
+    ]
+  },
+  "Natural Rhythm": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "druid 2",
+    "_snippets": [
+      "+1 bonus on damage rolls"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Polar Ray": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [
+      "[[1d4]] Dexterity drain."
+    ],
+    "review": true,
+    "_base_damage": "1d6 cold",
+    "_spell_level": "sorcerer/wizard 8",
+    "_snippets": [
+      "1d6/level cold damage",
+      "1d4 points of dexterity drain"
+    ]
+  },
+  "Polypurpose Panacea": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "competence",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "alchemist 1, sorcerer/wizard 1, psychic 1, mesmerist 1",
+    "_snippets": [
+      "+1 competence bonus on a single attack roll"
+    ]
+  },
+  "Prayer": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 3, paladin 3, inquisitor 3",
+    "_snippets": [
+      "+1 luck bonus on attack rolls",
+      "+1 luck bonus on attack rolls, weapon damage rolls"
+    ]
+  },
+  "Produce Flame": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 untyped",
+    "_spell_level": "druid 1, shaman 1",
+    "_snippets": [
+      "1d6 damage"
+    ]
+  },
+  "Rain Of Arrows": {
+    "_bucket": "A-toggle",
+    "name": "Rain Of Arrows: you point your finger and conjure a cloud of magical arrows that rain down on any creatures and objects in the indicate",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "piercing"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "sorcerer/wizard 8",
+    "_snippets": [
+      "deal 1d6 points of piercing damage"
+    ],
+    "_save_raw": "Reflex halves"
+  },
+  "Ray of Frost": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d3 cold",
+    "_spell_level": "sorcerer/wizard 0, magus 0",
+    "_snippets": [
+      "1d3 cold damage"
+    ]
+  },
+  "Reaper's Coterie": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "profane",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "antipaladin 2, bloodrager 2, cleric/oracle 3, inquisitor 3, witch 3",
+    "_snippets": [
+      "+1 profane bonus on damage rolls"
+    ]
+  },
+  "Reduce Person": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "sorcerer/wizard 1, alchemist 1, summoner 1, witch 1, magus 1, bloodrager 1, occultist 1, psychic 1",
+    "_snippets": [
+      "+1 bonus on attack rolls"
+    ],
+    "_save_raw": "Fortitude negates"
+  },
+  "Release The Hounds": {
+    "_bucket": "A-toggle",
+    "name": "Release The Hounds: this spell summons a pack of canines that respond to the spellcaster's commands and act in perfect unison, causing them",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "3d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "bard 5, druid 5, shaman 5, sorcerer/wizard 5, summoner 5, witch 5",
+    "_snippets": [
+      "deals 3d6 points of damage"
+    ],
+    "rider": "free trip [[ d20 + @attributes.cmb.total ]] vs CMD"
+  },
+  "Rift of Ruin": {
+    "_bucket": "A-toggle",
+    "name": "Rift of Ruin: this spell tears a rift in reality, creating an extradimensional hole with a depth of 60 feet. you must create the rift",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "6d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "cleric/oracle 8, sorcerer/wizard 8",
+    "_snippets": [
+      "additional 6d6 points of damage"
+    ],
+    "_save_raw": "Reflex partial"
+  },
+  "Righteous Blood": {
+    "_bucket": "A-toggle",
+    "name": "Righteous Blood: the target creature's innate goodness infuses its body with holy energy. while this energy does not directly empower th",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "inquisitor 2, paladin 2",
+    "_snippets": [
+      "deals 2d6 points of damage"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Righteous Vigor": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "inquisitor 3, paladin 2",
+    "_snippets": [
+      "+1 morale bonus on attack rolls"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "River Whip": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 untyped",
+    "_spell_level": "magus 2, sorcerer/wizard 2, witch 2",
+    "_snippets": [
+      "1d6 points of damage"
+    ]
+  },
+  "Rock Whip": {
+    "_bucket": "A-toggle",
+    "name": "Rock Whip: a 15-foot-long lash of crumbling crystal and earth emerges from the palm of your hand. this weapon is treated as a nonm",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "bludgeoning"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "cleric/oracle 2, druid 2, magus 2, ranger 1, shaman 2, sorcerer/wizard 2, witch 2",
+    "_snippets": [
+      "deals 1d8 points of bludgeoning damage"
+    ],
+    "rider": "free disarm [[ d20 + @attributes.cmb.total - @attributes.bab.total + @spells.primary.cl.total ]] vs CMD"
+  },
+  "Rune Of Rule": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "5",
+        "target": "attack",
+        "type": "insight",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "bard 2, occultist 2, sorcerer/wizard 2, witch 2",
+    "_snippets": [
+      "+5 insight bonus on a single attack roll"
+    ],
+    "_save_raw": "Will (harmless)"
+  },
+  "Rusting Grasp": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "3d6 untyped",
+    "_spell_level": "druid 4, occultist 4",
+    "_snippets": [
+      "3d6 points of damage"
+    ]
+  },
+  "Saddle Surge": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "paladin 2",
+    "_snippets": [
+      "+1 morale bonus on damage rolls"
+    ]
+  },
+  "Scorching Ray": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "4d6 fire",
+    "_spell_level": "sorcerer/wizard 2, magus 2, bloodrager 2",
+    "_snippets": [
+      "4d6 fire damage"
+    ]
+  },
+  "Searing Light": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d8 untyped",
+    "_spell_level": "cleric/oracle 3, inquisitor 3",
+    "_snippets": [
+      "1d8 points of damage"
+    ]
+  },
+  "Sense Vitals": {
+    "_bucket": "A-toggle",
+    "name": "Sense Vitals: this spell makes your eyes shine blood red and allows you to see the vital areas and weak points of creatures within 30",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "antipaladin 2, bard 2, ranger 2, sorcerer/wizard 2",
+    "_snippets": [
+      "dealing an additional 1d6 points of damage"
+    ]
+  },
+  "Shard of Chaos": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "will",
+      "dc": "",
+      "description": "Will partial (see text)",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d8 untyped",
+    "_spell_level": "cleric/oracle 2",
+    "_snippets": [
+      "1d8 points of damage"
+    ]
+  },
+  "Shield Of The Dawnflower": {
+    "_bucket": "A-toggle",
+    "name": "Shield Of The Dawnflower: you create a disk of sunlight on one arm. any creature that strikes you with a melee attack deals normal damage, but al",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "bard 4, cleric/oracle 4, magus 4, paladin 4, ranger 4",
+    "_snippets": [
+      "deals normal damage, but also takes 1d6 points of fire damage"
+    ],
+    "_save_raw": "see text"
+  },
+  "Shield Of The Dawnflower, Greater": {
+    "_bucket": "A-toggle",
+    "name": "Shield Of The Dawnflower, Greater: you create a disk of sunlight on one arm. any creature that strikes you with a melee attack deals normal damage, but al",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "bard 6, cleric/oracle 6, magus 6",
+    "_snippets": [
+      "deals normal damage, but also takes 1d6 points of damage"
+    ]
+  },
+  "Shillelagh": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "druid 1",
+    "_snippets": [
+      "+1 enhancement bonus on attack and damage rolls"
+    ],
+    "_save_raw": "Will negates (object)"
+  },
+  "Shining Cord": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude partial (see below)",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 untyped",
+    "_spell_level": "magus 3",
+    "_snippets": [
+      "1d6 points of damage"
+    ]
+  },
+  "Shocking Grasp": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 electricity",
+    "_spell_level": "sorcerer/wizard 1, magus 1, bloodrager 1, occultist 1",
+    "_snippets": [
+      "1d6/level electricity damage"
+    ]
+  },
+  "Silver Darts": {
+    "_bucket": "A-toggle",
+    "name": "Silver Darts: Cone of silver darts deals 1d6 piercing damage/level, more against unarmored targets.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "piercing"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "bloodrager 3, magus 3, sorcerer/wizard 3, witch 3",
+    "_snippets": [
+      "deals 1d6 piercing damage"
+    ],
+    "_save_raw": "Reflex half"
+  },
+  "Slay Living": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude partial",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "12d6 untyped",
+    "_spell_level": "cleric/oracle 5, witch 6, antipaladin 4, shaman 6, spiritualist 5",
+    "_snippets": [
+      "12d6 points of damage"
+    ]
+  },
+  "Snowball": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude partial (see text)",
+      "harmless": false
+    },
+    "riders": [
+      "Target staggered for [[1]] rounds."
+    ],
+    "review": true,
+    "_base_damage": "1d6 cold",
+    "_spell_level": "druid 1, magus 1, sorcerer/wizard 1, summoner 1, witch 1",
+    "_snippets": [
+      "1d6 points of cold damage",
+      "staggered for 1 round"
+    ]
+  },
+  "Sonic Form": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 sonic",
+    "_spell_level": "alchemist 6, bard 6, sorcerer/wizard 6, psychic 6",
+    "_snippets": [
+      "1d6 points of sonic damage"
+    ]
+  },
+  "Spear Of Purity": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "will",
+      "dc": "",
+      "description": "Will partial (see text)",
+      "harmless": false
+    },
+    "riders": [
+      "Target blinded for [[1]] rounds."
+    ],
+    "review": true,
+    "_base_damage": "1d8 untyped",
+    "_spell_level": "cleric/oracle 2",
+    "_snippets": [
+      "1d8 points of damage",
+      "blinded for 1 round"
+    ]
+  },
+  "Spectral Hand": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "sorcerer/wizard 2, witch 2, occultist 2, psychic 2, spiritualist 2",
+    "_snippets": [
+      "+2 bonus on your melee touch attack roll"
+    ]
+  },
+  "Spiritual Ally": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d10 force",
+    "_spell_level": "cleric/oracle 4, spiritualist 4",
+    "_snippets": [
+      "1d10 points of force damage"
+    ]
+  },
+  "Spiritual Weapon": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d8 force",
+    "_spell_level": "cleric/oracle 2, inquisitor 2, shaman 2, spiritualist 2",
+    "_snippets": [
+      "1d8 force damage"
+    ]
+  },
+  "Steam Ray Fusillade": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "4d6 fire",
+    "_spell_level": "sorcerer/wizard 7",
+    "_snippets": [
+      "4d6 points of fire damage"
+    ]
+  },
+  "Stricken Heart": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [
+      "Target staggered for [[1]] rounds."
+    ],
+    "review": true,
+    "_base_damage": "2d6 untyped",
+    "_spell_level": "inquisitor 2, shaman 3, sorcerer/wizard 2, witch 2, psychic 2, mesmerist 2, spiritualist 2",
+    "_snippets": [
+      "2d6 damage",
+      "staggered for 1 round"
+    ]
+  },
+  "Sun Metal": {
+    "_bucket": "A-toggle",
+    "name": "Sun Metal: Weapon touched bursts into flames.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "cleric/oracle 1, paladin 1, ranger 1",
+    "_snippets": [
+      "deals an additional 1d4 points of fire damage"
+    ],
+    "_save_raw": "Fortitude negates (object)"
+  },
+  "Sundering Shards": {
+    "_bucket": "A-toggle",
+    "name": "Sundering Shards: Sundered item explodes, dealing 1d6 damage to adjacent creatures.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "bloodrager 1, magus 1, sorcerer/wizard 1, witch 1, occultist 1, psychic 1",
+    "_snippets": [
+      "dealing 1d6 damage"
+    ],
+    "rider": "free sunder [[ d20 + @attributes.cmb.total ]] vs CMD",
+    "_save_raw": "Reflex negates (see text)"
+  },
+  "Sword To Snake": {
+    "_bucket": "A-toggle",
+    "name": "Sword To Snake: when you make an undulating gesture using your hand, the target item changes slightly in shape and appearance to resemb",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "piercing"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "cleric/oracle 4, druid 4, shaman 4, sorcerer/wizard 4, summoner 4",
+    "_snippets": [
+      "deals 1d4 points of piercing damage"
+    ],
+    "_save_raw": "Will negates (object)"
+  },
+  "Telekinetic Charge": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "sorcerer/wizard 4, bloodrager 4, psychic 4, spiritualist 4",
+    "_snippets": [
+      "+2 bonus on the attack roll"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Telekinetic Projectile": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 untyped",
+    "_spell_level": "occultist 0, psychic 0, spiritualist 0",
+    "_snippets": [
+      "1d6 points of damage"
+    ]
+  },
+  "Telekinetic Strikes": {
+    "_bucket": "A-toggle",
+    "name": "Telekinetic Strikes: the touched creature's limbs are charged with telekinetic force. for the duration of the spell, the target's unarmed at",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "force"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "magus 2, psychic 2, sorcerer/wizard 2",
+    "_snippets": [
+      "deal an additional 1d4 points of force damage"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Thorn Body": {
+    "_bucket": "A-toggle",
+    "name": "Thorn Body: Your attackers take 1d6 +1 damage/level.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "piercing"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "alchemist 3, druid 4, shaman 4",
+    "_snippets": [
+      "deal an additional 1d6 points of piercing damage"
+    ]
+  },
+  "Thorny Entanglement": {
+    "_bucket": "A-toggle",
+    "name": "Thorny Entanglement: As entangle, plus plants make ranged attacks.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "piercing"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "druid 3, ranger 3, shaman 3, witch 3",
+    "_snippets": [
+      "deals 2d6 points of piercing damage"
+    ],
+    "_save_raw": "Reflex partial (see text)"
+  },
+  "Timely Inspiration": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "3",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "bard 1",
+    "_snippets": [
+      "+3 bonus) on the attack roll"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Touch Of Combustion": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": {
+      "type": "reflex",
+      "dc": "",
+      "description": "Reflex negates; see text",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 fire",
+    "_spell_level": "druid 1, inquisitor 1, magus 1, sorcerer/wizard 1, witch 1, bloodrager 1, psychic 1",
+    "_snippets": [
+      "1d6 points of fire damage"
+    ]
+  },
+  "Transmute Blood To Acid": {
+    "_bucket": "A-toggle",
+    "name": "Transmute Blood To Acid: Target takes acid damage each round, and its attackers take acid damage.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "acid"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "sorcerer/wizard 9, psychic 9",
+    "_snippets": [
+      "dealing 1d6 points of acid damage"
+    ],
+    "_save_raw": "Fortitude half"
+  },
+  "True Strike": {
+    "_bucket": "A-toggle",
+    "name": "True Strike: +20 on your next attack roll.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "20",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "insight",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "review": true,
+    "_spell_level": "sorcerer/wizard 1, alchemist 1, inquisitor 1, magus 1, bloodrager 1, psychic 1",
+    "_snippets": [
+      "attack roll (if it is made before the end of the next round) gains a +20 insight bonus"
+    ]
+  },
+  "Twilight Knife": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d4 force",
+    "_spell_level": "sorcerer/wizard 3, witch 3, bloodrager 3, occultist 3, psychic 3, spiritualist 3",
+    "_snippets": [
+      "1d4 points of force damage"
+    ]
+  },
+  "Umbral Infusion": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "alchemist 4, antipaladin 4, cleric/oracle 4, occultist 4, psychic 4, shaman 4, sorcerer/wizard 4, witch 4",
+    "_snippets": [
+      "+2 bonus on all rolls, including damage rolls"
+    ],
+    "_save_raw": "Will negates"
+  },
+  "Umbral Strike": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": {
+      "type": "fortitude",
+      "dc": "",
+      "description": "Fortitude partial",
+      "harmless": false
+    },
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 untyped",
+    "_spell_level": "cleric/oracle 7, druid 7, inquisitor 6, magus 6, occultist 6, psychic 7, shaman 7, sorcerer/wizard 7, spiritualist 6, witch 7",
+    "_snippets": [
+      "1d6 points of damage"
+    ]
+  },
+  "Umbral Weapon": {
+    "_bucket": "A-toggle",
+    "name": "Umbral Weapon: a shadowy afterimage trails behind the targeted weapon, potentially damaging foes even when the weapon misses. once per",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "cold"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "antipaladin 2, bard 2, magus 2, sorcerer/wizard 2, witch 2",
+    "_snippets": [
+      "deals 1d8 points of cold damage"
+    ]
+  },
+  "Unerring Weapon": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "floor(@spells.primary.cl.total/4)",
+        "target": "attack",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "inquisitor 1, magus 1, sorcerer/wizard 1, witch 1, bloodrager 1, occultist 2, psychic 1",
+    "_snippets": [
+      "+2 bonus, +1 per four caster levels, on attack rolls"
+    ],
+    "_save_raw": "Will negates (harmless, object)"
+  },
+  "Unholy Sword": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "5",
+        "target": "attack",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "5",
+        "target": "wdamage",
+        "type": "enhancement",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "antipaladin 4",
+    "_snippets": [
+      "+5 enhancement bonus on attack and damage rolls"
+    ]
+  },
+  "Urgathoa's Beacon": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "profane",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "antipaladin 2, cleric/oracle 2, inquisitor 2",
+    "_snippets": [
+      "+1 profane bonus on attack rolls"
+    ],
+    "_save_raw": "Will negates"
+  },
+  "Vampiric Touch": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 untyped",
+    "_spell_level": "sorcerer/wizard 3, witch 3, antipaladin 3, magus 3, bloodrager 3, psychic 3, mesmerist 3, spiritualist 3",
+    "_snippets": [
+      "1d6 damage"
+    ]
+  },
+  "Vengeful Comets": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 bludgeoning",
+    "_spell_level": "druid 3, sorcerer/wizard 3",
+    "_snippets": [
+      "1d6 points of bludgeoning damage"
+    ]
+  },
+  "Vengeful Stinger": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 6, sorcerer/wizard 5, summoner 5, witch 5",
+    "_snippets": [
+      "+2 sacred bonus on the attack roll"
+    ],
+    "_save_raw": "Fortitude negates; see text"
+  },
+  "Vigor": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "competence",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "adept 0, cleric/oracle 0",
+    "_snippets": [
+      "+1 competence bonus on a single melee damage roll"
+    ],
+    "_save_raw": "Will negates (harmless)"
+  },
+  "Vile Dog Transformation": {
+    "_bucket": "A-toggle",
+    "name": "Vile Dog Transformation: Transform ordinary dogs into fiendish minions.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "acid"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "antipaladin 3, cleric/oracle 5, druid 5, shaman 5, sorcerer/wizard 5, witch 5",
+    "_snippets": [
+      "additionally, each transformed dog deals an extra 1d6 points of acid damage"
+    ],
+    "_save_raw": "Will negates (see text)"
+  },
+  "Wall of Lava": {
+    "_bucket": "B-ranged",
+    "attack": "ranged",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "2d6 fire",
+    "_spell_level": "druid 8, sorcerer/wizard 8",
+    "_snippets": [
+      "2d6 points of fire damage"
+    ]
+  },
+  "Wall of Sound": {
+    "_bucket": "A-toggle",
+    "name": "Wall of Sound: Sonic wall deflects and damages creatures.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "sonic"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "bard 4, magus 4, sorcerer/wizard 5, bloodrager 4, psychic 5, spiritualist 5",
+    "_snippets": [
+      "deals 2d4 points of sonic damage"
+    ]
+  },
+  "Weapon of Awe": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "2",
+        "target": "wdamage",
+        "type": "sacred",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "cleric/oracle 2, inquisitor 2, paladin 2, occultist 2",
+    "_snippets": [
+      "+2 sacred bonus on damage rolls"
+    ],
+    "_save_raw": "Will negates (harmless, object)"
+  },
+  "Whip Of Spiders": {
+    "_bucket": "B-melee",
+    "attack": "melee",
+    "save": null,
+    "riders": [],
+    "review": true,
+    "_base_damage": "1d6 untyped",
+    "_spell_level": "bard 2, druid 2, sorcerer/wizard 2, summoner 2, witch 2",
+    "_snippets": [
+      "1d6 points of damage"
+    ]
+  },
+  "Wind Blades": {
+    "_bucket": "A-toggle",
+    "name": "Wind Blades: you harden the air around the target into jagged invisible blades that deal damage based on how fast the target moves.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d8",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "slashing"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "druid 5, magus 5, sorcerer/wizard 5, witch 5",
+    "_snippets": [
+      "deals 1d8 points of slashing damage"
+    ],
+    "_save_raw": "Will negates"
+  },
+  "Wrath": {
+    "_bucket": "A",
+    "changes": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "1",
+        "target": "wdamage",
+        "type": "morale",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [],
+    "review": true,
+    "_spell_level": "inquisitor 1",
+    "_snippets": [
+      "+1 morale bonus on attack rolls",
+      "+1 morale bonus on attack rolls and weapon damage rolls"
+    ]
+  },
+  "Wreath of Blades": {
+    "_bucket": "A-toggle",
+    "name": "Wreath of Blades: Four mithral daggers speed around you, attacking nearby creatures and protecting your spellcasting from attacks of opportunity.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "cold"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "review": true,
+    "_spell_level": "magus 4, sorcerer/wizard 5, summoner 5, witch 5, bloodrager 4, occultist 4, psychic 5",
+    "_snippets": [
+      "dealt by the blades would be 6d4+1 plus 1d6 cold damage"
+    ],
+    "_save_raw": "Reflex half (special, see below)"
+  }
+}
