@@ -20,6 +20,7 @@ Tortoise maneuvers") must be covered by already-picked maneuvers+stances of that
 the highest-level chosen maneuvers. There are NO ability-modifier bonuses anywhere in this
 subsystem -- counts mirror the spells known / spells per day concept straight from the tables.
 """
+import json
 import random
 import re
 from math import ceil
@@ -403,13 +404,44 @@ def _prereq_count(entry):
     return int(tok) if tok.isdigit() else _WORD_NUMS.get(tok, 0)
 
 
+_STANCE_AURAS = None
+
+
+def _stance_auras():
+    '''{normalized stance name -> {auraRange, onlyOthers}} from stance_auras.json (cached; {} if
+    absent). Drives the AuraRange:/onlyOthers; description markers the aura/buff-distributor reads.'''
+    global _STANCE_AURAS
+    if _STANCE_AURAS is None:
+        from pathlib import Path as _Path
+        p = (_Path(__file__).resolve().parents[2] / 'json' / 'class_data' / 'path_of_war'
+             / 'stance_auras.json')
+        try:
+            raw = json.loads(p.read_text(encoding='utf-8'))
+        except (OSError, ValueError):
+            raw = {}
+        _STANCE_AURAS = {_dnorm(k): v for k, v in raw.items()
+                         if isinstance(v, dict) and not str(k).startswith('_')}
+    return _STANCE_AURAS
+
+
+def _aura_prefix(name):
+    '''The "AuraRange: N\\n[onlyOthers;\\n]\\n" marker block for an aura stance, else "".'''
+    a = _stance_auras().get(_dnorm(name))
+    if not a:
+        return ''
+    lines = [f"AuraRange: {a.get('auraRange', '')}"]
+    if a.get('onlyOthers'):
+        lines.append('onlyOthers;')
+    return '\n'.join(lines) + '\n\n'
+
+
 def _desc_entry(m):
     name, level, kind, entry, discipline = m[:5]
     action = str(entry.get('Initiation', entry.get('Initiation Action', ''))).strip()
     action = re.sub(r'^(action)?\s*:\s*', '', action, flags=re.IGNORECASE)
     clean = lambda v: re.sub(r'^\s*:\s*', '', str(v)).strip()
     return {
-        'description': clean(entry.get('Description', '')),
+        'description': _aura_prefix(name) + clean(entry.get('Description', '')),
         'type': kind,
         'level': level,
         'discipline': discipline,

@@ -1,0 +1,23 @@
+{
+  "_comment": "Path of War aura / affects-others stances. Consumed by path_of_war.py (_desc_entry) and the palette's stance_desc_html, which PREPEND 'AuraRange: <auraRange>' and (when onlyOthers) 'onlyOthers;' to the stance buff's description for the aura/buff-distributor tooling. auraRange is a number (feet) or a pf1 formula string (scales with @attributes.hd.total). onlyOthers = the wielder gains no benefit (enemy-debuff auras and ally-only buffs). Matched by apostrophe/case-insensitive normalized name.",
+  "Vampiric Aura": { "auraRange": 20, "onlyOthers": true },
+  "Walk in the Dark": { "auraRange": 20, "onlyOthers": true },
+  "Aura of Shared Misery": { "auraRange": 20, "onlyOthers": true },
+  "Oathbreaker's Aura": { "auraRange": 30, "onlyOthers": true },
+  "Luckdrinker Aura": { "auraRange": 30, "onlyOthers": false },
+  "Golden Commander Stance": { "auraRange": 30, "onlyOthers": true },
+  "Golden General's Attitude": { "auraRange": 60, "onlyOthers": true },
+  "Riot of Despair": { "auraRange": 30, "onlyOthers": true },
+  "Stance of Sown Mistrust": { "auraRange": 30, "onlyOthers": true },
+  "Mangled Gear Stance": { "auraRange": 30, "onlyOthers": true },
+  "Spoils of War": { "auraRange": "25 + 5*floor(@attributes.hd.total/2)", "onlyOthers": true },
+  "Rat Pack": { "auraRange": 30, "onlyOthers": true },
+  "Stance of the Elder Rat": { "auraRange": 60, "onlyOthers": true },
+  "Silvered Mirror Stance": { "auraRange": 30, "onlyOthers": true },
+  "Pride Leader's Stance": { "auraRange": "20 + 10*floor((@attributes.hd.total - 1) / 5)", "onlyOthers": false },
+  "Triumphant Lion's Leadership": { "auraRange": 10, "onlyOthers": false },
+  "Clever Cat Stance": { "auraRange": "25 + 5*floor(@attributes.hd.total/2)", "onlyOthers": false },
+  "Obsidian Reflection Stance": { "auraRange": 20, "onlyOthers": false },
+  "Charging Dullahan's Advance": { "auraRange": 30, "onlyOthers": false },
+  "Phalanx Lancer": { "auraRange": 5, "onlyOthers": false }
+}
