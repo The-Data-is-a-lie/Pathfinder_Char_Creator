@@ -34,9 +34,10 @@ def roll_trainer_slots(character):
 
 
 def roll_caliber():
-    """A trainer's caliber: weighted so average (2) and excellent (3) trainers are common, and
-    terrible (1) and mythical (4) trainers are rare."""
-    return random.choices([1, 2, 3, 4], weights=[15, 40, 30, 15], k=1)[0]
+    """A trainer's caliber (how many feats / 2-talent units they teach): weighted so average (2) and
+    excellent (3) trainers dominate (~45% each), with the occasional terrible (1) and a rare mythical
+    (4). Mean ~2.4."""
+    return random.choices([1, 2, 3, 4], weights=[8, 45, 45, 2], k=1)[0]
 
 
 def select_trainer_feats(character, casting_level_str):
