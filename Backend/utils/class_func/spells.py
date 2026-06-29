@@ -211,7 +211,12 @@ def spells_known_selection(character):
         i = 1
 
     character.spell_list_choose_from=[]
-    
+    # Per-level count of spells a PREPARED caster prepares (= spells/day), aligned 1:1 to
+    # spell_list_choose_from so the FoundryVTT module can mark exactly that many prepared per level.
+    # Divine casters select day_list spells (so this equals the group size); spellbook casters
+    # (wizard/witch/...) select the larger known_list, so this is the prepared subset.
+    character.spells_prepared_per_level=[]
+
     #separating the lists
     known_list = character.spells_known_list
     day_list = character.spells_per_day_list
@@ -239,8 +244,14 @@ def spells_known_selection(character):
 
         spell_list = spells['name'].tolist()
         character.spell_list_choose_from.append(spell_list)
+        # how many of this level a prepared caster prepares = spells/day, capped to what we picked.
+        try:
+            prepared_n = int(day_list[i])
+        except (TypeError, ValueError, IndexError):
+            prepared_n = 0
+        character.spells_prepared_per_level.append(min(prepared_n, len(spell_list)))
 
-        i += 1 
+        i += 1
 
     else:
         print('cannot select spells_known_selection')
@@ -252,6 +263,69 @@ def spells_known_selection(character):
     # character.spell_list_choose_from = all_spell_names
 
     return character.spell_list_choose_from, day_list, known_list
+
+
+# --- Spell conditionals / riders -----------------------------------------------------------------
+# Curated, name-keyed pf1 data attached to a generated NPC's chosen spells so the FoundryVTT module
+# can carry them into the actor (mirrors the feat_changes / feat_conditionals split). Authored via
+# Backend/scripts/build_spell_conditionals.py + manual curation; {} if the file is absent.
+#   spell_changes.json -- Bucket A buffs (Bless, Divine Favor, True Strike, Magic Weapon, Flame
+#                         Arrow): a default-off conditional toggle / always-on change on the wielder's
+#                         WEAPON ({name,default,modifiers} or {changes,contextNotes}).
+#   spell_riders.json  -- Bucket B damaging-attack spells (Chill Touch, Frigid Touch, Acid Arrow):
+#                         the formal save block + non-damage riders ([[ ]] inline text) on the SPELL's
+#                         own action (its attack + damage already come from the pf1 compendium).
+_SPELL_CHANGES = None
+_SPELL_RIDERS = None
+
+
+def _spell_change_buffs():
+    """Curated Bucket-A weapon buffs keyed by spell display name. Loaded once; {} if absent."""
+    global _SPELL_CHANGES
+    if _SPELL_CHANGES is None:
+        from pathlib import Path as _Path
+        _p = _Path(__file__).resolve().parents[2] / "json" / "spells" / "spell_changes.json"
+        try:
+            _SPELL_CHANGES = json.loads(_p.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            _SPELL_CHANGES = {}
+    return _SPELL_CHANGES
+
+
+def _spell_rider_buffs():
+    """Curated Bucket-B save/rider data keyed by spell display name. Loaded once; {} if absent."""
+    global _SPELL_RIDERS
+    if _SPELL_RIDERS is None:
+        from pathlib import Path as _Path
+        _p = _Path(__file__).resolve().parents[2] / "json" / "spells" / "spell_riders.json"
+        try:
+            _SPELL_RIDERS = json.loads(_p.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            _SPELL_RIDERS = {}
+    return _SPELL_RIDERS
+
+
+def spell_conditionals_selection(character):
+    """Filter the curated spell-conditional maps down to the spells this NPC actually has.
+
+    Returns (spell_changes_dict, spell_riders_dict), each keyed by the spell's display name, for the
+    spells present in character.spell_list_choose_from (a list of per-level lists of names). Matching
+    is case-insensitive (mirrors the feat-map lookup in main_test.py). Both are {} for non-casters."""
+    chosen = set()
+    for level_list in (getattr(character, "spell_list_choose_from", None) or []):
+        if isinstance(level_list, list):
+            chosen.update(str(s) for s in level_list)
+    chg_ci = {str(k).lower(): (k, v) for k, v in _spell_change_buffs().items()}
+    rid_ci = {str(k).lower(): (k, v) for k, v in _spell_rider_buffs().items()}
+    spell_changes_dict, spell_riders_dict = {}, {}
+    for name in chosen:
+        lc = name.lower()
+        if lc in chg_ci:
+            spell_changes_dict[name] = chg_ci[lc][1]
+        if lc in rid_ci:
+            spell_riders_dict[name] = rid_ci[lc][1]
+    return spell_changes_dict, spell_riders_dict
+
 
 # remove if need to give an accurate spells per day (only for foundryVTT (to have more spells populate in list))
 def extra_spells_divine(character):

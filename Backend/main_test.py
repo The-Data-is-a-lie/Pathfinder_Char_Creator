@@ -78,10 +78,11 @@ from utils.class_func.skill_unlocks 				import choose_skill_unlock
 #                                                      		race_traits_chooser, subrace_chooser)#, full_race_data
 from utils.class_func.randomize_flaw 				import randomize_flaw_amount
 from utils.class_func.skill_ranks 					import skills_selector
-from utils.class_func.spells 						import (extra_spells_divine, spells_known_attr, 
-										   					spells_known_extra_roll, spells_known_selection, 
+from utils.class_func.spells 						import (extra_spells_divine, spells_known_attr,
+										   					spells_known_extra_roll, spells_known_selection,
                                                    	        spells_per_day_attr, spells_per_day_from_ability_mod,
-                                                            class_for_spells_attr, caster_formula)#, alignment_spell_limits
+                                                            class_for_spells_attr, caster_formula,
+                                                            spell_conditionals_selection)#, alignment_spell_limits
 from utils.class_func.spell_alphabetize_and_dedupe 	import spell_alphabetize_and_dedupe_func
 from utils.class_func.stats 						import roll_stats, assign_stats, calc_ability_mod 
 from utils.class_func.separate_feats_func 			import separate_feats_func
@@ -1215,6 +1216,25 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		character.spell_list_choose_from = spell_alphabetize_and_dedupe_func(character.spell_list_choose_from)
 		# print("post character.spell_list_choose_from", character.spell_list_choose_from)
 
+		# Re-derive the per-level prepared count against the FINAL spell list (after domain/bonus spells
+		# + dedupe), aligned 1:1 to spell_list_choose_from for the FoundryVTT sheet. Divine casters
+		# prepare their whole daily loadout (incl. domain/bonus spells); spellbook casters (wizard,
+		# witch, magus, arcanist, alchemist, investigator) prepare only spells/day out of a larger
+		# spellbook, so keep the spells/day count from spells_known_selection (capped to the group).
+		_spell_groups = character.spell_list_choose_from or []
+		if character.c_class in getattr(data, 'divine_casters'):
+			character.spells_prepared_per_level = [len(g) for g in _spell_groups]
+		else:
+			_prep = character.spells_prepared_per_level or []
+			character.spells_prepared_per_level = [
+				min(_prep[k] if k < len(_prep) else 0, len(g)) for k, g in enumerate(_spell_groups)
+			]
+
+		# pf1 conditional / rider data for the NPC's chosen spells (Bucket A weapon buffs ->
+		# spell_changes_dict; Bucket B attack-spell save/riders -> spell_riders_dict). Exported below
+		# for the FoundryVTT module to attach to the weapon / spell items.
+		spell_changes_dict, spell_riders_dict = spell_conditionals_selection(character)
+
 
 	# ------------------- Last minute modded char sheet -------------------#
 		mod_char_sheet_var = modded_char_sheet_func(modded_char_sheet)
@@ -1263,6 +1283,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				# fort_saving_throw, reflex_saving_throw, wisdom_saving_throw,
 				character.spell_list_choose_from,
 				day_list, known_list,
+				character.spells_prepared_per_level,
 				martial_disciplines, initiator_level,
 				maneuvers_known_list, maneuvers_readied_list,
 				maneuvers_choose_from, maneuvers_readied_names,
@@ -1322,6 +1343,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				# "fort_saving_throw", "reflex_saving_throw", "wisdom_saving_throw",
 				"spell_list_choose_from",
 				"day_list", "known_list",
+				"spells_prepared_per_level",
 				"martial_disciplines", "initiator_level",
 				"maneuvers_known_list", "maneuvers_readied_list",
 				"maneuvers_choose_from", "maneuvers_readied_names",
@@ -1367,12 +1389,20 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				]
 		
 		assert len(export_list_non_dict) == len(string_export_list_non_dict), f"export key/value mismatch: {len(string_export_list_non_dict)} keys vs {len(export_list_non_dict)} values"
+		# Feat buff side-maps (populated below, once the placed-feat list exists). Empty dicts here so the
+		# export references stay stable; the populate block mutates these same objects in place.
+		feat_changes_dict = {}
+		feat_conditionals_dict = {}
 		export_list_dict = [
 				character.spell_list_choose_from, equip_descrip, maneuvers_desc_dict, homebrew_feat_desc_dict,
+				feat_changes_dict, feat_conditionals_dict,
+				spell_changes_dict, spell_riders_dict,
 				 ]
 
 		string_export_list_dict = [
 				"spell_list_choose_from_dict", "equip_descrip", "maneuvers_desc_dict", "homebrew_feat_desc_dict",
+				"feat_changes_dict", "feat_conditionals_dict",
+				"spell_changes_dict", "spell_riders_dict",
 				 ]
 
 		# Make EVERY placed feat renderable by the FoundryVTT module. The module silently DROPS any feat

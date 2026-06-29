@@ -98,7 +98,8 @@ class Character:
         self.spells_per_day_list=None
         self.highest_spell_known_1=None
         self.highest_spell_known_2=None
-        self.spell_list_choose_from=None        
+        self.spell_list_choose_from=None
+        self.spells_prepared_per_level=[]
 
         #class specific options
         self.wizard_chosen_school=None
