@@ -52,6 +52,7 @@ from utils.class_func.feats 						import (build_selector, chooseable_list, choos
 from utils.class_func.feats_to_chooseable 			import add_feats_to_chooseable
 from utils.class_func.feat_tax 						import feat_tax_func, feat_spell_searcher
 from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feats, specialize_skill_choice_feats
+from utils.class_func.weapon_focus_buffs import weapon_focus_changes
 from utils.class_func.spheres 						import randomize_spheres_num, choose_spheres_attr, add_overflow_talents, MAX_EXTRA_TALENT_FEATS, mentor_sphere_summary
 from utils.class_func.flag_assign 					import human_flag_assigner, druidic_flag_assigner
 from utils.class_func.generic_func 					import generic_class_option_chooser, get_data_without_prerequisites, no_prereq_prep#, no_prereq_loop, chosen_set_append
@@ -1432,6 +1433,39 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 						for _k, _v in _desc_info.items()}
 			for _n in _need_desc:
 				homebrew_feat_desc_dict[_n] = _desc_ci.get(_n.lower(), "")
+
+		# --- Feat numeric buffs (Foundry "Changes" tab) + active-feat toggle conditionals --------------
+		# Curated, hand-vetted side-maps keyed by feat name. feat_changes.json -> always-on pf1 `changes`
+		# (and situational contextNotes) the FoundryVTT module overlays onto the feat item; feat_conditionals
+		# .json -> default-off toggle conditionals (Power Attack, Combat Expertise, Deadly Aim, ...) the
+		# module attaches to the main weapon. We author ONLY feats Foundry's every_feat.json compendium does
+		# not already automate, so nothing double-applies. Missing files -> empty maps (feature simply off).
+		import os as _os, json as _json
+		_buf_dir = _os.path.dirname(_os.path.abspath(__file__))
+		def _load_buffmap(*parts):
+			try:
+				with open(_os.path.join(_buf_dir, *parts), encoding="utf-8") as _bf:
+					return _json.load(_bf)
+			except (OSError, ValueError):
+				return {}
+		_fc_ci = {str(_k).lower(): _v for _k, _v in _load_buffmap("json", "feats", "feat_changes.json").items()}
+		_fk_ci = {str(_k).lower(): _v for _k, _v in _load_buffmap("json", "feats", "feat_conditionals.json").items()}
+		# Skill Focus / Prodigy: changes computed at generation time (keyed to the chosen
+		# profession/skill, e.g. "Skill Focus (Profession (Sailor))") override the static file.
+		for _sk_name, _sk_entry in (getattr(character, "skill_focus_changes", {}) or {}).items():
+			_fc_ci[str(_sk_name).lower()] = _sk_entry
+		# Weapon Focus family: sum the tax-bundled chain (Greater Weapon Focus / Weapon Specialization /
+		# Greater Weapon Specialization) onto the placed "Weapon Focus" primary -> one cumulative change.
+		for _wf_name, _wf_entry in weapon_focus_changes(_render_feat_names,
+				[feats_feat_tax_dict, class_feat_tax_dict, story_feat_tax_dict, flaw_feat_tax_dict,
+				 flavor_feat_tax_dict, trainer_feat_tax_dict]).items():
+			_fc_ci[str(_wf_name).lower()] = _wf_entry
+		for _disp in dict.fromkeys(_render_feat_names):
+			_lc = str(_disp).lower()
+			if _lc in _fc_ci:
+				feat_changes_dict[_disp] = _fc_ci[_lc]
+			if _lc in _fk_ci:
+				feat_conditionals_dict[_disp] = _fk_ci[_lc]
 
 		character.export_list_non_dict(export_list_non_dict, string_export_list_non_dict)		
 		character.export_list_dict(export_list_dict, string_export_list_dict)		
