@@ -36,6 +36,18 @@ function Fail($msg) { Write-Host "ERROR: $msg" -ForegroundColor Red; exit 1 }
 docker info 2>$null | Out-Null
 if ($LASTEXITCODE -ne 0) { Fail "Docker isn't running. Start Docker Desktop and retry." }
 
+# 1b. Docker Hub auth - non-interactive login if a token is in .env (keeps deploys hands-free even
+#     when the Docker Desktop GUI session expires). Skipped if no token -> relies on existing creds.
+$dtLine = Get-Content "$Root\.env" -ErrorAction SilentlyContinue | Where-Object { $_ -like 'DOCKERHUB_TOKEN=*' } | Select-Object -First 1
+if ($dtLine) {
+    $duLine = Get-Content "$Root\.env" -ErrorAction SilentlyContinue | Where-Object { $_ -like 'DOCKERHUB_USER=*' } | Select-Object -First 1
+    $du = if ($duLine) { $duLine.Substring('DOCKERHUB_USER='.Length).Trim() } else { 'tabletopsoftware' }
+    $dt = $dtLine.Substring('DOCKERHUB_TOKEN='.Length).Trim()
+    Write-Host "==> Logging in to Docker Hub as $du" -ForegroundColor Cyan
+    $dt | & docker login -u $du --password-stdin
+    if ($LASTEXITCODE -ne 0) { Fail "docker login failed - check DOCKERHUB_USER/DOCKERHUB_TOKEN in .env." }
+}
+
 # 2. Tags
 $Sha = (& git rev-parse --short HEAD 2>$null)
 if (-not $Sha) { $Sha = 'manual' }
