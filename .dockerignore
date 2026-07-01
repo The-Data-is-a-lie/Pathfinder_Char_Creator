@@ -1,0 +1,39 @@
+# The Dockerfile does `COPY . .`, so anything not excluded here lands in the image
+# (and gets pushed to the public Docker Hub repo). Keep secrets + cruft OUT.
+
+# --- Secrets (CRITICAL: .env holds API keys / tokens) ---
+.env
+*.env
+
+# --- VCS / tooling ---
+.git
+.gitignore
+.dockerignore
+
+# --- Python caches / virtualenvs ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# --- Node (module/frontend cruft, if any) ---
+node_modules/
+
+# --- Editor / OS / agent cruft ---
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db
+
+# --- Backups, logs, ephemeral session files ---
+*.bak
+*.log
+SESSION_PLAN.md
+
+# NOTE: do NOT add `data/` or `Backend/json/` here — the app loads them at runtime.
