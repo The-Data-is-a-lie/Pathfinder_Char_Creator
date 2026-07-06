@@ -33,3 +33,8 @@ Backend/scripts/_smoke_spell_conditionals.py
 # data + intermediates + the importable palette actor. Personal tooling; the durable output lives in
 # the FoundryVTT module's curated maneuver_changes.json / stance_changes.json.
 Backend/scripts/_pow_generator/
+
+# Spheres conditional generator: per-sphere curated {modifiers,rider} files + worklists + promote
+# script. Personal tooling; the durable output lives in the FoundryVTT module's curated
+# combat_talent_conditionals.json / magic_talent_conditionals.json (and the backend passives file).
+Backend/scripts/_spheres_generator/

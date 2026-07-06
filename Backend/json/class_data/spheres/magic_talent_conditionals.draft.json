@@ -1,0 +1,5183 @@
+{
+  "Alteration": {
+    "Aberrant Body": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Agile": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Animal Mind": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Aquan Transformation": {
+      "modifiers": [
+        {
+          "formula": "(ceil(@spheres.cl.total / 2))d8",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "normal"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Bestial Reflexes": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Dragon Transformation": {
+      "modifiers": [
+        {
+          "formula": "1d8",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Extreme Adaptation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Fusion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Giant Traits": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Homogenize": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Instill Shapeshift": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Lingering Transformation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Mimicry": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Muensterous Traits": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Odiferous": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Ooze Transformation": {
+      "modifiers": [
+        {
+          "formula": "1d4",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "acid"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Orb Transformation": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Outsider Body": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Permanent Transformation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Plant Transformation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Protean Mastery": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Serpentine Transformation": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Shapeshift": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Star-spawn Body": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Swarm Shape": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Tentacles": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Transform Object": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Twisted Shapeshift": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Undead Body": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    }
+  },
+  "Bear": {
+    "A Step Too Fur": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Angry Bear": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Antarctic Circle": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Arctic Circle": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Arm Bears": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Bear Arms": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Bear Form": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Bear Strength": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Bear With Me": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Bearbaque": {
+      "modifiers": [
+        {
+          "formula": "1d8",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "fire"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Bearer Of Bad News": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Bears Love Honey": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Fursome Aura": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Grin And Bear It": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Hibernation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Paws And Reflect": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Slumbear": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Smarter Than The Average Bear": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Teddy Bear": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Think Think Think": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Unbearable Rawr": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    }
+  },
+  "Blood": {
+    "Absorb Blood": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Blood Control": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Blood Puppet": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Blood Rebuff": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Bloodbind": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Cardiovascular Ascension": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Cardiovascular Mastery": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Control Oxygenation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Crimson Vortex": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Cystic Growth": {
+      "modifiers": [
+        {
+          "formula": "1d10",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Essence Manipulation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Extract Blood Construct": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Hemo Goblin": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Hemokinesis": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Instill Blood Magic": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Internal Propulsion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Lengthened Control": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Manipulate Alchemy": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Manipulate Health": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Migraine": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Numb": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Piercing Blood": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "piercing"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Redirect Flow": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Rush To The Head": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Sanguine Minion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Slick": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    }
+  },
+  "Conjuration": {
+    "Call Planar Creature": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Draconic Creature": {
+      "modifiers": [
+        {
+          "formula": "1d8",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Elemental Creature": {
+      "modifiers": [
+        {
+          "formula": "1d3",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Empower Familiar": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Entrapping Circle": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Explosive Companion": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Extreme Situations": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Greater Summoning": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Infectious Creature": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Lingering Companion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Ooze Companion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Possessive Companion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Raging Companion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Ravenous Creature": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Sanguine Creature": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "on hit the target takes [[1d2]] bleed damage"
+    },
+    "Shocking Creature": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Stinking Companion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Summon": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Unwilling": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Willful Companion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    }
+  },
+  "Creation": {
+    "Acidic Creation": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "acid"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Alchemical Creation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Altering Burst": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Buried": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Catches, Nets, And Cages": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Change Material": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Corp Criadhach": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Crack": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Create": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Create Materials": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Dissolution": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Falling Objects": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Forge": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Gaseous Generation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Internal Creation": {
+      "modifiers": [
+        {
+          "formula": "4d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Lengthened Creation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Magnify/minimize": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Material Body": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Plasma Production": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "fire"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Plasma Projection": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Potent Alteration": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Precise Destruction": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Repair": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Restrictive Casing": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Spikes And Hazardous Ground": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Sustenance": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Transparency": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    }
+  },
+  "Dark": {
+    "Black Lung": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Clearsight": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Clinging Darkness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Creeping Lethargy": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Dark Slaughter": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Darkness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Darkvision": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Disorienting Darkness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Edge Of Night": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Eternal Darkness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Fearful Darkness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Feed On Darkness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Hide In Darkness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Hungry Darkness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Imbue Shadow": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Intoxicating Darkness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Looming Darkness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Meld": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Melt Into Shadow": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Note: Light And Darkness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Numbing Darkness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Obscure Passage": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "One With The Void": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Shadow Double": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Shadow Lurk": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Shadow Slick": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Shadow Stash": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Shadow Talents": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Shadowing Darkness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Silent Darkness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Sinister Surprise": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Snagging Darkness": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Step Through Darkness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Stygian Immersion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Thick Darkness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Umbral Burst": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Voidwatcher": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    }
+  },
+  "Death": {
+    "Bleeding Wounds": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Bonerattle": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Command Undead": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Corpse Bomb": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Corpse Manipulation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Create Soul Gem": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Curse (death)": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Dark Sacrifice": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Drain": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Exhausting Strike": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Fowl Infestation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Gravetongue": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Greater Curse": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Greater Undead": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Haunting Apparition": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Hunger": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Inflict Disease": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Instill Death": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Lich Strike": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Manipulate Undeath": {
+      "modifiers": [
+        {
+          "formula": "1d8",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Necromantic Conscription": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Necrotic Conduit": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Necrotic Feeding": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Permanent Undead": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Piecemeal Reanimation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Poltergeist": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Possession": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Project Spirit": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Reanimate": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Shroud (death)": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Sickening": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Soul Trap": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Spectral Distortion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Summon Spirit": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Sustained Necromancy": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Tomb Of Flesh": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Vampiric Strike": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Weakening": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    }
+  },
+  "Destruction": {
+    "Acid Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Adhesive Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Air Blast": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Alkali Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Alternyating Current": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Battering Blast": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Blast Array": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Blast Salvo": {
+      "modifiers": [
+        {
+          "formula": "7d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Blast Trap": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Blinding Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Blistering Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Calamity": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Chain Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Crystal Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Crystal Cocoon": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Destructive Blast": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Disintegrate": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Drowning Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Energetic Response": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Energy Aura": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Energy Bomb": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Energy Cloud": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Energy Leap": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Energy Satellite": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Energy Sphere": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Energy Tether": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Energy Wall": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Explosive Orb": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Fire Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Force Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Frost Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Gale Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Gloom Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Gore Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Guided Strike": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Hurricane Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Incandescent Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Invigorating Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Knight’s Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Living Crystal Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Mana Siphon": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Mutable Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Nether Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Numbing Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Paradigm Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Penetrating Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Radiant Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Radiation Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Razor Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Rebuff": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Retributive Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Reverberating Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Sculpt Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Selective Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Shock Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Shrapnel Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Smiting Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Split Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Static Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Tenebrous Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Thunder Blast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Vacuum Blast": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Wingbind": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    }
+  },
+  "Divination": {
+    "Alternate Divinations": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Alternate Divinations, Advanced": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Augury": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Battlefield Sense": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Blindfolded Oracle": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Cartographer’s Divinations": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Detect Scrying": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Detect Secrets": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Detect Spellcaster": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Discern Individual": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Discern Location": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Divine": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Divine Information": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Divine Knowledge": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Dowsing": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Eyes Of The Cabal": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Foreshadow": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Ghost Sight": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Grant Divination": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Hear Name": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Instill Divination": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Logos": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Nature Sense": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Object Reading": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Prescience": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Prying Sight": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Read Magic": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Read Omens": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Remote Casting": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Scent": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Scrying": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "See Hazard": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Sense Magic": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Sense Observation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Sense Presence": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Sensory Overload": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Shared Perception": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Sniper’s Eye": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Speak And I Listen": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Trapfinding": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Tremorsense": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "True Perception": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Unhooded Sight": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Unobscured Vision": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Viewing": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Witness The City": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    }
+  },
+  "Enhancement": {
+    "Animate Object": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Bestow Intelligence": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Bestow Life": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Deep Enhancement": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Dual Enhancement": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Energize Body": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Enhance": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Give Magic Life": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Greater Enhance Equipment": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Instill Enhancement": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Lighten": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Ragged Edges": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Reverse Gravity": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Spectral Enhancement": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Steal Capacity": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Steal Senses": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    }
+  },
+  "Fallen Fey": {
+    "Aelfwine": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Animate Hair": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Banish To Faerie": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Blinding Beauty": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Crown Of The Courts": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Drowning Kiss": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Enchanting Music": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Fade": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Fae Light": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Fairy Dust": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Fairy Ring Traveler": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Feast And Famine": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Feline Omens": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Fey Initiation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Fey-link": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Grace Of The Sidhe": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Greater Fey-link": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Gremlin’s Presence": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Mantle Of Spring": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Natural Dominion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Pixie Sticks": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Shadow Collector": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Share Link": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Spores": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Stone Shape": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Stunning Glance": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Summon Fairy": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Tree Meld": {
+      "modifiers": [
+        {
+          "formula": "5d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Unseelie Aura": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Ventriloquism": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Water Creature": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Winterfey": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "cold"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Wood Shape": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Zolavoi’s Mantle": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    }
+  },
+  "Fate": {
+    "Align Object": {
+      "modifiers": [
+        {
+          "formula": "2d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Atonement": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Axe You A Question": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Bargain": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Bless": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Borrow Luck": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Borrow Trouble": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Cat’s Luck": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Classify": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Compel Possessor": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Conjunction": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Curse (fate)": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Declare Fate": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Divine Pressure": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Enmity": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Entropic Aura": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Execration": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Exorcism": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Falsehood": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Freedom": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Geas": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Hallow": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Harm": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Heroism": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Justice": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Malice": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Mercy": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Metaphysical Cloak": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Motifs": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Open/close": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Pain": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Perfect": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Reveal Alignment": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Serendipity": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Strength": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Stricture": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Subvert Weapon": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "The Hanged Man": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "The Tower": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Truth": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Tug Fate": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Undo Harm": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Undying Obstinance": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Villainy": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    }
+  },
+  "Illusion": {
+    "Blur": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Decoy": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Distracting Phantoms": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Focused Imagination": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Hostile Glamers": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Illusion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Illusionary Disguise": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Illusionary Labyrinth": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Illusionary Sound": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Illusionary Terrain": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Illusionary Touch": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Insistent Illusions": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Lingering Illusion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Mage Feint": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Manipulate Aura": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Minor Figments": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Oblivious": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Overwhelming Sensations": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Patterns": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Permanent Image": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Suppression": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Talented Trickster": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    }
+  },
+  "Life": {
+    "Affliction": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Cure": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Diagnose": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Empathic Healing": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Fount Of Life": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Greater Invigorate": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Hypervitalize": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Invigorate": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Restore": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Resurrection": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Sanctify": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Sudden Invigoration": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    }
+  },
+  "Light": {
+    "Area Glow": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Beacon Of Hope": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Blinding Light": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Bound Light": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Bright Light": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Disorienting Patterns": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Doubled Nimbus": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Dual Light": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Encompassing Light": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Everglow": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Flare": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Flash": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Glory": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Hypnotic Pattern": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Inner Sun": {
+      "modifiers": [
+        {
+          "formula": "1d4",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "fire"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Instill Glow": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Irradiance": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Lens": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Lingering Glow": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Lure Light": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Mass Lens": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Precious": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Prismatic Radiance": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Purifying Light": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Radiation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Repelling Light": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Revealing Light": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Rose-tinted": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Searing Light": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Star Genesis": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Style": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Sunstroke": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Visual Overload": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    }
+  },
+  "Mana": {
+    "Bulwark (mana)": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Control Resistance": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Defensive Bond": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Disorient": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Flow": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Gift Of Knowledge": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Hardened Bond": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Ignition": {
+      "modifiers": [
+        {
+          "formula": "1d8",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Knowledge Drain": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Magical Conduit": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Magical Misdirection": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Manabond": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Mark Of Incompetency": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Mark Of Instability": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Mark Of Lifeburn": {
+      "modifiers": [
+        {
+          "formula": "1d8",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Permanent Bond": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Reactive Shuffle": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Relinquish Magic": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Shuffle": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Spellburn": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Transfer": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Vassalize": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    }
+  },
+  "Mind": {
+    "Amnesia": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Candor": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Catatonia": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Cerebral Strike": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Cloud": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Deadly Vision": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Discern Alien Cognition": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Dispersion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Epiphany": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Flawless Precision": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Hostility": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Inception": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Instill Charm": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Intuit Knowledge": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Mental Archive": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Mental Backdoor": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Mind Shield": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Mind Spy": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Misdirect": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Paralyze": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Polyglot": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Powerful Charm": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Psychic Vengeance": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Rapid Processing": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Sleep": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Subtlety": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Terrifying Mind": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Utterances": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Vision": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Zeitgeist": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    }
+  },
+  "Nature": {
+    "Air": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Air Mastery": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Aquatic Adept": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Breeze Mastery": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Create Nature": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Cyclone": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Deep Nature": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Destroy Element": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Dragonlung": {
+      "modifiers": [
+        {
+          "formula": "1d8",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Earth": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Earth Mastery": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Earthquake": {
+      "modifiers": [
+        {
+          "formula": "8d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Eternal Steel": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Fire": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Fire Mastery": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Fog Mastery": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "acid"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Freezing Geyser": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "fire"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Friend To Wildlife": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Geomancing": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Hazardous Terrain": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Living Steel": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Manipulate Nature": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Metal": {
+      "modifiers": [
+        {
+          "formula": "1d4",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Metal Mastery": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Natural Ally": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Nature Sight": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Nature’s Carapace": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Nature’s Movement": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Nature’s Weapon": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Peace And Love": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Phoenix Resurgence": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "fire"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Plant": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Purify Nature": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Rapid Growth": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Reforge Mastery": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "cold"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Rejuvenation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Repress Element": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Resist Elements": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Ride The Elements": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Riding Fog": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Speak With The Elements": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Speak With Wildlife": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Temperature": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "fire"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Tsunami": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Volcano": {
+      "modifiers": [
+        {
+          "formula": "2d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "fire"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Water": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Whispering Elements": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Wildfire": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Wreath Of Elements": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    }
+  },
+  "Protection": {
+    "Adaptation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Aegis": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Buttressing": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Clarity": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Community": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Deathless": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Deflection": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Durable Barrier": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Enduring Protection": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Fateless": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Glyph": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Impedance": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Obscurity": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Peacebound": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Permanent Ward": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Reactive Barrier": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "force"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Reflection": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Repel Chaos/evil/good/law": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Selective Barrier": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Spell Ward": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Ward": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    }
+  },
+  "Telekinesis": {
+    "Affix": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Astral Affixation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Catch": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Choking Grasp": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Divided Mind": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Effortless Telekinesis": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Excessive Force": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Flight": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Focused Power": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Gravity Manipulation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Gravity Shift": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Homing": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Hostile Lift": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Kinetic Field": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Kinetic Sense": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Linear Acceleration": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Pantomime Cage": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Parry": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Puppet (telekinesis)": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Quick Reactions": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Sustained Force": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Sweeping Bludgeons": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Telekinetic Crush": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Telekinetic Maneuver": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Telekinetic Push": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Telekinetic Tools": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Tether": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    }
+  },
+  "Time": {
+    "After Image": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Age": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Broken Time": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Causality": {
+      "modifiers": [
+        {
+          "formula": "1d8",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Delay Pain": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Eject": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Fast Time": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Haste": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Improved Eject": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Lethargy": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Query Self": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Rapid Response": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Repetition": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Retroactive Preparation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Retry": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Reversion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Second Chance": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Shift Time": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Slow": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Steal Time": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Stretch Time": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Temporal Stasis": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Temporal Trap": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Time Bubble": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Time Clone": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Time Freeze": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Time Of The Season": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Timeless Crane’s Hourglass": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Timeline Bridge": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    }
+  },
+  "War": {
+    "Absolute Totem": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Absorb": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Blood Bond": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Blood Totem": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Combat Inertia": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Counterattack": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Divisive Totem": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Empower": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Engage": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Finish": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Giving Totem": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Gyroscopic Totem": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Haunting Totem": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Intercept": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Mandate": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Momentum": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Position": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Redeployment": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Replenish": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Retribution": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Safety": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Strike": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Tactical Totem": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Taking Totem": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Totem": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Totem Of Allegiance": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Totem Of Courage": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Totem Of Deep Thought": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Totem Of Doom": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Totem Of Dread": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Totem Of Enemies": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Totem Of Expulsion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Totem Of Foresight": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Totem Of Insanity": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Totem Of Iron": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Totem Of Liberation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Totem Of Mobility": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Totem Of Screaming Skin": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Totem Of Tenuous Mortality": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Totem Of The Dragonslayer": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Totem Of The Heroic Heart": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Totem Of The War Dance": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    }
+  },
+  "Warp": {
+    "Avert": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Blink": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Brutalizing Shunt": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Create Demiplane": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Create Gap": {
+      "modifiers": [
+        {
+          "formula": "2d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Dimension Pierce": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Dimensional Lock": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Distant Teleport": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Distort Size": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Emergency Teleport": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Enduring Portal": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Extradimensional Room": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Extradimensional Storage": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Extradimensional Torpor": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Flex Space": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Fluctuate": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Group Teleport": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Instill Teleport": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Isoport": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Looped Space": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Manifest Planar Zone": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Mass Teleport": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Plane Manipulator": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Pouncing Teleport": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Recall": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Segmented Warp": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Spatial Reach": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Splinter": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Store Structure": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Swap Placement": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Teleport": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Teleport Beacon": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Teleport Object": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Teleport Trap": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Time Warp": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "True Teleport": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Unseeing Teleport": {
+      "modifiers": [
+        {
+          "formula": "2d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Unwilling Teleport": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Warp Link": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Warp Manipulator": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Wormhole": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    }
+  },
+  "Weather": {
+    "Ash": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Battering Winds": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Biohazard": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Black Ice": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Boiling Lord": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "fire"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "advanced"
+    },
+    "Boreal Glare": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "cold"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Cacaphonic Clap": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Cold": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Contaminated Blows": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Control Weather": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Crackling Arc": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Dehydration Pulse": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Diamond Dust": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Dust Cloud": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Fallout": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Fire Tornadoes": {
+      "modifiers": [
+        {
+          "formula": "6d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "fire"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "advanced"
+    },
+    "Heat": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Instill Weather": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Lengthened Weather": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Lightning Rod": {
+      "modifiers": [
+        {
+          "formula": "2d4",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "electricity"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Mantle": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Melt Skin": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Personal Thunderhead": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Precipitation": {
+      "modifiers": [
+        {
+          "formula": "4d8",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "electricity"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Radiation Lord": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Radiotherapy": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Rain Bomb": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Shroud (weather)": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point; Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Sirocco": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "This Sparks Joy": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    },
+    "Volcano Lord": {
+      "modifiers": [],
+      "review": true,
+      "_type": "advanced",
+      "rider": "spend [[1]] spell point"
+    },
+    "Wind": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]] negates"
+    }
+  }
+}

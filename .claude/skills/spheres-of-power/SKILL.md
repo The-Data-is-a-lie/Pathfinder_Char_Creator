@@ -176,6 +176,39 @@ traditions in v1**, **enrich combat data from the Foundry compendium**.
   hard-refresh (Ctrl+Shift+R / reload the world) and generate a *new* actor (old actors bake the HTML in).
   The mana pool maps to a pf1 resource (`@resources.<tag>.max` = highest mental mod) — see
   `foundry-sheet-references`.
+- **Per-roll talent conditionals (mirrors Path of War):** attack-relevant talents become **default-off
+  conditional toggles** on the main weapon (Might + non-Destruction Power) or on a synthesized
+  **Destructive Blast** attack item (Destruction, base `(ceil(@spheres.cl.total/2))d6`). Clean numbers →
+  structured `modifiers[]` (auto `[Talent]`-labeled); saves/DCs/conditions/durations/bleed → `[[ ]]`
+  rider text. DCs: Power `10 + floor(@spheres.cl.total/2) + @spheres.cam`, Might `10 +
+  floor(@attributes.bab.total/2) + @spheres.pam`. The module's `addSphereTalentConditionals()` /
+  `addDestructiveBlastAttack()` substitute the dabbler tokens (`@spheres.cl.total→1`,
+  `@spheres.cam/pam→@abilities.*.mod`) and stamp `flags.pf1spheres.castingAbility/practitionerAbility`.
+  Data files: module `combat_talent_conditionals.json` / `magic_talent_conditionals.json` (nested
+  `{Sphere:{Talent:{modifiers,rider}}}`) — authored via `Backend/scripts/build_talent_conditionals.py`
+  (`--dump-worklist`) + gitignored `Backend/scripts/_spheres_generator/` (per-sphere curated files +
+  `promote_talents_to_module.py`). **PASSIVE** Might self-buffs stay in the separate backend
+  `combat_talent_changes.json` (Changes tab) — don't confuse the two. Rules:
+  [`docs/spheres_conditional_decision_rules.md`](../../docs/spheres_conditional_decision_rules.md). The
+  palette (`build_pow_template_actor.py --spheres`) bundles per-sphere weapons + the blast, keeping
+  **native** `@spheres.*` tokens (+ a "Palette: Sphere CL 10" toggle) so copies scale on a real PC.
+- **Affects-others talents → distributable buffs, not conditionals:** a talent whose bonus lands on an
+  ally / companion / summon / aura recipient is authored as a `buff` curation entry
+  (`{aura_range, only_others, changes, contextNotes, description}`), promoted to the module's
+  `talent_aura_buffs.json`, and rendered as an inactive temp buff named `<Talent> (TAG)` per the
+  [`multi-buff-distributor`](../multi-buff-distributor/SKILL.md) skill — `(UNAMED)` on the palette, the
+  NPC's name-prefix tag on generated characters (`addSphereAuraBuffs`). Enemy-debuff auras use
+  `only_others: true`.
+- **What becomes a conditional (curation rule):** **anything usable as a _strike_ can be a
+  conditional** — a strike applies its effect on *any* attack roll, so it maps directly onto a weapon/
+  blast conditional (e.g. Destruction *Energy Strike*, Death *Vampiric Strike*, Enhancement *Crippling
+  Strike*; detect by the name or "make a weapon attack in conjunction with…" / "deliver … through a
+  touch attack"). **Soft rule:** any base ability or talent that deals **single-target damage** or
+  inflicts a **debuff/condition** on a target is *likely* a conditional too. Only genuine
+  battlefield-control / area / self-buff / out-of-combat utility talents stay description-only (or a
+  `passive` self-buff). This applies to **both** Power and Might; Power especially (its strikes were
+  easy to miss). `build_talent_conditionals.py --dump-worklist` tags each talent with a `_hint`
+  (`strike`/`damage`/`debuff`/`maybe-skip`) to guide curation.
 
 ## Sources & gotchas
 

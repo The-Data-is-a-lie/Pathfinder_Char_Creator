@@ -2236,7 +2236,7 @@ version = "10/12/23"
 
 #3PP Content:
 #Combat Spheres:
-combat_spheres = ["Alchemy","Athletics","Barrage","Barroom","Beastmastery","Berserker","Boxing","Brute","Dual Wielding","Duelist","Equipment","Fencing","Gladiator","Guardian","Lancer","Open Hand","Scoundrel","Scout","Shield","Sniper","Trap","Warleader","Wrestling"]
+combat_spheres = ["Alchemy","Athletics","Barrage","Barroom","Beastmastery","Berserker","Boxing","Brute","Dual Wielding","Duelist","Equipment","Fencing","Gladiator","Guardian","Lancer","Leadership","Open Hand","Scoundrel","Scout","Shield","Sniper","Trap","Warleader","Wrestling"]
 #magic spheres:
 magic_spheres = ["Alteration","Blood","Conjuration","Creation","Dark","Death","Destruction","Divination","Enhancement","Fallen Fey","Fate","Illusion","Life","Light","Mana","Mind","Nature","Protection","Telekinesis","Time","War","Warp","Weather"]
 #skill spheres:

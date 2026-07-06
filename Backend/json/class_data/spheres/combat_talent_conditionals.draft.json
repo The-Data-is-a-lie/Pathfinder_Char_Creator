@@ -1,0 +1,2342 @@
+{
+  "Alchemy": {
+    "Aboleth Mucus": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Academic Enhancer": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Aligned Liquid": {
+      "modifiers": [
+        {
+          "formula": "2d4",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Chemical Coating": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Cherry Bomb": {
+      "modifiers": [
+        {
+          "formula": "1d4",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Cluster Toss": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Concentration Aid": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Contagion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Disorientating Venom": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Fuse Master": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Grease": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Habit Forming": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Improved Acid Flask": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "acid"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Improved Alchemist Fire": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "fire"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Improved Blanch Bomb": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Improved Bottled Lightning": {
+      "modifiers": [
+        {
+          "formula": "1d8",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "electricity"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Improved Flash Powder": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Improved Fuse Grenade": {
+      "modifiers": [
+        {
+          "formula": "2d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Improved Itching Powder": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Improved Liquid Ice": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "cold"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Improved Liquid Nice": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Improved Smoke Bomb": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Improved Sneezing Powder": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Improved Tanglefoot Bag": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Improved Thunderstone": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Instant Foam": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Lingering Poison": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Mindrot": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Necrotic Poison": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Performance Enhancer": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Snap Toss": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Specialized Venom": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Swift Toxicology": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Virulent Basilisk’s Cloak": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Witch Doctor’s Curse": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    }
+  },
+  "Athletics": {
+    "Acrocatics": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Afterimage": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Bewildering Blow": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Bomb Jump": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Compact Frame": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Desperate Dive": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Dizzying Tumble": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Dolphin Strike": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Dragoon Leap": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Flash Step": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Knockdown Tumble": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Locust Pounce": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Moving Target": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Multiple Motion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Reactive Motion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Sinking Blow": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Terror Below": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Titan’s Fall": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Tumbling Recovery": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Unwilling Boost": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Windwake": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    }
+  },
+  "Barrage": {
+    "Blowback Barrage": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Cone Of Death": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Pinning Punishment": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates; on hit the target takes [[1d6]] bleed damage"
+    },
+    "Shove And Shoot": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "special attack action"
+    },
+    "Stair Shot": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    }
+  },
+  "Barroom": {
+    "Alchemical Dragon": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Devastating Burst": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Dumbfounding Crack": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Eternal Buzz": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Expanded Breaker": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "False Courage": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "High On Fumes": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Iron Liver": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Nice And Loose": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Purge": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Shatter": {
+      "modifiers": [
+        {
+          "formula": "1d4 + (floor(@attributes.bab.total / 4))d4",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Sudden Crash": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Up, Down And…": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "You Want Some?": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    }
+  },
+  "Beastmastery": {
+    "Beast Tamer": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Bronco Buster": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Defensive Rider": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Knock Down": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Mass Handle": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Meat Shield": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Monster Breaker": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Steady Handler": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    }
+  },
+  "Berserker": {
+    "Absolute Determination": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Alter Terrain": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Barbaric Throw": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Bell-ringer": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Berserking": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; special attack action"
+    },
+    "Brutal Strike": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; special attack action"
+    },
+    "Dreadnought": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Executioner": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Genie’s Wrath": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Heart Crusher": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Heavy Swing": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Leg-smasher": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Mage Masher": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Promethean": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Rift Strike, Universal": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Sanguine Invigoration": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Shatter Earth": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Shrapnel": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Specter": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    }
+  },
+  "Boxing": {
+    "Cross Counter": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Elongated Step": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Intense Conditioning": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Jolt Counter": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Launching Uppercut": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Liver Shot": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Loopy Blow": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Prizefighter": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Punishing Cross": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Reflecting Palm": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Rope A Dope": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Shadowboxing": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Sucker Punch": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Violent Pressure": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Winding Blow": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    }
+  },
+  "Brute": {
+    "Armored Momentum": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Brutal Manhandle": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Dazed And Confused": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Dizzy Spin": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Earthquake Stomp": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Forceful Jaunt": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Giant": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Humiliate": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Launching Rush": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Muscular Surge": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Pertinacious Conditioning": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Quick Force": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Terrain Trasher": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Throw": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Thunderous Clap": {
+      "modifiers": [
+        {
+          "formula": "1d8",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "sonic"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Transonic Smash": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "sonic"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    }
+  },
+  "Dual Wielding": {
+    "Crushing Combo": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Cyclone Cut": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Dizzying Combination": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Gemini Dancer": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Paired Proficiency": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "special attack action"
+    },
+    "Synchronous Accuracy": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Triangle Slash": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    }
+  },
+  "Duelist": {
+    "Bleed Air": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Blood Fountain": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Blooded Strike": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "attack action or attack of opportunity only"
+    },
+    "Bloodied Shark’s Frenzy": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Bloody Hell": {
+      "modifiers": [
+        {
+          "formula": "6d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "fire"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Clouding Cut": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Curtain Call": {
+      "modifiers": [
+        {
+          "formula": "1d6 + (floor(@attributes.bab.total / 3))d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Essence Manipulation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Jugular Cut": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Leg Cutter": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Open Vein": {
+      "modifiers": [
+        {
+          "formula": "1d4 + (floor(@attributes.bab.total / 3))d4",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; special attack action; on hit the target takes [[1d4]] bleed damage"
+    },
+    "Sever": {
+      "modifiers": [
+        {
+          "formula": "1d6 + (floor(@attributes.bab.total / 4))d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    }
+  },
+  "Equipment": {
+    "Armored Evasion": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Battle Ready Armor": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Caber Toss": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Cold-weather Adaptation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Goblin Heritage": {
+      "modifiers": [
+        {
+          "formula": "1d4",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "fire"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Rock Toss": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Thrower’s Reflexes": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Tower Shield Mastery": {
+      "modifiers": [
+        {
+          "formula": "1d8",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    }
+  },
+  "Fencing": {
+    "Chest Strike": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Expert Fence": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Fast Feint": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Fatal Thrust": {
+      "modifiers": [
+        {
+          "formula": "1d6 + (floor(@attributes.bab.total / 5))d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "attack action or attack of opportunity only"
+    },
+    "Feint Strike": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Master Of Deception": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Parry And Riposte": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Parry Anything": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Parry Intent": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Reaving Strike": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Sequestering Facade": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Shadow Strike": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Skewer": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    }
+  },
+  "Gladiator": {
+    "Abandon All Hope": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Aura Of Fear": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Battering Banter": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Burn The Chaff": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Caper": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Deafening Clangor": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Draining Despair": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Duel Of Wills": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Dullahan’s Call": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Fear Eater": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Flamboyant Movement": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Hear Their Screams": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Master Of Fear": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Menace": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Motivational Audience": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Nightmare Fuel": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Nightmare Stalker": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Piercing Fear": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Rattle Confidence": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Rippling Boast": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Strike Fear": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Trash Talker": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Uncowed": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Unsettling Visage": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    }
+  },
+  "Guardian": {
+    "Challenge": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Challenge The Masses": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Complex Patrol": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Cruel Worg’s Challenge": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Final Retribution": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Indomitable": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Inescapable Challenge": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Mass Challenge": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Punishment": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Singularity": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Swift Guardian": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    }
+  },
+  "Lancer": {
+    "Cruel Vibration": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Double Impale": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Esoteric Link": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Opportune Impalement": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Pierce Vitals": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Soul Link": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Staggering Tear": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    }
+  },
+  "Leadership": {
+    "Allied Cover": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Draft": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Magic Cohort": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "spend [[1]] spell point"
+    },
+    "Squad": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Troop Subtype": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    }
+  },
+  "Open Hand": {
+    "Air Cannon": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Counterbalance": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Final Judgement": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Judo Throw": {
+      "modifiers": [
+        {
+          "formula": "1d10",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Snap Kick": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Soul Punch": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Soul Sunder": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Suppressive Rush": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; special attack action"
+    },
+    "Swinging Swap": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Thunderous Punishment": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Withering Defense": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    }
+  },
+  "Scoundrel": {
+    "Clever Fox’s Heist": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Counter Theft": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Devastating Tricks": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Double Dip": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Flustering Antics": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Forgettable Theft": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Hot Pocket": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Lingering Slight": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Savage Tricks": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Steal Charm": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Steal Heart": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Steal Identity": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Steal Skill": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Tunnel Vision": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Twist The Knife": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    }
+  },
+  "Scout": {
+    "Discern Illusions": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Inimical Gaze": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Magehunter’s Vision": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Reflexive Stealth": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Sight Beyond Sight": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Sudden Acuity": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Target Weakness": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    }
+  },
+  "Shield": {
+    "Active Defense": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Blockade": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Extensive Defense": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Flexible Cover": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Greater Deflect": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Perfect Turtle Mimicry": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Quaking Block": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Snapping Tortoise": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Spiritual Aspect": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Towering Bulwark": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    }
+  },
+  "Sniper": {
+    "Deadly Shot": {
+      "modifiers": [
+        {
+          "formula": "1d10",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; special attack action"
+    },
+    "Head Shot": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "I Miss You My Darling": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Lethal Precision": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Precise Marksmanship": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "special attack action"
+    }
+  },
+  "Trap": {
+    "A Better Mouse Trap": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "All Part Of The Plan": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Bamboozling Trap": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Bear Trap": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Brutal Traps": {
+      "modifiers": [
+        {
+          "formula": "1d4",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Darts": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "piercing"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Dirty Traps": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Disarming Traps": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Flash Trap": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Fool’s Retreat": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Guillotine": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Net": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Noose": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Plummeting Traps": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "bludgeoning"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Rapid Placement": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Razor Wire": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "slashing"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base"
+    },
+    "Remote Trigger": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Scatter Trap": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Scratching Post": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Skunk Smoke": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Snares": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Terrain Trap": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Tethered Dart": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Trap Launcher": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Tricky Traps": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Tripwire": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    }
+  },
+  "Warleader": {
+    "Aggressive Flanking": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Coordinated Reflexes": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Cry Of Confrontation": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Darkland’s Cry": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Disarming Roar": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Dispiriting Roar": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Distracting Cacophony": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Explosive Ululation": {
+      "modifiers": [
+        {
+          "formula": "1d8",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "sonic"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Focusing Cry": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Fortifying Phalanx": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Frightful Roar": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Harangue": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Legion Unending": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Masterful Coordination": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Master’s Aura": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Militant Will": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Will Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Protective Warning": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Resonating Chorus": {
+      "modifiers": [
+        {
+          "formula": "1d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [
+            "sonic"
+          ],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Roaring Reservoir": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Rousing Claxon": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Shouts": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Triumph": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    }
+  },
+  "Wrestling": {
+    "Armbar": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Death Valley Driver": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Earth-shattering Slam": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Ghostbinding Grasp": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Heel Tactics": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Last Chance Grapple": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Limb Ripper": {
+      "modifiers": [
+        {
+          "formula": "1d6 + (floor(@attributes.bab.total / 4))d6",
+          "target": "damage",
+          "subTarget": "allDamage",
+          "type": "untyped",
+          "damageType": [],
+          "critical": "nonCrit"
+        }
+      ],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus; Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Piledriver": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Power Bomb": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Powerslam": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Tackle": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Reflex Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    },
+    "Twin Tie-up": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "expend martial focus"
+    },
+    "Vital Crusher": {
+      "modifiers": [],
+      "review": true,
+      "_type": "base",
+      "rider": "Fortitude Save [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]] negates"
+    }
+  }
+}

@@ -19,6 +19,84 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Every buff spell is now generated as a distributable Multi-Buff-Distributor buff.**
+  `Backend/scripts/build_spell_buffs.py` scans the 3029-spell compendium (`every_spell.json`) and writes
+  `spell_buffs.json` — **798 buff spells** (341 with auto-parsed mechanical `changes`, the rest
+  description-only), each with an `aura_range` for emanation/allies-in-area spells. Spells carry no
+  structured mechanics, so `changes` are parsed conservatively from the description (`+N <type> bonus
+  to <target>` → the right pf1 change target; ability-score buffs emit only the ability, letting pf1
+  derive AC/saves) with the curated `spell_changes.json` layered in. The palette
+  (`build_pow_template_actor.py --spell-buffs all`) emits every one as a `<Spell> (UNAMED)` inactive
+  temp buff under a "Spell Buffs (distribute)" divider; the module (`addSpellBuffs()` in
+  `modify-abilities.js`) emits `<Spell> (TAG)` buffs for each spell the NPC actually knows
+  (`spell_list_choose_from`). Even Personal/Self-range spells are included (shenanigans can place them
+  on others). Same `(TAG)` / `Aura Range:` / `onlyOthers;` format as the sphere buffs. The spell-buffs
+  are laid out under **duration dividers** (`____ rounds ____`, `____ minutes ____`, `____ hours ____`,
+  `____ other durations ____`) and **sorted by spell level** within each, with `(level X)` on the title
+  and in the description (after the `Aura Range:` line). The `(TAG)` now sits at the **front** of the
+  name — `(TAG) <Spell> (level X)` — for every distributable buff (spell and sphere/companion/ally),
+  so they all read consistently. Each spell-buff description is now a proper **spell stat block**
+  (School/Level, Casting Time, Components, Range, Target, Duration, Saving Throw, Spell Resistance) +
+  the **full** rules text + a bolded **Benefits:** summary of the parsed bonuses — the earlier
+  600-character truncation is removed (that was why descriptions cut off mid-sentence). Every
+  spell-buff now opens with an `Aura Range: X` line computed from the **spell's range** (close/medium/
+  long conventions scaled by the NPC's caster level; touch → 5, personal → 0), and the spell-buffs use
+  the pf1 **`spell` buff subType** so they render in the Buffs tab's "Spell Buffs" subsection (sphere/
+  companion/ally buffs stay `temp`).
+- **Affects-others sphere talents become distributable "aura" buffs** (allies, companions, aura
+  recipients) instead of being skipped. Each is authored as a `buff` curation entry
+  (`{aura_range, only_others, changes, contextNotes, description}`), promoted to the module's new
+  `talent_aura_buffs.json`, and rendered as an **inactive temp buff** named `<Talent> (TAG)` following
+  the **Multi-Buff Distributor** macro format (`Aura Range: N` / `onlyOthers;` description markers). The
+  `(TAG)` is the source identifier: **`(UNAMED)`** on the uploadable palette actor, and the **first 5
+  letters of the NPC's name** (uppercased, stopping at the first non-letter) on generated characters —
+  built by `addSphereAuraBuffs()` in `scripts/modify-abilities.js` and the palette builder. Documented
+  in the new **`multi-buff-distributor`** skill. **34 affects-others buffs** curated across 12 spheres:
+  companion/mount buffs (Conjuration Raging/Regenerating/Bestial/Swarm/Troop/Mystical Companion,
+  Beastmastery Frenzy Rider / Focusing Connection / Armored Charge), ally-buff auras (Fate Serendipity,
+  Warleader Fortifying Phalanx / Fierce Shout / Coordinated Reflexes / Aggressive Flanking, War Totem of
+  Tactical Prowess), single-ally grants (Guardian Defend Other, War Tenacity, Mind Shield, Shield Cover
+  Ally, Life Adrenaline Surge, Gladiator Inspiring Pose), and enemy-aura debuffs with `onlyOthers;`
+  (Gladiator Aura of Fear, Bear Fursome Aura, Nature Peace and Love, Fate Greater Serendipity, War Totem
+  of Insanity / Expulsion).
+- **Spheres of Power / Might talents now carry per-roll conditionals into the Foundry actor** (mirrors
+  the Path of War maneuver-conditionals pipeline). Every attack-relevant sphere talent becomes a
+  **default-off conditional toggle** on the character's main weapon (Might + non-Destruction Power) —
+  clean on-hit damage/attack numbers as structured `modifiers[]` (auto source-labeled), and
+  saves/DCs/conditions/durations/bleed as `[[ ]]` inline-roll rider text in the toggle name. The
+  **Destruction** sphere additionally gets a synthesized **Destructive Blast** attack item whose base
+  damage scales `(ceil(CL/2))d6` bludgeoning, with blast-type/shape talents (Fire/Frost/Acid/…) and an
+  Empowered Blast spell-point toggle attached to it. Save DCs use the sphere formulas
+  (Power `10 + ½ CL + CAM`, Might `10 + ½ BAB + practitioner mod`); for these dabbling NPCs the sphere
+  roll-data tokens are substituted to concrete forms at attach time (`@spheres.cl.total → 1`,
+  `@spheres.cam/pam → @abilities.*.mod`) and the actor is stamped `flags.pf1spheres.castingAbility/
+  practitionerAbility` + a caster-level-1 `spherecl` change. New tooling:
+  `Backend/scripts/build_talent_conditionals.py` (regex draft seeds + `--dump-worklist` per-sphere
+  slices), the gitignored `Backend/scripts/_spheres_generator/` curation folder (per-sphere
+  `curated_might/` / `curated_power/` files + `promote_talents_to_module.py`), and the module's
+  `combat_talent_conditionals.json` / `magic_talent_conditionals.json` (nested
+  `{Sphere:{Talent:{modifiers,rider}}}`, read by the new `addSphereTalentConditionals()` /
+  `addDestructiveBlastAttack()` in `scripts/modify-abilities.js`). Passive Might self-buffs stay in the
+  separate backend `combat_talent_changes.json` (Changes tab). **Coverage rule:** every sphere *strike*
+  talent (a strike applies on any attack roll — e.g. Cryptic/Transforming/Crippling/Charming/Time/
+  Warping/Weather Strike) plus any single-target damage or debuff talent becomes a conditional; only
+  genuine battlefield-control / zone / ally-or-self-buff / utility talents stay description-only. 561
+  conditionals curated (Might 344, Power 247 across all 24 spheres, incl. the full Destruction blast
+  suite, every Weather shroud, the Berserker brutal-strike debuff suite, Alchemy poison/coating
+  on-hit effects, and the Enhancement weapon buffs). Two further encoding conventions: **self-buffs
+  that raise your attack or damage** become `modifiers[]` toggles, and an **enemy AC-reduction debuff**
+  is modeled as a `target:"attack"` bonus **plus** a rider explaining it (the Inheritor's Smite
+  pattern). Also adds the missing **Leadership** combat sphere to `data.py`. Rules of encoding:
+  [docs/spheres_conditional_decision_rules.md](docs/spheres_conditional_decision_rules.md). Consuming
+  this requires the matching (separate-repo) `pf1e_random_char_generator` module update, whose JS loads
+  once at Foundry startup — hard-refresh + generate a fresh actor to pick it up.
+- **Sphere talent conditionals bundled onto the palette actor for manual testing.** The palette builder
+  (`Backend/scripts/_pow_generator/build_pow_template_actor.py`) gained `--spheres {none,curated,all}`
+  (default `all`): it appends one weapon per combat sphere (talent-toggle conditionals + a full talent
+  reference block), a Destructive Blast weapon, the Might passive self-buffs, and a "Palette: Sphere
+  CL 10" helper buff, all clear of the discipline/spell sort blocks. The palette keeps the **native**
+  `@spheres.*` tokens so a conditional copied off it scales on a real spherecasting PC. Regenerate to
+  `%USERPROFILE%\Downloads\pow_palette.json` as usual.
 - **Spheres Casting block now spells out every drawback, boon, and the tradition math.** Previously the
   generated "Spheres Casting" feat listed a magic dabbler's casting-tradition drawbacks and boons by
   name only; the rules text already lived in `Backend/json/class_data/spheres/spheres_traditions.json`

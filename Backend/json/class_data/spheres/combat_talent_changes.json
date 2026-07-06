@@ -1,12 +1,19 @@
 {
   "Athletics": {
     "Compact Frame": {
-      "changes": [],
-      "contextNotes": [
+      "changes": [
         {
-          "text": "While you have martial focus, +[[1+floor(@attributes.bab.total/7)]] dodge bonus to AC against ranged attacks only.",
-          "target": "ac"
+          "formula": "1 + floor(@attributes.bab.total / 7)",
+          "target": "ac",
+          "type": "dodge",
+          "operator": "add",
+          "priority": 0
         }
+      ],
+      "contextNotes": [
+        "This dodge bonus applies only against ranged attacks and only while you have martial focus.",
+        "You provide no soft cover to creatures when ranged attacks pass through your square.",
+        "Once per round when you would be hit by a ranged weapon attack you are aware of (and are not flat-footed against), you may expend martial focus to take no damage from it; unusually massive ranged weapons, natural-attack ranged, and spell-effect ranged attacks cannot be evaded."
       ]
     },
     "Mobility": {
@@ -133,6 +140,27 @@
           "target": "ac"
         }
       ]
+    },
+    "Focusing Defense": {
+      "changes": [
+        {
+          "formula": "ifelse(gte(@attributes.bab.total, 10), 2, 1)",
+          "target": "ac",
+          "type": "circumstance",
+          "operator": "add",
+          "priority": 0
+        },
+        {
+          "formula": "ifelse(gte(@attributes.bab.total, 10), 2, 1)",
+          "target": "cmd",
+          "type": "circumstance",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [
+        "Activated: spend a move action to regain your martial focus and gain this bonus to AC and CMD for 1 round (+1, or +2 at BAB +10)"
+      ]
     }
   },
   "Duelist": {
@@ -163,6 +191,27 @@
         }
       ],
       "contextNotes": []
+    },
+    "Blooded Skeptic": {
+      "changes": [
+        {
+          "formula": "1 + floor(@attributes.bab.total / 4)",
+          "target": "skill.sen",
+          "type": "competence",
+          "operator": "add",
+          "priority": 0
+        }
+      ],
+      "contextNotes": [
+        "Feint attempts made by creatures currently taking bleed damage always provoke an attack of opportunity from you, even if they normally would not."
+      ]
+    },
+    "Scar Tissue": {
+      "changes": [],
+      "contextNotes": [
+        "You gain DR [[2 + (floor(@attributes.bab.total / 5) * 2)]]/bludgeoning.",
+        "Reduce all bleed damage you take by [[1 + floor(@attributes.bab.total / 5)]] (bleed cannot be reduced below 0 by this)."
+      ]
     }
   },
   "Equipment": {
@@ -329,6 +378,14 @@
         }
       ],
       "contextNotes": []
+    }
+  },
+  "Shield": {
+    "Soul’s Shield": {
+      "changes": [],
+      "contextNotes": [
+        "You gain a resistance bonus to all saving throws equal to your shield's enhancement bonus to AC."
+      ]
     }
   }
 }

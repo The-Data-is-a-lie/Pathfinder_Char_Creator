@@ -118,9 +118,30 @@ plus harvested `spheres_traditions.json`). Still connects to
   item dicts (rendered like profession ability items); sphere feats join the feats section with the
   `sphere_feat_tax` HR1 bundle.
 
-**Deferred (v2):** real spherecasting base classes (front-end / everyClass), Spheres of Guile,
-mechanical `changes`/`uses` wiring on individual talents, and richer combat-legendary classification
-(`advanced_talents.json["might"]` is the editable registry).
+**Per-roll talent conditionals (2026-07, implemented — mirrors the Path of War maneuver-conditionals
+pipeline).** Attack-relevant talents become **default-off conditional toggles** on the main weapon's
+attack action (Might + non-Destruction Power) or on a synthesized **Destructive Blast** attack item
+(Destruction), toggled per-roll like maneuvers. Clean on-hit damage/attack numbers are structured
+`modifiers[]` (auto source-labeled); saves/DCs/conditions/durations/bleed ride the conditional NAME
+with `[[ ]]` inline rolls. See [spheres_conditional_decision_rules.md](spheres_conditional_decision_rules.md).
+- **Draft + worklist:** `Backend/scripts/build_talent_conditionals.py` (regex seeds + `--dump-worklist`
+  per-sphere slices).
+- **Curation:** gitignored `Backend/scripts/_spheres_generator/` (per-sphere `curated_might/`,
+  `curated_power/` files; `promote_talents_to_module.py` merges + validates them).
+- **Module data:** `<module>/…/combat_talent_conditionals.json` + `magic_talent_conditionals.json`
+  (nested `{Sphere:{Talent:{modifiers,rider}}}`); attached by `addSphereTalentConditionals()` /
+  `addDestructiveBlastAttack()` in `modify-abilities.js`. Dabbler tokens (`@spheres.cl.total → 1`,
+  `@spheres.cam/pam → @abilities.*.mod`) substituted at attach time; `flags.pf1spheres.castingAbility/
+  practitionerAbility` stamped on the actor. **Passive** self-buffs stay in the backend
+  `combat_talent_changes.json` (Changes tab) — a separate file from the per-roll conditionals.
+- **Palette:** `build_pow_template_actor.py --spheres {none,curated,all}` bundles per-sphere weapons +
+  the Destructive Blast onto the importable actor (native `@spheres.*` tokens so copies scale on a real
+  PC; a "Palette: Sphere CL 10" toggle for local testing).
+
+**Deferred (v2):** real spherecasting base classes (front-end / everyClass), Spheres of Guile, a
+**martial-focus resource pool** (`@resources`) for combat talents (v1 states "expend martial focus" in
+rider text only), and richer combat-legendary classification (`advanced_talents.json["might"]` is the
+editable registry).
 
 ---
 
