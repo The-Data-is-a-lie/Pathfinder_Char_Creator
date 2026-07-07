@@ -108,6 +108,14 @@ CORS(app,
 def index():
     return render_template('index.html')
 
+@app.route('/backstory-stats', methods=['GET'])
+@limiter.exempt
+def backstory_stats():
+    # Running tally of backstory-API usage: total requests, and the ollama-vs-template split.
+    # See utils/usage_counter.py. Persists per-container (resets on Render redeploys).
+    from utils.usage_counter import snapshot
+    return jsonify(snapshot())
+
 def process_input_values(input_values, spheres_flag="N"):
     try:
         if len(input_values) < 19:

@@ -30,6 +30,8 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
+from utils.usage_counter import record_backstory
+
 _DEFAULT_LOCAL_HOST = "http://localhost:11434"
 _DEFAULT_CLOUD_HOST = "https://ollama.com"
 _DEFAULT_MODEL = "gpt-oss:20b"
@@ -91,6 +93,10 @@ def generate_backstory(brief, use_api=True, focus=None):
     non-empty string."""
     cfg = _config()
     text = _try_ollama(_build_messages(brief, focus, cfg), cfg) if use_api else ""
+    # Tally only requests where the visitor actually asked for the API (that's "usage"); record
+    # whether the model answered or we fell back to the template so the split is visible.
+    if use_api:
+        record_backstory("ollama" if text else "template")
     if not text:
         text = _template_backstory(brief, focus)
     return (text or "").strip()
