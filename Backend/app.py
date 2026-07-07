@@ -25,24 +25,31 @@ from main_test import generate_random_char, GENERATOR_VERSION
 
 # Load environment variables
 load_dotenv()
-# Access redis URL
-redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379')
+# Redis powers rate-limiting + server-side sessions ONLY when REDIS_URL is set (local dev, or a
+# provisioned Redis instance). When it is not set, fall back to in-process memory rate-limiting and
+# filesystem sessions so the app runs without a Redis server -- e.g. the Render deployment, which has
+# none. (Previously this defaulted to redis://localhost:6379, so every request 500'd on Render with
+# ConnectionRefusedError from flask-limiter.)
+redis_url = os.getenv('REDIS_URL')
 
 app = create_app()
 app.config['JSON_SORT_KEYS'] = False  # Disable sorting of JSON keys
 app.json.sort_keys = False  # Disable sorting of JSON keys
 
-# Initialize Flask-Limiter
+# Initialize Flask-Limiter (Redis-backed when REDIS_URL is set, else in-process memory storage)
 limiter = Limiter(
     get_remote_address,
     app=app,
     default_limits=["1000 per day", "500 per hour", "60 per minute"],
-    storage_uri=redis_url  # Set the Redis URL as the storage backend
+    storage_uri=redis_url or "memory://"  # memory:// keeps the app up without Redis (limits are per-worker)
 )
 
-# Flask Configuration
-app.config['SESSION_TYPE'] = 'redis'
-app.config['SESSION_REDIS'] = Redis.from_url(redis_url)
+# Flask Configuration -- Redis-backed sessions when available, else server-side filesystem sessions.
+if redis_url:
+    app.config['SESSION_TYPE'] = 'redis'
+    app.config['SESSION_REDIS'] = Redis.from_url(redis_url)
+else:
+    app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['SESSION_PERMANENT'] = False
 # Needs enough time or multiple workers break
