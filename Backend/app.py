@@ -30,7 +30,28 @@ load_dotenv()
 # filesystem sessions so the app runs without a Redis server -- e.g. the Render deployment, which has
 # none. (Previously this defaulted to redis://localhost:6379, so every request 500'd on Render with
 # ConnectionRefusedError from flask-limiter.)
-redis_url = os.getenv('REDIS_URL')
+# Redis selection: try each candidate in order, use the first that actually responds.
+# Local dev -> your local server; if it's not running but a global/cloud URL is set, use that;
+# if none respond (e.g. Render, which has no Redis), fall through to None -> memory/filesystem.
+_REDIS_CANDIDATES = [
+    os.getenv('REDIS_LOCAL_URL', 'redis://localhost:6379/0'),  # local server (preferred in dev)
+    os.getenv('REDIS_URL'),                                     # global / cloud (unset on Render)
+]
+
+def _resolve_redis_url():
+    for url in _REDIS_CANDIDATES:
+        if not url:
+            continue
+        try:
+            Redis.from_url(url, socket_connect_timeout=0.5).ping()
+            print(f"  Redis: using {url.split('@')[-1]}")  # host only, no password in logs
+            return url
+        except Exception as e:
+            print(f"  Redis: {url.split('@')[-1]} unreachable ({e.__class__.__name__})")
+    print("  Redis: none reachable -> memory/filesystem fallback")
+    return None
+
+redis_url = _resolve_redis_url()
 
 app = create_app()
 app.config['JSON_SORT_KEYS'] = False  # Disable sorting of JSON keys
