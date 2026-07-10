@@ -19,6 +19,17 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Web character sheet at `GET /sheet`.** A read-only, pf1-styled character sheet served by the Flask
+  backend (`Backend/templates/sheet.html` + `static/scripts/sheet.js` + `static/styles/sheet.css`):
+  generate a character in-page (POSTs the same payload as the Foundry module to
+  `/update_character_data`), or paste/upload a saved character JSON. Renders every generator section —
+  abilities, base combat estimates (AC/saves/CMB derived client-side from a class→good-saves map),
+  gear, skills (with skill-unlock ★ and profession ranks), all feat buckets (trainer/profession/
+  story/flaw/…), traits, class features, spellcasting, Path of War maneuvers & stances, Spheres
+  talents/tradition, description, and backstory — hiding sections that don't apply. The last character
+  persists in localStorage across refreshes; includes a print stylesheet. Stalker/Zealot are selectable
+  here (no Foundry-compendium constraint). The old awesomeSheet-fork frontend is abandoned in its
+  favor.
 - **Every buff spell is now generated as a distributable Multi-Buff-Distributor buff.**
   `Backend/scripts/build_spell_buffs.py` scans the 3029-spell compendium (`every_spell.json`) and writes
   `spell_buffs.json` — **798 buff spells** (341 with auto-parsed mechanical `changes`, the rest

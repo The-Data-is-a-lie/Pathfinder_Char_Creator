@@ -108,6 +108,13 @@ CORS(app,
 def index():
     return render_template('index.html')
 
+@app.route('/sheet', methods=['GET'])
+@limiter.exempt
+def sheet():
+    # Read-only pf1-style character sheet; renders client-side from the JSON that
+    # POST /update_character_data returns (static/scripts/sheet.js).
+    return render_template('sheet.html')
+
 @app.route('/backstory-stats', methods=['GET'])
 @limiter.exempt
 def backstory_stats():
