@@ -38,3 +38,7 @@ Backend/scripts/_pow_generator/
 # script. Personal tooling; the durable output lives in the FoundryVTT module's curated
 # combat_talent_conditionals.json / magic_talent_conditionals.json (and the backend passives file).
 Backend/scripts/_spheres_generator/
+
+# runtime artifacts: filesystem session fallback + backstory-API usage tally
+flask_session/
+Backend/usage_stats.json
