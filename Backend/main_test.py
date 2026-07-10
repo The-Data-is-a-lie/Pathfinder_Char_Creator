@@ -1402,12 +1402,14 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				character.spell_list_choose_from, equip_descrip, maneuvers_desc_dict, homebrew_feat_desc_dict,
 				feat_changes_dict, feat_conditionals_dict,
 				spell_changes_dict, spell_riders_dict,
+				getattr(character, 'selected_traits_desc', []) or [],
 				 ]
 
 		string_export_list_dict = [
 				"spell_list_choose_from_dict", "equip_descrip", "maneuvers_desc_dict", "homebrew_feat_desc_dict",
 				"feat_changes_dict", "feat_conditionals_dict",
 				"spell_changes_dict", "spell_riders_dict",
+				"selected_traits_desc",
 				 ]
 
 		# Make EVERY placed feat renderable by the FoundryVTT module. The module silently DROPS any feat

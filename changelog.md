@@ -19,6 +19,10 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **`selected_traits_desc` in the character payload.** The trait name+description pairs built during
+  trait selection (previously only fed to backstory generation) are now exported, so the standalone
+  web sheet can show descriptions for homebrew traits that are missing from the Foundry compendium
+  data.
 - **Web character sheet at `GET /sheet`.** A read-only, pf1-styled character sheet served by the Flask
   backend (`Backend/templates/sheet.html` + `static/scripts/sheet.js` + `static/styles/sheet.css`):
   generate a character in-page (POSTs the same payload as the Foundry module to
