@@ -52,19 +52,14 @@ def race_chooser(character, userInput_race):
     - userInput_race
     """
     race_data = full_race_data(character)
-    pre_races = list(race_data.keys())
-    races = []
-    for race in pre_races:
-        races.append(race.title())
-
-    if not isinstance(userInput_race, str) or not userInput_race.title() in races:
-        userInput_race = random.choice(races).capitalize()
-    else:
-        userInput_race = userInput_race.title()
-    # Canonicalize to the data files' key casing (e.g. 'Monkey Goblin' -> 'Monkey goblin');
-    # races.json / PlayableRaces.json lookups are exact-case and crash otherwise.
-    canonical = {r.lower(): r for r in race_data}
-    character.chosen_race = canonical.get(userInput_race.lower(), userInput_race)
+    # Match on an alphanumeric-only key so any client spelling resolves to the data files'
+    # exact key: the web sheet / Foundry module send slugs ('monkey-goblin', 'half-elf'),
+    # and the data keys mix casing ('Monkey goblin', 'Half-Elf'). Unknown input (incl.
+    # 'Random') falls through to a random race.
+    slug = lambda s: ''.join(ch for ch in str(s).lower() if ch.isalnum())
+    canonical = {slug(r): r for r in race_data}
+    chosen = canonical.get(slug(userInput_race)) if isinstance(userInput_race, str) else None
+    character.chosen_race = chosen or random.choice(list(race_data.keys()))
     return character.chosen_race
         
 def gender_chooser(character, userInput_gender):

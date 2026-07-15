@@ -534,10 +534,12 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   description-only).
 
 ### Fixed
-- **"Monkey Goblin" no longer crashes generation.** `race_chooser` title-cased the chosen race but
-  the data files key it `Monkey goblin`, so exact-case lookups (age/height/weight in
-  `appearance.py`, land speed) raised KeyError. The chosen race is now canonicalized to the data
-  files' key casing (a no-op for the other 24 races).
+- **"Monkey Goblin" is actually selectable now.** Two stacked bugs: `race_chooser` title-cased the
+  chosen race but the data files key it `Monkey goblin` (exact-case lookups in `appearance.py` and
+  land speed raised KeyError), and the web sheet / Foundry module send slugged values
+  (`monkey-goblin`) that failed the old `.title()` validation, silently randomizing the race. Race
+  input is now matched on an alphanumeric-only key and canonicalized to the data files' exact key
+  (a no-op for the other 24 races; unknown input still falls back to random).
 - **Broken minus signs in `PlayableRaces.json` race-trait keys.** Dwarf's ability line used an
   en dash (`–2 Charisma`) and Elf's had lost the sign entirely (`2 Constitution`); both now read
   `-2` like every other race. Display-only — racial modifiers are applied from
