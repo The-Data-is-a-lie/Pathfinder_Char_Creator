@@ -19,6 +19,13 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Racial ability modifiers are now applied to generated stats.** Every race's PF1 modifiers
+  (e.g. Orc +4 Str / −2 Int / −2 Wis / −2 Cha) are added to the rolled scores before ability mods,
+  HP, skills, and spells are calculated; the floating "+2 to One Ability Score" races (Human,
+  Half-Elf, Half-Orc) apply it to the class main stat. Values live in a new curated side-map
+  `Backend/json/racial_stat_changes.json` (validated by `Backend/scripts/check_racial_stats.py`,
+  the old prose-key parser in `race_func.py` stays disabled), and the per-stat split is exported
+  as `racial_stats` so the web sheet's ability-total breakdown shows `base X + racial ±N`.
 - **`selected_traits_desc` in the character payload.** The trait name+description pairs built during
   trait selection (previously only fed to backstory generation) are now exported, so the standalone
   web sheet can show descriptions for homebrew traits that are missing from the Foundry compendium
@@ -527,6 +534,10 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   description-only).
 
 ### Fixed
+- **Broken minus signs in `PlayableRaces.json` race-trait keys.** Dwarf's ability line used an
+  en dash (`–2 Charisma`) and Elf's had lost the sign entirely (`2 Constitution`); both now read
+  `-2` like every other race. Display-only — racial modifiers are applied from
+  `racial_stat_changes.json`, not parsed from these keys.
 - **Truncated and damage-naming spell-conditional toggles.** Spell toggle names were capped at 120
   characters by `build_spell_conditionals.py`, so entries like **Firebelly** were cut off mid-word
   ("…not enough to dam"); the cap is removed and the names are rebuilt in full. Toggles that put the

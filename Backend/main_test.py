@@ -27,7 +27,7 @@ import json
 # stamped onto each result (data_dict['generator_version']) so a running backend's freshness is verifiable
 # at a glance: a restart shows the new version, and any exported actor reveals which build produced it
 # (the recurring "I restarted but it's still wrong" was a stale backend serving old code).
-GENERATOR_VERSION = "2026-06-18 feat-count-guarantee"
+GENERATOR_VERSION = "2026-07-15 racial-stats"
 
 
 # Importing custom functions
@@ -75,7 +75,8 @@ from utils.class_func.profession_chooser 			import profession_chooser
 from utils.class_func.profession_abilities 			import build_profession_ability_items
 from utils.class_func.trainers 						import select_trainer_feats, CALIBER_NAMES, roll_caliber
 from utils.class_func.skill_unlocks 				import choose_skill_unlock
-# from utils.class_func.race_func 					import (race_ability_score_changes, race_ability_split, 
+from utils.class_func.race_func 					import apply_racial_stats
+# from utils.class_func.race_func 					import (race_ability_score_changes, race_ability_split,
 #                                                      		race_traits_chooser, subrace_chooser)#, full_race_data
 from utils.class_func.randomize_flaw 				import randomize_flaw_amount
 from utils.class_func.skill_ranks 					import skills_selector
@@ -283,6 +284,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		#stats after level (because we roll inherents which depend on level)
 		stats = roll_stats(character, num_dice, num_sides, inherents)
 		assign_stats(character, stats)
+		# Racial modifiers go into the base scores here (before assign/mod/HP/spell
+		# calcs) so they propagate everywhere; the split is exported as racial_stats.
+		apply_racial_stats(character, stats)
 		calc_ability_mod(character)
 
 
@@ -1279,7 +1283,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				alignment,  age_number, 
 				height_number, weight_number, character.dex, character.str, 
 				character.con, character.int, character.wis, character.cha, 
-				character.inherents, character.level_up_stats,
+				character.inherents, character.level_up_stats, character.racial_stats,
 				flaw, character.Total_HP, character.sheet_health,
 				character.bab_total,
 				armor_ac, shield_ac,
@@ -1339,7 +1343,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"alignment", "age_number", 
 				"height_number", "weight_number", "dex", "str", 
 				"con", "int", "wis", "cha", 
-				"inherents", "level_up_stats",			
+				"inherents", "level_up_stats", "racial_stats",
 				"flaw", "Total_HP", "sheet_health",
 				"bab_total",
 				"armor_ac", "shield_ac",
