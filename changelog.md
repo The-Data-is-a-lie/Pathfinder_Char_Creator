@@ -534,6 +534,10 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   description-only).
 
 ### Fixed
+- **"Monkey Goblin" no longer crashes generation.** `race_chooser` title-cased the chosen race but
+  the data files key it `Monkey goblin`, so exact-case lookups (age/height/weight in
+  `appearance.py`, land speed) raised KeyError. The chosen race is now canonicalized to the data
+  files' key casing (a no-op for the other 24 races).
 - **Broken minus signs in `PlayableRaces.json` race-trait keys.** Dwarf's ability line used an
   en dash (`–2 Charisma`) and Elf's had lost the sign entirely (`2 Constitution`); both now read
   `-2` like every other race. Display-only — racial modifiers are applied from

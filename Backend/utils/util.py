@@ -61,7 +61,10 @@ def race_chooser(character, userInput_race):
         userInput_race = random.choice(races).capitalize()
     else:
         userInput_race = userInput_race.title()
-    character.chosen_race = userInput_race
+    # Canonicalize to the data files' key casing (e.g. 'Monkey Goblin' -> 'Monkey goblin');
+    # races.json / PlayableRaces.json lookups are exact-case and crash otherwise.
+    canonical = {r.lower(): r for r in race_data}
+    character.chosen_race = canonical.get(userInput_race.lower(), userInput_race)
     return character.chosen_race
         
 def gender_chooser(character, userInput_gender):
