@@ -19,6 +19,316 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Every NPC now gets a build archetype + tactics line from a deterministic scorer** (Keep
+  Away Fighter, Team Buffer, Magic Battlefield Controller, Trickster, …). The roster is a
+  **generalized 33-entry two-axis set** — 7 role families × 16 tactical patterns, so an
+  archetype captures *how the character plays* (charge-alpha vs full-attack-grind, save-or-suck
+  vs zone-denial, …), not just its gear — deliberately free of system-branded or one-build
+  labels: Path of War initiators and Spheres practitioners classify into the same generalized
+  archetypes via their discipline/sphere signals (an Iron Tortoise warder is an AC Tank, a
+  warlord is a Team Buffer), and famous-build names folded into their concepts (God Wizard →
+  Magic Battlefield Controller; Reach Tripper/Sentinel → Keep Away Fighter; Battle Priest/Bard →
+  Self vs Team Buffer). Persisted as `Backend/json/build_archetypes.json` with research +
+  fold-in map in `docs/build_archetype_research.md`. The decider (`build_archetype.py`,
+  rewritten) scores every entry from ~65 normalized build signals (casting tier/leans, BAB tier,
+  PoW discipline tags, Spheres system/tags, weapon style/reach/crit, feat-bucket leanings, pets,
+  mobility/stealth/precision/AoO packages) behind hard requires/veto gates — the structural fix
+  for "wizard with a backup crossbow = Archer" — then L1-normalizes, and settles photo-finishes
+  by specificity rank; Ollama is demoted to an optional near-tie arbiter, so production (no
+  Ollama) gets identical answers. Shown as `- Archetype:` / `- Tactics:` in the biography fact
+  block; exported as `build_archetype` + new `build_tactics`. Regression suite:
+  `Backend/scripts/test_build_archetype.py` (37-fixture matrix — every non-Generalist archetype
+  proven — plus determinism/parity/never-raises invariants and an `explain` mode for tuning).
+- **Every NPC now rolls a casting tradition** (casting ability + Spheres drawbacks/boons), not just
+  sphere-magic dabblers — latent flavor for pure martials describing how their magic would work.
+  The mana pool remains dabbler-only. Exported as before via `casting_tradition` /
+  `sphere_drawbacks` / `sphere_boons`.
+- New `formatted_bio` payload key: a scannable, line-broken biography fact block
+  (identity → professions → craft → trainers → family → traits → appearance, per the house
+  Formatting.docx layout), built by `structured_bio()` in `Backend/utils/class_func/backstory.py`.
+  Consumers render it at the top of the Biography with the prose backstory below, replacing the
+  old raw labeled dump that previously landed in the Foundry Notes tab.
+
+### Changed
+- **Weapon rolls no longer dump the enchantment rules text into chat** (Foundry module): pf1
+  bakes an item's description into its attack chat card, so the generated weapon is now split —
+  the inventory weapon item keeps the full formatted description (base text, "Special
+  abilities: …" summary, and a titled rules block per quality) but leaves the Combat tab
+  (`showInCombat` false), while the attack-type twin (already created for Scaling Weapon Damage)
+  becomes the sole rolled entry and carries only the one-line summary as its description. The
+  quality conditionals (distilled house text with `[[ ]]` rolls + mechanical modifiers) ride on
+  both twins' actions, so the roll card shows just rolls, conditionals, and the summary.
+  Armor/shield rules text is untouched (those items are never rolled).
+- **Every family roll now includes parents AND household.** `randomize_parents` rolls a status for
+  each parent (loving/absent/dead) plus the household situation (wealthy/middle income/poor, or
+  orphanage/adoption when no loving parent remains) instead of a single phrase that was EITHER
+  parents OR a situation — so the biography's Family section always shows mother, father, and
+  financial situation. Sibling counts are always listed too (explicit "No Siblings" when all zero).
+- The biography fact block (`formatted_bio`) is now labeled bullet sections — noun headers
+  (Name / Vocation / Family / Personality / Appearance) with one `- Label: Value` fact per line —
+  so it reads as a clean prompt a GM or an AI can build a story from.
+- **Prose backstories are disabled for now**: the backend exports `backstory` as an empty string
+  (no Ollama call), so sheets show only the fact block. `generate_backstory` and its config /
+  few-shot examples remain intact for the website to iterate on later.
+- Prose backstories no longer end with the labeled Personality/Mannerisms/Appearance/Flaws list —
+  the structured `formatted_bio` block already shows those facts. The Ollama prompt no longer asks
+  for the list, the offline template no longer appends it, and `generate_backstory` defensively
+  strips any trailing labeled paragraphs the model still imitates from older few-shot examples.
+- **Spell buffs are now bucketed like items** (changes / contextNotes / unplaced).
+  `build_spell_buffs.py` reuses the item sentence classifier from `build_item_changes.py`, so
+  situational bonus sentences become targeted `contextNotes` instead of always-on changes and
+  anchor-less effect text lands in a new `unplaced` bucket (kept in `spell_buffs.json` as
+  reference data for the upcoming spell-conditionals work — see `docs/feature_spec_todo.md` §7).
+  Spells with nothing but unplaced text no longer produce a Buffs-tab buff, cutting the
+  description-only bulk; buffs that remain now carry their contextNotes onto the sheet.
+- The PoW palette actor's distributable spell-buff section is now grouped by those same placement
+  buckets (mechanical changes / situational — skills / situational — other) instead of by duration,
+  and unplaced-only spells are dropped from the palette (922 → 676 buffs), matching the module's
+  `addSpellBuffs()`.
+- **Multiclass payloads are now level-sorted.** `character.classes` (and therefore the `classes`,
+  `spellbooks`, and `archetypes_per_class` payload keys plus the web-sheet header) are ordered
+  highest class level → lowest, with level ties broken by caster tier (high > mid > low) then
+  roll order. The Foundry module maps caster classes onto the primary/secondary/tertiary pf1
+  spellbooks in that order, so the highest-leveled caster's book is always "Primary".
+- Each exported spellbook dict now carries `casting_stat` (the class's casting ability from
+  `caster_mod`) and `divine` (bool), so consumers no longer derive them from the primary class.
+- The web sheet labels multi-caster spellbook sections "Primary/Secondary/Tertiary: Class Level
+  — Caster Level N" to match the Foundry book slots.
+
+### Added
+- `docs/CODEBASE_MAP.md`: a "where do I find X" appendix (pipeline order, class-choice bucket →
+  data-file table, JSON/module/script indexes, gotchas) so tooling and contributors can locate
+  code/data without repeated searching; linked from CLAUDE.md with a keep-it-updated rule.
+- `Backend/scripts/audit_class_choice_descriptions.py`: audits every class-choice pool
+  (talents, rage powers, hexes, discoveries, arcana, revelations, bloodlines, orders, blessings,
+  inquisitions, spirits, …) for entries with empty/trivial description text — including the
+  scraper field-glue case where benefit prose ends up inside `prerequisites` — and exits 1 with
+  a per-class report.
+- New payload key `class_feature_owners` (bucket → granting class): every class-feature chooser
+  (talents, hexes, domains, wizard school, mysteries, orders, trainings, ...) records which class
+  granted its bucket, enabling per-class "Class Features (Class)" grouping on character sheets.
+- **Class-choice powers now carry mechanical effects.** Rage powers, ki powers, hexes,
+  rogue/ninja/slayer/investigator/vigilante talents, magus arcana, discoveries, mercies,
+  cruelties, arcanist exploits, oracle revelations/curses, and fighter trainings (~1,580 powers
+  across 18 lists) now ship pf1 `changes`/`contextNotes`/weapon-toggle `conditionals` in two new
+  export dicts (`class_feature_changes_dict`, `class_feature_conditionals_dict`), mirroring the
+  feat/item buff pipeline. Auto-drafted from the class-data pools by
+  `Backend/scripts/build_class_feature_changes.py` (draft entries ship contextNotes only), with
+  ~54 hand-curated top powers in `class_feature_effects_overrides.json` (rogue-talent curation
+  propagates to ninja/slayer); validated by
+  `Backend/scripts/validate_class_feature_effects.py`. Hexes that affect other creatures (Evil
+  Eye, Ward, Fortune, Misfortune) carry Multi-Buff-Distributor `tagBuff` payloads with
+  caster-scaling formulas baked to the NPC's numbers; shared-pool formulas retarget to the class
+  the character actually has (skald rage powers, shaman hexes). Foundry-module overlay is a
+  follow-up in the module repo; the web sheet can read the payload dicts directly.
+- **Multiclass generation.** The Multiclass dropdown (web form + API `multi_class` flag) is now
+  live: "Yes" rolls 2/3/4 classes at 50%/35%/15% (capped by total level, each class ≥1 level) and
+  splits the rolled level randomly across them. Classes live in a new `character.classes` list;
+  the class with the most levels (tie → first rolled) is the "primary" and drives single-choice
+  concerns (main stat, armor/weapon style, archetype, favored class). Multiple caster classes are
+  allowed — each gets its own independent spellbook (own caster level, spells known/per day, spell
+  list, domain/bloodline/school bonus spells routed to the right book) — while Path of War
+  initiator classes and Spheres classes are capped at 1 per character. Every per-class system
+  (HP dice, class talents/hexes/discoveries, fighter-style bonus-feat tracks, teamwork feats,
+  domains, animal companions, ranger/monk feats, gunslinger guns, class abilities, traits,
+  backstory) now fires for whichever class grants it, scaled by that class's own level; PoW
+  initiator level = the initiator class's own level.
+- **Rules-correct multiclass math, saves now computed server-side.** BAB stacks per class
+  (floored per class, then summed), base saves sum each class's good/poor progression (new
+  authoritative `good_saves` table in `Backend/utils/data.py`, exported as `save_bases`), skill
+  points accrue per class with max ranks = total character level. New export keys: `classes`,
+  `total_level`, `save_bases`, `spellbooks` — legacy keys (`level` = primary-class level,
+  `c_class`, `c_class_2`, `bab_total`) keep their old semantics for the Foundry module.
+- **Web sheet renders multiclass.** Header shows "Fighter 6 / Wizard 4", saves use the stacked
+  `save_bases` (the "(multiclass: first class only)" caveat is gone), and each caster class gets
+  its own Spellcasting block; old cached payloads still render via the legacy fallbacks.
+
+- **Equipment now carries real mechanics.** A new generated side-map
+  `Backend/json/items/item_changes.json` (built by `Backend/scripts/build_item_changes.py` from
+  `items_best.json` descriptions, with `item_changes_overrides.json` merged on top) turns clean
+  numeric bonuses ("+2 competence bonus on Intimidate checks", stat belts, cloaks of resistance)
+  into pf1 `changes` and situational bonus text into `contextNotes`. Exported per character as
+  `item_changes_dict`; the Foundry module overlays it onto each equipment item (deduped by change
+  target so compendium-automated items like the Circlet of Persuasion don't double-apply), and the
+  web sheet merges it into inventory rows so item bonuses feed its computed totals.
+- **Every item with a real effect now gets a context note.** The item-changes builder grew a
+  second pass: no-bonus sentences with mechanics (activated abilities, uses/day, saves, granted
+  spells) become one summarizing pf1 context note per item, with dice/DCs/durations/distances
+  wrapped as `[[ ]]` inline rolls in the house conditional style — coverage went from 528 to 1,381
+  of 1,456 pool items; pure flavor text still gets nothing. Curated overrides now cover the tiered
+  "hidden bonus" families (bracers of armor, ring of resistance, cloak-of-resistance variants,
+  bodywrap of mighty strikes, and more — 56 entries), and note targets are validated against the
+  pf1 `contextNoteTargets` enum at build time.
+
+- **Magic weapon/armor qualities: full coverage, rules text, and a real +N.** The curated
+  `Backend/json/items/quality_effects.json` grew from ~71 entries to ALL 197 weapon and 134
+  armor/shield qualities the random enhancer can roll — every weapon quality now lands as an
+  attack conditional in the house rider style (clean dice as modifiers, e.g. Corrosive's 1d6
+  acid; riders/DCs/durations as `[[ ]]` text), and every armor/shield quality as pf1
+  changes/context notes (e.g. Fortification's "25% negate crits" on AC). Each chosen quality
+  also ships its full scraped rules text as `description`, which the Foundry module renders as
+  a titled block under the item. A new `Backend/scripts/validate_quality_effects.py` enforces
+  100% coverage, entry structure, and valid pf1 targets.
+- **Items arrive with their numeric enhancement bonus.** The enhancement budget leftover after
+  buying qualities (always 1–5) is now exported as `weapon/armor/shield_enhancement_bonus`; the
+  Foundry module stamps it (`system.enh` / `system.armor.enh` + masterwork) and renames the item
+  "+N <Qualities> <Base Name>" (e.g. "+1 Corrosive Longsword").
+
+- **Mechanical flaws.** Characters' flaws are now real drawbacks instead of personality
+  strings: a new `Backend/json/flaws/flaw_effects.json` carries 25 Minor and 19 Major flaws
+  (user-authored + community-flaw and oracle-curse derived) in the house pf1 style — clean
+  penalties as `changes`, situational rules as `[[ ]]` context notes, full rules text as a
+  description. The existing 0–4 flaw roll now draws from it (1st flaw Minor, 2nd Major, extras
+  80/20), exported as `flaw_effects_dict`; the Foundry module renders each as a Traits-tab item
+  named "(Flaw, Minor/Major) <Name>" with its mechanics attached. Save DCs are standardized:
+  always 5 in Minor flaws, always 15 in Major flaws (skill-check DCs unconstrained). The bonus
+  flaw-feat formula is unchanged. Validated by `Backend/scripts/validate_flaw_effects.py`.
+- **Foundry sheet sections match the campaign template.** The Class Features tab now has the
+  template actor's divider layout — a Resource Pools group at the top (Hero Points for every
+  character from the generated count; Stamina for fighters or Combat Stamina takers; per-class
+  charge pools like Rage, Ki Pool, Bardic Performance, Lay on Hands, Grit, Panache with
+  level-scaling formulas — the matching class-feature copy from the class harvest is removed
+  so a pool ability lives only under Resource Pools, adopting the fuller rules text),
+  Variable Modifiers (sizefordamage) / Natural AC / Death HP groups
+  (Natural Armor HP + Death HP Pool trackers imported from the template), one divider per
+  selection ladder (Rage Powers, Hexes, Rogue Talents, Discoveries, …) with items labeled
+  "(Rage Power 4) <name>" from the recorded gain levels, and a Class Features divider for
+  everything else. The Traits tab gains Traits / Flaws dividers.
+
+### Changed
+- **Item notes are now placed by branch: Mechanical / Context (skill) / Context (Other) /
+  Unplaced.** Notes that used to fall onto the all-skills target by default are rehomed: if the
+  item has an anchor (another targeted note or a change), the texts merge into ONE verbose note
+  on that target in source order (Penitent's Robes: +1-saves change + a single saving-throws
+  note carrying the whole vow ladder); items with no anchor move their text to a new per-item
+  `unplaced` list that the Foundry module ignores (nothing misleading under Skills) but the
+  Flask web sheet shows as an "Effects" block inside the item's expandable description.
+  `+N armor/shield bonus` sentences now also parse into real pf1 changes (`aac`/`sac`, type
+  `base`), and the build summary/report prints the four-branch counts with an unplaced
+  curation list.
+- **`/sheet` generate form: levels to 40, clearer dice labels.** Highest/Lowest
+  Level inputs now accept up to 40 (the generator already clamps there); "Number of Dice" /
+  "Sides per Die" are relabeled "Number of Dice for Stat Rolls" / "Dice Size for Stat Rolls (d6)";
+  the Multiclass select (briefly locked while multiclass generation was unimplemented) is live
+  again with a "Yes" option. Mirrors the same change in the standalone
+  Pathfinder-Character-Sheet repo.
+
+### Fixed
+- Curated spell changes (`Backend/json/spells/spell_changes.json`) now actually layer into
+  `spell_buffs.json`: the builder resolved the file against a doubled `Backend/Backend/...` path
+  and silently fell back to no curation. Curated entries also win over a colliding auto-parsed
+  change on the same target, so spells like Divine Favor and Magic Weapon no longer double-count
+  attack/damage bonuses.
+- **Multiclass class-choice slots no longer leak talents from a sibling class's pool.** The
+  shared `chooseable_talents` candidate list accumulates across chooser calls (the feat system
+  intentionally draws from it), so e.g. a barbarian/ninja's rage-power slots could pick leftover
+  ninja tricks ("superior sniper", "trap spotter") whose description lookup against the barbarian
+  pool then missed — exporting name-only, description-less class-feature items. Each chooser now
+  picks only names belonging to its own pool, and the description lookup is case-insensitive.
+- **Alchemist discoveries actually get rolled now.** `alchemist.json` nested the whole discovery
+  pool one level too deep (`basic.alchemist`), so the discovery chooser saw a single "discovery"
+  literally named `alchemist` (with the entire pool as its description) and padded remaining
+  slots via the leak above. The pool is flattened to match every other class file.
+- Class-choice pool data repairs found by the new audit: split benefit prose out of the
+  `prerequisites` field for `celestial totem`, `celestial totem, greater`, and `linnorm death
+  curse, cairn` (barbarian); filled missing text for `living pigment` (alchemist), `esoteric
+  scholar` (rogue/ninja/slayer), and `Black Blade Riposte` (magus); dropped the junk
+  `rage powers  samurai sheepdog` scrape row. All other pools audited clean.
+- Class bonus feats and teamwork feats are now labeled with the class that actually grants them
+  in multiclass rolls (e.g. a gunslinger dip's bonus feat reads "(Gunslinger 4)"). Labels were
+  built from the primary class only, so feats granted by other classes had no label and the
+  Foundry sheet fell back to a generic "(Class Bonus Feat 1/3/…)" counter — and even labeled ones
+  were mis-attributed to the primary. The label slots and the feat counts now come from one
+  shared per-class schedule (`class_bonus_feat_slots` / `teamwork_feat_slots`), so they can't
+  drift apart.
+- Antipaladins now cast with Charisma: the class was missing from the `caster_mod` ability table,
+  so its exported spellbook had no `casting_stat` and it never received bonus spells per day from
+  a high Charisma. The occult casters (occultist, psychic, spiritualist, medium, mesmerist) are
+  mapped too so they don't hit the same gap when they join the random pool (kineticist stays
+  unmapped — burn is Constitution-based, which the int/wis/cha table doesn't model).
+- Foundry actors now get **every** rolled class, not just the primary: the payload's class entries
+  each carry their own randomly-picked archetype, and the module builds one class item per class
+  (highest level first, each followed by its archetype item), levels each independently so pf1
+  trims that class's features to its own level, and registers secondary-class resource pools
+  (rage, ki, …). Previously a multiclass roll produced a single-class sheet whose extra hexes/rage
+  powers had no visible source class.
+- Multiclass rolls containing a ranger or brawler no longer crash generation (the Foundry module's
+  "Cannot read properties of undefined (reading 'toLowerCase')" build failure) or silently wipe the
+  other classes' features: their list-pick chooser (favored terrains/enemies, brawler maneuvers)
+  replaced the whole `class features` dict instead of merging, deleting earlier bloodline/hex/
+  mystery picks and breaking the sorcerer bonus-spell lookup. The Foundry module now also reports
+  the backend's real error message instead of crashing when generation fails.
+- Multiclass characters no longer break generation: the old dead two-class "dip" path called
+  `.lower()` on a list and passed a tuple to `random.randint`; both replaced by the new selection
+  engine.
+- A second class's single-pick class feature (bloodline/order/mystery/curse) no longer wipes the
+  earlier class's pick — the chooser now merges into `class features` instead of overwriting.
+- Druids only trade their animal companion for a domain on the intended 10% roll (an operator-
+  precedence bug made every druid always qualify for a domain); a cleric rolled as a non-primary
+  class now actually receives domain data instead of just passing the eligibility check.
+- The level-1 max-HP die is always the primary class's hit die (`total_hp_calc` previously always
+  used class slot 1, and a second class's HP dice could be skipped).
+- Monk/bloodrager feat-description lookups no longer crash when the curated feat-tax searcher is
+  called without a description dict (latent `NoneType.update` bug, newly reachable via
+  multiclass).
+- **Leaving Gold blank now really gives the Paizo wealth-by-level default.** The web route
+  coerced a blank `goldAmount` to `0`, so `assign_gold`'s Paizo-table branch was unreachable and
+  "blank = Paizo default" characters started with 0 gp (and bought their gear into the negative).
+  Blank now stays non-numeric through `process_input_values` and lands on the table; the table
+  itself (levels 2–20) also gained sane edges — level 1 gets 150 gp (≈ average class starting
+  wealth) instead of wrapping around to the level-20 value (880,000 gp), and 21+ keeps the
+  level-20 value.
+- **Multi-bonus sentences no longer leak wrong changes.** The bonus-phrase capture stopped at
+  the next `+`, and example text ("For example, with 3 vows…") now counts as conditional — this
+  removes Penitent's Robes' accidental unconditional +4 AC change, among others.
+- **The entire rings slot (210 items) had empty descriptions.** The ring scrape had glued each
+  description onto the `weight` field ("… Description <text> Construction"); a one-off repair
+  script (`Backend/scripts/fix_ring_descriptions.py`) split them back apart, so rings like Ring of
+  Protection/Resistance now parse into real changes and notes instead of shipping blank.
+- **Weapon/armor special abilities are automated.** Curated
+  `Backend/json/items/quality_effects.json` (exported as `enhancement_effects_dict`) gives ~35
+  weapon qualities (flaming/frost/shock/corrosive + bursts, holy/unholy/anarchic/axiomatic, bane,
+  keen, speed, vorpal, wounding, …) attack-action conditionals in the house rider style, and ~40
+  armor/shield qualities (shadow/slick tiers, spell resistance, fortification, energy resistance,
+  bashing, …) pf1 changes/context notes on the armor item. The web sheet's Enhancements panel shows
+  a mechanics summary line per quality.
+
+- **"Prefer local backend (dev)" toggle in the Foundry module.** A per-machine (client-scoped)
+  setting that probes the local Flask server at generate time and uses it when it's up, falling
+  back to the hosted Render endpoint automatically when it isn't. Ships disabled, so released
+  builds and other tables always default to the hosted server. Configured in Foundry's module
+  settings; registration is now robust to load order (registers immediately when the init hook
+  has already fired). `createCharacter.js` is now a proper ES module imported by `button.js`
+  (it previously relied on the removed classic-scripts array to define a global).
+
+### Fixed
+- **Generated actors crashed the pf1 character sheet ("carriedWeight of undefined").** The
+  homebrew-deities rework made `deity.json` names a list of aliases, and the payload shipped the
+  raw list; pf1 v11's `details.deity` is a string field, so the array broke actor data
+  preparation and the sheet died before rendering (also hiding the newly generated languages).
+  The backend now exports the primary name as a string, and the module coerces list payloads
+  from older backends.
+- **Foundry module settings never registered.** `scripts/module.js` (which registers the module's
+  settings on the init hook) was only listed in `module.json`'s classic `scripts` array, where its
+  ES-module `export` is a silent SyntaxError — so no settings (including Backend URL) ever appeared
+  and generation always used the hard-coded hosted fallback. `main.js` now imports it first, and
+  the dead classic-scripts array (all six entries ES-module files that no-op'd) is removed.
+
+- **Languages are actually generated now.** `language_chooser` previously sampled
+  `int_mod` languages from a colon-split of the race blurb — most characters got an empty list (no
+  guaranteed Common/racial tongue, zero picks at Int ≤ 11). It now always grants the race's
+  automatic languages ("begin play speaking …", including "either X or Y" picks), and spends
+  `max(Int mod, 0)` + Linguistics ranks on bonus languages from the race's proper bonus list
+  ("choose any" races draw from the master list). Druids reliably know Druidic.
+- **Druid generation no longer corrupts the master language list.** `druidic_flag_assigner` used to
+  append `'Druidic'` to the module-level language pool (leaking it to every later character in the
+  process) while setting `character.languages = None`; it now just sets a flag the language chooser
+  reads.
+- Removed a duplicate `language_chooser` call that burned RNG state on every generation.
+- **Languages now render on the pf1 v11 actor sheet.** pf1 v11 stores traits as flat arrays in
+  source data (prep splits known ids into `.standard`, unknown names into `.custom`); the module
+  was writing the pre-v11 `{value, custom}` object shape, which pf1 silently ignores — only
+  race-granted languages showed. The module now writes the flat id array.
 - **Racial ability modifiers are now applied to generated stats.** Every race's PF1 modifiers
   (e.g. Orc +4 Str / −2 Int / −2 Wis / −2 Cha) are added to the rolled scores before ability mods,
   HP, skills, and spells are calculated; the floating "+2 to One Ability Score" races (Human,
@@ -26,6 +336,10 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   `Backend/json/racial_stat_changes.json` (validated by `Backend/scripts/check_racial_stats.py`,
   the old prose-key parser in `race_func.py` stays disabled), and the per-stat split is exported
   as `racial_stats` so the web sheet's ability-total breakdown shows `base X + racial ±N`.
+- **"Monkey Goblin" no longer crashes generation.** `race_chooser` title-cased the chosen race but
+  the data files key it `Monkey goblin`, so exact-case lookups (age/height/weight in
+  `appearance.py`, land speed) raised KeyError. The chosen race is now canonicalized to the data
+  files' key casing (a no-op for the other 24 races).
 - **`selected_traits_desc` in the character payload.** The trait name+description pairs built during
   trait selection (previously only fed to backstory generation) are now exported, so the standalone
   web sheet can show descriptions for homebrew traits that are missing from the Foundry compendium
@@ -534,12 +848,6 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   description-only).
 
 ### Fixed
-- **"Monkey Goblin" is actually selectable now.** Two stacked bugs: `race_chooser` title-cased the
-  chosen race but the data files key it `Monkey goblin` (exact-case lookups in `appearance.py` and
-  land speed raised KeyError), and the web sheet / Foundry module send slugged values
-  (`monkey-goblin`) that failed the old `.title()` validation, silently randomizing the race. Race
-  input is now matched on an alphanumeric-only key and canonicalized to the data files' exact key
-  (a no-op for the other 24 races; unknown input still falls back to random).
 - **Broken minus signs in `PlayableRaces.json` race-trait keys.** Dwarf's ability line used an
   en dash (`–2 Charisma`) and Elf's had lost the sign entirely (`2 Constitution`); both now read
   `-2` like every other race. Display-only — racial modifiers are applied from

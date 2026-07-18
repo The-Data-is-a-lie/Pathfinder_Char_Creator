@@ -106,24 +106,26 @@ def name_chooser(character):
     return character.f_name, character.l_name
 
     
+def _available_class_pool(character):
+    """The base random-class pool: every class_data key minus the occult classes (not ready yet)
+    and the Path of War classes missing from the pf1-pow Foundry compendium (they'd generate fine
+    here, but the Foundry sheet can't resolve a class item the module doesn't ship — re-enable by
+    emptying pow_classes_pending_foundry in data.py once the module includes them)."""
+    occult_classes = [x.lower() for x in getattr(data, 'occult_classes')]
+    pending = [x.lower() for x in getattr(data, 'pow_classes_pending_foundry', [])]
+    return [x for x in character.class_data.keys()
+            if x not in occult_classes and x not in pending]
+
+
 def chooseClass(character, class_choice, chosen_BAB, chosen_caster_level=None):
     """
-    Select a class or 
+    Select a class or
     Gives the Character a random class based off of BAB selection
     Returns
     - c_class (String)
     """
-    # temporarily removing occult classes (they aren't ready yet). Path of War classes are
-    # generatable and stay in the random pool.
     occult_classes = [x.lower() for x in getattr(data, 'occult_classes')]
-    available_classes = list(character.class_data.keys())
-    #remove occult classes
-    available_classes = [x for x in available_classes if x not in occult_classes]
-    # remove Path of War classes not yet in the pf1-pow Foundry compendium (they'd generate fine
-    # here, but the Foundry sheet can't resolve a class item the module doesn't ship). Re-enable
-    # by emptying pow_classes_pending_foundry in data.py once the module includes them.
-    pending = [x.lower() for x in getattr(data, 'pow_classes_pending_foundry', [])]
-    available_classes = [x for x in available_classes if x not in pending]
+    available_classes = _available_class_pool(character)
 
     if isinstance(class_choice, str):
         # Lower-case for case-insensitivity, and turn the frontend's slug form (spaces -> hyphens,
@@ -202,25 +204,40 @@ def ensure_BAB_and_caster_level(character, available_classes, BAB_or_caster_leve
 
     return chooseable_classes_bab
 
-def dip_function(character, base_classes, multi_class = False):
+def _prune_class_pool(pool, picked):
+    """Remove a picked class from the pool, plus its whole restricted group when the pick belongs
+    to one (max 1 Path of War initiator class and max 1 Spheres class per character)."""
+    pool = [c for c in pool if c != picked]
+    for group in (data.path_of_war_class, getattr(data, 'spheres_classes', [])):
+        if picked in group:
+            pool = [c for c in pool if c not in group]
+    return pool
+
+
+def select_classes(character, class_choice, chosen_BAB, chosen_caster_level=None, multi_class='N'):
     """
-    Determines if you want to have multiple classes for a character, or only one
-    Returns 
-    -c_class_2 (string)
+    Pick the character's class NAMES. Slot 0 honors class_choice / chosen_BAB /
+    chosen_caster_level exactly like the single-class path; when multiclassing, the class count is
+    rolled with weights 2->50% / 3->35% / 4->15% and the extra slots draw unconstrained from the
+    remaining pool (no duplicates, max 1 PoW initiator, max 1 Spheres class).
+
+    Levels are NOT assigned here — randomize_level splits the rolled total level across
+    character._class_picks (truncating the picks if the total is smaller than the count) and
+    builds character.classes there.
+    Returns
+    - _class_picks (list of class-name strings, pick order preserved)
     """
-    available_classes = getattr(data,base_classes)
-    classes = list(character.class_data.keys())
-    # userInput_multiclass = input('Do you want to multiclass Y/N')
-    userInput_multiclass = multi_class
-    
-    c_class_2 = ''
-    if userInput_multiclass.lower() == 'y' or userInput_multiclass == 'yes':
-        chance_dip = random.randint(0,100)
-        if chance_dip >= 50:
-            c_class_2 = random.choice(classes.lower())
-        else:
-            c_class_2 = random.choice(classes.lower())
-            character.dip = True
-            
-    character.c_class_2 = c_class_2
-    return character.c_class_2
+    chooseClass(character, class_choice, chosen_BAB, chosen_caster_level)
+    picks = [character.c_class]
+
+    want_multi = isinstance(multi_class, str) and multi_class.lower() in ('y', 'yes')
+    if want_multi:
+        count = random.choices([2, 3, 4], weights=[50, 35, 15], k=1)[0]
+        pool = _prune_class_pool(_available_class_pool(character), picks[0])
+        while len(picks) < count and pool:
+            picked = random.choice(pool)
+            picks.append(picked)
+            pool = _prune_class_pool(pool, picked)
+
+    character._class_picks = picks
+    return picks

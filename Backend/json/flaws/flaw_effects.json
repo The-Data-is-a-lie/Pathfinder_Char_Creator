@@ -1,0 +1,243 @@
+{
+  "_readme": "Mechanical character flaws, two tiers. Replaces the old personality-flaw strings: the flaw roll (0-4) now draws from here (1st = minor, 2nd = major, 3rd/4th 80% minor / 20% major). Entry shape matches feat_changes.json: clean numeric penalties as pf1 `changes`, situational rules as `contextNotes` with every number in [[ ]]; `description` is the full rules text rendered under the trait item. Names may repeat across tiers (the tier prefix distinguishes them on the sheet); the chooser never assigns the same name twice. HOUSE RULE: save DCs in minor flaws are always 5, in major flaws always 15 (skill-check DCs are unconstrained). Validated by Backend/scripts/validate_flaw_effects.py.",
+  "minor": {
+    "Alcoholic": {
+      "description": "You cannot resist the bottle. Whenever you are presented with alcohol, you must pass a Will save (DC 5) or you are compelled to drink it.",
+      "changes": [],
+      "contextNotes": [ { "text": "Alcoholic (minor): when presented with alcohol, Will save DC [[5]] or you must drink it.", "target": "will" } ]
+    },
+    "Racial Distrust": {
+      "description": "You deeply distrust other peoples. When you meet a person (PC or NPC) whom you do not know and who is not the same race as you, you must make a Sense Motive check against DC 30. If you fail, your attitude toward them is automatically unfriendly. In addition, the Diplomacy DC to improve your attitude is increased by +10, and you can never have a Fanatic attitude toward someone of another race.",
+      "changes": [],
+      "contextNotes": [ { "text": "Racial Distrust: on meeting a stranger of another race, Sense Motive DC [[30]] or your attitude is unfriendly; the Diplomacy DC to sway you is +[[10]]; you can never become Fanatic toward them.", "target": "skill.sen" } ]
+    },
+    "Accustomed to Society": {
+      "description": "City comforts have dulled your wilderness instincts. You take a -2 penalty on Survival checks and a -4 penalty on Knowledge (nature) checks, and you cannot hunt in order to provide food.",
+      "changes": [
+        { "formula": "-2", "target": "skill.sur", "type": "untyped", "operator": "add", "priority": 0 },
+        { "formula": "-4", "target": "skill.kna", "type": "untyped", "operator": "add", "priority": 0 }
+      ],
+      "contextNotes": [ { "text": "Accustomed to Society: you cannot hunt in order to provide food.", "target": "skill.sur" } ]
+    },
+    "Rain Confounded": {
+      "description": "Rain on your face leaves you hopelessly distracted. Perception penalties during rain are tripled for you (e.g. a -4 becomes a -12).",
+      "changes": [],
+      "contextNotes": [ { "text": "Rain Confounded: Perception penalties during rain are tripled (e.g. -[[4]] becomes -[[12]]).", "target": "skill.per" } ]
+    },
+    "Animal Phobia": {
+      "description": "One kind of animal (chosen when this flaw is gained) terrifies you. You take a -2 penalty on attack rolls, saving throws, skill checks, and ability checks while in the presence of your phobia.",
+      "changes": [],
+      "contextNotes": [ { "text": "Animal Phobia: -[[2]] on attacks, saves, skill checks, and ability checks in the presence of your phobia.", "target": "allChecks" } ]
+    },
+    "Beady Eyes": {
+      "description": "Your narrow, beady eyes do not catch the light as well as they should. You take a -2 penalty on Perception checks.",
+      "changes": [ { "formula": "-2", "target": "skill.per", "type": "untyped", "operator": "add", "priority": 0 } ],
+      "contextNotes": []
+    },
+    "Claustrophobia": {
+      "description": "Enclosed spaces set your heart racing. While in a cramped or enclosed space (a tunnel, a closet, a coffin, squeezing), you take a -2 penalty on attack rolls, saving throws, skill checks, and ability checks.",
+      "changes": [],
+      "contextNotes": [ { "text": "Claustrophobia: -[[2]] on attacks, saves, skill checks, and ability checks while in cramped or enclosed spaces.", "target": "allChecks" } ]
+    },
+    "Coward": {
+      "description": "In dangerous circumstances you are likely to run. On the first round of any combat, you must pass a Will save (DC 5) or spend the round retreating from or defending against visible enemies.",
+      "changes": [],
+      "contextNotes": [ { "text": "Coward: on the first round of combat, Will save DC [[5]] or spend the round retreating or on total defense.", "target": "will" } ]
+    },
+    "Curious": {
+      "description": "You are easily distracted by the sights and sounds around you. When you encounter something novel or mysterious, you must pass a Will save (DC 5) to resist stopping to investigate it, even at inopportune moments.",
+      "changes": [],
+      "contextNotes": [ { "text": "Curious: Will save DC [[5]] to resist investigating anything novel or mysterious, even in danger.", "target": "will" } ]
+    },
+    "Fussy Eater": {
+      "description": "You are uncomfortable ingesting anything but a small range of preferred foods and drinks. To consume unfamiliar food, drink, or a potion, you must pass a Fortitude save (DC 5); on a failure the action is wasted (a potion is not consumed).",
+      "changes": [],
+      "contextNotes": [ { "text": "Fussy Eater: Fortitude save DC [[5]] to swallow unfamiliar food, drink, or potions; on a failure the action is wasted.", "target": "fort" } ]
+    },
+    "Gullible": {
+      "description": "You believe what you see and trust others more than you should. You take a -4 penalty on Sense Motive checks, and Bluff checks made against you gain a +2 bonus.",
+      "changes": [ { "formula": "-4", "target": "skill.sen", "type": "untyped", "operator": "add", "priority": 0 } ],
+      "contextNotes": [ { "text": "Gullible: Bluff checks made against you gain +[[2]].", "target": "skill.sen" } ]
+    },
+    "Grudge Keeper": {
+      "description": "You have difficulty letting go of grudges. You must pass a Will save (DC 5) to willingly accept aid (healing, buffs, Diplomacy) from anyone who has wronged you, however slightly.",
+      "changes": [],
+      "contextNotes": [ { "text": "Grudge Keeper: Will save DC [[5]] to accept aid from anyone who has ever wronged you.", "target": "will" } ]
+    },
+    "Insomniac": {
+      "description": "You have trouble achieving a full and restful sleep. Each morning there is a 20% chance you begin the day fatigued until you next get a full night's rest.",
+      "changes": [],
+      "contextNotes": [ { "text": "Insomniac: each morning, [[20]]% chance to start the day fatigued.", "target": "fort" } ]
+    },
+    "Loudmouth": {
+      "description": "You are a loud, obnoxious, boisterous and compulsive talker. You take a -5 penalty on Stealth checks and can never take 10 on Stealth.",
+      "changes": [ { "formula": "-5", "target": "skill.ste", "type": "untyped", "operator": "add", "priority": 0 } ],
+      "contextNotes": [ { "text": "Loudmouth: you can never take 10 on Stealth checks.", "target": "skill.ste" } ]
+    },
+    "Metal Intolerance": {
+      "description": "You are allergic to metals. Wearing metal armor or carrying a metal weapon against your skin for an hour or more leaves you sickened until it is removed and for 1 hour afterward.",
+      "changes": [],
+      "contextNotes": [ { "text": "Metal Intolerance: after [[1]] hour of skin contact with metal armor/weapons, sickened until removed +[[1]] hour.", "target": "fort" } ]
+    },
+    "Short Attention Span": {
+      "description": "You have little patience with repetitive tasks. You cannot take 20 on any check, and you take a -2 penalty on concentration checks.",
+      "changes": [],
+      "contextNotes": [
+        { "text": "Short Attention Span: you cannot take 20 on any check.", "target": "skills" },
+        { "text": "Short Attention Span: -[[2]] on concentration checks.", "target": "concentration" }
+      ]
+    },
+    "Slow Healer": {
+      "description": "You do not heal quickly. You regain only half the normal hit points from natural healing (rest), and the Heal DC to provide you long-term care increases by 5.",
+      "changes": [],
+      "contextNotes": [ { "text": "Slow Healer: natural healing restores half HP; Heal DCs to treat you are +[[5]].", "target": "ac" } ]
+    },
+    "Stubby Fingers": {
+      "description": "Your fingers are not well suited for fine work. You take a -2 penalty on Disable Device and Sleight of Hand checks.",
+      "changes": [
+        { "formula": "-2", "target": "skill.dev", "type": "untyped", "operator": "add", "priority": 0 },
+        { "formula": "-2", "target": "skill.slt", "type": "untyped", "operator": "add", "priority": 0 }
+      ],
+      "contextNotes": []
+    },
+    "Superstitious": {
+      "description": "You fear magic and avoid it when possible. You must pass a Will save (DC 5) to willingly accept a harmless spell (including healing) from an ally.",
+      "changes": [],
+      "contextNotes": [ { "text": "Superstitious: Will save DC [[5]] to willingly accept even a harmless spell from an ally.", "target": "will" } ]
+    },
+    "City Slicker": {
+      "description": "You suffer from a lack of experience in the wilds. You take a -2 penalty on Survival and Handle Animal checks.",
+      "changes": [
+        { "formula": "-2", "target": "skill.sur", "type": "untyped", "operator": "add", "priority": 0 },
+        { "formula": "-2", "target": "skill.han", "type": "untyped", "operator": "add", "priority": 0 }
+      ],
+      "contextNotes": []
+    },
+    "Motion Sickness": {
+      "description": "Travel turns your stomach. After 10 minutes riding a mount, vehicle, or ship, you must pass a Fortitude save (DC 5) or be sickened for as long as the ride continues.",
+      "changes": [],
+      "contextNotes": [ { "text": "Motion Sickness: after [[10]] minutes riding/sailing, Fortitude save DC [[5]] or sickened while it continues.", "target": "fort" } ]
+    },
+    "Fear of Heights": {
+      "description": "Great heights leave you paralyzed with dread. While within 10 feet of a drop of 20 feet or more, you take a -2 penalty on attack rolls, saving throws, skill checks, and ability checks.",
+      "changes": [],
+      "contextNotes": [ { "text": "Fear of Heights: -[[2]] on attacks, saves, skill checks, and ability checks within [[10]] ft of a [[20]]+ ft drop.", "target": "allChecks" } ]
+    },
+    "Night Blindness": {
+      "description": "Your eyes adjust poorly to darkness. In dim light you take a -4 penalty on Perception checks, and creatures beyond 20 feet from you gain concealment against your attacks in dim light.",
+      "changes": [],
+      "contextNotes": [ { "text": "Night Blindness: -[[4]] Perception in dim light; in dim light, targets beyond [[20]] ft have concealment from you.", "target": "skill.per" } ]
+    },
+    "Squeamish": {
+      "description": "Gore unsettles you. The first time each day you witness heavy gore or dismemberment, you must pass a Fortitude save (DC 5) or be sickened for 1d4 rounds.",
+      "changes": [],
+      "contextNotes": [ { "text": "Squeamish: first heavy gore each day, Fortitude save DC [[5]] or sickened [[1d4]] rounds.", "target": "fort" } ]
+    },
+    "Illiterate": {
+      "description": "You never learned to read or write, and you refuse to learn. You cannot read or write any language, and you cannot use scrolls.",
+      "changes": [],
+      "contextNotes": [ { "text": "Illiterate: you cannot read or write any language and cannot use scrolls.", "target": "skills" } ]
+    }
+  },
+  "major": {
+    "Bespectacled": {
+      "description": "Without your glasses the world is a smear of color. You take a -20 penalty on Perception checks when not wearing your glasses.",
+      "changes": [],
+      "contextNotes": [ { "text": "Bespectacled: -[[20]] Perception when not wearing glasses.", "target": "skill.per" } ]
+    },
+    "Alcoholic": {
+      "description": "The bottle owns you. Whenever you are presented with alcohol, you must pass a Will save (DC 15) or you are compelled to drink it, and you keep drinking until it is gone.",
+      "changes": [],
+      "contextNotes": [ { "text": "Alcoholic (major): when presented with alcohol, Will save DC [[15]] or you must drink until it is gone.", "target": "will" } ]
+    },
+    "Terrible Tumbler": {
+      "description": "You are hopeless at tumbling. You cannot use Acrobatics to move through or past an enemy's threatened area (or through its space) to avoid attacks of opportunity.",
+      "changes": [],
+      "contextNotes": [ { "text": "Terrible Tumbler: you cannot tumble (Acrobatics vs CMD) to avoid attacks of opportunity.", "target": "skill.acr" } ]
+    },
+    "Light Sensitivity": {
+      "description": "Bright sunlight sears your senses. While in bright sunlight you take a -2 penalty on skill checks, saving throws, attack rolls, AC, caster level checks, and ability checks.",
+      "changes": [],
+      "contextNotes": [ { "text": "Light Sensitivity: -[[2]] on skills, saves, attacks, AC, caster level checks, and ability checks in bright sunlight.", "target": "allChecks" } ]
+    },
+    "Elemental Vulnerability": {
+      "description": "One energy type (chosen when this flaw is gained: fire, cold, electricity, or acid) ravages you. You take 50% more damage from that energy type.",
+      "changes": [],
+      "contextNotes": [ { "text": "Elemental Vulnerability: you take +[[50]]% damage from your chosen energy type.", "target": "ac" } ]
+    },
+    "Animal Phobia": {
+      "description": "One kind of animal (chosen when this flaw is gained) shatters your mind. While near your phobia you are affected as the insanity spell, and the effect lasts for a number of rounds equal to twice the rounds spent near it.",
+      "changes": [],
+      "contextNotes": [ { "text": "Animal Phobia (major): near your phobia, you are under insanity for [[2]]x the rounds spent near it.", "target": "will" } ]
+    },
+    "Blackened Arms": {
+      "description": "Your hands and forearms are shriveled and blackened, as if you had plunged your arms into a blazing fire, and your thin, papery skin is sensitive to the touch. You take a -4 penalty on weapon attack rolls.",
+      "changes": [ { "formula": "-4", "target": "attack", "type": "untyped", "operator": "add", "priority": 0 } ],
+      "contextNotes": []
+    },
+    "Clouded Vision": {
+      "description": "Your eyes are obscured, making it difficult for you to see. You cannot see anything beyond 30 feet, though within that range you see as if you had darkvision.",
+      "changes": [],
+      "contextNotes": [ { "text": "Clouded Vision: you cannot see beyond [[30]] ft (darkvision within that range).", "target": "skill.per" } ]
+    },
+    "Deaf": {
+      "description": "You cannot hear and suffer all the usual penalties for being deafened: -4 on initiative, automatic failure on Perception checks based on sound, and a 20% failure chance when casting spells with verbal components.",
+      "changes": [ { "formula": "-4", "target": "init", "type": "untyped", "operator": "add", "priority": 0 } ],
+      "contextNotes": [ { "text": "Deaf: auto-fail sound-based Perception; [[20]]% spell failure on verbal spells.", "target": "skill.per" } ]
+    },
+    "Lame": {
+      "description": "One of your legs is permanently wounded, reducing your base land speed by 10 feet (5 feet if your base speed is less than 30 feet). Your speed is never reduced further by encumbrance.",
+      "changes": [ { "formula": "-10", "target": "landSpeed", "type": "untyped", "operator": "add", "priority": 0 } ],
+      "contextNotes": [ { "text": "Lame: speed already reduced [[10]] ft; never reduced further by encumbrance.", "target": "ac" } ]
+    },
+    "Haunted": {
+      "description": "Malevolent spirits follow you wherever you go, causing minor mishaps and strange occurrences. Retrieving any stored item from your gear requires a standard action, and any item you drop lands 10 feet away in a random direction.",
+      "changes": [],
+      "contextNotes": [ { "text": "Haunted: retrieving stored gear is a standard action; dropped items land [[10]] ft away in a random direction.", "target": "ac" } ]
+    },
+    "Wasting": {
+      "description": "Your body is slowly rotting away. You take a -4 penalty on Charisma-based skill checks, except Intimidate.",
+      "changes": [],
+      "contextNotes": [ { "text": "Wasting: -[[4]] on Charisma-based skill checks (except Intimidate).", "target": "chaSkills" } ]
+    },
+    "Pranked": {
+      "description": "Capricious fey constantly bedevil you — tying your laces, hiding your gear, mimicking your voice to tell embarrassing lies. You take a -4 penalty on initiative checks, and retrieving any stored item from your gear requires a move action even if it would normally be quicker.",
+      "changes": [ { "formula": "-4", "target": "init", "type": "untyped", "operator": "add", "priority": 0 } ],
+      "contextNotes": [ { "text": "Pranked: retrieving stored gear takes at least a move action.", "target": "init" } ]
+    },
+    "Possessed": {
+      "description": "Another mind shares your body, interfering with your control. You take a -2 penalty on all concentration checks, and concentrating to maintain a spell provokes attacks of opportunity.",
+      "changes": [],
+      "contextNotes": [ { "text": "Possessed: -[[2]] concentration; maintaining a spell provokes attacks of opportunity.", "target": "concentration" } ]
+    },
+    "Vampiric Thirst": {
+      "description": "You crave the taste of fresh, warm blood. You take damage from positive energy and heal from negative energy as if you were undead.",
+      "changes": [],
+      "contextNotes": [ { "text": "Vampiric Thirst: positive energy harms you, negative energy heals you (as undead).", "target": "ac" } ]
+    },
+    "Toxic Blood": {
+      "description": "Your body is ravaged by a potent, slow-acting poison that resists all treatment. Whenever you attempt a Fortitude save against poison, roll twice and take the worse result, and you need one additional consecutive successful save to end an ongoing poison.",
+      "changes": [],
+      "contextNotes": [ { "text": "Toxic Blood: vs poison, roll Fortitude twice take the worse; +[[1]] consecutive save needed to end poisons.", "target": "fort" } ]
+    },
+    "Shadowbound": {
+      "description": "Your pigmentation is oddly colorless and your eyes are highly sensitive to light. You are blinded for 1 round when exposed to normal or bright light and dazzled while you remain in it, but you gain darkvision to 30 feet.",
+      "changes": [],
+      "contextNotes": [ { "text": "Shadowbound: blinded [[1]] round when exposed to normal/bright light, dazzled while in it; darkvision [[30]] ft.", "target": "skill.per" } ]
+    },
+    "Powerless Prophecy": {
+      "description": "You are forewarned of danger but cannot act to prevent it. You can take no actions during a surprise round (not even free actions), and if there is no surprise round you are staggered for the entire first round of combat.",
+      "changes": [],
+      "contextNotes": [ { "text": "Powerless Prophecy: no actions in surprise rounds; without a surprise round, staggered for round [[1]].", "target": "init" } ]
+    },
+    "Shattered Psyche": {
+      "description": "Your mind is crowded with dozens of voices, fragmented snippets of your past lives. You take a -2 penalty on all Intelligence-based skill checks, Wisdom-based skill checks, and concentration checks.",
+      "changes": [],
+      "contextNotes": [
+        { "text": "Shattered Psyche: -[[2]] on Intelligence-based skill checks.", "target": "intSkills" },
+        { "text": "Shattered Psyche: -[[2]] on Wisdom-based skill checks.", "target": "wisSkills" },
+        { "text": "Shattered Psyche: -[[2]] on concentration checks.", "target": "concentration" }
+      ]
+    }
+  }
+}

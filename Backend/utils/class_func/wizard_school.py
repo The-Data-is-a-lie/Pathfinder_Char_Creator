@@ -1,5 +1,7 @@
 import random
 
+from utils.class_func.generic_func import record_bucket_owner
+
 def wizard_opposing_school(character, random_school):
     """
     wizards choose a school of magic (elemental/other). If elemental, it always as an opposing school. If not, we grab 2 random opposing schools
@@ -22,7 +24,8 @@ def wizard_opposing_school(character, random_school):
 
 
 def wizard_school_chooser(character):
-    if character.c_class == 'wizard':        
+    from utils.class_func.generic_func import class_entry_for
+    if class_entry_for(character, 'wizard') is not None:
         chosen_dict = {}
     
         elemental_data = character.wizard_schools["elemental_schools"]
@@ -69,5 +72,7 @@ def wizard_school_chooser(character):
             character.data_dict['class features'] = chosen_dict
         else:
             character.data_dict['class features'].update(chosen_dict)
+        for bucket in chosen_dict:
+            record_bucket_owner(character, bucket, 'wizard')
         
         return random_school

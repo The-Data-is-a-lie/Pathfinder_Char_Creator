@@ -17,11 +17,13 @@ def trait_selector(character, count):
     return trait_list
 
 def trait_selector_limits(character, trait_data):
+    # class-gated traits match ANY of the character's classes (multiclass-aware)
+    class_names = [c['name'] for c in character.classes]
     conditions = ( (trait_data['requirement_race'] == character.chosen_race) &
-                    (trait_data['requirement_class'] == character.c_class)
+                    (trait_data['requirement_class'].isin(class_names))
                 |
                 (trait_data['requirement_race'].isnull()) &
-                (trait_data['requirement_class'].isnull())                    
+                (trait_data['requirement_class'].isnull())
                 )
                 #   trait_data['requirement_faith'] == ,
                 #   trait_data['requirement_alignment'] == character.alignment

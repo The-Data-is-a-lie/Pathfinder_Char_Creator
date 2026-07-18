@@ -26,6 +26,7 @@ Env:
 import json
 import os
 import random
+import re
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -99,7 +100,120 @@ def generate_backstory(brief, use_api=True, focus=None):
         record_backstory("ollama" if text else "template")
     if not text:
         text = _template_backstory(brief, focus)
-    return (text or "").strip()
+    # The sheet's structured fact block already shows Personality/Mannerisms/Appearance/Flaws, so a
+    # closing labeled list in the prose (the old house style, still present in some few-shot
+    # examples the model may imitate) is duplicate noise -- always strip it.
+    return _strip_trailing_label_list(text)
+
+
+_LABEL_LIST_RE = re.compile(r"^(personality|mannerisms|appearance|flaws|traits)\s*:", re.IGNORECASE)
+
+
+def _strip_trailing_label_list(text):
+    """Drop trailing paragraph(s) that start with a Personality:/Mannerisms:/Appearance:/Flaws:/
+    Traits: label -- the legacy closing list the prose used to end with."""
+    paragraphs = re.split(r"\n\s*\n", (text or "").strip())
+    while paragraphs and _LABEL_LIST_RE.match(paragraphs[-1].strip()):
+        paragraphs.pop()
+    return "\n\n".join(paragraphs).strip()
+
+
+_PROF_RANK_RE = re.compile(r"\(\s*Profession rank\b", re.IGNORECASE)
+
+
+def structured_bio(brief):
+    """Deterministic, scannable fact block for the sheet's Biography tab: a noun section header,
+    then one "- Label: Value" bullet per fact, blank line between sections. Reads as a prompt a
+    GM (or an AI) can build a story from. Pure formatting -- no network, no randomness. Empty
+    fields (and whole empty sections) are skipped."""
+    def cap(v):
+        # Word-capitalize without str.title()'s apostrophe mangling ("jester's" -> "Jester's").
+        s = _flat(v)
+        return " ".join(w[:1].upper() + w[1:] for w in s.split()) if s else ""
+
+    def as_list(v):
+        return [x for x in (v if isinstance(v, (list, tuple)) else [v]) if _flat(x)]
+
+    def section(header, facts):
+        bullets = [f"- {f}" for f in facts if f]
+        return [header] + bullets if bullets else None
+
+    sections = []
+
+    # Identity: headed by the character's name.
+    name = _flat(brief.get("name")) or "This Character"
+    ident = []
+    if _flat(brief.get("alignment")):
+        ident.append(f"Alignment: {_flat(brief.get('alignment'))}")
+    if _flat(brief.get("deity")):
+        ident.append(f"Deity: {_flat(brief.get('deity'))}")
+    if _flat(brief.get("race")):
+        ident.append(f"Race: {cap(brief.get('race'))}")
+    cls = _flat(brief.get("char_class"))
+    if cls:
+        lvl = _flat(brief.get("level"))
+        line = f"Level {lvl} {cls}" if lvl else cls
+        if _flat(brief.get("class_2")):
+            line += f" / {cap(brief.get('class_2'))}"
+        ident.append(f"Class: {line}")
+    if _flat(brief.get("build_archetype")):
+        ident.append(f"Archetype: {_flat(brief.get('build_archetype'))}")
+    if _flat(brief.get("build_tactics")):
+        ident.append(f"Tactics: {_flat(brief.get('build_tactics'))}")
+    if _flat(brief.get("main_stat")):
+        ident.append(f"Stat Focus: {cap(brief.get('main_stat'))}")
+    if _flat(brief.get("martial_disciplines")):
+        ident.append(f"Disciplines: {_flat(brief.get('martial_disciplines'))}")
+    if _flat(brief.get("region")):
+        ident.append(f"Homeland: {cap(brief.get('region'))}")
+    sections.append(section(name, ident))
+
+    # Vocation: professions ("Name (Profession rank N)" -> "Name (rank N)"), craft, trainers.
+    voc = [f"Profession: {_PROF_RANK_RE.sub('(rank', _flat(p))}"
+           for p in as_list(brief.get("professions"))]
+    if _flat(brief.get("craft")):
+        voc.append(f"Known for: {cap(brief.get('craft'))}")
+    for t in as_list(brief.get("trainers")):
+        # Each entry reads "an average trainer who taught them X, Y" (built in main_test).
+        s = _flat(t)
+        voc.append(f"Training: {s[:1].upper() + s[1:]}")
+    sections.append(section("Vocation", voc))
+
+    # Family: the parents phrase split into bullets ("loving mother, absent father, raised in a
+    # poor household" -> three), then sibling counts ("1 Older Brother", "2 Younger Sisters") --
+    # or an explicit "No Siblings" so the section always covers both parents and siblings.
+    fam = [cap(part) for part in _flat(brief.get("parents")).split(",") if part.strip()]
+    sib_labels = ("Older Brother", "Younger Brother", "Older Sister", "Younger Sister")
+    sibs = brief.get("siblings") or []
+    sib_bullets = []
+    for label, raw in zip(sib_labels, sibs):
+        m = re.search(r"\d+", str(raw))          # sibling fields are " you have N older brothers"
+        n = int(m.group()) if m else 0
+        if n > 0:
+            sib_bullets.append(f"{n} {label}{'' if n == 1 else 's'}")
+    if sibs and not sib_bullets:
+        sib_bullets.append("No Siblings")
+    sections.append(section("Family", fam + sib_bullets))
+
+    # Personality: the labeled trio (same trio the prose backstory used to close with).
+    traits = [f"{label}: {_flat(brief.get(key))}"
+              for label, key in (("Personality", "personality_traits"),
+                                 ("Mannerisms", "mannerisms"), ("Flaws", "flaw"))
+              if _flat(brief.get(key))]
+    sections.append(section("Personality", traits))
+
+    # Appearance: hair / eyes / build.
+    looks = []
+    hair = cap(" ".join(x for x in (_flat(brief.get("hair_type")), _flat(brief.get("hair_color"))) if x))
+    if hair:
+        looks.append(f"Hair: {hair}")
+    if _flat(brief.get("eye_color")):
+        looks.append(f"Eyes: {cap(brief.get('eye_color'))}")
+    if _flat(brief.get("appearance")):
+        looks.append(f"Build: {cap(brief.get('appearance'))}")
+    sections.append(section("Appearance", looks))
+
+    return "\n\n".join("\n".join(s) for s in sections if s)
 
 
 # --------------------------------------------------------------------------- #
@@ -414,7 +528,8 @@ def _build_facts(brief):
     tlines = _trait_lines(brief)
     if tlines:
         facts.append("Character traits (light flavor only):\n" + "\n".join(tlines))
-    # These feed the short closing list (Personality / Mannerisms / Appearance / Flaws).
+    # Flavor color for the prose (the sheet's structured block lists these verbatim; the prose
+    # must weave them in, never end with a labeled list of them).
     for label, key in (("Personality", "personality_traits"), ("Mannerisms", "mannerisms"),
                        ("Appearance", "appearance"), ("Flaws", "flaw")):
         v = _flat(brief.get(key))
@@ -441,7 +556,7 @@ def _build_messages(brief, focus, cfg):
     return messages
 
 
-def _try_ollama(messages, cfg):
+def _try_ollama(messages, cfg, tag="backstory"):
     api_key = os.environ.get("OLLAMA_API_KEY", "").strip()
     host = (os.environ.get("OLLAMA_HOST", "").strip()
             or (_DEFAULT_CLOUD_HOST if api_key else _DEFAULT_LOCAL_HOST))
@@ -472,26 +587,24 @@ def _try_ollama(messages, cfg):
             data = json.loads(resp.read().decode("utf-8"))
         text = _clean((data.get("message") or {}).get("content") or "")
         if text:
-            print(f"backstory: generated via Ollama ({model} @ {host}).")
+            print(f"{tag}: generated via Ollama ({model} @ {host}).")
             return text
-        print("backstory: Ollama returned no content; using template fallback.")
+        print(f"{tag}: Ollama returned no content; using fallback.")
     except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, ValueError) as e:
-        print(f"backstory: Ollama unavailable ({type(e).__name__}: {e}); using template fallback.")
+        print(f"{tag}: Ollama unavailable ({type(e).__name__}: {e}); using fallback.")
     return ""
 
 
 def _template_backstory(brief, focus=None):
     """Deterministic offline composer (the safety net when no model is reachable): vocation /
-    family / homeland-led prose, then the short closing Personality/Mannerisms/Appearance/Flaws list
-    (the same house style as the model path)."""
+    family / homeland-led prose only. No closing Personality/Mannerisms/Appearance/Flaws list --
+    the sheet's structured fact block (structured_bio) displays those facts."""
     name = _flat(brief.get("name")) or "This character"
     race, region = _flat(brief.get("race")), _flat(brief.get("region"))
     align, deity = _flat(brief.get("alignment")), _flat(brief.get("deity"))
     summary = _build_summary(brief)
-    pers, mann = _flat(brief.get("personality_traits")), _flat(brief.get("mannerisms"))
-    flaw, prof = _flat(brief.get("flaw")), _flat(brief.get("professions"))
+    prof = _flat(brief.get("professions"))
     craft, trainers = _flat(brief.get("craft")), _flat(brief.get("trainers"))
-    appearance = _flat(brief.get("appearance"))
     fam = _family_text(brief)
 
     # Paragraph 1 — homeland grounding (when documented), then vocation (the work of their days).
@@ -526,15 +639,4 @@ def _template_backstory(brief, focus=None):
                       + (f", keeping faith with {deity}." if deity else "."))
 
     paras = [" ".join(p) for p in (p_work, p_home) if p]
-
-    # Closing short labeled list.
-    tail = []
-    for label, val in (("Personality", pers), ("Mannerisms", mann),
-                       ("Appearance", appearance), ("Flaws", flaw)):
-        if val:
-            tail.append(f"{label}: {val}")
-
-    out = "\n\n".join(paras).strip()
-    if tail:
-        out += "\n\n" + "\n".join(tail)
-    return out.strip()
+    return "\n\n".join(paras).strip()

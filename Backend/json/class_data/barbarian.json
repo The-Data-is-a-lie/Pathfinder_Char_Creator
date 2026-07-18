@@ -109,10 +109,12 @@
      "benefit": "while raging, whenever you make a successful melee attack against an opponent that is holding its breath, in addition to any other effects caused by that attack, the opponent loses a number of rounds of breath equal to your strength modifier."
    },
    "celestial totem": {
-     "prerequisites": "barbarian 8 this effect bestows upon the barbarian a halo of gleaming light that shines as if it were daylight and triggers an invisibility purge effect in the barbarians square and each adjacent square. the invisibility purge only affects non-good creatures."
+     "prerequisites": "barbarian 8",
+     "benefit": "this effect bestows upon the barbarian a halo of gleaming light that shines as if it were daylight and triggers an invisibility purge effect in the barbarians square and each adjacent square. the invisibility purge only affects non-good creatures."
    },
    "celestial totem, greater": {
-     "prerequisites": "barbarian 12, celestial totem while raging, the barbarian gains spell resistance equal to 11 + the barbarians class level against spells with the evil descriptor. she also gains a +2 bonus on all saving throws against spells and effects from evil creatures."
+     "prerequisites": "barbarian 12, celestial totem",
+     "benefit": "while raging, the barbarian gains spell resistance equal to 11 + the barbarians class level against spells with the evil descriptor. she also gains a +2 bonus on all saving throws against spells and effects from evil creatures."
    },
    "lesser chaos totem": {
      "benefit": "while raging, the barbarian gains a +1 deflection bonus to ac against the attacks of lawful creatures and a +1 resistance bonus on saving throws against confusion, insanity, polymorph, and effects with the lawful descriptor. this bonus increases by +1 for each chaos totem rage power she possesses."
@@ -377,7 +379,8 @@
      "benefit": "when using her surprise accuracy rage power, the barbarians critical multiplier for damage increases by 1 (a a2 multiplier becomes a3, a 19a20/a2 multiplier becomes 19a20/a3, a a3 multiplier becomes a4, and a a4 multiplier becomes a5). a barbarian must have the surprise accuracy and deadly accuracy rage powers and be 16th level before selecting this rage power."
    },
    "linnorm death curse, cairn": {
-     "prerequisites": "barbarian 8 the character channels the power of a cairn linnorm. the characters melee attacks deal an additional 1 point of negative energy damage. if the character is knocked unconscious or killed by an attack or spell, the attacker suffers the curse of decay (will negates). curse of decay: save will dc 10 + 1/2 characters level + characters charisma bonus; effect target takes 1 point of con damage per day and ages at a rate of 1 year per day (eventually incurring all of the penalties of old age but none of the bonuses)."
+     "prerequisites": "barbarian 8",
+     "benefit": "the character channels the power of a cairn linnorm. the characters melee attacks deal an additional 1 point of negative energy damage. if the character is knocked unconscious or killed by an attack or spell, the attacker suffers the curse of decay (will negates). curse of decay: save will dc 10 + 1/2 characters level + characters charisma bonus; effect target takes 1 point of con damage per day and ages at a rate of 1 year per day (eventually incurring all of the penalties of old age but none of the bonuses)."
    },
    "linnorm death curse, crag": {
      "prerequisites": "barbarian 4",
@@ -638,9 +641,6 @@
    "totemic mettle": {
      "prerequisites":"",
      "benefit": "whenever you enter a rage while bound to a spirit that belongs to your associated constellation, whenever you succeed on a fortitude save that would normally have a lesser effect on a successful save, you instead completely negate the effect. you are still harmed by the effects that do not allow a saving throw."
-   },
-   "rage powers  samurai sheepdog": {
-     "prerequisites": "roninas resolve, barbarian level 10th. while raging, a barbarian with this rage power adds the exhausted, frightened, nauseated, and staggered conditions those which she can remove with the roninas resolve rage power. when she removes the fatigued or exhausted conditions, the barbarian can use her swift action on the same turn to make a single attack at her highest attack bonus against one creature she can reach. as a swift action while raging, a barbarian with this rage power can issue a challenge to one target within sight. if the target is able to reach and attack the barbarian on its next turn without putting itself directly in harmas way, it must either do so or become demoralized as if the barbarian successfully intimidated it and beat the dc by 1d10 for every two roninas instinct rage powers the barbarian possesses."
    }
  }
 }

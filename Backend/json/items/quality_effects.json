@@ -1,0 +1,1590 @@
+{
+  "_readme": "Curated weapon/armor/shield special-ability effects. weapon.* -> conditionals attached to the main weapon's attack action (modifiers: plain formulas, the module auto-appends the [Source] label; riders in the name with every number in [[ ]]). armor.* -> pf1 changes/contextNotes overlaid on the armor or shield item (covers both Armor and Shield quality lists). Keys match weapon_qualities.json / armor_qualities.json names.",
+  "weapon": {
+    "Flaming": {
+      "conditionals": [
+        { "name": "Flaming", "default": true, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["fire"], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Frost": {
+      "conditionals": [
+        { "name": "Frost", "default": true, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["cold"], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Shock": {
+      "conditionals": [
+        { "name": "Shock", "default": true, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["electric"], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Corrosive": {
+      "conditionals": [
+        { "name": "Corrosive", "default": true, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["acid"], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Flaming Burst": {
+      "conditionals": [
+        { "name": "Flaming Burst: crit rider assumes a x2 weapon — on a x3 crit the extra fire is [[2d10]], on a x4 crit [[3d10]]", "default": true, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["fire"], "critical": "nonCrit"},
+          {"formula": "1d10", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["fire"], "critical": "onCrit"} ] }
+      ]
+    },
+    "Icy Burst": {
+      "conditionals": [
+        { "name": "Icy Burst: crit rider assumes a x2 weapon — on a x3 crit the extra cold is [[2d10]], on a x4 crit [[3d10]]", "default": true, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["cold"], "critical": "nonCrit"},
+          {"formula": "1d10", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["cold"], "critical": "onCrit"} ] }
+      ]
+    },
+    "Shocking Burst": {
+      "conditionals": [
+        { "name": "Shocking Burst: crit rider assumes a x2 weapon — on a x3 crit the extra electricity is [[2d10]], on a x4 crit [[3d10]]", "default": true, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["electric"], "critical": "nonCrit"},
+          {"formula": "1d10", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["electric"], "critical": "onCrit"} ] }
+      ]
+    },
+    "Corrosive Burst": {
+      "conditionals": [
+        { "name": "Corrosive Burst: crit rider assumes a x2 weapon — on a x3 crit the extra acid is [[2d10]], on a x4 crit [[3d10]]", "default": true, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["acid"], "critical": "nonCrit"},
+          {"formula": "1d10", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["acid"], "critical": "onCrit"} ] }
+      ]
+    },
+    "Holy": {
+      "conditionals": [
+        { "name": "Holy: only vs evil creatures; an evil wielder gains [[1]] negative level while wielding", "default": false, "modifiers": [
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["good"], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Unholy": {
+      "conditionals": [
+        { "name": "Unholy: only vs good creatures; a good wielder gains [[1]] negative level while wielding", "default": false, "modifiers": [
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["evil"], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Anarchic": {
+      "conditionals": [
+        { "name": "Anarchic: only vs lawful creatures; a lawful wielder gains [[1]] negative level while wielding", "default": false, "modifiers": [
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["chaotic"], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Axiomatic": {
+      "conditionals": [
+        { "name": "Axiomatic: only vs chaotic creatures; a chaotic wielder gains [[1]] negative level while wielding", "default": false, "modifiers": [
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["lawful"], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Bane": {
+      "conditionals": [
+        { "name": "Bane: only vs the designated foe type — the weapon's effective enhancement bonus also rises by [[2]] (the +[[2]] attack is on the roll)", "default": false, "modifiers": [
+          {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Vicious": {
+      "conditionals": [
+        { "name": "Vicious: each hit, the wielder takes [[1d6]] damage", "default": false, "modifiers": [
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Merciful": {
+      "conditionals": [
+        { "name": "Merciful: ALL damage dealt is nonlethal (suppress on command)", "default": false, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["nonlethal"], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Wounding": {
+      "conditionals": [
+        { "name": "Wounding: on hit, [[1]] bleed damage (stacks with itself; stopped by a DC [[15]] Heal check or any magical healing)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Thundering": {
+      "conditionals": [
+        { "name": "Thundering: on a confirmed crit the extra sonic is on the roll (x2 shown; [[2d8]] on a x3 crit, [[3d8]] on x4) and the target must pass a Fortitude Save [[14]] or be permanently deafened", "default": true, "modifiers": [
+          {"formula": "1d8", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["sonic"], "critical": "onCrit"} ] }
+      ]
+    },
+    "Keen": {
+      "conditionals": [
+        { "name": "Keen: this weapon's threat range is doubled (does not stack with Improved Critical)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Speed": {
+      "conditionals": [
+        { "name": "Speed: when making a full attack, one extra attack at full BAB (does not stack with haste)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Vorpal": {
+      "conditionals": [
+        { "name": "Vorpal: on a natural [[20]] followed by a confirmed critical, severs the target's head (if it has one)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Brilliant Energy": {
+      "conditionals": [
+        { "name": "Brilliant Energy: ignores armor, shield, and natural armor bonuses to AC; cannot harm undead, constructs, or objects", "default": true, "modifiers": [] }
+      ]
+    },
+    "Ghost Touch": {
+      "conditionals": [
+        { "name": "Ghost Touch: deals full damage to incorporeal creatures; can be wielded by them", "default": true, "modifiers": [] }
+      ]
+    },
+    "Defending": {
+      "conditionals": [
+        { "name": "Defending: at the start of your turn, transfer some or all of the enhancement bonus from attack/damage to AC until your next turn", "default": false, "modifiers": [] }
+      ]
+    },
+    "Dancing": {
+      "conditionals": [
+        { "name": "Dancing: as a standard action, loose the weapon to fight on its own for [[4]] rounds, then it drops", "default": false, "modifiers": [] }
+      ]
+    },
+    "Returning": {
+      "conditionals": [
+        { "name": "Returning: a thrown weapon flies back to the thrower just before their next turn (catch as a free action)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Seeking": {
+      "conditionals": [
+        { "name": "Seeking: (ranged) negates miss chance from concealment — the projectile veers toward its target", "default": true, "modifiers": [] }
+      ]
+    },
+    "Distance": {
+      "conditionals": [
+        { "name": "Distance: doubles the weapon's range increment", "default": true, "modifiers": [] }
+      ]
+    },
+    "Throwing": {
+      "conditionals": [
+        { "name": "Throwing: (melee weapon) can be thrown with a [[10]]-ft range increment", "default": false, "modifiers": [] }
+      ]
+    },
+    "Mighty Cleaving": {
+      "conditionals": [
+        { "name": "Mighty Cleaving: when using Cleave, make one additional attack per round", "default": false, "modifiers": [] }
+      ]
+    },
+    "Heartseeker": {
+      "conditionals": [
+        { "name": "Heartseeker: ignores miss chance from concealment vs creatures with a discernible anatomy (total concealment still applies)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Cruel": {
+      "conditionals": [
+        { "name": "Cruel: on damaging a shaken/frightened/panicked target, it is also sickened [[1]] round; on reducing a foe to unconscious/dead, gain [[5]] temp HP for [[10]] minutes", "default": false, "modifiers": [] }
+      ]
+    },
+    "Furious": {
+      "conditionals": [
+        { "name": "Furious: while the wielder rages or is under a rage effect, the weapon's enhancement bonus is +[[2]] higher", "default": false, "modifiers": [] }
+      ]
+    },
+    "Conductive": {
+      "conditionals": [
+        { "name": "Conductive: on hit, expend [[2]] uses of a ranged-touch spell-like/supernatural ability to channel it through the weapon", "default": false, "modifiers": [] }
+      ]
+    },
+    "Ki Focus": {
+      "conditionals": [
+        { "name": "Ki Focus: the wielder may deliver ki attacks and unarmed special abilities through this weapon", "default": true, "modifiers": [] }
+      ]
+    },
+    "Limning": {
+      "conditionals": [
+        { "name": "Limning: on hit, the target is outlined in glowing light for [[1]] round (as faerie fire — negates blur/displacement/invisibility concealment)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Menacing": {
+      "conditionals": [
+        { "name": "Menacing: allies flanking a foe the wielder threatens gain a +[[4]] flanking bonus instead of +[[2]]", "default": true, "modifiers": [] }
+      ]
+    },
+    "Adaptive": {
+      "conditionals": [
+        { "name": "Adaptive: (composite bow) the bow's strength rating matches the wielder's Strength bonus (may fire at a lesser rating)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Advancing": {
+      "conditionals": [
+        { "name": "Advancing: [[1]]/round, after damaging a foe in melee, take a [[5]]-ft step as a swift action (doesn't count against other movement); doing so imposes -[[2]] on all attack rolls until the start of your next turn", "default": false, "modifiers": [] }
+      ]
+    },
+    "Agile": {
+      "conditionals": [
+        { "name": "Agile: a wielder with Weapon Finesse applies Dexterity instead of Strength to damage rolls (not increased two-handed; still reduced off-hand)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Allying": {
+      "conditionals": [
+        { "name": "Allying: as a free action at the start of your turn, transfer some or all of this weapon's enhancement bonus to one ally's weapon in line of sight until your next turn (does not stack with the ally's own enhancement bonus)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Ambushing": {
+      "conditionals": [
+        { "name": "Ambushing: only during a surprise round or vs a creature unaware of the wielder — precision damage (not multiplied on a crit); after [[1]] minute preparing a hiding place or while sniping, add the enhancement bonus as competence on Stealth", "default": false, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Anchoring": {
+      "conditionals": [
+        { "name": "Anchoring: as a swift action, fix the weapon in space (as an immovable rod), or on a melee hit anchor the target — it cannot move away without destroying the weapon or a DC [[30]] Strength check as a full-round action to drag it up to [[10]] ft; no effect on amorphous creatures (incorporeal needs ghost touch); the weapon can't attack while anchoring", "default": false, "modifiers": [] }
+      ]
+    },
+    "Answering": {
+      "conditionals": [
+        { "name": "Answering: for the opportune parry and riposte deed, the weapon's enhancement bonus is +[[4]] higher (max +[[5]])", "default": false, "modifiers": [] }
+      ]
+    },
+    "Beaming": {
+      "conditionals": [
+        { "name": "Beaming: [[1]]/day swift action, create glowing orbs equal to the enhancement bonus; [[1]]/round when attacking with this weapon, expend an orb as a free action to fire a searing light ray at any target in range; orbs last until spent or the wielder sleeps", "default": false, "modifiers": [] }
+      ]
+    },
+    "Benevolent": {
+      "conditionals": [
+        { "name": "Benevolent: when using aid another to grant an ally an attack bonus, increase the aid another bonus by the weapon's enhancement bonus", "default": false, "modifiers": [] }
+      ]
+    },
+    "Bewildering": {
+      "conditionals": [
+        { "name": "Bewildering: [[3]]/day on a hit, the target is confused for [[1d6]] rounds; Will Save [[17]] each round ends it", "default": false, "modifiers": [] }
+      ]
+    },
+    "Blood-Hunting": {
+      "conditionals": [
+        { "name": "Blood-Hunting: only vs creatures with the designated bloodline — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll); enh increases from bane/spirit-hunting don't stack but each such ability past the first adds +[[1d6]] damage", "default": false, "modifiers": [
+          {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Bloodsong": {
+      "conditionals": [
+        { "name": "Bloodsong: while benefiting from a raging song, this weapon is keen; confirming a crit during a raging song grants [[1d10]] temporary HP ([[2d10]] on a x3 weapon, [[3d10]] on x4) until reduced to 0 or the song ends", "default": false, "modifiers": [] }
+      ]
+    },
+    "Brawling": {
+      "conditionals": [
+        { "name": "Brawling: the wielder gains an enhancement bonus on combat maneuver checks equal to the weapon's enhancement bonus", "default": true, "modifiers": [] }
+      ]
+    },
+    "Breaking": {
+      "conditionals": [
+        { "name": "Breaking: on command, only vs inanimate objects and crystalline creatures — extra damage on the roll; ignores hardness [[5]] or lower (doesn't stack with bane vs crystalline creatures)", "default": false, "modifiers": [
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Burning": {
+      "conditionals": [
+        { "name": "Burning: an unattended flammable object struck ignites (Fortitude Save [[13]] negates for magic items), burning [[1d4]] rounds for [[1d6+1]] fire per round ([[2d6+2]] if mostly wood); a creature ending its turn in the object's space takes [[1d6+1]] fire; [[3]]/day on command an ignited object flares — +[[1d4+1]] rounds duration and a [[5]]-ft burst dealing [[1d6+1]] fire", "default": false, "modifiers": [] }
+      ]
+    },
+    "Called": {
+      "conditionals": [
+        { "name": "Called: as a swift action (no AoO), teleport the weapon to the wielder's hand from up to [[100]] ft, even from another creature's possession (must have been in the wielder's possession [[24]] hours)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Catalytic": {
+      "conditionals": [
+        { "name": "Catalytic: on hit, Fortitude Save [[15]] or the target takes [[1d6]] acid at the start of its turn for [[1d4]] rounds (repeat hits extend duration, not damage); neutralizing is a full-round action as if on fire; striking the target with a natural weapon or unarmed strike deals [[1d6]] acid to the attacker", "default": true, "modifiers": [] }
+      ]
+    },
+    "Clustershot": {
+      "conditionals": [
+        { "name": "Clustershot: (ammunition) when firing multiple arrows at once (e.g. Manyshot, all arrows clustershot), if the first arrow deals sneak attack damage or crits, the other arrows deal half sneak attack damage and half critical damage", "default": false, "modifiers": [] }
+      ]
+    },
+    "Compassionate": {
+      "conditionals": [
+        { "name": "Compassionate: a creature brought to -[[1]] or fewer HP by this weapon is automatically stabilized (suppress at will as a free action)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Concealed": {
+      "conditionals": [
+        { "name": "Concealed: on command, transforms into a similar-sized mundane non-consumable object (standard action; move action to revert); while transformed it doesn't register as magical (as magic aura); reverts if left unattended [[8]] hours", "default": false, "modifiers": [] }
+      ]
+    },
+    "Concealed, Lesser": {
+      "conditionals": [
+        { "name": "Concealed, Lesser: on command, transforms into one specific mundane object of the same size and shape chosen at creation (standard action; move action to revert); doesn't register as magical while transformed", "default": false, "modifiers": [] }
+      ]
+    },
+    "Confounding": {
+      "conditionals": [
+        { "name": "Confounding: on a confirmed crit, spend [[1]] panache point to attempt a disarm, reposition, sunder, or trip as an immediate action (no AoO) with an enhancement bonus on the check equal to the weapon's enhancement bonus", "default": false, "modifiers": [] }
+      ]
+    },
+    "Conserving": {
+      "conditionals": [
+        { "name": "Conserving: (projectile weapon, not firearms) ammunition fired on a miss teleports unharmed back to its quiver/case/pouch", "default": true, "modifiers": [] }
+      ]
+    },
+    "Countering": {
+      "conditionals": [
+        { "name": "Countering: +[[2]] CMD vs disarm/sunder of this weapon; when such an attempt fails, immediately attempt the same maneuver back (no AoO, no drop risk, works even beyond your reach)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Courageous": {
+      "conditionals": [
+        { "name": "Courageous: morale bonus on saves vs fear equal to the weapon's enhancement bonus; other morale bonuses on saves vs fear increase by half the enhancement bonus (min [[1]])", "default": false, "modifiers": [] }
+      ]
+    },
+    "Culling": {
+      "conditionals": [
+        { "name": "Culling: only on attacks made with Cleave/Great Cleave (and Cleaving Finish feats) — the extra damage is on the roll for the initial and all granted attacks", "default": false, "modifiers": [
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Cunning": {
+      "conditionals": [
+        { "name": "Cunning: on a critical threat, +[[4]] on the confirmation roll if the wielder has [[5]]+ ranks in the Knowledge skill identifying the target ( +[[6]] with [[15]]+ ranks)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Cyclonic": {
+      "conditionals": [
+        { "name": "Cyclonic: (ranged) attacks are not impaired by wind, water, or other liquid/gaseous environmental factors", "default": true, "modifiers": [] }
+      ]
+    },
+    "Dazzling": {
+      "conditionals": [
+        { "name": "Dazzling: (firearm) each shot dazzles all foes adjacent to the bullet's path (or within/adjacent to a scatter cone) for rounds equal to the weapon's enhancement bonus", "default": true, "modifiers": [] }
+      ]
+    },
+    "Dazzling Radiance": {
+      "conditionals": [
+        { "name": "Dazzling Radiance: when using Dazzling Display, creatures within [[15]] ft that see it — Fortitude Save [[17]] or blinded [[2]] rounds and dazzled [[1d4]] rounds (on a success, dazzled [[1d4]] rounds)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Deadly": {
+      "conditionals": [
+        { "name": "Deadly: (nonlethal weapon) all damage dealt is lethal, and a whip-like weapon damages even creatures with armor/natural armor (suppress on command)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Debilitating": {
+      "conditionals": [
+        { "name": "Debilitating: on hitting a target denied its Dex bonus to AC, it takes -[[1]] on attack rolls or to AC (wielder's choice) for [[1]] round; creatures immune to sneak attacks/crits are immune; doesn't stack with itself", "default": false, "modifiers": [] }
+      ]
+    },
+    "Deceptive": {
+      "conditionals": [
+        { "name": "Deceptive: bonus on Bluff checks to feint equal to the weapon's enhancement bonus; on a confirmed crit, feint against that opponent as an immediate action", "default": false, "modifiers": [] }
+      ]
+    },
+    "Defiant": {
+      "conditionals": [
+        { "name": "Defiant: stays in hand even while panicked, stunned, or unconscious; add the enhancement bonus on checks to stabilize while dying and on saves to end ongoing conditions (disease, poison, hold person); grants extra daily uses (equal to the enhancement bonus) of Heroic Defiance/Recovery or the Improved save feats if known", "default": false, "modifiers": [] }
+      ]
+    },
+    "Designating (greater)": {
+      "conditionals": [
+        { "name": "Designating (greater): (ranged) on hit, allies gain +[[4]] morale on melee attack rolls and +[[6]] morale on melee damage rolls vs the target for [[1]] round (multiple hits don't stack)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Designating (lesser)": {
+      "conditionals": [
+        { "name": "Designating (lesser): (ranged) on hit, allies gain +[[2]] morale on melee attack and damage rolls vs the target for [[1]] round (multiple hits don't stack)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Disjoining": {
+      "conditionals": [
+        { "name": "Disjoining: on a confirmed crit vs a mythic creature, it cannot expend mythic power for [[1d4]] rounds (a mythic wielder can't expend mythic power while wielding this)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Dispelling": {
+      "conditionals": [
+        { "name": "Dispelling: stores dispel magic (as spell storing); the dispel check gains a bonus equal to the weapon's enhancement bonus (also applies to dispelling strike and spell sunder / sunder enchantment checks)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Dispelling Burst": {
+      "conditionals": [
+        { "name": "Dispelling Burst: stores dispel magic or greater dispel magic; may discharge as a free action on a confirmed crit — the dispel check bonus rises to the weapon's enhancement bonus or its crit multiplier (whichever is higher); if empty on a crit, cast either spell into it as a swift action and discharge immediately", "default": false, "modifiers": [] }
+      ]
+    },
+    "Disruption": {
+      "conditionals": [
+        { "name": "Disruption: (bludgeoning) only vs undead — any undead struck must pass a Will Save [[14]] or be destroyed", "default": false, "modifiers": [] }
+      ]
+    },
+    "Distracting": {
+      "conditionals": [
+        { "name": "Distracting: a struck creature's concentration DCs to cast/use abilities increase by [[5]] for [[1]] minute (then immune to distracting for [[24]] hours)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Distracting, Greater": {
+      "conditionals": [
+        { "name": "Distracting, Greater: a struck creature's concentration DCs to cast/use abilities increase by [[10]] for [[1]] minute (then immune to distracting effects for [[24]] hours; supersedes lesser distracting)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Driving": {
+      "conditionals": [
+        { "name": "Driving: (ranged) may perform bull rush and trip maneuvers within the first range increment; a ranged bull rush pushes without moving; a ranged trip failing by [[10]]+ can't knock the attacker prone", "default": false, "modifiers": [] }
+      ]
+    },
+    "Drowscourge": {
+      "conditionals": [
+        { "name": "Drowscourge: only vs driders and drow — the enhancement bonus is [[1]] better (on the roll); detect drow (as detect animals or plants) [[1]]/day and darkvision (as the spell) [[1]]/day", "default": false, "modifiers": [
+          {"formula": "1", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "1", "target": "damage", "subTarget": "allDamage", "type": "enh", "damageType": [], "critical": "normal"} ] }
+      ]
+    },
+    "Dry Load": {
+      "conditionals": [
+        { "name": "Dry Load: (firearm cartridge) can be loaded and fired underwater or in airless environments — an air bubble protects the firearm for [[3]] minutes or until fired; normal -[[2]] per [[5]] ft of water still applies to the shot", "default": false, "modifiers": [] }
+      ]
+    },
+    "Dueling": {
+      "conditionals": [
+        { "name": "Dueling: (finessable weapon, drawn and in hand) +[[4]] enhancement on initiative checks; +[[2]] on disarm and feint checks; +[[2]] CMD vs disarm and +[[2]] to the DC to feint the wielder", "default": false, "modifiers": [] }
+      ]
+    },
+    "Dueling (PSFG)": {
+      "conditionals": [
+        { "name": "Dueling (PSFG): luck bonus equal to twice the enhancement bonus on disarm, trip, dirty trick, and reposition CMB checks made with this weapon, and to CMD against those maneuvers (stacks with the enhancement bonus itself)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Endless Ammunition": {
+      "conditionals": [
+        { "name": "Endless Ammunition: (bow/crossbow) each time the weapon is nocked, a nonmagical arrow/bolt is created — never needs loading (created ammo vanishes if removed; always destroyed when fired)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Exclusionary": {
+      "conditionals": [
+        { "name": "Exclusionary: after damaging a creature, you may exclude it from your channel energy for [[1]] minute; max excluded targets = Wisdom bonus + the weapon's enhancement bonus (oldest exclusion drops first)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Exhausting": {
+      "conditionals": [
+        { "name": "Exhausting: on a confirmed crit, forgo the extra crit damage dice to make the target exhausted (no effect on already-exhausted or crit-immune creatures)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Fate-Stealing": {
+      "conditionals": [
+        { "name": "Fate-Stealing: on striking a creature with grit or panache, steal [[1]] point as a swift action and regain [[1]] grit or panache point (foe's grit can restore your panache and vice versa)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Fervent": {
+      "conditionals": [
+        { "name": "Fervent: (adherents of the attuned deity) +[[4]] insight on Bluff, Disguise, and Sleight of Hand to conceal the weapon from other faiths; on hitting a flat-footed target of a different religion, Will Save [[13]] or shaken [[1]] minute; +[[2]] to confirm crits vs members of other religions", "default": false, "modifiers": [] }
+      ]
+    },
+    "Flamboyant": {
+      "conditionals": [
+        { "name": "Flamboyant: (light/one-handed piercing) holds [[1]] panache point (refreshes daily); anyone may spend it on deeds, or to reroll an attack with this weapon that missed on a natural [[1]] (must keep the second result)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Flamboyant, Greater": {
+      "conditionals": [
+        { "name": "Flamboyant, Greater: (light/one-handed piercing) as flamboyant but the reservoir holds [[3]] panache points (refreshes daily)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Flying": {
+      "conditionals": [
+        { "name": "Flying: acts as a dancing weapon that can attack foes up to [[30]] ft away while dancing; at any time the last wielder can recall it as a swift action — it flies [[500]] ft/round, sundering barriers and beating CMD checks to restrain it; falls inert if it can't return in [[4]] rounds", "default": false, "modifiers": [] }
+      ]
+    },
+    "Fortuitous": {
+      "conditionals": [
+        { "name": "Fortuitous: [[1]]/round, on hitting with an attack of opportunity, make a second AoO with this weapon against that foe at -[[5]]", "default": false, "modifiers": [] }
+      ]
+    },
+    "Fury-Born": {
+      "conditionals": [
+        { "name": "Fury-Born: each time you damage an opponent, the weapon's enhancement bonus rises by +[[1]] against that opponent (max total +[[5]]); resets if the foe dies, you attack another creature, or [[1]] hour passes", "default": false, "modifiers": [] }
+      ]
+    },
+    "Furyborn": {
+      "conditionals": [
+        { "name": "Furyborn: each time you damage an opponent, the weapon's enhancement bonus rises by +[[1]] against that opponent (max total +[[5]]); resets if the foe dies, you attack another creature, or [[1]] hour passes", "default": false, "modifiers": [] }
+      ]
+    },
+    "Glamered": {
+      "conditionals": [
+        { "name": "Glamered: on command, assumes the form of another similarly sized object and doesn't radiate magic (true seeing reveals it); suppressed for [[1]] minute after the weapon attacks", "default": false, "modifiers": [] }
+      ]
+    },
+    "Glitterwake": {
+      "conditionals": [
+        { "name": "Glitterwake: [[3]]/day swift action — the next ranged attack scatters glittering dust on the target and all creatures within [[10]] ft of the trajectory: -[[20]] Stealth, invisible creatures outlined (as glitterdust), and Will Save [[13]] or dazzled; lasts minutes equal to the enhancement bonus", "default": false, "modifiers": [] }
+      ]
+    },
+    "Glorious": {
+      "conditionals": [
+        { "name": "Glorious: glows as daylight while drawn (cannot be suppressed by the wielder); any creature attacked in melee is dazzled until your next turn; on a confirmed crit, Will Save [[14]] or blinded until your next turn (+[[1]] round per crit multiple over x2)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Gory": {
+      "conditionals": [
+        { "name": "Gory: on hit, [[1d2]] bleed damage (as wounding — stacks with itself; stopped by a DC [[15]] Heal check or magical healing); on a confirmed crit, Intimidate to demoralize as an immediate action with a circumstance bonus equal to character level", "default": true, "modifiers": [] }
+      ]
+    },
+    "Grayflame": {
+      "conditionals": [
+        { "name": "Grayflame: swift action, channel energy through the weapon — +[[1]] enhancement and +[[1d6]] divine damage on hits, sheds torchlight, for [[1]] round per d6 of the channel; positive charge: counts as good & silver, good creatures immune; negative charge: counts as evil & cold iron, evil creatures immune", "default": false, "modifiers": [] }
+      ]
+    },
+    "Grounding": {
+      "conditionals": [
+        { "name": "Grounding: only vs creatures of the air subtype — the extra damage is on the roll; +[[2]] competence on saves vs air- and electricity-based effects; safely touches charged surfaces; the weapon is immune to electricity", "default": false, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Growing": {
+      "conditionals": [
+        { "name": "Growing: [[1]]/day, the weapon grows one size category for [[10]] minutes — deals damage at the larger size (wielded without penalty) and size-limited maneuvers can affect creatures one size larger", "default": false, "modifiers": [] }
+      ]
+    },
+    "Guardian": {
+      "conditionals": [
+        { "name": "Guardian: as a free action at the start of your turn, transfer some or all of the weapon's enhancement bonus to your saving throws (stacks with everything) until your next turn", "default": false, "modifiers": [] }
+      ]
+    },
+    "Guided": {
+      "conditionals": [
+        { "name": "Guided: attack and damage rolls use the wielder's Wisdom modifier instead of Strength (never adjusted for two-handed/off-hand); wielding it with Strength instead imposes -[[2]] on attack rolls", "default": true, "modifiers": [] }
+      ]
+    },
+    "Harvesting": {
+      "conditionals": [
+        { "name": "Harvesting: (mythic wielder) on a confirmed crit vs a mythic creature, leech one use of its mythic power and gain it (if not already at maximum); usable per day a number of times equal to the enhancement bonus", "default": false, "modifiers": [] }
+      ]
+    },
+    "Healer's Sorrow": {
+      "conditionals": [
+        { "name": "Healer's Sorrow: (ammunition) splinters embed in the wound — all magical healing on the target restores only half HP until removed ([[10]] minutes and a DC [[25]] Heal check)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Heart-Piercing": {
+      "conditionals": [
+        { "name": "Heart-Piercing: (piercing ranged) on a natural [[20]] followed by a confirmed critical, pierces the target's heart (if it has one), killing it instantly", "default": true, "modifiers": [] }
+      ]
+    },
+    "Heretical": {
+      "conditionals": [
+        { "name": "Heretical: as fervent; only vs members of the attuned religion — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll) and the extra damage is not multiplied on a crit", "default": false, "modifiers": [
+          {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Huntsman": {
+      "conditionals": [
+        { "name": "Huntsman: only vs creatures the wielder has tracked with Survival in the past day — the extra damage is on the roll; also grants the enhancement bonus on Survival checks to track creatures the weapon damaged in the past day", "default": false, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Igniting": {
+      "conditionals": [
+        { "name": "Igniting: as flaming (the [[1d6]] fire is on the roll while active); on a confirmed crit the target catches fire (no save to avoid; save each round to extinguish)", "default": true, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["fire"], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Impact": {
+      "conditionals": [
+        { "name": "Impact: (non-light melee) deals damage as one size category larger; bull rush maneuvers gain a bonus equal to the weapon's enhancement bonus", "default": true, "modifiers": [] }
+      ]
+    },
+    "Impervious": {
+      "conditionals": [
+        { "name": "Impervious: cannot rust/rot/warp even magically; double hardness/HP bonus per enhancement point; break DC and CMD vs sunder of this weapon gain twice the enhancement bonus", "default": false, "modifiers": [] }
+      ]
+    },
+    "Injecting": {
+      "conditionals": [
+        { "name": "Injecting: (bladed) stores up to [[3]] doses of injury poison; coat the blade with a stored dose as a swift action (refilling a dose is a full-round action)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Inspired": {
+      "conditionals": [
+        { "name": "Inspired: (investigator) using inspiration on attacks with this weapon costs only [[1]] use (as combat inspiration); with the combat inspiration talent, also add twice the inspiration roll to damage", "default": false, "modifiers": [] }
+      ]
+    },
+    "Interfering": {
+      "conditionals": [
+        { "name": "Interfering: (ranged) make attacks of opportunity as if threatening everything within the first range increment or [[30]] ft (whichever is closer); max one ranged AoO per foe per move action", "default": false, "modifiers": [] }
+      ]
+    },
+    "Invigorating": {
+      "conditionals": [
+        { "name": "Invigorating: on dropping a living foe, remove your fatigue (exhausted becomes fatigued); if neither, gain +[[2]] morale on attack rolls and +[[10]] ft to all speeds until the end of your next turn", "default": false, "modifiers": [] }
+      ]
+    },
+    "Jurist": {
+      "conditionals": [
+        { "name": "Jurist: (inquisitor) while judgment is active, enhancement bonus on Perception and to CMD: +[[1]] on the first round, +[[2]] on the second, +[[3]] on the third and after", "default": false, "modifiers": [] }
+      ]
+    },
+    "Ki Intensifying": {
+      "conditionals": [
+        { "name": "Ki Intensifying: deliver ki strike, quivering palm, and Stunning Fist through the weapon; their save DCs rise by half the enhancement bonus (min [[1]]); after a hit, spend [[1]] ki (swift) for a free bull rush/disarm/reposition/trip (no AoO, weapon bonuses apply, can't move with it)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Kinslayer": {
+      "conditionals": [
+        { "name": "Kinslayer: only vs creatures related to the wielder — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll) and the extra damage is not multiplied on a crit", "default": false, "modifiers": [
+          {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Legbreaker": {
+      "conditionals": [
+        { "name": "Legbreaker: (bludgeoning melee) on hit, the target's land speed drops [[10]] ft for [[1d4]] rounds (repeat hits extend duration; DC [[15]] Heal check removes); on a confirmed crit, also a free trip maneuver", "default": true, "modifiers": [] }
+      ]
+    },
+    "Leveraging": {
+      "conditionals": [
+        { "name": "Leveraging: CMD bonus equal to the enhancement bonus vs bull rush, drag, reposition, and trip; twice the enhancement bonus on CMB checks to attempt those maneuvers", "default": false, "modifiers": [] }
+      ]
+    },
+    "Liberating (UI)": {
+      "conditionals": [
+        { "name": "Liberating (UI): competence bonus = enhancement bonus on Sense Motive (doubled to sense enchantment, also on Spellcraft to identify enchantments being cast); attacking a mind-controlled creature deals nonlethal damage and grants it a new save with a morale bonus = enhancement bonus (success suppresses the effect [[10]] minutes)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Liberating (WMH)": {
+      "conditionals": [
+        { "name": "Liberating (WMH): standard action — free yourself or an adjacent creature from a movement-inhibiting effect (paralysis, web, slow, solid fog): CMB check vs DC [[15]] + caster level (or HD); one attempt per effect", "default": false, "modifiers": [] }
+      ]
+    },
+    "Lifesurge": {
+      "conditionals": [
+        { "name": "Lifesurge: save bonus = enhancement bonus vs necromantic effects and undead ability damage/drain/energy drain; temporary HP received gain +enhancement bonus; threat range doubled vs undead (doesn't stack with keen); on a confirmed crit vs undead, [[1d8]] positive energy ([[2d8]] x3, [[3d8]] x4) as damage or absorb half as healing", "default": false, "modifiers": [] }
+      ]
+    },
+    "Lucky": {
+      "conditionals": [
+        { "name": "Lucky: (firearm) holds [[1]] grit point (refreshes daily); spend it to reroll an attack that would misfire (keep the second result)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Lucky, Greater": {
+      "conditionals": [
+        { "name": "Lucky, Greater: (firearm) as lucky but the reservoir holds [[3]] grit points (refreshes daily)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Mimetic": {
+      "conditionals": [
+        { "name": "Mimetic: on damaging a creature, gain resistance [[10]] for [[1]] round to one energy type it resists or is immune to (stacks with itself to [[30]], not with other sources)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Miserable": {
+      "conditionals": [
+        { "name": "Miserable: only vs the designated foe type (as bane) — each time the weapon damages such a foe, its natural energy resistances are halved for [[1]] round", "default": false, "modifiers": [] }
+      ]
+    },
+    "Mythic Bane": {
+      "conditionals": [
+        { "name": "Mythic Bane: only vs creatures with the mythic subtype — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll); stacks with bane", "default": false, "modifiers": [
+          {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Negating": {
+      "conditionals": [
+        { "name": "Negating: on damaging a foe with DR/chaotic, /evil, /good, /lawful, or /magic, that DR component is reduced by [[5]] for [[1]] round (other DR components unaffected; doesn't stack)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Neutralizing": {
+      "conditionals": [
+        { "name": "Neutralizing: only vs creatures of the earth subtype — the extra damage is on the roll; +[[2]] competence on saves vs acid- and earth-based effects; neutralizes up to [[1]] gallon of nonmagical corrosive liquid; the weapon is immune to acid", "default": false, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Nimble Shot": {
+      "conditionals": [
+        { "name": "Nimble Shot: (ranged) firing this weapon does not provoke attacks of opportunity", "default": true, "modifiers": [] }
+      ]
+    },
+    "Nullifying": {
+      "conditionals": [
+        { "name": "Nullifying: on damaging a creature with spell resistance, its SR drops by [[1]] for [[1]] minute (on a confirmed crit, by the crit multiplier instead); multiple hits stack", "default": false, "modifiers": [] }
+      ]
+    },
+    "Obliviating": {
+      "conditionals": [
+        { "name": "Obliviating: (bludgeoning melee) on dealing crit or sneak attack damage, Fortitude Save [[16]] or the victim forgets the last [[1d6]] minutes and is flat-footed until the start of its next turn", "default": false, "modifiers": [] }
+      ]
+    },
+    "Ominous": {
+      "conditionals": [
+        { "name": "Ominous: adds its enhancement bonus on the wielder's Intimidate checks; on a confirmed crit, Will Save [[13]] or the target is shaken [[1]] minute (+[[1]] minute per crit multiple over x2; then immune from this weapon [[24]] hours)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Patriotic": {
+      "conditionals": [
+        { "name": "Patriotic: (members of the attuned nationality) +[[4]] insight on Bluff, Disguise, and Sleight of Hand to conceal the weapon from other nationalities; on hitting a flat-footed target of another nationality, Will Save [[13]] or shaken [[1]] minute; +[[2]] to confirm crits vs other nationalities", "default": false, "modifiers": [] }
+      ]
+    },
+    "Peaceful": {
+      "conditionals": [
+        { "name": "Peaceful: a creature that has taken nonlethal damage from this weapon becomes shaken for [[1]] round each time it deals lethal damage to a living creature (durations stack; can't escalate to frightened; healing the nonlethal damage stops new extensions)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Penetrating": {
+      "conditionals": [
+        { "name": "Penetrating: (ammunition) a struck creature must pass a Fortitude Save [[17]] or the shot continues into the next creature in line at -[[4]] (plus range modifiers)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Phase Locking": {
+      "conditionals": [
+        { "name": "Phase Locking: a creature damaged by this weapon is affected as dimensional anchor for [[1]] round", "default": true, "modifiers": [] }
+      ]
+    },
+    "Pitfall": {
+      "conditionals": [
+        { "name": "Pitfall: while held, apply the enhancement bonus to initiative checks, Reflex saves vs traps, and AC vs trap attacks (two pitfall weapons: only the better applies)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Planar": {
+      "conditionals": [
+        { "name": "Planar: only vs outsiders — ignores [[5]] points of their damage reduction", "default": false, "modifiers": [] }
+      ]
+    },
+    "Planestriking": {
+      "conditionals": [
+        { "name": "Planestriking: only vs outsiders — ignores [[5]] points of their DR ( [[10]] points vs outsiders native to the current plane while the wielder is off his home plane)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Plummeting": {
+      "conditionals": [
+        { "name": "Plummeting: (ranged) a flying creature hit must attempt a Fly check DC [[20]] with a penalty of twice the enhancement bonus — failure loses [[10]] ft of altitude; on a confirmed crit, success still loses [[10]] ft and failure falls [[1d4]]x10 ft (falling damage if it hits the ground)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Potent": {
+      "conditionals": [
+        { "name": "Potent: (mythic wielder) swift action, expend [[1]] use of mythic power — the enhancement bonus rises by half your mythic tier (min [[1]], max +[[6]] total) and the weapon bypasses DR for [[1]] round", "default": false, "modifiers": [] }
+      ]
+    },
+    "Prehensile": {
+      "conditionals": [
+        { "name": "Prehensile: (whip) attach to an object as a grappling hook as a swift action (climb or swing); a swashbuckler may spend [[1]] panache (free action) for [[20]]-ft reach on one attack and use precise strike with it", "default": false, "modifiers": [] }
+      ]
+    },
+    "Quaking": {
+      "conditionals": [
+        { "name": "Quaking: (bludgeoning melee) standard action, strike the ground — trip maneuver vs all foes in a [[5]]-ft-radius spread, [[10]]-ft cone, or [[20]]-ft line (any size; provokes AoO unless prevented; you can never be tripped back on a failure)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Quenching": {
+      "conditionals": [
+        { "name": "Quenching: only vs creatures of the fire subtype — the extra damage is on the roll; +[[2]] competence on saves vs fire-based effects; extinguishes nonmagical fires of Medium size or smaller; the weapon is immune to fire", "default": false, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Redeemed": {
+      "conditionals": [
+        { "name": "Redeemed: a purified unholy weapon — in all ways holy: only vs evil creatures (the extra damage is on the roll); sacred bonus on saves = enhancement bonus vs spells/abilities of evil outsiders; +[[5]] competence on Knowledge (planes) to identify evil outsiders", "default": false, "modifiers": [
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["good"], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Reliable": {
+      "conditionals": [
+        { "name": "Reliable: (firearm) the misfire value is reduced by [[1]] (min [[0]]), applied after any misfire increases", "default": true, "modifiers": [] }
+      ]
+    },
+    "Reliable (greater)": {
+      "conditionals": [
+        { "name": "Reliable (greater): (firearm) the misfire value is reduced by [[4]] (min [[0]]), applied after any misfire increases", "default": true, "modifiers": [] }
+      ]
+    },
+    "Repositioning": {
+      "conditionals": [
+        { "name": "Repositioning: +[[2]] enhancement on reposition maneuver checks; on a confirmed crit, attempt a reposition as a free action (provokes AoO as normal)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Resizing": {
+      "conditionals": [
+        { "name": "Resizing: instantly resizes to suit any creature that picks it up (reverts [[1]] round after leaving its wielder's possession)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Runeforged": {
+      "conditionals": [
+        { "name": "Runeforged: opposes one school of magic — +[[2]] morale on saves vs spells of the opposed school; empathic: -[[2]] Diplomacy while wielded (two runeforged weapons: -[[5]] on attacks, Will saves, and skill checks); a wielder matching the weapon's sin/virtue gains +[[2]] insight on initiative and +[[1]] dodge to AC", "default": false, "modifiers": [] }
+      ]
+    },
+    "Rusting": {
+      "conditionals": [
+        { "name": "Rusting: on a confirmed crit, forgo the extra damage to deal normal damage and affect the target or its armor with rusting grasp (not usable on unattended objects); the weapon itself is immune to rust", "default": false, "modifiers": [] }
+      ]
+    },
+    "Sacred": {
+      "conditionals": [
+        { "name": "Sacred: acts as a holy symbol (displays a divine caster's holy symbol); a wielder with blessings may, when channeling energy, bestow one minor blessing on one ally or ally's weapon in the channel area at the cost of [[1]] blessing use", "default": false, "modifiers": [] }
+      ]
+    },
+    "Sacrosanct": {
+      "conditionals": [
+        { "name": "Sacrosanct: serves as the deity's holy/unholy symbol; [[1]]/day when channeling energy through it, widen the channel radius to [[40]] ft (or expend [[1]] use of mythic power to do so at will)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Sapping": {
+      "conditionals": [
+        { "name": "Sapping: (nonlethal weapon) the extra nonlethal damage is on the roll; on a confirmed crit the target is fatigued for [[5]] rounds", "default": true, "modifiers": [
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["nonlethal"], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Seaborne": {
+      "conditionals": [
+        { "name": "Seaborne: Swim bonus equal to twice the enhancement bonus while in hand; no underwater attack/damage penalties (as freedom of movement)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Second Chance": {
+      "conditionals": [
+        { "name": "Second Chance: (bow) [[1]]/round when a shot misses, as a free action the arrow swerves and re-attacks at the same attack bonus", "default": true, "modifiers": [] }
+      ]
+    },
+    "Shadowshooting": {
+      "conditionals": [
+        { "name": "Shadowshooting: (projectile weapon) never needs reloading — smoke coalesces into quasi-real ammunition; the first hit each round lets the target attempt a Will Save [[ 15 + enhancement bonus ]] to disbelieve: on a success the weapon deals minimum damage to it for [[1]] round", "default": true, "modifiers": [] }
+      ]
+    },
+    "Sharding": {
+      "conditionals": [
+        { "name": "Sharding: in place of any melee attack, throw a duplicate of the weapon (range increment [[10]] ft, same proficiency and properties; the duplicate vanishes after hitting or missing)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Shattering": {
+      "conditionals": [
+        { "name": "Shattering: only vs inanimate objects and crystalline creatures — as breaking (on-command [[2d6]], not stacking with bane) plus the on-crit dice on the roll ( [[2d10]] on x3, [[3d10]] on x4; the crit damage DOES stack with bane and works even with breaking inactive); ignores hardness [[10]] or lower", "default": false, "modifiers": [
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"},
+          {"formula": "1d10", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "onCrit"} ] }
+      ]
+    },
+    "Shrinking": {
+      "conditionals": [
+        { "name": "Shrinking: on command, shrinks to dagger size (deals [[1d4]] damage, easily concealed); the command word again restores it", "default": false, "modifiers": [] }
+      ]
+    },
+    "Silencing": {
+      "conditionals": [
+        { "name": "Silencing: silent when drawn and swung; on hit, the target is muffled until your next turn (Perception DC to hear the battle rises from -[[10]] to [[10]]); on a confirmed crit, Will Save [[13]] (+[[2]] per crit multiple over x2) or silenced (own space only) for rounds equal to the crit multiplier", "default": true, "modifiers": [] }
+      ]
+    },
+    "Skewering": {
+      "conditionals": [
+        { "name": "Skewering: (light/one-handed piercing) on a critical threat, spend [[1]] panache as an immediate action to auto-confirm the crit (no panache regained for confirming)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Slithering": {
+      "conditionals": [
+        { "name": "Slithering: a target's cover bonus to AC is halved; +enhancement bonus to CMD vs disarm/sunder of this weapon; only half the normal squeezing penalty on attacks", "default": true, "modifiers": [] }
+      ]
+    },
+    "Smashing": {
+      "conditionals": [
+        { "name": "Smashing: (bludgeoning melee) only vs inanimate objects (including sundering armor/weapons) — the extra damage is on the roll", "default": false, "modifiers": [
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Sneaky": {
+      "conditionals": [
+        { "name": "Sneaky: [[1]]/day free action, designate a foe within melee reach — your next attack against it before the end of your next turn adds sneak attack damage even without flanking/denied Dex; a rogue/slayer with hunter's surprise gains [[1]] extra daily use of it", "default": false, "modifiers": [] }
+      ]
+    },
+    "Sniping": {
+      "conditionals": [
+        { "name": "Sniping: ranged sneak attacks can be made from up to [[45]] ft (doesn't stack with other range-extending abilities)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Sniping (greater)": {
+      "conditionals": [
+        { "name": "Sniping (greater): as sniping — ranged sneak attacks from up to [[45]] ft — plus +[[15]] competence on Stealth checks to remain hidden after sniping", "default": false, "modifiers": [] }
+      ]
+    },
+    "Sniping (improved)": {
+      "conditionals": [
+        { "name": "Sniping (improved): as sniping — ranged sneak attacks from up to [[45]] ft — plus +[[10]] competence on Stealth checks to remain hidden after sniping", "default": false, "modifiers": [] }
+      ]
+    },
+    "Sniping (normal)": {
+      "conditionals": [
+        { "name": "Sniping (normal): +[[5]] competence on Stealth checks to remain hidden after sniping with this weapon", "default": false, "modifiers": [] }
+      ]
+    },
+    "Sonic Boom": {
+      "conditionals": [
+        { "name": "Sonic Boom: (firearm) the extra sonic damage is on the roll; creatures adjacent to the bullet's path within one range increment (or adjacent to a scatter cone) take [[1d6]] sonic; anyone taking the sonic damage must pass a Fortitude Save [[16]] or be deafened [[1]] minute", "default": true, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["sonic"], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Sparkfly Crystal Arrow": {
+      "conditionals": [
+        { "name": "Sparkfly Crystal Arrow: (ammunition) on hit, releases glowing insects — the target takes -[[1]] on attacks and checks for [[1]] minute (or until it rids itself of them) and its concealment is reduced one step (total concealment [[50]]% becomes [[20]]%, concealment becomes none)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Spell Siphon": {
+      "conditionals": [
+        { "name": "Spell Siphon: on a critical threat, forgo confirming (deal normal damage) to learn the target's active combat spells and siphon one: check [[ d20 + @attributes.bab.total + enhancement bonus ]] (or caster level) vs DC [[11]] + the spell's CL — success strips it and grants you its effects for its remaining duration or [[1]] minute; one extra siphon per crit multiple over x2", "default": false, "modifiers": [] }
+      ]
+    },
+    "Spell Storing": {
+      "conditionals": [
+        { "name": "Spell Storing: stores one targeted spell of up to 3rd level (casting time [[1]] standard action); when the weapon damages a creature, cast the stored spell on it as a free action, then the weapon may be recharged", "default": false, "modifiers": [] }
+      ]
+    },
+    "Spellstealing": {
+      "conditionals": [
+        { "name": "Spellstealing: on a critical threat, forgo confirming to learn the target's active magical effects and steal one: caster level check [[ d20 + @attributes.hd.total + enhancement bonus ]] vs DC [[11]] + the effect's CL — success transfers it to you for [[1]] minute (or until it expires); one extra steal per crit multiple over x2", "default": false, "modifiers": [] }
+      ]
+    },
+    "Spirit-Hunting": {
+      "conditionals": [
+        { "name": "Spirit-Hunting: only vs the designated foe with a mystery or spirit class feature — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll); enh increases from bane/blood-hunting don't stack but each such ability past the first adds +[[1d6]] damage", "default": false, "modifiers": [
+          {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Stalking": {
+      "conditionals": [
+        { "name": "Stalking: standard action, study a creature within [[60]] ft (line of sight/effect) — the first hit on it deals +[[1d6]] precision damage per consecutive round studying, up to dice equal to the enhancement bonus; lost if you attack another creature, study another, or end your turn beyond [[60]] ft", "default": false, "modifiers": [] }
+      ]
+    },
+    "Sticky": {
+      "conditionals": [
+        { "name": "Sticky: (reach/piercing/flail-group) on a critical threat, instead of confirming, deal normal damage and attempt a steal maneuver at +[[2]] (no AoO)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Summon Bane": {
+      "conditionals": [
+        { "name": "Summon Bane: only vs summoned/called creatures and eidolons — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll)", "default": false, "modifiers": [
+          {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Tailwind": {
+      "conditionals": [
+        { "name": "Tailwind: (ranged) each shot rides a gust of wind (as gust of wind, instantaneous, doesn't affect creatures) — range penalties are negated out to [[60]] ft (increments beyond that apply normally); can extinguish unprotected flames", "default": true, "modifiers": [] }
+      ]
+    },
+    "Thawing": {
+      "conditionals": [
+        { "name": "Thawing: only vs creatures of the cold subtype — the extra damage is on the roll; +[[2]] competence on saves vs ice-based effects; melts ice from nonmagical frozen objects of Medium size or smaller; the weapon is immune to cold", "default": false, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Toxic": {
+      "conditionals": [
+        { "name": "Toxic: poison delivered by this weapon has its save DC increased by [[2]]; on each poisoned hit there is a [[25]]% chance the dose isn't expended (a dose can be preserved only once)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Training": {
+      "conditionals": [
+        { "name": "Training: while drawn and in hand, grants one combat feat chosen at creation (can't serve as a prerequisite; works only if you meet its prerequisites)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Transformative": {
+      "conditionals": [
+        { "name": "Transformative: on command, becomes any other melee weapon of the same general shape and handedness (any proficiency category; even comparable sizes); retains all abilities except those its current form prohibits; reverts when unattended", "default": false, "modifiers": [] }
+      ]
+    },
+    "Transformative, Greater": {
+      "conditionals": [
+        { "name": "Transformative, Greater: on command, becomes any other weapon (not ammunition; melee or ranged, any handedness/proficiency); retains all abilities except those the current shape prohibits; reverts after [[1]] day unattended", "default": false, "modifiers": [] }
+      ]
+    },
+    "Treasonous": {
+      "conditionals": [
+        { "name": "Treasonous: as patriotic; only vs members of the attuned nationality — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll) and the extra damage is not multiplied on a crit", "default": false, "modifiers": [
+          {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Truthful": {
+      "conditionals": [
+        { "name": "Truthful: ignore miss chance from illusions (blur, displacement, invisibility) and always strike the real target through mirror image; vs figments/shadow conjurations it auto-attempts a stored dispel magic on the illusion", "default": true, "modifiers": [] }
+      ]
+    },
+    "Umbral": {
+      "conditionals": [
+        { "name": "Umbral: sheds no reflection and has concealment vs effects targeting it (disarm/steal/sunder, disintegrate); the wielder gains darkvision [[30]] ft while grasping it; on command radiates [[20]]-ft-radius darkness lowering illumination one step (2nd-level effect; ends if dropped or stowed)", "default": false, "modifiers": [] }
+      ]
+    },
+    "Unaligned": {
+      "conditionals": [
+        { "name": "Unaligned: count as [[4]] HD lower vs detect alignment effects; an outsider wielder adds the enhancement bonus on saves vs aligned spells that punish outsiders (e.g. holy smite); no penalties on Cha/Int/Wis checks from aligned plane traits", "default": false, "modifiers": [] }
+      ]
+    },
+    "Underwater": {
+      "conditionals": [
+        { "name": "Underwater: (bludgeoning/slashing melee) no -[[2]] penalty for attacking underwater and deals full damage there", "default": false, "modifiers": [] }
+      ]
+    },
+    "Unseen": {
+      "conditionals": [
+        { "name": "Unseen: on command, the weapon (and sheath) turns invisible — -[[1]] on your attacks unless you have Blind-Fight or see invisibility; the first attack each combat denies the defender its Dex bonus (unless it has Blind-Fight, sees invisible, or knows); the weapon has total concealment vs effects targeting it", "default": false, "modifiers": [] }
+      ]
+    },
+    "Valiant": {
+      "conditionals": [
+        { "name": "Valiant: (cavalier) only vs the target of your challenge — the extra damage is on the roll; +[[2]] on disarm/sunder maneuvers vs the challenged foe's weapon and +[[4]] CMD vs its disarm/sunder attempts", "default": false, "modifiers": [
+          {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
+      ]
+    },
+    "Vampiric": {
+      "conditionals": [
+        { "name": "Vampiric: (piercing/slashing melee) first hit each round on a living target heals you half the damage dealt (max = your HD per hit; max [[2]] HP per HD per day; excess kill damage doesn't count; requires [[24]] hours' attunement)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Vampiric, Greater": {
+      "conditionals": [
+        { "name": "Vampiric, Greater: as vampiric but the daily healing limit is [[5]] HP per HD (only one vampiric weapon attuned at a time)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Veering": {
+      "conditionals": [
+        { "name": "Veering: (ranged) ignore the target's AC bonus from partial cover and reduce its cover/soft cover AC bonus by [[2]] (no effect vs total cover)", "default": true, "modifiers": [] }
+      ]
+    },
+    "Virulent": {
+      "conditionals": [
+        { "name": "Virulent: poison delivered by this weapon (or its ammunition) has its save DC and duration (in rounds) increased by the weapon's enhancement bonus", "default": false, "modifiers": [] }
+      ]
+    }
+  },
+  "armor": {
+    "Shadow": {
+      "changes": [ {"formula": "5", "target": "skill.ste", "type": "competence", "operator": "add", "priority": 0} ],
+      "contextNotes": []
+    },
+    "Shadow, Improved": {
+      "changes": [ {"formula": "10", "target": "skill.ste", "type": "competence", "operator": "add", "priority": 0} ],
+      "contextNotes": []
+    },
+    "Shadow, Greater": {
+      "changes": [ {"formula": "15", "target": "skill.ste", "type": "competence", "operator": "add", "priority": 0} ],
+      "contextNotes": []
+    },
+    "Slick": {
+      "changes": [ {"formula": "5", "target": "skill.esc", "type": "competence", "operator": "add", "priority": 0} ],
+      "contextNotes": []
+    },
+    "Slick, Improved": {
+      "changes": [ {"formula": "10", "target": "skill.esc", "type": "competence", "operator": "add", "priority": 0} ],
+      "contextNotes": []
+    },
+    "Slick, Greater": {
+      "changes": [ {"formula": "15", "target": "skill.esc", "type": "competence", "operator": "add", "priority": 0} ],
+      "contextNotes": []
+    },
+    "Spell Resistance (13)": {
+      "changes": [ {"formula": "13", "target": "spellResist", "type": "untyped", "operator": "set", "priority": 0} ],
+      "contextNotes": []
+    },
+    "Spell Resistance (15)": {
+      "changes": [ {"formula": "15", "target": "spellResist", "type": "untyped", "operator": "set", "priority": 0} ],
+      "contextNotes": []
+    },
+    "Spell Resistance (17)": {
+      "changes": [ {"formula": "17", "target": "spellResist", "type": "untyped", "operator": "set", "priority": 0} ],
+      "contextNotes": []
+    },
+    "Spell Resistance (19)": {
+      "changes": [ {"formula": "19", "target": "spellResist", "type": "untyped", "operator": "set", "priority": 0} ],
+      "contextNotes": []
+    },
+    "Fortification (light)": {
+      "changes": [],
+      "contextNotes": [ {"text": "Fortification (light): 25% chance to negate a critical hit or sneak attack (roll when confirmed).", "target": "ac"} ]
+    },
+    "Fortification (moderate)": {
+      "changes": [],
+      "contextNotes": [ {"text": "Fortification (moderate): 50% chance to negate a critical hit or sneak attack (roll when confirmed).", "target": "ac"} ]
+    },
+    "Fortification (heavy)": {
+      "changes": [],
+      "contextNotes": [ {"text": "Fortification (heavy): 75% chance to negate a critical hit or sneak attack (roll when confirmed).", "target": "ac"} ]
+    },
+    "Energy Resistance": {
+      "changes": [],
+      "contextNotes": [ {"text": "Energy Resistance: resistance 10 against the chosen energy type (fire, cold, electricity, acid, or sonic).", "target": "ac"} ]
+    },
+    "Energy Resistance, Improved": {
+      "changes": [],
+      "contextNotes": [ {"text": "Energy Resistance, Improved: resistance 20 against the chosen energy type.", "target": "ac"} ]
+    },
+    "Energy Resistance, Greater": {
+      "changes": [],
+      "contextNotes": [ {"text": "Energy Resistance, Greater: resistance 30 against the chosen energy type.", "target": "ac"} ]
+    },
+    "Invulnerability": {
+      "changes": [],
+      "contextNotes": [ {"text": "Invulnerability: grants DR 5/magic.", "target": "ac"} ]
+    },
+    "Buoyant (light armor)": {
+      "changes": [ {"formula": "5", "target": "skill.swm", "type": "competence", "operator": "add", "priority": 0} ],
+      "contextNotes": []
+    },
+    "Buoyant (medium/heavy armor)": {
+      "changes": [ {"formula": "5", "target": "skill.swm", "type": "competence", "operator": "add", "priority": 0} ],
+      "contextNotes": []
+    },
+    "Buoyant (shield)": {
+      "changes": [ {"formula": "5", "target": "skill.swm", "type": "competence", "operator": "add", "priority": 0} ],
+      "contextNotes": []
+    },
+    "Jousting": {
+      "changes": [],
+      "contextNotes": [ {"text": "Jousting: +5 on Ride checks made to stay mounted.", "target": "skill.rid"} ]
+    },
+    "Mirrored": {
+      "changes": [],
+      "contextNotes": [ {"text": "Mirrored: +4 circumstance bonus on saving throws against gaze attacks.", "target": "allSavingThrows"} ]
+    },
+    "Glamered": {
+      "changes": [],
+      "contextNotes": [ {"text": "Glamered: on command, appears to be a normal set of clothing.", "target": "ac"} ]
+    },
+    "Wild": {
+      "changes": [],
+      "contextNotes": [ {"text": "Wild: the armor's bonus persists while the wearer is in a wild-shaped form.", "target": "ac"} ]
+    },
+    "Ghost Touch": {
+      "changes": [],
+      "contextNotes": [ {"text": "Ghost Touch: the armor/shield bonus counts against incorporeal touch attacks.", "target": "ac"} ]
+    },
+    "Undead Controlling": {
+      "changes": [],
+      "contextNotes": [ {"text": "Undead Controlling: control up to 26 HD of undead per day (as control undead, renewed each day at dawn).", "target": "ac"} ]
+    },
+    "Etherealness": {
+      "changes": [],
+      "contextNotes": [ {"text": "Etherealness: on command 1/day, become ethereal (as ethereal jaunt) until commanded to return.", "target": "ac"} ]
+    },
+    "Determination": {
+      "changes": [],
+      "contextNotes": [ {"text": "Determination: 1/day, when reduced to negative hit points, the wearer is automatically affected by breath of life.", "target": "ac"} ]
+    },
+    "Bashing": {
+      "changes": [],
+      "contextNotes": [ {"text": "Bashing: shield bashes deal damage as a weapon two size categories larger, and the shield counts as a +1 weapon when bashing.", "target": "attack"} ]
+    },
+    "Arrow Catching": {
+      "changes": [],
+      "contextNotes": [ {"text": "Arrow Catching: +1 deflection bonus vs ranged attacks; projectiles/thrown weapons aimed at targets within 5 ft are diverted to the bearer instead (may be suppressed).", "target": "ac"} ]
+    },
+    "Arrow Deflection": {
+      "changes": [],
+      "contextNotes": [ {"text": "Arrow Deflection: deflect one ranged attack per round (as the Deflect Arrows feat) with a DC 20 Reflex save.", "target": "ac"} ]
+    },
+    "Blinding": {
+      "changes": [],
+      "contextNotes": [ {"text": "Blinding: 2/day on command, flashes with light — everyone within 20 ft (except the wielder) must pass a DC 14 Reflex save or be blinded 1d4 rounds.", "target": "ac"} ]
+    },
+    "Animated": {
+      "changes": [],
+      "contextNotes": [ {"text": "Animated: on command, floats to protect the wielder hands-free for 4 rounds per day (split as desired).", "target": "ac"} ]
+    },
+    "Reflecting": {
+      "changes": [],
+      "contextNotes": [ {"text": "Reflecting: 1/day, reflect a targeted spell back at its caster (as spell turning).", "target": "ac"} ]
+    },
+    "Ramming": {
+      "changes": [],
+      "contextNotes": [ {"text": "Ramming: add the shield's enhancement bonus on bull rush and overrun combat maneuver checks.", "target": "cmb"} ]
+    },
+    "Adamant": {
+      "changes": [],
+      "contextNotes": [ {"text": "Adamant: [[1]]/day swift action, the armor hardens to adamantine strength — DR 3/— for [[9]] rounds.", "target": "ac"} ]
+    },
+    "Adhesive": {
+      "changes": [],
+      "contextNotes": [ {"text": "Adhesive: on command ( [[10]] rounds/day, 1-round intervals), gain a [[20]]-ft climb speed and +[[2]] enhancement on disarm/grapple/reposition/steal/trip maneuvers made with natural weapons or unarmed strikes.", "target": "cmb"} ]
+    },
+    "Advancing": {
+      "changes": [],
+      "contextNotes": [ {"text": "Advancing: [[1]]/round, on reducing an opponent to [[0]] HP or fewer with a melee attack, immediately move up to [[10]] ft as a free action (no AoO).", "target": "attack"} ]
+    },
+    "Amorphous": {
+      "changes": [ {"formula": "5", "target": "skill.esc", "type": "competence", "operator": "add", "priority": 0} ],
+      "contextNotes": [ {"text": "Amorphous: +[[5]] competence to CMD vs grapple; [[1]]/day on command, become viscous liquid for [[1]] minute — flow through any gap thick mud could, speed -[[10]] ft, move actions only.", "target": "cmd"} ]
+    },
+    "Aquadynamic": {
+      "changes": [ {"formula": "5", "target": "skill.swm", "type": "competence", "operator": "add", "priority": 0} ],
+      "contextNotes": []
+    },
+    "Arrow-collecting": {
+      "changes": [],
+      "contextNotes": [ {"text": "Arrow-collecting: [[20]]% miss chance vs ranged projectile attacks (not thrown weapons, rays, or siege projectiles); missed projectiles orbit the wearer (up to [[5]]) and can all be shot at one target within [[30]] ft as a standard action.", "target": "ac"} ]
+    },
+    "Assiduous": {
+      "changes": [],
+      "contextNotes": [ {"text": "Assiduous: while fighting defensively or using total defense, immune to gaze attacks; if directly targeted by a gaze and you beat the save by [[5]]+, reflect it back (the attacker saves vs its own gaze, +[[5]] if normally immune).", "target": "allSavingThrows"} ]
+    },
+    "Balanced": {
+      "changes": [],
+      "contextNotes": [ {"text": "Balanced: as an immediate action, reduce the armor's enhancement bonus to gain an equal enhancement bonus on the designated saving throw type until your next turn.", "target": "allSavingThrows"} ]
+    },
+    "Bastion": {
+      "changes": [],
+      "contextNotes": [ {"text": "Bastion: on failing a Will save vs a mind-affecting effect, the shield suppresses the effect for rounds equal to its enhancement bonus (the shield loses its enhancement bonus meanwhile; dropping the shield ends the suppression).", "target": "will"} ]
+    },
+    "Benevolent": {
+      "changes": [],
+      "contextNotes": [ {"text": "Benevolent: when using aid another to give an ally an AC bonus, also add the armor's enhancement bonus to the ally's AC.", "target": "ac"} ]
+    },
+    "Billowing": {
+      "changes": [],
+      "contextNotes": [ {"text": "Billowing: immune to extra damage from constriction and to damage from being buried (not suffocation); on a fall over [[20]] ft, DC [[15]] Fly check as an immediate action to halve the falling damage.", "target": "ac"} ]
+    },
+    "Bitter": {
+      "changes": [],
+      "contextNotes": [ {"text": "Bitter: a creature grappling the wearer with its mouth must pass a Fortitude Save [[14]] or immediately end the grapple; if swallowed whole, the swallower saves each round or is nauseated [[1]] round (poison effect).", "target": "ac"} ]
+    },
+    "Bloodthirsty": {
+      "changes": [],
+      "contextNotes": [ {"text": "Bloodthirsty: for [[1]] round after the wearer deals damage with a natural attack or melee weapon, the armor's enhancement bonus to AC rises by [[1]] ( [[3]] while raging).", "target": "ac"} ]
+    },
+    "Bolstering": {
+      "changes": [],
+      "contextNotes": [ {"text": "Bolstering: after damaging a creature with a melee or ranged attack, +[[2]] competence on saves vs that creature's abilities until the start of your next turn.", "target": "allSavingThrows"} ]
+    },
+    "Brawling": {
+      "changes": [],
+      "contextNotes": [ {"text": "Brawling: +[[2]] on unarmed strike attack and damage rolls (including grapple checks); unarmed strikes count as magic vs DR (not natural weapons; unarmed strikes still provoke).", "target": "attack"} ]
+    },
+    "Burdenless": {
+      "changes": [],
+      "contextNotes": [ {"text": "Burdenless: carrying capacity increased by [[50]]% for light, medium, and heavy loads.", "target": "ac"} ]
+    },
+    "Calming": {
+      "changes": [],
+      "contextNotes": [ {"text": "Calming: swift action ( [[10]] rounds/day), a [[5]]-ft aura — raging or emotion-affected foes threatening the wearer must pass a Will Save [[15]] or those effects are suppressed while the aura persists.", "target": "ac"} ]
+    },
+    "Champion": {
+      "changes": [],
+      "contextNotes": [ {"text": "Champion: (good wearer with challenge or smite evil) +[[2]] sacred to AC vs attacks from the chosen opponent.", "target": "ac"} ]
+    },
+    "Channeling": {
+      "changes": [],
+      "contextNotes": [ {"text": "Channeling: (keyed to positive or negative energy) [[3]]/day add [[1]] die to your channeled energy of the keyed type; damage taken from the opposed energy type is reduced by [[10]].", "target": "ac"} ]
+    },
+    "Clangorous": {
+      "changes": [],
+      "contextNotes": [ {"text": "Clangorous: immediate action when hit — a deafening bang as a thunderstone (on a crit against you, instead a sound burst, Fortitude Save [[13]] partial); the area must include the attacker and never affects the wearer.", "target": "ac"} ]
+    },
+    "Cloudburst": {
+      "changes": [],
+      "contextNotes": [ {"text": "Cloudburst: after taking [[10]]+ electricity damage from one attack, next turn use shocking grasp as a swift-action spell-like ability dealing [[1d6]] electricity per [[10]] damage taken since your last turn (max [[5d6]]).", "target": "ac"} ]
+    },
+    "Cocooning": {
+      "changes": [],
+      "contextNotes": [ {"text": "Cocooning: while unconscious on a plane other than your native plane, immune to that plane's harmful environmental effects (toxicity, extreme temperatures, negative energy, lack of air).", "target": "ac"} ]
+    },
+    "Comfort": {
+      "changes": [],
+      "contextNotes": [ {"text": "Comfort: always clean; can be slept in as light armor; no save penalty vs extreme heat and counts as cold-weather clothing; armor check penalty reduced by [[1]] (min [[0]]).", "target": "ac"} ]
+    },
+    "Corsair": {
+      "changes": [ {"formula": "5", "target": "skill.acr", "type": "competence", "operator": "add", "priority": 0} ],
+      "contextNotes": [ {"text": "Corsair: after regaining a grit or panache point, the armor's Acrobatics bonus doubles to +[[10]] until the beginning of your next turn.", "target": "skill.acr"} ]
+    },
+    "Cotraveling": {
+      "changes": [],
+      "contextNotes": [ {"text": "Cotraveling: attune up to [[5]] touched willing creatures; [[1]]/day free action when planeshifted by a spell or effect, bring all attuned creatures within [[30]] ft along (then all attunements reset; re-attune after [[24]] hours).", "target": "ac"} ]
+    },
+    "Creeping": {
+      "changes": [],
+      "contextNotes": [ {"text": "Creeping: the armor check penalty does not apply to Stealth; [[1]]/day on command, gain a bonus on Stealth equal to the armor's enhancement bonus for [[1]] minute.", "target": "skill.ste"} ]
+    },
+    "Crusading": {
+      "changes": [],
+      "contextNotes": [ {"text": "Crusading: (paladin/good warpriest) swift action, expend a lay on hands or fervor use — +[[2]] sacred to AC for [[1]] minute ( +[[3]] vs evil dragons, evil outsiders, and undead).", "target": "ac"} ]
+    },
+    "Cushioned": {
+      "changes": [],
+      "contextNotes": [ {"text": "Cushioned: falling damage is reduced as if the fall were [[20]] ft shorter.", "target": "ac"} ]
+    },
+    "Dastard": {
+      "changes": [],
+      "contextNotes": [ {"text": "Dastard: (evil wearer with challenge or smite good) +[[2]] profane to AC vs attacks from the chosen opponent.", "target": "ac"} ]
+    },
+    "Deathless": {
+      "changes": [],
+      "contextNotes": [ {"text": "Deathless: absorbs the first [[10]] points of positive or negative energy damage per attack; [[25]]% chance to ignore negative levels; never blocks healing.", "target": "ac"} ]
+    },
+    "Deceiving": {
+      "changes": [],
+      "contextNotes": [ {"text": "Deceiving: always radiates the alternate alignment aura chosen at creation for detection purposes; alignment-punishing attacks appear more effective than they are (Sense Motive DC [[20]] sees through it).", "target": "ac"} ]
+    },
+    "Defiant": {
+      "changes": [],
+      "contextNotes": [ {"text": "Defiant: vs the designated foe (as bane), the enhancement bonus to AC is [[2]] better and grants DR 2/— against its attacks.", "target": "ac"} ]
+    },
+    "Deflecting": {
+      "changes": [],
+      "contextNotes": [ {"text": "Deflecting: [[3]]/day, orbiting plates grant the wielder and allies within [[10]] ft a deflection bonus to AC equal to the shield's enhancement bonus for [[1]] minute (a mythic wielder may expend mythic power to add half his tier).", "target": "ac"} ]
+    },
+    "Delving": {
+      "changes": [],
+      "contextNotes": [ {"text": "Delving: burrow speed [[10]] ft through soil (not solid stone; no air supplied); +[[4]] on saves vs landslides, avalanches, and tunnel collapses.", "target": "ac"} ]
+    },
+    "Denying": {
+      "changes": [],
+      "contextNotes": [ {"text": "Denying: [[1]]/day, negate a melee critical hit or sneak attack against the wearer (chosen before damage is rolled), making it a normal attack.", "target": "ac"} ]
+    },
+    "Dread Wing": {
+      "changes": [],
+      "contextNotes": [ {"text": "Dread Wing: immediate action, the armor reconfigures into dragon wings — fly [[60]] ft (average), usable as secondary natural weapons ( [[1d6]] each for Medium); while unfurled the armor's total armor bonus is halved.", "target": "ac"} ]
+    },
+    "Evolving": {
+      "changes": [],
+      "contextNotes": [ {"text": "Evolving: [[1]]/day on command, fuses with the wearer's flesh for [[30]] minutes — no armor bonus to AC, but manifest two eidolon evolutions from: gills, improved natural armor, resistance, scent, slam, swim.", "target": "ac"} ]
+    },
+    "Expeditious": {
+      "changes": [],
+      "contextNotes": [ {"text": "Expeditious: [[3]]/day swift action, +[[10]]-ft enhancement bonus to all modes of movement for [[1]] round.", "target": "ac"} ]
+    },
+    "Fitting": {
+      "changes": [],
+      "contextNotes": [ {"text": "Fitting: instantly resizes to suit any creature that picks it up (reverts [[1]] round after leaving that creature's possession).", "target": "ac"} ]
+    },
+    "Folding": {
+      "changes": [],
+      "contextNotes": [ {"text": "Folding: as a move action, transforms into a buckler, heavy shield, or tower shield (wearer must be proficient with the new form).", "target": "ac"} ]
+    },
+    "Frosted": {
+      "changes": [],
+      "contextNotes": [ {"text": "Frosted: +[[4]] to CMD vs grapple; deals [[1d8]] cold each round to opponents that constrict, pin, or swallow the wearer whole.", "target": "cmd"} ]
+    },
+    "Ghost Spike": {
+      "changes": [],
+      "contextNotes": [ {"text": "Ghost Spike: [[1]]/day standard action, force spikes erupt for up to [[10]] rounds — treat as +[[1]] ghost touch armor spikes (proficient); may grapple incorporeal creatures at -[[4]] on the grapple check.", "target": "ac"} ]
+    },
+    "Greater Aquadynamic": {
+      "changes": [ {"formula": "15", "target": "skill.swm", "type": "competence", "operator": "add", "priority": 0} ],
+      "contextNotes": []
+    },
+    "Grinding": {
+      "changes": [],
+      "contextNotes": [ {"text": "Grinding: any creature succeeding at a grapple maneuver against the wearer takes damage equal to the enhancement bonus per successful check; counts as armor spikes for attacks on the wearer's turn.", "target": "cmd"} ]
+    },
+    "Guarding": {
+      "changes": [],
+      "contextNotes": [ {"text": "Guarding: free action at the start of your turn, transfer some or all of the shield's AC enhancement bonus to one adjacent creature until your next turn (ends if you're ever more than [[5]] ft apart).", "target": "ac"} ]
+    },
+    "Guarding, Greater": {
+      "changes": [],
+      "contextNotes": [ {"text": "Guarding, Greater: as guarding, but grant the same allocated bonus to any number of adjacent allies (ends per ally that moves more than [[5]] ft away).", "target": "ac"} ]
+    },
+    "Harmonizing": {
+      "changes": [
+        {"formula": "5", "target": "skill.prf", "type": "competence", "operator": "add", "priority": 0},
+        {"formula": "-5", "target": "skill.ste", "type": "untyped", "operator": "add", "priority": 0}
+      ],
+      "contextNotes": [ {"text": "Harmonizing: vulnerability to sonic (+[[50]]% damage); audible bardic performances linger [[1]] round after ending (doesn't stack with Lingering Performance); silent only while taking no physical actions.", "target": "ac"} ]
+    },
+    "Heraldric": {
+      "changes": [],
+      "contextNotes": [ {"text": "Heraldric: counts as a banner for a cavalier's banner class feature and as a holy symbol for any worshiper.", "target": "ac"} ]
+    },
+    "Hosteling": {
+      "changes": [],
+      "contextNotes": [ {"text": "Hosteling: on command, store a bonded animal (companion/familiar/mount) as an emblem on the armor — asleep, no benefits, auto-released after [[24]] hours; a second command releases it adjacent, awake and able to act.", "target": "ac"} ]
+    },
+    "Impervious": {
+      "changes": [],
+      "contextNotes": [ {"text": "Impervious: the item gains double its enhancement bonus to hardness, HP, and break DC, and a bonus equal to its enhancement bonus on saves vs direct attacks (e.g. rust).", "target": "ac"} ]
+    },
+    "Improved Aquadynamic": {
+      "changes": [ {"formula": "10", "target": "skill.swm", "type": "competence", "operator": "add", "priority": 0} ],
+      "contextNotes": []
+    },
+    "Jarring": {
+      "changes": [],
+      "contextNotes": [ {"text": "Jarring: [[3]]/day immediate action when hit by a melee weapon — the attacker must pass a Fortitude Save [[16]] or be dazed [[1]] round.", "target": "ac"} ]
+    },
+    "Jawbreaker": {
+      "changes": [],
+      "contextNotes": [
+        {"text": "Jawbreaker: bite attacks against the wielder provoke a shield-bash AoO (resolved first, shield AC kept); a confirmed crit on that bash gives the biter -[[2]] on bite attack/damage and -[[2]] to mouth-ability DCs for [[24]] hours.", "target": "attack"},
+        {"text": "Jawbreaker: add the shield's total shield bonus (incl. enhancement) to CMD vs grapple/swallow attempts made with a bite.", "target": "cmd"}
+      ]
+    },
+    "Locksmith": {
+      "changes": [],
+      "contextNotes": [ {"text": "Locksmith: no armor check penalty on Disable Device; fingertip wires act as masterwork thieves' tools; as a free action, transfer some or all of the armor's enhancement bonus to Disable Device until your next turn.", "target": "skill.dev"} ]
+    },
+    "Malevolent": {
+      "changes": [],
+      "contextNotes": [
+        {"text": "Malevolent: +[[2]] competence on Bluff and Intimidate checks during violent conflict.", "target": "skills"},
+        {"text": "Malevolent: add the armor's enhancement bonus to attack rolls vs flat-footed or prone enemies.", "target": "attack"}
+      ]
+    },
+    "Martyring": {
+      "changes": [],
+      "contextNotes": [ {"text": "Martyring: [[1]]/day immediate action when an enemy confirms a crit against you — heal up to [[9]] allies within [[30]] ft for [[1d8+9]] HP each (as mass cure light wounds).", "target": "ac"} ]
+    },
+    "Mastering": {
+      "changes": [],
+      "contextNotes": [ {"text": "Mastering: (wearer with weapon training) apply your highest weapon training bonus to shield-bash attack and damage rolls with this shield (or your Weapon Focus/Specialization feats if close is already your highest group).", "target": "attack"} ]
+    },
+    "Mental Focus": {
+      "changes": [],
+      "contextNotes": [ {"text": "Mental Focus: +[[2]] enhancement on concentration checks; an occultist may spend [[1]] hour attuning [[1]]/day to gain [[1]] extra point of mental focus (lost if the armor is removed).", "target": "concentration"} ]
+    },
+    "Merging": {
+      "changes": [],
+      "contextNotes": [ {"text": "Merging: on command, meld a held one-handed/light weapon with the shield — each round attack ( -[[2]] with a light shield, -[[4]] heavy; attacking forfeits the shield AC until your next turn) or defend; no shield bash while merged.", "target": "ac"} ]
+    },
+    "Mind Buttressing": {
+      "changes": [ {"formula": "2", "target": "will", "type": "resistance", "operator": "add", "priority": 0} ],
+      "contextNotes": [ {"text": "Mind Buttressing: immune to possession and mental control (charm/compulsion); donning it while controlled grants an immediate new save — success suppresses the effect while worn.", "target": "will"} ]
+    },
+    "Phantasmal": {
+      "changes": [],
+      "contextNotes": [ {"text": "Phantasmal: [[3]]/day as part of a move action, leave a partly real illusory double in a vacated square — counts as an ally for flanking, AC [[ 12 + enhancement bonus ]], dismissed by any hit or area damage.", "target": "ac"} ]
+    },
+    "Phase Lurching": {
+      "changes": [],
+      "contextNotes": [ {"text": "Phase Lurching: [[1]]/day move action, pass through a wall or obstacle up to [[5]] ft thick as if ethereal (not through creatures or force effects).", "target": "ac"} ]
+    },
+    "Poison-Resistant": {
+      "changes": [],
+      "contextNotes": [ {"text": "Poison-Resistant: +[[3]] resistance on saving throws against poison.", "target": "allSavingThrows"} ]
+    },
+    "Poisoning": {
+      "changes": [],
+      "contextNotes": [ {"text": "Poisoning: load [[1]] poison vial into the armor ( [[3]] rounds to infuse) — grapplers (injury poison) or biters (ingested poison) are exposed and must save; the dose is spent either way.", "target": "ac"} ]
+    },
+    "Putrid": {
+      "changes": [],
+      "contextNotes": [ {"text": "Putrid: living creatures within [[10]] ft must pass a Fortitude Save [[14]] or be sickened [[5]] rounds (poison effect; success = immune [[24]] hours; suppress/resume on command).", "target": "ac"} ]
+    },
+    "Radiant": {
+      "changes": [],
+      "contextNotes": [ {"text": "Radiant: shines as a torch (suppress/resume on command); [[1]]/day brighten to daylight strength for [[1]] hour.", "target": "ac"} ]
+    },
+    "Radiant Flight": {
+      "changes": [],
+      "contextNotes": [ {"text": "Radiant Flight: on command, torchlit wings grant fly [[30]] ft (poor) for [[10]] minutes/day in [[1]]-minute increments.", "target": "ac"} ]
+    },
+    "Rallying": {
+      "changes": [],
+      "contextNotes": [ {"text": "Rallying: allies within [[30]] ft gain +[[4]] morale on saves vs fear ( +[[6]] if the wearer has an ability granting morale bonuses vs fear, e.g. aura of courage or banner).", "target": "allSavingThrows"} ]
+    },
+    "Rampaging": {
+      "changes": [],
+      "contextNotes": [ {"text": "Rampaging: ignore difficult terrain when charging or bull rushing; [[1]]/day swift action, squares moved through during a charge/bull rush become difficult terrain for [[1]] minute.", "target": "cmb"} ]
+    },
+    "Rebounding": {
+      "changes": [],
+      "contextNotes": [ {"text": "Rebounding: +[[2]] enhancement to AC vs thrown weapons; add the shield's total enhancement bonus to touch AC vs splash weapons; when a splash weapon misses you, choose where it lands.", "target": "ac"} ]
+    },
+    "Resonating": {
+      "changes": [],
+      "contextNotes": [ {"text": "Resonating: [[3]]/day when the wearer expends mythic power on his turn — the armor's enhancement bonus rises by [[2]] and any DR the wearer has rises by [[5]], for rounds equal to his tier (doesn't stack with itself).", "target": "ac"} ]
+    },
+    "Restful": {
+      "changes": [],
+      "contextNotes": [ {"text": "Restful: only [[2]] hours of rest needed instead of [[8]]; sleep in armor without fatigue; recover HP/ability damage and endure afflictions as if resting in a comfortable bed ( [[1]]/day).", "target": "ac"} ]
+    },
+    "Righteous": {
+      "changes": [],
+      "contextNotes": [ {"text": "Righteous: [[1]]/day on command, righteous might (good/positive-energy version) for [[10]] rounds; an evil creature wearing it gains [[1]] permanent negative level while worn.", "target": "ac"} ]
+    },
+    "Sensing": {
+      "changes": [],
+      "contextNotes": [ {"text": "Sensing: while blinded, in total darkness, or in magical darkness (without darkvision / see in darkness), gain blindsight [[5]] ft and blindsense [[60]] ft until you can see again.", "target": "ac"} ]
+    },
+    "Shadow Blending": {
+      "changes": [],
+      "contextNotes": [ {"text": "Shadow Blending: attacks against the wearer in dim light have a [[40]]% miss chance instead of [[20]]% ( [[50]]% if the armor also has a shadow special ability); not total concealment.", "target": "ac"} ]
+    },
+    "Singing": {
+      "changes": [],
+      "contextNotes": [ {"text": "Singing: [[1]]/day, the shield sings for [[10]] rounds to counter sound-based magic (as countersong); once per round treat [[ 1d20 + 10 ]] as its Perform check.", "target": "ac"} ]
+    },
+    "Spell Dodging": {
+      "changes": [],
+      "contextNotes": [ {"text": "Spell Dodging: +[[4]] dodge to AC vs attack rolls from spells and spell-like abilities (including touch attacks) and vs attacks of summoned creatures.", "target": "ac"} ]
+    },
+    "Spell Storing": {
+      "changes": [],
+      "contextNotes": [ {"text": "Spell Storing: stores one touch spell of up to 3rd level; when a creature hits the wearer with a melee (touch) attack, cast the stored spell on it as an immediate action, then the armor may be recharged.", "target": "ac"} ]
+    },
+    "Spellrending": {
+      "changes": [],
+      "contextNotes": [ {"text": "Spellrending: (requires spell resistance shield) when the shield's SR negates a spell, it glows [[1]] round per spell level; a shield bash in that window discharges the energy for a bonus on the bash's attack and damage equal to the negated spell's level.", "target": "attack"} ]
+    },
+    "Spellsink": {
+      "changes": [],
+      "contextNotes": [ {"text": "Spellsink: [[1]]/day immediate action — absorb a spell/spell-like/item effect targeting only you (not area effects): the attacker must pass a Will Save [[14]] or the effect is neutralized.", "target": "allSavingThrows"} ]
+    },
+    "Spirit-bonded": {
+      "changes": [],
+      "contextNotes": [ {"text": "Spirit-bonded: +[[1]] on saves vs psychic spells and effects from incorporeal creatures; a medium's spirit bonus increases by [[1]].", "target": "allSavingThrows"} ]
+    },
+    "Spiteful": {
+      "changes": [],
+      "contextNotes": [ {"text": "Spiteful: (panache user) when a melee attack from an enemy within reach would drop you below [[0]] HP, spend [[1]] panache as an immediate action to make one melee attack against it before falling.", "target": "ac"} ]
+    },
+    "Stanching": {
+      "changes": [],
+      "contextNotes": [ {"text": "Stanching: bleed-effect hit point damage, ability damage, or ability drain is reduced by the armor's enhancement bonus; add the enhancement bonus to Constitution checks to stabilize.", "target": "ac"} ]
+    },
+    "Steaming": {
+      "changes": [],
+      "contextNotes": [ {"text": "Steaming: [[3]]/day on command, scorching steam for [[5]] rounds — [[1d6]] fire each round to creatures grappling or sharing your square, [[1]] fire in a [[5]]-ft burst; melee attackers within [[5]] ft must pass a Reflex Save [[14]] or take [[1d6]] fire.", "target": "ac"} ]
+    },
+    "Terrain-striding": {
+      "changes": [],
+      "contextNotes": [ {"text": "Terrain-striding: in the attuned favored terrain, +[[10]]-ft enhancement to speed and no armor check penalty on Acrobatics, Climb, and Stealth.", "target": "ac"} ]
+    },
+    "Titanic": {
+      "changes": [],
+      "contextNotes": [ {"text": "Titanic: count as one size larger for size-dependent special attacks (swallow whole, trample); [[1]]/day enlarge person for [[1]] minute; [[1]]/minute free action, add the enhancement bonus to one Strength check, maneuver check, or CMD vs one maneuver; armor check penalty increased by the enhancement bonus.", "target": "cmd"} ]
+    },
+    "Trackless": {
+      "changes": [ {"formula": "5", "target": "skill.ste", "type": "competence", "operator": "add", "priority": 0} ],
+      "contextNotes": [ {"text": "Trackless: Survival checks to track the wearer take -[[5]].", "target": "ac"} ]
+    },
+    "Trapwarding": {
+      "changes": [],
+      "contextNotes": [ {"text": "Trapwarding: luck bonus on all saves vs traps equal to the armor's enhancement bonus.", "target": "allSavingThrows"} ]
+    },
+    "Unbound": {
+      "changes": [],
+      "contextNotes": [ {"text": "Unbound: [[1]]/day on command, righteous might with DR 5/lawful for [[10]] rounds; a lawful creature wearing it gains [[1]] permanent negative level while worn.", "target": "ac"} ]
+    },
+    "Unbowed": {
+      "changes": [],
+      "contextNotes": [ {"text": "Unbowed: when an attack would reduce you to [[0]] HP or fewer, negate all its damage as an immediate action — the armor is destroyed, exploding for [[1d6]] piercing per point of its armor bonus to all creatures within [[10]] ft (Reflex Save [[20]] halves; not the wearer).", "target": "ac"} ]
+    },
+    "Unrighteous": {
+      "changes": [],
+      "contextNotes": [ {"text": "Unrighteous: [[1]]/day on command, righteous might (evil/negative-energy version) for [[10]] rounds; a good creature wearing it gains [[1]] permanent negative level while worn.", "target": "ac"} ]
+    },
+    "Venom-eating": {
+      "changes": [],
+      "contextNotes": [ {"text": "Venom-eating: on saving vs a poison's initial exposure, absorb [[1]] dose (stores up to the enhancement bonus, one poison type; a new type replaces the old); envenom a held weapon from storage as a standard action with no self-poisoning risk.", "target": "ac"} ]
+    },
+    "Vigilant": {
+      "changes": [],
+      "contextNotes": [ {"text": "Vigilant: [[1]]/day on command, righteous might with DR 5/chaotic for [[10]] rounds; a chaotic creature wearing it gains [[1]] permanent negative level while worn.", "target": "ac"} ]
+    },
+    "Volcanic": {
+      "changes": [],
+      "contextNotes": [ {"text": "Volcanic: [[1]]/day on command, erupt in a [[5]]-ft radius — smoke grants concealment and molten liquid deals [[1d6]] fire and ignites flammables; next round the liquid solidifies into difficult terrain (the wearer is immune to all of it).", "target": "ac"} ]
+    },
+    "Vouchsafing": {
+      "changes": [],
+      "contextNotes": [ {"text": "Vouchsafing: DR 5/— while unconscious, nauseated, stunned, or pinned (stacks with other DR; lost if you can still act in that state).", "target": "ac"} ]
+    },
+    "Warding": {
+      "changes": [],
+      "contextNotes": [ {"text": "Warding: [[1]]/day immediate action, end all challenge, judgment, and smite effects on you (recharge by expending one of your own such abilities as a swift action).", "target": "ac"} ]
+    },
+    "Weeping": {
+      "changes": [],
+      "contextNotes": [ {"text": "Weeping: move action, wail for [[10]] minutes — good creatures within [[10]] ft take -[[1]] on attacks, saves, ability/skill checks, and weapon damage (mind-affecting; nongood creatures immune).", "target": "ac"} ]
+    },
+    "Withstanding": {
+      "changes": [],
+      "contextNotes": [ {"text": "Withstanding: vs the chosen creature type — [[50]]% chance to negate a sneak attack or confirmed crit (doesn't stack with fortification); +[[2]] enhancement on Knowledge checks about that type.", "target": "ac"} ]
+    },
+    "Wyrmsbreath": {
+      "changes": [],
+      "contextNotes": [ {"text": "Wyrmsbreath: (keyed energy type) gains [[1]] charge per [[5]] points of keyed energy damage taken (max [[5]], expire in [[24]] hours); on command expend [[1]]-[[5]] charges for a [[15]]-ft cone of [[1d4]] damage per charge (Reflex Save [[11]] half).", "target": "ac"} ]
+    }
+  }
+}

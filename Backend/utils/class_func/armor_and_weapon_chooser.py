@@ -98,7 +98,10 @@ def weapon_chooser(character):
 
 
 def magus_armor_chooser(character, level):
-    if character.c_class == 'magus':
+    from utils.class_func.generic_func import class_entry_for
+    magus_entry = class_entry_for(character, 'magus')
+    if magus_entry is not None:
+        level = magus_entry['level']
         character.armor_type = 'L'
         if level >= 7:
             character.armor_type = 'M'

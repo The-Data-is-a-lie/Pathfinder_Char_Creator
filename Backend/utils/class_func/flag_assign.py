@@ -1,7 +1,5 @@
-from utils.data import languages
 def druidic_flag_assigner(character):
-    if character.c_class.lower() == 'druid':
-        character.languages = languages.append('Druidic')
+    character.druidic_flag = any(c['name'] == 'druid' for c in character.classes)
 
 def human_flag_assigner(character):
     character.human_flag = False

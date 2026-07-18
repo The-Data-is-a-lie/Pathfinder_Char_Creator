@@ -1,12 +1,14 @@
 import random
 import re
 
-def select_disciplines(character):
+def select_disciplines(character, class_name=None):
     '''Disciplines available to a Path of War initiator class, parsed from the class's
-    "Maneuvers" entry in path_of_war_classes.json (base tree first, Metzofitz fallback).'''
+    "Maneuvers" entry in path_of_war_classes.json (base tree first, Metzofitz fallback).
+    ``class_name`` names the initiator class (multiclass-aware); defaults to the primary.'''
     classes = getattr(character, 'path_of_war_classes', {}) or {}
-    path_of_war_class_info = (classes.get('base', {}).get(character.c_class)
-                              or classes.get('metzofitz', {}).get(character.c_class))
+    lookup = class_name or character.c_class
+    path_of_war_class_info = (classes.get('base', {}).get(lookup)
+                              or classes.get('metzofitz', {}).get(lookup))
     if not path_of_war_class_info:
         print("Class not found in path_of_war_classes")
         return None

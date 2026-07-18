@@ -41,7 +41,8 @@ def skills_selector(character, skills, skill_rank_level):
     """        
 
     all_skills = getattr(data, skills)
-    max_skill_ranks = character.c_class_level
+    # max ranks in one skill = TOTAL character level (PF1), not the primary class's level
+    max_skill_ranks = character.level
     skill_ranks = {}
 
     selectable_skills, dummy_skill_ranks, not_selectable_skills = get_selectable_skills(character, all_skills, skill_rank_level)
@@ -57,19 +58,28 @@ def skills_selector(character, skills, skill_rank_level):
 
 
 def get_selectable_skills(character,all_skills, skill_ranks_level):
-    skill_points = character.class_data[character.c_class]["skill points at each level"]
     # Use the FINAL highest mental mod (base + inherents + level-ups), not the base roll.
     mental_mod = highest_mental_mod(character)
-    scaling = int(skill_points) + mental_mod
 
-    dummy_skill_ranks = (scaling * character.c_class_level) + skill_ranks_level
+    # PF1 multiclass: each class grants its own points-per-level rate for its own levels, and the
+    # mental mod applies once per character level (identical to the old rate*level for 1 class).
+    class_points = 0
+    for entry in character.classes:
+        if entry['name'] in character.class_data:
+            points = int(character.class_data[entry['name']]["skill points at each level"])
+        else:
+            # For if we don't find a class, just assign it minimum skills
+            points = 2
+            print("couldn't find this class's skills, using default scaling", points)
+        class_points += points * entry['level']
+
+    dummy_skill_ranks = class_points + (mental_mod * character.level) + skill_ranks_level
     print("Dummy skill ranks:", dummy_skill_ranks)
 
-
-    # For if we don't find a character, just assign them minimum skills
-    if character.c_class not in character.class_data.keys():
-        scaling = 2 + abs(mental_mod)
-        print("couldn't find this character's skills using default scaling", scaling)
+    # breadth of distinct skills keys off the primary class's per-level rate, as before
+    primary = character.classes[character.primary_class_index]
+    primary_points = int(character.class_data.get(primary['name'], {}).get("skill points at each level", 2))
+    scaling = primary_points + mental_mod
 
     skill_number = scaling + random.randint(abs(mental_mod), abs(mental_mod)+8)
     skill_number = min(skill_number, len(all_skills))

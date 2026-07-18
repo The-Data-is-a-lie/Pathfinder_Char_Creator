@@ -1,0 +1,416 @@
+{
+  "_readme": "Hand-curated mechanical effects for class-choice powers, merged on top of the auto-drafts by scripts/build_class_feature_changes.py (full replacement per power). Keys are normalized power names (lowercase, no (Su)/(Ex)/(Sp)). Entry keys: changes (always-on pf1 changes; for while-raging/while-mutagen powers the module toggles them with the parent state), contextNotes (situational text, every number in [[ ]]), conditionals (default-off weapon toggles {name, default, modifiers[]}; plain modifier formulas, riders in the name), tagBuff (Multi-Buff-Distributor payload {onlyOthers, auraRange, changes, contextNotes} for powers affecting OTHER creatures; @classes/@abilities refs are baked to the NPC's numbers at export). rogue_talents entries propagate automatically to ninja_talents/slayer_talents.",
+
+  "rage_powers": {
+    "reckless abandon": {
+      "conditionals": [
+        {"name": "Reckless Abandon: -[[1 + floor(@classes.barbarian.level / 4)]] AC while raging",
+         "default": false,
+         "modifiers": [
+           {"formula": "1 + floor(@classes.barbarian.level / 4)", "target": "attack",
+            "subTarget": "allAttack", "type": "untyped", "damageType": [], "critical": "normal"}]}
+      ]
+    },
+    "superstition": {
+      "contextNotes": [
+        {"target": "allSavingThrows",
+         "text": "Superstition: while raging, +[[2 + floor(@classes.barbarian.level / 4)]] morale bonus on saves vs spells, spell-like and supernatural abilities; you cannot be a willing target of any spell and must save even vs allies' spells."}
+      ]
+    },
+    "lesser beast totem": {
+      "contextNotes": [
+        {"target": "attack",
+         "text": "Lesser Beast Totem: while raging, two primary claw attacks at full BAB, [[1d6]] slashing ([[1d4]] if Small) + Str each."}
+      ]
+    },
+    "beast totem": {
+      "changes": [
+        {"formula": "1 + floor(max(@classes.barbarian.level - 6, 0) / 4)", "target": "nac",
+         "type": "untyped", "operator": "add", "priority": 0}
+      ],
+      "contextNotes": [
+        {"target": "ac", "text": "Beast Totem: the natural armor bonus applies only while raging."}
+      ]
+    },
+    "beast totem, greater": {
+      "contextNotes": [
+        {"target": "attack",
+         "text": "Greater Beast Totem: while raging, gain pounce (full attack at the end of a charge); claw damage increases to [[1d8]] ([[1d6]] if Small) and claws deal x3 damage on a critical hit."}
+      ]
+    },
+    "guarded stance": {
+      "contextNotes": [
+        {"target": "ac",
+         "text": "Guarded Stance (move action while raging): +[[1 + floor(@classes.barbarian.level / 6)]] dodge bonus to AC against melee attacks for [[max(1, @abilities.con.mod)]] rounds."}
+      ]
+    },
+    "rolling dodge": {
+      "contextNotes": [
+        {"target": "ac",
+         "text": "Rolling Dodge (move action while raging): +[[1 + floor(@classes.barbarian.level / 6)]] dodge bonus to AC against ranged attacks for [[max(1, @abilities.con.mod)]] rounds."}
+      ]
+    },
+    "witch hunter": {
+      "conditionals": [
+        {"name": "Witch Hunter (while raging): bonus damage vs creatures possessing spells or spell-like abilities",
+         "default": false,
+         "modifiers": [
+           {"formula": "1 + floor(@classes.barbarian.level / 4)", "target": "damage",
+            "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "normal"}]}
+      ]
+    },
+    "animal fury": {
+      "contextNotes": [
+        {"target": "attack",
+         "text": "Animal Fury: while raging, gain a bite attack ([[1d4]] + half Str, [[1d3]] if Small); as part of a full attack it is a secondary attack at -[[5]]."}
+      ]
+    },
+    "strength surge": {
+      "contextNotes": [
+        {"target": "cmb",
+         "text": "Strength Surge (once per rage, immediate action): add +[[@classes.barbarian.level]] to one Strength check, Strength-based skill check, or combat maneuver check — or to your CMD against one maneuver."}
+      ]
+    },
+    "quick reflexes": {
+      "contextNotes": [
+        {"target": "attack",
+         "text": "Quick Reflexes: while raging, make [[1]] additional attack of opportunity per round."}
+      ]
+    },
+    "intimidating glare": {
+      "contextNotes": [
+        {"target": "skill.int",
+         "text": "Intimidating Glare (move action while raging): demoralize one adjacent foe; on success the foe is shaken for [[1d4]] rounds +[[1]] round per [[5]] points over the DC."}
+      ]
+    },
+    "come and get me": {
+      "contextNotes": [
+        {"target": "attack",
+         "text": "Come and Get Me (free action while raging): until your next turn, enemies gain +[[4]] on attack and damage rolls against you, but every melee attack they make against you first provokes an attack of opportunity from you."}
+      ]
+    },
+    "increased damage reduction": {
+      "contextNotes": [
+        {"target": "ac",
+         "text": "Increased Damage Reduction: your damage reduction increases by [[1]]/— while raging (can be taken up to [[3]] times; stacks)."}
+      ]
+    }
+  },
+
+  "ki_powers": {
+    "barkskin": {
+      "changes": [
+        {"formula": "min(5, 2 + floor(max(@classes.monk.level - 6, 0) / 3))", "target": "nac",
+         "type": "enhancement", "operator": "add", "priority": 0}
+      ],
+      "contextNotes": [
+        {"target": "ac", "text": "Barkskin ki power: self only, [[1]] ki point, lasts [[10]] minutes per level."}
+      ]
+    },
+    "high jump": {
+      "contextNotes": [
+        {"target": "skill.acr",
+         "text": "High Jump: +[[@classes.monk.level]] on Acrobatics checks to jump, always counting as having a running start; spend [[1]] ki as a swift action for +[[20]] on jump checks for [[1]] round."}
+      ]
+    },
+    "true strike": {
+      "conditionals": [
+        {"name": "True Strike ki power ([[1]] ki, self): insight bonus on your next attack roll; ignore concealment miss chance",
+         "default": false,
+         "modifiers": [
+           {"formula": "20", "target": "attack", "subTarget": "attack_0",
+            "type": "insight", "damageType": [], "critical": "normal"}]}
+      ]
+    },
+    "feather step": {
+      "contextNotes": [
+        {"target": "landSpeed",
+         "text": "Feather Step ([[1]] ki, self): ignore difficult terrain for [[10]] minutes per level."}
+      ]
+    },
+    "stone shield": {
+      "contextNotes": [
+        {"target": "ac",
+         "text": "Stone Shield ([[1]] ki, immediate action): a stone slab rises to grant you cover (+[[4]] AC, +[[2]] Reflex) against a single attack."}
+      ]
+    }
+  },
+
+  "hexes": {
+    "evil eye": {
+      "contextNotes": [
+        {"target": "spellEffect",
+         "text": "Evil Eye (standard action, 30 ft): target takes -[[2]] (-[[4]] at 8th) on one of AC, ability checks, attack rolls, saves, or skill checks for [[3 + @abilities.int.mod]] rounds; Will DC [[10 + floor(@classes.witch.level / 2) + @abilities.int.mod]] reduces to [[1]] round; mind-affecting."}
+      ],
+      "tagBuff": {
+        "onlyOthers": true,
+        "auraRange": null,
+        "changes": [
+          {"formula": "-2 - 2 * gte(@classes.witch.level, 8)", "target": "ac",
+           "type": "untyped", "operator": "add", "priority": 0}
+        ],
+        "contextNotes": [
+          {"target": "allSavingThrows",
+           "text": "Evil Eye: the witch may instead penalize ability checks, attack rolls, saves, or skill checks; lasts [[3 + @abilities.int.mod]] rounds (Will save reduces to [[1]] round); mind-affecting."}
+        ]
+      }
+    },
+    "ward": {
+      "tagBuff": {
+        "onlyOthers": true,
+        "auraRange": null,
+        "changes": [
+          {"formula": "2 + gte(@classes.witch.level, 8) + gte(@classes.witch.level, 16)",
+           "target": "ac", "type": "deflection", "operator": "add", "priority": 0},
+          {"formula": "2 + gte(@classes.witch.level, 8) + gte(@classes.witch.level, 16)",
+           "target": "allSavingThrows", "type": "resistance", "operator": "add", "priority": 0}
+        ],
+        "contextNotes": [
+          {"target": "ac",
+           "text": "Ward: lasts until the target is hit or fails a saving throw; a witch may have only one ward active at a time."}
+        ]
+      }
+    },
+    "misfortune": {
+      "contextNotes": [
+        {"target": "spellEffect",
+         "text": "Misfortune (standard action, 30 ft): for [[1]] round ([[2]] at 8th, [[3]] at 16th) the target rolls twice and takes the worse result on ability checks, attack rolls, saves, and skill checks; Will DC [[10 + floor(@classes.witch.level / 2) + @abilities.int.mod]] negates; each creature once per [[24]] hours."}
+      ],
+      "tagBuff": {
+        "onlyOthers": true,
+        "auraRange": null,
+        "changes": [],
+        "contextNotes": [
+          {"target": "allChecks",
+           "text": "Misfortune: roll twice and take the worse result on all ability checks, attack rolls, saving throws, and skill checks."}
+        ]
+      }
+    },
+    "fortune": {
+      "tagBuff": {
+        "onlyOthers": true,
+        "auraRange": null,
+        "changes": [],
+        "contextNotes": [
+          {"target": "allChecks",
+           "text": "Fortune: once per round, roll twice and take the better result on one ability check, attack roll, saving throw, or skill check."}
+        ]
+      }
+    },
+    "flight": {
+      "changes": [
+        {"formula": "4", "target": "skill.swm", "type": "racial", "operator": "add", "priority": 0}
+      ],
+      "contextNotes": [
+        {"target": "flySpeed",
+         "text": "Flight: feather fall at will (self only); at 5th, levitate [[1]]/day; at 9th, fly for [[@classes.witch.level]] minutes per day (increments of [[1]] minute)."}
+      ]
+    },
+    "healing": {
+      "contextNotes": [
+        {"target": "spellEffect",
+         "text": "Healing: touch heals as cure light wounds (CL [[@classes.witch.level]]); acts as cure moderate wounds at 5th; each creature can benefit once per [[24]] hours."}
+      ]
+    },
+    "slumber": {
+      "contextNotes": [
+        {"target": "spellEffect",
+         "text": "Slumber (standard action, 30 ft): one target falls asleep for [[@classes.witch.level]] rounds regardless of HD; Will DC [[10 + floor(@classes.witch.level / 2) + @abilities.int.mod]] negates; each creature once per [[24]] hours."}
+      ]
+    },
+    "cackle": {
+      "contextNotes": [
+        {"target": "spellEffect",
+         "text": "Cackle (move action): extend the duration of your agony, charm, evil eye, fortune, and misfortune hexes on all targets within [[30]] feet by [[1]] round."}
+      ]
+    }
+  },
+
+  "discoveries": {
+    "feral mutagen": {
+      "contextNotes": [
+        {"target": "attack",
+         "text": "Feral Mutagen: while your mutagen is in effect, gain [[2]] claw attacks ([[1d6]]) and a bite attack ([[1d8]]) as primary natural attacks."},
+        {"target": "skill.int",
+         "text": "Feral Mutagen: +[[2]] competence bonus on Intimidate while your mutagen is in effect."}
+      ]
+    },
+    "precise bombs": {
+      "contextNotes": [
+        {"target": "attack",
+         "text": "Precise Bombs: when you throw a bomb, exclude up to [[@abilities.int.mod]] squares from its splash damage."}
+      ]
+    },
+    "fast bombs": {
+      "contextNotes": [
+        {"target": "attack",
+         "text": "Fast Bombs: throw bombs as a full attack, using all your iterative attacks."}
+      ]
+    },
+    "infusion": {
+      "contextNotes": [
+        {"target": "spellEffect",
+         "text": "Infusion: your extracts become infusions — they persist when they leave your possession and anyone can drink them."}
+      ]
+    },
+    "acid bomb": {
+      "contextNotes": [
+        {"target": "attack",
+         "text": "Acid Bomb: the bomb deals acid damage instead of fire; a creature that takes a direct hit takes an additional [[1d6]] acid damage [[1]] round later."}
+      ]
+    },
+    "frost bomb": {
+      "contextNotes": [
+        {"target": "attack",
+         "text": "Frost Bomb: the bomb deals cold damage instead of fire; a creature that takes a direct hit is staggered on its next turn unless it succeeds at a Fortitude save (DC [[10 + floor(@classes.alchemist.level / 2) + @abilities.int.mod]])."}
+      ]
+    },
+    "force bomb": {
+      "contextNotes": [
+        {"target": "attack",
+         "text": "Force Bomb: the bomb deals [[1d4]] force damage per die instead of [[1d6]] fire; creatures that take a direct hit are knocked prone unless they succeed at a Reflex save (DC [[10 + floor(@classes.alchemist.level / 2) + @abilities.int.mod]])."}
+      ]
+    },
+    "wings": {
+      "contextNotes": [
+        {"target": "flySpeed",
+         "text": "Wings: while your mutagen is in effect, gain a fly speed of [[60]] feet (good maneuverability)."}
+      ]
+    }
+  },
+
+  "rogue_talents": {
+    "bleeding attack": {
+      "conditionals": [
+        {"name": "Bleeding Attack: on a sneak attack hit, the target also takes [[floor((@classes.rogue.level + 1) / 2)]] bleed damage each round (DC [[15]] Heal check or any magical healing stops it; bleed does not stack)",
+         "default": false, "modifiers": []}
+      ]
+    },
+    "offensive defense": {
+      "conditionals": [
+        {"name": "Offensive Defense: on a sneak attack hit, gain +[[floor((@classes.rogue.level + 1) / 2)]] dodge AC against that creature for [[1]] round",
+         "default": false, "modifiers": []}
+      ]
+    },
+    "powerful sneak": {
+      "conditionals": [
+        {"name": "Powerful Sneak (full attack only): sneak attack dice treat rolled 1s as 2s",
+         "default": false,
+         "modifiers": [
+           {"formula": "-2", "target": "attack", "subTarget": "allAttack",
+            "type": "untyped", "damageType": [], "critical": "normal"}]}
+      ]
+    },
+    "crippling strike": {
+      "conditionals": [
+        {"name": "Crippling Strike: on a sneak attack hit, the target also takes [[2]] Strength damage",
+         "default": false, "modifiers": []}
+      ]
+    },
+    "fast stealth": {
+      "contextNotes": [
+        {"target": "skill.ste",
+         "text": "Fast Stealth: move at full speed while using Stealth with no penalty."}
+      ]
+    },
+    "surprise attack": {
+      "contextNotes": [
+        {"target": "attack",
+         "text": "Surprise Attack: during the surprise round, opponents are always considered flat-footed to you, even if they have already acted."}
+      ]
+    },
+    "resiliency": {
+      "contextNotes": [
+        {"target": "ac",
+         "text": "Resiliency ([[1]]/day, immediate action when reduced below 0 hp): gain [[@classes.rogue.level]] temporary hit points for [[1]] minute; you do not fall unconscious while they last."}
+      ]
+    },
+    "trap spotter": {
+      "contextNotes": [
+        {"target": "skill.per",
+         "text": "Trap Spotter: whenever you come within [[10]] feet of a trap, you receive an automatic (secret) Perception check to notice it."}
+      ]
+    },
+    "opportunist": {
+      "contextNotes": [
+        {"target": "attack",
+         "text": "Opportunist ([[1]]/round): when an ally's melee attack damages an opponent adjacent to you, you may make an attack of opportunity against that opponent."}
+      ]
+    }
+  },
+
+  "arcana": {
+    "arcane accuracy": {
+      "conditionals": [
+        {"name": "Arcane Accuracy ([[1]] arcane pool, swift): insight bonus to all attack rolls until the end of your turn",
+         "default": false,
+         "modifiers": [
+           {"formula": "@abilities.int.mod", "target": "attack", "subTarget": "allAttack",
+            "type": "insight", "damageType": [], "critical": "normal"}]}
+      ]
+    },
+    "accurate strike": {
+      "conditionals": [
+        {"name": "Accurate Strike ([[2]] arcane pool, swift): all your melee attacks resolve as melee touch attacks until the end of your turn",
+         "default": false, "modifiers": []}
+      ]
+    },
+    "empowered magic": {
+      "contextNotes": [
+        {"target": "spellEffect",
+         "text": "Empowered Magic ([[1]]/day): cast one spell as if Empowered (+[[50]]% on variable, numeric effects) without increasing its casting time or level."}
+      ]
+    },
+    "concentrate": {
+      "contextNotes": [
+        {"target": "concentration",
+         "text": "Concentrate ([[1]]/day): reroll a concentration check you just made; you must take the second result."}
+      ]
+    }
+  },
+
+  "exploits": {
+    "potent magic": {
+      "contextNotes": [
+        {"target": "cl",
+         "text": "Potent Magic: when you expend [[1]] point from your arcane reservoir to increase a spell's caster level, it increases by [[2]] instead; when you expend a point to increase a spell's DC, it increases by [[2]] instead."}
+      ]
+    },
+    "flame arc": {
+      "contextNotes": [
+        {"target": "spellEffect",
+         "text": "Flame Arc ([[1]] reservoir point): 30-ft line of fire dealing [[1d6]] + @abilities.cha.mod fire damage, +[[1d6]] per [[2]] arcanist levels beyond 1st; Reflex DC [[10 + floor(@classes.arcanist.level / 2) + @abilities.cha.mod]] halves."}
+      ]
+    }
+  },
+
+  "mysteries": {
+    "war sight": {
+      "contextNotes": [
+        {"target": "init",
+         "text": "War Sight: whenever you roll initiative, roll twice and take either result; at 7th you can always act in the surprise round; at 11th roll three times."}
+      ]
+    },
+    "maneuver mastery": {
+      "contextNotes": [
+        {"target": "cmb",
+         "text": "Maneuver Mastery: with your chosen combat maneuver, use your oracle level in place of your base attack bonus; at 7th gain the Improved feat for that maneuver, at 11th the Greater feat."}
+      ]
+    }
+  },
+
+  "curses": {
+    "haunted": {
+      "contextNotes": [
+        {"target": "skills",
+         "text": "Haunted: retrieving any stored item is a standard action (dropping an item is a free action); you know mage hand and ghost sound."}
+      ]
+    },
+    "clouded vision": {
+      "contextNotes": [
+        {"target": "skill.per",
+         "text": "Clouded Vision: you cannot see beyond [[30]] feet, but gain darkvision [[30]] ft ([[60]] ft at 5th); at 10th, blindsense [[30]] ft."}
+      ]
+    }
+  }
+}

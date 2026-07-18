@@ -351,9 +351,12 @@ def _read_data_csv(types):
 
 
 def feat_spell_searcher(character, class_1, chosen_set, types, info_column, info_column_2 = None, feat_desc_dict=None):
+    from utils.class_func.generic_func import class_entry_for
     if chosen_set == None:
         return
-    if character.c_class == class_1:
+    if feat_desc_dict is None:
+        feat_desc_dict = {}
+    if class_entry_for(character, class_1) is not None:
         data = _read_data_csv(types)
 
         if info_column_2 is None:

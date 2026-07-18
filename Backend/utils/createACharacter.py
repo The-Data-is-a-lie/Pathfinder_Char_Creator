@@ -88,6 +88,13 @@ class Character:
         self.dip=None
         self.capped_level_1=None
         self.capped_level_2=None
+        # Multiclass source of truth: list of class entries
+        # {name, display, level, bab_type, casting_level_string, roll_order, capped_level}.
+        # The scalar fields above (c_class, c_class_level, ...) become aliases of the primary
+        # entry (most levels, tie -> first rolled) once randomize_level builds this list.
+        self.classes=[]
+        self.primary_class_index=0
+        self.spellbooks=[]
     
 
         #Spell list variables
@@ -189,10 +196,14 @@ class Character:
         # gold_input = input("Please input a desired number for gold, otherwise we will use the amount suggest by Paizo's rules for a PC of that level")
         gold_input = gold_num
         if isinstance(gold_input, int):
-            self.gold = gold_input            
+            self.gold = gold_input
         else:
             gold = getattr(data,gold)
-            if self.level>20:
+            # data.gold covers levels 2-20 (19 entries); level 1 has no table row
+            # (Paizo uses class starting wealth, ~150 gp average), 21+ reuses level 20.
+            if self.level <= 1:
+                self.gold = 150
+            elif self.level > 20:
                 self.gold = gold[-1]
             else:
                 self.gold = gold[self.level-2]
@@ -223,18 +234,24 @@ class Character:
 
         return output_list
 
-    def archetype_data(self):
+    def archetype_data(self, class_name=None):
         """
-        Randomly selects an archetype + prints the description for the class
+        Randomly selects an archetype + prints the description for the class.
+        class_name: pick for that class (any slot) without touching self.c_class;
+        omitted -> legacy primary-class behavior (also strips " (unchained)" off self.c_class,
+        which later data lookups rely on).
         Return
         - String (archetypes_choice)
         - dictionary (archetypes_description)
         """
-        c_class = self.c_class
-        if " (unchained)" in self.c_class:
-            self.c_class = self.c_class.replace(" (unchained)", "")
+        if class_name is None:
+            c_class = self.c_class
+            if " (unchained)" in self.c_class:
+                self.c_class = self.c_class.replace(" (unchained)", "")
 
-        c_class = self.c_class.capitalize()
+            c_class = self.c_class.capitalize()
+        else:
+            c_class = class_name.replace(" (unchained)", "").capitalize()
         json = self.archetypes.get(c_class, {})
         archetypes_list = list(json.keys())
         if not archetypes_list:

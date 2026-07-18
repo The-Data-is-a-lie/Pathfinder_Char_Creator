@@ -1,0 +1,825 @@
+{
+  "ring of protection +1": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "ac",
+        "type": "deflection",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "ring of protection +2": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "ac",
+        "type": "deflection",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "ring of protection +3": {
+    "changes": [
+      {
+        "formula": "3",
+        "target": "ac",
+        "type": "deflection",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "ring of protection +4": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "ac",
+        "type": "deflection",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "ring of protection +5": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "ac",
+        "type": "deflection",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "masterful gray gloves": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+10 bonus on Sleight of Hand checks to take something from a creature unnoticed.",
+        "target": "skill.slt"
+      }
+    ]
+  },
+  "ring of resistance +1": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "ring of resistance +2": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "ring of resistance +3": {
+    "changes": [
+      {
+        "formula": "3",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "ring of resistance +4": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "ring of resistance +5": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": []
+  },
+  "bracers of armor +1": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "aac",
+        "type": "base",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "Bracers of armor and ordinary armor do not stack; only the larger armor bonus functions.",
+        "target": "ac"
+      }
+    ]
+  },
+  "bracers of armor +2": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "aac",
+        "type": "base",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "Bracers of armor and ordinary armor do not stack; only the larger armor bonus functions.",
+        "target": "ac"
+      }
+    ]
+  },
+  "bracers of armor +3": {
+    "changes": [
+      {
+        "formula": "3",
+        "target": "aac",
+        "type": "base",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "Bracers of armor and ordinary armor do not stack; only the larger armor bonus functions.",
+        "target": "ac"
+      }
+    ]
+  },
+  "bracers of armor +4": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "aac",
+        "type": "base",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "Bracers of armor and ordinary armor do not stack; only the larger armor bonus functions.",
+        "target": "ac"
+      }
+    ]
+  },
+  "bracers of armor +5": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "aac",
+        "type": "base",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "Bracers of armor and ordinary armor do not stack; only the larger armor bonus functions.",
+        "target": "ac"
+      }
+    ]
+  },
+  "bracers of armor +6": {
+    "changes": [
+      {
+        "formula": "6",
+        "target": "aac",
+        "type": "base",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "Bracers of armor and ordinary armor do not stack; only the larger armor bonus functions.",
+        "target": "ac"
+      }
+    ]
+  },
+  "bracers of armor +7": {
+    "changes": [
+      {
+        "formula": "7",
+        "target": "aac",
+        "type": "base",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "Bracers of armor and ordinary armor do not stack; only the larger armor bonus functions.",
+        "target": "ac"
+      }
+    ]
+  },
+  "bracers of armor +8": {
+    "changes": [
+      {
+        "formula": "8",
+        "target": "aac",
+        "type": "base",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "Bracers of armor and ordinary armor do not stack; only the larger armor bonus functions.",
+        "target": "ac"
+      }
+    ]
+  },
+  "cape of free will +1": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "will",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "On a failed Will save, the wearer can expend one use of mythic power as an immediate action to reroll it; if the reroll also fails, this cannot be used again for [[24]] hours.",
+        "target": "will"
+      }
+    ]
+  },
+  "cape of free will +2": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "3",
+        "target": "will",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "On a failed Will save, the wearer can expend one use of mythic power as an immediate action to reroll it; if the reroll also fails, this cannot be used again for [[24]] hours.",
+        "target": "will"
+      }
+    ]
+  },
+  "cape of free will +3": {
+    "changes": [
+      {
+        "formula": "3",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "4",
+        "target": "will",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "On a failed Will save, the wearer can expend one use of mythic power as an immediate action to reroll it; if the reroll also fails, this cannot be used again for [[24]] hours.",
+        "target": "will"
+      }
+    ]
+  },
+  "cape of free will +4": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "5",
+        "target": "will",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "On a failed Will save, the wearer can expend one use of mythic power as an immediate action to reroll it; if the reroll also fails, this cannot be used again for [[24]] hours.",
+        "target": "will"
+      }
+    ]
+  },
+  "cape of free will +5": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "6",
+        "target": "will",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "On a failed Will save, the wearer can expend one use of mythic power as an immediate action to reroll it; if the reroll also fails, this cannot be used again for [[24]] hours.",
+        "target": "will"
+      }
+    ]
+  },
+  "cloak of quick reflexes +1": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "ref",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "On a failed Reflex save, the wearer can expend one use of mythic power as an immediate action to reroll it; if the reroll also fails, this cannot be used again for [[24]] hours.",
+        "target": "ref"
+      }
+    ]
+  },
+  "cloak of quick reflexes +2": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "3",
+        "target": "ref",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "On a failed Reflex save, the wearer can expend one use of mythic power as an immediate action to reroll it; if the reroll also fails, this cannot be used again for [[24]] hours.",
+        "target": "ref"
+      }
+    ]
+  },
+  "cloak of quick reflexes +3": {
+    "changes": [
+      {
+        "formula": "3",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "4",
+        "target": "ref",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "On a failed Reflex save, the wearer can expend one use of mythic power as an immediate action to reroll it; if the reroll also fails, this cannot be used again for [[24]] hours.",
+        "target": "ref"
+      }
+    ]
+  },
+  "cloak of quick reflexes +4": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "5",
+        "target": "ref",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "On a failed Reflex save, the wearer can expend one use of mythic power as an immediate action to reroll it; if the reroll also fails, this cannot be used again for [[24]] hours.",
+        "target": "ref"
+      }
+    ]
+  },
+  "cloak of quick reflexes +5": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "6",
+        "target": "ref",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "On a failed Reflex save, the wearer can expend one use of mythic power as an immediate action to reroll it; if the reroll also fails, this cannot be used again for [[24]] hours.",
+        "target": "ref"
+      }
+    ]
+  },
+  "pauldrons of unflinching fortitude +1": {
+    "changes": [
+      {
+        "formula": "1",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "fort",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "On a failed Fortitude save, the wearer can expend one use of mythic power as an immediate action to reroll it; if the reroll also fails, this cannot be used again for [[24]] hours.",
+        "target": "fort"
+      }
+    ]
+  },
+  "pauldrons of unflinching fortitude +2": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "3",
+        "target": "fort",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "On a failed Fortitude save, the wearer can expend one use of mythic power as an immediate action to reroll it; if the reroll also fails, this cannot be used again for [[24]] hours.",
+        "target": "fort"
+      }
+    ]
+  },
+  "pauldrons of unflinching fortitude +3": {
+    "changes": [
+      {
+        "formula": "3",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "4",
+        "target": "fort",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "On a failed Fortitude save, the wearer can expend one use of mythic power as an immediate action to reroll it; if the reroll also fails, this cannot be used again for [[24]] hours.",
+        "target": "fort"
+      }
+    ]
+  },
+  "pauldrons of unflinching fortitude +4": {
+    "changes": [
+      {
+        "formula": "4",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "5",
+        "target": "fort",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "On a failed Fortitude save, the wearer can expend one use of mythic power as an immediate action to reroll it; if the reroll also fails, this cannot be used again for [[24]] hours.",
+        "target": "fort"
+      }
+    ]
+  },
+  "pauldrons of unflinching fortitude +5": {
+    "changes": [
+      {
+        "formula": "5",
+        "target": "allSavingThrows",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "6",
+        "target": "fort",
+        "type": "resist",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "On a failed Fortitude save, the wearer can expend one use of mythic power as an immediate action to reroll it; if the reroll also fails, this cannot be used again for [[24]] hours.",
+        "target": "fort"
+      }
+    ]
+  },
+  "bodywrap of mighty strikes +1": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "Once per round (chosen before the roll, even off-turn e.g. on an AoO), add a +[[1]] enhancement bonus on one attack and damage roll for an unarmed strike or natural attack. Extra uses per round at BAB +[[6]], +[[11]], and +[[16]].",
+        "target": "attack"
+      }
+    ]
+  },
+  "bodywrap of mighty strikes +2": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "Once per round (chosen before the roll, even off-turn e.g. on an AoO), add a +[[2]] enhancement bonus on one attack and damage roll for an unarmed strike or natural attack. Extra uses per round at BAB +[[6]], +[[11]], and +[[16]].",
+        "target": "attack"
+      }
+    ]
+  },
+  "bodywrap of mighty strikes +3": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "Once per round (chosen before the roll, even off-turn e.g. on an AoO), add a +[[3]] enhancement bonus on one attack and damage roll for an unarmed strike or natural attack. Extra uses per round at BAB +[[6]], +[[11]], and +[[16]].",
+        "target": "attack"
+      }
+    ]
+  },
+  "bodywrap of mighty strikes +4": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "Once per round (chosen before the roll, even off-turn e.g. on an AoO), add a +[[4]] enhancement bonus on one attack and damage roll for an unarmed strike or natural attack. Extra uses per round at BAB +[[6]], +[[11]], and +[[16]].",
+        "target": "attack"
+      }
+    ]
+  },
+  "bodywrap of mighty strikes +5": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "Once per round (chosen before the roll, even off-turn e.g. on an AoO), add a +[[5]] enhancement bonus on one attack and damage roll for an unarmed strike or natural attack. Extra uses per round at BAB +[[6]], +[[11]], and +[[16]].",
+        "target": "attack"
+      }
+    ]
+  },
+  "bodywrap of mighty strikes +6": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "Once per round (chosen before the roll, even off-turn e.g. on an AoO), add a +[[6]] enhancement bonus on one attack and damage roll for an unarmed strike or natural attack. Extra uses per round at BAB +[[6]], +[[11]], and +[[16]].",
+        "target": "attack"
+      }
+    ]
+  },
+  "bodywrap of mighty strikes +7": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "Once per round (chosen before the roll, even off-turn e.g. on an AoO), add a +[[7]] enhancement bonus on one attack and damage roll for an unarmed strike or natural attack. Extra uses per round at BAB +[[6]], +[[11]], and +[[16]].",
+        "target": "attack"
+      }
+    ]
+  },
+  "belt of superior maneuvers +1": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "[[3]]/day as a free action, choose a combat maneuver: gain a +[[1]] enhancement bonus on checks with that maneuver and +[[1]] to CMD against it for [[1]] round. A brawler also gains one extra use of martial flexibility per day.",
+        "target": "cmb"
+      }
+    ]
+  },
+  "belt of superior maneuvers +2": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "[[3]]/day as a free action, choose a combat maneuver: gain a +[[2]] enhancement bonus on checks with that maneuver and +[[2]] to CMD against it for [[1]] round. A brawler also gains one extra use of martial flexibility per day.",
+        "target": "cmb"
+      }
+    ]
+  },
+  "belt of superior maneuvers +3": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "[[3]]/day as a free action, choose a combat maneuver: gain a +[[3]] enhancement bonus on checks with that maneuver and +[[3]] to CMD against it for [[1]] round. A brawler also gains one extra use of martial flexibility per day.",
+        "target": "cmb"
+      }
+    ]
+  },
+  "belt of superior maneuvers +4": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "[[3]]/day as a free action, choose a combat maneuver: gain a +[[4]] enhancement bonus on checks with that maneuver and +[[4]] to CMD against it for [[1]] round. A brawler also gains one extra use of martial flexibility per day.",
+        "target": "cmb"
+      }
+    ]
+  },
+  "belt of superior maneuvers +5": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "[[3]]/day as a free action, choose a combat maneuver: gain a +[[5]] enhancement bonus on checks with that maneuver and +[[5]] to CMD against it for [[1]] round. A brawler also gains one extra use of martial flexibility per day.",
+        "target": "cmb"
+      }
+    ]
+  },
+  "horseshoes of crushing blows +1": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "(Mount, all four shoes worn) The animal gains a +[[1]] enhancement bonus on attack and damage rolls with hoof attacks.",
+        "target": "attack"
+      }
+    ]
+  },
+  "horseshoes of crushing blows +2": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "(Mount, all four shoes worn) The animal gains a +[[2]] enhancement bonus on attack and damage rolls with hoof attacks.",
+        "target": "attack"
+      }
+    ]
+  },
+  "horseshoes of crushing blows +3": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "(Mount, all four shoes worn) The animal gains a +[[3]] enhancement bonus on attack and damage rolls with hoof attacks.",
+        "target": "attack"
+      }
+    ]
+  },
+  "horseshoes of crushing blows +4": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "(Mount, all four shoes worn) The animal gains a +[[4]] enhancement bonus on attack and damage rolls with hoof attacks.",
+        "target": "attack"
+      }
+    ]
+  },
+  "horseshoes of crushing blows +5": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "(Mount, all four shoes worn) The animal gains a +[[5]] enhancement bonus on attack and damage rolls with hoof attacks.",
+        "target": "attack"
+      }
+    ]
+  },
+  "ring of the godless +1": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+[[1]] luck bonus on saving throws against divine spells (and divine spell-like/supernatural class abilities); spell resistance (if any) +[[1]] against the same; detect magic (divine only) at will; [[1]]/day swift-action arcane sight (divine only) until end of turn.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "ring of the godless +2": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+[[2]] luck bonus on saving throws against divine spells (and divine spell-like/supernatural class abilities); spell resistance (if any) +[[2]] against the same; detect magic (divine only) at will; [[2]]/day swift-action arcane sight (divine only) until end of turn.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "ring of the godless +3": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+[[3]] luck bonus on saving throws against divine spells (and divine spell-like/supernatural class abilities); spell resistance (if any) +[[3]] against the same; detect magic (divine only) at will; [[3]]/day swift-action arcane sight (divine only) until end of turn.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "ring of the godless +4": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+[[4]] luck bonus on saving throws against divine spells (and divine spell-like/supernatural class abilities); spell resistance (if any) +[[4]] against the same; detect magic (divine only) at will; [[4]]/day swift-action arcane sight (divine only) until end of turn.",
+        "target": "allSavingThrows"
+      }
+    ]
+  },
+  "ring of the godless +5": {
+    "changes": [],
+    "contextNotes": [
+      {
+        "text": "+[[5]] luck bonus on saving throws against divine spells (and divine spell-like/supernatural class abilities); spell resistance (if any) +[[5]] against the same; detect magic (divine only) at will; [[5]]/day swift-action arcane sight (divine only) until end of turn.",
+        "target": "allSavingThrows"
+      }
+    ]
+  }
+}

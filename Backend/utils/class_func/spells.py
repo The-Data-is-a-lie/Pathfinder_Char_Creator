@@ -4,108 +4,111 @@ from utils import data
 import pandas as pd
 
 def class_for_spells_attr(character):
-    #currently we only know that skald spells aren't proper, but 
-    # skalds use bard spell list -> just have an if statement for them 
+    #currently we only know that skald spells aren't proper, but
+    # skalds use bard spell list -> just have an if statement for them
     # CON 10
     # INT 12
     # investigators use alchemists spells
     # + check others
-            
+
     #This is a quick and easy function to make it so we search
-    #for different spell lists than our current class
-    if character.c_class in ['skald']:
-        character.c_class_for_spells = 'bard'
-    elif character.c_class in ['investigator']:
-        character.c_class_for_spells = 'alchemist'
-    elif character.c_class in ['witch', 'arcanist']:
-        character.c_class_for_spells='wizard' 
-    elif character.c_class in ['warpriest', 'oracle']:
-        character.c_class_for_spells='cleric'    
-    elif character.c_class in ['summoner (unchained)']:
-        character.c_class_for_spells='summoner'               
-    else:
-        character.c_class_for_spells = character.c_class     
-    return character.c_class_for_spells
+    #for different spell lists than our current class. Each class entry gets its own mapping.
+    for entry in character.classes:
+        name = entry['name']
+        if name in ['skald']:
+            entry['class_for_spells'] = 'bard'
+        elif name in ['investigator']:
+            entry['class_for_spells'] = 'alchemist'
+        elif name in ['witch', 'arcanist']:
+            entry['class_for_spells'] = 'wizard'
+        elif name in ['warpriest', 'oracle']:
+            entry['class_for_spells'] = 'cleric'
+        elif name in ['summoner (unchained)']:
+            entry['class_for_spells'] = 'summoner'
+        else:
+            entry['class_for_spells'] = name
+    return [entry['class_for_spells'] for entry in character.classes]
 
 
 
-def caster_formula(character,n, class_2 = 'missing'):
-    character.casting_level_string = str(character.class_data.get(character.c_class, "").get("casting level", "").lower())
-    character.casting_level_num = character.c_class_level
+def casting_stat_for(class_name):
+    """The class's casting ability ('int'/'wis'/'cha') per data.caster_mod, or None for
+    non-casters. Classes in two lists (shaman) resolve to the first match: int > wis > cha."""
+    for stat, key in (('int', 'int_casters'), ('wis', 'wis_casters'), ('cha', 'cha_casters')):
+        if class_name in data.caster_mod[key]:
+            return stat
+    return None
 
-    if character.casting_level_string == 'high':
+
+def caster_formula(character, n, class_entry):
+    """Highest castable spell level + adjusted caster level for ONE class entry (n = its class
+    level). Writes class_entry['highest_spell_known'] / ['casting_level_num']."""
+    casting_level_string = class_entry['casting_level_string']
+    casting_level_num = class_entry['level']
+
+    if casting_level_string == 'high':
         if n % 2 == 0:
             highest_spell_known=n // 2
         else:
             highest_spell_known=(n + 1) // 2
         highest_spell_known = min(highest_spell_known,9)
 
-    elif character.casting_level_string == 'mid':
+    elif casting_level_string == 'mid':
         if n % 3 != 0:
             highest_spell_known= ceil(n // 3) + 1
         else:
             highest_spell_known= ceil(n // 3)
-        highest_spell_known = min(highest_spell_known,6)           
-    
-    elif character.casting_level_string == 'low':
+        highest_spell_known = min(highest_spell_known,6)
+
+    elif casting_level_string == 'low':
         highest_spell_known= ceil(n / 3)-1
-        highest_spell_known = min(highest_spell_known,4)           
-        character.casting_level_num -= 3
+        highest_spell_known = min(highest_spell_known,4)
+        casting_level_num -= 3
 
 
     else:
-        highest_spell_known = 0 
-        character.casting_level_num = 0
+        highest_spell_known = 0
+        casting_level_num = 0
 
-    if class_2 == 'missing':
-        character.highest_spell_known_1 = highest_spell_known
-        return character.highest_spell_known_1    
-    else:
-        character.highest_spell_known_2 = highest_spell_known
-        return character.highest_spell_known_2
+    class_entry['highest_spell_known'] = highest_spell_known
+    class_entry['casting_level_num'] = casting_level_num
+    return highest_spell_known
 
 
-#need to create this for casting_level_2 as well
-def spells_known_attr(character,base_classes, divine_casters):     
+def spells_known_attr(character, base_classes, divine_casters, class_entry):
     base_classes = getattr(data,base_classes)
-    divine_casters=getattr(data, divine_casters)    
-    character.casting_level_string = str(character.class_data[character.c_class]["casting level"].lower())         
-    character.spells_known_list = []
-    list = []    
+    divine_casters=getattr(data, divine_casters)
+    class_entry['spells_known_list'] = []
+    name = class_entry['name']
+    list = []
 
-    if character.c_class not in base_classes:
+    if name not in base_classes:
         print('Not a base class')
         return []
 
-    elif character.c_class in divine_casters:
+    elif name in divine_casters:
         print('Divine Casters know all spells')
         return []
-    
-    elif character.c_class == 'alchemist':
-        for i in range(0,character.highest_spell_known_1+1):
-            key = str(i)                
-            list=character.spells_known[character.c_class][key][character.capped_level_1-1]
-            character.spells_known_list.append(list)
 
-    elif character.casting_level_string in ('low', 'mid', 'high'):
-        for i in range(0,character.highest_spell_known_1+1):
+    elif name == 'alchemist' or class_entry['casting_level_string'] in ('low', 'mid', 'high'):
+        for i in range(0, class_entry['highest_spell_known']+1):
             key = str(i)
-            list=character.spells_known[character.c_class][key][character.capped_level_1-1]
-            character.spells_known_list.append(list)
+            list=character.spells_known[name][key][class_entry['capped_level']-1]
+            class_entry['spells_known_list'].append(list)
     else:
         print('Not an arcane caster')
 
-    return character.spells_known_list
+    return class_entry['spells_known_list']
 
-def spells_known_extra_roll(character):
-    extra_spell_list = []        
-    if character.c_class_for_spells in ['alchemist','wizard'] :
-        for i in range(0,character.highest_spell_known_1 + 1):
+def spells_known_extra_roll(character, class_entry):
+    extra_spell_list = []
+    if class_entry.get('class_for_spells') in ['alchemist','wizard'] :
+        for i in range(0, class_entry['highest_spell_known'] + 1):
             extra_spells = random.randint(1,10)
             extra_spell_list.append(extra_spells)
 
             # Remove 'null' values and ensure both lists have the same number of non-null elements
-            filtered_spells_known = [0 if x == 'null' else x for x in character.spells_known_list]
+            filtered_spells_known = [0 if x == 'null' else x for x in class_entry['spells_known_list']]
             filtered_extra_spells = extra_spell_list[:len(filtered_spells_known)]
 
             if filtered_spells_known[i] == 0:
@@ -113,19 +116,19 @@ def spells_known_extra_roll(character):
             # Add corresponding elements of both lists
             result = [x + y for x, y in zip(filtered_spells_known, filtered_extra_spells)]
 
-        character.spells_known_list=result
-    return character.spells_known_list
+        class_entry['spells_known_list']=result
+    return class_entry['spells_known_list']
 
-def alignment_spell_limits(character, spell_data, i, alignment_exclusion):
+def alignment_spell_limits(character, spell_data, i, alignment_exclusion, spells_class):
     """
-    Creates flags to limit spell choices to only be within the character's alignment for all classes 
+    Creates flags to limit spell choices to only be within the character's alignment for all classes
     (not just cleric to make characters more thematic)
 
-    return: query_i 
-    params: spell_data (pandas file), i (number)
+    return: query_i
+    params: spell_data (pandas file), i (number), spells_class (spell-list column name)
     """
     alignment = character.alignment.lower()
-    extraction_list = ['name', 'school', 'descriptor']#, character.c_class_for_spells 'lawful', 'chaotic', 'evil', 'good']
+    extraction_list = ['name', 'school', 'descriptor']#, 'lawful', 'chaotic', 'evil', 'good']
     alignment_exclusion = getattr(data, alignment_exclusion)
 
 
@@ -136,7 +139,7 @@ def alignment_spell_limits(character, spell_data, i, alignment_exclusion):
         if excluded_column:
             excluded_columns.add(excluded_column)
 
-    condition = spell_data[character.c_class_for_spells] == i
+    condition = spell_data[spells_class] == i
 
     for col in excluded_columns:
         condition &= (spell_data[col] == 0)
@@ -194,75 +197,89 @@ def spell_theme_descriptor_func(character, spell_data):
 
 
 
-def spells_known_selection(character):
-    spell_data=pd.read_csv('data/spells.csv', sep='|')
+_SPELL_DATA = None
+
+
+def _load_spell_data():
+    """spells.csv, loaded once per process (it's static data and multiclass reads it per book)."""
+    global _SPELL_DATA
+    if _SPELL_DATA is None:
+        _SPELL_DATA = pd.read_csv('data/spells.csv', sep='|')
+    return _SPELL_DATA
+
+
+def spell_themes(character):
+    """Roll the character-wide spell themes (specialty/counter schools + descriptors) once —
+    every spellbook of a multiclass caster weights its picks by the same themes, and the fields
+    are exported for non-casters too."""
+    spell_data = _load_spell_data()
     spell_theme_func(character, spell_data)
     spell_theme_descriptor_func(character, spell_data)
 
-    #extraction_list = ['name', character.c_class]                
+
+def spells_known_selection(character, class_entry):
+    spell_data = _load_spell_data()
+
     character.spell_list = []
     # the character has no cantrips, so they need to start at level 1 spells (slot 1)
 
     base_classes=getattr(data,'base_classes')
     divine_casters=getattr(data, 'divine_casters')
+    name = class_entry['name']
+    casting_level_string = class_entry['casting_level_string']
     # instantiate the spell list counter
     i=0
-    if character.casting_level_string.lower() == 'low' or character.c_class in ('alchemist', 'investigator'):
+    if casting_level_string == 'low' or name in ('alchemist', 'investigator'):
         i = 1
 
-    character.spell_list_choose_from=[]
+    class_entry['spell_list_choose_from']=[]
     # Per-level count of spells a PREPARED caster prepares (= spells/day), aligned 1:1 to
     # spell_list_choose_from so the FoundryVTT module can mark exactly that many prepared per level.
     # Divine casters select day_list spells (so this equals the group size); spellbook casters
     # (wizard/witch/...) select the larger known_list, so this is the prepared subset.
-    character.spells_prepared_per_level=[]
+    class_entry['spells_prepared_per_level']=[]
 
     #separating the lists
-    known_list = character.spells_known_list
-    day_list = character.spells_per_day_list
+    known_list = class_entry.get('spells_known_list', [])
+    day_list = class_entry.get('spells_per_day_list', [])
 
-    if character.c_class not in base_classes or character.casting_level_string == 'none':
+    if name not in base_classes or casting_level_string == 'none':
         return [], [], []
-    
-    if character.c_class not in divine_casters:
+
+    if name not in divine_casters:
         select_spell_list = known_list
     else:
         select_spell_list = day_list
 
 #we need to make sure we aren't grabbing null or our program will break
-    while i <= character.highest_spell_known_1:
+    while i <= class_entry['highest_spell_known']:
         if select_spell_list[i] == 'null':
             break
 
         select_spell = select_spell_list[i]
 
-        query_i = alignment_spell_limits(character, spell_data, i, "alignment_exclusion")
+        query_i = alignment_spell_limits(character, spell_data, i, "alignment_exclusion",
+                                         class_entry['class_for_spells'])
         # Don't want more spells selected than there are in the list
-        select_spell=min(select_spell_list[i], len(query_i), select_spell)             
+        select_spell=min(select_spell_list[i], len(query_i), select_spell)
         # only sample required number of spells
         spells = query_i.sample(n=select_spell, weights=query_i['weight'])
 
         spell_list = spells['name'].tolist()
-        character.spell_list_choose_from.append(spell_list)
+        class_entry['spell_list_choose_from'].append(spell_list)
         # how many of this level a prepared caster prepares = spells/day, capped to what we picked.
         try:
             prepared_n = int(day_list[i])
         except (TypeError, ValueError, IndexError):
             prepared_n = 0
-        character.spells_prepared_per_level.append(min(prepared_n, len(spell_list)))
+        class_entry['spells_prepared_per_level'].append(min(prepared_n, len(spell_list)))
 
         i += 1
 
     else:
         print('cannot select spells_known_selection')
 
-    # for df in character.spell_list_choose_from:
-    #     spell_names = df['name'].tolist()
-    #     all_spell_names.extend(spell_names)
-
-    # character.spell_list_choose_from = all_spell_names
-
-    return character.spell_list_choose_from, day_list, known_list
+    return class_entry['spell_list_choose_from'], day_list, known_list
 
 
 # --- Spell conditionals / riders -----------------------------------------------------------------
@@ -328,96 +345,132 @@ def spell_conditionals_selection(character):
 
 
 # remove if need to give an accurate spells per day (only for foundryVTT (to have more spells populate in list))
-def extra_spells_divine(character):
+def extra_spells_divine(character, class_entry):
     divine_casters = getattr(data, 'divine_casters')
 
-    if character.c_class not in divine_casters:
-        return character.spells_per_day_list
-    if character.casting_level_string == 'none':
+    if class_entry['name'] not in divine_casters:
+        return class_entry.get('spells_per_day_list', [])
+    if class_entry['casting_level_string'] == 'none':
         return []
 
 
     i = 0
     subtract_num = 0
+    spells_per_day_list = class_entry['spells_per_day_list']
 
 
     # We need to make sure we aren't grabbing null or our program will break
-    while i in range(len(character.spells_per_day_list) - subtract_num):
+    while i in range(len(spells_per_day_list) - subtract_num):
         random_num = random.randint(1,10)
-        if character.spells_per_day_list[i] == 'null':
+        if spells_per_day_list[i] == 'null':
             break
-        character.spells_per_day_list[i] = character.spells_per_day_list[i] + random_num
+        spells_per_day_list[i] = spells_per_day_list[i] + random_num
         i+=1
 
-    return character.spells_per_day_list
+    return spells_per_day_list
 
 
-    
 
-def spells_per_day_attr(character, base_classes):
-    # We have to use normal spell class, since certain classes like Arcanist or Witch have the same spells but diff progressions as wizard/sorc 
-    base_classes = getattr(data,base_classes)  
-    character.spells_per_day_list = []
-    list = []            
 
-    if character.c_class not in base_classes:
+def spells_per_day_attr(character, base_classes, class_entry):
+    # We have to use normal spell class, since certain classes like Arcanist or Witch have the same spells but diff progressions as wizard/sorc
+    base_classes = getattr(data,base_classes)
+    class_entry['spells_per_day_list'] = []
+    name = class_entry['name']
+    list = []
+
+    if name not in base_classes:
         print('Not a base class')
         return []
 
-    elif character.c_class == 'alchemist':
-        for i in range(0,character.highest_spell_known_1+1):
-            key = str(i)                
-            list=character.spells_per_day[character.c_class][key][character.capped_level_1-1]
-            character.spells_per_day_list.append(list)                
-
-    elif character.casting_level_string in ('low', 'mid', 'high'):
-        for i in range(0,character.highest_spell_known_1+1):
+    elif name == 'alchemist' or class_entry['casting_level_string'] in ('low', 'mid', 'high'):
+        for i in range(0, class_entry['highest_spell_known']+1):
             key = str(i)
-            list=character.spells_per_day[character.c_class][key][character.capped_level_1-1]
-            character.spells_per_day_list.append(list)
+            list=character.spells_per_day[name][key][class_entry['capped_level']-1]
+            class_entry['spells_per_day_list'].append(list)
 
     else:
         print('Not an spell list caster')
 
-    return character.spells_per_day_list            
+    return class_entry['spells_per_day_list']
 
 
-def spells_per_day_from_ability_mod(character, caster_mod):
+def spells_per_day_from_ability_mod(character, caster_mod, class_entry):
     caster_mod = getattr(data,caster_mod)
     dataset = character.spells_from_ability_mod
+    name = class_entry['name']
     #for now we make sure it can't be above 17 -> otherwise breaks
     int_str = str(min(character.int_mod,17))
     wis_str = str(min(character.wis_mod,17))
     cha_str = str(min(character.cha_mod,17))
     i=0
     bonus_spells = []
-    if character.c_class in caster_mod["int_casters"]:
-        list=dataset[int_str]          
-        for i in range (character.highest_spell_known_1 + 1):
+    if name in caster_mod["int_casters"]:
+        list=dataset[int_str]
+        for i in range (class_entry['highest_spell_known'] + 1):
             spells= list[i]
             bonus_spells.append(spells)
             i+=1
-    elif character.c_class in caster_mod["wis_casters"]:
-        list=dataset[wis_str]         
+    elif name in caster_mod["wis_casters"]:
+        list=dataset[wis_str]
         print("list", list)
-        for i in range (character.highest_spell_known_1 + 1):
+        for i in range (class_entry['highest_spell_known'] + 1):
             spells= list[i]
             bonus_spells.append(spells)
             i+=1
-    elif character.c_class in caster_mod["cha_casters"]:
-        list=dataset[cha_str]          
-        for i in range (character.highest_spell_known_1 + 1):
+    elif name in caster_mod["cha_casters"]:
+        list=dataset[cha_str]
+        for i in range (class_entry['highest_spell_known'] + 1):
             spells= list[i]
-            bonus_spells.append(spells)                                
+            bonus_spells.append(spells)
             i+=1
     else:
         print('Not a caster sorry bucko')
 
     #  adding a section for low casterse since they don't have cantrips
+    spells_per_day_list = class_entry.get('spells_per_day_list', [])
     for i,bonus in enumerate(bonus_spells):
         if bonus == 'null':
             break
-        if not isinstance(character.spells_per_day_list[i], str):
-            character.spells_per_day_list[i] = character.spells_per_day_list[i] + bonus
+        if i >= len(spells_per_day_list):
+            break
+        if not isinstance(spells_per_day_list[i], str):
+            spells_per_day_list[i] = spells_per_day_list[i] + bonus
 
     return bonus_spells
+
+
+def sync_legacy_spell_fields(character):
+    """Point the legacy scalar spell fields at the PRIMARY spellbook — the primary class's if it
+    casts, else the first caster's in roll order — or at the empty no-caster shapes. Downstream
+    consumers (prereq pools, bonus-spell insertion, export) keep reading the scalars; extra
+    multiclass spellbooks live in character.spellbooks."""
+    primary = character.classes[character.primary_class_index]
+    book = None
+    if primary['casting_level_string'] in ('low', 'mid', 'high'):
+        book = primary
+    else:
+        for entry in character.classes:
+            if entry['casting_level_string'] in ('low', 'mid', 'high'):
+                book = entry
+                break
+
+    if book is None:
+        character.c_class_for_spells = primary.get('class_for_spells', primary['name'])
+        character.casting_level_string = primary['casting_level_string']
+        character.casting_level_num = 0
+        character.highest_spell_known_1 = 0
+        character.spells_known_list = []
+        character.spells_per_day_list = []
+        character.spell_list_choose_from = []
+        character.spells_prepared_per_level = []
+    else:
+        character.c_class_for_spells = book['class_for_spells']
+        character.casting_level_string = book['casting_level_string']
+        # feat/talent prereqs ("caster level X") should see the character's best caster level
+        character.casting_level_num = max(e.get('casting_level_num', 0) for e in character.classes)
+        character.highest_spell_known_1 = book['highest_spell_known']
+        character.spells_known_list = book.get('spells_known_list', [])
+        character.spells_per_day_list = book.get('spells_per_day_list', [])
+        character.spell_list_choose_from = book.get('spell_list_choose_from', [])
+        character.spells_prepared_per_level = book.get('spells_prepared_per_level', [])

@@ -38,10 +38,11 @@ def chooseable_list_race(character):
 
 def chooseable_list_class_features(character):
     remove_list = ["aphorite", "aquatic elf", "boggard", "dhampir", "drow", "duergar", "duskwalker", "dwarf", "elf", "fetchling", "gillman", "gnome", "Half-Elf", "halfling", "Half-Orc", "human", "kitsune", "nagaji", "oread", "ratfolk", "strix", "tengu", "wayang", "aasimar", "aquatic elf", "catfolk", "dwarf", "elf", "gathlain", "gnome", "goblin", "Half-Elf", "halfling", "Half-Orc", "hobgoblin", "human", "kitsune", "kobold", "locathah", "nagaji", "orc", "vanara", "source", "role", "alignment", "hit die", "parent class(es)", "starting wealth", "skill points at each level" ]
-    class_keys_list = list(character.class_data.get(character.c_class, "").keys())
-    class_keys_list = [key.strip() for key in class_keys_list if key not in remove_list]
-    class_keys_list_class_feature = [key + " class feature" for key in class_keys_list]
+    # every class contributes its feature keys to the prereq pool (multiclass-aware)
+    for entry in character.classes:
+        class_keys_list = list(character.class_data.get(entry['name'], "").keys())
+        class_keys_list = [key.strip() for key in class_keys_list if key not in remove_list]
+        class_keys_list_class_feature = [key + " class feature" for key in class_keys_list]
 
-    
-    character.chooseable.update(class_keys_list)
-    character.chooseable.update(class_keys_list_class_feature)
+        character.chooseable.update(class_keys_list)
+        character.chooseable.update(class_keys_list_class_feature)

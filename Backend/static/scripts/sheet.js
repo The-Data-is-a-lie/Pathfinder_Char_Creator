@@ -38,6 +38,8 @@
     // Good-save progressions per class, extracted from the pf1e_random_char_generator module's
     // every_class.json (pf1 + pf1-pow compendium export). Stalker/Zealot are absent from that
     // compendium; their entries follow the d20pfsrd Path of War class tables.
+    // FALLBACK ONLY for cached payloads without save_bases — the authoritative copy lives in
+    // Backend/utils/data.py (good_saves), which stacks saves per class server-side. Keep in sync.
     const GOOD_SAVES = {
         'alchemist': ['fort', 'ref'], 'antipaladin': ['fort', 'will'], 'arcanist': ['will'],
         'barbarian': ['fort'], 'barbarian (unchained)': ['fort'], 'bard': ['ref', 'will'],
@@ -114,10 +116,18 @@
     function renderHeader(data) {
         const head = h('div', 'sheet-header');
         head.appendChild(h('h1', 'char-name', data.character_full_name || 'Unnamed'));
-        const cls2 = data.c_class_2 ? ' / ' + titleCase(data.c_class_2) : '';
         const arch = data.archetype1 ? ` (${data.archetype1})` : '';
+        // multiclass payloads carry a classes array ("Fighter 6 / Wizard 4"); older cached
+        // payloads fall back to the legacy c_class/c_class_2 + level fields
+        let clsLine;
+        if (Array.isArray(data.classes) && data.classes.length) {
+            clsLine = data.classes.map((c) => `${c.display || titleCase(c.name)} ${c.level}`).join(' / ') + arch;
+        } else {
+            const cls2 = data.c_class_2 ? ' / ' + titleCase(data.c_class_2) : '';
+            clsLine = `${(data.c_class_display || data.c_class || '?')}${cls2}${arch} ${data.level ?? '?'}`;
+        }
         const line = [
-            `${data.chosen_race || '?'} ${(data.c_class_display || data.c_class || '?')}${cls2}${arch} ${data.level ?? '?'}`,
+            `${data.chosen_race || '?'} ${clsLine}`,
             data.alignment,
             data.gender,
             Array.isArray(data.deity_name) ? data.deity_name.join(', ') : data.deity_name,
@@ -171,6 +181,14 @@
         kv(body, 'CMB / CMD', `${fmt(bab + strM)} / ${10 + bab + strM + dexM}`);
         kv(body, 'AC', `${10 + armorAc + shieldAc + effDex} (touch ${10 + effDex}, flat-footed ${10 + armorAc + shieldAc})`);
 
+        // save_bases comes stacked per class from the backend (multiclass-correct); the
+        // GOOD_SAVES table below is only the fallback for cached payloads that predate it
+        if (data.save_bases && typeof data.save_bases === 'object') {
+            const sb = data.save_bases;
+            kv(body, 'Saves',
+                `Fort ${fmt((Number(sb.fort) || 0) + conM)}, Ref ${fmt((Number(sb.ref) || 0) + dexM)}, Will ${fmt((Number(sb.will) || 0) + wisM)}`);
+            return sec;
+        }
         const goods = GOOD_SAVES[String(data.c_class || '').toLowerCase()];
         if (goods && level) {
             const s = (name, abM) => fmt(saveBonus(level, goods.includes(name)) + abM);
@@ -212,7 +230,20 @@
             for (const item of data.equipment_list) {
                 const name = typeof item === 'string' ? item : (item?.name ?? JSON.stringify(item));
                 const d = data.equip_descrip?.[name];
-                ul.appendChild(h('li', null, null)).appendChild(d ? details(name, d) : h('span', null, name));
+                const li = ul.appendChild(h('li', null, null));
+                const unplaced = data.item_changes_dict?.[name]?.unplaced;
+                if (d || (unplaced && unplaced.length)) {
+                    const det = details(name, d);
+                    if (unplaced && unplaced.length) {
+                        const fx = h('div', 'desc item-effects');
+                        fx.appendChild(h('strong', null, 'Effects: '));
+                        for (const text of unplaced) fx.appendChild(h('div', null, text));
+                        det.appendChild(fx);
+                    }
+                    li.appendChild(det);
+                } else {
+                    li.appendChild(h('span', null, name));
+                }
             }
             body.appendChild(ul);
         }
@@ -340,11 +371,8 @@
         return sec;
     }
 
-    function renderSpells(data) {
-        const perDay = data.day_list, known = data.known_list, lists = data.spell_list_choose_from;
-        if (!nonEmpty(perDay) && !nonEmpty(lists)) return null;
-        const { sec, body } = section('Spellcasting');
-        if (data.casting_level_str_foundry) kv(body, 'Caster progression', data.casting_level_str_foundry);
+    function renderSpellBlock(body, perDay, known, lists, casterLine) {
+        if (casterLine) kv(body, 'Caster progression', casterLine);
         if (nonEmpty(perDay)) {
             const table = h('table', 'spell-table');
             const hd = h('tr');
@@ -366,6 +394,33 @@
                     '<p>' + spells.join(', ') + '</p>', 'spell-list'));
             });
         }
+    }
+
+    function renderSpells(data) {
+        // multiclass payloads carry one spellbook per caster class; older cached payloads fall
+        // back to the legacy single-book top-level fields
+        if (Array.isArray(data.spellbooks) && data.spellbooks.length) {
+            const books = data.spellbooks.filter((b) =>
+                nonEmpty(b.spells_per_day_list) || nonEmpty(b.spell_list_choose_from));
+            if (!books.length) return null;
+            const { sec, body } = section('Spellcasting');
+            // payload arrives level-sorted: book 0 = the Foundry primary book, then secondary, ...
+            const SLOT_LABELS = ['Primary', 'Secondary', 'Tertiary'];
+            books.forEach((book, bi) => {
+                if (books.length > 1 || data.spellbooks.length > 1) {
+                    const slot = SLOT_LABELS[bi] ? `${SLOT_LABELS[bi]}: ` : '';
+                    body.appendChild(h('h3', null,
+                        `${slot}${book.display || titleCase(book.name)} ${book.level} — Caster Level ${book.casting_level_num ?? '?'}`));
+                }
+                renderSpellBlock(body, book.spells_per_day_list, book.spells_known_list,
+                    book.spell_list_choose_from, book.casting_level_string);
+            });
+            return sec;
+        }
+        const perDay = data.day_list, known = data.known_list, lists = data.spell_list_choose_from;
+        if (!nonEmpty(perDay) && !nonEmpty(lists)) return null;
+        const { sec, body } = section('Spellcasting');
+        renderSpellBlock(body, perDay, known, lists, data.casting_level_str_foundry);
         return sec;
     }
 
@@ -582,7 +637,9 @@
         const savedForm = JSON.parse(localStorage.getItem(FORM_KEY) || 'null');
         if (savedForm) {
             for (const [k, v] of Object.entries(savedForm)) {
-                if (form.elements[k]) form.elements[k].value = v;
+                // Disabled controls (e.g. multiclass, locked to No) keep their default;
+                // a stale saved value may no longer be a valid option.
+                if (form.elements[k] && !form.elements[k].disabled) form.elements[k].value = v;
             }
         }
 

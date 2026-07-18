@@ -7,10 +7,20 @@ from math import ceil, floor
 from utils.class_func.generic_func import *
 from utils.class_func.chooseable import *
 
+def _divine_arcane_flags(character):
+    """(is_divine, is_arcane_caster) across ALL classes — a multiclass cleric/wizard is both, and
+    then neither the divine- nor arcane-feat filter should strip its feats."""
+    divine_casters = getattr(data, "divine_casters")
+    is_divine = any(c['name'] in divine_casters for c in character.classes)
+    is_arcane = any(c['casting_level_string'] in ('low', 'mid', 'high')
+                    and c['name'] not in divine_casters for c in character.classes)
+    return is_divine, is_arcane
+
+
 def feat_spell_searcher(character, class_1, chosen_set, types, info_column, info_column_2 = None):
     if chosen_set == None:
         return
-    if character.c_class == class_1:
+    if class_entry_for(character, class_1) is not None:
         data = pd.read_csv(f'data/{types}.csv', sep='|', on_bad_lines='skip')
     
         if info_column_2 is None:
@@ -116,8 +126,9 @@ def build_selector(character):
         else:
             add_martial_feats(character, feat_list)
             add_magical_feats(character, feat_list)
-    if character.c_class in specialty_set:
-        add_specialty_feats(character, feat_list)
+    for _entry in character.classes:
+        if _entry['name'] in specialty_set:
+            add_specialty_feats(character, feat_list, _entry['name'])
 
     result_dict_pre = feat_spell_searcher(character, character.c_class, feat_list, "feats", "prerequisites", "description")
     result_dict = transform_result_dict(character, result_dict_pre)
@@ -153,9 +164,9 @@ def add_magical_feats(character, feat_list):
     list_1 = list(magical[magical_choice])
     feat_list.extend(list_1 + list_2)    
 
-def add_specialty_feats(character, feat_list):
-    classes_choices = list(character.feat_buckets['classes'][character.c_class])
-    feat_list.extend(classes_choices)       
+def add_specialty_feats(character, feat_list, class_name=None):
+    classes_choices = list(character.feat_buckets['classes'][class_name or character.c_class])
+    feat_list.extend(classes_choices)
 
 def transform_result_dict(character, result_dict):
     for feat in list(result_dict.keys()):
@@ -179,7 +190,7 @@ def transform_result_dict(character, result_dict):
 
 def get_feats_without_prerequisites(character, class_1, dataset_name, level= None, level_2 = None, dataset_name_2 = None, feat_amount=None):
 
-    if character.c_class != class_1:
+    if class_entry_for(character, class_1) is None:
         return None
 
     base_no_prereq = []
@@ -276,18 +287,18 @@ def teamwork_pool_size(character, casting_level_str):
     feat_result_dict = query_i.set_index('name')[['prerequisites', 'description']].to_dict(orient='index')
     feat_result_dict = transform_result_dict(character, feat_result_dict)
 
-    divine_casters = getattr(data, "divine_casters")
+    is_divine, is_arcane = _divine_arcane_flags(character)
     if casting_level_str not in ("low", "mid", "high"):
         feat_result_dict = remove_spell_caster_feats(feat_result_dict)
-    if character.c_class in divine_casters:
+    if is_divine and not is_arcane:
         feat_result_dict = remove_arcane_feats(feat_result_dict)
-    if character.c_class not in divine_casters:
+    if not is_divine:
         feat_result_dict = remove_divine_feats(feat_result_dict)
 
     return len(feat_result_dict)
 
 def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_column, override = None, special_type = None, feat_amount = None, extra_feats_flag = False):
-    if class_1 == character.c_class:
+    if class_entry_for(character, class_1) is not None:
         feat_data = grab_and_clean_feats('data/feats.csv')
 
         # Temporary add mezofitz feats
@@ -328,14 +339,15 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
         feat_result_dict = transform_result_dict(character, feat_result_dict)
         feat_result_dict.update(feat_result_dict)
 
+        is_divine, is_arcane = _divine_arcane_flags(character)
         # remove feats if not spellcaster
         if casting_level_str not in ("low", "mid", "high"):
             feat_result_dict = remove_spell_caster_feats(feat_result_dict)
-        # remove feats with 'arcane' words if a divine caster
-        if character.c_class in divine_casters:
+        # remove feats with 'arcane' words if a (purely) divine caster
+        if is_divine and not is_arcane:
             feat_result_dict = remove_arcane_feats(feat_result_dict)
-        # remove feats with 'divine' words if a arcane caster
-        if character.c_class not in divine_casters:
+        # remove feats with 'divine' words if an arcane/non-divine character
+        if not is_divine:
             feat_result_dict = remove_divine_feats(feat_result_dict)
 
         chosen_feats = get_feats_without_prerequisites(character, character.c_class, feat_result_dict, feat_amount=feat_amount)
@@ -462,7 +474,7 @@ def bloodline_feat_chooser(character, c_class, bloodline_name, feat_amount):
 
 
 def simple_list_chooser(character, class_1, *dataset_names, max_num=float('inf'), **kwargs):
-    if character.c_class.lower() == class_1.lower():
+    if class_entry_for(character, class_1.lower()) is not None:
         chosen = []
         chosen_dict = {}
         for dataset_name in dataset_names:
@@ -473,7 +485,13 @@ def simple_list_chooser(character, class_1, *dataset_names, max_num=float('inf')
                 dataset = list(dataset.keys())
             # chosen.append(random.sample(dataset, k=min(formula_calc, max_num)))
             chosen_dict[dataset_name] = random.sample(dataset, k=min(formula_calc, max_num))
-            character.data_dict.update({'class features': chosen_dict})
+            # Merge like the other choosers (generic_func.py) — a straight assignment clobbers the
+            # buckets earlier classes wrote (bloodline/hexes/...) on a multiclass roll.
+            if character.data_dict['class features'] in ([], {}):
+                character.data_dict['class features'] = chosen_dict
+            else:
+                character.data_dict['class features'].update(chosen_dict)
+            record_bucket_owner(character, dataset_name, class_1.lower())
         return chosen
 
 def formula_grabber(character, dataset_name):

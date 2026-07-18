@@ -1,20 +1,28 @@
 import random
+
+from utils.class_func.generic_func import class_entry_for, record_bucket_owner
+
+
 def domain_chooser(character):
     chosen_dict = {}
     character.chosen_domain = []
-    if character.c_class == 'cleric' or character.c_class_2 == 'cleric':  
+    has_cleric = class_entry_for(character, 'cleric') is not None
+    has_druid = class_entry_for(character, 'druid') is not None
+    has_inquisitor = class_entry_for(character, 'inquisitor') is not None
+
+    if has_cleric:
         deity_choice_list = list(character.deity_choice['Domains'])
         character.deity_choice_list = deity_choice_list
         character.chosen_domain = random.sample(deity_choice_list,k=2)
         chosen_first = character.chosen_domain[0].capitalize()
         chosen_second = character.chosen_domain[1].capitalize()
-    if (character.c_class == 'druid' or character.c_class_2 == 'druid' and character.domain_chance > 90):
+    if has_druid and character.domain_chance > 90:
 
         druid_domains_list = list(character.druid_domains.keys())
         chosen_domain = random.choice(druid_domains_list)
         character.chosen_domain.append(chosen_domain)
 
-    if (character.c_class == 'inquisitor' or character.c_class_2 == 'inquisitor' and character.domain_chance > 90):
+    if has_inquisitor and not has_cleric and character.domain_chance > 90:
 
         deity_choice_list = list(character.deity_choice['Domains'])
         character.chosen_domain = random.sample(deity_choice_list,k=2)
@@ -23,17 +31,22 @@ def domain_chooser(character):
 
     if len(character.chosen_domain) <= 0:
         return
-    
-    # Grabbing full domain info from their respetive domain lists
-    if character.c_class == 'cleric':
+
+    # Grabbing full domain info from their respetive domain lists (a multiclass cleric/druid can
+    # have domains from both lists in chosen_domain, so only keep the hits from each lookup)
+    if has_cleric or has_inquisitor:
         for d in character.chosen_domain:
             domain_info = character.cleric_domains.get("domains", {}).get(d.title(), None)
-            chosen_dict[d.title()] = domain_info
+            if domain_info is not None:
+                chosen_dict[d.title()] = domain_info
+                record_bucket_owner(character, d.title(), 'cleric' if has_cleric else 'inquisitor')
 
-    if character.c_class == 'druid':
+    if has_druid:
         for d in character.chosen_domain:
             domain_info = character.druid_domains.get(d, None)
-            chosen_dict[d] = domain_info
+            if domain_info is not None:
+                chosen_dict[d] = domain_info
+                record_bucket_owner(character, d, 'druid')
 
     # Adding to the base class features
     if character.data_dict['class features'] == [] or character.data_dict['class features']== {}:

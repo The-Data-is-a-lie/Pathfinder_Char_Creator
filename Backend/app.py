@@ -143,6 +143,10 @@ def process_input_values(input_values, spheres_flag="N"):
             value = input_values[i]
             if value is not None and value != "":
                 input_values[i] = int(value)
+            elif i == -1:
+                # Blank gold stays non-int so assign_gold falls through to the
+                # Paizo wealth-by-level default instead of literal 0 gp.
+                input_values[i] = ""
             else:
                 input_values[i] = 0
 

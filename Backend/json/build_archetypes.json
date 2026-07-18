@@ -1,0 +1,851 @@
+{
+    "families": {
+        "Tank": "Frontline mitigation -- wants to be attacked; holds ground, soaks hits, and blocks or punishes anyone who tries to go around.",
+        "Bruiser": "High-HP melee attrition -- wades in and grinds targets down with raw hit points and weapon damage rather than tricks.",
+        "Striker": "Single-target elimination -- burst, precision, crit, or gish damage focused on removing one enemy fast.",
+        "Skirmisher": "Mobility- or range-based sustained damage -- avoids commitment, keeps distance or repositions constantly.",
+        "Blaster": "Direct magical or supernatural damage output -- spells, kinetic blasts, sphere blasts, or bombs as the primary weapon.",
+        "Controller": "Denies enemy actions and space -- combat maneuvers, conditions, curses, or terrain rather than raw damage.",
+        "Support": "Acts through allies -- buffs, heals, battlefield commands, or extra bodies instead of personal offense."
+    },
+    "tactical_patterns": {
+        "charge-alpha": "Closes fast and front-loads maximum damage into a charging opening attack, repeating whenever range resets.",
+        "full-attack-grind": "Plants in melee and repeats a full-attack routine every round it can.",
+        "hit-and-run": "Move in, strike, move out -- never stands still to trade full attacks.",
+        "ambush-strike": "Opens from stealth or surprise with one decisive blow, then re-hides or commits.",
+        "flank-precision": "Maneuvers for flanks and flat-footed windows to land many precision-damage hits per round.",
+        "zone-denial": "Makes an area costly to enter or cross -- reach, attacks of opportunity, or persistent hazards.",
+        "lockdown-maneuver": "Removes enemy turns with grapples, trips, disarms, and other combat maneuvers.",
+        "turtle-counter": "High defense, reactive play -- baits attacks and punishes them with counters and ripostes.",
+        "anchor-guard": "Holds a position, soaks hits, and physically shields the back line.",
+        "ranged-barrage": "Stays at range and pours out ranged attacks or at-will blasts every single round, kiting when approached.",
+        "aimed-shot": "One deliberate, high-payoff shot per round -- accuracy and burst over volume.",
+        "nova-burst": "Banks limited resources, then dumps them in a short, devastating spike window.",
+        "save-or-suck": "Wins on failed saving throws -- conditions, dazes, holds, curses, and battlefield-warping magic.",
+        "buff-and-sustain": "Spends actions on buffs, heals, and action grants (for self or allies) before and during the fight.",
+        "pet-action-economy": "Fights through extra bodies -- companions, eidolons, or streams of summons.",
+        "adaptive-generalist": "No committed pattern -- toggles between modes as the fight demands."
+    },
+    "archetypes": {
+        "Mounted Lancer": {
+            "family": "Striker",
+            "tactical_pattern": "charge-alpha",
+            "definition": "Cavalry striker whose multiplied lance charge is the hardest single opening hit in the game.",
+            "tactics": "Opens every engagement with a mounted charge, letting the mount's speed and the lance's damage multiplier front-load the fight. Circles away after each pass to reset charge lanes, and only dismounts when the terrain forces it.",
+            "signals": {
+                "mounted": 3.0,
+                "feat_melee_attack": 1.0,
+                "bab_high": 1.0,
+                "main_str": 1.0,
+                "companion": 1.0,
+                "wpn_reach": 0.5,
+                "armor_heavy": 0.5
+            },
+            "requires_any": [
+                {"signal": "mounted", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [
+                {"signal": "wpn_ranged", "min": 1}
+            ],
+            "tie_break_rank": 1
+        },
+        "Mounted Archer": {
+            "family": "Skirmisher",
+            "tactical_pattern": "ranged-barrage",
+            "definition": "Mounted ranged attacker who kites on horseback, firing full volleys while the mount does the moving.",
+            "tactics": "Lets the mount move each round so it can keep full-attacking with its bow at range the enemy cannot close. Circles the fight's edge, retreating at mount speed when threatened and never dismounting voluntarily.",
+            "signals": {
+                "mounted": 2.5,
+                "wpn_ranged": 2.5,
+                "feat_ranged_full": 1.5,
+                "main_dex": 1.0,
+                "companion": 0.5
+            },
+            "requires_any": [],
+            "requires_all": [
+                {"signal": "mounted", "min": 1},
+                {"signal": "wpn_ranged", "min": 1}
+            ],
+            "vetoes": [
+                {"signal": "caster_primary", "min": 1}
+            ],
+            "tie_break_rank": 2
+        },
+        "Zen Archer": {
+            "family": "Skirmisher",
+            "tactical_pattern": "ranged-barrage",
+            "definition": "Unarmored Wisdom-based monk who flurries with a bow instead of fists.",
+            "tactics": "Plants at mid range and pours flurried bow volleys into one target per round, trusting Wisdom-driven accuracy over cover. Uses monk mobility and defenses to reset distance whenever melee reaches it.",
+            "signals": {
+                "wpn_ranged": 2.5,
+                "armor_none": 2.5,
+                "main_wis": 2.0,
+                "feat_ranged_full": 1.0,
+                "mobile": 1.0,
+                "wpn_firearm": -1.0
+            },
+            "requires_any": [],
+            "requires_all": [
+                {"signal": "wpn_ranged", "min": 1},
+                {"signal": "armor_none", "min": 1},
+                {"signal": "main_wis", "min": 1}
+            ],
+            "vetoes": [
+                {"signal": "caster_primary", "min": 1}
+            ],
+            "tie_break_rank": 3
+        },
+        "Kinetic Blaster": {
+            "family": "Blaster",
+            "tactical_pattern": "ranged-barrage",
+            "definition": "Kineticist channeling at-will elemental blasts through its own body, paying in burn instead of spell slots.",
+            "tactics": "Fires a full-power elemental blast every single round -- there is no resource to run out of, only burn to budget. Shapes infusions to the fight: a line through ranks, a wall to split the field, single-target when it must focus.",
+            "signals": {
+                "kinetic_blast": 3.0,
+                "main_con": 2.0,
+                "con_focus": 1.5,
+                "feat_magic_blast": 0.5,
+                "armor_light": 0.5,
+                "mobile": 0.5
+            },
+            "requires_any": [
+                {"signal": "kinetic_blast", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [],
+            "tie_break_rank": 4
+        },
+        "Mad Bomber": {
+            "family": "Blaster",
+            "tactical_pattern": "ranged-barrage",
+            "definition": "Alchemist who fights by lobbing splash-damage bombs, softening clusters before they close.",
+            "tactics": "Opens on the tightest enemy cluster and keeps throwing -- every bomb splashes, so near-misses still burn. Backpedals while lobbing, drinking an extract or mutagen the moment a round would otherwise be wasted.",
+            "signals": {
+                "bomb_thrower": 3.0,
+                "main_int": 2.0,
+                "wpn_thrown": 1.0,
+                "feat_ranged_full": 0.5,
+                "caster_tier": 0.5,
+                "mobile": 0.5
+            },
+            "requires_any": [
+                {"signal": "bomb_thrower", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [],
+            "tie_break_rank": 5
+        },
+        "Eidolon Master": {
+            "family": "Support",
+            "tactical_pattern": "pet-action-economy",
+            "definition": "Summoner who fights through one powerful bonded eidolon while supporting it from range.",
+            "tactics": "Sends the eidolon into melee and treats its own turns as the eidolon's support crew -- buffs, repositioning, and emergency summons. Personal offense is a last resort; if the eidolon falls, it flees or floods the field with summoned cover.",
+            "signals": {
+                "summoner_pet": 3.0,
+                "spell_summon": 1.5,
+                "main_cha": 1.5,
+                "spell_buff": 1.0,
+                "bab_low": 0.5,
+                "caster_tier": 0.5
+            },
+            "requires_any": [
+                {"signal": "summoner_pet", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [],
+            "tie_break_rank": 6
+        },
+        "Shapeshifter": {
+            "family": "Bruiser",
+            "tactical_pattern": "full-attack-grind",
+            "definition": "Wildshaper or natural-weapon fighter who mauls with claw-and-bite full attacks instead of weapons.",
+            "tactics": "Assumes its combat form before or during round one, then grinds with multi-attack natural routines no weapon build can match. Falls back on casting only when a shape cannot solve the problem.",
+            "signals": {
+                "wpn_none": 2.5,
+                "caster_tier": 1.5,
+                "main_wis": 1.5,
+                "companion": 1.0,
+                "main_str": 1.0,
+                "spell_buff": 0.5,
+                "wpn_unarmed": 0.5,
+                "armor_none": 0.5,
+                "spell_heal": -1.5
+            },
+            "requires_any": [
+                {"signal": "wpn_none", "min": 1},
+                {"signal": "wpn_unarmed", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [
+                {"signal": "sphere_power", "min": 0.3},
+                {"signal": "sphere_might", "min": 0.3},
+                {"signal": "kinetic_blast", "min": 1},
+                {"signal": "armor_heavy", "min": 1}
+            ],
+            "tie_break_rank": 7
+        },
+        "Keep Away Fighter": {
+            "family": "Controller",
+            "tactical_pattern": "zone-denial",
+            "definition": "Reach martial who fences off a zone -- attacks of opportunity, trips, and braced polearms; nobody closes for free.",
+            "tactics": "Holds the edge of its threatened area and makes entering it cost an attack -- or a trip, with more attacks when the target stands. Generates most of its damage off-turn, converting enemy movement into free hits while allies shoot over its zone.",
+            "signals": {
+                "wpn_reach": 3.0,
+                "aoo_control": 2.5,
+                "feat_cmb": 1.5,
+                "bab_high": 1.0,
+                "feat_tank": 0.5,
+                "main_str": 0.5,
+                "disc_counter": 0.5
+            },
+            "requires_any": [],
+            "requires_all": [
+                {"signal": "wpn_reach", "min": 1},
+                {"signal": "aoo_control", "min": 0.5}
+            ],
+            "vetoes": [
+                {"signal": "caster_primary", "min": 1},
+                {"signal": "wpn_ranged", "min": 1}
+            ],
+            "tie_break_rank": 8
+        },
+        "Martial Battlefield Controller": {
+            "family": "Controller",
+            "tactical_pattern": "lockdown-maneuver",
+            "definition": "Maneuver martial -- grapples, trips, disarms, and control strikes that delete enemy turns instead of hit points.",
+            "tactics": "Picks the most dangerous enemy and takes its turns away -- grappled casters can't cast, tripped fighters spend rounds standing, disarmed duelists swing nothing. Wins fights that never show up on a damage ledger.",
+            "signals": {
+                "feat_cmb": 3.0,
+                "sph_grapple": 2.0,
+                "disc_control": 2.0,
+                "wpn_unarmed": 1.0,
+                "aoo_control": 1.0,
+                "main_str": 1.0,
+                "str_over_dex": 0.5,
+                "con_focus": 0.5,
+                "bab_high": 0.5,
+                "initiator": 0.5
+            },
+            "requires_any": [
+                {"signal": "feat_cmb", "min": 0.3},
+                {"signal": "sph_grapple", "min": 1},
+                {"signal": "disc_control", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [
+                {"signal": "wpn_ranged", "min": 1},
+                {"signal": "caster_primary", "min": 1}
+            ],
+            "tie_break_rank": 9
+        },
+        "Switch Hitter": {
+            "family": "Skirmisher",
+            "tactical_pattern": "adaptive-generalist",
+            "definition": "Combatant with full feat investment in both bow and blade, toggling on range to target.",
+            "tactics": "Opens with bow volleys while the enemy closes, then drops the bow and meets them with a real melee routine -- both modes are feat-backed, neither is a backup. Chooses each round's mode purely by positioning.",
+            "signals": {
+                "feat_ranged_full": 2.5,
+                "feat_melee_full": 2.5,
+                "bab_high": 1.5,
+                "wpn_ranged": 1.0,
+                "feat_melee_attack": 1.0,
+                "wpn_one_handed": 0.5,
+                "wpn_two_handed": 0.5
+            },
+            "requires_any": [
+                {"signal": "feat_melee_full", "min": 0.3},
+                {"signal": "feat_melee_attack", "min": 0.3}
+            ],
+            "requires_all": [
+                {"signal": "feat_ranged_full", "min": 0.3}
+            ],
+            "vetoes": [
+                {"signal": "caster_primary", "min": 1}
+            ],
+            "tie_break_rank": 10
+        },
+        "Spellblade": {
+            "family": "Striker",
+            "tactical_pattern": "nova-burst",
+            "definition": "Gish who channels spells through weapon strikes for combined spell-plus-steel damage.",
+            "tactics": "Loads a touch spell into its blade and delivers spell and sword damage in the same swing, spiking one target with everything at once. Banks spell slots between novas behind decent armor and self-buffs like shield or mirror image.",
+            "signals": {
+                "main_int": 2.0,
+                "bab_mid": 2.0,
+                "caster_tier": 1.5,
+                "wpn_one_handed": 1.5,
+                "spell_blast": 1.5,
+                "wpn_finesse": 0.5,
+                "armor_light": 0.5,
+                "bab_low": -2.0,
+                "spell_control": -1.0,
+                "performer": -1.0
+            },
+            "requires_any": [
+                {"signal": "caster_tier", "min": 0.15}
+            ],
+            "requires_all": [],
+            "vetoes": [
+                {"signal": "wpn_ranged", "min": 1}
+            ],
+            "tie_break_rank": 11
+        },
+        "Area Denier": {
+            "family": "Controller",
+            "tactical_pattern": "zone-denial",
+            "definition": "Caster who fences off ground both ways -- reach-weapon attacks of opportunity layered under control magic.",
+            "tactics": "Stacks a threatened reach zone on top of control spells so one stretch of ground punishes anyone who enters twice -- once from the glaive, once from the magic. Stands just behind the front line, buffed and armored enough to hold its corridor.",
+            "signals": {
+                "wpn_reach": 2.5,
+                "aoo_control": 2.5,
+                "caster_tier": 1.5,
+                "feat_cmb": 1.0,
+                "armor_heavy": 0.5,
+                "bab_mid": 0.5
+            },
+            "requires_any": [],
+            "requires_all": [
+                {"signal": "wpn_reach", "min": 1},
+                {"signal": "aoo_control", "min": 0.5},
+                {"signal": "caster_primary", "min": 1}
+            ],
+            "vetoes": [],
+            "tie_break_rank": 12
+        },
+        "Sharpshooter": {
+            "family": "Skirmisher",
+            "tactical_pattern": "aimed-shot",
+            "definition": "Firearm specialist landing high-accuracy touch-AC shots, round after round.",
+            "tactics": "Targets touch AC inside the first range increment, so nearly every deliberate shot lands -- armor means nothing to it. Manages reloads and grit between shots and keeps a fighting retreat ready if melee closes.",
+            "signals": {
+                "wpn_firearm": 3.0,
+                "feat_ranged_attack": 1.5,
+                "main_dex": 1.5,
+                "feat_ranged_full": 0.5,
+                "armor_light": 0.5,
+                "mobile": 0.5
+            },
+            "requires_any": [
+                {"signal": "wpn_firearm", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [
+                {"signal": "caster_primary", "min": 1}
+            ],
+            "tie_break_rank": 13
+        },
+        "Trickster": {
+            "family": "Striker",
+            "tactical_pattern": "ambush-strike",
+            "definition": "Stealth-and-precision killer, blade or bow -- sneak attacks, ambushes, and flat-footed windows.",
+            "tactics": "Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.",
+            "signals": {
+                "precision": 2.5,
+                "stealthy": 2.5,
+                "wpn_finesse": 1.0,
+                "wpn_light": 0.75,
+                "disc_stealth": 0.75,
+                "mobile": 0.5,
+                "dex_over_str": 0.5,
+                "armor_light": 0.5
+            },
+            "requires_any": [
+                {"signal": "precision", "min": 1},
+                {"signal": "stealthy", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [
+                {"signal": "caster_primary", "min": 1}
+            ],
+            "tie_break_rank": 14
+        },
+        "Dual Wielder": {
+            "family": "Striker",
+            "tactical_pattern": "full-attack-grind",
+            "definition": "Two-weapon fighter converting maximum attacks per round into steady attrition damage.",
+            "tactics": "Closes once and stays glued to its target, trading a little accuracy for nearly double the attacks every full-attack round. Hates moving -- every step costs half its offense -- so it picks its engagement and commits.",
+            "signals": {
+                "two_weapon": 3.0,
+                "wpn_light": 1.5,
+                "disc_dual": 1.0,
+                "feat_melee_full": 1.0,
+                "bab_high": 1.0,
+                "dex_over_str": 0.5,
+                "precision": -1.5,
+                "shield": -1.0
+            },
+            "requires_any": [
+                {"signal": "two_weapon", "min": 1},
+                {"signal": "disc_dual", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [
+                {"signal": "caster_primary", "min": 1}
+            ],
+            "tie_break_rank": 15
+        },
+        "Brawler": {
+            "family": "Striker",
+            "tactical_pattern": "full-attack-grind",
+            "definition": "Unarmed martial artist flurrying fists, elbows, and knees -- no weapon to sunder, disarm, or take away.",
+            "tactics": "Flurries unarmed strikes every round it can stand still, mixing in stunning or ki riders to stack conditions onto the damage. Uses superior speed to pick fights and unarmored defenses to survive them.",
+            "signals": {
+                "wpn_unarmed": 3.0,
+                "armor_none": 1.5,
+                "mobile": 1.0,
+                "main_wis": 0.75,
+                "main_str": 0.5,
+                "feat_melee_full": 0.5,
+                "disc_dual": 0.5,
+                "caster_tier": -1.0
+            },
+            "requires_any": [
+                {"signal": "wpn_unarmed", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [
+                {"signal": "caster_primary", "min": 1}
+            ],
+            "tie_break_rank": 16
+        },
+        "Charger": {
+            "family": "Bruiser",
+            "tactical_pattern": "charge-alpha",
+            "definition": "Fast, lightly armored two-hander who opens every fight at a dead run with an all-out assault.",
+            "tactics": "Covers the whole field in one round and front-loads a raging, Power-Attacking charge before the enemy sets its line. Keeps momentum after the alpha -- if the first target drops, the charge lane resets to the next one.",
+            "signals": {
+                "wpn_two_handed": 2.0,
+                "disc_rage": 1.5,
+                "mobile": 1.5,
+                "main_str": 1.5,
+                "sph_rage": 1.0,
+                "con_focus": 1.0,
+                "armor_light": 1.0,
+                "bab_high": 0.75,
+                "feat_melee_attack": 0.5
+            },
+            "requires_any": [
+                {"signal": "mobile", "min": 1},
+                {"signal": "disc_rage", "min": 1},
+                {"signal": "sph_rage", "min": 1},
+                {"signal": "con_focus", "min": 1}
+            ],
+            "requires_all": [
+                {"signal": "wpn_two_handed", "min": 1}
+            ],
+            "vetoes": [
+                {"signal": "caster_primary", "min": 1},
+                {"signal": "armor_heavy", "min": 1},
+                {"signal": "shield", "min": 1}
+            ],
+            "tie_break_rank": 17
+        },
+        "Harrier": {
+            "family": "Skirmisher",
+            "tactical_pattern": "hit-and-run",
+            "definition": "Dex-based mobile melee -- darts in, lands a finesse strike, and repositions before the answer comes.",
+            "tactics": "Never trades full attacks -- moves in, strikes once, and slides back out or along the flank, forcing slower enemies to chase. Wins by accumulating clean exchanges: it hits every round, they only hit when it errs.",
+            "signals": {
+                "wpn_finesse": 2.0,
+                "dex_over_str": 2.0,
+                "mobile": 2.0,
+                "sph_skirmish": 1.5,
+                "disc_mobile": 1.0,
+                "armor_light": 1.0,
+                "wpn_one_handed": 0.75,
+                "main_dex": 0.75,
+                "disc_counter": 0.5,
+                "precision": -1.0,
+                "two_weapon": -1.0,
+                "shield": -1.0,
+                "armor_heavy": -2.0
+            },
+            "requires_any": [
+                {"signal": "wpn_finesse", "min": 1},
+                {"signal": "mobile", "min": 1},
+                {"signal": "sph_skirmish", "min": 1},
+                {"signal": "disc_mobile", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [
+                {"signal": "caster_primary", "min": 1},
+                {"signal": "wpn_ranged", "min": 1}
+            ],
+            "tie_break_rank": 18
+        },
+        "Beastmaster": {
+            "family": "Support",
+            "tactical_pattern": "pet-action-economy",
+            "definition": "Handler who fights as a pair with a heavily invested animal companion.",
+            "tactics": "Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.",
+            "signals": {
+                "companion": 3.0,
+                "sph_beast": 1.0,
+                "main_wis": 1.0,
+                "caster_tier": 1.0,
+                "bab_mid": 1.0,
+                "wpn_one_handed": 0.5,
+                "mounted": -1.5,
+                "summoner_pet": -1.0
+            },
+            "requires_any": [
+                {"signal": "companion", "min": 1},
+                {"signal": "sph_beast", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [],
+            "tie_break_rank": 19
+        },
+        "Summoner": {
+            "family": "Support",
+            "tactical_pattern": "pet-action-economy",
+            "definition": "Caster who floods the field with summoned monsters, winning through sheer action economy.",
+            "tactics": "Spends its first rounds pulling monsters onto the field, then directs the swarm while staying out of reach itself. Every summon is a body the enemy must answer -- it trades spell slots for tempo until the enemy has no turns left to spend.",
+            "signals": {
+                "spell_summon": 3.0,
+                "sph_summon": 2.5,
+                "caster_tier": 1.5,
+                "caster_primary": 1.0,
+                "feat_magic_buff": 0.5,
+                "summoner_pet": -1.0
+            },
+            "requires_any": [
+                {"signal": "spell_summon", "min": 0.25},
+                {"signal": "sph_summon", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [],
+            "tie_break_rank": 20
+        },
+        "Healer": {
+            "family": "Support",
+            "tactical_pattern": "buff-and-sustain",
+            "definition": "Dedicated mender who keeps everyone standing -- cures, restorations, and condition removal under fire.",
+            "tactics": "Triages every round: top up the front line, strip the disabling condition, save the biggest heal for the moment someone actually drops. Positions to reach the most allies while staying out of the enemy's easy reach.",
+            "signals": {
+                "spell_heal": 3.0,
+                "sph_heal": 2.5,
+                "caster_tier": 1.5,
+                "caster_primary": 1.0,
+                "spell_buff": 1.0,
+                "main_wis": 0.5,
+                "main_cha": 0.5,
+                "armor_medium": 0.5
+            },
+            "requires_any": [
+                {"signal": "spell_heal", "min": 0.25},
+                {"signal": "sph_heal", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [],
+            "tie_break_rank": 21
+        },
+        "Self Buffer": {
+            "family": "Striker",
+            "tactical_pattern": "buff-and-sustain",
+            "definition": "Buffs itself, then wades in -- the war-priest pattern: divine favor, enlarge, transformation, then steel.",
+            "tactics": "Spends its opening round (or pre-fight minute) stacking personal buffs, then fights as a martial whose numbers are quietly better than its gear says. Rebuffs or heals itself only when a round would otherwise be wasted.",
+            "signals": {
+                "spell_buff": 2.5,
+                "caster_tier": 1.5,
+                "bab_mid": 1.0,
+                "bab_high": 1.0,
+                "armor_heavy": 1.0,
+                "armor_medium": 0.75,
+                "wpn_one_handed": 0.5,
+                "wpn_two_handed": 0.5,
+                "main_wis": 0.5,
+                "spell_heal": 0.5,
+                "bab_low": -2.0
+            },
+            "requires_any": [],
+            "requires_all": [
+                {"signal": "caster_tier", "min": 0.15},
+                {"signal": "spell_buff", "min": 0.2}
+            ],
+            "vetoes": [
+                {"signal": "wpn_ranged", "min": 1}
+            ],
+            "tie_break_rank": 22
+        },
+        "Team Buffer": {
+            "family": "Support",
+            "tactical_pattern": "buff-and-sustain",
+            "definition": "Action economy spent on allies -- haste, songs, commands, and inspiration over personal offense.",
+            "tactics": "Opens with its best party-wide amplifier -- haste or its song, nearly always -- then keeps layering and maintaining buffs while allies convert them into damage. Treats its own attacks as filler; the party's action economy is its weapon.",
+            "signals": {
+                "disc_support": 3.0,
+                "spell_buff": 2.0,
+                "performer": 2.0,
+                "sph_buff": 1.5,
+                "feat_magic_buff": 1.0,
+                "initiator": 1.5,
+                "caster_tier": 0.75,
+                "main_cha": 0.75
+            },
+            "requires_any": [
+                {"signal": "spell_buff", "min": 0.25},
+                {"signal": "performer", "min": 1},
+                {"signal": "disc_support", "min": 1},
+                {"signal": "sph_buff", "min": 1},
+                {"signal": "feat_magic_buff", "min": 0.3}
+            ],
+            "requires_all": [],
+            "vetoes": [],
+            "tie_break_rank": 23
+        },
+        "Magic Battlefield Controller": {
+            "family": "Controller",
+            "tactical_pattern": "zone-denial",
+            "definition": "Caster who redraws the map -- walls, pits, fogs, difficult ground, and locked doors of force.",
+            "tactics": "Never races the enemy's damage -- changes the terms instead: a wall splits their line, a pit deletes a flanker, fog blinds the archers. Each round it removes options until the survivors stand exactly where its party wants them.",
+            "signals": {
+                "spell_control": 3.0,
+                "caster_tier": 2.5,
+                "feat_magic_control": 1.5,
+                "spell_summon": 0.75,
+                "spell_blast": -0.75,
+                "bab_high": -1.0
+            },
+            "requires_any": [],
+            "requires_all": [
+                {"signal": "caster_primary", "min": 1},
+                {"signal": "caster_tier", "min": 0.44}
+            ],
+            "vetoes": [],
+            "tie_break_rank": 24
+        },
+        "Debuffer": {
+            "family": "Controller",
+            "tactical_pattern": "save-or-suck",
+            "definition": "Strips enemy saves, stats, and actions -- hexes, curses, and save-or-suck magic instead of damage.",
+            "tactics": "Targets the enemy's weakest save and stacks penalties until failure is arithmetic -- then the hold, hex, or curse ends that combatant without a damage roll. Spreads afflictions wide when no single target dominates the fight.",
+            "signals": {
+                "spell_control": 3.0,
+                "sph_control": 2.0,
+                "bab_low": 1.75,
+                "feat_magic_control": 1.0,
+                "main_int": 0.75,
+                "main_cha": 0.5,
+                "spell_blast": -1.5
+            },
+            "requires_any": [
+                {"signal": "spell_control", "min": 0.3},
+                {"signal": "sph_control", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [
+                {"signal": "caster_tier", "min": 0.8}
+            ],
+            "tie_break_rank": 25
+        },
+        "Blaster": {
+            "family": "Blaster",
+            "tactical_pattern": "ranged-barrage",
+            "definition": "Direct-damage caster -- the biggest blast available, every single round, from spells or sphere effects.",
+            "tactics": "Answers every tactical question with damage: fireball the cluster, ray the loner, repeat until nothing moves. Positions only to catch the most targets in each area and to stay out of charge range while doing it.",
+            "signals": {
+                "spell_blast": 3.0,
+                "feat_magic_blast": 2.0,
+                "sph_blast": 2.0,
+                "caster_tier": 1.0,
+                "caster_primary": 0.75,
+                "sphere_invest": 0.75,
+                "sphere_power": 0.5,
+                "main_cha": 0.5,
+                "main_int": 0.5,
+                "spell_control": -0.75,
+                "spell_heal": -0.75
+            },
+            "requires_any": [
+                {"signal": "spell_blast", "min": 0.25},
+                {"signal": "sph_blast", "min": 1},
+                {"signal": "feat_magic_blast", "min": 0.3}
+            ],
+            "requires_all": [],
+            "vetoes": [],
+            "tie_break_rank": 26
+        },
+        "Archer": {
+            "family": "Skirmisher",
+            "tactical_pattern": "ranged-barrage",
+            "definition": "Dedicated ranged combatant -- bow, crossbow, or thrown steel -- firing full volleys from safety.",
+            "tactics": "Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.",
+            "signals": {
+                "wpn_ranged": 3.0,
+                "feat_ranged_full": 2.0,
+                "main_dex": 1.0,
+                "bab_high": 1.0,
+                "dex_over_str": 1.0,
+                "disc_ranged": 0.75,
+                "wpn_thrown": 0.5,
+                "armor_light": 0.5,
+                "feat_melee_full": -1.0,
+                "wpn_firearm": -1.5
+            },
+            "requires_any": [
+                {"signal": "wpn_ranged", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [
+                {"signal": "caster_primary", "min": 1}
+            ],
+            "tie_break_rank": 27
+        },
+        "AC Tank": {
+            "family": "Tank",
+            "tactical_pattern": "anchor-guard",
+            "definition": "Armor-and-shield wall the enemy cannot reliably hit -- trades offense for a line that holds.",
+            "tactics": "Plants itself between the enemy and everyone squishier and simply does not move. Its damage is modest; its job is that every swing aimed at it misses and every path around it costs an attack of opportunity.",
+            "signals": {
+                "shield": 3.0,
+                "feat_tank": 2.0,
+                "armor_heavy": 1.5,
+                "disc_tank": 1.5,
+                "sph_tank": 1.5,
+                "armor_medium": 0.75,
+                "wpn_one_handed": 0.75,
+                "bab_high": 0.75,
+                "con_focus": 0.5,
+                "disc_counter": 0.5,
+                "wpn_two_handed": -1.5
+            },
+            "requires_any": [
+                {"signal": "shield", "min": 1},
+                {"signal": "disc_tank", "min": 1},
+                {"signal": "sph_tank", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [
+                {"signal": "caster_primary", "min": 1}
+            ],
+            "tie_break_rank": 28
+        },
+        "HP Tank": {
+            "family": "Tank",
+            "tactical_pattern": "anchor-guard",
+            "definition": "High-Constitution soak -- wins by having more hit points than the enemy has rounds.",
+            "tactics": "Wades in and lets the enemy hit it -- rage, damage reduction, and a deep hit-point pool mean the math favors it in any war of attrition. Holds attention by being impossible to ignore and too tough to finish.",
+            "signals": {
+                "con_focus": 3.0,
+                "feat_tank": 1.5,
+                "main_con": 1.0,
+                "armor_heavy": 1.0,
+                "armor_medium": 0.75,
+                "bab_high": 0.75,
+                "shield": 0.5,
+                "mobile": -1.0
+            },
+            "requires_any": [
+                {"signal": "con_focus", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [
+                {"signal": "caster_primary", "min": 1}
+            ],
+            "tie_break_rank": 29
+        },
+        "Bruiser": {
+            "family": "Bruiser",
+            "tactical_pattern": "full-attack-grind",
+            "definition": "Two-handed Power Attacker maximizing per-hit damage through repeated stationary full attacks.",
+            "tactics": "Closes once, plants, and full-attacks with a two-hander every round until something dies -- usually whatever it swung at. Eats hits rather than reposition; moving costs damage and damage is the whole plan.",
+            "signals": {
+                "wpn_two_handed": 3.0,
+                "feat_melee_full": 2.5,
+                "main_str": 2.0,
+                "bab_high": 1.5,
+                "str_over_dex": 1.0,
+                "con_focus": 0.5,
+                "crit_fisher": 0.25,
+                "precision": -1.0,
+                "shield": -2.0,
+                "mobile": -1.0
+            },
+            "requires_any": [
+                {"signal": "wpn_two_handed", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [
+                {"signal": "caster_primary", "min": 1}
+            ],
+            "tie_break_rank": 30
+        },
+        "Man-at-Arms": {
+            "family": "Bruiser",
+            "tactical_pattern": "full-attack-grind",
+            "definition": "Plain armored soldier -- the guard, mercenary, or town watchman line-fighter with no specialist build identity.",
+            "tactics": "Fights the way it drilled: hold the line, strike the enemy in front of you, keep your shield up and your footing. No tricks, no gimmick -- just a professional doing soldier's work.",
+            "signals": {
+                "bab_high": 2.0,
+                "main_str": 1.5,
+                "wpn_one_handed": 0.75,
+                "wpn_two_handed": 0.75,
+                "armor_medium": 0.75,
+                "armor_light": 0.5,
+                "str_over_dex": 0.5,
+                "shield": 0.25,
+                "feat_melee_full": -1.5,
+                "feat_melee_attack": -1.0,
+                "caster_tier": -2.0
+            },
+            "requires_any": [
+                {"signal": "bab_high", "min": 1}
+            ],
+            "requires_all": [],
+            "vetoes": [
+                {"signal": "caster_primary", "min": 1},
+                {"signal": "wpn_ranged", "min": 1},
+                {"signal": "initiator", "min": 0.5},
+                {"signal": "sphere_power", "min": 0.5},
+                {"signal": "sphere_might", "min": 0.5}
+            ],
+            "tie_break_rank": 31
+        },
+        "Hedge Mage": {
+            "family": "Controller",
+            "tactical_pattern": "adaptive-generalist",
+            "definition": "Minor caster with a grab-bag spell list -- the village adept who plinks, hinders, and mends as needed.",
+            "tactics": "Works down a short list of humble spells -- a sleep here, a cure there, a burning hands when cornered -- and knows when to simply run. Dangerous only in numbers or ambush, and aware of it.",
+            "signals": {
+                "caster_tier": 1.5,
+                "caster_primary": 1.0,
+                "spell_heal": 0.5,
+                "spell_blast": 0.5,
+                "spell_control": 0.5,
+                "bab_low": 0.5
+            },
+            "requires_any": [
+                {"signal": "caster_tier", "min": 0.1}
+            ],
+            "requires_all": [],
+            "vetoes": [
+                {"signal": "caster_tier", "min": 0.4},
+                {"signal": "bab_mid", "min": 1}
+            ],
+            "tie_break_rank": 32
+        },
+        "Generalist": {
+            "family": "Striker",
+            "tactical_pattern": "adaptive-generalist",
+            "definition": "Broadly competent combatant with no dominant specialization -- fills whatever gap the fight presents.",
+            "tactics": "Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.",
+            "signals": {
+                "bab_high": 0.5,
+                "bab_mid": 0.5,
+                "bab_low": 0.5,
+                "multiclass": 0.5,
+                "class_split": 0.5,
+                "wpn_one_handed": 0.25,
+                "wpn_two_handed": 0.25,
+                "armor_medium": 0.25,
+                "armor_light": 0.25
+            },
+            "requires_any": [],
+            "requires_all": [],
+            "vetoes": [],
+            "tie_break_rank": 33
+        }
+    }
+}

@@ -10,27 +10,32 @@ def enhancement_calculator(character, gold_divisor):
     return enhancement_bonus
 
 def enhancement_chooser(character, data, enhancement_bonus, weapon_type, shield_type = True):
+    """Returns (chosen quality names, flat +N enhancement bonus).
+
+    enhancement_bonus is the total effective bonus budget (PF pricing, up to +10); qualities
+    spend from it until at most 5 remains, and that leftover is the item's flat +N (1..5).
+    """
     if weapon_type == 'Shield' and shield_type != True:
-        return []
+        return [], 0
     else:
         total_bonus = 0
         enhancement_list = list(data.get(weapon_type).keys())
         chosen_enhancement_list = []
-        while (enhancement_bonus - total_bonus) > 5: 
+        while (enhancement_bonus - total_bonus) > 5:
             chosen_enhancement = random.choice(enhancement_list)
             item_list = get_enhancement_info(character, weapon_type)
             enhancement_limits(character, item_list, weapon_type, chosen_enhancement)
             chosen_enhancement_bonus = data[weapon_type].get(chosen_enhancement,0).get('enhancement', 0)
-            total_bonus += int(chosen_enhancement_bonus)
+            total_bonus += int(chosen_enhancement_bonus or 0)
 
             try:
                 enhancement_list.remove(chosen_enhancement)
                 chosen_enhancement_list.append(chosen_enhancement)
             except:
                 pass
-            
-        
-        return chosen_enhancement_list
+
+        flat_bonus = max(1, min(5, enhancement_bonus - total_bonus)) if enhancement_bonus >= 1 else 0
+        return chosen_enhancement_list, flat_bonus
     
 def get_enhancement_info(character, weapon_type):
     if weapon_type in ('Melee', 'Ranged'):

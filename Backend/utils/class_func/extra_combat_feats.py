@@ -1,69 +1,12 @@
 from math import floor
 def extra_combat_feats(character):
-    # cavalier_feats = [6,12,18,24,30,36,42]
-    monk_feats = [1,2,6,10,14,18,22,26,30,34,38,42]
-    brawler_feats = [2,5,8,11,14,17,20,23,26,29,32,35,38,41] 
-    warlord_feats = [1,6,10,14,18,22,26,30,34,38,42]     
-    magus_feats = [5,11,17,23,29,35,41]
-    #setting up extra feats + extra feats_2 as 0 so we don't get errors
-    extra_feats = 0
-    character.combat_feats_list=0
-    i = 0
-    #fighter section
-    if character.c_class == 'fighter':
-        extra_feats +=  1 + floor((character.c_class_level)/2)
-
-    #warpriest section
-    if character.c_class == 'warpriest':
-        extra_feats += floor((character.c_class_level)/3)        
-    #gunslinger/swashbuckler section
-    if character.c_class in ['gunslinger', 'swashbuckler']:
-        extra_feats += floor((character.c_class_level)/4)    
-    #cavalier/samurai section
-    if character.c_class in ['cavalier', 'samurai']:
-        extra_feats += floor((character.c_class_level)/6)
-    #monk section
-    # Monk bonus feats are granted by monk_feats_chooser (the real monk bonus-feat list), and any
-    # slots it can't fill are reallocated to normal feats in main_test. They must NOT also be
-    # counted here, which previously double-granted monks their bonus-feat allotment.
-    #magus section
-    if character.c_class == 'magus':
-        while i < len(magus_feats) and magus_feats[i] <= character.c_class_level:
-            i += 1
-        extra_feats += i
-    # brawler section
-    if character.c_class == 'brawler':
-        while i < len(brawler_feats) and brawler_feats[i] <= character.c_class_level:
-            i += 1
-        extra_feats += i
-    # wizard section
-    if character.c_class == 'wizard':
-        i = floor(character.c_class_level / 5)
-        extra_feats += i
-
-
-    # path of war section
-    #Warder section -- bonus combat/teamwork feat at 3rd and every 5 levels after. Must fall
-    # through to the class_feats_amount assignment below (the old early returns skipped it,
-    # leaving warder/mystic class feats silently at 0 while their label schedules existed).
-    if character.c_class == 'warder':
-        if character.c_class_level >= 3:
-            extra_feats = floor((character.c_class_level - 3) / 5) + 1
-    #mystic section -- bonus combat/item-creation feat at 2nd and every 5 levels after
-    if character.c_class == 'mystic':
-        if character.c_class_level >= 2:
-            extra_feats = floor((character.c_class_level - 2) / 5) + 1
-    #warlord section
-    if character.c_class == 'warlord':
-        while i < len(warlord_feats) and warlord_feats[i] <= character.c_class_level:
-            i += 1
-        extra_feats += i
-
-
-    #currently we're just adding combat feats to total feats, 
+    #currently we're just adding combat feats to total feats,
     # but we may want to have them be their own separate entity
-    character.class_feats_amount = extra_feats 
-    return character.class_feats_amount   
+    character.combat_feats_list=0
+    # Count = one slot per (class, granting level) across every rolled class, so the count and
+    # the "(Class level)" labels can never drift apart (they share class_bonus_feat_slots).
+    character.class_feats_amount = len(class_bonus_feat_slots(character))
+    return character.class_feats_amount
 
 
 def class_bonus_feat_levels(c_class, level):
@@ -96,6 +39,23 @@ def class_bonus_feat_levels(c_class, level):
     return []
 
 
+def class_bonus_feat_slots(character):
+    """Ordered (display, granting level) pair per class bonus feat, across EVERY rolled class in
+    character.classes order — the single source for both the class-feat count
+    (extra_combat_feats) and the "(Fighter 1)" / "(Gunslinger 4)" labels, so a multiclass roll
+    labels each slot with the class that actually grants it. Monk is skipped: monk bonus feats
+    are granted by monk_feats_chooser (unfilled slots reallocate to normal feats in main_test),
+    so they never occupy a class-feat slot."""
+    slots = []
+    for entry in getattr(character, 'classes', []):
+        name = entry['name'].replace(' (unchained)', '')
+        if name == 'monk':
+            continue
+        for lvl in class_bonus_feat_levels(name, entry['level']):
+            slots.append((entry['display'], lvl))
+    return slots
+
+
 def teamwork_feat_levels(c_class, level):
     """Ordered list of class levels at which a class grants a teamwork feat
     (mirrors extra_teamwork_feats()); used to label teamwork feats."""
@@ -104,6 +64,18 @@ def teamwork_feat_levels(c_class, level):
     if c_class in ('cavalier', 'samurai'):
         return [1]
     return []
+
+
+def teamwork_feat_slots(character):
+    """Ordered (display, granting level) pair per teamwork feat across EVERY rolled class —
+    single source for both the count (extra_teamwork_feats) and the "(Inquisitor 3)" labels,
+    same pattern as class_bonus_feat_slots."""
+    slots = []
+    for entry in getattr(character, 'classes', []):
+        name = entry['name'].replace(' (unchained)', '')
+        for lvl in teamwork_feat_levels(name, entry['level']):
+            slots.append((entry['display'], lvl))
+    return slots
 
 
 def bloodline_bonus_feat_levels(c_class, level):
@@ -118,12 +90,8 @@ def bloodline_bonus_feat_levels(c_class, level):
 
 
 def extra_teamwork_feats(character):
-    character.teamwork_feats = 0
-    if character.c_class in ['hunter', 'inquisitor']:
-        character.teamwork_feats = floor(character.c_class_level / 3)
-    
-    if character.c_class in ['cavalier', 'samurai']:
-        character.teamwork_feats = 1
+    # Count = one slot per (class, granting level), shared with the labels (teamwork_feat_slots).
+    character.teamwork_feats = len(teamwork_feat_slots(character))
 
 # Just have wizards get extra feats -> gives them metamagic
 # def extra_spell_feats(character):

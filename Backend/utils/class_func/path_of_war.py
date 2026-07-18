@@ -48,12 +48,21 @@ _PREREQ_NUM_RE = re.compile(r'\b(one|two|three|thee|four|five|\d+)\b', re.IGNORE
 _WORD_NUMS = {'one': 1, 'two': 2, 'three': 3, 'thee': 3, 'four': 4, 'five': 5}
 
 
+def initiator_entry(character):
+    '''The character's (at most one — selection enforces it) Path of War initiator class entry,
+    or None. Its OWN class level is the initiator level.'''
+    for entry in getattr(character, 'classes', []):
+        if entry['name'] in data.path_of_war_class:
+            return entry
+    return None
+
+
 def randomize_path_of_war_num(character):
     '''How many martial disciplines ("paths") a NON-initiator character picks up. Initiator
     classes return 0 (their disciplines come from the class). House rule: BAB L -> 0-1,
     M/H -> 0-2; at level 20+ both bounds gain +1. A character whose bab_total can't reach
     Martial Training I (BAB +3) has no way into the system -> forced 0.'''
-    if character.c_class in data.path_of_war_class:
+    if initiator_entry(character) is not None:
         character.path_of_war_paths = 0
         return 0
     low, high = (0, 1) if character.bab == 'L' else (0, 2)
@@ -109,8 +118,9 @@ def choose_path_of_war_attr(character, max_chains=None):
     # gives the counts). Non-initiators: ONE Martial Training chain PER rolled discipline, each
     # drawing only from its own discipline (built by _build_martial_training, which returns the
     # already-aggregated maneuver/stance/readied lists + the discipline-labeled feats).
-    if character.c_class in data.path_of_war_class:
-        counts = _initiator_counts(character)
+    _init_entry = initiator_entry(character)
+    if _init_entry is not None:
+        counts = _initiator_counts(character, _init_entry)
         if counts is None:
             return bundle
         known_n, readied_n, stances_n, max_lvl, disciplines, _unused_mt, il = counts
@@ -143,7 +153,7 @@ def choose_path_of_war_attr(character, max_chains=None):
     # Initiators always pick up 1..len(specialized) discipline style chains (base paid like a
     # Martial Training pick, followers always free). MT users already have their labeled feat
     # descriptions merged above; initiators get the style-chain descriptions instead.
-    if character.c_class in data.path_of_war_class:
+    if _init_entry is not None:
         style_feats, style_tax, style_descs = _choose_style_chains(character, disciplines)
         bundle['style_feats'] = style_feats
         bundle['style_feat_tax'] = style_tax
@@ -155,20 +165,22 @@ def choose_path_of_war_attr(character, max_chains=None):
 # Counts per branch
 # --------------------------------------------------------------------------- #
 
-def _initiator_counts(character):
-    '''Counts from the class's own table (path_of_war_maneuvers_known.json, scraped from the
-    Library of Metzofitz -- treated as authoritative). Arrays are 20 long; epic levels read
-    the level-20 row via capped_level_1.'''
+def _initiator_counts(character, init_entry):
+    '''Counts from the initiator class's own table (path_of_war_maneuvers_known.json, scraped
+    from the Library of Metzofitz -- treated as authoritative). Arrays are 20 long; epic levels
+    read the level-20 row via the entry's capped level. The initiator level is the initiator
+    CLASS's own level, not the character's total level (PF1 multiclass).'''
     known = character.path_of_war_maneuvers_known
+    init_name = init_entry['name']
     # base PoW classes live under 'base'; Metzofitz homebrew initiators (e.g. Medic) under 'metzofitz'.
-    table = known.get('base', {}).get(character.c_class) or known.get('metzofitz', {}).get(character.c_class)
+    table = known.get('base', {}).get(init_name) or known.get('metzofitz', {}).get(init_name)
     if not table:
-        print(f"path of war: no maneuvers-known table for {character.c_class}")
+        print(f"path of war: no maneuvers-known table for {init_name}")
         return None
-    idx = max(0, min(getattr(character, 'capped_level_1', character.c_class_level), 20) - 1)
-    il = character.c_class_level
+    idx = max(0, min(init_entry['capped_level'], 20) - 1)
+    il = init_entry['level']
     max_lvl = min(max(ceil(il / 2), 1), 9)
-    disciplines = _specialize_disciplines(character, select_disciplines(character) or [])
+    disciplines = _specialize_disciplines(character, select_disciplines(character, init_name) or [])
     return (table['known'][idx], table['readied'][idx], table['stances'][idx],
             max_lvl, disciplines, [], il)
 
