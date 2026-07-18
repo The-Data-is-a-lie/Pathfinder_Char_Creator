@@ -1,5 +1,8 @@
 import random
 
+from utils.class_func.generic_func import class_entry_for
+
+
 def grand_discovery_chooser(character):
     """
     At level 20 Alchemists get a grand discovery + 2 extra basic discoveries
@@ -8,7 +11,8 @@ def grand_discovery_chooser(character):
 
     outputs: chosen discovery list (appends to it)
     """
-    if character.c_class == 'alchemist' and character.c_class_level >= 20:   
+    alchemist_entry = class_entry_for(character, 'alchemist')
+    if alchemist_entry is not None and alchemist_entry['level'] >= 20:
         discovery_list_chosen  = set()
         grand = character.alchemist['grand']
         grand_discoveries = list(grand.keys())  

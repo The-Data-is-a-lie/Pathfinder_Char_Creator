@@ -97,9 +97,13 @@ An inactive `buff` item, identical to the stance/aura buffs the palette already 
   (`stance_auras.json`, `_aura_marker_html`); they should also carry the `(TAG)` suffix under this
   convention.
 - **Buff spells** are also generated this way: `Backend/scripts/build_spell_buffs.py` parses
-  `every_spell.json` → `spell_buffs.json` ({Spell: {changes, aura_range, only_others, description}});
-  the palette emits every one as `<Spell> (UNAMED)`, and `addSpellBuffs()` (module) emits `<Spell>
-  (TAG)` for each spell the NPC knows. Personal/Self spells are included (hand-distributed).
+  `every_spell.json` → `spell_buffs.json`, bucketing each spell item-style
+  ({Spell: {changes, contextNotes: [{text,target}], unplaced?, aura_range, only_others, description}}
+  — same sentence classifier as `build_item_changes.py`, curated `spell_changes.json` layered on
+  top, curated wins per target); the palette emits them as `<Spell> (UNAMED)`, and `addSpellBuffs()`
+  (module) emits `<Spell> (TAG)` for each spell the NPC knows — but **only** spells with changes or
+  contextNotes; unplaced-only entries stay data-only (no Buffs-tab buff). Personal/Self spells are
+  included (hand-distributed).
 
 ## Gotchas
 

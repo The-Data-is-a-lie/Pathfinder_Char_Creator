@@ -201,6 +201,7 @@
     "benefit": "a rogue with this talent can, as an immediate action, attempt an escape artist check in place of a reflex saving throw against any effect that would impose the entangled condition on her. additionally, once per day when she is the target of a grapple combat maneuver, a rogue with this talent can attempt an escape artist check as an immediate action, using the result of the skill check in place of her cmd against that combat maneuver attempt. a rogue can use this second ability one additional time per day for every 5 rogue levels she possesses."
     },
   "esoteric scholar": {
+    "benefit": "once per day, the slayer can attempt a knowledge skill check even when untrained."
   },
   "expert leaper": {
     "benefit": "when making jump checks, the rogue is always considered to have a running start. also, when the rogue deliberately falls, a dc 15 acrobatics check allows her to ignore the first 20 feet fallen, instead of the first 10 feet."

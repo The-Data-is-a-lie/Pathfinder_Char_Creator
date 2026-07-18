@@ -1,32 +1,26 @@
 import random
 def randomize_parents(character):
-    random_num = random.randint(1, 60)
-    if random_num <= 5:
-        parents = "loving and kind, raised by both parents"
-    elif random_num <= 10:
-        parents = "absent father, loving mother"
-    elif random_num <= 15:
-        parents = "dead father, loving mother"
-    elif random_num <= 20:
-        parents = "absent mother, loving father"
-    elif random_num <= 25:
-        parents = "dead mother, loving father"
-    elif random_num <= 30:
-        parents = "absent parents"
-    elif random_num <= 35:
-        parents = "dead parents"        
-    elif random_num <= 40:
-        parents = "adopted into a wealthy family"
-    elif random_num <= 45:
-        parents = "adopted into a poor family" 
-    elif random_num <= 50:
-        parents = "adopted into a middle income family"                
-    elif random_num <= 55:
-        parents = "raised in an orphange"     
+    """Roll the family independently: a status for EACH parent plus the household the character
+    was raised in, so every NPC has mother + father + financial situation (the old single-phrase
+    roll produced EITHER parents OR a situation, leaving the sheet's Family section with only one).
+    Returns one comma-joined phrase ("<status> mother, <status> father, raised in ...") -- the
+    structured bio splits it on commas into bullets; prose/legacy consumers use it verbatim."""
+    statuses = ["loving", "absent", "dead"]
+    mother = random.choices(statuses, weights=[60, 20, 20])[0]
+    father = random.choices(statuses, weights=[60, 20, 20])[0]
+    parts = [f"{mother} mother", f"{father} father"]
+    if mother != "loving" and father != "loving":
+        # No present, caring parent -> raised elsewhere (matches the old adopted/orphanage rolls).
+        parts.append(random.choice([
+            "raised in an orphanage",
+            "adopted into a wealthy family",
+            "adopted into a poor family",
+            "adopted into a middle income family",
+        ]))
     else:
-        parents = "loving and kind, raised by both parents"
-
-    return parents
+        wealth = random.choice(["wealthy", "middle income", "poor"])
+        parts.append(f"raised in a {wealth} household")
+    return ", ".join(parts)
 
 def randomize_siblings(character):
     # Define probabilities for each category of siblings

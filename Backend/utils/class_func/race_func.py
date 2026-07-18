@@ -1,4 +1,51 @@
+import json
+import os
 import random
+
+STAT_KEYS = ('str', 'dex', 'con', 'int', 'wis', 'cha')
+
+# Curated race -> ability-modifier side-map (same convention as feat_changes.json).
+# "any" marks the floating "+2 to One Ability Score" races (Human, Half-Elf, Half-Orc),
+# resolved onto the class main stat at generation time.
+_RACIAL_STATS_PATH = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), '..', '..', 'json', 'racial_stat_changes.json')
+_racial_stat_changes = None
+
+def load_racial_stat_changes():
+    global _racial_stat_changes
+    if _racial_stat_changes is None:
+        try:
+            with open(_RACIAL_STATS_PATH, encoding='utf-8') as f:
+                _racial_stat_changes = {str(k).lower(): v for k, v in json.load(f).items()}
+        except (OSError, ValueError):
+            # Fail open: no file -> no racial mods, generation still works.
+            print("WARNING: racial_stat_changes.json missing or invalid; racial stats skipped")
+            _racial_stat_changes = {}
+    return _racial_stat_changes
+
+def racial_stat_mods(character):
+    """Six-key {str/dex/con/int/wis/cha: int} dict for character.chosen_race."""
+    mods = {stat: 0 for stat in STAT_KEYS}
+    entry = load_racial_stat_changes().get(str(character.chosen_race).lower())
+    if entry is None:
+        print(f"WARNING: no racial stat entry for race '{character.chosen_race}'")
+        return mods
+    for stat, val in entry.items():
+        if stat == 'any':
+            mods[character.main_stat] += val
+        elif stat in mods:
+            mods[stat] += val
+    return mods
+
+def apply_racial_stats(character, stats):
+    """Add racial modifiers into the rolled stats dict; remember the split for export."""
+    mods = racial_stat_mods(character)
+    for stat, val in mods.items():
+        if stat in stats:
+            stats[stat] += val
+    character.racial_stats = mods
+    return stats
+
 # Race_data section
 def full_race_data(character):
     # if we want races to work, we need them in data.py/playableraces.json/races.json

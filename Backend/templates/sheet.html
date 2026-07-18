@@ -48,7 +48,7 @@
                 </select>
             </label>
             <label>Multiclass
-                <select name="multiclass">
+                <select name="multiclass" title="Yes rolls 2-4 classes (50%/35%/15%, capped by level) and splits the levels randomly">
                     <option value="n">No</option>
                     <option value="y">Yes</option>
                 </select>
@@ -116,17 +116,17 @@
             <label>Backstory Focus
                 <input type="text" name="backstory_focus" placeholder="e.g. combat, faith (optional)">
             </label>
-            <label>Number of Dice
+            <label>Number of Dice for Stat Rolls
                 <input type="number" name="diceRolls" min="1" value="4">
             </label>
-            <label>Sides per Die
+            <label>Dice Size for Stat Rolls (d6)
                 <input type="number" name="diceSides" min="1" value="6">
             </label>
             <label>Highest Level
-                <input type="number" name="highestLevel" min="1" max="20" value="7">
+                <input type="number" name="highestLevel" min="1" max="40" value="7">
             </label>
             <label>Lowest Level
-                <input type="number" name="lowestLevel" min="1" max="20" value="7">
+                <input type="number" name="lowestLevel" min="1" max="40" value="7">
             </label>
             <label>Gold (blank = Paizo default)
                 <input type="number" name="goldAmount" min="0" placeholder="Optional">

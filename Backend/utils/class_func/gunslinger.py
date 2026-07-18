@@ -1,12 +1,14 @@
 from math import floor, ceil
 import random
 from utils import data
+from utils.class_func.generic_func import class_entry_for
 
 def choose_gun_func(character, c_class):
-    if c_class.lower() != 'gunslinger':
+    gunslinger_entry = class_entry_for(character, 'gunslinger')
+    if gunslinger_entry is None:
         return []
 
-    x = floor((character.c_class_level - 1) / 4)
+    x = floor((gunslinger_entry['level'] - 1) / 4)
     firearms = {**character.firearms.get('Siege', {}), **character.firearms.get('Firearm', {}) }
     sections = list(firearms.keys())
     chosen_weapons = set()

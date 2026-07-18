@@ -1,5 +1,8 @@
 import random
 
+from utils.class_func.generic_func import class_entry_for
+
+
 def versatile_perfomance(character):
 
     choose_list = [2,6,10,14,18,22,26,30,34,38,42,46,50,54]
@@ -19,7 +22,9 @@ def versatile_perfomance(character):
     i=0
 
 
-    if character.c_class == 'bard':
+    bard_entry = class_entry_for(character, 'bard')
+    bard_level = bard_entry['level'] if bard_entry is not None else 0
+    if bard_entry is not None:
         performance_chosen=random.choice(performance_list)
         performance_chosen_description=versatile_data[performance_chosen]
         character.performance_chosen_description_list.append(performance_chosen_description)
@@ -27,7 +32,7 @@ def versatile_perfomance(character):
         i=len(character.performance_chosen_list) 
 
         #sometimes a bard will just choose all instruments
-        while choose_list[i] <= character.c_class_level and random_chance<=50:
+        while choose_list[i] <= bard_level and random_chance<=50:
 
             if len(martial_set)>=8:
                 break
@@ -66,7 +71,7 @@ def versatile_perfomance(character):
 
 
     #sometimes a bard will focus on one performance
-        while choose_list[i] <= character.c_class_level and random_chance > 50:
+        while choose_list[i] <= bard_level and random_chance > 50:
             expanded_choice = random.choice(expanded_data)
             expanded_choice_check.add(expanded_choice)
             character.performance_chosen_description_list.append(expanded_choice)

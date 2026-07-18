@@ -19,9 +19,9 @@ Design (locked with the user):
     post-condition drop. The pf1 prereq engine alone is NOT trusted here: ``no_prereq_prep``'s
     ``filter_pattern`` matches the substring "cast", so a magic talent's "caster level Nth" gate is
     auto-satisfied and would leak advanced talents -- ``type`` is the authoritative guard.
-  * **Casting tradition (Spheres of Power).** Taking any magic sphere picks a CAM (highest mental
-    stat), rolls general drawbacks (HR3: no cap), converts 2 drawbacks -> 1 boon, and routes leftover
-    drawbacks to bonus spell points on the triangular chart (1->1, 2->3, 3->6, 4->10, 5->15, 6->21...).
+  * **Casting tradition (Spheres of Power).** EVERY character rolls one (latent flavor for
+    non-casters): a CAM (highest mental stat), general drawbacks (HR3: no cap), 2 drawbacks -> 1 boon,
+    and leftover drawbacks -> bonus spell points on the triangular chart (1->1, 2->3, 3->6, 4->10...).
   * **HR4 mana pool.** Any magic content -> pool = highest mental mod (min 1) + tradition bonus SP.
 
 Data (built by ``Backend/scripts/extract_spheres_talents.py`` from the pf1spheres compendium):
@@ -526,6 +526,19 @@ def choose_spheres_attr(character, max_feats=None, trainer_backed=False, mentor_
     generator reserves the realized feats with priority.
     """
     bundle = _empty_bundle()
+    # HR: EVERY character carries a casting tradition (drawbacks/boons + casting ability) -- for
+    # non-casters it is latent flavor describing how their magic would work if they ever picked any
+    # up. Rolled before the early returns below so pure martials get one too; the mana pool and the
+    # talent/feat machinery stay gated on actually taking sphere content.
+    tradition = _choose_casting_tradition(character)
+    bundle.update({
+        "casting_tradition": tradition,
+        # Flat name-only mirrors (back-compat surface). casting_tradition.drawbacks/boons are already
+        # name strings; the rich text lives in casting_tradition.drawbacks_detail/boons_detail.
+        "sphere_drawbacks": tradition.get("drawbacks", []),
+        "sphere_boons": tradition.get("boons", []),
+        "sphere_traits": tradition.get("drawbacks", []) + tradition.get("boons", []),
+    })
     n = int(getattr(character, "sphere_count", 0) or 0)
     if n <= 0:
         return bundle
@@ -617,8 +630,7 @@ def choose_spheres_attr(character, max_feats=None, trainer_backed=False, mentor_
         sphere_feats.extend(_mf_names)
         desc.update(_mf_descs)
 
-    # ---- tradition + mana pool (magic only) ----------------------------- #
-    tradition = _choose_casting_tradition(character) if took_magic else {}
+    # ---- mana pool (magic only; the tradition itself was rolled up front for every NPC) ---- #
     bundle.update({
         "magic_talent_items": magic_items,
         "combat_talent_items": combat_items,
@@ -627,12 +639,6 @@ def choose_spheres_attr(character, max_feats=None, trainer_backed=False, mentor_
         "sphere_mana_pool": _mana_pool(character, tradition) if took_magic else 0,
         "spheres_chosen": [{"sphere": s.title(), "system": "power" if sy == "power" else "might"} for s, sy in chosen],
         "sphere_counts": {s.title(): counts[s] for s, _sy in chosen},
-        "casting_tradition": tradition,
-        # Flat name-only mirrors (back-compat surface). casting_tradition.drawbacks/boons are already
-        # name strings; the rich text lives in casting_tradition.drawbacks_detail/boons_detail.
-        "sphere_drawbacks": tradition.get("drawbacks", []),
-        "sphere_boons": tradition.get("boons", []),
-        "sphere_traits": tradition.get("drawbacks", []) + tradition.get("boons", []),
         "homebrew_feat_desc_dict": desc,
         # Budget-paid sphere feats (incl. the magic-side bonus feats) -> the generator reserves this many
         # feat slots. Working state for the overflow step (_chosen/_counts). Not exported to the sheet.

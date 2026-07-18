@@ -224,10 +224,11 @@ region_deity_affinity = {
 
 #types of casters
 caster_mod = {
-        "int_casters": ['alchemist', 'arcanist', 'investigator', 'magus',  'witch', 'wizard',],
-        "wis_casters": ['cleric','druid', 'hunter', 'inquisitor','ranger', 'shaman', 'warpriest'],
-        "cha_casters": ['bloodrager', 'bard','oracle','paladin','shaman','skald','sorcerer','summoner', 'summoner (unchained)']
-
+        "int_casters": ['alchemist', 'arcanist', 'investigator', 'magus',  'witch', 'wizard', 'occultist', 'psychic',],
+        "wis_casters": ['cleric','druid', 'hunter', 'inquisitor','ranger', 'shaman', 'warpriest', 'spiritualist'],
+        "cha_casters": ['antipaladin', 'bloodrager', 'bard','medium','mesmerist','oracle','paladin','shaman','skald','sorcerer','summoner', 'summoner (unchained)']
+        # kineticist is deliberately unmapped: burn is Constitution-based, which this
+        # int/wis/cha bonus-spell table doesn't model (occult classes are pool-excluded anyway)
 }
 
 #all_deities = ['Abadar', 'Achaekek', 'Alseta', 'Ameiko Kaijitsu', 'Apsu', 'Aroden', 'Asmodeus', 'Black Butterfly, The', 'Brigh', 'Calistria', 'Cayden Cailean', 'Chaldira Zuzaristan', 'Chamidu', 'Daikitsu', 'Dahak', 'Desna', 'Elion', 'Erastil', 'Ghlaunder', 'Gorum', 'Gozreh', 'Groetus', 'Gruhastha, The', 'Hanspur', 'Hei Feng', 'Iomedae', 'Irori', 'Jaidi', 'Jingxi', 'Kabriri', 'Kazutal', 'Kelizandri', 'Ketephys', 'Kofusachi', 'Lama, The', 'Lamashtu', 'Magrim', 'Milani', 'Minderhal', 'Naderi', 'Nalinivati', 'Nethys', 'Nivi Rhombodazzle', 'Norgorber', 'Old-Mage Jatembe', 'Oras', 'Orcus', 'Pharasma', 'Qi Zhong', 'Ragathiel', 'Razmir', 'Rovagug', 'Sarenrae', 'Sivanah', 'Sivanah, The', 'Skrymir', 'Sokhna', 'Sun Wukong', 'Thamir Gixx', 'Thremyr', 'Torag', 'Urgathoa', 'Uskyeria', 'Wadjet', 'Weydan', 'Ydersius', 'Yuelral', 'Zagnexapan', 'Zargos', 'Zon-Kuthon' ]
@@ -2252,9 +2253,38 @@ path_of_war_class = ["warder", "harbinger", "mystic", 'warlord', "zealot", "stal
 # module ships them, and uncomment the matching dropdown entries in the FoundryVTT module's
 # button.js / html_dialog.js. (Stalker & Zealot missing as of 2026-06.)
 pow_classes_pending_foundry = ["stalker", "zealot"]
+# Spheres (of Power/Might) base classes. Empty today -- Spheres is a global flag layered onto any
+# class, not a selectable class -- but multiclass selection enforces "max 1 class per group" over
+# this list and path_of_war_class uniformly, so it activates when sphere classes land in
+# class_data.json.
+spheres_classes = []
 # NOTE: no "mystic" here -- the Path of War mystic is a generatable class; listing it would
 # silently re-filter it out of the random class pool (chooseClass excludes occult_classes).
 occult_classes = ["occultist", "kineticist", "medium", "mesmerist", "psychic", "spiritualist", ]
+
+# Good-save progressions per class (a class adds 2 + level//2 to a listed save, level//3
+# otherwise). Must stay in sync with GOOD_SAVES in Backend/static/scripts/sheet.js, which keeps a
+# copy only as a fallback for cached payloads that predate the exported save_bases.
+good_saves = {
+    'alchemist': ['fort', 'ref'], 'antipaladin': ['fort', 'will'], 'arcanist': ['will'],
+    'barbarian': ['fort'], 'barbarian (unchained)': ['fort'], 'bard': ['ref', 'will'],
+    'bloodrager': ['fort'], 'brawler': ['fort', 'ref'], 'cavalier': ['fort'],
+    'cleric': ['fort', 'will'], 'druid': ['fort', 'will'], 'fighter': ['fort'],
+    'gunslinger': ['fort', 'ref'], 'harbinger': ['fort', 'will'], 'hunter': ['fort', 'ref'],
+    'inquisitor': ['fort', 'will'], 'investigator': ['ref', 'will'],
+    'kineticist': ['fort', 'ref'], 'magus': ['fort', 'will'], 'medic': ['fort', 'will'],
+    'medium': ['will'], 'mesmerist': ['ref', 'will'], 'monk': ['fort', 'ref', 'will'],
+    'monk (unchained)': ['fort', 'ref'], 'mystic': ['will'], 'ninja': ['ref'],
+    'occultist': ['fort', 'will'], 'oracle': ['will'], 'paladin': ['fort', 'will'],
+    'psychic': ['will'], 'ranger': ['fort', 'ref'], 'rogue': ['ref'],
+    'rogue (unchained)': ['ref'], 'samurai': ['fort'], 'shaman': ['will'],
+    'shifter': ['fort', 'ref'], 'skald': ['fort', 'will'], 'slayer': ['fort', 'ref'],
+    'sorcerer': ['will'], 'spiritualist': ['fort', 'will'], 'stalker': ['will'],
+    'summoner': ['will'], 'summoner (unchained)': ['will'], 'swashbuckler': ['ref'],
+    'vigilante': ['ref', 'will'], 'warder': ['fort', 'will'], 'warlord': ['fort'],
+    'warpriest': ['fort', 'will'], 'witch': ['will'], 'wizard': ['will'],
+    'zealot': ['fort', 'will'],
+}
 disciplines = ["Black Seraph", "Broken Blade", "Brutal Crocodile", "Cursed Razor", "Elemental Flux", "Eternal Guardian", "Fools Errand", "Golden Lion", "Iron Tortoise", "Leaden Hyena", "Mangled Gear", "Mithral Current", "Piercing Thunder", "Primal Fury", "Radiant Dawn", "Riven Hourglass", "Roaring Mouse", "Sagitta Stellaris", "Scarlet Throne", "Shattered Mirror", "Silver Crane", "Sleeping Goddess", "Solar Wind", "Spark of Battle", "Steel Serpent", "Surging Shark", "Tempest Gale", "Thrashing Dragon", "Unquiet Grave", "Veiled Moon"]
 
 # Craft specializations (the "<type>" in "Craft: <type>"). One is rolled per character.

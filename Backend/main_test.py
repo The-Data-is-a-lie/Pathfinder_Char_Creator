@@ -18,8 +18,8 @@ except Exception:
 from utils.createACharacter 						import CreateNewCharacter, Load_when_needed
 from utils 											import data
 from utils.data 									import version
-from utils.util 									import  (chooseClass, region_chooser, race_chooser,  name_chooser, 
-										  					dip_function, gender_chooser) 
+from utils.util 									import  (select_classes, region_chooser, race_chooser,  name_chooser,
+										  					gender_chooser)
 import random
 import json
 
@@ -27,7 +27,7 @@ import json
 # stamped onto each result (data_dict['generator_version']) so a running backend's freshness is verifiable
 # at a glance: a restart shows the new version, and any exported actor reveals which build produced it
 # (the recurring "I restarted but it's still wrong" was a stale backend serving old code).
-GENERATOR_VERSION = "2026-06-18 feat-count-guarantee"
+GENERATOR_VERSION = "2026-07-15 racial-stats"
 
 
 # Importing custom functions
@@ -42,7 +42,7 @@ from utils.class_func.chooseable 					import chooseable_list, chooseable_list_ra
 from utils.class_func.class_abilities 				import get_class_abilities, get_class_abilties_desc  
 from utils.class_func.class_specific_feats 			import class_specific_feats_chooser, monk_feats_chooser, ranger_feats_chooser
 from utils.class_func.domain_inquisition 			import domain_chance, domain_chooser#, inquisition_chooser
-from utils.class_func.extra_combat_feats 			import extra_combat_feats, extra_teamwork_feats, class_bonus_feat_levels, teamwork_feat_levels, bloodline_bonus_feat_levels
+from utils.class_func.extra_combat_feats 			import extra_combat_feats, extra_teamwork_feats, class_bonus_feat_slots, teamwork_feat_slots, bloodline_bonus_feat_levels
 from utils.class_func.favored_class 				import favored_class_calculator, favored_class_option, favored_class_option_chooser
 from utils.class_func.family_func 					import randomize_siblings, randomize_parents
 from utils.class_func.feats 						import (build_selector, chooseable_list, chooseable_list_stats,
@@ -55,6 +55,7 @@ from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feat
 from utils.class_func.weapon_focus_buffs import weapon_focus_changes
 from utils.class_func.spheres 						import randomize_spheres_num, choose_spheres_attr, add_overflow_talents, MAX_EXTRA_TALENT_FEATS, mentor_sphere_summary
 from utils.class_func.flag_assign 					import human_flag_assigner, druidic_flag_assigner
+from utils.class_func.flaws 						import flaw_chooser
 from utils.class_func.generic_func 					import generic_class_option_chooser, get_data_without_prerequisites, no_prereq_prep#, no_prereq_loop, chosen_set_append
 from utils.class_func.grand_discovery 				import grand_discovery_chooser
 from utils.class_func.gunslinger 					import choose_gun_func
@@ -65,7 +66,8 @@ from utils.class_func.language 						import language_chooser
 from utils.class_func.level_and_bab 				import randomize_level
 # from utils.class_func.luck_and_mythic 				import randomize_luck, randomize_mythic
 from utils.class_func.path_of_war 					import randomize_path_of_war_num, choose_path_of_war_attr, martial_training_depth
-from utils.class_func.backstory 					import generate_backstory
+from utils.class_func.backstory 					import generate_backstory, structured_bio
+from utils.class_func.build_archetype 				import choose_build_archetype
 
 from utils.class_func.modded_char_sheet 			import modded_char_sheet_func
 # from utils.class_func.path_of_war_funcs				import select_disciplines
@@ -75,7 +77,8 @@ from utils.class_func.profession_chooser 			import profession_chooser
 from utils.class_func.profession_abilities 			import build_profession_ability_items
 from utils.class_func.trainers 						import select_trainer_feats, CALIBER_NAMES, roll_caliber
 from utils.class_func.skill_unlocks 				import choose_skill_unlock
-# from utils.class_func.race_func 					import (race_ability_score_changes, race_ability_split, 
+from utils.class_func.race_func 					import apply_racial_stats
+# from utils.class_func.race_func 					import (race_ability_score_changes, race_ability_split,
 #                                                      		race_traits_chooser, subrace_chooser)#, full_race_data
 from utils.class_func.randomize_flaw 				import randomize_flaw_amount
 from utils.class_func.skill_ranks 					import skills_selector
@@ -83,6 +86,8 @@ from utils.class_func.spells 						import (extra_spells_divine, spells_known_att
 										   					spells_known_extra_roll, spells_known_selection,
                                                    	        spells_per_day_attr, spells_per_day_from_ability_mod,
                                                             class_for_spells_attr, caster_formula,
+                                                            casting_stat_for,
+                                                            spell_themes, sync_legacy_spell_fields,
                                                             spell_conditionals_selection)#, alignment_spell_limits
 from utils.class_func.spell_alphabetize_and_dedupe 	import spell_alphabetize_and_dedupe_func
 from utils.class_func.stats 						import roll_stats, assign_stats, calc_ability_mod 
@@ -220,6 +225,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			character_json_config)
 		character.instantiate_full_data_dict()
 		character.data_dict['class features'] = {}
+		character.data_dict['class feature levels'] = {}
 
 		# Flag that allows for homebrew feats to be added
 		character.homebrew_feat_amount = homebrew_feat_amount
@@ -242,8 +248,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		region_chooser(character,userInput_region)
 		race_chooser(character,userInput_race)
 		f_name, l_name =name_chooser(character)
-		chooseClass(character,class_choice, chosen_BAB ,chosen_caster_level)
-		dip_function(character,'base_classes', multi_class)
+		select_classes(character, class_choice, chosen_BAB, chosen_caster_level, multi_class)
 
 		#add an optional flaws rule function	
 		alignment, mini_alignment = choose_alignment(character, 'alignments', alignment_input)
@@ -265,7 +270,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# split_race_traits_list = race_ability_split(character, race_traits_list)
 
 		flaw_amount = randomize_flaw_amount()
-		flaw = randomize_personality_attr(character, "flaws", flaw_amount,flaw_amount)
+		# Mechanical flaws replace the old personality-flaw strings: same 0-4 roll, but the
+		# flaws now come from json/flaws/flaw_effects.json with pf1 changes/contextNotes
+		# (1st flaw minor, 2nd major, extras 80% minor / 20% major).
+		flaw, flaw_effects_dict = flaw_chooser(character, flaw_amount)
 		background_traits = randomize_personality_attr(character, "background_traits",1,4)
 		professions = randomize_personality_attr(character, "professions",1, 3)
 		mannerisms = randomize_personality_attr(character, "mannerisms",2,4)
@@ -274,14 +282,18 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 
 		# I don't know why, but these keep breaking the game (if low enough level and stats)
-		if character.c_class in ('rogue (unchained)', 'vigilante') and low_level <= 1:
-			low_level = 2
-		if character.c_class == ('rogue (unchained)', 'vigilante') and high_level <= 1:
-			high_level = 2
+		if any(pick in ('rogue (unchained)', 'vigilante') for pick in character._class_picks):
+			if low_level <= 1:
+				low_level = 2
+			if high_level <= 1:
+				high_level = 2
 		randomize_level(character, low_level, high_level, flaw_amount)
 
 		#stats after level (because we roll inherents which depend on level)
 		stats = roll_stats(character, num_dice, num_sides, inherents)
+		# Racial modifiers go into the base scores here (before assign/mod/HP/spell
+		# calcs) so they propagate everywhere; the split is exported as racial_stats.
+		apply_racial_stats(character, stats)
 		assign_stats(character, stats)
 		calc_ability_mod(character)
 
@@ -291,27 +303,36 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		total_rolled_hp = roll_hp(character)
 		character.Total_HP = total_hp_calc(character)
 
-		# Choosing character class for spells
+		# Choosing character class for spells (per class entry) + character-wide spell themes
 		class_for_spells_attr(character)
+		spell_themes(character)
 
 		# Some spellcasters get 0th level spells (all high + most mid)
-		# Also 0th spells = infinite casting 
+		# Also 0th spells = infinite casting
 		# Wizards + Clerics know all 0th level spells (wizards know all except opposing school)
-		# as long as spells known list has a '0th' spell column (even if it isn't 0) 
+		# as long as spells known list has a '0th' spell column (even if it isn't 0)
 		# it won't pull any 0th spells for casters with orisons/cantrips
-		character.highest_spell_known_1 = caster_formula(character, character.c_class_level)
-		character.highest_spell_known_2 = caster_formula(character, character.c_class_2_level, character.c_class_2)
 
 		#Divine Casters have all spells known (don't make this function for them)
 
-		
-		spells_known_attr(character, "base_classes", "divine_casters")
-		day_list = spells_per_day_attr(character, "base_classes")
-		spells_per_day_from_ability_mod(character, "caster_mod")
-		spells_known_extra_roll(character)
-		extra_spells_divine(character)
+		# Each class builds its own spellbook — a multiclass cleric/wizard gets two independent
+		# spell lists, each at its own class's caster level.
+		character.spellbooks = []
+		for class_entry in character.classes:
+			caster_formula(character, class_entry['level'], class_entry)
+			spells_known_attr(character, "base_classes", "divine_casters", class_entry)
+			spells_per_day_attr(character, "base_classes", class_entry)
+			spells_per_day_from_ability_mod(character, "caster_mod", class_entry)
+			spells_known_extra_roll(character, class_entry)
+			extra_spells_divine(character, class_entry)
+			spells_known_selection(character, class_entry)
+			if class_entry['casting_level_string'] in ('low', 'mid', 'high'):
+				character.spellbooks.append(class_entry)
 
-		character.spell_list_choose_from, day_list, known_list = spells_known_selection(character)
+		# legacy scalar fields = the primary spellbook (primary class if it casts, else first caster)
+		sync_legacy_spell_fields(character)
+		day_list = character.spells_per_day_list
+		known_list = character.spells_known_list
 
 
 		#this is to allow for talent choice stat pre-reqs (self.chooseable)
@@ -344,22 +365,22 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 
 		full_school = None
-		if character.c_class.lower() == 'wizard':
+		if any(c['name'] == 'wizard' for c in character.classes):
 			full_school = wizard_school_chooser(character)
-			full_opposing_school = wizard_opposing_school(character, full_school)	
+			full_opposing_school = wizard_opposing_school(character, full_school)
 
 		archetype_info = character.archetype_data()
-		character.archetype_data()
+		# One archetype per rolled class for the Foundry module. The primary reuses the legacy pick
+		# above (which also strips " (unchained)" off c_class for later data lookups), so
+		# archetype_info and its class entry always agree; {} for classes with no archetypes.
+		archetypes_per_class = [
+			archetype_info if i == character.primary_class_index
+			else character.archetype_data(entry['name'])
+			for i, entry in enumerate(character.classes)]
 
-		# generic single choices
-		if character.c_class == 'sorcerer':
-			bloodline_sorc = generic_class_option_chooser(character, "sorcerer", "bloodline")
-		else:
-			bloodline_sorc = None
-		if character.c_class == 'bloodrager':
-			bloodline_rager = generic_class_option_chooser(character, "bloodrager", "bloodline")
-		else:
-			bloodline_rager = None
+		# generic single choices (the choosers gate themselves on any matching class entry)
+		bloodline_sorc = generic_class_option_chooser(character, "sorcerer", "bloodline")
+		bloodline_rager = generic_class_option_chooser(character, "bloodrager", "bloodline")
 
 		generic_class_option_chooser(character,"cavalier", "orders")
 		generic_class_option_chooser(character,"samurai", "orders")
@@ -370,7 +391,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# Make this populate like how you want it to *********
 		
 		# Choose Oracle mystery
-		if character.c_class.lower() == 'oracle':
+		if any(c['name'] == 'oracle' for c in character.classes):
 			pre_oracle_mystery = generic_class_option_chooser(character, "oracle", "mysteries", dict_name = 'mysteries')
 			oracle_mystery = list(pre_oracle_mystery.keys())[0]
 			generic_class_option_chooser(character,"oracle", dataset_name="mysteries", dataset_name_2=oracle_mystery, dataset_name_3="revelations", multiple='yes', alternate_dataset = True, level = 99, level_2 = 99, dict_name = 'mysteries')
@@ -483,9 +504,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 		weapon_type_flag = weapon_type_flag_func(character, character.weapon_dict)
 
-		weapon_enhancement_chosen_list = enhancement_chooser(character, character.weapon_qualities,weapon_enhancement, weapon_type_flag)
-		armor_enhancement_chosen_list = enhancement_chooser(character, character.armor_qualities,armor_enhancement, 'Armor')
-		shield_enhancement_chosen_list = enhancement_chooser(character, character.armor_qualities,shield_enhancement, 'Shield', character.shield_flag)
+		weapon_enhancement_chosen_list, weapon_enhancement_bonus = enhancement_chooser(character, character.weapon_qualities,weapon_enhancement, weapon_type_flag)
+		armor_enhancement_chosen_list, armor_enhancement_bonus = enhancement_chooser(character, character.armor_qualities,armor_enhancement, 'Armor')
+		shield_enhancement_chosen_list, shield_enhancement_bonus = enhancement_chooser(character, character.armor_qualities,shield_enhancement, 'Shield', character.shield_flag)
 
 
 		selected_traits = trait_selector(character, 8)
@@ -497,10 +518,14 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		hair_type = randomize_apperance_attr(character, "hair_types")
 		eye_color = randomize_apperance_attr(character, "eye_colors")
 		appearance = randomize_apperance_attr(character, "appearance")
-		language_text = language_chooser(character)
-		language_chooser(character)
+		language_text = language_chooser(character, skill_ranks)
 		character_full_name = f_name + ' ' + l_name
-		deity_name = deity["Name"]
+		# deity.json "Name" is a LIST of aliases since the homebrew-deities rework (091da54) -- export
+		# one string: pf1's details.deity is a StringField, and an array crashes the actor's data
+		# preparation on import (sheet dies reading the underived encumbrance).
+		deity_name = deity.get("Name", "") if isinstance(deity, dict) else deity
+		if isinstance(deity_name, list):
+			deity_name = deity_name[0] if deity_name else ""
 		print("deity_name", deity_name)
 		print("deity", deity)
 		# skill_ranks = json.dumps(skill_ranks)  # disabled: ship the dict so Flask serializes it as a JSON object and the Foundry module parses it		
@@ -624,7 +649,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		randomize_path_of_war_num(character)
 		character.spheres_flag = spheres_flag
 		randomize_spheres_num(character)
-		_is_initiator = character.c_class in data.path_of_war_class
+		_is_initiator = any(c['name'] in data.path_of_war_class for c in character.classes)
 		_sc = int(getattr(character, 'sphere_count', 0) or 0)
 		desired_sphere = (_sc + random.randint(0, MAX_EXTRA_TALENT_FEATS)) if _sc > 0 else 0
 		_mt_depth = martial_training_depth(character)
@@ -826,12 +851,11 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		if character.teamwork_feats > 0:
 			teamwork_feats = generic_feat_chooser(character, character.c_class, casting_level_str, 'Null', info_column = 'description', override=True, special_type="teamwork", feat_amount = character.teamwork_feats)
 
-		# Label teamwork feats with their granting class + level (e.g. "Inquisitor 3"), parallel to teamwork_feats
+		# Label teamwork feats with their granting class + level (e.g. "Inquisitor 3"), parallel to
+		# teamwork_feats. Slots span every rolled class, same source as the count.
 		teamwork_feat_labels = []
 		if isinstance(teamwork_feats, list):
-			_tw_levels = teamwork_feat_levels(character.c_class, character.c_class_level)
-			_tw_display = character.c_class.replace('_', ' ').title()
-			teamwork_feat_labels = [f"{_tw_display} {lvl}" for lvl in _tw_levels][:len(teamwork_feats)]
+			teamwork_feat_labels = [f"{d} {lvl}" for d, lvl in teamwork_feat_slots(character)][:len(teamwork_feats)]
 
 		# Add later -> to allow for specialized class feats
 		# if character.class_feats_amount > 0:
@@ -849,6 +873,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 		# For some reason class_features is being created as a dict inside a list, rather than a dict
 		class_features = character.data_dict['class features']
+		# Level at which each class choice was picked (bucket -> choice -> level), for the sheet.
+		class_feature_levels = character.data_dict.get('class feature levels', {})
+		# Which class granted each bucket (bucket -> class name), for per-class feature dividers.
+		class_feature_owners = character.data_dict.get('class feature owners', {})
 
 		# Prep casting level string for foundry:
 		if casting_level_str.lower() in ("low", "high"):
@@ -878,28 +906,37 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 
 	#--------------- Spell addition options ---------------#
+		# each addition targets the granting CLASS's own spellbook (multiclass-aware); for a
+		# single-class character that book is the legacy scalar's object, so behavior is unchanged
+		def _book_for(*names):
+			return next((c for c in character.classes
+						 if c['name'] in names and c.get('spell_list_choose_from')), None)
 	# Bloodlines
-		if character.c_class.lower() in ('sorcerer', 'bloodrager'):
-			bonus_spells = character.data_dict['class features'].get("Talents").get(bloodline).get("bonus spells", [])
-			add_bonus_spells(character, bonus_spells)
+		_bloodline_book = _book_for('sorcerer', 'bloodrager')
+		if _bloodline_book is not None and bloodline != "N/A":
+			bonus_spells = character.data_dict['class features'].get("Talents", {}).get(bloodline, {}).get("bonus spells", [])
+			add_bonus_spells(character, bonus_spells, _bloodline_book['spell_list_choose_from'])
 	# Domains
-		if full_domain not in ([], None) and character.c_class.lower() in ("cleric"):
+		_cleric_book = _book_for('cleric')
+		if full_domain not in ([], None) and _cleric_book is not None:
 			for i, domain in enumerate(full_domain):
 				bonus_spells = character.data_dict.get('class features', {}).get(domain.title(), {}).get("bonus spells", {})
-				add_bonus_spells(character, bonus_spells)
+				add_bonus_spells(character, bonus_spells, _cleric_book['spell_list_choose_from'])
 
-		if full_domain not in ([], None) and character.c_class.lower() in ("druid"):
+		_druid_book = _book_for('druid')
+		if full_domain not in ([], None) and _druid_book is not None:
 			for i, domain in enumerate(full_domain):
-				bonus_spells = character.data_dict['class features'].get(domain).get("bonus spells", [])
-				add_bonus_spells(character, bonus_spells)
+				bonus_spells = character.data_dict['class features'].get(domain, {}).get("bonus spells", [])
+				add_bonus_spells(character, bonus_spells, _druid_book['spell_list_choose_from'])
 	# Inquisitions
 		# Don't get bonus spells
 	# Schools
 		# Schools spells are just recommended spells (not bonus spells), but we'll mnake sure wizards take them
-		if full_school not in ([], None) and character.c_class.lower() in ("wizard"):
+		_wizard_book = _book_for('wizard')
+		if full_school not in ([], None) and _wizard_book is not None:
 			try:
 				bonus_spells_dict = character.data_dict['class features'].get(full_school).get("spells", [])
-				add_bonus_spells_from_dict(character, bonus_spells_dict)
+				add_bonus_spells_from_dict(character, bonus_spells_dict, _wizard_book['spell_list_choose_from'])
 				# print("bonus_spells_dict", bonus_spells_dict)
 				# print("character.spell_list_choose_from", character.spell_list_choose_from)
 			except:
@@ -932,10 +969,12 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		profession_pool = getattr(character, 'profession_pool', 0)
 		add_feats_to_chooseable(character, profession_feats)
 
-		# Label each class bonus feat with its granting class + level (e.g. "Fighter 1"), parallel to class_feats
-		_class_feat_levels = class_bonus_feat_levels(character.c_class, character.c_class_level)
-		_class_display = character.c_class.replace('_', ' ').title()
-		class_feat_labels = [f"{_class_display} {lvl}" for lvl in _class_feat_levels][:len(class_feats)]
+		# Label each class bonus feat with its granting class + level (e.g. "Fighter 1"), parallel to
+		# class_feats. Slots span EVERY rolled class (same source as the class_feats count), so a
+		# multiclass gunslinger dip labels as "(Gunslinger 4)" instead of the sheet's default counter.
+		_class_feat_slots = class_bonus_feat_slots(character)
+		_class_feat_levels = [lvl for _, lvl in _class_feat_slots]
+		class_feat_labels = [f"{d} {lvl}" for d, lvl in _class_feat_slots][:len(class_feats)]
 		# Per-bucket feat-row budget: what the sheet SHOULD show. Captured pre-tax-strip; normal
 		# absorbs the human bonus, reallocated surpluses, and the ranger/monk merges.
 		feat_budget = {
@@ -1046,7 +1085,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			class_repl, normal_repl = replacements[:need_class], replacements[need_class:]
 			class_feats.extend(class_repl)
 			feats.extend(normal_repl)
-			class_feat_labels = [f"{_class_display} {lvl}" for lvl in _class_feat_levels][:len(class_feats)]
+			class_feat_labels = [f"{d} {lvl}" for d, lvl in _class_feat_slots][:len(class_feats)]
 			# One feat-tax pass over the replacements only (same shared granted-set, so overlapping
 			# chains still bundle a child exactly once); positional levels match the convention above.
 			_repl_class_levels = [_class_feat_levels[i] if i < len(_class_feat_levels) else character.c_class_level
@@ -1077,7 +1116,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 					add_feats_to_chooseable(character, final_repl)
 					class_feats.extend(final_repl[:need2_class])
 					feats.extend(final_repl[need2_class:])
-					class_feat_labels = [f"{_class_display} {lvl}" for lvl in _class_feat_levels][:len(class_feats)]
+					class_feat_labels = [f"{d} {lvl}" for d, lvl in _class_feat_slots][:len(class_feats)]
 
 		# Reorder the surviving normal + class-bonus feats (one combined pool) onto their level slots so
 		# each lands at a level whose prerequisites are actually met: prereq feats placed at earlier (lower)
@@ -1086,12 +1125,14 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# positional normal-feat levels. class_feat_labels are rebuilt in lockstep. Falls back (except) to
 		# the post-strip positional order if anything goes wrong, so a generation never crashes here.
 		try:
-			_post_class_levels = class_bonus_feat_levels(character.c_class, character.c_class_level)[:len(class_feats)]
+			_post_class_slots = _class_feat_slots[:len(class_feats)]
 			feats, class_feats, _normal_levels, _post_class_levels = assign_feats_to_levels(
 				character, feats, class_feats,
-				[2 * i + 1 for i in range(len(feats))], _post_class_levels)
-			_class_display = character.c_class.replace('_', ' ').title()
-			class_feat_labels = [f"{_class_display} {lvl}" for lvl in _post_class_levels][:len(class_feats)]
+				[2 * i + 1 for i in range(len(feats))], [lvl for _, lvl in _post_class_slots])
+			# the returned class levels are the input multiset re-sorted ascending, so a stable
+			# sort of the slot pairs by level re-pairs each level with its granting class
+			_post_class_slots = sorted(_post_class_slots, key=lambda s: s[1])
+			class_feat_labels = [f"{d} {lvl}" for d, lvl in _post_class_slots][:len(class_feats)]
 		except Exception:
 			pass
 
@@ -1128,12 +1169,14 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# positional normal-feat levels. class_feat_labels are rebuilt in lockstep. Falls back (except) to
 		# the post-strip positional order if anything goes wrong, so a generation never crashes here.
 		try:
-			_post_class_levels = class_bonus_feat_levels(character.c_class, character.c_class_level)[:len(class_feats)]
+			_post_class_slots = _class_feat_slots[:len(class_feats)]
 			feats, class_feats, _normal_levels, _post_class_levels = assign_feats_to_levels(
 				character, feats, class_feats,
-				[2 * i + 1 for i in range(len(feats))], _post_class_levels)
-			_class_display = character.c_class.replace('_', ' ').title()
-			class_feat_labels = [f"{_class_display} {lvl}" for lvl in _post_class_levels][:len(class_feats)]
+				[2 * i + 1 for i in range(len(feats))], [lvl for _, lvl in _post_class_slots])
+			# the returned class levels are the input multiset re-sorted ascending, so a stable
+			# sort of the slot pairs by level re-pairs each level with its granting class
+			_post_class_slots = sorted(_post_class_slots, key=lambda s: s[1])
+			class_feat_labels = [f"{d} {lvl}" for d, lvl in _post_class_slots][:len(class_feats)]
 		except Exception:
 			pass
 
@@ -1216,24 +1259,26 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				class_features["Skill Unlock: " + skill_unlock["skill"]] = _su_val or {"Skill Unlock": skill_unlock["skill"]}
 
 	# ------------------- Last minute Spell Alphabetize + dedupe process -------------------#
-		# print("pre character.spell_list_choose_from", character.spell_list_choose_from)
-
-		character.spell_list_choose_from = spell_alphabetize_and_dedupe_func(character.spell_list_choose_from)
-		# print("post character.spell_list_choose_from", character.spell_list_choose_from)
-
-		# Re-derive the per-level prepared count against the FINAL spell list (after domain/bonus spells
+		# Per spellbook (multiclass): alphabetize + dedupe each book's final list, then re-derive
+		# its per-level prepared count against the FINAL spell list (after domain/bonus spells
 		# + dedupe), aligned 1:1 to spell_list_choose_from for the FoundryVTT sheet. Divine casters
 		# prepare their whole daily loadout (incl. domain/bonus spells); spellbook casters (wizard,
 		# witch, magus, arcanist, alchemist, investigator) prepare only spells/day out of a larger
 		# spellbook, so keep the spells/day count from spells_known_selection (capped to the group).
-		_spell_groups = character.spell_list_choose_from or []
-		if character.c_class in getattr(data, 'divine_casters'):
-			character.spells_prepared_per_level = [len(g) for g in _spell_groups]
-		else:
-			_prep = character.spells_prepared_per_level or []
-			character.spells_prepared_per_level = [
-				min(_prep[k] if k < len(_prep) else 0, len(g)) for k, g in enumerate(_spell_groups)
-			]
+		_divine_casters_list = getattr(data, 'divine_casters')
+		for _book in character.spellbooks:
+			_book['spell_list_choose_from'] = spell_alphabetize_and_dedupe_func(
+				_book.get('spell_list_choose_from') or [])
+			_spell_groups = _book['spell_list_choose_from'] or []
+			if _book['name'] in _divine_casters_list:
+				_book['spells_prepared_per_level'] = [len(g) for g in _spell_groups]
+			else:
+				_prep = _book.get('spells_prepared_per_level') or []
+				_book['spells_prepared_per_level'] = [
+					min(_prep[k] if k < len(_prep) else 0, len(g)) for k, g in enumerate(_spell_groups)
+				]
+		# re-point the legacy scalars at the (now deduped) primary spellbook
+		sync_legacy_spell_fields(character)
 
 		# pf1 conditional / rider data for the NPC's chosen spells (Bucket A weapon buffs ->
 		# spell_changes_dict; Bucket B attack-spell save/riders -> spell_riders_dict). Exported below
@@ -1247,6 +1292,69 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		archetype_info = json.dumps(archetype_info, indent=4)
 		character.land_speed = character.races.get(character.chosen_race, {}).get('speed', 30)
 
+	# ------------------- Build archetype (deterministic scorer; Ollama only breaks near-ties) -------------------#
+		# Classify the ACTUAL build (weapon/armor/stats/feats/maneuvers/spells) into a roster
+		# archetype (Reach Tripper, God Wizard, Switch Hitter, ...) -- the class name alone is not
+		# enough: a fighter can be a skirmisher, sniper, brawler or tank depending on the rolled
+		# gear. The scorer consumes the signal vocabulary in build_archetype.py, so every fact
+		# below feeds a named signal; roster + weights live in Backend/json/build_archetypes.json.
+		_wd = next(iter(character.weapon_dict.values()), {}) if isinstance(character.weapon_dict, dict) else {}
+		# weapons_data.json glues the prose description onto the "weapon groups" field -- keep only the group names.
+		_weapon_groups = str(_wd.get('weapon groups') or '').split('Description')[0].strip()
+		_arch_casting, _arch_spells, _arch_spell_levels = [], [], []
+		for _b in character.spellbooks:
+			if not _b.get('casting_level_num'):
+				continue
+			_arch_casting.append(f"{_b['name']} (spells up to level {_b.get('highest_spell_known', 0)})")
+			_arch_spell_levels.append(_b.get('highest_spell_known', 0))
+			for _grp in reversed(_b.get('spell_list_choose_from') or []):
+				if _grp:
+					_arch_spells.extend(_grp[:4])   # a few highest-level spells: enough signal, small prompt
+					break
+		_build = {
+			# prompt facts (also rendered for the Ollama near-tie arbiter)
+			'classes': [f"{c['name']} {c['level']}" for c in character.classes],
+			'main_stat': character.main_stat,
+			'stats': f"{character.str}/{character.dex}/{character.con}/{character.int}/{character.wis}/{character.cha}",
+			'weapon': weapon_name,
+			'weapon_category': _wd.get('category'),
+			'weapon_groups': _weapon_groups,
+			'armor': armor_name if isinstance(armor_name, str) else '',
+			'shield': shield_name if character.shield_flag else '',
+			'feats': feats,
+			'disciplines': martial_disciplines,
+			'stances': stances_chosen,
+			'maneuvers': [n for _grp in maneuvers_readied_names for n in (_grp if isinstance(_grp, list) else [_grp])],
+			'spheres': spheres_chosen,
+			'casting': _arch_casting,
+			'spells': _arch_spells,
+			# signal-extraction facts (see _signals() in build_archetype.py)
+			'class_names': [c['name'] for c in character.classes],
+			'class_entries': [{'name': c['name'], 'level': c['level']} for c in character.classes],
+			'total_level': character.level,
+			'primary_class': character.c_class,
+			'bab_tier': str(character.class_data.get(character.c_class, {}).get('bab', 'M')),
+			'spell_levels': _arch_spell_levels,
+			'initiator_level': initiator_level,
+			'armor_type': character.armor_type,
+			'shield_flag': character.shield_flag,
+			'weapon_special': _wd.get('special'),
+			'weapon_critical': _wd.get('critical'),
+			'stat_dict': {'str': character.str, 'dex': character.dex, 'con': character.con,
+						  'int': character.int, 'wis': character.wis, 'cha': character.cha},
+			'feat_buckets': character.feat_buckets,
+			'class_feature_names': list(class_features) if isinstance(class_features, dict) else [],
+			'companion': bool(getattr(character, 'chosen_animal', None)),
+			'sphere_mana_pool': sphere_mana_pool,
+		}
+		# The "use backstory API" toggle gates the optional Ollama near-tie arbiter only; the
+		# deterministic scorer runs (identically) either way.
+		_arch_result = choose_build_archetype(_build, use_api=str(use_backstory_api).upper() == "Y")
+		build_archetype = str(_arch_result)
+		build_tactics = _arch_result.tactics
+		print(f"build archetype -> {build_archetype} ({_arch_result.confidence} confidence, "
+			  f"contenders {_arch_result.contenders})")
+
 	# ------------------- Backstory (coherent prose via Ollama, template fallback) -------------------#
 		# Richer profession + trainer context so the prose can give these vocations real weight.
 		_bs_professions = [f"{p['name']} (Profession rank {p['ranks']})" for p in profession_ranks] or professions
@@ -1258,11 +1366,15 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			_cal_name = CALIBER_NAMES.get(len(_fts), "skilled") or "skilled"
 			_article = "an" if _cal_name[0] in "aeiou" else "a"
 			_bs_trainers.append(f"{_article} {_cal_name} trainer who taught them {', '.join(_fts)}")
-		backstory = generate_backstory({
+		_bs_brief = {
 			'name': character_full_name, 'race': character.chosen_race,
 			'gender': character.chosen_gender, 'age': age_number, 'region': character.region,
 			'alignment': alignment, 'deity': deity_name,
-			'char_class': character.c_class_display, 'class_2': character.c_class_2,
+			'char_class': character.c_class_display,
+			# all non-primary classes, e.g. "fighter and wizard" for a 3-class character
+			'class_2': ' and '.join(
+				c['name'] for i, c in enumerate(character.classes)
+				if i != character.primary_class_index),
 			'level': character.c_class_level, 'main_stat': character.main_stat,
 			'martial_disciplines': martial_disciplines, 'notable_feats': feats,
 			'traits': getattr(character, 'selected_traits_desc', None) or selected_traits,
@@ -1271,7 +1383,16 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			'craft': character.craft_chosen, 'trainers': _bs_trainers,
 			'appearance': appearance, 'parents': parents,
 			'siblings': [older_brothers, younger_brothers, older_sisters, younger_sisters],
-		}, use_api=str(use_backstory_api).upper() == "Y", focus=backstory_focus)
+			# structured_bio-only fields (the prose prompt keeps appearance as one field)
+			'hair_type': hair_type, 'hair_color': hair_color, 'eye_color': eye_color,
+			'build_archetype': build_archetype, 'build_tactics': build_tactics,
+		}
+		# Prose backstory disabled for now: the structured fact block below is meant to serve as a
+		# prompt (for a GM or an AI), not a summary. generate_backstory stays wired for the website:
+		# backstory = generate_backstory(_bs_brief, use_api=str(use_backstory_api).upper() == "Y", focus=backstory_focus)
+		backstory = ""
+		# Scannable fact block shown on the sheet's Biography tab (empty prose = no Backstory section).
+		formatted_bio = structured_bio(_bs_brief)
 
 		export_list_non_dict = [
 				character.region, character.chosen_race, character.land_speed,
@@ -1279,7 +1400,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				alignment,  age_number, 
 				height_number, weight_number, character.dex, character.str, 
 				character.con, character.int, character.wis, character.cha, 
-				character.inherents, character.level_up_stats,
+				character.inherents, character.level_up_stats, character.racial_stats,
 				flaw, character.Total_HP, character.sheet_health,
 				character.bab_total,
 				armor_ac, shield_ac,
@@ -1297,8 +1418,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				sphere_mana_pool, spheres_chosen, sphere_counts, casting_tradition,
 				sphere_drawbacks, sphere_boons, sphere_traits,
 				deity_name, skill_ranks,
-				weapon_enhancement_chosen_list, armor_enhancement_chosen_list, 
+				weapon_enhancement_chosen_list, armor_enhancement_chosen_list,
 				shield_enhancement_chosen_list,
+				weapon_enhancement_bonus, armor_enhancement_bonus, shield_enhancement_bonus,
 				selected_traits, equipment_list, character.c_class_level,
 			#  we don't use these in foundry, comment out if we do (all instances (but will need to fix program issue))
 			#  chosen_subrace, subrace_description, 
@@ -1317,8 +1439,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				personality_traits,
 				hero_points, character.chosen_gender, 
 				class_ability_desc, class_ability,
-				class_features, archetype_info,				
-				parents, 
+				class_features, class_feature_levels, archetype_info,
+				parents,
 				older_brothers, younger_brothers, 
 				older_sisters, younger_sisters,				 
 				weapon_name,
@@ -1330,6 +1452,24 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				feat_budget,
 				mod_char_sheet_var,
 				backstory,
+				formatted_bio,
+				# --- multiclass (new keys; the legacy keys above keep their old semantics:
+				# "level" = primary-class level, "c_class"/"c_class_2" = primary/second class) ---
+				[{'name': c['name'], 'display': c['display'], 'level': c['level'],
+					'archetype': archetypes_per_class[i] if i < len(archetypes_per_class) else {}}
+					for i, c in enumerate(character.classes)],
+				character.level,
+				character.save_bases,
+				[{**{k: b.get(k) for k in (
+					'name', 'display', 'level', 'capped_level', 'casting_level_string',
+					'casting_level_num', 'highest_spell_known', 'spells_known_list',
+					'spells_per_day_list', 'spell_list_choose_from', 'spells_prepared_per_level')},
+					'casting_stat': casting_stat_for(b['name']),
+					'divine': b['name'] in data.divine_casters}
+					for b in character.spellbooks],
+				class_feature_owners,
+				build_archetype,
+				build_tactics,
 
 				 ]
 		
@@ -1339,7 +1479,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"alignment", "age_number", 
 				"height_number", "weight_number", "dex", "str", 
 				"con", "int", "wis", "cha", 
-				"inherents", "level_up_stats",			
+				"inherents", "level_up_stats", "racial_stats",
 				"flaw", "Total_HP", "sheet_health",
 				"bab_total",
 				"armor_ac", "shield_ac",
@@ -1357,8 +1497,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"sphere_mana_pool", "spheres_chosen", "sphere_counts", "casting_tradition",
 				"sphere_drawbacks", "sphere_boons", "sphere_traits",
 				"deity_name", "skill_ranks",
-				"weapon_enhancement_chosen_list", "armor_enhancement_chosen_list", 
+				"weapon_enhancement_chosen_list", "armor_enhancement_chosen_list",
 				"shield_enhancement_chosen_list",
+				"weapon_enhancement_bonus", "armor_enhancement_bonus", "shield_enhancement_bonus",
 				"selected_traits", "equipment_list", "level",
 				# We don't use subrace data in foundryVTT (comment these out if we want to (will need to fix their issues first))
 				# "chosen_subrace", "subrace_description", 
@@ -1377,7 +1518,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"personality_traits",
 				"hero_points", "gender",
 				"class_ability_desc", "class_ability",
-				"class_features", "archetype_info",
+				"class_features", "class_feature_levels", "archetype_info",
 				"parents",
 				"older_brothers", "younger_brothers", 
 				"older_sisters", "younger_sisters",	
@@ -1390,6 +1531,14 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"feat_budget",
 				"mod_char_sheet_var",
 				"backstory",
+				"formatted_bio",
+				"classes",
+				"total_level",
+				"save_bases",
+				"spellbooks",
+				"class_feature_owners",
+				"build_archetype",
+				"build_tactics",
 
 				]
 		
@@ -1398,11 +1547,18 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# export references stay stable; the populate block mutates these same objects in place.
 		feat_changes_dict = {}
 		feat_conditionals_dict = {}
+		item_changes_dict = {}
+		enhancement_effects_dict = {}
+		class_feature_changes_dict = {}
+		class_feature_conditionals_dict = {}
 		export_list_dict = [
 				character.spell_list_choose_from, equip_descrip, maneuvers_desc_dict, homebrew_feat_desc_dict,
 				feat_changes_dict, feat_conditionals_dict,
 				spell_changes_dict, spell_riders_dict,
 				getattr(character, 'selected_traits_desc', []) or [],
+				item_changes_dict, enhancement_effects_dict,
+				flaw_effects_dict,
+				class_feature_changes_dict, class_feature_conditionals_dict,
 				 ]
 
 		string_export_list_dict = [
@@ -1410,6 +1566,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"feat_changes_dict", "feat_conditionals_dict",
 				"spell_changes_dict", "spell_riders_dict",
 				"selected_traits_desc",
+				"item_changes_dict", "enhancement_effects_dict",
+				"flaw_effects_dict",
+				"class_feature_changes_dict", "class_feature_conditionals_dict",
 				 ]
 
 		# Make EVERY placed feat renderable by the FoundryVTT module. The module silently DROPS any feat
@@ -1442,7 +1601,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# .json -> default-off toggle conditionals (Power Attack, Combat Expertise, Deadly Aim, ...) the
 		# module attaches to the main weapon. We author ONLY feats Foundry's every_feat.json compendium does
 		# not already automate, so nothing double-applies. Missing files -> empty maps (feature simply off).
-		import os as _os, json as _json
+		import os as _os, json as _json, re as _re
 		_buf_dir = _os.path.dirname(_os.path.abspath(__file__))
 		def _load_buffmap(*parts):
 			try:
@@ -1469,7 +1628,122 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			if _lc in _fk_ci:
 				feat_conditionals_dict[_disp] = _fk_ci[_lc]
 
-		character.export_list_non_dict(export_list_non_dict, string_export_list_non_dict)		
+		# --- Equipment numeric buffs + context notes ----------------------------------------------------
+		# item_changes.json is GENERATED from items_best.json descriptions by scripts/build_item_changes.py
+		# (clean numeric bonuses -> pf1 `changes`, situational bonus text -> `contextNotes`), with
+		# item_changes_overrides.json merged on top at build time. Keyed by lowercase backend item name; the
+		# module overlays entries onto the matched/synthesized equipment item (deduped by change target, so
+		# items every_item.json already automates don't double-apply).
+		_ic_ci = _load_buffmap("json", "items", "item_changes.json")
+		for _item_name in dict.fromkeys(equipment_list or []):
+			_ic_entry = _ic_ci.get(str(_item_name).lower())
+			if _ic_entry:
+				item_changes_dict[_item_name] = _ic_entry
+
+		# Weapon/armor/shield special abilities (flaming, keen, ...) -> curated quality_effects.json.
+		# Sectioned because names collide across the lists with different rules (e.g. Ghost Touch):
+		# weapon.* -> conditionals on the main weapon's attack action; armor.* (covers the Armor AND
+		# Shield quality lists) -> changes/contextNotes overlaid on the armor/shield item.
+		_qe_all = _load_buffmap("json", "items", "quality_effects.json")
+		_qe_weapon = {str(_k).lower(): _v for _k, _v in (_qe_all.get("weapon") or {}).items()}
+		_qe_armor = {str(_k).lower(): _v for _k, _v in (_qe_all.get("armor") or {}).items()}
+
+		# Every shipped entry also carries the quality's rules text ("description") pulled from the
+		# scraped qualities lists, so the module can render it under the item. Entries are shallow-
+		# copied so the cached quality_effects data is never mutated; a quality missing from
+		# quality_effects.json still ships description-only as a safety net.
+		def _quality_descriptions(_qualities, _sections):
+			_out = {}
+			for _sec in _sections:
+				for _k, _v in ((_qualities or {}).get(_sec) or {}).items():
+					_text = _re.sub(r"\s+", " ", str((_v or {}).get("Description") or "")).strip()
+					_text = _re.sub(r"\s*Construction\s*$", "", _text)
+					if _text:
+						_out.setdefault(str(_k).lower(), _text)
+			return _out
+		_wq_desc = _quality_descriptions(getattr(character, "weapon_qualities", {}), ("Melee", "Ranged"))
+		_aq_desc = _quality_descriptions(getattr(character, "armor_qualities", {}), ("Armor", "Shield"))
+
+		for _section, _chosen, _lookup, _desc_map in (
+				("weapon", weapon_enhancement_chosen_list, _qe_weapon, _wq_desc),
+				("armor", armor_enhancement_chosen_list, _qe_armor, _aq_desc),
+				("shield", shield_enhancement_chosen_list, _qe_armor, _aq_desc)):
+			for _q_name in dict.fromkeys(_chosen or []):
+				_q_key = str(_q_name).lower()
+				_q_entry = dict(_lookup.get(_q_key) or {})
+				_q_desc = _desc_map.get(_q_key)
+				if _q_desc:
+					_q_entry["description"] = _q_desc
+				if _q_entry:
+					enhancement_effects_dict.setdefault(_section, {})[_q_name] = _q_entry
+
+		# --- Class-choice power effects (rage powers, ki powers, hexes, talents, arcana, ...) ----------
+		# class_feature_effects.json is GENERATED by scripts/build_class_feature_changes.py (auto-drafts
+		# parsed from the class_data pools + class_feature_effects_overrides.json curated on top).
+		# Sections match the class_features buckets; keys are normalized power names (lowercase, no
+		# (Su)/(Ex)/(Sp)). Curated entries ship changes/contextNotes (-> class_feature_changes_dict,
+		# module overlays them on the class-feature item, toggled with the parent state for while-raging
+		# style powers), weapon toggle conditionals (-> class_feature_conditionals_dict, feat pattern),
+		# and tagBuff Multi-Buff-Distributor payloads for powers that affect OTHER creatures — their
+		# @classes/@abilities refs are baked to this NPC's numbers since a recipient's sheet can't
+		# resolve them. Auto-drafted entries ("review": true) ship contextNotes ONLY — never unvetted
+		# changes or conditionals.
+		_cfe = _load_buffmap("json", "class_data", "effects", "class_feature_effects.json")
+		def _cfe_key(_name):
+			return _re.sub(r"\s+", " ", _re.sub(r"\s*\((su|ex|sp)\)\s*$", "", str(_name),
+												flags=_re.I)).strip().lower()
+		_class_levels = {str(_c.get("name", "")).lower(): _c.get("level", 0) or 0
+						 for _c in (character.classes or [])}
+		_ability_mods = {"str": character.str_mod, "dex": character.dex_mod, "con": character.con_mod,
+						 "int": character.int_mod, "wis": character.wis_mod, "cha": character.cha_mod}
+		def _bake(_text):
+			_text = _re.sub(r"@classes\.(\w+)\.level",
+							lambda _m: str(_class_levels.get(_m.group(1).lower(), 0)), str(_text))
+			return _re.sub(r"@abilities\.(str|dex|con|int|wis|cha)\.mod",
+						   lambda _m: str(_ability_mods[_m.group(1)]), _text)
+		# shared pools: formulas are authored against the canonical class (barbarian, witch, rogue);
+		# when THIS character got the bucket from a sibling class (skald rage powers, shaman hexes,
+		# ninja/slayer talents), retarget @classes.<canonical>.level to the class they actually have.
+		_bucket_classes = {"rage_powers": ("barbarian", "skald"), "hexes": ("witch", "shaman"),
+						   "ninja_talents": ("rogue", "ninja"), "slayer_talents": ("rogue", "slayer")}
+		for _bucket, _powers in (class_features or {}).items():
+			_cfe_section = _cfe.get(_bucket)
+			if not _cfe_section or not isinstance(_powers, dict):
+				continue
+			_owner = next((_c for _c in _bucket_classes.get(_bucket, ()) if _c in _class_levels), None)
+			for _p_name in _powers:
+				_cf_entry = _cfe_section.get(_cfe_key(_p_name))
+				if not _cf_entry:
+					continue
+				_cf_json = _json.dumps(_cf_entry)
+				if _owner and "@classes." in _cf_json:
+					_cf_entry = _json.loads(_re.sub(
+						r"@classes\.(\w+)\.level",
+						lambda _m: _m.group(0) if _m.group(1).lower() in _class_levels
+						else "@classes.%s.level" % _owner, _cf_json))
+				if _cf_entry.get("review"):
+					if _cf_entry.get("contextNotes"):
+						class_feature_changes_dict[_p_name] = {
+							"changes": [], "contextNotes": _cf_entry["contextNotes"]}
+					continue
+				_cf_out = {"changes": _cf_entry.get("changes", []),
+						   "contextNotes": _cf_entry.get("contextNotes", [])}
+				_cf_tag = _cf_entry.get("tagBuff")
+				if _cf_tag:
+					_cf_out["tagBuff"] = {
+						"onlyOthers": bool(_cf_tag.get("onlyOthers")),
+						"auraRange": _cf_tag.get("auraRange"),
+						"changes": [dict(_ch, formula=_bake(_ch.get("formula", "")))
+									for _ch in _cf_tag.get("changes", [])],
+						"contextNotes": [dict(_n, text=_bake(_n.get("text", "")))
+										 for _n in _cf_tag.get("contextNotes", [])],
+					}
+				if _cf_out["changes"] or _cf_out["contextNotes"] or _cf_tag:
+					class_feature_changes_dict[_p_name] = _cf_out
+				if _cf_entry.get("conditionals"):
+					class_feature_conditionals_dict[_p_name] = _cf_entry["conditionals"]
+
+		character.export_list_non_dict(export_list_non_dict, string_export_list_non_dict)
 		character.export_list_dict(export_list_dict, string_export_list_dict)		
 
 		# ----- debugging section ----- #

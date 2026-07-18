@@ -1,14 +1,17 @@
 # This file will handle all class specific feats possible
 import random
+
+from utils.class_func.generic_func import class_entry_for
 # Start of class specific feats chooser
 def class_specific_feats_chooser(character, c_class, name_1, name_2, name_3=None, class_level = None):
-    if character.c_class == c_class and (class_level == None or character.c_class_level >= class_level):
+    class_entry = class_entry_for(character, c_class)
+    if class_entry is not None and (class_level == None or class_entry['level'] >= class_level):
         try:
             if name_3 != None:
-                extra_feat_list = getattr(character, character.c_class, {}).get(name_1, {}).get(name_2, {}).get(name_3, [])
+                extra_feat_list = getattr(character, c_class, {}).get(name_1, {}).get(name_2, {}).get(name_3, [])
             else:
-                extra_feat_list = getattr(character, character.c_class, {}).get(name_1, {}).get(name_2, [])
-            
+                extra_feat_list = getattr(character, c_class, {}).get(name_1, {}).get(name_2, [])
+
         except AttributeError:
             extra_feat_list = []
 
@@ -16,15 +19,17 @@ def class_specific_feats_chooser(character, c_class, name_1, name_2, name_3=None
     return []
 
 def ranger_feats_chooser(character):
-    if character.c_class == 'ranger':
-        ranger_feats = [2,6,10,14,18,22,26,30,34,38,42]              
-        choice = list(character.ranger.keys())   
+    class_entry = class_entry_for(character, 'ranger')
+    if class_entry is not None:
+        ranger_class_level = class_entry['level']
+        ranger_feats = [2,6,10,14,18,22,26,30,34,38,42]
+        choice = list(character.ranger.keys())
         random_combat_style = random.choice(choice)
         ranger_feats_chosen_list=set()
         i=0
 
 
-        while i < len(ranger_feats) and ranger_feats[i] <= character.c_class_level:
+        while i < len(ranger_feats) and ranger_feats[i] <= ranger_class_level:
             ranger_feats_list=character.ranger[random_combat_style]["2"]
 
             if ranger_feats[i]>=6:
@@ -46,18 +51,20 @@ def ranger_feats_chooser(character):
         # Track slots this combat style's pool couldn't fill so main_test can reallocate them to
         # normal feats. We no longer extend character.feats here: the caller merges the returned
         # feats once, after the normal-feat selection that would otherwise clobber them.
-        scheduled = sum(1 for lvl in ranger_feats if lvl <= character.c_class_level)
+        scheduled = sum(1 for lvl in ranger_feats if lvl <= ranger_class_level)
         character.ranger_feat_surplus = scheduled - len(ranger_feats_chosen_list)
         return ranger_feats_chosen_list
 
 def monk_feats_chooser(character):
-    if character.c_class == 'monk' or character.c_class == 'unchained_monk':
-        monk_feats = [1,2,6,10,14,18,22,26,30,34,38,42]   
-        #using set + .add makes sure we don't have any repeats in our list           
+    class_entry = class_entry_for(character, 'monk') or class_entry_for(character, 'unchained_monk')
+    if class_entry is not None:
+        monk_class_level = class_entry['level']
+        monk_feats = [1,2,6,10,14,18,22,26,30,34,38,42]
+        #using set + .add makes sure we don't have any repeats in our list
         monk_feats_chosen_list=set()
         i=0
 
-        while i < len(monk_feats) and monk_feats[i] <= character.c_class_level:
+        while i < len(monk_feats) and monk_feats[i] <= monk_class_level:
             monk_feats_list=character.monk['feats']["2"]
 
             if monk_feats[i]>=6:
@@ -77,6 +84,6 @@ def monk_feats_chooser(character):
 
         # Track unfilled bonus-feat slots (list exhausted) for reallocation to normal feats.
         # The caller merges the returned feats into character.feats (no extend here).
-        scheduled = sum(1 for lvl in monk_feats if lvl <= character.c_class_level)
+        scheduled = sum(1 for lvl in monk_feats if lvl <= monk_class_level)
         character.monk_feat_surplus = scheduled - len(monk_feats_chosen_list)
         return monk_feats_chosen_list

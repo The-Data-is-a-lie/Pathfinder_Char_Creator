@@ -228,7 +228,10 @@
     "Augment Physical Prowess": {
       "benefits": "The magus can expend 1 point from her arcane pool as a swift action to draw upon her magical abilities to strengthen her limbs, sharpen her reflexes, or enhance her toughness for a number of rounds equal to her magus class level. She gains a +2 inherent bonus to Strength, Dexterity, or Constitution. She chooses which ability to increase when she expends the point from her arcane pool."
     },
-    "Black Blade Riposte": {},
+    "Black Blade Riposte": {
+      "prerequisites": "Magus 9, black blade class ability",
+      "benefits": "Her black blade automatically makes attacks of opportunity."
+    },
     "Born to the Black Blade": {
       "prerequisites": "Black blade class ability",
       "benefits": "Her black blade is always ready for a battle, and she can sense its keening thirst as combat draws near. In addition, her deep connection to the weapon also allows you to channel and control spells with greater ability than normal; she gains a +2 bonus on initiative and a +1 bonus on the Difficulty Class of all spells she cast when using her spell combat class ability."

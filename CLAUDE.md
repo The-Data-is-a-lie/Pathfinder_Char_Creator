@@ -30,6 +30,9 @@ python Backend/app.py           # Flask server (HTML/JSON view)
 ```
 
 ## Working conventions
+- **Codebase map:** `docs/CODEBASE_MAP.md` is the "where do I find X" appendix (pipeline order,
+  class-choice bucket → data-file table, JSON/module/script indexes, gotchas). Read it BEFORE
+  searching the codebase, and update it whenever files, pools, or pipelines move.
 - **Session goals:** at the start of each coding session, (re)write `SESSION_PLAN.md` with this
   session's goals. It is ephemeral and git-ignored — delete and recreate it each session.
 - **Changelog:** record every user/developer-visible change in `changelog.md` under `## [Unreleased]`.
