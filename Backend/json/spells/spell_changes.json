@@ -979,7 +979,7 @@
       }
     ],
     "contextNotes": [],
-    "rider": "on hit, free bull rush [[ d20 + @attributes.cmb.total + 5 ]] vs CMD (no AoO)"
+    "rider": "Range: personal; on hit, free bull rush [[ d20 + @attributes.cmb.total + 5 ]] vs CMD (no AoO)"
   },
   "Inspiring Recovery": {
     "changes": [
@@ -1360,7 +1360,7 @@
         "critical": "nonCrit"
       }
     ],
-    "rider": "on hit, free bull rush [[ d20 + @attributes.cmb.total - @attributes.bab.total + @spells.primary.cl.total ]] vs CMD"
+    "rider": "Range: [[0]] ft; on hit, free bull rush [[ d20 + @attributes.cmb.total - @attributes.bab.total + @spells.primary.cl.total ]] vs CMD"
   },
   "Rune of Rule": {
     "changes": [

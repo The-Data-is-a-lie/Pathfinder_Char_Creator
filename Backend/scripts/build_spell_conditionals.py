@@ -23,10 +23,21 @@ feat_conditionals.json):
                            Arrow's +1d6 belong here).
               -> goes to spell_changes.json.
 
-Detection runs B FIRST; a spell lands in at most one bucket (B wins -- e.g. Shocking Grasp also
-grants +3 to-hit vs metal armor, but it's a touch-attack damage spell). Everything the regexes can't
-confidently read stays out -- those spells are description-only (the Foundry module renders the
-spell from the compendium).
+  Bucket C -- an OFFENSIVE non-touch spell: it deals dice damage in an area / at range with no
+              attack roll (Fireball, Lightning Bolt), forces an enemy saving throw, and/or inflicts
+              conditions / ability damage / penalties (Hold Person, Bane, Slow). The compendium
+              spell item may already roll damage; per the house "always explicit" rule the entry
+              still restates the save + full effect as default-on [[ ]] rider text, plus a formal
+              `save` block for actions the compendium left save-less. Shape is identical to Bucket B
+              minus the attack ("attack": null) -> ALSO curated into spell_riders.json (the module's
+              addSpellRiders and the palette's build_rider_spells read only save/riders, so C flows
+              through the Bucket-B plumbing unchanged).
+
+Detection runs B FIRST, then A, then C; a spell lands in at most one bucket (B wins -- e.g.
+Shocking Grasp also grants +3 to-hit vs metal armor, but it's a touch-attack damage spell; a
+buff-with-a-rider stays A). Harmless-save-only spells and personal-range spells never land in C.
+Everything the regexes can't confidently read stays out -- those spells are description-only (the
+Foundry module renders the spell from the compendium).
 
 Output is a DRAFT keyed by spell display name; every entry carries "_bucket", "review": true, the
 matched "_snippets", and "_spell_level", and is meant to be hand-curated into
@@ -42,9 +53,13 @@ Usage:
 import argparse
 import json
 import re
+import sys as _sys
 from pathlib import Path
 
 import pandas as pd
+
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import conditional_clauses as cc                  # shared six-detail clause builders
 
 REPO = Path(__file__).resolve().parents[2]
 SOURCE = REPO / "data" / "spells.csv"
@@ -74,7 +89,8 @@ _ONGOING_RE = re.compile(
     r'(?:each|per|every)\s+round(?:[^.]{0,30}?for\s+(\d+(?:d\d+)?)\s+rounds?)?', re.IGNORECASE)
 # A condition inflicted for an explicit duration (high-signal): "blinded for 1d4 rounds".
 _CONDITIONS = ('blinded|dazzled|dazed|staggered|stunned|sickened|nauseated|shaken|frightened|'
-               'panicked|entangled|paralyzed|deafened|fatigued|exhausted|confused|cowering|prone')
+               'panicked|entangled|paralyzed|deafened|fatigued|exhausted|confused|cowering|prone|'
+               'asleep|unconscious|helpless|blind|deaf')
 _COND_DUR_RE = re.compile(
     r'(' + _CONDITIONS + r')\s+for\s+(\d+(?:d\d+)?)\s+rounds?', re.IGNORECASE)
 
@@ -94,7 +110,7 @@ _DMG_BONUS_RE = re.compile(
     r'\+(\d+)\s*(' + _BONUS_TYPES + r')?\s*bonus[^.]{0,40}?(?:weapon )?damage rolls?', re.IGNORECASE)
 # Weapon-enhancer that ADDS DICE: "arrows deal an additional 1d6 points of fire damage".
 _WEAPON_CTX_RE = re.compile(
-    r'\b(weapon|blade|sword|arrow|ammunition|projectile)s?\b', re.IGNORECASE)
+    r'\b(weapon|blade|sword|arrow(?!\s+slit)|ammunition|projectile)s?\b', re.IGNORECASE)
 _WEAPON_DICE_RE = re.compile(
     r'(?:deals?|inflicts?|gains?|additional|extra)[^.]{0,40}?(\d+d\d+)\s*(?:points?\s+of\s+)?'
     r'(' + _DMG_TYPES + r')?\s*damage', re.IGNORECASE)
@@ -205,7 +221,12 @@ def _save_block(save_raw):
 
 def _classify_B(name, full, short, save_raw, level):
     """Bucket B if a touch attack/ranged attack roll delivers dice damage; else None."""
-    if not (_TOUCH_ATTACK_RE.search(full) or _RANGED_TOUCH_RE.search(full)):
+    m = _TOUCH_ATTACK_RE.search(full) or _RANGED_TOUCH_RE.search(full)
+    if not m:
+        return None
+    # A touch attack aimed at scenery, not the victim ("hit the opening with a ranged touch attack"
+    # -- Fireball through an arrow slit) is not a touch-attack DELIVERY; let the spell fall to C.
+    if re.search(r'opening|arrow slit|narrow|cover', full[max(0, m.start() - 60): m.end() + 40]):
         return None
     dmg = _DMG_DICE_RE.search(full)
     if not dmg:
@@ -238,6 +259,166 @@ def _classify_B(name, full, short, save_raw, level):
         '_snippets': snippets,
     }
     return entry
+
+
+# --- Bucket C: offensive non-touch spell (area/save damage, debuff, condition) --------------------
+# "1d6 per caster level (maximum 10d6)" -> a computed-dice inline roll the sheet can actually roll.
+_PER_CL_DMG_RE = re.compile(
+    r'(\d+)d(\d+)\s*(?:points?\s+of\s+)?(?:(' + _DMG_TYPES + r')\s+)?damage'
+    r'[^.+]{0,40}?(?:per|for (?:each|every))\s+(?:(two|three|four|five|\d+)\s+)?(?:caster\s+)?levels?',
+    re.IGNORECASE)   # window excludes '+': "1d8 damage + 1 per level" scales the +1, NOT the dice
+_PER_CL_SLASH_RE = re.compile(
+    r'(\d+)d(\d+)(?:\s*(?:points?\s+of\s+)?(?:(' + _DMG_TYPES + r')\s+)?damage)?/(?:caster\s+)?level',
+    re.IGNORECASE)
+_MAX_DICE_RE = re.compile(r'max(?:imum)?(?:\s+of)?\s+(\d+)d(\d+)', re.IGNORECASE)
+# "takes a -2 penalty on attack rolls", "suffer a -4 penalty to AC" (en-dash or hyphen).
+_PENALTY_RE = re.compile(
+    r'[−–\-](\d+)\s+penalty\s+(?:on|to)\s+([^,.;]{3,70})', re.IGNORECASE)
+# A condition inflicted without an explicit "for N rounds" duration -- require an inflicting verb
+# within a short reach of a subject noun so bare rules-text mentions ("as the sickened condition")
+# don't false-positive ("creature in the cloud becomes nauseated" must still match).
+_COND_INFLICT_RE = re.compile(
+    r'(?:target|subject|creature|it|they)s?[^.;]{0,40}?\s(?:is|are|becomes?|remains?)\s+'
+    r'(' + _CONDITIONS + r')\b', re.IGNORECASE)
+# Duration variants beyond "for N rounds": "for N minutes/hours", "for 1 round per level".
+_COND_DUR_UNIT_RE = re.compile(
+    r'(' + _CONDITIONS + r')\s+for\s+(\d+(?:d\d+)?)\s+(round|minute|hour)s?'
+    r'(\s*(?:per|/)\s*(?:caster\s+)?level)?', re.IGNORECASE)
+
+
+def _save_rider_prefix(save_raw):
+    """"Reflex half" -> "Reflex Save half" (the explicit save clause that leads every C rider).
+    Returns '' when there is no real save."""
+    s = re.sub(r'\s+', ' ', (save_raw or '').strip())
+    m = re.search(r'\b(Fortitude|Reflex|Will)\b', s, re.IGNORECASE)
+    if not m:
+        return ''
+    word = m.group(1).capitalize()
+    rest = (s[:m.start()] + s[m.end():]).strip(' ;,')
+    # A multi-save column ("none and Will negates (object)") leaves a dangling "none and/or" once the
+    # save word is excised -- drop that artifact and collapse the double space it leaves behind.
+    rest = re.sub(r'^(?:none|no)\s*(?:and|or|,)?\s*', '', rest, flags=re.IGNORECASE)
+    rest = re.sub(r'\s{2,}', ' ', rest)
+    return f"{word} Save {rest}".strip() if rest else f"{word} Save"
+
+
+def _cl_damage_formula(full):
+    """Per-caster-level dice damage -> (inline formula, matched snippet) or None.
+    "1d6 per caster level (maximum 10d6)" -> (min(10, @spells.primary.cl.total))d6;
+    "1d8 per two caster levels" -> (floor(@spells.primary.cl.total/2))d8, min 1 die."""
+    m = _PER_CL_DMG_RE.search(full) or _PER_CL_SLASH_RE.search(full)
+    if not m:
+        return None
+    n, die = int(m.group(1)), m.group(2)
+    dtype = (m.group(3) or '').lower()
+    per = m.group(4) if m.re is _PER_CL_DMG_RE else None
+    per_n = 1
+    if per:
+        per_n = _WORD_NUM.get(per.lower(), int(per) if per.isdigit() else 1)
+    count = "@spells.primary.cl.total" if per_n == 1 else f"floor(@spells.primary.cl.total/{per_n})"
+    if n != 1:
+        count = f"({count})*{n}" if per_n != 1 else f"{n}*@spells.primary.cl.total"
+    mx = _MAX_DICE_RE.search(full)
+    if mx and mx.group(2) == die:
+        count = f"min({int(mx.group(1))}, {count})"
+    formula = f"({count})d{die}"
+    return formula, dtype, m.group(0).strip()
+
+
+def _classify_C(name, full, save_raw, level, rng):
+    """Bucket C if a non-touch spell is offensive: dice damage with no attack roll, an enemy save,
+    and/or an inflicted condition / ability damage / penalty. Personal-range and harmless-save-only
+    spells are skipped. Riders are ALWAYS explicit (house rule): the save clause leads, then damage /
+    conditions / penalties, every number in [[ ]]."""
+    if 'personal' in (rng or '').lower():
+        return None
+    save = _save_block(save_raw)
+    harmless = bool(save and save.get('harmless'))
+    snippets, riders = [], []
+
+    def _add(rider, snippet):
+        if rider and rider not in riders:
+            riders.append(rider)
+            snippets.append(snippet.strip())
+
+    # Damage: per-CL scaling first (rollable computed dice), else flat dice.
+    dmg_rider = None
+    cl_dmg = _cl_damage_formula(full)
+    if cl_dmg:
+        formula, dtype, snip = cl_dmg
+        dmg_rider = (f"[[ {formula} ]] {dtype + ' ' if dtype else ''}damage", snip)
+    else:
+        dm = _DMG_DICE_RE.search(full)
+        if dm:
+            dtype = (dm.group(2) or '').lower()
+            dmg_rider = (f"[[{dm.group(1)}]] {dtype + ' ' if dtype else ''}damage", dm.group(0))
+
+    # Conditions (explicit duration first, then bare inflictions), ability damage, ongoing, penalties.
+    cond_riders = []
+    seen_conds = set()
+    for m in _COND_DUR_UNIT_RE.finditer(full):
+        cond = m.group(1).lower()
+        per_lvl = ' per caster level' if m.group(4) else ''
+        cond_riders.append((f"target {cond} for [[{m.group(2)}]] {m.group(3)}s{per_lvl}", m.group(0)))
+        seen_conds.add(cond)
+    for m in _COND_INFLICT_RE.finditer(full):
+        cond = m.group(1).lower()
+        if cond not in seen_conds:
+            cond_riders.append((f"target {cond}", m.group(0)))
+            seen_conds.add(cond)
+    abil_riders = [(f"[[{m.group(1)}]] {m.group(2).capitalize()} {m.group(3)}", m.group(0))
+                   for m in _ABIL_DMG_RE.finditer(full)]
+    ongoing_riders = []
+    for m in _ONGOING_RE.finditer(full):
+        dtype = f"{m.group(2)} " if m.group(2) else ""
+        dur = f" for [[{m.group(3)}]] rounds" if m.group(3) else ""
+        ongoing_riders.append((f"ongoing [[{m.group(1)}]] {dtype}damage each round{dur}", m.group(0)))
+    pen_riders = []
+    for m in _PENALTY_RE.finditer(full):
+        what = re.sub(r'\s+', ' ', m.group(2)).strip()
+        if len(what) >= 68:              # regex window ceiling hit -- last token is likely clipped
+            what = ' '.join(what.split()[:-1])
+        words = what.split()             # strip dangling connectives left by the cut
+        while words and words[-1].lower() in ('and', 'or', 'of', 'the', 'to', 'a', 'an', 'their',
+                                              'its', 'his', 'her', 'with', 'in', 'on', 'for'):
+            words.pop()
+        what = ' '.join(words)
+        if what:
+            pen_riders.append((f"-[[{m.group(1)}]] penalty to {what}", m.group(0)))
+
+    offensive = bool(dmg_rider or cond_riders or abil_riders or ongoing_riders or pen_riders)
+    if harmless and not offensive:
+        return None                      # a buff's harmless save, not an offensive spell
+    if not offensive and not save:
+        return None
+    if not offensive and save:
+        # Save with no readable effect (charms, gaze effects, "see text") -- still worth an explicit
+        # save rider; the effect stays on the spell description. Review will catch junk.
+        pass
+
+    prefix = _save_rider_prefix(save_raw)
+    effects = ([dmg_rider] if dmg_rider else []) + cond_riders + abil_riders + ongoing_riders + pen_riders
+    if prefix and effects:
+        body = "; ".join(e[0] for e in effects)
+        _add(f"{prefix} — {body}", "; ".join(e[1] for e in effects))
+    elif prefix:
+        _add(f"{prefix} (see spell description)", save_raw)
+    else:
+        for e in effects:
+            _add(e[0], e[1])
+    if not riders:
+        return None
+    return {
+        '_bucket': 'C',
+        'attack': None,
+        'save': save,
+        # Bracket every remaining bare number (a penalty clause can carry a second, unmatched "-1")
+        # -- existing [[ ]] spans are protected wholesale by _brackify_numbers.
+        'riders': [_brackify_numbers(r) for r in riders],
+        'review': True,
+        '_spell_level': level,
+        '_snippets': snippets,
+    }
 
 
 def _atk_modifier(value, btype):
@@ -391,7 +572,7 @@ def _classify_A(name, full, short, level, save_raw="", desc=""):
 def build_draft():
     df = pd.read_csv(SOURCE, sep="|", on_bad_lines="skip", dtype=str, keep_default_na=False)
     draft = {}
-    total = a_change = a_toggle = b_melee = b_ranged = neither = 0
+    total = a_change = a_toggle = b_melee = b_ranged = c_count = neither = 0
     for _, row in df.iterrows():
         name = str(row.get("name", "")).strip()
         if not name:
@@ -402,18 +583,34 @@ def build_draft():
         full = (short + " " + desc).lower()
         level = str(row.get("spell_level", "")).strip()
         save_raw = str(row.get("saving_throw", ""))
+        rng = str(row.get("range", ""))
 
         entry = _classify_B(name, full, short, save_raw, level)
         if entry is None:
             entry = _classify_A(name, full, short, level, save_raw, desc)
         if entry is None:
+            entry = _classify_C(name, full, save_raw, level, rng)
+        if entry is None:
             neither += 1
             continue
+        # Seed the labeled Range/Cost clauses so a curated draft starts with the six-detail format
+        # (the same shape enrich_conditional_riders.py maintains on the finals).
+        if entry.get('riders'):
+            delivery = cc.spell_delivery(entry.get('attack'), full)
+            prepend = [cc.spell_cost_clause(str(row.get('components', '')),
+                                            str(row.get('material_costs', ''))),
+                       cc.spell_range_clause(rng, delivery)]
+            clauses = cc.split_clauses(entry['riders'][0])
+            prepend = [p for p in prepend if p and not (
+                (cc.states_cost(clauses) and p.startswith('Cost')) or
+                (cc.states_range(clauses) and p.startswith('Range')))]
+            entry['riders'][0] = cc.brackify(cc.compose(cc.inject_dc(entry['riders'][0]), prepend))
         b = entry['_bucket']
         a_change += b == 'A'
         a_toggle += b == 'A-toggle'
         b_melee += b == 'B-melee'
         b_ranged += b == 'B-ranged'
+        c_count += b == 'C'
         draft[name] = entry
 
     flagged = sum(1 for v in draft.values() if v.get('review'))
@@ -424,6 +621,7 @@ def build_draft():
     print(f"  Bucket B  (spell is a damaging attack): {b_melee + b_ranged}")
     print(f"      B-melee  melee touch attack:        {b_melee}")
     print(f"      B-ranged ranged touch attack:       {b_ranged}")
+    print(f"  Bucket C  (offensive save/area/debuff): {c_count}")
     print(f"  neither (description-only):             {neither}")
     print(f"  total drafted (eligible):               {len(draft)}")
     print(f"  flagged review:                         {flagged}")
