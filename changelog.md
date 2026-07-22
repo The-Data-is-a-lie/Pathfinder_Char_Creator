@@ -19,6 +19,217 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **"On Other Attacks" section in the conditional applier dialog.** The `pf1-conditional-applier`
+  review dialog now shows a bottom **On Other Attacks** section listing the conditionals that live on
+  the actor's OTHER, differently-named weapons/attacks — as opt-in rows (default **off**, with the
+  section's all-on/off toggle and per-row include/edit, just like Spells / Path of War) that **copy the
+  real conditional (its modifiers)** onto the selected weapon when applied. Deduped by name prefix
+  (text before the first `:`); excludes the same-named attack twin, `──────` dividers / inert
+  name-only entries, and prefixes already offered by the built-in sections or already on this weapon;
+  recomputed per selected weapon. Lets you copy feat/enhancement/item conditionals (which the applier
+  can't generate itself) from one weapon onto another. In
+  `pf1-conditional-applier/src/apply-conditionals.macro.js` (`openDialog` `otherAttackSpecs` + the
+  `On Other Attacks` rank/label in `applyToWeapon`), re-bundled.
+- **Combined homebrew caster level for spell riders, resolved at attach time.** Spell-rider caster
+  level now follows the campaign rule: a multiclass character's effective CL is the **sum** of each
+  casting class's contribution — high/mid casters count their **full** class level, **low casters
+  count level − 3** (`max(level − 3, 0)`), floored to a minimum of 1. Riders keep authoring the
+  existing `@spells.primary.cl.total` token; a new `spellCLExpr()` expands it into the combined
+  expression (using `@classes.<tag>.level`) at attach time — added to the generator module
+  (`modify-abilities.js`, `subSpellTokens`) and the applier (`pf1-conditional-applier`,
+  `subSpell`), mirroring the existing `sphereCLExpr()` path. **Decision:** compute-and-substitute
+  rather than (a) authoring a raw three-book sum — pf1 leaves `@spells.<book>.cl.total` at *full*
+  class level even for low casters (`casterType` only drives slots), so summing raw tokens would
+  over-count every low caster by 3; or (b) fixing each spellbook's `cl.formula` at the source —
+  broader/riskier and still needs the summing on top. Keeping the token means all ~619 existing
+  riders upgrade with zero JSON churn.
+- **Validator guard against uncomputed caster-level scaling.**
+  `validate_spell_conditionals.py` now errors when a rider has a bare `[[N]] … per (caster) level`
+  with no computed CL total (the "5 hit points per caster level" bug), whitelisting an external
+  actor's CL ("per caster level of the …"); "per inch of thickness" never matches.
+  `validate_talent_conditionals.py` now errors on malformed `@spheres.cam.total` / `@spheres.pam.total`
+  (cam/pam are bare ability mods — only `@spheres.cl` takes `.total`; a stray `.total` survives
+  substitution as `@abilities.x.mod.total` and silently resolves to 0).
+- **Grouped section dividers in the weapon attack-roll conditionals list.** The `pf1-conditional-applier`
+  now inserts inert "separator" conditionals (empty-modifier no-op checkboxes) that head each family
+  block in the fixed order **General (Feats & Items) → Path of War → Spheres → Spells**, styled
+  `──────  LABEL  ──────`. Rows are section-sorted so the order holds regardless of build order; the
+  General header is suppressed when a weapon carries no feat/item conditionals, and per-section headers
+  are suppressed for empty sections. Divider ids fold into the existing `condIds` cleanup, so re-running
+  the applier stays idempotent (no duplicate separators). Changed in
+  `pf1-conditional-applier/src/apply-conditionals.macro.js` (`applyToWeapon`) and re-bundled; **decision:**
+  the applier owns all four separators including "General", even though the feat/item conditionals it
+  labels are authored earlier by the generator module's `modify-abilities.js`.
+- **Detailed spell-effect sweep — all 619 rider spells re-authored verbose + grounded.** Every
+  offensive spell's `Effect` was rewritten from its full `data/spells.csv` description into a
+  maximally-complete rider: per-target-type splits (living / undead / incorporeal / object),
+  immunities and "no effect if already X", per-round/repeat saves, secondary targets/damage with
+  their DC deltas, ability damage, durations, spell resistance, and stacking/counters. Every
+  sheet-scaled quantity is now a **computed inline roll** (`[[@spells.primary.cl.total]] rounds`,
+  `[[ min(20, @spells.primary.cl.total) ]] targets`) instead of "per caster level" prose, so the card
+  shows the real number. The primary save shows once as the `Save:` clause; the body carries only
+  secondary/nuanced saves. Pipeline: `build_spell_rider_worklist.py` → a Sonnet author→verify/repair
+  workflow (42 agents, 0 held) → `merge_spell_riders.py` → `enrich_conditional_riders.py` →
+  `validate_spell_conditionals.py`. `spell_riders.json` grew 213 KB → 545 KB; sample output in
+  `docs/spell_rider_pilot_samples.md`. The `pf1-conditional-applier` bundle was refreshed. (The
+  number-bracketing validator now correctly ignores ordinals like "1st level".)
+- **Six-detail conditional riders + a per-weapon editable apply pop-up.** Every curated conditional
+  now spells out all six details a player needs at a glance — damage, save DC/type, range, aux
+  effects, activation, and cost — as `; `-separated **labeled clauses** (`Cost:` → `Activation:` →
+  `Range:` → `Save:` → `Effect:`). A new idempotent `Backend/scripts/enrich_conditional_riders.py`
+  (with shared builders in `Backend/scripts/conditional_clauses.py`) appends only the *missing*
+  clauses to the already-curated finals — `Range:` (CL-scaled feet + delivery from the CSV `range`
+  column), `Cost:` (gp material components; real sphere spell-point counts, fixing the seed's
+  hardcoded `[[1]]`), and injects the computed spell save DC `[[ 10 + @slvl + @castMod ]]` into
+  existing save clauses — leaving hand-written text untouched (re-running is a no-op). `build_*`
+  seeders reuse the same helpers so new drafts start enriched. The generator module's
+  `addSpellRiders`/`addSpellConditionals` now substitute `@slvl`/`@castMod` (spell level + casting
+  ability) so NPC sheets render the DC. On the applier side, `pf1-conditional-applier`'s macro grew a
+  **per-weapon dialog**: pick a weapon, review the full list of conditionals about to be added, toggle
+  each on/off, expand a row to edit its clauses / per-roll default, then "Apply to this weapon"
+  (`actions[0]`, with an action picker when a weapon has several). The dialog stays open to walk every
+  weapon, and edits **persist per weapon** in a `flags["pf1-conditional-applier"].overrides` actor
+  flag so they survive the idempotent re-apply.
+- **Bulk-promoted the spell-conditional draft into the curated riders.** `spell_riders.json` grew
+  from **239 → 619** curated rider spells (Bucket B damaging-touch + Bucket C offensive
+  save/area/debuff) via the new `Backend/scripts/promote_spell_conditionals.py`, which merges the
+  reviewed `spell_conditionals.draft.json` under the same gates the palette uses: curation wins on a
+  name clash; harmless-save misreads (48), `(see spell description)` save-only C stubs (559), and
+  empty-shell B entries (37, their damage already on the compendium spell) are dropped. Bucket A was
+  already fully curated (120 buff spells, unchanged). `validate_spell_conditionals.py` passes.
+
+### Fixed
+- **Damage-dealing conditionals no longer render their damage type as "undefined."** A conditional
+  damage modifier with an empty `damageType` displayed "undefined" on the pf1 sheet (pf1's damage-roll
+  `??=` only defaults null/undefined, not an empty Set), and a conditional modifier can't inherit the
+  weapon's type. Two-part fix: (1) **attach-time coercion** — the module (`modify-abilities.js`, all six
+  modifier-build sites via a `dmgTypeOrUntyped` helper) and the applier (`mkMod`) coerce an empty
+  `damageType` on a **dice** damage instance to `["untyped"]`, and `build_data.py` defaults typeless
+  compendium parts (detonate, poisonous cloud) to `["untyped"]` — so the sheet never shows "undefined";
+  (2) **curated the real element** on 65 dice damage modifiers (`spell_changes.json`, the module's
+  magic/combat talent finals + the backend drafts, `feat_conditionals.json`) — e.g. Ectoplasmic
+  Eruption → bludgeoning, Face of the Devourer → piercing, Nature/Earthquake → bludgeoning, Death-sphere
+  strikes → negative; genuinely variable / per-strike / mixed damage (dragon breath, Detonate, martial
+  strikes, the destructive-blast base) → `["untyped"]`. `validate_spell_conditionals.py` /
+  `validate_talent_conditionals.py` now **WARN** (non-blocking) on any dice damage modifier with an
+  empty `damageType`. Weapon-riding physical dice (Gravity Bow, Lead Blades, per-strike martial strikes
+  — Deadly Shot / Fatal Thrust / Sever / Skewer / Limb Ripper / Clinch Strike / Shatter / Sword Shooter
+  / Dolphin Strike / Forceful Jaunt / Open Vein — and the Savage Display feat) carry an `["as-weapon"]`
+  sentinel that the module (`weaponDamageTypes`/`dmgTypeOrUntyped` on all attach sites) and the applier
+  (`mkMod`) resolve **at attach time** to the target weapon's own damage type (pf1 v11 `type.values` or
+  older `types`), so the bonus dice show the weapon's real slashing/bludgeoning/piercing (untyped
+  fallback when the weapon has none). This avoids the conditional-can't-inherit limitation without a
+  `wdamage`-Change (whose dice roll-vs-maximize behavior is unverified).
+- **Spell riders that shipped a constant where a caster-level total was meant.** Converted the
+  missed scaling in `spell_riders.json`: Blast Barrier (`[[5]] hit points per caster level` →
+  `[[5*@spells.primary.cl.total]]`), Blazing Rainbow (bridge length), Fire Snake (affected squares),
+  Curse of Unexpected Death (reduced damage, rider + `save.description`), Bloodbath (affected
+  creatures), and tidied dangling "per caster level" prose on Wall of Bone / Warp Metal / Wall of Ice
+  (which already carried the computed total). Nightmare (external dispel-evil CL) and "per inch of
+  thickness" object-HP phrasings left as prose.
+- **Applier left `@spheres.*` tokens raw**, so sphere talent riders/DCs applied via the macro read 0
+  on an actor without live pf1spheres data. The applier now substitutes `@spheres.cl.total` (BAB-tier
+  caster level) and `@spheres.cam`/`@spheres.pam` (→ ability mods) for such dabblers, while a real
+  spheres caster (native `@spheres.cl.total > 0`) keeps the native tokens.
+
+### Removed
+- **Dropped the "Spell Conditionals (Rider Spells)" compendium pack** (it only duplicated pf1's
+  built-in spell compendium). Unregistered from the module's `module.json` `packs[]`, and deleted the
+  build chain `Backend/scripts/build_spell_conditional_compendium.py` +
+  `Backend/scripts/_compendium/` (the `spell_conditionals_items.json` docs + the `pack_pf1_leveldb.js`
+  LevelDB compiler — both preserved in the new `pf1-conditional-applier` repo's `build/`). The
+  curated `spell_riders.json` / `spell_changes.json` stay; they now feed the external applier macro
+  (below). The on-disk pack dir `<module>/packs/spell-conditionals/` is inert once unregistered —
+  delete it after closing Foundry.
+- **Superseded by an external tool:** conditional delivery moved out of a draggable
+  compendium/palette into the new **`pf1-conditional-applier`** repo — a run-on-demand Foundry macro
+  that scans an actor and wires its Path of War + Spheres + spell (A/B/C) conditionals onto all its
+  weapons, idempotently, with a coverage-gap report. Reuses `spell_riders.json` / `spell_changes.json`
+  + the module's maneuver/talent conditional dicts.
+
+### Changed
+- **Weapon attack-roll dialog is now scrollable and resizable so the Attack button is always reachable.**
+  The pf1 attack dialog uses `height:"auto"` with no inner scroll, so a weapon stacked with many
+  conditionals grew the window past the viewport and pushed the Single/Full Attack buttons off-screen.
+  A new stylesheet in the generator module (`pf1e_random_char_generator/styles/attack-dialog.css`,
+  registered in `module.json`) flexes the `.conditionals` list to fill the dialog and scroll internally;
+  other fields and the roll buttons stay put. A companion ready-hook patch
+  (`scripts/attack-dialog-resize.js`) sets `resizable:true` on pf1's `AttackDialog` **and opens it at a
+  concrete height (600)** so the whole pop-up can be dragged larger/smaller in **both** directions, with
+  the conditionals area growing/shrinking to fit. **Decisions:** conditionals-only scroll was chosen over
+  a whole-form scroll + sticky footer (avoids nested scrollbars / scroll-trapping); the native resizable
+  *window* was chosen over a CSS-only resizable *panel* (dragging the window is more discoverable) at the
+  cost of a small JS patch of the pf1 class; a concrete initial height was required because pf1's stock
+  `height:"auto"` snaps the window back to content height, so a dragged height never sticks and only
+  width would resize (no CSS `max-height` cap — Foundry already clamps the window to the viewport); and it
+  all lives in the always-on generator module rather than the auto-generated `systems/pf1/pf1.css` so it
+  survives pf1 system updates. Ships to other users only on the next module release.
+- **Spheres-of-Power save DCs and blast damage now scale with a real caster level.** Generated NPCs
+  are Spheres *dabblers* with no spherecasting class, so pf1spheres derived `@spheres.cl.total` = 0 and
+  the module baked a flat caster level 1 into every Power DC/blast — pinning them at CL 1 regardless of
+  level. The module's `subSpheres()` / `applySpheresFlags()` (`modify-abilities.js`) now substitute a
+  **live, tier-accurate, multiclass-summed** sphere caster level built from the NPC's real caster
+  classes: `max( Σ per caster book {high: @classes.<tag>.level, mid: floor(3·level/4), low:
+  floor(level/2)}, 1)` (Pathfinder rounds down; caster levels stack per Spheres RAW; floored to 1).
+  Safe because Power talents are only ever assigned to real casters (a non-caster gets Might only), so
+  each has a populated pf1 spellbook; using class *level* (not spellbook CL) also matches the campaign's
+  ½/¾/full model and sidesteps low casters' "no spells until L4". The authored data and the class-less
+  Spheres **palette** keep native `@spheres.*` tokens (unchanged) so copies still scale on a real
+  pf1spheres PC. Kineticist / spell-point classes with no spellbook remain floored to CL 1 (deferred).
+- **Multiclass generation now caps caster classes at 3.** pf1 has only three spellbook slots, so a 4th
+  caster's spellbook (its spells *and* its sphere-CL contribution) was silently dropped on the Foundry
+  sheet. `select_classes()` (`Backend/utils/util.py`, new `_is_caster` helper) now stops drawing caster
+  classes once three are picked; remaining multiclass slots fill from non-casters. Non-caster-heavy
+  builds still reach four total classes.
+- **Spells palette: spells re-sorted across the Items and Buffs tabs by role.** The `Spells_template`
+  Items (inventory) tab now holds three conditional-toggle weapons in a fixed order under `____ … ____`
+  dividers — **Self Buffs** (Bucket A cast-on-self buffs, 120 toggles), **Debuffs** (Bucket C enemy
+  save/effect conditionals, `attack == null`), and **Damaging Spells** (Bucket B touch-attack spells,
+  whose dice are pulled from the compendium so they roll real damage). The Buffs tab's **spells**
+  section keeps only self-buffs that have `changes` or `contextNotes`; **debuffs moved to the
+  Temporary section** (Bucket C only, distributable `(UNAMED)` onlyOthers buffs). Bucket-C debuffs
+  appear in both places (rollable weapon + distributable buff), mirroring Path of War. The redundant
+  Spellbook-tab rider-spell clones were dropped (B is now the Damaging weapon, C the Debuff weapon).
+- **PoW palette weapons tab gets section headers; spell-buff toggles sorted by level.** Each
+  template actor's weapons tab opens with a non-rollable divider weapon (`____ Spells ____`,
+  `____ Path of War ____`, `____ Spheres ____`). The single "Spell Buffs — curated (cast-on-self)"
+  weapon keeps one toggle per curated buff spell (120), now sorted by and prefixed with the
+  spell's lowest class-list level (`(L3) Heroism: …`). Everything stays ONE copy — a per-class-list
+  duplication pass (22 weapons / per-class rider spells / per-class buffs, 6 160 items) lagged
+  Foundry unusably and was reverted same-day.
+- **Spells sheet Buffs tab reorganized into `____ BUFFS ____` and `____ Debuffs ____`.** The
+  distributable `(UNAMED)` buffs drop the placement-bucket dividers for the module's duration
+  method (rounds / minutes / hours / other sub-dividers, level-sorted, `Aura Range` first line +
+  `onlyOthers;` when set — 579 buffs). A new Debuffs section holds the enemy-targeted spells (the
+  offensive pool behind the rider spells, 606 at `--debuffs all`; `curated` ≈ 240 if the sheet
+  lags): each is an inactive `(UNAMED)` buff to place ON the target via the Multi-Buff Distributor,
+  description leading with `Aura Range: X` then `onlyOthers;`, followed by the save + rider text +
+  compendium stat block. Spells that parsed into both pools (e.g. Cause Fear) render under Debuffs
+  only, keeping their changes/notes.
+- **The palette now ships as THREE template actors instead of one.** One combined actor was too
+  heavy for a single sheet, so `build_pow_template_actor.py --out DIR` now writes
+  `Spells_template.json` (spell-buff weapon + rider spells + BUFFS/Debuffs sections, 1 803 items),
+  `Path_of_War_template.json` (30 discipline weapons + stances, 233 items) and
+  `Spheres_template.json` (sphere weapons + blast + sphere buffs, 119 items), each opening with its
+  `____ Section ____` weapons-tab header and cloned from the same base skeleton (`pf1spheres` flags
+  only on the Spheres actor).
+
+### Added
+- **Offensive spells now ship explicit save/damage/debuff conditionals (Bucket C).** The spell
+  conditional classifier (`Backend/scripts/build_spell_conditionals.py`) gained a third bucket
+  beyond attack-buffs (A) and touch-attack riders (B): any non-touch offensive spell — area/save
+  damage (Fireball, Lightning Bolt), save-or-suffer (Hold Person, Phantasmal Killer), debuffs and
+  conditions (Bane, Slow, Glitterdust) — gets a formal `save` block plus **default-on rider
+  conditionals** that restate the save clause and full effect with every number (and per-CL damage
+  formulas like `(min(10, @spells.primary.cl.total))d6`) as `[[ ]]` inline rolls, per the house
+  "always explicit" rule. Batch 1 curation: **220 new spells** in
+  `Backend/json/spells/spell_riders.json` (83 hand-authored gold entries for the RAW classics +
+  137 vetted drafts; 239 total curated, prioritized by class-list breadth ∩ `every_spell.json`).
+  Flows through the existing plumbing unchanged — generated NPCs get them via
+  `spell_riders_dict` → the module's `addSpellRiders`, and the uploadable palette bundles them
+  (now 606 rider spells, with the same harmless/stub curation gates applied to draft entries).
+  New validator gate: `Backend/scripts/validate_spell_conditionals.py` (shape, save types,
+  bracketed numbers, no PoW tokens, compendium-name warnings).
 - **Every NPC now gets a build archetype + tactics line from a deterministic scorer** (Keep
   Away Fighter, Team Buffer, Magic Battlefield Controller, Trickster, …). The roster is a
   **generalized 33-entry two-axis set** — 7 role families × 16 tactical patterns, so an

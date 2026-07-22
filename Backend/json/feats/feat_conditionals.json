@@ -112,7 +112,9 @@
         "target": "damage",
         "subTarget": "allDamage",
         "type": "untyped",
-        "damageType": [],
+        "damageType": [
+          "as-weapon"
+        ],
         "critical": "normal"
       }
     ]

@@ -1,0 +1,37 @@
+{
+  "actor": "Abebe Astuti",
+  "talents": [
+    {
+      "name": "Black Ice",
+      "sphere": "weather"
+    },
+    {
+      "name": "Head In The Clouds",
+      "sphere": "weather"
+    },
+    {
+      "name": "High Energy",
+      "sphere": "weather"
+    },
+    {
+      "name": "Mantle",
+      "sphere": "weather"
+    },
+    {
+      "name": "Mirage Sight",
+      "sphere": "weather"
+    },
+    {
+      "name": "Mist Form",
+      "sphere": "weather"
+    },
+    {
+      "name": "Mummified Flesh",
+      "sphere": "weather"
+    },
+    {
+      "name": "(Advanced) Cold Lord",
+      "sphere": "weather"
+    }
+  ]
+}

@@ -104,7 +104,36 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
   (`templates/character_sheet_folder/`), not `Backend/json/`. Reuses the sentence classifier
   from `build_item_changes.py` (item-style buckets: changes / contextNotes / unplaced;
   unplaced-only spells get no Buffs-tab buff), layers curated `json/spells/spell_changes.json`
-  on top (curated wins per target). Spell-conditionals plan: `docs/feature_spec_todo.md` §7.
+  on top (curated wins per target).
+- `build_spell_conditionals.py` → drafts `json/spells/spell_conditionals.draft.json` in three
+  buckets: A (attack/damage buffs → curated `spell_changes.json`), B (touch-attack riders) and
+  C (offensive non-touch: area/save damage, save-or-suffer, debuffs) → both curated into
+  `spell_riders.json` (C uses `attack: null`; explicit save+effect riders, numbers in `[[ ]]`).
+  Gate: `validate_spell_conditionals.py`. Status/curation state: `docs/feature_spec_todo.md` §7.
+- `promote_spell_conditionals.py` → bulk-merges reviewed `spell_conditionals.draft.json` entries
+  into curated `spell_riders.json` / `spell_changes.json` (curation wins; drops harmless-save
+  misreads, `(see spell description)` C stubs, and save-less/rider-less B shells). Idempotent; run
+  `validate_spell_conditionals.py` after. Grew riders 239 → 619.
+- `build_spell_rider_worklist.py` + `merge_spell_riders.py` → the detailed-effect sweep tooling.
+  The worklist slices `spell_riders.json` + `data/spells.csv` into per-batch files for LLM authoring
+  (`has_modifier_damage` flags touch spells whose damage rolls as a modifier — checked against the
+  applier's `spell_damage_index.json` — so the agent doesn't double-state it); the merge writes the
+  authored `effect` back as the single rider + corrected save. Run `enrich_conditional_riders.py` +
+  `validate_spell_conditionals.py` after. Samples: `docs/spell_rider_pilot_samples.md`.
+- `conditional_clauses.py` + `enrich_conditional_riders.py` → the six-detail labeled-clause layer.
+  `conditional_clauses.py` holds the shared idempotent builders (`Cost:`/`Activation:`/`Range:`/
+  `Save:`/`Effect:`); `enrich_conditional_riders.py` appends only the *missing* clauses to the
+  curated `spell_riders.json`/`spell_changes.json` (repo) + the module's `*_talent_conditionals.json`
+  (CL-scaled range from the CSV `range` col, gp cost, spell save DC `[[ 10 + @slvl + @castMod ]]`,
+  real talent spell-point counts). Re-runnable no-op; `build_*` reuse the helpers. See
+  `docs/spheres_conditional_decision_rules.md`.
+- The curated `spell_riders.json` / `spell_changes.json` are also consumed OUTSIDE this repo by the
+  **`pf1-conditional-applier`** repo — a run-on-demand Foundry macro that scans an actor and, via a
+  per-weapon review/edit pop-up (toggle on/off, edit clauses, persistent per-weapon overrides),
+  attaches its Path of War + Spheres + spell (A/B/C) conditionals onto a chosen weapon (idempotent,
+  with a gap report). It supersedes the removed **"Spell Conditionals (Rider Spells)"** LevelDB compendium
+  pack (whose builder `build_spell_conditional_compendium.py` + `_compendium/` were deleted here and
+  preserved in that repo's `build/`).
 - `validate_*.py` → CI-style checks (class_feature_effects, flaw_effects, quality_effects).
 - `audit_class_choice_descriptions.py` → flags choice-pool entries with empty/trivial text.
 - `fix_*.py`, `scrape_*.py`, `_smoke_*.py`, `compile_feats_new.py` — one-off converters,

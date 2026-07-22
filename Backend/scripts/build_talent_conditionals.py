@@ -35,7 +35,12 @@ Usage:
 import argparse
 import json
 import re
+import sys as _sys
 from pathlib import Path
+
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+from validate_talent_conditionals import is_cost_only   # two-prong gate: never seed a payload-less cost
+import conditional_clauses as cc                          # shared six-detail clause builders
 
 REPO = Path(__file__).resolve().parents[2]
 SPHERES_DIR = REPO / "Backend" / "json" / "class_data" / "spheres"
@@ -48,8 +53,8 @@ OUTPUTS = {
     "power": SPHERES_DIR / "magic_talent_conditionals.draft.json",
 }
 
-DC_POWER = "[[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]]"
-DC_MIGHT = "[[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]]"
+DC_POWER = "[[ 10 + floor(@spheres.cl.total / 2) + max(@abilities.int.mod, @abilities.wis.mod, @abilities.cha.mod) ]]"
+DC_MIGHT = "[[ 10 + floor(@attributes.bab.total / 2) + max(@abilities.int.mod, @abilities.wis.mod, @abilities.cha.mod) ]]"
 
 _DMG_TYPES = ('fire|cold|acid|electricity|electric|sonic|force|negative|positive|'
               'bludgeoning|piercing|slashing|untyped')
@@ -176,8 +181,12 @@ def _rider_seed(text, system):
         parts.append("special attack action")
     elif _ATTACK_OR_AOO_RE.search(text):
         parts.append("attack action or attack of opportunity only")
-    if _SPELL_POINT_RE.search(text):
-        parts.append("spend [[1]] spell point")
+    sp = cc.talent_spellpoint_count(text)                # REAL count from the benefit (not always 1)
+    if sp is not None:
+        parts.append(f"spend [[{sp}]] spell point{'s' if sp != 1 else ''}")
+    rng = cc.talent_range_clause(text)                   # a Range clause when clearly derivable
+    if rng:
+        parts.append(rng)
     sv = _SAVE_RE.search(text)
     if sv:
         dc = DC_POWER if system == "power" else DC_MIGHT
@@ -205,7 +214,9 @@ def build_draft(system):
             total += 1
             text = str(rec.get("benefit", "") or rec.get("description", "")).strip()
             seed = _seed(text, system)
-            if not seed["modifiers"] and not seed["rider"]:
+            # A seed with no real payload -- a bare cost ("expend martial focus" / "spend [[1]] spell
+            # point") -- is NOT a conditional (two-prong rule; validate_talent_conditionals).
+            if is_cost_only({"modifiers": seed["modifiers"], "rider": seed["rider"]}):
                 continue
             kept += 1
             entry = {"modifiers": seed["modifiers"], "review": True,

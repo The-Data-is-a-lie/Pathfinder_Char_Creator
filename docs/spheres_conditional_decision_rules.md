@@ -13,6 +13,23 @@ maneuvers are (see [`pow_conditional_decision_rules.md`](pow_conditional_decisio
 The generator (`addSphereTalentConditionals` in the module's `modify-abilities.js`), the palette
 builder (`build_pow_template_actor.py --spheres`), and the promote validator all enforce it.
 
+## The six-detail labeled-clause format (2026-07-20)
+
+A conditional's rider is a `; `-separated list of **labeled clauses** in a fixed order, so every
+player-facing detail is spelled out and the applier's per-weapon pop-up can split it into editable
+rows:
+
+    Cost: …; Activation: …; Range: …; Save: …; Effect: …
+
+Damage stays on `modifiers[]` (restated under `Effect:` only when the compendium rolls it and there is
+no modifier). `Backend/scripts/conditional_clauses.py` holds the shared, idempotent builders;
+`enrich_conditional_riders.py` appends only the **missing** clauses to already-curated finals (never
+rewording hand-written text — a second run is a no-op), and `build_talent_conditionals.py` /
+`build_spell_conditionals.py` reuse the same helpers so fresh drafts start enriched. Range distances
+scale via `@spells.primary.cl.total`; the spell save DC uses `@slvl` / `@castMod`, substituted at
+attach time by both the applier macro and the module's `addSpellRiders`/`addSpellConditionals`.
+Talent spell-point costs now carry the **real** count (the seed's hardcoded `[[1]]` is fixed).
+
 ## File map (don't confuse the two "changes" files)
 
 | File | Holds | Consumed by |
@@ -63,7 +80,7 @@ merges the curated per-sphere files into the three files above.
 | **Bonus to *this* attack's to-hit** | **attack modifier** — `target:"attack"`, `subTarget:"allAttack"`, `damageType:[]` |
 | **Precision damage** (Fencing, Barrage, Scoundrel …) | damage modifier, `damageType:[]`, `critical:"nonCrit"`; keep the target-state contingency ("vs flat-footed/flanked/Dex-denied") + the word "precision" in the rider |
 | **Bleed damage** (Duelist, Open Hand …) | **rider** text `[[NdM]] bleed damage` — bleed is ongoing, never a modifier |
-| **Save + DC** | rider — Power `Reflex/Fortitude/Will Save [[ 10 + floor(@spheres.cl.total / 2) + @spheres.cam ]]`; Might `… [[ 10 + floor(@attributes.bab.total / 2) + @spheres.pam ]]` |
+| **Save + DC** | rider — Power `Reflex/Fortitude/Will Save [[ 10 + floor(@spheres.cl.total / 2) + max(@abilities.int.mod, @abilities.wis.mod, @abilities.cha.mod) ]]` (highest mental mod, resolves without pf1spheres); Might `… [[ 10 + floor(@attributes.bab.total / 2) + max(@abilities.int.mod, @abilities.wis.mod, @abilities.cha.mod) ]]` (this campaign's practitioner ability = highest mental) |
 | **Conditions, durations, ranges, # targets, ability damage/drain** | rider text, every number `[[ ]]` |
 | **Contingency / cost** — "expend martial focus", "special attack action", "attack action or AoO only", "spend [[1]] spell point", target-state | rider, stated **first** |
 | **Blast damage-type swap** (Fire/Frost/Acid Blast …) | rider only (`modifiers:[]`): "blast deals fire damage instead of bludgeoning; …save/condition" — the base dice live on the Destructive Blast item |

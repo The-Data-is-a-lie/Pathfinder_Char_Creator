@@ -214,6 +214,14 @@ def _prune_class_pool(pool, picked):
     return pool
 
 
+def _is_caster(character, c):
+    """True when class `c` has a real spellcasting progression (casting level != 'none'). Used to cap
+    a multiclass at 3 caster classes: pf1 has only 3 spellbook slots (primary/secondary/tertiary), so a
+    4th caster's spellbook would be dropped on the Foundry sheet — losing its spells AND its sphere
+    caster-level contribution."""
+    return str(character.class_data[c].get('casting level', 'none')).lower() != 'none'
+
+
 def select_classes(character, class_choice, chosen_BAB, chosen_caster_level=None, multi_class='N'):
     """
     Pick the character's class NAMES. Slot 0 honors class_choice / chosen_BAB /
@@ -235,6 +243,12 @@ def select_classes(character, class_choice, chosen_BAB, chosen_caster_level=None
         count = random.choices([2, 3, 4], weights=[50, 35, 15], k=1)[0]
         pool = _prune_class_pool(_available_class_pool(character), picks[0])
         while len(picks) < count and pool:
+            # Cap caster classes at 3 (pf1 has only 3 spellbook slots) — once 3 casters are picked,
+            # drop the rest of the casters so remaining slots draw from non-casters only.
+            if sum(1 for p in picks if _is_caster(character, p)) >= 3:
+                pool = [c for c in pool if not _is_caster(character, c)]
+                if not pool:
+                    break
             picked = random.choice(pool)
             picks.append(picked)
             pool = _prune_class_pool(pool, picked)
