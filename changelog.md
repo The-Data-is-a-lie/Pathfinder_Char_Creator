@@ -19,6 +19,17 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **"On Other Attacks" section in the conditional applier dialog.** The `pf1-conditional-applier`
+  review dialog now shows a bottom **On Other Attacks** section listing the conditionals that live on
+  the actor's OTHER, differently-named weapons/attacks — as opt-in rows (default **off**, with the
+  section's all-on/off toggle and per-row include/edit, just like Spells / Path of War) that **copy the
+  real conditional (its modifiers)** onto the selected weapon when applied. Deduped by name prefix
+  (text before the first `:`); excludes the same-named attack twin, `──────` dividers / inert
+  name-only entries, and prefixes already offered by the built-in sections or already on this weapon;
+  recomputed per selected weapon. Lets you copy feat/enhancement/item conditionals (which the applier
+  can't generate itself) from one weapon onto another. In
+  `pf1-conditional-applier/src/apply-conditionals.macro.js` (`openDialog` `otherAttackSpecs` + the
+  `On Other Attacks` rank/label in `applyToWeapon`), re-bundled.
 - **Combined homebrew caster level for spell riders, resolved at attach time.** Spell-rider caster
   level now follows the campaign rule: a multiclass character's effective CL is the **sum** of each
   casting class's contribution — high/mid casters count their **full** class level, **low casters
