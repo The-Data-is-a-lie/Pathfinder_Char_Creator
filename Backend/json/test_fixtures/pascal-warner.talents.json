@@ -1,0 +1,213 @@
+{
+  "actor": "Pascal Warner",
+  "talents": [
+    {
+      "name": "Swift Guardian",
+      "sphere": "guardian"
+    },
+    {
+      "name": "Swift Reflexes",
+      "sphere": "guardian"
+    },
+    {
+      "name": "Assist",
+      "sphere": "guardian"
+    },
+    {
+      "name": "Mageguard",
+      "sphere": "guardian"
+    },
+    {
+      "name": "Iron Wall",
+      "sphere": "guardian"
+    },
+    {
+      "name": "Patrol",
+      "sphere": "guardian"
+    },
+    {
+      "name": "Brutal Strike",
+      "sphere": "berserker"
+    },
+    {
+      "name": "Berserking",
+      "sphere": "berserker"
+    },
+    {
+      "name": "Run",
+      "sphere": "athletics"
+    },
+    {
+      "name": "Move Aside",
+      "sphere": "athletics"
+    },
+    {
+      "name": "Armored Defense",
+      "sphere": "equipment"
+    },
+    {
+      "name": "Steel Martyr",
+      "sphere": "equipment"
+    },
+    {
+      "name": "Defend Other",
+      "sphere": "guardian"
+    },
+    {
+      "name": "Battle Ready Armor",
+      "sphere": "equipment"
+    },
+    {
+      "name": "Skin of Steel",
+      "sphere": "equipment"
+    },
+    {
+      "name": "Sweep",
+      "sphere": "openHand"
+    },
+    {
+      "name": "_______________________________Path of War",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(Stance) Valiant Keeper's",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(Boost) Warden's Bearing",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(ADVANCED) Push The Limit",
+      "sphere": "guardian"
+    },
+    {
+      "name": "Armor Expert",
+      "sphere": "equipment"
+    },
+    {
+      "name": "Sword Eater",
+      "sphere": "berserker"
+    },
+    {
+      "name": "Greater Delayed Damage (2x)",
+      "sphere": "guardian"
+    },
+    {
+      "name": "_______________________________Sphere of Power",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "_____________Accounting (2) Readied",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "________________________________Combat Tricks",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(One-Handed Weapon Tricks) Free Hand Maneuver",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(One-Handed Weapon Tricks) Grab and Stab",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(One-Handed Weapon Tricks) Mindful Dodge",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(One-Handed Weapon Tricks) Strike and Seize",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(One-Handed Weapon Tricks) Stylish Riposte",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(Polearm Tricks) Choke Up",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(Polearm Tricks) Pole Vault",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(Polearm Tricks) Quick Brace",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(Two-Handed Weapon Tricks) Two Handed Menace",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(Two-Handed Weapon Tricks) Warding Weapon",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "Focusing Breath",
+      "sphere": "openHand"
+    },
+    {
+      "name": "Crystal Blast",
+      "sphere": "destruction"
+    },
+    {
+      "name": "Crystal Cocoon",
+      "sphere": "destruction"
+    },
+    {
+      "name": "Guided Strike",
+      "sphere": "destruction"
+    },
+    {
+      "name": "Energy Strike",
+      "sphere": "destruction"
+    },
+    {
+      "name": "Focused Blast",
+      "sphere": "destruction"
+    },
+    {
+      "name": "Focused Blast Type Group",
+      "sphere": "destruction"
+    },
+    {
+      "name": "Destructive Blast",
+      "sphere": "destruction"
+    },
+    {
+      "name": "________________________________Techniques",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(Stance) Silver Crane Waltz",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(Counter) Defensive Step",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(Strike) Silver Strike",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "(Stance) Eyes of the Crane",
+      "sphere": "alchemy"
+    },
+    {
+      "name": "Improved Selective Blast (Free)",
+      "sphere": "destruction"
+    },
+    {
+      "name": "Sculpt Blast (Free)",
+      "sphere": "destruction"
+    },
+    {
+      "name": "Impact Burst (Free)",
+      "sphere": "destruction"
+    }
+  ]
+}
