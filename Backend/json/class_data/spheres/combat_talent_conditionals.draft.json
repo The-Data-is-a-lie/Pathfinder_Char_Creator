@@ -19,7 +19,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -343,7 +345,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "as-weapon"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -529,7 +533,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "as-weapon"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -851,7 +857,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "as-weapon"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -1075,7 +1083,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "as-weapon"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -1090,7 +1100,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "as-weapon"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -1206,7 +1218,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "as-weapon"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -1547,7 +1561,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -1853,7 +1869,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "as-weapon"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -1918,7 +1936,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -2061,7 +2081,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -2294,7 +2316,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "as-weapon"
+          ],
           "critical": "nonCrit"
         }
       ],

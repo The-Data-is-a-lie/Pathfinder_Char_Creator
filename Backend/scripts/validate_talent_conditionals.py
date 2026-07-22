@@ -73,6 +73,26 @@ def find_bad_tokens(conditionals):
     return out
 
 
+_DICE = re.compile(r"[\d)]d\d")
+
+
+def find_untyped_damage(conditionals):
+    """[(sphere, talent, formula), ...] WARN list: a dice DAMAGE modifier with an empty damageType
+    renders "undefined" on the sheet (consumers coerce to untyped, but a real element is preferable)."""
+    out = []
+    for sphere, talents in (conditionals or {}).items():
+        if not isinstance(talents, dict):
+            continue
+        for talent, entry in talents.items():
+            for m in ((entry or {}).get("modifiers") or []):
+                if not isinstance(m, dict) or m.get("target") != "damage":
+                    continue
+                dt = m.get("damageType")
+                if _DICE.search(str(m.get("formula", ""))) and not (isinstance(dt, list) and dt):
+                    out.append((sphere, talent, str(m.get("formula", ""))))
+    return out
+
+
 _MODULE_CS = Path(
     r"C:\Users\Daniel\AppData\Local\FoundryVTT\Data\modules\pf1e_random_char_generator"
     r"\templates\character_sheet_folder")
@@ -82,6 +102,7 @@ def main():
     import json
     total = 0
     bad = []
+    warns = []
     for fn in ("magic_talent_conditionals.json", "combat_talent_conditionals.json"):
         p = _MODULE_CS / fn
         if not p.exists():
@@ -93,12 +114,17 @@ def main():
             bad.append(f"{fn.split('_')[0]}/{sphere}/{talent}: cost-only -- {rider}")
         for sphere, talent, tok in find_bad_tokens(d):
             bad.append(f"{fn.split('_')[0]}/{sphere}/{talent}: malformed token {tok} (cam/pam take no .total)")
+        for sphere, talent, formula in find_untyped_damage(d):
+            warns.append(f"{fn.split('_')[0]}/{sphere}/{talent}: dice damage, empty damageType "
+                         f"(coerced to untyped; prefer a real element) -- {formula}")
+    for w in warns:
+        print(f"WARN: {w}")
     if bad:
         print(f"{len(bad)} invalid talent conditional(s) (cost-only and/or malformed token):")
         for b in bad[:60]:
             print(f"  {b}")
         sys.exit(1)
-    print(f"OK: {total} talent conditionals, 0 cost-only, 0 malformed tokens.")
+    print(f"OK: {total} talent conditionals, 0 cost-only, 0 malformed tokens ({len(warns)} untyped-damage warning(s)).")
 
 
 if __name__ == "__main__":

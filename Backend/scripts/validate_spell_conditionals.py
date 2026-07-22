@@ -141,6 +141,13 @@ def check_modifier(owner, m):
         err(f'{owner}: modifier target {m.get("target")!r} must be attack/damage')
     if POW_TOKENS.search(str(m.get('formula', ''))):
         err(f'{owner}: PoW token in formula {m.get("formula")!r}')
+    # WARN (not fail): a dice DAMAGE modifier with an empty damageType renders "undefined" on the
+    # sheet. The consumers coerce it to ["untyped"] at attach time, but a real element is preferable.
+    dt = m.get('damageType')
+    if (m.get('target') == 'damage' and re.search(r'[\d)]d\d', str(m.get('formula', '')))
+            and not (isinstance(dt, list) and dt)):
+        warnings.append(f'{owner}: dice damage modifier has empty damageType '
+                        f'(coerced to untyped; prefer a real element) -- formula {m.get("formula")!r}')
 
 
 def check_changes_file(changes):

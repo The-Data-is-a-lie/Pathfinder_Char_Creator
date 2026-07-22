@@ -7,7 +7,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -34,7 +36,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "normal"
         }
       ],
@@ -55,7 +59,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -141,7 +147,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -214,7 +222,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -278,7 +288,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -450,7 +462,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -580,7 +594,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -595,7 +611,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -621,7 +639,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -827,7 +847,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -951,7 +973,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -1285,7 +1309,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "negative"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -1396,7 +1422,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "negative"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -1483,7 +1511,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -2389,7 +2419,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -2452,7 +2484,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -3187,7 +3221,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -3237,7 +3273,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -3520,7 +3558,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -3535,7 +3575,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -3562,7 +3604,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "bludgeoning"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -3659,7 +3703,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -3704,7 +3750,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -3783,7 +3831,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -4519,7 +4569,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -4692,7 +4744,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -4839,7 +4893,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],
@@ -4901,7 +4957,9 @@
           "target": "damage",
           "subTarget": "allDamage",
           "type": "untyped",
-          "damageType": [],
+          "damageType": [
+            "untyped"
+          ],
           "critical": "nonCrit"
         }
       ],

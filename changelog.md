@@ -88,6 +88,27 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   already fully curated (120 buff spells, unchanged). `validate_spell_conditionals.py` passes.
 
 ### Fixed
+- **Damage-dealing conditionals no longer render their damage type as "undefined."** A conditional
+  damage modifier with an empty `damageType` displayed "undefined" on the pf1 sheet (pf1's damage-roll
+  `??=` only defaults null/undefined, not an empty Set), and a conditional modifier can't inherit the
+  weapon's type. Two-part fix: (1) **attach-time coercion** — the module (`modify-abilities.js`, all six
+  modifier-build sites via a `dmgTypeOrUntyped` helper) and the applier (`mkMod`) coerce an empty
+  `damageType` on a **dice** damage instance to `["untyped"]`, and `build_data.py` defaults typeless
+  compendium parts (detonate, poisonous cloud) to `["untyped"]` — so the sheet never shows "undefined";
+  (2) **curated the real element** on 65 dice damage modifiers (`spell_changes.json`, the module's
+  magic/combat talent finals + the backend drafts, `feat_conditionals.json`) — e.g. Ectoplasmic
+  Eruption → bludgeoning, Face of the Devourer → piercing, Nature/Earthquake → bludgeoning, Death-sphere
+  strikes → negative; genuinely variable / per-strike / mixed damage (dragon breath, Detonate, martial
+  strikes, the destructive-blast base) → `["untyped"]`. `validate_spell_conditionals.py` /
+  `validate_talent_conditionals.py` now **WARN** (non-blocking) on any dice damage modifier with an
+  empty `damageType`. Weapon-riding physical dice (Gravity Bow, Lead Blades, per-strike martial strikes
+  — Deadly Shot / Fatal Thrust / Sever / Skewer / Limb Ripper / Clinch Strike / Shatter / Sword Shooter
+  / Dolphin Strike / Forceful Jaunt / Open Vein — and the Savage Display feat) carry an `["as-weapon"]`
+  sentinel that the module (`weaponDamageTypes`/`dmgTypeOrUntyped` on all attach sites) and the applier
+  (`mkMod`) resolve **at attach time** to the target weapon's own damage type (pf1 v11 `type.values` or
+  older `types`), so the bonus dice show the weapon's real slashing/bludgeoning/piercing (untyped
+  fallback when the weapon has none). This avoids the conditional-can't-inherit limitation without a
+  `wdamage`-Change (whose dice roll-vs-maximize behavior is unverified).
 - **Spell riders that shipped a constant where a caster-level total was meant.** Converted the
   missed scaling in `spell_riders.json`: Blast Barrier (`[[5]] hit points per caster level` →
   `[[5*@spells.primary.cl.total]]`), Blazing Rainbow (bridge length), Fire Snake (affected squares),
