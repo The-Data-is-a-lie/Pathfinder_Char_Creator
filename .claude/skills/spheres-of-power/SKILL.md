@@ -182,8 +182,15 @@ traditions in v1**, **enrich combat data from the Foundry compendium**.
   structured `modifiers[]` (auto `[Talent]`-labeled); saves/DCs/conditions/durations/bleed → `[[ ]]`
   rider text. DCs: Power `10 + floor(@spheres.cl.total/2) + @spheres.cam`, Might `10 +
   floor(@attributes.bab.total/2) + @spheres.pam`. The module's `addSphereTalentConditionals()` /
-  `addDestructiveBlastAttack()` substitute the dabbler tokens (`@spheres.cl.total→1`,
-  `@spheres.cam/pam→@abilities.*.mod`) and stamp `flags.pf1spheres.castingAbility/practitionerAbility`.
+  `addDestructiveBlastAttack()` substitute the dabbler tokens via `subSpheres()`:
+  `@spheres.cam/pam→@abilities.*.mod`, and `@spheres.cl.total→` a **live, tier-accurate,
+  multiclass-summed** sphere CL (`sphereCLExpr()`: `max(Σ per caster book {high `@classes.<tag>.level`,
+  mid `floor(3·lvl/4)`, low `floor(lvl/2)`}, 1)`) — so DCs/blast scale with real level, not a flat CL 1.
+  It also stamps `flags.pf1spheres.castingAbility/practitionerAbility` + a `spherecl` Change (same
+  expr). Because Power talents only go to real casters (each has a spellbook), the class levels resolve;
+  kineticist/no-spellbook casters floor to CL 1. Caster classes are capped at 3 in `select_classes`
+  (pf1 has 3 spellbook slots). Authored data + the palette keep native `@spheres.*` (see
+  [`spheres_caster_level_resolution.md`](../../docs/spheres_caster_level_resolution.md)).
   Data files: module `combat_talent_conditionals.json` / `magic_talent_conditionals.json` (nested
   `{Sphere:{Talent:{modifiers,rider}}}`) — authored via `Backend/scripts/build_talent_conditionals.py`
   (`--dump-worklist`) + gitignored `Backend/scripts/_spheres_generator/` (per-sphere curated files +
