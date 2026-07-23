@@ -146,7 +146,54 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   `seal()`/`require_sealed()` express that instead. `test_pipeline_phases.py` deliberately violates
   each contract and asserts the error — a guard that never fires is worth nothing.
 
+### Fixed
+- **180 bonus-spell names shipped wrong.** `clean_bonus_spells` finished with `str.title()`, which
+  broke domain / bloodline / wizard-school bonus spells four ways at once:
+
+  | stored | shipped | should be |
+  |---|---|---|
+  | `breath of life` | `Breath Of Life` | `Breath of Life` — Paizo lowercases connecting words |
+  | `beast shape III` | `Beast Shape Iii` | `Beast Shape III` — Roman numerals destroyed |
+  | `bull's strength` | `Bull'S Strength` | `Bull's Strength` — uppercase after the apostrophe |
+  | `bulls strength` | `Bulls Strength` | `Bull's Strength` — source data lost the apostrophe |
+
+  Names now resolve against `data/spells.csv` through a fold that ignores case and apostrophes,
+  taking the CSV's exact spelling — which fixes all four at once, the stripped-apostrophe source
+  data included, because the fold makes the stored spelling irrelevant. Further candidates are tried
+  in order and **accepted only if they resolve against the CSV**, so a wrong guess costs nothing:
+  source tags and modified-spell asterisks are stripped (`frightful aspectUC`), and the
+  greater/lesser/mass qualifier is rewritten to the comma form the CSV uses, from either the
+  parenthesized spelling (`command (greater)`) or the prefix spelling (`greater command`) →
+  `Command, Greater`.
+
+  **A qualifier that doesn't resolve deliberately does not fall back to the stem**: *Cure Critical
+  Wounds, Mass* is 8th level against the base spell's 4th, so degrading would hand the character a
+  different, weaker spell. A *descriptive* parenthetical is stripped, since `animal shapes (birds
+  only)` is a domain restriction rather than part of the name.
+
+  **180 unresolved → 9**, and those 9 are genuine source typos (`Slipsream`, `Vermin Shap II`,
+  `Giant Vermin,`) that now fall back to word-wise capitalization instead of substituting a wrong
+  spell. This matters beyond the buff maps: the FoundryVTT module resolves a spell **by name**
+  against `every_spell.json`, so a mis-spelled bonus spell renders as a synthesized stand-in rather
+  than the real compendium spell.
+- **Tier-B class-feature conditionals are filtered too.** The tier sweep filtered feats but not class
+  features, so 26 tier-B conditionals still appeared as toggles in the attack dialog. The rule now
+  lives in one place — `buff_match.keep_tier_a()` — called from both sites, handling both curated
+  shapes (entry-level tier for feats, per-conditional for class features) and returning falsy when
+  nothing survives, so an all-tier-B power stays out of the payload rather than shipping as an empty
+  toggle. `quality_effects.json` gets the same behaviour free when it is swept.
+
 ### Changed
+- **The planned widening of buff name-matching was dropped, on evidence.** New
+  `Backend/scripts/sweep_buff_gaps.py` generates many characters and ranks `buff_gaps` by kind.
+  **210 characters produced exactly two gaps, both caused by the bonus-spell naming bug above** —
+  zero in feat, item, class_feature, quality, talent or stance. That has a structural reason worth
+  recording: those kinds' curated data is **generated from the same source the generator selects
+  from**, so it cannot drift; only the spell maps are hand-curated against Paizo canon while names
+  come from `data/spells.csv`. Widening the matcher would have masked the upstream defect instead of
+  fixing it. `report_buff_coverage.py` now also **fails on curated-name collisions** (two names in
+  one kind folding together, where the index silently keeps the first) — none today; it exists to
+  catch the edit that introduces one.
 - **Magic enhancements are bought before ordinary gear, out of a reserved share of the purse.**
   `item_chooser` ran first and drained the gold, so `enhancement_calculator` could never afford a
   tier — **every realistically-funded NPC had `enhancement_effects_dict` empty** and no magic weapon
