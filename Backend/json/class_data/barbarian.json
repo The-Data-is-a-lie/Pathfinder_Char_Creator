@@ -10,7 +10,7 @@
    },
    "ancestor totem": {
      "prerequisites": "barbarian 6, lesser ancestor totem",
-     "benefit": "the barbarianas insight bonus to her chosen skill increases to +4. the barbarian can now select any skill to receive this bonus, even a charisma-, dexterity-, or intelligence-based skill or a skill that requires patience or concentration; if she selects such a skill, she can use it even while raging.a "
+     "benefit": "the barbarianas insight bonus to her chosen skill increases to +4. the barbarian can now select any skill to receive this bonus, even a charisma-, dexterity-, or intelligence-based skill or a skill that requires patience or concentration; if she selects such a skill, she can use it even while raging."
    },
    "ancestor totem, greater": {
      "prerequisites": "barbarian 10, ancestor totem",
@@ -48,7 +48,7 @@
    },
    "beast totem, greater": {
      "prerequisites": "barbarian 10, beast totem",
-     "benefit": "while raging, the barbarian gains the pounce special ability, allowing her to make a full attack at the end of a charge. in addition, the damage from her claws increases to 1d8 (1d6 if small) and the claws deal x 3 damage on a critical hit. faq if a creature with pounce is under a slow effect, and it charges, does it still get its full attack from pounce? according to the rules as written, pounce would allow the creature its full attack, despite the slow effect. (this happens because there is no partial charge action in the pathfinder rpg.) source"
+     "benefit": "while raging, the barbarian gains the pounce special ability, allowing her to make a full attack at the end of a charge. in addition, the damage from her claws increases to 1d8 (1d6 if small) and the claws deal x 3 damage on a critical hit. faq if a creature with pounce is under a slow effect, and it charges, does it still get its full attack from pounce? according to the rules as written, pounce would allow the creature its full attack, despite the slow effect. (this happens because there is no partial charge action in the pathfinder rpg.)"
    },
    "bestial climber": {
      "prerequisites": "barbarian 6, raging climber",
