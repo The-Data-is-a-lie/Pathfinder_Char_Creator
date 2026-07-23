@@ -3,22 +3,20 @@
  "age_number": 45,
  "alignment": "Lawful Good",
  "appearance": [
-  "Rugged"
+  "Smiling"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Aquanaut\": {\n        \"source\": \"Aquatic Adventures pg. 51 Aquanaut fighters master the movement of water, using its flow to their advantage in combat.\",\n        \"armor proficiency\": \" An aquanaut is proficient with light and medium armor, but not with shields. This alters the fighter's armor proficiency.\",\n        \"piercing focus\": \" If an aquanaut takes a fighter bonus feat that normally requires selecting a single weapon (except weapon proficiency feats), he can instead apply the feat to all melee piercing weapons with which he is already proficient and that meet all other prerequisites for that feat. This ability counts as having the feat for each such individual weapon for the purpose of meeting prerequisites. This ability also applies to the weapon mastery class feature. This alters bonus feats and weapon mastery.\",\n        \"tidal celerity\": \" At 2nd level, an aquanaut gains a +1 bonus on Reflex saves and saving throws against effects that would immobilize or paralyze him. This bonus increases by 1 for every 4 levels beyond 2nd. This ability replaces bravery.\",\n        \"aquadynamic paragon\": \" At 3rd level, an aquanaut gains a swim speed equal to his unmodified base land speed (if he has a racial swim speed, he instead increases it by 10 feet) and can choose to have a neutral buoyancy once per turn as a free action. At 7th level, he can choose any of the five states of buoyancy once per turn as a free action, and can take his buoyancy movement as part of that free action instead of at the end of his turn without becoming off-balance and without requiring a Swim check; additionally, he can choose to double or halve how far a current moves him. At 11th level, whenever he takes a move, double move, withdraw, or run action underwater, he can leave a current behind him in the squares along his path; this current has a speed of 10 feet in the direction of his movement (if his movement was circuitous, so is the current) and lasts until the beginning of his next turn. At 15th level, as a full round action, an aquanaut can spin ferociously underwater, creating a whirlpool around himself with a spinning force that drags all creatures within 120 feet of him 30 feet closer to him. Creatures closer than 30 feet spend the 30 feet of movement circling around the aquanaut in a single direction of his choice. The whirlpool isn't fast enough to deal damage, but the aquanaut is unaffected by his own whirlpool, allowing him to make attacks of opportunity against creatures moving in it. At 19th level, the aquanaut learns to use the water around him to soften blows, gaining DR 5/- while underwater. This ability replaces armor training and armor mastery.\",\n        \"underwater training\": \" At 5th level, an aquanaut chooses bludgeoning, slashing, or piercing melee weapons. If he chooses piercing melee weapons, he gains a +1 bonus on attack and damage rolls with those weapons when attacking underwater. If he chooses bludgeoning or slashing melee weapons, he can ignore the usual underwater penalties for attacking with those weapons (see page 44). At 9th and 13th levels, he can choose another type of melee weapon, applying this ability's initial benefit to his new choice and gaining an additional +1 bonus on attack and damage rolls to his previously chosen weapon types. At 17th level, he gains an additional +1 bonus on attack and damage rolls with all three types. This ability replaces weapon training.\"\n    }\n}",
- "armor_ac": "9",
- "armor_armor_check_penalty": "-6",
+ "armor_ac": "8",
+ "armor_armor_check_penalty": "-7",
  "armor_enhancement_bonus": 4,
  "armor_enhancement_chosen_list": [
-  "Radiant",
-  "Calming",
-  "Improved Aquadynamic"
+  "Comfort"
  ],
- "armor_max_dex_bonus": "1",
- "armor_name": "Stoneplate",
+ "armor_max_dex_bonus": "0",
+ "armor_name": "Half-plate",
  "armor_spell_failure": 0,
- "armor_weight": "75 lbs.",
+ "armor_weight": "50 lbs.",
  "bab_total": 16,
  "background_traits": [
   "Precocious Spellcaster",
@@ -31,8 +29,8 @@
  "bloodline_feat_labels": [],
  "bloodline_feats": [],
  "buff_gaps": [],
- "build_archetype": "Generalist",
- "build_tactics": "Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.",
+ "build_archetype": "Archer",
+ "build_tactics": "Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.",
  "c_class": "fighter",
  "c_class_2": "",
  "c_class_display": "Fighter",
@@ -40,9 +38,19 @@
  "casting_tradition": {
   "bonus_spell_points": 1,
   "boons": [
+   "Easy Focus",
+   "Overcharge",
    "Fortified Casting"
   ],
   "boons_detail": [
+   {
+    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
+    "name": "Easy Focus"
+   },
+   {
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
+   },
    {
     "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
     "name": "Fortified Casting"
@@ -50,11 +58,29 @@
   ],
   "casting_ability_modifier": "Charisma",
   "drawbacks": [
+   "Addictive Casting",
+   "Magical Signs",
+   "Skilled Casting",
    "Wild Magic",
-   "Material Casting",
-   "Magical Signs"
+   "Verbal Casting",
+   "Painful Magic"
   ],
   "drawbacks_detail": [
+   {
+    "counts_as": 2,
+    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
+    "name": "Addictive Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
+    "name": "Magical Signs"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
+    "name": "Skilled Casting"
+   },
    {
     "counts_as": 1,
     "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
@@ -62,13 +88,13 @@
    },
    {
     "counts_as": 1,
-    "description": "Your magic requires expending consumable materials/components worth roughly 1 sp per caster level each time you use a sphere ability.",
-    "name": "Material Casting"
+    "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
+    "name": "Verbal Casting"
    },
    {
     "counts_as": 1,
-    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
-    "name": "Magical Signs"
+    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
+    "name": "Painful Magic"
    }
   ]
  },
@@ -95,11 +121,11 @@
   "weapon_training": "fighter"
  },
  "class features": {
-  "Skill Unlock: Disable Device": {
-   "10 Ranks": "You can disarm magical traps at a -10 penalty, and with trapfinding you never accidentally trigger a trap even while performing its trigger action.",
-   "15 Ranks": "When attacked by a trap, you can attempt an immediate-action Disable Device check opposed by the trap's attack roll or save DC to take half or no damage.",
-   "20 Ranks": "Halve the penalties for quickly disarming, and with trapfinding you can take a -20 penalty to let allies benefit and disable a trap before it triggers (DC +10).",
-   "5 Ranks": "You can reduce the time to disarm a trap or open a lock by taking a -5 penalty per step (down to a swift action)."
+  "Skill Unlock: Linguistics": {
+   "10 Ranks": "Exceed a writing-examination check by 10 to learn its precise meaning, never draw false conclusions on a failure, and decipher spoken meaning at high DCs.",
+   "15 Ranks": "You can decipher magical writings (DC 25 + caster level) as if using read magic, and gain a +2 bonus on Disable Device for identified magical traps.",
+   "20 Ranks": "You decipher text at one page per round, and spending 1 minute per page lets you roll twice and take the better result.",
+   "5 Ranks": "You can use Linguistics in place of Sense Motive to intercept secret messages, and gain a scaling insight bonus on Perception/Disable Device checks for written magical traps."
   },
   "armor_training": {
    "adaptable training (ex)": {
@@ -149,23 +175,24 @@
   "Fighter 16"
  ],
  "class_feat_tax_dict": {
-  "Martial Training I (Mithral Current)": [
-   "Martial Training II (Mithral Current)"
+  "Blind-Fight": [
+   "improved blind-fight",
+   "greater blind-fight"
   ],
-  "Martial Training III (Mithral Current)": [
-   "Martial Training IV (Mithral Current)"
+  "Shield Proficiency": [
+   "improved shield bash"
   ]
  },
  "class_feats": [
-  "Demon Hunter",
-  "Martial Training I (Mithral Current)",
-  "Charge of the Righteous",
-  "Enforcer",
-  "Death Frombelow",
-  "Martial Training III (Mithral Current)",
-  "Duck and Cover",
-  "Hammer the Gap",
-  "Blinding Critical"
+  "Combat Medic",
+  "Shield Proficiency",
+  "Butterfly's Sting",
+  "Siphon Poison",
+  "Blind-Fight",
+  "Quick Draw",
+  "Dragoncrafting",
+  "Death Or Glory",
+  "Dazing Assault"
  ],
  "class_feature_changes_dict": {
   "adaptable training (ex)": {
@@ -195,11 +222,11 @@
   "weapon_training": "fighter"
  },
  "class_features": {
-  "Skill Unlock: Disable Device": {
-   "10 Ranks": "You can disarm magical traps at a -10 penalty, and with trapfinding you never accidentally trigger a trap even while performing its trigger action.",
-   "15 Ranks": "When attacked by a trap, you can attempt an immediate-action Disable Device check opposed by the trap's attack roll or save DC to take half or no damage.",
-   "20 Ranks": "Halve the penalties for quickly disarming, and with trapfinding you can take a -20 penalty to let allies benefit and disable a trap before it triggers (DC +10).",
-   "5 Ranks": "You can reduce the time to disarm a trap or open a lock by taking a -5 penalty per step (down to a swift action)."
+  "Skill Unlock: Linguistics": {
+   "10 Ranks": "Exceed a writing-examination check by 10 to learn its precise meaning, never draw false conclusions on a failure, and decipher spoken meaning at high DCs.",
+   "15 Ranks": "You can decipher magical writings (DC 25 + caster level) as if using read magic, and gain a +2 bonus on Disable Device for identified magical traps.",
+   "20 Ranks": "You decipher text at one page per round, and spending 1 minute per page lets you roll twice and take the better result.",
+   "5 Ranks": "You can use Linguistics in place of Sense Motive to intercept secret messages, and gain a scaling insight bonus on Perception/Disable Device checks for written magical traps."
   },
   "armor_training": {
    "adaptable training (ex)": {
@@ -248,146 +275,130 @@
   "light",
   "good"
  ],
- "craft_type": "Anchors",
+ "craft_type": "Lanterns",
  "day_list": [],
  "deity_name": "Torag",
  "dex": 12,
  "enhancement_effects_dict": {
   "armor": {
-   "Calming": {
+   "Comfort": {
     "changes": [],
     "contextNotes": [
      {
       "target": "ac",
-      "text": "Calming: swift action ( [[10]] rounds/day), a [[5]]-ft aura — raging or emotion-affected foes threatening the wearer must pass a Will Save [[15]] or those effects are suppressed while the aura persists."
+      "text": "Comfort: always clean; can be slept in as light armor; no save penalty vs extreme heat and counts as cold-weather clothing; armor check penalty reduced by [[1]] (min [[0]])."
      }
     ],
-    "description": "Calming armor is dyed or stained a soothing color, usually blue. As a swift action, the wearer can create a 5-foot aura around her that quiets the emotions of any agitated opponent threatening her. A creature that is raging or under an emotion effect must succeed at a DC 15 Will saving throw or those effects are suppressed (but not dispelled) for as long as the aura persists. The aura can be used up to 10 rounds each day, though the rounds don't need to be consecutive. Ending the aura is a swift action."
-   },
-   "Improved Aquadynamic": {
-    "changes": [
-     {
-      "formula": "10",
-      "operator": "add",
-      "priority": 0,
-      "target": "skill.swm",
-      "type": "competence"
-     }
-    ],
-    "contextNotes": [],
-    "description": "This sleek and mobile armor is magically streamlined to assist in swimming rather than making swimming more difficult, granting the wearer a +5 competence bonus on Swim checks for aquadynamic armor, a +10 competence bonus on Swim checks for improved aquadynamic armor, and a +15 competence bonus on Swim checks for greater aquadynamic armor."
-   },
-   "Radiant": {
-    "changes": [],
-    "contextNotes": [
-     {
-      "target": "ac",
-      "text": "Radiant: shines as a torch (suppress/resume on command); [[1]]/day brighten to daylight strength for [[1]] hour."
-     }
-    ],
-    "description": "Armor and shields with the radiant special ability shine as brightly as a torch when worn. This radiance can be suppressed or resumed on command. Designs usually feature bright colors and a brilliant sheen even when not illuminated. Once per day, the wearer can command the armor or shield to brighten to the strength of a daylight spell for 1 hour or until commanded to dim."
+    "description": "Armor of comfort sheds dirt and sweat as they accumulate, and remains as comfortable as weather-appropriate clothing regardless of environmental conditions. A suit of armor with this enhancement always looks immaculately clean, can be slept in as though it were light armor, and does not cause a penalty to the wearer's saving throws to resist the effects of extreme heat. In cold weather, it counts as cold-weather clothing. In addition, the armor's armor check penalty is reduced by 1 (to a minimum of 0)."
    }
   },
   "weapon": {
-   "Agile": {
+   "Kinslayer": {
     "conditionals": [
      {
-      "default": true,
-      "modifiers": [],
-      "name": "Agile: a wielder with Weapon Finesse applies Dexterity instead of Strength to damage rolls (not increased two-handed; still reduced off-hand)"
+      "default": false,
+      "modifiers": [
+       {
+        "critical": "normal",
+        "damageType": [],
+        "formula": "2",
+        "subTarget": "allAttack",
+        "target": "attack",
+        "type": "enh"
+       },
+       {
+        "critical": "nonCrit",
+        "damageType": [],
+        "formula": "2d6",
+        "subTarget": "allDamage",
+        "target": "damage",
+        "type": "untyped"
+       }
+      ],
+      "name": "Kinslayer: only vs creatures related to the wielder — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll) and the extra damage is not multiplied on a crit"
      }
     ],
-    "description": "A character with Weapon Finesse can apply her Dexterity modifier to damage rolls with an agile weapon in place of her Strength modifier. This modifier to damage is not increased for two-handed weapons, but is still reduced for off-hand weapons. This weapon special ability can be placed only on melee weapons usable with Weapon Finesse."
+    "description": "A kinslayer weapon is enhanced with enmity against all those born into the wielder's familial line. Against creatures related to the wielder, this weapon's enhancement bonus is +2 better than its actual bonus. It also deals an extra 2d6 points of damage against such creatures. This extra damage is not multiplied on a critical hit."
    },
-   "Repositioning": {
+   "Miserable": {
     "conditionals": [
      {
       "default": false,
       "modifiers": [],
-      "name": "Repositioning: +[[2]] enhancement on reposition maneuver checks; on a confirmed crit, attempt a reposition as a free action (provokes AoO as normal)"
+      "name": "Miserable: only vs the designated foe type (as bane) — each time the weapon damages such a foe, its natural energy resistances are halved for [[1]] round"
      }
     ],
-    "description": "This special ability can only be placed on melee weapons. A repositioning weapon grants the wielder a +2 enhancement bonus on combat maneuver checks to reposition a foe ( Advanced Player's Guide 322). I f the wielder confirms a critical hit with the weapon, he can attempt to reposition his opponent as a free action. These reposition attempts still provoke attacks of opportunity as normal. A weapon cannot have both the anchoring and repositioning special abilities."
-   },
-   "Skewering": {
-    "conditionals": [
-     {
-      "default": false,
-      "modifiers": [],
-      "name": "Skewering: (light/one-handed piercing) on a critical threat, spend [[1]] panache as an immediate action to auto-confirm the crit (no panache regained for confirming)"
-     }
-    ],
-    "description": "This special ability can be placed only on light or one-handed piercing melee weapons. Weapons with this enhancement are particularly devastating in the hands of a swashbuckler. Anytime the weapon threatens a critical hit, the wielder can spend 1 panache point as an immediate action to automatically confirm the critical hit. When the swashbuckler confirms a critical hit in this fashion, she doesn't regain panache for confirming the critical hit, though she can regain panache normally if the attack is a killing blow."
+    "description": "A miserable weapon cuts through the energy resistance of certain foes. Miserable weapons must be crafted with a designated creature type (just like bane weapons), and each time they deal damage to their designated foes, their magic halves the creatures' natural energy resistances for 1 round."
    }
   }
  },
  "equip_descrip": {
   "belts": {
-   "description": " rather than being made of one continuous line\r of material, this belt consists of many bits of\r tanned leather joined together by thick metal\r studs. On command, the belt's wearer can\r transform the belt into a single masterwork\r slashing and/or piercing melee weapon of her\r choice. As long as she is holding the weapon, she can also revert it back to belt form with a command. Furthermore, the belt\r can be enchanted like a piercing and slashing melee weapon, \r using the cost of the belt as the cost of the masterwork item. ",
-   "item_name": "Bladed Belt"
+   "description": " this long strip of red qadiran fabric is wrapped around the wearer's waist or head several times and held in place by an ankh-shaped clasp of red gold. The wearer is protected as if by endure elements , but only in warm environments. If the wearer unwraps the sash to its full length and holds the clasp in her hand, she can use feather fall once per day, briefly leaving behind a trail of pleasant red-gold light as bright as a torch that lasts for 1 round. If sarenrae is the wearer's patron, the wearer can use the sash to cast cure light wounds once per day on command. The wearer can trigger this ability as an immediate action if reduced to 1 hit points or fewer, though thereafter the sash must be recharged by placing it in strong sunlight for 8 continuous hours. As a swift action, the wearer can cause the clasp to shine as brightly as a torch or cease this illumination; the light is warm, feels like sunlight, and is bright enough to make sun-fearing creatures slightly uncomfortable but not so bright as to cause them harm. ",
+   "item_name": "Dawnflower Sash"
   },
   "body": {
-   "description": " this long, double-breasted jacket is sewn from durable, dun-colored\r canvas with a removable liner to keep its wearer comfortable in\r a wide range of temperatures. Anyone wearing the coat notes\r many small cloth patches of various shapes. Only the wearer of\r the robe can see these patches, recognize them for the items they\r become, and detach them. One patch can be detached each round. \r detaching a patch causes it to become an actual item, as indicated\r below. A pathfinder greatcoat has each of the following patches\r (unless noted otherwise, the coat has only one of each patch): 10 days of trail rations and five full waterskins\r a case containing five adamantine bolts, five cold iron bolts, \r and two silver bolts\r a large scroll case containing a 2-foot-by-10-foot roll of paper\r and two sticks of charcoal\r a quiver containing five adamantine arrows, five cold iron\r arrows, and two silver arrows\r a 10-square-yard roll of canvas containing 10 pitons and a\r small hammer\r a silver aspis consortium badge and three bronze aspis\r consortium badges\r bullseye lanterns (2; full and lit)\r daggers (2)\r disguise kit\r healer's kit\r hemp ropes (2; 50-foot coil)\r light combat-trained horse with a military saddle\r mirrors (2; highly polished 2-foot-by-4-foot steel mirrors)\r noble's outfit with jewelry worth 200 gold pieces\r oil of bless weapon oil of daylight poles (2; 10-foot length)\r potion of cure moderate wounds sacks (2)\r universal solvent wand of prestidigitation (cl 1st, 5 charges) ",
-   "item_name": "Pathfinder Greatcoat"
+   "description": " this light garment is worn over normal\r clothing or armor. Most such vestments\r are green, embroidered with elaborate\r plant or animal motifs. When this item is\r worn by a character with the wild shape\r ability, the character can use that ability\r one additional time each day. ",
+   "item_name": "Druid's Vestment"
   },
   "chest": {
-   "description": " this dark-gray tunic allows a character to make a single jump of up to 40 feet per day, or four jumps of 10 feet each per day. All jumps must begin and end in an area that has at least some dim light. If the wearer has at least 4 levels in the shadowdancer prestige class, the tunic instead adds 40 feet to the total number of feet he can shadow jump in 1 day. ",
-   "item_name": "Shadow Jumper's Tunic"
+   "description": " this sturdy vest stays dry and spotless in the worst of conditions. You can secure up to six objects (weighing up to 1 pound each) to the vest by holding them to it and speaking a command word. You can retrieve any of these items as a move action. In addition, the vest has four large pockets, each capable of holding as much as 1/2 cubic foot in volume or 5 pounds in weight, and weighing only 1 pound when full. When closed, the pockets are proof against water and the elements. The first pocket contains 1 day's worth of trail rations, a quart of water in a waterskin, two candles, and a tindertwig. The vest recreates these items if the first pocket is left empty for 3 days. ",
+   "item_name": "Versatile Vest"
   },
   "eyes": {
-   "description": " this leather band is studded with dozens of faceted crystals\r of varying size, two of which fit over the eyes. When wearing\r these goggles, the wearer uses all the crystals as eyes, \r gaining all-around vision (bestiary 2). ",
-   "item_name": "Arachnid Goggles"
+   "description": " these goggles are fitted with crimson lenses surrounded by thick, round brass frames and secured with a leather strap. Three times per day, the wearer can use murderous command as a gaze attack (will dc 16 negates). ",
+   "item_name": "Saboteur's Goggles"
   },
   "feet": {
-   "description": " these boots are well worn and caked with mud, but still sturdy, comfortable, and dry on the inside. Three times per day, the wearer can activate the boots to cause up to 9 5-foot squares of nearby terrain to become a shallow bog. All affected squares are instantly filled with 1 foot of water, mud, and plant life. The wearer can move through these squares at her normal speed, but other creatures treat the squares as a shallow bog (pathfinder rpg core rulebook 427), costing 2 squares of movement to move into each affected square. The initial affected square must be adjacent to the wearer. Each additional affected square must be adjacent to another affected square, but otherwise the effect can take any shape the wearer desires. As a standard action, the wearer can rearrange the affected squares. Multiple uses of the boots can create larger areas of bog. The effect lasts until dismissed by the wearer (a free action), the wearer moves more than 5 feet beyond the affected area, the wearer becomes unconscious, or the boots are removed. Additionally, once per day, the wearer can travel as per dimension door from one affected square to another. ",
-   "item_name": "Bog Boots"
+   "description": " if a creature wearing these dull gray horseshoes remains stationary for 1 round, the creature and its rider, if any, gain a +10 bonus on stealth checks for 1 round. In addition, once per day, the rider of a mount wearing clandestine horseshoes can turn both herself and her mount invisible, as invisibility . All four shoes must be worn by the same creature for the magic to be effective. ",
+   "item_name": "Clandestine Horseshoes"
   },
   "hands": {
-   "description": " these gloves of thick leather do not impair delicate work and grant a +4 competence bonus on disable device checks to disable magic traps. Once per day, a wearer trained in disable device can command the gloves to alter an unattended magic item she touches to incorporate a trap. The wearer attempts a caster level check using the higher of her caster level or the gloves' caster level (dc = 11 + the target item's caster level). If the check is successful, the target item is marked with a glyph of warding (blast glyph only) that lasts for up to 1 day. ",
-   "item_name": "Saboteur's Gloves"
+   "description": " these gauntlets grant a +1 enhancement bonus on grapple checks. Each pair of gauntlets is created to fight a specific type or subtype of creature from the list of creature types in the bane weapon special ability. While the wearer is grappling a creature of the designated type, the gauntlets' enhancement bonus increases by 2 and the wearer deals an additional 2d6 points of nonlethal damage when dealing damage as part of a successful grapple check. ",
+   "item_name": "Beast Wrestler's Gauntlets"
   },
   "head": {
-   "description": " a sniper's helmet looks like the\r simple steel soldier's helmet\r common to the european trenches\r of the first world war, with the\r addition of a steel eye shield. Once\r per day, the wearer of a sniper's helmet can, as a standard action, denote one creature within\r her line of sight as her target. The wearer can perceive the\r target when it is invisible or ethereal as though using the see invisibility spell, and gains a +20 competence bonus on\r perception checks to locate the target. The wearer ignores\r concealment provided by fog or mist, blur , displacement , invisibility , and similar effects affecting the target, but not\r concealment provided by darkness. These bonuses last for\r 5 minutes or until the target creature is dead. The sniper's\r helmet provides no benefits to the wearer's allies, and the\r wearer gains no benefits against creatures other than her\r chosen target. In addition, once per day, the wearer of a sniper's helmet can create a magical sensor up to 600 feet above her that\r gives her a full 360-degree viewpoint as if she were actually\r there. The wearer perceives with her normal visual senses, \r and though the sensor cannot penetrate solid surfaces, it is\r unaffected by foliage and the like. ",
-   "item_name": "Sniper's Helmet"
+   "description": " this leather mask is vaguely animalistic, and is inlaid with various primitive designs. Three times per day on command, the wearer gains the benefit of a single aspect of an animal attuned to the mask, as if by the hunter's animal focus class feature. Each mask is attuned to one type of animal from the animal focus list, chosen when the mask is created. ",
+   "item_name": "Aspect Mask"
   },
   "headband": {
-   "description": " used by warband leaders in nirmathas, a guerrilla bandanna is a plain brown and green bandanna that can be tied around the forehead. The wearer gains a +5 competence bonus on stealth checks while traveling in forested terrain, and can extend this bonus to up to 10 allies while they remain within 100 feet of the wearer. If the wearer is a ranger, the guerrilla bandanna increases his favored enemy bonus on attack rolls by 1 for each of his favored enemies. If the ranger has the hunter's bond (companions) class feature, this increase also applies to the attack roll bonus his allies gain from that ability. ",
-   "item_name": "Guerrilla Bandanna"
+   "description": " appearing at first like an expensive, masochistic adornment, \r this almond-sized star ruby is set in a gold clasp, one side of\r which is festooned with several long spikes. A soulbound eye is not an item that most creatures would voluntarily wear\r they are instead crafted by powerful creatures who wish to\r use another creature as a sort of remote-viewing slave. A soulbound eye must be attached to a willing or helpless\r creature by pressing the spike-covered surface to the creature's\r browthe gem swiftly and painfully embeds itself in the\r victim's forehead, immediately activating to forge a shared\r link between the wearer and the creature who placed the item\r on its head (the master). Once implanted, the soulbound eye allows the master to\r observe the world around the wearer through the wearer's\r senses. It also allows for telepathic communication between\r the wearer and the master. Neither of these features function\r across planar boundaries. The soulbound eye's wearer is not compelled to obey its\r master's telepathic commands, but the master can use the soulbound eye as a conduit for hold monster , modify memory , pain strike (advanced player's guide), and suggestion spells, \r treating the wearer as the target of the spell no matter the\r distance between master and wearer. The victim is allowed\r any normal saving throws or spell resistance against spells\r cast through the soulbound eye an implanted soulbound eye functions like a cursed\r item once it is in placeit can only be removed if the\r curse is first lifted via an effect like remove curse or break\r enchantment . Once removed, a soulbound eye crumbles\r to fragments. ",
+   "item_name": "Soulbound Eye"
   },
   "neck": {
-   "description": " these amulets are imbued with magic that allows them to protect their wearer against a very specific danger. A talisman triggers automatically as soon as the listed condition is fulfilled. Although talismans occupy the neck slot, up to three talismans can be worn on one cord or chain. Wearing multiple talismans in this way offers a greater variety of protection, but a wearer can benefit from only one talisman's effect at a time. If another talisman would be triggered while its wearer is under the effect of another talisman, that talisman is not triggered and can still be used later. A lesser talisman carries only enough magical energy to protect its wearer once, after which it crumbles to dust. ",
-   "item_name": "Talisman, Lesser Akoben"
+   "description": " this silvery ornament is shaped like a spider and worn on a thick strand of silk. The medallion is made from a tough but vaguely spongy and sticky substance, and it once belonged to the famed ustalavic witch morgellia, known for her spiderlike abilities and the spider swarms she commanded. Morgellia was adept at using the silk from her scarlet spider familiar to create clothes, jewelry, and, when necessary, particularly effective webs to trap her enemies. She fashioned this very medallion from that silk and wore it every day of her adult life. When she died, the magic from morgellia's familiar leaked into the bauble, imbuing it with latent magic. An occultist of 3rd level or higher who has learned the conjuration implement school and uses the spidersilk medallion as an implement has access to the following focus power. ",
+   "item_name": "Spidersilk Medallion"
   },
   "rings": {
-   "description": "This small wooden ring resembles a serpent with tiny gemstone eyes coiling around the wearer's finger. If worn for 24 hours, it causes its wearer to manifest many serpentine traits. The wearer's skin develops a faint, diamond-shaped pattern, and the pupils of her eyes elongate. The wearer grows a pair of fangs, gaining a bite attack as a primary natural attack that deals 1d4 points of piercing damage for a Medium wearer or 1d3 points of damage for a Small wearer. Three times per day as a free action, the wearer of the ring may cause her fangs to drip with venom, making her bite attack poisonous for 1 round. The save DC of this poison is equal to 10 + 1/2 the wearer's Hit Dice + the wearer's Constitution modifier, but otherwise acts as black adder venom. If the wearer rolls a natural 1 on an attack with her poisonous bite, she is exposed to the poison. Once per day as a standard action, the wearer may command her tongue to lengthen and become forked for 1 minute, gaining the scent special ability. While this ability is active, the wearer has a 20% chance of failure when casting any spell with a verbal component, as the tongue makes it difficult to speak. The ring makes its wearer more sensitive to cold. She takes a 2 penalty to saves against spells with the cold descriptor and the effects of cold weather. Additionally, if the wearer is successfully affected by a spell with the cold descriptor, she is slowed for 1 round.",
-   "item_name": "Ophidian Coil"
+   "description": "Made of aged bronze and steel, this ring looks like it should have a gem set in it, but instead has an empty circular hole. The hole in the ring holds a single firearm bullet; if one is placed inside (as a full-round action), it merges seamlessly into the ring. While a bullet is merged into the ring, the wielder can fire the bullet as though she were using a +1 pistol UE that can't misfire. Once the bullet has been fired from the ring, a new bullet can't be placed inside for 24 hours. Each holdout ring is created with two +1 ammunition special abilities and one +2 ammunition special ability. If the wearer has the grit class feature, she can expend grit (maximum 4 grit points) to imbue bullets merged with the gun with one or more of these abilities. Imbuing a bullet with a +1 special ability costs 1 grit point; imbuing one with a +2 special ability costs 2 grit points. Each ring's special abilities are established upon the item's creation and can't be changed. If a special ability has multiple versions, as does bane , the specific version must be set at that time (e.g., dragon bane ). A typical holdout ring has the flaming , seeking , and shocking burst UE special abilities.",
+   "item_name": "Holdout Ring"
   },
   "shoulders": {
-   "description": " this long green cloak's back features an embroidered image\r of an ancient oak. Once per day on command, the wearer can\r assume the shape of a tree, as the tree shape spell, but can\r only take the form of a living tree. Furthermore, each hour the\r wear spends in tree form while in direct sunlight, he heals 1d6\r hit points. ",
-   "item_name": "Treeform Cloak"
+   "description": " these black iron pauldrons are studded with jagged spikes\r of various lengths. Demonspike pauldrons act as +2 armor\r spikes and also deal 1d2 bleed damage on a successful\r grapple attack or melee attack made with the pauldrons. If\r these pauldrons are worn with normal armor spikes, increase\r the damage done by the armor spikes to 1d6 (small) or 1d8\r (medium), and use the greater of the two enhancement\r bonuses to attack and damageeither from the armor spikes\r (if any) or the demonspike pauldrons ",
+   "item_name": "Demonspike Pauldrons"
   },
   "wrist": {
-   "description": " tiny ornaments of gold hang from the links of a charm\r bracelet . In addition to 1d4+4 nonmagical charms, each\r bracelet carries one of each of the following magic charms. \r these magic charms can be activated with a command, \r producing the listed effect, but each charm can be only used\r once. After a charm is used, it dissolves into a thick vapor\r and dissipates. Arming sword : when detached, this charm transforms into\r a masterwork heavy wooden shield and a masterwork\r longsword. They can either appear on the ground or within\r the hands of the creature that activated the charm, ready to\r use. These items last for 1 hour before turning into vapor. Healthy apple : when detached, this charm becomes an apple\r that when eaten (a standard action that provokes attacks\r of opportunity) heals 2d8 hit points. In addition, if the\r creature eating the apple is afflicted with any poison or\r diseases, it can attempt a new saving throw against each\r such affliction. Each successful saving throw immediately\r ends the corresponding affliction. Loving heart : upon detaching this charm, the wearer can use\r charm person as a spell-like ability (as the spell, will dc 11)\r any time before the end of her next turn. Lucky star : when this charm is activated, it releases good\r luck in a 20-foot-radius burst centered on the wearer. The\r wearer and her allies within the burst gain a +2 luck bonus\r on ability checks, attack rolls, saving throws, and skill\r checks for 1 round. Peaceful dove : detaching this dove calms tempers within a\r 20-foot-radius burst centered on the wearer as though calm\r emotions (will dc 13) had been cast. A creature affected by\r rage takes a 2 penalty on this saving throw. \r reduce the price of a charm bracelet that has one or more\r expended charms by 1,580per absent charm. The charm\r bracelet itself becomes a nonmagical bracelet worth 100when the last charm is used, no matter the number of\r nonmagical charms left on the bracelet. ",
-   "item_name": "Charm Bracelet"
+   "description": " these bracers are constructed from\r woven strands of bamboo. Three times\r per day, as a swift action, the wearer\r can stretch her arms beyond their limits, \r increasing her reach by 5 feet until the\r start of her next turn. Her weapon attack\r rolls take a 4 penalty, while unarmed\r strikes and natural weapons using the arms take no penalty. ",
+   "item_name": "Longarm Bracers"
   }
  },
  "equipment_list": [
-  "Bladed Belt",
-  "Pathfinder Greatcoat",
-  "Shadow Jumper's Tunic",
-  "Arachnid Goggles",
-  "Bog Boots",
-  "Saboteur's Gloves",
-  "Sniper's Helmet",
-  "Guerrilla Bandanna",
-  "Talisman, Lesser Akoben",
-  "Treeform Cloak",
-  "Charm Bracelet",
-  "Glorious Flame Ring",
-  "Ophidian Coil"
+  "Dawnflower Sash",
+  "Druid's Vestment",
+  "Versatile Vest",
+  "Saboteur's Goggles",
+  "Clandestine Horseshoes",
+  "Beast Wrestler's Gauntlets",
+  "Aspect Mask",
+  "Soulbound Eye",
+  "Spidersilk Medallion",
+  "Demonspike Pauldrons",
+  "Longarm Bracers",
+  "Tyrant's Friend",
+  "Holdout Ring"
  ],
  "eye_color": [
-  "Amber"
+  "Brown"
  ],
  "feat_budget": {
   "bloodline": 0,
@@ -398,22 +409,31 @@
   "profession": 1,
   "story": 4,
   "teamwork": 0,
-  "trainer": 5
+  "trainer": 2
  },
  "feat_changes_dict": {
-  "Demon Hunter": {
+  "Coordinated Defense": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "skill.kpl",
-     "text": "+2 on Knowledge (planes) checks to identify demons' powers, and +2 morale on caster level checks to overcome the spell resistance of creatures you recognize as demons."
+     "target": "cmd",
+     "text": "While adjacent to an ally who also has this feat: +2 competence bonus to CMD (+4 if the creature attempting the maneuver is larger than both you and your ally)."
     }
    ]
   },
-  "Skill Focus (Profession (Avatar of the Wild Hunt))": {
+  "Harrowed": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "will",
+     "text": "+1 on all Will saves made to resist enchantment effects."
+    }
+   ]
+  },
+  "Skill Focus (Profession (Watch Underling))": {
    "changes": [
     {
-     "formula": "3",
+     "formula": "6",
      "operator": "add",
      "priority": 0,
      "target": "skill.pro",
@@ -422,16 +442,12 @@
    ],
    "contextNotes": []
   },
-  "Weather Eye": {
+  "Stone Read": {
    "changes": [],
    "contextNotes": [
     {
      "target": "skills",
-     "text": "+4 on Survival checks made to predict the weather."
-    },
-    {
-     "target": "allSavingThrows",
-     "text": "+1 on saving throws to avoid the effects of extreme weather."
+     "text": "+2 on Perception checks while in a primarily underground or mountainous environment (+4 with 10+ ranks in Knowledge (dungeoneering))."
     }
    ]
   }
@@ -443,7 +459,42 @@
    "name": "Butterfly's Sting: Effect: forgo this critical hit's extra damage; the next ally who hits the target with a melee attack before the start of your next turn automatically confirms a critical hit",
    "tier": "A"
   },
-  "Demon Hunter": {
+  "Dazing Assault": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "-5",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "untyped"
+    }
+   ],
+   "name": "Dazing Assault: Save: Fortitude DC [[ 10 + @attributes.bab.total ]] negates; Effect: melee attacks also daze the target for [[1]] round",
+   "tier": "A"
+  },
+  "Death Or Glory": {
+   "default": false,
+   "modifiers": [],
+   "name": "Death or Glory: Effect: against a Large or larger creature, make a single attack as a full-round action with a +[[4]] bonus (+[[5]] at base attack bonus +[[11]], +[[6]] at +[[16]], +[[7]] at +[[20]]) on the attack roll, damage roll, and critical confirmation roll; the target may make a single melee attack against you with the same bonuses as an immediate action",
+   "tier": "A"
+  },
+  "Desperate Battler": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    }
+   ],
+   "name": "Desperate Battler: When no ally is within 10 feet and you are not benefiting from aid another: +1 morale bonus on melee attack rolls and +1 morale bonus on melee damage rolls."
+  },
+  "Harrowed": {
    "default": false,
    "modifiers": [
     {
@@ -452,46 +503,31 @@
      "formula": "2",
      "subTarget": "allAttack",
      "target": "attack",
-     "type": "morale"
+     "type": "untyped"
     }
    ],
-   "name": "Demon Hunter (vs demons): +2 morale on attack rolls"
-  },
-  "Hammer the Gap": {
-   "default": false,
-   "modifiers": [],
-   "name": "Hammer the Gap: Effect: each consecutive hit against the same target this turn deals extra damage equal to the number of prior consecutive hits you have made against it this turn (multiplied on a critical hit); apply manually per attack",
+   "name": "Harrowed: Cost: [[1]]/day (Harrow card draw); Activation: applied after the roll but before the result is known; Effect: +[[2]] bonus to the attack roll if the drawn card's suit matches",
    "tier": "A"
   }
  },
  "feats": [
-  "Butterfly's Sting",
-  "Martial Training V (Mithral Current)",
-  "Skill Focus (Profession (Avatar of the Wild Hunt))",
-  "Alertness",
-  "Antagonize",
-  "Bloodletting",
-  "Light Armor Proficiency",
+  "Harrowed",
+  "Simple Weapon Proficiency",
+  "Lastwall Phalanx",
+  "Self-Sufficient",
+  "Mocking Dance",
+  "Distance Thrower",
+  "Outflank",
   "Multi Talented"
  ],
  "feats_feat_tax_dict": {
-  "Alertness": [
-   "uncanny alertness"
-  ],
-  "Light Armor Proficiency": [
-   "arcane armor training"
-  ],
-  "Martial Training V (Mithral Current)": [
-   "Martial Training VI (Mithral Current)"
+  "Vital Strike": [
+   "improved vital strike"
   ]
  },
- "flavor_feat_tax_dict": {
-  "Lightning Reflexes": [
-   "improved lightning reflexes"
-  ]
- },
+ "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Lightning Reflexes"
+  "Totem Spirit"
  ],
  "flaw": [
   "Motion Sickness",
@@ -521,58 +557,56 @@
    "tier": "major"
   }
  },
- "flaw_feat_tax_dict": {},
+ "flaw_feat_tax_dict": {
+  "Deft Hands": [
+   "close call"
+  ]
+ },
  "flaw_feats": [
-  "Improved Day Job",
-  "Fast Crawl"
+  "Coordinated Defense",
+  "Deft Hands"
  ],
- "formatted_bio": "Crogth Thunderstrike\n- Alignment: Lawful Good\n- Deity: Torag\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: Generalist\n- Tactics: Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.\n- Stat Focus: Str\n- Disciplines: Mithral Current\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Pack Drover (rank 3)\n- Profession: Cyclops Archer (rank 7)\n- Profession: Sanctified Exorcist (rank 1)\n- Profession: Confidence Trickster (rank 5)\n- Profession: Avatar of the Wild Hunt (rank 9)\n- Profession: Farmer (rank 6)\n- Known for: Anchors\n- Training: An excellent trainer who taught them Shield Focus, Pack Attack, Trapper's Setup\n- Training: An average trainer who taught them Hero's Fortune, Undermine\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Flowing Brown\n- Eyes: Amber\n- Build: Rugged",
+ "formatted_bio": "Crogth Thunderstrike\n- Alignment: Lawful Good\n- Deity: Torag\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: Archer\n- Tactics: Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.\n- Stat Focus: Str\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Watch Underling (rank 10)\n- Profession: Pruner (rank 1)\n- Profession: Bellows Tender (rank 10)\n- Profession: Plague-Doctor (rank 10)\n- Known for: Lanterns\n- Training: An average trainer who taught them Improved Shield Bash, Hero's Fortune\n\nFamily\n- Absent Mother\n- Absent Father\n- Raised In An Orphanage\n- 1 Younger Brother\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Bald White\n- Eyes: Brown\n- Build: Smiling",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 3002,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 4265495,
+ "gold": 121949,
  "hair_color": [
-  "Brown"
+  "White"
  ],
  "hair_type": [
-  "Flowing"
+  "Bald"
  ],
  "height_number": "5'10\"",
- "hero_points": 2,
+ "hero_points": 0,
  "homebrew_feat_desc_dict": {
-  "Alertness": "You often notice things that others might miss",
-  "Antagonize": "Whether with biting remarks or hurtful words, you are adept at making creatures angry with you",
-  "Blinding Critical": "Your critical hits blind your opponents",
-  "Bloodletting": "When you attack with a piercing or slashing weapon, the wounds you cause bleed profusely",
+  "Blind-Fight": "You are skilled at attacking opponents that you cannot clearly perceive",
   "Butterfly's Sting": "You can forgo a critical hit in order to pass it on to an ally",
-  "Charge of the Righteous": "You charge undead and fiends with confidence in your righteous cause",
-  "Critical Focus": "You are trained in the art of causing pain",
-  "Death Frombelow": "You have been trained to fight flying creatures",
-  "Demon Hunter": "You are well-versed in demonic lore",
-  "Duck and Cover": "Your allies assist you in avoiding certain attacks",
-  "Enforcer": "You are skilled at causing fear in those you brutalize",
-  "Ensemble": "You can create an ensemble of skilled and amateur performers to aid you in your performance",
-  "Expert Driver": "When driving a chosen type of vehicle, you exhibit incredible control, maneuvering the vehicle with greater ease and stopping with uncanny precision",
-  "Fast Crawl": "You are skilled at moving while prone",
-  "Hammer the Gap": "You repeatedly strike the same location, causing increasing amounts of damage",
+  "Combat Medic": "You know the urgency of treating wounds in the heat of battle, applying first aid to your allies with such speed that you assure no one gets left behind",
+  "Coordinated Defense": "You are adept at working with allies to avoid being tripped, grappled, and subjected to other maneuvers",
+  "Dazing Assault": "You can daze foes with wild attacks",
+  "Death Or Glory": "Even when facing a larger foe, you aren't afraid to take great risks in order to finish the fight",
+  "Deft Hands": "You have exceptional manual dexterity",
+  "Desperate Battler": "Your experiences fighting against numerous foes that have already overwhelmed your allies, friends, and family have forced you to excel at fighting on your own",
+  "Distance Thrower": "You are accurate with thrown weapons at longer ranges than normal",
+  "Dragoncrafting": "You have the ability to create rare and valuable items from the bodies of fallen true dragons",
+  "Focused Worker": "Your attention to detail provides you with an excess of some commodities, at the cost of others",
+  "Harrowed": "Numerous Harrow readings early in your life seem to have hit the mark precisely, increasing your belief that you are destined for a specific purpose in life",
   "Hero's Fortune": "Even at the start of your career, it was clear that you had a chance at greatness, and your legend continues to grow with every adventure",
-  "Improved Day Job": "You learned the importance of an honest day's work while training as an initiate of the Pathf inder Society",
-  "Light Armor Proficiency": "You are skilled at wearing light armor",
-  "Lightning Reflexes": "You have faster ref lexes than normal",
-  "Martial Training I (Mithral Current)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
-  "Martial Training II (Mithral Current)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training III (Mithral Current)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training IV (Mithral Current)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training V (Mithral Current)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training VI (Mithral Current)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
+  "Improved Shield Bash": "You can protect yourself with your shield, even if you use it to attack",
+  "Lastwall Phalanx": "When battling the terrifying hordes of Belkzen, you find strength in your shield brothers and sisters",
+  "Mocking Dance": "You do a little dance that mocks your foe and entertains the crowd",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Pack Attack": "You are skilled at surrounding your enemies",
-  "Shield Focus": "You are skilled at def lecting blows with your shield",
-  "Skill Focus (Profession (Avatar of the Wild Hunt))": "",
-  "Trapper's Setup": "You have an instinct for waiting until just the right moment to spring a hazard or trap",
-  "Undermine": "You and your allies take advantage of shifting terrain to unbalance enemies",
-  "Weather Eye": "Your constant attention to the natural order and your place in it has given you a keen sense for the ebb and flow of the seasons"
+  "Outflank": "You look for every edge when flanking an enemy",
+  "Quick Draw": "You can draw weapons faster than most",
+  "Self-Sufficient": "You know how to get along in the wild and how to effectively treat wounds",
+  "Shield Proficiency": "You are trained in how to properly use a shield",
+  "Simple Weapon Proficiency": "You are trained in the use of basic weapons",
+  "Siphon Poison": "You can remove poison from afflicted creatures",
+  "Skill Focus (Profession (Watch Underling))": "",
+  "Stone Read": "Even the faint movement and vibrations of stone can alert you to trouble",
+  "Totem Spirit": "You are mystically tied to your tribe's sacred totem"
  },
  "inherents": {
   "cha": 10,
@@ -583,117 +617,109 @@
   "wis": 0
  },
  "initiation_stat": "cha",
- "initiator_level": 8,
+ "initiator_level": 0,
  "int": 9,
  "item_changes_dict": {
-  "Arachnid Goggles": {
+  "Aspect Mask": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "When wearing these goggles, the wearer uses all the crystals as eyes, gaining all-around vision (bestiary 2)."
+    "Three times per day on command, the wearer gains the benefit of a single aspect of an animal attuned to the mask, as if by the hunter's animal focus class feature."
    ]
   },
-  "Bladed Belt": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "On command, the belt's wearer can transform the belt into a single masterwork slashing and/or piercing melee weapon of her choice."
-   ]
-  },
-  "Bog Boots": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "Three times per day, the wearer can activate the boots to cause up to 9 5-foot squares of nearby terrain to become a shallow bog. All affected squares are instantly filled with 1 foot of water, mud, and plant life. The wearer can move through these squares at her normal speed, but other creatures treat the squares as a shallow bog (pathfinder rpg core rulebook 427), costing 2 squares of movement to move into each affected square. As a standard action, the wearer can rearrange the affected squares."
-   ]
-  },
-  "Charm Bracelet": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "allSavingThrows",
-     "text": "The wearer and her allies within the burst gain a +[[2]] luck bonus on ability checks, attack rolls, saving throws, and skill checks for [[1]] round."
-    },
-    {
-     "target": "allSavingThrows",
-     "text": "In addition to [[1d4+4]] nonmagical charms, each bracelet carries one of each of the following magic charms. These items last for [[1]] hour before turning into vapor. Healthy apple : when detached, this charm becomes an apple that when eaten (a standard action that provokes attacks of opportunity) heals [[2d8]] hit points. In addition, if the creature eating the apple is afflicted with any poison or diseases, it can attempt a new saving throw against each such affliction. Each successful saving throw immediately ends the corresponding affliction."
-    }
-   ]
-  },
-  "Glorious Flame Ring": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "Once per day, the wearer may speak the ring's command word to create a 5-foot-radius burst of flame centered on herself. This burst of flame deals 1d6 points of damage to any adjacent creatures (reflex dc 14 halves), though the wearer is safe from this effect. If the wearer is capable of channeling positive energy, she may as a standard action expend one use of channeled energy to activate the ring's burst of flame, even if she has already spoken the ring's command word for the day. This effect is otherwise identical to creating the ring's burst of flame by speaking the command word."
-   ]
-  },
-  "Guerrilla Bandanna": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skill.ste",
-     "text": "The wearer gains a +[[5]] competence bonus on stealth checks while traveling in forested terrain, and can extend this bonus to up to 10 allies while they remain within [[100]] feet of the wearer."
-    },
-    {
-     "target": "attack",
-     "text": "If the wearer is a ranger, the guerrilla bandanna increases his favored enemy bonus on attack rolls by 1 for each of his favored enemies."
-    }
-   ]
-  },
-  "Ophidian Coil": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "allSavingThrows",
-     "text": "If worn for [[24]] hours, it causes its wearer to manifest many serpentine traits. The wearer grows a pair of fangs, gaining a bite attack as a primary natural attack that deals [[1d4]] points of piercing damage for a medium wearer or [[1d3]] points of damage for a small wearer. Three times per day as a free action, the wearer of the ring may cause her fangs to drip with venom, making her bite attack poisonous for [[1]] round. The save dc of this poison is equal to 10 + 1/2 the wearer's hit dice + the wearer's constitution modifier, but otherwise acts as black adder venom."
-    }
-   ]
-  },
-  "Pathfinder Greatcoat": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "A pathfinder greatcoat has each of the following patches (unless noted otherwise, the coat has only one of each patch): 10 days of trail rations and five full waterskins a case containing five adamantine bolts, five cold iron bolts, and two silver bolts a large scroll case containing a 2-foot-by-10-foot roll of paper and two sticks of charcoal a quiver containing five adamantine arrows, five cold iron arrows, and two silver arrows a 10-square-yard roll of canvas containing 10 pitons and a small hammer a silver aspis consortium badge and three bronze aspis consortium badges bullseye lanterns (2;"
-   ]
-  },
-  "Saboteur's Gloves": {
+  "Beast Wrestler's Gauntlets": {
    "changes": [
     {
-     "formula": "4",
+     "formula": "1",
      "operator": "add",
      "priority": 0,
-     "target": "skill.dev",
-     "type": "competence"
+     "target": "cmb",
+     "type": "enh"
     }
    ],
    "contextNotes": [
     {
-     "target": "skill.dev",
-     "text": "Once per day, a wearer trained in disable device can command the gloves to alter an unattended magic item she touches to incorporate a trap. The wearer attempts a caster level check using the higher of her caster level or the gloves' caster level (dc = 11 + the target item's caster level). If the check is successful, the target item is marked with a glyph of warding (blast glyph only) that lasts for up to 1 day."
+     "target": "cmb",
+     "text": "While the wearer is grappling a creature of the designated type, the gauntlets' enhancement bonus increases by 2 and the wearer deals an additional [[2d6]] points of nonlethal damage when dealing damage as part of a successful grapple check."
     }
    ]
   },
-  "Shadow Jumper's Tunic": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "This dark-gray tunic allows a character to make a single jump of up to 40 feet per day, or four jumps of 10 feet each per day. If the wearer has at least 4 levels in the shadowdancer prestige class, the tunic instead adds 40 feet to the total number of feet he can shadow jump in 1 day."
-   ]
-  },
-  "Sniper's Helmet": {
+  "Clandestine Horseshoes": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "skill.per",
-     "text": "Once per day, the wearer of a sniper's helmet can, as a standard action, denote one creature within her line of sight as her target. The wearer ignores concealment provided by fog or mist, blur , displacement , invisibility , and similar effects affecting the target, but not concealment provided by darkness. These bonuses last for [[5]] minutes or until the target creature is dead. In addition, once per day, the wearer of a sniper's helmet can create a magical sensor up to [[600]] feet above her that gives her a full 360-degree viewpoint as if she were actually there. The wearer can perceive the target when it is invisible or ethereal as though using the see invisibility spell, and gains a +[[20]] competence bonus on perception checks to locate the target."
+     "target": "skill.ste",
+     "text": "If a creature wearing these dull gray horseshoes remains stationary for [[1]] round, the creature and its rider, if any, gain a +[[10]] bonus on stealth checks for [[1]] round. In addition, once per day, the rider of a mount wearing clandestine horseshoes can turn both herself and her mount invisible, as invisibility ."
     }
    ]
   },
-  "Treeform Cloak": {
+  "Dawnflower Sash": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "Once per day on command, the wearer can assume the shape of a tree, as the tree shape spell, but can only take the form of a living tree. Furthermore, each hour the wear spends in tree form while in direct sunlight, he heals 1d6 hit points."
+    "If the wearer unwraps the sash to its full length and holds the clasp in her hand, she can use feather fall once per day, briefly leaving behind a trail of pleasant red-gold light as bright as a torch that lasts for 1 round. If sarenrae is the wearer's patron, the wearer can use the sash to cast cure light wounds once per day on command. The wearer can trigger this ability as an immediate action if reduced to 1 hit points or fewer, though thereafter the sash must be recharged by placing it in strong sunlight for 8 continuous hours."
+   ]
+  },
+  "Demonspike Pauldrons": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "Demonspike pauldrons act as +[[2]] armor spikes and also deal [[1d2]] bleed damage on a successful grapple attack or melee attack made with the pauldrons. If these pauldrons are worn with normal armor spikes, increase the damage done by the armor spikes to [[1d6]] (small) or [[1d8]] (medium), and use the greater of the two enhancement bonuses to attack and damageeither from the armor spikes (if any) or the demonspike pauldrons"
+    }
+   ]
+  },
+  "Druid's Vestment": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "When this item is worn by a character with the wild shape ability, the character can use that ability one additional time each day."
+   ]
+  },
+  "Holdout Ring": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "If one is placed inside (as a full-round action), it merges seamlessly into the ring. While a bullet is merged into the ring, the wielder can fire the bullet as though she were using a +1 pistol ue that can't misfire. Once the bullet has been fired from the ring, a new bullet can't be placed inside for 24 hours. Each holdout ring is created with two +1 ammunition special abilities and one +2 ammunition special ability. If the wearer has the grit class feature, she can expend grit (maximum 4 grit points) to imbue bullets merged with the gun with one or more of these abilities."
+   ]
+  },
+  "Longarm Bracers": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "Three times per day, as a swift action, the wearer can stretch her arms beyond their limits, increasing her reach by [[5]] feet until the start of her next turn. Her weapon attack rolls take a 4 penalty, while unarmed strikes and natural weapons using the arms take no penalty."
+    }
+   ]
+  },
+  "Saboteur's Goggles": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "Three times per day, the wearer can use murderous command as a gaze attack (will dc [[16]] negates)."
+    }
+   ]
+  },
+  "Soulbound Eye": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "The soulbound eye's wearer is not compelled to obey its master's telepathic commands, but the master can use the soulbound eye as a conduit for hold monster , modify memory , pain strike (advanced player's guide), and suggestion spells, treating the wearer as the target of the spell no matter the distance between master and wearer."
+   ]
+  },
+  "Spidersilk Medallion": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "An occultist of 3rd level or higher who has learned the conjuration implement school and uses the spidersilk medallion as an implement has access to the following focus power."
+   ]
+  },
+  "Versatile Vest": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "You can secure up to six objects (weighing up to 1 pound each) to the vest by holding them to it and speaking a command word. You can retrieve any of these items as a move action. In addition, the vest has four large pockets, each capable of holding as much as 1/2 cubic foot in volume or 5 pounds in weight, and weighing only 1 pound when full. The first pocket contains 1 day's worth of trail rations, a quart of water in a waterskin, two candles, and a tindertwig. The vest recreates these items if the first pocket is left empty for 3 days."
    ]
   }
  },
@@ -701,9 +727,12 @@
  "land_speed": 30,
  "language_text": [
   "Common",
+  "Gnoll",
   "Terran",
-  "Kelish",
-  "Draconic",
+  "Sphinx",
+  "Gnome",
+  "Giant",
+  "Celestial",
   "Ignan"
  ],
  "level": 16,
@@ -717,228 +746,59 @@
  },
  "magic_talent_items": [],
  "main_stat": "str",
- "maneuvers_choose_from": [
-  [
-   "Following Wake",
-   "Swift Current"
-  ],
-  [
-   "Iron Wave",
-   "Calm the Storm"
-  ],
-  [
-   "Salt Breeze Strike",
-   "Rippling Current"
-  ],
-  [
-   "Silver Wave"
-  ],
-  [
-   "Mithral Flash"
-  ],
-  [
-   "Quicksilver Wave"
-  ]
- ],
- "maneuvers_desc_dict": {
-  "Calm the Storm": {
-   "action": "1 immediate action",
-   "description": "By perfectly timing your counterattacks, you can force your opponent into a position where they are unable to further attack you. You can initiate this counter in response to a melee or ranged attack being made against you. Make an attack roll with a weapon you are wielding. If your attack roll is higher than your opponents, their attack is negated and they must succeed on a Reflex Save DC 12 + your initiation modifier or be unable to target you with any other attacks this turn.",
-   "discipline": "Mithral Current",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "Melee attack",
-   "type": "counter"
-  },
-  "Flowing Water Stance": {
-   "action": "1 swift action",
-   "description": "You adopt a stance that maximizes free movement and speed, allowing you to dance around your opponents attacks and flow past obstacles like a rushing stream. While you maintain this stance, you gain a +4 dodge bonus to your AC and a +4 bonus on initiative checks. In addition, you can sheath your weapon once per round as a free action that does not provoke attacks of opportunity, even if it isnt your turn.",
-   "discipline": "Mithral Current",
-   "duration": "Stance",
-   "level": 3,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Following Wake": {
-   "action": "1 swift action",
-   "description": "By utilizing the momentum of your body and blade, you turn a charge into disabling slash that leaves your opponent on the ground. After initiating this boost, you can make a trip attempt against the next creature you charge this round as a free action, using a Perform dance check in place of your combat maneuver check. This combat maneuver attempt does not provoke an attack of opportunity.",
-   "discipline": "Mithral Current",
-   "duration": "1 round",
-   "level": 1,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Iron Wave": {
-   "action": "1 standard action",
-   "description": "By imitating the motions of ocean waves, you extend the reach of your blade beyond its edge. Make a melee attack. If it hits, it deals weapon damage as normal plus an additional 2d6 points of damage. If you drew your weapon as part of this strike, you can make your attack against any creature within close range 25 feet + 5 feet per 2 initiator levels, even if that creature isnt within your reach. The attack is still treated as a melee attack, and a creature struck must succeed at a Will save DC 12 + your initiation modifier or become vulnerable to silver until the end of your next turn. Creatures with vulnerability to silver take 50% more damage from silver weapons. This maneuver is a supernatural ability.",
-   "discipline": "Mithral Current",
-   "duration": "Instantaneous see text",
-   "level": 2,
-   "range": "Melee or close 25 ft. + 5 ft./2 levels",
-   "type": "strike"
-  },
-  "Mithral Current Stance": {
-   "action": "1 swift action",
-   "description": "You move with the speed and grace of a rapid flowing river, striking at blinding speeds. While you maintain this stance, any creature you hit with a melee attack must succeed at a Will save DC 16 + your initiation modifier or become vulnerable to silver until the end of your next turn. This effect resolves after your attack. In addition, you are considered to be threatening all squares within reach of your weapon even if it is sheathed, and can draw your weapon when making any type of maneuver or attack including attacks of opportunity, even while flat-footed. You can sheath your weapon once per round as a free action that does not provoke attacks of opportunity, even if it isnt your turn. Creatures with vulnerability to silver take 50% more damage from silver weapons.",
-   "discipline": "Mithral Current",
-   "duration": "Stance",
-   "level": 6,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Mithral Flash": {
-   "action": "1 immediate action",
-   "description": "Though the Mithral Current discipline is noted for its graceful movements and artful dodges, you are just as capable of blocking blades as you are avoiding them. You can initiate this counter response to a melee or ranged attack being made against you. Make an attack roll with a weapon you are wielding. If your attack roll is higher than your opponents, their attack is negated. If you drew your weapon as part of this counter, you can make an attack against your attacker. If it hits, it deals weapon damage as normal plus an additional 5d6 points of damage, and your weapon is treated as silver for the purposes of vulnerabilities and overcoming damage reduction. You cannot make this counterattack if the target is not within your melee reach or otherwise targetable with a melee attack.",
-   "discipline": "Mithral Current",
-   "duration": "Instantaneous",
-   "level": 5,
-   "range": "Melee attack",
-   "type": "counter"
-  },
-  "Quicksilver Wave": {
-   "action": "1 standard action",
-   "description": "A wave of silver energy leaps from your blade to slash at a distant foe. Make a melee attack. If it hits, it deals weapon damage as normal plus an additional 8d6 points of damage. If you drew your weapon as part of this strike, you can make your attack against any creature within close range 25 feet + 5 feet per 2 initiator levels, even if that creature isnt within your reach, and the target must succeed at a Will save DC 16 + your initiation modifier or become vulnerable to silver until the end of your next turn. In addition, you may also make a trip attempt against a struck target as a free action with a competence bonus on your combat maneuver check equal to your initiation modifier. This trip attempt does not provoke an attack of opportunity. Creatures with vulnerability to silver take 50% more damage from silver weapons. This maneuver is a supernatural ability.",
-   "discipline": "Mithral Current",
-   "duration": "Instantaneous see text",
-   "level": 6,
-   "range": "Melee attack or close 25 ft. + 5 ft./2 levels",
-   "type": "strike"
-  },
-  "Reaching Blade Stance": {
-   "action": "1 swift action",
-   "description": "You can translate the momentum of your swift attacks into greater reach, striking foes who would normally be out of your range. While you maintain this stance, your melee attacks deal an additional 1d6 points of damage, and you increase the reach of the first attack you make each round by 5 feet. The additional damage of this stance increases by 1d6 for every eight initiator levels you possess.",
-   "discipline": "Mithral Current",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Rippling Current": {
-   "action": "1 standard action",
-   "description": "Your blade weaves in and out of your opponents sight to strike at an unexpected angle. Make a melee attack. If it hits, it deals weapon damage as normal plus an additional 3d6 points of damage. If you drew your weapon as part of this strike, your target is considered flat-footed against this attack.",
-   "discipline": "Mithral Current",
-   "duration": "Instantaneous",
-   "level": 3,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Salt Breeze Strike": {
-   "action": "1 standard action",
-   "description": "Imitating the stinging winds of ocean storms, you strike with a debilitating slash and a spray of dust. Make a melee attack. If it hits, it deals weapon damage as normal plus an additional 3d6 points of damage. If you drew your weapon as part of initiating this strike, a struck target takes a 4 penalty on attack rolls for one round.",
-   "discipline": "Mithral Current",
-   "duration": "Instantaneous",
-   "level": 3,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Shifting Waters Stance": {
-   "action": "1 swift action",
-   "description": "You dance your way across the battlefield, heedless of any obstacles between you and your target. While you maintain this stance, you do not need to move in a straight line while charging, and may move through difficult terrain while charging although your movement is still reduced if you do so. In addition, any time a maneuver allows you to move as part of initiating it including maneuvers that allow you to take a 5-foot step, you may move an additional 5 feet. You can sheath your weapon once per round as a free action that does not provoke attacks of opportunity, even if it is not your turn.",
-   "discipline": "Mithral Current",
-   "duration": "Stance",
-   "level": 5,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Silver Wave": {
-   "action": "1 standard action",
-   "description": "Drawing your blade in a powerful diagonal cut, you strike your foe with a brutal wave of kinetic energy. Make a melee attack. If it hits, it deals weapon damage as normal plus an additional 6d6 points of damage. If you drew your weapon as part of this strike, you can make your attack against any creature within close range 25 feet + 5 feet per 2 initiator levels, even if that creature isnt within your reach, and the target must succeed at a Will save DC 14 + your initiation modifier or become vulnerable to silver until the end of your next turn. In addition, you may also make a bull rush attempt against a struck target as a free action with a competence bonus on your combat maneuver check equal to your initiation modifier. This bull rush attempt does not provoke an attack of opportunity. Creatures with vulnerability to silver take 50% more damage from silver weapons. This maneuver is a supernatural ability.",
-   "discipline": "Mithral Current",
-   "duration": "Instantaneous see text",
-   "level": 4,
-   "range": "Melee or close 25 ft. + 5 ft/2 levels",
-   "type": "strike"
-  },
-  "Swift Current": {
-   "action": "1 standard action",
-   "description": "One of the basic tenets of the Mithral Current is that all momentum can be turned into a powerful offensive tool. As an initiate of the discipline, you can use the momentum of drawing your blade from its sheath to increase a strikes power. Make a melee attack. If it hits, it deals weapon damage as normal plus an additional 1d6 points of damage. If you drew your weapon as part of this strike, your target is considered flat-footed against this attack.",
-   "discipline": "Mithral Current",
-   "duration": "Instantaneous",
-   "level": 1,
-   "range": "Melee attack",
-   "type": "strike"
-  }
- },
- "maneuvers_known_list": [
-  2,
-  2,
-  2,
-  1,
-  1,
-  1
- ],
- "maneuvers_readied_list": [
-  0,
-  1,
-  2,
-  1,
-  1,
-  1
- ],
- "maneuvers_readied_names": [
-  [],
-  [
-   "Calm the Storm"
-  ],
-  [
-   "Rippling Current",
-   "Salt Breeze Strike"
-  ],
-  [
-   "Silver Wave"
-  ],
-  [
-   "Mithral Flash"
-  ],
-  [
-   "Quicksilver Wave"
-  ]
- ],
+ "maneuvers_choose_from": [],
+ "maneuvers_desc_dict": {},
+ "maneuvers_known_list": [],
+ "maneuvers_readied_list": [],
+ "maneuvers_readied_names": [],
  "mannerisms": [
   "Drums fingers",
   "Yawns",
   "Clenches fists"
  ],
- "martial_disciplines": [
-  "Mithral Current"
- ],
+ "martial_disciplines": [],
  "mini_alignment": "lg",
  "mod_char_sheet_var": false,
- "mt_feats": [
-  "Martial Training I (Mithral Current)",
-  "Martial Training III (Mithral Current)",
-  "Martial Training V (Mithral Current)"
- ],
+ "mt_feats": [],
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "dead mother, loving father, raised in a wealthy household",
+ "parents": "absent mother, absent father, raised in an orphanage",
  "personality_traits": [
   "Fervent",
   "Rebellious",
   "Selfish",
   "Fearsome"
  ],
- "platnium": 426549.5,
+ "platnium": 12194.9,
  "profession_ability_items": [
   {
    "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.int",
+     "type": "competence"
+    },
     {
      "formula": "1",
      "operator": "add",
      "priority": 0,
      "target": "ac",
      "type": "dodge"
-    }
-   ],
-   "contextNotes": [
+    },
     {
-     "target": "will",
-     "text": "+1 morale vs fear and on Will saves while an enemy is adjacent"
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "cmd",
+     "type": "dodge"
     }
    ],
-   "description": "<p><em>Profession (Cyclops Archer) - rank 7/10. Associate skills (ranks 1/4/7/10): Handle Animal, Perception, Sense Motive.</em></p><hr><p><strong>Bloodied Resolve (Ex)</strong></p><p>A veteran does not flinch when the fighting turns grim. You gain a +1 morale bonus on saving throws against fear and on Will saves while an enemy is adjacent to you.</p><hr><p><strong>Shield Brace (Ex)</strong></p><p>You set your shield and brace against the charge. You gain a +1 shield-trained bonus to AC, and you may treat it as a +1 dodge bonus against the first attack made against you each round.</p>",
-   "name": "Profession Rank 5: (Cyclops Archer)",
+   "contextNotes": [],
+   "description": "<p><em>Profession (Watch Underling) - rank 10/10. Associate skills (ranks 1/4/7/10): Use Magic Device, Perception, Appraise, Profession.</em></p><hr><p><strong>Parade Bearing (Ex)</strong></p><p>Years on the muster ground taught you to stand tall and look the part. You gain a +2 competence bonus on Intimidate checks made to demoralize foes.</p><hr><p><strong>Drilled Footwork (Ex)</strong></p><p>Endless drilling keeps you balanced and ready. You gain a +1 dodge bonus to AC and to CMD whenever you are not flat-footed.</p>",
+   "name": "Profession Rank 5: (Watch Underling)",
    "uses": null
   },
   {
@@ -947,36 +807,15 @@
      "formula": "2",
      "operator": "add",
      "priority": 0,
-     "target": "init",
+     "target": "skill.crf",
      "type": "competence"
     }
    ],
-   "contextNotes": [
-    {
-     "target": "attack",
-     "text": "+3 circumstance on Bluff to hide cheating at games of chance"
-    }
-   ],
-   "description": "<p><em>Profession (Confidence Trickster) - rank 5/10. Associate skills (ranks 1/4/7/10): Use Magic Device, Diplomacy.</em></p><hr><p><strong>Cutpurse Reflexes (Ex)</strong></p><p>Quick hands and quicker feet keep the Fighter one step ahead of an angry crowd. They gain a <strong>+2</strong> competence bonus on Initiative checks.</p><hr><p><strong>Loaded Dice (Ex)</strong></p><p>The Fighter keeps weighted dice and marked cards close at hand, and knows how to slip them into play. They gain a <strong>+3</strong> circumstance bonus on Sleight of Hand checks made to cheat at games of chance and on Bluff checks to avoid being caught doing so.</p>",
-   "name": "Profession Rank 5: (Confidence Trickster)",
-   "uses": null
-  },
-  {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "allSavingThrows",
-     "text": "+2 morale vs fear from your banner"
-    },
-    {
-     "target": "damage",
-     "text": "+2d6 damage on a charge"
-    }
-   ],
-   "description": "<p><em>Profession (Avatar of the Wild Hunt) - rank 9/10. Associate skills (ranks 1/4/7/10): Sleight of Hand, Appraise, Perception.</em></p><hr><p><strong>Banner of the Vanguard (Ex)</strong></p><p>Your standard rallies those who follow you. Allies within 60 feet who can see your banner gain a +2 morale bonus on saving throws against fear and a +1 morale bonus on attack rolls made while charging; you yourself gain the same benefit.</p><hr><p><strong>Unstoppable Onslaught (Ex)</strong></p><p>You crash through the line like a war engine. When you charge you ignore difficult terrain and the first creature in your path, and your charge attack deals an extra 2d6 damage and gains a +4 bonus to its combat maneuver check to overrun or bull rush.</p><hr><p><strong>Martial Flexibility (Ex)</strong></p><p>You adapt mid-fight like a brawler. As a swift action you gain the benefit of one combat feat for 1 minute (or two feats as a move action). You can use this a number of times per day equal to 3 + half your level, and the chosen feats can satisfy each other's prerequisites.</p>",
-   "name": "Profession Rank 5: (Avatar of the Wild Hunt)",
+   "contextNotes": [],
+   "description": "<p><em>Profession (Bellows Tender) - rank 10/10. Associate skills (ranks 1/4/7/10): Diplomacy, Knowledge (local), Handle Animal, Use Magic Device.</em></p><hr><p><strong>Stained Fingers (Ex)</strong></p><p>Years of careless mixing have left your hands reeking of reagents but trained to know them. You can identify any common alchemical substance, potion, or poison by smell as a standard action with no check, and you gain a +2 competence bonus on Craft (alchemy) checks to identify substances.</p><hr><p><strong>Cracked Beaker (Ex)</strong></p><p>Your leaky apparatus belches foul vapors when you work, which you have learned to aim. Three times per day as a standard action you can hurl a flask of choking reek into an adjacent square; the target must succeed at a Fortitude save (DC 10 + half your character level + your Intelligence modifier) or be sickened for 1 round.</p>",
+   "name": "Profession Rank 5: (Bellows Tender)",
    "uses": {
-    "maxFormula": "3 + floor(@attributes.hd.total / 2)",
+    "maxFormula": "3",
     "per": "day",
     "value": null
    }
@@ -984,23 +823,21 @@
   {
    "changes": [
     {
-     "formula": "2",
+     "formula": "3",
      "operator": "add",
      "priority": 0,
-     "target": "skill.sur",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.han",
+     "target": "skill.hea",
      "type": "competence"
     }
    ],
-   "contextNotes": [],
-   "description": "<p><em>Profession (Farmer) - rank 6/10. Associate skills (ranks 1/4/7/10): Handle Animal, Appraise.</em></p><hr><p><strong>Trail Reader (Ex)</strong></p><p>You spot broken twigs, faint prints, and disturbed earth that others miss. You gain a +2 competence bonus on Survival checks, including checks made to follow tracks, and you can move at your normal speed while tracking without taking the usual -5 penalty.</p><hr><p><strong>Beast Soother (Ex)</strong></p><p>A calm word and a steady hand settle skittish animals. You gain a +2 competence bonus on Handle Animal checks, and you may attempt to influence the attitude of an animal as a Diplomacy check using your Handle Animal modifier.</p>",
-   "name": "Profession Rank 5: (Farmer)",
+   "contextNotes": [
+    {
+     "target": "fort",
+     "text": "+2 vs disease, poison, and nausea"
+    }
+   ],
+   "description": "<p><em>Profession (Plague-Doctor) - rank 10/10. Associate skills (ranks 1/4/7/10): Perception, Knowledge (local), Craft, Use Magic Device.</em></p><hr><p><strong>Disease Ward (Ex)</strong></p><p>Constant exposure to contagion has toughened your constitution. You gain a +2 resistance bonus on Fortitude saves against disease, poison, and nausea.</p><hr><p><strong>Steady Hands (Ex)</strong></p><p>Years of delicate work have given you unflinching control. You gain a +3 competence bonus on Heal checks, and you never take a penalty on Heal checks for working in poor conditions or under duress.</p>",
+   "name": "Profession Rank 5: (Plague-Doctor)",
    "uses": null
   }
  ],
@@ -1013,40 +850,31 @@
  "profession_pool": 31,
  "profession_ranks": [
   {
-   "ability_theme": "trade",
+   "ability_theme": "martial",
    "ability_tier": "bad",
    "associate_skills": [
+    "Use Magic Device",
+    "Perception",
+    "Appraise",
     "Profession"
    ],
    "cap": 10,
-   "name": "Pack Drover",
-   "rank15_abilities": [],
-   "rank5_abilities": [],
-   "ranks": 3,
-   "skill_label": "Profession (Pack Drover)"
-  },
-  {
-   "ability_theme": "martial",
-   "ability_tier": "average",
-   "associate_skills": [
-    "Handle Animal",
-    "Perception",
-    "Sense Motive"
-   ],
-   "cap": 10,
-   "name": "Cyclops Archer",
+   "name": "Watch Underling",
    "rank15_abilities": [],
    "rank5_abilities": [
     {
-     "changes": [],
-     "contextNotes": [
+     "changes": [
       {
-       "target": "will",
-       "text": "+1 morale vs fear and on Will saves while an enemy is adjacent"
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.int",
+       "type": "competence"
       }
      ],
-     "desc": "<p>A veteran does not flinch when the fighting turns grim. You gain a +1 morale bonus on saving throws against fear and on Will saves while an enemy is adjacent to you.</p>",
-     "name": "Bloodied Resolve (Ex)",
+     "contextNotes": [],
+     "desc": "<p>Years on the muster ground taught you to stand tall and look the part. You gain a +2 competence bonus on Intimidate checks made to demoralize foes.</p>",
+     "name": "Parade Bearing (Ex)",
      "uses": null
     },
     {
@@ -1057,39 +885,54 @@
        "priority": 0,
        "target": "ac",
        "type": "dodge"
+      },
+      {
+       "formula": "1",
+       "operator": "add",
+       "priority": 0,
+       "target": "cmd",
+       "type": "dodge"
       }
      ],
      "contextNotes": [],
-     "desc": "<p>You set your shield and brace against the charge. You gain a +1 shield-trained bonus to AC, and you may treat it as a +1 dodge bonus against the first attack made against you each round.</p>",
-     "name": "Shield Brace (Ex)",
+     "desc": "<p>Endless drilling keeps you balanced and ready. You gain a +1 dodge bonus to AC and to CMD whenever you are not flat-footed.</p>",
+     "name": "Drilled Footwork (Ex)",
      "uses": null
     }
    ],
-   "ranks": 7,
-   "skill_label": "Profession (Cyclops Archer)"
+   "ranks": 10,
+   "skill_focus_bonuses": [
+    {
+     "bonus": 6,
+     "feat": "Skill Focus"
+    }
+   ],
+   "skill_label": "Profession (Watch Underling)"
   },
   {
-   "ability_theme": "divine",
-   "ability_tier": "good",
+   "ability_theme": "craft",
+   "ability_tier": "average",
    "associate_skills": [
-    "Handle Animal"
+    "Knowledge (local)"
    ],
    "cap": 10,
-   "name": "Sanctified Exorcist",
+   "name": "Pruner",
    "rank15_abilities": [],
    "rank5_abilities": [],
    "ranks": 1,
-   "skill_label": "Profession (Sanctified Exorcist)"
+   "skill_label": "Profession (Pruner)"
   },
   {
-   "ability_theme": "skill",
-   "ability_tier": "average",
+   "ability_theme": "alchemy",
+   "ability_tier": "bad",
    "associate_skills": [
-    "Use Magic Device",
-    "Diplomacy"
+    "Diplomacy",
+    "Knowledge (local)",
+    "Handle Animal",
+    "Use Magic Device"
    ],
    "cap": 10,
-   "name": "Confidence Trickster",
+   "name": "Bellows Tender",
    "rank15_abilities": [],
    "rank5_abilities": [
     {
@@ -1098,141 +941,80 @@
        "formula": "2",
        "operator": "add",
        "priority": 0,
-       "target": "init",
+       "target": "skill.crf",
        "type": "competence"
       }
      ],
      "contextNotes": [],
-     "desc": "<p>Quick hands and quicker feet keep the Fighter one step ahead of an angry crowd. They gain a <strong>+2</strong> competence bonus on Initiative checks.</p>",
-     "name": "Cutpurse Reflexes (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [],
-     "contextNotes": [
-      {
-       "target": "attack",
-       "text": "+3 circumstance on Bluff to hide cheating at games of chance"
-      }
-     ],
-     "desc": "<p>The Fighter keeps weighted dice and marked cards close at hand, and knows how to slip them into play. They gain a <strong>+3</strong> circumstance bonus on Sleight of Hand checks made to cheat at games of chance and on Bluff checks to avoid being caught doing so.</p>",
-     "name": "Loaded Dice (Ex)",
-     "uses": null
-    }
-   ],
-   "ranks": 5,
-   "skill_label": "Profession (Confidence Trickster)"
-  },
-  {
-   "ability_theme": "martial",
-   "ability_tier": "top",
-   "associate_skills": [
-    "Sleight of Hand",
-    "Appraise",
-    "Perception"
-   ],
-   "cap": 10,
-   "name": "Avatar of the Wild Hunt",
-   "rank15_abilities": [],
-   "rank5_abilities": [
-    {
-     "changes": [],
-     "contextNotes": [
-      {
-       "target": "allSavingThrows",
-       "text": "+2 morale vs fear from your banner"
-      }
-     ],
-     "desc": "<p>Your standard rallies those who follow you. Allies within 60 feet who can see your banner gain a +2 morale bonus on saving throws against fear and a +1 morale bonus on attack rolls made while charging; you yourself gain the same benefit.</p>",
-     "name": "Banner of the Vanguard (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [],
-     "contextNotes": [
-      {
-       "target": "damage",
-       "text": "+2d6 damage on a charge"
-      }
-     ],
-     "desc": "<p>You crash through the line like a war engine. When you charge you ignore difficult terrain and the first creature in your path, and your charge attack deals an extra 2d6 damage and gains a +4 bonus to its combat maneuver check to overrun or bull rush.</p>",
-     "name": "Unstoppable Onslaught (Ex)",
+     "desc": "<p>Years of careless mixing have left your hands reeking of reagents but trained to know them. You can identify any common alchemical substance, potion, or poison by smell as a standard action with no check, and you gain a +2 competence bonus on Craft (alchemy) checks to identify substances.</p>",
+     "name": "Stained Fingers (Ex)",
      "uses": null
     },
     {
      "changes": [],
      "contextNotes": [],
-     "desc": "<p>You adapt mid-fight like a brawler. As a swift action you gain the benefit of one combat feat for 1 minute (or two feats as a move action). You can use this a number of times per day equal to 3 + half your level, and the chosen feats can satisfy each other's prerequisites.</p>",
-     "name": "Martial Flexibility (Ex)",
+     "desc": "<p>Your leaky apparatus belches foul vapors when you work, which you have learned to aim. Three times per day as a standard action you can hurl a flask of choking reek into an adjacent square; the target must succeed at a Fortitude save (DC 10 + half your character level + your Intelligence modifier) or be sickened for 1 round.</p>",
+     "name": "Cracked Beaker (Ex)",
      "uses": {
-      "maxFormula": "3 + floor(@attributes.hd.total / 2)",
+      "maxFormula": "3",
       "per": "day",
       "value": null
      }
     }
    ],
-   "ranks": 9,
-   "skill_focus_bonuses": [
-    {
-     "bonus": 3,
-     "feat": "Skill Focus"
-    }
-   ],
-   "skill_label": "Profession (Avatar of the Wild Hunt)"
+   "ranks": 10,
+   "skill_label": "Profession (Bellows Tender)"
   },
   {
-   "ability_theme": "nature",
+   "ability_theme": "medical",
    "ability_tier": "average",
    "associate_skills": [
-    "Handle Animal",
-    "Appraise"
+    "Perception",
+    "Knowledge (local)",
+    "Craft",
+    "Use Magic Device"
    ],
    "cap": 10,
-   "name": "Farmer",
+   "name": "Plague-Doctor",
    "rank15_abilities": [],
    "rank5_abilities": [
     {
-     "changes": [
+     "changes": [],
+     "contextNotes": [
       {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.sur",
-       "type": "competence"
+       "target": "fort",
+       "text": "+2 vs disease, poison, and nausea"
       }
      ],
-     "contextNotes": [],
-     "desc": "<p>You spot broken twigs, faint prints, and disturbed earth that others miss. You gain a +2 competence bonus on Survival checks, including checks made to follow tracks, and you can move at your normal speed while tracking without taking the usual -5 penalty.</p>",
-     "name": "Trail Reader (Ex)",
+     "desc": "<p>Constant exposure to contagion has toughened your constitution. You gain a +2 resistance bonus on Fortitude saves against disease, poison, and nausea.</p>",
+     "name": "Disease Ward (Ex)",
      "uses": null
     },
     {
      "changes": [
       {
-       "formula": "2",
+       "formula": "3",
        "operator": "add",
        "priority": 0,
-       "target": "skill.han",
+       "target": "skill.hea",
        "type": "competence"
       }
      ],
      "contextNotes": [],
-     "desc": "<p>A calm word and a steady hand settle skittish animals. You gain a +2 competence bonus on Handle Animal checks, and you may attempt to influence the attitude of an animal as a Diplomacy check using your Handle Animal modifier.</p>",
-     "name": "Beast Soother (Ex)",
+     "desc": "<p>Years of delicate work have given you unflinching control. You gain a +3 competence bonus on Heal checks, and you never take a penalty on Heal checks for working in poor conditions or under duress.</p>",
+     "name": "Steady Hands (Ex)",
      "uses": null
     }
    ],
-   "ranks": 6,
-   "skill_label": "Profession (Farmer)"
+   "ranks": 10,
+   "skill_label": "Profession (Plague-Doctor)"
   }
  ],
  "professions": [
-  "Pack Drover",
-  "Cyclops Archer",
-  "Sanctified Exorcist",
-  "Confidence Trickster",
-  "Avatar of the Wild Hunt",
-  "Farmer"
+  "Watch Underling",
+  "Pruner",
+  "Bellows Tender",
+  "Plague-Doctor"
  ],
  "racial_stats": {
   "cha": 0,
@@ -1303,51 +1085,53 @@
  "shield_spell_failure": " ",
  "shield_weight": " ",
  "skill_ranks": {
-  "acrobatics": 9,
-  "appraise": 11,
+  "acrobatics": 4,
+  "appraise": 0,
   "bluff": 0,
+  "climb": 6,
+  "craft": 0,
   "diplomacy": 0,
-  "disable device": 11,
-  "disguise": 7,
+  "disable device": 0,
+  "disguise": 0,
   "escape artist": 0,
-  "fly": 0,
+  "fly": 5,
   "handle animal": 0,
   "heal": 0,
   "intimidate": 0,
   "knowledge arcana": 0,
-  "knowledge dungeoneering": 8,
-  "knowledge engineering": 16,
-  "knowledge geography": 6,
+  "knowledge dungeoneering": 14,
+  "knowledge engineering": 7,
+  "knowledge geography": 16,
   "knowledge history": 0,
   "knowledge local": 1,
-  "knowledge nature": 4,
-  "knowledge nobility": 4,
-  "knowledge planes": 2,
-  "knowledge religion": 0,
-  "linguistics": 4,
-  "perception": 11,
+  "knowledge nature": 9,
+  "knowledge nobility": 13,
+  "knowledge planes": 0,
+  "knowledge religion": 4,
+  "linguistics": 7,
+  "perception": 0,
   "perform": 7,
   "profession": 0,
   "ride": 0,
   "sense motive": 0,
-  "sleight of hand": 7,
+  "sleight of hand": 12,
   "spellcraft": 0,
-  "stealth": 7,
-  "survival": 5,
-  "swim": 16,
-  "use magic device": 8
+  "stealth": 0,
+  "survival": 14,
+  "swim": 12,
+  "use magic device": 13
  },
  "skill_unlock": {
-  "base_skill": "disable device",
-  "ranks": 11,
-  "skill": "Disable Device",
+  "base_skill": "linguistics",
+  "ranks": 7,
+  "skill": "Linguistics",
   "unlock": {
-   "10": "You can disarm magical traps at a -10 penalty, and with trapfinding you never accidentally trigger a trap even while performing its trigger action.",
-   "15": "When attacked by a trap, you can attempt an immediate-action Disable Device check opposed by the trap's attack roll or save DC to take half or no damage.",
-   "20": "Halve the penalties for quickly disarming, and with trapfinding you can take a -20 penalty to let allies benefit and disable a trap before it triggers (DC +10).",
-   "5": "You can reduce the time to disarm a trap or open a lock by taking a -5 penalty per step (down to a swift action)."
+   "10": "Exceed a writing-examination check by 10 to learn its precise meaning, never draw false conclusions on a failure, and decipher spoken meaning at high DCs.",
+   "15": "You can decipher magical writings (DC 25 + caster level) as if using read magic, and gain a +2 bonus on Disable Device for identified magical traps.",
+   "20": "You decipher text at one page per round, and spending 1 minute per page lets you roll twice and take the better result.",
+   "5": "You can use Linguistics in place of Sense Motive to intercept secret messages, and gain a scaling insight bonus on Perception/Disable Device checks for written magical traps."
   },
-  "unlock_html": "<h2>Disable Device</h2><p><strong>5 Ranks</strong>: You can reduce the time to disarm a trap or open a lock by taking a -5 penalty per step (down to a swift action).</p><p><strong>10 Ranks</strong>: You can disarm magical traps at a -10 penalty, and with trapfinding you never accidentally trigger a trap even while performing its trigger action.</p><p><strong>15 Ranks</strong>: When attacked by a trap, you can attempt an immediate-action Disable Device check opposed by the trap's attack roll or save DC to take half or no damage.</p><p><strong>20 Ranks</strong>: Halve the penalties for quickly disarming, and with trapfinding you can take a -20 penalty to let allies benefit and disable a trap before it triggers (DC +10).</p>"
+  "unlock_html": "<h2>Linguistics</h2><p><strong>5 Ranks</strong>: You can use Linguistics in place of Sense Motive to intercept secret messages, and gain a scaling insight bonus on Perception/Disable Device checks for written magical traps.</p><p><strong>10 Ranks</strong>: Exceed a writing-examination check by 10 to learn its precise meaning, never draw false conclusions on a failure, and decipher spoken meaning at high DCs.</p><p><strong>15 Ranks</strong>: You can decipher magical writings (DC 25 + caster level) as if using read magic, and gain a +2 bonus on Disable Device for identified magical traps.</p><p><strong>20 Ranks</strong>: You decipher text at one page per round, and spending 1 minute per page lets you roll twice and take the better result.</p>"
  },
  "specialty_schools": [
   "divination",
@@ -1360,36 +1144,45 @@
  "spellbooks": [],
  "spells_prepared_per_level": [],
  "sphere_boons": [
+  "Easy Focus",
+  "Overcharge",
   "Fortified Casting"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
+  "Addictive Casting",
+  "Magical Signs",
+  "Skilled Casting",
   "Wild Magic",
-  "Material Casting",
-  "Magical Signs"
+  "Verbal Casting",
+  "Painful Magic"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Wild Magic",
-  "Material Casting",
+  "Addictive Casting",
   "Magical Signs",
+  "Skilled Casting",
+  "Wild Magic",
+  "Verbal Casting",
+  "Painful Magic",
+  "Easy Focus",
+  "Overcharge",
   "Fortified Casting"
  ],
  "spheres_chosen": [],
- "stances_chosen": [
-  "Flowing Water Stance",
-  "Reaching Blade Stance",
-  "Shifting Waters Stance",
-  "Mithral Current Stance"
- ],
- "story_feat_tax_dict": {},
+ "stances_chosen": [],
+ "story_feat_tax_dict": {
+  "Focused Worker": [
+   "focused overseer"
+  ]
+ },
  "story_feats": [
-  "Ensemble",
-  "Critical Focus",
-  "Expert Driver",
-  "Weather Eye"
+  "Focused Worker",
+  "Stone Read",
+  "Skill Focus (Profession (Watch Underling))",
+  "Desperate Battler"
  ],
  "str": 21,
  "teamwork_feat_labels": [],
@@ -1397,15 +1190,11 @@
  "total_level": 16,
  "total_rolled_hp": 91,
  "trainer_calibers": [
-  3,
   2
  ],
  "trainer_feat_labels": [
   "(Trainer 1)",
-  "(Trainer 1)",
-  "(Trainer 1)",
-  "(Trainer 2)",
-  "(Trainer 2)"
+  "(Trainer 1)"
  ],
  "trainer_feat_tax_dict": {
   "Hero's Fortune": [
@@ -1414,21 +1203,17 @@
   ]
  },
  "trainer_feats": [
-  "Shield Focus",
-  "Pack Attack",
-  "Trapper's Setup",
-  "Hero's Fortune",
-  "Undermine"
+  "Improved Shield Bash",
+  "Hero's Fortune"
  ],
  "weapon_enhancement_bonus": 5,
  "weapon_enhancement_chosen_list": [
-  "Repositioning",
-  "Agile",
-  "Skewering"
+  "Kinslayer",
+  "Miserable"
  ],
- "weapon_name": "Combat scabbard",
+ "weapon_name": "Tube arrow shooter",
  "weight_number": 221,
  "wis": 15,
- "younger_brothers": " you have 0 younger brothers",
+ "younger_brothers": " you have 1 younger brothers",
  "younger_sisters": " you have 0 younger sisters"
 }

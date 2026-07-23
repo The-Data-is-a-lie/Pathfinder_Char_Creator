@@ -147,6 +147,39 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   each contract and asserts the error — a guard that never fires is worth nothing.
 
 ### Changed
+- **Magic enhancements are bought before ordinary gear, out of a reserved share of the purse.**
+  `item_chooser` ran first and drained the gold, so `enhancement_calculator` could never afford a
+  tier — **every realistically-funded NPC had `enhancement_effects_dict` empty** and no magic weapon
+  or armor at all. (The golden `martial` config carried 5,000,000 gp purely to keep that code path
+  under regression; it is now 400,000, just above the level-16 wealth-by-level of ~315,000.)
+
+  New `plan_enhancements()` takes `ENHANCEMENT_SHARE` (0.5) of the purse first; gear spends the rest
+  plus whatever the tier table couldn't use. Both are module constants in
+  `armor_and_enhancements.py`, not generator knobs — nothing in the Foundry module or web sheet UI
+  would drive them.
+
+  **The 3/2/1 divisor cascade is gone**, replaced by explicit proportions
+  (`weapon 50 / armor 35 / shield 15`). Under the cascade each call took a fraction of what was
+  *left*, so whichever slot ran last swallowed the remainder — and that was the **shield**. Modelled,
+  it produced armor +8 / weapon +8 / **shield +9** at high wealth, and at 5,000 gp a character
+  enchanted **only its shield**. Weapon-first is the priority that matters for an NPC, and no slot
+  now wins by being last.
+
+  **Fixes a gold leak**: `enhancement_calculator(character, 1)` deducted for a shield enhancement
+  even when `enhancement_chooser` returns `([], 0)` for a shieldless character — with divisor 1 that
+  was the *largest* of the three deductions. A shieldless character is now charged nothing and its
+  15% is redistributed to weapon and armor.
+
+  **Why `item_chooser` moved later rather than the enhancement calls moving earlier:**
+  `character.shield_flag` isn't set until after the weapon and shield choosers run, so computing the
+  shield reserve earlier would be blind. Verified `equipment_list`/`equip_descrip` are unused in
+  between.
+
+  **Note on the golden diff:** reordering the calls changes the *order of RNG draws*, so every
+  downstream decision shifts — the goldens are entirely different characters, not a reviewable
+  delta. Step verified instead against invariants across six wealth levels × two seeds: gold never
+  negative, gear always bought, no shieldless shield charge, and weapon ≥ armor ≥ shield at every
+  level. `test_gold_and_stats.py` rewritten against `plan_enhancements` (424 checks, up from 139).
 - **Static data paths are anchored to `__file__`; the `os.chdir` at import is gone.** Both entry
   points called `os.chdir(repo_root)` at import time — a process-wide side effect just to make
   imports work, inherited by anything else in the process — purely because the data paths were

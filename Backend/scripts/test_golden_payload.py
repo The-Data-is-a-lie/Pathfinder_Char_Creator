@@ -59,13 +59,15 @@ _BASE = dict(
 # carry conditionals), so the seeds here were selected by sweeping for coverage rather than picked at
 # random. Check coverage with scripts/report_buff_coverage.py before changing a seed or config.
 CONFIGS = {
-    # Martial, no spellcasting. Deliberately absurd gold: enhancement_calculator runs AFTER
-    # item_chooser has drained the purse, so a realistically-funded NPC never buys a weapon/armor
-    # quality at all and enhancement_effects_dict stays empty. This is the only config that exercises
-    # the quality path. (That ordering is a real generator issue, filed separately -- not a test hack.)
+    # Martial, no spellcasting: feats, gear, and the weapon/armor QUALITY path. Gold is 400,000
+    # against a level-16 wealth-by-level of ~315,000 -- above the table, but only modestly. Named
+    # qualities (flaming, keen, ...) are what populate enhancement_effects_dict, and
+    # enhancement_chooser only spends on them once the budget exceeds +5, so a poorer character gets
+    # a flat bonus and no qualities. This was 5,000,000 while enhancements ran AFTER item_chooser had
+    # drained the purse; now that they take a reserved share first, the crutch is no longer needed.
     'martial': dict(_BASE, seed=3002, userInput_race='Human', class_choice='fighter',
                     chosen_BAB='high', multi_class='N', alignment_input='LG',
-                    userInput_gender='male', high_level=16, low_level=16, gold_num=5000000),
+                    userInput_gender='male', high_level=16, low_level=16, gold_num=400000),
     # Multiclass divine caster + Spheres of Power: spellbooks, bonus spells, domains, spell changes
     # and riders, magic talents, mana pool, casting tradition.
     'caster': dict(_BASE, seed=5004, userInput_race='Human', class_choice='cleric',

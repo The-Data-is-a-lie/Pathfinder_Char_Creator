@@ -35,7 +35,7 @@ from utils.class_func.adding_bonus_spells			import add_bonus_spells, add_bonus_s
 from utils.class_func.alignment_and_deity 			import randomize_deity, choose_alignment
 from utils.class_func.animal_companions 			import animal_chooser, animal_feats
 from utils.class_func.appearance 					import randomize_apperance_attr, randomize_body_feature, get_racial_attr
-from utils.class_func.armor_and_enhancements 		import enhancement_calculator, enhancement_chooser#, enhancement_limits
+from utils.class_func.armor_and_enhancements 		import plan_enhancements, enhancement_chooser#, enhancement_limits
 from utils.class_func.armor_and_weapon_chooser 		import (armor_chooser, weapon_chooser, list_selection, shield_chooser, 
                                                                  shield_flag_func, ac_bonus_calculator, weapon_type_flag_func)
 from utils.class_func.chooseable 					import chooseable_list, chooseable_list_race#, chooseable_list_class 
@@ -513,13 +513,11 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		armor_chooser(character)
 		character.assign_gold("gold", gold_num)
 
-		# Pre-loading JSON data (so we only do it 1x per item and not multiple times)
-		# Open JSON file to see if name is in that list, otherwise reroll and document
-		
-		# This breaks perm server if Double \\ 
-		foundry_item_names = character.foundry_item_names
-		
-		equipment_list, equip_descrip = item_chooser(character, foundry_item_names)#, foundry_item_names)
+		# item_chooser has MOVED down, to just after the enhancement budget is spent (grep
+		# plan_enhancements). It used to run here and drain the purse, so enhancement_calculator --
+		# which ran ~30 lines later -- could never afford a tier and enhancement_effects_dict was
+		# empty for every realistically funded NPC. Enhancements now take their reserved share first
+		# and gear spends the rest.
 
 		#calculating savings throws based off of class levels
 		# fort_saving_throw = saving_throw_calc(character, 'Fortitude')
@@ -549,10 +547,20 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		character.shield_flag = shield_flag_func(character, limits=limits)
 		character.shield_dict = list_selection(character, 'armor', limits=limits, shield_flag = character.shield_flag)
 
-	# Maybe change these
-		armor_enhancement = enhancement_calculator(character, 3)
-		weapon_enhancement = enhancement_calculator(character, 2)
-		shield_enhancement = enhancement_calculator(character, 1)
+		# Magic enhancements get first claim on a reserved share of the purse (utils/class_func/
+		# armor_and_enhancements.py: ENHANCEMENT_SHARE / ENHANCEMENT_SPLIT). Runs here, after
+		# shield_flag is known, so a shieldless character is charged nothing for a shield.
+		_enhancements = plan_enhancements(character)
+		armor_enhancement = _enhancements['armor']
+		weapon_enhancement = _enhancements['weapon']
+		shield_enhancement = _enhancements['shield']
+
+		# ... and ordinary gear spends whatever is left.
+		# Pre-loading JSON data (so we only do it 1x per item and not multiple times)
+		# Open JSON file to see if name is in that list, otherwise reroll and document
+		# This breaks perm server if Double \\
+		foundry_item_names = character.foundry_item_names
+		equipment_list, equip_descrip = item_chooser(character, foundry_item_names)
 
 		armor_ac = ac_bonus_calculator(character, character.armor_dict)
 		shield_ac = ac_bonus_calculator(character, character.shield_dict)

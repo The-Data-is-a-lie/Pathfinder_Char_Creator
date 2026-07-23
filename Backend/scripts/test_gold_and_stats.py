@@ -19,7 +19,7 @@ sys.path.insert(0, str(BACKEND))   # so `from utils...` resolves
 
 from utils import data
 from utils.class_func import item_and_price as ip
-from utils.class_func.armor_and_enhancements import enhancement_calculator
+from utils.class_func.armor_and_enhancements import plan_enhancements
 from utils.class_func.stats import roll_stats
 
 FAILURES = []
@@ -33,7 +33,7 @@ def check(condition, message):
 
 
 class GoldCharacter:
-    """The slice of createACharacter.Character that item_chooser / enhancement_calculator read."""
+    """The slice of createACharacter.Character that item_chooser / plan_enhancements read."""
 
     def __init__(self, gold, items):
         self.gold = gold
@@ -101,37 +101,74 @@ def test_item_chooser_broke_character():
 
 
 # --------------------------------------------------------------------------------------------
-# 2. enhancement_calculator: largest AFFORDABLE tier, never a negative purse.
+# 2. plan_enhancements: largest AFFORDABLE tier per slot, out of a reserved share, never negative.
 # --------------------------------------------------------------------------------------------
+GOLD_SWEEP = (0, 1, 500, 1999, 2000, 5999, 6000, 25000, 50000, 500000, 1000000)
+
+
 def test_enhancement_never_goes_negative():
-    mapping = data.enhancement_bonus_mapping
-    cheapest = min(mapping)
-    for gold in (0, 1, 500, 1999, 2000, 5999, 6000, 50000, 500000, 1000000):
-        for divisor in (3, 2, 1):
-            character = GoldCharacter(gold, {})
-            bonus = enhancement_calculator(character, divisor)
-            check(character.gold >= 0,
-                  f"gold {gold} / divisor {divisor}: went negative ({character.gold})")
-            check(character.gold <= gold,
-                  f"gold {gold} / divisor {divisor}: gold increased to {character.gold}")
-            budget = gold // divisor
-            expected_keys = [k for k in mapping if k <= budget]
-            want = mapping[max(expected_keys)] if expected_keys else 0
-            check(bonus == want,
-                  f"gold {gold} / divisor {divisor}: expected +{want}, got +{bonus}")
-            if budget < cheapest:
-                check(character.gold == gold,
-                      f"gold {gold} / divisor {divisor}: spent {gold - character.gold} on nothing")
+    """Every purchase is checked against ACTUAL gold, so the reserve can't overdraw the purse."""
+    for gold in GOLD_SWEEP:
+        for share in (0.0, 0.35, 0.5, 1.0):
+            for has_shield in (True, False):
+                character = GoldCharacter(gold, {})
+                out = plan_enhancements(character, share=share, has_shield=has_shield)
+                check(character.gold >= 0,
+                      f"gold {gold} share {share} shield {has_shield}: negative ({character.gold})")
+                check(character.gold <= gold,
+                      f"gold {gold} share {share}: gold increased to {character.gold}")
+                check(set(out) == {'weapon', 'armor', 'shield'},
+                      f"gold {gold}: unexpected slots {sorted(out)}")
+                check(all(isinstance(v, int) and v >= 0 for v in out.values()),
+                      f"gold {gold}: non-int/negative bonus in {out}")
 
 
-def test_enhancement_three_slots_in_sequence():
-    """The real call pattern: armor (3), weapon (2), shield (1) off the same shrinking purse."""
-    for gold in (0, 750, 3000, 25000, 400000):
+def test_shieldless_is_never_charged_for_a_shield():
+    """The old cascade gave the shield divisor 1 -- ALL remaining gold -- and deducted it even when
+    enhancement_chooser would return ([], 0) for a shieldless character, so they paid for an
+    enchantment they never received. It was the largest of the three deductions."""
+    for gold in GOLD_SWEEP:
         character = GoldCharacter(gold, {})
-        for divisor in (3, 2, 1):
-            enhancement_calculator(character, divisor)
-            check(character.gold >= 0,
-                  f"starting gold {gold}: negative after divisor {divisor} ({character.gold})")
+        out = plan_enhancements(character, has_shield=False)
+        check(out['shield'] == 0,
+              f"gold {gold}: shieldless character got a +{out['shield']} shield")
+
+
+def test_weapon_is_never_worse_than_the_shield():
+    """Priority regression. Under the old 3/2/1 cascade whichever slot ran LAST swallowed the
+    remainder, and that was the shield -- at 5,000 gp a character enchanted its shield and nothing
+    else, and at 880,000 it got shield +9 against weapon +8."""
+    for gold in GOLD_SWEEP:
+        character = GoldCharacter(gold, {})
+        # has_shield=True explicitly: without it the fallback reads character.shield_flag, which
+        # GoldCharacter doesn't have, so the shield would be 0 and the check would pass for free.
+        out = plan_enhancements(character, has_shield=True)
+        check(out['weapon'] >= out['shield'],
+              f"gold {gold}: shield +{out['shield']} beat weapon +{out['weapon']}")
+        check(out['weapon'] >= out['armor'],
+              f"gold {gold}: armor +{out['armor']} beat weapon +{out['weapon']}")
+
+
+def test_reserve_is_respected():
+    """Spending stays within the reserved share (plus the rounding slack of one tier per slot), so
+    ordinary gear always has something left -- the whole point of running before item_chooser."""
+    for gold in (25000, 50000, 500000, 1000000):
+        for share in (0.35, 0.5):
+            character = GoldCharacter(gold, {})
+            plan_enhancements(character, share=share)
+            spent = gold - character.gold
+            check(spent <= int(gold * share),
+                  f"gold {gold} share {share}: spent {spent}, over the {int(gold * share)} reserve")
+            check(character.gold > 0,
+                  f"gold {gold} share {share}: nothing left for gear")
+
+
+def test_zero_share_buys_nothing():
+    for gold in (25000, 1000000):
+        character = GoldCharacter(gold, {})
+        out = plan_enhancements(character, share=0.0)
+        check(character.gold == gold, f"gold {gold}: share 0 spent {gold - character.gold}")
+        check(set(out.values()) == {0}, f"gold {gold}: share 0 bought {out}")
 
 
 # --------------------------------------------------------------------------------------------
@@ -205,7 +242,9 @@ def test_end_to_end():
 def main():
     tests = [test_item_chooser_never_goes_negative, test_item_chooser_pays_for_everything_it_lists,
              test_item_chooser_broke_character, test_enhancement_never_goes_negative,
-             test_enhancement_three_slots_in_sequence, test_inherents_disabled,
+             test_shieldless_is_never_charged_for_a_shield,
+             test_weapon_is_never_worse_than_the_shield, test_reserve_is_respected,
+             test_zero_share_buys_nothing, test_inherents_disabled,
              test_inherents_enabled_still_works, test_fresh_character_has_stat_dicts]
     if '--slow' in sys.argv:
         tests.append(test_end_to_end)
