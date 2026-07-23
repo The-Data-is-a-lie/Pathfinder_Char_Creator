@@ -26,14 +26,7 @@
  "bloodline": "N/A",
  "bloodline_feat_labels": [],
  "bloodline_feats": [],
- "buff_gaps": [
-  {
-   "curated_as": "Order's Wrath",
-   "kind": "spell_rider",
-   "name": "Orders Wrath",
-   "section": null
-  }
- ],
+ "buff_gaps": [],
  "build_archetype": "Generalist",
  "build_tactics": "Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.",
  "c_class": "cleric",
@@ -1402,7 +1395,7 @@
    "Hairline Fractures",
    "Haze of Dreams",
    "Preserve",
-   "Protection From Chaos",
+   "Protection from Chaos",
    "Ray of Sickening",
    "Restore Corpse",
    "Scarify",
@@ -1437,7 +1430,7 @@
    "False Alibi",
    "Hydrophobia",
    "Lover's Vengeance",
-   "Magic Circle Against Chaos",
+   "Magic Circle against Chaos",
    "Magic Vestment",
    "Mind Maze",
    "Severed Fate",
@@ -1449,7 +1442,7 @@
    "Discern Lies",
    "Frigid Souls",
    "Nature's Ravages",
-   "Orders Wrath",
+   "Order's Wrath",
    "Rags to Riches"
   ]
  ],
@@ -1482,7 +1475,7 @@
    "Hairline Fractures",
    "Haze of Dreams",
    "Preserve",
-   "Protection From Chaos",
+   "Protection from Chaos",
    "Ray of Sickening",
    "Restore Corpse",
    "Scarify",
@@ -1517,7 +1510,7 @@
    "False Alibi",
    "Hydrophobia",
    "Lover's Vengeance",
-   "Magic Circle Against Chaos",
+   "Magic Circle against Chaos",
    "Magic Vestment",
    "Mind Maze",
    "Severed Fate",
@@ -1529,7 +1522,7 @@
    "Discern Lies",
    "Frigid Souls",
    "Nature's Ravages",
-   "Orders Wrath",
+   "Order's Wrath",
    "Rags to Riches"
   ]
  ],
@@ -1626,6 +1619,18 @@
    "save": {
     "dc": "",
     "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Order's Wrath": {
+   "attack": null,
+   "riders": [
+    "Range: [[100 + 10*@spells.primary.cl.total]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] partial; see text; only chaotic and neutral (non-lawful) creatures are harmed by this spell; lawful creatures are unaffected; chaotic creatures take [[ (min(5, floor(@spells.primary.cl.total/2)))d8 ]] damage and are dazed for [[1]] round, except chaotic outsiders, who instead take [[ (min(10, @spells.primary.cl.total))d6 ]] damage and are dazed for [[1]] round; creatures who are neither chaotic nor lawful take only half this damage and are not dazed, though they may reduce that half again (to one-quarter of the roll) with a successful Will save; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "partial; see text",
     "harmless": false,
     "type": "will"
    }
@@ -1731,7 +1736,7 @@
      "Hairline Fractures",
      "Haze of Dreams",
      "Preserve",
-     "Protection From Chaos",
+     "Protection from Chaos",
      "Ray of Sickening",
      "Restore Corpse",
      "Scarify",
@@ -1766,7 +1771,7 @@
      "False Alibi",
      "Hydrophobia",
      "Lover's Vengeance",
-     "Magic Circle Against Chaos",
+     "Magic Circle against Chaos",
      "Magic Vestment",
      "Mind Maze",
      "Severed Fate",
@@ -1778,7 +1783,7 @@
      "Discern Lies",
      "Frigid Souls",
      "Nature's Ravages",
-     "Orders Wrath",
+     "Order's Wrath",
      "Rags to Riches"
     ]
    ],
