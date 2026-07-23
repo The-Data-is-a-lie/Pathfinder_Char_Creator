@@ -17,7 +17,9 @@ import json
 import sys
 from pathlib import Path
 
-GOLDEN_DIR = Path(__file__).resolve().parent / 'golden'
+HERE = Path(__file__).resolve()
+GOLDEN_DIR = HERE.parent / 'golden'
+sys.path.insert(0, str(HERE.parents[1]))   # so the collision check can import utils.class_func
 
 # The export keys built by the buff-attach code (main_test.py, spells.py, spheres.py, path_of_war.py).
 SIDE_MAPS = [
@@ -42,6 +44,38 @@ def size(value):
     if isinstance(value, list):
         return len(value)
     return 0
+
+
+def collisions():
+    """Curated names within one kind/section that fold to the same key.
+
+    The lookup index keeps the FIRST entry for a key, so a collision means one curated entry
+    silently shadows another -- the same class of invisible failure buff_match exists to remove.
+    There are none today; this exists to catch the curation edit that introduces one (adding
+    "Fools Errand" beside "Fool's Errand" would do it).
+    """
+    import collections
+    from utils.class_func import buff_match as bm
+
+    found = []
+    for kind in bm.KINDS:
+        raw = bm.raw(kind)
+        groups = {}
+        if bm._REGISTRY[kind]['nested']:
+            for section, entries in (raw or {}).items():
+                if isinstance(entries, dict):
+                    groups[section] = [k for k in entries if not str(k).startswith('_')]
+        else:
+            groups[None] = [k for k in (raw or {}) if not str(k).startswith('_')]
+
+        for section, keys in groups.items():
+            buckets = collections.defaultdict(list)
+            for key in keys:
+                buckets[bm.loose_key(key)].append(key)
+            for folded, members in buckets.items():
+                if len(members) > 1:
+                    found.append((kind, section, folded, sorted(members)))
+    return found
 
 
 def main():
@@ -72,15 +106,30 @@ def main():
         classes = ', '.join(f"{c['name']} {c['level']}" for c in (p.get('classes') or []))
         print(f'  {name:<11} seed={p.get("generation_seed")}  {classes or p.get("c_class")}')
 
+    clashes = collisions()
+    print()
+    if clashes:
+        print(f'{len(clashes)} name collision(s) -- one curated entry shadows another:')
+        for kind, section, folded, members in clashes:
+            where = f'{kind}/{section}' if section else kind
+            print(f'  {where}: {folded!r} <- {members}')
+    else:
+        print('No curated-name collisions.')
+
+    failed = bool(uncovered) or bool(clashes)
     if uncovered:
         print(f'\nFAIL -- {len(uncovered)} side-map(s) with no coverage in any golden:')
         for key in uncovered:
             print(f'  {key}')
-        print('\nAdjust a config/seed in test_golden_payload.py until it is populated, or record why '
+        print('Adjust a config/seed in test_golden_payload.py until it is populated, or record why '
               'it is unreachable.')
+    if clashes:
+        print(f'\nFAIL -- {len(clashes)} collision(s). The lookup index keeps the FIRST entry for a '
+              'key, so\none of each pair is unreachable. Rename or merge them.')
+    if failed:
         return 1
 
-    print(f'\nPASS -- all {len(SIDE_MAPS)} side-maps covered by at least one golden')
+    print(f'\nPASS -- all {len(SIDE_MAPS)} side-maps covered, no name collisions')
     return 0
 
 
