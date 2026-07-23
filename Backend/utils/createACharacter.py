@@ -268,23 +268,17 @@ class Character:
         archetype_info = {archetypes_choice: archetypes_description}
         return archetype_info
         
-    def full_data_dictionary(self, data_dict, key, value):
-        data_dict[key] = value
-        return data_dict
-
     def instantiate_full_data_dict(self):
         self.data_dict = {'class features': []}
         return self.data_dict
-    
-    def export_list_non_dict(self, export_list, string_export_list):
-        chosen_dict = {string_key: variable_value for string_key, variable_value in zip(string_export_list, export_list)}
-        self.data_dict.update(chosen_dict)
-        return chosen_dict        
-    
-    def export_list_dict(self, export_list, string_export_list):
-        chosen_dict = dict(zip(string_export_list, export_list))
-        self.data_dict.update(chosen_dict)
-        return chosen_dict
+
+    # export_list_non_dict / export_list_dict were removed. Each was a one-line
+    # `self.data_dict.update(dict(zip(keys, values)))`, but using them meant maintaining two
+    # parallel positional lists 80 lines apart in main_test.py -- an interface far larger than the
+    # implementation, whose only failure mode was silent (a miscount zip-truncated a key off the
+    # payload). main_test.py now builds one ordered `payload` dict literal and calls
+    # `character.data_dict.update(payload)` directly. full_data_dictionary went with them: a
+    # `data_dict[key] = value` helper that nothing called.
 
 # setting up a new character
 def CreateNewCharacter(character_json_config):
