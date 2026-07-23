@@ -64,6 +64,77 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   drained the purse — a realistically-funded NPC never buys a weapon or armor quality at all, so
   `enhancement_effects_dict` is empty for every normal character. That ordering is a real generator
   issue; the config exists to keep the quality path under regression until it is triaged.
+- **Buff name-matching lives in one module, and mismatches are now reported.** Six code paths each
+  loaded a curated buff map, normalized names their own way, and looked up the character's
+  selections — feats/items/qualities in `main_test.py`, spells in `spells.py`, Spheres talents in
+  `spheres.py`, PoW stances in `path_of_war.py`. Every lookup was a plain `.get()`, so a curated
+  entry whose key didn't match was dropped with **no error, no log, and no sign on the sheet**. The
+  rules had quietly diverged: PoW stripped apostrophes, class features stripped `(Su)/(Ex)/(Sp)`,
+  items lowercased only the query, Spheres didn't lowercase at all — which spellings survived
+  depended on which path you were in.
+
+  `utils/class_func/buff_match.py` now owns the lookup behind a per-kind registry (data location,
+  flat vs sectioned, key and query normalizers). **Each kind's rule is identical to what its call
+  site did before**, so no buff changed — the golden payloads differ by exactly one added key.
+
+  That key is the point: on a strict miss the lookup retries with a conservative loose key (case,
+  whitespace, apostrophes, hyphens, trailing `(Su)/(Ex)/(Sp)`). A loose hit after a strict miss
+  means the curated data **is** there and only the normalization failed to reach it. Those ship as
+  `buff_gaps` and print at the end of a run. An ordinary "nothing curated for this name" is not a
+  gap. It found a real one on the first run: the generator's spell list carries **`Orders Wrath`**
+  while `spell_riders.json` curates **`Order's Wrath`**, so that rider has been silently dropped.
+  **Deliberately left unfixed** — the decision was to measure first and widen each kind's rule one
+  golden diff at a time, rather than change generated output blind.
+
+  Also folds in four caches: the feat/item/quality/class-feature maps were re-read and re-parsed on
+  **every generation (~1.6 MB)** because their loader was defined *inside* `generate_random_char`.
+  **Excluded:** flaws (`flaws.py` draws the name *from* `flaw_effects.json`, so selection and lookup
+  cannot diverge — there is no gap to find).
+- **Phase ordering is enforced, not documented.** Every rule about what must run before what was a
+  comment (`main_test.py:305`, `:490`, `:632`), and violating one didn't raise — it produced a
+  quietly worse character. `utils/class_func/pipeline.py` adds `@phase(requires=…, provides=…)`;
+  `requires` must already be set on the character, `provides` is checked on the way out so a phase
+  that stops producing something fails at its own boundary. Presence uses `hasattr`, not truthiness
+  — a level of `0` or an empty class list *is* set. Two phases are extracted so far
+  (`phase_roll_and_assign_stats`, `phase_professions_and_skills`), chosen because they carry the
+  known hazards; **the feat/PoW/Spheres block stays inline on purpose** (~600 lines of interdependent
+  backfill loops).
+
+  The fourth hazard needed a different mechanism: `data_dict['class features']` always *exists*, so
+  a presence check can't tell "no chooser ran" from "this class has no choices".
+  `seal()`/`require_sealed()` express that instead. `test_pipeline_phases.py` deliberately violates
+  each contract and asserts the error — a guard that never fires is worth nothing.
+
+### Changed
+- **Static data paths are anchored to `__file__`; the `os.chdir` at import is gone.** Both entry
+  points called `os.chdir(repo_root)` at import time — a process-wide side effect just to make
+  imports work, inherited by anything else in the process — purely because the data paths were
+  written relative to the CWD. New `utils/paths.py::repo_path()` resolves them against `__file__`.
+  Anchoring inside `Load_when_needed.__init__` covers all ~60 `Backend/json/*.json` entries in one
+  place; the seven CSV reads in `feats.py`/`feat_tax.py`/`spells.py`/`traits.py`/`path_of_war.py`
+  and `item_and_price.py`'s hardcoded `Backend\json\items_broken.json` (also not portable) follow.
+  `traits.py` gains a cache — it was the only loader re-parsing its CSV on **every call**. Verified
+  the CLI runs from the repo root, from inside `Backend/`, and from an unrelated directory, and that
+  importing no longer changes `os.getcwd()`. Production was never affected: `Dockerfile` sets
+  `WORKDIR /app`, so the chdir was already a no-op there.
+- **The exported payload is one ordered dict literal.** It was assembled from four parallel
+  positional lists — 146 values and 146 key strings **80 lines apart**, plus a second pair of 14 —
+  held in alignment by nothing but position. The 146-pair had a length assert; **the 14-pair did
+  not**, so a miscount there would zip-truncate and drop a payload key in silence. Now built in the
+  same place in the same order, so the payload is byte-identical. The pairing was derived by
+  extracting both lists with `ast` and zipping the exact source segments, **not** by reading lines:
+  the value list isn't one-value-per-line (multi-line comprehensions) and several pairs don't share
+  a name — `character.c_class_level` exports as `"level"`, and `character.spell_list_choose_from`
+  exports **twice**. Removed `Character.export_list_non_dict`, `export_list_dict` (each a one-line
+  `dict(zip(...))` whose interface dwarfed its implementation) and the uncalled
+  `full_data_dictionary`. The assert is now structurally unnecessary.
+- **`items_broken.json` is no longer written during generation.** `log_error()` did an unlocked
+  read-modify-write of a repo file in the middle of a character — four gunicorn workers raced on it
+  — and accumulated forever, so it described every item ever missed rather than this character.
+  `item_chooser` now collects names on `character.unresolved_items` and prints a summary. They are
+  **not** added to `buff_gaps`: the surrounding loop re-rolls until it finds a name that *is* in
+  `foundry_item_names.json`, so an unresolved name is the retry loop working as intended — a typical
+  character rejects a couple of dozen, which would bury the genuine mismatches.
 - **Bundled sample character on the public web sheet.** The standalone
   `Pathfinder-Character-Sheet` repo now ships `data/demo-character.json` — a generated level-20
   Cleric who also walks the Path of War Martial Training chain (initiator level 10, disciplines
