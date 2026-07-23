@@ -39,6 +39,12 @@ Backend/scripts/_pow_generator/
 # combat_talent_conditionals.json / magic_talent_conditionals.json (and the backend passives file).
 Backend/scripts/_spheres_generator/
 
+# Class-feature / feat conditional sweep: per-pool worklist batches sliced by
+# build_conditional_candidates.py. Regenerate on demand; the durable outputs are the committed
+# report (docs/conditional_candidates.md) and, once authored, the curated entries in
+# class_feature_effects_overrides.json / feats/feat_conditionals.json.
+Backend/scripts/_conditional_candidates/
+
 # runtime artifacts: filesystem session fallback + backstory-API usage tally
 flask_session/
 Backend/usage_stats.json
