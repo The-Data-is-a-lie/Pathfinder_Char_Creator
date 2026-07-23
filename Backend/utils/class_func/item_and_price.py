@@ -77,11 +77,15 @@ def item_chooser(character, data):
     price_total = []
     equipment_list = []
     equip_dict = {}
+    # Items rolled that the FoundryVTT name list can't resolve. Collected per character and folded
+    # into the payload's buff_gaps by main_test -- see log_error() on why this is no longer a file.
+    unresolved = {}
+    character.unresolved_items = unresolved
 
     while i < len(select_from_list):
         equipment_name, random_equip, price, equip_descrip = choose_equipment(character, select_from_list[i])
         while random_equip not in data:
-            log_error(random_equip)
+            unresolved[str(random_equip)] = None
             equipment_name, random_equip, price, equip_descrip = choose_equipment(character, select_from_list[i])
 
         # Check BEFORE buying. This used to subtract first and then `break` on gold <= 0, which meant
@@ -159,20 +163,12 @@ def grab_two_rings(character, equipment_key, k, i):
         k += 10
     return i,k
     
-def log_error(item_name):
-    try:
-        with open(repo_path('Backend/json/items_broken.json'), 'r', encoding='utf-8') as f:
-            broken_items = json.load(f)
-    except FileNotFoundError:
-        broken_items = []
-
-    if item_name not in broken_items:
-        broken_items.append(item_name)
-
-        with open(repo_path('Backend/json/items_broken.json'), 'w', encoding='utf-8') as f:
-            json.dump(broken_items, f, ensure_ascii=False, indent=4)
-    
-    return None
+# log_error() was removed. It read Backend/json/items_broken.json, appended the unresolved item and
+# wrote the file back, in the middle of generating a character -- an unlocked read-modify-write that
+# four gunicorn workers raced on, mutating a repo file as a side effect of an HTTP request. It also
+# accumulated forever, so the file recorded every item ever missed rather than what this character
+# hit. item_chooser now collects unresolved names on character.unresolved_items and main_test folds
+# them into the payload's buff_gaps, which is the same channel the curated-buff mismatches use.
 
 
 

@@ -1795,6 +1795,14 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		_buff_gaps += _spell_gaps
 		_buff_gaps += getattr(character, "talent_buff_gaps", None) or []
 		_buff_gaps += getattr(character, "stance_buff_gaps", None) or []
+		# Items the chooser rolled and rejected for not being in foundry_item_names.json. This is the
+		# retry loop working as intended, NOT a defect, so it is summarized rather than added to
+		# buff_gaps -- listing every rejected roll would bury the real mismatches. The names stay on
+		# character.unresolved_items for anyone cleaning up the item data.
+		_unresolved = list(getattr(character, "unresolved_items", None) or {})
+		if _unresolved:
+			print(f"item names not in foundry_item_names.json: {len(_unresolved)} rejected roll(s), "
+				  f"e.g. {', '.join(_unresolved[:3])}")
 		payload["buff_gaps"] = _buff_gaps
 		if _buff_gaps:
 			print(f"buff gaps: {len(_buff_gaps)} curated entr(y/ies) not matched")
