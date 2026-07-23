@@ -1,6 +1,21 @@
 import pandas as pd
+from utils.paths import repo_path
+
+_TRAIT_DATA = None
+
+
+def _trait_data():
+    """data/traits.csv, parsed once per process. This was re-read on EVERY trait_selector call --
+    the only loader in the package without a cache (cf. _FLAWS_CACHE in flaws.py, _SPELL_DATA in
+    spells.py). Returns a copy so a caller filtering the frame can't poison the cache."""
+    global _TRAIT_DATA
+    if _TRAIT_DATA is None:
+        _TRAIT_DATA = pd.read_csv(repo_path('data/traits.csv'), sep='|')
+    return _TRAIT_DATA.copy()
+
+
 def trait_selector(character, count):
-    trait_data = pd.read_csv('data/traits.csv', sep='|')
+    trait_data = _trait_data()
     extraction_list = ['name', 'description']
     conditions = trait_selector_limits(character, trait_data)
     query_i = trait_data.loc[conditions, extraction_list]

@@ -29,6 +29,7 @@ from urllib.parse import unquote
 import pandas as pd
 
 from utils import data
+from utils.paths import repo_path
 from utils.class_func.feats import grab_and_clean_feats
 from utils.class_func.path_of_war_funcs import select_disciplines
 from utils.class_func.skill_ranks import final_ability_score
@@ -555,7 +556,7 @@ def _style_chains(character):
     ascending (Radiant Dawn: Sunlight 7 before Daybreak 13).'''
     global _STYLE_CHAINS
     if _STYLE_CHAINS is None:
-        df = pd.read_csv(_METZ_CSV, sep='|', dtype=str,
+        df = pd.read_csv(repo_path(_METZ_CSV), sep='|', dtype=str,
                          keep_default_na=False, on_bad_lines='skip')
         rows = []
         if 'Style' in df.columns:

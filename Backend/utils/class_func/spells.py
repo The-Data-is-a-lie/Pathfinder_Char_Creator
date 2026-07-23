@@ -1,6 +1,7 @@
 import random, json, sys, math
 from math import ceil, floor
 from utils import data
+from utils.paths import repo_path
 import pandas as pd
 
 def class_for_spells_attr(character):
@@ -204,7 +205,7 @@ def _load_spell_data():
     """spells.csv, loaded once per process (it's static data and multiclass reads it per book)."""
     global _SPELL_DATA
     if _SPELL_DATA is None:
-        _SPELL_DATA = pd.read_csv('data/spells.csv', sep='|')
+        _SPELL_DATA = pd.read_csv(repo_path('data/spells.csv'), sep='|')
     return _SPELL_DATA
 
 

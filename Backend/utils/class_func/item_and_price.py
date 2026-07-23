@@ -1,4 +1,5 @@
 import re, random, json
+from utils.paths import repo_path
 # Start of major task: Items and Prices
 def convert_price(character, price_input, name):
     try:
@@ -160,7 +161,7 @@ def grab_two_rings(character, equipment_key, k, i):
     
 def log_error(item_name):
     try:
-        with open(r'Backend\json\items_broken.json', 'r', encoding='utf-8') as f:
+        with open(repo_path('Backend/json/items_broken.json'), 'r', encoding='utf-8') as f:
             broken_items = json.load(f)
     except FileNotFoundError:
         broken_items = []
@@ -168,7 +169,7 @@ def log_error(item_name):
     if item_name not in broken_items:
         broken_items.append(item_name)
 
-        with open(r'Backend\json\items_broken.json', 'w', encoding='utf-8') as f:
+        with open(repo_path('Backend/json/items_broken.json'), 'w', encoding='utf-8') as f:
             json.dump(broken_items, f, ensure_ascii=False, indent=4)
     
     return None

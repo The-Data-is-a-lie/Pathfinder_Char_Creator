@@ -6,6 +6,7 @@ from math import ceil, floor
 # Importing custom functions
 from utils.class_func.generic_func import *
 from utils.class_func.chooseable import *
+from utils.paths import repo_path
 
 def _divine_arcane_flags(character):
     """(is_divine, is_arcane_caster) across ALL classes — a multiclass cleric/wizard is both, and
@@ -21,7 +22,7 @@ def feat_spell_searcher(character, class_1, chosen_set, types, info_column, info
     if chosen_set == None:
         return
     if class_entry_for(character, class_1) is not None:
-        data = pd.read_csv(f'data/{types}.csv', sep='|', on_bad_lines='skip')
+        data = pd.read_csv(repo_path(f'data/{types}.csv'), sep='|', on_bad_lines='skip')
     
         if info_column_2 is None:
             extraction_list = ['name', info_column]
@@ -274,7 +275,7 @@ def grab_and_clean_feats(location):
     cached = _FEAT_DATA_CACHE.get(location)
     if cached is not None:
         return cached.copy()
-    feat_data = pd.read_csv(f'{location}', sep='|', on_bad_lines='skip')
+    feat_data = pd.read_csv(repo_path(location), sep='|', on_bad_lines='skip')
     # makes prereq NaNs -> empty strings. Without this we can't grab feats with blank prereqs
     feat_data.fillna({'prerequisites': ''}, inplace=True)
     feat_data.fillna({'description': ''}, inplace=True)

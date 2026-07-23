@@ -4,6 +4,7 @@ import json
 from utils.data import regions, weapon_groups_region, skills,  languages, hair_colors, hair_types, appearance, eye_colors#, path_of_war_class,evil_deities, good_deities, neutral_deities,
 #from utils.data import archetypes
 from utils.util import   roll_dice#,format_text, chooseClass, appendAttrData,  Roll_Level#,roll_4d6, roll_dice #printAttributes,
+from utils.paths import repo_path
 import random
 import sys
 import re
@@ -293,7 +294,10 @@ def CreateNewCharacter(character_json_config):
 # Only loads when we need to use the file
 class Load_when_needed:
     def __init__(self, file_path):
-        self.file_path = file_path
+        # Anchor to the repo root at construction. The ~60 entries in main_test.character_json_config
+        # are written as 'Backend/json/<x>.json', which only resolved because both entry points did an
+        # os.chdir(repo_root) at import; resolving here is what let that chdir be deleted.
+        self.file_path = repo_path(file_path)
         self.data = None
 
     def load(self):

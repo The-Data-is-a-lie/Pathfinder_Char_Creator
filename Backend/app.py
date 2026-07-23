@@ -1,12 +1,11 @@
-# Anchor the CWD to the repo root so root-relative data paths (Backend/json/*, data/*.csv) resolve
-# regardless of where the server is launched from (e.g. `python app.py` from inside Backend/). Pin the
-# absolute Backend dir on sys.path first so sibling imports (start_py/main_test/utils) still resolve
-# after the chdir relativizes any "" entry. Must run before importing main_test. No-op on Render.
+# Pin the absolute Backend dir on sys.path so sibling imports (start_py/main_test/utils) resolve
+# regardless of where the server is launched from. Must run before importing main_test. This used to
+# be followed by os.chdir(repo_root) to make root-relative data paths work; those are now anchored to
+# __file__ via utils.paths.repo_path, so the server no longer changes the process working directory.
 import os, sys
 _BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
 if _BACKEND_DIR not in sys.path:
     sys.path.insert(0, _BACKEND_DIR)
-os.chdir(os.path.dirname(_BACKEND_DIR))
 
 # External imports
 from flask import Flask, render_template, request, jsonify, session, abort

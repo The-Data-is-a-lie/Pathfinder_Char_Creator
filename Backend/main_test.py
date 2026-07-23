@@ -1,13 +1,12 @@
 #Custom Made Imports
 import os, sys
-# Anchor the CWD to the repo root so root-relative data paths (Backend/json/*, data/*.csv) resolve no
-# matter where the process is launched from. VS Code runs from the repo root; `python main_test.py` from
-# inside Backend/ would otherwise resolve "Backend/json/..." to "Backend/Backend/json/...". Pin the
-# absolute Backend dir on sys.path first so utils.* imports survive the chdir. No-op on Render.
+# Pin the absolute Backend dir on sys.path so `utils.*` imports resolve no matter where the process
+# was launched from. This used to be followed by os.chdir(repo_root), because the data paths were
+# written relative to the CWD; they are now anchored to __file__ via utils.paths.repo_path, so the
+# chdir is gone -- importing this module no longer changes the working directory of the process.
 _BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
 if _BACKEND_DIR not in sys.path:
 	sys.path.insert(0, _BACKEND_DIR)
-os.chdir(os.path.dirname(_BACKEND_DIR))
 # Load .env so direct CLI runs (python Backend/main_test.py) pick up OLLAMA_* like the Flask app does
 # (app.py / start_py.py already call load_dotenv()). Guarded so a missing python-dotenv never breaks the CLI.
 try:

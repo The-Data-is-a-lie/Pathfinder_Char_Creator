@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 from collections import deque
+from utils.paths import repo_path
 # from utils.class_func.feats import feat_spell_searcher
 
 
@@ -135,7 +136,7 @@ def _prereq_graph():
     if _PREREQ_GRAPH is None:
         requires, dependents, style_feats, critical_feats, canon = {}, {}, set(), set(), {}
         try:
-            df = pd.read_csv('data/feats.csv', sep='|', dtype=str,
+            df = pd.read_csv(repo_path('data/feats.csv'), sep='|', dtype=str,
                              keep_default_na=False, on_bad_lines='skip')
             for n in df['name']:
                 canon.setdefault(_norm(n), str(n).lower().strip())
@@ -318,7 +319,7 @@ def _is_mythic_only(feat_name_lower):
     global _MYTHIC_ONLY_NAMES
     if _MYTHIC_ONLY_NAMES is None:
         try:
-            df = pd.read_csv('data/feats.csv', sep='|', on_bad_lines='skip')
+            df = pd.read_csv(repo_path('data/feats.csv'), sep='|', on_bad_lines='skip')
             types_by_name = {}
             for n, t in zip(df['name'], df['type']):
                 types_by_name.setdefault(_norm(n), set()).add(str(t))
@@ -345,7 +346,7 @@ def _read_data_csv(types):
     avoid re-parsing it each call).'''
     cached = _CSV_CACHE.get(types)
     if cached is None:
-        cached = pd.read_csv(f'data/{types}.csv', sep='|', on_bad_lines='skip')
+        cached = pd.read_csv(repo_path(f'data/{types}.csv'), sep='|', on_bad_lines='skip')
         _CSV_CACHE[types] = cached
     return cached
 
