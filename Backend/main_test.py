@@ -73,7 +73,7 @@ from utils.class_func.modded_char_sheet 			import modded_char_sheet_func
 # from utils.class_func.path_of_war_funcs				import select_disciplines
 
 from utils.class_func.personality 					import randomize_personality_attr
-from utils.class_func.profession_chooser 			import profession_chooser
+from utils.class_func.profession_chooser 			import profession_chooser, apply_always_improving_ranks
 from utils.class_func.profession_abilities 			import build_profession_ability_items
 from utils.class_func.trainers 						import select_trainer_feats, CALIBER_NAMES, roll_caliber
 from utils.class_func.skill_unlocks 				import choose_skill_unlock
@@ -468,14 +468,18 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# reflex_saving_throw = saving_throw_calc(character, 'Reflex')
 		# wisdom_saving_throw = saving_throw_calc(character, 'Will')	
 
-		skill_ranks = skills_selector(character, 'skills', skill_rank_level)
 		# One Craft specialization per character, displayed as "Craft: <type>" on the sheet.
 		# Chosen before professions so a profession can be themed around it.
 		character.craft_chosen = random.choice(data.crafts)
-		# Professions sub-system (ranks 5 + level + 10/profession-feat; >=2 profession feats when
-		# feats aren't randomized). Returns the legacy list of profession names; rich data + the
-		# profession feats are recorded on the character.
+		# Professions sub-system (ranks 5 + level + 10/Multi-Talented feat). Returns the legacy list of
+		# profession names; rich data + the profession feats are recorded on the character.
+		# MUST run before skills_selector: ordinary skill ranks may only be spent in a Profession when
+		# the character has the 'Always Improving' profession feat, and that gate reads
+		# character.profession_feats.
 		professions = profession_chooser(character, "professions", truly_random_feats)
+		skill_ranks = skills_selector(character, 'skills', skill_rank_level)
+		# ... and the ranks that DID go to Profession are folded back onto the professions themselves.
+		apply_always_improving_ranks(character, skill_ranks)
 		# Every character gets exactly one skill unlock, drawn from a skill they have ranks in.
 		skill_unlock = choose_skill_unlock(character, skill_ranks)
 
@@ -563,6 +567,12 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			shield_max_dex_bonus = " "
 
 
+		# All spending is done by here. Every spender (item_chooser, enhancement_calculator) now checks
+		# affordability before deducting, so this should hold by construction -- the guard exists so a
+		# future spender can't quietly reintroduce negative purses (and negative platinum with them).
+		if not isinstance(character.gold, int) or character.gold < 0:
+			print(f"gold: WARNING ended at {character.gold!r}; clamping to 0")
+			character.gold = max(0, int(character.gold or 0))
 		character.platnium = character.gold / 10
 	
 		# try:
