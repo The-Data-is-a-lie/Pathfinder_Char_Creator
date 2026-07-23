@@ -212,7 +212,11 @@ def choosing_feats(character, amount, base, total_choices):
     if amount is None or amount <= 0:
         return []
 
-    chosen_feats = set()
+    # An insertion-ordered dict used as a set: `list(chosen_feats)` is the return value, and a real
+    # set would hand it back in string-hash order, which Python randomizes per process. That made the
+    # SAME seed deal feats into different buckets on every run (separate_feats_func front-pops this
+    # list into story/flaw/flavor/class). Keys are the lowercased names, so dedup is unchanged.
+    chosen_feats = {}
     # character.chooseable_talents (which feeds total_choices) accumulates across selection
     # passes -- the talent/feat cross-pollination relies on that -- so feats already picked by
     # an EARLIER pass (main pool vs teamwork, class-granted bonus feats, ...) are still in the
@@ -224,8 +228,12 @@ def choosing_feats(character, amount, base, total_choices):
         if not total_choices_set:
             break
         before = len(chosen_feats)
-        chosen = random.choice(tuple(total_choices_set))
-        chosen_feats.add(chosen.lower())
+        # sorted(), not tuple(): a set of strings iterates in hash order, and Python randomizes string
+        # hashing per process -- so tuple(set) gave a DIFFERENT feat on every run even under a fixed
+        # random.seed(). Sorting makes the draw reproducible (see the seed param on
+        # main_test.generate_random_char); the set is mutated below, so this re-sorts each pass.
+        chosen = random.choice(sorted(total_choices_set))
+        chosen_feats[chosen.lower()] = None
 
         # Update character's chooseable feats
         character.chooseable.add(chosen)
