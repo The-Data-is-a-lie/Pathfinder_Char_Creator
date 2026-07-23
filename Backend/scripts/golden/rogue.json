@@ -219,14 +219,6 @@
   }
  },
  "class_feature_conditionals_dict": {
-  "positioning attack": [
-   {
-    "default": false,
-    "modifiers": [],
-    "name": "Positioning Attack: Cost: [[1]]/day; Effect: on a hit with this melee attack, move up to [[30]] feet without provoking attacks of opportunity, ending adjacent to the target",
-    "tier": "B"
-   }
-  ],
   "powerful sneak": [
    {
     "default": false,

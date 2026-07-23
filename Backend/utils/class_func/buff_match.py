@@ -149,6 +149,45 @@ def _index(kind, section):
     return _INDEX[cache_key]
 
 
+def keep_tier_a(entry):
+    """Strip tier-B conditionals from a curated entry.
+
+    Tier is a curation verdict, not a mechanical one: every conditional already ships
+    ``default: false``, so nothing was ever auto-applied. "A" is worth a permanent checkbox in the
+    pf1 attack dialog; "B" is real but not worth the clutter -- roughly half of them are -- and is
+    filed under the applier macro's "(NOT RECOMMENDED)" section, offered unchecked. The generator's
+    payload has no such section (the FoundryVTT module attaches whatever it is given), so the only
+    way to express "not recommended" here is to omit it. An absent tier means "A", which keeps every
+    entry authored before the tier sweep valid and recommended.
+
+    Handles both shapes the curated data uses:
+      * a feat entry IS a single conditional and carries ``tier`` directly -> returns the entry, or
+        None when it is tier B;
+      * a class-feature entry has a ``conditionals`` list whose members each carry their own tier ->
+        returns the list filtered, or None when nothing survives.
+
+    Returning None (rather than an empty entry) lets callers use a simple truth test and keep an
+    all-tier-B power out of the payload entirely.
+    """
+    if not entry:
+        return None
+
+    def _is_b(obj):
+        return str((obj or {}).get('tier', 'A')).strip().upper() == 'B'
+
+    if isinstance(entry, list):
+        kept = [c for c in entry if not _is_b(c)]
+        return kept or None
+
+    conditionals = entry.get('conditionals')
+    if isinstance(conditionals, list):
+        kept = [c for c in conditionals if not _is_b(c)]
+        return kept or None
+
+    # A bare conditional (the feat shape): the entry's own tier decides.
+    return None if _is_b(entry) else entry
+
+
 def raw(kind):
     """The curated file for ``kind`` exactly as authored, cached. For validators and test scripts
     that check the DATA rather than the matching; generation code should use match()."""

@@ -53,7 +53,7 @@ from utils.class_func.feats_to_chooseable 			import add_feats_to_chooseable
 from utils.class_func.feat_tax 						import feat_tax_func, feat_spell_searcher
 from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feats, specialize_skill_choice_feats
 from utils.class_func.weapon_focus_buffs import weapon_focus_changes
-from utils.class_func.buff_match					import match as match_buffs, sections as buff_sections, format_gaps
+from utils.class_func.buff_match					import match as match_buffs, sections as buff_sections, format_gaps, keep_tier_a
 from utils.class_func.pipeline					import phase, seal, require_sealed
 from utils.class_func.spheres 						import randomize_spheres_num, choose_spheres_attr, add_overflow_talents, MAX_EXTRA_TALENT_FEATS, mentor_sphere_summary
 from utils.class_func.flag_assign 					import human_flag_assigner, druidic_flag_assigner
@@ -1724,14 +1724,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			if _entry is not None:
 				feat_changes_dict[_disp] = _entry
 			if _disp in _curated_feat_conds:
-				# Tier "B" toggles are authored for the applier macro's "(NOT RECOMMENDED)" section,
-				# where they sit at the bottom of the list and arrive unchecked. The FoundryVTT
-				# module has no such section — addFeatConditionals() attaches every conditional it is
-				# given straight onto the main weapon — so shipping tier B here would bury the roll
-				# dialog in opt-in text. A missing tier means "A" (everything authored before the
-				# tier sweep).
-				if str((_curated_feat_conds[_disp] or {}).get("tier", "A")).upper() != "B":
-					feat_conditionals_dict[_disp] = _curated_feat_conds[_disp]
+				# Tier B is authored but filed "(NOT RECOMMENDED)" -- see buff_match.keep_tier_a.
+				_kept = keep_tier_a(_curated_feat_conds[_disp])
+				if _kept:
+					feat_conditionals_dict[_disp] = _kept
 
 		# --- Equipment numeric buffs + context notes ----------------------------------------------------
 		# item_changes.json is GENERATED from items_best.json descriptions by scripts/build_item_changes.py
@@ -1841,8 +1837,12 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 					}
 				if _cf_out["changes"] or _cf_out["contextNotes"] or _cf_tag:
 					class_feature_changes_dict[_p_name] = _cf_out
-				if _cf_entry.get("conditionals"):
-					class_feature_conditionals_dict[_p_name] = _cf_entry["conditionals"]
+				# Same tier filter as the feats above. Class-feature entries carry tier per
+				# CONDITIONAL rather than on the entry, which keep_tier_a handles; before it was
+				# applied here, 26 tier-B conditionals shipped as dialog toggles.
+				_cf_conds = keep_tier_a(_cf_entry.get("conditionals"))
+				if _cf_conds:
+					class_feature_conditionals_dict[_p_name] = _cf_conds
 
 		# --- Buff gap report ----------------------------------------------------------------------------
 		# A gap is NOT "nothing curated for this name" (that is the normal case for most feats and
