@@ -19,6 +19,27 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Conditional tiers: `A` applies, `B` is authored but not shipped.** Roughly half the authored
+  conditionals describe real effects that don't earn a permanent checkbox in the pf1 attack dialog.
+  Every conditional already ships `default: false`, so **nothing was ever auto-applied** — the
+  problem is purely that shipping them all buries the dialog in opt-in text (**89 of 184** feat
+  conditionals fall in this class). A `tier` field now marks them: **A** applies by default; **B** is
+  filed under the applier macro's "(NOT RECOMMENDED)" section, offered unchecked. The generator's
+  payload has no such section — the FoundryVTT module attaches whatever it is given — so **tier B is
+  omitted from the payload entirely**. An absent tier means A, keeping every pre-sweep entry valid.
+
+  The field sits at **two levels**, matching the two data shapes: a feat entry *is* a single
+  conditional so it carries `tier` directly, while a class-feature entry has a `conditionals` list
+  whose members each carry their own. Both validators accept it and reject anything outside `{A, B}`.
+  Curated pools gained three new feat conditionals (Patient Strike, Butterfly's Sting, Hammer the
+  Gap), and the rogue's *positioning attack* was recurated from an always-on change into a toggle.
+- **Scraped pool keys that merged two powers are repaired.** The webscrape ran a power's trailing
+  body text into the **next** power's key — e.g. `"Should the bridge be attacked, treat it as a wall
+  of force Spray of Shooting Stars (Su)"` — which both hid the real power (unreachable by name) and
+  left a junk entry an NPC could roll. Split across oracle (×2 mysteries), vigilante, witch, ninja,
+  alchemist, barbarian and fighter. Also fixes ninja's *deadly shuriken*, where a lost minus sign
+  made "her highest base attack bonus −5" read as "5". Catalogued in
+  `docs/conditional_open_questions.md` §3.
 - **Character generation is reproducible: `generate_random_char(seed=…)`.** The generator took 22
   knobs and no seed, so no run could be replayed — an NPC that came out wrong was simply gone, and
   the only way to test the pipeline was to construct fake character objects and call individual
