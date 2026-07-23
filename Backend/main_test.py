@@ -21,6 +21,7 @@ from utils.data 									import version
 from utils.util 									import  (select_classes, region_chooser, race_chooser,  name_chooser,
 										  					gender_chooser)
 import random
+import numpy as np   # seeded alongside `random` for reproducibility -- pandas .sample() uses numpy's RNG
 import json
 
 # Bump on every generator-logic change. Printed at startup (app.py) + in the per-generation log, and
@@ -196,8 +197,9 @@ def strip_labeled_bucket(feat_list, label_list, children):
 # Make sure to add a flag for path of war feats later
 def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Orc', class_choice='wizard', chosen_BAB='low', chosen_caster_level = 'random', multi_class='N', 
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", modded_char_sheet = 'n', 
-						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", spheres_flag="N", backstory_focus=None, ):
-		
+						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", spheres_flag="N", backstory_focus=None,
+						 seed=None, ):
+
 		print(create_new_char)
 		print(userInput_region)
 		print(userInput_race)
@@ -219,8 +221,22 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		print(low_level)
 		print(gold_num)
 		print(homebrew_feat_amount)
+
+		# Reproducibility. Seed BOTH RNGs: most of the generator draws from the `random` module, but
+		# spell and trait selection go through pandas .sample(), which draws from numpy's global RNG --
+		# seeding only `random` leaves those two nondeterministic. The resolved seed is exported as
+		# `generation_seed`, so any character that comes out wrong can be replayed exactly by passing
+		# it back in. (Feat selection also needed a fix to be replayable -- see the sorted() note in
+		# class_func/feats.py::choosing_feats.)
+		if seed is None:
+			seed = random.randrange(2 ** 31)
+		seed = int(seed)
+		random.seed(seed)
+		np.random.seed(seed)
+		print("generation seed:", seed)
+
 		casting_level_str_foundry = 'None'
-		
+
 		character = CreateNewCharacter(
 			character_json_config)
 		character.instantiate_full_data_dict()
@@ -1480,6 +1496,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				class_feature_owners,
 				build_archetype,
 				build_tactics,
+				seed,
 
 				 ]
 		
@@ -1549,6 +1566,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"class_feature_owners",
 				"build_archetype",
 				"build_tactics",
+				# Replay handle: pass this back as generate_random_char(seed=...) to reproduce this
+				# exact character. See Backend/scripts/test_golden_payload.py.
+				"generation_seed",
 
 				]
 		
