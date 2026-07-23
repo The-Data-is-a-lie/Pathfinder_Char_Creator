@@ -54,6 +54,7 @@ from utils.class_func.feat_tax 						import feat_tax_func, feat_spell_searcher
 from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feats, specialize_skill_choice_feats
 from utils.class_func.weapon_focus_buffs import weapon_focus_changes
 from utils.class_func.buff_match					import match as match_buffs, sections as buff_sections, format_gaps
+from utils.class_func.pipeline					import phase, seal, require_sealed
 from utils.class_func.spheres 						import randomize_spheres_num, choose_spheres_attr, add_overflow_talents, MAX_EXTRA_TALENT_FEATS, mentor_sphere_summary
 from utils.class_func.flag_assign 					import human_flag_assigner, druidic_flag_assigner
 from utils.class_func.flaws 						import flaw_chooser
@@ -192,6 +193,53 @@ def strip_labeled_bucket(feat_list, label_list, children):
 	kept = [(f, lbl) for f, lbl in zip(feat_list, lbls) if str(f).lower() not in children]
 	return [f for f, _ in kept], [lbl for _, lbl in kept if lbl is not None]
 
+# --------------------------------------------------------------------------------------------- #
+# Pipeline phases. Each declares what it needs on the character and what it is responsible for
+# setting, so an ordering mistake raises instead of quietly producing a worse NPC -- see
+# utils/class_func/pipeline.py. Extraction is staged: the feat / Path of War / Spheres block is
+# still inline in generate_random_char (it rebuilds its feat lists across ~600 lines of backfill
+# and trim loops and is not safely movable yet).
+# --------------------------------------------------------------------------------------------- #
+
+@phase(requires=['level', 'classes', 'chosen_race'], provides=['inherents', 'level_up_stats'])
+def phase_roll_and_assign_stats(character, num_dice, num_sides, inherents):
+	'''Roll the ability scores, fold in racial modifiers, and derive the modifiers.
+
+	requires `level`: roll_stats rolls inherents and level-up bumps off TOTAL character level, so
+	running this before randomize_level silently under-rolls both (it used to be a bare comment,
+	"stats after level (because we roll inherents which depend on level)").
+	requires `chosen_race`: apply_racial_stats reads the race's stat table.
+	'''
+	stats = roll_stats(character, num_dice, num_sides, inherents)
+	# Racial modifiers go into the base scores here (before assign/mod/HP/spell
+	# calcs) so they propagate everywhere; the split is exported as racial_stats.
+	apply_racial_stats(character, stats)
+	assign_stats(character, stats)
+	calc_ability_mod(character)
+	return stats
+
+
+@phase(requires=['level', 'classes', 'class_data', 'craft_chosen'],
+	   provides=['profession_data', 'profession_feats', 'skill_rank_budget'])
+def phase_professions_and_skills(character, truly_random_feats, skill_rank_level):
+	'''Professions sub-system, then ordinary skill ranks, then fold one back into the other.
+
+	The order inside here is the constraint: ordinary skill ranks may only be spent in a Profession
+	when the character has the 'Always Improving' profession feat, and skill_ranks.has_always_improving
+	reads character.profession_feats -- which only profession_chooser sets. Run the other way round
+	and the gate reads an unset attribute, silently allocating zero Profession ranks.
+
+	requires `craft_chosen`: a profession can be themed around the character's Craft specialization.
+	'''
+	# Rank pool is 5 + level + 10/Multi-Talented feat. Returns the legacy list of profession names;
+	# the rich data and the profession feats are recorded on the character.
+	professions = profession_chooser(character, "professions", truly_random_feats)
+	skill_ranks = skills_selector(character, 'skills', skill_rank_level)
+	# ... and the ranks that DID go to Profession are folded back onto the professions themselves.
+	apply_always_improving_ranks(character, skill_ranks)
+	return professions, skill_ranks
+
+
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
@@ -305,13 +353,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				high_level = 2
 		randomize_level(character, low_level, high_level, flaw_amount)
 
-		#stats after level (because we roll inherents which depend on level)
-		stats = roll_stats(character, num_dice, num_sides, inherents)
-		# Racial modifiers go into the base scores here (before assign/mod/HP/spell
-		# calcs) so they propagate everywhere; the split is exported as racial_stats.
-		apply_racial_stats(character, stats)
-		assign_stats(character, stats)
-		calc_ability_mod(character)
+		stats = phase_roll_and_assign_stats(character, num_dice, num_sides, inherents)
 
 
 		#hp calculations
@@ -487,15 +529,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# One Craft specialization per character, displayed as "Craft: <type>" on the sheet.
 		# Chosen before professions so a profession can be themed around it.
 		character.craft_chosen = random.choice(data.crafts)
-		# Professions sub-system (ranks 5 + level + 10/Multi-Talented feat). Returns the legacy list of
-		# profession names; rich data + the profession feats are recorded on the character.
-		# MUST run before skills_selector: ordinary skill ranks may only be spent in a Profession when
-		# the character has the 'Always Improving' profession feat, and that gate reads
-		# character.profession_feats.
-		professions = profession_chooser(character, "professions", truly_random_feats)
-		skill_ranks = skills_selector(character, 'skills', skill_rank_level)
-		# ... and the ranks that DID go to Profession are folded back onto the professions themselves.
-		apply_always_improving_ranks(character, skill_ranks)
+		professions, skill_ranks = phase_professions_and_skills(character, truly_random_feats,
+																skill_rank_level)
 		# Every character gets exactly one skill unlock, drawn from a skill they have ranks in.
 		skill_unlock = choose_skill_unlock(character, skill_ranks)
 
@@ -897,6 +932,12 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		older_brothers, younger_brothers, older_sisters, younger_sisters = randomize_siblings(character)
 		parents = randomize_parents(character)		
 
+		# Every class-choice chooser (domains, school, bloodline, hexes, talents, ...) has run by here,
+		# so the bucket is closed. Sealing is what makes the two reads below safe to check: the key
+		# always EXISTS from the first line of generation, so a presence test cannot tell "no chooser
+		# ran" from "this class has no choices" -- and a chooser added AFTER this point would silently
+		# leave both the snapshot here and the bonus-spell lookups below reading an unfinished dict.
+		seal(character, 'class features')
 		# For some reason class_features is being created as a dict inside a list, rather than a dict
 		class_features = character.data_dict['class features']
 		# Level at which each class choice was picked (bucket -> choice -> level), for the sheet.
@@ -932,6 +973,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 
 	#--------------- Spell addition options ---------------#
+		# Bonus spells are looked up out of the class-features bucket below, so it must be finished.
+		# This used to be an unguarded read: move a chooser after this point and every bonus-spell
+		# lookup quietly returns {} instead of raising.
+		require_sealed(character, 'class features', 'the bonus-spell section')
 		# each addition targets the granting CLASS's own spellbook (multiclass-aware); for a
 		# single-class character that book is the legacy scalar's object, so behavior is unchanged
 		def _book_for(*names):
