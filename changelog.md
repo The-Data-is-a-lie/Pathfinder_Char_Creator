@@ -115,6 +115,135 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   already fully curated (120 buff spells, unchanged). `validate_spell_conditionals.py` passes.
 
 ### Fixed
+- **`inherents="N"` crashed the generator.** `character.inherents` was assigned in exactly one place —
+  `create_inherents_func` (`stats.py:121`), reachable only from the `if inherent_flag != 'n'` branch —
+  and `Character.__init__` never initialized it, so turning inherents off raised
+  `AttributeError: 'Character' object has no attribute 'inherents'` at payload assembly
+  (`main_test.py:1407`). `level_up_stats` was unaffected: it is called unconditionally and always
+  assigns. Now `__init__` publishes both `inherents` and `level_up_stats` as `{}`, and the disabled
+  branch of `roll_stats` writes a **zeroed `{stat: 0}` dict of the same shape**
+  `create_inherents_func` produces. **Why the zeroed dict and not just the `__init__` default:** the
+  Foundry module builds an "Inherents" buff straight from this dict, so the right shape matters —
+  `{}` would only have stopped the crash. **Rejected alternative:** making the export site defensive
+  with `getattr`; it is one of ~5 readers, and the real defect was a field that wasn't always set.
+- **Characters bought their way into negative gold.** Two spenders both subtracted *before* checking
+  affordability:
+  - `item_chooser` (`item_and_price.py`) deducted the price, then `break`-ed on `gold <= 0` — so the
+    character paid for an item that was never added to `equipment_list`, finished with a negative
+    purse, and abandoned **every remaining slot** even when something cheap would have fit. It now
+    checks first and, when a slot's roll is unaffordable, skips that slot and continues the batch. Ring
+    bookkeeping (`grab_two_rings`) only runs on a real purchase, so a skipped ring doesn't burn the
+    second-ring slot.
+  - `enhancement_calculator` (`armor_and_enhancements.py`), called three times (armor ÷3, weapon ÷2,
+    shield ÷1), took the `enhancement_bonus_mapping` key **closest** to its budget. The table starts at
+    2000, so for a poor character the closest key is the one *above* what they have: 500 gold budgeted
+    166 and spent 2000, leaving −1500 — three times over. It now takes the largest tier at or below the
+    budget and spends nothing when even +1 is out of reach (`enhancement_chooser` already returns
+    `([], 0)` for a bonus below 1).
+
+  `subtract_price_from_gold`'s fallback branch used to zero the character's **entire purse** whenever a
+  price was unusable; it now leaves gold alone and logs. Removed `bonus_gold_calculator`
+  (`armor_and_enhancements.py`) — dead code (its only reference was the unrelated
+  `character.bonus_gold_calculator` method inside its own body) that also deducted unchecked. A guard
+  before `character.platnium = character.gold / 10` clamps and warns, so a future spender cannot
+  silently reintroduce a negative purse (and negative platinum with it).
+
+  **Accepted consequences of "skip the slot, keep the remainder"** (both chosen deliberately over the
+  alternatives): an NPC too poor for a slot's roll simply leaves it empty rather than re-rolling for
+  cheaper gear, and unspent gold now stays on the sheet instead of being driven to ~0 — a level-20
+  character can finish holding a six-figure purse. A 300-gold level-20 test character buys nothing at
+  all and keeps all 300, which is the rules-correct outcome.
+  Guarded by `Backend/scripts/test_gold_and_stats.py` (139 checks; `--slow` adds an end-to-end
+  generation with `inherents="N"` and a 300-gold purse): gold never goes negative, the batch continues
+  past an unaffordable slot, every listed item was actually paid for, the enhancement tier is the
+  correct affordable one across a gold sweep at all three divisors, and the inherents dict is present
+  and zeroed when disabled.
+- **Four sheet/module readings of the `level` payload key that wanted a different level.** The payload
+  ships `level` (= `c_class_level`, the **primary class's** level — documented as legacy at
+  `main_test.py:1461`) and `total_level` (the true total). Nothing consumed `total_level`; everything
+  read `level`, so an Alchemist 10 / Barbarian 6 / Wizard 4 was treated as level 10 throughout.
+  Fixed the four sites that wanted something else, leaving the key's meaning alone:
+  - *Web sheet feats footer* (`sheet.js` `renderFeatCounts`) — the "By level" box is `ceil(level / 2)`
+    and drives a red **Missing/Excess** badge; the test character reported a 5-feat entitlement against
+    10 owned and flagged "Excess 5". Now `ceil(totalLevel(data) / 2)` → 10, badge clears.
+  - *Web sheet caster level* (`casterLevelValue`) — `caster_level` is **user-entered only** (the
+    generator never ships it), so a fresh import always fell through to the primary-class level. Now:
+    explicit override → the campaign's homebrew **combined** CL → total level.
+  - *Web sheet class labels* (class-sheet card title + class picker) — every class card printed the
+    primary's level ("Wizard — level 10"). Now each shows its own (10 / 6 / 4).
+  - *Foundry module aura ranges* (`modify-abilities.js` `addSpellBuffs`) — the caster-level proxy that
+    turns close/medium/long into concrete feet for the Multi-Buff Distributor. New numeric
+    `spellCasterLevelNum()` sits beside `spellCLExpr()` and mirrors it exactly.
+
+  **The combined-CL rule:** `spellCLExpr()` already encodes it — each casting class contributes its full
+  class level, or level−3 for a `low` caster, summed and floored to 1. `caster_formula` (`spells.py:42`)
+  already bakes the −3 into each book's `casting_level_num` (only the `low` branch subtracts), so
+  `Σ casting_level_num` is its numeric twin. The test character is CL **14** (Alchemist 10 + Wizard 4),
+  not 10. **Rejected alternative:** the *highest* book's CL, or `total_level` — both are wrong in a new
+  direction rather than right.
+  **Why `totalLevel()` derives instead of reading `total_level`:** `level` is editable in the sheet
+  header (`editNum(data, 'level', …)`) while `classes[]` and `total_level` are not, so the stored total
+  goes stale the moment a level is edited — reading it would freeze the feat count for the single-class
+  majority. It computes `level + Σ secondary class levels` instead, which is safe because `classes[]`
+  arrives level-descending (`level_and_bab.py:57`). Likewise `classLevelFor()` falls back to `level`
+  rather than the total, so a user-added class never inherits a fabricated "level 20".
+  Backend unchanged. Verified in-browser against a generated Alchemist 10 / Barbarian 6 / Wizard 4:
+  By level 10, Caster level 14, per-class labels 10/6/4 — and with `classes`/`spellbooks`/`total_level`
+  stripped (a pre-multiclass payload) every value falls back to the old rendering exactly.
+  **Left alone deliberately:** `modify-abilities.js:660`, `createCharacter.js:107` and `sheet.js:1287`
+  legitimately want the primary-class level (they are the `classes`-absent fallbacks).
+- **Characters now spend their skill ranks exactly.** Generated NPCs were silently losing a chunk of
+  their skill budget between the generator and the sheet — the reference case (Monk 8 / Summoner 7 /
+  Wizard 5, level 20) was owed 264 ranks and reached Foundry with 241 flat ranks plus a Profession
+  block reading 1/0/0/0 against a bio claiming 15/10/10/10. Five independent leaks, all silent:
+  1. **Unrenderable skills ate ranks.** `data.skills` carried `gather information` (not a PF1 skill),
+     `knowledge martial` (pf1-pow's `kmt`, absent from the module's `base_skill.json`), `lore` and
+     `artistry` (pf1 *container* skills — `containerSkills: ["art","crf","lor","prf","pro"]` — whose
+     ranks must live in `subSkills`, so ranks on the container are unusable), plus a **duplicate**
+     `profession`. Any ranks spent there were dropped by the Foundry module and by the web sheet.
+     The pool is now the 35 core PF1 skills that all three consumers actually render.
+  2. **No min-1-rank-per-level floor.** The budget was `class_points + mental_mod × level` with no
+     floor, so a level-20 Fighter (2/level) whose best mental mod was −2 budgeted **zero** ranks and
+     −3 went negative — a completely blank skill block. Now floored **per class level**
+     (`max(1, points + mental_mod) × class_level`, summed), which is where PF1 puts the floor and
+     which composes correctly across a multiclass build.
+  3. **A narrow skill sample silently discarded the remainder.** `skill_number` could sample fewer
+     distinct skills than the budget needed (each skill caps at character level), and the assignment
+     walk then hit its `all(... >= max)` break and threw the leftover away. The selectable set is now
+     topped up on demand until it can physically hold the budget, and the walk draws only from skills
+     with room left, so it terminates at exactly zero remaining.
+  4. **The favored-class bonus paid for the wrong number of levels.** `favored_class_calculator` used
+     `c_class_level` — an alias for the *primary* class's level — so the reference character was paid
+     for 8 of his 20 levels, in both the HP and skill-rank branches. Now `character.level`, matching
+     the total-level treatment of inherents and level-up bumps below.
+  5. **An empty favored-class slot.** `favored_class_option` appended the racial favored-class option
+     even when `CoreRaces.json` had no entry for that race/class pair, so ~1 in 3 non-humans rolled a
+     bonus that was the empty string and did nothing. Falsy entries are now filtered out.
+
+  **Why per-class rather than a single floor on the total:** PF1 states the floor per level, and a
+  lump-sum floor of `character.level` would under-pay a high-skill class that happens to have a bad
+  mental mod (a Rogue 10 / Fighter 10 at mod −3 is owed 50 + 10, not a flat 20). **Why top up capacity
+  on demand rather than widening the breadth formula:** raising `skill_number` generally would spread
+  every low-Int NPC across many more skills, changing the "focused specialist" texture; topping up only
+  when the sample is genuinely too narrow leaves typical characters untouched. The 1–3 rank chunking of
+  the assignment walk is deliberately unchanged — it is what gives NPCs their uneven, lived-in profile.
+  Guarded by `Backend/scripts/test_skill_ranks.py` (3,000+ assertions over randomized builds: exact
+  spend, renderable keys only, per-skill cap, the floor, capacity top-up, and the profession
+  invariants). Touches `Backend/utils/data.py`, `Backend/utils/class_func/skill_ranks.py`,
+  `favored_class.py`, `Backend/main_test.py`.
+- **Profession ranks reach the Foundry sheet.** The module was splitting the *ordinary* Profession
+  skill rank evenly across the character's professions and ignoring the `profession_ranks` payload
+  field the backend already ships — which is how a 45-rank homebrew pool rendered as 1/0/0/0. The
+  `pro` subskills now read `profession_ranks[i].ranks` directly; the backend owns the pool, the caps,
+  True Calling and Always Improving, and the module does no arithmetic of its own
+  (`modify-abilities.js`). It also now `console.warn`s instead of silently dropping any rank key it
+  cannot place, so backend/module drift is visible rather than invisible.
+- **Ordinary skill ranks no longer leak into Profession.** Professions run on their own homebrew rank
+  pool, so ordinary ranks may only be spent there with the **Always Improving** feat (the house rule).
+  That gate is now real: `profession_chooser` runs *before* `skills_selector` (verified safe — neither
+  it nor `profession_abilities` reads `skill_ranks` or `craft_chosen`), Profession is excluded from the
+  ordinary pool unless the feat is present, and `apply_always_improving_ranks` folds any ranks that did
+  go there onto the True Calling profession, capped at character level and spilling to the next.
 - **Inherent rolls and level-up ability increases now scale with total character level.** For
   multiclass characters both were undercounted because they keyed off the primary class's level
   instead of total level: `roll_inherents_func` rolled `floor(c_class_level / 2)` times and
@@ -172,6 +301,36 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   + the module's maneuver/talent conditional dicts.
 
 ### Changed
+- **Profession feats: reachable, level-scaled, and only Multi Talented buys ranks.** `Always Improving`
+  was previously unreachable — `_roll_profession_feat_count` returned at most 2 and
+  `_pick_profession_feats` sliced the list top-to-bottom, so the third feat was never taken. Now the
+  roll is `random.choice([0,0,1,1,2,3])` (curated builds still floor at 2) **plus one guaranteed feat
+  per 10 character levels**, and the order is **Multi Talented → True Calling → Always Improving →
+  Multi Talented ×(remaining)**, with Multi Talented repeatable `1 + level//10` times. Each repeat is
+  its **own** feat entry (`Multi Talented`, `Multi Talented (2nd)`, `Multi Talented (3rd)` — mirroring
+  the `Extra Magic Talent (<suffix>)` convention in `spheres.py`), never collapsed into one line:
+  `main_test.py` reserves feat slots with `len(character.profession_feats)`, so a collapsed entry would
+  buy +10 profession ranks per repeat while paying the feat tax only once. The rank pool is now
+  `5 + level + 10 × (Multi Talented picks only)` rather than `10 × (all profession feats)` — True
+  Calling and Always Improving are riders on a pool, not purchases of one. The `n` ceiling
+  (`3 + level//10`) and the Multi Talented repeat cap (`1 + level//10`) agree exactly at every level, so
+  no pick is ever wasted. **Accepted consequence:** a low-roll level-20 build's pool drops from 45 to
+  35, since its two picks now buy no ranks. **Rejected alternative:** reading Multi Talented literally
+  as "+10 to the per-profession *cap*" — truer to the feat's wording, but it contradicts how the repo
+  already implements it and a single Profession at rank 45 would break the rank-5/rank-15 ability tiers.
+- **Profession ranks spread unevenly instead of filling each vocation to its cap.** The pool used to
+  fill professions to 15/10/10/10 in order and clamp at a hard `_MAX_PROFESSIONS = 6`, which truncated
+  large pools. Now the True Calling profession takes its 15-rank cap first and the remainder is split
+  into a profession count chosen **up front** (`ceil(remaining/10) + randint(0,2)`), each vocation
+  getting a random 1–10 ranks and the split summing to exactly the pool by construction. Gives the
+  "one strong vocation plus a few dabbles" texture and removes the last place a rank could be silently
+  truncated. **Rejected alternative:** draw professions until the pool empties — simpler, but an
+  unlucky run of 1s produces fifteen vocations and any ceiling re-introduces the truncation.
+- **One canonical skill list.** `Backend/utils/data.py` now owns both the skill pool (`skills`) and the
+  name → pf1 id map (`SKILL_IDS`); `feat_skill_choice.py` imports it instead of keeping a private copy.
+  `Backend/scripts/build_item_changes.py` deliberately keeps its own, looser `SKILLS` map — that one
+  *parses* scraped rules prose and must still recognise Lore/Artistry and common typos even though the
+  generator never grants ranks in them.
 - **Weapon attack-roll dialog is now scrollable and resizable so the Attack button is always reachable.**
   The pf1 attack dialog uses `height:"auto"` with no inner scroll, so a weapon stacked with many
   conditionals grew the window past the viewport and pushed the Single/Full Attack buttons off-screen.
