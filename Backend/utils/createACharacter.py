@@ -95,6 +95,12 @@ class Character:
         self.classes=[]
         self.primary_class_index=0
         self.spellbooks=[]
+        # {stat: bonus} stat adjustments, always present so every reader (payload export, the Foundry
+        # module's Inherents/level_up_stats buffs, skill_ranks.final_ability_score) can rely on them.
+        # inherents used to be assigned ONLY when the inherents flag was on, so inherents="N" crashed
+        # payload assembly with AttributeError; roll_stats fills both in for real.
+        self.inherents={}
+        self.level_up_stats={}
     
 
         #Spell list variables

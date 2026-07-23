@@ -44,6 +44,12 @@ def roll_stats(character, num_dice, num_sides, inherent_flag='Y'):
         inherents = roll_inherents_func(character)
         create_inherents_func(character, stats, inherents)
         # stats = distribute_inherents_func(inherents, stats, orig_stats)
+    else:
+        # Inherents disabled -> still publish a zeroed {stat: 0} dict of the SAME shape
+        # create_inherents_func produces. The Foundry module builds an "Inherents" buff straight from
+        # this, and the payload exports it; leaving the attribute unset crashed export with
+        # AttributeError: 'Character' object has no attribute 'inherents'.
+        character.inherents = {stat: 0 for stat in stats}
 
     level_up_stats(stats, character)
     return stats
@@ -83,7 +89,7 @@ def calc_ability_mod(character):
 
 
 def roll_inherents_func(character):
-    amount = floor(character.c_class_level / 2)
+    amount = floor(character.level / 2)
     random_number = 0
     for _ in range(amount):
         random_number += random.randint(0, 5)
@@ -127,7 +133,7 @@ def level_up_stats(stats, character, main_stat=None):
         level_up_stats[stat] = 0
 
 
-    num_of_stats = floor(character.c_class_level / 4)
+    num_of_stats = floor(character.level / 4)
     for i in range(num_of_stats):
         attribute = random.choice(list(level_up_stats.keys()))
         level_up_stats[attribute] += 1
