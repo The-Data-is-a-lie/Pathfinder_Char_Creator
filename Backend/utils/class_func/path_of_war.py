@@ -30,6 +30,7 @@ import pandas as pd
 
 from utils import data
 from utils.paths import repo_path
+from utils.class_func.buff_match import match as match_buffs
 from utils.class_func.feats import grab_and_clean_feats
 from utils.class_func.path_of_war_funcs import select_disciplines
 from utils.class_func.skill_ranks import final_ability_score
@@ -105,6 +106,10 @@ def choose_path_of_war_attr(character, max_chains=None):
     the character has no paths. ``max_chains`` (non-initiator Martial Training) caps how many WHOLE
     discipline chains are realized; ``None`` = all rolled. Initiator style chains are capped by the
     generator post-build (it slices ``style_feats``), so initiators ignore ``max_chains``.'''
+    # Per-character gap accumulator; main_test folds character.stance_buff_gaps into buff_gaps.
+    del _STANCE_GAPS[:]
+    character.stance_buff_gaps = _STANCE_GAPS
+
     bundle = {
         'martial_disciplines': [], 'initiator_level': 0,
         'maneuvers_known_list': [], 'maneuvers_readied_list': [],
@@ -417,30 +422,20 @@ def _prereq_count(entry):
     return int(tok) if tok.isdigit() else _WORD_NUMS.get(tok, 0)
 
 
-_STANCE_AURAS = None
-
-
-def _stance_auras():
-    '''{normalized stance name -> {auraRange, onlyOthers}} from stance_auras.json (cached; {} if
-    absent). Drives the AuraRange:/onlyOthers; description markers the aura/buff-distributor reads.'''
-    global _STANCE_AURAS
-    if _STANCE_AURAS is None:
-        from pathlib import Path as _Path
-        p = (_Path(__file__).resolve().parents[2] / 'json' / 'class_data' / 'path_of_war'
-             / 'stance_auras.json')
-        try:
-            raw = json.loads(p.read_text(encoding='utf-8'))
-        except (OSError, ValueError):
-            raw = {}
-        _STANCE_AURAS = {_dnorm(k): v for k, v in raw.items()
-                         if isinstance(v, dict) and not str(k).startswith('_')}
-    return _STANCE_AURAS
+# stance_auras.json ({stance -> {auraRange, onlyOthers}}) is loaded, cached and name-matched by
+# utils/class_func/buff_match.py (kind 'stance'); _dnorm is registered there as its match rule, so
+# the apostrophe handling that "Fool%27s_Errand" needs stays in one place. Unlike the other kinds
+# this one is not exported as a changes dict -- it becomes the AuraRange:/onlyOthers; markers below
+# that the aura/buff-distributor macro reads out of the maneuver's description.
+_STANCE_GAPS = []
 
 
 def _aura_prefix(name):
     '''The "AuraRange: N\\n[onlyOthers;\\n]\\n" marker block for an aura stance, else "".'''
-    a = _stance_auras().get(_dnorm(name))
-    if not a:
+    matched, gaps = match_buffs('stance', [name])
+    _STANCE_GAPS.extend(gaps)
+    a = matched.get(name)
+    if not isinstance(a, dict) or not a:
         return ''
     lines = [f"AuraRange: {a.get('auraRange', '')}"]
     if a.get('onlyOthers'):

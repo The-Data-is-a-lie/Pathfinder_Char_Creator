@@ -24,6 +24,7 @@
  "bloodline": "N/A",
  "bloodline_feat_labels": [],
  "bloodline_feats": [],
+ "buff_gaps": [],
  "build_archetype": "Team Buffer",
  "build_tactics": "Opens with its best party-wide amplifier -- haste or its song, nearly always -- then keeps layering and maintaining buffs while allies convert them into damage. Treats its own attacks as filler; the party's action economy is its weapon.",
  "c_class": "warlord",

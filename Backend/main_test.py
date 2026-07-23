@@ -53,6 +53,7 @@ from utils.class_func.feats_to_chooseable 			import add_feats_to_chooseable
 from utils.class_func.feat_tax 						import feat_tax_func, feat_spell_searcher
 from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feats, specialize_skill_choice_feats
 from utils.class_func.weapon_focus_buffs import weapon_focus_changes
+from utils.class_func.buff_match					import match as match_buffs, sections as buff_sections, format_gaps
 from utils.class_func.spheres 						import randomize_spheres_num, choose_spheres_attr, add_overflow_talents, MAX_EXTRA_TALENT_FEATS, mentor_sphere_summary
 from utils.class_func.flag_assign 					import human_flag_assigner, druidic_flag_assigner
 from utils.class_func.flaws 						import flaw_chooser
@@ -1644,32 +1645,33 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# .json -> default-off toggle conditionals (Power Attack, Combat Expertise, Deadly Aim, ...) the
 		# module attaches to the main weapon. We author ONLY feats Foundry's every_feat.json compendium does
 		# not already automate, so nothing double-applies. Missing files -> empty maps (feature simply off).
-		import os as _os, json as _json, re as _re
-		_buf_dir = _os.path.dirname(_os.path.abspath(__file__))
-		def _load_buffmap(*parts):
-			try:
-				with open(_os.path.join(_buf_dir, *parts), encoding="utf-8") as _bf:
-					return _json.load(_bf)
-			except (OSError, ValueError):
-				return {}
-		_fc_ci = {str(_k).lower(): _v for _k, _v in _load_buffmap("json", "feats", "feat_changes.json").items()}
-		_fk_ci = {str(_k).lower(): _v for _k, _v in _load_buffmap("json", "feats", "feat_conditionals.json").items()}
+		import json as _json, re as _re
+		# Name matching + the gap report live in utils/class_func/buff_match.py; every curated map is
+		# loaded and cached there (this block used to re-parse ~1.6 MB of JSON on every generation).
+		_buff_gaps = []
+		_curated_feat_changes, _g = match_buffs("feat", _render_feat_names);            _buff_gaps += _g
+		_curated_feat_conds, _g = match_buffs("feat_conditional", _render_feat_names);  _buff_gaps += _g
+		# Runtime-computed feat changes override the curated file, because they're keyed to a choice
+		# this character made rather than to the bare feat name.
+		_runtime_feat_changes = {}
 		# Skill Focus / Prodigy: changes computed at generation time (keyed to the chosen
-		# profession/skill, e.g. "Skill Focus (Profession (Sailor))") override the static file.
+		# profession/skill, e.g. "Skill Focus (Profession (Sailor))").
 		for _sk_name, _sk_entry in (getattr(character, "skill_focus_changes", {}) or {}).items():
-			_fc_ci[str(_sk_name).lower()] = _sk_entry
+			_runtime_feat_changes[str(_sk_name).lower()] = _sk_entry
 		# Weapon Focus family: sum the tax-bundled chain (Greater Weapon Focus / Weapon Specialization /
 		# Greater Weapon Specialization) onto the placed "Weapon Focus" primary -> one cumulative change.
 		for _wf_name, _wf_entry in weapon_focus_changes(_render_feat_names,
 				[feats_feat_tax_dict, class_feat_tax_dict, story_feat_tax_dict, flaw_feat_tax_dict,
 				 flavor_feat_tax_dict, trainer_feat_tax_dict]).items():
-			_fc_ci[str(_wf_name).lower()] = _wf_entry
+			_runtime_feat_changes[str(_wf_name).lower()] = _wf_entry
 		for _disp in dict.fromkeys(_render_feat_names):
-			_lc = str(_disp).lower()
-			if _lc in _fc_ci:
-				feat_changes_dict[_disp] = _fc_ci[_lc]
-			if _lc in _fk_ci:
-				feat_conditionals_dict[_disp] = _fk_ci[_lc]
+			_entry = _runtime_feat_changes.get(str(_disp).lower())
+			if _entry is None:
+				_entry = _curated_feat_changes.get(_disp)
+			if _entry is not None:
+				feat_changes_dict[_disp] = _entry
+			if _disp in _curated_feat_conds:
+				feat_conditionals_dict[_disp] = _curated_feat_conds[_disp]
 
 		# --- Equipment numeric buffs + context notes ----------------------------------------------------
 		# item_changes.json is GENERATED from items_best.json descriptions by scripts/build_item_changes.py
@@ -1677,9 +1679,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# item_changes_overrides.json merged on top at build time. Keyed by lowercase backend item name; the
 		# module overlays entries onto the matched/synthesized equipment item (deduped by change target, so
 		# items every_item.json already automates don't double-apply).
-		_ic_ci = _load_buffmap("json", "items", "item_changes.json")
-		for _item_name in dict.fromkeys(equipment_list or []):
-			_ic_entry = _ic_ci.get(str(_item_name).lower())
+		_matched_items, _g = match_buffs("item", equipment_list or []);   _buff_gaps += _g
+		for _item_name, _ic_entry in _matched_items.items():
 			if _ic_entry:
 				item_changes_dict[_item_name] = _ic_entry
 
@@ -1687,10 +1688,6 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# Sectioned because names collide across the lists with different rules (e.g. Ghost Touch):
 		# weapon.* -> conditionals on the main weapon's attack action; armor.* (covers the Armor AND
 		# Shield quality lists) -> changes/contextNotes overlaid on the armor/shield item.
-		_qe_all = _load_buffmap("json", "items", "quality_effects.json")
-		_qe_weapon = {str(_k).lower(): _v for _k, _v in (_qe_all.get("weapon") or {}).items()}
-		_qe_armor = {str(_k).lower(): _v for _k, _v in (_qe_all.get("armor") or {}).items()}
-
 		# Every shipped entry also carries the quality's rules text ("description") pulled from the
 		# scraped qualities lists, so the module can render it under the item. Entries are shallow-
 		# copied so the cached quality_effects data is never mutated; a quality missing from
@@ -1707,14 +1704,17 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		_wq_desc = _quality_descriptions(getattr(character, "weapon_qualities", {}), ("Melee", "Ranged"))
 		_aq_desc = _quality_descriptions(getattr(character, "armor_qualities", {}), ("Armor", "Shield"))
 
-		for _section, _chosen, _lookup, _desc_map in (
-				("weapon", weapon_enhancement_chosen_list, _qe_weapon, _wq_desc),
-				("armor", armor_enhancement_chosen_list, _qe_armor, _aq_desc),
-				("shield", shield_enhancement_chosen_list, _qe_armor, _aq_desc)):
+		# The shield list is matched against the ARMOR section on purpose -- quality_effects.json keeps
+		# one armor section covering both the Armor and Shield quality lists.
+		for _section, _chosen, _qe_section, _desc_map in (
+				("weapon", weapon_enhancement_chosen_list, "weapon", _wq_desc),
+				("armor", armor_enhancement_chosen_list, "armor", _aq_desc),
+				("shield", shield_enhancement_chosen_list, "armor", _aq_desc)):
+			_matched_q, _g = match_buffs("quality", _chosen or [], section=_qe_section)
+			_buff_gaps += _g
 			for _q_name in dict.fromkeys(_chosen or []):
-				_q_key = str(_q_name).lower()
-				_q_entry = dict(_lookup.get(_q_key) or {})
-				_q_desc = _desc_map.get(_q_key)
+				_q_entry = dict(_matched_q.get(_q_name) or {})
+				_q_desc = _desc_map.get(str(_q_name).lower())
 				if _q_desc:
 					_q_entry["description"] = _q_desc
 				if _q_entry:
@@ -1731,10 +1731,6 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# @classes/@abilities refs are baked to this NPC's numbers since a recipient's sheet can't
 		# resolve them. Auto-drafted entries ("review": true) ship contextNotes ONLY — never unvetted
 		# changes or conditionals.
-		_cfe = _load_buffmap("json", "class_data", "effects", "class_feature_effects.json")
-		def _cfe_key(_name):
-			return _re.sub(r"\s+", " ", _re.sub(r"\s*\((su|ex|sp)\)\s*$", "", str(_name),
-												flags=_re.I)).strip().lower()
 		_class_levels = {str(_c.get("name", "")).lower(): _c.get("level", 0) or 0
 						 for _c in (character.classes or [])}
 		_ability_mods = {"str": character.str_mod, "dex": character.dex_mod, "con": character.con_mod,
@@ -1749,13 +1745,15 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# ninja/slayer talents), retarget @classes.<canonical>.level to the class they actually have.
 		_bucket_classes = {"rage_powers": ("barbarian", "skald"), "hexes": ("witch", "shaman"),
 						   "ninja_talents": ("rogue", "ninja"), "slayer_talents": ("rogue", "slayer")}
+		_cfe_buckets = set(buff_sections("class_feature"))
 		for _bucket, _powers in (class_features or {}).items():
-			_cfe_section = _cfe.get(_bucket)
-			if not _cfe_section or not isinstance(_powers, dict):
+			if _bucket not in _cfe_buckets or not isinstance(_powers, dict):
 				continue
 			_owner = next((_c for _c in _bucket_classes.get(_bucket, ()) if _c in _class_levels), None)
+			_matched_cf, _g = match_buffs("class_feature", list(_powers), section=_bucket)
+			_buff_gaps += _g
 			for _p_name in _powers:
-				_cf_entry = _cfe_section.get(_cfe_key(_p_name))
+				_cf_entry = _matched_cf.get(_p_name)
 				if not _cf_entry:
 					continue
 				_cf_json = _json.dumps(_cf_entry)
@@ -1785,6 +1783,23 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 					class_feature_changes_dict[_p_name] = _cf_out
 				if _cf_entry.get("conditionals"):
 					class_feature_conditionals_dict[_p_name] = _cf_entry["conditionals"]
+
+		# --- Buff gap report ----------------------------------------------------------------------------
+		# A gap is NOT "nothing curated for this name" (that is the normal case for most feats and
+		# spells). It means curated data for the name EXISTS but the kind's name-matching rule didn't
+		# reach it -- a casing/punctuation/suffix mismatch that would otherwise drop the buff in total
+		# silence. Shipped on the payload so it is visible in the API response and captured by the
+		# golden payloads, which makes a regression here a test failure rather than a discovery weeks
+		# later on a Foundry sheet.
+		_spell_gaps = getattr(character, "spell_buff_gaps", None) or []
+		_buff_gaps += _spell_gaps
+		_buff_gaps += getattr(character, "talent_buff_gaps", None) or []
+		_buff_gaps += getattr(character, "stance_buff_gaps", None) or []
+		payload["buff_gaps"] = _buff_gaps
+		if _buff_gaps:
+			print(f"buff gaps: {len(_buff_gaps)} curated entr(y/ies) not matched")
+			for _gap_line in format_gaps(_buff_gaps):
+				print(f"  {_gap_line}")
 
 		character.data_dict.update(payload)
 

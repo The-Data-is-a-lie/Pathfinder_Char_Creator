@@ -18,8 +18,9 @@ sys.path.insert(0, str(BACKEND))   # so `from utils...` resolves
 
 import build_spell_conditionals as bsc
 import normalize_spell_name_casing as nsc
+from utils.class_func import buff_match
 from utils.class_func.spells import (spell_conditionals_selection,
-                                      _spell_change_buffs, _spell_rider_buffs)
+                                      )
 
 
 def test_bucketing():
@@ -45,7 +46,7 @@ def test_bucketing():
 
 
 def test_curated_files_load():
-    chg, rid = _spell_change_buffs(), _spell_rider_buffs()
+    chg, rid = buff_match.raw('spell_change'), buff_match.raw('spell_rider')
     assert isinstance(chg, dict) and chg, "spell_changes.json empty/missing"
     assert isinstance(rid, dict) and rid, "spell_riders.json empty/missing"
     for n, e in chg.items():
@@ -75,8 +76,8 @@ def test_no_uncapped_scaling():
     """Every caster-level-scaling buff must be bounded by min(...): a bare floor(@CL/N) grows forever,
     which is the Divine-Favor / Aroden / Unerring class of bug (rules cap the bonus at a maximum)."""
     offenders = []
-    for src, buffs in (("spell_changes", _spell_change_buffs()),
-                       ("spell_riders", _spell_rider_buffs())):
+    for src, buffs in (("spell_changes", buff_match.raw('spell_change')),
+                       ("spell_riders", buff_match.raw('spell_rider'))):
         for name, entry in buffs.items():
             for coll in ("modifiers", "changes"):
                 for m in (entry.get(coll) or []):
@@ -144,7 +145,7 @@ def test_spell_convention_compliance():
     """Curated spell conditionals obey the foundry-conditionals convention: every number in [[ ]],
     no rolled damage restated in a toggle name / rider, and plain modifier formulas."""
     bare, restate, badf = [], [], []
-    chg = _spell_change_buffs()
+    chg = buff_match.raw('spell_change')
     for name, e in chg.items():
         mods = e.get('modifiers') or []
         badf += _plain_formula_violations(mods, f"spell_changes[{name}]")
@@ -155,7 +156,7 @@ def test_spell_convention_compliance():
             dd = _restated_dice(nm, mods)
             if dd:
                 restate.append(f"spell_changes[{name}].name restates {dd}")
-    for name, e in _spell_rider_buffs().items():
+    for name, e in buff_match.raw('spell_rider').items():
         for rd in (e.get('riders') or []):
             if _bare_numbers(rd):
                 bare.append(f"spell_riders[{name}]: {_bare_numbers(rd)} :: {rd[:70]}")

@@ -30,6 +30,7 @@
  "bloodline": "N/A",
  "bloodline_feat_labels": [],
  "bloodline_feats": [],
+ "buff_gaps": [],
  "build_archetype": "Generalist",
  "build_tactics": "Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.",
  "c_class": "fighter",

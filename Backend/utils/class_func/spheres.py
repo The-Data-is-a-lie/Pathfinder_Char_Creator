@@ -39,6 +39,7 @@ import re
 
 from utils.class_func.generic_func import no_prereq_loop
 from utils.class_func.skill_ranks import highest_mental_mod, final_ability_mod
+from utils.class_func.buff_match import match as match_buffs
 import utils.data as data
 
 # --------------------------------------------------------------------------- #
@@ -319,23 +320,12 @@ def _display_name(name):
     return " ".join(w[:1].upper() + w[1:] for w in name.split())
 
 
-_COMBAT_BUFFS = None
-
-
-def _combat_talent_buffs():
-    """Curated numeric buffs for Spheres-of-MIGHT (combat) talents, keyed {Sphere: {Talent: {...}}}
-    (display-cased to match _display_name). Loaded once; {} if the file is absent. Authored via
-    Backend/scripts/build_talent_changes.py + manual curation. Magic (Power) talents stay
-    description-only -- they cast effects, not passive self-buffs."""
-    global _COMBAT_BUFFS
-    if _COMBAT_BUFFS is None:
-        from pathlib import Path as _Path
-        _p = _Path(__file__).resolve().parents[2] / "json" / "class_data" / "spheres" / "combat_talent_changes.json"
-        try:
-            _COMBAT_BUFFS = json.loads(_p.read_text(encoding="utf-8"))
-        except (OSError, ValueError):
-            _COMBAT_BUFFS = {}
-    return _COMBAT_BUFFS
+# Curated numeric buffs for Spheres-of-MIGHT (combat) talents live in
+# json/class_data/spheres/combat_talent_changes.json, keyed {Sphere: {Talent: {...}}} in
+# _display_name casing, and are loaded/matched by utils/class_func/buff_match.py (kind 'talent').
+# Magic (Power) talents stay description-only -- they cast effects, not passive self-buffs.
+# Gaps are accumulated here and collected into the payload's buff_gaps by main_test.
+_TALENT_GAPS = []
 
 
 def _talent_item(sphere, system, name, rec):
@@ -347,7 +337,11 @@ def _talent_item(sphere, system, name, rec):
                 or _talent_match_norm(name) in _advanced_set(system, sphere))
     disp_sphere, disp_name = _display_name(sphere), _display_name(name)
     # Numeric buffs land on the Foundry "Changes" tab for combat talents only (Power = text-only).
-    buff = _combat_talent_buffs().get(disp_sphere, {}).get(disp_name, {}) if system == "might" else {}
+    buff = {}
+    if system == "might":
+        _matched, _gaps = match_buffs('talent', [disp_name], section=disp_sphere)
+        buff = _matched.get(disp_name) or {}
+        _TALENT_GAPS.extend(_gaps)
     return {
         "name": disp_name,
         "sphere": disp_sphere,
@@ -525,6 +519,10 @@ def choose_spheres_attr(character, max_feats=None, trainer_backed=False, mentor_
     backward-compat but no longer used (the feat count now follows the budget-paid talent count). The
     generator reserves the realized feats with priority.
     """
+    # Per-character gap accumulator; main_test folds character.talent_buff_gaps into buff_gaps.
+    del _TALENT_GAPS[:]
+    character.talent_buff_gaps = _TALENT_GAPS
+
     bundle = _empty_bundle()
     # HR: EVERY character carries a casting tradition (drawbacks/boons + casting ability) -- for
     # non-casters it is latent flavor describing how their magic would work if they ever picked any

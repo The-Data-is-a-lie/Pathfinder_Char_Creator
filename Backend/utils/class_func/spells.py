@@ -2,6 +2,7 @@ import random, json, sys, math
 from math import ceil, floor
 from utils import data
 from utils.paths import repo_path
+from utils.class_func.buff_match import match as match_buffs
 import pandas as pd
 
 def class_for_spells_attr(character):
@@ -293,34 +294,9 @@ def spells_known_selection(character, class_entry):
 #   spell_riders.json  -- Bucket B damaging-attack spells (Chill Touch, Frigid Touch, Acid Arrow):
 #                         the formal save block + non-damage riders ([[ ]] inline text) on the SPELL's
 #                         own action (its attack + damage already come from the pf1 compendium).
-_SPELL_CHANGES = None
-_SPELL_RIDERS = None
-
-
-def _spell_change_buffs():
-    """Curated Bucket-A weapon buffs keyed by spell display name. Loaded once; {} if absent."""
-    global _SPELL_CHANGES
-    if _SPELL_CHANGES is None:
-        from pathlib import Path as _Path
-        _p = _Path(__file__).resolve().parents[2] / "json" / "spells" / "spell_changes.json"
-        try:
-            _SPELL_CHANGES = json.loads(_p.read_text(encoding="utf-8"))
-        except (OSError, ValueError):
-            _SPELL_CHANGES = {}
-    return _SPELL_CHANGES
-
-
-def _spell_rider_buffs():
-    """Curated Bucket-B save/rider data keyed by spell display name. Loaded once; {} if absent."""
-    global _SPELL_RIDERS
-    if _SPELL_RIDERS is None:
-        from pathlib import Path as _Path
-        _p = _Path(__file__).resolve().parents[2] / "json" / "spells" / "spell_riders.json"
-        try:
-            _SPELL_RIDERS = json.loads(_p.read_text(encoding="utf-8"))
-        except (OSError, ValueError):
-            _SPELL_RIDERS = {}
-    return _SPELL_RIDERS
+# The curated spell maps are loaded and cached by utils/class_func/buff_match.py (kinds
+# 'spell_change' and 'spell_rider'); the private loaders that used to live here were a second
+# copy of that cache. Scripts that need the raw data call buff_match.raw(<kind>).
 
 
 def spell_conditionals_selection(character):
@@ -329,19 +305,18 @@ def spell_conditionals_selection(character):
     Returns (spell_changes_dict, spell_riders_dict), each keyed by the spell's display name, for the
     spells present in character.spell_list_choose_from (a list of per-level lists of names). Matching
     is case-insensitive (mirrors the feat-map lookup in main_test.py). Both are {} for non-casters."""
-    chosen = set()
+    # dict.fromkeys, not a set: a set of strings iterates in hash order, which Python randomizes per
+    # process, so the two dicts below came out with different key ORDER on every run.
+    chosen = {}
     for level_list in (getattr(character, "spell_list_choose_from", None) or []):
         if isinstance(level_list, list):
-            chosen.update(str(s) for s in level_list)
-    chg_ci = {str(k).lower(): (k, v) for k, v in _spell_change_buffs().items()}
-    rid_ci = {str(k).lower(): (k, v) for k, v in _spell_rider_buffs().items()}
-    spell_changes_dict, spell_riders_dict = {}, {}
-    for name in chosen:
-        lc = name.lower()
-        if lc in chg_ci:
-            spell_changes_dict[name] = chg_ci[lc][1]
-        if lc in rid_ci:
-            spell_riders_dict[name] = rid_ci[lc][1]
+            for s in level_list:
+                chosen[str(s)] = None
+
+    spell_changes_dict, changes_gaps = match_buffs('spell_change', chosen)
+    spell_riders_dict, rider_gaps = match_buffs('spell_rider', chosen)
+    # main_test collects these into the payload's buff_gaps.
+    character.spell_buff_gaps = changes_gaps + rider_gaps
     return spell_changes_dict, spell_riders_dict
 
 
