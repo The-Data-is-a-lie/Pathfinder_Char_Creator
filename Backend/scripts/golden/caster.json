@@ -1,0 +1,1893 @@
+{
+ "Total_HP": 127,
+ "age_number": 37,
+ "alignment": "Neutral Good",
+ "appearance": [
+  "Mellow"
+ ],
+ "archetype1": null,
+ "archetype_info": "{\n    \"Fiendish Vessel\": {\n        \"source\": \"Advanced Race Guide pg. 170 Many clerics pray to or make evil bargains with fiendish powers, devoting body and soul to the insane plans and wicked aims of their despicable patrons. But these mortal clerics are often just shallow beings searching for quick power or the caress of true and final oblivion-few truly grasp the full scope of the entities they worship. Fiendish vessels, through their fiendish heritage, share an innate connection with their patron, and that connection grants them understanding and power. A fiendish vessel has the following class features.\",\n        \"alignment\": \"  Unlike normal clerics, a fiendish vessel's alignment must match her patron's.\",\n        \"domains\": \"  A fiendish vessel must select the Daemon, Demon, or Devil subdomain ( 88-90) as one of her domain choices, based on the fiendish patron she chooses to serve.\",\n        \"channel evil (su)\": \"  At 1st level, a fiendish vessel, rather than channeling positive or negative energy, instead channels the pure evil power of her fiendish patron. This ability is similar to channeling negative energy, but instead of healing undead and dealing damage to living creatures, this blast of evil energy automatically heals evil creatures and debilitates good creatures within its burst. Channeling this evil causes a burst that affects all creatures in a 30-foot radius centered on the fiendish vessel. In the case of evil creatures, the amount of damage healed is equal to 1d4 points of damage and increases by 1d4 at every two levels beyond 1st (to a maximum of 10d4 at 19th level). Good creatures in the burst receive a Will saving throw to negate this damage. Good creatures that fail their saving throws are sickened for 1d4 rounds. Good creatures with a number of Hit Dice less than or equal to the fiendish vessel's class level - 5 that fail their saving throws are nauseated for 1 round and then sickened for 1d4 rounds instead. The DC of this save is equal to 10 + 1/2 the fiendish vessel's level + the fiendish vessel's Charisma bonus. Neutral creatures are unaffected by this burst of evil energy. A fiendish vessel may channel this energy a number of times per day equal to 3 + her Charisma modifier. Doing so is a standard action that does not provoke attacks of opportunity. A fiendish vessel can choose whether or not to include herself in this effect. A fiendish vessel must present her unholy symbol or use her familiar as the divine focus for this ability. For the purposes of feats that affect channel energy, this ability counts as channeling negative energy. If the feat changes the way the fiendish vessel channels or deals damage with her channeling, use the amount of damage this ability heals evil creatures to determine the damage-dealing potential of the affected ability. For instance, if a 5th-level fiendish vessel takes the Channel Smite feat, her channeling deals an additional 3d4 points of damage to living creatures on a successful hit (though they may save to negate the damage). This ability replaces channel energy.\",\n        \"fiendish familiar\": \"  At 3rd level, a fiendish vessel's patron rewards her with a fiendish servant. The fiendish vessel gains an imp, quasit, or cacodaemon familiar based on the patron she worships. This ability is identical to the wizard's arcane bond with a familiar and the Improved Familiar feat, using the fiendish vessel's character level in place of the wizard level. This tiny fiend acts like a perverse, manifest moral compass. Furthermore, this familiar can act as a living divine focus and unholy symbol for her spellcasting if the fiendish vessel so desires, which means that when she uses her channel evil ability, its burst can be centered on the familiar instead, as long as that familiar is within 30 feet and line of sight. A fiendish vessel's familiar tends to be fawning and subservient to the fiendish vessel. Should her familiar die, the fiendish vessel's patron replaces the familiar with an identical one within 1 week, without the need for a special ritual. Furthermore, the fiendish familiar gains the following special abilities beyond the standard familiar special abilities. Fiendish Augury (Sp) : At 3rd level, the fiendish vessel can ask the familiar whether a particular course of action will bring good or bad results for her in the immediate future. This ability acts like the augury spell, with a caster level equal to the fiendish vessel's level, with the familiar acting as the mouthpiece for the spell. This ability can be used once per day. Fiendish Divination (Sp) : At 9th level, the fiendish vessel can use a more powerful form of divination to gain intelligence from her patron through her fiendish familiar. This ability acts like the divination spell, with a caster level equal to the fiendish vessel's level; the familiar acts as the mouthpiece for the spell. This ability can be used once per day. Extra Divination (Sp) : At 13th level, the fiendish vessel can gain intelligence from her patron more often each day. She can use fiendish divination up to 3 times per day.\",\n        \"fiendish summoning\": \"  When casting summon monster spells, a fiendish vessel is limited to summoning fiendish creatures and evil outsiders of the same alignment as her patron.\"\n    }\n}",
+ "armor_ac": "7",
+ "armor_armor_check_penalty": "-6",
+ "armor_enhancement_bonus": 0,
+ "armor_enhancement_chosen_list": [],
+ "armor_max_dex_bonus": "1",
+ "armor_name": "Banded mail",
+ "armor_spell_failure": 0,
+ "armor_weight": "35 lbs.",
+ "bab_total": 13,
+ "background_traits": [
+  "Soul-Drinker",
+  "Curse in the Blood",
+  "Truth's Agent",
+  "Centered"
+ ],
+ "backstory": "",
+ "bloodline": "N/A",
+ "bloodline_feat_labels": [],
+ "bloodline_feats": [],
+ "build_archetype": "Generalist",
+ "build_tactics": "Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.",
+ "c_class": "cleric",
+ "c_class_2": "barbarian",
+ "c_class_display": "Cleric",
+ "casting_level_str_foundry": "high",
+ "casting_tradition": {
+  "bonus_spell_points": 1,
+  "boons": [
+   "Easy Focus",
+   "Empowered Abilities",
+   "Overcharge"
+  ],
+  "boons_detail": [
+   {
+    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
+    "name": "Easy Focus"
+   },
+   {
+    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
+    "name": "Empowered Abilities"
+   },
+   {
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
+   }
+  ],
+  "casting_ability_modifier": "Wisdom",
+  "drawbacks": [
+   "Focus Casting",
+   "Wild Magic",
+   "Somatic Casting",
+   "Material Casting",
+   "Painful Magic",
+   "Addictive Casting"
+  ],
+  "drawbacks_detail": [
+   {
+    "counts_as": 1,
+    "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
+    "name": "Focus Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
+    "name": "Wild Magic"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
+    "name": "Somatic Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic requires expending consumable materials/components worth roughly 1 sp per caster level each time you use a sphere ability.",
+    "name": "Material Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
+    "name": "Painful Magic"
+   },
+   {
+    "counts_as": 2,
+    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
+    "name": "Addictive Casting"
+   }
+  ]
+ },
+ "cha": 12,
+ "character_full_name": "Sara Eriksdotter",
+ "chosen_race": "Human",
+ "chosen_spell_descriptor": [
+  "earth",
+  "electricity"
+ ],
+ "class feature levels": {
+  "rage_powers": {
+   "lesser daemon totem": 4,
+   "lesser fiend totem": 2,
+   "totemic mettle": 6
+  }
+ },
+ "class feature owners": {
+  "Law": "cleric",
+  "Nobility": "cleric",
+  "rage_powers": "barbarian"
+ },
+ "class features": {
+  "Law": {
+   "Staff of Order (Su)": [
+    "At 8th level, you can give a weapon touched the axiomatic special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th."
+   ],
+   "Touch of Law (Sp)": [
+    "You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
+   ],
+   "bonus spells": [
+    "protection from chaos",
+    "align weapon",
+    "magic circle against chaos",
+    "orders wrath",
+    "dispel chaos",
+    "hold monster",
+    "dictum",
+    "shield of law",
+    "summon monster IX"
+   ],
+   "subdomains": [
+    "Archon",
+    "Devil",
+    "Inevitable",
+    "Judgment",
+    "Kyton",
+    "Legislation",
+    "Loyalty",
+    "Slavery",
+    "Tyranny"
+   ]
+  },
+  "Nobility": {
+   "Inspiring Word (Sp)": [
+    "As a standard action, you can speak an inspiring word to a creature within 30 feet. That creature receives a +2 morale bonus on attack rolls, skill checks, ability checks, and saving throws for a number of rounds equal to 1/2 your cleric level (minimum 1). You can use this power a number of times per day equal to 3 + your Wisdom modifier."
+   ],
+   "Leadership (Ex)": [
+    "At 8th level, you receive Leadership as a bonus feat. In addition, you gain a +2 bonus on your leadership score as long as you uphold the tenets of your deity (or divine concept if you do not venerate a deity)."
+   ],
+   "bonus spells": [
+    "divine favor",
+    "enthrall",
+    "magic vestment",
+    "discern lies",
+    "command (greater)",
+    "geas/quest",
+    "repulsion",
+    "demand",
+    "storm of vengeance"
+   ],
+   "subdomains": [
+    "Aristocracy",
+    "Hubris",
+    "Leadership",
+    "Martyr"
+   ]
+  },
+  "Skill Unlock: Escape Artist": {
+   "10 Ranks": "You can escape any entangling effect as a standard action (DC = effect's save DC + 10), and you set the escape DC for ropes and bindings.",
+   "15 Ranks": "You can escape entangling effects as a move action and suppress slow or paralysis as a standard action (DC = save DC + 20) for a short time.",
+   "20 Ranks": "You can escape as an immediate action (DC = effect's DC/CMB + 10) and suppress slow or paralysis as a standard, move, or immediate action.",
+   "5 Ranks": "Take a -10 penalty to halve the time an Escape Artist check requires; escaping a grapple or pin is a move action, and escaping entangling spells is a standard action."
+  },
+  "rage_powers": {
+   "lesser daemon totem": {
+    "benefit": "while raging, the barbarian gains a +2 bonus on saving throws against acid damage, death effects, disease, and poison. this bonus increases by 1 for each daemon totem rage power the barbarian has, excluding this one."
+   },
+   "lesser fiend totem": {
+    "benefit": "while raging, the barbarian grows a pair of large horns, gaining a gore attack. this attack is a primary attack (unless she is also attacking with weapons, in which case it is a secondary attack) and is made at the barbarianas full base attack bonus (a5 if it is a secondary attack). the gore attack deals 1d8 points of piercing damage (1d6 if small) plus the barbarianas strength modifier (1/2 if it is a secondary attack)."
+   },
+   "totemic mettle": {
+    "benefit": "whenever you enter a rage while bound to a spirit that belongs to your associated constellation, whenever you succeed on a fortitude save that would normally have a lesser effect on a successful save, you instead completely negate the effect. you are still harmed by the effects that do not allow a saving throw.",
+    "prerequisites": ""
+   }
+  }
+ },
+ "class_ability": [
+  "aura_cleric",
+  "spells_cleric",
+  "channel energy_cleric",
+  "domains_cleric",
+  "orisons_cleric",
+  "spontaneous casting_cleric",
+  "chaotic, evil, good, and lawful spells_cleric",
+  "bonus languages_cleric",
+  "fast movement_barbarian",
+  "rage_barbarian",
+  "rage powers_barbarian",
+  "uncanny dodge_barbarian",
+  "trap sense_barbarian",
+  "improved uncanny dodge_barbarian",
+  "damage reduction_barbarian",
+  "greater rage_barbarian",
+  "indomitable will_barbarian",
+  "tireless rage_barbarian",
+  "mighty rage_barbarian"
+ ],
+ "class_ability_desc": {
+  "aura": "A cleric of a chaotic, evil, good, or lawful deity has a particularly powerful aura corresponding to the deity's alignment (see the detect evil spell for details).",
+  "bonus languages": "A cleric's bonus language options include Celestial, Abyssal, and Infernal (the languages of good, chaotic evil, and lawful evil outsiders, respectively). These choices are in addition to the bonus languages available to the character because of her race. Ex-Clerics A cleric who grossly violates the code of conduct required by her god loses all spells and class features, except for armor and shield proficiencies and proficiency with simple weapons. She cannot thereafter gain levels as a cleric of that god until she atones for her deeds (see the atonement spell description). Alternate Capstones",
+  "channel energy": "Regardless of alignment, any cleric can release a wave of energy by channeling the power of her faith through her holy (or unholy) symbol. This energy can be used to cause or heal damage, depending on the type of energy channeled and the creatures targeted. A good cleric (or one who worships a good deity) channels positive energy and can choose to deal damage to undead creatures or to heal living creatures. An evil cleric (or one who worships an evil deity) channels negative energy and can choose to deal damage to living creatures or to heal undead creatures. A neutral cleric who worships a neutral deity (or one who is not devoted to a particular deity) must choose whether she channels positive or negative energy. Once this choice is made, it cannot be reversed. This decision also determines whether the cleric casts spontaneous cure or inflict spells (see spontaneous casting). Channeling energy causes a burst that affects all creatures of one type (either undead or living) in a 30-foot radius centered on the cleric. The amount of damage dealt or healed is equal to 1d6 points of damage plus 1d6 points of damage for every two cleric levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the cleric's level + the cleric's Charisma modifier. Creatures healed by channeled energy cannot exceed their maximum hit point total-all excess healing is lost. A cleric may channel energy a number of times per day equal to 3 + her Charisma modifier. This is a standard action that does not provoke an attack of opportunity. A cleric can choose whether or not to include herself in this effect. A cleric must be able to present her holy symbol to use this ability.",
+  "chaotic, evil, good, and lawful spells": "A cleric can't cast spells of an alignment opposed to her own or her deity's (if she has one). Spells associated with particular alignments are indicated by the chaotic, evil, good, and lawful descriptors in their spell descriptions.",
+  "damage reduction": "At 7th level, a barbarian gains damage reduction. Subtract 1 from the damage the barbarian takes each time she is dealt damage from a weapon or a natural attack. At 10th level, and every three barbarian levels thereafter (13th, 16th, and 19th level), this damage reduction rises by 1 point. Damage reduction can reduce damage to 0 but not below 0.",
+  "domains": "A cleric's deity influences her alignment, what magic she can perform, her values, and how others see her. A cleric chooses two domains from among those belonging to her deity. A cleric can select an alignment domain (Chaos, Evil, Good, or Law) only if her alignment matches that domain. If a cleric is not devoted to a particular deity, she still selects two domains to represent her spiritual inclinations and abilities (subject to GM approval). The restriction on alignment domains still applies. Each domain grants a number of domain powers, dependent upon the level of the cleric, as well as a number of bonus spells. A cleric gains one domain spell slot for each level of cleric spell she can cast, from 1st on up. Each day, a cleric can prepare one of the spells from her two domains in that slot. If a domain spell is not on the cleric spell list, a cleric can prepare it only in her domain spell slot. Domain spells cannot be used to cast spells spontaneously. In addition, a cleric gains the listed powers from both of her domains, if she is of a high enough level. Unless otherwise noted, using a domain power is a standard action. A full list of Cleric Domains can be found",
+  "fast movement": "A barbarian's land speed is faster than the norm for her race by +10 feet. This benefit applies only when she is wearing no armor, light armor, or medium armor, and not carrying a heavy load. Apply this bonus before modifying the barbarian's speed because of any load carried or armor worn. This bonus stacks with any other bonuses to the barbarian's land speed.",
+  "greater rage": "At 11th level, when a barbarian enters rage, the morale bonus to her Strength and Constitution increases to +6 and the morale bonus on her Will saves increases to +3.",
+  "improved uncanny dodge": "At 5th level and higher, a barbarian can no longer be flanked. This defense denies a rogue the ability to sneak attack the barbarian by flanking her, unless the attacker has at least four more rogue levels than the target has barbarian levels. If a character already has uncanny dodge (see above) from another class, the levels from the classes that grant uncanny dodge stack to determine the minimum rogue level required to flank the character.",
+  "indomitable will": "While in rage, a barbarian of 14th level or higher gains a +4 bonus on Will saves to resist enchantment spells. This bonus stacks with all other modifiers, including the morale bonus on Will saves she also receives during her rage.",
+  "mighty rage": "At 20th level, when a barbarian enters rage, the morale bonus to her Strength and Constitution increases to +8 and the morale bonus on her Will saves increases to +4. Ex-Barbarians A barbarian who becomes lawful loses the ability to rage and cannot gain more levels as a barbarian. She retains all other benefits of the class. Alternate Capstones",
+  "orisons": "Clerics can prepare a number of orisons, or 0-level spells, each day, as noted on Table: Cleric under \"Spells per Day.\"These spells are cast like any other spell, but they are not expended when cast and may be used again.",
+  "rage": "A barbarian can call upon inner reserves of strength and ferocity, granting her additional combat prowess. Starting at 1st level, a barbarian can rage for a number of rounds per day equal to 4 + her Constitution modifier. At each level after 1st, she can rage for 2 additional rounds. Temporary increases to Constitution, such as those gained from rage and spells like bear's endurance , do not increase the total number of rounds that a barbarian can rage per day. A barbarian can enter rage as a free action. The total number of rounds of rage per day is renewed after resting for 8 hours, although these hours do not need to be consecutive. While in rage, a barbarian gains a +4 morale bonus to her Strength and Constitution, as well as a +2 morale bonus on Will saves. In addition, she takes a -2 penalty to Armor Class. The increase to Constitution grants the barbarian 2 hit points per Hit Dice, but these disappear when the rage ends and are not lost first like temporary hit points. While in rage, a barbarian cannot use any Charisma-, Dexterity-, or Intelligence-based skills (except Acrobatics, Fly, Intimidate, and Ride) or any ability that requires patience or concentration. A barbarian can end her rage as a free action and is fatigued after rage for a number of rounds equal to 2 times the number of rounds spent in the rage. A barbarian cannot enter a new rage while fatigued or exhausted but can otherwise enter rage multiple times during a single encounter or combat. If a barbarian falls unconscious, her rage immediately ends, placing her in peril of death.",
+  "rage powers": "As a barbarian gains levels, she learns to use her rage in new ways. Starting at 2nd level, a barbarian gains a rage power. She gains another rage power for every two levels of barbarian attained after 2nd level. A barbarian gains the benefits of rage powers only while raging, and some of these powers require the barbarian to take an action first. Unless otherwise noted, a barbarian cannot select an individual power more than once. See the Barbarian Rage Power section for a full list of Rage Powers from all sources.",
+  "spells": "A cleric casts divine spells which are drawn from the cleric spell list presented in Spell Lists. Her alignment, however, may restrict her from casting certain spells opposed to her moral or ethical beliefs; see chaotic, evil, good, and lawful spells. A cleric must choose and prepare her spells in advance. To prepare or cast a spell, a cleric must have a Wisdom score equal to at least 10 + the spell level. The Difficulty Class for a saving throw against a cleric's spell is 10 + the spell level + the cleric's Wisdom modifier. Like other spellcasters, a cleric can cast only a certain number of spells of each spell level per day. Her base daily spell allotment is given on Table: Cleric. In addition, she receives bonus spells per day if she has a high Wisdom score (see Table: Ability Modifiers and Bonus Spells). Clerics meditate or pray for their spells. Each cleric must choose a time when she must spend 1 hour each day in quiet contemplation or supplication to regain her daily allotment of spells. A cleric may prepare and cast any spell on the cleric spell list, provided that she can cast spells of that level, but she must choose which spells to prepare during her daily meditation.",
+  "spontaneous casting": "A good cleric (or a neutral cleric of a good deity) can channel stored spell energy into healing spells that she did not prepare ahead of time. The cleric can \"lose\"any prepared spell that is not an orison or domain spell in order to cast any cure spell of the same spell level or lower (a cure spell is any spell with \"cure\"in its name). An evil cleric (or a neutral cleric who worships an evil deity) can't convert prepared spells to cure spells but can convert them to inflict spells (an inflict spell is one with \"inflict\"in its name). A cleric who is neither good nor evil and whose deity is neither good nor evil can convert spells to either cure spells or inflict spells (player's choice). Once the player makes this choice, it cannot be reversed. This choice also determines whether the cleric channels positive or negative energy (see Channel Energy).",
+  "tireless rage": "Starting at 17th level, a barbarian no longer becomes fatigued at the end of her rage.",
+  "trap sense": "At 3rd level, a barbarian gains a +1 bonus on Reflex saves made to avoid traps and a +1 dodge bonus to AC against attacks made by traps. These bonuses increase by +1 every three barbarian levels thereafter (6th, 9th, 12th, 15th, and 18th level). Trap sense bonuses gained from multiple classes stack.",
+  "uncanny dodge": "At 2nd level, a barbarian gains the ability to react to danger before her senses would normally allow her to do so. She cannot be caught flat-footed, nor does she lose her Dex bonus to AC if the attacker is invisible. She still loses her Dexterity bonus to AC if immobilized. A barbarian with this ability can still lose her Dexterity bonus to AC if an opponent successfully uses the feint action against her. If a barbarian already has uncanny dodge from a different class, she automatically gains improved uncanny dodge (see below) instead."
+ },
+ "class_feat_labels": [],
+ "class_feat_tax_dict": {},
+ "class_feats": [],
+ "class_feature_changes_dict": {
+  "lesser daemon totem": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "While raging, the barbarian gains a +[[2]] bonus on saving throws against acid damage, death effects, disease, and poison. This bonus increases by 1 for each daemon totem rage power the barbarian has, excluding this one."
+    }
+   ]
+  },
+  "lesser fiend totem": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "This attack is a primary attack (unless she is also attacking with weapons, in which case it is a secondary attack) and is made at the barbarianas full base attack bonus (a5 if it is a secondary attack). The gore attack deals [[1d8]] points of piercing damage ([[1d6]] if small) plus the barbarianas strength modifier (1/2 if it is a secondary attack)."
+    }
+   ]
+  },
+  "totemic mettle": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "Whenever you enter a rage while bound to a spirit that belongs to your associated constellation, whenever you succeed on a fortitude save that would normally have a lesser effect on a successful save, you instead completely negate the effect. You are still harmed by the effects that do not allow a saving throw."
+    }
+   ]
+  }
+ },
+ "class_feature_conditionals_dict": {},
+ "class_feature_levels": {
+  "rage_powers": {
+   "lesser daemon totem": 4,
+   "lesser fiend totem": 2,
+   "totemic mettle": 6
+  }
+ },
+ "class_feature_owners": {
+  "Law": "cleric",
+  "Nobility": "cleric",
+  "rage_powers": "barbarian"
+ },
+ "class_features": {
+  "Law": {
+   "Staff of Order (Su)": [
+    "At 8th level, you can give a weapon touched the axiomatic special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th."
+   ],
+   "Touch of Law (Sp)": [
+    "You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
+   ],
+   "bonus spells": [
+    "protection from chaos",
+    "align weapon",
+    "magic circle against chaos",
+    "orders wrath",
+    "dispel chaos",
+    "hold monster",
+    "dictum",
+    "shield of law",
+    "summon monster IX"
+   ],
+   "subdomains": [
+    "Archon",
+    "Devil",
+    "Inevitable",
+    "Judgment",
+    "Kyton",
+    "Legislation",
+    "Loyalty",
+    "Slavery",
+    "Tyranny"
+   ]
+  },
+  "Nobility": {
+   "Inspiring Word (Sp)": [
+    "As a standard action, you can speak an inspiring word to a creature within 30 feet. That creature receives a +2 morale bonus on attack rolls, skill checks, ability checks, and saving throws for a number of rounds equal to 1/2 your cleric level (minimum 1). You can use this power a number of times per day equal to 3 + your Wisdom modifier."
+   ],
+   "Leadership (Ex)": [
+    "At 8th level, you receive Leadership as a bonus feat. In addition, you gain a +2 bonus on your leadership score as long as you uphold the tenets of your deity (or divine concept if you do not venerate a deity)."
+   ],
+   "bonus spells": [
+    "divine favor",
+    "enthrall",
+    "magic vestment",
+    "discern lies",
+    "command (greater)",
+    "geas/quest",
+    "repulsion",
+    "demand",
+    "storm of vengeance"
+   ],
+   "subdomains": [
+    "Aristocracy",
+    "Hubris",
+    "Leadership",
+    "Martyr"
+   ]
+  },
+  "Skill Unlock: Escape Artist": {
+   "10 Ranks": "You can escape any entangling effect as a standard action (DC = effect's save DC + 10), and you set the escape DC for ropes and bindings.",
+   "15 Ranks": "You can escape entangling effects as a move action and suppress slow or paralysis as a standard action (DC = save DC + 20) for a short time.",
+   "20 Ranks": "You can escape as an immediate action (DC = effect's DC/CMB + 10) and suppress slow or paralysis as a standard, move, or immediate action.",
+   "5 Ranks": "Take a -10 penalty to halve the time an Escape Artist check requires; escaping a grapple or pin is a move action, and escaping entangling spells is a standard action."
+  },
+  "rage_powers": {
+   "lesser daemon totem": {
+    "benefit": "while raging, the barbarian gains a +2 bonus on saving throws against acid damage, death effects, disease, and poison. this bonus increases by 1 for each daemon totem rage power the barbarian has, excluding this one."
+   },
+   "lesser fiend totem": {
+    "benefit": "while raging, the barbarian grows a pair of large horns, gaining a gore attack. this attack is a primary attack (unless she is also attacking with weapons, in which case it is a secondary attack) and is made at the barbarianas full base attack bonus (a5 if it is a secondary attack). the gore attack deals 1d8 points of piercing damage (1d6 if small) plus the barbarianas strength modifier (1/2 if it is a secondary attack)."
+   },
+   "totemic mettle": {
+    "benefit": "whenever you enter a rage while bound to a spirit that belongs to your associated constellation, whenever you succeed on a fortitude save that would normally have a lesser effect on a successful save, you instead completely negate the effect. you are still harmed by the effects that do not allow a saving throw.",
+    "prerequisites": ""
+   }
+  }
+ },
+ "classes": [
+  {
+   "archetype": {
+    "Fiendish Vessel": {
+     "alignment": "  Unlike normal clerics, a fiendish vessel's alignment must match her patron's.",
+     "channel evil (su)": "  At 1st level, a fiendish vessel, rather than channeling positive or negative energy, instead channels the pure evil power of her fiendish patron. This ability is similar to channeling negative energy, but instead of healing undead and dealing damage to living creatures, this blast of evil energy automatically heals evil creatures and debilitates good creatures within its burst. Channeling this evil causes a burst that affects all creatures in a 30-foot radius centered on the fiendish vessel. In the case of evil creatures, the amount of damage healed is equal to 1d4 points of damage and increases by 1d4 at every two levels beyond 1st (to a maximum of 10d4 at 19th level). Good creatures in the burst receive a Will saving throw to negate this damage. Good creatures that fail their saving throws are sickened for 1d4 rounds. Good creatures with a number of Hit Dice less than or equal to the fiendish vessel's class level - 5 that fail their saving throws are nauseated for 1 round and then sickened for 1d4 rounds instead. The DC of this save is equal to 10 + 1/2 the fiendish vessel's level + the fiendish vessel's Charisma bonus. Neutral creatures are unaffected by this burst of evil energy. A fiendish vessel may channel this energy a number of times per day equal to 3 + her Charisma modifier. Doing so is a standard action that does not provoke attacks of opportunity. A fiendish vessel can choose whether or not to include herself in this effect. A fiendish vessel must present her unholy symbol or use her familiar as the divine focus for this ability. For the purposes of feats that affect channel energy, this ability counts as channeling negative energy. If the feat changes the way the fiendish vessel channels or deals damage with her channeling, use the amount of damage this ability heals evil creatures to determine the damage-dealing potential of the affected ability. For instance, if a 5th-level fiendish vessel takes the Channel Smite feat, her channeling deals an additional 3d4 points of damage to living creatures on a successful hit (though they may save to negate the damage). This ability replaces channel energy.",
+     "domains": "  A fiendish vessel must select the Daemon, Demon, or Devil subdomain ( 88-90) as one of her domain choices, based on the fiendish patron she chooses to serve.",
+     "fiendish familiar": "  At 3rd level, a fiendish vessel's patron rewards her with a fiendish servant. The fiendish vessel gains an imp, quasit, or cacodaemon familiar based on the patron she worships. This ability is identical to the wizard's arcane bond with a familiar and the Improved Familiar feat, using the fiendish vessel's character level in place of the wizard level. This tiny fiend acts like a perverse, manifest moral compass. Furthermore, this familiar can act as a living divine focus and unholy symbol for her spellcasting if the fiendish vessel so desires, which means that when she uses her channel evil ability, its burst can be centered on the familiar instead, as long as that familiar is within 30 feet and line of sight. A fiendish vessel's familiar tends to be fawning and subservient to the fiendish vessel. Should her familiar die, the fiendish vessel's patron replaces the familiar with an identical one within 1 week, without the need for a special ritual. Furthermore, the fiendish familiar gains the following special abilities beyond the standard familiar special abilities. Fiendish Augury (Sp) : At 3rd level, the fiendish vessel can ask the familiar whether a particular course of action will bring good or bad results for her in the immediate future. This ability acts like the augury spell, with a caster level equal to the fiendish vessel's level, with the familiar acting as the mouthpiece for the spell. This ability can be used once per day. Fiendish Divination (Sp) : At 9th level, the fiendish vessel can use a more powerful form of divination to gain intelligence from her patron through her fiendish familiar. This ability acts like the divination spell, with a caster level equal to the fiendish vessel's level; the familiar acts as the mouthpiece for the spell. This ability can be used once per day. Extra Divination (Sp) : At 13th level, the fiendish vessel can gain intelligence from her patron more often each day. She can use fiendish divination up to 3 times per day.",
+     "fiendish summoning": "  When casting summon monster spells, a fiendish vessel is limited to summoning fiendish creatures and evil outsiders of the same alignment as her patron.",
+     "source": "Advanced Race Guide pg. 170 Many clerics pray to or make evil bargains with fiendish powers, devoting body and soul to the insane plans and wicked aims of their despicable patrons. But these mortal clerics are often just shallow beings searching for quick power or the caress of true and final oblivion-few truly grasp the full scope of the entities they worship. Fiendish vessels, through their fiendish heritage, share an innate connection with their patron, and that connection grants them understanding and power. A fiendish vessel has the following class features."
+    }
+   },
+   "display": "Cleric",
+   "level": 8,
+   "name": "cleric"
+  },
+  {
+   "archetype": {
+    "Untamed Rager": {
+     "deplorable tactics": "  At 5th level, the untamed rager gains Greater Dirty Trick as a bonus feat. This ability replaces improved uncanny dodge.",
+     "despicable tactics": "  At 2nd level, the untamed rager gains Improved Dirty Trick as a bonus feat. This ability replaces uncanny dodge.",
+     "dishonorable (ex)": "  At 7th level and every 3 barbarian levels thereafter, the untamed rager gains a +1 bonus on combat maneuver checks when performing dirty tricks and to her CMD to resist others' dirty tricks. This ability replaces damage reduction.",
+     "feral appearance (ex)": "  At 3rd level, the untamed rager gains a +1 bonus on Intimidate checks. This bonus increases by 1 every 3 barbarian levels thereafter. This ability replaces trap sense.",
+     "source": "Dirty Tactics Toolbox pg. 15 There are no rules in the wild. Some barbarians enter combat with only victory in mind and do anything in their power to achieve it."
+    }
+   },
+   "display": "Barbarian",
+   "level": 7,
+   "name": "barbarian"
+  }
+ ],
+ "combat_talent_items": [],
+ "con": 17,
+ "counter_schools": [
+  "abjuration",
+  "illusion"
+ ],
+ "counter_spell_descriptor": [
+  "fear",
+  "emotion"
+ ],
+ "craft_type": "Glazing",
+ "day_list": [
+  12,
+  17,
+  13,
+  13,
+  5
+ ],
+ "deity_name": "Ragathiel",
+ "dex": 13,
+ "enhancement_effects_dict": {},
+ "equip_descrip": {
+  "belts": {
+   "description": " long believed to have been gnome in origin, this stately\r cummerbund features a number of dancing dolphins\r embroidered on its deep blue material. The cummerbund grants\r its wearer a +4 competence bonus on swim checks, and allows\r her to take 10 on such checks even if distracted or endangered. ",
+   "item_name": "Aquatic Cummerbund"
+  },
+  "body": {
+   "description": " this ragged, brown robe could be mistaken for a monk's cassock, but the devotees who wear it are dedicated only to the art of killing. This robe grants the wearer a +5 competence bonus on stealth checks and sleight of hand checks to conceal a weapon, and a +1 resistance bonus on all saving throws. If worn by a slayer, the resistance bonus on saving throws increases to match the slayer's studied target bonus when he is facing a studied target. On command, the robe's wearer is able to turn into a brown mist (as the gaseous form spell) for up to 5 minutes per day. This duration doesn't need to be continuous, but must be used in 1-minute increments. While the wearer is in this form, the bonus on stealth checks increases to +10. The wearer can end this effect as a standard action. ",
+   "item_name": "Slayer's Robe"
+  },
+  "chest": {
+   "description": " this loose, often ruffled, shirt is cut in a style designed to avoid\r hindering its wearer's movement. Once per day on command, the wearer can gain the benefits\r of freedom of movement for 10 minutes. ",
+   "item_name": "Unfettered Shirt"
+  },
+  "eyes": {
+   "description": " these spectacles fit firmly over eyes and are held in place by two crystalline stems. The lenses are initially clear and don't hinder the wearer's vision. When the wearer is targeted with an illusion spell or spell-like ability of the pattern subschool (such as color spray), the spectacles absorb the magic and darken, protecting the wearer from the pattern effect. Once the spectacles absorb a spell and become opaque, the wearer becomes blinded until the spectacles are removed (a swift action). Patternward spectacles protect against spells or spell-like abilities of only 3rd level or lower; higher-level effects affect the wearer as normal. Once the spectacles absorb an effect, they lose their magic. ",
+   "item_name": "Patternward Spectacles"
+  },
+  "hands": {
+   "description": " wearing these form-fitting fingerless black gloves makes\r the wearer's arms and body more flexible. As a swift action, \r the wearer can lengthen his arms for up to 10 rounds per\r day, gaining an additional 5 feet of reach. These rounds\r need not be consecutive. Attacking with these extended\r arms is unwieldy, and the wearer takes a 2 penalty on\r attack rolls, increasing to 4 if he is using two-handed\r weapons. Even when his limbs aren't extended, the wearer\r gains a +5 enhancement bonus on escape artist checks and\r acrobatics checks to avoid falling damage. The wearer is still\r able to use hand-based natural attacks such as claws while\r wearing the gloves. ",
+   "item_name": "Pliant Gloves"
+  },
+  "headband": {
+   "description": " this metal headband holds a glistening, diamond-shaped gem. A kineticist's diadem includes one of five colors of gem, each corresponding to a different element: blue (water), clear (aether), green (earth), red (fire), and white (air). The diadem's gem grants the wearer greater control over its associated element. While worn by a kineticist, this item increases the damage dealt by the kineticist's simple and composite blasts that match the element of the inlaid gem by 1d6 points (for a lesser kineticist's diadem), 2d6 points (for a kineticist's diadem), or 3d6 points (for a greater kineticist's diadem). If the blast is a physical blast, the extra damage dice from the kineticist's diadem increase to d8s instead of d6s. These extra damage dice do not multiply on a critical hit, and the extra damage dice do not apply to blasts with form infusions that do not apply the extra damage from elemental overflow, like kinetic blade and kinetic whip. ",
+   "item_name": "Kineticist's Diadem, Lesser"
+  }
+ },
+ "equipment_list": [
+  "Aquatic Cummerbund",
+  "Slayer's Robe",
+  "Unfettered Shirt",
+  "Patternward Spectacles",
+  "Pliant Gloves",
+  "Kineticist's Diadem, Lesser"
+ ],
+ "eye_color": [
+  "Grey"
+ ],
+ "feat_budget": {
+  "bloodline": 0,
+  "class": 0,
+  "flavor": 1,
+  "flaw": 1,
+  "normal": 0,
+  "profession": 4,
+  "story": 4,
+  "teamwork": 0,
+  "trainer": 3
+ },
+ "feat_changes_dict": {
+  "Divine Defiance": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "+2 on saving throws against divine spells and the spell-like abilities granted by divine casting classes."
+    }
+   ]
+  }
+ },
+ "feat_conditionals_dict": {},
+ "feats": [
+  "Basic Magic Training",
+  "Extra Magic Talent (Bright Light / Blinding Light)",
+  "Extra Magic Talent (Hypnotic Pattern / Sunstroke)",
+  "Extra Magic Talent (Nimbus / Obscure)",
+  "Multi Talented",
+  "True Calling",
+  "Always Improving",
+  "Multi Talented (2nd)"
+ ],
+ "feats_feat_tax_dict": {
+  "Extra Magic Talent (Bright Light / Blinding Light)": [
+   "Extra Magic Talent"
+  ],
+  "Extra Magic Talent (Daylight)": [
+   "Extra Magic Talent"
+  ],
+  "Extra Magic Talent (Hypnotic Pattern / Sunstroke)": [
+   "Extra Magic Talent"
+  ],
+  "Extra Magic Talent (Nimbus / Obscure)": [
+   "Extra Magic Talent"
+  ]
+ },
+ "flavor_feat_tax_dict": {},
+ "flavor_feats": [
+  "Extend Spell"
+ ],
+ "flaw": [
+  "Slow Healer"
+ ],
+ "flaw_effects_dict": {
+  "Slow Healer": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "ac",
+     "text": "Slow Healer: natural healing restores half HP; Heal DCs to treat you are +[[5]]."
+    }
+   ],
+   "description": "You do not heal quickly. You regain only half the normal hit points from natural healing (rest), and the Heal DC to provide you long-term care increases by 5.",
+   "tier": "minor"
+  }
+ },
+ "flaw_feat_tax_dict": {},
+ "flaw_feats": [
+  "Still Spell"
+ ],
+ "formatted_bio": "Sara Eriksdotter\n- Alignment: Neutral Good\n- Deity: Ragathiel\n- Race: Human\n- Class: Level 8 Cleric / Barbarian\n- Archetype: Generalist\n- Tactics: Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.\n- Stat Focus: Wis\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Submarine Engineer (rank 15)\n- Profession: Coven Matron (rank 10)\n- Profession: Petty Smuggler (rank 7)\n- Profession: Nail-Cutter (rank 10)\n- Known for: Glazing\n- Training: An excellent trainer who taught them Natural Ruler, Steam Caster, Sacred Summons\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Wealthy Household\n- 2 Older Brothers\n- 1 Younger Brother\n\nPersonality\n- Personality: Cowardly, Inquisitive, Sociable\n- Mannerisms: Crosses arms, Clenches fists\n- Flaws: Slow Healer\n\nAppearance\n- Hair: Curly Brown\n- Eyes: Grey\n- Build: Mellow",
+ "full_domain": [
+  "Law",
+  "Nobility"
+ ],
+ "gender": "Female",
+ "generation_seed": 5004,
+ "generator_version": "2026-07-15 racial-stats",
+ "gold": 1632,
+ "hair_color": [
+  "Brown"
+ ],
+ "hair_type": [
+  "Curly"
+ ],
+ "height_number": "5'6\"",
+ "hero_points": 2,
+ "homebrew_feat_desc_dict": {
+  "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
+  "Basic Magic Training": "Benefit: Choose a sphere of magic. You gain access to this basic sphere. You gain an effective caster level of 1, a magic skill bonus of 1, a magic skill defense of 12, and a spell pool of 1. You may also select a casting tradition when you gain this feat. You are considered to possess the casting class feature, but do not gain the +2 magic talents a caster gains for their 1st level in a casting class.\n\nIf you later gain levels in a class granting the casting class feature, exchange this feat for the Extra Magic Talent feat.\n\nSpecial: For retraining purposes, having the casting class feature counts as Basic Magic Training.\nSphere/talent gained: Repelling Light (Light)",
+  "Divine Defiance": "You distrust, disrespect, or doubt the gods, which helps you fight off their power",
+  "Extend Spell": "You can make your spells last twice as long",
+  "Extra Magic Talent": "Benefit: Gain an additional sphere or a talent from a sphere you possess. You may take this feat multiple times. The effects stack.",
+  "Extra Magic Talent (Bright Light / Blinding Light)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Bright Light (Light): As a standard action, you may cause one of your glow effects within medium range to shed bright light. This may be done as part of the same standard action used to cause that object to glow. This produces bright light for 30 feet + 5 feet per 2 caster levels, and increases the light level by one ste\n- Blinding Light (Light): When you cause a creature to glow, you may choose to make that target dazzled, giving it a -1 penalty to attack rolls and Perception checks.  You may spend a spell point to create bright light that blinds the glowing target and all creatures within the area of bright light. All creatures must succee",
+  "Extra Magic Talent (Daylight)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Daylight (Light): When causing an object to shed bright light, you may spend 2 additional spell points to cause the object to shed bright light for a 2 mile radius and normal light for 5 miles beyond that.",
+  "Extra Magic Talent (Hypnotic Pattern / Sunstroke)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Hypnotic Pattern (Light): You may spend a spell point when creating bright light to fascinate creatures. All creatures within this area of bright light that can see become fascinated (Will negates) for as long as they remain within this area of bright light. These targets take no action on their turn but to stare into the li\n- Sunstroke (Light): When you place a glow effect on a creature, you may choose to deal it 1d4 nonlethal fire damage per 2 caster levels (minimum 1d4). The creature takes this damage each round the glow is in effect. A successful Fortitude save negates the damage for that round, while two consecutive Fortitude saves end",
+  "Extra Magic Talent (Nimbus / Obscure)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Nimbus (Light): Some Light talents are designated (nimbus), which notes a talent that alters the area of light shed by your glow effects, changing the area in which light is increased as well as where the effects of (light) talents are applied. You may only apply a single (nimbus) talent to a glow at a time but may\n- Obscure (Light): You allow light to partially pass through your target and move in strange ways around them, making it difficult to perceive their exact position. Once per round when the target is attacked, but before the attack is rolled, they can choose to have the attacker roll twice and take the lower result. Fo",
+  "Multi Talented": "Your profession rank cap increases by 10.",
+  "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat.",
+  "Natural Ruler": "You have a special talent for ruling a nation, and take to the task with ease",
+  "Sacred Summons": "The minions of your divine patrons stand ready to answer your call",
+  "Silent Spell": "You can cast your spells without making any sound",
+  "Steam Caster": "You imbue your fire spells with elemental water, transforming them into powerful gouts of steam",
+  "Still Spell": "You can cast spells without moving",
+  "Toppling Spell": "Your spells with the force descriptor knock the affected creatures prone",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
+  "Widen Spell": "You can cast your spells so that they occupy a larger space"
+ },
+ "inherents": {
+  "cha": 5,
+  "con": 10,
+  "dex": 7,
+  "int": 0,
+  "str": 0,
+  "wis": 0
+ },
+ "initiation_stat": "wis",
+ "initiator_level": 0,
+ "int": 8,
+ "item_changes_dict": {
+  "Aquatic Cummerbund": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.swm",
+     "text": "The cummerbund grants its wearer a +[[4]] competence bonus on swim checks, and allows her to take 10 on such checks even if distracted or endangered."
+    }
+   ]
+  },
+  "Kineticist's Diadem, Lesser": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "This item increases the damage dealt by the kineticist's simple and composite blasts that match the element of the inlaid gem by 1d6 points (for a lesser kineticist's diadem), 2d6 points (for a kineticist's diadem), or 3d6 points (for a greater kineticist's diadem). If the blast is a physical blast, the extra damage dice from the kineticist's diadem increase to d8s instead of d6s."
+   ]
+  },
+  "Patternward Spectacles": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "When the wearer is targeted with an illusion spell or spell-like ability of the pattern subschool (such as color spray), the spectacles absorb the magic and darken, protecting the wearer from the pattern effect. Patternward spectacles protect against spells or spell-like abilities of only 3rd level or lower;"
+   ]
+  },
+  "Pliant Gloves": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.acr",
+     "text": "Even when his limbs aren't extended, the wearer gains a +[[5]] enhancement bonus on escape artist checks and acrobatics checks to avoid falling damage."
+    },
+    {
+     "target": "attack",
+     "text": "As a swift action, the wearer can lengthen his arms for up to [[10]] rounds per day, gaining an additional [[5]] feet of reach. Attacking with these extended arms is unwieldy, and the wearer takes a 2 penalty on attack rolls, increasing to 4 if he is using two-handed weapons."
+    }
+   ]
+  },
+  "Slayer's Robe": {
+   "changes": [
+    {
+     "formula": "5",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.slt",
+     "type": "competence"
+    },
+    {
+     "formula": "5",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.ste",
+     "type": "competence"
+    },
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "allSavingThrows",
+     "type": "resist"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "If worn by a slayer, the resistance bonus on saving throws increases to match the slayer's studied target bonus when he is facing a studied target. On command, the robe's wearer is able to turn into a brown mist (as the gaseous form spell) for up to [[5]] minutes per day. This duration doesn't need to be continuous, but must be used in 1-minute increments. While the wearer is in this form, the bonus on stealth checks increases to +[[10]]. The wearer can end this effect as a standard action."
+    }
+   ]
+  },
+  "Unfettered Shirt": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Once per day on command, the wearer can gain the benefits of freedom of movement for 10 minutes."
+   ]
+  }
+ },
+ "known_list": [],
+ "land_speed": 30,
+ "language_text": [
+  "Common",
+  "Abyssal",
+  "Wayang",
+  "Protean",
+  "Grippli",
+  "Sphinx",
+  "Drow Sign Language",
+  "Giant",
+  "Tengu",
+  "Celestial"
+ ],
+ "level": 8,
+ "level_up_stats": {
+  "cha": 1,
+  "con": 1,
+  "dex": 0,
+  "int": 1,
+  "str": 0,
+  "wis": 0
+ },
+ "magic_talent_items": [
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You may spend a spell point to create light that repels unwanted creatures. Choose one creature type. In the case of humanoids and outsiders, you must instead choose one subtype.\n\nAny creature of this type or subtype within the area of bright light must succeed at a Fortitude save or be unable to move closer to the source of the light. Affected creatures may move sideways or backwards, but cannot move closer, although the source of the light may move closer to them. Creatures who succeed at their saving throw but remain within the area of bright light must attempt a new saving throw every round to avoid being affected.\n\nIf a creature enters this area of bright light (or if the source of bright light moves close to them), they must immediately save or be affected.",
+   "name": "Repelling Light",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "As a standard action, you may cause one of your glow effects within medium range to shed bright light. This may be done as part of the same standard action used to cause that object to glow. This produces bright light for 30 feet + 5 feet per 2 caster levels, and increases the light level by one step to a maximum of normal for 30 feet + 5 feet per 2 caster level beyond this. You must concentrate to maintain this effect, but may always spend a spell point as a free action to allow the bright light to continue without concentration for 1 minute per caster level or until the glow effect expires, whichever comes first. The bright light produced by this effect is not the equivalent of daylight for the purposes of creatures that are damaged or destroyed by daylight, but it may affect creatures with light blindness or other conditions.\n\nLens\n\n(Lens) effects allow a user of the Light sphere to bend or alter light and its properties. The caster may place a lens as a standard action on any target (or sometimes a space) within the same range as their glow. This requires a melee or ranged touch attack when used on unwilling targets, and is subject to spell resistance. A lens lasts as long as you concentrate, but you may spend a spell point to allow a lens to remain for 1 hour per caster level without concentration.\n\nWhen you gain the Light sphere, you gain the following lens:",
+   "name": "Bright Light",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When you cause a creature to glow, you may choose to make that target dazzled, giving it a -1 penalty to attack rolls and Perception checks.\n\nYou may spend a spell point to create bright light that blinds the glowing target and all creatures within the area of bright light. All creatures must succeed at a Fortitude save or be blinded for 1 round. They must attempt this saving throw each round they are within this area. Creatures who succeed at their saving throw are still dazzled for that round.",
+   "name": "Blinding Light",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You may spend a spell point when creating bright light to fascinate creatures. All creatures within this area of bright light that can see become fascinated (Will negates) for as long as they remain within this area of bright light. These targets take no action on their turn but to stare into the light, and suffer a -4 penalty to all Perception checks. A target is allowed a new saving throw each round to throw off the effect, and on a successful save, may make their actions as normal. Once a target has saved against this effect, they are immune to the effect for the rest of its duration. Hostile action taken against a hypnotized target automatically breaks the effect, as if the target had succeeded at their saving throw. If the target was already in combat when this ability is used, they gain a +2 bonus to their initial saving throw.",
+   "name": "Hypnotic Pattern",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When you place a glow effect on a creature, you may choose to deal it 1d4 nonlethal fire damage per 2 caster levels (minimum 1d4). The creature takes this damage each round the glow is in effect. A successful Fortitude save negates the damage for that round, while two consecutive Fortitude saves ends the effect.\n\nIf you cause this glow to shed bright light, the target also becomes fatigued the next time they take nonlethal damage from this effect. If they are already fatigued, they instead become exhausted. This fatigue or exhaustion cannot be recovered from until the target has been healed of the nonlethal damage taken from this effect.",
+   "name": "Sunstroke",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Some Light talents are designated (nimbus), which notes a talent that alters the area of light shed by your glow effects, changing the area in which light is increased as well as where the effects of (light) talents are applied. You may only apply a single (nimbus) talent to a glow at a time but may switch between them and the normal area of your glow as a free action, though any (light) talents affect only one area in a round.",
+   "name": "Nimbus",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You allow light to partially pass through your target and move in strange ways around them, making it difficult to perceive their exact position. Once per round when the target is attacked, but before the attack is rolled, they can choose to have the attacker roll twice and take the lower result. For every ten caster levels you possess you may cause this to happen an additional time per round.\n\nOpponents that rely solely on non-visual senses (such as blindsight) or that cannot see the target ignore this penalty.",
+   "name": "Obscure",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": true,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When causing an object to shed bright light, you may spend 2 additional spell points to cause the object to shed bright light for a 2 mile radius and normal light for 5 miles beyond that.",
+   "name": "Daylight",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "advanced",
+   "uses": null
+  }
+ ],
+ "main_stat": "wis",
+ "maneuvers_choose_from": [],
+ "maneuvers_desc_dict": {},
+ "maneuvers_known_list": [],
+ "maneuvers_readied_list": [],
+ "maneuvers_readied_names": [],
+ "mannerisms": [
+  "Crosses arms",
+  "Clenches fists"
+ ],
+ "martial_disciplines": [],
+ "mini_alignment": "ng",
+ "mod_char_sheet_var": false,
+ "mt_feats": [],
+ "older_brothers": " you have 2 older brothers",
+ "older_sisters": " you have 0 older sisters",
+ "opposing_school": "N/A",
+ "parents": "loving mother, dead father, raised in a wealthy household",
+ "personality_traits": [
+  "Cowardly",
+  "Inquisitive",
+  "Sociable"
+ ],
+ "platnium": 163.2,
+ "profession_ability_items": [
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "cmb",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "cmb",
+     "text": "+2 CMB and no AoO with your two chosen maneuvers"
+    },
+    {
+     "target": "attack",
+     "text": "+1 dodge AC and +1 morale to attack while flanking with an ally"
+    }
+   ],
+   "description": "<p><em>Profession (Submarine Engineer) - rank 15/15. Associate skills (ranks 1/4/7/10): Sense Motive, Perception, Knowledge (local), Appraise.</em></p><hr><p><strong>Brawler's Fury (Ex)</strong></p><p>As a swift action you can enter a focused fury for 1 minute, gaining the benefit of a single combat feat you do not possess (you must meet its prerequisites). You can use this once per day.</p><hr><p><strong>Maneuver Training (Ex)</strong></p><p>Choose two combat maneuvers (such as disarm, trip, grapple, or sunder). You gain a +2 bonus on combat maneuver checks made with those maneuvers, and using them does not provoke attacks of opportunity.</p><hr><p><strong>Phalanx Veteran (Ex)</strong></p><p>You fight best shoulder to shoulder. You gain a +1 dodge bonus to AC and a +1 morale bonus on attack rolls whenever at least one ally is adjacent to you and engaged with the same foe.</p>",
+   "name": "Profession Rank 5: (Submarine Engineer)",
+   "uses": {
+    "maxFormula": "1",
+    "per": "day",
+    "value": null
+   }
+  },
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "acpA",
+     "type": "untyped"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "attack",
+     "type": "untyped"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "damage",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "+2 to attack on a whirlwind sweep of all foes in reach"
+    }
+   ],
+   "description": "<p><em>Profession (Submarine Engineer) - rank 15/15.</em></p><hr><p><strong>Armor Training (Ex)</strong></p><p>You wear armor like a second skin. Reduce your armor check penalty by 2 (minimum 0) and increase your armor's maximum Dexterity bonus by 2. The campaign treats your armor training as eight levels higher, and you move at full speed in medium armor.</p><hr><p><strong>Whirlwind Reach (Ex)</strong></p><p>You sweep your weapon in a controlled arc that few can slip past. As a standard action you can make a single melee attack against every foe within reach, and you gain a +2 untyped bonus on those attack rolls.</p><hr><p><strong>Weapon Training (Ex)</strong></p><p>Like a veteran fighter, you have mastered a whole group of weapons. You gain a +2 bonus on attack and damage rolls with weapons of your trained group; the campaign treats your effective training as eight levels higher than normal, so this bonus is already strong for your level.</p>",
+   "name": "Profession Rank 15: (Submarine Engineer)",
+   "uses": null
+  },
+  {
+   "changes": [],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Coven Matron) - rank 10/10. Associate skills (ranks 1/4/7/10): Use Magic Device, Sense Motive, Knowledge (local), Sleight of Hand.</em></p><hr><p><strong>Bestow Curse (Sp)</strong></p><p>Once per day Cleric may lay a lingering curse on a foe by touch, as the bestow curse spell (Will negates, DC 13 + their Charisma modifier; caster level equal to their character level), saddling the victim with a -4 penalty to an ability score or a 50% chance to act uselessly each round.</p><hr><p><strong>Blood Sacrifice (Su)</strong></p><p>Cleric can spill the life of another to fuel their dark art. Once per day, as a full-round action against a helpless or willing creature, they slay or grievously wound it and gain a +2 profane bonus on attack rolls, saving throws, and caster level checks for 10 minutes.</p><hr><p><strong>Mask of Dread (Su)</strong></p><p>A palpable aura of menace clings to Cleric. As a standard action, a number of times per day equal to 3 + their Charisma modifier, they may cause one creature within 30 feet to become shaken for 1d4 rounds (Will negates, DC 10 + half their character level + their Charisma modifier).</p>",
+   "name": "Profession Rank 5: (Coven Matron)",
+   "uses": null
+  },
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.per",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.slt",
+     "type": "circumstance"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Petty Smuggler) - rank 7/10. Associate skills (ranks 1/4/7/10): Use Magic Device, Craft, Handle Animal.</em></p><hr><p><strong>Shifty Eyes (Ex)</strong></p><p>Always watching for marks and witnesses, the Cleric notices the small things others miss. They gain a <strong>+2</strong> competence bonus on Perception checks.</p><hr><p><strong>Light Fingers (Ex)</strong></p><p>A lifetime of palming coins and lifting purses makes petty theft second nature. The Cleric gains a <strong>+2</strong> circumstance bonus on Sleight of Hand checks.</p>",
+   "name": "Profession Rank 5: (Petty Smuggler)",
+   "uses": null
+  },
+  {
+   "changes": [
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.crf",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.crf",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Nail-Cutter) - rank 10/10. Associate skills (ranks 1/4/7/10): Knowledge (local), Profession, Sense Motive, Craft.</em></p><hr><p><strong>Calloused Grip (Ex)</strong></p><p>Years at the bench and forge have hardened your hands against splinters, sparks, and burns. You gain a +1 competence bonus on Craft checks, and you take no penalty on Craft or Profession checks made while working in hazardous conditions such as a hot forge, a rocking ship, or extreme cold.</p><hr><p><strong>Skilled Hands (Ex)</strong></p><p>Years at the workbench steady your hands. You gain a +2 bonus on your primary Craft or Profession skill and you can always take 10 on it, even when distracted.</p>",
+   "name": "Profession Rank 5: (Nail-Cutter)",
+   "uses": null
+  }
+ ],
+ "profession_feat_desc": {
+  "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
+  "Multi Talented": "Your profession rank cap increases by 10.",
+  "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat.",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
+ },
+ "profession_feats": [
+  "Multi Talented",
+  "True Calling",
+  "Always Improving",
+  "Multi Talented (2nd)"
+ ],
+ "profession_pool": 40,
+ "profession_ranks": [
+  {
+   "ability_theme": "martial",
+   "ability_tier": "good",
+   "associate_skills": [
+    "Sense Motive",
+    "Perception",
+    "Knowledge (local)",
+    "Appraise"
+   ],
+   "cap": 15,
+   "name": "Submarine Engineer",
+   "rank15_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "acpA",
+       "type": "untyped"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>You wear armor like a second skin. Reduce your armor check penalty by 2 (minimum 0) and increase your armor's maximum Dexterity bonus by 2. The campaign treats your armor training as eight levels higher, and you move at full speed in medium armor.</p>",
+     "name": "Armor Training (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [
+      {
+       "target": "attack",
+       "text": "+2 to attack on a whirlwind sweep of all foes in reach"
+      }
+     ],
+     "desc": "<p>You sweep your weapon in a controlled arc that few can slip past. As a standard action you can make a single melee attack against every foe within reach, and you gain a +2 untyped bonus on those attack rolls.</p>",
+     "name": "Whirlwind Reach (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "attack",
+       "type": "untyped"
+      },
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "damage",
+       "type": "untyped"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Like a veteran fighter, you have mastered a whole group of weapons. You gain a +2 bonus on attack and damage rolls with weapons of your trained group; the campaign treats your effective training as eight levels higher than normal, so this bonus is already strong for your level.</p>",
+     "name": "Weapon Training (Ex)",
+     "uses": null
+    }
+   ],
+   "rank5_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>As a swift action you can enter a focused fury for 1 minute, gaining the benefit of a single combat feat you do not possess (you must meet its prerequisites). You can use this once per day.</p>",
+     "name": "Brawler's Fury (Ex)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "cmb",
+       "type": "untyped"
+      }
+     ],
+     "contextNotes": [
+      {
+       "target": "cmb",
+       "text": "+2 CMB and no AoO with your two chosen maneuvers"
+      }
+     ],
+     "desc": "<p>Choose two combat maneuvers (such as disarm, trip, grapple, or sunder). You gain a +2 bonus on combat maneuver checks made with those maneuvers, and using them does not provoke attacks of opportunity.</p>",
+     "name": "Maneuver Training (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [
+      {
+       "target": "attack",
+       "text": "+1 dodge AC and +1 morale to attack while flanking with an ally"
+      }
+     ],
+     "desc": "<p>You fight best shoulder to shoulder. You gain a +1 dodge bonus to AC and a +1 morale bonus on attack rolls whenever at least one ally is adjacent to you and engaged with the same foe.</p>",
+     "name": "Phalanx Veteran (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 15,
+   "skill_label": "Profession (Submarine Engineer)"
+  },
+  {
+   "ability_theme": "occult",
+   "ability_tier": "good",
+   "associate_skills": [
+    "Use Magic Device",
+    "Sense Motive",
+    "Knowledge (local)",
+    "Sleight of Hand"
+   ],
+   "cap": 10,
+   "name": "Coven Matron",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Once per day Cleric may lay a lingering curse on a foe by touch, as the bestow curse spell (Will negates, DC 13 + their Charisma modifier; caster level equal to their character level), saddling the victim with a -4 penalty to an ability score or a 50% chance to act uselessly each round.</p>",
+     "name": "Bestow Curse (Sp)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Cleric can spill the life of another to fuel their dark art. Once per day, as a full-round action against a helpless or willing creature, they slay or grievously wound it and gain a +2 profane bonus on attack rolls, saving throws, and caster level checks for 10 minutes.</p>",
+     "name": "Blood Sacrifice (Su)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>A palpable aura of menace clings to Cleric. As a standard action, a number of times per day equal to 3 + their Charisma modifier, they may cause one creature within 30 feet to become shaken for 1d4 rounds (Will negates, DC 10 + half their character level + their Charisma modifier).</p>",
+     "name": "Mask of Dread (Su)",
+     "uses": {
+      "maxFormula": "3 + @abilities.cha.mod",
+      "per": "day",
+      "value": null
+     }
+    }
+   ],
+   "ranks": 10,
+   "skill_label": "Profession (Coven Matron)"
+  },
+  {
+   "ability_theme": "skill",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Use Magic Device",
+    "Craft",
+    "Handle Animal"
+   ],
+   "cap": 10,
+   "name": "Petty Smuggler",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.per",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Always watching for marks and witnesses, the Cleric notices the small things others miss. They gain a <strong>+2</strong> competence bonus on Perception checks.</p>",
+     "name": "Shifty Eyes (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.slt",
+       "type": "circumstance"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>A lifetime of palming coins and lifting purses makes petty theft second nature. The Cleric gains a <strong>+2</strong> circumstance bonus on Sleight of Hand checks.</p>",
+     "name": "Light Fingers (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 7,
+   "skill_label": "Profession (Petty Smuggler)"
+  },
+  {
+   "ability_theme": "craft",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Knowledge (local)",
+    "Profession",
+    "Sense Motive",
+    "Craft"
+   ],
+   "cap": 10,
+   "name": "Nail-Cutter",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "1",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.crf",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Years at the bench and forge have hardened your hands against splinters, sparks, and burns. You gain a +1 competence bonus on Craft checks, and you take no penalty on Craft or Profession checks made while working in hazardous conditions such as a hot forge, a rocking ship, or extreme cold.</p>",
+     "name": "Calloused Grip (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.crf",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Years at the workbench steady your hands. You gain a +2 bonus on your primary Craft or Profession skill and you can always take 10 on it, even when distracted.</p>",
+     "name": "Skilled Hands (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 10,
+   "skill_label": "Profession (Nail-Cutter)"
+  }
+ ],
+ "professions": [
+  "Submarine Engineer",
+  "Coven Matron",
+  "Petty Smuggler",
+  "Nail-Cutter"
+ ],
+ "racial_stats": {
+  "cha": 0,
+  "con": 0,
+  "dex": 0,
+  "int": 0,
+  "str": 0,
+  "wis": 2
+ },
+ "region": "Tal-Falko",
+ "save_bases": {
+  "fort": 11,
+  "ref": 4,
+  "will": 8
+ },
+ "school": "N/A",
+ "selected_traits": [
+  "Jungle Walker",
+  "Soul-Drinker",
+  "Devil's Mark",
+  "Friend of the Dead",
+  "Defy Madness",
+  "Harrow Born",
+  "Child of the Crusades",
+  "Clumsy Slave"
+ ],
+ "selected_traits_desc": [
+  {
+   "description": "You gain a +2 trait bonus on Survival checks in jungle terrain.",
+   "name": "Jungle Walker"
+  },
+  {
+   "description": "Once per day as a swift action, you may gain a number of temporary hit points equal to the Hit Dice of your most recent enemy slain. This is a supernatural ability. These temporary hit points last for 1 minute.",
+   "name": "Soul-Drinker"
+  },
+  {
+   "description": "You gain a +2 trait bonus on all Bluff, Diplomacy, Intimidate, and Sense Motive checks when dealing with outsiders of the evil subtype.",
+   "name": "Devil's Mark"
+  },
+  {
+   "description": "You gain a +2 trait bonus on Diplomacy checks against sentient undead.",
+   "name": "Friend of the Dead"
+  },
+  {
+   "description": "You gain a +1 trait bonus on any saving throws against confusion, insanity, madness, and Wisdom damage and drain.",
+   "name": "Defy Madness"
+  },
+  {
+   "description": "You start play with a harrow deck and you gain a +1 trait bonus on initiative checks.",
+   "name": "Harrow Born"
+  },
+  {
+   "description": "You have inherited their indomitable spirit, and you gain a +2 trait bonus on all saving throws against fear.",
+   "name": "Child of the Crusades"
+  },
+  {
+   "description": "The first time you attack someone with an attack that deals nonlethal damage, your target must make a Sense Motive opposed by your Bluff check minus the damage dealt to realize you actually intended to harm him; failure means he believe the injury was an accident on your part instead (though he may still want to punish you for it).",
+   "name": "Clumsy Slave"
+  }
+ ],
+ "sheet_health": 60,
+ "shield_ac": 0,
+ "shield_armor_check_penalty": " ",
+ "shield_enhancement_bonus": 0,
+ "shield_enhancement_chosen_list": [],
+ "shield_max_dex_bonus": " ",
+ "shield_name": " ",
+ "shield_spell_failure": " ",
+ "shield_weight": " ",
+ "skill_ranks": {
+  "acrobatics": 10,
+  "appraise": 0,
+  "bluff": 9,
+  "climb": 8,
+  "craft": 15,
+  "diplomacy": 9,
+  "disable device": 9,
+  "disguise": 2,
+  "escape artist": 15,
+  "fly": 0,
+  "handle animal": 0,
+  "heal": 12,
+  "intimidate": 0,
+  "knowledge arcana": 0,
+  "knowledge dungeoneering": 10,
+  "knowledge engineering": 0,
+  "knowledge geography": 0,
+  "knowledge history": 0,
+  "knowledge local": 0,
+  "knowledge nature": 0,
+  "knowledge nobility": 0,
+  "knowledge planes": 12,
+  "knowledge religion": 0,
+  "linguistics": 9,
+  "perception": 0,
+  "perform": 8,
+  "profession": 2,
+  "ride": 0,
+  "sense motive": 8,
+  "sleight of hand": 15,
+  "spellcraft": 0,
+  "stealth": 0,
+  "survival": 10,
+  "swim": 1,
+  "use magic device": 0
+ },
+ "skill_unlock": {
+  "base_skill": "escape artist",
+  "ranks": 15,
+  "skill": "Escape Artist",
+  "unlock": {
+   "10": "You can escape any entangling effect as a standard action (DC = effect's save DC + 10), and you set the escape DC for ropes and bindings.",
+   "15": "You can escape entangling effects as a move action and suppress slow or paralysis as a standard action (DC = save DC + 20) for a short time.",
+   "20": "You can escape as an immediate action (DC = effect's DC/CMB + 10) and suppress slow or paralysis as a standard, move, or immediate action.",
+   "5": "Take a -10 penalty to halve the time an Escape Artist check requires; escaping a grapple or pin is a move action, and escaping entangling spells is a standard action."
+  },
+  "unlock_html": "<h2>Escape Artist</h2><p><strong>5 Ranks</strong>: Take a -10 penalty to halve the time an Escape Artist check requires; escaping a grapple or pin is a move action, and escaping entangling spells is a standard action.</p><p><strong>10 Ranks</strong>: You can escape any entangling effect as a standard action (DC = effect's save DC + 10), and you set the escape DC for ropes and bindings.</p><p><strong>15 Ranks</strong>: You can escape entangling effects as a move action and suppress slow or paralysis as a standard action (DC = save DC + 20) for a short time.</p><p><strong>20 Ranks</strong>: You can escape as an immediate action (DC = effect's DC/CMB + 10) and suppress slow or paralysis as a standard, move, or immediate action.</p>"
+ },
+ "specialty_schools": [
+  "necromancy",
+  "enchantment"
+ ],
+ "spell_changes_dict": {
+  "Aid": {
+   "changes": [
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "attack",
+     "type": "morale"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Bless": {
+   "changes": [
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "attack",
+     "type": "morale"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Coward's Cowl": {
+   "changes": [
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "attack",
+     "type": "morale"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Divine Favor": {
+   "changes": [
+    {
+     "formula": "min(max(floor(@spells.primary.cl.total/3), 1), 3)",
+     "operator": "add",
+     "priority": 0,
+     "target": "attack",
+     "type": "luck"
+    },
+    {
+     "formula": "min(max(floor(@spells.primary.cl.total/3), 1), 3)",
+     "operator": "add",
+     "priority": 0,
+     "target": "wdamage",
+     "type": "luck"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Guidance": {
+   "changes": [
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "attack",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Vigor": {
+   "changes": [
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "wdamage",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": []
+  }
+ },
+ "spell_list_choose_from": [
+  [
+   "Bleed",
+   "Detect Fiendish Presence",
+   "Detect Poison",
+   "Guidance",
+   "Light",
+   "Mending",
+   "Read Magic",
+   "Resistance",
+   "Sotto Voce",
+   "Spark",
+   "Vigor",
+   "Virtue"
+  ],
+  [
+   "Bane",
+   "Bless",
+   "Blessing of the Watch",
+   "Compel Hostility",
+   "Coward's Cowl",
+   "Deathwatch",
+   "Decompose Corpse",
+   "Divine Favor",
+   "Egorian Diplomacy",
+   "Forbid Action",
+   "Hairline Fractures",
+   "Haze of Dreams",
+   "Preserve",
+   "Protection From Chaos",
+   "Ray of Sickening",
+   "Restore Corpse",
+   "Scarify",
+   "Touch of Blindness",
+   "Touch of Bloodletting"
+  ],
+  [
+   "Aid",
+   "Align Weapon",
+   "Blood in the Water",
+   "Bloodbath",
+   "Bloody Tears and Jagged Smile",
+   "Calm Emotions",
+   "Deadeye's Arrow",
+   "Defending Bone",
+   "Delay Pain",
+   "Dress Corpse",
+   "Enthrall",
+   "Gentle Repose",
+   "Intensify Psyche",
+   "Spiritual Weapon",
+   "Unliving Rage"
+  ],
+  [
+   "Black Sword of War",
+   "Blindness/Deafness",
+   "Charitable Impulse",
+   "Create Food and Water",
+   "Cursed Treasure",
+   "Daylight",
+   "Draconic Malice",
+   "False Alibi",
+   "Hydrophobia",
+   "Lover's Vengeance",
+   "Magic Circle Against Chaos",
+   "Magic Vestment",
+   "Mind Maze",
+   "Severed Fate",
+   "Spellcurse"
+  ],
+  [
+   "Curse of Unexpected Death",
+   "Daemon Ward",
+   "Discern Lies",
+   "Frigid Souls",
+   "Nature's Ravages",
+   "Orders Wrath",
+   "Rags to Riches"
+  ]
+ ],
+ "spell_list_choose_from_dict": [
+  [
+   "Bleed",
+   "Detect Fiendish Presence",
+   "Detect Poison",
+   "Guidance",
+   "Light",
+   "Mending",
+   "Read Magic",
+   "Resistance",
+   "Sotto Voce",
+   "Spark",
+   "Vigor",
+   "Virtue"
+  ],
+  [
+   "Bane",
+   "Bless",
+   "Blessing of the Watch",
+   "Compel Hostility",
+   "Coward's Cowl",
+   "Deathwatch",
+   "Decompose Corpse",
+   "Divine Favor",
+   "Egorian Diplomacy",
+   "Forbid Action",
+   "Hairline Fractures",
+   "Haze of Dreams",
+   "Preserve",
+   "Protection From Chaos",
+   "Ray of Sickening",
+   "Restore Corpse",
+   "Scarify",
+   "Touch of Blindness",
+   "Touch of Bloodletting"
+  ],
+  [
+   "Aid",
+   "Align Weapon",
+   "Blood in the Water",
+   "Bloodbath",
+   "Bloody Tears and Jagged Smile",
+   "Calm Emotions",
+   "Deadeye's Arrow",
+   "Defending Bone",
+   "Delay Pain",
+   "Dress Corpse",
+   "Enthrall",
+   "Gentle Repose",
+   "Intensify Psyche",
+   "Spiritual Weapon",
+   "Unliving Rage"
+  ],
+  [
+   "Black Sword of War",
+   "Blindness/Deafness",
+   "Charitable Impulse",
+   "Create Food and Water",
+   "Cursed Treasure",
+   "Daylight",
+   "Draconic Malice",
+   "False Alibi",
+   "Hydrophobia",
+   "Lover's Vengeance",
+   "Magic Circle Against Chaos",
+   "Magic Vestment",
+   "Mind Maze",
+   "Severed Fate",
+   "Spellcurse"
+  ],
+  [
+   "Curse of Unexpected Death",
+   "Daemon Ward",
+   "Discern Lies",
+   "Frigid Souls",
+   "Nature's Ravages",
+   "Orders Wrath",
+   "Rags to Riches"
+  ]
+ ],
+ "spell_riders_dict": {
+  "Bane": {
+   "attack": null,
+   "riders": [
+    "Range: [[50]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; affected enemies take a -[[1]] penalty on attack rolls and a -[[1]] penalty on saving throws against fear effects; bane counters and dispels bless; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Bleed": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; targets a living creature with -[[1]] or fewer hit points that has been stabilized; the target resumes dying, taking [[1]] point of damage per round (it can be stabilized again normally); if used on a creature that is already dying, it instead takes [[1]] point of damage immediately; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Blindness/Deafness": {
+   "attack": null,
+   "riders": [
+    "Range: [[100 + 10*@spells.primary.cl.total]] ft; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates; the target is permanently blinded or deafened, caster's choice; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "fortitude"
+   }
+  },
+  "Bloodbath": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*@spells.primary.cl.total]] ft; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates; affects up to [[@spells.primary.cl.total]] living creatures, no two of which can be more than [[30]] ft. apart; you cut yourself, taking [[1d6]] points of bleed damage; as long as you continue taking this bleed damage, each target bleeds for [[1d6]] points of damage at the start of its turn; the bleed damage on a target ends if it receives magical healing, or if your own bleed damage ends for any reason; this spell has no effect if you are immune to bleed damage or can otherwise reduce or ignore the bleed damage to yourself; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "fortitude"
+   }
+  },
+  "Curse of Unexpected Death": {
+   "attack": "melee",
+   "riders": [
+    "Save: Fortitude DC [[ 10 + @slvl + @castMod ]] reduces the triggered damage to [[2d6 + @spells.primary.cl.total]] (see text); requires a melee touch attack to deliver the curse; on the round you touch the target, and once per minute thereafter, roll [[1d100]]: on a result of [[01]]-[[05]] the curse triggers and the target takes [[8d6 + @spells.primary.cl.total]] points of damage, reduced to [[2d6 + @spells.primary.cl.total]] points of damage if the target succeeds at a saving throw; on a result of [[06]]-[[100]] nothing happens; once the curse triggers, or its duration expires without triggering, the magic ends and no further rolls are made; if the target has spell resistance, a caster level check is made when you succeed at the touch attack; a creature can be affected by only one instance of this curse at a time; the untriggered curse can be removed with dispel magic, remove curse, or similar effects; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "reduces the triggered damage to 2d6 + caster level (see text)",
+    "harmless": false,
+    "type": "fortitude"
+   }
+  },
+  "Decompose Corpse": {
+   "attack": null,
+   "riders": [
+    "Range: touch; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates (object); affects a single corpse or corporeal undead of size Huge or smaller; rapidly decomposes the flesh from the corpse, leaving behind a perfectly cleaned skeleton; if cast on a non-skeletal corporeal undead, the target instead takes a -[[2]] penalty on all rolls and to its Armor Class and CMD for [[1]] minute; spell resistance: yes (object)"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates (object)",
+    "harmless": false,
+    "type": "fortitude"
+   }
+  },
+  "Hairline Fractures": {
+   "attack": null,
+   "riders": [
+    "Range: touch; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates; if cast on a section of stone: reduces its hardness to [[5]] and its hit points to [[10]] per inch of thickness; if cast on a creature with the earth subtype: -[[2]] penalty to AC for the spell's duration; make whole reverses this spell's effect; spell resistance: yes (object)"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "fortitude"
+   }
+  },
+  "Intensify Psyche": {
+   "attack": null,
+   "riders": [
+    "Range: [[100 + 10*@spells.primary.cl.total]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; target gains a +[[2]] competence bonus on Diplomacy, Handle Animal, Perform, and Sense Motive checks; the DC for any spells or effects with the emotion or pain descriptor cast or caused by the target increases by [[1]] while the target is under this spell's effects; the target takes a -[[2]] penalty on saving throws against spells and effects with the emotion or pain descriptor; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Ray of Sickening": {
+   "attack": null,
+   "riders": [
+    "Save: Fortitude DC [[ 10 + @slvl + @castMod ]] partial; requires a successful ranged touch attack to strike the target; target sickened for [[@spells.primary.cl.total]] minutes; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "partial",
+    "harmless": false,
+    "type": "fortitude"
+   }
+  },
+  "Severed Fate": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; the target is shaken and cannot use hero points for the duration of the spell; this effect can be removed by dispel magic, remove curse, or other similar effects; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Sotto Voce": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*@spells.primary.cl.total]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates (failure: shaken for [[1]] round); affects a living humanoid creature of [[4]] Hit Dice or less; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates (failure: shaken for 1 round)",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Spellcurse": {
+   "attack": null,
+   "riders": [
+    "Range: [[100 + 10*@spells.primary.cl.total]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] half; [[1d6]] points of damage for each spell with a duration of [[1]] round or greater currently affecting the target; the affecting spells are not themselves dispelled or modified; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "half",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Touch of Blindness": {
+   "attack": null,
+   "riders": [
+    "Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates; usable as a melee touch attack up to [[@spells.primary.cl.total]] times; each successful touch causes the target to become blinded for [[1]] round unless it succeeds at a Fortitude save; any touch attack not used within [[@spells.primary.cl.total]] rounds is lost; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "fortitude"
+   }
+  }
+ },
+ "spellbooks": [
+  {
+   "capped_level": 8,
+   "casting_level_num": 8,
+   "casting_level_string": "high",
+   "casting_stat": "wis",
+   "display": "Cleric",
+   "divine": true,
+   "highest_spell_known": 4,
+   "level": 8,
+   "name": "cleric",
+   "spell_list_choose_from": [
+    [
+     "Bleed",
+     "Detect Fiendish Presence",
+     "Detect Poison",
+     "Guidance",
+     "Light",
+     "Mending",
+     "Read Magic",
+     "Resistance",
+     "Sotto Voce",
+     "Spark",
+     "Vigor",
+     "Virtue"
+    ],
+    [
+     "Bane",
+     "Bless",
+     "Blessing of the Watch",
+     "Compel Hostility",
+     "Coward's Cowl",
+     "Deathwatch",
+     "Decompose Corpse",
+     "Divine Favor",
+     "Egorian Diplomacy",
+     "Forbid Action",
+     "Hairline Fractures",
+     "Haze of Dreams",
+     "Preserve",
+     "Protection From Chaos",
+     "Ray of Sickening",
+     "Restore Corpse",
+     "Scarify",
+     "Touch of Blindness",
+     "Touch of Bloodletting"
+    ],
+    [
+     "Aid",
+     "Align Weapon",
+     "Blood in the Water",
+     "Bloodbath",
+     "Bloody Tears and Jagged Smile",
+     "Calm Emotions",
+     "Deadeye's Arrow",
+     "Defending Bone",
+     "Delay Pain",
+     "Dress Corpse",
+     "Enthrall",
+     "Gentle Repose",
+     "Intensify Psyche",
+     "Spiritual Weapon",
+     "Unliving Rage"
+    ],
+    [
+     "Black Sword of War",
+     "Blindness/Deafness",
+     "Charitable Impulse",
+     "Create Food and Water",
+     "Cursed Treasure",
+     "Daylight",
+     "Draconic Malice",
+     "False Alibi",
+     "Hydrophobia",
+     "Lover's Vengeance",
+     "Magic Circle Against Chaos",
+     "Magic Vestment",
+     "Mind Maze",
+     "Severed Fate",
+     "Spellcurse"
+    ],
+    [
+     "Curse of Unexpected Death",
+     "Daemon Ward",
+     "Discern Lies",
+     "Frigid Souls",
+     "Nature's Ravages",
+     "Orders Wrath",
+     "Rags to Riches"
+    ]
+   ],
+   "spells_known_list": [],
+   "spells_per_day_list": [
+    12,
+    17,
+    13,
+    13,
+    5
+   ],
+   "spells_prepared_per_level": [
+    12,
+    19,
+    15,
+    15,
+    7
+   ]
+  }
+ ],
+ "spells_prepared_per_level": [
+  12,
+  19,
+  15,
+  15,
+  7
+ ],
+ "sphere_boons": [
+  "Easy Focus",
+  "Empowered Abilities",
+  "Overcharge"
+ ],
+ "sphere_counts": {
+  "Light": {
+   "advanced": 1,
+   "feats": 0,
+   "normal": 7
+  }
+ },
+ "sphere_drawbacks": [
+  "Focus Casting",
+  "Wild Magic",
+  "Somatic Casting",
+  "Material Casting",
+  "Painful Magic",
+  "Addictive Casting"
+ ],
+ "sphere_feat_tax": {
+  "Extra Magic Talent (Bright Light / Blinding Light)": [
+   "Extra Magic Talent"
+  ],
+  "Extra Magic Talent (Daylight)": [
+   "Extra Magic Talent"
+  ],
+  "Extra Magic Talent (Hypnotic Pattern / Sunstroke)": [
+   "Extra Magic Talent"
+  ],
+  "Extra Magic Talent (Nimbus / Obscure)": [
+   "Extra Magic Talent"
+  ]
+ },
+ "sphere_feats": [
+  "Basic Magic Training",
+  "Extra Magic Talent (Bright Light / Blinding Light)",
+  "Extra Magic Talent (Hypnotic Pattern / Sunstroke)",
+  "Extra Magic Talent (Nimbus / Obscure)",
+  "Extra Magic Talent (Daylight)"
+ ],
+ "sphere_mana_pool": 8,
+ "sphere_traits": [
+  "Focus Casting",
+  "Wild Magic",
+  "Somatic Casting",
+  "Material Casting",
+  "Painful Magic",
+  "Addictive Casting",
+  "Easy Focus",
+  "Empowered Abilities",
+  "Overcharge"
+ ],
+ "spheres_chosen": [
+  {
+   "sphere": "Light",
+   "system": "power"
+  }
+ ],
+ "stances_chosen": [],
+ "story_feat_tax_dict": {},
+ "story_feats": [
+  "Toppling Spell",
+  "Silent Spell",
+  "Widen Spell",
+  "Divine Defiance"
+ ],
+ "str": 14,
+ "teamwork_feat_labels": [],
+ "teamwork_feats": 0,
+ "total_level": 15,
+ "total_rolled_hp": 52,
+ "trainer_calibers": [
+  3
+ ],
+ "trainer_feat_labels": [
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 1)"
+ ],
+ "trainer_feat_tax_dict": {},
+ "trainer_feats": [
+  "Natural Ruler",
+  "Steam Caster",
+  "Sacred Summons"
+ ],
+ "weapon_enhancement_bonus": 0,
+ "weapon_enhancement_chosen_list": [],
+ "weapon_name": "Brass knife",
+ "weight_number": 168,
+ "wis": 24,
+ "younger_brothers": " you have 1 younger brothers",
+ "younger_sisters": " you have 0 younger sisters"
+}
