@@ -3,10 +3,25 @@ import random, re
 # Start enhnacement to Armor + Weapons
 
 def enhancement_calculator(character, gold_divisor):
+    """Buy the best enhancement tier this item's slice of the purse can actually afford.
+
+    ``gold_divisor`` splits the remaining gold between the item slots (armor 3, weapon 2, shield 1).
+    This used to take the mapping key CLOSEST to that budget, which for a poor character is the key
+    just ABOVE it -- the table starts at 2000, so 500 gold budgeted 166 and then spent 2000, leaving
+    -1500, three times over. Now we take the largest key at or below the budget and spend nothing when
+    even the cheapest tier is out of reach (enhancement_chooser already returns ([], 0) for a bonus
+    below 1), so gold can never go negative here.
+    """
     mapping = getattr(data,'enhancement_bonus_mapping')
-    closest_key = min(mapping.keys(), key=lambda x: abs(x - (character.gold // gold_divisor)))
-    character.gold = character.gold - closest_key 
-    enhancement_bonus = mapping[closest_key]
+    if not isinstance(character.gold, int) or character.gold <= 0:
+        return 0
+    budget = character.gold // gold_divisor
+    affordable = [key for key in mapping if key <= budget]
+    if not affordable:
+        return 0
+    best_key = max(affordable)
+    character.gold = character.gold - best_key
+    enhancement_bonus = mapping[best_key]
     return enhancement_bonus
 
 def enhancement_chooser(character, data, enhancement_bonus, weapon_type, shield_type = True):
@@ -90,18 +105,9 @@ def enhancement_limits(character, item_list, weapon_type, chosen_enhancement):
 
 
 
-def bonus_gold_calculator(character, chosen_enhancement, weapon_type, data):
-    price = data[weapon_type][chosen_enhancement].get('price', 0)
-    if price == "":
-        bonus_cost = 0
-    else:
-        price = price.replace(",", "")
-        bonus_cost = int(price)
-    bonus_cost = character.bonus_gold_calculator(chosen_enhancement, weapon_type, data)
-    character.gold -= bonus_cost            
-
-
-
+# bonus_gold_calculator was removed: nothing called it (its only reference was the unrelated
+# character.bonus_gold_calculator method inside its own body), and it subtracted from gold with no
+# affordability check -- a trap for anyone who wired it up later.
 
 
 

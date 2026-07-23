@@ -83,16 +83,22 @@ def item_chooser(character, data):
             log_error(random_equip)
             equipment_name, random_equip, price, equip_descrip = choose_equipment(character, select_from_list[i])
 
+        # Check BEFORE buying. This used to subtract first and then `break` on gold <= 0, which meant
+        # the character paid for an item that was never added to the list, ended up with negative gold,
+        # AND abandoned every remaining slot even when something cheap would have fit. Now an
+        # unaffordable slot is simply skipped and the batch continues, so gold never goes below 0.
+        if not can_afford(character, price):
+            i += 1
+            continue
 
         subtract_price_from_gold(character, price)
+        # Ring bookkeeping only runs on a real purchase, so a skipped ring doesn't burn the
+        # character's second-ring slot.
         i,k = grab_two_rings(character, select_from_list[i], k, i)
-        
-        if character.gold <= 0:
-            break
 
         equipment_list.append(random_equip)
         equip_details = {'item_name': random_equip, 'description': equip_descrip}
-        
+
         equip_dict[equipment_name] = equip_details
         price_total.append(price)
 
@@ -126,11 +132,25 @@ def choose_equipment(character, equipment_key):
     random_equip = capitalize_first_letter_each_word(random_equip)
     return equipment_name, random_equip, price, equip_descrip
 
+def can_afford(character, price):
+    """True when the character can pay ``price`` without going below 0 gold. Unusable prices (None, or
+    a non-int purse) are treated as unaffordable so the caller skips the slot rather than guessing."""
+    if price is None or not isinstance(character.gold, int):
+        return False
+    try:
+        return character.gold - int(price) >= 0
+    except (TypeError, ValueError):
+        return False
+
+
 def subtract_price_from_gold(character, price):
     if price != None and isinstance(character.gold, int):
         character.gold -= int(price)
     else:
-        character.gold = 0
+        # Previously this zeroed the character's entire purse whenever a price was unusable -- a
+        # silent, total loss of gold. Callers now gate on can_afford(), so this branch only fires on
+        # malformed data: leave the gold alone and say so.
+        print(f"item_and_price: skipping unusable price {price!r}; gold left at {character.gold!r}")
 
 def grab_two_rings(character, equipment_key, k, i):
     if equipment_key == "rings" and k < 1:
