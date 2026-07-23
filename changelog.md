@@ -19,6 +19,22 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Bundled sample character on the public web sheet.** The standalone
+  `Pathfinder-Character-Sheet` repo now ships `data/demo-character.json` — a generated level-20
+  Cleric who also walks the Path of War Martial Training chain (initiator level 10, disciplines
+  Eternal Guardian + Piercing Thunder, 6 maneuvers / 8 stances, 161 prepared spells across levels
+  0–9) — and `loadDemoCharacter()` in `scripts/sheet.js` renders it when a visitor's library is
+  empty, in place of the "No character yet" placeholder. **Why:** the live sheet was a first-class
+  portfolio link but opened empty, and the only way to see anything was **Generate**, which
+  cold-starts the free Render backend — measured at **31 s**. Cleric was chosen over Wizard because
+  BAB-Medium guarantees 1–3 martial-path disciplines at level 20 (the `+1 to both bounds at 20+`
+  house rule lifts the floor off zero) and BAB +15 reaches Martial Training V vs the Wizard's III,
+  so the Path of War tab is populated without relying on a lucky roll. **Rejected alternatives:**
+  (a) leaving it as-is and relying on the existing "the backend can take up to a minute" status
+  text — honest, but the first impression stays an empty form; (b) saving the sample into
+  IndexedDB — it would pollute a real roster and become a record the user has to delete, so the
+  sample is **render-only** and never written to the library; (c) a `?demo=1` deep link — helps
+  only readers who arrive via the résumé, not ordinary first-time visitors.
 - **"On Other Attacks" section in the conditional applier dialog.** The `pf1-conditional-applier`
   review dialog now shows a bottom **On Other Attacks** section listing the conditionals that live on
   the actor's OTHER, differently-named weapons/attacks — as opt-in rows (default **off**, with the
@@ -99,6 +115,14 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   already fully curated (120 buff spells, unchanged). `validate_spell_conditionals.py` passes.
 
 ### Fixed
+- **Inherent rolls and level-up ability increases now scale with total character level.** For
+  multiclass characters both were undercounted because they keyed off the primary class's level
+  instead of total level: `roll_inherents_func` rolled `floor(c_class_level / 2)` times and
+  `level_up_stats` granted `floor(c_class_level / 4)` ability bumps. Both now use `character.level`
+  (`Backend/utils/class_func/stats.py`), so a total-level-20 build gets the correct 5 ability bumps
+  (levels 4/8/12/16/20) and the full inherent-roll count regardless of how levels split across
+  classes. Single-class characters are unaffected (`c_class_level == level`). Skill ranks, BAB, and
+  saves already summed correctly across classes.
 - **Damage-dealing conditionals no longer render their damage type as "undefined."** A conditional
   damage modifier with an empty `damageType` displayed "undefined" on the pf1 sheet (pf1's damage-roll
   `??=` only defaults null/undefined, not an empty Set), and a conditional modifier can't inherit the
