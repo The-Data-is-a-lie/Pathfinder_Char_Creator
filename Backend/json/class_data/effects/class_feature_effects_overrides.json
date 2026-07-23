@@ -1,157 +1,709 @@
 {
   "_readme": "Hand-curated mechanical effects for class-choice powers, merged on top of the auto-drafts by scripts/build_class_feature_changes.py (full replacement per power). Keys are normalized power names (lowercase, no (Su)/(Ex)/(Sp)). Entry keys: changes (always-on pf1 changes; for while-raging/while-mutagen powers the module toggles them with the parent state), contextNotes (situational text, every number in [[ ]]), conditionals (default-off weapon toggles {name, default, modifiers[]}; plain modifier formulas, riders in the name), tagBuff (Multi-Buff-Distributor payload {onlyOthers, auraRange, changes, contextNotes} for powers affecting OTHER creatures; @classes/@abilities refs are baked to the NPC's numbers at export). rogue_talents entries propagate automatically to ninja_talents/slayer_talents.",
-
   "rage_powers": {
     "reckless abandon": {
       "conditionals": [
-        {"name": "Reckless Abandon: -[[1 + floor(@classes.barbarian.level / 4)]] AC while raging",
-         "default": false,
-         "modifiers": [
-           {"formula": "1 + floor(@classes.barbarian.level / 4)", "target": "attack",
-            "subTarget": "allAttack", "type": "untyped", "damageType": [], "critical": "normal"}]}
+        {
+          "name": "Reckless Abandon: -[[1 + floor(@classes.barbarian.level / 4)]] AC while raging",
+          "default": false,
+          "modifiers": [
+            {
+              "formula": "1 + floor(@classes.barbarian.level / 4)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
       ]
     },
     "superstition": {
       "contextNotes": [
-        {"target": "allSavingThrows",
-         "text": "Superstition: while raging, +[[2 + floor(@classes.barbarian.level / 4)]] morale bonus on saves vs spells, spell-like and supernatural abilities; you cannot be a willing target of any spell and must save even vs allies' spells."}
+        {
+          "target": "allSavingThrows",
+          "text": "Superstition: while raging, +[[2 + floor(@classes.barbarian.level / 4)]] morale bonus on saves vs spells, spell-like and supernatural abilities; you cannot be a willing target of any spell and must save even vs allies' spells."
+        }
       ]
     },
     "lesser beast totem": {
       "contextNotes": [
-        {"target": "attack",
-         "text": "Lesser Beast Totem: while raging, two primary claw attacks at full BAB, [[1d6]] slashing ([[1d4]] if Small) + Str each."}
+        {
+          "target": "attack",
+          "text": "Lesser Beast Totem: while raging, two primary claw attacks at full BAB, [[1d6]] slashing ([[1d4]] if Small) + Str each."
+        }
       ]
     },
     "beast totem": {
       "changes": [
-        {"formula": "1 + floor(max(@classes.barbarian.level - 6, 0) / 4)", "target": "nac",
-         "type": "untyped", "operator": "add", "priority": 0}
+        {
+          "formula": "1 + floor(max(@classes.barbarian.level - 6, 0) / 4)",
+          "target": "nac",
+          "type": "untyped",
+          "operator": "add",
+          "priority": 0
+        }
       ],
       "contextNotes": [
-        {"target": "ac", "text": "Beast Totem: the natural armor bonus applies only while raging."}
+        {
+          "target": "ac",
+          "text": "Beast Totem: the natural armor bonus applies only while raging."
+        }
       ]
     },
     "beast totem, greater": {
       "contextNotes": [
-        {"target": "attack",
-         "text": "Greater Beast Totem: while raging, gain pounce (full attack at the end of a charge); claw damage increases to [[1d8]] ([[1d6]] if Small) and claws deal x3 damage on a critical hit."}
+        {
+          "target": "attack",
+          "text": "Greater Beast Totem: while raging, gain pounce (full attack at the end of a charge); claw damage increases to [[1d8]] ([[1d6]] if Small) and claws deal x3 damage on a critical hit."
+        }
       ]
     },
     "guarded stance": {
       "contextNotes": [
-        {"target": "ac",
-         "text": "Guarded Stance (move action while raging): +[[1 + floor(@classes.barbarian.level / 6)]] dodge bonus to AC against melee attacks for [[max(1, @abilities.con.mod)]] rounds."}
+        {
+          "target": "ac",
+          "text": "Guarded Stance (move action while raging): +[[1 + floor(@classes.barbarian.level / 6)]] dodge bonus to AC against melee attacks for [[max(1, @abilities.con.mod)]] rounds."
+        }
       ]
     },
     "rolling dodge": {
       "contextNotes": [
-        {"target": "ac",
-         "text": "Rolling Dodge (move action while raging): +[[1 + floor(@classes.barbarian.level / 6)]] dodge bonus to AC against ranged attacks for [[max(1, @abilities.con.mod)]] rounds."}
+        {
+          "target": "ac",
+          "text": "Rolling Dodge (move action while raging): +[[1 + floor(@classes.barbarian.level / 6)]] dodge bonus to AC against ranged attacks for [[max(1, @abilities.con.mod)]] rounds."
+        }
       ]
     },
     "witch hunter": {
       "conditionals": [
-        {"name": "Witch Hunter (while raging): bonus damage vs creatures possessing spells or spell-like abilities",
-         "default": false,
-         "modifiers": [
-           {"formula": "1 + floor(@classes.barbarian.level / 4)", "target": "damage",
-            "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "normal"}]}
+        {
+          "name": "Witch Hunter (while raging): bonus damage vs creatures possessing spells or spell-like abilities",
+          "default": false,
+          "modifiers": [
+            {
+              "formula": "1 + floor(@classes.barbarian.level / 4)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
       ]
     },
     "animal fury": {
       "contextNotes": [
-        {"target": "attack",
-         "text": "Animal Fury: while raging, gain a bite attack ([[1d4]] + half Str, [[1d3]] if Small); as part of a full attack it is a secondary attack at -[[5]]."}
+        {
+          "target": "attack",
+          "text": "Animal Fury: while raging, gain a bite attack ([[1d4]] + half Str, [[1d3]] if Small); as part of a full attack it is a secondary attack at -[[5]]."
+        }
       ]
     },
     "strength surge": {
       "contextNotes": [
-        {"target": "cmb",
-         "text": "Strength Surge (once per rage, immediate action): add +[[@classes.barbarian.level]] to one Strength check, Strength-based skill check, or combat maneuver check — or to your CMD against one maneuver."}
+        {
+          "target": "cmb",
+          "text": "Strength Surge (once per rage, immediate action): add +[[@classes.barbarian.level]] to one Strength check, Strength-based skill check, or combat maneuver check — or to your CMD against one maneuver."
+        }
+      ],
+      "conditionals": [
+        {
+          "name": "Strength Surge: Cost: [[1]]/rage; Activation: immediate action; Effect: add your barbarian level on a Strength check, combat maneuver check, or to your CMD against a maneuver",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "@classes.barbarian.level",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
       ]
     },
     "quick reflexes": {
       "contextNotes": [
-        {"target": "attack",
-         "text": "Quick Reflexes: while raging, make [[1]] additional attack of opportunity per round."}
+        {
+          "target": "attack",
+          "text": "Quick Reflexes: while raging, make [[1]] additional attack of opportunity per round."
+        }
       ]
     },
     "intimidating glare": {
       "contextNotes": [
-        {"target": "skill.int",
-         "text": "Intimidating Glare (move action while raging): demoralize one adjacent foe; on success the foe is shaken for [[1d4]] rounds +[[1]] round per [[5]] points over the DC."}
+        {
+          "target": "skill.int",
+          "text": "Intimidating Glare (move action while raging): demoralize one adjacent foe; on success the foe is shaken for [[1d4]] rounds +[[1]] round per [[5]] points over the DC."
+        }
       ]
     },
     "come and get me": {
       "contextNotes": [
-        {"target": "attack",
-         "text": "Come and Get Me (free action while raging): until your next turn, enemies gain +[[4]] on attack and damage rolls against you, but every melee attack they make against you first provokes an attack of opportunity from you."}
+        {
+          "target": "attack",
+          "text": "Come and Get Me (free action while raging): until your next turn, enemies gain +[[4]] on attack and damage rolls against you, but every melee attack they make against you first provokes an attack of opportunity from you."
+        }
       ]
     },
     "increased damage reduction": {
       "contextNotes": [
-        {"target": "ac",
-         "text": "Increased Damage Reduction: your damage reduction increases by [[1]]/— while raging (can be taken up to [[3]] times; stacks)."}
+        {
+          "target": "ac",
+          "text": "Increased Damage Reduction: your damage reduction increases by [[1]]/— while raging (can be taken up to [[3]] times; stacks)."
+        }
+      ]
+    },
+    "armor ripper": {
+      "conditionals": [
+        {
+          "name": "Armor Ripper: Effect: +[[2]] bonus on combat maneuver checks to sunder made with a natural attack",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "auspicious mark": {
+      "conditionals": [
+        {
+          "name": "Auspicious Mark: Cost: [[2]] rounds of rage, once per rage; Activation: swift action, after seeing the result of a d20 roll just made; Effect: +[[1d6]] bonus applied to that roll",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d6",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "bleeding blow": {
+      "conditionals": [
+        {
+          "name": "Bleeding Blow: Effect: when this attack also uses Powerful Blow, it also deals bleed damage equal to the Powerful Blow bonus damage, bypassing damage reduction",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "bloody bite": {
+      "conditionals": [
+        {
+          "name": "Bloody Bite: Effect: bite attack also deals [[1d6]] points of bleed damage",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "bloody fist": {
+      "conditionals": [
+        {
+          "name": "Bloody Fist: Cost: [[1]]/rage; Activation: confirmed critical hit with a natural attack or unarmed strike while raging; Save: Fortitude DC [[ 10 + floor(@classes.barbarian.level / 2) + @abilities.str.mod ]] negates; Effect: target takes [[1d4]] Constitution damage",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "boars charge": {
+      "conditionals": [
+        {
+          "name": "Boar's Charge: Activation: gore attack made as part of a charge while raging; Effect: a hit automatically counts as a critical threat (still confirm the critical normally)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "brawler": {
+      "conditionals": [
+        {
+          "name": "Brawler: Effect: while raging, treated as having Improved Unarmed Strike; if already possessed, unarmed strikes deal [[1d6]] damage ([[1d4]] if Small) instead of the normal die",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "crippling blow": {
+      "conditionals": [
+        {
+          "name": "Crippling Blow: Effect: forgo Powerful Blow's damage bonus; instead deal [[floor(@classes.barbarian.level / 4)]] points of Strength or Dexterity damage; Save: Fortitude DC [[ 10 + floor(@classes.barbarian.level / 2) + @abilities.str.mod ]] halves",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "daemon totem": {
+      "conditionals": [
+        {
+          "name": "Daemon Totem: Activation: confirmed critical hit with a melee attack while raging; Effect: target takes [[1]] temporary negative level (fades after [[1]] hour, no save)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "disemboweling tusks": {
+      "conditionals": [
+        {
+          "name": "Disemboweling Tusks: Activation: confirmed critical hit with your gore attack while raging; Effect: target takes [[1d4]] Constitution damage in addition to normal damage",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "elemental rage": {
+      "conditionals": [
+        {
+          "name": "Elemental Rage: Effect: melee attacks deal an extra [[1d6]] energy damage (acid, cold, electricity, or fire; type chosen when the rage began)",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "elemental rage, greater": {
+      "conditionals": [
+        {
+          "name": "Greater Elemental Rage: Activation: confirmed critical hit with a melee weapon while raging; Effect: deals an extra [[1d10]] energy damage of the Elemental Rage type ([[2d10]] if the weapon's critical multiplier is x3, [[3d10]] if x4)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "feasting bite": {
+      "conditionals": [
+        {
+          "name": "Feasting Bite: Cost: [[1]] round of rage; Activation: confirmed critical hit with your bite attack; Effect: regain hit points equal to half the damage dealt",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "gearbreaker": {
+      "conditionals": [
+        {
+          "name": "Gearbreaker: Cost: [[1]]/round; Activation: declared before the attack roll, while raging, vs a construct; Effect: ignore [[@classes.barbarian.level]] points of the construct's hardness (stacks with Hard Hitter)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "ground breaker": {
+      "conditionals": [
+        {
+          "name": "Ground Breaker: Cost: [[1]]/rage; Activation: standard action, attack the floor (automatically hits, deals damage normally); Save: DC [[15]] Reflex negates being knocked prone; Effect: if damage exceeds the floor's hardness, your square and all adjacent squares become difficult terrain",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "hive totem toxicity": {
+      "conditionals": [
+        {
+          "name": "Hive Totem Toxicity: Cost: [[1]] use per rage; Activation: bite attack (upgraded one die size, attack penalty reduced to -[[2]]) hits; Save: Fortitude DC [[ 10 + floor(@classes.barbarian.level / 2) + @abilities.con.mod ]] negates (cure [[1]] save); Effect: injury poison, frequency [[1]]/round for [[4]] rounds, [[1d3]] Constitution damage per failure",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "hurling charge": {
+      "conditionals": [
+        {
+          "name": "Hurling Charge: Activation: charge - throw a weapon after moving at least [[10]] feet, then make a melee attack after [[10]] more feet; Effect: this attack gains the charge's +[[2]] attack bonus",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "lesser elemental rage": {
+      "conditionals": [
+        {
+          "name": "Lesser Elemental Rage: Cost: [[1]]/rage; Activation: swift action; Effect: melee attacks deal an extra [[1d6]] energy damage (acid, cold, electricity, or fire) for [[1]] round",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "lesser shadow totem": {
+      "conditionals": [
+        {
+          "name": "Lesser Shadow Totem: Activation: on confirming a critical hit while raging; Save: Fortitude DC [[ 10 + floor(@classes.barbarian.level / 2) + @abilities.con.mod ]] negates; Effect: target takes [[1d4]] Strength damage (negative energy)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "lunar totem": {
+      "conditionals": [
+        {
+          "name": "Lunar Totem: Effect: while raging, your bite attack's damage die increases by one step and deals ×[[3]] damage on a critical hit; you add your full Strength bonus to the bite even during a full attack with other weapons, and when full-attacking with manufactured weapons and only your bite (no other natural attacks), the bite's attack penalty decreases to -[[2]]",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "mighty swing": {
+      "conditionals": [
+        {
+          "name": "Mighty Swing: Cost: [[1]]/rage; Activation: immediate action once a critical threat is determined; Effect: automatically confirm the critical hit",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "overbearing advance": {
+      "conditionals": [
+        {
+          "name": "Overbearing Advance: Effect: while raging, succeeding at an overrun combat maneuver also deals damage equal to your Strength bonus",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "@abilities.str.mod",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "overbearing onslaught": {
+      "conditionals": [
+        {
+          "name": "Overbearing Onslaught: Effect: while raging, attempt an overrun combat maneuver against more than one target in the same round, taking a -[[2]] penalty on the CMB check for each overrun attempt after the first",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "powerful blow": {
+      "conditionals": [
+        {
+          "name": "Powerful Blow: Cost: [[1]]/rage; Activation: swift action before the attack roll; Effect: bonus on this damage roll",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1 + floor(@classes.barbarian.level/4)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "raging grappler": {
+      "conditionals": [
+        {
+          "name": "Raging Grappler: Effect: while raging, succeeding at a check to start a grapple also deals damage as if you had succeeded at maintaining it; succeeding at a check to maintain a grapple can instead give yourself, the target, or both the prone condition as a free action while continuing to maintain the grapple",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "savage dirty trick": {
+      "conditionals": [
+        {
+          "name": "Savage Dirty Trick: Cost: [[1]]/round, once per opponent per rage; Activation: in place of a melee attack, does not provoke an attack of opportunity; Save: Fortitude DC [[ 10 + floor(@classes.barbarian.level / 2) + @abilities.str.mod ]] negates; Effect: deals damage equal to your Strength modifier and, on a failed save, inflicts an additional dirty trick penalty for [[1]] round",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "@abilities.str.mod",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "shadow totem, greater": {
+      "conditionals": [
+        {
+          "name": "Shadow Totem, Greater: Activation: on confirming a critical hit while raging; Save: Fortitude DC [[ 10 + floor(@classes.barbarian.level / 2) + @abilities.con.mod ]] negates; Effect: target takes [[1d6]] Strength damage (negative energy); you also gain see in darkness and immunity to blindness while raging",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "smasher": {
+      "conditionals": [
+        {
+          "name": "Smasher: Cost: [[1]]/rage; Activation: before the attack roll or sunder check; Effect: ignore the target object's hardness",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "spell sunder": {
+      "conditionals": [
+        {
+          "name": "Spell Sunder: Cost: [[1]]/rage; Activation: in place of an attack, combat maneuver check; Effect: succeeding at a CMB check (DC [[15]] + the effect's caster level for a non-creature effect, or the creature's CMD + [[5]] for an effect on a creature, ignoring any miss chance) suppresses the spell effect for [[1]] round (or [[2]] rounds if you exceeded the CMD by [[5]]-[[9]]), or dispels it if you exceeded the CMD by [[10]] or more",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "spire totem": {
+      "conditionals": [
+        {
+          "name": "Spire Totem: Effect: while raging, take no penalty for dealing nonlethal damage with a weapon, and nonlethal damage gains a bonus equal to half your barbarian level",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "floor(@classes.barbarian.level/2)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "sunder enchantment": {
+      "conditionals": [
+        {
+          "name": "Sunder Enchantment: Effect: while raging, succeeding at a sunder combat maneuver against a magic item suppresses its magical abilities for [[1]] round, plus [[1]] round for every [[5]] points by which your combat maneuver check exceeded the target's CMD",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "surprise accuracy": {
+      "conditionals": [
+        {
+          "name": "Surprise Accuracy: Cost: [[1]]/rage; Activation: swift action before the attack roll; Effect: morale bonus on this attack roll",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1 + floor(@classes.barbarian.level/4)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "morale",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "knockback": {
+      "conditionals": [
+        {
+          "name": "Knockback: Cost: [[1]]/round; Activation: in place of a melee attack, does not provoke an attack of opportunity; Effect: on a successful bull rush combat maneuver check, the target takes damage equal to your Strength modifier and is moved back as normal",
+          "default": false,
+          "tier": "B",
+          "modifiers": [
+            {
+              "formula": "@abilities.str.mod",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "knockdown": {
+      "conditionals": [
+        {
+          "name": "Knockdown: Cost: [[1]]/rage; Activation: in place of a melee attack, does not provoke an attack of opportunity; Effect: on a successful trip combat maneuver check, the target takes damage equal to your Strength modifier and is knocked prone",
+          "default": false,
+          "tier": "B",
+          "modifiers": [
+            {
+              "formula": "@abilities.str.mod",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "savage jaw": {
+      "conditionals": [
+        {
+          "name": "Savage Jaw: Cost: [[1]]/rage; Activation: free action while raging, requires an active Animal Fury bite attack; Effect: your bite attack gains the grab special ability until the start of your next turn",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
       ]
     }
   },
-
   "ki_powers": {
     "barkskin": {
       "changes": [
-        {"formula": "min(5, 2 + floor(max(@classes.monk.level - 6, 0) / 3))", "target": "nac",
-         "type": "enhancement", "operator": "add", "priority": 0}
+        {
+          "formula": "min(5, 2 + floor(max(@classes.monk.level - 6, 0) / 3))",
+          "target": "nac",
+          "type": "enhancement",
+          "operator": "add",
+          "priority": 0
+        }
       ],
       "contextNotes": [
-        {"target": "ac", "text": "Barkskin ki power: self only, [[1]] ki point, lasts [[10]] minutes per level."}
+        {
+          "target": "ac",
+          "text": "Barkskin ki power: self only, [[1]] ki point, lasts [[10]] minutes per level."
+        }
       ]
     },
     "high jump": {
       "contextNotes": [
-        {"target": "skill.acr",
-         "text": "High Jump: +[[@classes.monk.level]] on Acrobatics checks to jump, always counting as having a running start; spend [[1]] ki as a swift action for +[[20]] on jump checks for [[1]] round."}
+        {
+          "target": "skill.acr",
+          "text": "High Jump: +[[@classes.monk.level]] on Acrobatics checks to jump, always counting as having a running start; spend [[1]] ki as a swift action for +[[20]] on jump checks for [[1]] round."
+        }
       ]
     },
     "true strike": {
       "conditionals": [
-        {"name": "True Strike ki power ([[1]] ki, self): insight bonus on your next attack roll; ignore concealment miss chance",
-         "default": false,
-         "modifiers": [
-           {"formula": "20", "target": "attack", "subTarget": "attack_0",
-            "type": "insight", "damageType": [], "critical": "normal"}]}
+        {
+          "name": "True Strike ki power ([[1]] ki, self): insight bonus on your next attack roll; ignore concealment miss chance",
+          "default": false,
+          "modifiers": [
+            {
+              "formula": "20",
+              "target": "attack",
+              "subTarget": "attack_0",
+              "type": "insight",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
       ]
     },
     "feather step": {
       "contextNotes": [
-        {"target": "landSpeed",
-         "text": "Feather Step ([[1]] ki, self): ignore difficult terrain for [[10]] minutes per level."}
+        {
+          "target": "landSpeed",
+          "text": "Feather Step ([[1]] ki, self): ignore difficult terrain for [[10]] minutes per level."
+        }
       ]
     },
     "stone shield": {
       "contextNotes": [
-        {"target": "ac",
-         "text": "Stone Shield ([[1]] ki, immediate action): a stone slab rises to grant you cover (+[[4]] AC, +[[2]] Reflex) against a single attack."}
+        {
+          "target": "ac",
+          "text": "Stone Shield ([[1]] ki, immediate action): a stone slab rises to grant you cover (+[[4]] AC, +[[2]] Reflex) against a single attack."
+        }
       ]
     }
   },
-
   "hexes": {
     "evil eye": {
       "contextNotes": [
-        {"target": "spellEffect",
-         "text": "Evil Eye (standard action, 30 ft): target takes -[[2]] (-[[4]] at 8th) on one of AC, ability checks, attack rolls, saves, or skill checks for [[3 + @abilities.int.mod]] rounds; Will DC [[10 + floor(@classes.witch.level / 2) + @abilities.int.mod]] reduces to [[1]] round; mind-affecting."}
+        {
+          "target": "spellEffect",
+          "text": "Evil Eye (standard action, 30 ft): target takes -[[2]] (-[[4]] at 8th) on one of AC, ability checks, attack rolls, saves, or skill checks for [[3 + @abilities.int.mod]] rounds; Will DC [[10 + floor(@classes.witch.level / 2) + @abilities.int.mod]] reduces to [[1]] round; mind-affecting."
+        }
       ],
       "tagBuff": {
         "onlyOthers": true,
         "auraRange": null,
         "changes": [
-          {"formula": "-2 - 2 * gte(@classes.witch.level, 8)", "target": "ac",
-           "type": "untyped", "operator": "add", "priority": 0}
+          {
+            "formula": "-2 - 2 * gte(@classes.witch.level, 8)",
+            "target": "ac",
+            "type": "untyped",
+            "operator": "add",
+            "priority": 0
+          }
         ],
         "contextNotes": [
-          {"target": "allSavingThrows",
-           "text": "Evil Eye: the witch may instead penalize ability checks, attack rolls, saves, or skill checks; lasts [[3 + @abilities.int.mod]] rounds (Will save reduces to [[1]] round); mind-affecting."}
+          {
+            "target": "allSavingThrows",
+            "text": "Evil Eye: the witch may instead penalize ability checks, attack rolls, saves, or skill checks; lasts [[3 + @abilities.int.mod]] rounds (Will save reduces to [[1]] round); mind-affecting."
+          }
         ]
       }
     },
@@ -160,29 +712,45 @@
         "onlyOthers": true,
         "auraRange": null,
         "changes": [
-          {"formula": "2 + gte(@classes.witch.level, 8) + gte(@classes.witch.level, 16)",
-           "target": "ac", "type": "deflection", "operator": "add", "priority": 0},
-          {"formula": "2 + gte(@classes.witch.level, 8) + gte(@classes.witch.level, 16)",
-           "target": "allSavingThrows", "type": "resistance", "operator": "add", "priority": 0}
+          {
+            "formula": "2 + gte(@classes.witch.level, 8) + gte(@classes.witch.level, 16)",
+            "target": "ac",
+            "type": "deflection",
+            "operator": "add",
+            "priority": 0
+          },
+          {
+            "formula": "2 + gte(@classes.witch.level, 8) + gte(@classes.witch.level, 16)",
+            "target": "allSavingThrows",
+            "type": "resistance",
+            "operator": "add",
+            "priority": 0
+          }
         ],
         "contextNotes": [
-          {"target": "ac",
-           "text": "Ward: lasts until the target is hit or fails a saving throw; a witch may have only one ward active at a time."}
+          {
+            "target": "ac",
+            "text": "Ward: lasts until the target is hit or fails a saving throw; a witch may have only one ward active at a time."
+          }
         ]
       }
     },
     "misfortune": {
       "contextNotes": [
-        {"target": "spellEffect",
-         "text": "Misfortune (standard action, 30 ft): for [[1]] round ([[2]] at 8th, [[3]] at 16th) the target rolls twice and takes the worse result on ability checks, attack rolls, saves, and skill checks; Will DC [[10 + floor(@classes.witch.level / 2) + @abilities.int.mod]] negates; each creature once per [[24]] hours."}
+        {
+          "target": "spellEffect",
+          "text": "Misfortune (standard action, 30 ft): for [[1]] round ([[2]] at 8th, [[3]] at 16th) the target rolls twice and takes the worse result on ability checks, attack rolls, saves, and skill checks; Will DC [[10 + floor(@classes.witch.level / 2) + @abilities.int.mod]] negates; each creature once per [[24]] hours."
+        }
       ],
       "tagBuff": {
         "onlyOthers": true,
         "auraRange": null,
         "changes": [],
         "contextNotes": [
-          {"target": "allChecks",
-           "text": "Misfortune: roll twice and take the worse result on all ability checks, attack rolls, saving throws, and skill checks."}
+          {
+            "target": "allChecks",
+            "text": "Misfortune: roll twice and take the worse result on all ability checks, attack rolls, saving throws, and skill checks."
+          }
         ]
       }
     },
@@ -192,224 +760,3490 @@
         "auraRange": null,
         "changes": [],
         "contextNotes": [
-          {"target": "allChecks",
-           "text": "Fortune: once per round, roll twice and take the better result on one ability check, attack roll, saving throw, or skill check."}
+          {
+            "target": "allChecks",
+            "text": "Fortune: once per round, roll twice and take the better result on one ability check, attack roll, saving throw, or skill check."
+          }
         ]
       }
     },
     "flight": {
       "changes": [
-        {"formula": "4", "target": "skill.swm", "type": "racial", "operator": "add", "priority": 0}
+        {
+          "formula": "4",
+          "target": "skill.swm",
+          "type": "racial",
+          "operator": "add",
+          "priority": 0
+        }
       ],
       "contextNotes": [
-        {"target": "flySpeed",
-         "text": "Flight: feather fall at will (self only); at 5th, levitate [[1]]/day; at 9th, fly for [[@classes.witch.level]] minutes per day (increments of [[1]] minute)."}
+        {
+          "target": "flySpeed",
+          "text": "Flight: feather fall at will (self only); at 5th, levitate [[1]]/day; at 9th, fly for [[@classes.witch.level]] minutes per day (increments of [[1]] minute)."
+        }
       ]
     },
     "healing": {
       "contextNotes": [
-        {"target": "spellEffect",
-         "text": "Healing: touch heals as cure light wounds (CL [[@classes.witch.level]]); acts as cure moderate wounds at 5th; each creature can benefit once per [[24]] hours."}
+        {
+          "target": "spellEffect",
+          "text": "Healing: touch heals as cure light wounds (CL [[@classes.witch.level]]); acts as cure moderate wounds at 5th; each creature can benefit once per [[24]] hours."
+        }
       ]
     },
     "slumber": {
       "contextNotes": [
-        {"target": "spellEffect",
-         "text": "Slumber (standard action, 30 ft): one target falls asleep for [[@classes.witch.level]] rounds regardless of HD; Will DC [[10 + floor(@classes.witch.level / 2) + @abilities.int.mod]] negates; each creature once per [[24]] hours."}
+        {
+          "target": "spellEffect",
+          "text": "Slumber (standard action, 30 ft): one target falls asleep for [[@classes.witch.level]] rounds regardless of HD; Will DC [[10 + floor(@classes.witch.level / 2) + @abilities.int.mod]] negates; each creature once per [[24]] hours."
+        }
       ]
     },
     "cackle": {
       "contextNotes": [
-        {"target": "spellEffect",
-         "text": "Cackle (move action): extend the duration of your agony, charm, evil eye, fortune, and misfortune hexes on all targets within [[30]] feet by [[1]] round."}
+        {
+          "target": "spellEffect",
+          "text": "Cackle (move action): extend the duration of your agony, charm, evil eye, fortune, and misfortune hexes on all targets within [[30]] feet by [[1]] round."
+        }
+      ]
+    },
+    "dire prophecy": {
+      "conditionals": [
+        {
+          "name": "Dire Prophecy: Cost: requires an active dire prophecy curse on the target (Will negates when first placed); Activation: release the curse's full force as you make this attack, applying it against the target's Armor Class; Effect: target takes a [[@classes.witch.level]] penalty to AC against this attack, and the dire prophecy curse ends.",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "eternal slumber": {
+      "conditionals": [
+        {
+          "name": "Eternal Slumber: Cost: [[1]]/day per target; Range: melee touch; Save: Will negates; Effect: target falls into an unbreakable, permanent slumber (ends only via wish or the witch's death).",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
       ]
     }
   },
-
   "discoveries": {
     "feral mutagen": {
       "contextNotes": [
-        {"target": "attack",
-         "text": "Feral Mutagen: while your mutagen is in effect, gain [[2]] claw attacks ([[1d6]]) and a bite attack ([[1d8]]) as primary natural attacks."},
-        {"target": "skill.int",
-         "text": "Feral Mutagen: +[[2]] competence bonus on Intimidate while your mutagen is in effect."}
+        {
+          "target": "attack",
+          "text": "Feral Mutagen: while your mutagen is in effect, gain [[2]] claw attacks ([[1d6]]) and a bite attack ([[1d8]]) as primary natural attacks."
+        },
+        {
+          "target": "skill.int",
+          "text": "Feral Mutagen: +[[2]] competence bonus on Intimidate while your mutagen is in effect."
+        }
       ]
     },
     "precise bombs": {
       "contextNotes": [
-        {"target": "attack",
-         "text": "Precise Bombs: when you throw a bomb, exclude up to [[@abilities.int.mod]] squares from its splash damage."}
+        {
+          "target": "attack",
+          "text": "Precise Bombs: when you throw a bomb, exclude up to [[@abilities.int.mod]] squares from its splash damage."
+        }
       ]
     },
     "fast bombs": {
       "contextNotes": [
-        {"target": "attack",
-         "text": "Fast Bombs: throw bombs as a full attack, using all your iterative attacks."}
+        {
+          "target": "attack",
+          "text": "Fast Bombs: throw bombs as a full attack, using all your iterative attacks."
+        }
       ]
     },
     "infusion": {
       "contextNotes": [
-        {"target": "spellEffect",
-         "text": "Infusion: your extracts become infusions — they persist when they leave your possession and anyone can drink them."}
+        {
+          "target": "spellEffect",
+          "text": "Infusion: your extracts become infusions — they persist when they leave your possession and anyone can drink them."
+        }
       ]
     },
     "acid bomb": {
       "contextNotes": [
-        {"target": "attack",
-         "text": "Acid Bomb: the bomb deals acid damage instead of fire; a creature that takes a direct hit takes an additional [[1d6]] acid damage [[1]] round later."}
+        {
+          "target": "attack",
+          "text": "Acid Bomb: the bomb deals acid damage instead of fire; a creature that takes a direct hit takes an additional [[1d6]] acid damage [[1]] round later."
+        }
       ]
     },
     "frost bomb": {
       "contextNotes": [
-        {"target": "attack",
-         "text": "Frost Bomb: the bomb deals cold damage instead of fire; a creature that takes a direct hit is staggered on its next turn unless it succeeds at a Fortitude save (DC [[10 + floor(@classes.alchemist.level / 2) + @abilities.int.mod]])."}
+        {
+          "target": "attack",
+          "text": "Frost Bomb: the bomb deals cold damage instead of fire; a creature that takes a direct hit is staggered on its next turn unless it succeeds at a Fortitude save (DC [[10 + floor(@classes.alchemist.level / 2) + @abilities.int.mod]])."
+        }
       ]
     },
     "force bomb": {
       "contextNotes": [
-        {"target": "attack",
-         "text": "Force Bomb: the bomb deals [[1d4]] force damage per die instead of [[1d6]] fire; creatures that take a direct hit are knocked prone unless they succeed at a Reflex save (DC [[10 + floor(@classes.alchemist.level / 2) + @abilities.int.mod]])."}
+        {
+          "target": "attack",
+          "text": "Force Bomb: the bomb deals [[1d4]] force damage per die instead of [[1d6]] fire; creatures that take a direct hit are knocked prone unless they succeed at a Reflex save (DC [[10 + floor(@classes.alchemist.level / 2) + @abilities.int.mod]])."
+        }
       ]
     },
     "wings": {
       "contextNotes": [
-        {"target": "flySpeed",
-         "text": "Wings: while your mutagen is in effect, gain a fly speed of [[60]] feet (good maneuverability)."}
+        {
+          "target": "flySpeed",
+          "text": "Wings: while your mutagen is in effect, gain a fly speed of [[60]] feet (good maneuverability)."
+        }
+      ]
+    },
+    "boneshard bomb": {
+      "conditionals": [
+        {
+          "name": "Boneshard Bomb: Save: Fortitude DC [[ 10 + floor(@classes.alchemist.level / 2) + @abilities.int.mod ]] negates; Effect: bomb deals piercing instead of fire and [[1d4]] bleed on a direct hit",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "cytillesh bomb": {
+      "conditionals": [
+        {
+          "name": "Cytillesh Bomb: Effect: bomb deals [[1d4]] damage plus [[1d4]] per odd-numbered alchemist level instead of the normal [[1d6]] progression, and the target may be sickened or become unconscious",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "demolition charge": {
+      "conditionals": [
+        {
+          "name": "Demolition Charge: Effect: bomb deals damage to objects as if performing a sunder combat maneuver",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "dust bomb": {
+      "conditionals": [
+        {
+          "name": "Dust Bomb: Save: Fortitude DC [[ 10 + floor(@classes.alchemist.level / 2) + @abilities.int.mod ]] negates; Effect: bomb deals no damage, but creatures in the cloud are blinded for [[1]] round on a failed save",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "inspired bomb": {
+      "conditionals": [
+        {
+          "name": "Inspired Bomb: Cost: [[2]] uses of inspiration; Effect: bomb deals extra damage",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "as-weapon"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "invisible bomb": {
+      "conditionals": [
+        {
+          "name": "Invisible Bomb: Effect: bomb and its explosion are invisible until it strikes, denying the target's Dexterity bonus to AC against the attack, and creatures affected by the blast take a -[[2]] penalty on Reflex saves against it",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "ooze blight": {
+      "conditionals": [
+        {
+          "name": "Ooze Blight: Effect: target hit by the bomb loses the split special quality for [[1d4]] rounds; against creatures with the ooze type, this bomb deals untyped damage that bypasses all resistances",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "scrap bomb": {
+      "conditionals": [
+        {
+          "name": "Scrap Bomb: Effect: bomb creates shrapnel that causes bleed damage in addition to normal damage",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "profane bomb": {
+      "conditionals": [
+        {
+          "name": "Profane Bomb: Save: Fortitude DC [[ 10 + floor(@classes.alchemist.level / 2) + @abilities.int.mod ]] negates; Effect: bomb deals evil divine damage instead of fire; a good creature that fails the save is staggered on its next turn; a neutral creature takes half damage and is not staggered; an evil creature is unaffected",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
       ]
     }
   },
-
   "rogue_talents": {
     "bleeding attack": {
       "conditionals": [
-        {"name": "Bleeding Attack: on a sneak attack hit, the target also takes [[floor((@classes.rogue.level + 1) / 2)]] bleed damage each round (DC [[15]] Heal check or any magical healing stops it; bleed does not stack)",
-         "default": false, "modifiers": []}
+        {
+          "name": "Bleeding Attack: on a sneak attack hit, the target also takes [[floor((@classes.rogue.level + 1) / 2)]] bleed damage each round (DC [[15]] Heal check or any magical healing stops it; bleed does not stack)",
+          "default": false,
+          "modifiers": []
+        }
       ]
     },
     "offensive defense": {
       "conditionals": [
-        {"name": "Offensive Defense: on a sneak attack hit, gain +[[floor((@classes.rogue.level + 1) / 2)]] dodge AC against that creature for [[1]] round",
-         "default": false, "modifiers": []}
+        {
+          "name": "Offensive Defense: on a sneak attack hit, gain +[[floor((@classes.rogue.level + 1) / 2)]] dodge AC against that creature for [[1]] round",
+          "default": false,
+          "modifiers": []
+        }
       ]
     },
     "powerful sneak": {
       "conditionals": [
-        {"name": "Powerful Sneak (full attack only): sneak attack dice treat rolled 1s as 2s",
-         "default": false,
-         "modifiers": [
-           {"formula": "-2", "target": "attack", "subTarget": "allAttack",
-            "type": "untyped", "damageType": [], "critical": "normal"}]}
+        {
+          "name": "Powerful Sneak (full attack only): sneak attack dice treat rolled 1s as 2s",
+          "default": false,
+          "modifiers": [
+            {
+              "formula": "-2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
       ]
     },
     "crippling strike": {
       "conditionals": [
-        {"name": "Crippling Strike: on a sneak attack hit, the target also takes [[2]] Strength damage",
-         "default": false, "modifiers": []}
+        {
+          "name": "Crippling Strike: on a sneak attack hit, the target also takes [[2]] Strength damage",
+          "default": false,
+          "modifiers": []
+        }
       ]
     },
     "fast stealth": {
       "contextNotes": [
-        {"target": "skill.ste",
-         "text": "Fast Stealth: move at full speed while using Stealth with no penalty."}
+        {
+          "target": "skill.ste",
+          "text": "Fast Stealth: move at full speed while using Stealth with no penalty."
+        }
       ]
     },
     "surprise attack": {
       "contextNotes": [
-        {"target": "attack",
-         "text": "Surprise Attack: during the surprise round, opponents are always considered flat-footed to you, even if they have already acted."}
+        {
+          "target": "attack",
+          "text": "Surprise Attack: during the surprise round, opponents are always considered flat-footed to you, even if they have already acted."
+        }
       ]
     },
     "resiliency": {
       "contextNotes": [
-        {"target": "ac",
-         "text": "Resiliency ([[1]]/day, immediate action when reduced below 0 hp): gain [[@classes.rogue.level]] temporary hit points for [[1]] minute; you do not fall unconscious while they last."}
+        {
+          "target": "ac",
+          "text": "Resiliency ([[1]]/day, immediate action when reduced below 0 hp): gain [[@classes.rogue.level]] temporary hit points for [[1]] minute; you do not fall unconscious while they last."
+        }
       ]
     },
     "trap spotter": {
       "contextNotes": [
-        {"target": "skill.per",
-         "text": "Trap Spotter: whenever you come within [[10]] feet of a trap, you receive an automatic (secret) Perception check to notice it."}
+        {
+          "target": "skill.per",
+          "text": "Trap Spotter: whenever you come within [[10]] feet of a trap, you receive an automatic (secret) Perception check to notice it."
+        }
       ]
     },
     "opportunist": {
       "contextNotes": [
-        {"target": "attack",
-         "text": "Opportunist ([[1]]/round): when an ally's melee attack damages an opponent adjacent to you, you may make an attack of opportunity against that opponent."}
+        {
+          "target": "attack",
+          "text": "Opportunist ([[1]]/round): when an ally's melee attack damages an opponent adjacent to you, you may make an attack of opportunity against that opponent."
+        }
+      ]
+    },
+    "accurate poisoner": {
+      "conditionals": [
+        {
+          "name": "Accurate Poisoner: Cost: forgo this attack's sneak attack damage; Effect: increase the duration of the poison on your weapon by [[2]] (using its normal duration unit, e.g. rounds or minutes)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "ambuscading grapple": {
+      "conditionals": [
+        {
+          "name": "Ambuscading Grapple: Activation: succeed at a grapple combat maneuver check against an unaware opponent; Effect: immediately deal sneak attack damage to the target; this counts as a sneak attack hit for other abilities and talents",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "armor piercer": {
+      "conditionals": [
+        {
+          "name": "Armor Piercer: Cost: forgo one or more sneak attack dice; Effect: reduce the target's natural armor bonus by an amount equal to the sneak attack dice forgone (minimum +[[0]]) until the end of your next turn; the same creature can't be affected by this again for [[1]] minute",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "befuddling strike": {
+      "conditionals": [
+        {
+          "name": "Befuddling Strike: Effect: on a hit that deals sneak attack damage, the target takes a [[-2]] penalty on attack rolls against you for [[1d4]] rounds",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "confounding blades": {
+      "conditionals": [
+        {
+          "name": "Confounding Blades: Effect: on a hit with a melee weapon that deals sneak attack damage, the target cannot make attacks of opportunity for [[1d4+1]] rounds",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "demand attention": {
+      "conditionals": [
+        {
+          "name": "Demand Attention: Cost: forgo this attack's sneak attack damage; Activation: the first time this round you deal sneak attack damage to an opponent; Save: Will DC [[10]] + sneak attack dice sacrificed + your Charisma modifier; Effect: on a failure the target is distracted until the start of your next turn, treating creatures beyond [[30]] feet as unobserved (allowing Stealth against it) and automatically failing Perception checks against creatures more than [[30]] feet away",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "disabling stunt": {
+      "conditionals": [
+        {
+          "name": "Disabling Stunt: Activation: standard action, Disable Device check against the target construct's CMD (no attack of opportunity); Effect: on a success, ignore the construct's damage reduction when dealing sneak attack damage for [[1]] minute",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "dispelling attack": {
+      "conditionals": [
+        {
+          "name": "Dispelling Attack: Effect: on a hit that deals sneak attack damage, the target is subjected to a targeted dispel magic (targeting its lowest-level active spell effect) at caster level [[@classes.rogue.level]]",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "distracting attack": {
+      "conditionals": [
+        {
+          "name": "Distracting Attack: Cost: forgo this attack's sneak attack damage; Activation: hit a creature with a melee attack that deals sneak attack damage; Effect: the target becomes flat-footed against one ally you choose (not yourself) until the start of your next turn; creatures with uncanny dodge are immune",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "entanglement of blades": {
+      "conditionals": [
+        {
+          "name": "Entanglement of Blades: Effect: on a hit with a melee attack that deals sneak attack damage, the target cannot take a [[5]]-foot step until the start of your next turn",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "flying stunt": {
+      "conditionals": [
+        {
+          "name": "Flying Stunt: Activation: swift action, Fly check against the target's CMD, while charging that target from above; Effect: on a success, this attack deals additional precision damage (not multiplied on a critical hit); creatures immune to sneak attack are immune to this damage",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "@abilities.dex.mod",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "hamstring strike": {
+      "conditionals": [
+        {
+          "name": "Hamstring Strike: Cost: forgo this attack's sneak attack damage; Effect: the target is knocked prone and unable to take move actions during its next turn; Save: Fortitude DC [[ 10 + floor(@classes.rogue.level / 2) + @abilities.dex.mod ]] negates",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "harrow strike": {
+      "conditionals": [
+        {
+          "name": "Harrow Strike: Cost: [[1]] use per day (an additional use at [[15]]th and [[20]]th level), forgo this attack's sneak attack damage; Activation: draw a random card from a Harrow deck before making the attack; Effect: on a hit, instead of sneak attack damage, deal ability damage equal to your number of sneak attack dice to the ability score matching the drawn card's suit",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "hunters surprise": {
+      "conditionals": [
+        {
+          "name": "Hunter's Surprise: Cost: [[1]] use per day; Activation: designate an adjacent enemy as your prey; Effect: until the end of your next turn, your attacks against your prey deal sneak attack damage even without flanking it or it being flat-footed",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "improved shadows chill": {
+      "conditionals": [
+        {
+          "name": "Improved Shadow's Chill: Effect: on a hit with a melee weapon that deals sneak attack damage, the sneak attack damage is cold damage instead of its normal type (normal weapon damage is unaffected)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "knock-out blow": {
+      "conditionals": [
+        {
+          "name": "Knock-Out Blow: Cost: [[1]] use per day, forgo this attack's sneak attack damage (and any effect that triggers on dealing sneak attack damage); Activation: declare before making the attack; Effect: on a hit, the target falls unconscious for [[1d4]] rounds; Save: Fortitude DC [[ 10 + floor(@classes.rogue.level / 2) + @abilities.int.mod ]] reduces this to staggered for [[1]] round instead",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "sacred sneak attack": {
+      "conditionals": [
+        {
+          "name": "Sacred Sneak Attack: Effect: against undead or evil outsiders, your sneak attack damage is treated as good-aligned for the purpose of overcoming damage reduction (normal weapon damage is unaffected)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "set-up": {
+      "conditionals": [
+        {
+          "name": "Set-Up: Cost: forgo this attack's sneak attack damage; Activation: hit a target with a sneak attack in melee; Effect: the first melee attack an adjacent ally makes against the target before the start of your next turn treats the target as flanked",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "slow reactions": {
+      "conditionals": [
+        {
+          "name": "Slow Reactions: Effect: a creature damaged by your sneak attack cannot make attacks of opportunity for [[1]] round",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "sneaky maneuver": {
+      "conditionals": [
+        {
+          "name": "Sneaky Maneuver: Cost: forgo this attack's sneak attack damage, take a penalty on this attack roll; Effect: on a hit, deal weapon damage as normal, then attempt a dirty trick, disarm, steal, sunder, or trip combat maneuver as a swift action (this still provokes attacks of opportunity unless you have a way to avoid them)",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "-2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "sniper20s eye": {
+      "conditionals": [
+        {
+          "name": "Sniper's Eye: Activation: ranged attack against a foe with concealment (not total concealment) within [[30]] feet; Effect: your sneak attack damage applies to this attack",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "stem the flow": {
+      "conditionals": [
+        {
+          "name": "Stem the Flow: Cost: forgo [[3d6]] points of sneak attack damage; Activation: hit a creature capable of channeling energy with a sneak attack; Effect: the target cannot channel energy for a number of rounds equal to half your rogue level",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "swimming stunt": {
+      "conditionals": [
+        {
+          "name": "Swimming Stunt: Cost: forgo one or more sneak attack dice; Activation: free action, Swim check against the target's CMD, once per round, while attacking an opponent underwater with an attack that qualifies for sneak attack damage; Effect: on a successful Swim check and a hit that deals sneak attack damage, reduce the rounds the target can hold its breath by [[1]] per die forgone",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "underhanded": {
+      "conditionals": [
+        {
+          "name": "Underhanded: Cost: [[1]] use per day per point of Charisma modifier (minimum [[0]]), usable only during the surprise round with a concealed weapon your opponent didn't know about; Effect: your sneak attack damage on this hit is the maximum possible instead of rolled",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "positioning attack": {
+      "conditionals": [
+        {
+          "name": "Positioning Attack: Cost: [[1]]/day; Effect: on a hit with this melee attack, move up to [[30]] feet without provoking attacks of opportunity, ending adjacent to the target",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
+      ]
+    },
+    "toxic regurgitation": {
+      "conditionals": [
+        {
+          "name": "Toxic Regurgitation: Activation: spit up a suspended poison as a ranged touch attack against a creature within [[10]] ft (no attack of opportunity provoked); Effect: on a hit, the target is exposed to the poison as if it were a contact poison",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
       ]
     }
   },
-
   "arcana": {
     "arcane accuracy": {
       "conditionals": [
-        {"name": "Arcane Accuracy ([[1]] arcane pool, swift): insight bonus to all attack rolls until the end of your turn",
-         "default": false,
-         "modifiers": [
-           {"formula": "@abilities.int.mod", "target": "attack", "subTarget": "allAttack",
-            "type": "insight", "damageType": [], "critical": "normal"}]}
+        {
+          "name": "Arcane Accuracy ([[1]] arcane pool, swift): insight bonus to all attack rolls until the end of your turn",
+          "default": false,
+          "modifiers": [
+            {
+              "formula": "@abilities.int.mod",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "insight",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
       ]
     },
     "accurate strike": {
       "conditionals": [
-        {"name": "Accurate Strike ([[2]] arcane pool, swift): all your melee attacks resolve as melee touch attacks until the end of your turn",
-         "default": false, "modifiers": []}
+        {
+          "name": "Accurate Strike ([[2]] arcane pool, swift): all your melee attacks resolve as melee touch attacks until the end of your turn",
+          "default": false,
+          "modifiers": []
+        }
       ]
     },
     "empowered magic": {
       "contextNotes": [
-        {"target": "spellEffect",
-         "text": "Empowered Magic ([[1]]/day): cast one spell as if Empowered (+[[50]]% on variable, numeric effects) without increasing its casting time or level."}
+        {
+          "target": "spellEffect",
+          "text": "Empowered Magic ([[1]]/day): cast one spell as if Empowered (+[[50]]% on variable, numeric effects) without increasing its casting time or level."
+        }
       ]
     },
     "concentrate": {
       "contextNotes": [
-        {"target": "concentration",
-         "text": "Concentrate ([[1]]/day): reroll a concentration check you just made; you must take the second result."}
+        {
+          "target": "concentration",
+          "text": "Concentrate ([[1]]/day): reroll a concentration check you just made; you must take the second result."
+        }
+      ]
+    },
+    "arcane critical": {
+      "conditionals": [
+        {
+          "name": "Arcane Critical: Effect: on a critical hit, gain [[1]] arcane pool point (lost if unspent by the end of your next round)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "arcane edge": {
+      "conditionals": [
+        {
+          "name": "Arcane Edge: Cost: [[1]] arcane pool; Activation: immediate action after hitting with a slashing or piercing weapon; Effect: target takes [[ max(0, @abilities.int.mod) ]] bleed damage",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "arcane focus": {
+      "conditionals": [
+        {
+          "name": "Arcane Focus: Cost: [[1]] arcane pool; Activation: swift action; Effect: reduces the attack penalty from spell combat to -[[1]] for [[1]] minute",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "athame surge": {
+      "conditionals": [
+        {
+          "name": "Athame Surge: Cost: one expended spell slot; Effect: your weapon gains an enhancement bonus to attack and damage rolls equal to half the slot's level, rounded down (or an equivalent value of weapon special abilities instead) for [[1]] minute per magus level; a new use replaces rather than stacks with the old one",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "charge of the magi": {
+      "conditionals": [
+        {
+          "name": "Charge of the Magi: Cost: [[1]] arcane pool; Activation: swift action when charging; Save: Fortitude DC [[ 10 + floor(@classes.magus.level / 2) + @abilities.int.mod ]] negates (+[[2]] on a critical hit) or be knocked prone; Effect: on a hit, deals extra force damage (doubled on a critical hit); a miss wastes this use",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d6 + (floor(@classes.magus.level / 3))d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "force"
+              ],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "critical strike": {
+      "conditionals": [
+        {
+          "name": "Critical Strike: Effect: once per day, after scoring a critical hit with your melee weapon, cast a touch-range spell as a swift action and make a touch attack against the same target as a free action",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "energy web": {
+      "conditionals": [
+        {
+          "name": "Energy Web: Cost: [[1]] arcane pool; Activation: swift action; Save: Reflex DC [[ 10 + floor(@classes.magus.level / 2) + @abilities.int.mod ]] negates the ongoing web (the transferring hit's energy damage still applies); Effect: your weapon is wreathed in energy (acid, cold, electricity, fire, or sonic, chosen when this arcana is selected) for [[ floor(@classes.magus.level / 2) ]] rounds; a successful melee hit before this ends transfers the web, dealing extra energy damage on that hit and again each round at the start of your turn until the duration ends",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(floor(@classes.magus.level / 2))d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "fire"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "flattening strike": {
+      "conditionals": [
+        {
+          "name": "Flattening Strike: Cost: [[1]] arcane pool; Activation: swift action; Save: Fortitude DC [[ 10 + floor(@classes.magus.level / 2) + @abilities.int.mod ]] negates; Effect: on your next attack this round, a failed save knocks the target back [[5]] feet per two magus levels (minimum [[5]] feet) and knocks it prone; a miss wastes this use",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "malice": {
+      "conditionals": [
+        {
+          "name": "Malice: Effect: melee attacks deal extra damage against a target currently affected by one of your hexes",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "2d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "as-weapon"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "maneuvering strike": {
+      "conditionals": [
+        {
+          "name": "Maneuvering Strike: Cost: [[1]] arcane pool; Activation: free action; Effect: your next combat maneuver this round does not provoke an attack of opportunity",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "necromantic strike": {
+      "conditionals": [
+        {
+          "name": "Necromantic Strike: Cost: [[1]] arcane pool; Activation: swift action; Save: Fortitude DC [[ 10 + floor(@classes.magus.level / 2) + @abilities.int.mod ]] negates; Effect: on your next attack, a failed save also deals [[1d6]] Strength and [[1d6]] Constitution damage to the target; especially deadly to undead",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "2d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "negative"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "nigh irresistible strike": {
+      "conditionals": [
+        {
+          "name": "Nigh Irresistible Strike: Cost: [[1]] arcane pool; Activation: free action before resolving an attack; Save: Will DC [[ 10 + floor(@classes.magus.level / 2) + @abilities.int.mod ]] negates; Effect: on a hit, a failed save reduces the target's choice of spell resistance, energy resistance, or damage reduction by [[ @classes.magus.level ]] for [[ @classes.magus.level ]] rounds; a creature that saves is immune to this effect for [[24]] hours",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "pool strike": {
+      "conditionals": [
+        {
+          "name": "Pool Strike: Cost: [[1]] arcane pool; Activation: standard action; Range: melee touch; Effect: a melee touch attack deals energy damage (acid, cold, electricity, or fire, chosen when activated); if it misses, the charge can be held for up to [[1]] minute",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(2 + floor(max(0, @classes.magus.level - 3) / 3))d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "fire"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "pool strike, arcing": {
+      "conditionals": [
+        {
+          "name": "Pool Strike, Arcing: Cost: [[1]] additional arcane pool; Effect: if your pool strike attack hits, make a ranged touch attack as a free action against up to [[ max(0, @abilities.int.mod) ]] enemies within [[15]] feet, dealing the same energy damage as the primary pool strike attack (including its increased damage on a critical hit)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "serpent-eyed strike": {
+      "conditionals": [
+        {
+          "name": "Serpent-Eyed Strike: Cost: [[1]] arcane pool; Activation: swift action; Save: Will DC [[ 10 + floor(@classes.magus.level / 2) + @abilities.int.mod ]] negates; Effect: on a failed save, the target loses its Dexterity bonus to AC against your attacks only for [[1d6]] rounds",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "song of arcane triumph": {
+      "conditionals": [
+        {
+          "name": "Song of Arcane Triumph: Cost: [[1]] arcane pool; Activation: swift action; Save: Fortitude DC [[ 10 + floor(@classes.magus.level / 2) + @abilities.int.mod ]] halves; Effect: on a hit, deal extra sonic damage, doubled on a critical hit and applying even to creatures immune to critical hits",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(min(20, @classes.magus.level))d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "sonic"
+              ],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "song of death’s herald": {
+      "conditionals": [
+        {
+          "name": "Song of Death's Herald: Cost: [[1]] arcane pool; Activation: swift action; Save: Will DC [[ 10 + floor(@classes.magus.level / 2) + @abilities.int.mod ]] negates; Effect: on a failed save, for [[1]] round per magus level your critical threat range against the target increases by [[1]] (before doubling from keen or similar effects); creatures with Intelligence [[4]] or lower are immune",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "morale",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "1d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "sonic"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "vision-clouding strike": {
+      "conditionals": [
+        {
+          "name": "Vision-Clouding Strike: Cost: [[1]] or more arcane pool; Activation: swift action; Save: Will DC [[ floor(@classes.magus.level / 2) + @abilities.int.mod ]] negates; Effect: your weapon is empowered with shadowy energy for [[1]] minute; a struck creature that fails treats you as being in an area of dim light for [[1d4]] rounds plus [[1]] additional round per arcane pool point expended; true seeing negates this, but darkvision does not",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "wave of mutilation": {
+      "conditionals": [
+        {
+          "name": "Wave of Mutilation: Cost: [[1]] arcane pool; Activation: swift action; Range: [[30]]-foot cone; Save: Reflex DC [[ 10 + floor(@classes.magus.level / 2) + @abilities.int.mod ]] half; Effect: your weapon unleashes a wave of arcane force in a cone, dealing your normal attack's damage as force damage to all creatures in the area",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "dispelling strike": {
+      "conditionals": [
+        {
+          "name": "Dispelling Strike: Cost: [[1]] or more arcane pool; Activation: swift action to imbue the weapon; Range: next successful melee weapon strike within [[1]] minute; Effect: the target is subjected to a targeted dispel magic at caster level [[@classes.magus.level]], unable to affect any spell of a level higher than the arcane pool points spent",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
+      ]
+    },
+    "prescient attack": {
+      "conditionals": [
+        {
+          "name": "Prescient Attack: Cost: [[1]] arcane pool; Activation: immediate action after hitting with a weapon attack; Effect: the target is denied its Dexterity bonus to AC against your attacks until the end of your next turn",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
+      ]
+    },
+    "rending the shroud": {
+      "conditionals": [
+        {
+          "name": "Rending the Shroud: Cost: [[1]] arcane pool; Activation: swift action after a successful melee attack; Effect: the target's spell resistance is reduced by [[@abilities.int.mod]] for [[floor(@classes.magus.level / 2)]] rounds (no save; reapplying resets the duration instead of stacking)",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
+      ]
+    },
+    "song of the blade dance": {
+      "conditionals": [
+        {
+          "name": "Song of the Blade Dance: Cost: [[1]] arcane pool; Activation: swift action; Effect: for [[@classes.magus.level]] rounds, this attack gains a bonus, and you gain a +[[2]] dodge bonus to AC and a +[[2]] bonus on initiative checks",
+          "default": false,
+          "tier": "B",
+          "modifiers": [
+            {
+              "formula": "1",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
       ]
     }
   },
-
   "exploits": {
     "potent magic": {
       "contextNotes": [
-        {"target": "cl",
-         "text": "Potent Magic: when you expend [[1]] point from your arcane reservoir to increase a spell's caster level, it increases by [[2]] instead; when you expend a point to increase a spell's DC, it increases by [[2]] instead."}
+        {
+          "target": "cl",
+          "text": "Potent Magic: when you expend [[1]] point from your arcane reservoir to increase a spell's caster level, it increases by [[2]] instead; when you expend a point to increase a spell's DC, it increases by [[2]] instead."
+        }
       ]
     },
     "flame arc": {
       "contextNotes": [
-        {"target": "spellEffect",
-         "text": "Flame Arc ([[1]] reservoir point): 30-ft line of fire dealing [[1d6]] + @abilities.cha.mod fire damage, +[[1d6]] per [[2]] arcanist levels beyond 1st; Reflex DC [[10 + floor(@classes.arcanist.level / 2) + @abilities.cha.mod]] halves."}
+        {
+          "target": "spellEffect",
+          "text": "Flame Arc ([[1]] reservoir point): 30-ft line of fire dealing [[1d6]] + @abilities.cha.mod fire damage, +[[1d6]] per [[2]] arcanist levels beyond 1st; Reflex DC [[10 + floor(@classes.arcanist.level / 2) + @abilities.cha.mod]] halves."
+        }
+      ],
+      "conditionals": [
+        {
+          "name": "Flame Arc: Cost: [[1]] point from arcane reservoir; Range: [[30]]-ft line; Save: Reflex DC [[ 10 + floor(@classes.arcanist.level / 2) + @abilities.cha.mod ]] half; Effect: fire damage to each target in the line",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(min(10, floor((@classes.arcanist.level + 1) / 2)))d6 + @abilities.cha.mod",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "fire"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "acid jet": {
+      "conditionals": [
+        {
+          "name": "Acid Jet: Cost: [[1]] point from arcane reservoir; Range: ranged touch attack, [[30]] ft; Save: Fortitude DC [[ 10 + floor(@classes.arcanist.level / 2) + @abilities.cha.mod ]] negates; Effect: sickened for [[1d4]] rounds on a failed save",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(min(10, floor((@classes.arcanist.level + 1) / 2)))d6 + @abilities.cha.mod",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "acid"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "blood tears": {
+      "conditionals": [
+        {
+          "name": "Blood Tears: Cost: [[1]] point from arcane reservoir; Activation: move action to activate, standard action to end; Range: [[15]]-ft cone; Save: Will DC [[ 10 + floor(@classes.arcanist.level / 2) + @abilities.cha.mod ]] negates; Effect: creatures in the cone are staggered with pain and anguish for [[1]] round",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "burning flame": {
+      "conditionals": [
+        {
+          "name": "Burning Flame: Cost: [[2]] points from arcane reservoir when using flame arc (instead of [[1]]); Effect: each target that fails the flame arc save catches fire, taking [[3d6]] fire damage at the start of each of its turns until extinguished (Reflex as a full-round action, or dousing with at least [[1]] gallon of water)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "damnation susurrus": {
+      "conditionals": [
+        {
+          "name": "Damnation Susurrus: Cost: [[1]] point from arcane reservoir; Activation: standard action; Range: [[30]] ft, up to [[min(7, 1 + floor(@classes.arcanist.level / 3))]] target(s); Save: Will DC [[ 10 + floor(@classes.arcanist.level / 2) + @abilities.cha.mod ]] negates; Effect: target drops held objects and harms itself for [[1d6]] damage; mind-affecting",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "fiendish proboscis": {
+      "conditionals": [
+        {
+          "name": "Fiendish Proboscis: Cost: [[1]] point from arcane reservoir; Activation: standard action to grow (lasts [[1]] round per arcanist level), standard action to attack; Range: melee touch, [[10]]-ft reach; Effect: on a hit against a creature that can cast spells or use spell-like abilities, gain [[1]] arcane reservoir point (excess is lost); against a creature that cannot, heal [[1d6]] damage instead; either way the target is sickened for [[1]] round",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "force strike": {
+      "conditionals": [
+        {
+          "name": "Force Strike: Cost: [[1]] point from arcane reservoir; Range: [[30]] ft, automatically strikes one target (as magic missile); Effect: force damage; negated by anything that negates magic missile",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d4 + @classes.arcanist.level",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "force"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "hellfire ray": {
+      "conditionals": [
+        {
+          "name": "Hellfire Ray: Cost: [[1]] additional point from arcane reservoir when using flame arc; Save: Will DC [[ 10 + floor(@classes.arcanist.level / 2) + @abilities.cha.mod ]] negates; Effect: half the flame arc damage is unholy power not subject to fire resistance; good creatures damaged are sickened for [[1d4]] rounds on a failed save",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "holy water jet": {
+      "conditionals": [
+        {
+          "name": "Holy Water Jet: Cost: [[1]] point from arcane reservoir; Range: [[30]]-ft line; Save: Reflex DC [[ 10 + floor(@classes.arcanist.level / 2) + @abilities.cha.mod ]] half; Effect: damage to each target in the line that would normally take damage from holy water",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(min(10, floor((@classes.arcanist.level + 1) / 2)))d8 + @abilities.cha.mod",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "ice missile": {
+      "conditionals": [
+        {
+          "name": "Ice Missile: Cost: [[1]] point from arcane reservoir; Range: ranged touch attack, [[30]] ft; Save: Fortitude DC [[ 10 + floor(@classes.arcanist.level / 2) + @abilities.cha.mod ]] negates; Effect: staggered for [[1]] round on a failed save",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(min(10, floor((@classes.arcanist.level + 1) / 2)))d6 + @abilities.cha.mod",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "cold"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "lightning lance": {
+      "conditionals": [
+        {
+          "name": "Lightning Lance: Cost: [[1]] point from arcane reservoir; Range: ranged touch attack, [[30]] ft; Save: Fortitude DC [[ 10 + floor(@classes.arcanist.level / 2) + @abilities.cha.mod ]] negates; Effect: target treats all creatures as having concealment ([[20]]%) for [[1]] round on a failed save",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(min(10, floor((@classes.arcanist.level + 1) / 2)))d6 + @abilities.cha.mod",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "electricity"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "lingering acid": {
+      "conditionals": [
+        {
+          "name": "Lingering Acid: Cost: [[2]] points from arcane reservoir when using acid jet (instead of [[1]]); Effect: if the target fails its save, it takes an additional [[1d6]] acid damage the following round for every [[2d6]] acid damage dealt by the previous round's damage, halving again each round thereafter until the amount would be less than [[1d6]]",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "rift fog": {
+      "conditionals": [
+        {
+          "name": "Rift Fog: Cost: [[1]] point from arcane reservoir; Activation: standard action to create, move action to direct ([[30]] ft/round, up to [[60]] ft from the arcanist); Range: [[5]]-ft radius; Save: Will DC [[ 10 + floor(@classes.arcanist.level / 2) + @abilities.cha.mod ]] negates; Effect: cold damage to creatures in the fog's final area, and a creature that fails its save is slowed for [[1]] round; the fog persists for [[1]] round per [[2]] arcanist levels (minimum [[1]])",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "cold"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "shadows out of light": {
+      "conditionals": [
+        {
+          "name": "Shadows out of Light: Cost: [[1]] point from arcane reservoir; Activation: reaction, as an attack of opportunity while the shadows persist ([[1]] round per [[2]] arcanist levels, minimum [[1]]); Range: melee touch; Save: Fortitude DC [[ 10 + floor(@classes.arcanist.level / 2) + @abilities.cha.mod ]] negates; Effect: cold damage plus [[1]] point of Strength damage on a failed save",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d6 + @abilities.cha.mod",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "cold"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "sonic blast": {
+      "conditionals": [
+        {
+          "name": "Sonic Blast: Cost: [[1]] point from arcane reservoir; Range: ranged touch attack, [[30]] ft; Save: Fortitude DC [[ 10 + floor(@classes.arcanist.level / 2) + @abilities.cha.mod ]] half damage and negates deafness; Effect: target is deafened for [[1]] minute on a failed save",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(min(10, floor((@classes.arcanist.level + 1) / 2)))d6 + @abilities.cha.mod",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "sonic"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "icy tomb": {
+      "conditionals": [
+        {
+          "name": "Icy Tomb: ice missile coats the target in rime; Cost: [[2]] arcane reservoir points (instead of [[1]]); Activation: as part of using the ice missile exploit; Range: ranged touch (ice missile); Save: on the target's failed save against ice missile; Effect: target becomes entangled and takes [[1]] point of Dexterity damage at the start of each of its turns for up to [[1]] minute per arcanist level (shorter in warm areas); the ice melts if the target takes more than [[10]] points of fire damage from a single attack; target may break free with a Strength check, DC [[10 + @abilities.cha.mod]], as a standard action",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
       ]
     }
   },
-
   "mysteries": {
     "war sight": {
       "contextNotes": [
-        {"target": "init",
-         "text": "War Sight: whenever you roll initiative, roll twice and take either result; at 7th you can always act in the surprise round; at 11th roll three times."}
+        {
+          "target": "init",
+          "text": "War Sight: whenever you roll initiative, roll twice and take either result; at 7th you can always act in the surprise round; at 11th roll three times."
+        }
       ]
     },
     "maneuver mastery": {
       "contextNotes": [
-        {"target": "cmb",
-         "text": "Maneuver Mastery: with your chosen combat maneuver, use your oracle level in place of your base attack bonus; at 7th gain the Improved feat for that maneuver, at 11th the Greater feat."}
+        {
+          "target": "cmb",
+          "text": "Maneuver Mastery: with your chosen combat maneuver, use your oracle level in place of your base attack bonus; at 7th gain the Improved feat for that maneuver, at 11th the Greater feat."
+        }
+      ]
+    },
+    "aging touch": {
+      "conditionals": [
+        {
+          "name": "Aging Touch: Cost: [[1]] of [[1 + floor(@classes.oracle.level/5)]] daily uses; Activation: melee touch attack; Effect: deals [[floor(@classes.oracle.level/2)]] Strength damage to a living creature, or damage to an object or construct (treat as a sunder attempt if the object is in another creature's possession)",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(@classes.oracle.level)d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "untyped"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "ash cloud": {
+      "conditionals": [
+        {
+          "name": "Ash Cloud: Activation: standard action; Save: Fortitude DC [[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]] negates choking at oracle level [[7]]+; Effect: create a stationary [[10]]-foot-radius cloud (as obscuring mist, but you see through it clearly) lasting [[1]] round per oracle level; using this again drops the previous cloud; at oracle level [[7]]+ the cloud fills with embers, dealing fire damage per round to creatures other than you inside it",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "fire"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "balefire": {
+      "conditionals": [
+        {
+          "name": "Balefire: Cost: [[1]]/day ([[2]]/day at oracle level [[10]]+); Activation: standard action; Range: [[30]] ft; Save: Reflex DC [[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]] half damage; Effect: target takes fire damage; at oracle level [[10]]+ a creature that fails is also staggered for [[1]] round; at oracle level [[15]]+ a creature that fails is instead staggered for [[1d4]] rounds and stunned for [[1]] round",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(@classes.oracle.level)d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "fire"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "battlecry": {
+      "conditionals": [
+        {
+          "name": "Battlecry: Cost: [[1]] of [[1 + floor(@classes.oracle.level/5)]] daily uses; Activation: move action; Effect: you and allies within [[100]] feet who hear your cry gain a +[[1]] morale bonus (+[[2]] at oracle level [[10]]+) on attack rolls, skill checks, and saving throws for [[@abilities.cha.mod]] rounds",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "ifelse(gte(@classes.oracle.level,10),2,1)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "morale",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "blistered caress": {
+      "conditionals": [
+        {
+          "name": "Blistered Caress: Cost: [[1]]/day ([[2]]/day at oracle level [[10]]+); Activation: melee touch attack; Save: Fortitude DC [[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]] half damage; Effect: deals fire damage; against a plant creature you may instead heal or damage it (your choice) for [[1d6]] fire damage per oracle level; at oracle level [[7]]+ a creature that fails is also sickened for [[1d4]] hours; at oracle level [[15]]+ a creature that fails is instead also staggered for [[1d6]] rounds",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(ceil(@classes.oracle.level/2))d8",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "fire"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "blizzard": {
+      "conditionals": [
+        {
+          "name": "Blizzard: Cost: [[1]]/day; Activation: standard action; Save: Reflex DC [[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]] half damage; Effect: create [[1]] [[10]]-ft cube of blizzard per oracle level (each cube adjacent to another, at least one adjacent to you); creatures caught inside take cold damage; the storm lasts [[@abilities.cha.mod]] rounds, obscures sight beyond [[5]] feet with total concealment (concealment within [[5]] feet), and leaves the ground icy (+[[5]] to Acrobatics DCs)",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(@classes.oracle.level)d4",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "cold"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "blood of heroes": {
+      "conditionals": [
+        {
+          "name": "Blood of Heroes: Cost: [[1]] of [[1 + floor(@classes.oracle.level/5)]] daily uses; Activation: move action; Effect: gain a +[[1]] morale bonus (+[[2]] at oracle level [[7]]+, +[[3]] at oracle level [[14]]+) on attack rolls, damage rolls, and Will saves against fear for [[@abilities.cha.mod]] rounds",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1 + floor(@classes.oracle.level/7)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "morale",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "1 + floor(@classes.oracle.level/7)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "morale",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "brain drain": {
+      "conditionals": [
+        {
+          "name": "Brain Drain: Cost: [[1]] of [[1 + floor(@classes.oracle.level/5)]] daily uses; Activation: standard action; Range: [[100]] ft; Save: Will negates (mind-affecting); Effect: target takes damage; on a failed save you may spend a full-round action to attempt a Knowledge check using the target's skill bonus (as detect thoughts), retaining the stolen knowledge for [[@abilities.cha.mod]] rounds",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(@classes.oracle.level)d4",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "untyped"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "breath weapon": {
+      "conditionals": [
+        {
+          "name": "Breath Weapon: Cost: [[1]] of [[1 + floor(@classes.oracle.level/5)]] daily uses; Activation: standard action; Range: [[30]]-ft cone or [[60]]-ft line (chosen when selected); Save: Reflex DC [[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]] half damage; Effect: deals damage of your chosen energy type",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(ceil(@classes.oracle.level/2))d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "cold aura": {
+      "conditionals": [
+        {
+          "name": "Cold Aura: Cost: [[1]] of [[1 + floor(@classes.oracle.level/5)]] daily uses; Activation: swift action; Range: [[10]] ft; Save: Fortitude DC [[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]] half damage; Effect: deals cold damage to all creatures within range and grants you concealment until your next turn",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(ceil(@classes.oracle.level/2))d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "cold"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "dance of the blades": {
+      "conditionals": [
+        {
+          "name": "Dance of the Blades: Activation: this round, while wielding a metal weapon and having moved at least [[10]] feet; Effect: gain a bonus on attack rolls with that weapon",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "max(0, floor((@classes.oracle.level-3)/4))",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "dance of whirling water": {
+      "conditionals": [
+        {
+          "name": "Dance of Whirling Water: Activation: after succeeding at an Acrobatics check to move through an enemy's square; Effect: gain a competence bonus on trip combat maneuver checks against that creature until the start of your next turn",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "max(1, floor(@classes.oracle.level/2))",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "competence",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "death's embrace": {
+      "conditionals": [
+        {
+          "name": "Death's Embrace: Activation: once per round, on a successful grapple combat maneuver check; Effect: deal extra negative energy damage to the grappled target",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(min(5,1+floor(@classes.oracle.level/5)))d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "negative"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "death's touch": {
+      "conditionals": [
+        {
+          "name": "Death's Touch: Cost: [[1]] of [[3 + @abilities.cha.mod]] daily uses; Activation: melee touch attack; Effect: deals negative energy damage; against an undead creature, this instead heals that damage and grants it +[[2]] channel resistance for [[1]] minute",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d6 + floor(@classes.oracle.level / 2)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "negative"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "dust to dust": {
+      "conditionals": [
+        {
+          "name": "Dust to Dust: Cost: [[1]]/day ([[2]]/day at oracle level [[10]]+); Activation: standard action; Effect: attempt a single sunder combat maneuver (using your caster level as base attack bonus and Charisma modifier in place of Strength) against every creature other than you within [[10]] feet wielding a manufactured weapon; each weapon takes [[1d4]] × Cha mod damage ([[1d6]] × Cha mod at oracle level [[11]]+)",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d4 * @abilities.cha.mod",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "untyped"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "eldritch bolt": {
+      "conditionals": [
+        {
+          "name": "Eldritch Bolt: Cost: [[1]] of [[3 + @abilities.cha.mod]] daily uses; Activation: ranged touch attack; Range: [[30]] ft ([[60]] ft at oracle level [[10]]+); Effect: deals force damage",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d8 + floor(@classes.oracle.level / 2)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "force"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "energy body": {
+      "conditionals": [
+        {
+          "name": "Energy Body: Activation: while in energy body form, this attack is an unarmed strike or natural attack against an undead creature; Effect: deals [[1d6]] positive energy damage + [[1]] per oracle level instead of the attack's normal damage",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "erase from time": {
+      "conditionals": [
+        {
+          "name": "Erase from Time: Cost: [[1]]/day ([[2]]/day at oracle level [[11]]+); Activation: melee touch attack; Save: Fortitude negates; Effect: target vanishes from time for [[floor(@classes.oracle.level/2)]] rounds (minimum [[1]]) and cannot be detected by magic or divination while vanished, reappearing unharmed at the end of the duration",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "erosion touch": {
+      "conditionals": [
+        {
+          "name": "Erosion Touch: Cost: [[1]] of [[1 + floor(@classes.oracle.level/3)]] daily uses; Activation: melee touch attack; Effect: deals damage to an object or construct (treat as a sunder attempt if the object is in another creature's possession)",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(@classes.oracle.level)d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "untyped"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "erupt": {
+      "conditionals": [
+        {
+          "name": "Erupt: Cost: [[1]] of [[1 + floor(@classes.oracle.level/5)]] daily uses; Activation: swift action; Range: [[10]]-ft-radius burst; Save: Reflex DC [[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]] half damage; Effect: deals damage to all creatures in range, half fire and half piercing, and creates difficult terrain for [[1]] round",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(ceil(@classes.oracle.level/2))d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "fire",
+                "piercing"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "fire breath": {
+      "conditionals": [
+        {
+          "name": "Fire Breath: Cost: [[1]] of [[1 + floor(@classes.oracle.level/5)]] daily uses; Activation: standard action; Range: [[15]]-ft cone; Save: Reflex DC [[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]] half damage; Effect: deals fire damage",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(@classes.oracle.level)d4",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "fire"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "firestorm": {
+      "conditionals": [
+        {
+          "name": "Firestorm: Cost: [[1]]/day; Activation: standard action; Save: Reflex DC [[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]] half damage; Effect: create [[1]] [[10]]-ft cube of fire per oracle level (each cube adjacent to another, at least one adjacent to you); creatures caught inside take fire damage; the fire lasts [[@abilities.cha.mod]] rounds",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(@classes.oracle.level)d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "fire"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "gift of madness": {
+      "conditionals": [
+        {
+          "name": "Gift of Madness: Cost: [[1]] of [[3 + @abilities.cha.mod]] daily uses; Range: [[30]] ft; Save: Will negates (mind-affecting compulsion); Effect: target becomes confused for [[1]] round; at oracle level [[7]]+ the confusion instead lasts [[1]] round per oracle level",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "heat aura": {
+      "conditionals": [
+        {
+          "name": "Heat Aura: Cost: [[1]] of [[1 + floor(@classes.oracle.level/5)]] daily uses; Activation: swift action; Range: [[10]] ft; Save: Reflex DC [[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]] half damage; Effect: deals fire damage to all creatures within range and grants you [[20]]% concealment until your next turn",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(ceil(@classes.oracle.level/2))d4",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "fire"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "interstellar void": {
+      "conditionals": [
+        {
+          "name": "Interstellar Void: Cost: [[1]]/day ([[2]]/day at oracle level [[10]]+); Activation: standard action; Range: [[30]] ft; Save: Fortitude DC [[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]] half damage; Effect: target takes cold damage; at oracle level [[10]]+ a creature that fails is also fatigued; at oracle level [[15]]+ a creature that fails is instead exhausted and stunned for [[1]] round",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(@classes.oracle.level)d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "cold"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "iomedae's boon": {
+      "conditionals": [
+        {
+          "name": "Iomedae's Boon: Cost: [[1]] of [[1 + floor(@classes.oracle.level/5)]] daily uses; Activation: move action; Effect: gain a +[[1]] morale bonus (+[[2]] at oracle level [[7]]+, +[[3]] at oracle level [[14]]+) on attack rolls, damage rolls, and Will saving throws against fear for [[@abilities.cha.mod]] rounds",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1 + floor(@classes.oracle.level/7)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "morale",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "1 + floor(@classes.oracle.level/7)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "morale",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "knife in the dark": {
+      "conditionals": [
+        {
+          "name": "Knife in the Dark: Cost: [[1]] of [[1 + floor(@classes.oracle.level/5)]] daily uses; Activation: standard action; Effect: make a sneak attack this attack, dealing extra precision damage as a rogue of your oracle level",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(ceil(@classes.oracle.level/2))d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "life leach": {
+      "conditionals": [
+        {
+          "name": "Life Leach: Cost: [[1]]/day at 7th level, +[[1]] every [[4]] levels thereafter; Activation: standard action; Range: [[30]] ft; Save: Fortitude DC [[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]] half; Effect: drain [[1d6]] damage per two oracle levels (maximum [[10d6]]) from a living target, gaining temporary hit points equal to the damage dealt (capped at the target's current hit points plus its Constitution score) for [[@abilities.cha.mod]] hours",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "lightning breath": {
+      "conditionals": [
+        {
+          "name": "Lightning Breath: Cost: [[1]]/day, +[[1]] at 5th level and every [[5]] levels thereafter; Activation: standard action; Range: [[30]] ft line; Save: Reflex DC [[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]] half; Effect: deals [[1d4]] electricity damage per oracle level",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "lignification": {
+      "conditionals": [
+        {
+          "name": "Lignification: Cost: [[1]]/day ([[2]]/day at 15th level); Activation: standard action; Range: [[30]] ft; Save: Fortitude negates; Effect: the target (and its carried gear) turns to wood, becoming a mindless inert statue for [[floor(@classes.oracle.level / 2)]] rounds, as flesh to stone",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "luminous form": {
+      "conditionals": [
+        {
+          "name": "Luminous Form: Activation: maintained while your luminous form is active (up to [[1]] minute per oracle level per day, in [[1]]-minute increments); Save: Fortitude negates (reduces to [[1]] round at 13th level); Effect: at 7th level, creatures that end their turn adjacent to you are blinded for [[1]] round; at 13th level this becomes [[1d4]] rounds; at 18th level your light affects creatures as natural sunlight",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "mighty pebble": {
+      "conditionals": [
+        {
+          "name": "Mighty Pebble: Cost: [[1]]/day, +[[1]] at 5th level and every [[5]] levels thereafter; Activation: standard action, ranged attack (range increment [[20]] ft); Save: Reflex half (negates for adjacent creatures on a success); Effect: deals [[1d6]] bludgeoning damage per two oracle levels (minimum [[1d6]]) to the target and half that to adjacent creatures; a miss lands as a thrown splash weapon",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "floor(@classes.oracle.level/4)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "enhancement",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "floor(@classes.oracle.level/4)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "enhancement",
+              "damageType": [
+                "bludgeoning"
+              ],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "momentary glimpse": {
+      "conditionals": [
+        {
+          "name": "Momentary Glimpse: Cost: [[1]]/day, +[[1]] at 5th level and every [[4]] levels thereafter; Activation: swift action (bonus applies on the following round); Effect: gain a +[[2]] insight bonus on a single attack roll, saving throw, skill check, or to Armor Class until the start of your next turn",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "moonbeam": {
+      "conditionals": [
+        {
+          "name": "Moonbeam: Cost: [[1]]/day equal to your Charisma modifier (minimum [[1]]); Activation: ranged touch attack; Range: [[30]] ft; Save: Fortitude negates blindness; Effect: deals [[1d6]] damage plus [[1]] per two oracle levels, and blinds the target for [[1]] round on a failed save",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "moral crisis": {
+      "conditionals": [
+        {
+          "name": "Moral Crisis: Activation: standard action; Range: [[30]] ft; Save: Will negates; Effect: the target is staggered for [[@classes.oracle.level]] rounds (a new save at the end of each of its turns ends the effect early); mind-affecting emotion effect",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "night terror": {
+      "conditionals": [
+        {
+          "name": "Night Terror: Cost: [[1]]/day; Activation: standard action, as nightmare; Effect: make a full attack against the target's touch AC using your Charisma modifier in place of Strength; each successful hit deals [[1d10]] damage",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "pass the torch": {
+      "conditionals": [
+        {
+          "name": "Pass the Torch: Cost: [[1]]/day, +[[1]] at 5th level and every [[5]] levels thereafter; Activation: swift action; Effect: you ignite, taking [[1d4]] fire damage on activation and again at the start of each of your turns; creatures that begin their turn adjacent to you take [[1d6]] fire damage plus [[1]] per previous round the ability has been active; lasts up to [[floor(@classes.oracle.level/2)]] rounds and can be ended as a free action",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "pitiful foe": {
+      "conditionals": [
+        {
+          "name": "Pitiful Foe: Cost: [[1]]/day, +[[1]] at 7th and 15th levels; Activation: standard action; Range: [[30]] ft; Save: Will negates; Effect: the target is cursed for [[floor(@classes.oracle.level/2)]] rounds ([[1]] round minimum) — it never threatens you or your allies, a natural [[20]] on its attack rolls or saves is not an automatic success, and it automatically fails all critical hit confirmation rolls; mind-affecting curse",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "poetic vengeance": {
+      "conditionals": [
+        {
+          "name": "Poetic Vengeance: Cost: [[1]]/day ([[2]]/day at 10th level, [[3]]/day at 20th level); Activation: immediate action, after an enemy successfully attacks you; Save: Will DC [[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]] negates; Effect: the enemy suffers half the damage of its own attack, and any non-damaging effect of that attack has a [[50]]% chance to apply (using the lower of this DC or the attack's own save DC)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "presence of dragons": {
+      "conditionals": [
+        {
+          "name": "Presence of Dragons: Cost: [[1]]/day at 1st level, +[[1]] at 5th level and every [[5]] levels thereafter; Activation: swift action; Range: [[30]] ft (creatures that can see you); Save: Will negates (grants [[24]]-hour immunity on a success); Effect: creatures that fail are shaken for [[2d6]] rounds; mind-affecting fear effect",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "pyroclastic shove": {
+      "conditionals": [
+        {
+          "name": "Pyroclastic Shove: Cost: +[[1]]/day at 12th and 17th levels; Activation: standard action; Range: [[30]] ft; Effect: bull rush combat maneuver check (CMB = base attack bonus + Charisma modifier + [[4]]); on success the target takes [[1d6]] fire damage per oracle level",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "return to dust": {
+      "conditionals": [
+        {
+          "name": "Return to Dust: Cost: [[3]]/day plus your Charisma modifier; Activation: standard action; Range: [[30]] ft; Save: Reflex half (only if used against an undead creature, or an object in another creature's possession); Effect: deals [[1d6]] damage per two oracle levels to an object or undead creature, ignoring hardness and damage reduction",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "shadow armament": {
+      "conditionals": [
+        {
+          "name": "Shadow Armament: Activation: as part of creating the quasi-real weapon (usable [[@classes.oracle.level]] minutes per day, in [[1]]-minute increments); Save: Will negates (disbelieve) on the first hit; Effect: on a failed save the weapon deals damage normally; on a success it deals only [[1]] point of damage (minimum damage instead at 15th level); the weapon gains a cumulative +[[1]] enhancement bonus at 3rd, 11th, and 19th level, and the frost or keen special ability at 7th level (chosen at creation; ineffective against a target that saved); it deals only [[1]] point of damage to objects and disappears [[1]] round after leaving your grasp",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "shard explosion": {
+      "conditionals": [
+        {
+          "name": "Shard Explosion: Cost: [[1]]/day, +[[1]] at 5th level and every [[5]] levels thereafter; Activation: swift action; Range: [[10]] ft burst; Save: Reflex half; Effect: deals [[1d6]] piercing damage per two oracle levels (minimum [[1d6]]) to all creatures in the burst, and the area becomes difficult terrain until your next turn",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "shroud of retribution": {
+      "conditionals": [
+        {
+          "name": "Shroud of Retribution: Cost: [[1]]/day, +[[1]] at 11th level and every [[4]] levels thereafter; Activation: immediate action; Effect: until the end of your next turn, any creature that strikes you also takes [[1d8]] force damage plus [[1]] per two caster levels (maximum +[[10]]), in addition to the damage it deals you",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "solar wind": {
+      "conditionals": [
+        {
+          "name": "Solar Wind: Cost: [[3]]/day plus your Charisma modifier; Activation: ranged touch attack, no range increment; Range: [[30]] ft; Effect: deals [[1d6]] fire damage plus [[1]] per two oracle levels; at 7th level you may instead bull rush the target, using your caster level plus your Charisma modifier in place of your CMB",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "spell deflection": {
+      "conditionals": [
+        {
+          "name": "Spell Deflection: Activation: readied action, unarmed attack roll to counter a ranged touch spell targeting you or an adjacent ally; Effect: if the result exceeds [[20]] plus the spell's caster level, the spell is negated; at 17th level a negated spell is instead reflected back at the caster using the same attack roll result",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "steel scarf": {
+      "conditionals": [
+        {
+          "name": "Steel Scarf: Cost: [[3]]/day plus your Charisma modifier; Activation: swift action to harden the garment, then a melee attack roll (Weapon Finesse allowed); Range: [[30]] ft reach; Effect: on a hit, deals [[1d8]] slashing damage plus [[1]] per two oracle levels; you do not threaten with this weapon and cannot use it to make attacks of opportunity",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "storm of souls": {
+      "conditionals": [
+        {
+          "name": "Storm of Souls: Cost: [[1]]/day, +[[1]] at 11th level and every [[4]] levels thereafter; Activation: standard action; Range: [[100]] ft, [[20]]-ft-radius burst; Save: Fortitude half; Effect: deals [[1d8]] damage per two oracle levels to objects and creatures in the area (undead take [[1d8]] damage per oracle level instead)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "sweeping impact": {
+      "conditionals": [
+        {
+          "name": "Sweeping Impact: Activation: as part of a bull rush combat maneuver made during a charge; Effect: if you push the target at least [[5]] feet, attempt a free trip combat maneuver check against it (failing by [[10]] or more does not trip you); at 7th level you can bull rush or trip creatures up to [[2]] size categories larger than you, +[[1]] size category for every [[4]] levels beyond 7th",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "tail swipe": {
+      "conditionals": [
+        {
+          "name": "Tail Swipe: Activation: attack of opportunity (grants one additional attack of opportunity per round, made with your tail); Effect: deals [[1d8]] bludgeoning damage ([[1d6]] if Small) plus your Strength modifier; at 10th level, a free trip combat maneuver check (provoking no attack of opportunity) may be attempted against any creature damaged by this tail attack",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "talons of the dragon": {
+      "conditionals": [
+        {
+          "name": "Talons of the Dragon: Cost: [[3]] rounds/day plus your Charisma modifier (need not be consecutive); Activation: full attack action (two claw attacks at your full base attack bonus); Effect: each claw deals [[1d4]] slashing damage ([[1d3]] if Small) plus your Strength modifier; at 5th level the claws count as magic for overcoming damage reduction; at 7th level the damage die increases to [[1d6]] ([[1d4]] if Small); at 11th level each hit deals an additional [[1d6]] damage of your chosen energy type",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "terminal aura": {
+      "conditionals": [
+        {
+          "name": "Terminal Aura: Activation: free action to activate or suppress; Range: [[10]] ft radius; Save: Will negates; Effect: a creature below [[0]] hit points but stable in the aura is affected by the bleed spell effect; a dying creature cannot attempt a stabilization check without succeeding at this save (though it can still be healed normally); a creature with fast healing or regeneration must succeed at this save each round or that ability does not function for [[1]] round",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "thorn burst": {
+      "conditionals": [
+        {
+          "name": "Thorn Burst: Cost: [[1]]/day, +[[1]] at 5th level and every [[5]] levels thereafter; Activation: swift action; Range: [[10]] ft burst; Save: Reflex half; Effect: deals [[1d6]] piercing damage per two oracle levels (minimum [[1d6]]) to all creatures in the burst, and the splinters function as caltrops in the area until your next turn",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "thunderburst": {
+      "conditionals": [
+        {
+          "name": "Thunderburst: Cost: [[1]]/day, +[[1]] at 11th level and every [[4]] levels thereafter; Activation: standard action; Range: [[100]] ft, [[20]]-ft radius (+[[5]] ft per [[4]] levels after 7th); Save: Fortitude half damage and negates deafness; Effect: deals [[1d6]] bludgeoning damage per oracle level, and deafens for [[1]] hour on a failed save",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "touch of acid": {
+      "conditionals": [
+        {
+          "name": "Touch of Acid: Cost: [[3 + @abilities.cha.mod]]/day; Range: melee touch; Effect: melee touch attack deals acid damage; at 11th level, your wielded weapons also deal an extra [[1d6]] acid damage, as if flaming",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d6 + floor(@classes.oracle.level / 2)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "acid"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "touch of electricity": {
+      "conditionals": [
+        {
+          "name": "Touch of Electricity: Cost: [[3 + @abilities.cha.mod]]/day; Range: melee touch; Effect: melee touch attack deals electricity damage; at 11th level, your wielded weapons are treated as shock weapons",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d6 + floor(@classes.oracle.level / 2)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "electric"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "touch of flame": {
+      "conditionals": [
+        {
+          "name": "Touch of Flame: Cost: [[3 + @abilities.cha.mod]]/day; Range: melee touch; Effect: melee touch attack deals fire damage; at 11th level, your wielded weapons are treated as flaming weapons",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d6 + floor(@classes.oracle.level / 2)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "fire"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "touch of the void": {
+      "conditionals": [
+        {
+          "name": "Touch of the Void: Cost: [[3 + @abilities.cha.mod]]/day; Range: melee touch; Save: Fortitude DC [[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]] negates fatigue (7th level only); Effect: melee touch attack deals cold damage; at 7th level, a failed save also fatigues the target for [[floor(@classes.oracle.level / 2)]] rounds (no effect if already fatigued)",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d6 + floor(@classes.oracle.level / 2)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "cold"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "vortex spells": {
+      "conditionals": [
+        {
+          "name": "Vortex Spells: Effect: on a critical hit against a foe with an attack spell, the target is staggered for [[1]] round (increases to [[1d4]] rounds at 11th level)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "whimsical prank": {
+      "conditionals": [
+        {
+          "name": "Whimsical Prank: Activation: standard action; Range: [[30]] feet; Effect: attempt a dirty trick combat maneuver without provoking an attack of opportunity, using [[@classes.oracle.level]] in place of your CMB and your Charisma modifier in place of Strength or Dexterity; no saving throw is allowed, and the same creature can't be the target of this revelation again for [[1]] day",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "wintry touch": {
+      "conditionals": [
+        {
+          "name": "Wintry Touch: Cost: [[3 + @abilities.cha.mod]]/day; Range: melee touch; Effect: melee touch attack deals cold damage; at 11th level, your wielded weapons are treated as frost weapons",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d6 + floor(@classes.oracle.level / 2)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "cold"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "desert mirage": {
+      "conditionals": [
+        {
+          "name": "Desert Mirage: Cost: [[@classes.oracle.level]] minutes per day (spent in [[1]]-minute increments); Activation: Swift action; Effect: gain concealment as blur while active; at 7th level, your melee attacks each deal additional fire damage",
+          "default": false,
+          "tier": "B",
+          "modifiers": [
+            {
+              "formula": "2",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "fire"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "gift of claw and horn": {
+      "conditionals": [
+        {
+          "name": "Gift of Claw and Horn: Cost: [[3 + @abilities.cha.mod]] uses per day (minimum [[1]]); Activation: Swift action to grow a bite, claw, or gore natural weapon for [[max(1, floor(@classes.oracle.level / 2))]] rounds; Effect: at 11th level, gain two such natural weapons at once; this natural weapon attack gains an enhancement bonus at 5th level and beyond",
+          "default": false,
+          "tier": "B",
+          "modifiers": [
+            {
+              "formula": "floor(@classes.oracle.level / 5)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "enhancement",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "floor(@classes.oracle.level / 5)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "enhancement",
+              "damageType": [
+                "as-weapon"
+              ],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "mantle of moonlight": {
+      "conditionals": [
+        {
+          "name": "Mantle of Moonlight: Cost: [[1]] use per day at 5th level, plus [[1]] additional use per day for every [[5]] levels above 5th; Activation: Melee touch attack; Effect: forces a lycanthrope into humanoid form for [[@classes.oracle.level]] rounds; at 5th level, you may instead force the target to rage as the rage spell",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
+      ]
+    },
+    "phantom touch": {
+      "conditionals": [
+        {
+          "name": "Phantom Touch: Cost: [[3 + @abilities.cha.mod]] uses per day; Activation: Melee touch attack; Effect: target becomes shaken for [[max(1, floor(@classes.oracle.level / 2))]] rounds; at 5th level the target becomes frightened instead, and at 7th level panicked instead",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
+      ]
+    },
+    "rewind time": {
+      "conditionals": [
+        {
+          "name": "Rewind Time: Cost: [[ floor((@classes.oracle.level - 3) / 4) ]]/day; Effect: reroll this attack roll before the result is revealed and take the new result, even if it's worse than the original",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
+      ]
+    },
+    "rift weapon": {
+      "conditionals": [
+        {
+          "name": "Rift Weapon: Cost: [[ 1 + floor(@classes.oracle.level / 5) ]]/day; Activation: standard action, touch the weapon (or up to [[20]] pieces of similar ammunition); Effect: the weapon bypasses DR/cold iron for [[ @classes.oracle.level ]] minutes (at 9th level, also bypasses DR/good or DR/law, your choice)",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
       ]
     }
   },
-
   "curses": {
     "haunted": {
       "contextNotes": [
-        {"target": "skills",
-         "text": "Haunted: retrieving any stored item is a standard action (dropping an item is a free action); you know mage hand and ghost sound."}
+        {
+          "target": "skills",
+          "text": "Haunted: retrieving any stored item is a standard action (dropping an item is a free action); you know mage hand and ghost sound."
+        }
       ]
     },
     "clouded vision": {
       "contextNotes": [
-        {"target": "skill.per",
-         "text": "Clouded Vision: you cannot see beyond [[30]] feet, but gain darkvision [[30]] ft ([[60]] ft at 5th); at 10th, blindsense [[30]] ft."}
+        {
+          "target": "skill.per",
+          "text": "Clouded Vision: you cannot see beyond [[30]] feet, but gain darkvision [[30]] ft ([[60]] ft at 5th); at 10th, blindsense [[30]] ft."
+        }
+      ]
+    },
+    "toxic blood": {
+      "conditionals": [
+        {
+          "name": "Toxic Blood: Cost: [[1]] of [[floor(@classes.oracle.level/4)]] daily uses; Activation: touch attack, unarmed strike, or natural weapon attack (oracle level [[5]]+); Save: Fortitude DC [[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]] negates the damage and ends the affliction (attempted each round); Effect: deals [[1d2]] Dexterity damage per round for [[5]] rounds ([[1d3]] Dexterity damage per round for [[7]] rounds at oracle level [[10]]+); at oracle level [[15]]+ you may instead expend a use to transfer a poison currently affecting you onto the touched creature, who must save against that poison's original DC and duration or suffer it in your place",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "wrecker": {
+      "conditionals": [
+        {
+          "name": "Wrecker: Activation: melee attack against an object or construct (oracle level [[5]]+); Effect: reduce the target's hardness by [[@classes.oracle.level]] before applying this attack's damage; at oracle level [[10]]+ this attack also bypasses any damage reduction the target possesses except epic",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    }
+  },
+  "investigator_talents": {
+    "blinding strike*": {
+      "conditionals": [
+        {
+          "name": "Blinding Strike: Effect: on a hit that deals studied strike damage, the target is permanently blinded (no effect on creatures that don't rely on eyes for sight or that have more than two eyes); Save: Fortitude DC [[ 10 + floor(@classes.investigator.level / 2) + @abilities.int.mod ]] reduces this to dazzled for [[1d4]] rounds instead",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "confusing strike*": {
+      "conditionals": [
+        {
+          "name": "Confusing Strike: Effect: on a hit that deals studied strike damage, the target is confused for [[1d4+1]] rounds (constructs, mindless creatures, oozes, plants, undead, incorporeal creatures, and creatures immune to critical hits are unaffected); Save: Fortitude DC [[ 10 + floor(@classes.investigator.level / 2) + @abilities.int.mod ]] reduces the duration to [[1]] round instead",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "numerical strike*": {
+      "conditionals": [
+        {
+          "name": "Numerical Strike: Cost: [[1]]/day (a second use per day by expending [[1]] use of inspiration), only after confirming a critical hit with studied strike; Activation: no action required; Effect: this attack's damage, including the studied strike damage, is the average possible instead of rolled",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "numerical strike, greater*": {
+      "conditionals": [
+        {
+          "name": "Numerical Strike, Greater: Cost: [[1]]/day (a second use per day by expending [[1]] use of inspiration), only after confirming a critical hit with studied strike; Activation: no action required; Effect: this attack's damage, including the studied strike damage, is the maximum possible instead of rolled",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "repositioning strike*": {
+      "conditionals": [
+        {
+          "name": "Repositioning Strike: Effect: on a hit that deals studied strike damage, attempt a reposition combat maneuver against the target as a free action; this does not provoke an attack of opportunity",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "stealing strike*": {
+      "conditionals": [
+        {
+          "name": "Stealing Strike: Effect: on a hit that deals studied strike damage, attempt a steal combat maneuver against the target as a free action; this does not provoke an attack of opportunity",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "toppling strike*": {
+      "conditionals": [
+        {
+          "name": "Toppling Strike: Effect: on a hit that deals studied strike damage, attempt a trip combat maneuver against the target as a free action; this does not provoke an attack of opportunity",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "slowing strike*": {
+      "conditionals": [
+        {
+          "name": "Slowing Strike: Save: Fortitude DC [[10 + floor(@classes.slayer.level / 2) + @abilities.int.mod]] negates; Effect: on a sneak attack hit, halve the target's speed for one movement type of your choice for [[1d4]] rounds; if you affect its flight speed, its maneuverability drops one step and it falls if airborne unless it succeeds at a DC [[10]] Fly check; if the target is already affected, instead extend the duration by [[1d4]] rounds or choose a different movement type to affect",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "deafening strike*": {
+      "conditionals": [
+        {
+          "name": "Deafening Strike: Save: Fortitude DC [[ 10 + floor(@classes.investigator.level / 2) + @abilities.int.mod ]] negates; Effect: opponent damaged by studied strike is permanently deafened, or deafened for [[1]] round if the save succeeds.",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
+      ]
+    },
+    "sickening offensive*": {
+      "conditionals": [
+        {
+          "name": "Sickening Offensive: Effect: studied target damaged by this attack is sickened for [[1]] round.",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
+      ]
+    }
+  },
+  "ninja_talents": {
+    "assassinate": {
+      "conditionals": [
+        {
+          "name": "Assassinate: Activation: spend a standard action studying the target for [[1]] round, then hit it with a sneak attack while it is denied its Dexterity bonus to AC (this automatically fails if the target recognizes you as an enemy); Save: Fortitude DC [[ 10 + floor(@classes.ninja.level / 2) + @abilities.cha.mod ]] negates; Effect: the target dies on a failed save; on a success it still takes the sneak attack damage as normal and becomes immune to your assassinate ability for [[1]] day",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "bleeding attack*": {
+      "conditionals": [
+        {
+          "name": "Bleeding Attack: Effect: on a hit that deals sneak attack damage, the target also takes bleed damage equal to [[1]] point per sneak attack die each round at the start of its turn (bypasses damage reduction, and doesn't stack with itself) until stopped by a DC [[15]] Heal check or any effect that heals hit point damage",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "blinding bomb": {
+      "conditionals": [
+        {
+          "name": "Blinding Bomb: Activation: throw a smoke bomb; Save: Fortitude DC [[ 10 + floor(@classes.ninja.level / 2) + @abilities.cha.mod ]] negates; Effect: all living creatures in the resulting smoke cloud are blinded for [[1d4]] rounds (cannot be combined with a choking bomb, but can be combined with a poison bomb)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "breath of the ancestor": {
+      "conditionals": [
+        {
+          "name": "Breath of the Ancestor: Cost: [[2]] ki, usable again only after [[1d4]] rounds; Activation: standard action; Range: [[15]] ft cone ([[30]] ft line if you chose the underworld dragon); Save: Reflex DC [[ 10 + floor(@classes.ninja.level / 2) + @abilities.int.mod ]] half; Effect: deals damage equal to your sneak attack damage, of the energy type matching your chosen imperial dragon (piercing damage for forest dragons, fire for sea dragons, etc.)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "choking bomb": {
+      "conditionals": [
+        {
+          "name": "Choking Bomb: Activation: throw a smoke bomb; Save: Fortitude DC [[ 10 + floor(@classes.ninja.level / 2) + @abilities.cha.mod ]] negates; Effect: all living creatures in the resulting smoke cloud are staggered for [[1d4]] rounds (you may add poison to the bomb as normal)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "deadly shuriken": {
+      "conditionals": [
+        {
+          "name": "Deadly Shuriken: Cost: full-round action; Activation: throw a single shuriken, making one attack roll for each iterative attack you could normally make (highest bonus to lowest); the throw hits if any of the rolls hit; Effect: damage increases by [[1d6]] for each additional successful attack roll beyond the first (precision damage and weapon special ability damage are added separately and aren't increased by this); if more than one roll is a critical threat, confirm the critical once at your highest base attack bonus with a [[-5]] penalty, reduced by [[1]] for each critical threat beyond the first (minimum [[0]])",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "ki block*": {
+      "conditionals": [
+        {
+          "name": "Ki Block: Activation: deal sneak attack damage to the target; Save: Will DC [[ 10 + floor(@classes.ninja.level / 2) + @abilities.cha.mod ]] negates; Effect: on a failure the target cannot spend points from its ki pool for [[ @abilities.cha.mod ]] rounds (its ki pool total is unaffected, and abilities that don't require spending ki still function)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "ki charge": {
+      "conditionals": [
+        {
+          "name": "Ki Charge: Cost: [[1]] ki; Activation: standard action, throw a thrown weapon (such as a shuriken) invested with ki; Range: [[5]] ft burst on impact; Save: Reflex DC [[ 10 + floor(@classes.ninja.level / 2) + @abilities.cha.mod ]] half (a creature struck by the weapon takes a [[-2]] penalty on this save; a miss instead treats the weapon as a thrown splash weapon); Effect: deals fire damage to all creatures caught in the blast",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(min(4,1+floor((@classes.ninja.level-2)/4)))d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "fire"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "pressure points*": {
+      "conditionals": [
+        {
+          "name": "Pressure Points: Effect: on a hit that deals sneak attack damage, also deal [[1]] point of Strength or Dexterity damage (your choice); this ability damage can be healed by a DC [[15]] Heal check (you gain a +[[10]] insight bonus when making that check)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "redirect force": {
+      "conditionals": [
+        {
+          "name": "Redirect Force: Activation: when using a feat that lets you perform a combat maneuver without provoking attacks of opportunity, choose to provoke them anyway; Effect: if you take damage from the resulting attack(s) of opportunity, add that damage as a bonus on this maneuver's attack roll instead of applying it as a penalty",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "slow reactions*": {
+      "conditionals": [
+        {
+          "name": "Slow Reactions: Effect: a creature damaged by your sneak attack cannot make attacks of opportunity for [[1]] round",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "accurate poisoner": {
+      "conditionals": [
+        {
+          "name": "Accurate Poisoner: Cost: forgo this attack's sneak attack damage; Effect: increase the duration of the poison on your weapon by [[2]] (using its normal duration unit, e.g. rounds or minutes)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "ambuscading grapple": {
+      "conditionals": [
+        {
+          "name": "Ambuscading Grapple: Activation: succeed at a grapple combat maneuver check against an unaware opponent; Effect: immediately deal sneak attack damage to the target; this counts as a sneak attack hit for other abilities and talents",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "armor piercer": {
+      "conditionals": [
+        {
+          "name": "Armor Piercer: Cost: forgo one or more sneak attack dice; Effect: reduce the target's natural armor bonus by an amount equal to the sneak attack dice forgone (minimum +[[0]]) until the end of your next turn; the same creature can't be affected by this again for [[1]] minute",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "befuddling strike": {
+      "conditionals": [
+        {
+          "name": "Befuddling Strike: Effect: on a hit that deals sneak attack damage, the target takes a [[-2]] penalty on attack rolls against you for [[1d4]] rounds",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "confounding blades": {
+      "conditionals": [
+        {
+          "name": "Confounding Blades: Effect: on a hit with a melee weapon that deals sneak attack damage, the target cannot make attacks of opportunity for [[1d4+1]] rounds",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "demand attention": {
+      "conditionals": [
+        {
+          "name": "Demand Attention: Cost: forgo this attack's sneak attack damage; Activation: the first time this round you deal sneak attack damage to an opponent; Save: Will DC [[10]] + sneak attack dice sacrificed + your Charisma modifier; Effect: on a failure the target is distracted until the start of your next turn, treating creatures beyond [[30]] feet as unobserved (allowing Stealth against it) and automatically failing Perception checks against creatures more than [[30]] feet away",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "disabling stunt": {
+      "conditionals": [
+        {
+          "name": "Disabling Stunt: Activation: standard action, Disable Device check against the target construct's CMD (no attack of opportunity); Effect: on a success, ignore the construct's damage reduction when dealing sneak attack damage for [[1]] minute",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "dispelling attack": {
+      "conditionals": [
+        {
+          "name": "Dispelling Attack: Effect: on a hit that deals sneak attack damage, the target is subjected to a targeted dispel magic (targeting its lowest-level active spell effect) at caster level [[@classes.rogue.level]]",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "distracting attack": {
+      "conditionals": [
+        {
+          "name": "Distracting Attack: Cost: forgo this attack's sneak attack damage; Activation: hit a creature with a melee attack that deals sneak attack damage; Effect: the target becomes flat-footed against one ally you choose (not yourself) until the start of your next turn; creatures with uncanny dodge are immune",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "entanglement of blades": {
+      "conditionals": [
+        {
+          "name": "Entanglement of Blades: Effect: on a hit with a melee attack that deals sneak attack damage, the target cannot take a [[5]]-foot step until the start of your next turn",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "flying stunt": {
+      "conditionals": [
+        {
+          "name": "Flying Stunt: Activation: swift action, Fly check against the target's CMD, while charging that target from above; Effect: on a success, this attack deals additional precision damage (not multiplied on a critical hit); creatures immune to sneak attack are immune to this damage",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "@abilities.dex.mod",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "hamstring strike": {
+      "conditionals": [
+        {
+          "name": "Hamstring Strike: Cost: forgo this attack's sneak attack damage; Effect: the target is knocked prone and unable to take move actions during its next turn; Save: Fortitude DC [[ 10 + floor(@classes.rogue.level / 2) + @abilities.dex.mod ]] negates",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "harrow strike": {
+      "conditionals": [
+        {
+          "name": "Harrow Strike: Cost: [[1]] use per day (an additional use at [[15]]th and [[20]]th level), forgo this attack's sneak attack damage; Activation: draw a random card from a Harrow deck before making the attack; Effect: on a hit, instead of sneak attack damage, deal ability damage equal to your number of sneak attack dice to the ability score matching the drawn card's suit",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "hunters surprise": {
+      "conditionals": [
+        {
+          "name": "Hunter's Surprise: Cost: [[1]] use per day; Activation: designate an adjacent enemy as your prey; Effect: until the end of your next turn, your attacks against your prey deal sneak attack damage even without flanking it or it being flat-footed",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "improved shadows chill": {
+      "conditionals": [
+        {
+          "name": "Improved Shadow's Chill: Effect: on a hit with a melee weapon that deals sneak attack damage, the sneak attack damage is cold damage instead of its normal type (normal weapon damage is unaffected)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "knock-out blow": {
+      "conditionals": [
+        {
+          "name": "Knock-Out Blow: Cost: [[1]] use per day, forgo this attack's sneak attack damage (and any effect that triggers on dealing sneak attack damage); Activation: declare before making the attack; Effect: on a hit, the target falls unconscious for [[1d4]] rounds; Save: Fortitude DC [[ 10 + floor(@classes.rogue.level / 2) + @abilities.int.mod ]] reduces this to staggered for [[1]] round instead",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "sacred sneak attack": {
+      "conditionals": [
+        {
+          "name": "Sacred Sneak Attack: Effect: against undead or evil outsiders, your sneak attack damage is treated as good-aligned for the purpose of overcoming damage reduction (normal weapon damage is unaffected)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "set-up": {
+      "conditionals": [
+        {
+          "name": "Set-Up: Cost: forgo this attack's sneak attack damage; Activation: hit a target with a sneak attack in melee; Effect: the first melee attack an adjacent ally makes against the target before the start of your next turn treats the target as flanked",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "slow reactions": {
+      "conditionals": [
+        {
+          "name": "Slow Reactions: Effect: a creature damaged by your sneak attack cannot make attacks of opportunity for [[1]] round",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "sneaky maneuver": {
+      "conditionals": [
+        {
+          "name": "Sneaky Maneuver: Cost: forgo this attack's sneak attack damage, take a penalty on this attack roll; Effect: on a hit, deal weapon damage as normal, then attempt a dirty trick, disarm, steal, sunder, or trip combat maneuver as a swift action (this still provokes attacks of opportunity unless you have a way to avoid them)",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "-2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "sniper20s eye": {
+      "conditionals": [
+        {
+          "name": "Sniper's Eye: Activation: ranged attack against a foe with concealment (not total concealment) within [[30]] feet; Effect: your sneak attack damage applies to this attack",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "stem the flow": {
+      "conditionals": [
+        {
+          "name": "Stem the Flow: Cost: forgo [[3d6]] points of sneak attack damage; Activation: hit a creature capable of channeling energy with a sneak attack; Effect: the target cannot channel energy for a number of rounds equal to half your rogue level",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "swimming stunt": {
+      "conditionals": [
+        {
+          "name": "Swimming Stunt: Cost: forgo one or more sneak attack dice; Activation: free action, Swim check against the target's CMD, once per round, while attacking an opponent underwater with an attack that qualifies for sneak attack damage; Effect: on a successful Swim check and a hit that deals sneak attack damage, reduce the rounds the target can hold its breath by [[1]] per die forgone",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "underhanded": {
+      "conditionals": [
+        {
+          "name": "Underhanded: Cost: [[1]] use per day per point of Charisma modifier (minimum [[0]]), usable only during the surprise round with a concealed weapon your opponent didn't know about; Effect: your sneak attack damage on this hit is the maximum possible instead of rolled",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "flurry of stars": {
+      "conditionals": [
+        {
+          "name": "Flurry of Stars: Cost: [[1]] ki; Activation: swift action before a full attack with shuriken; Effect: throw [[2]] additional shuriken attacks at your highest attack bonus, but all of your shuriken attacks this round (including these) take a penalty",
+          "default": false,
+          "tier": "B",
+          "modifiers": [
+            {
+              "formula": "-2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "positioning attack": {
+      "conditionals": [
+        {
+          "name": "Positioning Attack: Cost: [[1]]/day; Effect: on a hit with this melee attack, move up to [[30]] feet without provoking attacks of opportunity, ending adjacent to the target",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
+      ]
+    },
+    "toxic regurgitation": {
+      "conditionals": [
+        {
+          "name": "Toxic Regurgitation: Activation: spit up a suspended poison as a ranged touch attack against a creature within [[10]] ft (no attack of opportunity provoked); Effect: on a hit, the target is exposed to the poison as if it were a contact poison",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
+      ]
+    }
+  },
+  "slayer_talents": {
+    "assassinate": {
+      "conditionals": [
+        {
+          "name": "Assassinate: Activation: spend a standard action studying the target for [[1]] round, then hit it with a sneak attack while it is denied its Dexterity bonus to AC (this automatically fails if the target recognizes you as an enemy); Save: Fortitude DC [[ 10 + floor(@classes.ninja.level / 2) + @abilities.cha.mod ]] negates; Effect: the target dies on a failed save; on a success it still takes the sneak attack damage as normal and becomes immune to your assassinate ability for [[1]] day",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "accurate poisoner": {
+      "conditionals": [
+        {
+          "name": "Accurate Poisoner: Cost: forgo this attack's sneak attack damage; Effect: increase the duration of the poison on your weapon by [[2]] (using its normal duration unit, e.g. rounds or minutes)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "ambuscading grapple": {
+      "conditionals": [
+        {
+          "name": "Ambuscading Grapple: Activation: succeed at a grapple combat maneuver check against an unaware opponent; Effect: immediately deal sneak attack damage to the target; this counts as a sneak attack hit for other abilities and talents",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "armor piercer": {
+      "conditionals": [
+        {
+          "name": "Armor Piercer: Cost: forgo one or more sneak attack dice; Effect: reduce the target's natural armor bonus by an amount equal to the sneak attack dice forgone (minimum +[[0]]) until the end of your next turn; the same creature can't be affected by this again for [[1]] minute",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "befuddling strike": {
+      "conditionals": [
+        {
+          "name": "Befuddling Strike: Effect: on a hit that deals sneak attack damage, the target takes a [[-2]] penalty on attack rolls against you for [[1d4]] rounds",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "confounding blades": {
+      "conditionals": [
+        {
+          "name": "Confounding Blades: Effect: on a hit with a melee weapon that deals sneak attack damage, the target cannot make attacks of opportunity for [[1d4+1]] rounds",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "demand attention": {
+      "conditionals": [
+        {
+          "name": "Demand Attention: Cost: forgo this attack's sneak attack damage; Activation: the first time this round you deal sneak attack damage to an opponent; Save: Will DC [[10]] + sneak attack dice sacrificed + your Charisma modifier; Effect: on a failure the target is distracted until the start of your next turn, treating creatures beyond [[30]] feet as unobserved (allowing Stealth against it) and automatically failing Perception checks against creatures more than [[30]] feet away",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "disabling stunt": {
+      "conditionals": [
+        {
+          "name": "Disabling Stunt: Activation: standard action, Disable Device check against the target construct's CMD (no attack of opportunity); Effect: on a success, ignore the construct's damage reduction when dealing sneak attack damage for [[1]] minute",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "dispelling attack": {
+      "conditionals": [
+        {
+          "name": "Dispelling Attack: Effect: on a hit that deals sneak attack damage, the target is subjected to a targeted dispel magic (targeting its lowest-level active spell effect) at caster level [[@classes.rogue.level]]",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "distracting attack": {
+      "conditionals": [
+        {
+          "name": "Distracting Attack: Cost: forgo this attack's sneak attack damage; Activation: hit a creature with a melee attack that deals sneak attack damage; Effect: the target becomes flat-footed against one ally you choose (not yourself) until the start of your next turn; creatures with uncanny dodge are immune",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "entanglement of blades": {
+      "conditionals": [
+        {
+          "name": "Entanglement of Blades: Effect: on a hit with a melee attack that deals sneak attack damage, the target cannot take a [[5]]-foot step until the start of your next turn",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "flying stunt": {
+      "conditionals": [
+        {
+          "name": "Flying Stunt: Activation: swift action, Fly check against the target's CMD, while charging that target from above; Effect: on a success, this attack deals additional precision damage (not multiplied on a critical hit); creatures immune to sneak attack are immune to this damage",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "@abilities.dex.mod",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "hamstring strike": {
+      "conditionals": [
+        {
+          "name": "Hamstring Strike: Cost: forgo this attack's sneak attack damage; Effect: the target is knocked prone and unable to take move actions during its next turn; Save: Fortitude DC [[ 10 + floor(@classes.rogue.level / 2) + @abilities.dex.mod ]] negates",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "harrow strike": {
+      "conditionals": [
+        {
+          "name": "Harrow Strike: Cost: [[1]] use per day (an additional use at [[15]]th and [[20]]th level), forgo this attack's sneak attack damage; Activation: draw a random card from a Harrow deck before making the attack; Effect: on a hit, instead of sneak attack damage, deal ability damage equal to your number of sneak attack dice to the ability score matching the drawn card's suit",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "hunters surprise": {
+      "conditionals": [
+        {
+          "name": "Hunter's Surprise: Cost: [[1]] use per day; Activation: designate an adjacent enemy as your prey; Effect: until the end of your next turn, your attacks against your prey deal sneak attack damage even without flanking it or it being flat-footed",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "improved shadows chill": {
+      "conditionals": [
+        {
+          "name": "Improved Shadow's Chill: Effect: on a hit with a melee weapon that deals sneak attack damage, the sneak attack damage is cold damage instead of its normal type (normal weapon damage is unaffected)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "knock-out blow": {
+      "conditionals": [
+        {
+          "name": "Knock-Out Blow: Cost: [[1]] use per day, forgo this attack's sneak attack damage (and any effect that triggers on dealing sneak attack damage); Activation: declare before making the attack; Effect: on a hit, the target falls unconscious for [[1d4]] rounds; Save: Fortitude DC [[ 10 + floor(@classes.rogue.level / 2) + @abilities.int.mod ]] reduces this to staggered for [[1]] round instead",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "sacred sneak attack": {
+      "conditionals": [
+        {
+          "name": "Sacred Sneak Attack: Effect: against undead or evil outsiders, your sneak attack damage is treated as good-aligned for the purpose of overcoming damage reduction (normal weapon damage is unaffected)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "set-up": {
+      "conditionals": [
+        {
+          "name": "Set-Up: Cost: forgo this attack's sneak attack damage; Activation: hit a target with a sneak attack in melee; Effect: the first melee attack an adjacent ally makes against the target before the start of your next turn treats the target as flanked",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "slow reactions": {
+      "conditionals": [
+        {
+          "name": "Slow Reactions: Effect: a creature damaged by your sneak attack cannot make attacks of opportunity for [[1]] round",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "sneaky maneuver": {
+      "conditionals": [
+        {
+          "name": "Sneaky Maneuver: Cost: forgo this attack's sneak attack damage, take a penalty on this attack roll; Effect: on a hit, deal weapon damage as normal, then attempt a dirty trick, disarm, steal, sunder, or trip combat maneuver as a swift action (this still provokes attacks of opportunity unless you have a way to avoid them)",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "-2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "sniper20s eye": {
+      "conditionals": [
+        {
+          "name": "Sniper's Eye: Activation: ranged attack against a foe with concealment (not total concealment) within [[30]] feet; Effect: your sneak attack damage applies to this attack",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "stem the flow": {
+      "conditionals": [
+        {
+          "name": "Stem the Flow: Cost: forgo [[3d6]] points of sneak attack damage; Activation: hit a creature capable of channeling energy with a sneak attack; Effect: the target cannot channel energy for a number of rounds equal to half your rogue level",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "swimming stunt": {
+      "conditionals": [
+        {
+          "name": "Swimming Stunt: Cost: forgo one or more sneak attack dice; Activation: free action, Swim check against the target's CMD, once per round, while attacking an opponent underwater with an attack that qualifies for sneak attack damage; Effect: on a successful Swim check and a hit that deals sneak attack damage, reduce the rounds the target can hold its breath by [[1]] per die forgone",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "underhanded": {
+      "conditionals": [
+        {
+          "name": "Underhanded: Cost: [[1]] use per day per point of Charisma modifier (minimum [[0]]), usable only during the surprise round with a concealed weapon your opponent didn't know about; Effect: your sneak attack damage on this hit is the maximum possible instead of rolled",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "jaguars grace": {
+      "conditionals": [
+        {
+          "name": "Jaguar's Grace: Effect: no [[4]] penalty for dealing nonlethal damage with a weapon that normally deals lethal damage; sneak attack damage can apply as nonlethal",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "4",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "jaguars pounce": {
+      "conditionals": [
+        {
+          "name": "Jaguar's Pounce: Effect: on a sneak attack hit, attempt a disarm or trip combat maneuver as an immediate action, treating the target as flat-footed (no Dex bonus to CMD); this maneuver does not provoke an attack of opportunity",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "marksmans shot": {
+      "conditionals": [
+        {
+          "name": "Marksman's Shot: Activation: attack action, single ranged attack at your highest attack bonus against your studied target; Effect: on a hit, double your sneak attack dice (no effect if the attack was not a sneak attack)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "mountainside ambush": {
+      "conditionals": [
+        {
+          "name": "Mountainside Ambush: Effect: when dealing sneak attack damage to a foe unaware of your presence while you stand on higher solid ground, the sneak attack dice deal maximum damage instead of being rolled",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "redirect poison": {
+      "conditionals": [
+        {
+          "name": "Redirect Poison: Cost: immediate action; Range: melee attack against a creature within your reach; Effect: on a hit, redirect a poison that just missed you onto the target instead (the target attempts its save against the poison as normal); this attack deals no damage of its own",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "slowing strike*": {
+      "conditionals": [
+        {
+          "name": "Slowing Strike: Save: Fortitude DC [[10 + floor(@classes.slayer.level / 2) + @abilities.int.mod]] negates; Effect: on a sneak attack hit, halve the target's speed for one movement type of your choice for [[1d4]] rounds; if you affect its flight speed, its maneuverability drops one step and it falls if airborne unless it succeeds at a DC [[10]] Fly check; if the target is already affected, instead extend the duration by [[1d4]] rounds or choose a different movement type to affect",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "swallow reversal": {
+      "conditionals": [
+        {
+          "name": "Swallow Reversal: Cost: usable at will, but only once per target per day; Activation: attack action, single melee attack against your studied target at your highest base attack bonus; Effect: roll the attack twice and use the higher result; a critical threat is confirmed normally",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "positioning attack": {
+      "conditionals": [
+        {
+          "name": "Positioning Attack: Cost: [[1]]/day; Effect: on a hit with this melee attack, move up to [[30]] feet without provoking attacks of opportunity, ending adjacent to the target",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
+      ]
+    },
+    "toxic regurgitation": {
+      "conditionals": [
+        {
+          "name": "Toxic Regurgitation: Activation: spit up a suspended poison as a ranged touch attack against a creature within [[10]] ft (no attack of opportunity provoked); Effect: on a hit, the target is exposed to the poison as if it were a contact poison",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
+      ]
+    }
+  },
+  "vigilante_talents": {
+    "brutal maneuver": {
+      "conditionals": [
+        {
+          "name": "Brutal Maneuver: Cost: take a penalty on all your attack rolls this round; Activation: performing a combat maneuver (disarm, sunder, trip, etc.) with a weapon, natural attack, or unarmed strike in place of a melee attack; Effect: on a success, deal damage to the target as if you had hit it with a normal attack from that weapon",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "-5",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "deceitful trick": {
+      "conditionals": [
+        {
+          "name": "Deceitful Trick: Cost: take a penalty on this combat maneuver check; Activation: performing a dirty trick combat maneuver in place of your first attack during a full attack; Effect: on a success, inflict two different conditions instead of one (the target can remove both as a standard action); requires Improved and Greater Dirty Trick",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "-4",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "expose weaknesses": {
+      "conditionals": [
+        {
+          "name": "Expose Weaknesses: Effect: as an additional option for a dirty trick combat maneuver, reduce the target's damage reduction or hardness by [[10]] (doesn't stack with itself; no effect against DR/—)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "favored maneuver": {
+      "conditionals": [
+        {
+          "name": "Favored Maneuver: Effect: gain a circumstance bonus on this combat maneuver check (your favored maneuver) against a foe unaware of your presence at the start of the check",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "circumstance",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "gator wrangle": {
+      "conditionals": [
+        {
+          "name": "Gator Wrangle: Effect: (avenger) deal bonus damage equal to half your vigilante level against a creature that is grappling you",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "floor(@classes.vigilante.level/2)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "mighty ambush": {
+      "conditionals": [
+        {
+          "name": "Mighty Ambush: Cost: [[1]] use per round; Activation: succeed at a hidden strike with this attack; Effect: the target immediately falls unconscious for [[1d4]] rounds; Save: Fortitude DC [[ 10 + floor(@classes.vigilante.level / 2) + max(@abilities.str.mod, @abilities.dex.mod) ]] negates; regardless of the save, the target can't be affected by your mighty ambush again for [[24]] hours; stalker vigilante of at least 10th level only",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "pull into the shadows": {
+      "conditionals": [
+        {
+          "name": "Pull into the Shadows: Cost: full-round action (move up to your speed, then make a single attack); Activation: target is unaware of your presence or considers you an ally (not a true ally or willing target); Effect: if this attack hits, attempt a drag combat maneuver against the target with a +[[4]] bonus and without provoking an attack of opportunity; if the drag succeeds, you don't need movement remaining to move with the target",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "shackle smash": {
+      "conditionals": [
+        {
+          "name": "Shackle Smash: Effect: this sunder combat maneuver check (or Strength check to break an object) makes no more noise than normal talking; ignore half the target object's hardness against nonmagical objects and when attempting the sunder",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "strike the unseen": {
+      "conditionals": [
+        {
+          "name": "Strike the Unseen: Activation: attack a target that has total concealment (or, at 10th level, any concealment) from you; Effect: your hidden strike damage applies to this attack as though the target could be struck normally (at 10th level, all types of precision damage apply)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "sucker punch": {
+      "conditionals": [
+        {
+          "name": "Sucker Punch: Activation: attack a foe unaware of your presence (or who views you as an ally) and deal nonlethal damage; Effect: this attack deals additional nonlethal damage that grows with level; avenger vigilante only",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(1 + floor(@classes.vigilante.level/6))d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "surprise strike": {
+      "conditionals": [
+        {
+          "name": "Surprise Strike: Effect: gain a bonus on this attack roll against a foe denied its Dexterity bonus to AC",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "ifelse(gte(@classes.vigilante.level,16),3,ifelse(gte(@classes.vigilante.level,8),2,1))",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "take 'em alive": {
+      "conditionals": [
+        {
+          "name": "Take 'em Alive: Activation: this attack deals only nonlethal damage and has no secondary effects (such as poison); Effect: no [[-4]] penalty for dealing nonlethal damage with a weapon that normally deals lethal damage, plus a bonus on this attack and damage roll that grows with level",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "min(5,1+floor(max(0,@classes.vigilante.level-2)/3))",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "min(5,1+floor(max(0,@classes.vigilante.level-2)/3))",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "turnabout": {
+      "conditionals": [
+        {
+          "name": "Turnabout: Activation: in place of an attack of opportunity, attempt a dirty trick combat maneuver check against the foe that provoked it by attacking or casting a spell; Effect: on a success, in addition to the usual dirty trick options, redirect the foe's attack or spell to a new target or area it could have chosen",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "vortex splash": {
+      "conditionals": [
+        {
+          "name": "Vortex Splash: Cost: full-round action; Activation: while in rain or standing waist-deep in water; Effect: attempt a single dirty trick combat maneuver or feint (your choice per target) against each foe adjacent to you",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "twisting fear": {
+      "conditionals": [
+        {
+          "name": "Twisting Fear: Activation: whenever this attack causes the target to gain the shaken, frightened, or panicked condition; Effect: the target also takes nonlethal damage equal to your reduced hidden strike damage, as the stress wears on its body (a creature can't take this damage more than once per round); stalker vigilante only",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
+      ]
+    },
+    "up close and personal": {
+      "conditionals": [
+        {
+          "name": "Up Close and Personal: Cost: swift action; Activation: attempting an Acrobatics check to move through an opponent's space during a move action; Effect: make a single melee attack against that opponent; if the Acrobatics check succeeds, this attack deals hidden strike damage as if the target were unaware of you, otherwise it deals the hidden strike damage you'd deal against a target denied its Dexterity bonus to AC; stalker vigilante of at least 4th level only",
+          "default": false,
+          "tier": "B",
+          "modifiers": []
+        }
       ]
     }
   }

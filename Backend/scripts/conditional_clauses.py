@@ -193,6 +193,34 @@ def spell_save_dc_clause(save_block):
     return f"Save: {t} DC {DC_SPELL} {res}".strip()
 
 
+# --- CLASS FEATURE clause builders ---------------------------------------------------------------
+# section -> (class whose level scales the DC, key ability, how the ability was decided). Read off
+# the pools' own DC sentences where they exist; see class_feature_save_dc() for what the confidence
+# values mean. Fighter trainings state no DCs at all.
+CLASS_FEATURE_DC = {
+    'rage_powers':          ('barbarian',    'str', 'varies'),
+    'ki_powers':            ('monk',         'wis', 'assumed'),
+    'discoveries':          ('alchemist',    'int', 'assumed'),
+    'hexes':                ('witch',        'int', 'varies'),
+    'rogue_talents':        ('rogue',        'int', 'assumed'),
+    # Cha 9 / Int 6 across the pool's own DC sentences, plus stray Wis/Dex from shared rogue talents:
+    # ki-powered tricks key off Charisma, the inherited rogue ones off Intelligence. Read the power.
+    'ninja_talents':        ('ninja',        'cha', 'varies'),
+    'slayer_talents':       ('slayer',       'int', 'stated'),
+    'investigator_talents': ('investigator', 'int', 'assumed'),
+    'vigilante_talents':    ('vigilante',    'cha', 'assumed'),
+    'social_talents':       ('vigilante',    'cha', 'assumed'),
+    'arcana':               ('magus',        'int', 'stated'),
+    'mercy':                ('paladin',      'cha', 'assumed'),
+    'cruelty':              ('antipaladin',  'cha', 'assumed'),
+    'exploits':             ('arcanist',     'cha', 'stated'),
+    'mysteries':            ('oracle',       'cha', 'stated'),
+    'curses':               ('oracle',       'cha', 'stated'),
+    'armor_training':       (None,           None,  'none'),
+    'weapon_training':      (None,           None,  'none'),
+}
+
+
 # --- TALENT clause builders ----------------------------------------------------------------------
 _SP_ANY_RE = re.compile(
     r'spend(?:s|ing)?\s+(?:\[\[)?\s*(?:a|\d+)\s*(?:\]\])?\s+spell\s+points?', re.IGNORECASE)
@@ -215,6 +243,27 @@ def talent_fix_spellpoint(rider, benefit):
         return rider
     plural = 's' if n != 1 else ''
     return _SP_ANY_RE.sub(f"spend [[{n}]] spell point{plural}", rider)
+
+
+def class_feature_save_dc(section):
+    """(dc_formula, confidence) for a class-choice pool's save DC, or (None, 'none').
+
+    A power's own text almost never states its DC (rage powers 0 of 173, ki powers 0 of 9, hexes 6 of
+    59, arcana 17 of 122), so the formula comes from the POOL: PF1's "10 + 1/2 class level + key
+    ability". Confidence says how the ability was decided, and is carried into the worklist so a
+    curator knows when to check the power's own words first:
+      stated  -- the pool's own text spells this ability out
+      varies  -- the pool mixes abilities (rage powers use Str, Cha and Con; the hexes pool holds
+                 shaman hexes, which key off Wis rather than the witch's Int)
+      assumed -- no DC anywhere in the pool; the class's key ability, to be confirmed on use
+    See docs/class_feature_conditional_decision_rules.md.
+    """
+    entry = CLASS_FEATURE_DC.get(section)
+    if not entry or not entry[0]:
+        return None, 'none'
+    cls, ability, confidence = entry
+    formula = f"[[ 10 + floor(@classes.{cls}.level / 2) + @abilities.{ability}.mod ]]"
+    return formula, confidence
 
 
 def talent_range_clause(benefit):

@@ -749,5 +749,1821 @@
         "critical": "normal"
       }
     ]
+  },
+  "Adept Champion": {
+    "name": "Adept Champion: Activation: swift action at the start of your turn while using smite evil; Effect: forgo this attack's smite evil damage bonus to instead gain half that bonus on combat maneuver checks against the smite target until the start of your next turn",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Ankle Biter": {
+    "name": "Ankle Biter: Activation: immediate action when you are the target of a combat maneuver, or swift action each round while grappled or pinned; Effect: bite the attacker for damage appropriate to your size (usually [[1d4]]) without provoking an attack of opportunity, and gain a bonus equal to the damage dealt on checks to break the grapple",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Banishing Critical": {
+    "name": "Banishing Critical: Activation: on confirming a critical hit with a slashing or bludgeoning weapon; Save: target takes a -[[4]] penalty on its Will save; Effect: cast dismissal or banishment on the target as an immediate action",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Beartrap Bite": {
+    "name": "Beartrap Bite: Activation: on confirming a critical hit with your bite attack if the confirmation roll meets or exceeds the target's CMD; Effect: clamp down on the target as a free action, preventing it from moving away until you release the bite as a swift action or it breaks free with a combat maneuver or Escape Artist check",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Bewildering Koan": {
+    "name": "Bewildering Koan: Cost: [[1]] ki point; Activation: swift action, Bluff check vs the target; Effect: on a failed check, the target loses its next action, or you gain a bonus on damage rolls against it for [[1]] round",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Bloody Assault": {
+    "name": "Bloody Assault: Effect: melee attacks and combat maneuver checks also deal [[1d4]] bleed damage",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-5",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Bludgeoner": {
+    "name": "Bludgeoner: Effect: deal nonlethal damage with a bludgeoning weapon at no [[-4]] penalty",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Boar Shred": {
+    "name": "Boar Shred: Effect: while using Boar Style, tearing an opponent's flesh also deals [[1d6]] bleed damage at the start of its turn",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Boar Style": {
+    "name": "Boar Style: Effect: hitting a single foe with two or more unarmed strikes this round tears its flesh, dealing an additional [[2d6]] bleed damage once per round",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Body Shield": {
+    "name": "Body Shield: Activation: immediate action while grappling an adjacent creature; Effect: make a grapple check to gain cover against a single attack; if that attack misses you, it instead strikes the grappled creature using the same attack roll",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Bullying Blow": {
+    "name": "Bullying Blow: Effect: on damaging the target, make an Intimidate check to demoralize it as a free action",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Butterfly's Sting": {
+    "name": "Butterfly's Sting: Effect: forgo this critical hit's extra damage; the next ally who hits the target with a melee attack before the start of your next turn automatically confirms a critical hit",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Chainbreaker": {
+    "name": "Chainbreaker: Effect: bonus damage against an opponent known to own or trade in slaves, once per round",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "floor(@attributes.hd.total/4)",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Chokehold": {
+    "name": "Chokehold: Effect: on a successful grapple check, pin the opponent in a chokehold that prevents breathing, speech, and verbal spellcasting until the grapple ends",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-5",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Crane Riposte": {
+    "name": "Crane Riposte: Effect: fighting defensively costs only [[-1]] on attack rolls instead of the normal penalty; while fighting defensively, an attack you deflect with Crane Wing that misses provokes an attack of opportunity from you, and deflecting an attack with Crane Wing during total defense lets you make an attack of opportunity against that attacker",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Crane Style": {
+    "name": "Crane Style: Effect: fighting defensively costs only [[-2]] on attack rolls instead of the normal penalty, and grants an additional +[[1]] dodge bonus to AC while fighting defensively or using total defense",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Dauntless Destiny": {
+    "name": "Dauntless Destiny: Cost: [[1]]/day; Effect: reroll a natural [[1]] on a saving throw or attack roll; if the reroll succeeds, make an Intimidate check to demoralize the target as a free action",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Dazing Assault": {
+    "name": "Dazing Assault: Save: Fortitude DC [[ 10 + @attributes.bab.total ]] negates; Effect: melee attacks also daze the target for [[1]] round",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-5",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Death or Glory": {
+    "name": "Death or Glory: Effect: against a Large or larger creature, make a single attack as a full-round action with a +[[4]] bonus (+[[5]] at base attack bonus +[[11]], +[[6]] at +[[16]], +[[7]] at +[[20]]) on the attack roll, damage roll, and critical confirmation roll; the target may make a single melee attack against you with the same bonuses as an immediate action",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Desperate Swing": {
+    "name": "Desperate Swing: Cost: [[1]]/day; Effect: make a single melee attack while taking the total defense action; gain a +[[4]] bonus on critical confirmation rolls while fighting defensively or making an attack of opportunity with this feat",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-4",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Destroyer's Blessing": {
+    "name": "Destroyer's Blessing: Effect: while raging, succeeding at a sunder combat maneuver regains [[1]] round of rage; if the sunder breaks the object, also heal [[1]] hit point (once per round)",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Dimensional Maneuvers": {
+    "name": "Dimensional Maneuvers: Effect: while using Dimensional Dervish, bonus on combat maneuver checks to bull rush, disarm, reposition, or trip",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "4",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Djinni Spin": {
+    "name": "Djinni Spin: Cost: [[2]] Elemental Fist attempts; Activation: standard action while using Djinni Style; Save: Fortitude DC [[ 10 + floor(@attributes.hd.total/2) + @abilities.wis.mod ]] halves damage and negates deafened; Effect: adjacent creatures take your unarmed strike damage plus Elemental Fist electricity damage and are deafened for [[1d4]] rounds",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Draconic Breath": {
+    "name": "Draconic Breath: Cost: [[1]]/day; Activation: standard action, does not provoke attacks of opportunity; Save: Reflex DC [[ 10 + @attributes.hd.total + @abilities.con.mod ]] halves; Effect: breath weapon deals [[2d6]] damage of your scale's energy type in a line or cone (per Draconic Aspect or dragon-scaled trait color)",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Dragon Ferocity": {
+    "name": "Dragon Ferocity: Effect: while using Dragon Style, on a critical hit or a successful Stunning Fist attempt, the target is also shaken for [[1d4]] rounds plus your Strength bonus",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "floor(@abilities.str.mod/2)",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Dragon Roar": {
+    "name": "Dragon Roar: Cost: [[2]] Stunning Fist attempts; Activation: standard action; Range: [[15]]-foot cone; Save: Will DC [[ 10 + floor(@attributes.hd.total/2) + @abilities.wis.mod ]] half damage and negates shaken; Effect: deals your unarmed strike damage and shakens targets for [[1d4]] rounds",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Dragon Style": {
+    "name": "Dragon Style: Effect: add half your Strength bonus to unarmed strike damage on your first unarmed strike each round",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "floor(@abilities.str.mod/2)",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Earth Child Style": {
+    "name": "Earth Child Style: Effect: add your Wisdom bonus to unarmed strike damage against creatures of the giant subtype",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.wis.mod",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Earth Child Topple": {
+    "name": "Earth Child Topple: Effect: add your Wisdom bonus on trip combat maneuver checks and critical hit confirmation rolls against creatures of the giant subtype while using Earth Child Style",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.wis.mod",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Efreeti Style": {
+    "name": "Efreeti Style: Effect: add your Wisdom bonus to Elemental Fist fire damage; if the attack misses, still deal [[1d6]] fire damage",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.wis.mod",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Elemental Fist": {
+    "name": "Elemental Fist: Activation: declare before the attack roll; Effect: on a hit, deal an extra [[1d6]] damage of the chosen energy type (acid, cold, electricity, or fire)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "tier": "A"
+  },
+  "Fearless Zeal": {
+    "name": "Fearless Zeal: Cost: [[1]]/day; Activation: applied after the attack roll but before the result is known; Effect: +[[2]] bonus to the attack roll (+[[4]] at [[10]] or more Hit Dice)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "ifelse(gte(@attributes.hd.total,10),4,2)",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Felling Smash": {
+    "name": "Felling Smash: Cost: swift action; Activation: after hitting with a single attack while using Power Attack; Effect: attempt a free trip combat maneuver against that opponent",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Flaying Critical": {
+    "name": "Flaying Critical: Effect: on a critical hit, reduce the target's natural armor bonus by [[1]] (cumulative, minimum [[0]]) for the encounter",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Flensing Strike": {
+    "name": "Flensing Strike: Effect: if the sneak attack causes bleed damage, the target is sickened and its natural armor bonus is reduced by an amount equal to your sneak attack dice for as long as the bleed persists (cumulative, up to the target's full natural armor)",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Footslasher": {
+    "name": "Footslasher: Activation: standard action only, requires a piercing or slashing weapon against a larger foe; Effect: on a hit dealing at least [[1]] point of damage, halve the target's speed for [[24]] hours until treated with a DC [[15]] Heal check or magical healing",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Furious Focus": {
+    "name": "Furious Focus: Effect: negate the Power Attack penalty on your first attack this turn (requires a two-handed weapon or two hands on a one-handed weapon)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1+floor(@attributes.bab.total/4)",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Gore Fiend": {
+    "name": "Gore Fiend: Effect: while raging, regain [[1]] round of rage when you confirm a critical hit with a melee weapon or an enemy confirms a critical hit against you (once per round)",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Greater Whip Mastery": {
+    "name": "Greater Whip Mastery: Effect: while grappling with your whip, deal your whip's weapon damage instead of unarmed strike damage; attempting to tie up a foe you have grappled (not pinned) takes only a [[-5]] penalty instead of the normal [[-10]]",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Hamatula Grasp": {
+    "name": "Hamatula Grasp: Effect: attempt a grapple combat maneuver against an impaled opponent using the impaling weapon at only a [[-2]] penalty; on a success, deal an extra [[1d6]] damage",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "tier": "A"
+  },
+  "Hammer the Gap": {
+    "name": "Hammer the Gap: Effect: each consecutive hit against the same target this turn deals extra damage equal to the number of prior consecutive hits you have made against it this turn (multiplied on a critical hit); apply manually per attack",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Harrowed": {
+    "name": "Harrowed: Cost: [[1]]/day (Harrow card draw); Activation: applied after the roll but before the result is known; Effect: +[[2]] bonus to the attack roll if the drawn card's suit matches",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Hold the Blade": {
+    "name": "Hold the Blade: Cost: -[[4]] AC until your next turn; Activation: immediate action when a flanking or sneak attack melee hit damages you (once per round); Effect: attempt a disarm combat maneuver check against that attacker",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Impaling Critical": {
+    "name": "Impaling Critical: Effect: on a critical hit with the selected piercing weapon, impale the target; each round it takes damage equal to your weapon's damage dice plus extra dice from weapon properties until the weapon is removed",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Improved Impaling Critical": {
+    "name": "Improved Impaling Critical: Effect: while impaling a foe with Impaling Critical, it must succeed at a grapple check (or spend a standard action if you have let go) to remove the weapon; until removed its speed is halved and maneuverability drops one step; when finally removed you may instead deal bleed damage equal to your weapon's damage dice once per round",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Improved Low Blow": {
+    "name": "Improved Low Blow: Cost: [[1]]/day (reroll only); Effect: +[[2]] bonus to confirm critical hits against larger opponents; once per day, reroll a failed confirmation roll and take the new result",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Improved Underhanded Teamwork": {
+    "name": "Improved Underhanded Teamwork: Activation: immediate action when an ally with this feat performs a dirty trick maneuver against a foe you both threaten; Effect: attempt your own dirty trick combat maneuver against the same foe to inflict a second condition (removing the first condition also removes this one)",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Janni Rush": {
+    "name": "Janni Rush: Activation: jump as part of a charge, then hit with an unarmed strike against the designated target; Effect: roll your unarmed strike's damage dice twice and add the results together before Strength and precision bonuses; the extra dice are not multiplied on a critical hit",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Ki Diversity": {
+    "name": "Ki Diversity: Cost: [[1]] ki point; Activation: swift action; Effect: choose a learned ki power - Bone Crusher (on a successful trip or disarm, deal unarmed strike damage), Dim Mak (your next Stunning Fist attempt is a melee touch attack), Mind of the Kensai (imbue a wielded weapon with the ki focus weapon special ability until your next turn), Wings of the Crane (deflect or catch a second missile weapon this round), or Zen Combatant (substitute Wisdom for Strength or Dexterity on melee or ranged attacks this round)",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Marid Spirit": {
+    "name": "Marid Spirit: Save: Fortitude DC [[ 10 + floor(@attributes.hd.total/2) + @abilities.wis.mod ]] negates; Effect: while using Marid Style, a target damaged by cold from your Elemental Fist becomes entangled in ice for [[1d4]] rounds (the ice has hit points equal to [[3]] times your base attack bonus and a break DC of [[15]] plus your base attack bonus)",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Marid Style": {
+    "name": "Marid Style: Effect: add your Wisdom bonus to cold damage dealt by Elemental Fist, and your unarmed strike reach increases by [[5]] feet",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.wis.mod",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "cold"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Merciful Bane": {
+    "name": "Merciful Bane: Cost: swift action; Effect: deal nonlethal damage with your bane weapon at no [[-4]] penalty",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Monkey Style": {
+    "name": "Monkey Style: Effect: while prone, take no penalty on melee attack rolls or to AC; stand up without provoking attacks of opportunity, or as a swift action with a DC [[20]] Acrobatics check",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "4",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Mounted Blade": {
+    "name": "Mounted Blade: Effect: after your Ride-By Attack hits, make an additional attack against a target adjacent to the original at a penalty",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-5",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Neckbreaker": {
+    "name": "Neckbreaker: Effect: attempt a Stunning Fist against a helpless or pinned opponent your size or smaller at a penalty; on a success, wrench its neck for [[2d6]] Strength or Dexterity damage (excess damage bleeds into Constitution once the targeted score reaches [[0]]); creatures immune to critical hits or lacking a discernible head and neck are immune",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-5",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Object Of Legend": {
+    "name": "Object Of Legend: Cost: [[1]] use per day; Activation: announce after threatening a critical hit, before the confirmation roll; Effect: gain a [[10]] bonus on the confirmation roll against a foe who specifically aims to stop you from completing your quest; does not stack with other confirmation-roll bonuses such as Critical Focus",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Panther Parry": {
+    "name": "Panther Parry: Effect: while using Panther Style, this retaliatory unarmed strike resolves before the triggering attack of opportunity; if it deals damage, that triggering attack takes a [[-2]] penalty on its attack and damage rolls",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Patient Strike": {
+    "name": "Patient Strike: Activation: ready this attack as a full-round action instead of a standard action; Effect: gain a bonus on the attack roll when the readied action triggers",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Perfect Strike": {
+    "name": "Perfect Strike: Cost: [[1]] use per day per [[4]] character levels, no more than once per round, weapon must be a kama, nunchaku, quarterstaff, sai, or siangham; Activation: declare before making the attack roll (a failed attack roll ruins the attempt); Effect: roll the attack roll twice and take the higher result (a threat on either roll can serve as the confirmation roll for the other, your choice if both are threats)",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Planar Wild Shape": {
+    "name": "Planar Wild Shape: Cost: an additional daily use of wild shape, to add the celestial or fiendish template to your animal form (good druids must use celestial, evil druids fiendish); Effect: on a critical threat with your form's natural weapons against an evil creature (celestial template) or a good creature (fiendish template), gain a [[2]] bonus on the confirmation roll",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Punishing Kick": {
+    "name": "Punishing Kick: Cost: [[1]] use per day per [[4]] character levels, no more than once per round; Activation: declare before making the attack roll (a failed attack roll ruins the attempt); Save: Fortitude DC [[10 + floor(@attributes.hd.total/2) + @abilities.wis.mod]] negates being knocked prone; Effect: on a hit, push the target [[5]] feet directly away, or attempt to knock it prone instead (it must end the push in a safe space and this movement does not provoke)",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Pushing Assault": {
+    "name": "Pushing Assault: Activation: choose after the attack roll, before damage is rolled; Effect: on a hit against a creature your size or smaller with a two-handed Power Attack-modified attack, forgo the Power Attack damage bonus to instead push the target [[5]] feet directly away ([[10]] feet on a critical hit) into a safe space, without provoking",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Raging Brutality": {
+    "name": "Raging Brutality: Cost: [[3]] additional rounds of rage as a swift action (requires raging and using Power Attack); Effect: add your Constitution modifier to melee or thrown-weapon damage rolls this turn ([[1.5]]x your Constitution modifier if wielding the weapon two-handed); this damage is not multiplied on a critical hit",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Raging Deathblow": {
+    "name": "Raging Deathblow: Effect: while raging, reducing your opponent to [[-1]] or fewer hit points grants [[1]] extra round of rage for the day ([[1]] additional extra round if the attack was a critical hit); unused extra rounds are lost when you rest to renew your rage for the day",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Raging Throw": {
+    "name": "Raging Throw: Cost: [[1]] additional round of rage as a swift action (requires raging); Effect: add your Constitution modifier to this bull rush combat maneuver check; if the target is pushed into another creature's space or a solid object, both take [[ @abilities.str.mod + @abilities.con.mod ]] bludgeoning damage",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.con.mod",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Rebuffing Reduction": {
+    "name": "Rebuffing Reduction: Activation: immediate action; Effect: when an adjacent opponent's melee attack fails to penetrate your damage reduction, attempt a bull rush combat maneuver against it; on a success you do not move along with the target",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Reckless Aim": {
+    "name": "Reckless Aim: Cost: -[[1]] AC; Effect: gain a competence bonus on this ranged attack roll against a target engaged in melee; a natural [[1]] on this roll instead automatically hits a random adjacent creature that threatens the intended target",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "competence",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Redemption": {
+    "name": "Redemption: Cost: become shaken for [[1]] minute; Activation: immediate action, chosen before the result is revealed; Effect: gain a bonus on this attack roll you have just made",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Rending Claws": {
+    "name": "Rending Claws: Cost: usable once per round, requires hitting with two claw attacks in the same turn; Effect: the second claw attack deals extra precision damage, not multiplied on a critical hit",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "tier": "A"
+  },
+  "Reverse-Feint": {
+    "name": "Reverse-Feint: Activation: move action; Effect: leave a gap in your defenses for one adjacent opponent, granting it a [[4]] bonus on its next attack against you; whether or not it hits, make an immediate action melee attack against it with a bonus on the attack roll",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Ricochet Shot Deed": {
+    "name": "Ricochet Shot Deed: Cost: [[1]] grit point (optional, to ignore all cover and concealment on this shot; requires at least [[1]] grit point to attempt at all); Effect: fire at a wall or piece of solid terrain and have it ricochet, using the square immediately in front of it as the new origin square for line of sight and cover (and your own square for concealment)",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Riptide Attack": {
+    "name": "Riptide Attack: Activation: swift action; Effect: after a successful trip combat maneuver, automatically make a drag combat maneuver against the same target using the trip check's base attack bonus (provokes attacks of opportunity as normal)",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Saddle Shrieker": {
+    "name": "Saddle Shrieker: Cost: a penalty (starting at [[-1]], increasing by [[-1]] at base attack bonus +[[4]] and every [[4]] points thereafter, to a maximum of [[-5]]) on your attack rolls and combat maneuver checks; Activation: declare before making an attack roll; Effect: for [[1]] round, your mount gains an equal bonus (capped at +[[5]]) on its attack and damage rolls with natural weapons",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-(1+floor(min(@attributes.bab.total,16)/4))",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Serpent Lash": {
+    "name": "Serpent Lash: Activation: standard action; Effect: make a disarm or trip maneuver with your whip; on a success, make an additional disarm or trip maneuver at the same bonus against a target adjacent to the first and within your whip's reach; you may also perform a reposition maneuver with your whip at a [[-4]] penalty on the CMB check, moving the target only toward you",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Shaitan Style": {
+    "name": "Shaitan Style: Cost: gain [[1]] additional Elemental Fist use per day; Effect: while using Elemental Fist to deal acid damage, add your Wisdom modifier to the acid damage roll; if this Elemental Fist melee attack misses while dealing acid damage, you still deal [[1d6]] acid damage to the target",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.wis.mod",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "acid"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Shield Slam": {
+    "name": "Shield Slam: Effect: an opponent hit by this shield bash is also hit with a free bull rush combat maneuver, substituting this attack roll for the CMB check (no attack of opportunity); a target that cannot move back due to a wall or other surface is knocked prone instead once moved the maximum possible distance",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Sleep Venom": {
+    "name": "Sleep Venom: Activation: swift action, decided before applying venom to a weapon; Effect: your venom's initial effect becomes staggered for [[1d4]] rounds and its secondary effect becomes unconsciousness for [[1]] minute",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Sleeper Hold": {
+    "name": "Sleeper Hold: Cost: a [[2]] penalty to your AC while attempting this; Activation: declare before making the combat maneuver check to maintain the grapple (a failed check ruins the attempt); Save: Fortitude DC [[10 + floor(@attributes.hd.total/2) + @abilities.str.mod]] negates (cumulative [[1]] penalty on the save for each consecutive round attempted); Effect: after maintaining the grapple for consecutive rounds equal to the target's Constitution bonus (minimum [[1]]), it falls unconscious for [[1d4]] rounds on a failed save; creatures immune to bleed damage, stunning, or critical hits are immune",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Sliding Axe Throw": {
+    "name": "Sliding Axe Throw: Cost: a penalty on this ranged attack roll with an axe; Effect: bounces or slides the axe along the ground; if the target is flat-footed, running, or charging, this attack ignores any bonus to its AC from a shield; on a hit, make a free trip attempt (a failed trip grants the target no trip attempt against you in return)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Snapping Turtle Clutch": {
+    "name": "Snapping Turtle Clutch: Activation: immediate action; Effect: while using Snapping Turtle Style, its shield bonus to AC also applies to your CMD and touch AC; when an opponent misses you with a melee attack, attempt a grapple combat maneuver against it at a penalty",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Spiked Destroyer": {
+    "name": "Spiked Destroyer: Activation: swift action; Effect: after succeeding at a bull rush or overrun combat maneuver, make an attack roll with your armor spikes against the target, using your highest attack bonus",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Stabbing Shot": {
+    "name": "Stabbing Shot: Cost: a penalty on all of this round's attack rolls (the melee attack and the ranged attacks); Effect: replace the extra attack from Rapid Shot with a melee attack against an adjacent opponent using a drawn arrow; a hit pushes the target [[5]] feet away, whether or not it deals damage, after which you may fire your remaining arrows at the original or another target without provoking if no enemy still threatens you",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Stage Combatant": {
+    "name": "Stage Combatant: Effect: with a weapon you have Weapon Focus in, take no penalty on the attack roll when attempting to deal no damage or nonlethal damage",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Steady Engagement": {
+    "name": "Steady Engagement: Activation: immediate action; Effect: after using Stand Still to prevent an opponent from moving, make a disarm or trip combat maneuver against it",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Stunning Assault": {
+    "name": "Stunning Assault: Cost: a penalty on all melee attack rolls and combat maneuver checks until your next turn; Activation: declare before making the attack roll; Save: Fortitude DC [[10 + @attributes.bab.total]] negates; Effect: a target you hit is stunned for [[1]] round",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-5",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Surge of Success": {
+    "name": "Surge of Success: Cost: expend the bonus gained by confirming a critical hit or rolling a natural [[20]] on a saving throw this round; Effect: +[[2]] circumstance bonus on this attack roll",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "circumstance",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Surprise Strike": {
+    "name": "Surprise Strike: Cost: [[1]]/day; Effect: no penalty on this attack roll while fighting defensively, or on an attack of opportunity taken during total defense with the Desperate Swing feat",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Tiger Pounce": {
+    "name": "Tiger Pounce: Effect: while using Tiger Style, your Power Attack penalty applies to your AC instead of this attack roll (+[[1+floor(@attributes.bab.total/4)]] to offset it); after a hit or successful combat maneuver, you may move up to half your speed as a swift action once per round",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1+floor(@attributes.bab.total/4)",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Tiger Style": {
+    "name": "Tiger Style: Effect: on a critical hit with your slashing unarmed strike, the foe takes [[1d4]] bleed damage at the start of its next two turns",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Touch of Serenity": {
+    "name": "Touch of Serenity: Cost: [[1]]/round, up to [[floor(@attributes.hd.total/4)]]/day; Effect: this hit deals no damage but the target cannot cast spells or attack for [[1]] round; Save: Will DC [[10+floor(@attributes.hd.total/2)+@abilities.wis.mod]] negates",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Twin Thunders": {
+    "name": "Twin Thunders: Effect: once per round, vs a creature with the giant subtype, if you hit with this off-hand bludgeoning weapon after hitting with your primary weapon, roll this weapon's damage dice twice and add the results together before adding bonuses (the extra dice are not multiplied on a critical hit)",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Whip-Slinger": {
+    "name": "Whip-Slinger: Effect: attack of opportunity with an unloaded sling, double sling, or halfling sling staff takes a -[[4]] penalty on this attack roll",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-4",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Wolf Savage": {
+    "name": "Wolf Savage: Cost: swift action; Effect: if this hit deals at least [[10]] damage to a prone foe with a natural weapon or unarmed strike, the target becomes disfigured as bestow curse (caster level = your character level); Save: Fortitude DC [[10+floor(@attributes.hd.total/2)+@abilities.wis.mod]] negates",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Wolf Style": {
+    "name": "Wolf Style: Effect: an attack of opportunity that deals at least [[10]] damage reduces the foe's base speed by [[5]] ft (+[[5]] ft for every additional [[5]] damage) for [[1]] round; if this meets or exceeds its remaining movement, you may attempt a free trip combat maneuver check",
+    "default": false,
+    "modifiers": [],
+    "tier": "A"
+  },
+  "Wolf Trip": {
+    "name": "Wolf Trip: Effect: +[[2]] bonus on this trip combat maneuver check made as an attack of opportunity; while using Wolf Style, on a successful trip you may choose an adjacent square for the foe to land in as a free action",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Bashing Finish": {
+    "name": "Bashing Finish: Activation: On a confirmed critical hit with a melee weapon; Effect: make a free shield bash attack against the same target using this attack's bonus",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Belier's Bite": {
+    "name": "Belier's Bite: Effect: damaging an opponent with an unarmed strike deals an additional [[1d4]] bleed damage",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Binding Throw": {
+    "name": "Binding Throw: Activation: Swift action after a successful use of Ki Throw against this opponent; Effect: attempt a grapple combat maneuver check against the same opponent",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Blinding Sneak Attack": {
+    "name": "Blinding Sneak Attack: Save: Fortitude DC [[10]] + sneak attack damage dealt negates; Effect: dealing sneak attack damage while within an area of magical darkness blinds the target for [[1]] round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Blood Beak": {
+    "name": "Blood Beak: Effect: on a confirmed critical hit with your beak attack, deal an additional [[1]] point of bleed damage",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Bloodletting": {
+    "name": "Bloodletting: Effect: threatening a critical hit with a piercing or slashing weapon, confirmed or not, causes the target to bleed for [[1]] point at the start of each of its turns thereafter",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Bodyguard": {
+    "name": "Bodyguard: Activation: Use an attack of opportunity when an adjacent ally is attacked; Effect: attempt the aid another action to improve that ally's AC instead of dealing damage (cannot be used to aid the ally's attack roll)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Bonebreaker": {
+    "name": "Bonebreaker: Effect: against a grappled, helpless, or stunned foe, forgo your Stunning Fist effect to instead deal [[1d6]] Strength or Dexterity damage",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Broken Wing Gambit": {
+    "name": "Broken Wing Gambit: Effect: hitting with a melee attack grants the target a +[[2]] bonus on attack and damage rolls against you until the end of your next turn or until it attacks you, whichever comes first; if it attacks you, this provokes attacks of opportunity from allies who also have this feat",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Brutal Grappler": {
+    "name": "Brutal Grappler: Effect: aiding an ally with this feat in the same grapple grants a bonus on your grapple combat maneuver check",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Bull Rush Strike": {
+    "name": "Bull Rush Strike: Effect: on a confirmed critical hit with a melee attack, if the confirmation roll exceeds the target's CMD, push it back as if from a successful bull rush without provoking an attack of opportunity",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Bullseye Shot": {
+    "name": "Bullseye Shot: Activation: Move action to steady your shot; Effect: gain a bonus on your next ranged attack roll before the end of your turn",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "4",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Burn! Burn! Burn!": {
+    "name": "Burn! Burn! Burn!: Effect: extra fire damage when attacking with a nonmagical or alchemical fire source, such as alchemical fire or a torch (does not apply to magical attacks or splash damage)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "fire"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Cockatrice Strike": {
+    "name": "Cockatrice Strike: Activation: Full-round action; a single unarmed strike against a dazed, flat-footed, paralyzed, staggered, stunned, or unconscious foe; Save: Fortitude DC [[ 10 + floor(@attributes.hd.total/2) + @abilities.wis.mod ]] negates; Effect: on a critical hit, the target is petrified",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Combat Meditation": {
+    "name": "Combat Meditation: Cost: [[1]] of your daily uses (usable [[@abilities.wis.mod]] times per day); Activation: Expend the insight bonus from Meditation Master instead of applying it normally; Effect: roll this attack twice and take the higher result",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Coordinated Maneuvers": {
+    "name": "Coordinated Maneuvers: Effect: being adjacent to an ally with this feat grants a competence bonus on combat maneuver checks (increases to +[[4]] when attempting to break free from a grapple)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "competence",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Crippling Critical": {
+    "name": "Crippling Critical: Save: Fortitude DC [[ 10 + @attributes.bab.total ]] reduces the duration to [[1d4]] rounds; Effect: on a critical hit, the target's speed is halved for [[1]] minute (a flying target must succeed at a DC [[10]] Fly check to remain airborne and its maneuverability is reduced by one step)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Crusader's Fist": {
+    "name": "Crusader's Fist: Cost: [[1]] swift action and [[1]] daily use of lay on hands or touch of corruption; Activation: this attack is an unarmed strike that hits a creature you could target with that feature; Effect: deal that feature's normal damage as if delivered by its touch attack (not multiplied on a critical hit).",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Deadly Finish": {
+    "name": "Deadly Finish: Activation: this melee attack reduces the target to -[[1]] hp or fewer; Save: target Fortitude DC [[15]] + damage dealt or die.",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Dervish Dance": {
+    "name": "Dervish Dance: Effect: use your Dexterity modifier instead of your Strength modifier on this attack and damage roll (scimitar wielded one-handed, sized for you, no weapon or shield in your off hand).",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.dex.mod - @abilities.str.mod",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "@abilities.dex.mod - @abilities.str.mod",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Destroy Identity": {
+    "name": "Destroy Identity: Effect: on a critical hit, the target takes [[2]] Charisma damage and is staggered for [[1]] round.",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Devastating Strike": {
+    "name": "Devastating Strike: Effect: while using Vital Strike, Improved Vital Strike, or Greater Vital Strike, gain a +[[2]] bonus (multiplied on a critical hit) on each extra weapon damage die those feats grant, to a maximum of +[[6]].",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Dirty Trick Master": {
+    "name": "Dirty Trick Master: Effect: if this dirty trick combat maneuver succeeds against a target still affected by a condition from a previous dirty trick, worsen that condition (dazzled becomes dazed, entangled becomes pinned, shaken becomes frightened, sickened becomes nauseated) for the dirty trick's duration, replacing the prior condition.",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Disarming Strike": {
+    "name": "Disarming Strike: Activation: this melee attack is a critical hit and your confirmation roll exceeds the target's CMD; Effect: disarm the target as the disarm combat maneuver (no attack of opportunity).",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Discordant Voice": {
+    "name": "Discordant Voice: Activation: you are using bardic performance to create a spell-like or supernatural effect and the target is within [[30]] feet of you; Effect: this attack deals extra sonic damage, stacking with other energy damage.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "sonic"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Disorienting Blow": {
+    "name": "Disorienting Blow: Cost: use of Stunning Fist, chosen before the attack roll, replacing Stunning Fist's normal effect; Activation: this hit is a Stunning Fist attempt; Save: target Fortitude save (Stunning Fist DC) or become confused for [[1]] round (additional disorienting blows against a confused target add to the duration).",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Dispelling Critical": {
+    "name": "Dispelling Critical: Cost: [[1]] swift action and your prepared or spontaneous dispel magic; Activation: this attack scores a critical hit; Effect: cast dispel magic as a targeted dispel against the target.",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Disposable Weapon": {
+    "name": "Disposable Weapon: Cost: give your fragile weapon the broken condition; Activation: this attack scores a critical threat with a fragile melee or thrown weapon; Effect: automatically confirm the critical hit.",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Dragonslayer": {
+    "name": "Dragonslayer: Cost: forgo the extra critical hit damage; Activation: you confirm a critical hit against a creature with a breath weapon; Effect: prevent the target from using its breath weapon for [[2]] × your weapon's critical multiplier rounds, in addition to any normal breath weapon delay.",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Enforcer": {
+    "name": "Enforcer: Activation: you deal nonlethal damage with this melee weapon; Effect: free action Intimidate check to demoralize; on success the target is shaken for a number of rounds equal to the damage dealt; on a critical hit, a successful check instead frightens the target for [[1]] round in addition to being shaken for the same duration.",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Felling Escape": {
+    "name": "Felling Escape: Cost: [[1]] swift action; Activation: you break an opponent's grapple with a combat maneuver check or Escape Artist check; Effect: make a trip attempt against that opponent.",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Flagbearer": {
+    "name": "Flagbearer: Effect: while you hold your clan, house, or party's flag in one hand, you and allies within [[30]] feet who can see it gain a morale bonus on attack and damage rolls (and on saves vs. fear/charm); if the flag is lost or destroyed, this becomes a penalty instead for [[1]] hour or until reclaimed.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "morale",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "1",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "morale",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Flanking Foil": {
+    "name": "Flanking Foil: Effect: until the start of your next turn, this target loses its flanking bonus on attack rolls against you and cannot deal sneak attack damage to you (it can still flank for its allies).",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Focused Shot": {
+    "name": "Focused Shot: Activation: standard action attack with a bow or crossbow, target within [[30]] feet; Effect: add your Intelligence modifier to the damage roll (no effect against creatures immune to critical hits and sneak attacks).",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.int.mod",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Foment the Blood": {
+    "name": "Foment the Blood: Cost: a use of channel energy, forgoing its normal heal/harm effect on other creatures; Effect: orcs, yourself included, gain a bonus on weapon damage and critical hit confirmation rolls until your next turn, equal to the number of dice your channeled energy normally heals or harms.",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Fury's Fall": {
+    "name": "Fury's Fall: Effect: add your Dexterity modifier to your CMB for this trip attempt.",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.dex.mod",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Greater Rending Fury": {
+    "name": "Greater Rending Fury: Effect: rend deals an extra [[1d6]] bleed damage",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Greater Snap Shot": {
+    "name": "Greater Snap Shot: Activation: ranged attack of opportunity; Effect: +[[2]] damage and +[[2]] to confirm critical hits (+[[4]]/+[[4]] at BAB [[16]]; +[[6]]/+[[6]] at BAB [[20]])",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2+2*floor((@attributes.bab.total-12)/4)",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Hamatulatsu": {
+    "name": "Hamatulatsu: Effect: on a critical hit while dealing piercing damage with an unarmed strike, the target is sickened for [[1]] round (staggered for [[1]] round if already sickened)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Haunted Gnome Assault": {
+    "name": "Haunted Gnome Assault: Effect: while under haunted fey aspect, discharge it as a free action after a charge hit or critical hit to make the target shaken for [[1]] round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Horn Of The Criosphinx": {
+    "name": "Horn Of The Criosphinx: Effect: on a successful charge attack with a two-handed weapon in both hands, add an extra [[2]]x Strength bonus to the damage roll",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2*@abilities.str.mod",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Iconoclast": {
+    "name": "Iconoclast: Effect: after successfully sundering a holy or unholy symbol, make a free Intimidate check to demoralize all followers within [[30]] ft. who saw it (+[[5]] if you destroyed the symbol)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Impact Critical Shot": {
+    "name": "Impact Critical Shot: Effect: on a confirmed critical hit with a ranged weapon, if the confirmation roll exceeds the target's CMD you may bull rush or trip it as part of the attack without provoking an attack of opportunity",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Improved Bull Rush": {
+    "name": "Improved Bull Rush: Effect: +[[2]] bull rush CMB (no attack of opportunity)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Improved Drag": {
+    "name": "Improved Drag: Effect: +[[2]] drag CMB (no attack of opportunity)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Improved Grapple": {
+    "name": "Improved Grapple: Effect: +[[2]] grapple CMB (no attack of opportunity)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Improved Ki Throw": {
+    "name": "Improved Ki Throw: Effect: -[[4]] penalty on the secondary bull rush check to throw the target into an occupied square (-[[4]] additional per extra secondary target for Large+ creatures); on success the thrown creature lands prone in the secondary target's square and the secondary target is pushed back and knocked prone",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-4",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Improved Overrun": {
+    "name": "Improved Overrun: Effect: +[[2]] overrun CMB (no attack of opportunity; target can't choose to avoid you)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Improved Rending Fury": {
+    "name": "Improved Rending Fury: Effect: rend deals an extra [[1d6]] damage, not multiplied on a critical hit",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "tier": "B"
+  },
+  "Improved Reposition": {
+    "name": "Improved Reposition: Effect: +[[2]] reposition CMB (no attack of opportunity)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Improved Sunder": {
+    "name": "Improved Sunder: Effect: +[[2]] sunder CMB (no attack of opportunity)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Inner Flame": {
+    "name": "Inner Flame: Effect: while Scorching Weapons is active, the affected weapon deals [[1d6]] fire damage instead of [[1]] (also dealt to a grappled opponent on your turn)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Innocent Blood": {
+    "name": "Innocent Blood: Effect: after slaying an intelligent creature, +[[1]] bonus on attack rolls (and caster level checks) for [[1]] minute (does not stack with itself)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Intimidating Confidence": {
+    "name": "Intimidating Confidence: Effect: on a confirmed critical hit, make a free Intimidate check to demoralize a threatened creature (all threatened creatures if you have Dazzling Display); +[[2]] on that check if your weapon's critical multiplier is x3, +[[4]] if x4",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Janni Tempest": {
+    "name": "Janni Tempest: Activation: while using Janni Style, after hitting with an unarmed strike; Effect: +[[4]] bonus on your next bull rush or trip combat maneuver check this turn (no attack of opportunity)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "4",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Jawbreaker": {
+    "name": "Jawbreaker: Effect: a successful Stunning Fist against a grappled, helpless, or stunned foe instead deals normal unarmed damage plus [[1d4]] bleed damage and disables the target's mouth (no speech or verbal components) until the bleed ends",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Kobold Style": {
+    "name": "Kobold Style: +[[4]] bonus on combat maneuver checks against foes denied their Dexterity bonus to AC",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "4",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Large Target": {
+    "name": "Large Target: Effect: sling damage +[[1]] per size category the target is larger than you; precision damage, not multiplied on a critical hit",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Lucky Strike": {
+    "name": "Lucky Strike: Cost: [[1]] use of adaptive luck; Effect: reroll this attack's damage and take the better of the two results",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Manyshot": {
+    "name": "Manyshot: Effect: full attack with a bow only; your first attack fires two arrows and both hit if the attack hits; apply precision damage (such as sneak attack) and critical hit damage only once for the attack, while other damage bonuses (Strength, favored enemy, etc.) apply separately to each arrow",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Merciless Precision": {
+    "name": "Merciless Precision: Effect: sneak attack damage +[[1]]d6 against a target already blinded, dying, entangled, exhausted, frightened, helpless, nauseated, panicked, paralyzed, or stunned",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "tier": "B"
+  },
+  "Murderer's Circle": {
+    "name": "Murderer's Circle: Activation: as a swift action after scoring a critical hit or performing a combat maneuver while adjacent to the target; Effect: move to another space adjacent to the target without provoking attacks of opportunity; if you end the move in a different space, +[[2]] on the performance combat check",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Net Trickery": {
+    "name": "Net Trickery: Effect: a melee attack with your net can instead attempt a dirty trick maneuver to blind, or (against a foe already entangled in your net) a trip maneuver; +[[2]] bonus on drag and reposition combat maneuver checks made with your net",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Nightmare Striker": {
+    "name": "Nightmare Striker: Save: DC +[[2]] to resist this Stunning Fist attempt while the target is outlined by your faerie fire; Effect: if the target fails its save, it also becomes shaken for [[1]]d2 rounds plus [[1]] round for every [[5]] points it failed the save by",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Opening Volley": {
+    "name": "Opening Volley: Effect: +[[4]] circumstance bonus on the next melee attack roll against a foe you hit with a ranged attack this turn (must be made before the end of your next turn)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "4",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "circumstance",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Outflank": {
+    "name": "Outflank: Effect: while you and an ally who also has Outflank are flanking the same creature, your flanking bonus increases by +[[2]] (to +[[4]] total); a critical hit you score against the flanked creature provokes an attack of opportunity from that ally",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Pinning Knockout": {
+    "name": "Pinning Knockout: Effect: while you have the opponent pinned, a successful grapple check to deal nonlethal damage with an unarmed strike or a light or one-handed weapon doubles the damage result; creatures immune to critical hits are immune to this effect",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Pinning Rend": {
+    "name": "Pinning Rend: Effect: while you have the opponent pinned, a successful grapple check to deal damage with an unarmed strike or a light or one-handed weapon also causes bleed damage equal to that weapon's damage dice; creatures immune to critical hits are immune to this effect",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Porcupine Defense": {
+    "name": "Porcupine Defense: Effect: +[[2]] bonus on an attack of opportunity you make against a larger foe's combat maneuver attempt against you (or +[[2]] CMD instead, if that maneuver doesn't provoke)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Quivering Palm Versatility": {
+    "name": "Quivering Palm Versatility: Activation: choose the desired effect before making the quivering palm attack roll; Effect: instead of killing, on a failed Fortitude save the target falls into a coma for [[1]] day per monk level, or loses [[1]] day per monk level of memories, or takes [[1]]d6 nonlethal damage per monk level, as chosen; otherwise subject to all normal quivering palm limits",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Radiant Charge": {
+    "name": "Radiant Charge: Cost: expend all remaining uses of lay on hands; Activation: on a successful charge attack; Effect: deal extra holy damage equal to [[1]]d6 per use of lay on hands expended plus your Charisma bonus, not subject to damage reduction, energy immunity, or energy resistance",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Rapid Shot": {
+    "name": "Rapid Shot: -[[2]] penalty on all your attack rolls this round in exchange for one additional ranged attack at your highest attack bonus (full-attack action only)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Ricochet Splash Weapon": {
+    "name": "Ricochet Splash Weapon: Activation: your splash weapon misses and the misdirection roll lands in a square occupied by a creature; Effect: make an attack roll against that creature at a [[-5]] penalty; on a hit it takes full damage instead of splash damage (adjacent squares still take splash damage as normal)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-5",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Shapeshifter Foil": {
+    "name": "Shapeshifter Foil: Save: Will DC [[10+floor(@attributes.hd.total/2)+@abilities.wis.mod]] negates being forced back into its original form (no save allowed if this is a critical hit); Effect: damaging a creature under a polymorph effect also forces a concentration check (DC [[15]] plus twice the effect's level) to use or maintain that polymorph effect until the end of your next turn",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Sneaking Precision": {
+    "name": "Sneaking Precision: Cost: swift action; Activation: you sneak attack the same opponent a second time on your turn; Effect: apply the effects of one critical feat you know to that opponent, as though you had just confirmed a critical hit against it",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Solo Maneuvers": {
+    "name": "Solo Maneuvers: Effect: +[[1]] bonus on combat maneuver checks against an opponent only you threaten (also +[[1]] to your CMD against that opponent's maneuvers, not reflected here)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Splintering Weapon": {
+    "name": "Splintering Weapon: Cost: give your fragile/primitive weapon the broken condition; Effect: on a hit, deal the target an additional [[1]]d4 bleed damage",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Sundering Strike": {
+    "name": "Sundering Strike: Effect: when you score a critical hit with a melee attack, if your critical confirmation roll exceeds the target's CMD, you also sunder its weapon as the sunder combat maneuver (roll weapon damage separately); this does not provoke an attack of opportunity",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Sunlit Strike": {
+    "name": "Sunlit Strike: Save: Fortitude DC [[10+@attributes.hd.total+@abilities.str.mod]] negates being staggered for [[1]] round; Effect: melee hit with an Arcane Strike-imbued weapon against a creature vulnerable to light deals an additional [[1]]d6 damage",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "tier": "B"
+  },
+  "Swarm Strike": {
+    "name": "Swarm Strike: Effect: +[[1]] bonus on your attack of opportunity against a foe that provokes it, plus an additional +[[1]] for each ally who also has this feat and currently threatens that foe (add manually per ally)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Tandem Trip": {
+    "name": "Tandem Trip: Effect: roll this trip combat maneuver check twice and take the better result (the foe must be threatened by an ally who also has this feat)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Topple Foe": {
+    "name": "Topple Foe: Effect: +[[1]] bonus on this trip CMB check against a foe larger than you while an ally with Topple Foe also flanks it (stacks with Improved/Greater Trip); +[[2]] more per additional ally flanking; the per-ally bonus grows by +[[1]] each consecutive round you trip the same foe, to a maximum of +[[4]] per ally on the 4th round",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Tripping Strike": {
+    "name": "Tripping Strike: Effect: on a critical hit with a melee attack, attempt to trip the target as well; if your confirmation roll exceeds its CMD it falls prone, with no attack of opportunity",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Tripping Twirl": {
+    "name": "Tripping Twirl: Activation: full-round action while wielding a quarterstaff two-handed; Effect: attempt a trip combat maneuver against each enemy adjacent to you",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Two-Handed Thrower": {
+    "name": "Two-Handed Thrower: Effect: throwing a one-handed or two-handed weapon with both hands grants a damage bonus of [[1.5]]x your Strength bonus (replaces the normal single Strength bonus for a thrown weapon)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Two-Weapon Rend": {
+    "name": "Two-Weapon Rend: Effect: after hitting with both your primary and off-hand weapon this round, deal an extra [[1]]d10 damage plus [[1]].5x your Strength modifier (once per round)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Undermining Exploit": {
+    "name": "Undermining Exploit: Effect: +[[4]] insight bonus on combat maneuver checks against foes in rocky, difficult terrain",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "4",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "insight",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "B"
+  },
+  "Whirlwind Attack": {
+    "name": "Whirlwind Attack: Activation: full-attack action; Effect: give up your regular attacks to make one melee attack at your highest base attack bonus against each opponent within reach (forfeits bonus or extra attacks from other feats, spells, or abilities)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Wingclipper": {
+    "name": "Wingclipper: Effect: on a confirmed critical hit against a foe that flies using wings, forgo the extra critical damage to instead ground it for a number of rounds equal to twice your weapon's critical multiplier; a target that was flying must succeed at a DC [[20]] Fly check or take falling damage",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
   }
 }

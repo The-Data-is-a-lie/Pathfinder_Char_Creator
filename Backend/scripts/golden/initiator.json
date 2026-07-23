@@ -228,7 +228,23 @@
    ]
   }
  },
- "feat_conditionals_dict": {},
+ "feat_conditionals_dict": {
+  "Patient Strike": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "untyped"
+    }
+   ],
+   "name": "Patient Strike: Activation: ready this attack as a full-round action instead of a standard action; Effect: gain a bonus on the attack roll when the readied action triggers",
+   "tier": "A"
+  }
+ },
  "feats": [
   "Step Up",
   "Desert Dweller",

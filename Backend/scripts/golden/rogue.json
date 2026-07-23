@@ -177,15 +177,6 @@
     }
    ]
   },
-  "positioning attack": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "attack",
-     "text": "Once per day, when a rogue with this talent hits a creature with a melee attack, she can move up to [[30]] feet without provoking attacks of opportunity."
-    }
-   ]
-  },
   "scry slip": {
    "changes": [],
    "contextNotes": [
@@ -206,6 +197,14 @@
   }
  },
  "class_feature_conditionals_dict": {
+  "positioning attack": [
+   {
+    "default": false,
+    "modifiers": [],
+    "name": "Positioning Attack: Cost: [[1]]/day; Effect: on a hit with this melee attack, move up to [[30]] feet without provoking attacks of opportunity, ending adjacent to the target",
+    "tier": "B"
+   }
+  ],
   "powerful sneak": [
    {
     "default": false,

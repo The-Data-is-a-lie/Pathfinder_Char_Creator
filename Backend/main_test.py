@@ -1716,7 +1716,14 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			if _entry is not None:
 				feat_changes_dict[_disp] = _entry
 			if _disp in _curated_feat_conds:
-				feat_conditionals_dict[_disp] = _curated_feat_conds[_disp]
+				# Tier "B" toggles are authored for the applier macro's "(NOT RECOMMENDED)" section,
+				# where they sit at the bottom of the list and arrive unchecked. The FoundryVTT
+				# module has no such section — addFeatConditionals() attaches every conditional it is
+				# given straight onto the main weapon — so shipping tier B here would bury the roll
+				# dialog in opt-in text. A missing tier means "A" (everything authored before the
+				# tier sweep).
+				if str((_curated_feat_conds[_disp] or {}).get("tier", "A")).upper() != "B":
+					feat_conditionals_dict[_disp] = _curated_feat_conds[_disp]
 
 		# --- Equipment numeric buffs + context notes ----------------------------------------------------
 		# item_changes.json is GENERATED from items_best.json descriptions by scripts/build_item_changes.py

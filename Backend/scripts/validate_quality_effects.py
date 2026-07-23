@@ -56,7 +56,11 @@ MOD_TARGETS = {'damage', 'attack'}
 MOD_SUBTARGETS = {'allDamage', 'allAttack', 'attack_0'}
 MOD_CRITICAL = {'normal', 'nonCrit', 'onCrit'}
 MOD_KEYS = {'formula', 'target', 'subTarget', 'type', 'damageType', 'critical'}
-COND_KEYS = {'name', 'default', 'modifiers'}
+# `tier`: "A" = apply by default; "B" = authored but filed under the applier's "(NOT RECOMMENDED)"
+# section, offered unchecked, and filtered out of the generator's feat toggles. Absent means A, so
+# every entry authored before the tier sweep stays valid and recommended.
+COND_KEYS = {'name', 'default', 'modifiers', 'tier'}
+COND_TIERS = {'A', 'B'}
 WEAPON_ENTRY_KEYS = {'conditionals'}
 ARMOR_ENTRY_KEYS = {'changes', 'contextNotes'}
 CHANGE_KEYS = {'formula', 'target', 'type', 'operator', 'priority'}
@@ -91,6 +95,8 @@ def check_conditional(owner, cond):
         check_brackets(owner, name)
     if not isinstance(cond.get('default'), bool):
         err(f'{owner}: conditional "default" must be a bool')
+    if 'tier' in cond and cond['tier'] not in COND_TIERS:
+        err(f'{owner}: conditional "tier" must be one of {sorted(COND_TIERS)}, got {cond["tier"]!r}')
     mods = cond.get('modifiers')
     if not isinstance(mods, list):
         err(f'{owner}: conditional "modifiers" must be a list')

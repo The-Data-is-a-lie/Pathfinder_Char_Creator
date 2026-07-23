@@ -26,7 +26,9 @@ import build_class_feature_changes as bcfc  # noqa: E402  (SECTIONS, pool walker
 EFFECTS_PATH = bcfc.OUT_PATH
 OVERRIDES_PATH = bcfc.OVERRIDES_PATH
 
-ENTRY_KEYS = {'changes', 'contextNotes', 'conditionals', 'tagBuff', 'unplaced', 'review'}
+# 'tier' is carried per-conditional (see validate_quality_effects.COND_KEYS); allowed at entry level
+# too so a whole power can be marked without repeating it on each of its conditionals.
+ENTRY_KEYS = {'changes', 'contextNotes', 'conditionals', 'tagBuff', 'unplaced', 'review', 'tier'}
 TAGBUFF_KEYS = {'onlyOthers', 'auraRange', 'changes', 'contextNotes'}
 
 err = vqe.err

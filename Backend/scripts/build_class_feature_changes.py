@@ -97,8 +97,12 @@ def entry_text(value):
     if isinstance(value, list):
         return ' '.join(str(v) for v in value if isinstance(v, str))
     if isinstance(value, dict):
-        parts = [value[k] for k in ('benefit', 'benefits', 'description')
-                 if isinstance(value.get(k), str)]
+        # Case-insensitive: a few scraped pool entries capitalise the key ("Benefits" on four
+        # investigator talents). Matching only lowercase dropped their text entirely — the first
+        # branch missed the key, and the second excluded it because META_KEYS is checked lowercased.
+        lower = {k.lower(): v for k, v in value.items()}
+        parts = [lower[k] for k in ('benefit', 'benefits', 'description')
+                 if isinstance(lower.get(k), str)]
         # leveled riders like "At 5th level": "..." carry mechanics too
         parts += [f'{k}: {v}' for k, v in value.items()
                   if k.lower() not in META_KEYS and isinstance(v, str)]

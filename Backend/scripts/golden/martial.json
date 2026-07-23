@@ -437,6 +437,12 @@
   }
  },
  "feat_conditionals_dict": {
+  "Butterfly's Sting": {
+   "default": false,
+   "modifiers": [],
+   "name": "Butterfly's Sting: Effect: forgo this critical hit's extra damage; the next ally who hits the target with a melee attack before the start of your next turn automatically confirms a critical hit",
+   "tier": "A"
+  },
   "Demon Hunter": {
    "default": false,
    "modifiers": [
@@ -450,6 +456,12 @@
     }
    ],
    "name": "Demon Hunter (vs demons): +2 morale on attack rolls"
+  },
+  "Hammer the Gap": {
+   "default": false,
+   "modifiers": [],
+   "name": "Hammer the Gap: Effect: each consecutive hit against the same target this turn deals extra damage equal to the number of prior consecutive hits you have made against it this turn (multiplied on a critical hit); apply manually per attack",
+   "tier": "A"
   }
  },
  "feats": [
