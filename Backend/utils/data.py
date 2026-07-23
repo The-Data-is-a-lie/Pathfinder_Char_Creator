@@ -1,6 +1,14 @@
 #Only small amounts of data, we don't want to have massive 1000+ lines long of data here
 
 # where you want characters to be from:
+# CANONICAL skill pool -- the 35 core PF1 skills, and nothing else. Every consumer of skill_ranks
+# renders exactly these: the Foundry module's skillsDict/base_skill.json and the web sheet's
+# ALL_SKILLS. Entries outside this set were silently DROPPED downstream, so any ranks spent on them
+# vanished off the sheet -- that is why generated characters kept missing skill ranks. Removed:
+# "gather information" (folded into Diplomacy in PF1), "knowledge martial" (pf1-pow's kmt, absent
+# from the base template), "artistry"/"lore" (pf1 container skills -- ranks must live in subSkills,
+# so ranks on the container are unusable), and a duplicate "profession".
+# Keep this list and SKILL_IDS in lockstep.
 skills = ["acrobatics",
 "appraise",
 "bluff",
@@ -11,7 +19,6 @@ skills = ["acrobatics",
 "disguise",
 "escape artist",
 "fly",
-"gather information",
 "handle animal",
 "heal",
 "intimidate",
@@ -22,7 +29,6 @@ skills = ["acrobatics",
 "knowledge history",
 "knowledge local",
 "knowledge nature",
-"knowledge martial",
 "knowledge nobility",
 "knowledge planes",
 "knowledge religion",
@@ -37,10 +43,25 @@ skills = ["acrobatics",
 "stealth",
 "survival",
 "swim",
-"use magic device",
-"artistry",
-"profession",
-"lore"]
+"use magic device"]
+
+# Canonical skill name -> pf1 skill id (the ids Foundry uses for `skill.<id>` change targets and for
+# the actor's system.skills keys). Single source of truth: import this rather than re-declaring the
+# mapping. NOTE: Backend/scripts/build_item_changes.py keeps its own, looser SKILLS map on purpose --
+# that one PARSES scraped rules prose and must still recognise Lore/Artistry and common typos even
+# though we never grant ranks in them.
+SKILL_IDS = {
+    "acrobatics": "acr", "appraise": "apr", "bluff": "blf", "climb": "clm", "craft": "crf",
+    "diplomacy": "dip", "disable device": "dev", "disguise": "dis", "escape artist": "esc",
+    "fly": "fly", "handle animal": "han", "heal": "hea", "intimidate": "int",
+    "knowledge arcana": "kar", "knowledge dungeoneering": "kdu", "knowledge engineering": "ken",
+    "knowledge geography": "kge", "knowledge history": "khi", "knowledge local": "klo",
+    "knowledge nature": "kna", "knowledge nobility": "kno", "knowledge planes": "kpl",
+    "knowledge religion": "kre", "linguistics": "lin", "perception": "per", "perform": "prf",
+    "profession": "pro", "ride": "rid", "sense motive": "sen", "sleight of hand": "slt",
+    "spellcraft": "spl", "stealth": "ste", "survival": "sur", "swim": "swm",
+    "use magic device": "umd",
+}
 
 lore = ["Goblin Lore",
 "Dragon Lore",

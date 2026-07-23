@@ -12,6 +12,7 @@
    ``profession_abilities.build_profession_ability_items`` can fold it into that profession's Rank-5
    item. Surplus picks (more than there are professions) fall back to the best regular skill.
 """
+from utils import data
 
 # 1) Free-at-BAB>=1 feats. Seeded into chooseable + filtered as a safety net.
 FREE_AT_BAB1 = ["Power Attack", "Deadly Aim", "Combat Expertise", "Piranha Strike"]
@@ -40,30 +41,18 @@ _SKILL_CHOICE_FEATS = {
 }
 
 
-# skill_ranks key ('knowledge local', 'profession sailor') -> pf1 change target id, so the chosen
-# Skill Focus / Prodigy bonus can be emitted as a real always-on `change` (folded into feat_changes_dict
-# by main_test.py). Craft/Perform/Profession subtypes collapse to their base id.
-_PF1_SKILL_IDS = {
-    "acrobatics": "acr", "appraise": "apr", "bluff": "blf", "climb": "clm", "craft": "crf",
-    "diplomacy": "dip", "disable device": "dev", "disguise": "dis", "escape artist": "esc",
-    "fly": "fly", "handle animal": "han", "heal": "hea", "intimidate": "int", "linguistics": "lin",
-    "perception": "per", "perform": "prf", "profession": "pro", "ride": "rid", "sense motive": "sen",
-    "sleight of hand": "slt", "spellcraft": "spl", "stealth": "ste", "survival": "sur", "swim": "swm",
-    "use magic device": "umd", "knowledge arcana": "kar", "knowledge dungeoneering": "kdu",
-    "knowledge engineering": "ken", "knowledge geography": "kge", "knowledge history": "khi",
-    "knowledge local": "klo", "knowledge nature": "kna", "knowledge nobility": "kno",
-    "knowledge planes": "kpl", "knowledge religion": "kre",
-}
-
-
 def _skill_pf1_id(skill_key):
-    """A skill_ranks key -> pf1 change target ('knowledge local' -> 'skill.klo'); None if unmappable."""
+    """A skill_ranks key -> pf1 change target ('knowledge local' -> 'skill.klo'); None if unmappable.
+
+    Uses the canonical data.SKILL_IDS map so the Skill Focus / Prodigy change targets can never drift
+    from the skill pool itself. Craft/Perform/Profession subtypes collapse to their base id.
+    """
     k = " ".join(str(skill_key).strip().lower().split())
-    if k in _PF1_SKILL_IDS:
-        return "skill." + _PF1_SKILL_IDS[k]
+    if k in data.SKILL_IDS:
+        return "skill." + data.SKILL_IDS[k]
     for base in ("profession", "craft", "perform"):
         if k.startswith(base):
-            return "skill." + _PF1_SKILL_IDS[base]
+            return "skill." + data.SKILL_IDS[base]
     return None
 
 
