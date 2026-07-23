@@ -19,6 +19,51 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Character generation is reproducible: `generate_random_char(seed=…)`.** The generator took 22
+  knobs and no seed, so no run could be replayed — an NPC that came out wrong was simply gone, and
+  the only way to test the pipeline was to construct fake character objects and call individual
+  functions (which is exactly what `test_gold_and_stats.py` and `test_skill_ranks.py` do). It now
+  accepts `seed=None`, resolves it to a random value when omitted, and ships it back as the
+  `generation_seed` payload key; pass that value in to reproduce the character exactly.
+
+  **Seeding `random` alone was not enough** — three separate holes had to be closed first:
+  1. **numpy.** Trait selection (`traits.py`) and spell selection (`spells.py`) go through pandas
+     `.sample()`, which draws from **numpy's** global RNG, not Python's. Both RNGs are now seeded.
+  2. **`random.choice(tuple(total_choices_set))`** (`feats.py::choosing_feats`) drew from a set of
+     strings. Python randomizes string hashing per process, so the tuple came out in a different
+     order every run and the same seed picked different feats. Now `sorted()`.
+  3. **`return list(chosen_feats)`** from the same function returned a **set**, so even an identical
+     selection came back in a different order — and `separate_feats_func` front-pops that list into
+     the story/flaw/flavor/class buckets, so the order decided which bucket each feat landed in. Two
+     runs of one seed put the same two feats in swapped buckets. The accumulator is now an
+     insertion-ordered dict keyed by lowercased name; dedup semantics are unchanged.
+
+  **Rejected alternative:** threading an injected `random.Random` instance through the pipeline. It
+  would isolate phases from each other, but it touches the 41 modules that use the global `random`
+  module, and a process-wide seed is sufficient for replay. **Also rejected:** pinning
+  `PYTHONHASHSEED`, which makes runs reproducible without fixing anything — it would have hidden
+  holes 2 and 3 rather than closing them, and can only be set before the interpreter starts.
+- **Golden-payload regression test** (`Backend/scripts/test_golden_payload.py`). Generates four
+  seeded characters and diffs each full payload against a committed snapshot in
+  `Backend/scripts/golden/`, naming the keys that differ. `--update` rewrites the goldens; the
+  convention is to commit a regenerated golden **in the same commit** as the change that caused it,
+  so the JSON diff in review shows exactly what the change did to generated characters. Ollama is
+  severed at import — `generate_backstory` only calls it when the backstory API is on (off here),
+  but `build_archetype` reaches for the same helper to break scoring ties, which would otherwise
+  make the payload depend on whether a model happens to be running locally.
+
+  The four configs were **swept for coverage, not picked at random**: their union populates all 11
+  buff side-maps, several of which are rare enough that an arbitrary seed misses them entirely (only
+  **17 of 1,586** `class_feature_effects` entries carry conditionals — 4 of them rogue talents, which
+  is why one config is a level-18 rogue). `Backend/scripts/report_buff_coverage.py` prints the
+  per-config side-map matrix and fails if any side-map drops to zero coverage, so a config change
+  that silently stops exercising a buff path gets caught.
+
+  **Known gap, deliberately not worked around:** the `martial` config carries an absurd 5,000,000 gp
+  because `enhancement_calculator` (`main_test.py:518`) runs *after* `item_chooser` (`:480`) has
+  drained the purse — a realistically-funded NPC never buys a weapon or armor quality at all, so
+  `enhancement_effects_dict` is empty for every normal character. That ordering is a real generator
+  issue; the config exists to keep the quality path under regression until it is triaged.
 - **Bundled sample character on the public web sheet.** The standalone
   `Pathfinder-Character-Sheet` repo now ships `data/demo-character.json` — a generated level-20
   Cleric who also walks the Path of War Martial Training chain (initiator level 10, disciplines
