@@ -40,6 +40,26 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   alchemist, barbarian and fighter. Also fixes ninja's *deadly shuriken*, where a lost minus sign
   made "her highest base attack bonus −5" read as "5". Catalogued in
   `docs/conditional_open_questions.md` §3.
+- **A character can be replayed through the API.** `/update_character_data` accepts an optional
+  `seed`, read **by name** (like `spheres_of_power`) so the fixed 19-field positional unpack is
+  untouched and older clients are unaffected. Pass back the `generation_seed` from a previous
+  response to reproduce that character exactly. Until now the seed was output-only — the replay
+  handle existed but was unreachable from the API the Foundry module and web sheet actually use.
+
+  **The pop must happen before `items = list(data.items())`**: `last_5_keys` is derived from
+  `items[-5:]`, so a trailing `seed` key left in the dict would displace one of the five numeric
+  fields and break the int conversion.
+
+  Generation is also now **serialized behind a lock**. `generate_random_char` seeds the
+  process-global `random` (and numpy), so two generations at once in one process interleave draws —
+  the second request perturbs the first and a replayed seed doesn't reproduce. `gunicorn -w 4` uses
+  **sync** workers so production already serialized (the 4 worker *processes* still run in
+  parallel), but Flask's dev server is threaded, which is exactly where you'd be replaying a seed to
+  debug a character. At ~80 ms per generation against a 31 s cold start, the lock costs nothing that
+  matters. **Rejected:** threading a `random.Random` instance through the pipeline — it would isolate
+  phases properly but touches the 41 modules using the global `random`, and a process-wide seed is
+  sufficient for replay. Verified byte-identical against a direct `generate_random_char(seed=…)`
+  call across all 165 payload keys.
 - **Character generation is reproducible: `generate_random_char(seed=…)`.** The generator took 22
   knobs and no seed, so no run could be replayed — an NPC that came out wrong was simply gone, and
   the only way to test the pipeline was to construct fake character objects and call individual

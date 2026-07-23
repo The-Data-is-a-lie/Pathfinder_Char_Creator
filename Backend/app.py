@@ -22,6 +22,11 @@ import os
 from start_py import create_app
 from main_test import generate_random_char, GENERATOR_VERSION
 
+# generate_random_char seeds the process-global `random` (and numpy) module, so only one generation
+# may run at a time within a process or their draws interleave -- see the comment at the call site.
+import threading
+_GENERATION_LOCK = threading.Lock()
+
 # Load environment variables
 load_dotenv()
 # Redis powers rate-limiting + server-side sessions ONLY when REDIS_URL is set (local dev, or a
@@ -122,7 +127,7 @@ def backstory_stats():
     from utils.usage_counter import snapshot
     return jsonify(snapshot())
 
-def process_input_values(input_values, spheres_flag="N"):
+def process_input_values(input_values, spheres_flag="N", seed=None):
     try:
         if len(input_values) < 19:
             raise IndexError("Not enough elements in input_values")
@@ -151,9 +156,17 @@ def process_input_values(input_values, spheres_flag="N"):
 
         # Unpack input_values
         create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num = input_values
-        session['character_data'] = generate_random_char(
-        create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num, use_backstory_api, spheres_flag, backstory_focus
-        )
+        # Serialized: generate_random_char seeds the PROCESS-GLOBAL random (and numpy) module, so two
+        # generations running at once in one process interleave draws -- the second request would
+        # perturb the first, and a replayed seed would not reproduce. gunicorn's sync workers already
+        # serialize (the 4 worker PROCESSES still run in parallel), but Flask's dev server is
+        # threaded, which is exactly where you would be replaying a seed to debug a character.
+        # Generation is ~80ms against a 31s cold start, so the lock costs nothing that matters.
+        with _GENERATION_LOCK:
+            session['character_data'] = generate_random_char(
+            create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num, use_backstory_api, spheres_flag, backstory_focus,
+            seed
+            )
         return session['character_data']
 
     except ValueError as ve:
@@ -170,6 +183,11 @@ def update_character_data():
     # Spheres opt-in is read by NAME (not positionally) and removed so the fixed 19-field positional
     # unpack below stays aligned regardless of where the client puts it / whether older clients send it.
     spheres_flag = (data.pop('spheres_of_power', 'n') or 'n')
+    # Optional replay handle, also read by NAME. Pass back the `generation_seed` from a previous
+    # response to reproduce that character exactly. MUST be popped BEFORE `items` is built: last_5_keys
+    # is derived from items[-5:], so a trailing 'seed' key left in the dict would displace one of the
+    # five numeric fields and break the int conversion below. Absent -> None -> a fresh random seed.
+    seed = data.pop('seed', None)
     non_input_data = []
     # Calculate last 5 keys dynamically
     items = list(data.items())
@@ -185,7 +203,7 @@ def update_character_data():
             value = value.strip()
         non_input_data.append(value)
 
-    results = process_input_values(non_input_data, spheres_flag)
+    results = process_input_values(non_input_data, spheres_flag, seed)
     session['character_data'] = results
 
     # Print raw data to terminal for debugging
