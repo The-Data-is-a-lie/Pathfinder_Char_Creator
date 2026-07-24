@@ -3,7 +3,7 @@ pipeline).
 
 Reads data/spells.csv (pipe-delimited; `short_description` holds a clean one-liner, `description`
 the full text) and CONSERVATIVELY classifies every spell into one of two buckets, mirroring the
-repo's house convention (.claude/skills/foundry-conditionals/SKILL.md,
+repo's house convention (the OKF pathfinder bundle oks/pathfinder/conditionals/,
 docs/pow_conditional_decision_rules.md) and the feat split (feat_changes.json vs
 feat_conditionals.json):
 

@@ -3,7 +3,7 @@
 When a Spheres **talent** becomes a per-roll **conditional toggle** on a weapon's (or the Destructive
 Blast's) attack action (`action.conditionals[]`), its effect is encoded the same two ways Path of War
 maneuvers are (see [`pow_conditional_decision_rules.md`](pow_conditional_decision_rules.md) and the
-[`foundry-conditionals`](../.claude/skills/foundry-conditionals/SKILL.md) skill):
+OKF `pathfinder` bundle (`oks/pathfinder/conditionals/`)):
 
 - a **structured modifier** — `modifiers[] = {formula, target, subTarget, type, damageType, critical}`
   — for clean bonuses to *this attack's* damage or to-hit; or

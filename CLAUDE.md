@@ -35,11 +35,18 @@ python Backend/app.py           # Flask server (HTML/JSON view)
   searching the codebase, and update it whenever files, pools, or pipelines move.
 - **Session goals:** at the start of each coding session, (re)write `SESSION_PLAN.md` with this
   session's goals. It is ephemeral and git-ignored — delete and recreate it each session.
-- **Changelog:** record every user/developer-visible change in `changelog.md` under `## [Unreleased]`.
-  See the `changelog` skill (`.claude/skills/changelog/`).
-- **Commits:** follow the `commit-conventions` skill (`.claude/skills/commit-conventions/`) —
-  Conventional Commits, atomic commits, GitHub Flow, no secrets. Only commit/push when asked;
-  branch off `main` first.
+- **Domain knowledge:** this repo has **no `.claude/skills/`** — the Pathfinder/generator knowledge
+  that used to live there (Path of War, Spheres, trainers & professions, conditionals, buffs/sheet
+  references, profession genres, changelog & PR conventions) was consolidated into the **OKF
+  `pathfinder` bundle**. Reach it via the user-level `oks-bundles` skill, which routes to
+  `oks/pathfinder/index.md` (local clone: `C:/Users/Daniel/okf-bundles`; the repo is private, so
+  `WebFetch` on its raw URLs fails — read the clone or use `gh api`).
+- **Changelog:** record every user/developer-visible change in `changelog.md` under `## [Unreleased]`,
+  Keep a Changelog format (Added/Changed/Deprecated/Removed/Fixed/Security), written from the
+  reader's perspective. Details: `oks/pathfinder/contributing/changelog.md`.
+- **Commits:** Conventional Commits, atomic commits, GitHub Flow, no secrets. Only commit/push when
+  asked; branch off `main` first. Full rules live in the user-level `commit-conventions` skill and the
+  OKF `git-best-practices` bundle; PR conventions in `oks/pathfinder/contributing/pull-requests.md`.
 - **Homebrew rules:** `docs/homebrew_rules.md` catalogs this campaign's house rules (from "Sieg's
   Guide") and maps each to where it plugs into the generator — treat it as the source of truth for the
   homebrew feats / skills / races this project targets. It also lists sub-docs not yet deep-read.

@@ -216,6 +216,26 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   `seal()`/`require_sealed()` express that instead. `test_pipeline_phases.py` deliberately violates
   each contract and asserts the error — a guard that never fires is worth nothing.
 
+### Removed
+- **`.claude/skills/` is gone — the domain knowledge moved to the OKF `pathfinder` bundle.** All ten
+  project skills (`path-of-war`, `spheres-of-power`, `trainers-and-professions`, `foundry-conditionals`,
+  `foundry-sheet-references`, `multi-buff-distributor`, `fantasy-expert`, `changelog`,
+  `pull-requests`, `commit-conventions`) were folded into `oks/pathfinder/` as a **faithful superset**
+  — implementation specifics (function names, file paths, verification steps) kept, not just
+  summaries — and then deleted, so there is one home for this knowledge instead of two that drift.
+  Reach it through the user-level `oks-bundles` skill. `CLAUDE.md` and `docs/CODEBASE_MAP.md` now
+  point there, and the decision-rule docs / script docstrings were repointed off the dead paths.
+  - The move **fixed drift the bundle had inherited**: trainer caliber weights `15/40/30/15` →
+    `8/45/45/2`; profession feats documented as riding a `(Trainer N)` slot when they actually render
+    in the general feat track; and `critical: "onCrit"` documented as valid when the real whitelist is
+    `{normal, crit, nonCrit}` (the very value that silently broke the burst weapons above).
+  - New bundle material: the mentor system, `contributing/` (changelog + PR conventions), and
+    `generator-backend/profession-genre-and-tiers.md`.
+  - **Trade-off accepted:** skills auto-surface by description, bundles do not — that guidance now
+    arrives via the `oks-bundles` router plus `CLAUDE.md` instead of a skill loading itself.
+  - `commit-conventions` was byte-identical to the surviving **user-level** skill, so commit
+    conventions still auto-trigger.
+
 ### Fixed
 - **180 bonus-spell names shipped wrong.** `clean_bonus_spells` finished with `str.title()`, which
   broke domain / bloodline / wizard-school bonus spells four ways at once:

@@ -9,7 +9,7 @@ When a Path of War maneuver becomes a **conditional toggle** on a weapon's attac
   has no structured slot for (saves, skill checks, conditions, durations, healing, etc.).
 
 This mirrors the repo's house convention in the
-[`foundry-conditionals`](../.claude/skills/foundry-conditionals/SKILL.md) skill. The builder
+OKF `pathfinder` bundle (`oks/pathfinder/conditionals/`). The builder
 (`Backend/scripts/build_pow_template_actor.py`) and the override-generation pass enforce it.
 
 ## The decision table
@@ -78,7 +78,7 @@ This mirrors the repo's house convention in the
   **and** `[[ ]]` rider text (a save, condition, or combat maneuver) in its name at once. The module
   auto-appends a `[label]` to a bracket-less attack formula so the inline rolls don't crash the
   parser, so author plain formulas. This is the same convention spells now follow — see the
-  [`foundry-conditionals`](../.claude/skills/foundry-conditionals/SKILL.md) skill (*Inheritor's
+  OKF `pathfinder` bundle (`oks/pathfinder/conditionals/`) (*Inheritor's
   Smite pattern*).
   - **Ability default:** melee → `@abilities.str.mod`, ranged → `@abilities.dex.mod`; this also
     chooses the **subtracted** ability in the CMB formula (ranged maneuvers like Tempest Gale's

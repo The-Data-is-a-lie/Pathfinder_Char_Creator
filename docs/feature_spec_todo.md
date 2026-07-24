@@ -53,7 +53,7 @@ table). The FoundryVTT side is live too — the 6 base classes + Medic are expor
 maneuver/stance picks are prerequisite-legal (same-discipline counts, stances count, bootstrap
 for the three no-prereq-0 disciplines); initiators take 1..N(specialized) Metzofitz style feat
 chains (base paid like MT, followers always feat-taxed through); homebrew feats are synthesized
-from `homebrew_feat_desc_dict`. See `.claude/skills/path-of-war/SKILL.md`.
+from `homebrew_feat_desc_dict`. See the OKF `pathfinder` bundle, `oks/pathfinder/path-of-war/`.
 **Native pf1-pow items (2026-06-12):** the Foundry module now creates native `pf1-pow.maneuver`
 items (compendium-first from `pf1-pow.disciplines`, synthesized fallback), so maneuvers render in
 pf1-pow's own Path of War tab — names prefixed `(Strike)/(Boost)/(Counter)/(Stance)`,

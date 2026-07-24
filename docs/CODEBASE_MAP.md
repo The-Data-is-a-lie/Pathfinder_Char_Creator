@@ -150,6 +150,10 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
 ## Docs & rules
 
 `docs/homebrew_rules.md` (house rules — source of truth) · `docs/feature_spec_todo.md` (PoW
-spec) · `docs/pow_conditional_decision_rules.md` / `spheres_conditional_decision_rules.md` ·
-project skills in `.claude/skills/` (path-of-war, spheres-of-power, trainers-and-professions,
-foundry-conditionals, multi-buff-distributor, changelog, commit-conventions).
+spec) · `docs/pow_conditional_decision_rules.md` / `spheres_conditional_decision_rules.md`.
+
+This repo no longer carries `.claude/skills/`. The domain knowledge that lived there (path-of-war,
+spheres-of-power, trainers-and-professions, foundry-conditionals, foundry-sheet-references,
+multi-buff-distributor, fantasy-expert, changelog, pull-requests, commit-conventions) now lives in
+the **OKF `pathfinder` bundle** — reach it via the `oks-bundles` skill (local clone:
+`C:/Users/Daniel/okf-bundles`, area indexes under `oks/pathfinder/`).

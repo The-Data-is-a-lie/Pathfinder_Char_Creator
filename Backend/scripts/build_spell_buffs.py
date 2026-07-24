@@ -1,5 +1,5 @@
 """Scan the FoundryVTT spell compendium and emit a distributable BUFF for every spell that works as a
-buff, for the Multi-Buff Distributor pipeline (see .claude/skills/multi-buff-distributor).
+buff, for the Multi-Buff Distributor pipeline (see the OKF pathfinder bundle: oks/pathfinder/buffs-and-changes/multi-buff-distributor.md).
 
 Reads every_spell.json (the module compendium; 3029 spells, names authoritative) and writes
 <module>/templates/character_sheet_folder/spell_buffs.json:
