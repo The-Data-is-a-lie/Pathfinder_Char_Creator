@@ -6,7 +6,7 @@ The roster is deliberately GENERALIZED (v3): no Path-of-War/Spheres-branded entr
 and sphere practitioners classify into the same generalized archetypes via their disc_*/sph_*
 signals (an Iron Tortoise warder is an AC Tank, a Primal Fury charger is a Charger).
 The roster lives in Backend/json/build_archetypes.json (research + rationale in
-docs/build_archetype_research.md); every entry declares a weighted profile over the FROZEN signal
+the OKF pathfinder bundle: oks/pathfinder/generator-backend/build-archetypes.md); every entry declares a weighted profile over the FROZEN signal
 vocabulary computed by _signals() below, plus hard gates (requires_any / requires_all / vetoes).
 
 Decision path is fully deterministic: gates -> weighted sum -> L1-normalize by the entry's own
@@ -161,7 +161,7 @@ _SPELL_FAMILIES = {
                      'create undead', 'call ', 'mount'),
 }
 
-# Discipline -> tactical tags (identity per docs/build_archetype_research.md).
+# Discipline -> tactical tags (identity per the OKF pathfinder bundle: oks/pathfinder/generator-backend/build-archetypes.md).
 _DISCIPLINE_TAGS = {
     'primal fury': ('rage',), 'broken blade': ('dual', 'mobile'), 'veiled moon': ('stealth', 'mobile'),
     'solar wind': ('ranged',), 'thrashing dragon': ('dual', 'mobile'), 'iron tortoise': ('tank', 'counter'),

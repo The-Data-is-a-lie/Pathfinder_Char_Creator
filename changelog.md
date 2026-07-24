@@ -216,6 +216,31 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   `seal()`/`require_sealed()` express that instead. `test_pipeline_phases.py` deliberately violates
   each contract and asserts the error — a guard that never fires is worth nothing.
 
+### Changed
+- **`docs/` split by purpose, and a docs doctrine recorded in `CLAUDE.md`.** Reviewing the folder
+  surfaced a sharper problem than "which files move": a doc branded a *source of truth* drifts, and
+  drift here had already shipped a bug. `critical: "onCrit"` — never a valid pf1 value — sat in a doc
+  for months and silently broke six burst weapons; what fixed it was an executable whitelist
+  (`MOD_CRITICAL`), not better prose. The skills had likewise documented caliber weights that
+  disagreed with the code. **Relocating a doc does not protect it** — the OKF bundle had inherited
+  both errors.
+  - The doctrine now in `CLAUDE.md`: **code owns behaviour**, and a doc earns its place only when it
+    holds what code cannot — *where* things are (`CODEBASE_MAP.md`), *why* a choice was made
+    (`changelog.md`), *external rules* (PF1e / Sieg's Guide / 3pp → the bundle), or *not-yet-code*
+    (TODOs, open questions). Never restate a tuning constant, formula or enum in prose; name the
+    symbol that owns it. Hard conventions belong in a `validate_*.py`, not only in a sentence.
+  - **Moved out** (authority lives outside this repo): the pf1spheres caster-level resolution write-up
+    and the build-archetype taxonomy/research, plus the house **rules** themselves and the spell
+    caster-level token standard. **Stayed** (things code can't hold): the codebase map, the generated
+    conditional-candidates worklist, the spec/open-question trackers, and the three conditional
+    decision-rules docs — those govern *hand-authored data*, not code behaviour, and 8 curation
+    scripts cite them.
+  - `docs/homebrew_rules.md` is no longer the "source of truth" — the Sieg's Guide docs are. It now
+    keeps only the **rule → code map**, the implementation **backlog**, and the source-coverage tracker.
+  - Applying the doctrine immediately caught another rotted claim: the bundle still described Path of
+    War chain count as "capped by available normal feat slots", a clamp removed when the generator
+    started guaranteeing Path of War with feat priority.
+
 ### Removed
 - **`.claude/skills/` is gone — the domain knowledge moved to the OKF `pathfinder` bundle.** All ten
   project skills (`path-of-war`, `spheres-of-power`, `trainers-and-professions`, `foundry-conditionals`,

@@ -47,6 +47,14 @@ python Backend/app.py           # Flask server (HTML/JSON view)
 - **Commits:** Conventional Commits, atomic commits, GitHub Flow, no secrets. Only commit/push when
   asked; branch off `main` first. Full rules live in the user-level `commit-conventions` skill and the
   OKF `git-best-practices` bundle; PR conventions in `oks/pathfinder/contributing/pull-requests.md`.
-- **Homebrew rules:** `docs/homebrew_rules.md` catalogs this campaign's house rules (from "Sieg's
-  Guide") and maps each to where it plugs into the generator — treat it as the source of truth for the
-  homebrew feats / skills / races this project targets. It also lists sub-docs not yet deep-read.
+- **Homebrew rules:** the house rules themselves live in the OKF bundle
+  (`oks/pathfinder/house-rules/`); their authority is the "Sieg's Guide" Google Docs, not this repo.
+  `docs/homebrew_rules.md` keeps only the **rule → code map**, the implementation **backlog**, and
+  which source sub-docs are still unread.
+- **Docs doctrine — code owns behaviour.** When a doc and the code disagree, the code is right and
+  the doc is a bug. A doc earns its place only when it holds what code cannot: **where** things are
+  (`docs/CODEBASE_MAP.md`), **why** a choice was made (`changelog.md`), **external rules** (PF1e,
+  Sieg's Guide, 3pp systems → the bundle), or **not-yet-code** (TODOs, open questions). Never restate
+  a tuning constant, formula, or enum in prose — name the symbol that owns it. Hard conventions
+  belong in a validator (`Backend/scripts/validate_*.py`), not only in a sentence: a stale
+  `critical: "onCrit"` in a doc silently broke six weapons, and a `MOD_CRITICAL` whitelist fixed it.

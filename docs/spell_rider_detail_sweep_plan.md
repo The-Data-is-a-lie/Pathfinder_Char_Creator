@@ -2,15 +2,13 @@
 
 > Working plan for the detailed spell-effect sweep. Grilled 2026-07-20.
 
-> **Caster-level standard (2026-07-21).** Riders author caster-level scaling as the single token
-> `@spells.primary.cl.total` (e.g. `[[5*@spells.primary.cl.total]] hit points`). Both consumers now
-> **expand that token at attach time** into the homebrew *combined* caster level via `spellCLExpr()`:
-> each casting class contributes its full class level (high/mid) or `max(level − 3, 0)` (low), summed
-> over the spellbooks and floored to 1 — mirroring the Spheres `sphereCLExpr()` path
-> (`modify-abilities.js` `subSpellTokens`; `pf1-conditional-applier` `subSpell`). Do **not** author a
-> raw three-book sum: pf1 leaves `@spells.<book>.cl.total` at full class level even for low casters, so
-> summing raw tokens over-counts a low caster by 3. `validate_spell_conditionals.py` errors on any bare
-> `[[N]] … per caster level` that lacks a computed total.
+> **Caster-level standard.** Riders author caster-level scaling as the single token
+> `@spells.primary.cl.total`; both consumers expand it at attach time into the homebrew *combined*
+> caster level (`spellCLExpr()` in `modify-abilities.js`'s `subSpellTokens`, and `subSpell` in
+> `pf1-conditional-applier`). Never author a raw multi-book sum — it over-counts low casters.
+> **The rule and its rationale now live in the OKF `pathfinder` bundle**
+> (`oks/pathfinder/conditionals/decision-rules.md`, "Scaling tokens"), and
+> `validate_spell_conditionals.py` enforces it.
 
 ## Context
 
