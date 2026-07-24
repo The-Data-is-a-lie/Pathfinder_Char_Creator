@@ -42,6 +42,14 @@
               "subTarget": "allAttack",
               "target": "attack",
               "type": "insight"
+            },
+            {
+              "critical": "crit",
+              "damageType": [],
+              "formula": "@abilities.int.mod",
+              "subTarget": "allAttack",
+              "target": "attack",
+              "type": "insight"
             }
           ],
           "name": "Arcane Accuracy ([[1]] arcane pool, swift): insight bonus to all attack rolls until the end of your turn"
@@ -919,6 +927,14 @@
               "subTarget": "allDamage",
               "target": "damage",
               "type": "untyped"
+            },
+            {
+              "critical": "crit",
+              "damageType": [],
+              "formula": "2",
+              "subTarget": "allAttack",
+              "target": "attack",
+              "type": "morale"
             }
           ],
           "name": "Song of Death's Herald: Cost: [[1]] arcane pool; Activation: swift action; Save: Will DC [[ 10 + floor(@classes.magus.level / 2) + @abilities.int.mod ]] negates; Effect: on a failed save, for [[1]] round per magus level your critical threat range against the target increases by [[1]] (before doubling from keen or similar effects); creatures with Intelligence [[4]] or lower are immune",
@@ -933,6 +949,14 @@
           "modifiers": [
             {
               "critical": "normal",
+              "damageType": [],
+              "formula": "1",
+              "subTarget": "allAttack",
+              "target": "attack",
+              "type": "untyped"
+            },
+            {
+              "critical": "crit",
               "damageType": [],
               "formula": "1",
               "subTarget": "allAttack",
@@ -5894,6 +5918,14 @@
               "subTarget": "allAttack",
               "target": "attack",
               "type": "morale"
+            },
+            {
+              "critical": "crit",
+              "damageType": [],
+              "formula": "ifelse(gte(@classes.oracle.level,10),2,1)",
+              "subTarget": "allAttack",
+              "target": "attack",
+              "type": "morale"
             }
           ],
           "name": "Battlecry: Cost: [[1]] of [[1 + floor(@classes.oracle.level/5)]] daily uses; Activation: move action; Effect: you and allies within [[100]] feet who hear your cry gain a +[[1]] morale bonus (+[[2]] at oracle level [[10]]+) on attack rolls, skill checks, and saving throws for [[@abilities.cha.mod]] rounds",
@@ -5988,6 +6020,14 @@
               "formula": "1 + floor(@classes.oracle.level/7)",
               "subTarget": "allDamage",
               "target": "damage",
+              "type": "morale"
+            },
+            {
+              "critical": "crit",
+              "damageType": [],
+              "formula": "1 + floor(@classes.oracle.level/7)",
+              "subTarget": "allAttack",
+              "target": "attack",
               "type": "morale"
             }
           ],
@@ -6212,6 +6252,14 @@
           "modifiers": [
             {
               "critical": "normal",
+              "damageType": [],
+              "formula": "max(0, floor((@classes.oracle.level-3)/4))",
+              "subTarget": "allAttack",
+              "target": "attack",
+              "type": "untyped"
+            },
+            {
+              "critical": "crit",
               "damageType": [],
               "formula": "max(0, floor((@classes.oracle.level-3)/4))",
               "subTarget": "allAttack",
@@ -7039,6 +7087,14 @@
               "formula": "1 + floor(@classes.oracle.level/7)",
               "subTarget": "allDamage",
               "target": "damage",
+              "type": "morale"
+            },
+            {
+              "critical": "crit",
+              "damageType": [],
+              "formula": "1 + floor(@classes.oracle.level/7)",
+              "subTarget": "allAttack",
+              "target": "attack",
               "type": "morale"
             }
           ],
@@ -11574,6 +11630,14 @@
           "modifiers": [
             {
               "critical": "normal",
+              "damageType": [],
+              "formula": "1 + floor(@classes.barbarian.level / 4)",
+              "subTarget": "allAttack",
+              "target": "attack",
+              "type": "untyped"
+            },
+            {
+              "critical": "crit",
               "damageType": [],
               "formula": "1 + floor(@classes.barbarian.level / 4)",
               "subTarget": "allAttack",

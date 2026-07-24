@@ -270,6 +270,14 @@
      "subTarget": "allAttack",
      "target": "attack",
      "type": "morale"
+    },
+    {
+     "critical": "crit",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
     }
    ],
    "name": "Demon Hunter (vs demons): +2 morale on attack rolls"
@@ -279,6 +287,14 @@
    "modifiers": [
     {
      "critical": "normal",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    },
+    {
+     "critical": "crit",
      "damageType": [],
      "formula": "1",
      "subTarget": "allAttack",

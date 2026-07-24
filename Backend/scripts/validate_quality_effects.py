@@ -54,7 +54,11 @@ PF1_CHANGE_TARGETS = {
 
 MOD_TARGETS = {'damage', 'attack'}
 MOD_SUBTARGETS = {'allDamage', 'allAttack', 'attack_0'}
-MOD_CRITICAL = {'normal', 'nonCrit', 'onCrit'}
+# pf1's action-model enum is {NORMAL:"normal", CRITICAL:"crit", NON_CRITICAL:"nonCrit"}. "crit" is
+# the confirm-only slot for an attack modifier (labeled "Critical Confirm Bonus") and the
+# multiply-on-crit slot for damage ("On Crit Bonus Formula"). "onCrit" was never a pf1 value -- pf1
+# deletes an unknown `critical` on the next sheet edit, silently breaking the modifier.
+MOD_CRITICAL = {'normal', 'crit', 'nonCrit'}
 MOD_KEYS = {'formula', 'target', 'subTarget', 'type', 'damageType', 'critical'}
 # `tier`: "A" = apply by default; "B" = authored but filed under the applier's "(NOT RECOMMENDED)"
 # section, offered unchecked, and filtered out of the generator's feat toggles. Absent means A, so

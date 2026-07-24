@@ -29,28 +29,28 @@
       "conditionals": [
         { "name": "Flaming Burst: crit rider assumes a x2 weapon — on a x3 crit the extra fire is [[2d10]], on a x4 crit [[3d10]]", "default": true, "modifiers": [
           {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["fire"], "critical": "nonCrit"},
-          {"formula": "1d10", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["fire"], "critical": "onCrit"} ] }
+          {"formula": "1d10", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["fire"], "critical": "crit"} ] }
       ]
     },
     "Icy Burst": {
       "conditionals": [
         { "name": "Icy Burst: crit rider assumes a x2 weapon — on a x3 crit the extra cold is [[2d10]], on a x4 crit [[3d10]]", "default": true, "modifiers": [
           {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["cold"], "critical": "nonCrit"},
-          {"formula": "1d10", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["cold"], "critical": "onCrit"} ] }
+          {"formula": "1d10", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["cold"], "critical": "crit"} ] }
       ]
     },
     "Shocking Burst": {
       "conditionals": [
         { "name": "Shocking Burst: crit rider assumes a x2 weapon — on a x3 crit the extra electricity is [[2d10]], on a x4 crit [[3d10]]", "default": true, "modifiers": [
           {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["electric"], "critical": "nonCrit"},
-          {"formula": "1d10", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["electric"], "critical": "onCrit"} ] }
+          {"formula": "1d10", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["electric"], "critical": "crit"} ] }
       ]
     },
     "Corrosive Burst": {
       "conditionals": [
         { "name": "Corrosive Burst: crit rider assumes a x2 weapon — on a x3 crit the extra acid is [[2d10]], on a x4 crit [[3d10]]", "default": true, "modifiers": [
           {"formula": "1d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["acid"], "critical": "nonCrit"},
-          {"formula": "1d10", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["acid"], "critical": "onCrit"} ] }
+          {"formula": "1d10", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["acid"], "critical": "crit"} ] }
       ]
     },
     "Holy": {
@@ -81,6 +81,7 @@
       "conditionals": [
         { "name": "Bane: only vs the designated foe type — the weapon's effective enhancement bonus also rises by [[2]] (the +[[2]] attack is on the roll)", "default": false, "modifiers": [
           {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "crit"},
           {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
       ]
     },
@@ -104,7 +105,7 @@
     "Thundering": {
       "conditionals": [
         { "name": "Thundering: on a confirmed crit the extra sonic is on the roll (x2 shown; [[2d8]] on a x3 crit, [[3d8]] on x4) and the target must pass a Fortitude Save [[14]] or be permanently deafened", "default": true, "modifiers": [
-          {"formula": "1d8", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["sonic"], "critical": "onCrit"} ] }
+          {"formula": "1d8", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": ["sonic"], "critical": "crit"} ] }
       ]
     },
     "Keen": {
@@ -257,6 +258,7 @@
       "conditionals": [
         { "name": "Blood-Hunting: only vs creatures with the designated bloodline — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll); enh increases from bane/spirit-hunting don't stack but each such ability past the first adds +[[1d6]] damage", "default": false, "modifiers": [
           {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "crit"},
           {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
       ]
     },
@@ -426,6 +428,7 @@
       "conditionals": [
         { "name": "Drowscourge: only vs driders and drow — the enhancement bonus is [[1]] better (on the roll); detect drow (as detect animals or plants) [[1]]/day and darkvision (as the spell) [[1]]/day", "default": false, "modifiers": [
           {"formula": "1", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "1", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "crit"},
           {"formula": "1", "target": "damage", "subTarget": "allDamage", "type": "enh", "damageType": [], "critical": "normal"} ] }
       ]
     },
@@ -564,6 +567,7 @@
       "conditionals": [
         { "name": "Heretical: as fervent; only vs members of the attuned religion — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll) and the extra damage is not multiplied on a crit", "default": false, "modifiers": [
           {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "crit"},
           {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
       ]
     },
@@ -623,6 +627,7 @@
       "conditionals": [
         { "name": "Kinslayer: only vs creatures related to the wielder — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll) and the extra damage is not multiplied on a crit", "default": false, "modifiers": [
           {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "crit"},
           {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
       ]
     },
@@ -675,6 +680,7 @@
       "conditionals": [
         { "name": "Mythic Bane: only vs creatures with the mythic subtype — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll); stacks with bane", "default": false, "modifiers": [
           {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "crit"},
           {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
       ]
     },
@@ -846,7 +852,7 @@
       "conditionals": [
         { "name": "Shattering: only vs inanimate objects and crystalline creatures — as breaking (on-command [[2d6]], not stacking with bane) plus the on-crit dice on the roll ( [[2d10]] on x3, [[3d10]] on x4; the crit damage DOES stack with bane and works even with breaking inactive); ignores hardness [[10]] or lower", "default": false, "modifiers": [
           {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"},
-          {"formula": "1d10", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "onCrit"} ] }
+          {"formula": "1d10", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "crit"} ] }
       ]
     },
     "Shrinking": {
@@ -930,6 +936,7 @@
       "conditionals": [
         { "name": "Spirit-Hunting: only vs the designated foe with a mystery or spirit class feature — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll); enh increases from bane/blood-hunting don't stack but each such ability past the first adds +[[1d6]] damage", "default": false, "modifiers": [
           {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "crit"},
           {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
       ]
     },
@@ -947,6 +954,7 @@
       "conditionals": [
         { "name": "Summon Bane: only vs summoned/called creatures and eidolons — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll)", "default": false, "modifiers": [
           {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "crit"},
           {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
       ]
     },
@@ -985,6 +993,7 @@
       "conditionals": [
         { "name": "Treasonous: as patriotic; only vs members of the attuned nationality — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll) and the extra damage is not multiplied on a crit", "default": false, "modifiers": [
           {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "normal"},
+          {"formula": "2", "target": "attack", "subTarget": "allAttack", "type": "enh", "damageType": [], "critical": "crit"},
           {"formula": "2d6", "target": "damage", "subTarget": "allDamage", "type": "untyped", "damageType": [], "critical": "nonCrit"} ] }
       ]
     },

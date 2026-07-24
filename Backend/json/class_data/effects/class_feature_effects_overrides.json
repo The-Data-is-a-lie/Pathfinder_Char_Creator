@@ -14,6 +14,14 @@
               "type": "untyped",
               "damageType": [],
               "critical": "normal"
+            },
+            {
+              "formula": "1 + floor(@classes.barbarian.level / 4)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "crit"
             }
           ]
         }
@@ -1379,6 +1387,14 @@
               "type": "insight",
               "damageType": [],
               "critical": "normal"
+            },
+            {
+              "formula": "@abilities.int.mod",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "insight",
+              "damageType": [],
+              "critical": "crit"
             }
           ]
         }
@@ -1659,6 +1675,14 @@
                 "sonic"
               ],
               "critical": "nonCrit"
+            },
+            {
+              "formula": "2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "morale",
+              "damageType": [],
+              "critical": "crit"
             }
           ]
         }
@@ -1728,6 +1752,14 @@
               "type": "untyped",
               "damageType": [],
               "critical": "normal"
+            },
+            {
+              "formula": "1",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "crit"
             }
           ]
         }
@@ -2110,6 +2142,14 @@
               "type": "morale",
               "damageType": [],
               "critical": "normal"
+            },
+            {
+              "formula": "ifelse(gte(@classes.oracle.level,10),2,1)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "morale",
+              "damageType": [],
+              "critical": "crit"
             }
           ]
         }
@@ -2179,6 +2219,14 @@
               "type": "morale",
               "damageType": [],
               "critical": "normal"
+            },
+            {
+              "formula": "1 + floor(@classes.oracle.level/7)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "morale",
+              "damageType": [],
+              "critical": "crit"
             }
           ]
         }
@@ -2259,6 +2307,14 @@
               "type": "untyped",
               "damageType": [],
               "critical": "normal"
+            },
+            {
+              "formula": "max(0, floor((@classes.oracle.level-3)/4))",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "crit"
             }
           ]
         }
@@ -2546,6 +2602,14 @@
               "type": "morale",
               "damageType": [],
               "critical": "normal"
+            },
+            {
+              "formula": "1 + floor(@classes.oracle.level/7)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "morale",
+              "damageType": [],
+              "critical": "crit"
             }
           ]
         }

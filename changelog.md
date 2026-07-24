@@ -18,6 +18,39 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 
 ## [Unreleased]
 
+### Fixed
+- **Per-roll bonuses now land on the right d20 (crit-confirm encoding).** pf1 splits a weapon
+  conditional's `attack` modifier by its `critical` field: `normal` parts roll on the initial attack
+  **only**, `crit` parts on the critical-confirmation roll **only**. Three problems followed from
+  this being missed during curation, all resolved (see `docs/conditional_open_questions.md` #2):
+  - **Confirm-only feats were text, not a modifier.** Seven feats whose bonus fires only on the
+    confirmation roll (`Object Of Legend` +10, `Improved Low Blow`, `Planar Wild Shape`,
+    `Net and Trident`, `Demonic Nemesis`, `Greater Snap Shot`, `Desperate Swing`) now carry a
+    structured `{target:"attack", critical:"crit"}` modifier, with the redundant "+N to confirm"
+    prose trimmed from each name.
+  - **Standing to-hit bonuses under-applied on the confirm roll.** A curated audit of all 127
+    hand-curated `attack`/`normal` modifiers added a `critical:"crit"` **twin** to every bonus
+    scoped to a state/duration/creature-type (RAW it applies to the confirmation roll too): 34
+    feats, 8 class-feature powers, and the 9 bane-family weapon qualities. One-shot, penalty,
+    stat-swap-per-attack, and combat-maneuver modifiers were deliberately left `normal`-only.
+    `Earth Child Topple` was reclassified `normal`→`crit` (it grants Wis to confirmation and trips,
+    not to normal attacks, so `normal` was over-applying).
+  - **Six burst weapons were silently broken.** `Flaming/Icy/Shocking/Corrosive Burst`, `Thundering`
+    and `Shattering` used `critical:"onCrit"` — never a pf1 value; pf1 deletes an unknown `critical`
+    on the next sheet edit, dropping the burst dice. Corrected to `crit` (rolls in `critParts`,
+    repeated `critMult-1` times — exactly burst RAW). The validator whitelist, which carried the
+    bogus `onCrit` and lacked `crit`, is now `{normal, crit, nonCrit}`.
+
+  Shipping this requires an applier `build_data.py` rebuild (done) and a backend deploy so the
+  FoundryVTT module picks up the edited `feat_conditionals`/`quality_effects`.
+- **Class-feature save-DC confidence metadata corrected.** `conditional_clauses.CLASS_FEATURE_DC`
+  (offline curation metadata; not read at generation time) relabeled all nine `assumed` pools from a
+  scan of their own DC sentences — the ability was kept in every case; only the confidence changed.
+  A new `rules` confidence marks pools whose DC ability is fixed by the governing subsystem
+  (`ki_powers`, `discoveries`, `mercy`, `cruelty`, `social_talents`); the rest moved to `varies`
+  (incl. `slayer_talents`/`curses`, which mix abilities) or `stated` (`investigator_talents`).
+  `assumed` is retained but now unused. See `docs/conditional_open_questions.md` #4.
+
 ### Added
 - **Conditional tiers: `A` applies, `B` is authored but not shipped.** Roughly half the authored
   conditionals describe real effects that don't earn a permanent checkbox in the pf1 attack dialog.

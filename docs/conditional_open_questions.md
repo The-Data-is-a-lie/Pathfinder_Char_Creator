@@ -18,13 +18,38 @@ card and easy to fix; double-applying looks correct and is nearly impossible to 
 To restore any of them, put the modifier back in `Backend/json/feats/feat_conditionals.json` for that
 feat. The rider text already describes the effect, so nothing is lost meanwhile.
 
-## 2. Confirm-only bonuses have no schema slot
+## 2. Confirm-only bonuses have no schema slot — RESOLVED (2026-07-23)
 
-Several entries (`Object of Legend`, `Planar Wild Shape`, `Redemption`, `Net and Trident`,
-`Improved Low Blow`) grant a bonus **only on a critical-confirmation roll**. The conditional schema
-has `attack` and `damage` targets but nothing for confirmation, and an `attack` modifier would also
-buff the initial roll. All are rider-text only by necessity. If pf1 ever exposes a confirm subTarget,
-these are the entries to revisit.
+The premise was wrong: pf1 **does** expose a confirm slot. An `attack` modifier's `critical` field
+takes `"crit"` (labeled "Critical Confirm Bonus"), and `chat-attack.mjs` pushes `attack.crit`
+conditional parts **only** onto the confirmation roll while `attack.normal` parts go **only** onto
+the initial roll (`partID = target.subTarget.critical`). So `critical:"crit"` is the confirm-only
+slot — and, conversely, every plain `attack`/`normal` modifier had been silently applying to the
+initial roll *only*, never the confirmation.
+
+What changed:
+- The 7 confirm-only feats (`Object Of Legend`, `Improved Low Blow`, `Planar Wild Shape`,
+  `Net and Trident`, `Demonic Nemesis`, `Greater Snap Shot`, `Desperate Swing`) now carry a
+  structured `{target:"attack", critical:"crit"}` modifier; the redundant "+N to confirm" prose was
+  trimmed from each name. (`Redemption` turned out to be an initial-roll reroll bonus, not
+  confirm-only, and was left alone.)
+- A curated audit of the 127 hand-curated `attack`/`normal` modifiers added a `critical:"crit"`
+  **twin** to every *standing* to-hit bonus (a bonus scoped to a state/duration/creature-type, which
+  RAW applies to the confirmation roll too): 34 feats, 8 class-feature powers, and the 9 bane-family
+  weapon qualities. Bonuses tied to one declared roll, penalties, stat-swaps consumed per-attack, and
+  combat-maneuver checks (which don't confirm) were left `normal`-only — under-applying is visible
+  and safe, over-applying is not.
+- `Earth Child Topple` was reclassified `normal`→`crit`: the feat grants Wis to confirmation and to
+  trip maneuvers, *not* to normal attacks, so the `normal` modifier had been over-applying.
+- Six weapon **burst** qualities (`Flaming/Icy/Shocking/Corrosive Burst`, `Thundering`, `Shattering`)
+  used `critical:"onCrit"` — never a pf1 value; pf1 deletes an unknown `critical` on the next sheet
+  edit, silently breaking the burst dice. Corrected to `crit` (rolls in `critParts`, repeated
+  `critMult-1` times — exactly burst RAW). The validator whitelist, which carried the bogus `onCrit`
+  and lacked `crit`, was corrected to `{normal, crit, nonCrit}`.
+
+Follow-up (not done here): the 18 PoW/Spheres/spell subsystem `attack`/`normal` modifiers
+(`maneuver_changes`, `combat_talent_changes`, `spell_changes`) were out of scope; they get the same
+standing-bonus twin pass under their own decision docs.
 
 ## 3. Source-data defects — AUDITED AND FIXED (2026-07-23)
 
@@ -60,9 +85,19 @@ capitalised `"Benefits"` key. `build_class_feature_changes.entry_text()` matched
 then excluded the key from its fallback branch, so their text was dropped entirely and they reached
 the curation agents blank. `entry_text()` is now case-insensitive.
 
-## 4. Pool DC abilities still marked `assumed`
+## 4. Pool DC abilities still marked `assumed` — RESOLVED (2026-07-23)
 
-`conditional_clauses.CLASS_FEATURE_DC` carries a confidence per pool. The `assumed` ones were
-inferred from the class's key ability, not stated anywhere in the pool: **ki_powers, discoveries,
-rogue/investigator/vigilante/social talents, mercy, cruelty**. The `ninja_talents` entry was already
-corrected this way (Int → Cha) after the pool's own text showed Cha 9 / Int 6.
+A scan of every pool's own DC sentences reclassified all nine `assumed` pools (the ability was kept
+in every case; only the confidence changed). This table is **offline-only** — imported by the
+curation scripts, never by `main_test.py` — so the relabel has no runtime effect; it only makes the
+metadata honest for the next curation pass. The DCs already baked into curated entries are literal
+formulas in `class_feature_effects_overrides.json`, all spot-checked to use the table's ability
+(the one apparent outlier, `mighty ambush` keying off Str, is correct — its own text reads "the
+higher of Str and Dex," a `dc_stated` case that beats the pool default).
+
+A new confidence **`rules`** was added for pools whose DC ability is fixed by the governing
+subsystem's own rules rather than stated in the pool text (not a guess): `ki_powers` (Wis),
+`discoveries` (Int), `mercy`/`cruelty` (Cha), `social_talents` (Cha). The rest moved to `varies`
+(`rogue_talents`, `vigilante_talents`, plus `slayer_talents` and `curses`, which the scan showed
+mix abilities) or `stated` (`investigator_talents`). `assumed` is now unused but kept documented for
+a future pool whose ability is a genuine unverified guess.

@@ -61,9 +61,10 @@ table lives in `conditional_clauses.CLASS_FEATURE_DC` and each worklist file shi
 
 | confidence | meaning | pools |
 |---|---|---|
-| `stated` | the pool's own text spells the ability out | arcana, ninja/slayer talents, exploits, mysteries, curses |
-| `varies` | the pool mixes abilities — **check the power's own words first** | rage powers (Str, Cha and Con all appear), hexes (holds shaman hexes, which key off Wis, not the witch's Int) |
-| `assumed` | no DC anywhere in the pool; the class's key ability, confirm on use | ki powers, discoveries, rogue/investigator/vigilante/social talents, mercy, cruelty |
+| `stated` | the pool's own text spells the ability out | arcana, investigator talents, exploits, mysteries |
+| `varies` | the pool mixes abilities — **check the power's own words first** | rage powers (Str, Cha, Con), hexes (holds shaman hexes, Wis not Int), rogue/ninja/slayer/vigilante talents, curses |
+| `rules` | no DC in the pool text, but the ability is fixed by the governing subsystem's own rules (not a guess) | ki powers (Wis), discoveries (Int), mercy/cruelty (Cha), social talents (Cha) |
+| `assumed` | no DC anywhere in the pool **and** no governing rule; the class's key ability, a genuine guess to confirm on use | *(currently none — kept for a future such pool)* |
 | `none` | the pool states no DCs at all | armor training, weapon training |
 
 When a record carries `dc_stated`, that sentence is the power's own DC — it always beats the pool

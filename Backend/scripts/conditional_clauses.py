@@ -199,23 +199,29 @@ def spell_save_dc_clause(save_block):
 # values mean. Fighter trainings state no DCs at all.
 CLASS_FEATURE_DC = {
     'rage_powers':          ('barbarian',    'str', 'varies'),
-    'ki_powers':            ('monk',         'wis', 'assumed'),
-    'discoveries':          ('alchemist',    'int', 'assumed'),
+    # DC fixed by the parent subsystem, not the pool text: ki powers key off Wis (the ki pool
+    # feature), bombs off Int, mercy/cruelty off Cha (lay on hands / touch of corruption).
+    'ki_powers':            ('monk',         'wis', 'rules'),
+    'discoveries':          ('alchemist',    'int', 'rules'),
     'hexes':                ('witch',        'int', 'varies'),
-    'rogue_talents':        ('rogue',        'int', 'assumed'),
+    # Int 5 / Cha 2 / Wis 1 / Dex 1 across the pool's own DC sentences -- read the power.
+    'rogue_talents':        ('rogue',        'int', 'varies'),
     # Cha 9 / Int 6 across the pool's own DC sentences, plus stray Wis/Dex from shared rogue talents:
     # ki-powered tricks key off Charisma, the inherited rogue ones off Intelligence. Read the power.
     'ninja_talents':        ('ninja',        'cha', 'varies'),
-    'slayer_talents':       ('slayer',       'int', 'stated'),
-    'investigator_talents': ('investigator', 'int', 'assumed'),
-    'vigilante_talents':    ('vigilante',    'cha', 'assumed'),
-    'social_talents':       ('vigilante',    'cha', 'assumed'),
+    # Int 8 / Cha 2 / Wis 1 / Dex 1 across the pool's own DC sentences -- read the power.
+    'slayer_talents':       ('slayer',       'int', 'varies'),
+    'investigator_talents': ('investigator', 'int', 'stated'),
+    # Mixes Str/Dex (Mighty Ambush), Int/Wis/Cha (Minor/Major Magic spell DCs) -- read the power.
+    'vigilante_talents':    ('vigilante',    'cha', 'varies'),
+    'social_talents':       ('vigilante',    'cha', 'rules'),
     'arcana':               ('magus',        'int', 'stated'),
-    'mercy':                ('paladin',      'cha', 'assumed'),
-    'cruelty':              ('antipaladin',  'cha', 'assumed'),
+    'mercy':                ('paladin',      'cha', 'rules'),
+    'cruelty':              ('antipaladin',  'cha', 'rules'),
     'exploits':             ('arcanist',     'cha', 'stated'),
     'mysteries':            ('oracle',       'cha', 'stated'),
-    'curses':               ('oracle',       'cha', 'stated'),
+    # Cha 3 / Con 2 / Dex 1 across the pool's own DC sentences -- read the power.
+    'curses':               ('oracle',       'cha', 'varies'),
     'armor_training':       (None,           None,  'none'),
     'weapon_training':      (None,           None,  'none'),
 }
@@ -254,8 +260,12 @@ def class_feature_save_dc(section):
     curator knows when to check the power's own words first:
       stated  -- the pool's own text spells this ability out
       varies  -- the pool mixes abilities (rage powers use Str, Cha and Con; the hexes pool holds
-                 shaman hexes, which key off Wis rather than the witch's Int)
-      assumed -- no DC anywhere in the pool; the class's key ability, to be confirmed on use
+                 shaman hexes, which key off Wis rather than the witch's Int) -- read the power
+      rules   -- no DC in the pool text, but the ability is fixed by the governing subsystem's own
+                 rules (bomb DC = Int, mercy/cruelty = Cha, ki powers = Wis), trustworthy without
+                 being stated -- distinct from a guess
+      assumed -- no DC anywhere in the pool and no governing rule; the class's key ability, a genuine
+                 guess to be confirmed on use (currently unused; kept for a future such pool)
     See docs/class_feature_conditional_decision_rules.md.
     """
     entry = CLASS_FEATURE_DC.get(section)
