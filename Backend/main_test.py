@@ -55,7 +55,7 @@ from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feat
 from utils.class_func.weapon_focus_buffs import weapon_focus_changes
 from utils.class_func.buff_match					import match as match_buffs, sections as buff_sections, format_gaps, keep_tier_a
 from utils.class_func.pipeline					import phase, seal, require_sealed
-from utils.class_func.spheres 						import randomize_spheres_num, choose_spheres_attr, add_overflow_talents, MAX_EXTRA_TALENT_FEATS, mentor_sphere_summary
+from utils.class_func.spheres 						import randomize_spheres_num, choose_spheres_attr, add_overflow_talents, MAX_EXTRA_TALENT_FEATS, mentor_sphere_summary, mentor_feat_worth
 from utils.class_func.flag_assign 					import human_flag_assigner, druidic_flag_assigner
 from utils.class_func.flaws 						import flaw_chooser
 from utils.class_func.generic_func 					import generic_class_option_chooser, get_data_without_prerequisites, no_prereq_prep#, no_prereq_loop, chosen_set_append
@@ -732,23 +732,24 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			pow_data = None
 			desired_style = 0
 		selected_amount = desired_pow + desired_style + desired_sphere
-		dedicated_trainer_calibers, _overflow_n, _priority_reserve, _mentor_talents_n = [], 0, 0, 0
+		_sphere_mentor_cal, _pow_mentor_cal, _overflow_n, _priority_reserve, _mentor_talents_n = 0, 0, 0, 0, 0
 		realize_pow, realize_style, realize_sphere = desired_pow, desired_style, desired_sphere
 		if selected_amount > 0:
 			_half = (selected_amount + 1) // 2          # ceil(selected_amount / 2)
 			if random.random() < 0.25:
-				# ONE dedicated mentor of caliber 1-4 (8/45/45/2): it teaches `caliber` feats =
-				# 2*caliber sphere talents off-budget (caps at the flat-8). No overflow -> the character's
-				# total talents never bloat past the flat-8; the mentor just pays for 2*caliber of them.
-				dedicated_trainer_calibers = [roll_caliber()]
-				_capacity = dedicated_trainer_calibers[0]
-				_rest = selected_amount - _half
-				realize_total = _half + min(_capacity, _rest)
-				_overflow_n = 0
-				_mentor_talents_n = 2 * dedicated_trainer_calibers[0]
-			else:
-				realize_total = _half
-			_priority_reserve = min(_half, realize_total)   # the budget-funded portion (rest is off-budget)
+				# "trainer-backed": ONE dedicated mentor PER SYSTEM the character actually has content in,
+				# each rolling its own caliber 1-4 (8/45/45/2). A mentor funds `caliber` FEATS' worth of the
+				# training that lies beyond the character's own half-share -- 2*caliber sphere talents (capped
+				# at the flat-8, so total talents never bloat) or `caliber` Martial Training / style feats.
+				# Whatever it funds leaves the normal feat track and renders under its own "(Trainer N)" slot
+				# instead, so a funded feat is never listed twice. Rolling per system is what finally lets a
+				# pure-martial NPC have a mentor at all: the old single roll was spent raising the PoW
+				# realization while line ~848 still billed the character for it, then suppressed itself.
+				_sphere_mentor_cal = roll_caliber() if desired_sphere > 0 else 0
+				_pow_mentor_cal = roll_caliber() if (desired_pow + desired_style) > 0 else 0
+				_mentor_talents_n = 2 * _sphere_mentor_cal
+			realize_total = _half
+			_priority_reserve = _half                       # the budget-funded portion (mentor funding is off-budget)
 			if realize_total < selected_amount:
 				_dpow = desired_pow + desired_style
 				_rpow = max(0, min(round(realize_total * _dpow / selected_amount), _dpow))
@@ -764,6 +765,16 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 					_rpow = _pow_min
 					realize_sphere = max(0, min(realize_total - _rpow, desired_sphere))
 				realize_style, realize_pow = (_rpow, 0) if _is_initiator else (0, _rpow)
+			# The PoW mentor tops up ITS OWN system beyond that half-share (the Spheres Mentor's capacity
+			# rides `_mentor_talents_n` instead -- sphere talents are a flat 8 either way, so its caliber
+			# only moves who pays). Non-initiator capacity buys WHOLE chains: a part-paid chain grants
+			# nothing, so `caliber % paid_per_chain` falls through to refunding already-realized feats
+			# below. Initiator style bases cost one feat each, so they top up one at a time.
+			if _pow_mentor_cal:
+				if _is_initiator:
+					realize_style = min(desired_style, realize_style + _pow_mentor_cal)
+				elif _paid_per_chain:
+					realize_pow = min(desired_pow, realize_pow + (_pow_mentor_cal // _paid_per_chain) * _paid_per_chain)
 		if not _is_initiator:
 			pow_data = choose_path_of_war_attr(
 				character, max_chains=((realize_pow // _paid_per_chain) if _paid_per_chain else 0))
@@ -786,12 +797,23 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# have no style feats. The feat-budget reservation now happens after the Spheres section.
 		style_feats = style_feats[:realize_style]
 		style_feat_tax = {k: v for k, v in style_feat_tax.items() if k in style_feats}
+		# Which PoW feats the mentor paid for. Chains / style bases are realized in order, so the TRAILING
+		# ones are precisely what its capacity bought; once the top-up is exhausted the leftover caliber
+		# keeps paying, refunding feats the character's own half-share had realized (mirroring the Spheres
+		# Mentor, which at caliber 4 funds all 8 talents and leaves the character paying for none). Capped
+		# at the PoW that actually exists. These feats stay OUT of the normal feat track from here on:
+		# they are excluded from the budget reservation and from `feats`, and render under the mentor's
+		# "(Trainer N - Path of War)" label instead, so the freed slots refill with ordinary feats.
+		_pow_all_feats = mt_feats + style_feats
+		_pow_funded_n = min(_pow_mentor_cal, len(_pow_all_feats))
+		_pow_mentor_feats = _pow_all_feats[len(_pow_all_feats) - _pow_funded_n:] if _pow_funded_n else []
+		_pow_mentor_names = set(_pow_mentor_feats)
 
 	# ------------------- Spheres (Power / Might) section -------------------#
 		# Build the spheres: flat-8 talents + a feat slot per BUDGET-PAID talent (Extra Talent feats,
 		# 2 talents each, HR1). trainer_backed (25% branch) -> only ~half the talents are budget-paid
 		# (the rest ride the Spheres Mentor trainers below); lean chars pay for all their talents.
-		sphere_data          = choose_spheres_attr(character, trainer_backed=bool(dedicated_trainer_calibers), mentor_talents=_mentor_talents_n)
+		sphere_data          = choose_spheres_attr(character, trainer_backed=bool(_sphere_mentor_cal), mentor_talents=_mentor_talents_n)
 		magic_talent_items   = sphere_data['magic_talent_items']
 		combat_talent_items  = sphere_data['combat_talent_items']
 		sphere_feats         = sphere_data['sphere_feats']
@@ -804,13 +826,15 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		sphere_boons         = sphere_data['sphere_boons']
 		sphere_traits        = sphere_data['sphere_traits']
 		homebrew_feat_desc_dict.update(sphere_data['homebrew_feat_desc_dict'])
-		# 25% "trainer-backed" branch: surplus trainer capacity -> bonus sphere talents, and up to 2
-		# dedicated mentors (rendered in the Trainers block). Only the Spheres Mentor NAMES genuinely
-		# off-budget homebrew it funded (talents beyond the character's own budget); Path of War feats are
-		# real feats on the sheet and always budget-paid, so they get no mentor (it would only re-list
-		# feats already bought with the normal/class feat budget).
+		# 25% "trainer-backed" branch: the dedicated mentors, rendered in the Trainers block. The Spheres
+		# Mentor needs a NAMED row of its own because the talents it funded render elsewhere (the magic /
+		# combat talent sections), so this row is the only record of who paid for them. The PoW mentor
+		# gets no such row -- its funded Martial Training / style feats ARE its content and render as its
+		# "(Trainer N - Path of War)" group below, so a header row would be the content-free mentor this
+		# block has always refused to emit.
 		dedicated_trainer_specs = []
-		if dedicated_trainer_calibers:
+		_sphere_mentor_talents = []
+		if _sphere_mentor_cal:
 			_overflow_talent_items = []
 			if _overflow_n > 0 and sphere_data.get('_chosen'):
 				_ov_magic, _ov_combat = add_overflow_talents(
@@ -818,22 +842,14 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				magic_talent_items = magic_talent_items + _ov_magic
 				combat_talent_items = combat_talent_items + _ov_combat
 				_overflow_talent_items = _ov_magic + _ov_combat
-			_mentors = []
-			# No "Path of War Mentor": a non-initiator's Martial Training feats and an initiator's style
-			# feats MUST be real feats on the sheet (they grant the maneuvers), so they're always
-			# budget-paid and appear in the normal/class Feats list. A PoW mentor would only re-list those
-			# already-bought feats -- duplicate, misleading "funding" -- so PoW gets no mentor. (Unlike
-			# Spheres, whose talents can be granted off-budget; see the Spheres Mentor just below.)
 			# Off-budget talents the mentor funded (the non-budget-paid flat-8 portion = 2*caliber) -> HR1
 			# Extra-Talent feats + the talent names (user's requested format). Only emit a Spheres Mentor
 			# when it actually funded something off-budget; otherwise there is nothing for it to teach.
-			_mentor_talents = list(sphere_data.get('mentor_funded_talents', [])) + _overflow_talent_items
-			if _mentor_talents:
-				_mentors.append(("Spheres Mentor", mentor_sphere_summary(spheres_chosen, _mentor_talents)))
 			# Never pad to a fixed count and never add a content-free fallback mentor: a dedicated trainer
-			# that funded nothing would render as a blank "(Continued Study)" / generic slot. Emit only the
-			# mentors that have real off-budget content (0 or 1 here now that PoW gets no mentor).
-			dedicated_trainer_specs = list(_mentors)
+			# that funded nothing would render as a blank "(Continued Study)" / generic slot.
+			_sphere_mentor_talents = list(sphere_data.get('mentor_funded_talents', [])) + _overflow_talent_items
+			if _sphere_mentor_talents:
+				dedicated_trainer_specs = [("Spheres Mentor", mentor_sphere_summary(spheres_chosen, _sphere_mentor_talents))]
 		# Priority funding (reserve EXACTLY the homebrew feats that get appended into the normal feat
 		# list, so each one REPLACES a normal feat -- the "consume feat budget" house rule -- and the
 		# track lands at precisely normal_feat_amount). Those appended feats are: paid Martial Training
@@ -842,10 +858,14 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# after the feat-tax pass. The previous formula reserved a proportional roll-estimate
 		# (_priority_reserve + max(0, sphere_feat_budget_count - realize_sphere)) that drifted off this
 		# true count: over-reserving silently dropped the top "(Feat N)" slots (the "missing feats"
-		# bug), under-reserving spilled feats past the character's top level. trainer-backed/mentor
-		# funding is already off-budget (those feats are not in these three lists), so it needs no term.
+		# bug), under-reserving spilled feats past the character's top level. Sphere-mentor funding is
+		# already off-budget (those talents produce no Extra-Talent feat at all, so they are not in
+		# sphere_feats); PoW-mentor funding needs the explicit `_pow_funded_n` term because those feats
+		# DO exist -- they just move to the mentor's trainer group instead of the normal track, which is
+		# exactly what hands the character back that many ordinary feat slots.
 		_prof_feat_n = len(getattr(character, 'profession_feats', []) or [])
-		character.feat_amounts = max(0, character.feat_amounts - len(mt_feats) - len(style_feats) - len(sphere_feats) - _prof_feat_n)
+		character.feat_amounts = max(0, character.feat_amounts - (len(mt_feats) + len(style_feats) - _pow_funded_n)
+									 - len(sphere_feats) - _prof_feat_n)
 		# Profession feats (True Calling / Multi Talented / Always Improving) are appended into the feat
 		# list AFTER the feat-count guarantee, so -- unlike the homebrew feats above -- they can't be
 		# trimmed to fit. Reserve their slots by ALSO lowering the guarantee target (normal_feat_amount):
@@ -1027,8 +1047,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# Paid Martial Training picks and style-chain bases join the normal bucket (their slots
 		# were reserved out of the ask before the chooser ran); the feat-tax passes below bundle
 		# the free partners/followers. Style children register as owned so nothing re-picks them.
-		feats.extend(mt_feats)
-		feats.extend(style_feats)
+		# The PoW mentor's feats are deliberately NOT here -- they render under its "(Trainer N)"
+		# group instead, which is what keeps them off the normal track and out of a second listing.
+		feats.extend([f for f in mt_feats if f not in _pow_mentor_names])
+		feats.extend([f for f in style_feats if f not in _pow_mentor_names])
 		# NOTE: sphere_feats are appended AFTER the feat-tax pass (below), not here -- they share a base
 		# name ("Extra Combat Talent") that feat_tax_func would wrongly chain/strip together.
 		add_feats_to_chooseable(character, story_feats, flaw_feats, flavor_feats, class_feats, feats)
@@ -1063,10 +1085,13 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			"class": character.class_feats_amount,
 			"normal": character.feat_amounts - character.story_feat_amount - character.flaw_feat_amount
 				- character.flavor_feat_amount - character.class_feats_amount
-				+ len(ranger_style_feats) + len(monk_bonus_feats) + len(mt_feats) + len(style_feats),
+				+ len(ranger_style_feats) + len(monk_bonus_feats)
+				+ len(mt_feats) + len(style_feats) - _pow_funded_n,
 			"teamwork": character.teamwork_feats,
 			"bloodline": len(bloodline_feats),
-			"trainer": len(trainer_feats),
+			# The mentor rows are appended after the feat-tax pass below, so count them here or the
+			# "feat rows ->" audit reports a phantom trainer deficit.
+			"trainer": len(trainer_feats) + len(dedicated_trainer_specs) + _pow_funded_n,
 			"profession": len(profession_feats),
 		}
 		# add all feats to character.chooseable (for feat taxing purposes)
@@ -1095,32 +1120,55 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# as its own ordinary feat in the general feat track and costs a feat -- see the append AFTER the
 		# feat-count guarantee below (the slot cost was reserved out of feat_amounts / normal_feat_amount
 		# above).
-		# Dedicated PoW/Spheres mentors (25% "trainer-backed" branch): up to 2 extra "(Trainer N)"
-		# slots whose off-budget caliber rolls funded the homebrew training (the feats/talents/maneuvers
-		# render in their own sections; these entries are the funding source + flavor). Descriptions
-		# resolve from homebrew_feat_desc_dict.
+		# Dedicated PoW/Spheres mentors (25% "trainer-backed" branch): extra "(Trainer N)" slots whose
+		# caliber rolls funded homebrew training the character's own half-share couldn't reach. The label
+		# names the system ("(Trainer 3 - Path of War)") so the Feats tab says which mentor taught what;
+		# both the module and the web sheet print the label verbatim, so no JS change is needed.
+		# `_trainer_group_meta` records each group's true FEATS' WORTH for the backstory rank -- inferring
+		# it from the row count only works for ordinary trainers (see the backstory section below).
 		_next_trainer_n = len(trainer_calibers) + 1
+		_trainer_group_meta = {}
+		# The PoW mentor has no row of its own: the Martial Training / style feats it paid for ARE its
+		# content, sharing one label so they group. Their tax chains move here from feats_feat_tax_dict
+		# (below) since these feats are no longer in the normal track.
+		if _pow_mentor_feats:
+			_pow_mentor_label = f"(Trainer {_next_trainer_n} - Path of War)"
+			_next_trainer_n += 1
+			for _pow_feat in _pow_mentor_feats:
+				trainer_feats.append(_pow_feat)
+				trainer_feat_labels.append(_pow_mentor_label)
+				trainer_feat_tax_dict[_pow_feat] = list(mt_feat_tax.get(_pow_feat) or style_feat_tax.get(_pow_feat) or [])
+			_trainer_group_meta[_pow_mentor_label] = (len(_pow_mentor_feats), "Path of War", list(_pow_mentor_feats))
 		for _mentor_name, _mentor_desc in dedicated_trainer_specs:
+			_sphere_mentor_label = f"(Trainer {_next_trainer_n} - Spheres)"
 			trainer_feats.append(_mentor_name)
-			trainer_feat_labels.append(f"(Trainer {_next_trainer_n})")
+			trainer_feat_labels.append(_sphere_mentor_label)
 			_next_trainer_n += 1
 			trainer_feat_tax_dict.setdefault(_mentor_name, [])
 			homebrew_feat_desc_dict[_mentor_name] = _mentor_desc
+			# Rank by the Extra-Talent feats the funded talents bundle into, and name the TALENTS it
+			# taught -- the row name ("Spheres Mentor") is the funding record, not the lesson.
+			_trainer_group_meta[_sphere_mentor_label] = (
+				mentor_feat_worth(_sphere_mentor_talents), "Spheres",
+				[str(_t.get('name', '')) for _t in _sphere_mentor_talents if _t.get('name')])
 		# Martial Training chains are taken once PER DISCIPLINE and discipline-labeled (e.g.
 		# "Martial Training I (Broken Blade)"), so they aren't in data/feats.csv and feat_tax_func
 		# can't resolve them. Merge the hand-built bundle directly (paid I/III/V -> free II/IV/VI
 		# per chain) and register the free partners in the shared granted-set, mirroring the
 		# style-chain handling below.
+		# Every child registers in the granted-set no matter who funded its parent, or the backfill
+		# re-picks a partner that was already granted; only the DICT merge is split by funder, since a
+		# mentor-funded parent now lives in trainer_feat_tax_dict.
 		for _mt_children in mt_feat_tax.values():
 			_tax_already_granted.update(str(c).lower() for c in _mt_children)
-		feats_feat_tax_dict.update(mt_feat_tax)
+		feats_feat_tax_dict.update({k: v for k, v in mt_feat_tax.items() if k not in _pow_mentor_names})
 		# Style-chain followers are ALWAYS granted in full ("feat tax all the way through").
 		# They are Metzofitz homebrew absent from data/feats.csv, so feat_tax_func can't see
 		# them -- merge the hand-built bundle directly; registering the children in the shared
 		# granted-set keeps the strip/backfill/no-duplicate invariants intact.
 		for _style_children in style_feat_tax.values():
 			_tax_already_granted.update(str(c).lower() for c in _style_children)
-		feats_feat_tax_dict.update(style_feat_tax)
+		feats_feat_tax_dict.update({k: v for k, v in style_feat_tax.items() if k not in _pow_mentor_names})
 		# Spheres Extra-Talent feats (HR1): one slot grants a free duplicate ("Extra Talent > Extra
 		# Talent"), bundling 2 talents. Hand-built (homebrew, not in feats.csv) -> merge like style chains.
 		for _sphere_children in sphere_feat_tax.values():
@@ -1437,14 +1485,21 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 	# ------------------- Backstory (coherent prose via Ollama, template fallback) -------------------#
 		# Richer profession + trainer context so the prose can give these vocations real weight.
 		_bs_professions = [f"{p['name']} (Profession rank {p['ranks']})" for p in profession_ranks] or professions
+		# Rank every trainer by the FEATS' WORTH it actually delivered, never by its caliber roll -- a
+		# mentor that could only fund two feats' worth should read "average", not "mythical". Ordinary
+		# trainers deliver one feat per row, so the row count is their worth; the mentors need
+		# _trainer_group_meta, because the Spheres Mentor is a SINGLE row funding up to four feats' worth
+		# of talents (the old row-count formula read it as "terrible" every single time).
 		_trainer_groups = {}
 		for _lbl, _ft in zip(trainer_feat_labels, trainer_feats):
 			_trainer_groups.setdefault(_lbl, []).append(_ft)
 		_bs_trainers = []
-		for _fts in _trainer_groups.values():
-			_cal_name = CALIBER_NAMES.get(len(_fts), "skilled") or "skilled"
+		for _lbl, _fts in _trainer_groups.items():
+			_worth, _kind, _taught = _trainer_group_meta.get(_lbl, (len(_fts), None, _fts))
+			_cal_name = CALIBER_NAMES.get(min(max(_worth, 1), 4), "skilled") or "skilled"
 			_article = "an" if _cal_name[0] in "aeiou" else "a"
-			_bs_trainers.append(f"{_article} {_cal_name} trainer who taught them {', '.join(_fts)}")
+			_kind_str = f" ({_kind})" if _kind else ""
+			_bs_trainers.append(f"{_article} {_cal_name}{_kind_str} trainer who taught them {', '.join(_taught)}")
 		_bs_brief = {
 			'name': character_full_name, 'race': character.chosen_race,
 			'gender': character.chosen_gender, 'age': age_number, 'region': character.region,

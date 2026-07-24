@@ -84,6 +84,15 @@ CONFIGS = {
     'initiator': dict(_BASE, seed=1004, userInput_race='Half-Orc', class_choice='warlord',
                       chosen_BAB='high', multi_class='N', alignment_input='LN',
                       userInput_gender='male', high_level=10, low_level=10),
+    # The 25% "trainer-backed" branch with BOTH mentors -- the only config that reaches it (the four
+    # above all roll lean, so mentor funding was previously untested). This seed funds a whole
+    # 3-feat Martial Training chain off-budget, so it pins the invariant that matters: mentor-funded
+    # PoW feats appear in trainer_feats under "(Trainer N - Path of War)" and NOT in `feats`, while
+    # the general track still lands at exactly normal_feat_amount.
+    'mentor': dict(_BASE, seed=6009, userInput_race='Human', class_choice='fighter',
+                   chosen_BAB='high', multi_class='N', alignment_input='LG',
+                   userInput_gender='male', high_level=15, low_level=15,
+                   gold_num=200000, spheres_flag='Y'),
 }
 
 

@@ -364,17 +364,34 @@ def _extra_talent_desc(feat_name, granted):
     return "\n".join(lines)
 
 
+def _mentor_is_power(t):
+    """Is this mentor-funded talent a Spheres-of-Power one? ``system`` may be raw ("power"/"might")
+    or the display string ("Spheres of Power") -- both handled."""
+    return "power" in str(t.get("system", "")).lower()
+
+
+def mentor_feat_worth(talents):
+    """How many FEATS' worth a Spheres Mentor funded -- the rank the trainer is labelled with.
+
+    HR1 bundles 2 talents per Extra-Talent feat and HR2 forbids mixing systems in one pair, so the
+    count is per-system ``ceil(n / 2)``. That is exactly the number of "Extra ... Talent" lines
+    ``mentor_sphere_summary`` prints, so the printed description and the rank can never disagree.
+    """
+    talents = talents or []
+    n_power = sum(1 for t in talents if _mentor_is_power(t))
+    n_might = len(talents) - n_power
+    return -(-n_power // 2) + -(-n_might // 2)
+
+
 def mentor_sphere_summary(spheres_chosen, talents):
     """HTML description for the dedicated "Spheres Mentor" trainer (25% trainer-backed branch): the
     spheres it funded + the OFF-BUDGET talents it taught beyond the character's own budget, presented as
     HR1 Extra-Talent feats (one "Extra X Talent > Extra X Talent" per 2 talents) followed by the talent
-    names. ``talents`` is a list of {name, sphere, system} dicts (non-budget-paid flat-8 + overflow);
-    ``system`` may be raw ("power"/"might") or the display string ("Spheres of Power") -- both handled."""
+    names. ``talents`` is a list of {name, sphere, system} dicts (non-budget-paid flat-8 + overflow)."""
     if not talents:
         return "A dedicated mentor who funded this character's sphere talents beyond their own study."
 
-    def _is_power(t):
-        return "power" in str(t.get("system", "")).lower()
+    _is_power = _mentor_is_power
 
     sphere_str = ", ".join(
         f"{s.get('sphere', '')} ({'Power' if str(s.get('system', '')).lower().startswith('p') else 'Might'})"

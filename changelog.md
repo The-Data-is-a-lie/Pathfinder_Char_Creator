@@ -19,6 +19,18 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Fixed
+- **Mentors are no longer always ranked "terrible".** The backstory ranked each trainer by counting
+  the rows in its `(Trainer N)` group, which is right for an ordinary trainer (one feat per row) but
+  wrong for the Spheres Mentor — a **single** row funding up to four feats' worth of talents, so it
+  read `1 → terrible` every time, even at six talents. Every trainer is now ranked by the **feats'
+  worth it actually delivered** (`mentor_feat_worth` for the Spheres Mentor = the `Extra … Talent`
+  feats its talents bundle into; funded feat count for the Path of War mentor), clamped to the top of
+  the ladder — and by what it *delivered*, never its caliber roll, so a caliber-4 mentor that could
+  only fund two feats' worth honestly reads "average". Mentor lines also name the **content** they
+  funded rather than the mentor's own row name (was: "taught them Spheres Mentor"), and carry the
+  system: `An excellent (Path of War) trainer who taught them Martial Training I (Broken Blade)`.
+  Trainer labels carry it on the Feats tab too (`(Trainer 3 - Path of War)`); both the module and the
+  web sheet print labels verbatim, so no JS change was needed.
 - **Per-roll bonuses now land on the right d20 (crit-confirm encoding).** pf1 splits a weapon
   conditional's `attack` modifier by its `critical` field: `normal` parts roll on the initial attack
   **only**, `crit` parts on the critical-confirmation roll **only**. Three problems followed from
@@ -52,6 +64,31 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   `assumed` is retained but now unused. See `docs/conditional_open_questions.md` #4.
 
 ### Added
+- **Path of War mentors, and one uniform funding rule for both homebrew systems.** A mentor now funds
+  *the portion of a character's training that lies beyond their own half-share*, and **whatever it
+  funds leaves the normal feat track and renders under its `(Trainer N)` slot instead** — the rule
+  Spheres already followed, now applied to Path of War as well. Concretely: the 25% "trainer-backed"
+  branch rolls **one mentor per system the character has content in** (each with its own caliber),
+  and a Path of War mentor's caliber buys whole Martial Training chains first
+  (`caliber // (depth // 2)`), with the remainder refunding feats the character had already
+  realized — capped at the Path of War that exists. Those feats move to the mentor's
+  `(Trainer N - Path of War)` group, so the freed slots refill with ordinary feats: the character
+  keeps the same maneuvers **and** gets that many feats back.
+  - This replaces a silent inconsistency: the single caliber roll already raised `realize_total` for
+    Path of War, but the reservation billed the character for the result and then suppressed the
+    mentor row (`mentor_funded_talents` was empty), so **a pure-martial NPC could never have a mentor
+    at all** — the roll was spent and thrown away.
+  - **Rejected — pure refund** (content drops to the lean half): mentored martial NPCs would end up
+    with *less* Path of War than before, which reads backwards for a character who had a teacher.
+    **Rejected — pure expansion** (keep today's realization, character still pays): the mentor row is
+    then a label on feats the character bought themselves, which is the duplicate listing that
+    blocked a Path of War mentor in the first place.
+  - The Path of War mentor gets **no header row of its own** — the funded feats *are* its content, so
+    a "Path of War Mentor" row would be the content-free mentor this code has always refused to emit.
+    The Spheres Mentor keeps its row because its talents render elsewhere, leaving that row as the
+    only record of who paid for them.
+  - New `mentor` golden config (`test_golden_payload.py`, seed 6009) — the four existing configs all
+    roll lean, so mentor funding had no regression gate.
 - **Conditional tiers: `A` applies, `B` is authored but not shipped.** Roughly half the authored
   conditionals describe real effects that don't earn a permanent checkbox in the pf1 attack dialog.
   Every conditional already ships `default: false`, so **nothing was ever auto-applied** — the

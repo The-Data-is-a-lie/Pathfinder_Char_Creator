@@ -1,0 +1,1583 @@
+{
+ "Total_HP": 118,
+ "age_number": 43,
+ "alignment": "Lawful Good",
+ "appearance": [
+  "Tight-lipped"
+ ],
+ "archetype1": null,
+ "archetype_info": "{\n    \"Venomblade\": {\n        \"source\": \"Potions and Poisons pg. 5 The venomblade has learned to take full advantage of his toxic spittle, blinding his targets and then rushing in to cut them down where they stand. The venomblade is an archetype of the fighter class that is available to nagaji characters.\",\n        \"venom projection (ex)\": \" The venomblade must take the Spit Venom nagaji racial feat as his 1st-level fighter bonus feat if he does not already have that ability. At 2nd level, he does not provoke an attack of opportunity for using the ability granted by the Spit Venom feat. At 4th level, he can use the ability granted by the Spit Venom feat as a standard action; at 8th level, he can use it as a move action; and at 12th level, he can use it as a swift action. This replaces bravery and alters the bonus feat gained at 1st level.\",\n        \"sneak attack (ex)\": \" At 6th level, a venomblade deals 1d6 additional points of damage to targets within 30 feet that he flanks or that are denied their Dexterity bonus to AC against him. This damage increases by 1d6 every 4 levels beyond 6th. This replaces the bonus feat gained at 6th level.\",\n        \"viper strike (ex)\": \" At 12th level, upon making a successful attack with a slashing or piercing weapon, the venomblade can spend a use of the ability granted by the Spit Venom feat as a swift action to spray his toxin into the wound. This imposes a -4 penalty on the victim's saving throw against the poison and causes the target to take 1d6 additional points of damage from all successful attacks for 1 round. This is a poison effect. This replaces the bonus feat gained at 12th level.\"\n    }\n}",
+ "armor_ac": "7",
+ "armor_armor_check_penalty": "-7",
+ "armor_enhancement_bonus": 4,
+ "armor_enhancement_chosen_list": [],
+ "armor_max_dex_bonus": "1",
+ "armor_name": "Kusari gusoku",
+ "armor_spell_failure": 0,
+ "armor_weight": "45 lbs.",
+ "bab_total": 15,
+ "background_traits": [
+  "Bog Scamp"
+ ],
+ "backstory": "",
+ "bloodline": "N/A",
+ "bloodline_feat_labels": [],
+ "bloodline_feats": [],
+ "buff_gaps": [],
+ "build_archetype": "Man-at-Arms",
+ "build_tactics": "Fights the way it drilled: hold the line, strike the enemy in front of you, keep your shield up and your footing. No tricks, no gimmick -- just a professional doing soldier's work.",
+ "c_class": "fighter",
+ "c_class_2": "",
+ "c_class_display": "Fighter",
+ "casting_level_str_foundry": "None",
+ "casting_tradition": {
+  "bonus_spell_points": 0,
+  "boons": [
+   "Overcharge"
+  ],
+  "boons_detail": [
+   {
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
+   }
+  ],
+  "casting_ability_modifier": "Wisdom",
+  "drawbacks": [
+   "Draining Casting",
+   "Somatic Casting"
+  ],
+  "drawbacks_detail": [
+   {
+    "counts_as": 1,
+    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
+    "name": "Draining Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
+    "name": "Somatic Casting"
+   }
+  ]
+ },
+ "cha": 12,
+ "character_full_name": "Henry Sokolov",
+ "chosen_race": "Human",
+ "chosen_spell_descriptor": [
+  "electricity"
+ ],
+ "class feature levels": {
+  "armor_training": {
+   "armored confidence (ex)": 7,
+   "armored sacrifice (ex)": 11,
+   "unmoving (ex)": 15
+  },
+  "weapon_training": {
+   "defensive weapon training (ex)": 13,
+   "focused weapon (ex)": 9
+  }
+ },
+ "class feature owners": {
+  "armor_training": "fighter",
+  "weapon_training": "fighter"
+ },
+ "class features": {
+  "Skill Unlock: Disguise": {
+   "10 Ranks": "You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.",
+   "15 Ranks": "You can create a disguise as a full-round action.",
+   "20 Ranks": "You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.",
+   "5 Ranks": "You can create a disguise in 1d3 minutes."
+  },
+  "armor_training": {
+   "armored confidence (ex)": {
+    "description": "while wearing armor, the fighter gains a bonus on intimidate checks based upon the type of armor he is wearing: +1 for light armor, +2 for medium armor, or +3 for heavy armor. This bonus increases by 1 at 7th level and every 4 fighter levels thereafter, to a maximum of +4 at 19th level. In addition, the fighter adds half his armored confidence bonus to the dc of intimidate checks to demoralize him. "
+   },
+   "armored sacrifice (ex)": {
+    "description": "when damage would cause the fighter or an adjacent ally to be knocked unconscious or killed, the fighter can instead direct the damage to a suit of armor that he is wearing or a shield he is using as an immediate action. The original target takes no damage, but the armor or shield is treated as if it had only half its normal hardness. The fighter can use this option once per day, plus one additional time each day at 11th level and every 8 fighter levels thereafter, to a maximum of three times per day at 19th level. "
+   },
+   "unmoving (ex)": {
+    "description": "select one combat maneuver (except sunder). Whether using his armor as leverage against a grappling foe or using its weight to help him stop a bull rush, a fighter can use his armor to protect him from the chosen combat maneuver. While wearing armor or wielding a shield, the fighter gains a bonus to his cmd against the chosen combat maneuver. The bonus is +1 if hes wearing light armor, +2 if hes wearing medium armor, and +3 if hes wearing heavy armor. This bonus increases by 1 at 7th level and every 4 fighter levels thereafter, to a maximum at 19th level of +5 for light armor, +6 for medium armor, and +7 for heavy armor. Mithral armor provides a bonus 1 lower than normal for armor of its type. "
+   }
+  },
+  "weapon_training": {
+   "defensive weapon training (ex)": {
+    "description": "the fighter gains a +1 shield bonus to his armor class. The fighter adds half his weapons enhancement bonus (if any) to this shield bonus. When his weapon training bonus for weapons from the associated fighter weapon group reaches +4, this shield bonus increases to +2. This shield bonus is lost if the fighter is immobilized or helpless. "
+   },
+   "focused weapon (ex)": {
+    "description": "the fighter selects one weapon for which he has weapon focus and that belongs to the associated fighter weapon group. The fighter can deal damage with this weapon based on the damage of the warpriests sacred weapon class feature, treating his fighter level as his warpriest level. The fighter must have weapon focus with the selected weapon in order to choose this option. "
+   }
+  }
+ },
+ "class_ability": [
+  "bonus feats_fighter",
+  "bravery_fighter",
+  "armor training_fighter",
+  "weapon training_fighter",
+  "armor mastery_fighter",
+  "weapon mastery_fighter"
+ ],
+ "class_ability_desc": {
+  "armor mastery": "At 19th level, a fighter gains DR 5/- whenever he is wearing armor or using a shield.",
+  "armor training": "Starting at 3rd level, a fighter learns to be more maneuverable while wearing armor. Whenever he is wearing armor, he reduces the armor check penalty by 1 (to a minimum of 0) and increases the maximum Dexterity bonus allowed by his armor by 1. Every four levels thereafter (7th, 11th, and 15th), these bonuses increase by +1 each time, to a maximum -4 reduction of the armor check penalty and a +4 increase of the maximum Dexterity bonus allowed. In addition, a fighter can also move at his normal speed while wearing medium armor. At 7th level, a fighter can move at his normal speed while wearing heavy armor.",
+  "bonus feats": "At 1st level, and at every even level thereafter, a fighter gains a bonus feat in addition to those gained from normal advancement (meaning that the fighter gains a feat at every level). These bonus feats must be selected from those listed as combat feats, sometimes also called \"fighter bonus feats.\"Upon reaching 4th level, and every four levels thereafter (8th, 12th, and so on), a fighter can choose to learn a new bonus feat in place of a bonus feat he has already learned. In effect, the fighter loses the bonus feat in exchange for the new one. The old feat cannot be one that was used as a prerequisite for another feat, prestige class, or other ability. A fighter can only change one feat at any given level and must choose whether or not to swap the feat at the time he gains a new bonus feat for the level.",
+  "bravery": "Starting at 2nd level, a fighter gains a +1 bonus on Will saves against fear. This bonus increases by +1 for every four levels beyond 2nd.",
+  "weapon mastery": "At 20th level, a fighter chooses one weapon, such as the longsword, greataxe, or longbow. Any attacks made with that weapon automatically confirm all critical threats and have their damage multiplier increased by 1 (Ã—2 becomes Ã—3, for example). In addition, he cannot be disarmed while wielding a weapon of this type. Alternate Capstones",
+  "weapon training": "Starting at 5th level, a fighter can select one group of weapons, as noted below. Whenever he attacks with a weapon from this group, he gains a +1 bonus on attack and damage rolls. Every four levels thereafter (9th, 13th, and 17th), a fighter becomes further trained in another group of weapons. He gains a +1 bonus on attack and damage rolls when using a weapon from this group. In addition, the bonuses granted by previous weapon groups increase by +1 each. For example, when a fighter reaches 9th level, he receives a +1 bonus on attack and damage rolls with one weapon group and a +2 bonus on attack and damage rolls with the weapon group selected at 5th level. Bonuses granted from overlapping groups do not stack. Take the highest bonus granted for a weapon if it resides in two or more groups. A fighter also adds this bonus to any combat maneuver checks made with weapons from this group. This bonus also applies to the fighter's Combat Maneuver Defense when defending against disarm and sunder attempts made against weapons from this group. Weapon groups are defined as follows (GMs may add other weapons to these groups, or add entirely new groups): Note from Nethys : A consolidated list of fighter weapon groups is provided here"
+ },
+ "class_feat_labels": [
+  "Fighter 1",
+  "Fighter 2",
+  "Fighter 4",
+  "Fighter 6",
+  "Fighter 8",
+  "Fighter 10",
+  "Fighter 12",
+  "Fighter 14"
+ ],
+ "class_feat_tax_dict": {
+  "Martial Training I (Primal Fury)": [
+   "Martial Training II (Primal Fury)"
+  ],
+  "Martial Training III (Primal Fury)": [
+   "Martial Training IV (Primal Fury)"
+  ]
+ },
+ "class_feats": [
+  "Martial Training III (Primal Fury)",
+  "Gunsmithing",
+  "Hellcat Stealth",
+  "Martial Training I (Primal Fury)",
+  "Skilled Driver",
+  "Acrobatic",
+  "Prodigy (Profession (Master-at-Arms), Profession (Watchman))",
+  "Coordinated Distraction"
+ ],
+ "class_feature_changes_dict": {
+  "armored confidence (ex)": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skills",
+     "text": "While wearing armor, the fighter gains a bonus on intimidate checks based upon the type of armor he is wearing: +[[1]] for light armor, +[[2]] for medium armor, or +[[3]] for heavy armor. This bonus increases by 1 at 7th level and every 4 fighter levels thereafter, to a maximum of +[[4]] at 19th level."
+    }
+   ]
+  },
+  "defensive weapon training (ex)": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "ac",
+     "text": "When his weapon training bonus for weapons from the associated fighter weapon group reaches +[[4]], this shield bonus increases to +[[2]]."
+    }
+   ]
+  },
+  "unmoving (ex)": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "cmb",
+     "text": "Whether using his armor as leverage against a grappling foe or using its weight to help him stop a bull rush, a fighter can use his armor to protect him from the chosen combat maneuver. The bonus is +[[1]] if hes wearing light armor, +[[2]] if hes wearing medium armor, and +[[3]] if hes wearing heavy armor. This bonus increases by 1 at 7th level and every 4 fighter levels thereafter, to a maximum at 19th level of +[[5]] for light armor, +[[6]] for medium armor, and +[[7]] for heavy armor. Mithral armor provides a bonus 1 lower than normal for armor of its type."
+    }
+   ]
+  }
+ },
+ "class_feature_conditionals_dict": {},
+ "class_feature_levels": {
+  "armor_training": {
+   "armored confidence (ex)": 7,
+   "armored sacrifice (ex)": 11,
+   "unmoving (ex)": 15
+  },
+  "weapon_training": {
+   "defensive weapon training (ex)": 13,
+   "focused weapon (ex)": 9
+  }
+ },
+ "class_feature_owners": {
+  "armor_training": "fighter",
+  "weapon_training": "fighter"
+ },
+ "class_features": {
+  "Skill Unlock: Disguise": {
+   "10 Ranks": "You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.",
+   "15 Ranks": "You can create a disguise as a full-round action.",
+   "20 Ranks": "You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.",
+   "5 Ranks": "You can create a disguise in 1d3 minutes."
+  },
+  "armor_training": {
+   "armored confidence (ex)": {
+    "description": "while wearing armor, the fighter gains a bonus on intimidate checks based upon the type of armor he is wearing: +1 for light armor, +2 for medium armor, or +3 for heavy armor. This bonus increases by 1 at 7th level and every 4 fighter levels thereafter, to a maximum of +4 at 19th level. In addition, the fighter adds half his armored confidence bonus to the dc of intimidate checks to demoralize him. "
+   },
+   "armored sacrifice (ex)": {
+    "description": "when damage would cause the fighter or an adjacent ally to be knocked unconscious or killed, the fighter can instead direct the damage to a suit of armor that he is wearing or a shield he is using as an immediate action. The original target takes no damage, but the armor or shield is treated as if it had only half its normal hardness. The fighter can use this option once per day, plus one additional time each day at 11th level and every 8 fighter levels thereafter, to a maximum of three times per day at 19th level. "
+   },
+   "unmoving (ex)": {
+    "description": "select one combat maneuver (except sunder). Whether using his armor as leverage against a grappling foe or using its weight to help him stop a bull rush, a fighter can use his armor to protect him from the chosen combat maneuver. While wearing armor or wielding a shield, the fighter gains a bonus to his cmd against the chosen combat maneuver. The bonus is +1 if hes wearing light armor, +2 if hes wearing medium armor, and +3 if hes wearing heavy armor. This bonus increases by 1 at 7th level and every 4 fighter levels thereafter, to a maximum at 19th level of +5 for light armor, +6 for medium armor, and +7 for heavy armor. Mithral armor provides a bonus 1 lower than normal for armor of its type. "
+   }
+  },
+  "weapon_training": {
+   "defensive weapon training (ex)": {
+    "description": "the fighter gains a +1 shield bonus to his armor class. The fighter adds half his weapons enhancement bonus (if any) to this shield bonus. When his weapon training bonus for weapons from the associated fighter weapon group reaches +4, this shield bonus increases to +2. This shield bonus is lost if the fighter is immobilized or helpless. "
+   },
+   "focused weapon (ex)": {
+    "description": "the fighter selects one weapon for which he has weapon focus and that belongs to the associated fighter weapon group. The fighter can deal damage with this weapon based on the damage of the warpriests sacred weapon class feature, treating his fighter level as his warpriest level. The fighter must have weapon focus with the selected weapon in order to choose this option. "
+   }
+  }
+ },
+ "classes": [
+  {
+   "archetype": {
+    "Venomblade": {
+     "sneak attack (ex)": " At 6th level, a venomblade deals 1d6 additional points of damage to targets within 30 feet that he flanks or that are denied their Dexterity bonus to AC against him. This damage increases by 1d6 every 4 levels beyond 6th. This replaces the bonus feat gained at 6th level.",
+     "source": "Potions and Poisons pg. 5 The venomblade has learned to take full advantage of his toxic spittle, blinding his targets and then rushing in to cut them down where they stand. The venomblade is an archetype of the fighter class that is available to nagaji characters.",
+     "venom projection (ex)": " The venomblade must take the Spit Venom nagaji racial feat as his 1st-level fighter bonus feat if he does not already have that ability. At 2nd level, he does not provoke an attack of opportunity for using the ability granted by the Spit Venom feat. At 4th level, he can use the ability granted by the Spit Venom feat as a standard action; at 8th level, he can use it as a move action; and at 12th level, he can use it as a swift action. This replaces bravery and alters the bonus feat gained at 1st level.",
+     "viper strike (ex)": " At 12th level, upon making a successful attack with a slashing or piercing weapon, the venomblade can spend a use of the ability granted by the Spit Venom feat as a swift action to spray his toxin into the wound. This imposes a -4 penalty on the victim's saving throw against the poison and causes the target to take 1d6 additional points of damage from all successful attacks for 1 round. This is a poison effect. This replaces the bonus feat gained at 12th level."
+    }
+   },
+   "display": "Fighter",
+   "level": 15,
+   "name": "fighter"
+  }
+ ],
+ "combat_talent_items": [
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When one of your animal allies succeeds on a combat maneuver, the target provokes an attack of opportunity from you.",
+   "name": "Double Team",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Choose a Beastmastery package you do not possess. You gain that package.",
+   "name": "Extra Beastmastery Package",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When within close range (25 ft. + 5 ft. per 2 ranks in the higher of Handle Animal and Ride) of any animal allies, when making a Perception check, you and the animal allies may share the result of the check of the creature with the highest result.",
+   "name": "Lookout",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "While mounted and moving with your mount, you and your mount may each make an attack action at any point during the movement and then complete the movement. This requires using your standard action as normal and cannot be used if you do not have a standard action available. You and your mount do not provoke attacks of opportunity from one creature of your choice that you make an attack or combat maneuver roll against as part of this attack action.\n\nAdditionally, you may make an attack action at any point when you make a joint withdraw action while mounted. If you possess the Athletics sphere, you cannot regain focus on the same withdraw action as you use this option.",
+   "name": "Skirmish Rider",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "While mounted, whenever you or your mount succeed on a bull rush, drag, or reposition combat maneuver, you may make a free trip attempt against the target, using your or your mount's original combat maneuver check as your trip combat maneuver check. Even if you fail this check by 10 or more, you do not fall prone. If the target was mounted, they fall off their mount in a space adjacent to their mount directly away from you. When a target falls prone this way, you may expend martial focus to deal 1d6 points of falling damage, plus an additional 1d6 for every 3 ranks of Ride you possess.",
+   "name": "Knock Down",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You can fluidly mount and dismount, transitioning from mounted to unmounted combat with ease.\n\nYou gain the following abilities:\n\nLeaping Charge: You may use the leaping dismount ability granted by this talent during a mounted charge attack. If you move at least 10 feet towards the target of your charge attack using leaping dismount, the bonus on attack rolls made at the end of a charge and the penalty to your AC after performing a charge attack both increase by +1 + 1 per 5 ranks of Ride you possess. You are still considered mounted for this charge attack for the purposes of lance damage, mounted combat feats, and other abilities or effects. You may use leaping dismount to move into any unoccupied space within reach of the target of your charge, even if it would not be the closest square for a charge.\n\nLeaping Dismount: Whenever you dismount your mount (normally a move action, or as a free action with a successful fast dismount), instead of dismounting into a square adjacent to your mount, you may spend an immediate action to jump, moving in any direction up to 10 feet + 5 feet for every 5 ranks in Ride you possess (without needing to attempt an Acrobatics check to jump). Leaping dismount's movement provokes attacks of opportunity as normal.\n\nSkilled Mount and Dismount: You can attempt Ride checks to fast mount or fast dismount your mount even if your mount is more than one size category larger than you. You may take 10 on Ride checks to fast mount or fast dismount, even if rushed or threatened.\n\nNote: The leaping charge ability granted by this talent allows you to perform a charge attack against a target further than your mount's movement provided you move into an empty space within reach of your target with leaping dismount.",
+   "name": "Leaping Rider",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You may tame creatures with the swarm subtype that are otherwise of a creature type that you can affect. When taming a creature in this way, they count as twice their Hit Dice against the total amount you may have tame at once. This increase does not stack with the increase for creatures not of the animal type from the Broad Skills talent. Additionally, you are immune to swarm damage from swarms that have a friendly or better disposition towards you.",
+   "name": "Bee Keeper",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": true,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You may speak with animals. You can ask questions of and receive answers from animals, but this ability doesn't make them any more friendly than normal. Wary and cunning animals are likely to be terse and evasive, while the more stupid ones make inane comments. If an animal is friendly toward you, it may do some favor or service for you.",
+   "name": "Wild Speaker",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  }
+ ],
+ "con": 14,
+ "counter_schools": [
+  "necromancy",
+  "transmutation"
+ ],
+ "counter_spell_descriptor": [
+  "earth"
+ ],
+ "craft_type": "Confectionery",
+ "day_list": [],
+ "deity_name": "Apsu",
+ "dex": 24,
+ "enhancement_effects_dict": {},
+ "equip_descrip": {
+  "belts": {
+   "description": " this shimmering metallic belt is composed of dozens of looped silver cords tied together in elaborate braids and knots. As a standard action, the wearer can touch his animal companion to attach an invisible, incorporeal cord to it that, if it can be seen by anyone, appears to be superficially tied to the silver soul cord. This forms a deeper bond between the wearer and the animal companion. It can be attached to only one animal companion at a time. If the animal companion is killed or the link is broken while the cord is attached in this manner (though very few things can destroy the incorporeal cord), the wearer and the animal companion each gain a negative level and the silver soul cord cannot be reattached to any creature for 24 hours. The cord can extend for a length of up to 1 mile, but if the attached animal companion moves farther away from the wearer than this, the cord automatically detaches and the bond ends, though it is not considered to be broken and therefore does impart any negative levels. The wearer can remove the cord as a standard action. While the silver cord is attached, the wearer gains an empathic link with an animal companion as if it were a familiar (per the wizard arcane bond class feature). Additionally, as a standard action, the wearer can sacrifice his own hit points to heal the animal companion through this bond. The creature regains 1 hit point for every 1 hit point the wearer sacrifices. The wearer can sacrifice a maximum number of hit points per turn equal to his hit dice, and can't sacrifice hit points if doing so would reduce him to 0 hit points or fewer. ",
+   "item_name": "Silver Soul Cord"
+  },
+  "body": {
+   "description": " a summoner's robe is a finely crafted garment of silk the same color as the endless sky of the astral plane. Once per day when casting a summon monster or summon nature's ally spell, the wearer can have the robe absorb one of the creatures summoned rather than have it appear within the spell's range. When this occurs, the robe gains a defensive aura and takes on visual aspects of the absorbed creature (such as becoming red and spiked if absorbing a demon, or manifesting flame patterns if absorbing a fire elemental). The creature does not exist outside its effect as a defensive aura of the robe as detailed below, and cannot be damaged or targeted by most spells. It is still a magical effect, and any spell or ability that could dispel or disrupt a creature summoned by summon monster can dispel or disrupt the defensive aura. The defensive aura is also dispelled if the robe enters an area a summoned creature could not enter, or at the end of the duration of the spell that summoned the absorbed creature. If the wearer takes an amount of damage equal to or greater than 5 hit points per level of the spell that summoned the absorbed creature, the defensive aura ends. As long as the robe has a defensive aura, its wearer gains some of the absorbed creature's defenses and powers. These abilities are determined as if the wearer were using a transmutation (polymorph) spell to assume the absorbed creature's form. Unlike a normal polymorph effect, it does not grant her the appearance of the creature (or any bonus to disguise), any movement type, natural attacks (or proficiency with them), or size change. The wearer does not change form, gain any ability score modifiers, have her gear meld into her body, or lose any abilities based on her form. She is considered to be under the effects of a polymorph spell, and cannot be under the effects of another polymorph spell or size-altering magic for the duration of the defensive aura. The abilities the defensive aura grants are otherwise determined by the type of creature absorbed. If the creature is an elemental, the wearer gains the abilities listed in elemental body iii ; if it's a plant, the wearer gains the abilities listed in plant shape ii ; if it's an undead, the wearer gains the abilities listed in undead anatomy iii um . If the creature is of any other creature type, the wearer gains the abilities it possesses listed in beast shape iv ",
+   "item_name": "Summoner's Robe"
+  },
+  "chest": {
+   "description": " three times per day, the wearer of this dark jacket can create a\r vial containing one dose of any poison from the core rulebook that costs 300or less. The jacket's poison always looks like\r a murky amber fluid. This poison becomes inert after 1 hour. ",
+   "item_name": "Poisoner's Jacket, Lesser"
+  },
+  "eyes": {
+   "description": " kinsight goggles are in fact two separate crystal monocles, \r linked together with a simple silver clasp that allows them\r to both be worn at once like pince-nez spectacles. The left\r and right halves may be separated and worn individually, \r allowing two people to see through one another's eyes. \r when separated, the wearer of either half of the goggles\r may speak a command word to see through the lens of\r the other half, so long as the halves of the goggles remain\r within 500 feet of one another. When the two lenses are\r attached and worn as one item, they offer no magical\r benefitjust some minor magnification. ",
+   "item_name": "Kinsight Goggles"
+  },
+  "feet": {
+   "description": " these form-fitting, calfskin boots are dyed black and lightly\r decorated with raven feathers. Grant their wearer a +5\r competence bonus on perception checks to spot or locate traps\r and devices on the floor with 10 feet. This includes pits, pressure\r plates, and other mechanical and magical devices located on or\r attached to the floor. This bonus also applies to ac and on any\r reflex saving throws against such traps. ",
+   "item_name": "Burglar Boots, Minor"
+  },
+  "hands": {
+   "description": " wearing these form-fitting fingerless black gloves makes\r the wearer's arms and body more flexible. As a swift action, \r the wearer can lengthen his arms for up to 10 rounds per\r day, gaining an additional 5 feet of reach. These rounds\r need not be consecutive. Attacking with these extended\r arms is unwieldy, and the wearer takes a 2 penalty on\r attack rolls, increasing to 4 if he is using two-handed\r weapons. Even when his limbs aren't extended, the wearer\r gains a +5 enhancement bonus on escape artist checks and\r acrobatics checks to avoid falling damage. The wearer is still\r able to use hand-based natural attacks such as claws while\r wearing the gloves. ",
+   "item_name": "Pliant Gloves"
+  },
+  "headband": {
+   "description": " this metal headband holds a glistening, diamond-shaped gem. A kineticist's diadem includes one of five colors of gem, each corresponding to a different element: blue (water), clear (aether), green (earth), red (fire), and white (air). The diadem's gem grants the wearer greater control over its associated element. While worn by a kineticist, this item increases the damage dealt by the kineticist's simple and composite blasts that match the element of the inlaid gem by 1d6 points (for a lesser kineticist's diadem), 2d6 points (for a kineticist's diadem), or 3d6 points (for a greater kineticist's diadem). If the blast is a physical blast, the extra damage dice from the kineticist's diadem increase to d8s instead of d6s. These extra damage dice do not multiply on a critical hit, and the extra damage dice do not apply to blasts with form infusions that do not apply the extra damage from elemental overflow, like kinetic blade and kinetic whip. ",
+   "item_name": "Kineticist's Diadem, Lesser"
+  },
+  "rings": {
+   "description": "This small wooden ring resembles a serpent with tiny gemstone eyes coiling around the wearer's finger. If worn for 24 hours, it causes its wearer to manifest many serpentine traits. The wearer's skin develops a faint, diamond-shaped pattern, and the pupils of her eyes elongate. The wearer grows a pair of fangs, gaining a bite attack as a primary natural attack that deals 1d4 points of piercing damage for a Medium wearer or 1d3 points of damage for a Small wearer. Three times per day as a free action, the wearer of the ring may cause her fangs to drip with venom, making her bite attack poisonous for 1 round. The save DC of this poison is equal to 10 + 1/2 the wearer's Hit Dice + the wearer's Constitution modifier, but otherwise acts as black adder venom. If the wearer rolls a natural 1 on an attack with her poisonous bite, she is exposed to the poison. Once per day as a standard action, the wearer may command her tongue to lengthen and become forked for 1 minute, gaining the scent special ability. While this ability is active, the wearer has a 20% chance of failure when casting any spell with a verbal component, as the tongue makes it difficult to speak. The ring makes its wearer more sensitive to cold. She takes a 2 penalty to saves against spells with the cold descriptor and the effects of cold weather. Additionally, if the wearer is successfully affected by a spell with the cold descriptor, she is slowed for 1 round.",
+   "item_name": "Ophidian Coil"
+  }
+ },
+ "equipment_list": [
+  "Silver Soul Cord",
+  "Summoner's Robe",
+  "Poisoner's Jacket, Lesser",
+  "Kinsight Goggles",
+  "Burglar Boots, Minor",
+  "Pliant Gloves",
+  "Kineticist's Diadem, Lesser",
+  "Survivor's Ring",
+  "Ophidian Coil"
+ ],
+ "eye_color": [
+  "Hazel"
+ ],
+ "feat_budget": {
+  "bloodline": 0,
+  "class": 8,
+  "flavor": 1,
+  "flaw": 2,
+  "normal": 5,
+  "profession": 2,
+  "story": 4,
+  "teamwork": 0,
+  "trainer": 11
+ },
+ "feat_changes_dict": {
+  "Improved Bull Rush": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "cmb",
+     "text": "+2 on combat maneuver checks made to bull rush a foe."
+    },
+    {
+     "target": "cmd",
+     "text": "+2 to CMD when an opponent tries to bull rush you."
+    }
+   ]
+  },
+  "Prodigy (Profession (Master-at-Arms), Profession (Watchman))": {
+   "changes": [
+    {
+     "formula": "4",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.pro",
+     "type": "untyped"
+    },
+    {
+     "formula": "4",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.pro",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": []
+  }
+ },
+ "feat_conditionals_dict": {},
+ "feats": [
+  "Shield Proficiency",
+  "Shadow Dodge",
+  "Tribe Mentality",
+  "Martial Training V (Primal Fury)",
+  "Distance Thrower",
+  "Extra Combat Talent (Double Team / Extra Beastmastery Package)",
+  "Multi Talented",
+  "True Calling"
+ ],
+ "feats_feat_tax_dict": {
+  "Extra Combat Talent (Double Team / Extra Beastmastery Package)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Lookout / Skirmish Rider)": [
+   "Extra Combat Talent"
+  ],
+  "Martial Training V (Primal Fury)": [
+   "Martial Training VI (Primal Fury)"
+  ],
+  "Shield Proficiency": [
+   "improved shield bash",
+   "saving shield",
+   "shield focus",
+   "shield specialization",
+   "shield wall",
+   "tower shield proficiency",
+   "covering defense",
+   "covering shield",
+   "greater shield focus"
+  ]
+ },
+ "flavor_feat_tax_dict": {},
+ "flavor_feats": [
+  "Animal Affinity"
+ ],
+ "flaw": [
+  "Illiterate",
+  "Alcoholic"
+ ],
+ "flaw_effects_dict": {
+  "Alcoholic": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "will",
+     "text": "Alcoholic (major): when presented with alcohol, Will save DC [[15]] or you must drink until it is gone."
+    }
+   ],
+   "description": "The bottle owns you. Whenever you are presented with alcohol, you must pass a Will save (DC 15) or you are compelled to drink it, and you keep drinking until it is gone.",
+   "tier": "major"
+  },
+  "Illiterate": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skills",
+     "text": "Illiterate: you cannot read or write any language and cannot use scrolls."
+    }
+   ],
+   "description": "You never learned to read or write, and you refuse to learn. You cannot read or write any language, and you cannot use scrolls.",
+   "tier": "minor"
+  }
+ },
+ "flaw_feat_tax_dict": {},
+ "flaw_feats": [
+  "Scholar",
+  "Toughness"
+ ],
+ "formatted_bio": "Henry Sokolov\n- Alignment: Lawful Good\n- Deity: Apsu\n- Race: Human\n- Class: Level 15 Fighter\n- Archetype: Man-at-Arms\n- Tactics: Fights the way it drilled: hold the line, strike the enemy in front of you, keep your shield up and your footing. No tricks, no gimmick -- just a professional doing soldier's work.\n- Stat Focus: Dex\n- Disciplines: Primal Fury, Solar Wind\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Master-at-Arms (rank 15)\n- Profession: Upholsterer (rank 3)\n- Profession: Apprentice Smith (rank 1)\n- Profession: Friar (rank 1)\n- Profession: Watchman (rank 10)\n- Known for: Confectionery\n- Training: A mythical trainer who taught them Siege Commander, Lightning Reflexes, Punch Through, Iron Will\n- Training: An excellent trainer who taught them Simple Weapon Proficiency, Improved Bull Rush, Improved Initiative\n- Training: An excellent (Path of War) trainer who taught them Martial Training I (Solar Wind), Martial Training III (Solar Wind), Martial Training V (Solar Wind)\n- Training: An average (Spheres) trainer who taught them Knock Down, Leaping Rider, Bee Keeper, Wild Speaker\n\nFamily\n- Absent Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 2 Older Brothers\n\nPersonality\n- Personality: Reverent, Analytical, Doubtful\n- Mannerisms: Combs mustache, Bites lower lip\n- Flaws: Illiterate, Alcoholic\n\nAppearance\n- Hair: Frizzy Brown\n- Eyes: Hazel\n- Build: Tight-lipped",
+ "full_domain": [],
+ "gender": "Male",
+ "generation_seed": 6009,
+ "generator_version": "2026-07-15 racial-stats",
+ "gold": 9411,
+ "hair_color": [
+  "Brown"
+ ],
+ "hair_type": [
+  "Frizzy"
+ ],
+ "height_number": "5'7\"",
+ "hero_points": 3,
+ "homebrew_feat_desc_dict": {
+  "Acrobatic": "You are skilled at leaping, jumping, and flying",
+  "Animal Affinity": "You are skilled at working with animals and mounts",
+  "Coordinated Distraction": "When working in tandem, you can make it difficult for foes to use their magical abilities",
+  "Distance Thrower": "You are accurate with thrown weapons at longer ranges than normal",
+  "Extra Combat Talent": "Your knowledge of combat is easily expanded.\n\nBenefit: Gain an additional sphere or a talent from a combat sphere you possess.\n\nSpecial: You may take this feat multiple times. The effects stack.",
+  "Extra Combat Talent (Double Team / Extra Beastmastery Package)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Double Team (Beastmastery): When one of your animal allies succeeds on a combat maneuver, the target provokes an attack of opportunity from you.\n- Extra Beastmastery Package (Beastmastery): Choose a Beastmastery package you do not possess. You gain that package.",
+  "Extra Combat Talent (Lookout / Skirmish Rider)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Lookout (Beastmastery): When within close range (25 ft. + 5 ft. per 2 ranks in the higher of Handle Animal and Ride) of any animal allies, when making a Perception check, you and the animal allies may share the result of the check of the creature with the highest result.\n- Skirmish Rider (Beastmastery): While mounted and moving with your mount, you and your mount may each make an attack action at any point during the movement and then complete the movement. This requires using your standard action as normal and cannot be used if you do not have a standard action available. You and your mount do not",
+  "Fleet": "You are faster than most",
+  "Gunsmithing": "You know the secrets of repairing and restoring firearms",
+  "Hellcat Stealth": "You are difficult to see in the light",
+  "Improved Bull Rush": "You are skilled at pushing your foes around",
+  "Improved Initiative": "Your quick ref lexes allow you to react rapidly to danger",
+  "Iron Will": "You are more resistant to mental effects",
+  "Lightning Reflexes": "You have faster ref lexes than normal",
+  "Martial Training I (Primal Fury)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training I (Solar Wind)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training II (Primal Fury)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training II (Solar Wind)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Primal Fury)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Solar Wind)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Primal Fury)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Solar Wind)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training V (Primal Fury)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training V (Solar Wind)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training VI (Primal Fury)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training VI (Solar Wind)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
+  "Medium Armor Proficiency": "You are skilled at wearing medium armor",
+  "Multi Talented": "Your profession rank cap increases by 10.",
+  "Point-Blank Shot": "You are especially accurate when making ranged attacks against close targets",
+  "Prodigy (Profession (Master-at-Arms), Profession (Watchman))": "",
+  "Punch Through": "You and your allies are adept at bypassing enemy defenses",
+  "Run": "You are swift of foot",
+  "Scholar": "You have graduated from one of the many colleges, universities, and specialty schools of higher learning scattered throughout the Inner Sea region",
+  "Shadow Dodge": "You use light and darkness to your advantage, confusing your enemies and confounding their senses",
+  "Shield Proficiency": "You are trained in how to properly use a shield",
+  "Siege Commander": "Under your leadership, the time required to assemble and move a siege engine is greatly reduced",
+  "Simple Weapon Proficiency": "You are trained in the use of basic weapons",
+  "Skilled Driver": "Choose a type a type of vehicle (either air, land, or water) You are more skilled when driving that vehicle",
+  "Spheres Mentor": "<strong>Spheres funded:</strong> Beastmastery (Might)<br><br>Extra Combat Talent > Extra Combat Talent<br>Extra Combat Talent > Extra Combat Talent<br><br>Knock Down (Beastmastery)<br>Leaping Rider (Beastmastery)<br>Bee Keeper (Beastmastery)<br>Wild Speaker (Beastmastery)",
+  "Toughness": "You have enhanced physical stamina",
+  "Tribe Mentality": "You and your tribemates grant each other mental strength",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
+ },
+ "inherents": {
+  "cha": 1,
+  "con": 10,
+  "dex": 0,
+  "int": 0,
+  "str": 0,
+  "wis": 0
+ },
+ "initiation_stat": "wis",
+ "initiator_level": 7,
+ "int": 11,
+ "item_changes_dict": {
+  "Burglar Boots, Minor": {
+   "changes": [
+    {
+     "formula": "5",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.per",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Kineticist's Diadem, Lesser": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "This item increases the damage dealt by the kineticist's simple and composite blasts that match the element of the inlaid gem by 1d6 points (for a lesser kineticist's diadem), 2d6 points (for a kineticist's diadem), or 3d6 points (for a greater kineticist's diadem). If the blast is a physical blast, the extra damage dice from the kineticist's diadem increase to d8s instead of d6s."
+   ]
+  },
+  "Kinsight Goggles": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "When separated, the wearer of either half of the goggles may speak a command word to see through the lens of the other half, so long as the halves of the goggles remain within 500 feet of one another."
+   ]
+  },
+  "Ophidian Coil": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "If worn for [[24]] hours, it causes its wearer to manifest many serpentine traits. The wearer grows a pair of fangs, gaining a bite attack as a primary natural attack that deals [[1d4]] points of piercing damage for a medium wearer or [[1d3]] points of damage for a small wearer. Three times per day as a free action, the wearer of the ring may cause her fangs to drip with venom, making her bite attack poisonous for [[1]] round. The save dc of this poison is equal to 10 + 1/2 the wearer's hit dice + the wearer's constitution modifier, but otherwise acts as black adder venom."
+    }
+   ]
+  },
+  "Pliant Gloves": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.acr",
+     "text": "Even when his limbs aren't extended, the wearer gains a +[[5]] enhancement bonus on escape artist checks and acrobatics checks to avoid falling damage."
+    },
+    {
+     "target": "attack",
+     "text": "As a swift action, the wearer can lengthen his arms for up to [[10]] rounds per day, gaining an additional [[5]] feet of reach. Attacking with these extended arms is unwieldy, and the wearer takes a 2 penalty on attack rolls, increasing to 4 if he is using two-handed weapons."
+    }
+   ]
+  },
+  "Poisoner's Jacket, Lesser": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Three times per day, the wearer of this dark jacket can create a vial containing one dose of any poison from the core rulebook that costs 300or less. This poison becomes inert after 1 hour."
+   ]
+  },
+  "Silver Soul Cord": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "As a standard action, the wearer can touch his animal companion to attach an invisible, incorporeal cord to it that, if it can be seen by anyone, appears to be superficially tied to the silver soul cord. If the animal companion is killed or the link is broken while the cord is attached in this manner (though very few things can destroy the incorporeal cord), the wearer and the animal companion each gain a negative level and the silver soul cord cannot be reattached to any creature for 24 hours."
+   ]
+  },
+  "Summoner's Robe": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Once per day when casting a summon monster or summon nature's ally spell, the wearer can have the robe absorb one of the creatures summoned rather than have it appear within the spell's range. If the wearer takes an amount of damage equal to or greater than 5 hit points per level of the spell that summoned the absorbed creature, the defensive aura ends."
+   ]
+  },
+  "Survivor's Ring": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Once per day, if the wearer would be reduced to 0 or fewer hit points but not be dead, she is instead reduced to 0 hit points and subject to an effect similar to mislead . In addition, the wearer can touch the ring's stone as a standard action once per day to use dimension door but only while the ring's mislead effect is active."
+   ]
+  }
+ },
+ "known_list": [],
+ "land_speed": 30,
+ "language_text": [
+  "Common"
+ ],
+ "level": 15,
+ "level_up_stats": {
+  "cha": 0,
+  "con": 0,
+  "dex": 1,
+  "int": 0,
+  "str": 1,
+  "wis": 1
+ },
+ "magic_talent_items": [],
+ "main_stat": "dex",
+ "maneuvers_choose_from": [
+  [
+   "Crushing Blow",
+   "Shoulder Rush",
+   "Horizon Wind Lancet",
+   "Curving Ray Shot"
+  ],
+  [
+   "Momentum Crash",
+   "Bloody Riposte",
+   "Solar Flare maneuver",
+   "Intercepting Shade"
+  ],
+  [
+   "Frenzy Strike",
+   "Disparity Blow",
+   "Solar Reflection",
+   "Phantom Wind Ray"
+  ],
+  [
+   "Impaling Strike",
+   "Searing Break"
+  ],
+  [
+   "Cornered Frenzy Strike",
+   "Solar Wind Lancet"
+  ],
+  [
+   "Charge of the Battle Panthera",
+   "Solar Meteor Blow"
+  ]
+ ],
+ "maneuvers_desc_dict": {
+  "Bloody Riposte": {
+   "action": "1 immediate action",
+   "description": "Stoking the furnace of rage within him upon receiving injury, the disciple uses the momentary lapse in his attackers defenses when struck in combat to make a vicious riposte. Upon being struck in combat by an enemy, the initiator may make an immediate counter attack at his full base attack bonus that inflicts an additional 2d6 points of damage.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Personal",
+   "type": "counter"
+  },
+  "Charge of the Battle Panthera": {
+   "action": "1 full round action",
+   "description": "With a running start that ends in a blood-drenched finish, the disciple mimics the final moments of the hunting great cat as he delivers the death blow to his prey. The initiator makes a charge attack against a target, and if successful he inflicts an additional 12d6 points of damage and the target must make a Reflex save DC 16 + initiation modifier or be knocked prone.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 6,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Cornered Frenzy Strike": {
+   "action": "1 full round action",
+   "description": "As an animal cornered lashes out at all comers, so does the Primal Fury disciple when he finds himself surrounded. By using his intuition and striking where he feels a foe to be, he uses his instincts as a powerful weapon. As a full attack action, the initiator makes an attack roll at full base attack bonus against each target within his reach with each weapon he is currently wielding including natural attacks; armor and shield spikes always count as wielded weapons, and each successful attack inflicts an additional 4d6 points of damage. After initiating this maneuver, the initiators focus on offense causes his AC to suffer a -2 penalty until his next turn.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 5,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Crushing Blow": {
+   "action": "1 standard action",
+   "description": "By bringing his weapon high and bringing it down with ferocious finality, the disciples forceful blow is enough to weaken the defenses of his foe momentarily. The initiator makes an attack and if successful, the strike inflicts an additional 1d6 points of damage and may potentially render his foe flat-footed until its next turn on a failed Fortitude save DC 11 + initiation modifier.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Curving Ray Shot": {
+   "action": "1 standard action",
+   "description": "The disciples keen eyes allow him to fire his weapon around his foes cover. The initiator makes an opposed Perception check against targets Armor Class before making a single ranged attack; if successful then the foes cover is negated.",
+   "discipline": "Solar Wind",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Ranged attack",
+   "type": "strike"
+  },
+  "Disparity Blow": {
+   "action": "1 standard action",
+   "description": "With a powerful upswing, the Primal Fury disciple brings his weapon in low and with his attack drives his opponent to the ground as he raises it high to show his superiority. The initiator makes a melee attack and if successful, inflicts an additional 2d6 points of damage and may make an immediate trip attack against the target with a +4 circumstance bonus. This trip attempt does not provoke attacks of opportunity.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 3,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Frenzy Strike": {
+   "action": "1 standard action",
+   "description": "By emulating the ferocious assault of a raging great cat, the disciples knowledge of the natural world and the way its predators operate assists him in combat with a furious set of attacks. The initiator makes one attack with each weapon he has wielded or with both heads of a double weapon; this includes natural attacks and armor or shield spikes at his full base attack bonus. Upon a each successful attack, the initiator inflicts an additional 2d6 points of damage.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 3,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Horizon Wind Lancet": {
+   "action": "1 swift action",
+   "description": "The tenets of the Solar Wind have taught the disciple how to place more force behind his attacks. The initiator inflicts an additional 1d6 points of damage on a single ranged attack he makes this round. If the initiator is making multiple attacks in this round, this bonus applies to the first attack the initiator makes.",
+   "discipline": "Solar Wind",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Impaling Strike": {
+   "action": "1 standard action",
+   "description": "The disciple who has reached this level of mastery in the art of Primal Fury has learned that by striking to a foes heart and center with a singular but powerful blow, it causes the foes ability to withstand punishment to falter. The initiator makes an attack against his target and if successful, inflicts an additional 4d6 points of damage to this attack which ignores damage reduction. The target must make a Fortitude save DC 14 + primary initiation modifier or suffer an additional 1d4 points of Constitution damage from being hit in a vital area. Targets immune to critical hits are not subject to this Constitution damage.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 4,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Intercepting Shade": {
+   "action": "1 immediate action",
+   "description": "Sometimes a good offense can be used as a good defense, so the Solar Wind discipline learns, as he uses his range to dissuade attacks by his sheer skill and exceptional aim. The initiator makes an opposed attack roll against his foes attack roll on an incoming attack such as an arrow or thrown weapon, a charging barbarian, or a skillful slash from a sword, but not a spell or similar attack targeting himself or an ally he can see within his weapons first range increment; if successful then the attack is negated.",
+   "discipline": "Solar Wind",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Personal, or weapons first range increment",
+   "type": "counter"
+  },
+  "Momentum Crash": {
+   "action": "1 swift action",
+   "description": "By putting his fury into a charging attack, the disciple is capable of using the momentum of his charge to increase his killing power with a twist of his body upon connecting. Upon a successful charge attack, the initiators charge attack inflicts an additional 10 points of damage in addition to the normal +2 to hit.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Phantom Sun Stance": {
+   "action": "1 swift action",
+   "description": "Using the principles of shadow and light, the Solar Wind disciple is capable of making phantom copies of his ammunition for use in combat. While in this stance, the initiator may make semi-real copies of arrows, bolts, bullets, or throwing weapons by willing them into existing as a free action while possessing at least one of the above on his person. Weapons that need reloading, such as crossbows and firearms, are fully reloaded as a move action and if the character possesses the Rapid Reload feat, he may reload as a swift action. Magical properties, alchemical properties, or special materials of the ammunition are not copied, only the base properties of the ammunition as if they were made of mundane steel with no special abilities or properties. Once the ammunition has been used, it disappears immediately after the attack. If the bow, firearm, sling, or cross bow making the attack has magical properties these are bestowed upon the ammunition. Thrown weapons copied by this stance are duplicates of the original, but do not manifest the material portion of the weapon, only its magical enhancements. Once these weapons are used, they fade away immediately after use. This is a supernatural ability.",
+   "discipline": "Solar Wind",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Phantom Wind Ray": {
+   "action": "1 swift action",
+   "description": "The disciples knowledge of the desert mirages caused by the sun grants him the ability to obscure his attacks, using gaps in a foes perception. The target must make a Perception check opposed by the initiators next attack roll against the target; if the Perception check fails then he is caught flat-footed against the attack and the attack is resolved against his flat-footed armor class. This is a supernatural ability.",
+   "discipline": "Solar Wind",
+   "duration": "Instantaneous",
+   "level": 3,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Primal Warrior Stance": {
+   "action": "1 swift action",
+   "description": "By taking a wide stance that invites the death of any before him, the mighty disciple of Primal Fury wields the power of overwhelming force to its greatest effects. The initiator ignores difficult terrain when charging while in this stance, and whenever he is subject to a size modifier for CMB checks or to his CMD, the disciple is treated as one size category larger if doing so would be advantageous to him. He is also considered to be one size larger when determining whether a creatures special attacks based on size such as grab or swallow whole can affect him. Additionally, any melee weapon, unarmed strike, or natural weapon is treated as if it were two sizes larger. The benefits of this stance stack with abilities or effects that increase the initiators size such asenlarge person.",
+   "discipline": "Primal Fury",
+   "duration": "Stance",
+   "level": 3,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Running Hunters Stance": {
+   "action": "1 swift action",
+   "description": "The swiftest hunter catches the prey, and the Primal Fury disciple has trained his body mercilessly to increase his speed and sharpen his senses. While in this stance, the initiator gains a +10 enhancement bonus to his base land speed and gains the scent special ability.",
+   "discipline": "Primal Fury",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Searing Break": {
+   "action": "1 swift action",
+   "description": "By binding the light of the suns rays into his weapons, the disciple of the Solar Wind may attack with the suns burning heat. As a swift action, the initiator may add an additional 3d6 points of fire damage on all ranged attack for one round. This is a supernatural ability.",
+   "discipline": "Solar Wind",
+   "duration": "One round",
+   "level": 4,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Shoulder Rush": {
+   "action": "1 standard action",
+   "description": "The disciple of Primal Fury uses his aggression to take opportunities whenever possible, and a solid shoulder into a foe at an opportune moment can tip the scales of war in the disciples favor. As a standard action, the initiator may make a bull rush or overrun attempt with a +4 circumstance bonus, and this attempt does not provoke attacks of opportunity.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Skirmishers Stance": {
+   "action": "1 swift action",
+   "description": "By adopting a hit-and-run attitude, the disciple of Primal Fury disciple moves swiftly and strikes with deadly force. While in this stance, if the initiator moves 10-ft. or more on his turn, attacks made by him inflict an additional 2d6 points of damage and he gains a +2 dodge bonus to his Armor Class.",
+   "discipline": "Primal Fury",
+   "duration": "Stance",
+   "level": 6,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Solar Flare maneuver": {
+   "action": "1 standard action",
+   "description": "Where the light of the sun touches, so does the burning reach of the Solar Wind disciple, allowing him to curve his weapons around impossible angles. The initiator makes a ranged attack against a target creature, and this attack ignores any cover defense that the creature possesses and inflicts an additional 2d6 points of fire damage. This is a supernatural ability.",
+   "discipline": "Solar Wind",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Ranged attack",
+   "type": "strike"
+  },
+  "Solar Meteor Blow": {
+   "action": "1 standard action",
+   "description": "The disciple of the Solar Wind wraps the force of a hurricane around his weapon before launching it high into the air to have it crash down amongst his enemies, scattering them to the ground. The initiator makes an attack against either a target creature inflicting an additional 6d6 damage to the target or at the ground at a target creatures feet. The 5-ft. square that the target occupies or the targeted 5-ft. space itself immediately sets of a powerful wave of air that potentially knocks enemies prone within a 15-ft. radius of the target on a failed Fortitude saving throw DC 16 + initiation modifier; this including the target, who suffers a -4 penalty to this saving throw. This is a supernatural ability.",
+   "discipline": "Solar Wind",
+   "duration": "Instantaneous",
+   "level": 6,
+   "range": "Ranged attack",
+   "type": "strike"
+  },
+  "Solar Reflection": {
+   "action": "1 full round action",
+   "description": "As reflective surfaces bounce the rays of the sun, so can the Solar Wind disciple ricochet a missile weapon from one target to another. The initiator makes a single ranged attack roll and if this roll is successful, he may apply this same attack roll against another opponent within 20-ft. of the first. This strike inflicts an additional 2d6 points of damage to the first target, and normal damage to the second target. Each reflection attack is considered a separate attack for the purposes of determining the effectiveness of single attack boosting abilities, such as boosts that affect one attack or spells liketrue strike.If the ammunition had special properties, the ammunition retains its properties on each attack until the strike ends.",
+   "discipline": "Solar Wind",
+   "duration": "Instantaneous",
+   "level": 3,
+   "range": "Ranged attack",
+   "type": "strike"
+  },
+  "Solar Wind Lancet": {
+   "action": "1 swift action",
+   "description": "With the mighty force of the Solar Wind, the disciple lets loose a missile with breath-stealing, devastating force. Upon initiating this boost, the next ranged attack that the initiator makes inflicts an additional 4d6 points of damage upon a successful attack and potentially knocks his target prone a successful DC 15 + initiation modifier Fortitude save negates being knocked prone. This is a supernatural ability.",
+   "discipline": "Solar Wind",
+   "duration": "One turn",
+   "level": 5,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Stance of Aggression": {
+   "action": "1 swift action",
+   "description": "By focusing his fury on the ending of his foes, the disciple forgoes finesse for devastating power. While in this stance, the initiator suffers a -2 penalty on his AC but any successful attack inflicts an additional 1d6 points of damage. This damage bonus increases by 1d6 every eight initiator levels.",
+   "discipline": "Primal Fury",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Stance of Piercing Rays": {
+   "action": "1 swift action",
+   "description": "A Solar Wind disciple learns to cause his ammunition to pierce like the burning rays of the sun itself. While in this stance, the initiators ranged attacks inflict an additional 1d6 points of fire damage. This bonus damage increases by an additional 1d6 points of fire damage every eight initiator levels. This is a supernatural ability.",
+   "discipline": "Solar Wind",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Sunwalker Stance": {
+   "action": "1 swift action",
+   "description": "Using the hunting techniques of the ancient days of the White Steppes, the Solar Wind disciple hunts on the move, making attacks while chasing down his prey. The initiator gains the benefits of the Shot on the Run feat As a full-round action, you can move up to your speed and make a single ranged attack at any point during your movement while in this stance he does not need to meet the prerequisites of this feat, and he gains a +2 circumstance bonus to his armor class against attacks if he moves more than 10-ft. during his turn.",
+   "discipline": "Solar Wind",
+   "duration": "Stance",
+   "level": 3,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "True Shot Stance": {
+   "action": "1 swift action",
+   "description": "The Solar Wind disciple has honed his incredible senses and while in this stance uses his inner vision to strike his foes with his most deadly attacks. While in this stance, the initiator ignores a foes partial concealment or any cover and he doubles the critical threat range on any ranged weapon he uses. Other effects that increase critical threat range, such as akeenweapon, do not stack with this effect.",
+   "discipline": "Solar Wind",
+   "duration": "Stance",
+   "level": 6,
+   "range": "Personal",
+   "type": "stance"
+  }
+ },
+ "maneuvers_known_list": [
+  4,
+  4,
+  4,
+  2,
+  2,
+  2
+ ],
+ "maneuvers_readied_list": [
+  0,
+  2,
+  4,
+  2,
+  2,
+  2
+ ],
+ "maneuvers_readied_names": [
+  [],
+  [
+   "Momentum Crash",
+   "Solar Flare maneuver"
+  ],
+  [
+   "Disparity Blow",
+   "Frenzy Strike",
+   "Solar Reflection",
+   "Phantom Wind Ray"
+  ],
+  [
+   "Impaling Strike",
+   "Searing Break"
+  ],
+  [
+   "Cornered Frenzy Strike",
+   "Solar Wind Lancet"
+  ],
+  [
+   "Charge of the Battle Panthera",
+   "Solar Meteor Blow"
+  ]
+ ],
+ "mannerisms": [
+  "Combs mustache",
+  "Bites lower lip"
+ ],
+ "martial_disciplines": [
+  "Primal Fury",
+  "Solar Wind"
+ ],
+ "mini_alignment": "lg",
+ "mod_char_sheet_var": false,
+ "mt_feats": [
+  "Martial Training I (Primal Fury)",
+  "Martial Training III (Primal Fury)",
+  "Martial Training V (Primal Fury)",
+  "Martial Training I (Solar Wind)",
+  "Martial Training III (Solar Wind)",
+  "Martial Training V (Solar Wind)"
+ ],
+ "older_brothers": " you have 2 older brothers",
+ "older_sisters": " you have 0 older sisters",
+ "opposing_school": "N/A",
+ "parents": "absent mother, loving father, raised in a wealthy household",
+ "personality_traits": [
+  "Reverent",
+  "Analytical",
+  "Doubtful"
+ ],
+ "platnium": 941.1,
+ "profession_ability_items": [
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "acpA",
+     "type": "untyped"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "attack",
+     "type": "untyped"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "damage",
+     "type": "untyped"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "cmd",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Master-at-Arms) - rank 15/15. Associate skills (ranks 1/4/7/10): Perception, Appraise, Sleight of Hand, Sense Motive.</em></p><hr><p><strong>Armor Training (Ex)</strong></p><p>You wear armor like a second skin. Reduce your armor check penalty by 2 (minimum 0) and increase your armor's maximum Dexterity bonus by 2. The campaign treats your armor training as eight levels higher, and you move at full speed in medium armor.</p><hr><p><strong>Weapon Training (Ex)</strong></p><p>Like a veteran fighter, you have mastered a whole group of weapons. You gain a +2 bonus on attack and damage rolls with weapons of your trained group; the campaign treats your effective training as eight levels higher than normal, so this bonus is already strong for your level.</p><hr><p><strong>Battle Hardened (Ex)</strong></p><p>Countless campaigns have toughened you against punishment. You gain damage reduction 2/&mdash; against weapon attacks and a +2 bonus to your CMD against all combat maneuvers.</p>",
+   "name": "Profession Rank 5: (Master-at-Arms)",
+   "uses": null
+  },
+  {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "+2 morale vs fear from your banner"
+    },
+    {
+     "target": "damage",
+     "text": "+2d6 damage on a charge"
+    }
+   ],
+   "description": "<p><em>Profession (Master-at-Arms) - rank 15/15.</em></p><hr><p><strong>Banner of the Vanguard (Ex)</strong></p><p>Your standard rallies those who follow you. Allies within 60 feet who can see your banner gain a +2 morale bonus on saving throws against fear and a +1 morale bonus on attack rolls made while charging; you yourself gain the same benefit.</p><hr><p><strong>Unstoppable Onslaught (Ex)</strong></p><p>You crash through the line like a war engine. When you charge you ignore difficult terrain and the first creature in your path, and your charge attack deals an extra 2d6 damage and gains a +4 bonus to its combat maneuver check to overrun or bull rush.</p><hr><p><strong>Martial Flexibility (Ex)</strong></p><p>You adapt mid-fight like a brawler. As a swift action you gain the benefit of one combat feat for 1 minute (or two feats as a move action). You can use this a number of times per day equal to 3 + half your level, and the chosen feats can satisfy each other's prerequisites.</p><hr><p><strong>Martial Training (initiator)</strong></p><p>A master-at-arms taught you the secrets of a martial discipline. You become an initiator: you learn three maneuvers and one stance from a single Path of War discipline, with an initiator level equal to half your character level. You ready and recover these maneuvers as a martial adept.</p>",
+   "name": "Profession Rank 15: (Master-at-Arms)",
+   "uses": {
+    "maxFormula": "3 + floor(@attributes.hd.total / 2)",
+    "per": "day",
+    "value": null
+   }
+  },
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "cmb",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "+1 dodge AC and +1 morale to attack while flanking with an ally"
+    },
+    {
+     "target": "cmb",
+     "text": "+2 CMB and no AoO with your two chosen maneuvers"
+    }
+   ],
+   "description": "<p><em>Profession (Watchman) - rank 10/10. Associate skills (ranks 1/4/7/10): Handle Animal, Sense Motive, Craft, Use Magic Device.</em></p><hr><p><strong>Phalanx Veteran (Ex)</strong></p><p>You fight best shoulder to shoulder. You gain a +1 dodge bonus to AC and a +1 morale bonus on attack rolls whenever at least one ally is adjacent to you and engaged with the same foe.</p><hr><p><strong>Combat Reflexes Drill (Ex)</strong></p><p>Sentry training keeps your blade always moving. You may make a number of attacks of opportunity each round equal to 1 + your Dexterity modifier, and you can do so even while flat-footed.</p><hr><p><strong>Maneuver Training (Ex)</strong></p><p>Choose two combat maneuvers (such as disarm, trip, grapple, or sunder). You gain a +2 bonus on combat maneuver checks made with those maneuvers, and using them does not provoke attacks of opportunity.</p>",
+   "name": "Profession Rank 5: (Watchman)",
+   "uses": null
+  }
+ ],
+ "profession_feat_desc": {
+  "Multi Talented": "Your profession rank cap increases by 10.",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
+ },
+ "profession_feats": [
+  "Multi Talented",
+  "True Calling"
+ ],
+ "profession_pool": 30,
+ "profession_ranks": [
+  {
+   "ability_theme": "martial",
+   "ability_tier": "high",
+   "associate_skills": [
+    "Perception",
+    "Appraise",
+    "Sleight of Hand",
+    "Sense Motive"
+   ],
+   "cap": 15,
+   "name": "Master-at-Arms",
+   "rank15_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [
+      {
+       "target": "allSavingThrows",
+       "text": "+2 morale vs fear from your banner"
+      }
+     ],
+     "desc": "<p>Your standard rallies those who follow you. Allies within 60 feet who can see your banner gain a +2 morale bonus on saving throws against fear and a +1 morale bonus on attack rolls made while charging; you yourself gain the same benefit.</p>",
+     "name": "Banner of the Vanguard (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [
+      {
+       "target": "damage",
+       "text": "+2d6 damage on a charge"
+      }
+     ],
+     "desc": "<p>You crash through the line like a war engine. When you charge you ignore difficult terrain and the first creature in your path, and your charge attack deals an extra 2d6 damage and gains a +4 bonus to its combat maneuver check to overrun or bull rush.</p>",
+     "name": "Unstoppable Onslaught (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>You adapt mid-fight like a brawler. As a swift action you gain the benefit of one combat feat for 1 minute (or two feats as a move action). You can use this a number of times per day equal to 3 + half your level, and the chosen feats can satisfy each other's prerequisites.</p>",
+     "name": "Martial Flexibility (Ex)",
+     "uses": {
+      "maxFormula": "3 + floor(@attributes.hd.total / 2)",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>A master-at-arms taught you the secrets of a martial discipline. You become an initiator: you learn three maneuvers and one stance from a single Path of War discipline, with an initiator level equal to half your character level. You ready and recover these maneuvers as a martial adept.</p>",
+     "name": "Martial Training (initiator)",
+     "uses": null
+    }
+   ],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "acpA",
+       "type": "untyped"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>You wear armor like a second skin. Reduce your armor check penalty by 2 (minimum 0) and increase your armor's maximum Dexterity bonus by 2. The campaign treats your armor training as eight levels higher, and you move at full speed in medium armor.</p>",
+     "name": "Armor Training (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "attack",
+       "type": "untyped"
+      },
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "damage",
+       "type": "untyped"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Like a veteran fighter, you have mastered a whole group of weapons. You gain a +2 bonus on attack and damage rolls with weapons of your trained group; the campaign treats your effective training as eight levels higher than normal, so this bonus is already strong for your level.</p>",
+     "name": "Weapon Training (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "cmd",
+       "type": "untyped"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Countless campaigns have toughened you against punishment. You gain damage reduction 2/&mdash; against weapon attacks and a +2 bonus to your CMD against all combat maneuvers.</p>",
+     "name": "Battle Hardened (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 15,
+   "skill_focus_bonuses": [
+    {
+     "bonus": 4,
+     "feat": "Prodigy"
+    }
+   ],
+   "skill_label": "Profession (Master-at-Arms)"
+  },
+  {
+   "ability_theme": "craft",
+   "ability_tier": "average",
+   "associate_skills": [
+    "Profession"
+   ],
+   "cap": 10,
+   "name": "Upholsterer",
+   "rank15_abilities": [],
+   "rank5_abilities": [],
+   "ranks": 3,
+   "skill_label": "Profession (Upholsterer)"
+  },
+  {
+   "ability_theme": "craft",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Diplomacy"
+   ],
+   "cap": 10,
+   "name": "Apprentice Smith",
+   "rank15_abilities": [],
+   "rank5_abilities": [],
+   "ranks": 1,
+   "skill_label": "Profession (Apprentice Smith)"
+  },
+  {
+   "ability_theme": "divine",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Profession"
+   ],
+   "cap": 10,
+   "name": "Friar",
+   "rank15_abilities": [],
+   "rank5_abilities": [],
+   "ranks": 1,
+   "skill_label": "Profession (Friar)"
+  },
+  {
+   "ability_theme": "martial",
+   "ability_tier": "good",
+   "associate_skills": [
+    "Handle Animal",
+    "Sense Motive",
+    "Craft",
+    "Use Magic Device"
+   ],
+   "cap": 10,
+   "name": "Watchman",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [
+      {
+       "target": "attack",
+       "text": "+1 dodge AC and +1 morale to attack while flanking with an ally"
+      }
+     ],
+     "desc": "<p>You fight best shoulder to shoulder. You gain a +1 dodge bonus to AC and a +1 morale bonus on attack rolls whenever at least one ally is adjacent to you and engaged with the same foe.</p>",
+     "name": "Phalanx Veteran (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Sentry training keeps your blade always moving. You may make a number of attacks of opportunity each round equal to 1 + your Dexterity modifier, and you can do so even while flat-footed.</p>",
+     "name": "Combat Reflexes Drill (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "cmb",
+       "type": "untyped"
+      }
+     ],
+     "contextNotes": [
+      {
+       "target": "cmb",
+       "text": "+2 CMB and no AoO with your two chosen maneuvers"
+      }
+     ],
+     "desc": "<p>Choose two combat maneuvers (such as disarm, trip, grapple, or sunder). You gain a +2 bonus on combat maneuver checks made with those maneuvers, and using them does not provoke attacks of opportunity.</p>",
+     "name": "Maneuver Training (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 10,
+   "skill_focus_bonuses": [
+    {
+     "bonus": 4,
+     "feat": "Prodigy"
+    }
+   ],
+   "skill_label": "Profession (Watchman)"
+  }
+ ],
+ "professions": [
+  "Master-at-Arms",
+  "Upholsterer",
+  "Apprentice Smith",
+  "Friar",
+  "Watchman"
+ ],
+ "racial_stats": {
+  "cha": 0,
+  "con": 0,
+  "dex": 2,
+  "int": 0,
+  "str": 0,
+  "wis": 0
+ },
+ "region": "Tal-Falko",
+ "save_bases": {
+  "fort": 9,
+  "ref": 5,
+  "will": 5
+ },
+ "school": "N/A",
+ "selected_traits": [
+  "River Rat",
+  "Ruin Raider",
+  "Deft Dodger",
+  "Bloody-Minded",
+  "Vindictive Strike",
+  "Osirionologist",
+  "Lastwall Cavalry Rider",
+  "Sword Scion"
+ ],
+ "selected_traits_desc": [
+  {
+   "description": "You gain a +1 trait bonus to damage dealt with a dagger and a +1 trait bonus to Swim checks. Swim is always a class skill for you.",
+   "name": "River Rat"
+  },
+  {
+   "description": "You gain a +1 trait bonus on Appraise checks. Additionally, you gain a +4 bonus on Perception checks made to distinguish statue-like creatures (like caryatid columns and gargoyles) from actual sculptures.",
+   "name": "Ruin Raider"
+  },
+  {
+   "description": "You gain a +1 trait bonus on Reflex saving throws.",
+   "name": "Deft Dodger"
+  },
+  {
+   "description": "You gain a +1 trait bonus on initiative and Intimidate checks.",
+   "name": "Bloody-Minded"
+  },
+  {
+   "description": "Once per day during a combat encounter, you can choose to gain a +1 trait bonus on a single attack roll against the creature that last hit you.",
+   "name": "Vindictive Strike"
+  },
+  {
+   "description": "You gain a +1 trait bonus on Knowledge (engineering) and Knowledge (history) checks, and one of them is always a class skill for you. In addition, you may choose an ancient language as one of your bonus languages.",
+   "name": "Osirionologist"
+  },
+  {
+   "description": "You gain a +1 trait bonus on Ride checks, and Ride is always a class skill for you.",
+   "name": "Lastwall Cavalry Rider"
+  },
+  {
+   "description": "You begin play with a longsword or dueling sword and gain a +1 trait bonus on all attacks and combat maneuvers made with such weapons.",
+   "name": "Sword Scion"
+  }
+ ],
+ "sheet_health": 73,
+ "shield_ac": 0,
+ "shield_armor_check_penalty": " ",
+ "shield_enhancement_bonus": 0,
+ "shield_enhancement_chosen_list": [],
+ "shield_max_dex_bonus": " ",
+ "shield_name": " ",
+ "shield_spell_failure": " ",
+ "shield_weight": " ",
+ "skill_ranks": {
+  "acrobatics": 0,
+  "appraise": 0,
+  "bluff": 0,
+  "climb": 4,
+  "craft": 0,
+  "diplomacy": 0,
+  "disable device": 0,
+  "disguise": 1,
+  "escape artist": 7,
+  "fly": 4,
+  "handle animal": 9,
+  "heal": 0,
+  "intimidate": 4,
+  "knowledge arcana": 0,
+  "knowledge dungeoneering": 11,
+  "knowledge engineering": 0,
+  "knowledge geography": 0,
+  "knowledge history": 0,
+  "knowledge local": 0,
+  "knowledge nature": 0,
+  "knowledge nobility": 3,
+  "knowledge planes": 0,
+  "knowledge religion": 7,
+  "linguistics": 0,
+  "perception": 0,
+  "perform": 0,
+  "profession": 0,
+  "ride": 0,
+  "sense motive": 10,
+  "sleight of hand": 0,
+  "spellcraft": 0,
+  "stealth": 13,
+  "survival": 0,
+  "swim": 0,
+  "use magic device": 2
+ },
+ "skill_unlock": {
+  "base_skill": "disguise",
+  "ranks": 1,
+  "skill": "Disguise",
+  "unlock": {
+   "10": "You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.",
+   "15": "You can create a disguise as a full-round action.",
+   "20": "You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.",
+   "5": "You can create a disguise in 1d3 minutes."
+  },
+  "unlock_html": "<h2>Disguise</h2><p><strong>5 Ranks</strong>: You can create a disguise in 1d3 minutes.</p><p><strong>10 Ranks</strong>: You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.</p><p><strong>15 Ranks</strong>: You can create a disguise as a full-round action.</p><p><strong>20 Ranks</strong>: You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.</p>"
+ },
+ "specialty_schools": [
+  "illusion",
+  "enchantment"
+ ],
+ "spell_changes_dict": {},
+ "spell_list_choose_from": [],
+ "spell_list_choose_from_dict": [],
+ "spell_riders_dict": {},
+ "spellbooks": [],
+ "spells_prepared_per_level": [],
+ "sphere_boons": [
+  "Overcharge"
+ ],
+ "sphere_counts": {
+  "Beastmastery": {
+   "advanced": 1,
+   "feats": 0,
+   "normal": 7
+  }
+ },
+ "sphere_drawbacks": [
+  "Draining Casting",
+  "Somatic Casting"
+ ],
+ "sphere_feat_tax": {
+  "Extra Combat Talent (Double Team / Extra Beastmastery Package)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Lookout / Skirmish Rider)": [
+   "Extra Combat Talent"
+  ]
+ },
+ "sphere_feats": [
+  "Extra Combat Talent (Double Team / Extra Beastmastery Package)",
+  "Extra Combat Talent (Lookout / Skirmish Rider)"
+ ],
+ "sphere_mana_pool": 0,
+ "sphere_traits": [
+  "Draining Casting",
+  "Somatic Casting",
+  "Overcharge"
+ ],
+ "spheres_chosen": [
+  {
+   "sphere": "Beastmastery",
+   "system": "might"
+  }
+ ],
+ "stances_chosen": [
+  "Running Hunters Stance",
+  "Primal Warrior Stance",
+  "Skirmishers Stance",
+  "Stance of Aggression",
+  "Stance of Piercing Rays",
+  "Sunwalker Stance",
+  "True Shot Stance",
+  "Phantom Sun Stance"
+ ],
+ "story_feat_tax_dict": {},
+ "story_feats": [
+  "Medium Armor Proficiency",
+  "Point-Blank Shot",
+  "Fleet",
+  "Run"
+ ],
+ "str": 13,
+ "teamwork_feat_labels": [],
+ "teamwork_feats": 0,
+ "total_level": 15,
+ "total_rolled_hp": 63,
+ "trainer_calibers": [
+  4,
+  3
+ ],
+ "trainer_feat_labels": [
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 3 - Path of War)",
+  "(Trainer 3 - Path of War)",
+  "(Trainer 3 - Path of War)",
+  "(Trainer 4 - Spheres)"
+ ],
+ "trainer_feat_tax_dict": {
+  "Improved Bull Rush": [
+   "greater bull rush",
+   "bull rush strike",
+   "merciless rush",
+   "quick bull rush",
+   "rhino charge",
+   "squash flat"
+  ],
+  "Improved Initiative": [
+   "surprising combatant"
+  ],
+  "Iron Will": [
+   "courage in numbers",
+   "improved iron will",
+   "stoic",
+   "witchbreaker",
+   "exorcist's rebuttal"
+  ],
+  "Lightning Reflexes": [
+   "improved lightning reflexes"
+  ],
+  "Martial Training I (Solar Wind)": [
+   "Martial Training II (Solar Wind)"
+  ],
+  "Martial Training III (Solar Wind)": [
+   "Martial Training IV (Solar Wind)"
+  ],
+  "Martial Training V (Solar Wind)": [
+   "Martial Training VI (Solar Wind)"
+  ],
+  "Spheres Mentor": []
+ },
+ "trainer_feats": [
+  "Siege Commander",
+  "Lightning Reflexes",
+  "Punch Through",
+  "Iron Will",
+  "Simple Weapon Proficiency",
+  "Improved Bull Rush",
+  "Improved Initiative",
+  "Martial Training I (Solar Wind)",
+  "Martial Training III (Solar Wind)",
+  "Martial Training V (Solar Wind)",
+  "Spheres Mentor"
+ ],
+ "weapon_enhancement_bonus": 5,
+ "weapon_enhancement_chosen_list": [],
+ "weapon_name": "Manople",
+ "weight_number": 206,
+ "wis": 13,
+ "younger_brothers": " you have 0 younger brothers",
+ "younger_sisters": " you have 0 younger sisters"
+}
