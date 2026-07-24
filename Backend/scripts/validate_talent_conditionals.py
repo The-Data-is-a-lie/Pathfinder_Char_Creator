@@ -73,6 +73,49 @@ def find_bad_tokens(conditionals):
     return out
 
 
+# pf1's action-model enum is exactly {NORMAL:"normal", CRITICAL:"crit", NON_CRITICAL:"nonCrit"}.
+# An unknown value -- historically "onCrit" -- is DELETED by pf1 on the next sheet edit, silently
+# dropping the modifier. That shipped once on six burst weapon qualities before
+# validate_quality_effects.MOD_CRITICAL started guarding the quality data; talents were never
+# covered, so the same typo could ride a Spheres conditional forever. This closes that gap.
+MOD_CRITICAL = {"normal", "crit", "nonCrit"}
+
+
+def find_bad_critical(conditionals):
+    """[(sphere, talent, value), ...] for modifiers whose `critical` is not a real pf1 value."""
+    out = []
+    for sphere, talents in (conditionals or {}).items():
+        if not isinstance(talents, dict):
+            continue
+        for talent, entry in talents.items():
+            for m in ((entry or {}).get("modifiers") or []):
+                if isinstance(m, dict) and "critical" in m and m.get("critical") not in MOD_CRITICAL:
+                    out.append((sphere, talent, m.get("critical")))
+    return out
+
+
+# The Path-of-War roll-data tokens are meaningless on a Spheres talent (the sphere path substitutes
+# its own tokens), so they must never appear here. The decision-rules doc long claimed "the promote
+# check rejects them" -- nothing did, until this check.
+_POW_TOKENS = re.compile(r"@INITMOD|@SKILLCHECK|@ATTACKCHECK", re.IGNORECASE)
+
+
+def find_pow_tokens(conditionals):
+    """[(sphere, talent, token), ...] for PoW-only tokens leaking into Spheres formulas/riders."""
+    out = []
+    for sphere, talents in (conditionals or {}).items():
+        if not isinstance(talents, dict):
+            continue
+        for talent, entry in talents.items():
+            blob = str((entry or {}).get("rider", "") or "")
+            for m in ((entry or {}).get("modifiers") or []):
+                if isinstance(m, dict):
+                    blob += " " + str(m.get("formula", "") or "")
+            for tok in _POW_TOKENS.findall(blob):
+                out.append((sphere, talent, tok))
+    return out
+
+
 _DICE = re.compile(r"[\d)]d\d")
 
 
@@ -114,6 +157,11 @@ def main():
             bad.append(f"{fn.split('_')[0]}/{sphere}/{talent}: cost-only -- {rider}")
         for sphere, talent, tok in find_bad_tokens(d):
             bad.append(f"{fn.split('_')[0]}/{sphere}/{talent}: malformed token {tok} (cam/pam take no .total)")
+        for sphere, talent, val in find_bad_critical(d):
+            bad.append(f"{fn.split('_')[0]}/{sphere}/{talent}: critical {val!r} is not a pf1 value "
+                       f"{sorted(MOD_CRITICAL)} -- pf1 will delete it and drop the modifier")
+        for sphere, talent, tok in find_pow_tokens(d):
+            bad.append(f"{fn.split('_')[0]}/{sphere}/{talent}: Path-of-War token {tok} in a Spheres conditional")
         for sphere, talent, formula in find_untyped_damage(d):
             warns.append(f"{fn.split('_')[0]}/{sphere}/{talent}: dice damage, empty damageType "
                          f"(coerced to untyped; prefer a real element) -- {formula}")

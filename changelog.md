@@ -216,6 +216,26 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   `seal()`/`require_sealed()` express that instead. `test_pipeline_phases.py` deliberately violates
   each contract and asserts the error — a guard that never fires is worth nothing.
 
+### Added
+- **The `onCrit` bug class can no longer ship in Spheres talents or spell conditionals.** An audit of
+  every hard rule in the conditional decision-rules docs against the validators found the
+  `critical`-whitelist guard was only **partial**: `validate_quality_effects.py` protected weapon
+  qualities (and, at promotion time, feats/class features), but `validate_talent_conditionals.py`
+  never inspected `critical` **at all**, and `validate_spell_conditionals.check_modifier` didn't
+  either. The exact typo that silently broke six burst weapons could still ride a Spheres talent or a
+  spell rider forever.
+  - Both validators now enforce `{normal, crit, nonCrit}` (`find_bad_critical`; the spell side gained
+    a `MOD_CRITICAL` mirroring the quality one).
+  - The Spheres decision-rules doc claimed the Path-of-War tokens `@INITMOD`/`@SKILLCHECK`/
+    `@ATTACKCHECK` were rejected by "the promote check". **Nothing rejected them** — the rule existed
+    only in prose. `find_pow_tokens` now actually enforces it, and the doc names the check.
+  - Both new guards were verified to pass the real data (788 talent conditionals, 619 rider + 120
+    buff spells) **and** to fail on deliberately broken fixtures — a guard that never fires is worth
+    nothing.
+  - **Known gaps, recorded not fixed:** Path of War's `maneuver_changes.json` still has no structural
+    validator (`fix_maneuver_crit.py` preserves any non-`normal` value as "deliberate"), and no
+    validator checks `damageType` members against pf1's built-in list.
+
 ### Changed
 - **`docs/` split by purpose, and a docs doctrine recorded in `CLAUDE.md`.** Reviewing the folder
   surfaced a sharper problem than "which files move": a doc branded a *source of truth* drifts, and

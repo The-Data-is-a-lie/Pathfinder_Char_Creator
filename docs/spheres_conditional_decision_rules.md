@@ -98,7 +98,10 @@ merges the curated per-sphere files into the three files above.
 
 Author with the **native pf1spheres tokens** — `@spheres.cl.total`, `@spheres.cam` (casting ability
 mod), `@spheres.pam` (practitioner mod), plus `@attributes.bab.total` / `@abilities.*.mod`. Never use
-the Path-of-War tokens `@INITMOD` / `@SKILLCHECK` / `@ATTACKCHECK` (the promote check rejects them).
+the Path-of-War tokens `@INITMOD` / `@SKILLCHECK` / `@ATTACKCHECK` — `validate_talent_conditionals.py`
+(`find_pow_tokens`) rejects them. Modifier `critical` must be one of `{normal, crit, nonCrit}`; the
+same validator (`find_bad_critical`) rejects anything else, because pf1 deletes an unknown value and
+silently drops the modifier.
 
 - **Generated NPCs are dabblers** (Basic Magic Training = effective caster level 1). The module's
   `subSpheres()` substitutes to concrete forms at attach time: `@spheres.cl.total → 1`,

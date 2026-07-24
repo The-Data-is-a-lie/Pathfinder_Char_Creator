@@ -34,6 +34,10 @@ EVERY_SPELL = os.path.expandvars(
 SAVE_TYPES = {'fortitude', 'reflex', 'will'}
 SAVE_KEYS = {'type', 'dc', 'description', 'harmless'}
 MOD_KEYS = {'formula', 'target', 'subTarget', 'type', 'damageType', 'critical'}
+# Mirrors validate_quality_effects.MOD_CRITICAL -- pf1's action-model enum is
+# {NORMAL:"normal", CRITICAL:"crit", NON_CRITICAL:"nonCrit"}. Kept as a literal rather than an
+# import so each validator runs standalone; if pf1 ever adds a value, update both.
+MOD_CRITICAL = {'normal', 'crit', 'nonCrit'}
 CHANGE_KEYS = {'formula', 'target', 'type', 'operator', 'priority'}
 POW_TOKENS = re.compile(r'@INITMOD|@SKILLCHECK|@ATTACKCHECK')
 
@@ -139,6 +143,12 @@ def check_modifier(owner, m):
         err(f'{owner}: modifier missing keys {sorted(missing)}')
     if m.get('target') not in ('attack', 'damage'):
         err(f'{owner}: modifier target {m.get("target")!r} must be attack/damage')
+    # pf1's action-model enum is exactly {normal, crit, nonCrit}. An unknown value (the historical
+    # "onCrit") is DELETED by pf1 on the next sheet edit, silently dropping the modifier -- that bug
+    # shipped once on six burst qualities. validate_quality_effects.py guards the weapon-quality
+    # data the same way; this is the spell-side copy of that guard.
+    if 'critical' in m and m.get('critical') not in MOD_CRITICAL:
+        err(f'{owner}: modifier critical {m.get("critical")!r} must be one of {sorted(MOD_CRITICAL)}')
     if POW_TOKENS.search(str(m.get('formula', ''))):
         err(f'{owner}: PoW token in formula {m.get("formula")!r}')
     # WARN (not fail): a dice DAMAGE modifier with an empty damageType renders "undefined" on the
