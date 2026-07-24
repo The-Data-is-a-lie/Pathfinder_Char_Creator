@@ -14,6 +14,9 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from damage_types import classify_damage_type  # noqa: E402  the one owner of the type vocabulary
+
 # Cost/contingency phrases that carry NO payload on their own.
 _CONTINGENCY = re.compile(
     r"expend(?:s|ing)?\s+(?:your|their|his|her)?\s*martial\s+focus"
@@ -116,6 +119,28 @@ def find_pow_tokens(conditionals):
     return out
 
 
+def find_bad_damage_type(conditionals):
+    """[(sphere, talent, value, suggestion|None), ...] for damageType members that are not pf1 ids.
+
+    A prose alias ("electricity" -- rules text; pf1's id is "electric") is provably wrong and breaks
+    resistance matching silently; an unrecognised value is only suspicious. The caller errors on the
+    first and warns on the second.
+    """
+    out = []
+    for sphere, talents in (conditionals or {}).items():
+        if not isinstance(talents, dict):
+            continue
+        for talent, entry in talents.items():
+            for m in ((entry or {}).get("modifiers") or []):
+                if not isinstance(m, dict):
+                    continue
+                for t in (m.get("damageType") or []):
+                    state, suggestion = classify_damage_type(t)
+                    if state != "ok":
+                        out.append((sphere, talent, t, suggestion))
+    return out
+
+
 _DICE = re.compile(r"[\d)]d\d")
 
 
@@ -162,6 +187,13 @@ def main():
                        f"{sorted(MOD_CRITICAL)} -- pf1 will delete it and drop the modifier")
         for sphere, talent, tok in find_pow_tokens(d):
             bad.append(f"{fn.split('_')[0]}/{sphere}/{talent}: Path-of-War token {tok} in a Spheres conditional")
+        for sphere, talent, val, suggestion in find_bad_damage_type(d):
+            where = f"{fn.split('_')[0]}/{sphere}/{talent}"
+            if suggestion:
+                bad.append(f"{where}: damageType {val!r} is rules prose, not a pf1 id -- use {suggestion!r}")
+            else:
+                warns.append(f"{where}: damageType {val!r} is not a known pf1 id "
+                             f"(add it to damage_types.py if it is legitimate)")
         for sphere, talent, formula in find_untyped_damage(d):
             warns.append(f"{fn.split('_')[0]}/{sphere}/{talent}: dice damage, empty damageType "
                          f"(coerced to untyped; prefer a real element) -- {formula}")

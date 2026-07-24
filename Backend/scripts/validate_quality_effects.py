@@ -18,6 +18,8 @@ import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+from damage_types import classify_damage_type  # noqa: E402  the one owner of the type vocabulary
 JSON_DIR = os.path.join(HERE, '..', 'json')
 QE_PATH = os.path.join(JSON_DIR, 'items', 'quality_effects.json')
 WEAPON_QUALITIES = os.path.join(JSON_DIR, 'weapon_qualities.json')
@@ -70,10 +72,33 @@ ARMOR_ENTRY_KEYS = {'changes', 'contextNotes'}
 CHANGE_KEYS = {'formula', 'target', 'type', 'operator', 'priority'}
 
 errors = []
+warnings = []
 
 
 def err(msg):
     errors.append(msg)
+
+
+def warn(msg):
+    warnings.append(msg)
+
+
+def check_damage_types(owner, types):
+    """Every damageType member must be a real pf1 id.
+
+    ERROR on a known prose alias ("electricity" is rules text; pf1's id is "electric") -- that is
+    provably wrong and silently breaks resistance matching, the same failure shape as the old
+    "onCrit". WARN on anything merely unrecognised, because PF1_DAMAGE_TYPES is observed from
+    compendium exports rather than authoritative, and hard-failing an unseen-but-valid type would
+    block real work.
+    """
+    for t in types or []:
+        state, suggestion = classify_damage_type(t)
+        if state == 'alias':
+            err(f'{owner}: damageType {t!r} is rules prose, not a pf1 id -- use {suggestion!r}')
+        elif state == 'unknown':
+            warn(f'{owner}: damageType {t!r} is not a known pf1 id '
+                 f'(add it to damage_types.py if it is legitimate)')
 
 
 def valid_target(target, valid_set):
@@ -123,6 +148,8 @@ def check_conditional(owner, cond):
             err(f'{owner}: bad modifier critical {mod.get("critical")!r}')
         if not isinstance(mod.get('damageType'), list):
             err(f'{owner}: modifier damageType must be a list')
+        else:
+            check_damage_types(owner, mod.get('damageType'))
         if not isinstance(mod.get('type'), str) or not mod.get('type'):
             err(f'{owner}: modifier bonus type must be a non-empty string')
 
@@ -210,6 +237,8 @@ def main():
     for name, entry in qe_armor.items():
         check_armor_entry(f'armor.{name}', entry)
 
+    for w in warnings:
+        print(f'WARN: {w}')
     if errors:
         for e in errors:
             print(e)
@@ -217,7 +246,7 @@ def main():
         sys.exit(1)
     print(f'OK: {len(qe_weapon)} weapon + {len(qe_armor)} armor entries; '
           f'full coverage of {len(weapon_names)} weapon and {len(armor_names)} '
-          'armor/shield quality names.')
+          f'armor/shield quality names ({len(warnings)} warning(s)).')
 
 
 if __name__ == '__main__':

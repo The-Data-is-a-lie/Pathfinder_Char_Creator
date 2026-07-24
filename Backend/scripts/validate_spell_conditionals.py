@@ -24,6 +24,9 @@ import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+from damage_types import classify_damage_type  # noqa: E402  the one owner of the type vocabulary
+
 SPELLS_DIR = os.path.join(HERE, '..', 'json', 'spells')
 RIDERS_PATH = os.path.join(SPELLS_DIR, 'spell_riders.json')
 CHANGES_PATH = os.path.join(SPELLS_DIR, 'spell_changes.json')
@@ -154,6 +157,16 @@ def check_modifier(owner, m):
     # WARN (not fail): a dice DAMAGE modifier with an empty damageType renders "undefined" on the
     # sheet. The consumers coerce it to ["untyped"] at attach time, but a real element is preferable.
     dt = m.get('damageType')
+    # Members must be real pf1 ids: a prose alias ("electricity") is an error with a fix, an
+    # unrecognised value only a warning -- see damage_types.py for why that asymmetry.
+    if isinstance(dt, list):
+        for t in dt:
+            state, suggestion = classify_damage_type(t)
+            if state == 'alias':
+                err(f'{owner}: damageType {t!r} is rules prose, not a pf1 id -- use {suggestion!r}')
+            elif state == 'unknown':
+                warnings.append(f'{owner}: damageType {t!r} is not a known pf1 id '
+                                f'(add it to damage_types.py if it is legitimate)')
     if (m.get('target') == 'damage' and re.search(r'[\d)]d\d', str(m.get('formula', '')))
             and not (isinstance(dt, list) and dt)):
         warnings.append(f'{owner}: dice damage modifier has empty damageType '
