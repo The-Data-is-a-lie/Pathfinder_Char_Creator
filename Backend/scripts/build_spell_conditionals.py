@@ -60,6 +60,7 @@ import pandas as pd
 
 _sys.path.insert(0, str(Path(__file__).resolve().parent))
 import conditional_clauses as cc                  # shared six-detail clause builders
+from damage_types import normalize_damage_type    # prose word -> pf1 damage-type id
 
 REPO = Path(__file__).resolve().parents[2]
 SOURCE = REPO / "data" / "spells.csv"
@@ -429,7 +430,9 @@ def _atk_modifier(value, btype):
 def _dmg_modifier(formula, btype, dtype):
     return {'formula': str(formula), 'target': 'damage', 'subTarget': 'allDamage',
             'type': (btype or 'untyped').lower(),
-            'damageType': [dtype] if dtype and dtype.lower() != 'untyped' else [],
+            # normalize: the regex matches the RULES-PROSE word ("electricity"), pf1 wants its id
+            # ("electric") -- see damage_types.py.
+            'damageType': [normalize_damage_type(dtype)] if dtype and dtype.lower() != 'untyped' else [],
             'critical': _crit_for(formula)}
 
 

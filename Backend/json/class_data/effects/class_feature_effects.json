@@ -2846,7 +2846,7 @@
             {
               "critical": "nonCrit",
               "damageType": [
-                "electricity"
+                "electric"
               ],
               "formula": "(min(10, floor((@classes.arcanist.level + 1) / 2)))d6 + @abilities.cha.mod",
               "subTarget": "allDamage",

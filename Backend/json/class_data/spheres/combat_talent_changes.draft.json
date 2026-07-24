@@ -124,7 +124,7 @@
           "subTarget": "allDamage",
           "type": "untyped",
           "damageType": [
-            "electricity"
+            "electric"
           ],
           "critical": "normal"
         }

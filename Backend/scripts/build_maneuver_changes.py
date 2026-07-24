@@ -35,8 +35,12 @@ Usage:
 import argparse
 import json
 import re
+import sys as _sys
 from pathlib import Path
 from urllib.parse import unquote
+
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+from damage_types import normalize_damage_type    # noqa: E402  prose word -> pf1 damage-type id
 
 REPO = Path(__file__).resolve().parents[2]
 SOURCE = REPO / "Backend" / "json" / "class_data" / "path_of_war" / "Martial_Disciplines.json"
@@ -177,7 +181,9 @@ def _damage_modifier(formula, dtype):
         'target': 'damage',
         'subTarget': 'allDamage',
         'type': 'untyped',
-        'damageType': [dtype] if dtype and dtype.lower() != 'untyped' else [],
+        # normalize: the regex matches the RULES-PROSE word ("electricity"), pf1 wants its id
+        # ("electric") -- see damage_types.py.
+        'damageType': [normalize_damage_type(dtype)] if dtype and dtype.lower() != 'untyped' else [],
         'critical': _crit_for(formula),
     }
 

@@ -27,7 +27,11 @@ Usage:
 import argparse
 import json
 import re
+import sys as _sys
 from pathlib import Path
+
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+from damage_types import normalize_damage_type    # noqa: E402  prose word -> pf1 damage-type id
 
 REPO = Path(__file__).resolve().parents[2]
 SPHERES_DIR = REPO / "Backend" / "json" / "class_data" / "spheres"
@@ -120,7 +124,10 @@ def _parse_talent(text, system):
             dtype = dm.group(2)
             modifiers.append({"formula": dm.group(1), "target": "damage", "subTarget": "allDamage",
                               "type": "untyped",
-                              "damageType": [dtype] if dtype and dtype != "untyped" else [],
+                              # normalize: the regex matches the RULES-PROSE word ("electricity"),
+                              # pf1 wants its id ("electric") -- see damage_types.py.
+                              "damageType": ([normalize_damage_type(dtype)]
+                                             if dtype and dtype != "untyped" else []),
                               "critical": "normal"})
             snippets.append(dm.group(0).strip())
         am = _ATK_RE.search(text)

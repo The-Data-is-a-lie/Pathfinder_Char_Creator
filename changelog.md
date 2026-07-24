@@ -216,7 +216,40 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   `seal()`/`require_sealed()` express that instead. `test_pipeline_phases.py` deliberately violates
   each contract and asserts the error — a guard that never fires is worth nothing.
 
+### Fixed
+- **Every scraped "electricity" effect carried a damage type pf1 does not recognise.** pf1's id is
+  **`electric`** (verified against its own compendium exports: `electric` 28×, `electricity` 0×), but
+  41 modifiers across the generator, the FoundryVTT module and the applier were typed `electricity`.
+  The consequence is silent and in the `onCrit` family — an unrecognised type never matches, so a
+  creature with **electricity resistance or immunity took the damage anyway**.
+  - **Root cause was not a typo but a missing translation step.** The same `_DMG_TYPES` prose
+    alternation was copy-pasted into three builders (`build_maneuver_changes.py`,
+    `build_spell_conditionals.py`, `build_talent_changes.py`), and every entry in it is a real pf1 id
+    *except* `electricity`. The builders scrape Pathfinder rules prose — which correctly reads "points
+    of electricity damage" — and wrote the matched word **verbatim** as the id. Matching the prose
+    word is right; emitting it as an id is the bug, which is why it appeared in Path of War, Spheres
+    and spells simultaneously.
+  - New `Backend/scripts/damage_types.py` is the single owner of the vocabulary
+    (`PF1_DAMAGE_TYPES`, `DAMAGE_TYPE_ALIASES`, `normalize_damage_type`, `classify_damage_type`); the
+    three builders now normalize at the emit site while keeping their prose regex intact.
+  - **Rejected:** patching the 41 values alone. The builders would have re-emitted the wrong id on the
+    next scrape, so the data would silently rot again.
+  - Repair was structural, not textual: only members of a `damageType` array changed. "electricity" is
+    correct English in rider and description prose and is untouched (verified: prose counts identical
+    before and after, in all three repos).
+
 ### Added
+- **`damageType` members are now validated, and Path of War has a structural validator at last.**
+  The gap audit had flagged both. `validate_quality_effects.py` (which `validate_class_feature_effects`
+  reuses), `validate_spell_conditionals.py` and `validate_talent_conditionals.py` now check every
+  `damageType` member, and a new `validate_maneuver_changes.py` covers the PoW maneuver/stance change
+  files — whose flat `{name: {modifiers, rider}}` shape no existing validator understood, and which
+  `fix_maneuver_crit.py` deliberately leaves alone whenever `critical` is not `"normal"`.
+  - **Errors** on a known prose alias (with the correct id in the message); **warns** on a merely
+    unrecognised value, because the vocabulary is observed from compendium exports rather than
+    authoritative and hard-failing an unseen-but-valid type would block real work.
+  - Verified against the real data (197 qualities, 739 spells, 788 talent conditionals, 726 PoW
+    modifiers) and against deliberately broken fixtures.
 - **The `onCrit` bug class can no longer ship in Spheres talents or spell conditionals.** An audit of
   every hard rule in the conditional decision-rules docs against the validators found the
   `critical`-whitelist guard was only **partial**: `validate_quality_effects.py` protected weapon
