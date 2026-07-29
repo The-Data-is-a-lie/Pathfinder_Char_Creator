@@ -127,7 +127,7 @@ def backstory_stats():
     from utils.usage_counter import snapshot
     return jsonify(snapshot())
 
-def process_input_values(input_values, spheres_flag="N", seed=None):
+def process_input_values(input_values, spheres_flag="N", seed=None, professions_flag="Y", trainers_flag="Y"):
     try:
         if len(input_values) < 19:
             raise IndexError("Not enough elements in input_values")
@@ -165,7 +165,7 @@ def process_input_values(input_values, spheres_flag="N", seed=None):
         with _GENERATION_LOCK:
             session['character_data'] = generate_random_char(
             create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num, use_backstory_api, spheres_flag, backstory_focus,
-            seed
+            seed, professions_flag, trainers_flag
             )
         return session['character_data']
 
@@ -188,6 +188,11 @@ def update_character_data():
     # is derived from items[-5:], so a trailing 'seed' key left in the dict would displace one of the
     # five numeric fields and break the int conversion below. Absent -> None -> a fresh random seed.
     seed = data.pop('seed', None)
+    # Profession / trainer opt-OUTS, read by NAME for the same reason as spheres_flag and seed, and
+    # for the same reason popped BEFORE `items` is built. Default 'y' = today's behaviour, so the
+    # Foundry module and any client that never sends them keep getting professions and trainers.
+    professions_flag = (data.pop('professions', 'y') or 'y')
+    trainers_flag = (data.pop('trainers', 'y') or 'y')
     non_input_data = []
     # Calculate last 5 keys dynamically
     items = list(data.items())
@@ -203,7 +208,7 @@ def update_character_data():
             value = value.strip()
         non_input_data.append(value)
 
-    results = process_input_values(non_input_data, spheres_flag, seed)
+    results = process_input_values(non_input_data, spheres_flag, seed, professions_flag, trainers_flag)
     session['character_data'] = results
 
     # Print raw data to terminal for debugging

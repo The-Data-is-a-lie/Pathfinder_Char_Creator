@@ -18,6 +18,20 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 
 ## [Unreleased]
 
+### Added
+- **Professions and trainers can now be switched off.** Both subsystems ran unconditionally on every
+  character, so a request for a plain NPC still came back carrying profession ranks and a mentor.
+  `/update_character_data` now accepts `professions` and `trainers` (`y`/`n`), read **by name** like
+  `spheres_of_power` and `seed` — they never enter the fixed 19-field positional unpack, so a client
+  that omits them is unaffected. Both **default to on**, which is exactly today's behaviour, so the
+  FoundryVTT module and the bundled web sheet need no change. Turning professions off skips
+  `profession_chooser` only: `skills_selector` still runs and still allocates the full rank budget
+  (the two share `has_always_improving`, so the profession attributes are zeroed rather than left
+  unset). Turning trainers off suppresses both trainer sources — ordinary `select_trainer_feats`
+  picks *and* the 25% "trainer-backed" Path of War / Spheres mentors, which render as
+  `(Trainer N - …)` rows of their own; the mentor branch's dice roll still happens, so a replayed
+  seed reproduces the same character minus its mentors.
+
 ### Fixed
 - **Mentors are no longer always ranked "terrible".** The backstory ranked each trainer by counting
   the rows in its `(Trainer N)` group, which is right for an ordinary trainer (one feat per row) but
