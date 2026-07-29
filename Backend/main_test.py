@@ -221,7 +221,7 @@ def phase_roll_and_assign_stats(character, num_dice, num_sides, inherents):
 
 @phase(requires=['level', 'classes', 'class_data', 'craft_chosen'],
 	   provides=['profession_data', 'profession_feats', 'skill_rank_budget'])
-def phase_professions_and_skills(character, truly_random_feats, skill_rank_level):
+def phase_professions_and_skills(character, truly_random_feats, skill_rank_level, professions_enabled=True):
 	'''Professions sub-system, then ordinary skill ranks, then fold one back into the other.
 
 	The order inside here is the constraint: ordinary skill ranks may only be spent in a Profession
@@ -229,11 +229,24 @@ def phase_professions_and_skills(character, truly_random_feats, skill_rank_level
 	reads character.profession_feats -- which only profession_chooser sets. Run the other way round
 	and the gate reads an unset attribute, silently allocating zero Profession ranks.
 
+	`professions_enabled=False` is the client's opt-out. It skips ONLY profession_chooser, never the
+	whole phase: skills_selector still has to run, and it reads the same profession attributes through
+	has_always_improving -- so they are zeroed here rather than left unset, which is also what this
+	phase's declared `provides` requires.
+
 	requires `craft_chosen`: a profession can be themed around the character's Craft specialization.
 	'''
 	# Rank pool is 5 + level + 10/Multi-Talented feat. Returns the legacy list of profession names;
 	# the rich data and the profession feats are recorded on the character.
-	professions = profession_chooser(character, "professions", truly_random_feats)
+	if professions_enabled:
+		professions = profession_chooser(character, "professions", truly_random_feats)
+	else:
+		professions = []
+		character.profession_chosen = []
+		character.profession_data = []
+		character.profession_feats = []
+		character.profession_feat_desc = {}
+		character.profession_pool = 0
 	skill_ranks = skills_selector(character, 'skills', skill_rank_level)
 	# ... and the ranks that DID go to Profession are folded back onto the professions themselves.
 	apply_always_improving_ranks(character, skill_ranks)
@@ -246,7 +259,7 @@ def phase_professions_and_skills(character, truly_random_feats, skill_rank_level
 def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Orc', class_choice='wizard', chosen_BAB='low', chosen_caster_level = 'random', multi_class='N', 
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", modded_char_sheet = 'n', 
 						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", spheres_flag="N", backstory_focus=None,
-						 seed=None, ):
+						 seed=None, professions_flag="Y", trainers_flag="Y", ):
 
 		print(create_new_char)
 		print(userInput_region)
@@ -282,6 +295,13 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		random.seed(seed)
 		np.random.seed(seed)
 		print("generation seed:", seed)
+
+		# Professions and trainers are opt-OUTS: every character got both until the client could say
+		# otherwise, so anything that isn't an explicit "no" keeps the old behaviour. Same string
+		# shape as spheres_flag (see spheres.randomize_spheres_num), inverted because that one is
+		# an opt-in.
+		professions_enabled = str(professions_flag or "Y").upper() not in ("N", "NO", "FALSE", "0")
+		trainers_enabled = str(trainers_flag or "Y").upper() not in ("N", "NO", "FALSE", "0")
 
 		casting_level_str_foundry = 'None'
 
@@ -528,7 +548,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# Chosen before professions so a profession can be themed around it.
 		character.craft_chosen = random.choice(data.crafts)
 		professions, skill_ranks = phase_professions_and_skills(character, truly_random_feats,
-																skill_rank_level)
+																skill_rank_level, professions_enabled)
 		# Every character gets exactly one skill unlock, drawn from a skill they have ranks in.
 		skill_unlock = choose_skill_unlock(character, skill_ranks)
 
@@ -736,7 +756,12 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		realize_pow, realize_style, realize_sphere = desired_pow, desired_style, desired_sphere
 		if selected_amount > 0:
 			_half = (selected_amount + 1) // 2          # ceil(selected_amount / 2)
-			if random.random() < 0.25:
+			# The draw happens even when trainers are switched off, so a replayed seed still lines up
+			# with the same character minus its mentors; opting out just lands in the ordinary 75%
+			# branch, where the character funds this training out of the normal feat budget. Gating
+			# here rather than only at select_trainer_feats is what makes "Trainers: No" mean it --
+			# these mentors render as "(Trainer N - Path of War)" / "(Trainer N - Spheres)" rows too.
+			if random.random() < 0.25 and trainers_enabled:
 				# "trainer-backed": ONE dedicated mentor PER SYSTEM the character actually has content in,
 				# each rolling its own caliber 1-4 (8/45/45/2). A mentor funds `caliber` FEATS' worth of the
 				# training that lies beyond the character's own half-share -- 2*caliber sphere talents (capped
@@ -1062,7 +1087,13 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# feats (True Calling / Multi Talented / Always Improving). Both sit ON TOP of the normal
 		# budget (like bloodline/teamwork) and are registered as owned so nothing re-picks them. Chosen
 		# AFTER the normal feats are in chooseable, so trainer picks never duplicate the main list.
-		trainer_feats, trainer_feat_labels, trainer_calibers = select_trainer_feats(character, casting_level_str)
+		if trainers_enabled:
+			trainer_feats, trainer_feat_labels, trainer_calibers = select_trainer_feats(character, casting_level_str)
+		else:
+			# Empty lists, not a skipped variable: every downstream reader already tolerates empty
+			# trainer data (a Yes-run can legitimately roll 0 trainer slots), so opting out is just
+			# the zero case made deliberate.
+			trainer_feats, trainer_feat_labels, trainer_calibers = [], [], []
 		add_feats_to_chooseable(character, trainer_feats)
 		profession_feats = list(getattr(character, 'profession_feats', []) or [])
 		profession_feat_desc = dict(getattr(character, 'profession_feat_desc', {}) or {})
