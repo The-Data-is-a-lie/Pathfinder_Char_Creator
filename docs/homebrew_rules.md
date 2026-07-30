@@ -36,8 +36,10 @@ the behaviour in the code. If the two disagree, the code wins and the bundle has
 
 Highest-value, most generation-relevant first:
 
-1. **Wire homebrew feats** — finish the commented-out Metzofitz selection in `feats.py` behind the
-   homebrew flag; source from `data/Metzofitz_Feats.csv`.
+1. ~~**Wire homebrew feats**~~ — DONE 2026-07-30: `feats.py::metzofitz_feat_frame` joins the
+   General/Combat rows of `data/Metzofitz_Feats.csv` into `generic_feat_chooser`'s pool behind the
+   homebrew flag (AoN wins name collisions; descriptions via `metzofitz_description`); swept by
+   `scripts/test_house_invariants.py`.
 2. ~~**Homebrew feat counts**~~ — DONE 2026-07-30: +2 creation feats (folded into the normal
    bucket) and exactly +1 feat per flaw in `level_and_bab.py::update_level`; swept by
    `scripts/test_house_invariants.py`.
