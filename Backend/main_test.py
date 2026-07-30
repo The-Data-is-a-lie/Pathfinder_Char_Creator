@@ -260,7 +260,7 @@ def phase_professions_and_skills(character, truly_random_feats, skill_rank_level
 def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Orc', class_choice='wizard', chosen_BAB='low', chosen_caster_level = 'random', multi_class='N', 
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", modded_char_sheet = 'n', 
 						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", spheres_flag="N", backstory_focus=None,
-						 seed=None, professions_flag="Y", trainers_flag="Y", ):
+						 seed=None, professions_flag="Y", trainers_flag="Y", misc_homebrew_rules="Y", ):
 
 		print(create_new_char)
 		print(userInput_region)
@@ -314,6 +314,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 		# Flag that allows for homebrew feats to be added
 		character.homebrew_feat_amount = homebrew_feat_amount
+		# Catch-all flag for homebrew rules too small for their own input question (2->4 rank
+		# floor, ...); internal-only, not an API input -- see skill_ranks.misc_homebrew_enabled.
+		character.misc_homebrew_rules = misc_homebrew_rules
 		# Instantitae character.class_feats_amount
 		character.class_feats_amount = 0
 		# Instantitae teamwork_feats

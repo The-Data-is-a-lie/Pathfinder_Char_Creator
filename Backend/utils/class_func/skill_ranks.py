@@ -20,15 +20,23 @@ def homebrew_enabled(character):
     return str(getattr(character, 'homebrew_feat_amount', 'N')) not in ('N', 'n')
 
 
+def misc_homebrew_enabled(character):
+    """Catch-all flag for homebrew rules too small for their own Yes/No input question (currently:
+    the 2->4 skill-rank floor). Absent attribute -> OFF, so bare fakes/tests stay standard PF1;
+    the generator defaults it on (generate_random_char misc_homebrew_rules='Y'), and it is not
+    exposed as an API input yet -- see docs/homebrew_rules.md backlog."""
+    return str(getattr(character, 'misc_homebrew_rules', 'N')) not in ('N', 'n')
+
+
 def class_skill_points(character, name):
-    """Points-per-level for a class, with the house rank floor (2 -> 4) when homebrew is on.
-    Unknown classes fall back to the 2/level minimum (floored to 4 like any other 2)."""
+    """Points-per-level for a class, with the house rank floor (2 -> 4) when the misc-homebrew
+    flag is on. Unknown classes fall back to the 2/level minimum (floored to 4 like any other 2)."""
     if name in character.class_data:
         points = int(character.class_data[name]["skill points at each level"])
     else:
         points = 2
         print("couldn't find this class's skills, using default scaling", points)
-    if homebrew_enabled(character) and points == 2:
+    if misc_homebrew_enabled(character) and points == 2:
         points = 4
     return points
 

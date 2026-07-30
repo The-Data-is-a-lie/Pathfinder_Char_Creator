@@ -94,14 +94,15 @@ def _sync_legacy_class_aliases(character):
 #should this be update feats, since we're updating feat amount [it 100% depends on level]
 def update_level(character, level, flaw_amount=None):
     """House feat economy (oks/pathfinder/house-rules/feat-economy.md): on top of the PF1 odd-level
-    feats, flaw feats are +1 PER flaw (minor and major alike -- no clamp, and zero flaws grants
-    zero); homebrew additionally grants +2 creation feats (folded into the normal bucket, they carry
-    no label), the story cadence 1 + level//5, and the backstory flavor feat."""
+    feats, flaw feats DIMINISH -- the first 2 flaws grant 1 feat each, the 4th grants the 3rd
+    (0->0, 1->1, 2->2, 3->2, 4->3), and zero flaws grants zero; homebrew additionally grants +2
+    creation feats (folded into the normal bucket, they carry no label), the story cadence
+    1 + level//5, and the backstory flavor feat."""
     character.level = level
     flaws = flaw_amount or 0
 
     character.normal_feat_amount = ceil(character.level / 2)
-    character.flaw_feat_amount = flaws
+    character.flaw_feat_amount = min(floor(flaws / 2 + 1), 3) if flaws else 0
     character.story_feat_amount = 0
     character.flavor_feat_amount = 0
     if character.homebrew_feat_amount not in ('N', 'n'):

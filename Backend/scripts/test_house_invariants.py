@@ -10,7 +10,8 @@ payload test owns exact-output regression. Per generated character (homebrew fla
 generator's default):
 
   * feats   -- normal == max(0, ceil(L/2) + 2 creation - profession-feat slots);
-               story == 1 + L//5; flavor == 1; flaw feats == one per rolled flaw
+               story == 1 + L//5; flavor == 1; flaw feats diminish: min(flaws//2 + 1, 3), 0 at 0
+               (first 2 flaws grant 1 each, the 4th grants the 3rd)
   * skills  -- sum(skill_ranks) == skill_rank_budget;
                budget == sum(max(1, points(2->4 floor) + best final mental mod) * class level)
                          + background 2L + favored-class {0, L};
@@ -81,7 +82,8 @@ def hit_die(name):
 
 def skill_points(name):
     points = int(CLASS_DATA[name]['skill points at each level'])
-    return 4 if points == 2 else points   # the house 2->4 rank floor
+    # the 2->4 rank floor: mirrors misc_homebrew_rules='Y', the generator's default
+    return 4 if points == 2 else points
 
 
 def final_mod(payload, stat):
@@ -103,8 +105,10 @@ def check_character(cell, payload):
     check(budget['story'] == 1 + L // 5,
           f"{cell}: story feats {budget['story']} != 1 + {L}//5 = {1 + L // 5}")
     check(budget['flavor'] == 1, f"{cell}: flavor feats {budget['flavor']} != 1")
-    check(budget['flaw'] == len(payload['flaw']),
-          f"{cell}: flaw feats {budget['flaw']} != one per flaw ({len(payload['flaw'])}: {payload['flaw']})")
+    flaws = len(payload['flaw'])
+    want_flaw = min(flaws // 2 + 1, 3) if flaws else 0
+    check(budget['flaw'] == want_flaw,
+          f"{cell}: flaw feats {budget['flaw']} != diminishing({flaws}) = {want_flaw} ({payload['flaw']})")
 
     # ---- skill ranks ----
     mental = max(final_mod(payload, s) for s in ('int', 'wis', 'cha'))
