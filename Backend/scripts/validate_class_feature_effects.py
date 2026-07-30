@@ -25,6 +25,13 @@ import build_class_feature_changes as bcfc  # noqa: E402  (SECTIONS, pool walker
 
 EFFECTS_PATH = bcfc.OUT_PATH
 OVERRIDES_PATH = bcfc.OVERRIDES_PATH
+# Curated-only sections (core_features) have no scraped pool; their keys must instead match an item
+# name in the module export — the applier looks curated keys up by actor item name (norm_name of the
+# raw name, then of the label-stripped name), so a key matching neither is a silent orphan.
+EVERY_CLASS_FEATURE = os.path.join(
+    os.path.expanduser('~'), 'AppData', 'Local', 'FoundryVTT', 'Data', 'modules',
+    'pf1e_random_char_generator', 'templates', 'character_sheet_folder',
+    'every_class_feature.json')
 
 # 'tier' is carried per-conditional (see validate_quality_effects.COND_KEYS); allowed at entry level
 # too so a whole power can be marked without repeating it on each of its conditionals.
@@ -138,11 +145,32 @@ def main():
                            ('slayer_talents', 'rogue_talents')):
         curated_keys.setdefault(target, set()).update(curated_keys.get(source, set()))
 
-    unknown_sections = set(effects) - set(bcfc.SECTIONS) - {'_readme'}
+    export_names = None                                    # lazy: only curated-only sections need it
+    try:
+        with open(EVERY_CLASS_FEATURE, encoding='utf-8') as f:
+            export_names = {bcfc.norm_name(it.get('name', '')) for it in json.load(f)
+                            if it.get('type') == 'feat'
+                            and (it.get('system') or {}).get('subType') == 'classFeat'}
+    except (OSError, ValueError):
+        pass
+
+    unknown_sections = (set(effects) - set(bcfc.SECTIONS)
+                        - bcfc.CURATED_ONLY_SECTIONS - {'_readme'})
     if unknown_sections:
         err(f'unknown top-level sections {sorted(unknown_sections)}')
     for section, powers in overrides.items():
         if section.startswith('_'):
+            continue
+        if section in bcfc.CURATED_ONLY_SECTIONS:
+            if export_names is None:
+                print(f'  ! {section}: every_class_feature.json not readable — '
+                      f'key/name check skipped')
+                continue
+            for name in powers:
+                if bcfc.norm_name(name) not in export_names:
+                    err(f'overrides.{section}: {name!r} matches no classFeat item name in '
+                        f'every_class_feature.json (silent orphan — the applier would never '
+                        f'attach it)')
             continue
         if section not in bcfc.SECTIONS:
             err(f'overrides: unknown section {section!r}')
@@ -155,11 +183,13 @@ def main():
     for section, powers in effects.items():
         if section.startswith('_'):
             continue
-        pool = pools.get(section, set())
+        curated_only = section in bcfc.CURATED_ONLY_SECTIONS
+        pool = export_names if curated_only else pools.get(section, set())
         for name, entry in powers.items():
             owner = f'{section}.{name}'
-            if name not in pool:
-                err(f'{owner}: dead key (not in the source pool)')
+            if pool is not None and name not in pool:
+                err(f'{owner}: dead key (not in the '
+                    f'{"module export" if curated_only else "source pool"})')
             curated = name in curated_keys.get(section, set())
             check_entry(owner, entry, curated)
             n_entries += 1

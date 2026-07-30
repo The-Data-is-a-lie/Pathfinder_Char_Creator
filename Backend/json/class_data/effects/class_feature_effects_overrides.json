@@ -1,5 +1,5 @@
 {
-  "_readme": "Hand-curated mechanical effects for class-choice powers, merged on top of the auto-drafts by scripts/build_class_feature_changes.py (full replacement per power). Keys are normalized power names (lowercase, no (Su)/(Ex)/(Sp)). Entry keys: changes (always-on pf1 changes; for while-raging/while-mutagen powers the module toggles them with the parent state), contextNotes (situational text, every number in [[ ]]), conditionals (default-off weapon toggles {name, default, modifiers[]}; plain modifier formulas, riders in the name), tagBuff (Multi-Buff-Distributor payload {onlyOthers, auraRange, changes, contextNotes} for powers affecting OTHER creatures; @classes/@abilities refs are baked to the NPC's numbers at export). rogue_talents entries propagate automatically to ninja_talents/slayer_talents.",
+  "_readme": "Hand-curated mechanical effects for class-choice powers, merged on top of the auto-drafts by scripts/build_class_feature_changes.py (full replacement per power). Keys are normalized power names (lowercase, no (Su)/(Ex)/(Sp)). Entry keys: changes (always-on pf1 changes; for while-raging/while-mutagen powers the module toggles them with the parent state), contextNotes (situational text, every number in [[ ]]), conditionals (default-off weapon toggles {name, default, modifiers[]}; plain modifier formulas, riders in the name), tagBuff (Multi-Buff-Distributor payload {onlyOthers, auraRange, changes, contextNotes} for powers affecting OTHER creatures; @classes/@abilities refs are baked to the NPC's numbers at export). rogue_talents entries propagate automatically to ninja_talents/slayer_talents. core_features holds BASELINE chassis features (Smite Evil, Sneak Attack, ...); they have no scraped pool, so keys must match a classFeat item name in the module export every_class_feature.json (validator-enforced). Labeled variants like 'sneak attack (sla)' are separate entries because their progressions differ; the applier matches the raw item name before the label-stripped one.",
   "rage_powers": {
     "reckless abandon": {
       "conditionals": [
@@ -4307,6 +4307,288 @@
           "default": false,
           "tier": "B",
           "modifiers": []
+        }
+      ]
+    }
+  },
+  "core_features": {
+    "sneak attack": {
+      "conditionals": [
+        {
+          "name": "Sneak Attack: Effect: extra precision damage when the target is denied its Dex bonus to AC or you flank it; ranged only within [[30]] feet; creatures immune to precision damage are immune",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(floor((@classes.rogue.level + 1) / 2))d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "sneak attack (sla)": {
+      "conditionals": [
+        {
+          "name": "Sneak Attack: Effect: extra precision damage when the target is denied its Dex bonus to AC or you flank it; ranged only within [[30]] feet; creatures immune to precision damage are immune",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(floor(@classes.slayer.level / 3))d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "sneak attack (cav)": {
+      "conditionals": [
+        {
+          "name": "Sneak Attack: Effect: extra precision damage when the target is denied its Dex bonus to AC or you flank it; ranged only within [[30]] feet; creatures immune to precision damage are immune",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(1 + floor((@classes.cavalier.level - 2) / 6))d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "smite evil": {
+      "conditionals": [
+        {
+          "name": "Smite Evil: Cost: [[1]] of [[1 + floor((@classes.paladin.level - 1) / 3)]] uses/day; Activation: swift action, choose one target in sight; Effect: only while the target is evil — attacks bypass its DR, the first successful hit vs an evil outsider, evil dragon or undead instead adds [[2 * @classes.paladin.level]] damage, and you gain +[[@abilities.cha.mod]] deflection AC against its attacks until the smite ends",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "@abilities.cha.mod",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "@abilities.cha.mod",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "crit"
+            },
+            {
+              "formula": "@classes.paladin.level",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "smite good": {
+      "conditionals": [
+        {
+          "name": "Smite Good: Cost: [[1]] of [[1 + floor((@classes.antipaladin.level - 1) / 3)]] uses/day; Activation: swift action, choose one target in sight; Effect: only while the target is good — attacks bypass its DR, the first successful hit vs a good outsider, good dragon or good cleric/paladin instead adds [[2 * @classes.antipaladin.level]] damage, and you gain +[[@abilities.cha.mod]] deflection AC against its attacks until the smite ends",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "@abilities.cha.mod",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "@abilities.cha.mod",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "crit"
+            },
+            {
+              "formula": "@classes.antipaladin.level",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "challenge (cav)": {
+      "conditionals": [
+        {
+          "name": "Challenge: Cost: [[1]] of [[1 + floor((@classes.cavalier.level - 1) / 3)]] uses/day; Activation: swift action, choose one target in sight; Effect: melee attacks only, vs the challenged target; you take a [[-2]] AC penalty except against that target",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "@classes.cavalier.level",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "challenge (sam)": {
+      "conditionals": [
+        {
+          "name": "Challenge: Cost: [[1]] of [[1 + floor((@classes.samurai.level - 1) / 3)]] uses/day; Activation: swift action, choose one target in sight; Effect: melee attacks only, vs the challenged target; you take a [[-2]] AC penalty except against that target",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "@classes.samurai.level",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "bane": {
+      "conditionals": [
+        {
+          "name": "Bane: Cost: [[1]] round of [[@classes.inquisitor.level]] rounds/day; Activation: swift action, choose a creature type (and subtype for humanoids/outsiders); Effect: this weapon gains bane — bonuses apply only vs the chosen type and only while you wield it",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "enhancement",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "enhancement",
+              "damageType": [],
+              "critical": "crit"
+            },
+            {
+              "formula": "2",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "enhancement",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "2d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "as-weapon"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "studied target": {
+      "conditionals": [
+        {
+          "name": "Studied Target: Activation: study an opponent you can see as a move action (swift at [[7]]th level, immediate on dealing sneak attack damage); Effect: vs that opponent only — also +[[1 + floor(@classes.slayer.level / 5)]] on Bluff, Knowledge, Perception, Sense Motive and Survival checks, and slayer ability DCs against it rise by [[1 + floor(@classes.slayer.level / 5)]]",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1 + floor(@classes.slayer.level / 5)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "1 + floor(@classes.slayer.level / 5)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "crit"
+            },
+            {
+              "formula": "1 + floor(@classes.slayer.level / 5)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "favored enemy": {
+      "conditionals": [
+        {
+          "name": "Favored Enemy: Effect: vs creatures of a favored enemy type; from [[5]]th level one chosen type's bonus improves by [[2]] per five levels — raise this toggle's numbers to match; Knowledge checks to identify favored enemies may be made untrained",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "crit"
+            },
+            {
+              "formula": "2",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
         }
       ]
     }

@@ -1224,6 +1224,288 @@
       "review": true
     }
   },
+  "core_features": {
+    "bane": {
+      "conditionals": [
+        {
+          "default": false,
+          "modifiers": [
+            {
+              "critical": "normal",
+              "damageType": [],
+              "formula": "2",
+              "subTarget": "allAttack",
+              "target": "attack",
+              "type": "enhancement"
+            },
+            {
+              "critical": "crit",
+              "damageType": [],
+              "formula": "2",
+              "subTarget": "allAttack",
+              "target": "attack",
+              "type": "enhancement"
+            },
+            {
+              "critical": "normal",
+              "damageType": [],
+              "formula": "2",
+              "subTarget": "allDamage",
+              "target": "damage",
+              "type": "enhancement"
+            },
+            {
+              "critical": "nonCrit",
+              "damageType": [
+                "as-weapon"
+              ],
+              "formula": "2d6",
+              "subTarget": "allDamage",
+              "target": "damage",
+              "type": "untyped"
+            }
+          ],
+          "name": "Bane: Cost: [[1]] round of [[@classes.inquisitor.level]] rounds/day; Activation: swift action, choose a creature type (and subtype for humanoids/outsiders); Effect: this weapon gains bane — bonuses apply only vs the chosen type and only while you wield it",
+          "tier": "A"
+        }
+      ]
+    },
+    "challenge (cav)": {
+      "conditionals": [
+        {
+          "default": false,
+          "modifiers": [
+            {
+              "critical": "normal",
+              "damageType": [],
+              "formula": "@classes.cavalier.level",
+              "subTarget": "allDamage",
+              "target": "damage",
+              "type": "untyped"
+            }
+          ],
+          "name": "Challenge: Cost: [[1]] of [[1 + floor((@classes.cavalier.level - 1) / 3)]] uses/day; Activation: swift action, choose one target in sight; Effect: melee attacks only, vs the challenged target; you take a [[-2]] AC penalty except against that target",
+          "tier": "A"
+        }
+      ]
+    },
+    "challenge (sam)": {
+      "conditionals": [
+        {
+          "default": false,
+          "modifiers": [
+            {
+              "critical": "normal",
+              "damageType": [],
+              "formula": "@classes.samurai.level",
+              "subTarget": "allDamage",
+              "target": "damage",
+              "type": "untyped"
+            }
+          ],
+          "name": "Challenge: Cost: [[1]] of [[1 + floor((@classes.samurai.level - 1) / 3)]] uses/day; Activation: swift action, choose one target in sight; Effect: melee attacks only, vs the challenged target; you take a [[-2]] AC penalty except against that target",
+          "tier": "A"
+        }
+      ]
+    },
+    "favored enemy": {
+      "conditionals": [
+        {
+          "default": false,
+          "modifiers": [
+            {
+              "critical": "normal",
+              "damageType": [],
+              "formula": "2",
+              "subTarget": "allAttack",
+              "target": "attack",
+              "type": "untyped"
+            },
+            {
+              "critical": "crit",
+              "damageType": [],
+              "formula": "2",
+              "subTarget": "allAttack",
+              "target": "attack",
+              "type": "untyped"
+            },
+            {
+              "critical": "normal",
+              "damageType": [],
+              "formula": "2",
+              "subTarget": "allDamage",
+              "target": "damage",
+              "type": "untyped"
+            }
+          ],
+          "name": "Favored Enemy: Effect: vs creatures of a favored enemy type; from [[5]]th level one chosen type's bonus improves by [[2]] per five levels — raise this toggle's numbers to match; Knowledge checks to identify favored enemies may be made untrained",
+          "tier": "A"
+        }
+      ]
+    },
+    "smite evil": {
+      "conditionals": [
+        {
+          "default": false,
+          "modifiers": [
+            {
+              "critical": "normal",
+              "damageType": [],
+              "formula": "@abilities.cha.mod",
+              "subTarget": "allAttack",
+              "target": "attack",
+              "type": "untyped"
+            },
+            {
+              "critical": "crit",
+              "damageType": [],
+              "formula": "@abilities.cha.mod",
+              "subTarget": "allAttack",
+              "target": "attack",
+              "type": "untyped"
+            },
+            {
+              "critical": "normal",
+              "damageType": [],
+              "formula": "@classes.paladin.level",
+              "subTarget": "allDamage",
+              "target": "damage",
+              "type": "untyped"
+            }
+          ],
+          "name": "Smite Evil: Cost: [[1]] of [[1 + floor((@classes.paladin.level - 1) / 3)]] uses/day; Activation: swift action, choose one target in sight; Effect: only while the target is evil — attacks bypass its DR, the first successful hit vs an evil outsider, evil dragon or undead instead adds [[2 * @classes.paladin.level]] damage, and you gain +[[@abilities.cha.mod]] deflection AC against its attacks until the smite ends",
+          "tier": "A"
+        }
+      ]
+    },
+    "smite good": {
+      "conditionals": [
+        {
+          "default": false,
+          "modifiers": [
+            {
+              "critical": "normal",
+              "damageType": [],
+              "formula": "@abilities.cha.mod",
+              "subTarget": "allAttack",
+              "target": "attack",
+              "type": "untyped"
+            },
+            {
+              "critical": "crit",
+              "damageType": [],
+              "formula": "@abilities.cha.mod",
+              "subTarget": "allAttack",
+              "target": "attack",
+              "type": "untyped"
+            },
+            {
+              "critical": "normal",
+              "damageType": [],
+              "formula": "@classes.antipaladin.level",
+              "subTarget": "allDamage",
+              "target": "damage",
+              "type": "untyped"
+            }
+          ],
+          "name": "Smite Good: Cost: [[1]] of [[1 + floor((@classes.antipaladin.level - 1) / 3)]] uses/day; Activation: swift action, choose one target in sight; Effect: only while the target is good — attacks bypass its DR, the first successful hit vs a good outsider, good dragon or good cleric/paladin instead adds [[2 * @classes.antipaladin.level]] damage, and you gain +[[@abilities.cha.mod]] deflection AC against its attacks until the smite ends",
+          "tier": "A"
+        }
+      ]
+    },
+    "sneak attack": {
+      "conditionals": [
+        {
+          "default": false,
+          "modifiers": [
+            {
+              "critical": "nonCrit",
+              "damageType": [],
+              "formula": "(floor((@classes.rogue.level + 1) / 2))d6",
+              "subTarget": "allDamage",
+              "target": "damage",
+              "type": "untyped"
+            }
+          ],
+          "name": "Sneak Attack: Effect: extra precision damage when the target is denied its Dex bonus to AC or you flank it; ranged only within [[30]] feet; creatures immune to precision damage are immune",
+          "tier": "A"
+        }
+      ]
+    },
+    "sneak attack (cav)": {
+      "conditionals": [
+        {
+          "default": false,
+          "modifiers": [
+            {
+              "critical": "nonCrit",
+              "damageType": [],
+              "formula": "(1 + floor((@classes.cavalier.level - 2) / 6))d6",
+              "subTarget": "allDamage",
+              "target": "damage",
+              "type": "untyped"
+            }
+          ],
+          "name": "Sneak Attack: Effect: extra precision damage when the target is denied its Dex bonus to AC or you flank it; ranged only within [[30]] feet; creatures immune to precision damage are immune",
+          "tier": "A"
+        }
+      ]
+    },
+    "sneak attack (sla)": {
+      "conditionals": [
+        {
+          "default": false,
+          "modifiers": [
+            {
+              "critical": "nonCrit",
+              "damageType": [],
+              "formula": "(floor(@classes.slayer.level / 3))d6",
+              "subTarget": "allDamage",
+              "target": "damage",
+              "type": "untyped"
+            }
+          ],
+          "name": "Sneak Attack: Effect: extra precision damage when the target is denied its Dex bonus to AC or you flank it; ranged only within [[30]] feet; creatures immune to precision damage are immune",
+          "tier": "A"
+        }
+      ]
+    },
+    "studied target": {
+      "conditionals": [
+        {
+          "default": false,
+          "modifiers": [
+            {
+              "critical": "normal",
+              "damageType": [],
+              "formula": "1 + floor(@classes.slayer.level / 5)",
+              "subTarget": "allAttack",
+              "target": "attack",
+              "type": "untyped"
+            },
+            {
+              "critical": "crit",
+              "damageType": [],
+              "formula": "1 + floor(@classes.slayer.level / 5)",
+              "subTarget": "allAttack",
+              "target": "attack",
+              "type": "untyped"
+            },
+            {
+              "critical": "normal",
+              "damageType": [],
+              "formula": "1 + floor(@classes.slayer.level / 5)",
+              "subTarget": "allDamage",
+              "target": "damage",
+              "type": "untyped"
+            }
+          ],
+          "name": "Studied Target: Activation: study an opponent you can see as a move action (swift at [[7]]th level, immediate on dealing sneak attack damage); Effect: vs that opponent only — also +[[1 + floor(@classes.slayer.level / 5)]] on Bluff, Knowledge, Perception, Sense Motive and Survival checks, and slayer ability DCs against it rise by [[1 + floor(@classes.slayer.level / 5)]]",
+          "tier": "A"
+        }
+      ]
+    }
+  },
   "cruelty": {
     "blinded": {
       "changes": [],
