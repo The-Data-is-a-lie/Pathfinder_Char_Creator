@@ -41,18 +41,22 @@ Highest-value, most generation-relevant first:
    homebrew flag (AoN wins name collisions; descriptions via `metzofitz_description`); swept by
    `scripts/test_house_invariants.py`.
 2. ~~**Homebrew feat counts**~~ — DONE 2026-07-30: +2 creation feats (folded into the normal
-   bucket) and exactly +1 feat per flaw in `level_and_bab.py::update_level`; swept by
-   `scripts/test_house_invariants.py`.
+   bucket) and the diminishing flaw-feat schedule (first 2 flaws +1 each, 4th grants the 3rd;
+   0 flaws → 0) in `level_and_bab.py::update_level`; swept by `scripts/test_house_invariants.py`.
 3. **Skill alternate abilities** — allowed-ability sets per skill plus a chooser in `skill_ranks.py`.
-4. ~~**Skill rank changes**~~ — DONE 2026-07-30: 2→4 rank floor, 3-ranks-per-level cap, +2/level
-   background-only ranks in `skill_ranks.py` (the mental-ability pick already existed); the
-   alternate-ability table remains #3.
+4. ~~**Skill rank changes**~~ — DONE 2026-07-30: 2→4 rank floor (behind `misc_homebrew_rules`),
+   3-ranks-per-level cap, +2/level background-only ranks in `skill_ranks.py` (the mental-ability
+   pick already existed); the alternate-ability table remains #3.
 5. ~~**Full HP**~~ — DONE 2026-07-30: max hit die every level in `hp_rolls.py::roll_hp` behind the
    homebrew flag (racial HD N/A — the generator never emits racial hit dice).
 6. **Feat-tax prereqs** — relax prerequisite checks and default Weapon Finesse behaviour.
 7. **Custom races** — add Loxo / Kalyptran / Dolistani to `PlayableRaces.json` (needs stat blocks,
    which the feat library does not carry).
 8. **Flaws/traits** — the flaw→feat grant and the 8-pick-4 trait flow.
+9. **Expose `misc_homebrew_rules` as a user input if ever needed** — the catch-all flag for
+   homebrew rules too small for their own Yes/No question (currently: the 2→4 rank floor).
+   Internal, defaults Y; owner: the `generate_random_char` signature +
+   `skill_ranks.misc_homebrew_enabled`.
 
 ## Source coverage
 
