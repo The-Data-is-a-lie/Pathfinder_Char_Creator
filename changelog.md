@@ -19,6 +19,11 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **The two-step table workflow is now documented where users will find it** (Road-to-1.0
+  Phase 5): a walkthrough (generate + inject → run the Apply Conditionals macro, and why there is
+  deliberately no creation-time equivalent) in the Foundry module repo's root `README.md`
+  *(module repo)*, a developer pointer in `docs/CODEBASE_MAP.md`, and the applier README's stale
+  curated-toggle count replaced with a pointer to the `build_data.py` output *(applier repo)*.
 - **Eighteen more baseline chassis features get weapon conditionals (Road-to-1.0 Phase 3).** The
   top-20 curation pass ranked the 905 core tier-A candidates by how often they actually appear on
   generated NPCs (129-generation batch across all 43 classes; chassis features counted via the

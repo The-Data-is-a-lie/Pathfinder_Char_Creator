@@ -141,6 +141,11 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
 
 ## Consumers / deploys (details in auto-memory + skills)
 
+- **The blessed table workflow is two-step**: (1) generate + inject an NPC with the
+  `pf1e_random_char_generator` module, (2) run the `pf1-conditional-applier` macro on the actor to
+  wire class-feature/PoW/Spheres/spell conditionals onto its weapons. There is deliberately no
+  creation-time conditional consumer — the applier is idempotent and handles retargets/labels.
+  User-facing walkthrough: the module repo's `README.md`.
 - FoundryVTT module `pf1e_random_char_generator`: repo in `%LOCALAPPDATA%`-adjacent
   `FoundryVTT\Data\modules` (NOT Documents\GitHub); GitLab MRs; release via its `release.ps1`.
 - Web sheet: standalone `Pathfinder-Character-Sheet` repo in `FoundryVTT\Data`

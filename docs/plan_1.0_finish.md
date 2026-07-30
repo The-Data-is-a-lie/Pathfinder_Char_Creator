@@ -94,19 +94,45 @@ Grilling settled what "finish" means and what's in/out:
 
 ## Phase 4 — structured bug hunt (10 NPCs, cross-bucket)
 
-- [ ] Generate ~10 NPCs covering: core caster, core martial, PoW initiator, MT martial-path user,
-      Spheres dabbler, rogue/precision, paladin/smite-style, multiclass, low level (1–2), high
-      level (15+).
-- [ ] For each: inject into Foundry, run the applier, then check — sheet numbers (AC/saves/HP/
-      ranks), items attached with no orphan/gap rows, PoW tab readied, toggles roll correctly on a
-      weapon, backstory/lore sane.
-- [ ] Log every anomaly into `docs/plan_1.0_finish.md` under a "Bug list" heading; fix, adding a
-      regression test per fix where the harnesses allow (golden, verify_specs, validators).
+- [x] Generated (2026-07-30) — 10 cross-bucket NPCs, seeds fixed so every build replays exactly
+      via `generate_random_char(seed=...)` with the config below. All 10 came back **clean** on
+      the payload-level checklist (house formulas, exact skill spend, zero `buff_gaps`, every feat
+      row describable, subsystem presence, non-empty gear/weapon/bio):
+
+      | bucket | seed | build |
+      |---|---|---|
+      | core-caster | 90001 | wizard 9 |
+      | core-martial | 90002 | fighter 8 |
+      | pow-initiator | 90003 | warder 11 |
+      | mt-martial-path | 90022 | barbarian 10 (Martial Training I/III, Piercing Thunder) |
+      | spheres-dabbler | 90005 | cleric 10 (spheres flag on) |
+      | rogue-precision | 90006 | rogue (unchained) 12 |
+      | paladin-smite | 90007 | paladin 13 |
+      | multiclass | 90008 | rogue 8 / shifter 6 |
+      | low-level | 90009 | antipaladin 1 |
+      | high-level | 90010 | oracle 17 |
+
+      Shared config: region Tal-Falko, race/alignment/gender/deity random, homebrew Y,
+      inherents Y, 4d6, gold 30,000, backstory API off. Non-obvious knobs per bucket:
+      spheres-dabbler `spheres_flag='Y'`; multiclass `multi_class='Y'`,
+      `class_choice='random'`; low-level `low_level=1, high_level=2`.
+- [ ] **Daniel's half** — for each seed: regenerate through the local backend (or re-roll the
+      same bucket live), inject into Foundry, run the Apply Conditionals macro, then check the
+      Foundry-only surface: sheet numbers (AC/saves/HP/ranks vs the payload), items attached with
+      no orphan/gap rows, PoW tab readied, new Phase-3 toggles (Stunning Fist, Quarry, Judgment,
+      Sacred Weapon…) roll correctly on a weapon, backstory/lore sane.
+- [ ] Log every anomaly under the "Bug list" heading below; fix, adding a regression test per fix
+      where the harnesses allow (golden, verify_specs, validators).
+
+### Bug list (Phase 4 — append findings here)
+
+_No entries yet. Payload-level sweep of the 10 builds found nothing; Foundry-side checks pending._
 
 ## Phase 5 — docs + release train (seals 1.0)
 
-- [ ] Document the blessed two-step workflow (generate → inject → Apply Conditionals macro) where
-      a user will find it (module README + `docs/CODEBASE_MAP.md` pointer).
+- [x] Document the blessed two-step workflow (2026-07-30): user-facing walkthrough in the module
+      repo's root `README.md`; developer pointer in `docs/CODEBASE_MAP.md` (Consumers section);
+      stale applier-README count fixed per the docs doctrine.
 - [ ] Changelog: roll `[Unreleased]` → `1.0.0`, including a **deliberate exclusions** note pointing
       at the curation to-do.
 - [ ] Release: tag main repo; backend `deploy.ps1` (Docker Hub → Render hook); module
