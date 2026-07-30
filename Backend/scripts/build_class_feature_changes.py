@@ -68,6 +68,11 @@ SECTIONS = {
     'weapon_training': [('fighter.json', ['weapon_train'])],
 }
 
+# Overrides-only sections: no scraped source pool exists (baseline chassis features live only in
+# the every_class_feature.json export), so entries are purely hand-curated. The merge accepts them
+# without the unknown-section warning; the validator checks their keys against the module export.
+CURATED_ONLY_SECTIONS = {'core_features'}
+
 # the class whose level scaling formulas in this section should reference
 SECTION_CLASS = {
     'rage_powers': 'barbarian', 'ki_powers': 'monk', 'discoveries': 'alchemist',
@@ -222,7 +227,8 @@ def main():
             if section.startswith('_'):
                 continue
             if section not in result:
-                print(f'WARNING: overrides section {section!r} is not a known section')
+                if section not in CURATED_ONLY_SECTIONS:
+                    print(f'WARNING: overrides section {section!r} is not a known section')
                 result.setdefault(section, {})
             for name, entry in powers.items():
                 result[section][norm_name(name)] = entry  # full replacement, no review flag

@@ -91,8 +91,12 @@ curated file already looks like for `bleeding attack`.
 
 | Family | Author into | Then |
 |---|---|---|
-| Class features | `Backend/json/class_data/effects/class_feature_effects_overrides.json` | re-run `build_class_feature_changes.py` |
+| Class features (choice pools) | `Backend/json/class_data/effects/class_feature_effects_overrides.json` | re-run `build_class_feature_changes.py` |
+| Core (chassis) features | same file, `core_features` section — no scraped pool exists, so keys must match a classFeat **item name** in `every_class_feature.json` (validator-enforced; a non-matching key is a silent orphan). Labeled variants (`sneak attack (sla)`) are separate entries when progressions differ — the applier matches the raw name before the label-stripped one. | re-run `build_class_feature_changes.py` |
 | Feats | `Backend/json/feats/feat_conditionals.json` (hand-curated, flat `{name: {name, default, modifiers}}`) | nothing |
+
+Core-feature candidates come from `build_conditional_candidates.py --family core`, which sweeps the
+module export (choice-pool members excluded, so the families never overlap).
 
 **Never** edit `class_feature_effects.json` — it is generated, says so in its own `_readme`, and the
 next build wipes hand edits. Curated entries drop the `review` flag and may carry `conditionals`,
