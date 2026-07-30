@@ -7,6 +7,14 @@ Spheres and Path of War already went through (build_talent_conditionals.py --dum
 build_spell_rider_worklist.py): find the attack-relevant entries, hand each curation agent a small
 file instead of the whole dataset, and keep a report of what is still uncovered.
 
+Three families:
+  class-features -- the scraped CHOICE pools (rage powers, arcana, hexes, talents, ...).
+  feats          -- data/feats.csv.
+  core           -- the BASELINE chassis features (Smite Evil, Sneak Attack, Challenge, ...), swept
+                    from the module export every_class_feature.json because no scraped pool holds
+                    them; choice-pool members are excluded so the two families never overlap.
+                    Curated entries land in the `core_features` overrides section.
+
 Two outputs:
 
   1. WORKLISTS  <out>/<tier>/<pool>-NN.json -- {section, class, tier, dc_formula, dc_confidence,
@@ -54,6 +62,10 @@ DEFAULT_REPORT = REPO / "docs" / "conditional_candidates.md"
 DEFAULT_COMPENDIUM = (Path.home() / "AppData" / "Local" / "FoundryVTT" / "Data" / "modules"
                       / "pf1e_random_char_generator" / "templates" / "character_sheet_folder"
                       / "every_feat.json")
+# The core sweep's source + its own double-apply guard (the *_MODS twin is what reaches sheets).
+EVERY_CLASS_FEATURE = DEFAULT_COMPENDIUM.with_name("every_class_feature.json")
+EVERY_CLASS_FEATURE_MODS = DEFAULT_COMPENDIUM.with_name("every_class_feature_MODS.json")
+CLASS_FEATURES_JSON = REPO / "Backend" / "json" / "class_features.json"   # 12 core-class chassis
 
 # --- signals -------------------------------------------------------------------------------------
 # Deliberately over-inclusive: a false positive costs a curator one line ("skip: utility"), a false
@@ -166,6 +178,134 @@ def collect_class_features():
     return records, coverage
 
 
+# --- core (baseline chassis) features ------------------------------------------------------------
+# The pf1 compendium disambiguates same-named features with a class-abbreviation suffix; there is no
+# machine-readable class on the exported item, so attribution is best-effort, in this order:
+# suffix -> chassis list (class_features.json) -> first class named in the prose -> None.
+LABEL_CLASS = {
+    'ROG': 'rogue', 'NIN': 'ninja', 'SLA': 'slayer', 'CAV': 'cavalier', 'SAM': 'samurai',
+    'ORA': 'oracle', 'VIG': 'vigilante', 'ARC': 'arcanist', 'SOR': 'sorcerer', 'WIZ': 'wizard',
+    'INV': 'investigator', 'MAG': 'magus', 'SHA': 'shaman', 'BLO': 'bloodrager', 'CLE': 'cleric',
+    'SPI': 'spiritualist', 'PSY': 'psychic', 'SWA': 'swashbuckler', 'BAR': 'barbarian',
+    'PAL': 'paladin', 'RAN': 'ranger', 'FTR': 'fighter', 'MNK': 'monk', 'DRU': 'druid',
+    'BRD': 'bard', 'ALC': 'alchemist', 'WAR': 'warpriest', 'HUN': 'hunter', 'SKA': 'skald',
+    'INQ': 'inquisitor', 'GUN': 'gunslinger', 'BRA': 'brawler', 'MES': 'mesmerist',
+    'OCC': 'occultist', 'KIN': 'kineticist', 'MED': 'medium', 'SHI': 'shifter', 'WIT': 'witch',
+}
+CLASS_WORDS = sorted({*LABEL_CLASS.values(), 'monk', 'druid', 'bard'}, key=len, reverse=True)
+CLASS_WORD_RE = re.compile(r'\b(' + '|'.join(CLASS_WORDS) + r')\b', re.I)
+LABEL_RE = re.compile(r'\(([^)]+)\)\s*$')
+TAG_RE = re.compile(r'<[^>]+>')
+
+
+def strip_html(html):
+    return re.sub(r'\s+', ' ', TAG_RE.sub(' ', str(html or ''))).strip()
+
+
+def pool_power_keys():
+    """Every choice-pool power name (curated or not), fully normalized -- the overlap filter."""
+    keys = set()
+    for sources in SECTIONS.values():
+        for filename, path in sources:
+            try:
+                data = json.loads(Path(CLASS_DATA, filename).read_text(encoding="utf-8"))
+            except (OSError, ValueError):
+                continue
+            for node in dig(data, path):
+                keys.update(norm_name(n) for n in node)
+    return keys
+
+
+def core_key(name):
+    """norm_name minus any trailing '(...)' label -- '(UC)'/'(SLA)' variants match their base pool
+    power; the RAW name still keys the record, so labeled variants stay separate candidates."""
+    return norm_name(LABEL_RE.sub('', str(name)).strip())
+
+
+def attribute_class(raw_name, text, chassis_index):
+    m = LABEL_RE.search(str(raw_name))
+    if m:
+        cls = LABEL_CLASS.get(m.group(1).strip().upper())
+        if cls:
+            return cls, 'label'
+    cls = chassis_index.get(core_key(raw_name))
+    if cls:
+        return cls, 'chassis'
+    m = CLASS_WORD_RE.search(text[:300])
+    if m:
+        return m.group(1).lower(), 'prose'
+    return None, None
+
+
+def load_chassis_index():
+    """{feature_key: class} from class_features.json (12 core classes)."""
+    try:
+        data = json.loads(CLASS_FEATURES_JSON.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    index = {}
+    for cls, feats in data.items():
+        for name in feats:
+            index.setdefault(norm_name(name), cls.replace('unchained_', ''))
+    return index
+
+
+def collect_core_features():
+    """[record] + (total items, pool members excluded, already curated).
+
+    Sweeps the module export because the baseline features exist nowhere in the scraped class_data
+    pools -- they are exactly what SECTIONS does not cover. A curated core feature lives in the
+    `core_features` section of class_feature_effects.json, so presence there = already covered.
+    """
+    try:
+        items = json.loads(EVERY_CLASS_FEATURE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        print(f"  ! core sweep skipped — export not readable ({EVERY_CLASS_FEATURE})")
+        return [], (0, 0, 0)
+    mods = load_compendium(EVERY_CLASS_FEATURE_MODS)
+    pool_keys = pool_power_keys()
+    chassis = load_chassis_index()
+    curated = {norm_name(k)
+               for k, v in (load_curated_sections().get('core_features') or {}).items() if v}
+    records, seen = [], set()
+    total = excluded = 0
+    for it in items:
+        if it.get("type") != "feat" or (it.get("system") or {}).get("subType") != "classFeat":
+            continue
+        name = str(it.get("name", "")).strip()
+        text = strip_html(((it.get("system") or {}).get("description") or {}).get("value"))
+        if not name or not text:
+            continue
+        total += 1
+        key = norm_name(name)                              # raw name keys the record
+        if key in seen or key in curated:
+            continue
+        if core_key(name) in pool_keys:                    # a choice power (or its (UC) twin)
+            excluded += 1
+            continue
+        seen.add(key)
+        found = signals_of(text)
+        tier = 'A' if any(s in found for s in STRONG) else (
+               'B' if any(s in found for s in SOFT) else None)
+        if not tier:
+            continue
+        cls, how = attribute_class(name, text, chassis)
+        rec = {
+            "name": name,
+            "tier": tier,
+            "signals": found,
+            "class": cls,
+            "class_source": how,
+            "benefit": text,
+            "_sheet_automated": ("unknown" if mods is None else mods.get(name.lower())),
+        }
+        dc = stated_dc(text)
+        if dc:
+            rec["dc_stated"] = dc
+        records.append(rec)
+    return records, (total, excluded, len(curated))
+
+
 # --- feats ---------------------------------------------------------------------------------------
 def load_compendium(path):
     """{feat_name_lower: {changes, contextNotes, actions}} or None when the module isn't installed."""
@@ -243,7 +383,8 @@ def write_batches(out_dir, tier, pool_name, records, batch_size, extra=None):
     return written
 
 
-def write_report(path, cf_records, cf_coverage, feat_records, feat_totals, out_dir):
+def write_report(path, cf_records, cf_coverage, feat_records, feat_totals, out_dir,
+                 core_records=(), core_totals=(0, 0, 0)):
     def rows_for(records):
         return "\n".join(
             f"| {r['name']} | {r['tier']} | {', '.join(r['signals'])} | {snippet(r['benefit'])} |"
@@ -271,8 +412,12 @@ def write_report(path, cf_records, cf_coverage, feat_records, feat_totals, out_d
     cf_cur = sum(c for _, c in cf_coverage.values())
     fa = sum(1 for r in feat_records if r['tier'] == 'A')
     fb = sum(1 for r in feat_records if r['tier'] == 'B')
+    ca = sum(1 for r in core_records if r['tier'] == 'A')
+    cb = sum(1 for r in core_records if r['tier'] == 'B')
     lines += [
         f"| class features | {cfa} | {cfb} | {cf_cur} | {cf_total} in {len(cf_coverage)} pools |",
+        f"| core (chassis) | {ca} | {cb} | {core_totals[2]} | {core_totals[0]} classFeat items, "
+        f"{core_totals[1]} choice-pool members excluded |",
         f"| feats | {fa} | {fb} | {feat_totals[1]} | {feat_totals[0]} |",
         "",
         "## Class features",
@@ -303,6 +448,32 @@ def write_report(path, cf_records, cf_coverage, feat_records, feat_totals, out_d
             lines.append("")
         lines += ["| power | tier | signals | text |", "|---|---|---|---|", rows_for(recs), ""]
 
+    lines += ["## Core (chassis) class features", "",
+              "Baseline features no choice pool holds — swept from `every_class_feature.json`. The",
+              "curated landing zone is the `core_features` overrides section. `class` is best-effort",
+              "(name label → chassis list → prose); labeled variants like `Sneak Attack (SLA)` stay",
+              "separate rows because their progressions differ — author them separately, the applier",
+              "matches the raw name before the label-stripped one.", ""]
+    by_class = {}
+    for r in core_records:
+        by_class.setdefault(r['class'] or '(unattributed)', []).append(r)
+    for cls in sorted(by_class):
+        recs = by_class[cls]
+        a = sum(1 for r in recs if r['tier'] == 'A')
+        b = sum(1 for r in recs if r['tier'] == 'B')
+        lines += [f"### {cls}  ({a} A / {b} B)", "",
+                  "| feature | tier | signals | text |", "|---|---|---|---|", rows_for(recs), ""]
+    automated = [r for r in core_records if isinstance(r["_sheet_automated"], dict)]
+    if automated:
+        lines += ["### Sheet already automates these core features", "",
+                  "The `_MODS` twin carries changes/notes/actions for these — a toggle on top of an "
+                  "always-on change double-applies. Read both before authoring.", "",
+                  "| feature | tier | MODS carries |", "|---|---|---|"]
+        lines += [f"| {r['name']} | {r['tier']} | "
+                  f"{', '.join(f'{k} {v}' for k, v in r['_sheet_automated'].items() if v)} |"
+                  for r in sorted(automated, key=lambda r: r['name'])]
+        lines.append("")
+
     lines += ["## Feats", "", "| feat | tier | signals | text |", "|---|---|---|---|",
               rows_for(feat_records), ""]
     flagged = [r for r in feat_records if isinstance(r["_compendium_automated"], dict)]
@@ -325,7 +496,7 @@ def write_report(path, cf_records, cf_coverage, feat_records, feat_totals, out_d
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--family", choices=("class-features", "feats", "all"), default="all")
+    ap.add_argument("--family", choices=("class-features", "core", "feats", "all"), default="all")
     ap.add_argument("--tier", choices=("A", "B", "all"), default="all")
     ap.add_argument("--out", type=Path, default=DEFAULT_OUT, help="worklist batch directory")
     ap.add_argument("--batch-size", type=int, default=40)
@@ -338,6 +509,9 @@ def main():
     cf_records, cf_coverage = ([], {})
     if args.family in ("class-features", "all"):
         cf_records, cf_coverage = collect_class_features()
+    core_records, core_totals = ([], (0, 0, 0))
+    if args.family in ("core", "all"):
+        core_records, core_totals = collect_core_features()
     feat_records, feat_totals = ([], (0, 0))
     compendium = None
     if args.family in ("feats", "all"):
@@ -358,18 +532,25 @@ def main():
                 args.out, tier, section, sorted(recs, key=lambda r: r['name']), args.batch_size,
                 extra={"class": SECTION_CLASS.get(section),
                        "dc_formula": dc_formula, "dc_confidence": dc_conf}))
+        core = sorted((r for r in core_records if r['tier'] == tier),
+                      key=lambda r: (r['class'] or '~', r['name']))
+        if core:
+            files += len(write_batches(args.out, tier, "core", core, args.batch_size,
+                                       extra={"overrides_section": "core_features"}))
         feats = sorted((r for r in feat_records if r['tier'] == tier), key=lambda r: r['name'])
         if feats:
             files += len(write_batches(args.out, tier, "feats", feats, args.batch_size))
 
     for tier in tiers:
         cf_n = sum(1 for r in cf_records if r['tier'] == tier)
+        co_n = sum(1 for r in core_records if r['tier'] == tier)
         ft_n = sum(1 for r in feat_records if r['tier'] == tier)
-        print(f"  tier {tier}: {cf_n:>4} class features, {ft_n:>4} feats")
+        print(f"  tier {tier}: {cf_n:>4} class features, {co_n:>4} core, {ft_n:>4} feats")
     print(f"  wrote {files} worklist file(s) -> {args.out}")
 
     if not args.no_report:
-        write_report(args.report, cf_records, cf_coverage, feat_records, feat_totals, args.out)
+        write_report(args.report, cf_records, cf_coverage, feat_records, feat_totals, args.out,
+                     core_records, core_totals)
         print(f"  wrote report -> {args.report}")
 
 

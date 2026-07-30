@@ -12,76 +12,44 @@ are in [class_feature_conditional_decision_rules.md](class_feature_conditional_d
 
 | family | tier A | tier B | already curated | pool |
 |---|---|---|---|---|
-| class features | 383 | 268 | 17 | 1756 in 18 pools |
-| feats | 140 | 228 | 54 | 1484 |
+| class features | 178 | 247 | 297 | 1755 in 18 pools |
+| core (chassis) | 905 | 497 | 10 | 4505 classFeat items, 1315 choice-pool members excluded |
+| feats | 45 | 139 | 238 | 1484 |
 
 ## Class features
 
-### rage_powers  (candidates 62 A / 18 B · curated 2 of 173)
+### rage_powers  (candidates 29 A / 15 B · curated 38 of 173)
 
 Save DC (`varies`): `[[ 10 + floor(@classes.barbarian.level / 2) + @abilities.str.mod ]]`
 
 | power | tier | signals | text |
 |---|---|---|---|
 | animal fury | A | dice, toggle | while raging, the barbarian gains a bite attack. if used as part of a full attack action, the bite attack is made at th… |
-| armor ripper | A | attack, toggle | while raging, you gain a +2 bonus on combat maneuver checks made to sunder with any of your natural attacks. special: t… |
-| auspicious mark | A | dice, activated, toggle | the barbarian has been marked by the spirits, as indicated by an impressive tattoo, scar, or birthmark she possesses. o… |
 | battle roar | A | dice | when the character successfully demoralizes an opponent using intimidating glare, he also deals 1d6 points of sonic dam… |
 | beast totem, greater | A | dice, attack, toggle | while raging, the barbarian gains the pounce special ability, allowing her to make a full attack at the end of a charge… |
-| bleeding blow | A | attack | when she uses her powerful blow rage power, the barbarian also deals bleed damage equal to her bonus damage with the po… |
-| bloody bite | A | dice, attack | the barbarians bite attack deals 1d6 points of bleed damage in addition to its other effects. |
-| bloody fist | A | dice, save, attack, toggle | while raging, the barbarian may attempt to punch through an opponents flesh and rip out one of its vital organs. in ord… |
-| boars charge | A | attack, activated, toggle | while raging, when you hit with a gore attack as part of a charge, you automatically score a critical threat. you must… |
 | body bludgeon | A | dice, toggle | while raging, if the barbarian pins an opponent that is smaller than her, she can then use that opponent as a two-hande… |
-| brawler | A | dice, toggle | while raging, the barbarian is treated as if she has improved unarmed strike. if she already has the feat, her unarmed… |
 | chaos totem | A | attack, toggle | while raging, the barbarianas form becomes infused with chaos. she gains a +4 bonus on escape artist checks and has a 2… |
 | clear mind | A | save, activated, toggle | a barbarian may reroll a failed will save. this power is used as an immediate action after the first save is attempted,… |
 | come and get me | A | attack, activated, toggle | while raging, as a free action the barbarian may leave herself open to attack while preparing devastating counterattack… |
-| crippling blow | A | attack | when using her powerful blow rage power, the barbarian can forgo the normal bonus to damage (including any bleed damage… |
-| daemon totem | A | attack, activated | while the barbarian is raging, her melee attacks impose a temporary negative level on her opponent on a successful crit… |
 | deadly accuracy | A | attack | if the barbarian scores a critical threat when using her surprise accuracy rage power, she applies double the surprise… |
 | death totem, greater | A | dice, condition, toggle | while raging, the death energy that surrounds the barbarian becomes dangerous to any enemy adjacent to the savage. livi… |
-| disemboweling tusks | A | dice, attack, toggle | while raging, when you confirm a critical hit with your gore attack, you deal 1d4 points of constitution damage in addi… |
-| elemental rage | A | dice, toggle | while raging, all of the barbarianas melee attacks deal an additional 1d6 points of energy damage (acid, cold, electric… |
-| elemental rage, greater | A | dice, attack, toggle | while raging, all of the barbarianas critical hits made with melee weapons deal an additional 1d10 points of energy dam… |
 | energy eruption | A | save, toggle | while raging, the barbarian can absorb energy from a single attack and unleash it upon her enemies once per rage. she d… |
-| feasting bite | A | attack | when the barbarian confirms a critical hit with her bite attack, she regains a number of hit points equal to half the d… |
 | ferocious trample | A | dice, save, toggle | while raging and mounted, the barbarianas mount gains the trample special attack. this attack inflicts 1d8 points of da… |
 | ferocious trample, greater | A | save, attack, activated | a barbarianas mount can affect creatures up to its own size with its ferocious trample. in addition, it can make an ove… |
 | fiend totem | A | dice, toggle | while raging, the barbarian sprouts dozens of wicked barbs from her body. anyone striking the barbarian with a melee we… |
 | fiend totem, greater | A | dice, condition, toggle | while raging, the barbarian is surrounded by an aura of menace. good creatures adjacent to the barbarian are shaken and… |
 | fight response | A | save, activated, toggle | when a barbarian with this rage power attempts a saving throw against a fear effect, she can enter a rage as an immedia… |
 | flesh wound | A | save, attack | once per rage, the barbarian can try to avoid serious harm from an attack. the barbarian must make a fortitude save wit… |
-| gearbreaker | A | attack, activated, toggle | once per round while raging, whenever you make an attack against a construct, you can ignore an amount of that construc… |
-| ground breaker | A | save, condition | once per rage, the barbarian can attack the floor around her as a standard action. this attack automatically hits and d… |
 | hive totem resilience | A | attack, toggle | while raging, the barbarian takes no damage from attacks by swarms of vermin, preventing harmful secondary effects of s… |
-| hive totem toxicity | A | dice, save, attack, activated, toggle | while raging, the barbarian increases her bite damage die type with the animal fury rage power by one die type and decr… |
-| hurling charge | A | attack, toggle | while raging and making a charge attack, the barbarian may draw and throw a hurled weapon during her charge, gaining th… |
 | intimidating glare | A | dice, condition | the barbarian can make an intimidate check against one adjacent foe as a move action. if the barbarian successfully dem… |
 | lesser beast totem | A | dice, toggle | while raging, the barbarian gains two claw attacks. these attacks are considered primary attacks and are made at the ba… |
 | lesser cult totem | A | attack | while the barbarian is raging, any morale bonuses or bonuses for flanking she gains on attacks rolls are added to her d… |
-| lesser elemental rage | A | dice, activated, toggle | as a swift action, the barbarian can cause her melee attacks to deal an additional 1d6 points of energy damage (acid, c… |
 | lesser fiend totem | A | dice, toggle | while raging, the barbarian grows a pair of large horns, gaining a gore attack. this attack is a primary attack (unless… |
 | lesser hurling | A | save, activated, toggle | as a full-round action while raging, the barbarian can lift and hurl an object up to one size category smaller than her… |
-| lesser shadow totem | A | dice, attack, toggle | while raging, each time the barbarian confirms a critical hit her weapon surges with draining shadows. the target must… |
 | lesser spirit totem | A | dice, toggle | while raging, the barbarian is surrounded by spirit wisps that harass her foes. these spirits make one slam attack each… |
-| lunar totem | A | attack, toggle | while raging, the barbarian increases her bite damage die type with her bite attack by one die type, and the bite deals… |
-| mighty swing | A | attack, activated, toggle | the barbarian automatically confirms a critical hit. this power is used as an immediate action once a critical threat h… |
-| overbearing advance | A | attack, toggle | while raging, the barbarian inflicts damage equal to her strength bonus whenever she succeeds at an overrun combat mane… |
-| overbearing onslaught | A | attack, toggle | while raging, the barbarian may overrun more than one target per round, with a a2 penalty on her cmb for each overrun c… |
-| powerful blow | A | attack, activated, toggle | the barbarian gains a +1 bonus on a single damage roll. this bonus increases by +1 for every 4 levels the barbarian has… |
-| raging grappler | A | attack, activated, condition, toggle | as long as you are raging, whenever you succeed at a check to start a grapple, you can choose to deal damage as if you… |
 | renewed vigor | A | dice, activated, toggle | as a standard action, the barbarian heals 1d8 points of damage + her constitution modifier. for every four levels the b… |
-| savage dirty trick | A | save, attack, activated, condition, toggle | once per round while raging, the barbarian can attempt a dirty trick combat maneuver in place of a melee attack. this a… |
-| shadow totem, greater | A | dice, attack, toggle | while raging, the barbarian gains the see in darkness ability, allowing her to see perfectly to any distance in darknes… |
-| smasher | A | attack | once per rage, whenever the barbarian makes an attack against an unattended object or a sunder combat maneuver, she can… |
-| spell sunder | A | attack | once per rage, the barbarian can attempt to sunder an ongoing spell effect by succeeding at a combat maneuver check. fo… |
-| spire totem | A | attack, toggle | while raging, the barbarian takes no penalties for using a weapon to deal nonlethal damage. when dealing nonlethal dama… |
 | spire totem, greater | A | save | while the barbarian is raging, all allies within 30 feet gain a +2 morale bonus on will saves. when attempting a will s… |
 | spirit totem, greater | A | dice, toggle | while raging, the spirits that surround the barbarian become dangerous to any enemy adjacent to the barbarian. living e… |
-| strength surge | A | attack, activated, toggle | the barbarian adds her barbarian level on one strength check or combat maneuver check, or to her combat maneuver defens… |
-| sunder enchantment | A | attack, toggle | while raging, whenever the barbarian succeeds at a sunder combat maneuver on a magical item, that itemas magical abilit… |
-| surprise accuracy | A | attack, activated, toggle | the barbarian gains a +1 morale bonus on one attack roll. this bonus increases by +1 for every 4 levels the barbarian h… |
 | terrifying howl | A | dice, save, condition | the barbarian unleashes a terrifying howl as a standard action. all shaken enemies within 30 feet must make a will save… |
 | totemic mettle | A | save, activated | whenever you enter a rage while bound to a spirit that belongs to your associated constellation, whenever you succeed o… |
 | world serpent totem unity | A | attack, condition, toggle | while raging, the barbarian doubles her fast movement bonus to land speed and cannot be knocked prone. she also doubles… |
@@ -92,8 +60,6 @@ Save DC (`varies`): `[[ 10 + floor(@classes.barbarian.level / 2) + @abilities.st
 | feast of blood | B | activated | after successfully ripping out a creatures vital organ, the barbarian may eat the organ within 1 minute of extracting i… |
 | good for what ails you | B | condition, toggle | while raging, the barbarian who takes a drink of alcohol may attempt a new saving throw against one of the following co… |
 | internal fortitude | B | condition, toggle | while raging, the barbarian is immune to the sickened and nauseated conditions. |
-| knockback | B | activated, toggle | once per round, the barbarian can make a bull rush attempt against one target in place of a melee attack. if successful… |
-| knockdown | B | condition | once per rage, the barbarian can make a trip attack against one target in place of a melee attack. if successful, the t… |
 | linnorm death curse, fjord | B | condition | the character channels the power of a fjord linnorm. the characters melee attacks deal an additional 1 point of cold da… |
 | linnorm death curse, tor | B | condition | the character channels the power of a tor linnorm. the characters melee attacks deal an additional 1 point of fire dama… |
 | moment of clarity | B | activated, toggle | the barbarian does not gain any benefits or take any of the penalties from rage for 1 round. activating this power is a… |
@@ -101,39 +67,29 @@ Save DC (`varies`): `[[ 10 + floor(@classes.barbarian.level / 2) + @abilities.st
 | renewed life | B | activated, toggle | while raging, the barbarian ignores the effect of one temporary negative level per four barbarian levels she has (maxim… |
 | renewed vitality | B | activated, toggle | while raging, the barbarian ignores the effect of 1 point of ability penalty or damage per two barbarian levels she has… |
 | roused anger | B | condition, toggle | the barbarian may enter a rage even if fatigued. while raging after using this ability, the barbarian is immune to the… |
-| savage jaw | B | activated, toggle | while raging, the barbarian can open her jaw wide and latch her teeth firmly onto her opponent. while using the animal… |
 | shadow totem | B | activated, toggle | once per rage as a swift action, the barbarian can take on a shadowy form until the end of her turn. while in this form… |
 
 ### ki_powers  (candidates 0 A / 0 B · curated 1 of 9)
 
-Save DC (`assumed`): `[[ 10 + floor(@classes.monk.level / 2) + @abilities.wis.mod ]]`
+Save DC (`rules`): `[[ 10 + floor(@classes.monk.level / 2) + @abilities.wis.mod ]]`
 
 _no candidates_
 
-### discoveries  (candidates 9 A / 5 B · curated 0 of 149)
+### discoveries  (candidates 1 A / 4 B · curated 9 of 149)
 
-Save DC (`assumed`): `[[ 10 + floor(@classes.alchemist.level / 2) + @abilities.int.mod ]]`
+Save DC (`rules`): `[[ 10 + floor(@classes.alchemist.level / 2) + @abilities.int.mod ]]`
 
 _1 of these are shared with hexes — author once, fan out on promote._
 
 | power | tier | signals | text |
 |---|---|---|---|
-| boneshard bomb | A | dice, save, attack | bomb deals piercing damage instead of fire, and creatures that take a direct hit from a boneshard bomb must succeed at… |
-| cytillesh bomb | A | dice, condition | cytillesh bombs deal 1d4 points of damage, plus 1d4 points of damage for every odd-numbered level, instead of 1d6 and a… |
-| demolition charge | A | attack, toggle | when you create a bomb, you can choose to have it deal damage to an object as if by a sunder combat maneuver. |
-| dust bomb | A | save, condition | the bomb explodes into a cloud of dust, dealing no damage, but forcing creatures within the cloud to succeed on a forti… |
-| inspired bomb | A | dice | you can expend two uses of inspiration to increase a bombs damage by 1d6. |
-| invisible bomb | A | save | when creating a bomb, can choose to render the bomb and its explosion invisible until thrown denying opponent its dexte… |
-| ooze blight | A | dice | a target hit by your bomb loses the split special quality for 1d4 rounds. In addition, against creatures with the ooze… |
 | preserve organs | A | attack | sneak attacks and critical hits are less likely to do damage |
-| scrap bomb | A | attack | your bombs create shrapnel and cause bleed damage |
 | malignant poison | B | activated | as a full-round action, you can increase the save dc of any poison and increase its duration |
 | nauseating flesh | B | condition | anything that bites the alchemist is nauseated |
 | poison touch | B | activated | the alchemist gains a poisonous touch, as if under the effects of a poison spell. he can suppress or activate this abil… |
-| profane bomb | B | condition | you can have your bomb deal evil divine damage. Good creatures that take a direct hit from a profane bomb must make a f… |
 | syringe stirge | B | activated | as a full-round action, you can expend two daily uses of bombs to create a syringe stirge, a tiny construct primed with… |
 
-### hexes  (candidates 48 A / 9 B · curated 0 of 111)
+### hexes  (candidates 45 A / 9 B · curated 2 of 110)
 
 Save DC (`varies`): `[[ 10 + floor(@classes.witch.level / 2) + @abilities.int.mod ]]`
 
@@ -148,15 +104,12 @@ Save DC (`varies`): `[[ 10 + floor(@classes.witch.level / 2) + @abilities.int.mo
 | city sight | A | save | The witch curses a target with the simple vision of urban mortals. On a failed Fortitude save, the subject loses the us… |
 | curse of nonviolence | A | save | The witch can curse a creature to prevent it from attacking innocents. If the target fails its Will save, it cannot tak… |
 | cursed wound | A | save, toggle | The witch can curse a living creature, preventing it from healing completely. For a number of days equal to 3 + the wit… |
-| cursed wound: the witch can curse a living creature, preventing it from healing completely. for a number of days equal to 3 + the witch's intelligence modifier | A | save, toggle | (minimum 1), whenever the victim is the target of a conjuration (healing) spell or magical healing effect, the caster o… |
 | death curse | A | dice, save, condition | This powerful hex seizes a creature's heart, causing death within just a few moments. This hex has a range of 30 feet.… |
 | death interrupted | A | dice | A witch with this grand hex can pluck a dead creature's soul from the River of Souls and store it in her familiar for s… |
-| dire prophecy | A | attack, toggle | The witch curses the target so he is doomed to die (Will negates). As long as the curse persists, the target takes a –4… |
 | discord | A | save | The witch can make an animal or humanoid within 30 feet distrust another creature within line of sight. The target's at… |
 | disrupt connection | A | dice, save, condition | The hexer disrupts the connection between a summoned creature within 30 feet and its master. The summoned creature must… |
 | drugged | A | save | The witch can combine her magic with her poisons to weaken her enemies' minds. When the witch creates a poison, she can… |
 | enemy ground | A | save, activated, toggle | The witch curses a target with clumsiness when in dangerous terrain. The target takes a –4 penalty on Acrobatics checks… |
-| eternal slumber | A | save | The witch can touch a creature, causing it to drift off into a permanent slumber. The creature receives a Will save to… |
 | evil eye | A | save, attack, toggle | The witch can cause doubt to creep into the mind of a foe within 30 feet that she can see. The target takes a –2 penalt… |
 | forced reincarnation | A | save | The witch causes a creature within 30 feet to die and be immediatelyreincarnatedinto a new body. A Will save negates th… |
 | fortune | A | attack, activated, toggle | The witch can grant a creature within 30 feet a bit of good luck for 1 round. The target can call upon this good luck o… |
@@ -197,52 +150,28 @@ Save DC (`varies`): `[[ 10 + floor(@classes.witch.level / 2) + @abilities.int.mo
 | witch's bottle | B | activated, toggle | Once per day, the witch can perform a 10-minute ritual to create a potion imbued with the power of one of her hexes. An… |
 | witch's charge | B | activated, toggle | Once per day when preparing spells, a witch can designate a willing creature as her charge. She gains a constantstatuse… |
 
-### rogue_talents  (candidates 40 A / 47 B · curated 4 of 161)
+### rogue_talents  (candidates 16 A / 45 B · curated 30 of 161)
 
-Save DC (`assumed`): `[[ 10 + floor(@classes.rogue.level / 2) + @abilities.int.mod ]]`
+Save DC (`varies`): `[[ 10 + floor(@classes.rogue.level / 2) + @abilities.int.mod ]]`
 
-_87 of these are shared with mysteries, ninja_talents, slayer_talents — author once, fan out on promote._
+_61 of these are shared with mysteries, ninja_talents, slayer_talents — author once, fan out on promote._
 
 | power | tier | signals | text |
 |---|---|---|---|
-| accurate poisoner | A | attack | when the rogue successfully hits an opponent with a poisoned weapon and would deal sneak attack damage, she can forgo t… |
-| ambuscading grapple | A | attack | when you succeed at a combat maneuver check to grapple an unaware opponent, you can immediately deal sneak attack damag… |
-| armor piercer | A | attack, activated | when you hit with an attack that deals sneak attack damage, you can forgo one or more sneak attack dice to reduce the t… |
-| befuddling strike | A | dice, attack, toggle | when the rogue deals sneak attack damage against an opponent, that opponent takes a 2 penalty on attack rolls against t… |
 | black market connections | A | dice | a rogue with this talent gains better access to magic items from black market connections. she treats every settlement… |
 | bomber | A | attack | a rogue with this talent can make a number of bombs per day equal to her intelligence modifier (minimum 1). these bombs… |
-| confounding blades | A | dice, attack | when a rogue with this talent hits a creature with a melee weapon that deals sneak attack damage, her target cannot mak… |
 | dance of disorienting shadows | A | attack | a rogue with this talent can attempt a perform (dance) check in place of a combat maneuver check when attempting a repo… |
 | deadly sneak | A | attack | whenever a rogue with this talent uses the powerful sneak rogue talent, she treats all 1s and 2s on the sneak attack da… |
 | defensive roll | A | save, activated, toggle | with this advanced talent, the rogue can roll with a potentially lethal blow to take less damage from it than she other… |
-| demand attention | A | save, attack | the first time each round that you deal sneak attack damage to an opponent, you can forgo sneak attack damage to distra… |
 | developed poison immunity | A | save | when this talent is taken, select a single animal or plant poison that the rogue has been poisoned with but survived. t… |
-| disabling stunt | A | attack | a rogue with this talent can attempt a disable device check against a constructs cmd as a standard action that does not… |
-| dispelling attack | A | attack | opponents that are dealt sneak attack damage by a rogue with this ability are affected by a targeted dispel magic, targ… |
-| distracting attack | A | attack | a rogue with this talent can make sneak attacks with subtle flourishes that disorient and distract her enemy. when she… |
-| entanglement of blades | A | attack | when a rogue with this talent hits a creature with a melee attack that deals sneak attack damage, the target cannot tak… |
 | escaping stunt | A | attack, activated, condition, toggle | a rogue with this talent can, as an immediate action, attempt an escape artist check in place of a reflex saving throw… |
 | fast getaway | A | attack | after successfully making a sneak attack or sleight of hand check, a rogue with this talent can spend a move action to… |
-| flying stunt | A | attack, activated, toggle | a rogue with this talent can attempt a fly check against a targets cmd as a swift action when charging from above that… |
 | grig jig | A | save, activated, toggle | once per day the rogue can target one humanoid within 30 feet and attempt a perform (dance) check as a full-round actio… |
-| hamstring strike | A | save, attack, condition | anytime a rogue with this talent successfully hits an opponent with a sneak attack, she may forgo her sneak attack dama… |
-| harrow strike | A | attack, activated, toggle | once per day while making a sneak attack against a creature, you can draw a random card from a harrow deck you own. if… |
-| hunters surprise | A | attack, activated, toggle | once per day, a rogue with this talent can designate a single enemy she is adjacent to as her prey. until the end of he… |
-| improved shadows chill | A | attack | when a rogue with this talent hits a creature with a melee weapon that deals sneak attack damage, the sneak attack dama… |
-| knock-out blow | A | dice, save, attack, activated, condition, toggle | once per day, the rogue can forgo her sneak attack damage to attempt to knock out an opponent. she must declare the use… |
 | redirect attack | A | attack, activated, toggle | once per day, when a rogue with this talent is hit with a melee attack, she can redirect the attack to strike at an adj… |
 | rumormonger | A | dice | a rogue with this talent can attempt to spread a rumor through a small town or larger settlement by making a bluff chec… |
-| sacred sneak attack | A | attack | when making a sneak attack against an undead creature or evil outsider, the rogues sneak attack damage is considered go… |
 | sacrifice self | A | save | a rogue who makes a successful reflex save against an area effect can ignore the benefits of her evasion ability to shi… |
 | scry slip | A | save | whenever a rogue with this talent is targeted by a scrying effect that allows a will save, the caster of the divination… |
-| set-up | A | attack, toggle | when you successfully hit a target with a sneak attack in melee, you can choose to forgo your additional sneak attack d… |
-| slow reactions | A | attack | opponents damaged by the rogues sneak attack cant make attacks of opportunity for 1 round. |
-| sneaky maneuver | A | attack, activated, toggle | anytime a rogue with this talent could hit an opponent with a melee sneak attack on her turn, she may take a 2 penalty… |
-| sniper20s eye | A | attack | a rogue with this talent can apply her sneak attack damage on ranged attacks targeting foes within 30 feet that benefit… |
-| stem the flow | A | dice, attack | when making a successful sneak attack against a creature with the ability to channel energy, the rogue may forgo 3d6 po… |
 | strong stroke | A | dice | a rogue with this talent rolls twice when making swim checks and takes the better result. if she already rolls twice wh… |
-| swimming stunt | A | attack, activated, toggle | once per round, when making an attack against an opponent underwater that qualifies for sneak attack damage, a rogue wi… |
-| underhanded | A | attack | a rogue with this talent gains a +4 circumstance bonus on all sleight of hand checks made to conceal a weapon. furtherm… |
 | wall scramble | A | dice | a rogue with this talent rolls twice when making climb checks and takes the better of the two rolls. if she already rol… |
 | weapon snatcher | A | attack | a rogue with this talent can make a sleight of hand check in place of a combat maneuver check when attempting to disarm… |
 | acrobatic stunt | B | activated, condition, toggle | once per day, when flanked by at least two opponents, a rogue with this talent can, as an immediate action when any of… |
@@ -274,7 +203,6 @@ _87 of these are shared with mysteries, ninja_talents, slayer_talents — author
 | opportunist | B | activated, toggle | once per round, the rogue can make an attack of opportunity against an opponent who has just been struck for damage in… |
 | peerless maneuver | B | activated, toggle | once per day, a rogue with this talent can roll two dice while making an acrobatics check, and take the better result.… |
 | pierce the darkness | B | condition | the rogue can extend her senses of hearing and smell in darkness or when blinded. she gains blindsense out to a range o… |
-| positioning attack | B | activated, toggle | once per day, when a rogue with this talent hits a creature with a melee attack, she can move up to 30 feet without pro… |
 | quick scrounge | B | activated, toggle | the rogue can search a creature, object, or area in half as much time as normal. if her perception check would normally… |
 | quick trapsmith | B | activated | as a full-round action, a rogue with this talent can set a simple trap with a cr no greater than 1/2 her rogue level. t… |
 | rapid boost | B | activated, toggle | once per day, the rogue can roll two dice while attempting a sleight of hand check and take the better result. she must… |
@@ -288,37 +216,24 @@ _87 of these are shared with mysteries, ninja_talents, slayer_talents — author
 | suppress poison | B | activated, toggle | as an immediate action when she fails a saving throw against a poison, the rogue can attempt the saving throw a second… |
 | the whole time | B | activated | a rogue with this ability is practiced at attacking from magical concealment. he can use spell-trigger and spell-comple… |
 | thoughtful reexamining | B | activated, toggle | once per day, a rogue with this talent can reroll a knowledge, sense motive, or perception skill check to try to gain n… |
-| toxic regurgitation | B | activated | a rogue with this talent can drink a noninhaled poison as a standard action and suspend it within her body. she is not… |
 | unlock ki | B | activated, toggle | a rogue with this advanced talent increases the number of points in the ki pool that she gains from the ki pool rogue t… |
 | unwitting ally | B | activated | a rogue with this talent can spend a swift action to attempt to make an opponent act like an ally for purposes of provi… |
 | without a trace | B | activated, toggle | when the rogue successfully uses evasion or improved evasion to avoid taking damage, she can attempt to hide as an imme… |
 
-### ninja_talents  (candidates 13 A / 11 B · curated 4 of 207)
+### ninja_talents  (candidates 2 A / 10 B · curated 42 of 207)
 
-Save DC (`stated`): `[[ 10 + floor(@classes.ninja.level / 2) + @abilities.int.mod ]]`
+Save DC (`varies`): `[[ 10 + floor(@classes.ninja.level / 2) + @abilities.cha.mod ]]`
 
-_2 of these are shared with slayer_talents — author once, fan out on promote._
+_1 of these are shared with slayer_talents — author once, fan out on promote._
 
 | power | tier | signals | text |
 |---|---|---|---|
-| assassinate | A | save, attack | a ninja with this master trick can kill foes that are unable to defend themselves. to attempt to assassinate a target,… |
-| bleeding attack* | A | attack | a ninja with this trick can cause living opponents to bleed by hitting them with a sneak attack. this attack causes the… |
-| blinding bomb | A | dice, save, condition | whenever the ninja throws a smoke bomb, all living creatures in the cloud must make a fortitude save or be blinded by t… |
-| breath of the ancestor | A | dice, save, attack | the ninja chooses one imperial dragon type (forest, sea, sky, sovereign, or underworld) when she gains this trick, and… |
-| choking bomb | A | dice, save, condition | whenever a ninja throws a smoke bomb, all living creatures in the resulting cloud must make a fortitude save or become… |
 | deadly range | A | attack | a ninja with this ninja trick increases the range at which she can deal sneak attack damage by 10 feet. a ninja can tak… |
-| deadly shuriken | A | dice, attack, activated | as a full-round action, a ninja with this master trick can take careful aim and pool all of her attack potential into a… |
-| ki block* | A | save, attack | a ninja with this trick can prevent a creature from using its ki pool. whenever the ninja deals sneak attack damage, th… |
-| ki charge | A | dice, save, toggle | a ninja with this trick can invest a portion of her ki into a single thrown weapon, such as a shuriken, and throw it as… |
-| pressure points* | A | attack | a ninja with this trick can strike at an opponents vital pressure points, causing weakness and intense pain. whenever t… |
-| redirect force | A | attack | if the ninja has a feat that allows her to attempt a combat maneuver without provoking attacks of opportunity, she can… |
 | shadow clone | A | dice | the ninja can create 1d4 shadowy duplicates of herself that conceal her true location. this ability functions as mirror… |
-| slow reactions* | A | attack | opponents that are damaged by the ninjas sneak attack cant make attacks of opportunity for 1 round. |
 | acrobatic master | B | activated, toggle | as a swift action, a ninja with this trick can focus her ki to grant her a +20 bonus on one acrobatics check of her cho… |
 | blood debt | B | activated, toggle, bonus_feat | a ninja with this ability gains in harms way as a bonus feat, even if she doesnt meet the prerequisites. when the ninja… |
 | evasion | B | activated | a ninja can avoid even magical and unusual attacks with great agility. if she makes a successful reflex saving throw ag… |
 | feather fall | B | activated, toggle | as an immediate action, the ninja can slow her descent as if using feather fall. this ability uses her ninja level as t… |
-| flurry of stars | B | activated, toggle | a ninja with this ability can expend 1 ki point from her ki pool as a swift action before she makes a full-attack attac… |
 | ghost step | B | activated, toggle | as a swift action, a ninja with this trick can pass through walls as if she were a ghost. until the end of her turn, sh… |
 | kawarimi | B | activated, toggle | once per day when a successful attack is made against a ninja with this ability, as an immediate action she can spend 1… |
 | see the unseen | B | activated, toggle | a ninja with this trick learns how to see that which cannot be seen. as a swift action, the ninja can cast see invisibi… |
@@ -326,84 +241,53 @@ _2 of these are shared with slayer_talents — author once, fan out on promote._
 | vanishing trick | B | activated, toggle | as a swift action, the ninja can disappear for 1 round per level. this ability functions as invisibility. using this ab… |
 | ventriloquism | B | activated, toggle | as a swift action, the ninja can throw her voice as if using the spell ventriloquism. she can use this ability for 1 mi… |
 
-### slayer_talents  (candidates 11 A / 5 B · curated 4 of 194)
+### slayer_talents  (candidates 4 A / 5 B · curated 38 of 194)
 
-Save DC (`stated`): `[[ 10 + floor(@classes.slayer.level / 2) + @abilities.int.mod ]]`
-
-_1 of these are shared with investigator_talents — author once, fan out on promote._
+Save DC (`varies`): `[[ 10 + floor(@classes.slayer.level / 2) + @abilities.int.mod ]]`
 
 | power | tier | signals | text |
 |---|---|---|---|
-| jaguars grace | A | attack | a slayer with this talent does not take the normal 4 penalty when dealing nonlethal damage using a weapon that normally… |
-| jaguars pounce | A | attack, activated, toggle | when a slayer with this talent deals sneak attack damage, he can attempt a disarm or trip combat maneuver as an immedia… |
 | jaguars protection | A | attack, toggle | when a slayer with this talent deals sneak attack damage, he draws the targets attention away from his allies. the affe… |
-| marksmans shot | A | attack, activated | as an attack action, the slayer makes a single ranged attack at his highest attack bonus with a ranged weapon he wields… |
-| mountainside ambush | A | attack | samsaran slayers often strike with deadly attacks from above. if a slayer deals sneak attack damage to a creature that… |
 | reaping stalker | A | attack | a slayer with this talent treats any sickle or scythe he wields as though it were one size larger for the purpose of de… |
-| redirect poison | A | attack, activated, toggle | when a creature unsuccessfully attacks the slayer with a poisoned weapon or a natural weapon that would poison him, the… |
 | rogue | A | attack | a slayer can select one of the following rogue talents in place of a slayer talent. any talent effects based on rogue l… |
-| slowing strike* | A | dice, attack | an opponent damaged by the slayers sneak attack has its speed halved for 1d4 rounds. a successful fortitude saving thro… |
 | studied ally | A | attack, activated | the slayer can study an ally or friendly creature he can see as a move action. the slayer gains a +1 bonus on checks an… |
-| swallow reversal | A | attack, activated, toggle | as an attack action, the slayer can make a single melee attack against his studied target at his highest base attack bo… |
 | experience across ages | B | activated, toggle | once per day, a samsaran slayer can draw upon insights from his previous lifetimes to help identify a foe or recall a k… |
 | inured to terror | B | activated, condition, toggle | with their knowledge of the cyclical nature of existence, there are few experiences that can daunt samsaran slayers for… |
 | mystic veil | B | activated, toggle | samsaran slayers are adept at obscuring the passes of their mountain homes from intruders. the slayer can cast silent i… |
 | recall training | B | activated, toggle | by calling on the memories of previous incarnations, a samsaran slayer can use martial techniques that transcend his us… |
 | sunlight strike | B | activated, condition, toggle | the slayer can reflect sunlight (or other sources of bright light) into the eyes of an adjacent target as a swift actio… |
 
-### investigator_talents  (candidates 11 A / 7 B · curated 0 of 43)
+### investigator_talents  (candidates 4 A / 6 B · curated 10 of 43)
 
-Save DC (`assumed`): `[[ 10 + floor(@classes.investigator.level / 2) + @abilities.int.mod ]]`
+Save DC (`stated`): `[[ 10 + floor(@classes.investigator.level / 2) + @abilities.int.mod ]]`
 
 _1 of these are shared with exploits — author once, fan out on promote._
 
 | power | tier | signals | text |
 |---|---|---|---|
 | amazing inspiration | A | dice | When using inspiration, the investigator rolls a d8 instead of a d6. At 20th level, the investigator rolls 2d8 and adds… |
-| blinding strike* | A | dice, save, attack, condition | When the investigator deals damage with studied strike, the opponent must succeed at a Fortitude saving throw or be per… |
 | combat inspiration | A | attack | When an investigator uses inspiration on an attack roll or saving throw, he expends one use of inspiration instead of t… |
-| confusing strike* | A | dice, save, attack, condition | When the investigator deals damage with studied strike, the opponent must succeed at a Fortitude saving throw or become… |
 | inspirational expertise | A | attack, activated, toggle | When an investigator succeeds at a Knowledge check to identify a monster's special powers or vulnerabilities, he can ex… |
-| numerical strike* | A | attack, activated, toggle | Once per day when the investigator has confirmed a critical hit with a studied strike, he can deal average damage inste… |
-| numerical strike, greater* | A | attack, activated, toggle | Once per day, when the investigator has confirmed a critical hit with a studied strike, he can deal the strike's maximu… |
-| repositioning strike* | A | attack, activated | When the investigator deals damage with studied strike, he can perform a reposition combat maneuver as a free action ag… |
-| stealing strike* | A | attack, activated | When the investigator deals damage with studied strike, he can perform a steal combat maneuver as a free action against… |
 | studied defense | A | attack | When an investigator with this talent uses his studied combat ability, he can chose to apply that ability's insight bon… |
-| toppling strike* | A | attack, activated | When the investigator deals damage with studied strike, he can perform a trip combat maneuver as a free action against… |
 | applied engineering | B | activated | The investigator can leverage his knowledge of engineering to solve tasks that normally require brute strength or keen… |
-| deafening strike* | B | condition | When an investigator deals damage with studied strike, the opponent must succeed at a Fortitude saving throw or become… |
 | domino effect* | B | activated | When the investigator uses studied strike, he uses his opponents against each other and sets himself up for his next mo… |
 | effortless aid | B | activated, toggle | The investigator can use an aid another action as a move action instead of as a standard action. An investigator can ex… |
 | empathy (ex, su) | B | activated, toggle | When attempting a Sense Motive check, the investigator makes two d20 rolls and takes the higher result. If an investiga… |
+| investigator's certainty | B | activated, toggle | The investigator chooses one skill that, when attempting a skill check with the skill, he can use his inspiration abili… |
 | quick study | B | activated | An investigator can use his studied combat ability as swift action instead of a move action. |
-| sickening offensive* | B | condition | When the investigator damages a studied target, that creature is also sickened for 1 round. |
 
-### vigilante_talents  (candidates 20 A / 17 B · curated 0 of 82)
+### vigilante_talents  (candidates 6 A / 15 B · curated 16 of 82)
 
-Save DC (`assumed`): `[[ 10 + floor(@classes.vigilante.level / 2) + @abilities.cha.mod ]]`
+Save DC (`varies`): `[[ 10 + floor(@classes.vigilante.level / 2) + @abilities.cha.mod ]]`
 
 | power | tier | signals | text |
 |---|---|---|---|
-| brutal maneuver | A | attack, toggle | The first time each round that the vigilante uses a weapon, including a natural attack or unarmed strike, to perform a… |
-| deceitful trick | A | attack, toggle | The vigilante can perform a dirty trickAPG combat maneuver in place of his first attack during a full attack. He can ta… |
-| expose weaknesses | A | attack | The vigilante is able to use sneaky tricks to make it easier to damage a foe, whether it is throwing a bit of fine dust… |
-| favored maneuver | A | attack | The vigilante selects one type of combat maneuver to be a favored maneuver. He gains the Improved feat corresponding to… |
 | fist of the avenger | A | attack, bonus_feat | The vigilante gains Improved Unarmed Strike as a bonus feat, if he doesn't have this feat already. In addition, wheneve… |
-| gator wrangle | A | attack | The vigilante gains a +8 bonus to his CMD against grapple combat maneuvers when using the grab ability, and he halves a… |
 | instant plan | A | attack, activated, toggle | The vigilante can quickly manage a situation that seems to be spiraling out of control. Once per day, the vigilante can… |
 | lethal grace | A | attack, bonus_feat | The vigilante combines strength and speed into incredibly deadly attacks. He gains Weapon Finesse as a bonus feat, and… |
 | living shield | A | attack, activated, toggle | As an immediate action whenever the vigilante is grappling a creature and is targeted by an attack, he can attempt a co… |
-| mighty ambush | A | dice, activated, toggle | Once per round, when the vigilante succeeds at a hidden strike, he can instantly drop the damaged enemy unconscious for… |
-| pull into the shadows | A | attack, activated | As a full-round action, the vigilante can move up to his speed toward an opponent who is unaware of his presence (or wh… |
-| shackle smash | A | attack | Perhaps trained to remove or destroy restraints from slaves and prisoners by the Twilight Talons or Bellflower Network,… |
 | shield of blades | A | attack, toggle, bonus_feat | The vigilante's wild attacks allow him to block his foes' counterattacks. He gains Power Attack as a bonus feat. If he… |
-| strike the unseen | A | attack, bonus_feat | The vigilante gains Blind-Fight as a bonus feat. He can also deal hidden strike damage against targets with total conce… |
-| sucker punch | A | dice | Whenever the vigilante attacks a foe that is unaware of his presence (or who views him as an ally), and the attack deal… |
-| surprise strike | A | attack | The vigilante gains a greater advantage when his foe is unable to defend herself. Whenever he makes an attack against a… |
-| take 'em alive | A | attack, toggle | The vigilante doesn't take the usual -4 penalty on attack rolls made to deal nonlethal damage with weapons that normall… |
 | tiger's claws | A | dice | The vigilante gains the ability to grow claws similar to a shifter's. These claws are natural weapons that can be exten… |
-| turnabout | A | attack | A vigilante with this talent can capitalize on any opportunities in combat. Whenever a foe provokes an attack of opport… |
-| vortex splash | A | attack, activated | When in rain or waist deep in water, the vigilante can make a whirling splash as a full-round action, allowing him to a… |
 | animal patron | B | activated, toggle | The vigilante gains the benefits of one minor shifter aspect for a number of minutes per day equal to 1 + half his vigi… |
 | concealed strike | B | activated | Whenever the vigilante attacks an opponent with a concealed weapon that his target wasn't aware of, he can attempt a Bl… |
 | environmental weapon | B | activated, toggle | When the vigilante gains this talent, he must select one type of terrain from the ranger's list of favored terrains. Wh… |
@@ -417,14 +301,12 @@ Save DC (`assumed`): `[[ 10 + floor(@classes.vigilante.level / 2) + @abilities.c
 | steely resolve | B | activated, toggle | Three times per day, as an immediate action when the vigilante fails a Will saving throw against a mind-affecting effec… |
 | swamp concoctions | B | activated | Twice per day as a full-round action, the vigilante can use the environment weapon vigilante talent to improvise an alc… |
 | team player | B | activated, toggle, bonus_feat | The vigilante gains Swift AidAPG as a bonus feat, ignoring its prerequisites. Additionally, the vigilante can use the f… |
-| twisting fear | B | activated, condition, toggle | Whenever the vigilante causes an opponent to gain the shaken, frightened, or panicked condition, that opponent takes an… |
 | unexpected strike | B | activated, toggle, bonus_feat | The vigilante gains Quick Draw as a bonus feat. At 8th level, he can draw hidden weapons as a swift action (instead of… |
-| up close and personal | B | activated, toggle | When the vigilante attempts an Acrobatics check to move through an opponent's space during a move action, he can attemp… |
 | vital punishment | B | activated, toggle, bonus_feat | The vigilante gains Vital Strike as a bonus feat, though he does not have to meet the prerequisites for this feat. Once… |
 
 ### social_talents  (candidates 3 A / 8 B · curated 0 of 46)
 
-Save DC (`assumed`): `[[ 10 + floor(@classes.vigilante.level / 2) + @abilities.cha.mod ]]`
+Save DC (`rules`): `[[ 10 + floor(@classes.vigilante.level / 2) + @abilities.cha.mod ]]`
 
 | power | tier | signals | text |
 |---|---|---|---|
@@ -440,7 +322,7 @@ Save DC (`assumed`): `[[ 10 + floor(@classes.vigilante.level / 2) + @abilities.c
 | songbird | B | activated, toggle | The vigilante gains the use of animal messenger once per day as a spell-like ability, with a caster level equal to his… |
 | transformation sequence | B | activated | The vigilante's transformation between identities is assisted by magic. This makes it faster than usual, but also more… |
 
-### arcana  (candidates 32 A / 32 B · curated 2 of 122)
+### arcana  (candidates 13 A / 28 B · curated 25 of 122)
 
 Save DC (`stated`): `[[ 10 + floor(@classes.magus.level / 2) + @abilities.int.mod ]]`
 
@@ -449,37 +331,18 @@ _1 of these are shared with mysteries — author once, fan out on promote._
 | power | tier | signals | text |
 |---|---|---|---|
 | animate weapon | A | attack, activated, toggle | The magus can expend 1 point from her arcane pool as a swift action to imbue a single weapon she touches with the abili… |
-| arcane critical | A | attack, activated, toggle | Whenever the magus scores a critical hit, he earns a single temporary point he may add to his arcane pool. If this poin… |
-| arcane edge | A | attack, activated, toggle | The magus can expend 1 point from his arcane pool as an immediate action after hitting a target with a slashing or pier… |
-| arcane focus | A | attack, activated, toggle | The magus can expend 1 point from his arcane pool as a swift action to reduce the penalties to attack rolls he suffers… |
 | arcane redoubt, greater | A | save, activated, toggle | Whenever the magus uses his arcane redoubt magus arcana, he may spend an additional point from his arcane pool in order… |
-| athame surge | A | attack | An magus can transform her weapon into a glittering weapon of pure energy by channeling her spell slots directly into i… |
-| charge of the magi | A | dice, save, attack, activated, condition, toggle | The magus can spend 1 point from her arcane pool as a swift action when charging, so she can turn herself into a living… |
 | critical spell | A | attack, activated, toggle | Whenever the magus scores a critical hit with a spell’s attack roll without delivering the spell through a weapon strik… |
-| critical strike | A | attack, activated, toggle | Whenever the magus scores a critical hit with a melee weapon, he may cast a spell with a range of touch as a swift acti… |
 | divinatory strike | A | attack | Whenever the magus scores a critical hit against an opponent with a melee attack, he can gain preternatural insight int… |
 | energy burst | A | dice, save, activated, toggle | The magus can spend 2 points from her arcane pool as a swift action to create a burst of energy that fills a 30-foot sp… |
-| energy web | A | dice, save, activated, toggle | The magus can spend 1 point from her arcane pool as a swift action to create a tangible web of searing energy that wrap… |
 | flamboyant arcana | A | dice, attack, activated, toggle | Derring-Do: At 1st level, a magus can spend 1 panache point when she makes an Acrobatics, Climb, Escape Artist, Fly, Ri… |
-| flattening strike | A | save, activated, condition, toggle | The magus can spend 1 point from her arcane pool as a swift action to hammer her foe with a concussive strike that send… |
-| malice | A | dice | A hexcrafter magus’s attacks are enhanced by the spiteful link between her and her opponent. Her melee attacks deal +2d… |
 | maneuver mastery | A | attack | The magus has mastered one combat maneuver. He selects one maneuver when selecting this arcana. Whenever he is attempti… |
-| maneuvering strike | A | attack, activated | The magus can spend 1 point from her arcane pool as a free action so that her next combat maneuver does not provoke an… |
-| necromantic strike | A | dice, save, activated, toggle | The magus can spend 1 point from her arcane pool as a swift action to imbue his weapon with a shimmering halo of black,… |
-| nigh irresistible strike | A | save, activated, toggle | The magus can spend 1 point from her arcane pool as a swift action to channel arcane energy through her weapon, which a… |
-| pool strike | A | dice, activated | The magus can expend 1 point from his arcane pool as a standard action to charge his free hand with energy. He can make… |
-| pool strike, arcing | A | attack, activated | The magus can expend 1 additional point from his arcane pool when using the pool strike arcana. If his attack hits, the… |
 | prescient defense | A | save, activated, toggle | The magus can expend 1 point from his arcane pool as an immediate action after hitting a target with a weapon attack, g… |
 | searing shield | A | dice | When she activates her spell shield and an opponent attacks her and misses her newly improved Armor Class but would hit… |
-| serpent-eyed strike | A | dice, save, activated, toggle | The magus can spend 1 point from her arcane pool as a swift action so that her attack creates a hypnotic pattern, weavi… |
-| song of arcane triumph | A | dice, save, attack, activated, toggle | The mighty song of arcane triumph allows a magus to channel the raw energy of her magical power into her elven music. T… |
-| song of death’s herald | A | dice, save, attack, activated, toggle | The grim, terrible song of death’s herald foretells the doom of the magus’s foe. The magus can spend 1 point from her a… |
 | song of victory | A | save, activated, toggle | The elves have many songs that speak of their great victories. The magus can spend 1 point from her arcane pool as a sw… |
 | spell trickery | A | attack, activated, toggle | When the magus successfully performs a dirty trick combat maneuver, he can cast an illusion or enchantment spell he has… |
 | staff mastery | A | attack | The magus can use all his arcana that apply to casting a spell to spells activated from a magic staff. Additionally, an… |
 | ultimate eldritch athame | A | attack, activated, toggle | As a free action, the magus can cause his weapon to manifest new powers as she literally sculpts its magical form with… |
-| vision-clouding strike | A | dice, save, activated, toggle | The magus can expend 1 or more points from his arcane pool as a swift action to empower his weapon with shadowy energy… |
-| wave of mutilation | A | save, activated, toggle | The magus can spend 1 point from her arcane pool as a swift action transforming a single cut of her weapon into a scyth… |
 | aquatic agility | B | activated, toggle | As an immediate action, the magus can spend 1 point from his arcane pool to gain the benefitss of water breathing for 1… |
 | arcane redoubt | B | activated, toggle | As a swift action, the magus can expend 1 point from his arcane pool to treat his shield bonus to AC (including any enh… |
 | athame knowledge | B | activated, toggle | The magus forms a much closer relationship with his weapon. The power turns her weapon almost into an extension of his… |
@@ -487,7 +350,6 @@ _1 of these are shared with mysteries — author once, fan out on promote._
 | bounding step | B | activated, toggle | The magus can expend 1 point from her arcane pool as a swift action to move through the air. In essence, she can fly fo… |
 | concentrate | B | activated, toggle | The magus can reroll any concentration check he has just made with a +4 bonus. He must use this ability after the roll… |
 | damage shield | B | activated, toggle | The magus can spend 1 point from her arcane pool as a immediate action to resist damage from each attack she is subject… |
-| dispelling strike | B | activated, toggle | The magus can spend 1 or more points from his arcane pool as a swift action to imbue his weapon with a special power. I… |
 | eldritch athame | B | activated, toggle | The magus can spend 1 point from her arcane pool as a swift action to transforms her weapon into a weapon of pure magic… |
 | elemental assault | B | activated, toggle | The magus can expend 1 point from his arcane pool as a swift action to imbue himself with elemental energy. This functi… |
 | force adept | B | activated, toggle | A spellblade magus can as a swift action cast a mage hand spell at will if the spellblade magus is at least 9th level s… |
@@ -501,12 +363,9 @@ _1 of these are shared with mysteries — author once, fan out on promote._
 | mystic power | B | activated, toggle | The tovenaar may expend one point from his arcane pool as a swift action to regain one expended use of an ability from… |
 | opportune strike | B | activated, toggle | Whenever the magus scores a hit with a melee weapon when making an attack of opportunity, he may cast a spell with a ra… |
 | overcome circumstances | B | activated | The magus can expend 1 or more point from her arcane pool as a free action to shrug off detrimental effects. She can im… |
-| prescient attack | B | activated, toggle | The magus can expend 1 point from his arcane pool as an immediate action after hitting a target with a weapon attack, a… |
 | protected assault | B | activated, toggle | The magus can expend 1 point from his arcane pool as a swift action to protect himself from an opposing alignment. |
 | reflection | B | activated, toggle | The magus can sacrifice 1 or more points from his arcane pool as an immediate action to reflect a spell back at its cas… |
-| rending the shroud | B | activated, toggle | Whenever the magus makes a successful melee attack, she may spend 1 point from her arcane pool as a swift action to red… |
 | resistant assault | B | activated, toggle | The magus can expend 1 point from his arcane pool as a swift action to protect himself from attacks from one energy typ… |
-| song of the blade dance | B | activated, toggle | The magus can spend 1 point from her arcane pool as a swift action to sing a song that enhances the flow of magic throu… |
 | spell shield | B | activated, toggle | The magus can expend a point from his arcane pool as an immediate action to grant himself a shield bonus to AC equal to… |
 | stalwart | B | activated | A hexcrafter magus can use mental and physical resiliency to avoid certain attacks. If she makes a Fortitude or Will sa… |
 | vampiric thirst | B | activated | The magus can spend 1 point from her arcane pool as a free action so that the damage dealt by her pool strike grants he… |
@@ -515,7 +374,7 @@ _1 of these are shared with mysteries — author once, fan out on promote._
 
 ### mercy  (candidates 1 A / 3 B · curated 0 of 4)
 
-Save DC (`assumed`): `[[ 10 + floor(@classes.paladin.level / 2) + @abilities.cha.mod ]]`
+Save DC (`rules`): `[[ 10 + floor(@classes.paladin.level / 2) + @abilities.cha.mod ]]`
 
 _4 of these are shared with cruelty — author once, fan out on promote._
 
@@ -528,35 +387,20 @@ _4 of these are shared with cruelty — author once, fan out on promote._
 
 ### cruelty  (candidates 0 A / 0 B · curated 0 of 4)
 
-Save DC (`assumed`): `[[ 10 + floor(@classes.antipaladin.level / 2) + @abilities.cha.mod ]]`
+Save DC (`rules`): `[[ 10 + floor(@classes.antipaladin.level / 2) + @abilities.cha.mod ]]`
 
 _no candidates_
 
-### exploits  (candidates 21 A / 19 B · curated 0 of 79)
+### exploits  (candidates 6 A / 18 B · curated 16 of 79)
 
 Save DC (`stated`): `[[ 10 + floor(@classes.arcanist.level / 2) + @abilities.cha.mod ]]`
 
 | power | tier | signals | text |
 |---|---|---|---|
-| acid jet | A | dice, condition | The arcanist can unleash a jet of acid by expending 1 point from her arcane reservoir and making a ranged touch attack… |
-| blood tears | A | save, condition | As a move action, the arcanist can expend 1 point from his arcane reservoir to cause his eyes to turn red and weep tear… |
-| burning flame | A | dice, activated | Whenever the arcanist uses the flame arc exploit, she can expend 2 points from her arcane reservoir instead of one. If… |
 | consume primal magic | A | dice, save, activated, condition, toggle | When the arcanist encounters a primal magic event, as an immediate action she can attempt to consume its power, as the… |
-| damnation susurrus | A | dice, save | The arcanist can spend 1 point from his arcane reservoir as a standard action to manifest a choir of insidious whispers… |
 | feral shifting | A | dice, activated, toggle | As a swift action, the arcanist can spend 1 point from her arcane reservoir to gain either a bite attack that deals 1d6… |
-| fiendish proboscis | A | dice, activated, condition, toggle | The arcanist can spend 1 point from his arcane reservoir as a standard action to grow a long, articulated proboscis cov… |
-| flame arc | A | dice | The arcanist can unleash an arc of flame by expending 1 point from her arcane reservoir. This creates a 30-foot line of… |
-| force strike | A | dice | The arcanist can unleash a blast of force by expending 1 point from her arcane reservoir. This attack automatically str… |
-| hellfire ray | A | dice, condition | When an arcanist uses the flame arc exploit, she can spend 1 additional point from her arcane reservoir to draw the fla… |
-| holy water jet | A | dice | The arcanist can unleash a jet of holy water by expending 1 point from her arcane reservoir. This creates a 30-foot lin… |
-| ice missile | A | dice, condition | The arcanist can unleash a freezing projectile by expending 1 point from her arcane reservoir and making a ranged touch… |
-| lightning lance | A | dice | The arcanist can unleash a lance of lightning by expending 1 point from her arcane reservoir and making a ranged touch… |
-| lingering acid | A | dice | Whenever the arcanist uses the acid jet exploit, she can expend 2 points from her arcane reservoir instead of one. If s… |
 | mending flesh | A | dice, attack, activated, toggle | The arcanist can expend 1 point from her arcane reservoir as a standard action and touch a target to grant superficial… |
 | primal magic | A | dice | In seeking to restore formal training in magic to the world, Old-Mage Jatembe also discovered a few methods of creating… |
-| rift fog | A | dice, save | As a standard action, the arcanist can spend 1 point from his arcane reservoir to create a 5-foot-radius vortex of chil… |
-| shadows out of light | A | dice | The arcanist can spend 1 point from his arcane reservoir to pull fiendish essence from the Outer Rifts into his own sha… |
-| sonic blast | A | dice, save, condition | The arcanist can loose a deafening blast of sonic energy by expending 1 point from her arcane reservoir and succeeding… |
 | tentacles | A | dice, activated, toggle | As a swift action, the arcanist can spend 2 points from his arcane pool to sprout a pair of rubbery tentacles that grow… |
 | weather sage | A | save | If she spends 1 point from her arcane reservoir, the arcanist can predict the weather in her current location for the n… |
 | alter enhancements | B | activated | An arcanist with this exploit can modify the enhancements placed on a weapon, suit of armor, or shield. The arcanist ca… |
@@ -567,7 +411,6 @@ Save DC (`stated`): `[[ 10 + floor(@classes.arcanist.level / 2) + @abilities.cha
 | convert wand | B | activated | An arcanist can spend 1 point from her arcane reservoir as a full-round action to convert one wand that is in her posse… |
 | counterspell | B | activated, toggle | By expending 1 point from her arcane reservoir, the arcanist can attempt to counter a spell as it is being cast. She mu… |
 | dimensional slide | B | activated, toggle | The arcanist can expend 1 point from her arcane reservoir to create a dimensional crack that she can step through to re… |
-| icy tomb | B | condition | Whenever the arcanist uses the ice missile exploit, she can expend 2 points from her arcane reservoir instead of one. I… |
 | invoke primal magic | B | activated, toggle | When an event within 30 feet of the arcanist would trigger a chance for a primal magic effect, the arcanist can spend 1… |
 | maelstrom jump | B | activated, toggle | The arcanist can call upon the randomness of the Maelstrom to move in unpredictable ways. She can expend 1 point from h… |
 | orderly casting | B | activated, toggle | The arcanist can tie her spells to the rigid order of Axis, giving them predictable results. As a swift action, she can… |
@@ -579,103 +422,41 @@ Save DC (`stated`): `[[ 10 + floor(@classes.arcanist.level / 2) + @abilities.cha
 | spell resistance | B | activated | The arcanist can grant herself spell resistance for a number of rounds equal to her Charisma modifier (minimum 1) as a… |
 | suffering knowledge | B | activated, toggle | The arcanist can learn to cast a spell by suffering from its effects. When the arcanist fails a saving throw against a… |
 
-### mysteries  (candidates 93 A / 70 B · curated 0 of 298)
+### mysteries  (candidates 31 A / 64 B · curated 68 of 298)
 
 Save DC (`stated`): `[[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]]`
 
 | power | tier | signals | text |
 |---|---|---|---|
-| aging touch | A | dice, attack, activated, toggle | Your touch ages living creatures and objects. As a melee touch attack, you can deal 1 point of Strength damage for ever… |
 | air barrier | A | attack | You can create an invisible shell of air that grants you a +4 armor bonus. At 7th level, and every four levels thereaft… |
-| ash cloud | A | dice, save | As a standard action, you can surround yourself with a 10-foot-radius cloud of ash, which functions as an obscuring mis… |
-| balefire | A | dice, activated, condition, toggle | You call upon the cleansing or searing fires of the Outer Rifts to burn your foes. As a standard action, one target wit… |
-| battlecry | A | attack, activated, toggle | As a standard action, you can unleash an inspiring battlecry. All allies within 100 feet who hear your cry gain a +1 mo… |
 | bleeding wounds | A | attack | Whenever a creature takes damage from one of your spells or effects that causes negative energy damage (such as inflict… |
-| blistered caress | A | dice, activated, condition, toggle | You can channel the hostile, unforgiving heat of the sun into your touch. This is a melee touch attack that deals 1d8 p… |
-| blizzard | A | dice, save, activated, toggle | As a standard action, you can create a blizzard of snow and ice. You can create one 10-foot cube of this storm per orac… |
-| blood of heroes | A | save, attack, activated, toggle | As a move action, you can call upon your ancestors to grant you extra bravery in battle. You gain a +1 morale bonus on… |
-| brain drain | A | dice, save, activated, toggle | You can take a standard action to violently probe the mind of a single intelligent enemy within 100 feet. The target re… |
-| breath weapon | A | dice, activated, toggle | The primal power of dragonkind seethes within you. You gain a breath weapon. This breath weapon deals 1d6 points of dam… |
 | burning magic | A | dice, save | Whenever a creature fails a saving throw against one of your spells that deals fire damage, that creature catches on fi… |
 | cleansing flames | A | dice, activated, toggle | As a swift action, you can take 1d4 points of damage per oracle level to gain a new saving throw against a single ongoi… |
 | clobbering strike | A | attack, activated, toggle | Whenever you score a critical hit against an opponent with a spell that requires an attack roll, you may immediately at… |
-| cold aura | A | dice, save, activated, toggle | As a swift action, you can cause waves of cold to radiate from your body. This cold deals 1d6 points of cold damage per… |
-| dance of the blades | A | attack | Your base speed increases by 10 feet. At 7th level, you gain a +1 bonus on attack rolls with a metal weapon in any roun… |
-| dance of whirling water | A | attack, bonus_feat | You dance through the battlefield with all the grace and power of the waves, sweeping up enemies and tossing them away… |
-| death's embrace | A | dice, attack, activated, toggle, bonus_feat | You gain Improved Grapple as a bonus feat, even if you do not meet its prerequisites. Once per round when you succeed a… |
-| death's touch | A | dice | You can cause terrible wounds to appear on a creature with a melee touch attack. This attack deals 1d6 points of negati… |
 | desire sight | A | save, activated, toggle | As a standard action, you can learn the desires of any creature you can see within 100 feet, as if you had concentrated… |
-| dust to dust | A | dice, attack, activated, toggle | Once per day as a standard action, you can cause the weapons around you to shatter in their wielders' hands. When you u… |
 | earth glide | A | save, activated | You can pass through stone, dirt, or almost any other sort of earth except worked stone and metal as easily as a fish s… |
-| eldritch bolt | A | dice | You can damage foes with a bolt of raw magical energy. Make a ranged touch attack against any foe within 30 feet. On a… |
-| energy body | A | dice, activated, toggle | As a standard action, you can transform your body into pure life energy, resembling a golden-white fire elemental. In t… |
 | enhanced inflictions | A | dice | You recognize that harming your enemies is sometimes the only way to help your allies, and so your wrath is particularl… |
-| erase from time | A | save, activated, toggle | As a melee touch attack, you can temporarily remove a creature from time altogether. The target creature must make a Fo… |
-| erosion touch | A | dice, attack, activated, toggle | As a melee touch attack, you can deal 1d6 points of damage per level to objects or constructs. If used against an objec… |
-| erupt | A | dice, activated, toggle | As a swift action, you cause flaming shards of rock to erupt from your body. These shards deal 1d6 points of damage per… |
-| fire breath | A | dice, save, activated, toggle | As a standard action, you can unleash a 15-foot cone of flame from your mouth. This flame deals 1d4 points of fire dama… |
-| firestorm | A | dice, save, activated, toggle | As a standard action, you can cause fire to erupt around you. You can create one 10-foot cube of fire per oracle level.… |
 | fluid nature | A | attack, toggle, bonus_feat | You receive a +4 bonus to your Combat Maneuver Defense against bull rush, drag, grapple, reposition, and trip attempts.… |
 | focused trance | A | dice | You can enter a deep meditation, blocking out visual and auditory stimuli and allowing you to concentrate on a single p… |
 | forgotten presence | A | save, activated, toggle | Once per day as an immediate action, you can cause a creature to forget that you were present for the last minute per o… |
 | freezing spells | A | dice | Whenever a creature fails a saving throw and takes cold damage from one of your spells, it is slowed (as the slow spell… |
-| gift of madness | A | save, condition | You tap into the unthinkable void between the stars and cause a single living creature within 30 feet to become confuse… |
-| heat aura | A | dice, save, activated, toggle | As a swift action, you can cause waves of heat to radiate from your body. This heat deals 1d4 points of fire damage per… |
-| interstellar void | A | dice, save, activated, condition, toggle | You call upon the frigid depths of outer space to bring a terrible chill to your enemies. As a standard action, one tar… |
-| iomedae's boon | A | attack, activated, toggle | As a move action, you can call upon your deities to grant you courage. You gain a +1 morale bonus on attack rolls, dama… |
 | iron constitution | A | save | You gain a +1 bonus on Fortitude saves. At 7th level, and again at 14th level, this bonus increases by +1. |
-| knife in the dark | A | attack, activated, toggle | As a standard action, you can make a sneak attack as if you were a rogue of your oracle level. You can use this ability… |
-| life leach | A | dice, save, activated, toggle | You can draw life force from the bodies of enemies and channel it into yourself. As a standard action, you can drain th… |
-| lightning breath | A | dice, save, activated, toggle | As a standard action, you can breathe a 30-foot line of electricity. This line deals 1d4 points of electricity damage p… |
-| lignification | A | save, activated, toggle | Once per day, you can turn a creature into wood. As a standard action, you may direct your gaze against a single creatu… |
 | living shadow | A | attack | Your body dissolves, and you become a living shadow. This ability functions as gaseous form . At 14th level, this abili… |
-| luminous form | A | dice, condition | You can transform your body into churning light, granting you the effects of blur and causing your body to shed light a… |
-| mighty pebble | A | dice, attack, activated, toggle | As a standard action, you can charge and throw a pebble (or other stone of similar size) that detonates when it strikes… |
 | mirrored retreat | A | save, activated, toggle | Once per day as a full-round action, your form ripples and releases seven illusory duplicates, as mirror image , and th… |
-| momentary glimpse | A | attack, activated, toggle | Once per day, you can gain a glimpse into your immediate future. On the round after you use this ability, you gain a +2… |
-| moonbeam | A | dice, save, condition | You can fire a ray of moonlight as a ranged touch attack at any creature within 30 feet. This ray deals 1d6 points of d… |
-| moral crisis | A | save, condition | As a standard action, you can target a living creature within 30 feet of you, reminding it of its moral failings. The t… |
-| night terror | A | dice, activated, toggle | You send your spirit to torment another being's dreams. Once per day, you may target a creature with the effects of a n… |
 | obliterate memory | A | save, activated, toggle | As a standard action, you can target a creature within 30 feet and eliminate all memory of an event the target experien… |
-| pass the torch | A | dice, activated, toggle | Once per day as a swift action, you can channel the energy of the apocalypse into your body, causing you to ignite. You… |
 | perfect aid | A | attack, bonus_feat | You can effortlessly give aid to your allies, whether that means providing them with help attacking or defending them i… |
-| pitiful foe | A | attack, activated, toggle | You can temporarily curse one target within 30 feet as a standard action, making it pitiful and ineffective in battle.… |
-| poetic vengeance | A | save, activated, toggle | You constantly plot and scheme to take your revenge against those who wrong you. Once per day as an immediate action, a… |
-| presence of dragons | A | dice, save, activated, condition, toggle | Those who would oppose you must overcome their fear of dragons or be struck with terror at your draconic majesty. As a… |
 | project psyche | A | save, activated, toggle | You can project your psyche into another vessel. Once per day, you can possess another creature as if using the magic j… |
-| pyroclastic shove | A | dice, attack | As a standard action, you conjure a cascade of volcanic ash to bull rush a creature within 30 feet of you. The CMB of t… |
-| return to dust | A | dice | You call upon the inexorable ravages of time and entropy to damage an object or undead creature within 30 feet, dealing… |
 | rock throwing | A | dice, attack | You are an accomplished rock thrower and have a +1 racial bonus on attack rolls with thrown rocks. You can hurl rocks u… |
-| shadow armament | A | save | You can create a quasi-real simple or martial masterwork weapon appropriate for your current size. You are considered p… |
-| shard explosion | A | dice, save, activated, toggle | As a swift action, you can cause jagged pieces of stone to explode outward from your body. These shards deal 1d6 points… |
 | shell of succor | A | dice, activated, toggle | You can surround an ally with bolstering energies that supplement its health and grant it extra vigor. With a touch fro… |
-| should the bridge be attacked, treat it as a wall of force spray of shooting stars | A | dice, save | As a standard action, you can unleash a ball of energy that explodes in a 5-foot-radius burst dealing 1d4 points of fir… |
-| shroud of retribution | A | dice, activated, toggle | As an immediate action, you can summon a shroud of spirits that reflects your attackers' damage back onto them. Any cre… |
-| solar wind | A | dice, attack, bonus_feat | You can unleash a blast of searing wind at a single target within 30 feet as a ranged touch attack with no range increm… |
 | spell blast | A | attack, activated, toggle | As a swift action whenever you confirm a critical hit against an opponent with a spell that requires an attack roll, yo… |
-| spell deflection | A | attack | You can use a readied action to counterspell any spell being cast on you or an adjacent ally that requires a ranged tou… |
 | spirit of nature | A | dice | When in a natural setting, whenever you are reduced to negative hit points, you automatically stabilize. At 5th level,… |
 | spirit shield | A | attack | You can call upon the spirits of your ancestors to form a shield around you that blocks incoming attacks and grants you… |
-| steel scarf | A | dice, attack, activated, toggle | As a swift action, you can harden a scarf, sleeve, cloak, or other piece of your clothing into something as hard as ste… |
+| spray of shooting stars | A | dice, save | As a standard action, you can unleash a ball of energy that explodes in a 5-foot-radius burst dealing 1d4 points of fir… |
 | stone stability | A | attack, bonus_feat | You receive a +4 bonus to your Combat Maneuver Defense when resisting a bull rush or trip attempt while standing on the… |
-| storm of souls | A | dice, save, activated, toggle | You can summon the spirits of your ancestors to attack in a ghostly barragetheir fury creates physical wounds on creatu… |
-| sweeping impact | A | attack, activated | You can shake the earth and buffet foes with the roaring force of wind you draw from the Elemental Plane of Air. When p… |
-| tail swipe | A | dice, attack | You express your wrath through sweeps of a wicked tail. You can grow a scaly tail. This tail can be used only to make a… |
-| talons of the dragon | A | dice, activated | You fight with the fearsome talons of dragonkind. You can grow claws as a free action. These claws are treated as natur… |
-| terminal aura | A | save, attack, activated | You gain an aura with a 10-foot radius; any creature within that has fewer than 0 hit points but is stable must succeed… |
-| thorn burst | A | dice, save, activated, toggle | As a swift action, you can cause sharp splinters of wood to explode outward from your body. These splinters deal 1d6 po… |
-| thunderburst | A | dice, save, activated, condition, toggle | As a standard action, you can create a blast of air accompanied by a loud peal of thunder. The blast has a range of 100… |
 | torch touch | A | save | As a move action, you can alter the amount of light shed by any nonmagical light source within 60 feet so that its ligh… |
-| touch of acid | A | dice | As a standard action, you can perform a melee touch attack that deals 1d6 points of acid damage +1 point for every two… |
-| touch of electricity | A | dice | As a standard action, you can perform a melee touch attack that deals 1d6 points of electricity damage +1 point for eve… |
-| touch of flame | A | dice | As a standard action, you can perform a melee touch attack that deals 1d6 points of fire damage + 1 point for every 2 o… |
-| touch of the void | A | dice, condition | As a standard action, you can perform a melee touch attack that deals 1d6 points of cold damage + 1 point for every two… |
 | unstoppable overrun | A | attack, bonus_feat | You can attempt overrun combat maneuvers against opponents that are up to two size categories larger than you. At 5th l… |
 | unwilling host | A | save, activated, toggle | You command spirits to invade the bodies of your enemies. Once per day as a standard action you may target a number of… |
 | voice of the grave | A | save, toggle | You can use speak with dead , as the spell, for a number of rounds per day equal to your oracle level. These rounds do… |
-| vortex spells | A | dice, attack, condition | Whenever you score a critical hit against an opponent with an attack spell, the target is staggered for 1 round. At 11t… |
-| whimsical prank | A | attack | As a standard action, you can call upon fey to play a prank on a creature within 30 feet as a dirty trick combat maneuv… |
-| wintry touch | A | dice | As a standard action, you can perform a melee touch attack that deals 1d6 points of cold damage + 1 point for every 2 o… |
 | wood bond | A | attack | Your mystical bond with wood is such that your weapons become an extension of your body. You gain a +1 competence bonus… |
 | wooden weapon | A | attack | You can create a wooden club, quarterstaff, longspear, shortspear, or spear that lasts for 1 minute for every oracle le… |
 | animate primal forces | B | activated, toggle | As a standard action, you can summon a single Small air, earth, fire, or water elemental to serve you. It remains for a… |
@@ -689,7 +470,6 @@ Save DC (`stated`): `[[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.m
 | connaissance | B | activated | You can spend a full-round action to attune yourself to the spirit world, gaining the benefit of a moment of prescience… |
 | curse of dampening | B | activated, toggle | You diminish one target within 30 feet as a standard action, making its attacks weaker. Whenever the target would roll… |
 | delay affliction | B | activated, toggle | Once per day as an immediate action, whenever you fail a saving throw against a disease or poison, you may ignore its e… |
-| desert mirage | B | activated, toggle | Air and fire shroud you from your enemies' vision and superheat your strikes in combat. You can surround yourself with… |
 | doomsayer | B | activated, condition | As a standard action, you can utter a dire prophecy that strikes fear in your enemies and causes them to become shaken.… |
 | dragon magic | B | activated, toggle | Your draconic power grants you a limited form of access to arcane magic. Select one spell from the sorcerer/wizard spel… |
 | dweller in darkness | B | activated, toggle | Once per day, you cast your psyche into the void of space to attract the attention of a terrible otherworldly being. Th… |
@@ -699,7 +479,6 @@ Save DC (`stated`): `[[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.m
 | form of flame | B | activated, toggle | As a standard action, you can assume the form of a Small fire elemental, as elemental body I . At 9th level, you can as… |
 | form of the beast | B | activated, toggle | As a standard action, you can assume the form of a Small or Medium animal, as beast shape I . At 9th level, you can ass… |
 | form of the dragon | B | activated, toggle | Your kinship with dragonkind allows you to take on the form of a dragon. As a standard action, you can assume the form… |
-| gift of claw and horn | B | activated, toggle | As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle… |
 | gossip guru | B | activated, toggle | You sit in a web of intrigue like a spider, subtly tracing the course of rumors and gossip in order to understand the t… |
 | instant armor | B | activated, toggle | Choose one type of heavy armor. You gain proficiency in that armor. At 3rd level, twice per day as an immediate action,… |
 | iron order | B | activated, toggle | Once per day, you can issue an order as per suggestion . Any creature of chaotic alignment has difficulty defying your… |
@@ -708,19 +487,15 @@ Save DC (`stated`): `[[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.m
 | keep to the corners | B | activated, toggle | Once per day when you fail a Reflex saving throw, you can reroll the saving throw with a +4 insight bonus. You must tak… |
 | life link | B | activated, toggle | As a standard action, you may create a bond between yourself and another creature. Each round at the start of your turn… |
 | magma form | B | activated, toggle | As a standard action, you can assume the form of a Small magma elemental, as elemental body I . You gain the same abili… |
-| mantle of moonlight | B | activated, toggle | Your innate understanding of the moon renders you immune to the curse of lycanthropy. Additionally, you may disrupt a l… |
 | natural divination | B | activated, toggle | You can read the entrails of a freshly killed animal or humanoid to gain an insight bonus equal to your Charisma modifi… |
 | path of the snake | B | activated, toggle | Once per day, as a standard action, you can become incorporeal. While in this form, you gain a +10 bonus on Stealth che… |
-| phantom touch | B | condition | As a standard action, you can perform a melee touch attack that causes a living creature to become shaken. This ability… |
 | planar haze | B | activated, toggle | You can fill an area with the smoky miasma of the Outer Rifts. Once per day when you cast a spell that has an area, as… |
 | planar infusion | B | activated, toggle | As a standard action once per day, you can cause a 20-foot-spread to gain either the mildly chaotic-aligned or mildly e… |
 | primal manipulation | B | activated, toggle | Whenever you cast a spell that deals acid, cold, electricity, or fire damage, you may change it to deal one of the othe… |
 | pure whimsy | B | activated, toggle | Once per day, you can release a stream of errant chaos from the First World as a standard action. When you do so, ident… |
 | raise the dead | B | activated, toggle | As a standard action, you can summon a single skeleton or zombie to serve you. The undead creature has a number of Hit… |
 | read the tapestry | B | activated, toggle | Once per day, you can spend 10 minutes meditating on the mysteries of the Dark Tapestry to send your mind to another pl… |
-| rewind time | B | activated, toggle | Once per day as an immediate action, you can reroll any one d20 roll that you have just made before the results of the… |
 | riddle of steel | B | activated, toggle | Your sacred bond with metal gives you insight into its form and function. Once per day, you may spend 10 minutes medita… |
-| rift weapon | B | activated, toggle | Your understanding of the powers that move through the Outer Rifts allows you to imbue weapons with the ability to pene… |
 | roiling soil | B | condition | Combining your mastery of earth and water, you shape the battlefield in your favor, bending the terrain to benefit you… |
 | rusting grasp | B | activated, toggle | Once per day as a standard action, you can perform a melee touch attack that rusts iron, as the rusting grasp spell. At… |
 | scaled toughness | B | activated, toggle | You can manifest the scaly toughness of dragonkind. Once per day as a swift action, you can harden your skin, giving it… |
@@ -749,9 +524,9 @@ Save DC (`stated`): `[[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.m
 | wings of the dragon | B | activated, toggle | Like the great dragons, you can take to the skies and terrorize opponents from above. As a swift action, you can manife… |
 | wisdom of the ancestors | B | activated, toggle | Once per day, you can enter a trance in which you commune with the spirits of your ancestors. This trance lasts for 10… |
 
-### curses  (candidates 10 A / 12 B · curated 0 of 41)
+### curses  (candidates 8 A / 12 B · curated 2 of 41)
 
-Save DC (`stated`): `[[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]]`
+Save DC (`varies`): `[[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.mod ]]`
 
 | power | tier | signals | text |
 |---|---|---|---|
@@ -762,9 +537,7 @@ Save DC (`stated`): `[[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.m
 | infested | A | save, toggle | Insects, spiders, grubs, and other vermin plague you constantly. They crawl in your hair, fill your clothes, and f ly o… |
 | putrid | A | save, condition | Your presence stagnates water and befouls all liquids carried on your person, including magical items such as potions,… |
 | site-bound | A | dice, save, condition | You bond with a particular 10-foot square, and must remain within 1,500 feet of that site or immediately become sickene… |
-| toxic blood | A | dice, save, activated, toggle | Your body is ravaged by a potent, slow-acting poison that resists all treatment. Whenever you must attempt a Fortitude… |
 | wolfscarred face | A | dice | Your face is deformed, as though you were born with a wolf 's muzzle instead of an ordinary nose and jaw. Many mistake… |
-| wrecker | A | save | The destructive power of the Abyss and its teeming hordes of demons seeps from your very pores and into your belongings… |
 | cold-blooded | B | condition, toggle | Your blood turns sluggish without sufficient heat, and you must seek warmth and shelter earlier than most. This oracle… |
 | deaf | B | condition, toggle | You cannot hear and suffer all of the usual penalties for being deafened. You cast all of your spells as if they were m… |
 | ghoul | B | activated, toggle | While your actual dietary needs don't change, you crave the flesh of sentient creatures. You can only go without food f… |
@@ -802,150 +575,2439 @@ Save DC (`stated`): `[[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.m
 | inspiring confidence | B | activated, condition, toggle | a number of times per day equal to his highest weapon training bonus as a swift action, the fighter can allow one ally… |
 | weapon sacrifice | B | activated, toggle | when damage would cause the fighter or an adjacent ally to be knocked unconscious or killed, as a swift or immediate ac… |
 
+## Core (chassis) class features
+
+Baseline features no choice pool holds — swept from `every_class_feature.json`. The
+curated landing zone is the `core_features` overrides section. `class` is best-effort
+(name label → chassis list → prose); labeled variants like `Sneak Attack (SLA)` stay
+separate rows because their progressions differ — author them separately, the applier
+matches the raw name before the label-stripped one.
+
+### (unattributed)  (382 A / 252 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Aberrant Bloodline | A | dice, attack | There is a taint in your blood, one that is alien and bizarre. You tend to think in odd ways, approaching problems from… |
+| Aberrant Form | A | attack | At 20th level, your body becomes truly unnatural. You are immune to critical hits and sneak attacks. In addition, you g… |
+| Abnormal Anatomy | A | attack | At 12th level, your internal anatomy shifts and changes, giving you a 50% chance to negate any critical hit or sneak at… |
+| Abyssal Bloodline | A | dice, activated | Generations ago, a demon spread its filth into your heritage. While it does not manifest in all of your kin, for you it… |
+| Abyssal Claws | A | dice, activated | At 1st level, you can grow claws as a free action. These claws are treated as natural weapons, allowing you to make two… |
+| Adoration | A | save, activated, toggle | As an immediate action, you can attempt to thwart a melee or ranged attack that targets you. This ability functions as… |
+| Agent of Fate | A | dice | At 8th level, when you use your augury spell-like ability, you gain a benefit that lasts until the end of your next com… |
+| Agony's Embrace | A | dice, attack | At 12th level, whenever you’re hit by a critical hit, your morale bonus to Strength from your bloodrage increases by 2… |
+| Air Domain | A | dice | Granted Powers: You can manipulate lightning, mist, and wind, traffic with air creatures, and are resistant to electric… |
+| Alien Consciousness (UC) (3 pts) | A | dice, activated, toggle | Requirements: Aberrant or protean subtype; summoner level 9th. The eidolon’s mind is dangerously incomprehensible to mo… |
+| Aligned Sneak Attack | A | attack | When making a sneak attack against a creature that has damage reduction that can be overcome by weapons of a particular… |
+| Alignment Smite | A | dice, activated, toggle | Choose a single alignment component that opposes one of the summoner’s own. Once per day as a swift action, the eidolon… |
+| Amorphous (UC) (4 pts) | A | attack | Requirements: Aberrant or elemental subtype; summoner level 9th. The eidolon’s biology lacks discernible weak points. I… |
+| Amorphous Anatomy | A | attack | At 20th level, your vital organs shift position, and as a rule they are constantly changing their shape and size to bes… |
+| Ancestral Champion | A | dice | At 12th level, when your ancestral strikes target a creature whose alignment is opposite to the type of damage the stri… |
+| Ancestral Strikes | A | dice, activated, toggle | At 1st level, three times per day as a swift action, you can imbue your melee attacks with a measure of your ancestor’s… |
+| Ancient Tactics | A | attack, activated, toggle | At 4th level, while you are bloodraging, whenever you or an ally within 30 feet of you would gain a bonus on attack rol… |
+| Angelic Attacks | A | dice | At 1st level, your melee attacks are considered good-aligned weapons for the purpose of bypassing damage reduction. Fur… |
+| Animal Mastery | A | save, activated | As a standard action, you can project your mind into the mind of an animal you can see, establishing a mental link that… |
+| Anything to Please | A | dice, save, activated, condition, toggle | At 8th level, you can compel a creature within 30 feet to attempt to please you as a standard action. The creature rece… |
+| Apocalypse Final Revelation | A | dice, attack, activated, toggle | Upon reaching 20th level, you become a herald of the apocalypse and wield the awesome power to fulfill such prophecy. A… |
+| Aquatic Bloodline | A | attack | Your family traces its heritage back to the ocean depths, whether scions of undersea empires left in the wake of nomadi… |
+| Arcane Ambush | A | attack, activated, toggle | At 9th level, as a swift action , you can expend a spell slot in order to grant you and your allies a bonus on attack a… |
+| Archmage Spirit | A | attack, toggle | An archmage spirit is a font of knowledge and arcane power. Spirit Bonus: When you channel an archmage, your spirit bon… |
+| Artifice Domain | A | dice, activated, toggle | Granted Powers: You can repair damage to objects, animate objects with life, and create objects from nothing. Subdomain… |
+| Assume Control | A | dice | At 1st level, you can attempt to gain control over a summoned creature by disrupting the bond between it and the caster… |
+| Astral Warp | A | dice, save, toggle | At 1st level, you can create a sparkling field within 30 feet that distorts time within a 5-foot cube. This field lasts… |
+| Aura of Decay | A | dice, toggle | At 8th level, you can emit a 30-foot aura of decay as a standard action. Living creatures in this aura (except you) tak… |
+| Aurora Borealis | A | save | At 9th level, you can create a sheet of cascading colors. This power acts as a @Compendium[pf1.spells.92hth51cs9oi0nfe]… |
+| Banishment Subschool | A | save, condition | Associated School: @Compendium[pf1.class-abilities.3j7RxplJSeXVt0X1]{Abjuration}. Replacement Powers: This subschool re… |
+| Bat Aspect | A | dice | The aspect of the bat imparts mastery over darkness and the night. Though not as powerful in battle as some other aspec… |
+| Battle Final Revelation | A | attack, activated | Upon reaching 20th level, you become an avatar of battle. You can take a full-attack action and move up to your speed a… |
+| Bear Aspect | A | dice | The aspect of the bear invokes a juggernaut of tireless endurance and furious power. Those who take this aspect are kno… |
+| Bite (1 pt) | A | dice, attack | An eidolon's maw is full of razor-sharp teeth, giving it a bite attack. This attack is a primary attack. The bite deals… |
+| Bite (UC) (1 pt) | A | dice, attack | Requirements: Agathion, daemon, demon, devil, div, elemental, protean, or psychopomp subtype. The eidolon’s maw is full… |
+| Black Blood Immunity | A | attack | At 20th level, you gain immunity to cold, nonlethal damage, critical hits, and sneak attacks. You have this benefit con… |
+| Black Blood Transfusion | A | attack | At 16th level, when you confirm a critical hit, some of your black blood seeps into the target’s wounds. The next time… |
+| Blackened Curse | A | attack, toggle | Your hands and forearms are shriveled and blackened, as if you had plunged your arms into a blazing fire, and your thin… |
+| Blade Rush Infusion | A | attack, toggle | Element universal; Type form infusion; Level 2; Burn 2 Prerequisite kinetic blade Associated Blasts any Saving Throw no… |
+| Blade Whirlwind Infusion | A | attack | Element universal; Type form infusion; Level 5; Burn 3 Prerequisite kinetic blade Associated Blasts any Saving Throw no… |
+| Bleed (1 pt) | A | dice, attack | An eidolon gains the ability to inflict bleeding wounds. Select one type of attack. Attacks of that type deal 1d6 point… |
+| Blood Frenzy (UC) (2 pts) | A | attack, condition | Requirements: Aberrant, daemon, or demon subtype; summoner level 7th. When the eidolon is dealt damage, it enters a blo… |
+| Boar Aspect | A | dice, bonus_feat | Those with the aspect of the boar are famously stubborn. Minor Form: You gain @Compendium[pf1.feats.O0e0UCim27GPKFuW]{D… |
+| Boar's Charge | A | attack, activated, toggle | While raging, when you hit with a gore attack as part of a charge, you automatically score a critical threat. You must… |
+| Body Snatch | A | attack, activated, toggle | At 10th level, once per day as an immediate action upon falling unconscious because of dropping below 0 hit points, you… |
+| Bolster | A | attack | As a standard action , you can touch an undead creature and infuse it with negative energy. It gains a +1 profane bonus… |
+| Bolstering Touch | A | dice | You can touch a willing creature as a standard action, bracing it against frightening situations and allowing it to rem… |
+| Bones Final Revelation | A | attack, activated, toggle | Upon reaching 20th level, you become a master of death. Once per round, you can cast bleed or stabilize as a free actio… |
+| Bowling Infusion | A | attack | Element aether, earth; Type substance infusion; Level 2; Burn 2 Associated Blasts earth, magma, metal, mud, telekinetic… |
+| Breath Weapon (UC) (4 pts) | A | dice, save, activated, toggle | Requirements: Summoner level 9th. The eidolon learns to exhale a cone or line of magical energy, gaining a breath weapo… |
+| Bull Aspect | A | dice | The bull is a fierce charger and is adept at trampling its foes, pounding them to a bloody pulp. Minor Form: You gain a… |
+| Burning Infusion | A | dice, attack | Element fire; Type substance infusion; Level 1; Burn 1 Associated Blasts blue flame, fire, magma, plasma Saving Throw R… |
+| Caging Strike | A | dice, attack, toggle | With a devastating weapon strike, spectral chains wrap around your target for a short period of time. Whenever you conf… |
+| Call Fire | A | dice, save | As a standard action, you can stretch out your hand toward any visible fire source within 60 feet and beckon it toward… |
+| Call to Arms | A | attack, activated, toggle | At 20th level, you can summon a ghostly army from a fallen civilization once per day. This functions as @Compendium[pf1… |
+| Careful Stab | A | attack | When a character with this talent reduces a creature to fewer than 0 hp with precision damage, she can choose to leave… |
+| Celestial Bloodline | A | dice, attack, activated, toggle | Your bloodline is blessed by a celestial power, either from a celestial ancestor or through divine intervention. Althou… |
+| Certain Strike | A | attack | At 8th level, you may reroll an attack roll once during a bloodrage. You must decide to use this ability after the die… |
+| Chain Infusion | A | dice, activated | Element air; Type form infusion; Level 5; Burn 3 Associated Blasts electric Saving Throw none Your electric blast leaps… |
+| Champion Spirit | A | save, attack, toggle | A champion spirit is a paragon of skill at arms. Spirit Bonus: When you channel a champion, your spirit bonus applies o… |
+| Chaos Blessing: Anarchic Strike | A | dice | At 1st level, you can touch one weapon and grant it a chaotic blessing. For 1 minute, this weapon glows yellow or purpl… |
+| Child of Ancient Winters | A | attack | At 20th level, You gain the cold subtype and you become immune to fatigue and exhaustion . In addition, you gain immuni… |
+| Claws (1 pt) | A | dice | An eidolon has a pair of vicious claws at the end of its limbs, giving it two claw attacks. These attacks are primary a… |
+| Claws (UC) (1 pt) | A | dice | Requirements: Agathion, daemon, demon, devil, div, elemental, protean, or psychopomp subtype. The eidolon has a pair of… |
+| Cleansing Flame | A | dice, condition | At 9th level, twice per day, you can use fire to restore the health of yourself or your allies. As a standard action, y… |
+| Cloud Subdomain | A | dice, condition | Granted Powers: You can manipulate lightning, mist, and wind, traffic with air creatures, and are resistant to electric… |
+| Cloud of Smoke | A | attack, toggle | As a standard action, you can create a 5-foot-radius cloud of smoke. This power has a range of 30 feet. Creatures insid… |
+| Collector of Souls | A | dice, activated, condition, toggle | At 8th level, once per day as a standard action, you call forth an illusory fiend and order it to temporarily drag a li… |
+| Command | A | save, activated, toggle | As a standard action, you can give a creature an emotionless yet undeniable order, as per the spell @Compendium[pf1.spe… |
+| Community Blessing: Fight as One | A | attack | At 10th level, you can rally your allies to fight together. For 1 minute, whenever you make a successful melee or range… |
+| Community Domain | A | dice, activated, condition, toggle | Granted Powers: Your touch can heal wounds, and your presence instills unity and strengthens emotional bonds. Subdomain… |
+| Consume the Enemy | A | dice, activated | As a full-round action that is considered an evil act and provokes attacks of opportunity, you can bite a helpless livi… |
+| Conviction | A | attack, activated, toggle | At 15th level, you can reroll any one ability check, attack roll, skill check, or saving throw you just made. You must… |
+| Covetous Curse | A | attack, condition | You find yourself drawn to the luster of wealthy living. You must wear fine nonmagical clothing and jewelry worth at le… |
+| Critical Precision | A | attack | At 8th level, when you roll a critical threat, you may expend one use of your torturer's touch ability to add +4 on you… |
+| Crocodile Aspect | A | dice, attack, activated, condition | The crocodile lurks in the water, unseen until it lunges forth with its powerful jaws. Minor Form: You gain a +2 compet… |
+| Cruelty | A | dice, save, condition | At 3rd level, and every three levels thereafter, an antipaladin can select one cruelty. Each cruelty adds an effect to… |
+| Curse Blessing: Retributive Curse | A | attack, activated, toggle | At 10th level, as a swift or immediate action, you can inflict a curse on any adjacent creature that scores a critical… |
+| Curse Conduit | A | attack, activated | At 20th level, you gain immunity to negative energy damage and all spells with the curse descriptor. Whenever you confi… |
+| Danger Sense | A | save | At 3rd level, the character gains a +1 bonus on Reflex saves to avoid traps and a +1 dodge bonus to AC against attacks… |
+| Dark Tapestry Final Revelation | A | attack, activated, toggle | Upon reaching 20th level, you become a truly alien and unnatural creature. You gain damage reduction 5/— and immunity t… |
+| Darkness Domain | A | dice, attack, bonus_feat | Granted Powers: You manipulate shadows and darkness. In addition, you receive @UUID[Compendium.pf1.feats.Item.pmAO1Sni8… |
+| Dawning Realization | A | save, condition | At 8th level, you can impart a shared vision of unfathomable ineffability to a living creature you touch as a standard… |
+| Dazzling Infusion | A | save, condition | Element fire, wood; Type substance infusion; Level 1; Burn 1 Associated Blasts blue flame, fire, plasma, positive, verd… |
+| Death Domain | A | dice, attack | Granted Powers: You can cause the living to bleed at a touch, and find comfort in the presence of the dead. Subdomains:… |
+| Deep Cover | A | save, activated, toggle | When you prepare your spells, you can also choose one cover identity—whether that of a real person or a fictitious one.… |
+| Defy Death | A | save, activated, toggle | At 12th level, once per day when an attack or spell that deals damage would result in your death, you can attempt a DC… |
+| Demonic Aura | A | dice, toggle | At 16th level, when entering a bloodrage you can choose to exude an aura of fire. The aura is a 5-foot burst centered o… |
+| Destined Bloodline | A | save, attack, activated, toggle | Your family is destined for greatness in some way. Your birth could have been foretold in prophecy, or perhaps it occur… |
+| Destiny Realized | A | attack, activated, toggle | At 20th level, your moment of destiny is at hand. Any critical threats made against you only confirm if the second roll… |
+| Destruction Blessing: Destructive Attacks | A | attack | At 1st level, you can touch an ally and bless it with the power of destruction. For 1 minute, the ally gains a morale b… |
+| Destruction Blessing: Heart of Carnage | A | attack | At 10th level, you can touch an ally and bless it with even greater destructive power. For 1 minute, the ally gains a +… |
+| Destruction Domain | A | attack | Granted Powers: You revel in ruin and devastation, and can deliver particularly destructive attacks. Subdomains: @UUID[… |
+| Disorientation (Stare) | A | attack | The hypnotic stare penalty also applies on attack rolls. |
+| Distributed Body | A | attack | At 15th level, anytime you are struck by a critical hit or a sneak attack , there is a 25% chance that your nanites sca… |
+| Div Bloodline | A | dice | You can trace your ancestry to one of the foul, corrupted genies known as divs. Class Skill: Knowledge (planes). Bonus… |
+| Divination School | A | attack, toggle | Diviners are masters of remote viewing, prophecies, and using magic to explore the world. @Compendium[pf1.class-abiliti… |
+| Divine Demand | A | dice, activated, condition, toggle | At 6th level, you can petition your divine patron for far greater power than you deserve. Activating this ability is a… |
+| Divine Retribution | A | dice | As a standard action, you can point at one creature within 30 feet to indicate that it is the target of divine wrath. A… |
+| Divine Vessel | A | attack, activated, toggle | Whenever you are the target of a divine spell, you can, as a swift action, grant each ally within 15 feet of you a divi… |
+| Dolphin Aspect | A | dice | The aspect of the dolphin imparts clever mastery of the seas. Shifters with this aspect also embody the size and feroci… |
+| Draconic Bloodline | A | dice, save, activated, toggle | At some point in your family’s history, a dragon interbred with your bloodline, and now its ancient power flows through… |
+| Draconic Claws | A | dice, activated | Starting at 1st level, you can grow claws as a free action. These claws are treated as natural weapons, allowing you to… |
+| Dragon Final Revelation | A | dice | Upon reaching 20th level, your draconic destiny unfolds. You gain immunity to paralysis, sleep, and damage of your ener… |
+| Dragonbreath | A | dice, save, activated, toggle | At 4th level, you can use a breath weapon once per day as a standard action. When you gain this ability, choose what ki… |
+| Dragonfly Aspect | A | dice, attack, bonus_feat | The aspect of the dragonfly offers the ability to make quick, darting attacks at foes. Minor Form: You gain an enhancem… |
+| Drain Vibrancy | A | save | At 13th level, you can drain the color and vitality from the world around you. Three times per day, as a standard actio… |
+| Draining Infusion | A | save, attack | Element universal; Type substance infusion; Level 1; Burn 1 Associated Blasts any simple Saving Throw Fortitude partial… |
+| Dream Leech | A | save, activated | While adjacent to a sleeping or unconscious creature, you can take a swift action to siphon that creature’s dreams, the… |
+| Dreamshaper | A | save, activated, toggle | At 9th level, you can manipulate the dreamscape of others, drawing forth or tampering with their subconscious minds. Th… |
+| Earth Blessing: Acid Strike | A | dice | At 1st level, you can touch one weapon and enhance it with acidic potency. For 1 minute, this weapon emits acrid fumes… |
+| Earth Domain | A | dice | Granted Powers: You have mastery over earth, metal, and stone, can fire darts of acid, and command earth creatures. Sub… |
+| Earthquake Blessing; Earth Hammer | A | save, condition | At 10th level, you can touch a weapon to bless it with the force of a mighty earthquake for 1 minute. When the weapon h… |
+| Ectoplasmic Body | A | attack | At 20th level, you are more ectoplasm than flesh. You become immune to sneak attacks and critical hits and gain DR 5/sl… |
+| Electric Eel Aspect | A | dice, save, attack, condition | The aspect of the electric eel imparts the ability to charge attacks with electricity and to slip effortlessly out of d… |
+| Elemental Bloodline | A | dice, save, attack, activated, toggle | The power of the elements resides in you, and at times you can hardly control its fury. This influence comes from an el… |
+| Elemental Body | A | attack | At 20th level, elemental power surges through your body. You gain immunity to sneak attacks, critical hits, and damage… |
+| Elemental Final Revelation | A | attack | Upon reaching 20th level, your body undergoes an internal elemental shift, and you become a living conduit of the Eleme… |
+| Elemental Strikes | A | dice, activated, toggle | At 1st level, three times a day as a swift action you can imbue your melee attacks with elemental energy. For 1 round,… |
+| Elemental Trap Infusion | A | save | Element universal; Type form infusion; Level 3; Burn 2 Associated Blasts any Saving Throw Reflex half, see text You tou… |
+| Elephant Aspect | A | dice, attack, bonus_feat | The elephant is a symbol of both power and wisdom in Garund and Vudra. Shifters who take this aspect learn the value of… |
+| Elysium's Call | A | attack | With a touch, you can imbue creatures with the spirit of Elysium, lifting their spirits and freeing them from bonds. Th… |
+| Emboldening Strike | A | attack | When a character with this talent hits a creature with a melee attack that deals sneak attack damage, she gains a +1 ci… |
+| Emptiness | A | save, attack, activated, toggle | Element void; Type defense (Su); Level —; Burn 0 Your body becomes an empty husk, fueled by an internal void. You gain… |
+| Energize Weapon Infusion | A | dice | Element air, fire, void, water; Type form infusion; Level 1; Burn 1 Associated Blasts blue flame, cold, electric, fire,… |
+| Energy Attacks (2 pts) | A | dice, activated | An eidolon's attacks become charged with energy. Pick one energy type: acid, cold, electricity, or fire. All of the eid… |
+| Energy Attacks (UC) (2 pts) | A | dice, activated | Requirements: Summoner level 5th. The eidolon’s attacks become charged with energy. Select one energy type: acid, cold,… |
+| Energy Kinetic Blade | A | attack | Element(s) universal; Type form infusion; Level 1; Burn 1 Associated Blasts any Saving Throw none You form a weapon usi… |
+| Energy Ward | A | dice | As a standard action, you can expend 1 point of mental focus to surround yourself in a swirling ward of energy. When yo… |
+| Entangling Ectoplasm | A | dice | At 1st level, you can create a ball of ectoplasm and hurl it at targets within 30 feet. This ectoplasm acts as a tangle… |
+| Eternal Past | A | dice | At 15th level, you gain an immersive mindscape. This functions as a permanent @Compendium[pf1.spells.c14tjrds5emxk417]{… |
+| Evil Blessing: Unholy Strike | A | dice | At 1st level, you can touch one weapon and give it an evil blessing. For 1 minute, this weapon takes on a black, orange… |
+| Executioner's Strike | A | attack, activated, toggle | At 8th level, your precision in combat has become incredible, and you can strike a lethal blow if your target cannot de… |
+| Extinguishing Strike | A | attack, activated, toggle | When a character with this talent hits a creature with a melee attack that deals sneak attack damage, any nonmagical li… |
+| Fearful Touch | A | save, attack, toggle | As a standard action, you can make a melee touch attack against a creature, causing it to experience terrible hallucina… |
+| Feed on Fear | A | dice, activated, toggle | At 8th level, as an immediate action upon successfully landing a melee attack on a creature that is already suffering f… |
+| Ferocity | A | save, condition | At 5th level, you cling to life with increasing ferocity. You gain ferocity as per the universal monster rule. Whenever… |
+| Fiendish Boon | A | attack, activated, toggle | Upon reaching 5th level, an antipaladin receives a boon from his dark patrons. This boon can take one of two forms. Onc… |
+| Fire Blessing: Fire Strike | A | dice | At 1st level, you can touch one weapon and enhance it with the grandeur of fire. For 1 minute, this weapon glows red-ho… |
+| Fire Domain | A | dice | Granted Powers: You can call forth fire, command creatures of the inferno, and your flesh does not burn. Subdomains: Ar… |
+| Fire Steed | A | dice | Element fire; Type utility (Sp); Level 2; Burn 0 You imbue a willing animal, magical beast, or other creature that can… |
+| Flame Trap | A | save | Element fire; Type utility (Sp); Level 2; Burn 0 You lay a fiery trap on a container, ensuring the destruction of sensi… |
+| Flash Infusion | A | save, condition | Element fire; Type substance infusion; Level 4; Burn 3 Associated Blasts blue flame, fire, plasma Saving Throw Will neg… |
+| Flood Blessing: Tsunami Burst | A | attack, activated, toggle | At 10th level, when you are hit by a melee attack, you can invoke this blessing as an immediate action. A wave of water… |
+| Focused Blast Infusion | A | attack | Element universal; Type form infusion; Level 2; Burn 2 Associated Blasts any Saving Throw none You focus your blast in… |
+| Focusing Attack | A | attack, condition | When a character selects this talent, she must choose the @UUID[Compendium.pf1.pf1e-rules.JournalEntry.NSqfXaj4MevUR2uJ… |
+| Foe Throw Infusion | A | save, condition | Element aether; Type form infusion; Level 3; Burn 2 Associated Blasts telekinetic Saving Throw Fortitude negates; see t… |
+| Force Missile | A | dice | As a standard action you can unleash a force missile that automatically strikes a foe, as @Compendium[pf1.spells.49yc9d… |
+| Forced Alliance | A | save | As a standard action, you can alter a living creature’s mind, causing it to see you as a friend and ally. If the creatu… |
+| Foresight Subschool | A | attack, activated, toggle | Associated School: @UUID[Compendium.pf1.class-abilities.ctFPHquS2GydVoZV]{Divination School} Replacement Powers: The fo… |
+| Foretell | A | attack, toggle | At 8th level, you can utter a prediction of the immediate future. While your foretelling is in effect, you emit a 30-fo… |
+| Fortified Position | A | save | Whenever the character gains a bonus on Reflex saves due to cover, she gains an equal bonus on Fortitude saves. |
+| Foxfire | A | save, activated | Element fire, wood; Type utility (Sp); Level 2; Burn 0 Prerequisite fire blast or positive blast Saving Throw none; SR… |
+| Fragmentation Infusion | A | save, attack | Element earth, water; Type form infusion; Level 7; Burn 4 Prerequisite extended range Associated Blasts earth, ice, met… |
+| Friend to Nature | A | dice, activated, toggle | At 9th level, once per day you can create a spear of pure light and throw it at a creature within 60 feet as a standard… |
+| Frightful Presence (3 pts) | A | dice, save, condition | An eidolon becomes unsettling to its foes, gaining the frightful presence ability. The eidolon can activate this abilit… |
+| Frightful Presence (UC) (3 pts) | A | dice, save, condition | Requirements: Summoner level 11th. The eidolon becomes unsettling to its foes, gaining the frightful presence ability.… |
+| Frog Aspect | A | dice, toggle | The aspect of the frog grants great mobility in leaping through the air and swimming in water, as well surprising tacti… |
+| Ghoulish Aspect | A | dice, condition | At 20th level, you take on aspects of the nature and appearance of ghouls . You no longer feel the need to eat and are… |
+| Ghoulish Claws | A | dice, activated, condition | Starting at 1st level, you can grow claws as a free action . These claws are treated as natural weapons , allowing you… |
+| Giant Wasp Aspect | A | dice, save, activated | The aspect of the wasp grants flight and a venomous sting, as well as great mental resistance. A giant wasp’s alternate… |
+| God-Meddled Curse | A | dice, activated, condition, toggle | The isle of Iblydos is populated and watched over by hero-gods, some of whom are known for entangling mortals in their… |
+| Good Blessing: Holy Strike | A | dice | At 1st level, you can touch one weapon and bless it with the power of purity and goodness. For 1 minute, this weapon gl… |
+| Good Domain | A | attack, activated, toggle | Granted Powers: You have pledged your life and soul to goodness and purity. Subdomains: @UUID[Compendium.pf1.class-abil… |
+| Gore (2 pts) | A | dice | An eidolon grows a number of horns on its head, giving it a gore attack. This attack is a primary attack. The gore deal… |
+| Gore (UC) (2 pts) | A | dice | Requirements: Agathion, daemon, demon, devil, div, elemental, protean, or psychopomp subtype. The eidolon grows a numbe… |
+| Grab (2 pts) | A | attack | An eidolon becomes adept at grappling foes, gaining the grab ability. Pick bite, claw, pincers, slam, tail slap, or ten… |
+| Grab (UC) (2 pts) | A | attack | The eidolon becomes adept at grappling foes, gaining the grab ability. Select one of the following attacks: bite, claw,… |
+| Grappling Infusion | A | attack | Element universal; Type substance infusion; Level 5; Burn 3 Associated Blasts any Saving Throw none Your cloud, deadly… |
+| Grazing Shot | A | attack | The following character talent is available to drow rogues. Particularly deft rogues can strike two foes with one well-… |
+| Guardian Spirit | A | save, attack, condition, toggle | A guardian spirit is an exemplar of protection and defense. Spirit Bonus: When you channel a guardian, your spirit bonu… |
+| Hallucinogenic Aura | A | dice, save, condition | At 13th level, a mental field emanates from you, touching the minds of those nearby. Any creature within 30 feet of you… |
+| Hand of the Acolyte | A | attack | You can cause your melee weapon to fly from your grasp and strike a foe before instantly returning. As a standard actio… |
+| Hand of the Apprentice | A | attack | You cause your melee weapon to fly from your grasp and strike a foe before instantly returning to you. As a standard ac… |
+| Healing Domain | A | dice | Granted Powers: Your touch staves off pain and death, and your healing magic is particularly vital and potent. Subdomai… |
+| Healing Grace | A | attack | Whenever you cast a spell that has targets, affects creatures in an area, or requires an attack roll , you may heal cre… |
+| Heavens Final Revelation | A | attack | Upon achieving 20th level, your rapport with the heavens grants you perfect harmony with the universe. You receive a bo… |
+| Hierophant Spirit | A | save, toggle | A hierophant spirit is a being of true and pure faith. Spirit Bonus: When you channel a hierophant, your spirit bonus a… |
+| Hooves (1 pt) | A | dice | An eidolon has a pair of sharp hooves at the end of its limbs, giving it two hoof attacks. These attacks are secondary… |
+| Hunger Curse | A | dice, condition | Ravenous hunger wracks your body in stressful situations. You gain none of the benefits from spells or magic items that… |
+| Hunter's Surprise | A | attack, activated, toggle | Once per day, a character with this talent can designate a single enemy she is adjacent to as her prey. Until the end o… |
+| Immolation | A | dice, activated, toggle | At 3rd level, you gain the ability to surround yourself in fire as a swift action . This fire burns for a number of rou… |
+| Impale Infusion | A | attack | Element earth, water, wood; Type form infusion; Level 3; Burn 2 Associated Blasts earth, ice, metal Saving Throw none Y… |
+| Improved Shadow's Chill | A | attack | When a character with this talent hits a creature with a melee weapon that deals sneak attack damage, the sneak attack… |
+| Indulge | A | save, activated, condition, toggle | At 8th level, once per day as a standard action, you can awaken a creature’s vice and overwhelm its senses with urgency… |
+| Infernal Binder Subschool | A | dice, bonus_feat | The prestigious Egorian Academy of the Magical Arts in Cheliax’s capital city teaches a full spectrum of magic, both sp… |
+| Infernal Bloodline | A | dice, save, activated, condition, toggle | Somewhere in your family’s history, a relative made a deal with a devil, and that pact has influenced your family line… |
+| Infested Curse | A | save, toggle | Insects, spiders, grubs, and other vermin plague you constantly. They crawl in your hair, fill your clothes, and fly or… |
+| Innocuous Servant | A | dice | The character is an expert at appearing to be an unimportant servant, be it an attaché, bodyguard, driver, maid, kitch… |
+| Insect Subdomain | A | dice, save | Replacement Power: The domain spells provided by the Insect domain affect vermin rather than animals, treating them as… |
+| Inspiring Call | A | attack, activated, toggle | As a standard action, you can grant all allies who can see and hear you a competence bonus equal to your spirit bonus o… |
+| Inspiring Prediction | A | attack, activated, toggle | A number of times per day equal to 3 + your Intelligence modifier, you can predict an ally’s success, bolstering others… |
+| It Is My Nature | A | save, activated, toggle | At 20th level, your poisoned blood protects you, reflexively conjuring an ethereal stinger to lash out at foes who come… |
+| It was Meant to Be | A | attack, activated, toggle | At 9th level, you may reroll any one attack roll, critical hit confirmation roll, or level check made to overcome spell… |
+| Jagged Flesh | A | dice | Element earth; Type utility (Sp); Level 3; Burn 1 Prerequisite flesh of stone You painfully push forth jagged chunks of… |
+| Judicious Force | A | attack, activated, toggle | If you or an ally within 10 feet makes a critical threat with a melee or ranged attack, as an immediate action you may… |
+| Ki Block | A | save, attack | A character with this trick/talent can prevent a creature from using its ki pool. Whenever the character deals sneak at… |
+| Kinetic Blade Infusion | A | attack | Element universal; Type form infusion; Level 1; Burn 1 Associated Blasts any Saving Throw none You form a weapon using… |
+| Kinetic Fist Infusion | A | dice | Element universal; Type form infusion; Level 1; Burn 1 Associated Blasts any Saving Throw none You surround your body w… |
+| Kinetic Restoration | A | dice, condition | Element universal; Type utility (Su); Level 3; Burn 1 You recover from 1d4 points of ability score damage to one of you… |
+| Large (4 pts) | A | attack, toggle | An eidolon grows in size, becoming Large. The eidolon gains a +8 bonus to Strength, a +4 bonus to Constitution, and a +… |
+| Law Blessing: Axiomatic Strike | A | dice | At 1st level, you can touch one weapon and enhance it with the essence of law. For 1 minute, this weapon glows blue, pa… |
+| Law Domain | A | attack, activated, toggle | Granted Powers: You follow a strict and ordered code of laws, and in so doing, achieve enlightenment. Subdomains: @UUID… |
+| Legendary Marshal | A | dice | You can use a lesser spirit surge without incurring influence. This lesser surge adds a maximum of 1d6 to the roll and… |
+| Leshy Caller | A | attack | You can spontaneously swap out any of your domain spells for a summon nature’s ally spell of the same level or lower, t… |
+| Lethality (Stare) | A | save | The hypnotic stare penalty also applies to the target’s Fortitude saves versus poison and diseases. |
+| Life Final Revelation | A | attack, condition | Upon reaching 20th level, you become a perfect channel for life energy. You become immune to bleed, death attacks, exha… |
+| Life Subschool | A | dice, attack | Associated School: @UUID[Compendium.pf1.class-abilities.ZuFI7iaKeWv3n5pA]{Necromancy School} Replacement Powers: The fo… |
+| Light Matrix | A | dice, save, condition | As a standard action, you can expend 1 point of mental focus to create a glowing orb of swirling lights that obeys your… |
+| Lightning Subdomain | A | dice, activated, toggle | Granted Powers: You can manipulate lightning, mist, and wind, traffic with air creatures, and are resistant to electric… |
+| Lion Aspect | A | attack, activated, toggle, bonus_feat | Lions hunt in prides, cooperating to bring down large opponents and defend their territory. A lion’s alternate attack i… |
+| Living Paradox | A | attack | At 20th level, your outward appearance remains the same, but beneath your skin lies not flesh and blood but clockwork g… |
+| Living Swarm | A | attack | At 20th level, you and the machines within you become one. Your nanites consume and replicate your body, allowing swift… |
+| Lizard Aspect | A | dice | The aspect of the lizard is one of swift, graceful movement, granting the ability to dart and scurry with an astounding… |
+| Luck Blessing: Lucky Presence | A | attack | At 1st level, you can touch an ally and grant it a lucky presence. The target of this luck can call upon it to roll any… |
+| Madness Domain | A | save, attack, toggle | Granted Powers: You embrace the madness that lurks deep in your heart, and can unleash it to drive your foes insane or… |
+| Maelstrom Infusion | A | save, activated | Element water; Type substance infusion; Level 8; Burn 4 Prerequisite extended range Associated Blasts charged water, wa… |
+| Mage of the Veil Subschool | A | save | The city of Katheer is home to a great number of arcane colleges in the Qadiran tradition. Magic has a proud history in… |
+| Magic Blessing: Hand of the Acolyte | A | attack | At 1st level, you can cause your melee weapon to fly from your grasp and strike an opponent, then instantly return to y… |
+| Magic Domain | A | attack, activated, toggle | Granted Powers: You are a true student of all things mystical, and see divinity in the purity of magic. Subdomains: @UU… |
+| Magnetism | A | attack | Element air, earth; Type utility (Sp); Level 3; Burn 0 Prerequisite magnetic infusion Saving Throw none; SR yes You can… |
+| Mantis Aspect | A | dice, bonus_feat | The aspect of the mantis imparts uncanny patience and unsettling speed. Minor Form: You gain @UUID[Compendium.pf1.feats… |
+| Marshall's Order | A | attack, activated, toggle | You can use your spirit surge on attack rolls, saving throws, ability checks, concentration checks, and skill checks ro… |
+| Master's Yoke | A | save, activated, condition, toggle | At 8th level, you can attempt to assert your dominance over any visible creature within 30 feet by declaring the target… |
+| Mental Placidity | A | save, activated, toggle | As an immediate action, you can gain a +2 bonus on a Will saving throw you are about to attempt. This bonus increases t… |
+| Merciful Foliage | A | attack, toggle | Element wood; Type utility (Su); Level 2; Burn 0 The First World is a place of rampant life, and you can use some of it… |
+| Merge Forms | A | dice, activated, condition, toggle | At 16th level, as a full-round action, a summoner can touch his eidolon and the two can merge forms. This transformatio… |
+| Merge Forms (UC) | A | dice, activated, condition, toggle | At 16th level, as a full-round action, a summoner can touch his eidolon and the two can merge forms. This transformatio… |
+| Metal Fist | A | dice, activated, toggle | As a swift action, you can turn your fists into metal for 1 round, allowing you to make unarmed strikes that deal 1d6 p… |
+| Mien of Despair | A | dice | When a character with this talent successfully demoralizes an opponent using the Intimidate skill or performs a success… |
+| Mind Fear | A | dice, condition | As a standard action, you can expend 1 point of mental focus to cause a living creature to succumb to fear. The target… |
+| Mind Heist | A | save | At 5th level, you can delve into the subconscious mind of a sleeping target. You can cast @Compendium[pf1.spells.xllxyl… |
+| Mind Reader | A | save, activated, toggle | At 3rd level, you can read minds as a spell-like ability. This ability acts like @Compendium[pf1.spells.xllxylvvqr82o2d… |
+| Monkey Aspect | A | dice, activated | The monkey is a climbing trickster who specializes in mobility and manual agility. Minor Form: You gain a +4 competence… |
+| Moonfire | A | dice, activated, condition, toggle | At 8th level, as a standard action, you can shoot a blast of divine moonlight from your eyes as a ranged touch attack a… |
+| Mother's Embrace | A | dice, save | The hag’s call grows stronger as you grow more desperate, promising protection and release if only you would succumb. W… |
+| Nanite Strike | A | dice, activated | At 1st level as a free action , you can cause nanites to flow from your body and coat the striking end of any manufactu… |
+| Nature's Thorns | A | dice | At 16th level, creatures that hit you in melee (other than those using manufactured reach weapons) take 4d6 points of p… |
+| Nightmare (Stare) | A | save | The target of the hypnotic stare rolls twice on all Will saves versus fear, taking the lower result. |
+| Nobility Blessing: Inspiring Ward | A | attack | At 1st level, you can speak a few words to a creature within 30 feet that fill them with inspiration. You can grant tha… |
+| Nobility Domain | A | attack, bonus_feat | Granted Powers: You are a great leader, an inspiration to all who follow the teachings of your faith. Subdomains: @UUID… |
+| Obey | A | save, toggle | As a standard action, you can issue a command to one living creature by expending 1 point of mental focus. This functio… |
+| Obscuring Blow | A | attack, activated, toggle | Once per day, the character can forgo her potential to deal sneak attack damage to attempt to cloud an opponent’s visio… |
+| Occult Final Revelation | A | dice, activated, condition, toggle | Upon reaching 20th level, you become one with the spirits. You become immune to death effects, exhaustion, fatigue, nau… |
+| Oni Bloodline | A | dice | As slaves of capricious oni lords, your ancestors were forced to yield to their masters’ hedonistic desires, inevitably… |
+| Order of the Asp | A | attack, condition | Cavaliers belonging to the order of the asp belong to a cutthroat group where ruthless pragmatism and underhanded deali… |
+| Order of the Blue Rose | A | attack | The cavaliers of the order of the blue rose dedicate themselves to promoting peace in the lands they roam. Skilled warr… |
+| Order of the Eel | A | attack | Cavaliers who join the order of the eel believe communication and negotiation are the true paths to greatness and succe… |
+| Order of the Ennead Star | A | attack | Cavaliers belonging to this order have joined the Hellknight crusade against chaos, adopting a life of ironclad discipl… |
+| Order of the Land | A | attack | There are some cavaliers who dedicate themselves to the land and the people who inhabit the rural areas between urban c… |
+| Order of the Penitent | A | attack | Not all knights begin their careers as nobles’ children or as squires. Some start out as thieves, murderers, or cheats,… |
+| Order of the Reins | A | attack | The cavaliers of the order of the reins hold a strong rapport not just with their mounts, but with all tamed and domest… |
+| Order of the Seal | A | attack | Cavaliers of the order of the seal are a secretive order, each charged with the protection of a specific object (such a… |
+| Order of the Sword | A | attack | Cavaliers who join the order of the sword dedicate their lives to the code of chivalry, living a life of honor, valor,… |
+| Overflowing Grace | A | attack | When you heal a creature to full hit points or a creature already at full hit points with your positive or negative ene… |
+| Pain Wave | A | save, condition | As a standard action, you can expend 1 point of mental focus to unleash a wave of pain. This wave hits all creatures ot… |
+| Painful Reminder | A | dice, activated, toggle | As a swift action, you can cause an enemy to take 1d6 points of nonlethal damage if you dealt damage to that enemy with… |
+| Painful Smite | A | attack, activated, toggle | Prior to making a melee attack roll, you can choose to convert all damage from that strike into nonlethal damage, addin… |
+| Perfected Form | A | attack, activated, toggle | You maintain an unshakable sense of who you are, and no force can compel you to be anything else. You gain a +1 sacred… |
+| Pestilence Bloodline | A | save, activated, condition, toggle | You were born during the height of a great magical plague, to a mother suffering from an eldritch disease, or you suffe… |
+| Pestilential Breath | A | save, activated, toggle | At 15th level, the sickness within your body finally becomes so potent that your very breath is deadly. Once per day as… |
+| Phoenix Fire | A | dice, save | The power of the phoenix brings righteous destruction to any who oppose it. At 20th level, while bloodraging, you gain… |
+| Physical Kinetic Blade | A | attack | Element(s) universal; Type form infusion; Level 1; Burn 1 Associated Blasts any Saving Throw none You form a weapon usi… |
+| Pincers (1 pt) | A | dice, attack | An eidolon grows a large pincers at the end of one pair of its limbs, giving it two pincer attacks. These attacks are s… |
+| Pincers (UC) (1 pt) | A | dice, attack | Requirements: Agathion, daemon, demon, devil, div, elemental, protean, or psychopomp subtype. An eidolon grows large pi… |
+| Plague Carrier | A | save, activated, toggle | At 20th level, your touch inflicts mummy rot on those you strike. You can choose to suppress this ability for 1 round a… |
+| Plant Domain | A | dice, attack, activated | Granted Powers: You find solace in the green, can grow defensive thorns, and can communicate with plants. Subdomains: @… |
+| Poison (2 pts) | A | dice, activated, toggle | An eidolon secretes toxic venom, gaining a poison attack. Pick one bite or sting attack. Whenever the selected attack h… |
+| Poison (UC) (2 pts) | A | dice, activated, toggle | Requirements: Summoner level 7th; daemon, demon, devil, elemental, or protean subtype; bite or sting evolution. The eid… |
+| Possessed Bloodline | A | save | Possessed sorcerers channel their magic potential through a unique bond with a possessing spirit rather than through bl… |
+| Prohibition | A | dice | As a standard action, you can command a creature within 30 feet to refrain from committing a particular action (includi… |
+| Prophecy Subschool | A | attack, activated, toggle | Prophets who specialize in arcane magic often claim specialty in manipulating the powers of luck to their advantage. As… |
+| Protoplasm | A | dice, condition | At 1st level, you can create a ball of entropic protoplasm and hurl it at targets within 30 feet. This protoplasm acts… |
+| Pull (1 pt) | A | attack | An eidolon gains the ability to pull creatures closer with a successful attack. Select one type of natural attack. When… |
+| Pull (UC) (1 pt) | A | attack | Requirements: Reach of 10 feet or more. The eidolon gains the ability to pull creatures closer with a successful attack… |
+| Pulling Infusion | A | attack | Element void; Type substance infusion; Level 1; Burn 1 Associated Blasts gravity, void Saving Throw none Your kinetic b… |
+| Push (1 pt) | A | attack | An eidolon gains the ability to push creatures away with a successful attack. Select one type of natural attack. Whenev… |
+| Push (UC) (1 pt) | A | attack | The eidolon gains the ability to push creatures away with a successful attack. Select one type of natural attack. Whene… |
+| Pushing Infusion | A | attack | Element aether, air, earth, void, water, wood; Type substance infusion; Level 1; Burn 1 Associated Blasts air, blizzard… |
+| Putrid Curse | A | save, condition | Your presence stagnates water and befouls all liquids carried on your person, including magical items such as potions,… |
+| Radiance | A | dice, attack | As a standard action, you can touch a weapon to cause it to glow with light by expending 1 point of mental focus. The w… |
+| Rake (2 pts) | A | dice | An eidolon grows dangerous claws on its feet, allowing it to make 2 rake attacks on foes it is grappling. These attacks… |
+| Rake (UC) (2 pts) | A | dice | Requirements: Summoner level 4th, quadruped base form. The eidolon grows dangerous claws on its feet, allowing it to ma… |
+| Read Minds | A | save | At 8th level, you can broaden your mental spectrum to encompass those around you. Doing so allows you to read the mind… |
+| Reaper Final Revelation | A | save, attack | Upon 20th level, you are a true reaper of death and no soul can escape your sight. You automatically confirm critical h… |
+| Retributive Spray | A | dice, save | At 12th level, whenever you’re hit by an attack or spell that deals slashing or piercing damage, your black blood spray… |
+| Rift Reach | A | attack | As a move action, you can tear open a small rent in reality just large enough to reach an arm through. The far end of t… |
+| Righteous Fury | A | dice, activated, toggle | At 9th level, once per day you can create a spear of pure light and throw it at a creature within 60 feet as a standard… |
+| Rune Domain | A | dice, bonus_feat | Granted Powers: In strange and eldritch runes you find potent magic. You gain @UUID[Compendium.pf1.feats.Item.tlRu8SYjz… |
+| Sacrificial Boon | A | attack, activated, toggle | At 1st level, as an immediate action , you can sacrifice 1 hit point in exchange for a +1 sacred bonus on the next dama… |
+| Scalykind Domain | A | dice, save | Granted Powers: You are a true lord of reptiles, and your gaze can drive weak creatures into unconsciousness. Subdomain… |
+| Scorching Heat | A | dice | At 12th level, your weapons conduct heat. You deal 1d6 additional points of fire damage with natural weapons and melee… |
+| Scorpion Aspect | A | dice, attack | The aspect of the scorpion invokes a hidden menace with a poisonous sting. Minor Form: You gain a +2 competence bonus o… |
+| Searing Heat | A | dice, activated | At 15th level, your body becomes as hot as a salamander’s . You deal 1d6 additional points of fire damage with natural… |
+| Self-Realization Subdomain (Liberation) | A | attack, activated, condition, toggle | Requirements : This subdomain requires the Acolyte of Apocrypha trait to access. Granted Powers: You are a spirit of fr… |
+| Self-Realization Subdomain (Strength) | A | attack, activated, toggle | Requirements : This subdomain requires the Acolyte of Apocrypha trait to access. Granted Powers: In strength and brawn… |
+| Serpent Fangs | A | dice | At 1st level, you grow serpentine fangs. These fangs are treated as a natural weapon, granting you a bite attack as a p… |
+| Serpent's Tail | A | dice, activated | At 9th level, you can transform your legs into a slithering serpentine tail as a free action . Your speed is reduced by… |
+| Sever Alignment | A | dice, save, attack | When making a sneak attack against an opponent with an alignment subtype, a character with this talent/trick can forgo… |
+| Shadow Bloodline | A | dice | Spirits from the shadow plane dally at times in the world of light, and such as these lay with your ancestors once upon… |
+| Shadow Final Revelation | A | attack | Upon reaching 20th level, your body becomes permanently suffused with the essence of the Shadow Plane. You gain regener… |
+| Shadow's Chill | A | attack | When a character with this talent hits a creature with a melee weapon that deals sneak attack damage, a number of point… |
+| Shapechange Subschool | A | attack, activated, toggle | Associated School: @UUID[Compendium.pf1.class-abilities.vDbEHvI9kgPiz4Za]{Transmutation School} Replacement Powers: The… |
+| Shift Earth | A | save | Element earth; Type utility (Sp); Level 4; Burn 0 Prerequisite kinetic cover Saving Throw see text; SR no As a standard… |
+| Sickening (2 pts) | A | save, condition | The eidolon’s smell or appearance is so offensive it sickens nearby creatures. Any living creature except its summoner… |
+| Site-Bound Curse | A | dice, save, condition | You bond with a particular 10-foot square, and must remain within 1,500 feet of that site or immediately become sickene… |
+| Size Alteration | A | save | As a standard action, you can expend 1 point of mental focus and touch a creature to alter its size. You can increase o… |
+| Slam (1 pt) | A | dice | An eidolon can deliver a devastating slam attack. This attack is a primary attack. The slam deals 1d8 points of damage… |
+| Slam (UC) (1 pt) | A | dice | The eidolon can deliver a devastating slam attack. This attack is a primary attack. The slam deals 1d8 points of damage… |
+| Smoke Storm | A | dice, condition | Element fire; Type utility (Sp); Level 3; Burn 0 Saving Throw Fortitude negates; see text; SR no You transform a source… |
+| Snake Aspect | A | dice, attack | The snake is a sneaky and lethal foe who strikes unexpectedly with deadly effect, while avoiding opportune strikes made… |
+| Snapping Turtle Aspect | A | dice | Long-lived and resilient, turtles embody wisdom and endurance in many cultures. Those who take this aspect gain profoun… |
+| Sneak Training | A | attack | The character counts as having the sneak attack class feature of a character of her level for the purpose of meeting pr… |
+| Sniper's Eye | A | attack | A character with this talent can apply her sneak attack damage on ranged attacks targeting foes within 30 feet that ben… |
+| Spell Destruction | A | dice | Element aether; Type utility (Sp); Level 7; Burn 0 You weave strands of aether around yourself in order to deflect targ… |
+| Spindle Infusion | A | save | Element universal; Type form infusion; Level 2; Burn 2 Associated Blasts any Saving Throw Reflex negates (see text) You… |
+| Splintered Spear | A | attack | As a standard action, you can create a wooden shortspear appropriate to your size, which hurls itself as a ranged attac… |
+| Spore Infusion | A | dice, save, attack | Element wood; Type substance infusion; Level 5; Burn 3 Associated Blasts autumn, spring, summer, verdant, winter, wood… |
+| Stag Aspect | A | dice | The stag can outrun or stand its ground against almost any foe. This aspect offers majestic grace and swift speed. Mino… |
+| Stare of Oblivion | A | dice, activated, toggle | At 8th level, you can use @Compendium[pf1.spells.66vvhyiy5q8yzbq2]{Feeblemind} as a gaze attack against one creature (W… |
+| Sticky (1 pt) | A | attack | The eidolon is especially sticky, whether from a coating of adhesive slime, partially congealed blood, or tiny barbed s… |
+| Sting (1 pt) | A | dice | An eidolon possesses a long, barbed stinger at the end of its tail, granting it a sting attack. This attack is a primar… |
+| Sting (UC) (1 pt) | A | dice | Requirements: Agathion, daemon, demon, devil, div, elemental, protean, or psychopomp subtype; tail evolution. The eidol… |
+| Strength Domain | A | attack | Granted Powers: In strength and brawn there is truth—your faith gives you incredible might and power. Subdomains: @UUID… |
+| Suffocate | A | save | Element aether, air, void, water; Type utility (Sp); Level 6; Burn 0 Saving Throw Fortitude partial; SR yes You use aet… |
+| Swallow Whole (3 pts) | A | dice, attack | An eidolon gains the swallow whole ability, giving it the ability to consume its foes. If the eidolon begins its turn w… |
+| Swallow Whole (UC) (3 pts) | A | dice, attack | Requirements: Summoner level 9th; agathion, daemon, demon, devil, div, elemental, protean, or psychopomp subtype; grab… |
+| Swaying Word | A | save, activated, toggle | At 8th level, once per day you may speak a word of divinely inspired wisdom that causes a single creature to switch its… |
+| Tail Slap (1 pt) | A | dice | An eidolon can use its tail to bash nearby foes, granting it a tail slap attack. This attack is a secondary attack. The… |
+| Tail Slap (UC) (1 pt) | A | dice | Requirements: Agathion, daemon, demon, devil, div, elemental, protean, or psychopomp subtype; tail evolution. The eidol… |
+| Teaching Moment | A | attack, activated, toggle | At 8th level, when you or an ally within 30 feet rolls a natural 1 or a natural 20 on an attack roll, an ability check,… |
+| Telekinetic Maneuvers | A | attack | Element aether; Type utility (Sp); Level 4; Burn 0 Saving Throw none; SR yes You can perform combat maneuvers as teleki… |
+| Tentacle (UC) (1 pt) | A | dice | Requirements: Daemon, demon, or protean subtype. The eidolon possesses a long, sinuous tentacle, granting it a tentacle… |
+| Thundercloud | A | dice, condition | At 8th level, you can, as a standard action, summon a storm cloud. This power functions as @UUID[Compendium.pf1.spells.… |
+| Timeless Soul | A | save, toggle | At 20th level, the silver skies and conduits of the Astral Plane are permanently connected to you. You become immune to… |
+| Timidity (Stare) | A | attack | The hypnotic stare penalty also applies to damage rolls. |
+| Touch of Corruption | A | dice | Beginning at 2nd level, an antipaladin surrounds his hand with a fiendish flame, causing terrible wounds to open on tho… |
+| Touch of Law | A | attack | You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to tr… |
+| Toxic Blood Curse | A | dice, save, activated, toggle | Your body is ravaged by a potent, slow-acting poison that resists all treatment. Whenever you must attempt a Fortitude… |
+| Toxic Infusion, Greater | A | dice | Element wood; Type substance infusion; Level 7; Burn 4 Prerequisite toxic infusion Associated Blasts autumn, spring, su… |
+| Trample (2 pts) | A | dice, save, attack, activated, toggle | An eidolon gains the ability to crush its foes underfoot, gaining the trample ability. As a full-round action, the eido… |
+| Trample (UC) (2 pts) | A | dice, save, attack, activated, toggle | Requirements: Biped or quadruped base form. The eidolon gains the ability to crush its foes underfoot, gaining the tram… |
+| Trap Rune | A | dice | At 1st level, as a standard action , you can sketch a single, nearly invisible magical rune on any 5-foot-square solid… |
+| Trickster Spirit | A | save | A trickster spirit is a savvy and manipulative master of skills. Spirit Bonus: When you channel a trickster, your spiri… |
+| Trip (2 pts) | A | attack, condition | An eidolon becomes adept at knocking foes to the ground with its bite, granting it a trip attack. Whenever the eidolon… |
+| Trip (UC) (2 pts) | A | attack, condition | Requirements: Daemon, demon, devil, elemental, or protean subtype; bite evolution. The eidolon becomes adept at knockin… |
+| Turning Blast Infusion | A | save | Element void, wood; Type substance infusion; Level 4; Burn 3 Prerequisite duskwalker, or Planar Infusion (Boneyard) Ass… |
+| Unbreaking Waves Infusion | A | attack | Element water; Type substance infusion; Level 5; Burn 3 Prerequisite kinetic fist, member of the Monastery of Unbreakin… |
+| Undead Bloodline | A | dice, save, activated, condition, toggle | The taint of the grave runs through your family. Perhaps one of your ancestors became a powerful lich or vampire, or ma… |
+| Undead Subschool | A | attack | Associated School: @UUID[Compendium.pf1.class-abilities.ZuFI7iaKeWv3n5pA]{Necromancy School} Replacement Powers: The fo… |
+| Universalist School | A | attack, activated, toggle | Wizards who do not specialize (known as as universalists) have the most diversity of all arcane spellcasters. @Compendi… |
+| Unusual Anatomy | A | attack | At 9th level, your anatomy changes, giving you a 25% chance to ignore any critical hit or sneak attack scored against y… |
+| Vampiric Infusion | A | attack | Element void; Type substance infusion; Level 5; Burn 3 Prerequisite void healer Associated Blasts negative void Saving… |
+| Verdant Bloodline | A | dice | Your progenitors infused themselves with raw plant life, binding it into their own tissue and passing it down to their… |
+| Vicious Claws | A | attack | A catfolk with this talent uses d8s to roll sneak attack damage instead of d6s, but only when she uses her claws to mak… |
+| War Blessing: Battle Lust | A | attack | At 10th level, you can touch an ally and grant it a thirst for battle. All of the ally’s melee attacks are treated as i… |
+| War Blessing: War Mind | A | attack | At 1st level, you can touch an ally and grant it a tactical advantage for 1 minute. At the start of its turn each round… |
+| War Domain | A | attack, activated, toggle | Granted Powers: You are a crusader for your god, always ready and willing to fight to defend your faith. Subdomains: @U… |
+| War's Memory | A | save, activated, condition, toggle | At 12th level, you can manifest an illusion of an ancestor’s bloody battlefield once per day. This functions as @Compen… |
+| Warped Brain | A | save, condition | At 5th level, your mind becomes difficult to comprehend. When another creature uses a mind-affecting spell or ability a… |
+| Wasting Ray | A | dice, activated | At 1st level, as a standard action , you can impose either starvation or thirst upon a living creature you can see with… |
+| Water Blessing: Ice Strike | A | dice | At 1st level, you can touch one weapon and enhance it with the power of water. For 1 minute, this weapon glows with a b… |
+| Water Domain | A | dice | Granted Powers: You can manipulate water and mist and ice, conjure creatures of water, and resist cold. Subdomains: @UU… |
+| Watersense, Greater | A | save | Element water; Type utility (Su); Level 5; Burn 0 Prerequisite watersense You project your watersense outward through t… |
+| Wave of Gloom | A | dice, save, attack, toggle | At 5th level, by expending 1 use of your despair ability as a standard action, you can project a strong feeling of deje… |
+| Weather Blessing: Storm Strike | A | dice | At 1st level, you can touch one weapon and grant it a blessing of stormy weather. For 1 minute, this weapon glows with… |
+| Weather Domain | A | dice, attack, toggle | Granted Powers: With power over storm and sky, you can call down the wrath of the gods upon the world below. Subdomains… |
+| Wildfire Blessing: Fiery Wake | A | dice, activated | At 10th level, when you move, you can use a swift action to invoke a blazing blessing on yourself. For the rest of your… |
+| Wind Blast | A | attack | As a standard action, you can unleash a blast of air in a 30-foot line. Make a combat maneuver check against each creat… |
+| Wind Subdomain | A | attack | Granted Powers: You can manipulate lightning, mist, and wind, traffic with air creatures, and are resistant to electric… |
+| Wing Buffet (1 pt) | A | dice | An eidolon learns to use its wings to batter foes, granting it two wing buffet attacks. These attacks are secondary att… |
+| Wing Buffet (UC) (1 pt) | A | dice | Requirements: Flight (wings) evolution. The eidolon learns to use its wings to batter foes, granting it two wing buffet… |
+| Within Reach | A | save, activated, toggle | At 15th level, your ultimate destiny is drawing near. Once per day, when an attack or spell that causes damage would re… |
+| Without Master | A | attack, activated, toggle | At 8th level, the ronin's fierce independence allows him to overcome staggering odds. The ronin can summon up this will… |
+| Witness the Legend | A | dice, attack, activated, toggle | At 8th level, as a move action, you can extol the virtues of yourself or an ally within 60 feet that you can see. This… |
+| Wolf Aspect | A | dice | The aspect of the wolf provides the senses and the attacks of the mighty wolf, whose instincts are honed to track and t… |
+| Wolfscarred Face Curse | A | dice | Your face is deformed, as though you were born with a wolf ’s muzzle instead of an ordinary nose and jaw. Many mistake… |
+| Wolverine Aspect | A | dice, condition, toggle, bonus_feat | This aspect unlocks the brutal ferocity and tenacious fury of the wolverine. The wolverine’s lust for battle invigorate… |
+| Wood Soldiers | A | dice | Element wood; Type utility (Su); Level 8; Burn 1 Your presence animates surrounding plant life and causes it to fight b… |
+| Word of Anathema | A | attack, activated, toggle | At 8th level, once per day, you can speak a word of anathema against a single creature within 60 feet (Will negates). T… |
+| Wound Warp | A | dice, save, activated, toggle | At 15th level, you gain the ability to travel across the battlefield by literally erupting from the fatal wounds of dec… |
+| Wrecker Curse | A | save | The destructive power of the Abyss and its teeming hordes of demons seeps from your very pores and into your belongings… |
+| Aberrant Fortitude | B | condition | At 8th level, you become immune to the sickened and nauseated conditions. |
+| Aberrant Resistance | B | condition | At 16th level, you are immune to disease, exhaustion, fatigue, and poison, and to the staggered condition. |
+| Accustomed to Awfulness | B | condition | At 3rd level, you become immune to the sickened condition and gain a +4 bonus on all saving throws against effects that… |
+| Agile Feet | B | activated | As a free action, you can gain increased mobility for 1 round. For the next round, you ignore all difficult terrain and… |
+| Agonizing Wound | B | condition | At 13th level, whenever you cast a spell that deals damage to a creature, you can also make that creature frightened or… |
+| Ancestors Final Revelation | B | activated, toggle | Upon reaching 20th level, you become one with the spirits of your ancestors. You gain a bonus on Will saving throws equ… |
+| Aquatic Telepathy | B | activated, toggle | At 9th level, you gain telepathy (100 feet) and can communicate with creatures with a swim speed or the aquatic or wate… |
+| Arcane Bloodline | B | activated, toggle | Your family has always been skilled in the eldritch art of magic. While many of your relatives were accomplished wizard… |
+| Arrest the Flow | B | activated, condition, toggle | At 15th level, once per day as an immediate action , you can attune yourself to the Astral’s timeless nature to halt th… |
+| Augury | B | activated, toggle | Once per day, you can use @Compendium[pf1.spells.d1wxnax51cecplm4]{Augury} as a spell-like ability. |
+| Aura of Vengeance | B | activated | At 11th level, an antipaladin can expend two uses of his smite good ability to grant the ability to smite good to all a… |
+| Basic Magic (1 pt) | B | activated, toggle | An eidolon learns to cast a basic spell as a spell-like ability. Select one spell from the following list: @Compendium[… |
+| Bestow Resolve | B | activated, toggle | At 8th level, you can bless creatures with the boldness of your deity. You can bestow a number of temporary hit points… |
+| Bionetwork | B | activated, toggle | At 5th level, your mental influence over nature increases. Once per day, you can spend 10 minutes to mentally connect w… |
+| Black Blood | B | activated, toggle | At 1st level, your blood runs black with the blood of Orv. You are immune to the effects (both beneficial and destructi… |
+| Black Powder Inquisition | B | activated, toggle | Granted Powers: You gain @Compendium[pf1.feats.BJBC4lbo7xGWPsKJ]{Exotic Weapon Proficiency} (firearms) and Gunsmithing… |
+| Blessed Surgery | B | activated | Your divine patron guides your healing hands, allowing you to perform minor miracles with mundane cures. You can use th… |
+| Body of Ice | B | activated | At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take… |
+| Bond Senses | B | activated | Starting at 2nd level, a summoner can, as a standard action, share the senses of his eidolon, hearing, seeing, smelling… |
+| Bond Senses (UC) | B | activated | Starting at 2nd level, a summoner can, as a standard action, share the senses of his eidolon, hearing, seeing, smelling… |
+| Botanical Plasticity | B | activated, toggle | At 8th level, as a swift action you can bend and twist the plant life within your body to elongate your limbs. Your rea… |
+| Chains of Justice | B | activated, toggle | At 6th level, once per day, you can bind an opponent within 60 feet to you with spectral chains (Will negates). When yo… |
+| Chameleon Aspect | B | activated, toggle | As a swift action, you can subtly alter the color of your scales, blending them with the surrounding environment. While… |
+| Chaos Domain | B | activated, toggle | Granted Powers: Your touch infuses life and weapons with chaos, and you revel in all things anarchic. Subdomains: @UUID… |
+| Charm Blessing: Dominance Aura | B | activated, toggle | At 10th level, you can surround yourself with a tangible aura of majesty for 1 minute. While this aura is active, once… |
+| Charm Domain | B | activated, condition, toggle | Granted Powers: You can baffle and befuddle foes with a touch or a smile, and your beauty and grace are divine. Subdoma… |
+| Chilling Infusion | B | condition | Element water; Type substance infusion; Level 5; Burn 3 Associated Blasts blizzard, cold, ice Saving Throw Fortitude ne… |
+| Chosen Destiny | B | activated, toggle | At 15th level, the ronin is the master of his own destiny. Whenever the ronin makes a saving throw against a charm or c… |
+| Chosen Victim | B | activated, toggle | Once per day, you can designate a creature as your chosen victim. You gain a +2 bonus on Diplomacy checks to gather inf… |
+| Cold Snap | B | activated, toggle | Element water; Type utility (Sp); Level 3; Burn 1 Prerequisite cold adaptation, shroud of water You chill your shroud o… |
+| Community Blessing: Communal Aid | B | activated, toggle | At 1st level, you can touch an ally and grant it the blessing of community. For the next minute, whenever that ally use… |
+| Cooperative Defense | B | activated, toggle | At 8th level, whenever a spell or effect targets you and one or more allies within 30 feet, you can use this ability to… |
+| Counterspell Mastery | B | activated, toggle, bonus_feat | At 6th level, you gain @Compendium[pf1.feats.V8GIvVaAofyw9xIl]{Improved Counterspell} as a bonus feat. You may attempt… |
+| Counterspell Subschool | B | activated, toggle, bonus_feat | Associated School: @Compendium[pf1.class-abilities.3j7RxplJSeXVt0X1]{Abjuration}. Replacement Powers: This subschool re… |
+| Crystal Shard | B | activated, toggle | At 9th level, you can touch a metal or stone weapon (or up to 50 pieces of ammunition) as a standard action , giving it… |
+| Current Flow | B | activated | As a free action, you can increase either your base speed or your swim speed by 10 feet. While swimming, you gain a bon… |
+| Currentcaller | B | activated, toggle | At 16th level, as a swift action up to three times per day when underwater, at the start of your turn you can call up a… |
+| Dancing Weapons | B | activated, toggle | At 8th level, you can give a weapon touched the dancing special weapon quality for 4 rounds. You can use this ability o… |
+| Danger Sight | B | activated, toggle | As an immediate action, you can protect yourself from harm by expending 1 point of mental focus. You can use this abili… |
+| Darkness Blessing: Darkened Vision | B | condition | At 10th level, you can place a shroud of darkness around the eyes of one foe within 30 feet. The target must succeed at… |
+| Day's Resurgence | B | activated, toggle | At 8th level, you can restore a single creature as if it had just completed 8 hours of rest. It takes 10 minutes to use… |
+| Deaf Curse | B | condition, toggle | You cannot hear and suffer all of the usual penalties for being deafened. You cast all of your spells as if they were m… |
+| Death Blessing: Death's Touch | B | activated, toggle | At 10th level, you can make a melee touch attack against an opponent to deliver grim suffering. If you succeed, you inf… |
+| Decisive Strike | B | activated, toggle | You can allow the marshal to gain 1 point of influence over you as a swift action to allow an ally within 30 feet who c… |
+| Deep Earth Bloodline | B | condition | The echoing cave-songs and the rumble and creak of primal spirits deep below the ground thrum in your soul and in all y… |
+| Den of Vipers | B | activated, condition, toggle | At 15th level, you may summon a host of writhing serpents. This power acts as @Compendium[pf1.spells.f828mjoo5afszqnk]{… |
+| Dimension Door (4 pts) | B | activated, toggle | An eidolon learns to cast @Compendium[pf1.spells.ojwg1ki98tq8xyh9]{Dimension Door} as a spell-like ability once per day… |
+| Dirge of Doom | B | condition | The character can use his performance to foster a sense of growing dread in his enemies, causing them to take become @U… |
+| Disarming Luck | B | activated, toggle | Once per day, when a catfolk character attempts to disable a device and fails by 5 or more, she can reroll the check as… |
+| Disease (UC) (4 pts) | B | activated, toggle | Requirements: Aberrant, daemon, demon, or devil subtype or the undead appearance evolution; summoner level 7th. One of… |
+| Disquiet (Stare) | B | condition | The target of the hypnotic stare is shaken while in areas of total darkness. |
+| Divine Prison | B | activated, toggle | At 8th level, once per day upon making a successful melee attack, you can affect your target with @Compendium[pf1.spell… |
+| Dominate Technology | B | activated, toggle | At 13th level, you can meld your mind with a piece of technology and temporarily control it, even if you had no hand in… |
+| Earthquake Blessing: Stone's Base | B | condition | You can touch an ally to bless it with the stalwart resilience of stone. For 1 minute, the creature gains a +4 bonus to… |
+| Efreeti Form | B | activated, toggle | At 9th level, you gain the ability to assume the form of an efreeti once per day. This acts like the spell @Compendium[… |
+| Elemental Form | B | activated, toggle | At 16th level, once per day when entering a bloodrage you can take an elemental form as @Compendium[pf1.spells.v42t5kpx… |
+| Elixir of Life | B | activated, toggle | Once per day, the character can brew an elixir of life. This special concoction costs 25,000 gp to create and takes 1 h… |
+| Emotional Bond | B | activated, condition | You can create an empathic link between yourself and your allies, allowing you to monitor their emotional states. Setti… |
+| Emotional Push | B | activated, toggle | You can draw upon the intense power of your own emotions in desperate situations, and your allies can call upon you thr… |
+| Empty Mind | B | activated, condition | At 13th level, you can clear your mind by focusing on a sense of emptiness, purging yourself of doubt and discomfort. Y… |
+| Enduring Ritual | B | activated, toggle | As a swift action when you cast a spell with a duration of at least 1 minute per caster level, you can increase the spe… |
+| Enhancement Subschool | B | activated, toggle | Associated School: @UUID[Compendium.pf1.class-abilities.vDbEHvI9kgPiz4Za]{Transmutation School} Replacement Powers: The… |
+| Enlarge | B | activated, toggle | As a swift action you can enlarge yourself for 1 round, as if you were the target of the @Compendium[pf1.spells.jnlr9cu… |
+| Entangling Infusion | B | condition | Element earth, water, wood; Type substance infusion; Level 2; Burn 2 Associated Blasts blizzard, cold, earth, ice, magm… |
+| Enveloping Darkness | B | activated, condition, toggle | At 15th level, you may create an area of @Compendium[pf1.spells.jdsvncnna6oy189a]{Deeper Darkness} that you can see thr… |
+| Enveloping Winds | B | activated, toggle | Element air; Type defense (Su); Level —; Burn 0 You constantly surround yourself with a whirling torrent of air, crackl… |
+| Evil Domain | B | activated, condition, toggle | Granted Powers: You are sinister and cruel, and have wholly pledged your soul to the cause of evil. Subdomains: @UUID[C… |
+| Expert Cypher | B | activated | A character with this ability can attempt a Linguistics check to decipher a single page of text as a full-round action… |
+| Eye of Somnus | B | activated, toggle | At 15th level, you can project your consciousness as if using @Compendium[pf1.spells.fmuea6pmgrylbux7]{Arcane Eye}. In… |
+| Fear the Flames | B | condition | You can give a creature you can see within 60 feet one chance to avoid an eternity of suffering by ordering it to carry… |
+| Fey Bloodline | B | activated, condition, toggle | The capricious nature of the fey runs in your family due to some intermingling of fey blood or magic. You are more emot… |
+| Final Vengeance | B | activated, toggle | At 8th level, once per day, you can make one melee attack against an opponent within reach in response to an attack tha… |
+| Fire Supremacy | B | activated, toggle | You gain resistance 5 to fire. At 10th level, this resistance increases to 10. At 20th level, you gain immunity to fire… |
+| Fleet Charge | B | activated | You can take a swift action and a full-round action to move up to your speed and then make a full attack. This special… |
+| Flesh of Wood | B | activated, toggle | Element wood; Type defense (Su); Level —; Burn 0 Your skin toughens like timber and can turn aside some blows. You gain… |
+| Focused Search | B | activated, toggle | Once per day, you may designate a person or object as your focus. This takes 1 minute of concentration, during which ti… |
+| Fool's Privilege | B | activated, toggle | You can use this power as a swift action when you fail a Bluff, Diplomacy, or Intimidate check outside of combat. You s… |
+| Forest Siege | B | activated | Element wood; Type utility (Sp); Level 9; Burn 0 You can transform available plant life into a besieging army. This fun… |
+| Fossil Form | B | activated, condition, toggle | At the beginning of your turn as a swift action, you can infuse your flesh with minerals, granting you cumbersome secur… |
+| Foxfire Infusion | B | activated | Element fire, wood; Type substance infusion (Sp); Level 3; Burn 2 Prerequisite foxfire or positive blast Associated Bla… |
+| Freedom Subdomain | B | activated, condition, toggle | Granted Powers: You are a spirit of freedom and a staunch foe against all who would enslave and oppress. Associated Dom… |
+| From the Ashes | B | activated, toggle | Element fire; Type utility (Sp); Level 9; Burn 2 When you are about to fall unconscious or die from hit point damage, a… |
+| Gentle Rest | B | condition | Your touch can fill a creature with lethargy, causing a living creature to become staggered for 1 round as a melee touc… |
+| Ghoul Curse | B | activated, toggle | While your actual dietary needs don’t change, you crave the flesh of sentient creatures. You can only go without food f… |
+| Godclaw Blessing: Tactical Readiness | B | activated | At 10th level, you can rally your allies within 30 feet, allowing each to immediately do one of the following as a free… |
+| Good Fortune | B | activated, toggle | At 6th level, as an immediate action, you can reroll any one d20 roll that you have just made before the results of the… |
+| Greater Shield Ally | B | condition | At 12th level, whenever an ally is within an eidolon’s reach, the ally receives a +2 shield bonus to its Armor Class an… |
+| Greater Shield Ally (UC) | B | condition | At 12th level, whenever an ally is within reach of the summoner's eidolon, the ally gains a +2 shield bonus to its Armo… |
+| Hardened Fists | B | activated | At 1st level, you can make your fists grow large, callused, and gnarled as a free action . Your unarmed strikes deal da… |
+| Hateful Retort | B | activated, toggle | Once per day, as an immediate action after you have been hit with a melee attack, you can make a melee attack against t… |
+| Healing Blessing: Powerful Healer | B | activated, toggle | At 1st level, you can add power to a cure spell as you cast it. As a swift action, you can treat any cure spell as if i… |
+| Heat Wave | B | activated, toggle | Element fire; Type utility (Sp); Level 3; Burn 1 Prerequisite heat adaptation, searing flesh You create an aura of shim… |
+| Hellfire Strike | B | activated, toggle | At 1st level, as a swift action up to three times a day you can infuse your attacks with hellfire. When you do, your me… |
+| Heroic Echo | B | activated, toggle | At 3rd level, when you receive a morale bonus from any spell, spell-like ability , or magic item, including those you c… |
+| Hive Curse | B | activated, toggle | You were exposed at a young age (perhaps even before you were born) to the alien species known as the hive, but this ex… |
+| Honor Bound | B | activated, toggle | With a touch, you can remind a creature of its duties and responsibilities, granting it a new saving throw against each… |
+| Illusion School | B | activated, condition, toggle | Illusionists use magic to weave confounding images, figments, and phantoms to baffle and vex their foes. @Compendium[pf… |
+| Incorporeal Form (4 pts) | B | activated, toggle | Once per day, an eidolon can become incorporeal for 1 round per summoner level. While in this form, the eidolon gains t… |
+| Infernal Bargain | B | activated, toggle | Element universal; Type utility (Sp); Level 1; Burn 0 Prerequisite tiefling or @UUID[Compendium.pf1.class-abilities.Ite… |
+| Insane Focus | B | condition | You can touch a willing creature as a standard action, granting it a +4 bonus on all saving throws made against mind-af… |
+| Inspire | B | activated, toggle | At 15th level, your artistic magic can inspire your allies to great accomplishments. You can use @Compendium[pf1.spells… |
+| It Came from Beyond | B | activated, toggle | Once per day when you cast a summoning spell, any one creature you summon is more powerful than normal. The creature ga… |
+| Juju Final Revelation | B | activated, toggle | At 20th level, you become a master of the connections between the mortal world and the spirit world. Your knowledge ena… |
+| Knockout Queen | B | activated, toggle | Sabriune has passed on the secret of swiftly manufacturing drow poison. Once per day, the character can create 1 or mor… |
+| Knowledge Blessing: Monster Lore | B | activated, toggle | At 10th level, when you succeed at a Knowledge check against an opponent to learn about its abilities or weaknesses (or… |
+| Lame Curse | B | condition | One of your legs is permanently wounded, reducing your base land speed by 10 feet if your base speed is 30 feet or more… |
+| Lava Shield | B | activated | At 8th level, you can create a barrier of lava to protect you for 1 round as a standard action. Choose one edge of your… |
+| Legacy Conduit | B | activated, toggle | At 16th level, when using the legacy style bloodline power, you can expend a spell slot as a swift action to share the… |
+| Legacy Style | B | activated | At 8th level, select any one style feat. You can use this style feat while bloodraging; however, if you do not meet all… |
+| Legalistic Curse | B | activated, condition, toggle | The shackles of Hell impose savage consequences should you violate a covenant, but also imbue you with remarkable guile… |
+| Legendary Guardian | B | activated, toggle | Once per day as an immediate action, you can ignore the effects of a single attack against you, including enemy spells… |
+| Legendary Hierophant | B | activated, toggle | Once per day, you can request a minor @Compendium[pf1.spells.suel7sgnztenv551]{Miracle}. This request must be in line w… |
+| Legendary Trickster | B | activated, toggle | Once per day, instead of rolling for a skill check, you can choose your d20 result. Additionally, you gain the ability… |
+| Liberation Blessing: Freedom's Shout | B | activated, toggle | At 10th level, as a swift action you can emit a 30-foot aura that affects all allies with the liberation blessing descr… |
+| Liberation Blessing: Liberation | B | activated, toggle | At 1st level, for 1 round as a swift action, you can ignore impediments to your mobility and effects that cause paralys… |
+| Liberation Domain | B | condition | Granted Powers: You are a spirit of freedom and a staunch foe against all who would enslave and oppress. Subdomains: @U… |
+| Liberty's Blessing | B | activated, toggle | You touch a willing creature as a standard action, granting it a boon. A creature with this boon can, as a swift action… |
+| Liberty’s Blessing | B | activated, toggle | You touch a willing creature as a standard action, granting it a boon. A creature with this boon can, as a swift action… |
+| Lightning Rod | B | activated, toggle | As a swift action when you cast a spell with the electricity descriptor, you can designate one creature within line of… |
+| Lingering Spirits | B | activated, toggle | Numerous minor spirits find themselves attracted to you. Your connection with these spirits allows you to manifest any… |
+| Locate Focus | B | activated, toggle | At 8th level, once per day you may use either @Compendium[pf1.spells.vl2mznu91c3efcam]{Locate Creature} or @Compendium[… |
+| Lore Final Revelation | B | activated, toggle | You gain the ability to take 20 on all Knowledge skill checks. Your understanding of the fundamental underpinnings of r… |
+| Luck Blessing: Unlucky Enemy | B | activated, toggle | At 10th level, as an immediate action you can force an adjacent opponent to reroll an attack, saving throw, or skill or… |
+| Luck Domain | B | activated, toggle | Granted Powers: You are infused with luck, and your mere presence can spread good fortune. Subdomains: @UUID[Compendium… |
+| Lunar Final Revelation | B | activated, toggle | Upon reaching 20th level, you become an avatar of the primal world—part humanoid, part beast. Once per day, you can tra… |
+| Madness Blessing: Control Madness | B | activated, condition, toggle | At 10th level, as a swift action you can choose one behavior for all confused creatures within 30 feet to exhibit (as i… |
+| Madness Blessing: Madness Supremacy | B | activated, condition, toggle | At 1st level, as a swift action you can target a creature within 30 feet that has the cowering, frightened, panicked, o… |
+| Magical Hoarder | B | activated, toggle | At 13th level, whenever a creature within 30 feet of you casts a spell intended to benefit its targets, you can spend 1… |
+| Maker's Call | B | activated, toggle | At 6th level, as a standard action, a summoner can call his eidolon to his side. This functions as @UUID[Compendium.pf1… |
+| Maker's Call (UC) | B | activated, toggle | At 6th level, as a standard action, a summoner can call his eidolon to his side. This functions as @UUID[Compendium.pf1… |
+| Manifest Memory | B | activated | At 20th level, you can overlay portions of your mindscape onto the world around you. This functions as the @Compendium[… |
+| Manipulator Subschool | B | condition, toggle | Associated School: @UUID[Compendium.pf1.class-abilities.DtpcqOC89tTG3QkO]{Enchantment School} Replacement Powers: The f… |
+| Martyred Bloodline | B | activated, toggle | One of your ancestors paid the ultimate price for her beliefs. This distant relative martyred herself out of her devout… |
+| Memory Palace | B | activated, toggle | At 13th level, you mentally construct an extradimensional library to house mental constructs representing the volumes o… |
+| Metamagic Adept | B | activated, toggle | At 3rd level, you can apply any one metamagic feat you know to a spell you are about to cast without increasing the cas… |
+| Mind Slumber | B | condition | By expending 1 point of mental focus as a standard action, you can lull a living creature into a deep mental slumber, f… |
+| Mnemonic Cache | B | activated | You can memorize a piece of information and later recall it perfectly. Your mnemonic cache can hold roughly 10 pages of… |
+| Mnemonic Esoterica | B | activated, toggle | By reaching into the recesses of your past lives, you gain knowledge beyond that of most psychics. Select a single addi… |
+| Mobile Blast Infusion | B | activated | Element universal; Type form infusion; Level 3; Burn 2 Associated Blasts any Saving Throw Reflex negates You send an el… |
+| Modify Onset | B | activated, toggle | At 3rd level, you can increase the onset time of poisons you use by up to 1 hour per level. At 9th level, you can alter… |
+| More for Me | B | activated, toggle | When another character within 30 feet casts a spell with a range greater than touch, you can attempt a caster level che… |
+| Mutable Flesh | B | activated, toggle | At 3rd level, once per day when you cast a transmutation spell with a duration of 1 minute per level that affects only… |
+| Nanite Resurgence | B | activated, toggle | At 9th level, once per day as an immediate action upon being reduced to one-quarter your maximum hit points , you can f… |
+| Nature Final Revelation | B | activated, toggle | At 20th level, you have discovered the intrinsic secrets of life itself, granting you incredible control over your own… |
+| Necromancy School | B | condition, bonus_feat | The dread and feared necromancer commands undead and uses the foul power of unlife against his enemies. @Compendium[pf1… |
+| Nobility Blessing: Lead by Example | B | activated, toggle | At 10th level, as a swift action you can inspire your allies to follow your lead. If the following action on your turn… |
+| Object Seer | B | activated | As a full-round action, you can expend 1 point of mental focus to gain insight into an object in your possession. You c… |
+| On Dark Wings | B | activated | At 15th level, you can grow fearsome bat wings as a standard action, giving you a fly speed of 60 feet with average man… |
+| One Body, Two Minds | B | activated, toggle | At 15th level, once per day, you can improve the effectiveness of a single spell by having your possessing spirit chann… |
+| Outer Rifts Final Revelation | B | activated, toggle | At 20th level, you gain the ability to open rifts between planes. This allows you to use @Compendium[pf1.spells.ursm114… |
+| Part the Veil | B | activated, condition | At 8th level, you can lace spells you cast with the raw madness that waits in the outer darkness. Activating this abili… |
+| Past Life Evoker | B | activated, toggle | Element universal; Type utility (Su); Level 2; Burn 0 Prerequisite @UUID[Compendium.pf1.races.Item.aQ8RQYKVd2hqI4jh]{sa… |
+| Peerless Speed | B | activated, toggle | At 3rd level, you can tap into the power of the Astral’s enhanced magical nature to gain the ability to accelerate your… |
+| Physical Regression | B | activated, toggle | At 13th level, you can spend 2 points from your phrenic pool as a standard action once per day to take on the form of o… |
+| Plagued Curse | B | condition, toggle | You suffer from minor ailments and sicknesses. While you struggle to resist new diseases, you have grown accustomed to… |
+| Plant Blessing: Creeping Vines | B | activated, toggle | At 1st level, upon hitting with a melee attack, as a swift action you cause the creature you hit to sprout entangling v… |
+| Possessed Curse | B | condition, toggle | Another mind shares your body, interfering with your control, and it’s more difficult for you to concentrate as a resul… |
+| Power of the Djinn | B | activated, toggle | At 20th level, you gain the power of genies to grant wishes. Once per day, you can cast @Compendium[pf1.spells.s2p7a4bi… |
+| Power of the Efreet | B | activated, toggle | At 20th level, you gain the power of genies to grant wishes. Once per day, you can cast @Compendium[pf1.spells.s2p7a4bi… |
+| Power of the Marid | B | activated, toggle | At 20th level, you gain the power of genies to grant wishes. Once per day, you can cast @Compendium[pf1.spells.s2p7a4bi… |
+| Power of the Shaitan | B | activated, toggle | At 20th level, you gain the power of genies to grant wishes. Once per day, you can cast @Compendium[pf1.spells.s2p7a4bi… |
+| Powerful Bond | B | activated | As a free action, you can open a link to communicate telepathically with a single ally within 60 feet. The telepathic l… |
+| Powerful Persuader | B | activated, toggle | At 8th level, when you make a Diplomacy or Intimidate check, you can roll twice and take the higher result. Using this… |
+| Prescience | B | activated | At the beginning of your turn, you may, as a free action , roll a single d20. At any point before your next turn, you m… |
+| Purifying Touch | B | activated, toggle | At 8th level, you can touch a willing creature with divine power, giving it a saving throw against each effect currentl… |
+| Relentless Footing | B | activated, toggle | As a swift action, you can add 10 feet to your land speed. This increase counts as an enhancement bonus, and it affects… |
+| Repose Blessing: Back to the Grave | B | activated | At 10th level, when using channel energy to heal living creatures, you can take a swift action on that same turn to als… |
+| Repose Blessing: Gentle Rest | B | condition | At 1st level, you can fill a living creature with lethargy by hitting it with a melee touch attack, causing it to becom… |
+| Repose Domain | B | condition | Granted Powers: You see death not as something to be feared, but as a final rest and reward for a life well spent. The… |
+| Resiliency (ORA) (Battle) | B | condition, toggle, bonus_feat | You are not disabled and you do not gain the staggered condition if you are reduced to exactly 0 hit points. At 7th lev… |
+| Resiliency (ORA) (Godclaw) | B | activated, toggle, bonus_feat | Once per day, when you are brought below 0 hit points but not killed, you can act is if you are disabled for 1 round. A… |
+| Restorative Touch | B | condition | You can touch a creature, letting the healing power of your deity flow through you to relieve the creature of a minor c… |
+| Restoring Flames | B | activated, toggle | At 15th level, you can cast @Compendium[pf1.spells.igmb8lisqcnsxd2d]{Restoration, Greater} once per day as a spell-like… |
+| Revolution Subdomain | B | activated, toggle | Granted Powers: You are a spirit of freedom and a staunch foe against all who would enslave and oppress. Associated Dom… |
+| Ride the Lightning | B | activated, toggle | At 15th level, as a full-round action you can become a living lightning bolt and move in a straight line up to 10 times… |
+| Rune Shift | B | activated, toggle | At 6th level, as a swift action, you can change the location of one of your blast runes. The rune must be within 30 fee… |
+| Sacrificial Bond | B | activated, toggle | At 8th level, when an ally within 30 feet takes damage from an attack, you can, as an immediate action, transfer this d… |
+| Second Chance | B | activated, toggle | At 8th level, you can give an enemy a second chance to correct the error of its ways. Once per day as a standard action… |
+| See It Coming | B | activated | At 3rd level, you gain a +1 luck bonus on the saving throw type of your choice ( Fortitude , Reflex , or Will ). As a f… |
+| Self-Resurrection | B | activated, toggle | From the ashes of your body springs forth new life. At 16th level, once per day when you are reduced below 0 hit points… |
+| Servitor | B | activated | As a standard action, you can expend 1 point of mental focus to summon a servitor. This ability functions as @Compendiu… |
+| Shadow Blend (2 pts) | B | activated | In any condition of illumination other than bright light, the eidolon disappears into the shadows, giving it concealmen… |
+| Shadow Blessing: Swift as Shadow | B | activated | At 10th level, you can spend a swift action to empower yourself or an ally within 30 feet to move over the ground as ea… |
+| Shadow Duplicate | B | activated, toggle | Once per day as an immediate action when the character is hit, the character can create a single shadow duplicate of he… |
+| Shadow Subschool | B | condition | Associated School: @UUID[Compendium.pf1.class-abilities.xKyCz5YIEJFBQICl]{Illusion School} Replacement Powers: The foll… |
+| Shadow Well | B | activated, toggle | At 9th level, you can use the Stealth skill even while being observed and without cover or concealment , as long as you… |
+| Shadowbound Curse | B | condition | Your pigmentation is oddly colorless, and your eyes are highly sensitive to light. You are blinded for 1 round when exp… |
+| Shield Ally | B | condition | At 4th level, whenever a summoner is within his eidolon’s reach, the summoner receives a +2 shield bonus to his Armor C… |
+| Shield Ally (UC) | B | condition | At 4th level, whenever a summoner is within his eidolon's reach, the summoner gains a +2 shield bonus to his Armor Clas… |
+| Shift | B | activated, toggle | At 1st level, you can teleport to a nearby space as a swift action as if using dimension door . This movement does not… |
+| Shroud of Water | B | activated, toggle | Element water; Type defense (Su); Level —; Burn 0 You surround yourself with a shroud of water, ice, or both that prote… |
+| Sift | B | activated, toggle | At 6th level, once per day you can reach into water as a standard action and pull out an object with a maximum gp value… |
+| Silver Tongue | B | activated | At 1st level, you can draw upon your outsider heritage to spin amazingly convincing lies. Activating this ability is a… |
+| Sin Sense | B | activated | As a full-round action, you can determine which sin most strongly influences a target by quickly reading its mind. Once… |
+| Soul of the Fey | B | activated, toggle | At 20th level, your soul becomes one with the world of the fey. You gain immunity to poison and DR 10/cold iron. Creatu… |
+| Soulbound Puppet | B | activated | As a full-round action, you can expend 1 point of mental focus to create a soulbound puppet from a bone, doll, or skull… |
+| Spatial Tear | B | activated, toggle | At 15th level, once per day, you can unravel the fibers of reality and ride along them as they snap back into place. Th… |
+| Spellkiller Inquisition | B | activated, condition, bonus_feat | Granted Powers: You gain the @Compendium[pf1.feats.QaMwiDFQdDwycTUO]{Disruptive} feat as a bonus feat (even if you do n… |
+| Spontaneous Change | B | activated, toggle | At 4th level, when entering a bloodrage, you can cast a transmutation spell that affects only you as a swift action, pr… |
+| Staggering Gaze | B | condition | At 8th level, when a creature is affected by your gaze bloodline power, it is staggered in addition to being slowed. |
+| Starsoul Bloodline | B | condition | You come from a line of stargazers and explorers who delved deeply into the darkness beyond the stars. In touching the… |
+| Stone Resistance | B | condition | At 16th level, you gain acid resistance 10 and are immune to disease, poison, and the sickened and staggered conditions… |
+| Storm Lord | B | activated, toggle | At 20th level, you are one with the storm. You gain immunity to deafness , stunning , and wind effects and gain blindsi… |
+| Strike Through Shadow | B | activated, toggle | At 12th level, you can declare a single melee attack as a strike through shadow. This attack moves through its target’s… |
+| Sudden Block | B | activated, toggle | After an enemy’s attack would hit you or an adjacent creature, you can use spirit surge to increase the victim’s AC, po… |
+| Sudden Shift | B | activated, toggle | In the blink of an eye, you can appear somewhere else. As an immediate action, after you are missed by a melee attack,… |
+| Sudden Speed | B | activated, toggle | As a swift action, you can expend 1 point of mental focus to grant yourself a burst of speed. This increases your land… |
+| Sun Blessing: Blinding Strike | B | condition, toggle | At 1st level, you can create a flash of sunlight in the eyes of one of your opponents. The target is blinded for 1 roun… |
+| Sunsight | B | condition | At 1st level, you gain low-light vision and cannot be dazzled . If you already have low-light vision , you instead gain… |
+| Superior Transformation | B | activated, toggle | At 15th level, you become master of your own shape and you fully understand the intricacies of all shapechanging magic.… |
+| Synaptic Infusion | B | condition | Element air; Type substance infusion; Level 3; Burn 2 Associated Blasts electric, charged water, thunderstorm Saving Th… |
+| Taboo | B | activated, toggle | When a creature touches you or strikes you with a melee attack, you can activate this power as an immediate action. Tha… |
+| Take Your Best Shot | B | activated, toggle | At 9th level, if you are targeted by a harmful spell, spell-like ability , or supernatural ability and suffer no harm f… |
+| Telekinetic Protection | B | activated, toggle | As a swift action, you can grant yourself protection against nonmagical attacks by forming a field to telekinetically d… |
+| Teleportation Subschool | B | activated, toggle | Associated School: @Compendium[pf1.class-abilities.1Mut8aiSxsfRO8Xd]{Conjuration}. Replacement Powers: This subschool r… |
+| The Unseen World | B | activated, toggle | At 1st level, you gain @Compendium[pf1.spells.uqh87jz757r2cb7r]{Detect Magic} and @Compendium[pf1.spells.j0bc0iii8zp1ji… |
+| Thief of the Gods | B | activated, toggle | At 8th level, when you make a Disable Device or Sleight of Hand check, you can roll twice and take the higher result. U… |
+| Thrill of the Chase | B | activated, toggle, bonus_feat | The character revels in the thrill and adrenaline rush of a challenging chase. When engaged in a chase (Pathfinder RPG… |
+| Thundering Infusion | B | condition | Element air; Type substance infusion; Level 1; Burn 1 Associated Blasts electric, thunderstorm Saving Throw Fortitude n… |
+| Time Final Revelation | B | activated, toggle | Upon reaching 20th level, you become a true master of time and stop aging. You cannot be magically aged and no longer t… |
+| Tornado Blessing: Dust Devil | B | activated, condition | When you hit with a weapon attack, you can use a swift action to cause a sudden burst of wind and debris to swirl aroun… |
+| Toxic Infusion | B | condition | Element wood; Type substance infusion; Level 4; Burn 3 Associated Blasts autumn, spring, summer, verdant, winter, wood… |
+| Travel Blessing: Agile Feet | B | activated, toggle | At 1st level, as a swift action you gain increased mobility. For 1 round, you ignore all difficult terrain (including m… |
+| Travel Domain | B | activated | Granted Powers: You are an explorer and find enlightenment in the simple joy of travel, be it by foot or conveyance or… |
+| Trickery Blessing: Greater Invisibility | B | activated, toggle | At 10th level, as a swift action you can become invisible for 1 round (as @Compendium[pf1.spells.cxgi0ub77t6aink1]{Invi… |
+| True Thought-Form | B | activated, toggle | At 20th level, you can shed the restrictions of the flesh and become a thoughtform— a being that exists independently o… |
+| Tugging Strands | B | activated, toggle | At 8th level, you can force a creature within line of sight to reroll any one roll that it has just made before the res… |
+| Turn Aside | B | activated, toggle, bonus_feat | You can compress or inflate enough space around you to turn aside ranged attacks. At 5th level, you gain Deflect Arrows… |
+| Twin Eidolon | B | activated | At 20th level, a summoner and his eidolon share a true connection. As a standard action, the summoner can assume the sh… |
+| Twin Eidolon (UC) | B | activated | At 20th level, a summoner and his eidolon share a true connection. As a standard action, the summoner can assume the sh… |
+| Twisted Fortune | B | condition | At 1st level, you can use your supernatural insight to hijack the fortunes of a single target within 30 feet. For 1 rou… |
+| Tyrannical Strike | B | activated, toggle | At 8th level, as an immediate action upon successfully landing a melee attack on an opponent, you can choose to forgo t… |
+| UItimate Magic (4 pts) | B | activated, toggle | An eidolon learns to cast a powerful spell as a spell-like ability. Select one spell from the following list: @Compendi… |
+| Ultimate Magic (4 pts) | B | activated, toggle | An eidolon learns to cast a powerful spell as a spell-like ability. Select one spell from the following list: @Compendi… |
+| Umbral Transformation | B | condition | The subject of this trick turns into a living shadow for 1 round, as if affected by shadow body (Occult Adventures 186)… |
+| Underhanded Trick | B | condition, bonus_feat | A character who selects this talent gains @UUID[Compendium.pf1.feats.Item.LUOETW7Fm0oPKKWj]{Improved Dirty Trick} as a… |
+| Unity | B | activated, toggle | At 8th level, whenever a spell or effect targets you and one or more allies within 30 feet, you can use this ability to… |
+| Unnerving Infusion | B | condition | Element void; Type substance infusion; Level 3; Burn 2 Associated Blasts negative, void Saving Throw Will negates Your… |
+| Venom Infusion | B | condition | Element universal; Type substance infusion; Level 4; Burn 3 Prerequisite venom speaker Associated Blasts any simple or… |
+| Venomous Saliva | B | activated, toggle | Just as certain serpents can spray poison from their fangs, as a swift action, you can spit a gout of life-stealing ven… |
+| Verdant Call | B | activated, toggle | At 12th level, when entering a bloodrage, as a swift action you can animate nearby plants to aid you in combat, functio… |
+| Vermilion Wings | B | activated | At 9th level, you gain the ability to grow a pair of phoenix wings from your back as a standard action . The wings gran… |
+| Victory or Death | B | condition | At 20th level, you are immune to paralysis and petrification, as well as to the stunned, dazed, and staggered condition… |
+| Void Blessing: Airless Touch | B | condition | At 1st level, with a successful melee touch attack you can steal the breath from an opponent’s lungs, leaving it unable… |
+| Void Domain | B | activated, condition | Granted Powers: You can call upon the cold darkness between the stars to gain flight, travel to other worlds, or summon… |
+| Warrior's Discipline | B | activated, toggle | At 1st level, you tap into untold generations of battle experience to control your battle fury. As a swift action, you… |
+| Wasting Curse | B | condition, toggle | Your body is slowly rotting away. You take a –4 penalty on Charisma-based skill checks, except for Intimidate. You gain… |
+| Wave | B | condition | At 8th level, you can create a wave of water that starts at your location and moves 30 feet per round away from you in… |
+| Web (3 pts) | B | condition | An eidolon gains a pair of spinnerets, giving it the ability to spin webs. The eidolon can use these webs to support it… |
+| Web (UC) (3 pts) | B | condition | Requirements: Summoner level 7th; daemon, demon, or protean subtype; climb evolution. The eidolon gains a pair of spinn… |
+| Whispering Shadows | B | activated, toggle | You can darken the shadows around you and cause them to hiss, confounding and distracting your enemies. As an immediate… |
+| Wrecking Mysticism Curse | B | condition, bonus_feat | A divine entity has blessed you with a source of eldritch power that erodes your fortitude, increasing by 50% the durat… |
+
+### alchemist  (17 A / 6 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Axiomatic Bombs | A | save, condition | When the alchemist creates a bomb, he can choose to have it deal lawful divine damage. Chaotic creatures that take a di… |
+| Bomb | A | dice, save, attack | In addition to magical extracts, alchemists are adept at swiftly mixing various volatile chemicals and infusing them wi… |
+| Debilitating Gloom | A | dice, save, toggle | A creature struck by the gloom must make a successful Fortitude save or take a penalty to its Strength equal to 1d4 + 1… |
+| Draining Gloom | A | save | A creature struck by a direct hit with the gloom must make a successful Fortitude save or gain 1 negative level. An alc… |
+| Dread Bomb | A | dice, condition | Your anguish bombs are tainted with fear and dread. Creatures who take damage from your anguish bombs become frightened… |
+| Explosive Bomb | A | dice, save, activated | The alchemist's bombs now have a splash radius of 10 feet rather than 5 feet. Creatures that take a direct hit from an… |
+| Fire Brand | A | dice, activated, toggle | An alchemist with this discovery can expend one daily bomb use to apply the bomb reagents to his weapon as a swift acti… |
+| Flesh-Eating Bomb | A | dice, save, activated | The alchemist can create bombs that devour living matter. The alchemist’s bomb deals damage one die step higher than no… |
+| Glassfoot Bomb | A | dice | When the alchemist creates a bomb, he can choose to have it cover the ground in volatile jagged crystals in addition to… |
+| Grease Bomb | A | save | When the alchemist creates a bomb, he can choose to have it create a grease slick upon detonation. When a grease bomb d… |
+| Greater Draining Gloom | A | dice, save | A creature struck by the gloom must succeed at a Fortitude save or gain 1d4 negative levels. An alchemist must be at le… |
+| Jury-Rigged Bomb | A | dice, attack, activated, toggle | Unlike normal bombs, jury-rigged bombs can be created from whatever materials the alchemist has on hand; this makes the… |
+| Monstrous Graft | A | dice, toggle | The alchemist can replace up to four of his own amputated limbs with those of a monstrous beast of the same size catego… |
+| Precise Poison | A | attack | The alchemist is adept at delivering poison to the most vulnerable areas of his targets. When the alchemist confirms a… |
+| Rime-Bound Gloom | A | dice | The gloom creates an area of freezing shadow in its splash radius that deals 2d6 points of cold damage to all creatures… |
+| Sand Bomb | A | save, condition | When the alchemist creates a bomb, he can pack the casing full of sand that explodes in an abrasive cloud on impact. A… |
+| Subsumed Spirit | A | save | As the alchemist grows in power, his parasitic twin laps up a portion of his soul, like a dog feeding on its master’s s… |
+| Doppelganger Simulacrum | B | activated | The alchemist learns how to create a @Compendium[pf1.spells.bvsi2gzhq49mmt2f]{Simulacrum}, a soulless duplicate, into w… |
+| Incendiary Charge | B | activated | An incendiary charge is a bomb specifically designed to overcome the effects of any nonmagical object’s hardness. As a… |
+| Instant Alchemy | B | activated, toggle | At 18th level, an alchemist can create alchemical items with almost supernatural speed. He can create any alchemical it… |
+| Penetrating Charge | B | activated | A penetrating charge is a bomb specifically designed to disable locks and similar mechanisms, though not other means of… |
+| Sleeper Agent | B | activated | The alchemist learns how to create a sleeper agent, whom he releases back into its original society none the wiser. The… |
+| Swift Poisoning | B | activated, toggle | At 6th level, an alchemist can apply a dose of poison to a weapon as a swift action. |
+
+### arcanist  (1 A / 1 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Fiendish Probiscis | A | dice, activated, condition, toggle | The arcanist can spend 1 point from his arcane reservoir as a standard action to grow a long, articulated proboscis cov… |
+| Arcane Reservoir | B | activated | An arcanist has an innate pool of magical energy that she can draw upon to fuel her arcanist exploits and enhance her s… |
+
+### barbarian  (45 A / 14 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Abyssal Blood, Lesser | A | dice, toggle | While raging, the barbarian gains two claw attacks. These attacks are considered primary attacks and are made at the ba… |
+| Accurate Stance (UC) | A | attack, activated | The barbarian can focus her strikes. She gains a +1 competence bonus on melee attack rolls and thrown weapon attack rol… |
+| Air Totem, Greater | A | save, attack, activated, condition, toggle | While raging, the barbarian is surrounded by an aura of howling winds. Creatures attempting to cast spells while adjace… |
+| Autumn Rage | A | attack, toggle | The barbarian becomes a servant of the harvest. While raging, she gains a +2 bonus on combat maneuver checks to reposit… |
+| Beast Totem, Lesser | A | dice, toggle | While raging, the barbarian gains two claw attacks. These attacks are considered primary attacks and are made at the ba… |
+| Celestial Blood, Lesser | A | dice, toggle | While raging, the barbarian’s melee attacks are considered good-aligned weapons for the purpose of bypassing damage red… |
+| Cult Totem, Lesser | A | attack | While the barbarian is raging, any morale bonuses or bonuses for flanking she gains on attacks rolls are added to her d… |
+| Draconic Blood, Greater | A | dice, activated, toggle | While raging, the barbarian gains a breath weapon that she can use once per day. For every 2 barbarian levels, this bre… |
+| Draconic Blood, Lesser | A | dice, toggle | While raging, the barbarian gains two claw attacks. These attacks are considered primary attacks and are made at the ba… |
+| Elemental Blood, Lesser | A | dice, activated, toggle | Choose an energy type: acid, cold, fire, or electricity. While raging, as a swift action up to three times a day, the b… |
+| Elemental Rage, Lesser | A | dice, activated, toggle | As a swift action, the barbarian can cause her melee attacks to deal an additional 1d6 points of energy damage (acid, c… |
+| Elemental Stance (UC) | A | dice, attack, activated | When the barbarian adopts this stance, she chooses an energy type (acid, cold, electricity, or fire). Her melee attacks… |
+| Fey Blood, Lesser | A | attack, condition, toggle | While raging, each time the barbarian confirms a critical hit, the target must succeed at a Will saving throw (DC = 10… |
+| Fiend Totem, Lesser | A | dice, toggle | While raging, the barbarian grows a pair of large horns, gaining a gore attack. This attack is a primary attack (unless… |
+| Fire Totem | A | dice, attack | While the barbarian is raging, any opponent that confirms a critical hit against her with a piercing or slashing melee… |
+| Fire Totem, Greater | A | save, activated, toggle | While raging, the barbarian can envelope herself in a cloud of smoke that fills a 10-foot-radius sphere and follows her… |
+| Flight Response | A | save, activated, toggle | When a barbarian with this rage power attempts a saving throw against a fear effect, she can enter a rage as an immedia… |
+| Greater Rage | A | save | At 11th level, when a barbarian enters rage, the morale bonus to her Strength and Constitution increases to +6 and the… |
+| Greater Rage (UC) | A | save, attack, toggle | At 11th level, a barbarian’s bonus on melee attack rolls, melee damage rolls, thrown weapon damage rolls, and Will save… |
+| Hissing Rage | A | dice, activated, toggle | Once per hour, the barbarian can spit venom at an adjacent enemy as a standard action. She must make a touch attack to… |
+| Hurling, Lesser | A | save, activated, toggle | As a full-round action while raging, the barbarian can lift and hurl an object up to one size category smaller than her… |
+| Improved Uncanny Dodge | A | attack | This character can no longer be flanked. This defense denies a rogue the ability to sneak attack the character by flank… |
+| Indomitable Will | A | save | While in rage or bloodrage, a character of 14th level or higher gains a +4 bonus on Will saves to resist enchantment sp… |
+| Kelizandri's Tide | A | attack, activated, toggle | Elemental rage powers can be selected by any barbarian or skald who is at least 6th level and has the @UUID[Compendium.… |
+| Master of the Deep | A | save | As a standard action, the barbarian commands an aquatic creature to do her bidding. The barbarian selects a creature wi… |
+| Mighty Rage | A | save | At 20th level, when a barbarian enters rage, the morale bonus to her Strength and Constitution increases to +8 and the… |
+| Mighty Rage (UC) | A | save, attack, toggle | At 20th level, a barbarian’s bonus on melee attack rolls, melee damage rolls, thrown weapon damage rolls, and Will save… |
+| Powerful Stance (UC) | A | attack, activated | The barbarian can focus her ferocity. She gains a +1 bonus on melee damage rolls and thrown weapon damage rolls. This b… |
+| Protect Vitals (UC) | A | attack | While in the guarded stance, the barbarian gains an additional +4 dodge bonus to AC against attack rolls made to confir… |
+| Psychopomp Totem | A | save | The first time each round a creature with regeneration or fast healing is struck by the barbarian while she is raging,… |
+| Rage | A | save, activated, condition, toggle | A barbarian can call upon inner reserves of strength and ferocity, granting her additional combat prowess. Starting at… |
+| Rage (UC) | A | attack, activated, condition, toggle | A barbarian can call upon inner reserves of strength and ferocity, granting her additional combat prowess. At 1st level… |
+| Raging Whirlwind | A | save, attack, activated, condition, toggle | The barbarian can create a whirlwind with a powerful spinning move as an immediate action after she confirms a critical… |
+| Reckless Stance (UC) | A | attack, activated, toggle | The barbarian can attack with abandon at the expense of her defense. She gains a +1 bonus on attack rolls, but takes a… |
+| Savage Hurl | A | attack | The barbarian gains a +1 bonus on ranged attack rolls with thrown weapons that add her Dexterity bonus to the attack ro… |
+| Spirit Totem, Lesser | A | dice, toggle | While raging, the barbarian is surrounded by spirit wisps that harass her foes. These spirits make one slam attack each… |
+| Strength Stance (UC) | A | attack, activated | The barbarian can summon mighty strength. She gains a +1 competence bonus on combat maneuvers and to her CMD. These bon… |
+| Summer Rage | A | save, condition | The barbarian channels the heat of late summer, making the air around her hot and oppressive. A creature within the bar… |
+| Sun Totem | A | dice | The touch of flame fuels and bolsters the barbarian’s rage. She gains fire resistance 10 when raging. In addition, for… |
+| Sun Totem, Greater | A | dice, attack, toggle | The barbarian takes on aspects of the sun. She gains fire resistance 20 when raging. While raging, she is surrounded by… |
+| Sun Totem, Lesser | A | save, toggle | The sun’s fire invigorates the barbarian. She is immune to environmental effects from heat and severe heat, and she gai… |
+| Taunting Stance (UC) | A | attack, activated | The barbarian can leave herself open to attacks while preparing devastating counterattacks. Enemies gain a +4 bonus on… |
+| Trap Sense | A | save | At 3rd level, this character gains a +1 bonus on Reflex saves made to avoid traps and a +1 dodge bonus to armor class a… |
+| Two-Fanged Pounce | A | attack, toggle | If the barbarian is wielding a pair of daggers, kukris, or punching daggers, she can attack once with each of the two w… |
+| Unstoppable | A | attack | At 16th level, any critical threats you score are automatically confirmed. Any critical threats made against you confir… |
+| Abyssal Blood | B | activated, toggle | Once per day when the barbarian enters a rage, she can choose to grow one size category larger than her base size (as @… |
+| Calm Stance (UC) | B | activated, toggle | The barbarian can enter a state of calm. While in this stance, the barbarian doesn’t gain any benefits from rage other… |
+| Contagious Rage | B | condition | The barbarian howls during combat, agitating nearby fauna. Willing animals and magical beasts within 30 feet of the bar… |
+| Erratic Charge | B | activated | As part of the full-round action to perform a charge attack against a creature at least 20 feet away, the barbarian can… |
+| Infernal Blood, Lesser | B | activated, toggle | While raging, up to three times a day as a swift action, the barbarian can infuse her attacks with hellfire for 1 round… |
+| Knockdown Stance (UC) | B | activated, condition, toggle | The barbarian can focus on toppling her foes. Once per round, she can make a trip attack against one target in place of… |
+| Rage Powers (UC) | B | activated, toggle | As a barbarian gains levels, she learns to use her rage in new ways. At 2nd level and every 2 levels thereafter, the ba… |
+| Regenerative Stance (UC) | B | activated | The barbarian can continually replenish her health. At the start of her turn, she regains 1 temporary hit point for eve… |
+| Tireless Rage | B | condition | Starting at 17th level, a barbarian no longer becomes fatigued at the end of her rage. |
+| Tireless Rage (UC) | B | condition | At 17th level, a barbarian is no longer fatigued at the end of her rage. If she enters a rage again within 1 minute of… |
+| Tyrant Totem | B | activated, toggle | While raging, the barbarian can begin a grapple as a free action against any creature she hits with her bite attack. A… |
+| Undead Blood, Lesser | B | condition, toggle | While raging, when the barbarian hits a creature with a charge attack, the creature she hit becomes shaken for a number… |
+| Unrestrained Rage | B | activated, condition, toggle | While raging, the barbarian is immune to paralysis. If the barbarian is targeted by an effect that would cause her to b… |
+| Ymeri's Pyre | B | activated, toggle | Elemental rage powers can be selected by any barbarian or skald who is at least 6th level and has the @UUID[Compendium.… |
+
+### bard  (5 A / 4 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Deadly Performance | A | dice, save, condition | A bard of 20th level or higher can use his performance to cause one enemy to die from joy or sorrow. To be affected, th… |
+| Fascinate | A | save, toggle | At 1st level, a bard can use his performance to cause one or more creatures to become fascinated with him. Each creatur… |
+| Frightening Tune | A | save, condition | A bard of 14th level or higher can use his performance to cause fear in his enemies. To be affected, an enemy must be a… |
+| Inspire Courage | A | attack | A 1st level bard can use his performance to inspire courage in his allies (including himself), bolstering them against… |
+| Inspire Greatness | A | save, attack, toggle | A bard of 9th level or higher can use his performance to inspire greatness in himself or a single willing ally within 3… |
+| Bardic Performance | B | activated, condition, toggle | A bard is trained to use the Perform skill to create magical effects on those around him, including himself if desired.… |
+| Lore Master | B | activated, toggle | At 5th level, the bard becomes a master of lore and can take 10 on any Knowledge skill check that he has ranks in. A ba… |
+| Soothing Performance | B | condition | A bard of 12th level or higher can use his performance to create an effect equivalent to the mass cure serious wounds ,… |
+| Suggestion | B | activated | A bard of 6th level or higher can use his performance to make a @Compendium[pf1.spells.zqj5qzyl46af27v0]{Suggestion} (a… |
+
+### bloodrager  (15 A / 2 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Aberrant Form (BLO) | A | attack | At 20th level, your body becomes truly unnatural. You are immune to critical hits and sneak attacks. In addition, you g… |
+| Abyssal Claws (BLO) | A | dice | At 1st level, you grow claws while bloodraging. These claws are treated as natural weapons, allowing you to make two cl… |
+| Bloodrage | A | save, activated, condition, toggle | The bloodrager’s source of internal power grants him the ability to bloodrage. At 1st level, a bloodrager can bloodrage… |
+| Confusing Critical | A | attack, condition | At 1st level, fey power courses through your attacks. Each time you confirm a critical hit, the target must succeed at… |
+| Dispelling Strikes | A | attack, activated, toggle | At 1st level, when you confirm a critical hit against a target, you can also attempt to dispel the target as if you had… |
+| Draconic Claws (BLO) | A | dice | At 1st level, you grow claws. These claws are treated as natural weapons, allowing you to make two claw attacks as a fu… |
+| Elemental Body (BLO) | A | attack | At 20th level, elemental power surges through your body. You gain immunity to sneak attacks, critical hits, and damage… |
+| Greater Bloodrage | A | save | At 11th level, when a bloodrager enters a bloodrage, the morale bonus to his Strength and Constitution increases to +6… |
+| Mighty Bloodrage | A | save | At 20th level, when a bloodrager enters a bloodrage, the morale bonus to his Strength and Constitution increases to +8,… |
+| Painful Strike | A | attack, condition | At 1st level, when you confirm a critical hit, the target is sickened for a number of rounds equal to 1/2 your bloodrag… |
+| Poison Fangs | A | dice | At 12th level, you gain the poison special attack, tied to your bite attack. Your poison is as follows: bite —injury; s… |
+| Shed Skin | A | dice, activated, toggle | At 16th level, when your bloodrage ends, you can choose one spell or spell-like ability affecting you and attempt to sh… |
+| Staggering Strike | A | attack, condition | At 1st level, when you confirm a critical hit the target must succeed at a Fortitude saving throw or be staggered for 1… |
+| Unnerving Gaze | A | dice, save, condition | At 16th level, your foes begin to see flashes of the faces of dead loved ones when they look at your face. You gain a g… |
+| Viper's Touch | A | dice | At 12th level, you grow two sets of venomous claws resembling the teeth of a serpent. These claws are primary natural a… |
+| Destined Strike | B | activated | At 1st level, as a free action up to three times per day you can grant yourself an insight bonus equal to 1/2 your bloo… |
+| Tireless Bloodrage | B | condition | At 17th level, a bloodrager no longer becomes fatigued at the end of his bloodrage. |
+
+### brawler  (8 A / 1 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Awesome Blow | A | dice, attack, condition | At 16th level, the brawler can as a standard action perform an awesome blow combat maneuver against a corporeal creatur… |
+| Brawler's Flurry | A | attack | Starting at 2nd level, a brawler can make a brawler’s flurry as a full-attack action. When doing so, a brawler has the… |
+| Close Weapon Mastery | A | dice, attack | At 5th level, a brawler’s damage with close weapons increases. When wielding a close weapon, she uses the unarmed strik… |
+| Improved Awesome Blow | A | attack | At 20th level, the brawler can use her awesome blow ability as an attack rather than as a standard action. She may use… |
+| Knockout | A | dice, attack, activated, toggle | At 4th level, once per day a brawler can unleash a devastating attack that can instantly knock a target unconscious. Sh… |
+| Maneuver Training (BRA) | A | attack | At 3rd level, a brawler can select one combat maneuver to receive additional training. She gains a +1 bonus on combat m… |
+| Stylish Infusion | A | attack | Element universal; Type substance infusion; Level 3; Burn 2 Prerequisite brawler's flurry or flurry of blows class feat… |
+| Unarmed Strike (BRA) | A | dice, attack, toggle, bonus_feat | At 1st level, a brawler gains @Compendium[pf1.feats.2aTFNMs3pW6nUBlr]{Improved Unarmed Strike} as a bonus feat. A brawl… |
+| Martial Flexibility | B | activated, toggle | A brawler can take a move action to gain the benefit of a combat feat she doesn’t possess. This effect lasts for 1 minu… |
+
+### cavalier  (70 A / 20 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Aid Allies | A | attack | At 2nd level, whenever an order of the dragon cavalier uses the aid another action to assist one of his allies, the all… |
+| Arcane Vessel | A | attack | At 8th level, whenever the cavalier gains a bonus on attack rolls, saving throws, or damage rolls from a spell or spell… |
+| Assert Authority | A | attack | At 15th level, the cavalier demonstrates his ruthlessness against those who strike the cavalier or his slaves. Whenever… |
+| Banner | A | attack | At 5th level, a cavalier’s banner becomes a symbol of inspiration to his allies and companions. As long as the cavalier… |
+| Bastion of the Monument | A | attack, activated, toggle | At 15th level, the cavalier defends his homeland with unmatched ferocity. As a swift action, the cavalier can declare a… |
+| Better You Than me | A | save, attack, activated, condition, toggle | At 15th level, the cavalier can interpose an adjacent ally in the way of an incoming attack as an immediate action, gai… |
+| Blaze of Glory | A | attack | At 15th level, the cavalier can declare a blaze of glory as a standard action. For a number of rounds equal to his Char… |
+| Braggart | A | attack, bonus_feat | At 2nd level, the cavalier can spend a standard action to extol his own accomplishments and battle prowess. He receives… |
+| Calling | A | attack | At 2nd level, the cavalier can make a short prayer as a standard action, filling him with confidence in his abilities.… |
+| Canine Ferocity | A | attack, bonus_feat | At 8th level, when the cavalier uses his wolf or dog mount to perform a bull rush or overrun maneuver, the mount is con… |
+| Cavalier's Charge | A | attack, toggle | At 3rd level, a cavalier learns to make more accurate charge attacks while mounted. The cavalier receives a +4 bonus on… |
+| Close at Hand | A | attack | At 8th level, when the cavalier is within 30 feet of his ward, he gains a +1 morale bonus on attack rolls, damage rolls… |
+| Counterstriking Challenge | A | save, activated, toggle | At 15th level, once per day when he challenges a Large or larger creature, the cavalier can also prepare to interrupt t… |
+| Current's Rush | A | attack | At 8th level, the cavalier gains a +2 bonus on attack rolls when charging in the same direction as a current that’s cur… |
+| Curse of the First World | A | dice, attack, condition | At 15th level, an order of the blossom cavalier channels pandemonium through his weapon. His melee attacks count as cha… |
+| Cut the Corruption | A | dice, activated, toggle | At 8th level, an order of the Green cavalier can touch a weapon and enhance it as a free action once per day. For 1 min… |
+| Daunting Success | A | attack, activated, toggle | At 8th level, whenever the cavalier confirms a critical hit with a melee weapon, as an immediate action he can attempt… |
+| Expert Captor | A | attack, toggle | At 2nd level, as long as he has rope, the cavalier can tie up a grappled opponent, even if the opponent is not pinned,… |
+| Flat of the Blade | A | attack | At 2nd level, the cavalier of the order of the blue rose gains the ability to moderate his attacks in order to take an… |
+| For the Faith | A | attack, activated, toggle | At 8th level, the cavalier can call upon his faith to bolster himself in combat. As a free action, the cavalier can cal… |
+| For the King | A | attack, activated, toggle | At 8th level, an order of the lion cavalier can call out to his allies, inspiring them to greatness. As a swift action,… |
+| Giant Slayer | A | attack | At 15th level, when the cavalier hits the target of his challenge with a melee attack, and that target is at least two… |
+| Godslayer | A | attack | At 15th level, whenever the cavalier makes a melee attack against the target of his challenge and that target is a divi… |
+| Hand of the Law | A | attack, activated, condition, toggle | At 15th level, the cavalier can declare himself an enforcer of martial law as a swift action. For a number of rounds eq… |
+| I Shall Not Be Moved | A | attack | At 8th level, the cavalier can draw on his dedication to overcome physical weakness. Whenever the cavalier does not mov… |
+| Indiscriminate | A | attack, activated, condition | At 2nd level, whenever the order of the asp cavalier uses Intimidate to demoralize one or more creatures, she can attem… |
+| Inspiring Flex | A | save, attack, activated | At 15th level, the cavalier can display her own brawn to inspire greater strength in his allies. As a standard action,… |
+| Inspiring Pain | A | attack, activated, toggle | At 8th level, the cavalier can inspire brutal malice among his allies. As a swift action, the cavalier can allow allies… |
+| Keeper | A | attack, activated, toggle | At 2nd level, once per day the cavalier must select a location, or a secret that he has sworn to protect. If he chooses… |
+| Knight's Challenge | A | attack, activated, toggle | At 15th level, the cavalier can make a knight's challenge once per day. This functions like a normal challenge, but the… |
+| Lion's Call | A | attack, condition | At 2nd level, an order of the lion cavalier gains the ability to rally his allies. As a standard action, he can give an… |
+| Mighty Bash | A | dice | At 2nd level, the cavalier does not provoke attacks of opportunity when she attacks foes while unarmed so long as she i… |
+| Mighty Charge | A | attack | At 11th level, a cavalier learns to make devastating charge attacks while mounted. Double the threat range of any weapo… |
+| Moment of Triumph | A | attack, activated, toggle | At 15th level, the cavalier can, as a free action, declare a moment of triumph. For 1 round, the cavalier receives a co… |
+| Monster Expert | A | save | At 2nd level, the cavalier learns how to dodge the attacks of his monstrous foes and the traps in their lairs. He gains… |
+| Mounted Mastery | A | attack, bonus_feat | At 8th level, the cavalier ignores the armor check penalty when using the Ride skill, regardless of whether or not the… |
+| Oppress | A | attack, activated, toggle | At 2nd level, when the cavalier deals damage to an opponent with his Hellknight order’s favored weapon , as a swift act… |
+| Order of Vengeance | A | attack | Often affiliated with the church of Calistria, those ex- Galtan cavaliers who subscribe to the order of vengeance seek… |
+| Order of the Beast (ACG) | A | attack | A cavalier who belongs to this order serves nature in all its forms. These cavaliers believe that animals make the most… |
+| Order of the Beast (ISC) | A | attack, toggle | A cavalier belonging to this order seeks only destruction and chaos. Cavaliers of the order of the beast revel in destr… |
+| Order of the Cockatrice | A | attack | A cavalier who belongs to this order serves only himself, working to further his own aims and increase his own prestige… |
+| Order of the Dragon | A | attack | Cavaliers belonging to the order of the dragon dedicate themselves to a group of like-minded individuals, be it a merce… |
+| Order of the Flame | A | attack, activated, toggle | A cavalier of the order of the flame devotes his life to the pursuit of personal glory. Even if such pursuit puts his o… |
+| Order of the Green | A | attack | Cavaliers of the order of the Green are dedicated to protecting wild places and creatures, embracing the Green Faith in… |
+| Order of the Hammer | A | attack | Cavaliers of the order of the hammer respect might over all, and believe that those who prove their strength have earne… |
+| Order of the Hero | A | attack | A cavalier belonging to this order specializes in hunting down large monsters and protecting communities from them. Cav… |
+| Order of the Scales | A | attack | Members of this cavalier order serve the cause of legal integrity. Many order of the scales cavaliers track down and ap… |
+| Order of the Shield | A | attack | Cavaliers who join the order of the shield devote their lives to protecting the common folk, from the simple farmer to… |
+| Order of the Shroud | A | attack | Cavaliers of this order seek out and destroy undead and those who harbor or create them. They scour old crypts, graveya… |
+| Order of the Staff | A | attack, toggle | Cavaliers belonging to the order of the staff dedicate their lives to guarding and assisting spellcasters, especially w… |
+| Order of the Whip | A | attack | A cavalier who belongs to this order has pledged himself to cruelty and malice, serving only those who grant him free r… |
+| Pierce the Guard | A | attack | At 8th level, when attacking with a light or one-handed weapon, the cavalier ignores the penalty for fighting defensive… |
+| Protective Partner | A | attack | At 15th level, the cavalier wreaks terrible vengeance on those who would try to harm her mount. Whenever an opponent at… |
+| Rally Allies | A | attack, activated, toggle | At 8th level, an order of the eel cavalier inspires diverse groups of allies against their common enemies, bringing the… |
+| Seek Retribution | A | attack, activated, toggle | At 8th level, once per day after receiving a request for aid from a legal authority or an aggrieved party regarding the… |
+| Shield of the Liege | A | attack, activated, toggle | At 15th level, an order of the lion cavalier can protect those around him. Allies that are adjacent to the cavalier rec… |
+| Spiritual Shield | A | attack, activated, toggle | At 2nd level, the cavalier can call upon the spirits of the fallen for protection. Once per day as an immediate action… |
+| Staggering Assault | A | attack, activated | At 15th level, the cavalier can drive opponents back without giving ground. As a full-round action, the cavalier can ma… |
+| Stand Against Darkness | A | attack | At 15th level, the cavalier can take revenge on undead that dare strike him or those he seeks to protect. Whenever an u… |
+| Steal Glory | A | attack | At 8th level, the cavalier can steal the glory from another creature's successful strike. Whenever a creature other tha… |
+| Stem the Tide | A | attack, bonus_feat | At 8th level, the cavalier receives @Compendium[pf1.feats.3S01BGUthIbp3Hju]{Stand Still} as a bonus feat, even if he do… |
+| Strategy | A | attack, activated, toggle | At 8th level, the cavalier can spend a standard action to grant one of a number of bonuses to all allies within 30 feet… |
+| Subjugate | A | attack, activated, toggle | At 8th level, whenever the cavalier confirms a critical hit with a melee weapon against a creature of chaotic alignment… |
+| Supreme Challenge | A | dice, save, attack, condition | At 20th level, whenever the cavalier makes a charge attack while mounted, he deals double the normal amount of damage (… |
+| Supreme Charge | A | dice, save, attack, condition | At 20th level, whenever the cavalier makes a charge attack while mounted, he deals double the normal amount of damage (… |
+| Synchronized Smash | A | attack, toggle | At 15th level, the cavalier can utilize the power of his spellcasting allies to make devastating attacks against the al… |
+| Temporary Alliance | A | attack, activated | At 2nd level, an order of the eel cavalier gains the ability to create a meaningful, if temporary, alliance with anothe… |
+| Vandal | A | attack, bonus_feat | At 2nd level, the cavalier gains @Compendium[pf1.feats.lpXdFoT6OqS5vi2X]{Improved Sunder} as a bonus feat. In addition,… |
+| Waverider | A | attack | At 2nd level, the cavalier gains a swim speed equal to his unmodified base land speed. If he already has a swim speed,… |
+| Wild Charge | A | attack | At 15th level, the cavalier and his mount can ignore difficult terrain for the purpose of making a charge attack. In ad… |
+| Act as One | B | activated, toggle | At 15th level, the cavalier can spend a standard action to move up to his speed and make a melee attack. All allies wit… |
+| Adaptive Strike | B | activated, toggle, bonus_feat | At 2nd level, the cavalier receives @Compendium[pf1.feats.bZ1YdzkT8NtRIEJ4]{Catch Off-Guard} as a bonus feat. As a swif… |
+| Command the Meek | B | condition | At 8th level, the cavalier treats all of her allies with the shaken condition as though they had the same teamwork feat… |
+| Control the Herd | B | activated | At 2nd level, the cavalier can direct multiple animals with one forceful command. The cavalier can handle a number of n… |
+| Danger Ward | B | activated, toggle | At 2nd level, the cavalier can ready his allies for impending danger. As a standard action, he can ready all allies wit… |
+| Defensive Knowledge | B | activated, toggle | At 15th level, an order of the tome cavalier can grant nearby allies some of the boons of his cavalier challenge. While… |
+| Ferocious Charge | B | activated, condition | At 15th level, the cavalier is the embodiment of nature’s fury. When the cavalier charges a creature, he can attempt an… |
+| Foolhardy Rush | B | activated, toggle | At 2nd level, the cavalier can charge across the battlefield at a moment’s notice. Whenever the cavalier attempts an in… |
+| Greater Banner | B | activated, toggle | At 14th level, the cavalier’s banner becomes a rallying call to his allies. All allies within 60 feet receive a +2 mora… |
+| Greater Tactician | B | activated, bonus_feat | At 9th level, the cavalier receives an additional teamwork feat as a bonus feat. He must meet the prerequisites for thi… |
+| Inner Peace | B | activated, toggle | At 8th level, the cavalier has learned that while not all things in the world will go as he wishes, he must remain calm… |
+| Protect the Meek | B | activated, condition, toggle | At 15th level, the cavalier can move to intercept foes. As an immediate action, he can move up to his speed (or his mou… |
+| Protector of the People | B | activated, toggle | At 8th level, the cavalier can inspire the people around him as a swift action. Each creature within 30 feet that is ei… |
+| Resist Energy (CAV) | B | activated, toggle | At 8th level, the cavalier can steel himself against harmful energies. Once per day as a move action, he chooses one of… |
+| Saving Grace | B | activated, toggle | At 15th level, whenever he would strike a creature with a melee attack that deals lethal damage and would bring the cre… |
+| Share the Danger | B | activated | At 15th level, an order of the eel cavalier can form a pact to share danger with an ally. As a full-round action, the c… |
+| Tactician | B | activated, toggle, bonus_feat | At 1st level, a cavalier receives a teamwork feat as a bonus feat. He must meet the prerequisites for this feat. As a s… |
+| Teamwork Tricks | B | activated | At 8th level as a free action, the cavalier can use control the herd to handle allied and riderless animals and animal… |
+| Whip Crack | B | condition, bonus_feat | At 2nd level, the cavalier becomes proficient with a whip and gains Whip Mastery as a bonus feat. When a creature whose… |
+| Wild Mount Shape | B | activated, toggle | At 8th level, an order of the of the beast cavalier gains the ability to turn his mount into a different Medium or Larg… |
+
+### cleric  (46 A / 24 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Acid Dart | A | dice | As a standard action, you can unleash an acid dart targeting any foe within 30 feet as a ranged touch attack. This acid… |
+| Artificer's Touch | A | dice | You can cast @Compendium[pf1.spells.24zg8a05hqum3e6j]{mending} at will, using your cleric level as the caster level to… |
+| Aura of Chaos | A | save | At 8th level, you can surround yourself with a field wild energies. Thee energies manifest as a 30-foot aura of chaos f… |
+| Aura of Forgetfulness | A | save | At 8th level, you can emit a 30-foot aura of forgetfulness for a number of rounds per day equal to your cleric level. C… |
+| Aura of Madness | A | save | At 8th level, you can emit a 30-foot aura of madness for a number of rounds per day equal to your cleric level. Enemies… |
+| Aura of Repitition | A | save | At 8th level, you can emit a 30-foot aura of repetition for a number of rounds per day equal to your cleric level. All… |
+| Battle Rage | A | attack | You can touch a creature as a standard action to give it a bonus on melee damage rolls equal to 1/2 your cleric level f… |
+| Blast Rune | A | dice | As a standard action, you can create a blast rune in any adjacent square. Any creature entering this square takes 1d6 p… |
+| Bleeding Touch | A | dice | As a melee touch attack, you can cause a living creature to take 1d6 points of damage per round. This effect persists f… |
+| Blinding Flash | A | dice, save, condition | As a standard action, you can emit a flash of light from your holy symbol or divine focus. The most powerful light eman… |
+| Bramble Armor | A | dice, activated | At 6th level, you can cause a host of wooden thorns to burst from your skin as a free action. While bramble armor is in… |
+| Calming Touch | A | dice, condition | You can touch a creature as a standard action to heal it of 1d6 points of nonlethal damage + 1 point per cleric level.… |
+| Channel Energy | A | dice, save | Regardless of alignment, any cleric can release a wave of energy by channeling the power of her faith through her holy… |
+| Cruel Thicket | A | attack | As a standard action, you can cause the ground in a 5-foot-radius burst centered on you to sprout twisting, thorny vine… |
+| Deadly Weather | A | attack | At 8th level, you can unleash a furious call to the heavens, summoning forth an ever-changing storm of destruction for… |
+| Deflection Aura | A | attack | Once each day, you can emit a 20-foot aura for a number of rounds equal to your cleric level. Allies within the aura ga… |
+| Destructive Aura | A | attack | At 8th level, you can emit a 30-foot aura of destruction for a number of rounds per day equal to your cleric level. All… |
+| Destructive Smite | A | attack | You gain the destructive smite power: the supernatural ability to make a single melee attack with a morale bonus on dam… |
+| Exoskeleton | A | dice, activated, toggle | As a swift action, you can grow an exoskeleton that grants you a +1 enhancement bonus to your natural armor and 1d4 tem… |
+| Faith-Stealing Strike | A | save | You can make a single melee attack using your highest base attack bonus against a creature capable of casting divine sp… |
+| Fire Bolt | A | dice | As a standard action, you can unleash a scorching bolt of divine fire from your outstretched hand. You can target any s… |
+| Fury of the Abyss | A | attack, activated, toggle | As a swift action, you can give yourself an enhancement bonus equal to 1/2 your cleric level (minimum +1) on melee atta… |
+| Guarded Hearth | A | attack, activated, toggle | At 8th level, you can create a ward that protects a specified area. Creating this ward takes 10 minutes of uninterrupte… |
+| Hateful Aura | A | save, activated | At 8th level, you can emit a 30-foot aura of hatred for a number of rounds per day equal to your cleric level. These ro… |
+| Haze of Daydreams | A | save | At 6th level, you can emit a 15-foot-radius haze of daydreams for a number of rounds per day equal to your cleric level… |
+| Icicle | A | dice | As a standard action, you can fire an icicle from your finger, targeting any foe within 30 feet as a ranged touch attac… |
+| Inspiring Command | A | attack | As a standard action, you can issue an inspiring command to your allies. The inspiring command affects one ally plus on… |
+| Inspiring Word | A | attack | As a standard action, you can speak an inspiring word to a creature within 30 feet. That creature receives a +2 morale… |
+| Killing Blow | A | attack, activated, toggle | At 8th level, weapons you use become infused with the power of death. Whenever you confirm a critical hit with a melee… |
+| Lightning Arc | A | dice | As a standard action, you can unleash an arc of electricity targeting any foe within 30 feet as a ranged touch attack.… |
+| Radiating Touch | A | save, condition | As a standard action that provokes attacks of opportunity, you can irradiate any unattended object for a number of roun… |
+| Rebuke Death | A | dice | You can touch a living creature as a standard action, healing it for 1d4 points of damage plus 1 for every two cleric l… |
+| Sacred Threshold | A | dice | As a standard action, you can bless a door, a window, or another portal with a touch. For 1 minute, you can increase or… |
+| Spark Malfeasance | A | save, activated, condition, toggle | At 8th level, you can awaken the sinful desires of a target within 30 feet with a ranged touch attack. The target suffe… |
+| Storm Burst | A | dice, attack, toggle | As a standard action, you can create a storm burst targeting any foe within 30 feet as a ranged touch attack. The storm… |
+| Surge | A | attack | As a standard action, you can cause a mighty wave to appear that pushes or pulls a single creature. Make a combat maneu… |
+| Touch of Darkness | A | attack | As a melee touch attack, you can cause a creature's vision to be fraught with shadows and darkness. The creature touche… |
+| Touch of Good | A | attack | You can touch a creature as a standard action, granting a sacred bonus on attack rolls, skill checks, ability checks, a… |
+| Touch of Virulence | A | save, activated, toggle | As a standard action, you can touch a diseased creature and exacerbate its condition. If it fails a Fortitude save (DC… |
+| Venomous Stare | A | dice, save | As a standard action, you can activate a gaze attack with a 30-foot range (Pathfinder RPG Bestiary 300). This is an act… |
+| Vision of Madness | A | attack, toggle | You can give a creature a vision of madness as a melee touch attack. Choose one of the following: attack rolls, saving… |
+| Void Form | A | attack | At 6th level, you can become semi-tangible as a standard action. While in this form, you are immune to critical hits an… |
+| Wall of Ashes | A | dice, save, condition | At 8th level, you can create a wall of swirling ashes anywhere within 100 feet. This wall is up to 20 feet high and up… |
+| Warding Rune | A | save, activated, toggle | At 6th level, when a creature is damaged by your blast rune, it cannot attack you for a number of rounds equal to 1/2 y… |
+| Wilting Glare | A | dice, condition | As a standard action, you can leach moisture and vitality from a living, corporeal creature you can see within 30 feet.… |
+| Wooden Fist | A | attack, activated | As a free action, your hands can become as hard as wood, covered in tiny thorns. While you have wooden fists, your unar… |
+| Animate Servant | B | activated, toggle | At 8th level, as a standard action, you can give life to inanimate objects. This ability functions as @Compendium[pf1.s… |
+| Athletic Exploit | B | activated, toggle | As a swift action, you gain the ability to overcome physical obstacles with ease. Until the beginning of your next turn… |
+| Aura of Efficiency | B | condition | At 8th level, you can emit a 30-foot-radius aura that grants your allies a +4 bonus on all saving throws against effect… |
+| Aura of Heroism | B | activated | At 8th level, you can emit a 30-foot aura of heroism for a number of rounds per day equal to your cleric level. Using t… |
+| Aura of Sanctification | B | activated, toggle | At 8th level, as an immediate action, you can emit a 30-foot-radius aura of sanctification for a number of rounds per d… |
+| Binding Ties | B | activated | As a standard action, you can touch an ally and remove one condition affecting the ally by transferring it to yourself.… |
+| Chaos Blade | B | activated, toggle | At 8th level, you can give a weapon touched the anarchic special weapon quality for a number of rounds equal to 1/2 you… |
+| Charming Smile | B | activated, toggle | At 8th level, you can cast @Compendium[pf1.spells.tjog6bufg5b08lvq]{Charm Person} as a swift action, with a DC of 10 +… |
+| Dazing Touch (CLE) | B | condition | You can cause a living creature to become dazed for 1 round as a melee touch attack. Creatures with more Hit Dice than… |
+| Dispelling Touch | B | activated, toggle | At 8th level, you can use a targeted @UUID[Compendium.pf1.spells.Item.gmgwyjfpeuuc4t4o]{dispel magic} effect as a melee… |
+| Divine Challenge | B | activated, toggle | As a swift action, you can challenge a visible foe within 30 feet, gaining a +1 sacred bonus to your AC against that cr… |
+| Freedom's Call | B | condition | At 8th level, you can emit a 30-foot aura of freedom for a number of rounds per day equal to your cleric level. Allies… |
+| Gift of Life | B | activated, toggle | At 8th level, you can touch a creature that has died within the past minute to grant it a few moments of life. The dead… |
+| Holy Lance | B | activated, toggle | At 8th level, you can give a weapon you touch the holy special weapon quality for a number of rounds equal to 1/2 your… |
+| Pain is Power | B | activated, toggle | At 8th level, after taking damage from any source, you may attempt a DC 25 concentration check as an immediate action.… |
+| Predator's Grace | B | activated, toggle | You can, as a swift action, grant yourself a +10-foot bonus to your base speed for 1 round. This bonus increases by 5 f… |
+| Refreshing Rain | B | activated, condition, toggle | At 8th level, as standard action, you can call a brief shower of rain in a 30-foot radius. Creatures in the area are he… |
+| Scythe of Evil | B | activated, toggle | At 8th level, you can give a weapon touched the unholy special weapon quality for a number of rounds equal to 1/2 your… |
+| Silver-Tongued Haggler | B | activated | Whenever you make a Bluff, Diplomacy, or Sense Motive check, you can, as a free action, grant yourself a bonus on the r… |
+| Staff of Order | B | activated, toggle | At 8th level, you can give a weapon touched the axiomatic special weapon quality for a number of rounds equal to 1/2 yo… |
+| Touch of Evil | B | condition | You can cause a creature to become sickened as a melee touch attack. Creatures sickened by your touch count as good for… |
+| Unexpected Whimsy | B | activated, condition, toggle | As a standard action, you dance, act like a buffoon, or commit some other act of whimsy. When you do, enemies within 30… |
+| Weapon Master | B | activated, toggle | At 8th level, as a swift action, you gain the use of one combat feat for a number of rounds per day equal to your cleri… |
+| Wounding Blade | B | activated, toggle | At 8th level, you can give a weapon that you touch the wounding special weapon quality for a number of rounds equal to… |
+
+### druid  (0 A / 1 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Wild Shape | B | activated, toggle | At 4th level, a druid gains the ability to turn herself into any small or Medium animal and back again once per day. He… |
+
+### fighter  (1 A / 0 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Bravery | A | save | Starting at 2nd level, a fighter gains a +1 bonus on Will saves against fear. This bonus increases by +1 for every four… |
+
+### gunslinger  (9 A / 3 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Bleeding Wound | A | attack, activated | At 11th level, when the gunslinger hits a living creature with a firearm attack, she can spend 1 grit point as a free a… |
+| Dead Shot | A | dice, attack, activated | At 7th level, as a full-round action, the gunslinger can take careful aim and pool all of her attack potential into a s… |
+| Deadeye | A | attack, toggle | At 1st level, the gunslinger can resolve an attack against touch AC instead of normal AC when firing beyond her firearm… |
+| Death's Shot | A | attack | At 19th level, when the gunslinger scores a critical hit, she can spend 1 grit point to deal normal damage, and the tar… |
+| Gun Training | A | attack | Starting at 5th level, a gunslinger can select one specific type of firearm (such as an axe musket, blunderbuss, musket… |
+| Gunsmith | A | dice, bonus_feat | At 1st level, a gunslinger gains one of the following firearms of her choice: blunderbuss, musket, or pistol. Her start… |
+| Pistol-Whip | A | dice, attack, activated, condition | At 3rd level, the gunslinger can make a surprise melee attack with the butt or handle of her firearm as a standard acti… |
+| Stunning Shot | A | attack, condition | At 19th level, when a gunslinger hits a creature, she can spend 2 grit points to stun the creature for 1 round. The cre… |
+| Utility Shot | A | attack | At 3rd level, if the gunslinger has at least 1 grit point, she can perform all of the following utility shots. Each uti… |
+| Gunslinger's Dodge | B | activated, condition, toggle | At 1st level, the gunslinger gains an uncanny knack for getting out of the way of ranged attacks. When a ranged attack… |
+| Lightning Reload | B | activated, toggle | At 11th level, as long as the gunslinger has at least 1 grit point, she can reload a single barrel of a one-handed or t… |
+| Targeting | B | activated, condition | At 7th level, as a full-round action, the gunslinger can make a single firearm attack and choose part of the body to ta… |
+
+### hunter  (4 A / 1 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Animal Focus | A | attack, activated, toggle | At 1st level, a hunter can take on the aspect of an animal as a swift action. She must select one type of animal to emu… |
+| Octopus Aspect | A | dice, activated, toggle, bonus_feat | The octopus is a cunning hunter, able to contort its malleable body with ease. Minor Form: You gain a +4 competence bon… |
+| Spider Aspect | A | dice | The spider is a patient hunter, sensing foes that struggle in its webs. Minor Form: You gain a +2 competence bonus on C… |
+| Tiger Aspect | A | dice | The tiger is a powerful but graceful hunter of the wild, quietly stalking its prey and then taking it down with ruthles… |
+| Improved Empathic Link | B | activated, condition, toggle | At 4th level, the hunter gains an empathic link with her animal companion. This functions like an empathic link with a… |
+
+### inquisitor  (12 A / 9 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Burn Shroud | A | dice | As a standard action, you can make an unarmed touch attack against a creature. The target takes 1d4 points of fire dama… |
+| Excommunicate | A | save, activated, toggle | At 8th level, once per day, you can silence a creature within 30 feet as a standard action. A Will save against DC = 10… |
+| Exploit Weakness | A | attack | At 14th level, the inquisitor learns to take advantage of any opportunity that presents itself. Whenever the inquisitor… |
+| Fire of Belief | A | dice | You can unleash a gout of holy or unholy flame that sears one target within 30 feet as a ranged touch attack. The targe… |
+| Greater Bane | A | dice | At 12th level, whenever an inquisitor uses her bane ability, the amount of bonus damage dealt by the weapon against cre… |
+| Inner Strength | A | dice, activated, condition, toggle | At 6th level, once per day, you may heal yourself as a swift action, healing 1d6 hit points for every two inquisitor le… |
+| Judgment | A | attack, activated, condition, toggle | Starting at 1st level, an inquisitor can pronounce judgment upon her foes as a swift action. Starting when the judgment… |
+| Justice's True Path | A | attack | As a standard action, you can touch a creature, granting an insight bonus on one attack roll, skill check, ability chec… |
+| Mend the Broken | A | dice | You can touch an object or creature as a standard action, healing it of 1d4 points of damage + 1 for every 2 inquisitor… |
+| Reveal Form | A | save, activated, condition, toggle | At 8th level, once per day as a standard action, you can invoke the name of your deity and order one shapechanged targe… |
+| Righteous Awe | A | dice, save, condition | Whenever you make an unarmed touch attack against an evil creature, it must succeed at a Will save (DC 10 + 1/2 your in… |
+| True Judgment | A | dice, save, activated, toggle | At 20th level, an inquisitor can call true judgment down upon a foe during combat. Whenever an inquisitor uses her judg… |
+| Beast Ride | B | activated, toggle | At 4th level, once per day as a standard action, you can vacate your body and inhabit that of any creature belonging to… |
+| Delayed Spells | B | activated, toggle | At 8th level, you can delay the effects of a spell you cast by up to 1 round per inquisitor level. You choose the durat… |
+| Discern Lies | B | activated, toggle | At 5th level, an inquisitor can @Compendium[pf1.spells.9vdjohbrj896e2ot]{Discern Lies}, as per the spell, for a number… |
+| Dismissive Touch | B | activated, toggle | At 8th level, you can cast @Compendium[pf1.spells.k3zn13pbr5tr9zac]{Dismissal} once per day as a spell-like ability (ca… |
+| Fervent Action | B | activated, toggle | At 8th level, once per day as a swift action, you can make a single melee attack at your highest attack bonus, move up… |
+| Heart's Desire | B | activated, toggle | At 8th level, you receive divine guidance on the goals of your political allies and rivals. Once per day, you can use @… |
+| Second Judgment | B | activated, toggle | At 8th level, whenever an inquisitor uses her judgment ability, she selects two different judgments, instead of one. Th… |
+| Third Judgment | B | activated, toggle | At 16th level, whenever an inquisitor uses her judgment ability, she selects three different judgments, instead of just… |
+| Zealous Surge | B | activated, toggle | Once per day, when you are reduced to 0 or fewer hit points, you heal a number of hit points equal to your inquisitor l… |
+
+### investigator  (17 A / 5 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Anathema | A | save | When an investigator creates or prepares a poison, including poisons derived from racial or class abilities, he can spe… |
+| Chronicler's Insight | A | dice, activated | The investigator can peruse a Pathfinder Chronicle as a standard action, applying its benefits as though he had studied… |
+| Confusing Strike | A | dice, save, attack, condition | When the investigator deals damage with studied strike, the opponent must succeed at a Fortitude saving throw or become… |
+| Didactic Strike | A | attack, activated, toggle | When the investigator activates his studied strike, he can end his studied combat and choose not to deal his studied st… |
+| Iconoclastic Strike | A | attack, activated | When the investigator deals damage with a studied strike, she can perform a sunder combat maneuver as a free action aga… |
+| Inspiration | A | dice, attack, activated, toggle | An investigator is beyond knowledgeable and skilled—he also possesses keen powers of observation and deduction that far… |
+| Numerical Strike | A | attack, activated, toggle | Once per day when the investigator has confirmed a critical hit with a studied strike, he can deal average damage inste… |
+| Numerical Strike, Greater | A | attack, activated, toggle | Once per day, when the investigator has confirmed a critical hit with a studied strike, he can deal the strike’s maximu… |
+| Repositioning Strike | A | attack, activated | When the investigator deals damage with studied strike, he can perform a reposition combat maneuver as a free action ag… |
+| Silencing Strike (INV) | A | dice, save, attack | When the investigator deals damage with a studied strike, the target must succeed at a Fortitude save (DC = 10 + 1/2 th… |
+| Slowing Strike | A | save | When the investigator deals damage with studied strike, the opponent must succeed at a Fortitude save (DC = 10 + 1/2 th… |
+| Stealing Strike | A | attack, activated | When the investigator deals damage with studied strike, he can perform a steal combat maneuver as a free action against… |
+| Studied Combat | A | attack | With a keen eye and calculating mind, an investigator can assess the mettle of his opponent to take advantage of gaps i… |
+| Studied Strike | A | dice, attack, activated | At 4th level, an investigator can choose to make a studied strike against the target of his studied combat as a free ac… |
+| Toppling Strike | A | attack, activated | When the investigator deals damage with studied strike, he can perform a trip combat maneuver as a free action against… |
+| True Inspiration | A | dice, attack | At 20th level, an investigator can use inspiration on all skill checks—even ones he isn’t trained in—and all ability ch… |
+| Twilight Talon Improvisation | A | attack, activated | Whenever the investigator deals studied strike damage with an improvised weapon, she can perform a dirty trick combat m… |
+| Deafening Strike | B | condition | When an investigator deals damage with studied strike, the opponent must succeed at a Fortitude saving throw or be perm… |
+| Domino Effect | B | activated | When the investigator uses studied strike, he uses his opponents against each other and sets himself up for his next mo… |
+| Empathy | B | activated, toggle | When attempting a Sense Motive check, the investigator makes two d20 rolls and takes the higher result. If an investiga… |
+| Sickening Offensive | B | condition | When the investigator damages a studied target, that creature is also sickened for 1 round. An investigator must be at… |
+| Sustained Inspirational Expertise | B | activated, toggle | When granting a bonus to allies via the inspirational expertise investigator talent (Pathfinder RPG Advanced Class Guid… |
+
+### kineticist  (9 A / 6 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Elemental Overflow | A | attack | At 3rd level, a kineticist’s body surges with energy from her chosen element whenever she accepts burn, causing her to… |
+| Energy Composite Blast | A | dice | Composite blasts combine elements to form a new blast. When a kineticist gains a new element through expanded element,… |
+| Energy Kinetic Blast | A | dice | At 1st level, a kineticist gains a kinetic blast wild talent of her choice. This kinetic blast must be a simple blast t… |
+| Expanded Element | A | attack | At 7th level, a kineticist learns to use another element or expands her understanding of her own element. She can choos… |
+| Flurry of Blasts Infusion | A | dice, attack, toggle | Element universal; Type form infusion; Level 3; Burn 2 Prerequisite extended range Associated Blasts any Saving Throw n… |
+| Many Throw Infusion | A | attack | Element aether; Type form infusion; Level 8; Burn 4 Prerequisite extended range Associated Blasts telekinesis Saving Th… |
+| Physical Composite Blast | A | dice | Composite blasts combine elements to form a new blast. When a kineticist gains a new element through expanded element,… |
+| Physical Kinetic Blast | A | dice | At 1st level, a kineticist gains a kinetic blast wild talent of her choice. This kinetic blast must be a simple blast t… |
+| Purifying Flames | A | dice, toggle | Element fire; Type utility (Sp); Level 4; Burn 1 You use fire to burn poison from within a creature’s veins. You must a… |
+| Fire Corridor | B | activated | Element fire; Type utility (Sp); Level 5; Burn 1 You create a passage through a fire or pool of lava. The passage is 5… |
+| Flesh of Stone | B | activated, toggle | Element earth; Type defense (Su); Level —; Burn 0 Your skin hardens like stone, dampening the impact of most attacks. Y… |
+| Force Ward | B | activated, toggle | Element aether; Type defense (Su); Level —; Burn 0 You constantly surround yourself with a ward of force. You gain a nu… |
+| Internal Buffer | B | activated | At 6th level, a kineticist’s study of her body and the elemental forces that course through it allow her to form an int… |
+| Metakinesis | B | activated | At 5th level, a kineticist gains the ability to alter her kinetic blasts as if with metamagic feats by accepting burn.… |
+| Searing Flesh | B | activated, toggle | Element fire; Type defense (Su); Level —; Burn 0 Your body becomes painfully hot. Whenever a creature hits you with a n… |
+
+### magus  (5 A / 8 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Improved Spell Combat | A | attack, toggle | At 8th level, the magus's ability to cast spells and make melee attacks improves. When using the spell combat ability,… |
+| Pool Ray | A | dice, attack, activated | The magus can expend 1 point from his arcane pool as a standard action to infuse a ranged weapon with elemental power.… |
+| Spell Combat | A | attack, activated, toggle | At 1st level, a magus learns to cast spells and wield his weapons at the same time. This functions much like two-weapon… |
+| Spellstrike | A | attack, activated | At 2nd level, whenever a magus casts a spell with a range of “touch” from the magus spell list, he can deliver the spel… |
+| True Magus | A | attack | At 20th level, the magus becomes a master of spells and combat. Whenever he uses his spell combat ability, he does not… |
+| Arcane Pool | B | activated, toggle | At 1st level, the magus gains a reservoir of mystical arcane energy that he can draw upon to fuel his powers and enhanc… |
+| Book-Bound | B | activated, toggle | As long as he wields his spellbook in his off hand, the magus can take an immediate action to gain a +4 bonus on a conc… |
+| Circle of Order | B | activated, toggle | As a swift action, the magus can spend 1 point from his arcane pool to fortify his defenses against chaotic attacks. Th… |
+| Improved Spell Recall | B | activated, toggle | At 11th level, the magus's ability to recall spells using his arcane pool becomes more efficient. Whenever he recalls a… |
+| Rakshasa's Fortune | B | activated | Whenever the magus casts a spell of the polymorph subschool on himself, he can draw a card from a complete harrow deck… |
+| Spell Recall | B | activated | At 4th level, the magus learns to use his arcane pool to recall spells he has already cast. With a swift action he can… |
+| Tabris's Step | B | activated, toggle | As a swift action, a magus can spend 1 point from his arcane pool and gain the effects of a water walk spell for 10 min… |
+| Throwing Magus | B | activated | Whenever the magus enhances his weapon using his arcane pool, he can spend 1 additional point from his arcane pool to a… |
+
+### medium  (8 A / 5 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Animal Blessing: Animal Fury | A | dice | At 1st level, you can touch one ally and grant it feral features. The ally gains 2 claw attacks that each deal 1d6 poin… |
+| Large (UC) (4 pts) | A | attack, toggle | Requirements: Summoner level 8th (13th for Huge), Medium size. The eidolon grows in size, becoming Large. The eidolon g… |
+| Location Channel | A | save, activated, toggle | At 5th level, a medium can perform a special seance at the site of a person’s death—or a location that was precious to… |
+| Owl Aspect | A | dice, bonus_feat | The aspect of the owl is one of silence. This predator glides through the night unheard, a master of stealthy attacks.… |
+| Scalykind Blessing; Serpent Fang | A | dice | At 10th level, as a standard action you can manifest venomous fangs for 1 minute. These fangs grant a bite attack that… |
+| Spirit Surge | A | dice, activated, toggle | After failing a d20 roll that was modified by his spirit bonus, a medium can allow his spirit to gain 1 additional poin… |
+| Spoiling Touch | A | save | At 1st level, you can impose the broken condition upon one Medium or smaller object by making a successful melee touch… |
+| Tentacle Mass (UC) (1 pt) | A | dice | Requirements: Aberrant subtype. The eidolon grows a thick mass of tentacles that can be used as a primary natural weapo… |
+| Astral Beacon | B | activated | At 20th level, a medium is an open connection to the Astral Plane and a shining beacon for spirits. As a free action, h… |
+| Propitiation | B | activated, toggle | At 9th level, a medium has learned hidden techniques and rites that allow him to mollify his channeled spirit once per… |
+| Spacious Soul | B | activated, toggle | At 18th level, a medium’s soul is spacious enough to provide a foothold for his fallen allies, if he so chooses. If one… |
+| Strength Blessing: Strength of Will | B | activated, condition, toggle | At 10th level, as a swift action you can ignore the movement penalties caused by wearing medium or heavy armor or by ca… |
+| Trance of Three | B | activated, toggle | At 15th level, as a swift action, a medium can allow his spirit to gain 1 point of influence over him in order to allow… |
+
+### mesmerist  (12 A / 8 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Cursed Sanction | A | attack, toggle | A ward curses an enemy who attacks the subject. While this trick is implanted, a visible, circular symbol appears on th… |
+| Levitation Buffer | A | attack, toggle | A mesmerist’s telekinetic assault renders foes around the subject less of a threat. The mesmerist can trigger this tric… |
+| Mask Misery | A | dice | The subject can shrug off a condition for a short time before succumbing to it. The mesmerist can trigger this trick wh… |
+| Mental Potency | A | dice | At 5th level, the mesmerist can affect more powerful creatures or a greater number of creatures than normal with his me… |
+| Mesmeric Mirror | A | attack | An illusory image appears near the subject to throw off attackers. The mesmerist can trigger this trick when the subjec… |
+| Misdirection | A | attack | An enemy’s perception of an attack by the subject shifts, making the foe unprepared to defend against the attack. The m… |
+| Painful Stare | A | dice, attack, activated, toggle | When an attack that deals damage hits the target of a mesmerist’s hypnotic stare, the mesmerist can cause the target to… |
+| Reflect Fear | A | dice, save, condition | The mesmerist can trigger this trick when the subject is affected by a fear effect or is the target of an Intimidate ch… |
+| Shadow Splinter | A | save | The mesmerist protects the subject against an attack and redirects the harm to someone else. The mesmerist can trigger… |
+| Spectral Smoke | A | attack | A cloud of smoke pops up around the subject, foiling attacks. The mesmerist can trigger this trick when the subject is… |
+| Vanish Arrow | A | attack | With a flourish, the mesmerist snatches a projectile from an enemy before it can be shot. The mesmerist can trigger thi… |
+| Vision of Blood | A | attack, condition | When an enemy is struck by the subject, it believes its wound is far more severe, and the shock overwhelms it. The mesm… |
+| Astounding Avoidance | B | activated | The subject can avoid damage from magical and unusual attacks. The mesmerist can trigger this trick when the subject at… |
+| Break Stupor | B | condition | The mesmerist can trigger this trick whenever the subject is under an effect such as the fascinated condition or magica… |
+| Chain of Eyes | B | activated | The subject can share her senses with the mesmerist. The mesmerist triggers chain of eyes by closing his eyes and conce… |
+| Compel Alacrity | B | activated | A dash of mental speed lets the subject push past her physical limits to avoid an enemy. The mesmerist can trigger this… |
+| Hypnotic Stare | B | activated, condition, toggle | A mesmerist can focus his stare on one creature within 30 feet as a swift action. That creature takes a –2 penalty on W… |
+| Mesmerist Tricks | B | activated | A mesmerist can create hypnotic bonds with his allies, implanting magical suggestions in their minds that he can later… |
+| Touch Treatment | B | activated, condition | At 3rd level, the mesmerist can help allies shake off harmful conditions—especially those that affect their minds—by ch… |
+| Umbral Shield | B | condition | The subject ignores any harmful effects of bright light or sunlight for 1 minute. The mesmerist can trigger this trick… |
+
+### monk  (28 A / 18 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Bare-Hand Block (UC) | A | attack, activated, toggle | A monk with this ability can spend 1 ki point as an immediate action when attacked with a manufactured weapon to attemp… |
+| Break (UC) | A | attack, activated | The monk combines a writhing twist with a violent strike against a foe that is grappling him. If the monk’s attack is s… |
+| Breaking Down Koan (UC) | A | save, activated, condition, toggle | A monk with this ability can spend 1 ki point as a swift action to present a paradox, riddle, or complicated question t… |
+| Building-Up Koan (UC) | A | save, attack, activated, condition, toggle | A monk with this ability can spend 2 ki points as a swift action to ask himself a koan, which he then tries to answer.… |
+| Diamond Soul | A | dice | At 13th level, a monk gains spell resistance equal to his current monk level + 10. In order to affect the monk with a s… |
+| Dirty Strikes (UC) | A | attack | The monk fights dirty with his style strike, attempting to strike in places where his attack will negatively impact his… |
+| Elemental Burst (UC) | A | dice, save | A monk with this ability can spend 4 ki points to unleash a gout of energy in a 30-foot cone. Creatures within the cone… |
+| Elemental Fury (UC) | A | dice, activated, toggle | A monk who selects this ki power must select one type of energy: acid, cold, electricity, or fire. Once this choice is… |
+| Flawless Mind | A | save | At 19th level, a monk gains total control over his mental faculties. Whenever he attempts a Will save, he can roll twic… |
+| Flurry of Blows | A | attack, toggle | Starting at 1st level, a monk can make a flurry of blows as a full-attack action. When doing so, he may make one additi… |
+| Foot Stomp (UC) | A | attack | The monk stomps on a foe’s foot, preventing the opponent from escaping. If the attack hits and the monk ends his turn a… |
+| Formless Mastery (UC) | A | attack, activated, toggle | A monk with this ability varies his styles, never repeating the same move twice and capitalizing on the weaknesses of a… |
+| Hammerblow (UC) | A | attack | The monk links his hands together, swinging both arms like a club and dealing tremendous damage. If the attack hits, th… |
+| Head-Butt (UC) | A | attack, condition, toggle | The monk slams his head into his enemy’s head, leaving his foe reeling. If the attack hits and the foe is of the same s… |
+| Improvised Weapon Proficiency (UC) | A | attack, toggle | A monk with this ability does not take a penalty on attack rolls for using an improvised weapon. By spending 1 ki point… |
+| Insightful Wisdom (UC) | A | attack, activated, toggle | A monk with this ability can spend 2 ki points as an immediate action to give another ally within 30 feet just the righ… |
+| Ki Sunder (UC) | A | attack, activated | A monk with this ability can spend 1 ki point as a free action when attempting a sunder combat maneuver check to add hi… |
+| Knockback Kick (UC) | A | attack, condition | The monk attempts to knock his foe back with a powerful kick. If the attack hits, the monk can attempt a free combat ma… |
+| Maneuver Training | A | attack | At 3rd level, a monk uses his monk level in place of his base attack bonus when calculating his Combat Maneuver Bonus .… |
+| One Touch (UC) | A | attack | As long as he has at least 1 point remaining in his ki pool, as a standard action, a monk with this power can make an u… |
+| Overbearing Assault (UC) | A | attack | The monk attacks relentlessly, backing his foe into a corner. If the attack hits, the monk can perform a free repositio… |
+| Quivering Palm | A | attack, activated, toggle | Starting at 15th level, a monk can set up vibrations within the body of another creature that can thereafter be fatal i… |
+| Quivering Palm (UC) | A | attack, activated | A monk can set up vibrations within the body of another creature that can thereafter be fatal if the monk so desires. U… |
+| Rabbit Punch (UC) | A | attack | The monk gives a sharp blow to the back of a foe’s head. The critical threat range and critical multiplier of this stri… |
+| Stunning Fist | A | dice, attack, condition, bonus_feat | At 1st level, the monk gains @UUID[Compendium.pf1.feats.Item.GsjouI6B8X7BA5wN]{Stunning Fist} as a bonus feat, even if… |
+| Style Strikes (UC) | A | attack | At 5th level, a monk can learn one type of style strike. Whenever he makes a flurry of blows, he can designate one of h… |
+| Unarmed Strike | A | dice, attack, toggle, bonus_feat | At 1st level, a monk gains @Compendium[pf1.feats.2aTFNMs3pW6nUBlr]{Improved Unarmed Strike} as a bonus feat. A monk’s a… |
+| Wholeness of Body (UC) | A | dice | A monk with this ki power can heal his own wounds as a standard action. By spending 2 points from his ki pool, he can h… |
+| Action Before Thought (UC) | B | activated | A monk with this ability can spend 2 ki points as a free action as part of rolling initiative to roll twice on the init… |
+| Diamond Mind (UC) | B | activated, condition, toggle | By spending 1 point from his ki pool as a swift action, a monk with this power can suppress a fear effect affecting him… |
+| Diamond Resilience (UC) | B | activated, toggle | By spending 1 ki point as a swift action, the monk gains DR 2/—. This DR lasts for 1 minute. At 16th level, the damage… |
+| Diamond Soul (UC) | B | activated, toggle | A monk can spend 2 points from his ki pool as a swift action to gain spell resistance equal to his monk level + 10. Thi… |
+| Feather Balance (UC) | B | activated, toggle | A monk with this ability can spend 1 ki point as a swift action to achieve perfect balance. While this is active, the m… |
+| Floating Breath (UC) | B | activated, toggle | A monk with this ki power can spend 1 point from his ki pool as a swift action to balance on the air, hovering in place… |
+| Freedom of Movement (UC) | B | activated, toggle | A monk with this ability can spend 1 ki point as a swift action to gain the effects of @Compendium[pf1.spells.lvzq2mwkq… |
+| Furious Defense (UC) | B | activated, toggle | By spending 1 point from his ki pool as an immediate action, a monk with this ki power can grant himself a +4 dodge bon… |
+| High Jump | B | activated, toggle | At 5th level, a monk adds his level to all Acrobatics checks made to jump, both for vertical jumps and horizontal jumps… |
+| High Jump (UC) | B | activated, toggle | A monk with this ki power adds his level as a bonus on all Acrobatics checks to jump, both for vertical jumps and horiz… |
+| Ki Blocker (UC) | B | activated | A monk with this ability can spend 1 ki point as a free action before making an unarmed strike against a foe. If the at… |
+| Ki Guardian (UC) | B | activated, toggle | As an immediate action before he rolls a saving throw against a targeted effect that also targets other allies or an ar… |
+| Ki Hurricane (UC) | B | activated, condition | As a full-round action, a monk with this ability can move up to twice his speed. At any point in that movement, the mon… |
+| Ki Meditation (UC) | B | activated | A monk with this ability can spend 2 ki points to meditate as a full-round action, as if using Combat Meditation. Alter… |
+| Ki Range (UC) | B | activated, toggle | A monk with this ability can spend 1 ki point as a swift action to increase the range increment of any thrown monk weap… |
+| Ki Volley (UC) | B | activated, toggle | When a targeted spell or spell-like ability fails to overcome the monk’s spell resistance from diamond soul, he can spe… |
+| Sudden Speed (UC) | B | activated, toggle | A monk with this ki power can spend 1 point from his ki pool as a swift action to grant himself a sudden burst of speed… |
+| Water Sprint (UC) | B | activated, toggle | A monk with this ki power can spend 1 point from his ki pool as a swift action to gain the ability to walk on water, as… |
+
+### ninja  (9 A / 2 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Arcane Backfire | A | attack | When a ninja with this trick successfully attacks a creature that is holding a magic item that has a number of charges… |
+| Breath of the Ancestors | A | dice, save, attack | The ninja chooses one imperial dragon type (forest, sea, sky, sovereign, or underworld; Pathfinder RPG Bestiary 3 92-10… |
+| Herbal Compound | A | save, toggle | A ninja with this trick can consume specially prepared herbs to strengthen her mind. The ninja can spend 1 ki point and… |
+| Hidden Master | A | attack, toggle | At 20th level, a ninja becomes a true master of her art. She can, as a standard action, cast greater invisibility on he… |
+| Ki Venom | A | dice, activated | A ninja with this trick knows how to make poisons from innocuous herbs or minerals. Creating ki venom is a full-round a… |
+| Ninja Tricks | A | attack | As a ninja continues her training, she learns a number of tricks that allow her to confuse her foes and grant her super… |
+| Pressure Points | A | attack | A ninja with this trick can strike at an opponent's vital pressure points, causing weakness and intense pain. Whenever… |
+| Strangler | A | dice, attack, activated | A ninja with this trick knows how to use a scarf, usually with a coin or large knot, as a lethal garrote. The ninja tak… |
+| Swarming Attack | A | dice, attack, toggle | Ratfolk ninjas use their large numbers to overwhelm their enemies with countless attacks. While using the swarming raci… |
+| Light Steps | B | activated | At 6th level, a ninja learns to move while barely touching the surface underneath her. As a full-round action, she can… |
+| Swift Poisoner | B | activated, toggle | A ninja with this trick can apply a dose of poison to a weapon as a swift action. |
+
+### occultist  (14 A / 3 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Binding Circles | A | save | At 12th level, whenever the occultist creates a magic circle he can expend 1 additional point of mental focus to make i… |
+| Color Beam | A | save, condition | As a standard action, you can expend 1 point of mental focus to unleash a beam of cascading colors at any one target wi… |
+| Energy Blast | A | dice, save | As a standard action that provokes attacks of opportunity, you can expend 2 points of mental focus to unleash a blast o… |
+| Energy Ray | A | dice | As a standard action that provokes attacks of opportunity, you can expend 1 point of mental focus to unleash a ray of p… |
+| Flesh Mend | A | dice | As a standard action, you can expend 1 point of mental focus to heal a living creature with a touch. The creature is he… |
+| Flesh Rot | A | dice | As a standard action, you can make a melee touch attack and expend 1 point of mental focus to cause the flesh of a livi… |
+| Inspired Assault | A | attack | As a standard action, you can inspire a living creature with a touch by expending 1 point of mental focus. The creature… |
+| Loci Sentry | A | save, condition | As a standard action, you can expend 1 point of mental focus to set a ward about an area. This area has a maximum radiu… |
+| Mirage | A | save | As a standard action, you can expend 1 point of mental focus to cloak an area in illusion, allowing you to change the a… |
+| Necromantic Servant | A | attack, activated, toggle | As a standard action, you can expend 1 point of mental focus to raise a single human skeleton (Pathfinder RPG Bestiary… |
+| Outside Contact | A | dice | At 8th level, the occultist learns the true name of one particular outsider. This outsider can have no more than 3 Hit… |
+| Spirit Shroud | A | dice | As a standard action, you can expend 1 point of mental focus to surround yourself with a shroud of spirit energy. You g… |
+| Sudden Insight | A | attack, activated, toggle | As a swift action, you can expend 1 point of mental focus to gain an insight into your immediate future. You can use th… |
+| Wall of Power | A | dice | By expending 1 point of mental focus as a standard action, you can create a wall of pure energy with a length of up to… |
+| Cloud Mind | B | condition | As a standard action, you can expend 1 point of mental focus to cloud the mind of one foe within 30 feet. That foe is d… |
+| Fast Circles | B | activated | At 16th level, the occultist learns to draw magic circles very quickly. He can draw a magic circle as a full-round acti… |
+| Mind Barrier | B | activated, condition, toggle | As a swift action, you can expend 1 point of mental focus to create a shield of mental energy around you that protects… |
+
+### oracle  (1 A / 2 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Volcano Final Revelation | A | dice, attack | At 20th level, the oracle’s body takes on the consistency of rock, and her touch carries the heat of a volcano. She gai… |
+| Cold-Blooded Curse | B | condition, toggle | Your blood turns sluggish without sufficient heat, and you must seek warmth and shelter earlier than most. This oracle… |
+| Godclaw Final Revelation | B | activated, toggle | Upon reaching 20th level, you can cast detect chaos, detect law, and discern lies at will as spell-like abilities, usin… |
+
+### paladin  (3 A / 1 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Divine Bond | A | attack, activated, toggle | Upon reaching 5th level, a paladin forms a divine bond with her god. This bond can take one of two forms. Once the form… |
+| Lay on Hands | A | dice, activated | Beginning at 2nd level, a paladin can heal wounds (her own or those of others) by touch. Each day she can use this abil… |
+| Mercy | A | dice, condition | At 3rd level, and every three levels thereafter, a paladin can select one mercy. Each mercy adds an effect to the palad… |
+| Aura of Justice | B | activated | At 11th level, a paladin can expend two uses of her smite evil ability to grant the ability to smite evil to all allies… |
+
+### psychic  (20 A / 8 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Binding Pattern | A | save, condition | As a standard action, you can expend 1 point of mental focus to create a binding pattern of psychic energy that causes… |
+| Bodily Purge | A | dice | You can heal your own wounds and maladies with the power of thought alone. At 5th level, you gain access to a daily poo… |
+| Dark Half | A | dice, save, attack, activated, toggle | By allowing the dark forces to overcome you, you can enter a state of instinctual cruelty as a swift action. While you’… |
+| Deflection Field | A | attack | Whenever the psychic casts a linked spell that grants her a deflection bonus to AC, she can spend 2 points from her phr… |
+| Despair | A | attack, activated, toggle | When a creature within 30 feet rolls for an attack, a save against a fear effect, or a skill check, you can flood its m… |
+| Detect Thoughts | A | save, activated, toggle | At 2nd level, a psychic can use @Compendium[pf1.spells.xllxylvvqr82o2d5]{Detect Thoughts} as a spell-like ability once… |
+| Dispelling Pulse | A | save, attack | The psychic can spend 3 points from her phrenic pool to entwine dispelling magic with a targeted spell. If the target i… |
+| Draining Touch | A | dice, save | As a standard action, you can make a melee touch attack to drain vitality from a creature. If the attack hits, the targ… |
+| Focused Force | A | dice | When casting a force spell, the psychic can increase the spell’s damage by spending 1 point from her phrenic pool. Incr… |
+| Mind's Eye | A | attack | Some psychics train their visual and psychic senses, binding them together into a unified focus to better guide their r… |
+| Mindshield | A | save | The psychic can spend 1 point from her phrenic pool to give one target of the linked spell a +2 morale bonus on Will sa… |
+| Mindtouch | A | save, attack | The psychic can spend 1 point from her phrenic pool to probe one target’s mind if that creature is affected by the link… |
+| Overpowering Mind | A | save | The psychic can spend 2 points from her phrenic pool to increase the Will save DC of the linked spell by 1. At 8th leve… |
+| Perfect Body | A | save | Some practitioners of psychic techniques extend their training to improve their bodies as well as their minds. When the… |
+| Prayer Aura | A | attack, activated, toggle | At 13th level, as a free action, you can extend an aura around you to bolster your allies and make your enemies less ef… |
+| Psychic Curse | A | dice, save, attack, condition | As a standard action, you can expend 1 point of mental focus to curse a living creature within 30 feet with your psychi… |
+| Psychosomatic Surge | A | dice | Psychic magic soothes the subject, alleviating her wounds temporarily. The mesmerist can trigger this trick when the su… |
+| Reflection of Weakness | A | save, attack | Psychic feedback causes an enemy to suffer from the same weakening effect it imposes on the subject. The mesmerist can… |
+| Resurgence | A | dice, activated, toggle | At 5th level when you would be reduced to 0 hit points or fewer by an attack, you can spend 2 points from your phrenic… |
+| Self-Assurance | A | attack, activated, toggle | Overwhelming confidence in your success brings you closer to your goals, and you know that your superiority has destine… |
+| Attune Implants | B | activated, toggle | Starting at 5th level, you can spend a full-round action once per day to harness and channel the power of your cybernet… |
+| Force of Habit | B | activated, toggle | At 5th level, you are so accustomed to complex tasks that you can maintain focus on multiple mental foci simultaneously… |
+| Fortress of Sorrow | B | activated, toggle | At 13th level, you can mentally construct an extraplanar retreat on the Astral Plane. This ability functions as @Compen… |
+| Primal Fury | B | activated, condition | At 13th level, you can unleash a more primal version of yourself as a free action. This functions as transformation, wi… |
+| Purge Disquiet | B | condition | At 13th level, you can banish mental distress. You become immune to fear spells and effects and to the confused conditi… |
+| Synaptic Shock | B | condition | The psychic manipulates an enemy’s mind with brute force, causing mental harm beyond that done by her linked spell. She… |
+| Telempathic Restoration | B | condition | When the psychic casts @Compendium[pf1.spells.zuqlok69lapqc6lg]{Telepathic Bond}, she can spend 1 point from her phreni… |
+| Telepathic Bond | B | activated, toggle | At 9th level, a psychic can use @Compendium[pf1.spells.zuqlok69lapqc6lg]{Telepathic Bond} as a spell-like ability once… |
+
+### ranger  (2 A / 1 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Master Hunter | A | save, activated, toggle | A ranger of 20th level becomes a master hunter. He can always move at full speed while using Survival to follow tracks… |
+| Quarry | A | attack, activated | The character can, as a standard action , denote one target within his line of sight as his quarry. Whenever he is foll… |
+| Improved Quarry | B | activated, toggle | At 19th level, the character's ability to hunt his quarry improves. He can now select a quarry as a free action , and c… |
+
+### rogue  (10 A / 6 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Debilitating Injury | A | attack, toggle | At 4th level, whenever a rogue deals sneak attack damage to a foe, she can also debilitate the target of her attack, ca… |
+| Finesse Training (UC) | A | attack, bonus_feat | At 1st level, a rogue gains Weapon Finesse as a bonus feat. In addition, starting at 3rd level, she can select any one… |
+| Master Strike | A | dice, save, attack, condition | Upon reaching 20th level, a rogue becomes incredibly deadly when dealing sneak attack damage. Each time the rogue deals… |
+| Master Strike (UC) | A | dice, save, attack, condition | At 20th level, a rogue becomes incredibly deadly when dealing sneak attack damage. Each time the rogue deals sneak atta… |
+| Mouse Aspect | A | dice | The aspect of the mouse offers the ability to gain access to hard-to-reach places while avoiding many attacks and effec… |
+| Resonating Rumbles | A | attack | When a character with this talent makes a successful sneak attack against a creature with tremorsense, the rogue can su… |
+| Rogue Talents | A | attack | As a rogue gains experience, she learns a number of talents that aid her and confound her foes. Starting at 2nd level,… |
+| Silencing Strike | A | save, attack | Using magic stolen from the Hellknights, Council agents can render foes silent. When a creature is damaged by the rogue… |
+| Sneak Attack (UC) | A | dice, attack | If a rogue can catch an opponent when he is unable to defend himself effectively from her attack, she can strike a vita… |
+| Stalker Talent | A | attack | The rogue can select a vigilante talent. For the purposes of selecting and using this talent, she counts as a 10th-leve… |
+| Certainty (UC) | B | activated, toggle | The rogue chooses one of the skills she selected with rogue’s edge. Once per day, the rogue can reroll a skill check sh… |
+| Founders' Blessing | B | activated, toggle | The rogue can call upon the mystical legacies of the Council. Once per day, she can choose a skill in which she has no… |
+| Multitalented (UC) | B | activated, toggle | The rogue can use her rogue talents more often. Once per day, she can use a rogue talent that is normally only usable o… |
+| Powerless Prophecy Curse | B | condition | You are forewarned of danger but can’t act to prevent it. You gain uncanny dodge, as the rogue class feature. However,… |
+| Quick Shot (UC) | B | activated, toggle | Whenever the rogue rolls initiative, she can also make a single attack with a ranged weapon as a swift action. She can… |
+| Shrinewalk | B | activated, toggle | Council agents can walk the mystic paths between Westcrown’s shrines. A rogue with shrinewalk can create her own shrine… |
+
+### samurai  (11 A / 4 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Banner (SAM) | A | attack | At 5th level, a samurai’s banner becomes a symbol of inspiration to his allies and companions. As long as the samurai’s… |
+| Beautiful Strike | A | save, attack, activated, toggle | At 15th level, once per day when the order of the songbird samurai confirms a critical hit against the target of her ch… |
+| Greater Resolve | A | attack, activated, toggle | At 9th level, a samurai can spend his resolve to negate some of his most grievous wounds. After a critical hit is confi… |
+| Last Stand | A | attack, activated, condition, toggle | At 20th level, a samurai can make a last stand once per day whenever he makes a challenge. While this challenge is in e… |
+| Mounted Archer | A | attack, toggle | At 4th level, the samurai becomes skilled at firing ranged weapons while mounted. A samurai only takes a –2 penalty on… |
+| Poetic Inspiration | A | attack, activated, toggle | At 8th level, an order of the songbird samurai can speak a few words as a swift action, inspiring allies to great deeds… |
+| Resolve | A | save, activated, condition, toggle | Starting at 1st level, the samurai gains resolve that he can call upon to endure even the most devastating wounds and a… |
+| Ronin | A | attack | While most samurai belong to the order of the warrior, dedicating their considerable skills to the service of a lord, l… |
+| Strike True | A | dice, attack, activated, condition, toggle | At 15th level, the order of the warrior samurai can use his years of training and focus to make the perfect strike. Whe… |
+| Way of the Samurai | A | attack | At 8th level, the order of the warrior samurai's sense of honor and loyalty drives him to accomplish seemingly impossib… |
+| Weapon Expertise | A | attack, activated | At 3rd level, a samurai gains an unparalleled expertise with his chosen weapons. At 3rd level, the samurai selects eith… |
+| Eclipsing Blade | B | activated, toggle | At 8th level, the samurai can cast @Compendium[pf1.spells.tsndfcfijmgxs37p]{Darkness} on a weapon he is holding. The @C… |
+| Greater Banner (SAM) | B | activated, toggle | At 14th level, a samurai’s banner becomes a rallying call to his allies. All allies within 60 feet receive a +2 morale… |
+| Honor in All Things | B | activated, toggle | At 2nd level, the order of the warrior samurai draws strength from his sense of honor. Whenever the samurai makes a ski… |
+| Honorable Stand | B | activated, condition, toggle | At 11th level, a samurai can make an honorable stand, deciding to fight the target of his challenge to the bitter end,… |
+
+### shaman  (40 A / 26 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Accident | A | dice, save, activated, condition | The shaman causes a target within 30 feet to stumble and fall. The shaman attempts a caster level check with a DC equal… |
+| Alien Summons | A | attack | Whenever the shaman calls or summons one or more creatures, one creature of her choice arrives with the advanced creatu… |
+| Ancestor's Council | A | attack | As a standard action the shaman can call upon her ancestors to provide advice and assistance to one ally within 30 feet… |
+| Ancestral Blessing | A | attack | The shaman can grant the blessings of her ancestors to any ally within 30 feet. The blessed creature receives a +1 comp… |
+| Battle Spirit (Ability) | A | attack | A shaman surrounds herself with the spirit of battle. Allies within 30 feet of the shaman (including the shaman) receiv… |
+| Battle Spirit Manifestation | A | attack, activated | Upon reaching 20th level, the shaman becomes a spirit of battle. As a full-round action, she can make a full attack and… |
+| Battle Ward | A | attack | The shaman touches a willing creature (including herself ) and grants a battle ward. The next time a foe makes an attac… |
+| Biting Frost | A | dice, activated | The shaman turns the air frigid around a target within 30 feet for a number of rounds equal to the shaman’s Charisma mo… |
+| Body of Earth | A | dice | The shaman gains DR 2/adamantine. This DR increases by 1 for every 4 levels beyond 8th the shaman possesses. In additio… |
+| Bones Spirit Manifestation | A | attack, activated, toggle | Upon reaching 20th level, the shaman becomes a spirit of death. Once per round, she can cast @Compendium[pf1.spells.n39… |
+| Curse of Faltering | A | save, attack, activated, toggle | As an immediate action when an enemy within 30 feet threatens a critical hit, the shaman can force the creature to rero… |
+| Curse of Isolation | A | save | The shaman makes an enemy within 30 feet keenly feel its status outside the tribe. For a number of rounds equal to the… |
+| Curse of Suffering | A | attack | The shaman causes a creature within 30 feet to take more damage from bleed effects and causes its wounds to heal at a s… |
+| Dark Tapestry Spirit | A | dice | A shaman who selects the Dark Tapestry spirit is often a misanthropic loner. While she may well work with others, she r… |
+| Dark Tapestry Spirit Manifestation | A | attack, activated, toggle | Upon reaching 20th level, the shaman becomes an unnatural spirit of the Dark Tapestry. She gains damage reduction 5/— a… |
+| Enemies' Bane | A | dice, activated, toggle | As a swift action, the shaman imbues a single weapon she’s wielding with the bane weapon special ability, choosing the… |
+| Erosion Curse | A | dice | The shaman summons the powers of nature to erode a construct or object within 30 feet. This erosion deals 1d6 points of… |
+| Fiery Soul | A | dice | The shaman gains fire resistance 10. In addition, as a standard action she can unleash a 15-foot cone of flame from her… |
+| Fluid Mastery | A | dice | The shaman gains a swim speed equal to her base land speed, as well as the ability to breathe underwater. In addition,… |
+| Frigid Blast | A | dice | The shaman gains cold resistance 10. In addition, as a standard action, she can summon an icy blast in a 20-foot-radius… |
+| Heavens Spirit Manifestation | A | attack | Upon reaching 20th level, the shaman becomes the spirit of heaven. She receives a bonus on all saving throws equal to h… |
+| Horrific Glimpse | A | dice, activated, toggle | Once per day, the shaman can gain the effects of @Compendium[pf1.spells.68ngvzmzvadhf6vs]{Contact Other Plane} after 1… |
+| Ice Splinter | A | dice | As a standard action, the shaman can shoot razor-sharp icicles at an enemy within 30 feet as a ranged touch attack. Thi… |
+| Life Spirit Manifestation | A | attack, condition | Upon reaching 20th level, the shaman becomes a perfect channel for life energy. She gains immunity to bleed, death atta… |
+| Might of the Fallen | A | dice | The shaman can call upon the ancestral heroes of her family to bolster ailing allies. As a standard action, the shaman… |
+| Monstrous Insight | A | attack | The shaman can identify creatures and gain insight into their strengths and weaknesses. As a standard action, the shama… |
+| Powerful Smash | A | save, condition | As a standard action, the shaman can attack an enemy with an unarmed strike as if she had the @Compendium[pf1.feats.2aT… |
+| Shard Soul | A | dice | The shaman gains DR 3/magic. This DR increases by 1 for every 4 shaman levels she possesses beyond 8th. In addition, as… |
+| Shocking Touch | A | dice | As a standard action, the shaman can make a melee touch attack that deals 1d6 points of electricity damage + 1 point fo… |
+| Slums Spirit Manifestation | A | save | Upon reaching 20th level, the shaman becomes a spirit of the slums. She is immune to all diseases and poisons. When in… |
+| Spark Soul | A | dice | The shaman gains electricity resistance 10. In addition, as a standard action she can unleash a 20- foot line of sparks… |
+| Starburn (SHA) | A | dice | As a standard action, the shaman causes one creature within 30 feet to burn like a star. The creature takes 1d6 points… |
+| Stardust | A | attack, toggle | As a standard action, the shaman causes stardust to materialize around one creature within 30 feet. This stardust cause… |
+| Thunder Foot | A | attack, bonus_feat | The shaman’s body thickens and becomes more muscular. For the purpose of the overrun combat maneuver, she treats her sh… |
+| Touch of the Grave | A | dice | As a standard action, the shaman can make a melee touch attack infused with negative energy that deals 1d4 points of da… |
+| Tree Limb | A | dice, activated, toggle | As a swift action, the shaman can turn one of her arms into a heavy, branch-like limb. She must drop anything held in t… |
+| Ward of Flames | A | dice | The shaman touches a willing creature (including herself ) and grants a ward of flames. The next time the warded creatu… |
+| Wards of the City | A | attack | The spirit of the city shrouds one creature the shaman touches from the hazards of the slums. The warded creature gains… |
+| Wave Strike | A | dice | As a standard action, the shaman can perform a melee touch attack that drenches a creature and pushes it away. The oppo… |
+| Wind Ward | A | attack | The shaman can touch a willing creature (including herself ) and grants a ward of wind. This ward lasts for a number of… |
+| Ancestors Spirit Manifestation | B | activated, toggle | Upon reaching 20th level, the shaman becomes one with the spirits of her ancestors. She gains a bonus on Will saving th… |
+| Ancestral Guardian | B | activated, toggle | The shaman can call on the ancient allies of her ancestors to physically appear and assist her, even if they have moved… |
+| Beckoning Chill | B | condition | The shaman causes one creature within 30 feet to become more susceptible to the sapping powers of cold for 1 minute. Wh… |
+| Bloody Roots | B | activated | As a standard action, the shaman can cause a field of thick roots to burrow up from the ground. This ability functions… |
+| Bone Lock | B | condition | With a quick incantation, the shaman causes a creature within 30 feet to suffer stiffness in the joints and bones, caus… |
+| City Spirit | B | activated, toggle | As a swift action, the shaman channels the city’s spirit through herself, gaining a +4 bonus on all Dexterity- and Wisd… |
+| Confusion Curse | B | condition | The shaman’s command of lore can cause weaker minds to become mired in confusion. The shaman chooses a single intellige… |
+| Crashing Waves | B | condition | The force of a waves shaman’s water spells can bring even the mightiest of foes to the ground. When the shaman casts a… |
+| Elemental Form (SHA) (Air) | B | activated, toggle | As a standard action, the shaman assumes the form of a Huge (or smaller) lightning elemental, as if using @Compendium[p… |
+| Elemental Form (SHA) (Earth) | B | activated, toggle | As a standard action, the shaman assumes the form of a Huge (or smaller) earth elemental, as @Compendium[pf1.spells.v42… |
+| Elemental Form (SHA) (Fire) | B | activated, toggle | As a standard action, the shaman assumes the form of a Huge (or smaller) fire elemental, as if using @Compendium[pf1.sp… |
+| Elemental Form (SHA) (Water) | B | activated, toggle | As a standard action, the shaman assumes the form of a Huge (or smaller) water elemental, as @Compendium[pf1.spells.v42… |
+| Eyes of Battle | B | activated, toggle | The shaman’s senses become magically heightened in the heat of battle. As a swift action, she can grant herself a +10 i… |
+| Fearful Gaze | B | condition | With a single shout, the shaman causes one target creature within 30 feet to become shaken for 1 round. A successful Wi… |
+| Guardian of the North | B | activated, toggle | As a standard action, the shaman assumes the form, as @Compendium[pf1.spells.br37848gchetel0q]{Beast Shape IV}, of one… |
+| Hex of Lignification | B | condition | The shaman causes a creature within 30 feet to turn into a twisted, treelike shape for 2 rounds. The target gains hardn… |
+| Hypothermia | B | condition | The shaman afflicts a creature within 30 feet with hypothermia. The target must attempt a Fortitude saving throw. On a… |
+| Life Sight (SHA) | B | condition | The shaman can see the states of life, death, and general health of those around her. When she uses this ability, she c… |
+| Lore Spirit Manifestation | B | activated, toggle | Upon reaching 20th level, the shaman becomes an unending font of knowledge and lore. She can take 20 on all Knowledge s… |
+| Maddening Whispers | B | condition | At will as a standard action, the shaman can invoke whispers from spirits of the Dark Tapestry to speak directly into t… |
+| Nature Spirit Manifestation | B | activated, toggle | Upon reaching 20th level, the shaman becomes a spirit of nature. Once per day, she can surround herself with an organic… |
+| Nature's Gifts | B | activated, toggle | Once per day, the shaman can command trees and other plants to yield magical berries and fruit. This ability functions… |
+| Phantasmagoric Display | B | activated, toggle | The shaman can cast @Compendium[pf1.spells.ijwcwnt3oatnfghq]{Prismatic Wall} and @Compendium[pf1.spells.mb819hvwpk0zmw5… |
+| Quick Healing | B | activated, toggle | The shaman calls upon her spirit to enhance the speed of her healing abilities. This ability allows her to channel posi… |
+| Touch of Succor | B | condition | The shaman can touch a willing creature as a standard action to remove one of the following conditions: fatigued, shake… |
+| Tribal Bond | B | activated, toggle | The shaman and her tribe share a transcendent bond. Once per day when she communes with her spirit animal to regain spe… |
+
+### shifter  (4 A / 1 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Deinonychus Aspect | A | dice, bonus_feat | The deinonychus is adept at racing from ambush to deliver grievous wounds with its talons. This aspect infuses the shif… |
+| Falcon Aspect | A | dice | The falcon senses all and has the speed to hunt down even the most elusive prey. Those who take this aspect gain enhanc… |
+| Peafowl Aspect | A | dice, save, condition | Peafowl are popular ornamental birds due to their spectacular colors, and they are often symbols of royalty or the divi… |
+| Shifter Claws | A | dice, activated, toggle | At will, a shifter in her natural form can extend her claws as a swift action to use as a weapon. This magical transfor… |
+| Shifter Aspect | B | activated | At 1st level, a shifter gains her first aspect—a category of animal to which her body and soul have become supernatural… |
+
+### skald  (1 A / 4 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Inspired Rage | A | save, condition, toggle | At 1st level, affected allies gain a +2 morale bonus to Strength and Constitution and a +1 morale bonus on Will saving… |
+| Lore Master (SKA) | B | activated, toggle | At 7th level, the skald becomes a master of many different types of lore, and can take 10 on any Knowledge check for wh… |
+| Raging Song | B | activated, condition, toggle | A skald is trained to use music, oration, and similar performances to inspire his allies to feats of strength and feroc… |
+| Song of the Fallen | B | condition | At 14th level, a skald can temporarily revive dead allies to continue fighting, with the same limitations as @UUID[Comp… |
+| Spell Kenning | B | activated, toggle | At 5th level, a skald is learned in the magic of other spellcasters, and can use his own magic to duplicate those class… |
+
+### slayer  (8 A / 1 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Assasinate (SLA) | A | attack | A slayer with this advanced talent can kill foes that are unable to defend themselves. To attempt to assassinate a targ… |
+| Jaguar's Grace | A | attack | A slayer with this talent does not take the normal –4 penalty when dealing nonlethal damage using a weapon that normall… |
+| Jaguar's Pounce | A | attack, activated, toggle | When a slayer with this talent deals sneak attack damage, he can attempt a disarm or trip combat maneuver as an immedia… |
+| Jaguar's Protection | A | attack, toggle | When a slayer with this talent deals sneak attack damage, he draws the target’s attention away from his allies. The aff… |
+| Marksman's Shot | A | attack, activated | Those who seek to slay with a single shot must have keen eyes and perfect poise. As an attack action, the slayer makes… |
+| Master Slayer | A | dice | At 20th level, the slayer becomes a master at capturing or killing his studied targets. As a standard action, he can ma… |
+| Slayer Talents | A | attack | As a slayer gains experience, he learns a number of talents that aid him and confound his foes. Starting at 2nd level a… |
+| Slowing Strike (SLA) | A | dice, attack | An opponent damaged by the slayer’s sneak attack has its speed halved for 1d4 rounds. A successful Fortitude saving thr… |
+| Slayer's Advance | B | activated, toggle | At 13th level, a slayer can once per day move up to twice his base speed as a move action. He may use Stealth as part o… |
+
+### sorcerer  (36 A / 19 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Acid Ray | A | dice | Starting at 1st level, you can unleash an elemental ray as a standard action , targeting any foe within 30 feet as a ra… |
+| Acidic Ray | A | dice | Starting at 1st level, you can fire an acidic ray as a standard action, targeting any foe within 30 feet as a ranged to… |
+| Aggressive Possession | A | save, condition | At 1st level, you can make a melee touch attack as a standard action . The target must succeed at a Will save or be con… |
+| Avalanche | A | attack, activated, toggle | At 9th level, whenever you hit a single target with a spell that deals damage, you may make a bull rush check as a swif… |
+| Breaching the Gulf | A | dice, save, activated, toggle | At 15th level, your caster level is increased by 3 when casting spells of the teleportation subschool. In addition, onc… |
+| Corrupting Aura | A | dice, activated, condition, toggle | At 9th level, you can surround yourself with an aura of corrupting energy for a number of rounds per day equal to your… |
+| Dehydrating Touch | A | dice | Starting at 1st level, you can make a melee touch attack as a standard action that inflicts 1d6 points of nonlethal dam… |
+| Dread Gaze | A | save, activated, condition, toggle | At 9th level, you gain a form of the green hag’s evil eye power. As a standard action , you may fix your gaze on any on… |
+| Electricity Ray | A | dice | Starting at 1st level, you can unleash an elemental ray as a standard action , targeting any foe within 30 feet as a ra… |
+| Elemental Blast | A | dice, save, activated, toggle | At 9th level, you can unleash a blast of elemental power once per day. This 20-foot-radius burst does 1d6 points of dam… |
+| Elemental Ray | A | dice | Starting at 1st level, you can unleash an elemental ray as a standard action, targeting any foe within 30 feet as a ran… |
+| Fire Ray | A | dice | Starting at 1st level, you can unleash an elemental ray as a standard action , targeting any foe within 30 feet as a ra… |
+| Frost Ray | A | dice | Starting at 1st level, you can unleash an elemental ray as a standard action , targeting any foe within 30 feet as a ra… |
+| Grasp of the Dead | A | dice, save, activated, toggle | At 9th level, you can cause a swarm of skeletal arms to burst from the ground to rip and tear at your foes. The skeleta… |
+| Heavenly Fire | A | dice, activated, toggle | Starting at 1st level, you can unleash a ray of heavenly fire as a standard action, targeting any foe within 30 feet as… |
+| Hellfire | A | dice, save, activated, condition, toggle | At 9th level, you can call down a column of hellfire. This 10-foot-radius burst does 1d6 points of fire damage per sorc… |
+| Horrific Visage | A | save, condition | At 1st level, you can draw upon your hag ancestor to cause one target to perceive you as having a horrifying appearance… |
+| Minute Meteors | A | dice, save | At 1st level, you can summon a rain of tiny meteorites as a standard action to fall in a 5-foot column, 30 feet high, w… |
+| Oni Healing | A | attack, activated, toggle | At 15th level, if your hit points drop below 0, you automatically stabilize and begin regenerating 2 hit points per rou… |
+| Progenitor's Sting | A | dice | You can magically apply your toxic essence onto your weapon or onto the weapon of a willing ally within 30 feet as a st… |
+| Psychic Strike | A | dice, condition | At 1st level, you can overwhelm the minds of those nearby. You can target one creature within 30 feet that you can see;… |
+| Rallying Cry | A | attack, activated, toggle | At 3rd level, as a standard action once per day, you can shout a cry instilled with the noble sacrifices of your ancest… |
+| Ravenous Frenzy | A | dice, attack | At 9th level, you gain the benefits of @Compendium[pf1.spells.s9amdo5398alb5p0]{Haste} for a number of rounds per day e… |
+| Serpent's Fang | A | dice, activated | At 1st level, you can grow fangs as a free action . These fangs are treated as a natural weapon inflicting 1d4 points o… |
+| Shadowstrike | A | dice, condition | At 1st level, you can make a melee touch attack as a standard action that inflicts 1d4 points of nonlethal damage + 1 f… |
+| Solar Ascension | A | dice, attack, activated | At 20th level, as a full-round action, you can become an incorporeal being of light for 1 round per sorcerer level. Whi… |
+| Squander | A | save, activated, condition, toggle | At 15th level, you gain the ability to force others to waste the opportunities they are given. Once per day as a standa… |
+| Tanglevine | A | attack | At 1st level, as a standard action , you can create a 15-foot-long, animated vine that springs from your hand. This vin… |
+| Thunderbolt | A | dice, save, activated, condition, toggle | At 9th level, you can command a stroke of lightning to strike from above in a 5-foot-radius cylinder 60 feet high. The… |
+| Touch of Agony | A | dice | At 1st level, you can make a melee touch attack as a standard action that wracks a living creature with agonizing pain.… |
+| Touch of Destiny | A | attack | At 1st level, you can touch a creature as a standard action, giving it an insight bonus on attack rolls, skill checks ,… |
+| Touch of Rage | A | attack | At 1st level, you can touch a creature as a standard action , giving it a morale bonus on attack rolls, damage rolls, a… |
+| Trap Sense (SOR) | A | save | At 3rd level, you develop a sixth sense that helps you avoid traps. You gain a +2 bonus on Perception checks made to no… |
+| Tremor | A | attack | At 1st level, as a standard action , you can cause the ground to shake beneath a single creature within 30 feet, functi… |
+| Vortex of Flesh | A | dice, activated, toggle | At 9th level, you can momentarily change into an amalgam of erratic geometric shapes once per day, lashing out at every… |
+| Water's Fury | A | dice, save | At 9th level, you gain the ability to summon a rushing jet of water from the elemental plane of water and direct it aga… |
+| Arcane Bond (SOR) | B | activated, toggle | At 1st level, you gain an @UUID[Compendium.pf1.class-abilities.Item.pW1PNlDcdGl7KuEa]{arcane bond} , as a wizard equal… |
+| Astral Voyager | B | activated, toggle | At 9th level, you can send your consciousness to the Astral Plane once per day. This functions as @Compendium[pf1.spell… |
+| Call Ancestor | B | activated, toggle | At 9th level, once per day, you can spend a standard action to grant a long-dead relative a brief facsimile of life. Th… |
+| Corrupting Touch | B | condition | At 1st level, you can cause a creature to become @UUID[Compendium.pf1.pf1e-rules.JournalEntry.NSqfXaj4MevUR2uJ.JournalE… |
+| Disorienting Touch | B | condition | At 1st level, as a melee touch attack , you can cause a creature to doubt its sense of depth and direction. The target… |
+| Distracting Pattern | B | activated, toggle | At 9th level, you can distort the scenery around you for a number of rounds equal to your sorcerer level. This ability… |
+| Fascinate (SOR) | B | activated, toggle | At 3rd level, you gain the ability to use a Perform skill to cause one or more creatures to become fascinated with you.… |
+| Gift of Blood | B | activated, toggle | At 9th level, as a standard action , you can choose to sacrifice some of your hit points to grant an ally double that n… |
+| Grave Touch (SOR) | B | condition | Starting at 1st level, you can make a melee touch attack as a standard action that causes a living creature to become @… |
+| Incorporeal Form | B | activated, toggle | At 15th level, you can become incorporeal for 1 round per sorcerer level. While in this form, you gain the incorporeal… |
+| Legendary Archmage | B | activated, toggle | Once per day, you can cast any spell on the sorcerer/wizard spell list as if using the wild arcana ability, except the… |
+| Massmorph | B | activated, toggle | At 9th level, as a full-round action , you can alter the size and health of plant life, as if using @Compendium[pf1.spe… |
+| Nanite Surge | B | activated, toggle | At 3rd level, once per day as an immediate action , you can cause your nanites to surge, granting you a bonus equal to… |
+| Plague's Caress | B | condition | At 1st level, you can make a melee touch attack as a standard action that causes a living creature’s flesh to break out… |
+| Raise the Deep | B | activated, toggle | At 15th level, you raise water as per @Compendium[pf1.spells.7yf67b7y4byj96w7]{Control Water}, but no water need be pre… |
+| Sacrificial Exchange | B | activated, toggle | At 15th level, as a swift action once per day, you can take 2 points of temporary ability damage to one of your ability… |
+| Snow Shroud | B | activated, toggle | At 9th level, you ignore concealment and Perception penalties in natural or magical snow, ice, fog, and similar weather… |
+| Warlord Reborn | B | activated, toggle | At 20th level, you become a true orc warlord of legend. You gain immunity to fire and DR 5/—. Once per day, you can cas… |
+| Whirlwind | B | activated, toggle | At 9th level, you gain the ability to turn into a 10-foot-high whirlwind once per day for 1 round per sorcerer level. |
+
+### spiritualist  (3 A / 10 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Deliver Touch Spells (SPI) | A | attack, activated, toggle | The phantom can deliver touch spells for the spiritualist when fully manifested in incorporeal or ectoplasmic form. The… |
+| Devotion (SPI) | A | save | The phantom gains a +4 morale bonus on Will saves against enchantment spells and effects. |
+| Ectoplasmic Bonded Manifestation | A | attack, activated, toggle | When a spiritualist uses this ability and chooses ectoplasmic form, she gains an ectoplasmic shield that protects her w… |
+| Bonded Manifestation | B | activated, toggle | At 3rd level, as a swift action, a spiritualist can pull on the consciousness of her phantom and the substance of the E… |
+| Bonded Senses | B | activated | At 2nd level, as a standard action, a spiritualist can share the senses of her manifested phantom, hearing, seeing, sme… |
+| Call Spirit | B | activated, toggle | At 16th level, a spiritualist gains the ability to use @Compendium[pf1.spells.k0ihiqhfppkchs1j]{Call Spirit} as a spell… |
+| Calm Spirit | B | activated, toggle | At 7th level, a spiritualist gains the ability to use @Compendium[pf1.spells.y4ztvvswf2uuwuqo]{Calm Spirit} as a spell-… |
+| Etheric Tether | B | activated | At 1st level, a spiritualist can force the phantom to manifest in an area around her by pushing the phantom’s conscious… |
+| Link (SPI) | B | activated | A spiritualist and her phantom share a mental link that allows for communication across distances (as long as they are… |
+| Phantom | B | activated | A spiritualist begins play with the aid of a powerful and versatile spirit entity called a phantom. The phantom forms a… |
+| Phantom Recall | B | activated, toggle | At 6th level, as either a swift or an immediate action, a spiritualist can call her manifested phantom to her side or b… |
+| See Invisibility | B | activated, toggle | At 9th level, a spiritualist gains the ability to see many things normally hidden from sight. She gains the ability to… |
+| Shared Consciousness | B | activated, toggle | At 1st level, while a phantom is confined in a spiritualist’s consciousness (but not while it’s fully manifested or ban… |
+
+### swashbuckler  (13 A / 5 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Bleeding Wound (SWA) | A | attack, activated | At 11th level, when the swashbuckler hits a living creature with a light or one-handed piercing melee weapon attack, as… |
+| Deadly Stab | A | attack | At 19th level, when the swashbuckler confirms a critical hit with a light or one-handed piercing melee weapon, in addit… |
+| Derring-Do | A | dice | At 1st level, a swashbuckler can spend 1 panache point when she makes an Acrobatics, Climb, Escape Artist, Fly, Ride, o… |
+| Dizzying Defense | A | attack, activated, toggle | At 15th level, while wielding a light or one-handed piercing melee weapon in one hand, the swashbuckler can spend 1 pan… |
+| Opportune Parry and Riposte | A | attack, activated, toggle | At 1st level, when an opponent makes a melee attack against the swashbuckler, she can spend 1 panache point and expend… |
+| Panache | A | attack | More than just a lightly armored warrior, a swashbuckler is a daring combatant. She fights with panache: a fluctuating… |
+| Precise Strike | A | attack, activated, toggle | At 3rd level, while she has at least 1 panache point, a swashbuckler gains the ability to strike precisely with a light… |
+| Stunning Stab | A | attack, condition | At 19th level, when a swashbuckler hits a creature with a light or one-handed piercing melee weapon, she can spend 2 pa… |
+| Subtle Blade | A | attack | At 11th level, while a swashbuckler has at least 1 panache point, she is immune to disarm, steal, and sunder combat man… |
+| Swashbuckler Deeds | A | dice, attack, activated, condition, toggle | Derring-Do (Ex): At 1st level, a swashbuckler can spend 1 panache point when she makes an Acrobatics , Climb , Escape A… |
+| Swashbuckler Weapon Mastery | A | attack | At 20th level, when a swashbuckler threatens a critical hit with a light or one-handed piercing melee weapon, that crit… |
+| Swashbuckler Weapon Training | A | attack | At 5th level, a swashbuckler gains a +1 bonus on attack and damage rolls with one-handed or light piercing melee weapon… |
+| Targeted Strike | A | attack, activated, condition | At 7th level, as a full-round action the swashbuckler can spend 1 panache point to make an attack with a single light o… |
+| Charmed Life | B | activated, toggle | At 2nd level, the swashbuckler gains a knack for getting out of trouble. Three times per day as an immediate action bef… |
+| Dodging Panache | B | activated, toggle | At 1st level, when an opponent attempts a melee attack against the swashbuckler, the swashbuckler can as an immediate a… |
+| Kip-Up | B | activated, condition, toggle | At 3rd level, while the swashbuckler has at least 1 panache point, she can kip-up from prone as a move action without p… |
+| Menacing Swordplay | B | activated, toggle | At 3rd level, while she has at least 1 panache point, when a swashbuckler hits an opponent with a light or one-handed p… |
+| Perfect Thrust | B | activated | At 15th level, while the swashbuckler has at least 1 panache point, she can as a full-round action make a perfect thrus… |
+
+### vigilante  (4 A / 0 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Frightening Appearance | A | save, attack, activated, condition | At 11th level, whenever a vigilante with this ability makes an attack against a foe that is unaware of the vigilante’s… |
+| Stunning Appearance | A | save, condition | At 17th level, a vigilante can leave his foes unable to respond when he appears. Whenever a vigilante with this ability… |
+| Vengeance Strike | A | dice, attack | At 20th level, a vigilante can study a target to strike more viciously. He can spend up to 5 standard actions, which al… |
+| Vigilante Specialization | A | dice, attack | At 1st level, a vigilante must choose to be either an avenger or a stalker. An avenger gains a base attack bonus equal… |
+
+### warpriest  (5 A / 3 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Curse Blessing: Hexing Attack | A | attack, toggle | You can touch one weapon and enhance it to inflict a minor curse on the next target it strikes. The struck target must… |
+| Fervor | A | dice, activated, toggle | At 2nd level, a warpriest can draw upon the power of his faith to heal wounds or harm foes. He can also use this abilit… |
+| Rune Blessing: Blast Rune | A | dice | At 1st level, you can create a blast rune in any adjacent square. Any creature entering this square takes an amount of… |
+| Sacred Weapon | A | dice, attack, activated, toggle | At 1st level, weapons wielded by a warpriest are charged with the power of his faith. In addition to the favored weapon… |
+| Strength Blessing: Strength Surge | A | attack, activated, toggle | At 1st level, as a swift action you can focus your own strength. You gain an enhancement bonus equal to 1/2 your warpri… |
+| Aspect of War | B | activated, toggle | At 20th level, the warpriest can channel an aspect of war, growing in power and martial ability. Once per day as a swif… |
+| Glory Blessing: Demoralizing Glory | B | activated, toggle | At 10th level, when you successfully damage an opponent with a melee attack or attack spell, as a swift action you can… |
+| Sacred Armor | B | activated, toggle | At 7th level, the warpriest gains the ability to enhance his armor with divine power as a swift action. This power gran… |
+
+### witch  (5 A / 1 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Delicious Fright | A | save, attack, condition | The witch can feed on the fear of her victim. The target of this hex becomes shaken for a number of rounds equal to 3 +… |
+| Poison Touch Hex | A | dice | The witch empowers herself or an ally within 30 feet with poisonous nails. The affected creature gains a claw attack as… |
+| Retribution Hex | A | save | A witch can place a retribution hex on a creature within 60 feet, causing terrible wounds to open across the target’s f… |
+| Scar Hex | A | save | This hex curses a single target touched with horrible scars of the witch's choosing, whether something as simple as a s… |
+| Vision Hex | A | save | A witch with the vision hex can grant a glimpse of the future to a creature touched. Granting a vision takes 1 minute,… |
+| Flight Hex | B | activated, toggle | The witch grows lighter as she gains power, eventually gaining the ability to fly. At 1st level, the witch can use feat… |
+
+### wizard  (22 A / 12 B)
+
+| feature | tier | signals | text |
+|---|---|---|---|
+| Acid Cloud | A | dice, save, condition | As a standard action, you can create a 5-foot-radius cloud of acid vapor within 30 feet that lasts for 1 round. This cl… |
+| Acid Dart (WIZ) | A | dice | As a standard action you can unleash an acid dart targeting any foe within 30 feet as a ranged touch attack. The acid d… |
+| Aura of Banishment | A | save, condition | At 8th level, you can emit a 30-foot aura of banishment for a number of rounds per day equal to your wizard level. Any… |
+| Aura of Despair | A | attack, toggle | At 8th level, you can emit a 30-foot aura of despair for a number of rounds per day equal to your wizard level. Enemies… |
+| Aura of Prescience | A | attack | At 8th level, you can emit a 30-foot aura of void energy for a number of rounds per day equal to your wizard level. All… |
+| Battleshaping | A | attack, activated, toggle | As a swift action, you grow a single natural weapon. The natural weapon lasts for 1 round and has a +1 enhancement bonu… |
+| Cold Blast | A | dice, save, condition | As a standard action, you can unleash a blast of freezing cold. This blast deals 1d6 points of cold damage + 1 point fo… |
+| Conjuration School | A | dice | The conjurer focuses on the study of summoning monsters and magic alike to bend to his will. @Compendium[pf1.class-abil… |
+| Diviner's Fortune | A | attack | When you activate this school power, you can touch any creature as a standard action to give it an insight bonus on all… |
+| Earth Supremacy | A | attack | You gain a +2 enhancement bonus to your CMD to resist bull rush, reposition, trip, and overrun attempts as long as you… |
+| Enchantment School | A | attack, condition, toggle | The enchanter uses magic to control and manipulate the minds of his victims. @Compendium[pf1.class-abilities.wnb7IxOCmh… |
+| Evocation School | A | dice | Evokers revel in the raw power of magic, and can use it to create and destroy with shocking ease. @Compendium[pf1.class… |
+| Fire Jet | A | dice, save, activated | As a standard action, you can send forth a 20-foot line of fire. Anyone in this line takes 1d6 points of fire damage +… |
+| Freezing Shards | A | dice, save | As a standard action, you can cause shards of ice to burst forth from the ground around you. The shards deal 1d4 points… |
+| Hindering Muck | A | save, condition | As a standard action, you can create a 15-foot cone of sticky mud. Any creature in the cone must succeed at a Reflex sa… |
+| Lightning Flash | A | dice, save, condition | As a standard action, you can unleash a flash of electricity. This flash deals 1d6 points of electricity damage + 1 poi… |
+| Magma Furrow | A | dice, save | As a standard action, you can send forth a 20-foot line of magma. Any creature in this line takes 1d6 points of fire da… |
+| Mud Missile | A | dice | At 8th level, you can fling a ball of hardened mud at a foe within 30 feet as a standard action. If you succeed at a ra… |
+| Share Essence | A | dice | As a standard action , you can share your vital energy with a living creature that you touch. You take 1d6 points of no… |
+| Shrapnel Burst | A | dice, save, activated, toggle | At 8th level, as a swift action, you can cause jagged pieces of metal to explode outward from your body. These shards d… |
+| Telekinetic Fist | A | dice | As a standard action you can strike with a telekinetic fist, targeting any foe within 30 feet as a ranged touch attack.… |
+| Transmutation School | A | dice | Transmuters use magic to change the world around them. @Compendium[pf1.class-abilities.K5qGe9bp4lDynT3K]{Physical Enhan… |
+| Arcane Bond | B | activated, toggle | At 1st level, wizards form a powerful bond with an object or a creature. This bond can take one of two forms: a familia… |
+| Binding Darkness | B | condition | As a standard action , you cast a weave of shadows at any foe within 30 feet as a ranged touch attack . The shadows ent… |
+| Blinding Ray | B | condition | As a standard action you can fire a shimmering ray at any foe within 30 feet as a ranged touch attack. The ray causes c… |
+| Body of Smoke | B | activated, toggle | At 8th level, you can assume a @UUID[Compendium.pf1.spells.mqdoexj35atgqafn]{gaseous form} (as per the spell of that na… |
+| Bonded Object | B | activated, toggle | At 1st level, you gain an arcane bond, per a wizard equal to your sorcerer level, with an object constructed by a long-… |
+| Dazing Touch (WIZ) | B | condition | You can cause a living creature to become @UUID[Compendium.pf1.pf1e-rules.NSqfXaj4MevUR2uJ.JournalEntryPage.2A6Gk60pLDK… |
+| Grave Touch (WIZ) | B | condition | As a standard action, you can make a melee touch attack that causes a living creature to become @UUID[Compendium.pf1.pf… |
+| Invisibility Field | B | activated, toggle | At 8th level, you can make yourself @UUID[Compendium.pf1.pf1e-rules.NSqfXaj4MevUR2uJ.JournalEntryPage.Wr2ZWUZcyVWQ4GtX]… |
+| Metamagic Mastery | B | activated, toggle | At 8th level, you can apply any one metamagic feat that you know to a spell you are about to cast. This does not alter… |
+| Perfection of Self | B | activated, toggle | At 8th level, as a swift action you can grant yourself an enhancement bonus to a single ability score equal to 1/2 your… |
+| Shape Emotions | B | condition, toggle | At 8th level, you can emit a 30-foot aura to either ward off or welcome emotional influence for a number of rounds per… |
+| Unstable Bonds | B | condition | At 1st level, your touch can disrupt the bonds that hold a summoned or called creature on this plane. As a melee touch… |
+
+### Sheet already automates these core features
+
+The `_MODS` twin carries changes/notes/actions for these — a toggle on top of an always-on change double-applies. Read both before authoring.
+
+| feature | tier | MODS carries |
+|---|---|---|
+| Aberrant Form | A | contextNotes 1 |
+| Abyssal Claws | A | actions 1 |
+| Accident | A | actions 1 |
+| Accurate Stance (UC) | A | actions 2 |
+| Accustomed to Awfulness | B | contextNotes 1 |
+| Acid Cloud | A | actions 1 |
+| Acid Dart | A | actions 1 |
+| Acid Dart (WIZ) | A | actions 1 |
+| Acid Ray | A | actions 1 |
+| Acidic Ray | A | actions 1 |
+| Act as One | B | actions 1 |
+| Action Before Thought (UC) | B | actions 1 |
+| Adaptive Strike | B | changes 1 |
+| Adoration | A | actions 1 |
+| Aggressive Possession | A | actions 1 |
+| Agile Feet | B | actions 1 |
+| Agonizing Wound | B | actions 1 |
+| Alignment Smite | A | actions 1 |
+| Ancestor's Council | A | actions 1 |
+| Ancestors Final Revelation | B | changes 1, actions 1 |
+| Ancestors Spirit Manifestation | B | changes 1 |
+| Ancestral Blessing | A | actions 1 |
+| Ancestral Guardian | B | actions 1 |
+| Ancestral Strikes | A | actions 1 |
+| Animal Blessing: Animal Fury | A | actions 1 |
+| Animal Focus | A | actions 1 |
+| Animal Mastery | A | actions 1 |
+| Animate Servant | B | actions 1 |
+| Anything to Please | A | actions 1 |
+| Arcane Ambush | A | actions 1 |
+| Arcane Pool | B | actions 1 |
+| Arcane Reservoir | B | actions 1 |
+| Arrest the Flow | B | actions 1 |
+| Artificer's Touch | A | actions 2 |
+| Aspect of War | B | actions 1 |
+| Assasinate (SLA) | A | actions 2 |
+| Assume Control | A | actions 1 |
+| Astral Voyager | B | actions 1 |
+| Astral Warp | A | actions 1 |
+| Athletic Exploit | B | actions 1 |
+| Attune Implants | B | actions 1 |
+| Augury | B | actions 1 |
+| Aura of Chaos | A | actions 1 |
+| Aura of Decay | A | actions 1 |
+| Aura of Despair | A | actions 1 |
+| Aura of Efficiency | B | actions 1 |
+| Aura of Forgetfulness | A | actions 1 |
+| Aura of Heroism | B | actions 1 |
+| Aura of Madness | A | actions 1 |
+| Aura of Prescience | A | actions 1 |
+| Aura of Repitition | A | actions 1 |
+| Aura of Sanctification | B | actions 1 |
+| Aura of Vengeance | B | actions 1 |
+| Aurora Borealis | A | actions 1 |
+| Awesome Blow | A | actions 1 |
+| Axiomatic Bombs | A | actions 2 |
+| Bardic Performance | B | actions 1 |
+| Bare-Hand Block (UC) | A | actions 1 |
+| Bastion of the Monument | A | actions 1 |
+| Battle Rage | A | actions 1 |
+| Battle Spirit (Ability) | A | actions 1 |
+| Battle Ward | A | actions 1 |
+| Battleshaping | A | actions 1 |
+| Beast Ride | B | actions 1 |
+| Beckoning Chill | B | actions 1 |
+| Bestow Resolve | B | actions 1 |
+| Better You Than me | A | actions 1 |
+| Binding Circles | A | actions 1 |
+| Binding Darkness | B | actions 1 |
+| Binding Pattern | A | actions 1 |
+| Binding Ties | B | actions 1 |
+| Bionetwork | B | actions 1 |
+| Biting Frost | A | actions 1 |
+| Black Blood | B | actions 1 |
+| Blackened Curse | A | changes 1 |
+| Blast Rune | A | actions 1 |
+| Blaze of Glory | A | actions 1 |
+| Bleeding Touch | A | actions 1 |
+| Bleeding Wound | A | actions 1 |
+| Bleeding Wound (SWA) | A | actions 2 |
+| Blessed Surgery | B | actions 1 |
+| Blinding Flash | A | actions 1 |
+| Blinding Ray | B | actions 1 |
+| Bloodrage | A | actions 1 |
+| Bloody Roots | B | actions 1 |
+| Bodily Purge | A | actions 1 |
+| Body Snatch | A | actions 1 |
+| Body of Earth | A | actions 1 |
+| Body of Ice | B | actions 1 |
+| Body of Smoke | B | actions 1 |
+| Bolster | A | actions 1 |
+| Bolstering Touch | A | actions 1 |
+| Bomb | A | actions 1 |
+| Bond Senses | B | actions 1 |
+| Bond Senses (UC) | B | actions 1 |
+| Bonded Manifestation | B | actions 1 |
+| Bonded Senses | B | actions 1 |
+| Bone Lock | B | actions 1 |
+| Book-Bound | B | actions 1 |
+| Botanical Plasticity | B | actions 1 |
+| Braggart | A | changes 1 |
+| Bramble Armor | A | actions 2 |
+| Bravery | A | contextNotes 1 |
+| Breaching the Gulf | A | actions 1 |
+| Breaking Down Koan (UC) | A | actions 1 |
+| Breath Weapon (UC) (4 pts) | A | actions 1 |
+| Building-Up Koan (UC) | A | actions 1 |
+| Burn Shroud | A | actions 1 |
+| Burning Infusion | A | actions 1 |
+| Caging Strike | A | actions 1 |
+| Call Ancestor | B | actions 1 |
+| Call Fire | A | actions 1 |
+| Call Spirit | B | actions 1 |
+| Calling | A | actions 1 |
+| Calm Spirit | B | actions 1 |
+| Calm Stance (UC) | B | actions 2 |
+| Calming Touch | A | actions 1 |
+| Certainty (UC) | B | actions 1 |
+| Chains of Justice | B | actions 1 |
+| Chameleon Aspect | B | actions 1 |
+| Channel Energy | A | actions 4 |
+| Chaos Blade | B | actions 1 |
+| Chaos Blessing: Anarchic Strike | A | actions 1 |
+| Charm Blessing: Dominance Aura | B | actions 1 |
+| Charmed Life | B | actions 1 |
+| Charming Smile | B | actions 2 |
+| Chronicler's Insight | A | actions 1 |
+| Circle of Order | B | actions 1 |
+| City Spirit | B | actions 1 |
+| Cleansing Flame | A | actions 1 |
+| Cloud Mind | B | actions 1 |
+| Cloud of Smoke | A | actions 1 |
+| Cold Blast | A | actions 1 |
+| Collector of Souls | A | actions 1 |
+| Color Beam | A | actions 1 |
+| Command | A | actions 1 |
+| Community Blessing: Communal Aid | B | actions 1 |
+| Confusing Strike | A | actions 1 |
+| Confusion Curse | B | actions 1 |
+| Consume the Enemy | A | actions 1 |
+| Cooperative Defense | B | actions 1 |
+| Corrupting Aura | A | actions 1 |
+| Corrupting Touch | B | actions 1 |
+| Counterspell Mastery | B | actions 1 |
+| Covetous Curse | A | changes 3 |
+| Critical Precision | A | actions 1 |
+| Cruel Thicket | A | actions 1 |
+| Crystal Shard | B | actions 1 |
+| Current Flow | B | actions 1 |
+| Currentcaller | B | actions 1 |
+| Curse Blessing: Hexing Attack | A | actions 1 |
+| Curse Blessing: Retributive Curse | A | actions 1 |
+| Curse of Faltering | A | actions 1 |
+| Curse of Isolation | A | actions 1 |
+| Curse of Suffering | A | actions 1 |
+| Cut the Corruption | A | actions 1 |
+| Dancing Weapons | B | actions 1 |
+| Danger Sense | A | contextNotes 3 |
+| Danger Sight | B | actions 1 |
+| Danger Ward | B | actions 1 |
+| Dark Half | A | actions 1 |
+| Dark Tapestry Final Revelation | A | actions 1 |
+| Dark Tapestry Spirit Manifestation | A | actions 1 |
+| Darkness Blessing: Darkened Vision | B | actions 1 |
+| Darkness Domain | A | changes 1 |
+| Dawning Realization | A | actions 1 |
+| Day's Resurgence | B | actions 1 |
+| Dazing Touch (CLE) | B | actions 1 |
+| Dazing Touch (WIZ) | B | actions 1 |
+| Dazzling Infusion | A | actions 1 |
+| Dead Shot | A | actions 1 |
+| Deadeye | A | actions 1 |
+| Deadly Stab | A | actions 1 |
+| Deadly Weather | A | actions 1 |
+| Deafening Strike | B | actions 1 |
+| Death Blessing: Death's Touch | B | actions 1 |
+| Death's Shot | A | actions 1 |
+| Decisive Strike | B | actions 1 |
+| Deflection Aura | A | actions 1 |
+| Deflection Field | A | actions 1 |
+| Dehydrating Touch | A | actions 1 |
+| Delayed Spells | B | actions 1 |
+| Delicious Fright | A | actions 1 |
+| Den of Vipers | B | actions 1 |
+| Derring-Do | A | actions 1 |
+| Despair | A | actions 1 |
+| Destined Strike | B | actions 1 |
+| Destruction Blessing: Destructive Attacks | A | actions 1 |
+| Destruction Blessing: Heart of Carnage | A | actions 1 |
+| Destructive Aura | A | actions 1 |
+| Destructive Smite | A | actions 1 |
+| Detect Thoughts | A | actions 1 |
+| Diamond Mind (UC) | B | actions 1 |
+| Diamond Resilience (UC) | B | actions 1 |
+| Diamond Soul | A | changes 1 |
+| Diamond Soul (UC) | B | actions 1 |
+| Dimension Door (4 pts) | B | actions 1 |
+| Discern Lies | B | actions 1 |
+| Dismissive Touch | B | actions 1 |
+| Disorienting Touch | B | actions 1 |
+| Dispelling Pulse | A | actions 1 |
+| Dispelling Touch | B | actions 1 |
+| Distracting Pattern | B | actions 1 |
+| Divine Challenge | B | actions 1 |
+| Divine Demand | A | actions 1 |
+| Divine Prison | B | actions 1 |
+| Divine Retribution | A | actions 1 |
+| Divine Vessel | A | actions 1 |
+| Diviner's Fortune | A | actions 1 |
+| Dizzying Defense | A | actions 1 |
+| Dodging Panache | B | actions 1 |
+| Dominate Technology | B | actions 1 |
+| Domino Effect | B | actions 1 |
+| Draconic Claws | A | actions 1 |
+| Dragonbreath | A | actions 1 |
+| Drain Vibrancy | A | actions 1 |
+| Draining Infusion | A | actions 1 |
+| Draining Touch | A | actions 1 |
+| Dread Bomb | A | actions 1 |
+| Dread Gaze | A | actions 1 |
+| Dream Leech | A | actions 1 |
+| Dreamshaper | A | actions 1 |
+| Earth Blessing: Acid Strike | A | actions 1 |
+| Earth Supremacy | A | contextNotes 2 |
+| Earthquake Blessing: Stone's Base | B | actions 1 |
+| Earthquake Blessing; Earth Hammer | A | actions 1 |
+| Eclipsing Blade | B | actions 1 |
+| Ectoplasmic Bonded Manifestation | A | actions 1 |
+| Efreeti Form | B | actions 1 |
+| Electricity Ray | A | actions 1 |
+| Elemental Blast | A | actions 1 |
+| Elemental Burst (UC) | A | actions 1 |
+| Elemental Form (SHA) (Air) | B | actions 1 |
+| Elemental Form (SHA) (Earth) | B | actions 1 |
+| Elemental Form (SHA) (Fire) | B | actions 1 |
+| Elemental Form (SHA) (Water) | B | actions 1 |
+| Elemental Fury (UC) | A | actions 1 |
+| Elemental Ray | A | actions 1 |
+| Elemental Stance (UC) | A | actions 2 |
+| Elemental Strikes | A | actions 1 |
+| Elemental Trap Infusion | A | actions 1 |
+| Elysium's Call | A | actions 1 |
+| Emotional Bond | B | actions 1 |
+| Emotional Push | B | actions 1 |
+| Empathy | B | actions 1 |
+| Empty Mind | B | actions 1 |
+| Enduring Ritual | B | actions 1 |
+| Enemies' Bane | A | actions 1 |
+| Energy Blast | A | actions 1 |
+| Energy Composite Blast | A | actions 1 |
+| Energy Kinetic Blade | A | actions 1 |
+| Energy Kinetic Blast | A | actions 1 |
+| Energy Ray | A | actions 1 |
+| Energy Ward | A | actions 1 |
+| Enlarge | B | actions 1 |
+| Entangling Ectoplasm | A | actions 1 |
+| Enveloping Darkness | B | actions 1 |
+| Erosion Curse | A | actions 1 |
+| Evil Blessing: Unholy Strike | A | actions 1 |
+| Excommunicate | A | actions 1 |
+| Executioner's Strike | A | actions 1 |
+| Exoskeleton | A | actions 1 |
+| Explosive Bomb | A | actions 2 |
+| Extinguishing Strike | A | actions 1 |
+| Eye of Somnus | B | actions 1 |
+| Eyes of Battle | B | actions 1 |
+| Faith-Stealing Strike | A | actions 1 |
+| Fascinate (SOR) | B | actions 1 |
+| Fear the Flames | B | actions 1 |
+| Fearful Gaze | B | actions 1 |
+| Fearful Touch | A | actions 1 |
+| Feather Balance (UC) | B | actions 1 |
+| Feed on Fear | A | actions 1 |
+| Fervent Action | B | actions 1 |
+| Fervor | A | actions 1 |
+| Fiendish Probiscis | A | actions 3 |
+| Fiery Soul | A | actions 1 |
+| Final Vengeance | B | actions 1 |
+| Finesse Training (UC) | A | changes 1 |
+| Fire Blessing: Fire Strike | A | actions 1 |
+| Fire Bolt | A | actions 1 |
+| Fire Corridor | B | actions 1 |
+| Fire Jet | A | actions 1 |
+| Fire Ray | A | actions 1 |
+| Fire Steed | A | actions 1 |
+| Fire Supremacy | B | actions 1 |
+| Fire of Belief | A | actions 1 |
+| Flash Infusion | A | actions 1 |
+| Flesh Mend | A | actions 1 |
+| Flesh Rot | A | actions 1 |
+| Flesh-Eating Bomb | A | actions 1 |
+| Flight Hex | B | changes 1, actions 3 |
+| Floating Breath (UC) | B | actions 1 |
+| Flood Blessing: Tsunami Burst | A | actions 1 |
+| Fluid Mastery | A | changes 1, actions 1 |
+| Focused Search | B | actions 1 |
+| Foe Throw Infusion | A | actions 1 |
+| Fool's Privilege | B | actions 1 |
+| For the Faith | A | actions 1 |
+| For the King | A | actions 1 |
+| Force Missile | A | actions 1 |
+| Force of Habit | B | actions 1 |
+| Forced Alliance | A | actions 1 |
+| Forest Siege | B | actions 1 |
+| Foretell | A | actions 1 |
+| Formless Mastery (UC) | A | actions 1 |
+| Fossil Form | B | actions 1 |
+| Freedom of Movement (UC) | B | actions 1 |
+| Freedom's Call | B | actions 1 |
+| Freezing Shards | A | actions 1 |
+| Friend to Nature | A | actions 1 |
+| Frightening Appearance | A | actions 1 |
+| Frigid Blast | A | actions 1 |
+| From the Ashes | B | actions 1 |
+| Frost Ray | A | actions 1 |
+| Furious Defense (UC) | B | actions 1 |
+| Fury of the Abyss | A | actions 1 |
+| Gentle Rest | B | actions 3 |
+| Ghoulish Claws | A | actions 1 |
+| Gift of Blood | B | actions 1 |
+| Gift of Life | B | actions 1 |
+| Glassfoot Bomb | A | actions 1 |
+| Glory Blessing: Demoralizing Glory | B | actions 1 |
+| Godclaw Blessing: Tactical Readiness | B | actions 1 |
+| Good Blessing: Holy Strike | A | actions 1 |
+| Good Fortune | B | actions 1 |
+| Grasp of the Dead | A | actions 1 |
+| Grave Touch (SOR) | B | actions 1 |
+| Grave Touch (WIZ) | B | actions 1 |
+| Grease Bomb | A | actions 1 |
+| Guarded Hearth | A | actions 1 |
+| Guardian of the North | B | actions 1 |
+| Gunslinger's Dodge | B | actions 1 |
+| Hallucinogenic Aura | A | actions 1 |
+| Hand of the Acolyte | A | actions 1 |
+| Hand of the Apprentice | A | actions 1 |
+| Hand of the Law | A | actions 1 |
+| Hardened Fists | B | actions 1 |
+| Hateful Aura | A | actions 1 |
+| Hateful Retort | B | actions 1 |
+| Haze of Daydreams | A | actions 1 |
+| Healing Blessing: Powerful Healer | B | actions 1 |
+| Heart's Desire | B | actions 1 |
+| Heat Wave | B | actions 1 |
+| Heavenly Fire | A | actions 1 |
+| Heavens Final Revelation | A | changes 1 |
+| Heavens Spirit Manifestation | A | changes 1 |
+| Hellfire | A | actions 1 |
+| Hellfire Strike | B | actions 1 |
+| Herbal Compound | A | actions 1 |
+| Heroic Echo | B | actions 1 |
+| Hex of Lignification | B | actions 1 |
+| High Jump | B | actions 1 |
+| High Jump (UC) | B | actions 1 |
+| Hindering Muck | A | actions 1 |
+| Hissing Rage | A | actions 2 |
+| Hive Curse | B | changes 1 |
+| Holy Lance | B | actions 1 |
+| Honor Bound | B | actions 1 |
+| Honorable Stand | B | actions 1 |
+| Horrific Glimpse | A | actions 1 |
+| Horrific Visage | A | actions 1 |
+| Hunter's Surprise | A | actions 1 |
+| Hurling, Lesser | A | actions 1 |
+| Hypnotic Stare | B | actions 1 |
+| Hypothermia | B | actions 1 |
+| Ice Splinter | A | actions 1 |
+| Icicle | A | actions 1 |
+| Iconoclastic Strike | A | actions 1 |
+| Immolation | A | actions 1 |
+| Improved Empathic Link | B | actions 1 |
+| Improved Quarry | B | actions 1 |
+| Improved Uncanny Dodge | A | contextNotes 1 |
+| Improvised Weapon Proficiency (UC) | A | actions 1 |
+| Incendiary Charge | B | actions 1 |
+| Incorporeal Form | B | actions 1 |
+| Indulge | A | actions 1 |
+| Infested Curse | A | changes 1 |
+| Inner Peace | B | actions 1 |
+| Inner Strength | A | actions 1 |
+| Insane Focus | B | actions 1 |
+| Insightful Wisdom (UC) | A | actions 1 |
+| Inspiration | A | actions 3 |
+| Inspire | B | actions 1 |
+| Inspired Assault | A | actions 1 |
+| Inspired Rage | A | actions 1 |
+| Inspiring Call | A | actions 1 |
+| Inspiring Command | A | actions 1 |
+| Inspiring Flex | A | actions 1 |
+| Inspiring Pain | A | actions 1 |
+| Inspiring Prediction | A | actions 1 |
+| Inspiring Word | A | actions 1 |
+| Invisibility Field | B | actions 1 |
+| It Came from Beyond | B | actions 1 |
+| It Is My Nature | A | actions 1 |
+| It was Meant to Be | A | actions 1 |
+| Jagged Flesh | A | actions 1 |
+| Judgment | A | actions 1 |
+| Judicious Force | A | actions 1 |
+| Juju Final Revelation | B | changes 12, actions 1 |
+| Jury-Rigged Bomb | A | actions 1 |
+| Justice's True Path | A | actions 1 |
+| Ki Blocker (UC) | B | actions 1 |
+| Ki Guardian (UC) | B | actions 1 |
+| Ki Hurricane (UC) | B | actions 1 |
+| Ki Meditation (UC) | B | actions 1 |
+| Ki Range (UC) | B | actions 1 |
+| Ki Sunder (UC) | A | actions 1 |
+| Ki Venom | A | actions 1 |
+| Ki Volley (UC) | B | actions 1 |
+| Kinetic Restoration | A | actions 1 |
+| Kip-Up | B | actions 2 |
+| Knockdown Stance (UC) | B | actions 2 |
+| Knockout | A | actions 1 |
+| Knowledge Blessing: Monster Lore | B | actions 1 |
+| Large (UC) (4 pts) | A | changes 9 |
+| Lava Shield | B | actions 1 |
+| Law Blessing: Axiomatic Strike | A | actions 1 |
+| Lay on Hands | A | actions 1 |
+| Legacy Conduit | B | actions 1 |
+| Legendary Guardian | B | actions 1 |
+| Legendary Trickster | B | actions 1 |
+| Leshy Caller | A | actions 1 |
+| Liberation Blessing: Freedom's Shout | B | actions 1 |
+| Liberation Blessing: Liberation | B | actions 1 |
+| Liberty's Blessing | B | actions 1 |
+| Liberty’s Blessing | B | actions 1 |
+| Light Matrix | A | actions 1 |
+| Light Steps | B | actions 1 |
+| Lightning Arc | A | actions 1 |
+| Lightning Flash | A | actions 1 |
+| Lightning Reload | B | actions 2 |
+| Lightning Rod | B | actions 1 |
+| Lingering Spirits | B | actions 1 |
+| Lion's Call | A | actions 1 |
+| Locate Focus | B | actions 1 |
+| Loci Sentry | A | actions 1 |
+| Lore Master | B | actions 1 |
+| Lore Master (SKA) | B | actions 1 |
+| Luck Blessing: Lucky Presence | A | actions 1 |
+| Luck Blessing: Unlucky Enemy | B | actions 1 |
+| Maddening Whispers | B | actions 1 |
+| Madness Blessing: Control Madness | B | actions 1 |
+| Madness Blessing: Madness Supremacy | B | actions 1 |
+| Magic Blessing: Hand of the Acolyte | A | actions 1 |
+| Magical Hoarder | B | actions 1 |
+| Magma Furrow | A | actions 1 |
+| Maker's Call | B | actions 1 |
+| Maker's Call (UC) | B | actions 1 |
+| Maneuver Training | A | changes 1 |
+| Manifest Memory | B | actions 1 |
+| Martial Flexibility | B | actions 1 |
+| Massmorph | B | actions 1 |
+| Master Slayer | A | actions 1 |
+| Master's Yoke | A | actions 1 |
+| Menacing Swordplay | B | actions 1 |
+| Mend the Broken | A | actions 1 |
+| Mental Placidity | A | actions 1 |
+| Merge Forms | A | actions 1 |
+| Merge Forms (UC) | A | actions 1 |
+| Mesmerist Tricks | B | actions 1 |
+| Metal Fist | A | actions 1 |
+| Metamagic Adept | B | actions 1 |
+| Metamagic Mastery | B | actions 1 |
+| Might of the Fallen | A | actions 1 |
+| Mind Barrier | B | actions 1 |
+| Mind Fear | A | actions 1 |
+| Mind Heist | A | actions 1 |
+| Mind Reader | A | actions 1 |
+| Mind Slumber | B | actions 1 |
+| Mind's Eye | A | actions 1 |
+| Mindshield | A | actions 1 |
+| Mindtouch | A | actions 1 |
+| Minute Meteors | A | actions 1 |
+| Mirage | A | actions 1 |
+| Moment of Triumph | A | actions 1 |
+| Monstrous Insight | A | actions 1 |
+| Moonfire | A | actions 1 |
+| More for Me | B | actions 1 |
+| Mother's Embrace | A | actions 1 |
+| Mud Missile | A | actions 1 |
+| Nanite Resurgence | B | actions 1 |
+| Nanite Strike | A | actions 1 |
+| Nanite Surge | B | actions 1 |
+| Nature Spirit Manifestation | B | actions 1 |
+| Nature's Gifts | B | actions 1 |
+| Necromantic Servant | A | actions 1 |
+| Nobility Blessing: Inspiring Ward | A | actions 1 |
+| Nobility Blessing: Lead by Example | B | actions 1 |
+| Numerical Strike | A | actions 1 |
+| Numerical Strike, Greater | A | actions 1 |
+| Obey | A | actions 1 |
+| Object Seer | B | actions 1 |
+| Obscuring Blow | A | actions 1 |
+| On Dark Wings | B | changes 1, actions 1 |
+| One Body, Two Minds | B | actions 1 |
+| One Touch (UC) | A | actions 1 |
+| Opportune Parry and Riposte | A | actions 2 |
+| Outside Contact | A | actions 1 |
+| Overpowering Mind | A | actions 1 |
+| Pain Wave | A | actions 1 |
+| Pain is Power | B | actions 1 |
+| Painful Reminder | A | actions 1 |
+| Painful Smite | A | actions 1 |
+| Painful Stare | A | actions 1 |
+| Panache | A | actions 1 |
+| Part the Veil | B | actions 1 |
+| Penetrating Charge | B | actions 1 |
+| Perfect Body | A | actions 1 |
+| Perfect Thrust | B | actions 1 |
+| Perfected Form | A | contextNotes 1, actions 1 |
+| Perfection of Self | B | actions 1 |
+| Pestilential Breath | A | actions 1 |
+| Phantom Recall | B | actions 1 |
+| Physical Composite Blast | A | actions 1 |
+| Physical Kinetic Blade | A | actions 1 |
+| Physical Kinetic Blast | A | actions 1 |
+| Physical Regression | B | actions 1 |
+| Plague Carrier | A | actions 2 |
+| Plague's Caress | B | actions 1 |
+| Plant Blessing: Creeping Vines | B | actions 1 |
+| Poetic Inspiration | A | actions 1 |
+| Poison Touch Hex | A | actions 2 |
+| Pool Ray | A | actions 1 |
+| Powerful Bond | B | actions 1 |
+| Powerful Persuader | B | actions 2 |
+| Powerful Smash | A | actions 1 |
+| Powerful Stance (UC) | A | actions 2 |
+| Powerless Prophecy Curse | B | changes 1 |
+| Prayer Aura | A | actions 1 |
+| Precise Strike | A | actions 2 |
+| Predator's Grace | B | actions 1 |
+| Prescience | B | actions 1 |
+| Primal Fury | B | actions 1 |
+| Progenitor's Sting | A | actions 1 |
+| Prohibition | A | actions 1 |
+| Protector of the People | B | actions 1 |
+| Protoplasm | A | actions 1 |
+| Psychic Curse | A | actions 1 |
+| Psychic Strike | A | actions 1 |
+| Purge Disquiet | B | actions 1 |
+| Purifying Flames | A | actions 1 |
+| Purifying Touch | B | actions 1 |
+| Quarry | A | actions 1 |
+| Quick Healing | B | actions 1 |
+| Quick Shot (UC) | B | actions 1 |
+| Quivering Palm | A | actions 1 |
+| Quivering Palm (UC) | A | actions 1 |
+| Radiance | A | actions 1 |
+| Radiating Touch | A | actions 1 |
+| Rage | A | actions 1 |
+| Rage (UC) | A | actions 1 |
+| Raging Song | B | actions 1 |
+| Raise the Deep | B | actions 1 |
+| Rally Allies | A | actions 1 |
+| Rallying Cry | A | actions 1 |
+| Ravenous Frenzy | A | actions 1 |
+| Read Minds | A | actions 1 |
+| Rebuke Death | A | actions 1 |
+| Reckless Stance (UC) | A | actions 2 |
+| Refreshing Rain | B | actions 1 |
+| Regenerative Stance (UC) | B | actions 2 |
+| Relentless Footing | B | actions 1 |
+| Repose Blessing: Back to the Grave | B | actions 1 |
+| Repose Blessing: Gentle Rest | B | actions 1 |
+| Repositioning Strike | A | actions 1 |
+| Resiliency (ORA) (Godclaw) | B | changes 1 |
+| Resist Energy (CAV) | B | actions 1 |
+| Resolve | A | actions 1 |
+| Restorative Touch | B | actions 1 |
+| Restoring Flames | B | actions 1 |
+| Retribution Hex | A | actions 1 |
+| Retributive Spray | A | actions 1 |
+| Reveal Form | A | actions 1 |
+| Ride the Lightning | B | actions 1 |
+| Rift Reach | A | actions 1 |
+| Righteous Awe | A | actions 1 |
+| Righteous Fury | A | actions 1 |
+| Rune Blessing: Blast Rune | A | actions 1 |
+| Rune Domain | A | changes 1 |
+| Rune Shift | B | actions 1 |
+| Sacred Armor | B | actions 1 |
+| Sacred Threshold | A | actions 1 |
+| Sacred Weapon | A | actions 1 |
+| Sacrificial Bond | B | actions 1 |
+| Sacrificial Boon | A | actions 1 |
+| Sacrificial Exchange | B | actions 1 |
+| Sand Bomb | A | actions 1 |
+| Saving Grace | B | actions 1 |
+| Scalykind Blessing; Serpent Fang | A | actions 1 |
+| Scar Hex | A | actions 2 |
+| Scythe of Evil | B | actions 1 |
+| Searing Heat | A | actions 1 |
+| Second Chance | B | actions 1 |
+| See Invisibility | B | actions 1 |
+| Seek Retribution | A | actions 1 |
+| Self-Assurance | A | actions 1 |
+| Serpent's Fang | A | actions 1 |
+| Serpent's Tail | A | actions 1 |
+| Servitor | B | actions 1 |
+| Shadow Blessing: Swift as Shadow | B | actions 1 |
+| Shadow Duplicate | B | actions 1 |
+| Shadowstrike | A | actions 1 |
+| Shape Emotions | B | actions 1 |
+| Shard Soul | A | actions 1 |
+| Share Essence | A | actions 1 |
+| Share the Danger | B | actions 1 |
+| Shed Skin | A | actions 1 |
+| Shift | B | actions 1 |
+| Shift Earth | A | actions 1 |
+| Shocking Touch | A | actions 1 |
+| Shrapnel Burst | A | actions 1 |
+| Sickening Offensive | B | contextNotes 1 |
+| Sift | B | actions 1 |
+| Silencing Strike (INV) | A | actions 1 |
+| Silver Tongue | B | actions 1 |
+| Silver-Tongued Haggler | B | actions 1 |
+| Sin Sense | B | actions 1 |
+| Size Alteration | A | actions 1 |
+| Slayer's Advance | B | actions 1 |
+| Slowing Strike | A | actions 1 |
+| Slowing Strike (SLA) | A | actions 1 |
+| Smoke Storm | A | actions 1 |
+| Sneak Attack (UC) | A | actions 1 |
+| Snow Shroud | B | actions 1 |
+| Solar Ascension | A | actions 1 |
+| Song of the Fallen | B | actions 1 |
+| Soulbound Puppet | B | actions 1 |
+| Spark Malfeasance | A | actions 1 |
+| Spark Soul | A | actions 1 |
+| Spatial Tear | B | actions 1 |
+| Spell Destruction | A | actions 1 |
+| Spell Kenning | B | actions 1 |
+| Spell Recall | B | actions 1 |
+| Spindle Infusion | A | actions 1 |
+| Spirit Shroud | A | actions 1 |
+| Spiritual Shield | A | actions 1 |
+| Splintered Spear | A | actions 1 |
+| Spoiling Touch | A | actions 1 |
+| Spore Infusion | A | actions 1 |
+| Squander | A | actions 1 |
+| Staff of Order | B | actions 1 |
+| Staggering Assault | A | actions 1 |
+| Starburn (SHA) | A | actions 1 |
+| Stardust | A | actions 1 |
+| Stare of Oblivion | A | actions 1 |
+| Stealing Strike | A | actions 1 |
+| Storm Burst | A | actions 1 |
+| Strategy | A | actions 1 |
+| Strength Blessing: Strength Surge | A | actions 1 |
+| Strength Blessing: Strength of Will | B | actions 1 |
+| Strength Stance (UC) | A | actions 2 |
+| Studied Combat | A | actions 1 |
+| Studied Strike | A | actions 2 |
+| Stunning Fist | A | changes 1, actions 1 |
+| Stunning Shot | A | actions 1 |
+| Stunning Stab | A | actions 1 |
+| Sudden Insight | A | actions 1 |
+| Sudden Shift | B | actions 1 |
+| Sudden Speed | B | actions 1 |
+| Sudden Speed (UC) | B | actions 1 |
+| Suffocate | A | actions 1 |
+| Sun Blessing: Blinding Strike | B | actions 1 |
+| Surge | A | actions 1 |
+| Sustained Inspirational Expertise | B | actions 1 |
+| Swashbuckler Weapon Training | A | changes 3 |
+| Swaying Word | A | actions 1 |
+| Swift Poisoning | B | actions 1 |
+| Synaptic Infusion | B | actions 1 |
+| Synaptic Shock | B | actions 1 |
+| Taboo | B | actions 1 |
+| Tabris's Step | B | actions 1 |
+| Tactician | B | actions 1 |
+| Tanglevine | A | actions 1 |
+| Targeted Strike | A | actions 1 |
+| Targeting | B | actions 1 |
+| Taunting Stance (UC) | A | actions 2 |
+| Teaching Moment | A | actions 1 |
+| Telekinetic Fist | A | actions 1 |
+| Telekinetic Protection | B | actions 1 |
+| Telempathic Restoration | B | actions 1 |
+| Telepathic Bond | B | actions 1 |
+| Temporary Alliance | A | actions 1 |
+| Thief of the Gods | B | actions 1 |
+| Thunderbolt | A | actions 1 |
+| Thundercloud | A | actions 1 |
+| Thundering Infusion | B | actions 1 |
+| Toppling Strike | A | actions 1 |
+| Tornado Blessing: Dust Devil | B | actions 1 |
+| Touch Treatment | B | actions 1 |
+| Touch of Agony | A | actions 1 |
+| Touch of Corruption | A | actions 1 |
+| Touch of Darkness | A | actions 1 |
+| Touch of Destiny | A | actions 1 |
+| Touch of Evil | B | actions 1 |
+| Touch of Good | A | actions 1 |
+| Touch of Law | A | actions 1 |
+| Touch of Rage | A | actions 1 |
+| Touch of Succor | B | actions 1 |
+| Touch of Virulence | A | actions 1 |
+| Touch of the Grave | A | actions 1 |
+| Toxic Infusion | B | actions 1 |
+| Toxic Infusion, Greater | A | actions 1 |
+| Trance of Three | B | actions 1 |
+| Trap Rune | A | actions 1 |
+| Trap Sense | A | contextNotes 2 |
+| Trap Sense (SOR) | A | contextNotes 3 |
+| Travel Blessing: Agile Feet | B | actions 1 |
+| Travel Domain | B | changes 1 |
+| Tree Limb | A | actions 1 |
+| Tremor | A | actions 1 |
+| Tribal Bond | B | actions 1 |
+| Trickery Blessing: Greater Invisibility | B | actions 1 |
+| Tugging Strands | B | actions 1 |
+| Turning Blast Infusion | A | actions 1 |
+| Twilight Talon Improvisation | A | actions 1 |
+| Twin Eidolon | B | actions 1 |
+| Twin Eidolon (UC) | B | actions 1 |
+| Twisted Fortune | B | actions 1 |
+| Tyrannical Strike | B | actions 1 |
+| Unarmed Strike | A | changes 1 |
+| Underhanded Trick | B | changes 1 |
+| Unexpected Whimsy | B | actions 1 |
+| Unity | B | actions 1 |
+| Unnerving Gaze | A | actions 1 |
+| Unnerving Infusion | B | actions 1 |
+| Unstable Bonds | B | actions 1 |
+| Unusual Anatomy | A | contextNotes 1 |
+| Utility Shot | A | actions 1 |
+| Venom Infusion | B | actions 1 |
+| Venomous Saliva | B | actions 1 |
+| Venomous Stare | A | actions 1 |
+| Vermilion Wings | B | changes 1, actions 1 |
+| Vision Hex | A | actions 1 |
+| Vision of Madness | A | actions 1 |
+| Void Blessing: Airless Touch | B | actions 1 |
+| Void Form | A | actions 1 |
+| Volcano Final Revelation | A | changes 1 |
+| Vortex of Flesh | A | actions 1 |
+| Wall of Ashes | A | actions 1 |
+| Wall of Power | A | actions 1 |
+| War Blessing: Battle Lust | A | actions 1 |
+| War Blessing: War Mind | A | actions 1 |
+| Ward of Flames | A | actions 1 |
+| Warding Rune | A | actions 1 |
+| Wards of the City | A | actions 1 |
+| Warrior's Discipline | B | actions 1 |
+| Wasting Curse | B | changes 1 |
+| Wasting Ray | A | actions 1 |
+| Water Blessing: Ice Strike | A | actions 1 |
+| Water Sprint (UC) | B | actions 1 |
+| Water's Fury | A | actions 1 |
+| Wave | B | actions 1 |
+| Wave Strike | A | actions 1 |
+| Wave of Gloom | A | actions 1 |
+| Weapon Master | B | actions 1 |
+| Weather Blessing: Storm Strike | A | actions 1 |
+| Whirlwind | B | actions 1 |
+| Whispering Shadows | B | actions 1 |
+| Wholeness of Body (UC) | A | actions 1 |
+| Wild Mount Shape | B | actions 1 |
+| Wild Shape | B | actions 1 |
+| Wildfire Blessing: Fiery Wake | A | actions 1 |
+| Wilting Glare | A | actions 1 |
+| Wind Blast | A | actions 1 |
+| Wind Ward | A | actions 1 |
+| Witness the Legend | A | actions 1 |
+| Wooden Fist | A | actions 1 |
+| Word of Anathema | A | actions 1 |
+| Wound Warp | A | actions 1 |
+| Wounding Blade | B | actions 1 |
+| Zealous Surge | B | actions 1 |
+
 ## Feats
 
 | feat | tier | signals | text |
 |---|---|---|---|
 | Accursed Critical | A | attack, activated, toggle | When you confirm a critical hit with a spell or spell-like ability, you may cast bestow curse or major curse on that ta… |
-| Adept Champion | A | attack, activated, toggle | While using your smite evil class feature, as a swift action at the start of your turn, you can forgo the bonus on dama… |
-| Ankle Biter | A | dice, attack, activated, toggle | If you are the target of a combat maneuver you can, as an immediate action, attempt to bite your opponent in addition t… |
 | Arc Slinger | A | attack, toggle | When using a sling or sling staff, you reduce your penalty on ranged attack rolls due to range by 2. Point-Blank Shot's… |
 | Archon Diversion | A | attack, activated, toggle | The penalty to AC for using Archon Style to grant nearby allies a bonus to AC against a single opponent decreases to -1… |
-| Banishing Critical | A | save, attack, activated, toggle | When you confirm a critical hit with a slashing or bludgeoning weapon, you may cast dismissal or banishment on that tar… |
-| Beartrap Bite | A | attack, activated, toggle | Whenever you confirm a critical hit against a foe with your bite attack, if your confirmation roll matches or exceeds y… |
-| Bewildering Koan | A | attack, activated, toggle | As a swift action, spend 1 point from your ki pool and make a Bluff check by asking a creature one of the impossible qu… |
 | Black Cat | A | attack, activated, toggle | Once per day as an immediate action, when you are hit by a melee attack, you can force the opponent who made the attack… |
-| Bloody Assault | A | dice, attack, toggle | You can choose to take a -5 penalty on all melee attack rolls and combat maneuver checks to inflict 1d4 points of bleed… |
-| Bludgeoner | A | attack, toggle | You take no penalty on attack rolls for using a lethal bludgeoning weapon to deal nonlethal damage. |
-| Boar Shred | A | dice, attack, activated, toggle | You can make an Intimidate check to demoralize an opponent as a move action. While using Boar Style, whenever you tear… |
-| Boar Style | A | dice, attack, activated, toggle | You can deal bludgeoning damage or slashing damage with your unarmed strikes-changing damage type is a free action. Whi… |
-| Body Shield | A | attack, activated, toggle | As an immediate action while you are grappling an adjacent creature, you can make a grapple combat maneuver check again… |
-| Bullying Blow | A | attack, activated, toggle | As a standard action, you may make a melee attack with a -2 penalty on the attack roll. If the attack damages your oppo… |
-| Butterfly's Sting | A | attack, toggle | When you confirm a critical hit against a creature, you can choose to forgo the effect of the critical hit and grant a… |
 | Caustic Slur | A | attack, toggle | As a standard action, you can make a Bluff check against one sort of favored enemy. Any creature of that type within 60… |
-| Chainbreaker | A | attack, activated, toggle | When in combat with an opponent that you know owns or trades in slaves, once per round you may add a bonus to damage ro… |
 | Channel Force | A | dice, toggle | When you channel energy to deal damage, you may choose to affect only a single target within 30 feet. In addition to de… |
 | Channel Smite | A | save, attack, activated, toggle | Before you make a melee attack roll, you can choose to spend one use of your channel energy ability as a swift action.… |
-| Chokehold | A | attack, toggle | While you have an opponent up to one size category larger than you grappled, you can attempt a grapple combat maneuver… |
 | Concussive Spell | A | attack, toggle | With sonic damage comes a concussive wave of energy that rattles creatures affected by the spell. A concussive spell ca… |
-| Crane Riposte | A | attack, toggle | You take only a -1 penalty on attack rolls for fighting defensively. Whenever you are fighting defensively, and you use… |
-| Crane Style | A | attack, toggle | You take only a -2 penalty on attack rolls for f ighting defensively. While using this style and fighting defensively o… |
-| Dauntless Destiny | A | attack, activated, toggle | You gain a +1 bonus on saving throws against effects with the emotion descriptor; this bonus stacks with those granted… |
-| Dazing Assault | A | save, attack, toggle | You can choose to take a -5 penalty on all melee attack rolls and combat maneuver checks to daze opponents you hit with… |
-| Death or Glory | A | attack, activated, toggle | Against a creature of size Large or larger, you can make a single melee attack as a full-round action, gaining a +4 bon… |
 | Defending Eidolon | A | attack, toggle | Whenever you are adjacent to your eidolon, you can choose for the eidolon to take a -1 penalty on melee attack rolls an… |
 | Defiant Luck | A | attack, activated, toggle | Once per day, after you roll a natural 1 on a saving throw or a critical hit is confirmed against you, you can either r… |
 | Dented Helm | A | attack, activated, condition, toggle | When wearing a helmet, you add +1 to your AC against critical hit confirmation rolls. When a critical hit is confirmed… |
-| Desperate Swing | A | attack, activated, toggle | Once per day, you can make a single melee attack while taking the total defense action. You take a -4 penalty on attack… |
-| Destroyer's Blessing | A | attack, activated, toggle | When you are raging and you succeed at a sunder combat maneuver, you regain 1 round of rage. If the sunder attempt caus… |
-| Dimensional Maneuvers | A | attack, toggle | While using the Dimensional Dervish feat, you gain a +4 bonus on combat maneuver checks to bull rush, disarm, repositio… |
 | Distance Thrower | A | attack, toggle | With a thrown weapon, you reduce your penalty on ranged attack rolls due to range by 2. |
 | Divert Harm | A | save, activated, toggle | Whenever you are the target of an areaof- effect attack that normally deals half damage on a successful Reflex save (su… |
 | Divine Interference | A | attack, activated, toggle | As an immediate action, when an enemy within 30 feet hits an ally with an attack, you can sacrifice a prepared divine s… |
-| Djinni Spin | A | dice, save, condition, toggle | While using Djinni Style, as a standard action you can spend two Elemental Fist (Advanced Player's Guide 158) attempts… |
 | Djinni Spirit | A | dice, save, activated, condition, toggle | You gain one additional Elemental Fist (Advanced Player's Guide 158) attempt per day. While using Djinni Style, you gai… |
-| Draconic Breath | A | dice, activated, toggle | You gain a +2 bonus against sleep and paralysis effects. You gain a breath weapon that is determined by your scale colo… |
-| Dragon Ferocity | A | dice, attack, condition, toggle | While using Dragon Style, you gain a bonus on unarmed strike damage rolls equal to half your Strength bonus. When you s… |
-| Dragon Roar | A | dice, save, condition, toggle | You gain one additional Stunning Fist attempt per day. While using Dragon Style, as a standard action you can expend tw… |
-| Dragon Style | A | attack, toggle | While using this style, you gain a +2 bonus on saving throws against sleep effects, paralysis effects, and stunning eff… |
-| Earth Child Style | A | attack, toggle | While using this style, your defensive training dodge bonus to AC increases to +6. Further, against creatures of the gi… |
-| Earth Child Topple | A | attack, toggle | You can trip a creature of the giant subtype of up to Huge size. While using Earth Child Style, you add your Wisdom bon… |
-| Efreeti Style | A | dice, attack, toggle | You gain one additional Elemental Fist (Advanced Player's Guide 158) attempt per day. While using this style and Elemen… |
-| Elemental Fist | A | dice, attack, activated, toggle | When you use Elemental Strike pick one of the following energy types: acid, cold, electricity, or fire. On a successful… |
 | Elusive Redirection | A | attack, activated, toggle | When you successfully use your elusive target class feature to avoid taking damage, you can spend an immediate action a… |
 | Exile's Path | A | save, activated, toggle | Once per day, when you fail a Will save against an enchantment spell or effect, you may reroll that saving throw, but m… |
-| Fearless Zeal | A | attack, activated, toggle | Once per day, you can add a +2 bonus on any single attack roll, caster level check, saving throw, or skill check. You m… |
-| Felling Smash | A | attack, activated, toggle | If you use the attack action to make a single melee attack at your highest base attack bonus while using Power Attack a… |
-| Flaying Critical | A | attack, toggle | Whenever you score a critical hit, your opponent takes a -1 penalty to its natural armor bonus for the duration of the… |
-| Flensing Strike | A | attack, condition, toggle | When you successfully inflict sneak attack damage on a foe with a slashing weapon, your attack doesn't go particularly… |
-| Footslasher | A | attack, toggle | If you damage a foe that is of a larger size category than you with a weapon that does piercing or slashing damage, you… |
-| Furious Focus | A | attack, toggle | When you are wielding a two-handed weapon or a one-handed weapon with two hands, and using the Power Attack feat, you d… |
 | Godless Healing | A | dice, activated, toggle | Once per day when you have half your total hit points or fewer, you may heal yourself of an amount of damage equal to 1… |
-| Gore Fiend | A | attack, activated, toggle | When you are raging and you confirm a critical hit with a melee weapon or a critical hit is confirmed on you (whether b… |
 | Greater Shield Specialization | A | attack, activated, toggle | Choose one type of shield (buckler, light, heavy, or tower shield) for which you possess the Shield Specialization feat… |
-| Greater Whip Mastery | A | attack, toggle | You are so quick with your whip that you never drop it due to a failed disarm or trip combat maneuver attempt. Further,… |
-| Hamatula Grasp | A | dice, toggle | When attacking an impaled opponent (see Hamatula Strike) with the weapon that impales them, you only suffer a -2 penalt… |
-| Hammer the Gap | A | attack, toggle | When you take a full-attack action, each consecutive hit against the same opponent deals extra damage equal to the numb… |
-| Harrowed | A | save, attack, activated, toggle | You get a +1 bonus on all Will saves made to resist enchantment effects. Once per day, you may draw a card from a Harro… |
 | Heroic Recovery | A | save, activated, toggle | Once per day as a standard action you may attempt a new saving throw against a harmful condition or aff liction requiri… |
 | Heroic Will | A | save, activated, toggle | Once per day as a standard action, you may attempt a new saving throw against a harmful condition requiring a Will save… |
-| Hold the Blade | A | attack, activated, toggle | Whenever an enemy deals damage to you with a melee weapon as part of a flanking attack or sneak attack, you can make a… |
-| Impaling Critical | A | attack, activated, toggle | Whenever you score a critical hit with the selected piercing melee weapon, you can impale your opponent on your weapon.… |
 | Improved Great Fortitude | A | save, activated, toggle | Once per day, you may reroll a Fortitude save. You must decide to use this ability before the results are revealed. You… |
-| Improved Impaling Critical | A | attack, activated, toggle | While you are using Impaling Critical to impale an opponent, and you are still holding onto that weapon, that opponent… |
 | Improved Iron Will | A | save, activated, toggle | Once per day, you may reroll a Will save. You must decide to use this ability before the results are revealed. You must… |
-| Improved Low Blow | A | attack, activated, toggle | Your bonus to conf irm critical hits against opponents larger than yourself improves to +2. Furthermore, once per day,… |
-| Improved Underhanded Teamwork | A | attack, activated, toggle | Whenever an ally who also has this feat performs the dirty trick combat maneuver against a foe that you both threaten,… |
 | In Harm's Way | A | attack, activated, toggle | While using the aid another action to improve an adjacent ally's AC, you can intercept a successful attack against that… |
-| Janni Rush | A | attack, activated, toggle | While using Janni Style, you are always considered to have a running start when jumping. Further, if you jump as part o… |
 | Janni Style | A | attack, toggle | While using this style, you take only a -1 penalty to AC for charging. Further, opponents that flank you gain only a +1… |
-| Ki Diversity | A | attack, activated, toggle | You learn how to channel your ki in a new ability. Choose one of the following ki powers: Bone Crusher: When you succee… |
 | Life's Blood | A | dice, activated, toggle | At will as a full-round action, you may perform a special bloodletting ritual through which you sacrifice some of your… |
-| Marid Spirit | A | dice, save, condition, toggle | You gain one additional Elemental Fist (Advanced Player's Guide 158) attempt per day. While using Marid Style, you gain… |
-| Marid Style | A | attack, toggle | You gain one additional Elemental Fist (Advanced Player's Guide 158) attempt per day. While using this style and Elemen… |
 | Marked For Glory | A | dice, activated, toggle | You can use the surge ability (see page 12) once per day (adding 1d6). If you are or become mythic, you can use your su… |
-| Merciful Bane | A | attack, activated, toggle | While a weapon you wield is under the effect of your bane class feature, you can spend a swift action to switch between… |
-| Monkey Style | A | attack, activated, condition, toggle | You add your Wisdom bonus on Acrobatics checks. While using this style, you take no penalty on melee attack rolls or to… |
 | Motivating Display | A | attack, condition, toggle | Whenever you use Dazzling Display to demoralize foes, you can motivate your allies to better serve you. In addition to… |
-| Mounted Blade | A | attack, toggle | When you use the Ride-By Attack feat, if your attack hits, you may also make an attack against a target adjacent to you… |
 | Mounted Combat | A | attack, activated, toggle | Once per round when your mount is hit in combat, you may attempt a Ride check (as an immediate action) to negate the hi… |
-| Neckbreaker | A | dice, attack, toggle | If you have an opponent your size or smaller helpless or pinned, after you initiate or maintain a grapple, you can make… |
 | Net Adept | A | attack, activated, toggle | You can treat a net as a one-handed melee reach weapon with a 10-foot reach. Further, you take no penalty on melee atta… |
-| Object Of Legend | A | attack, activated, toggle | When you gain this feat, select one of the quest objects on this page or the facing page, or devise a quest object with… |
-| Panther Parry | A | attack, toggle | While using Panther Style, your retaliatory unarmed strikes are resolved before the triggering attacks. If your retalia… |
-| Patient Strike | A | attack, toggle | You can choose to ready an attack as a fullround action instead of a standard action. When you do so, you gain a +2 bon… |
-| Perfect Strike | A | attack, activated, toggle | You must declare that you are using this feat before you make your attack roll (thus a failed attack roll ruins the att… |
-| Planar Wild Shape | A | attack, toggle | When you use wild shape to take the form of an animal, you can expend an additional daily use of your wild shape class… |
 | Precise Shot | A | attack, toggle | You can shoot or throw ranged weapons at an opponent engaged in melee without taking the standard -4 penalty on your at… |
-| Punishing Kick | A | attack, activated, condition, toggle | You must declare that you are using this feat before you make your attack roll (thus a failed attack roll ruins the att… |
-| Pushing Assault | A | attack, activated, toggle | When you hit a creature your size or smaller with a two-handed weapon attack modif ied by the Power Attack feat, you ca… |
-| Raging Brutality | A | attack, activated, toggle | While raging and using Power Attack, you can spend 3 additional rounds of your rage as a swift action to add your Const… |
-| Raging Deathblow | A | attack, toggle | While raging, whenever your attack reduces your opponent to -1 or fewer hit points, you gain 1 extra round of rage for… |
-| Raging Throw | A | attack, activated, toggle | While raging, when you attempt a bull rush combat maneuver, you can spend 1 additional round of your rage as a swift ac… |
-| Rebuffing Reduction | A | attack, activated, toggle | Whenever an opponent that is adjacent to you fails to penetrate your DR with a melee attack, you can spend an immediate… |
-| Reckless Aim | A | attack, toggle | When you shoot or throw ranged weapons at an opponent engaged in melee, you can choose to take a -1 penalty to your AC… |
-| Redemption | A | attack, activated, condition, toggle | As an immediate action, you can add a +1 bonus to the result of an ability check, attack roll, saving throw, or skill c… |
-| Rending Claws | A | dice, attack, activated, toggle | If you hit a creature with two claw attacks in the same turn, the second claw attack deals an additional 1d6 points of… |
 | Resilient Brute | A | attack, activated, toggle | Once per day, when a creature confirms a critical hit against you, you may treat half the damage as nonlethal damage. Y… |
-| Reverse-Feint | A | attack, activated, toggle | As a move action, you can leave a gap in your defenses for one adjacent opponent to use. If the opponent attacks you on… |
-| Ricochet Shot Deed | A | attack, toggle | You can fire a shot at a wall or piece of solid terrain, and have it ricochet off. When you do, use the square immediat… |
-| Riptide Attack | A | attack, activated, toggle | When you succeed at a trip combat maneuver, you may automatically make a drag combat maneuver against your tripped targ… |
 | Roll With It | A | dice, activated, condition, toggle | If you are struck by a melee weapon you can try to convert some or all of that damage into movement that sends you off… |
-| Saddle Shrieker | A | attack, toggle | You can choose to take a -1 penalty on all attack rolls and combat maneuver checks to grant your mount a +1 bonus on al… |
-| Serpent Lash | A | attack, toggle | As a standard action, you can make a disarm or trip maneuver with your whip. If it succeeds, you can make an additional… |
-| Shaitan Style | A | dice, attack, toggle | You gain one additional Elemental Fist (Advanced Player's Guide 158) attempt per day. While using the Shaitan Style and… |
-| Shield Slam | A | attack, condition, toggle | Any opponents hit by your shield bash are also hit with a free bull rush attack, substituting your attack roll for the… |
-| Sleep Venom | A | dice, activated, condition, toggle | As a swift action, you may alter the effects of your venom so the target falls unconscious. This changes the initial an… |
-| Sleeper Hold | A | dice, save, attack, toggle | You must declare that you are using this feat before you make a combat maneuver check to maintain a grapple (thus a fai… |
-| Sliding Axe Throw | A | attack, activated, toggle | You can choose to take a -2 penalty on a ranged attack roll with an axe, bouncing it or sliding it along the ground. If… |
-| Snapping Turtle Clutch | A | attack, activated, toggle | While you are using the Snapping Turtle Style feat, the shield bonus the style grants to your AC applies to your CMD an… |
-| Spiked Destroyer | A | attack, activated, toggle | When you succeed at a bull rush or overrun combat maneuver, you may automatically make an attack roll with your armor s… |
 | Spit Venom | A | dice, save, activated, condition, toggle | As a full-round action, you can spit poison up to 10 feet as a ranged touch attack. If you hit, the target must make a… |
-| Stabbing Shot | A | attack, toggle | When adjacent to an opponent and making a full-attack action with a longbow or shortbow (including composite bows), you… |
-| Stage Combatant | A | attack, toggle | When you make an attack with a weapon that you have Weapon Focus in, you take no penalty on the attack roll when you ar… |
-| Steady Engagement | A | attack, activated, toggle | If you use the Stand Still feat to prevent an opponent from moving, you may make a disarm or trip combat maneuver again… |
-| Stunning Assault | A | save, attack, toggle | You can choose to take a -5 penalty on all melee attack rolls and combat maneuver checks to stun targets you hit with y… |
 | Stunning Fist | A | attack, activated, condition, toggle | You must declare that you are using this feat before you make your attack roll (thus, a failed attack roll ruins the at… |
-| Surge of Success | A | attack, toggle | When you confirm a critical hit or roll a natural 20 on a saving throw, you gain a +2 circumstance bonus on a single at… |
-| Surprise Strike | A | attack, activated, toggle | Once per day, when fighting defensively or making an attack of opportunity while taking the total defense action with t… |
 | Survivor | A | attack, activated, toggle | You gain a +5 bonus on all Constitution checks made to stabilize while dying. Once per day, if you are struck by a crit… |
 | Swift Aid | A | attack, activated, toggle | As a swift action, you can attempt the aid another action, granting your ally either a +1 bonus on his next attack roll… |
 | Tactical Reposition | A | attack, toggle | When making a reposition combat maneuver (Pathfinder RPG Advanced Player's Guide 322), you can move an enemy into a tra… |
 | Taskmaster | A | save, attack, toggle | As a standard action, you spur an ally, who must have fewer Hit Dice than yourself, to reckless effort. For 1 minute, t… |
-| Tiger Pounce | A | attack, activated, toggle | While using the Tiger Style feat, you can apply the penalty from Power Attack to your AC instead of attack rolls. Addit… |
-| Tiger Style | A | dice, attack, toggle | While using this style, you gain a +2 bonus to your CMD against bull rush, overrun, and trip maneuvers. You can also de… |
-| Touch of Serenity | A | attack, activated, toggle | You must declare that you are using this feat before you make your attack roll (thus a failed attack roll ruins the att… |
 | Triton Portal | A | dice, activated, toggle | Once per day, you may expend your racial hydraulic push ability to instead cast summon nature's ally III as a spell-lik… |
-| Twin Thunders | A | attack, activated, toggle | Once per round, when wielding a bludgeoning weapon in each hand against a creature with the giant subtype, if you hit t… |
 | Underhanded Teamwork | A | attack, activated, toggle | Whenever an ally who also has this feat performs a dirty trick combat maneuver against a foe you both threaten, you can… |
 | Violent Display | A | attack, activated, toggle | When you land a successful sneak attack or confirm a critical hit against a creature with a weapon with which you have… |
-| Whip-Slinger | A | dice, attack, toggle | When wielding a sling, double sling, or halfling sling staff, you threaten areas around you as normal and can make atta… |
 | Whispered Knowledge | A | dice, activated, toggle | Choose one of the following secrets: Secret of Blood: After successfully dealing damage to a living creature with a mel… |
 | Wings Of The Androsphinx | A | attack, activated, toggle | You gain a +2 bonus to AC against charge attacks. If a creature charges you and fails its attack roll, as an immediate… |
 | Witchbreaker | A | attack, activated, toggle | You gain a +2 bonus on saving throws against the hexes, spells, spell-like abilities, and supernatural abilities of wit… |
-| Wolf Savage | A | save, activated, condition, toggle | Whenever you deal a prone opponent at least 10 points of damage with a natural weapon or unarmed strike, you can savage… |
-| Wolf Style | A | attack, activated, toggle | While using this style, whenever you deal at least 10 points of damage to a foe with an attack of opportunity, that foe… |
-| Wolf Trip | A | attack, activated, condition, toggle | You gain a +2 bonus on all combat maneuver checks to trip as part of an attack of opportunity. While using Wolf Style,… |
 | Agile Maneuvers | B | attack | You add your Dexterity bonus to your base attack bonus and size bonus when determining your Combat Maneuver Bonus (see… |
 | Agile Tongue | B | attack | You have a prehensile tongue with a range of 10 feet. You can pick up items weighing no more than 5 pounds, make Sleigh… |
 | Andoren Falconry | B | save, attack | You improve your affinity with birds of prey, such as eagles, falcons, hawks, and owls. You gain a +2 bonus on Animal H… |
@@ -954,147 +3016,78 @@ Save DC (`stated`): `[[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.m
 | Arcane Trap Suppressor | B | dice | When you target a magic trap with dispel magic or greater dispel magic, if your caster level check exceeds the Disable… |
 | Aspect of the Beast | B | dice | Your bestial nature manifests itself in one of the following ways. You choose the manifestation when you choose the fea… |
 | Awesome Blow | B | dice, attack, condition | As a standard action, the creature may perform an awesome blow combat maneuver. If the creature's maneuver succeeds aga… |
-| Bashing Finish | B | attack, activated | Whenever you score a critical hit with a melee weapon, you can make a shield bash attack against the same target using… |
-| Belier's Bite | B | dice, attack | When you damage an opponent with an unarmed strike, you deal an extra 1d4 bleed damage. |
-| Binding Throw | B | attack, activated | After you successfully use the Ki Throw feat on an opponent, you can use a swift action to attempt a grapple combat man… |
 | Blazing Aura | B | dice, activated | When you use Scorching Weapons, on your turn as a free action, you may create an aura of heat that lasts for 1 round. T… |
 | Bleeding Critical | B | dice, attack | Whenever you score a critical hit with a slashing or piercing weapon, your opponent takes 2d6 points of bleed damage (s… |
 | Blighted Critical | B | attack | Whenever you confirm a critical hit with a touch spell, ranged touch spell, or spell-like ability against an opponent,… |
 | Blinding Critical | B | dice, save, attack, condition | Whenever you score a critical hit, your opponent is permanently blinded. A successful Fortitude save reduces this to da… |
 | Blinding Flash | B | save, condition | As a move action, you can expertly angle the blade of your weapon or shield to reflect light into an opponent's eyes, d… |
-| Blinding Sneak Attack | B | save, attack | When you successfully deal sneak attack damage to a foe while you are within an area of magical darkness, you temporari… |
-| Blood Beak | B | dice, attack | Increase the damage of your beak attack to 1d6. Furthermore, when you confirm a critical hit with your beak attack, you… |
 | Blood Drinker | B | attack, condition | Choose one humanoid subtype, such as "goblinoid" (this subtype cannot be "dhampir"). You have acquired a taste for the… |
 | Blood Feaster | B | attack | If you use your Blood Drinker feat to drain 4 or more points of Constitution from a living creature, you gain a +2 bonu… |
-| Bloodletting | B | attack | Whenever you threaten a creature with a critical hit with a piercing or slashing weapon (regardless of whether you conf… |
-| Bodyguard | B | attack | When an adjacent ally is attacked, you may use an attack of opportunity to attempt the aid another action to improve yo… |
-| Bonebreaker | B | dice, condition | When you make a successful Stunning Fist attempt against an opponent that is grappled, helpless, or stunned, you can fo… |
-| Broken Wing Gambit | B | attack, activated | Whenever you make a melee attack and hit your opponent, you can use a free action to grant that opponent a +2 bonus on… |
-| Brutal Grappler | B | attack | When you and an ally with this feat have grappled the same creature, you may attempt to damage the opponent on your tur… |
-| Bull Rush Strike | B | attack | Whenever you score a critical hit with a melee attack, you can push your opponent back, in addition to the normal damag… |
-| Bullseye Shot | B | attack | You can spend a move action to steady your shot. When you do, you gain a +4 bonus on the next ranged attack roll you ma… |
-| Burn! Burn! Burn! | B | dice | You deal an extra 1d4 points of fire damage when you attack with fire from an alchemical or nonmagical source (such as… |
 | Careful Speaker | B | save | You gain a +2 bonus on all Bluff checks made to fool someone or pass secret messages (but not to feint in combat), and… |
 | Catfolk Exemplar | B | dice | You can take the Aspect of the Beast feat (Advanced Player's Guide 151) even if you do not meet the normal prerequisite… |
 | Cloven Helm | B | attack | When wearing a helmet, you add +1 to your AC against critical hit confirmation rolls; this benefit stacks with Dented H… |
-| Cockatrice Strike | B | attack, activated, condition | As a full-round action, you can make a single unarmed strike against a dazed, flat-footed, paralyzed, staggered, stunne… |
-| Combat Meditation | B | attack, activated | You can meditate as a full-round action. If you do, you gain all the benefits of your meditation feats, but they last f… |
 | Command Undead | B | save | As a standard action, you can use one of your uses of channel negative energy to enslave undead within 30 feet. Undead… |
 | Coordinated Defense | B | attack | Whenever you are adjacent to an ally who also has this feat, you receive a +2 competence bonus to your Combat Maneuver… |
-| Coordinated Maneuvers | B | attack | Whenever you are adjacent to an ally who also has this feat, you receive a +2 competence bonus on all combat maneuver c… |
-| Crippling Critical | B | dice, save, attack | Whenever you score a critical hit against an opponent, its speed is halved for 1 minute. A successful Fortitude save re… |
 | Critical Conduit | B | attack | When delivering a touch spell for your master, the critical threat range of your touch attack is doubled. This feat doe… |
 | Critical Focus | B | attack | You receive a +4 circumstance bonus on attack rolls made to confirm critical hits. |
 | Critical Mastery | B | attack | When you score a critical hit, you can apply the effects of two critical feats in addition to the damage dealt. |
-| Crusader's Fist | B | attack, activated | When you attack with an unarmed strike and hit a creature that you can harm with your lay on hands or touch of corrupti… |
 | Dazing Spell | B | save, condition | You can modify a spell to daze a creature damaged by the spell. When a creature takes damage from this spell, they beco… |
-| Deadly Finish | B | save, activated | When you hit with a melee attack and reduce your opponent to -1 or fewer hit points, you can force that opponent to suc… |
 | Deadly Stroke | B | attack, condition | As a standard action, make a single attack with the weapon for which you have Greater Weapon Focus against a stunned or… |
 | Deafening Critical | B | save, attack, condition | Whenever you score a critical hit against an opponent, the victim is permanently deafened. A successful Fortitude save… |
 | Deathless Zealot | B | attack | Whenever a creature rolls to confirm a critical hit against you, it must roll twice and take the lowest result. |
 | Defensive Combat Training | B | attack | You treat your total Hit Dice as your base attack bonus when calculating your Combat Maneuver Defense (see Chapter 8). |
 | Deny Death | B | dice | As long as you have 1 ki point in your ki pool, when you fail your Constitution check to stabilize, you do not lose 1 h… |
-| Dervish Dance | B | attack | When wielding a scimitar with one hand, you can use your Dexterity modifier instead of your Strength modifier on melee… |
-| Destroy Identity | B | attack, condition | Whenever you score a critical hit against an opponent, the target is so maimed that it takes 2 points of Charisma damag… |
 | Destructive Dispel | B | save, condition | When you successfully make a targeted dispel check against an opponent, that opponent must succeed at a Fortitude save… |
 | Detect Expertise | B | save | When you use any of the spells listed in this feat's prerequisites to detect a creature's alignment or its magic, you h… |
-| Devastating Strike | B | attack | Whenever you use Vital Strike, Improved Vital Strike, or Greater Vital Strike, you gain a +2 bonus on each extra weapon… |
-| Dirty Trick Master | B | attack, condition | Whenever you successfully perform a dirty trick combat maneuver against an opponent who is still affected by a conditio… |
-| Disarming Strike | B | attack | Whenever you score a critical hit with a melee attack, you can disarm your opponent, in addition to the normal damage d… |
-| Discordant Voice | B | dice | Whenever you are using bardic performance to create a spell-like or supernatural effect, allies within 30 feet of you d… |
-| Disorienting Blow | B | save, attack, condition | You must choose to use this ability before making an attack roll with your Stunning Fist, and this effect replaces othe… |
-| Dispelling Critical | B | attack, activated | If you have dispel magic prepared or can cast it spontaneously, when you score a critical hit against an opponent, you… |
-| Disposable Weapon | B | attack | Whenever you use a melee or thrown weapon with the fragile weapon special quality to score a critical threat against an… |
 | Djinni Style | B | attack | You gain one additional Elemental Fist (Advanced Player's Guide 158) attempt per day. While you are in this style you m… |
 | Double Slice | B | attack | Add your Strength bonus to damage rolls made with your off-hand weapon. |
-| Dragonslayer | B | attack | Whenever you confirm a critical hit against an opponent that has a breath weapon, you can forgo the extra critical dama… |
 | Eagle Knight Candidate | B | attack | Choose one branch of the Eagle Knights you hope to join. You gain a specific benefit based on this choice. Golden Legio… |
 | Endurance | B | save, condition | You gain a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage from exhaustion; Con… |
-| Enforcer | B | attack, activated, condition | Whenever you deal nonlethal damage with a melee weapon, you can make an Intimidate check to demoralize your target as a… |
 | Exhausting Critical | B | attack, condition | When you score a critical hit on a foe, your target immediately becomes exhausted. This feat has no effect on exhausted… |
 | Exorcist's Rebuttal | B | dice, save | If you use your Improved Iron Will feat to reroll a Will save against a compulsion effect and successfully save against… |
 | Exotic Weapon Proficiency | B | attack | You make attack rolls with the weapon normally. |
 | Familiar Spell | B | attack | You can transfer a prepared spell to your familiar, allowing the familiar to cast that spell at a later time. Variables… |
 | Feline Grace | B | attack | You gain a +2 bonus to your CMD against bull rush, grapple, overrun, repositioning, and trip combat maneuvers. |
-| Felling Escape | B | attack, activated | When you break an opponent's grapple with a combat maneuver check or Escape Artist check, you can spend a swift action… |
 | Feral Heart | B | save, attack | Whenever you receive a morale bonus on Strength or attack rolls (such as from heroism or the barbarian rage class featu… |
-| Flagbearer | B | attack | As long as you hold your clan, house, or party's f lag (see page 293), members of that allegiance within 30 feet who ca… |
-| Flanking Foil | B | attack | Whenever you hit an adjacent opponent with a melee attack, until the start of your next turn, that opponent does not ga… |
-| Focused Shot | B | attack | As a standard action, you may make an attack with a bow or crossbow and add your Intelligence modifier on the damage ro… |
-| Foment the Blood | B | attack | When you channel energy, instead of creating its normal effect, you can give orcs a bonus on weapon damage and critical… |
 | Fortified Armor Training | B | attack | If an opponent scores a critical hit against you, you can turn the critical hit into a normal hit. If you do, either yo… |
 | Friend To Animals | B | save | As a standard action you can require all animals within 30 feet to make a Will saving throw. Animals who fail the save… |
-| Fury's Fall | B | attack | When making a trip attack, add your Dexterity bonus to your CMB. |
 | Glorious Heat | B | attack | When you cast a divine spell with the fire descriptor, choose a single ally within 30 feet that you can see. That ally… |
 | Greater Blighted Critical | B | attack | Whenever you confirm a critical hit with a touch spell, ranged touch spell, or spell-like ability against an opponent,… |
 | Greater Channel Smite | B | save, attack, activated | Before making any melee attacks on your turn, you can use a swift action to expend one daily use of your channel energy… |
 | Greater Dirty Trick | B | dice | You receive a +2 bonus on checks made to attempt a dirty trick. This bonus stacks with the bonus granted by Improved Di… |
 | Greater Mercy | B | dice | When you use your lay on hands ability and the target of that ability does not have any conditions your mercies can rem… |
-| Greater Rending Fury | B | dice, attack | Whenever you rend an opponent, you deal 1d6 bleed damage to that opponent. This is an addition to the effects of the re… |
-| Greater Snap Shot | B | attack | Whenever you make an attack of opportunity using a ranged weapon and hit, you gain a +2 bonus on the damage roll and a… |
 | Greater Spell Penetration | B | dice | You get a +2 bonus on caster level checks (1d20 + caster level) made to overcome a creature's spell resistance. This bo… |
 | Greater Vital Strike | B | attack | When you use the attack action, you can make one attack at your highest base attack bonus that deals additional damage.… |
 | Greater Weapon Focus | B | attack | You gain a +1 bonus on attack rolls you make using the selected weapon. This bonus stacks with other bonuses on attack… |
 | Greater Weapon Specialization | B | attack | You gain a +2 bonus on all damage rolls you make using the selected weapon. This bonus to damage stacks with other dama… |
 | Guided Hand | B | attack | With your deity's favored weapon, you can use your Wisdom modifier instead of your Strength or Dexterity modifier on at… |
-| Hamatulatsu | B | attack, condition | Your unarmed attacks can deal either bludgeoning or piercing damage. You decide which type of damage you deal whenever… |
-| Haunted Gnome Assault | B | attack, activated, condition | You gain one use of your gnome magic that is independent of your gnome magic spell-like abilities. When you wish to cas… |
-| Horn Of The Criosphinx | B | attack | Whenever you make a successful charge attack while wielding a two-handed weapon in both hands, add two times your Stren… |
 | Hydraulic Maneuver | B | attack | You may use hydraulic push to attempt a bull rush, disarm, dirty trick (blind or dazzle, see Advanced Player's Guide),… |
-| Iconoclast | B | attack, activated | When you succeed at a sunder combat maneuver against a holy or unholy symbol, you can attempt an Intimidate check to de… |
-| Impact Critical Shot | B | attack, condition | Whenever you score a critical hit with a ranged attack, in addition to the normal damage your attack deals, if your con… |
 | Implant Bomb | B | dice | You may implant a bomb in a willing or helpless creature (a mindless creature under your control, such as a zombie, cou… |
-| Improved Bull Rush | B | attack | You do not provoke an attack of opportunity when performing a bull rush combat maneuver. In addition, you receive a +2… |
 | Improved Devastating Strike | B | attack | Whenever you use Vital Strike, Improved Vital Strike, or Greater Vital Strike, you gain a bonus on attack rolls to conf… |
 | Improved Dirty Trick | B | attack | You do not provoke an attack of opportunity when performing a dirty trick combat maneuver. In addition, you receive a +… |
 | Improved Disarm | B | attack | You do not provoke an attack of opportunity when performing a disarm combat maneuver. In addition, you receive a +2 bon… |
-| Improved Drag | B | attack | You do not provoke an attack of opportunity when performing a drag combat maneuver. In addition, you receive a +2 bonus… |
-| Improved Grapple | B | attack | You do not provoke an attack of opportunity when performing a grapple combat maneuver. In addition, you receive a +2 bo… |
-| Improved Ki Throw | B | attack, condition | When using the Ki Throw feat, you may throw your target into any square you threaten that is occupied by another creatu… |
 | Improved Natural Attack | B | dice | Choose one of the creature's natural attack forms (not an unarmed strike). The damage for this natural attack increases… |
-| Improved Overrun | B | attack | You do not provoke an attack of opportunity when performing an overrun combat maneuver. In addition, you receive a +2 b… |
-| Improved Rending Fury | B | dice, attack | Whenever you successfully rend an opponent, you deal an extra 1d6 damage. This damage is not multiplied on a critical h… |
-| Improved Reposition | B | attack | You do not provoke an attack of opportunity when performing a reposition combat maneuver. In addition, you receive a +2… |
 | Improved Steal | B | attack | You do not provoke an attack of opportunity when performing a steal combat maneuver. In addition, you receive a +2 bonu… |
-| Improved Sunder | B | attack | You do not provoke an attack of opportunity when performing a sunder combat maneuver. In addition, you receive a +2 bon… |
 | Improved Trip | B | attack | You do not provoke an attack of opportunity when performing a trip combat maneuver. In addition, you receive a +2 bonus… |
 | Improved Vital Strike | B | attack | When you use the attack action, you can make one attack at your highest base attack bonus that deals additional damage.… |
-| Inner Flame | B | dice | Your bonus on saves against fire attacks and spells with the fire descriptor or light descriptor increases to +4. When… |
-| Innocent Blood | B | attack | You gain a +2 bonus on Intimidate checks. If you have 10 or more ranks in Intimidate, this bonus increases to +4. Each… |
 | Inscribe Magical Tattoo | B | save, activated | You can create magical tattoos, magic items inked directly into the flesh of a willing or helpless creature. Both you a… |
-| Intimidating Confidence | B | attack, activated | You gain a +1 bonus on saving throws against effects with the emotion descriptor; this bonus stacks with the bonus gran… |
 | Invoke Primal Instinct | B | save, condition | As a standard action, you can pantomime or describe predator- or prey-like behavior, expend one of your uses of wild sh… |
-| Janni Tempest | B | attack | While you are using the Janni Style feat, whenever you make an unarmed attack and hit an opponent, you gain a +4 bonus… |
-| Jawbreaker | B | dice, attack, condition | When you make a successful Stunning Fist attempt against an opponent that is grappled, helpless, or stunned, instead of… |
 | Knockout Artist | B | attack | When you use your unarmed strike to deal nonlethal damage and sneak attack damage to an opponent denied his Dexterity b… |
 | Kobold Confidence | B | save | You use your Charisma, Intelligence, or Wisdom in place of Constitution to determine your bonus to Fortitude saves and… |
 | Kobold Flood | B | attack, condition | You can make a grapple combat maneuver check to mount a prone Medium or Large foe. If you're successful, you move into… |
-| Kobold Style | B | attack | You gain a +4 bonus on combat maneuver checks against enemies denied their Dexterity bonus to AC. |
-| Large Target | B | attack | Your attacks with all kinds of slings add a +1 bonus on damage rolls for every size category your opponent is larger th… |
 | Lead from the Back | B | attack | During any round in which you gain the benefit of cover or concealment against at least one opponent, and you are not t… |
 | Life Lure | B | save | As a standard action, you can channel positive energy to fascinate all undead within 30 feet for a number of rounds equ… |
-| Lucky Strike | B | attack | Spend a use of your adaptive luck racial trait to reroll the damage from a single weapon attack. You deal damage equal… |
-| Manyshot | B | attack | When making a full-attack action with a bow, your first attack fires two arrows. If the attack hits, both arrows hit. A… |
 | Martial Weapon Proficiency | B | attack | You make attack rolls with the selected weapon normally (without the non-proficient penalty). |
 | Meditative Concentration | B | save | For 1 round per character level after you perform combat meditation, whenever you attempt a concentration check to avoi… |
-| Merciless Precision | B | dice, attack, condition | Your sneak attack damage increases by 1d6 against targets that are already aff licted with any of the following conditi… |
 | Metallic Wings | B | dice | You gain two wing attacks. These are secondary natural attacks that deal 1d4 points of slashing damage (or 1d3 if you a… |
 | Mother's Gift | B | attack | Your dark legacy manifests in one of the following ways. You choose the manifestation when you choose the feat, and onc… |
-| Murderer's Circle | B | attack, activated | When you spend a swift action to make a performance combat check after scoring a critical hit or performing a combat ma… |
 | Named Bullet | B | attack | Whenever you craft ammunition using Gunsmithing, you may inscribe a bullet or alchemical cartridge with the name of its… |
 | Narrow Frame | B | attack | You do not take penalties on your attack rolls or to your AC for squeezing through a narrow space that is at least half… |
-| Net Trickery | B | attack, condition | In place of one of your melee attacks, you can use your net to attempt a dirty trick combat maneuver to blind an oppone… |
-| Nightmare Striker | B | dice, condition | While a faerie fire you have cast (not one cast from a spell completion or spell trigger item) outlines an opponent, th… |
 | Old Cults Awakener | B | dice, save | You can attempt a DC 25 Heal check upon an unconscious but stable intelligent creature. The ritual takes 1 hour to comp… |
-| Opening Volley | B | attack | Whenever you deal damage with a ranged attack, you gain a +4 circumstance bonus on the next melee attack roll you make… |
 | Orc Weapon Expertise | B | attack | When you take this feat, choose one of the benefits below. Whenever you wield a weapon that has "orc" in its name, you… |
-| Outflank | B | attack | Whenever you and an ally who also has this feat are flanking the same creature, your flanking bonus on attack rolls inc… |
 | Painful Anchor | B | dice | When an evil outsider uses a calling, summoning, or teleportation effect, or any ability that physically transports a c… |
-| Pinning Knockout | B | attack | While you have an opponent pinned, when you succeed at a grapple combat maneuver check to deal an opponent nonlethal da… |
-| Pinning Rend | B | attack | While you have an opponent pinned, when you succeed at a grapple combat maneuver check to deal an opponent damage using… |
 | Pinpoint Poisoner | B | dice, attack, activated | When you use Adder Strike, you can instead poison up to two blowgun darts that you can then use to strike your opponent… |
 | Point-Blank Shot | B | attack | You get a +1 bonus on attack and damage rolls with ranged weapons at ranges of up to 30 feet. |
-| Porcupine Defense | B | attack | Whenever an opponent of at least one size category larger than yourself attempts a combat maneuver attack against you,… |
 | Powerful Shape | B | attack | When in wild shape, treat your size as one category larger for the purpose of calculating CMB, CMD, carrying capacity,… |
 | Practiced Leadership | B | save | As long as you and your cohort maintain membership in good standing within the same organization, your cohort gains a +… |
 | Precise Strike | B | dice, attack | Whenever you and an ally who also has this feat are flanking the same the creature, you deal an additional 1d6 points o… |
@@ -1103,13 +3096,9 @@ Save DC (`stated`): `[[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.m
 | Quick Drag | B | attack | On your turn, you can perform a single drag combat maneuver (Advanced Players Guide 320) in place of one of your melee… |
 | Quick Reposition | B | attack | On your turn, you can perform a single reposition combat maneuver (Advanced Players Guide 320) in place of one of your… |
 | Quick Steal | B | attack | On your turn, you can perform a single steal combat maneuver (Advanced Players Guide 320) in place of one of your melee… |
-| Quivering Palm Versatility | B | dice, save, attack, activated | After successfully using your quivering palm attack on a creature, you can produce one of the following effects instead… |
-| Radiant Charge | B | dice, activated | When you hit with a charge attack, you can expend all of your remaining uses of lay on hands to deal extra damage equal… |
 | Rapid Grappler | B | attack, activated | Whenever you use Greater Grapple to successfully maintain a grapple as a move action, you can then spend a swift action… |
-| Rapid Shot | B | attack | When making a full-attack action with a ranged weapon, you can fire one additional time this round at your highest bonu… |
 | Razortusk | B | dice | You can make a bite attack for 1d4 points of damage, plus your Strength modifier. You're considered proficient in this… |
 | Repositioning Strike | B | attack | Whenever you score a critical hit with a melee attack, you can move your opponent, in addition to the normal damage dea… |
-| Ricochet Splash Weapon | B | attack | Whenever your splash weapon misses and the misdirection roll indicates it lands in a square occupied by a creature, you… |
 | Sap Adept | B | attack | Whenever you use a bludgeoning weapon to deal nonlethal sneak attack damage, you gain a bonus on your damage roll equal… |
 | Sap Master | B | attack | Whenever you use a bludgeoning weapon to deal nonlethal sneak attack damage to a flat-footed opponent, roll your sneak… |
 | SchooledResolve | B | save | You add your bravery bonus on Will saves against mind-affecting spells and effects from vampires. This does not stack w… |
@@ -1118,7 +3107,6 @@ Save DC (`stated`): `[[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.m
 | Shadow Gambit | B | dice, save | As a standard action, you can draw upon energies from the Plane of Shadow to cause an ongoing figment spell you cast to… |
 | Shadow Grasp | B | save, condition | When you cast a spell with the darkness descriptor that affects an area, creatures in the area are entangled. If the sp… |
 | Shadow Strike | B | attack | You can deal precision damage, such as sneak attack damage, against targets with concealment (but not total concealment… |
-| Shapeshifter Foil | B | attack | A creature you deal damage to has difficulty using or maintaining polymorph effects until the end your next turn. To us… |
 | Sharpclaw | B | dice | You gain two claw attacks. These are primary natural attacks that deal 1d4 points of damage. |
 | Shatter Resolve | B | dice, save, condition | When you damage a creature by channeling negative energy, you fill it with fear. A creature that is affected by your ch… |
 | Shield Master | B | attack | You do not suffer any penalties on attack rolls made with a shield while you are wielding another weapon. Add your shie… |
@@ -1129,42 +3117,29 @@ Save DC (`stated`): `[[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.m
 | Sickening Spell | B | save, condition | You can modify a spell to sicken a creature damaged by the spell. When a creature takes damage from this spell, they be… |
 | Simple Weapon Proficiency | B | attack | You make attack rolls with simple weapons without penalty. |
 | Snatch | B | dice, save, activated | The creature can start a grapple when it hits with a claw or bite attack, as though it had the grab ability. If it grap… |
-| Sneaking Precision | B | attack, activated | Whenever you successfully sneak attack an opponent for a second time on your turn, you can spend a swift action to appl… |
-| Solo Maneuvers | B | attack | Whenever you are the only one threatening an opponent, you gain a +1 bonus on combat maneuvers against that creature an… |
 | Spell Penetration | B | dice | You get a +2 bonus on caster level checks (1d20 + caster level) made to overcome a creature's spell resistance. |
 | Spinning Throw | B | attack, activated, condition | On a successful unarmed trip combat maneuver against an opponent your size or smaller, you can spend a swift action to… |
-| Splintering Weapon | B | dice, attack | Whenever you use a melee or thrown weapon with the fragile weapon feature (page 146) or similar quality and hit an oppo… |
 | Staggering Critical | B | dice, save, attack, condition | Whenever you score a critical hit, your opponent becomes staggered for 1d4+1 rounds. A successful Fortitude save reduce… |
 | Stand Still | B | attack | When a foe provokes an attack of opportunity due to moving through your adjacent squares, you can make a combat maneuve… |
 | Steadfast Mind | B | save | Whenever you fail a concentration check while casting defensively and would normally lose a prepared spell or spell slo… |
 | Strangler | B | attack, activated | Whenever you successfully maintain a grapple and choose to deal damage, you can spend a swift action to deal your sneak… |
 | Stronghold | B | attack | You can spend a move action to give battle orders to your troops, granting creatures under your command within 60 feet… |
 | Stunning Critical | B | dice, save, attack, condition | Whenever you score a critical hit, your opponent becomes stunned for 1d4 rounds. A successful Fortitude save reduces th… |
-| Sundering Strike | B | attack | Whenever you score a critical hit with a melee attack, you can sunder your opponent's weapon, in addition to the normal… |
-| Sunlit Strike | B | dice, condition | Whenever you successfully hit an enemy that is vulnerable to light (such as by the light blindness, light sensitivity,… |
 | Supernal Feast | B | dice, attack, activated | Whenever you are adjacent to a good outsider that takes bleed or blood drain damage, you gain 1 temporary hit point as… |
 | Sure-Footed | B | save | You gain a +2 bonus on Acrobatics checks to keep your balance and Reflex saves to avoid falling. You can move at a norm… |
-| Swarm Strike | B | attack | Whenever a foe provokes an attack of opportunity from you, you gain a +1 bonus on your attack roll, plus an additional… |
 | Tail Terror | B | dice | You can make a tail slap attack with your tail. This is a secondary natural attack that deals 1d4 points of bludgeoning… |
-| Tandem Trip | B | attack | Whenever you attempt a trip combat maneuver against an enemy threatened by an ally with this feat, you roll twice and t… |
 | Throw Anything | B | attack | You do not suffer any penalties for using an improvised ranged weapon. You receive a +1 circumstance bonus on attack ro… |
 | Thundering Spell | B | save, condition | You can modify a spell to deafen a creature damaged by the spell. When a creature takes damage from this spell, it beco… |
 | Tiger Claws | B | attack, activated | While you are using the Tiger Style feat and have both hands free, you can use a full-round action to make a single una… |
 | Tiring Critical | B | attack, condition | Whenever you score a critical hit, your opponent becomes fatigued. This feat has no additional effect on a fatigued or… |
-| Topple Foe | B | attack | If you attempt to trip a foe that is larger than you, you gain a +1 bonus on your CMB check to trip the foe as long as… |
 | Totem Spirit | B | save | The benefit granted by this feat depends on which Shoanti tribe you belong to: Lyrune-Quah (Moon Clan): You gain a +1 b… |
 | Toxic Stench | B | save | The first round a creature is affected by your stench, it must also make a successful Fortitude save against the same D… |
 | Trample | B | attack, condition | When you attempt to overrun an opponent while mounted, your target may not choose to avoid you. Your mount may make one… |
 | Trapper's Setup | B | attack | When you manually trigger a trap against opponents, that trap receives either a +2 circumstance bonus on melee attack r… |
 | Tribal Scars | B | save, attack | You gain 6 hit points. In addition, you gain another benefit, depending on which Mammoth Lords following you belong to.… |
-| Tripping Strike | B | attack, condition | Whenever you score a critical hit with a melee attack, you can trip your opponent, in addition to the normal damage dea… |
-| Tripping Twirl | B | attack, activated | As a full-round action, while wielding a quarterstaff two-handed, you can attempt a trip combat maneuver against each e… |
 | Turn Undead | B | save | You can, as a standard action, use one of your uses of channel positive energy to cause all undead within 30 feet of yo… |
-| Two-Handed Thrower | B | attack | Whenever you use two hands to throw a onehanded or two-handed weapon, you gain a bonus on damage rolls equal to 1-1/2 t… |
 | Two-Weapon Fighting | B | attack | Your penalties on attack rolls for fighting with two weapons are reduced. The penalty for your primary hand lessens by… |
-| Two-Weapon Rend | B | dice | If you hit an opponent with both your primary hand and your off-hand weapon, you deal an additional 1d10 points of dama… |
 | Undermine | B | attack | When you use a combat maneuver to move a creature into or through a square adjacent to an ally with this feat, your opp… |
-| Undermining Exploit | B | attack | You gain a +4 insight bonus on combat maneuvers against opponents that are located in rocky, difficult terrain. |
 | Unforgotten | B | save | Your dogged determination reduces any nonlethal damage you take by 1 point, to a minimum of 1 point of nonlethal damage… |
 | Vandal | B | attack | You treat unattended objects as if they were vulnerable to your sneak attack, but you only deal half as much damage as… |
 | Vital Strike | B | attack | When you use the attack action, you can make one attack at your highest base attack bonus that deals additional damage.… |
@@ -1172,8 +3147,6 @@ Save DC (`stated`): `[[ 10 + floor(@classes.oracle.level / 2) + @abilities.cha.m
 | Weapon Finesse | B | attack | With a light weapon, elven curve blade, rapier, whip, or spiked chain made for a creature of your size category, you ma… |
 | Weapon Focus | B | attack | You gain a +1 bonus on all attack rolls you make using the selected weapon. |
 | Weapon Specialization | B | attack | You gain a +2 bonus on all damage rolls you make using the selected weapon. |
-| Whirlwind Attack | B | attack | When you use the full-attack action, you can give up your regular attacks and instead make one melee attack at your hig… |
-| Wingclipper | B | attack | Whenever you confirm a critical hit against an opponent that uses wings to fly, you can forgo the extra critical damage… |
 
 ### Foundry already automates these
 
