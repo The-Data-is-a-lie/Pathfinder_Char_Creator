@@ -42,7 +42,8 @@ Highest-value, most generation-relevant first:
    `scripts/test_house_invariants.py`.
 2. ~~**Homebrew feat counts**~~ — DONE 2026-07-30: +2 creation feats (folded into the normal
    bucket) and the diminishing flaw-feat schedule (first 2 flaws +1 each, 4th grants the 3rd;
-   0 flaws → 0) in `level_and_bab.py::update_level`; swept by `scripts/test_house_invariants.py`.
+   0 flaws → 0; behind `misc_homebrew_rules`) in `level_and_bab.py::update_level`; swept by
+   `scripts/test_house_invariants.py`.
 3. **Skill alternate abilities** — allowed-ability sets per skill plus a chooser in `skill_ranks.py`.
 4. ~~**Skill rank changes**~~ — DONE 2026-07-30: 2→4 rank floor (behind `misc_homebrew_rules`),
    3-ranks-per-level cap, +2/level background-only ranks in `skill_ranks.py` (the mental-ability
@@ -54,9 +55,9 @@ Highest-value, most generation-relevant first:
    which the feat library does not carry).
 8. **Flaws/traits** — the flaw→feat grant and the 8-pick-4 trait flow.
 9. **Expose `misc_homebrew_rules` as a user input if ever needed** — the catch-all flag for
-   homebrew rules too small for their own Yes/No question (currently: the 2→4 rank floor).
-   Internal, defaults Y; owner: the `generate_random_char` signature +
-   `skill_ranks.misc_homebrew_enabled`.
+   homebrew rules too small for their own Yes/No question (currently: the 2→4 rank floor and the
+   diminishing flaw-feat grant). Internal, defaults Y; owner: the `generate_random_char`
+   signature + `skill_ranks.misc_homebrew_enabled`.
 
 ## Source coverage
 

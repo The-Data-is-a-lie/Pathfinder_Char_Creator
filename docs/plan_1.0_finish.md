@@ -56,7 +56,8 @@ Grilling settled what "finish" means and what's in/out:
       added in `skill_ranks.py`, with the 2→4 floor behind the new internal `misc_homebrew_rules`
       catch-all flag (defaults on; cap + background stay on the main homebrew flag); flaw feats
       keep the diminishing schedule (0→0, 1→1, 2→2, 3→2, 4→3 — the old clamp was right except the
-      phantom feat at 0 flaws) and creation +2 was missing — fixed in `level_and_bab.py`; HP was
+      phantom feat at 0 flaws), also behind `misc_homebrew_rules`, and creation +2 was missing —
+      fixed in `level_and_bab.py`; HP was
       rolled, Con mod floored before halving and ignored inherent/level-up Con — fixed in
       `hp_rolls.py`. Goldens regenerated in the same commit.
 - [x] **New invariant sweep test** `Backend/scripts/test_house_invariants.py`: 43 classes ×
