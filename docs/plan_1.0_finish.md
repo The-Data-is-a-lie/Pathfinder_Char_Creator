@@ -35,14 +35,14 @@ Grilling settled what "finish" means and what's in/out:
 
 - [x] Write this plan to `docs/plan_1.0_finish.md` in the main repo (the physical, session-portable
       copy; keep checkboxes updated there).
-- [ ] **Applier repo** (`~/Documents/GitHub/pf1-conditional-applier`): review the 7-day-old delta
+- [x] **Applier repo** (`~/Documents/GitHub/pf1-conditional-applier`): review the 7-day-old delta
       (`feat_conditionals.json` +2,151, `src/apply-conditionals.macro.js` +93, `build/build_data.py`
       +49, README) and commit in atomic chunks (curation / macro / build / docs), then commit this
       session's work (core_features data + `build/verify_specs.mjs` chassis specs + rebuilt bundle).
-- [ ] **Main repo**: commit the core-features audit + curation session (candidate slicer `core`
+- [x] **Main repo**: commit the core-features audit + curation session (candidate slicer `core`
       family, `core_features` overrides, validator export-check, changelog, docs) per
       `commit-conventions`.
-- [ ] Log the applier commits in the main repo `changelog.md` (central-changelog convention).
+- [x] Log the applier commits in the main repo `changelog.md` (central-changelog convention).
 
 ## Phase 1 — house-rule numbers: write down, verify, fix (the suspected wrongness)
 
