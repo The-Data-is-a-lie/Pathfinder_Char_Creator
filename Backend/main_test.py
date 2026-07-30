@@ -48,7 +48,8 @@ from utils.class_func.family_func 					import randomize_siblings, randomize_pare
 from utils.class_func.feats 						import (build_selector, chooseable_list, chooseable_list_stats,
                                                   			chooseable_list_class_features, feat_spell_searcher, generic_multi_chooser,
                                                             simple_list_chooser, generic_feat_chooser, bloodline_feat_chooser, teamwork_pool_size,
-                                                            capitalize_feats, dedupe_feats_case_insensitive, topup_feat_chooser)
+                                                            capitalize_feats, dedupe_feats_case_insensitive, topup_feat_chooser,
+                                                            metzofitz_description)
 from utils.class_func.feats_to_chooseable 			import add_feats_to_chooseable
 from utils.class_func.feat_tax 						import feat_tax_func, feat_spell_searcher
 from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feats, specialize_skill_choice_feats
@@ -1782,7 +1783,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			_desc_ci = {str(_k).lower(): (_v.get("description", "") if isinstance(_v, dict) else "")
 						for _k, _v in _desc_info.items()}
 			for _n in _need_desc:
-				homebrew_feat_desc_dict[_n] = _desc_ci.get(_n.lower(), "")
+				# Metzofitz picks are absent from data/feats.csv; their library supplies the text.
+				homebrew_feat_desc_dict[_n] = (_desc_ci.get(_n.lower(), "")
+											   or metzofitz_description(_n))
 
 		# --- Feat numeric buffs (Foundry "Changes" tab) + active-feat toggle conditionals --------------
 		# Curated, hand-vetted side-maps keyed by feat name. feat_changes.json -> always-on pf1 `changes`

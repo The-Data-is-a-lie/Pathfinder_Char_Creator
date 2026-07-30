@@ -63,13 +63,18 @@ Grilling settled what "finish" means and what's in/out:
 
 ## Phase 2 — Metzofitz homebrew feats in (backlog #1)
 
-- [ ] Un-comment and finish Metzofitz feat selection in `Backend/utils/class_func/feats.py`
-      behind the homebrew/story-feats flag; source `data/Metzofitz_Feats.csv`.
-- [ ] Prerequisite checks + name collisions vs the normal pool; label convention consistent with
-      existing placement labels so the applier/module name-matching still works.
-- [ ] Extend the invariant sweep: with the flag on, homebrew feats appear, counts still satisfy the
-      Phase-1 formula; golden seed(s) for a flagged character.
-- [ ] Changelog entry.
+- [x] Metzofitz selection wired (2026-07-30): `feats.py::metzofitz_feat_frame` concats the
+      General/Combat rows (~490 of 1,735 — subsystem/style rows excluded by the chooser's exact
+      type match; styles keep coming via Martial Training) into `generic_feat_chooser` behind the
+      homebrew flag.
+- [x] Prereqs go through the existing `get_feats_without_prerequisites` loop; name collisions
+      resolve to AoN (`drop_duplicates(keep='first')` after concat); no new label needed — picks
+      render like normal feats, with rules text from `metzofitz_description` (the module's
+      description fallback keeps the row).
+- [x] Invariant sweep extended: every placed Metzofitz-only feat must be described +
+      pool-existence check (1,773 picks across the 645-generation sweep); goldens regenerated
+      (homebrew flag is on in the golden configs).
+- [x] Changelog entry.
 
 ## Phase 3 — conditional correctness pass + top-20 curation
 

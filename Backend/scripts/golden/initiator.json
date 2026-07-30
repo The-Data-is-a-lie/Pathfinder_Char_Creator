@@ -130,11 +130,15 @@
   "Warlord 6",
   "Warlord 10"
  ],
- "class_feat_tax_dict": {},
+ "class_feat_tax_dict": {
+  "Improved Initiative": [
+   "surprising combatant"
+  ]
+ },
  "class_feats": [
-  "Shadow Dodge",
-  "Performance Weapon Mastery",
-  "Endurance"
+  "Improved Initiative",
+  "Ability Focus (malefactions)",
+  "Jaguar Pounce"
  ],
  "class_feature_changes_dict": {},
  "class_feature_conditionals_dict": {},
@@ -215,46 +219,37 @@
   "profession": 1,
   "story": 3,
   "teamwork": 0,
-  "trainer": 2
+  "trainer": 6
  },
  "feat_changes_dict": {
-  "Defensive Weapon Training": {
+  "Reach Defense": {
    "changes": [],
    "contextNotes": [
     {
      "target": "ac",
-     "text": "+2 dodge bonus to AC when an opponent attacks you with a weapon from your chosen weapon group (+3 if you also have weapon training in that group)."
+     "text": "+2 dodge bonus to AC against attacks of opportunity from opponents that are not adjacent to you."
     }
    ]
   }
  },
- "feat_conditionals_dict": {
-  "Bludgeoner": {
-   "default": false,
-   "modifiers": [],
-   "name": "Bludgeoner: Effect: deal nonlethal damage with a bludgeoning weapon at no [[-4]] penalty",
-   "tier": "A"
-  }
- },
+ "feat_conditionals_dict": {},
  "feats": [
-  "Strong Comeback",
-  "Improved Initiative",
-  "Acrobatic",
-  "Meditation Master",
-  "Blinding Flash",
-  "Coordinated Charge",
+  "Blade of Terror",
+  "Death Frombelow",
+  "Night Dweller",
+  "Improved Trip",
+  "Outflank",
+  "Swift Aid",
   "Multi Talented"
  ],
- "feats_feat_tax_dict": {
-  "Meditation Master": [
-   "body control",
-   "body mastery",
-   "combat meditation"
+ "feats_feat_tax_dict": {},
+ "flavor_feat_tax_dict": {
+  "Second Chance": [
+   "improved second chance"
   ]
  },
- "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Bludgeoner"
+  "Second Chance"
  ],
  "flaw": [
   "Beady Eyes"
@@ -277,9 +272,9 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Racial Heritage"
+  "Escape Route"
  ],
- "formatted_bio": "Drogo McKinley\n- Alignment: Lawful Neutral\n- Deity: Irori\n- Race: Half-Orc\n- Class: Level 10 Warlord\n- Archetype: Archer\n- Tactics: Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.\n- Stat Focus: Cha\n- Disciplines: Solar Wind, Thrashing Dragon, Tempest Gale\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Greenwood Ranger (rank 10)\n- Profession: Watch Underling (rank 1)\n- Profession: Battlefield Carrion-Hauler (rank 10)\n- Profession: Pruner (rank 3)\n- Profession: Medium (rank 1)\n- Known for: Trapmaking\n- Training: A terrible trainer who taught them Defensive Weapon Training\n- Training: A terrible (Path of War) trainer who taught them Thrashing Dragon Style\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Middle Income Household\n- 1 Older Brother\n- 1 Younger Brother\n\nPersonality\n- Personality: Wise, Egotistic, Assertive, Just, Disruptive, Self-sufficient\n- Mannerisms: Grits teeth, Leans back\n- Flaws: Beady Eyes\n\nAppearance\n- Hair: Spiky Grey\n- Eyes: Amber\n- Build: Ragged",
+ "formatted_bio": "Drogo McKinley\n- Alignment: Lawful Neutral\n- Deity: Irori\n- Race: Half-Orc\n- Class: Level 10 Warlord\n- Archetype: Archer\n- Tactics: Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.\n- Stat Focus: Cha\n- Disciplines: Solar Wind, Thrashing Dragon, Tempest Gale\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Greenwood Ranger (rank 10)\n- Profession: Watch Underling (rank 1)\n- Profession: Battlefield Carrion-Hauler (rank 10)\n- Profession: Pruner (rank 3)\n- Profession: Medium (rank 1)\n- Known for: Trapmaking\n- Training: An average trainer who taught them Haft Strike, Counter Maneuver (combat)\n- Training: A terrible trainer who taught them Cosmopolitan\n- Training: An average trainer who taught them Lunge, Dirgesinger\n- Training: A terrible (Path of War) trainer who taught them Thrashing Dragon Style\n\nFamily\n- Dead Mother\n- Absent Father\n- Adopted Into A Poor Family\n- 1 Younger Sister\n\nPersonality\n- Personality: Wise, Egotistic, Assertive, Just, Disruptive, Self-sufficient\n- Mannerisms: Grits teeth, Leans back\n- Flaws: Beady Eyes\n\nAppearance\n- Hair: Spiky Grey\n- Eyes: Amber\n- Build: Ragged",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 1004,
@@ -294,25 +289,29 @@
  "height_number": "7'0\"",
  "hero_points": 3,
  "homebrew_feat_desc_dict": {
-  "Acrobatic": "You are skilled at leaping, jumping, and flying",
-  "Blinding Flash": "You can temporarily blind your opponent by using your weapon or shield to flash sunlight into its eyes",
-  "Bludgeoner": "You can knock foes out cold with just about any blunt instrument",
-  "Coordinated Charge": "You are an expert at leading your allies into the fray",
-  "Defensive Weapon Training": "You know how to defend yourself against a certain class of weaponry",
-  "Endurance": "Harsh conditions or long exertions do not easily tire you",
-  "Flanking Foil": "Fighting multiple foes is easy for you",
-  "Improved Day Job": "You learned the importance of an honest day's work while training as an initiate of the Pathf inder Society",
+  "Ability Focus (malefactions)": "You have a knack for potent, complex curses. increase the dc of your malefactions by 2.",
+  "Blade of Terror": "You have learned to blend the fearsome arts of the dread with your mind blade. you may use your mind blade to deliver your terrors as if you had used your devastating touch, and you may add half your soulknife level (rounded down) to your dread level to determine saving throws for your terrors. additionally, anytime you successfully use a fear effect (either through a terror or a manifested power) you may regain your psychic strike as a free action once per round.",
+  "Cosmopolitan": "Living in large, exotic cities has put you in touch with many diverse civilizations, cultures, and races",
+  "Counter Maneuver (combat)": "You use your opponents failed maneuvers as a window of opportunity to make your own. whenever an opponent makes a failed combat maneuver check against you, you can use an attack of opportunity to attempt the same kind of maneuver upon that opponent. you must be able to reach your opponent with the maneuver to do so.",
+  "Death Frombelow": "You have been trained to fight flying creatures",
+  "Dirgesinger": "You have learned to affect the undead with your bardic power. you may affect undead with your bardic performances as though they were not immune to mind-affecting abilities. mindless undead remain immune to your performances.",
+  "Dodge": "Your training and ref lexes allow you to react swiftly to avoid an opponents' attacks",
+  "Escape Route": "You have trained to watch your allies' backs, covering them as they make tactical withdraws",
+  "Haft Strike": "Holding your polearm further up its length, you can strike adjacent foes as well as those further away. you can choose to take a 2 penalty to your ac to gain the ability to threaten all opponents within the reach of your reach weapon, rather than those you would normally threaten with your weapon. you must choose to use this feat before making an attack roll during your turn, and its effects last until the start of your next turn.",
   "Improved Initiative": "Your quick ref lexes allow you to react rapidly to danger",
-  "Meditation Master": "When fully focused on your inner self, you can enter a deep meditative state that allows you a more perfect control over your mind and body",
+  "Improved Trip": "You are skilled at sending your opponents to the ground",
+  "Jaguar Pounce": "Your ambushes are especially lethal",
+  "Lunge": "You can strike foes that would normally be out of reach",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Performance Weapon Mastery": "You wield all your weapons with the flair of a performer",
-  "Racial Heritage": "The blood of a non-human ancestor flows in your veins",
-  "Shadow Dodge": "You use light and darkness to your advantage, confusing your enemies and confounding their senses",
-  "Strong Comeback": "You learn quickly from past mistakes",
+  "Night Dweller": "Your long time spent in darkness has made you accustomed to its terrors. you gain a +4 bonus on saving throws against fear, phantasm, darkness, shadow, and shadowmorph effects. the dc of intimidate checks made to demoralize you increases by 5.",
+  "Outflank": "You look for every edge when flanking an enemy",
+  "Reach Defense": "You are prof icient at avoiding polearms and long-limbed creatures",
+  "Second Chance": "Quick ref lexes turn missed strikes into second chances",
+  "Shield Wall": "You form a unified defense with those around you",
+  "Swift Aid": "With a quick but harmless swipe, you can aid an ally's assault",
   "Thrashing Dragon Pounce": "Your swift movements allow you to close the gap and strike quickly against your foe. whenever you initiate a strike that requires you to make only a single melee attack, you can make an additional attack with another weapon as a free action. this attack is made at your highest base attack bonus, although you take the penalties for fighting with two weapons as normal. this attack does not gain any of the of the strike you initiated.",
   "Thrashing Dragon Style": "Your skill with two weapons makes you as dangerous as foes who wield one larger weapon. once per round, when you make an attack as a standard action or attack action, you can make an additional attack with another weapon as a free action. this attack is made at your highest base attack bonus, although you take the penalties for fighting with two weapons as normal.",
-  "Thrashing Dragon Whirlwind": "Your fury strikes out at all enemies around you. as a full-round action, you can make one melee attack with a weapon in your main hand and a weapon in your off hand against each opponent within reach. this attack is made at your highest base attack bonus, and you do not take the penalties for fighting with two weapons on these attacks.",
-  "Totem Spirit": "You are mystically tied to your tribe's sacred totem"
+  "Thrashing Dragon Whirlwind": "Your fury strikes out at all enemies around you. as a full-round action, you can make one melee attack with a weapon in your main hand and a weapon in your off hand against each opponent within reach. this attack is made at your highest base attack bonus, and you do not take the penalties for fighting with two weapons on these attacks."
  },
  "inherents": {
   "cha": 1,
@@ -578,10 +577,10 @@
  "mod_char_sheet_var": false,
  "mt_feats": [],
  "normal_feat_amount": 6,
- "older_brothers": " you have 1 older brothers",
+ "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "loving mother, loving father, raised in a middle income household",
+ "parents": "dead mother, absent father, adopted into a poor family",
  "personality_traits": [
   "Wise",
   "Egotistic",
@@ -935,9 +934,9 @@
  ],
  "story_feat_tax_dict": {},
  "story_feats": [
-  "Flanking Foil",
-  "Improved Day Job",
-  "Totem Spirit"
+  "Dodge",
+  "Shield Wall",
+  "Reach Defense"
  ],
  "str": 5,
  "teamwork_feat_labels": [],
@@ -945,20 +944,33 @@
  "total_level": 10,
  "total_rolled_hp": 90,
  "trainer_calibers": [
-  1
+  2,
+  1,
+  2
  ],
  "trainer_feat_labels": [
   "(Trainer 1)",
-  "(Trainer 2 - Path of War)"
+  "(Trainer 1)",
+  "(Trainer 2)",
+  "(Trainer 3)",
+  "(Trainer 3)",
+  "(Trainer 4 - Path of War)"
  ],
  "trainer_feat_tax_dict": {
+  "Lunge": [
+   "monkey lunge"
+  ],
   "Thrashing Dragon Style": [
    "Thrashing Dragon Pounce",
    "Thrashing Dragon Whirlwind"
   ]
  },
  "trainer_feats": [
-  "Defensive Weapon Training",
+  "Haft Strike",
+  "Counter Maneuver (combat)",
+  "Cosmopolitan",
+  "Lunge",
+  "Dirgesinger",
   "Thrashing Dragon Style"
  ],
  "weapon_enhancement_bonus": 1,
@@ -966,6 +978,6 @@
  "weapon_name": "Phaleros",
  "weight_number": 289,
  "wis": 14,
- "younger_brothers": " you have 1 younger brothers",
- "younger_sisters": " you have 0 younger sisters"
+ "younger_brothers": " you have 0 younger brothers",
+ "younger_sisters": " you have 1 younger sisters"
 }

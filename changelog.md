@@ -19,6 +19,16 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Metzofitz homebrew feats join the random pool (Road-to-1.0 Phase 2, backlog #1).** Behind the
+  homebrew flag, `generic_feat_chooser` now concatenates the General- and Combat-typed rows of
+  `data/Metzofitz_Feats.csv` (~490 of 1,735) into the selection pool — subsystem-typed rows
+  (Akashic, Psionic, Kineticist, styles, …) stay out because the chooser's exact type match can
+  never hit their comma-joined type strings, and style chains keep arriving via Martial Training.
+  Name collisions resolve to the AoN version; picks flow through the existing prerequisite loop.
+  Placed Metzofitz feats get their rules text from the library (they're absent from
+  `data/feats.csv`), so Foundry rows render with descriptions instead of empty fallbacks. The
+  invariant sweep now asserts every Metzofitz pick is described and that picks actually occur
+  (1,773 across the 645-generation sweep).
 - **House-rule numbers verified and implemented (Road-to-1.0 Phase 1).** The three "suspected
   wrong" areas from the 2026-07-29 grilling were diffed against the OKF house-rules bundle and
   fixed, all gated on the existing homebrew flag so the standard-PF1 path is unchanged:

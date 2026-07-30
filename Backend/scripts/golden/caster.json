@@ -406,32 +406,13 @@
   "profession": 3,
   "story": 4,
   "teamwork": 0,
-  "trainer": 13
+  "trainer": 12
  },
  "feat_changes_dict": {},
- "feat_conditionals_dict": {
-  "Butterfly's Sting": {
-   "default": false,
-   "modifiers": [],
-   "name": "Butterfly's Sting: Effect: forgo this critical hit's extra damage; the next ally who hits the target with a melee attack before the start of your next turn automatically confirms a critical hit",
-   "tier": "A"
-  },
-  "Raging Brutality": {
-   "default": false,
-   "modifiers": [],
-   "name": "Raging Brutality: Cost: [[3]] additional rounds of rage as a swift action (requires raging and using Power Attack); Effect: add your Constitution modifier to melee or thrown-weapon damage rolls this turn ([[1.5]]x your Constitution modifier if wielding the weapon two-handed); this damage is not multiplied on a critical hit",
-   "tier": "A"
-  },
-  "Raging Deathblow": {
-   "default": false,
-   "modifiers": [],
-   "name": "Raging Deathblow: Effect: while raging, reducing your opponent to [[-1]] or fewer hit points grants [[1]] extra round of rage for the day ([[1]] additional extra round if the attack was a critical hit); unused extra rounds are lost when you rest to renew your rage for the day",
-   "tier": "A"
-  }
- },
+ "feat_conditionals_dict": {},
  "feats": [
-  "Raging Deathblow",
-  "Raging Brutality",
+  "Scholar",
+  "Lastwall Phalanx",
   "Basic Magic Training",
   "Extra Magic Talent (Fog Mastery / Speak With The Elements)",
   "Extra Magic Talent (Ride The Elements / Nature Sight)",
@@ -457,7 +438,7 @@
  },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Widen Spell"
+  "Exploit Schema"
  ],
  "flaw": [
   "Slow Healer"
@@ -477,9 +458,9 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Gunsmithing"
+  "Cabalist"
  ],
- "formatted_bio": "Sara Eriksdotter\n- Alignment: Neutral Good\n- Deity: Ragathiel\n- Race: Human\n- Class: Level 8 Cleric / Barbarian\n- Archetype: Generalist\n- Tactics: Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.\n- Stat Focus: Wis\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Baron of the March (rank 15)\n- Profession: Fish Farmer (rank 10)\n- Profession: Pact Warlock (rank 1)\n- Profession: Cook (rank 9)\n- Known for: Cheesemaking\n- Training: An excellent trainer who taught them Armor of the Pit, Toppling Spell, Demonic Obedience\n- Training: An excellent trainer who taught them Quick Channel, Dragoncrafting, Echoing Spell\n- Training: An excellent trainer who taught them Persistent Spell, Toughness, Siphon Poison\n- Training: An excellent trainer who taught them Craft Wand, Butterfly's Sting, Deceitful\n- Training: A terrible trainer who taught them Combat Casting\n\nFamily\n- Dead Mother\n- Absent Father\n- Adopted Into A Poor Family\n- 1 Younger Sister\n\nPersonality\n- Personality: Cowardly, Inquisitive, Sociable\n- Mannerisms: Crosses arms, Clenches fists\n- Flaws: Slow Healer\n\nAppearance\n- Hair: Unkempt Black\n- Eyes: Hazel\n- Build: Tense",
+ "formatted_bio": "Sara Eriksdotter\n- Alignment: Neutral Good\n- Deity: Ragathiel\n- Race: Human\n- Class: Level 8 Cleric / Barbarian\n- Archetype: Generalist\n- Tactics: Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.\n- Stat Focus: Wis\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Baron of the March (rank 15)\n- Profession: Fish Farmer (rank 10)\n- Profession: Pact Warlock (rank 1)\n- Profession: Cook (rank 9)\n- Known for: Cheesemaking\n- Training: An average trainer who taught them Elemental Focus, Reach Spell\n- Training: An excellent trainer who taught them Shielded Caster, Aquatic Ancestry, Prodigy\n- Training: An average trainer who taught them Improved Day Job, Deceitful\n- Training: An excellent trainer who taught them Demonologist, Muffled Image, Celestial Obedience\n- Training: An average trainer who taught them Trapper's Setup, Miniature Reach\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Poor Household\n- 3 Older Brothers\n\nPersonality\n- Personality: Cowardly, Inquisitive, Sociable\n- Mannerisms: Crosses arms, Clenches fists\n- Flaws: Slow Healer\n\nAppearance\n- Hair: Unkempt Black\n- Eyes: Hazel\n- Build: Tense",
  "full_domain": [
   "Nobility",
   "Destruction"
@@ -498,36 +479,35 @@
  "hero_points": 1,
  "homebrew_feat_desc_dict": {
   "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
-  "Armor of the Pit": "Your fiendish traits take the form of a protective scaly skin",
+  "Aquatic Ancestry": "You favor your outsider ancestry and are better adapted to life in the water",
   "Basic Magic Training": "Benefit: Choose a sphere of magic. You gain access to this basic sphere. You gain an effective caster level of 1, a magic skill bonus of 1, a magic skill defense of 12, and a spell pool of 1. You may also select a casting tradition when you gain this feat. You are considered to possess the casting class feature, but do not gain the +2 magic talents a caster gains for their 1st level in a casting class.\n\nIf you later gain levels in a class granting the casting class feature, exchange this feat for the Extra Magic Talent feat.\n\nSpecial: For retraining purposes, having the casting class feature counts as Basic Magic Training.\nSphere/talent gained: Fire Mastery (Nature)",
-  "Butterfly's Sting": "You can forgo a critical hit in order to pass it on to an ally",
-  "Combat Casting": "You are adept at spellcasting when threatened or distracted",
-  "Combat Medic": "You know the urgency of treating wounds in the heat of battle, applying first aid to your allies with such speed that you assure no one gets left behind",
-  "Craft Rod": "You can create magic rods",
-  "Craft Wand": "You can create magic wands",
+  "Cabalist": "There is a power that lurks just beyond the boundary of humanity. Enigmatic and unknowable, the extent of their domain is as unfathomable as their motives. Few are aware of their existence, and among those that know, many rightfully view these mysterious entities with cautionor fear. However, there are those that would choose to entreat the overwhelming powers that lurk between the stars. Whether out of desperation, a pervasive madness, or simply the desire for knowledge, these cabalists make contact with eldritch forces to control them. Masters of occult rites, cabalists bind aspects of otherworldly beings to themselves, warping their body and mind to grow beyond the limits of humanity. Alignment Any Hit Die d8 Starting Age Trained Starting Wealth 4d6  10 gp (average 140 gp). In addition, each character begins play with an outfit worth 10 gp or less. CLASS SKILLS The cabalists class skills are Appraise (Int), Bluff (Cha), Craft (Int), Diplomacy (Cha), Disguise (Cha), Heal (Wis), Intimidate (Cha), Knowledge (all) (Int), Linguistics (Int), Perception (Wis), Perform (Cha), Profession (Wis), Sense Motive (Wis), Sleight of Hand (Dex), Spellcraft (Int), Stealth (Dex), and Use Magic Device (Cha). Skill Ranks per Level 4 + Int Modifier All of the following are class features of the cabalist. Cabalists are proficient with all simple weapons, plus the greatsword, light flail, ranseur, rapier, sap, scythe, short sword, and warhammer. They are proficient with light armor and medium armor, but not with shields. A cabalist casts psychic spells drawn from the cabalist spell list. He can cast any spell he knows without preparing it ahead of time. To learn or cast a spell, a cabalist must have an Intelligence score equal to at least 10 + the spell level. The Difficulty Class for a saving throw against a cabalists spell equals 10 + the spell level + the cabalists Intelligence modifier. A cabalist can cast only a certain number of spells of each spell level per day. His base daily spell allotment is given on Table Cabalist. In addition, he receives bonus spells per day if he has a high Intelligence score (see the Ability Scores section in Chapter 1 of the Pathfinder Roleplaying Game Core Rulebook). A cabalists selection of spells is limited. A cabalist begins play knowing four 0-level spells and two 1st-level spells of the cabalists choice. At each new cabalist level, he gains one or more new spells as indicated on Table Cabalist Spells Known (Unlike spells per day, the number of spells a cabalist knows is not affected by his Intelligence score. The numbers on Table Cabalist Spells Known are fixed.). These new spells can be common spells chosen from the cabalist spell list, or they can be unusual spells that the cabalist has gained some understanding of through study. Upon reaching 5th level, and at every third cabalist level thereafter (8th, 11th, and so on), a cabalist can learn a single new spell in place of one he already knows. In effect, the cabalist loses the old spell in exchange for the new one. The new spells level must be the same as that of the spell being exchanged, and it must be at least 1 level lower than the highest-level cabalist spell he can cast. A cabalist can swap out only a single spell at any given level and must choose whether or not to swap the spell at the same time that he gains new spells known for the level. Through secretive rites, the cabalist has found the means to channel eldritch might through his very being. His body and mind are forever altered by this ritual, but such a power cannot be controlled all at once. Each of these potentials is called a binding. The cabalists bindings grant him a +1 insight bonus to specific checks, which vary depending on the binding used. The bonus for both bindings increases to +2 at 7th level and to +3 at 13th level. A cabalist learns a number of knacks, or 0-level psychic spells, as noted on Table Cabalist Spells Known under Spells Known. These spells are cast like any other spell, but they do not consume any slots and may be used again. Starting at 2nd level, the cabalist discovers methods to further channel the powers of the unknown, gleaning insights from beyond to bind further eldritch strength. The cabalist gains two insights at 2nd level and every three levels thereafter, to a maximum of twelve insights at 17th level. Insights are separated into three levels lesser, greater, and master, which are further divided by the binding type the insight applies to (formless body or opened mind). He only gains the effects of an insight while he is using the matching binding for that insight. At first, the cabalist can only select lesser insights. Upon reaching 8th level, he instead gains greater insights, and at 14th level he learns master insights. An insight cannot be selected more than once. Each time a cabalist gains his two insights for a particular level, he must select one for each of his two bindings one for formless body, and one for opened mind. He can select a lower-level insight, if so desired. If an insight calls for a saving throw, the save DC is equal to 10 + 1/2 the cabalists level + his Intelligence modifier. A full list of Cabalist Insights can be found here. Beginning at 3rd level, the cabalist learns how to convert traditional magic into more methodicalbut riskyritualistic incantations. The cabalist learns a special occult ritual, as detailed on the Ritual Spell page (for more details, see the Occult Rituals section in Chapter 5 of Pathfinder Roleplaying Game Occult Adventures). Upon learning this ritual, the cabalist selects two spells of 1st-level or higher from the cabalist spell list. These spells cannot have a casting time longer than 1 minute. They do not have to be spells he knows, but they must be of a level he is capable of casting. The cabalist can use his ritual to cast the selected spells at-will. For every three levels gained after 3rd, the cabalist can select two more spells from the cabalist spell list to be castable in this manner, to a maximum of twelve spells at 18th level. Additionally, whenever he gains a level in the cabalist class, he can exchange one of his chosen ritual spells for a different one of the same level. Spells added to the cabalist spell list by means of feats, magic items, racial abilities, and so on cannot be selected for ritual magic. At 3rd level, a cabalists experience with occult magics makes him better at understanding them. He gains a +1 bonus to any checks to learn an occult ritual or skill checks made to perform one (including his ritual magic ability). This bonus increases by +1 for every three levels gained after 3rd, to a maximum of +6 at 18th level. At 4th level, the cabalists body more quickly recovers from injury. He recovers twice as many hit points and ability damage from resting than normal. If he rests for a full day, he also recovers 1 point of ability drain from each of his drained ability scores, if any. At 7th level, the cabalist may change bindings with barely a thought. He can enter into a binding as a free action on his turn. He may still only change bindings once per round. At 10th level, the cabalists expertise allows him to cast rituals more safely. As long as he is the primary caster of an occult ritual, all casters in the ritual take half as much damage from any backlash or failure effects, and they gain a +4 bonus to their saving throws against the backlash or failure effects (if they require a saving throw). Starting at 13th level, the cabalists mind cannot be read nor his memories altered unless he allows it. If a creature attempts to read his thoughts without his permission, its mind is flooded with paradoxical and maddening revelations. It must make a Will save (DC 10 + 1/2 the cabalists level + his Intelligence modifier) or be confused for 1d4 rounds. At 16th level, the cabalist can swiftly perform ritual magic. As long as he is the primary caster, he reduces the time it takes to perform an occult ritual by half. For a typical ritual (including his ritual magic ability) this means it takes 5 minutes per level of the ritual instead of 10, while longer rituals take 30 minutes per level instead of 1 hour per level. The time between making skill checks to perform an occult ritual is reduced by the same amount. At 20th level, the cabalist unlocks true power, finally able to completely channel the powers of the unknown, if only briefly. Once per day, he may enter into a special binding which grants him the effects of both formless body and opened mind at the same time. Any insights he has that normally can only be used once per binding (such as dual realities) can instead be used once per round without needing to change bindings first. Once he enters into this binding, he cannot voluntarily leave it. This binding lasts for a number of minutes equal to the cabalists Intelligence modifier (minimum 1), after which the cabalist is reduced to 1 hit point (if his current hit points are higher than 1), staggered for 1 round, then exhausted. He cannot use eldritch nexus if he is already fatigued or exhausted, and the binding ends early if he is knocked unconscious or killed (if ended early, he is still staggered, exhausted, and reduced to 1 hit point, as mentioned above). upon reaching 19th level, a cabalist has become an authority of the occult. he reduces the time it takes to learn a ritual by half. he no longer requires secondary casters for any ritual he performs, and if he chooses to include them (usually to from the ritual) he may make any number of the secondary casters skill checks himself. finally, he is immune to the failure effects of any ritual he performs, though secondary casters are still affected as normal.",
+  "Celestial Obedience": "Your reverence for an empyreal lord is so great that daily prayer and minor sacrifices grant you special boons",
+  "Cloak Dance": "You are skilled at using optical tricks to make yourself seem to be where you are not. you can take a move action to obscure your exact position. until your next turn, you have concealment. alternatively, you can take a full-round action to entirely obscure your exact position. until your next action, you have total concealment.",
   "Deceitful": "You are skilled at deceiving others, both with the spoken word and with physical disguises",
-  "Demonic Obedience": "You physically defile yourself, others, or holy objects in order to prove your blasphemous devotion to a demon lord and gain special boons",
-  "Dragoncrafting": "You have the ability to create rare and valuable items from the bodies of fallen true dragons",
-  "Echoing Spell": "You have learned how to release most, but not all, of a spell's potential when you cast it",
+  "Demonologist": "You have immersed yourself deeply in studies of the nature of the Abyss and its inhabitants",
+  "Elemental Focus": "Your spells of a certain element are more difficult to resist",
+  "Exploit Schema": "You can act in such a way that you seem so out of place that people just fail to notice you. as a standard action, you may adjust your personage to become so outlandish that those who witness your actions are convinced they are seeing things. creatures must make a will save (dc = 10 + 1/2 ranks in perform or bluff + charisma modifier), or fail to notice you, treating you as invisible. you must spend a standard action each round to maintain the personage, and creatures receive a new save each round to recognize your presence. if you attempt any overtly hostile action (draw a weapon, attack someone) the effect immediately ends. creatures with an intelligence score of 3 or less, without an intelligence score, or with the animal type are immune to this effect, and any interaction between you and the subject ends the effect. this is a mind-affecting supernatural effect.",
   "Extra Magic Talent": "Benefit: Gain an additional sphere or a talent from a sphere you possess. You may take this feat multiple times. The effects stack.",
   "Extra Magic Talent (Fog Mastery / Speak With The Elements)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Fog Mastery (Nature): When you create Fog, you may add one of the following additional effects depending on what other packages you possess.  Air: Wind Blades: Your fog attacks those inside it with blades of wind. Any creature or object moving through this fog must succeed at a Reflex save or suffer 1d6 + 1 per 2 caster \n- Speak With The Elements (Nature): You may spend a spell point to commune with the elements for 1 minute per caster level.  Air: Speak With Clouds: You gain the Auran language, and may speak with clouds of fog or mist. This is not truly accomplished with speech, but rather by interacting with the cloud you may learn what else has tou",
   "Extra Magic Talent (Nature’s Weapon / Breeze Mastery)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Nature’s Weapon (Nature): You may perform one of the following special attacks or gain one of the following benefits. In addition to the effects that already possess a duration, if you possess the ability to grant (spirit) talent abilities to another you may spend a spell point as a standard action to grant a target the abil\n- Breeze Mastery (Nature): When using Breeze, you may spend a spell point to have it affect an area, granting its benefits to all creatures within a 15-foot radius + 5 feet per 5 caster levels. Additionally, when you use Breeze, you may add any of the following additional effects depending on what other packages you possess. ",
   "Extra Magic Talent (Ride The Elements / Nature Sight)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Ride The Elements (Nature): You may spend a spell point as a move action to increase or decrease your movement speeds by 10 feet + 10 feet per 5 caster levels (applying to all movement modes) for 1 minute per caster level. When attempting an Acrobatics check to jump while this ability is active, the height and length of your j\n- Nature Sight (Nature): You may gain a supernatural sense depending on what Nature packages you possess for as long as you concentrate, or you may spend a spell point to gain the sense for 1 minute per caster level. This sense has a range equal to your geomancing range. Each sense must be gained as a separate effect.  Air:",
   "Extra Magic Talent (Whispering Elements)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Whispering Elements (Nature): As an instantaneous effect, you may as a standard action spend a spell point to send a message or sound through an element corresponding to a package you possess (air, earth, water, etc.) to a designated spot anywhere in the world. The message travels to the destination, provided that the location i",
-  "Gunsmithing": "You know the secrets of repairing and restoring firearms",
-  "Master Craftsman": "Your superior crafting skills allow you to create simple magic items",
+  "Focused Worker": "Your attention to detail provides you with an excess of some commodities, at the cost of others",
+  "Improved Day Job": "You learned the importance of an honest day's work while training as an initiate of the Pathf inder Society",
+  "Lastwall Phalanx": "When battling the terrifying hordes of Belkzen, you find strength in your shield brothers and sisters",
+  "Miniature Reach": "No matter how small you are, you are always a threat. whenever you are under the effects of a polymorph effect which would reduce your size to tiny or smaller, your natural reach is always treated as 5 feet, regardless of your size.",
+  "Muffled Image": "Your magic conceals both light and sound. whenever you turn invisible (whether by an invisibility spell, magic item, or other cause), you can choose to also muffle your own sound, as a silence spell. the silence effect only applies to you and is removed when the invisibility ends. this is a supernatural effect.",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Persistent Spell": "You can modify a spell to become more tenacious when its targets resist its effect",
-  "Quick Channel": "Your divine energies flash with dazzling speed",
-  "Raging Brutality": "You expend some of your rage to strike your opponents with a more powerful weapon blow",
-  "Raging Deathblow": "Every killing blow gives you a surge of vitality, further fueling your rage",
-  "Siphon Poison": "You can remove poison from afflicted creatures",
-  "Tenebrous Spell": "You blend shadow into your spells, increasing their efficacy at the price of susceptibility to light",
+  "Planned Spontaneity": "You have a measure of flexibility when preparing spells",
+  "Prodigy": "You are naturally skilled at arts, professions, and the acquisition of knowledge",
+  "Reach Spell": "Your spells go farther than normal",
+  "Scholar": "You have graduated from one of the many colleges, universities, and specialty schools of higher learning scattered throughout the Inner Sea region",
+  "Shielded Caster": "Your allies cover you while you cast complicated spells",
+  "Steam Caster": "You imbue your fire spells with elemental water, transforming them into powerful gouts of steam",
   "Terrain Focus": "Benefit: You have learned to draw upon the nutrients in some terrain more easily than others, which powers your primal magics. Choose one of the following terrains: Cold, Desert, Forest, Jungle, Mountain, Plains, Planes (pick one, other than the Material Plane), Swamp, Underground, Urban, or Water. Gain a +2 insight bonus to caster level with the Nature sphere while using magic within the chosen terrain.\n\nSpecial: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new terrain. You cannot gain this feat if you possess the Terrain Defiler feat.",
-  "Toppling Spell": "Your spells with the force descriptor knock the affected creatures prone",
-  "Toughness": "You have enhanced physical stamina",
-  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
-  "Widen Spell": "You can cast your spells so that they occupy a larger space"
+  "Trapper's Setup": "You have an instinct for waiting until just the right moment to spring a hazard or trap",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
  },
  "inherents": {
   "cha": 5,
@@ -751,10 +731,10 @@
  "mod_char_sheet_var": false,
  "mt_feats": [],
  "normal_feat_amount": 7,
- "older_brothers": " you have 0 older brothers",
+ "older_brothers": " you have 3 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "dead mother, absent father, adopted into a poor family",
+ "parents": "loving mother, dead father, raised in a poor household",
  "personality_traits": [
   "Cowardly",
   "Inquisitive",
@@ -1564,16 +1544,15 @@
  ],
  "stances_chosen": [],
  "story_feat_tax_dict": {
-  "Tenebrous Spell": [
-   "umbral spell",
-   "shadow grasp"
+  "Focused Worker": [
+   "focused overseer"
   ]
  },
  "story_feats": [
-  "Master Craftsman",
-  "Tenebrous Spell",
-  "Craft Rod",
-  "Combat Medic"
+  "Steam Caster",
+  "Focused Worker",
+  "Planned Spontaneity",
+  "Cloak Dance"
  ],
  "str": 14,
  "teamwork_feat_labels": [],
@@ -1581,46 +1560,47 @@
  "total_level": 15,
  "total_rolled_hp": 140,
  "trainer_calibers": [
+  2,
   3,
+  2,
   3,
-  3,
-  3,
-  1
+  2
  ],
  "trainer_feat_labels": [
   "(Trainer 1)",
   "(Trainer 1)",
-  "(Trainer 1)",
   "(Trainer 2)",
   "(Trainer 2)",
   "(Trainer 2)",
   "(Trainer 3)",
   "(Trainer 3)",
-  "(Trainer 3)",
   "(Trainer 4)",
   "(Trainer 4)",
   "(Trainer 4)",
+  "(Trainer 5)",
   "(Trainer 5)"
  ],
  "trainer_feat_tax_dict": {
-  "Combat Casting": [
-   "uncanny concentration"
+  "Demonologist": [
+   "demon grafter"
+  ],
+  "Elemental Focus": [
+   "greater elemental focus"
   ]
  },
  "trainer_feats": [
-  "Armor of the Pit",
-  "Toppling Spell",
-  "Demonic Obedience",
-  "Quick Channel",
-  "Dragoncrafting",
-  "Echoing Spell",
-  "Persistent Spell",
-  "Toughness",
-  "Siphon Poison",
-  "Craft Wand",
-  "Butterfly's Sting",
+  "Elemental Focus",
+  "Reach Spell",
+  "Shielded Caster",
+  "Aquatic Ancestry",
+  "Prodigy",
+  "Improved Day Job",
   "Deceitful",
-  "Combat Casting"
+  "Demonologist",
+  "Muffled Image",
+  "Celestial Obedience",
+  "Trapper's Setup",
+  "Miniature Reach"
  ],
  "weapon_enhancement_bonus": 2,
  "weapon_enhancement_chosen_list": [],
@@ -1628,5 +1608,5 @@
  "weight_number": 168,
  "wis": 24,
  "younger_brothers": " you have 0 younger brothers",
- "younger_sisters": " you have 1 younger sisters"
+ "younger_sisters": " you have 0 younger sisters"
 }
