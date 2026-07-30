@@ -4591,6 +4591,364 @@
           ]
         }
       ]
+    },
+    "stunning fist": {
+      "conditionals": [
+        {
+          "name": "Stunning Fist: Cost: [[1]] use of [[@classes.monk.level]]/day (+[[1]] per [[4]] non-monk levels); Activation: declare before an unarmed strike's attack roll; Save: Fortitude DC [[ 10 + floor(@attributes.hd.total / 2) + @abilities.wis.mod ]] negates; Effect: on a damaging hit the target is stunned for [[1]] round -- from [[4]]th the monk may instead fatigue, from [[8]]th sicken for [[1]] minute, from [[12]]th stagger [[1d6+1]] rounds, from [[16]]th permanently blind or deafen, from [[20]]th paralyze [[1d6+1]] rounds (choose before the roll); creatures immune to critical hits are immune",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "quivering palm": {
+      "conditionals": [
+        {
+          "name": "Quivering Palm: Cost: [[1]]/day; Activation: declare before an unarmed attack roll; Effect: if the blow damages the target, the monk may will it to die (free action) any time within [[@classes.monk.level]] days -- Save: Fortitude DC [[ 10 + floor(@classes.monk.level / 2) + @abilities.wis.mod ]] negates and ends the effect; creatures immune to critical hits are immune",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "quarry": {
+      "conditionals": [
+        {
+          "name": "Quarry: Activation: standard action, denote one favored-enemy or studied target in line of sight as quarry; Effect: vs the quarry only -- all critical threats are automatically confirmed; take [[10]] on Survival to track it at normal speed; at [[19]]th (Improved Quarry) the bonus rises to +[[4]], selection becomes a free action and tracking takes [[20]]",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "crit"
+            }
+          ]
+        }
+      ]
+    },
+    "master hunter": {
+      "conditionals": [
+        {
+          "name": "Master Hunter: Cost: [[1]]/day per favored enemy type (never the same creature twice in [[24]] hours); Activation: standard action, single attack at full BAB against a favored enemy; Save: Fortitude DC [[ 10 + floor(@classes.ranger.level / 2) + @abilities.wis.mod ]] or die (the ranger may instead deal nonlethal damage equal to the creature's current hit points, save negates)",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "master strike": {
+      "conditionals": [
+        {
+          "name": "Master Strike: Activation: on dealing sneak attack damage; Save: Fortitude DC [[ 10 + floor(@classes.rogue.level / 2) + @abilities.int.mod ]] negates; Effect: choose -- sleep [[1d4]] hours, paralysis [[2d6]] rounds, or death; a creature that has been targeted is immune for [[24]] hours; creatures immune to sneak attack are immune",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "debilitating injury": {
+      "conditionals": [
+        {
+          "name": "Debilitating Injury: Activation: on dealing sneak attack damage, no action; Effect: for [[1]] round the target is bewildered (-[[2]] AC, an extra -[[2]] vs you, worsening by [[2]] at [[10]]th and [[16]]th), disoriented (-[[2]] attack, an extra -[[2]] vs you, same scaling), or hampered (all speeds halved, no 5-foot step) -- choose when the damage is dealt",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "knockout": {
+      "conditionals": [
+        {
+          "name": "Knockout: Cost: [[1]]/day ([[2]] at [[10]]th, [[3]] at [[16]]th); Activation: announce before the attack roll; Save: Fortitude DC [[ 10 + floor(@classes.brawler.level / 2) + max(@abilities.str.mod, @abilities.dex.mod) ]] negates; Effect: a damaging hit knocks the target unconscious for [[1d6]] rounds (new save each round as a full-round action); creatures immune to critical hits or nonlethal damage are immune",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "cavalier's charge": {
+      "conditionals": [
+        {
+          "name": "Cavalier's Charge: Effect: while charging mounted -- total charge bonus [[4]] (this toggle adds [[2]] on top of the charge's own [[2]]), and no AC penalty after the charge",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "crit"
+            }
+          ]
+        }
+      ]
+    },
+    "mighty charge": {
+      "conditionals": [
+        {
+          "name": "Mighty Charge: Effect: while charging mounted -- the weapon's threat range is doubled (does not stack with keen or similar) and a successful charge attack grants a free bull rush, disarm, sunder or trip maneuver that does not provoke",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "supreme charge": {
+      "conditionals": [
+        {
+          "name": "Supreme Charge: Effect: while charging mounted -- the attack deals double damage (triple with a lance); on a confirmed critical hit the target is stunned for [[1d4]] rounds, Save: Will DC [[ 10 + @attributes.bab.total ]] reduces that to staggered [[1d4]] rounds",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "gun training": {
+      "conditionals": [
+        {
+          "name": "Gun Training: Effect: with a firearm type chosen for this ability only (another type every [[4]] levels from [[9]]th) -- also its misfire value rises by [[2]] instead of [[4]] on a misfire",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "@abilities.dex.mod",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "judgment": {
+      "conditionals": [
+        {
+          "name": "Judgment (Justice): Cost: an active judgment (starts [[1]]/day, +[[1]] per [[3]] levels from [[4]]th; swift action, lasts the combat); Effect: sacred bonus to attack rolls; at [[10]]th it doubles on critical confirmation rolls",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1 + floor(@classes.inquisitor.level / 5)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "sacred",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "1 + floor(@classes.inquisitor.level / 5)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "sacred",
+              "damageType": [],
+              "critical": "crit"
+            }
+          ]
+        },
+        {
+          "name": "Judgment (Destruction): Cost: an active judgment (swift action, lasts the combat); Effect: sacred bonus to all weapon damage",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1 + floor(@classes.inquisitor.level / 3)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "sacred",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "greater bane": {
+      "conditionals": [
+        {
+          "name": "Greater Bane: Cost: [[1]] round of [[@classes.inquisitor.level]] bane rounds/day; Activation: swift action, choose a creature type; Effect: replaces the Bane toggle from [[12]]th -- use one, never both; bonuses apply only vs the chosen type while you wield this weapon",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "enhancement",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "2",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "enhancement",
+              "damageType": [],
+              "critical": "crit"
+            },
+            {
+              "formula": "2",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "enhancement",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "4d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [
+                "as-weapon"
+              ],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "true judgment": {
+      "conditionals": [
+        {
+          "name": "True Judgment: Cost: usable once per [[1d4]] rounds, while a judgment is active; Activation: swift action to invoke, then a single melee attack (or ranged within [[30]] feet); Save: on a hit, Fortitude DC [[ 10 + floor(@classes.inquisitor.level / 2) + @abilities.wis.mod ]] or die; the target is immune for [[24]] hours afterward",
+          "default": false,
+          "tier": "A",
+          "modifiers": []
+        }
+      ]
+    },
+    "studied combat": {
+      "conditionals": [
+        {
+          "name": "Studied Combat: Activation: move action, study one visible enemy; Effect: vs that enemy for [[@abilities.int.mod]] rounds (minimum [[1]]) or until a studied strike lands -- melee only; the damage half is precision damage; one target at a time, then that creature is immune for [[24]] hours",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "floor(@classes.investigator.level / 2)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "insight",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "floor(@classes.investigator.level / 2)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "insight",
+              "damageType": [],
+              "critical": "crit"
+            },
+            {
+              "formula": "floor(@classes.investigator.level / 2)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "studied strike": {
+      "conditionals": [
+        {
+          "name": "Studied Strike: Activation: free action on a successful melee hit against the studied combat target (ends studied combat); Effect: precision damage; may be nonlethal with a nonlethal weapon; creatures immune to sneak attack are immune",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "(1 + floor((@classes.investigator.level - 4) / 2))d6",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "nonCrit"
+            }
+          ]
+        }
+      ]
+    },
+    "inspiration": {
+      "conditionals": [
+        {
+          "name": "Inspiration (attack roll): Cost: [[2]] uses of the [[floor(@classes.investigator.level / 2) + @abilities.int.mod]] point pool (free action, unless trained use applies); Effect: add the die to this attack roll",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1d6",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "untyped",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    "sacred weapon": {
+      "conditionals": [
+        {
+          "name": "Sacred Weapon: Cost: [[1]] round of [[@classes.warpriest.level]] rounds/day (swift action, from [[4]]th); Effect: enhancement bonus on the deity's favored weapon or a Weapon Focus weapon -- part may instead buy properties like flaming or keen; separately, from [[1]]st the weapon's base dice may scale with warpriest level (declare before each attack; see the sacred weapon damage table)",
+          "default": false,
+          "tier": "A",
+          "modifiers": [
+            {
+              "formula": "1 + floor((@classes.warpriest.level - 4) / 4)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "enhancement",
+              "damageType": [],
+              "critical": "normal"
+            },
+            {
+              "formula": "1 + floor((@classes.warpriest.level - 4) / 4)",
+              "target": "attack",
+              "subTarget": "allAttack",
+              "type": "enhancement",
+              "damageType": [],
+              "critical": "crit"
+            },
+            {
+              "formula": "1 + floor((@classes.warpriest.level - 4) / 4)",
+              "target": "damage",
+              "subTarget": "allDamage",
+              "type": "enhancement",
+              "damageType": [],
+              "critical": "normal"
+            }
+          ]
+        }
+      ]
     }
   }
 }

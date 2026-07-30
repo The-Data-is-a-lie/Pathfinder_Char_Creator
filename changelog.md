@@ -19,6 +19,24 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Eighteen more baseline chassis features get weapon conditionals (Road-to-1.0 Phase 3).** The
+  top-20 curation pass ranked the 905 core tier-A candidates by how often they actually appear on
+  generated NPCs (129-generation batch across all 43 classes; chassis features counted via the
+  `class_ability` list, which the first frequency attempt missed) and curated every ranked feature
+  with a genuine on-attack payload: Stunning Fist, Quivering Palm, Quarry, Master Hunter, Master
+  Strike, Debilitating Injury, Knockout, Cavalier's Charge, Mighty Charge, Supreme Charge, Gun
+  Training, Judgment (separate Justice and Destruction toggles), Greater Bane, True Judgment,
+  Studied Combat, Studied Strike, Inspiration (attack-roll use), and Sacred Weapon. Higher-ranked
+  candidates that got **no** conditional were rejected deliberately: defensive/passive rows
+  (Improved Uncanny Dodge — the most frequent hit of all, Trap Sense, Bravery), self-buffs that
+  belong to the changes/buff side (rage and bloodrage chains, Animal Focus), BAB mechanics
+  (Flurry of Blows, Spell Combat), own-action attacks (Bomb, Channel Energy, Lay on Hands) and
+  affects-others auras (Banner) — a toggle whose rider carries no on-attack payload is the
+  cost-only defect all over again. Synced to the applier (`build_data.py`, `bundle_macro.py`,
+  `verify_specs.mjs` 97 passed) *(pf1-conditional-applier repo: data + rebuilt bundle)*.
+- **Phase-3 correctness pass came back clean**: the same batch reported zero `buff_gaps` rows and
+  `report_buff_coverage.py` still covers all 11 side-maps with no curated-name collisions, so
+  there were no orphans or casing mismatches to fix this round.
 - **Metzofitz homebrew feats join the random pool (Road-to-1.0 Phase 2, backlog #1).** Behind the
   homebrew flag, `generic_feat_chooser` now concatenates the General- and Combat-typed rows of
   `data/Metzofitz_Feats.csv` (~490 of 1,735) into the selection pool — subsystem-typed rows
