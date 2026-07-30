@@ -11,8 +11,9 @@ Guards the invariants behind "characters must fill their skill slots exactly":
   * a narrow skill sample is widened until it can physically hold the budget
   * profession ranks sum to exactly the pool, within per-profession caps
   * ordinary ranks reach a Profession only via the Always Improving feat
-  * homebrew mode (oks/pathfinder/house-rules/skills-and-hp.md): the 2->4 rank floor, the
-    3-ranks-per-level cap, and +2/level background-only ranks
+  * homebrew mode (oks/pathfinder/house-rules/skills-and-hp.md): the 3-ranks-per-level cap and
+    +2/level background-only ranks (homebrew flag), and the 2->4 rank floor (the separate
+    misc_homebrew_rules catch-all flag -- the split itself is pinned)
 """
 import random
 import sys
@@ -41,8 +42,9 @@ class FakeCharacter:
     """The slice of createACharacter.Character that skill/profession allocation actually reads."""
 
     def __init__(self, classes, stats=None, inherents=None, level_ups=None,
-                 profession_feats=None, primary_class_index=0, homebrew='N'):
+                 profession_feats=None, primary_class_index=0, homebrew='N', misc_homebrew='N'):
         self.homebrew_feat_amount = homebrew
+        self.misc_homebrew_rules = misc_homebrew
         self.classes = [{'name': n, 'level': l} for n, l in classes]
         self.level = sum(entry['level'] for entry in self.classes)
         self.primary_class_index = primary_class_index
@@ -254,10 +256,10 @@ def test_always_improving_gate():
 # 7. House rules (homebrew flag on): 2->4 rank floor, 3x-level cap, +2/level background ranks.
 # --------------------------------------------------------------------------------------------
 def test_house_rank_floor():
-    # fighter is a 2/level class; under the house floor it budgets like a 4/level class,
-    # plus the +2/level background grant recorded into skill_rank_budget
+    # fighter is a 2/level class; under the misc-homebrew floor it budgets like a 4/level class,
+    # plus the +2/level background grant (main homebrew flag) recorded into skill_rank_budget
     character = FakeCharacter([('fighter', 10)], stats={'int': 10, 'wis': 10, 'cha': 10},
-                              homebrew='Y')
+                              homebrew='Y', misc_homebrew='Y')
     ranks = sr.skills_selector(character, 'skills', 0)
     want = 4 * 10 + 2 * 10
     check(character.skill_rank_budget == want,
@@ -266,10 +268,19 @@ def test_house_rank_floor():
           f"house budget not spent exactly: {sum(ranks.values())} of {want}")
 
     # a 4/level class is NOT floored upward -- only the 2s become 4s
-    monk = FakeCharacter([('monk', 10)], stats={'int': 10, 'wis': 10, 'cha': 10}, homebrew='Y')
+    monk = FakeCharacter([('monk', 10)], stats={'int': 10, 'wis': 10, 'cha': 10},
+                         homebrew='Y', misc_homebrew='Y')
     sr.skills_selector(monk, 'skills', 0)
     check(monk.skill_rank_budget == want,
           f"monk (4/level) should budget {want} like the floored fighter, got {monk.skill_rank_budget}")
+
+    # the flag split: main homebrew WITHOUT misc keeps the raw 2/level rate (background still on)
+    split = FakeCharacter([('fighter', 10)], stats={'int': 10, 'wis': 10, 'cha': 10},
+                          homebrew='Y')
+    sr.skills_selector(split, 'skills', 0)
+    check(split.skill_rank_budget == 2 * 10 + 2 * 10,
+          f"homebrew-only fighter should budget unfloored 2*10 + background 2*10 = 40, "
+          f"got {split.skill_rank_budget}")
 
 
 def test_house_cap_and_exact_spend(iterations=150):
@@ -278,6 +289,7 @@ def test_house_cap_and_exact_spend(iterations=150):
     for _ in range(iterations):
         character = random_character(rng)
         character.homebrew_feat_amount = 'Y'
+        character.misc_homebrew_rules = 'Y'
         favored = rng.choice([0, character.level])
         ranks = sr.skills_selector(character, 'skills', favored)
         check(sum(ranks.values()) == character.skill_rank_budget,

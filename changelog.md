@@ -55,16 +55,23 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 - **House-rule numbers verified and implemented (Road-to-1.0 Phase 1).** The three "suspected
   wrong" areas from the 2026-07-29 grilling were diffed against the OKF house-rules bundle and
   fixed, all gated on the existing homebrew flag so the standard-PF1 path is unchanged:
-  - *Skill ranks* (`skill_ranks.py`): any 2-ranks/level class now grants 4 (the house rank floor);
-    the per-skill cap is 3 ranks per character level instead of the PF1 level cap; and every
+  - *Skill ranks* (`skill_ranks.py`): any 2-ranks/level class now grants 4 (the house rank
+    floor — gated on the new internal `misc_homebrew_rules` catch-all flag, see below); the
+    per-skill cap is 3 ranks per character level instead of the PF1 level cap; and every
     character gets +2/level background-only ranks (PF Unchained background list ∩ the canonical
     35 skills, minus Profession which keeps its own subsystem).
   - *Feat counts* (`level_and_bab.py`): +2 creation feats (folded into the normal bucket — they
-    carry no label), and flaw feats are now exactly +1 per flaw. The old `floor(n/2+1)` clamp
-    granted a phantom feat at 0 flaws and shorted 3- and 4-flaw characters.
+    carry no label). Flaw feats keep the diminishing house schedule the old clamp already encoded
+    (first 2 flaws grant 1 feat each, the 4th grants the 3rd: 0→0, 1→1, 2→2, 3→2, 4→3); the only
+    real defect was the phantom feat granted at zero flaws, now fixed.
   - *HP* (`hp_rolls.py`): full (max) hit die at every level per the house rule, matching what pf1's
     `healthConfig` world setting (auto-HP, maximized) already showed on injected sheets — the
     generator and Foundry now agree instead of Foundry silently overriding a rolled value.
+- **`misc_homebrew_rules` — a catch-all flag for small homebrew rules.** House rules too minor to
+  deserve their own Yes/No input question now gate on one internal flag
+  (`skill_ranks.misc_homebrew_enabled`; currently just the 2→4 rank floor). It defaults on in
+  `generate_random_char` and is deliberately not an API input — exposing it is a noted backlog
+  item in `docs/homebrew_rules.md`.
 - **`scripts/test_house_invariants.py` — the invariant sweep.** Every generatable class (43) ×
   levels 1/5/10/15/20 × 3 seeds = 645 generations asserting the house *formulas* (feat buckets,
   skill budget/cap, full-HP totals) rather than pinned sheets; `--classes/--levels/--seeds` trim

@@ -53,10 +53,12 @@ Grilling settled what "finish" means and what's in/out:
       Foundry's full HP comes from pf1's `healthConfig` world setting (System Settings → Health
       Configuration: auto-HP with maximized levels/rate) — documented in `docs/homebrew_rules.md`.
 - [x] Diff + fix (2026-07-30): skill ranks lacked all three house rules (floor/cap/background) —
-      added in `skill_ranks.py`; flaw feats used a `floor(n/2+1)` clamp (wrong at 0/3/4 flaws) and
-      creation +2 was missing — fixed in `level_and_bab.py`; HP was rolled, Con mod floored
-      before halving and ignored inherent/level-up Con — fixed in `hp_rolls.py`. All homebrew-flag
-      gated; goldens regenerated in the same commit.
+      added in `skill_ranks.py`, with the 2→4 floor behind the new internal `misc_homebrew_rules`
+      catch-all flag (defaults on; cap + background stay on the main homebrew flag); flaw feats
+      keep the diminishing schedule (0→0, 1→1, 2→2, 3→2, 4→3 — the old clamp was right except the
+      phantom feat at 0 flaws) and creation +2 was missing — fixed in `level_and_bab.py`; HP was
+      rolled, Con mod floored before halving and ignored inherent/level-up Con — fixed in
+      `hp_rolls.py`. Goldens regenerated in the same commit.
 - [x] **New invariant sweep test** `Backend/scripts/test_house_invariants.py`: 43 classes ×
       1/5/10/15/20 × 3 seeds = 645 generations, 6,450 checks, green in ~4 min (payload buff-gap
       assertions deferred to Phase 3 where the gap report gets fixed).
@@ -117,10 +119,11 @@ Grilling settled what "finish" means and what's in/out:
       spheres-dabbler `spheres_flag='Y'`; multiclass `multi_class='Y'`,
       `class_choice='random'`; low-level `low_level=1, high_level=2`.
 - [ ] **Daniel's half** — for each seed: regenerate through the local backend (or re-roll the
-      same bucket live), inject into Foundry, run the Apply Conditionals macro, then check the
-      Foundry-only surface: sheet numbers (AC/saves/HP/ranks vs the payload), items attached with
-      no orphan/gap rows, PoW tab readied, new Phase-3 toggles (Stunning Fist, Quarry, Judgment,
-      Sacred Weapon…) roll correctly on a weapon, backstory/lore sane.
+      same bucket live), inject into Foundry, then check the Foundry-only surface: sheet numbers
+      (AC/saves/HP/ranks vs the payload), items attached with no orphan/gap rows, PoW tab
+      readied, backstory/lore sane. *Applier checks are deferred* — running the Apply
+      Conditionals macro and verifying the Phase-3 toggles roll belongs to the applier hammering
+      session (persistent to-do below), not this bug hunt.
 - [ ] Log every anomaly under the "Bug list" heading below; fix, adding a regression test per fix
       where the harnesses allow (golden, verify_specs, validators).
 
@@ -144,6 +147,10 @@ _No entries yet. Payload-level sweep of the 10 builds found nothing; Foundry-sid
 Deferred by decision Q7; counts as of 2026-07-29 (re-derive with
 `build_conditional_candidates.py` / the spell worklist tooling, don't trust these numbers later):
 
+- [ ] **Conditional-applier hammering session** (deferred from Phase 4 by decision 2026-07-30):
+      run the Apply Conditionals macro across the 10-NPC bug-hunt batch, verify the Phase-3
+      toggles (Stunning Fist, Quarry, Judgment, Sacred Weapon…) attach and roll correctly on
+      weapons, and fix whatever falls out of the applier.
 - [ ] Core chassis features, tier A: **905 candidates, 28 curated** (10 in the core-features
       session + 18 in Phase 3; batches `_conditional_candidates/A/core-NN.json` — most of the
       remainder are defensive/passive rows that will never take a weapon toggle); tier B: ~497.
