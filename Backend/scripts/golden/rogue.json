@@ -511,113 +511,24 @@
   "profession": 1,
   "story": 4,
   "teamwork": 0,
-  "trainer": 14
+  "trainer": 0
  },
- "feat_changes_dict": {
-  "Demon Hunter": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skill.kpl",
-     "text": "+2 on Knowledge (planes) checks to identify demons' powers, and +2 morale on caster level checks to overcome the spell resistance of creatures you recognize as demons."
-    }
-   ]
-  },
-  "Prodigy (Profession (Baron of the March), Profession (Camp Drillhand))": {
-   "changes": [
-    {
-     "formula": "4",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.pro",
-     "type": "untyped"
-    },
-    {
-     "formula": "4",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.pro",
-     "type": "untyped"
-    }
-   ],
-   "contextNotes": []
-  },
-  "Storm-Lashed": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "allSavingThrows",
-     "text": "+2 on all saving throws against electrical effects."
-    }
-   ]
-  },
-  "Weather Eye": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skills",
-     "text": "+4 on Survival checks made to predict the weather."
-    },
-    {
-     "target": "allSavingThrows",
-     "text": "+1 on saving throws to avoid the effects of extreme weather."
-    }
-   ]
-  }
- },
+ "feat_changes_dict": {},
  "feat_conditionals_dict": {
-  "Demon Hunter": {
+  "Hammer the Gap": {
    "default": false,
-   "modifiers": [
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "2",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
-    },
-    {
-     "critical": "crit",
-     "damageType": [],
-     "formula": "2",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
-    }
-   ],
-   "name": "Demon Hunter (vs demons): +2 morale on attack rolls"
-  },
-  "Ferocious Loyalty": {
-   "default": false,
-   "modifiers": [
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "1",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
-    },
-    {
-     "critical": "crit",
-     "damageType": [],
-     "formula": "1",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
-    }
-   ],
-   "name": "Ferocious Loyalty: +1 morale on attack rolls vs a foe threatening an ally who also has this feat (+2 morale for 1 min if such an ally is downed/killed within 30 ft)"
+   "modifiers": [],
+   "name": "Hammer the Gap: Effect: each consecutive hit against the same target this turn deals extra damage equal to the number of prior consecutive hits you have made against it this turn (multiplied on a critical hit); apply manually per attack",
+   "tier": "A"
   }
  },
  "feats": [
-  "Prodigy (Profession (Baron of the March), Profession (Camp Drillhand))",
-  "Toughness",
+  "Intimidating Prowess",
+  "Shadow Dodge",
   "Martial Training I (Iron Tortoise)",
   "Martial Training III (Iron Tortoise)",
   "Martial Training V (Iron Tortoise)",
-  "Net Adept",
+  "Hammer the Gap",
   "Extra Combat Talent (Mage Masher / Beat Down)",
   "Extra Combat Talent (Bloody Counter / Sword Eater)",
   "Extra Combat Talent (Decapitate / Shrapnel)",
@@ -637,6 +548,9 @@
   "Extra Combat Talent (Mage Masher / Beat Down)": [
    "Extra Combat Talent"
   ],
+  "Intimidating Prowess": [
+   "fearsome finish"
+  ],
   "Martial Training I (Iron Tortoise)": [
    "Martial Training II (Iron Tortoise)"
   ],
@@ -645,15 +559,11 @@
   ],
   "Martial Training V (Iron Tortoise)": [
    "Martial Training VI (Iron Tortoise)"
-  ],
-  "Net Adept": [
-   "net maneuvering",
-   "net trickery"
   ]
  },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Siphon Poison"
+  "Gunsmithing"
  ],
  "flaw": [
   "Fussy Eater",
@@ -691,12 +601,19 @@
    "tier": "major"
   }
  },
- "flaw_feat_tax_dict": {},
+ "flaw_feat_tax_dict": {
+  "Light Armor Proficiency": [
+   "arcane armor training",
+   "medium armor proficiency",
+   "arcane armor mastery",
+   "heavy armor proficiency"
+  ]
+ },
  "flaw_feats": [
-  "Fleet",
-  "Rugged Northerner"
+  "Duck and Cover",
+  "Light Armor Proficiency"
  ],
- "formatted_bio": "Victoria Tchaikovsky\n- Alignment: Chaotic Neutral\n- Deity: Calistria\n- Race: Halfling\n- Class: Level 18 Rogue\n- Archetype: Trickster\n- Tactics: Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.\n- Stat Focus: Dex\n- Disciplines: Iron Tortoise\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Baron of the March (rank 10)\n- Profession: Hedge Witch (rank 9)\n- Profession: Camp Drillhand (rank 10)\n- Profession: Knight (rank 4)\n- Known for: Tinsmithing\n- Training: An average trainer who taught them Demon Hunter, Racial Heritage\n- Training: An excellent trainer who taught them Improved Shield Bash, Scholar, Lunge\n- Training: An average trainer who taught them Flanking Foil, Darting Viper\n- Training: An average trainer who taught them Voice of the Sibyl, Nimble Moves\n- Training: An excellent trainer who taught them Martial Weapon Proficiency, Demonic Obedience, Weather Eye\n- Training: An average trainer who taught them Storm-Lashed, Firesight\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Punctual, Prudent, Enchanted, Intentional, Joyful\n- Mannerisms: Glances at watch, Crosses arms, Thumbs through a book\n- Flaws: Fussy Eater, Pranked\n\nAppearance\n- Hair: Straight Black\n- Eyes: Brown\n- Build: Freckled",
+ "formatted_bio": "Victoria Tchaikovsky\n- Alignment: Chaotic Neutral\n- Deity: Calistria\n- Race: Halfling\n- Class: Level 18 Rogue\n- Archetype: Trickster\n- Tactics: Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.\n- Stat Focus: Dex\n- Disciplines: Iron Tortoise\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Baron of the March (rank 10)\n- Profession: Hedge Witch (rank 9)\n- Profession: Camp Drillhand (rank 10)\n- Profession: Knight (rank 4)\n- Known for: Tinsmithing\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Punctual, Prudent, Enchanted, Intentional, Joyful\n- Mannerisms: Glances at watch, Crosses arms, Thumbs through a book\n- Flaws: Fussy Eater, Pranked\n\nAppearance\n- Hair: Straight Black\n- Eyes: Brown\n- Build: Freckled",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 4003,
@@ -711,42 +628,28 @@
  "height_number": "3'4\"",
  "hero_points": 1,
  "homebrew_feat_desc_dict": {
-  "Broken Wing Gambit": "You feign weakness, making yourself a tempting and distracting target",
-  "Darting Viper": "When using a dorn-dergar, you can quickly attack both near and distant foes",
-  "Demon Hunter": "You are well-versed in demonic lore",
-  "Demonic Obedience": "You physically defile yourself, others, or holy objects in order to prove your blasphemous devotion to a demon lord and gain special boons",
+  "Blind-Fight": "You are skilled at attacking opponents that you cannot clearly perceive",
+  "Discipline Focus": "Youve trained extensively in the arts of a single martial discipline. special if the character ever has fewer than three maneuvers known from the specialized discipline, then he loses the of this feat until such a time that he does. this feat may be selected multiple times, each time selecting a new discipline to receive the of this feat.",
+  "Duck and Cover": "Your allies assist you in avoiding certain attacks",
   "Extra Combat Talent": "Your knowledge of combat is easily expanded.\n\nBenefit: Gain an additional sphere or a talent from a combat sphere you possess.\n\nSpecial: You may take this feat multiple times. The effects stack.",
   "Extra Combat Talent (Bloody Counter / Sword Eater)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Bloody Counter (Berserker): As an immediate action, when a creature targets you with a melee attack, before the attack roll is made you may allow the attack to automatically strike you (although the roll is still made to determine if the attack threatens a critical hit). After the damage is determined, you may make a brutal st\n- Sword Eater (Berserker): While in this stance, when a creature targets you with a manufactured melee weapon attack, you may attempt to sunder the weapon used to make the attack as an attack of opportunity after it resolves. If the creature attacking you is battered, you may resolve your sunder attempt prior to their attack ",
   "Extra Combat Talent (Break Dancing / Rift Strike)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Break Dancing (Berserker): After making a sunder attempt, you may attempt an Acrobatics or Perform (dance) check as a swift action with a DC equal to the target of your sunder's CMD. If you succeed, you may move up to half your speed. This movement does not provoke attacks of opportunity. If you succeed at this check by 10 or\n- Rift Strike (Berserker): You unleash a powerful roar and swing a weapon with such extreme ferocity that you tear the very fabric of space and time, opening up a rift to another location. As a full-round action that provokes attacks of opportunity, you open up a rift to another location which may be as distant as 100 miles p",
   "Extra Combat Talent (Decapitate / Shrapnel)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Decapitate (Berserker): You do not provoke attacks of opportunity when delivering a coup de grace. As long as you have martial focus, you may deliver a coup de grace as a standard action.\n- Shrapnel (Berserker): When you attack an unattended object with a brutal strike, if you destroy the object, you may send fragments of it flying in a cone dealing damage to any creature in an area based on its size. Small or smaller objects create a 10 ft. cone and the size of the cone increases by 5 ft. for every size ca",
   "Extra Combat Talent (Mage Masher / Beat Down)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Mage Masher (Berserker): Whenever you destroy a magic wand, staff, rod, scroll, or similar magic item held by an enemy with a sunder attempt as part of a brutal strike, if the item is destroyed, any excess damage is applied to the item's wielder. No damage is transferred if you decide to leave the item with 1 hit point. Whe\n- Beat Down (Berserker): When you inflict the battered condition with a brutal strike, the condition lasts for an additional number of rounds equal to your practitioner modifier (minimum 1).",
-  "Ferocious Loyalty": "You have a powerful sense of responsibility for your allies",
-  "Firesight": "Fire no longer blinds you, and smoke conceals nothing from your gaze",
-  "Flanking Foil": "Fighting multiple foes is easy for you",
-  "Fleet": "You are faster than most",
+  "Gunsmithing": "You know the secrets of repairing and restoring firearms",
+  "Hammer the Gap": "You repeatedly strike the same location, causing increasing amounts of damage",
+  "Healer's Mercy": "Sometimes a creature is beyond your ability to heal, but you know how to grant them a swift and painless death. when you use a coup de grace action, you can substitute a heal check in place of the normal damage roll for your weapon, but still use your weapons normal critical multiplier. in addition, if the creature you are coup de gracing has regeneration of a type that can be overcome, you suppress that creatures regeneration for the duration of the round in which you coup de grace them",
   "Improved Shield Bash": "You can protect yourself with your shield, even if you use it to attack",
-  "Lunge": "You can strike foes that would normally be out of reach",
+  "Intimidating Prowess": "Your physical might is intimidating to others",
+  "Light Armor Proficiency": "You are skilled at wearing light armor",
   "Martial Training I (Iron Tortoise)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
   "Martial Training II (Iron Tortoise)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training III (Iron Tortoise)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training IV (Iron Tortoise)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training V (Iron Tortoise)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training VI (Iron Tortoise)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Weapon Proficiency": "Choose a type of martial weapon You understand how to use that type of martial weapon in combat",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Net Adept": "You have trained to use the net as a melee weapon",
-  "Nimble Moves": "You can move across a single obstacle with ease",
-  "Opening Volley": "Your ranged assault leaves your foe disoriented and vulnerable to your melee attack",
-  "Persuasive": "You are skilled at swaying attitudes and intimidating others into your way of thinking",
-  "Prodigy (Profession (Baron of the March), Profession (Camp Drillhand))": "",
-  "Racial Heritage": "The blood of a non-human ancestor flows in your veins",
-  "Rugged Northerner": "You live a hard life in a cold climate and gain some benefit from it",
-  "Scholar": "You have graduated from one of the many colleges, universities, and specialty schools of higher learning scattered throughout the Inner Sea region",
-  "Siphon Poison": "You can remove poison from afflicted creatures",
-  "Storm-Lashed": "A life spent enduring gales and storms has hardened your body to the elements",
-  "Toughness": "You have enhanced physical stamina",
-  "Voice of the Sibyl": "Your voice is strangely compelling",
-  "Weather Eye": "Your constant attention to the natural order and your place in it has given you a keen sense for the ebb and flow of the seasons"
+  "Shadow Dodge": "You use light and darkness to your advantage, confusing your enemies and confounding their senses"
  },
  "inherents": {
   "cha": 5,
@@ -1091,7 +994,7 @@
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "loving mother, loving father, raised in a wealthy household",
+ "parents": "loving mother, dead father, raised in a wealthy household",
  "personality_traits": [
   "Punctual",
   "Prudent",
@@ -1197,12 +1100,6 @@
     }
    ],
    "ranks": 10,
-   "skill_focus_bonuses": [
-    {
-     "bonus": 4,
-     "feat": "Prodigy"
-    }
-   ],
    "skill_label": "Profession (Baron of the March)"
   },
   {
@@ -1300,12 +1197,6 @@
     }
    ],
    "ranks": 10,
-   "skill_focus_bonuses": [
-    {
-     "bonus": 4,
-     "feat": "Prodigy"
-    }
-   ],
    "skill_label": "Profession (Camp Drillhand)"
   },
   {
@@ -1510,69 +1401,26 @@
   "Mithral Tortoise Stance"
  ],
  "story_feat_tax_dict": {
-  "Persuasive": [
-   "rhetorical flourish"
+  "Blind-Fight": [
+   "improved blind-fight",
+   "greater blind-fight"
   ]
  },
  "story_feats": [
-  "Persuasive",
-  "Opening Volley",
-  "Broken Wing Gambit",
-  "Ferocious Loyalty"
+  "Improved Shield Bash",
+  "Healer's Mercy",
+  "Blind-Fight",
+  "Discipline Focus"
  ],
  "str": 10,
  "teamwork_feat_labels": [],
  "teamwork_feats": 0,
  "total_level": 18,
  "total_rolled_hp": 136,
- "trainer_calibers": [
-  2,
-  3,
-  2,
-  2,
-  3,
-  2
- ],
- "trainer_feat_labels": [
-  "(Trainer 1)",
-  "(Trainer 1)",
-  "(Trainer 2)",
-  "(Trainer 2)",
-  "(Trainer 2)",
-  "(Trainer 3)",
-  "(Trainer 3)",
-  "(Trainer 4)",
-  "(Trainer 4)",
-  "(Trainer 5)",
-  "(Trainer 5)",
-  "(Trainer 5)",
-  "(Trainer 6)",
-  "(Trainer 6)"
- ],
- "trainer_feat_tax_dict": {
-  "Lunge": [
-   "monkey lunge"
-  ],
-  "Nimble Moves": [
-   "acrobatic steps"
-  ]
- },
- "trainer_feats": [
-  "Demon Hunter",
-  "Racial Heritage",
-  "Improved Shield Bash",
-  "Scholar",
-  "Lunge",
-  "Flanking Foil",
-  "Darting Viper",
-  "Voice of the Sibyl",
-  "Nimble Moves",
-  "Martial Weapon Proficiency",
-  "Demonic Obedience",
-  "Weather Eye",
-  "Storm-Lashed",
-  "Firesight"
- ],
+ "trainer_calibers": [],
+ "trainer_feat_labels": [],
+ "trainer_feat_tax_dict": {},
+ "trainer_feats": [],
  "weapon_enhancement_bonus": 5,
  "weapon_enhancement_chosen_list": [
   "Concealed",

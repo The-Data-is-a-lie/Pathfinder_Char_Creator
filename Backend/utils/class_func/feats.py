@@ -6,6 +6,7 @@ from math import ceil, floor
 # Importing custom functions
 from utils.class_func.generic_func import *
 from utils.class_func.chooseable import *
+from utils.class_func.skill_ranks import homebrew_enabled
 from utils.paths import repo_path
 
 def _divine_arcane_flags(character):
@@ -283,6 +284,39 @@ def grab_and_clean_feats(location):
     _FEAT_DATA_CACHE[location] = feat_data
     return feat_data.copy()
 
+# Metzofitz homebrew library (oks/pathfinder/house-rules/homebrew-content.md), joined into the
+# generic pools behind the homebrew flag. Only rows typed EXACTLY 'General' or 'Combat' are taken:
+# the chooser filters on type equality, and the CSV's comma-joined subsystem types ('Akashic,
+# General', 'Combat, Style', ...) can never match it -- which is what keeps veilweaving / psionic /
+# kineticist feats a generic class can't use out, and style chains out of the random pool (those
+# are granted through path_of_war.py's Martial Training machinery instead).
+_METZ_LOCATION = 'data/Metzofitz_Feats.csv'
+_METZ_TYPES = ('General', 'Combat')
+_METZ_DESCS = None
+
+
+def metzofitz_feat_frame():
+    """General/Combat Metzofitz rows shaped like data/feats.csv for the pool concat. The CSV keeps
+    flavor in 'description' and the rules text in 'benefits'; the sheet wants both, so they are
+    merged into 'description' here."""
+    metz = grab_and_clean_feats(_METZ_LOCATION)
+    metz = metz[metz['type'].isin(_METZ_TYPES)].copy()
+    metz['description'] = (metz['description'].astype(str).str.strip() + ' '
+                           + metz['benefits'].astype(str).str.strip()).str.strip()
+    return metz[['name', 'type', 'prerequisites', 'description']]
+
+
+def metzofitz_description(name):
+    """Rules text for a poolable Metzofitz feat (case-insensitive); '' when unknown. Lets the
+    main_test render fallback describe Metzofitz picks -- they are absent from data/feats.csv, and
+    a nameless description would make the Foundry module synthesize an empty row."""
+    global _METZ_DESCS
+    if _METZ_DESCS is None:
+        frame = metzofitz_feat_frame()
+        _METZ_DESCS = {str(n).lower(): d for n, d in zip(frame['name'], frame['description'])}
+    return _METZ_DESCS.get(str(name).lower(), '')
+
+
 def teamwork_pool_size(character, casting_level_str):
     """Number of teamwork feats this character could actually take, after the same
     caster / arcane / divine filters generic_feat_chooser applies. Lets us detect when a
@@ -310,12 +344,11 @@ def generic_feat_chooser(character, class_1, casting_level_str,feat_type, info_c
     if class_entry_for(character, class_1) is not None:
         feat_data = grab_and_clean_feats('data/feats.csv')
 
-        # Temporary add mezofitz feats
-        # extra_feats_flag = True
-        # # Add metzofitz feats (if we want them)
-        # if extra_feats_flag:
-        #     metzofitz_feat_data = grab_and_clean_feats('data/metzofitz_feats.csv')
-        #     feat_data = pd.concat([feat_data, metzofitz_feat_data], ignore_index=True)
+        # Metzofitz homebrew joins the pool behind the homebrew flag (backlog #1). Concat order
+        # matters: feats.csv first, so the drop_duplicates(keep='first') below lets AoN win any
+        # name collision with the homebrew library.
+        if homebrew_enabled(character):
+            feat_data = pd.concat([feat_data, metzofitz_feat_frame()], ignore_index=True)
 
         #----- grab divine casters list
         divine_casters=getattr(data, "divine_casters")        

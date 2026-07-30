@@ -17,6 +17,9 @@ generator's default):
                no skill above the 3-ranks-per-level cap; only renderable skills
   * HP      -- sheet_health == sum(max hit die x level) (full-HP house rule);
                Total_HP adds the FINAL Con mod x L, plus favored-class {0, L}
+  * homebrew feats -- every placed Metzofitz-only feat carries rules text in
+               homebrew_feat_desc_dict (else the Foundry module renders an empty row), and across
+               a full sweep at least one Metzofitz pick appears at all
   * sanity  -- generation raises no exception
 
 A failure prints the class/level/seed cell plus the replayable generation seed.
@@ -50,6 +53,13 @@ with open(BACKEND / 'json' / 'class_data.json', encoding='utf-8') as f:
 
 FAILURES = []
 CHECKS = [0]
+METZ_PICKS = [0]
+
+# Metzofitz-only pool names: what metzofitz_feat_frame offers minus every AoN name (collisions
+# resolve to AoN, so only names absent from feats.csv prove a homebrew pick happened).
+from utils.class_func import feats as _feats
+_METZ_ONLY = ({str(n).lower() for n in _feats.metzofitz_feat_frame()['name']}
+              - {str(n).lower() for n in _feats.grab_and_clean_feats('data/feats.csv')['name']})
 
 
 def check(condition, message):
@@ -111,6 +121,16 @@ def check_character(cell, payload):
     bad = [s for s in ranks if s not in data.skills]
     check(not bad, f"{cell}: ranks on unrenderable skills: {bad}")
 
+    # ---- Metzofitz homebrew feats ----
+    placed = []
+    for bucket in ('feats', 'story_feats', 'flaw_feats', 'flavor_feats', 'class_feats'):
+        placed.extend(str(f) for f in (payload.get(bucket) or []))
+    metz = [f for f in placed if f.lower() in _METZ_ONLY]
+    METZ_PICKS[0] += len(metz)
+    descs = {str(k).lower(): v for k, v in (payload.get('homebrew_feat_desc_dict') or {}).items()}
+    undescribed = [f for f in metz if not descs.get(f.lower())]
+    check(not undescribed, f"{cell}: Metzofitz feats with no rules text: {undescribed}")
+
     # ---- HP ----
     max_hd = sum(hit_die(c['name']) * c['level'] for c in classes)
     check(payload['sheet_health'] == max_hd,
@@ -163,9 +183,16 @@ def main():
     levels = [int(x) for x in args.levels.split(',')] if args.levels else LEVELS
     seeds = SEEDS[:max(1, args.seeds)]
 
+    total = len(classes) * len(levels) * len(seeds)
     print(f"sweeping {len(classes)} classes x {levels} x {len(seeds)} seed(s) "
-          f"= {len(classes) * len(levels) * len(seeds)} generations")
+          f"= {total} generations")
     run(classes, levels, seeds)
+
+    # Existence check only on a sweep big enough that zero picks means the wiring broke, not luck.
+    if total >= 100:
+        check(METZ_PICKS[0] > 0,
+              f"no Metzofitz homebrew feat appeared in {total} generations -- pool wiring broken?")
+    print(f"  Metzofitz picks across the sweep: {METZ_PICKS[0]}")
 
     print()
     if FAILURES:

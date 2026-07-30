@@ -174,30 +174,24 @@
   "Fighter 16"
  ],
  "class_feat_tax_dict": {
-  "Iron Will": [
-   "courage in numbers",
-   "improved iron will",
-   "stoic",
-   "witchbreaker",
-   "exorcist's rebuttal"
-  ],
-  "Light Armor Proficiency": [
-   "arcane armor training",
-   "medium armor proficiency",
-   "arcane armor mastery",
-   "heavy armor proficiency"
+  "Combat Reflexes": [
+   "bodyguard",
+   "in harm's way",
+   "pin down",
+   "porcupine defense",
+   "stand still"
   ]
  },
  "class_feats": [
-  "Light Armor Proficiency",
+  "Ferocious Loyalty",
+  "Miniature Reach",
+  "Winds of War",
+  "Stone Read",
+  "Combat Reflexes",
+  "Ensemble",
   "Duck and Cover",
-  "Dampen Presence",
-  "Cornugon Smash",
-  "Extend the Bulwark",
-  "Celestial Obedience",
-  "Iron Will",
-  "Diehard",
-  "Bloody Assault"
+  "Cosmopolitan",
+  "Opening Volley"
  ],
  "class_feature_changes_dict": {},
  "class_feature_conditionals_dict": {},
@@ -380,69 +374,88 @@
   "teamwork": 0,
   "trainer": 0
  },
- "feat_changes_dict": {},
+ "feat_changes_dict": {
+  "Coordinated Maneuvers": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "cmb",
+     "text": "While adjacent to an ally who also has this feat: +2 competence bonus on all combat maneuver checks (+4 to break free from a grapple)."
+    }
+   ]
+  },
+  "Stone Read": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skills",
+     "text": "+2 on Perception checks while in a primarily underground or mountainous environment (+4 with 10+ ranks in Knowledge (dungeoneering))."
+    }
+   ]
+  }
+ },
  "feat_conditionals_dict": {
-  "Bloody Assault": {
+  "Desperate Battler": {
    "default": false,
    "modifiers": [
     {
      "critical": "normal",
      "damageType": [],
-     "formula": "-5",
+     "formula": "1",
      "subTarget": "allAttack",
      "target": "attack",
-     "type": "untyped"
+     "type": "morale"
+    },
+    {
+     "critical": "crit",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
     }
    ],
-   "name": "Bloody Assault: Effect: melee attacks and combat maneuver checks also deal [[1d4]] bleed damage",
-   "tier": "A"
+   "name": "Desperate Battler: When no ally is within 10 feet and you are not benefiting from aid another: +1 morale bonus on melee attack rolls and +1 morale bonus on melee damage rolls."
   },
-  "Furious Focus": {
+  "Ferocious Loyalty": {
    "default": false,
    "modifiers": [
     {
      "critical": "normal",
      "damageType": [],
-     "formula": "1+floor(@attributes.bab.total/4)",
+     "formula": "1",
      "subTarget": "allAttack",
      "target": "attack",
-     "type": "untyped"
+     "type": "morale"
+    },
+    {
+     "critical": "crit",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
     }
    ],
-   "name": "Furious Focus: Effect: negate the Power Attack penalty on your first attack this turn (requires a two-handed weapon or two hands on a one-handed weapon)",
-   "tier": "A"
-  },
-  "Hammer the Gap": {
-   "default": false,
-   "modifiers": [],
-   "name": "Hammer the Gap: Effect: each consecutive hit against the same target this turn deals extra damage equal to the number of prior consecutive hits you have made against it this turn (multiplied on a critical hit); apply manually per attack",
-   "tier": "A"
+   "name": "Ferocious Loyalty: +1 morale on attack rolls vs a foe threatening an ally who also has this feat (+2 morale for 1 min if such an ally is downed/killed within 30 ft)"
   }
  },
  "feats": [
-  "Exotic Weapon Proficiency",
-  "Tandem Trip",
-  "Step Up",
-  "Improved Day Job",
-  "Cleave",
-  "Shapeshifter Foil",
-  "Endurance",
-  "Jaguar Pounce",
+  "Lookout",
+  "Sin Eater",
+  "Dragoncrafting",
+  "Firebrand",
+  "Scholar",
+  "Seize the Opportunity",
+  "Enforcer",
+  "Sure Grasp",
   "Multi Talented",
   "True Calling"
  ],
- "feats_feat_tax_dict": {
-  "Endurance": [
-   "altitude affinity"
-  ],
-  "Step Up": [
-   "following step",
-   "step up and strike"
-  ]
- },
+ "feats_feat_tax_dict": {},
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Deceitful"
+  "Coordinated Maneuvers"
  ],
  "flaw": [
   "Motion Sickness",
@@ -474,10 +487,10 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Hammer the Gap",
-  "Fleet"
+  "Toughness",
+  "Charge of the Righteous"
  ],
- "formatted_bio": "Crogth Thunderstrike\n- Alignment: Lawful Good\n- Deity: Torag\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: Man-at-Arms\n- Tactics: Fights the way it drilled: hold the line, strike the enemy in front of you, keep your shield up and your footing. No tricks, no gimmick -- just a professional doing soldier's work.\n- Stat Focus: Str\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Scullery Hand (rank 15)\n- Profession: Sellsword (rank 10)\n- Profession: Abbott (rank 6)\n- Known for: Siege Engines\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Wealthy Household\n- 2 Older Brothers\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Straight Red\n- Eyes: Brown\n- Build: Knobby Knees",
+ "formatted_bio": "Crogth Thunderstrike\n- Alignment: Lawful Good\n- Deity: Torag\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: Man-at-Arms\n- Tactics: Fights the way it drilled: hold the line, strike the enemy in front of you, keep your shield up and your footing. No tricks, no gimmick -- just a professional doing soldier's work.\n- Stat Focus: Str\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Scullery Hand (rank 15)\n- Profession: Sellsword (rank 10)\n- Profession: Abbott (rank 6)\n- Known for: Siege Engines\n\nFamily\n- Absent Mother\n- Loving Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Straight Red\n- Eyes: Brown\n- Build: Knobby Knees",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 3002,
@@ -492,32 +505,32 @@
  "height_number": "5'10\"",
  "hero_points": 1,
  "homebrew_feat_desc_dict": {
-  "Bloody Assault": "Sacrificing accuracy, you can inflict bloody wounds that are slow to heal",
-  "Celestial Obedience": "Your reverence for an empyreal lord is so great that daily prayer and minor sacrifices grant you special boons",
-  "Cleave": "You can strike two adjacent foes with a single swing",
-  "Coordinated Distraction": "When working in tandem, you can make it difficult for foes to use their magical abilities",
-  "Cornugon Smash": "Your terrible attacks strike fear into your enemies",
-  "Dampen Presence": "Your habitual stillness makes you difficult to perceive for creatures that use blindsight or blindsense",
-  "Death Frombelow": "You have been trained to fight flying creatures",
-  "Deceitful": "You are skilled at deceiving others, both with the spoken word and with physical disguises",
-  "Diehard": "You are especially hard to kill Not only do your wounds automatically stabilize when grievously injured, but you can remain conscious and continue to act even at death's door",
+  "Charge of the Righteous": "You charge undead and fiends with confidence in your righteous cause",
+  "Combat Reflexes": "You can make additional attacks of opportunity",
+  "Coordinated Maneuvers": "You are skilled at working with your allies to perform dangerous combat maneuvers",
+  "Cosmopolitan": "Living in large, exotic cities has put you in touch with many diverse civilizations, cultures, and races",
+  "Desperate Battler": "Your experiences fighting against numerous foes that have already overwhelmed your allies, friends, and family have forced you to excel at fighting on your own",
+  "Dragoncrafting": "You have the ability to create rare and valuable items from the bodies of fallen true dragons",
   "Duck and Cover": "Your allies assist you in avoiding certain attacks",
-  "Endurance": "Harsh conditions or long exertions do not easily tire you",
-  "Exotic Weapon Proficiency": "Choose one type of exotic weapon, such as the spiked chain or whip You understand how to use that type of exotic weapon in combat, and can utilize any special tricks or qualities that exotic weapon might allow",
-  "Extend the Bulwark": "You can bolster a trained ally's defenses by interposing your own armored body",
-  "Fast Crawl": "You are skilled at moving while prone",
-  "Fleet": "You are faster than most",
-  "Furious Focus": "Even in the midst of fierce and furious blows, you can find focus in the carnage and your seemingly wild blows strike home",
-  "Hammer the Gap": "You repeatedly strike the same location, causing increasing amounts of damage",
-  "Improved Day Job": "You learned the importance of an honest day's work while training as an initiate of the Pathf inder Society",
-  "Iron Will": "You are more resistant to mental effects",
-  "Jaguar Pounce": "Your ambushes are especially lethal",
-  "Light Armor Proficiency": "You are skilled at wearing light armor",
+  "Enforcer": "You are skilled at causing fear in those you brutalize",
+  "Ensemble": "You can create an ensemble of skilled and amateur performers to aid you in your performance",
+  "Ferocious Loyalty": "You have a powerful sense of responsibility for your allies",
+  "Firebrand": "You can make use of a torch as a deadly, macelike weapon",
+  "Lookout": "Your allies help you avoid being surprised",
+  "Miniature Reach": "No matter how small you are, you are always a threat. whenever you are under the effects of a polymorph effect which would reduce your size to tiny or smaller, your natural reach is always treated as 5 feet, regardless of your size.",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Shapeshifter Foil": "Your command of shapeshifting magic can disrupt similar effects in others",
-  "Step Up": "You can close the distance when a foe tries to move away",
-  "Tandem Trip": "You know how to work together to trip your foes",
-  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
+  "Opening Volley": "Your ranged assault leaves your foe disoriented and vulnerable to your melee attack",
+  "Reckless Offense": "You can shift your focus from defense to offense. when you use the attack action or full attack action in melee, you can take a penalty of 4 to your armor class and add a +2 bonus on your melee attack roll. the bonus on attack rolls and penalty to armor class last until the beginning of your next turn.",
+  "Scholar": "You have graduated from one of the many colleges, universities, and specialty schools of higher learning scattered throughout the Inner Sea region",
+  "Seize the Opportunity": "You possess an exceptional knack for exploiting sudden openings by your opponents. when you make an attack of opportunity, you can take an attack action (such as vital strike) or attempt a combat maneuver (such as a bull rush, disarm or dirty trick) in place of your attack of opportunity. this feat does not allow you to move when it isnt your turn.",
+  "Sin Eater": "You prosper as your enemies fail. whenever a creature claimed by you is reduced to 0 or fewer hit points, you gain temporary hit points equal to twice that creatures hit dice. these temporary hit points last for one minute.",
+  "Skilled Driver": "Choose a type a type of vehicle (either air, land, or water) You are more skilled when driving that vehicle",
+  "Stone Read": "Even the faint movement and vibrations of stone can alert you to trouble",
+  "Sure Grasp": "Your quick ref lexes and skill at climbing keep you from falling to your doom",
+  "Toughness": "You have enhanced physical stamina",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
+  "Winds of War": "Those you have Claimed cannot hide, and now they can no longer even run. you gain a +5-foot bonus to each of your movement speeds. this bonus increases by +5 feet for each creature you currently have claimed.",
+  "Woodland Sage": "Understanding nature requires patience far more than education or guile. add your wisdom modifier as an additional bonus to your handle animal, knowledge (nature), and knowledge (geography) checks. if you have the wild empathy class feature, add your wisdom modifier as an additional bonus on checks with that ability."
  },
  "inherents": {
   "cha": 10,
@@ -691,10 +704,10 @@
  "mod_char_sheet_var": false,
  "mt_feats": [],
  "normal_feat_amount": 8,
- "older_brothers": " you have 2 older brothers",
+ "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "loving mother, dead father, raised in a wealthy household",
+ "parents": "absent mother, loving father, raised in a wealthy household",
  "personality_traits": [
   "Fervent",
   "Rebellious",
@@ -1126,16 +1139,12 @@
  ],
  "spheres_chosen": [],
  "stances_chosen": [],
- "story_feat_tax_dict": {
-  "Furious Focus": [
-   "dreadful carnage"
-  ]
- },
+ "story_feat_tax_dict": {},
  "story_feats": [
-  "Fast Crawl",
-  "Coordinated Distraction",
-  "Death Frombelow",
-  "Furious Focus"
+  "Reckless Offense",
+  "Woodland Sage",
+  "Skilled Driver",
+  "Desperate Battler"
  ],
  "str": 21,
  "teamwork_feat_labels": [],
