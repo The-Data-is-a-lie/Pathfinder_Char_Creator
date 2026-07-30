@@ -1,20 +1,20 @@
 {
- "Total_HP": 88,
+ "Total_HP": 140,
  "age_number": 31,
  "alignment": "Lawful Neutral",
  "appearance": [
-  "Sickly"
+  "Ragged"
  ],
  "archetype1": null,
- "archetype_info": "{\n    \"Bannerman\": {\n        \"parent class:\": \"Warlord\",\n        \"courageous defense \": \"The bannerman is a combatant of grace and skill, and his faith in both himself as a symbol as well as in his allies assists his defense. When fighting with a ranged weapon (such as with a bow or a crossbow), or with a one-handed or light weapon in one hand and nothing in the other (or with a buckler and/or an inspiring banner, see below) and wearing medium or lighter armor, the bannerman gains a +1 dodge bonus to his Armor Class per four warlord levels. This replaces the bonus feat gained at 1st level.\",\n        \"tactical presence \": \"This class feature functions as normal, but the bannerman gains additional presence choices. Diplomat's Presence:  At 2nd level, the bannerman adds a +4 competence bonus to Bluff, Diplomacy, Intimidate and Sense Motive rolls while in this presence.      Fearsome Presence:  At 13th level, the bannerman's reputation in battle precedes him and an aura of his many victories inspires dread in his foes. Enemies of the bannerman within 30-ft. of his position are filled with dread as if under a  fear  spell (use the bannerman's Charisma modifier for the Will save DC and his initiator level as his caster level). Foes that succeed the saving throw are unaffected by the bannerman's fearsome presence for 24 hours.      Commander's Presence:  At 17th level, the bannerman is a true commander amongst warlords, allowing him to lend a readied maneuver to an ally within 30-ft. as a swift action. When he lends this maneuver, the maneuver is expended until the recipient initiates this maneuver (using the recipient's initiator level and Charisma modifier to determine the saving throw DC; if the recipient's initiator level is too low to initiate the maneuver, then the bannerman cannot lend the maneuver). He can only lend one maneuver at a time when using this presence, and if the bannerman stops using this presence, then the effect ends immediately (but the maneuver remains expended until recovered).      Inspiring Banner (Ex) [ ]   At 5th level, a bannerman's banner becomes a symbol of inspiration to his allies and companions. As long as the bannerman's banner is clearly visible and he is in a Golden Lion stance, all allies within 60 feet receive a +2 morale bonus on saving throws against fear and fatigue and a +2 morale bonus on attack and damage rolls. At 12th level, and at 19th level, these bonuses increase by +1. If the Golden Lion stance he is using grants a similarly typed bonus to attack, damage, or saving throws, then increase that bonus by the amount of the inspiring banner's bonus. The banner must be at least Small or larger and must be carried or displayed by the bannerman or his mount to function, and can be held while using a buckler.  This replaces the warlord's battle prowess class feature.        The Bannerman and his Banner  While trying to leave it to the player and GM to determine if a banner is acceptable for the character in the method of how it is carried, we wanted to be more easy and unrestricted with it. A bannerman's banner is intended to be able to be placed on any manner of item so long as it is displayed. Some official ideas for how a bannerman may carry a banner: as heraldry on a shield, on a small pole mounted to either his mount's saddle or to the back of his armor, a tabard that they wear prominently, or a standard that hangs from a polearm or spear. So long as that standard is carried upon his person where people can see it, he can inspire these allies.      Share Boost (Ex) [ ]   At 6th level, the bannerman's ability to inspire his troops allows him to share some of his martial prowess with an ally on occasion. Once per day he is able to initiate a boost as an immediate action to utilize a boost for an ally who is initiating a maneuver or making an attack that qualifies for the use of that boost. The boost shared uses the bannerman's initiator level and saving throw DC (if applicable). He can use this ability one additional time per day at 12th level and again at 18th level.  This replaces the dual boost class feature.\",\n        \"inspiring banner \": \"At 5th level, a bannerman's banner becomes a symbol of inspiration to his allies and companions. As long as the bannerman's banner is clearly visible and he is in a Golden Lion stance, all allies within 60 feet receive a +2 morale bonus on saving throws against fear and fatigue and a +2 morale bonus on attack and damage rolls. At 12th level, and at 19th level, these bonuses increase by +1. If the Golden Lion stance he is using grants a similarly typed bonus to attack, damage, or saving throws, then increase that bonus by the amount of the inspiring banner's bonus. The banner must be at least Small or larger and must be carried or displayed by the bannerman or his mount to function, and can be held while using a buckler. This replaces the warlord's battle prowess class feature. The Bannerman and his Banner  While trying to leave it to the player and GM to determine if a banner is acceptable for the character in the method of how it is carried, we wanted to be more easy and unrestricted with it. A bannerman's banner is intended to be able to be placed on any manner of item so long as it is displayed. Some official ideas for how a bannerman may carry a banner: as heraldry on a shield, on a small pole mounted to either his mount's saddle or to the back of his armor, a tabard that they wear prominently, or a standard that hangs from a polearm or spear. So long as that standard is carried upon his person where people can see it, he can inspire these allies.\",\n        \"share boost \": \"At 6th level, the bannerman's ability to inspire his troops allows him to share some of his martial prowess with an ally on occasion. Once per day he is able to initiate a boost as an immediate action to utilize a boost for an ally who is initiating a maneuver or making an attack that qualifies for the use of that boost. The boost shared uses the bannerman's initiator level and saving throw DC (if applicable). He can use this ability one additional time per day at 12th level and again at 18th level. This replaces the dual boost class feature.\"\n    }\n}",
- "armor_ac": "7",
- "armor_armor_check_penalty": "-6",
+ "archetype_info": "{\n    \"Vanguard_Commander\": {\n        \"parent class:\": \"Warlord\",\n        \"weapon and armor proficiencies\": \"The vanguard commander is proficient with all simple and martial weapons, all armor and shields (except tower shields). This replaces the warlord's standard weapon and armor proficiencies.\",\n        \"disciplines\": \"The vanguard commander gains access to  Iron Tortoise  and loses access to Solar Wind. Perception is no longer a class skill, Bluff is now a class skill.\",\n        \"improved shield bash\": \"The vanguard commander gains the Improved Shield Bash feat as a bonus feat at 1st level. This replaces the bonus feat gained at 1st level, and bonus feats resume as normal at 6th level and on.\",\n        \"warlord's gambit \": \"The vanguard commander gains access to a new gambit, the Guardian's Gambit, and gains this as one of his two initial gambits known. Guardian's Gambit   Risk : The warlord attempts a successful charging shield bash attack against an opponent.  Reward : If the shield bash attempt is successful, the warlord and all allies within 30-ft. may make a free 5-ft. step, even if they have already made one this turn.      Daring Defense (Ex) [ ]   The vanguard commander rushes the enemy lines, heedless of personal danger, with bold charges and bolder personality. This headstrong determination gives rise to vanguard commanders having an almost uncanny luck at avoiding dangers. The vanguard commander may add his Charisma modifier to his Dexterity modifier to determine his Reflex save bonus. If the character is ever able to add his Charisma modifier to his Reflex save through use of another ability (for example. the paladin's divine grace) he may only add his Charisma modifier once to his Reflex save.  This replaces force of personality.    Defensive Prowess (Ex) [ ]   The vanguard commander lives to inspire his troops, and by training diligently to best defend himself in the midst of heavy combat he has developed techniques for higher survivability. While in a Golden Lion or Iron Tortoise stance, the vanguard commander reduces his armor check penalty by 1, gains a +1 competence bonus to his existing shield bonus to his Armor Class, and adds a +1 competence bonus to his CMD. This improves by +1 at 12th level, and again at 19th level.  This replaces the battle prowess class feature.    Heightened Defenses (Ex) [ ]   The vanguard commander is a capable warrior who can blend both defense and offense together with precision. The character gains an additional immediate action to be used for the purposes of initiating a counter on a round that he initiates a boost. He can use this additional immediate action a number of times per day equal to 1 + his Charisma modifier (minimum of 1).  This replaces the dual boost class feature.    Vanguard's Shield (Ex) [ ]   The vanguard commander is lightning fast with his shield for both defense and offense. Whenever the vanguard initiates a melee strike or uses a counter to defend against an attack from an adjacent foe, he may make a shield bash attempt as free action at his full base attack bonus against that creature.  This replaces the tactical assistance class feature.\",\n        \"daring defense \": \"The vanguard commander rushes the enemy lines, heedless of personal danger, with bold charges and bolder personality. This headstrong determination gives rise to vanguard commanders having an almost uncanny luck at avoiding dangers. The vanguard commander may add his Charisma modifier to his Dexterity modifier to determine his Reflex save bonus. If the character is ever able to add his Charisma modifier to his Reflex save through use of another ability (for example. the paladin's divine grace) he may only add his Charisma modifier once to his Reflex save. This replaces force of personality.\",\n        \"defensive prowess \": \"The vanguard commander lives to inspire his troops, and by training diligently to best defend himself in the midst of heavy combat he has developed techniques for higher survivability. While in a Golden Lion or Iron Tortoise stance, the vanguard commander reduces his armor check penalty by 1, gains a +1 competence bonus to his existing shield bonus to his Armor Class, and adds a +1 competence bonus to his CMD. This improves by +1 at 12th level, and again at 19th level. This replaces the battle prowess class feature.\",\n        \"heightened defenses \": \"The vanguard commander is a capable warrior who can blend both defense and offense together with precision. The character gains an additional immediate action to be used for the purposes of initiating a counter on a round that he initiates a boost. He can use this additional immediate action a number of times per day equal to 1 + his Charisma modifier (minimum of 1). This replaces the dual boost class feature.\",\n        \"vanguard's shield \": \"The vanguard commander is lightning fast with his shield for both defense and offense. Whenever the vanguard initiates a melee strike or uses a counter to defend against an attack from an adjacent foe, he may make a shield bash attempt as free action at his full base attack bonus against that creature. This replaces the tactical assistance class feature.\"\n    }\n}",
+ "armor_ac": "8",
+ "armor_armor_check_penalty": "-7",
  "armor_enhancement_bonus": 1,
  "armor_enhancement_chosen_list": [],
- "armor_max_dex_bonus": "1",
- "armor_name": "Banded mail",
+ "armor_max_dex_bonus": "0",
+ "armor_name": "Half-plate",
  "armor_spell_failure": 0,
- "armor_weight": "35 lbs.",
+ "armor_weight": "50 lbs.",
  "bab_total": 10,
  "background_traits": [
   "Vigilant Battler",
@@ -25,42 +25,36 @@
  "bloodline_feat_labels": [],
  "bloodline_feats": [],
  "buff_gaps": [],
- "build_archetype": "Generalist",
- "build_tactics": "Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.",
+ "build_archetype": "Archer",
+ "build_tactics": "Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.",
  "c_class": "warlord",
  "c_class_2": "",
  "c_class_display": "Warlord",
  "casting_level_str_foundry": "None",
  "casting_tradition": {
-  "bonus_spell_points": 1,
+  "bonus_spell_points": 0,
   "boons": [
-   "Fortified Casting",
-   "Empowered Abilities"
+   "Empowered Abilities",
+   "Overcharge"
   ],
   "boons_detail": [
    {
-    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
-    "name": "Fortified Casting"
-   },
-   {
     "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
     "name": "Empowered Abilities"
+   },
+   {
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
    }
   ],
   "casting_ability_modifier": "Wisdom",
   "drawbacks": [
-   "Somatic Casting",
    "Skilled Casting",
    "Painful Magic",
    "Prepared Caster",
-   "Focus Casting"
+   "Magical Signs"
   ],
   "drawbacks_detail": [
-   {
-    "counts_as": 1,
-    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
-    "name": "Somatic Casting"
-   },
    {
     "counts_as": 1,
     "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
@@ -78,8 +72,8 @@
    },
    {
     "counts_as": 1,
-    "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
-    "name": "Focus Casting"
+    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
+    "name": "Magical Signs"
    }
   ]
  },
@@ -87,16 +81,16 @@
  "character_full_name": "Drogo McKinley",
  "chosen_race": "Half-Orc",
  "chosen_spell_descriptor": [
-  "fire",
-  "light"
+  "electricity",
+  "mind-affecting"
  ],
  "class feature levels": {},
  "class features": {
-  "Skill Unlock: Knowledge (nobility)": {
-   "10 Ranks": "After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.",
-   "15 Ranks": "You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.",
-   "20 Ranks": "You can roll twice and take the better result on Knowledge checks.",
-   "5 Ranks": "You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill."
+  "Skill Unlock: Survival": {
+   "10 Ranks": "You can track creatures that leave no tracks (including flying/swimming creatures and those using trackless step or pass without trace) at a -20 penalty.",
+   "15 Ranks": "Once per day you can spend 1 hour and succeed at a DC 30 check to gain cold or fire resistance 5 for 24 hours, sharing it with allies.",
+   "20 Ranks": "You take only a -10 penalty when tracking creatures that leave no tracks.",
+   "5 Ranks": "Reduce all nonlethal damage you take from heat, cold, starvation, or thirst by 1 point per 5 ranks."
   }
  },
  "class_ability": [
@@ -138,31 +132,35 @@
  ],
  "class_feat_tax_dict": {},
  "class_feats": [
-  "Footslasher",
-  "Coordinated Maneuvers",
-  "Additional Traits"
+  "Shadow Dodge",
+  "Performance Weapon Mastery",
+  "Endurance"
  ],
  "class_feature_changes_dict": {},
  "class_feature_conditionals_dict": {},
  "class_feature_levels": {},
  "class_feature_owners": {},
  "class_features": {
-  "Skill Unlock: Knowledge (nobility)": {
-   "10 Ranks": "After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.",
-   "15 Ranks": "You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.",
-   "20 Ranks": "You can roll twice and take the better result on Knowledge checks.",
-   "5 Ranks": "You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill."
+  "Skill Unlock: Survival": {
+   "10 Ranks": "You can track creatures that leave no tracks (including flying/swimming creatures and those using trackless step or pass without trace) at a -20 penalty.",
+   "15 Ranks": "Once per day you can spend 1 hour and succeed at a DC 30 check to gain cold or fire resistance 5 for 24 hours, sharing it with allies.",
+   "20 Ranks": "You take only a -10 penalty when tracking creatures that leave no tracks.",
+   "5 Ranks": "Reduce all nonlethal damage you take from heat, cold, starvation, or thirst by 1 point per 5 ranks."
   }
  },
  "classes": [
   {
    "archetype": {
-    "Bannerman": {
-     "courageous defense ": "The bannerman is a combatant of grace and skill, and his faith in both himself as a symbol as well as in his allies assists his defense. When fighting with a ranged weapon (such as with a bow or a crossbow), or with a one-handed or light weapon in one hand and nothing in the other (or with a buckler and/or an inspiring banner, see below) and wearing medium or lighter armor, the bannerman gains a +1 dodge bonus to his Armor Class per four warlord levels. This replaces the bonus feat gained at 1st level.",
-     "inspiring banner ": "At 5th level, a bannerman's banner becomes a symbol of inspiration to his allies and companions. As long as the bannerman's banner is clearly visible and he is in a Golden Lion stance, all allies within 60 feet receive a +2 morale bonus on saving throws against fear and fatigue and a +2 morale bonus on attack and damage rolls. At 12th level, and at 19th level, these bonuses increase by +1. If the Golden Lion stance he is using grants a similarly typed bonus to attack, damage, or saving throws, then increase that bonus by the amount of the inspiring banner's bonus. The banner must be at least Small or larger and must be carried or displayed by the bannerman or his mount to function, and can be held while using a buckler. This replaces the warlord's battle prowess class feature. The Bannerman and his Banner  While trying to leave it to the player and GM to determine if a banner is acceptable for the character in the method of how it is carried, we wanted to be more easy and unrestricted with it. A bannerman's banner is intended to be able to be placed on any manner of item so long as it is displayed. Some official ideas for how a bannerman may carry a banner: as heraldry on a shield, on a small pole mounted to either his mount's saddle or to the back of his armor, a tabard that they wear prominently, or a standard that hangs from a polearm or spear. So long as that standard is carried upon his person where people can see it, he can inspire these allies.",
+    "Vanguard_Commander": {
+     "daring defense ": "The vanguard commander rushes the enemy lines, heedless of personal danger, with bold charges and bolder personality. This headstrong determination gives rise to vanguard commanders having an almost uncanny luck at avoiding dangers. The vanguard commander may add his Charisma modifier to his Dexterity modifier to determine his Reflex save bonus. If the character is ever able to add his Charisma modifier to his Reflex save through use of another ability (for example. the paladin's divine grace) he may only add his Charisma modifier once to his Reflex save. This replaces force of personality.",
+     "defensive prowess ": "The vanguard commander lives to inspire his troops, and by training diligently to best defend himself in the midst of heavy combat he has developed techniques for higher survivability. While in a Golden Lion or Iron Tortoise stance, the vanguard commander reduces his armor check penalty by 1, gains a +1 competence bonus to his existing shield bonus to his Armor Class, and adds a +1 competence bonus to his CMD. This improves by +1 at 12th level, and again at 19th level. This replaces the battle prowess class feature.",
+     "disciplines": "The vanguard commander gains access to  Iron Tortoise  and loses access to Solar Wind. Perception is no longer a class skill, Bluff is now a class skill.",
+     "heightened defenses ": "The vanguard commander is a capable warrior who can blend both defense and offense together with precision. The character gains an additional immediate action to be used for the purposes of initiating a counter on a round that he initiates a boost. He can use this additional immediate action a number of times per day equal to 1 + his Charisma modifier (minimum of 1). This replaces the dual boost class feature.",
+     "improved shield bash": "The vanguard commander gains the Improved Shield Bash feat as a bonus feat at 1st level. This replaces the bonus feat gained at 1st level, and bonus feats resume as normal at 6th level and on.",
      "parent class:": "Warlord",
-     "share boost ": "At 6th level, the bannerman's ability to inspire his troops allows him to share some of his martial prowess with an ally on occasion. Once per day he is able to initiate a boost as an immediate action to utilize a boost for an ally who is initiating a maneuver or making an attack that qualifies for the use of that boost. The boost shared uses the bannerman's initiator level and saving throw DC (if applicable). He can use this ability one additional time per day at 12th level and again at 18th level. This replaces the dual boost class feature.",
-     "tactical presence ": "This class feature functions as normal, but the bannerman gains additional presence choices. Diplomat's Presence:  At 2nd level, the bannerman adds a +4 competence bonus to Bluff, Diplomacy, Intimidate and Sense Motive rolls while in this presence.      Fearsome Presence:  At 13th level, the bannerman's reputation in battle precedes him and an aura of his many victories inspires dread in his foes. Enemies of the bannerman within 30-ft. of his position are filled with dread as if under a  fear  spell (use the bannerman's Charisma modifier for the Will save DC and his initiator level as his caster level). Foes that succeed the saving throw are unaffected by the bannerman's fearsome presence for 24 hours.      Commander's Presence:  At 17th level, the bannerman is a true commander amongst warlords, allowing him to lend a readied maneuver to an ally within 30-ft. as a swift action. When he lends this maneuver, the maneuver is expended until the recipient initiates this maneuver (using the recipient's initiator level and Charisma modifier to determine the saving throw DC; if the recipient's initiator level is too low to initiate the maneuver, then the bannerman cannot lend the maneuver). He can only lend one maneuver at a time when using this presence, and if the bannerman stops using this presence, then the effect ends immediately (but the maneuver remains expended until recovered).      Inspiring Banner (Ex) [ ]   At 5th level, a bannerman's banner becomes a symbol of inspiration to his allies and companions. As long as the bannerman's banner is clearly visible and he is in a Golden Lion stance, all allies within 60 feet receive a +2 morale bonus on saving throws against fear and fatigue and a +2 morale bonus on attack and damage rolls. At 12th level, and at 19th level, these bonuses increase by +1. If the Golden Lion stance he is using grants a similarly typed bonus to attack, damage, or saving throws, then increase that bonus by the amount of the inspiring banner's bonus. The banner must be at least Small or larger and must be carried or displayed by the bannerman or his mount to function, and can be held while using a buckler.  This replaces the warlord's battle prowess class feature.        The Bannerman and his Banner  While trying to leave it to the player and GM to determine if a banner is acceptable for the character in the method of how it is carried, we wanted to be more easy and unrestricted with it. A bannerman's banner is intended to be able to be placed on any manner of item so long as it is displayed. Some official ideas for how a bannerman may carry a banner: as heraldry on a shield, on a small pole mounted to either his mount's saddle or to the back of his armor, a tabard that they wear prominently, or a standard that hangs from a polearm or spear. So long as that standard is carried upon his person where people can see it, he can inspire these allies.      Share Boost (Ex) [ ]   At 6th level, the bannerman's ability to inspire his troops allows him to share some of his martial prowess with an ally on occasion. Once per day he is able to initiate a boost as an immediate action to utilize a boost for an ally who is initiating a maneuver or making an attack that qualifies for the use of that boost. The boost shared uses the bannerman's initiator level and saving throw DC (if applicable). He can use this ability one additional time per day at 12th level and again at 18th level.  This replaces the dual boost class feature."
+     "vanguard's shield ": "The vanguard commander is lightning fast with his shield for both defense and offense. Whenever the vanguard initiates a melee strike or uses a counter to defend against an attack from an adjacent foe, he may make a shield bash attempt as free action at his full base attack bonus against that creature. This replaces the tactical assistance class feature.",
+     "warlord's gambit ": "The vanguard commander gains access to a new gambit, the Guardian's Gambit, and gains this as one of his two initial gambits known. Guardian's Gambit   Risk : The warlord attempts a successful charging shield bash attack against an opponent.  Reward : If the shield bash attempt is successful, the warlord and all allies within 30-ft. may make a free 5-ft. step, even if they have already made one this turn.      Daring Defense (Ex) [ ]   The vanguard commander rushes the enemy lines, heedless of personal danger, with bold charges and bolder personality. This headstrong determination gives rise to vanguard commanders having an almost uncanny luck at avoiding dangers. The vanguard commander may add his Charisma modifier to his Dexterity modifier to determine his Reflex save bonus. If the character is ever able to add his Charisma modifier to his Reflex save through use of another ability (for example. the paladin's divine grace) he may only add his Charisma modifier once to his Reflex save.  This replaces force of personality.    Defensive Prowess (Ex) [ ]   The vanguard commander lives to inspire his troops, and by training diligently to best defend himself in the midst of heavy combat he has developed techniques for higher survivability. While in a Golden Lion or Iron Tortoise stance, the vanguard commander reduces his armor check penalty by 1, gains a +1 competence bonus to his existing shield bonus to his Armor Class, and adds a +1 competence bonus to his CMD. This improves by +1 at 12th level, and again at 19th level.  This replaces the battle prowess class feature.    Heightened Defenses (Ex) [ ]   The vanguard commander is a capable warrior who can blend both defense and offense together with precision. The character gains an additional immediate action to be used for the purposes of initiating a counter on a round that he initiates a boost. He can use this additional immediate action a number of times per day equal to 1 + his Charisma modifier (minimum of 1).  This replaces the dual boost class feature.    Vanguard's Shield (Ex) [ ]   The vanguard commander is lightning fast with his shield for both defense and offense. Whenever the vanguard initiates a melee strike or uses a counter to defend against an attack from an adjacent foe, he may make a shield bash attempt as free action at his full base attack bonus against that creature.  This replaces the tactical assistance class feature.",
+     "weapon and armor proficiencies": "The vanguard commander is proficient with all simple and martial weapons, all armor and shields (except tower shields). This replaces the warlord's standard weapon and armor proficiencies."
     }
    },
    "display": "Warlord",
@@ -173,84 +171,61 @@
  "combat_talent_items": [],
  "con": 14,
  "counter_schools": [
-  "necromancy"
+  "necromancy",
+  "transmutation"
  ],
  "counter_spell_descriptor": [
-  "force",
-  "language-dependent"
+  "water",
+  "earth"
  ],
- "craft_type": "Basketweaving",
+ "craft_type": "Trapmaking",
  "day_list": [],
  "deity_name": "Irori",
  "dex": 15,
  "enhancement_effects_dict": {},
  "equip_descrip": {
-  "body": {
-   "description": " these sheer and silky robes, many of which are made of spider silk, are of the finest quality. On command, a living garment can make a number of subtle adjustments to itself, including coloring, fit, and basic design, accommodating and accentuating whatever mood the wearer wishes to convey. It always remains clean, and automatically repairs damage to itself at a rate of 1 hit point per round (hardness 0, 4 hit points). It also grants the wearer a +5 competence bonus on diplomacy checks. ",
-   "item_name": "Living Garments"
+  "belts": {
+   "description": " this belt is worked with images of horses stampeding across\r a barren, windswept plain. The belt's wearer automatically\r succeeds at any check to guide with the knees, stay in the\r saddle, fight with a combat-trained mount, control a mount in battle, or make a fast mount or dismount, as long as the belt's\r wearer is wearing medium, light, or no armor. Furthermore, \r the belt grants a +4 competence bonus on all other ride checks, \r including ones made while the wearer is in heavy armor. ",
+   "item_name": "Equestrian Belt"
   },
-  "headband": {
-   "description": " this simple teardrop jewel is worn on the center of the forehead and gives its wearer the ability to quickly focus her mind. The wearer can center herself (pathfinder rpg occult adventures 144) as a swift action. ",
-   "item_name": "Centering Jewel"
+  "eyes": {
+   "description": " these blood red crystal lenses fit snugly over the wearer's\r eyes. The wearer gains the constant effects of the deathwatch spell. ",
+   "item_name": "Deathwatch Eyes"
+  },
+  "rings": {
+   "description": "This small wooden ring resembles a serpent with tiny gemstone eyes coiling around the wearer's finger. If worn for 24 hours, it causes its wearer to manifest many serpentine traits. The wearer's skin develops a faint, diamond-shaped pattern, and the pupils of her eyes elongate. The wearer grows a pair of fangs, gaining a bite attack as a primary natural attack that deals 1d4 points of piercing damage for a Medium wearer or 1d3 points of damage for a Small wearer. Three times per day as a free action, the wearer of the ring may cause her fangs to drip with venom, making her bite attack poisonous for 1 round. The save DC of this poison is equal to 10 + 1/2 the wearer's Hit Dice + the wearer's Constitution modifier, but otherwise acts as black adder venom. If the wearer rolls a natural 1 on an attack with her poisonous bite, she is exposed to the poison. Once per day as a standard action, the wearer may command her tongue to lengthen and become forked for 1 minute, gaining the scent special ability. While this ability is active, the wearer has a 20% chance of failure when casting any spell with a verbal component, as the tongue makes it difficult to speak. The ring makes its wearer more sensitive to cold. She takes a 2 penalty to saves against spells with the cold descriptor and the effects of cold weather. Additionally, if the wearer is successfully affected by a spell with the cold descriptor, she is slowed for 1 round.",
+   "item_name": "Ophidian Coil"
   }
  },
  "equipment_list": [
-  "Living Garments",
-  "Centering Jewel"
+  "Equestrian Belt",
+  "Deathwatch Eyes",
+  "Witness Hunter's Ring",
+  "Ophidian Coil"
  ],
  "eye_color": [
-  "Brown"
+  "Amber"
  ],
  "feat_budget": {
   "bloodline": 0,
   "class": 3,
   "flavor": 1,
   "flaw": 1,
-  "normal": 3,
-  "profession": 2,
+  "normal": 6,
+  "profession": 1,
   "story": 3,
   "teamwork": 0,
-  "trainer": 10
+  "trainer": 2
  },
  "feat_changes_dict": {
-  "Coordinated Maneuvers": {
+  "Defensive Weapon Training": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "cmb",
-     "text": "While adjacent to an ally who also has this feat: +2 competence bonus on all combat maneuver checks (+4 to break free from a grapple)."
+     "target": "ac",
+     "text": "+2 dodge bonus to AC when an opponent attacks you with a weapon from your chosen weapon group (+3 if you also have weapon training in that group)."
     }
    ]
-  },
-  "Demon Hunter": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skill.kpl",
-     "text": "+2 on Knowledge (planes) checks to identify demons' powers, and +2 morale on caster level checks to overcome the spell resistance of creatures you recognize as demons."
-    }
-   ]
-  },
-  "Harrowed": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "will",
-     "text": "+1 on all Will saves made to resist enchantment effects."
-    }
-   ]
-  },
-  "Snake Style": {
-   "changes": [
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.sen",
-     "type": "untyped"
-    }
-   ],
-   "contextNotes": []
   }
  },
  "feat_conditionals_dict": {
@@ -259,117 +234,27 @@
    "modifiers": [],
    "name": "Bludgeoner: Effect: deal nonlethal damage with a bludgeoning weapon at no [[-4]] penalty",
    "tier": "A"
-  },
-  "Demon Hunter": {
-   "default": false,
-   "modifiers": [
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "2",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
-    },
-    {
-     "critical": "crit",
-     "damageType": [],
-     "formula": "2",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
-    }
-   ],
-   "name": "Demon Hunter (vs demons): +2 morale on attack rolls"
-  },
-  "Desperate Battler": {
-   "default": false,
-   "modifiers": [
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "1",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
-    },
-    {
-     "critical": "crit",
-     "damageType": [],
-     "formula": "1",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
-    }
-   ],
-   "name": "Desperate Battler: When no ally is within 10 feet and you are not benefiting from aid another: +1 morale bonus on melee attack rolls and +1 morale bonus on melee damage rolls."
-  },
-  "Footslasher": {
-   "default": false,
-   "modifiers": [
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "-2",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "untyped"
-    }
-   ],
-   "name": "Footslasher: Activation: standard action only, requires a piercing or slashing weapon against a larger foe; Effect: on a hit dealing at least [[1]] point of damage, halve the target's speed for [[24]] hours until treated with a DC [[15]] Heal check or magical healing",
-   "tier": "A"
-  },
-  "Harrowed": {
-   "default": false,
-   "modifiers": [
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "2",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "untyped"
-    }
-   ],
-   "name": "Harrowed: Cost: [[1]]/day (Harrow card draw); Activation: applied after the roll but before the result is known; Effect: +[[2]] bonus to the attack roll if the drawn card's suit matches",
-   "tier": "A"
-  },
-  "Monkey Style": {
-   "default": false,
-   "modifiers": [
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "4",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "untyped"
-    }
-   ],
-   "name": "Monkey Style: Effect: while prone, take no penalty on melee attack rolls or to AC; stand up without provoking attacks of opportunity, or as a swift action with a DC [[20]] Acrobatics check",
-   "tier": "A"
   }
  },
  "feats": [
-  "Flagbearer",
-  "Hero's Fortune",
-  "Scarlet Throne Style",
-  "Multi Talented",
-  "True Calling"
+  "Strong Comeback",
+  "Improved Initiative",
+  "Acrobatic",
+  "Meditation Master",
+  "Blinding Flash",
+  "Coordinated Charge",
+  "Multi Talented"
  ],
  "feats_feat_tax_dict": {
-  "Hero's Fortune": [
-   "blood of heroes",
-   "luck of heroes"
-  ],
-  "Scarlet Throne Style": [
-   "Scarlet Throne Dignity",
-   "Scarlet Throne Riposte"
+  "Meditation Master": [
+   "body control",
+   "body mastery",
+   "combat meditation"
   ]
  },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Shield Wall"
+  "Bludgeoner"
  ],
  "flaw": [
   "Beady Eyes"
@@ -392,48 +277,42 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Demon Hunter"
+  "Racial Heritage"
  ],
- "formatted_bio": "Drogo McKinley\n- Alignment: Lawful Neutral\n- Deity: Irori\n- Race: Half-Orc\n- Class: Level 10 Warlord\n- Archetype: Generalist\n- Tactics: Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.\n- Stat Focus: Cha\n- Disciplines: Solar Wind, Scarlet Throne\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Fishing Boat Captain (rank 15)\n- Profession: Penitent Novice (rank 6)\n- Profession: Privateer (rank 4)\n- Known for: Basketweaving\n- Training: An average trainer who taught them Blind-Fight, Master Alchemist\n- Training: An excellent trainer who taught them Improved Unarmed Strike, Bludgeoner, Snake Style\n- Training: An excellent trainer who taught them Improved Trip, Scorpion Style, Monkey Style\n- Training: An average trainer who taught them Desperate Battler, Meditation Master\n\nFamily\n- Loving Mother\n- Absent Father\n- Raised In A Middle Income Household\n- No Siblings\n\nPersonality\n- Personality: Wise, Egotistic, Assertive, Just, Disruptive, Self-sufficient\n- Mannerisms: Grits teeth, Leans back\n- Flaws: Beady Eyes\n\nAppearance\n- Hair: Straight Blond\n- Eyes: Brown\n- Build: Sickly",
+ "formatted_bio": "Drogo McKinley\n- Alignment: Lawful Neutral\n- Deity: Irori\n- Race: Half-Orc\n- Class: Level 10 Warlord\n- Archetype: Archer\n- Tactics: Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.\n- Stat Focus: Cha\n- Disciplines: Solar Wind, Thrashing Dragon, Tempest Gale\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Greenwood Ranger (rank 10)\n- Profession: Watch Underling (rank 1)\n- Profession: Battlefield Carrion-Hauler (rank 10)\n- Profession: Pruner (rank 3)\n- Profession: Medium (rank 1)\n- Known for: Trapmaking\n- Training: A terrible trainer who taught them Defensive Weapon Training\n- Training: A terrible (Path of War) trainer who taught them Thrashing Dragon Style\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Middle Income Household\n- 1 Older Brother\n- 1 Younger Brother\n\nPersonality\n- Personality: Wise, Egotistic, Assertive, Just, Disruptive, Self-sufficient\n- Mannerisms: Grits teeth, Leans back\n- Flaws: Beady Eyes\n\nAppearance\n- Hair: Spiky Grey\n- Eyes: Amber\n- Build: Ragged",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 1004,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 0,
+ "gold": 760,
  "hair_color": [
-  "Blond"
+  "Grey"
  ],
  "hair_type": [
-  "Straight"
+  "Spiky"
  ],
  "height_number": "7'0\"",
- "hero_points": 0,
+ "hero_points": 3,
  "homebrew_feat_desc_dict": {
-  "Additional Traits": "You have more traits than normal",
-  "Blind-Fight": "You are skilled at attacking opponents that you cannot clearly perceive",
+  "Acrobatic": "You are skilled at leaping, jumping, and flying",
+  "Blinding Flash": "You can temporarily blind your opponent by using your weapon or shield to flash sunlight into its eyes",
   "Bludgeoner": "You can knock foes out cold with just about any blunt instrument",
-  "Broken Wing Gambit": "You feign weakness, making yourself a tempting and distracting target",
-  "Coordinated Maneuvers": "You are skilled at working with your allies to perform dangerous combat maneuvers",
-  "Demon Hunter": "You are well-versed in demonic lore",
-  "Desperate Battler": "Your experiences fighting against numerous foes that have already overwhelmed your allies, friends, and family have forced you to excel at fighting on your own",
-  "Flagbearer": "When brandishing a flag adorned with the standard of an organization you owe allegiance to, you inspire nearby members of the same allegiance",
-  "Footslasher": "You are trained to strike at a large foe's feet to impede its movement and cause great pain",
-  "Harrowed": "Numerous Harrow readings early in your life seem to have hit the mark precisely, increasing your belief that you are destined for a specific purpose in life",
-  "Hero's Fortune": "Even at the start of your career, it was clear that you had a chance at greatness, and your legend continues to grow with every adventure",
-  "Improved Trip": "You are skilled at sending your opponents to the ground",
-  "Improved Unarmed Strike": "You are skilled at fighting while unarmed",
-  "Master Alchemist": "Your mastery of alchemy is nearly supernatural",
+  "Coordinated Charge": "You are an expert at leading your allies into the fray",
+  "Defensive Weapon Training": "You know how to defend yourself against a certain class of weaponry",
+  "Endurance": "Harsh conditions or long exertions do not easily tire you",
+  "Flanking Foil": "Fighting multiple foes is easy for you",
+  "Improved Day Job": "You learned the importance of an honest day's work while training as an initiate of the Pathf inder Society",
+  "Improved Initiative": "Your quick ref lexes allow you to react rapidly to danger",
   "Meditation Master": "When fully focused on your inner self, you can enter a deep meditative state that allows you a more perfect control over your mind and body",
-  "Monkey Style": "Your unarmed fighting style is nimble and unpredictable, full of ground rolls and short leaps",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Scarlet Throne Dignity": "Noble training has enabled you to withstand attacks that would harm those of lesser breeding. you can expend a readied maneuver as an immediate action in response to an attack being made against you. if you do, make an attack roll with a weapon you are wielding. if your attack roll is higher than your opponents, their attack is negated, and you can take a 5-foot step, even if you have already moved or taken a 5-foot step this round.",
-  "Scarlet Throne Riposte": "You seize opportunity as it comes, taking advantage of your enemys poor position after a missed attack. whenever you use an ability to negate an attack from an opponent (such as with a counter or with the scarlet throne dignity feat), that opponent provokes an attack of opportunity from you. a given creature can only provoke an attack of opportunity from you in this way once per round.",
-  "Scarlet Throne Style": "Your skill with a single blade allows you to strike with the same force as those much stronger than you. as long as you only attack with a single weapon wielded in one hand during a round, you treat that weapon as if you were wielding it in two hands for the purposes of feats and abilities that would from this change. this does not increase your strength bonus to damage with the weapon.",
-  "Scorpion Style": "You can perform an unarmed strike that greatly hampers your target's movement",
-  "Shield Wall": "You form a unified defense with those around you",
-  "Siphon Poison": "You can remove poison from afflicted creatures",
-  "Snake Style": "You watch your foe's every movement and then punch through its defense",
-  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
+  "Performance Weapon Mastery": "You wield all your weapons with the flair of a performer",
+  "Racial Heritage": "The blood of a non-human ancestor flows in your veins",
+  "Shadow Dodge": "You use light and darkness to your advantage, confusing your enemies and confounding their senses",
+  "Strong Comeback": "You learn quickly from past mistakes",
+  "Thrashing Dragon Pounce": "Your swift movements allow you to close the gap and strike quickly against your foe. whenever you initiate a strike that requires you to make only a single melee attack, you can make an additional attack with another weapon as a free action. this attack is made at your highest base attack bonus, although you take the penalties for fighting with two weapons as normal. this attack does not gain any of the of the strike you initiated.",
+  "Thrashing Dragon Style": "Your skill with two weapons makes you as dangerous as foes who wield one larger weapon. once per round, when you make an attack as a standard action or attack action, you can make an additional attack with another weapon as a free action. this attack is made at your highest base attack bonus, although you take the penalties for fighting with two weapons as normal.",
+  "Thrashing Dragon Whirlwind": "Your fury strikes out at all enemies around you. as a full-round action, you can make one melee attack with a weapon in your main hand and a weapon in your off hand against each opponent within reach. this attack is made at your highest base attack bonus, and you do not take the penalties for fighting with two weapons on these attacks.",
+  "Totem Spirit": "You are mystically tied to your tribe's sacred totem"
  },
  "inherents": {
   "cha": 1,
@@ -447,28 +326,29 @@
  "initiator_level": 10,
  "int": 14,
  "item_changes_dict": {
-  "Centering Jewel": {
+  "Equestrian Belt": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.rid",
+     "text": "Furthermore, the belt grants a +[[4]] competence bonus on all other ride checks, including ones made while the wearer is in heavy armor."
+    }
+   ]
+  },
+  "Ophidian Coil": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "If worn for [[24]] hours, it causes its wearer to manifest many serpentine traits. The wearer grows a pair of fangs, gaining a bite attack as a primary natural attack that deals [[1d4]] points of piercing damage for a medium wearer or [[1d3]] points of damage for a small wearer. Three times per day as a free action, the wearer of the ring may cause her fangs to drip with venom, making her bite attack poisonous for [[1]] round. The save dc of this poison is equal to 10 + 1/2 the wearer's hit dice + the wearer's constitution modifier, but otherwise acts as black adder venom."
+    }
+   ]
+  },
+  "Witness Hunter's Ring": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "The wearer can center herself (pathfinder rpg occult adventures 144) as a swift action."
-   ]
-  },
-  "Living Garments": {
-   "changes": [
-    {
-     "formula": "5",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.dip",
-     "type": "competence"
-    }
-   ],
-   "contextNotes": [
-    {
-     "target": "skill.dip",
-     "text": "On command, a living garment can make a number of subtle adjustments to itself, including coloring, fit, and basic design, accommodating and accentuating whatever mood the wearer wishes to convey. It always remains clean, and automatically repairs damage to itself at a rate of 1 hit point per round (hardness 0, 4 hit points)."
-    }
+    "By concentrating on the ring as a move action, the wearer learns whether he is being observed and whether it is by one or by more than one creature. Once per day, the wearer can use locate creature on command to target creatures that are currently observing him. In addition, the wearer can cast detect scrying once per day on command."
    ]
   }
  },
@@ -477,11 +357,11 @@
  "language_text": [
   "Common",
   "Orc",
-  "Goblin",
+  "Abyssal",
+  "Giant",
   "Gnoll",
   "Draconic",
-  "Abyssal",
-  "Giant"
+  "Goblin"
  ],
  "level": 10,
  "level_up_stats": {
@@ -496,193 +376,193 @@
  "main_stat": "cha",
  "maneuvers_choose_from": [
   [
-   "Princes Attitude",
-   "Steady Hand"
+   "Slipstream Strike",
+   "Eye of the Needle"
   ],
   [
-   "Sanguine Barrier",
-   "Feel The Wind"
+   "Reflexive Twist",
+   "Flick of the Wrist"
   ],
   [
-   "Dazing Attack",
-   "Strike of Defeat"
+   "Cascading Draft",
+   "Disarming Blast",
+   "Fangs Strike Low"
   ],
   [
-   "Disarming Gust",
-   "Weeping Scarlet Razor",
-   "Searing Break"
+   "Cutting Gale",
+   "Iron Wind"
   ],
   [
-   "Ruby Zenith Strike",
-   "Solar Wind Lancet"
+   "False Wind",
+   "Reversing Thrust"
   ]
  ],
  "maneuvers_desc_dict": {
-  "Dazing Attack": {
-   "action": "1 standard action",
-   "description": "The swiftness of the Scarlet Throne disciples blade is a thing of terrific power, and by initiating this strike he demonstrates this potency. The disciple makes a melee attack against a target which if successful inflicts an additional 3d6 points of damage and upon a failed Fortitude save DC 13 + initiation modifier dazes the opponent for one round.",
-   "discipline": "Scarlet Throne",
-   "duration": "Instantaneous, or one round",
+  "Battle Dragons Stance": {
+   "action": "1 swift action",
+   "description": "The Battle Dragons Stance shows the disciple how to balance his fighting style and through this centering of being, he may find speed, finesse, and power. While in the Battle Dragons Stance, the disciple reduces his two-weapon fighting penalties by 2, and gains a +4 bonus to Initiative checks and adds 1d6 + initiation modifier to melee damage while fighting with two weapons.",
+   "discipline": "Thrashing Dragon",
+   "duration": "Stance",
    "level": 3,
-   "range": "Melee attack",
-   "type": "strike"
+   "range": "Personal",
+   "type": "stance"
   },
-  "Disarming Gust": {
+  "Bend with the Wind": {
+   "action": "1 swift action",
+   "description": "The graceful, flowing movements of the Thrashing Dragons dance helps defend the disciple in combat while providing him the ability to move through danger unscathed. While in this stance, for each attack that misses the disciple, he may either gain a +2 dodge bonus until his next turn, or he may make a free 5-ft. step to any square his attacker threatens which does not provoke attacks of opportunity. The initiator can mix which benefit he wishes to gain from this stance from multiple missed attacks. If the initiator is unable to take a 5 ft. step, he is not permitted to select a dodge bonus due to being constrained and having no room to move around in.",
+   "discipline": "Thrashing Dragon",
+   "duration": "Stance",
+   "level": 5,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Cascading Draft": {
    "action": "1 standard action",
-   "description": "A swift breeze and an explosion of agony is what the enemy of the disciple knows when this strike is used in battle as his sword hand is struck by the disciples skillful attack. The initiator makes a ranged attack against the targets CMD using his initiation modifier to calculate his CMB in place of his Strength or Dexterity modifier initiators choice. The initiator also gains a +2 circumstance bonus to the CMD check. If successful, he inflicts 3d6 points of damage and the target is successfully disarmed.",
-   "discipline": "Solar Wind",
+   "description": "Reading the winds allows you to hit further and strike harder than any other martial artist. After you initiate this boost, your next ranged attack this round deals an additional +2 damage for every 20 feet of distance between you and the target up to a maximum of +20 damage.",
+   "discipline": "Tempest Gale",
+   "duration": "1 round",
+   "level": 3,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Cutting Gale": {
+   "action": "1 standard action",
+   "description": "Your arrows leave wounds which bleed more fiercely than the pinpricks of a thousand lesser archers. Make a ranged attack. If it hits, it deals weapon damage as normal plus an additional 5d6 points of damage and automatically overcomes damage reduction. In addition, a struck target must succeed at a Fortitude save DC 14 + your initiation modifier or take points of bleed damage equal to your initiation modifier. The target continues to bleed until the bleeding is stopped via magical healing or a successful DC 15 Heal check.",
+   "discipline": "Tempest Gale",
    "duration": "Instantaneous",
    "level": 4,
    "range": "Ranged attack",
    "type": "strike"
   },
-  "Feel The Wind": {
+  "Dancing Winds Stance": {
    "action": "1 swift action",
-   "description": "By studying the wind and air around him, the Solar Wind disciple learns to overcome his surroundings difficulties when using ranged weapons and may fire true. The initiator may ignore environmental variables such as high winds and storm and rain that would cause the initiator to suffer penalties to his attack rolls, magically created such aswall of windorcontrol weatheror naturally caused such as in a gale force wind, when making ranged attacks for one round. This is a supernatural ability.",
-   "discipline": "Solar Wind",
-   "duration": "One round",
-   "level": 2,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Princes Attitude": {
-   "action": "1 swift action",
-   "description": "The Scarlet Throne disciple knows that he is nobility in the savagery of war, and conducts himself as such when moving through melee. The initiator gains a +4 dodge bonus to his Armor Class when he moves through threatened areas and provokes attacks of opportunity and a +2 competence bonus to Reflex and Will saves until his next turn.",
-   "discipline": "Scarlet Throne",
-   "duration": "One round",
-   "level": 1,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Ruby Zenith Strike": {
-   "action": "1 standard action",
-   "description": "The focus of battle teaches that in a single hairs breadth of time, a warrior may strike down a foe in a single blow. The disciple makes a Sense Motive check in place of his normal attack roll he may add any enhancement bonus from his weapon or feats that apply from the use of his weapon to this Sense Motive check as well, and if this Sense Motive check equals or exceeds the targets armor class, the attack deals triple damage. If this check does not meet or exceed the targets armor class, then the attack fails and the disciple misses.",
-   "discipline": "Scarlet Throne",
-   "duration": "Instantaneous",
+   "description": "The wind whips around you as you move, guarding you against attacks so long as you remain in motion. While you maintain this stance, in any round that you move at least 10 feet, you gain the benefits of the improved evasion ability and attacks made against you suffer a 20% miss chance until the start of your next turn.",
+   "discipline": "Tempest Gale",
+   "duration": "Stance",
    "level": 5,
-   "range": "Melee attack",
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Disarming Blast": {
+   "action": "1 standard action",
+   "description": "With a combination of might and skill, you fire a shot that hits with such force it disarms the enemy. Make a ranged attack. If it hits, it deals weapon damage as normal plus an additional 3d6 points of damage, and you can make a disarm attempt against the target as a free action, using a Sleight of Hand check in place of your combat maneuver check. This disarm attempt does not provoke an attack of opportunity.",
+   "discipline": "Tempest Gale",
+   "duration": "Instantaneous",
+   "level": 3,
+   "range": "Ranged attack",
    "type": "strike"
   },
-  "Sanguine Barrier": {
-   "action": "1 immediate action",
-   "description": "The focus required in battle allows the disciple to anticipate incoming attacks. The disciple makes a Sense Motive check and add a +2 competence bonus to the roll, opposing a single melee or non-spell or spell-like ability ranged attack. If successful, the disciple negates the attack.",
-   "discipline": "Scarlet Throne",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "Personal",
-   "type": "counter"
-  },
-  "Scarlet Einhander": {
+  "Eye of the Needle": {
    "action": "1 swift action",
-   "description": "By adopting this stance, the disciple presents a slim profile to his foes, holding his weapon low and one-handed, and leads with his blade in an elegant and graceful manner, his strikes strong and his profile aiding him in defense. When wielding a melee weapon in one hand, the initiator presents a slim profile with strong offensive and defensive ability. The initiator gains a +2 shield bonus to his Armor Class and inflicts an additional 1d6 points of damage while in this stance. The shield bonus granted by this stance increases by +1 when the characters initiator level reaches 6th, and increases again by +1 at 12th and 18th initiator level. Upon reaching 10th initiator level, the bonus damage increases to 2d6.",
-   "discipline": "Scarlet Throne",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Searing Break": {
-   "action": "1 swift action",
-   "description": "By binding the light of the suns rays into his weapons, the disciple of the Solar Wind may attack with the suns burning heat. As a swift action, the initiator may add an additional 3d6 points of fire damage on all ranged attack for one round. This is a supernatural ability.",
-   "discipline": "Solar Wind",
-   "duration": "One round",
-   "level": 4,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Solar Wind Lancet": {
-   "action": "1 swift action",
-   "description": "With the mighty force of the Solar Wind, the disciple lets loose a missile with breath-stealing, devastating force. Upon initiating this boost, the next ranged attack that the initiator makes inflicts an additional 4d6 points of damage upon a successful attack and potentially knocks his target prone a successful DC 15 + initiation modifier Fortitude save negates being knocked prone. This is a supernatural ability.",
-   "discipline": "Solar Wind",
-   "duration": "One turn",
-   "level": 5,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Stance of Piercing Rays": {
-   "action": "1 swift action",
-   "description": "A Solar Wind disciple learns to cause his ammunition to pierce like the burning rays of the sun itself. While in this stance, the initiators ranged attacks inflict an additional 1d6 points of fire damage. This bonus damage increases by an additional 1d6 points of fire damage every eight initiator levels. This is a supernatural ability.",
-   "discipline": "Solar Wind",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Steady Hand": {
-   "action": "1 swift action",
-   "description": "The disciples limbs and muscles are strong and wise with the knowledge of weapons in flight. As a swift action, the initiator may increase the range of his ranged attacks by an additional 30-ft. for the first range increment first increment only for one round.",
-   "discipline": "Solar Wind",
+   "description": "For most archers, an enemy engaged in melee is a difficult target at best, but for you a smaller target only presents greater opportunity. After you initiate this boost, your next ranged attack roll this round gains a +4 bonus if the target of the attack is engaged in melee.",
+   "discipline": "Tempest Gale",
    "duration": "1 round",
    "level": 1,
    "range": "Personal",
    "type": "boost"
   },
-  "Strike of Defeat": {
-   "action": "1 standard action",
-   "description": "A dead foe is a foe that can trouble you no more, is an old adage of the Scarlet Throne disciple. An injured foe is easy prey, but is still a foe nonetheless. By utilizing this swift executioners strike, the Scarlet Throne disciple removes a potential threat and obstacle from his path. The disciple makes an attack against a foe which if successful deals additional damage determined by the state of the enemys hit points. If the enemy has more than 75% of his total hit points, this strike does no additional damage. If the foe has less than 75% hit points, this strike inflicts an additional 4d6 points of damage. If the foe has less than 25% of his total hit points, this strike inflicts an additional 8d6 points of damage.",
-   "discipline": "Scarlet Throne",
+  "False Wind": {
+   "action": "1 immediate action",
+   "description": "You unleash a rapid shot that distracts or disables an enemy, preventing them from harming you or your ally. You can initiate this counter in response to an attack being made against you or an ally by a creature you can see. Make a ranged attack against that creature. If it hits, it deals weapon damage as normal, and the ally targeted by the creature you attacked can move up to their speed as a free action, even if it isnt their turn. This movement does not provoke attacks of opportunity.",
+   "discipline": "Tempest Gale",
    "duration": "Instantaneous",
+   "level": 5,
+   "range": "Ranged attack",
+   "type": "counter"
+  },
+  "Fangs Strike Low": {
+   "action": "1 standard action",
+   "description": "By forcing an opponents guard up, the Thrashing Dragon spins low and attacks at the legs of the target to reduce his mobility and cause deep, flensing wounds. Upon successfully striking a target in melee combat with this maneuver, in addition to weapon damage the initiators attack halves the targets land speed and inflicts 1d6 points of bleed damage per round for three rounds or until the target has been healed magically or by a successful DC 15 Heal check.",
+   "discipline": "Thrashing Dragon",
+   "duration": "3 rounds",
    "level": 3,
+   "range": "One melee attack",
+   "type": "strike"
+  },
+  "Flick of the Wrist": {
+   "action": "1 full round action",
+   "description": "With two rapid slaps from his blades, the Thrashing Dragon disciples ferocity puts an opponent off balance and with a flick of the wrist the disciple takes away the weapon of his foe. The initiator makes two rapid attack rolls at his full base attack bonus against the targets AC with a +2 bonus. If both attacks are successful, the target is disarmed of his primary weapon no roll needed. Resolve damage from the two attacks made as part of this strike as normal. If the target is using natural attacks or the target has a locked gauntlet, then this maneuver is ineffective for disarming a foe.",
+   "discipline": "Thrashing Dragon",
+   "duration": "Instantaneous",
+   "level": 2,
    "range": "Melee attack",
    "type": "strike"
   },
-  "Sunwalker Stance": {
+  "Inner Sphere Stance": {
    "action": "1 swift action",
-   "description": "Using the hunting techniques of the ancient days of the White Steppes, the Solar Wind disciple hunts on the move, making attacks while chasing down his prey. The initiator gains the benefits of the Shot on the Run feat As a full-round action, you can move up to your speed and make a single ranged attack at any point during your movement while in this stance he does not need to meet the prerequisites of this feat, and he gains a +2 circumstance bonus to his armor class against attacks if he moves more than 10-ft. during his turn.",
-   "discipline": "Solar Wind",
+   "description": "A defensive stance that focuses on using the disciples dance-like movements to confound his foe, Stance allows the disciple to use erratic movements to defend himself and bolster his confidence. When wielding two weapons while in this stance, the disciple gains a +2 dodge bonus to AC and a +2 morale bonus to Will saves. These bonuses increase by +1 when the characters initiator level reaches 6th, and increases again by +1 at 12th and 18th initiator level.",
+   "discipline": "Thrashing Dragon",
    "duration": "Stance",
-   "level": 3,
+   "level": 1,
    "range": "Personal",
    "type": "stance"
   },
-  "Unfettered Movement": {
-   "action": "1 swift action",
-   "description": "The Scarlet Throne disciple is swift in battle and in his ability to go from one skirmish to the next to choose his next foe. By assuming this stance, the disciple gains a +10-ft. bonus to his base speed and gains a +4 dodge bonus to his armor class against attacks of opportunity.",
-   "discipline": "Scarlet Throne",
-   "duration": "Stance",
-   "level": 3,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Weeping Scarlet Razor": {
+  "Iron Wind": {
    "action": "1 standard action",
-   "description": "Even the basest common soldier knows that there are places on a mans body where if he were to be stabbed, then he would bleed out in minutes. The Scarlet Throne disciple takes this knowledge and arms himself with his superior skill to utilize this arterial strike against his foes. The initiator makes a melee attack against a target creature, and if successful, this attack inflicts an additional 4d6 points of damage and the target begins to bleed profusely, inflicting 4 points of bleed damage per round until a successful Heal check DC 20 or a spell or effect that cures hit point damage has been administered to the target.",
-   "discipline": "Scarlet Throne",
-   "duration": "Special",
+   "description": "A single powerful blow can leave an enemy reeling, and you excel at delivering such blows. Make a ranged attack. If it hits, it deal weapon damage as normal plus an additional 4d6 points of damage, and the target must succeed at a Fortitude save DC 14 + your initiation modifier or become staggered for a number of rounds equal to your initiation modifier.",
+   "discipline": "Tempest Gale",
+   "duration": "Instantaneous see text",
    "level": 4,
-   "range": "Melee attack",
+   "range": "Ranged attack",
+   "type": "strike"
+  },
+  "Reflexive Twist": {
+   "action": "1 immediate action",
+   "description": "With his athletic abilities and reflexes honed to a razors edge, the Thrashing Dragon disciple may incorporate reflexive evasions into his fighting dance at a moments notice to defend himself from danger. When making a Reflex save, the initiator may instead make an Acrobatics check in place of his Reflex saving throw bonus to determine his success.",
+   "discipline": "Thrashing Dragon",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "One melee attack",
+   "type": "counter"
+  },
+  "Reversing Thrust": {
+   "action": "1 immediate action",
+   "description": "By watching the form of the enemy attacking him, the disciple may expertly twist and dodge way from the attack while making an attack on his foe in return. The initiator makes an opposed Acrobatics check against the targets attack roll. If successful, the disciple evades and negates his foes attack and may make an immediate counter attack at his full attack bonus.",
+   "discipline": "Thrashing Dragon",
+   "duration": "Instantaneous",
+   "level": 5,
+   "range": "Personal",
+   "type": "counter"
+  },
+  "Slipstream Strike": {
+   "action": "1 standard action",
+   "description": "The most basic protection against an arrow is some form of cover, but you know many ways to negate this defense. Make a ranged attack, ignoring any cover bonuses to the targets AC. If it hits, it deals weapon damage as normal.",
+   "discipline": "Tempest Gale",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Ranged attack",
    "type": "strike"
   }
  },
  "maneuvers_known_list": [
   2,
   2,
-  2,
   3,
+  2,
   2
  ],
  "maneuvers_readied_list": [
   0,
   0,
-  2,
   3,
+  2,
   2
  ],
  "maneuvers_readied_names": [
   [],
   [],
   [
-   "Strike of Defeat",
-   "Dazing Attack"
+   "Disarming Blast",
+   "Fangs Strike Low",
+   "Cascading Draft"
   ],
   [
-   "Searing Break",
-   "Disarming Gust",
-   "Weeping Scarlet Razor"
+   "Iron Wind",
+   "Cutting Gale"
   ],
   [
-   "Solar Wind Lancet",
-   "Ruby Zenith Strike"
+   "Reversing Thrust",
+   "False Wind"
   ]
  ],
  "mannerisms": [
@@ -691,15 +571,17 @@
  ],
  "martial_disciplines": [
   "Solar Wind",
-  "Scarlet Throne"
+  "Thrashing Dragon",
+  "Tempest Gale"
  ],
  "mini_alignment": "ln",
  "mod_char_sheet_var": false,
  "mt_feats": [],
- "older_brothers": " you have 0 older brothers",
+ "normal_feat_amount": 6,
+ "older_brothers": " you have 1 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "loving mother, absent father, raised in a middle income household",
+ "parents": "loving mother, loving father, raised in a middle income household",
  "personality_traits": [
   "Wise",
   "Egotistic",
@@ -708,31 +590,23 @@
   "Disruptive",
   "Self-sufficient"
  ],
- "platnium": 0.0,
+ "platnium": 76.0,
  "profession_ability_items": [
   {
-   "changes": [
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "cmb",
-     "type": "untyped"
-    }
-   ],
+   "changes": [],
    "contextNotes": [
     {
-     "target": "cmb",
-     "text": "+2 CMB and no AoO with your two chosen maneuvers"
+     "target": "init",
+     "text": "Ignores natural difficult terrain when moving"
+    },
+    {
+     "target": "init",
+     "text": "+2 initiative in favored terrain"
     }
    ],
-   "description": "<p><em>Profession (Fishing Boat Captain) - rank 15/15. Associate skills (ranks 1/4/7/10): Appraise, Sense Motive, Perception, Sleight of Hand.</em></p><hr><p><strong>Brawler's Fury (Ex)</strong></p><p>As a swift action you can enter a focused fury for 1 minute, gaining the benefit of a single combat feat you do not possess (you must meet its prerequisites). You can use this once per day.</p><hr><p><strong>Maneuver Training (Ex)</strong></p><p>Choose two combat maneuvers (such as disarm, trip, grapple, or sunder). You gain a +2 bonus on combat maneuver checks made with those maneuvers, and using them does not provoke attacks of opportunity.</p><hr><p><strong>Combat Reflexes Drill (Ex)</strong></p><p>Sentry training keeps your blade always moving. You may make a number of attacks of opportunity each round equal to 1 + your Dexterity modifier, and you can do so even while flat-footed.</p>",
-   "name": "Profession Rank 5: (Fishing Boat Captain)",
-   "uses": {
-    "maxFormula": "1",
-    "per": "day",
-    "value": null
-   }
+   "description": "<p><em>Profession (Greenwood Ranger) - rank 10/10. Associate skills (ranks 1/4/7/10): Sleight of Hand, Appraise, Knowledge (local), Diplomacy.</em></p><hr><p><strong>Animal Companion (Ex)</strong></p><p>You gain a loyal animal companion that advances as that of a druid of a level equal to half your character level (minimum 1).</p><hr><p><strong>Woodland Stride (Ex)</strong></p><p>The character moves through undergrowth, thorns, and natural difficult terrain at full speed, leaving the brush undisturbed behind them.</p><hr><p><strong>Favored Terrain (Ex)</strong></p><p>Choose one type of terrain. While in it you gain a +2 bonus on initiative and on Knowledge (geography), Perception, Stealth, and Survival checks, and you leave no trail and cannot be tracked unless you choose.</p>",
+   "name": "Profession Rank 5: (Greenwood Ranger)",
+   "uses": null
   },
   {
    "changes": [
@@ -740,119 +614,114 @@
      "formula": "2",
      "operator": "add",
      "priority": 0,
-     "target": "acpA",
-     "type": "untyped"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "cmd",
-     "type": "untyped"
+     "target": "skill.int",
+     "type": "competence"
     }
    ],
    "contextNotes": [
     {
      "target": "attack",
-     "text": "+2 to attack on a whirlwind sweep of all foes in reach"
+     "text": "+2 to confirm critical hits"
     }
    ],
-   "description": "<p><em>Profession (Fishing Boat Captain) - rank 15/15.</em></p><hr><p><strong>Armor Training (Ex)</strong></p><p>You wear armor like a second skin. Reduce your armor check penalty by 2 (minimum 0) and increase your armor's maximum Dexterity bonus by 2. The campaign treats your armor training as eight levels higher, and you move at full speed in medium armor.</p><hr><p><strong>Battle Hardened (Ex)</strong></p><p>Countless campaigns have toughened you against punishment. You gain damage reduction 2/&mdash; against weapon attacks and a +2 bonus to your CMD against all combat maneuvers.</p><hr><p><strong>Whirlwind Reach (Ex)</strong></p><p>You sweep your weapon in a controlled arc that few can slip past. As a standard action you can make a single melee attack against every foe within reach, and you gain a +2 untyped bonus on those attack rolls.</p>",
-   "name": "Profession Rank 15: (Fishing Boat Captain)",
-   "uses": null
-  },
-  {
-   "changes": [
-    {
-     "formula": "1",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.dip",
-     "type": "circumstance"
-    }
-   ],
-   "contextNotes": [],
-   "description": "<p><em>Profession (Penitent Novice) - rank 6/10. Associate skills (ranks 1/4/7/10): Diplomacy, Sleight of Hand.</em></p><hr><p><strong>Whispered Litany (Ex)</strong></p><p>Warlord murmurs the rote prayers of the faith without fail, earning the trust of the devout. Grants a +1 <strong>circumstance</strong> bonus on Diplomacy checks made with co-religionists.</p><hr><p><strong>Orisons (Sp)</strong></p><p>You can cast guidance, light, and stabilize at will as spell-like abilities (caster level equal to your character level).</p>",
-   "name": "Profession Rank 5: (Penitent Novice)",
+   "description": "<p><em>Profession (Battlefield Carrion-Hauler) - rank 10/10. Associate skills (ranks 1/4/7/10): Profession, Diplomacy, Perception, Handle Animal.</em></p><hr><p><strong>Quartermaster's Eye (Ex)</strong></p><p>You know good steel from scrap at a glance. You gain a +2 competence bonus on attack rolls made to confirm critical hits, the small edge of a soldier who keeps a keen edge.</p><hr><p><strong>Parade Bearing (Ex)</strong></p><p>Years on the muster ground taught you to stand tall and look the part. You gain a +2 competence bonus on Intimidate checks made to demoralize foes.</p>",
+   "name": "Profession Rank 5: (Battlefield Carrion-Hauler)",
    "uses": null
   }
  ],
  "profession_feat_desc": {
-  "Multi Talented": "Your profession rank cap increases by 10.",
-  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
+  "Multi Talented": "Your profession rank cap increases by 10."
  },
  "profession_feats": [
-  "Multi Talented",
-  "True Calling"
+  "Multi Talented"
  ],
  "profession_pool": 25,
  "profession_ranks": [
   {
-   "ability_theme": "martial",
+   "ability_theme": "nature",
    "ability_tier": "good",
    "associate_skills": [
+    "Sleight of Hand",
     "Appraise",
-    "Sense Motive",
-    "Perception",
-    "Sleight of Hand"
+    "Knowledge (local)",
+    "Diplomacy"
    ],
-   "cap": 15,
-   "name": "Fishing Boat Captain",
-   "rank15_abilities": [
+   "cap": 10,
+   "name": "Greenwood Ranger",
+   "rank15_abilities": [],
+   "rank5_abilities": [
     {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "acpA",
-       "type": "untyped"
-      }
-     ],
+     "changes": [],
      "contextNotes": [],
-     "desc": "<p>You wear armor like a second skin. Reduce your armor check penalty by 2 (minimum 0) and increase your armor's maximum Dexterity bonus by 2. The campaign treats your armor training as eight levels higher, and you move at full speed in medium armor.</p>",
-     "name": "Armor Training (Ex)",
+     "desc": "<p>You gain a loyal animal companion that advances as that of a druid of a level equal to half your character level (minimum 1).</p>",
+     "name": "Animal Companion (Ex)",
      "uses": null
     },
     {
-     "changes": [
+     "changes": [],
+     "contextNotes": [
       {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "cmd",
-       "type": "untyped"
+       "target": "init",
+       "text": "Ignores natural difficult terrain when moving"
       }
      ],
-     "contextNotes": [],
-     "desc": "<p>Countless campaigns have toughened you against punishment. You gain damage reduction 2/&mdash; against weapon attacks and a +2 bonus to your CMD against all combat maneuvers.</p>",
-     "name": "Battle Hardened (Ex)",
+     "desc": "<p>The character moves through undergrowth, thorns, and natural difficult terrain at full speed, leaving the brush undisturbed behind them.</p>",
+     "name": "Woodland Stride (Ex)",
      "uses": null
     },
+    {
+     "changes": [],
+     "contextNotes": [
+      {
+       "target": "init",
+       "text": "+2 initiative in favored terrain"
+      }
+     ],
+     "desc": "<p>Choose one type of terrain. While in it you gain a +2 bonus on initiative and on Knowledge (geography), Perception, Stealth, and Survival checks, and you leave no trail and cannot be tracked unless you choose.</p>",
+     "name": "Favored Terrain (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 10,
+   "skill_label": "Profession (Greenwood Ranger)"
+  },
+  {
+   "ability_theme": "martial",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Knowledge (local)"
+   ],
+   "cap": 10,
+   "name": "Watch Underling",
+   "rank15_abilities": [],
+   "rank5_abilities": [],
+   "ranks": 1,
+   "skill_label": "Profession (Watch Underling)"
+  },
+  {
+   "ability_theme": "martial",
+   "ability_tier": "garbage",
+   "associate_skills": [
+    "Profession",
+    "Diplomacy",
+    "Perception",
+    "Handle Animal"
+   ],
+   "cap": 10,
+   "name": "Battlefield Carrion-Hauler",
+   "rank15_abilities": [],
+   "rank5_abilities": [
     {
      "changes": [],
      "contextNotes": [
       {
        "target": "attack",
-       "text": "+2 to attack on a whirlwind sweep of all foes in reach"
+       "text": "+2 to confirm critical hits"
       }
      ],
-     "desc": "<p>You sweep your weapon in a controlled arc that few can slip past. As a standard action you can make a single melee attack against every foe within reach, and you gain a +2 untyped bonus on those attack rolls.</p>",
-     "name": "Whirlwind Reach (Ex)",
+     "desc": "<p>You know good steel from scrap at a glance. You gain a +2 competence bonus on attack rolls made to confirm critical hits, the small edge of a soldier who keeps a keen edge.</p>",
+     "name": "Quartermaster's Eye (Ex)",
      "uses": null
-    }
-   ],
-   "rank5_abilities": [
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>As a swift action you can enter a focused fury for 1 minute, gaining the benefit of a single combat feat you do not possess (you must meet its prerequisites). You can use this once per day.</p>",
-     "name": "Brawler's Fury (Ex)",
-     "uses": {
-      "maxFormula": "1",
-      "per": "day",
-      "value": null
-     }
     },
     {
      "changes": [
@@ -860,87 +729,52 @@
        "formula": "2",
        "operator": "add",
        "priority": 0,
-       "target": "cmb",
-       "type": "untyped"
+       "target": "skill.int",
+       "type": "competence"
       }
      ],
-     "contextNotes": [
-      {
-       "target": "cmb",
-       "text": "+2 CMB and no AoO with your two chosen maneuvers"
-      }
-     ],
-     "desc": "<p>Choose two combat maneuvers (such as disarm, trip, grapple, or sunder). You gain a +2 bonus on combat maneuver checks made with those maneuvers, and using them does not provoke attacks of opportunity.</p>",
-     "name": "Maneuver Training (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [],
      "contextNotes": [],
-     "desc": "<p>Sentry training keeps your blade always moving. You may make a number of attacks of opportunity each round equal to 1 + your Dexterity modifier, and you can do so even while flat-footed.</p>",
-     "name": "Combat Reflexes Drill (Ex)",
+     "desc": "<p>Years on the muster ground taught you to stand tall and look the part. You gain a +2 competence bonus on Intimidate checks made to demoralize foes.</p>",
+     "name": "Parade Bearing (Ex)",
      "uses": null
     }
    ],
-   "ranks": 15,
-   "skill_label": "Profession (Fishing Boat Captain)"
+   "ranks": 10,
+   "skill_label": "Profession (Battlefield Carrion-Hauler)"
   },
   {
-   "ability_theme": "divine",
-   "ability_tier": "bad",
-   "associate_skills": [
-    "Diplomacy",
-    "Sleight of Hand"
-   ],
-   "cap": 10,
-   "name": "Penitent Novice",
-   "rank15_abilities": [],
-   "rank5_abilities": [
-    {
-     "changes": [
-      {
-       "formula": "1",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.dip",
-       "type": "circumstance"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>Warlord murmurs the rote prayers of the faith without fail, earning the trust of the devout. Grants a +1 <strong>circumstance</strong> bonus on Diplomacy checks made with co-religionists.</p>",
-     "name": "Whispered Litany (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>You can cast guidance, light, and stabilize at will as spell-like abilities (caster level equal to your character level).</p>",
-     "name": "Orisons (Sp)",
-     "uses": null
-    }
-   ],
-   "ranks": 6,
-   "skill_label": "Profession (Penitent Novice)"
-  },
-  {
-   "ability_theme": "martial",
+   "ability_theme": "craft",
    "ability_tier": "average",
    "associate_skills": [
-    "Appraise",
-    "Knowledge (local)"
+    "Diplomacy"
    ],
    "cap": 10,
-   "name": "Privateer",
+   "name": "Pruner",
    "rank15_abilities": [],
    "rank5_abilities": [],
-   "ranks": 4,
-   "skill_label": "Profession (Privateer)"
+   "ranks": 3,
+   "skill_label": "Profession (Pruner)"
+  },
+  {
+   "ability_theme": "arcane",
+   "ability_tier": "average",
+   "associate_skills": [
+    "Handle Animal"
+   ],
+   "cap": 10,
+   "name": "Medium",
+   "rank15_abilities": [],
+   "rank5_abilities": [],
+   "ranks": 1,
+   "skill_label": "Profession (Medium)"
   }
  ],
  "professions": [
-  "Fishing Boat Captain",
-  "Penitent Novice",
-  "Privateer"
+  "Greenwood Ranger",
+  "Watch Underling",
+  "Battlefield Carrion-Hauler",
+  "Pruner",
+  "Medium"
  ],
  "racial_stats": {
   "cha": 2,
@@ -1001,7 +835,7 @@
    "name": "Improvisational Equipment"
   }
  ],
- "sheet_health": 58,
+ "sheet_health": 100,
  "shield_ac": 0,
  "shield_armor_check_penalty": " ",
  "shield_enhancement_bonus": 0,
@@ -1010,57 +844,59 @@
  "shield_name": " ",
  "shield_spell_failure": " ",
  "shield_weight": " ",
+ "skill_rank_budget": 120,
  "skill_ranks": {
   "acrobatics": 4,
-  "appraise": 4,
+  "appraise": 10,
   "bluff": 0,
   "climb": 0,
-  "craft": 0,
-  "diplomacy": 6,
-  "disable device": 4,
-  "disguise": 10,
-  "escape artist": 0,
+  "craft": 2,
+  "diplomacy": 0,
+  "disable device": 0,
+  "disguise": 0,
+  "escape artist": 7,
   "fly": 0,
-  "handle animal": 0,
-  "heal": 10,
-  "intimidate": 0,
-  "knowledge arcana": 9,
+  "handle animal": 7,
+  "heal": 3,
+  "intimidate": 6,
+  "knowledge arcana": 1,
   "knowledge dungeoneering": 0,
-  "knowledge engineering": 5,
-  "knowledge geography": 10,
-  "knowledge history": 0,
-  "knowledge local": 0,
-  "knowledge nature": 0,
-  "knowledge nobility": 10,
-  "knowledge planes": 1,
+  "knowledge engineering": 6,
+  "knowledge geography": 5,
+  "knowledge history": 2,
+  "knowledge local": 3,
+  "knowledge nature": 2,
+  "knowledge nobility": 2,
+  "knowledge planes": 0,
   "knowledge religion": 0,
   "linguistics": 3,
-  "perception": 0,
-  "perform": 0,
+  "perception": 4,
+  "perform": 12,
   "profession": 0,
-  "ride": 0,
+  "ride": 10,
   "sense motive": 0,
-  "sleight of hand": 3,
-  "spellcraft": 0,
-  "stealth": 7,
-  "survival": 0,
-  "swim": 10,
-  "use magic device": 4
+  "sleight of hand": 9,
+  "spellcraft": 7,
+  "stealth": 3,
+  "survival": 4,
+  "swim": 3,
+  "use magic device": 5
  },
  "skill_unlock": {
-  "base_skill": "knowledge",
-  "ranks": 10,
-  "skill": "Knowledge (nobility)",
+  "base_skill": "survival",
+  "ranks": 4,
+  "skill": "Survival",
   "unlock": {
-   "10": "After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.",
-   "15": "You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.",
-   "20": "You can roll twice and take the better result on Knowledge checks.",
-   "5": "You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill."
+   "10": "You can track creatures that leave no tracks (including flying/swimming creatures and those using trackless step or pass without trace) at a -20 penalty.",
+   "15": "Once per day you can spend 1 hour and succeed at a DC 30 check to gain cold or fire resistance 5 for 24 hours, sharing it with allies.",
+   "20": "You take only a -10 penalty when tracking creatures that leave no tracks.",
+   "5": "Reduce all nonlethal damage you take from heat, cold, starvation, or thirst by 1 point per 5 ranks."
   },
-  "unlock_html": "<h2>Knowledge (nobility)</h2><p><strong>5 Ranks</strong>: You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill.</p><p><strong>10 Ranks</strong>: After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.</p><p><strong>15 Ranks</strong>: You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.</p><p><strong>20 Ranks</strong>: You can roll twice and take the better result on Knowledge checks.</p>"
+  "unlock_html": "<h2>Survival</h2><p><strong>5 Ranks</strong>: Reduce all nonlethal damage you take from heat, cold, starvation, or thirst by 1 point per 5 ranks.</p><p><strong>10 Ranks</strong>: You can track creatures that leave no tracks (including flying/swimming creatures and those using trackless step or pass without trace) at a -20 penalty.</p><p><strong>15 Ranks</strong>: Once per day you can spend 1 hour and succeed at a DC 30 check to gain cold or fire resistance 5 for 24 hours, sharing it with allies.</p><p><strong>20 Ranks</strong>: You take only a -10 penalty when tracking creatures that leave no tracks.</p>"
  },
  "specialty_schools": [
-  "transmutation"
+  "abjuration",
+  "enchantment"
  ],
  "spell_changes_dict": {},
  "spell_list_choose_from": [],
@@ -1069,108 +905,67 @@
  "spellbooks": [],
  "spells_prepared_per_level": [],
  "sphere_boons": [
-  "Fortified Casting",
-  "Empowered Abilities"
+  "Empowered Abilities",
+  "Overcharge"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
-  "Somatic Casting",
   "Skilled Casting",
   "Painful Magic",
   "Prepared Caster",
-  "Focus Casting"
+  "Magical Signs"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Somatic Casting",
   "Skilled Casting",
   "Painful Magic",
   "Prepared Caster",
-  "Focus Casting",
-  "Fortified Casting",
-  "Empowered Abilities"
+  "Magical Signs",
+  "Empowered Abilities",
+  "Overcharge"
  ],
  "spheres_chosen": [],
  "stances_chosen": [
-  "Sunwalker Stance",
-  "Unfettered Movement",
-  "Scarlet Einhander",
-  "Stance of Piercing Rays"
+  "Dancing Winds Stance",
+  "Inner Sphere Stance",
+  "Bend with the Wind",
+  "Battle Dragons Stance"
  ],
  "story_feat_tax_dict": {},
  "story_feats": [
-  "Harrowed",
-  "Broken Wing Gambit",
-  "Siphon Poison"
+  "Flanking Foil",
+  "Improved Day Job",
+  "Totem Spirit"
  ],
  "str": 5,
  "teamwork_feat_labels": [],
  "teamwork_feats": 0,
  "total_level": 10,
- "total_rolled_hp": 48,
+ "total_rolled_hp": 90,
  "trainer_calibers": [
-  2,
-  3,
-  3,
-  2
+  1
  ],
  "trainer_feat_labels": [
   "(Trainer 1)",
-  "(Trainer 1)",
-  "(Trainer 2)",
-  "(Trainer 2)",
-  "(Trainer 2)",
-  "(Trainer 3)",
-  "(Trainer 3)",
-  "(Trainer 3)",
-  "(Trainer 4)",
-  "(Trainer 4)"
+  "(Trainer 2 - Path of War)"
  ],
  "trainer_feat_tax_dict": {
-  "Blind-Fight": [
-   "improved blind-fight",
-   "greater blind-fight"
-  ],
-  "Improved Trip": [
-   "greater trip",
-   "drag down",
-   "felling escape",
-   "felling smash"
-  ],
-  "Meditation Master": [
-   "body control",
-   "body mastery",
-   "combat meditation",
-   "meditative concentration"
-  ],
-  "Monkey Style": [
-   "monkey moves"
-  ],
-  "Scorpion Style": [
-   "gorgon's fist",
-   "medusa's wrath",
-   "cockatrice strike"
+  "Thrashing Dragon Style": [
+   "Thrashing Dragon Pounce",
+   "Thrashing Dragon Whirlwind"
   ]
  },
  "trainer_feats": [
-  "Blind-Fight",
-  "Master Alchemist",
-  "Improved Unarmed Strike",
-  "Bludgeoner",
-  "Snake Style",
-  "Improved Trip",
-  "Scorpion Style",
-  "Monkey Style",
-  "Desperate Battler",
-  "Meditation Master"
+  "Defensive Weapon Training",
+  "Thrashing Dragon Style"
  ],
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],
- "weapon_name": "Spiked heavy shield",
+ "weapon_name": "Phaleros",
  "weight_number": 289,
  "wis": 14,
- "younger_brothers": " you have 0 younger brothers",
+ "younger_brothers": " you have 1 younger brothers",
  "younger_sisters": " you have 0 younger sisters"
 }
