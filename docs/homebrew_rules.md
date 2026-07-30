@@ -19,7 +19,7 @@ the behaviour in the code. If the two disagree, the code wins and the bundle has
 | Rule area | Bundle page | Plugs into |
 |---|---|---|
 | Ability scores, starting wealth | `house-rules/feat-economy.md` (context) | `stats.py`; the *starting gold* input |
-| Full HP per level (incl. racial HD) | `house-rules/skills-and-hp.md` | HP logic near `level_and_bab.py` |
+| Full HP per level (incl. racial HD) | `house-rules/skills-and-hp.md` | `hp_rolls.py` (homebrew flag → max die/level; Foundry mirrors it via pf1's `healthConfig` world setting — System Settings → Health Configuration, auto-HP with maximized levels/rate) |
 | Traits: 8-pick-4, +1 per minor flaw | `house-rules/flaws-and-traits.md` | trait selection + `data/traits.csv` |
 | Flaws → bonus feats | `house-rules/flaws-and-traits.md` | feat counts (`level_and_bab.py`) |
 | Proficiency ↔ Martial Tradition trade | `house-rules/skills-and-hp.md` | `armor_and_weapon_chooser.py` |
@@ -38,11 +38,15 @@ Highest-value, most generation-relevant first:
 
 1. **Wire homebrew feats** — finish the commented-out Metzofitz selection in `feats.py` behind the
    homebrew flag; source from `data/Metzofitz_Feats.csv`.
-2. **Homebrew feat counts** — add the creation feats and per-flaw feats in `level_and_bab.py`
-   (story feats are already handled).
+2. ~~**Homebrew feat counts**~~ — DONE 2026-07-30: +2 creation feats (folded into the normal
+   bucket) and exactly +1 feat per flaw in `level_and_bab.py::update_level`; swept by
+   `scripts/test_house_invariants.py`.
 3. **Skill alternate abilities** — allowed-ability sets per skill plus a chooser in `skill_ranks.py`.
-4. **Skill rank changes** — the rank boost, per-level cap, mental-ability pick, background ranks.
-5. **Full HP** — max hit die per level including racial HD.
+4. ~~**Skill rank changes**~~ — DONE 2026-07-30: 2→4 rank floor, 3-ranks-per-level cap, +2/level
+   background-only ranks in `skill_ranks.py` (the mental-ability pick already existed); the
+   alternate-ability table remains #3.
+5. ~~**Full HP**~~ — DONE 2026-07-30: max hit die every level in `hp_rolls.py::roll_hp` behind the
+   homebrew flag (racial HD N/A — the generator never emits racial hit dice).
 6. **Feat-tax prereqs** — relax prerequisite checks and default Weapon Finesse behaviour.
 7. **Custom races** — add Loxo / Kalyptran / Dolistani to `PlayableRaces.json` (needs stat blocks,
    which the feat library does not carry).

@@ -46,19 +46,20 @@ Grilling settled what "finish" means and what's in/out:
 
 ## Phase 1 — house-rule numbers: write down, verify, fix (the suspected wrongness)
 
-- [ ] **Write the expected formulas down first** (from Sieg's Guide via the OKF `pathfinder` bundle,
-      `oks/pathfinder/house-rules/`; ask Daniel where the bundle is silent): skill ranks (rank
-      boost, per-level cap, mental-ability pick, background ranks — backlog #4), feat count
-      f(level, flaws, story feats, creation feats — backlog #2/#8 portions), HP policy (who rolls,
-      who gets max; reconcile with pf1's native "maximum HP" health setting that Foundry appears to
-      apply — find that setting and document why sheets show full HP).
-- [ ] Diff the formulas against `skill_ranks.py` / `level_and_bab.py` behavior; **fix skill ranks**
-      (the suspected mismatch) and any feat-count delta found.
-- [ ] **New invariant sweep test** `Backend/scripts/test_house_invariants.py`: all generatable
-      classes × levels 1/5/10/15/20 × 3 seeds; assert the three formulas + payload sanity (no
-      exceptions, buff-gap list empty or known). Reuse the golden-payload harness's generation
-      entry (`generate_random_char()` via `C:\Python310\python.exe`); runtime target < a few
-      minutes, else trim seeds.
+- [x] **Write the expected formulas down first** — taken from the bundle (`skills-and-hp.md`,
+      `feat-economy.md`): skill ranks = per-class max(1, points(2→4 floor) + best final mental mod)
+      × class level + background 2/level + favored; per-skill cap 3×level; feats = ceil(L/2) + 2
+      creation + 1/flaw + (1 + L//5) story + 1 flavor; HP = max die every level + final Con mod × L.
+      Foundry's full HP comes from pf1's `healthConfig` world setting (System Settings → Health
+      Configuration: auto-HP with maximized levels/rate) — documented in `docs/homebrew_rules.md`.
+- [x] Diff + fix (2026-07-30): skill ranks lacked all three house rules (floor/cap/background) —
+      added in `skill_ranks.py`; flaw feats used a `floor(n/2+1)` clamp (wrong at 0/3/4 flaws) and
+      creation +2 was missing — fixed in `level_and_bab.py`; HP was rolled, Con mod floored
+      before halving and ignored inherent/level-up Con — fixed in `hp_rolls.py`. All homebrew-flag
+      gated; goldens regenerated in the same commit.
+- [x] **New invariant sweep test** `Backend/scripts/test_house_invariants.py`: 43 classes ×
+      1/5/10/15/20 × 3 seeds = 645 generations, 6,450 checks, green in ~4 min (payload buff-gap
+      assertions deferred to Phase 3 where the gap report gets fixed).
 
 ## Phase 2 — Metzofitz homebrew feats in (backlog #1)
 

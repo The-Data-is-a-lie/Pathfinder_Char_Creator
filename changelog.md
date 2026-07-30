@@ -19,6 +19,31 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **House-rule numbers verified and implemented (Road-to-1.0 Phase 1).** The three "suspected
+  wrong" areas from the 2026-07-29 grilling were diffed against the OKF house-rules bundle and
+  fixed, all gated on the existing homebrew flag so the standard-PF1 path is unchanged:
+  - *Skill ranks* (`skill_ranks.py`): any 2-ranks/level class now grants 4 (the house rank floor);
+    the per-skill cap is 3 ranks per character level instead of the PF1 level cap; and every
+    character gets +2/level background-only ranks (PF Unchained background list ∩ the canonical
+    35 skills, minus Profession which keeps its own subsystem).
+  - *Feat counts* (`level_and_bab.py`): +2 creation feats (folded into the normal bucket — they
+    carry no label), and flaw feats are now exactly +1 per flaw. The old `floor(n/2+1)` clamp
+    granted a phantom feat at 0 flaws and shorted 3- and 4-flaw characters.
+  - *HP* (`hp_rolls.py`): full (max) hit die at every level per the house rule, matching what pf1's
+    `healthConfig` world setting (auto-HP, maximized) already showed on injected sheets — the
+    generator and Foundry now agree instead of Foundry silently overriding a rolled value.
+- **`scripts/test_house_invariants.py` — the invariant sweep.** Every generatable class (43) ×
+  levels 1/5/10/15/20 × 3 seeds = 645 generations asserting the house *formulas* (feat buckets,
+  skill budget/cap, full-HP totals) rather than pinned sheets; `--classes/--levels/--seeds` trim
+  the matrix. The payload now exports `skill_rank_budget` and `normal_feat_amount` as the sweep's
+  assertion handles.
+
+### Fixed
+- **HP Con-modifier math.** `total_hp_calc` floored before halving (`floor(con-10)/2`), inflating
+  every odd-Con character by level/2 HP, and it read the *base* Con score — inherent bonuses and
+  level-up bumps that landed on Con never reached HP. It now uses the final-score ability modifier.
+- **Background/skill interaction:** `assign_dummy_zeroes` ran after rank assignment and would have
+  zeroed background ranks landing outside the main skill sample; it now zero-fills first.
 - **Baseline chassis class features now get weapon conditionals in the applier.** Smite Evil, Sneak
   Attack and their kin were missing at every layer — the conditional pipeline only ever swept the
   scraped *choice* pools (rage powers, arcana, hexes, talents), so the always-there features no class
