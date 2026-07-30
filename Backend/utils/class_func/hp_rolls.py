@@ -1,6 +1,8 @@
 import random
 from math import ceil, floor
 
+from utils.class_func.skill_ranks import final_ability_mod, homebrew_enabled
+
 
 def hit_dice_calc(character):
     for entry in character.classes:
@@ -15,19 +17,26 @@ def extract_num(hit_die):
 
 
 def roll_hp(character):
-    hp_rolls = []
+    """House HP rule (oks/pathfinder/house-rules/skills-and-hp.md): full (max) hit die at EVERY
+    level when homebrew is on -- matching the pf1 world's maximized health config, so the injected
+    Foundry actor and the generator agree. With homebrew off, the classic per-level roll.
+    Either way the primary class's first level is excluded here: total_hp_calc adds it maxed."""
+    total = 0
     for i, entry in enumerate(character.classes):
-        # The primary class's first level is the maxed die (added in total_hp_calc), so it rolls
-        # level-1 dice; every other class rolls all of its levels.
         dice = entry['level'] - 1 if i == character.primary_class_index else entry['level']
-        for _ in range(dice):
-            hp_rolls.append(random.randint(1, entry['hit_die']))
-    character.total_hp_rolls = sum(hp_rolls)
+        if homebrew_enabled(character):
+            total += dice * entry['hit_die']
+        else:
+            total += sum(random.randint(1, entry['hit_die']) for _ in range(dice))
+    character.total_hp_rolls = total
     return character.total_hp_rolls
 
 
 def total_hp_calc(character):
-    character.Total_HP = character.total_hp_rolls + character.Hit_dice1 + (floor(character.con-10)/2 * character.level)
+    """Hit dice + Con mod x level. The Con mod halves BEFORE flooring (the old
+    floor(con-10)/2 inflated odd-Con HP by level/2) and uses the FINAL Con score, so
+    inherent bonuses and level-up bumps that landed on Con count."""
+    con_mod = final_ability_mod(character, 'con')
     character.sheet_health = character.total_hp_rolls + character.Hit_dice1
-    character.Total_HP = floor(character.Total_HP)
+    character.Total_HP = character.sheet_health + con_mod * character.level
     return character.Total_HP

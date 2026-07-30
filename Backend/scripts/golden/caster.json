@@ -1,18 +1,18 @@
 {
- "Total_HP": 127,
+ "Total_HP": 298,
  "age_number": 37,
  "alignment": "Neutral Good",
  "appearance": [
-  "Puffy eyes"
+  "Tense"
  ],
  "archetype1": null,
- "archetype_info": "{\n    \"Fiendish Vessel\": {\n        \"source\": \"Advanced Race Guide pg. 170 Many clerics pray to or make evil bargains with fiendish powers, devoting body and soul to the insane plans and wicked aims of their despicable patrons. But these mortal clerics are often just shallow beings searching for quick power or the caress of true and final oblivion-few truly grasp the full scope of the entities they worship. Fiendish vessels, through their fiendish heritage, share an innate connection with their patron, and that connection grants them understanding and power. A fiendish vessel has the following class features.\",\n        \"alignment\": \"  Unlike normal clerics, a fiendish vessel's alignment must match her patron's.\",\n        \"domains\": \"  A fiendish vessel must select the Daemon, Demon, or Devil subdomain ( 88-90) as one of her domain choices, based on the fiendish patron she chooses to serve.\",\n        \"channel evil (su)\": \"  At 1st level, a fiendish vessel, rather than channeling positive or negative energy, instead channels the pure evil power of her fiendish patron. This ability is similar to channeling negative energy, but instead of healing undead and dealing damage to living creatures, this blast of evil energy automatically heals evil creatures and debilitates good creatures within its burst. Channeling this evil causes a burst that affects all creatures in a 30-foot radius centered on the fiendish vessel. In the case of evil creatures, the amount of damage healed is equal to 1d4 points of damage and increases by 1d4 at every two levels beyond 1st (to a maximum of 10d4 at 19th level). Good creatures in the burst receive a Will saving throw to negate this damage. Good creatures that fail their saving throws are sickened for 1d4 rounds. Good creatures with a number of Hit Dice less than or equal to the fiendish vessel's class level - 5 that fail their saving throws are nauseated for 1 round and then sickened for 1d4 rounds instead. The DC of this save is equal to 10 + 1/2 the fiendish vessel's level + the fiendish vessel's Charisma bonus. Neutral creatures are unaffected by this burst of evil energy. A fiendish vessel may channel this energy a number of times per day equal to 3 + her Charisma modifier. Doing so is a standard action that does not provoke attacks of opportunity. A fiendish vessel can choose whether or not to include herself in this effect. A fiendish vessel must present her unholy symbol or use her familiar as the divine focus for this ability. For the purposes of feats that affect channel energy, this ability counts as channeling negative energy. If the feat changes the way the fiendish vessel channels or deals damage with her channeling, use the amount of damage this ability heals evil creatures to determine the damage-dealing potential of the affected ability. For instance, if a 5th-level fiendish vessel takes the Channel Smite feat, her channeling deals an additional 3d4 points of damage to living creatures on a successful hit (though they may save to negate the damage). This ability replaces channel energy.\",\n        \"fiendish familiar\": \"  At 3rd level, a fiendish vessel's patron rewards her with a fiendish servant. The fiendish vessel gains an imp, quasit, or cacodaemon familiar based on the patron she worships. This ability is identical to the wizard's arcane bond with a familiar and the Improved Familiar feat, using the fiendish vessel's character level in place of the wizard level. This tiny fiend acts like a perverse, manifest moral compass. Furthermore, this familiar can act as a living divine focus and unholy symbol for her spellcasting if the fiendish vessel so desires, which means that when she uses her channel evil ability, its burst can be centered on the familiar instead, as long as that familiar is within 30 feet and line of sight. A fiendish vessel's familiar tends to be fawning and subservient to the fiendish vessel. Should her familiar die, the fiendish vessel's patron replaces the familiar with an identical one within 1 week, without the need for a special ritual. Furthermore, the fiendish familiar gains the following special abilities beyond the standard familiar special abilities. Fiendish Augury (Sp) : At 3rd level, the fiendish vessel can ask the familiar whether a particular course of action will bring good or bad results for her in the immediate future. This ability acts like the augury spell, with a caster level equal to the fiendish vessel's level, with the familiar acting as the mouthpiece for the spell. This ability can be used once per day. Fiendish Divination (Sp) : At 9th level, the fiendish vessel can use a more powerful form of divination to gain intelligence from her patron through her fiendish familiar. This ability acts like the divination spell, with a caster level equal to the fiendish vessel's level; the familiar acts as the mouthpiece for the spell. This ability can be used once per day. Extra Divination (Sp) : At 13th level, the fiendish vessel can gain intelligence from her patron more often each day. She can use fiendish divination up to 3 times per day.\",\n        \"fiendish summoning\": \"  When casting summon monster spells, a fiendish vessel is limited to summoning fiendish creatures and evil outsiders of the same alignment as her patron.\"\n    }\n}",
+ "archetype_info": "{\n    \"Hidden Priest\": {\n        \"source\": \"Inner Sea Magic pg. 35 Practicing one's religion is not always legal. For example, most lands outlaw worshiping fiends. Taldor has banned the faith of Sarenrae from being openly worshiped. Rahadoum flat-out forbids all religions within its borders. But as time has shown again and again, mere laws are poor deterrents to the worship of dedicated members of such faiths, whether the zealous wish to subvert authority, free the spirits of the oppressed, or merely enjoy the right to practice their beliefs. Clerics in these circumstances must conceal their true natures, practice their magic in secret, and always be on guard for betrayal and discovery. A hidden priest has the following class features.\",\n        \"false arcanist (ex)\": \"  At 1st level, a hidden priest is able to disguise his cleric spellcasting, presenting it as arcane magic of some kind. Typically, this is as alchemist, bard, sorcerer, or wizard magic, and the cleric disguises the words and gestures of the cleric spell with accoutrements appropriate to his apparent profession. He must make a skill check (DC 10 + twice the level of the spell) to disguise his casting and successfully cast the spell. The type of skill check depends on the type of caster he pretends to be: Craft (alchemy) for alchemist, Perform for bard, Knowledge (arcana) for sorcerer or wizard. Using Spellcraft to identify the spell works normally, though unless the observer beats the DC by 10 or more, she doesn't suspect the source of the magic is divine. For example, a hidden priest pretending to be an alchemist wants to cast cure light wounds on a wounded townsperson. If he makes a DC 12 Craft (alchemy) check, he disguises his spellcasting as the mixing of an alchemical extract or potion (perhaps with the words disguised as reciting an obscure formula or talking herself through the list of ingredients), which he gives to the target. An observer making a DC 16 Spellcraft check can identify his spell as cure light wounds , but doesn't realize his 'alchemical' methods are a sham unless her check result is 26 or higher. When the hidden priest uses this ability, he must still provide any divine focus components for the spells he casts. However, the divine focus doesn't need to be an obvious symbol of his faith. It could be a small coin, tattoo, or garment bearing the symbol, whether presented openly, disguised, or hidden within a larger picture. For example, a hidden priest of Sarenrae may use a coin with an ankh or sunburst, a complex tattoo or scar that has an ankh shape hidden within it, a glove with an ankh stitched on the inside of the palm, and so on. He must use this replacement divine focus just as he would his true one (for example, he couldn't leave the coin in his shoe). If a spell requires a divine focus with a specific or minimum cost, the replacement divine focus must be of similar value to be used as the divine focus. A hidden priest adds half his class level (minimum +1) on all Bluff skill checks to send secret messages about religious matters, and on all Sense Motive checks to recognize similar messages. He also adds this bonus on Perception and Sense Motive checks relating to agents of the laws against his religion (including city guards in lands where these laws are in effect). This ability replaces one of the cleric's two 1st-level domain powers (her choice).\",\n        \"unseen devotion (su)\": \"  At 8th level, a hidden priest can apply the Silent Spell and Still Spell feats to a spell he is about to cast. This does not alter the level of the spell or the casting time. He can use this ability once per day at 8th level and one additional time per day for every four additional cleric levels beyond 8th. Even though this ability does not modify the spell's actual level, he cannot use this ability to cast a spell whose modified spell level would be above the level of the highest-level spell that he is capable of casting. This ability always applies both feats (the cleric cannot use it to just apply one or the other). This ability replaces one of the cleric's two 8th-level domain powers (his choice).\"\n    }\n}",
  "armor_ac": "7",
- "armor_armor_check_penalty": "-6",
+ "armor_armor_check_penalty": "-7",
  "armor_enhancement_bonus": 2,
  "armor_enhancement_chosen_list": [],
- "armor_max_dex_bonus": "3",
- "armor_name": "Tatami-do",
+ "armor_max_dex_bonus": "0",
+ "armor_name": "Splint mail",
  "armor_spell_failure": 0,
  "armor_weight": "45 lbs.",
  "bab_total": 13,
@@ -37,7 +37,6 @@
   "bonus_spell_points": 1,
   "boons": [
    "Empowered Abilities",
-   "Fortified Casting",
    "Overcharge"
   ],
   "boons_detail": [
@@ -46,38 +45,22 @@
     "name": "Empowered Abilities"
    },
    {
-    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
-    "name": "Fortified Casting"
-   },
-   {
     "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
     "name": "Overcharge"
    }
   ],
   "casting_ability_modifier": "Wisdom",
   "drawbacks": [
-   "Material Casting",
-   "Somatic Casting",
-   "Wild Magic",
+   "Painful Magic",
    "Extended Casting",
-   "Verbal Casting",
-   "Focus Casting"
+   "Prepared Caster",
+   "Somatic Casting"
   ],
   "drawbacks_detail": [
    {
     "counts_as": 1,
-    "description": "Your magic requires expending consumable materials/components worth roughly 1 sp per caster level each time you use a sphere ability.",
-    "name": "Material Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
-    "name": "Somatic Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
-    "name": "Wild Magic"
+    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
+    "name": "Painful Magic"
    },
    {
     "counts_as": 2,
@@ -86,13 +69,13 @@
    },
    {
     "counts_as": 1,
-    "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
-    "name": "Verbal Casting"
+    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
+    "name": "Prepared Caster"
    },
    {
     "counts_as": 1,
-    "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
-    "name": "Focus Casting"
+    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
+    "name": "Somatic Casting"
    }
   ]
  },
@@ -100,50 +83,44 @@
  "character_full_name": "Sara Eriksdotter",
  "chosen_race": "Human",
  "chosen_spell_descriptor": [
-  "earth",
-  "electricity"
+  "force"
  ],
  "class feature levels": {
   "rage_powers": {
-   "lesser daemon totem": 4,
-   "lesser fiend totem": 2,
-   "totemic mettle": 6
+   "good for what ails you": 4,
+   "knockback": 6,
+   "liquid courage": 2
   }
  },
  "class feature owners": {
-  "Law": "cleric",
+  "Destruction": "cleric",
   "Nobility": "cleric",
   "rage_powers": "barbarian"
  },
  "class features": {
-  "Law": {
-   "Staff of Order (Su)": [
-    "At 8th level, you can give a weapon touched the axiomatic special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th."
+  "Destruction": {
+   "Destructive Aura (Su)": [
+    "At 8th level, you can emit a 30-foot aura of destruction for a number of rounds per day equal to your cleric level. All attacks made against targets in this aura (including you) gain a morale bonus on damage equal to 1/2 your cleric level and all critical threats are automatically confirmed. These rounds do not need to be consecutive."
    ],
-   "Touch of Law (Sp)": [
-    "You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
+   "Destructive Smite (Su)": [
+    "You gain the destructive smite power: the supernatural ability to make a single melee attack with a morale bonus on damage rolls equal to 1/2 your cleric level (minimum 1). You must declare the destructive smite before making the attack. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
    ],
    "bonus spells": [
-    "protection from chaos",
-    "align weapon",
-    "magic circle against chaos",
-    "orders wrath",
-    "dispel chaos",
-    "hold monster",
-    "dictum",
-    "shield of law",
-    "summon monster IX"
+    "true strike",
+    "shatter",
+    "rage",
+    "inflict critical wounds",
+    "shout",
+    "harm",
+    "disintegrate",
+    "earthquake",
+    "implosion"
    ],
    "subdomains": [
-    "Archon",
-    "Devil",
-    "Inevitable",
-    "Judgment",
-    "Kyton",
-    "Legislation",
-    "Loyalty",
-    "Slavery",
-    "Tyranny"
+    "Catastrophe",
+    "Hatred",
+    "Rage",
+    "Torture"
    ]
   },
   "Nobility": {
@@ -171,22 +148,21 @@
     "Martyr"
    ]
   },
-  "Skill Unlock: Knowledge (religion)": {
-   "10 Ranks": "After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.",
-   "15 Ranks": "You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.",
-   "20 Ranks": "You can roll twice and take the better result on Knowledge checks.",
-   "5 Ranks": "You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill."
+  "Skill Unlock: Perform": {
+   "10 Ranks": "A DC 25 Perform check while casting an emotion or language-dependent spell increases its save DC by 1.",
+   "15 Ranks": "A DC 30 Perform check while casting an emotion or language-dependent spell increases its caster level by 1 (choose this or the 10-rank ability).",
+   "20 Ranks": "Choose Bluff, Diplomacy, or Intimidate; you may use the better result between Perform and that skill.",
+   "5 Ranks": "A DC 20 Perform check grants a +2 circumstance bonus on a Bluff, Diplomacy, Handle Animal, or Intimidate check."
   },
   "rage_powers": {
-   "lesser daemon totem": {
-    "benefit": "while raging, the barbarian gains a +2 bonus on saving throws against acid damage, death effects, disease, and poison. this bonus increases by 1 for each daemon totem rage power the barbarian has, excluding this one."
+   "good for what ails you": {
+    "benefit": "while raging, the barbarian who takes a drink of alcohol may attempt a new saving throw against one of the following conditions that may be affecting her: blinded, confused, dazzled, deafened, exhausted, fatigued, frightened, nauseated, panicked, shaken, or sickened. if she succeeds at the save, the effect is suppressed for the duration of the rage. she also may attempt a new saving throw if poisoned; a successful save counts against those required for a cure, but a failed save has no ill effect."
    },
-   "lesser fiend totem": {
-    "benefit": "while raging, the barbarian grows a pair of large horns, gaining a gore attack. this attack is a primary attack (unless she is also attacking with weapons, in which case it is a secondary attack) and is made at the barbarianas full base attack bonus (a5 if it is a secondary attack). the gore attack deals 1d8 points of piercing damage (1d6 if small) plus the barbarianas strength modifier (1/2 if it is a secondary attack)."
+   "knockback": {
+    "benefit": "once per round, the barbarian can make a bull rush attempt against one target in place of a melee attack. if successful, the target takes damage equal to the barbarians strength modifier and is moved back as normal. the barbarian does not need to move with the target if successful. this does not provoke an attack of opportunity."
    },
-   "totemic mettle": {
-    "benefit": "whenever you enter a rage while bound to a spirit that belongs to your associated constellation, whenever you succeed on a fortitude save that would normally have a lesser effect on a successful save, you instead completely negate the effect. you are still harmed by the effects that do not allow a saving throw.",
-    "prerequisites": ""
+   "liquid courage": {
+    "benefit": "while raging, the barbarian increases her morale bonus on saving throws against mind-affecting effects by +1 for each alcoholic drink she consumes during her rage, to a maximum of +1 increase per four barbarian levels."
    }
   }
  },
@@ -236,30 +212,21 @@
  "class_feat_tax_dict": {},
  "class_feats": [],
  "class_feature_changes_dict": {
-  "lesser daemon totem": {
+  "good for what ails you": {
    "changes": [],
    "contextNotes": [
     {
      "target": "allSavingThrows",
-     "text": "While raging, the barbarian gains a +[[2]] bonus on saving throws against acid damage, death effects, disease, and poison. This bonus increases by 1 for each daemon totem rage power the barbarian has, excluding this one."
+     "text": "While raging, the barbarian who takes a drink of alcohol may attempt a new saving throw against one of the following conditions that may be affecting her: blinded, confused, dazzled, deafened, exhausted, fatigued, frightened, nauseated, panicked, shaken, or sickened. If she succeeds at the save, the effect is suppressed for the duration of the rage. She also may attempt a new saving throw if poisoned; A successful save counts against those required for a cure, but a failed save has no ill effect."
     }
    ]
   },
-  "lesser fiend totem": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "attack",
-     "text": "This attack is a primary attack (unless she is also attacking with weapons, in which case it is a secondary attack) and is made at the barbarianas full base attack bonus (a5 if it is a secondary attack). The gore attack deals [[1d8]] points of piercing damage ([[1d6]] if small) plus the barbarianas strength modifier (1/2 if it is a secondary attack)."
-    }
-   ]
-  },
-  "totemic mettle": {
+  "liquid courage": {
    "changes": [],
    "contextNotes": [
     {
      "target": "allSavingThrows",
-     "text": "Whenever you enter a rage while bound to a spirit that belongs to your associated constellation, whenever you succeed on a fortitude save that would normally have a lesser effect on a successful save, you instead completely negate the effect. You are still harmed by the effects that do not allow a saving throw."
+     "text": "While raging, the barbarian increases her morale bonus on saving throws against mind-affecting effects by +[[1]] for each alcoholic drink she consumes during her rage, to a maximum of +[[1]] increase per four barbarian levels."
     }
    ]
   }
@@ -267,45 +234,40 @@
  "class_feature_conditionals_dict": {},
  "class_feature_levels": {
   "rage_powers": {
-   "lesser daemon totem": 4,
-   "lesser fiend totem": 2,
-   "totemic mettle": 6
+   "good for what ails you": 4,
+   "knockback": 6,
+   "liquid courage": 2
   }
  },
  "class_feature_owners": {
-  "Law": "cleric",
+  "Destruction": "cleric",
   "Nobility": "cleric",
   "rage_powers": "barbarian"
  },
  "class_features": {
-  "Law": {
-   "Staff of Order (Su)": [
-    "At 8th level, you can give a weapon touched the axiomatic special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th."
+  "Destruction": {
+   "Destructive Aura (Su)": [
+    "At 8th level, you can emit a 30-foot aura of destruction for a number of rounds per day equal to your cleric level. All attacks made against targets in this aura (including you) gain a morale bonus on damage equal to 1/2 your cleric level and all critical threats are automatically confirmed. These rounds do not need to be consecutive."
    ],
-   "Touch of Law (Sp)": [
-    "You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
+   "Destructive Smite (Su)": [
+    "You gain the destructive smite power: the supernatural ability to make a single melee attack with a morale bonus on damage rolls equal to 1/2 your cleric level (minimum 1). You must declare the destructive smite before making the attack. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
    ],
    "bonus spells": [
-    "protection from chaos",
-    "align weapon",
-    "magic circle against chaos",
-    "orders wrath",
-    "dispel chaos",
-    "hold monster",
-    "dictum",
-    "shield of law",
-    "summon monster IX"
+    "true strike",
+    "shatter",
+    "rage",
+    "inflict critical wounds",
+    "shout",
+    "harm",
+    "disintegrate",
+    "earthquake",
+    "implosion"
    ],
    "subdomains": [
-    "Archon",
-    "Devil",
-    "Inevitable",
-    "Judgment",
-    "Kyton",
-    "Legislation",
-    "Loyalty",
-    "Slavery",
-    "Tyranny"
+    "Catastrophe",
+    "Hatred",
+    "Rage",
+    "Torture"
    ]
   },
   "Nobility": {
@@ -333,35 +295,31 @@
     "Martyr"
    ]
   },
-  "Skill Unlock: Knowledge (religion)": {
-   "10 Ranks": "After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.",
-   "15 Ranks": "You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.",
-   "20 Ranks": "You can roll twice and take the better result on Knowledge checks.",
-   "5 Ranks": "You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill."
+  "Skill Unlock: Perform": {
+   "10 Ranks": "A DC 25 Perform check while casting an emotion or language-dependent spell increases its save DC by 1.",
+   "15 Ranks": "A DC 30 Perform check while casting an emotion or language-dependent spell increases its caster level by 1 (choose this or the 10-rank ability).",
+   "20 Ranks": "Choose Bluff, Diplomacy, or Intimidate; you may use the better result between Perform and that skill.",
+   "5 Ranks": "A DC 20 Perform check grants a +2 circumstance bonus on a Bluff, Diplomacy, Handle Animal, or Intimidate check."
   },
   "rage_powers": {
-   "lesser daemon totem": {
-    "benefit": "while raging, the barbarian gains a +2 bonus on saving throws against acid damage, death effects, disease, and poison. this bonus increases by 1 for each daemon totem rage power the barbarian has, excluding this one."
+   "good for what ails you": {
+    "benefit": "while raging, the barbarian who takes a drink of alcohol may attempt a new saving throw against one of the following conditions that may be affecting her: blinded, confused, dazzled, deafened, exhausted, fatigued, frightened, nauseated, panicked, shaken, or sickened. if she succeeds at the save, the effect is suppressed for the duration of the rage. she also may attempt a new saving throw if poisoned; a successful save counts against those required for a cure, but a failed save has no ill effect."
    },
-   "lesser fiend totem": {
-    "benefit": "while raging, the barbarian grows a pair of large horns, gaining a gore attack. this attack is a primary attack (unless she is also attacking with weapons, in which case it is a secondary attack) and is made at the barbarianas full base attack bonus (a5 if it is a secondary attack). the gore attack deals 1d8 points of piercing damage (1d6 if small) plus the barbarianas strength modifier (1/2 if it is a secondary attack)."
+   "knockback": {
+    "benefit": "once per round, the barbarian can make a bull rush attempt against one target in place of a melee attack. if successful, the target takes damage equal to the barbarians strength modifier and is moved back as normal. the barbarian does not need to move with the target if successful. this does not provoke an attack of opportunity."
    },
-   "totemic mettle": {
-    "benefit": "whenever you enter a rage while bound to a spirit that belongs to your associated constellation, whenever you succeed on a fortitude save that would normally have a lesser effect on a successful save, you instead completely negate the effect. you are still harmed by the effects that do not allow a saving throw.",
-    "prerequisites": ""
+   "liquid courage": {
+    "benefit": "while raging, the barbarian increases her morale bonus on saving throws against mind-affecting effects by +1 for each alcoholic drink she consumes during her rage, to a maximum of +1 increase per four barbarian levels."
    }
   }
  },
  "classes": [
   {
    "archetype": {
-    "Fiendish Vessel": {
-     "alignment": "  Unlike normal clerics, a fiendish vessel's alignment must match her patron's.",
-     "channel evil (su)": "  At 1st level, a fiendish vessel, rather than channeling positive or negative energy, instead channels the pure evil power of her fiendish patron. This ability is similar to channeling negative energy, but instead of healing undead and dealing damage to living creatures, this blast of evil energy automatically heals evil creatures and debilitates good creatures within its burst. Channeling this evil causes a burst that affects all creatures in a 30-foot radius centered on the fiendish vessel. In the case of evil creatures, the amount of damage healed is equal to 1d4 points of damage and increases by 1d4 at every two levels beyond 1st (to a maximum of 10d4 at 19th level). Good creatures in the burst receive a Will saving throw to negate this damage. Good creatures that fail their saving throws are sickened for 1d4 rounds. Good creatures with a number of Hit Dice less than or equal to the fiendish vessel's class level - 5 that fail their saving throws are nauseated for 1 round and then sickened for 1d4 rounds instead. The DC of this save is equal to 10 + 1/2 the fiendish vessel's level + the fiendish vessel's Charisma bonus. Neutral creatures are unaffected by this burst of evil energy. A fiendish vessel may channel this energy a number of times per day equal to 3 + her Charisma modifier. Doing so is a standard action that does not provoke attacks of opportunity. A fiendish vessel can choose whether or not to include herself in this effect. A fiendish vessel must present her unholy symbol or use her familiar as the divine focus for this ability. For the purposes of feats that affect channel energy, this ability counts as channeling negative energy. If the feat changes the way the fiendish vessel channels or deals damage with her channeling, use the amount of damage this ability heals evil creatures to determine the damage-dealing potential of the affected ability. For instance, if a 5th-level fiendish vessel takes the Channel Smite feat, her channeling deals an additional 3d4 points of damage to living creatures on a successful hit (though they may save to negate the damage). This ability replaces channel energy.",
-     "domains": "  A fiendish vessel must select the Daemon, Demon, or Devil subdomain ( 88-90) as one of her domain choices, based on the fiendish patron she chooses to serve.",
-     "fiendish familiar": "  At 3rd level, a fiendish vessel's patron rewards her with a fiendish servant. The fiendish vessel gains an imp, quasit, or cacodaemon familiar based on the patron she worships. This ability is identical to the wizard's arcane bond with a familiar and the Improved Familiar feat, using the fiendish vessel's character level in place of the wizard level. This tiny fiend acts like a perverse, manifest moral compass. Furthermore, this familiar can act as a living divine focus and unholy symbol for her spellcasting if the fiendish vessel so desires, which means that when she uses her channel evil ability, its burst can be centered on the familiar instead, as long as that familiar is within 30 feet and line of sight. A fiendish vessel's familiar tends to be fawning and subservient to the fiendish vessel. Should her familiar die, the fiendish vessel's patron replaces the familiar with an identical one within 1 week, without the need for a special ritual. Furthermore, the fiendish familiar gains the following special abilities beyond the standard familiar special abilities. Fiendish Augury (Sp) : At 3rd level, the fiendish vessel can ask the familiar whether a particular course of action will bring good or bad results for her in the immediate future. This ability acts like the augury spell, with a caster level equal to the fiendish vessel's level, with the familiar acting as the mouthpiece for the spell. This ability can be used once per day. Fiendish Divination (Sp) : At 9th level, the fiendish vessel can use a more powerful form of divination to gain intelligence from her patron through her fiendish familiar. This ability acts like the divination spell, with a caster level equal to the fiendish vessel's level; the familiar acts as the mouthpiece for the spell. This ability can be used once per day. Extra Divination (Sp) : At 13th level, the fiendish vessel can gain intelligence from her patron more often each day. She can use fiendish divination up to 3 times per day.",
-     "fiendish summoning": "  When casting summon monster spells, a fiendish vessel is limited to summoning fiendish creatures and evil outsiders of the same alignment as her patron.",
-     "source": "Advanced Race Guide pg. 170 Many clerics pray to or make evil bargains with fiendish powers, devoting body and soul to the insane plans and wicked aims of their despicable patrons. But these mortal clerics are often just shallow beings searching for quick power or the caress of true and final oblivion-few truly grasp the full scope of the entities they worship. Fiendish vessels, through their fiendish heritage, share an innate connection with their patron, and that connection grants them understanding and power. A fiendish vessel has the following class features."
+    "Hidden Priest": {
+     "false arcanist (ex)": "  At 1st level, a hidden priest is able to disguise his cleric spellcasting, presenting it as arcane magic of some kind. Typically, this is as alchemist, bard, sorcerer, or wizard magic, and the cleric disguises the words and gestures of the cleric spell with accoutrements appropriate to his apparent profession. He must make a skill check (DC 10 + twice the level of the spell) to disguise his casting and successfully cast the spell. The type of skill check depends on the type of caster he pretends to be: Craft (alchemy) for alchemist, Perform for bard, Knowledge (arcana) for sorcerer or wizard. Using Spellcraft to identify the spell works normally, though unless the observer beats the DC by 10 or more, she doesn't suspect the source of the magic is divine. For example, a hidden priest pretending to be an alchemist wants to cast cure light wounds on a wounded townsperson. If he makes a DC 12 Craft (alchemy) check, he disguises his spellcasting as the mixing of an alchemical extract or potion (perhaps with the words disguised as reciting an obscure formula or talking herself through the list of ingredients), which he gives to the target. An observer making a DC 16 Spellcraft check can identify his spell as cure light wounds , but doesn't realize his 'alchemical' methods are a sham unless her check result is 26 or higher. When the hidden priest uses this ability, he must still provide any divine focus components for the spells he casts. However, the divine focus doesn't need to be an obvious symbol of his faith. It could be a small coin, tattoo, or garment bearing the symbol, whether presented openly, disguised, or hidden within a larger picture. For example, a hidden priest of Sarenrae may use a coin with an ankh or sunburst, a complex tattoo or scar that has an ankh shape hidden within it, a glove with an ankh stitched on the inside of the palm, and so on. He must use this replacement divine focus just as he would his true one (for example, he couldn't leave the coin in his shoe). If a spell requires a divine focus with a specific or minimum cost, the replacement divine focus must be of similar value to be used as the divine focus. A hidden priest adds half his class level (minimum +1) on all Bluff skill checks to send secret messages about religious matters, and on all Sense Motive checks to recognize similar messages. He also adds this bonus on Perception and Sense Motive checks relating to agents of the laws against his religion (including city guards in lands where these laws are in effect). This ability replaces one of the cleric's two 1st-level domain powers (her choice).",
+     "source": "Inner Sea Magic pg. 35 Practicing one's religion is not always legal. For example, most lands outlaw worshiping fiends. Taldor has banned the faith of Sarenrae from being openly worshiped. Rahadoum flat-out forbids all religions within its borders. But as time has shown again and again, mere laws are poor deterrents to the worship of dedicated members of such faiths, whether the zealous wish to subvert authority, free the spirits of the oppressed, or merely enjoy the right to practice their beliefs. Clerics in these circumstances must conceal their true natures, practice their magic in secret, and always be on guard for betrayal and discovery. A hidden priest has the following class features.",
+     "unseen devotion (su)": "  At 8th level, a hidden priest can apply the Silent Spell and Still Spell feats to a spell he is about to cast. This does not alter the level of the spell or the casting time. He can use this ability once per day at 8th level and one additional time per day for every four additional cleric levels beyond 8th. Even though this ability does not modify the spell's actual level, he cannot use this ability to cast a spell whose modified spell level would be above the level of the highest-level spell that he is capable of casting. This ability always applies both feats (the cleric cannot use it to just apply one or the other). This ability replaces one of the cleric's two 8th-level domain powers (his choice)."
     }
    },
    "display": "Cleric",
@@ -370,12 +328,11 @@
   },
   {
    "archetype": {
-    "Untamed Rager": {
-     "deplorable tactics": "  At 5th level, the untamed rager gains Greater Dirty Trick as a bonus feat. This ability replaces improved uncanny dodge.",
-     "despicable tactics": "  At 2nd level, the untamed rager gains Improved Dirty Trick as a bonus feat. This ability replaces uncanny dodge.",
-     "dishonorable (ex)": "  At 7th level and every 3 barbarian levels thereafter, the untamed rager gains a +1 bonus on combat maneuver checks when performing dirty tricks and to her CMD to resist others' dirty tricks. This ability replaces damage reduction.",
-     "feral appearance (ex)": "  At 3rd level, the untamed rager gains a +1 bonus on Intimidate checks. This bonus increases by 1 every 3 barbarian levels thereafter. This ability replaces trap sense.",
-     "source": "Dirty Tactics Toolbox pg. 15 There are no rules in the wild. Some barbarians enter combat with only victory in mind and do anything in their power to achieve it."
+    "Invulnerable Rager": {
+     "extreme endurance (ex)": "  At 3rd level, the invulnerable rager is inured to either hot or cold climate effects (choose one) as if using endure elements . In addition, the barbarian gains 1 point of fire or cold resistance for every three levels beyond 3rd. This ability replaces trap sense.",
+     "invulnerability (ex)": "  At 2nd level, the invulnerable rager gains DR/- equal to half her barbarian level. This damage reduction is doubled against nonlethal damage. This ability replaces uncanny dodge, improved uncanny dodge, and damage reduction.",
+     "rage powers": "  The following rage powers complement the invulnerable rager archetype: come and get me, guarded life, increased damage reduction*, inspire ferocity, reckless abandon, and renewed vigor*.",
+     "source": "Advanced Player's Guide pg. 79 Some barbarians learn to take whatever comes their way, shrugging off mortal wounds with ease. These barbarians invite their enemies to attack them, and use pain to fuel their rage. An invulnerable rager has the following class features."
     }
    },
    "display": "Barbarian",
@@ -386,74 +343,85 @@
  "combat_talent_items": [],
  "con": 17,
  "counter_schools": [
-  "abjuration",
-  "illusion"
+  "evocation"
  ],
  "counter_spell_descriptor": [
-  "fear",
-  "emotion"
+  "earth"
  ],
- "craft_type": "Spinning",
+ "craft_type": "Cheesemaking",
  "day_list": [
-  12,
-  17,
+  8,
   13,
-  13,
-  5
+  8,
+  7,
+  7
  ],
  "deity_name": "Ragathiel",
  "dex": 13,
  "enhancement_effects_dict": {},
  "equip_descrip": {
+  "belts": {
+   "description": " this kilt is made of thick woven strips of sea-green and sky-blue cloth decorated with tiny pearls and bits of coral along the beltline. The wearer gains a +3 competence bonus on swim checks. When not worn, a windwave kilt floats on water like a dry log, automatically buoying upward any creature that weighs 100 pounds or less and aiding in flotation for heavier creatures. If gozreh is the wearer's patron, once per day the wearer can use gaseous form . In this form, the wearer does not need to breathe and can enter water or other liquid, appearing as a mass of fine bubbles and gaining the ability to swim at a speed of 10 feet. The wearer can also drink salt water as if it were fresh water. ",
+   "item_name": "Windwave Kilt"
+  },
   "body": {
-   "description": " a crusader's tabard is a sturdy cloth vestment worn over armor and other clothing. It is normally decorated with the symbol or heraldic device of the owner, and may be trimmed with expensive and delicate materials (such as silk, fur, or cloth of gold). Once per day, the wearer of the tabard may say its command word (often a family motto); thereafter, the wearer can spend a standard action (instead of a full-round action) to move up to his speed and make a single charge attack. This ability lasts until used or for 1 minute, whichever duration is shorter. ",
-   "item_name": "Crusader's Tabard"
+   "description": " dirt and grime from city streets cling to these dirty brown robes, covering them in an ever-present film of filth. A set of pauper's robes surrounds its wearer in mystery, making it difficult for creatures to remember details about him. Creatures that attempt to remember details of their interactions with the wearer of a set of pauper's robes must make a successful will save to do so: recalling general details about the wearer (such as gender or race) requires a successful dc 13 will save, and recalling more specific information (such as name, distinguishing features, or mannerisms) requires a successful dc 16 will save. If the wearer of the robes takes any action that counts as an attack (as defined by the invisibility spell), creatures witnessing that action are immune to the memory-fogging influence of the pauper's robes for all interactions with the wearer over the next 24 hours. As a standard action, the wearer of a set of pauper's robes can cause the garment to tarnish and dirty any valuables he carries, making jewelry appear to be little more than beads and twine or a magical sword look rusted and dull. Anyone who examines or interacts with such an object can see through the guise with a successful dc 13 will save. This effect ends immediately once the object leaves the wearer's possession. ",
+   "item_name": "Pauper's Robes"
   },
   "chest": {
    "description": " this well-made leather vest bears\r numerous shiny metal buttons, which\r stud a number of bulging pockets. \r once per day, as a standard action, the\r wearer can speak the vest's command\r word and order it to bring forth all\r the standard tools required to make\r checks for any one craft skill. These\r tools appear in the countless pockets\r of the vest or, if too heavy, on the floor, on a nearby shelf, on\r a workbench, or in a toolbox or cupboard that appears nearby. \r once summoned, they remain for 24 hours or until another\r creature touches them, whichever comes first. ",
    "item_name": "All Tools Vest"
   },
   "eyes": {
-   "description": " these sturdy but plain goggles help the wearer locate secret\r doors and coins and identify treasure. While wearing these\r goggles, the wearer can use detect secret doors at will. The\r goggles do not aid in determining how secret doors are opened. Once per day on command, the wearer gains the ability to locate object as per the spell, but only to detect 100 or more\r coins in a small area, such as a backpack, chest, pouch, or sack. Three times per day, the wearer may use identify ",
-   "item_name": "Treasure Hunter's Goggles"
+   "description": " this black silk eye patch is adorned by a skull and\r crossbones worked in silver thread. The wearer\r of this patch gains a +2 competence bonus on\r swim and climb checks. In addition, once per\r day, the wearer of this eye patch can gain the\r effects of either touch of the sea (advanced player's guide) or\r expeditious retreat on command (wearer's choice). ",
+   "item_name": "Pirate's Eye Patch"
   },
-  "hands": {
-   "description": " these dark-brown, leather gloves are\r etched over their entire surface with\r arcane insignia. The wearer gains\r a +5 competence bonus on disable\r device checks made to disable\r magical traps. Once per day, if the\r wearer's check to disarm a glyph, \r rune, or similar writing-based magical trap exceeds the dc\r by 10 or more, she may change the trigger condition of the\r trap instead of disabling it. The new trigger condition must\r be one allowed by the magical trap; for example, a glyph of\r warding cannot be set according to class, hd, or level, even\r when manipulated by the gloves. ",
-   "item_name": "Glyphbane Gloves"
+  "feet": {
+   "description": " prized by evil warriors, these boots are made of inky black\r leather trimmed with a crimson mane of fiendish horsehair. \r some bear the hair of actual nightmares along their rims, causing\r them to occasionally flare and crackle with flames reminiscent\r of the foul equines. When the wearer runs or charges, smoke\r issues up from the boots, acting as concealment (20% miss\r chance) when the wearer provokes attacks of opportunity\r while making those actions. Secondly, three times per day, as\r a swift action, the wearer can make the boots smoke, which\r grants her concealment until the end of her turn. Lastly, once\r per day, when the wearer hits a creature with a melee attack, \r she can command the boots to ignite. When the boots ignite, all\r creatures within a 5-foot radius take 2d6 points of fire damage. \r a dc 13 reflex saving throw halves the damage. ",
+   "item_name": "Nightmare Boots"
+  },
+  "rings": {
+   "description": "Once per day, the wearer of this ring can attune it to one of the four Elemental Planes for 24 hours. While on that plane, the ring grants the wearer the corresponding benefits below. Once per day on command, the wearer can gain these benefits even when on a different plane, but the effects last only 10 minutes.",
+   "item_name": "Planefarer's Band"
   }
  },
  "equipment_list": [
-  "Crusader's Tabard",
+  "Windwave Kilt",
+  "Pauper's Robes",
   "All Tools Vest",
-  "Treasure Hunter's Goggles",
-  "Glyphbane Gloves"
+  "Pirate's Eye Patch",
+  "Nightmare Boots",
+  "Witness Hunter's Ring",
+  "Planefarer's Band"
  ],
  "eye_color": [
-  "Grey"
+  "Hazel"
  ],
  "feat_budget": {
   "bloodline": 0,
   "class": 0,
   "flavor": 1,
   "flaw": 1,
-  "normal": 3,
-  "profession": 1,
+  "normal": 2,
+  "profession": 3,
   "story": 4,
   "teamwork": 0,
-  "trainer": 0
+  "trainer": 13
  },
- "feat_changes_dict": {
-  "Stone Read": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skills",
-     "text": "+2 on Perception checks while in a primarily underground or mountainous environment (+4 with 10+ ranks in Knowledge (dungeoneering))."
-    }
-   ]
-  }
- },
+ "feat_changes_dict": {},
  "feat_conditionals_dict": {
+  "Butterfly's Sting": {
+   "default": false,
+   "modifiers": [],
+   "name": "Butterfly's Sting: Effect: forgo this critical hit's extra damage; the next ally who hits the target with a melee attack before the start of your next turn automatically confirms a critical hit",
+   "tier": "A"
+  },
+  "Raging Brutality": {
+   "default": false,
+   "modifiers": [],
+   "name": "Raging Brutality: Cost: [[3]] additional rounds of rage as a swift action (requires raging and using Power Attack); Effect: add your Constitution modifier to melee or thrown-weapon damage rolls this turn ([[1.5]]x your Constitution modifier if wielding the weapon two-handed); this damage is not multiplied on a critical hit",
+   "tier": "A"
+  },
   "Raging Deathblow": {
    "default": false,
    "modifiers": [],
@@ -462,41 +430,34 @@
   }
  },
  "feats": [
-  "Martial Training I (Broken Blade)",
-  "Martial Training III (Broken Blade)",
-  "Martial Training V (Broken Blade)",
+  "Raging Deathblow",
+  "Raging Brutality",
   "Basic Magic Training",
-  "Extra Magic Talent (Fluctuate / Splinter)",
-  "Extra Magic Talent (Teleport Trap / Teleport Object)",
-  "Extra Magic Talent (Isoport / Segmented Warp)",
-  "Multi Talented"
+  "Extra Magic Talent (Fog Mastery / Speak With The Elements)",
+  "Extra Magic Talent (Ride The Elements / Nature Sight)",
+  "Extra Magic Talent (Nature’s Weapon / Breeze Mastery)",
+  "Extra Magic Talent (Whispering Elements)",
+  "Multi Talented",
+  "True Calling",
+  "Always Improving"
  ],
  "feats_feat_tax_dict": {
-  "Extra Magic Talent (Fluctuate / Splinter)": [
+  "Extra Magic Talent (Fog Mastery / Speak With The Elements)": [
    "Extra Magic Talent"
   ],
-  "Extra Magic Talent (Isoport / Segmented Warp)": [
+  "Extra Magic Talent (Nature’s Weapon / Breeze Mastery)": [
    "Extra Magic Talent"
   ],
-  "Extra Magic Talent (Organ Detachment)": [
+  "Extra Magic Talent (Ride The Elements / Nature Sight)": [
    "Extra Magic Talent"
   ],
-  "Extra Magic Talent (Teleport Trap / Teleport Object)": [
+  "Extra Magic Talent (Whispering Elements)": [
    "Extra Magic Talent"
-  ],
-  "Martial Training I (Broken Blade)": [
-   "Martial Training II (Broken Blade)"
-  ],
-  "Martial Training III (Broken Blade)": [
-   "Martial Training IV (Broken Blade)"
-  ],
-  "Martial Training V (Broken Blade)": [
-   "Martial Training VI (Broken Blade)"
   ]
  },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Cut Your Losses"
+  "Widen Spell"
  ],
  "flaw": [
   "Slow Healer"
@@ -514,51 +475,59 @@
    "tier": "minor"
   }
  },
- "flaw_feat_tax_dict": {
-  "Extra Rage": [
-   "extra rage"
-  ]
- },
+ "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Stone Read"
+  "Gunsmithing"
  ],
- "formatted_bio": "Sara Eriksdotter\n- Alignment: Neutral Good\n- Deity: Ragathiel\n- Race: Human\n- Class: Level 8 Cleric / Barbarian\n- Archetype: Generalist\n- Tactics: Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.\n- Stat Focus: Wis\n- Disciplines: Broken Blade\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Hedge Forager (rank 1)\n- Profession: Fasting Aspirant (rank 3)\n- Profession: Trail Scrounger (rank 10)\n- Profession: Ink-Drudge (rank 7)\n- Profession: Refuse Hand (rank 9)\n- Known for: Spinning\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 3 Younger Brothers\n\nPersonality\n- Personality: Cowardly, Inquisitive, Sociable\n- Mannerisms: Crosses arms, Clenches fists\n- Flaws: Slow Healer\n\nAppearance\n- Hair: Frizzy Black\n- Eyes: Grey\n- Build: Puffy Eyes",
+ "formatted_bio": "Sara Eriksdotter\n- Alignment: Neutral Good\n- Deity: Ragathiel\n- Race: Human\n- Class: Level 8 Cleric / Barbarian\n- Archetype: Generalist\n- Tactics: Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.\n- Stat Focus: Wis\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Baron of the March (rank 15)\n- Profession: Fish Farmer (rank 10)\n- Profession: Pact Warlock (rank 1)\n- Profession: Cook (rank 9)\n- Known for: Cheesemaking\n- Training: An excellent trainer who taught them Armor of the Pit, Toppling Spell, Demonic Obedience\n- Training: An excellent trainer who taught them Quick Channel, Dragoncrafting, Echoing Spell\n- Training: An excellent trainer who taught them Persistent Spell, Toughness, Siphon Poison\n- Training: An excellent trainer who taught them Craft Wand, Butterfly's Sting, Deceitful\n- Training: A terrible trainer who taught them Combat Casting\n\nFamily\n- Dead Mother\n- Absent Father\n- Adopted Into A Poor Family\n- 1 Younger Sister\n\nPersonality\n- Personality: Cowardly, Inquisitive, Sociable\n- Mannerisms: Crosses arms, Clenches fists\n- Flaws: Slow Healer\n\nAppearance\n- Hair: Unkempt Black\n- Eyes: Hazel\n- Build: Tense",
  "full_domain": [
-  "Law",
-  "Nobility"
+  "Nobility",
+  "Destruction"
  ],
  "gender": "Female",
  "generation_seed": 5004,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 800,
+ "gold": 1645,
  "hair_color": [
   "Black"
  ],
  "hair_type": [
-  "Frizzy"
+  "Unkempt"
  ],
  "height_number": "5'6\"",
- "hero_points": 0,
+ "hero_points": 1,
  "homebrew_feat_desc_dict": {
-  "Basic Magic Training": "Benefit: Choose a sphere of magic. You gain access to this basic sphere. You gain an effective caster level of 1, a magic skill bonus of 1, a magic skill defense of 12, and a spell pool of 1. You may also select a casting tradition when you gain this feat. You are considered to possess the casting class feature, but do not gain the +2 magic talents a caster gains for their 1st level in a casting class.\n\nIf you later gain levels in a class granting the casting class feature, exchange this feat for the Extra Magic Talent feat.\n\nSpecial: For retraining purposes, having the casting class feature counts as Basic Magic Training.\nSphere/talent gained: Timed Warp (Warp)",
-  "Cut Your Losses": "You realize that sometimes it's a safer bet to simply get out of danger's way as fast as possible You are able to summon a surge of adrenaline when you grab what is most dear to you and run",
-  "Desert Dweller": "Your time spent living in merciless deserts has granted you resistance to extreme heat, starvation, and thirst",
+  "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
+  "Armor of the Pit": "Your fiendish traits take the form of a protective scaly skin",
+  "Basic Magic Training": "Benefit: Choose a sphere of magic. You gain access to this basic sphere. You gain an effective caster level of 1, a magic skill bonus of 1, a magic skill defense of 12, and a spell pool of 1. You may also select a casting tradition when you gain this feat. You are considered to possess the casting class feature, but do not gain the +2 magic talents a caster gains for their 1st level in a casting class.\n\nIf you later gain levels in a class granting the casting class feature, exchange this feat for the Extra Magic Talent feat.\n\nSpecial: For retraining purposes, having the casting class feature counts as Basic Magic Training.\nSphere/talent gained: Fire Mastery (Nature)",
+  "Butterfly's Sting": "You can forgo a critical hit in order to pass it on to an ally",
+  "Combat Casting": "You are adept at spellcasting when threatened or distracted",
+  "Combat Medic": "You know the urgency of treating wounds in the heat of battle, applying first aid to your allies with such speed that you assure no one gets left behind",
+  "Craft Rod": "You can create magic rods",
+  "Craft Wand": "You can create magic wands",
+  "Deceitful": "You are skilled at deceiving others, both with the spoken word and with physical disguises",
+  "Demonic Obedience": "You physically defile yourself, others, or holy objects in order to prove your blasphemous devotion to a demon lord and gain special boons",
+  "Dragoncrafting": "You have the ability to create rare and valuable items from the bodies of fallen true dragons",
+  "Echoing Spell": "You have learned how to release most, but not all, of a spell's potential when you cast it",
   "Extra Magic Talent": "Benefit: Gain an additional sphere or a talent from a sphere you possess. You may take this feat multiple times. The effects stack.",
-  "Extra Magic Talent (Fluctuate / Splinter)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Fluctuate (Warp): By spending a spell point you can charge a target with spatial instability. Each turn they may teleport as a swift action, with the range decreased to 10 feet plus an additional 5 feet per 4 caster levels. This effect lasts as long as you concentrate. As a free action you may spend a spell point to \n- Splinter (Warp): When teleporting a target (usually with the Teleport Object or Unwilling Teleport talents), you may splinter the target, causing it to appear not quite as it was. This deals 1d6 damage per 2 caster levels (minimum 1d6) to the target. This damage bypasses all damage reduction, energy resistance, and ",
-  "Extra Magic Talent (Isoport / Segmented Warp)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Isoport (Warp): When you teleport a target you may change their orientation and lower their velocity. This allows you to turn the target up to 360 degrees, which lets you turn them during a charge or run action and either give or remove the prone condition, and cancel out momentum-based movement (such as falling, b\n- Segmented Warp (Warp): You may spend a spell point to split a teleport in two. You cast a single teleport on yourself and pay any spell point costs once, but may teleport yourself twice in quick succession.  Between these two teleports you may only take one action of any kind you have remaining. Casting the second telepor",
-  "Extra Magic Talent (Organ Detachment)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Organ Detachment (Warp): You may spend 10 minutes and 3 spell points to enhance the body part of a touched creature so that it functions as if it were connected to the rest of the body regardless of where it is. For example, if you were to use this effect on an eye and remove it from a person's skull, the owner would still ",
-  "Extra Magic Talent (Teleport Trap / Teleport Object)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Teleport Trap (Warp): You may lay a teleport effect onto an adjacent, unoccupied 5-foot square. If you possess the Ranged Warp talent, you may place this effect anywhere within that range. This is a latent teleport effect, except it only activates when a creature steps onto the target square, and must target the triggeri\n- Teleport Object (Warp): You may teleport objects independent of people. The object cannot weigh more than 10 pounds per caster level, and it cannot be in the possession of another creature (in their hand or on their person). If a creature is willing, you may teleport the object directly into their hand or onto their person",
-  "Flaring Spell": "You dazzle creatures when you affect them with a spell that has the fire, light, or electricity descriptor",
-  "Martial Training I (Broken Blade)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
-  "Martial Training II (Broken Blade)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training III (Broken Blade)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training IV (Broken Blade)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training V (Broken Blade)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training VI (Broken Blade)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
+  "Extra Magic Talent (Fog Mastery / Speak With The Elements)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Fog Mastery (Nature): When you create Fog, you may add one of the following additional effects depending on what other packages you possess.  Air: Wind Blades: Your fog attacks those inside it with blades of wind. Any creature or object moving through this fog must succeed at a Reflex save or suffer 1d6 + 1 per 2 caster \n- Speak With The Elements (Nature): You may spend a spell point to commune with the elements for 1 minute per caster level.  Air: Speak With Clouds: You gain the Auran language, and may speak with clouds of fog or mist. This is not truly accomplished with speech, but rather by interacting with the cloud you may learn what else has tou",
+  "Extra Magic Talent (Nature’s Weapon / Breeze Mastery)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Nature’s Weapon (Nature): You may perform one of the following special attacks or gain one of the following benefits. In addition to the effects that already possess a duration, if you possess the ability to grant (spirit) talent abilities to another you may spend a spell point as a standard action to grant a target the abil\n- Breeze Mastery (Nature): When using Breeze, you may spend a spell point to have it affect an area, granting its benefits to all creatures within a 15-foot radius + 5 feet per 5 caster levels. Additionally, when you use Breeze, you may add any of the following additional effects depending on what other packages you possess. ",
+  "Extra Magic Talent (Ride The Elements / Nature Sight)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Ride The Elements (Nature): You may spend a spell point as a move action to increase or decrease your movement speeds by 10 feet + 10 feet per 5 caster levels (applying to all movement modes) for 1 minute per caster level. When attempting an Acrobatics check to jump while this ability is active, the height and length of your j\n- Nature Sight (Nature): You may gain a supernatural sense depending on what Nature packages you possess for as long as you concentrate, or you may spend a spell point to gain the sense for 1 minute per caster level. This sense has a range equal to your geomancing range. Each sense must be gained as a separate effect.  Air:",
+  "Extra Magic Talent (Whispering Elements)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Whispering Elements (Nature): As an instantaneous effect, you may as a standard action spend a spell point to send a message or sound through an element corresponding to a package you possess (air, earth, water, etc.) to a designated spot anywhere in the world. The message travels to the destination, provided that the location i",
+  "Gunsmithing": "You know the secrets of repairing and restoring firearms",
+  "Master Craftsman": "Your superior crafting skills allow you to create simple magic items",
   "Multi Talented": "Your profession rank cap increases by 10.",
+  "Persistent Spell": "You can modify a spell to become more tenacious when its targets resist its effect",
+  "Quick Channel": "Your divine energies flash with dazzling speed",
+  "Raging Brutality": "You expend some of your rage to strike your opponents with a more powerful weapon blow",
   "Raging Deathblow": "Every killing blow gives you a surge of vitality, further fueling your rage",
-  "Sickening Spell": "You can sicken creatures with your spells",
-  "Stone Read": "Even the faint movement and vibrations of stone can alert you to trouble"
+  "Siphon Poison": "You can remove poison from afflicted creatures",
+  "Tenebrous Spell": "You blend shadow into your spells, increasing their efficacy at the price of susceptibility to light",
+  "Terrain Focus": "Benefit: You have learned to draw upon the nutrients in some terrain more easily than others, which powers your primal magics. Choose one of the following terrains: Cold, Desert, Forest, Jungle, Mountain, Plains, Planes (pick one, other than the Material Plane), Swamp, Underground, Urban, or Water. Gain a +2 insight bonus to caster level with the Nature sphere while using magic within the chosen terrain.\n\nSpecial: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new terrain. You cannot gain this feat if you possess the Terrain Defiler feat.",
+  "Toppling Spell": "Your spells with the force descriptor knock the affected creatures prone",
+  "Toughness": "You have enhanced physical stamina",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
+  "Widen Spell": "You can cast your spells so that they occupy a larger space"
  },
  "inherents": {
   "cha": 5,
@@ -569,7 +538,7 @@
   "wis": 0
  },
  "initiation_stat": "wis",
- "initiator_level": 7,
+ "initiator_level": 0,
  "int": 8,
  "item_changes_dict": {
   "All Tools Vest": {
@@ -581,29 +550,77 @@
     }
    ]
   },
-  "Crusader's Tabard": {
+  "Nightmare Boots": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "attack",
-     "text": "Once per day, the wearer of the tabard may say its command word (often a family motto); Thereafter, the wearer can spend a standard action (instead of a full-round action) to move up to his speed and make a single charge attack. This ability lasts until used or for [[1]] minute, whichever duration is shorter."
+     "target": "allSavingThrows",
+     "text": "When the wearer runs or charges, smoke issues up from the boots, acting as concealment (20% miss chance) when the wearer provokes attacks of opportunity while making those actions. Secondly, three times per day, as a swift action, the wearer can make the boots smoke, which grants her concealment until the end of her turn. Lastly, once per day, when the wearer hits a creature with a melee attack, she can command the boots to ignite. When the boots ignite, all creatures within a [[5]]-foot radius take [[2d6]] points of fire damage. A dc [[13]] reflex saving throw halves the damage."
     }
    ]
   },
-  "Glyphbane Gloves": {
+  "Pauper's Robes": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "skill.dev",
-     "text": "The wearer gains a +[[5]] competence bonus on disable device checks made to disable magical traps. Once per day, if the wearer's check to disarm a glyph, rune, or similar writing-based magical trap exceeds the dc by 10 or more, she may change the trigger condition of the trap instead of disabling it."
+     "target": "allSavingThrows",
+     "text": "Creatures that attempt to remember details of their interactions with the wearer of a set of pauper's robes must make a successful will save to do so: recalling general details about the wearer (such as gender or race) requires a successful dc [[13]] will save, and recalling more specific information (such as name, distinguishing features, or mannerisms) requires a successful dc [[16]] will save."
     }
    ]
   },
-  "Treasure Hunter's Goggles": {
+  "Pirate's Eye Patch": {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.clm",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.swm",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "skill.clm",
+     "text": "In addition, once per day, the wearer of this eye patch can gain the effects of either touch of the sea (advanced player's guide) or expeditious retreat on command (wearer's choice)."
+    }
+   ]
+  },
+  "Planefarer's Band": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "While wearing these goggles, the wearer can use detect secret doors at will. Once per day on command, the wearer gains the ability to locate object as per the spell, but only to detect 100 or more coins in a small area, such as a backpack, chest, pouch, or sack."
+    "Once per day, the wearer of this ring can attune it to one of the four elemental planes for 24 hours. Once per day on command, the wearer can gain these benefits even when on a different plane, but the effects last only 10 minutes."
+   ]
+  },
+  "Windwave Kilt": {
+   "changes": [
+    {
+     "formula": "3",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.swm",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "skill.swm",
+     "text": "When not worn, a windwave kilt floats on water like a dry log, automatically buoying upward any creature that weighs 100 pounds or less and aiding in flotation for heavier creatures. If gozreh is the wearer's patron, once per day the wearer can use gaseous form . In this form, the wearer does not need to breathe and can enter water or other liquid, appearing as a mass of fine bubbles and gaining the ability to swim at a speed of [[10]] feet."
+    }
+   ]
+  },
+  "Witness Hunter's Ring": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "By concentrating on the ring as a move action, the wearer learns whether he is being observed and whether it is by one or by more than one creature. Once per day, the wearer can use locate creature on command to target creatures that are currently observing him. In addition, the wearer can cast detect scrying once per day on command."
    ]
   }
  },
@@ -611,16 +628,14 @@
  "land_speed": 30,
  "language_text": [
   "Common",
+  "Celestial",
   "Gnome",
-  "Dwarven",
-  "Halfling",
-  "Grippli",
-  "Aklo",
+  "Abyssal",
   "Sylvan",
-  "Auran",
-  "Aquan",
-  "Undercommon",
-  "Terran"
+  "Gnoll",
+  "Ignan",
+  "Terran",
+  "Halfling"
  ],
  "level": 8,
  "level_up_stats": {
@@ -636,9 +651,9 @@
    "advanced": false,
    "changes": [],
    "contextNotes": [],
-   "description": "When you teleport, you may choose to delay the effect for up to a number of rounds equal to your caster level. The teleport does not come into effect immediately and instead takes place at the start of your turn after the chosen number of rounds occur. You must decide on any variables and pay any additional spell points for this teleport effect (e.g. distance, direction, etc.) when you delay the effect. When the delayed teleport occurs, if the target location is not valid, the effect fails and does not occur. For example, a teleport can fail if you do not pay an additional spell point for Unseeing Teleport and, when the delayed teleport occurs, the teleport would move you to a space you do not have line of sight for.\n\nIf you spend an additional spell point when delaying a teleport with this talent, you may cast and delay a second teleport effect which must be delayed at least one additional round longer than the first teleport you delayed.",
-   "name": "Timed Warp",
-   "sphere": "Warp",
+   "description": "You gain a number of ways of expressing mastery over fire. You gain the following geomancing abilities:\n\nAlter Light: Concentration. You may alter the light produced by a fire within your Affect Fire maximum. You may halve or double the radius of its light, as well as change its granted light from an emanation to a cone of double its light radius. You may also increase its granted light by 1 level (usually to bright light) or decrease its granted light by 1 level (to dim light).\n\nExtinguish: Instantaneous. You may spend a spell point to extinguish any and all fires within your geomancing range that are within your Affect Fire maximum, as you desire.\n\nReflash: Instantaneous. If a non-magical fire within range would become extinguished (through magical or mundane means), you may, as an immediate action, cause the fire to relight in up to a 15-foot radius burst of flame dealing fire damage equal to the largest sized fire you can create. This can be used to reignite a character who has caught on fire and extinguished the flames. If so, a successful Reflex save halves the damage and negates catching fire.",
+   "name": "Fire Mastery",
+   "sphere": "Nature",
    "system": "Spheres of Power",
    "type": "base",
    "uses": null
@@ -647,9 +662,9 @@
    "advanced": false,
    "changes": [],
    "contextNotes": [],
-   "description": "By spending a spell point you can charge a target with spatial instability. Each turn they may teleport as a swift action, with the range decreased to 10 feet plus an additional 5 feet per 4 caster levels. This effect lasts as long as you concentrate. As a free action you may spend a spell point to allow the effect to continue for 1 round per caster level without the need for concentration.\n\nYou cannot select this talent if you possess the Bender drawback, or otherwise do not possess the teleport function of the Warp sphere.",
-   "name": "Fluctuate",
-   "sphere": "Warp",
+   "description": "When you create Fog, you may add one of the following additional effects depending on what other packages you possess.\n\nAir: Wind Blades: Your fog attacks those inside it with blades of wind. Any creature or object moving through this fog must succeed at a Reflex save or suffer 1d6 + 1 per 2 caster levels points of slashing damage for every 5 feet of movement spent entering or moving through this fog.\n\nEarth: Sandstorm: Requires loose dirt or sand instead of water. You create a sandstorm. In addition to the fog, this also functions as a Vortex, except it travels over land and extends into the air, and can even leave the ground and travel in the air. The obscuring effect only applies to the actual area of the vortex, and creatures that possess earthsight or tremorsense do not have their vision obscured by this effect.\n\nFire: Smokescreen: Requires fire instead of water. You may create a fog out of smoke instead of mist. Creatures that begin their turn within or enter the cloud must succeed at a Fortitude save or become blinded for 1 minute. In addition, creatures suffer -2 penalty on attack rolls and Perception checks for as long as they remain inside and for 1 round after exiting the smoke. Creatures that possess firesight do not have their vision obscured by clouds modified with this effect.\n\nMetal: Acid Rain: You may spend an additional spell point to create acid rain. An acid fog deals 1d6 acid damage per 2 caster levels (minimum 1d6, no save) to creatures inside it. This fog deals damage when you first create it and each subsequent round at the beginning of your turn. Any creature who enters the cloud immediately suffers damage, but only once even if they leave and re-enter the cloud as part of their movement. Creatures that possess metalsight do not have their vision obscured by this effect.\n\nPlant: Spore Cloud: Requires grass, weeds, or trees instead of water. You may create a cloud of spores. Creatures that begin their turn within or enter the cloud must succeed at a Fortitude save or become sickened for as long as they remain within the fog + 1d6 rounds after leaving. If a creature fails its Fortitude save against this effect while already sickened, it also becomes nauseated for 1 round. Creatures and objects that exit the cloud are covered in visible sticky spores that remain until removed as a full-round action; outlining their form and revealing their position, and making invisibility impossible without first cleaning off the spores. Creatures that possess greensight or plantsight do not have their vision obscured by this effect.\n\nWater: Solid Fog: You may make your fog so thick that it becomes effectively solid. Creatures move at half their speed through the fog, cannot make 5-foot steps, and suffer a -1 penalty to all weapon attacks and damage rolls made within or that pass through this area -1 per 10 caster levels. Objects that fall within this area are slowed so that each 10 feet of fog reduces the falling damage by 1d6, +1d6 per 10 caster levels.",
+   "name": "Fog Mastery",
+   "sphere": "Nature",
    "system": "Spheres of Power",
    "type": "base",
    "uses": null
@@ -658,9 +673,9 @@
    "advanced": false,
    "changes": [],
    "contextNotes": [],
-   "description": "When teleporting a target (usually with the Teleport Object or Unwilling Teleport talents), you may splinter the target, causing it to appear not quite as it was. This deals 1d6 damage per 2 caster levels (minimum 1d6) to the target. This damage bypasses all damage reduction, energy resistance, and hardness.",
-   "name": "Splinter",
-   "sphere": "Warp",
+   "description": "You may spend a spell point to commune with the elements for 1 minute per caster level.\n\nAir: Speak With Clouds: You gain the Auran language, and may speak with clouds of fog or mist. This is not truly accomplished with speech, but rather by interacting with the cloud you may learn what else has touched it, passed through it, is hidden within it, etc. You can tell depth, weight, size, and number of passers-by, but not more detailed information.\n\nEarth: Speak With Stone: You gain the Terran language, and may speak with natural or worked stone. This is not truly accomplished through speech, but rather by touching a stone you may learn what else has touched it, passed by it, what is hidden underneath it, etc. You can tell depth, weight, size, and number of passers-by, but not more detailed information.\n\nFire: Speak With Fire: You gain the Ignan language, and may speak with fire or smoke. This is not truly accomplished through speech, but rather by gazing into the flames and smoke you may learn what else has touched it, passed by it, what is responsible for creating it, etc. You can tell weight, size, and number of passers-by, but not more detailed information.\n\nMetal: Speak With Metal: You gain the Aklo language, and may speak with natural ore or worked metal. This is not truly accomplished through speech, but rather by touching a piece of metal you may learn what else has touched it, worn it, passed by it, what is hidden inside it, details of its forging, etc. You can tell depth, weight, size, and number of passers-by, but not more detailed information.\n\nPlant: Speak With Plants: You gain the Sylvan language, and may speak with normal plants and plant creatures. You can communicate with normal plants and plant creatures and can ask questions and receive answers from them. A normal plant's sense of its surroundings is limited, so it will not be able to give (or recognize) detailed descriptions of creatures or answer questions about events outside its immediate vicinity.\n\nWater: Speak With Water: You gain the Aquan language, and may speak with pools or bodies of water. This is not truly accomplished through speech, but rather by dipping a limb into the water you may learn what else has touched it, passed by it, what is hidden inside it, etc. You can tell depth, weight, size, and number of passers-by, but not more detailed information. You can speak with both fresh or salt bodies of water, and if attempting to converse with particularly large bodies of water, such as oceans, you can only acquire information from a portion of the body of water, to a maximum distance of 1000 feet + 100 feet per caster level.",
+   "name": "Speak With The Elements",
+   "sphere": "Nature",
    "system": "Spheres of Power",
    "type": "base",
    "uses": null
@@ -669,9 +684,9 @@
    "advanced": false,
    "changes": [],
    "contextNotes": [],
-   "description": "You may lay a teleport effect onto an adjacent, unoccupied 5-foot square. If you possess the Ranged Warp talent, you may place this effect anywhere within that range. This is a latent teleport effect, except it only activates when a creature steps onto the target square, and must target the triggering creature.\n\nYou must possess the Unwilling Teleport talent and spend a spell point as usual if you want your teleport trap to affect unwilling targets. You must possess the Teleport Object talent to affect unattended objects, and may decide when making the teleport trap whether unattended objects will trigger the effect or not. If you possess the Mass Teleport talent, you may spend a spell point to allow the teleport trap to remain after its initial use, affecting additional creatures who enter its square until the duration expires or it has attempted to teleport 1 creature + 1 per 2 caster levels (minimum 2 total). You must designate the destination where triggering creatures will be teleported when creating a teleport trap.\n\nWhen a creature steps into the triggering square, the teleport effect activates, transporting the triggering creature to the designated destination. Unwilling targets are allowed a saving throw as normal.\n\nA teleport trap lasts for 10 minutes per caster level before becoming inert. This is a magical trap with a Perception DC and Disable Device DC equal to the teleport's save DC. You may only have one teleport trap active at a time. You may select this talent multiple times. Each time this talent is gained beyond the 1st, increase the total number of teleport traps you may have active at one time by 1.",
-   "name": "Teleport Trap",
-   "sphere": "Warp",
+   "description": "You may spend a spell point as a move action to increase or decrease your movement speeds by 10 feet + 10 feet per 5 caster levels (applying to all movement modes) for 1 minute per caster level. When attempting an Acrobatics check to jump while this ability is active, the height and length of your jump is doubled, to a maximum of your move speed.",
+   "name": "Ride The Elements",
+   "sphere": "Nature",
    "system": "Spheres of Power",
    "type": "base",
    "uses": null
@@ -680,9 +695,9 @@
    "advanced": false,
    "changes": [],
    "contextNotes": [],
-   "description": "You may teleport objects independent of people. The object cannot weigh more than 10 pounds per caster level, and it cannot be in the possession of another creature (in their hand or on their person). If a creature is willing, you may teleport the object directly into their hand or onto their person.\n\nIf you possess the Ranged Warp talent, you may, as a readied action, catch a projectile out of the air that passes within range, redirecting it against another target if you wish. The creature who initiated the attack is allowed a Will save to negate this effect, and you must make an attack roll against the new target, but using your casting ability modifier in place of Dexterity when making the attack. Damage is still determined by the creature who initiated the attack.",
-   "name": "Teleport Object",
-   "sphere": "Warp",
+   "description": "You may gain a supernatural sense depending on what Nature packages you possess for as long as you concentrate, or you may spend a spell point to gain the sense for 1 minute per caster level. This sense has a range equal to your geomancing range. Each sense must be gained as a separate effect.\n\nAir: Cloudsight (Su): You gain mistsight, except allowing you to only see through clouds of fog, mist, and smoke as if they were transparent. In addition, you do not suffer miss chance from concealment or total concealment against creatures that are flying or have the air subtype provided they are within range of your cloudsight.\n\nEarth: Earthsight (Su): You gain tremorsense, only allowing you to detect anything in contact with the same body of ground as you. In addition, you do not suffer miss chance from concealment or total concealment against creatures that are underground or have the earth subtype provided they are within range of your earthsight.\n\nFire: Firesight (Su): You can see through flames, lava, and smoke as if they were transparent. In addition, you do not suffer miss chance from concealment or total concealment against creatures that are on fire or have the fire subtype provided they are within range of your firesight.\n\nMetal: Metalsight (Su): You gain the scent ability, except only allowing you to detect metal objects (including creatures wearing or carrying metal objects). In addition, you do not suffer miss chance from concealment or total concealment against ferrous creatures or creatures that have the clockwork or robot subtypes provided they are within range of your metalsight.\n\nPlant: Plantsight (Su): You gain greensight, except only allowing you to see through leaves, living wood, greenery, undergrowth, and vines as if they were transparent (you still cannot see through dead wood). In addition, you do not suffer miss chance from concealment or total concealment against creatures that are entangled in plantlife or of the plant creature type provided they are within range of your greensight.\n\nWater: Watersense (Su): You gain tremorsense, except only allowing you to detect anything in contact with the same body of water as you. In addition, you do not suffer miss chance from concealment or total concealment against creatures that are underwater or have the water subtype provided they are within range of your watersense.",
+   "name": "Nature Sight",
+   "sphere": "Nature",
    "system": "Spheres of Power",
    "type": "base",
    "uses": null
@@ -691,9 +706,9 @@
    "advanced": false,
    "changes": [],
    "contextNotes": [],
-   "description": "When you teleport a target you may change their orientation and lower their velocity. This allows you to turn the target up to 360 degrees, which lets you turn them during a charge or run action and either give or remove the prone condition, and cancel out momentum-based movement (such as falling, being thrown or pushed), which effectively resets any distance they have fallen. Using this talent to respond to actions or events outside of your turn typically requires a readied action.\n\nYou may choose to apply only the effects of Isoport, changing a target's spatial orientation and velocity without teleporting them to another location. Doing so reduces the casting time to a swift action instead of a standard action. If you also spend a spell point, you may Isoport a target as an immediate action. You must possess Unwilling Teleport to affect unwilling targets, and must spend a spell point as usual.",
-   "name": "Isoport",
-   "sphere": "Warp",
+   "description": "You may perform one of the following special attacks or gain one of the following benefits. In addition to the effects that already possess a duration, if you possess the ability to grant (spirit) talent abilities to another you may spend a spell point as a standard action to grant a target the ability to use one of these attacks for 1 round per caster level. The options available are dependent on your Nature packages, as outlined below:\n\nAir: Cacophony: As a standard action you may create a torrent of wind that deals sonic damage equal to 1d4 + 1 per caster level to all creatures and unattended objects within a cone that reaches from you to the edge of your geomancing range. Any creature damaged by the effect must succeed at a Fortitude save or be deafened for 1d4 rounds.\n\nEarth: Stone Fist: As a free action you may encase one or both of your fists with stone for 1 round. While so encased, you cannot hold anything in that hand and suffer a -2 armor check penalty. You also are considered armed when making unarmed strikes with that hand, gain a +1 shield bonus to AC, and your unarmed strikes with that hand deal 1d6 damage Medium (1d4 Small) and ignore hardness less than 8. This damage increases by 1 die size (1d8, 1d10, 2d6, 2d8, etc.) every 4 caster levels you possess, and the shield bonus increases by 1 for every 6 caster levels you possess. This does not stack with monk levels or other effects that increase the damage of unarmed strikes.\n\nFire: Fire Wielder: As a free action you may create a fire in one or both of your hands. You are considered armed with this fire, and can treat it as a light weapon when making attacks. Attacks with this flame are touch attacks, and deal fire damage equal to the largest fire you can create with Create Fire. This fire cannot be augmented like a normal fire, and attacks with this fire are not augmented by your Strength modifier or effects that increase physical damage such as Power Attack, as flame is immaterial. You cannot be disarmed of this fire, but you may throw it as a ranged weapon attack with no range penalty to a maximum of your geomancing range.\n\nMetal: Blade Whip: As a standard action you may reshape a mostly metal weapon (such as a sword or battleaxe) you are wielding into a cable and perform a trip, disarm or sunder combat maneuver against a target within your geomancing range. This is considered a ranged attack, and you cannot be targeted in return on a failure. You gain a bonus to the check equal to 1/2 your caster level (minimum 1). After the combat maneuver check has been resolved, your weapon returns to its original form.\n\nPlant: Bramble Strike: You may spend a spell point as a standard action to cause brambles to burst from any mostly wooden weapon (such as a club, quarterstaff, or spear) you are wielding, or pieces of mostly-wooden ammunition such as an arrow or bolt coming from a ranged weapon you are using, for 1 round per caster level. Once per round when you strike a creature with one of your qualifying weapons, you may cause them to attempt a Reflex save. On a failure, the target becomes entangled for 1 round. For every 10 caster levels you possess, you may use this ability an additional time per round. Escaping this entanglement follows the same rules as escaping from the Entangle geomancing ability. If a creature fails their saving throw while already entangled from this effect, the condition's duration increases by 1 round.\n\nWater: Icicles: You may spontaneously create an icicle in your hand as a free action. These icicles count as masterwork daggers and melt if they leave your hand for more than 1 round. These icicles gain a +1 enhancement bonus per 4 caster levels you possess (maximum +5) and deal an amount of extra cold damage equal to 1/2 your caster level.",
+   "name": "Nature’s Weapon",
+   "sphere": "Nature",
    "system": "Spheres of Power",
    "type": "base",
    "uses": null
@@ -702,9 +717,9 @@
    "advanced": false,
    "changes": [],
    "contextNotes": [],
-   "description": "You may spend a spell point to split a teleport in two. You cast a single teleport on yourself and pay any spell point costs once, but may teleport yourself twice in quick succession.\n\nBetween these two teleports you may only take one action of any kind you have remaining. Casting the second teleport does not require a second action, but provokes an attack of opportunity regardless (though you may cast defensively or use other methods to protect yourself from such attacks). The total distance covered by both teleports cannot be longer than the maximum range of the initial teleport. If your second teleport is disrupted by an attack of opportunity or other means, it is lost.\n\nIf used in conjunction with Pouncing Teleport you do not get extra attacks, but may make your attack after either half of the split teleport. Attacking this way counts as your single action for the purposes of Segmented Warp. If you choose to full attack, you may instead use any number of your attacks as a single action, and use any remaining attacks after your second teleport. Other abilities that would create additional effects with your teleport (such as dual sphere feats) only apply to one of the split teleports.",
-   "name": "Segmented Warp",
-   "sphere": "Warp",
+   "description": "When using Breeze, you may spend a spell point to have it affect an area, granting its benefits to all creatures within a 15-foot radius + 5 feet per 5 caster levels. Additionally, when you use Breeze, you may add any of the following additional effects depending on what other packages you possess.\n\nAir: Stable Winds: Requires air. You can create incredibly powerful winds, allowing you to walk upon the air with some difficulty as long as you concentrate. You can spend a spell point to allow yourself to walk on air as if walking on solid ground, with moving upward being similar to walking up a hill. The maximum upward or downward angle possible is 45 degrees, which is at a rate equal to half your normal land speed.\n\nWind of severity level 3 or higher can blow you away regardless of your size, with any checks required (such as a Strength or Fly check) using your casting ability modifier instead of the normal ability modifier used for the check. You begin to fall as normal if you stop concentrating on this effect.\n\nEarth: Stabilizing Dustveil: Requires sand or loose dirt. You can create winds made up of fine particles of dust and sand, stabilizing the area around you. The circumstance bonus granted by Breeze also applies to your CMD against bull rush, reposition, trip, and overrun combat maneuvers made against you. Additionally, you treat the first square of difficult terrain you enter every round as if it were normal terrain.\n\nFire: Warm Breeze: Your breeze is heated to ward against the chill. Instead of the normal bonus to saves against very hot conditions or severe heat, Breeze instead grants this bonus to saves against very cold conditions and severe cold. Additionally, when used in this way, creatures affected by your Breeze treat the severity of all cold and precipitation weather effects as one step less severe, plus one per 10 caster levels you possess.\n\nMetal: Ferrous Zephyr: Requires metal. You can create a breeze filled with fine filaments of metal. The circumstance bonus granted by Breeze also applies to your AC and to saving throws against electricity-based effects. Additionally, you ignore the penalties associated with the broken condition with any of your worn or wielded equipment (but is still considered broken regardless) as long as the Breeze is active.\n\nPlant: Fragrant Flurry: Requires grass, vines, or weeds. Your breeze smells of pleasant meadows and flowers, and causes vines and flowers to grow where it touches. The circumstance bonus granted by Breeze also applies to saving throws against the nauseated and sickened conditions and any harmful effects that rely on smell. Additionally, the DC required to track creatures affected by Breeze increases by an amount equal to the circumstance bonus granted by Breeze.\n\nWater: Cooling Breeze: Requires rain, mist, or at least 5 cubic feet of water. Creatures affected by your Breeze treat the severity of all aridity and heat weather effects as one step less severe, plus one per 10 caster levels you possess.",
+   "name": "Breeze Mastery",
+   "sphere": "Nature",
    "system": "Spheres of Power",
    "type": "base",
    "uses": null
@@ -713,217 +728,77 @@
    "advanced": true,
    "changes": [],
    "contextNotes": [],
-   "description": "You may spend 10 minutes and 3 spell points to enhance the body part of a touched creature so that it functions as if it were connected to the rest of the body regardless of where it is. For example, if you were to use this effect on an eye and remove it from a person's skull, the owner would still be able to see out of that eye. A detached hand or arm could still manipulate objects on its own. Organs separated from the body are typically objects 2 sizes smaller than the creature they belong to and do not have any bonuses to AC. They are considered to have a Strength score equal to half of their owner. Any damage dealt to an organ is transferred to the organ's owner. If an organ has some sort of mobility (such as a hand crawling or a head pushing itself around using its tongue), the organ is considered to have a movement speed of 5 feet. You use your own actions to move this organ. A creature takes no damage when an organ affected by this talent is removed or when it is reattached (a standard action which requires that the owner touch the organ). If you reattach an organ to your body, the effects of this ability remain, allowing you to freely detach it again.\n\nCreatures may remove vital organs such as hearts, and lungs from their body and hide them elsewhere. Each organ removed in this way gives the creature a cumulative 10% chance to negate critical hits and precision damage against them as per the fortification armor special ability. This effect is cumulative, but does not stack with any similar effects such as fortification armor. This talent may safely remove one organ from a creature per 4 caster levels. A creature may not have their brain removed with this talent.\n\nRemoval or detachment of organs through this talent are permanent until dismissed or dispelled. If this effect is dispelled (which requires the organ be targeted with the dispel rather than the person the organ belonged to), the organ teleports back to the owner's body so long as the distance between the owner and the organ does not exceed your teleport range (or close range if you cannot teleport). If the organ could not teleport back its owner or is beyond this range, the organ explodes harmlessly and the caster painfully grows a replacement, taking 2d6 points of Constitution drain in the process (or taking 10d6 damage which cannot be reduced or redirected if they are immune to ability drain or lack a Constitution score).",
-   "name": "Organ Detachment",
-   "sphere": "Warp",
+   "description": "As an instantaneous effect, you may as a standard action spend a spell point to send a message or sound through an element corresponding to a package you possess (air, earth, water, etc.) to a designated spot anywhere in the world. The message travels to the destination, provided that the location is familiar to you and that it can find a way to the location through its chosen medium. The message can travel as slowly as 1 mile per hour or as quickly as 1 mile per 10 minutes, though if it cannot reach its destination within 1 hour per caster level, the effect ends without delivering the message. If choosing plant or fire the message can travel without a medium, provided the end location possesses either plantlife or a fire for the message to be delivered through.\n\nThe message is gentle and unnoticed until it reaches the location, where it then delivers its whisper-quiet message or other sound to all creatures within 10 feet + 5 feet per 5 caster levels of the destination. Note that the message is delivered regardless of whether anyone is present to hear it.\n\nAt time of casting, you can prepare the effect to bear a message of no more than 20 + your caster level words, cause the talent to deliver other sounds for 1 round per 2 caster levels, or merely have the message seem to be a faint manifestation of the chosen element.\n\nThe message cannot speak verbal components, use command words, or activate magical effects.",
+   "name": "Whispering Elements",
+   "sphere": "Nature",
    "system": "Spheres of Power",
    "type": "advanced",
    "uses": null
   }
  ],
  "main_stat": "wis",
- "maneuvers_choose_from": [
-  [
-   "Shards of Iron Strike",
-   "Brawlers Attitude"
-  ],
-  [
-   "Counter Step",
-   "Leg Sweeping Hilt"
-  ],
-  [
-   "Steel Flurry Strike",
-   "Iron Dust"
-  ],
-  [
-   "Iron-Breaking Palm"
-  ],
-  [
-   "Iron Mongers Throw"
-  ],
-  [
-   "Finishing Kick"
-  ]
- ],
- "maneuvers_desc_dict": {
-  "Brawlers Attitude": {
-   "action": "1 swift action",
-   "description": "By using the skill of the empty-handed warriors that came before him, the disciple focuses his will to using his body in less conventional ways in combat. When initiating this boost, the initiator gains a +4competence bonusto his nextCMBcheck when using hisunarmed strikeor discipline weapon to perform the followingcombat maneuvers:dirty trick,disarm,grapple, ortrip.",
-   "discipline": "Broken Blade",
-   "duration": "Instant",
-   "level": 1,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Broken Blade Stance": {
-   "action": "1 swift action",
-   "description": "The disciple of the Broken Blade has learned the flows of combat to a degree and has the insight necessary to see the path to victory through the patterns of steel his opponents weave before his eyes. While in this stance, the initiator gains acompetence bonusequal to his initiator level toAcrobatics checks to avoidattacks of opportunity, and may make an additional attack when making a full attack action. If the initiator is two weapon fighting, he gains this extra attack for both hands. The attacks uses the initiators fullbase attack bonus, plus any modifiers appropriate to the situation.",
-   "discipline": "Broken Blade",
-   "duration": "Stance",
-   "level": 3,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Counter Step": {
-   "action": "1 immediate action",
-   "description": "With a twist of his body or a nimble hop, the disciple of the Broken Blade avoids a blow with a practiced step. The initiator makes an opposedAcrobaticscheck against an attackers meleeattack roll. If successful, the initiator may make an immediate 5 ft. step to a location that is not beingthreatenedby his attacker without provokingattacks of opportunity. If no such square exists, then this counter cannot be used.",
-   "discipline": "Broken Blade",
-   "duration": "Instant",
-   "level": 2,
-   "range": "Personal",
-   "type": "counter"
-  },
-  "Finishing Kick": {
-   "action": "1 swift action",
-   "description": "Amidst the flurry of punches, kicks, and elbows that are the hallmarks of the Broken Blade discipline, the disciple who has put his foe through the ropes of learning what it is to underestimate the warrior without weapons may deliver this powerful kick to reduce his foe to a bleeding heap. At the end of a full attack action, the initiator may use this boost to deliver one final extra unarmed attack as he delivers a powerful kick at his fullbase attack bonusand inflicting an additional 6d6 points of damage.",
-   "discipline": "Broken Blade",
-   "duration": "Instant",
-   "level": 6,
-   "range": "One full melee attack",
-   "type": "boost"
-  },
-  "Iron Dust": {
-   "action": "1 swift action",
-   "description": "Knowing the disadvantage of fighting without proper steel in hand, the disciple of the Broken Blade must take advantage of his surroundings and openings in his foes defenses as he sees them. As part of a martial strike, he may make a freedirty trick attempt as part of this boost with a +2competence bonus without provokingattacks of opportunity. The initiator may choose when the effects of this boost are applied before, during, or after when using this in conjunction with an attack or a martial strike.",
-   "discipline": "Broken Blade",
-   "duration": "Instant",
-   "level": 3,
-   "range": "Melee attack",
-   "type": "boost"
-  },
-  "Iron Hand Stance": {
-   "action": "1 swift action",
-   "description": "By keeping his hands stiff and his arms loose and ready, the disciple uses his bare palms as shields to protect himself from the weapons of his foes. While in this stance, the initiator gains a +2shield bonusto his AC while he has at least one free hand. At the initiators 6th initiator level, this bonus increases by +1, again at 12th level, and a final time at 18th level.",
-   "discipline": "Broken Blade",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Iron Mongers Throw": {
-   "action": "1 standard action",
-   "description": "Opponents with their deadly blades and powerful spears can harry the disciple who fights with his hands, and the truth that is forgotten by filling ones hands with iron and steel is that the one with open hands may use them for whatever purpose suits them, and in this case it is for taking a foe and viciously hurling him away to give the disciple room to maneuver and plan his next move. The initiator makes aCMBcheck with a +4competence bonusthat does not provokeattacks of opportunity, and if successful the initiator rolls into a reverse somersault to hurl his foe up to 20-ft. away from him the disciples player chooses the flight path of the thrown foe where they land in heavily, taking 6d6 points of damage.",
-   "discipline": "Broken Blade",
-   "duration": "Instant",
-   "level": 5,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Iron-Breaking Palm": {
-   "action": "1 standard action",
-   "description": "By targeting the very iron, wood, and steel he has eschewed for the simple use of his own limbs as weapons, he reduces his foes effectiveness by shattering theirillusionof superiority in combat. The initiator makes asunderattempt against the opponents weapon or shield and inflicts an additional 3d6 points of damage to the targeted item. If the initiator breaks a targets shield, the target is consideredentangleduntil he spends astandard actionto divest himself of thebrokenshield. This sundering attempt does not provoke anattack of opportunity.",
-   "discipline": "Broken Blade",
-   "duration": "Instant",
-   "level": 4,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Leg Sweeping Hilt": {
-   "action": "1 standard action",
-   "description": "With quick feint high, the disciple hooks his foot behind the leg of his foe and stiffens it like the hilt of a sword, drawing it back to knock his opponent down. The initiator makes atripattempt with a +2competence bonuswhich does not provokeattacks of opportunity. If successful, the initiator trips his opponent and may make an immediate attack at his fullbase attack bonus.",
-   "discipline": "Broken Blade",
-   "duration": "Instant",
-   "level": 2,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Pit Fighters Stance": {
-   "action": "1 swift action",
-   "description": "Some disciples have had to use their skills in less than reputable areas, or their teachers have deigned it worthy to learn how to use every opening to your best advantage. Some who practice Broken Blade find those who master this particular area of the art to be of questionable honor, but none can doubt its effectiveness. While in this stance, the initiator may make onedirty trickattempt per round as aswift actionwithout provokingattacks of opportunity, and he gains a +2 bonus to hisCMDto resist dirty tricks andfeintattempts. The initiator also inflicts an additional 2d6 points of damage whenever the target would be denied theirDexteritymodifier to their AC",
-   "discipline": "Broken Blade",
-   "duration": "Stance",
-   "level": 6,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Shards of Iron Strike": {
-   "action": "1 standard action",
-   "description": "By mimicking the speed and piercing power of the legendary shattered blade of the founder of this discipline, the disciple makes a hard jabbing strike at his opponents vulnerable spots for maximum pain. The initiator makes an attack against his target foe and if successful, the target isstaggeredfor one round in addition to normal damage.",
-   "discipline": "Broken Blade",
-   "duration": "Instant",
-   "level": 1,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Steel Flurry Strike": {
-   "action": "1 standard action",
-   "description": "The disciple makes a furious set of attacks upon his foe, hammering through defenses and striking rapidly. The initiator may make three attacks against his foe at fullbase attack bonus with a -2 penalty to hit. Successful hits inflict an additional 3d6 points of damage per hit.",
-   "discipline": "Broken Blade",
-   "duration": "Instant",
-   "level": 3,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Steel Grapplers Attitude": {
-   "action": "1 swift action",
-   "description": "By assuming this stance, the disciple of the Broken Blade has learned to shift his mass and balance to his advantage whengrapplingand running down his foes. While in this stance, the initiator counts as one size category larger when calculatingCMBandCMDforgrapple,bull rush, andoverrunattempts, for use during counters, and he may add his initiation modifier to hisCMBchecks and to hisCMDforgrapple,bull rush, andoverrunattempts and resisting those that use thosecombat maneuversagainst him.",
-   "discipline": "Broken Blade",
-   "duration": "Stance",
-   "level": 5,
-   "range": "Personal",
-   "type": "stance"
-  }
- },
- "maneuvers_known_list": [
-  2,
-  2,
-  2,
-  1,
-  1,
-  1
- ],
- "maneuvers_readied_list": [
-  0,
-  1,
-  2,
-  1,
-  1,
-  1
- ],
- "maneuvers_readied_names": [
-  [],
-  [
-   "Counter Step"
-  ],
-  [
-   "Iron Dust",
-   "Steel Flurry Strike"
-  ],
-  [
-   "Iron-Breaking Palm"
-  ],
-  [
-   "Iron Mongers Throw"
-  ],
-  [
-   "Finishing Kick"
-  ]
- ],
+ "maneuvers_choose_from": [],
+ "maneuvers_desc_dict": {},
+ "maneuvers_known_list": [],
+ "maneuvers_readied_list": [],
+ "maneuvers_readied_names": [],
  "mannerisms": [
   "Crosses arms",
   "Clenches fists"
  ],
- "martial_disciplines": [
-  "Broken Blade"
- ],
+ "martial_disciplines": [],
  "mini_alignment": "ng",
  "mod_char_sheet_var": false,
- "mt_feats": [
-  "Martial Training I (Broken Blade)",
-  "Martial Training III (Broken Blade)",
-  "Martial Training V (Broken Blade)"
- ],
+ "mt_feats": [],
+ "normal_feat_amount": 7,
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "dead mother, loving father, raised in a wealthy household",
+ "parents": "dead mother, absent father, adopted into a poor family",
  "personality_traits": [
   "Cowardly",
   "Inquisitive",
   "Sociable"
  ],
- "platnium": 80.0,
+ "platnium": 164.5,
  "profession_ability_items": [
+  {
+   "changes": [
+    {
+     "formula": "3",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.dip",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Baron of the March) - rank 15/15. Associate skills (ranks 1/4/7/10): Craft, Profession, Sense Motive, Use Magic Device.</em></p><hr><p><strong>House Allowance (Ex)</strong></p><p>A steady purse from your estate keeps you in fine cloth and ready coin. You begin each adventure with starting wealth equal to 125% of the normal amount, and you may draw on your house's credit to acquire any single mundane item worth up to 100 gp once per week.</p><hr><p><strong>Voice of Command (Ex)</strong></p><p>Years at court honed your charm into a weapon. You gain a +3 competence bonus on Diplomacy checks and may make a request that would normally take 1 minute as a standard action once per round.</p>",
+   "name": "Profession Rank 5: (Baron of the March)",
+   "uses": null
+  },
+  {
+   "changes": [
+    {
+     "formula": "3",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.klo",
+     "type": "competence"
+    },
+    {
+     "formula": "3",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.kno",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Baron of the March) - rank 15/15.</em></p><hr><p><strong>Imperious Command (Ex)</strong></p><p>When you speak, allies move. As a standard action you may issue a ringing command to a single willing ally within 30 feet, granting them an immediate move action or a +2 morale bonus on their next attack roll or saving throw. You may use this 3 times per day.</p><hr><p><strong>Noble Patronage (Ex)</strong></p><p>Your name opens doors and loosens guards. In any settlement of town size or larger you are presumed to have lodging, an audience with local officials, and a line of credit worth up to 500 gp, and you gain a +4 circumstance bonus on Diplomacy checks made to requisition aid or hospitality.</p><hr><p><strong>Courtly Intrigue (Ex)</strong></p><p>You know how to gather whispers and trade favors. You gain a +3 competence bonus on Knowledge (local) and Knowledge (nobility) checks, and once per day you may call in a favor to learn a single secret or piece of local information as though you had succeeded at a DC 20 Gather Information check.</p>",
+   "name": "Profession Rank 15: (Baron of the March)",
+   "uses": null
+  },
   {
    "changes": [
     {
@@ -932,11 +807,18 @@
      "priority": 0,
      "target": "skill.sur",
      "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.han",
+     "type": "competence"
     }
    ],
    "contextNotes": [],
-   "description": "<p><em>Profession (Trail Scrounger) - rank 10/10. Associate skills (ranks 1/4/7/10): Sleight of Hand, Knowledge (local), Diplomacy, Handle Animal.</em></p><hr><p><strong>Trail Sense (Ex)</strong></p><p>A lifetime of muddy roads and cold camps has sharpened your senses. You gain a +2 competence bonus on Survival checks and on Perception checks to notice hazards along a path.</p><hr><p><strong>Roadworn Feet (Ex)</strong></p><p>You have walked farther than most folk ever will. You can hustle for 1 additional hour each day before risking nonlethal damage, and you gain a +2 competence bonus on Constitution checks to avoid fatigue from a forced march.</p>",
-   "name": "Profession Rank 5: (Trail Scrounger)",
+   "description": "<p><em>Profession (Fish Farmer) - rank 10/10. Associate skills (ranks 1/4/7/10): Handle Animal, Appraise, Profession, Perception.</em></p><hr><p><strong>Trail Reader (Ex)</strong></p><p>You spot broken twigs, faint prints, and disturbed earth that others miss. You gain a +2 competence bonus on Survival checks, including checks made to follow tracks, and you can move at your normal speed while tracking without taking the usual -5 penalty.</p><hr><p><strong>Beast Soother (Ex)</strong></p><p>A calm word and a steady hand settle skittish animals. You gain a +2 competence bonus on Handle Animal checks, and you may attempt to influence the attitude of an animal as a Diplomacy check using your Handle Animal modifier.</p>",
+   "name": "Profession Rank 5: (Fish Farmer)",
    "uses": null
   },
   {
@@ -945,90 +827,127 @@
      "formula": "2",
      "operator": "add",
      "priority": 0,
-     "target": "skill.lin",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.khi",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.klo",
+     "target": "skill.acr",
      "type": "competence"
     }
    ],
    "contextNotes": [],
-   "description": "<p><em>Profession (Ink-Drudge) - rank 7/10. Associate skills (ranks 1/4/7/10): Perception, Diplomacy, Handle Animal.</em></p><hr><p><strong>Bookish (Ex)</strong></p><p>Years buried in dusty tomes let you read and write any language you know and grant a +2 competence bonus on Linguistics checks and on any one Knowledge skill in which you have at least 1 rank. Once per day you may take 20 on a Knowledge or Linguistics check made to research a written record without spending extra time.</p><hr><p><strong>Idle Speculation (Ex)</strong></p><p>Your endless musing about history and rumor makes you a font of half-remembered lore. You gain a +2 competence bonus on Knowledge (history) and Knowledge (local) checks, and once per day you may make a Knowledge check to recall a relevant fact even for a topic in which you have no ranks, treating it as a trained check.</p>",
-   "name": "Profession Rank 5: (Ink-Drudge)",
-   "uses": null
-  },
-  {
-   "changes": [
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.clm",
-     "type": "competence"
-    }
-   ],
-   "contextNotes": [],
-   "description": "<p><em>Profession (Refuse Hand) - rank 9/10. Associate skills (ranks 1/4/7/10): Perception, Use Magic Device, Knowledge (local).</em></p><hr><p><strong>Beast of Burden (Ex)</strong></p><p>You haul loads that would break a lesser back. You treat your Strength as <strong>+4</strong> higher for determining carrying capacity, and you take no penalty to speed while carrying a medium load.</p><hr><p><strong>Hardened Hands (Ex)</strong></p><p>A lifetime of rope, shovel, and bucket has turned your hands to leather. You gain a <strong>+2</strong> bonus on Climb checks and on combat maneuver checks to maintain a grapple, and you cannot be disarmed of a simple tool or weapon you hold.</p>",
-   "name": "Profession Rank 5: (Refuse Hand)",
-   "uses": null
+   "description": "<p><em>Profession (Cook) - rank 9/10. Associate skills (ranks 1/4/7/10): Use Magic Device, Handle Animal, Diplomacy.</em></p><hr><p><strong>Steady Pour (Ex)</strong></p><p>Years of carrying full trays through crowded rooms have given the character a sure grip and good footing. They gain a <strong>+2 competence bonus</strong> on Acrobatics checks to move through a crowd or balance.</p><hr><p><strong>Day-Old Bread (Ex)</strong></p><p>The larder always holds yesterday's loaves and a crock of dripping. A number of times per day equal to 1 + your Charisma modifier (minimum 1) you can provide a free, filling meal to one creature, sparing it a day's ration cost; a creature that eats also removes the <strong>fatigued</strong> condition.</p>",
+   "name": "Profession Rank 5: (Cook)",
+   "uses": {
+    "maxFormula": "max(1, 1 + @abilities.cha.mod)",
+    "per": "day",
+    "value": null
+   }
   }
  ],
  "profession_feat_desc": {
-  "Multi Talented": "Your profession rank cap increases by 10."
+  "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
+  "Multi Talented": "Your profession rank cap increases by 10.",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
  },
  "profession_feats": [
-  "Multi Talented"
+  "Multi Talented",
+  "True Calling",
+  "Always Improving"
  ],
  "profession_pool": 30,
  "profession_ranks": [
   {
-   "ability_theme": "nature",
-   "ability_tier": "bad",
+   "ability_theme": "noble",
+   "ability_tier": "average",
    "associate_skills": [
-    "Appraise"
+    "Craft",
+    "Profession",
+    "Sense Motive",
+    "Use Magic Device"
    ],
-   "cap": 10,
-   "name": "Hedge Forager",
-   "rank15_abilities": [],
-   "rank5_abilities": [],
-   "ranks": 1,
-   "skill_label": "Profession (Hedge Forager)"
+   "cap": 15,
+   "name": "Baron of the March",
+   "rank15_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>When you speak, allies move. As a standard action you may issue a ringing command to a single willing ally within 30 feet, granting them an immediate move action or a +2 morale bonus on their next attack roll or saving throw. You may use this 3 times per day.</p>",
+     "name": "Imperious Command (Ex)",
+     "uses": {
+      "maxFormula": "3",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Your name opens doors and loosens guards. In any settlement of town size or larger you are presumed to have lodging, an audience with local officials, and a line of credit worth up to 500 gp, and you gain a +4 circumstance bonus on Diplomacy checks made to requisition aid or hospitality.</p>",
+     "name": "Noble Patronage (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "3",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.klo",
+       "type": "competence"
+      },
+      {
+       "formula": "3",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.kno",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>You know how to gather whispers and trade favors. You gain a +3 competence bonus on Knowledge (local) and Knowledge (nobility) checks, and once per day you may call in a favor to learn a single secret or piece of local information as though you had succeeded at a DC 20 Gather Information check.</p>",
+     "name": "Courtly Intrigue (Ex)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    }
+   ],
+   "rank5_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>A steady purse from your estate keeps you in fine cloth and ready coin. You begin each adventure with starting wealth equal to 125% of the normal amount, and you may draw on your house's credit to acquire any single mundane item worth up to 100 gp once per week.</p>",
+     "name": "House Allowance (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "3",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.dip",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Years at court honed your charm into a weapon. You gain a +3 competence bonus on Diplomacy checks and may make a request that would normally take 1 minute as a standard action once per round.</p>",
+     "name": "Voice of Command (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 15,
+   "skill_label": "Profession (Baron of the March)"
   },
   {
-   "ability_theme": "ki",
-   "ability_tier": "bad",
+   "ability_theme": "nature",
+   "ability_tier": "average",
    "associate_skills": [
+    "Handle Animal",
+    "Appraise",
+    "Profession",
     "Perception"
    ],
    "cap": 10,
-   "name": "Fasting Aspirant",
-   "rank15_abilities": [],
-   "rank5_abilities": [],
-   "ranks": 3,
-   "skill_label": "Profession (Fasting Aspirant)"
-  },
-  {
-   "ability_theme": "wayfarer",
-   "ability_tier": "bad",
-   "associate_skills": [
-    "Sleight of Hand",
-    "Knowledge (local)",
-    "Diplomacy",
-    "Handle Animal"
-   ],
-   "cap": 10,
-   "name": "Trail Scrounger",
+   "name": "Fish Farmer",
    "rank15_abilities": [],
    "rank5_abilities": [
     {
@@ -1042,127 +961,90 @@
       }
      ],
      "contextNotes": [],
-     "desc": "<p>A lifetime of muddy roads and cold camps has sharpened your senses. You gain a +2 competence bonus on Survival checks and on Perception checks to notice hazards along a path.</p>",
-     "name": "Trail Sense (Ex)",
+     "desc": "<p>You spot broken twigs, faint prints, and disturbed earth that others miss. You gain a +2 competence bonus on Survival checks, including checks made to follow tracks, and you can move at your normal speed while tracking without taking the usual -5 penalty.</p>",
+     "name": "Trail Reader (Ex)",
      "uses": null
     },
     {
-     "changes": [],
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.han",
+       "type": "competence"
+      }
+     ],
      "contextNotes": [],
-     "desc": "<p>You have walked farther than most folk ever will. You can hustle for 1 additional hour each day before risking nonlethal damage, and you gain a +2 competence bonus on Constitution checks to avoid fatigue from a forced march.</p>",
-     "name": "Roadworn Feet (Ex)",
+     "desc": "<p>A calm word and a steady hand settle skittish animals. You gain a +2 competence bonus on Handle Animal checks, and you may attempt to influence the attitude of an animal as a Diplomacy check using your Handle Animal modifier.</p>",
+     "name": "Beast Soother (Ex)",
      "uses": null
     }
    ],
    "ranks": 10,
-   "skill_label": "Profession (Trail Scrounger)"
+   "skill_label": "Profession (Fish Farmer)"
   },
   {
-   "ability_theme": "scholar",
-   "ability_tier": "garbage",
-   "associate_skills": [
-    "Perception",
-    "Diplomacy",
-    "Handle Animal"
-   ],
-   "cap": 10,
-   "name": "Ink-Drudge",
-   "rank15_abilities": [],
-   "rank5_abilities": [
-    {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.lin",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>Years buried in dusty tomes let you read and write any language you know and grant a +2 competence bonus on Linguistics checks and on any one Knowledge skill in which you have at least 1 rank. Once per day you may take 20 on a Knowledge or Linguistics check made to research a written record without spending extra time.</p>",
-     "name": "Bookish (Ex)",
-     "uses": {
-      "maxFormula": "1",
-      "per": "day",
-      "value": null
-     }
-    },
-    {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.khi",
-       "type": "competence"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.klo",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>Your endless musing about history and rumor makes you a font of half-remembered lore. You gain a +2 competence bonus on Knowledge (history) and Knowledge (local) checks, and once per day you may make a Knowledge check to recall a relevant fact even for a topic in which you have no ranks, treating it as a trained check.</p>",
-     "name": "Idle Speculation (Ex)",
-     "uses": {
-      "maxFormula": "1",
-      "per": "day",
-      "value": null
-     }
-    }
-   ],
-   "ranks": 7,
-   "skill_label": "Profession (Ink-Drudge)"
-  },
-  {
-   "ability_theme": "menial",
+   "ability_theme": "occult",
    "ability_tier": "average",
    "associate_skills": [
-    "Perception",
-    "Use Magic Device",
-    "Knowledge (local)"
+    "Profession"
    ],
    "cap": 10,
-   "name": "Refuse Hand",
+   "name": "Pact Warlock",
+   "rank15_abilities": [],
+   "rank5_abilities": [],
+   "ranks": 1,
+   "skill_label": "Profession (Pact Warlock)"
+  },
+  {
+   "ability_theme": "service",
+   "ability_tier": "average",
+   "associate_skills": [
+    "Use Magic Device",
+    "Handle Animal",
+    "Diplomacy"
+   ],
+   "cap": 10,
+   "name": "Cook",
    "rank15_abilities": [],
    "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.acr",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Years of carrying full trays through crowded rooms have given the character a sure grip and good footing. They gain a <strong>+2 competence bonus</strong> on Acrobatics checks to move through a crowd or balance.</p>",
+     "name": "Steady Pour (Ex)",
+     "uses": null
+    },
     {
      "changes": [],
      "contextNotes": [],
-     "desc": "<p>You haul loads that would break a lesser back. You treat your Strength as <strong>+4</strong> higher for determining carrying capacity, and you take no penalty to speed while carrying a medium load.</p>",
-     "name": "Beast of Burden (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.clm",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>A lifetime of rope, shovel, and bucket has turned your hands to leather. You gain a <strong>+2</strong> bonus on Climb checks and on combat maneuver checks to maintain a grapple, and you cannot be disarmed of a simple tool or weapon you hold.</p>",
-     "name": "Hardened Hands (Ex)",
-     "uses": null
+     "desc": "<p>The larder always holds yesterday's loaves and a crock of dripping. A number of times per day equal to 1 + your Charisma modifier (minimum 1) you can provide a free, filling meal to one creature, sparing it a day's ration cost; a creature that eats also removes the <strong>fatigued</strong> condition.</p>",
+     "name": "Day-Old Bread (Ex)",
+     "uses": {
+      "maxFormula": "max(1, 1 + @abilities.cha.mod)",
+      "per": "day",
+      "value": null
+     }
     }
    ],
    "ranks": 9,
-   "skill_label": "Profession (Refuse Hand)"
+   "skill_label": "Profession (Cook)"
   }
  ],
  "professions": [
-  "Hedge Forager",
-  "Fasting Aspirant",
-  "Trail Scrounger",
-  "Ink-Drudge",
-  "Refuse Hand"
+  "Baron of the March",
+  "Fish Farmer",
+  "Pact Warlock",
+  "Cook"
  ],
  "racial_stats": {
   "cha": 0,
@@ -1180,50 +1062,50 @@
  },
  "school": "N/A",
  "selected_traits": [
-  "Jungle Walker",
-  "Soul-Drinker",
-  "Devil's Mark",
-  "Friend of the Dead",
-  "Defy Madness",
-  "Harrow Born",
-  "Child of the Crusades",
-  "Clumsy Slave"
+  "Disillusioned",
+  "Stowaway",
+  "Lingshen's Finest",
+  "Diabolical Dabbler",
+  "Steel Skin",
+  "Without a Past",
+  "Asmodean Demon Hunter",
+  "Frontier-Forged"
  ],
  "selected_traits_desc": [
   {
-   "description": "You gain a +2 trait bonus on Survival checks in jungle terrain.",
-   "name": "Jungle Walker"
+   "description": "You gain a +2 trait bonus on Will saving throws against emotion and fear effects.",
+   "name": "Disillusioned"
   },
   {
-   "description": "Once per day as a swift action, you may gain a number of temporary hit points equal to the Hit Dice of your most recent enemy slain. This is a supernatural ability. These temporary hit points last for 1 minute.",
-   "name": "Soul-Drinker"
+   "description": "You gain a +1 trait bonus on Stealth checks and Survival checks to find food.",
+   "name": "Stowaway"
   },
   {
-   "description": "You gain a +2 trait bonus on all Bluff, Diplomacy, Intimidate, and Sense Motive checks when dealing with outsiders of the evil subtype.",
-   "name": "Devil's Mark"
+   "description": "You gain a +1 trait bonus on all rolls to confirm critical hits.",
+   "name": "Lingshen's Finest"
   },
   {
-   "description": "You gain a +2 trait bonus on Diplomacy checks against sentient undead.",
-   "name": "Friend of the Dead"
+   "description": "Fiendish animals you conjure with summon spells gain +1 hp per hit die for the duration of the spell that summoned it.",
+   "name": "Diabolical Dabbler"
   },
   {
-   "description": "You gain a +1 trait bonus on any saving throws against confusion, insanity, madness, and Wisdom damage and drain.",
-   "name": "Defy Madness"
+   "description": "You gain the ability to don or remove heavy armor in half the normal time. Additionally, you begin play with a great helm bearing the iconography of your family (this helm grants no special defensive benefits). While wearing this helm with a suit of heavy armor, you gain a +2 trait bonus on Intimidate checks.",
+   "name": "Steel Skin"
   },
   {
-   "description": "You start play with a harrow deck and you gain a +1 trait bonus on initiative checks.",
-   "name": "Harrow Born"
+   "description": "You gain a +1 trait bonus to Bluff and Linguistics when forging documents, and you may choose one of the two as always a class skill for you.",
+   "name": "Without a Past"
   },
   {
-   "description": "You have inherited their indomitable spirit, and you gain a +2 trait bonus on all saving throws against fear.",
-   "name": "Child of the Crusades"
+   "description": "You gain a +3 trait bonus on Knowledge (planes) checks about demons and a +2 trait bonus on Will saving throws against mind-affecting spells and effects from demons.",
+   "name": "Asmodean Demon Hunter"
   },
   {
-   "description": "The first time you attack someone with an attack that deals nonlethal damage, your target must make a Sense Motive opposed by your Bluff check minus the damage dealt to realize you actually intended to harm him; failure means he believe the injury was an accident on your part instead (though he may still want to punish you for it).",
-   "name": "Clumsy Slave"
+   "description": "You receive a +1 trait bonus on Perception checks and a +1 bonus on Survival checks made to get along in the wild.",
+   "name": "Frontier-Forged"
   }
  ],
- "sheet_health": 60,
+ "sheet_health": 148,
  "shield_ac": 0,
  "shield_armor_check_penalty": " ",
  "shield_enhancement_bonus": 0,
@@ -1232,95 +1114,75 @@
  "shield_name": " ",
  "shield_spell_failure": " ",
  "shield_weight": " ",
+ "skill_rank_budget": 210,
  "skill_ranks": {
-  "acrobatics": 3,
-  "appraise": 3,
+  "acrobatics": 8,
+  "appraise": 0,
   "bluff": 0,
-  "climb": 14,
-  "craft": 8,
-  "diplomacy": 13,
-  "disable device": 3,
-  "disguise": 9,
-  "escape artist": 15,
-  "fly": 8,
-  "handle animal": 0,
-  "heal": 0,
-  "intimidate": 9,
-  "knowledge arcana": 0,
-  "knowledge dungeoneering": 6,
-  "knowledge engineering": 0,
-  "knowledge geography": 11,
-  "knowledge history": 0,
-  "knowledge local": 5,
-  "knowledge nature": 0,
-  "knowledge nobility": 0,
-  "knowledge planes": 6,
-  "knowledge religion": 4,
-  "linguistics": 10,
-  "perception": 7,
-  "perform": 0,
-  "profession": 0,
-  "ride": 8,
-  "sense motive": 7,
-  "sleight of hand": 0,
-  "spellcraft": 15,
+  "climb": 13,
+  "craft": 2,
+  "diplomacy": 0,
+  "disable device": 13,
+  "disguise": 10,
+  "escape artist": 0,
+  "fly": 6,
+  "handle animal": 13,
+  "heal": 11,
+  "intimidate": 0,
+  "knowledge arcana": 14,
+  "knowledge dungeoneering": 0,
+  "knowledge engineering": 12,
+  "knowledge geography": 12,
+  "knowledge history": 10,
+  "knowledge local": 0,
+  "knowledge nature": 11,
+  "knowledge nobility": 7,
+  "knowledge planes": 8,
+  "knowledge religion": 7,
+  "linguistics": 8,
+  "perception": 13,
+  "perform": 10,
+  "profession": 5,
+  "ride": 0,
+  "sense motive": 6,
+  "sleight of hand": 5,
+  "spellcraft": 0,
   "stealth": 0,
   "survival": 0,
-  "swim": 0,
-  "use magic device": 0
+  "swim": 4,
+  "use magic device": 2
  },
  "skill_unlock": {
-  "base_skill": "knowledge",
-  "ranks": 4,
-  "skill": "Knowledge (religion)",
+  "base_skill": "perform",
+  "ranks": 10,
+  "skill": "Perform",
   "unlock": {
-   "10": "After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.",
-   "15": "You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.",
-   "20": "You can roll twice and take the better result on Knowledge checks.",
-   "5": "You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill."
+   "10": "A DC 25 Perform check while casting an emotion or language-dependent spell increases its save DC by 1.",
+   "15": "A DC 30 Perform check while casting an emotion or language-dependent spell increases its caster level by 1 (choose this or the 10-rank ability).",
+   "20": "Choose Bluff, Diplomacy, or Intimidate; you may use the better result between Perform and that skill.",
+   "5": "A DC 20 Perform check grants a +2 circumstance bonus on a Bluff, Diplomacy, Handle Animal, or Intimidate check."
   },
-  "unlock_html": "<h2>Knowledge (religion)</h2><p><strong>5 Ranks</strong>: You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill.</p><p><strong>10 Ranks</strong>: After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.</p><p><strong>15 Ranks</strong>: You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.</p><p><strong>20 Ranks</strong>: You can roll twice and take the better result on Knowledge checks.</p>"
+  "unlock_html": "<h2>Perform</h2><p><strong>5 Ranks</strong>: A DC 20 Perform check grants a +2 circumstance bonus on a Bluff, Diplomacy, Handle Animal, or Intimidate check.</p><p><strong>10 Ranks</strong>: A DC 25 Perform check while casting an emotion or language-dependent spell increases its save DC by 1.</p><p><strong>15 Ranks</strong>: A DC 30 Perform check while casting an emotion or language-dependent spell increases its caster level by 1 (choose this or the 10-rank ability).</p><p><strong>20 Ranks</strong>: Choose Bluff, Diplomacy, or Intimidate; you may use the better result between Perform and that skill.</p>"
  },
  "specialty_schools": [
-  "necromancy",
-  "enchantment"
+  "conjuration"
  ],
  "spell_changes_dict": {
-  "Aid": {
-   "changes": [
+  "Desperate Weapon": {
+   "default": false,
+   "modifiers": [
     {
-     "formula": "1",
-     "operator": "add",
-     "priority": 0,
-     "target": "attack",
-     "type": "morale"
+     "critical": "nonCrit",
+     "damageType": [
+      "untyped"
+     ],
+     "formula": "1d6",
+     "subTarget": "allDamage",
+     "target": "damage",
+     "type": "untyped"
     }
    ],
-   "contextNotes": []
-  },
-  "Bless": {
-   "changes": [
-    {
-     "formula": "1",
-     "operator": "add",
-     "priority": 0,
-     "target": "attack",
-     "type": "morale"
-    }
-   ],
-   "contextNotes": []
-  },
-  "Coward's Cowl": {
-   "changes": [
-    {
-     "formula": "1",
-     "operator": "add",
-     "priority": 0,
-     "target": "attack",
-     "type": "morale"
-    }
-   ],
-   "contextNotes": []
+   "name": "Desperate Weapon: conjures a one-handed improvised weapon appropriate to your surroundings that deals bludgeoning, piercing, or slashing damage of your choice ([[1d4]] for a Small creature); the spell ends if the weapon leaves your grasp. Duration [[1]] minute/level."
   },
   "Divine Favor": {
    "changes": [
@@ -1341,340 +1203,180 @@
    ],
    "contextNotes": []
   },
-  "Guidance": {
-   "changes": [
+  "Hedging Weapons": {
+   "default": false,
+   "modifiers": [
     {
-     "formula": "1",
-     "operator": "add",
-     "priority": 0,
-     "target": "attack",
-     "type": "competence"
+     "critical": "nonCrit",
+     "damageType": [
+      "force"
+     ],
+     "formula": "2d6",
+     "subTarget": "allDamage",
+     "target": "damage",
+     "type": "untyped"
     }
    ],
-   "contextNotes": []
+   "name": "Hedging Weapons: a floating weapon of divine force appears (more at higher levels, max [[5]] at [[18]]th), each granting a +[[1]] deflection bonus to AC (max +[[5]]). As a standard action you grasp and throw one as a ranged attack at a target within [[30]] feet, dealing force damage that bypasses DR; each weapon thrown lowers the deflection bonus by [[1]] and vanishes, ending the spell when all are thrown. Duration [[1]] minute/level."
   },
-  "Vigor": {
-   "changes": [
+  "True Strike": {
+   "default": false,
+   "modifiers": [
     {
-     "formula": "1",
-     "operator": "add",
-     "priority": 0,
-     "target": "wdamage",
-     "type": "competence"
+     "critical": "normal",
+     "damageType": [],
+     "formula": "20",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "insight"
     }
    ],
-   "contextNotes": []
+   "name": "True Strike: you gain intuitive insight into the immediate future; your next single attack roll (if made before the end of the next round) gains an insight bonus, and you ignore the miss chance for attacking a concealed target."
   }
  },
  "spell_list_choose_from": [
   [
-   "Bleed",
+   "Create Water",
    "Detect Fiendish Presence",
-   "Detect Poison",
-   "Guidance",
-   "Light",
+   "Grasp",
    "Mending",
    "Read Magic",
    "Resistance",
-   "Sotto Voce",
    "Spark",
-   "Vigor",
-   "Virtue"
+   "Stabilize"
   ],
   [
-   "Bane",
-   "Bless",
-   "Blessing of the Watch",
-   "Compel Hostility",
-   "Coward's Cowl",
-   "Deathwatch",
-   "Decompose Corpse",
+   "Abundant Ammunition",
+   "Air Bubble",
+   "Barbed Chains",
+   "Celestial Healing",
+   "Cure Light Wounds",
+   "Desperate Weapon",
    "Divine Favor",
-   "Egorian Diplomacy",
-   "Forbid Action",
-   "Hairline Fractures",
-   "Haze of Dreams",
-   "Preserve",
-   "Protection from Chaos",
-   "Ray of Sickening",
-   "Restore Corpse",
-   "Scarify",
-   "Touch of Blindness",
-   "Touch of Bloodletting"
+   "Dream Feast",
+   "Guardian Armor",
+   "Hedging Weapons",
+   "Instant Portrait",
+   "Pick Your Poison",
+   "Remove Sickness",
+   "Stone Shield",
+   "True Strike"
   ],
   [
-   "Aid",
-   "Align Weapon",
-   "Blood in the Water",
-   "Bloodbath",
-   "Bloody Tears and Jagged Smile",
-   "Calm Emotions",
-   "Deadeye's Arrow",
-   "Defending Bone",
-   "Delay Pain",
-   "Dress Corpse",
+   "Alter Summoned Monster",
    "Enthrall",
-   "Gentle Repose",
-   "Intensify Psyche",
+   "Healing Token",
+   "Instant Armor",
+   "Instant Weapon",
+   "Remove Paralysis",
+   "Returning Weapon",
+   "Shatter",
    "Spiritual Weapon",
-   "Unliving Rage"
+   "Summon Monster II"
   ],
   [
-   "Black Sword of War",
-   "Blindness/Deafness",
-   "Charitable Impulse",
+   "Accept Affliction",
    "Create Food and Water",
-   "Cursed Treasure",
-   "Daylight",
-   "Draconic Malice",
-   "False Alibi",
-   "Hydrophobia",
-   "Lover's Vengeance",
-   "Magic Circle against Chaos",
+   "Delay Poison, Communal",
+   "Iron Stake",
+   "Life Current",
    "Magic Vestment",
-   "Mind Maze",
-   "Severed Fate",
-   "Spellcurse"
+   "Rage",
+   "Remove Disease",
+   "Summon Ancestral Guardian"
   ],
   [
-   "Curse of Unexpected Death",
-   "Daemon Ward",
+   "Ancestral Gift",
+   "Create Drug",
+   "Cure Critical Wounds",
    "Discern Lies",
-   "Frigid Souls",
-   "Nature's Ravages",
-   "Order's Wrath",
-   "Rags to Riches"
+   "Hallucinogenic Smoke",
+   "Inflict Critical Wounds",
+   "Janni's Jaunt",
+   "Path of Glory, Greater",
+   "Summon Genie, Lesser"
   ]
  ],
  "spell_list_choose_from_dict": [
   [
-   "Bleed",
+   "Create Water",
    "Detect Fiendish Presence",
-   "Detect Poison",
-   "Guidance",
-   "Light",
+   "Grasp",
    "Mending",
    "Read Magic",
    "Resistance",
-   "Sotto Voce",
    "Spark",
-   "Vigor",
-   "Virtue"
+   "Stabilize"
   ],
   [
-   "Bane",
-   "Bless",
-   "Blessing of the Watch",
-   "Compel Hostility",
-   "Coward's Cowl",
-   "Deathwatch",
-   "Decompose Corpse",
+   "Abundant Ammunition",
+   "Air Bubble",
+   "Barbed Chains",
+   "Celestial Healing",
+   "Cure Light Wounds",
+   "Desperate Weapon",
    "Divine Favor",
-   "Egorian Diplomacy",
-   "Forbid Action",
-   "Hairline Fractures",
-   "Haze of Dreams",
-   "Preserve",
-   "Protection from Chaos",
-   "Ray of Sickening",
-   "Restore Corpse",
-   "Scarify",
-   "Touch of Blindness",
-   "Touch of Bloodletting"
+   "Dream Feast",
+   "Guardian Armor",
+   "Hedging Weapons",
+   "Instant Portrait",
+   "Pick Your Poison",
+   "Remove Sickness",
+   "Stone Shield",
+   "True Strike"
   ],
   [
-   "Aid",
-   "Align Weapon",
-   "Blood in the Water",
-   "Bloodbath",
-   "Bloody Tears and Jagged Smile",
-   "Calm Emotions",
-   "Deadeye's Arrow",
-   "Defending Bone",
-   "Delay Pain",
-   "Dress Corpse",
+   "Alter Summoned Monster",
    "Enthrall",
-   "Gentle Repose",
-   "Intensify Psyche",
+   "Healing Token",
+   "Instant Armor",
+   "Instant Weapon",
+   "Remove Paralysis",
+   "Returning Weapon",
+   "Shatter",
    "Spiritual Weapon",
-   "Unliving Rage"
+   "Summon Monster II"
   ],
   [
-   "Black Sword of War",
-   "Blindness/Deafness",
-   "Charitable Impulse",
+   "Accept Affliction",
    "Create Food and Water",
-   "Cursed Treasure",
-   "Daylight",
-   "Draconic Malice",
-   "False Alibi",
-   "Hydrophobia",
-   "Lover's Vengeance",
-   "Magic Circle against Chaos",
+   "Delay Poison, Communal",
+   "Iron Stake",
+   "Life Current",
    "Magic Vestment",
-   "Mind Maze",
-   "Severed Fate",
-   "Spellcurse"
+   "Rage",
+   "Remove Disease",
+   "Summon Ancestral Guardian"
   ],
   [
-   "Curse of Unexpected Death",
-   "Daemon Ward",
+   "Ancestral Gift",
+   "Create Drug",
+   "Cure Critical Wounds",
    "Discern Lies",
-   "Frigid Souls",
-   "Nature's Ravages",
-   "Order's Wrath",
-   "Rags to Riches"
+   "Hallucinogenic Smoke",
+   "Inflict Critical Wounds",
+   "Janni's Jaunt",
+   "Path of Glory, Greater",
+   "Summon Genie, Lesser"
   ]
  ],
  "spell_riders_dict": {
-  "Bane": {
+  "Barbed Chains": {
    "attack": null,
    "riders": [
-    "Range: [[50]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; affected enemies take a -[[1]] penalty on attack rolls and a -[[1]] penalty on saving throws against fear effects; bane counters and dispels bless; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates",
-    "harmless": false,
-    "type": "will"
-   }
-  },
-  "Bleed": {
-   "attack": null,
-   "riders": [
-    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; targets a living creature with -[[1]] or fewer hit points that has been stabilized; the target resumes dying, taking [[1]] point of damage per round (it can be stabilized again normally); if used on a creature that is already dying, it instead takes [[1]] point of damage immediately; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates",
-    "harmless": false,
-    "type": "will"
-   }
-  },
-  "Blindness/Deafness": {
-   "attack": null,
-   "riders": [
-    "Range: [[100 + 10*@spells.primary.cl.total]] ft; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates; the target is permanently blinded or deafened, caster's choice; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates",
-    "harmless": false,
-    "type": "fortitude"
-   }
-  },
-  "Bloodbath": {
-   "attack": null,
-   "riders": [
-    "Range: [[25 + 5*@spells.primary.cl.total]] ft; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates; affects up to [[@spells.primary.cl.total]] living creatures, no two of which can be more than [[30]] ft. apart; you cut yourself, taking [[1d6]] points of bleed damage; as long as you continue taking this bleed damage, each target bleeds for [[1d6]] points of damage at the start of its turn; the bleed damage on a target ends if it receives magical healing, or if your own bleed damage ends for any reason; this spell has no effect if you are immune to bleed damage or can otherwise reduce or ignore the bleed damage to yourself; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates",
-    "harmless": false,
-    "type": "fortitude"
-   }
-  },
-  "Curse of Unexpected Death": {
-   "attack": "melee",
-   "riders": [
-    "Save: Fortitude DC [[ 10 + @slvl + @castMod ]] reduces the triggered damage to [[2d6 + @spells.primary.cl.total]] (see text); requires a melee touch attack to deliver the curse; on the round you touch the target, and once per minute thereafter, roll [[1d100]]: on a result of [[01]]-[[05]] the curse triggers and the target takes [[8d6 + @spells.primary.cl.total]] points of damage, reduced to [[2d6 + @spells.primary.cl.total]] points of damage if the target succeeds at a saving throw; on a result of [[06]]-[[100]] nothing happens; once the curse triggers, or its duration expires without triggering, the magic ends and no further rolls are made; if the target has spell resistance, a caster level check is made when you succeed at the touch attack; a creature can be affected by only one instance of this curse at a time; the untriggered curse can be removed with dispel magic, remove curse, or similar effects; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "reduces the triggered damage to 2d6 + caster level (see text)",
-    "harmless": false,
-    "type": "fortitude"
-   }
-  },
-  "Decompose Corpse": {
-   "attack": null,
-   "riders": [
-    "Range: touch; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates (object); affects a single corpse or corporeal undead of size Huge or smaller; rapidly decomposes the flesh from the corpse, leaving behind a perfectly cleaned skeleton; if cast on a non-skeletal corporeal undead, the target instead takes a -[[2]] penalty on all rolls and to its Armor Class and CMD for [[1]] minute; spell resistance: yes (object)"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates (object)",
-    "harmless": false,
-    "type": "fortitude"
-   }
-  },
-  "Hairline Fractures": {
-   "attack": null,
-   "riders": [
-    "Range: touch; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates; if cast on a section of stone: reduces its hardness to [[5]] and its hit points to [[10]] per inch of thickness; if cast on a creature with the earth subtype: -[[2]] penalty to AC for the spell's duration; make whole reverses this spell's effect; spell resistance: yes (object)"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates",
-    "harmless": false,
-    "type": "fortitude"
-   }
-  },
-  "Intensify Psyche": {
-   "attack": null,
-   "riders": [
-    "Range: [[100 + 10*@spells.primary.cl.total]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; target gains a +[[2]] competence bonus on Diplomacy, Handle Animal, Perform, and Sense Motive checks; the DC for any spells or effects with the emotion or pain descriptor cast or caused by the target increases by [[1]] while the target is under this spell's effects; the target takes a -[[2]] penalty on saving throws against spells and effects with the emotion or pain descriptor; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates",
-    "harmless": false,
-    "type": "will"
-   }
-  },
-  "Order's Wrath": {
-   "attack": null,
-   "riders": [
-    "Range: [[100 + 10*@spells.primary.cl.total]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] partial; see text; only chaotic and neutral (non-lawful) creatures are harmed by this spell; lawful creatures are unaffected; chaotic creatures take [[ (min(5, floor(@spells.primary.cl.total/2)))d8 ]] damage and are dazed for [[1]] round, except chaotic outsiders, who instead take [[ (min(10, @spells.primary.cl.total))d6 ]] damage and are dazed for [[1]] round; creatures who are neither chaotic nor lawful take only half this damage and are not dazed, though they may reduce that half again (to one-quarter of the roll) with a successful Will save; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "partial; see text",
-    "harmless": false,
-    "type": "will"
-   }
-  },
-  "Ray of Sickening": {
-   "attack": null,
-   "riders": [
-    "Save: Fortitude DC [[ 10 + @slvl + @castMod ]] partial; requires a successful ranged touch attack to strike the target; target sickened for [[@spells.primary.cl.total]] minutes; spell resistance: yes"
+    "Range: [[25 + 5*@spells.primary.cl.total]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] partial; the chain makes a melee attack (dealing [[1d6]] slashing damage) or attempts a trip combat maneuver, using your base attack bonus plus your key spellcasting ability modifier as its attack bonus and CMB; on a successful hit or combat maneuver check, the target must succeed at a Will save or be shaken for [[1d4]] rounds; you summon [[min(4, 1 + floor((@spells.primary.cl.total-1)/3))]] chains in total, which can attack the same or different targets, and multiple chains striking the same target do not stack the shaken effect; spell resistance: no"
    ],
    "save": {
     "dc": "",
     "description": "partial",
     "harmless": false,
-    "type": "fortitude"
-   }
-  },
-  "Severed Fate": {
-   "attack": null,
-   "riders": [
-    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; the target is shaken and cannot use hero points for the duration of the spell; this effect can be removed by dispel magic, remove curse, or other similar effects; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates",
-    "harmless": false,
     "type": "will"
    }
   },
-  "Sotto Voce": {
-   "attack": null,
+  "Inflict Critical Wounds": {
+   "attack": "melee",
    "riders": [
-    "Range: [[25 + 5*@spells.primary.cl.total]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates (failure: shaken for [[1]] round); affects a living humanoid creature of [[4]] Hit Dice or less; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates (failure: shaken for 1 round)",
-    "harmless": false,
-    "type": "will"
-   }
-  },
-  "Spellcurse": {
-   "attack": null,
-   "riders": [
-    "Range: [[100 + 10*@spells.primary.cl.total]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] half; [[1d6]] points of damage for each spell with a duration of [[1]] round or greater currently affecting the target; the affecting spells are not themselves dispelled or modified; spell resistance: yes"
+    "Range: melee touch; Save: Will DC [[ 10 + @slvl + @castMod ]] half; functions like inflict light wounds, curing undead instead of damaging them; spell resistance: yes"
    ],
    "save": {
     "dc": "",
@@ -1683,16 +1385,28 @@
     "type": "will"
    }
   },
-  "Touch of Blindness": {
-   "attack": null,
+  "Iron Stake": {
+   "attack": "ranged",
    "riders": [
-    "Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates; usable as a melee touch attack up to [[@spells.primary.cl.total]] times; each successful touch causes the target to become blinded for [[1]] round unless it succeeds at a Fortitude save; any touch attack not used within [[@spells.primary.cl.total]] rounds is lost; spell resistance: yes"
+    "Save: Fortitude DC [[ 10 + @slvl + @castMod ]] partial; the stake requires a ranged touch attack to strike and is treated as a magic cold iron weapon for the purpose of overcoming damage reduction, dealing [[ (floor(@spells.primary.cl.total/2))d6 ]] points of piercing damage; if a creature with DR/cold iron takes damage from this spell, it is sickened for [[1]] round and must attempt a Fortitude save; on a failed save, for [[ @spells.primary.cl.total ]] rounds the target must succeed at a concentration check (in addition to any normally required concentration checks) to use any of its spells or spell-like abilities, with the check DC equal to [[15]] plus twice the level of the spell being cast; if the target fails the check, its spell is wasted; spell resistance: no"
    ],
    "save": {
     "dc": "",
-    "description": "negates",
+    "description": "partial",
     "harmless": false,
     "type": "fortitude"
+   }
+  },
+  "Shatter": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates (object); or Fortitude half against crystalline creatures; see text; used as an area attack ([[5]]-ft.-radius spread): destroys all unattended nonmagical objects of crystal, glass, ceramic, or porcelain weighing up to [[@spells.primary.cl.total]] pound(s) each; used against a single solid nonmagical object: shatters an object of any composition weighing up to [[10*@spells.primary.cl.total]] pounds; used against a crystalline creature (of any weight): deals [[ (min(10, @spells.primary.cl.total))d6 ]] sonic damage; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates (object); or Fortitude half against crystalline creatures; see text",
+    "harmless": false,
+    "type": "will"
    }
   }
  },
@@ -1709,194 +1423,210 @@
    "name": "cleric",
    "spell_list_choose_from": [
     [
-     "Bleed",
+     "Create Water",
      "Detect Fiendish Presence",
-     "Detect Poison",
-     "Guidance",
-     "Light",
+     "Grasp",
      "Mending",
      "Read Magic",
      "Resistance",
-     "Sotto Voce",
      "Spark",
-     "Vigor",
-     "Virtue"
+     "Stabilize"
     ],
     [
-     "Bane",
-     "Bless",
-     "Blessing of the Watch",
-     "Compel Hostility",
-     "Coward's Cowl",
-     "Deathwatch",
-     "Decompose Corpse",
+     "Abundant Ammunition",
+     "Air Bubble",
+     "Barbed Chains",
+     "Celestial Healing",
+     "Cure Light Wounds",
+     "Desperate Weapon",
      "Divine Favor",
-     "Egorian Diplomacy",
-     "Forbid Action",
-     "Hairline Fractures",
-     "Haze of Dreams",
-     "Preserve",
-     "Protection from Chaos",
-     "Ray of Sickening",
-     "Restore Corpse",
-     "Scarify",
-     "Touch of Blindness",
-     "Touch of Bloodletting"
+     "Dream Feast",
+     "Guardian Armor",
+     "Hedging Weapons",
+     "Instant Portrait",
+     "Pick Your Poison",
+     "Remove Sickness",
+     "Stone Shield",
+     "True Strike"
     ],
     [
-     "Aid",
-     "Align Weapon",
-     "Blood in the Water",
-     "Bloodbath",
-     "Bloody Tears and Jagged Smile",
-     "Calm Emotions",
-     "Deadeye's Arrow",
-     "Defending Bone",
-     "Delay Pain",
-     "Dress Corpse",
+     "Alter Summoned Monster",
      "Enthrall",
-     "Gentle Repose",
-     "Intensify Psyche",
+     "Healing Token",
+     "Instant Armor",
+     "Instant Weapon",
+     "Remove Paralysis",
+     "Returning Weapon",
+     "Shatter",
      "Spiritual Weapon",
-     "Unliving Rage"
+     "Summon Monster II"
     ],
     [
-     "Black Sword of War",
-     "Blindness/Deafness",
-     "Charitable Impulse",
+     "Accept Affliction",
      "Create Food and Water",
-     "Cursed Treasure",
-     "Daylight",
-     "Draconic Malice",
-     "False Alibi",
-     "Hydrophobia",
-     "Lover's Vengeance",
-     "Magic Circle against Chaos",
+     "Delay Poison, Communal",
+     "Iron Stake",
+     "Life Current",
      "Magic Vestment",
-     "Mind Maze",
-     "Severed Fate",
-     "Spellcurse"
+     "Rage",
+     "Remove Disease",
+     "Summon Ancestral Guardian"
     ],
     [
-     "Curse of Unexpected Death",
-     "Daemon Ward",
+     "Ancestral Gift",
+     "Create Drug",
+     "Cure Critical Wounds",
      "Discern Lies",
-     "Frigid Souls",
-     "Nature's Ravages",
-     "Order's Wrath",
-     "Rags to Riches"
+     "Hallucinogenic Smoke",
+     "Inflict Critical Wounds",
+     "Janni's Jaunt",
+     "Path of Glory, Greater",
+     "Summon Genie, Lesser"
     ]
    ],
    "spells_known_list": [],
    "spells_per_day_list": [
-    12,
-    17,
+    8,
     13,
-    13,
-    5
+    8,
+    7,
+    7
    ],
    "spells_prepared_per_level": [
-    12,
-    19,
+    8,
     15,
-    15,
-    7
+    10,
+    9,
+    9
    ]
   }
  ],
  "spells_prepared_per_level": [
-  12,
-  19,
+  8,
   15,
-  15,
-  7
+  10,
+  9,
+  9
  ],
  "sphere_boons": [
   "Empowered Abilities",
-  "Fortified Casting",
   "Overcharge"
  ],
  "sphere_counts": {
-  "Warp": {
+  "Nature": {
    "advanced": 1,
    "feats": 0,
    "normal": 7
   }
  },
  "sphere_drawbacks": [
-  "Material Casting",
-  "Somatic Casting",
-  "Wild Magic",
+  "Painful Magic",
   "Extended Casting",
-  "Verbal Casting",
-  "Focus Casting"
+  "Prepared Caster",
+  "Somatic Casting"
  ],
  "sphere_feat_tax": {
-  "Extra Magic Talent (Fluctuate / Splinter)": [
+  "Extra Magic Talent (Fog Mastery / Speak With The Elements)": [
    "Extra Magic Talent"
   ],
-  "Extra Magic Talent (Isoport / Segmented Warp)": [
+  "Extra Magic Talent (Nature’s Weapon / Breeze Mastery)": [
    "Extra Magic Talent"
   ],
-  "Extra Magic Talent (Organ Detachment)": [
+  "Extra Magic Talent (Ride The Elements / Nature Sight)": [
    "Extra Magic Talent"
   ],
-  "Extra Magic Talent (Teleport Trap / Teleport Object)": [
+  "Extra Magic Talent (Whispering Elements)": [
    "Extra Magic Talent"
   ]
  },
  "sphere_feats": [
   "Basic Magic Training",
-  "Extra Magic Talent (Fluctuate / Splinter)",
-  "Extra Magic Talent (Teleport Trap / Teleport Object)",
-  "Extra Magic Talent (Isoport / Segmented Warp)",
-  "Extra Magic Talent (Organ Detachment)"
+  "Extra Magic Talent (Fog Mastery / Speak With The Elements)",
+  "Extra Magic Talent (Ride The Elements / Nature Sight)",
+  "Extra Magic Talent (Nature’s Weapon / Breeze Mastery)",
+  "Extra Magic Talent (Whispering Elements)",
+  "Terrain Focus"
  ],
  "sphere_mana_pool": 8,
  "sphere_traits": [
-  "Material Casting",
-  "Somatic Casting",
-  "Wild Magic",
+  "Painful Magic",
   "Extended Casting",
-  "Verbal Casting",
-  "Focus Casting",
+  "Prepared Caster",
+  "Somatic Casting",
   "Empowered Abilities",
-  "Fortified Casting",
   "Overcharge"
  ],
  "spheres_chosen": [
   {
-   "sphere": "Warp",
+   "sphere": "Nature",
    "system": "power"
   }
  ],
- "stances_chosen": [
-  "Iron Hand Stance",
-  "Broken Blade Stance",
-  "Steel Grapplers Attitude",
-  "Pit Fighters Stance"
- ],
- "story_feat_tax_dict": {},
+ "stances_chosen": [],
+ "story_feat_tax_dict": {
+  "Tenebrous Spell": [
+   "umbral spell",
+   "shadow grasp"
+  ]
+ },
  "story_feats": [
-  "Desert Dweller",
-  "Raging Deathblow",
-  "Sickening Spell",
-  "Flaring Spell"
+  "Master Craftsman",
+  "Tenebrous Spell",
+  "Craft Rod",
+  "Combat Medic"
  ],
  "str": 14,
  "teamwork_feat_labels": [],
  "teamwork_feats": 0,
  "total_level": 15,
- "total_rolled_hp": 52,
- "trainer_calibers": [],
- "trainer_feat_labels": [],
- "trainer_feat_tax_dict": {},
- "trainer_feats": [],
+ "total_rolled_hp": 140,
+ "trainer_calibers": [
+  3,
+  3,
+  3,
+  3,
+  1
+ ],
+ "trainer_feat_labels": [
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 3)",
+  "(Trainer 3)",
+  "(Trainer 3)",
+  "(Trainer 4)",
+  "(Trainer 4)",
+  "(Trainer 4)",
+  "(Trainer 5)"
+ ],
+ "trainer_feat_tax_dict": {
+  "Combat Casting": [
+   "uncanny concentration"
+  ]
+ },
+ "trainer_feats": [
+  "Armor of the Pit",
+  "Toppling Spell",
+  "Demonic Obedience",
+  "Quick Channel",
+  "Dragoncrafting",
+  "Echoing Spell",
+  "Persistent Spell",
+  "Toughness",
+  "Siphon Poison",
+  "Craft Wand",
+  "Butterfly's Sting",
+  "Deceitful",
+  "Combat Casting"
+ ],
  "weapon_enhancement_bonus": 2,
  "weapon_enhancement_chosen_list": [],
- "weapon_name": "Sickle",
+ "weapon_name": "Mere club",
  "weight_number": 168,
  "wis": 24,
- "younger_brothers": " you have 3 younger brothers",
- "younger_sisters": " you have 0 younger sisters"
+ "younger_brothers": " you have 0 younger brothers",
+ "younger_sisters": " you have 1 younger sisters"
 }

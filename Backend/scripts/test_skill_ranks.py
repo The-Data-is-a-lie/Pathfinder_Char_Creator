@@ -6,11 +6,13 @@ repo has no pytest harness -- mirrors the CLI-smoke-test convention of Backend/m
 Guards the invariants behind "characters must fill their skill slots exactly":
   * every rank in the budget is spent -- sum(skill_ranks) == character.skill_rank_budget
   * every rank lands on a skill the Foundry module and web sheet can actually render
-  * no skill exceeds character level (the PF1 max-ranks rule)
+  * no skill exceeds the per-skill cap (character level; 3x level under the house rules)
   * the min-1-rank-per-CLASS-level floor, so a negative mental mod can never blank a skill block
   * a narrow skill sample is widened until it can physically hold the budget
   * profession ranks sum to exactly the pool, within per-profession caps
   * ordinary ranks reach a Profession only via the Always Improving feat
+  * homebrew mode (oks/pathfinder/house-rules/skills-and-hp.md): the 2->4 rank floor, the
+    3-ranks-per-level cap, and +2/level background-only ranks
 """
 import random
 import sys
@@ -39,7 +41,8 @@ class FakeCharacter:
     """The slice of createACharacter.Character that skill/profession allocation actually reads."""
 
     def __init__(self, classes, stats=None, inherents=None, level_ups=None,
-                 profession_feats=None, primary_class_index=0):
+                 profession_feats=None, primary_class_index=0, homebrew='N'):
+        self.homebrew_feat_amount = homebrew
         self.classes = [{'name': n, 'level': l} for n, l in classes]
         self.level = sum(entry['level'] for entry in self.classes)
         self.primary_class_index = primary_class_index
@@ -248,7 +251,68 @@ def test_always_improving_gate():
 
 
 # --------------------------------------------------------------------------------------------
-# 7. Favored class scales off TOTAL level, and empty racial slots are gone.
+# 7. House rules (homebrew flag on): 2->4 rank floor, 3x-level cap, +2/level background ranks.
+# --------------------------------------------------------------------------------------------
+def test_house_rank_floor():
+    # fighter is a 2/level class; under the house floor it budgets like a 4/level class,
+    # plus the +2/level background grant recorded into skill_rank_budget
+    character = FakeCharacter([('fighter', 10)], stats={'int': 10, 'wis': 10, 'cha': 10},
+                              homebrew='Y')
+    ranks = sr.skills_selector(character, 'skills', 0)
+    want = 4 * 10 + 2 * 10
+    check(character.skill_rank_budget == want,
+          f"house budget should be (2->4)*10 + background 2*10 = {want}, got {character.skill_rank_budget}")
+    check(sum(ranks.values()) == want,
+          f"house budget not spent exactly: {sum(ranks.values())} of {want}")
+
+    # a 4/level class is NOT floored upward -- only the 2s become 4s
+    monk = FakeCharacter([('monk', 10)], stats={'int': 10, 'wis': 10, 'cha': 10}, homebrew='Y')
+    sr.skills_selector(monk, 'skills', 0)
+    check(monk.skill_rank_budget == want,
+          f"monk (4/level) should budget {want} like the floored fighter, got {monk.skill_rank_budget}")
+
+
+def test_house_cap_and_exact_spend(iterations=150):
+    rng = random.Random(20260730)
+    valid = set(data.skills)
+    for _ in range(iterations):
+        character = random_character(rng)
+        character.homebrew_feat_amount = 'Y'
+        favored = rng.choice([0, character.level])
+        ranks = sr.skills_selector(character, 'skills', favored)
+        check(sum(ranks.values()) == character.skill_rank_budget,
+              f"house spend {sum(ranks.values())} != budget {character.skill_rank_budget} "
+              f"for {character.classes}")
+        cap = 3 * character.level
+        over = {s: r for s, r in ranks.items() if r > cap}
+        check(not over, f"skills above the house 3x-level cap ({cap}): {over}")
+        bad = [s for s in ranks if s not in valid]
+        check(not bad, f"house ranks on unrenderable skills: {bad}")
+
+
+def test_background_ranks_pool():
+    # the background walk alone: exactly 2/level ranks, only on background skills
+    character = FakeCharacter([('fighter', 15)], homebrew='Y')
+    placed = {}
+    spent = sr.assign_background_ranks(character, placed, sr.per_skill_cap(character))
+    check(spent == 30, f"background grant should be 2*15 = 30, got {spent}")
+    outside = [s for s in placed if s not in sr.BACKGROUND_SKILLS]
+    check(not outside, f"background ranks landed outside the background pool: {outside}")
+    check(all(r <= 3 * 15 for r in placed.values()), "background rank over the house cap")
+
+    # background skills must all be renderable and profession-free
+    check('profession' not in sr.BACKGROUND_SKILLS, "profession must stay in its own subsystem")
+    unrenderable = [s for s in sr.BACKGROUND_SKILLS if s not in data.skills]
+    check(not unrenderable, f"BACKGROUND_SKILLS not in the canonical pool: {unrenderable}")
+
+    # homebrew off -> no background grant
+    plain = FakeCharacter([('fighter', 15)])
+    check(sr.assign_background_ranks(plain, {}, plain.level) == 0,
+          "background ranks granted with homebrew off")
+
+
+# --------------------------------------------------------------------------------------------
+# 8. Favored class scales off TOTAL level, and empty racial slots are gone.
 # --------------------------------------------------------------------------------------------
 def test_favored_class():
     from utils.class_func.favored_class import favored_class_calculator
@@ -261,7 +325,8 @@ def test_favored_class():
 
 def main():
     for test in (test_canonical_list, test_exact_spend, test_min_rank_floor, test_capacity_topup,
-                 test_profession_pool, test_always_improving_gate, test_favored_class):
+                 test_profession_pool, test_always_improving_gate, test_house_rank_floor,
+                 test_house_cap_and_exact_spend, test_background_ranks_pool, test_favored_class):
         test()
 
     print()

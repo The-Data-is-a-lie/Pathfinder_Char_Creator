@@ -1752,6 +1752,12 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"flaw_effects_dict": flaw_effects_dict,
 				"class_feature_changes_dict": class_feature_changes_dict,
 				"class_feature_conditionals_dict": class_feature_conditionals_dict,
+				# Invariant handles for scripts/test_house_invariants.py: the recorded skill-rank
+				# budget (incl. the background grant) and the pre-merge normal feat count (the
+				# feat_budget["normal"] export absorbs class merges/PoW funding, so it can't be
+				# asserted against the house formula directly).
+				"skill_rank_budget": getattr(character, 'skill_rank_budget', None),
+				"normal_feat_amount": character.normal_feat_amount,
 				})
 
 		# Make EVERY placed feat renderable by the FoundryVTT module. The module silently DROPS any feat

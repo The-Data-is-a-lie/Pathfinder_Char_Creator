@@ -3,6 +3,40 @@ import random, re
 from math import floor
 # Start of major task: skills assignment
 
+# House skill rules (oks/pathfinder/house-rules/skills-and-hp.md), all gated on the homebrew flag:
+#   * rank floor -- any 2-ranks/level class grants 4 instead
+#   * per-skill cap -- up to 3 ranks per character level in one skill (vs the usual 1/level)
+#   * background ranks -- +2/level spendable only on the background skills below
+# BACKGROUND_SKILLS is PF Unchained's background list intersected with data.skills (artistry/lore
+# are unrenderable, see data.py) minus "profession", whose ranks live in the profession subsystem.
+BACKGROUND_SKILLS = [
+    "appraise", "craft", "handle animal", "knowledge engineering", "knowledge geography",
+    "knowledge history", "knowledge nobility", "linguistics", "perform", "sleight of hand",
+]
+
+
+def homebrew_enabled(character):
+    """The house-rule gate; same flag convention as level_and_bab.update_level."""
+    return str(getattr(character, 'homebrew_feat_amount', 'N')) not in ('N', 'n')
+
+
+def class_skill_points(character, name):
+    """Points-per-level for a class, with the house rank floor (2 -> 4) when homebrew is on.
+    Unknown classes fall back to the 2/level minimum (floored to 4 like any other 2)."""
+    if name in character.class_data:
+        points = int(character.class_data[name]["skill points at each level"])
+    else:
+        points = 2
+        print("couldn't find this class's skills, using default scaling", points)
+    if homebrew_enabled(character) and points == 2:
+        points = 4
+    return points
+
+
+def per_skill_cap(character):
+    """Max ranks in one skill: 3/character level under the house rules, else the PF1 level cap."""
+    return 3 * character.level if homebrew_enabled(character) else character.level
+
 
 def final_ability_score(character, stat):
     """FINAL ability score for ``stat``: base roll + inherent bonuses + level-up
@@ -50,12 +84,7 @@ def skill_rank_budget(character, skill_ranks_level):
     mental_mod = highest_mental_mod(character)
     budget = 0
     for entry in character.classes:
-        if entry['name'] in character.class_data:
-            points = int(character.class_data[entry['name']]["skill points at each level"])
-        else:
-            # For if we don't find a class, just assign it minimum skills
-            points = 2
-            print("couldn't find this class's skills, using default scaling", points)
+        points = class_skill_points(character, entry['name'])
         budget += max(1, points + mental_mod) * entry['level']
     return budget + skill_ranks_level
 
@@ -74,22 +103,42 @@ def skills_selector(character, skills, skill_rank_level):
     """
 
     all_skills = getattr(data, skills)
-    # max ranks in one skill = TOTAL character level (PF1), not the primary class's level
-    max_skill_ranks = character.level
+    # max ranks in one skill: house 3/level cap under homebrew, else the PF1 character-level cap
+    max_skill_ranks = per_skill_cap(character)
     skill_ranks = {}
 
     selectable_skills, budget, not_selectable_skills = get_selectable_skills(character, all_skills, skill_rank_level)
     assign_skill_ranks(character, selectable_skills, not_selectable_skills, budget, max_skill_ranks, skill_ranks)
+    # Zero-fill BEFORE the background pass: assign_dummy_zeroes overwrites its skills with 0, and
+    # background ranks may land on skills outside the main sample.
     assign_dummy_zeroes(not_selectable_skills, skill_ranks)
+    background_spent = assign_background_ranks(character, skill_ranks, max_skill_ranks)
 
     # Record the budget so downstream code (and test_skill_ranks.py) can check the invariant without
     # recomputing it, then verify the spend was exact.
-    character.skill_rank_budget = budget
+    character.skill_rank_budget = budget + background_spent
     total = sum(skill_ranks.values())
-    if total != budget:
-        print(f"skill_ranks: WARNING assigned {total} of {budget} ranks ({budget - total} unplaced)")
+    if total != character.skill_rank_budget:
+        print(f"skill_ranks: WARNING assigned {total} of {character.skill_rank_budget} ranks "
+              f"({character.skill_rank_budget - total} unplaced)")
 
     return skill_ranks
+
+
+def assign_background_ranks(character, skill_ranks, max_skill_ranks):
+    """House rule: +2 background-only skill ranks per level. Runs AFTER the ordinary walk so each
+    skill's remaining room already accounts for adventurer ranks (which may themselves have landed
+    on background skills -- the rule allows that). Returns the ranks actually spent; a shortfall is
+    only possible when every background skill is capped, and is reported, never silent."""
+    if not homebrew_enabled(character):
+        return 0
+    budget = 2 * character.level
+    before = sum(skill_ranks.values())
+    assign_skill_ranks(character, list(BACKGROUND_SKILLS), [], budget, max_skill_ranks, skill_ranks)
+    spent = sum(skill_ranks.values()) - before
+    if spent < budget:
+        print(f"skill_ranks: background skills all capped -- placed {spent} of {budget} background ranks")
+    return spent
 
 
 def get_selectable_skills(character,all_skills, skill_ranks_level):
@@ -102,19 +151,19 @@ def get_selectable_skills(character,all_skills, skill_ranks_level):
     # be spent there with the 'Always Improving' feat.
     pool = [s for s in all_skills if s != 'profession' or has_always_improving(character)]
 
-    # breadth of distinct skills keys off the primary class's per-level rate, as before
+    # breadth of distinct skills keys off the primary class's per-level rate (house floor included)
     primary = character.classes[character.primary_class_index]
-    primary_points = int(character.class_data.get(primary['name'], {}).get("skill points at each level", 2))
+    primary_points = class_skill_points(character, primary['name'])
     scaling = primary_points + mental_mod
 
     skill_number = scaling + random.randint(abs(mental_mod), abs(mental_mod)+8)
     skill_number = max(1, min(skill_number, len(pool)))
     selectable_skills = random.sample(pool, k=skill_number)
 
-    # Capacity guarantee: a narrow sample can't hold a big budget (each skill caps at character level),
+    # Capacity guarantee: a narrow sample can't hold a big budget (each skill caps at per_skill_cap),
     # and the leftover used to be dropped on the floor. Widen the sample ONLY when it's actually short,
     # so focused characters stay focused.
-    max_skill_ranks = character.level
+    max_skill_ranks = per_skill_cap(character)
     capacity = len(selectable_skills) * max_skill_ranks
     if capacity < budget:
         spare = [s for s in pool if s not in selectable_skills]
