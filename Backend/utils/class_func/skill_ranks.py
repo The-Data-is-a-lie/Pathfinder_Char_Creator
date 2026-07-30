@@ -22,9 +22,10 @@ def homebrew_enabled(character):
 
 def misc_homebrew_enabled(character):
     """Catch-all flag for homebrew rules too small for their own Yes/No input question (currently:
-    the 2->4 skill-rank floor). Absent attribute -> OFF, so bare fakes/tests stay standard PF1;
-    the generator defaults it on (generate_random_char misc_homebrew_rules='Y'), and it is not
-    exposed as an API input yet -- see docs/homebrew_rules.md backlog."""
+    the 2->4 skill-rank floor and the diminishing flaw-feat grant in level_and_bab.update_level).
+    Absent attribute -> OFF, so bare fakes/tests stay standard PF1; the generator defaults it on
+    (generate_random_char misc_homebrew_rules='Y'), and it is not exposed as an API input yet --
+    see docs/homebrew_rules.md backlog."""
     return str(getattr(character, 'misc_homebrew_rules', 'N')) not in ('N', 'n')
 
 

@@ -2,6 +2,7 @@ from math import ceil, floor
 import random
 
 from utils import data
+from utils.class_func.skill_ranks import misc_homebrew_enabled
 
 _BAB_MULT = {'H': 1.0, 'M': 0.75, 'L': 0.5}
 
@@ -95,14 +96,16 @@ def _sync_legacy_class_aliases(character):
 def update_level(character, level, flaw_amount=None):
     """House feat economy (oks/pathfinder/house-rules/feat-economy.md): on top of the PF1 odd-level
     feats, flaw feats DIMINISH -- the first 2 flaws grant 1 feat each, the 4th grants the 3rd
-    (0->0, 1->1, 2->2, 3->2, 4->3), and zero flaws grants zero; homebrew additionally grants +2
-    creation feats (folded into the normal bucket, they carry no label), the story cadence
-    1 + level//5, and the backstory flavor feat."""
+    (0->0, 1->1, 2->2, 3->2, 4->3), zero at zero flaws, and the whole grant sits behind the
+    misc_homebrew_rules catch-all flag; homebrew additionally grants +2 creation feats (folded
+    into the normal bucket, they carry no label), the story cadence 1 + level//5, and the
+    backstory flavor feat."""
     character.level = level
     flaws = flaw_amount or 0
 
     character.normal_feat_amount = ceil(character.level / 2)
-    character.flaw_feat_amount = min(floor(flaws / 2 + 1), 3) if flaws else 0
+    character.flaw_feat_amount = (min(floor(flaws / 2 + 1), 3)
+                                  if flaws and misc_homebrew_enabled(character) else 0)
     character.story_feat_amount = 0
     character.flavor_feat_amount = 0
     if character.homebrew_feat_amount not in ('N', 'n'):

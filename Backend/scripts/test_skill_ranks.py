@@ -42,9 +42,10 @@ class FakeCharacter:
     """The slice of createACharacter.Character that skill/profession allocation actually reads."""
 
     def __init__(self, classes, stats=None, inherents=None, level_ups=None,
-                 profession_feats=None, primary_class_index=0, homebrew='N', misc_homebrew='N'):
+                 profession_feats=None, primary_class_index=0, homebrew='N',
+                 misc_homebrew_rules='N'):
         self.homebrew_feat_amount = homebrew
-        self.misc_homebrew_rules = misc_homebrew
+        self.misc_homebrew_rules = misc_homebrew_rules
         self.classes = [{'name': n, 'level': l} for n, l in classes]
         self.level = sum(entry['level'] for entry in self.classes)
         self.primary_class_index = primary_class_index
@@ -259,7 +260,7 @@ def test_house_rank_floor():
     # fighter is a 2/level class; under the misc-homebrew floor it budgets like a 4/level class,
     # plus the +2/level background grant (main homebrew flag) recorded into skill_rank_budget
     character = FakeCharacter([('fighter', 10)], stats={'int': 10, 'wis': 10, 'cha': 10},
-                              homebrew='Y', misc_homebrew='Y')
+                              homebrew='Y', misc_homebrew_rules='Y')
     ranks = sr.skills_selector(character, 'skills', 0)
     want = 4 * 10 + 2 * 10
     check(character.skill_rank_budget == want,
@@ -269,7 +270,7 @@ def test_house_rank_floor():
 
     # a 4/level class is NOT floored upward -- only the 2s become 4s
     monk = FakeCharacter([('monk', 10)], stats={'int': 10, 'wis': 10, 'cha': 10},
-                         homebrew='Y', misc_homebrew='Y')
+                         homebrew='Y', misc_homebrew_rules='Y')
     sr.skills_selector(monk, 'skills', 0)
     check(monk.skill_rank_budget == want,
           f"monk (4/level) should budget {want} like the floored fighter, got {monk.skill_rank_budget}")
