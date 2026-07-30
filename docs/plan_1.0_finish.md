@@ -78,17 +78,19 @@ Grilling settled what "finish" means and what's in/out:
 
 ## Phase 3 — conditional correctness pass + top-20 curation
 
-- [ ] Generate a batch (reuse sweep output), collect `buff_gaps` from payloads +
-      `Backend/scripts/report_buff_coverage.py`; **fix every orphan/mismatch** (casing, labels,
-      suffixes) — validator-style where possible so regressions fail tests, per the
-      orphaned-conditionals lesson.
-- [ ] From `Backend/scripts/_conditional_candidates/A/core-*.json`, curate the ~20 candidates that
-      actually appear on generated NPCs most often (bloodline claws/rays, oracle mystery attack
-      revelations, warpriest sacred weapon, etc. — rank by frequency across the generated batch,
-      don't guess). Same pipeline as this session: overrides `core_features` →
-      `build_class_feature_changes.py` → validator → applier `build_data.py` + `bundle_macro.py` →
-      `verify_specs.mjs`.
-- [ ] Re-run the report; append remaining counts to the curation to-do below.
+- [x] Correctness pass (2026-07-30): a 129-generation batch (43 classes × L5/12/18) reported
+      **zero buff_gaps**, and `report_buff_coverage.py` still shows all 11 side-maps covered with
+      no curated-name collisions — nothing to fix.
+- [x] Top-20 curation (2026-07-30): ranked the core tier-A candidates by actual appearance across
+      the batch (chassis features counted via `class_ability`, not just `class_features` buckets)
+      and curated the 18 with a real on-attack payload — Stunning Fist, Quivering Palm, Quarry,
+      Master Hunter, Master Strike, Debilitating Injury, Knockout, Cavalier's/Mighty/Supreme
+      Charge, Gun Training, Judgment (Justice + Destruction), Greater Bane, True Judgment, Studied
+      Combat/Strike, Inspiration, Sacred Weapon. High-frequency rejects (Uncanny Dodge, Trap
+      Sense, rage/bloodrage chains, Flurry, Banner, Channel Energy…) are defensive/passive/buff/
+      own-action features — no weapon toggle, per the cost-only-conditional invariant. Pipeline
+      run end-to-end; `verify_specs.mjs` 97 passed.
+- [x] Report re-run; counts updated in the curation to-do below.
 
 ## Phase 4 — structured bug hunt (10 NPCs, cross-bucket)
 
@@ -116,8 +118,9 @@ Grilling settled what "finish" means and what's in/out:
 Deferred by decision Q7; counts as of 2026-07-29 (re-derive with
 `build_conditional_candidates.py` / the spell worklist tooling, don't trust these numbers later):
 
-- [ ] Core chassis features, tier A: **~905** minus Phase-3's top-20 (batches
-      `_conditional_candidates/A/core-NN.json`); tier B: ~497.
+- [ ] Core chassis features, tier A: **905 candidates, 28 curated** (10 in the core-features
+      session + 18 in Phase 3; batches `_conditional_candidates/A/core-NN.json` — most of the
+      remainder are defensive/passive rows that will never take a weapon toggle); tier B: ~497.
 - [ ] Choice-pool powers, tier A: **~178** (rage powers, arcana, hexes, talents…); tier B: ~247.
 - [ ] Feats, tier A: **~45**; tier B: ~139.
 - [ ] Spell conditionals: **~355** gated compendium-present drafts + de-dup buff-vs-conditional +
