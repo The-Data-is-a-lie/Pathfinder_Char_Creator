@@ -19,6 +19,36 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Baseline chassis class features now get weapon conditionals in the applier.** Smite Evil, Sneak
+  Attack and their kin were missing at every layer — the conditional pipeline only ever swept the
+  scraped *choice* pools (rage powers, arcana, hexes, talents), so the always-there features no class
+  "picks" were never candidates, and the applier silently skipped their items on every actor. Ten
+  are now curated in a new `core_features` overrides section (generic Sneak Attack plus the `(SLA)`
+  and `(CAV)` labeled variants — separate entries because their progressions differ and the applier
+  matches the raw item name before the label-stripped one — Smite Evil/Good, Challenge (CAV/SAM),
+  Bane, Studied Target, Favored Enemy; Weapon Training already belongs to the `weapon_training`
+  choice pool, and Flurry of Blows is a BAB mechanic, not a toggle). They reach sheets only through
+  the applier macro — generation-time payloads never carried a consumer for class-feature
+  conditionals, and still don't.
+- **`--family core`: the candidate slicer now audits baseline features too.** Rather than curating a
+  hand-picked list (rejected: coverage claims would rest on recall), a third
+  `build_conditional_candidates.py` family sweeps all 4,506 `every_class_feature.json` classFeat
+  items — minus choice-pool members, so families never overlap — through the same signal tiers, and
+  reports per-class with best-effort attribution (name label → chassis list → prose). First run:
+  905 tier-A / 497 tier-B candidates still uncurated, batched under `_conditional_candidates/`.
+- **Applier: gear attack-notes become weapon toggles** *(pf1-conditional-applier repo, committed
+  this session from a week-old working tree)*. Items with attack-target contextNotes in
+  `item_changes.json` now yield default-off `"(Display): text"` conditionals via a new
+  `item_conditionals.json`, with a byte-faithful `capitalizeWords` port so applier re-runs adopt
+  the generator's own rows instead of duplicating them (rejected alternative: fuzzy name matching —
+  exact-string adoption is what makes idempotency provable). Tier-B demotion machinery is
+  scaffolded but deliberately disabled until unplaced spells route through it.
+- **Curated-only sections are validator-backed.** `core_features` has no scraped source pool to
+  check keys against, so `validate_class_feature_effects.py` instead requires every key to match a
+  classFeat item name in the module export — the same lookup the applier performs, making a typo'd
+  key a test failure instead of a silently orphaned conditional (soft-skipped when the module isn't
+  installed). The applier's spec harness gained five chassis specs (paladin resolve, Unchained
+  retarget, labeled-variant precedence).
 - **Professions and trainers can now be switched off.** Both subsystems ran unconditionally on every
   character, so a request for a plain NPC still came back carrying profession ranks and a mentor.
   `/update_character_data` now accepts `professions` and `trainers` (`y`/`n`), read **by name** like
