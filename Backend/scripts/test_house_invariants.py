@@ -11,7 +11,8 @@ generator's default):
 
   * feats   -- normal == max(0, ceil(L/2) + 2 creation - profession-feat slots);
                story == 1 + L//5; flavor == 1; flaw feats diminish: min(flaws//2 + 1, 3), 0 at 0
-               (first 2 flaws grant 1 each, the 4th grants the 3rd)
+               (first 2 flaws grant 1 each, the 4th grants the 3rd; behind misc_homebrew_rules,
+               the generator's default)
   * skills  -- sum(skill_ranks) == skill_rank_budget;
                budget == sum(max(1, points(2->4 floor) + best final mental mod) * class level)
                          + background 2L + favored-class {0, L};
