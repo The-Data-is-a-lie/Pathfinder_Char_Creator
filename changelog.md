@@ -19,6 +19,14 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **The API payload now carries the animal-companion stat block** (`animal_companion`; sheet repo
+  issue #15). A companion druid's payload gains the species name and kind (normal/plant/vermin),
+  the full species statistics from `animal_choices.json` (including the advancement block), the
+  druid-level chassis row from `animal_companion.json` (HD, BAB, saves, natural armor, str/dex
+  bonus, tricks, special), and the rolled companion feats — all of which the generator already
+  computed and then discarded; only a boolean `companion` flag used to survive. Characters
+  without a companion get `null`, and the existing flag is unchanged, so current consumers are
+  unaffected.
 - **The two-step table workflow is now documented where users will find it** (Road-to-1.0
   Phase 5): a walkthrough (generate + inject → run the Apply Conditionals macro, and why there is
   deliberately no creation-time equivalent) in the Foundry module repo's root `README.md`

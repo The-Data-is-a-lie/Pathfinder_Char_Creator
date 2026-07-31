@@ -22,13 +22,16 @@ def animal_chooser(character):
 
         if random_animal <= 80:
             character.chosen_animal = random.choice(normal)
+            character.chosen_animal_kind = "normal"
             character.chosen_animal_description = character.animal_choices["normal"][character.chosen_animal]
         elif random_animal <= 90:
             character.chosen_animal = random.choice(plant)
-            character.chosen_animal_description = character.animal_choices["plant"][character.chosen_animal]                
+            character.chosen_animal_kind = "plant"
+            character.chosen_animal_description = character.animal_choices["plant"][character.chosen_animal]
         else:
-            character.chosen_animal = random.choice(vermin)  
-            character.chosen_animal_description = character.animal_choices["vermin"][character.chosen_animal]                
+            character.chosen_animal = random.choice(vermin)
+            character.chosen_animal_kind = "vermin"
+            character.chosen_animal_description = character.animal_choices["vermin"][character.chosen_animal]
 
 
         character.companion_info = character.animal_companion["companion"][level]
