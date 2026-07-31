@@ -111,6 +111,15 @@ Web-sheet rendering is explicitly **not** a gate.
   for the psion by coincidence; the PP table lives in JS not YAML, powers-known exists nowhere, and
   upstream's §15 is incomplete so ours must be hand-curated. This is what redirected the source to
   the Metzofitz wiki.
+- [10 — What happens to a Metzofitz name the Foundry module has never heard of?](issues/10-name-reconciliation.md) —
+  **measured.** After normalisation (casefold, `’`→`'`, strip `(power)`/`(Su)`): classes match
+  **12/12**, class features leave **3** real gaps, and **67 of 615 powers** are genuine
+  Metzofitz-only content no normalisation recovers — exactly the population `powers_desc_dict`
+  synthesizes. Bigger finding: **`psionic_power_lists.json` cites 45 names that have no record in
+  `psionic_powers.json`** — our own data is internally inconsistent, independent of Foundry.
+  Splitting the 30 `chain_sections` records fixes 30 of them; the other 15 are cited-but-pageless
+  powers. `Detect Compulsion` and `Mind Trap` turn out to exist in the module; **`Manifest Veil`
+  exists nowhere.** The module has no class-feature type — its 385 class features are `type: "feat"`.
 - [03 — What does the backend compute, and what does the module?](issues/03-division-of-labour.md) —
   **the backend computes and emits**; the module renders (the §1 `initiator_level` precedent). Class
   items are harvested from `pf1-psionics` into `every_class.json` with `bab`/`hd`/`skillsPerLevel`
@@ -187,6 +196,17 @@ Web-sheet rendering is explicitly **not** a gate.
 - Confirmed from the data, as [ticket 05](issues/05-powers-known-pp-tables.md) suspected:
   **soulknife has no `powers_known` entry at all** and **aegis has `pp_per_day` but no powers**.
   "Manifester" is three categories, and the payload models all three.
+- **`psionic_power_lists.json` cites 45 power names with no record in `psionic_powers.json`** (of 591
+  cited). Splitting the 30 `chain_sections` records into individual power records fixes 30; the
+  remaining 15 are cited-but-pageless. This is a self-consistency defect in our own data and has
+  nothing to do with Foundry — the validator gains a gate for it.
+- **Wiki bold markup (`'''`) bleeds into scraped text** — visible in `Far Hand`'s `chain_sections`,
+  which is where the malformed `Clairtangent Hand` comes from. Strip markup and audit for others.
+- **13 of the 151 scraped class-"features" are not features** — they are table and section headers
+  (`powers known`, `power points/day`, `weapon and armor proficiency`, `favored class bonuses`, …)
+  captured as if they were.
+- **Structural trap:** `psionic_power_lists.json`'s 13th entry, `Psion Discipline Powers`, is keyed by
+  **`disciplines`**, not `levels`. Any consumer that assumes `levels` raises `KeyError`.
 
 Settled since: the **out-of-scope power lists** (Gambler, Gifted Blade, Sighted Seeker) stay in the
 data because in-scope powers' `Level:` lines cite them, but no in-scope class selects from them —
