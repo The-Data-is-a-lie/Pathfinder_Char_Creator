@@ -443,7 +443,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		full_domain = character.chosen_domain
 		versatile_perfomance(character)	
 		animal_chooser(character)
-		animal_feats(character)	
+		animal_companion_feats = animal_feats(character)
 
 
 		full_school = None
@@ -1672,6 +1672,18 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"skill_unlock": skill_unlock,
 				"gold": character.gold,
 				"platnium": character.platnium,
+				# Animal companion stat block (issue #15, sheet repo): everything the
+				# generator already computed for a companion druid — species stats
+				# (with the 7th-level advancement block), the level chassis row from
+				# animal_companion.json, and the rolled feats (previously discarded).
+				# None when the druid went domain or there is no druid.
+				"animal_companion": ({
+					"species": character.chosen_animal,
+					"kind": getattr(character, "chosen_animal_kind", None),
+					"species_stats": character.chosen_animal_description,
+					"chassis": character.companion_info,
+					"feats": sorted(animal_companion_feats) if animal_companion_feats else [],
+				} if getattr(character, "chosen_animal", None) else None),
 				"full_domain": full_domain,
 				"school": school,
 				"opposing_school": opposing_school,
