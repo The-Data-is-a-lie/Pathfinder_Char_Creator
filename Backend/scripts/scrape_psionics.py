@@ -137,6 +137,31 @@ POWER_FIELD_RE = re.compile(r"^\s*(%s)\b\s*:?\s*(.*)$" % _LABEL_ALT, re.I | re.S
 ORDINAL_RE = re.compile(r"^(\d+)(st|nd|rd|th)?\.?$", re.I)
 DASHES = {"\u2014", "\u2013", "-", "\u2212", ""}
 
+# Manifesting ability per class, sourced in ticket 05 from each class's own power-points prose and
+# checked against RAW. The scrape cannot derive this reliably -- the prose says "a high Intelligence
+# score" mid-sentence -- so it is declared here and *verified* against the prose below, which turns a
+# silent drift into a loud warning. Soulknife is absent on purpose: it has no power points at all.
+MANIFESTING_ABILITY = {
+    "aegis": "int", "cryptic": "int", "psion": "int", "tactician": "int", "voyager": "int",
+    "marksman": "wis", "psychic warrior": "wis", "vitalist": "wis",
+    "dread": "cha", "highlord": "cha", "wilder": "cha",
+}
+ABILITY_WORDS = {"int": "intelligence", "wis": "wisdom", "cha": "charisma"}
+
+# Headings the wiki puts among the class-feature sections that are NOT selectable class features.
+# Dropping them wholesale would be wrong -- the manifesting ones carry the prose ticket 05 sourced
+# the manifesting ability from -- so they are re-homed instead:
+#   MANIFESTING_HEADINGS -> entry["manifesting_prose"]  (kept, not offered as a feature)
+#   PROFICIENCY_HEADINGS -> entry["weapon and armor proficiency"]  (the class_data.json key)
+#   "archetypes"         -> entry["archetypes"]  (a name list; v2 material, cheap to keep)
+# and the favored-class sections are dropped outright: the generator does not model favored class
+# bonuses, and they are race prose rather than class prose.
+MANIFESTING_HEADINGS = {"powers known", "powers points/day", "power points/day",
+                        "power points per day", "maximum power level known"}
+PROFICIENCY_HEADINGS = {"weapon and armor proficiency", "weapon and armor proficiencies"}
+DROP_HEADINGS = {"favored class bonuses", "racial favored class bonuses",
+                 "racial favored class options"}
+
 SESSION = requests.Session()
 SESSION.headers["User-Agent"] = UA
 
@@ -208,7 +233,13 @@ def bold_field(text: str, labels, tight: bool = False) -> str:
 
 
 def strip_markup(text: str) -> str:
-    """Wikitext -> plain prose: unwrap links, drop bold/italic ticks and templates."""
+    """Wikitext -> plain prose: unwrap links, drop bold/italic ticks and templates.
+
+    Namespace links (Category/File/Image) are *deleted*, not unwrapped -- unwrapping them leaks
+    "Category:Source: Ultimate Psionics" into the middle of prose, which is how the archetype
+    sections ended up with a category footer glued to the last archetype name.
+    """
+    text = re.sub(r"\[\[(?:Category|File|Image)\s*:[^\]]*\]\]", "", text, flags=re.I)
     text = re.sub(r"\[\[([^\]|]+)\|([^\]]+)\]\]", r"\2", text)
     text = re.sub(r"\[\[([^\]]+)\]\]", r"\1", text)
     text = re.sub(r"\{\{[^}]*\}\}", "", text)
@@ -285,15 +316,48 @@ def parse_class_table(title: str):
     raise RuntimeError(f"no class table found on {title}")
 
 
-def parse_features(text: str) -> dict:
-    """The heading sections that follow the class table, minus the 'Class Features' wrapper."""
-    features = {}
+def parse_features(text: str) -> tuple[dict, dict, str, list]:
+    """Split the heading sections after the class table into their four real destinations.
+
+    Returns (features, manifesting_prose, proficiency, archetypes). Everything used to land in
+    `features`, which meant a chooser reading it would offer "Archetypes" and "Favored Class
+    Bonuses" as though they were selectable class features -- 13 of the 151 headings were not
+    features at all. See docs/wayfinder/psionics/issues/08-bespoke-subsystems.md.
+    """
+    features, manifesting, proficiency, archetypes = {}, {}, "", []
     for heading, body in split_sections(text):
         name = clean(heading).lower()
         prose = strip_markup(body)
-        if name and prose and name not in {"class features", "class feature"}:
+        if not name or not prose or name in {"class features", "class feature"}:
+            continue
+        if name in MANIFESTING_HEADINGS:
+            manifesting[name] = prose
+        elif name in PROFICIENCY_HEADINGS:
+            proficiency = prose
+        elif name == "archetypes":
+            # A bare list, one name per line; the trailing category footer is gone by now.
+            archetypes = [clean(line) for line in prose.splitlines() if clean(line)]
+        elif name in DROP_HEADINGS:
+            continue
+        else:
             features[name] = prose
-    return features
+    return features, manifesting, proficiency, archetypes
+
+
+def manifesting_ability_for(key: str, manifesting_prose: dict) -> str:
+    """The declared manifesting ability, verified against the class's own prose.
+
+    Declared rather than derived (the prose buries it mid-sentence), but a declaration that nobody
+    checks is how stale constants survive -- so warn loudly if the prose names a different ability.
+    """
+    declared = MANIFESTING_ABILITY.get(key, "")
+    if not declared:
+        return ""
+    blob = " ".join(manifesting_prose.values()).lower()
+    named = {short for short, word in ABILITY_WORDS.items() if word in blob}
+    if named and declared not in named:
+        print(f"    WARNING: {key} declared {declared} but prose names {sorted(named)}")
+    return declared
 
 
 def as_int(value: str) -> int:
@@ -347,16 +411,23 @@ def scrape_classes() -> None:
         hit_die = re.search(r"d\d+", entry.get("hit die", ""))
         skill_ranks = re.search(r"\d+", entry.get("skill ranks", ""))
         level20 = bab_number(rows[-1].get("bab", ""))
+        features, manifesting_prose, proficiency, archetypes = parse_features(text)
         entry["derived"] = {
+            # 'd6.' and '2' (string) are deliberate: they are the shapes class_data.json already
+            # uses for these two keys, so the merge in build_psionic_class_data.py is a copy.
             "hit die": f"{hit_die.group()}." if hit_die else "",
             "skill points at each level": skill_ranks.group() if skill_ranks else "",
             "bab": bab_category(level20),
             "bab at 20": level20,
             "good saves": [k for k, v in save_categories(rows).items() if v == "good"],
             "manifests": "pp_per_day" in columns,
+            "manifesting ability": manifesting_ability_for(key, manifesting_prose),
         }
         entry["table"] = rows
-        entry["features"] = parse_features(text)
+        entry["weapon and armor proficiency"] = proficiency
+        entry["features"] = features
+        entry["manifesting_prose"] = manifesting_prose
+        entry["archetypes"] = archetypes
         classes[key] = entry
 
         progression = {}
@@ -490,7 +561,9 @@ def parse_power(name: str, text: str) -> dict:
     header, body = "\n".join(header_parts), "\n\n".join(body_parts)
 
     record = {"name": name}
-    sections = [clean(h).strip("= '") for h in re.findall(r"^=+ *.+? *=+\s*$", text, re.M)]
+    # strip_markup, not .strip("= '"): strip only trims the ENDS, so a heading whose bold ticks sit
+    # mid-title kept them -- which is where the malformed "C'''lairtangent Hand" variant came from.
+    sections = [strip_markup(h).strip("= ") for h in re.findall(r"^=+ *.+? *=+\s*$", text, re.M)]
     if len(sections) > 1:
         # A chain page: only the first variant's header is parsed here. Flagged so the
         # reconciliation ticket can decide how chains are modelled rather than losing them.
@@ -519,20 +592,32 @@ def scrape_powers() -> None:
     print(f"  {len(names)} distinct power names referenced by the lists")
 
     powers, missing, redirects = {}, [], {}
-    for start in range(0, len(names), BATCH):
-        chunk = names[start:start + BATCH]
-        payload = api(action="query", prop="revisions", rvslots="main", rvprop="content",
-                      titles="|".join(chunk), redirects=1)["query"]
-        for hop in payload.get("redirects", []):
-            redirects[hop["from"]] = hop["to"]
-        for page in payload.get("pages", []):
-            title = page["title"]
-            if page.get("missing"):
-                missing.append(title)
-                continue
-            content = page["revisions"][0]["slots"]["main"]["content"]
-            powers[title] = parse_power(title, content)
-        print(f"  fetched {min(start + BATCH, len(names))}/{len(names)}")
+
+    def fetch(batch_names):
+        for start in range(0, len(batch_names), BATCH):
+            chunk = batch_names[start:start + BATCH]
+            payload = api(action="query", prop="revisions", rvslots="main", rvprop="content",
+                          titles="|".join(chunk), redirects=1)["query"]
+            for hop in payload.get("redirects", []):
+                redirects[hop["from"]] = hop["to"]
+            for page in payload.get("pages", []):
+                title = page["title"]
+                if page.get("missing"):
+                    missing.append(title)
+                    continue
+                content = page["revisions"][0]["slots"]["main"]["content"]
+                powers[title] = parse_power(title, content)
+            print(f"  fetched {min(start + BATCH, len(batch_names))}/{len(batch_names)}")
+
+    fetch(names)
+
+    # A cited name that redirects to a page NOT itself cited by any list would otherwise be lost:
+    # the record is filed under the resolved title, the alias is dropped because the target was
+    # never fetched, and the cited name resolves to nothing. Chase those targets once.
+    chase = sorted({t for t in redirects.values() if t not in powers and t not in missing})
+    if chase:
+        print(f"  chasing {len(chase)} redirect target(s) not cited by any list")
+        fetch(chase)
 
     for source, target in redirects.items():
         if target in powers:

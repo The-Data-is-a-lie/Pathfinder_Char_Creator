@@ -208,10 +208,11 @@ Web-sheet rendering is explicitly **not** a gate.
 - Confirmed from the data, as [ticket 05](issues/05-powers-known-pp-tables.md) suspected:
   **soulknife has no `powers_known` entry at all** and **aegis has `pp_per_day` but no powers**.
   "Manifester" is three categories, and the payload models all three.
-- **`psionic_power_lists.json` cites 45 power names with no record in `psionic_powers.json`** (of 591
-  cited). Splitting the 30 `chain_sections` records into individual power records fixes 30; the
-  remaining 15 are cited-but-pageless. This is a self-consistency defect in our own data and has
-  nothing to do with Foundry — the validator gains a gate for it.
+- **Not a defect, withdrawn:** an earlier entry here claimed 45 cited power names had no record. Of
+  665 cited names, 53 resolve through `aliases` (wiki redirects) and 3 more are case variants;
+  **only the 3 known red links are genuinely missing**. `validate_psionics_data.py` already
+  casefolds and follows aliases, and has been reporting exactly 3 all along. The bad number came
+  from an ad-hoc probe that did neither.
 - **Structural trap:** `psionic_power_lists.json`'s 13th entry, `Psion Discipline Powers`, is keyed by
   **`disciplines`**, not `levels`. Any consumer that assumes `levels` raises `KeyError`.
 - `derived['hit die']` carries a trailing period (`"d6."`) and `derived['skill points at each level']`

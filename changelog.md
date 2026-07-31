@@ -57,10 +57,16 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     difference is the **psychic warrior**, which in this campaign has a good Fortitude save only
     where the published class has both Fortitude and Will, and an entirely rewritten feature track.
     That is a deliberate house rule, now recorded as one, so nobody "corrects" it later.
-  - Two defects in the scraped data were found and recorded for the next pass: the class power lists
-    cite **45 power names that have no entry in the powers file**, so those powers would silently
-    fail to appear on a character; and thirteen table headings were captured as though they were
-    class features.
+- **The psionics scrape now separates class features from page furniture.** Headings like
+  "Archetypes", "Favored Class Bonuses" and the power-point tables were being captured as though they
+  were selectable class features, which would have offered a generated character "Archetypes" as a
+  class ability. Weapon and armour proficiency is promoted to its own field, the archetype lists are
+  kept as lists, the manifesting rules text is kept separately (it is where each class's manifesting
+  ability is stated), and the favored-class sections are dropped since the generator does not model
+  them. Each class now also records its **manifesting ability**, declared from the published rules
+  and checked against the class's own prose so a future edit that disagrees warns rather than drifts.
+  Wiki category links no longer leak into descriptions, and multi-variant power pages no longer carry
+  stray bold markup in their variant names.
   - Open Game Content obligations are settled too: an OGL notice with a §15 curated from our own
     sources rather than copied from upstream's (which is incomplete), per-subtree marking of which
     files are Open Game Content, and a `/license` endpoint so API responses can point at the licence

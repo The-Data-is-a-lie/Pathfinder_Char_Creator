@@ -88,16 +88,29 @@ far more granular, with one entry per level for things like "Bonus Feat".
 Our source is wiki typography (curly); the module is mostly straight **with curly outliers mixed in**.
 No name contains both. Mapping both sides to `'` is required and sufficient.
 
-### Power chains — split, and it is our own bug first
+### Power chains — split for the module's sake, not ours
 
-**Yes, split before the diff means anything** — but the decisive reason is not the module. It is that
-**`psionic_power_lists.json` cites 45 power names that have no top-level record in
-`psionic_powers.json`.** Of 591 cited names, 45 are unresolvable *within our own data*, so a
-name-match lookup fails today regardless of Foundry. Splitting the **30** `chain_sections` records
-into individual power records fixes **30 of the 45**, because the missing names are chain variants —
-`Barred Mind, Personal`, `Concealing Amorpha, Greater`, `Ectoplasmic Creation, Major`,
-`Ethereal Form, Greater`, `Energy Adaptation, Specified` and so on. The module already ships these as
-standalone items, so the split moves us toward its shape as well as toward internal consistency.
+**Yes, split** — but only because the module ships the variants as separate compendium items, so the
+name match needs them. An earlier draft of this answer claimed our own data was internally broken —
+that **45 of 591 cited power names had no record**. That was wrong, and the error was in the
+measuring, not the data: the ad-hoc probe neither casefolded nor followed the `aliases` list.
+
+Measured properly, of **665** names cited across the class lists and the discipline lists:
+
+- **53 resolve through `aliases`** — the wiki redirects variant titles to their chain page, and
+  `scrape_powers` already records each redirect source on the target record.
+- **3 more are pure case variants** — the list pages write `Know Direction And Location`,
+  `Shift The Tide`, `Slip The Bonds`; the power pages are `... and ...` / `... the ...`. Any
+  case-insensitive lookup resolves them, which the module-side normalisation does anyway.
+- **3 are genuinely missing** — the red links below.
+
+So `validate_psionics_data.py` was right all along: it resolves aliases *and* casefolds
+(`check_powers`, lines 172-175 and 193) and has been reporting exactly 3 since the scrape landed.
+**No new internal-consistency gate is needed** — the one that exists is correct. The gate ticket 10
+does add is the *module* one: fail on any name with no entry in `psionic_name_map.json`.
+
+Splitting chains therefore has one job — matching `Metamorphosis, Minor` to the module's item of that
+name — and no urgency beyond it.
 
 The 32 `Mythic …` variants inside those chains are **out of scope, not gaps** — the module ships no
 Mythic Adventures content at all.
@@ -109,18 +122,16 @@ research pass on two points: no top-level *key* contains `'''`, and the 13th ent
 `levels` — any consumer that assumes `levels` will `KeyError`.) P2 should strip wiki markup and audit
 for other instances.
 
-### The red links — there are 15, not 3
+### The red links — three, as the ticket said
 
-The ticket named three. Measuring cited-vs-present found **15 power names cited by class lists with no
-record of their own**, once chain variants are excluded:
+`Detect Compulsion`, `Manifest Veil`, `Mind Trap`. (An earlier draft claimed fifteen; that came from
+the same faulty measurement as above and is withdrawn.)
 
-`Blinding Shot`, `Call To Mind, Lansis's`, `Detect Compulsion`, `Everyman`, `Expansion`,
-`Know Direction And Location`, `Manifest Veil`, `Mind Trap`, `Shift The Tide`, `Slip The Bonds`,
-`Soul Feast`, `Spray`, `Thought Shield`, `Touchsight`, `Wall Walker`
-
-Of the original three: **`Detect Compulsion` and `Mind Trap` both exist in the module's powers pack**,
-so the module supplies what the wiki lacks. **`Manifest Veil` exists nowhere** — not in any pack, under
-any normalisation — and needs sourcing independently or dropping from the lists it appears on.
+The useful new fact is what the *module* has: **`Detect Compulsion` and `Mind Trap` both exist in its
+powers pack**, so the render target supplies what the wiki lacks — the generator can legally select
+them and the sheet will resolve them. **`Manifest Veil` exists nowhere** — not in any pack, under any
+normalisation, and with no wiki page — so it must be sourced independently or dropped from the lists
+that cite it.
 
 ### Decisions this settles
 
@@ -130,9 +141,9 @@ any normalisation — and needs sourcing independently or dropping from the list
 - **Two independent defences**, as locked: `Backend/scripts/reconcile_psionics_names.py` regenerates
   `psionic_name_map.json` from the packs, `validate_psionics_data.py` fails on any unmapped name, and
   the module normalises case and apostrophes at attach time as a runtime net.
-- **The validator also gains an internal-consistency gate** — every name cited by
-  `psionic_power_lists.json` must resolve to a record in `psionic_powers.json`. That check is
-  independent of Foundry and would have caught all 45 of these on the day the scrape landed.
+- **No new internal-consistency gate.** `validate_psionics_data.py` already resolves cited names
+  through `aliases` and casefold, and already reports the three red links. The gate this ticket adds
+  is the module one: fail on any emitted name with no `psionic_name_map.json` entry.
 
 Draft map and full diff data: the research pass wrote `psionic_name_map_draft.json` and
 `diff_report_full.json` to the session scratchpad; `reconcile_psionics_names.py` regenerates both as
