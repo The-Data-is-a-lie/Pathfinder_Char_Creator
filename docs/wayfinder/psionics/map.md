@@ -173,6 +173,14 @@ Web-sheet rendering is explicitly **not** a gate.
 
 ## Not yet specified
 
+- **Where the manifesting ability lives.** §9 and [ticket 04](issues/04-class-pool-entry-trigger.md)
+  lock a new `data.py` map, but that was decided against `caster_mod`, not against
+  `class_data.json`. Every psionic class gets a `class_data.json` entry anyway, already carrying
+  `main_stat` (read by `class_func/stats.py`), and the scraper supplies the ability either way — a
+  `manifesting_stat` key beside `main_stat` is one owner where the `data.py` map is two that can
+  drift. It is a separate key regardless: psychic warrior manifests off Wis but plays off Str, and
+  soulknife manifests off nothing. **Decide at the `class_data.json` merge**; amend §9 and ticket 04
+  if the answer changes. *(The only surface carrying this — §9 still reads as settled.)*
 - Multiclass manifester-level stacking across two psionic classes.
 - Metapsionic / augment feats at generation time — likely a use-time concern, not confirmed.
 - **Turning on the 311 psionic feats already in `data/Metzofitz_Feats.csv`** — the data is there and
