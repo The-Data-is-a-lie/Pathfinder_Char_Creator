@@ -132,6 +132,26 @@ Grilling settled what "finish" means and what's in/out:
 
 _No entries yet. Payload-level sweep of the 10 builds found nothing; Foundry-side checks pending._
 
+## Phase 4.5 — bonded creatures + psionics (pulled into 1.0, 2026-07-31)
+
+Scope added after the original grilling: **bonded creatures** (animal companions, familiars,
+eidolons, mounts/psicrystals) and the **psionics classes**. Both are being designed first as
+wayfinder maps — decisions before code — and each ends at a spec section in
+`docs/feature_spec_todo.md`. **The release train (Phase 5) waits on these.**
+
+- [ ] Work `docs/wayfinder/companions/` to done → `feature_spec_todo.md` §8. Frontier starts at the
+      rendering-model prototype (there is no second-Actor precedent in the module) and the v1
+      type-scope call. Note `summoner`/`summoner (unchained)` are rollable **today** with no eidolon.
+- [ ] Work `docs/wayfinder/psionics/` to done → `feature_spec_todo.md` §9. Locked: adopt
+      [`pf1-psionics`](https://github.com/SoxMax/pf1-psionics) rather than build a module, but source
+      the **mechanics from the Library of Metzofitz wiki** — the module's class fields are
+      placeholders and it has no powers-known table (ticket 02). The module is the render target
+      only, so emitted names must reconcile against its packs. Scope: 12 classes.
+      Data landed 2026-07-31 (`Backend/json/class_data/psionics/`, ticket 01); the frontier is now
+      tickets 03/04/05/09/10/11.
+- [ ] Implement both specs, then extend `test_house_invariants.py` to cover the new classes (a class
+      missing a `data.good_saves` entry or carrying a bad bab/hit-die/skill-points value fails it).
+
 ## Phase 5 — docs + release train (seals 1.0)
 
 - [x] Document the blessed two-step workflow (2026-07-30): user-facing walkthrough in the module

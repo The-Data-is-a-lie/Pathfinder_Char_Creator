@@ -249,3 +249,131 @@ class lists / lowest level first. Validator: `Backend/scripts/validate_spell_con
 - [ ] **De-duplicate vs the buff.** When a spell gains a weapon conditional, drop the redundant
   contextNote from its Buffs-tab buff (same rule as the stance dice-damage escape hatch).
 - [ ] Optional: restate damage explicitly on the 19 legacy B entries for uniformity with C.
+
+---
+
+## 9. Psionics (Dreamscarred Press / Library of Metzofitz)
+**Status: SPEC LOCKED (2026-07-31) — implementation in progress on `feat/psionics-v1`.**
+Twelve base classes: `aegis, cryptic, dread, highlord, marksman, psion, psychic warrior, soulknife,
+tactician, vitalist, voyager, wilder`. Charted in `docs/wayfinder/psionics/`; this section is that
+map's destination. §1 (Path of War) is the governing precedent throughout — a 3pp system whose
+mechanics are scraped into `Backend/json/` while a third-party Foundry module renders the result.
+
+**Sources and the split (locked):**
+- The **[Library of Metzofitz wiki](https://libraryofmetzofitz.fandom.com/wiki/Psionic_Classes) is
+  the source of truth for mechanics** — same authority as `data/Metzofitz_Feats.csv`. Scraped by
+  `Backend/scripts/scrape_psionics.py` (via `api.php`; plain `/wiki/` hits Cloudflare) into
+  `Backend/json/class_data/psionics/` — 12 classes, 615 powers, 12 power lists, 10 races.
+- **[`pf1-psionics`](https://github.com/SoxMax/pf1-psionics) is adopted as the render target, not a
+  data source.** We do not build our own module. Its *powers* are clean, but **all twelve of its
+  class items carry placeholder `bab: low` / `hd: 6` / `skillsPerLevel: 2`** and powers-known exists
+  nowhere in it — which is why the wiki, not the module, supplies mechanics.
+- Independent cross-check that the scrape is right: **every manifesting class's PP column matches one
+  of `pf1-psionics`' three hardcoded progressions exactly.**
+
+**Division of labour (ticket 03) — the backend computes, the module renders.**
+`pf1-psionics` auto-calculates manifester level, concentration and power points, but the payload
+still carries them as finished numbers, exactly as §1 emits `initiator_level` alongside letting
+pf1-pow render items. Rationale: the payload is the API contract, the standalone web sheet has no
+game system to compute anything, and `test_house_invariants.py` needs something to assert on. The
+two agree rather than fight because the PP tables are identical.
+- **Class items:** `tools/export_every_class.macro.js` harvests the twelve `pf1-psionics` class items
+  into `every_class.json` (as PoW classes were harvested from pf1-pow) and **patches `system.bab` /
+  `hd` / `skillsPerLevel` from `psionic_classes.json`** during harvest. Keeping the module's own item
+  identity keeps its Psionic Manifesting tab and PP auto-calc bound; patching fixes the three fields
+  that are wrong upstream. Actor HP is already safe (`attributes.hp.base` is the backend total and
+  class-item HP is zeroed), so the placeholder `hd` was cosmetic — **`bab: low` was not**. pf1 derives
+  BAB from class items, and **only psion and vitalist are actually low**: aegis, marksman and
+  soulknife are high, and the remaining seven are medium. Upstream's placeholder is wrong for **ten
+  of the twelve**.
+- **Power points and psionic focus are owned by `pf1-psionics`** when it is active — we add no
+  parallel pool, which would double-count on the sheet. When it is **absent**, `addResourcePools()`
+  builds a plain PP resource from the payload's `pp_per_day` (the §1 legacy-fallback shape). Focus is
+  not a payload field.
+
+**Class tables, verified (ticket 05).** The scrape was checked against d20pfsrd as a control sample —
+not to audit the wiki, which wins by definition, but to catch parser errors. **Eleven of twelve match
+RAW exactly and the parser is not at fault anywhere**, including the three rows that looked wrong
+(voyager's d6-with-medium-BAB-and-6+Int, vitalist's d6/low-BAB, dread's 6+Int — all genuinely written
+that way).
+
+**One deliberate house divergence, recorded here as required:** the **psychic warrior** has **good
+Fort only** on the wiki, where RAW gives it good Fort *and* Will (+6 rather than +12 at level 20), and
+its feature track is rewritten wholesale into a Path system (Warrior's Path / Path Skill / Twisting
+Path / Pathweaving / Eternal Warrior) with no RAW equivalent. Verified against the wiki's `api.php`
+output, not merely our scrape. **This is not to be "fixed" back to RAW.**
+
+**Manifesting ability** — Int: aegis, cryptic, psion, tactician, voyager · Wis: marksman, psychic
+warrior, vitalist · Cha: dread, highlord, wilder · soulknife: none. **Bonus power points are a
+formula, not a table:** `floor(key_ability_mod × manifester_level / 2)`, with a separate gate that a
+key ability of **9 or lower cannot manifest at all**. No `spells_from_ability_mod.json` analogue is
+needed. No psionics-specific house rule exists; the universal 2→4 skill-rank floor in
+`skill_ranks.py` is class-name-agnostic and applies to psion and vitalist automatically.
+
+**Class-pool entry (ticket 04) — no API flag.** The §1 precedent, not the Spheres one: the twelve
+live in `Backend/json/class_data.json` with `data.good_saves` rows and are in the random pool by
+default. Holdbacks go in `data.psionic_classes_pending` (mirrors `pow_classes_pending_foundry`, read
+by `Backend/utils/util.py::_available_class_pool`). Psionics is *additive* like PoW, not a casting
+replacement like Spheres, and a flag would mean threading a new key through `app.py`'s positional
+unpack plus `generate.js::buildPayload` plus the module's `button.js`. Accepted consequence: psionic
+classes are ~12 of 55 pool entries. Manifesting ability gets its **own** map in `data.py` — not
+`caster_mod`, because power points are not spells-per-day.
+
+**Twelve is the target (tickets 04/08).** A class may be held out of the pool, but **every holdback
+is recorded here with the subsystem it waits on**. No class ships hollow. Nine of the twelve carry a
+choice-bearing subsystem — aegis customizations, cryptic insights, vitalist methods, psychic warrior
+paths, marksman styles, tactician strategies, dread terrors, voyager path skills, highlord decrees,
+soulknife blade skills — and **all nine ride the existing
+`generic_func.py::generic_class_option_chooser`**, the same one that drives bloodlines, orders,
+mysteries and weapon training. No new chooser module. The one genuine exception is the **soulknife's
+mind blade**, which is a weapon rather than a list: it becomes a synthesized weapon whose enhancement
+bonus comes from the class table, reusing `enhancement_effects_dict` and special-cased against
+`armor_and_weapon_chooser.py`.
+
+**Power selection (ticket 07).** Modelled on `path_of_war.py` **minus the prerequisite machinery** —
+psionic powers have no prerequisites, so `_constrained_pick`'s prereq graph has no analogue here.
+Max power level comes from the class table at manifester level; the legal pool is that class's list
+in `psionic_power_lists.json` at levels 0..max; the **psion's discipline is rules-mandated** and
+picked first, while every other class takes a soft bias toward 2–3 disciplines so a build reads as a
+concept rather than a grab bag; picks are weighted toward the highest available level, as §1 does.
+"Manifester" is **three categories, not one**: full manifesters, the **aegis** (power points, no
+powers known), and the **soulknife** (neither) — the payload models all three.
+
+**Name reconciliation (ticket 10).** The module attaches by name match and **silently drops** an
+unrecognised name — the failure mode that already bit spell conditionals. Two independent defences:
+`Backend/scripts/reconcile_psionics_names.py` reads the module's LevelDB packs and emits
+`psionic_name_map.json`, and `validate_psionics_data.py` **fails on any unmapped name**; separately
+the module normalises apostrophes and case at attach time. The surface is larger than it looks — the
+module's *classes* pack holds **419 items**, because every class feature ships as its own named item,
+and its packs mix `’` (U+2019) with `'` (U+0027) internally. **The payload emits the module's name
+where one matches, and the wiki's name plus a `powers_desc_dict` entry where it does not**, so
+Metzofitz-only content is synthesized rather than lost.
+
+**Export** (`/update_character_data`): a `manifesters` list beside `spellbooks`, one entry per
+psionic class — `name`, `display`, `level`, `manifester_level`, `manifesting_stat`, `pp_per_day`,
+`max_power_level`, `powers_known_list`, `powers_chosen`, `discipline` — plus `powers_desc_dict` as a
+sibling top-level key, exactly as `maneuvers_desc_dict` sits beside the PoW block. **Augmentation is
+not a generation-time field**: spending extra PP for a bigger effect is a use-time choice, and
+`pf1-psionics` ships an in-dialog augment editor for it.
+
+**Licensing (ticket 09).** Root `LICENSE-OGL.txt` carries OGL 1.0a plus a **hand-curated §15 built
+from the `sources:` in our own scraped data** — upstream's §15 is incomplete (it omits *Psionics
+Expanded: Advanced Psionics Guide*, which the aegis traces to) and is copy-pasted verbatim into
+pf1-pow, so it cannot be reused. `Backend/json/class_data/psionics/NOTICE.md` marks that subtree as
+Open Game Content and the Python as not (§8 marking). Because an HTTP response carrying extracted
+mechanics is Distribution under §10, `Backend/app.py` serves a stable `/license` route and the
+payload carries a pointer field rather than embedding the licence. `pf1-psionics` is credited as the
+intermediate compiled source, alongside Paizo CUP and a DSP non-endorsement line.
+
+**Deferred (not built):** web-sheet rendering of manifesters · **psionic races** — the ten scraped
+*Psionics Unleashed* races stay data-only; ticket 11 is re-scoped as the **custom-race route** ticket
+covering Loxo/Kalyptran/Dolistani too, because `PlayableRaces.json` is walked *positionally* by
+`race_func.py::race_traits_chooser` and psionic Duergar collides with core Duergar · the six v2
+classes (Genesis, Skipper, Thug, Warpmind, psionic Zealot — note `zealot` is taken by the PoW class —
+Soulknife (High Psionics)) and the Gifted NPC class · the **psicrystal**, structurally a companion
+(see `docs/wayfinder/companions/map.md`) · turning on the **311 psionic feats already in
+`data/Metzofitz_Feats.csv`** (gated by `_METZ_TYPES` in `feats.py`; the data is there, the eligibility
+rules are not decided) · power **conditionals** on the main weapon, mirroring §4/§7 · psionic items
+(cognizance crystals, dorjes, power stones) in the gear chooser · multiclass manifester-level
+stacking · reporting upstream's incomplete §15 and placeholder class fields to SoxMax and the wiki
+editors.

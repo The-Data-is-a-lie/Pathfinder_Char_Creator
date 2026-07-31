@@ -19,6 +19,130 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **The psionics design is settled and written down** as **§9 Psionics** in
+  `docs/feature_spec_todo.md`, closing seven of the nine open tickets on
+  `docs/wayfinder/psionics/`. Nothing generates yet — this is the contract implementation is built
+  against. The decisions that shape everything downstream:
+  - **The backend computes manifester level, power points and powers-known and emits them as
+    finished numbers**, even though the `pf1-psionics` Foundry module can calculate all three
+    itself. *Rejected:* emitting bare selections and deferring to the module — that would leave the
+    standalone web sheet (which has no game system) unable to render a manifester, make the payload
+    non-self-describing, and give `test_house_invariants.py` nothing to assert on. The duplicate-math
+    objection does not apply: our scraped power-point columns already match the module's own tables
+    exactly, so the two agree by construction.
+  - **The twelve classes enter the random pool with no opt-in flag**, following Path of War rather
+    than Spheres of Power. *Rejected:* a `psionics` request flag — Spheres needs one because it
+    *replaces* casting, whereas psionics is additive, and a flag would cost plumbing in three places
+    across two repos to buy a switch nobody asked for. **Visible consequence:** psionic classes
+    become about 12 of 55 pool entries, so roughly a fifth of default random NPCs will be psionic.
+    Reversible in one line via a new `psionic_classes_pending` holdback list.
+  - **All twelve classes ship, subsystems included.** Nine of them carry a bespoke subsystem
+    (astral suits, insights, collectives, terrors, decrees, blade skills…), and all nine turn out to
+    be the same shape as bloodlines and orders — so they reuse the existing class-option chooser
+    rather than gaining new modules. The soulknife's mind blade is the sole exception and becomes a
+    synthesized weapon. *Rejected:* holding the soulknife back, and letting the data decide which
+    classes ship — a class held back would be recorded with the reason, but it is meant to be an
+    exception rather than the plan.
+  - **Power selection has no prerequisite logic**, unlike Path of War maneuvers: psionic powers have
+    no prerequisites at all, so only class list, power level and discipline gate a pick.
+  - **Every name the generator emits is reconciled against the module's compendium before it ships,**
+    and the validator fails on any unmapped name. The module silently drops names it does not
+    recognise — the same failure that once cost six weapons their conditionals — and its packs turn
+    out to mix two different apostrophe characters internally.
+  - **Psionic races are deferred**, and that ticket is re-scoped into the route for *all* homebrew
+    races (Loxo, Kalyptran, Dolistani included), because the race files are walked positionally and
+    that problem should be solved once rather than per-supplement.
+  - **The scraped class tables were checked against the published rules and hold up** — eleven of the
+    twelve match exactly, including the three that looked wrong at a glance. The one genuine
+    difference is the **psychic warrior**, which in this campaign has a good Fortitude save only
+    where the published class has both Fortitude and Will, and an entirely rewritten feature track.
+    That is a deliberate house rule, now recorded as one, so nobody "corrects" it later.
+- **The psionics scrape now separates class features from page furniture.** Headings like
+  "Archetypes", "Favored Class Bonuses" and the power-point tables were being captured as though they
+  were selectable class features, which would have offered a generated character "Archetypes" as a
+  class ability. Weapon and armour proficiency is promoted to its own field, the archetype lists are
+  kept as lists, the manifesting rules text is kept separately (it is where each class's manifesting
+  ability is stated), and the favored-class sections are dropped since the generator does not model
+  them. Each class now also records its **manifesting ability**, declared from the published rules
+  and checked against the class's own prose so a future edit that disagrees warns rather than drifts.
+  Wiki category links no longer leak into descriptions, and multi-variant power pages no longer carry
+  stray bold markup in their variant names.
+  - Open Game Content obligations are settled too: an OGL notice with a §15 curated from our own
+    sources rather than copied from upstream's (which is incomplete), per-subtree marking of which
+    files are Open Game Content, and a `/license` endpoint so API responses can point at the licence
+    instead of embedding it.
+- **A psionics master data resource, scraped from the Library of Metzofitz wiki.** Two new scripts —
+  `Backend/scripts/scrape_psionics.py` and `Backend/scripts/validate_psionics_data.py` — produce and
+  gate five files under `Backend/json/class_data/psionics/`: the twelve in-scope classes with real
+  BAB / hit die / skill points / good saves and 20-row power-point, powers-known and
+  maximum-power-level progressions; twelve class power lists plus the seven psion disciplines; 615
+  powers with full header fields and rules text; and the ten *Psionics Unleashed* races from
+  d20pfsrd. Nothing is wired into the generator yet — no class enters the random pool, and the
+  payload is unchanged — because the payload shape and the power-selection algorithm are still open
+  questions on `docs/wayfinder/psionics/`.
+  - **Confidence comes from two sources agreeing.** All eleven manifesting classes' power-points
+    columns match, exactly, one of the three progressions the `pf1-psionics` Foundry module
+    hardcodes in `scripts/data/powerpoints.mjs` — 220 independently-authored numbers in agreement.
+    The validator hardcodes those progressions and asserts the match on every run, so a future
+    scrape regression fails loudly rather than silently shipping wrong class tables.
+  - Recorded as facts about the source, not defects: three power names on class lists are red links
+    (`Detect Compulsion`, `Manifest Veil`, `Mind Trap`), `Restore Essence` is missing most of its
+    header fields, the Noral race page has no speed line, and 29 pages hold multi-variant power
+    chains whose extra variants are noted but not yet modelled.
+
+### Changed
+- **Psionic mechanics will be sourced from the Library of Metzofitz wiki, not from the
+  `pf1-psionics` module's `packs-source/` YAML** — reversing the extraction decision logged further
+  down this section. The module's own data disproved it: all twelve of its classes carry the same
+  placeholder `bab: low` / `hd: 6` / `skillsPerLevel: 2`, which is correct only for the psion by
+  coincidence and would have produced soulknives with d6 hit dice and half BAB; and powers-known per
+  level exists nowhere in the module, neither in data nor in code. The wiki publishes the full class
+  table — BAB, all three saves, power points per day, powers known and maximum power level for
+  twenty levels — and is already this repo's source for `data/Metzofitz_Feats.csv`.
+  **`pf1-psionics` remains the Foundry render target**, so generated names still have to reconcile
+  against its packs or the module drops them silently. Rejected: extracting the module's YAML (its
+  class fields are unusable and its power tables do not exist), and hand-authoring the tables (240
+  numbers per class family, with no second source to check them against).
+  - Scope is fixed at **twelve classes** — Aegis, Cryptic, Dread, Highlord, Marksman, Psion, Psychic
+    Warrior, Soulknife, Tactician, Vitalist, Voyager, Wilder — the intersection of what the wiki
+    documents (18 base classes) with what the module can render. The other six are held for a v2,
+    where the psionic Zealot will also need a key that does not collide with the Path of War zealot.
+  - Psionic **feats need no scraping**: `data/Metzofitz_Feats.csv` already carries 311
+    psionic-flagged rows, deliberately excluded from the random pool by `_METZ_TYPES` in
+    `Backend/utils/class_func/feats.py`. Turning them on is a selection decision, not a data one.
+- **Two new design efforts are charted under `docs/wayfinder/`, and both are 1.0 scope**
+  (Road-to-1.0 Phase 4.5): `companions/` (animal companions, familiars, eidolons, mounts) and
+  `psionics/`. Each is a map — destination, locked decisions, and one file per open *question* in
+  `issues/` — that ends at a spec section in `docs/feature_spec_todo.md` (§8 and §9). Decisions get
+  made before code, the way Path of War and Spheres were specced first.
+  - **Psionics will adopt the existing [`pf1-psionics`](https://github.com/SoxMax/pf1-psionics)
+    module rather than build one.** The original plan was to write a new public FoundryVTT psionics
+    module; that module already exists, is active (v0.9.1, Foundry v13 / pf1 v11), and ships 597
+    powers, 309 feats, 7 disciplines and 12 classes with a custom `power` item type, a Manifesting
+    tab, and auto-calculated manifester level and power points. Adopting it also means the data can
+    be extracted from its `packs-source/` YAML — mirroring how
+    `Backend/scripts/extract_spheres_talents.py` extracts Spheres data from `pf1spheres` — instead
+    of scraping d20pfsrd. Rejected: building our own module (duplicates maintained work, and was by
+    far the largest piece of the effort) and scraping (no structured psionics dataset exists, and
+    the module's YAML is already pf1-shaped).
+  - **Psionics data will be extracted *and validated*, not extracted straight.** Research against
+    `pf1-psionics` found its 597 powers accurate (zero errors in an eight-power sample, two of them
+    verbatim-identical to d20pfsrd) and its saving-throw fields correct — but **all 12 class entries
+    carry the same placeholder `bab: low` / `hd: 6` / `skillsPerLevel: 2`**, contradicting the prose
+    in those same files and correct only for the psion by coincidence. A straight extract would have
+    silently produced soulknives with a d6 Hit Die and low BAB, and `test_house_invariants.py` would
+    not have caught it — the house-formula assertions are only as good as `class_data.json`. Class
+    mechanical fields will be re-sourced instead. Also found: power-points-per-day lives in the
+    module's JavaScript rather than its YAML, and a powers-known table exists nowhere in the module.
+  - **OGL attribution will be hand-curated rather than inherited.** `pf1-psionics`' own §15 omits
+    *Psionics Expanded: Advanced Psionics Guide* (which the Aegis traces to) and *Psionics Augmented:
+    Seventh Path* (cited by a power it ships); the identical block appears in `pf1-pow`, so it is
+    boilerplate rather than a curated notice. Copying it would inherit the gap.
+  - **The two halves are separate maps, not one.** Their frontiers do not inform each other:
+    companions block on a Foundry rendering question (there is no second-Actor precedent anywhere in
+    the module), psionics blocked on the module decision above. Merging them would have parked one
+    half behind the other's unrelated ticket. The single crossover — a psicrystal is structurally a
+    companion — is a cross-reference between the maps.
 - **The API payload now carries the animal-companion stat block** (`animal_companion`; sheet repo
   issue #15). A companion druid's payload gains the species name and kind (normal/plant/vermin),
   the full species statistics from `animal_choices.json` (including the advancement block), the

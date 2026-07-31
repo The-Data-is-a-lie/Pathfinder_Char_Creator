@@ -67,6 +67,12 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   martial-training progression, stance_auras. See `path-of-war` skill.
 - `class_data/spheres/` — Spheres of Power/Might pools, talent changes, traditions. See
   `spheres-of-power` skill.
+- `class_data/psionics/` — **GENERATED** by `scrape_psionics.py` from the Library of Metzofitz wiki
+  (+ d20pfsrd for races); gated by `validate_psionics_data.py`. `psionic_classes.json` (12 classes,
+  20-row tables, derived bab/hit-die/skills/saves), `psionic_powers_known.json` (20-int arrays,
+  index = level − 1 — the PoW convention, not the 21-int spell one), `psionic_power_lists.json`,
+  `psionic_powers.json` (615), `psionic_races.json` (10). **Not yet wired into the generator** —
+  see `docs/wayfinder/psionics/`.
 - `feats/` — feat_changes.json, feat_conditionals.json (Foundry buffs). `items/` —
   item_changes.json (**GENERATED** by `build_item_changes.py`) + `_overrides.json`,
   quality_effects.json. `spells/` — spell_changes.json, spell_riders.json. `flaws/` —
@@ -134,7 +140,14 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
   with a gap report). It supersedes the removed **"Spell Conditionals (Rider Spells)"** LevelDB compendium
   pack (whose builder `build_spell_conditional_compendium.py` + `_compendium/` were deleted here and
   preserved in that repo's `build/`).
-- `validate_*.py` → CI-style checks (class_feature_effects, flaw_effects, quality_effects).
+- `scrape_psionics.py` → GENERATES everything in `json/class_data/psionics/` from the Library of
+  Metzofitz wiki + d20pfsrd. Idempotent; `--only classes|lists|powers|races`. **Access gotcha:**
+  fandom's `/wiki/<Page>` URLs are behind a Cloudflare JS challenge (WebFetch → 402, curl → challenge
+  page); `api.php` is not. Needs the repo venv (`.venv/Scripts/python.exe`) — `C:\Python310` has no
+  `requests`. `lxml`/`html5lib` are absent, so tables are walked with bs4, not `pandas.read_html`.
+- `validate_*.py` → CI-style checks (class_feature_effects, flaw_effects, quality_effects,
+  psionics_data). `validate_psionics_data.py` cross-checks every manifesting class's power-points
+  column against the three progressions `pf1-psionics` hardcodes, so a scrape regression fails loudly.
 - `audit_class_choice_descriptions.py` → flags choice-pool entries with empty/trivial text.
 - `fix_*.py`, `scrape_*.py`, `_smoke_*.py`, `compile_feats_new.py` — one-off converters,
   scrapers, smoke tests.
@@ -156,6 +169,13 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
 
 `docs/homebrew_rules.md` (house rules — source of truth) · `docs/feature_spec_todo.md` (PoW
 spec) · `docs/pow_conditional_decision_rules.md` / `spheres_conditional_decision_rules.md`.
+
+**In-flight design efforts** live under `docs/wayfinder/<effort>/` — a `map.md` (destination,
+locked decisions, decisions-so-far index, fog, out-of-scope) plus one file per decision ticket in
+`issues/`. A ticket is a *question*, not a task; the **frontier** is every open, unclaimed ticket
+whose `Blocked by:` list is fully resolved. Open efforts: `companions/` (bonded creatures →
+`feature_spec_todo.md` §8) and `psionics/` (mirror the `pf1-psionics` module → §9). Both feed
+`docs/plan_1.0_finish.md`.
 
 This repo no longer carries `.claude/skills/`. The domain knowledge that lived there (path-of-war,
 spheres-of-power, trainers-and-professions, foundry-conditionals, foundry-sheet-references,
