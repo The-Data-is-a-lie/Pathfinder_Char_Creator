@@ -282,12 +282,33 @@ two agree rather than fight because the PP tables are identical.
   `hd` / `skillsPerLevel` from `psionic_classes.json`** during harvest. Keeping the module's own item
   identity keeps its Psionic Manifesting tab and PP auto-calc bound; patching fixes the three fields
   that are wrong upstream. Actor HP is already safe (`attributes.hp.base` is the backend total and
-  class-item HP is zeroed), so the placeholder `hd` was cosmetic — **`bab: low` was not**, since pf1
-  derives BAB from class items and marksman/psychic warrior/soulknife/voyager are medium.
+  class-item HP is zeroed), so the placeholder `hd` was cosmetic — **`bab: low` was not**. pf1 derives
+  BAB from class items, and **only psion and vitalist are actually low**: aegis, marksman and
+  soulknife are high, and the remaining seven are medium. Upstream's placeholder is wrong for **ten
+  of the twelve**.
 - **Power points and psionic focus are owned by `pf1-psionics`** when it is active — we add no
   parallel pool, which would double-count on the sheet. When it is **absent**, `addResourcePools()`
   builds a plain PP resource from the payload's `pp_per_day` (the §1 legacy-fallback shape). Focus is
   not a payload field.
+
+**Class tables, verified (ticket 05).** The scrape was checked against d20pfsrd as a control sample —
+not to audit the wiki, which wins by definition, but to catch parser errors. **Eleven of twelve match
+RAW exactly and the parser is not at fault anywhere**, including the three rows that looked wrong
+(voyager's d6-with-medium-BAB-and-6+Int, vitalist's d6/low-BAB, dread's 6+Int — all genuinely written
+that way).
+
+**One deliberate house divergence, recorded here as required:** the **psychic warrior** has **good
+Fort only** on the wiki, where RAW gives it good Fort *and* Will (+6 rather than +12 at level 20), and
+its feature track is rewritten wholesale into a Path system (Warrior's Path / Path Skill / Twisting
+Path / Pathweaving / Eternal Warrior) with no RAW equivalent. Verified against the wiki's `api.php`
+output, not merely our scrape. **This is not to be "fixed" back to RAW.**
+
+**Manifesting ability** — Int: aegis, cryptic, psion, tactician, voyager · Wis: marksman, psychic
+warrior, vitalist · Cha: dread, highlord, wilder · soulknife: none. **Bonus power points are a
+formula, not a table:** `floor(key_ability_mod × manifester_level / 2)`, with a separate gate that a
+key ability of **9 or lower cannot manifest at all**. No `spells_from_ability_mod.json` analogue is
+needed. No psionics-specific house rule exists; the universal 2→4 skill-rank floor in
+`skill_ranks.py` is class-name-agnostic and applies to psion and vitalist automatically.
 
 **Class-pool entry (ticket 04) — no API flag.** The §1 precedent, not the Spheres one: the twelve
 live in `Backend/json/class_data.json` with `data.good_saves` rows and are in the random pool by

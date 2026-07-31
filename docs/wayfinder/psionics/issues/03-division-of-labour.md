@@ -50,7 +50,10 @@ Psionic Manifesting tab and PP auto-calc still bind; patching repairs the three 
 Only one of those three actually mattered. Actor HP is already the backend's total
 (`modify-abilities.js:292`) and extra class items have their HP zeroed (`:676-680`), so the
 placeholder `hd: 6` was cosmetic. **`bab: low` was not** — pf1 derives BAB from class items, and
-marksman, psychic warrior, soulknife and voyager are medium-BAB.
+measured against the scrape, **only psion and vitalist are low**. Aegis, marksman and soulknife are
+**high**; cryptic, dread, highlord, psychic warrior, tactician, voyager and wilder are **medium**.
+Upstream's placeholder is therefore wrong for **ten of the twelve**, and a harvested-as-is soulknife
+would attack at half its proper bonus at level 20.
 
 **Module absent.** `pf1-psionics` owns power points and psionic focus while it is active; we add no
 parallel resource, which would double-count on the sheet. When it is missing, `addResourcePools()`

@@ -111,6 +111,15 @@ Web-sheet rendering is explicitly **not** a gate.
   for the psion by coincidence; the PP table lives in JS not YAML, powers-known exists nowhere, and
   upstream's §15 is incomplete so ours must be hand-curated. This is what redirected the source to
   the Metzofitz wiki.
+- [05 — Reconcile the scraped class tables against RAW and the house rules](issues/05-powers-known-pp-tables.md) —
+  **eleven of twelve match RAW exactly; the parser is not at fault anywhere.** All three flagged rows
+  (voyager, vitalist, dread) are genuinely written that way. The one real deviation was *not* on the
+  watch list: the **psychic warrior has good Fort only** where RAW gives Fort+Will, with a
+  wholly-rewritten Path feature track — a **deliberate house divergence**, recorded in §9, not to be
+  reverted. Manifesting ability sourced for all twelve (Int: aegis/cryptic/psion/tactician/voyager ·
+  Wis: marksman/psychic warrior/vitalist · Cha: dread/highlord/wilder · soulknife: none). **Bonus PP
+  is a formula, not a table** — `floor(mod × ML / 2)`, plus a score-≤9-cannot-manifest gate. No
+  psionics-specific house rule; the universal 2→4 skill floor applies automatically.
 - [10 — What happens to a Metzofitz name the Foundry module has never heard of?](issues/10-name-reconciliation.md) —
   **measured.** After normalisation (casefold, `’`→`'`, strip `(power)`/`(Su)`): classes match
   **12/12**, class features leave **3** real gaps, and **67 of 615 powers** are genuine
@@ -207,6 +216,12 @@ Web-sheet rendering is explicitly **not** a gate.
   captured as if they were.
 - **Structural trap:** `psionic_power_lists.json`'s 13th entry, `Psion Discipline Powers`, is keyed by
   **`disciplines`**, not `levels`. Any consumer that assumes `levels` raises `KeyError`.
+- `derived['hit die']` carries a trailing period (`"d6."`) and `derived['skill points at each level']`
+  is a **string**, not an int. Both need normalising before the `class_data.json` merge.
+- **`manifesting_ability` is not a field yet** — it exists only inside each class's power-points prose
+  and must be lifted into `derived` (values sourced by [ticket 05](issues/05-powers-known-pp-tables.md)).
+- Checked and **dismissed**: the `` glyph seen in `class skills` prose is a Git-Bash console
+  rendering artifact. All five files contain **zero** U+FFFD; the byte is a real U+2019. No data loss.
 
 Settled since: the **out-of-scope power lists** (Gambler, Gifted Blade, Sighted Seeker) stay in the
 data because in-scope powers' `Level:` lines cite them, but no in-scope class selects from them —

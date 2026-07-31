@@ -52,6 +52,15 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   - **Psionic races are deferred**, and that ticket is re-scoped into the route for *all* homebrew
     races (Loxo, Kalyptran, Dolistani included), because the race files are walked positionally and
     that problem should be solved once rather than per-supplement.
+  - **The scraped class tables were checked against the published rules and hold up** — eleven of the
+    twelve match exactly, including the three that looked wrong at a glance. The one genuine
+    difference is the **psychic warrior**, which in this campaign has a good Fortitude save only
+    where the published class has both Fortitude and Will, and an entirely rewritten feature track.
+    That is a deliberate house rule, now recorded as one, so nobody "corrects" it later.
+  - Two defects in the scraped data were found and recorded for the next pass: the class power lists
+    cite **45 power names that have no entry in the powers file**, so those powers would silently
+    fail to appear on a character; and thirteen table headings were captured as though they were
+    class features.
   - Open Game Content obligations are settled too: an OGL notice with a §15 curated from our own
     sources rather than copied from upstream's (which is incomplete), per-subtree marking of which
     files are Open Game Content, and a `/license` endpoint so API responses can point at the licence
