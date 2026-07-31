@@ -195,10 +195,13 @@ Web-sheet rendering is explicitly **not** a gate.
 
 ### Data-quality defects found while grilling (fix in the scraper, 2026-07-31)
 
-- `level_by_class` in `psionic_powers.json` is stored as a **Python repr string**
-  (`"{'conduit': 1, 'cryptic': 1}"`), not a JSON object. Every consumer would have to `eval` it.
 - These files are UTF-8 and **must be opened with `encoding='utf-8'`** — Windows Python defaults to
   cp1252 and raises `UnicodeDecodeError` on them. Applies to the validator and every consumer.
+- **`chain_sections` entries keep internal wiki bold ticks.** `scrape_powers` builds them with
+  `.strip("= '")`, which only trims the *ends*, so `Far Hand` carries a `C'''lairtangent Hand`
+  variant. Use `strip_markup()` (which already handles `'''`) instead of `strip`.
+- **`parse_features` keeps every heading section**, so table and section headings land in `features`
+  as though they were class features — 13 of the 151 are not features at all.
 - The scrape captured a `features` list per class but **not the option lists those features draw
   from** (blade skills, insights, decrees, …). [Ticket 08](issues/08-bespoke-subsystems.md) needs
   them as `{name: description}`; this is the single largest piece of remaining scraper work.
@@ -209,11 +212,6 @@ Web-sheet rendering is explicitly **not** a gate.
   cited). Splitting the 30 `chain_sections` records into individual power records fixes 30; the
   remaining 15 are cited-but-pageless. This is a self-consistency defect in our own data and has
   nothing to do with Foundry — the validator gains a gate for it.
-- **Wiki bold markup (`'''`) bleeds into scraped text** — visible in `Far Hand`'s `chain_sections`,
-  which is where the malformed `Clairtangent Hand` comes from. Strip markup and audit for others.
-- **13 of the 151 scraped class-"features" are not features** — they are table and section headers
-  (`powers known`, `power points/day`, `weapon and armor proficiency`, `favored class bonuses`, …)
-  captured as if they were.
 - **Structural trap:** `psionic_power_lists.json`'s 13th entry, `Psion Discipline Powers`, is keyed by
   **`disciplines`**, not `levels`. Any consumer that assumes `levels` raises `KeyError`.
 - `derived['hit die']` carries a trailing period (`"d6."`) and `derived['skill points at each level']`
@@ -226,8 +224,9 @@ Web-sheet rendering is explicitly **not** a gate.
 Settled since: the **out-of-scope power lists** (Gambler, Gifted Blade, Sighted Seeker) stay in the
 data because in-scope powers' `Level:` lines cite them, but no in-scope class selects from them —
 see [ticket 07](issues/07-power-selection-algorithm.md).
-- Whether to report the incomplete §15, the placeholder class fields, and the ~10 malformed wiki
-  pages **upstream** (to SoxMax and to the wiki's editors). Out of scope as work, but cheap courtesy.
+
+Still unaddressed, as courtesy rather than work: reporting the incomplete §15, the placeholder class
+fields, and the ~10 malformed wiki pages **upstream** to SoxMax and to the wiki's editors.
 
 ## Out of scope
 
