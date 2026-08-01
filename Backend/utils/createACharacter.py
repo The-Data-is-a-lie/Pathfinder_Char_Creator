@@ -296,7 +296,12 @@ class Load_when_needed:
 
     def load(self):
         if self.data is None:
-            with open(self.file_path, 'r') as file:
+            # encoding='utf-8' explicitly: JSON is UTF-8 by spec, but Python on Windows defaults to
+            # cp1252, which raises UnicodeDecodeError on any file carrying a curly apostrophe or an
+            # en dash. The scraped psionics data is full of both, and class_data.json inherited them
+            # with the twelve psionic classes -- without this, every class in the game fails to load
+            # on Windows while the Linux deploy is fine.
+            with open(self.file_path, 'r', encoding='utf-8') as file:
                 self.data = json.load(file)
         return self.data
 

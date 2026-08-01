@@ -110,9 +110,15 @@ def _available_class_pool(character):
     """The base random-class pool: every class_data key minus the occult classes (not ready yet)
     and the Path of War classes missing from the pf1-pow Foundry compendium (they'd generate fine
     here, but the Foundry sheet can't resolve a class item the module doesn't ship — re-enable by
-    emptying pow_classes_pending_foundry in data.py once the module includes them)."""
+    emptying pow_classes_pending_foundry in data.py once the module includes them).
+
+    psionic_classes_pending is the same lever for the twelve psionic classes and starts empty —
+    they are in the pool by default (ticket 04: psionics is additive like Path of War, not a
+    casting replacement like Spheres, so there is no API flag). Anything parked there must be
+    recorded in docs/feature_spec_todo.md section 9 with the subsystem it waits on."""
     occult_classes = [x.lower() for x in getattr(data, 'occult_classes')]
     pending = [x.lower() for x in getattr(data, 'pow_classes_pending_foundry', [])]
+    pending += [x.lower() for x in getattr(data, 'psionic_classes_pending', [])]
     return [x for x in character.class_data.keys()
             if x not in occult_classes and x not in pending]
 
