@@ -139,9 +139,17 @@ eidolons, mounts/psicrystals) and the **psionics classes**. Both are being desig
 wayfinder maps — decisions before code — and each ends at a spec section in
 `docs/feature_spec_todo.md`. **The release train (Phase 5) waits on these.**
 
-- [ ] Work `docs/wayfinder/companions/` to done → `feature_spec_todo.md` §8. Frontier starts at the
-      rendering-model prototype (there is no second-Actor precedent in the module) and the v1
-      type-scope call. Note `summoner`/`summoner (unchained)` are rollable **today** with no eidolon.
+- [x] Work `docs/wayfinder/companions/` to done → `feature_spec_todo.md` §8. **Effort closed
+      2026-08-01**: six of seven tickets resolved, map marked CLOSED, §8 landed. Locked: **one
+      payload, N `npc` Actors**; the **backend owns every number** and the module clones a
+      `pf-content` Actor for the body (the web sheet has no game system, so pf1 cannot own the math);
+      v1 = **companion + mount + familiar** at a full stat block with the **eidolon degraded, not
+      suppressed** — `summoner`/`summoner (unchained)` stay rollable and emit a named base form.
+      `animal_companion` becomes the deprecated alias of a new `bonded_creatures` list.
+      Ticket 07 (eidolon evolutions) is open, unblocked, deferred to v1.1.
+      **Three grantor rows from the chart failed RAW verification** and were corrected in the spec:
+      `shifter` grants nothing, `antipaladin`'s fiendish servant is a `summon monster` subsystem, and
+      `sorcerer` is Arcane-bloodline-conditional — 13 classes touched, 10 at a full stat block.
 - [x] Work `docs/wayfinder/psionics/` to done → `feature_spec_todo.md` §9. **Effort closed
       2026-07-31**: all eleven tickets resolved, map marked CLOSED. Locked: adopt
       [`pf1-psionics`](https://github.com/SoxMax/pf1-psionics) rather than build a module, but source
@@ -156,9 +164,23 @@ wayfinder maps — decisions before code — and each ends at a spec section in
       pass across all 55 classes**, and `validate_psionics_data.py` is at 0 errors.
       **Still open, deliberately:** Foundry-side import (gate 3) spans the module repo and is a later
       branch; voyager bonus feats, psionic races and the other deferred items are listed in §9.
-- [ ] Implement the **companions** spec, then extend `test_house_invariants.py` to cover its new
-      classes (a class missing a `data.good_saves` entry or carrying a bad bab/hit-die/skill-points
-      value fails it). Psionics has already done its half of this.
+- [ ] Implement the **companions** spec (§8 build slices, in dependency order — each is a commit):
+      1. `repair_animal_choices.py` — the sign-loss/key-drift/field-bleed repair (D5). **Do this
+         first**: 109 advancement rows currently inflate every advanced companion by +4 Dex.
+      2. `validate_companion_data.py` — assert the PF1e size-up package, no surviving bare ints.
+      3. `dump_pf_content_actors.mjs` → `pf_content_companions.json` + `validate_companion_names.py`
+         (the D3 silent-drop gate).
+      4. `companion_grantors.json` + the resolver in `animal_companions.py` (reuses `class_entry_for`).
+      5. Advancement merge + stat-block math; fix the `animal_feats` loop to read the chassis row's
+         own `feats` count.
+      6. Payload: emit `bonded_creatures`, keep `animal_companion` as the deprecated alias.
+      7. Foundry module: loop `Actor.create`, clone from `pf-content`, patch numbers, degrade on miss.
+      8. Web sheet: consume `bonded_creatures`.
+      9. Extend `test_house_invariants.py` with companion invariants (a class missing a
+         `data.good_saves` entry or carrying a bad bab/hit-die/skill-points value already fails it;
+         add: no companion below its grantor's threshold, stacked effective level ≤ character level,
+         every emitted species present in the `pf-content` dump, merged ability scores non-degenerate).
+      Psionics has already done its half of the invariant work.
 
 ## Phase 5 — docs + release train (seals 1.0)
 
@@ -198,5 +220,9 @@ Deferred by decision Q7; counts as of 2026-07-29 (re-derive with
 - Phase 3: buff-gap report empty (or every remaining row annotated as known-deferred);
   `verify_specs.mjs` green; applier run on a generated rogue/paladin shows the new toggles.
 - Phase 4: bug list in the repo plan file fully checked off.
+- Phase 4.5: psionics — `validate_psionics_data.py` at 0 errors and the full `test_house_invariants.py`
+  sweep green (done). Companions — `validate_companion_data.py` / `validate_companion_names.py` green,
+  the invariant sweep extended, and a generated druid/wizard/cavalier importing as multiple Foundry
+  actors with numbers matching the payload.
 - Phase 5: Render endpoint returns a generated character; released module version injects it; a
   fresh actor + applier macro run matches the Phase-4 checklist.

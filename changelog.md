@@ -71,6 +71,52 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   without rules text, and that every payload carries its `license_url`. The tables are read straight
   from the data file rather than through `psionics.py`, so the test can catch the generator
   disagreeing with its source instead of agreeing with it by construction.
+- **The bonded-creature design is settled and written down** as **§8 Bonded creatures** in
+  `docs/feature_spec_todo.md`, closing six of the seven tickets on `docs/wayfinder/companions/` and
+  marking that map CLOSED. Nothing generates yet — this is the contract implementation is built
+  against. Today the generator gives a companion to druids only, computes none of its numbers, never
+  applies the species' advancement block, and emits it on a payload key **nothing reads**; summoners
+  roll with no eidolon at all. What was decided:
+  - **One payload, several actors.** A generated character stays a single character; the FoundryVTT
+    module creates one extra actor per bonded creature in the existing "Random Characters" folder,
+    so a druid 5 / wizard 5 imports as three actors — the character, a companion and a familiar.
+    *Rejected:* folding the creature into the owner's own sheet as items, and describing it in sheet
+    text only; a companion has its own AC, saves, HP and attacks, and both alternatives either fight
+    Foundry's derived data or throw those numbers away.
+  - **The generator computes every number; Foundry supplies the body.** The payload carries a
+    finished stat block, and the module clones the matching creature out of the `pf-content`
+    compendium for art, natural attacks and senses, then patches the numbers over it. *Rejected:*
+    letting the Foundry system derive the stat block — the standalone web sheet has no game system
+    to derive anything with, so that would have left it with an empty companion block and two
+    consumers disagreeing about the same creature.
+  - **A missing creature degrades loudly instead of vanishing.** An unmatched species still produces
+    a plain actor built from the payload numbers, plus a warning, and a validator gates species
+    names against a checked-in dump of the compendium. *Rejected:* a curated name map, which would
+    have quietly shrunk the species pool to whatever happened to match.
+  - **v1 covers animal companions, mounts and familiars with full stat blocks; the eidolon is
+    deliberately partial** — a named base form and descriptive text, with its evolutions deferred.
+    *Rejected:* removing summoner from the random class pool until evolutions exist. A summoner has
+    spells, class features, gear and a named eidolon; a partial summoner beats no summoner in a
+    campaign that has to be table-ready.
+  - **The single `animal_companion` payload key becomes a `bonded_creatures` list**, because one
+    character can legitimately have several. The old key is kept as a deprecated alias to the first
+    animal companion so existing readers keep working.
+  - **Who grants a companion becomes a data table** rather than the hard-coded druid check, covering
+    13 classes plus the Spheres *Beastmastery* talent. Multiple sources stack and the total is capped
+    at character level; a class below the level where its feature arrives grants **nothing** rather
+    than a level-1 creature.
+  - **Three grantors in the design notes turned out not to be grantors**, caught by checking each
+    against the published rules: the **shifter** has no animal companion at all, the **antipaladin**'s
+    fiendish servant is a permanent *summon monster* rather than a companion (deferred as a separate
+    subsystem), and the **sorcerer** only qualifies through the Arcane bloodline. The paladin's mount
+    question left over from earlier research is settled too — it uses the paladin's own level, not
+    level − 3, from 5th.
+  - **The companion species data has to be repaired before any of this can be used.** Of 120
+    advancement rows recording a Dexterity change, **109 lost their minus sign** during the original
+    scrape; applied as written, every advanced companion would gain +4 Dexterity it should not have
+    — a wrong AC, Reflex save and initiative on every one of them. Sixteen rows in the same situation
+    kept their `-2`, which is what proves it. The repair is scripted and guarded by a validator
+    rather than hand-edited.
 - **The psionics design is settled and written down** as **§9 Psionics** in
   `docs/feature_spec_todo.md`, closing seven of the nine open tickets on
   `docs/wayfinder/psionics/`. Nothing generates yet — this is the contract implementation is built

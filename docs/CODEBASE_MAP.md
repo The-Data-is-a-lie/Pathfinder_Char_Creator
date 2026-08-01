@@ -84,6 +84,16 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   item_changes.json (**GENERATED** by `build_item_changes.py`) + `_overrides.json`,
   quality_effects.json. `spells/` — spell_changes.json, spell_riders.json. `flaws/` —
   flaw_effects.json. `backstory_examples/` — few-shot examples for the backstory API.
+- **Bonded creatures** — `animal_companion.json` (`companion` = the level chassis, rows `"1"`–`"40"`
+  keyed by *effective* level, carrying that row's own `feats` count; `feats` = a flat 27-name bag) and
+  `animal_choices.json` (`normal` 145 / `plant` 14 / `vermin` 23 species → `starting statistics` plus
+  exactly one `"<N>th-level advancement"` delta block, keys lowercase and comma-inverted:
+  `"ant, giant"`). Read by `class_func/animal_companions.py` (**druid-only today**, no stat-block
+  math, advancement block never merged). ⚠ `animal_choices.json` has a known **sign-loss defect** —
+  109 size-up rows record `dex: 2` where PF1e means `−2`; see `feature_spec_todo.md` §8 (D5) before
+  consuming it. The spec's planned files — `companion_grantors.json`, `familiar_master_table.json`,
+  `familiar_choices.json`, `pf_content_companions.json`, `eidolon_base_forms.json` — do **not** exist
+  yet.
 - Loose files: races (races.json, PlayableRaces.json, racial_stat_changes.json), deity.json,
   archetypes.json, cleric/druid_domains.json, wizard_schools.json, bloodlines.json,
   witch_patrons.json, spirits.json, items.json/items_best.json, weapons_data.json,
@@ -102,7 +112,9 @@ skill_ranks.py / skill_unlocks.py · armor_and_weapon_chooser.py / armor_and_enh
 item_and_price.py · path_of_war.py / path_of_war_funcs.py · psionics.py (power selection, power
 points, manifester level, the `manifesters` payload block, soulknife mind blade) · spheres.py ·
 wizard_school.py ·
-domain_inquisition.py · gunslinger.py · animal_companions.py · versatile_performance.py ·
+domain_inquisition.py · gunslinger.py · animal_companions.py (druid-only companion pick; the
+grantor resolver, advancement merge and stat-block math are specced in `feature_spec_todo.md` §8 but
+**not built**) · versatile_performance.py ·
 traits.py · flaws.py / randomize_flaw.py · feat_tax.py · trainers.py / profession_chooser.py /
 profession_abilities.py · backstory.py / build_archetype.py (Ollama build→archetype classifier,
 heuristic fallback) / personality.py / appearance.py / family_func.py ·
@@ -191,9 +203,10 @@ spec) · `docs/pow_conditional_decision_rules.md` / `spheres_conditional_decisio
 **In-flight design efforts** live under `docs/wayfinder/<effort>/` — a `map.md` (destination,
 locked decisions, decisions-so-far index, fog, out-of-scope) plus one file per decision ticket in
 `issues/`. A ticket is a *question*, not a task; the **frontier** is every open, unclaimed ticket
-whose `Blocked by:` list is fully resolved. Open efforts: `companions/` (bonded creatures →
-`feature_spec_todo.md` §8) and `psionics/` (mirror the `pf1-psionics` module → §9). Both feed
-`docs/plan_1.0_finish.md`.
+whose `Blocked by:` list is fully resolved. Both efforts are **CLOSED** — `companions/` (bonded
+creatures → `feature_spec_todo.md` §8, closed 2026-08-01, ticket 07 deferred to v1.1) and
+`psionics/` (→ §9, closed 2026-07-31). A closed map is history; the live work list is
+`docs/plan_1.0_finish.md`, and the spec section is the authority.
 
 This repo no longer carries `.claude/skills/`. The domain knowledge that lived there (path-of-war,
 spheres-of-power, trainers-and-professions, foundry-conditionals, foundry-sheet-references,
