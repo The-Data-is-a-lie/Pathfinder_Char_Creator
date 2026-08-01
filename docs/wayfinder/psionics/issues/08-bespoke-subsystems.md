@@ -47,10 +47,18 @@ bounds. **No new chooser module is written.**
 | Marksman | combat style | `generic_class_option_chooser`, single + style abilities |
 | Tactician | strategies | `generic_class_option_chooser`, multiple |
 | Dread | terrors | `generic_class_option_chooser`, multiple |
-| Voyager | path skills | `generic_class_option_chooser`, multiple |
+| ~~Voyager~~ | ~~path skills~~ | **row withdrawn — see below** |
 | Highlord | decrees | `generic_class_option_chooser`, multiple |
 | Soulknife | blade skills | `generic_class_option_chooser`, multiple |
 | **Soulknife** | **mind blade** | **special case — see below** |
+
+**Correction (found while building the scraper extension): the Voyager row was wrong, and there are
+nine subsystems, not ten.** "Path Skill" is a **psychic warrior** feature; the voyager has no option
+list on the wiki at all. Its choice-bearing feature is **Voyager Knowledge**, which grants *bonus
+feats* from a fixed list — a different shape that belongs to the feat machinery, not to
+`generic_class_option_chooser`. Nothing was built for it, and `psionic_class_options.json` ships the
+nine surviving classes. Picking voyager bonus feats is **not built** and is carried forward with the
+rest of the deferred psionics work in `docs/feature_spec_todo.md` section 9.
 
 **The real blocker was data, not code.** `scrape_psionics.py` captured a `features` list per class but
 **not the option lists those features draw from**. So the enabling work is a scraper extension that

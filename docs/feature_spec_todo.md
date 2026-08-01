@@ -316,19 +316,34 @@ default. Holdbacks go in `data.psionic_classes_pending` (mirrors `pow_classes_pe
 by `Backend/utils/util.py::_available_class_pool`). Psionics is *additive* like PoW, not a casting
 replacement like Spheres, and a flag would mean threading a new key through `app.py`'s positional
 unpack plus `generate.js::buildPayload` plus the module's `button.js`. Accepted consequence: psionic
-classes are ~12 of 55 pool entries. Manifesting ability gets its **own** map in `data.py` — not
-`caster_mod`, because power points are not spells-per-day.
+classes are ~12 of 55 pool entries.
+
+**Amended during the build (was: "manifesting ability gets its own map in `data.py`").** It is a
+`manifesting_stat` key in each class's **`class_data.json`** entry, beside `main_stat`. Ticket 04
+settled this question against `data.caster_mod` — power points are not spells-per-day — but it never
+weighed `class_data.json`, and that is the better owner: the entry already exists and already carries
+the class's other key ability, so one row owns both facts where a separate map would be a second
+place to drift. It has to be its own key rather than a reuse of `main_stat` because the two questions
+differ — a psychic warrior manifests off Wisdom but plays off Strength, and a soulknife manifests off
+nothing at all. Read by `utils/class_func/psionics.py::manifesting_stat`.
 
 **Twelve is the target (tickets 04/08).** A class may be held out of the pool, but **every holdback
 is recorded here with the subsystem it waits on**. No class ships hollow. Nine of the twelve carry a
 choice-bearing subsystem — aegis customizations, cryptic insights, vitalist methods, psychic warrior
-paths, marksman styles, tactician strategies, dread terrors, voyager path skills, highlord decrees,
+paths, marksman styles, tactician strategies, dread terrors, highlord decrees,
 soulknife blade skills — and **all nine ride the existing
 `generic_func.py::generic_class_option_chooser`**, the same one that drives bloodlines, orders,
 mysteries and weapon training. No new chooser module. The one genuine exception is the **soulknife's
 mind blade**, which is a weapon rather than a list: it becomes a synthesized weapon whose enhancement
 bonus comes from the class table, reusing `enhancement_effects_dict` and special-cased against
 `armor_and_weapon_chooser.py`.
+
+*Amended during the build:* this list and ticket 08's table both counted the **voyager** among the
+choice-bearing classes, on a row reading "voyager | path skills". That was wrong — "Path Skill" is a
+*psychic warrior* feature, and the voyager has no option list at all. Its choice-bearing feature is
+**Voyager Knowledge**, which grants bonus feats from a fixed list; that is feat machinery, not
+`generic_class_option_chooser`, and it is **not built** (see Deferred). The count of nine was right
+by accident — the list under it named ten. `psionic_class_options.json` ships the nine that survive.
 
 **Power selection (ticket 07).** Modelled on `path_of_war.py` **minus the prerequisite machinery** —
 psionic powers have no prerequisites, so `_constrained_pick`'s prereq graph has no analogue here.
@@ -365,7 +380,10 @@ mechanics is Distribution under §10, `Backend/app.py` serves a stable `/license
 payload carries a pointer field rather than embedding the licence. `pf1-psionics` is credited as the
 intermediate compiled source, alongside Paizo CUP and a DSP non-endorsement line.
 
-**Deferred (not built):** web-sheet rendering of manifesters · **psionic races** — the ten scraped
+**Deferred (not built):** web-sheet rendering of manifesters · **Voyager Knowledge** bonus feats,
+the voyager's only choice-bearing feature (see the amendment above; it is feat machinery, not a
+`generic_class_option_chooser` list, so the voyager currently generates with no picks of its own) ·
+**psionic races** — the ten scraped
 *Psionics Unleashed* races stay data-only; ticket 11 is re-scoped as the **custom-race route** ticket
 covering Loxo/Kalyptran/Dolistani too, because `PlayableRaces.json` is walked *positionally* by
 `race_func.py::race_traits_chooser` and psionic Duergar collides with core Duergar · the six v2

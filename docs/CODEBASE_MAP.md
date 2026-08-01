@@ -21,7 +21,9 @@ numbers. **Keep this file updated whenever files, pools, or pipelines move.**
 8. Foundry buff export: feat/equipment/class-feature `*_changes_dict` + `*_conditionals_dict`
    built from the `effects`/`changes` JSONs (grep `_load_buffmap`).
 
-Flask: `Backend/app.py` (`POST /update_character_data`, legacy `/sheet`); factory
+Flask: `Backend/app.py` (`POST /update_character_data`, legacy `/sheet`, `GET /license` — the OGL
+text payloads point at via `license_url`, required because serving extracted 3pp mechanics is
+Distribution under OGL §10); factory
 `Backend/start_py.py`. Static data loading: `Backend/utils/data.py`. Race data: `Backend/utils/race.py`.
 
 ## Class-choice buckets (talents/powers/hexes/...)
@@ -71,8 +73,13 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   (+ d20pfsrd for races); gated by `validate_psionics_data.py`. `psionic_classes.json` (12 classes,
   20-row tables, derived bab/hit-die/skills/saves), `psionic_powers_known.json` (20-int arrays,
   index = level − 1 — the PoW convention, not the 21-int spell one), `psionic_power_lists.json`,
-  `psionic_powers.json` (615), `psionic_races.json` (10). **Not yet wired into the generator** —
-  see `docs/wayfinder/psionics/`.
+  `psionic_powers.json` (660), `psionic_races.json` (10), `psionic_class_options.json` (9 classes'
+  subsystem option lists), `psionic_name_map.json` (generated names → `pf1-psionics` pack names).
+  `NOTICE.md` marks the whole subtree as Open Game Content. **Wired in** — `class_func/psionics.py`
+  reads these; the twelve classes are in `class_data.json` and in the random pool.
+  The per-class option files (`class_data/aegis.json`, `cryptic.json`, …) are **GENERATED** from
+  this subtree by `build_psionic_class_data.py` and live one level up, under the class's own name,
+  because `generic_class_option_chooser` looks them up that way.
 - `feats/` — feat_changes.json, feat_conditionals.json (Foundry buffs). `items/` —
   item_changes.json (**GENERATED** by `build_item_changes.py`) + `_overrides.json`,
   quality_effects.json. `spells/` — spell_changes.json, spell_riders.json. `flaws/` —
@@ -92,7 +99,9 @@ feats.py (feat selection + `bonus_searcher`, `no_prereq_loop` consumers) · gene
 (all generic choosers) · class_abilities.py (fixed per-level abilities + descriptions) ·
 spells.py / adding_bonus_spells.py · stats.py · hp_rolls.py · level_and_bab.py ·
 skill_ranks.py / skill_unlocks.py · armor_and_weapon_chooser.py / armor_and_enhancements.py /
-item_and_price.py · path_of_war.py / path_of_war_funcs.py · spheres.py · wizard_school.py ·
+item_and_price.py · path_of_war.py / path_of_war_funcs.py · psionics.py (power selection, power
+points, manifester level, the `manifesters` payload block, soulknife mind blade) · spheres.py ·
+wizard_school.py ·
 domain_inquisition.py · gunslinger.py · animal_companions.py · versatile_performance.py ·
 traits.py · flaws.py / randomize_flaw.py · feat_tax.py · trainers.py / profession_chooser.py /
 profession_abilities.py · backstory.py / build_archetype.py (Ollama build→archetype classifier,
@@ -145,6 +154,15 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
   fandom's `/wiki/<Page>` URLs are behind a Cloudflare JS challenge (WebFetch → 402, curl → challenge
   page); `api.php` is not. Needs the repo venv (`.venv/Scripts/python.exe`) — `C:\Python310` has no
   `requests`. `lxml`/`html5lib` are absent, so tables are walked with bs4, not `pandas.read_html`.
+- `build_psionic_class_data.py` → merges the scraped classes into `json/class_data.json` (adding the
+  `manifesting_stat` key beside `main_stat`) and GENERATES the per-class option files
+  `json/class_data/<class>.json` for the nine subsystem classes.
+- `reconcile_psionics_names.py` → GENERATES `psionic_name_map.json`, mapping our scraped names onto
+  the `pf1-psionics` pack names the Foundry module can actually resolve. Unmapped names fail
+  `validate_psionics_data.py`. Pack contents are dumped by `dump_foundry_pack.mjs` (node).
+- `build_ogl_license.py` → GENERATES root `LICENSE-OGL.txt` (verbatim OGL 1.0a copied from an
+  on-disk source + a §15 curated for THIS project) and the psionics `NOTICE.md`. Never hand-edit
+  either file; edit the script. It refuses to write a licence whose operative text is truncated.
 - `validate_*.py` → CI-style checks (class_feature_effects, flaw_effects, quality_effects,
   psionics_data). `validate_psionics_data.py` cross-checks every manifesting class's power-points
   column against the three progressions `pf1-psionics` hardcodes, so a scrape regression fails loudly.

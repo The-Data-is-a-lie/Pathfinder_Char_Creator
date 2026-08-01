@@ -19,6 +19,58 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Psionics generates.** All twelve Dreamscarred Press psionic classes — aegis, cryptic, dread,
+  highlord, marksman, psion, psychic warrior, soulknife, tactician, vitalist, voyager, wilder — are
+  now ordinary entries in `Backend/json/class_data.json` and roll in the default random pool with no
+  request flag, so roughly a fifth of random NPCs are manifesters. Each generated manifester carries
+  a manifester level, power points, a legal power selection and its class subsystem picks.
+  - **The payload gained a `manifesters` list** (one entry per psionic class, beside `spellbooks`)
+    and a sibling `powers_desc_dict`, mirroring how the Path of War block and `maneuvers_desc_dict`
+    already sit together. Consumers that ignore the new keys are unaffected.
+  - **"Manifester" is modelled as three shapes, not one**, because the classes genuinely differ: the
+    ten full manifesters get power points *and* powers; the **aegis** gets power points and no
+    powers (it spends them on astral-suit customizations); the **soulknife** manifests nothing at
+    all. All three still emit an entry — a class silently missing from the payload is
+    indistinguishable from a bug.
+  - **Nine class subsystems ride the existing chooser** rather than new code — aegis customizations,
+    cryptic insights, vitalist methods, psychic warrior paths, marksman styles, tactician strategies,
+    dread terrors, highlord decrees, soulknife blade skills. The **soulknife's mind blade** is the
+    one exception: it is a weapon, not a list, so it is synthesized with the enhancement bonus from
+    the class table.
+  - **Power selection has no prerequisite machinery**, unlike Path of War maneuvers, because psionic
+    powers have no prerequisites. The psion's discipline is picked first and decides its whole power
+    list; every other class takes a soft bias toward 2–3 disciplines so a build reads as a concept
+    rather than a grab bag.
+  - Power points are a table *plus* a formula — the class table at manifester level plus
+    `floor(key ability modifier × manifester level / 2)`, with a hard gate that a key ability of 9
+    or lower cannot manifest at all. *Rejected:* tabulating the bonus-power-point table, which is
+    only that expression written out.
+  - **The manifesting ability lives in `class_data.json`** as a `manifesting_stat` key beside
+    `main_stat`. *Rejected:* a separate map in `data.py` (the shape ticket 04 originally settled on)
+    — the class entry already exists and already carries the class's other key ability, so one row
+    owning both beats two places that can drift. It stays distinct from `main_stat` because the
+    questions differ: a psychic warrior manifests off Wisdom but plays off Strength.
+- **The Open Game License artifacts that psionics obliges.** Serving extracted game mechanics over
+  HTTP is Distribution under section 10, so the licence now ships with them: a root
+  `LICENSE-OGL.txt`, an Open Game Content notice marking the psionics data subtree (and marking the
+  Python as *not* Open Game Content), a `GET /license` endpoint serving the licence as plain text,
+  and a `license_url` pointer on every generated payload — absolute when served over HTTP, since the
+  Foundry module may surface it long after the request. *Rejected:* embedding the licence in each
+  payload, which would add ~10 KB of legal text to every character and dwarf several blocks that are
+  actually about the character.
+  - Section 15 is **curated from our own sources** by `Backend/scripts/build_ogl_license.py` rather
+    than inherited: upstream's omits *Ultimate Psionics* and *Psionics Expanded* while carrying Path
+    of War lines copy-pasted from an unrelated module. The build **warns** about copyright lines it
+    has not verified against the published work instead of dropping them — omitting a source is the
+    worse failure.
+- **`test_house_invariants.py` now checks psionics** on every generated character, so all twelve
+  classes are swept at levels 1/5/10/15/20 alongside the rest. It asserts that the `manifesters`
+  block names exactly the character's psionic classes, that power points equal the published table
+  plus the ability formula, that powers-known and max power level match the table, that the two
+  views of the same powers (`powers_chosen` and `powers_known_list`) agree, that no power is emitted
+  without rules text, and that every payload carries its `license_url`. The tables are read straight
+  from the data file rather than through `psionics.py`, so the test can catch the generator
+  disagreeing with its source instead of agreeing with it by construction.
 - **The psionics design is settled and written down** as **§9 Psionics** in
   `docs/feature_spec_todo.md`, closing seven of the nine open tickets on
   `docs/wayfinder/psionics/`. Nothing generates yet — this is the contract implementation is built
@@ -67,10 +119,11 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   and checked against the class's own prose so a future edit that disagrees warns rather than drifts.
   Wiki category links no longer leak into descriptions, and multi-variant power pages no longer carry
   stray bold markup in their variant names.
-  - Open Game Content obligations are settled too: an OGL notice with a §15 curated from our own
-    sources rather than copied from upstream's (which is incomplete), per-subtree marking of which
-    files are Open Game Content, and a `/license` endpoint so API responses can point at the licence
-    instead of embedding it.
+  - Open Game Content obligations are **decided** too — nothing is built yet: an OGL notice with a
+    §15 curated from our own sources rather than copied from upstream's (which is incomplete),
+    per-subtree marking of which files are Open Game Content, and a `/license` endpoint so API
+    responses can point at the licence instead of embedding it. (The artifacts themselves land
+    further up this Unreleased section.)
 - **A psionics master data resource, scraped from the Library of Metzofitz wiki.** Two new scripts —
   `Backend/scripts/scrape_psionics.py` and `Backend/scripts/validate_psionics_data.py` — produce and
   gate five files under `Backend/json/class_data/psionics/`: the twelve in-scope classes with real
@@ -89,6 +142,42 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     (`Detect Compulsion`, `Manifest Veil`, `Mind Trap`), `Restore Essence` is missing most of its
     header fields, the Noral race page has no speed line, and 29 pages hold multi-variant power
     chains whose extra variants are noted but not yet modelled.
+- **The twelve psionic classes are selectable in the Foundry generator dialog**, instead of only
+  being reachable by rolling Random. `Psychic Warrior` sends the slug `psychic-warrior` and the
+  backend turns the hyphen back into its space-separated key, the same path the Unchained variants
+  already take, so no new normalisation was needed.
+  - **Psionic characters now land complete on the Foundry sheet.** Previously a generated
+    manifester arrived with no class item at all (`Class item Aegis not found in actor's items.`):
+    the module does not build class items, it copies them out of `every_class.json`, a snapshot of
+    the `everyClassPerson` actor that no psionic class had ever been dragged onto. All twelve
+    classes and their 145 class features are now in both the standard and `_MODS` bundles.
+- **`Backend/scripts/build_every_class.mjs` harvests 3pp classes from their compendium packs**,
+  replacing a by-hand GUI ritual with a repeatable command. It reads the `pf1-psionics` LevelDB
+  packs directly, resolves each class's `classAssociations` to its feature items, and splices
+  class-then-features blocks into both `every_class.json` and `every_class_MODS.json`. Re-running is
+  byte-identical, so a rebuild produces an empty diff rather than churning 900 ids.
+  - **Foundry may stay open.** LevelDB is single-writer and a running Foundry holds the lock, so
+    each pack is copied to a temp dir and the copy is read. *Rejected:* requiring the user to close
+    Foundry, which is what made the old export macro a chore.
+  - It deliberately does **not** replace `tools/export_every_class.macro.js`. Regenerating all 49
+    already-working classes to fix 12 missing ones risks regressing the 49.
+  - The twelve names were also added to `class_list` in `modify-abilities.js`. This is load-bearing,
+    not cosmetic: a class present in the bundle but absent from that list does not act as a
+    collection boundary, so the *preceding* class silently absorbs its items.
+  - **Stalker and Zealot remain unavailable, and are a different problem than they appear.** They
+    are not missing from the harvest — they are absent from upstream `pf1-pow` entirely, which ships
+    only Mystic, Warder, Medic, Warlord and Harbinger. They stay in `pow_classes_pending_foundry`
+    and out of the dropdown. The build script lists them anyway, so the day upstream ships them,
+    re-running it is the whole fix.
+- **`Backend/scripts/validate_name_data.py`** guards the two hand-authored name files, which had no
+  validator and no generator standing between a bad edit and every NPC being called `Stefan rling`.
+  Checks structure, region parity between the two files, and that every name is a non-empty,
+  uppercase-initial, untrimmed-whitespace string. Duplicates are reported but **not** fatal:
+  Sojoria's surname list deliberately concatenates male-patronymic, female-patronymic and root-stem
+  sections, so repeats are intentional and erroring on them would mean 85 false failures.
+  - The docstring states plainly what it **cannot** catch: a stripped diacritic is only detectable
+    when it ate a leading capital (`rling`), never mid-word (`Lindstrm`). A guard trusted further
+    than it earns is worse than one with a documented ceiling.
 
 ### Changed
 - **Psionic mechanics will be sourced from the Library of Metzofitz wiki, not from the
@@ -212,6 +301,30 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   assertion handles.
 
 ### Fixed
+- **Characters from Sojoria, Tal-falko and Feyador have their names back.** Every non-ASCII Latin
+  character had been deleted from the two hand-authored name files — mid-word, not just at the
+  start — so the generator produced `Stefan rling` for `Stefan Örling`, plus `Lindstrm`, `Trnqvist`,
+  `Åkesson` → `kesson`, `Hélène` → `Hlne`, `Zoé` → `Zo`, `Longpré` → `Longpr`. 104 names across
+  both files are restored.
+  - The damage was **wider than the first report of it**: `first_names_regions.json` was affected
+    too, not only surnames, and the mid-word cases are invisible to any lowercase-initial heuristic.
+    They were found by reading all three regions' lists in full.
+  - Names left deliberately unrepaired: `Clement`, `Gagne`, `Lefevre`, `Leger`, `Levesque`,
+    `Riviere`, `Chretien`, `Desire`. These are plausible accent-free spellings in their own right,
+    so restoring an accent would be inventing authorial intent rather than repairing damage.
+  - No pipeline change was needed — the loader already reads UTF-8 explicitly. This was a one-off
+    authoring accident, not something the stack does to the data.
+- **Class options described by a plain string no longer crash feat selection.** `bonus_searcher`
+  assumed every chosen class option was a dict of sub-keys (`bonus feats`, `bonus spells`, …) and
+  called `.get` on it. Every psionics subsystem — and every multiple-pick bucket — is a plain
+  description string instead, which raised `AttributeError` mid-generation. A string simply has no
+  bonuses to search.
+- **Game data no longer fails to load on Windows.** The shared JSON loader opened files with the
+  platform default encoding, which is cp1252 on Windows, so any file carrying a curly apostrophe or
+  an en dash raised `UnicodeDecodeError` — and the psionics classes brought both into
+  `class_data.json`, taking every class in the game down with them. The Linux deploy was unaffected,
+  which is what made it easy to miss. Files are now read as UTF-8, as JSON specifies.
+
 - **HP Con-modifier math.** `total_hp_calc` floored before halving (`floor(con-10)/2`), inflating
   every odd-Con character by level/2 HP, and it read the *base* Con score — inherent bonuses and
   level-up bumps that landed on Con never reached HP. It now uses the final-score ability modifier.

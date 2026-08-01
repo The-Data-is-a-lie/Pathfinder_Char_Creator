@@ -57,5 +57,15 @@ Also settled here: the **manifesting ability gets its own map in `data.py`**, no
 `data.caster_mod`. Power points are not spells-per-day, and overloading the caster tables would make
 manifesters look like casters to every downstream consumer of `data.base_classes`.
 
+> **Amended during the build — the ability lives in `class_data.json`, not `data.py`.** The
+> reasoning above still holds against `data.caster_mod`, but it was only ever a choice *between those
+> two*; `class_data.json` was never weighed. It is the better owner. Every class already has an entry
+> there and it already carries `main_stat`, so a sibling **`manifesting_stat`** key makes one row own
+> both abilities, where a `data.py` map would be a second place that can drift out of step with the
+> first. It stays a distinct key rather than reusing `main_stat` because the two questions differ: a
+> psychic warrior manifests off Wisdom but plays off Strength, and a soulknife manifests off nothing.
+> Read by `utils/class_func/psionics.py::manifesting_stat`; recorded in
+> `docs/feature_spec_todo.md` section 9.
+
 Rejected: *Spheres-style opt-in flag, default off* (three-repo plumbing, hides the content);
 *flag defaulting on* (same plumbing cost, buys only an off switch).

@@ -142,15 +142,23 @@ wayfinder maps — decisions before code — and each ends at a spec section in
 - [ ] Work `docs/wayfinder/companions/` to done → `feature_spec_todo.md` §8. Frontier starts at the
       rendering-model prototype (there is no second-Actor precedent in the module) and the v1
       type-scope call. Note `summoner`/`summoner (unchained)` are rollable **today** with no eidolon.
-- [ ] Work `docs/wayfinder/psionics/` to done → `feature_spec_todo.md` §9. Locked: adopt
+- [x] Work `docs/wayfinder/psionics/` to done → `feature_spec_todo.md` §9. **Effort closed
+      2026-07-31**: all eleven tickets resolved, map marked CLOSED. Locked: adopt
       [`pf1-psionics`](https://github.com/SoxMax/pf1-psionics) rather than build a module, but source
       the **mechanics from the Library of Metzofitz wiki** — the module's class fields are
       placeholders and it has no powers-known table (ticket 02). The module is the render target
       only, so emitted names must reconcile against its packs. Scope: 12 classes.
-      Data landed 2026-07-31 (`Backend/json/class_data/psionics/`, ticket 01); the frontier is now
-      tickets 03/04/05/09/10/11.
-- [ ] Implement both specs, then extend `test_house_invariants.py` to cover the new classes (a class
-      missing a `data.good_saves` entry or carrying a bad bab/hit-die/skill-points value fails it).
+- [x] **Psionics backend is built and green (2026-07-31, branch `feat/psionics-v1`).** All twelve
+      classes generate with manifester level, power points, powers and subsystem picks; the payload
+      carries `manifesters` + `powers_desc_dict`; OGL artifacts ship (`LICENSE-OGL.txt`, the psionics
+      `NOTICE.md`, `GET /license`, `license_url` on every payload).
+      `test_house_invariants.py` extended with psionics invariants — **275 generations / 4561 checks
+      pass across all 55 classes**, and `validate_psionics_data.py` is at 0 errors.
+      **Still open, deliberately:** Foundry-side import (gate 3) spans the module repo and is a later
+      branch; voyager bonus feats, psionic races and the other deferred items are listed in §9.
+- [ ] Implement the **companions** spec, then extend `test_house_invariants.py` to cover its new
+      classes (a class missing a `data.good_saves` entry or carrying a bad bab/hit-die/skill-points
+      value fails it). Psionics has already done its half of this.
 
 ## Phase 5 — docs + release train (seals 1.0)
 

@@ -3,6 +3,26 @@
 Wayfinder map. Tickets are the files in `issues/`; the **frontier** is every ticket that is
 `Status: open`, unclaimed, and whose `Blocked by:` list is entirely `resolved`.
 
+> ## CLOSED — 2026-07-31
+>
+> **All eleven tickets are `resolved` and the frontier is empty.** Gates 1 and 2 below are met:
+> `validate_psionics_data.py` and `test_house_invariants.py` pass with all twelve classes present
+> (275 generations, 4561 checks), and each of the twelve rolls a populated `manifesters` entry with
+> legal powers. **Gate 3 (Foundry import) is deliberately not closed here** — it spans the
+> `pf1e_random_char_generator` module repo and is a later branch.
+>
+> This map is now history, not a work queue. Live psionics work continues in **§9 of
+> `docs/feature_spec_todo.md`** (which owns the spec, the amendments, and the deferred list) and in
+> **`docs/plan_1.0_finish.md`** (which owns the roadmap). Two decisions taken during the build
+> *amend* what the tickets below settled, and the tickets carry the amendments inline:
+>
+> - The **manifesting ability** lives in `class_data.json` as `manifesting_stat`, not in a `data.py`
+>   map — [ticket 04](issues/04-class-pool-entry-trigger.md).
+> - The **voyager has no option list**; "path skills" was a psychic warrior feature, so there are
+>   nine subsystems, not ten — [ticket 08](issues/08-bespoke-subsystems.md).
+>
+> Two entries in the defect list further down were also **withdrawn as not-defects** on measurement.
+
 ## Destination
 
 **Widened 2026-07-31 (user decision).** Originally "spec only, no generator wiring". The spec landed
@@ -223,8 +243,12 @@ Web-sheet rendering is explicitly **not** a gate.
   from an ad-hoc probe that did neither.
 - **Structural trap:** `psionic_power_lists.json`'s 13th entry, `Psion Discipline Powers`, is keyed by
   **`disciplines`**, not `levels`. Any consumer that assumes `levels` raises `KeyError`.
-- `derived['hit die']` carries a trailing period (`"d6."`) and `derived['skill points at each level']`
-  is a **string**, not an int. Both need normalising before the `class_data.json` merge.
+- **Not a defect, withdrawn:** an earlier entry here called for normalising `derived['hit die']`
+  (`"d6."`, trailing period) and `derived['skill points at each level']` (a `str`, not an `int`)
+  before the `class_data.json` merge. Those are exactly the shapes `class_data.json` already uses —
+  all 51 pre-psionics entries spell the hit die with the period (28× `'d8.'`, 15× `'d10.'`, 5×
+  `'d6.'`, 3× `'d12.'`) and hold skill points as a string. Normalising would have **broken** the
+  merge; `scrape_psionics.py` says so in a comment at `entry["derived"]`.
 - **`manifesting_ability` is not a field yet** — it exists only inside each class's power-points prose
   and must be lifted into `derived` (values sourced by [ticket 05](issues/05-powers-known-pp-tables.md)).
 - Checked and **dismissed**: the `` glyph seen in `class skills` prose is a Git-Bash console
