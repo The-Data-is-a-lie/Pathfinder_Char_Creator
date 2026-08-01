@@ -82,7 +82,13 @@ def remove_dots_dashes(character, result_dict, query_result, info_column, info_c
 
 def bonus_searcher(character, choice, chosen_desc, types):
     bonus_list = []
-    bonus = chosen_desc.get(choice,{}).get(f"bonus {types}", {})
+    # A chosen option is usually a dict of sub-keys ('bonus feats', 'bonus spells', ...), but it can
+    # equally be a plain description string -- every psionics subsystem is shaped that way, and so
+    # is every multiple-pick bucket. A string simply has no bonuses to search.
+    entry = chosen_desc.get(choice, {})
+    if not isinstance(entry, dict):
+        return bonus_list
+    bonus = entry.get(f"bonus {types}", {})
     character.json_list_grabber( bonus_list, ",", bonus)
     remove_parentheses(character, bonus_list)
 

@@ -252,6 +252,202 @@ class lists / lowest level first. Validator: `Backend/scripts/validate_spell_con
 
 ---
 
+## 8. Bonded creatures (animal companions, mounts, familiars, eidolons)
+**Status: SPEC LOCKED (2026-08-01) — not yet implemented.** Charted in
+`docs/wayfinder/companions/`; this section is that map's destination. §1 (Path of War) and §9
+(Psionics) are the governing precedents: the backend owns the numbers, a Foundry-side renderer owns
+the presentation, and every holdback is named here rather than left implicit.
+
+**Current state:** `Backend/utils/class_func/animal_companions.py` is the only companion code. It is
+**druid-only** (gated on `class_entry_for(character, 'druid')` plus `character.domain_chance <= 90`,
+the coin flip in `domain_inquisition.py`), it does **no stat-block math** — no HP, saves, attack
+bonus, AC, skill ranks or size adjustment — and it never merges a species' advancement block, so an
+advanced companion is emitted with its 1st-level body. `animal_feats()` has a degenerate selection
+loop that ignores the chassis row's own `feats` count. The payload key `animal_companion`
+(`Backend/main_test.py:1747`) is read by **nothing** — not the Foundry module, not the web sheet.
+Familiars, mounts and eidolons have zero support; `summoner` and `summoner (unchained)` are rollable
+today and generate no eidolon at all, so a summoner NPC is missing its entire class identity.
+
+### The eight locked decisions
+
+- **D1 — one payload, N Actors** *(ticket 01)*. The backend still emits **one** character. The
+  Foundry module loops and creates one extra Actor of type `npc` per bonded creature, in the existing
+  "Random Characters" folder (`createCharacter.js:2` creates the PC today; folder assignment at
+  `:32-47` and `:157`). **Not** a second `generate_random_char()` run. pf1 has no companion actor
+  type — `systems/pf1/template.json` registers only `character, npc, vehicle, haunt, trap`.
+  *Rejected:* items-on-the-owner's-actor, and sheet-text-only.
+- **D2 — the backend owns the numbers; the module clones the body** *(tickets 01, 06)*. The backend
+  computes HP, saves, BAB, AC, ability scores, size and skills so the **standalone web sheet works
+  with no game system to lean on**, exactly as §9 emits finished manifester numbers even though
+  `pf1-psionics` could derive them. The module clones the `pf-content` Actor matching the species for
+  identity, art, natural attacks, senses and special qualities, then patches the payload's numbers
+  over it. *Rejected:* letting pf1 derive everything from chassis + items.
+- **D3 — graceful degrade + validator gate** *(ticket 01)*. A compendium miss yields a bare `npc`
+  Actor built from the payload numbers plus a `console.warn`; a CI validator diffs species names
+  against a checked-in dump of `pf-content` actor names. This is the §9 name-reconciliation lesson
+  applied early — the module attaches by name match and **silently drops** what it cannot match.
+  *Rejected:* a curated name map, which would have shrunk the species pool to whatever matched.
+- **D4 — v1 is companion + mount + familiar at full stat block; the eidolon is degraded, not
+  suppressed** *(tickets 02, 07)*. Summoner emits a named base form plus descriptive text and rides
+  the D3 bare-`npc` fallback, so a summoner reads as a summoner; evolutions are v1.1. *Rejected:*
+  holding summoner out of the class pool via the `data.pow_classes_pending_foundry` pattern — a
+  playable-but-incomplete summoner beats an absent one. The **psicrystal** stays with the psionics
+  map (§9 Deferred).
+- **D5 — this effort owns the `animal_choices.json` repair** *(ticket 03)*, scripted and narrow,
+  with validators. The data cannot be merged as written (see *The data defect* below).
+- **D6 — a declarative grantor table and a PF1e stacking cap** *(tickets 03, 05)*. One shared
+  resolver replaces the hard-coded druid check. Sources **stack**, capped at character level. Below a
+  grantor's own threshold there is **no creature at all** — no clamp to level 1.
+- **D7 — `bonded_creatures` (a list) replaces the single `animal_companion` dict** *(ticket 01)*.
+  The old key survives as a **deprecated alias** to the first companion-type entry. A druid 5 /
+  wizard 5 legitimately gets a companion **and** a familiar — three Actors on import.
+- **D8 — v1 also owns four adjacent fixes** *(ticket 05)*: the `animal_feats` bug, archetype
+  companion swaps, the wizard/sorcerer arcane-bond coin flip, and **adding the Boon Companion feat**,
+  which is absent from the feat data entirely (it appears only inside Spheres talent prose).
+
+### Grantors and effective level (D6)
+
+The grantor set is a **data file**, `Backend/json/companion_grantors.json`, not a code table; the
+resolver reuses `generic_func.py::class_entry_for`, whose docstring already states the
+scaled-by-that-class's-own-level rule that every grantor needs. Columns:
+
+`grantor` (class name or talent) · `creature type` (`companion` / `mount` / `familiar` / `eidolon`) ·
+`level gained` · `effective level expression` · `conditional` (what else must be true) ·
+`species pool` (which `animal_choices.json` buckets, or a familiar/eidolon list).
+
+Rules the resolver enforces:
+
+- **Effective level is the grantor's own class level**, transformed by that row's expression — never
+  the character level and never the total of all classes.
+- **Multiple sources stack**, and the stacked total is **capped at character level** (PF1e's general
+  rule; it is what keeps a druid 5 / ranger 8 from out-levelling itself).
+- **Below `level gained`, nothing is emitted.** A paladin 3 has no mount; it does not get a level-1
+  one.
+- A grantor whose class feature is a **choice** only fires when the choice came up — the wizard and
+  Arcane-bloodline sorcerer arcane bond (familiar *vs* bonded object), the ranger's Hunter's Bond
+  (companion *vs* bond with companions), and the druid's existing domain-vs-companion flip. These are
+  coin flips at generation time, recorded on the entry so the sheet can explain the absence.
+- **Archetypes** that trade a companion away or swap its species list are honoured
+  (`Backend/json/archetypes.json` is already loaded); **Boon Companion** raises effective level once
+  the feat exists.
+
+**The fifth grantor is not a class.** The Spheres of Might *Beastmastery* talent
+(`Backend/json/class_data/spheres/spheres_of_might.json`, the `animal companion` talent) grants a
+full druid companion at `max(BAB, Handle Animal ranks, Ride ranks) − 3`, minimum 1 **by the talent's
+own text** — that per-source floor is RAW and is not the clamp D6 rejects, which is about grantors
+whose threshold was never met. It stacks and is capped like every other source.
+
+**Amended 2026-08-01 — three grantor rows from the grill do not survive RAW.** The chart's list read
+"14 of 38 rollable base classes"; the verified figure is **13 touched, 10 at full stat block**.
+
+- **`shifter` is not a grantor.** Its progression (shifter aspect, shifter claws, wild empathy,
+  defensive instinct, wild shape, shifter's fury, chimeric aspect…) contains no animal companion.
+  Verified on Archive of Nethys.
+- **`antipaladin` is a different subsystem.** Fiendish Boon's servant is a permanent
+  `summon monster III`, scaling one spell level every two class levels to IX at 17th, with the
+  advanced template at 11th — **not** a druid's animal companion, so it does not ride the chassis.
+  Moved to *Deferred*.
+- **`sorcerer` is conditional on bloodline.** Arcane Bond arrives from the **Arcane** bloodline
+  ("as a wizard equal to your sorcerer level"); the Ancient variant grants a bonded **object** only.
+  The resolver must read the rolled bloodline, not the class name.
+
+**Settled, closing the carry-in from ticket 04:** the paladin's bonded mount uses **the paladin's
+level** as effective druid level — *not* level − 3 — and arrives at **5th**. Cavalier and samurai
+both use their own class level at **1st**.
+
+### The snapshot (ticket 03)
+
+A companion is a **static snapshot at the master's level**, never a levelling tracker — the same
+posture the generator takes everywhere else. What the snapshot resolves:
+
+- **Which level drives the lookup:** the resolved effective level from D6, not the raw druid level
+  the code uses today.
+- **The advancement merge**, which nothing does today. Each species carries exactly one
+  `"<N>th-level advancement"` block (180 of 182 species; triggers at level 4, 7 or 9). Merge when
+  effective level ≥ the trigger, then **per field**: `size`, `attack` and `speed` **replace**; `ac`
+  (always `"+N natural armor"`) and ability scores **add**; `special qualities`, `special attacks`
+  and one-off keys (`sudden charge (ex)`, `bonus feat`, `climb`, `fly`, …) **append**.
+- **House rules apply to the companion the way they apply to the PC** — maximised HP and the
+  skill-rank floor are class-name-agnostic in `hp_rolls.py` / `skill_ranks.py` and should stay that
+  way. The **feat economy does not**: a companion's feat count is the chassis row's `feats` value,
+  not the PC formula.
+- **Degenerate cases:** effective level 0 or below the threshold → no entry at all (D6); a master who
+  multiclassed out keeps the companion at the granting class's level, since that is what the
+  expression reads.
+
+**The data defect this pass must repair (D5).** `animal_choices.json` cannot be merged as written:
+
+- **Sign loss.** Of 120 bare-int `dex` values in advancement blocks, **109 sit on a size increase**,
+  where PF1e mandates the fixed Str +8 / Dex −2 / Con +4 / natural armor +2 package. Sixteen rows in
+  the identical situation record `-2` correctly, which is what proves the rest lost their minus sign
+  (`+8` and `+4` survived as strings; `-2` did not survive as an int). Merging as written inflates
+  every advanced companion by **+4 Dex → +2 AC, +2 Ref, +2 initiative**.
+- **Key drift.** `ability_scores` (×14) and `special_attacks` (×8) shadow the spaced spellings, so a
+  lookup on `"ability scores"` silently misses those species.
+- **Field bleed.** Three ability-score slots hold `'medium'`, `'40 ft. '`, `'bite (1d6)'`.
+
+### Rendering (D1–D3)
+
+`pf-content` ships Actor compendia — `pf-companions` (2.8 MB), `pf-familiars` (2.4 MB, core familiars
+plus ~90 named improved familiars) and `pf-eidolon-forms` (348 KB, all 7 base forms in both sizes).
+Ticket 04 ruled "compendium-first lost" while answering **data sourcing**, and that stands; this is
+the separate question of a **rendering** source, and there the packs win — cloning a finished Actor
+is what makes familiars cheap enough for v1, leaving only a ~20-row master-bonus table to author.
+`pf1-statblock-converter` is installed but its parser is minified and UI-driven
+(`SBC.parseInput({characterData, input.text})`) — fallback only, not the plan.
+
+The payload lands whole in `localStorage` via `deliver-data.js` with **no key filtering**, so a new
+top-level key needs no plumbing on the module side.
+
+### Export (`/update_character_data`)
+
+`bonded_creatures`, a list beside the existing class blocks, one entry per creature:
+
+`type` · `grantor` · `effective_level` (post-stack, post-cap) · `species` · `kind`
+(`normal`/`plant`/`vermin`, companions only) · `species_stats` (advancement-**merged**, not raw) ·
+`chassis` (the level row from `animal_companion.json`) · `feats` · `stats` (the computed block: hp,
+ac, saves, bab, cmb/cmd, abilities, size, speed, attacks, skills) · `master_abilities` (familiars
+only) · `description` (the eidolon's base form and text) · `pf_content` (the compendium Actor name to
+clone, or `null` → D3 fallback).
+
+`animal_companion` **remains** as a deprecated alias carrying the old dict shape for the first
+`type == "companion"` entry, so the sheet repo's issue #15 consumer does not break.
+
+**"Done" per type:** full stat block for **companion, mount and familiar**; **named base form plus
+descriptive text** for the eidolon.
+
+### Build slices (dependency order — next session, not the spec session)
+
+1. `Backend/scripts/repair_animal_choices.py` — negate bare-int `dex` on size-up rows, normalise the
+   `ability_scores` / `special_attacks` key variants, hand-fix the three bled values.
+2. `Backend/scripts/validate_companion_data.py` — assert every size-up row matches the PF1e package
+   and that no bare-int ability value survives.
+3. `Backend/scripts/dump_pf_content_actors.mjs` → `Backend/json/pf_content_companions.json`, plus
+   `Backend/scripts/validate_companion_names.py` gating species names against it (D3).
+4. `Backend/json/companion_grantors.json` + the resolver in `animal_companions.py`.
+5. Advancement merge + stat-block math; fix `animal_feats` to read the chassis row's `feats` count.
+6. Payload: emit `bonded_creatures`, keep `animal_companion` as the alias.
+7. Foundry module: loop `Actor.create` in `createCharacter.js`, clone from `pf-content`, patch the
+   numbers, degrade on a miss.
+8. Web sheet: consume `bonded_creatures`.
+9. Extend `Backend/scripts/test_house_invariants.py` with companion invariants.
+
+**Deferred (not built in v1):** **eidolon evolutions** — 7 base forms × 2 sizes and ~76 evolutions
+(≈28 @1 EP, 27 @2, 11 @3, 10 @4) scraped from d20pfsrd's prose headings, with
+`pf-eidolon-evolutions` (~36 entries) as a completeness cross-check only; the summoner's
+evolution-points-per-level table is still unverified. Ticket 07 owns the point-budget-vs-count
+question — whether an evolution pool fits `generic_class_option_chooser` or wants the Spheres
+funding pattern · the **antipaladin's fiendish servant** (a `summon monster` subsystem, see the
+amendment above) · **improved-familiar prerequisites** (alignment / caster-level gates, on a separate
+PRD page, unverified) · the five mount species missing from `animal_choices.json` (giant seahorse,
+giant tortoise, axebeak, reindeer, giant weasel — absent from `pf-companions` too, so they want a
+small scrape) · **region-flavoured companion pools**, the standing TODO in `animal_companions.py` ·
+companion **token art / portraits** · whether companions should carry buffs/conditionals the way
+weapons do (§1/§4 pattern), only answerable once the rendering model has run · live levelling or
+sync of a companion as the PC advances · the **psicrystal** (§9).
+
+---
+
 ## 9. Psionics (Dreamscarred Press / Library of Metzofitz)
 **Status: SPEC LOCKED (2026-07-31) — implementation in progress on `feat/psionics-v1`.**
 Twelve base classes: `aegis, cryptic, dread, highlord, marksman, psion, psychic warrior, soulknife,
@@ -316,19 +512,34 @@ default. Holdbacks go in `data.psionic_classes_pending` (mirrors `pow_classes_pe
 by `Backend/utils/util.py::_available_class_pool`). Psionics is *additive* like PoW, not a casting
 replacement like Spheres, and a flag would mean threading a new key through `app.py`'s positional
 unpack plus `generate.js::buildPayload` plus the module's `button.js`. Accepted consequence: psionic
-classes are ~12 of 55 pool entries. Manifesting ability gets its **own** map in `data.py` — not
-`caster_mod`, because power points are not spells-per-day.
+classes are ~12 of 55 pool entries.
+
+**Amended during the build (was: "manifesting ability gets its own map in `data.py`").** It is a
+`manifesting_stat` key in each class's **`class_data.json`** entry, beside `main_stat`. Ticket 04
+settled this question against `data.caster_mod` — power points are not spells-per-day — but it never
+weighed `class_data.json`, and that is the better owner: the entry already exists and already carries
+the class's other key ability, so one row owns both facts where a separate map would be a second
+place to drift. It has to be its own key rather than a reuse of `main_stat` because the two questions
+differ — a psychic warrior manifests off Wisdom but plays off Strength, and a soulknife manifests off
+nothing at all. Read by `utils/class_func/psionics.py::manifesting_stat`.
 
 **Twelve is the target (tickets 04/08).** A class may be held out of the pool, but **every holdback
 is recorded here with the subsystem it waits on**. No class ships hollow. Nine of the twelve carry a
 choice-bearing subsystem — aegis customizations, cryptic insights, vitalist methods, psychic warrior
-paths, marksman styles, tactician strategies, dread terrors, voyager path skills, highlord decrees,
+paths, marksman styles, tactician strategies, dread terrors, highlord decrees,
 soulknife blade skills — and **all nine ride the existing
 `generic_func.py::generic_class_option_chooser`**, the same one that drives bloodlines, orders,
 mysteries and weapon training. No new chooser module. The one genuine exception is the **soulknife's
 mind blade**, which is a weapon rather than a list: it becomes a synthesized weapon whose enhancement
 bonus comes from the class table, reusing `enhancement_effects_dict` and special-cased against
 `armor_and_weapon_chooser.py`.
+
+*Amended during the build:* this list and ticket 08's table both counted the **voyager** among the
+choice-bearing classes, on a row reading "voyager | path skills". That was wrong — "Path Skill" is a
+*psychic warrior* feature, and the voyager has no option list at all. Its choice-bearing feature is
+**Voyager Knowledge**, which grants bonus feats from a fixed list; that is feat machinery, not
+`generic_class_option_chooser`, and it is **not built** (see Deferred). The count of nine was right
+by accident — the list under it named ten. `psionic_class_options.json` ships the nine that survive.
 
 **Power selection (ticket 07).** Modelled on `path_of_war.py` **minus the prerequisite machinery** —
 psionic powers have no prerequisites, so `_constrained_pick`'s prereq graph has no analogue here.
@@ -365,7 +576,10 @@ mechanics is Distribution under §10, `Backend/app.py` serves a stable `/license
 payload carries a pointer field rather than embedding the licence. `pf1-psionics` is credited as the
 intermediate compiled source, alongside Paizo CUP and a DSP non-endorsement line.
 
-**Deferred (not built):** web-sheet rendering of manifesters · **psionic races** — the ten scraped
+**Deferred (not built):** web-sheet rendering of manifesters · **Voyager Knowledge** bonus feats,
+the voyager's only choice-bearing feature (see the amendment above; it is feat machinery, not a
+`generic_class_option_chooser` list, so the voyager currently generates with no picks of its own) ·
+**psionic races** — the ten scraped
 *Psionics Unleashed* races stay data-only; ticket 11 is re-scoped as the **custom-race route** ticket
 covering Loxo/Kalyptran/Dolistani too, because `PlayableRaces.json` is walked *positionally* by
 `race_func.py::race_traits_chooser` and psionic Duergar collides with core Duergar · the six v2

@@ -29,6 +29,14 @@ import json
 # (the recurring "I restarted but it's still wrong" was a stale backend serving old code).
 GENERATOR_VERSION = "2026-07-15 racial-stats"
 
+# A payload carrying psionics (or Path of War, or any other extracted mechanics) is Distribution
+# under section 10 of the Open Game License, which obliges us to ship a copy of the licence with it.
+# The payload carries a POINTER rather than the licence text: embedding ~9 KB of legal boilerplate in
+# every character would dwarf several of the blocks that are actually about the character. app.py
+# rewrites this to an absolute URL for HTTP consumers, which cannot resolve a bare path against the
+# backend's host. See Backend/json/class_data/psionics/NOTICE.md and LICENSE-OGL.txt.
+LICENSE_PATH = "/license"
+
 
 # Importing custom functions
 from utils.class_func.adding_bonus_spells			import add_bonus_spells, add_bonus_spells_from_dict
@@ -69,6 +77,7 @@ from utils.class_func.language 						import language_chooser
 from utils.class_func.level_and_bab 				import randomize_level
 # from utils.class_func.luck_and_mythic 				import randomize_luck, randomize_mythic
 from utils.class_func.path_of_war 					import randomize_path_of_war_num, choose_path_of_war_attr, martial_training_depth
+from utils.class_func.psionics 						import choose_psionics_attr, mind_blade
 from utils.class_func.backstory 					import generate_backstory, structured_bio
 from utils.class_func.build_archetype 				import choose_build_archetype
 
@@ -185,6 +194,26 @@ character_json_config = {
 	'martial_disciplines': Load_when_needed('Backend/json/class_data/path_of_war/Martial_Disciplines.json'),
 	'path_of_war_maneuvers_known': Load_when_needed('Backend/json/class_data/path_of_war/path_of_war_maneuvers_known.json'),
 	'martial_training_progression': Load_when_needed('Backend/json/class_data/path_of_war/martial_training_progression.json'),
+
+	# Psionics section. The per-class option files (aegis.json, cryptic.json, ...) are GENERATED
+	# from the scrape by Backend/scripts/build_psionic_class_data.py and are registered under the
+	# class's own name, because generic_class_option_chooser reads them as getattr(character,
+	# <class name>). Nine of the twelve have one; the voyager's choice feature grants bonus feats
+	# rather than options, and the psion and wilder choose powers instead.
+	'aegis': Load_when_needed('Backend/json/class_data/aegis.json'),
+	'cryptic': Load_when_needed('Backend/json/class_data/cryptic.json'),
+	'dread': Load_when_needed('Backend/json/class_data/dread.json'),
+	'highlord': Load_when_needed('Backend/json/class_data/highlord.json'),
+	'marksman': Load_when_needed('Backend/json/class_data/marksman.json'),
+	'psychic warrior': Load_when_needed('Backend/json/class_data/psychic warrior.json'),
+	'soulknife': Load_when_needed('Backend/json/class_data/soulknife.json'),
+	'tactician': Load_when_needed('Backend/json/class_data/tactician.json'),
+	'vitalist': Load_when_needed('Backend/json/class_data/vitalist.json'),
+	'psionic_classes': Load_when_needed('Backend/json/class_data/psionics/psionic_classes.json'),
+	'psionic_powers_known': Load_when_needed('Backend/json/class_data/psionics/psionic_powers_known.json'),
+	'psionic_power_lists': Load_when_needed('Backend/json/class_data/psionics/psionic_power_lists.json'),
+	'psionic_powers': Load_when_needed('Backend/json/class_data/psionics/psionic_powers.json'),
+	'psionic_name_map': Load_when_needed('Backend/json/class_data/psionics/psionic_name_map.json'),
 }
 
 def strip_labeled_bucket(feat_list, label_list, children):
@@ -492,6 +521,23 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		generic_class_option_chooser(character,"shaman", "spirits", dict_name = 'spirits')
 		generic_class_option_chooser(character,"shaman", dataset_name="hexes", dataset_name_2 = "basic", multiple='yes', alternate_dataset = True, level = 99, dict_name = 'hexes')
 
+		# Psionics subsystems (ticket 08). Nine of the twelve classes carry a choice-bearing
+		# subsystem and every one of them is the same shape the choosers above already handle --
+		# pick 1 or N from a {name: description} list -- so no new chooser module exists. The pick
+		# schedules live in data.amount; the option lists are generated per class by
+		# Backend/scripts/build_psionic_class_data.py. The voyager is absent on purpose (its
+		# Voyager Knowledge feature grants bonus feats, not options) and so are the psion and
+		# wilder, which choose powers rather than a subsystem.
+		generic_class_option_chooser(character, "vitalist", "methods", dict_name = 'vitalist_method')
+		generic_class_option_chooser(character, "psychic warrior", "warrior paths", dict_name = 'warrior_path')
+		generic_class_option_chooser(character, "marksman", "combat styles", dict_name = 'combat_style')
+		generic_class_option_chooser(character, "aegis", dataset_name="customizations", multiple='yes', dict_name = 'customizations')
+		generic_class_option_chooser(character, "cryptic", dataset_name="insights", multiple='yes', dict_name = 'insights')
+		generic_class_option_chooser(character, "dread", dataset_name="terrors", multiple='yes', dict_name = 'terrors')
+		generic_class_option_chooser(character, "highlord", dataset_name="decrees", multiple='yes', dict_name = 'decrees')
+		generic_class_option_chooser(character, "soulknife", dataset_name="blade skills", multiple='yes', dict_name = 'blade_skills')
+		generic_class_option_chooser(character, "tactician", dataset_name="strategies", multiple='yes', dict_name = 'strategies')
+
 
 
 		# generic multi choices (with pre-reqs)
@@ -592,6 +638,17 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		weapon_type_flag = weapon_type_flag_func(character, character.weapon_dict)
 
 		weapon_enhancement_chosen_list, weapon_enhancement_bonus = enhancement_chooser(character, character.weapon_qualities,weapon_enhancement, weapon_type_flag)
+
+		# The soulknife wields a mind blade, which is a weapon SHAPE rather than a purchase: the
+		# rolled weapon keeps its damage dice, crit range and groups, but it is renamed for what it
+		# is and its enhancement bonus comes from the class table. The class table REPLACES the
+		# purse's number rather than raising it -- a mind blade is manifested, not bought, so no
+		# amount of gold buys a +5 one at 1st level. The special abilities enhancement_chooser
+		# picked still stand: that is the Enhanced Mind Blade feature spending its own grant.
+		_mind_blade = mind_blade(character, melee=(weapon_type_flag == 'Melee'))
+		if _mind_blade:
+			weapon_name = _mind_blade['name']
+			weapon_enhancement_bonus = _mind_blade['max_enhancement_bonus']
 		armor_enhancement_chosen_list, armor_enhancement_bonus = enhancement_chooser(character, character.armor_qualities,armor_enhancement, 'Armor')
 		shield_enhancement_chosen_list, shield_enhancement_bonus = enhancement_chooser(character, character.armor_qualities,shield_enhancement, 'Shield', character.shield_flag)
 
@@ -818,6 +875,12 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		mt_feat_tax             = pow_data['mt_feat_tax']
 		initiation_stat         = pow_data['initiation_stat']
 		maneuvers_desc_dict     = pow_data['maneuvers_desc_dict']
+		# Psionics rides alongside Path of War rather than inside it: the two systems are
+		# independent, and a character can be an initiator, a manifester, both or neither. The
+		# bundle is empty for a non-manifester, so this is unconditional.
+		psionics_data           = choose_psionics_attr(character)
+		manifesters             = psionics_data['manifesters']
+		powers_desc_dict        = psionics_data['powers_desc_dict']
 		style_feats             = pow_data['style_feats']
 		style_feat_tax          = pow_data['style_feat_tax']
 		homebrew_feat_desc_dict = pow_data['homebrew_feat_desc_dict']
@@ -1620,6 +1683,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"stances_chosen": stances_chosen,
 				"mt_feats": mt_feats,
 				"initiation_stat": initiation_stat,
+				# Psionics: a list beside spellbooks, one entry per psionic class. Its sibling
+				# powers_desc_dict sits with the other description dicts further down, exactly as
+				# maneuvers_desc_dict does for Path of War.
+				"manifesters": manifesters,
 				"magic_talent_items": magic_talent_items,
 				"combat_talent_items": combat_talent_items,
 				"sphere_feats": sphere_feats,
@@ -1757,6 +1824,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"spell_list_choose_from_dict": character.spell_list_choose_from,
 				"equip_descrip": equip_descrip,
 				"maneuvers_desc_dict": maneuvers_desc_dict,
+				"powers_desc_dict": powers_desc_dict,
 				"homebrew_feat_desc_dict": homebrew_feat_desc_dict,
 				"feat_changes_dict": feat_changes_dict,
 				"feat_conditionals_dict": feat_conditionals_dict,
@@ -2063,6 +2131,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 		# Freshness stamp -- lets a restart (and any exported actor) reveal which backend build ran.
 		character.data_dict['generator_version'] = GENERATOR_VERSION
+		# OGL section 10 pointer -- see LICENSE_PATH. Unconditional: the payload's Open Game Content
+		# is not confined to psionics, and a field that appears only for some characters would read
+		# as "this one needs a licence and that one doesn't".
+		character.data_dict['license_url'] = LICENSE_PATH
 		return character.data_dict
 
 # CLI smoke test only: importing this module (e.g. app.py does `from main_test import ...`) must NOT

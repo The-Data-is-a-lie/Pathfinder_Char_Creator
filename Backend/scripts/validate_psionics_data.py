@@ -210,6 +210,77 @@ def check_powers(lists, powers) -> None:
     print(f"  {len(powers)} powers, {len(orphans)} with no class/level line")
 
 
+# ---------------------------------------------------------------------------------- class options
+
+# Nine of the twelve carry a choice-bearing subsystem; the voyager deliberately has none (its
+# Voyager Knowledge feature grants bonus feats, not options), and the psion and wilder pick powers
+# rather than a subsystem. See OPTION_PAGES in scrape_psionics.py.
+EXPECTED_OPTION_SECTIONS = {
+    "aegis": "customizations", "cryptic": "insights", "dread": "terrors",
+    "highlord": "decrees", "marksman": "combat styles", "psychic warrior": "warrior paths",
+    "soulknife": "blade skills", "tactician": "strategies", "vitalist": "methods",
+}
+
+
+def check_options(options) -> None:
+    """The option lists ticket 08 needs. A silently empty list is the failure mode that matters --
+    the chooser would just never offer that class anything, with nothing raising."""
+    if options is None:
+        return
+    missing = set(EXPECTED_OPTION_SECTIONS) - set(options)
+    if missing:
+        error(f"psionic_class_options.json is missing classes: {sorted(missing)}")
+    for name, section in sorted(EXPECTED_OPTION_SECTIONS.items()):
+        entry = (options.get(name) or {}).get(section)
+        if entry is None:
+            error(f"{name}: no '{section}' option list")
+        elif not entry:
+            error(f"{name}: '{section}' option list is empty")
+        else:
+            for option, description in entry.items():
+                if not description or len(description) < 40:
+                    error(f"{name}/{section}: option {option!r} has no usable description")
+    total = sum(len(s) for e in options.values() for s in e.values())
+    print(f"  {len(options)} classes carry option lists, {total} options total")
+
+
+# -------------------------------------------------------------------------------------- name map
+
+def check_name_map() -> None:
+    """Every name the generator can emit must have a decided status in psionic_name_map.json.
+
+    The pf1-psionics module attaches by name match and silently drops what it does not recognise,
+    so an unrecognised name produces no error anywhere -- just an ability quietly missing from the
+    sheet. This is the second of the two defences in section 9: reconcile_psionics_names.py records
+    the decision, and this fails the build if a name has no decision.
+
+    "Metzofitz-only" is a perfectly good decision -- around a tenth of the powers are homebrew the
+    module has never shipped, and the payload synthesizes those through its description dicts. What
+    fails here is a name nobody has classified, which is what a fresh scrape produces.
+    """
+    path = DATA / "psionic_name_map.json"
+    if not path.exists():
+        error("psionic_name_map.json is missing -- run "
+              "Backend/scripts/reconcile_psionics_names.py")
+        return
+    name_map = json.loads(path.read_text(encoding="utf-8"))
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from reconcile_psionics_names import scraped_names          # noqa: PLC0415
+
+    matched = name_map.get("matched", {})
+    only = name_map.get("metzofitz_only", {})
+    for category, names in scraped_names().items():
+        decided = set(matched.get(category, {})) | set(only.get(category, []))
+        undecided = sorted(set(names) - decided)
+        if undecided:
+            error(f"{len(undecided)} {category} name(s) absent from psionic_name_map.json -- "
+                  f"re-run reconcile_psionics_names.py: {', '.join(undecided[:8])}")
+    total = sum(len(v) for v in matched.values())
+    print(f"  name map: {total} names matched to pf1-psionics, "
+          f"{sum(len(v) for v in only.values())} Metzofitz-only")
+
+
 # ----------------------------------------------------------------------------------------- races
 
 def check_races(races) -> None:
@@ -237,6 +308,8 @@ def main() -> int:
 
     check_classes(classes, progressions)
     check_powers(lists, powers)
+    check_options(load("psionic_class_options.json"))
+    check_name_map()
     check_races(races)
 
     for message in WARNINGS:

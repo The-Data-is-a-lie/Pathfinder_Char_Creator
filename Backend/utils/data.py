@@ -303,6 +303,30 @@ amount = {
   },
   'inquisitor': {
         'inquisitions': [1,1]
+  },
+  # Psionics. Each list is the class levels at which one pick is granted, read off the class's own
+  # feature text (Backend/json/class_data/psionics/psionic_classes.json). The three single-pick
+  # subsystems -- marksman combat style, psychic warrior path, vitalist method -- need no entry.
+  'aegis': {
+        # The aegis is the odd one out: it spends *customization points* (3 at 1st rising to 26 at
+        # 20th), not a fixed number of picks. Modelled as one pick per ~2.5 points, which is what
+        # the published 1-to-4-point costs average out to. Tune this list, not the chooser.
+        'customizations': [1,3,5,7,9,11,13,15,17,19]
+  },
+  'cryptic': {
+        'insights': [2,4,6,8,10,12,14,16,18,20]
+  },
+  'dread': {
+        'terrors': [2,4,6,8,10,12,14,16,18,20]
+  },
+  'highlord': {
+        'decrees': [1,4,7,10,13,16,19]
+  },
+  'soulknife': {
+        'blade skills': [2,4,6,8,10,12,14,16,18,20]
+  },
+  'tactician': {
+        'strategies': [4,7,10,13,16,19]
   }
 }
 
@@ -2279,6 +2303,27 @@ pow_classes_pending_foundry = ["stalker", "zealot"]
 # this list and path_of_war_class uniformly, so it activates when sphere classes land in
 # class_data.json.
 spheres_classes = []
+
+# Psionic (Dreamscarred Press / Library of Metzofitz) base classes. Unlike the Spheres list this is
+# populated, because psionics is additive like Path of War rather than a casting replacement: the
+# twelve are ordinary class_data.json entries and enter the random pool by default, with NO API
+# flag (ticket 04). Listed here so the psionics branch -- power selection, power points, the
+# `manifesters` payload block -- can recognise them; the pool itself is derived from
+# class_data.json, not from this list.
+psionic_class = ["aegis", "cryptic", "dread", "highlord", "marksman", "psion",
+                 "psychic warrior", "soulknife", "tactician", "vitalist", "voyager", "wilder"]
+# The psionics counterpart of pow_classes_pending_foundry: names here are held OUT of the random
+# pool. It starts empty on purpose. Section 9's standing rule is that no class ships hollow and
+# none goes silently missing -- so anything added here must be recorded in section 9 alongside the
+# subsystem it is waiting on. This is also the one-line lever for turning psionics back down if
+# ~12 of 55 pool entries proves too many.
+psionic_classes_pending = []
+
+# Classes that manifest but have no powers known: the aegis spends power points on its astral suit
+# customizations instead. "Manifester" is three categories, not one -- full manifesters, the aegis,
+# and the soulknife (which has neither powers nor power points) -- and the payload models all three.
+psionic_pp_only_classes = ["aegis"]
+
 # NOTE: no "mystic" here -- the Path of War mystic is a generatable class; listing it would
 # silently re-filter it out of the random class pool (chooseClass excludes occult_classes).
 occult_classes = ["occultist", "kineticist", "medium", "mesmerist", "psychic", "spiritualist", ]
@@ -2305,6 +2350,13 @@ good_saves = {
     'vigilante': ['ref', 'will'], 'warder': ['fort', 'will'], 'warlord': ['fort'],
     'warpriest': ['fort', 'will'], 'witch': ['will'], 'wizard': ['will'],
     'zealot': ['fort', 'will'],
+    # Psionics (Metzofitz wiki, via Backend/scripts/build_psionic_class_data.py). The psychic
+    # warrior's lone good Fort is NOT a typo for RAW's Fort+Will -- it is a deliberate house
+    # divergence, verified against the wiki and recorded in docs/feature_spec_todo.md section 9.
+    'aegis': ['fort', 'will'], 'cryptic': ['ref', 'will'], 'dread': ['ref', 'will'],
+    'highlord': ['fort', 'will'], 'marksman': ['ref', 'will'], 'psion': ['will'],
+    'psychic warrior': ['fort'], 'soulknife': ['ref', 'will'], 'tactician': ['will'],
+    'vitalist': ['fort', 'will'], 'voyager': ['ref', 'will'], 'wilder': ['will'],
 }
 disciplines = ["Black Seraph", "Broken Blade", "Brutal Crocodile", "Cursed Razor", "Elemental Flux", "Eternal Guardian", "Fools Errand", "Golden Lion", "Iron Tortoise", "Leaden Hyena", "Mangled Gear", "Mithral Current", "Piercing Thunder", "Primal Fury", "Radiant Dawn", "Riven Hourglass", "Roaring Mouse", "Sagitta Stellaris", "Scarlet Throne", "Shattered Mirror", "Silver Crane", "Sleeping Goddess", "Solar Wind", "Spark of Battle", "Steel Serpent", "Surging Shark", "Tempest Gale", "Thrashing Dragon", "Unquiet Grave", "Veiled Moon"]
 

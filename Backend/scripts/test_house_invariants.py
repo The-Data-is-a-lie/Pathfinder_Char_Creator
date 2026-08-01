@@ -63,6 +63,23 @@ from utils.class_func import feats as _feats
 _METZ_ONLY = ({str(n).lower() for n in _feats.metzofitz_feat_frame()['name']}
               - {str(n).lower() for n in _feats.grab_and_clean_feats('data/feats.csv')['name']})
 
+# Psionics. The twelve are ordinary class_data entries, so the sweep above already rolls every one
+# of them at every level -- these sets only say which of the three manifesting shapes each belongs
+# to (see utils/class_func/psionics.py). Sourced from data.py so a class moving between shapes is a
+# one-place edit.
+_PSIONIC = {x.lower() for x in getattr(data, 'psionic_class', [])}
+_PP_ONLY = {x.lower() for x in getattr(data, 'psionic_pp_only_classes', [])}   # aegis: PP, no powers
+# The soulknife manifests nothing at all: no stat, no power points, no powers. It still gets a
+# payload entry, because a class silently absent from `manifesters` is indistinguishable from a bug.
+_NO_MANIFESTING = {'soulknife'}
+
+# The published class tables, read straight from the data file rather than through psionics.py: the
+# point of the check below is to catch the generator disagreeing with the source of truth, which it
+# cannot do if both read through the same accessor.
+with open(BACKEND / 'json' / 'class_data' / 'psionics' / 'psionic_powers_known.json',
+          encoding='utf-8') as f:
+    PSIONIC_TABLES = json.load(f)
+
 
 def check(condition, message):
     CHECKS[0] += 1
@@ -71,9 +88,10 @@ def check(condition, message):
 
 
 def generatable_classes():
-    """Same pool as util._available_class_pool: class_data keys minus occult + pending-PoW."""
+    """Same pool as util._available_class_pool: class_data keys minus occult + pending PoW/psionic."""
     excluded = {x.lower() for x in getattr(data, 'occult_classes', [])}
     excluded |= {x.lower() for x in getattr(data, 'pow_classes_pending_foundry', [])}
+    excluded |= {x.lower() for x in getattr(data, 'psionic_classes_pending', [])}
     return [name for name in CLASS_DATA if name not in excluded]
 
 
@@ -135,6 +153,91 @@ def check_character(cell, payload):
     descs = {str(k).lower(): v for k, v in (payload.get('homebrew_feat_desc_dict') or {}).items()}
     undescribed = [f for f in metz if not descs.get(f.lower())]
     check(not undescribed, f"{cell}: Metzofitz feats with no rules text: {undescribed}")
+
+    # ---- psionics ----
+    psionic = [c for c in classes if c['name'] in _PSIONIC]
+    manifesters = payload.get('manifesters')
+    descs = payload.get('powers_desc_dict')
+    check(isinstance(manifesters, list) and isinstance(descs, dict),
+          f"{cell}: payload is missing the manifesters / powers_desc_dict block")
+    if isinstance(manifesters, list) and isinstance(descs, dict):
+        # One entry per psionic class and nothing else -- an extra entry means a non-psionic class
+        # leaked in, a missing one means a manifester vanished from the sheet.
+        check(sorted(m['name'] for m in manifesters) == sorted(c['name'] for c in psionic),
+              f"{cell}: manifesters {[m['name'] for m in manifesters]} "
+              f"!= psionic classes {[c['name'] for c in psionic]}")
+        # Powers only ever come from a manifester, so an empty pool must mean an empty dict.
+        if not psionic:
+            check(not descs, f"{cell}: powers_desc_dict is populated on a non-psionic character")
+
+        for m in manifesters:
+            name = m['name']
+            tag = f"{cell}: {name}"
+            entry = next((c for c in psionic if c['name'] == name), None)
+            if entry is None:
+                continue
+            table = PSIONIC_TABLES.get(name, {})
+            # Manifester level is the class level (no cross-class stacking in psionics), clamped at
+            # 20 because the published tables stop there -- the payload exports the clamped value,
+            # so it is recomputed here rather than read back from `classes`.
+            check(m['level'] == entry['level'],
+                  f"{tag}: manifester entry level {m['level']} != class level {entry['level']}")
+            check(m['manifester_level'] == min(entry['level'], 20),
+                  f"{tag}: manifester level {m['manifester_level']} != min({entry['level']}, 20)")
+            row = min(max(m['manifester_level'], 1), 20) - 1
+
+            if name in _NO_MANIFESTING:
+                check(not m['manifesting_stat'] and not m['pp_per_day'] and not m['powers_chosen'],
+                      f"{tag}: manifests nothing, but carries "
+                      f"stat={m['manifesting_stat']!r} pp={m['pp_per_day']} "
+                      f"powers={len(m['powers_chosen'])}")
+                continue
+
+            check(m['manifesting_stat'] in ('str', 'dex', 'con', 'int', 'wis', 'cha'),
+                  f"{tag}: manifesting stat {m['manifesting_stat']!r} is not an ability")
+            # A key ability of 9 or lower cannot manifest AT ALL -- not badly, at all -- so the
+            # whole record legitimately reads zero. Everything below assumes the gate is passed.
+            if final_mod(payload, m['manifesting_stat']) < 0:
+                continue
+
+            # Power points = the class table at manifester level, PLUS floor(mod x ML / 2). The
+            # formula is restated rather than imported so a change to psionics.py has to be a
+            # deliberate change here too -- that is the point of an invariant test.
+            base_pp = table.get('pp_per_day', [0] * 20)[row]
+            bonus = max(0, floor(final_mod(payload, m['manifesting_stat']) * m['manifester_level'] / 2))
+            check(m['pp_per_day'] == base_pp + bonus,
+                  f"{tag}: pp {m['pp_per_day']} != table {base_pp} + bonus {bonus}")
+
+            if name in _PP_ONLY:
+                check(not m['powers_chosen'],
+                      f"{tag}: spends power points on class options, but knows "
+                      f"{len(m['powers_chosen'])} power(s)")
+                continue
+
+            want_max = table.get('max_power_level', [0] * 20)[row]
+            check(m['max_power_level'] == want_max,
+                  f"{tag}: max power level {m['max_power_level']} != table {want_max}")
+            want_known = table.get('powers_known', [0] * 20)[row]
+            check(len(m['powers_chosen']) == want_known,
+                  f"{tag}: knows {len(m['powers_chosen'])} powers != table {want_known}")
+            # powers_known_list is how the sheet groups the same powers by level, so the two views
+            # of one fact must agree.
+            check(sum(m['powers_known_list']) == len(m['powers_chosen']),
+                  f"{tag}: powers_known_list sums to {sum(m['powers_known_list'])} "
+                  f"but {len(m['powers_chosen'])} powers were chosen")
+            check(len(set(m['powers_chosen'])) == len(m['powers_chosen']),
+                  f"{tag}: duplicate powers in powers_chosen")
+            # Same failure the Metzofitz-feat check guards: a name with no rules text renders as an
+            # empty row in Foundry and as nothing at all on the web sheet.
+            missing = [p for p in m['powers_chosen'] if not descs.get(p)]
+            check(not missing, f"{tag}: powers with no rules text: {missing[:5]}")
+            if name == 'psion':
+                # The discipline decides the psion's whole power list, so it cannot be blank.
+                check(m['discipline'], f"{tag}: no discipline chosen")
+
+    # ---- OGL section 10 ----
+    # Serving extracted mechanics is Distribution, so every payload must point at the licence.
+    check(payload.get('license_url'), f"{cell}: payload carries no license_url")
 
     # ---- HP ----
     max_hd = sum(hit_die(c['name']) * c['level'] for c in classes)
