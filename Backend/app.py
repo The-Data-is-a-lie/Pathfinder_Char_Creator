@@ -8,7 +8,7 @@ if _BACKEND_DIR not in sys.path:
     sys.path.insert(0, _BACKEND_DIR)
 
 # External imports
-from flask import Flask, render_template, request, jsonify, session, abort
+from flask import Flask, render_template, request, jsonify, session, abort, Response, url_for
 from flask_cors import CORS
 from flask_session import Session
 from dotenv import load_dotenv
@@ -119,6 +119,24 @@ def sheet():
     # POST /update_character_data returns (static/scripts/sheet.js).
     return render_template('sheet.html')
 
+@app.route('/license', methods=['GET'])
+@limiter.exempt
+def license_text():
+    # Open Game License section 10: a copy of the licence must accompany every distribution of Open
+    # Game Content, and serving generated mechanics over HTTP is Distribution. Payloads point here
+    # (`license_url`) instead of embedding ~9 KB of legal text in every character.
+    #
+    # Served as text/plain rather than rendered: this is a legal document that must be reproducible
+    # byte for byte, and HTML rendering would collapse the whitespace section 15 depends on.
+    # LICENSE-OGL.txt is generated -- edit Backend/scripts/build_ogl_license.py, not the file.
+    from utils.paths import repo_path
+    licence = repo_path('LICENSE-OGL.txt')
+    if not licence.exists():
+        # Serving Open Game Content while unable to produce the licence is the one failure mode
+        # section 10 does not tolerate, so this is a hard 500 rather than an empty body.
+        abort(500, description="LICENSE-OGL.txt is missing; run Backend/scripts/build_ogl_license.py")
+    return Response(licence.read_text(encoding='utf-8'), mimetype='text/plain; charset=utf-8')
+
 @app.route('/backstory-stats', methods=['GET'])
 @limiter.exempt
 def backstory_stats():
@@ -209,6 +227,11 @@ def update_character_data():
         non_input_data.append(value)
 
     results = process_input_values(non_input_data, spheres_flag, seed, professions_flag, trainers_flag)
+    # Promote the generator's bare '/license' path to an absolute URL. The Foundry module stores this
+    # payload on an Actor and may surface the pointer long after the request, in a context that has no
+    # idea which backend produced it -- a relative path would resolve against Foundry's own host.
+    if isinstance(results, dict) and results.get('license_url'):
+        results['license_url'] = url_for('license_text', _external=True)
     session['character_data'] = results
 
     # Print raw data to terminal for debugging
