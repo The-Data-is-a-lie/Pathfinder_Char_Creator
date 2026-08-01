@@ -11,6 +11,8 @@ WebFetch both fail. `api.php` is NOT challenged. Always go through the API with 
 
 Outputs (all under Backend/json/class_data/psionics/, mirroring class_data/path_of_war/):
     psionic_classes.json       raw per-class prose + the 20-row class table + feature sections
+    psionic_class_options.json {class: {section: {option name: description}}} -- the lists the
+                               choice-bearing class features draw from (ticket 08)
     psionic_powers_known.json  {class: {pp_per_day/powers_known/max_power_level: [20 ints]}}
     psionic_power_lists.json   {list: {"0".."9": [power names]}} -- "0" is the talents tier
     psionic_powers.json        per-power header fields + rules text
@@ -195,7 +197,9 @@ def api(**params):
 
 
 def page_wikitext(title: str) -> str:
-    return api(action="parse", page=title, prop="wikitext")["parse"]["wikitext"]
+    # redirects=1 because several option-list pages are redirects ('Warrior Paths' ->
+    # 'Psychic Warrior Paths'); without it the API hands back the one-line #REDIRECT stub.
+    return api(action="parse", page=title, prop="wikitext", redirects=1)["parse"]["wikitext"]
 
 
 def page_html(title: str) -> str:
@@ -443,6 +447,177 @@ def scrape_classes() -> None:
     print(f"  {len(classes)} classes, {len(manifesting)} manifest: {', '.join(manifesting)}")
 
 
+# -------------------------------------------------------------------------------- class options
+#
+# Ticket 08: nine subsystems plus blade skills are all the same shape -- pick 1 or N from a
+# {name: description} list -- so they ride the EXISTING generic_class_option_chooser and no new
+# chooser module is written. What was missing was the data: scrape_classes() captured each class's
+# `features` prose but never the option list a feature draws from, which made every one of those
+# rows unbuildable. This step closes that gap.
+#
+# Each list lives on its own wiki page, and the pages are not written alike. Three shapes, declared
+# per page rather than sniffed -- guessing here is how a parser silently drops half a list:
+#
+#   "rule"     entries separated by a ---- horizontal rule, each opening with a "Name:" lead whose
+#              emphasis ticks land in three different places across pages
+#              (''Chase Terror: ''x / ''Collective Defenses'': x / Emulate ...: x)
+#   "bold"     entries opening with a '''Name: ''' run, with no rule between them
+#   "heading"  one heading per option, picked out by a suffix ("... Method", "... Style",
+#              "... Path"); the option's description runs to the next matching heading, so its own
+#              sub-headings are folded in rather than becoming phantom options
+#
+# Deliberately absent:
+#   voyager  -- has no option list at all. Ticket 08's table lists "voyager | path skills", but
+#               "Path Skill" is a *psychic warrior* feature; the voyager's choice-bearing feature is
+#               Voyager Knowledge, which grants bonus FEATS from a fixed list. Different shape,
+#               different machinery (feats.py), not an option list.
+#   soulknife mind blade enhancements -- a wikitable of weapon special abilities, not a
+#               {name: description} list. The mind blade reuses the repo's existing
+#               enhancement_effects_dict (armor_and_enhancements.py); see ticket 08.
+OPTION_PAGES = {
+    "aegis":           [("customizations", "Astral Suit", "bold", "")],
+    "cryptic":         [("insights", "Cryptic Insights", "rule", "")],
+    "dread":           [("terrors", "Dread Terrors", "rule", "")],
+    "highlord":        [("decrees", "Highlord Decrees", "bold", "")],
+    "marksman":        [("combat styles", "Marksman Combat Styles", "heading", "style")],
+    "psychic warrior": [("warrior paths", "Psychic Warrior Paths", "heading", "path")],
+    "soulknife":       [("blade skills", "Blade Skills", "rule", "")],
+    "tactician":       [("strategies", "Tactician Strategies", "rule", "")],
+    "vitalist":        [("methods", "Vitalist Methods", "heading", "method")],
+}
+
+# No `$` anchor: in wikitext a line-leading run of dashes is a horizontal rule whatever follows it
+# on the line, and the Blade Skills page writes `----Psibertech Affinity: ...` with no newline --
+# requiring the rule to sit alone silently glued two blade skills into one entry.
+RULE_RE = re.compile(r"^-{4,}", re.M)
+HEADING_LINE_RE = re.compile(r"^=+ *.+? *=+\s*$", re.M)
+TABLE_RE = re.compile(r"^\{\|.*?^\|\}\s*$", re.M | re.S)
+# The name lead, tolerating emphasis ticks before the name, after the name, and after the colon.
+ENTRY_LEAD_RE = re.compile(r"^\s*(?:'{2,3})?\s*([^:'\n]{2,80}?)\s*(?:'{2,3})?\s*:\s*(?:'{2,3})?\s*(.*)$",
+                           re.S)
+BOLD_LEAD_RE = re.compile(r"'''\s*([^:'\n]{2,80}?)\s*:\s*'''\s*")
+
+
+def sections_with_lead(text: str):
+    """split_sections(), plus the lead section before the first heading.
+
+    split_sections() starts at the first heading, which silently loses whole lists: the Highlord
+    Decrees page keeps its ordinary decrees in the lead and only its *greater* decrees under a
+    heading, so heading-only iteration found 10 of 40. Not folded into split_sections() itself
+    because parse_features() depends on its heading-keyed behaviour.
+    """
+    first = HEADING_LINE_RE.search(text)
+    lead = text[:first.start()] if first else text
+    if lead.strip():
+        yield "", lead
+    if first:
+        yield from split_sections(text)
+
+
+def strip_tables(text: str) -> str:
+    """Drop wikitables and the category footer, BEFORE any entry splitting.
+
+    Tables carry layout markup that turns into noise inside a description, and the one table that
+    actually matters (mind blade enhancements) is handled elsewhere. The category footer has to go
+    early rather than in strip_markup(): every one of these pages ends with
+    `[[Category:Source: Ultimate Psionics]]`, whose internal colon reads as a name lead, which
+    manufactured a phantom option literally called "[[Category" on four of the lists.
+    """
+    text = TABLE_RE.sub("", text)
+    return re.sub(r"\[\[(?:Category|File|Image)\s*:[^\]]*\]\]", "", text, flags=re.I)
+
+
+def _record(options: dict, name: str, body: str, group: str = "") -> None:
+    """Add one option, keeping the wiki's own spelling of the name.
+
+    The name is stored verbatim (bar whitespace) because ticket 10 diffs these against the
+    pf1-psionics pack names -- "improving" the spelling here would manufacture a false gap.
+    The group heading is appended to the description instead of folded into the name for the same
+    reason; for the aegis that heading is the customization's point cost, which is worth keeping.
+    """
+    name = clean(strip_markup(name))
+    # Rules separate entries in "rule" mode but merely decorate them in "bold" mode, where they
+    # would otherwise trail every aegis customization's description.
+    body = strip_markup(RULE_RE.sub("", body)).strip()
+    if not name or not body or len(name) > 80 or "[" in name or "]" in name:
+        return
+    if group:
+        body = f"{body} [{group}]"
+    options.setdefault(name, body)
+
+
+def parse_options_rule(text: str) -> dict:
+    """Entries separated by ---- rules. Heading lines are removed first: several of these pages
+    keep every entry in the lead section before any heading (Dread Terrors and Tactician Strategies
+    have no headings at all), so grouping by heading would find nothing."""
+    options: dict = {}
+    body = HEADING_LINE_RE.sub("", strip_tables(text))
+    for chunk in RULE_RE.split(body):
+        chunk = chunk.strip()
+        if not chunk:
+            continue
+        match = ENTRY_LEAD_RE.match(chunk)
+        if match:
+            _record(options, match.group(1), match.group(2))
+    return options
+
+
+def parse_options_bold(text: str) -> dict:
+    """Entries opening with a '''Name: ''' run, with no rule between them. Tracks the enclosing
+    heading so the aegis keeps its customization point costs."""
+    options: dict = {}
+    for heading, section in sections_with_lead(strip_tables(text)):
+        group = clean(strip_markup(heading))
+        marks = list(BOLD_LEAD_RE.finditer(section))
+        for idx, match in enumerate(marks):
+            stop = marks[idx + 1].start() if idx + 1 < len(marks) else len(section)
+            _record(options, match.group(1), section[match.end():stop], group)
+    return options
+
+
+def parse_options_heading(text: str, suffix: str) -> dict:
+    """One heading per option. The description runs to the NEXT matching heading, so a method's or
+    style's own sub-headings (Guardian Power, Guardian Knacks, ...) are folded into its description
+    instead of each becoming an option in its own right."""
+    options: dict = {}
+    current, buffer = "", []
+    for heading, section in split_sections(strip_tables(text)):
+        name = clean(strip_markup(heading))
+        if name.lower().endswith(suffix):
+            if current:
+                _record(options, current, "\n".join(buffer))
+            current, buffer = name, [section]
+        elif current:
+            buffer.append(f"{name}: {section}" if name else section)
+    if current:
+        _record(options, current, "\n".join(buffer))
+    return options
+
+
+def scrape_class_options() -> None:
+    print("class options:")
+    out: dict = {}
+    for key, pages in OPTION_PAGES.items():
+        entry: dict = {}
+        for section, title, mode, suffix in pages:
+            text = page_wikitext(title)
+            if mode == "rule":
+                options = parse_options_rule(text)
+            elif mode == "bold":
+                options = parse_options_bold(text)
+            else:
+                options = parse_options_heading(text, suffix)
+            if not options:
+                print(f"    WARNING: {key}/{section} parsed 0 options from {title}")
+            entry[section] = options
+            print(f"  {key}: {section} -- {len(options)} from {title}")
+        out[key] = entry
+    write_json("psionic_class_options.json", out)
+    total = sum(len(o) for e in out.values() for o in e.values())
+    print(f"  {len(out)} classes, {total} options "
+          f"(voyager has no option list -- see OPTION_PAGES)")
+
+
 # ----------------------------------------------------------------------------------- power lists
 
 LEVEL_HEADING_RE = re.compile(r"^=+ *'*(\d+)(?:st|nd|rd|th)-Level +(.+?) *'* *=+", re.I | re.M)
@@ -583,6 +758,39 @@ def parse_power(name: str, text: str) -> dict:
     return record
 
 
+def split_chain_variants(title: str, text: str) -> dict:
+    """A multi-variant power page -> one record per variant that is really a power.
+
+    29 wiki pages hold several power variants under separate headings ("Metamorphosis, Minor" /
+    "... Major" / "... True"). Reconciliation settled how to treat them: **64 of the 106 variant
+    headings exist as their own items in the pf1-psionics packs**, so the module models them as
+    separate powers and so must we -- an unsplit page means the module silently drops every variant
+    but the first (see docs/wayfinder/psionics/issues/10-name-reconciliation.md).
+
+    Not every heading is a power, though. The same pages carry option-menu headings ("Enhancement
+    Menu A", "Abilities Menu B") that are tables of choices belonging to the variant above them.
+    The discriminator is structural rather than a name blacklist: a real power page states its own
+    Level and Power Points, a menu states neither. Menu sections stay folded into the variant that
+    precedes them, which is where their rules text belongs.
+    """
+    marks = [(m.start(), m.end(), strip_markup(m.group(0)).strip("= "))
+             for m in re.finditer(r"^=+ *.+? *=+\s*$", text, re.M)]
+    out: dict = {}
+    for idx, (start, end, heading) in enumerate(marks):
+        stop = marks[idx + 1][0] if idx + 1 < len(marks) else len(text)
+        name = clean(heading)
+        if not name:
+            continue
+        record = parse_power(name, text[end:stop])
+        # A variant with neither a level line nor a power-points cost is a menu, not a power.
+        if not record.get("level") and not record.get("power points"):
+            continue
+        record.pop("chain_sections", None)
+        record["chain_parent"] = title
+        out[name] = record
+    return out
+
+
 def scrape_powers() -> None:
     print("powers:")
     lists_path = OUT_DIR / "psionic_power_lists.json"
@@ -607,6 +815,10 @@ def scrape_powers() -> None:
                     continue
                 content = page["revisions"][0]["slots"]["main"]["content"]
                 powers[title] = parse_power(title, content)
+                # Kept only until the chain split below has run, then dropped -- the variants have
+                # to be parsed from the page's own wikitext, and re-fetching 30 pages to get it
+                # back would be a second pass over the API for no gain.
+                powers[title]["_wikitext"] = content
             print(f"  fetched {min(start + BATCH, len(batch_names))}/{len(batch_names)}")
 
     fetch(names)
@@ -623,8 +835,21 @@ def scrape_powers() -> None:
         if target in powers:
             powers[target].setdefault("aliases", []).append(source)
 
+    # Split the chain pages last, so a variant can never overwrite a power that has its own page.
+    pages = len(powers)
+    variants = 0
+    for title in [t for t, r in powers.items() if r.get("chain_sections")]:
+        source = powers[title].pop("_wikitext", "")
+        for name, record in split_chain_variants(title, source).items():
+            if name not in powers:
+                powers[name] = record
+                variants += 1
+    for record in powers.values():
+        record.pop("_wikitext", None)
+
     write_json("psionic_powers.json", powers)
-    print(f"  {len(powers)} power pages, {len(redirects)} redirects, {len(missing)} missing")
+    print(f"  {pages} power pages (+{variants} chain variants), "
+          f"{len(redirects)} redirects, {len(missing)} missing")
     if missing:
         print("  MISSING: " + ", ".join(sorted(missing)[:20]))
 
@@ -695,6 +920,7 @@ def scrape_races() -> None:
 
 STEPS = {
     "classes": scrape_classes,
+    "options": scrape_class_options,
     "lists": scrape_power_lists,
     "powers": scrape_powers,
     "races": scrape_races,
@@ -706,7 +932,7 @@ def main() -> int:
     parser.add_argument("--only", nargs="+", choices=sorted(STEPS),
                         help="run a subset of the steps (default: all, in order)")
     args = parser.parse_args()
-    for step in (args.only or ["classes", "lists", "powers", "races"]):
+    for step in (args.only or ["classes", "options", "lists", "powers", "races"]):
         STEPS[step]()
     print("done -- now run Backend/scripts/validate_psionics_data.py")
     return 0
