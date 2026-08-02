@@ -403,6 +403,34 @@
         "special attacks": "trample"
       }
     },
+    "barbed ram": {
+      "source": "source",
+      "starting statistics": {
+        "size": "small",
+        "speed": "40 ft. ",
+        "ac": "+1 natural",
+        "attack": "gore (1d4)",
+        "ability scores": {
+          "str": 10,
+          "dex": 17,
+          "con": 11,
+          "int": 2,
+          "wis": 14,
+          "cha": 7
+        },
+        "special qualities": "low-light vision, scent"
+      },
+      "4th-level advancement": {
+        "size": "medium",
+        "attack": "gore (1d6)",
+        "ability scores": {
+          "str": "+4",
+          "dex": "-2",
+          "con": "+2"
+        },
+        "special attacks": "bleed (gore, 1), powerful charge (gore, 1d8)"
+      }
+    },
     "basilosaurus": {
       "starting statistics": {
         "size": "medium",
@@ -534,6 +562,35 @@
         }
       }
     },
+    "bird, blackwisp egret": {
+      "source": "source",
+      "starting statistics": {
+        "size": "small",
+        "speed": "30 ft. , fly 30 ft. (poor)",
+        "ac": "+1 natural",
+        "attack": "bite (1d4)",
+        "ability scores": {
+          "str": 8,
+          "dex": 17,
+          "con": 8,
+          "int": 2,
+          "wis": 13,
+          "cha": 5
+        },
+        "special qualities": "low-light vision"
+      },
+      "4th-level advancement": {
+        "size": "medium",
+        "attack": "bite (1d6)",
+        "ability scores": {
+          "str": "+4",
+          "dex": "-2",
+          "con": "+2"
+        },
+        "special qualities": "deceptive target"
+      },
+      "deceptive target (ex)": "a blackwisp egret's glowing eyes belie its true position at night. In areas of dim light or darkness, ranged attacks against a blackwisp egret suffer a 20% miss chance. "
+    },
     "bird, harpy eagle (3pp)": {
       "source": "lg: lh",
       "starting statistics": {
@@ -587,35 +644,6 @@
         "racial skill modifiers": "+4 stealth"
       }
     },
-    "bird, blackwisp egret": {
-      "source": "source",
-      "starting statistics": {
-        "size": "small",
-        "speed": "30 ft. , fly 30 ft. (poor)",
-        "ac": "+1 natural",
-        "attack": "bite (1d4)",
-        "ability scores": {
-          "str": 8,
-          "dex": 17,
-          "con": 8,
-          "int": 2,
-          "wis": 13,
-          "cha": 5
-        },
-        "special qualities": "low-light vision"
-      },
-      "4th-level advancement": {
-        "size": "medium",
-        "attack": "bite (1d6)",
-        "ability scores": {
-          "str": "+4",
-          "dex": "-2",
-          "con": "+2"
-        },
-        "special qualities": "deceptive target"
-      },
-      "deceptive target (ex)": "a blackwisp egret's glowing eyes belie its true position at night. In areas of dim light or darkness, ranged attacks against a blackwisp egret suffer a 20% miss chance. "
-    },
     "boar": {
       "starting statistics": {
         "size": "small",
@@ -641,6 +669,34 @@
           "con": "+2"
         },
         "special attacks": "ferocity"
+      }
+    },
+    "brachiosaurus": {
+      "starting statistics": {
+        "size": "medium",
+        "speed": "30 ft. ",
+        "ac": "+3 natural armor",
+        "attack": "tail (2d4)",
+        "ability scores": {
+          "str": 13,
+          "dex": 14,
+          "con": 11,
+          "int": 2,
+          "wis": 13,
+          "cha": 10
+        },
+        "special qualities": "low-light vision, scent"
+      },
+      "7th-level advancement": {
+        "size": "large",
+        "ac": "+2 natural armor",
+        "attack": "tail (2d6)",
+        "ability scores": {
+          "str": "+8",
+          "dex": "-2",
+          "con": "+4"
+        },
+        "special qualities": "trample (1d8)"
       }
     },
     "bristle boar": {
@@ -671,34 +727,6 @@
         "special attacks": "spines"
       },
       "spines (ex)": "those hit by a bristle boar's gore attack must succeed at a reflex saving throw to avoid being speared by the dangerously sharp spines around its head and neck. Failure results in 1d4 points of piercing damage. "
-    },
-    "brachiosaurus": {
-      "starting statistics": {
-        "size": "medium",
-        "speed": "30 ft. ",
-        "ac": "+3 natural armor",
-        "attack": "tail (2d4)",
-        "ability scores": {
-          "str": 13,
-          "dex": 14,
-          "con": 11,
-          "int": 2,
-          "wis": 13,
-          "cha": 10
-        },
-        "special qualities": "low-light vision, scent"
-      },
-      "7th-level advancement": {
-        "size": "large",
-        "ac": "+2 natural armor",
-        "attack": "tail (2d6)",
-        "ability scores": {
-          "str": "+8",
-          "dex": "-2",
-          "con": "+4"
-        },
-        "special qualities": "trample (1d8)"
-      }
     },
     "brontotherium": {
       "source": "source",
@@ -973,6 +1001,31 @@
         "special qualities": "powerful charge (gore, 1d8), trample"
       }
     },
+    "cave salamander": {
+      "source": "prg: mc",
+      "starting statistics": {
+        "size": "medium",
+        "speed": "40 ft. ",
+        "ac": "+2 natural armor",
+        "attack": "bite (1d6)",
+        "ability scores": {
+          "str": 13,
+          "dex": 12,
+          "con": 13,
+          "int": 1,
+          "wis": 12,
+          "cha": 4
+        },
+        "special qualities": "darkvision 60 ft. "
+      },
+      "4th-level advancement": {
+        "ability scores": {
+          "str": "+2",
+          "con": "+2"
+        },
+        "special qualities": "combat training (see handle animal)"
+      }
+    },
     "ceratosaurus": {
       "source": "source",
       "starting statistics": {
@@ -1002,6 +1055,30 @@
         "special qualities": "blood rage*, ferocity"
       },
       "blood rage*": "when a ceratosaurus takes damage in combat, on its next turn it can fly into a rage as a free action. It gains +2 constitution and +2 strength, but takes a 2 penalty to its ac. The rage lasts as long as the battle or 1 minute, whichever is shorter. It cannot end its rage voluntarily. "
+    },
+    "deer, reindeer": {
+      "starting statistics": {
+        "size": "medium",
+        "speed": "50 ft.",
+        "ac": "+2 natural armor",
+        "attack": "gore (1d6)",
+        "ability scores": {
+          "str": 13,
+          "dex": 14,
+          "con": 13,
+          "int": 2,
+          "wis": 12,
+          "cha": 5
+        },
+        "special qualities": "low-light vision, scent, snow adaptation (ignore difficult terrain from ice and snow)."
+      },
+      "4th-level advancement": {
+        "ability scores": {
+          "str": "+2",
+          "dex": "+2",
+          "con": "+2"
+        }
+      }
     },
     "deinotherium": {
       "source": "source",
@@ -1172,6 +1249,57 @@
         "special qualities": "tail lash"
       }
     },
+    "dire pangolin": {
+      "source": "source",
+      "starting statistics": {
+        "size": "small",
+        "speed": "30 ft, burrow 5 ft",
+        "ac": "+6 natural armor",
+        "attack": "2 claws (1d4)",
+        "ability scores": {
+          "str": 12,
+          "dex": 10,
+          "con": 17,
+          "int": 2,
+          "wis": 12,
+          "cha": 6
+        },
+        "special qualities": "low-light vision, scent"
+      },
+      "4th-level advancement": {
+        "size": "medium",
+        "attack": "2 claws (1d6)",
+        "ability scores": {
+          "str": "+4",
+          "dex": "-2",
+          "con": "+2"
+        },
+        "special qualities": "razor scales (ex)"
+      }
+    },
+    "dire rat": {
+      "starting statistics": {
+        "size": "small",
+        "speed": "40 ft. , climb 20 ft. , swim 20 ft. ",
+        "attack": "bite (1d4)",
+        "ability scores": {
+          "str": 10,
+          "dex": 17,
+          "con": 12,
+          "int": 2,
+          "wis": 12,
+          "cha": 4
+        },
+        "special qualities": "low-light vision, scent"
+      },
+      "4th-level advancement": {
+        "attack": "bite (1d4 plus disease [filth fever: onset 1d3 days; frequency 1/day; effect 1d3 dex damage and 1d3 con damage; cure 2 consecutive saves, con-based dc])",
+        "ability scores": {
+          "str": "+2",
+          "con": "+2"
+        }
+      }
+    },
     "dog": {
       "starting statistics": {
         "size": "small",
@@ -1280,30 +1408,6 @@
         "special qualities": "grab (bite), gulp"
       }
     },
-    "electric eel": {
-      "starting statistics": {
-        "size": "small",
-        "speed": "5 ft. , swim 30 ft. ",
-        "attack": "bite (1d6)",
-        "ability scores": {
-          "str": 12,
-          "dex": 14,
-          "con": 18,
-          "int": 1,
-          "wis": 10,
-          "cha": 6
-        },
-        "special qualities": "amphibious, low-light vision, electricity resistance 5"
-      },
-      "4th-level advancement": {
-        "ac": "+2 natural armor",
-        "ability scores": {
-          "dex": "+2",
-          "con": "+2"
-        },
-        "special qualities": "electricity (1d6), electricity resistance 10"
-      }
-    },
     "elasmosaurus": {
       "starting statistics": {
         "size": "medium",
@@ -1358,6 +1462,30 @@
           "con": "+4"
         },
         "special attacks": "impaling horn, powerful charge (gore)"
+      }
+    },
+    "electric eel": {
+      "starting statistics": {
+        "size": "small",
+        "speed": "5 ft. , swim 30 ft. ",
+        "attack": "bite (1d6)",
+        "ability scores": {
+          "str": 12,
+          "dex": 14,
+          "con": 18,
+          "int": 1,
+          "wis": 10,
+          "cha": 6
+        },
+        "special qualities": "amphibious, low-light vision, electricity resistance 5"
+      },
+      "4th-level advancement": {
+        "ac": "+2 natural armor",
+        "ability scores": {
+          "dex": "+2",
+          "con": "+2"
+        },
+        "special qualities": "electricity (1d6), electricity resistance 10"
       }
     },
     "elephant/mastodon": {
@@ -1521,6 +1649,32 @@
         }
       }
     },
+    "gar": {
+      "starting statistics": {
+        "size": "medium",
+        "speed": "swim 60 ft. ",
+        "ac": "+1 natural armor",
+        "attack": "bite (1d6 plus grab)",
+        "ability scores": {
+          "str": 14,
+          "dex": 14,
+          "con": 15,
+          "int": 1,
+          "wis": 13,
+          "cha": 2
+        }
+      },
+      "7th-level advancement": {
+        "size": "large",
+        "ac": "+3 natural armor",
+        "attack": "bite (1d8)",
+        "ability scores": {
+          "str": "+8",
+          "dex": "-2",
+          "con": "+4"
+        }
+      }
+    },
     "giant frilled lizard": {
       "source": "source",
       "starting statistics": {
@@ -1575,32 +1729,6 @@
         "special qualities": "swallow whole"
       }
     },
-    "gar": {
-      "starting statistics": {
-        "size": "medium",
-        "speed": "swim 60 ft. ",
-        "ac": "+1 natural armor",
-        "attack": "bite (1d6 plus grab)",
-        "ability scores": {
-          "str": 14,
-          "dex": 14,
-          "con": 15,
-          "int": 1,
-          "wis": 13,
-          "cha": 2
-        }
-      },
-      "7th-level advancement": {
-        "size": "large",
-        "ac": "+3 natural armor",
-        "attack": "bite (1d8)",
-        "ability scores": {
-          "str": "+8",
-          "dex": "-2",
-          "con": "+4"
-        }
-      }
-    },
     "giant gecko": {
       "starting statistics": {
         "size": "small",
@@ -1627,6 +1755,178 @@
           "dex": "-2",
           "con": "+2"
         }
+      }
+    },
+    "giant mantis": {
+      "starting statistics": {
+        "size": "medium",
+        "speed": "30 ft. , climb 30 ft. , fly 40 ft. (average)",
+        "ac": "+3 natural armor",
+        "attack": "2 claws (1d4 plus grab)",
+        "ability scores": {
+          "str": 10,
+          "dex": 15,
+          "con": 10,
+          "int": null,
+          "wis": 12,
+          "cha": 7
+        },
+        "special attacks": "lunge",
+        "special qualities": "darkvision",
+        "cmd trip": "+8"
+      },
+      "7th-level advancement": {
+        "size": "large",
+        "ac": "+2 natural armor",
+        "attack": "2 claws (1d6)",
+        "ability scores": {
+          "str": "+8",
+          "dex": "-2",
+          "con": "+4"
+        },
+        "special attacks": "mandibles (1d6 secondary attack against a grabbed target), sudden strike (may take a full attack in the surprise round)"
+      }
+    },
+    "giant mole": {
+      "source": "source",
+      "starting statistics": {
+        "size": "small",
+        "speed": "20 ft. , burrow 10 ft. ",
+        "ac": "+1 natural armor",
+        "attack": "2 claws (1d4)",
+        "ability scores": {
+          "str": 12,
+          "dex": 15,
+          "con": 13,
+          "int": 2,
+          "wis": 10,
+          "cha": 5
+        },
+        "special qualities": "low-light vision, tremorsense 30 ft. "
+      },
+      "4th-level advancement": {
+        "size": "medium",
+        "speed": "burrow 20 ft. ",
+        "ac": "+2 natural armor",
+        "attack": "2 claws (1d6)",
+        "ability scores": {
+          "str": "+2",
+          "dex": "-2",
+          "con": "+4"
+        },
+        "special attacks": "rend (2 claws, 1d6)"
+      }
+    },
+    "giant moray eel": {
+      "starting statistics": {
+        "size": "medium",
+        "ac": "+5 natural armor",
+        "speed": "swim 30 ft. ",
+        "attack": "bite (1d8 plus grab)",
+        "ability scores": {
+          "str": 14,
+          "dex": 16,
+          "con": 12,
+          "int": 1,
+          "wis": 12,
+          "cha": 8
+        },
+        "special qualities": "low-light vision"
+      },
+      "7th-level advancement": {
+        "size": "large",
+        "ac": "+3 natural armor",
+        "attack": "bite (2d6)",
+        "ability scores": {
+          "str": "+8",
+          "dex": "-2",
+          "con": "+4"
+        },
+        "special qualities": "gnaw"
+      }
+    },
+    "giant porcupine": {
+      "source": "source",
+      "starting statistics": {
+        "size": "small",
+        "speed": "30 ft. ",
+        "ac": "+1 natural armor",
+        "attack": "tail slap (1d4)",
+        "ability scores": {
+          "str": 14,
+          "dex": 12,
+          "con": 15,
+          "int": 2,
+          "wis": 13,
+          "cha": 5
+        },
+        "special attacks": "quills (as porcupine quills)",
+        "special qualities": "low-light vision, scent"
+      },
+      "4th-level advancement": {
+        "size": "medium",
+        "ac": "+2 natural armor",
+        "attack": "tail slap (1d6)",
+        "ability scores": {
+          "str": "+2",
+          "dex": "-2",
+          "con": "+4"
+        },
+        "special attacks": "quills (as giant porcupine quills)"
+      }
+    },
+    "giant raven": {
+      "source": "source",
+      "starting statistics": {
+        "size": "small",
+        "speed": "20 ft. , fly 50 ft. (average)",
+        "attack": "bite (1d4)",
+        "ability scores": {
+          "str": 8,
+          "dex": 13,
+          "con": 10,
+          "int": 2,
+          "wis": 15,
+          "cha": 7
+        },
+        "special qualities": "low-light vision, scavenger"
+      },
+      "4th-level advancement": {
+        "size": "medium",
+        "ac": "+2 natural armor",
+        "attack": "bite (1d6)",
+        "ability scores": {
+          "str": "+4",
+          "dex": "+2",
+          "con": "+2"
+        }
+      }
+    },
+    "giant salamander": {
+      "source": "source",
+      "starting statistics": {
+        "size": "medium",
+        "speed": "20 ft. , swim 30 ft. ",
+        "ac": "+3 natural armor",
+        "attack": "bite (1d4)",
+        "ability scores": {
+          "str": 13,
+          "dex": 14,
+          "con": 15,
+          "int": 1,
+          "wis": 12,
+          "cha": 4
+        },
+        "special qualities": "amphibious, tremorsense 30 ft. (underwater only), scent"
+      },
+      "4th-level advancement": {
+        "ac": "+2 natural armor",
+        "ability scores": {
+          "str": "+2",
+          "dex": 2,
+          "con": "+4"
+        },
+        "racial skill modifiers": "+4 stealth"
       }
     },
     "giganotosaurus": {
@@ -1686,33 +1986,6 @@
         }
       }
     },
-    "goblin dog": {
-      "starting statistics": {
-        "size": "small",
-        "speed": "50 ft. ",
-        "attack": "bite (1d4)",
-        "ability scores": {
-          "str": 11,
-          "dex": 16,
-          "con": 11,
-          "int": 2,
-          "wis": 12,
-          "cha": 8
-        },
-        "special qualities": "allergic reaction, low-light vision, scent"
-      },
-      "allergic reaction (ex)": "a goblin dog's dander is highly irritating to all creatures save those with the goblinoid subtype. A non-goblinoid creature damaged by a goblin dog's bite, who deals damage to a goblin dog with a natural weapon or unarmed attack, or who otherwise comes into contact with a goblin dog (including attempts to grapple or ride the creature) must make a dc (10 + 1/2 hit dice + con modifier) fortitude save or break out in an itching rash. A creature affected by this rash takes a -2 penalty to dexterity and charisma for 1 day (multiple allergic reactions do not stack). Remove disease or any magical healing removes the rash instantly. This is a disease effect. ",
-      "4th-level advancement": {
-        "size": "medium",
-        "ac": "+1 natural armor",
-        "attack": "bite (1d6)",
-        "ability scores": {
-          "str": "+4",
-          "dex": "-2",
-          "con": "+4"
-        }
-      }
-    },
     "glyptodon": {
       "starting statistics": {
         "size": "medium",
@@ -1740,35 +2013,32 @@
         }
       }
     },
-    "yolubilis heron": {
-      "source": "pap97",
+    "goblin dog": {
       "starting statistics": {
-        "size": "medium",
-        "speed": "30 ft. , fly 60 ft. (average)",
-        "ac": "+2 natural armor",
-        "attack": "bite (1d8)",
+        "size": "small",
+        "speed": "50 ft. ",
+        "attack": "bite (1d4)",
         "ability scores": {
-          "str": 13,
-          "dex": 15,
-          "con": 14,
+          "str": 11,
+          "dex": 16,
+          "con": 11,
           "int": 2,
           "wis": 12,
-          "cha": 9
+          "cha": 8
         },
-        "special qualities": "low-light vision"
+        "special qualities": "allergic reaction, low-light vision, scent"
       },
-      "7th-level advancement": {
-        "size": "large",
-        "ac": "+2 natural armor",
-        "attack": "bite (2d6)",
+      "allergic reaction (ex)": "a goblin dog's dander is highly irritating to all creatures save those with the goblinoid subtype. A non-goblinoid creature damaged by a goblin dog's bite, who deals damage to a goblin dog with a natural weapon or unarmed attack, or who otherwise comes into contact with a goblin dog (including attempts to grapple or ride the creature) must make a dc (10 + 1/2 hit dice + con modifier) fortitude save or break out in an itching rash. A creature affected by this rash takes a -2 penalty to dexterity and charisma for 1 day (multiple allergic reactions do not stack). Remove disease or any magical healing removes the rash instantly. This is a disease effect. ",
+      "4th-level advancement": {
+        "size": "medium",
+        "ac": "+1 natural armor",
+        "attack": "bite (1d6)",
         "ability scores": {
-          "str": "+8",
+          "str": "+4",
           "dex": "-2",
-          "con": "+2"
-        },
-        "special attacks": "still predator"
-      },
-      "still predator (ex)": "a yolubilis heron has the ability to stand perfectly still for hours at a time while awaiting prey, making it easy to mistake the bird's legs for slim tree trunks. A yolubilis heron can use the freeze ability while adjacent to trees or any vegetation that could conceal its upper body. While standing in water, it can use the freeze ability against submerged creatures. Other creatures with low intelligence scores or poor senses might be tricked by this ability as well. "
+          "con": "+4"
+        }
+      }
     },
     "hippopotamus": {
       "starting statistics": {
@@ -1902,32 +2172,6 @@
       },
       "thumb spikes (ex)": "an iguanodon's thumb spikes can inflict grievous woundsthey deal triple damage on a successful critical hit. "
     },
-    "switchback jackal": {
-      "source": "pap115",
-      "starting statistics": {
-        "size": "small",
-        "speed": "40 ft. ",
-        "ac": "+1 natural armor",
-        "attack": "bite (1d4), 2 claws (1d3)",
-        "ability scores": {
-          "str": 11,
-          "dex": 13,
-          "con": 14,
-          "int": 2,
-          "wis": 13,
-          "cha": 6
-        },
-        "special qualities": "low-light vision, problem solver, scent"
-      },
-      "4th-level advancement": {
-        "ability scores": {
-          "dex": "+4",
-          "con": "+2",
-          "wis": "+2"
-        },
-        "bonus feat": "overwhelm"
-      }
-    },
     "kangaroo": {
       "starting statistics": {
         "size": "medium",
@@ -2013,31 +2257,6 @@
         "special qualities": "defensive spikes"
       }
     },
-    "riding kiwi": {
-      "source": "source",
-      "starting statistics": {
-        "size": "large",
-        "speed": "50 ft",
-        "ac": "+1 natural armor",
-        "attack": "bite (1d8)",
-        "ability scores": {
-          "str": 15,
-          "dex": 16,
-          "con": 13,
-          "int": 2,
-          "wis": 12,
-          "cha": 6
-        },
-        "special qualities": "low-light vision, scent"
-      },
-      "4th-level advancement": {
-        "ability scores": {
-          "str": "+2",
-          "con": "+2"
-        },
-        "special qualities": "combat trained"
-      }
-    },
     "llama": {
       "source": "source",
       "starting statistics": {
@@ -2091,36 +2310,6 @@
           "con": "+4"
         },
         "special qualities": "blindsense 30 ft. "
-      }
-    },
-    "giant mantis": {
-      "starting statistics": {
-        "size": "medium",
-        "speed": "30 ft. , climb 30 ft. , fly 40 ft. (average)",
-        "ac": "+3 natural armor",
-        "attack": "2 claws (1d4 plus grab)",
-        "ability scores": {
-          "str": 10,
-          "dex": 15,
-          "con": 10,
-          "int": null,
-          "wis": 12,
-          "cha": 7
-        },
-        "special attacks": "lunge",
-        "special qualities": "darkvision",
-        "cmd trip": "+8"
-      },
-      "7th-level advancement": {
-        "size": "large",
-        "ac": "+2 natural armor",
-        "attack": "2 claws (1d6)",
-        "ability scores": {
-          "str": "+8",
-          "dex": "-2",
-          "con": "+4"
-        },
-        "special attacks": "mandibles (1d6 secondary attack against a grabbed target), sudden strike (may take a full attack in the surprise round)"
       }
     },
     "marsupial devil": {
@@ -2315,36 +2504,6 @@
         "special qualities": "trample, whip tail"
       }
     },
-    "giant mole": {
-      "source": "source",
-      "starting statistics": {
-        "size": "small",
-        "speed": "20 ft. , burrow 10 ft. ",
-        "ac": "+1 natural armor",
-        "attack": "2 claws (1d4)",
-        "ability scores": {
-          "str": 12,
-          "dex": 15,
-          "con": 13,
-          "int": 2,
-          "wis": 10,
-          "cha": 5
-        },
-        "special qualities": "low-light vision, tremorsense 30 ft. "
-      },
-      "4th-level advancement": {
-        "size": "medium",
-        "speed": "burrow 20 ft. ",
-        "ac": "+2 natural armor",
-        "attack": "2 claws (1d6)",
-        "ability scores": {
-          "str": "+2",
-          "dex": "-2",
-          "con": "+4"
-        },
-        "special attacks": "rend (2 claws, 1d6)"
-      }
-    },
     "monitor lizard": {
       "starting statistics": {
         "size": "small",
@@ -2399,34 +2558,6 @@
           "con": "+4"
         },
         "special attacks": "powerful charge (gore, 1d8)"
-      }
-    },
-    "giant moray eel": {
-      "starting statistics": {
-        "size": "medium",
-        "ac": "+5 natural armor",
-        "speed": "swim 30 ft. ",
-        "attack": "bite (1d8 plus grab)",
-        "ability scores": {
-          "str": 14,
-          "dex": 16,
-          "con": 12,
-          "int": 1,
-          "wis": 12,
-          "cha": 8
-        },
-        "special qualities": "low-light vision"
-      },
-      "7th-level advancement": {
-        "size": "large",
-        "ac": "+3 natural armor",
-        "attack": "bite (2d6)",
-        "ability scores": {
-          "str": "+8",
-          "dex": "-2",
-          "con": "+4"
-        },
-        "special qualities": "gnaw"
       }
     },
     "octopus": {
@@ -2567,34 +2698,6 @@
         "special attacks": "powerful bite"
       }
     },
-    "dire pangolin": {
-      "source": "source",
-      "starting statistics": {
-        "size": "small",
-        "speed": "30 ft, burrow 5 ft",
-        "ac": "+6 natural armor",
-        "attack": "2 claws (1d4)",
-        "ability scores": {
-          "str": 12,
-          "dex": 10,
-          "con": 17,
-          "int": 2,
-          "wis": 12,
-          "cha": 6
-        },
-        "special qualities": "low-light vision, scent"
-      },
-      "4th-level advancement": {
-        "size": "medium",
-        "attack": "2 claws (1d6)",
-        "ability scores": {
-          "str": "+4",
-          "dex": "-2",
-          "con": "+2"
-        },
-        "special qualities": "razor scales (ex)"
-      }
-    },
     "parasaurolophus": {
       "starting statistics": {
         "size": "medium",
@@ -2676,36 +2779,6 @@
         "special qualities": "combat trained"
       }
     },
-    "giant porcupine": {
-      "source": "source",
-      "starting statistics": {
-        "size": "small",
-        "speed": "30 ft. ",
-        "ac": "+1 natural armor",
-        "attack": "tail slap (1d4)",
-        "ability scores": {
-          "str": 14,
-          "dex": 12,
-          "con": 15,
-          "int": 2,
-          "wis": 13,
-          "cha": 5
-        },
-        "special attacks": "quills (as porcupine quills)",
-        "special qualities": "low-light vision, scent"
-      },
-      "4th-level advancement": {
-        "size": "medium",
-        "ac": "+2 natural armor",
-        "attack": "tail slap (1d6)",
-        "ability scores": {
-          "str": "+2",
-          "dex": "-2",
-          "con": "+4"
-        },
-        "special attacks": "quills (as giant porcupine quills)"
-      }
-    },
     "prionosuchus": {
       "source": "source",
       "starting statistics": {
@@ -2760,32 +2833,6 @@
           "dex": "-2",
           "con": "+4"
         }
-      }
-    },
-    "riding python": {
-      "source": "prg: mc",
-      "starting statistics": {
-        "size": "medium",
-        "speed": "30 ft. ",
-        "ac": "+1 natural armor",
-        "attack": "bite (1d6)",
-        "ability scores": {
-          "str": 11,
-          "dex": 14,
-          "con": 13,
-          "int": 1,
-          "wis": 10,
-          "cha": 4
-        },
-        "cmd": "(can't be tripped)",
-        "special qualities": "blindsight 60 ft. "
-      },
-      "4th-level advancement": {
-        "ability scores": {
-          "str": "+2",
-          "con": "+2"
-        },
-        "special qualities": "combat training (see handle animal)"
       }
     },
     "quetzalcoatlus": {
@@ -2845,84 +2892,6 @@
         "bonus feat": "improved bull rush"
       }
     },
-    "barbed ram": {
-      "source": "source",
-      "starting statistics": {
-        "size": "small",
-        "speed": "40 ft. ",
-        "ac": "+1 natural",
-        "attack": "gore (1d4)",
-        "ability scores": {
-          "str": 10,
-          "dex": 17,
-          "con": 11,
-          "int": 2,
-          "wis": 14,
-          "cha": 7
-        },
-        "special qualities": "low-light vision, scent"
-      },
-      "4th-level advancement": {
-        "size": "medium",
-        "attack": "gore (1d6)",
-        "ability scores": {
-          "str": "+4",
-          "dex": "-2",
-          "con": "+2"
-        },
-        "special attacks": "bleed (gore, 1), powerful charge (gore, 1d8)"
-      }
-    },
-    "dire rat": {
-      "starting statistics": {
-        "size": "small",
-        "speed": "40 ft. , climb 20 ft. , swim 20 ft. ",
-        "attack": "bite (1d4)",
-        "ability scores": {
-          "str": 10,
-          "dex": 17,
-          "con": 12,
-          "int": 2,
-          "wis": 12,
-          "cha": 4
-        },
-        "special qualities": "low-light vision, scent"
-      },
-      "4th-level advancement": {
-        "attack": "bite (1d4 plus disease [filth fever: onset 1d3 days; frequency 1/day; effect 1d3 dex damage and 1d3 con damage; cure 2 consecutive saves, con-based dc])",
-        "ability scores": {
-          "str": "+2",
-          "con": "+2"
-        }
-      }
-    },
-    "giant raven": {
-      "source": "source",
-      "starting statistics": {
-        "size": "small",
-        "speed": "20 ft. , fly 50 ft. (average)",
-        "attack": "bite (1d4)",
-        "ability scores": {
-          "str": 8,
-          "dex": 13,
-          "con": 10,
-          "int": 2,
-          "wis": 15,
-          "cha": 7
-        },
-        "special qualities": "low-light vision, scavenger"
-      },
-      "4th-level advancement": {
-        "size": "medium",
-        "ac": "+2 natural armor",
-        "attack": "bite (1d6)",
-        "ability scores": {
-          "str": "+4",
-          "dex": "+2",
-          "con": "+2"
-        }
-      }
-    },
     "rhinoceros": {
       "starting statistics": {
         "size": "medium",
@@ -2949,6 +2918,57 @@
           "con": "+4"
         },
         "special qualities": "powerful charge (gore, 2d8)"
+      }
+    },
+    "riding kiwi": {
+      "source": "source",
+      "starting statistics": {
+        "size": "large",
+        "speed": "50 ft",
+        "ac": "+1 natural armor",
+        "attack": "bite (1d8)",
+        "ability scores": {
+          "str": 15,
+          "dex": 16,
+          "con": 13,
+          "int": 2,
+          "wis": 12,
+          "cha": 6
+        },
+        "special qualities": "low-light vision, scent"
+      },
+      "4th-level advancement": {
+        "ability scores": {
+          "str": "+2",
+          "con": "+2"
+        },
+        "special qualities": "combat trained"
+      }
+    },
+    "riding python": {
+      "source": "prg: mc",
+      "starting statistics": {
+        "size": "medium",
+        "speed": "30 ft. ",
+        "ac": "+1 natural armor",
+        "attack": "bite (1d6)",
+        "ability scores": {
+          "str": 11,
+          "dex": 14,
+          "con": 13,
+          "int": 1,
+          "wis": 10,
+          "cha": 4
+        },
+        "cmd": "(can't be tripped)",
+        "special qualities": "blindsight 60 ft. "
+      },
+      "4th-level advancement": {
+        "ability scores": {
+          "str": "+2",
+          "con": "+2"
+        },
+        "special qualities": "combat training (see handle animal)"
       }
     },
     "roc": {
@@ -3006,58 +3026,6 @@
           "con": "+4"
         },
         "special attacks": "pounce, saber-toothed bite (2d8 bite attack, only on a grapple check to deal damage)"
-      }
-    },
-    "cave salamander": {
-      "source": "prg: mc",
-      "starting statistics": {
-        "size": "medium",
-        "speed": "40 ft. ",
-        "ac": "+2 natural armor",
-        "attack": "bite (1d6)",
-        "ability scores": {
-          "str": 13,
-          "dex": 12,
-          "con": 13,
-          "int": 1,
-          "wis": 12,
-          "cha": 4
-        },
-        "special qualities": "darkvision 60 ft. "
-      },
-      "4th-level advancement": {
-        "ability scores": {
-          "str": "+2",
-          "con": "+2"
-        },
-        "special qualities": "combat training (see handle animal)"
-      }
-    },
-    "giant salamander": {
-      "source": "source",
-      "starting statistics": {
-        "size": "medium",
-        "speed": "20 ft. , swim 30 ft. ",
-        "ac": "+3 natural armor",
-        "attack": "bite (1d4)",
-        "ability scores": {
-          "str": 13,
-          "dex": 14,
-          "con": 15,
-          "int": 1,
-          "wis": 12,
-          "cha": 4
-        },
-        "special qualities": "amphibious, tremorsense 30 ft. (underwater only), scent"
-      },
-      "4th-level advancement": {
-        "ac": "+2 natural armor",
-        "ability scores": {
-          "str": "+2",
-          "dex": 2,
-          "con": "+4"
-        },
-        "racial skill modifiers": "+4 stealth"
       }
     },
     "seahorse": {
@@ -3581,6 +3549,32 @@
         "special qualities": "ferocity, reflexive strike"
       }
     },
+    "switchback jackal": {
+      "source": "pap115",
+      "starting statistics": {
+        "size": "small",
+        "speed": "40 ft. ",
+        "ac": "+1 natural armor",
+        "attack": "bite (1d4), 2 claws (1d3)",
+        "ability scores": {
+          "str": 11,
+          "dex": 13,
+          "con": 14,
+          "int": 2,
+          "wis": 13,
+          "cha": 6
+        },
+        "special qualities": "low-light vision, problem solver, scent"
+      },
+      "4th-level advancement": {
+        "ability scores": {
+          "dex": "+4",
+          "con": "+2",
+          "wis": "+2"
+        },
+        "bonus feat": "overwhelm"
+      }
+    },
     "therizinosaurus": {
       "source": "source",
       "starting statistics": {
@@ -4051,58 +4045,6 @@
         }
       }
     },
-    "wolf": {
-      "starting statistics": {
-        "size": "medium",
-        "speed": "50 ft. ",
-        "ac": "+2 natural armor",
-        "attack": "bite (1d6 plus trip)",
-        "ability scores": {
-          "str": 13,
-          "dex": 15,
-          "con": 15,
-          "int": 2,
-          "wis": 12,
-          "cha": 6
-        },
-        "special qualities": "low-light vision, scent"
-      },
-      "7th-level advancement": {
-        "size": "large",
-        "ac": "+2 natural armor",
-        "attack": "bite (1d8 plus trip)",
-        "ability scores": {
-          "str": "+8",
-          "dex": "-2",
-          "con": "+4"
-        }
-      }
-    },
-    "wolfdog": {
-      "source": "source",
-      "starting statistics": {
-        "size": "medium",
-        "speed": "40 ft. ",
-        "ac": "+2 natural armor",
-        "attack": "bite (1d6)",
-        "ability scores": {
-          "str": 15,
-          "dex": 15,
-          "con": 13,
-          "int": 2,
-          "wis": 12,
-          "cha": 6
-        },
-        "special qualities": "low-light vision, scent"
-      },
-      "4th-level advancement": {
-        "ability scores": {
-          "str": "+2",
-          "con": "+2"
-        },
-        "attack": "bite (1d6 plus 1d4 bleed)"
-      }
-    },
     "whale, blue": {
       "source": "source",
       "starting statistics": {
@@ -4188,6 +4130,58 @@
         "special qualities": "blindsight 120 ft. "
       }
     },
+    "wolf": {
+      "starting statistics": {
+        "size": "medium",
+        "speed": "50 ft. ",
+        "ac": "+2 natural armor",
+        "attack": "bite (1d6 plus trip)",
+        "ability scores": {
+          "str": 13,
+          "dex": 15,
+          "con": 15,
+          "int": 2,
+          "wis": 12,
+          "cha": 6
+        },
+        "special qualities": "low-light vision, scent"
+      },
+      "7th-level advancement": {
+        "size": "large",
+        "ac": "+2 natural armor",
+        "attack": "bite (1d8 plus trip)",
+        "ability scores": {
+          "str": "+8",
+          "dex": "-2",
+          "con": "+4"
+        }
+      }
+    },
+    "wolfdog": {
+      "source": "source",
+      "starting statistics": {
+        "size": "medium",
+        "speed": "40 ft. ",
+        "ac": "+2 natural armor",
+        "attack": "bite (1d6)",
+        "ability scores": {
+          "str": 15,
+          "dex": 15,
+          "con": 13,
+          "int": 2,
+          "wis": 12,
+          "cha": 6
+        },
+        "special qualities": "low-light vision, scent"
+      },
+      "4th-level advancement": {
+        "ability scores": {
+          "str": "+2",
+          "con": "+2"
+        },
+        "attack": "bite (1d6 plus 1d4 bleed)"
+      }
+    },
     "wolliped": {
       "starting statistics": {
         "size": "medium",
@@ -4241,6 +4235,36 @@
         },
         "special qualities": "pack animal (speed is never modified by encumbrance)"
       }
+    },
+    "yolubilis heron": {
+      "source": "pap97",
+      "starting statistics": {
+        "size": "medium",
+        "speed": "30 ft. , fly 60 ft. (average)",
+        "ac": "+2 natural armor",
+        "attack": "bite (1d8)",
+        "ability scores": {
+          "str": 13,
+          "dex": 15,
+          "con": 14,
+          "int": 2,
+          "wis": 12,
+          "cha": 9
+        },
+        "special qualities": "low-light vision"
+      },
+      "7th-level advancement": {
+        "size": "large",
+        "ac": "+2 natural armor",
+        "attack": "bite (2d6)",
+        "ability scores": {
+          "str": "+8",
+          "dex": "-2",
+          "con": "+2"
+        },
+        "special attacks": "still predator"
+      },
+      "still predator (ex)": "a yolubilis heron has the ability to stand perfectly still for hours at a time while awaiting prey, making it easy to mistake the bird's legs for slim tree trunks. A yolubilis heron can use the freeze ability while adjacent to trees or any vegetation that could conceal its upper body. While standing in water, it can use the freeze ability against submerged creatures. Other creatures with low intelligence scores or poor senses might be tricked by this ability as well. "
     },
     "zebra": {
       "source": "source",
@@ -5420,6 +5444,60 @@
           "str": "+8",
           "dex": "-2",
           "con": "+4"
+        }
+      }
+    }
+  },
+  "magical_beast": {
+    "griffon": {
+      "starting statistics": {
+        "size": "large",
+        "speed": "30 ft., fly 40 ft. (average; unable to carry a rider while flying)",
+        "ac": "+4 natural armor",
+        "attack": "bite (1d6)",
+        "ability scores": {
+          "str": 16,
+          "dex": 15,
+          "con": 16,
+          "int": 5,
+          "wis": 13,
+          "cha": 8
+        },
+        "special qualities": "darkvision 60 ft., low-light vision, scent."
+      },
+      "7th-level advancement": {
+        "speed": "40 ft., fly 80 ft. (average; unable to carry a rider while flying)",
+        "ac": "+2 natural armor",
+        "attack": "bite (1d6), 2 talons (1d6)",
+        "ability scores": {
+          "str": "+2",
+          "con": "+2"
+        },
+        "special attacks": "pounce, rake (1d6). mastery (7th level) the griffon can carry a rider while flying, but reduces its fly speed by half while doing so."
+      }
+    },
+    "hippogriff": {
+      "starting statistics": {
+        "size": "large",
+        "speed": "40 ft., fly 60 ft. (average; unable to carry a rider while flying)",
+        "ac": "+2 natural armor",
+        "attack": "bite (1d6)",
+        "ability scores": {
+          "str": 15,
+          "dex": 15,
+          "con": 14,
+          "int": 2,
+          "wis": 12,
+          "cha": 9
+        },
+        "special qualities": "darkvision 60 ft., low-light vision, scent."
+      },
+      "4th-level advancement": {
+        "speed": "40 ft., fly 100 ft. (average; unable to carry a rider while flying)",
+        "attack": "bite (1d6), 2 claws (1d4)",
+        "ability scores": {
+          "str": "+2",
+          "con": "+2"
         }
       }
     }

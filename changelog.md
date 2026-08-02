@@ -346,6 +346,28 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   the matrix. The payload now exports `skill_rank_budget` and `normal_feat_amount` as the sweep's
   assertion handles.
 
+### Added
+- **Reindeer, griffon and hippogriff join the companion roster, and a `magical_beast` tier keeps
+  the last two out of the random roll.** Added by the new `Backend/scripts/scrape_companion_species.py`
+  ([#41](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/41)).
+  - Griffon and hippogriff are magical beasts no druid can simply have — they arrive only through an
+    archetype's curated species pool. `animal_chooser` reads only `normal` / `plant` / `vermin`, so a
+    fourth `magical_beast` tier makes that restriction structural rather than something every future
+    consumer has to remember.
+  - d20pfsrd carries **two** griffon and two hippogriff entries; the script selects by enclosing
+    section, taking the non-third-party one over the `LG:LH` version gated behind a *Beast-Speaker*
+    feat this generator doesn't model. Choosing by name alone would silently take whichever the
+    parser reached last.
+  - **Five of the nine species the ticket called missing already existed** under this file's
+    `"noun, modifier"` spelling — `bat, dire`, `weasel, giant` — or without a *giant* qualifier that
+    the stat block already implies (the companion seahorse is Large; `seahorse` *is* the giant one).
+    Verified field-by-field against Archives of Nethys. New
+    `Backend/json/companion_species_aliases.json` maps the pool spellings onto the file's keys, so
+    the hard-failure rule for absent species doesn't fire on five creatures that are present.
+  - **Giant eagle was not added.** PF1e publishes no animal-companion stat block for one, and the
+    archetype that would grant it forbids mounts with a fly speed. It is recorded in the alias file
+    as unavailable, with guidance, rather than invented.
+
 ### Fixed
 - **Eleven animal companions the generator could never roll are reachable, and advanced companions
   stopped gaining +2 AC they were never owed.** `Backend/json/animal_choices.json` carried five

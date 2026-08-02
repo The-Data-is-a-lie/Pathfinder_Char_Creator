@@ -86,14 +86,26 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   flaw_effects.json. `backstory_examples/` — few-shot examples for the backstory API.
 - **Bonded creatures** — `animal_companion.json` (`companion` = the level chassis, rows `"1"`–`"40"`
   keyed by *effective* level, carrying that row's own `feats` count; `feats` = a flat 27-name bag) and
-  `animal_choices.json` (`normal` 145 / `plant` 14 / `vermin` 23 species → `starting statistics` plus
-  exactly one `"<N>th-level advancement"` delta block, keys lowercase and comma-inverted:
-  `"ant, giant"`). Read by `class_func/animal_companions.py` (**druid-only today**, no stat-block
-  math, advancement block never merged). ⚠ `animal_choices.json` has a known **sign-loss defect** —
-  109 size-up rows record `dex: 2` where PF1e means `−2`; see `feature_spec_todo.md` §8 (D5) before
-  consuming it. The spec's planned files — `companion_grantors.json`, `familiar_master_table.json`,
-  `familiar_choices.json`, `pf_content_companions.json`, `eidolon_base_forms.json` — do **not** exist
-  yet.
+  `animal_choices.json` (`normal` 157 / `plant` 14 / `vermin` 23 / `magical_beast` 2 species →
+  `starting statistics` plus one or more `"<N>th-level advancement"` delta blocks, keys lowercase and
+  comma-inverted: `"ant, giant"`). Read by `class_func/animal_companions.py` (**druid-only today**, no
+  stat-block math, advancement block never merged).
+  - **`magical_beast` is not in the random roll.** `animal_chooser` reads only `normal` / `plant` /
+    `vermin`, which is what keeps griffon and hippogriff reachable solely through a curated archetype
+    species pool — their RAW availability.
+  - **Ability values are typed by block:** `starting statistics` holds bare ints (absolute scores),
+    advancement blocks hold signed strings (deltas). A bare int in an advancement block means a sign
+    was lost — the defect `scripts/repair_animal_choices.py` fixed and `validate_companion_data.py`
+    (planned, #27) gates.
+  - `companion_species_aliases.json` maps the spellings archetype `species_pool` entries use
+    (`"giant weasel"`, `"dire bat"`) onto this file's keys (`"weasel, giant"`, `"bat, dire"`), and
+    records species PF1e has no companion stat block for (giant eagle). **Resolve through it before
+    reporting a species as missing.**
+  - Scripts: `scripts/repair_animal_choices.py` (idempotent scrape repair) ·
+    `scripts/scrape_companion_species.py` (adds species from d20pfsrd).
+  - The spec's planned files — `companion_grantors.json`, `familiar_master_table.json`,
+    `familiar_choices.json`, `pf_content_companions.json`, `eidolon_base_forms.json`,
+    `companion_archetypes.json` — do **not** exist yet.
 - Loose files: races (races.json, PlayableRaces.json, racial_stat_changes.json), deity.json,
   archetypes.json, cleric/druid_domains.json, wizard_schools.json, bloodlines.json,
   witch_patrons.json, spirits.json, items.json/items_best.json, weapons_data.json,
