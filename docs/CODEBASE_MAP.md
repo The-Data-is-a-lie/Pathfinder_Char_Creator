@@ -111,9 +111,20 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
     reporting a species as missing.**
   - Scripts: `scripts/repair_animal_choices.py` (idempotent scrape repair) ·
     `scripts/scrape_companion_species.py` (adds species from d20pfsrd).
-  - The spec's planned files — `companion_grantors.json`, `familiar_master_table.json`,
-    `familiar_choices.json`, `pf_content_companions.json`, `eidolon_base_forms.json`,
-    `companion_archetypes.json` — do **not** exist yet.
+  - `companion_archetypes.json` is **GENERATED** by `scripts/build_companion_archetypes.py` from
+    archetype prose (206 archetypes across the ten grantor classes);
+    `companion_archetypes_overrides.json` is hand-authored and **wins**;
+    `scripts/validate_companion_archetypes.py` gates the pair. Sign-off worksheet:
+    `docs/companion_archetype_signoff.md` (regenerate with `--review`; never hand-edit it).
+    - Entries carry **`effects`, a list**, as well as the single-valued `effect` primary. 33
+      archetypes genuinely have two (Devolutionist forces a species *and* suppresses the size step),
+      which #38's one-effect vocabulary cannot express.
+  - `pf_content_companions.json` is **GENERATED** by `scripts/dump_pf_content_actors.py` (Foundry
+    must be closed — LevelDB is single-writer). `scripts/validate_companion_names.py` diffs our
+    species against it; a miss is a WARN, because degrading to a bare `npc` is legitimate (D3) but
+    a *silent* miss is not.
+  - Still absent: `companion_grantors.json`, `familiar_master_table.json`, `familiar_choices.json`,
+    `eidolon_base_forms.json`.
 - Loose files: races (races.json, PlayableRaces.json, racial_stat_changes.json), deity.json,
   archetypes.json, cleric/druid_domains.json, wizard_schools.json, bloodlines.json,
   witch_patrons.json, spirits.json, items.json/items_best.json, weapons_data.json,
@@ -195,9 +206,14 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
 - `build_ogl_license.py` → GENERATES root `LICENSE-OGL.txt` (verbatim OGL 1.0a copied from an
   on-disk source + a §15 curated for THIS project) and the psionics `NOTICE.md`. Never hand-edit
   either file; edit the script. It refuses to write a licence whose operative text is truncated.
-- `validate_*.py` → CI-style checks (class_feature_effects, flaw_effects, quality_effects,
-  psionics_data). `validate_psionics_data.py` cross-checks every manifesting class's power-points
+- `validate_*.py` → data gates (class_feature_effects, flaw_effects, quality_effects, psionics_data,
+  companion_data, companion_names, companion_archetypes, …).
+  `validate_psionics_data.py` cross-checks every manifesting class's power-points
   column against the three progressions `pf1-psionics` hardcodes, so a scrape regression fails loudly.
+  - **`validate_all.py` runs every one of them** (glob discovery — a new validator is covered the
+    moment it exists), and `.github/workflows/validate.yml` runs *that* plus a trimmed
+    `test_house_invariants.py` on push. Before this the eleven validators were manual and nothing
+    invoked them.
 - `audit_class_choice_descriptions.py` → flags choice-pool entries with empty/trivial text.
 - `fix_*.py`, `scrape_*.py`, `_smoke_*.py`, `compile_feats_new.py` — one-off converters,
   scrapers, smoke tests.

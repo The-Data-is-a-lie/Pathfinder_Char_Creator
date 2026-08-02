@@ -347,6 +347,49 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   assertion handles.
 
 ### Added
+- **The validators are wired to something that runs them.** This repo had eleven
+  `Backend/scripts/validate_*.py` gates and **nothing invoked any of them** — no CI, no pre-commit,
+  no runner. A gate nobody runs is a sentence, which is the failure the docs doctrine exists to
+  prevent. New `Backend/scripts/validate_all.py` discovers every validator by glob (so a new one is
+  covered the moment it is added, with nothing to register) and runs each in its own process, so one
+  crashing cannot hide the rest. New `.github/workflows/validate.yml` runs it on every push,
+  alongside a trimmed invariant sweep and a check that the generated data files still match their
+  builders. All eleven pass today, which is the first evidence that the eight pre-existing ones had
+  not silently rotted.
+- **Bond-touching archetypes are classified: the `companion_archetypes.json` triad**
+  ([#40](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/40)).
+  `archetypes.json` holds 1,303 archetypes with no structured `replaces` field — the relation
+  between an archetype and the class feature it swaps exists only as prose. Since an archetype is
+  rolled *unconditionally* for every class, a druid has a ~57% chance of rolling one that touches
+  its nature bond, so this cannot be skipped. `build_companion_archetypes.py` classifies the 206
+  that do; `companion_archetypes_overrides.json` wins over it; `validate_companion_archetypes.py`
+  gates the pair.
+  - **The trap is that `forces` cannot be read off the closing sentence.** Cinderwalker (deletes the
+    companion) and Beast Master (grants one) carry the *identical* "This ability replaces hunter's
+    bond." Classification therefore reads what the **replacing feature is**, from its own text.
+    Both come out right.
+  - **The vocabulary needed widening: 33 archetypes have two effects.** Devolutionist both forces a
+    species ("must choose a devolved humanoid … use the stats for an ape animal companion") *and*
+    suppresses a field of the advancement merge ("doesn't increase to size Large at 4th level").
+    #38 gives an archetype one `effect`; collapsing the pair silently drops whichever was tested
+    second, so entries now carry an `effects` **list** beside the single-valued primary.
+  - **Every verdict is a proposal until signed off.** `docs/companion_archetype_signoff.md` is the
+    worksheet — least-confident first, each proposed effect quoted with the phrase that triggered
+    it, so a reviewer can judge without opening the book. 23 entries are flagged where a "select
+    from the following" restriction names **domains** rather than creatures: the druid's nature bond
+    has two sides, and a domain-side restriction is indistinguishable from a species pool until you
+    read what is being listed.
+- **The `pf-content` Actor names the module clones are captured and gated**
+  ([#29](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/29)).
+  `dump_pf_content_actors.py` writes `pf_content_companions.json` — 205 companions, 175 familiars
+  and 14 eidolon base forms (seven forms in both sizes, as the spec predicted).
+  `validate_companion_names.py` diffs every species the generator can emit against it: **144 of 196
+  match**, and the 52 that do not are listed by name. A miss stays a warning, because degrading to a
+  bare `npc` is the intended behaviour (D3) — but a *silent* miss is what already bit spell
+  conditionals and psionics, so the count is printed every run and `--strict` promotes it.
+  - The ticket asked for a new `.mjs` LevelDB reader; the existing `dump_foundry_pack.mjs` is
+    already generic over pack directories, and `reconcile_psionics_names.py` already solves finding
+    an installed `classic-level`. Reused both — the new file is the Python caller only.
 - **The companion data has a gate: `Backend/scripts/validate_companion_data.py`**
   ([#27](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/27)). The scrape repair
   above is worth nothing if the next edit quietly undoes it, so the conventions it established are
