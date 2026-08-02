@@ -210,7 +210,8 @@ Web-sheet rendering is explicitly **not** a gate.
 - Power **conditionals** on the main weapon, mirroring the PoW maneuver / Spheres talent pipelines.
   Only sharpens once the payload shape lands.
 - The **psicrystal**, which is a psion/wilder bonded item but structurally a companion — cross-refs
-  [Map: Bonded creatures](../companions/map.md).
+  [Map: Bonded creatures — build](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/18)
+  (that effort moved to GitHub issues on 2026-08-01; this markdown map is the last one on disk).
 - Whether psionic **items** (cognizance crystals, dorjes, power stones) enter the gear chooser.
 - The **v2 classes** — Genesis, Skipper, Thug, Warpmind, psionic Zealot, Soulknife (High Psionics),
   and the Gifted NPC class. All have wiki pages; none has a Foundry class item, and the psionic

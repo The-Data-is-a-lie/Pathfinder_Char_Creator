@@ -226,6 +226,50 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     than it earns is worse than one with a documented ceiling.
 
 ### Changed
+- **A bonded creature's coin flips are tuning data, and a suppressed bond now says so.** §8 of
+  `docs/feature_spec_todo.md` gained *Choice outcomes and archetype swaps*, closing the half of D8
+  that named the archetype swaps and the arcane-bond flip without specifying either
+  ([ticket #38](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/38)).
+  - **The odds live on the grantor row, not in code.** Each grantor whose class feature is a choice
+    carries `odds` / `on_win` / `on_loss`, rolled fresh per row. Every gate in the generator today is
+    an ad-hoc `random.randint` with an inline constant, and this one would have been the twelfth.
+  - **A bond that yields no creature still appears in the payload** — `species: null` plus an
+    `outcome` saying why — but only once the grantor's level threshold was met, so "no mount yet at
+    3rd level" stays silent. A sheet can now distinguish *the wizard rolled bonded object* from *the
+    generator is broken*, which for druids it currently cannot.
+  - **Archetypes that trade a companion away are honoured through a generated file with hand-written
+    overrides and a validator**, the pattern item and quality effects already use. 204 of the 1,303
+    archetypes touch a bonded creature, and since the generator rolls an archetype for every class, a
+    druid has better than even odds of drawing one — too common to leave to a regex alone, because
+    the archetype that *deletes* the companion and the one that *grants* it are written identically.
+  - **A curated species the data lacks fails the build rather than the character.** Four mounts
+    archetypes name — hippogriff, griffon, giant eagle, dire bat — turned out to be missing, and are
+    now scheduled alongside the five already known
+    ([#41](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/41)).
+  - *Rejected:* a second payload key holding the choices, and recording nothing at all. Two keys that
+    must be read together is the shape most likely to rot, and recording nothing preserves exactly
+    the opacity this was meant to fix.
+- **Design efforts are tracked as GitHub issues, not markdown files.** `/wayfinder` maps for this
+  repo now live on the issue tracker: a map issue labelled `wayfinder:map` with its tickets as
+  GitHub **sub-issues** and blocking expressed as GitHub's **native issue dependencies**. The
+  bonded-creatures effort moved first — [map #18](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/18),
+  carrying the seven migrated decision tickets (#19–#25, six of them closed with their answers) plus
+  the fourteen tickets that build §8 (#26–#39). `docs/wayfinder/companions/` is deleted; the psionics
+  map stays on disk as history. `docs/agents/issue-tracker.md` records the operations.
+  - **Why:** a markdown map cannot express a frontier. Blocked-by was a line of prose that nothing
+    checked, "what is takeable now" meant reading seven files, and a ticket could not reference the
+    web sheet's issues #15 and #22 — which are the other half of this exact feature. GitHub renders
+    the dependency graph in its own UI, so the frontier is visible without opening anything.
+  - **This map also carries execution**, an explicit override of wayfinder's plan-don't-do default:
+    with D1–D8 already locked there are no decisions left to make for most of the work, so the
+    `wayfinder:task` tickets *are* the build slices and resolve by landing a PR.
+  - **Three gaps §8 left open are now tickets rather than assumptions**: the familiar master-bonus
+    table §8 asks for but never sources (#36), the archetype companion swaps and arcane-bond
+    coin-flip odds D8 names but never specifies (#38), and companion gear/gold/naming — which
+    nothing in the spec or the seven closed tickets mentions at all (#37).
+  - *Rejected:* keeping the markdown map and adding a pointer file. It would have preserved the
+    unreadable frontier and the cross-repo blind spot, which are the two things that made the move
+    worth doing.
 - **Psionic mechanics will be sourced from the Library of Metzofitz wiki, not from the
   `pf1-psionics` module's `packs-source/` YAML** — reversing the extraction decision logged further
   down this section. The module's own data disproved it: all twelve of its classes carry the same

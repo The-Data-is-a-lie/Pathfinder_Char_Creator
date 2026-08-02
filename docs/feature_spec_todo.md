@@ -253,8 +253,10 @@ class lists / lowest level first. Validator: `Backend/scripts/validate_spell_con
 ---
 
 ## 8. Bonded creatures (animal companions, mounts, familiars, eidolons)
-**Status: SPEC LOCKED (2026-08-01) — not yet implemented.** Charted in
-`docs/wayfinder/companions/`; this section is that map's destination. §1 (Path of War) and §9
+**Status: SPEC LOCKED (2026-08-01) — not yet implemented.** Charted on
+[map #18](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/18) (issues #19–#25 are
+the decision tickets that produced this section; #26–#41 are the build); this section is that map's
+destination and remains the authority over it. §1 (Path of War) and §9
 (Psionics) are the governing precedents: the backend owns the numbers, a Foundry-side renderer owns
 the presentation, and every holdback is named here rather than left implicit.
 
@@ -303,7 +305,10 @@ today and generate no eidolon at all, so a summoner NPC is missing its entire cl
   wizard 5 legitimately gets a companion **and** a familiar — three Actors on import.
 - **D8 — v1 also owns four adjacent fixes** *(ticket 05)*: the `animal_feats` bug, archetype
   companion swaps, the wizard/sorcerer arcane-bond coin flip, and **adding the Boon Companion feat**,
-  which is absent from the feat data entirely (it appears only inside Spheres talent prose).
+  which is absent from the feat data entirely (it appears only inside Spheres talent prose). D8 named
+  two of those without specifying them; both were settled on
+  [ticket 38](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/38) — see
+  *Choice outcomes and archetype swaps* below.
 
 ### Grantors and effective level (D6)
 
@@ -325,11 +330,12 @@ Rules the resolver enforces:
   one.
 - A grantor whose class feature is a **choice** only fires when the choice came up — the wizard and
   Arcane-bloodline sorcerer arcane bond (familiar *vs* bonded object), the ranger's Hunter's Bond
-  (companion *vs* bond with companions), and the druid's existing domain-vs-companion flip. These are
-  coin flips at generation time, recorded on the entry so the sheet can explain the absence.
-- **Archetypes** that trade a companion away or swap its species list are honoured
-  (`Backend/json/archetypes.json` is already loaded); **Boon Companion** raises effective level once
-  the feat exists.
+  (companion *vs* bond with companions), and the druid's existing domain-vs-companion flip. The odds
+  are **data, not code**: a `choice` object (`odds`, `on_win`, `on_loss`) on the grantor row, drawn
+  with a **fresh roll per row** and recorded as the entry's `outcome`. Grantors with no `choice` key
+  are unconditional.
+- **Archetypes** that trade a companion away or swap its species list are honoured; **Boon Companion**
+  raises effective level once the feat exists.
 
 **The fifth grantor is not a class.** The Spheres of Might *Beastmastery* talent
 (`Backend/json/class_data/spheres/spheres_of_might.json`, the `animal companion` talent) grants a
@@ -354,6 +360,46 @@ whose threshold was never met. It stacks and is capped like every other source.
 **Settled, closing the carry-in from ticket 04:** the paladin's bonded mount uses **the paladin's
 level** as effective druid level — *not* level − 3 — and arrives at **5th**. Cavalier and samurai
 both use their own class level at **1st**.
+
+### Choice outcomes and archetype swaps (D8, ticket 38)
+
+Every grantor above threshold resolves to an **outcome**, and only some outcomes carry a creature.
+A bond that exists but yielded nothing still emits an entry — `species: null` plus the reason — **but
+only when `level gained` was met**; below threshold D6 still emits nothing at all. The sheet can then
+explain an absence instead of showing a blank. This is why the deprecated `animal_companion` alias
+resolves to the first entry that is `type == "companion"` **and** has a non-null species.
+
+The **druid's flip moves into the resolver**: `domain_inquisition.py`'s companion gate reads the
+resolved outcome instead of `domain_chance`, which stays as-is for the inquisitor's unrelated
+domain-vs-inquisitions choice. Without this the two druid outcomes stop being mutually exclusive and
+a druid can get both a companion and a domain, or neither. The species-tier roll is likewise its own
+draw — sharing one roll is what made the `vermin` branch unreachable.
+
+Archetype effects are a **generated data file with hand-authored overrides and a validator**, the
+`build_item_changes.py` pattern: `Backend/scripts/build_companion_archetypes.py` →
+`Backend/json/companion_archetypes.json`, overridden by
+`Backend/json/companion_archetypes_overrides.json`, gated by
+`Backend/scripts/validate_companion_archetypes.py`. `archetypes.json` carries the relation only as
+prose, and `Character.archetype_data()` rolls an archetype for **every** class, so this is a common
+path, not an edge case. All four effect kinds are honoured in v1.
+
+A closing sentence alone cannot classify an archetype — Cinderwalker (deletes the companion) and
+Beast Master (grants one) share the identical "This ability replaces hunter's bond". Classification
+reads the **replacing** feature, which is what the overrides file is for.
+
+The closed vocabularies, enforced by the validators:
+
+```
+outcome:  granted | domain | bonded_object | bond_with_allies | archetype_removed
+effect:   removes | forces | species_pool | progression | none
+flags:    species_pool_unavailable
+```
+
+`none` is an explicit verdict, not "unclassified" — the validator asserts that **no** archetype in a
+grantor class mentioning a bond target is left unclassified, which is what catches drift when the
+scrape is refreshed. A `species_pool` naming a species absent from `animal_choices.json` is a **hard
+validator failure**; the resolver additionally falls back to the standard pool and records
+`species_pool_unavailable`, so a regression degrades rather than crashing generation.
 
 ### The snapshot (ticket 03)
 
@@ -403,15 +449,20 @@ top-level key needs no plumbing on the module side.
 
 `bonded_creatures`, a list beside the existing class blocks, one entry per creature:
 
-`type` · `grantor` · `effective_level` (post-stack, post-cap) · `species` · `kind`
-(`normal`/`plant`/`vermin`, companions only) · `species_stats` (advancement-**merged**, not raw) ·
-`chassis` (the level row from `animal_companion.json`) · `feats` · `stats` (the computed block: hp,
-ac, saves, bab, cmb/cmd, abilities, size, speed, attacks, skills) · `master_abilities` (familiars
-only) · `description` (the eidolon's base form and text) · `pf_content` (the compendium Actor name to
-clone, or `null` → D3 fallback).
+`type` · `grantor` · `outcome` (the resolved choice; see the vocabulary above) · `archetype` (the
+rolled archetype and its effect, when one applies) · `effective_level` (post-stack, post-cap) ·
+`species` · `kind` (`normal`/`plant`/`vermin`, companions only) · `species_stats`
+(advancement-**merged**, not raw) · `chassis` (the level row from `animal_companion.json`) · `feats` ·
+`stats` (the computed block: hp, ac, saves, bab, cmb/cmd, abilities, size, speed, attacks, skills) ·
+`master_abilities` (familiars only) · `description` (the eidolon's base form and text) · `pf_content`
+(the compendium Actor name to clone, or `null` → D3 fallback).
 
-`animal_companion` **remains** as a deprecated alias carrying the old dict shape for the first
-`type == "companion"` entry, so the sheet repo's issue #15 consumer does not break.
+An entry whose bond yielded no creature carries `species: null` and null stat fields; `outcome` says
+why. Consumers must skip those rather than treat them as malformed.
+
+`animal_companion` **remains** as a deprecated alias carrying the old dict shape for the first entry
+that is `type == "companion"` **and** has a non-null species, so the sheet repo's issue #15 consumer
+does not break.
 
 **"Done" per type:** full stat block for **companion, mount and familiar**; **named base form plus
 descriptive text** for the eidolon.
@@ -424,8 +475,18 @@ descriptive text** for the eidolon.
    and that no bare-int ability value survives.
 3. `Backend/scripts/dump_pf_content_actors.mjs` → `Backend/json/pf_content_companions.json`, plus
    `Backend/scripts/validate_companion_names.py` gating species names against it (D3).
-4. `Backend/json/companion_grantors.json` + the resolver in `animal_companions.py`.
+3b. Scrape the nine missing mount species into `animal_choices.json` — hippogriff, griffon, giant
+   eagle and dire bat (named by archetype species pools) plus giant seahorse, giant tortoise,
+   axebeak, reindeer and giant weasel. Blocks 3c, because a curated pool naming an absent species is
+   a hard validator failure.
+3c. The archetype classification triad: `build_companion_archetypes.py` →
+   `companion_archetypes.json`, `companion_archetypes_overrides.json`, and
+   `validate_companion_archetypes.py`.
+4. `Backend/json/companion_grantors.json` + the resolver in `animal_companions.py`. Includes the
+   druid-flip rewire, the fresh-draw-per-row rule and the `vermin` fix.
 5. Advancement merge + stat-block math; fix `animal_feats` to read the chassis row's `feats` count.
+   The merge takes optional per-archetype `progression` overrides that can suppress or replace
+   individual fields of the advancement block.
 6. Payload: emit `bonded_creatures`, keep `animal_companion` as the alias.
 7. Foundry module: loop `Actor.create` in `createCharacter.js`, clone from `pf-content`, patch the
    numbers, degrade on a miss.
@@ -439,9 +500,8 @@ evolution-points-per-level table is still unverified. Ticket 07 owns the point-b
 question — whether an evolution pool fits `generic_class_option_chooser` or wants the Spheres
 funding pattern · the **antipaladin's fiendish servant** (a `summon monster` subsystem, see the
 amendment above) · **improved-familiar prerequisites** (alignment / caster-level gates, on a separate
-PRD page, unverified) · the five mount species missing from `animal_choices.json` (giant seahorse,
-giant tortoise, axebeak, reindeer, giant weasel — absent from `pf-companions` too, so they want a
-small scrape) · **region-flavoured companion pools**, the standing TODO in `animal_companions.py` ·
+PRD page, unverified) · **region-flavoured companion pools**, the standing TODO in
+`animal_companions.py` ·
 companion **token art / portraits** · whether companions should carry buffs/conditionals the way
 weapons do (§1/§4 pattern), only answerable once the rendering model has run · live levelling or
 sync of a companion as the PC advances · the **psicrystal** (§9).
@@ -585,7 +645,8 @@ covering Loxo/Kalyptran/Dolistani too, because `PlayableRaces.json` is walked *p
 `race_func.py::race_traits_chooser` and psionic Duergar collides with core Duergar · the six v2
 classes (Genesis, Skipper, Thug, Warpmind, psionic Zealot — note `zealot` is taken by the PoW class —
 Soulknife (High Psionics)) and the Gifted NPC class · the **psicrystal**, structurally a companion
-(see `docs/wayfinder/companions/map.md`) · turning on the **311 psionic feats already in
+(see [map #18](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/18)) · turning on
+the **311 psionic feats already in
 `data/Metzofitz_Feats.csv`** (gated by `_METZ_TYPES` in `feats.py`; the data is there, the eligibility
 rules are not decided) · power **conditionals** on the main weapon, mirroring §4/§7 · psionic items
 (cognizance crystals, dorjes, power stones) in the gear chooser · multiclass manifester-level

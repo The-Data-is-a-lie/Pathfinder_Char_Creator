@@ -139,14 +139,16 @@ eidolons, mounts/psicrystals) and the **psionics classes**. Both are being desig
 wayfinder maps — decisions before code — and each ends at a spec section in
 `docs/feature_spec_todo.md`. **The release train (Phase 5) waits on these.**
 
-- [x] Work `docs/wayfinder/companions/` to done → `feature_spec_todo.md` §8. **Effort closed
-      2026-08-01**: six of seven tickets resolved, map marked CLOSED, §8 landed. Locked: **one
+- [x] Work the bonded-creatures map to done → `feature_spec_todo.md` §8. **Design effort closed
+      2026-08-01**: six of seven tickets resolved, §8 landed. (The markdown map was retired the same
+      day; its tickets now live on [map #18](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/18)
+      as issues #19–#25.) Locked: **one
       payload, N `npc` Actors**; the **backend owns every number** and the module clones a
       `pf-content` Actor for the body (the web sheet has no game system, so pf1 cannot own the math);
       v1 = **companion + mount + familiar** at a full stat block with the **eidolon degraded, not
       suppressed** — `summoner`/`summoner (unchained)` stay rollable and emit a named base form.
       `animal_companion` becomes the deprecated alias of a new `bonded_creatures` list.
-      Ticket 07 (eidolon evolutions) is open, unblocked, deferred to v1.1.
+      Ticket 07 (eidolon evolutions, #25) is open, unblocked, deferred to v1.1.
       **Three grantor rows from the chart failed RAW verification** and were corrected in the spec:
       `shifter` grants nothing, `antipaladin`'s fiendish servant is a `summon monster` subsystem, and
       `sorcerer` is Arcane-bloodline-conditional — 13 classes touched, 10 at a full stat block.
@@ -164,23 +166,31 @@ wayfinder maps — decisions before code — and each ends at a spec section in
       pass across all 55 classes**, and `validate_psionics_data.py` is at 0 errors.
       **Still open, deliberately:** Foundry-side import (gate 3) spans the module repo and is a later
       branch; voyager bonus feats, psionic races and the other deferred items are listed in §9.
-- [ ] Implement the **companions** spec (§8 build slices, in dependency order — each is a commit):
-      1. `repair_animal_choices.py` — the sign-loss/key-drift/field-bleed repair (D5). **Do this
+- [ ] Implement the **companions** spec. The build is now tracked ticket-by-ticket on
+      [map #18](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/18), which carries
+      execution — each ticket is a commit, and the dependency graph is native GitHub blocking rather
+      than this list's ordering. Slices, in dependency order:
+      1. #26 `repair_animal_choices.py` — the sign-loss/key-drift/field-bleed repair (D5). **Do this
          first**: 109 advancement rows currently inflate every advanced companion by +4 Dex.
-      2. `validate_companion_data.py` — assert the PF1e size-up package, no surviving bare ints.
-      3. `dump_pf_content_actors.mjs` → `pf_content_companions.json` + `validate_companion_names.py`
+      2. #27 `validate_companion_data.py` — assert the PF1e size-up package, no surviving bare ints.
+      3. #29 `dump_pf_content_actors.mjs` → `pf_content_companions.json` + `validate_companion_names.py`
          (the D3 silent-drop gate).
-      4. `companion_grantors.json` + the resolver in `animal_companions.py` (reuses `class_entry_for`).
-      5. Advancement merge + stat-block math; fix the `animal_feats` loop to read the chassis row's
-         own `feats` count.
-      6. Payload: emit `bonded_creatures`, keep `animal_companion` as the deprecated alias.
-      7. Foundry module: loop `Actor.create`, clone from `pf-content`, patch numbers, degrade on miss.
-      8. Web sheet: consume `bonded_creatures`.
-      9. Extend `test_house_invariants.py` with companion invariants (a class missing a
+      4. #30 `companion_grantors.json` + the resolver in `animal_companions.py` (reuses `class_entry_for`).
+      5. #31 Advancement merge + stat-block math; fix the `animal_feats` loop to read the chassis
+         row's own `feats` count.
+      6. #32 Payload: emit `bonded_creatures`, keep `animal_companion` as the deprecated alias, deploy.
+      7. #33 Foundry module: loop `Actor.create`, clone from `pf-content`, patch numbers, degrade on miss.
+      8. #34 Web sheet: consume `bonded_creatures`.
+      9. #35 Extend `test_house_invariants.py` with companion invariants (a class missing a
          `data.good_saves` entry or carrying a bad bab/hit-die/skill-points value already fails it;
          add: no companion below its grantor's threshold, stacked effective level ≤ character level,
          every emitted species present in the `pf-content` dump, merged ability scores non-degenerate).
       Psionics has already done its half of the invariant work.
+      **Three tickets gate the slices and are not themselves slices:** #38 (archetype companion swaps
+      and the arcane-bond coin-flip odds) blocks #30, #36 (the familiar master-bonus table, which §8
+      never sourced) blocks #31, and #39 adds the missing Boon Companion feat. #37 (companion gear,
+      gold share and naming) is unspecified anywhere and should be decided before #31 answers it by
+      omission.
 
 ## Phase 5 — docs + release train (seals 1.0)
 
