@@ -3,6 +3,31 @@ import random
 from utils.class_func.generic_func import class_entry_for
 
 
+# Prerequisite phrases a character satisfies once a bonded creature actually exists.
+# The prereq matcher (generic_func.no_prereq_loop) tests exact string membership in
+# character.chooseable and splits only on commas, so a disjunctive prerequisite like
+# "Animal companion or familiar class feature." is one opaque token that no class-feature
+# key can ever match -- which is why Boon Companion sat in data/feats.csv unreachable.
+# Registering the literal phrases is what the matcher can actually use.
+#
+# A class-feature key cannot stand in for these: the druid's key is "nature bond", which is
+# present whether the druid took the companion or the domain. Only the grant itself knows.
+BONDED_CREATURE_PREREQS = (
+    'animal companion or familiar class feature',
+    'animal companion class feature',
+    'animal companion',
+)
+
+
+def register_bonded_creature_prereqs(character):
+    """Mark that this character has a bonded creature, for feat prerequisite matching.
+
+    Called at the point of the grant, so it moves with the grantor resolver
+    (feature_spec_todo.md §8 D6) when that replaces the druid special-case below.
+    """
+    character.chooseable.update(BONDED_CREATURE_PREREQS)
+
+
 def animal_chooser(character):
     """
     if class = druid
@@ -35,8 +60,9 @@ def animal_chooser(character):
 
 
         character.companion_info = character.animal_companion["companion"][level]
+        register_bonded_creature_prereqs(character)
 
-        return character.chosen_animal         
+        return character.chosen_animal
 
 
 def animal_feats(character):

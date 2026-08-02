@@ -347,6 +347,22 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   assertion handles.
 
 ### Fixed
+- **Boon Companion can be taken — by characters who actually have a companion.** The feat was
+  never missing from `data/feats.csv`; it was **unreachable**, offered to the prerequisite gate 329
+  times across twelve druids and passing zero
+  ([#39](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/39)).
+  - Its prerequisite reads *"Animal companion or familiar class feature."*, and the matcher splits
+    prerequisites on commas only, then requires **every** part to be present verbatim. A disjunction
+    is therefore one opaque token that no class-feature key can match.
+  - Nor could one: a druid's class-feature key is **`nature bond`**, which is present whether the
+    druid took the companion *or* the domain. Only the grant itself knows a creature exists, so
+    `animal_chooser` now records that fact when it grants one — the same line the grantor resolver
+    replaces, so the marker travels with it.
+  - Verified: 5 of 60 druids take it, **every one of them with a companion**; sixty fighters and
+    sixty wizards take it zero times.
+  - The wider defect is filed separately — **163 of the 1,254 feats with prerequisites (13%) carry
+    an "A or B" prerequisite and are unreachable for the same reason**, including Amplified Rage,
+    Awesome Blow and the Archon Style chain.
 - **Characters from Sojoria, Tal-falko and Feyador have their names back.** Every non-ASCII Latin
   character had been deleted from the two hand-authored name files — mid-word, not just at the
   start — so the generator produced `Stefan rling` for `Stefan Örling`, plus `Lindstrm`, `Trnqvist`,
