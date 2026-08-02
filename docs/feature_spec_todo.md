@@ -253,8 +253,10 @@ class lists / lowest level first. Validator: `Backend/scripts/validate_spell_con
 ---
 
 ## 8. Bonded creatures (animal companions, mounts, familiars, eidolons)
-**Status: SPEC LOCKED (2026-08-01) — not yet implemented.** Charted in
-`docs/wayfinder/companions/`; this section is that map's destination. §1 (Path of War) and §9
+**Status: SPEC LOCKED (2026-08-01) — not yet implemented.** Charted on
+[map #18](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/18) (issues #19–#25 are
+the decision tickets that produced this section; #26–#39 are the build); this section is that map's
+destination and remains the authority over it. §1 (Path of War) and §9
 (Psionics) are the governing precedents: the backend owns the numbers, a Foundry-side renderer owns
 the presentation, and every holdback is named here rather than left implicit.
 
@@ -585,7 +587,8 @@ covering Loxo/Kalyptran/Dolistani too, because `PlayableRaces.json` is walked *p
 `race_func.py::race_traits_chooser` and psionic Duergar collides with core Duergar · the six v2
 classes (Genesis, Skipper, Thug, Warpmind, psionic Zealot — note `zealot` is taken by the PoW class —
 Soulknife (High Psionics)) and the Gifted NPC class · the **psicrystal**, structurally a companion
-(see `docs/wayfinder/companions/map.md`) · turning on the **311 psionic feats already in
+(see [map #18](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/18)) · turning on
+the **311 psionic feats already in
 `data/Metzofitz_Feats.csv`** (gated by `_METZ_TYPES` in `feats.py`; the data is there, the eligibility
 rules are not decided) · power **conditionals** on the main weapon, mirroring §4/§7 · psionic items
 (cognizance crystals, dorjes, power stones) in the gear chooser · multiclass manifester-level

@@ -226,6 +226,27 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     than it earns is worse than one with a documented ceiling.
 
 ### Changed
+- **Design efforts are tracked as GitHub issues, not markdown files.** `/wayfinder` maps for this
+  repo now live on the issue tracker: a map issue labelled `wayfinder:map` with its tickets as
+  GitHub **sub-issues** and blocking expressed as GitHub's **native issue dependencies**. The
+  bonded-creatures effort moved first — [map #18](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/18),
+  carrying the seven migrated decision tickets (#19–#25, six of them closed with their answers) plus
+  the fourteen tickets that build §8 (#26–#39). `docs/wayfinder/companions/` is deleted; the psionics
+  map stays on disk as history. `docs/agents/issue-tracker.md` records the operations.
+  - **Why:** a markdown map cannot express a frontier. Blocked-by was a line of prose that nothing
+    checked, "what is takeable now" meant reading seven files, and a ticket could not reference the
+    web sheet's issues #15 and #22 — which are the other half of this exact feature. GitHub renders
+    the dependency graph in its own UI, so the frontier is visible without opening anything.
+  - **This map also carries execution**, an explicit override of wayfinder's plan-don't-do default:
+    with D1–D8 already locked there are no decisions left to make for most of the work, so the
+    `wayfinder:task` tickets *are* the build slices and resolve by landing a PR.
+  - **Three gaps §8 left open are now tickets rather than assumptions**: the familiar master-bonus
+    table §8 asks for but never sources (#36), the archetype companion swaps and arcane-bond
+    coin-flip odds D8 names but never specifies (#38), and companion gear/gold/naming — which
+    nothing in the spec or the seven closed tickets mentions at all (#37).
+  - *Rejected:* keeping the markdown map and adding a pointer file. It would have preserved the
+    unreadable frontier and the cross-repo blind spot, which are the two things that made the move
+    worth doing.
 - **Psionic mechanics will be sourced from the Library of Metzofitz wiki, not from the
   `pf1-psionics` module's `packs-source/` YAML** — reversing the extraction decision logged further
   down this section. The module's own data disproved it: all twelve of its classes carry the same

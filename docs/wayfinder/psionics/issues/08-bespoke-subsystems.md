@@ -83,5 +83,7 @@ rule, but makes the v1 class list unknowable until the scrape lands — the hold
 be an exception, not the plan).
 
 Cross-reference: the aegis's customization points are structurally an evolution pool, so whatever
-`docs/wayfinder/companions/` settles for the eidolon should be checked against this row before the
-aegis is built.
+the bonded-creatures effort settles for the eidolon should be checked against this row before the
+aegis is built — that question is
+[issue #25](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/25), open and
+deferred to v1.1.

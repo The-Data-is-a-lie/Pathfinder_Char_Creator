@@ -200,13 +200,20 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
 `docs/homebrew_rules.md` (house rules — source of truth) · `docs/feature_spec_todo.md` (PoW
 spec) · `docs/pow_conditional_decision_rules.md` / `spheres_conditional_decision_rules.md`.
 
-**In-flight design efforts** live under `docs/wayfinder/<effort>/` — a `map.md` (destination,
-locked decisions, decisions-so-far index, fog, out-of-scope) plus one file per decision ticket in
-`issues/`. A ticket is a *question*, not a task; the **frontier** is every open, unclaimed ticket
-whose `Blocked by:` list is fully resolved. Both efforts are **CLOSED** — `companions/` (bonded
-creatures → `feature_spec_todo.md` §8, closed 2026-08-01, ticket 07 deferred to v1.1) and
-`psionics/` (→ §9, closed 2026-07-31). A closed map is history; the live work list is
-`docs/plan_1.0_finish.md`, and the spec section is the authority.
+**Design efforts (`/wayfinder` maps) live as GitHub issues**, not as files — a map issue labelled
+`wayfinder:map` with its tickets as sub-issues, blocking expressed as native GitHub dependencies.
+Operations are in `docs/agents/issue-tracker.md`. The **frontier** is every open, unassigned child
+with no open blocker, which GitHub renders in its own UI.
+
+- [**Map: Bonded creatures — build**](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/18)
+  — live. Carries execution: its `wayfinder:task` children *are* §8's build slices. The seven
+  markdown tickets that produced §8 were migrated into it on 2026-08-01 (six closed, ticket 07 open
+  and deferred to v1.1).
+- `docs/wayfinder/psionics/` — the one surviving markdown map, **CLOSED** (→ §9, 2026-07-31), kept
+  as history. Not migrated.
+
+A closed map is history; the spec section is the authority, and `docs/plan_1.0_finish.md` remains
+the 1.0 release checklist.
 
 This repo no longer carries `.claude/skills/`. The domain knowledge that lived there (path-of-war,
 spheres-of-power, trainers-and-professions, foundry-conditionals, foundry-sheet-references,

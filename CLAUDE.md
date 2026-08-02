@@ -35,6 +35,10 @@ python Backend/app.py           # Flask server (HTML/JSON view)
   searching the codebase, and update it whenever files, pools, or pipelines move.
 - **Session goals:** at the start of each coding session, (re)write `SESSION_PLAN.md` with this
   session's goals. It is ephemeral and git-ignored — delete and recreate it each session.
+- **Issue tracker:** issues, PRDs and `/wayfinder` maps live as **GitHub issues** on
+  `The-Data-is-a-lie/Pathfinder_Char_Creator`, not as markdown files. Operations (map, child
+  tickets, native blocking, frontier query) are in `docs/agents/issue-tracker.md`. `gh` is portable
+  at `$env:LOCALAPPDATA\Programs\gh\bin\gh.exe`, not on PATH.
 - **Domain knowledge:** this repo has **no `.claude/skills/`** — the Pathfinder/generator knowledge
   that used to live there (Path of War, Spheres, trainers & professions, conditionals, buffs/sheet
   references, profession genres, changelog & PR conventions) was consolidated into the **OKF
