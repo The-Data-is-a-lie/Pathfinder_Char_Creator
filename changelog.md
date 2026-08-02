@@ -347,6 +347,31 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   assertion handles.
 
 ### Fixed
+- **Eleven animal companions the generator could never roll are reachable, and advanced companions
+  stopped gaining +2 AC they were never owed.** `Backend/json/animal_choices.json` carried five
+  distinct scrape defects, repaired by the new idempotent
+  `Backend/scripts/repair_animal_choices.py` ([#26](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/26)).
+  - **The scrape lost a nesting level and swallowed a species run whole.** `shark`,
+    `shark, hammerhead`, `shrike, impaler`, `skittergoat`, `skunk, giant`, four snakes,
+    `snapping turtle` and `spinosaurus` were sitting *inside* `seahorse`'s body, so the chooser —
+    which rolls over the top-level keys — could not reach any of them. `seahorse` and `walrus` also
+    had their own advancement block buried one level too deep. Normal companions: **145 → 156**.
+  - **Advancement `dex` deltas had lost their minus sign** on 128 rows. A PF1e size increase never
+    *raises* Dexterity, and 16 rows in the identical position had kept their `-2`, which is what
+    identified the rest as damage rather than data. Merging the file as written inflated every
+    advanced companion by +4 Dex — **+2 AC, +2 Reflex, +2 initiative**.
+  - Advancement deltas are now **signed strings** (`"+8"`, `"-2"`) while the absolute scores in
+    `starting statistics` stay bare integers, so the delta-vs-absolute distinction is visible in the
+    type rather than inferred from context.
+  - **Six underscored key spellings** (`ability_scores`, `starting_statistics`,
+    `4th-level_advancement`, …) shadowed the spaced forms across 88 keys, so lookups silently missed
+    those species. Normalised to the spaced spelling.
+  - `faerie mount`'s advancement `ability scores` block had swallowed its sibling `size` / `speed` /
+    `attack` fields, and 24 mindless vermin split PF1e's "no Int score" between `""` and `null` —
+    now uniformly `null`, which is distinct from an Int of 0.
+  - **Left deliberately unrepaired:** `giant salamander`'s 4th-level `dex: 2`, the one bare integer
+    whose block records no size increase. Without the size-up rule there is nothing to recover the
+    sign *from*, so the script reports it rather than guessing.
 - **Characters from Sojoria, Tal-falko and Feyador have their names back.** Every non-ASCII Latin
   character had been deleted from the two hand-authored name files — mid-word, not just at the
   start — so the generator produced `Stefan rling` for `Stefan Örling`, plus `Lindstrm`, `Trnqvist`,
