@@ -226,6 +226,29 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     than it earns is worse than one with a documented ceiling.
 
 ### Changed
+- **A bonded creature's coin flips are tuning data, and a suppressed bond now says so.** §8 of
+  `docs/feature_spec_todo.md` gained *Choice outcomes and archetype swaps*, closing the half of D8
+  that named the archetype swaps and the arcane-bond flip without specifying either
+  ([ticket #38](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/38)).
+  - **The odds live on the grantor row, not in code.** Each grantor whose class feature is a choice
+    carries `odds` / `on_win` / `on_loss`, rolled fresh per row. Every gate in the generator today is
+    an ad-hoc `random.randint` with an inline constant, and this one would have been the twelfth.
+  - **A bond that yields no creature still appears in the payload** — `species: null` plus an
+    `outcome` saying why — but only once the grantor's level threshold was met, so "no mount yet at
+    3rd level" stays silent. A sheet can now distinguish *the wizard rolled bonded object* from *the
+    generator is broken*, which for druids it currently cannot.
+  - **Archetypes that trade a companion away are honoured through a generated file with hand-written
+    overrides and a validator**, the pattern item and quality effects already use. 204 of the 1,303
+    archetypes touch a bonded creature, and since the generator rolls an archetype for every class, a
+    druid has better than even odds of drawing one — too common to leave to a regex alone, because
+    the archetype that *deletes* the companion and the one that *grants* it are written identically.
+  - **A curated species the data lacks fails the build rather than the character.** Four mounts
+    archetypes name — hippogriff, griffon, giant eagle, dire bat — turned out to be missing, and are
+    now scheduled alongside the five already known
+    ([#41](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/41)).
+  - *Rejected:* a second payload key holding the choices, and recording nothing at all. Two keys that
+    must be read together is the shape most likely to rot, and recording nothing preserves exactly
+    the opacity this was meant to fix.
 - **Design efforts are tracked as GitHub issues, not markdown files.** `/wayfinder` maps for this
   repo now live on the issue tracker: a map issue labelled `wayfinder:map` with its tickets as
   GitHub **sub-issues** and blocking expressed as GitHub's **native issue dependencies**. The
