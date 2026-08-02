@@ -347,6 +347,31 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   assertion handles.
 
 ### Added
+- **The companion data has a gate: `Backend/scripts/validate_companion_data.py`**
+  ([#27](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/27)). The scrape repair
+  above is worth nothing if the next edit quietly undoes it, so the conventions it established are
+  now asserted rather than described. It shares `repair_animal_choices.py`'s vocabulary — the size
+  list, the block regexes, the drifted spellings — by importing them, so the repairer and the gate
+  cannot disagree about what a well-formed block is.
+  - **What fails is what no legitimate entry can be:** a bare integer where an advancement delta
+    belongs, a positive Dex on a size increase, an absolute score written as a delta or the reverse,
+    prose in an ability slot, an underscored key shadowing a spaced one, an `ac` that is not a
+    natural-armor delta, a size outside the nine categories.
+  - **What does *not* fail is the size package**, and this is a correction to the spec. §8 describes
+    it as Str +8 / Dex −2 / Con +4 / natural armor +2, but that is one row of PF1e's size-change
+    table, not a universal rule — Small → Medium is Str +4 / Con +2, and Large → Huge carries
+    natural armor +3. Measured against the *correct* scaled table, **97 of 153 size increases still
+    disagree** — `bear, grizzly` reaches Large on Str +4. Those are the published per-species
+    entries, and for a companion the published entry is the authority, not a table derived from it.
+    So the deviations print as a WARN census every run: visible, counted, and never a build failure
+    over faithfully transcribed rules text. *Rejected: hard-failing the table* (turns 97 faithful
+    rows red and invites "fixing" the data to match a formula) *and a curated 97-row allowlist*
+    (the same audit, paid up front, for a signal the WARN block already gives).
+  - It also **owns the closed vocabulary** from the D8 grill — the `outcome`, `effect` and `flags`
+    sets — as module constants, and validates `companion_grantors.json` and
+    `companion_archetypes.json` against them the moment those files exist. One owner, importable by
+    the grantor resolver and the archetype triad, the way `validate_maneuver_changes.py` takes its
+    target vocabulary from `validate_quality_effects.py` instead of restating it.
 - **Reindeer, griffon and hippogriff join the companion roster, and a `magical_beast` tier keeps
   the last two out of the random roll.** Added by the new `Backend/scripts/scrape_companion_species.py`
   ([#41](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/41)).
@@ -391,9 +416,20 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   - `faerie mount`'s advancement `ability scores` block had swallowed its sibling `size` / `speed` /
     `attack` fields, and 24 mindless vermin split PF1e's "no Int score" between `""` and `null` —
     now uniformly `null`, which is distinct from an Int of 0.
-  - **Left deliberately unrepaired:** `giant salamander`'s 4th-level `dex: 2`, the one bare integer
-    whose block records no size increase. Without the size-up rule there is nothing to recover the
-    sign *from*, so the script reports it rather than guessing.
+  - **Three further defects, found by pointing the new validator at the repaired file** — the
+    argument for writing the gate in the same pass as the repair rather than after it.
+    - **Three Dex deltas had the minus flipped to a plus rather than dropped** — `giant raven`
+      `+2`, `troodon` `+4`, `sniper cactus` `+2`, each on a size increase. They survived the first
+      pass because they *were* signed strings, and the repair only distrusted bare integers. Same
+      rule, same repair: the entry owns the magnitude, PF1e owns the sign.
+    - **Nine `ac` values were missing the word "armor"** (`"+1 natural"`, `"+2"`, `"+8 natural"`),
+      eight of them in `starting statistics`, which the first pass never examined. Only the wording
+      is normalised — the magnitude is left exactly as published.
+    - `giant salamander`'s 4th-level `dex: 2` — previously reported and left alone, because with no
+      size increase there is no rule to recover the sign from — is now resolved by hand to `"+2"`,
+      in a named `HAND_SIGNS` table. Dex rising without a size change is legal PF1e, so positive is
+      the reading; recording it as a one-entry exception keeps the single survivor from quietly
+      becoming the precedent for a second.
 - **Characters from Sojoria, Tal-falko and Feyador have their names back.** Every non-ASCII Latin
   character had been deleted from the two hand-authored name files — mid-word, not just at the
   start — so the generator produced `Stefan rling` for `Stefan Örling`, plus `Lindstrm`, `Trnqvist`,

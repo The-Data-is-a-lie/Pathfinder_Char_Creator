@@ -11,10 +11,18 @@ stat block once the advancement blocks are merged (map #18, ticket #26):
                  field level, so a lookup on the spaced form silently misses them.
 3. SIGN LOSS   - advancement `dex` deltas lost their minus sign. A PF1e size increase
                  never raises Dex, so a positive value on a size-up row is a scrape
-                 artefact, not data.
+                 artefact, not data. This bites twice: as a bare int (`2`) where the
+                 sign vanished entirely, and as a positive signed string (`"+2"`) where
+                 it flipped. Both are repaired the same way -- keep the magnitude the
+                 entry states, restore the minus the rule requires.
 4. FIELD BLEED - `faerie mount`'s advancement `ability scores` block swallowed the
                  sibling `size` / `speed` / `attack` fields.
 5. MINDLESS INT- vermin render PF1e's "no Int score" as both `""` and `null`.
+6. AC FORMAT   - four advancement `ac` values lost the word "armor" or the phrase
+                 entirely (`"+2 natural"`, `"+8 natural"`, `"+2"`). Only the format is
+                 repaired; the magnitude is left exactly as scraped, because the
+                 published per-species entries -- not the generic size-change table --
+                 are the authority for how much armor a given companion gains.
 
 Advancement ability values are normalised to **signed strings** (`"+8"`, `"-2"`); the
 absolute scores in `starting statistics` stay bare ints. That type split is what lets
@@ -56,6 +64,20 @@ SWALLOWED_HOST = 'seahorse'
 
 # Fields that bled into an `ability scores` block and belong to its parent.
 BLED_FIELDS = ('size', 'speed', 'ac', 'attack', 'special qualities', 'special attacks')
+
+# Advancement `ac` is always a natural-armor delta. Only the wording is normalised here --
+# the number is whatever the species entry says.
+AC_RE = re.compile(r'^([+\-]\d+)(?:\s+natural(?:\s+armor)?)?$')
+AC_CANON = '{} natural armor'
+
+# Signs no rule can recover, resolved by hand. A bare int in an advancement block means the
+# scrape lost the sign; `repair_signs` can only infer it from a size increase, so a block that
+# grows no size leaves the value untouched and lands here instead.
+#   giant salamander -- 4th-level advancement, no size change, dex 2. Dex rising without a size
+#   increase is legal PF1e (it is not the size-package -2), so the sign is positive.
+HAND_SIGNS = {
+    ('normal', 'giant salamander', '4th-level advancement', 'dex'): '+2',
+}
 
 
 class Report:
@@ -182,6 +204,23 @@ def size_step(start_block, adv_block):
     return SIZES.index(b) - SIZES.index(a)
 
 
+def repair_ac_format(tier_name, name, block_key, block, rep):
+    """`"+2 natural"` / `"+2"` -> `"+2 natural armor"`. Wording only; the number is untouched."""
+    value = block.get('ac')
+    if not isinstance(value, str):
+        return
+    cleaned = value.strip().replace('−', '-')
+    if cleaned.endswith('natural armor'):
+        return
+    match = AC_RE.match(cleaned)
+    if not match:
+        rep.leave(f'{tier_name}/{name!r} {block_key}: ac = {value!r} is not a natural-armor '
+                  f'delta - left alone')
+        return
+    block['ac'] = AC_CANON.format(match.group(1))
+    rep.fix('ac format', f'{tier_name}/{name!r} {block_key}: ac {value!r} -> {block["ac"]!r}')
+
+
 def repair_signs(tier_name, name, block_key, block, step, rep):
     """Normalise advancement deltas to signed strings, restoring the lost Dex minus."""
     ability = block.get('ability scores')
@@ -191,6 +230,22 @@ def repair_signs(tier_name, name, block_key, block, step, rep):
         if stat not in ability:
             continue
         value = ability[stat]
+        hand = HAND_SIGNS.get((tier_name, name, block_key, stat))
+        if hand is not None and not (isinstance(value, str) and SIGNED_RE.match(value.strip())):
+            ability[stat] = hand
+            rep.fix('sign', f'{tier_name}/{name!r} {block_key}: {stat} {value!r} -> {hand!r} '
+                            f'(hand-resolved; no size change to infer from)')
+            continue
+        # A Dex that survived as a signed string can still carry the wrong sign: the scrape
+        # rendered the minus as a plus. Same rule, same repair -- the magnitude is the entry's,
+        # the sign is the rule's.
+        if (stat == 'dex' and step is not None and step > 0
+                and isinstance(value, str) and SIGNED_RE.match(value.strip())
+                and int(value) > 0):
+            ability[stat] = f'-{int(value)}'
+            rep.fix('sign', f'{tier_name}/{name!r} {block_key}: dex {value!r} -> '
+                            f'{ability[stat]!r} (size {step:+d} never raises Dex)')
+            continue
         if value is None or (isinstance(value, str) and SIGNED_RE.match(value.strip())):
             continue
         if isinstance(value, str):
@@ -246,6 +301,8 @@ def repair(data, rep):
                 if not (is_start or is_adv):
                     continue
                 repair_field_bleed(tier_name, name, bkey, bval, rep)
+                # `ac` carries the short "+1 natural" spelling in both block kinds.
+                repair_ac_format(tier_name, name, bkey, bval, rep)
                 if is_start:
                     repair_mindless_int(tier_name, name, bkey, bval, rep)
                 else:
@@ -269,7 +326,7 @@ def main():
     rep = Report()
     repaired = repair(data, rep)
 
-    for defect in ('nesting', 'key drift', 'sign', 'field bleed', 'mindless int'):
+    for defect in ('nesting', 'key drift', 'sign', 'field bleed', 'mindless int', 'ac format'):
         print(f'{defect:>14}: {rep.count(defect)}')
     print(f'{"TOTAL":>14}: {len(rep.repairs)}')
 

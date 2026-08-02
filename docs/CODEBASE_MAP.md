@@ -95,8 +95,16 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
     species pool — their RAW availability.
   - **Ability values are typed by block:** `starting statistics` holds bare ints (absolute scores),
     advancement blocks hold signed strings (deltas). A bare int in an advancement block means a sign
-    was lost — the defect `scripts/repair_animal_choices.py` fixed and `validate_companion_data.py`
-    (planned, #27) gates.
+    was lost — the defect `scripts/repair_animal_choices.py` fixed and
+    `scripts/validate_companion_data.py` gates.
+  - **The size package is NOT a constant.** PF1e's size-change table scales with the transition
+    (Small→Medium Str +4/Con +2; Medium→Large Str +8/Con +4; Large→Huge natural armor +3), and 97 of
+    153 published size-ups disagree with even that. The per-species entry is the authority; the
+    validator reports the deviation as WARN and fails only on the impossible (positive Dex on a size
+    increase, unsigned delta, malformed `ac`). `SIZE_CHANGE_TABLE` lives in the validator.
+  - **The `outcome` / `effect` / `flags` closed vocabulary (D8, #38) is owned by
+    `validate_companion_data.py`** as module constants — import from there, never restate. It
+    validates `companion_grantors.json` / `companion_archetypes.json` against them once they exist.
   - `companion_species_aliases.json` maps the spellings archetype `species_pool` entries use
     (`"giant weasel"`, `"dire bat"`) onto this file's keys (`"weasel, giant"`, `"bat, dire"`), and
     records species PF1e has no companion stat block for (giant eagle). **Resolve through it before

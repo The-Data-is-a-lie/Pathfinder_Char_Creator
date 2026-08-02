@@ -408,7 +408,7 @@
       "starting statistics": {
         "size": "small",
         "speed": "40 ft. ",
-        "ac": "+1 natural",
+        "ac": "+1 natural armor",
         "attack": "gore (1d4)",
         "ability scores": {
           "str": 10,
@@ -567,7 +567,7 @@
       "starting statistics": {
         "size": "small",
         "speed": "30 ft. , fly 30 ft. (poor)",
-        "ac": "+1 natural",
+        "ac": "+1 natural armor",
         "attack": "bite (1d4)",
         "ability scores": {
           "str": 8,
@@ -837,7 +837,7 @@
       "source": "source",
       "starting statistics": {
         "size": "medium",
-        "ac": "+1 natural",
+        "ac": "+1 natural armor",
         "speed": "5 ft. , swim 20 ft. , jet 90 ft. ",
         "attack": "tentacles (1d4 plus grab), bite (1d3)",
         "ability scores": {
@@ -1085,7 +1085,7 @@
       "starting statistics": {
         "size": "medium",
         "speed": "30 ft. ",
-        "ac": "+4 natural",
+        "ac": "+4 natural armor",
         "attack": "slam (1d6), gore (1d8)",
         "ability scores": {
           "str": 14,
@@ -1099,7 +1099,7 @@
       },
       "7th-level advancement": {
         "size": "large",
-        "ac": "+2 natural",
+        "ac": "+2 natural armor",
         "attack": "slam (1d8), gore (2d6)",
         "ability scores": {
           "str": "+8",
@@ -1548,7 +1548,7 @@
       "starting statistics": {
         "size": "medium",
         "speed": "30 ft. ",
-        "ac": "+6 natural",
+        "ac": "+6 natural armor",
         "attack": "bite (1d6)",
         "ability scores": {
           "str": 14,
@@ -1562,7 +1562,7 @@
       },
       "7th-level advancement": {
         "size": "large",
-        "ac": "+2 natural",
+        "ac": "+2 natural armor",
         "attack": "bite (1d8)",
         "ability scores": {
           "str": "+8",
@@ -1897,7 +1897,7 @@
         "attack": "bite (1d6)",
         "ability scores": {
           "str": "+4",
-          "dex": "+2",
+          "dex": "-2",
           "con": "+2"
         }
       }
@@ -1923,7 +1923,7 @@
         "ac": "+2 natural armor",
         "ability scores": {
           "str": "+2",
-          "dex": 2,
+          "dex": "+2",
           "con": "+4"
         },
         "racial skill modifiers": "+4 stealth"
@@ -1977,7 +1977,7 @@
       },
       "7th-level advancement": {
         "size": "large",
-        "ac": "+2",
+        "ac": "+2 natural armor",
         "attack": "2 hooves (1d8), slam (1d8)",
         "ability scores": {
           "str": "+4",
@@ -2868,7 +2868,7 @@
       "starting statistics": {
         "size": "small",
         "speed": "40 ft. ",
-        "ac": "+1 natural",
+        "ac": "+1 natural armor",
         "attack": "gore (1d3)",
         "ability scores": {
           "str": 10,
@@ -3143,7 +3143,7 @@
       "starting statistics": {
         "size": "small",
         "speed": "30 ft. ",
-        "ac": "+1 natural",
+        "ac": "+1 natural armor",
         "attack": "gore (1d4)",
         "ability scores": {
           "str": 13,
@@ -3690,7 +3690,7 @@
       "starting statistics": {
         "size": "medium",
         "speed": "10 ft. ",
-        "ac": "+6 natural",
+        "ac": "+6 natural armor",
         "attack": "bite (1d4)",
         "ability scores": {
           "str": 14,
@@ -3705,7 +3705,7 @@
       "7th-level advancement": {
         "size": "large",
         "speed": "10 ft. ",
-        "ac": "+8 natural",
+        "ac": "+8 natural armor",
         "attack": "bite (1d6)",
         "ability scores": {
           "str": "+4",
@@ -3764,7 +3764,7 @@
         "attack": "bite (1d6), 2 claws (1d4)",
         "ability scores": {
           "str": "+4",
-          "dex": "+4",
+          "dex": "-4",
           "con": "+4"
         }
       }
@@ -3851,7 +3851,7 @@
       "source": "source",
       "starting statistics": {
         "size": "medium",
-        "ac": "+4 natural",
+        "ac": "+4 natural armor",
         "speed": "30 ft. ",
         "attack": "bite (1d8)",
         "ability scores": {
@@ -4372,7 +4372,7 @@
         "ac": "+2 natural armor",
         "attack": "gore (1d6) or 2 thorns (ranged attack, 60-foot range, 2d6 piercing damage)",
         "ability scores": {
-          "dex": "+2",
+          "dex": "-2",
           "con": "+2"
         }
       }
