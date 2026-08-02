@@ -2,11 +2,12 @@
  "Total_HP": 298,
  "age_number": 37,
  "alignment": "Neutral Good",
+ "animal_companion": null,
  "appearance": [
   "Tense"
  ],
  "archetype1": null,
- "archetype_info": "{\n    \"Hidden Priest\": {\n        \"source\": \"Inner Sea Magic pg. 35 Practicing one's religion is not always legal. For example, most lands outlaw worshiping fiends. Taldor has banned the faith of Sarenrae from being openly worshiped. Rahadoum flat-out forbids all religions within its borders. But as time has shown again and again, mere laws are poor deterrents to the worship of dedicated members of such faiths, whether the zealous wish to subvert authority, free the spirits of the oppressed, or merely enjoy the right to practice their beliefs. Clerics in these circumstances must conceal their true natures, practice their magic in secret, and always be on guard for betrayal and discovery. A hidden priest has the following class features.\",\n        \"false arcanist (ex)\": \"  At 1st level, a hidden priest is able to disguise his cleric spellcasting, presenting it as arcane magic of some kind. Typically, this is as alchemist, bard, sorcerer, or wizard magic, and the cleric disguises the words and gestures of the cleric spell with accoutrements appropriate to his apparent profession. He must make a skill check (DC 10 + twice the level of the spell) to disguise his casting and successfully cast the spell. The type of skill check depends on the type of caster he pretends to be: Craft (alchemy) for alchemist, Perform for bard, Knowledge (arcana) for sorcerer or wizard. Using Spellcraft to identify the spell works normally, though unless the observer beats the DC by 10 or more, she doesn't suspect the source of the magic is divine. For example, a hidden priest pretending to be an alchemist wants to cast cure light wounds on a wounded townsperson. If he makes a DC 12 Craft (alchemy) check, he disguises his spellcasting as the mixing of an alchemical extract or potion (perhaps with the words disguised as reciting an obscure formula or talking herself through the list of ingredients), which he gives to the target. An observer making a DC 16 Spellcraft check can identify his spell as cure light wounds , but doesn't realize his 'alchemical' methods are a sham unless her check result is 26 or higher. When the hidden priest uses this ability, he must still provide any divine focus components for the spells he casts. However, the divine focus doesn't need to be an obvious symbol of his faith. It could be a small coin, tattoo, or garment bearing the symbol, whether presented openly, disguised, or hidden within a larger picture. For example, a hidden priest of Sarenrae may use a coin with an ankh or sunburst, a complex tattoo or scar that has an ankh shape hidden within it, a glove with an ankh stitched on the inside of the palm, and so on. He must use this replacement divine focus just as he would his true one (for example, he couldn't leave the coin in his shoe). If a spell requires a divine focus with a specific or minimum cost, the replacement divine focus must be of similar value to be used as the divine focus. A hidden priest adds half his class level (minimum +1) on all Bluff skill checks to send secret messages about religious matters, and on all Sense Motive checks to recognize similar messages. He also adds this bonus on Perception and Sense Motive checks relating to agents of the laws against his religion (including city guards in lands where these laws are in effect). This ability replaces one of the cleric's two 1st-level domain powers (her choice).\",\n        \"unseen devotion (su)\": \"  At 8th level, a hidden priest can apply the Silent Spell and Still Spell feats to a spell he is about to cast. This does not alter the level of the spell or the casting time. He can use this ability once per day at 8th level and one additional time per day for every four additional cleric levels beyond 8th. Even though this ability does not modify the spell's actual level, he cannot use this ability to cast a spell whose modified spell level would be above the level of the highest-level spell that he is capable of casting. This ability always applies both feats (the cleric cannot use it to just apply one or the other). This ability replaces one of the cleric's two 8th-level domain powers (his choice).\"\n    }\n}",
+ "archetype_info": "{\n    \"Angelfire Apostle\": {\n        \"source\": \"Healer's Handbook pg. 7 Angelfire apostles use the powers of good to avoid violence when possible and cleanse both maladies and evil creatures with blinding flames. Angelfire apostles typically follow Sarenrae, but a few serve empyreal lords such as Ragathiel.\",\n        \"armor proficiency\": \" Angelfire apostles are not proficient with medium armor. This ability alters the cleric's armor proficiency.\",\n        \"diminished spellcasting\": \" An angelfire apostle is less concerned with the traditional divine magic that many religious adherents receive. The angelfire apostle receives one fewer spell slot at each spell level. When an angelfire apostle gets no spells per day at a spell level, he can cast domain spells of that level normally, but can only cast nondomain spells of that level if he gets them as bonus spells. This ability alters the cleric's spellcasting.\",\n        \"extra channel\": \" At 1st level, the angelfire apostle gains Extra Channel as a bonus feat.\",\n        \"channel angelfire (su)\": \" An angelfire apostle must be of good or neutral alignment and must choose to channel positive energy, even if his deity is neutral or if he is not devoted to a particular deity. When an angelfire apostle channels positive energy, affected nongood creatures are dazzled for 1 round, with no saving throw for this effect, in addition to experiencing the normal effects of channel energy. This ability alters channel energy.\",\n        \"versatile healing channel (sp)\": \" At 5th level, the angelfire apostle can spend two uses of his channel energy ability to cast remove blindness/deafness or lesser restoration as a spell-like ability. At 7th level, he can choose remove disease or remove paralysis . At 9th level, he can choose neutralize poison . At 11th level, he can choose breath of life . At 13th level, he can choose heal . At 15th level, he can choose regenerate . At 17th level, he can choose restoration but cannot affect permanent negative levels. At 19th level, he can choose resurrection but can affect only a target that has been dead no more than 1 round per his cleric level.\",\n        \"cleansing flames (su)\": \" At 9th level, the angelfire apostle becomes a direct conduit for the righteous power of his deity. Whenever the angelfire apostle casts a spell that belongs to the healing subschool that is a lower spell level than the highest spell he can cast, he can unleash a blast of flames as a swift action by expending one use of his channel energy ability. The flames last for 1 round and fill a contiguous area equal to one 10-foot cube per level of the healing spell cast (at least one side of the cube must be adjacent to the angelfire apostle's space). The flames deal 1d4 points of damage per spell level. Half of the damage is fire damage, and half is raw divine power not subject to fire resistance or immunity. Any creature in the area can halve the damage with a successful Reflex saving throw against the spell's DC. The angelfire apostle can use this ability a number of times per day equal to his Charisma modifier.\"\n    }\n}",
  "armor_ac": "7",
  "armor_armor_check_penalty": "-7",
  "armor_enhancement_bonus": 2,
@@ -87,40 +88,45 @@
  ],
  "class feature levels": {
   "rage_powers": {
-   "good for what ails you": 4,
-   "knockback": 6,
-   "liquid courage": 2
+   "good for what ails you": 2,
+   "knockback": 4,
+   "no escape": 6
   }
  },
  "class feature owners": {
-  "Destruction": "cleric",
+  "Law": "cleric",
   "Nobility": "cleric",
   "rage_powers": "barbarian"
  },
  "class features": {
-  "Destruction": {
-   "Destructive Aura (Su)": [
-    "At 8th level, you can emit a 30-foot aura of destruction for a number of rounds per day equal to your cleric level. All attacks made against targets in this aura (including you) gain a morale bonus on damage equal to 1/2 your cleric level and all critical threats are automatically confirmed. These rounds do not need to be consecutive."
+  "Law": {
+   "Staff of Order (Su)": [
+    "At 8th level, you can give a weapon touched the axiomatic special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th."
    ],
-   "Destructive Smite (Su)": [
-    "You gain the destructive smite power: the supernatural ability to make a single melee attack with a morale bonus on damage rolls equal to 1/2 your cleric level (minimum 1). You must declare the destructive smite before making the attack. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
+   "Touch of Law (Sp)": [
+    "You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
    ],
    "bonus spells": [
-    "true strike",
-    "shatter",
-    "rage",
-    "inflict critical wounds",
-    "shout",
-    "harm",
-    "disintegrate",
-    "earthquake",
-    "implosion"
+    "protection from chaos",
+    "align weapon",
+    "magic circle against chaos",
+    "orders wrath",
+    "dispel chaos",
+    "hold monster",
+    "dictum",
+    "shield of law",
+    "summon monster IX"
    ],
    "subdomains": [
-    "Catastrophe",
-    "Hatred",
-    "Rage",
-    "Torture"
+    "Archon",
+    "Devil",
+    "Inevitable",
+    "Judgment",
+    "Kyton",
+    "Legislation",
+    "Loyalty",
+    "Slavery",
+    "Tyranny"
    ]
   },
   "Nobility": {
@@ -161,8 +167,8 @@
    "knockback": {
     "benefit": "once per round, the barbarian can make a bull rush attempt against one target in place of a melee attack. if successful, the target takes damage equal to the barbarians strength modifier and is moved back as normal. the barbarian does not need to move with the target if successful. this does not provoke an attack of opportunity."
    },
-   "liquid courage": {
-    "benefit": "while raging, the barbarian increases her morale bonus on saving throws against mind-affecting effects by +1 for each alcoholic drink she consumes during her rage, to a maximum of +1 increase per four barbarian levels."
+   "no escape": {
+    "benefit": "the barbarian can move up to double her normal speed as an immediate action but she can only use this ability when an adjacent foe uses a withdraw action to move away from her. she must end her movement adjacent to the enemy that used the withdraw action. the barbarian provokes attacks of opportunity as normal during this movement. special: this power can only be used once per rage."
    }
   }
  },
@@ -220,54 +226,50 @@
      "text": "While raging, the barbarian who takes a drink of alcohol may attempt a new saving throw against one of the following conditions that may be affecting her: blinded, confused, dazzled, deafened, exhausted, fatigued, frightened, nauseated, panicked, shaken, or sickened. If she succeeds at the save, the effect is suppressed for the duration of the rage. She also may attempt a new saving throw if poisoned; A successful save counts against those required for a cure, but a failed save has no ill effect."
     }
    ]
-  },
-  "liquid courage": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "allSavingThrows",
-     "text": "While raging, the barbarian increases her morale bonus on saving throws against mind-affecting effects by +[[1]] for each alcoholic drink she consumes during her rage, to a maximum of +[[1]] increase per four barbarian levels."
-    }
-   ]
   }
  },
  "class_feature_conditionals_dict": {},
  "class_feature_levels": {
   "rage_powers": {
-   "good for what ails you": 4,
-   "knockback": 6,
-   "liquid courage": 2
+   "good for what ails you": 2,
+   "knockback": 4,
+   "no escape": 6
   }
  },
  "class_feature_owners": {
-  "Destruction": "cleric",
+  "Law": "cleric",
   "Nobility": "cleric",
   "rage_powers": "barbarian"
  },
  "class_features": {
-  "Destruction": {
-   "Destructive Aura (Su)": [
-    "At 8th level, you can emit a 30-foot aura of destruction for a number of rounds per day equal to your cleric level. All attacks made against targets in this aura (including you) gain a morale bonus on damage equal to 1/2 your cleric level and all critical threats are automatically confirmed. These rounds do not need to be consecutive."
+  "Law": {
+   "Staff of Order (Su)": [
+    "At 8th level, you can give a weapon touched the axiomatic special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th."
    ],
-   "Destructive Smite (Su)": [
-    "You gain the destructive smite power: the supernatural ability to make a single melee attack with a morale bonus on damage rolls equal to 1/2 your cleric level (minimum 1). You must declare the destructive smite before making the attack. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
+   "Touch of Law (Sp)": [
+    "You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
    ],
    "bonus spells": [
-    "true strike",
-    "shatter",
-    "rage",
-    "inflict critical wounds",
-    "shout",
-    "harm",
-    "disintegrate",
-    "earthquake",
-    "implosion"
+    "protection from chaos",
+    "align weapon",
+    "magic circle against chaos",
+    "orders wrath",
+    "dispel chaos",
+    "hold monster",
+    "dictum",
+    "shield of law",
+    "summon monster IX"
    ],
    "subdomains": [
-    "Catastrophe",
-    "Hatred",
-    "Rage",
-    "Torture"
+    "Archon",
+    "Devil",
+    "Inevitable",
+    "Judgment",
+    "Kyton",
+    "Legislation",
+    "Loyalty",
+    "Slavery",
+    "Tyranny"
    ]
   },
   "Nobility": {
@@ -308,18 +310,22 @@
    "knockback": {
     "benefit": "once per round, the barbarian can make a bull rush attempt against one target in place of a melee attack. if successful, the target takes damage equal to the barbarians strength modifier and is moved back as normal. the barbarian does not need to move with the target if successful. this does not provoke an attack of opportunity."
    },
-   "liquid courage": {
-    "benefit": "while raging, the barbarian increases her morale bonus on saving throws against mind-affecting effects by +1 for each alcoholic drink she consumes during her rage, to a maximum of +1 increase per four barbarian levels."
+   "no escape": {
+    "benefit": "the barbarian can move up to double her normal speed as an immediate action but she can only use this ability when an adjacent foe uses a withdraw action to move away from her. she must end her movement adjacent to the enemy that used the withdraw action. the barbarian provokes attacks of opportunity as normal during this movement. special: this power can only be used once per rage."
    }
   }
  },
  "classes": [
   {
    "archetype": {
-    "Hidden Priest": {
-     "false arcanist (ex)": "  At 1st level, a hidden priest is able to disguise his cleric spellcasting, presenting it as arcane magic of some kind. Typically, this is as alchemist, bard, sorcerer, or wizard magic, and the cleric disguises the words and gestures of the cleric spell with accoutrements appropriate to his apparent profession. He must make a skill check (DC 10 + twice the level of the spell) to disguise his casting and successfully cast the spell. The type of skill check depends on the type of caster he pretends to be: Craft (alchemy) for alchemist, Perform for bard, Knowledge (arcana) for sorcerer or wizard. Using Spellcraft to identify the spell works normally, though unless the observer beats the DC by 10 or more, she doesn't suspect the source of the magic is divine. For example, a hidden priest pretending to be an alchemist wants to cast cure light wounds on a wounded townsperson. If he makes a DC 12 Craft (alchemy) check, he disguises his spellcasting as the mixing of an alchemical extract or potion (perhaps with the words disguised as reciting an obscure formula or talking herself through the list of ingredients), which he gives to the target. An observer making a DC 16 Spellcraft check can identify his spell as cure light wounds , but doesn't realize his 'alchemical' methods are a sham unless her check result is 26 or higher. When the hidden priest uses this ability, he must still provide any divine focus components for the spells he casts. However, the divine focus doesn't need to be an obvious symbol of his faith. It could be a small coin, tattoo, or garment bearing the symbol, whether presented openly, disguised, or hidden within a larger picture. For example, a hidden priest of Sarenrae may use a coin with an ankh or sunburst, a complex tattoo or scar that has an ankh shape hidden within it, a glove with an ankh stitched on the inside of the palm, and so on. He must use this replacement divine focus just as he would his true one (for example, he couldn't leave the coin in his shoe). If a spell requires a divine focus with a specific or minimum cost, the replacement divine focus must be of similar value to be used as the divine focus. A hidden priest adds half his class level (minimum +1) on all Bluff skill checks to send secret messages about religious matters, and on all Sense Motive checks to recognize similar messages. He also adds this bonus on Perception and Sense Motive checks relating to agents of the laws against his religion (including city guards in lands where these laws are in effect). This ability replaces one of the cleric's two 1st-level domain powers (her choice).",
-     "source": "Inner Sea Magic pg. 35 Practicing one's religion is not always legal. For example, most lands outlaw worshiping fiends. Taldor has banned the faith of Sarenrae from being openly worshiped. Rahadoum flat-out forbids all religions within its borders. But as time has shown again and again, mere laws are poor deterrents to the worship of dedicated members of such faiths, whether the zealous wish to subvert authority, free the spirits of the oppressed, or merely enjoy the right to practice their beliefs. Clerics in these circumstances must conceal their true natures, practice their magic in secret, and always be on guard for betrayal and discovery. A hidden priest has the following class features.",
-     "unseen devotion (su)": "  At 8th level, a hidden priest can apply the Silent Spell and Still Spell feats to a spell he is about to cast. This does not alter the level of the spell or the casting time. He can use this ability once per day at 8th level and one additional time per day for every four additional cleric levels beyond 8th. Even though this ability does not modify the spell's actual level, he cannot use this ability to cast a spell whose modified spell level would be above the level of the highest-level spell that he is capable of casting. This ability always applies both feats (the cleric cannot use it to just apply one or the other). This ability replaces one of the cleric's two 8th-level domain powers (his choice)."
+    "Angelfire Apostle": {
+     "armor proficiency": " Angelfire apostles are not proficient with medium armor. This ability alters the cleric's armor proficiency.",
+     "channel angelfire (su)": " An angelfire apostle must be of good or neutral alignment and must choose to channel positive energy, even if his deity is neutral or if he is not devoted to a particular deity. When an angelfire apostle channels positive energy, affected nongood creatures are dazzled for 1 round, with no saving throw for this effect, in addition to experiencing the normal effects of channel energy. This ability alters channel energy.",
+     "cleansing flames (su)": " At 9th level, the angelfire apostle becomes a direct conduit for the righteous power of his deity. Whenever the angelfire apostle casts a spell that belongs to the healing subschool that is a lower spell level than the highest spell he can cast, he can unleash a blast of flames as a swift action by expending one use of his channel energy ability. The flames last for 1 round and fill a contiguous area equal to one 10-foot cube per level of the healing spell cast (at least one side of the cube must be adjacent to the angelfire apostle's space). The flames deal 1d4 points of damage per spell level. Half of the damage is fire damage, and half is raw divine power not subject to fire resistance or immunity. Any creature in the area can halve the damage with a successful Reflex saving throw against the spell's DC. The angelfire apostle can use this ability a number of times per day equal to his Charisma modifier.",
+     "diminished spellcasting": " An angelfire apostle is less concerned with the traditional divine magic that many religious adherents receive. The angelfire apostle receives one fewer spell slot at each spell level. When an angelfire apostle gets no spells per day at a spell level, he can cast domain spells of that level normally, but can only cast nondomain spells of that level if he gets them as bonus spells. This ability alters the cleric's spellcasting.",
+     "extra channel": " At 1st level, the angelfire apostle gains Extra Channel as a bonus feat.",
+     "source": "Healer's Handbook pg. 7 Angelfire apostles use the powers of good to avoid violence when possible and cleanse both maladies and evil creatures with blinding flames. Angelfire apostles typically follow Sarenrae, but a few serve empyreal lords such as Ragathiel.",
+     "versatile healing channel (sp)": " At 5th level, the angelfire apostle can spend two uses of his channel energy ability to cast remove blindness/deafness or lesser restoration as a spell-like ability. At 7th level, he can choose remove disease or remove paralysis . At 9th level, he can choose neutralize poison . At 11th level, he can choose breath of life . At 13th level, he can choose heal . At 15th level, he can choose regenerate . At 17th level, he can choose restoration but cannot affect permanent negative levels. At 19th level, he can choose resurrection but can affect only a target that has been dead no more than 1 round per his cleric level."
     }
    },
    "display": "Cleric",
@@ -328,11 +334,15 @@
   },
   {
    "archetype": {
-    "Invulnerable Rager": {
-     "extreme endurance (ex)": "  At 3rd level, the invulnerable rager is inured to either hot or cold climate effects (choose one) as if using endure elements . In addition, the barbarian gains 1 point of fire or cold resistance for every three levels beyond 3rd. This ability replaces trap sense.",
-     "invulnerability (ex)": "  At 2nd level, the invulnerable rager gains DR/- equal to half her barbarian level. This damage reduction is doubled against nonlethal damage. This ability replaces uncanny dodge, improved uncanny dodge, and damage reduction.",
-     "rage powers": "  The following rage powers complement the invulnerable rager archetype: come and get me, guarded life, increased damage reduction*, inspire ferocity, reckless abandon, and renewed vigor*.",
-     "source": "Advanced Player's Guide pg. 79 Some barbarians learn to take whatever comes their way, shrugging off mortal wounds with ease. These barbarians invite their enemies to attack them, and use pain to fuel their rage. An invulnerable rager has the following class features."
+    "Mad Dog": {
+     "damage reduction (ex)": "  At 10th level, a mad dog gains damage reduction. At 13th level and every 3 barbarian levels thereafter, this damage reduction rises by 1, to a maximum of DR 4/- at 19th level. A mad dog's war beast gains the same damage reduction as the mad dog.",
+     "ferocious fetch (ex)": "  At 5th level, a mad dog's war beast gains Improved Drag as a bonus feat. As a swift action, a mad dog can command her war beast to move toward an opponent within 30 feet and attempt a drag combat maneuver to pull the target back toward the mad dog. The war beast can move before and after performing the maneuver, but this movement counts toward the war beast's total movement during its turn. This ability replaces improved uncanny dodge.",
+     "pack tactics (ex)": "  At 2nd level, a mad dog and her war beast gain a +4 bonus on attack rolls while flanking the same opponent (instead of the normal +2 bonus). This ability replaces uncanny dodge.",
+     "rage (ex)": "  A mad dog gains this ability at 4th level, except that her effective barbarian level for the ability is equal to her barbarian level - 3.",
+     "rage powers": "  The following rage powers complement the mad dog archetype: animal fury, beast totem, bestial leaper, primal scent, raging leaper, reckless abandon, scent, sprint, swift foot, and terrifying howl. The following new rage powers also complement this archetype: Ferocious Beast (Ex) : While the barbarian is raging, her animal companion also gains the benefits of rage (including greater rage, mighty rage, and tireless rage), though the barbarian must spend 1 additional round of rage per round if her companion begins or ends its turn adjacent to her, and 2 additional rounds of rage per round if not. Ferocious Beast, Greater (Ex) : While the barbarian is raging, her animal companion shares the benefits of the barbarian's rage powers that are constant in effect. It gains no benefit from rage powers that require actions to activate, even if they are free actions. A barbarian must have the ferocious beast rage power and be at least 8th level to select this rage power.",
+     "source": "Animal Archive pg. 7 Though named for the wild savages who fight alongside rabid dogs, mad dogs employ all manner of beasts as their battle brethren.",
+     "throat cutter (ex)": "  At 14th level, whenever her war beast succeeds at a bull rush, drag, grapple, overrun, or trip combat maneuver against an opponent threatened by the mad dog, a mad dog can take an attack of opportunity against that opponent. This ability replaces indomitable will.",
+     "war beast (ex)": "  At 1st level, a mad dog gains the service of an animal companion , using the barbarian's level as her effective druid level. This ability replaces the rage powers gained at 2nd, 6th, 10th, 14th, and 18th level."
     }
    },
    "display": "Barbarian",
@@ -348,7 +358,7 @@
  "counter_spell_descriptor": [
   "earth"
  ],
- "craft_type": "Cheesemaking",
+ "craft_type": "Brushes",
  "day_list": [
   8,
   13,
@@ -460,10 +470,10 @@
  "flaw_feats": [
   "Cabalist"
  ],
- "formatted_bio": "Sara Eriksdotter\n- Alignment: Neutral Good\n- Deity: Ragathiel\n- Race: Human\n- Class: Level 8 Cleric / Barbarian\n- Archetype: Generalist\n- Tactics: Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.\n- Stat Focus: Wis\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Baron of the March (rank 15)\n- Profession: Fish Farmer (rank 10)\n- Profession: Pact Warlock (rank 1)\n- Profession: Cook (rank 9)\n- Known for: Cheesemaking\n- Training: An average trainer who taught them Elemental Focus, Reach Spell\n- Training: An excellent trainer who taught them Shielded Caster, Aquatic Ancestry, Prodigy\n- Training: An average trainer who taught them Improved Day Job, Deceitful\n- Training: An excellent trainer who taught them Demonologist, Muffled Image, Celestial Obedience\n- Training: An average trainer who taught them Trapper's Setup, Miniature Reach\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Poor Household\n- 3 Older Brothers\n\nPersonality\n- Personality: Cowardly, Inquisitive, Sociable\n- Mannerisms: Crosses arms, Clenches fists\n- Flaws: Slow Healer\n\nAppearance\n- Hair: Unkempt Black\n- Eyes: Hazel\n- Build: Tense",
+ "formatted_bio": "Sara Eriksdotter\n- Alignment: Neutral Good\n- Deity: Ragathiel\n- Race: Human\n- Class: Level 8 Cleric / Barbarian\n- Archetype: Generalist\n- Tactics: Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.\n- Stat Focus: Wis\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Baron of the March (rank 15)\n- Profession: Fish Farmer (rank 10)\n- Profession: Pact Warlock (rank 1)\n- Profession: Cook (rank 9)\n- Known for: Brushes\n- Training: An average trainer who taught them Elemental Focus, Reach Spell\n- Training: An excellent trainer who taught them Shielded Caster, Aquatic Ancestry, Prodigy\n- Training: An average trainer who taught them Improved Day Job, Deceitful\n- Training: An excellent trainer who taught them Demonologist, Muffled Image, Celestial Obedience\n- Training: An average trainer who taught them Trapper's Setup, Miniature Reach\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Poor Household\n- 3 Older Brothers\n\nPersonality\n- Personality: Cowardly, Inquisitive, Sociable\n- Mannerisms: Crosses arms, Clenches fists\n- Flaws: Slow Healer\n\nAppearance\n- Hair: Unkempt Black\n- Eyes: Hazel\n- Build: Tense",
  "full_domain": [
-  "Nobility",
-  "Destruction"
+  "Law",
+  "Nobility"
  ],
  "gender": "Female",
  "generation_seed": 5004,
@@ -626,6 +636,7 @@
   "str": 0,
   "wis": 0
  },
+ "license_url": "/license",
  "magic_talent_items": [
   {
    "advanced": false,
@@ -722,6 +733,7 @@
  "maneuvers_known_list": [],
  "maneuvers_readied_list": [],
  "maneuvers_readied_names": [],
+ "manifesters": [],
  "mannerisms": [
   "Crosses arms",
   "Clenches fists"
@@ -741,6 +753,7 @@
   "Sociable"
  ],
  "platnium": 164.5,
+ "powers_desc_dict": {},
  "profession_ability_items": [
   {
    "changes": [
@@ -1198,20 +1211,6 @@
     }
    ],
    "name": "Hedging Weapons: a floating weapon of divine force appears (more at higher levels, max [[5]] at [[18]]th), each granting a +[[1]] deflection bonus to AC (max +[[5]]). As a standard action you grasp and throw one as a ranged attack at a target within [[30]] feet, dealing force damage that bypasses DR; each weapon thrown lowers the deflection bonus by [[1]] and vanishes, ending the spell when all are thrown. Duration [[1]] minute/level."
-  },
-  "True Strike": {
-   "default": false,
-   "modifiers": [
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "20",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "insight"
-    }
-   ],
-   "name": "True Strike: you gain intuitive insight into the immediate future; your next single attack roll (if made before the end of the next round) gains an insight bonus, and you ignore the miss chance for attacking a concealed target."
   }
  },
  "spell_list_choose_from": [
@@ -1238,11 +1237,12 @@
    "Hedging Weapons",
    "Instant Portrait",
    "Pick Your Poison",
+   "Protection from Chaos",
    "Remove Sickness",
-   "Stone Shield",
-   "True Strike"
+   "Stone Shield"
   ],
   [
+   "Align Weapon",
    "Alter Summoned Monster",
    "Enthrall",
    "Healing Token",
@@ -1250,7 +1250,6 @@
    "Instant Weapon",
    "Remove Paralysis",
    "Returning Weapon",
-   "Shatter",
    "Spiritual Weapon",
    "Summon Monster II"
   ],
@@ -1260,8 +1259,8 @@
    "Delay Poison, Communal",
    "Iron Stake",
    "Life Current",
+   "Magic Circle against Chaos",
    "Magic Vestment",
-   "Rage",
    "Remove Disease",
    "Summon Ancestral Guardian"
   ],
@@ -1271,8 +1270,8 @@
    "Cure Critical Wounds",
    "Discern Lies",
    "Hallucinogenic Smoke",
-   "Inflict Critical Wounds",
    "Janni's Jaunt",
+   "Order's Wrath",
    "Path of Glory, Greater",
    "Summon Genie, Lesser"
   ]
@@ -1301,11 +1300,12 @@
    "Hedging Weapons",
    "Instant Portrait",
    "Pick Your Poison",
+   "Protection from Chaos",
    "Remove Sickness",
-   "Stone Shield",
-   "True Strike"
+   "Stone Shield"
   ],
   [
+   "Align Weapon",
    "Alter Summoned Monster",
    "Enthrall",
    "Healing Token",
@@ -1313,7 +1313,6 @@
    "Instant Weapon",
    "Remove Paralysis",
    "Returning Weapon",
-   "Shatter",
    "Spiritual Weapon",
    "Summon Monster II"
   ],
@@ -1323,8 +1322,8 @@
    "Delay Poison, Communal",
    "Iron Stake",
    "Life Current",
+   "Magic Circle against Chaos",
    "Magic Vestment",
-   "Rage",
    "Remove Disease",
    "Summon Ancestral Guardian"
   ],
@@ -1334,8 +1333,8 @@
    "Cure Critical Wounds",
    "Discern Lies",
    "Hallucinogenic Smoke",
-   "Inflict Critical Wounds",
    "Janni's Jaunt",
+   "Order's Wrath",
    "Path of Glory, Greater",
    "Summon Genie, Lesser"
   ]
@@ -1353,18 +1352,6 @@
     "type": "will"
    }
   },
-  "Inflict Critical Wounds": {
-   "attack": "melee",
-   "riders": [
-    "Range: melee touch; Save: Will DC [[ 10 + @slvl + @castMod ]] half; functions like inflict light wounds, curing undead instead of damaging them; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "half",
-    "harmless": false,
-    "type": "will"
-   }
-  },
   "Iron Stake": {
    "attack": "ranged",
    "riders": [
@@ -1377,14 +1364,14 @@
     "type": "fortitude"
    }
   },
-  "Shatter": {
+  "Order's Wrath": {
    "attack": null,
    "riders": [
-    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates (object); or Fortitude half against crystalline creatures; see text; used as an area attack ([[5]]-ft.-radius spread): destroys all unattended nonmagical objects of crystal, glass, ceramic, or porcelain weighing up to [[@spells.primary.cl.total]] pound(s) each; used against a single solid nonmagical object: shatters an object of any composition weighing up to [[10*@spells.primary.cl.total]] pounds; used against a crystalline creature (of any weight): deals [[ (min(10, @spells.primary.cl.total))d6 ]] sonic damage; spell resistance: yes"
+    "Range: [[100 + 10*@spells.primary.cl.total]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] partial; see text; only chaotic and neutral (non-lawful) creatures are harmed by this spell; lawful creatures are unaffected; chaotic creatures take [[ (min(5, floor(@spells.primary.cl.total/2)))d8 ]] damage and are dazed for [[1]] round, except chaotic outsiders, who instead take [[ (min(10, @spells.primary.cl.total))d6 ]] damage and are dazed for [[1]] round; creatures who are neither chaotic nor lawful take only half this damage and are not dazed, though they may reduce that half again (to one-quarter of the roll) with a successful Will save; spell resistance: yes"
    ],
    "save": {
     "dc": "",
-    "description": "negates (object); or Fortitude half against crystalline creatures; see text",
+    "description": "partial; see text",
     "harmless": false,
     "type": "will"
    }
@@ -1425,11 +1412,12 @@
      "Hedging Weapons",
      "Instant Portrait",
      "Pick Your Poison",
+     "Protection from Chaos",
      "Remove Sickness",
-     "Stone Shield",
-     "True Strike"
+     "Stone Shield"
     ],
     [
+     "Align Weapon",
      "Alter Summoned Monster",
      "Enthrall",
      "Healing Token",
@@ -1437,7 +1425,6 @@
      "Instant Weapon",
      "Remove Paralysis",
      "Returning Weapon",
-     "Shatter",
      "Spiritual Weapon",
      "Summon Monster II"
     ],
@@ -1447,8 +1434,8 @@
      "Delay Poison, Communal",
      "Iron Stake",
      "Life Current",
+     "Magic Circle against Chaos",
      "Magic Vestment",
-     "Rage",
      "Remove Disease",
      "Summon Ancestral Guardian"
     ],
@@ -1458,8 +1445,8 @@
      "Cure Critical Wounds",
      "Discern Lies",
      "Hallucinogenic Smoke",
-     "Inflict Critical Wounds",
      "Janni's Jaunt",
+     "Order's Wrath",
      "Path of Glory, Greater",
      "Summon Genie, Lesser"
     ]

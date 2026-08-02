@@ -210,14 +210,34 @@ def check_closed_vocabulary():
 
     if os.path.exists(grantors):
         with open(grantors, encoding='utf-8') as fh:
-            rows = json.load(fh)
-        for row in (rows.values() if isinstance(rows, dict) else rows):
-            choice = (row or {}).get('choice') or {}
+            table = json.load(fh)
+        rows = table.get('grantors') if isinstance(table, dict) else table
+        if not isinstance(rows, list):
+            errors.append('companion_grantors.json: expected a "grantors" list')
+            rows = []
+        seen = set()
+        for row in rows:
+            if not isinstance(row, dict):
+                errors.append(f'companion_grantors.json: row is {type(row).__name__}, not an '
+                              f'object')
+                continue
+            key = (row.get('grantor'), row.get('creature_type'))
+            if key in seen:
+                errors.append(f'companion_grantors.json: duplicate row for {key}')
+            seen.add(key)
+            if row.get('creature_type') not in ('companion', 'mount', 'familiar', 'eidolon'):
+                errors.append(f'companion_grantors.json: {row.get("grantor")!r} creature_type = '
+                              f'{row.get("creature_type")!r} is not a bonded-creature type')
+            choice = row.get('choice') or {}
             for side in ('on_win', 'on_loss'):
                 value = choice.get(side)
                 if value is not None and value not in OUTCOMES:
-                    errors.append(f'companion_grantors.json: {side} = {value!r} is not in '
-                                  f'{OUTCOMES}')
+                    errors.append(f'companion_grantors.json: {row.get("grantor")!r} {side} = '
+                                  f'{value!r} is not in {OUTCOMES}')
+            odds = choice.get('odds')
+            if choice and not (isinstance(odds, int) and 1 <= odds <= 100):
+                errors.append(f'companion_grantors.json: {row.get("grantor")!r} odds = {odds!r} '
+                              f'is not a 1-100 roll target')
     else:
         warnings.append('companion_grantors.json does not exist yet (#30) -- outcome vocabulary '
                         'unchecked')

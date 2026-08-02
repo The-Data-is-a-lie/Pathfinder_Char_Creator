@@ -2,6 +2,7 @@
  "Total_HP": 140,
  "age_number": 31,
  "alignment": "Lawful Neutral",
+ "animal_companion": null,
  "appearance": [
   "Ragged"
  ],
@@ -371,6 +372,7 @@
   "str": 0,
   "wis": 1
  },
+ "license_url": "/license",
  "magic_talent_items": [],
  "main_stat": "cha",
  "maneuvers_choose_from": [
@@ -564,6 +566,7 @@
    "False Wind"
   ]
  ],
+ "manifesters": [],
  "mannerisms": [
   "Grits teeth",
   "Leans back"
@@ -590,6 +593,7 @@
   "Self-sufficient"
  ],
  "platnium": 76.0,
+ "powers_desc_dict": {},
  "profession_ability_items": [
   {
    "changes": [],

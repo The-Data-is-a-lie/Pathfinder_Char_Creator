@@ -13,8 +13,10 @@ numbers. **Keep this file updated whenever files, pools, or pipelines move.**
 3. Stats: `roll_stats` → `apply_racial_stats` → `assign_stats` → HP.
 4. Spells: per class entry `caster_formula` / `spells_known_*` / `spells_per_day_*` → spellbooks.
 5. Prereq pool prep: `chooseable_list*` (stats, class levels, class features, race → `character.chooseable`).
-6. Class choices: `domain_chooser`, `wizard_school_chooser`, archetypes, then the generic
-   choosers (see table below) → `character.data_dict['class features']`.
+6. Class choices: `wizard_school_chooser`, archetypes, the generic choosers (see table below), then
+   `resolve_bonded_creatures` → `domain_chooser` → `character.data_dict['class features']`.
+   **Order matters:** the bonded-creature resolver reads the rolled archetype and sorcerer
+   bloodline, and owns the druid flip that `domain_chooser` then honours.
 7. Feats (`feats.py`, trainers/professions bonus feats, feat-count guarantee), PoW + Spheres
    selection (house rule guarantees), gunslinger, gear (`armor_chooser`, `item_chooser`),
    skills/professions/skill unlock, traits, backstory.
@@ -123,8 +125,19 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
     must be closed — LevelDB is single-writer). `scripts/validate_companion_names.py` diffs our
     species against it; a miss is a WARN, because degrading to a bare `npc` is legitimate (D3) but
     a *silent* miss is not.
-  - Still absent: `companion_grantors.json`, `familiar_master_table.json`, `familiar_choices.json`,
-    `eidolon_base_forms.json`.
+  - `companion_grantors.json` is the **declarative grantor table** (D6) — read its `_readme` before
+    changing resolver behaviour. `animal_companions.py::resolve_bonded_creatures` is the **single
+    path** to a bonded creature; the old druid-only check is gone.
+    - **The resolver owns the druid's companion-vs-domain flip**, and `domain_inquisition.py` reads
+      its `character.bond_outcomes` rather than comparing `domain_chance` itself. Rolling the
+      question in both places would give ~9% of druids both and ~9% neither.
+    - **It must run after the archetype pick and the sorcerer bloodline**, which is why the whole
+      domain/companion block sits below the bloodline choosers in `main_test.py` rather than where
+      `animal_chooser` used to be. Moving it back breaks archetype effects and Arcane-bloodline
+      familiars.
+    - Rows whose species data is not authored yet (`familiar`, `eidolon`) carry a `species_data`
+      note and resolve to **no entry**, so the table stays complete while the resolver stays honest.
+  - Still absent: `familiar_master_table.json`, `familiar_choices.json`, `eidolon_base_forms.json`.
 - Loose files: races (races.json, PlayableRaces.json, racial_stat_changes.json), deity.json,
   archetypes.json, cleric/druid_domains.json, wizard_schools.json, bloodlines.json,
   witch_patrons.json, spirits.json, items.json/items_best.json, weapons_data.json,

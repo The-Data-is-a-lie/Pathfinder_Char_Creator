@@ -41,7 +41,7 @@ LICENSE_PATH = "/license"
 # Importing custom functions
 from utils.class_func.adding_bonus_spells			import add_bonus_spells, add_bonus_spells_from_dict
 from utils.class_func.alignment_and_deity 			import randomize_deity, choose_alignment
-from utils.class_func.animal_companions 			import animal_chooser, animal_feats
+from utils.class_func.animal_companions 			import animal_feats, resolve_bonded_creatures
 from utils.class_func.appearance 					import randomize_apperance_attr, randomize_body_feature, get_racial_attr
 from utils.class_func.armor_and_enhancements 		import plan_enhancements, enhancement_chooser#, enhancement_limits
 from utils.class_func.armor_and_weapon_chooser 		import (armor_chooser, weapon_chooser, list_selection, shield_chooser, 
@@ -139,6 +139,8 @@ character_json_config = {
 	'class_features': Load_when_needed('Backend/json/class_features.json'),	
 	# 'classes': Load_when_needed('Backend/json/class.json'),
 	'class_data': Load_when_needed('Backend/json/class_data.json'),
+	'companion_archetypes': Load_when_needed('Backend/json/companion_archetypes.json'),
+	'companion_grantors': Load_when_needed('Backend/json/companion_grantors.json'),
 	'cleric_domains': Load_when_needed('Backend/json/cleric_domains.json'),				
 	'deity': Load_when_needed('Backend/json/deity.json'),	
 	'druid_domains': Load_when_needed('Backend/json/druid_domains.json'),		
@@ -465,14 +467,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		favored_class = favored_class_option_chooser(character, favored_class_list, character.human_flag)
 		skill_rank_level, favored_class_chosen = favored_class_calculator(character, favored_class)		
 
-		#decides if druids go animal companion or domain
-		# or if inquisitors go inquisitions or domains
+		# domain_chance still drives the inquisitor's inquisitions-vs-domains gate; the druid's
+		# companion-vs-domain flip moved to the bonded-creature resolver (see below).
 		domain_chance(character)
-		domain_chooser(character)	
-		full_domain = character.chosen_domain
-		versatile_perfomance(character)	
-		animal_chooser(character)
-		animal_companion_feats = animal_feats(character)
+		versatile_perfomance(character)
 
 
 		full_school = None
@@ -492,6 +490,20 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# generic single choices (the choosers gate themselves on any matching class entry)
 		bloodline_sorc = generic_class_option_chooser(character, "sorcerer", "bloodline")
 		bloodline_rager = generic_class_option_chooser(character, "bloodrager", "bloodline")
+		character.chosen_bloodline = next(iter(bloodline_sorc), '') if bloodline_sorc else ''
+
+		# Bonded creatures, and the domains that are their alternative.
+		#
+		# This block CANNOT sit where the old druid-only check did (before domain_chooser, above).
+		# The resolver reads the rolled archetype and the rolled sorcerer bloodline, and both are
+		# chosen further down the pipeline than animal_chooser used to run -- archetypes just above,
+		# the bloodline on the line before this one. #38 specified "run the resolver ahead of
+		# domain_chooser"; that is still true, and both now run here instead.
+		character.archetypes_per_class = archetypes_per_class
+		resolve_bonded_creatures(character)
+		domain_chooser(character)
+		full_domain = character.chosen_domain
+		animal_companion_feats = animal_feats(character)
 
 		generic_class_option_chooser(character,"cavalier", "orders")
 		generic_class_option_chooser(character,"samurai", "orders")

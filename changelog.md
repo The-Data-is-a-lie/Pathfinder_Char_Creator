@@ -347,6 +347,25 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   assertion handles.
 
 ### Added
+- **Who grants a bonded creature is a data table now, and five more classes actually get one**
+  ([#30](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/30)). The generator
+  gave a companion to druids and nobody else, through a hard-coded check. New
+  `Backend/json/companion_grantors.json` declares every grantor — druid, ranger, hunter, wizard,
+  sorcerer (Arcane bloodline only), witch, paladin, cavalier, samurai, summoner, and the Spheres of
+  Might *Beastmastery* talent, which is not a class at all — and one resolver in
+  `animal_companions.py` is the single path to a creature. **Paladins, cavaliers and samurai now
+  arrive with mounts; rangers and hunters with companions.**
+  - **Effective level is the grantor's own class level**, transformed by that row's expression
+    (a ranger's companion is at *level − 3*), stacked across sources and capped at character level.
+    Below a grantor's threshold there is **no creature at all** — a paladin 3 has no mount and does
+    not get a level-1 one.
+  - **`shifter`, `antipaladin` and unconditional `sorcerer` are deliberately not rows**, per the
+    rules check in #23.
+- **No druid has ever generated a vermin companion. Now they can.** `domain_chance` was read by
+  *both* the domain-vs-companion gate (`<= 90`) and the species ladder (normal `<= 80`, plant
+  `<= 90`, else vermin). The ladder only ran when the roll was already `<= 90`, so the vermin branch
+  was unreachable by construction. The species tier draws its own number: **23 vermin companions in
+  400 druids**, where the count was previously zero.
 - **The validators are wired to something that runs them.** This repo had eleven
   `Backend/scripts/validate_*.py` gates and **nothing invoked any of them** — no CI, no pre-commit,
   no runner. A gate nobody runs is a sentence, which is the failure the docs doctrine exists to

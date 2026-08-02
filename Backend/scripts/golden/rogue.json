@@ -2,6 +2,7 @@
  "Total_HP": 288,
  "age_number": 28,
  "alignment": "Chaotic Neutral",
+ "animal_companion": null,
  "appearance": [
   "Freckled"
  ],
@@ -410,7 +411,7 @@
       "name": "Bloodsong: while benefiting from a raging song, this weapon is keen; confirming a crit during a raging song grants [[1d10]] temporary HP ([[2d10]] on a x3 weapon, [[3d10]] on x4) until reduced to 0 or the song ends"
      }
     ],
-    "description": "This special ability can be placed only on slashing or piercing melee weapons. While the wielder benefits from a raging song performance (whether her own or from an ally), this weapon gains the keen weapon special ability. If the wearer confirms a critical hit while under the effects of a raging song, she gains 1d10 temporary hit points that last until they're reduced to 0 or the raging song ends, whichever comes first. If the weapon's critical multiplier is Ã—3, add 2d10 temporary hit points instead; if the multiplier is Ã—4, add 3d10 temporary hit points instead. While its powers are active, the weapon vibrates and makes a barely audible hum that rises to a shriek of triumph when it confirms a critical hit."
+    "description": "This special ability can be placed only on slashing or piercing melee weapons. While the wielder benefits from a raging song performance (whether her own or from an ally), this weapon gains the keen weapon special ability. If the wearer confirms a critical hit while under the effects of a raging song, she gains 1d10 temporary hit points that last until they're reduced to 0 or the raging song ends, whichever comes first. If the weapon's critical multiplier is ×3, add 2d10 temporary hit points instead; if the multiplier is ×4, add 3d10 temporary hit points instead. While its powers are active, the weapon vibrates and makes a barely audible hum that rises to a shriek of triumph when it confirms a critical hit."
    },
    "Catalytic": {
     "conditionals": [
@@ -796,6 +797,7 @@
   "str": 0,
   "wis": 1
  },
+ "license_url": "/license",
  "magic_talent_items": [],
  "main_stat": "dex",
  "maneuvers_choose_from": [
@@ -975,6 +977,7 @@
    "Snapping Turtle Rush"
   ]
  ],
+ "manifesters": [],
  "mannerisms": [
   "Glances at watch",
   "Crosses arms",
@@ -1003,6 +1006,7 @@
   "Joyful"
  ],
  "platnium": 242660.0,
+ "powers_desc_dict": {},
  "profession_ability_items": [
   {
    "changes": [
