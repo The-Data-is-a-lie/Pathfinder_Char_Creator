@@ -36,6 +36,7 @@ ROOT = HERE.parents[1]
 ARCHETYPES = ROOT / "Backend/json/archetypes.json"
 SPECIES = ROOT / "Backend/json/animal_choices.json"
 OVERRIDES = ROOT / "Backend/json/companion_archetypes_overrides.json"
+VERIFIED = ROOT / "Backend/json/companion_archetypes_verified.json"
 OUT = ROOT / "Backend/json/companion_archetypes.json"
 REVIEW = ROOT / "docs/companion_archetype_signoff.md"
 
@@ -134,6 +135,13 @@ PROGRESSION_RE = re.compile(
 # something ELSE, so naming a class's own default is not an effect at all -- every summoner's bond is
 # an eidolon, and tagging Broodmaster or Storm Caller `creature_type: eidolon` said nothing while
 # hiding what they really do.
+# `forces` means "the flip disappears", so it only says something for a class whose bond IS a
+# choice. A hunter, witch, cavalier, samurai or summoner always has its creature -- there is no
+# alternative to suppress -- and a paladin's mount is granted unconditionally by
+# companion_grantors.json. Tagging those `forces` described nothing and hid the real effect. Keep
+# this in step with which rows in companion_grantors.json carry a `choice`.
+CHOICE_CLASSES = ("Druid", "Ranger", "Wizard", "Sorcerer")
+
 DEFAULT_BOND = {
     "Druid": None, "Ranger": None, "Hunter": None,          # an ordinary animal companion
     "Wizard": None, "Witch": None, "Sorcerer": None,        # an ordinary familiar
@@ -387,6 +395,12 @@ def classify(body, own_keys, sentences, species_index, cls=None):
     # creature and denied one. Where the bond yields a different KIND of creature, the prohibition
     # is on the animal companion and the grant is the replacement, so it is not a removal at all:
     # "a draconic druid gains a drake companion INSTEAD OF an animal companion".
+    if cls is not None and cls not in CHOICE_CLASSES:
+        unique = [row for row in unique if row[0] != "forces"]
+        if not unique:
+            unique = [("none", "medium", "the bond is unconditional for this class and nothing "
+                                         "else about it changes", "")]
+
     kinds = {effect for effect, *_ in unique}
     conflict = False
     if {"forces", "removes"} <= kinds:
@@ -468,6 +482,34 @@ def build():
             if conflict:
                 entry["conflict"] = "forces and removes both detected -- read the full text"
     return entries
+
+
+def apply_verified(entries):
+    """Mark entries whose generated verdict was read against the rules text and confirmed.
+
+    Confirmations are NOT overrides. An override wins permanently, so recording one here would
+    freeze today's proposal and stop a later classifier fix from ever taking effect. Instead the
+    verified answer is remembered, and if the classifier later disagrees with it the entry is
+    flagged stale rather than silently changing under a "signed off" label.
+    """
+    if not VERIFIED.exists():
+        return entries, 0, []
+    with open(VERIFIED, encoding="utf-8") as fh:
+        verified = (json.load(fh) or {}).get("verified") or {}
+    stale = []
+    for key, was in verified.items():
+        entry = entries.get(key)
+        if entry is None:
+            stale.append((key, was, "no longer classified"))
+            continue
+        now = "+".join(sorted(item["effect"] for item in entry.get("effects", [])))
+        if now == was:
+            entry["signed_off"] = True
+            entry["verdict_source"] = "read against the rules text; proposal confirmed"
+        else:
+            stale.append((key, was, now))
+            entry["verification_stale"] = f"verified as {was}, now classified {now}"
+    return entries, len(verified), stale
 
 
 def apply_overrides(entries):
@@ -598,6 +640,7 @@ def main():
     args = parser.parse_args()
 
     entries = build()
+    entries, verified_count, stale = apply_verified(entries)
     entries, override_count = apply_overrides(entries)
 
     with open(OUT, "w", encoding="utf-8") as fh:
@@ -611,6 +654,9 @@ def main():
     for effect in EFFECTS:
         print(f"  {effect:<13} {counts.get(effect, 0):>4}")
     print(f"  {'(overrides)':<13} {override_count:>4}")
+    print(f"  {'(confirmed)':<13} {verified_count:>4}")
+    for key, was, now in stale:
+        print(f"  STALE: {key} was verified as {was}, now {now}")
     signed = sum(1 for e in entries.values() if e.get("signed_off"))
     print(f"  {'signed off':<13} {signed:>4} / {len(entries)}")
     print(f"wrote {OUT}")

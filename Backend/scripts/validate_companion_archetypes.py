@@ -147,7 +147,10 @@ def check_species_pools(entries, source_label, keys, aliases, unavailable):
 
 def check_generated_is_current(on_disk):
     """The generated file must be exactly what the builder produces -- never hand-edited."""
-    rebuilt, _ = bca.apply_overrides(bca.build())
+    # Must mirror build_companion_archetypes.main() exactly, including the verification pass --
+    # otherwise every run reports a stale file that is in fact current.
+    rebuilt, _, _ = bca.apply_verified(bca.build())
+    rebuilt, _ = bca.apply_overrides(rebuilt)
     if json.dumps(rebuilt, sort_keys=True) != json.dumps(on_disk, sort_keys=True):
         missing = sorted(set(rebuilt) - set(on_disk))
         extra = sorted(set(on_disk) - set(rebuilt))

@@ -49,14 +49,14 @@
     "archetype": "Castellan",
     "bond_features": [],
     "class": "Cavalier",
-    "confidence": "medium",
-    "effect": "removes",
+    "confidence": "high",
+    "effect": "species_pool",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": "asion instead of evasion. Both the evasion and improved evasion abilities work even when the castellan wears medium or heavy armor. This ability replaces mount.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "confidence": "high",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "\"forms a bond with an animal companion that serves as a guard\""
       }
     ],
     "sentences": [
@@ -66,9 +66,10 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Melee Tactics Toolbox pg. 9 A castellan is a cavalier who dedicates himself to the defense of a castle or walled city. Though not as celebrated as the cavaliers who ride forth to take on distant foes, the castellan is no less brave or important, for the castellan and his allies are the last line of defense for those who depend on the fortification for protection.",
-    "why": "traded away, and nothing in the bond text grants a creature"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"forms a bond with an animal companion that serves as a guard\""
   },
   "Cavalier/Charger": {
     "archetype": "Charger",
@@ -93,8 +94,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Inner Sea Monster Codex pg. 5 No warrior better epitomizes the centaur's devastating martial power than the charger. Born to the swiftest and most powerful of their kind, these natural cavaliers can achieve unparalleled feats of equestrian combat. Chargers rush headlong into the heart of any conflict to swiftly close on and smash into their enemies, channeling their power into their lances.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Cavalier/Constable": {
@@ -118,8 +120,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Heroes of the Streets pg. 17 Constables keep order in the narrow streets and dark alleys of settlements.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Cavalier/Daring Champion": {
@@ -143,8 +146,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Class Guide pg. 90 While many cavaliers are the champions of old fighting forms, some younger, more daring cavaliers mix a martial style influenced by the lighter armored and more flamboyant swashbuckler forms with the dedication of cavalier orders.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Cavalier/Disciple of the Pike": {
@@ -168,8 +172,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Monster Hunter's Handbook pg. 13 The Hellknight Order of the Pike are renowned monster hunters, taking on large game using ancient weapon arts combined with modern equipment.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Cavalier/Drakerider": {
@@ -187,12 +192,6 @@
         "effect": "creature_type",
         "evidence": "A drakerider gains a drake companion instead of a mount.",
         "why": "the bond yields a drake, not an animal companion"
-      },
-      {
-        "confidence": "high",
-        "effect": "forces",
-        "evidence": "A drakerider gains a drake companion instead of a mount.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
       }
     ],
     "sentences": [
@@ -202,8 +201,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Legacy of Dragons pg. 24 While many cavaliers dream of riding a dragon into battle, drakeriders come to learn that the reality involves far more effort than they had expected. Unlike other cavaliers, drakeriders must train their mounts from hatchlings, fighting and toiling alongside their drakes for years through countless struggles before the proud dragons are willing to accept them as riders. Some residents of Triaxus, envious of the close connection between dragonriders and dragons, attempt to emulate this relationship by raising drake hatchlings. These efforts aren't always successful, sometimes leaving the would-be drakeriders dead or maimed.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "the bond yields a drake, not an animal companion"
   },
   "Cavalier/Esquire": {
@@ -227,8 +227,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Cohorts and Companions pg. 30 The esquire is a roving knight who acquires the services of a faithful follower-an aide-de-camp-who serves as the esquire's assistant, spear carrier, and guard.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Cavalier/First Mother's Fang": {
@@ -276,7 +277,6 @@
     ],
     "class": "Cavalier",
     "confidence": "high",
-    "conflict": "forces and removes both detected -- read the full text",
     "effect": "species_pool",
     "effects": [
       {
@@ -343,8 +343,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Wilderness pg. 44 Some knights serve nature itself and can be found protecting unspoiled natural places or serving fey beings.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Cavalier/Hooded Knight": {
@@ -458,8 +459,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 38 Some cavaliers are entrusted by their masters with the care and use of expensive and powerful oddities-firearms. Capable of inflicting shocking amounts of destruction without the aid of magic, these musketeers lead the advance of their troops, firing devastating fusillades long before the enemy can prepare for the armed charge that follows.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Cavalier/Oceanrider": {
@@ -474,8 +476,8 @@
       {
         "confidence": "high",
         "effect": "species_pool",
-        "evidence": "…el 7 abilities until level 7) instead of the normal options, while a Small oceanrider can ride a dolphin This alters mount and replaces expe…",
-        "why": "names the legal species"
+        "evidence": "",
+        "why": "\"ride either a seahorse or an orca ... a Small oceanrider can ride a dolphin\""
       }
     ],
     "sentences": [
@@ -485,12 +487,17 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Aquatic Adventures pg. 53 Oceanriders are underwater cavaliers who ride dolphins, orcas, or seahorses.",
     "species_pool": [
-      "dolphin"
+      "dolphin",
+      "seahorse"
     ],
-    "why": "names the legal species"
+    "species_pool_raw": [
+      "orca"
+    ],
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"ride either a seahorse or an orca ... a Small oceanrider can ride a dolphin\""
   },
   "Cavalier/Qadiran Horselord": {
     "archetype": "Qadiran Horselord",
@@ -499,19 +506,13 @@
     ],
     "class": "Cavalier",
     "confidence": "high",
-    "effect": "forces",
+    "effect": "species_pool",
     "effects": [
       {
         "confidence": "high",
-        "effect": "forces",
-        "evidence": "A Qadiran horselord must select a horse or pony as his mount.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "A Qadiran horselord must select a horse or pony as his mount.",
-        "why": "names the legal species"
+        "evidence": "",
+        "why": "\"must select a horse or pony as his mount\""
       }
     ],
     "sentences": [
@@ -521,13 +522,14 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Adventurer's Guide pg. 12 , Inner Sea Combat pg. 42 The traditions of the Qadiran horselords are now spread throughout Qadira and the lands beyond in the Inner Sea region, but they originated among the horse-breeders and mounted-combat specialists of the Al-Zabriti; the name 'horselord' was applied by outlanders. Qadiran horselords pride themselves on their mobility and endurance-qualities also found in the breed of horses they ride. While they don't command the same presence as a host of Lastwall cavalry, Qadiran horselords can get to a battleground in half the time and on a third of the rations. In battle, they are skirmishers, ducking in and out of combat with brutal, precise slashes of their scimitars.",
     "species_pool": [
       "horse",
       "pony"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select a horse or pony as his mount\""
   },
   "Cavalier/Saurian Champion": {
     "archetype": "Saurian Champion",
@@ -604,14 +606,14 @@
       "mount (ex)"
     ],
     "class": "Cavalier",
-    "confidence": "high",
-    "effect": "forces",
+    "confidence": "medium",
+    "effect": "progression",
     "effects": [
       {
-        "confidence": "high",
-        "effect": "forces",
-        "evidence": "At 5th level, a standard bearer gains the service of a loyal and trusted mount.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+        "confidence": "medium",
+        "effect": "progression",
+        "evidence": "",
+        "why": "mount arrives at 5th instead of 1st; schedule change only"
       }
     ],
     "sentences": [
@@ -621,9 +623,10 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 39 Not all cavaliers are content to ride at the head of a charge, leading from the front and facing down their enemies directly. Some prefer to stand away from the fray, their banners a beacon shining brightly over the battlefield, rallying their troops to victory. The standard bearer employs the banner of his order, his lord, or his own house to raise the spirits of his allies and warns enemies of impending doom.",
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "mount arrives at 5th instead of 1st; schedule change only"
   },
   "Cavalier/Verdivant": {
     "archetype": "Verdivant",
@@ -661,13 +664,13 @@
     ],
     "class": "Cavalier",
     "confidence": "high",
-    "effect": "removes",
+    "effect": "species_pool",
     "effects": [
       {
         "confidence": "high",
-        "effect": "removes",
-        "evidence": "The vermin trainer does not take an armor check penalty on Ride checks while riding his mount.",
-        "why": "the creature is forbidden"
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "darklands mount restricted to a vermin list; \"alters mount\""
       }
     ],
     "sentences": [
@@ -677,22 +680,23 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Heroes of the Darklands pg. 17 Due to the strange terrain, the lack of sunlight, and numerous other hazards, keeping a traditional mount in the Darklands can prove difficult. Cavaliers native to or traveling the region may choose to tame local creatures instead. Those who can overcome their revulsion and distrust of Sekamina's strange fauna often find that such partnerships with native creatures serve both rider and mount well. While these mounts may be harder to handle than typical mounts, their versatility and adaptations prove indispensable.",
-    "why": "the creature is forbidden"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "darklands mount restricted to a vermin list; \"alters mount\""
   },
   "Cavalier/Wave Rider": {
     "archetype": "Wave Rider",
     "bond_features": [],
     "class": "Cavalier",
     "confidence": "high",
-    "effect": "forces",
+    "effect": "species_pool",
     "effects": [
       {
         "confidence": "high",
-        "effect": "forces",
-        "evidence": "At 1st level, a wave rider gains Monstrous Mount as a bonus feat.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "\"can use this feat only to select a hippocampus mount\""
       }
     ],
     "sentences": [
@@ -702,9 +706,10 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Inner Sea Combat pg. 47 Throughout the Inner Sea region, wave riders patrol harbors, keeping them safe from dangerous sea creatures and watching for smugglers. The most famous of these is the hippocampus-riding Sea Cavalry of Absalom.",
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"can use this feat only to select a hippocampus mount\""
   },
   "Druid/Aerie Protector": {
     "archetype": "Aerie Protector",
@@ -729,7 +734,7 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Wilderness pg. 47 The aerie protector guards nature's nests and lairs in the highest mountains, and she is only ever truly at ease when under vast expanses of open sky.",
     "species_pool": [
       "archaeopteryx",
@@ -755,6 +760,7 @@
       "yolubilis heron"
     ],
     "species_pool_derived_from": "fly",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "restricts the species by fly speed (21 qualify)"
   },
   "Druid/Ancient Guardian": {
@@ -778,8 +784,9 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Monster Codex pg. 140 Ancient guardians revere nature and draw power from its divine energies, but also protect the customs, histories, and lore of their tribe and race. They act as ambassadors and protectors of the old ways, nurturing their tribe's growth and holding back civilization's corruptive influence.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "forced onto the alternative, so no creature is gained"
   },
   "Druid/Ape Shaman": {
@@ -799,11 +806,12 @@
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 42 A shaman with this totem calls upon the mighty ape, a peaceful but powerful simian whose strength is beyond compare. An ape shaman is a friendly protector of the forest, but will crush those enemies who rouse her anger.",
     "species_pool": [
       "ape"
     ],
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "names the legal species"
   },
   "Druid/Bat Shaman": {
@@ -848,11 +856,12 @@
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Player's Guide pg. 102 A shaman with this focus calls upon the mighty bear, titan of the woodlands and mountains, a paragon of strength and ferocity, and yet also a quiet protector rich in wisdom.",
     "species_pool": [
       "bear"
     ],
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "names the legal species"
   },
   "Druid/Blight Druid": {
@@ -872,8 +881,9 @@
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Player's Guide pg. 98 The devoted servants of nature corrupted, ruined, and destroyed, blight druids are the caretakers of lands ravaged by natural disaster. While some are devoted to reforming and reclaiming lands despoiled by the ravages of civilization, others seek out the more rapacious violence inherent in nature and feed the creeping rot and decay that brings an end to all things.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "the creature is forbidden"
   },
   "Druid/Boar Shaman": {
@@ -893,11 +903,12 @@
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 43 A boar shaman chooses the stolid and ferocious boar as her totem. Content to be left alone, she becomes one of the most dangerous creatures of the wild when provoked.",
     "species_pool": [
       "boar"
     ],
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "names the legal species"
   },
   "Druid/Cave Druid": {
@@ -943,8 +954,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Horror Adventures pg. 50 Some druids believe that birth and death are the most important parts of the natural cycle. They focus on destroying undead and putting troubled souls to rest.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Druid/Devolutionist": {
@@ -1019,8 +1031,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Legacy of Dragons pg. 24 Some druids believe that dragons are the ultimate expression of nature, combining elemental fury with majestic beauty. These druids consort with dragons and eventually transform into draconic forms.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "the bond yields a drake, not an animal companion"
   },
   "Druid/Dragon Shaman": {
@@ -1035,17 +1048,19 @@
       {
         "confidence": "high",
         "effect": "species_pool",
-        "evidence": "…o chooses an animal companion must select a crocodile or monitor lizard.",
-        "why": "names the legal species"
+        "evidence": "",
+        "why": "\"must select a crocodile or monitor lizard\""
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Magic pg. 37 Your totem is the legendary dragon, fearsome and deadly yet cunning and wise, a creature born of pure magic and raw elemental fury, bound within a shell of fangs, claws, and scales that few dare to challenge. Though your initial focus is on dragons' mundane cousins, as your powers grow you become attuned to actual dragons.",
     "species_pool": [
-      "monitor lizard"
+      "monitor lizard",
+      "snake, constrictor"
     ],
-    "why": "names the legal species"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select a crocodile or monitor lizard\""
   },
   "Druid/Eagle Shaman": {
     "archetype": "Eagle Shaman",
@@ -1064,11 +1079,12 @@
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Player's Guide pg. 102 A shaman with this totem calls upon the noble eagle, stern and proud, soaring high above the world with keen and pitiless eyes that miss nothing.",
     "species_pool": [
       "bird"
     ],
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "names the legal species"
   },
   "Druid/Elemental Ally": {
@@ -1095,8 +1111,9 @@
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Monster Summoner's Handbook pg. 16 An elemental ally is a druid who has crafted powerful bonds of trust and friendship with one ally from each of the four primary elemental planes. Elemental allies are most common in Qadira, where they are considered similar to genie-binders.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "the bond yields a eidolon, not an animal companion"
   },
   "Druid/Feral Child": {
@@ -1145,8 +1162,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Class Guide pg. 92 A feral shifter internalizes her communion with and mastery over animals. Instead of forming a bond with an animal companion or an aspect of nature, she alters her own essence or being as homage to the noble creatures of the wild. More in tune with transformation and animal bodies than a normal druid, a feral shifter blurs the line between humanoid and beast.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Druid/Fungal Pilgrim": {
@@ -1154,13 +1172,13 @@
     "bond_features": [],
     "class": "Druid",
     "confidence": "high",
-    "effect": "removes",
+    "effect": "none",
     "effects": [
       {
         "confidence": "high",
-        "effect": "removes",
-        "evidence": "A fungal pilgrim must select the Plant domain for her nature bond if she does not select an animal companion.",
-        "why": "forced onto the alternative, so no creature is gained"
+        "effect": "none",
+        "evidence": "",
+        "why": "domain-side conditional only; the companion path is unrestricted"
       }
     ],
     "sentences": [
@@ -1180,9 +1198,10 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Heroes of the Darklands pg. 16 Druids often work to preserve the natural world, but some seek to further emulate it. Fungal pilgrims are druids seeking transformation into a more plantlike existence. These unique adherents of nature's creed see fungi as the means to such ends, as many fungi-particularly those of the Darklands- naturally work their way into the bodies of living creatures.",
-    "why": "forced onto the alternative, so no creature is gained"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "domain-side conditional only; the companion path is unrestricted"
   },
   "Druid/Goliath Druid": {
     "archetype": "Goliath Druid",
@@ -1231,8 +1250,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Adventurer's Guide pg. 121 Druids of the Halcyon Circle embrace the teachings of Old-Mage Jatembe, combining them with traditional druidic practices. Though they revere the natural world, halcyon druids are less focused on emulating its inhabitants. Instead, like Old-Mage Jatembe, they treat with beings from the Outer Sphere. As a sign of their allegiance, these druids wear fantastical masks depicting celestials, fiends, and- most often-the bestial agathions. Halcyon druids are peacekeepers, mediating between people and nature, people and the spirit world, and different groups of people. Yet when necessary, they use their magic to fight enemies of peace, especially demons and demon cultists. Most halcyon druids serve Nantambu and the surrounding villages-making, memorizing, and arbitrating the unwritten pacts between them. Some halcyon druids, however, are drawn farther afield. They may do so to forge new connections between tribes and villages, to spread the message of peace, or to fight demonic outbreaks.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Druid/Leshy Warden": {
@@ -1241,20 +1261,27 @@
       "leshy familiar (ex)"
     ],
     "class": "Druid",
-    "confidence": "medium",
-    "effect": "progression",
+    "confidence": "high",
+    "creature_type": "plant",
+    "effect": "forces",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "progression",
-        "evidence": "She gains a leaf leshy as a familiar and treats her druid level as her effective wizard level for the purpose of this ability.",
-        "why": "changes level or size advancement"
+        "confidence": "high",
+        "effect": "forces",
+        "evidence": "",
+        "why": "\"gains a leaf leshy as a familiar\"; leshy upgrades at 4th/8th/12th"
       },
       {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": " warden gains access to the Plant domain as if through a druid's nature bond class feature, but she can't choose the Decay subdomain. This replaces nature bond.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "confidence": "high",
+        "effect": "creature_type",
+        "evidence": "",
+        "why": "\"gains a leaf leshy as a familiar\"; leshy upgrades at 4th/8th/12th"
+      },
+      {
+        "confidence": "high",
+        "effect": "progression",
+        "evidence": "",
+        "why": "\"gains a leaf leshy as a familiar\"; leshy upgrades at 4th/8th/12th"
       }
     ],
     "sentences": [
@@ -1264,9 +1291,10 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Wilderness pg. 47 , Familiar Folio pg. 7 The natural world is full of bodiless nature spirits connected to the forces of glades, springs, and individual plants. Some druids hear their call keenly and are able to effortlessly incarnate them as the miniature creatures known as leshys ( Pathfinder RPG Bestiary 3 176). The leshy warden serves as these spirits' ally, defender, and voice.",
-    "why": "changes level or size advancement"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"gains a leaf leshy as a familiar\"; leshy upgrades at 4th/8th/12th"
   },
   "Druid/Life Channeler": {
     "archetype": "Life Channeler",
@@ -1289,8 +1317,9 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Horror Adventures pg. 50 Life channelers take the natural cycle to what they believe is its logical conclusion. By sacrificing the life of a sentient creature, they can generate energy that guarantees fertility and prosperity for lower creatures like plants and animals. These druids preach to flocks who become willing sacrifices, each serving as a 'king' or 'queen' for a short time after being chosen as the next sacrifice.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "forced onto the alternative, so no creature is gained"
   },
   "Druid/Lion Shaman": {
@@ -1370,8 +1399,9 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Inner Sea Intrigue pg. 44 Nithveil adepts learn the secret magic of the First World fey in the moving, reality-phasing city of Nithveil, which appears on the new moon at seemingly random locations in the Grungir Forest in the Lands of the Linnorm Kings. The most common deities worshiped by these druids are the Green Mother and the Lantern King, Eldest patrons of intrigue and trickery.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "forced onto the alternative, so no creature is gained"
   },
   "Druid/Pack Lord": {
@@ -1431,8 +1461,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Planar Adventures pg. 19 Some druids forge powerful bonds with the raw, natural power of the First World. Progenitors are druids who tap into the vibrant power of the First World to propagate natural and supernatural wonders.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Druid/Road Keeper": {
@@ -1591,11 +1622,12 @@
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Magic pg. 40 Some druids emulate the deadly shark, a remorseless hunter that marine dwellers dread. Like a true shark, a shark shaman leaves blood and fear in her wake.",
     "species_pool": [
       "shark"
     ],
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "names the legal species"
   },
   "Druid/Sky Druid": {
@@ -1615,7 +1647,7 @@
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Race Guide pg. 158 Some druids develop ties not to a particular landscape, but instead to the endless blue expanse of the skies. Such are the sky druids, who are more at home soaring through air than standing on the ground. A sky druid has the following class features.",
     "species_pool": [
       "archaeopteryx",
@@ -1641,6 +1673,7 @@
       "yolubilis heron"
     ],
     "species_pool_derived_from": "fly",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "restricts the species by fly speed (21 qualify)"
   },
   "Druid/Storm Druid": {
@@ -1660,8 +1693,9 @@
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Magic pg. 40 While most druids focus their attention upon the rich earth and the bounty of nature that springs forth from it, the storm druid's eyes have ever been cast to the skies and the endless expanse of blue, channeling the most raw and untamed aspects of nature.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "the creature is forbidden"
   },
   "Druid/Sunrider": {
@@ -1693,12 +1727,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Adventurer's Guide pg. 13 Sunriders help their allies, be they fellow tribe members or fellow adventurers, to survive in harsh desert terrain, while simultaneously making it even harsher for their foes. They seem to share a single mind with their loyal steeds, and companions who ride with them become an eerily wellcoordinated cavalry unit that traverses the treacherous desert sands with ease to wreak havoc upon invaders. Sunriders almost never leave their tribal homelands; those found outside Al-Zabrit are usually either exiles or emissaries sent to deal with issues that can't be addressed from their holds.",
     "species_pool": [
       "horse",
       "pony"
     ],
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
   },
   "Druid/Survivor": {
@@ -1812,8 +1847,9 @@
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Player's Guide pg. 101 While many druids keep to the wilderness, some make their way within settlements, communing with the animals and vermin who live there and speaking for the nature that runs rampant in civilization's very cradle.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "the creature is forbidden"
   },
   "Druid/Urushiol": {
@@ -1837,8 +1873,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Intrigue pg. 27 When an urushiol druid forms a bond with nature, it takes a vastly different form than for most druids. His body becomes increasingly toxic, allowing him to secrete a deadly poison through his pores.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Druid/Wolf Shaman": {
@@ -1858,25 +1895,26 @@
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Player's Guide pg. 103 A shaman with this totem calls upon the clever wolf, capable of roaming alone yet wise enough to run with a pack when facing dangers too great for one alone.",
     "species_pool": [
       "wolf"
     ],
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "names the legal species"
   },
   "Hunter/Chameleon Adept": {
     "archetype": "Chameleon Adept",
     "bond_features": [],
     "class": "Hunter",
-    "confidence": "medium",
-    "effect": "removes",
+    "confidence": "high",
+    "effect": "none",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": "shape I . Unlike a druid's wild shape, this ability does not improve to encompass larger or smaller animals or elementals. This replaces raise animal companion.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "confidence": "high",
+        "effect": "none",
+        "evidence": "",
+        "why": "replaces tangential perks; companion untouched"
       }
     ],
     "sentences": [
@@ -1886,22 +1924,23 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Wilderness pg. 52 Some hunters are masters of blending into every situation, even making their companions appear humanoid for brief periods of time.",
-    "why": "traded away, and nothing in the bond text grants a creature"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "replaces tangential perks; companion untouched"
   },
   "Hunter/Courtly Hunter": {
     "archetype": "Courtly Hunter",
     "bond_features": [],
     "class": "Hunter",
     "confidence": "high",
-    "effect": "removes",
+    "effect": "none",
     "effects": [
       {
         "confidence": "high",
-        "effect": "removes",
-        "evidence": "It does not learn tricks, but it does have an Intelligence score equal to that of a familiar belonging to a wizard of the courtly hunter's hunter level.",
-        "why": "the creature is forbidden"
+        "effect": "none",
+        "evidence": "",
+        "why": "reclassified as a magical beast but \"doesn't change any of its statistics\""
       }
     ],
     "sentences": [
@@ -1911,9 +1950,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Intrigue pg. 64 While most hunters find themselves at ease in the wildest parts of the world, courtly hunters instead make their homes in cultured urban environments. They and their animal companions are more refined than typical hunters, using their skills to navigate the winding paths of courtly intrigue as surely as other hunters find trails in the wilderness.",
-    "why": "the creature is forbidden"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "reclassified as a magical beast but \"doesn't change any of its statistics\""
   },
   "Hunter/Feral Hunter": {
     "archetype": "Feral Hunter",
@@ -1936,8 +1976,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Class Guide pg. 95 A feral hunter has forged a bond with nature that's so strong that she doesn't merely channel the aspects of animals- she actually becomes an animal herself. Though she lacks an animal companion, a feral hunter is in tune with the beast lurking within her flesh and spirit, and lives in a near-wild state of being. A feral hunter often resembles a lycanthrope, but her power comes from her own nature and is not inf luenced by moonlight or silver.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Hunter/Forester": {
@@ -1966,28 +2007,23 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Wilderness pg. 52 While all hunters have a bond with the natural world, a forester has a stronger tie to her environment than to the animals within it. While most foresters feel strong bonds with woodland regions, the archetype functions well in other terrains as well. In such cases, a forester might refer to herself by a different name that more accurately reflects her chosen terrain. For example, a forester who favors bogs and marshes might call herself a 'swamper,' while one who favors frozen regions might call herself a 'glacier guardian.' As foresters gain levels and take on new favored terrains, they often eschew such titles completely, viewing them as unnecessary, and merely refer to themselves as guardians of the wild or champions of nature's will-but regardless of the name, their devotion remains.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Hunter/Packmaster": {
     "archetype": "Packmaster",
     "bond_features": [],
     "class": "Hunter",
-    "confidence": "medium",
+    "confidence": "high",
     "effect": "progression",
     "effects": [
       {
-        "confidence": "medium",
+        "confidence": "high",
         "effect": "progression",
-        "evidence": "A packmaster can have more than one animal companion, but she must divide her effective druid level between her companions to determine the abilities of each on",
-        "why": "changes level or size advancement"
-      },
-      {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": "to two animal companions at once.) As a swift action, she can change which companion gains any or all of these benefits. This ability replaces animal companion.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "evidence": "",
+        "why": "\"must divide her effective druid level between her companions\""
       }
     ],
     "sentences": [
@@ -1997,22 +2033,23 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Class Guide pg. 96 Some hunters form bonds with packs of well-trained creatures. Whether such a hunter is a northern berserker running with a pack of timber wolves or a savage warrior dashing through the jungle alongside her herd of dimetrodons, the packmaster revels in the thrill of the hunt and the glory of the kill. A packmaster is more comfortable in groups than alone, and although her animal companions may be weaker than a typical hunter's, what they lack in strength they make up for in numbers.",
-    "why": "changes level or size advancement"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must divide her effective druid level between her companions\""
   },
   "Hunter/Patient Ambusher": {
     "archetype": "Patient Ambusher",
     "bond_features": [],
     "class": "Hunter",
-    "confidence": "medium",
-    "effect": "removes",
+    "confidence": "high",
+    "effect": "none",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": "m range increments apply on the attack roll. The duration of the trap starts when it is created, not when it is triggered. This replaces raise animal companion.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "confidence": "high",
+        "effect": "none",
+        "evidence": "",
+        "why": "replaces only tangential features, never the companion itself"
       }
     ],
     "sentences": [
@@ -2022,28 +2059,23 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Wilderness pg. 53 , Magic Tactics Toolbox pg. 14 Wandering the wilds, some hunters eschew the bond of innate teamwork with their animal companions. Instead, these hunters master the creation and deployment of intricate ranger traps, often using themselves or their animal companions to lure foes into their snares.",
-    "why": "traded away, and nothing in the bond text grants a creature"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "replaces only tangential features, never the companion itself"
   },
   "Hunter/Pelagic Hunter": {
     "archetype": "Pelagic Hunter",
     "bond_features": [],
     "class": "Hunter",
     "confidence": "high",
-    "effect": "forces",
+    "effect": "species_pool",
     "effects": [
       {
         "confidence": "high",
-        "effect": "forces",
-        "evidence": "A pelagic hunter must select an aquatic animal companion.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "A pelagic hunter must select an aquatic animal companion.",
-        "why": "restricts the species by swim speed (39 qualify)"
+        "evidence": "",
+        "why": "\"must select an aquatic animal companion\""
       }
     ],
     "sentences": [
@@ -2053,7 +2085,7 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Aquatic Adventures pg. 54 Pelagic hunters form strong bonds that extend deep beneath the sea, reaching out to whatever heeds their call, whether it be mundane animals or something far more sinister.",
     "species_pool": [
       "anglerfish",
@@ -2097,7 +2129,8 @@
       "whale, orca"
     ],
     "species_pool_derived_from": "swim",
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select an aquatic animal companion\""
   },
   "Hunter/Plant Master": {
     "archetype": "Plant Master",
@@ -2176,19 +2209,13 @@
     ],
     "class": "Hunter",
     "confidence": "high",
-    "effect": "forces",
+    "effect": "species_pool",
     "effects": [
       {
         "confidence": "high",
-        "effect": "forces",
-        "evidence": "As a free action, a treestrider must select an ape as her animal companion.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "…a free action, a treestrider must select an ape as her animal companion.",
-        "why": "names the legal species"
+        "evidence": "",
+        "why": "\"must select an ape as her animal companion\""
       }
     ],
     "sentences": [
@@ -2203,25 +2230,26 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Wilderness pg. 55 Some hunters are masters of the wild. Whether raised by apes or having some other link with simian creatures, these hunters glide through the wilderness with ease.",
     "species_pool": [
       "ape"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select an ape as her animal companion\""
   },
   "Hunter/Uprooter Scout": {
     "archetype": "Uprooter Scout",
     "bond_features": [],
     "class": "Hunter",
-    "confidence": "medium",
-    "effect": "removes",
+    "confidence": "high",
+    "effect": "none",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": "how to move through undergrowth (as woodland stride) that has been enchanted, corrupted, or magically manipulated. This ability replaces raise animal companion.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "confidence": "high",
+        "effect": "none",
+        "evidence": "",
+        "why": "replaces only empathic-link tier perks"
       }
     ],
     "sentences": [
@@ -2231,9 +2259,10 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Class Origins pg. 13 The Uprooters are an elite band of Kyonin elves skilled and brave enough to foray into the Tanglebriar and take the offensive in the fight against Treerazer. Uprooter scouts rely on their close bonds with their animal companions to survive such raids. One Uprooter scout who accompanied an expedition into the Worldwound to put his demon-fighting skills to work there has retired to Mendev to teach his techniques to others, so these skills are slowly being passed on to non-elves.",
-    "why": "traded away, and nothing in the bond text grants a creature"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "replaces only empathic-link tier perks"
   },
   "Hunter/Urban Hunter": {
     "archetype": "Urban Hunter",
@@ -2241,36 +2270,32 @@
       "animal companion (ex)"
     ],
     "class": "Hunter",
-    "confidence": "high",
-    "effect": "forces",
+    "confidence": "medium",
+    "effect": "species_pool",
     "effects": [
       {
-        "confidence": "high",
-        "effect": "forces",
-        "evidence": "Urban hunters have animal companions that are domesticated animals or animals native to a major city.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "high",
+        "confidence": "medium",
         "effect": "species_pool",
-        "evidence": "The urban hunter must select her animal companion from the following list: axe beak B3 , badger, bird, camel, dire rat, dog, ho…",
-        "why": "names the legal species"
+        "evidence": "",
+        "why": "urban companion list"
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Heroes of the Streets pg. 25 Urban hunters help guards track down and apprehend criminals or spies, find lost children and disaster victims, and protect animals from abuse in the city. They still draw their inspiration and strength from the natural world, marveling at how nature flourishes wherever the city allows.",
     "species_pool": [
       "axe beak",
       "badger",
       "bird",
       "camel",
-      "dire rat",
       "dog",
       "horse",
-      "llama"
+      "llama",
+      "pony",
+      "ram"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "urban companion list"
   },
   "Hunter/Verminous Hunter": {
     "archetype": "Verminous Hunter",
@@ -2322,8 +2347,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Wilderness Origins pg. 30 Great civilizations may rise and fall, but water will always mark the places where cities grow. Rivers carve trails through the ground, enabling travel and trade and delivering the fresh water necessary to make agrarian society possible. Champions of the cascade are paladins who defend the freedom and purity of waterways, protecting the very existence of the civilizations they belong to.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Paladin/Divine Defender": {
@@ -2374,8 +2400,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 62 Most paladins rush into battle, meeting evil toe-to-toe. The divine hunter prefers to engage evil from afar, striking down her foes before they can threaten her allies.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Paladin/Dusk Knight": {
@@ -2399,8 +2426,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Blood of Shadows pg. 18 Some paladins focus their training to combat the shadows and use darkness to their advantage. Known as dusk knights, these paladins are primarily worshipers of Abadar, but dusk knights who serve Iomedae and Irori, though rare, do exist.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Paladin/Empyreal Knight": {
@@ -2477,8 +2505,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 63 Not all paladins are knights in shining armor. Holy guns roam the world searching for evil. And where they find it, they put it down.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Paladin/Holy Tactician": {
@@ -2502,8 +2531,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 64 The holy tactician inspires her allies on the field of battle. Her place is at their side against overwhelming odds, and her guidance brings out their true potential.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Paladin/Iroran Paladin": {
@@ -2527,8 +2557,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Inner Sea Combat pg. 39 Iroran paladins meditate on self-perfection and train relentlessly, knowing that their example can inspire others to excel. Irori offers no universal paladin code- each paladin in his service creates his own code as part of his spiritual journey, seeing the adherence to such a self-formulated creed as one of the many tests one must face to reach perfection.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Paladin/Kraken Slayer": {
@@ -2554,7 +2585,7 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Blood of the Sea pg. 15 Triton kraken slayers oppose all underwater threats, but they especially target the tentacled monstrosities called krakens. Kraken slayers develop specialized tactics to defeat their hated enemies as well as learn to recognize the signs of kraken activity in an area. A kraken slayer's greatest responsibility is to destroy evil; all other commitments fall by the wayside. Though kraken slayers uphold all promises they make, they must balance their obligations as kraken slayers with their role as knights and defenders of the ocean.",
     "species_pool": [
       "anglerfish",
@@ -2598,6 +2629,7 @@
       "whale, orca"
     ],
     "species_pool_derived_from": "swim",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "restricts the species by swim speed (39 qualify)"
   },
   "Paladin/Pearl Seeker": {
@@ -2692,20 +2724,8 @@
       {
         "confidence": "high",
         "effect": "species_pool",
-        "evidence": "…a scion of Talmandor forms a bond with an eagle using the statistics for a bird animal companion.",
-        "why": "names the legal species"
-      },
-      {
-        "confidence": "medium",
-        "effect": "progression",
-        "evidence": "This ability functions like the druid animal companion ability, using the scion's paladin level as her effective druid level.",
-        "why": "changes level or size advancement"
-      },
-      {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": "This ability functions like the druid animal companion ability, using the scion's paladin level as her effective druid level. This ability replaces divine bond.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "evidence": "",
+        "why": "\"forms a bond with an eagle\"; the paladin mount is already unconditional here"
       }
     ],
     "sentences": [
@@ -2715,12 +2735,13 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Adventurer's Guide pg. 74 While all Steel Falcons are peerless proponents of the rights of the downtrodden, those who endeavor to make the spread of liberty as peaceful as possible often become scions of Talmandor, honoring the powerful avoral agathion who serves as the patron of the Steel Falcons. Talmandor is reluctant to act directly on behalf of the Eagle Knights and even more unwilling to accept their worship, preferring to lend assistance primarily by being a voice of reason and dispensing wise counsel when it is most needed. A scion of Talmandor attempts to exemplify this selfless altruism, offering assistance to the oppressed and facilitating the peaceful transfer of power from the few to the many. Scions of Talmandor look to the brutality of the revolution in Galt, Andoran's neighbor, as a cautionary tale and an unfortunate blemish on populism's short history. They also reject the Nirmathi notion of freedom, thinking it too individualistic; instead, they strive to build strong communities both at home and abroad. Wherever possible, a scion of Talmandor opts for peaceful, grassroots solutions to problems facing the many oppressed peoples of the Inner Sea region, encouraging them to take a central role in bettering their lot in life.",
     "species_pool": [
       "bird"
     ],
-    "why": "names the legal species"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"forms a bond with an eagle\"; the paladin mount is already unconditional here"
   },
   "Paladin/Shining Knight": {
     "archetype": "Shining Knight",
@@ -2762,12 +2783,6 @@
         "effect": "creature_type",
         "evidence": "At 5th level, a silver champion gains a drake companion.",
         "why": "the bond yields a drake, not an animal companion"
-      },
-      {
-        "confidence": "high",
-        "effect": "forces",
-        "evidence": "At 5th level, a silver champion gains a drake companion.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
       }
     ],
     "sentences": [
@@ -2777,22 +2792,24 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Legacy of Dragons pg. 25 Paladins who serve as priests of Apsu are almost always on the move, wandering from place to place and trying to show their dedication to the Waybringer in their deeds rather than depending on mere words. Good-aligned dragons are more likely to treat such paladins as they would treat other dragons (though perhaps not with the respect reserved for other true dragons), and evil dragons often target them as special threats. More rarely a drake is so inspired by a paladin of Apsu that it chooses to assist the paladin in all her actions. These drake allies see the benefit of a silver champion remaining mobile and understand the powerful threats the champion must face, and in time even consent to serve their chosen paladins as a steed. Silver champions are often concerned by their drake allies' pragmatic natures, however, and are sure to treat them with respect, knowing that these lesser dragons must constantly be inspired to act on their better natures.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "the bond yields a drake, not an animal companion"
   },
   "Paladin/Stonelord": {
     "archetype": "Stonelord",
     "bond_features": [],
     "class": "Paladin",
-    "confidence": "medium",
-    "effect": "removes",
+    "confidence": "high",
+    "creature_type": "elemental",
+    "effect": "creature_type",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": "evels, becoming Medium at 8th level, Large at 11th level, Huge at 14th level, Greater at 17th level, and Elder at 20th level. This ability replaces divine bond.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "confidence": "high",
+        "effect": "creature_type",
+        "evidence": "",
+        "why": "\"may call a Small earth elemental to her side, as a paladin calls her mount\""
       }
     ],
     "sentences": [
@@ -2802,9 +2819,10 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Race Guide pg. 16 A stonelord is a devoted sentinel of dwarven enclaves, drawing the power of the earth and ancient stone to protect her people.",
-    "why": "traded away, and nothing in the bond text grants a creature"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"may call a Small earth elemental to her side, as a paladin calls her mount\""
   },
   "Paladin/Tempered Champion": {
     "archetype": "Tempered Champion",
@@ -2849,8 +2867,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Class Guide pg. 107 A temple champion is a powerful warrior dedicated to a good or lawful deity. She thinks of herself primarily as a servant of her deity and secondarily as an agent of her deity's church. She has a refined understanding of a specific aspect of that faith and gives up standard paladin spellcasting in favor of a warpriest's domainbased blessings and granted powers.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Paladin/Tortured Crusader": {
@@ -3024,8 +3043,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Pathfinder #95: Anvil of Fire pg. 72 Cinderwalkers traverse burning wastelands and restless mountains, thriving in lands most creatures avoid.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Code Runner": {
@@ -3049,8 +3069,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Intrigue pg. 40 A code runner specializes in the subtle and speedy transfer of secret messages. He performs long runs between distant lands, sometimes spanning continents and often traversing difficult terrain. He trains his mind both to memorize long messages and to resist any attempts to steal his covert communiques.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Dandy": {
@@ -3103,8 +3124,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Class Guide pg. 108 Blessed by his deity, a divine tracker hunts down those he deems deserving of his retribution. His weapon is likely to find purchase in his favored enemy.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Drake Warden": {
@@ -3141,22 +3163,23 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Legacy of Dragons pg. 24 Some rangers specialize in dealing with rambunctious younger drakes, protecting them and teaching them to tolerate, and even trust, humanoid creatures. These drake wardens follow and pass along secret techniques for raising drakes effectively, and thanks to their methods, their drakes are both fiercely loyal and extremely useful for scouting and stealth missions.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "the bond yields a drake, not an animal companion"
   },
   "Ranger/Dungeon Rover": {
     "archetype": "Dungeon Rover",
     "bond_features": [],
     "class": "Ranger",
-    "confidence": "high",
+    "confidence": "low",
     "effect": "species_pool",
     "effects": [
       {
-        "confidence": "high",
+        "confidence": "low",
         "effect": "species_pool",
-        "evidence": "At 4th level, a dungeon rover may select a giant slug, a giant centipede, a goblin dog, a giant scorpion, or any poisonous snake as his anim…",
-        "why": "names the legal species"
+        "evidence": "",
+        "why": "list includes \"any poisonous snake\"; names unresolved"
       }
     ],
     "sentences": [
@@ -3166,7 +3189,7 @@
         "verb": "modifies"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Dungeoneer's Handbook pg. 22 These rangers specialize in surviving hostile subterranean environs. They are well equipped to avoid traps, spot secret passages, and deal with inimical dungeon tenants.",
     "species_pool": [
       "giant slug",
@@ -3174,7 +3197,8 @@
       "goblin dog",
       "giant scorpion"
     ],
-    "why": "names the legal species"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "list includes \"any poisonous snake\"; names unresolved"
   },
   "Ranger/Dusk Stalker": {
     "archetype": "Dusk Stalker",
@@ -3197,8 +3221,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Race Guide pg. 110 Hunters and guides through the Shadow Plane, dusk stalkers are rangers that thrive in shadow. Adept at hunting in dusk, darkness, and twilight, these rangers excel at manipulating shadows.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Falconer": {
@@ -3258,8 +3283,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Wilderness pg. 72 Emulating the blazing phoenix, flamewardens sweep through the world like a selective forest fire, burning away corruption, evil, and those who cling to decay.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Fortune-Finder": {
@@ -3283,8 +3309,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Blood of the Beast pg. 29 Vanaras often leave home to seek fortune and sate their curiosity regarding the mysterious lands that lie beyond their native territories. The most skilled of these thrillseekers are called ba-sadhaks, or fortune-finders. So successful have these canny explorers been at exploring Golarion at large that the secrets of their success are closely guarded, resulting in only extremely rare nonvanaran fortune-finders.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Freebooter": {
@@ -3308,8 +3335,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Pirates of the Inner Sea pg. 23 A freebooter is a natural leader, a pirate who works well with a variety of people and in a variety of roles. Her specialized combat tactics help organize and direct a crew, and freebooters' talents are in high demand. Most freebooters work as independent agents. A freebooter signs on with a crew when she feels the urge to travel, and often moves to a new ship when her contract ends.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Guide": {
@@ -3333,8 +3361,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Player's Guide pg. 125 Many rangers are loners, but some choose to use their familiarity with the land to guide others safely through the wilderness. The guide forgoes a favored enemy to focus on the task or foe at hand, and can pass his knowledge and luck on to his charges. A guide has the following class features.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Guildbreaker": {
@@ -3358,8 +3387,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Intrigue pg. 41 Some rangers aren't the type to put their steel and sweat behind fighting particular kinds of creatures. Instead, these shrewd warriors alter their focus and dedicate their efforts to dismantling enemy organizations. Guildbreakers stoke their enmity for their foes, and they train to track the movements of rival organizations, and even to infiltrate these groups to gather secret intelligence.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Horse Lord": {
@@ -3491,8 +3521,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Planar Adventures pg. 17 Planar scouts are rangers specializing in traversing the planes-and surviving their journeys.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Poison Darter": {
@@ -3516,8 +3547,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Blood of the Beast pg. 9 In dense jungles, foliage and tight spaces hinder all but the most deceptively humble weapons: blowguns and poison.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Raven Master": {
@@ -3525,25 +3557,19 @@
     "bond_features": [],
     "class": "Ranger",
     "confidence": "medium",
-    "effect": "progression",
+    "effect": "forces",
     "effects": [
       {
         "confidence": "medium",
-        "effect": "progression",
-        "evidence": "This ability functions like the druid animal companion ability, except that the raven master's effective druid level is equal to her ranger level - 3.",
-        "why": "changes level or size advancement"
-      },
-      {
-        "confidence": "high",
         "effect": "forces",
-        "evidence": "The raven master must select a bird as her animal companion.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+        "evidence": "",
+        "why": "\"ranger level - 3\" is the base formula, so no progression change"
       },
       {
-        "confidence": "high",
+        "confidence": "medium",
         "effect": "species_pool",
-        "evidence": "The raven master must select a bird as her animal companion.",
-        "why": "names the legal species"
+        "evidence": "",
+        "why": "\"ranger level - 3\" is the base formula, so no progression change"
       }
     ],
     "sentences": [
@@ -3553,12 +3579,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Adventurer's Guide pg. 175 While the Silver Ravens adopted their name as a way to honor the group of adventurers who defended Kintargo during the Chelish Civil War, some Silver Ravens have gone even farther, breeding and training actual ravens to serve both as living symbols of the organization and as fearsome weapons against House Thrune and its diabolic servants. These rangers, known as raven masters, eschew a ranger's usual connection to the natural world to form a mystic bond with their birds and to grant both animal and master a number of specialized abilities. Over time, the feathers of these raven companions take on a silvery sheen, causing them to resemble the birds produced by the figurines of wondrous power , which served as the original Silver Ravens' namesake. Raven masters serve as messengers and spies for the Silver Ravens, using their ravens to scout the border between Ravounel and Cheliax and report any suspicious Thrune troop movements. Outside of Cheliax, raven companions alight on the rooftops and window ledges of palaces and keeps to eavesdrop on tyrants and dictators, feeding these precious secrets to the raven master so that she can more efficiently foment and organize rebellion.",
     "species_pool": [
       "bird"
     ],
-    "why": "changes level or size advancement"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"ranger level - 3\" is the base formula, so no progression change"
   },
   "Ranger/Realm Wanderer": {
     "archetype": "Realm Wanderer",
@@ -3611,8 +3638,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Intrigue pg. 42 A sentinel specializes in heightening all of her senses to expose spies and those who work for opposing factions, rooting out all who attempt to slip past her evervigilant watch. Her uncanny skills are in ready demand by city guards, business owners, and even criminal organizations that desire to keep the authorities out of their disreputable affairs.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Spirit Ranger": {
@@ -3665,8 +3693,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Wilderness pg. 72 Rangers who walk in the tempest unafraid draw the power of the storm into themselves and become stormwalkers.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Sword-Devil": {
@@ -3719,8 +3748,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Wilderness pg. 74 Saviors and destroyers in equal measure, toxic herbalists use nature's bounty to craft remedies and poisons.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Transporter": {
@@ -3773,8 +3803,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 67 Some rangers have taken up the mysteries of black powder in order to become big game hunters. Finding firearms useful for taking down large and dangerous prey, they enter the fight with the crack of black powder fire, often ranging far and wide in their safaris and searches for ever-more-dangerous denizens of the wild to track, study, appreciate-and kill. While this might strike some as going against the ranger's usual respect for nature and the creatures of the wild, trophy hunters understand that they are just more pieces in nature's grand puzzle, and that the laws of the jungle-the right to kill and feed on those weaker than you, and the need to establish dominance through cunning and bloodshed-are both their rights and their duty as the current top of the food chain.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Warden": {
@@ -3798,8 +3829,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 68 All rangers have a bond with the wilderness, but the warden may have the strongest. This protector sits guard in the middle of the wilderness, keeping a lookout for any dangers that might spill from the deeper wilderness beyond, and protecting civilization from the savagery of nature-and vice versa. His long weeks, months, and sometimes years of isolation cause him to 'hear' what the land is saying. Not all are crazy.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Wild Shadow": {
@@ -3823,8 +3855,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Race Guide pg. 45 The isolation that some half-elves feel leads them to live a life of isolation amid the wild places of the world. Such rangers stalk the wild like shadows, creating close bonds with the wild itself instead of seeking the solace and aid of companions. While ill at ease within cities and other urban areas, they are adept at using the terrain to tactical advantage; they dart through brambles and rough terrain with uncommon grace and use the land itself to lock down enemies. A wild shadow has the following class features.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Wild Stalker": {
@@ -3848,8 +3881,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 68 Civilization grows stronger and more decadent with each passing year. It tears into unclaimed wilderness and destroys the fragile ecology in its constant push for expansion and exploitation. The wild stalker forsakes the bonds of community and lives in the trackless wilds far from others of his kind, or perhaps grew up there, never knowing of civilization as anything more than his enemy. He drives pioneers back to civilization and strives to keep the land unspoiled.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Wilderness Explorer": {
@@ -3873,8 +3907,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Wilderness pg. 74 Wilderness explorers are adept at making peaceful contact with remote societies.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Ranger/Wilderness Medic": {
@@ -3927,8 +3962,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Martial Arts Handbook pg. 10 While some martial arts traditions focus on the strength of the body, most schools of combat and self-defense know the importance of using weapons as well. Brawling blademaster samurai use weapon strikes and unarmed attacks in equal measure-foes expecting to defend themselves against a dagger or a sword are often caught off guard by a brawling blademaster's brutal kicks or punches.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Samurai/Soverign Blade": {
@@ -3952,8 +3988,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Legacy of Dragons pg. 14 In Tian Xia, many samurai are tutored in the ways of honor using lessons that originate from sovereign dragons and their dedication to safeguarding harmony.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Samurai/Sword Saint": {
@@ -3977,8 +4014,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Dragon Empires Primer pg. 22 Sword saints hail from lands where samurai are prevalent, and are often ronin who wander the world seeking new challenges to perfect their intricate style of swordplay called iaijutsu . The following benefits apply only when a sword saint is using a sword and carrying nothing in his other hand. The sword saint is an archetype of the samurai alternate class ( Ultimate Combat 18).",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Samurai/Warrior Poet": {
@@ -4002,8 +4040,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Heroes from the Fringe pg. 13 Warrior poets often study calligraphy, flower arrangement, poetry, and other courtly arts, but when called to battle, they treat combat as its own art form, fighting with beauty and grace. While these traditions first arose among the Jininese elves and are still extremely common in Jinin, the warrior poet's art has spread to different nations and peoples in Tian Xia over centuries.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Samurai/Yojimbo": {
@@ -4027,8 +4066,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Armor Master's Handbook pg. 7 Yojimbo are highly trained bodyguards favored by the nobles and warlords of distant Minkai. Yojimbo who follow the order of the warrior loyally guard a single master, while ronin serve whoever can pay for their protection. Yojimbo often accompany visitors to the Inner Sea region from Tian Xia; a few have chosen to stay, and some have even passed on their training to bodyguards of this region.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Sorcerer/Tattooed Sorcerer": {
@@ -4102,8 +4142,9 @@
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Magic pg. 79 Changing an eidolon's evolutions is normally a slow process. As a summoner progresses in levels, his control over his eidolon's abilities increases. But an evolutionist possesses greater power over his eidolon's form, and is able to evolve his eidolon and its abilities to meet any challenge or face any threat as it comes up, seemingly on a whim.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "mentions a bond feature without changing it"
   },
   "Summoner/First Worlder": {
@@ -4112,14 +4153,14 @@
       "eidolon"
     ],
     "class": "Summoner",
-    "confidence": "medium",
-    "effect": "removes",
+    "confidence": "high",
+    "effect": "none",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": "t DR/cold iron instead of one of the alignment-based types of damage reduction. This otherwise works like and replaces the eidolon ability of a normal summoner.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "confidence": "high",
+        "effect": "none",
+        "evidence": "",
+        "why": "\"replaces the eidolon ability\" but the eidolon persists, reflavoured fey"
       }
     ],
     "sentences": [
@@ -4129,22 +4170,23 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Inner Sea Magic pg. 35 Most summoners have a close connection to creatures from the farthest reaches of the planes. A few have a primal connection to nature, and their power is tied to the First World. It is not unusual for these summoners to associate with druids, for like druids, first worlders have a powerful tie to the natural world. Some first worlders are driven half-mad by the strange energies and intelligences that seep into their minds and bodies, though, and these poor souls are prone to lash out at loggers, druids, or innocent passersby without considering whether or not they are threats. A first worlder's eidolon usually resembles a fey creature or a plant monster, though some are fantastic otherworldly animals with exaggerated features. A first worlder has the following class features.",
-    "why": "traded away, and nothing in the bond text grants a creature"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"replaces the eidolon ability\" but the eidolon persists, reflavoured fey"
   },
   "Summoner/God Caller": {
     "archetype": "God Caller",
     "bond_features": [],
     "class": "Summoner",
-    "confidence": "medium",
-    "effect": "removes",
+    "confidence": "high",
+    "effect": "none",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": "nce ( Pathfinder RPG Ultimate Magic 230 ) three times per day. The save DC is equal to 19 + the eidolon's Charisma modifier. This ability replaces twin eidolon.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "confidence": "high",
+        "effect": "none",
+        "evidence": "",
+        "why": "every altered ability still belongs to \"the god caller's eidolon\""
       }
     ],
     "sentences": [
@@ -4154,9 +4196,10 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Inner Sea Intrigue pg. 40 God callers follow a fractured tradition that originated in the now-lost nation of Sarkoris. They speak to an assortment of ancient divine powers to lead their communities and sometimes stir up reformations in faiths with ideals similar to their personal convictions. Any summoner (including the summoner from Pathfinder Unchained ) can select the god caller archetype.",
-    "why": "traded away, and nothing in the bond text grants a creature"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "every altered ability still belongs to \"the god caller's eidolon\""
   },
   "Summoner/Leshy Caller": {
     "archetype": "Leshy Caller",
@@ -4181,8 +4224,9 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Wilderness pg. 94 A leshy caller summons creatures from the First World and forges a bond with a leshy eidolon.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "mentions a bond feature without changing it"
   },
   "Summoner/Master Summoner": {
@@ -4191,14 +4235,14 @@
       "lesser eidolon"
     ],
     "class": "Summoner",
-    "confidence": "medium",
-    "effect": "removes",
+    "confidence": "high",
+    "effect": "progression",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": "idolon's abilities, Hit Dice, evolution pool, and so on. The eidolon otherwise functions as normal. This ability replaces the summoner's normal eidolon ability.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "confidence": "high",
+        "effect": "progression",
+        "evidence": "",
+        "why": "\"class level is halved ... otherwise functions as normal\""
       }
     ],
     "sentences": [
@@ -4208,9 +4252,10 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Magic pg. 80 Most summoners forge a bond with a single, powerful eidolon, but some summoners seek to control a variety of creatures. The master summoner sacrifices the power of his eidolon in favor of summoning a plethora of otherworldly creatures to aid him.",
-    "why": "traded away, and nothing in the bond text grants a creature"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"class level is halved ... otherwise functions as normal\""
   },
   "Summoner/Morphic Savant": {
     "archetype": "Morphic Savant",
@@ -4255,14 +4300,14 @@
       "shadow eidolon"
     ],
     "class": "Summoner",
-    "confidence": "medium",
-    "effect": "removes",
+    "confidence": "high",
+    "effect": "none",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": "ce of light. This lack of a shadow replaces the magical symbol that identifies the summoner and his eidolon. This ability alters the summoner's eidolon ability.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "confidence": "high",
+        "effect": "none",
+        "evidence": "",
+        "why": "\"alters the summoner's eidolon\"; only the shared-shadow effect changes"
       }
     ],
     "sentences": [
@@ -4277,9 +4322,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Race Guide pg. 110 While most summoners can call any manner of creature from across the planes to serve them in combat, supplementing the skills of their eidolon with a diverse range of creatures, others eschew this broad utility and instead concentrate upon calling forth entities from the Shadow Plane. A shadow caller has the following class features.",
-    "why": "traded away, and nothing in the bond text grants a creature"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"alters the summoner's eidolon\"; only the shared-shadow effect changes"
   },
   "Summoner/Shaitan Binder": {
     "archetype": "Shaitan Binder",
@@ -4319,7 +4365,6 @@
     ],
     "class": "Summoner",
     "confidence": "high",
-    "conflict": "forces and removes both detected -- read the full text",
     "effect": "species_pool",
     "effects": [
       {
@@ -4392,8 +4437,9 @@
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "The Harrow Handbook pg. 25 Story summoners rely on the harrow to weave the paths they walk, turning their tales into reality. They channel magic through their harrow decks to influence the strange extraplanar beings they summon, bringing familiar and fateful characters to life. Some focus on the more whimsical figures of the harrow, while others bring its darkest icons into the real world.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "mentions a bond feature without changing it"
   },
   "Summoner/Synthesist": {
@@ -4498,13 +4544,13 @@
     ],
     "class": "Summoner",
     "confidence": "high",
-    "effect": "removes",
+    "effect": "none",
     "effects": [
       {
         "confidence": "high",
-        "effect": "removes",
-        "evidence": "A wild caller gains 1/4 his class level as bonus evolution points in his eidolon's evolution pool, but his eidolon cannot take the following evolutions: 1-point evolution",
-        "why": "the creature is forbidden"
+        "effect": "none",
+        "evidence": "",
+        "why": "bonus evolution points only; the eidolon is unaffected"
       }
     ],
     "sentences": [
@@ -4514,9 +4560,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Race Guide pg. 44 Often a Half-Elf's ties to nature and elven heritage are so strong that they can dramatically affect the nature of his summonings. The wild caller calls eidolons that take more natural and savage forms and summons from nature rather than the Great Beyond. A wild caller has the following class features.",
-    "why": "the creature is forbidden"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "bonus evolution points only; the eidolon is unaffected"
   },
   "Summoner/Wild Caller (HotW)": {
     "archetype": "Wild Caller (HotW)",
@@ -4542,8 +4589,9 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Heroes of the Wild pg. 25 A wild caller summons creatures from the First World and forges a bond with an eidolon with a plant body.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "the bond yields a plant, not an animal companion"
   },
   "Witch/Alley Witch": {
@@ -4593,8 +4641,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Qadira, Jewel of the East pg. 14 Qadira's armies strike terror into foes, but tales of something even more terrible than desert dervishes or charging cavalry haunt foot soldiers serving Qadira's neighbors. Known in Taldane as a 'battle witch,' an ashiftah drifts like a phantom among the enemy armies, calling down disaster upon their heads and weakening their resolve. Qadiran ashiftahs usually go veiled, and even their cohorts in the Imperial Forces superstitiously believe that seeing their faces brings misfortune.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Witch/Beast-Bonded": {
@@ -4641,8 +4690,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Race Guide pg. 43 While all witches commune with the unknown, the blend of human ingenuity and adept learning mixed with elven blood gives some half-elves a unique conduit to channel the powers of the arcane. Bonded witches forsake familiars as vessels of power in favor of a specific object that grants them powers above and beyond those of their patron alone, as they tap into the powerful magic of the item itself. A bonded witch has the following class features.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Witch/Bouda": {
@@ -4666,8 +4716,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Monster Codex pg. 92 These strange and often solitary witches have a strong connection to curses, the evil eye, and hyenas.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Witch/Cartomancer": {
@@ -4691,8 +4742,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "The Harrow Handbook pg. 15 More than mere playing cards, harrow decks allow individuals to communicate with powers beyond mortal ken. A witch who serves the spirits of the harrow in exchange for mystical power is known as a cartomancer. Rather than connecting with a familiar, a cartomancer communes with her patron through a consecrated harrow deck.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Witch/Coral Witch": {
@@ -4702,7 +4754,6 @@
     ],
     "class": "Witch",
     "confidence": "medium",
-    "conflict": "forces and removes both detected -- read the full text",
     "effect": "none",
     "effects": [
       {
@@ -4752,21 +4803,15 @@
       "gingerbread familiar (ex)"
     ],
     "class": "Witch",
-    "confidence": "high",
+    "confidence": "medium",
     "creature_type": "construct",
     "effect": "creature_type",
     "effects": [
       {
-        "confidence": "high",
+        "confidence": "medium",
         "effect": "creature_type",
-        "evidence": "As a construct, it gains 60-foot darkvision and construct immunities, it loses any special abilities the animal or vermin has other than movement speed, and it ",
-        "why": "the bond yields a construct, not an animal companion"
-      },
-      {
-        "confidence": "high",
-        "effect": "forces",
-        "evidence": "A gingerbread witch can never gain an improved familiar.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+        "evidence": "",
+        "why": "familiar's \"type changes to construct\""
       }
     ],
     "sentences": [
@@ -4776,9 +4821,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Horror Adventures pg. 72 A sweet tooth lures the gingerbread witch's victims to doom.",
-    "why": "the bond yields a construct, not an animal companion"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "familiar's \"type changes to construct\""
   },
   "Witch/Gravewalker": {
     "archetype": "Gravewalker",
@@ -4801,22 +4847,23 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Magic pg. 84 Having much in common with necromancers, the gravewalker is obsessed with the occult manipulations of the dead, particularly mindless undead such as zombies. Unlike the creations of standard necromancers, a gravewalker's creations remain forever tied to her will, and she can produce vile apparitions of tremendous power.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Witch/Havocker": {
     "archetype": "Havocker",
     "bond_features": [],
     "class": "Witch",
-    "confidence": "high",
-    "effect": "forces",
+    "confidence": "medium",
+    "effect": "none",
     "effects": [
       {
-        "confidence": "high",
-        "effect": "forces",
-        "evidence": "At 1st level, rather than selecting a standard patron and gaining patron spells, the witch selects a specific kineticist element ( Pathfinder RPG Occult Adventures 14 ), ",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+        "confidence": "medium",
+        "effect": "none",
+        "evidence": "",
+        "why": "alters the source of her powers, not the familiar"
       }
     ],
     "sentences": [
@@ -4826,9 +4873,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Magic Tactics Toolbox pg. 11 Although most witches are guided to subtle curses and debilitating hexes by their mysterious patrons, some are instead taught the secrets of harnessing raw, destructive elemental power.",
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "alters the source of her powers, not the familiar"
   },
   "Witch/Ley Line Guardian": {
     "archetype": "Ley Line Guardian",
@@ -4851,8 +4899,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Occult Adventures pg. 125 Some witches tap into the power of their patrons not through a special connection with a familiar, but rather directly through the vast network of ley lines that crosses the planes. These witches can harness the latent powers of ley lines without even needing to be near one of the points where ley lines' powers are accessible to mortal spellcasters.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Witch/Mirror Witch": {
@@ -4876,8 +4925,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Villain Codex pg. 152 After being locked away and denied her former familiar, the queen learned to talk to her patron via mirror magic.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Witch/Nexian Spellspy": {
@@ -4989,8 +5039,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Race Guide pg. 140 The scarred witch doctor draws power from her ability to endure pain and suffering. She mutilates her own flesh, inflicting horrific scars, in order to attract the attention of her patron. Rather than call forth a familiar, she creates a repulsive fetish mask that she uses as a repository for her power. A scarred witch doctor has the following class features.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Witch/Venom Siphoner": {
@@ -5063,7 +5114,6 @@
     "bond_features": [],
     "class": "Witch",
     "confidence": "high",
-    "conflict": "forces and removes both detected -- read the full text",
     "effect": "removes",
     "effects": [
       {
@@ -5106,8 +5156,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 75 To many wizards, the experimentation of the alchemist seems quaint, if not dangerous or frightening. A few wizards take up the secrets of the bomb, however, fusing alchemy with their already considerable magical power.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Wizard/Bonded Wizard": {
@@ -5138,20 +5189,34 @@
       "imp familiar (ex)"
     ],
     "class": "Wizard",
-    "confidence": "high",
+    "confidence": "medium",
+    "creature_type": "outsider",
     "effect": "forces",
     "effects": [
       {
-        "confidence": "high",
+        "confidence": "medium",
         "effect": "forces",
-        "evidence": "At 7th level, you gain Improved Familiar as a bonus feat, and must take an imp as a familiar.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+        "evidence": "",
+        "why": "\"must choose a familiar\"; \"must take an imp as a familiar\" at 7th"
+      },
+      {
+        "confidence": "medium",
+        "effect": "creature_type",
+        "evidence": "",
+        "why": "\"must choose a familiar\"; \"must take an imp as a familiar\" at 7th"
+      },
+      {
+        "confidence": "medium",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "\"must choose a familiar\"; \"must take an imp as a familiar\" at 7th"
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Inner Sea Primer pg. 29 The prestigious Egorian Academy of the Magical Arts in Cheliax's capital city teaches a full spectrum of magic, both specialized and universalist, but the college is best known for its Infernal Binding program in the school of conjuration. An infernal binder learns the Names of Hell, and can use those powers to summon and bind devils to do her bidding. If she makes a single mistake in the binding, she opens herself to an eternity of torment. Egorian Academy wizards are recognized across Avistan as premier practitioners of the arcane arts. Many hold high positions in magical colleges across Golarion, but most seek to return one day to teach at their alma mater in Egorian.",
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must choose a familiar\"; \"must take an imp as a familiar\" at 7th"
   },
   "Wizard/Chronomancer": {
     "archetype": "Chronomancer",
@@ -5174,8 +5239,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Legacy of the First World pg. 30 Time is not an immutable force but an inscrutable phenomenon. Rare arcane scholars known as chronomancers demonstrate the ability to shift themselves in short bursts between the past, future, and alternate presents.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Wizard/Clocksmith": {
@@ -5238,8 +5304,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Race Guide pg. 98 To those who know how to manipulate it, the blood of a dhampir can be a powerful component to magic. A cruoromancer infuses his necromantic magic with the power of his unique mixture of living blood and undead ichor. As his power increases in this strange arcane art, a cruoromancer finds potent ways to infuse his unique blood with necromancy spells. A cruoromancer has the following class features.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Wizard/Elder Mythos Scholar": {
@@ -5291,8 +5358,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Class Guide pg. 133 Contrary to traditional wizardly study, an exploiter wizard forgoes the tried and true methods of arcane focus and arcane schools for the exploits favored by an arcanist. Some wizards regard this blatant exploitation of arcane magic as somehow 'cheating,' but most exploiters believe this prejudice is close-minded and overly traditional.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Wizard/Familiar Adept": {
@@ -5379,8 +5447,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Cohorts and Companions pg. 31 Whether serving as staff at a formal school of magic or simply acting as a wandering teacher, an instructor has an apprentice who trades service to the instructor for lessons in magic.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Wizard/Pact (FF)": {
@@ -5441,8 +5510,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Blood of the Ancients pg. 16 Poleiheira adherents are wizards who wish to emulate the explorations and discoveries of Arustun and partake in great odysseys as they seek to imitate his achievements. These adherents bond to a book in tribute to Arustun and his extensive journals-known as the Poleiheira. This allows them to record their travels as well as any lost magic and lore they encounter.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Wizard/Primalist": {
@@ -5466,8 +5536,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Inner Sea Magic pg. 37 A primalist is a wizard who has spent a considerable amount of time studying the chaos that is primal magic-she seeks order in chaos, and hopes to master the raw power of primal magic to bolster her own abilities. A primalist wizard has the following class features.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Wizard/Runesage": {
@@ -5517,8 +5588,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Magic pg. 89 To some wizards, a scroll is not just a written form of a spell, it is a physical weapon meant to be used in combat like a sword or a shield. These strange wizards enter battle armed with scrolls, often one in each in each hand, practicing combat techniques resembling some monk martial arts.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Wizard/Shadowcaster": {
@@ -5542,8 +5614,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Inner Sea Magic pg. 39 Trained in the dark mysteries of Nidal's Umbral Court and its Kuthonite dogma, your training allows you to harness the power of shadows to bolster your spellcasting. A shadowcaster has the following class features.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Wizard/Siege Mage": {
@@ -5567,8 +5640,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 75 The siege mage combines his arcane mastery with a supernatural link to siege engines.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Wizard/Spell Sage": {
@@ -5592,8 +5666,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Class Guide pg. 133 A spell sage has mastered spells of all types, and is able to increase the effectiveness of his own spells and eventually even cast spells from other classes' spell lists. While most wizards focus on a school, the spell sage looks at the particular aspects of individual spells and is not afraid to modify them with interesting bits of insight to gain deeper understandings of the formulae.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Wizard/Spellbinder": {
@@ -5617,8 +5692,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Race Guide pg. 25 A spellbinder is an elven wizard who forges an arcane bond between himself and one or more wizard spells. These spells become so well understood by the spellbinder that he can prepare them in spell slots that already have other spells prepared in them.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Wizard/Spellslinger": {
@@ -5642,8 +5718,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 75 While few contest the seductive allure of commanding arcane and occult powers, there are those wizards who become obsessed with the natural mysteries of black powder. Combining this emerging technology with their considerable arcane skills, they transform firearms into a powerful focus.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Wizard/Spirit Binder": {
@@ -5784,8 +5861,9 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Race Guide pg. 158 The wind listener takes a sylph's natural curiosity to the extreme, enhancing his natural skill at subterfuge and eavesdropping with potent arcane magic. A wind listener has the following class features.",
+    "verdict_source": "read against the rules text; proposal confirmed",
     "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Wizard/Worldseeker": {

@@ -32,6 +32,21 @@
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "per-size pick lists plus an early size-Large stat table"
   },
+  "Cavalier/Castellan": {
+    "confidence": "high",
+    "effect": "species_pool",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "\"forms a bond with an animal companion that serves as a guard\""
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"forms a bond with an animal companion that serves as a guard\""
+  },
   "Cavalier/First Mother's Fang": {
     "confidence": "high",
     "effect": "species_pool",
@@ -126,6 +141,47 @@
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "fast mount only adds speed"
   },
+  "Cavalier/Oceanrider": {
+    "confidence": "high",
+    "effect": "species_pool",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "\"ride either a seahorse or an orca ... a Small oceanrider can ride a dolphin\""
+      }
+    ],
+    "signed_off": true,
+    "species_pool": [
+      "dolphin",
+      "seahorse"
+    ],
+    "species_pool_raw": [
+      "orca"
+    ],
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"ride either a seahorse or an orca ... a Small oceanrider can ride a dolphin\""
+  },
+  "Cavalier/Qadiran Horselord": {
+    "confidence": "high",
+    "effect": "species_pool",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "\"must select a horse or pony as his mount\""
+      }
+    ],
+    "signed_off": true,
+    "species_pool": [
+      "horse",
+      "pony"
+    ],
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select a horse or pony as his mount\""
+  },
   "Cavalier/Saurian Champion": {
     "confidence": "high",
     "effect": "species_pool",
@@ -166,6 +222,21 @@
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "\"alters order and replaces mount\""
   },
+  "Cavalier/Standard Bearer": {
+    "confidence": "medium",
+    "effect": "progression",
+    "effects": [
+      {
+        "confidence": "medium",
+        "effect": "progression",
+        "evidence": "",
+        "why": "mount arrives at 5th instead of 1st; schedule change only"
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "mount arrives at 5th instead of 1st; schedule change only"
+  },
   "Cavalier/Verdivant": {
     "confidence": "high",
     "creature_type": "plant",
@@ -181,6 +252,36 @@
     "signed_off": true,
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "\"this mount is a plant with the leshy subtype\""
+  },
+  "Cavalier/Vermin Tamer": {
+    "confidence": "high",
+    "effect": "species_pool",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "darklands mount restricted to a vermin list; \"alters mount\""
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "darklands mount restricted to a vermin list; \"alters mount\""
+  },
+  "Cavalier/Wave Rider": {
+    "confidence": "high",
+    "effect": "species_pool",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "\"can use this feat only to select a hippocampus mount\""
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"can use this feat only to select a hippocampus mount\""
   },
   "Druid/Bat Shaman": {
     "confidence": "high",
@@ -245,6 +346,25 @@
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "ape stats; \"doesn't increase to size Large\""
   },
+  "Druid/Dragon Shaman": {
+    "confidence": "high",
+    "effect": "species_pool",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "\"must select a crocodile or monitor lizard\""
+      }
+    ],
+    "signed_off": true,
+    "species_pool": [
+      "monitor lizard",
+      "snake, constrictor"
+    ],
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select a crocodile or monitor lizard\""
+  },
   "Druid/Feral Child": {
     "confidence": "high",
     "effect": "forces",
@@ -260,6 +380,21 @@
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "\"must select an animal companion as her nature bond\""
   },
+  "Druid/Fungal Pilgrim": {
+    "confidence": "high",
+    "effect": "none",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "none",
+        "evidence": "",
+        "why": "domain-side conditional only; the companion path is unrestricted"
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "domain-side conditional only; the companion path is unrestricted"
+  },
   "Druid/Goliath Druid": {
     "confidence": "high",
     "effect": "species_pool",
@@ -274,6 +409,34 @@
     "signed_off": true,
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "\"must select a dinosaur or megafauna\""
+  },
+  "Druid/Leshy Warden": {
+    "confidence": "high",
+    "creature_type": "plant",
+    "effect": "forces",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "forces",
+        "evidence": "",
+        "why": "\"gains a leaf leshy as a familiar\"; leshy upgrades at 4th/8th/12th"
+      },
+      {
+        "confidence": "high",
+        "effect": "creature_type",
+        "evidence": "",
+        "why": "\"gains a leaf leshy as a familiar\"; leshy upgrades at 4th/8th/12th"
+      },
+      {
+        "confidence": "high",
+        "effect": "progression",
+        "evidence": "",
+        "why": "\"gains a leaf leshy as a familiar\"; leshy upgrades at 4th/8th/12th"
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"gains a leaf leshy as a familiar\"; leshy upgrades at 4th/8th/12th"
   },
   "Druid/Lion Shaman": {
     "confidence": "high",
@@ -466,6 +629,81 @@
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "\"can't choose an animal companion, and must instead select a domain\""
   },
+  "Hunter/Chameleon Adept": {
+    "confidence": "high",
+    "effect": "none",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "none",
+        "evidence": "",
+        "why": "replaces tangential perks; companion untouched"
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "replaces tangential perks; companion untouched"
+  },
+  "Hunter/Courtly Hunter": {
+    "confidence": "high",
+    "effect": "none",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "none",
+        "evidence": "",
+        "why": "reclassified as a magical beast but \"doesn't change any of its statistics\""
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "reclassified as a magical beast but \"doesn't change any of its statistics\""
+  },
+  "Hunter/Packmaster": {
+    "confidence": "high",
+    "effect": "progression",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "progression",
+        "evidence": "",
+        "why": "\"must divide her effective druid level between her companions\""
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must divide her effective druid level between her companions\""
+  },
+  "Hunter/Patient Ambusher": {
+    "confidence": "high",
+    "effect": "none",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "none",
+        "evidence": "",
+        "why": "replaces only tangential features, never the companion itself"
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "replaces only tangential features, never the companion itself"
+  },
+  "Hunter/Pelagic Hunter": {
+    "confidence": "high",
+    "effect": "species_pool",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "\"must select an aquatic animal companion\""
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select an aquatic animal companion\""
+  },
   "Hunter/Plant Master": {
     "confidence": "high",
     "creature_type": "plant",
@@ -510,6 +748,65 @@
     ],
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "explicit primeval companion list"
+  },
+  "Hunter/Treestrider": {
+    "confidence": "high",
+    "effect": "species_pool",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "\"must select an ape as her animal companion\""
+      }
+    ],
+    "signed_off": true,
+    "species_pool": [
+      "ape"
+    ],
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select an ape as her animal companion\""
+  },
+  "Hunter/Uprooter Scout": {
+    "confidence": "high",
+    "effect": "none",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "none",
+        "evidence": "",
+        "why": "replaces only empathic-link tier perks"
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "replaces only empathic-link tier perks"
+  },
+  "Hunter/Urban Hunter": {
+    "confidence": "medium",
+    "effect": "species_pool",
+    "effects": [
+      {
+        "confidence": "medium",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "urban companion list"
+      }
+    ],
+    "signed_off": true,
+    "species_pool": [
+      "axe beak",
+      "badger",
+      "bird",
+      "camel",
+      "dog",
+      "horse",
+      "llama",
+      "pony",
+      "ram"
+    ],
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "urban companion list"
   },
   "Hunter/Verminous Hunter": {
     "confidence": "high",
@@ -622,6 +919,21 @@
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "bond with her shield instead of weapon or mount"
   },
+  "Paladin/Scion of Talmandor": {
+    "confidence": "high",
+    "effect": "species_pool",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "\"forms a bond with an eagle\"; the paladin mount is already unconditional here"
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"forms a bond with an eagle\"; the paladin mount is already unconditional here"
+  },
   "Paladin/Shining Knight": {
     "confidence": "high",
     "effect": "forces",
@@ -636,6 +948,22 @@
     "signed_off": true,
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "\"must form a bond with a mount\""
+  },
+  "Paladin/Stonelord": {
+    "confidence": "high",
+    "creature_type": "elemental",
+    "effect": "creature_type",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "creature_type",
+        "evidence": "",
+        "why": "\"may call a Small earth elemental to her side, as a paladin calls her mount\""
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"may call a Small earth elemental to her side, as a paladin calls her mount\""
   },
   "Paladin/Tempered Champion": {
     "confidence": "high",
@@ -754,6 +1082,21 @@
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "\"must choose his allies as his hunter's bond, not an animal companion\""
   },
+  "Ranger/Dungeon Rover": {
+    "confidence": "low",
+    "effect": "species_pool",
+    "effects": [
+      {
+        "confidence": "low",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "list includes \"any poisonous snake\"; names unresolved"
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "list includes \"any poisonous snake\"; names unresolved"
+  },
   "Ranger/Falconer": {
     "confidence": "high",
     "effect": "forces",
@@ -860,6 +1203,30 @@
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "explicit jungle companion list; level split across companions"
   },
+  "Ranger/Raven Master": {
+    "confidence": "medium",
+    "effect": "forces",
+    "effects": [
+      {
+        "confidence": "medium",
+        "effect": "forces",
+        "evidence": "",
+        "why": "\"ranger level - 3\" is the base formula, so no progression change"
+      },
+      {
+        "confidence": "medium",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "\"ranger level - 3\" is the base formula, so no progression change"
+      }
+    ],
+    "signed_off": true,
+    "species_pool": [
+      "bird"
+    ],
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"ranger level - 3\" is the base formula, so no progression change"
+  },
   "Ranger/Realm Wanderer": {
     "confidence": "high",
     "effect": "forces",
@@ -965,6 +1332,51 @@
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "base statistics divided between multiple eidolons"
   },
+  "Summoner/First Worlder": {
+    "confidence": "high",
+    "effect": "none",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "none",
+        "evidence": "",
+        "why": "\"replaces the eidolon ability\" but the eidolon persists, reflavoured fey"
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"replaces the eidolon ability\" but the eidolon persists, reflavoured fey"
+  },
+  "Summoner/God Caller": {
+    "confidence": "high",
+    "effect": "none",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "none",
+        "evidence": "",
+        "why": "every altered ability still belongs to \"the god caller's eidolon\""
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "every altered ability still belongs to \"the god caller's eidolon\""
+  },
+  "Summoner/Master Summoner": {
+    "confidence": "high",
+    "effect": "progression",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "progression",
+        "evidence": "",
+        "why": "\"class level is halved ... otherwise functions as normal\""
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"class level is halved ... otherwise functions as normal\""
+  },
   "Summoner/Morphic Savant": {
     "confidence": "high",
     "effect": "species_pool",
@@ -985,6 +1397,21 @@
     "signed_off": true,
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "eidolon must be chaotic; one fewer evolution point"
+  },
+  "Summoner/Shadow Caller": {
+    "confidence": "high",
+    "effect": "none",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "none",
+        "evidence": "",
+        "why": "\"alters the summoner's eidolon\"; only the shared-shadow effect changes"
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"alters the summoner's eidolon\"; only the shared-shadow effect changes"
   },
   "Summoner/Shaitan Binder": {
     "confidence": "medium",
@@ -1082,6 +1509,21 @@
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "\"eidolon must be of a lawful alignment\""
   },
+  "Summoner/Wild Caller (ARG)": {
+    "confidence": "high",
+    "effect": "none",
+    "effects": [
+      {
+        "confidence": "high",
+        "effect": "none",
+        "evidence": "",
+        "why": "bonus evolution points only; the eidolon is unaffected"
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "bonus evolution points only; the eidolon is unaffected"
+  },
   "Witch/Alley Witch": {
     "confidence": "low",
     "effect": "none",
@@ -1141,6 +1583,37 @@
     "signed_off": true,
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "affects the patron, not the familiar"
+  },
+  "Witch/Gingerbread Witch": {
+    "confidence": "medium",
+    "creature_type": "construct",
+    "effect": "creature_type",
+    "effects": [
+      {
+        "confidence": "medium",
+        "effect": "creature_type",
+        "evidence": "",
+        "why": "familiar's \"type changes to construct\""
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "familiar's \"type changes to construct\""
+  },
+  "Witch/Havocker": {
+    "confidence": "medium",
+    "effect": "none",
+    "effects": [
+      {
+        "confidence": "medium",
+        "effect": "none",
+        "evidence": "",
+        "why": "alters the source of her powers, not the familiar"
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "alters the source of her powers, not the familiar"
   },
   "Witch/Nexian Spellspy": {
     "confidence": "high",
@@ -1263,6 +1736,34 @@
     "signed_off": true,
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "\"must select an item as her arcane bond\""
+  },
+  "Wizard/Cheliax  Egorian Academy Infernal Binder": {
+    "confidence": "medium",
+    "creature_type": "outsider",
+    "effect": "forces",
+    "effects": [
+      {
+        "confidence": "medium",
+        "effect": "forces",
+        "evidence": "",
+        "why": "\"must choose a familiar\"; \"must take an imp as a familiar\" at 7th"
+      },
+      {
+        "confidence": "medium",
+        "effect": "creature_type",
+        "evidence": "",
+        "why": "\"must choose a familiar\"; \"must take an imp as a familiar\" at 7th"
+      },
+      {
+        "confidence": "medium",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "\"must choose a familiar\"; \"must take an imp as a familiar\" at 7th"
+      }
+    ],
+    "signed_off": true,
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must choose a familiar\"; \"must take an imp as a familiar\" at 7th"
   },
   "Wizard/Clocksmith": {
     "confidence": "high",

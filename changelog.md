@@ -426,6 +426,21 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     from the following" restriction names **domains** rather than creatures: the druid's nature bond
     has two sides, and a domain-side restriction is indistinguishable from a species pool until you
     read what is being listed.
+  - **All 202 verdicts are now signed off**, every one read against the archetype's own rules text
+    rather than the classifier's proposal. 110 came back corrected and live in
+    `companion_archetypes_overrides.json`; the other 92 agreed with the generated verdict. The
+    classifier scored **20/81** against the deliberately-hard residue and **92/121** against the
+    rest — good enough to propose, not to be believed, which is why the signed data is what ships.
+  - **A confirmation is deliberately not an override.** New
+    `Backend/json/companion_archetypes_verified.json` records "a full read agreed with the generated
+    verdict" as its own thing, because an override wins permanently: recording the 92 agreements as
+    overrides would freeze today's proposal and stop any later classifier fix from ever taking
+    effect. If the classifier later disagrees with a verified entry the builder prints `STALE:`
+    instead of quietly changing the answer under a "signed off" label.
+  - **`forces` now applies only to classes whose bond is a choice** — druid, ranger, wizard,
+    sorcerer. A hunter, witch, cavalier, samurai or summoner always has its creature, so there is no
+    flip to suppress; tagging those `forces` described nothing and hid the real effect. Kept in step
+    with which rows of `companion_grantors.json` carry a `choice`.
 - **The `pf-content` Actor names the module clones are captured and gated**
   ([#29](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/29)).
   `dump_pf_content_actors.py` writes `pf_content_companions.json` — 205 companions, 175 familiars

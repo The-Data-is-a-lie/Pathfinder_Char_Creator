@@ -28,14 +28,14 @@ For each archetype: confirm the proposal, or write the correct effect. Anything 
 
 | proposed | count |
 |---|---|
-| `removes` | 106 |
-| `forces` | 31 |
-| `species_pool` | 33 |
+| `removes` | 93 |
+| `forces` | 26 |
+| `species_pool` | 40 |
 | `progression` | 5 |
-| `creature_type` | 11 |
-| `none` | 16 |
+| `creature_type` | 12 |
+| `none` | 26 |
 
-Low confidence (read these first): **1**
+Low confidence (read these first): **2**
 
 ## Druid — 41 archetypes
 
@@ -64,18 +64,6 @@ Low confidence (read these first): **1**
 - **replaces:** nature bond  <sub>(in `bonded mask (su)`)</sub>
 - **source:** Adventurer's Guide pg. 121 Druids of the Halcyon Circle embrace the teachings of Old-Mage Jatembe, combining them with traditional druidic practices. Though they revere the natural world, halcyon druids are less focused on emulating its inhabitants. Instead, like Old-Mage Jatembe, they treat with beings from the Outer Sphere. As a sign of their allegiance, these druids wear fantastical masks depicting celestials, fiends, and- most often-the bestial agathions. Halcyon druids are peacekeepers, mediating between people and nature, people and the spirit world, and different groups of people. Yet when necessary, they use their magic to fight enemies of peace, especially demons and demon cultists. Most halcyon druids serve Nantambu and the surrounding villages-making, memorizing, and arbitrating the unwritten pacts between them. Some halcyon druids, however, are drawn farther afield. They may do so to forge new connections between tribes and villages, to spread the message of peace, or to fight demonic outbreaks.
 - [Halcyon Druid on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Halcyon+Druid)
-- [ ] **signed off** — effect(s): `__________`
-
-### 🟡 Leshy Warden  ·  proposed `progression` + `removes`  ⚠ **two effects**
-
-- **`progression`** — changes level or size advancement
-  > She gains a leaf leshy as a familiar and treats her druid level as her effective wizard level for the purpose of this ability.
-- **`removes`** — traded away, and nothing in the bond text grants a creature
-  >  warden gains access to the Plant domain as if through a druid's nature bond class feature, but she can't choose the Decay subdomain. This replaces nature bond.
-- **defines:** `leshy familiar (ex)`
-- **replaces:** nature bond  <sub>(in `leshy familiar (ex)`)</sub>
-- **source:** Ultimate Wilderness pg. 47 , Familiar Folio pg. 7 The natural world is full of bodiless nature spirits connected to the forces of glades, springs, and individual plants. Some druids hear their call keenly and are able to effortlessly incarnate them as the miniature creatures known as leshys ( Pathfinder RPG Bestiary 3 176). The leshy warden serves as these spirits' ally, defender, and voice.
-- [Leshy Warden on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Leshy+Warden)
 - [ ] **signed off** — effect(s): `__________`
 
 ### 🟡 Progenitor  ·  proposed `removes`
@@ -190,8 +178,7 @@ Low confidence (read these first): **1**
 
 ### 🟢 Dragon Shaman  ·  proposed `species_pool`
 
-- **`species_pool`** — names the legal species
-  > …o chooses an animal companion must select a crocodile or monitor lizard.
+- **`species_pool`** — "must select a crocodile or monitor lizard"
 - **defines:** `nature bond`
 - **source:** Ultimate Magic pg. 37 Your totem is the legendary dragon, fearsome and deadly yet cunning and wise, a creature born of pure magic and raw elemental fury, bound within a shell of fangs, claws, and scales that few dare to challenge. Though your initial focus is on dragons' mundane cousins, as your powers grow you become attuned to actual dragons.
 - [Dragon Shaman on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Dragon+Shaman)
@@ -225,10 +212,9 @@ Low confidence (read these first): **1**
 - [Feral Child on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Feral+Child)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟢 Fungal Pilgrim  ·  proposed `removes`
+### 🟢 Fungal Pilgrim  ·  proposed `none`
 
-- **`removes`** — forced onto the alternative, so no creature is gained
-  > A fungal pilgrim must select the Plant domain for her nature bond if she does not select an animal companion.
+- **`none`** — domain-side conditional only; the companion path is unrestricted
 - **alters:** nature bond  <sub>(in `devotion to ascension (ex)`)</sub>
 - **replaces:** wild shape if the fungal pilgrim selected the Plant domain as her nature bond  <sub>(in `spore spawning`)</sub>
 - **replaces:** wild shape if the fungal pilgrim selected an animal companion as her nature bond  <sub>(in `fungal companion`)</sub>
@@ -242,6 +228,17 @@ Low confidence (read these first): **1**
 - **alters:** nature bond  <sub>(in `primal bond (ex)`)</sub>
 - **source:** Giant Hunter's Handbook pg. 20 Goliath druids hone their spiritual and magical connections to nature's largest creatures, especially dinosaurs, giants, and megafauna, revering these massive creatures as living relics of a primeval time when all creatures were more in harmony with nature. Despite this respect, a goliath druid doesn't hesitate to infiltrate giant groups who defile nature and destroy them from within. Goliath druids have the following class features.
 - [Goliath Druid on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Goliath+Druid)
+- [ ] **signed off** — effect(s): `__________`
+
+### 🟢 Leshy Warden  ·  proposed `forces` + `creature_type` + `progression`  ⚠ **two effects**
+
+- **`forces`** — "gains a leaf leshy as a familiar"; leshy upgrades at 4th/8th/12th
+- **`creature_type`** — "gains a leaf leshy as a familiar"; leshy upgrades at 4th/8th/12th
+- **`progression`** — "gains a leaf leshy as a familiar"; leshy upgrades at 4th/8th/12th
+- **defines:** `leshy familiar (ex)`
+- **replaces:** nature bond  <sub>(in `leshy familiar (ex)`)</sub>
+- **source:** Ultimate Wilderness pg. 47 , Familiar Folio pg. 7 The natural world is full of bodiless nature spirits connected to the forces of glades, springs, and individual plants. Some druids hear their call keenly and are able to effortlessly incarnate them as the miniature creatures known as leshys ( Pathfinder RPG Bestiary 3 176). The leshy warden serves as these spirits' ally, defender, and voice.
+- [Leshy Warden on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Leshy+Warden)
 - [ ] **signed off** — effect(s): `__________`
 
 ### 🟢 Life Channeler  ·  proposed `removes`
@@ -416,6 +413,14 @@ Low confidence (read these first): **1**
 
 ## Ranger — 33 archetypes
 
+### 🔴 Dungeon Rover  ·  proposed `species_pool`
+
+- **`species_pool`** — list includes "any poisonous snake"; names unresolved
+- **modifies:** hunter's bond  <sub>(in `dungeon ally (ex)`)</sub>
+- **source:** Dungeoneer's Handbook pg. 22 These rangers specialize in surviving hostile subterranean environs. They are well equipped to avoid traps, spot secret passages, and deal with inimical dungeon tenants.
+- [Dungeon Rover on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Dungeon+Rover)
+- [ ] **signed off** — effect(s): `__________`
+
 ### 🟡 Beast Master  ·  proposed `forces` + `species_pool` + `progression`  ⚠ **two effects**
 
 - **`forces`** — companion pool widened to the full druid list
@@ -526,14 +531,10 @@ Low confidence (read these first): **1**
 - [Poison Darter on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Poison+Darter)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟡 Raven Master  ·  proposed `progression` + `forces` + `species_pool`  ⚠ **two effects**
+### 🟡 Raven Master  ·  proposed `forces` + `species_pool`  ⚠ **two effects**
 
-- **`progression`** — changes level or size advancement
-  > This ability functions like the druid animal companion ability, except that the raven master's effective druid level is equal to her ranger level - 3.
-- **`forces`** — the alternative is forbidden, or the creature is mandatory -- the flip is suppressed
-  > The raven master must select a bird as her animal companion.
-- **`species_pool`** — names the legal species
-  > The raven master must select a bird as her animal companion.
+- **`forces`** — "ranger level - 3" is the base formula, so no progression change
+- **`species_pool`** — "ranger level - 3" is the base formula, so no progression change
 - **alters:** hunter's bond and replaces specific ranger abilities as indicated below  <sub>(in `raven companion (ex)`)</sub>
 - **source:** Adventurer's Guide pg. 175 While the Silver Ravens adopted their name as a way to honor the group of adventurers who defended Kintargo during the Chelish Civil War, some Silver Ravens have gone even farther, breeding and training actual ravens to serve both as living symbols of the organization and as fearsome weapons against House Thrune and its diabolic servants. These rangers, known as raven masters, eschew a ranger's usual connection to the natural world to form a mystic bond with their birds and to grant both animal and master a number of specialized abilities. Over time, the feathers of these raven companions take on a silvery sheen, causing them to resemble the birds produced by the figurines of wondrous power , which served as the original Silver Ravens' namesake. Raven masters serve as messengers and spies for the Silver Ravens, using their ravens to scout the border between Ravounel and Cheliax and report any suspicious Thrune troop movements. Outside of Cheliax, raven companions alight on the rooftops and window ledges of palaces and keeps to eavesdrop on tyrants and dictators, feeding these precious secrets to the raven master so that she can more efficiently foment and organize rebellion.
 - [Raven Master on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Raven+Master)
@@ -640,15 +641,6 @@ Low confidence (read these first): **1**
 - [Drake Warden on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Drake+Warden)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟢 Dungeon Rover  ·  proposed `species_pool`
-
-- **`species_pool`** — names the legal species
-  > At 4th level, a dungeon rover may select a giant slug, a giant centipede, a goblin dog, a giant scorpion, or any poisonous snake as his anim…
-- **modifies:** hunter's bond  <sub>(in `dungeon ally (ex)`)</sub>
-- **source:** Dungeoneer's Handbook pg. 22 These rangers specialize in surviving hostile subterranean environs. They are well equipped to avoid traps, spot secret passages, and deal with inimical dungeon tenants.
-- [Dungeon Rover on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Dungeon+Rover)
-- [ ] **signed off** — effect(s): `__________`
-
 ### 🟢 Falconer  ·  proposed `forces` + `species_pool`  ⚠ **two effects**
 
 - **`forces`** — "must select an animal companion"; "must take the bird (or falcon)"
@@ -728,6 +720,16 @@ Low confidence (read these first): **1**
 - **replaces:** arcane bond  <sub>(in `bomb (su)`)</sub>
 - **source:** Ultimate Combat pg. 75 To many wizards, the experimentation of the alchemist seems quaint, if not dangerous or frightening. A few wizards take up the secrets of the bomb, however, fusing alchemy with their already considerable magical power.
 - [Arcane Bomber on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Arcane+Bomber)
+- [ ] **signed off** — effect(s): `__________`
+
+### 🟡 Cheliax  Egorian Academy Infernal Binder  ·  proposed `forces` + `creature_type` + `species_pool`  ⚠ **two effects**
+
+- **`forces`** — "must choose a familiar"; "must take an imp as a familiar" at 7th
+- **`creature_type`** — "must choose a familiar"; "must take an imp as a familiar" at 7th
+- **`species_pool`** — "must choose a familiar"; "must take an imp as a familiar" at 7th
+- **defines:** `imp familiar (ex)`
+- **source:** Inner Sea Primer pg. 29 The prestigious Egorian Academy of the Magical Arts in Cheliax's capital city teaches a full spectrum of magic, both specialized and universalist, but the college is best known for its Infernal Binding program in the school of conjuration. An infernal binder learns the Names of Hell, and can use those powers to summon and bind devils to do her bidding. If she makes a single mistake in the binding, she opens herself to an eternity of torment. Egorian Academy wizards are recognized across Avistan as premier practitioners of the arcane arts. Many hold high positions in magical colleges across Golarion, but most seek to return one day to teach at their alma mater in Egorian.
+- [Cheliax  Egorian Academy Infernal Binder on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Cheliax++Egorian+Academy+Infernal+Binder)
 - [ ] **signed off** — effect(s): `__________`
 
 ### 🟡 Chronomancer  ·  proposed `removes`
@@ -861,15 +863,6 @@ Low confidence (read these first): **1**
 - **defines:** `arcane bond (ex)`
 - **source:** Cohorts and Companions pg. 17 Many wizards form an arcane bond with an item, but for some this bond becomes a powerful mystic union.
 - [Bonded Wizard on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Bonded+Wizard)
-- [ ] **signed off** — effect(s): `__________`
-
-### 🟢 Cheliax  Egorian Academy Infernal Binder  ·  proposed `forces`
-
-- **`forces`** — the alternative is forbidden, or the creature is mandatory -- the flip is suppressed
-  > At 7th level, you gain Improved Familiar as a bonus feat, and must take an imp as a familiar.
-- **defines:** `imp familiar (ex)`
-- **source:** Inner Sea Primer pg. 29 The prestigious Egorian Academy of the Magical Arts in Cheliax's capital city teaches a full spectrum of magic, both specialized and universalist, but the college is best known for its Infernal Binding program in the school of conjuration. An infernal binder learns the Names of Hell, and can use those powers to summon and bind devils to do her bidding. If she makes a single mistake in the binding, she opens herself to an eternity of torment. Egorian Academy wizards are recognized across Avistan as premier practitioners of the arcane arts. Many hold high positions in magical colleges across Golarion, but most seek to return one day to teach at their alma mater in Egorian.
-- [Cheliax  Egorian Academy Infernal Binder on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Cheliax++Egorian+Academy+Infernal+Binder)
 - [ ] **signed off** — effect(s): `__________`
 
 ### 🟢 Clocksmith  ·  proposed `forces` + `creature_type`  ⚠ **two effects**
@@ -1031,15 +1024,6 @@ Low confidence (read these first): **1**
 - [Iroran Paladin on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Iroran+Paladin)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟡 Stonelord  ·  proposed `removes`
-
-- **`removes`** — traded away, and nothing in the bond text grants a creature
-  > evels, becoming Medium at 8th level, Large at 11th level, Huge at 14th level, Greater at 17th level, and Elder at 20th level. This ability replaces divine bond.
-- **replaces:** divine bond  <sub>(in ` stone servant (su)`)</sub>
-- **source:** Advanced Race Guide pg. 16 A stonelord is a devoted sentinel of dwarven enclaves, drawing the power of the earth and ancient stone to protect her people.
-- [Stonelord on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Stonelord)
-- [ ] **signed off** — effect(s): `__________`
-
 ### 🟡 Temple Champion  ·  proposed `removes`
 
 - **`removes`** — traded away, and nothing in the bond text grants a creature
@@ -1108,14 +1092,9 @@ Low confidence (read these first): **1**
 - [Sacred Shield on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Sacred+Shield)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟢 Scion of Talmandor  ·  proposed `species_pool` + `progression` + `removes`  ⚠ **two effects**
+### 🟢 Scion of Talmandor  ·  proposed `species_pool`
 
-- **`species_pool`** — names the legal species
-  > …a scion of Talmandor forms a bond with an eagle using the statistics for a bird animal companion.
-- **`progression`** — changes level or size advancement
-  > This ability functions like the druid animal companion ability, using the scion's paladin level as her effective druid level.
-- **`removes`** — traded away, and nothing in the bond text grants a creature
-  > This ability functions like the druid animal companion ability, using the scion's paladin level as her effective druid level. This ability replaces divine bond.
+- **`species_pool`** — "forms a bond with an eagle"; the paladin mount is already unconditional here
 - **replaces:** divine bond  <sub>(in `bonded eagle (sp)`)</sub>
 - **source:** Adventurer's Guide pg. 74 While all Steel Falcons are peerless proponents of the rights of the downtrodden, those who endeavor to make the spread of liberty as peaceful as possible often become scions of Talmandor, honoring the powerful avoral agathion who serves as the patron of the Steel Falcons. Talmandor is reluctant to act directly on behalf of the Eagle Knights and even more unwilling to accept their worship, preferring to lend assistance primarily by being a voice of reason and dispensing wise counsel when it is most needed. A scion of Talmandor attempts to exemplify this selfless altruism, offering assistance to the oppressed and facilitating the peaceful transfer of power from the few to the many. Scions of Talmandor look to the brutality of the revolution in Galt, Andoran's neighbor, as a cautionary tale and an unfortunate blemish on populism's short history. They also reject the Nirmathi notion of freedom, thinking it too individualistic; instead, they strive to build strong communities both at home and abroad. Wherever possible, a scion of Talmandor opts for peaceful, grassroots solutions to problems facing the many oppressed peoples of the Inner Sea region, encouraging them to take a central role in bettering their lot in life.
 - [Scion of Talmandor on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Scion+of+Talmandor)
@@ -1129,16 +1108,22 @@ Low confidence (read these first): **1**
 - [Shining Knight on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Shining+Knight)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟢 Silver Champion  ·  proposed `creature_type` + `forces`  ⚠ **two effects**
+### 🟢 Silver Champion  ·  proposed `creature_type`
 
 - **`creature_type`** — the bond yields a drake, not an animal companion
-  > At 5th level, a silver champion gains a drake companion.
-- **`forces`** — the alternative is forbidden, or the creature is mandatory -- the flip is suppressed
   > At 5th level, a silver champion gains a drake companion.
 - **defines:** `drake mount`
 - **replaces:** divine bond, channel energy, aura of justice, and aura of righteousness, and alters smite evil and mercy  <sub>(in `drake mount`)</sub>
 - **source:** Legacy of Dragons pg. 25 Paladins who serve as priests of Apsu are almost always on the move, wandering from place to place and trying to show their dedication to the Waybringer in their deeds rather than depending on mere words. Good-aligned dragons are more likely to treat such paladins as they would treat other dragons (though perhaps not with the respect reserved for other true dragons), and evil dragons often target them as special threats. More rarely a drake is so inspired by a paladin of Apsu that it chooses to assist the paladin in all her actions. These drake allies see the benefit of a silver champion remaining mobile and understand the powerful threats the champion must face, and in time even consent to serve their chosen paladins as a steed. Silver champions are often concerned by their drake allies' pragmatic natures, however, and are sure to treat them with respect, knowing that these lesser dragons must constantly be inspired to act on their better natures.
 - [Silver Champion on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Silver+Champion)
+- [ ] **signed off** — effect(s): `__________`
+
+### 🟢 Stonelord  ·  proposed `creature_type`
+
+- **`creature_type`** — "may call a Small earth elemental to her side, as a paladin calls her mount"
+- **replaces:** divine bond  <sub>(in ` stone servant (su)`)</sub>
+- **source:** Advanced Race Guide pg. 16 A stonelord is a devoted sentinel of dwarven enclaves, drawing the power of the earth and ancient stone to protect her people.
+- [Stonelord on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Stonelord)
 - [ ] **signed off** — effect(s): `__________`
 
 ### 🟢 Tempered Champion  ·  proposed `removes`
@@ -1174,15 +1159,6 @@ Low confidence (read these first): **1**
 - [ ] **signed off** — effect(s): `__________`
 
 ## Cavalier — 23 archetypes
-
-### 🟡 Castellan  ·  proposed `removes`
-
-- **`removes`** — traded away, and nothing in the bond text grants a creature
-  > asion instead of evasion. Both the evasion and improved evasion abilities work even when the castellan wears medium or heavy armor. This ability replaces mount.
-- **replaces:** mount  <sub>(in `castle defender`)</sub>
-- **source:** Melee Tactics Toolbox pg. 9 A castellan is a cavalier who dedicates himself to the defense of a castle or walled city. Though not as celebrated as the cavaliers who ride forth to take on distant foes, the castellan is no less brave or important, for the castellan and his allies are the last line of defense for those who depend on the fortification for protection.
-- [Castellan on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Castellan)
-- [ ] **signed off** — effect(s): `__________`
 
 ### 🟡 Charger  ·  proposed `removes`
 
@@ -1248,6 +1224,15 @@ Low confidence (read these first): **1**
 - [Musketeer on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Musketeer)
 - [ ] **signed off** — effect(s): `__________`
 
+### 🟡 Standard Bearer  ·  proposed `progression`
+
+- **`progression`** — mount arrives at 5th instead of 1st; schedule change only
+- **defines:** `mount (ex)`
+- **replaces:** the standard cavalier's mount ability  <sub>(in `banner (ex)`)</sub>
+- **source:** Ultimate Combat pg. 39 Not all cavaliers are content to ride at the head of a charge, leading from the front and facing down their enemies directly. Some prefer to stand away from the fray, their banners a beacon shining brightly over the battlefield, rallying their troops to victory. The standard bearer employs the banner of his order, his lord, or his own house to raise the spirits of his allies and warns enemies of impending doom.
+- [Standard Bearer on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Standard+Bearer)
+- [ ] **signed off** — effect(s): `__________`
+
 ### 🟢 Beast Rider  ·  proposed `species_pool` + `progression`  ⚠ **two effects**
 
 - **`species_pool`** — per-size pick lists plus an early size-Large stat table
@@ -1258,11 +1243,17 @@ Low confidence (read these first): **1**
 - [Beast Rider on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Beast+Rider)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟢 Drakerider  ·  proposed `creature_type` + `forces`  ⚠ **two effects**
+### 🟢 Castellan  ·  proposed `species_pool`
+
+- **`species_pool`** — "forms a bond with an animal companion that serves as a guard"
+- **replaces:** mount  <sub>(in `castle defender`)</sub>
+- **source:** Melee Tactics Toolbox pg. 9 A castellan is a cavalier who dedicates himself to the defense of a castle or walled city. Though not as celebrated as the cavaliers who ride forth to take on distant foes, the castellan is no less brave or important, for the castellan and his allies are the last line of defense for those who depend on the fortification for protection.
+- [Castellan on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Castellan)
+- [ ] **signed off** — effect(s): `__________`
+
+### 🟢 Drakerider  ·  proposed `creature_type`
 
 - **`creature_type`** — the bond yields a drake, not an animal companion
-  > A drakerider gains a drake companion instead of a mount.
-- **`forces`** — the alternative is forbidden, or the creature is mandatory -- the flip is suppressed
   > A drakerider gains a drake companion instead of a mount.
 - **defines:** `drake mount`
 - **replaces:** mount, tactician, expert trainer, banner, greater tactician, greater banner, and master tactician and alters cavalier's charge  <sub>(in `drake mount`)</sub>
@@ -1317,20 +1308,16 @@ Low confidence (read these first): **1**
 
 ### 🟢 Oceanrider  ·  proposed `species_pool`
 
-- **`species_pool`** — names the legal species
-  > …el 7 abilities until level 7) instead of the normal options, while a Small oceanrider can ride a dolphin This alters mount and replaces expe…
+- **`species_pool`** — "ride either a seahorse or an orca ... a Small oceanrider can ride a dolphin"
 - **defines:** `aquatic mount`
 - **alters:** mount and replaces expert trainer  <sub>(in `aquatic mount`)</sub>
 - **source:** Aquatic Adventures pg. 53 Oceanriders are underwater cavaliers who ride dolphins, orcas, or seahorses.
 - [Oceanrider on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Oceanrider)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟢 Qadiran Horselord  ·  proposed `forces` + `species_pool`  ⚠ **two effects**
+### 🟢 Qadiran Horselord  ·  proposed `species_pool`
 
-- **`forces`** — the alternative is forbidden, or the creature is mandatory -- the flip is suppressed
-  > A Qadiran horselord must select a horse or pony as his mount.
-- **`species_pool`** — names the legal species
-  > A Qadiran horselord must select a horse or pony as his mount.
+- **`species_pool`** — "must select a horse or pony as his mount"
 - **defines:** `mount (ex)`
 - **alters:** the cavalier mount class feature  <sub>(in `mount (ex)`)</sub>
 - **source:** Adventurer's Guide pg. 12 , Inner Sea Combat pg. 42 The traditions of the Qadiran horselords are now spread throughout Qadira and the lands beyond in the Inner Sea region, but they originated among the horse-breeders and mounted-combat specialists of the Al-Zabriti; the name 'horselord' was applied by outlanders. Qadiran horselords pride themselves on their mobility and endurance-qualities also found in the breed of horses they ride. While they don't command the same presence as a host of Lastwall cavalry, Qadiran horselords can get to a battleground in half the time and on a third of the rations. In battle, they are skirmishers, ducking in and out of combat with brutal, precise slashes of their scimitars.
@@ -1354,16 +1341,6 @@ Low confidence (read these first): **1**
 - [Sister-in-Arms on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Sister-in-Arms)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟢 Standard Bearer  ·  proposed `forces`
-
-- **`forces`** — the alternative is forbidden, or the creature is mandatory -- the flip is suppressed
-  > At 5th level, a standard bearer gains the service of a loyal and trusted mount.
-- **defines:** `mount (ex)`
-- **replaces:** the standard cavalier's mount ability  <sub>(in `banner (ex)`)</sub>
-- **source:** Ultimate Combat pg. 39 Not all cavaliers are content to ride at the head of a charge, leading from the front and facing down their enemies directly. Some prefer to stand away from the fray, their banners a beacon shining brightly over the battlefield, rallying their troops to victory. The standard bearer employs the banner of his order, his lord, or his own house to raise the spirits of his allies and warns enemies of impending doom.
-- [Standard Bearer on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Standard+Bearer)
-- [ ] **signed off** — effect(s): `__________`
-
 ### 🟢 Verdivant  ·  proposed `creature_type`
 
 - **`creature_type`** — "this mount is a plant with the leshy subtype"
@@ -1373,20 +1350,18 @@ Low confidence (read these first): **1**
 - [Verdivant on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Verdivant)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟢 Vermin Tamer  ·  proposed `removes`
+### 🟢 Vermin Tamer  ·  proposed `species_pool`
 
-- **`removes`** — the creature is forbidden
-  > The vermin trainer does not take an armor check penalty on Ride checks while riding his mount.
+- **`species_pool`** — darklands mount restricted to a vermin list; "alters mount"
 - **defines:** `darklands mount (ex)`
 - **alters:** mount  <sub>(in `darklands mount (ex)`)</sub>
 - **source:** Heroes of the Darklands pg. 17 Due to the strange terrain, the lack of sunlight, and numerous other hazards, keeping a traditional mount in the Darklands can prove difficult. Cavaliers native to or traveling the region may choose to tame local creatures instead. Those who can overcome their revulsion and distrust of Sekamina's strange fauna often find that such partnerships with native creatures serve both rider and mount well. While these mounts may be harder to handle than typical mounts, their versatility and adaptations prove indispensable.
 - [Vermin Tamer on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Vermin+Tamer)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟢 Wave Rider  ·  proposed `forces`
+### 🟢 Wave Rider  ·  proposed `species_pool`
 
-- **`forces`** — the alternative is forbidden, or the creature is mandatory -- the flip is suppressed
-  > At 1st level, a wave rider gains Monstrous Mount as a bonus feat.
+- **`species_pool`** — "can use this feat only to select a hippocampus mount"
 - **replaces:** the cavalier's mount ability  <sub>(in `seafaring companion`)</sub>
 - **source:** Inner Sea Combat pg. 47 Throughout the Inner Sea region, wave riders patrol harbors, keeping them safe from dangerous sea creatures and watching for smugglers. The most famous of these is the hippocampus-riding Sea Cavalry of Absalom.
 - [Wave Rider on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Wave+Rider)
@@ -1449,25 +1424,6 @@ Low confidence (read these first): **1**
 - [Evolutionist on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Evolutionist)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟡 First Worlder  ·  proposed `removes`
-
-- **`removes`** — traded away, and nothing in the bond text grants a creature
-  > t DR/cold iron instead of one of the alignment-based types of damage reduction. This otherwise works like and replaces the eidolon ability of a normal summoner.
-- **defines:** `eidolon`
-- **replaces:** the eidolon ability of a normal summoner  <sub>(in `eidolon`)</sub>
-- **source:** Inner Sea Magic pg. 35 Most summoners have a close connection to creatures from the farthest reaches of the planes. A few have a primal connection to nature, and their power is tied to the First World. It is not unusual for these summoners to associate with druids, for like druids, first worlders have a powerful tie to the natural world. Some first worlders are driven half-mad by the strange energies and intelligences that seep into their minds and bodies, though, and these poor souls are prone to lash out at loggers, druids, or innocent passersby without considering whether or not they are threats. A first worlder's eidolon usually resembles a fey creature or a plant monster, though some are fantastic otherworldly animals with exaggerated features. A first worlder has the following class features.
-- [First Worlder on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=First+Worlder)
-- [ ] **signed off** — effect(s): `__________`
-
-### 🟡 God Caller  ·  proposed `removes`
-
-- **`removes`** — traded away, and nothing in the bond text grants a creature
-  > nce ( Pathfinder RPG Ultimate Magic 230 ) three times per day. The save DC is equal to 19 + the eidolon's Charisma modifier. This ability replaces twin eidolon.
-- **replaces:** twin eidolon  <sub>(in `overwhelming presence (sp)`)</sub>
-- **source:** Inner Sea Intrigue pg. 40 God callers follow a fractured tradition that originated in the now-lost nation of Sarkoris. They speak to an assortment of ancient divine powers to lead their communities and sometimes stir up reformations in faiths with ideals similar to their personal convictions. Any summoner (including the summoner from Pathfinder Unchained ) can select the god caller archetype.
-- [God Caller on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=God+Caller)
-- [ ] **signed off** — effect(s): `__________`
-
 ### 🟡 Leshy Caller  ·  proposed `none`
 
 - **`none`** — mentions a bond feature without changing it
@@ -1475,27 +1431,6 @@ Low confidence (read these first): **1**
 - **alters:** the summoner's eidolon  <sub>(in `free evolutions`)</sub>
 - **source:** Ultimate Wilderness pg. 94 A leshy caller summons creatures from the First World and forges a bond with a leshy eidolon.
 - [Leshy Caller on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Leshy+Caller)
-- [ ] **signed off** — effect(s): `__________`
-
-### 🟡 Master Summoner  ·  proposed `removes`
-
-- **`removes`** — traded away, and nothing in the bond text grants a creature
-  > idolon's abilities, Hit Dice, evolution pool, and so on. The eidolon otherwise functions as normal. This ability replaces the summoner's normal eidolon ability.
-- **defines:** `lesser eidolon`
-- **replaces:** the summoner's normal eidolon ability  <sub>(in `lesser eidolon`)</sub>
-- **source:** Ultimate Magic pg. 80 Most summoners forge a bond with a single, powerful eidolon, but some summoners seek to control a variety of creatures. The master summoner sacrifices the power of his eidolon in favor of summoning a plethora of otherworldly creatures to aid him.
-- [Master Summoner on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Master+Summoner)
-- [ ] **signed off** — effect(s): `__________`
-
-### 🟡 Shadow Caller  ·  proposed `removes`
-
-- **`removes`** — traded away, and nothing in the bond text grants a creature
-  > ce of light. This lack of a shadow replaces the magical symbol that identifies the summoner and his eidolon. This ability alters the summoner's eidolon ability.
-- **defines:** `shadow eidolon`
-- **replaces:** the magical symbol that identifies the summoner and his eidolon  <sub>(in `shadow eidolon`)</sub>
-- **alters:** the summoner's eidolon ability  <sub>(in `shadow eidolon`)</sub>
-- **source:** Advanced Race Guide pg. 110 While most summoners can call any manner of creature from across the planes to serve them in combat, supplementing the skills of their eidolon with a diverse range of creatures, others eschew this broad utility and instead concentrate upon calling forth entities from the Shadow Plane. A shadow caller has the following class features.
-- [Shadow Caller on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Shadow+Caller)
 - [ ] **signed off** — effect(s): `__________`
 
 ### 🟡 Shaitan Binder  ·  proposed `none`
@@ -1533,6 +1468,32 @@ Low confidence (read these first): **1**
 - [Broodmaster on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Broodmaster)
 - [ ] **signed off** — effect(s): `__________`
 
+### 🟢 First Worlder  ·  proposed `none`
+
+- **`none`** — "replaces the eidolon ability" but the eidolon persists, reflavoured fey
+- **defines:** `eidolon`
+- **replaces:** the eidolon ability of a normal summoner  <sub>(in `eidolon`)</sub>
+- **source:** Inner Sea Magic pg. 35 Most summoners have a close connection to creatures from the farthest reaches of the planes. A few have a primal connection to nature, and their power is tied to the First World. It is not unusual for these summoners to associate with druids, for like druids, first worlders have a powerful tie to the natural world. Some first worlders are driven half-mad by the strange energies and intelligences that seep into their minds and bodies, though, and these poor souls are prone to lash out at loggers, druids, or innocent passersby without considering whether or not they are threats. A first worlder's eidolon usually resembles a fey creature or a plant monster, though some are fantastic otherworldly animals with exaggerated features. A first worlder has the following class features.
+- [First Worlder on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=First+Worlder)
+- [ ] **signed off** — effect(s): `__________`
+
+### 🟢 God Caller  ·  proposed `none`
+
+- **`none`** — every altered ability still belongs to "the god caller's eidolon"
+- **replaces:** twin eidolon  <sub>(in `overwhelming presence (sp)`)</sub>
+- **source:** Inner Sea Intrigue pg. 40 God callers follow a fractured tradition that originated in the now-lost nation of Sarkoris. They speak to an assortment of ancient divine powers to lead their communities and sometimes stir up reformations in faiths with ideals similar to their personal convictions. Any summoner (including the summoner from Pathfinder Unchained ) can select the god caller archetype.
+- [God Caller on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=God+Caller)
+- [ ] **signed off** — effect(s): `__________`
+
+### 🟢 Master Summoner  ·  proposed `progression`
+
+- **`progression`** — "class level is halved ... otherwise functions as normal"
+- **defines:** `lesser eidolon`
+- **replaces:** the summoner's normal eidolon ability  <sub>(in `lesser eidolon`)</sub>
+- **source:** Ultimate Magic pg. 80 Most summoners forge a bond with a single, powerful eidolon, but some summoners seek to control a variety of creatures. The master summoner sacrifices the power of his eidolon in favor of summoning a plethora of otherworldly creatures to aid him.
+- [Master Summoner on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Master+Summoner)
+- [ ] **signed off** — effect(s): `__________`
+
 ### 🟢 Morphic Savant  ·  proposed `species_pool` + `progression`  ⚠ **two effects**
 
 - **`species_pool`** — eidolon must be chaotic; one fewer evolution point
@@ -1541,6 +1502,16 @@ Low confidence (read these first): **1**
 - **alters:** eidolon  <sub>(in `eidolon of chaos`)</sub>
 - **source:** Monster Summoner's Handbook pg. 16 A morphic savant is an agent of change who draws power from the Abyss, Elysium, or the Maelstrom to fulfill whatever goals strike his fancy. Chaotic evil and chaotic neutral morphic savants often train with Blackfire Adepts in the hopes of learning greater powers of chaotic unmaking, and chaotic good morphic savants are most common as agents of the Bellflower Network.
 - [Morphic Savant on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Morphic+Savant)
+- [ ] **signed off** — effect(s): `__________`
+
+### 🟢 Shadow Caller  ·  proposed `none`
+
+- **`none`** — "alters the summoner's eidolon"; only the shared-shadow effect changes
+- **defines:** `shadow eidolon`
+- **replaces:** the magical symbol that identifies the summoner and his eidolon  <sub>(in `shadow eidolon`)</sub>
+- **alters:** the summoner's eidolon ability  <sub>(in `shadow eidolon`)</sub>
+- **source:** Advanced Race Guide pg. 110 While most summoners can call any manner of creature from across the planes to serve them in combat, supplementing the skills of their eidolon with a diverse range of creatures, others eschew this broad utility and instead concentrate upon calling forth entities from the Shadow Plane. A shadow caller has the following class features.
+- [Shadow Caller on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Shadow+Caller)
 - [ ] **signed off** — effect(s): `__________`
 
 ### 🟢 Spirit Summoner  ·  proposed `species_pool`
@@ -1579,10 +1550,9 @@ Low confidence (read these first): **1**
 - [Unwavering Conduit on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Unwavering+Conduit)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟢 Wild Caller (ARG)  ·  proposed `removes`
+### 🟢 Wild Caller (ARG)  ·  proposed `none`
 
-- **`removes`** — the creature is forbidden
-  > A wild caller gains 1/4 his class level as bonus evolution points in his eidolon's evolution pool, but his eidolon cannot take the following evolutions: 1-point evolution
+- **`none`** — bonus evolution points only; the eidolon is unaffected
 - **defines:** `eidolon`
 - **alters:** the normal summoner's eidolon class feature, but is otherwise identical to that class feature  <sub>(in `eidolon`)</sub>
 - **source:** Advanced Race Guide pg. 44 Often a Half-Elf's ties to nature and elven heritage are so strong that they can dramatically affect the nature of his summonings. The wild caller calls eidolons that take more natural and savage forms and summons from nature rather than the Great Beyond. A wild caller has the following class features.
@@ -1600,15 +1570,6 @@ Low confidence (read these first): **1**
 - [ ] **signed off** — effect(s): `__________`
 
 ## Hunter — 13 archetypes
-
-### 🟡 Chameleon Adept  ·  proposed `removes`
-
-- **`removes`** — traded away, and nothing in the bond text grants a creature
-  > shape I . Unlike a druid's wild shape, this ability does not improve to encompass larger or smaller animals or elementals. This replaces raise animal companion.
-- **replaces:** raise animal companion  <sub>(in `improved shifting companion (su)`)</sub>
-- **source:** Ultimate Wilderness pg. 52 Some hunters are masters of blending into every situation, even making their companions appear humanoid for brief periods of time.
-- [Chameleon Adept on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Chameleon+Adept)
-- [ ] **signed off** — effect(s): `__________`
 
 ### 🟡 Feral Hunter  ·  proposed `removes`
 
@@ -1629,50 +1590,49 @@ Low confidence (read these first): **1**
 - [Forester on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Forester)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟡 Packmaster  ·  proposed `progression` + `removes`  ⚠ **two effects**
+### 🟡 Urban Hunter  ·  proposed `species_pool`
 
-- **`progression`** — changes level or size advancement
-  > A packmaster can have more than one animal companion, but she must divide her effective druid level between her companions to determine the abilities of each on
-- **`removes`** — traded away, and nothing in the bond text grants a creature
-  > to two animal companions at once.) As a swift action, she can change which companion gains any or all of these benefits. This ability replaces animal companion.
-- **replaces:** animal companion  <sub>(in `pack bond (ex)`)</sub>
-- **source:** Advanced Class Guide pg. 96 Some hunters form bonds with packs of well-trained creatures. Whether such a hunter is a northern berserker running with a pack of timber wolves or a savage warrior dashing through the jungle alongside her herd of dimetrodons, the packmaster revels in the thrill of the hunt and the glory of the kill. A packmaster is more comfortable in groups than alone, and although her animal companions may be weaker than a typical hunter's, what they lack in strength they make up for in numbers.
-- [Packmaster on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Packmaster)
+- **`species_pool`** — urban companion list
+- **defines:** `animal companion (ex)`
+- **source:** Heroes of the Streets pg. 25 Urban hunters help guards track down and apprehend criminals or spies, find lost children and disaster victims, and protect animals from abuse in the city. They still draw their inspiration and strength from the natural world, marveling at how nature flourishes wherever the city allows.
+- [Urban Hunter on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Urban+Hunter)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟡 Patient Ambusher  ·  proposed `removes`
+### 🟢 Chameleon Adept  ·  proposed `none`
 
-- **`removes`** — traded away, and nothing in the bond text grants a creature
-  > m range increments apply on the attack roll. The duration of the trap starts when it is created, not when it is triggered. This replaces raise animal companion.
-- **replaces:** raise animal companion  <sub>(in `launch trap (su)`)</sub>
-- **source:** Ultimate Wilderness pg. 53 , Magic Tactics Toolbox pg. 14 Wandering the wilds, some hunters eschew the bond of innate teamwork with their animal companions. Instead, these hunters master the creation and deployment of intricate ranger traps, often using themselves or their animal companions to lure foes into their snares.
-- [Patient Ambusher on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Patient+Ambusher)
+- **`none`** — replaces tangential perks; companion untouched
+- **replaces:** raise animal companion  <sub>(in `improved shifting companion (su)`)</sub>
+- **source:** Ultimate Wilderness pg. 52 Some hunters are masters of blending into every situation, even making their companions appear humanoid for brief periods of time.
+- [Chameleon Adept on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Chameleon+Adept)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟡 Uprooter Scout  ·  proposed `removes`
+### 🟢 Courtly Hunter  ·  proposed `none`
 
-- **`removes`** — traded away, and nothing in the bond text grants a creature
-  > how to move through undergrowth (as woodland stride) that has been enchanted, corrupted, or magically manipulated. This ability replaces raise animal companion.
-- **replaces:** raise animal companion  <sub>(in `unnatural stride (ex)`)</sub>
-- **source:** Advanced Class Origins pg. 13 The Uprooters are an elite band of Kyonin elves skilled and brave enough to foray into the Tanglebriar and take the offensive in the fight against Treerazer. Uprooter scouts rely on their close bonds with their animal companions to survive such raids. One Uprooter scout who accompanied an expedition into the Worldwound to put his demon-fighting skills to work there has retired to Mendev to teach his techniques to others, so these skills are slowly being passed on to non-elves.
-- [Uprooter Scout on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Uprooter+Scout)
-- [ ] **signed off** — effect(s): `__________`
-
-### 🟢 Courtly Hunter  ·  proposed `removes`
-
-- **`removes`** — the creature is forbidden
-  > It does not learn tricks, but it does have an Intelligence score equal to that of a familiar belonging to a wizard of the courtly hunter's hunter level.
+- **`none`** — reclassified as a magical beast but "doesn't change any of its statistics"
 - **alters:** animal companion  <sub>(in `courtly companion`)</sub>
 - **source:** Ultimate Intrigue pg. 64 While most hunters find themselves at ease in the wildest parts of the world, courtly hunters instead make their homes in cultured urban environments. They and their animal companions are more refined than typical hunters, using their skills to navigate the winding paths of courtly intrigue as surely as other hunters find trails in the wilderness.
 - [Courtly Hunter on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Courtly+Hunter)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟢 Pelagic Hunter  ·  proposed `forces` + `species_pool`  ⚠ **two effects**
+### 🟢 Packmaster  ·  proposed `progression`
 
-- **`forces`** — the alternative is forbidden, or the creature is mandatory -- the flip is suppressed
-  > A pelagic hunter must select an aquatic animal companion.
-- **`species_pool`** — restricts the species by swim speed (39 qualify)
-  > A pelagic hunter must select an aquatic animal companion.
+- **`progression`** — "must divide her effective druid level between her companions"
+- **replaces:** animal companion  <sub>(in `pack bond (ex)`)</sub>
+- **source:** Advanced Class Guide pg. 96 Some hunters form bonds with packs of well-trained creatures. Whether such a hunter is a northern berserker running with a pack of timber wolves or a savage warrior dashing through the jungle alongside her herd of dimetrodons, the packmaster revels in the thrill of the hunt and the glory of the kill. A packmaster is more comfortable in groups than alone, and although her animal companions may be weaker than a typical hunter's, what they lack in strength they make up for in numbers.
+- [Packmaster on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Packmaster)
+- [ ] **signed off** — effect(s): `__________`
+
+### 🟢 Patient Ambusher  ·  proposed `none`
+
+- **`none`** — replaces only tangential features, never the companion itself
+- **replaces:** raise animal companion  <sub>(in `launch trap (su)`)</sub>
+- **source:** Ultimate Wilderness pg. 53 , Magic Tactics Toolbox pg. 14 Wandering the wilds, some hunters eschew the bond of innate teamwork with their animal companions. Instead, these hunters master the creation and deployment of intricate ranger traps, often using themselves or their animal companions to lure foes into their snares.
+- [Patient Ambusher on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Patient+Ambusher)
+- [ ] **signed off** — effect(s): `__________`
+
+### 🟢 Pelagic Hunter  ·  proposed `species_pool`
+
+- **`species_pool`** — "must select an aquatic animal companion"
 - **alters:** animal companion  <sub>(in `pelagic companion`)</sub>
 - **source:** Aquatic Adventures pg. 54 Pelagic hunters form strong bonds that extend deep beneath the sea, reaching out to whatever heeds their call, whether it be mundane animals or something far more sinister.
 - [Pelagic Hunter on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Pelagic+Hunter)
@@ -1694,12 +1654,9 @@ Low confidence (read these first): **1**
 - [Totem-Bonded on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Totem-Bonded)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟢 Treestrider  ·  proposed `forces` + `species_pool`  ⚠ **two effects**
+### 🟢 Treestrider  ·  proposed `species_pool`
 
-- **`forces`** — the alternative is forbidden, or the creature is mandatory -- the flip is suppressed
-  > As a free action, a treestrider must select an ape as her animal companion.
-- **`species_pool`** — names the legal species
-  > …a free action, a treestrider must select an ape as her animal companion.
+- **`species_pool`** — "must select an ape as her animal companion"
 - **defines:** `animal companion`
 - **alters:** animal companion  <sub>(in `animal companion`)</sub>
 - **replaces:** raise animal companion  <sub>(in `tree stride (sp)`)</sub>
@@ -1707,15 +1664,12 @@ Low confidence (read these first): **1**
 - [Treestrider on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Treestrider)
 - [ ] **signed off** — effect(s): `__________`
 
-### 🟢 Urban Hunter  ·  proposed `forces` + `species_pool`  ⚠ **two effects**
+### 🟢 Uprooter Scout  ·  proposed `none`
 
-- **`forces`** — the alternative is forbidden, or the creature is mandatory -- the flip is suppressed
-  > Urban hunters have animal companions that are domesticated animals or animals native to a major city.
-- **`species_pool`** — names the legal species
-  > The urban hunter must select her animal companion from the following list: axe beak B3 , badger, bird, camel, dire rat, dog, ho…
-- **defines:** `animal companion (ex)`
-- **source:** Heroes of the Streets pg. 25 Urban hunters help guards track down and apprehend criminals or spies, find lost children and disaster victims, and protect animals from abuse in the city. They still draw their inspiration and strength from the natural world, marveling at how nature flourishes wherever the city allows.
-- [Urban Hunter on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Urban+Hunter)
+- **`none`** — replaces only empathic-link tier perks
+- **replaces:** raise animal companion  <sub>(in `unnatural stride (ex)`)</sub>
+- **source:** Advanced Class Origins pg. 13 The Uprooters are an elite band of Kyonin elves skilled and brave enough to foray into the Tanglebriar and take the offensive in the fight against Treerazer. Uprooter scouts rely on their close bonds with their animal companions to survive such raids. One Uprooter scout who accompanied an expedition into the Worldwound to put his demon-fighting skills to work there has retired to Mendev to teach his techniques to others, so these skills are slowly being passed on to non-elves.
+- [Uprooter Scout on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Uprooter+Scout)
 - [ ] **signed off** — effect(s): `__________`
 
 ### 🟢 Verminous Hunter  ·  proposed `species_pool`
@@ -1781,6 +1735,15 @@ Low confidence (read these first): **1**
 - [Coral Witch on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Coral+Witch)
 - [ ] **signed off** — effect(s): `__________`
 
+### 🟡 Gingerbread Witch  ·  proposed `creature_type`
+
+- **`creature_type`** — familiar's "type changes to construct"
+- **defines:** `gingerbread familiar (ex)`
+- **alters:** familiar  <sub>(in `gingerbread familiar (ex)`)</sub>
+- **source:** Horror Adventures pg. 72 A sweet tooth lures the gingerbread witch's victims to doom.
+- [Gingerbread Witch on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Gingerbread+Witch)
+- [ ] **signed off** — effect(s): `__________`
+
 ### 🟡 Gravewalker  ·  proposed `removes`
 
 - **`removes`** — traded away, and nothing in the bond text grants a creature
@@ -1788,6 +1751,14 @@ Low confidence (read these first): **1**
 - **replaces:** familiar  <sub>(in `spell poppet`)</sub>
 - **source:** Ultimate Magic pg. 84 Having much in common with necromancers, the gravewalker is obsessed with the occult manipulations of the dead, particularly mindless undead such as zombies. Unlike the creations of standard necromancers, a gravewalker's creations remain forever tied to her will, and she can produce vile apparitions of tremendous power.
 - [Gravewalker on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Gravewalker)
+- [ ] **signed off** — effect(s): `__________`
+
+### 🟡 Havocker  ·  proposed `none`
+
+- **`none`** — alters the source of her powers, not the familiar
+- **alters:** the witch's familiar and replaces the witch's 1st-level hex  <sub>(in `patron element`)</sub>
+- **source:** Magic Tactics Toolbox pg. 11 Although most witches are guided to subtle curses and debilitating hexes by their mysterious patrons, some are instead taught the secrets of harnessing raw, destructive elemental power.
+- [Havocker on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Havocker)
 - [ ] **signed off** — effect(s): `__________`
 
 ### 🟡 Ley Line Guardian  ·  proposed `removes`
@@ -1840,27 +1811,6 @@ Low confidence (read these first): **1**
 - **defines:** `commune with familiar (sp)`
 - **source:** Pathfinder Society Field Guide pg. 28 While dimensional occultist witches are not all associated with the Pathfinders, enough of them are to warrant mention here. A dimensional occultist sacrifices some of her mastery over hexes in return for increased planar lore- she spends much of her time researching and communing with otherplanar spirits, often through her familiar or via the study of ancient texts, and has an increased mastery over various conjurations and other extraplanar effects. She can even travel between dimensions as she gains power. A dimensional occultist has the following class features.
 - [Dimensional Occultist on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Dimensional+Occultist)
-- [ ] **signed off** — effect(s): `__________`
-
-### 🟢 Gingerbread Witch  ·  proposed `creature_type` + `forces`  ⚠ **two effects**
-
-- **`creature_type`** — the bond yields a construct, not an animal companion
-  > As a construct, it gains 60-foot darkvision and construct immunities, it loses any special abilities the animal or vermin has other than movement speed, and it 
-- **`forces`** — the alternative is forbidden, or the creature is mandatory -- the flip is suppressed
-  > A gingerbread witch can never gain an improved familiar.
-- **defines:** `gingerbread familiar (ex)`
-- **alters:** familiar  <sub>(in `gingerbread familiar (ex)`)</sub>
-- **source:** Horror Adventures pg. 72 A sweet tooth lures the gingerbread witch's victims to doom.
-- [Gingerbread Witch on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Gingerbread+Witch)
-- [ ] **signed off** — effect(s): `__________`
-
-### 🟢 Havocker  ·  proposed `forces`
-
-- **`forces`** — the alternative is forbidden, or the creature is mandatory -- the flip is suppressed
-  > At 1st level, rather than selecting a standard patron and gaining patron spells, the witch selects a specific kineticist element ( Pathfinder RPG Occult Adventures 14 ), 
-- **alters:** the witch's familiar and replaces the witch's 1st-level hex  <sub>(in `patron element`)</sub>
-- **source:** Magic Tactics Toolbox pg. 11 Although most witches are guided to subtle curses and debilitating hexes by their mysterious patrons, some are instead taught the secrets of harnessing raw, destructive elemental power.
-- [Havocker on Archives of Nethys](https://www.aonprd.com/Search.aspx?Query=Havocker)
 - [ ] **signed off** — effect(s): `__________`
 
 ### 🟢 Nexian Spellspy  ·  proposed `none`
