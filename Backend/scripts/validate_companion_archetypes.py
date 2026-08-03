@@ -24,7 +24,9 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 import build_companion_archetypes as bca                          # noqa: E402
-from validate_companion_data import EFFECTS, FLAGS, OUTCOMES      # noqa: E402
+from validate_companion_data import (                             # noqa: E402
+    CREATURE_TYPES, EFFECTS, FLAGS, OUTCOMES,
+)
 
 ROOT = HERE.parents[1]
 ARCHETYPES = ROOT / "Backend/json/archetypes.json"
@@ -99,6 +101,13 @@ def check_vocabulary(entries, source_label):
             if one not in EFFECTS:
                 errors.append(f"{source_label}: {key!r} effects[] holds {one!r}, "
                               f"not in {EFFECTS}")
+        ctype = entry.get("creature_type")
+        if ctype is not None and ctype not in CREATURE_TYPES:
+            errors.append(f"{source_label}: {key!r} creature_type = {ctype!r} is not in "
+                          f"{CREATURE_TYPES}")
+        if effect == "creature_type" and not ctype:
+            errors.append(f"{source_label}: {key!r} claims effect 'creature_type' but names no "
+                          f"creature")
         outcome = entry.get("outcome")
         if outcome is not None and outcome not in OUTCOMES:
             errors.append(f"{source_label}: {key!r} outcome = {outcome!r} is not in {OUTCOMES}")

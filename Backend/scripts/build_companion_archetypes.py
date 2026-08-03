@@ -130,6 +130,17 @@ PROGRESSION_RE = re.compile(
     r"level (?:is )?equal to|treats? her .{0,30}level as|minus 3|-\s?3 levels|"
     r"levels? stack|counts? as (?:a )?(?:druid|ranger) level)\b", re.I)
 
+# What each grantor class's bond yields WITHOUT an archetype. `creature_type` means the bond yields
+# something ELSE, so naming a class's own default is not an effect at all -- every summoner's bond is
+# an eidolon, and tagging Broodmaster or Storm Caller `creature_type: eidolon` said nothing while
+# hiding what they really do.
+DEFAULT_BOND = {
+    "Druid": None, "Ranger": None, "Hunter": None,          # an ordinary animal companion
+    "Wizard": None, "Witch": None, "Sorcerer": None,        # an ordinary familiar
+    "Paladin": None, "Cavalier": None, "Samurai": None,     # an ordinary mount
+    "Summoner": "eidolon",
+}
+
 # The bond yields a different KIND of creature -- a sixth effect #38's vocabulary lacks. Ordered:
 # the first match wins, so "drake companion" beats the generic "companion".
 CREATURE_TYPES = (
@@ -261,7 +272,7 @@ def negation_signals(clause):
     return signals
 
 
-def classify(body, own_keys, sentences, species_index):
+def classify(body, own_keys, sentences, species_index, cls=None):
     """Propose every effect that applies, reading the bond text clause by clause.
 
     Deliberately NOT single-valued: Devolutionist forces a species, restricts it, AND vetoes a field
@@ -293,10 +304,11 @@ def classify(body, own_keys, sentences, species_index):
             continue                      # R2: a domain-only clause says nothing about the creature
         creature_clauses += 1
 
-        # R4 -- does the bond now yield a different KIND of creature?
+        # R4 -- does the bond now yield a different KIND of creature? Naming the class's own default
+        # is not a change, so a summoner's eidolon is skipped here.
         if ctype is None:
             for pattern, name in CREATURE_TYPES:
-                if pattern.search(clause):
+                if pattern.search(clause) and name != DEFAULT_BOND.get(cls):
                     ctype = name
                     found.append(("creature_type", "high",
                                   f"the bond yields a {name}, not an animal companion", clause[:160]))
@@ -423,7 +435,7 @@ def build():
             if not own_keys and not sentences:
                 continue
             found, pool_names, pool_property, ctype, pool_raw, conflict = classify(
-                body, own_keys, sentences, index)
+                body, own_keys, sentences, index, cls)
             entries[f"{cls}/{name}"] = {
                 "archetype": name,
                 "class": cls,

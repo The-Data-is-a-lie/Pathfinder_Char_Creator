@@ -70,7 +70,13 @@ ABILITY_KEY_RE = re.compile(r'\((?:ex|su|sp)\)\s*$|\*$')
 # restating it. Both files are validated below once they exist.
 # ---------------------------------------------------------------------------------------------
 OUTCOMES = ('granted', 'domain', 'bonded_object', 'bond_with_allies', 'archetype_removed')
-EFFECTS = ('removes', 'forces', 'species_pool', 'progression', 'none')
+# `creature_type` is a sixth effect beyond #38's five: some archetypes change WHAT the bond yields
+# rather than whether it exists -- a Draconic Druid gets a drake, an Elemental Ally four eidolons.
+# Twenty-five archetypes carry it, and without it such a druid silently generates a plain animal.
+EFFECTS = ('removes', 'forces', 'species_pool', 'progression', 'creature_type', 'none')
+# What `creature_type` may name. Closed, so a typo cannot invent a subsystem: the resolver has to
+# know how to degrade for each one.
+CREATURE_TYPES = ('drake', 'eidolon', 'construct', 'undead', 'plant', 'elemental', 'outsider')
 FLAGS = ('species_pool_unavailable',)
 
 errors = []

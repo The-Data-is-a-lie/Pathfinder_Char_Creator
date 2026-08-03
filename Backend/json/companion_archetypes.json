@@ -5,26 +5,20 @@
       "exotic mount (ex)"
     ],
     "class": "Cavalier",
-    "confidence": "low",
+    "confidence": "high",
     "effect": "species_pool",
     "effects": [
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "…level, a beast rider forms a bond with a strong, loyal companion that permits him to ride it as a mount.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
-      },
-      {
-        "confidence": "medium",
-        "effect": "progression",
-        "evidence": "This mount functions as a druid's animal companion , using the beast rider's level as his effective druid level.",
-        "why": "changes level or size advancement"
+        "evidence": "",
+        "why": "per-size pick lists plus an early size-Large stat table"
       },
       {
         "confidence": "high",
-        "effect": "removes",
-        "evidence": "The beast rider does not take an armor check penalty on Ride checks while riding his mount.",
-        "why": "the creature is forbidden"
+        "effect": "progression",
+        "evidence": "",
+        "why": "per-size pick lists plus an early size-Large stat table"
       }
     ],
     "sentences": [
@@ -34,13 +28,22 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 36 The cavalier is defined not only by his dedication to his order or his skill on the battlefield, but also by the special relationship he maintains with his mount. Where some cavaliers are simply skilled with horses or well-trained knights, the beast rider spends his life in constant pursuit of the most perfect mount, forming bonds with greater, more powerful, and more exotic creatures.",
-    "species_pool_raw": [
-      "a strong, loyal companion that permits him to ride it as a mount",
-      "large enough to carry the beast rider (Medium or Large for a Small character"
+    "species_pool": [
+      "boar",
+      "camel",
+      "horse",
+      "pony",
+      "triceratops",
+      "tyrannosaurus",
+      "wolf"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "species_pool_raw": [
+      "elephant"
+    ],
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "per-size pick lists plus an early size-Large stat table"
   },
   "Cavalier/Castellan": {
     "archetype": "Castellan",
@@ -234,14 +237,20 @@
       "serpent mount (ex)"
     ],
     "class": "Cavalier",
-    "confidence": "medium",
-    "effect": "none",
+    "confidence": "high",
+    "effect": "species_pool",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "none",
+        "confidence": "high",
+        "effect": "species_pool",
         "evidence": "",
-        "why": "mentions a bond feature without changing it"
+        "why": "giant riding constrictor; \"doesn't increase in size again\" at 4th"
+      },
+      {
+        "confidence": "high",
+        "effect": "progression",
+        "evidence": "",
+        "why": "giant riding constrictor; \"doesn't increase in size again\" at 4th"
       }
     ],
     "sentences": [
@@ -251,9 +260,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Blood of the Beast pg. 17 Nagajor legend states that when Nalinivati created the first nagaji, she chose a paragon of their kind to instruct in the use of exotic weapons, lore, and words so the creature could best serve her as a bodyguard and emissary: the original first mother's fang. Whether or not these paragons descend from a single nagaji, first mother's fangs of Nagajor have expanded their numbers over the generations, and they no longer speak with the full authority of the First Mother. In modern times, a first mother's fang acts as a servant of his nation, a skilled general and tactician in times of war and a noble governor during times of peace.",
-    "why": "mentions a bond feature without changing it"
+    "species_pool": [
+      "snake, constrictor"
+    ],
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "giant riding constrictor; \"doesn't increase in size again\" at 4th"
   },
   "Cavalier/Ghost Rider": {
     "archetype": "Ghost Rider",
@@ -262,27 +275,15 @@
       "spirited mount (su)"
     ],
     "class": "Cavalier",
-    "confidence": "low",
+    "confidence": "high",
     "conflict": "forces and removes both detected -- read the full text",
-    "effect": "forces",
+    "effect": "species_pool",
     "effects": [
       {
-        "confidence": "low",
-        "effect": "forces",
-        "evidence": "A ghost rider must choose a mount that is capable of bearing her weight, that has four or more legs, and that lacks a fly speed (although the GM may allow mounts with a s",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "A ghost rider must choose a mount that is capable of bearing her weight, that has four or more legs, and that lacks a fly sp…",
-        "why": "restricts the species by fly speed (21 qualify)"
-      },
-      {
-        "confidence": "low",
-        "effect": "removes",
-        "evidence": "The ghost rider does not take an armor check penalty on Ride checks while riding her mount.",
-        "why": "the creature is forbidden"
+        "evidence": "",
+        "why": "mount must bear weight, four legs, no fly speed"
       }
     ],
     "sentences": [
@@ -292,7 +293,7 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Occult Adventures pg. 117 Ghost riders are conflicted warriors who use the powers of the phantasmal dead even while seeking out and banishing the corruption of undeath from plagued communities. Their strange abilities mark them as outsiders and stoic loners, and they stay in one place only long enough to help the afflicted before riding off to unknown destinations.",
     "species_pool": [
       "archaeopteryx",
@@ -318,7 +319,8 @@
       "yolubilis heron"
     ],
     "species_pool_derived_from": "fly",
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "mount must bear weight, four legs, no fly speed"
   },
   "Cavalier/Green Knight": {
     "archetype": "Green Knight",
@@ -351,14 +353,14 @@
       "feytouched mount"
     ],
     "class": "Cavalier",
-    "confidence": "medium",
+    "confidence": "high",
     "effect": "none",
     "effects": [
       {
-        "confidence": "medium",
+        "confidence": "high",
         "effect": "none",
         "evidence": "",
-        "why": "mentions a bond feature without changing it"
+        "why": "feytouched template while ridden only"
       }
     ],
     "sentences": [
@@ -368,34 +370,29 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Legacy of the First World pg. 26 Some cavaliers wander the lonely roads of the world-any world, including the First World-protecting travelers and acting as their honor guard. Like the Eldest they usually venerate, they wear heavy hoods and rarely show their faces. Hooded knights are usually members of the order of the blossom (see page 27), the order of the shield, or the order of the sword.",
-    "why": "mentions a bond feature without changing it"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "feytouched template while ridden only"
   },
   "Cavalier/Huntmaster": {
     "archetype": "Huntmaster",
     "bond_features": [],
     "class": "Cavalier",
-    "confidence": "low",
+    "confidence": "high",
     "effect": "species_pool",
     "effects": [
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "…l, a huntmaster forms a close bond with an animal companion.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"either a bird or a dog\"; effective druid level divided between companions"
       },
       {
-        "confidence": "medium",
+        "confidence": "high",
         "effect": "progression",
-        "evidence": "This animal companion functions as a druid's animal companion , using the cavalier's level as his effective druid level.",
-        "why": "changes level or size advancement"
-      },
-      {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": "untmaster's animal companions gain a bonus on Survival checks to follow tracks equal to 1/2 the cavalier's class level (minimum 1). This ability replaces mount.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "evidence": "",
+        "why": "\"either a bird or a dog\"; effective druid level divided between companions"
       }
     ],
     "sentences": [
@@ -405,12 +402,17 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Animal Archive pg. 6 Huntmasters train the beasts favored by lordly castes into swift and deadly trackers.",
+    "species_pool": [
+      "bird",
+      "dog"
+    ],
     "species_pool_raw": [
       "an animal companion"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"either a bird or a dog\"; effective druid level divided between companions"
   },
   "Cavalier/Hussar": {
     "archetype": "Hussar",
@@ -419,20 +421,21 @@
       "maneuverable mount (ex)"
     ],
     "class": "Cavalier",
-    "confidence": "medium",
+    "confidence": "high",
     "effect": "none",
     "effects": [
       {
-        "confidence": "medium",
+        "confidence": "high",
         "effect": "none",
         "evidence": "",
-        "why": "mentions a bond feature without changing it"
+        "why": "fast mount only adds speed"
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Intrigue pg. 25 Agile and maneuverable cavalry, hussars make up for their relatively light armor with their speed and cunning. They are known for doggedly pursuing their foes even in tight spaces, across rooftops, and in other places that mounted cavalry could normally never reach.",
-    "why": "mentions a bond feature without changing it"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "fast mount only adds speed"
   },
   "Cavalier/Musketeer": {
     "archetype": "Musketeer",
@@ -533,14 +536,14 @@
       "titanic mount (ex)"
     ],
     "class": "Cavalier",
-    "confidence": "low",
+    "confidence": "high",
     "effect": "species_pool",
     "effects": [
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "A saurian champion bonds with a dinosaur companion that willingly serves as his mount.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"mount must be a dinosaur\""
       }
     ],
     "sentences": [
@@ -550,26 +553,37 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Wilderness pg. 45 These primeval cavaliers idolize dinosaurs as apex predators and value them as powerful, oversized mounts.",
+    "species_pool": [
+      "allosaurus",
+      "ankylosaurus",
+      "elasmosaurus",
+      "pteranodon",
+      "stegosaurus",
+      "triceratops",
+      "tyrannosaurus",
+      "velociraptor"
+    ],
     "species_pool_raw": [
       "a dinosaur companion that willingly serves as his mount",
       "a dinosaur (see animal companions for all the available options)"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"mount must be a dinosaur\""
   },
   "Cavalier/Sister-in-Arms": {
     "archetype": "Sister-in-Arms",
     "bond_features": [],
     "class": "Cavalier",
-    "confidence": "medium",
-    "effect": "none",
+    "confidence": "high",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "none",
+        "confidence": "high",
+        "effect": "removes",
         "evidence": "",
-        "why": "mentions a bond feature without changing it"
+        "why": "\"alters order and replaces mount\""
       }
     ],
     "sentences": [
@@ -579,9 +593,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Adventurer's Guide pg. 83 Some of the most charismatic Gray Maidens combine their devotion to their sisters with the intense tactical training they received, learning to perfectly direct their companions and inspiring them to survive and emerge victorious. Known as sisters-in-arms, these scarred soldiers are highly respected by their fellow Maidens for their dedication. In the aftermath of Ileosa's fall, groups of Maidens forged a tight-knit family from their fellow survivors, knowing that nobody else truly understood the horrors they had endured-or had been forced to commit. Even after being accepted back into Korvosan society or fleeing the reach of the city's justice, the Gray Maidens' sisterhood has endured. Sisters-in-arms are almost never neutral on the subject of Queen Ileosa; some still hold true to the cruel queen's ideals and lead bands of like-minded veterans, while others have forsaken Ileosa in favor of total devotion to their fellow survivors. Of the latter, the majority support the Scarlet Rose, whether as social and emotional support for their recovering sisters, as field commanders for military endeavors, or as private adventurers with ties to the order. Loyalist sisters-in-arms, by contrast, are almost always plotting to reclaim Korvosa.",
-    "why": "mentions a bond feature without changing it"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"alters order and replaces mount\""
   },
   "Cavalier/Standard Bearer": {
     "archetype": "Standard Bearer",
@@ -616,14 +631,15 @@
       "plant mount (ex)"
     ],
     "class": "Cavalier",
-    "confidence": "medium",
-    "effect": "none",
+    "confidence": "high",
+    "creature_type": "plant",
+    "effect": "creature_type",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "none",
+        "confidence": "high",
+        "effect": "creature_type",
         "evidence": "",
-        "why": "mentions a bond feature without changing it"
+        "why": "\"this mount is a plant with the leshy subtype\""
       }
     ],
     "sentences": [
@@ -633,9 +649,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Wilderness Origins pg. 15 Some vine leshys' spirits are vibrant enough to project this animus beyond their own bodies. Called verdivants, these leshys explore the world atop unique companions formed from the leshy's vines and animated by their nearly boundless energy. Both mount and rider brim with new growth, sporting bright flowers, whipping tendrils, clouds of pollen, and other manifestations charged with nature's power. This archetype is typically available only to vine leshys, but with the GM's permission, other races can take it as well.",
-    "why": "mentions a bond feature without changing it"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"this mount is a plant with the leshy subtype\""
   },
   "Cavalier/Vermin Tamer": {
     "archetype": "Vermin Tamer",
@@ -795,23 +812,24 @@
       "nature bond"
     ],
     "class": "Druid",
-    "confidence": "low",
+    "confidence": "high",
     "effect": "species_pool",
     "effects": [
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "…o chooses an animal companion must select a bat.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"who chooses an animal companion must select a bat\""
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 42 The bat shaman's totem is the agile bat, flitting and turning with incredible speed through even the most convoluted mazes. Her enemies do not know when she will appear, and when she does, she strikes fast and hard before disappearing into the night.",
     "species_pool_raw": [
-      "a bat"
+      "bat"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"who chooses an animal companion must select a bat\""
   },
   "Druid/Bear Shaman": {
     "archetype": "Bear Shaman",
@@ -888,20 +906,21 @@
       "nature bond"
     ],
     "class": "Druid",
-    "confidence": "medium",
+    "confidence": "high",
     "effect": "none",
     "effects": [
       {
-        "confidence": "medium",
+        "confidence": "high",
         "effect": "none",
         "evidence": "",
-        "why": "the bond text restricts only the domain side"
+        "why": "domain side only"
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Player's Guide pg. 99 Far from the green fields of the world above lies a lightless expanse beneath the surface. This darkling fairyland is not without beauty and natural wonders of its own, and a few druids seek to preserve this hidden realm and purge it of the fell horrors that creep up from below.",
-    "why": "the bond text restricts only the domain side"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "domain side only"
   },
   "Druid/Death Druid": {
     "archetype": "Death Druid",
@@ -938,20 +957,20 @@
       {
         "confidence": "high",
         "effect": "forces",
-        "evidence": "A devolutionist must choose a devolved humanoid as an animal companion for her nature bond.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+        "evidence": "",
+        "why": "ape stats; \"doesn't increase to size Large\""
       },
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "A devolutionist must choose a devolved humanoid as an animal companion for her nature bond.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "ape stats; \"doesn't increase to size Large\""
       },
       {
-        "confidence": "medium",
+        "confidence": "high",
         "effect": "progression",
-        "evidence": "Use the stats for an ape animal companion, but at 4th level, the devolved humanoid doesn't increase to size Large (it still gains all the other benefits at 4th ",
-        "why": "changes level or size advancement"
+        "evidence": "",
+        "why": "ape stats; \"doesn't increase to size Large\""
       }
     ],
     "sentences": [
@@ -961,7 +980,7 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Horror Adventures pg. 50 Full of simmering hatred toward civilization and those who dwell within it, devolutionists believe that the world would be better off without any sentient life at all. They transform intelligent creatures and domesticated animals into throwbacks to their feral ancestors.",
     "species_pool": [
       "ape"
@@ -969,7 +988,8 @@
     "species_pool_raw": [
       "a devolved humanoid as an animal companion for her nature bond"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "ape stats; \"doesn't increase to size Large\""
   },
   "Druid/Draconic Druid": {
     "archetype": "Draconic Druid",
@@ -1091,23 +1111,18 @@
       {
         "confidence": "high",
         "effect": "forces",
-        "evidence": "At 1st level, a feral child must select an animal companion as her nature bond.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "At 1st level, a feral child must select an animal companion as her nature bond.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"must select an animal companion as her nature bond\""
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Race Guide pg. 74 Some youths, abandoned in the wilderness and then raised by animals, are so connected with their adoptive home and family that they become feral. Suspicious of civilized society, these foundlings often choose allegiance to the wild over their human forebears. A feral child has the following class features.",
     "species_pool_raw": [
       "an animal companion as her nature bond"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select an animal companion as her nature bond\""
   },
   "Druid/Feral Shifter": {
     "archetype": "Feral Shifter",
@@ -1173,14 +1188,14 @@
     "archetype": "Goliath Druid",
     "bond_features": [],
     "class": "Druid",
-    "confidence": "medium",
-    "effect": "none",
+    "confidence": "high",
+    "effect": "species_pool",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "none",
+        "confidence": "high",
+        "effect": "species_pool",
         "evidence": "",
-        "why": "mentions a bond feature without changing it"
+        "why": "\"must select a dinosaur or megafauna\""
       }
     ],
     "sentences": [
@@ -1190,9 +1205,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Giant Hunter's Handbook pg. 20 Goliath druids hone their spiritual and magical connections to nature's largest creatures, especially dinosaurs, giants, and megafauna, revering these massive creatures as living relics of a primeval time when all creatures were more in harmony with nature. Despite this respect, a goliath druid doesn't hesitate to infiltrate giant groups who defile nature and destroy them from within. Goliath druids have the following class features.",
-    "why": "mentions a bond feature without changing it"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select a dinosaur or megafauna\""
   },
   "Druid/Halcyon Druid": {
     "archetype": "Halcyon Druid",
@@ -1283,36 +1299,40 @@
       "nature bond"
     ],
     "class": "Druid",
-    "confidence": "low",
+    "confidence": "high",
     "effect": "species_pool",
     "effects": [
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "…o chooses an animal companion must select a lion.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"must select a lion\""
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Player's Guide pg. 103 A shaman with this totem calls upon the proud lion, imposing and majestic, the mighty leader of deadly hunters.",
+    "species_pool": [
+      "cat, big"
+    ],
     "species_pool_raw": [
       "a lion"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select a lion\""
   },
   "Druid/Nature Priest": {
     "archetype": "Nature Priest",
     "bond_features": [],
     "class": "Druid",
-    "confidence": "medium",
+    "confidence": "high",
     "effect": "none",
     "effects": [
       {
-        "confidence": "medium",
+        "confidence": "high",
         "effect": "none",
         "evidence": "",
-        "why": "the bond text restricts only the domain side"
+        "why": "domain side only"
       }
     ],
     "sentences": [
@@ -1322,9 +1342,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Healer's Handbook pg. 23 Nature priests serve two masters: their deities and nature itself, and can call upon the power of both to fuel their divine abilities.",
-    "why": "the bond text restricts only the domain side"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "domain side only"
   },
   "Druid/Nithveil Adept": {
     "archetype": "Nithveil Adept",
@@ -1357,33 +1378,21 @@
     "archetype": "Pack Lord",
     "bond_features": [],
     "class": "Druid",
-    "confidence": "low",
+    "confidence": "high",
     "conflict": "forces and removes both detected -- read the full text",
     "effect": "forces",
     "effects": [
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "forces",
-        "evidence": "A pack lord druid may not select a domain and must choose an animal companion.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+        "evidence": "",
+        "why": "\"may not select a domain and must choose an animal companion\"; level divided"
       },
       {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…d may not select a domain and must choose an animal companion.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
-      },
-      {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "progression",
-        "evidence": "The pack lord may have more than one animal companion, but she must divide up her effective druid level between her companions to determine the abilities of eac",
-        "why": "changes level or size advancement"
-      },
-      {
-        "confidence": "low",
-        "effect": "removes",
-        "evidence": "The share spells animal companion ability only applies to one animal companion at a time-the pack lord cannot use it to cast a one-target spell and have it affect all of ",
-        "why": "the creature is forbidden"
+        "evidence": "",
+        "why": "\"may not select a domain and must choose an animal companion\"; level divided"
       }
     ],
     "sentences": [
@@ -1393,12 +1402,13 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Magic pg. 38 Some druids bond with many animal companions rather than just one, achieving a level of communion rare even in druidic circles and leading their pack brothers and pack sisters with total authority.",
     "species_pool_raw": [
       "an animal companion"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"may not select a domain and must choose an animal companion\"; level divided"
   },
   "Druid/Progenitor": {
     "archetype": "Progenitor",
@@ -1429,14 +1439,14 @@
     "archetype": "Road Keeper",
     "bond_features": [],
     "class": "Druid",
-    "confidence": "medium",
+    "confidence": "high",
     "effect": "none",
     "effects": [
       {
-        "confidence": "medium",
+        "confidence": "high",
         "effect": "none",
         "evidence": "",
-        "why": "the bond text restricts only the domain side"
+        "why": "domain side only"
       }
     ],
     "sentences": [
@@ -1446,9 +1456,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Wilderness pg. 48 Guardians of the lonely paths between cities, road keepers protect the wild from travelers, and travelers from the wild.",
-    "why": "the bond text restricts only the domain side"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "domain side only"
   },
   "Druid/Rot Warden": {
     "archetype": "Rot Warden",
@@ -1456,14 +1467,14 @@
       "nature bond"
     ],
     "class": "Druid",
-    "confidence": "medium",
+    "confidence": "high",
     "effect": "none",
     "effects": [
       {
-        "confidence": "medium",
+        "confidence": "high",
         "effect": "none",
         "evidence": "",
-        "why": "the bond text restricts only the domain side"
+        "why": "domain side only"
       }
     ],
     "sentences": [
@@ -1473,9 +1484,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Wilderness pg. 49 Harbingers of decay, rot wardens live in damp lands where insects and rot break down the dead to feed the living. They see in the process of rot the beauty of nature's capacity to recycle and repurpose material into something wondrous and new.",
-    "why": "the bond text restricts only the domain side"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "domain side only"
   },
   "Druid/Saurian Shaman": {
     "archetype": "Saurian Shaman",
@@ -1483,23 +1495,24 @@
       "nature bond"
     ],
     "class": "Druid",
-    "confidence": "low",
+    "confidence": "high",
     "effect": "species_pool",
     "effects": [
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "…o chooses an animal companion must select a dinosaur.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"who chooses an animal companion must select a dinosaur\""
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Magic pg. 39 A shaman with this focus calls upon the primeval dinosaur, the archaic terror that lingers as a hungering, atavistic stranger at the fringes of the ecosystem, a destroyer and despoiler whose coming other animals dread.",
     "species_pool_raw": [
       "a dinosaur"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"who chooses an animal companion must select a dinosaur\""
   },
   "Druid/Season Keeper": {
     "archetype": "Season Keeper",
@@ -1513,14 +1526,8 @@
       {
         "confidence": "high",
         "effect": "forces",
-        "evidence": "A season keeper must select an animal companion for her nature bond.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "A season keeper must select an animal companion for her nature bond.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"must select an animal companion for her nature bond\""
       }
     ],
     "sentences": [
@@ -1530,12 +1537,13 @@
         "verb": "modifies"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "People of the Stars pg. 13 Imbued with the primeval potency of their planet's seasons, those druids known as season keepers guide Triaxian communities through the stark transition from summer to winter (and vice versa). The nature spirits that season keepers allow to possess their animal companions inspire both awe and dread in onlookers, but all value the gifts of the seasons that the season keepers bestow on their communities. This archetype is available to Triaxian druids, as well as druids of other races with the GM's permission.",
     "species_pool_raw": [
       "an animal companion for her nature bond"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select an animal companion for her nature bond\""
   },
   "Druid/Serpent Shaman": {
     "archetype": "Serpent Shaman",
@@ -1543,23 +1551,28 @@
       "nature bond"
     ],
     "class": "Druid",
-    "confidence": "low",
+    "confidence": "high",
     "effect": "species_pool",
     "effects": [
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "…o chooses an animal companion must select a snake.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"must select a snake\""
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Player's Guide pg. 103 A shaman with this totem calls upon the cunning serpent, the stealthy deceiver who draws the weak minded in and strikes while they are unaware. Some hate its treacherous nature, while others praise its thoughtful pragmatism.",
+    "species_pool": [
+      "snake, constrictor",
+      "snake, viper"
+    ],
     "species_pool_raw": [
       "a snake"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select a snake\""
   },
   "Druid/Shark Shaman": {
     "archetype": "Shark Shaman",
@@ -1700,23 +1713,18 @@
       {
         "confidence": "high",
         "effect": "forces",
-        "evidence": "At 1st level, a survivor must select an animal companion as her nature bond.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "At 1st level, a survivor must select an animal companion as her nature bond.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"must select an animal companion as her nature bond\""
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Champions of Balance pg. 24 The survivor embodies the neutral aspect of the natural world and eschews druidic magic in favor of more pragmatic and worldly survival methods.",
     "species_pool_raw": [
       "an animal companion as her nature bond"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select an animal companion as her nature bond\""
   },
   "Druid/Swarm Monger": {
     "archetype": "Swarm Monger",
@@ -1724,20 +1732,20 @@
       "fecund familiar (ex)"
     ],
     "class": "Druid",
-    "confidence": "low",
-    "effect": "species_pool",
+    "confidence": "high",
+    "effect": "forces",
     "effects": [
-      {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "A swarm monger bonds with an urban familiar, treating her druid level as her wizard level for the purposes of determining her…",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
-      },
       {
         "confidence": "high",
         "effect": "forces",
-        "evidence": "The swarm monger must select her familiar from the following options: cat, house centipede UM , rat, raven, or scarlet spider UM .",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+        "evidence": "",
+        "why": "\"must select her familiar from the following\"; replaces nature bond"
+      },
+      {
+        "confidence": "high",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "\"must select her familiar from the following\"; replaces nature bond"
       }
     ],
     "sentences": [
@@ -1747,13 +1755,17 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Blood of the Beast pg. 21 Swarm mongers are unparalleled survivors, thriving on the filthy fringes of society. Whereas other druids commune with nature or even the spirit of a city, swarm mongers find beauty and strength in decay, and they draw their power from fungus, disease, and their own singular will to survive.",
-    "species_pool_raw": [
-      "an urban familiar, treating her druid level as her wizard level for the purposes of determining her familiar's abilities",
-      "her familiar from the following options: cat, house centipede UM , rat, raven, or scarlet spider UM"
+    "species_pool": [
+      "cat, small"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "species_pool_raw": [
+      "rat",
+      "raven"
+    ],
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select her familiar from the following\"; replaces nature bond"
   },
   "Druid/Tempest Druid": {
     "archetype": "Tempest Druid",
@@ -1761,14 +1773,14 @@
       "nature bond (ex)"
     ],
     "class": "Druid",
-    "confidence": "medium",
-    "effect": "none",
+    "confidence": "high",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "none",
+        "confidence": "high",
+        "effect": "removes",
         "evidence": "",
-        "why": "mentions a bond feature without changing it"
+        "why": "\"can't choose an animal companion, and must instead select a domain\""
       }
     ],
     "sentences": [
@@ -1778,9 +1790,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Adventurer's Guide pg. 183 , Inner Sea Magic pg. 41 Many of the druids who train under the aegis of the Storm Kindlers focus on different areas of nature than those classically paid homage to by their kind. These so-called tempest druids see the personification of nature in the fury of the storm alone and to some extent eschew the veneration of plant or animal life, and the nature of their powers shifts accordingly. They still understand the place of plants and animals in the natural order, however; they simply view such entities-and indeed, all forms of life-as subservient to the true power found in the storms that lash the world.",
-    "why": "mentions a bond feature without changing it"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"can't choose an animal companion, and must instead select a domain\""
   },
   "Druid/Urban Druid": {
     "archetype": "Urban Druid",
@@ -2090,20 +2103,15 @@
     "archetype": "Plant Master",
     "bond_features": [],
     "class": "Hunter",
-    "confidence": "low",
-    "effect": "species_pool",
+    "confidence": "high",
+    "creature_type": "plant",
+    "effect": "creature_type",
     "effects": [
       {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "A plant master forms a mystic bond with a plant companion.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
-      },
-      {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": " ). Except for the companion being a creature of the plant type, this ability otherwise works like the druid's animal companion. This replaces animal companion.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "confidence": "high",
+        "effect": "creature_type",
+        "evidence": "",
+        "why": "\"forms a mystic bond with a plant companion\""
       }
     ],
     "sentences": [
@@ -2113,25 +2121,26 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Wilderness pg. 53 Some hunters form a bond with plant life instead of an animal and take on those aspects instead. These hunters form potent bonds with plant creatures, and their leafy or fungal friends are more than capable of anything another hunter's animal allies can accomplish.",
     "species_pool_raw": [
       "a plant companion"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"forms a mystic bond with a plant companion\""
   },
   "Hunter/Totem-Bonded": {
     "archetype": "Totem-Bonded",
     "bond_features": [],
     "class": "Hunter",
-    "confidence": "medium",
-    "effect": "none",
+    "confidence": "high",
+    "effect": "species_pool",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "none",
+        "confidence": "high",
+        "effect": "species_pool",
         "evidence": "",
-        "why": "mentions a bond feature without changing it"
+        "why": "explicit primeval companion list"
       }
     ],
     "sentences": [
@@ -2141,9 +2150,24 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Adventurer's Guide pg. 131 The Mammoth Lords coexist with the great primeval beasts that roam their lands, surviving with the help of the animals' meat, hides, milk, bones, and more. These fearsome and wondrous animals have made their way into Kellid culture and tradition. Tribes are named after these creatures. Armor, clothing, weapons, and jewelry-when not fashioned from bone, hide, or teeth harvested from these beasts-are worked into images that evoke their shape and strength. They are even captured and trained for use as guardians, as hunters, or in the most iconic use, as mounts-though they're rarely tamed, as the Mammoth Lords value the ferociousness of these creatures. The sight of a Mammoth Lord atop an elephantine steed is one that few soon forget. For some of the people of the Mammoth Lords, this adoration and respect for the megafauna that share their realm goes one step further. Shamans ACG , oracles APG , druids, and others worship these animals as primal spirits of the world and draw great power from their faith. Others, like rangers and barbarians, are no less faithful in their belief, even though they focus more on physical combat than on spellcasting. Among the most devoted of these hunters are the so-called totem-bonded-hunters who are able to form a true spiritual bond with the powerful fauna that dominate the wildlands. Such a hunter embraces one of the realm's megafauna as a sort of spiritual guide, eventually attracting a mighty beast that travels with her and helps keep her territory free of invaders. By doing so, the totem-bonded hunter becomes something more than merely a guardian and provider for her tribe-she becomes a manifestation of the tribe's spiritual belief in the power of the land itself.",
-    "why": "mentions a bond feature without changing it"
+    "species_pool": [
+      "aurochs",
+      "badger",
+      "bear",
+      "cat, big",
+      "elk",
+      "giant raven",
+      "rhinoceros",
+      "walrus",
+      "wolf"
+    ],
+    "species_pool_raw": [
+      "mastodon"
+    ],
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "explicit primeval companion list"
   },
   "Hunter/Treestrider": {
     "archetype": "Treestrider",
@@ -2253,19 +2277,13 @@
     "bond_features": [],
     "class": "Hunter",
     "confidence": "high",
-    "effect": "forces",
+    "effect": "species_pool",
     "effects": [
       {
         "confidence": "high",
-        "effect": "forces",
-        "evidence": "At 1st level, a verminous hunter must choose a vermin companion instead of an animal companion ( Ultimate Magic 36).",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
         "effect": "species_pool",
-        "evidence": "…1st level, a verminous hunter must choose a vermin companion instead of an animal companion ( Ultimate Magic 36).",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"must choose a vermin companion instead of an animal companion\""
       }
     ],
     "sentences": [
@@ -2275,12 +2293,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Class Guide pg. 98 A verminous hunter calls on the ceaseless, single-minded dedication of vermin to hunt and overwhelm her prey. Where other hunters invoke the cunning, animalistic powers of the alpha predators, she calls on the powers of the lowest life forms, reaching out to the spider instead of the monkey, the mantis instead of the snake, or the moth instead of the owl.",
     "species_pool_raw": [
       "a vermin companion instead of an animal companion ( Ultimate Magic 36)"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must choose a vermin companion instead of an animal companion\""
   },
   "Paladin/Champion of the Cascade": {
     "archetype": "Champion of the Cascade",
@@ -2313,23 +2332,24 @@
       "divine bond (su)"
     ],
     "class": "Paladin",
-    "confidence": "low",
-    "effect": "species_pool",
+    "confidence": "high",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…, instead of forming a divine bond with her weapon or a mount, a divine defender can form a bond with her armor.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "confidence": "high",
+        "effect": "removes",
+        "evidence": "",
+        "why": "bond with her armor instead"
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Player's Guide pg. 116 Some paladins see themselves as the last line of defense between the teeming hordes of evil and the innocent folk trying to make a living in a harsh, unforgiving world. These defenders spend their lives protecting others and taking on foes that the common man should not even know exist. To aid them in their holy mission, they have special powers to protect themselves and those around them. The divine defender has the following class features.",
     "species_pool_raw": [
       "her weapon or a mount, a divine defender can form a bond with her armor"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "bond with her armor instead"
   },
   "Paladin/Divine Hunter": {
     "archetype": "Divine Hunter",
@@ -2389,36 +2409,37 @@
       "divine bond (su)"
     ],
     "class": "Paladin",
-    "confidence": "low",
-    "effect": "species_pool",
+    "confidence": "high",
+    "effect": "forces",
     "effects": [
       {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…l, an empyreal knight forms a bond with a mount, as the standard paladin ability.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "confidence": "high",
+        "effect": "forces",
+        "evidence": "",
+        "why": "\"forms a bond with a mount, as the standard paladin ability\""
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 62 The empyreal knight dedicates her life to serving the celestial beings that guide mortals in their struggle toward the light.",
     "species_pool_raw": [
       "a mount, as the standard paladin ability"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"forms a bond with a mount, as the standard paladin ability\""
   },
   "Paladin/Faithful Wanderer": {
     "archetype": "Faithful Wanderer",
     "bond_features": [],
     "class": "Paladin",
-    "confidence": "medium",
-    "effect": "none",
+    "confidence": "high",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "none",
+        "confidence": "high",
+        "effect": "removes",
         "evidence": "",
-        "why": "the bond text restricts only the domain side"
+        "why": "\"must choose the weapon option of her divine bond\""
       }
     ],
     "sentences": [
@@ -2428,9 +2449,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "People of the Wastes pg. 18 While most paladins stride brazenly forth to battle evil in gleaming armor, faithful wanderers understand that to accomplish real change in Abyssal environments, a paladin must learn to be self-sufficient and unobtrusive and that she must pick her battles carefully, lest her mission end abruptly in a blaze of glory.",
-    "why": "the bond text restricts only the domain side"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must choose the weapon option of her divine bond\""
   },
   "Paladin/Holy Gun": {
     "archetype": "Holy Gun",
@@ -2582,14 +2604,20 @@
     "archetype": "Pearl Seeker",
     "bond_features": [],
     "class": "Paladin",
-    "confidence": "medium",
-    "effect": "none",
+    "confidence": "high",
+    "effect": "forces",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "none",
+        "confidence": "high",
+        "effect": "forces",
         "evidence": "",
-        "why": "the bond text restricts only the domain side"
+        "why": "\"must choose a mount as her divine bond, gaining a hippocampus\""
+      },
+      {
+        "confidence": "high",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "\"must choose a mount as her divine bond, gaining a hippocampus\""
       }
     ],
     "sentences": [
@@ -2599,9 +2627,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Aquatic Adventures pg. 54 Some paladins are called to their faith by strange empathic visions and dreams that beckon them to the oceans and beyond, to right aquatic injustice and search for a glorious gasping and whispering pearl they don't understand. Their contact with the strange but benevolent entity sending the dreams grants them unusual powers compared to other paladins.",
-    "why": "the bond text restricts only the domain side"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must choose a mount as her divine bond, gaining a hippocampus\""
   },
   "Paladin/Sacred Servant": {
     "archetype": "Sacred Servant",
@@ -2609,23 +2638,24 @@
       "divine bond (su)"
     ],
     "class": "Paladin",
-    "confidence": "low",
-    "effect": "species_pool",
+    "confidence": "high",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…, instead of forming a divine bond with her weapon or a mount, a sacred servant forms a bond with her holy symbol.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "confidence": "high",
+        "effect": "removes",
+        "evidence": "",
+        "why": "bond with her holy symbol instead"
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Player's Guide pg. 117 Paladins as a general rule, venerate the gods of good and purity, but some take this a step further, dedicating themselves to a specific deity and furthering the cause of the faith. These sacred servants are rewarded for their devotion with additional spells and powerful allies. A sacred servant must select one deity to worship. This deity's alignment must be lawful good, lawful neutral, or neutral good. A sacred servant has the following class features.",
     "species_pool_raw": [
       "her weapon or a mount, a sacred servant forms a bond with her holy symbol"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "bond with her holy symbol instead"
   },
   "Paladin/Sacred Shield": {
     "archetype": "Sacred Shield",
@@ -2633,23 +2663,24 @@
       "divine bond (su)"
     ],
     "class": "Paladin",
-    "confidence": "low",
-    "effect": "species_pool",
+    "confidence": "high",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…, instead of forming a divine bond with her weapon or a mount, a sacred shield forms a bond with her shield.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "confidence": "high",
+        "effect": "removes",
+        "evidence": "",
+        "why": "bond with her shield instead of weapon or mount"
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 65 When faced by evil, the sacred shield reaches first not for a weapon, but for her trusty shield. With her faith, she can ward others from harm.",
     "species_pool_raw": [
       "her weapon or a mount, a sacred shield forms a bond with her shield"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "bond with her shield instead of weapon or mount"
   },
   "Paladin/Scion of Talmandor": {
     "archetype": "Scion of Talmandor",
@@ -2703,23 +2734,18 @@
       {
         "confidence": "high",
         "effect": "forces",
-        "evidence": "Upon reaching 5th level, a shining knight must form a bond with a mount.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…a shining knight must form a bond with a mount.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"must form a bond with a mount\""
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Player's Guide pg. 117 While paladins often are seen mounted atop a loyal steed, the shining knight is the true symbol of mounted bravery. They are never far from their steeds and are always clad in brightly polished armor. The shining knight has the following class features.",
     "species_pool_raw": [
       "a mount"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must form a bond with a mount\""
   },
   "Paladin/Silver Champion": {
     "archetype": "Silver Champion",
@@ -2786,20 +2812,21 @@
       "divine bond (su)"
     ],
     "class": "Paladin",
-    "confidence": "medium",
-    "effect": "none",
+    "confidence": "high",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "none",
+        "confidence": "high",
+        "effect": "removes",
         "evidence": "",
-        "why": "the bond text restricts only the domain side"
+        "why": "\"must select a weapon for her divine bond\""
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Weapon Master's Handbook pg. 7 Tempered champions are trained in the Tempering Hall in Absalom to master their deities' favored weapons.",
-    "why": "the bond text restricts only the domain side"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select a weapon for her divine bond\""
   },
   "Paladin/Temple Champion": {
     "archetype": "Temple Champion",
@@ -2830,14 +2857,14 @@
     "archetype": "Tortured Crusader",
     "bond_features": [],
     "class": "Paladin",
-    "confidence": "low",
-    "effect": "species_pool",
+    "confidence": "high",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…she selects a divine bond, it must be with a weapon, not a mount.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "confidence": "high",
+        "effect": "removes",
+        "evidence": "",
+        "why": "\"must be with a weapon, not a mount\""
       }
     ],
     "sentences": [
@@ -2847,12 +2874,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Horror Adventures pg. 65 Though tortured crusaders may be beaten and battered, body, mind, and soul, they still somehow continue through torment and hardship. Despite setbacks and impossible odds, they shine like candles even in the darkest times. Somewhere in their minds, they realize that they can't win in the end, but this only strengthens their resolve to fight for what is right, rather than giving in to hopelessness.",
     "species_pool_raw": [
       "with a weapon, not a mount"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must be with a weapon, not a mount\""
   },
   "Paladin/Tranquil Guardian": {
     "archetype": "Tranquil Guardian",
@@ -2860,39 +2888,34 @@
       "divine bond (su)"
     ],
     "class": "Paladin",
-    "confidence": "medium",
+    "confidence": "high",
     "effect": "none",
     "effects": [
       {
-        "confidence": "medium",
+        "confidence": "high",
         "effect": "none",
         "evidence": "",
-        "why": "the bond text restricts only the domain side"
+        "why": "weapon side only"
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Race Guide pg. 86 A tranquil guardian is a missionary of peace and tranquility, a soothing voice of succor in a violent and dangerous world. A tranquil guardian gains the following class features.",
-    "why": "the bond text restricts only the domain side"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "weapon side only"
   },
   "Paladin/Vindictive Bastard": {
     "archetype": "Vindictive Bastard",
     "bond_features": [],
     "class": "Paladin",
-    "confidence": "low",
-    "effect": "species_pool",
+    "confidence": "high",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…dictive bastard forms a close bond with her companions.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
-      },
-      {
-        "confidence": "medium",
+        "confidence": "high",
         "effect": "removes",
-        "evidence": "et who can see and hear her. This bonus lasts for a number of rounds equal to the vindictive bastard's Charisma modifier (minimum 1). This replaces divine bond.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "evidence": "",
+        "why": "\"This replaces divine bond\""
       }
     ],
     "sentences": [
@@ -2902,12 +2925,13 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Antihero's Handbook pg. 14 While paladins often collaborate with less righteous adventurers in order to further their causes, those who spend too much time around companions with particularly loose morals run the risk of adopting those same unscrupulous ideologies and methods. Such a vindictive bastard, as these fallen paladins are known, strikes out for retribution and revenge, far more interested in tearing down those who have harmed her or her companions than furthering a distant deity's cause. This is an ex-class archetype and can be taken by a character immediately upon becoming an ex-paladin. EX-CLASS ARCHETYPES The following archetype can be taken by an ex-paladin immediately upon becoming an ex-paladin, regardless of character level, replacing some or all of the lost class abilities. If another archetype the character had before she became an ex-paladin replaces the same ability as the ex-class archetype, she loses the old archetype in favor of the new one; otherwise, she can retain both archetypes as normal. Vindictive bastards can gain further levels in the paladin class, even though becoming an ex-paladin normally prohibits further advancement in the class. While an ex-member of a class can recant her failings and atone for her fall from her original class (typically involving an atonement spell), her acceptance of her ex-class archetype means she must atone both for her initial fall and for further straying from the path. As a result, such a character must be the target of two atonement spells or a similar effect to regain her lost class features. Upon doing so, she immediately loses this archetype and regains her original class (and archetype, if she had one).",
     "species_pool_raw": [
       "her companions"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"This replaces divine bond\""
   },
   "Ranger/Battle Scout": {
     "archetype": "Battle Scout",
@@ -2915,36 +2939,25 @@
       "hunter's bond (ex)"
     ],
     "class": "Ranger",
-    "confidence": "low",
+    "confidence": "high",
     "conflict": "forces and removes both detected -- read the full text",
-    "effect": "forces",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "low",
-        "effect": "forces",
-        "evidence": "At 4th level, when a battle scout gains the hunter's bond ability, he must choose to bond with his companions.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…the hunter's bond ability, he must choose to bond with his companions.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
-      },
-      {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "removes",
-        "evidence": "Battle scouts do not have animal companions.",
-        "why": "the creature is forbidden"
+        "evidence": "",
+        "why": "\"Battle scouts do not have animal companions\""
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 66 Armies need clean water, safe routes, and intelligence about their enemies. Though regular outdoorsmen might suffice in many cases, some large forces look to battle scouts to keep the body of their troops safe and prepared for the terrain and whatever dangers that terrain hides.",
     "species_pool_raw": [
       "to bond with his companions"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"Battle scouts do not have animal companions\""
   },
   "Ranger/Beast Master": {
     "archetype": "Beast Master",
@@ -2952,26 +2965,26 @@
       "animal companion (ex)"
     ],
     "class": "Ranger",
-    "confidence": "low",
-    "effect": "species_pool",
+    "confidence": "medium",
+    "effect": "forces",
     "effects": [
       {
-        "confidence": "low",
+        "confidence": "medium",
+        "effect": "forces",
+        "evidence": "",
+        "why": "companion pool widened to the full druid list"
+      },
+      {
+        "confidence": "medium",
         "effect": "species_pool",
-        "evidence": "A beast master forms a close bond with an animal companion.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "companion pool widened to the full druid list"
       },
       {
         "confidence": "medium",
         "effect": "progression",
-        "evidence": "This ability functions like the druid animal companion ability except that the ranger's effective druid level is equal to his ranger level - 3.",
-        "why": "changes level or size advancement"
-      },
-      {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": "panion ability does not give the ranger the ability to cast a single spell so that it affects all of his animal companions. This ability replaces hunter's bond.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "evidence": "",
+        "why": "companion pool widened to the full druid list"
       }
     ],
     "sentences": [
@@ -2981,13 +2994,14 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Player's Guide pg. 124 Some rangers, particularly those in primitive lands or who were raised by animals, have unusually strong bonds with animals. Unique among rangers, they can bond with multiple animals of any kind, creating a menagerie of wild yet loyal creatures, like a strange family. A beast master has the following class features.",
     "species_pool_raw": [
       "an animal companion",
       "a subset of all possible animal companion choices-he may choose freely among all animal companion choices, just as a dru"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "companion pool widened to the full druid list"
   },
   "Ranger/Cinderwalker": {
     "archetype": "Cinderwalker",
@@ -3044,19 +3058,13 @@
     "bond_features": [],
     "class": "Ranger",
     "confidence": "high",
-    "effect": "forces",
+    "effect": "removes",
     "effects": [
       {
         "confidence": "high",
-        "effect": "forces",
-        "evidence": "At 4th level, a dandy must choose his allies as his hunter's bond, not an animal companion.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "At 4th level, a dandy must choose his allies as his hunter's bond, not an animal companion.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "effect": "removes",
+        "evidence": "",
+        "why": "\"must choose his allies as his hunter's bond, not an animal companion\""
       }
     ],
     "sentences": [
@@ -3066,12 +3074,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Intrigue pg. 41 The antithesis of the gruff and wild woodsmen, a dandy takes effort to master the subtle etiquette of noble courts, the whispers of dark rumors, and the customs of the cultured world. Nonetheless, he is still a ranger at heart, and he hunts for rumors and gossip throughout the grand ballrooms of the wealthy and powerful just as most rangers hunt for enemies in the wilderness.",
     "species_pool_raw": [
       "his allies as his hunter's bond, not an animal companion"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must choose his allies as his hunter's bond, not an animal companion\""
   },
   "Ranger/Divine Tracker": {
     "archetype": "Divine Tracker",
@@ -3198,36 +3207,35 @@
       "hunter's bond (ex)"
     ],
     "class": "Ranger",
-    "confidence": "low",
+    "confidence": "high",
     "conflict": "forces and removes both detected -- read the full text",
     "effect": "forces",
     "effects": [
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "forces",
-        "evidence": "At 4th level, a falconer must select an animal companion when he gains hunter's bond.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+        "evidence": "",
+        "why": "\"must select an animal companion\"; \"must take the bird (or falcon)\""
       },
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "At 4th level, a falconer must select an animal companion when he gains hunter's bond.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
-      },
-      {
-        "confidence": "low",
-        "effect": "removes",
-        "evidence": "He does not gain a new companion at 4th level",
-        "why": "the creature is forbidden"
+        "evidence": "",
+        "why": "\"must select an animal companion\"; \"must take the bird (or falcon)\""
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Combat pg. 67 Rangers have always enjoyed a special bond with a specific animal, but the falconer takes this bond to a deeper level. Falconers begin with their companion earlier than other rangers, and have the ability to teach their companions special tricks.",
+    "species_pool": [
+      "bird",
+      "falcon"
+    ],
     "species_pool_raw": [
       "an animal companion when he gains hunter's bond"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select an animal companion\"; \"must take the bird (or falcon)\""
   },
   "Ranger/Flamewarden": {
     "archetype": "Flamewarden",
@@ -3358,26 +3366,26 @@
     "archetype": "Horse Lord",
     "bond_features": [],
     "class": "Ranger",
-    "confidence": "low",
-    "effect": "species_pool",
+    "confidence": "high",
+    "effect": "forces",
     "effects": [
       {
-        "confidence": "low",
+        "confidence": "high",
+        "effect": "forces",
+        "evidence": "",
+        "why": "mount-companion; effective druid level = ranger level - 3"
+      },
+      {
+        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "…level, the horse lord forms a bond with an animal he can use as a mount, which becomes his animal companion.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "mount-companion; effective druid level = ranger level - 3"
       },
       {
-        "confidence": "medium",
+        "confidence": "high",
         "effect": "progression",
-        "evidence": "This ability functions like the druid animal companion ability except that the ranger's effective druid level is equal to his ranger level - 3.",
-        "why": "changes level or size advancement"
-      },
-      {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": "qual to his ranger level - 3. The ranger gains a +2 bonus on Handle Animal and Ride checks with his animal companion mount. This ability replaces hunter's bond.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "evidence": "",
+        "why": "mount-companion; effective druid level = ranger level - 3"
       }
     ],
     "sentences": [
@@ -3387,12 +3395,21 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Player's Guide pg. 125 Rangers of the plains use horses or other riding beasts to hunt their lands, forging a near-mystical relationship with their mounts. Horse lords are unparalleled mounted combatants, the envy of even the most dedicated cavalier. Though called 'horse lords' as a generic term, these rangers are not restricted to horses for their animal companions-any creature the ranger can ride is included in these abilities. A horse lord has the following class features.",
+    "species_pool": [
+      "boar",
+      "camel",
+      "dog",
+      "horse",
+      "pony",
+      "wolf"
+    ],
     "species_pool_raw": [
       "an animal he can use as a mount, which becomes his animal companion"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "mount-companion; effective druid level = ranger level - 3"
   },
   "Ranger/Jungle Lord": {
     "archetype": "Jungle Lord",
@@ -3400,20 +3417,26 @@
       "hunter's bond (ex)"
     ],
     "class": "Ranger",
-    "confidence": "low",
-    "effect": "species_pool",
+    "confidence": "high",
+    "effect": "forces",
     "effects": [
       {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "A jungle lord forms a close bond with an animal companion.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "confidence": "high",
+        "effect": "forces",
+        "evidence": "",
+        "why": "explicit jungle companion list; level split across companions"
       },
       {
-        "confidence": "medium",
+        "confidence": "high",
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "explicit jungle companion list; level split across companions"
+      },
+      {
+        "confidence": "high",
         "effect": "progression",
-        "evidence": "This ability functions like the druid animal companion ability except that the jungle lord's effective druid level is equal to his ranger level -3.",
-        "why": "changes level or size advancement"
+        "evidence": "",
+        "why": "explicit jungle companion list; level split across companions"
       }
     ],
     "sentences": [
@@ -3423,12 +3446,29 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Pathfinder: Worldscape #4 pg. 25 Whether raised from birth under the jungle canopy in a native tribe or settlement, marooned as a child and reared by animals, or simply an ordinary person lost in the trackless tangle and forced to thrive in the wilderness or die, jungle lords are tempered by their harsh and unforgiving environments into something more than ordinary men and women. Their ordeals and experiences combine the physical prowess gained as a result of life hunting dangerous beasts with the wisdom gained from surviving countless natural dangers to earn them the respect of the jungle's denizens, man and animal alike.",
-    "species_pool_raw": [
-      "an animal companion"
+    "species_pool": [
+      "ape",
+      "bear",
+      "bird",
+      "boar",
+      "cat, big",
+      "dog",
+      "giraffe",
+      "hippopotamus",
+      "moa",
+      "monitor lizard",
+      "rhinoceros",
+      "snake, constrictor",
+      "snake, viper",
+      "wolf"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "species_pool_raw": [
+      "crocodile"
+    ],
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "explicit jungle companion list; level split across companions"
   },
   "Ranger/Planar Scout": {
     "archetype": "Planar Scout",
@@ -3524,27 +3564,15 @@
     "archetype": "Realm Wanderer",
     "bond_features": [],
     "class": "Ranger",
-    "confidence": "low",
+    "confidence": "high",
     "conflict": "forces and removes both detected -- read the full text",
     "effect": "forces",
     "effects": [
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "forces",
-        "evidence": "At 4th level, a realm wanderer must choose an animal companion for his hunter's bond.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…t 4th level, a realm wanderer must choose an animal companion for his hunter's bond.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
-      },
-      {
-        "confidence": "low",
-        "effect": "removes",
-        "evidence": "(He cannot, however, gain a new non-fiendish animal companion by completing the ceremony to replace an animal companion.) This alters hunter's bond.",
-        "why": "the creature is forbidden"
+        "evidence": "",
+        "why": "\"must choose an animal companion for his hunter's bond\""
       }
     ],
     "sentences": [
@@ -3554,12 +3582,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Distant Realms pg. 22 Some of the most free-roaming rangers are those who tread between locales so varied that they may as well be separate worlds altogether-and quite often these disparate places are literally Hell and the Material Plane. Like the Queen of Dis, whom many of them admire, these rangers take to heart the lessons they've learned from their vastly contrasting experiences and know that creatively embracing this wisdom is sometimes the difference between life and death.",
     "species_pool_raw": [
       "an animal companion for his hunter's bond"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must choose an animal companion for his hunter's bond\""
   },
   "Ranger/Sentinel": {
     "archetype": "Sentinel",
@@ -3590,20 +3619,14 @@
     "archetype": "Spirit Ranger",
     "bond_features": [],
     "class": "Ranger",
-    "confidence": "low",
-    "effect": "species_pool",
+    "confidence": "high",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…h level, instead of forming a bond with his hunting companions or an animal companion, the spirit ranger forms a bond with the spirits of na…",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
-      },
-      {
-        "confidence": "medium",
+        "confidence": "high",
         "effect": "removes",
-        "evidence": ", without having to prepare the spell. At 8th level, and every four levels thereafter, he can cast an additional spell in this way. This replaces hunter's bond.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "evidence": "",
+        "why": "bonds with the spirits of nature; replaces hunter's bond"
       }
     ],
     "sentences": [
@@ -3613,12 +3636,13 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Player's Guide pg. 129 Some rangers nurture a connection with the spirits that reside in all things. By communing with these spirits, the spirit ranger can gain glimpses of things to come. A spirit ranger has the following class features.",
     "species_pool_raw": [
       "his hunting companions or an animal companion, the spirit ranger forms a bond with the spirits of nature themselves"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "bonds with the spirits of nature; replaces hunter's bond"
   },
   "Ranger/Stormwalker": {
     "archetype": "Stormwalker",
@@ -3649,20 +3673,14 @@
     "archetype": "Sword-Devil",
     "bond_features": [],
     "class": "Ranger",
-    "confidence": "low",
-    "effect": "species_pool",
+    "confidence": "high",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…evel, the sword-devil forms a bond with her companions, inspiring them to greater zeal in combat by the example of her weaponcraft.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
-      },
-      {
-        "confidence": "medium",
+        "confidence": "high",
         "effect": "removes",
-        "evidence": " bonus does not stack with any death vow bonuses possessed by the sword-devil's allies; they use whichever bonus is higher. This ability replaces hunter's bond.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "evidence": "",
+        "why": "\"replaces hunter's bond\" with an ally buff"
       }
     ],
     "sentences": [
@@ -3672,12 +3690,13 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Pathfinder: Worldscape #1 pg. 27 Agile, vengeful, and deadly, a sword-devil fights with precision and grace, channeling the difficult lessons of a star-crossed life into unparalleled battle prowess. Favoring speed and evasive techniques over brute force, sword-devils choose precision over power and acrobatics over armor. Charismatic and carefree, a sword-devil makes fast friends and inspires her companions to greatness, even while vowing a swift death upon her enemies.",
     "species_pool_raw": [
       "her companions, inspiring them to greater zeal in combat by the example of her weaponcraft"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"replaces hunter's bond\" with an ally buff"
   },
   "Ranger/Toxic Herbalist": {
     "archetype": "Toxic Herbalist",
@@ -3709,19 +3728,13 @@
     "bond_features": [],
     "class": "Ranger",
     "confidence": "high",
-    "effect": "forces",
+    "effect": "removes",
     "effects": [
       {
         "confidence": "high",
-        "effect": "forces",
-        "evidence": "At 4th level, a transporter must choose his allies as his hunter's bond, not an animal companion.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "At 4th level, a transporter must choose his allies as his hunter's bond, not an animal companion.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "effect": "removes",
+        "evidence": "",
+        "why": "\"must choose his allies as his hunter's bond, not an animal companion\""
       }
     ],
     "sentences": [
@@ -3731,12 +3744,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Intrigue pg. 43 Transporters specialize in smuggling people as efficiently as possible through harsh and difficult environments. Individuals such as escaped political exiles, refugees fleeing danger, and various criminals all seek the transporter's services. While some transporters actively work to serve justice or a political cause, others are wily opportunists filling a need and profiting from the high price that desperate people are willing to pay for safe, discrete passage.",
     "species_pool_raw": [
       "his allies as his hunter's bond, not an animal companion"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must choose his allies as his hunter's bond, not an animal companion\""
   },
   "Ranger/Trophy Hunter": {
     "archetype": "Trophy Hunter",
@@ -3868,19 +3882,13 @@
     "bond_features": [],
     "class": "Ranger",
     "confidence": "high",
-    "effect": "forces",
+    "effect": "removes",
     "effects": [
       {
         "confidence": "high",
-        "effect": "forces",
-        "evidence": "At 4th level, a wilderness medic must choose his companions for his hunter's bond.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…4th level, a wilderness medic must choose his companions for his hunter's bond.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "effect": "removes",
+        "evidence": "",
+        "why": "\"must choose his companions for his hunter's bond\""
       }
     ],
     "sentences": [
@@ -3890,12 +3898,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Healer's Handbook pg. 5 Wilderness medics know a variety of ways they can supply and preserve a rebellion or similar movement without requiring any resources that might make them easier to track down.",
     "species_pool_raw": [
       "his companions for his hunter's bond"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must choose his companions for his hunter's bond\""
   },
   "Samurai/Brawling Blademaster": {
     "archetype": "Brawling Blademaster",
@@ -4028,33 +4037,22 @@
       "familiar tattoo (su)"
     ],
     "class": "Sorcerer",
-    "confidence": "low",
+    "confidence": "high",
     "conflict": "forces and removes both detected -- read the full text",
     "effect": "forces",
     "effects": [
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "forces",
-        "evidence": "A tattooed sorcerer gains a familiar as an arcane bond, as a wizard equal to her sorcerer level.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
-        "effect": "removes",
-        "evidence": "Her sorcerer levels stack with any wizard or witch levels she possesses when determining the powers of her familiar-this ability does not allow her to have both a familia",
-        "why": "the creature is forbidden"
-      },
-      {
-        "confidence": "low",
-        "effect": "progression",
-        "evidence": "Her sorcerer levels stack with any wizard or witch levels she possesses when determining the powers of her familiar-this ability does not allow her to have both",
-        "why": "changes level or size advancement"
+        "evidence": "",
+        "why": "\"gains a familiar as an arcane bond, as a wizard\""
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Inner Sea Magic pg. 40 The tattooed sorcerer has embraced the ancient traditions of Varisian spellcasting, and uses colorful and intricate tattoos to enhance her magical powers. A tattooed sorcerer has the following class features.",
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"gains a familiar as an arcane bond, as a wizard\""
   },
   "Summoner/Broodmaster": {
     "archetype": "Broodmaster",
@@ -4063,20 +4061,13 @@
     ],
     "class": "Summoner",
     "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "effect": "progression",
     "effects": [
       {
         "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "At 2nd level, instead of a single eidolon, a broodmaster summons two Small eidolons to his side, each less powerful than the single eidolon of a standard summon",
-        "why": "the bond yields a eidolon, not an animal companion"
-      },
-      {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…the eidolons' base statistics must be divided between the eidolons, including Hit Dice (minimum 1), skill points, number of feats, armor bon…",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "effect": "progression",
+        "evidence": "",
+        "why": "base statistics divided between multiple eidolons"
       }
     ],
     "sentences": [
@@ -4086,12 +4077,13 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Magic pg. 78 Most summoners bond with one eidolon for their entire lives, but the broodmaster forges a link with multiple smaller eidolons that make up his brood. Separately, a broodmaster's eidolons are no match for a summoner's single eidolon, but taken as a whole, an eidolon brood makes up in quantity what it lacks in individual power.",
     "species_pool_raw": [
       "divided between the eidolons, including Hit Dice (minimum 1), skill points, number of feats, armor bonus, Str/Dex bonus,"
     ],
-    "why": "the bond yields a eidolon, not an animal companion"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "base statistics divided between multiple eidolons"
   },
   "Summoner/Evolutionist": {
     "archetype": "Evolutionist",
@@ -4099,21 +4091,20 @@
       "mutate eidolon (su)"
     ],
     "class": "Summoner",
-    "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "confidence": "medium",
+    "effect": "none",
     "effects": [
       {
-        "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "At 6th level, an evolutionist can change his eidolon's evolutions as if he had gained a level.",
-        "why": "the bond yields a eidolon, not an animal companion"
+        "confidence": "medium",
+        "effect": "none",
+        "evidence": "",
+        "why": "mentions a bond feature without changing it"
       }
     ],
     "sentences": [],
     "signed_off": false,
     "source": "Ultimate Magic pg. 79 Changing an eidolon's evolutions is normally a slow process. As a summoner progresses in levels, his control over his eidolon's abilities increases. But an evolutionist possesses greater power over his eidolon's form, and is able to evolve his eidolon and its abilities to meet any challenge or face any threat as it comes up, seemingly on a whim.",
-    "why": "the bond yields a eidolon, not an animal companion"
+    "why": "mentions a bond feature without changing it"
   },
   "Summoner/First Worlder": {
     "archetype": "First Worlder",
@@ -4121,15 +4112,14 @@
       "eidolon"
     ],
     "class": "Summoner",
-    "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "confidence": "medium",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "Instead of an outsider, a first worlder's eidolon has the fey creature type and the extraplanar subtype.",
-        "why": "the bond yields a eidolon, not an animal companion"
+        "confidence": "medium",
+        "effect": "removes",
+        "evidence": "t DR/cold iron instead of one of the alignment-based types of damage reduction. This otherwise works like and replaces the eidolon ability of a normal summoner.",
+        "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
     "sentences": [
@@ -4141,21 +4131,20 @@
     ],
     "signed_off": false,
     "source": "Inner Sea Magic pg. 35 Most summoners have a close connection to creatures from the farthest reaches of the planes. A few have a primal connection to nature, and their power is tied to the First World. It is not unusual for these summoners to associate with druids, for like druids, first worlders have a powerful tie to the natural world. Some first worlders are driven half-mad by the strange energies and intelligences that seep into their minds and bodies, though, and these poor souls are prone to lash out at loggers, druids, or innocent passersby without considering whether or not they are threats. A first worlder's eidolon usually resembles a fey creature or a plant monster, though some are fantastic otherworldly animals with exaggerated features. A first worlder has the following class features.",
-    "why": "the bond yields a eidolon, not an animal companion"
+    "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Summoner/God Caller": {
     "archetype": "God Caller",
     "bond_features": [],
     "class": "Summoner",
-    "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "confidence": "medium",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "At 20th level, a god caller's eidolon can use overwhelming presence ( Pathfinder RPG Ultimate Magic 230 ) three times per day.",
-        "why": "the bond yields a eidolon, not an animal companion"
+        "confidence": "medium",
+        "effect": "removes",
+        "evidence": "nce ( Pathfinder RPG Ultimate Magic 230 ) three times per day. The save DC is equal to 19 + the eidolon's Charisma modifier. This ability replaces twin eidolon.",
+        "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
     "sentences": [
@@ -4167,7 +4156,7 @@
     ],
     "signed_off": false,
     "source": "Inner Sea Intrigue pg. 40 God callers follow a fractured tradition that originated in the now-lost nation of Sarkoris. They speak to an assortment of ancient divine powers to lead their communities and sometimes stir up reformations in faiths with ideals similar to their personal convictions. Any summoner (including the summoner from Pathfinder Unchained ) can select the god caller archetype.",
-    "why": "the bond yields a eidolon, not an animal companion"
+    "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Summoner/Leshy Caller": {
     "archetype": "Leshy Caller",
@@ -4175,15 +4164,14 @@
       "leshy eidolon"
     ],
     "class": "Summoner",
-    "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "confidence": "medium",
+    "effect": "none",
     "effects": [
       {
-        "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "When a leshy caller summons her eidolon, the eidolon's body is created from extraplanar plant material and imbued with the intelligence of a leshy spirit.",
-        "why": "the bond yields a eidolon, not an animal companion"
+        "confidence": "medium",
+        "effect": "none",
+        "evidence": "",
+        "why": "mentions a bond feature without changing it"
       }
     ],
     "sentences": [
@@ -4195,7 +4183,7 @@
     ],
     "signed_off": false,
     "source": "Ultimate Wilderness pg. 94 A leshy caller summons creatures from the First World and forges a bond with a leshy eidolon.",
-    "why": "the bond yields a eidolon, not an animal companion"
+    "why": "mentions a bond feature without changing it"
   },
   "Summoner/Master Summoner": {
     "archetype": "Master Summoner",
@@ -4203,15 +4191,14 @@
       "lesser eidolon"
     ],
     "class": "Summoner",
-    "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "confidence": "medium",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "A master summoner's class level is halved (minimum 1) for the purposes of determining his eidolon's abilities, Hit Dice, evolution pool, and so on.",
-        "why": "the bond yields a eidolon, not an animal companion"
+        "confidence": "medium",
+        "effect": "removes",
+        "evidence": "idolon's abilities, Hit Dice, evolution pool, and so on. The eidolon otherwise functions as normal. This ability replaces the summoner's normal eidolon ability.",
+        "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
     "sentences": [
@@ -4223,7 +4210,7 @@
     ],
     "signed_off": false,
     "source": "Ultimate Magic pg. 80 Most summoners forge a bond with a single, powerful eidolon, but some summoners seek to control a variety of creatures. The master summoner sacrifices the power of his eidolon in favor of summoning a plethora of otherworldly creatures to aid him.",
-    "why": "the bond yields a eidolon, not an animal companion"
+    "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Summoner/Morphic Savant": {
     "archetype": "Morphic Savant",
@@ -4232,20 +4219,19 @@
     ],
     "class": "Summoner",
     "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "effect": "species_pool",
     "effects": [
       {
         "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "A morphic savant's eidolon must be of a chaotic alignment (if using the summoner from Pathfinder Unchained , the eidolon must have the azata, demon, or protean ",
-        "why": "the bond yields a eidolon, not an animal companion"
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "eidolon must be chaotic; one fewer evolution point"
       },
       {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "A morphic savant's eidolon must be of a chaotic alignment (if using the summoner from Pathfinder Unchained , the eidolon must have the az…",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "confidence": "high",
+        "effect": "progression",
+        "evidence": "",
+        "why": "eidolon must be chaotic; one fewer evolution point"
       }
     ],
     "sentences": [
@@ -4255,12 +4241,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Monster Summoner's Handbook pg. 16 A morphic savant is an agent of change who draws power from the Abyss, Elysium, or the Maelstrom to fulfill whatever goals strike his fancy. Chaotic evil and chaotic neutral morphic savants often train with Blackfire Adepts in the hopes of learning greater powers of chaotic unmaking, and chaotic good morphic savants are most common as agents of the Bellflower Network.",
     "species_pool_raw": [
       "of a chaotic alignment (if using the summoner from Pathfinder Unchained , the eidolon must have the azata, demon, or pro"
     ],
-    "why": "the bond yields a eidolon, not an animal companion"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "eidolon must be chaotic; one fewer evolution point"
   },
   "Summoner/Shadow Caller": {
     "archetype": "Shadow Caller",
@@ -4268,15 +4255,14 @@
       "shadow eidolon"
     ],
     "class": "Summoner",
-    "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "confidence": "medium",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "A shadow caller's eidolon is at once a thing of shadow called from the deep of the Shadow Plane and his own shadow",
-        "why": "the bond yields a eidolon, not an animal companion"
+        "confidence": "medium",
+        "effect": "removes",
+        "evidence": "ce of light. This lack of a shadow replaces the magical symbol that identifies the summoner and his eidolon. This ability alters the summoner's eidolon ability.",
+        "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
     "sentences": [
@@ -4293,7 +4279,7 @@
     ],
     "signed_off": false,
     "source": "Advanced Race Guide pg. 110 While most summoners can call any manner of creature from across the planes to serve them in combat, supplementing the skills of their eidolon with a diverse range of creatures, others eschew this broad utility and instead concentrate upon calling forth entities from the Shadow Plane. A shadow caller has the following class features.",
-    "why": "the bond yields a eidolon, not an animal companion"
+    "why": "traded away, and nothing in the bond text grants a creature"
   },
   "Summoner/Shaitan Binder": {
     "archetype": "Shaitan Binder",
@@ -4301,27 +4287,14 @@
       "noble eidolon (sp)"
     ],
     "class": "Summoner",
-    "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "confidence": "medium",
+    "effect": "none",
     "effects": [
       {
-        "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "At 20th level, a shaitan binder's eidolon gains the ability to grant its summoner's wishes.",
-        "why": "the bond yields a eidolon, not an animal companion"
-      },
-      {
         "confidence": "medium",
-        "effect": "progression",
-        "evidence": "The eidolon's caster level is equal to its level.",
-        "why": "changes level or size advancement"
-      },
-      {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "The wish must be spoken aloud by the shaitan binder, beginning with the words \"I wish,\" and cannot duplicate a wish the…",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "effect": "none",
+        "evidence": "",
+        "why": "conditional evolutions on an already-guaranteed eidolon"
       }
     ],
     "sentences": [
@@ -4331,12 +4304,13 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Race Guide pg. 146 Shaitan binders call upon a reflection of their genie ancestors to serve as their eidolons. A shaitan binder has the following class features.",
     "species_pool_raw": [
       "spoken aloud by the shaitan binder, beginning with the words \"I wish,\" and cannot duplicate a wish the eidolon has grant"
     ],
-    "why": "the bond yields a eidolon, not an animal companion"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "conditional evolutions on an already-guaranteed eidolon"
   },
   "Summoner/Spirit Summoner": {
     "archetype": "Spirit Summoner",
@@ -4345,26 +4319,14 @@
     ],
     "class": "Summoner",
     "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "conflict": "forces and removes both detected -- read the full text",
+    "effect": "species_pool",
     "effects": [
       {
         "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "At 1st level, a spirit summoner begins play with a powerful outsider called an eidolon.",
-        "why": "the bond yields a eidolon, not an animal companion"
-      },
-      {
-        "confidence": "high",
-        "effect": "forces",
-        "evidence": "The eidolon's form and abilities must be appropriate to his chosen spirit, at the GM's discretion-for example, a summoner with the flame spirit cannot have an eidolon wit",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
         "effect": "species_pool",
-        "evidence": "…eidolon's form and abilities must be appropriate to his chosen spirit, at the GM's discretion-for example, a summoner with the flame spirit…",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "eidolon form must match the chosen spirit"
       }
     ],
     "sentences": [
@@ -4374,12 +4336,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Class Guide pg. 123 A spirit summoner is an arcane spellcaster whose eidolon is a manifestation of a shamanic spirit. The bond connecting the summoner and this spirit might be friendly, as a member of a tribe giving flesh to his protector spirit, or hostile, as an outlander or rival compelling service from an unwilling spirit. The summoner can draw upon the divine power of this spirit, but is not constrained by the spirit's morals or ethics.",
     "species_pool_raw": [
       "appropriate to his chosen spirit, at the GM's discretion-for example, a summoner with the flame spirit cannot have an ei"
     ],
-    "why": "the bond yields a eidolon, not an animal companion"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "eidolon form must match the chosen spirit"
   },
   "Summoner/Storm Caller": {
     "archetype": "Storm Caller",
@@ -4387,21 +4350,14 @@
       "stormy eidolon"
     ],
     "class": "Summoner",
-    "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "confidence": "medium",
+    "effect": "species_pool",
     "effects": [
       {
-        "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "A storm caller must select the resistance (electricity) or immunity (electricity) evolution for his eidolon.",
-        "why": "the bond yields a eidolon, not an animal companion"
-      },
-      {
-        "confidence": "low",
+        "confidence": "medium",
         "effect": "species_pool",
-        "evidence": "A storm caller must select the resistance (electricity) or immunity (electricity) evolution for his eidolon.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"must select the resistance (electricity) or immunity (electricity) evolution\""
       }
     ],
     "sentences": [
@@ -4411,12 +4367,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Elemental Master's Handbook pg. 16 Many summoners beckon monsters from the Elemental Planes, but few are as specialized as storm callers, who channel the elemental energies of the Plane of Air. Storm callers are most commonly encountered in areas where thunderstorms appear frequently, including supernaturally stormy places like the Sodden Lands.",
     "species_pool_raw": [
       "the resistance (electricity) or immunity (electricity) evolution for his eidolon"
     ],
-    "why": "the bond yields a eidolon, not an animal companion"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select the resistance (electricity) or immunity (electricity) evolution\""
   },
   "Summoner/Story Summoner": {
     "archetype": "Story Summoner",
@@ -4424,21 +4381,20 @@
       "storykin eidolon"
     ],
     "class": "Summoner",
-    "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "confidence": "medium",
+    "effect": "none",
     "effects": [
       {
-        "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "Unlike most eidolons, a story summoner's eidolon cannot touch or attack creatures warded by protection from evil and similar effects that prevent contact with s",
-        "why": "the bond yields a eidolon, not an animal companion"
+        "confidence": "medium",
+        "effect": "none",
+        "evidence": "",
+        "why": "mentions a bond feature without changing it"
       }
     ],
     "sentences": [],
     "signed_off": false,
     "source": "The Harrow Handbook pg. 25 Story summoners rely on the harrow to weave the paths they walk, turning their tales into reality. They channel magic through their harrow decks to influence the strange extraplanar beings they summon, bringing familiar and fateful characters to life. Some focus on the more whimsical figures of the harrow, while others bring its darkest icons into the real world.",
-    "why": "the bond yields a eidolon, not an animal companion"
+    "why": "mentions a bond feature without changing it"
   },
   "Summoner/Synthesist": {
     "archetype": "Synthesist",
@@ -4447,26 +4403,13 @@
     ],
     "class": "Summoner",
     "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "effect": "species_pool",
     "effects": [
       {
         "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "The synthesist wears the eidolon like translucent, living armor.",
-        "why": "the bond yields a eidolon, not an animal companion"
-      },
-      {
-        "confidence": "high",
-        "effect": "forces",
-        "evidence": "The synthesist gains the eidolon's hit points as temporary hit points.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
         "effect": "species_pool",
-        "evidence": "The synthesist is still limited to the eidolon's maximum number of natural attacks.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"eidolon must be at least the same size as the synthesist\""
       }
     ],
     "sentences": [
@@ -4476,13 +4419,14 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Magic pg. 81 Rather than summon an eidolon to serve by his side, the synthesist fuses his eidolon's essence to his own. Instead of two creatures, the synthesist is a fusion of the summoner and eidolon into a single being.",
     "species_pool_raw": [
       "the eidolon's maximum number of natural attacks",
       "at least the same size as the synthesist"
     ],
-    "why": "the bond yields a eidolon, not an animal companion"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"eidolon must be at least the same size as the synthesist\""
   },
   "Summoner/Twinned Summoner": {
     "archetype": "Twinned Summoner",
@@ -4491,29 +4435,29 @@
     ],
     "class": "Summoner",
     "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "effect": "species_pool",
     "effects": [
       {
         "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "The twinned summoner's eidolon is restricted to the biped base form.",
-        "why": "the bond yields a eidolon, not an animal companion"
+        "effect": "species_pool",
+        "evidence": "",
+        "why": "\"restricted to the biped base form\"; must be Small"
       },
       {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…he twinned summoner's eidolon must be Small.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "confidence": "high",
+        "effect": "progression",
+        "evidence": "",
+        "why": "\"restricted to the biped base form\"; must be Small"
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Legacy of the First World pg. 18 Reflecting the connected nature of Imbrex, a twinned summoner and his eidolon appear identical save for any obvious differences, such as evolutions or equipment.",
     "species_pool_raw": [
       "Small"
     ],
-    "why": "the bond yields a eidolon, not an animal companion"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"restricted to the biped base form\"; must be Small"
   },
   "Summoner/Unwavering Conduit": {
     "archetype": "Unwavering Conduit",
@@ -4522,20 +4466,13 @@
     ],
     "class": "Summoner",
     "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "effect": "species_pool",
     "effects": [
       {
         "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "An unwavering conduit's eidolon must be of a lawful alignment (if using the summoner from Pathfinder Unchained , the eidolon must be of the archon, devil, or in",
-        "why": "the bond yields a eidolon, not an animal companion"
-      },
-      {
-        "confidence": "low",
         "effect": "species_pool",
-        "evidence": "…unwavering conduit's eidolon must be of a lawful alignment (if using the summoner from Pathfinder Unchained , the eidolon must be of the ar…",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"eidolon must be of a lawful alignment\""
       }
     ],
     "sentences": [
@@ -4545,13 +4482,14 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Monster Summoner's Handbook pg. 17 Unwavering conduits work to keep everything ordered and regimented, drawing on power from the Eternal City of Axis, Heaven, or Hell to enforce whichever laws the summoner finds paramount. Lawful good unwavering conduits often work with Riftwardens to protect the integrity of the Great Beyond, while lawful evil unwavering conduits are commonly diabolists in Cheliax.",
     "species_pool_raw": [
       "of a lawful alignment (if using the summoner from Pathfinder Unchained , the eidolon must be of the archon, devil, or in",
       "spent on skills in which the unwavering conduit also has ranks"
     ],
-    "why": "the bond yields a eidolon, not an animal companion"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"eidolon must be of a lawful alignment\""
   },
   "Summoner/Wild Caller (ARG)": {
     "archetype": "Wild Caller (ARG)",
@@ -4560,15 +4498,8 @@
     ],
     "class": "Summoner",
     "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "effect": "removes",
     "effects": [
-      {
-        "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "The eidolon of a wild caller tends to take more natural and more savage forms than other summoners' eidolons.",
-        "why": "the bond yields a eidolon, not an animal companion"
-      },
       {
         "confidence": "high",
         "effect": "removes",
@@ -4585,7 +4516,7 @@
     ],
     "signed_off": false,
     "source": "Advanced Race Guide pg. 44 Often a Half-Elf's ties to nature and elven heritage are so strong that they can dramatically affect the nature of his summonings. The wild caller calls eidolons that take more natural and savage forms and summons from nature rather than the Great Beyond. A wild caller has the following class features.",
-    "why": "the bond yields a eidolon, not an animal companion"
+    "why": "the creature is forbidden"
   },
   "Summoner/Wild Caller (HotW)": {
     "archetype": "Wild Caller (HotW)",
@@ -4594,14 +4525,14 @@
     ],
     "class": "Summoner",
     "confidence": "high",
-    "creature_type": "eidolon",
+    "creature_type": "plant",
     "effect": "creature_type",
     "effects": [
       {
         "confidence": "high",
         "effect": "creature_type",
-        "evidence": "When a wild caller summons his eidolon, the eidolon's body is created from extraplanar plant material and imbued with the intelligence of a being from the First",
-        "why": "the bond yields a eidolon, not an animal companion"
+        "evidence": "Type : The eidolon has the plant creature type and extraplanar subtype.",
+        "why": "the bond yields a plant, not an animal companion"
       }
     ],
     "sentences": [
@@ -4613,20 +4544,20 @@
     ],
     "signed_off": false,
     "source": "Heroes of the Wild pg. 25 A wild caller summons creatures from the First World and forges a bond with an eidolon with a plant body.",
-    "why": "the bond yields a eidolon, not an animal companion"
+    "why": "the bond yields a plant, not an animal companion"
   },
   "Witch/Alley Witch": {
     "archetype": "Alley Witch",
     "bond_features": [],
     "class": "Witch",
-    "confidence": "medium",
+    "confidence": "low",
     "effect": "none",
     "effects": [
       {
-        "confidence": "medium",
+        "confidence": "low",
         "effect": "none",
         "evidence": "",
-        "why": "mentions a bond feature without changing it"
+        "why": "tagged \"alters witch's familiar\" but the effect never touches it"
       }
     ],
     "sentences": [
@@ -4636,9 +4567,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Heroes of the Streets pg. 20 Some witches find their spark of magic in the long, dark shadows and forgotten places within the city.",
-    "why": "mentions a bond feature without changing it"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "tagged \"alters witch's familiar\" but the effect never touches it"
   },
   "Witch/Ashiftah": {
     "archetype": "Ashiftah",
@@ -4672,20 +4604,21 @@
       "familiar form (sp)"
     ],
     "class": "Witch",
-    "confidence": "medium",
-    "effect": "none",
+    "confidence": "high",
+    "effect": "progression",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "none",
+        "confidence": "high",
+        "effect": "progression",
         "evidence": "",
-        "why": "mentions a bond feature without changing it"
+        "why": "\"treats her familiar as if she were one level higher\""
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Ultimate Magic pg. 83 While all witches are intimately tied to their familiars, a beast-bonded witch's craft focuses specifically on her familiar bond and developing the relationship with her patron through her familiar.",
-    "why": "mentions a bond feature without changing it"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"treats her familiar as if she were one level higher\""
   },
   "Witch/Bonded Witch": {
     "archetype": "Bonded Witch",
@@ -4768,21 +4701,15 @@
       "coral familiar (ex)"
     ],
     "class": "Witch",
-    "confidence": "low",
+    "confidence": "medium",
     "conflict": "forces and removes both detected -- read the full text",
-    "effect": "removes",
+    "effect": "none",
     "effects": [
       {
-        "confidence": "low",
-        "effect": "removes",
-        "evidence": "A coral witch can never gain an improved familiar.",
-        "why": "the creature is forbidden"
-      },
-      {
-        "confidence": "low",
-        "effect": "forces",
-        "evidence": "A coral witch can never gain an improved familiar.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+        "confidence": "medium",
+        "effect": "none",
+        "evidence": "",
+        "why": "familiar chosen as normal; only its type label changes"
       }
     ],
     "sentences": [
@@ -4792,9 +4719,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Blood of the Sea pg. 22 Coral witches inhabit shallow coasts and reefs where great masses of coral grow. They use their magic to fashion familiars from living coral and emulate the unyielding tenacity of these durable marine organisms. Many coral witches actively patrol and protect their home reefs from predators and help to rebuild the reefs after natural disasters. Although most coral witches are aquatic creatures such as gillmen and locathahs, surface creatures with a deep connection to the sea sometimes become coral witches as well.",
-    "why": "the creature is forbidden"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "familiar chosen as normal; only its type label changes"
   },
   "Witch/Dimensional Occultist": {
     "archetype": "Dimensional Occultist",
@@ -4802,20 +4730,21 @@
       "commune with familiar (sp)"
     ],
     "class": "Witch",
-    "confidence": "medium",
+    "confidence": "high",
     "effect": "none",
     "effects": [
       {
-        "confidence": "medium",
+        "confidence": "high",
         "effect": "none",
         "evidence": "",
-        "why": "mentions a bond feature without changing it"
+        "why": "affects the patron, not the familiar"
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Pathfinder Society Field Guide pg. 28 While dimensional occultist witches are not all associated with the Pathfinders, enough of them are to warrant mention here. A dimensional occultist sacrifices some of her mastery over hexes in return for increased planar lore- she spends much of her time researching and communing with otherplanar spirits, often through her familiar or via the study of ancient texts, and has an increased mastery over various conjurations and other extraplanar effects. She can even travel between dimensions as she gains power. A dimensional occultist has the following class features.",
-    "why": "mentions a bond feature without changing it"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "affects the patron, not the familiar"
   },
   "Witch/Gingerbread Witch": {
     "archetype": "Gingerbread Witch",
@@ -4955,14 +4884,14 @@
     "archetype": "Nexian Spellspy",
     "bond_features": [],
     "class": "Witch",
-    "confidence": "medium",
+    "confidence": "high",
     "effect": "none",
     "effects": [
       {
-        "confidence": "medium",
+        "confidence": "high",
         "effect": "none",
         "evidence": "",
-        "why": "mentions a bond feature without changing it"
+        "why": "changes how the familiar is used, not what it is"
       }
     ],
     "sentences": [
@@ -4972,9 +4901,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Inner Sea Intrigue pg. 43 Among that nation's highly competitive arcane communities, Nexian spellspies are witches who use their familiars and divining talents to spy on their rivals and protect themselves from similar intrusions.",
-    "why": "mentions a bond feature without changing it"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "changes how the familiar is used, not what it is"
   },
   "Witch/Pact Witch": {
     "archetype": "Pact Witch",
@@ -4984,13 +4914,14 @@
     ],
     "class": "Witch",
     "confidence": "medium",
-    "effect": "none",
+    "creature_type": "outsider",
+    "effect": "creature_type",
     "effects": [
       {
         "confidence": "medium",
-        "effect": "none",
+        "effect": "creature_type",
         "evidence": "",
-        "why": "mentions a bond feature without changing it"
+        "why": "\"familiar turns into an outsider native to his chosen plane\""
       }
     ],
     "sentences": [
@@ -5000,9 +4931,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Planar Adventures pg. 16 Though all witches forge bonds with mysterious powers known as patrons, a pact witch takes this bond to an extreme by forging an inexorable pact with the Outer Planes.",
-    "why": "mentions a bond feature without changing it"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"familiar turns into an outsider native to his chosen plane\""
   },
   "Witch/Putrefactor": {
     "archetype": "Putrefactor",
@@ -5010,14 +4942,14 @@
       "disgorge familiar (ex)"
     ],
     "class": "Witch",
-    "confidence": "low",
+    "confidence": "high",
     "effect": "species_pool",
     "effects": [
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "…ill selects a familiar, which must be a house centipede, rat, scarlet spider, or toad",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"must be a house centipede, rat, scarlet spider, or toad\""
       }
     ],
     "sentences": [
@@ -5027,12 +4959,14 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Blood of the Coven pg. 16 Some witches find their patrons while in the throes of despair and grief, when all they desire is to see the veneer of civilization peel back to reveal the filth and rot that underlies all things. The arcane power they inherit is bleak and tainted, eating them from the inside out and transforming them into living avatars of entropy.",
     "species_pool_raw": [
-      "a house centipede, rat, scarlet spider, or toad"
+      "rat",
+      "toad"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must be a house centipede, rat, scarlet spider, or toad\""
   },
   "Witch/Scarred Doctor": {
     "archetype": "Scarred Doctor",
@@ -5065,20 +4999,14 @@
       "poisonous familiar (ex)"
     ],
     "class": "Witch",
-    "confidence": "low",
-    "effect": "species_pool",
+    "confidence": "high",
+    "effect": "none",
     "effects": [
       {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…er replaces her familiar, she must choose how this ability applies to her new familiar as soon as she receives it.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
-      },
-      {
-        "confidence": "medium",
-        "effect": "removes",
-        "evidence": "how this ability applies to her new familiar as soon as she receives it. This replaces the hex gained at 1st level and the familiar's alertness special ability.",
-        "why": "traded away, and nothing in the bond text grants a creature"
+        "confidence": "high",
+        "effect": "none",
+        "evidence": "",
+        "why": "adds poison to the existing familiar's attack"
       }
     ],
     "sentences": [
@@ -5088,12 +5016,13 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Potions and Poisons pg. 10 Witches are no strangers to poisons, using them alongside their various brews, curses, spells, and other tools of the trade. A number of witches are masters of poison, receiving toxic gifts that allow them and their familiars to use poison in unparalleled manners.",
     "species_pool_raw": [
       "how this ability applies to her new familiar as soon as she receives it"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "adds poison to the existing familiar's attack"
   },
   "Witch/Winter Witch": {
     "archetype": "Winter Witch",
@@ -5102,48 +5031,46 @@
     ],
     "class": "Witch",
     "confidence": "high",
-    "effect": "forces",
+    "effect": "species_pool",
     "effects": [
       {
         "confidence": "high",
-        "effect": "forces",
-        "evidence": "Winter witches must choose a familiar that is native to the frozen north, even if they themselves operate in other regions.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
         "effect": "species_pool",
-        "evidence": "Winter witches must choose a familiar that is native to the frozen north, even if they themselves operate in other regions.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"limits winter witch familiar choices to\""
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Reign of Winter Player's Guide pg. 11 , Inner Sea Magic pg. 43 The descendents of Baba Yaga rule the frozen realm of Irrisen, and possess a unique power stemming from their otherworldly origin and their ties to cold magic. This power is partly magical, partly political, and partly cultural. Known as winter witches, these scions of Baba Yaga have not bothered to hide their secrets from outsiders, for they understand that those who see winter witches not native to Irrisen working their frozen magic will simply assume the witches are agents of Irrisen. By opening up their traditions to those who have no direct blood connection to Baba Yaga or the ruling families of Irrisen, they spread the notoriety and infamy of their wintry magic far beyond what they could accomplish on their own. While winter witches are most commonly encountered in Irrisen, they could be encountered in any part of the Inner Sea region, where they work to increase Irrisen's notoriety with each frozen spell and manipulative hex they cast. A winter witch has the following class features.",
-    "species_pool_raw": [
-      "a familiar that is native to the frozen north, even if they themselves operate in other regions"
+    "species_pool": [
+      "cat, small"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "species_pool_raw": [
+      "bat",
+      "fox",
+      "hawk",
+      "owl",
+      "rat",
+      "raven",
+      "weasel"
+    ],
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"limits winter witch familiar choices to\""
   },
   "Witch/Wyrm Witch": {
     "archetype": "Wyrm Witch",
     "bond_features": [],
     "class": "Witch",
-    "confidence": "low",
+    "confidence": "high",
     "conflict": "forces and removes both detected -- read the full text",
     "effect": "removes",
     "effects": [
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "removes",
-        "evidence": "Unlike traditional witches, a wyrmwitch does not have a familiar.",
-        "why": "the creature is forbidden"
-      },
-      {
-        "confidence": "low",
-        "effect": "forces",
-        "evidence": "Unlike traditional witches, a wyrmwitch does not have a familiar.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+        "evidence": "",
+        "why": "\"does not have a familiar. Instead ... a bonded hoard\""
       }
     ],
     "sentences": [
@@ -5153,9 +5080,10 @@
         "verb": "replaces"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Legacy of Dragons pg. 15 Though a dragon derives no power from accumulating precious metals and gems, its desire to acquire and maintain vast piles of valuables is an important part of its personality. Some witch covens, particularly those in rich mercantile nations like Druma or Katapesh, have learned to use treasure to access other draconic powers.",
-    "why": "the creature is forbidden"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"does not have a familiar. Instead ... a bonded hoard\""
   },
   "Wizard/Arcane Bomber": {
     "archetype": "Arcane Bomber",
@@ -5188,20 +5116,21 @@
       "arcane bond (ex)"
     ],
     "class": "Wizard",
-    "confidence": "medium",
-    "effect": "none",
+    "confidence": "high",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "none",
+        "confidence": "high",
+        "effect": "removes",
         "evidence": "",
-        "why": "the bond text restricts only the domain side"
+        "why": "\"must select an item as her arcane bond\""
       }
     ],
     "sentences": [],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Cohorts and Companions pg. 17 Many wizards form an arcane bond with an item, but for some this bond becomes a powerful mystic union.",
-    "why": "the bond text restricts only the domain side"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select an item as her arcane bond\""
   },
   "Wizard/Cheliax  Egorian Academy Infernal Binder": {
     "archetype": "Cheliax  Egorian Academy Infernal Binder",
@@ -5256,26 +5185,20 @@
     ],
     "class": "Wizard",
     "confidence": "high",
-    "creature_type": "eidolon",
-    "effect": "creature_type",
+    "creature_type": "construct",
+    "effect": "forces",
     "effects": [
       {
         "confidence": "high",
-        "effect": "creature_type",
-        "evidence": "A clocksmith can grant his familiar 1 evolution point worth of eidolon evolutions for every 5 wizard levels he has, though he can't select any evolutions that r",
-        "why": "the bond yields a eidolon, not an animal companion"
-      },
-      {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "A clocksmith forms a bond with one of his clockwork creations and begins play with a constructed familiar.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "effect": "forces",
+        "evidence": "",
+        "why": "\"must select this familiar\"; clockwork subtype construct"
       },
       {
         "confidence": "high",
-        "effect": "forces",
-        "evidence": "He must select this familiar as his arcane bond.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+        "effect": "creature_type",
+        "evidence": "",
+        "why": "\"must select this familiar\"; clockwork subtype construct"
       }
     ],
     "sentences": [
@@ -5285,13 +5208,14 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Construct Handbook pg. 10 Clocksmiths are oddities among wizard communities, pursuing the study and creation of clockwork constructs to near obsession. These wizards favor mechanical experiments over other arcane pursuits.",
     "species_pool_raw": [
       "one of his clockwork creations and begins play with a constructed familiar",
       "this familiar as his arcane bond"
     ],
-    "why": "the bond yields a eidolon, not an animal companion"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select this familiar\"; clockwork subtype construct"
   },
   "Wizard/Cruoromancer": {
     "archetype": "Cruoromancer",
@@ -5324,14 +5248,14 @@
       "arcane bond"
     ],
     "class": "Wizard",
-    "confidence": "medium",
-    "effect": "none",
+    "confidence": "high",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "none",
+        "confidence": "high",
+        "effect": "removes",
         "evidence": "",
-        "why": "the bond text restricts only the domain side"
+        "why": "\"must choose to bond with an object\""
       }
     ],
     "sentences": [
@@ -5341,9 +5265,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Horror Adventures pg. 74 Elder Mythos scholars risk their sanity to seek knowledge of alien and awful entities from beyond the stars.",
-    "why": "the bond text restricts only the domain side"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must choose to bond with an object\""
   },
   "Wizard/Exploiter Wizard": {
     "archetype": "Exploiter Wizard",
@@ -5383,14 +5308,8 @@
       {
         "confidence": "high",
         "effect": "forces",
-        "evidence": "At 1st level, a familiar adept must select a familiar for his arcane bond.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…t 1st level, a familiar adept must select a familiar for his arcane bond.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"must select a familiar for his arcane bond\""
       }
     ],
     "sentences": [
@@ -5400,12 +5319,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Familiar Folio pg. 8 Many wizards employ familiars to assist them, but only a few have unlocked the true power of their school of magic through the familiar itself.",
     "species_pool_raw": [
       "a familiar for his arcane bond"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select a familiar for his arcane bond\""
   },
   "Wizard/First World Caller": {
     "archetype": "First World Caller",
@@ -5419,14 +5339,8 @@
       {
         "confidence": "high",
         "effect": "forces",
-        "evidence": "A First World caller must select a familiar as his arcane bond.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "A First World caller must select a familiar as his arcane bond.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"must select a familiar as his arcane bond\""
       }
     ],
     "sentences": [
@@ -5436,12 +5350,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Heroes from the Fringe pg. 17 Some wizards, typically First World gnomes, have mystical ties with the First World, the primordial home of the fey. This bond allows them to more easily conjure creatures and effects from the First World, giving them the nickname of First World callers.",
     "species_pool_raw": [
       "a familiar as his arcane bond"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select a familiar as his arcane bond\""
   },
   "Wizard/Instructor": {
     "archetype": "Instructor",
@@ -5480,14 +5395,14 @@
       {
         "confidence": "high",
         "effect": "forces",
-        "evidence": "A pact wizard must select a familiar for his arcane bond.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+        "evidence": "",
+        "why": "\"must select a familiar\"; outsider improved familiar of the chosen subtype"
       },
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "A pact wizard must select a familiar for his arcane bond.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"must select a familiar\"; outsider improved familiar of the chosen subtype"
       }
     ],
     "sentences": [
@@ -5497,12 +5412,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Familiar Folio pg. 8 Some wizards make bargains with beings from other realms in order to gain arcane power. These pact wizards have unparalleled access to extraplanar allies, but these bonds never come without strings attached.",
     "species_pool_raw": [
       "a familiar for his arcane bond"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select a familiar\"; outsider improved familiar of the chosen subtype"
   },
   "Wizard/Poleiheira Adherent": {
     "archetype": "Poleiheira Adherent",
@@ -5558,14 +5474,14 @@
     "archetype": "Runesage",
     "bond_features": [],
     "class": "Wizard",
-    "confidence": "medium",
-    "effect": "none",
+    "confidence": "high",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "none",
+        "confidence": "high",
+        "effect": "removes",
         "evidence": "",
-        "why": "the bond text restricts only the domain side"
+        "why": "runic focus automatically functions as the bonded object"
       }
     ],
     "sentences": [
@@ -5575,9 +5491,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Adventurer's Guide pg. 58 Runesages draw upon the mystic energies of ancient Thassilon. While they sometimes experiment with the same heinous techniques exploited by the runelords, runesages temper their explorations into classic Thassilonian mysteries with moderation and empathy, maintaining balance by using small gemstones as the foci for their spellcasting. Runesages are experts at identifying spell effects associated with Thassilonian magic. As most of Thassilon's mysteries remain buried, runesages remain ever curious and continue to seek out new locations that hide secrets caches of Thassilonian magic.",
-    "why": "the bond text restricts only the domain side"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "runic focus automatically functions as the bonded object"
   },
   "Wizard/Scrollmaster": {
     "archetype": "Scrollmaster",
@@ -5741,14 +5658,8 @@
       {
         "confidence": "high",
         "effect": "forces",
-        "evidence": "A spirit binder must select a familiar for his arcane bond.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
-      },
-      {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "A spirit binder must select a familiar for his arcane bond.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"must select a familiar for his arcane bond\""
       }
     ],
     "sentences": [
@@ -5758,12 +5669,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Familiar Folio pg. 9 While most wizards learn their arts through gradual study, spirit binders have made a sudden arcane breakthrough due to the traumatic experience of losing a loved one.",
     "species_pool_raw": [
       "a familiar for his arcane bond"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must select a familiar for his arcane bond\""
   },
   "Wizard/Spirit Whisperer": {
     "archetype": "Spirit Whisperer",
@@ -5771,14 +5683,14 @@
       "arcane bond (ex)"
     ],
     "class": "Wizard",
-    "confidence": "low",
-    "effect": "species_pool",
+    "confidence": "high",
+    "effect": "forces",
     "effects": [
       {
-        "confidence": "low",
-        "effect": "species_pool",
-        "evidence": "…er chooses an arcane bond, he must choose the familiar arcane bond, and the familiar gains the spirit animal ability of his selected spirit…",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "confidence": "high",
+        "effect": "forces",
+        "evidence": "",
+        "why": "\"must choose the familiar arcane bond\""
       }
     ],
     "sentences": [
@@ -5788,12 +5700,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Advanced Class Guide pg. 133 Spirit whisperers are a breed apart among wizards, and are often mistaken for witches. While spirit whisperers do gain and store their spells by communing with familiars, the spirits they gain guidance from are somewhat closer to the world and more direct than the powers with which witches typically traffic. These wizards treat such spirits as mentors and friends, conversing with them rather than appeasing them in the effort to gain and use arcane knowledge.",
     "species_pool_raw": [
       "the familiar arcane bond, and the familiar gains the spirit animal ability of his selected spirit (see spirit link, belo"
     ],
-    "why": "restricts the species, but none of the names resolve to animal_choices.json"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must choose the familiar arcane bond\""
   },
   "Wizard/Sword Binder": {
     "archetype": "Sword Binder",
@@ -5801,14 +5714,14 @@
       "arcane bond"
     ],
     "class": "Wizard",
-    "confidence": "medium",
-    "effect": "none",
+    "confidence": "high",
+    "effect": "removes",
     "effects": [
       {
-        "confidence": "medium",
-        "effect": "none",
+        "confidence": "high",
+        "effect": "removes",
         "evidence": "",
-        "why": "the bond text restricts only the domain side"
+        "why": "\"must choose a sword as his bonded item\""
       }
     ],
     "sentences": [
@@ -5818,29 +5731,24 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Arcane Anthology pg. 11 Sword binders follow a tradition of martial wizards who often worked with the Church of Aroden and the crowns of Taldor and then Cheliax. Once common in Absalom, Cheliax, and Taldor, where they were frequently battlefield commanders, historians, and expedition leaders, they have become much rarer over the past century.",
-    "why": "the bond text restricts only the domain side"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must choose a sword as his bonded item\""
   },
   "Wizard/Undead Master": {
     "archetype": "Undead Master",
     "bond_features": [],
     "class": "Wizard",
-    "confidence": "high",
+    "confidence": "medium",
     "creature_type": "undead",
     "effect": "creature_type",
     "effects": [
       {
-        "confidence": "high",
+        "confidence": "medium",
         "effect": "creature_type",
-        "evidence": "Alternatively, he can animate a corpse companion, as per the undead lord cleric archetype ( Pathfinder RPG Ultimate Magic 32 ).",
-        "why": "the bond yields a undead, not an animal companion"
-      },
-      {
-        "confidence": "high",
-        "effect": "forces",
-        "evidence": "He can't gain a familiar.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+        "evidence": "",
+        "why": "undead servant in place of the familiar"
       }
     ],
     "sentences": [
@@ -5850,9 +5758,10 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Horror Adventures pg. 75 Undead masters have great power over undeath.",
-    "why": "the bond yields a undead, not an animal companion"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "undead servant in place of the familiar"
   },
   "Wizard/Wind Listener": {
     "archetype": "Wind Listener",
@@ -5889,14 +5798,14 @@
       {
         "confidence": "high",
         "effect": "forces",
-        "evidence": "A worldseeker must choose a familiar for her arcane bond.",
-        "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+        "evidence": "",
+        "why": "\"must choose a familiar\"; alignment-matched outsider"
       },
       {
-        "confidence": "low",
+        "confidence": "high",
         "effect": "species_pool",
-        "evidence": "A worldseeker must choose a familiar for her arcane bond.",
-        "why": "restricts the species, but none of the names resolve to animal_choices.json"
+        "evidence": "",
+        "why": "\"must choose a familiar\"; alignment-matched outsider"
       }
     ],
     "sentences": [
@@ -5906,12 +5815,13 @@
         "verb": "alters"
       }
     ],
-    "signed_off": false,
+    "signed_off": true,
     "source": "Planar Adventures pg. 21 Worldseekers are wizards who travel to all corners of the Great Beyond. While neophytes must content themselves with study and practice, the most powerful worldseekers are movers and shakers throughout the Great Beyond, power players of whom even demigods take note. Worldseekers are rare sights on Golarion, but among those few, more are trained in Kyonin and Nex than any other nation; those in Kyonin explore the potential of using elf gates to travel beyond this realm, while those in Nex emulate some of the dimensional exploits of Nex's legendary founder. Most worldseekers prefer not to specialize in a school of magic, for having a diverse array of available spells is a boon when exploring the countless wonders of the Great Beyond. Those who do specialize usually do so as conjurers. Conjuration is a poor choice of oppositional school for a worldseeker.",
     "species_pool_raw": [
       "a familiar for her arcane bond",
       "an outsider familiar that matches her alignment exactly"
     ],
-    "why": "the alternative is forbidden, or the creature is mandatory -- the flip is suppressed"
+    "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
+    "why": "\"must choose a familiar\"; alignment-matched outsider"
   }
 }
