@@ -346,6 +346,34 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   the matrix. The payload now exports `skill_rank_budget` and `normal_feat_amount` as the sweep's
   assertion handles.
 
+### Changed
+- **The archetype classifier reads clause by clause instead of blob by blob, and it now reproduces
+  every human verdict.** The first pass concatenated an archetype's whole prose and matched generic
+  regexes over it; measured against the first 15 signed sign-offs it scored **6/15**. The blob was
+  the bug: a druid's nature bond has **two sides**, and once the text is concatenated a sentence
+  about domains is indistinguishable from one about the companion. It now splits the *bond feature's
+  own* text into clauses and binds each prohibition to its own object — **17/17**, pinned by the new
+  `Backend/scripts/test_companion_archetype_classifier.py`.
+  - **Five rules the sign-off exposed**, none of which existed before: removal by prohibition
+    ("cannot select an animal companion" — no "replaces" sentence to key on, so Nithveil Adept read
+    as harmless); domain-side-only text (Cave Druid's bond text is *only* a domain list, and read as
+    a species restriction); forcing by prohibition ("cannot … choose a domain instead"); a change of
+    creature **kind**; and property restrictions.
+  - **A sixth effect, `creature_type`.** #38's five effects cannot say "the bond yields something
+    else" — a Draconic Druid gets a *drake*, an Elemental Ally four *eidolons*. 25 archetypes carry
+    it. Without it a druid whose rules say drake would silently generate a wolf.
+  - **Property restrictions are derived, not hand-listed.** "An animal with a fly speed" resolves
+    against `animal_choices.json` to the 21 species that have one, so it stays correct as species are
+    added. Only *resolved* names enter `species_pool`; an unresolved phrase is carried separately,
+    because a guessed species is a hard validator failure.
+  - **`forces` and `removes` are mutually exclusive** and were co-occurring on 13 entries. Where the
+    bond yields a different kind of creature the prohibition is on the *animal companion* and the
+    grant is its replacement, so it is not a removal; the 8 genuinely ambiguous ones are marked
+    `conflict` and dropped to low confidence rather than silently resolved.
+  - **Three archetypes were never bond archetypes at all.** `BOND_TARGETS` held a bare `"mount"`,
+    which matches inside "**mount**ain" — Mountain Druid, Summit Sentinel and Mountain Witch were
+    classified on a substring. The real population is **202**, not 206.
+
 ### Added
 - **Who grants a bonded creature is a data table now, and five more classes actually get one**
   ([#30](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/30)). The generator

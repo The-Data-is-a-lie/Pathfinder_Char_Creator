@@ -34,6 +34,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 ARCHETYPES = ROOT / "Backend/json/archetypes.json"
+SPECIES = ROOT / "Backend/json/animal_choices.json"
 OVERRIDES = ROOT / "Backend/json/companion_archetypes_overrides.json"
 OUT = ROOT / "Backend/json/companion_archetypes.json"
 REVIEW = ROOT / "docs/companion_archetype_signoff.md"
@@ -42,39 +43,105 @@ REVIEW = ROOT / "docs/companion_archetype_signoff.md"
 GRANTORS = ("Druid", "Ranger", "Wizard", "Sorcerer", "Paladin",
             "Cavalier", "Samurai", "Summoner", "Hunter", "Witch")
 
-# What each grantor's bond feature is called in prose. Order matters only for reporting.
+# What each grantor's bond feature is called in prose. `mount` needs a word boundary: as a bare
+# substring it matches inside "mountain" and "mountaineer", which pulled Mountain Druid, Summit
+# Sentinel and Mountain Witch into the set although none of them touches a bond feature at all.
 BOND_TARGETS = (
     "nature bond", "hunter's bond", "hunters bond", "arcane bond", "divine bond",
-    "animal companion", "eidolon", "familiar", "bonded object", "bonded mount", "mount",
+    "animal companion", "eidolon", "familiar", "bonded object", "bonded mount",
 )
-TARGET_RE = re.compile("|".join(re.escape(t) for t in BOND_TARGETS), re.I)
+TARGET_RE = re.compile("|".join([*(re.escape(t) for t in BOND_TARGETS), r"\bmounts?\b"]), re.I)
 
 # "This ability replaces nature bond." / "This alters the druid's animal companion."
 SENTENCE_RE = re.compile(
     r"\bthis\s+[a-z' ]{0,40}?\b(replaces|alters|modifies|changes)\b([^.]*)\.", re.I)
 
-# The replacing feature GRANTS a bonded creature -> forces, not removes.
-GRANT_RE = re.compile(
-    r"\bgains?\s+(?:an?\s+)?(?:animal companion|companion|familiar|eidolon|mount|bonded mount)"
-    r"|\breceives?\s+(?:an?\s+)?(?:animal companion|familiar|eidolon|mount)"
-    r"|\b(?:animal companion|familiar|eidolon|mount)\b[^.]{0,60}\bas (?:the|a|per)\b"
-    r"|\btreat(?:ing|s)? her (?:druid|ranger|hunter) level as\b"
+# ---------------------------------------------------------------------------------------------
+# Clause-level vocabulary.
+#
+# The first pass classified a whole-archetype prose blob and scored 6/15 against human sign-off.
+# The blob is the bug: the druid's nature bond has TWO SIDES, and once concatenated a sentence about
+# domains is indistinguishable from one about the companion. Cave Druid's bond text is purely a
+# domain list and was read as a species restriction; Nithveil Adept forbids the companion outright
+# and was read as no effect at all because there is no "replaces" sentence to key on.
+#
+# So: split the bond feature's own text into clauses, decide which SIDE each clause is about, and
+# bind each prohibition or obligation to its own object.
+# ---------------------------------------------------------------------------------------------
+
+# Strict creature terms only. Bare "animal" is deliberately NOT here: the PF1e *Animal domain* is a
+# domain called "Animal", so "must choose from the Animal, Community ... domains" would read as a
+# creature clause. Every real creature clause names the bond explicitly ("an animal companion").
+CREATURE_RE = re.compile(
+    r"animal companion|\bcompanions?\b|\bfamiliars?\b|\beidolons?\b|\bmounts?\b|\bdrakes?\b", re.I)
+DOMAIN_RE = re.compile(r"\bsub ?domains?\b|\bdomains?\b|\bbonded object\b|"
+                       r"\bbond with (?:allies|companions)\b", re.I)
+
+# "who chooses an animal companion", "if choosing a domain", "if the aerie protector chooses" --
+# the clause only applies IF that side was taken, so it restricts without forcing. This is the sole
+# discriminator between the totem shamans (species_pool) and Sunrider/Devolutionist (forces too).
+#
+# A clause that OPENS with if/when/while is situational and never establishes the baseline bond:
+# "If one of the elemental ally's eidolons is killed, she cannot summon any eidolons for 24 hours"
+# is a downtime rule, and reading it as a prohibition made Elemental Ally lose its eidolons entirely.
+CONDITIONAL_RE = re.compile(r"^(?:if|when|while|should|unless)\b"
+                            r"|\bwho chooses\b|\bif choosing\b|\bif (?:s?he|the [a-z' ]{1,30}?)\s*"
+                            r"(?:chooses|selects|takes)\b|\bwhen (?:s?he )?chooses\b", re.I)
+
+NEGATION = r"(?:cannot|can ?not|may not|must not|does ?n[o']?t|do ?n[o']?t|no longer|never)"
+
+# The alternative is made compulsory, which removes the creature just as surely as forbidding it.
+# Ancient Guardian: "must choose the domain nature bond ability and select from the following
+# domains". Nithveil Adept: "can take only a domain".
+FORCED_ALTERNATIVE_RE = re.compile(
+    r"\bcan take only (?:a|the)\s+(?:domain|bonded object)\b"
+    r"|\bmust (?:choose|select|take|use)\b[^;.]{0,40}?\b(?:domain|bonded object)\b", re.I)
+
+# The creature is compulsory -> the flip disappears.
+#
+# The obligation must govern a SELECTION verb, and a grant must have the creature as its direct
+# object. Without that, "it must be able to fly on its own before it becomes her companion" reads as
+# "must ... companion" (Aerie Protector forced a companion it merely describes), and "As the
+# elemental ally gains levels, her elemental eidolons' statistics increase" reads as a grant.
+_CREATURE = r"(?:animal companion|companions?|familiars?|eidolons?|mounts?)"
+MANDATORY_CREATURE_RE = re.compile(
+    rf"\bmust\b[^;.]{{0,45}}?\b(?:choose|select|take|bond with|have|use)\b[^;.]{{0,55}}?\b{_CREATURE}\b"
+    rf"|\b(?:gains?|has|have|receives?)\s+(?:an?|the|four|two|three|his|her|its)?\s*"
+    rf"(?:[a-z]+\s+){{0,2}}?{_CREATURE}\b"
     r"|\bgains? the service of\b", re.I)
 
-# The pool of legal species is redefined.
+# A restriction on WHICH creature. The captured tail is mined for species names. "use the stats for"
+# is here because Devolutionist names its species that way rather than as a choice
+# ("Use the stats for an ape animal companion").
 POOL_RE = re.compile(
-    r"\b(?:must (?:be|select|choose)|may (?:only )?select|chosen from|selected from|"
-    r"choose from|limited to|instead of the normal)\b[^.]{0,160}"
-    r"|\bfrom the following(?: list)?\b", re.I)
+    r"\b(?:must (?:be|select|choose)|may (?:only )?select|"
+    r"(?:chosen|selected) from|choose from|limited to|instead of the normal|"
+    r"use the stats for|bond(?:s|ed)? with)\b([^;.]{0,160})", re.I)
+
+# Restrictions stated as a property rather than a list -- derivable from animal_choices.json.
+PROPERTY_RES = (
+    (re.compile(r"\bfly speed\b|\bcan fly\b|\bflying\b", re.I), "fly"),
+    (re.compile(r"\bswim speed\b|\baquatic\b", re.I), "swim"),
+)
 
 # The advancement / effective level is altered.
 PROGRESSION_RE = re.compile(
     r"\b(?:does ?n[o']t increase|does not increase|effective (?:druid|class) level|"
     r"level (?:is )?equal to|treats? her .{0,30}level as|minus 3|-\s?3 levels|"
-    r"levels? stack|counts? as (?:a )?(?:druid|ranger) level|at 4th level|size (?:large|medium))\b",
-    re.I)
+    r"levels? stack|counts? as (?:a )?(?:druid|ranger) level)\b", re.I)
 
-EFFECTS = ("removes", "forces", "species_pool", "progression", "none")
+# The bond yields a different KIND of creature -- a sixth effect #38's vocabulary lacks. Ordered:
+# the first match wins, so "drake companion" beats the generic "companion".
+CREATURE_TYPES = (
+    (re.compile(r"\bdrakes?\b", re.I), "drake"),
+    (re.compile(r"\belemental eidolons?\b", re.I), "eidolon"),
+    (re.compile(r"\beidolons?\b", re.I), "eidolon"),
+    (re.compile(r"\bconstructs?\b|\bhomunculus\b", re.I), "construct"),
+    (re.compile(r"\bundead\b|\bskeletal\b", re.I), "undead"),
+    (re.compile(r"\bplant creature\b|\bawakened plant\b", re.I), "plant"),
+)
+
+EFFECTS = ("removes", "forces", "species_pool", "progression", "creature_type", "none")
 
 
 def bond_features(body):
@@ -98,59 +165,254 @@ def snippet(match, text, width=110):
     return ("…" if start else "") + " ".join(text[start:end].split()) + ("…" if end < len(text) else "")
 
 
-def classify(body, own_keys, sentences):
-    """Propose every effect that applies, most decisive first.
+def clauses(text):
+    """Sentences, then semicolon-separated parts -- the granularity a prohibition binds at."""
+    out = []
+    for sentence in re.split(r"(?<=[.])\s+", str(text)):
+        for part in sentence.split(";"):
+            part = " ".join(part.split())
+            if part:
+                out.append(part)
+    return out
 
-    Deliberately NOT single-valued. Devolutionist both forces a species ("must choose a devolved
-    humanoid ... use the stats for an ape animal companion") and suppresses a field of the
-    advancement merge ("doesn't increase to size Large at 4th level"). #38's vocabulary gives an
-    archetype one `effect`; the prose gives some of them two, and collapsing that would silently
-    drop whichever the classifier happened to test second.
+
+def bond_text(body, own_keys, sentences):
+    """Only the text that actually describes the bond -- never the whole archetype."""
+    keys = list(own_keys) + [key for key, _, _ in sentences]
+    seen, parts = set(), []
+    for key in keys:
+        if key in seen:
+            continue
+        seen.add(key)
+        value = body.get(key)
+        if isinstance(value, str):
+            parts.append(value)
+    return " ".join(parts)
+
+
+def derived_pool(clause, species_index):
+    """A property restriction resolved against the data, e.g. fly speed -> the 21 species."""
+    for pattern, prop in PROPERTY_RES:
+        if pattern.search(clause):
+            return prop, sorted(species_index.get(prop, ()))
+    return None, []
+
+
+ARTICLES = re.compile(r"^(?:a|an|the|any|only|either|one|its|her|his)\s+", re.I)
+
+# Verbs that mean "acquire or keep the bond", as opposed to merely describing how it behaves.
+SELECT_VERB_RE = re.compile(
+    r"\b(?:select|selects|choose|chooses|gain|gains|have|has|take|takes|acquire|acquires|"
+    r"receive|receives|bond|bonds|get|gets|possess|keep|keeps)\b", re.I)
+
+
+def named_species(tail, species_index):
+    """Species named in a restriction tail that actually exist in animal_choices.json.
+
+    The tail is prose -- "an ape or related primate", "a crocodile or monitor lizard", "a horse or a
+    pony" -- so split on the conjunctions the books use, strip articles, and try the phrase plus its
+    trailing words ("monitor lizard" -> also "lizard"). Only names the data actually has are kept;
+    a species animal_choices.json lacks is a hard validator failure, so a guess must not land here.
     """
-    # The text of whatever feature does the replacing -- that is what decides forces vs removes.
-    replacing = " ".join(str(body.get(key, "")) for key, verb, _ in sentences
-                         if verb in ("replaces", "changes"))
-    own_text = " ".join(str(body.get(key, "")) for key in own_keys)
-    altering = " ".join(str(body.get(key, "")) for key, verb, _ in sentences
-                        if verb in ("alters", "modifies"))
-    described = " ".join(f"{own_text} {altering}".split())
-
     found = []
-    grant = GRANT_RE.search(replacing) if replacing else None
-    if grant:
-        found.append(("forces", "high", "the replacing feature itself grants a bonded creature",
-                      snippet(grant, replacing)))
-    else:
-        grant_own = GRANT_RE.search(own_text) if own_text else None
-        if grant_own:
-            found.append(("forces", "medium",
-                          "redefines the bond feature, and the redefinition grants one",
-                          snippet(grant_own, own_text)))
-        elif replacing:
-            found.append(("removes", "medium",
-                          "traded away, and the replacing feature grants no creature",
-                          " ".join(replacing.split())[-160:]))
+    for segment in re.split(r"\bor\b|\band\b|,|/", tail.lower()):
+        segment = ARTICLES.sub("", " ".join(segment.split()).strip(" -'’"))
+        if not segment:
+            continue
+        words = segment.split()
+        # Every contiguous run, longest first, so "ape animal companion" still yields "ape" and
+        # "owl, giant" style multiword keys win over a bare noun.
+        candidates = sorted(
+            {" ".join(words[i:j]) for i in range(len(words)) for j in range(i + 1, len(words) + 1)},
+            key=lambda s: -len(s))
+        candidates += [f"{words[-1]}, {' '.join(words[:-1])}"] if len(words) > 1 else []
+        for candidate in candidates:
+            candidate = candidate.strip(" -'")
+            if candidate in species_index["names"] and candidate not in found:
+                found.append(candidate)
+                break
+    return found
 
-    # Both of these can sit alongside a forces/removes verdict, and alongside each other.
-    pool = POOL_RE.search(described) if described else None
-    if pool:
-        found.append(("species_pool", "medium", "restricts or lists the legal species",
-                      snippet(pool, described)))
-    progression = PROGRESSION_RE.search(described) if described else None
-    if progression:
-        found.append(("progression", "medium", "changes level or size advancement",
-                      snippet(progression, described)))
+
+def negation_signals(clause):
+    """What each negation in the clause actually forbids.
+
+    A single regex cannot bind a prohibition to its object, and getting that wrong flips the
+    verdict: Sunrider's "cannot choose a DIFFERENT animal or choose a domain instead" restricts the
+    pool and forbids the alternative -- it does not remove the creature, which is what a naive
+    negation-near-creature match concluded.
+    """
+    signals = set()
+    for match in re.finditer(NEGATION, clause, re.I):
+        tail = clause[match.end():match.end() + 110]
+        # "a different animal" / "any other animal" narrows the choice; it does not delete it.
+        narrows = re.search(r"\b(?:different|other|another)\b", tail[:45], re.I)
+        if narrows:
+            signals.add("pool")
+        domain = DOMAIN_RE.search(tail)
+        creature = CREATURE_RE.search(tail)
+        if domain and (not creature or domain.start() < creature.start()):
+            signals.add("alternative")          # the domain is forbidden -> the flip is suppressed
+        elif creature and not narrows and SELECT_VERB_RE.search(tail[:creature.start()]):
+            # The prohibition has to be about ACQUIRING the creature. "Abilities that grant
+            # evolution points to eidolons do not function for elemental eidolons" is a rules
+            # detail, and reading it as a prohibition deleted Elemental Ally's eidolons.
+            signals.add("creature")             # the creature itself is forbidden
+    return signals
+
+
+def classify(body, own_keys, sentences, species_index):
+    """Propose every effect that applies, reading the bond text clause by clause.
+
+    Deliberately NOT single-valued: Devolutionist forces a species, restricts it, AND vetoes a field
+    of the advancement merge. Collapsing that drops whichever effect was tested last.
+    """
+    text = bond_text(body, own_keys, sentences)
+    replaced = any(verb in ("replaces", "changes") for _, verb, _ in sentences)
+
+    found, pool_names, pool_property, ctype = [], [], None, None
+    pool_raw = []
+    creature_clauses = 0
+
+    for clause in clauses(text):
+        is_creature = bool(CREATURE_RE.search(clause))
+        is_domain = bool(DOMAIN_RE.search(clause))
+        conditional = bool(CONDITIONAL_RE.search(clause))
+
+        # Being FORCED onto the alternative removes the creature, and such a clause need not mention
+        # the creature at all -- Ancient Guardian's "must choose the domain nature bond ability and
+        # select from the following domains" names no animal, so the creature-side gate below would
+        # skip it and the archetype would read as harmless. Checked before that gate for exactly
+        # that reason. Cave Druid says "may select", not "must", so it stays `none`.
+        if not conditional and FORCED_ALTERNATIVE_RE.search(clause):
+            found.append(("removes", "high",
+                          "forced onto the alternative, so no creature is gained", clause[:170]))
+            continue
+
+        if not is_creature:
+            continue                      # R2: a domain-only clause says nothing about the creature
+        creature_clauses += 1
+
+        # R4 -- does the bond now yield a different KIND of creature?
+        if ctype is None:
+            for pattern, name in CREATURE_TYPES:
+                if pattern.search(clause):
+                    ctype = name
+                    found.append(("creature_type", "high",
+                                  f"the bond yields a {name}, not an animal companion", clause[:160]))
+                    break
+
+        signals = negation_signals(clause)
+        forced_to_alternative = FORCED_ALTERNATIVE_RE.search(clause)
+
+        # R1 -- the creature itself is forbidden.
+        if not conditional and "creature" in signals:
+            found.append(("removes", "high", "the creature is forbidden", clause[:170]))
+
+        # R3 -- the alternative is forbidden, or the creature is mandatory. A conditional clause
+        # ("who chooses an animal companion") restricts without forcing, which is the only thing
+        # separating the totem shamans from Sunrider.
+        mandatory = MANDATORY_CREATURE_RE.search(clause)
+        if not conditional and ("alternative" in signals or mandatory):
+            found.append(("forces", "high", "the alternative is forbidden, or the creature is "
+                                            "mandatory -- the flip is suppressed", clause[:170]))
+
+        # R5 -- which creature. Property restrictions resolve against the data.
+        pool = POOL_RE.search(clause)
+        if "pool" in signals and not pool:
+            # "any OTHER class features a summoner gains" is not a species restriction, so the
+            # narrowing word has to be attached to a creature.
+            pool = re.search(r"\b(?:different|other|another)\s+(?:\w+\s+){0,2}?"
+                             r"(?:animal|creature|companion|beast|mount)\b([^;.]{0,120})",
+                             clause, re.I)
+        if pool and (not is_domain or not DOMAIN_RE.search(pool.group(1))):
+            prop, derived = derived_pool(clause, species_index)
+            names = derived or named_species(pool.group(1), species_index)
+            pool_property = pool_property or prop
+            for name in names:
+                if name not in pool_names:
+                    pool_names.append(name)
+            # The EFFECT holds even when no name resolves. "an eagle or a hawk" is a real
+            # restriction whether or not animal_choices.json spells those creatures that way, and
+            # only resolved names may enter species_pool -- an unresolved guess would trip the
+            # validator's hard fail. The phrase is carried for the reviewer instead.
+            if prop:
+                why = f"restricts the species by {prop} speed ({len(names)} qualify)"
+            elif names:
+                why = "names the legal species"
+            else:
+                why = "restricts the species, but none of the names resolve to animal_choices.json"
+            found.append(("species_pool", "high" if (prop or names) else "low", why,
+                          snippet(pool, clause)))
+            if not names:
+                pool_raw.append(" ".join(pool.group(1).split())[:120])
+
+        if PROGRESSION_RE.search(clause):
+            found.append(("progression", "medium", "changes level or size advancement", clause[:160]))
+        elif re.search(r"does ?n[o']?t increase to size", clause, re.I):
+            found.append(("progression", "high", "vetoes the size step of the advancement merge",
+                          clause[:160]))
+
+    # A replaces-sentence with no creature clause anywhere means it was traded for something else.
+    if replaced and not any(e for e, *_ in found if e in ("forces", "removes", "creature_type")):
+        found.append(("removes", "medium", "traded away, and nothing in the bond text grants a "
+                                           "creature", " ".join(text.split())[-160:]))
 
     if not found:
-        why = ("redefines the bond feature but states no mechanical change" if own_keys
-               else "mentions a bond feature without replacing or altering it")
-        found.append(("none", "low", why, ""))
-    return found
+        why = ("the bond text restricts only the domain side" if creature_clauses == 0 and text
+               else "mentions a bond feature without changing it")
+        found.append(("none", "medium" if text else "low", why, ""))
+
+    # Dedupe, keeping the first (most confident) reason for each effect.
+    unique, seen = [], set()
+    for effect, confidence, why, evidence in found:
+        if effect in seen:
+            continue
+        seen.add(effect)
+        unique.append((effect, confidence, why, evidence))
+
+    # `forces` and `removes` are mutually exclusive -- the character cannot be both guaranteed a
+    # creature and denied one. Where the bond yields a different KIND of creature, the prohibition
+    # is on the animal companion and the grant is the replacement, so it is not a removal at all:
+    # "a draconic druid gains a drake companion INSTEAD OF an animal companion".
+    kinds = {effect for effect, *_ in unique}
+    conflict = False
+    if {"forces", "removes"} <= kinds:
+        if ctype:
+            unique = [row for row in unique if row[0] != "removes"]
+        else:
+            # Genuinely ambiguous prose. Keep both and say so, rather than silently picking one --
+            # this is the shortlist a human or an agent should read in full.
+            conflict = True
+            unique = [(e, "low", w, ev) for e, c, w, ev in unique]
+
+    return unique, pool_names, pool_property, ctype, pool_raw, conflict
+
+
+def species_index():
+    """Species names, plus the property buckets a restriction can be derived from.
+
+    Derived rather than hand-listed so "an animal with a fly speed" keeps meaning the right set as
+    species are added to animal_choices.json.
+    """
+    with open(SPECIES, encoding="utf-8") as fh:
+        data = json.load(fh)
+    index = {"names": set(), "fly": set(), "swim": set()}
+    for tier in data.values():
+        for name, body in tier.items():
+            index["names"].add(name.lower())
+            speed = str((body.get("starting statistics") or {}).get("speed", "")).lower()
+            if "fly" in speed:
+                index["fly"].add(name.lower())
+            if "swim" in speed:
+                index["swim"].add(name.lower())
+    return index
 
 
 def build():
     with open(ARCHETYPES, encoding="utf-8") as fh:
         data = json.load(fh)
+    index = species_index()
 
     entries = {}
     for cls in GRANTORS:
@@ -160,7 +422,8 @@ def build():
             own_keys, sentences = bond_features(body)
             if not own_keys and not sentences:
                 continue
-            found = classify(body, own_keys, sentences)
+            found, pool_names, pool_property, ctype, pool_raw, conflict = classify(
+                body, own_keys, sentences, index)
             entries[f"{cls}/{name}"] = {
                 "archetype": name,
                 "class": cls,
@@ -178,6 +441,20 @@ def build():
                 "source": body.get("source", ""),
                 "signed_off": False,
             }
+            entry = entries[f"{cls}/{name}"]
+            if ctype:
+                entry["creature_type"] = ctype
+            if pool_names:
+                # Only resolved names go in species_pool -- validate_companion_archetypes.py
+                # hard-fails on a species animal_choices.json lacks, so an unresolved phrase must
+                # not land here. The phrase is kept for the reviewer instead.
+                entry["species_pool"] = pool_names
+            if pool_property:
+                entry["species_pool_derived_from"] = pool_property
+            if pool_raw:
+                entry["species_pool_raw"] = pool_raw
+            if conflict:
+                entry["conflict"] = "forces and removes both detected -- read the full text"
     return entries
 
 
