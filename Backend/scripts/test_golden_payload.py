@@ -93,6 +93,19 @@ CONFIGS = {
                    chosen_BAB='high', multi_class='N', alignment_input='LG',
                    userInput_gender='male', high_level=15, low_level=15,
                    gold_num=200000, spheres_flag='Y'),
+    # A BONDED CREATURE, AND A STACKED ONE. The five configs above all carry
+    # `animal_companion: null` -- the entire companion stack (map #18: the grantor table, the species
+    # ladder, the archetype effects, the chassis) had NO golden coverage at all, which is how the
+    # stacking defect below survived review.
+    #
+    # This seed rolls hunter 8 / druid 6. Both grant a companion, so the two stack to effective
+    # level 14 -- and the chassis MUST be re-read at 14 (hd 12, feats 6) rather than left at the
+    # druid's own level 6 (hd 6, feats 3), which is exactly what `_stack` used to do. The pair was
+    # chosen deliberately: most adjacent companion-table levels differ, but 6->7 does not, so a
+    # closer pair would have pinned nothing.
+    'companion': dict(_BASE, seed=7275, userInput_race='Human', class_choice='druid',
+                      chosen_BAB='medium', multi_class='Y', alignment_input='NG',
+                      userInput_gender='female', high_level=14, low_level=14),
 }
 
 

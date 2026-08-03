@@ -283,6 +283,10 @@
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "\"can use this feat only to select a hippocampus mount\""
   },
+  "Druid/Ancient Guardian": {
+    "removes_scope": "creature",
+    "removes_scope_why": "must choose the domain nature bond ability and select from the following domains"
+  },
   "Druid/Bat Shaman": {
     "confidence": "high",
     "effect": "species_pool",
@@ -300,6 +304,10 @@
     ],
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "\"who chooses an animal companion must select a bat\""
+  },
+  "Druid/Blight Druid": {
+    "removes_scope": "creature",
+    "removes_scope_why": "may not bond with an animal companion, but may ... select from the Darkness, Death, and Destruction domains"
   },
   "Druid/Cave Druid": {
     "confidence": "high",
@@ -438,6 +446,10 @@
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "\"gains a leaf leshy as a familiar\"; leshy upgrades at 4th/8th/12th"
   },
+  "Druid/Life Channeler": {
+    "removes_scope": "creature",
+    "removes_scope_why": "must choose the Plant domain with her nature bond"
+  },
   "Druid/Lion Shaman": {
     "confidence": "high",
     "effect": "species_pool",
@@ -470,6 +482,10 @@
     "signed_off": true,
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "domain side only"
+  },
+  "Druid/Nithveil Adept": {
+    "removes_scope": "creature",
+    "removes_scope_why": "cannot select an animal companion, and can take only a domain"
   },
   "Druid/Pack Lord": {
     "confidence": "high",
@@ -571,6 +587,10 @@
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "\"must select a snake\""
   },
+  "Druid/Storm Druid": {
+    "removes_scope": "creature",
+    "removes_scope_why": "may not choose an animal companion -- silent on the domain, which therefore survives"
+  },
   "Druid/Survivor": {
     "confidence": "high",
     "effect": "forces",
@@ -628,6 +648,10 @@
     "signed_off": true,
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
     "why": "\"can't choose an animal companion, and must instead select a domain\""
+  },
+  "Druid/Urban Druid": {
+    "removes_scope": "creature",
+    "removes_scope_why": "may not select an animal companion -- silent on the domain, which therefore survives"
   },
   "Hunter/Chameleon Adept": {
     "confidence": "high",

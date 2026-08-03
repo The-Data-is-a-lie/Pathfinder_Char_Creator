@@ -87,6 +87,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "natural mount (ex)",
@@ -113,6 +114,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "apprehend (ex)",
@@ -139,6 +141,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "champion's finesse (ex)",
@@ -165,6 +168,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "bigger they are (ex)",
@@ -220,6 +224,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "aide-de-camp (ex)",
@@ -336,6 +341,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "implacable knight (ex)",
@@ -452,6 +458,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "gifted firearm (ex)",
@@ -588,6 +595,7 @@
         "why": "\"alters order and replaces mount\""
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "maiden's order (ex)",
@@ -777,6 +785,8 @@
         "why": "forced onto the alternative, so no creature is gained"
       }
     ],
+    "removes_scope": "creature",
+    "removes_scope_why": "must choose the domain nature bond ability and select from the following domains",
     "sentences": [
       {
         "feature": "community bond (ex)",
@@ -880,6 +890,8 @@
         "why": "the creature is forbidden"
       }
     ],
+    "removes_scope": "creature",
+    "removes_scope_why": "may not bond with an animal companion, but may ... select from the Darkness, Death, and Destruction domains",
     "sentences": [],
     "signed_off": true,
     "source": "Advanced Player's Guide pg. 98 The devoted servants of nature corrupted, ruined, and destroyed, blight druids are the caretakers of lands ravaged by natural disaster. While some are devoted to reforming and reclaiming lands despoiled by the ravages of civilization, others seek out the more rapacious violence inherent in nature and feed the creeping rot and decay that brings an end to all things.",
@@ -947,6 +959,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "phantom",
@@ -1155,6 +1168,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "animal focus (su)",
@@ -1243,6 +1257,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "bonded mask (su)",
@@ -1310,6 +1325,8 @@
         "why": "forced onto the alternative, so no creature is gained"
       }
     ],
+    "removes_scope": "creature",
+    "removes_scope_why": "must choose the Plant domain with her nature bond",
     "sentences": [
       {
         "feature": "plant preservation (su)",
@@ -1392,6 +1409,8 @@
         "why": "forced onto the alternative, so no creature is gained"
       }
     ],
+    "removes_scope": "creature",
+    "removes_scope_why": "cannot select an animal companion, and can take only a domain",
     "sentences": [
       {
         "feature": "nature bond (su)",
@@ -1454,6 +1473,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "primal bond (ex)",
@@ -1692,6 +1712,8 @@
         "why": "the creature is forbidden"
       }
     ],
+    "removes_scope": "creature",
+    "removes_scope_why": "may not choose an animal companion -- silent on the domain, which therefore survives",
     "sentences": [],
     "signed_off": true,
     "source": "Ultimate Magic pg. 40 While most druids focus their attention upon the rich earth and the bounty of nature that springs forth from it, the storm druid's eyes have ever been cast to the skies and the endless expanse of blue, channeling the most raw and untamed aspects of nature.",
@@ -1818,6 +1840,7 @@
         "why": "\"can't choose an animal companion, and must instead select a domain\""
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "nature bond (ex)",
@@ -1846,6 +1869,8 @@
         "why": "the creature is forbidden"
       }
     ],
+    "removes_scope": "creature",
+    "removes_scope_why": "may not select an animal companion -- silent on the domain, which therefore survives",
     "sentences": [],
     "signed_off": true,
     "source": "Advanced Player's Guide pg. 101 While many druids keep to the wilderness, some make their way within settlements, communing with the animals and vermin who live there and speaking for the nature that runs rampant in civilization's very cradle.",
@@ -1866,6 +1891,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "toxic secretions (su)",
@@ -1969,6 +1995,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "wild shape (su)",
@@ -1995,6 +2022,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "favored terrain (ex)",
@@ -2340,6 +2368,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "rising tide (su)",
@@ -2368,6 +2397,7 @@
         "why": "bond with her armor instead"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [],
     "signed_off": true,
     "source": "Advanced Player's Guide pg. 116 Some paladins see themselves as the last line of defense between the teeming hordes of evil and the innocent folk trying to make a living in a harsh, unforgiving world. These defenders spend their lives protecting others and taking on foes that the common man should not even know exist. To aid them in their holy mission, they have special powers to protect themselves and those around them. The divine defender has the following class features.",
@@ -2393,6 +2423,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "divine bond (su)",
@@ -2419,6 +2450,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "shadow's embrace (su)",
@@ -2470,6 +2502,7 @@
         "why": "\"must choose the weapon option of her divine bond\""
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "champion's bond (su)",
@@ -2498,6 +2531,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "divine bond",
@@ -2524,6 +2558,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "tactical acumen (ex)",
@@ -2550,6 +2585,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "divine body (su)",
@@ -2680,6 +2716,7 @@
         "why": "bond with her holy symbol instead"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [],
     "signed_off": true,
     "source": "Advanced Player's Guide pg. 117 Paladins as a general rule, venerate the gods of good and purity, but some take this a step further, dedicating themselves to a specific deity and furthering the cause of the faith. These sacred servants are rewarded for their devotion with additional spells and powerful allies. A sacred servant must select one deity to worship. This deity's alignment must be lawful good, lawful neutral, or neutral good. A sacred servant has the following class features.",
@@ -2705,6 +2742,7 @@
         "why": "bond with her shield instead of weapon or mount"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [],
     "signed_off": true,
     "source": "Ultimate Combat pg. 65 When faced by evil, the sacred shield reaches first not for a weapon, but for her trusty shield. With her faith, she can ward others from harm.",
@@ -2840,6 +2878,7 @@
         "why": "\"must select a weapon for her divine bond\""
       }
     ],
+    "removes_scope": "feature",
     "sentences": [],
     "signed_off": true,
     "source": "Weapon Master's Handbook pg. 7 Tempered champions are trained in the Tempering Hall in Absalom to master their deities' favored weapons.",
@@ -2860,6 +2899,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "blessing (su)",
@@ -2886,6 +2926,7 @@
         "why": "\"must be with a weapon, not a mount\""
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "alone in the dark",
@@ -2937,6 +2978,7 @@
         "why": "\"This replaces divine bond\""
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "gang up (ex)",
@@ -2969,6 +3011,7 @@
         "why": "\"Battle scouts do not have animal companions\""
       }
     ],
+    "removes_scope": "feature",
     "sentences": [],
     "signed_off": true,
     "source": "Ultimate Combat pg. 66 Armies need clean water, safe routes, and intelligence about their enemies. Though regular outdoorsmen might suffice in many cases, some large forces look to battle scouts to keep the body of their troops safe and prepared for the terrain and whatever dangers that terrain hides.",
@@ -3036,6 +3079,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "inured (ex)",
@@ -3062,6 +3106,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "resist interrogation (ex)",
@@ -3088,6 +3133,7 @@
         "why": "\"must choose his allies as his hunter's bond, not an animal companion\""
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "hobnob (ex)",
@@ -3117,6 +3163,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "blessings (su)",
@@ -3214,6 +3261,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "shadow bond (su)",
@@ -3276,6 +3324,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "touch of flame (su)",
@@ -3302,6 +3351,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "adaptable study (ex)",
@@ -3328,6 +3378,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "freebooter's bond (ex)",
@@ -3354,6 +3405,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "terrain bond (ex)",
@@ -3380,6 +3432,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "deep cover (ex, su)",
@@ -3514,6 +3567,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "planar bond (su)",
@@ -3540,6 +3594,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "precise dart (ex)",
@@ -3631,6 +3686,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "uncanny alertness (ex)",
@@ -3657,6 +3713,7 @@
         "why": "bonds with the spirits of nature; replaces hunter's bond"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "spirit bond (ex)",
@@ -3686,6 +3743,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "thundershot (su)",
@@ -3712,6 +3770,7 @@
         "why": "\"replaces hunter's bond\" with an ally buff"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "inspiring example (ex)",
@@ -3741,6 +3800,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "sudden onset (ex)",
@@ -3767,6 +3827,7 @@
         "why": "\"must choose his allies as his hunter's bond, not an animal companion\""
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "smuggler's bond (ex)",
@@ -3796,6 +3857,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "hunter's aim (ex)",
@@ -3822,6 +3884,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "terrain bond (ex)",
@@ -3848,6 +3911,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "woodland stride (ex)",
@@ -3874,6 +3938,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "rage of the wild (ex)",
@@ -3900,6 +3965,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "hazard sense (ex)",
@@ -3926,6 +3992,7 @@
         "why": "\"must choose his companions for his hunter's bond\""
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "rallying bond (sp)",
@@ -3955,6 +4022,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "empty hand (ex)",
@@ -3981,6 +4049,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "dogmatic denial (ex)",
@@ -4007,6 +4076,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "iaijutsu strike (ex)",
@@ -4033,6 +4103,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "flourish (ex)",
@@ -4059,6 +4130,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "resolute defense (ex)",
@@ -4634,6 +4706,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "protecting veil",
@@ -4683,6 +4756,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "bonded item (sp)",
@@ -4709,6 +4783,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "fetish",
@@ -4735,6 +4810,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "spell deck",
@@ -4840,6 +4916,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "spell poppet",
@@ -4892,6 +4969,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "conduit surge (su)",
@@ -4918,6 +4996,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "patron mirror (su)",
@@ -5032,6 +5111,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "fetish mask (su)",
@@ -5123,6 +5203,7 @@
         "why": "\"does not have a familiar. Instead ... a bonded hoard\""
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "wyrmwitch's hoard",
@@ -5149,6 +5230,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "bomb (su)",
@@ -5177,6 +5259,7 @@
         "why": "\"must select an item as her arcane bond\""
       }
     ],
+    "removes_scope": "feature",
     "sentences": [],
     "signed_off": true,
     "source": "Cohorts and Companions pg. 17 Many wizards form an arcane bond with an item, but for some this bond becomes a powerful mystic union.",
@@ -5232,6 +5315,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "temporal pool (su)",
@@ -5297,6 +5381,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "blood infusion (su)",
@@ -5325,6 +5410,7 @@
         "why": "\"must choose to bond with an object\""
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "arcane bond",
@@ -5351,6 +5437,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "arcane reservoir (su)",
@@ -5440,6 +5527,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "apprentice (ex)",
@@ -5503,6 +5591,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "bonded book (sp)",
@@ -5529,6 +5618,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "primal magic (su)",
@@ -5555,6 +5645,7 @@
         "why": "runic focus automatically functions as the bonded object"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "runic focus (su)",
@@ -5581,6 +5672,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "scroll blade (su)",
@@ -5607,6 +5699,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "shadow spells (su)",
@@ -5633,6 +5726,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "siege engine bond (su)",
@@ -5659,6 +5753,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "focused spells (su)",
@@ -5685,6 +5780,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "spell bond (su)",
@@ -5711,6 +5807,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "arcane gun (su)",
@@ -5801,6 +5898,7 @@
         "why": "\"must choose a sword as his bonded item\""
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "arcane bond",
@@ -5854,6 +5952,7 @@
         "why": "traded away, and nothing in the bond text grants a creature"
       }
     ],
+    "removes_scope": "feature",
     "sentences": [
       {
         "feature": "spontaneous divination (su)",

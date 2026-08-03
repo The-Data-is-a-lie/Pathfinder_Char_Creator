@@ -195,15 +195,25 @@ def resolve_bonded_creatures(character):
 
         archetype_name, effects, record = _archetype_effects(character, grantor)
 
+        choice = row.get('choice')
+
         if 'removes' in effects:
-            character.bond_outcomes[grantor] = 'archetype_removed'
+            # WHAT was removed decides whether anything survives. A bond that IS a choice has two
+            # sides, and an archetype can forbid the creature while leaving the other side intact --
+            # a blight druid "may not bond with an animal companion, but may ... select from the
+            # Darkness, Death, and Destruction domains". Collapsing every `removes` to
+            # `archetype_removed` gave those druids NEITHER a companion nor a domain, silently
+            # deleting the whole class feature. `removes_scope` is authored per archetype in
+            # companion_archetypes_overrides.json; see the builder for why `feature` is the default.
+            scope = record.get('removes_scope') or 'feature'
+            outcome = choice['on_loss'] if (choice and scope == 'creature') else 'archetype_removed'
+            character.bond_outcomes[grantor] = outcome
             entries.append(_entry(row, grantor, None, None, None, None,
-                                  outcome='archetype_removed', archetype=archetype_name,
+                                  outcome=outcome, archetype=archetype_name,
                                   effective_level=0))
             continue
 
         outcome = 'granted'
-        choice = row.get('choice')
         if choice and 'forces' not in effects:
             if random.randint(1, 100) > choice['odds']:
                 outcome = choice['on_loss']
@@ -239,7 +249,7 @@ def resolve_bonded_creatures(character):
             entry['progression_override'] = record.get('progression') or {'source': archetype_name}
         entries.append(entry)
 
-    entries = _stack(entries, character_level)
+    entries = _stack(character, entries, character_level)
     character.bonded_creatures = entries
 
     companions = [e for e in entries if e['type'] == 'companion' and e['species']]
@@ -271,12 +281,19 @@ def _entry(row, grantor, species, kind, stats, chassis, outcome, archetype, effe
     }
 
 
-def _stack(entries, character_level):
+def _stack(character, entries, character_level):
     """Multiple sources of the SAME creature type stack, capped at character level (D6).
 
     Absence entries never merge -- each explains one grantor's outcome and they can legitimately
     coexist with a granted creature of the same type (a druid's companion beside a ranger who
     chose bond with allies).
+
+    THE CHASSIS IS RE-READ HERE, AND MUST BE. Each entry's chassis was fetched at that row's OWN
+    pre-stack effective level, because stacking has not happened yet when the entry is built. A
+    druid 5 / ranger 7 stacks to effective level 9; leaving the level-5 chassis in place gives the
+    companion HD 5 instead of 8 and 3 feats instead of 4, and `animal_feats` then draws from the
+    stale row too. Caught by the #30 stack review -- it had no test because the goldens never
+    rolled a companion at all.
     """
     granted, out, seen = {}, [], []
     for entry in entries:
@@ -294,6 +311,7 @@ def _stack(entries, character_level):
     for entry in seen:
         if character_level:
             entry['effective_level'] = min(entry['effective_level'], character_level)
+        entry['chassis'] = _chassis(character, entry['effective_level'])
         out.append(entry)
     return out
 

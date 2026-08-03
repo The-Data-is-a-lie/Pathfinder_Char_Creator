@@ -13,6 +13,13 @@ failures for the day the roster is meant to be complete. What always fails is a 
 ask about: a curated `species_pool` naming a species that is not in `animal_choices.json` at all
 (that is `validate_companion_archetypes.py`'s job) or a dump that has gone missing or empty.
 
+THE RATCHET IS WHAT MAKES THIS A GATE AT ALL. `--strict` is passed by nobody -- not `validate_all.py`
+(which runs every validator bare) and not CI -- so before the ratchet the only failures reachable
+here were structural: the name-match completeness this file exists to police could regress from 52
+misses to 150 and it would still print OK. `UNMATCHED_BASELINE` is the count on the day it was
+measured; the number may not go UP without a deliberate edit here. Lower it whenever aliases or a
+re-dump improve things -- the assert below tells you when.
+
 Refresh the dump with `dump_pf_content_actors.py` -- Foundry must be closed.
 """
 import argparse
@@ -29,6 +36,10 @@ ALIASES = ROOT / "Backend/json/companion_species_aliases.json"
 
 CREATURE_PACKS = ("pf-companions", "pf-familiars")
 EIDOLON_PACK = "pf-eidolon-forms"
+
+# Species with no pf-content Actor, as measured 2026-08-02 (52 of 196). A miss stays legitimate --
+# the module degrades to a bare npc by D3 -- but the count may only ever go DOWN. See the docstring.
+UNMATCHED_BASELINE = 52
 
 # "Bear, Grizzly" and "Grizzly Bear" are the same actor; so are "Owl, Giant" and "Giant Owl".
 PUNCT_RE = re.compile(r"[^a-z0-9 ]+")
@@ -106,6 +117,16 @@ def main():
         message = (f"{len(missed)} of {total} species have no pf-content Actor to clone; the "
                    f"module will build a bare npc from the payload numbers (D3) and warn")
         (errors if args.strict else warnings).append(message)
+
+    # The ratchet. Without it nothing here can fail on the thing this file is for.
+    if len(missed) > UNMATCHED_BASELINE:
+        errors.append(f"unmatched species rose to {len(missed)}, above the baseline of "
+                      f"{UNMATCHED_BASELINE} -- a species was renamed or added with no pf-content "
+                      f"Actor. Add an alias to companion_species_aliases.json, re-dump with "
+                      f"dump_pf_content_actors.py, or raise UNMATCHED_BASELINE deliberately")
+    elif len(missed) < UNMATCHED_BASELINE:
+        print(f"NOTE: unmatched is down to {len(missed)} from a baseline of {UNMATCHED_BASELINE}"
+              f" -- lower UNMATCHED_BASELINE in this file to lock the improvement in")
 
     for message in warnings:
         print(f"WARN: {message}")

@@ -33,6 +33,15 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
+
+sys.path.insert(0, str(HERE))
+# One owner for the closed vocabulary. `validate_companion_data.py` declares itself the owner of
+# #38's closed sets and validate_companion_archetypes.py already imports from it; this file used to
+# restate EFFECTS verbatim, which is the "restate a symbol instead of naming its owner" pattern
+# CLAUDE.md calls a bug magnet. A new effect added to one copy and not the other either hard-fails
+# validation or silently vanishes from this builder's own summary.
+from validate_companion_data import EFFECTS                      # noqa: E402
+
 ARCHETYPES = ROOT / "Backend/json/archetypes.json"
 SPECIES = ROOT / "Backend/json/animal_choices.json"
 OVERRIDES = ROOT / "Backend/json/companion_archetypes_overrides.json"
@@ -159,9 +168,6 @@ CREATURE_TYPES = (
     (re.compile(r"\bundead\b|\bskeletal\b", re.I), "undead"),
     (re.compile(r"\bplant creature\b|\bawakened plant\b", re.I), "plant"),
 )
-
-EFFECTS = ("removes", "forces", "species_pool", "progression", "creature_type", "none")
-
 
 def bond_features(body):
     """(features that ARE a bond feature, sentences that trade one away)."""
@@ -468,6 +474,24 @@ def build():
                 "signed_off": False,
             }
             entry = entries[f"{cls}/{name}"]
+            if any(e == "removes" for e, *_ in found):
+                # WHAT a `removes` took away, which is NOT the same question as whether it removed
+                # something. A druid's nature bond has two sides; an archetype can forbid the
+                # CREATURE while leaving the domain reachable ("a blight druid may not bond with an
+                # animal companion, but may ... select from the Darkness, Death, and Destruction
+                # domains"), or replace the WHOLE FEATURE with something unrelated ("this ability
+                # replaces nature bond" -> a phantom, a bonded mask, an aura).
+                #
+                # `feature` is the default because it is both the conservative answer -- grant
+                # nothing rather than invent a feature the archetype traded away -- and the
+                # overwhelmingly common one: every one of the 25 Ranger and 18 Wizard `removes`
+                # entries reads "this ability replaces hunter's bond / arcane bond". Druid is the
+                # only class with a real split, and its six creature-only entries are marked
+                # `creature` in companion_archetypes_overrides.json.
+                #
+                # Only classes whose bond IS a choice have anywhere to fall through to, so this
+                # field says nothing for a hunter, witch, cavalier, samurai or summoner.
+                entry["removes_scope"] = "feature"
             if ctype:
                 entry["creature_type"] = ctype
             if pool_names:
@@ -633,15 +657,55 @@ def write_review(entries):
     return REVIEW
 
 
+def ensure_removes_scope(entries):
+    """Guarantee every `removes` carries a scope, whoever introduced it.
+
+    The classifier stamps `removes_scope` when IT decides on `removes`, but an override can
+    introduce that verdict where the classifier had something else -- 21 entries do. Those merge
+    onto a base with no scope, and the resolver would then read `None` and fall back to `feature`
+    anyway. Making it explicit here means the value is visible in the data and closed by the
+    validator, rather than being an implicit default nobody can see.
+    """
+    for entry in entries.values():
+        present = {(item.get("effect") if isinstance(item, dict) else item)
+                   for item in (entry.get("effects") or [])} | {entry.get("effect")}
+        if "removes" in present:
+            entry.setdefault("removes_scope", "feature")
+        elif "removes_scope" in entry:
+            # An override moved the verdict off `removes`; the scope no longer scopes anything.
+            entry.pop("removes_scope", None)
+            entry.pop("removes_scope_why", None)
+    return entries
+
+
+def generate():
+    """THE pipeline: classify, confirm, then correct. Returns (entries, verified, stale, overrides).
+
+    This exists so there is exactly one definition of what the generated file IS.
+    `validate_companion_archetypes.check_generated_is_current` used to hand-copy this sequence,
+    kept in step by nothing but a comment saying "must mirror... exactly". A third step added to one
+    and not the other drifts silently -- and the dangerous direction is not the loud one (every
+    build reports stale) but the quiet one, where the two keep agreeing by coincidence until the
+    new step first changes real output.
+
+    Order matters and is not arbitrary: `apply_verified` must run BEFORE `apply_overrides`, because
+    a confirmation is a statement about what the CLASSIFIER produced. Running it after the overrides
+    would compare against the corrected answer and never detect staleness at all.
+    """
+    entries = build()
+    entries, verified_count, stale = apply_verified(entries)
+    entries, override_count = apply_overrides(entries)
+    entries = ensure_removes_scope(entries)
+    return entries, verified_count, stale, override_count
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--review", action="store_true",
                         help="also write the docs/ sign-off worksheet")
     args = parser.parse_args()
 
-    entries = build()
-    entries, verified_count, stale = apply_verified(entries)
-    entries, override_count = apply_overrides(entries)
+    entries, verified_count, stale, override_count = generate()
 
     with open(OUT, "w", encoding="utf-8") as fh:
         json.dump(entries, fh, indent=2, ensure_ascii=False, sort_keys=True)

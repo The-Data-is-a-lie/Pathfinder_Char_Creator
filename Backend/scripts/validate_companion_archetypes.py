@@ -25,7 +25,7 @@ sys.path.insert(0, str(HERE))
 
 import build_companion_archetypes as bca                          # noqa: E402
 from validate_companion_data import (                             # noqa: E402
-    CREATURE_TYPES, EFFECTS, FLAGS, OUTCOMES,
+    CREATURE_TYPES, EFFECTS, FLAGS, OUTCOMES, REMOVES_SCOPES,
 )
 
 ROOT = HERE.parents[1]
@@ -108,6 +108,18 @@ def check_vocabulary(entries, source_label):
         if effect == "creature_type" and not ctype:
             errors.append(f"{source_label}: {key!r} claims effect 'creature_type' but names no "
                           f"creature")
+        # `removes_scope` decides whether the OTHER side of a choice-bond survives, so a typo here
+        # silently reverts to 'feature' and deletes a druid's domain along with its companion.
+        scope = entry.get("removes_scope")
+        effects_present = {(i.get("effect") if isinstance(i, dict) else i)
+                           for i in (entry.get("effects") or [])} | {effect}
+        if scope is not None and scope not in REMOVES_SCOPES:
+            errors.append(f"{source_label}: {key!r} removes_scope = {scope!r} is not in "
+                          f"{REMOVES_SCOPES}")
+        # NB: both directions of the removes/scope pairing are checked on the MERGED file by
+        # check_removes_scope, not here. An override is a partial patch: it may carry only
+        # `removes_scope` and inherit the effect from the generated entry it lands on, or restate
+        # the effect and inherit the scope. Neither is complete on its own.
         outcome = entry.get("outcome")
         if outcome is not None and outcome not in OUTCOMES:
             errors.append(f"{source_label}: {key!r} outcome = {outcome!r} is not in {OUTCOMES}")
@@ -145,12 +157,42 @@ def check_species_pools(entries, source_label, keys, aliases, unavailable):
                               f"spelling)")
 
 
+def check_removes_scope(on_disk):
+    """Every `removes` in the MERGED file must say what it took away.
+
+    Run on the merged data, not per source: an override is a partial patch and may restate the
+    effect while inheriting the scope from the generated entry underneath it.
+
+    This is the gate on the defect that motivated the field. `archetype_removed` used to be the
+    only outcome a `removes` could produce, which handed a druid with Blight/Urban/Storm Druid
+    NEITHER a companion nor a domain -- the entire nature bond, silently gone. The resolver now
+    branches on this value, so an entry without one is a rules question nobody answered.
+    """
+    for key, entry in sorted(on_disk.items()):
+        if not isinstance(entry, dict):
+            continue
+        present = {(i.get("effect") if isinstance(i, dict) else i)
+                   for i in (entry.get("effects") or [])} | {entry.get("effect")}
+        if "removes" not in present:
+            if entry.get("removes_scope") is not None:
+                errors.append(f"companion_archetypes.json: {key!r} carries removes_scope = "
+                              f"{entry['removes_scope']!r} but has no 'removes' effect for it to "
+                              f"scope -- build_companion_archetypes.ensure_removes_scope should "
+                              f"have dropped it")
+            continue
+        if entry.get("removes_scope") not in REMOVES_SCOPES:
+            errors.append(f"companion_archetypes.json: {key!r} has a 'removes' effect but "
+                          f"removes_scope = {entry.get('removes_scope')!r}; it must be one of "
+                          f"{REMOVES_SCOPES}. 'creature' leaves the other side of a choice-bond "
+                          f"reachable, 'feature' replaces the whole thing")
+
+
 def check_generated_is_current(on_disk):
     """The generated file must be exactly what the builder produces -- never hand-edited."""
-    # Must mirror build_companion_archetypes.main() exactly, including the verification pass --
-    # otherwise every run reports a stale file that is in fact current.
-    rebuilt, _, _ = bca.apply_verified(bca.build())
-    rebuilt, _ = bca.apply_overrides(rebuilt)
+    # `generate()` IS the pipeline -- one definition, called by both the builder's main() and here.
+    # This used to hand-copy the builder's call sequence, kept in step by a comment; see the
+    # docstring on bca.generate() for why that drifts silently rather than loudly.
+    rebuilt, _, _, _ = bca.generate()
     if json.dumps(rebuilt, sort_keys=True) != json.dumps(on_disk, sort_keys=True):
         missing = sorted(set(rebuilt) - set(on_disk))
         extra = sorted(set(on_disk) - set(rebuilt))
@@ -206,6 +248,7 @@ def main():
         check_keys_resolve(entries, label, archetypes)
         check_vocabulary(entries, label)
         check_species_pools(entries, label, keys, aliases, unavailable)
+    check_removes_scope(on_disk)
     check_generated_is_current(on_disk)
     check_completeness(on_disk, archetypes)
 

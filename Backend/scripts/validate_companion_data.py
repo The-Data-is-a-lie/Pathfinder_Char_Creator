@@ -77,6 +77,10 @@ EFFECTS = ('removes', 'forces', 'species_pool', 'progression', 'creature_type', 
 # What `creature_type` may name. Closed, so a typo cannot invent a subsystem: the resolver has to
 # know how to degrade for each one.
 CREATURE_TYPES = ('drake', 'eidolon', 'construct', 'undead', 'plant', 'elemental', 'outsider')
+# What a `removes` took away. `creature` leaves the other side of a choice-bond reachable (a blight
+# druid loses the companion but keeps the domain); `feature` replaces the whole thing, so nothing
+# survives. Closed, because the resolver branches on it -- a typo would silently mean `feature`.
+REMOVES_SCOPES = ('creature', 'feature')
 FLAGS = ('species_pool_unavailable',)
 
 errors = []

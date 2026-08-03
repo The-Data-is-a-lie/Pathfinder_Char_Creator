@@ -1,7 +1,14 @@
 """Fixture gate for the companion-archetype classifier -- the 15 human-signed verdicts.
 
-    C:\\Python310\\python.exe Backend/scripts/test_companion_archetype_classifier.py
-    C:\\Python310\\python.exe Backend/scripts/test_companion_archetype_classifier.py -v
+    C:\\Python310\\python.exe Backend/scripts/validate_companion_archetype_classifier.py
+    C:\\Python310\\python.exe Backend/scripts/validate_companion_archetype_classifier.py -v
+
+NAMED `validate_` DELIBERATELY. It was `test_companion_archetype_classifier.py`, which meant
+`validate_all.py` -- whose whole design is discovery by glob over `validate_*.py` -- never picked it
+up, and neither did CI. It passed only when somebody ran it by hand, while looking exactly like a
+wired gate (argparse, -v, PASS/FAIL, this docstring). A regex tweak in the builder could silently
+re-break every trap below with the build still green. It IS a data gate by this repo's own
+definition: it asserts the classifier still reproduces the signed verdicts.
 
 Map #18, ticket #40. The first pass of `build_companion_archetypes.py` classified by running generic
 regexes over a whole-archetype prose blob, and scored **6 of 15** against the first batch of human

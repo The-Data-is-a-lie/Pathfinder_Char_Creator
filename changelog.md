@@ -347,6 +347,15 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   assertion handles.
 
 ### Changed
+- **One definition of the archetype pipeline, and one owner for its vocabulary.**
+  `build_companion_archetypes.generate()` is now the single statement of what the generated file is
+  (classify → confirm → correct → guarantee a `removes_scope`); `validate_companion_archetypes.py`
+  calls it instead of hand-copying the builder's call sequence, which was kept in step by nothing
+  but a comment reading "must mirror … exactly". The quiet failure was the dangerous one: a new
+  pipeline step added to one and not the other would leave the two agreeing by coincidence until it
+  first changed real output. The builder likewise imports `EFFECTS` from `validate_companion_data.py`
+  rather than restating it — the "restate a symbol instead of naming its owner" pattern CLAUDE.md
+  calls a bug magnet.
 - **The archetype classifier reads clause by clause instead of blob by blob, and it now reproduces
   every human verdict.** The first pass concatenated an archetype's whole prose and matched generic
   regexes over it; measured against the first 15 signed sign-offs it scored **6/15**. The blob was
@@ -499,6 +508,51 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     as unavailable, with guidance, rather than invented.
 
 ### Fixed
+- **A druid whose archetype removes the animal companion keeps its domain.** Six archetypes —
+  Blight Druid, Nithveil Adept, Storm Druid, Urban Druid, Life Channeler and Ancient Guardian —
+  forbid the *creature* while leaving the other half of the nature bond reachable ("a blight druid
+  may not bond with an animal companion, but may … select from the Darkness, Death, and Destruction
+  domains"). The resolver collapsed every `removes` to `archetype_removed`, and the domain gate
+  fires only on `domain`, so those druids generated with **no companion and no domain** — the entire
+  class feature silently gone.
+  - **`removes` now says WHAT it removed.** A new `removes_scope` on each entry is either `creature`
+    (the other side of a choice-bond survives) or `feature` (the whole thing is replaced, so nothing
+    does). `feature` is the default because it is both conservative and overwhelmingly common: all
+    25 Ranger and all 18 Wizard `removes` entries read "this ability replaces hunter's bond / arcane
+    bond". Druid is the only class with a genuine split, 6 and 6 — Death Druid, Feral Shifter,
+    Halcyon Druid, Progenitor, Tempest Druid and Urushiol trade the bond away for a phantom, a
+    bonded mask, an aura or a poison, and correctly still get nothing.
+  - *Rejected:* falling through unconditionally for every choice-bearing class. It would have fixed
+    six archetypes and broken five, handing a domain to archetypes whose rules text gives it up. The
+    scoped version needed six entries marked and no re-reading of the other 93 signed `removes`.
+  - The value is closed by `validate_companion_archetypes.py` in both directions on the *merged*
+    file — a `removes` without a scope fails, and a scope without a `removes` fails — because an
+    override is a partial patch and neither file is complete alone.
+  - **This also retires a measurement that could not have caught it.** The "both = 0, neither = 0
+    over 400 generations" figure recorded for the druid flip never rolled an archetype, so it could
+    not reach the broken path at all. A sample that cannot reach a defect reports zero forever.
+- **A companion fed by two classes is built from the right row of the advancement table.** Sources
+  of the same creature type stack their effective levels, but the chassis was read at each row's own
+  *pre-stack* level and never re-read, so a hunter 8 / druid 6 stacked to effective level 14 while
+  keeping the druid's level-6 row — HD 6 instead of 12, three feats instead of six — and
+  `animal_feats` drew from the stale row too.
+- **The companion stack has a golden payload at last.** All five existing goldens carry
+  `animal_companion: null`, so map #18 — the grantor table, the species ladder, the archetype
+  effects, the chassis — had no end-to-end coverage whatsoever, which is precisely how the stacking
+  defect above survived a review. The new `companion` config rolls hunter 8 / druid 6 and pins the
+  stacked chassis. The seed pair was chosen deliberately: most adjacent companion-table levels
+  differ, but 6→7 does not, so a closer pair would have pinned nothing.
+- **The classifier's fixture gate actually runs now.** It was
+  `test_companion_archetype_classifier.py`, while `validate_all.py` discovers gates by globbing
+  `validate_*.py` — so neither the runner nor CI ever invoked it, and its 17/17 was only ever true
+  when somebody ran it by hand, from a file that looks exactly like a wired test. Renamed to
+  `validate_companion_archetype_classifier.py`; the existing glob now finds it, with nothing to
+  register. **Twelve validators run, not eleven.**
+- **`validate_companion_names.py` can fail at the thing it exists for.** Its `--strict` flag was
+  passed by nobody, so the name-match rate it polices could regress from 52 misses to 150 and the
+  build would stay green. A miss is still legitimate — the module degrades to a bare `npc` by D3 —
+  so the gate is now a ratchet on `UNMATCHED_BASELINE`, which fails only on *regression*.
+  *Rejected:* wiring `--strict`, which would fail the build today over 52 known and accepted misses.
 - **Eleven animal companions the generator could never roll are reachable, and advanced companions
   stopped gaining +2 AC they were never owed.** `Backend/json/animal_choices.json` carried five
   distinct scrape defects, repaired by the new idempotent
