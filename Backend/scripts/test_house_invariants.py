@@ -191,10 +191,11 @@ def check_character(cell, payload):
             row = min(max(m['manifester_level'], 1), 20) - 1
 
             if name in _NO_MANIFESTING:
-                check(not m['manifesting_stat'] and not m['pp_per_day'] and not m['powers_chosen'],
+                check(not m['manifesting_stat'] and not m['pp_per_day'] and not m['powers_chosen']
+                      and not m['caster_type'],
                       f"{tag}: manifests nothing, but carries "
                       f"stat={m['manifesting_stat']!r} pp={m['pp_per_day']} "
-                      f"powers={len(m['powers_chosen'])}")
+                      f"caster_type={m['caster_type']!r} powers={len(m['powers_chosen'])}")
                 continue
 
             check(m['manifesting_stat'] in ('str', 'dex', 'con', 'int', 'wis', 'cha'),
@@ -202,6 +203,10 @@ def check_character(cell, payload):
             # A key ability of 9 or lower cannot manifest AT ALL -- not badly, at all -- so the
             # whole record legitimately reads zero. Everything below assumes the gate is passed.
             if final_mod(payload, m['manifesting_stat']) < 0:
+                # caster_type moves with the points: handing Foundry a progression on a book worth
+                # zero points would have the module compute points the rules deny this character.
+                check(not m['caster_type'],
+                      f"{tag}: cannot manifest, but carries caster_type {m['caster_type']!r}")
                 continue
 
             # Power points = the class table at manifester level, PLUS floor(mod x ML / 2). The
@@ -211,6 +216,13 @@ def check_character(cell, payload):
             bonus = max(0, floor(final_mod(payload, m['manifesting_stat']) * m['manifester_level'] / 2))
             check(m['pp_per_day'] == base_pp + bonus,
                   f"{tag}: pp {m['pp_per_day']} != table {base_pp} + bonus {bonus}")
+            # caster_type is the pf1-psionics progression name the Foundry manifester book needs.
+            # Recomputed from the class's own table rather than trusted: a wrong one is invisible
+            # in the payload and shows up in Foundry as a plausible but wrong power-point total.
+            want_type = next((k for k, v in data.psionic_pp_tables.items()
+                              if v == table.get('pp_per_day')), '')
+            check(m['caster_type'] == want_type,
+                  f"{tag}: caster_type {m['caster_type']!r} != {want_type!r} for its pp table")
 
             if name in _PP_ONLY:
                 check(not m['powers_chosen'],
@@ -231,6 +243,18 @@ def check_character(cell, payload):
                   f"but {len(m['powers_chosen'])} powers were chosen")
             check(len(set(m['powers_chosen'])) == len(m['powers_chosen']),
                   f"{tag}: duplicate powers in powers_chosen")
+            # powers_by_level is the only record of WHICH power sits at which level -- the
+            # description entry keys its levels by power list ("psion/wilder"), not by class, so a
+            # renderer cannot recover it. Both renderers group by these buckets.
+            buckets = m['powers_by_level']
+            check(len(buckets) == want_max + 1,
+                  f"{tag}: powers_by_level has {len(buckets)} buckets, expected {want_max + 1} "
+                  f"(levels 0..{want_max})")
+            check(sorted(p for b in buckets for p in b) == sorted(m['powers_chosen']),
+                  f"{tag}: powers_by_level does not reconcile with powers_chosen")
+            check([len(b) for b in buckets] == m['powers_known_list'],
+                  f"{tag}: powers_known_list {m['powers_known_list']} != bucket sizes "
+                  f"{[len(b) for b in buckets]}")
             # Same failure the Metzofitz-feat check guards: a name with no rules text renders as an
             # empty row in Foundry and as nothing at all on the web sheet.
             missing = [p for p in m['powers_chosen'] if not descs.get(p)]

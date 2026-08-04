@@ -50,6 +50,39 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     — the class entry already exists and already carries the class's other key ability, so one row
     owning both beats two places that can drift. It stays distinct from `main_stat` because the
     questions differ: a psychic warrior manifests off Wisdom but plays off Strength.
+- **Psionic characters now show their psionics on both sheets.** Generation already picked the
+  powers; nothing downstream rendered them. A manifester imported into Foundry arrived with no
+  Psionics tab at all, and the only way to reveal one was to add a psionics class to the manifester
+  book by hand. Both front ends now build themselves from the payload.
+  - **The FoundryVTT module fills the `pf1-psionics` manifester books** (module repo,
+    `scripts/modify-abilities.js`). `pf1-psionics` gates its entire Psionics tab on a single flag —
+    whether any manifester book is marked in use — and reads nothing else: not a class item, not a
+    class tag, not a power. Writing that flag per manifesting class *is* the fix. Powers become real
+    `pf1-psionics.power` items, cloned from the module's own compendium where the name matches and
+    synthesized from `powers_desc_dict` where it does not, the same way Path of War maneuvers
+    already resolve. Misses are expected, not a defect: a measured 67 of the powers are
+    Metzofitz-only content that exists in no compendium.
+  - **Power points stay the module's to compute**, because its published tables and ours are the
+    same twenty numbers and `validate_psionics_data.py` asserts exactly that on every run. The
+    generator seeds the *current* pool instead, so a rolled NPC arrives rested. *Rejected:* pinning
+    our number into the book's formula, which would have two owners for one fact.
+  - **With `pf1-psionics` absent, powers become feat items** plus a per-class power-point pool,
+    mirroring the Path of War fallback. *Rejected:* skipping psionics entirely, which would import a
+    manifester with no trace of what it can do.
+  - **The standalone web sheet gained a Psionics tab**, beside Path of War: manifester level,
+    manifesting ability, max power level, discipline, an editable power-point tracker with a Rest
+    button, and powers grouped into collapsible per-level blocks. Non-manifesters see an empty
+    state, and the soulknife — which manifests nothing — is correctly not one.
+  - **The payload gained two fields the renderers could not derive.** `caster_type` on each
+    manifester entry is the low/med/high progression the Foundry book needs, derived by matching the
+    class's own power-point column against the published tables rather than hand-maintained in a
+    second map. `powers_by_level` names which power sits at which level: `psionic_powers.json` keys
+    a power's level by power *list* ("psion/wilder"), not by class, so the level a psion learns a
+    power at survives nowhere else. `powers_known_list` is now counted from those buckets, so the
+    two views cannot disagree.
+  - **A `manifester` golden payload** (seeded psion 8 / aegis 6) pins power selection for the first
+    time — the other six goldens all carry `manifesters: []`. One character covers two of the three
+    manifester shapes, including the points-but-no-powers aegis that a naive renderer drops.
 - **The Open Game License artifacts that psionics obliges.** Serving extracted game mechanics over
   HTTP is Distribution under section 10, so the licence now ships with them: a root
   `LICENSE-OGL.txt`, an Open Game Content notice marking the psionics data subtree (and marking the

@@ -2361,6 +2361,21 @@ psionic_classes_pending = []
 # and the soulknife (which has neither powers nor power points) -- and the payload models all three.
 psionic_pp_only_classes = ["aegis"]
 
+# The three power-points-per-day progressions, verbatim from pf1-psionics
+# scripts/data/powerpoints.mjs (POINTS_PER_LEVEL), captured 2026-07-31. Lives here rather than in
+# the validator because two consumers need it and a second copy would drift:
+# validate_psionics_data.py asserts every scraped class's pp_per_day column equals one of these
+# (the load-bearing cross-source check -- two independently-authored sources agreeing on twenty
+# numbers), and class_func/psionics.py reads the SAME match back out as the `caster_type` the
+# Foundry module wants on its manifester book. Derived, never hand-maintained: a class's caster
+# type is whichever row its table matches, so the validator is the gate on both at once.
+psionic_pp_tables = {
+    "low": [1, 2, 3, 5, 7, 9, 11, 14, 17, 20, 24, 28, 32, 37, 42, 47, 52, 58, 64, 70],
+    "med": [1, 2, 4, 6, 8, 12, 16, 20, 24, 28, 36, 44, 52, 60, 68, 80, 92, 104, 116, 128],
+    "high": [2, 6, 11, 17, 25, 35, 46, 58, 72, 88, 106, 126, 147, 170, 195, 221, 250, 280,
+             311, 343],
+}
+
 # NOTE: no "mystic" here -- the Path of War mystic is a generatable class; listing it would
 # silently re-filter it out of the random class pool (chooseClass excludes occult_classes).
 occult_classes = ["occultist", "kineticist", "medium", "mesmerist", "psychic", "spiritualist", ]

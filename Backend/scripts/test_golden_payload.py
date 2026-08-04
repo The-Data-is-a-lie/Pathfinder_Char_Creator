@@ -21,8 +21,9 @@ them breaks this test (see changelog):
   * Ollama is severed below, so the backstory/archetype paths can't vary with a live model.
 
 The configs deliberately span code paths that would otherwise go uncovered: a martial with no
-spellcasting, a prepared caster with domains/school buckets, a multiclass Spheres build, and a
-Path of War initiator.
+spellcasting, a prepared caster with domains/school buckets, a multiclass Spheres build, a
+Path of War initiator, a stacked bonded creature, and a psionic manifester paired with a
+points-only one.
 """
 import argparse
 import json
@@ -112,6 +113,21 @@ CONFIGS = {
     'companion': dict(_BASE, seed=7323, userInput_race='Human', class_choice='druid',
                       chosen_BAB='medium', multi_class='Y', alignment_input='NG',
                       userInput_gender='female', high_level=14, low_level=14),
+    # A MANIFESTER, AND A POINTS-ONLY ONE. The six configs above all carry `manifesters: []`, so
+    # power selection -- the pool filter, the level-weighted pick, the discipline bias, the
+    # powers_by_level buckets both renderers group on -- had no pinned output anywhere.
+    #
+    # This seed rolls psion 7 / aegis 7, which is the pair worth pinning: "manifester" is three
+    # shapes (utils/class_func/psionics.py) and one character covers two of them. The psion carries
+    # powers, a mandated discipline and the 'high' power-point progression; the aegis carries power
+    # points and NO powers, the shape a naive renderer drops on the floor. Two entries also means
+    # the Foundry module has to fill two manifester books rather than assuming one.
+    #
+    # Chosen by sweeping 8000-8090 for a psion+aegis pair and taking the richest (17 powers). If
+    # this comment stops matching the golden, the RNG stream moved: re-sweep, do not edit the prose.
+    'manifester': dict(_BASE, seed=8018, userInput_race='Human', class_choice='psion',
+                       chosen_BAB='low', multi_class='Y', alignment_input='NG',
+                       userInput_gender='female', high_level=14, low_level=14),
 }
 
 

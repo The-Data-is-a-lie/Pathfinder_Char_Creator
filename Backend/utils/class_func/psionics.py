@@ -87,6 +87,24 @@ def _progression(character, class_name, column, level):
     return values[max(0, min(level, 20) - 1)]
 
 
+def caster_type(character, class_name):
+    """The class's power-point progression as pf1-psionics names it: 'low', 'med', 'high' or ''.
+
+    DERIVED, not stored: it is whichever of the three published tables the class's own pp_per_day
+    column equals. A hand-maintained map would be a second thing to keep in sync with the scrape,
+    and validate_psionics_data.py already fails the run when a class matches none of the three --
+    so an unrecognised progression is a build error there, never a silent '' here.
+
+    The Foundry module needs this on the manifester book (`casterType`): it selects the module's
+    own power-point table, and a book without it computes zero points.
+    """
+    table = getattr(character, 'psionic_powers_known', {}).get(class_name, {})
+    column = table.get('pp_per_day') or []
+    if not column:
+        return ''
+    return next((name for name, values in data.psionic_pp_tables.items() if values == column), '')
+
+
 def bonus_power_points(modifier, manifester_level):
     """floor(key ability modifier x manifester level / 2), never negative.
 
@@ -275,9 +293,15 @@ def choose_psionics_attr(character):
             'level': entry['level'],
             'manifester_level': level,
             'manifesting_stat': stat,
+            # Stays '' for anything that cannot manifest -- the soulknife, and a manifester whose
+            # key ability failed the score gate below. It moves with pp_per_day on purpose: a
+            # caster type on a zero-point book would have the Foundry module compute points for a
+            # character the rules say has none.
+            'caster_type': '',
             'pp_per_day': 0,
             'max_power_level': 0,
             'powers_known_list': [],
+            'powers_by_level': [],
             'powers_chosen': [],
             'discipline': '',
         }
@@ -298,6 +322,7 @@ def choose_psionics_attr(character):
         base_pp = _progression(character, name, 'pp_per_day', level)
         record['pp_per_day'] = base_pp + bonus_power_points(modifier, level)
         record['max_power_level'] = _progression(character, name, 'max_power_level', level)
+        record['caster_type'] = caster_type(character, name)
 
         # The aegis manifests but knows no powers -- it has power points and nothing to spend them
         # on but its astral suit. POWER_LIST_FOR has no entry for it, so the pool stays empty.
@@ -321,9 +346,15 @@ def choose_psionics_attr(character):
         chosen = _pick_powers(character, pool, known, max_level)
 
         record['powers_chosen'] = [_emit_name(character, n) for n in chosen]
-        # One count per power level 0..max, the shape the sheet groups by.
-        record['powers_known_list'] = [sum(1 for n in chosen if pool[n] == lvl)
-                                       for lvl in range(0, max(max_level, 0) + 1)]
+        # One bucket per power level 0..max -- path_of_war's maneuvers_choose_from shape. This is
+        # the ONLY place a power's level survives: psionic_powers.json keys its levels by power
+        # LIST ("psion/wilder"), not by class, so no renderer can recover the level of a psion's
+        # power from the description entry. `pool` is the class's own list, so pool[n] is exactly
+        # the level this class learns it at.
+        record['powers_by_level'] = [[_emit_name(character, n) for n in chosen if pool[n] == lvl]
+                                     for lvl in range(0, max(max_level, 0) + 1)]
+        # Derived from the buckets rather than recounted, so the two can never disagree.
+        record['powers_known_list'] = [len(bucket) for bucket in record['powers_by_level']]
         for power in chosen:
             bundle['powers_desc_dict'][_emit_name(character, power)] = _desc_entry(character, power)
 
