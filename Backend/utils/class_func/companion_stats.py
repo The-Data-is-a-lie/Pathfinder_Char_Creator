@@ -49,12 +49,16 @@ WHERE EVERY NUMBER COMES FROM (ticket 01, same grill)
              `natural armor bonus`). `touch` drops natural armour, `flat_footed` drops Dex.
 `saves`      chassis `fort`/`ref`/`will` (these ARE the base saves) + Con / Dex / Wis.
 `bab`        chassis `bab`, verbatim.
+`initiative` Dex alone; a companion has no class feature that touches it.
 `cmb`/`cmd`  PF1e: BAB + Str + size special; 10 + BAB + Str + Dex + size special.
 `attacks`    parsed out of the `attack` prose. Natural attacks are primary, so each is at full BAB +
              Str + size. Damage is as printed; a creature with exactly ONE natural attack adds 1.5x
              Str, per PF1e.
 `skills`     the chassis row's `skills` total, spent over the RAW animal list and capped at HD.
 `speed`      the merged `speed` string, verbatim.
+
+Then, LAST, the feats and flaws the resolver rolled are folded on top -- see "The modifier fold"
+below. Everything above is the chassis; `applied_changes` is the diff.
 
 THE HOUSE RULES THAT CARRY, AND THE ONE THAT DOES NOT
 -----------------------------------------------------
@@ -65,6 +69,8 @@ total. There is nothing for the floor to key off, so it does not apply. The per-
 (HD), not the house 3x-level cap, for the same reason. The feat economy already went this way in
 `animal_companions.animal_feats`.
 """
+import json
+import os
 import random
 import re
 import zlib
@@ -250,18 +256,22 @@ def _abilities(merged, chassis):
     return scores
 
 
-def _rng(entry):
+def _rng(entry, salt=''):
     """A generator OF THIS CREATURE'S OWN, never the module-level `random`.
 
-    Two ranks of skill allocation are the only randomness in a stat block, and drawing them from the
-    global stream would shift every roll made after this point in the pipeline -- so adding a
-    companion's skills would churn that character's feats, items and backstory too, and every future
-    diff would carry the noise. Seeded off the identity the resolver already rolled (species, name,
-    sex, level, grantor), so a replayed generation reproduces exactly and two wolves of the same
-    level still differ.
+    Skill allocation, feat picks and flaw rolls are all drawn here, and drawing them from the global
+    stream would shift every roll made after this point in the pipeline -- so a companion's feats
+    would churn that character's items and backstory too, and every future diff would carry the
+    noise. Seeded off the identity the resolver already rolled (species, name, sex, level, grantor),
+    so a replayed generation reproduces exactly and two wolves of the same level still differ.
+
+    `salt` gives an independent stream to each consumer. Without it, adding one feat pick would
+    walk the skill allocation off its old values for reasons that have nothing to do with skills.
     """
     material = '|'.join(str(entry.get(field)) for field in
                         ('species', 'name', 'sex', 'effective_level', 'grantor', 'type'))
+    if salt:
+        material = f'{material}|{salt}'
     return random.Random(zlib.crc32(material.encode('utf-8')))
 
 
@@ -272,6 +282,180 @@ def _hit_points(character, hd, die, con_mod, rng):
     else:
         rolled = sum(rng.randint(1, die) for _ in range(hd))
     return max(1, rolled + con_mod * hd)
+
+
+# ---------------------------------------------------------------------------------------------
+# The modifier fold (spec section 8, D14)
+# ---------------------------------------------------------------------------------------------
+#
+# A companion's feats and flaws ALWAYS apply, so their numbers belong in this stat block -- D2 makes
+# it the only source the standalone web sheet has. The Foundry module therefore attaches feat and
+# flaw items with `system.changes` STRIPPED (`createCompanions.js`), so pf1 cannot apply the same
+# bonus a second time. Buffs are the other half of that contract: they stay situational, keep their
+# changes and ship INACTIVE, so they can never double-count and are never folded here.
+#
+# Which pf1 change target lands where. A target absent from this map is not silently dropped -- it
+# is reported on `stats.unapplied`, the same holdback discipline D12 set for `progression_override`.
+MODIFIER_TARGETS = {
+    'mhp': 'hp',
+    'ac': 'ac',
+    'nac': 'natural_armor',
+    'fort': 'saves.fort',
+    'ref': 'saves.ref',
+    'will': 'saves.will',
+    'init': 'initiative',
+    'cmb': 'cmb',
+    'cmd': 'cmd',
+    'attack': 'attacks',
+}
+# `skill.<pf1 id>` is handled by prefix rather than by key, against data.SKILL_IDS.
+SKILL_TARGET_PREFIX = 'skill.'
+
+# The expression language `companion_feat_changes.json` / the flaw files may use in a `formula`.
+# Deliberately tiny: integers, ability-modifier tokens, @hd, + and -, and max(a, b). Anything richer
+# is prose and belongs in contextNotes -- which is why this is a hand-written reader and not `eval`.
+FORMULA_TOKENS = ('@str', '@dex', '@con', '@int', '@wis', '@cha', '@hd')
+_MAX_RE = re.compile(r'^\s*max\s*\(\s*(.+?)\s*,\s*(.+?)\s*\)\s*$', re.IGNORECASE)
+_TERM_RE = re.compile(r'([+-]?)\s*(@[a-z]+|\d+)')
+
+
+class FormulaError(ValueError):
+    """A formula the mini-language cannot read. Raised so the validator can name the offender."""
+
+
+def eval_formula(formula, context):
+    """Resolve a `changes[].formula` to an int. `context` supplies the tokens (mods plus `hd`).
+
+    Raises `FormulaError` rather than guessing, because a silently-zero bonus is the failure mode
+    this whole fold exists to prevent.
+    """
+    if isinstance(formula, (int, float)):
+        return int(formula)
+    text = str(formula or '').strip()
+    if not text:
+        raise FormulaError('empty formula')
+
+    match = _MAX_RE.match(text)
+    if match:
+        return max(eval_formula(match.group(1), context), eval_formula(match.group(2), context))
+
+    total, consumed = 0, 0
+    for sign, term in _TERM_RE.findall(text):
+        if term.startswith('@'):
+            if term not in FORMULA_TOKENS:
+                raise FormulaError(f'unknown token {term!r} in {text!r}')
+            value = int(context.get(term[1:]) or 0)
+        else:
+            value = int(term)
+        total += -value if sign == '-' else value
+        consumed += 1
+    if not consumed:
+        raise FormulaError(f'nothing to read in {text!r}')
+    # Guard against a formula the term scan quietly skipped part of (`2 * @hd`, `floor(x/2)`).
+    leftovers = _TERM_RE.sub('', text).replace(' ', '')
+    if leftovers:
+        raise FormulaError(f'unreadable remainder {leftovers!r} in {text!r}')
+    return total
+
+
+def _skill_names_by_id():
+    return {pf1_id: name for name, pf1_id in data.SKILL_IDS.items()}
+
+
+def _apply_one(stats, target, value, bonus_type, skill_names, modes):
+    """Add `value` to whatever `target` names. Returns None on success, else why it was refused."""
+    if target.startswith(SKILL_TARGET_PREFIX):
+        name = skill_names.get(target[len(SKILL_TARGET_PREFIX):])
+        if name is None:
+            return f'change target {target!r} is not a pf1 skill id'
+        # A feat bonus applies whether or not the creature spent ranks here, so an unranked skill is
+        # created rather than skipped -- Acrobatic gives +2 Acrobatics to a wolf with no ranks in it.
+        # The one exception is a movement-gated skill the body has no speed for: `_eligible_skills`
+        # already refuses to sell a wolf ranks in Fly, and inventing the row here would put it back.
+        if name in MOVEMENT_SKILLS and name not in modes and name not in stats['skills']:
+            return f'{value:+d} {name} not totalled in -- the body has no {name} speed'
+        slot = stats['skills'].setdefault(name, {'ranks': 0, 'total': 0})
+        slot['total'] += value
+        return None
+
+    field = MODIFIER_TARGETS.get(target)
+    if field is None:
+        return f'no stat-block field for change target {target!r}'
+    if field == 'attacks':
+        for attack in stats.get('attacks') or []:
+            if attack.get('atk') is not None:
+                attack['atk'] += value
+        return None
+    if field == 'natural_armor':
+        # Natural armour is in AC and flat-footed AC; touch AC is what ignores it.
+        stats['natural_armor'] += value
+        stats['ac'] += value
+        stats['flat_footed_ac'] += value
+        return None
+    if field == 'ac':
+        stats['ac'] += value
+        # A dodge bonus counts against touch attacks and is exactly what being flat-footed loses.
+        # Anything else here is an untyped/deflection-style bonus, which applies to all three.
+        stats['touch_ac'] += value
+        if str(bonus_type or '').lower() != 'dodge':
+            stats['flat_footed_ac'] += value
+        return None
+    if field.startswith('saves.'):
+        stats['saves'][field.split('.', 1)[1]] += value
+        return None
+    stats[field] = stats.get(field, 0) + value
+    return None
+
+
+def apply_modifiers(stats, sources, mods, hd):
+    """Fold every feat / flaw effect into `stats`, in place, and record what happened.
+
+    `sources` is [(label, {changes, contextNotes, unapplied})] -- feats from
+    `companion_feat_changes.json`, flaws from the creature's own `flaw_effects`. Writes:
+
+      `stats.applied_changes`  one record per change that landed: source, target, value.
+      `stats.context_notes`    the situational text, which is real but not a number.
+      `stats.unapplied`        every effect this block cannot express, named rather than dropped.
+
+    The provenance matters as much as the arithmetic: `stats` is FINAL for the web sheet, so without
+    `applied_changes` there is no way to explain why a wolf's HP is 3 higher than its chassis says.
+    """
+    context = {stat: (mods.get(stat) or 0) for stat in STATS}
+    context['hd'] = hd
+    skill_names = _skill_names_by_id()
+    speed = str(stats.get('speed') or '').lower()
+    modes = {name for name, word in MOVEMENT_SKILLS.items() if word in speed}
+
+    applied, notes, unapplied = [], [], list(stats.get('unapplied') or [])
+    for label, effect in sources:
+        effect = effect or {}
+        for change in effect.get('changes') or []:
+            target = str(change.get('target') or '')
+            try:
+                value = eval_formula(change.get('formula'), context)
+            except FormulaError as error:
+                unapplied.append(f'{label}: {error}')
+                continue
+            if not value:
+                continue
+            refused = _apply_one(stats, target, value, change.get('type'), skill_names, modes)
+            if refused:
+                unapplied.append(f'{label}: {refused}')
+            else:
+                applied.append({'source': label, 'target': target, 'value': value})
+        for note in effect.get('contextNotes') or []:
+            text = note.get('text') if isinstance(note, dict) else note
+            if text:
+                notes.append({'source': label, 'target': (note or {}).get('target')
+                              if isinstance(note, dict) else None, 'text': text})
+        unapplied.extend(f'{label}: {item}' if not str(item).startswith(label)
+                         else str(item) for item in effect.get('unapplied') or [])
+
+    stats['applied_changes'] = applied
+    stats['context_notes'] = notes
+    if unapplied:
+        stats['unapplied'] = unapplied
+    return stats
 
 
 def _split_top_level(text, separator):
@@ -527,6 +711,10 @@ def companion_stats(character, entry):
             'will': int(chassis.get('will') or 0) + (mods.get('wis') or 0),
         },
         'bab': bab,
+        # Initiative is Dex alone for a creature with no class features that touch it. It exists as
+        # its own field because Improved Initiative is in the companion feat pool and `init` has to
+        # have somewhere to land.
+        'initiative': dex_mod,
         'cmb': bab + str_mod + geometry['special'],
         'cmd': 10 + bab + str_mod + dex_mod + geometry['special'],
         'speed': merged.get('speed'),
@@ -549,7 +737,55 @@ def companion_stats(character, entry):
         stats['unapplied'] = ['progression_override: ' +
                               str(entry['progression_override'].get('why')
                                   or entry['progression_override'].get('source') or 'see archetype')]
+
+    # D14: the feats and flaws the resolver rolled are folded in LAST, on top of the chassis numbers,
+    # so `applied_changes` reads as a diff against a stat block that is otherwise pure chassis.
+    apply_modifiers(stats, modifier_sources(entry), mods, hd)
     return stats
+
+
+_FEAT_CHANGES_CACHE = None
+
+
+def feat_change_data():
+    """`companion_feat_changes.json`, cached. Separate from `feat_changes.json` on purpose -- see
+    that file's `_readme`: the pf1 compendium already automates 12 of these feats, and a PC keeps its
+    compendium item's changes, so sharing one file would double-apply on every PC sheet."""
+    global _FEAT_CHANGES_CACHE
+    if _FEAT_CHANGES_CACHE is None:
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                            '..', '..', 'json', 'feats', 'companion_feat_changes.json')
+        try:
+            with open(path, encoding='utf-8') as handle:
+                loaded = json.load(handle)
+        except (OSError, ValueError):
+            loaded = {}
+        _FEAT_CHANGES_CACHE = {key: value for key, value in loaded.items()
+                               if not str(key).startswith('_')}
+    return _FEAT_CHANGES_CACHE
+
+
+def modifier_sources(entry):
+    """[(label, effect)] for every feat and flaw on the entry, in the order they are displayed.
+
+    Feat-tax children count exactly like the feats that bought them -- they are feats the creature
+    owns -- so they contribute their own changes rather than riding on the primary's.
+    """
+    changes = feat_change_data()
+    sources = []
+    for name in list(entry.get('feats') or []) + list(entry.get('flaw_feats') or []):
+        effect = changes.get(name)
+        if effect:
+            sources.append((name, effect))
+    for primary, children in (entry.get('feat_tax_dict') or {}).items():
+        for child in children or []:
+            effect = changes.get(child)
+            if effect:
+                sources.append((f'{child} (via {primary})', effect))
+    for name, effect in (entry.get('flaw_effects') or {}).items():
+        tier = str((effect or {}).get('tier') or 'minor').title()
+        sources.append((f'({tier} flaw) {name}', effect))
+    return sources
 
 
 # Merged keys that a named field above already carries. Everything else survives into `stats.other`.
