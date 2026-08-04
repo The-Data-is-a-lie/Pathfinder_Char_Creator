@@ -19,6 +19,68 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Animal companions and mounts build like characters now.** A bonded creature used to arrive as a
+  stat block and a list of feat names picked at random out of a bag. It now chooses feats it actually
+  qualifies for, records which level each one came from, pays feat taxes, rolls its own mechanical
+  flaws, and reaches a Foundry sheet with the same dividers, tracker groups and basic buffs a player
+  character gets. Spec: `docs/feature_spec_todo.md` §8 **D14/D15/D16**.
+  - **Feats are labelled like class bonus feats** — `Animal Companion 5: Weapon Focus`, beside a
+    PC's `Fighter 1: Weapon Focus`. The number is the effective level at which that slot opened,
+    read off the chassis table's own `feats` column, which also anchors the feat-tax cadence.
+    *Rejected:* labelling by HD, and by species.
+  - **The 27-name feat pool was canonicalised and gated.** It held a dozen lowercase spellings and
+    one entry, `armor proficiency (light, medium, and heavy)`, that is not a feat in either
+    `data/feats.csv` or the pf1 compendium — so it could never resolve, and the module would have
+    attached a bare item with no rules text. It is now 29 canonical names, and picks are checked
+    against the creature's own ability scores and BAB one at a time, so a chain can build itself
+    (Dodge → Mobility → Spring Attack) and a Str 6 body cannot take Power Attack.
+  - **Feat tax runs, behind a curated allowlist.** The pool's feats open **128** distinct chain
+    children, and a prerequisite reader cannot refuse most of them — *Drunken Brawler*, *Wand
+    Dancer*, *Sword and Pistol* and *Arcane Armor Training* all have prerequisites an animal
+    genuinely meets. `tax_children` in `animal_companion.json` is the 23 that suit a body, each one
+    verified reachable and grantable. *Rejected:* confining tax to the pool, which would have fired
+    exactly once (`endurance → diehard`); and trusting the prerequisite reader alone.
+  - **A new animal flaw catalogue** (`Backend/json/flaws/animal_flaw_effects.json`, 12 minor / 10
+    major: Skittish, Gun-Shy, Old Wound, One-Eyed, Lame, Ill-Tempered …) on the PC's own ladder —
+    1st minor, 2nd major, 80/20 thereafter — buying bonus feats on the same diminishing scale.
+    *Rejected:* filtering the PC's 44 down to the animal-safe ones; about eight survive, so every
+    companion would have repeated the same flaws.
+  - **Feat and flaw effects are folded into the payload's numbers, and the sheet is told not to
+    re-apply them.** `stats.applied_changes` records every fold with its source, so a companion's HP
+    can be explained rather than just trusted, and the Foundry module strips `system.changes` off
+    every feat and flaw item. Buffs take the opposite rule: they keep their changes and ship
+    **inactive**, because they are situational and nothing counted them. *Rejected:* letting pf1
+    derive from intact changes — the standalone web sheet has no game system, so it would have been
+    wrong by exactly the feat bonuses.
+- **The six Occult Adventures classes generate.** `occultist`, `kineticist`, `medium`, `mesmerist`,
+  `psychic` and `spiritualist` are now in the default random pool — they had been filtered out since
+  the generator was written. Each one makes its own class choices, and the five casters get a
+  psychic-magic spellbook. Spec: `docs/feature_spec_todo.md` §10.
+  - **They were held out for a reason that turned out not to apply to them.** A compendium census
+    (`docs/wayfinder/class-pool/issues/01`) found all six fully present in the installed `pf1`
+    11.11 — class Item, features *and* choice pools. The renderer objection that the list was built
+    around is real only for the Path of War stalker and zealot, which `pf1-pow` 1.6.4 genuinely does
+    not ship; those two stay pending, now with a named blocker instead of a bare list entry.
+  - **The option pools are harvested, not authored.** `Backend/scripts/build_occult_class_data.py`
+    reads the Foundry compendia and writes 449 options into `Backend/json/class_data/<class>.json`.
+    *Rejected:* scraping d20pfsrd / Archive of Nethys. §8's familiar work had found `pf-content` too
+    thin to generate from, so this was checked rather than assumed — and this time the packs are
+    complete, because the class Item's `classAssociations` gives an exact granted-vs-selectable split
+    instead of a guess. Re-run the script after any pf1 or `pf-content` update.
+  - **Spell progressions are derived from pf1's own `casterProgression` tables**, read out of the
+    system's sourcemap. *Rejected:* typing the tables from the book. The derived occultist row
+    reproduces the repo's existing `bard` row exactly and the psychic row reproduces `sorcerer` in
+    both files — two independently-authored sources agreeing, which a hand-typed table could not
+    give. It also means the payload and the Foundry sheet cannot disagree about spell counts.
+  - **Two of the six degrade rather than being held back**, reusing §8's eidolon ruling. The
+    **kineticist's burn** is named and described but not tracked — it is an HP-priced resource with
+    no analogue in the generator. The **medium's spirit** is rolled once and frozen; the spirit is a
+    *daily* choice and the generator emits a static snapshot, so this is a house ruling and is
+    recorded as one. *Rejected:* holding both classes out until their subsystems could be modelled.
+  - **Eleven new `class features` buckets reach the Foundry sheet**, all registered in the module's
+    `CLASS_FEATURE_BUCKETS`. For the kineticist those buckets are the entire sheet, so an
+    unregistered one would have left the class looking empty — the "generated but invisible" failure
+    the psionics work already hit once.
 - **Psionics generates.** All twelve Dreamscarred Press psionic classes — aegis, cryptic, dread,
   highlord, marksman, psion, psychic warrior, soulknife, tactician, vitalist, voyager, wilder — are
   now ordinary entries in `Backend/json/class_data.json` and roll in the default random pool with no
@@ -394,10 +456,10 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     the first companion sheet anyone opens shows real HP, AC, saves and attacks. *Rejected:* shipping
     a sheet early from the level-chassis row alone — a page of placeholder numbers looks finished and
     teaches nobody anything.
-  - **Two questions are still genuinely open**, and each blocks one renderer: whether Foundry's
+  - **Two questions were genuinely open at charting**, each blocking one renderer: whether Foundry's
     Pathfinder system honours numbers patched onto a compendium creature or quietly recomputes over
     them, and what happens to companion details you have edited by hand when the same character is
-    imported again.
+    imported again. Both have since been answered — see the two entries below.
   - Two documents were **wrong and are now right**: the spec's "current state" and the codebase map
     both still described the companion code as druid-only, which stopped being true when the grantor
     table landed.
@@ -429,6 +491,55 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     scar of having drifted once. ⚠ `modify-abilities.js` still holds an identical copy — it was
     being edited by other work at the time — so the deletion there is pending and both the file
     header and the codebase map say so.
+- **The web sheet's Companions tab will fill itself in, and your edits are safe.** The tab you
+  currently type by hand gets one pre-filled block per bonded creature — HP, AC, saves, abilities,
+  attacks, skills, the lot — and the design for it is settled
+  (`docs/wayfinder/companion-sheets/` ticket 03). The tab is still yours: a filled-in companion is an
+  ordinary row you can rename, edit or delete like any other.
+  - **The clobber everyone was worried about cannot happen.** Rolling a character always creates a
+    *new* entry in your library rather than overwriting one, so a generated companion can never
+    arrive on top of one you have edited. Re-opening a character you exported restores exactly what
+    you saved, edits included.
+  - **Characters already in your library get filled in too**, not just newly rolled ones — the fill
+    runs once per character, the first time its sheet is drawn. If you had already typed your druid's
+    bird by hand you will end up with two rows and can delete either. *Rejected:* guessing which of
+    the two you meant to keep.
+  - **A companion you were never given is explained rather than omitted.** A druid who rolled a
+    domain instead of a bird, or a bond an archetype traded away, shows a one-line note — *"Druid —
+    no animal companion: chose a domain instead."* — instead of an empty tab that looks broken.
+    *Rejected:* skipping those entries silently, which is the confusion that started this effort.
+  - **Speed becomes free text, and skills and CMB/CMD get their own line.** A bird companion's speed
+    is *"10 ft., fly 80 ft. (average)"* and no single number can hold that; skill totals and CMB/CMD
+    are things you roll at the table, so they get real widgets rather than being buried in the notes
+    box. Everything else the generator computes — feats, special abilities, size, bonus tricks — is
+    written into the notes.
+  - **The block is titled with the companion's plain name**, not *"Ophir's animal companion:
+    Cédric"*. Foundry keeps the long form because there the companion is a separate sheet that needs
+    the context; here the tab heading and the type dropdown already supply it. *Rejected:* one
+    phrasing across both surfaces.
+- **Two more design efforts are charted, and both wait their turn.** `docs/wayfinder/class-pool/`
+  asks which classes should be rollable at all, and `docs/wayfinder/class-choices/` asks whether the
+  ones that are rollable pick their class options correctly. Neither is worked until the
+  bonded-creature system is finished and we are happy with it — that gate is written into both maps.
+  - **Six classes you cannot currently roll are Occult Adventures classes** — occultist, kineticist,
+    medium, mesmerist, psychic and spiritualist — held out of the random pool rather than missing,
+    along with the Path of War stalker and zealot. The first ticket is a census of what the installed
+    Foundry content can actually render, because a class that generates and cannot be imported is not
+    ready. The stalker and zealot may simply not exist in their module, in which case the answer is a
+    named blocker rather than a plan.
+  - **Charting already found characters getting the wrong number of class options.** A 20th-level
+    magus is handed **10 arcana where the rules grant 6**, and an investigator **10 talents where the
+    rules grant 9** — labelled with the wrong levels besides. The cause is that "how many picks, and
+    when" is currently answered three different ways in three different places, and nobody has ever
+    swept the whole table.
+  - **A bard's versatile performances are chosen and then thrown away.** The generator rolls them and
+    discards the result, so they reach neither sheet. The gunslinger's deeds and the hunter's animal
+    focus have option lists sitting in the repo that nothing reads, and the shifter has no aspect
+    picker at all.
+  - **The effort ends in a validator, not just a document.** Whatever the sweep concludes about each
+    class gets asserted in code, because a spec that says "the magus gets six arcana" goes stale the
+    moment someone edits a divisor — the same lesson a stale doc taught this repo when it silently
+    broke six weapons.
 
 ### Removed
 - **The in-repo character sheet and `GET /sheet` are gone.** The standalone
@@ -449,6 +560,20 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     catch. `PF_FOUNDRY_DATA` overrides where it looks.
 
 ### Fixed
+- **The kineticist would have been handed a spellbook, and the medium two spell levels it never
+  gets.** Both carried `"casting level": "mid"` in `class_data.json`, which `spells.py` branches on.
+  The pf1 class Items disagree — the kineticist has no `casting` block at all (burn is
+  Constitution-priced, exactly as `caster_mod`'s own comment says the caster map cannot express) and
+  the medium is a `low` progression. Corrected to `none` and `low`, and
+  `build_occult_class_data.py` now reconciles the field from the pack so it cannot drift back.
+  Latent until now only because the six were filtered out of the pool.
+- **Two goldens had stopped covering what they exist for.** Opening the pool to six more classes
+  realigned the multiclass roll: `companion`'s ranger became a ninja, collapsing the three-grantor
+  stack the golden was seeded for, and `manifester`'s aegis became a wizard, leaving no coverage at
+  all of the points-only manifester shape. Both were **re-scanned for new seeds rather than
+  regenerated in place** — 7971 (which also picks up an archetype-removed bond beside a real one,
+  so absence and stack now appear in one payload) and 8041. This is the second time this trap has
+  been hit; the seed comments say re-scan rather than edit the prose, and that is what they mean.
 - **Manifesters were short their free talents, and were spending real powers to buy them.** Every
   one of the ten power-knowing psionic classes grants 0-level talents by class feature, and the
   rules say in as many words that those talents *do not count against powers known* — a psion gets

@@ -91,12 +91,21 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   The per-class option files (`class_data/aegis.json`, `cryptic.json`, …) are **GENERATED** from
   this subtree by `build_psionic_class_data.py` and live one level up, under the class's own name,
   because `generic_class_option_chooser` looks them up that way.
+- **Occult Adventures** — `class_data/{occultist,kineticist,medium,mesmerist,psychic,spiritualist}.json`
+  are **GENERATED** by `build_occult_class_data.py` straight from the Foundry compendia (`pf1`'s
+  `classes` + `class-abilities`, and `pf-content`'s `pf-class-abilities` — the occultist's implements
+  and the spiritualist's emotional foci live only in the latter). 449 options; same
+  `{dataset: {name: description}}` shape as the psionics files, same lookup-by-class-name rule.
+  Gated by `validate_occult_data.py`. The pick schedules are in `data.amount`, the chooser calls are
+  in `main_test.py` after the psionics block, and all six are in the random pool
+  (`data.occult_classes` is now empty). Spec: `docs/feature_spec_todo.md` §10.
 - `feats/` — feat_changes.json, feat_conditionals.json (Foundry buffs). `items/` —
   item_changes.json (**GENERATED** by `build_item_changes.py`) + `_overrides.json`,
   quality_effects.json. `spells/` — spell_changes.json, spell_riders.json. `flaws/` —
   flaw_effects.json. `backstory_examples/` — few-shot examples for the backstory API.
 - **Bonded creatures** — `animal_companion.json` (`companion` = the level chassis, rows `"1"`–`"40"`
-  keyed by *effective* level, carrying that row's own `feats` count; `feats` = a flat 27-name bag) and
+  keyed by *effective* level, carrying that row's own `feats` count; `feats` = the 29-name legality
+  pool; `tax_children` = the 23 feat-tax children a creature may be granted free) and
   `animal_choices.json` (`normal` 157 / `plant` 14 / `vermin` 23 / `magical_beast` 2 species →
   `starting statistics` plus one or more `"<N>th-level advancement"` delta blocks, keys lowercase and
   comma-inverted: `"ant, giant"`). Read by `class_func/animal_companions.py` (every grantor since
@@ -109,6 +118,25 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
     package, so they apply verbatim and only the *geometry* (AC / attack / CMB / CMD / Stealth /
     space) is added, keyed off the creature's **final** size. `stats.size_change` is provenance for
     numbers already totalled in — **never re-apply it in a renderer**.
+  - **The feat economy is `class_func/companion_feats.py`,** not `animal_companions.py` (which keeps
+    a shim) and not `companion_stats.py`. It owns the prerequisite gate (`legal_for_companion`, which
+    fails CLOSED on any prerequisite it cannot read), the chassis-dated slot levels behind
+    `feat_labels`, feat tax via a four-attribute adapter over `feat_tax_func`, and the animal flaw
+    roll. Spec §8 **D15/D16**. Gated by `scripts/validate_companion_feats.py`.
+  - **Two feat-effect files, and mixing them is a PC bug.** `feats/companion_feat_changes.json` is
+    the companion's; `feats/feat_changes.json` is the PC's. The pf1 compendium already automates 12
+    of the pool's feats and a PC *keeps* its compendium item's changes, so a companion effect added
+    to the shared file double-applies on every PC sheet. `validate_companion_feats.py` fails on any
+    pool feat carrying numeric `changes` in both.
+  - **`companion_stats.apply_modifiers` folds feats and flaws into `stats` (§8 D14),** last, on top
+    of the chassis numbers, and records `stats.applied_changes` / `stats.context_notes`; anything it
+    cannot place joins `stats.unapplied`. `MODIFIER_TARGETS`, `SKILL_TARGET_PREFIX` and
+    `eval_formula`'s mini-language (`@str`…`@hd`, `max(a, b)`) live there and are imported by both
+    `validate_companion_feats.py` and `validate_flaw_effects.py` — never restated.
+  - **Flaws: two catalogues, one validator.** `flaws/flaw_effects.json` (PC) and
+    `flaws/animal_flaw_effects.json` (bonded creatures, 12 minor / 10 major). `flaws.pick_flaws`
+    takes the filename and an RNG; `flaw_chooser` is the PC wrapper. `validate_flaw_effects.py`
+    sweeps both, and additionally requires every animal change to be one `apply_modifiers` can place.
   - **`magical_beast` is not in the random roll.** `animal_chooser` reads only `normal` / `plant` /
     `vermin`, which is what keeps griffon and hippogriff reachable solely through a curated archetype
     species pool — their RAW availability.
@@ -180,8 +208,10 @@ item_and_price.py · path_of_war.py / path_of_war_funcs.py · psionics.py (power
 points, manifester level, the `manifesters` payload block, soulknife mind blade) · spheres.py ·
 wizard_school.py ·
 domain_inquisition.py · gunslinger.py · animal_companions.py (the grantor resolver — every grantor,
-stacking, archetype bonds, D9 identity) · companion_stats.py (the advancement merge and the whole
-stat block; runs after `animal_feats`, writes `entry['stats']` and nothing else) ·
+stacking, archetype bonds, D9 identity) · companion_feats.py (the companion feat economy — gated
+picks, dated slots, feat tax, animal flaws) · companion_stats.py (the advancement merge, the whole
+stat block, and the D14 fold of feats/flaws; runs after `companion_feats`, writes `entry['stats']`
+and nothing else) ·
 versatile_performance.py ·
 traits.py · flaws.py / randomize_flaw.py · feat_tax.py · trainers.py / profession_chooser.py /
 profession_abilities.py · backstory.py / build_archetype.py (Ollama build→archetype classifier,
@@ -237,6 +267,13 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
 - `build_psionic_class_data.py` → merges the scraped classes into `json/class_data.json` (adding the
   `manifesting_stat` key beside `main_stat`) and GENERATES the per-class option files
   `json/class_data/<class>.json` for the nine subsystem classes.
+- `build_occult_class_data.py` → GENERATES the six occult per-class option files, reconciles their
+  `casting level` in `class_data.json` against the pack, and writes the five casters' rows into
+  `spells_known.json` / `spells_per_day.json` from pf1's own `config.casterProgression` (read out of
+  `pf1.js.map`'s `sourcesContent`). **Foundry may be running** — it copies each pack to a scratch
+  dir and drops the copy's `LOCK`, unlike `dump_pf_content_actors.py`, which requires Foundry closed.
+  Runs on `C:\Python310`; needs node + a `classic-level` (found by `reconcile_psionics_names.py`'s
+  hunt). The spell-table writes are surgical text inserts, not `json.dump`, so the diff stays small.
 - `reconcile_psionics_names.py` → GENERATES `psionic_name_map.json`, mapping our scraped names onto
   the `pf1-psionics` pack names the Foundry module can actually resolve. Unmapped names fail
   `validate_psionics_data.py`. Pack contents are dumped by `dump_foundry_pack.mjs` (node).
@@ -250,9 +287,15 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
   on-disk source + a §15 curated for THIS project) and the psionics `NOTICE.md`. Never hand-edit
   either file; edit the script. It refuses to write a licence whose operative text is truncated.
 - `validate_*.py` → data gates (class_feature_effects, flaw_effects, quality_effects, psionics_data,
-  companion_data, companion_names, companion_archetypes, companion_identity, companion_stats, …).
+  companion_data, companion_names, companion_archetypes, companion_identity, companion_stats,
+  companion_feats, …).
   `companion_identity` and `companion_stats` are the odd ones out: they drive the **resolver** and
-  the **merge** over stub characters rather than checking a file at rest. `companion_stats` sweeps
+  the **merge** over stub characters rather than checking a file at rest. `companion_feats` is a
+  third shape again: it runs every feat's declared effect through `apply_modifiers` on two probe
+  stat blocks (Str-heavy and Dex-heavy, because a conditional formula lands in only one), and fails
+  a feat that claims a change but moves nothing. It also proves each `tax_children` entry is
+  reachable from a real chain and grantable to a real body, so the allowlist cannot accumulate
+  entries that look plausible and never fire. `companion_stats` sweeps
   all 392 species-level stat blocks and is the gate on §8 **D11**'s no-double-count ruling; it also
   asserts that at least 30 published deltas still disagree with the size table, so the check cannot
   quietly become vacuous if the data ever moves.
@@ -303,14 +346,26 @@ spec) · `docs/pow_conditional_decision_rules.md` / `spheres_conditional_decisio
 **In-flight design efforts** live under `docs/wayfinder/<effort>/` — a `map.md` (destination,
 locked decisions, decisions-so-far index, fog, out-of-scope) plus one file per decision ticket in
 `issues/`. A ticket is a *question*, not a task; the **frontier** is every open, unclaimed ticket
-whose `Blocked by:` list is fully resolved. One effort is **OPEN** — `companion-sheets/` (every
-bonded creature arrives as its own usable sheet: a Foundry Actor, a pre-filled web-sheet Companions
-tab; charted 2026-08-03, four tickets, **01 and 04 resolved**; the frontier is now 02 and 03, which
-gate the two renderer slices in the other repos). Two are **CLOSED** — `companions/` (bonded creatures →
+whose `Blocked by:` list is fully resolved. Three efforts are **OPEN**:
+
+- `companion-sheets/` — every bonded creature arrives as its own usable sheet: a Foundry Actor, a
+  pre-filled web-sheet Companions tab. Charted 2026-08-03, four tickets, **01, 02 and 04 resolved**;
+  the frontier is 03, which gates the web-sheet slice. **Succeeds** `companions/` and does not reopen
+  §8's D1–D10.
+- `class-pool/` — every class the generator knows about either rolls with full support or carries a
+  named blocker (→ §10). The eight held-out classes: the six Occult Adventures classes
+  (`data.py:2381`) and `stalker`/`zealot` (`:2337`), all filtered at `util.py:180-184`. Charted
+  2026-08-03, five tickets; only **01** (a Foundry compendium census) is on the frontier.
+- `class-choices/` — every rollable class picks the right number of class options, at the right
+  levels, legally, and visibly on both sheets, with a validator to keep it true (→ §11). Charted
+  2026-08-03, five tickets.
+
+**Both new maps are parked**, by decision: neither is worked until `companion-sheets/` reaches its
+finish line, and `class-choices/` additionally waits on `class-pool/` so its audit covers the final
+class list. Two are **CLOSED** — `companions/` (bonded creatures →
 `feature_spec_todo.md` §8, closed 2026-08-01, ticket 07 deferred to v1.1) and `psionics/` (→ §9,
 closed 2026-07-31). A closed map is history; the live work list is `docs/plan_1.0_finish.md`, and the
-spec section is the authority. `companion-sheets/` **succeeds** `companions/` and does not reopen
-§8's D1–D10.
+spec section is the authority.
 
 This repo no longer carries `.claude/skills/`. The domain knowledge that lived there (path-of-war,
 spheres-of-power, trainers-and-professions, foundry-conditionals, foundry-sheet-references,

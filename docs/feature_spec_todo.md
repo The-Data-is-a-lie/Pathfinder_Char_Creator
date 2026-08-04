@@ -391,6 +391,67 @@ summoner NPC is still missing its entire class identity.
   §3's scope boundary forbids a classifier for it); reach and the quadruped +4 CMD vs trip are not
   modelled because the data cannot say.
 
+- **D14 — feats and flaws FOLD into the stat block; buffs stay inactive and do not**
+  *(the parity grill, 2026-08-04)*. A companion's feats and flaws always apply, so
+  `companion_stats.apply_modifiers` resolves their `changes` into `stats` and records
+  `stats.applied_changes` / `stats.context_notes` as provenance; `createCompanions.js` attaches the
+  matching feat and flaw items with **`system.changes` stripped**, so pf1 cannot apply what the
+  payload already counted. Buffs are the opposite case: situational, never folded, changes intact,
+  shipped **inactive** — an inactive buff contributes nothing until a player asks for it, so it can
+  never double-count. This preserves D2 rather than amending it: the web sheet has no game system,
+  so `stats` must already be finished. An effect the fold cannot place is reported on
+  `stats.unapplied`, never dropped — the same holdback discipline D12 set.
+  The feat data lives in **`Backend/json/feats/companion_feat_changes.json`**, deliberately NOT the
+  shared `feat_changes.json`: the pf1 compendium already automates 12 of the pool's feats and a PC
+  keeps its compendium item's changes, so one shared file would double-apply on every PC sheet.
+  *Rejected:* letting pf1 derive from intact changes (the web sheet would then be wrong by exactly
+  the feat bonuses); curating the pool down to mechanically inert feats (that rules out Toughness,
+  Improved Natural Armor and Weapon Focus — most of what makes a companion feel built).
+
+- **D15 — the companion feat economy: a canonical pool, a prerequisite gate, dated slots, and taxed
+  children behind a curated allowlist** *(same grill)*. `Backend/utils/class_func/companion_feats.py`
+  owns it. The 27-name bag stays the legality list — it *is* the PF1e animal-companion list — but is
+  canonicalised against `data/feats.csv` (the fake `armor proficiency (light, medium, and heavy)`
+  became the three real feats, 29 names). Picks are prerequisite-gated against the creature's own
+  merged abilities and BAB, one at a time so a chain can build itself (Dodge → Mobility → Spring
+  Attack). The chassis table's `feats` column **dates every slot** (effective levels 1, 2, 5, 8, 10,
+  13, …), which is both the label number and the tax cadence anchor; labels read
+  `Animal Companion 5: Weapon Focus`, parallel to the PC's `Fighter 1: Weapon Focus`, and ride a
+  **`feat_labels`** list beside `feats` — `feats` stays a bare list of names because the frozen
+  `animal_companion` alias reads the same object (D9).
+  **Feat tax runs**, through `feat_tax_func` on a four-attribute adapter. Its children pass two
+  gates: `legal_for_companion`, which fails CLOSED on any prerequisite it cannot read (that is what
+  drops `greater weapon focus` and `martial focus` without a hand-written blocklist), and the curated
+  **`tax_children`** allowlist in `animal_companion.json`. The allowlist is not optional: the 29 pool
+  feats open **128** distinct chain children, and a prerequisite reader cannot refuse Drunken
+  Brawler, Wand Dancer or Sword and Pistol, because their prerequisites are genuinely met.
+  *Rejected:* the whole feat DB behind a derived predicate (PF1e legality for animals is a curated
+  list precisely because it cannot be derived); tax confined to the pool (only `endurance → diehard`
+  would ever fire); labelling by HD or by species.
+
+- **D16 — parity sections, an animal flaw catalogue, and the per-creature RNG** *(same grill)*. A
+  companion Actor gets the PC's furniture: a `Class Features (Animal Companion)` band with its
+  species abilities promoted **out of the description into real items**, the `Variable Modifiers` /
+  `Natural AC` / `Death HP` tracker groups at the PC's own `CF_SORTS` values, a Traits-tab `Flaws`
+  divider, a Feats-tab Background band, and **all eleven** `custom_buffs.json` buffs verbatim under
+  the same `addCustomBuffs` gate. `Natural AC` is unconditional here, unlike the PC's
+  `characterHasNaturalArmor()` gate — every bonded creature has natural armour. **Resource Pools is
+  not included**: an animal has no Hero Points.
+  Flaws come from a new **`Backend/json/flaws/animal_flaw_effects.json`** (12 minor / 10 major) and
+  follow the PC ladder exactly — the creature's own `randomize_flaw_amount()` roll, 1st minor / 2nd
+  major / 80-20 thereafter, and the diminishing flaw-feat grant (0→0, 1→1, 2→2, 3→2, 4→3) behind
+  `misc_homebrew_enabled`, drawn from the same gated pool.
+  **All companion randomness now draws from the per-creature `random.Random`**, salted per consumer,
+  which extends `companion_stats`' skill-allocation ruling to the much larger draw the feat economy
+  makes. That was a one-time re-baseline of the `companion` golden — and only that golden, because
+  the other six roll no bonded creature and so never paid the old cost.
+  *Rejected:* a filtered buff subset (the user's call — `Combat Expertise` is unusable at Int 1–2 but
+  arrives inactive, so it is a toggle to leave alone rather than a number on the sheet); reusing the
+  PC's 44 flaws behind an `animal_ok` tag (about eight survive, so companions would repeat
+  constantly); flaws without flaw feats; keeping the global RNG stream.
+  Scope: `companion` and `mount` only. Familiars use their master's feats (RAW) and eidolons are
+  evolution-driven; neither resolves to an entry today.
+
 ### Grantors and effective level (D6)
 
 The grantor set is a **data file**, `Backend/json/companion_grantors.json`, not a code table; the
@@ -529,6 +590,14 @@ descriptive text** for the eidolon.
    numbers, degrade on a miss.
 8. Web sheet: consume `bonded_creatures`.
 9. Extend `Backend/scripts/test_house_invariants.py` with companion invariants.
+10. Canonicalise the feat pool + author `companion_feat_changes.json` +
+    `Backend/scripts/validate_companion_feats.py` (D14/D15).
+11. `class_func/companion_feats.py` — gated selection, dated slots, `feat_labels`, feat tax behind
+    the `tax_children` allowlist, and the animal flaw roll (D15/D16).
+12. `companion_stats.apply_modifiers` — fold the feats and flaws, emit `applied_changes` /
+    `context_notes`, extend the invariants (D14).
+13. Module: `scripts/companion-sections.js` — dividers, labelled feats, promoted class features,
+    tracker groups, Flaws, the eleven buffs (D16).
 
 **Deferred (not built in v1):** **eidolon evolutions** — 7 base forms × 2 sizes and ~76 evolutions
 (≈28 @1 EP, 27 @2, 11 @3, 10 @4) scraped from d20pfsrd's prose headings, with
@@ -692,3 +761,100 @@ rules are not decided) · power **conditionals** on the main weapon, mirroring �
 (cognizance crystals, dorjes, power stones) in the gear chooser · multiclass manifester-level
 stacking · reporting upstream's incomplete §15 and placeholder class fields to SoxMax and the wiki
 editors.
+
+## 10. Class pool — Occult Adventures
+**Status: BUILT (2026-08-03).** All six Occult Adventures classes — `occultist`, `kineticist`,
+`medium`, `mesmerist`, `psychic`, `spiritualist` — are in the random pool. `data.occult_classes` is
+empty; it stays as the one-line lever for pulling a class back out. Charted in
+`docs/wayfinder/class-pool/`; this section is that map's destination. §9 (Psionics) is the governing
+precedent — a whole class family entering the pool with **no new chooser module**.
+
+**Why this was a completion job, not a cold start.** `class_data.json` already carried all six
+chassis (main stat, BAB, hit die, wealth, skill ranks, feature prose, favoured-class races), and
+`data.py` already carried their casting stat and good saves. `data/spells.csv` already had a spell
+column per caster. What did not exist anywhere was the **selectable option pools**.
+
+**Sources (ticket 04) — compendium-first, and it wins here.**
+- The option pools are **harvested from the installed Foundry compendia** by
+  `Backend/scripts/build_occult_class_data.py` into `Backend/json/class_data/<class>.json`, in the
+  `{dataset: {name: description}}` shape `generic_class_option_chooser` already consumes. **449
+  options across the six.** Both packs are required: `pf1.class-abilities` carries most of it, but
+  the occultist's eight implement schools and the spiritualist's phantom emotional foci exist only
+  in `pf-content.pf-class-abilities`.
+- Two pack fields make it a *source* rather than just a renderer: `system.associations.classes` (the
+  class tag — an exact list, not a name match) and the class Item's `system.links.classAssociations`
+  (the auto-granted features, whose complement is the selectable pool).
+- **Spell progressions are read out of pf1 itself**, not typed from the book:
+  `config.casterProgression` in `pf1.js.map`'s `sourcesContent`. Cross-check that this is right —
+  the derived occultist row reproduces the repo's existing `bard` spells-known row exactly, and the
+  derived psychic row reproduces `sorcerer` in *both* files.
+- **No new OGL entry.** Occult Adventures is first-party Paizo read out of the system's own pack;
+  §9's Dreamscarred Press machinery does not extend here.
+
+**Per-class disposition (ticket 03).** All six roll and render. Two degrade, in the sense §8 fixed
+for the eidolon — the class stays rollable and its unmodelled feature is named and described rather
+than suppressing the class:
+| class | picks | notes |
+|---|---|---|
+| occultist | implements (8 schools), focus powers | full |
+| mesmerist | mesmerist tricks, bold stare | full |
+| psychic | discipline, phrenic amplifications | full |
+| spiritualist | phantom emotional focus | full; the phantom itself is **not** a bonded creature — see below |
+| kineticist | elemental focus, wild talents, infusions | **degraded: burn** |
+| medium | channeled spirit | **degraded: the spirit is frozen** |
+
+- **Kineticist — burn is not modelled.** It is an HP-priced resource with no analogue in the
+  generator, and `caster_mod`'s own comment already recorded that the caster map cannot express a
+  Constitution-priced class. Its wild talents and infusions *are* picked; burn is described, never
+  tracked. The class is also a **non-caster in all four tables** (`casting level: none`, absent from
+  `base_classes`, `caster_mod`, and both spell tables) — `validate_occult_data.py` checks all four,
+  because being wrong in one of them silently hands it a spellbook.
+- **Medium — one séance, frozen.** The spirit is a *daily* choice and the generator emits a static
+  snapshot. Rolling one spirit and keeping it is a **house ruling**, recorded here deliberately
+  rather than presented as a rendering decision. Only the six base legends are rollable; the pack's
+  25 legendary and 9 outsider spirits are held out of v1 rather than diluting the roll toward a
+  named NPC.
+- **The spiritualist's phantom gets no row in `companion_grantors.json`.** §8's grantor table is for
+  creatures with a chassis and a stat block; the phantom's emotional focus is a choice from a list,
+  which is the shape the existing chooser already serves. Revisit if the phantom ever needs a sheet
+  of its own.
+
+**Two data corrections found on the way in**, both from the pack disagreeing with `class_data.json`:
+the kineticist's `casting level` was `mid` (now `none`) and the medium's was `mid` (now `low`).
+`spells.py` branches on that field, so `mid` would have handed the kineticist a spellbook and the
+medium two spell levels it never gets. `build_occult_class_data.py` now reconciles the field from
+the pack rather than leaving it hand-maintained.
+
+**Export shape.** No new payload key. Each class's picks land in `class features` under their own
+bucket — `implements`, `focus_powers`, `elemental_focus`, `wild_talents`, `infusions`,
+`medium_spirit`, `mesmerist_tricks`, `bold_stare`, `psychic_discipline`,
+`phrenic_amplifications`, `emotional_focus` — and all eleven are registered in the FoundryVTT
+module's `CLASS_FEATURE_BUCKETS`. The bucket is `medium_spirit`, not `spirit`, because the shaman
+already owns `spirits`. Registration is not cosmetic: for the kineticist those buckets are the whole
+sheet.
+
+**Gates.** `Backend/scripts/validate_occult_data.py` (validator 15) owns the data — pool shape, no
+double-shelving, every `data.amount` schedule naming a real dataset, the caster/non-caster split, and
+the **cross-source check** that each schedule produces the maximum pick count the class's own feature
+prose promises (seven implements by 18th, eleven tricks by 20th). `test_house_invariants.py` owns the
+output — pick counts per class level, every pick present in its pool, no pick without rules text, the
+spellbook split — with a branch-coverage guard that fails if the sweep never rolled an occult class,
+never exercised a multi-pick bucket, or never hit both sides of the caster split.
+
+**Stalker and zealot stay pending (ticket 05).** `pf1-pow` 1.6.4 ships no class Item for either —
+its `classes` pack holds Harbinger, Medic, Mystic, Warder and Warlord. They remain generatable but
+unrenderable, so they stay in `pow_classes_pending_foundry`. Empty that list and uncomment the
+module's `button.js` / `html_dialog.js` dropdown entries once a `pf1-pow` release adds them.
+
+**Open rules question — the medium's spell table.** pf1's `low` spontaneous progression is shaped for
+the bloodrager, whose first 1st-level spell lands at class level 4, and pf1 applies it to the medium
+unchanged. RAW has the medium casting from 1st. We take pf1's numbers so the payload and the Foundry
+sheet agree rather than disagreeing in opposite directions; if it is ruled a bug, fix `CASTERS` in
+`build_occult_class_data.py` and re-run.
+
+**Deferred (not built):** **web-sheet rendering** — the eleven buckets reach the Foundry sheet but
+the standalone sheet has no occult presentation yet, and six engines probably do not deserve six tabs
+· occult **archetypes** (the existing archetype pipeline is untested against these six) · **Metzofitz
+occult variants**, unread · kineticist **burn** as a tracked resource · the medium's **legendary and
+outsider spirits** · **buffs/conditionals** for occult picks, mirroring §4/§7 · a live Foundry import
+check of all six.

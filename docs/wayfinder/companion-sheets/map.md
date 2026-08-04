@@ -13,11 +13,12 @@ explicitly ruled the build out of scope. This map carries the same subject from 
 already records it as blocking, and the evidence it needs (a 97-row WARN census) is sitting in
 `validate_companion_data.py`.
 
-**Updated 2026-08-03.** **01, 04 and 02 are resolved and #31/#32/#35 are built** — the backend now
+**Updated 2026-08-03.** **All four tickets are resolved and #31/#32/#35 are built** — the backend now
 emits `bonded_creatures` with a populated `stats` block, so the map's **first finish-line gate is
-met**, and **#33 is unblocked** with a mechanical recipe (ticket 02 answered from the pf1 schema plus
-a dump of all 205 `pf-companions` Actors; two narrow claims are flagged for slice 7's first live
-import rather than gating it). The frontier is **03**, which gates **#34**.
+met**; **#33 is unblocked** with a mechanical recipe (ticket 02 answered from the pf1 schema plus a
+dump of all 205 `pf-companions` Actors; two narrow claims are flagged for slice 7's first live import
+rather than gating it); and **#34 is unblocked** with a field-level mapping (ticket 03). **The
+frontier is empty — what remains is build work**, gates 2 and 3, not decisions.
 
 ## Destination
 
@@ -95,6 +96,22 @@ Build slices 1–4 of §8 have landed; 5 is half-built and 6–9 are absent.
   companion table re-applied, and must be deleted or the table lands twice; pf1's own
   `floor(level / 3)` is wrong at every third level anyway. Amends **D1**: a cloned body is a
   `character`, not an `npc`. → [ticket 02](issues/02-pf1-actor-patching.md)
+- **Seed once into the user's own array, then get out of the way.** The clobber the ticket was
+  written to solve does not exist — a generated payload carries no `_sheet`, so every generation
+  lands as a *new* library record. `seedCompanions()` joins the two existing one-time seeders in
+  `renderSheet` (not `adoptCharacter`, which would leave every already-saved character empty
+  forever), guarded by `_sheet.companionsSeeded`; after that first render a generated companion is an
+  ordinary editable row stamped `source: 'generated'`. Absences render straight from the payload as a
+  dim line and are never rows. → [ticket 03](issues/03-web-sheet-autofill-ownership.md)
+- **A companion's sheet reads like a character sheet, and the backend owns why.** Feats and flaws
+  fold into `stats` and their items ship with changes stripped; buffs keep their changes and ship
+  inactive. The feat pool is canonicalised and prerequisite-gated, slots are dated off the chassis
+  table (`Animal Companion 5: Weapon Focus`), feat tax runs behind a curated `tax_children`
+  allowlist, and a new animal flaw catalogue buys feats on the PC's diminishing ladder. All
+  companion randomness moved to the per-creature RNG. → the parity grill, 2026-08-04, spec §8
+  **D14/D15/D16**. This **answers the "Not yet specified" question below** about whether companions
+  carry buffs the way weapons do: they do, but only the eleven basic ones, and only inactive.
+
 - **Every number in the stat block has a named source, and none of the PC's code was reusable** —
   only the maximised-HP *rule*. The house skill-rank floor does not carry over, because it keys off a
   class the creature does not have. → [ticket 01](issues/01-attack-skill-derivation.md), spec §8
@@ -114,10 +131,11 @@ Build slices 1–4 of §8 have landed; 5 is half-built and 6–9 are absent.
 
 ## Not yet specified
 
-- Whether companions carry **buffs / conditionals** the way weapons do (the §1/§4 pattern). Carried
-  over from the closed map. Ticket 02 establishes that a companion is an ordinary `character` Actor
-  whose natural attacks are real attack items, so the applier has something to bite on; whether it
-  *should* is still undecided.
+- Whether companions carry **weapon conditionals** the way a PC's weapons do (the §1/§4 pattern).
+  ~~Buffs~~ were settled by the parity grill (§8 D16 — the eleven basic buffs, inactive); what is
+  still open is the *conditional applier*, which is a different subsystem. Ticket 02 establishes that
+  a companion is an ordinary `character` Actor whose natural attacks are real attack items, so the
+  applier has something to bite on; whether it *should* is still undecided.
 - **Regeneration semantics on the Foundry side** — re-importing the same character: new Actors
   alongside the old, or an update in place? The module has no precedent for either.
 - Whether the **master's sheet cross-references** its companion's sheet, and how (Foundry actor link,
