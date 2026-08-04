@@ -539,6 +539,16 @@ def _record(options: dict, name: str, body: str, group: str = "") -> None:
     # Rules separate entries in "rule" mode but merely decorate them in "bold" mode, where they
     # would otherwise trail every aegis customization's description.
     body = strip_markup(RULE_RE.sub("", body)).strip()
+    # ENTRY_LEAD_RE splits on the FIRST colon, which for an unbolded entry carrying a source
+    # citation lands inside it: "Animal Senses (Source: Psionics Augmented: Compilation II): The
+    # soulknife..." became the option "Animal Senses (Source". The citation is parenthesised, so an
+    # unbalanced "(" left in the name is exactly this case and nothing else -- hand the fragment
+    # back to the body, colon and all, and the real name survives. 34 of 338 options were truncated
+    # this way, most of them soulknife blade skills.
+    while name.count("(") > name.count(")"):
+        head, _, fragment = name.rpartition("(")
+        name = clean(head)
+        body = f"({fragment}: {body}"
     if not name or not body or len(name) > 80 or "[" in name or "]" in name:
         return
     if group:
