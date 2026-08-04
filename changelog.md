@@ -81,6 +81,12 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     `CLASS_FEATURE_BUCKETS`. For the kineticist those buckets are the entire sheet, so an
     unregistered one would have left the class looking empty — the "generated but invisible" failure
     the psionics work already hit once.
+  - **The same eleven buckets are named on the standalone web sheet**, which had been falling back to
+    a prettified key (`Medium Spirit`, `Bold Stare`) with no "(Chosen)" tag. They now carry the
+    module's labels verbatim, so the two sheets name the same pick the same way. *Rejected:* a
+    dedicated Occult tab beside Path of War and Psionics — six classes run six different engines with
+    little in common, and unlike power points or maneuvers none of them needs a tracker the Class
+    Features tab cannot already show.
 - **Psionics generates.** All twelve Dreamscarred Press psionic classes — aegis, cryptic, dread,
   highlord, marksman, psion, psychic warrior, soulknife, tactician, vitalist, voyager, wilder — are
   now ordinary entries in `Backend/json/class_data.json` and roll in the default random pool with no

@@ -852,9 +852,16 @@ unchanged. RAW has the medium casting from 1st. We take pf1's numbers so the pay
 sheet agree rather than disagreeing in opposite directions; if it is ruled a bug, fix `CASTERS` in
 `build_occult_class_data.py` and re-run.
 
-**Deferred (not built):** **web-sheet rendering** — the eleven buckets reach the Foundry sheet but
-the standalone sheet has no occult presentation yet, and six engines probably do not deserve six tabs
-· occult **archetypes** (the existing archetype pipeline is untested against these six) · **Metzofitz
+**Web-sheet rendering — labels, no tab.** The eleven buckets already rendered on the standalone
+sheet through `classChoiceLabels`'s unknown-key fallback; they are now registered in
+`CLASS_CHOICE_BUCKETS` (`scripts/tabs/features.js`) with the module's labels verbatim, so the two
+sheets name the same pick the same way. **Rejected: a dedicated Occult tab** beside `path-of-war.js`
+and `psionics.js` — those two earned a tab by owning a tracker the Features tab cannot show (power
+points, readied maneuvers). Six occult engines share nothing with each other and need no such
+tracker; the kineticist's burn would be the one candidate, and it is unmodelled by decision above.
+
+**Deferred (not built):** occult **archetypes** (the existing archetype pipeline is untested against
+these six, though `Backend/json/archetypes.json` already carries 8–24 entries each) · **Metzofitz
 occult variants**, unread · kineticist **burn** as a tracked resource · the medium's **legendary and
 outsider spirits** · **buffs/conditionals** for occult picks, mirroring §4/§7 · a live Foundry import
 check of all six.
