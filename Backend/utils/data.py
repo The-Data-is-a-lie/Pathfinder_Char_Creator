@@ -168,7 +168,12 @@ enhancement_bonus_mapping = {
 # wizards know 3 + INT mod + 2(per level) spells
 
 # add later
-base_classes = ["alchemist", "antipaladin", "arcanist", "barbarian", "barbarian (unchained)", "bard", "bloodrager", "brawler", "cavalier", "cleric", "druid", "fighter", "gunslinger", "hunter", "inquisitor", "investigator", "magus", "monk", "monk (unchained)", "ninja",  "oracle", "paladin",  "ranger", "rogue", "rogue (unchained)", "samurai", "shaman", "shifter", "skald", "slayer", "sorcerer",  "summoner", "summoner (unchained)", "swashbuckler", "vigilante", "warpriest", "witch", "wizard"]
+base_classes = ["alchemist", "antipaladin", "arcanist", "barbarian", "barbarian (unchained)", "bard", "bloodrager", "brawler", "cavalier", "cleric", "druid", "fighter", "gunslinger", "hunter", "inquisitor", "investigator", "magus", "monk", "monk (unchained)", "ninja",  "oracle", "paladin",  "ranger", "rogue", "rogue (unchained)", "samurai", "shaman", "shifter", "skald", "slayer", "sorcerer",  "summoner", "summoner (unchained)", "swashbuckler", "vigilante", "warpriest", "witch", "wizard",
+# Occult Adventures, 2026-08-03. Five of the six cast psychic magic and belong here -- spells.py
+# gates the whole spellbook on `name in base_classes`. The KINETICIST is deliberately absent: the
+# pf1 class Item carries no `casting` block at all, agreeing with the comment at caster_mod that
+# burn is a Constitution-priced resource the caster map cannot express.
+                "occultist", "medium", "mesmerist", "psychic", "spiritualist"]
 
 divine_casters = ['antipaladin', 'cleric', 'druid', 'oracle', 'hunter' ,'inquisitor', 'paladin', 'ranger', 'shaman', 'warpriest']
 #caster spells per day progression
@@ -286,7 +291,9 @@ caster_mod = {
         "wis_casters": ['cleric','druid', 'hunter', 'inquisitor','ranger', 'shaman', 'warpriest', 'spiritualist'],
         "cha_casters": ['antipaladin', 'bloodrager', 'bard','medium','mesmerist','oracle','paladin','shaman','skald','sorcerer','summoner', 'summoner (unchained)']
         # kineticist is deliberately unmapped: burn is Constitution-based, which this
-        # int/wis/cha bonus-spell table doesn't model (occult classes are pool-excluded anyway)
+        # int/wis/cha bonus-spell table doesn't model. It is also absent from base_classes, so it
+        # never reaches the spellbook at all -- the pf1 class Item agrees, carrying no `casting`
+        # block. The other five occult casters above are mapped to the same ability pf1 uses.
 }
 
 #all_deities = ['Abadar', 'Achaekek', 'Alseta', 'Ameiko Kaijitsu', 'Apsu', 'Aroden', 'Asmodeus', 'Black Butterfly, The', 'Brigh', 'Calistria', 'Cayden Cailean', 'Chaldira Zuzaristan', 'Chamidu', 'Daikitsu', 'Dahak', 'Desna', 'Elion', 'Erastil', 'Ghlaunder', 'Gorum', 'Gozreh', 'Groetus', 'Gruhastha, The', 'Hanspur', 'Hei Feng', 'Iomedae', 'Irori', 'Jaidi', 'Jingxi', 'Kabriri', 'Kazutal', 'Kelizandri', 'Ketephys', 'Kofusachi', 'Lama, The', 'Lamashtu', 'Magrim', 'Milani', 'Minderhal', 'Naderi', 'Nalinivati', 'Nethys', 'Nivi Rhombodazzle', 'Norgorber', 'Old-Mage Jatembe', 'Oras', 'Orcus', 'Pharasma', 'Qi Zhong', 'Ragathiel', 'Razmir', 'Rovagug', 'Sarenrae', 'Sivanah', 'Sivanah, The', 'Skrymir', 'Sokhna', 'Sun Wukong', 'Thamir Gixx', 'Thremyr', 'Torag', 'Urgathoa', 'Uskyeria', 'Wadjet', 'Weydan', 'Ydersius', 'Yuelral', 'Zagnexapan', 'Zargos', 'Zon-Kuthon' ]
@@ -364,6 +371,32 @@ amount = {
   },
   'tactician': {
         'strategies': [4,7,10,13,16,19]
+  },
+  # Occult Adventures. Same rule as the psionics block above: each list is the class levels at
+  # which one pick is granted, read off the class's own feature text in class_data.json. The three
+  # single-pick subsystems -- the kineticist's elemental focus, the medium's spirit and the
+  # psychic's discipline -- need no entry, and neither does the spiritualist's emotional focus.
+  'occultist': {
+        # "two implement schools" at 1st (hence the repeated 1), then 2nd and every 4 levels, to a
+        # maximum of seven at 18th -- the count the prose states, so the list is self-checking.
+        'implements': [1,1,2,6,10,14,18],
+        # One *selected* power at 1st; the two base powers come with the schools and are not picks.
+        # Then 3rd and every 2 levels.
+        'focus powers': [1,3,5,7,9,11,13,15,17,19]
+  },
+  'kineticist': {
+        'wild talents': [2,4,6,8,10,12,14,16,18,20],
+        'infusions': [1,3,5,9,11,13,17,19]
+  },
+  'mesmerist': {
+        # One at 1st, another at 2nd and every 2 levels: eleven at 20th, as the prose states.
+        'mesmerist tricks': [1,2,4,6,8,10,12,14,16,18,20],
+        'bold stare': [3,7,11,15,19]
+  },
+  'psychic': {
+        # 1st, then 3rd and every 4 levels. Major amplifications are taken *in place of* one of
+        # these from 11th, so they are the same pick, not an extra one -- no separate list.
+        'phrenic amplifications': [1,3,7,11,15,19]
   }
 }
 
@@ -2378,7 +2411,14 @@ psionic_pp_tables = {
 
 # NOTE: no "mystic" here -- the Path of War mystic is a generatable class; listing it would
 # silently re-filter it out of the random class pool (chooseClass excludes occult_classes).
-occult_classes = ["occultist", "kineticist", "medium", "mesmerist", "psychic", "spiritualist", ]
+#
+# EMPTIED 2026-08-03. All six Occult Adventures classes are in the random pool: the census in
+# docs/wayfinder/class-pool/issues/01 found every one of them present in pf1 11.11 -- class Item,
+# features and choice pools -- so the renderer objection that held them back never applied to them
+# (it still applies to pow_classes_pending_foundry above). Their option pools are generated by
+# Backend/scripts/build_occult_class_data.py; see docs/feature_spec_todo.md section 10 for what
+# each class ships, including the two that degrade. Re-add a name here to pull one back out.
+occult_classes = []
 
 # Good-save progressions per class (a class adds 2 + level//2 to a listed save, level//3
 # otherwise). The standalone web sheet keeps a GOOD_SAVES copy only as a fallback for cached

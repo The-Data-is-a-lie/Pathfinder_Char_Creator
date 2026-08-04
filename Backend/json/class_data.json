@@ -682,7 +682,7 @@
  "kineticist": {
   "main_stat": "con",
   "bab": "M",
-  "casting level": "mid",
+  "casting level": "none",
   "role": "Kineticists generally use their powers to assail their foes from range, but based on the way their talents develop, they can channel their kinetic abilities for a variety of situations. Kineticists are usually quite different from their families and friends, so they often strike out on their own or alongside others with extraordinary talents.",
   "alignment": "Any.",
   "hit die": "d8.",
@@ -770,7 +770,7 @@
  "medium": {
   "main_stat": "cha",
   "bab": "M",
-  "casting level": "mid",
+  "casting level": "low",
   "role": "Mediums are very versatile, filling whatever role the party needs at the moment by channeling the right spirit.",
   "alignment": "Any.",
   "hit die": "d8.",
