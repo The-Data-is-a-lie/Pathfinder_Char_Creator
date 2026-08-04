@@ -358,6 +358,15 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   - Two documents were **wrong and are now right**: the spec's "current state" and the codebase map
     both still described the companion code as druid-only, which stopped being true when the grantor
     table landed.
+  - **The Foundry half now has a recipe, and it starts by deleting something.** Every one of the 205
+    creature Actors the module clones from ships two hidden items that re-apply the companion
+    advancement table — so patching a generated companion's ability scores over the clone would have
+    made every one of them stronger than the rules allow, the same double-count the size package
+    already sprang once. Handing the job to Foundry instead is not the way out: its formula raises
+    Strength, Dexterity and natural armour a level early, at 3rd, 6th, 9th and every third level
+    after. The module deletes those two items and drives the creature's hit dice instead, which is
+    the number Foundry derives HP, attack bonus and saves from — and the table it uses to do that is
+    the same table the generator read.
 
 ### Fixed
 - **Every region can now be chosen — five of the ten never worked.** Region selection had three

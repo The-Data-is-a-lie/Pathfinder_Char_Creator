@@ -169,7 +169,8 @@ wayfinder maps — decisions before code — and each ends at a spec section in
       [`docs/wayfinder/companion-sheets/`](wayfinder/companion-sheets/map.md), whose destination is
       *every bonded creature arrives as a usable sheet*. **Slices 1–6 and 9 are done (2026-08-03);
       the backend half of this phase is finished** and the map's first finish-line gate is met. What
-      is left is the two renderers, 7 and 8, still gated on tickets 02 and 03.
+      is left is the two renderers: **7 is unblocked** (ticket 02 resolved), **8 still waits on
+      ticket 03**.
       - [x] 1. `repair_animal_choices.py` — the sign-loss/key-drift/field-bleed repair (D5). **Done
             first**: 109 advancement rows were inflating every advanced companion by +4 Dex.
       - [x] 2. `validate_companion_data.py` — assert the PF1e size-up package, no surviving bare ints.
@@ -191,9 +192,13 @@ wayfinder maps — decisions before code — and each ends at a spec section in
             exists to pin the stacking math had stopped pinning it. 7323 stacks **three** grantors
             (hunter 7 / ranger 4 / druid 3 → effective 11). **Not done until `./deploy.ps1` runs.**
       - [ ] 7. (**#33**) Foundry module: loop `Actor.create`, clone from `pf-content`, patch numbers,
-            degrade on miss; title composed module-side per D10. *Gated on
-            [ticket 02](wayfinder/companion-sheets/issues/02-pf1-actor-patching.md) — nobody has yet
-            confirmed pf1 honours patched numbers instead of recomputing over them.*
+            degrade on miss; title composed module-side per D10. **Unblocked 2026-08-03** —
+            [ticket 02](wayfinder/companion-sheets/issues/02-pf1-actor-patching.md) is resolved and
+            carries the mechanical recipe: pf1 keeps stored fields and rebuilds every `.total`, the
+            clone's `Animal Companion` class item is driven at the creature's **HD count** (not its
+            effective level), and the two change-bearing items every `pf-content` Actor ships must be
+            deleted or the companion table lands twice. Two narrow claims (re-render persistence,
+            `healthConfig` on a cloned character) are checked on the first live import.
       - [ ] 8. (**#34**) Web sheet: auto-fill the nested Companions tab from `bonded_creatures` (D10 —
             **not** a second roster character). *Gated on
             [ticket 03](wayfinder/companion-sheets/issues/03-web-sheet-autofill-ownership.md) — that

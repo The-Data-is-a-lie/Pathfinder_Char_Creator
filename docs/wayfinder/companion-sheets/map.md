@@ -13,10 +13,11 @@ explicitly ruled the build out of scope. This map carries the same subject from 
 already records it as blocking, and the evidence it needs (a 97-row WARN census) is sitting in
 `validate_companion_data.py`.
 
-**Updated 2026-08-03.** **01 and 04 are resolved and #31/#32/#35 are built** — the backend now emits
-`bonded_creatures` with a populated `stats` block, so the map's **first finish-line gate is met**.
-The frontier is now **02** (needs a live Foundry) and **03**, which gate the two renderer slices
-**#33** and **#34** in the other two repos.
+**Updated 2026-08-03.** **01, 04 and 02 are resolved and #31/#32/#35 are built** — the backend now
+emits `bonded_creatures` with a populated `stats` block, so the map's **first finish-line gate is
+met**, and **#33 is unblocked** with a mechanical recipe (ticket 02 answered from the pf1 schema plus
+a dump of all 205 `pf-companions` Actors; two narrow claims are flagged for slice 7's first live
+import rather than gating it). The frontier is **03**, which gates **#34**.
 
 ## Destination
 
@@ -87,6 +88,13 @@ Build slices 1–4 of §8 have landed; 5 is half-built and 6–9 are absent.
   deltas apply verbatim and `SIZE_GEOMETRY` supplies only AC / attack / CMB / CMD / Stealth / space,
   keyed off the creature's *final* size. → [ticket 04](issues/04-size-change-double-count.md), spec
   §8 **D11**.
+- **Clone the body, delete its progression, drive the class item at HD.** pf1 honours stored fields
+  and rebuilds every `.total`, so the numbers reach the sheet through the clone's own
+  `Animal Companion` class item — set to the creature's **HD count**, not its effective level. The two
+  change-bearing items every `pf-content` Actor ships (`STR/DEX Bonus`, `Natural Armor Bonus`) are the
+  companion table re-applied, and must be deleted or the table lands twice; pf1's own
+  `floor(level / 3)` is wrong at every third level anyway. Amends **D1**: a cloned body is a
+  `character`, not an `npc`. → [ticket 02](issues/02-pf1-actor-patching.md)
 - **Every number in the stat block has a named source, and none of the PC's code was reusable** —
   only the maximised-HP *rule*. The house skill-rank floor does not carry over, because it keys off a
   class the creature does not have. → [ticket 01](issues/01-attack-skill-derivation.md), spec §8
@@ -107,8 +115,9 @@ Build slices 1–4 of §8 have landed; 5 is half-built and 6–9 are absent.
 ## Not yet specified
 
 - Whether companions carry **buffs / conditionals** the way weapons do (the §1/§4 pattern). Carried
-  over from the closed map, and still only answerable once [ticket 02](issues/02-pf1-actor-patching.md)
-  has actually run against a real Actor.
+  over from the closed map. Ticket 02 establishes that a companion is an ordinary `character` Actor
+  whose natural attacks are real attack items, so the applier has something to bite on; whether it
+  *should* is still undecided.
 - **Regeneration semantics on the Foundry side** — re-importing the same character: new Actors
   alongside the old, or an update in place? The module has no precedent for either.
 - Whether the **master's sheet cross-references** its companion's sheet, and how (Foundry actor link,
