@@ -530,6 +530,26 @@
     },
   
 "feats":
-    ["Acrobatic", "agile maneuvers", "armor proficiency (light, medium, and heavy)", "athletic", "blind-fight", "combat reflexes", "diehard", "dodge", "endurance", "great fortitude", "improved bull rush", "improved initiative", "improved natural armor", "improved natural attack", "improved overrun", "intimidating prowess", "iron will", "lightning reflexes", "mobility", "power attack", "run", "skill focus", "spring attack", "stealthy", "toughness", "weapon finesse", "weapon focus"]
+    ["Acrobatic", "Agile Maneuvers", "Athletic", "Blind-Fight", "Combat Reflexes", "Diehard", "Dodge", "Endurance", "Great Fortitude", "Heavy Armor Proficiency", "Improved Bull Rush", "Improved Initiative", "Improved Natural Armor", "Improved Natural Attack", "Improved Overrun", "Intimidating Prowess", "Iron Will", "Light Armor Proficiency", "Lightning Reflexes", "Medium Armor Proficiency", "Mobility", "Power Attack", "Run", "Skill Focus", "Spring Attack", "Stealthy", "Toughness", "Weapon Finesse", "Weapon Focus"],
+
+"tax_children_readme":
+    ["Which feat-tax children a bonded creature may receive free. Spec section 8, D15.",
+     "The pool above is the LEGALITY list for what a creature picks; this is the separate, smaller",
+     "question of what feat tax may hand it. The two cannot be the same list -- tax exists to grant",
+     "the chain a primary opens, and a chain that never leaves the pool fires exactly once",
+     "(endurance -> diehard).",
+     "But the derived chains are enormous and mostly humanoid: the 29 feats above open 128 distinct",
+     "children, including Drunken Brawler, Wand Dancer, Gun Twirling, Sword and Pistol and Arcane",
+     "Armor Training. A prerequisite reader cannot refuse those, because their prerequisites are",
+     "genuinely met -- an animal simply has no use for a wand. So the allowlist is curated.",
+     "Every name here is animal-appropriate AND has prerequisites companion_feats.legal_for_companion",
+     "can actually read, so nothing in this list is permanently dead: entries gated on a ki pool, a",
+     "fighter level, a skill-rank count, a deity or a size category were deliberately left out,",
+     "because the reader would refuse them on every creature forever. validate_companion_feats.py",
+     "enforces both halves. Anything refused is reported on the creature's `feat_notes`, never",
+     "dropped silently."],
+
+"tax_children":
+    ["Altitude Affinity", "Bull Rush Strike", "Charge Through", "Cold Celerity", "Combat Patrol", "Diehard", "Elephant Stomp", "Fast Healer", "Greater Bull Rush", "Greater Overrun", "Heavy Armor Proficiency", "Improved Great Fortitude", "Improved Iron Will", "Improved Lightning Reflexes", "Improved Sidestep", "Landing Roll", "Medium Armor Proficiency", "Quick Bull Rush", "Rhino Charge", "Sidestep", "Spring Attack", "Stoic", "Survivor"]
 
 }
