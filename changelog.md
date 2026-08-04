@@ -224,6 +224,42 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   - The docstring states plainly what it **cannot** catch: a stripped diacritic is only detectable
     when it ate a leading capital (`rling`), never mid-word (`Lindstrm`). A guard trusted further
     than it earns is worse than one with a documented ceiling.
+- **Bonded creatures have names, and a stated position on gear.** A companion, mount or familiar
+  that exists now carries a **name** drawn from its master's region pool and a rolled **sex**, so a
+  druid's wolf arrives as "Cédric" rather than as a second row labelled *Wolf*. Both sit on the
+  entry beside the species; nothing composes them into a label, because the Foundry module and the
+  web sheet each want a different one (spec §8 D2).
+  - **The name reuses `first_names_regions.json`** — the same ten region pools the PC draws from —
+    so it costs no new data and reads as regionally flavoured. *Rejected:* a curated animal-name
+    list (new curation, which the road-to-1.0 plan defers) and species-as-label.
+  - **The name never collides with the master's**, and **`species` is left strictly alone** because
+    it is the only key the Foundry module matches a `pf-content` Actor on. A name that leaked into
+    the match key would make every named companion miss its clone and silently degrade to a bare
+    stat block — the failure mode that already bit spell conditionals.
+  - **The sex is rolled per creature.** *Rejected:* reusing the master's, which would have made
+    every companion the same sex as its owner 100% of the time.
+  - **A companion owns nothing yet, and now says so**: `gear: []` plus a `gear_source` note that
+    records *both* the absence and that the gear will be bought from `character.gold` when it
+    arrives (Pathfinder gives companions no wealth-by-level, so the master pays). The point is that
+    the emptiness is a stated fact a later ticket fills, not a field nobody noticed was missing.
+    *Rejected:* modelling a mount's tack now, which drags barding's AC math into this release; and
+    saying nothing at all, which is how the question would have been answered by omission.
+    ⚠ When gear does land, characters generated from the same seed will make **different** armour
+    and weapon purchases, because the money now has a competing claim on it.
+  - **An entry that records an absence stays empty**: a lost coin flip or an archetype that removes
+    the bond yields `name: None`, `sex: None` and no gear key at all. *Rejected:* one uniform key
+    set with nulls everywhere, which ships a null-named, empty-geared creature for renderers to draw.
+  - **The deprecated `animal_companion` payload key is frozen** at its five existing fields and
+    gains none of this. *Rejected:* mirroring the new fields onto it — a deprecated key that is
+    never worse than its replacement is never migrated away from, and the name is the only reason
+    the sheet would ever move to `bonded_creatures`.
+  - **`Backend/scripts/validate_companion_identity.py`** holds all of the above, including the rule
+    that the sample must actually *reach* both a granted and an absent entry before it may report
+    success. The generated payload cannot carry these fields until `bonded_creatures` ships, so
+    without this the rules would have existed only as sentences in a spec.
+  - Companions of masters from **Tal-falko** and **Kaeru no Tochi** would have come out nameless:
+    the region a character carries is title-cased while the name-file keys are not, so two of the
+    ten regions never matched. The new name lookup resolves the region case-insensitively.
 
 ### Fixed
 - **Every region can now be chosen — five of the ten never worked.** Region selection had three

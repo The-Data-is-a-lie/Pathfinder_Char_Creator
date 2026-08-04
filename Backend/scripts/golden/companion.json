@@ -17,8 +17,8 @@
    "will": 1
   },
   "feats": [
-   "improved overrun",
-   "iron will"
+   "diehard",
+   "improved natural attack"
   ],
   "kind": "normal",
   "species": "bird, harpy eagle (3pp)",
@@ -119,32 +119,32 @@
  ],
  "class feature levels": {
   "Talents": {
-   "illumination inquisition": 1,
-   "seduction inquisition": 1
+   "revelation inquisition": 1,
+   "sedition inquisition": 1
   }
  },
  "class feature owners": {
   "Talents": "inquisitor"
  },
  "class features": {
-  "Skill Unlock: Ride": {
-   "10 Ranks": "When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.",
-   "15 Ranks": "While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.",
-   "20 Ranks": "Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.",
-   "5 Ranks": "Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted."
+  "Skill Unlock: Handle Animal": {
+   "10 Ranks": "Trained creatures gain the +2 Will bonus within 30 feet while they can clearly see you, and you can teach a trick in 1 day at DC +20.",
+   "15 Ranks": "With a week and a DC 30 check you can train an animal to understand speech (as speak with animals); you can teach a trick in 1 day (DC +10) or 1 hour (DC +20).",
+   "20 Ranks": "You can make your speech understandable to any animal for 24 hours (DC 30, or DC 40 for magical beasts/vermin), and teach tricks in as little as 1 minute.",
+   "5 Ranks": "Creatures you have trained gain a +2 bonus on Will saves while adjacent to you."
   },
   "Talents": {
-   "illumination inquisition": {
-    "aura of enlightenment (su)": "at 4th level, you can create a 30-foot-radius aura of normal light. Allies in this aura gain a +2 insight bonus on skill checks. This counts as a 2nd-level light effect for the purpose of countering or dispelling darkness effects. You can use this aura for a number of rounds per day equal to your inquisitor level. These rounds do not need to be consecutive.",
-    "deities": "desna, erastil, irori, sarenrae.",
-    "granted powers": "many times an inquisitor's greatest weapon is pure and unflinching illumination; errors are often illuminated by light and wisdom.",
-    "illuminating touch (sp)": "you cause your hand to shimmer with divine radiance, allowing you to touch a creature as a standard action and give it a bonus equal to 1/2 your inquisitor level on a single will saving throw, knowledge check, perception check, or sense motive check. This ability lasts for 1 hour or until the creature chooses to apply the bonus to a roll. You can use this ability to grant the bonus a number of times per day equal to 3 + your wisdom modifier."
+   "revelation inquisition": {
+    "burn shroud (su)": "as a standard action, you can make an unarmed touch attack against a creature. The target takes 1d4 points of fire damage + 1/2 your inquisitor level (minimum 1). If the target is currently the subject of a polymorph effect that changes its appearance (such as by alter self, shapechange, or an innate shapechanging ability such as that possessed by doppelgangers), it instead takes 1d6 points of fire damage + 1/2 your inquisitor level (minimum 1). You can use this ability a number of times per day equal to 3 + your wisdom modifier.",
+    "deities": "desna, irori, sarenrae, shelyn.",
+    "granted powers": "evil often hides itself behind a mask of good. You are an expert at ferreting out those who are not what they seem, and use your powers to reveal the true forms of the unworthy.",
+    "reveal form (su)": "at 8th level, once per day as a standard action, you can invoke the name of your deity and order one shapechanged target within 30 feet to reveal its true form. The target must succeed at a will save (dc 10 + 1/2 your inquisitor level + your wisdom modifier) or be forced on its next turn to dispel any ongoing polymorph effects or innate shapechanging abilities to assume its natural form. If a creature affected by this ability fails its save and is for some reason unable to dispel any ongoing polymorph effects or innate shapechanging abilities, it is instead staggered for 1 round. This is a mind-affecting compulsion effect."
    },
-   "seduction inquisition": {
-    "deities": "arshea, calistria, cayden cailean, shelyn.",
-    "disarming flirtation (sp)": "you can attempt a charisma check to entice a target that could be sexually attracted to you into letting you speak for up to 1 minute when it would otherwise be unwilling to consider your words. The dc of this charisma check is equal to 10 + the targets wisdom modifier. If successfully used in combat, this ability instead functions as a successful feint and the target cannot take any actions that would attack you as long as it is denied its dexterity bonus against you.",
-    "granted powers": "your deity blesses your attempts to use sex and love for a higher purpose.",
-    "inspire devotion (ex)": "by spending at least 1 hour engaged in acts of physical pleasure with a willing partner, you can attempt a diplomacy check to improve that partners attitude or increase your influence with that partner (or reduce a rivals influence with that partner) with no maximum on the number of steps by which you can change that partners attitude or disposition."
+   "sedition inquisition": {
+    "deities": "cayden cailean, desna, iomedae, milani, nethys, norgorber, sarenrae, shelyn.",
+    "granted powers": "your deity calls you to cast down a hostile government. Stealth is a class skill for you.",
+    "rebel leader (ex)": "at 8th level, you gain leadership as a bonus feat.",
+    "undermine authority (sp)": "a number of times per day equal to your wisdom bonus, you can worsen the attitude of a character toward any governmental officer or leader acting against your religion. This likewise reduces that officers or leaders influence with that character. The persuasion requires enough conversation to attempt a diplomacy check (usually 1 minute) and you attempt a diplomacy check as normal to influence the targets attitude. However, if you fail the check, the target is subject to a mind-affecting compulsion that alters its attitude for a number of days equal to your inquisitor level. The target can resist the compulsion with a successful will saving throw (dc = 10 + 1/2 your inquisitor level + your wisdom modifier). If the target is under a mind-affecting effect from that officer or leader, the effect is automatically suppressed for 1 minute."
    }
   }
  },
@@ -243,32 +243,32 @@
  "class_feature_conditionals_dict": {},
  "class_feature_levels": {
   "Talents": {
-   "illumination inquisition": 1,
-   "seduction inquisition": 1
+   "revelation inquisition": 1,
+   "sedition inquisition": 1
   }
  },
  "class_feature_owners": {
   "Talents": "inquisitor"
  },
  "class_features": {
-  "Skill Unlock: Ride": {
-   "10 Ranks": "When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.",
-   "15 Ranks": "While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.",
-   "20 Ranks": "Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.",
-   "5 Ranks": "Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted."
+  "Skill Unlock: Handle Animal": {
+   "10 Ranks": "Trained creatures gain the +2 Will bonus within 30 feet while they can clearly see you, and you can teach a trick in 1 day at DC +20.",
+   "15 Ranks": "With a week and a DC 30 check you can train an animal to understand speech (as speak with animals); you can teach a trick in 1 day (DC +10) or 1 hour (DC +20).",
+   "20 Ranks": "You can make your speech understandable to any animal for 24 hours (DC 30, or DC 40 for magical beasts/vermin), and teach tricks in as little as 1 minute.",
+   "5 Ranks": "Creatures you have trained gain a +2 bonus on Will saves while adjacent to you."
   },
   "Talents": {
-   "illumination inquisition": {
-    "aura of enlightenment (su)": "at 4th level, you can create a 30-foot-radius aura of normal light. Allies in this aura gain a +2 insight bonus on skill checks. This counts as a 2nd-level light effect for the purpose of countering or dispelling darkness effects. You can use this aura for a number of rounds per day equal to your inquisitor level. These rounds do not need to be consecutive.",
-    "deities": "desna, erastil, irori, sarenrae.",
-    "granted powers": "many times an inquisitor's greatest weapon is pure and unflinching illumination; errors are often illuminated by light and wisdom.",
-    "illuminating touch (sp)": "you cause your hand to shimmer with divine radiance, allowing you to touch a creature as a standard action and give it a bonus equal to 1/2 your inquisitor level on a single will saving throw, knowledge check, perception check, or sense motive check. This ability lasts for 1 hour or until the creature chooses to apply the bonus to a roll. You can use this ability to grant the bonus a number of times per day equal to 3 + your wisdom modifier."
+   "revelation inquisition": {
+    "burn shroud (su)": "as a standard action, you can make an unarmed touch attack against a creature. The target takes 1d4 points of fire damage + 1/2 your inquisitor level (minimum 1). If the target is currently the subject of a polymorph effect that changes its appearance (such as by alter self, shapechange, or an innate shapechanging ability such as that possessed by doppelgangers), it instead takes 1d6 points of fire damage + 1/2 your inquisitor level (minimum 1). You can use this ability a number of times per day equal to 3 + your wisdom modifier.",
+    "deities": "desna, irori, sarenrae, shelyn.",
+    "granted powers": "evil often hides itself behind a mask of good. You are an expert at ferreting out those who are not what they seem, and use your powers to reveal the true forms of the unworthy.",
+    "reveal form (su)": "at 8th level, once per day as a standard action, you can invoke the name of your deity and order one shapechanged target within 30 feet to reveal its true form. The target must succeed at a will save (dc 10 + 1/2 your inquisitor level + your wisdom modifier) or be forced on its next turn to dispel any ongoing polymorph effects or innate shapechanging abilities to assume its natural form. If a creature affected by this ability fails its save and is for some reason unable to dispel any ongoing polymorph effects or innate shapechanging abilities, it is instead staggered for 1 round. This is a mind-affecting compulsion effect."
    },
-   "seduction inquisition": {
-    "deities": "arshea, calistria, cayden cailean, shelyn.",
-    "disarming flirtation (sp)": "you can attempt a charisma check to entice a target that could be sexually attracted to you into letting you speak for up to 1 minute when it would otherwise be unwilling to consider your words. The dc of this charisma check is equal to 10 + the targets wisdom modifier. If successfully used in combat, this ability instead functions as a successful feint and the target cannot take any actions that would attack you as long as it is denied its dexterity bonus against you.",
-    "granted powers": "your deity blesses your attempts to use sex and love for a higher purpose.",
-    "inspire devotion (ex)": "by spending at least 1 hour engaged in acts of physical pleasure with a willing partner, you can attempt a diplomacy check to improve that partners attitude or increase your influence with that partner (or reduce a rivals influence with that partner) with no maximum on the number of steps by which you can change that partners attitude or disposition."
+   "sedition inquisition": {
+    "deities": "cayden cailean, desna, iomedae, milani, nethys, norgorber, sarenrae, shelyn.",
+    "granted powers": "your deity calls you to cast down a hostile government. Stealth is a class skill for you.",
+    "rebel leader (ex)": "at 8th level, you gain leadership as a bonus feat.",
+    "undermine authority (sp)": "a number of times per day equal to your wisdom bonus, you can worsen the attitude of a character toward any governmental officer or leader acting against your religion. This likewise reduces that officers or leaders influence with that character. The persuasion requires enough conversation to attempt a diplomacy check (usually 1 minute) and you attempt a diplomacy check as normal to influence the targets attitude. However, if you fail the check, the target is subject to a mind-affecting compulsion that alters its attitude for a number of days equal to your inquisitor level. The target can resist the compulsion with a successful will saving throw (dc = 10 + 1/2 your inquisitor level + your wisdom modifier). If the target is under a mind-affecting effect from that officer or leader, the effect is automatically suppressed for 1 minute."
    }
   }
  },
@@ -325,7 +325,7 @@
  "counter_spell_descriptor": [
   "fear"
  ],
- "craft_type": "Scrimshaw",
+ "craft_type": "Shipbuilding",
  "day_list": [
   12,
   15,
@@ -336,13 +336,18 @@
  "dex": 12,
  "enhancement_effects_dict": {},
  "equip_descrip": {
-  "chest": {
-   "description": " this sturdy vest stays dry and spotless in the worst of conditions. You can secure up to six objects (weighing up to 1 pound each) to the vest by holding them to it and speaking a command word. You can retrieve any of these items as a move action. In addition, the vest has four large pockets, each capable of holding as much as 1/2 cubic foot in volume or 5 pounds in weight, and weighing only 1 pound when full. When closed, the pockets are proof against water and the elements. The first pocket contains 1 day's worth of trail rations, a quart of water in a waterskin, two candles, and a tindertwig. The vest recreates these items if the first pocket is left empty for 3 days. ",
-   "item_name": "Versatile Vest"
+  "belts": {
+   "description": " this thick leather belt is adorned with several oversized iron plates and disks depicting images of orc gladiators in battle. The wearer of a victor's belt gains a +2 morale bonus on all combat maneuver checks and to combat maneuver defense. In addition, the wearer can enter a rage (as the rage spell) as a standard action once per day. Whenever the wearer takes an amount of damage equal to at least half his current hit points in a single round, there is a 50% chance that the belt activates its rage ability automatically as an immediate action, provided the power has not already been activated that day and the wearer is not already raging. Regardless of how the rage is activated, it lasts for 5 rounds. ",
+   "item_name": "Victor's Belt"
+  },
+  "headband": {
+   "description": " this metal headband holds a glistening, diamond-shaped gem. A kineticist's diadem includes one of five colors of gem, each corresponding to a different element: blue (water), clear (aether), green (earth), red (fire), and white (air). The diadem's gem grants the wearer greater control over its associated element. While worn by a kineticist, this item increases the damage dealt by the kineticist's simple and composite blasts that match the element of the inlaid gem by 1d6 points (for a lesser kineticist's diadem), 2d6 points (for a kineticist's diadem), or 3d6 points (for a greater kineticist's diadem). If the blast is a physical blast, the extra damage dice from the kineticist's diadem increase to d8s instead of d6s. These extra damage dice do not multiply on a critical hit, and the extra damage dice do not apply to blasts with form infusions that do not apply the extra damage from elemental overflow, like kinetic blade and kinetic whip. ",
+   "item_name": "Kineticist's Diadem, Greater"
   }
  },
  "equipment_list": [
-  "Versatile Vest"
+  "Victor's Belt",
+  "Kineticist's Diadem, Greater"
  ],
  "eye_color": [
   "Brown"
@@ -446,12 +451,12 @@
   "Pushing Assault",
   "Cast Rune"
  ],
- "formatted_bio": "Anaïs Brunet\n- Alignment: Neutral Good\n- Deity: Sarenrae\n- Race: Human\n- Class: Level 8 Inquisitor / Druid And Bard\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Homeland: Tal-falko\n\nVocation\n- Profession: Sexton (rank 15)\n- Profession: Novice Evoker (rank 3)\n- Profession: Scroll Copyist (rank 10)\n- Profession: Whittler (rank 1)\n- Known for: Scrimshaw\n- Training: An excellent trainer who taught them Intensified Spell, Sin Eater, Lingering Shadows\n- Training: An average trainer who taught them Equipment Trick, Endurance\n- Training: A terrible trainer who taught them Dimensional Agility\n- Training: An excellent trainer who taught them Shaping Focus, Firebrand, Aquatic Ancestry\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 2 Older Brothers\n- 3 Younger Brothers\n- 3 Younger Sisters\n\nPersonality\n- Personality: Distinguished, Supportive, Approving\n- Mannerisms: Winks, Grits teeth\n- Flaws: Accustomed to Society, Powerless Prophecy\n\nAppearance\n- Hair: Straight Brown\n- Eyes: Brown\n- Build: Sickly",
+ "formatted_bio": "Anaïs Brunet\n- Alignment: Neutral Good\n- Deity: Sarenrae\n- Race: Human\n- Class: Level 8 Inquisitor / Druid And Bard\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ship's Clerk (rank 15)\n- Profession: Worldforger Eternal (rank 3)\n- Profession: Whittler (rank 10)\n- Profession: Tree Trimmer (rank 1)\n- Known for: Shipbuilding\n- Training: An excellent trainer who taught them Intensified Spell, Sin Eater, Lingering Shadows\n- Training: An average trainer who taught them Equipment Trick, Endurance\n- Training: A terrible trainer who taught them Dimensional Agility\n- Training: An excellent trainer who taught them Shaping Focus, Firebrand, Aquatic Ancestry\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 2 Older Brothers\n- 3 Younger Brothers\n- 3 Younger Sisters\n\nPersonality\n- Personality: Distinguished, Supportive, Approving\n- Mannerisms: Winks, Grits teeth\n- Flaws: Accustomed to Society, Powerless Prophecy\n\nAppearance\n- Hair: Straight Brown\n- Eyes: Brown\n- Build: Sickly",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 7275,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 4000,
+ "gold": 982,
  "hair_color": [
   "Brown"
  ],
@@ -500,11 +505,28 @@
  "initiator_level": 0,
  "int": 16,
  "item_changes_dict": {
-  "Versatile Vest": {
+  "Kineticist's Diadem, Greater": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "You can secure up to six objects (weighing up to 1 pound each) to the vest by holding them to it and speaking a command word. You can retrieve any of these items as a move action. In addition, the vest has four large pockets, each capable of holding as much as 1/2 cubic foot in volume or 5 pounds in weight, and weighing only 1 pound when full. The first pocket contains 1 day's worth of trail rations, a quart of water in a waterskin, two candles, and a tindertwig. The vest recreates these items if the first pocket is left empty for 3 days."
+    "This item increases the damage dealt by the kineticist's simple and composite blasts that match the element of the inlaid gem by 1d6 points (for a lesser kineticist's diadem), 2d6 points (for a kineticist's diadem), or 3d6 points (for a greater kineticist's diadem). If the blast is a physical blast, the extra damage dice from the kineticist's diadem increase to d8s instead of d6s."
+   ]
+  },
+  "Victor's Belt": {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "cmd",
+     "type": "morale"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "cmd",
+     "text": "In addition, the wearer can enter a rage (as the rage spell) as a standard action once per day. Whenever the wearer takes an amount of damage equal to at least half his current hit points in a single round, there is a 50% chance that the belt activates its rage ability automatically as an immediate action, provided the power has not already been activated that day and the wearer is not already raging. Regardless of how the rage is activated, it lasts for [[5]] rounds."
+    }
    ]
   }
  },
@@ -524,8 +546,7 @@
   "Abyssal",
   "Sphinx",
   "Sylvan",
-  "Auran",
-  "Goblin"
+  "Auran"
  ],
  "level": 8,
  "level_up_stats": {
@@ -563,24 +584,106 @@
   "Supportive",
   "Approving"
  ],
- "platnium": 400.0,
+ "platnium": 98.2,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
-   "changes": [],
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.lin",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.khi",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.klo",
+     "type": "competence"
+    }
+   ],
    "contextNotes": [],
-   "description": "<p><em>Profession (Sexton) - rank 15/15. Associate skills (ranks 1/4/7/10): Use Magic Device, Perception, Diplomacy, Craft.</em></p><hr><p><strong>Master Craftsman (Ex)</strong></p><p>You can use your Craft or Profession ranks in place of the caster-level prerequisite for item creation feats, and you craft masterwork goods in half the normal time and cost.</p><hr><p><strong>Honest Materials (Ex)</strong></p><p>Objects you craft gain hardness equal to half your ranks in the relevant Craft skill (minimum +1) and +2 hit points per inch of thickness. Once per day you can spend 1 minute reinforcing a held object to grant it this same benefit for 24 hours.</p>",
-   "name": "Profession Rank 5: (Sexton)",
-   "uses": {
-    "maxFormula": "1",
-    "per": "day",
-    "value": null
-   }
+   "description": "<p><em>Profession (Ship's Clerk) - rank 15/15. Associate skills (ranks 1/4/7/10): Handle Animal, Diplomacy, Appraise, Sleight of Hand.</em></p><hr><p><strong>Bookish (Ex)</strong></p><p>Years buried in dusty tomes let you read and write any language you know and grant a +2 competence bonus on Linguistics checks and on any one Knowledge skill in which you have at least 1 rank. Once per day you may take 20 on a Knowledge or Linguistics check made to research a written record without spending extra time.</p><hr><p><strong>Idle Speculation (Ex)</strong></p><p>Your endless musing about history and rumor makes you a font of half-remembered lore. You gain a +2 competence bonus on Knowledge (history) and Knowledge (local) checks, and once per day you may make a Knowledge check to recall a relevant fact even for a topic in which you have no ranks, treating it as a trained check.</p>",
+   "name": "Profession Rank 5: (Ship's Clerk)",
+   "uses": null
   },
   {
    "changes": [
     {
-     "formula": "4",
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.kar",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.khi",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.kge",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.kna",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.lin",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.kar",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.khi",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.kge",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Ship's Clerk) - rank 15/15.</em></p><hr><p><strong>Encyclopedic Recall (Ex)</strong></p><p>Your memory is a well-ordered archive of names, dates, and minor facts. You gain a +2 competence bonus on all Knowledge checks, and you can attempt any Knowledge check untrained to recall an obscure fact.</p><hr><p><strong>Polyglot's Ear (Ex)</strong></p><p>Hours of study across foreign grammars let you puzzle out unfamiliar speech and script. You gain a +2 competence bonus on Linguistics checks, and you can read a message in a language you do not know, or decipher an unfamiliar cipher, with a Linguistics check (DC 10 + half your character level + your Intelligence modifier).</p><hr><p><strong>Lore Master (Ex)</strong></p><p>You gain a +2 bonus on all Knowledge checks and can always take 10 on them. You can attempt any Knowledge check untrained.</p>",
+   "name": "Profession Rank 15: (Ship's Clerk)",
+   "uses": null
+  },
+  {
+   "changes": [
+    {
+     "formula": "1",
      "operator": "add",
      "priority": 0,
      "target": "skill.crf",
@@ -590,20 +693,13 @@
      "formula": "2",
      "operator": "add",
      "priority": 0,
-     "target": "skill.apr",
+     "target": "skill.crf",
      "type": "competence"
     }
    ],
    "contextNotes": [],
-   "description": "<p><em>Profession (Sexton) - rank 15/15.</em></p><hr><p><strong>Field Repair (Ex)</strong></p><p>You gain a +4 competence bonus on Craft checks and can repair damaged gear or improvise tools in 1d4 minutes rather than hours. Once per day you can spend 1 minute to restore a broken item to full working order.</p><hr><p><strong>Resourceful Tinker (Ex)</strong></p><p>A number of times per day equal to 1 + one quarter your character level (minimum 1) you can spend 10 minutes to improvise a masterwork artisan's tool, a working lock, or a replacement part from scrap and salvage.</p><hr><p><strong>Quality Goods (Ex)</strong></p><p>Your wares command a premium. You earn your full Profession check result in gold pieces per week, and you gain a +2 bonus on Appraise checks.</p>",
-   "name": "Profession Rank 15: (Sexton)",
-   "uses": null
-  },
-  {
-   "changes": [],
-   "contextNotes": [],
-   "description": "<p><em>Profession (Scroll Copyist) - rank 10/10. Associate skills (ranks 1/4/7/10): Handle Animal, Diplomacy, Appraise, Sleight of Hand.</em></p><hr><p><strong>Read Magic (Sp)</strong></p><p>The Inquisitor can cast <strong>read magic</strong> at will, deciphering arcane glyphs, scrolls, and spellbooks of any written tradition.</p><hr><p><strong>Arcane Cantrips (Sp)</strong></p><p>You can cast detect magic, mage hand, prestidigitation, and ray of frost at will as spell-like abilities (caster level equal to your character level).</p>",
-   "name": "Profession Rank 5: (Scroll Copyist)",
+   "description": "<p><em>Profession (Whittler) - rank 10/10. Associate skills (ranks 1/4/7/10): Craft, Knowledge (local), Sense Motive, Appraise.</em></p><hr><p><strong>Calloused Grip (Ex)</strong></p><p>Years at the bench and forge have hardened your hands against splinters, sparks, and burns. You gain a +1 competence bonus on Craft checks, and you take no penalty on Craft or Profession checks made while working in hazardous conditions such as a hot forge, a rocking ship, or extreme cold.</p><hr><p><strong>Skilled Hands (Ex)</strong></p><p>Years at the workbench steady your hands. You gain a +2 bonus on your primary Craft or Profession skill and you can always take 10 on it, even when distracted.</p>",
+   "name": "Profession Rank 5: (Whittler)",
    "uses": null
   }
  ],
@@ -618,43 +714,114 @@
  "profession_pool": 29,
  "profession_ranks": [
   {
-   "ability_theme": "craft",
-   "ability_tier": "average",
+   "ability_theme": "scholar",
+   "ability_tier": "bad",
    "associate_skills": [
-    "Use Magic Device",
-    "Perception",
+    "Handle Animal",
     "Diplomacy",
-    "Craft"
+    "Appraise",
+    "Sleight of Hand"
    ],
    "cap": 15,
-   "name": "Sexton",
+   "name": "Ship's Clerk",
    "rank15_abilities": [
     {
      "changes": [
       {
-       "formula": "4",
+       "formula": "2",
        "operator": "add",
        "priority": 0,
-       "target": "skill.crf",
+       "target": "skill.kar",
+       "type": "competence"
+      },
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.khi",
+       "type": "competence"
+      },
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.kge",
+       "type": "competence"
+      },
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.kna",
        "type": "competence"
       }
      ],
      "contextNotes": [],
-     "desc": "<p>You gain a +4 competence bonus on Craft checks and can repair damaged gear or improvise tools in 1d4 minutes rather than hours. Once per day you can spend 1 minute to restore a broken item to full working order.</p>",
-     "name": "Field Repair (Ex)",
-     "uses": {
-      "maxFormula": "1",
-      "per": "day",
-      "value": null
-     }
+     "desc": "<p>Your memory is a well-ordered archive of names, dates, and minor facts. You gain a +2 competence bonus on all Knowledge checks, and you can attempt any Knowledge check untrained to recall an obscure fact.</p>",
+     "name": "Encyclopedic Recall (Ex)",
+     "uses": null
     },
     {
-     "changes": [],
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.lin",
+       "type": "competence"
+      }
+     ],
      "contextNotes": [],
-     "desc": "<p>A number of times per day equal to 1 + one quarter your character level (minimum 1) you can spend 10 minutes to improvise a masterwork artisan's tool, a working lock, or a replacement part from scrap and salvage.</p>",
-     "name": "Resourceful Tinker (Ex)",
+     "desc": "<p>Hours of study across foreign grammars let you puzzle out unfamiliar speech and script. You gain a +2 competence bonus on Linguistics checks, and you can read a message in a language you do not know, or decipher an unfamiliar cipher, with a Linguistics check (DC 10 + half your character level + your Intelligence modifier).</p>",
+     "name": "Polyglot's Ear (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.kar",
+       "type": "competence"
+      },
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.khi",
+       "type": "competence"
+      },
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.kge",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>You gain a +2 bonus on all Knowledge checks and can always take 10 on them. You can attempt any Knowledge check untrained.</p>",
+     "name": "Lore Master (Ex)",
+     "uses": null
+    }
+   ],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.lin",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Years buried in dusty tomes let you read and write any language you know and grant a +2 competence bonus on Linguistics checks and on any one Knowledge skill in which you have at least 1 rank. Once per day you may take 20 on a Knowledge or Linguistics check made to research a written record without spending extra time.</p>",
+     "name": "Bookish (Ex)",
      "uses": {
-      "maxFormula": "max(1, 1 + floor(@attributes.hd.total / 4))",
+      "maxFormula": "1",
       "per": "day",
       "value": null
      }
@@ -665,29 +832,20 @@
        "formula": "2",
        "operator": "add",
        "priority": 0,
-       "target": "skill.apr",
+       "target": "skill.khi",
+       "type": "competence"
+      },
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.klo",
        "type": "competence"
       }
      ],
      "contextNotes": [],
-     "desc": "<p>Your wares command a premium. You earn your full Profession check result in gold pieces per week, and you gain a +2 bonus on Appraise checks.</p>",
-     "name": "Quality Goods (Ex)",
-     "uses": null
-    }
-   ],
-   "rank5_abilities": [
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>You can use your Craft or Profession ranks in place of the caster-level prerequisite for item creation feats, and you craft masterwork goods in half the normal time and cost.</p>",
-     "name": "Master Craftsman (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>Objects you craft gain hardness equal to half your ranks in the relevant Craft skill (minimum +1) and +2 hit points per inch of thickness. Once per day you can spend 1 minute reinforcing a held object to grant it this same benefit for 24 hours.</p>",
-     "name": "Honest Materials (Ex)",
+     "desc": "<p>Your endless musing about history and rumor makes you a font of half-remembered lore. You gain a +2 competence bonus on Knowledge (history) and Knowledge (local) checks, and once per day you may make a Knowledge check to recall a relevant fact even for a topic in which you have no ranks, treating it as a trained check.</p>",
+     "name": "Idle Speculation (Ex)",
      "uses": {
       "maxFormula": "1",
       "per": "day",
@@ -696,71 +854,87 @@
     }
    ],
    "ranks": 15,
-   "skill_label": "Profession (Sexton)"
+   "skill_label": "Profession (Ship's Clerk)"
   },
   {
-   "ability_theme": "arcane",
-   "ability_tier": "bad",
+   "ability_theme": "divine",
+   "ability_tier": "top",
    "associate_skills": [
-    "Sense Motive"
+    "Use Magic Device"
    ],
    "cap": 10,
-   "name": "Novice Evoker",
+   "name": "Worldforger Eternal",
    "rank15_abilities": [],
    "rank5_abilities": [],
    "ranks": 3,
-   "skill_label": "Profession (Novice Evoker)"
-  },
-  {
-   "ability_theme": "arcane",
-   "ability_tier": "bad",
-   "associate_skills": [
-    "Handle Animal",
-    "Diplomacy",
-    "Appraise",
-    "Sleight of Hand"
-   ],
-   "cap": 10,
-   "name": "Scroll Copyist",
-   "rank15_abilities": [],
-   "rank5_abilities": [
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>The Inquisitor can cast <strong>read magic</strong> at will, deciphering arcane glyphs, scrolls, and spellbooks of any written tradition.</p>",
-     "name": "Read Magic (Sp)",
-     "uses": null
-    },
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>You can cast detect magic, mage hand, prestidigitation, and ray of frost at will as spell-like abilities (caster level equal to your character level).</p>",
-     "name": "Arcane Cantrips (Sp)",
-     "uses": null
-    }
-   ],
-   "ranks": 10,
-   "skill_label": "Profession (Scroll Copyist)"
+   "skill_label": "Profession (Worldforger Eternal)"
   },
   {
    "ability_theme": "craft",
    "ability_tier": "bad",
    "associate_skills": [
-    "Use Magic Device"
+    "Craft",
+    "Knowledge (local)",
+    "Sense Motive",
+    "Appraise"
    ],
    "cap": 10,
    "name": "Whittler",
    "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "1",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.crf",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Years at the bench and forge have hardened your hands against splinters, sparks, and burns. You gain a +1 competence bonus on Craft checks, and you take no penalty on Craft or Profession checks made while working in hazardous conditions such as a hot forge, a rocking ship, or extreme cold.</p>",
+     "name": "Calloused Grip (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.crf",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Years at the workbench steady your hands. You gain a +2 bonus on your primary Craft or Profession skill and you can always take 10 on it, even when distracted.</p>",
+     "name": "Skilled Hands (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 10,
+   "skill_label": "Profession (Whittler)"
+  },
+  {
+   "ability_theme": "craft",
+   "ability_tier": "average",
+   "associate_skills": [
+    "Appraise"
+   ],
+   "cap": 10,
+   "name": "Tree Trimmer",
+   "rank15_abilities": [],
    "rank5_abilities": [],
    "ranks": 1,
-   "skill_label": "Profession (Whittler)"
+   "skill_label": "Profession (Tree Trimmer)"
   }
  ],
  "professions": [
-  "Sexton",
-  "Novice Evoker",
-  "Scroll Copyist",
-  "Whittler"
+  "Ship's Clerk",
+  "Worldforger Eternal",
+  "Whittler",
+  "Tree Trimmer"
  ],
  "racial_stats": {
   "cha": 0,
@@ -832,53 +1006,53 @@
  "shield_weight": " ",
  "skill_rank_budget": 260,
  "skill_ranks": {
-  "acrobatics": 13,
-  "appraise": 12,
-  "bluff": 7,
-  "climb": 5,
-  "craft": 3,
+  "acrobatics": 12,
+  "appraise": 11,
+  "bluff": 0,
+  "climb": 3,
+  "craft": 2,
   "diplomacy": 0,
-  "disable device": 4,
-  "disguise": 14,
+  "disable device": 7,
+  "disguise": 8,
   "escape artist": 8,
-  "fly": 3,
-  "handle animal": 15,
-  "heal": 14,
-  "intimidate": 13,
-  "knowledge arcana": 4,
-  "knowledge dungeoneering": 10,
-  "knowledge engineering": 9,
-  "knowledge geography": 9,
-  "knowledge history": 5,
-  "knowledge local": 9,
-  "knowledge nature": 15,
-  "knowledge nobility": 9,
-  "knowledge planes": 2,
-  "knowledge religion": 3,
-  "linguistics": 10,
-  "perception": 8,
-  "perform": 8,
+  "fly": 9,
+  "handle animal": 10,
+  "heal": 6,
+  "intimidate": 7,
+  "knowledge arcana": 13,
+  "knowledge dungeoneering": 11,
+  "knowledge engineering": 21,
+  "knowledge geography": 14,
+  "knowledge history": 11,
+  "knowledge local": 13,
+  "knowledge nature": 7,
+  "knowledge nobility": 7,
+  "knowledge planes": 4,
+  "knowledge religion": 0,
+  "linguistics": 9,
+  "perception": 7,
+  "perform": 3,
   "profession": 0,
-  "ride": 7,
-  "sense motive": 7,
-  "sleight of hand": 9,
-  "spellcraft": 8,
-  "stealth": 0,
-  "survival": 2,
-  "swim": 5,
-  "use magic device": 10
+  "ride": 5,
+  "sense motive": 3,
+  "sleight of hand": 13,
+  "spellcraft": 5,
+  "stealth": 9,
+  "survival": 11,
+  "swim": 9,
+  "use magic device": 2
  },
  "skill_unlock": {
-  "base_skill": "ride",
-  "ranks": 7,
-  "skill": "Ride",
+  "base_skill": "handle animal",
+  "ranks": 10,
+  "skill": "Handle Animal",
   "unlock": {
-   "10": "When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.",
-   "15": "While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.",
-   "20": "Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.",
-   "5": "Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted."
+   "10": "Trained creatures gain the +2 Will bonus within 30 feet while they can clearly see you, and you can teach a trick in 1 day at DC +20.",
+   "15": "With a week and a DC 30 check you can train an animal to understand speech (as speak with animals); you can teach a trick in 1 day (DC +10) or 1 hour (DC +20).",
+   "20": "You can make your speech understandable to any animal for 24 hours (DC 30, or DC 40 for magical beasts/vermin), and teach tricks in as little as 1 minute.",
+   "5": "Creatures you have trained gain a +2 bonus on Will saves while adjacent to you."
   },
-  "unlock_html": "<h2>Ride</h2><p><strong>5 Ranks</strong>: Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted.</p><p><strong>10 Ranks</strong>: When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.</p><p><strong>15 Ranks</strong>: While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.</p><p><strong>20 Ranks</strong>: Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.</p>"
+  "unlock_html": "<h2>Handle Animal</h2><p><strong>5 Ranks</strong>: Creatures you have trained gain a +2 bonus on Will saves while adjacent to you.</p><p><strong>10 Ranks</strong>: Trained creatures gain the +2 Will bonus within 30 feet while they can clearly see you, and you can teach a trick in 1 day at DC +20.</p><p><strong>15 Ranks</strong>: With a week and a DC 30 check you can train an animal to understand speech (as speak with animals); you can teach a trick in 1 day (DC +10) or 1 hour (DC +20).</p><p><strong>20 Ranks</strong>: You can make your speech understandable to any animal for 24 hours (DC 30, or DC 40 for magical beasts/vermin), and teach tricks in as little as 1 minute.</p>"
  },
  "specialty_schools": [
   "evocation"
@@ -1521,7 +1695,7 @@
  ],
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],
- "weapon_name": "Brass knife",
+ "weapon_name": "Quarterstaff",
  "weight_number": 152,
  "wis": 21,
  "younger_brothers": " you have 3 younger brothers",

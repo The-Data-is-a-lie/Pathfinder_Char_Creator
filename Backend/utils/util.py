@@ -106,6 +106,39 @@ def gender_chooser(character, userInput_gender):
     character.chosen_gender = userInput_gender
     return character.chosen_gender
 
+def first_name_for(character, region, sex, exclude=None):
+    """One first name for (region, sex), or None if that pool does not exist.
+
+    The pure half of `name_chooser`: same `first_names_regions` lookup, same "Tal-Falko" / "Nameless"
+    fallbacks, but it does NOT touch the character. Bonded creatures name themselves through here
+    (`class_func/animal_companions.py`, #37) so the region -> gender -> names lookup keeps one owner.
+
+    `exclude` drops a name from the pool -- a companion draws from the same list its master drew
+    from, and "Tal-Falko and his wolf Tal-Falko" is otherwise a live outcome. It is a preference,
+    not a guarantee: a one-name pool still returns that name rather than nothing.
+    """
+    pools = getattr(character, 'first_names_regions', None) or {}
+    if region not in pools:
+        # Defence in depth. `region_chooser` now stores the canonical key, so every in-generator
+        # caller passes one; this fold only matters for a caller that builds a character itself
+        # (`validate_companion_identity.py`) or for data that gains a region the resolver has not
+        # seen. It was load-bearing when `character.region` was title-cased.
+        folded = {str(key).casefold(): key for key in pools}
+        region = folded.get(str(region).casefold(), region)
+    by_sex = pools.get(region, "Tal-Falko")
+    # The historical default is a STRING, not a dict, so a missing region cannot be `.get`-chained.
+    # `name_chooser` never reaches it (both of its branches pick a region that exists); a new caller
+    # can, and gets None instead of an AttributeError.
+    if not isinstance(by_sex, dict):
+        return None
+    names = by_sex.get(sex, "Nameless")
+    if not isinstance(names, (list, tuple)) or not names:
+        return None
+    if exclude is not None:
+        names = [name for name in names if name != exclude] or names
+    return random.choice(names)
+
+
 def name_chooser(character):
     """
     Randomly generates names by region
@@ -117,9 +150,8 @@ def name_chooser(character):
 
 
     if character.region in f_name_list:
-        f_names = character.first_names_regions.get(character.region, "Tal-Falko").get(character.chosen_gender, "Nameless")
         l_names = character.last_names_regions[character.region]
-        character.f_name = random.choice(f_names)
+        character.f_name = first_name_for(character, character.region, character.chosen_gender)
         character.l_name = random.choice(l_names)
         character.full_name = character.f_name + character.l_name
 
@@ -127,9 +159,8 @@ def name_chooser(character):
         # wehave this section in case of an emergency and region isn't selected. But this should never occur
         region_list = (list(f_name_list))
         region = random.choice(region_list)
-        f_names = character.first_names_regions.get(region, "Tal-Falko").get(character.chosen_gender, "Nameless")
         l_names = character.last_names_regions[region]
-        character.f_name = random.choice(f_names)
+        character.f_name = first_name_for(character, region, character.chosen_gender)
         character.l_name = random.choice(l_names)
         character.full_name = character.f_name + character.l_name
 

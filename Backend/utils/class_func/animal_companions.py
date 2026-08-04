@@ -23,6 +23,19 @@ FOUR THINGS THE GRILL SETTLED, EACH OF WHICH THIS FILE GETS WRONG IF EDITED CARE
    archetype `removes` -- emit an entry with `species: None` and the reason in `outcome`. Below the
    threshold, emit nothing at all (D6: no clamp to level 1).
 
+IDENTITY AND GEAR (the #37 grill, 2026-08-03)
+---------------------------------------------
+A creature that EXISTS gets a `name` drawn from the MASTER'S region pool (never the master's own
+name) and a rolled `sex`, because `animal_choices.json` carries no sex and the pool is keyed by one.
+`species` remains the SOLE `pf-content` match key -- the module clones by species and attaches by
+name match, so a named companion must never be able to miss its own compendium Actor. Nothing is
+composed here: the backend emits atoms and each renderer builds its own label (D2).
+
+It owns nothing in v1: `gear` is `[]` and `GEAR_SOURCE_V1` says both that the absence is deliberate
+and whose money will buy the gear when #37's v1.1 ticket lands (the master's -- PF1e gives companions
+no wealth-by-level). An ABSENCE entry records why there is no creature, so it carries `name: None`,
+`sex: None` and NO gear key at all: a null-named, empty-geared ghost still renders.
+
 WHAT THIS SLICE DOES NOT DO
 ---------------------------
 The advancement merge and the stat-block math are #31. Entries carry the raw species block and the
@@ -34,6 +47,16 @@ resolver stays honest about what it can actually name.
 import random
 
 from utils.class_func.generic_func import class_entry_for
+from utils.util import first_name_for
+
+# The v1 gear posture, in ONE place. Restating this sentence anywhere else is the "restate a symbol
+# instead of naming its owner" pattern CLAUDE.md calls a bug magnet; import it instead.
+GEAR_SOURCE_V1 = ('not modelled in v1; when added, funded from character.gold '
+                  '(PF1e: companions have no wealth-by-level)')
+
+# Rolled per creature, in the PC's own casing (`util.py::gender_chooser`). NOT the master's sex:
+# reusing it would make every companion match its master 100% of the time.
+SEXES = ('Male', 'Female')
 
 # Prerequisite phrases a bonded character satisfies, registered so feats gated on owning a
 # companion (Boon Companion) become reachable. Kept as a tuple so the feat parser's disjunction
@@ -208,7 +231,7 @@ def resolve_bonded_creatures(character):
             scope = record.get('removes_scope') or 'feature'
             outcome = choice['on_loss'] if (choice and scope == 'creature') else 'archetype_removed'
             character.bond_outcomes[grantor] = outcome
-            entries.append(_entry(row, grantor, None, None, None, None,
+            entries.append(_entry(character, row, grantor, None, None, None, None,
                                   outcome=outcome, archetype=archetype_name,
                                   effective_level=0))
             continue
@@ -219,7 +242,7 @@ def resolve_bonded_creatures(character):
                 outcome = choice['on_loss']
         character.bond_outcomes[grantor] = outcome
         if outcome != 'granted':
-            entries.append(_entry(row, grantor, None, None, None, None,
+            entries.append(_entry(character, row, grantor, None, None, None, None,
                                   outcome=outcome, archetype=archetype_name,
                                   effective_level=0))
             continue
@@ -238,7 +261,7 @@ def resolve_bonded_creatures(character):
         if species is None:
             continue
 
-        entry = _entry(row, grantor, species, kind, _find_species(character, species),
+        entry = _entry(character, row, grantor, species, kind, _find_species(character, species),
                        _chassis(character, min(effective, character_level or effective)),
                        outcome='granted', archetype=archetype_name,
                        effective_level=effective)
@@ -264,12 +287,22 @@ def resolve_bonded_creatures(character):
     return entries
 
 
-def _entry(row, grantor, species, kind, stats, chassis, outcome, archetype, effective_level):
-    return {
+def _entry(character, row, grantor, species, kind, stats, chassis, outcome, archetype,
+           effective_level):
+    """One bonded-creature entry. IDENTITY AND GEAR in the module docstring owns the shape.
+
+    The identity fields are conditional ON PURPOSE. An entry with no species is not a creature, it
+    is the record of why there isn't one, so it gets `name: None` / `sex: None` and no gear key --
+    the alternative (a uniform key set with nulls) ships a null-named, empty-geared ghost that a
+    renderer will happily draw.
+    """
+    entry = {
         'type': row['creature_type'],
         'grantor': grantor,
         'effective_level': effective_level,
         'species': species,
+        'name': None,
+        'sex': None,
         'kind': kind,
         'species_stats': stats,
         'chassis': chassis,
@@ -279,6 +312,13 @@ def _entry(row, grantor, species, kind, stats, chassis, outcome, archetype, effe
         'flags': [],
         'contributors': [grantor] if species else [],
     }
+    if species:
+        entry['sex'] = random.choice(SEXES)
+        entry['name'] = first_name_for(character, getattr(character, 'region', None), entry['sex'],
+                                       exclude=getattr(character, 'f_name', None))
+        entry['gear'] = []
+        entry['gear_source'] = GEAR_SOURCE_V1
+    return entry
 
 
 def _stack(character, entries, character_level):
