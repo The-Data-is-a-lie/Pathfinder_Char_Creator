@@ -42,6 +42,7 @@ LICENSE_PATH = "/license"
 from utils.class_func.adding_bonus_spells			import add_bonus_spells, add_bonus_spells_from_dict
 from utils.class_func.alignment_and_deity 			import randomize_deity, choose_alignment
 from utils.class_func.animal_companions 			import animal_feats, resolve_bonded_creatures
+from utils.class_func.companion_stats 			import stat_bonded_creatures
 from utils.class_func.appearance 					import randomize_apperance_attr, randomize_body_feature, get_racial_attr
 from utils.class_func.armor_and_enhancements 		import plan_enhancements, enhancement_chooser#, enhancement_limits
 from utils.class_func.armor_and_weapon_chooser 		import (armor_chooser, weapon_chooser, list_selection, shield_chooser, 
@@ -504,6 +505,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		domain_chooser(character)
 		full_domain = character.chosen_domain
 		animal_companion_feats = animal_feats(character)
+		# #31: the numbers, last -- the merge reads the post-stack chassis and the feats are already
+		# on the entry by here.
+		stat_bonded_creatures(character)
 
 		generic_class_option_chooser(character,"cavalier", "orders")
 		generic_class_option_chooser(character,"samurai", "orders")

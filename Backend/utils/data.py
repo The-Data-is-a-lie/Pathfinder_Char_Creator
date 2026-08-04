@@ -63,6 +63,24 @@ SKILL_IDS = {
     "use magic device": "umd",
 }
 
+# Canonical skill name -> the ability score its check keys off (PF1e Core, Table 4-2). Added for the
+# companion stat block (#31), which has to total a bonded creature's skills with no class and no
+# character sheet to lean on; kept here beside SKILL_IDS because it is a property of the skill, not
+# of that one consumer. `craft`, `perform` and `profession` are the un-suffixed umbrella entries the
+# generator stores ranks under.
+SKILL_ABILITY = {
+    "acrobatics": "dex", "appraise": "int", "bluff": "cha", "climb": "str", "craft": "int",
+    "diplomacy": "cha", "disable device": "dex", "disguise": "cha", "escape artist": "dex",
+    "fly": "dex", "handle animal": "cha", "heal": "wis", "intimidate": "cha",
+    "knowledge arcana": "int", "knowledge dungeoneering": "int", "knowledge engineering": "int",
+    "knowledge geography": "int", "knowledge history": "int", "knowledge local": "int",
+    "knowledge nature": "int", "knowledge nobility": "int", "knowledge planes": "int",
+    "knowledge religion": "int", "linguistics": "int", "perception": "wis", "perform": "cha",
+    "profession": "wis", "ride": "dex", "sense motive": "wis", "sleight of hand": "dex",
+    "spellcraft": "int", "stealth": "dex", "survival": "wis", "swim": "str",
+    "use magic device": "cha",
+}
+
 lore = ["Goblin Lore",
 "Dragon Lore",
 "Vampire Lore",

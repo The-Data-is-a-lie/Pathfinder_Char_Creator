@@ -260,6 +260,64 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   - Companions of masters from **Tal-falko** and **Kaeru no Tochi** would have come out nameless:
     the region a character carries is title-cased while the name-file keys are not, so two of the
     ten regions never matched. The new name lookup resolves the region case-insensitively.
+- **Bonded creatures have numbers.** A druid's wolf now has HP, AC, touch and flat-footed AC, saves,
+  BAB, CMB/CMD, ability scores, size, speed, parsed attack lines and spent skill ranks — everything a
+  sheet needs to be worth opening. The block is computed by merging the species' published
+  advancement into its base stats; nothing reads it yet (the payload key is the next change).
+  - **A companion that grows no longer gets its size increase twice.** The published per-species
+    advancement numbers already fold the size change in — the proof is that a Dexterity *penalty*
+    appears on all 153 size-increasing rows and on none of the other 43, and growing is the only
+    thing in Pathfinder that lowers Dexterity. So those numbers are applied **exactly as printed**,
+    and the size table supplies only what the data provably lacks: the size modifiers to AC, attack,
+    CMB/CMD, Stealth and space. Without this a grizzly bear would have come out four points of
+    Strength too strong. *Rejected:* subtracting the size table back out of the published numbers —
+    27 species would have been left with a *negative* Strength residue, describing a bear that never
+    existed at any point in its life.
+  - **Where the size change came from is recorded, and marked as already counted.** The stat block
+    says a creature grew Medium → Large and what that contributed, purely so a sheet can explain a
+    number. A renderer that applies it a second time is the one way to reintroduce the double-count,
+    so the record says so in its own text and again in the payload comment.
+  - **A companion that was *born* Small gets its +1 too.** The size modifiers key off the creature's
+    final size rather than off the step it took, which is a case the original framing of the problem
+    missed entirely.
+  - **The house rules that apply to dice carry over; the ones shaped like a class do not.** A
+    companion gets maximised hit points, exactly as the character does. It does **not** get the
+    2-to-4 skill-rank floor, because that rule floors a *class's* ranks-per-level and an animal has
+    no class — its rank total is a single published number. The per-skill cap is likewise the
+    standard Pathfinder one. This is the same line already drawn for companion feats.
+  - **Attack routines stored as prose become real attack lines** — `"bite (1d8 plus trip)"` becomes a
+    line at full attack bonus with the damage, the Strength bonus and the rider separated out,
+    including Pathfinder's one-and-a-half Strength for a creature with a single natural attack
+    (rounded down, which an obvious `round(x * 1.5)` gets wrong at odd modifiers). **357 of the 358
+    routines parse**; the one that does not is an octopus's *tentacles (grab)*, which genuinely has
+    no damage die. Getting there meant handling the awkward eighth of the file rather than the tidy
+    majority: eight routines put commas *inside* the parentheses, four omit the parentheses entirely,
+    several offer an *"X or Y"* alternative that is not a second attack, and the axe beak spells the
+    one-and-a-half-Strength rule out in words. A companion whose bite shows no damage is a visibly
+    broken sheet, so the count is asserted rather than assumed.
+  - **Skill ranks go where an animal would actually put them**: Perception first, then the rest of
+    its permitted list, and never into Fly or Swim for a creature with no such speed. **A mindless
+    companion gets none at all** — 24 species (the vermin and most of the plants) have no
+    Intelligence score, and Pathfinder says such a creature cannot hold skill ranks. The companion
+    table still offers it a rank total, because that table was written for animals; spending it would
+    have put Perception ranks on a slug.
+  - **A companion's dice never disturb the character's.** The one random choice in a stat block draws
+    from its own generator seeded off the creature's identity, so adding companion skills does not
+    shift every roll made later in generation — otherwise a wolf's Stealth ranks would have quietly
+    changed its master's feats, gear and backstory.
+  - **Nothing the merge produces is dropped.** One-off species abilities that no stat field
+    enumerates — *sudden charge*, *stampede*, *ink cloud*, and 28 others — survive in their own
+    bucket. The spec had called for the merged block to replace the raw one on the entry; it cannot,
+    because the frozen `animal_companion` alias reads the same object and its consumer would have
+    silently changed underneath it.
+  - **Two things are carried but explicitly not applied**, rather than implied: the 17 archetypes
+    that alter a companion's progression describe it only in prose, so the entry reports them as
+    unapplied; and reach is omitted because it depends on whether a body is tall or long, which the
+    data never says.
+  - **`Backend/scripts/validate_companion_stats.py`** checks all 392 stat blocks and would fail on
+    447 counts if the double-count were reintroduced. It also asserts that the published numbers
+    still *disagree* with the size table in at least 30 places — otherwise the check could quietly
+    become vacuous if the data ever moved.
 
 ### Fixed
 - **Every region can now be chosen — five of the ten never worked.** Region selection had three
