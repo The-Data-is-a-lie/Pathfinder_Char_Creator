@@ -258,6 +258,12 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
   quietly become vacuous if the data ever moves.
   `validate_psionics_data.py` cross-checks every manifesting class's power-points
   column against the three progressions `pf1-psionics` hardcodes, so a scrape regression fails loudly.
+- `test_psionics_sweep.py` → the **per-class** psionics gate, one table row per class per level
+  (powers, free talents, ability-capped max level, points, subsystem picks, rules text, and whether
+  `pf1-psionics` will keep each emitted name). Named `test_*` rather than `validate_*` on purpose:
+  it generates characters, so it is deliberately outside `validate_all.py`'s glob, alongside
+  `test_house_invariants.py` and `test_golden_payload.py`. Use it when the question is "is *this
+  class* right", not "did anything break".
   - **`validate_all.py` runs every one of them** (glob discovery — a new validator is covered the
     moment it exists), and `.github/workflows/validate.yml` runs *that* plus a trimmed
     `test_house_invariants.py` on push. Before this the eleven validators were manual and nothing

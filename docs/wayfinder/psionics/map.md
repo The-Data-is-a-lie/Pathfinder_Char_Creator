@@ -212,8 +212,38 @@ Web-sheet rendering is explicitly **not** a gate.
   columns match the Foundry module's own low/med/high tables exactly** — independent confirmation
   the scrape is right, and confirmation the module's *class* fields were the broken part.
 
+### Amendments from the 2026-08-03 audit (post-closure)
+
+Four rules/data defects that all eleven tickets missed, found by auditing the three questions
+"are the counts legal", "are they attached", "do they render". Fixed; recorded here because each
+contradicts something a ticket implied was settled:
+
+- **Free talents were never granted, and the counted pool included them.** All ten power-knowing
+  classes grant 0-level talents that explicitly "do not count against powers known"
+  ([ticket 07](issues/07-power-selection-algorithm.md) modelled selection as one pool). Now
+  `psionics.FREE_TALENTS` + `MANDATED_TALENTS`, with `_legal_pool(min_level=1)` for the counted pool.
+- **The `10 + power level` key-ability minimum was not enforced** — only the score-≤9 floor
+  [ticket 05](issues/05-powers-known-pp-tables.md) recorded. `max_power_level` is now the class
+  table capped by the score.
+- **Selection matched power names exactly** where `validate_psionics_data.py` has always resolved
+  aliases and case, so cited-but-unresolvable names reached the payload with no rules text and no
+  Foundry item. Selection now shares the resolver, and the three red links are no longer legal picks.
+- **The option scraper truncated 34 names at a source citation** (`Animal Senses (Source`). Fixed in
+  `_record`; class-option matches against `pf1-psionics` rose **195 → 229 of 335** as a result — the
+  reconciliation numbers in [ticket 10](issues/10-name-reconciliation.md) were measured against
+  truncated names.
+
+**Gate 3 is now built on both front ends and still awaits a live Foundry run.** The web sheet's
+Psionics tab was dead code (written, loaded, never registered in the tab list) and now renders every
+psionic class including the two that manifest nothing — the payload gained `subsystem_bucket` and
+`mind_blade` so a renderer can reach a class's own options. `Backend/scripts/test_psionics_sweep.py`
+is the new per-class gate; it exists because a pass/fail sweep cannot see "generated but invisible".
+
 ## Not yet specified
 
+- **The vitalist's third talent and the highlord's second** should come from the chosen *method* and
+  *tenet* power lists respectively; neither list is in the scrape, so both currently draw from the
+  class list. The counts are right; only the source list is approximated.
 - **Where the manifesting ability lives.** §9 and [ticket 04](issues/04-class-pool-entry-trigger.md)
   lock a new `data.py` map, but that was decided against `caster_mod`, not against
   `class_data.json`. Every psionic class gets a `class_data.json` entry anyway, already carrying
