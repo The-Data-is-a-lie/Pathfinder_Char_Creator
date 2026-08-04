@@ -59,7 +59,18 @@ METZ_PICKS = [0]
 # Bonded-creature branch coverage (#35). Counted rather than assumed, because the #30 stack review's
 # "both=0, neither=0 over 400 generations" was measured by a sample that could not reach the path it
 # claimed to clear.
-BOND = {'granted': 0, 'absent': 0, 'both': 0, 'neither': 0, 'druid_flip': 0}
+BOND = {'granted': 0, 'absent': 0, 'both': 0, 'neither': 0, 'druid_flip': 0,
+        'feats': 0, 'tax': 0, 'flaws': 0, 'applied': 0}
+
+# The feat economy's own data, imported rather than restated -- the pool and the tax allowlist are
+# curated files and this test must fail when a creature strays outside them, not when a copy here
+# falls behind them. `TYPE_NOUNS` is the label vocabulary; only the chassis-driven types have feats.
+from utils.class_func.companion_feats import CHASSIS_TYPES as _CHASSIS_TYPES, TYPE_NOUNS as _NOUNS
+COMPANION_FEAT_TYPES = {kind: _NOUNS[kind] for kind in _CHASSIS_TYPES}
+with open(BACKEND / 'json' / 'animal_companion.json', encoding='utf-8') as _fh:
+    _CHASSIS = json.load(_fh)
+COMPANION_POOL = _CHASSIS.get('feats') or []
+COMPANION_TAX_CHILDREN = _CHASSIS.get('tax_children') or []
 
 # Metzofitz-only pool names: what metzofitz_feat_frame offers minus every AoN name (collisions
 # resolve to AoN, so only names absent from feats.csv prove a homebrew pick happened).
@@ -87,6 +98,32 @@ from utils.class_func.psionics import FREE_TALENTS, MANDATED_TALENTS, SUBSYSTEM_
 with open(BACKEND / 'json' / 'class_data' / 'psionics' / 'psionic_powers_known.json',
           encoding='utf-8') as f:
     PSIONIC_TABLES = json.load(f)
+
+# Occult Adventures. class -> dataset -> the payload bucket its picks land in; must match the
+# generic_class_option_chooser calls in main_test.py and the datasets in
+# Backend/scripts/build_occult_class_data.py. validate_occult_data.py owns the DATA (are the pools
+# well-formed, do the schedules reach the counts the prose promises); this owns the OUTPUT (did a
+# generated character actually receive them).
+_OCCULT_BUCKETS = {
+    'occultist': {'implements': 'implements', 'focus powers': 'focus_powers'},
+    'kineticist': {'elemental focus': 'elemental_focus', 'wild talents': 'wild_talents',
+                   'infusions': 'infusions'},
+    'medium': {'spirits': 'medium_spirit'},
+    'mesmerist': {'mesmerist tricks': 'mesmerist_tricks', 'bold stare': 'bold_stare'},
+    'psychic': {'disciplines': 'psychic_discipline',
+                'phrenic amplifications': 'phrenic_amplifications'},
+    'spiritualist': {'emotional focus': 'emotional_focus'},
+}
+# The option pools themselves, so a pick can be checked against the list it was supposed to come
+# from. Read from the files rather than through the chooser, for the same reason the psionics
+# tables above are: a gate that reads through the code it is gating cannot catch that code drifting.
+_OCCULT_OPTIONS = {}
+for _name in _OCCULT_BUCKETS:
+    with open(BACKEND / 'json' / 'class_data' / f'{_name}.json', encoding='utf-8') as f:
+        _OCCULT_OPTIONS[_name] = json.load(f)
+# Occult branch coverage, same rule as BOND below: every occult check is conditional on an occult
+# class being rolled, so a sweep that rolled none would print PASS having asserted nothing.
+OCCULT = {'chars': 0, 'picks': 0, 'multi_pick_buckets': 0, 'kineticists': 0, 'casters': 0}
 
 
 def check(condition, message):
@@ -320,6 +357,51 @@ def check_character(cell, payload):
                 # The discipline decides the psion's whole power list, so it cannot be blank.
                 check(m['discipline'], f"{tag}: no discipline chosen")
 
+    # ---- Occult Adventures ----
+    features = payload.get('class features') or {}
+    for entry in classes:
+        name = entry['name']
+        if name not in _OCCULT_BUCKETS:
+            continue
+        OCCULT['chars'] += 1
+        level = entry['level']
+        schedules = getattr(data, 'amount', {}).get(name, {})
+        for dataset, bucket in _OCCULT_BUCKETS[name].items():
+            tag = f"{cell}: {name}/{dataset}"
+            pool = _OCCULT_OPTIONS[name][dataset]
+            chosen = features.get(bucket) or {}
+            # How many picks the schedule grants by this class level. A subsystem with no schedule
+            # is a single pick taken at 1st -- the marksman/vitalist shape psionics already uses.
+            want = (sum(1 for at in schedules[dataset] if at <= level)
+                    if dataset in schedules else 1)
+            check(len(chosen) == want,
+                  f"{tag}: {len(chosen)} pick(s) at class level {level}, expected {want}")
+            OCCULT['picks'] += len(chosen)
+            if dataset in schedules and want > 1:
+                OCCULT['multi_pick_buckets'] += 1
+            # A pick that is not in the pool means the bucket was written by something else --
+            # exactly the collision that would silently merge two classes' choices into one bucket.
+            strays = [p for p in chosen if p not in pool]
+            check(not strays, f"{tag}: picks that are not options: {strays[:5]}")
+            # Same failure the psionics and Metzofitz checks guard: a name with no rules text is an
+            # empty row in Foundry and nothing at all on the web sheet.
+            blank = [p for p, text in chosen.items() if not str(text).strip()]
+            check(not blank, f"{tag}: picks with no rules text: {blank[:5]}")
+
+        if name == 'kineticist':
+            # Burn is Constitution-priced and deliberately unmodelled (section 10), but the class
+            # must never acquire a spellbook on the way past -- that is what a stray base_classes
+            # or caster_mod entry would look like from out here.
+            OCCULT['kineticists'] += 1
+            books = [b for b in (payload.get('spellbooks') or []) if b.get('name') == 'kineticist']
+            check(not books,
+                  f"{cell}: kineticist has a spellbook; it is a non-caster in every table")
+        else:
+            OCCULT['casters'] += 1
+            books = [b for b in (payload.get('spellbooks') or []) if b.get('name') == name]
+            check(len(books) == 1,
+                  f"{cell}: {name} casts psychic magic but has {len(books)} spellbook(s)")
+
     # ---- OGL section 10 ----
     # Serving extracted mechanics is Distribution, so every payload must point at the licence.
     check(payload.get('license_url'), f"{cell}: payload carries no license_url")
@@ -333,6 +415,77 @@ def check_character(cell, payload):
           f"{cell}: Total_HP {payload['Total_HP']} != {want_hp} (+favored 0|{L})")
 
     check_bonded_creatures(cell, payload)
+
+
+def check_companion_feats(tag, entry, stats):
+    """Spec section 8, D14/D15/D16 -- the feat economy and the modifier fold.
+
+    `validate_companion_feats.py` gates the DATA (every pool name real, every declared effect
+    landing on a probe block). What needs a whole generated creature is the wiring: that the labels
+    line up with the feats they name, that no feat arrives that this body could not take, and that
+    the fold left an audit trail instead of quietly moving a number.
+    """
+    if entry.get('type') not in COMPANION_FEAT_TYPES:
+        return                       # familiars use the master's feats; eidolons are evolutions
+    feats = entry.get('feats')
+    labels = entry.get('feat_labels')
+    check(isinstance(feats, list) and isinstance(labels, list),
+          f"{tag}: feats/feat_labels are {type(feats).__name__}/{type(labels).__name__}, not lists")
+    if not (isinstance(feats, list) and isinstance(labels, list)):
+        return
+    BOND['feats'] += len(feats)
+
+    # A label list out of step with its feat list is the defect that renames every feat on the
+    # sheet by one position -- silently, and only visibly wrong to someone who knows the chassis.
+    check(len(labels) == len(feats),
+          f"{tag}: {len(feats)} feats but {len(labels)} labels")
+    noun = COMPANION_FEAT_TYPES[entry['type']]
+    for label in labels:
+        check(str(label).startswith(f'{noun} '),
+              f"{tag}: label {label!r} does not read '{noun} <grant level>'")
+
+    pool = set(COMPANION_POOL)
+    strays = [f for f in feats + list(entry.get('flaw_feats') or []) if f not in pool]
+    check(not strays, f"{tag}: feats that are not in the bonded-creature pool: {strays[:5]}")
+
+    allowed = set(COMPANION_TAX_CHILDREN)
+    for primary, children in (entry.get('feat_tax_dict') or {}).items():
+        BOND['tax'] += len(children or [])
+        outside = [c for c in children or [] if c not in allowed]
+        check(not outside,
+              f"{tag}: feat tax granted {outside[:5]} via {primary!r}, which is not on the "
+              "tax_children allowlist -- that is how a wolf ends up with Drunken Brawler")
+
+    # D16: flaws buy feats on the diminishing house ladder, exactly as they do for a PC.
+    flaws = entry.get('flaws')
+    check(isinstance(flaws, list), f"{tag}: flaws is {type(flaws).__name__}, not a list")
+    if isinstance(flaws, list):
+        BOND['flaws'] += len(flaws)
+        check(len(flaws) <= 4, f"{tag}: {len(flaws)} flaws; the d100 ladder tops out at 4")
+        check(sorted(entry.get('flaw_effects') or {}) == sorted(flaws),
+              f"{tag}: flaw_effects does not reconcile with flaws")
+        want = min(len(flaws) // 2 + 1, 3) if flaws else 0
+        got = entry.get('flaw_feat_amount')
+        check(got in (0, want),
+              f"{tag}: {len(flaws)} flaws grant {got} feats, expected {want} (or 0 without the "
+              "misc_homebrew flag)")
+        check(len(entry.get('flaw_feats') or []) <= (got or 0),
+              f"{tag}: {len(entry.get('flaw_feats') or [])} flaw feats but only {got} were bought")
+
+    # D14: the fold leaves provenance. `stats` is FINAL for the web sheet, so an unexplained number
+    # is unauditable -- and a source naming a feat the creature does not own is a fold gone wrong.
+    applied = stats.get('applied_changes')
+    check(isinstance(applied, list), f"{tag}: stats.applied_changes is missing")
+    owned = set(feats) | set(entry.get('flaw_feats') or []) | set(entry.get('flaws') or [])
+    owned |= {c for children in (entry.get('feat_tax_dict') or {}).values() for c in children or []}
+    for record in applied or []:
+        BOND['applied'] += 1
+        source = str(record.get('source') or '')
+        stem = source.split(' (via ')[0].split(') ', 1)[-1]
+        check(stem in owned,
+              f"{tag}: stats.applied_changes credits {source!r}, which the creature does not own")
+    check(isinstance(stats.get('context_notes'), list),
+          f"{tag}: stats.context_notes is missing")
 
 
 def check_bonded_creatures(cell, payload):
@@ -396,6 +549,8 @@ def check_bonded_creatures(cell, payload):
         check(bool(stats.get('size_change')) == grew,
               f"{tag}: size {start.get('size')!r} -> {stats.get('size')!r} but size_change is "
               f"{stats.get('size_change')!r}")
+
+        check_companion_feats(tag, entry, stats)
 
     # ---- the druid flip (F's rewire) ----
     # Only meaningful on a character whose ONLY domain source is the druid bond; clerics and
@@ -483,8 +638,32 @@ def main():
               f"above was skipped, so this run proves nothing about them")
         check(BOND['druid_flip'] > 0,
               f"the druid flip was never reached in {total} generations")
+        # Same guard one level down: the whole feat economy is gated behind a granted creature, so
+        # a run that granted creatures but rolled no feats or no flaws asserted nothing about D15.
+        check(BOND['feats'] > 0,
+              f"{BOND['granted']} bonded creatures were granted in {total} generations but not one "
+              f"feat was rolled -- every D15 check above was skipped")
+        check(BOND['flaws'] > 0,
+              f"{BOND['granted']} bonded creatures were granted but not one flaw was rolled -- "
+              f"every D16 flaw check above was skipped")
     print(f"  bonded creatures: {BOND['granted']} granted, {BOND['absent']} absence entries, "
           f"{BOND['druid_flip']} druid flips (both={BOND['both']}, neither={BOND['neither']})")
+    print(f"  companion feats: {BOND['feats']} rolled, {BOND['tax']} taxed in, "
+          f"{BOND['flaws']} flaws, {BOND['applied']} folded changes")
+
+    # Same guard, same reason: every occult check is conditional on rolling one of the six.
+    if total >= 100:
+        check(OCCULT['chars'] > 0,
+              f"no occult class was rolled in {total} generations -- every occult check above was "
+              f"skipped, so this run proves nothing about them")
+        check(OCCULT['multi_pick_buckets'] > 0,
+              "no occult multi-pick bucket was ever exercised; only single picks were checked")
+        check(OCCULT['kineticists'] > 0 and OCCULT['casters'] > 0,
+              f"the occult sweep reached {OCCULT['kineticists']} kineticist(s) and "
+              f"{OCCULT['casters']} caster(s) -- both sides of the spellbook split must be hit")
+    print(f"  occult classes: {OCCULT['chars']} rolled, {OCCULT['picks']} picks, "
+          f"{OCCULT['multi_pick_buckets']} multi-pick buckets "
+          f"({OCCULT['kineticists']} kineticist, {OCCULT['casters']} caster)")
 
     print()
     if FAILURES:

@@ -99,18 +99,35 @@ CONFIGS = {
     # ladder, the archetype effects, the chassis) had NO golden coverage at all, which is how the
     # stacking defect below survived review.
     #
-    # This seed rolls hunter 7 / ranger 4 / druid 3 -- THREE grantors of the same creature type, so
-    # they stack to effective level 11 and the chassis MUST be re-read there (hd 9) rather than left
-    # at any one class's own level, which is exactly what `_stack` used to do. It also exercises
-    # three different `effective_level` expressions at once: the hunter's own level, the ranger's
-    # level - 3, and the druid's own level.
+    # This seed rolls druid 6 (Nature Priest) / ranger 6 (Ilsurian Archer) / hunter 2 (Courtly
+    # Hunter) -- all THREE companion-granting classes at once, and it covers three things no other
+    # golden does:
+    #   * a STACK. The ranger's level - 3 and the hunter's own level merge into one companion at
+    #     effective level 5, so the chassis MUST be re-read there (hd 5) rather than left at either
+    #     class's own level, which is exactly what `_stack` used to do.
+    #   * an ARCHETYPE-REMOVED BOND. Nature Priest trades the druid's companion away, so that
+    #     grantor emits an ABSENCE entry (effective_level 0, species null) beside the real one --
+    #     the one payload where both shapes appear together.
+    #   * two different `effective_level` expressions in the same stack.
     #
-    # RESEEDED 2026-08-03 (was 7275, a hunter 8 / druid 6 pair). Region canonicalization realigned
-    # the RNG stream and 7275 stopped rolling a stack at all -- it now draws a single druid 3
-    # companion, so the golden that exists FOR the stacking defect had quietly stopped covering it.
-    # If this comment ever disagrees with the golden again, the seed moved: re-scan, do not edit
-    # the prose to match.
-    'companion': dict(_BASE, seed=7323, userInput_race='Human', class_choice='druid',
+    # RESEEDED 2026-08-03 (was 7323, itself a reseed of 7275). Opening the random pool to the six
+    # Occult Adventures classes realigned the multiclass roll: 7323's ranger became a ninja, so its
+    # three-grantor stack collapsed to two and the golden that exists FOR the stacking defect had
+    # quietly stopped covering it. Same failure mode as the 7275 reseed, same rule -- if this
+    # comment ever disagrees with the golden, the seed moved: re-scan, do not edit the prose.
+    #
+    # REBASELINED 2026-08-04, seed UNCHANGED (spec section 8, D16). This golden moved on 49 keys --
+    # the master's own gold, gear, appearance, feats and family among them -- and none of that is a
+    # behaviour change to the master. The companion's feat roll used to draw from the GLOBAL random
+    # stream; it now draws from the creature's own salted generator, so the global stream is no
+    # longer consumed there and every later draw shifts. That is the entire point of the move: a
+    # wolf's feats must never churn its master's equipment again, and this is the last time they do.
+    # THIS golden is the only one the change moved -- the other six roll no bonded creature, so they
+    # never paid the old cost. (Unrelated uncommitted occult work had already re-baselined `caster`
+    # and `manifester` in the working tree; do not read those diffs as belonging to D16.) Within the
+    # companion the identity is stable -- still a hypersloth at effective level 5 -- and hp 45 -> 50
+    # is Toughness folding in under D14.
+    'companion': dict(_BASE, seed=7971, userInput_race='Human', class_choice='druid',
                       chosen_BAB='medium', multi_class='Y', alignment_input='NG',
                       userInput_gender='female', high_level=14, low_level=14),
     # A MANIFESTER, AND A POINTS-ONLY ONE. The six configs above all carry `manifesters: []`, so
@@ -123,9 +140,14 @@ CONFIGS = {
     # points and NO powers, the shape a naive renderer drops on the floor. Two entries also means
     # the Foundry module has to fill two manifester books rather than assuming one.
     #
-    # Chosen by sweeping 8000-8090 for a psion+aegis pair and taking the richest (17 powers). If
-    # this comment stops matching the golden, the RNG stream moved: re-sweep, do not edit the prose.
-    'manifester': dict(_BASE, seed=8018, userInput_race='Human', class_choice='psion',
+    # Chosen by sweeping 8000-8090 for a psion+aegis pair and taking the richest. If this comment
+    # stops matching the golden, the RNG stream moved: re-sweep, do not edit the prose.
+    #
+    # RESEEDED 2026-08-03 (was 8018). The six Occult Adventures classes entering the random pool
+    # realigned the multiclass roll and 8018's aegis became a wizard, leaving a single manifester
+    # and no coverage at all of the points-only shape. The re-sweep of the same 8000-8090 range
+    # found two psion+aegis pairs; 8041 is the one with powers (18), 8087 has none.
+    'manifester': dict(_BASE, seed=8041, userInput_race='Human', class_choice='psion',
                        chosen_BAB='low', multi_class='Y', alignment_input='NG',
                        userInput_gender='female', high_level=14, low_level=14),
 }
