@@ -253,22 +253,36 @@ class lists / lowest level first. Validator: `Backend/scripts/validate_spell_con
 ---
 
 ## 8. Bonded creatures (animal companions, mounts, familiars, eidolons)
-**Status: SPEC LOCKED (2026-08-01) — not yet implemented.** Charted in
-`docs/wayfinder/companions/`; this section is that map's destination. §1 (Path of War) and §9
-(Psionics) are the governing precedents: the backend owns the numbers, a Foundry-side renderer owns
-the presentation, and every holdback is named here rather than left implicit.
+**Status: SPEC LOCKED (2026-08-01) — build slices 1–4 landed, 5–9 open.** Charted in
+`docs/wayfinder/companions/` (closed); this section is that map's destination. The **build** is
+charted separately in [`docs/wayfinder/companion-sheets/`](wayfinder/companion-sheets/map.md)
+(open) — it decides only what this section left open and does not reopen D1–D10. §1 (Path of War)
+and §9 (Psionics) are the governing precedents: the backend owns the numbers, a Foundry-side renderer
+owns the presentation, and every holdback is named here rather than left implicit.
 
-**Current state:** `Backend/utils/class_func/animal_companions.py` is the only companion code. It is
-**druid-only** (gated on `class_entry_for(character, 'druid')` plus `character.domain_chance <= 90`,
-the coin flip in `domain_inquisition.py`), it does **no stat-block math** — no HP, saves, attack
-bonus, AC, skill ranks or size adjustment — and it never merges a species' advancement block, so an
-advanced companion is emitted with its 1st-level body. `animal_feats()` has a degenerate selection
-loop that ignores the chassis row's own `feats` count. The payload key `animal_companion`
-(`Backend/main_test.py:1747`) is read by **nothing** — not the Foundry module, not the web sheet.
-Familiars, mounts and eidolons have zero support; `summoner` and `summoner (unchained)` are rollable
-today and generate no eidolon at all, so a summoner NPC is missing its entire class identity.
+**Current state:** `Backend/utils/class_func/animal_companions.py` resolves **every** grantor —
+`resolve_bonded_creatures()` reads the declarative `Backend/json/companion_grantors.json`, honours
+archetype bonds, stacks same-type sources under the character-level cap, and emits D9 identity
+(`name`, `sex`, `gear`, `gear_source`) onto `character.bonded_creatures`. `animal_feats()` reads the
+chassis row's own `feats` count.
 
-### The eight locked decisions
+**The numbers and the export landed 2026-08-03 (#31, #32, #35).**
+`Backend/utils/class_func/companion_stats.py` merges the advancement block and computes the whole
+stat block; `main_test.py` emits `bonded_creatures` beside the frozen `animal_companion` alias;
+`validate_companion_stats.py` (validators 13 → 14) gates the arithmetic species-by-species and
+`test_house_invariants.py` gates the emitted shape and the druid flip.
+
+What is **not** built, and what the remaining sheets wait on:
+
+- **No renderer.** `createCharacter.js` creates exactly one Actor (#33); the web sheet's Companions
+  tab is hand-typed (#34). Both wait on tickets 02 and 03 of the companion-sheets map.
+- **`progression_override` is carried, not applied.** It is prose; the entry reports it under
+  `stats.unapplied` rather than implying otherwise (D12).
+
+`summoner` and `summoner (unchained)` are rollable today and generate no eidolon at all, so a
+summoner NPC is still missing its entire class identity.
+
+### The twelve locked decisions
 
 - **D1 — one payload, N Actors** *(ticket 01)*. The backend still emits **one** character. The
   Foundry module loops and creates one extra Actor of type `npc` per bonded creature, in the existing
@@ -304,6 +318,78 @@ today and generate no eidolon at all, so a summoner NPC is missing its entire cl
 - **D8 — v1 also owns four adjacent fixes** *(ticket 05)*: the `animal_feats` bug, archetype
   companion swaps, the wizard/sorcerer arcane-bond coin flip, and **adding the Boon Companion feat**,
   which is absent from the feat data entirely (it appears only inside Spheres talent prose).
+- **D9 — identity is emitted, gear is a stated absence** *(slice E, the #37 grill, 2026-08-03)*. A
+  creature that exists carries a **`name`** drawn from its master's region pool (never the master's
+  own name) and a rolled **`sex`**, because `animal_choices.json` has no sex and the pool is keyed by
+  one. **`species` stays the sole `pf-content` match key** — a named companion must never be able to
+  miss its clone. It owns nothing: **`gear: []`** plus a **`gear_source`** note saying so *and* that
+  the gear will be **funded from `character.gold`** when v1.1 adds it (PF1e gives companions no
+  wealth-by-level, so the master pays; expect the PC's own armour/weapon picks to shift for the same
+  seed on that day). An **absence entry carries `name: None`, `sex: None` and no gear key at all**.
+  The backend emits atoms — **no composed label**; each renderer builds its own (D2).
+  *Rejected:* mount tack as a v1 special case (barding's AC math pulls stat-block work forward); no
+  gear key at all (the omission this slice exists to prevent); a new curated animal-name list
+  (curation is deferred); reusing the master's sex (every companion would match its master);
+  a uniform key set with nulls (a null-named, empty-geared ghost still renders); mirroring the new
+  fields onto the `animal_companion` alias (a deprecated key that is never worse than its
+  replacement never dies).
+  **The house rules are silent here.** `oks/pathfinder/house-rules/` mentions animals twice — Handle
+  Animal's stat swap and Mounted Combat in the feat-tax list — and says nothing about companion gold,
+  gear or ownership. This decision *is* the house rule; do not go re-read those pages expecting one.
+  Enforced by `Backend/scripts/validate_companion_identity.py`, because `bonded_creatures` is not in
+  the payload until #32 and neither the goldens nor `test_house_invariants.py` can see these fields
+  yet.
+- **D10 — the two renderers take different shapes, and neither gets a composed title from us**
+  *(charting of [Map: Companion sheets](wayfinder/companion-sheets/map.md), 2026-08-03)*. D1's "N
+  Actors" is a **Foundry** statement: there, each bonded creature is a genuinely separate Actor
+  document. On the **standalone web sheet** the creature instead **auto-fills the existing nested
+  Companions tab** (`_sheet.companions[]`), which is hand-typed today. That upholds the ruling
+  already recorded in that repo — *"linked roster characters were ruled out by portability"* — while
+  removing the typing. Each renderer **composes its own title** from atoms it already has
+  (`character_full_name` on the payload, `name` and `type` on the entry): `<Master>'s animal
+  companion: <Name>` for `companion`, and the matching noun for `mount` / `familiar` / `eidolon`. An
+  entry with no species has no title, because it has no creature. *Rejected:* a second roster
+  character on the web sheet (portability — the sheet's whole export is one JSON); a backend
+  `label`/`title` field (D9 rejected composed labels once already, and two renderers with different
+  headers would inherit one phrasing that suits neither); a thin chassis-only sheet shipped ahead of
+  the stat-block math — **#31 lands before any sheet work**, because D2 makes the backend the only
+  source of numbers and a sheet of placeholder values teaches nobody anything.
+
+- **D11 — the published deltas already own the size package; only the geometry is ours**
+  *(ticket 04 of [Map: Companion sheets](wayfinder/companion-sheets/map.md), 2026-08-03)*. When an
+  advancement block grows a companion, the PF1e size-change table and the per-species deltas overlap,
+  and applying both counts the increase twice. The census settles which one holds it: a Dex **penalty**
+  appears on all **153** size-increasing blocks and on **none** of the other 43, and a Dex penalty has
+  no source but growing. So `str`/`dex`/`con` and the natural-armour delta apply **verbatim** — never
+  stripped, never topped up to the table — and the 77% / 50% raggedness needs no reconciling, because
+  the published entry is the authority (the standing ruling that makes `validate_companion_data.py`
+  WARN rather than fail). What the data does **not** contain is the size-category geometry — AC,
+  attack, CMB/CMD, Stealth, space — which appears nowhere in `animal_choices.json`; that comes from
+  `companion_stats.SIZE_GEOMETRY`, keyed off the creature's **final** size so a companion *born* Small
+  gets its +1 too. The `size_change` record on a stat block is **provenance, not an instruction**: its
+  values are already totalled into `ac`, `attacks[].atk`, `cmb`, `cmd` and `skills`, and a renderer
+  that re-applies it double-counts. **Reach is deliberately absent** (tall vs long is not in the data;
+  `space` is emitted). Enforced by `Backend/scripts/validate_companion_stats.py`.
+  *Rejected:* stripping the table out of the deltas (27 rows end with a negative Str residue, so the
+  un-buffed body never existed); no size buff at all (the AC/attack/CMB/CMD/Stealth modifiers would be
+  missing from the sheet entirely).
+- **D12 — the stat block names a source for every number, and reuses the PC's rules but not its code**
+  *(ticket 01, same map, 2026-08-03)*. `Backend/utils/class_func/companion_stats.py` owns the merge
+  and the math; its docstring is the field-by-field table. Two findings worth keeping: **none of the
+  PC's machinery was reusable** — `hp_rolls.roll_hp` and `skill_ranks.skill_rank_budget` both iterate
+  `character.classes`, which a companion has none of — so only the maximised-HP *rule* is shared, via
+  an imported `homebrew_enabled`. And **the house skill-rank floor does not carry over**: it floors a
+  *2-ranks-per-level class* to 4, and the chassis row gives one absolute total rather than a rate, so
+  there is nothing to key off. The per-skill cap is RAW (HD) for the same reason. That matches the
+  stance `animal_feats` already took on the feat economy. Attacks parse out of the `attack` prose at
+  **full BAB** (every natural attack in a printed routine is primary), with PF1e's 1.5x Str for a
+  creature with exactly one, **rounded down**. Skill allocation follows the RAW Int 1–2 list, drops
+  movement-gated skills the creature has no speed for, and draws its one random choice from a
+  **per-creature `random.Random`** rather than the global stream, so a companion's skills never churn
+  the rolls made after it. *Holdbacks, all named on the entry rather than implied:*
+  `progression_override` is prose, not a structured veto, so it is reported `unapplied` (SESSION_PLAN
+  §3's scope boundary forbids a classifier for it); reach and the quadruped +4 CMD vs trip are not
+  modelled because the data cannot say.
 
 ### Grantors and effective level (D6)
 
@@ -403,15 +489,27 @@ top-level key needs no plumbing on the module side.
 
 `bonded_creatures`, a list beside the existing class blocks, one entry per creature:
 
-`type` · `grantor` · `effective_level` (post-stack, post-cap) · `species` · `kind`
-(`normal`/`plant`/`vermin`, companions only) · `species_stats` (advancement-**merged**, not raw) ·
+`type` · `grantor` · `effective_level` (post-stack, post-cap) · `species` · `name` · `sex` ·
+`gear` · `gear_source` (the last four are D9; `name`/`sex` are `None` and `gear`/`gear_source` are
+absent entirely on an entry with no species) · `kind`
+(`normal`/`plant`/`vermin`, companions only) · `species_stats` (**raw**, see below) ·
 `chassis` (the level row from `animal_companion.json`) · `feats` · `stats` (the computed block: hp,
 ac, saves, bab, cmb/cmd, abilities, size, speed, attacks, skills) · `master_abilities` (familiars
 only) · `description` (the eidolon's base form and text) · `pf_content` (the compendium Actor name to
 clone, or `null` → D3 fallback).
 
+**Amended 2026-08-03 (#31):** this section originally called for `species_stats` to be
+advancement-**merged** on the entry. It cannot be. That key is one of the five the `animal_companion`
+alias is frozen at (D9) and both read the same object, so swapping raw for merged would silently
+change what the sheet repo's #15 consumer renders. `species_stats` therefore stays **raw** and the
+merge's output lands in `stats`, which is lossless: every derived number has a named field, and
+`stats.other` carries the one-off merged keys nothing else enumerates (`climb`, `fly`, `bonus feat`,
+`cmd trip`, `sudden charge (ex)`, …). `stats.merge_notes` records which advancement blocks fired.
+
 `animal_companion` **remains** as a deprecated alias carrying the old dict shape for the first
-`type == "companion"` entry, so the sheet repo's issue #15 consumer does not break.
+`type == "companion"` entry, so the sheet repo's issue #15 consumer does not break. It is **frozen**
+at those five keys (D9): the new identity and gear fields never appear on it, because a deprecated
+key that is never worse than its replacement is never migrated away from.
 
 **"Done" per type:** full stat block for **companion, mount and familiar**; **named base form plus
 descriptive text** for the eidolon.
@@ -444,7 +542,9 @@ giant tortoise, axebeak, reindeer, giant weasel — absent from `pf-companions` 
 small scrape) · **region-flavoured companion pools**, the standing TODO in `animal_companions.py` ·
 companion **token art / portraits** · whether companions should carry buffs/conditionals the way
 weapons do (§1/§4 pattern), only answerable once the rendering model has run · live levelling or
-sync of a companion as the PC advances · the **psicrystal** (§9).
+sync of a companion as the PC advances · the **psicrystal** (§9) · **companion gear** — barding, a
+mount's tack, and the body-slot model an animal needs (no hands, barding not armour); D9 fixes the
+signature (`gear`, funded from `character.gold`) so this is a ticket with a shape, not a rediscovery.
 
 ---
 

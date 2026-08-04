@@ -10,6 +10,14 @@ numbers. **Keep this file updated whenever files, pools, or pipelines move.**
    `export_list_dict` / `export_list_non_dict` into `character.data_dict`).
 2. gender → region → race → name → `select_classes` (multiclass) → alignment → deity → body →
    mechanical flaws (`flaw_chooser`) → personality → `randomize_level`.
+   **Region and race resolve client input through `util.py::slug`** (alphanumerics only, lowercased)
+   onto the data files' exact key, plus `data.py::REGION_ALIASES` for the one client label that is a
+   different name (`Grundykin Damplands` → `Grundy`). The **canonical spelling is the JSON key** —
+   `data.py::regions`, the keys of `first_names_regions.json` / `last_names_regions.json` /
+   `campaign_lore.json` — and that is what `character.region` holds and the payload emits. Never
+   `.title()` it: that produced `Tal-Falko` / `Kaeru No Tochi`, which key nothing, so those NPCs drew
+   names from a random other region. `validate_name_data.py` gates reachability (all ten, by name
+   and by random draw) and the in-repo clients' option lists (`sheet.js`, `index.html`).
 3. Stats: `roll_stats` → `apply_racial_stats` → `assign_stats` → HP.
 4. Spells: per class entry `caster_formula` / `spells_known_*` / `spells_per_day_*` → spellbooks.
 5. Prereq pool prep: `chooseable_list*` (stats, class levels, class features, race → `character.chooseable`).
@@ -90,8 +98,16 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   keyed by *effective* level, carrying that row's own `feats` count; `feats` = a flat 27-name bag) and
   `animal_choices.json` (`normal` 157 / `plant` 14 / `vermin` 23 / `magical_beast` 2 species →
   `starting statistics` plus one or more `"<N>th-level advancement"` delta blocks, keys lowercase and
-  comma-inverted: `"ant, giant"`). Read by `class_func/animal_companions.py` (**druid-only today**, no
-  stat-block math, advancement block never merged).
+  comma-inverted: `"ant, giant"`). Read by `class_func/animal_companions.py` (every grantor since
+  #30 — see `companion_grantors.json` below) and then by `class_func/companion_stats.py`, which owns
+  the advancement merge and every derived number (#31, landed 2026-08-03).
+  - **`companion_stats.py` is the only place a companion's numbers exist.** `SIZE_GEOMETRY` and the
+    merge rules live there; `SKILL_ABILITY` (skill → keying ability) is in `data.py` beside
+    `SKILL_IDS`. `scripts/validate_companion_stats.py` imports all of them — never restate one.
+    The size ruling it enforces is spec §8 **D11**: the published deltas already contain the size
+    package, so they apply verbatim and only the *geometry* (AC / attack / CMB / CMD / Stealth /
+    space) is added, keyed off the creature's **final** size. `stats.size_change` is provenance for
+    numbers already totalled in — **never re-apply it in a renderer**.
   - **`magical_beast` is not in the random roll.** `animal_chooser` reads only `normal` / `plant` /
     `vermin`, which is what keeps griffon and hippogriff reachable solely through a curated archetype
     species pool — their RAW availability.
@@ -128,6 +144,12 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   - `companion_grantors.json` is the **declarative grantor table** (D6) — read its `_readme` before
     changing resolver behaviour. `animal_companions.py::resolve_bonded_creatures` is the **single
     path** to a bonded creature; the old druid-only check is gone.
+  - **Identity and gear (D9)** live on the entry: a creature with a species gets a `name` (via
+    `util.py::first_name_for`, the master's region pool) plus a rolled `sex`, `gear: []` and the
+    `GEAR_SOURCE_V1` note — all owned by `animal_companions.py`, never restated. An entry with no
+    species gets `name`/`sex` of `None` and **no gear key**. `species` stays the sole `pf-content`
+    match key. Gated by `scripts/validate_companion_identity.py`, which the payload cannot yet cover
+    (`bonded_creatures` ships with #32).
     - **The resolver owns the druid's companion-vs-domain flip**, and `domain_inquisition.py` reads
       its `character.bond_outcomes` rather than comparing `domain_chance` itself. Rolling the
       question in both places would give ~9% of druids both and ~9% neither.
@@ -156,9 +178,10 @@ skill_ranks.py / skill_unlocks.py · armor_and_weapon_chooser.py / armor_and_enh
 item_and_price.py · path_of_war.py / path_of_war_funcs.py · psionics.py (power selection, power
 points, manifester level, the `manifesters` payload block, soulknife mind blade) · spheres.py ·
 wizard_school.py ·
-domain_inquisition.py · gunslinger.py · animal_companions.py (druid-only companion pick; the
-grantor resolver, advancement merge and stat-block math are specced in `feature_spec_todo.md` §8 but
-**not built**) · versatile_performance.py ·
+domain_inquisition.py · gunslinger.py · animal_companions.py (the grantor resolver — every grantor,
+stacking, archetype bonds, D9 identity) · companion_stats.py (the advancement merge and the whole
+stat block; runs after `animal_feats`, writes `entry['stats']` and nothing else) ·
+versatile_performance.py ·
 traits.py · flaws.py / randomize_flaw.py · feat_tax.py · trainers.py / profession_chooser.py /
 profession_abilities.py · backstory.py / build_archetype.py (Ollama build→archetype classifier,
 heuristic fallback) / personality.py / appearance.py / family_func.py ·
@@ -220,7 +243,12 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
   on-disk source + a §15 curated for THIS project) and the psionics `NOTICE.md`. Never hand-edit
   either file; edit the script. It refuses to write a licence whose operative text is truncated.
 - `validate_*.py` → data gates (class_feature_effects, flaw_effects, quality_effects, psionics_data,
-  companion_data, companion_names, companion_archetypes, …).
+  companion_data, companion_names, companion_archetypes, companion_identity, companion_stats, …).
+  `companion_identity` and `companion_stats` are the odd ones out: they drive the **resolver** and
+  the **merge** over stub characters rather than checking a file at rest. `companion_stats` sweeps
+  all 392 species-level stat blocks and is the gate on §8 **D11**'s no-double-count ruling; it also
+  asserts that at least 30 published deltas still disagree with the size table, so the check cannot
+  quietly become vacuous if the data ever moves.
   `validate_psionics_data.py` cross-checks every manifesting class's power-points
   column against the three progressions `pf1-psionics` hardcodes, so a scrape regression fails loudly.
   - **`validate_all.py` runs every one of them** (glob discovery — a new validator is covered the
@@ -252,10 +280,14 @@ spec) · `docs/pow_conditional_decision_rules.md` / `spheres_conditional_decisio
 **In-flight design efforts** live under `docs/wayfinder/<effort>/` — a `map.md` (destination,
 locked decisions, decisions-so-far index, fog, out-of-scope) plus one file per decision ticket in
 `issues/`. A ticket is a *question*, not a task; the **frontier** is every open, unclaimed ticket
-whose `Blocked by:` list is fully resolved. Both efforts are **CLOSED** — `companions/` (bonded
-creatures → `feature_spec_todo.md` §8, closed 2026-08-01, ticket 07 deferred to v1.1) and
-`psionics/` (→ §9, closed 2026-07-31). A closed map is history; the live work list is
-`docs/plan_1.0_finish.md`, and the spec section is the authority.
+whose `Blocked by:` list is fully resolved. One effort is **OPEN** — `companion-sheets/` (every
+bonded creature arrives as its own usable sheet: a Foundry Actor, a pre-filled web-sheet Companions
+tab; charted 2026-08-03, four tickets, **01 and 04 resolved**; the frontier is now 02 and 03, which
+gate the two renderer slices in the other repos). Two are **CLOSED** — `companions/` (bonded creatures →
+`feature_spec_todo.md` §8, closed 2026-08-01, ticket 07 deferred to v1.1) and `psionics/` (→ §9,
+closed 2026-07-31). A closed map is history; the live work list is `docs/plan_1.0_finish.md`, and the
+spec section is the authority. `companion-sheets/` **succeeds** `companions/` and does not reopen
+§8's D1–D10.
 
 This repo no longer carries `.claude/skills/`. The domain knowledge that lived there (path-of-war,
 spheres-of-power, trainers-and-professions, foundry-conditionals, foundry-sheet-references,

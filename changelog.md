@@ -334,6 +334,30 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     reached, so a run cannot report success having asserted nothing — the failure mode that let the
     stacking golden go quiet. 15,560 checks across 825 generations: 55 granted, 39 absences,
     15 druid flips.
+- **A companion will get its own character sheet, and the route there is charted.** A new design
+  effort, `docs/wayfinder/companion-sheets/`, takes bonded creatures from *specified* to *on screen*:
+  a druid's wolf becomes a second sheet titled *"Ophir's animal companion: Cédric"*, not a row of
+  data on its master's.
+  - **Foundry and the web sheet get different shapes, deliberately** (spec §8 **D10**). In Foundry
+    each creature is a separate Actor, as already planned. On the standalone web sheet it instead
+    **fills in the Companions tab you currently type by hand**. *Rejected:* a second character in the
+    web sheet's roster — that sheet exports as one JSON file, and splitting a companion out of it
+    would break the portability the tab was built to protect.
+  - **Neither renderer is handed a ready-made title.** The backend keeps emitting plain facts — the
+    creature's name, its type, the master's name — and each renderer writes its own heading.
+    *Rejected:* a single title field on the payload, which would have forced one phrasing onto two
+    surfaces that word things differently.
+  - **The numbers came first.** The advancement merge and stat-block math landed before any sheet, so
+    the first companion sheet anyone opens shows real HP, AC, saves and attacks. *Rejected:* shipping
+    a sheet early from the level-chassis row alone — a page of placeholder numbers looks finished and
+    teaches nobody anything.
+  - **Two questions are still genuinely open**, and each blocks one renderer: whether Foundry's
+    Pathfinder system honours numbers patched onto a compendium creature or quietly recomputes over
+    them, and what happens to companion details you have edited by hand when the same character is
+    imported again.
+  - Two documents were **wrong and are now right**: the spec's "current state" and the codebase map
+    both still described the companion code as druid-only, which stopped being true when the grantor
+    table landed.
 
 ### Fixed
 - **Every region can now be chosen — five of the ten never worked.** Region selection had three
