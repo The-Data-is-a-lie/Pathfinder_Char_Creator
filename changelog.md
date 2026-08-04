@@ -369,6 +369,22 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     the same table the generator read.
 
 ### Fixed
+- **Psionic characters imported into Foundry attacked at half their proper bonus.** All twelve
+  psionic classes arrived carrying the same progression — low BAB, a d6 hit die, 2 skill ranks per
+  level — because that is the placeholder the `pf1-psionics` module ships for every one of its
+  classes, and the harvest that puts those classes into the generator module's bundle copied it
+  through untouched. It happens to be right for the psion. It was wrong for the other eleven: an
+  **aegis or soulknife at level 20 showed +10 to hit instead of +20**, a psychic warrior +10 instead
+  of +15, and nearly every manifester was short half its skill ranks. The harvest
+  (`Backend/scripts/build_every_class.mjs`) now patches base attack bonus, hit die and skill ranks
+  from `Backend/json/class_data.json` — the scraped values the generator itself has used all along —
+  so the sheet and the backend finally agree. Re-run against the module repo's `every_class.json`
+  and `every_class_MODS.json`. *Rejected:* editing the two bundles by hand (they are generated, and
+  the next rebuild would silently undo it) and fixing it downstream in the module (pf1 reads the
+  class item directly, so the wrong number would still be in the file). The script now also refuses
+  to write at all if a harvested class is missing from `class_data.json`, and re-reads what it wrote
+  to confirm the values landed — an unpatched class is invisible in a 3 MB generated file, which is
+  why this one survived a release.
 - **Every region can now be chosen — five of the ten never worked.** Region selection had three
   independent defects, all in `region_chooser`, and each looked exactly like success:
   - **Ieso did not exist.** A stray `regions.remove(region)` ran after the loop that built the list,

@@ -11,6 +11,27 @@ Wayfinder map. Tickets are the files in `issues/`; the **frontier** is every tic
 > legal powers. **Gate 3 (Foundry import) is deliberately not closed here** — it spans the
 > `pf1e_random_char_generator` module repo and is a later branch.
 >
+> ### Gate 3 — built 2026-08-03, awaiting a live Foundry run
+>
+> The rendering half now exists in both front ends. `pf1e_random_char_generator`'s
+> `modify-abilities.js` writes the `pf1-psionics` manifester book flags (`inUse` is the *entire*
+> condition that module's `actor-sheet.mjs` gates its tab on — no class item, tag or power is
+> consulted) and attaches `pf1-psionics.power` items, pack-cloned or synthesized, with a feat-item
+> fallback when the module is absent. The standalone web sheet gained a Psionics tab. Both were
+> exercised headlessly against the new `manifester` golden; **the live import in Foundry is the one
+> step still outstanding.**
+>
+> **Defect found while building it, since fixed:** `build_every_class.mjs` harvested the twelve
+> psionic class items from `pf1-psionics` but never patched `bab` / `hd` / `skillsPerLevel`, so all
+> twelve sat in `every_class.json` at the module's placeholder `low` / `6` / `2` — the exact
+> breakage ticket 02 measured, carried into our own bundle. It is correct for the psion alone. The
+> "class items are harvested **with those fields patched** from our scrape" clause of
+> [ticket 03](issues/03-division-of-labour.md) was decided and never implemented, and the module
+> supplies no BAB of its own, so pf1 derived an aegis 20's attack bonus at +10 instead of +20.
+> `patchProgression()` in that script now reads the three fields from `class_data.json` (`bab`
+> H/M/L, `hit die`, `skill points at each level`), refuses to write if a harvested class is missing
+> from it, and verifies what it wrote; both bundles were rebuilt.
+>
 > This map is now history, not a work queue. Live psionics work continues in **§9 of
 > `docs/feature_spec_todo.md`** (which owns the spec, the amendments, and the deferred list) and in
 > **`docs/plan_1.0_finish.md`** (which owns the roadmap). Two decisions taken during the build

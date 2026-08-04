@@ -573,9 +573,10 @@ still carries them as finished numbers, exactly as §1 emits `initiator_level` a
 pf1-pow render items. Rationale: the payload is the API contract, the standalone web sheet has no
 game system to compute anything, and `test_house_invariants.py` needs something to assert on. The
 two agree rather than fight because the PP tables are identical.
-- **Class items:** `tools/export_every_class.macro.js` harvests the twelve `pf1-psionics` class items
-  into `every_class.json` (as PoW classes were harvested from pf1-pow) and **patches `system.bab` /
-  `hd` / `skillsPerLevel` from `psionic_classes.json`** during harvest. Keeping the module's own item
+- **Class items:** `Backend/scripts/build_every_class.mjs` harvests the twelve `pf1-psionics` class
+  items into `every_class.json` (as PoW classes were harvested from pf1-pow) and **patches
+  `system.bab` / `hd` / `skillsPerLevel` from `class_data.json`** during harvest. Keeping the
+  module's own item
   identity keeps its Psionic Manifesting tab and PP auto-calc bound; patching fixes the three fields
   that are wrong upstream. Actor HP is already safe (`attributes.hp.base` is the backend total and
   class-item HP is zeroed), so the placeholder `hd` was cosmetic — **`bab: low` was not**. pf1 derives

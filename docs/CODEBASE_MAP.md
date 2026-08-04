@@ -239,6 +239,12 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
 - `reconcile_psionics_names.py` → GENERATES `psionic_name_map.json`, mapping our scraped names onto
   the `pf1-psionics` pack names the Foundry module can actually resolve. Unmapped names fail
   `validate_psionics_data.py`. Pack contents are dumped by `dump_foundry_pack.mjs` (node).
+- `build_every_class.mjs` (node) → splices the twelve `pf1-psionics` classes (and Path of War's
+  Stalker/Zealot, once upstream ships them) into the **module repo's** `every_class.json` +
+  `every_class_MODS.json`, reading the compendium LevelDB directly. Needs `--classic-level <dir>`
+  (borrow the copy in `pf1-conditional-applier/node_modules/`); `--dry-run` first. It **patches
+  `bab`/`hd`/`skillsPerLevel` from `class_data.json`** — upstream ships one placeholder progression
+  for all twelve — and refuses to write if a harvested class is missing there.
 - `build_ogl_license.py` → GENERATES root `LICENSE-OGL.txt` (verbatim OGL 1.0a copied from an
   on-disk source + a §15 curated for THIS project) and the psionics `NOTICE.md`. Never hand-edit
   either file; edit the script. It refuses to write a licence whose operative text is truncated.
