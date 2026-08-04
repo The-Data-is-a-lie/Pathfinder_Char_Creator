@@ -22,6 +22,11 @@ Power points are a table PLUS a formula, not a bigger table: pp_per_day from the
 manifester level, plus floor(key ability modifier x manifester level / 2), with a hard gate that a
 key ability of 9 or lower cannot manifest at all. There is no spells_from_ability_mod.json analogue
 and none is needed.
+
+Powers known is likewise a table plus two rules the table does not carry, both of them in the
+scraped prose rather than in any column -- see FREE_TALENTS and the max_power_level cap in
+choose_psionics_attr. Talents (0-level powers) are granted free and land in bucket 0 of
+powers_by_level; the key ability caps the highest level learnable regardless of class level.
 """
 import random
 import re
@@ -50,6 +55,50 @@ POWER_LIST_FOR = {
 DISCIPLINE_LIST = "Psion Discipline Powers"
 # A key ability this low cannot manifest at all -- not "manifests badly", cannot.
 MIN_MANIFESTING_SCORE = 10
+
+# Free 0-level talents, granted by class feature IN ADDITION to powers known. The scraped rules text
+# says so in as many words -- psionic_classes.json -> psion -> features -> talents:
+#   "Each psion gains three 0 level talents of their choice, as well as detect psionics. These
+#    talents do not count against the psion's powers known."
+# A class absent here grants none: the marksman has no talent feature at all, and the aegis and
+# soulknife manifest no powers to begin with.
+FREE_TALENTS = {
+    'psion': 3,
+    'tactician': 3,
+    # The vitalist's third talent should come from its chosen METHOD's power list, and the
+    # highlord's second from its chosen TENET's. Neither of those lists is in the scrape, so both
+    # draw from the class list instead -- recorded in docs/wayfinder/psionics/map.md under
+    # "Not yet specified". The COUNT is right either way; only the source list is approximated.
+    'vitalist': 3,
+    'psychic warrior': 2,
+    'cryptic': 2,
+    'dread': 2,
+    'highlord': 2,
+    'voyager': 2,
+    'wilder': 1,
+}
+
+# Talents a class is given BY NAME rather than choosing. The psion's detect psionics is the only one.
+MANDATED_TALENTS = {'psion': ['Detect Psionics']}
+
+# The class-features bucket each class's subsystem picks land in -- the `dict_name` its
+# generic_class_option_chooser call in main_test.py writes into data_dict['class features'].
+#
+# Emitted on the payload so a renderer can find a class's own subsystem without hard-coding this map
+# on its side. The aegis and the soulknife NEED it: they are the two classes whose psionics tab has
+# nothing else on it, and without this their picks are generated but invisible anywhere a player
+# would look for them.
+SUBSYSTEM_BUCKET = {
+    'aegis': 'customizations',
+    'cryptic': 'insights',
+    'dread': 'terrors',
+    'highlord': 'decrees',
+    'marksman': 'combat_style',
+    'psychic warrior': 'warrior_path',
+    'soulknife': 'blade_skills',
+    'tactician': 'strategies',
+    'vitalist': 'vitalist_method',
+}
 # How many disciplines a non-psion build leans on. A soft bias, not a restriction: it exists so a
 # generated manifester reads as a concept rather than a grab bag of unrelated powers.
 DISCIPLINE_BIAS = (2, 3)
@@ -114,21 +163,60 @@ def bonus_power_points(modifier, manifester_level):
     return max(0, floor(modifier * manifester_level / 2))
 
 
-def _legal_pool(character, class_name, max_level, discipline=None):
+def _power_index(character):
+    """{casefolded name or alias: the psionic_powers.json key it names}.
+
+    The power LISTS cite names the power PAGES spell differently: wiki redirects are recorded as
+    `aliases` ("Thought Shield" -> "Thought Shield (power)"), and a few differ only in case
+    ("Know Direction And Location"). validate_psionics_data.py has always resolved both; doing less
+    here let a cited name reach the payload with no rules text and no entry in the Foundry name map
+    -- an empty row on a Foundry sheet, nothing at all on the web sheet.
+
+    Built once per character: the index is ~700 entries and every pick consults it.
+    """
+    cached = getattr(character, '_psionic_power_index', None)
+    if cached is not None:
+        return cached
+    index = {}
+    for key, record in (getattr(character, 'psionic_powers', {}) or {}).items():
+        index.setdefault(key.casefold(), key)
+        for alias in (record.get('aliases') or []):
+            index.setdefault(str(alias).casefold(), key)
+    character._psionic_power_index = index
+    return index
+
+
+def _power_record(character, name):
+    """The record a cited name resolves to, or {} when the name has no page of its own."""
+    key = _power_index(character).get(str(name).casefold())
+    return (getattr(character, 'psionic_powers', {}) or {}).get(key) or {}
+
+
+def _legal_pool(character, class_name, max_level, discipline=None, min_level=1):
     """{power name: power level} for everything the class may learn at this manifester level.
 
-    Level "0" is the talents tier and is included: talents are at-will minor powers a manifester
-    genuinely knows, and several classes' tables count them.
+    Level "0" is the talents tier and is EXCLUDED by default -- hence min_level=1. Talents are
+    granted free by class feature and explicitly "do not count against powers known" (FREE_TALENTS),
+    so letting one into the counted pool would spend a powers-known slot on something the rules give
+    away, inverting the rule instead of implementing it. Pass min_level=0, max_level=0 to get the
+    talent tier on its own.
     """
     lists = getattr(character, 'psionic_power_lists', {})
+    index = _power_index(character)
     pool = {}
 
     def absorb(levels):
         for level_key, names in (levels or {}).items():
-            if not level_key.isdigit() or int(level_key) > max_level:
+            if not level_key.isdigit() or not (min_level <= int(level_key) <= max_level):
                 continue
             for name in names:
-                pool.setdefault(name, int(level_key))
+                # Keyed by the PAGE's own name, so rules text, discipline and the Foundry name map
+                # all resolve downstream. A name that resolves to nothing is a cited-but-pageless
+                # red link (Manifest Veil, Detect Compulsion, Mind Trap) -- picking one would put a
+                # power with no rules text and no Foundry item on the sheet, so it is not legal.
+                key = index.get(str(name).casefold())
+                if key:
+                    pool.setdefault(key, int(level_key))
 
     entry = lists.get(POWER_LIST_FOR.get(class_name, ""), {})
     absorb(entry.get("levels"))
@@ -145,10 +233,9 @@ def _legal_pool(character, class_name, max_level, discipline=None):
 
 def _disciplines_of(character, names):
     """The disciplines the given powers belong to, for the soft thematic bias."""
-    powers = getattr(character, 'psionic_powers', {})
     found = []
     for name in names:
-        discipline = (powers.get(name) or {}).get('discipline', '')
+        discipline = _power_record(character, name).get('discipline', '')
         discipline = discipline.split('(')[0].strip().lower()
         if discipline and discipline not in found:
             found.append(discipline)
@@ -167,14 +254,13 @@ def _pick_powers(character, pool, count, max_level):
     names = list(pool)
     theme = _disciplines_of(character, random.sample(names, min(len(names), 12)))
     theme = theme[:random.randint(*DISCIPLINE_BIAS)]
-    powers = getattr(character, 'psionic_powers', {})
 
     def weight(name):
         level = pool[name]
         # +1 so level-0 talents stay reachable rather than being weighted out entirely.
         base = (level + 1) ** 2
         if theme and random.random() > OFF_THEME_CHANCE:
-            discipline = (powers.get(name) or {}).get('discipline', '')
+            discipline = _power_record(character, name).get('discipline', '')
             discipline = discipline.split('(')[0].strip().lower()
             if discipline and discipline not in theme:
                 base *= 0.25
@@ -204,7 +290,7 @@ def _emit_name(character, name):
 
 
 def _desc_entry(character, name):
-    record = getattr(character, 'psionic_powers', {}).get(name) or {}
+    record = _power_record(character, name)
     return {
         'name': name,
         'display': record.get('display', ''),
@@ -303,12 +389,21 @@ def choose_psionics_attr(character):
             'powers_known_list': [],
             'powers_by_level': [],
             'powers_chosen': [],
+            'talents_known': 0,
             'discipline': '',
+            # Where this class's subsystem picks live in the class-features dict. Carried so a
+            # renderer can show a class's own options on its psionics tab rather than only under
+            # generic class features -- the aegis and soulknife have nothing else to show.
+            'subsystem_bucket': SUBSYSTEM_BUCKET.get(name, ''),
+            'mind_blade': None,
         }
 
         # The soulknife: no manifesting stat, no power points, no powers. It still gets an entry --
-        # a class silently absent from the payload is indistinguishable from a bug.
+        # a class silently absent from the payload is indistinguishable from a bug -- and that entry
+        # carries its mind blade, which is the only psionic thing it has. main_test.py stashes the
+        # blade it actually equipped; recomputing here would let the weapon and the tab disagree.
         if not stat:
+            record['mind_blade'] = getattr(character, 'mind_blade', None)
             bundle['manifesters'].append(record)
             continue
 
@@ -321,7 +416,13 @@ def choose_psionics_attr(character):
         modifier = (score - 10) // 2
         base_pp = _progression(character, name, 'pp_per_day', level)
         record['pp_per_day'] = base_pp + bonus_power_points(modifier, level)
-        record['max_power_level'] = _progression(character, name, 'max_power_level', level)
+        # The class table is a ceiling, not the answer: every one of the ten power-knowing classes
+        # also requires a key ability of "at least 10 + the power's level" to LEARN a power
+        # (psionic_classes.json -> manifesting_prose -> 'maximum power level known'). A 17th-level
+        # psion with Int 14 caps at 4th-level powers, not 9th. Hits the psychic warrior hardest --
+        # it manifests off Wisdom but plays off Strength -- and that is the rule working, not a bug.
+        record['max_power_level'] = max(0, min(
+            _progression(character, name, 'max_power_level', level), score - 10))
         record['caster_type'] = caster_type(character, name)
 
         # The aegis manifests but knows no powers -- it has power points and nothing to spend them
@@ -344,6 +445,23 @@ def choose_psionics_attr(character):
         known = _progression(character, name, 'powers_known', level)
         pool = _legal_pool(character, name, max_level, discipline)
         chosen = _pick_powers(character, pool, known, max_level)
+
+        # Free 0-level talents, on TOP of powers known. Named grants (the psion's detect psionics)
+        # come first because they are not a choice; the rest are picked from the talent tier alone.
+        # Anything already taken as a leveled power is excluded so a name cannot land twice -- a few
+        # powers appear on both tiers, and `pool` is authoritative for what level this class learns
+        # each one at.
+        talent_pool = {n: 0 for n in _legal_pool(character, name, 0, discipline, min_level=0)
+                       if n not in pool}
+        mandated = [t for t in MANDATED_TALENTS.get(name, []) if talent_pool.pop(t, None) is not None]
+        talents = mandated + _pick_powers(
+            character, talent_pool, FREE_TALENTS.get(name, 0) - len(mandated), 0)
+        record['talents_known'] = len(talents)
+
+        # Merged into the same maps the leveled picks use, so talents ride every code path below --
+        # bucketing, counts, description entries -- instead of needing a parallel one.
+        pool.update({name_: 0 for name_ in talents})
+        chosen = talents + chosen
 
         record['powers_chosen'] = [_emit_name(character, n) for n in chosen]
         # One bucket per power level 0..max -- path_of_war's maneuvers_choose_from shape. This is

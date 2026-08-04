@@ -662,6 +662,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# amount of gold buys a +5 one at 1st level. The special abilities enhancement_chooser
 		# picked still stand: that is the Enhanced Mind Blade feature spending its own grant.
 		_mind_blade = mind_blade(character, melee=(weapon_type_flag == 'Melee'))
+		# Stashed for choose_psionics_attr further down, which puts it on the soulknife's manifester
+		# entry. Passed rather than recomputed so the equipped weapon and the psionics tab cannot
+		# disagree about which blade this is.
+		character.mind_blade = _mind_blade
 		if _mind_blade:
 			weapon_name = _mind_blade['name']
 			weapon_enhancement_bonus = _mind_blade['max_enhancement_bonus']

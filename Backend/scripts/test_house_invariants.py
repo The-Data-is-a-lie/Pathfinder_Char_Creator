@@ -77,6 +77,10 @@ _PP_ONLY = {x.lower() for x in getattr(data, 'psionic_pp_only_classes', [])}   #
 # payload entry, because a class silently absent from `manifesters` is indistinguishable from a bug.
 _NO_MANIFESTING = {'soulknife'}
 
+# Free talents, named talents and the subsystem bucket map are IMPORTED rather than restated: the
+# module owns them, and a second copy here would let the gate agree with a drifted generator.
+from utils.class_func.psionics import FREE_TALENTS, MANDATED_TALENTS, SUBSYSTEM_BUCKET
+
 # The published class tables, read straight from the data file rather than through psionics.py: the
 # point of the check below is to catch the generator disagreeing with the source of truth, which it
 # cannot do if both read through the same accessor.
@@ -109,10 +113,13 @@ def skill_points(name):
     return 4 if points == 2 else points
 
 
+def final_score(payload, stat):
+    return (payload[stat] + (payload.get('inherents') or {}).get(stat, 0)
+            + (payload.get('level_up_stats') or {}).get(stat, 0))
+
+
 def final_mod(payload, stat):
-    score = (payload[stat] + (payload.get('inherents') or {}).get(stat, 0)
-             + (payload.get('level_up_stats') or {}).get(stat, 0))
-    return floor((score - 10) / 2)
+    return floor((final_score(payload, stat) - 10) / 2)
 
 
 def check_character(cell, payload):
@@ -190,12 +197,43 @@ def check_character(cell, payload):
                   f"{tag}: manifester level {m['manifester_level']} != min({entry['level']}, 20)")
             row = min(max(m['manifester_level'], 1), 20) - 1
 
+            # ---- subsystem picks: generated, and findable ----
+            # The failure this guards is "generated but invisible": the picks land in the class
+            # features dict under a bucket name only main_test.py knew, so a renderer showing a
+            # class's psionics had no way to reach them. The aegis and soulknife are the proof
+            # cases -- their tab has nothing else on it, so a missing pointer reads as an empty tab.
+            want_bucket = SUBSYSTEM_BUCKET.get(name, '')
+            check(m['subsystem_bucket'] == want_bucket,
+                  f"{tag}: subsystem_bucket {m['subsystem_bucket']!r} != {want_bucket!r}")
+            if want_bucket:
+                picks = (payload.get('class_features') or {}).get(want_bucket) or {}
+                # How many picks are DUE at this level. generic_class_option_chooser walks
+                # data.amount's level schedule (`i = len(chosen_set)`), so the count is exactly the
+                # schedule entries at or below the class level; the three single-pick classes have
+                # no schedule and take one at 1st. Each psionic class has one dataset in
+                # data.amount, so its schedule is read without needing the dataset's name here.
+                schedule = next(iter((getattr(data, 'amount', {}).get(name) or {}).values()), None)
+                want_picks = len([a for a in schedule if a <= entry['level']]) if schedule else 1
+                check(len(picks) == want_picks,
+                      f"{tag}: subsystem bucket {want_bucket!r} holds {len(picks)} picks, expected "
+                      f"{want_picks} at class level {entry['level']} -- picks that never land "
+                      f"appear nowhere on a sheet")
+
             if name in _NO_MANIFESTING:
                 check(not m['manifesting_stat'] and not m['pp_per_day'] and not m['powers_chosen']
                       and not m['caster_type'],
                       f"{tag}: manifests nothing, but carries "
                       f"stat={m['manifesting_stat']!r} pp={m['pp_per_day']} "
                       f"caster_type={m['caster_type']!r} powers={len(m['powers_chosen'])}")
+                # The mind blade is the soulknife's ONLY psionic thing, so an absent one leaves the
+                # class with nothing to render. It must also be the weapon actually equipped.
+                blade = m['mind_blade']
+                check(isinstance(blade, dict) and blade.get('name'),
+                      f"{tag}: no mind blade on the manifester entry")
+                if isinstance(blade, dict):
+                    check(blade['name'] == payload.get('weapon_name'),
+                          f"{tag}: mind blade {blade['name']!r} != equipped weapon "
+                          f"{payload.get('weapon_name')!r}")
                 continue
 
             check(m['manifesting_stat'] in ('str', 'dex', 'con', 'int', 'wis', 'cha'),
@@ -230,12 +268,31 @@ def check_character(cell, payload):
                       f"{len(m['powers_chosen'])} power(s)")
                 continue
 
-            want_max = table.get('max_power_level', [0] * 20)[row]
+            # The class table is a CEILING. Every power-knowing class also demands a key ability of
+            # "at least 10 + the power's level" to learn one, so a middling score caps the class
+            # table -- most visibly on the psychic warrior, which manifests off Wis but plays off
+            # Str. Without this the gate would pass a psion handed 9th-level powers on Int 14.
+            want_max = min(table.get('max_power_level', [0] * 20)[row],
+                           final_score(payload, m['manifesting_stat']) - 10)
             check(m['max_power_level'] == want_max,
-                  f"{tag}: max power level {m['max_power_level']} != table {want_max}")
+                  f"{tag}: max power level {m['max_power_level']} != min(table, score-10) = {want_max}")
+            # Talents are granted free by class feature and explicitly do NOT count against powers
+            # known, so the total on the sheet is the table plus the grant.
+            want_talents = FREE_TALENTS.get(name, 0)
+            check(m['talents_known'] == want_talents,
+                  f"{tag}: {m['talents_known']} talents != class grant {want_talents}")
             want_known = table.get('powers_known', [0] * 20)[row]
-            check(len(m['powers_chosen']) == want_known,
-                  f"{tag}: knows {len(m['powers_chosen'])} powers != table {want_known}")
+            check(len(m['powers_chosen']) == want_known + want_talents,
+                  f"{tag}: knows {len(m['powers_chosen'])} powers != table {want_known} "
+                  f"+ {want_talents} free talents")
+            # Talents live in bucket 0 and nowhere else -- a talent that landed in a leveled bucket
+            # would mean it had been bought with a powers-known slot after all.
+            check(len(m['powers_by_level'][0]) == want_talents if m['powers_by_level'] else True,
+                  f"{tag}: bucket 0 holds {len(m['powers_by_level'][0]) if m['powers_by_level'] else 0} "
+                  f"names, expected exactly the {want_talents} free talents")
+            for named in MANDATED_TALENTS.get(name, []):
+                check(named in m['powers_chosen'],
+                      f"{tag}: class grants {named!r} by name, but it is not among its powers")
             # powers_known_list is how the sheet groups the same powers by level, so the two views
             # of one fact must agree.
             check(sum(m['powers_known_list']) == len(m['powers_chosen']),

@@ -96,6 +96,16 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     of War lines copy-pasted from an unrelated module. The build **warns** about copyright lines it
     has not verified against the published work instead of dropping them — omitting a source is the
     worse failure.
+- **`Backend/scripts/test_psionics_sweep.py` — a per-class psionics table.** The house-invariant
+  sweep answers "did anything break" across every class and prints pass or fail; this answers "is
+  *each* psionic class right", one row per class per level, in a table you can read. It exists
+  because the defect that prompted it was invisible to a pass/fail gate: the aegis and soulknife
+  generated their subsystem picks correctly and put them somewhere no renderer looked, so every
+  assertion passed while the sheet stayed empty. Columns cover powers known, free talents, the
+  ability-capped max power level, power points and caster type, whether the subsystem bucket
+  actually holds the picks due at that level, whether every emitted power carries rules text, and —
+  the one that makes "it shows up in Foundry" testable without launching Foundry — whether every
+  emitted name is one `pf1-psionics` will keep rather than silently drop.
 - **`test_house_invariants.py` now checks psionics** on every generated character, so all twelve
   classes are swept at levels 1/5/10/15/20 alongside the rest. It asserts that the `manifesters`
   block names exactly the character's psionic classes, that power points equal the published table
@@ -439,6 +449,47 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     catch. `PF_FOUNDRY_DATA` overrides where it looks.
 
 ### Fixed
+- **Manifesters were short their free talents, and were spending real powers to buy them.** Every
+  one of the ten power-knowing psionic classes grants 0-level talents by class feature, and the
+  rules say in as many words that those talents *do not count against powers known* — a psion gets
+  three plus Detect Psionics, a tactician and a vitalist three, most classes two, a wilder one, a
+  marksman none. The generator granted none of them, and it drew from a pool that mixed the talent
+  tier in with real powers, so a level-1 psion who should know three powers *and* four talents could
+  roll three talents and nothing else. Talents are now granted on top of the class table and land in
+  power level 0; the counted pool starts at level 1 so a free thing can no longer cost a slot.
+- **Powers were handed out that the manifester's key ability forbids.** Every power-knowing class
+  requires a score of "at least 10 + the power's level" to learn a power, and only the
+  can-manifest-at-all floor was enforced — so a 17th-level psion with Int 14 was given 9th-level
+  powers instead of stopping at 4th. Max power level is now the class table capped by the ability
+  score. Most visible on the **psychic warrior**, which manifests off Wisdom but plays off Strength
+  and so is routinely capped below its table; that is the rule working, not a regression.
+- **Some powers reached the sheet with no rules text and no Foundry item.** The power *lists* cite
+  names the power *pages* spell differently — wiki redirects (`Thought Shield` →
+  `Thought Shield (power)`) and a few case-only variants — and selection matched names exactly,
+  which the data validator never did. A cited name that resolved to no page was picked anyway, and
+  arrived as an empty row in Foundry and as nothing at all on the web sheet. Selection now resolves
+  through the same aliases and casefolding the validator uses, and a name that resolves to nothing
+  is no longer legal to pick — which excludes the three known red links (`Manifest Veil`,
+  `Detect Compulsion`, `Mind Trap`) the validator has been warning about all along.
+- **The web sheet's Psionics tab existed but never appeared.** The tab module was written, loaded
+  and referenced, but had no entry in the sheet's tab list — the only thing that builds the tab
+  buttons and panes — so no manifester ever saw it. Registered beside Spells.
+- **The aegis and the soulknife showed nothing psionic.** Both generated their subsystem picks
+  correctly and filed them where nothing pointed: the soulknife has no manifesting ability, so a
+  manifesting-only filter dropped it and it produced no psionics block at all, and the aegis
+  rendered a bare power-point line while its 87 astral-suit customizations sat under generic class
+  features. The payload now carries a `subsystem_bucket` pointer on every psionic class (and the
+  soulknife's `mind_blade`), and both front ends render a class's own options on its psionics page.
+  The nine psionic buckets also gained Foundry display metadata, so blade skills and customizations
+  get their own dividers instead of the generic band — and "strategies" stops being labelled
+  "Strategie" by the trailing-s fallback.
+- **34 class options were named after a citation instead of themselves.** The option-list scraper
+  splits an entry on its first colon, which for an unbolded entry carrying a source note lands
+  *inside* it — so a soulknife blade skill was recorded as `Animal Senses (Source` with the rest of
+  the citation leaking into its description. The parser now hands an unbalanced parenthesis back to
+  the description. Beyond reading correctly, this fixed real Foundry matching: **class options
+  matched against `pf1-psionics` rose from 195 to 229 of 335**, because all 34 truncated names
+  match module items once they are spelled properly.
 - **Psionic characters imported into Foundry attacked at half their proper bonus.** All twelve
   psionic classes arrived carrying the same progression — low BAB, a d6 hit die, 2 skill ranks per
   level — because that is the placeholder the `pf1-psionics` module ships for every one of its
