@@ -41,7 +41,8 @@ LICENSE_PATH = "/license"
 # Importing custom functions
 from utils.class_func.adding_bonus_spells			import add_bonus_spells, add_bonus_spells_from_dict
 from utils.class_func.alignment_and_deity 			import randomize_deity, choose_alignment
-from utils.class_func.animal_companions 			import animal_feats, resolve_bonded_creatures
+from utils.class_func.animal_companions 			import resolve_bonded_creatures
+from utils.class_func.companion_feats 			import companion_feats
 from utils.class_func.companion_stats 			import stat_bonded_creatures
 from utils.class_func.appearance 					import randomize_apperance_attr, randomize_body_feature, get_racial_attr
 from utils.class_func.armor_and_enhancements 		import plan_enhancements, enhancement_chooser#, enhancement_limits
@@ -217,6 +218,17 @@ character_json_config = {
 	'psionic_power_lists': Load_when_needed('Backend/json/class_data/psionics/psionic_power_lists.json'),
 	'psionic_powers': Load_when_needed('Backend/json/class_data/psionics/psionic_powers.json'),
 	'psionic_name_map': Load_when_needed('Backend/json/class_data/psionics/psionic_name_map.json'),
+
+	# Occult Adventures section. Same convention as psionics: GENERATED files, registered under the
+	# class's own name because generic_class_option_chooser reads them as getattr(character,
+	# <class name>). Rebuild with Backend/scripts/build_occult_class_data.py after any pf1 or
+	# pf-content update -- the pools are harvested out of those compendia, not hand-maintained.
+	'occultist': Load_when_needed('Backend/json/class_data/occultist.json'),
+	'kineticist': Load_when_needed('Backend/json/class_data/kineticist.json'),
+	'medium': Load_when_needed('Backend/json/class_data/medium.json'),
+	'mesmerist': Load_when_needed('Backend/json/class_data/mesmerist.json'),
+	'psychic': Load_when_needed('Backend/json/class_data/psychic.json'),
+	'spiritualist': Load_when_needed('Backend/json/class_data/spiritualist.json'),
 }
 
 def strip_labeled_bucket(feat_list, label_list, children):
@@ -504,9 +516,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		resolve_bonded_creatures(character)
 		domain_chooser(character)
 		full_domain = character.chosen_domain
-		animal_companion_feats = animal_feats(character)
+		animal_companion_feats = companion_feats(character)
 		# #31: the numbers, last -- the merge reads the post-stack chassis and the feats are already
-		# on the entry by here.
+		# on the entry by here. D14 makes that ordering load-bearing rather than incidental: the
+		# stat block FOLDS the feats and flaws chosen on the line above, so it cannot run first.
 		stat_bonded_creatures(character)
 
 		generic_class_option_chooser(character,"cavalier", "orders")
@@ -553,6 +566,30 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		generic_class_option_chooser(character, "highlord", dataset_name="decrees", multiple='yes', dict_name = 'decrees')
 		generic_class_option_chooser(character, "soulknife", dataset_name="blade skills", multiple='yes', dict_name = 'blade_skills')
 		generic_class_option_chooser(character, "tactician", dataset_name="strategies", multiple='yes', dict_name = 'strategies')
+
+		# Occult Adventures subsystems (class-pool map, ticket 03). Every one of them is the same
+		# "pick 1 or N from a {name: description} list" the choosers above already handle, so no
+		# new chooser module exists here either. Option lists are generated per class by
+		# Backend/scripts/build_occult_class_data.py; the multi-pick schedules live in data.amount.
+		#
+		# Two subsystems DEGRADE rather than being modelled, per section 10:
+		#   kineticist burn -- an HP-priced resource with no analogue in the generator. Its wild
+		#       talents and infusions are still picked; burn is described, never tracked.
+		#   medium spirit   -- a *daily* choice, and the generator emits a static snapshot. Rolling
+		#       one seance and freezing it is a house ruling, recorded as such.
+		generic_class_option_chooser(character, "occultist", dataset_name="implements", multiple='yes', dict_name = 'implements')
+		generic_class_option_chooser(character, "occultist", dataset_name="focus powers", multiple='yes', dict_name = 'focus_powers')
+		generic_class_option_chooser(character, "kineticist", "elemental focus", dict_name = 'elemental_focus')
+		generic_class_option_chooser(character, "kineticist", dataset_name="wild talents", multiple='yes', dict_name = 'wild_talents')
+		generic_class_option_chooser(character, "kineticist", dataset_name="infusions", multiple='yes', dict_name = 'infusions')
+		# 'medium_spirit', not 'spirit': the shaman already owns a bucket called 'spirits', and two
+		# buckets one letter apart is a trap for every renderer that has to register them by name.
+		generic_class_option_chooser(character, "medium", "spirits", dict_name = 'medium_spirit')
+		generic_class_option_chooser(character, "mesmerist", dataset_name="mesmerist tricks", multiple='yes', dict_name = 'mesmerist_tricks')
+		generic_class_option_chooser(character, "mesmerist", dataset_name="bold stare", multiple='yes', dict_name = 'bold_stare')
+		generic_class_option_chooser(character, "psychic", "disciplines", dict_name = 'psychic_discipline')
+		generic_class_option_chooser(character, "psychic", dataset_name="phrenic amplifications", multiple='yes', dict_name = 'phrenic_amplifications')
+		generic_class_option_chooser(character, "spiritualist", "emotional focus", dict_name = 'emotional_focus')
 
 
 

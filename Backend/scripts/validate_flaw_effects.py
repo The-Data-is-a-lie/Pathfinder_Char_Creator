@@ -1,4 +1,8 @@
-"""Validate Backend/json/flaws/flaw_effects.json (mechanical character flaws).
+"""Validate the mechanical-flaw catalogues under Backend/json/flaws/.
+
+Two files, one gate: `flaw_effects.json` (the PC's) and `animal_flaw_effects.json` (bonded
+creatures', spec section 8 D16). They share a shape, a tier ladder and a house DC convention, so
+they share a validator -- a second copy would drift from this one within a release.
 
 Checks (all must pass; exits 1 with a report otherwise):
 - JSON parses; only sections `minor` / `major` (+ `_readme`).
@@ -6,6 +10,9 @@ Checks (all must pass; exits 1 with a report otherwise):
   (changes and/or contextNotes non-empty).
 - Changes/contextNotes use valid pf1 targets (same whitelists as quality_effects).
 - [[ ]] inline-roll brackets balanced in every note text.
+- ANIMAL ONLY: every numeric change uses a target `companion_stats.apply_modifiers` can actually
+  place. Nothing downstream would notice otherwise -- the module strips `system.changes` off the
+  flaw item, so a mistargeted flaw would simply never apply to anything.
 
 Usage: python Backend/scripts/validate_flaw_effects.py
 """
@@ -17,8 +24,14 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from validate_quality_effects import (  # noqa: E402
     PF1_CHANGE_TARGETS, PF1_NOTE_TARGETS, valid_target, check_brackets, errors)
 
-FLAWS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                          '..', 'json', 'flaws', 'flaw_effects.json')
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+from utils import data as game_data                                          # noqa: E402
+from utils.class_func.companion_stats import (                               # noqa: E402
+    MODIFIER_TARGETS, SKILL_TARGET_PREFIX)
+
+FLAWS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'json', 'flaws')
+# (filename, must every numeric change be foldable by companion_stats?)
+CATALOGUES = (('flaw_effects.json', False), ('animal_flaw_effects.json', True))
 
 ENTRY_KEYS = {'description', 'changes', 'contextNotes'}
 CHANGE_KEYS = {'formula', 'target', 'type', 'operator', 'priority'}
@@ -28,7 +41,19 @@ def err(msg):
     errors.append(msg)
 
 
-def check_entry(owner, entry):
+def check_foldable(owner, change):
+    """The animal catalogue's extra rule: a change the fold cannot place is a change nobody applies."""
+    target = str(change.get('target') or '')
+    if target.startswith(SKILL_TARGET_PREFIX):
+        if target[len(SKILL_TARGET_PREFIX):] not in set(game_data.SKILL_IDS.values()):
+            err(f'{owner}: {target!r} is not a pf1 skill id')
+    elif target not in MODIFIER_TARGETS:
+        err(f'{owner}: change target {target!r} is valid pf1 but companion_stats.apply_modifiers '
+            f'cannot place it, so the flaw would never apply -- use one of '
+            f'{sorted(MODIFIER_TARGETS)} or {SKILL_TARGET_PREFIX}<id>, or make it a contextNote')
+
+
+def check_entry(owner, entry, foldable=False):
     unknown = set(entry) - ENTRY_KEYS
     if unknown:
         err(f'{owner}: unknown entry keys {sorted(unknown)}')
@@ -52,6 +77,8 @@ def check_entry(owner, entry):
             err(f'{owner}: invalid change target {ch.get("target")!r}')
         if ch.get('operator') not in ('add', 'set'):
             err(f'{owner}: bad change operator {ch.get("operator")!r}')
+        if foldable:
+            check_foldable(owner, ch)
     for note in notes:
         unknown = set(note) - {'text', 'target'}
         if unknown:
@@ -66,25 +93,29 @@ def check_entry(owner, entry):
 
 
 def main():
-    with open(FLAWS_PATH, encoding='utf-8') as f:
-        data = json.load(f)
-    unknown = set(data) - {'_readme', 'minor', 'major'}
-    if unknown:
-        err(f'unknown top-level sections {sorted(unknown)}')
-    for tier in ('minor', 'major'):
-        entries = data.get(tier)
-        if not isinstance(entries, dict) or not entries:
-            err(f'section {tier!r} missing or empty')
-            continue
-        for name, entry in entries.items():
-            check_entry(f'{tier}.{name}', entry)
+    summary = []
+    for filename, foldable in CATALOGUES:
+        with open(os.path.join(FLAWS_DIR, filename), encoding='utf-8') as f:
+            data = json.load(f)
+        unknown = set(data) - {'_readme', 'minor', 'major'}
+        if unknown:
+            err(f'{filename}: unknown top-level sections {sorted(unknown)}')
+        for tier in ('minor', 'major'):
+            entries = data.get(tier)
+            if not isinstance(entries, dict) or not entries:
+                err(f'{filename}: section {tier!r} missing or empty')
+                continue
+            for name, entry in entries.items():
+                check_entry(f'{filename} {tier}.{name}', entry, foldable=foldable)
+        summary.append(f'{filename}: {len(data.get("minor", {}))} minor + '
+                       f'{len(data.get("major", {}))} major')
 
     if errors:
         for e in errors:
             print(e)
         print(f'\nFAILED: {len(errors)} problem(s)')
         sys.exit(1)
-    print(f'OK: {len(data.get("minor", {}))} minor + {len(data.get("major", {}))} major flaws.')
+    print('OK: ' + '; '.join(summary) + '.')
 
 
 if __name__ == '__main__':

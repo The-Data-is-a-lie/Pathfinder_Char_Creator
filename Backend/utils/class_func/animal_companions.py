@@ -363,27 +363,11 @@ def animal_chooser(character):
 
 
 def animal_feats(character):
-    """The companion's feats -- the chassis row's own `feats` count, not the PC formula.
+    """Back-compat shim: the feat economy moved to `companion_feats` (spec section 8, D15/D16).
 
-    Replaces a loop that advanced its index only on a NEW draw, indexed an 18-entry list without a
-    guard, and never reached its own break. It also gated on `druid`, which the resolver has just
-    made wrong.
+    It outgrew this module. What used to be "pick N names out of a bag" is now a prerequisite gate,
+    a grant-level record, feat tax and a flaw roll -- a concern of its own, and one that has to read
+    the merged ability scores this module deliberately knows nothing about.
     """
-    entries = [e for e in getattr(character, 'bonded_creatures', []) or []
-               if e['type'] == 'companion' and e['species']]
-    if not entries:
-        return None
-    pool = list((getattr(character, 'animal_companion', None) or {}).get('feats') or [])
-    if not pool:
-        return None
-
-    chosen = set()
-    for entry in entries:
-        want = int((entry.get('chassis') or {}).get('feats') or 0)
-        want = min(want, len(pool))
-        picks = set()
-        while len(picks) < want:
-            picks.add(random.choice(pool))
-        entry['feats'] = sorted(picks)
-        chosen |= picks
-    return chosen
+    from utils.class_func.companion_feats import companion_feats
+    return companion_feats(character)
