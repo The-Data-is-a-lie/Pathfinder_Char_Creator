@@ -2435,6 +2435,43 @@ psionic_pp_tables = {
 # each class ships, including the two that degrade. Re-add a name here to pull one back out.
 occult_classes = []
 
+# The Occult Adventures ROSTER, as opposed to occult_classes above, which is the exclusion lever and
+# is empty. Two lists because they answer different questions: "is this class held out of the pool?"
+# and "which family does this class belong to?". base_classes cannot answer the second -- spells.py
+# overloads it as the spellcasting gate, so five of these six are in it and the kineticist is not.
+occult_class = ["kineticist", "medium", "mesmerist", "occultist", "psychic", "spiritualist"]
+
+# The five Paizo NPC classes. They roll like anything else -- the user's call, 2026-08-04, over the
+# alternative of listing them but holding them out of the random pool. An NPC generator that cannot
+# roll a commoner is missing the most common person in the world.
+npc_class = ["adept", "aristocrat", "commoner", "expert", "warrior"]
+
+# The general-purpose counterpart of pow_classes_pending_foundry, for a class that belongs to no
+# 3pp family: fully defined here, held out of the pool because no installed compendium ships a
+# class item the Foundry sheet could resolve. Empty today.
+#
+# The omdura and the vampire hunter were nearly parked here. pf1 11.11's `classes` pack holds 49
+# class Items and carries neither, but a sweep of EVERY installed pack (2026-08-04) found both in
+# pf-content's `pf-collab-content`, with their full feature chains -- so they ship. The lesson is
+# worth keeping: grade a renderability census against every pack, not the three whose names sound
+# right, or a class gets held out of the pool for a blocker that does not exist.
+classes_pending_foundry = []
+
+# The families the FoundryVTT module's class dropdown groups by, and the tokens its per-group
+# "Random <group>" entries send (util.py::_group_pool turns a token back into a pool).
+#
+# `base` is DERIVED -- everything in class_data.json that no other roster claims -- so adding a
+# Paizo class stays a one-key change to class_data.json and nothing here. Order is display order.
+# The module's own copy of the labels lives in scripts/class-roster.js and is kept honest by
+# Backend/scripts/validate_class_roster.py; the tokens are the contract between them.
+CLASS_GROUPS = (
+    ("base",    "Paizo base classes", None),
+    ("pow",     "Path of War",        path_of_war_class),
+    ("psionic", "Psionics",           psionic_class),
+    ("occult",  "Occult Adventures",  occult_class),
+    ("npc",     "NPC classes",        npc_class),
+)
+
 # Good-save progressions per class (a class adds 2 + level//2 to a listed save, level//3
 # otherwise). The standalone web sheet keeps a GOOD_SAVES copy only as a fallback for cached
 # payloads that predate the exported save_bases; the payload's save_bases is the real contract.

@@ -180,8 +180,40 @@ def _available_class_pool(character):
     occult_classes = [x.lower() for x in getattr(data, 'occult_classes')]
     pending = [x.lower() for x in getattr(data, 'pow_classes_pending_foundry', [])]
     pending += [x.lower() for x in getattr(data, 'psionic_classes_pending', [])]
+    pending += [x.lower() for x in getattr(data, 'classes_pending_foundry', [])]
     return [x for x in character.class_data.keys()
             if x not in occult_classes and x not in pending]
+
+
+# The dropdown's per-group "Random <group>" entries arrive as these, after chooseClass has already
+# turned the slug's hyphen into a space ("random-occult" -> "random occult"). Kept as a prefix
+# rather than five literals so the token set is derived from data.CLASS_GROUPS and cannot drift
+# from the module's own copy -- validate_class_roster.py checks both ends against this.
+GROUP_TOKEN_PREFIX = 'random '
+
+
+def group_tokens():
+    """{token string the client sends: group token} for every group in data.CLASS_GROUPS."""
+    return {GROUP_TOKEN_PREFIX + token: token for token, _label, _roster in data.CLASS_GROUPS}
+
+
+def _group_pool(character, token):
+    """The available pool narrowed to one class family.
+
+    `base` is the remainder -- every rollable class no other roster claims -- so it needs no list of
+    its own and a new Paizo class joins it automatically. Returns [] for an unknown token; the
+    caller treats that the same as "no class specified" and falls back to the whole pool, which is
+    what an unrecognised class string has always done here.
+    """
+    pool = _available_class_pool(character)
+    rosters = {tok: [x.lower() for x in (roster or [])]
+               for tok, _label, roster in data.CLASS_GROUPS}
+    if token not in rosters:
+        return []
+    if rosters[token]:
+        return [c for c in pool if c in rosters[token]]
+    claimed = {name for tok, names in rosters.items() if tok != token for name in names}
+    return [c for c in pool if c not in claimed]
 
 
 def chooseClass(character, class_choice, chosen_BAB, chosen_caster_level=None):
@@ -201,6 +233,17 @@ def chooseClass(character, class_choice, chosen_BAB, chosen_caster_level=None):
         # the four space-named classes (the Unchained variants) never matched and fell back to a
         # random class.
         class_choice = class_choice.lower().replace('-', ' ')
+
+    # "Random <group>" from the dropdown: roll inside one family instead of the whole pool. The
+    # BAB / caster-level filters below still apply on top, so the two compose -- ask for a random
+    # Path of War class with BAB L and you get the pool's intersection, or the usual fallback if
+    # that is empty. An empty group (nothing rollable in it) falls through to the whole pool rather
+    # than failing, which is how every other unmatched class string has always behaved here.
+    group = group_tokens().get(class_choice)
+    if group is not None:
+        grouped = _group_pool(character, group)
+        if grouped:
+            available_classes = grouped
 
     if not class_choice in available_classes:
         available_classes_manip = ensure_BAB_and_caster_level(character, available_classes, "bab", chosen_BAB)
