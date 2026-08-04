@@ -12,6 +12,12 @@ chain off them — but see the two gates below: the frontier is **parked**, not 
 > Companions tab. Charting happens now so the questions are captured; nothing here starts until the
 > animal-companion system is landed and we are happy with it.
 
+> **Sequencing gate 2 — the class list. RE-OPENED 2026-08-04, then cleared again at 68.**
+> `feature_spec_todo.md` **§12** added seven more classes after this gate was written: the five NPC
+> classes, the omdura and the vampire hunter. The audit's list is **68**, not 61. Four of the seven
+> — aristocrat, commoner, expert, warrior — make **no class-specific choices at all, by design**,
+> and look identical to the coverage gaps tabled below; the audit must not "fix" them.
+>
 > **Sequencing gate 2 — the class list. CLEARED 2026-08-03.**
 > [Map: Class pool](../class-pool/map.md) is **closed**: the six Occult Adventures classes are in the
 > random pool and the stalker and zealot are held out with a named blocker, so the class list this

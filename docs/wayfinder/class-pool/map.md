@@ -14,6 +14,14 @@ Wayfinder map. Tickets are the files in `issues/`; the **frontier** is every tic
 >
 > This unblocks [Map: Class choices](../class-choices/map.md), whose audit now has its final class
 > list — 61 rollable classes.
+>
+> **Superseded on the class-list count, 2026-08-04.** `feature_spec_todo.md` **§12** added seven
+> more first-party Paizo classes (the five NPC classes, the omdura and the vampire hunter) and the
+> grouped selector, so the pool is **68**, not 61. This map's destination still holds — every class
+> the generator knows about rolls or carries a named blocker — and the only class still held out is
+> the `stalker`/`zealot` pair. §12 also found the omdura and vampire hunter in
+> `pf-content.pf-collab-content`, which [ticket 01](issues/01-foundry-availability-census.md)'s
+> three-pack census would have missed: **grade a renderability census against every installed pack.**
 
 **Charted 2026-08-03. Five tickets.** **Updated 2026-08-03: 01, 04 and 05 are resolved** — the census
 found all six occult classes fully present in `pf1` 11.11 and the PoW pair absent from `pf1-pow`

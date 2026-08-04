@@ -99,6 +99,17 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   Gated by `validate_occult_data.py`. The pick schedules are in `data.amount`, the chooser calls are
   in `main_test.py` after the psionics block, and all six are in the random pool
   (`data.occult_classes` is now empty). Spec: `docs/feature_spec_todo.md` §10.
+- **The class roster — 68 rollable classes, five families.** The pool is the keys of
+  `class_data.json` minus the holdback lists in `data.py` (`pow_classes_pending_foundry`,
+  `psionic_classes_pending`, `occult_classes`, `classes_pending_foundry`); the families are
+  `data.CLASS_GROUPS`, where `base` is *derived* as the remainder so a new Paizo class is a one-key
+  change. Do not read `base_classes` as a category — `spells.py` overloads it as the spellcasting
+  gate. `util.py::_group_pool` turns the dropdown's `random-<token>` into a one-family pool.
+  The FoundryVTT module's single roster is `scripts/class-roster.js` (`CLASS_GROUPS` for display,
+  `CLASS_ITEM_ORDER` for `collectItems()` boundaries); `validate_class_roster.py` gates both against
+  this repo. The five NPC classes are **GENERATED** by `build_npc_class_data.py` and the omdura /
+  vampire hunter by `build_collab_class_data.py`, both straight off the pf1 and `pf-collab-content`
+  class Items. Spec: §12.
 - `feats/` — feat_changes.json, feat_conditionals.json (Foundry buffs). `items/` —
   item_changes.json (**GENERATED** by `build_item_changes.py`) + `_overrides.json`,
   quality_effects.json. `spells/` — spell_changes.json, spell_riders.json. `flaws/` —
@@ -277,18 +288,40 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
 - `reconcile_psionics_names.py` → GENERATES `psionic_name_map.json`, mapping our scraped names onto
   the `pf1-psionics` pack names the Foundry module can actually resolve. Unmapped names fail
   `validate_psionics_data.py`. Pack contents are dumped by `dump_foundry_pack.mjs` (node).
-- `build_every_class.mjs` (node) → splices the twelve `pf1-psionics` classes (and Path of War's
-  Stalker/Zealot, once upstream ships them) into the **module repo's** `every_class.json` +
-  `every_class_MODS.json`, reading the compendium LevelDB directly. Needs `--classic-level <dir>`
-  (borrow the copy in `pf1-conditional-applier/node_modules/`); `--dry-run` first. It **patches
-  `bab`/`hd`/`skillsPerLevel` from `class_data.json`** — upstream ships one placeholder progression
-  for all twelve — and refuses to write if a harvested class is missing there.
+- `build_npc_class_data.py` → GENERATES the five NPC-class entries in `class_data.json` (adept,
+  aristocrat, commoner, expert, warrior) plus the adept's `spells_known`/`spells_per_day` rows.
+  Chassis is read off the `pf1.classes` class Items; only prose is hand-supplied. **Refuses to write
+  if `data.good_saves` disagrees with the pack.** The adept's per-day table is RAW's, not pf1's —
+  see §12 for why.
+- `build_collab_class_data.py` → GENERATES the `omdura` and `vampire hunter` entries, harvested from
+  **`pf-content`'s `pf-collab-content`** pack (NOT `pf1.classes`, which carries neither) with
+  `pf1.class-abilities` alongside it, because four of their granted features are `@UUID`s into that
+  second pack. Same good-saves refusal.
+- `build_every_class.mjs` (node) → splices classes the exported `everyClassPerson` actor never had
+  into the **module repo's** `every_class.json` + `every_class_MODS.json`, reading the compendium
+  LevelDB directly: the twelve `pf1-psionics` classes, Path of War's Stalker/Zealot (once upstream
+  ships them), the five NPC classes from the pf1 *system* pack (`--system`), and the omdura/vampire
+  hunter from `pf-collab-content` (whose entry uses `also:` to resolve features across two packs).
+  Needs `--classic-level <dir>` (borrow the copy in `pf1-conditional-applier/node_modules/`);
+  `--dry-run` first. It **patches `bab`/`hd`/`skillsPerLevel` from `class_data.json`** — upstream
+  ships one placeholder progression for all twelve psionic classes — and refuses to write if a
+  harvested class is missing there. Every name it prints must also be in the module's
+  `CLASS_ITEM_ORDER`, in this order; `validate_class_roster.py` is what checks that.
 - `build_ogl_license.py` → GENERATES root `LICENSE-OGL.txt` (verbatim OGL 1.0a copied from an
   on-disk source + a §15 curated for THIS project) and the psionics `NOTICE.md`. Never hand-edit
   either file; edit the script. It refuses to write a licence whose operative text is truncated.
 - `validate_*.py` → data gates (class_feature_effects, flaw_effects, quality_effects, psionics_data,
   companion_data, companion_names, companion_archetypes, companion_identity, companion_stats,
-  companion_feats, …).
+  companion_feats, class_roster, caster_data, …).
+  `caster_data` gates the four unconnected places a class declares that it casts — `class_data.json`'s
+  `casting level`, `data.base_classes` (which `spells.py` uses as the spellbook gate),
+  `data.caster_mod`/`divine_casters`, and its own-name row in `spells_per_day.json` — plus that every
+  `class_for_spells_attr` alias resolves to a real `data/spells.csv` column. Miss one and the class
+  ships with an empty spellbook or `KeyError`s only on the seeds that roll it. `--print` tabulates
+  every declared caster with the column it actually reads.
+  `class_roster` is the cross-repo one: it reads the FoundryVTT module's `scripts/class-roster.js`
+  and fails if the dropdown, the class groups or the `collectItems()` boundary order disagree with
+  this repo's rollable class list. An uninstalled module is a **SKIP**, not a failure.
   `companion_identity` and `companion_stats` are the odd ones out: they drive the **resolver** and
   the **merge** over stub characters rather than checking a file at rest. `companion_feats` is a
   third shape again: it runs every feat's declared effect through `apply_modifiers` on two probe
@@ -307,6 +340,14 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
   it generates characters, so it is deliberately outside `validate_all.py`'s glob, alongside
   `test_house_invariants.py` and `test_golden_payload.py`. Use it when the question is "is *this
   class* right", not "did anything break".
+- `test_golden_payload.py` → seven seeded characters diffed against `scripts/golden/*.json`. Three
+  of them (`caster`, `companion`, `manifester`) also carry a **`COVERAGE` predicate** naming the
+  payload *shape* they exist to pin — a stacked bond beside an archetype-removed one, an arcane
+  spellbook beside a divine one, a manifester with powers beside a points-only one. Multiclass draws
+  realign whenever the class pool changes, so those shapes evaporate silently; the predicates are
+  checked on `--update` too, because a re-seed is exactly when the coverage gets written away. When
+  re-seeding, **sweep on the predicate, not on a class list** — the class list is only ever how the
+  coverage happened to arrive last time.
   - **`validate_all.py` runs every one of them** (glob discovery — a new validator is covered the
     moment it exists), and `.github/workflows/validate.yml` runs *that* plus a trimmed
     `test_house_invariants.py` on push. Before this the eleven validators were manual and nothing
@@ -353,12 +394,12 @@ whose `Blocked by:` list is fully resolved. Three efforts are **OPEN**:
   the frontier is 03, which gates the web-sheet slice. **Succeeds** `companions/` and does not reopen
   §8's D1–D10.
 - `class-pool/` — every class the generator knows about either rolls with full support or carries a
-  named blocker (→ §10). The eight held-out classes: the six Occult Adventures classes
-  (`data.py:2381`) and `stalker`/`zealot` (`:2337`), all filtered at `util.py:180-184`. Charted
-  2026-08-03, five tickets; only **01** (a Foundry compendium census) is on the frontier.
+  named blocker (→ §10). **CLOSED 2026-08-03**: all six Occult Adventures classes entered the pool
+  (`data.occult_classes` is empty); only `stalker`/`zealot` are still held out, by
+  `data.pow_classes_pending_foundry`, filtered at `util.py::_available_class_pool`.
 - `class-choices/` — every rollable class picks the right number of class options, at the right
   levels, legally, and visibly on both sheets, with a validator to keep it true (→ §11). Charted
-  2026-08-03, five tickets.
+  2026-08-03, five tickets. **Its "class list is final at 61" gate is stale** — §12 made it 68.
 
 **Both new maps are parked**, by decision: neither is worked until `companion-sheets/` reaches its
 finish line, and `class-choices/` additionally waits on `class-pool/` so its audit covers the final

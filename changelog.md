@@ -19,6 +19,55 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **The class dropdown is grouped, and it finally lists every class you can roll.** The FoundryVTT
+  generator dialog now shows five labelled sections with their sizes — Paizo base classes (40),
+  Path of War (5), Psionics (12), Occult Adventures (6), NPC classes (5) — and each section opens
+  with a **Random \<group\>** entry that rolls only inside that family. Picking "Random Occult
+  Adventures" gets you one of the six occult classes and nothing else.
+  - **The six Occult Adventures classes were missing from the dropdown entirely.** They entered the
+    random pool on 2026-08-03 and the Foundry module could already render them, but nobody added
+    them to the list, so the only way to get an occultist was to roll Random and hope. Fixed, and
+    gated so it cannot happen again — see the roster note under *Changed*.
+- **Seven more classes, all of them first-party Paizo: the generator now rolls 68.** Every class on
+  d20pfsrd's index is present except prestige classes.
+  - **The five NPC classes — adept, aristocrat, commoner, expert, warrior.** An NPC generator that
+    could not produce a commoner was missing the most common person in the world; a town guard had
+    to be a fighter and an innkeeper a bard. They are **fully rollable**, not selector-only: about
+    7% of random characters are now NPC-class. *Rejected:* listing them but holding them out of the
+    random pool. If that proves wrong in play, the lever is one list in `data.py`.
+  - **The omdura and the vampire hunter**, the last two first-party base classes, with their full
+    feature chains (12 and 15 features).
+  - Their chassis is **read out of the pf1 compendium, not typed from the book** — hit die, BAB,
+    skill ranks, saves, class skills and proficiencies all come from the class Items, and
+    `build_npc_class_data.py` refuses to write if `data.py`'s hand-maintained good-save table
+    disagrees with the pack.
+  - **Prestige classes are deliberately excluded.** 100+ classes needing an entry-prerequisite
+    engine and base-class-level gating that the generator has no model for, for characters nobody
+    asked to roll.
+  - **The omdura and the vampire hunter cast, and the adept does too.** RAW gives all three divine
+    spellcasting. The omdura is a six-level Charisma caster reading the cleric spell list; the
+    vampire hunter a four-level Wisdom caster reading the inquisitor list, its first spells at 4th.
+    Neither needed a new spell list written: the generator has always been able to point one class
+    at another's list, which is how the warpriest and the oracle read the cleric's. Their
+    per-day tables are the standard six- and four-level progressions every other class of that
+    shape already uses.
+    - Their compendium class Items carry no casting information at all, so the tier is asserted in
+      `build_collab_class_data.py` — and the build now **fails** if the upstream pack ever ships
+      casting information of its own, rather than quietly preferring a hand-written answer to a
+      real one.
+    - **Remaining gap, and it is small:** the omdura's list is RAW the union of the cleric's and
+      the inquisitor's, and no such list has ever been written down. It reads the cleric's, which
+      contains everything an omdura can reach. *Rejected:* deriving the union as a new column.
+    - **A 16th-level-or-higher adept sees one spell slot on the Foundry sheet it cannot fill, and
+      that is allowed to stand.** The adept's spells stop at 5th level; the backend enforces that
+      and the web sheet shows it, but the Foundry sheet works its slots out from the caster tier
+      rather than from the numbers the generator sends, and offers a 6th. *Rejected:* having the
+      generator's own spell table drive the Foundry sheet instead. It would fix this, but it would
+      also put the generator in charge of every caster's slots at once — thirty classes' worth of
+      arithmetic that pf1 has been doing correctly — to correct one empty row on the rarest kind of
+      character in the game. Not worth the blast radius. If it is ever revisited, the trap is
+      written down in `build_npc_class_data.py`.
+
 - **Animal companions and mounts build like characters now.** A bonded creature used to arrive as a
   stat block and a list of feat names picked at random out of a bag. It now chooses feats it actually
   qualifies for, records which level each one came from, pays feat taxes, rolls its own mechanical
@@ -547,7 +596,42 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     moment someone edits a divisor — the same lesson a stale doc taught this repo when it silently
     broke six weapons.
 
+### Changed
+- **The module's class roster lives in one file instead of three.** It used to be hard-coded in the
+  dropdown, in a dead byte-identical copy of the dialog, and in the item-collection boundary list,
+  with nothing checking they agreed — which is exactly how the occult classes reached two of the
+  three and not the one you look at. There is now a single `scripts/class-roster.js`, and a new
+  `Backend/scripts/validate_class_roster.py` (validator 17) fails if it disagrees with the backend's
+  rollable class list, puts a class in the wrong family, or drifts from `every_class.json`'s class
+  order — the ordering contract that decides whether one class swallows the next one's features.
+- **A class that says it casts is now checked in all four places it has to say so.** Declaring a
+  spellcaster means a caster tier, a place on the spellcasting roster, a casting ability and a
+  spells-per-day table — four files that never knew about each other. Miss one and the failure is
+  invisible in the worst way: the class ships with an empty spellbook, or blows up only on the
+  seeds that happen to roll it. `Backend/scripts/validate_caster_data.py` (validator 18) fails on
+  any of the four, and on a spell list pointed at a list that doesn't exist. The adept, the omdura
+  and the vampire hunter each had to be walked through those four by hand; nothing else will.
+  - It also fails a class filed under two casting abilities at once, which the **shaman** was —
+    listed as both Wisdom- and Charisma-based. Wisdom was already the one that took effect, and is
+    the one the shaman has by the book, so no shaman changes; the Charisma entry was text that
+    read like a rule and did nothing.
+- **Three golden fixtures were re-seeded, not just regenerated.** Seven new classes in the pool
+  realigned every multiclass draw, and all three multiclass goldens quietly stopped covering the
+  thing they exist for: `caster` lost its second spellbook, `companion` lost the three-grantor stack
+  and its archetype-removed bond, `manifester` lost the aegis and with it the only coverage of the
+  power-points-with-no-powers shape. Same failure mode as the 7275, 7323 and 8018 re-seeds. The
+  `companion` sweep now selects on the **coverage** — a stacked entry plus an absence entry — rather
+  than on "rolls druid + ranger + hunter", which was only ever how that coverage happened to arrive.
+  - **And that rule is now enforced instead of merely written down**, which is the durable half.
+    Each of the three fixtures carries a predicate describing the shape it exists to pin, checked on
+    every run — including when the goldens are being regenerated, because that is precisely when the
+    coverage gets written away. A pool change that costs a fixture its purpose now fails immediately
+    and says which shape went missing, instead of arriving as a two-thousand-line diff for someone
+    to read after the fact. All four historical losses would have been caught by name.
+
 ### Removed
+- **The module's `html_dialog.js`.** An unreferenced copy of the generator dialog that nothing
+  imported and that had already gone stale — and the copy that missed the occult classes.
 - **The in-repo character sheet and `GET /sheet` are gone.** The standalone
   *Pathfinder-Character-Sheet* front end superseded this copy some time ago, and the copy had been
   quietly rotting behind it: its generate form posted to `/execute`, a route that does not exist,

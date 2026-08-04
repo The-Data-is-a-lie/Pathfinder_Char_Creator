@@ -865,3 +865,120 @@ these six, though `Backend/json/archetypes.json` already carries 8–24 entries 
 occult variants**, unread · kineticist **burn** as a tracked resource · the medium's **legendary and
 outsider spirits** · **buffs/conditionals** for occult picks, mirroring §4/§7 · a live Foundry import
 check of all six.
+
+## 12. Class roster and the selector — ✅ BUILT (2026-08-04)
+**Status: BUILT.** 68 rollable classes, in five families the FoundryVTT dropdown groups by. This
+section owns *who is in the pool and how you pick them*; §10 owned the occult six specifically, and
+`docs/wayfinder/class-choices/` (still parked) owns whether everyone in the pool picks correctly.
+
+> **§11 is reserved**, deliberately, for *Class choices* —
+> [that map](wayfinder/class-choices/map.md) names §11 as its destination and is only parked, not
+> abandoned. Numbering this one 12 keeps that promise rather than quietly taking its slot.
+>
+> **That map's "class list is final at 61" gate needs re-stamping**: this section makes it 68, and
+> its audit must cover the seven new arrivals — four of which (aristocrat, commoner, expert,
+> warrior) make no class-specific choices *by design*, which the audit must read as intended rather
+> than as the coverage gap it looks identical to.
+
+**The bug this started from.** §10 put the six Occult Adventures classes in the random pool on
+2026-08-03 and the module could already render them — but the dropdown never got them, so for a day
+the only way to roll an occultist was to pick Random. The roster existed **three times by hand**:
+`button.js`'s dropdown, a dead byte-identical copy in `html_dialog.js`, and `modify-abilities.js`'s
+`collectItems()` boundary list. The occult classes reached two of the three.
+
+**One roster, one gate.** The module now keeps `scripts/class-roster.js` — `CLASS_GROUPS` (display
+order, grouped) and `CLASS_ITEM_ORDER` (every_class.json order). Two exports because the two orders
+are different contracts: the first drives the dropdown, the second is what `collectItems()` slices
+on, where a name out of place makes one class swallow the next one's features.
+`Backend/scripts/validate_class_roster.py` is the gate; `html_dialog.js` is deleted.
+
+**Groups are derived, not listed twice.** `data.CLASS_GROUPS` names five families; `base` carries no
+roster of its own and is *the remainder* of `class_data.json`, so a new Paizo class stays a one-key
+change. `base_classes` could not be reused as the category — `spells.py` overloads it as the
+spellcasting gate, so five occult classes are in it and the kineticist is not. Hence the separate
+`occult_class` roster beside the (empty, and differently-purposed) `occult_classes` exclusion lever.
+
+**Random within a family.** Each `<optgroup>` opens with `Random <group>`, sending `random-<token>`.
+`util.py::_group_pool` narrows the pool to that family; BAB and caster-level filters still compose
+on top, and an empty group falls through to the whole pool rather than failing — the behaviour every
+unmatched class string has always had here.
+
+**The seven new classes.**
+| class | source pack | notes |
+|---|---|---|
+| adept | `pf1.classes` | the only NPC caster; `spells.csv` already had an `adept` column |
+| aristocrat, commoner, expert, warrior | `pf1.classes` | no features by design |
+| omdura | `pf-content.pf-collab-content` | 12 features |
+| vampire hunter | `pf-content.pf-collab-content` | 15 features |
+
+- **All seven roll** (user decision, 2026-08-04). *Rejected:* selector-only NPC classes. NPC classes
+  are ~7% of random draws; the lever if that is wrong is `data.classes_pending_foundry`.
+- **Chassis is read from the pack, never typed.** `build_npc_class_data.py` and
+  `build_collab_class_data.py` take hit die, BAB, skill ranks, saves, class skills, proficiencies
+  and feature prose off the class Items, and both refuse to write if `data.good_saves` disagrees.
+- **The census that nearly held two classes out.** `pf1.classes` has 49 class Items and carries
+  neither the omdura nor the vampire hunter; the first sweep read three likely-sounding packs and
+  concluded both were unrenderable. Sweeping **every installed pack** found both in
+  `pf-collab-content`, with full feature chains. Grade a renderability census against every pack.
+- **The adept's spell table is RAW's, not pf1's.** pf1 tags it `med`, the cleric's six-level
+  progression, but `spells.csv`'s adept column runs 1st–5th (62 spells, plus 10 orisons).
+  `casting level` stays `mid` so the two sheets agree on the tier, and the 6th-level row is entirely
+  `null` — the data enforces the cap, so no branch in `spells.py` had to learn about the adept. That
+  row is load-bearing: `spells_per_day_attr` indexes the JSON by key over
+  `range(0, highest_spell_known + 1)`, so a 16th-level adept `KeyError`s without it.
+
+**The omdura and the vampire hunter cast.** RAW gives the omdura spontaneous Charisma casting off
+the cleric/inquisitor lists to 6th, and the vampire hunter Wisdom casting off the inquisitor list
+from 4th. Their `pf-collab-content` class Items carry **no casting block**, so
+`build_collab_class_data.CASTING_OVERRIDE` asserts the tier — `mid` and `low` — and
+`check_casting_overrides()` fails the build the moment upstream ships a real one.
+
+- **Neither needed a new `spells.csv` column,** which is what an earlier reading of this had wrong.
+  `spells.py::class_for_spells_attr` already aliases warpriest and oracle to the cleric column and
+  witch/arcanist to the wizard one; the omdura joins the first and the vampire hunter reads
+  `inquisitor`. Their `spells_per_day.json` rows are the standard six- and four-level tables, copied
+  from `inquisitor` and `ranger` — nothing was typed from a book.
+- **Nor does the Foundry sheet derive its spellbook from the class Item,** the other premise that
+  didn't hold. `configureSpellbook` writes `inUse`, `class`, `casterType`, `ability` and `kind`
+  straight off the payload, which is how `psion` and `aegis` get books while sitting at
+  `casting level: none`. (The §10 medium was never precedent for shipping a non-caster either — the
+  medium is `casting level: low` and casts; §10 shrank its table.)
+- **Remaining fidelity gap, narrow:** RAW builds the omdura's list as the **union** of the cleric's
+  and the inquisitor's, and nobody has written that union down. It reads the **cleric** column — the
+  superset at every level a `mid` caster reaches, and the omdura is a cleric alternate class.
+  *Rejected:* deriving a real union column in `spells.csv`.
+
+**Accepted divergence — the backend's spell table stops at the payload.** `configureSpellbook`
+sends pf1 only `casterType`, so pf1 fills slots from its own tables and ignores
+`spells_per_day_list`. For 29 of the 30 declared casters the two agree. The adept is the exception:
+at 16th+ the Foundry sheet offers a 6th-level slot that no adept spell can fill, and the web sheet
+correctly withholds it.
+
+**Ruled: leave it** (user decision, 2026-08-04). *Rejected:* the module change that would fix it —
+`autoSpellLevels = false` plus writing `spellN.max` from the payload. It makes the generator
+authoritative for **every** caster's slots at once, thirty classes of arithmetic pf1 already does
+right, to correct one empty row on a class that will rarely be rolled; and it would surface whatever
+other backend/pf1 table drift exists as a side effect of a cosmetic fix.
+
+If it is ever revisited, the non-obvious part: write **N = 1..9 only**. Level 0 must stay on auto —
+the `"0"` row is all zeros for 27 of 28 classes (the magus alone carries real counts, and nothing
+reads them) and means *orisons are at-will, not tracked*, not *no orisons*. Writing it verbatim
+would strip cantrips from every Foundry caster in the game.
+
+**Gates.** `validate_class_roster.py` (validator 17) checks five things: the roster is exactly the
+rollable pool, every class is in exactly one group, `CLASS_ITEM_ORDER` matches `every_class.json`,
+every rostered class has a class Item, and the group tokens match the backend's. An absent module is
+a SKIP, not a failure — the module lives outside this repo. `test_house_invariants.py` sweeps all 68.
+`validate_caster_data.py` (validator 18) gates the four places a class declares that it casts —
+`class_data.json`'s tier, `base_classes`, `caster_mod`/`divine_casters` and its `spells_per_day`
+row — plus that every `class_for_spells` alias resolves to a real `spells.csv` column. Each of the
+adept, omdura and vampire hunter had to be walked through those four by hand.
+
+**Stalker and zealot are unchanged** — still `pow_classes_pending_foundry`, still blocked on
+`pf1-pow` shipping a class Item (§10).
+
+**Deferred (not built):** **prestige classes**, ruled out deliberately — 100+ classes needing an
+entry-prerequisite engine and base-class-level gating the generator has no model for · archetypes
+for the seven new classes · the 26 **Spheres** classes
+in `pf1spheres.classes`, which the sweep found and nothing consumes (`data.spheres_classes` is still
+empty) · a live Foundry import check of the seven.
