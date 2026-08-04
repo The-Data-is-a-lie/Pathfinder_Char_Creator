@@ -318,6 +318,14 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     447 counts if the double-count were reintroduced. It also asserts that the published numbers
     still *disagree* with the size table in at least 30 places — otherwise the check could quietly
     become vacuous if the data ever moved.
+- **The payload finally carries them.** A new `bonded_creatures` list on every payload carries one
+  entry per creature — companion, mount, familiar, eidolon — each with the stat block above,
+  including the entries that exist only to explain why there *isn't* one. The five-key
+  `animal_companion` alias is unchanged, so nothing reading it has to move.
+  - **The stacking golden had stopped testing stacking.** Its seed was chosen to roll two companion
+    grantors at once, but the region fix realigned the random stream and it quietly became a single
+    ordinary druid. Re-seeded to a case that stacks **three** grantors — hunter, ranger and druid —
+    which also exercises three different effective-level formulas at once.
 
 ### Fixed
 - **Every region can now be chosen — five of the ten never worked.** Region selection had three

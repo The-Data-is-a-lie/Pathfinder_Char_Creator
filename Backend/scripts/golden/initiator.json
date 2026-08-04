@@ -25,6 +25,7 @@
  "bloodline": "N/A",
  "bloodline_feat_labels": [],
  "bloodline_feats": [],
+ "bonded_creatures": [],
  "buff_gaps": [],
  "build_archetype": "Archer",
  "build_tactics": "Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.",

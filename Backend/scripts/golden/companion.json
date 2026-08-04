@@ -1,27 +1,30 @@
 {
- "Total_HP": 154,
- "age_number": 44,
+ "Total_HP": 176,
+ "age_number": 56,
  "alignment": "Neutral Good",
  "animal_companion": {
   "chassis": {
-   "bab": 2,
-   "bonus tricks": 2,
-   "feats": 2,
-   "fort": 3,
-   "hd": 3,
-   "natural armor bonus": 2,
-   "ref": 3,
-   "skills": 3,
-   "special": "link, share spells, evasion",
-   "str/dex bonus": 1,
-   "will": 1
+   "bab": 6,
+   "bonus tricks": 4,
+   "feats": 5,
+   "fort": 6,
+   "hd": 9,
+   "natural armor bonus": 6,
+   "ref": 6,
+   "skills": 9,
+   "special": "link, share spells, evasion, 2 ability score increase, devotion, multiattack",
+   "str/dex bonus": 3,
+   "will": 3
   },
   "feats": [
-   "diehard",
-   "improved natural attack"
+   "Acrobatic",
+   "endurance",
+   "improved natural armor",
+   "intimidating prowess",
+   "spring attack"
   ],
   "kind": "normal",
-  "species": "bird, harpy eagle (3pp)",
+  "species": "bird",
   "species_stats": {
    "4th-level advancement": {
     "ability scores": {
@@ -29,80 +32,250 @@
      "str": "+2"
     }
    },
-   "source": "lg: lh",
    "starting statistics": {
     "ability scores": {
      "cha": 6,
      "con": 12,
      "dex": 15,
      "int": 2,
-     "str": 12,
+     "str": 10,
      "wis": 14
     },
+    "ac": "+1 natural armor",
     "attack": "bite (1d4), 2 talons (1d4)",
     "size": "small",
-    "special qualities": "low-light vision, +2 on saves vs. Disease",
+    "special qualities": "low-light vision",
     "speed": "10 ft. , fly 80 ft. (average)"
    }
   }
  },
  "appearance": [
-  "Sickly"
+  "Snaggletooth"
  ],
  "archetype1": null,
- "archetype_info": "{\n    \"Hexenhammer\": {\n        \"source\": \"Horror Adventures pg. 52 Some inquisitors embrace the dark powers of their traditional foes, turning such powers toward their own ends in order to pronounce judgment on those who oppose them. These inquisitors learn to use the hexes and some spells of witches, but must pay the price for dealing with supernatural powers, as they slip ever closer to the evil they seek to destroy.\",\n        \"withering gaze (su)\": \" Hexenhammers study the effects of a witch's evil eye, and can use this dark magic to steel their gaze in a similar manner. Beginning at 1st level, whenever a hexenhammer successfully demoralizes a creature as a standard action, instead of applying the shaken condition, she can apply the effects of the witch evil eye APG hex as if she were a 1stlevel witch (save DC = 10 + 1/2 the hexenhammer's inquisitor level + her Wisdom modifier). This ability replaces monster lore and stern gaze.\",\n        \"pride and penance (ex)\": \" Hexenhammers are deeply conflicted about their dealings with dark powers. If a hexenhammer uses a hex or casts a spell gained from the witch class spell list, she temporarily loses access to her domain abilities and her cunning mind bonus until she undergoes a brief period of penance and atonement that takes 1 minute of quiet prayer and contemplation; this atonement doesn't require any additional cost, and it automatically restores the lost abilities, regardless of how many times the hexenhammer uses her dark powers. If the hexenhammer uses her dark trade ability (see below) to trade uses of judgment for hexes, she loses access to her domain abilities and cunning mind bonus until the next time she regains her spell slots for the day. This ability alters domain.\",\n        \"cunning mind (ex)\": \" At 2nd level, a hexenhammer gains a +2 bonus on saving throws against hexes, curses, spells of the necromancy school, and spells with the evil descriptor. This ability replaces cunning initiative.\",\n        \"hexcrafter (su)\": \" Beginning at 3rd level, a hexenhammer learns to turn some powers of witches to her own advantage. She learns either the blight APG , the misfortune APG , or the slumber APG hex from the witch's hex list, and can use that hex once per day as a standard action, using her inquisitor level in place of a witch level. If the hex allows a saving throw, the save DC to resist the hex is equal to 10 + 1/2 the inquisitor's level + the inquisitor's Wisdom modifier. At 6th level, 12th, and 15th levels, the hexenhammer learns an additional hex from her available hexes. At 9th level and 18th level, the hexenhammer can use any one of her hexes one additional time per day. At 12th level, the hexenhammer adds the agony APG , nightmares APG , and retribution APG major hexes to her list of learnable hexes. This ability replaces teamwork feats.\",\n        \"dark trade (su)\": \" At 3rd level, a hexenhammer can forgo the power of her judgments and succumb to the temptation of darker powers. She can trade a daily use of judgment to instead gain an additional use of one of her hexes. This ability replaces solo tactics.\",\n        \"witchcraft (ex)\": \" At 5th level and at every 3 inquisitor levels thereafter, a hexenhammer can learn a witch spell in place of a spell she already knows. In effect, she loses an old spell in exchange for a new one selected from the witch class spell list. The new spell's level must be the same as that of the spell being exchanged, and it must be at least 1 level lower than the highest-level inquisitor spell she can cast. The hexenhammer can swap out only a single spell at any given level and must choose whether or not to swap the spell at the same time she gains new spells known for the level. This ability alters the inquisitor's spellcasting.\"\n    }\n}",
- "armor_ac": "7",
+ "archetype_info": "{\n    \"Pelagic Hunter\": {\n        \"source\": \"Aquatic Adventures pg. 54 Pelagic hunters form strong bonds that extend deep beneath the sea, reaching out to whatever heeds their call, whether it be mundane animals or something far more sinister.\",\n        \"pelagic companion\": \" A pelagic hunter must select an aquatic animal companion. This alters animal companion.\",\n        \"pelagic focus (su)\": \" Unlike with a normal hunter's animal focus, pelagic focus allows the hunter to contact magical deep sea creatures instead of animals, using the options below instead of the normal hunter options. This alters animal focus. Aboleth : The creature gains a +1 morale bonus on saves against divine spells and spell-like abilities. This bonus increases to +2 at 8th level and +3 at 15th level. Cetus : The creature gains Lunge as a bonus feat. At 12th level, instead of gaining Lunge, the creature increases its reach by 5 feet. Charybdis : The creature's attacks ignore the first 5 points of hardness. This improves to ignore the first 7 points of hardness at 8th level and the first 10 points of hardness at 15th level. Deep One : The creature reduces pressure damage it takes (see page 48) by 10. At 12th level, the creature is immune to damage from changing pressure. Hippocampus : The creature gains a +4 competence bonus on Swim checks. This bonus increases to +6 at 8th level and +8 at 15th level. Kraken : The creature gains the jet ability ( Pathfinder RPG Bestiary 2 298) with a speed equal to its unmodified base land speed or four times its swim speed (if it has one), whichever is higher. If it has a swim speed, at 8th level, the jet ability's speed increases to five times its swim speed, and at 15th level, the speed increases to seven times its swim speed. Reefclaw : The creature gains Diehard as a bonus feat. At 12th level, instead of gaining Diehard, the creature gains the ferocity ability ( Pathfinder RPG Bestiary 300). Scylla : The creature's attacks deal 1 point of bleed damage in addition to their normal damage. At 8th level, the bleed damage increases to 1d3, and at 15th level, it increases to 1d6. Sea Serpent : The creature is considered to be under a nondetection spell it cast on itself, with a caster level equal to the pelagic hunter's class level. Selkie : The creature gains a +4 competence bonus on Bluff checks. This bonus increases to +6 at 8th level and +8 at 15th level. Shoggoth : The creature gains a +2 competence bonus on Perception checks and reduces the flanking bonuses of creatures flanking it by 1. This Perception bonus increases to +3 at 8th level and +4 at 15th level. At 12th level, the creature can't be flanked. Siyokoy : The creature's attacks deal 1 additional point of electricity damage. At 8th level, the electricity damage increases to 1d3, and at 15th level, it increases to 1d6.\",\n        \"blood to water (su)\": \" At 5th level, when a pelagic hunter or her animal companion bleeds underwater into the surrounding water (whether from piercing or slashing damage, a bleed effect, or another effect that causes blood to spill), the blood transmutes into ordinary water within 1 round. This prevents sharks and other predators with keen scent from being drawn to the pelagic hunter's position by the blood and makes it harder for such creatures to track her. This ability replaces woodland stride.\"\n    }\n}",
+ "armor_ac": "8",
  "armor_armor_check_penalty": "-7",
  "armor_enhancement_bonus": 1,
  "armor_enhancement_chosen_list": [],
  "armor_max_dex_bonus": "0",
- "armor_name": "Iron lamellar",
+ "armor_name": "Hellknight half-plate",
  "armor_spell_failure": 0,
  "armor_weight": "50 lbs.",
- "bab_total": 10,
+ "bab_total": 11,
  "background_traits": [
-  "Thoughtful Wish-Maker (Plane of Fire)",
-  "Skilled Telepath",
-  "Draconic Vigil"
+  "Snap Ignition",
+  "Deathtouched",
+  "Opportunistic"
  ],
  "backstory": "",
  "bloodline": "N/A",
  "bloodline_feat_labels": [],
  "bloodline_feats": [],
+ "bonded_creatures": [
+  {
+   "archetype": "Feyspeaker",
+   "chassis": {
+    "bab": 6,
+    "bonus tricks": 4,
+    "feats": 5,
+    "fort": 6,
+    "hd": 9,
+    "natural armor bonus": 6,
+    "ref": 6,
+    "skills": 9,
+    "special": "link, share spells, evasion, 2 ability score increase, devotion, multiattack",
+    "str/dex bonus": 3,
+    "will": 3
+   },
+   "contributors": [
+    "druid",
+    "ranger",
+    "hunter"
+   ],
+   "effective_level": 11,
+   "feats": [
+    "Acrobatic",
+    "endurance",
+    "improved natural armor",
+    "intimidating prowess",
+    "spring attack"
+   ],
+   "flags": [],
+   "gear": [],
+   "gear_source": "not modelled in v1; when added, funded from character.gold (PF1e: companions have no wealth-by-level)",
+   "grantor": "druid",
+   "kind": "normal",
+   "name": "Clémence",
+   "outcome": "granted",
+   "sex": "Female",
+   "species": "bird",
+   "species_stats": {
+    "4th-level advancement": {
+     "ability scores": {
+      "con": "+2",
+      "str": "+2"
+     }
+    },
+    "starting statistics": {
+     "ability scores": {
+      "cha": 6,
+      "con": 12,
+      "dex": 15,
+      "int": 2,
+      "str": 10,
+      "wis": 14
+     },
+     "ac": "+1 natural armor",
+     "attack": "bite (1d4), 2 talons (1d4)",
+     "size": "small",
+     "special qualities": "low-light vision",
+     "speed": "10 ft. , fly 80 ft. (average)"
+    }
+   },
+   "stats": {
+    "abilities": {
+     "cha": 6,
+     "con": 14,
+     "dex": 18,
+     "int": 2,
+     "str": 15,
+     "wis": 14
+    },
+    "ability_modifiers": {
+     "cha": -2,
+     "con": 2,
+     "dex": 4,
+     "int": -4,
+     "str": 2,
+     "wis": 2
+    },
+    "ac": 22,
+    "attacks": [
+     {
+      "alternative": false,
+      "atk": 9,
+      "count": 1,
+      "crit_multiplier": null,
+      "damage": "1d4+2",
+      "name": "bite",
+      "notes": null
+     },
+     {
+      "alternative": false,
+      "atk": 9,
+      "count": 2,
+      "crit_multiplier": null,
+      "damage": "1d4+2",
+      "name": "talons",
+      "notes": null
+     }
+    ],
+    "bab": 6,
+    "bonus_tricks": 4,
+    "cmb": 7,
+    "cmd": 21,
+    "flat_footed_ac": 18,
+    "hd": 9,
+    "hit_die": "d8",
+    "hp": 90,
+    "merge_notes": [
+     "4th-level advancement applied"
+    ],
+    "natural_armor": 7,
+    "other": {},
+    "saves": {
+     "fort": 8,
+     "ref": 10,
+     "will": 5
+    },
+    "size": "small",
+    "size_change": null,
+    "skills": {
+     "acrobatics": {
+      "ranks": 2,
+      "total": 9
+     },
+     "escape artist": {
+      "ranks": 1,
+      "total": 8
+     },
+     "fly": {
+      "ranks": 1,
+      "total": 8
+     },
+     "intimidate": {
+      "ranks": 1,
+      "total": 2
+     },
+     "perception": {
+      "ranks": 2,
+      "total": 7
+     },
+     "stealth": {
+      "ranks": 1,
+      "total": 12
+     },
+     "survival": {
+      "ranks": 1,
+      "total": 6
+     }
+    },
+    "space": 5,
+    "special": "link, share spells, evasion, 2 ability score increase, devotion, multiattack",
+    "special_attacks": null,
+    "special_qualities": "low-light vision",
+    "speed": "10 ft. , fly 80 ft. (average)",
+    "touch_ac": 15
+   },
+   "type": "companion"
+  }
+ ],
  "buff_gaps": [],
  "build_archetype": "Beastmaster",
  "build_tactics": "Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.",
- "c_class": "inquisitor",
- "c_class_2": "druid",
- "c_class_display": "Inquisitor",
+ "c_class": "hunter",
+ "c_class_2": "ranger",
+ "c_class_display": "Hunter",
  "casting_level_str_foundry": "med",
  "casting_tradition": {
-  "bonus_spell_points": 1,
+  "bonus_spell_points": 0,
   "boons": [
-   "Overcharge"
+   "Easy Focus",
+   "Fortified Casting"
   ],
   "boons_detail": [
    {
-    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
-    "name": "Overcharge"
+    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
+    "name": "Easy Focus"
+   },
+   {
+    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
+    "name": "Fortified Casting"
    }
   ],
   "casting_ability_modifier": "Wisdom",
   "drawbacks": [
-   "Wild Magic",
-   "Skilled Casting",
+   "Magical Signs",
+   "Draining Casting",
+   "Somatic Casting",
    "Verbal Casting"
   ],
   "drawbacks_detail": [
    {
     "counts_as": 1,
-    "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
-    "name": "Wild Magic"
+    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
+    "name": "Magical Signs"
    },
    {
     "counts_as": 1,
-    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
-    "name": "Skilled Casting"
+    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
+    "name": "Draining Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
+    "name": "Somatic Casting"
    },
    {
     "counts_as": 1,
@@ -111,65 +284,73 @@
    }
   ]
  },
- "cha": 11,
- "character_full_name": "Anaïs Brunet",
+ "cha": 9,
+ "character_full_name": "Camille Grégoire",
  "chosen_race": "Human",
  "chosen_spell_descriptor": [
-  "fire"
+  "language-dependent",
+  "water"
  ],
- "class feature levels": {
-  "Talents": {
-   "revelation inquisition": 1,
-   "sedition inquisition": 1
-  }
- },
+ "class feature levels": {},
  "class feature owners": {
-  "Talents": "inquisitor"
+  "favored_enemies": "ranger",
+  "favored_terrains": "ranger"
  },
  "class features": {
-  "Skill Unlock: Handle Animal": {
-   "10 Ranks": "Trained creatures gain the +2 Will bonus within 30 feet while they can clearly see you, and you can teach a trick in 1 day at DC +20.",
-   "15 Ranks": "With a week and a DC 30 check you can train an animal to understand speech (as speak with animals); you can teach a trick in 1 day (DC +10) or 1 hour (DC +20).",
-   "20 Ranks": "You can make your speech understandable to any animal for 24 hours (DC 30, or DC 40 for magical beasts/vermin), and teach tricks in as little as 1 minute.",
-   "5 Ranks": "Creatures you have trained gain a +2 bonus on Will saves while adjacent to you."
+  "Skill Unlock: Appraise": {
+   "10 Ranks": "As a standard action you can determine the most expensive object a creature wears or wields (DC 20); you never make wildly inaccurate appraisals.",
+   "15 Ranks": "Determining the most expensive object is a move action, and you may substitute an Appraise check at -10 for a Will save against figments and glamers.",
+   "20 Ranks": "Identifying the priciest object is a move action, and observing an item grants a +2 circumstance bonus on steal and disarm checks against its bearer for 1 minute.",
+   "5 Ranks": "You can detect whether an item is magical (DC 20) and reveal its properties (DC 25 + caster level), and you automatically identify non-written forgeries."
   },
-  "Talents": {
-   "revelation inquisition": {
-    "burn shroud (su)": "as a standard action, you can make an unarmed touch attack against a creature. The target takes 1d4 points of fire damage + 1/2 your inquisitor level (minimum 1). If the target is currently the subject of a polymorph effect that changes its appearance (such as by alter self, shapechange, or an innate shapechanging ability such as that possessed by doppelgangers), it instead takes 1d6 points of fire damage + 1/2 your inquisitor level (minimum 1). You can use this ability a number of times per day equal to 3 + your wisdom modifier.",
-    "deities": "desna, irori, sarenrae, shelyn.",
-    "granted powers": "evil often hides itself behind a mask of good. You are an expert at ferreting out those who are not what they seem, and use your powers to reveal the true forms of the unworthy.",
-    "reveal form (su)": "at 8th level, once per day as a standard action, you can invoke the name of your deity and order one shapechanged target within 30 feet to reveal its true form. The target must succeed at a will save (dc 10 + 1/2 your inquisitor level + your wisdom modifier) or be forced on its next turn to dispel any ongoing polymorph effects or innate shapechanging abilities to assume its natural form. If a creature affected by this ability fails its save and is for some reason unable to dispel any ongoing polymorph effects or innate shapechanging abilities, it is instead staggered for 1 round. This is a mind-affecting compulsion effect."
-   },
-   "sedition inquisition": {
-    "deities": "cayden cailean, desna, iomedae, milani, nethys, norgorber, sarenrae, shelyn.",
-    "granted powers": "your deity calls you to cast down a hostile government. Stealth is a class skill for you.",
-    "rebel leader (ex)": "at 8th level, you gain leadership as a bonus feat.",
-    "undermine authority (sp)": "a number of times per day equal to your wisdom bonus, you can worsen the attitude of a character toward any governmental officer or leader acting against your religion. This likewise reduces that officers or leaders influence with that character. The persuasion requires enough conversation to attempt a diplomacy check (usually 1 minute) and you attempt a diplomacy check as normal to influence the targets attitude. However, if you fail the check, the target is subject to a mind-affecting compulsion that alters its attitude for a number of days equal to your inquisitor level. The target can resist the compulsion with a successful will saving throw (dc = 10 + 1/2 your inquisitor level + your wisdom modifier). If the target is under a mind-affecting effect from that officer or leader, the effect is automatically suppressed for 1 minute."
-   }
-  }
+  "favored_enemies": [
+   "Ooze",
+   "Humanoid (halfling)"
+  ],
+  "favored_terrains": [
+   "Swamp"
+  ]
  },
  "class_ability": [
-  "spells_inquisitor",
-  "domain_inquisitor",
-  "judgment_inquisitor",
-  "monster lore_inquisitor",
-  "orisons_inquisitor",
-  "stern gaze_inquisitor",
-  "cunning initiative_inquisitor",
-  "detect alignment (sp)_inquisitor",
-  "track_inquisitor",
-  "solo tactics_inquisitor",
-  "teamwork feat_inquisitor",
-  "bane_inquisitor",
-  "discern lies (sp)_inquisitor",
-  "second judgment_inquisitor",
-  "stalwart_inquisitor",
-  "greater bane_inquisitor",
-  "exploit weakness_inquisitor",
-  "third judgment_inquisitor",
-  "slayer_inquisitor",
-  "true judgment_inquisitor",
-  "chaotic, evil, good, and lawful spells_inquisitor",
+  "spells_hunter",
+  "orisons_hunter",
+  "chaotic, evil, good, and lawful spells_hunter",
+  "animal companion_hunter",
+  "animal focus_hunter",
+  "hunter animal focuses_hunter",
+  "nature training_hunter",
+  "wild empathy_hunter",
+  "precise companion_hunter",
+  "track_hunter",
+  "hunter tactics_hunter",
+  "teamwork feat_hunter",
+  "improved empathic link_hunter",
+  "woodland stride_hunter",
+  "bonus tricks_hunter",
+  "second animal focus_hunter",
+  "swift tracker_hunter",
+  "raise animal companion (sp)_hunter",
+  "speak with master_hunter",
+  "greater empathic link_hunter",
+  "one with the wild_hunter",
+  "master hunter_hunter",
+  "favored enemy_ranger",
+  "track_ranger",
+  "wild empathy_ranger",
+  "combat style feat_ranger",
+  "endurance_ranger",
+  "favored terrain_ranger",
+  "hunter's bond_ranger",
+  "spells_ranger",
+  "woodland stride_ranger",
+  "swift tracker_ranger",
+  "evasion_ranger",
+  "quarry_ranger",
+  "camouflage_ranger",
+  "improved evasion_ranger",
+  "hide in plain sight_ranger",
+  "improved quarry_ranger",
+  "master hunter_ranger",
   "spells_druid",
   "spontaneous casting_druid",
   "chaotic, evil, good, and lawful spells_druid",
@@ -184,54 +365,49 @@
   "wild shape_druid",
   "venom immunity_druid",
   "a thousand faces_druid",
-  "timeless body_druid",
-  "spells_bard",
-  "bardic knowledge_bard",
-  "bardic performance_bard",
-  "cantrips_bard",
-  "versatile performance_bard",
-  "well-versed_bard",
-  "lore master_bard",
-  "jack-of-all-trades_bard"
+  "timeless body_druid"
  ],
  "class_ability_desc": {
   "a thousand faces": "At 13th level, a druid gains the ability to change her appearance at will, as if using the alter self spell, but only while in her normal form.",
-  "bane": "At 5th level, an inquisitor can imbue one of her weapons with the bane weapon special ability as a swift action. She must select one creature type when she uses this ability (and a subtype if the creature type selected is humanoid or outsider). Once selected, the type can be changed as a swift action. This ability only functions while the inquisitor wields the weapon. If dropped or taken, the weapon resumes granting this ability if it is returned to the inquisitor before the duration expires. This ability lasts for a number of rounds per day equal to the inquisitor's level. These rounds do not need to be consecutive.",
-  "bardic knowledge": "A bard adds half his class level (minimum 1) to all Knowledge skill checks and may make all Knowledge skill checks untrained.",
-  "bardic performance": "A bard is trained to use the Perform skill to create magical effects on those around him, including himself if desired. He can use this ability for a number of rounds per day equal to 4 + his Charisma modifier. At each level after 1st a bard can use bardic performance for 2 additional rounds per day. Each round, the bard can produce any one of the types of bardic performance that he has mastered, as indicated by his level. Starting a bardic performance is a standard action, but it can be maintained each round as a free action. Changing a bardic performance from one effect to another requires the bard to stop the previous performance and start a new one as a standard action. A bardic performance cannot be disrupted, but it ends immediately if the bard is killed, paralyzed, stunned, knocked unconscious, or otherwise prevented from taking a free action to maintain it each round. A bard cannot have more than one bardic performance in effect at one time. At 7th level, a bard can start a bardic performance as a move action instead of a standard action. At 13th level, a bard can start a bardic performance as a swift action. Each bardic performance has audible components, visual components, or both. If a bardic performance has audible components, the targets must be able to hear the bard for the performance to have any effect, and many such performances are language dependent (as noted in the description. A deaf bard has a 20% chance to fail when attempting to use a bardic performance with an audible component. If he fails this check, the attempt still counts against his daily limit. Deaf creatures are immune to bardic performances with audible components. If a bardic performance has a visual component, the targets must have line of sight to the bard for the performance to have any effect. A blind bard has a 50% chance to fail when attempting to use a bardic performance with a visual component. If he fails this check, the attempt still counts against his daily limit. Blind creatures are immune to bardic performances with visual components. Countersong (Su) : At 1st level, a bard learns to counter magic effects that depend on sound (but not spells that have verbal components). Each round of the countersong he makes a Perform (keyboard, percussion, wind, string, or sing) skill check. Any creature within 30 feet of the bard (including the bard himself) that is affected by a sonic or language-dependent magical attack may use the bard's Perform check result in place of its saving throw if, after the saving throw is rolled, the Perform check result proves to be higher. If a creature within range of the countersong is already under the effect of a noninstantaneous sonic or language-dependent magical attack, it gains another saving throw against the effect each round it hears the countersong, but it must use the bard's Perform skill check result for the save. Countersong does not work on effects that don't allow saves. Countersong relies on audible components. Distraction (Su) : At 1st level, a bard can use his performance to counter magic effects that depend on sight. Each round of the distraction, he makes a Perform (act, comedy, dance, or oratory) skill check. Any creature within 30 feet of the bard (including the bard himself) that is affected by an illusion (pattern) or illusion (figment) magical attack may use the bard's Perform check result in place of its saving throw if, after the saving throw is rolled, the Perform skill check proves to be higher. If a creature within range of the distraction is already under the effect of a noninstantaneous illusion (pattern) or illusion (figment) magical attack, it gains another saving throw against the effect each round it sees the distraction, but it must use the bard's Perform skill check result for the save. Distraction does not work on effects that don't allow saves. Distraction relies on visual components. Fascinate (Su) : At 1st level, a bard can use his performance to cause one or more creatures to become fascinated with him. Each creature to be fascinated must be within 90 feet, able to see and hear the bard, and capable of paying attention to him. The bard must also be able to see the creatures affected. The distraction of a nearby combat or other dangers prevents this ability from working. For every three levels the bard has attained beyond 1st, he can target one additional creature with this ability. Each creature within range receives a Will save (DC 10 + 1/2 the bard's level + the bard's Cha modifier) to negate the effect. If a creature's saving throw succeeds, the bard cannot attempt to fascinate that creature again for 24 hours. If its saving throw fails, the creature sits quietly and observes the performance for as long as the bard continues to maintain it. While fascinated, a target takes a -4 penalty on all skill checks made as reactions, such as Perception checks. Any potential threat to the target allows the target to make a new saving throw against the effect. Any obvious threat, such as someone drawing a weapon, casting a spell, or aiming a weapon at the target, automatically breaks the effect. Fascinate is an enchantment (compulsion), mind-affecting ability. Fascinate relies on audible and visual components in order to function. Inspire Courage (Su) : A 1st-level bard can use his performance to inspire courage in his allies (including himself), bolstering them against fear and improving their combat abilities. To be affected, an ally must be able to perceive the bard's performance. An affected ally receives a +1 morale bonus on saving throws against charm and fear effects and a +1 competence bonus on attack and weapon damage rolls. At 5th level, and every six bard levels thereafter, this bonus increases by +1, to a maximum of +4 at 17th level. Inspire courage is a mind-affecting ability. Inspire courage can use audible or visual components. The bard must choose which component to use when starting his performance. Inspire Competence (Su) : A bard of 3rd level or higher can use his performance to help an ally succeed at a task. That ally must be within 30 feet and be able to hear the bard. The ally gets a +2 competence bonus on skill checks with a particular skill as long as she continues to hear the bard's performance. This bonus increases by +1 for every four levels the bard has attained beyond 3rd (+3 at 7th, +4 at 11th, +5 at 15th, and +6 at 19th). Certain uses of this ability are infeasible, such as Stealth, and may be disallowed at the GM's discretion. A bard can't inspire competence in himself. Inspire competence relies on audible components. Suggestion (Sp) : A bard of 6th level or higher can use his performance to make a suggestion (as per the spell) to a creature he has already fascinated (see above). Using this ability does not disrupt the fascinate effect, but it does require a standard action to activate (in addition to the free action to continue the fascinate effect). A bard can use this ability more than once against an individual creature during an individual performance. Making a suggestion does not count against a bard's daily use of bardic performance. A Will saving throw (DC 10 + 1/2 the bard's level + the bard's Cha modifier) negates the effect. This ability affects only a single creature. Suggestion is an enchantment (compulsion), mind affecting, language-dependent ability and relies on audible components. Dirge of Doom (Su) : A bard of 8th level or higher can use his performance to foster a sense of growing dread in his enemies, causing them to become shaken. To be affected, an enemy must be within 30 feet and able to see and hear the bard's performance. The effect persists for as long as the enemy is within 30 feet and the bard continues his performance. This performance cannot cause a creature to become frightened or panicked, even if the targets are already shaken from another effect. Dirge of doom is a mind-affecting fear effect, and it relies on audible and visual components. Inspire Greatness (Su) : A bard of 9th level or higher can use his performance to inspire greatness in himself or a single willing ally within 30 feet, granting extra fighting capability. For every three levels the bard attains beyond 9th, he can target an additional ally while using this performance (up to a maximum of four targets at 18th level). To inspire greatness, all of the targets must be able to see and hear the bard. A creature inspired with greatness gains 2 bonus Hit Dice (d10s), the commensurate number of temporary hit points (apply the target's Constitution modifier, if any, to these bonus Hit Dice), a +2 competence bonus on attack rolls, and a +1 competence bonus on Fortitude saves. The bonus Hit Dice count as regular Hit Dice for determining the effect of spells that are Hit Dice dependent. Inspire greatness is a mind-affecting ability and it relies on audible and visual components. Soothing Performance (Su) : A bard of 12th level or higher can use his performance to create an effect equivalent to a mass cure serious wounds , using the bard's level as the caster level. In addition, this performance removes the fatigued, sickened, and shaken conditions from all those affected. Using this ability requires 4 rounds of continuous performance, and the targets must be able to see and hear the bard throughout the performance. Soothing performance affects all targets that remain within 30 feet throughout the performance. Soothing performance relies on audible and visual components. Frightening Tune (Sp) : A bard of 14th level or higher can use his performance to cause fear in his enemies. To be affected, an enemy must be able to hear the bard perform and be within 30 feet. Each enemy within range receives a Will save (DC 10 + 1/2 the bard's level + the bard's Cha modifier) to negate the effect. If the save succeeds, the creature is immune to this ability for 24 hours. If the save fails, the target becomes frightened and flees for as long as the target can hear the bard's performance. Frightening tune relies on audible components. Inspire Heroics (Su) : A bard of 15th level or higher can inspire tremendous heroism in himself or a single ally within 30 feet. For every three bard levels the character attains beyond 15th, he can inspire heroics in an additional creature. To inspire heroics, all of the targets must be able to see and hear the bard. Inspired creatures gain a +4 morale bonus on saving throws and a +4 dodge bonus to AC. This effect lasts for as long as the targets are able to witness the performance. Inspire heroics is a mind-affecting ability that relies on audible and visual components. Mass Suggestion (Sp) : This ability functions just like suggestion , but allows a bard of 18th level or higher to make a suggestion simultaneously to any number of creatures that he has already fascinated. Mass suggestion is an enchantment (compulsion), mind-affecting, language-dependent ability that relies on audible components. Deadly Performance (Su) : A bard of 20th level or higher can use his performance to cause one enemy to die from joy or sorrow. To be affected, the target must be able to see and hear the bard perform for 1 full round and be within 30 feet. The target receives a Will save (DC 10 + 1/2 the bard's level + the bard's Cha modifier) to negate the effect. If a creature's saving throw succeeds, the target is staggered for 1d4 rounds, and the bard cannot use deadly performance on that creature again for 24 hours. If a creature's saving throw fails, it dies. Deadly performance is a mind-affecting death effect that relies on audible and visual components.",
+  "animal companion": "At 1st level, a hunter forms a bond with an animal companion. A hunter may begin play with any of the animals available to a druid. This animal is a loyal companion that accompanies the hunter on her adventures. This ability functions like the druid animal companion ability (which is part of the nature bond class feature). The hunter's effective druid level is equal to her hunter level. If a character receives an animal companion from more than one source, her effective druid levels stack for the purposes of determining the companion's statistics and abilities. A hunter may teach her companion hunter's tricks from the skirmisher ranger archetype ( Pathfinder RPG Advanced Player's Guide 128) instead of standard tricks. The animal companion can use skirmisher tricks when commanded, a number of times per day equal to half its Hit Dice plus its Wisdom modifier. If a hunter releases her companion from service or her animal companion perishes, she may gain a new one by performing a ceremony requiring 24 uninterrupted hours of prayer in the environment where the new companion typically lives. While the hunter's animal companion is dead, any animal she summons with a summon nature's ally spell remains for 1 minute per level instead of 1 round per level. A hunter cannot have more than one summon nature's ally spell active in this way at one time. If this ability is used again, any existing summon nature's ally immediately ends.",
+  "animal focus": "At 1st level, a hunter can take on the aspect of an animal as a swift action. She must select one type of animal to emulate, gaining a bonus or special ability based on the type of animal emulated and her hunter level. The hunter can use this ability for a number of minutes per day equal to her level. This duration does not need to be consecutive, but must be spent in 1-minute increments. The hunter can emulate only one animal at a time. The hunter can also apply one of these aspects to her animal companion. Unlike with the hunter herself, there is no duration on the animal aspect applied to her animal companion. An aspect applied in this way does not count against the hunter's minutes of duration per day-it remains in effect until the hunter changes it. The companion's aspect can be the same aspect the ranger has taken on or a different one. The hunter can select or change the animal foci on both herself and her animal companion as part of the same swift action. If the hunter's animal companion is dead, the hunter can apply her companion's animal focus to herself instead of her animal companion. This is in addition to the normal one she can choose, and (as with a companion's focus) remains in effect until the hunter changes it instead of counting against her minutes per day. See the",
   "bonus languages": "A druid's bonus language options include Sylvan, the language of woodland creatures. This choice is in addition to the bonus languages available to the character because of her race. A druid also knows Druidic, a secret language known only to druids, which she learns upon becoming a 1st-level druid. Druidic is a free language for a druid; that is, she knows it in addition to her regular allotment of languages and it doesn't take up a language slot. Druids are forbidden to teach this language to nondruids. Druidic has its own alphabet.",
-  "cantrips": "Bards learn a number of cantrips, or 0-level spells, as noted on Table: Bard Spells Known under \"Spells Known.\"These spells are cast like any other spell, but they do not consume any slots and may be used again.",
+  "bonus tricks": "At 7th level and every 6 levels thereafter, a hunter's animal companion learns a bonus trick (in addition to the bonus tricks gained from the hunter's effective druid level).",
+  "camouflage": "A ranger of 12th level or higher can use the Stealth skill to hide in any of his favored terrains, even if the terrain doesn't grant cover or concealment.",
   "chaotic, evil, good, and lawful spells": "A druid can't cast spells of an alignment opposed to her own or her deity's (if she has one). Spells associated with particular alignments are indicated by the chaos, evil, good, and law descriptors in their spell descriptions.",
-  "cunning initiative": "At 2nd level, an inquisitor adds her Wisdom modifier on initiative checks, in addition to her Dexterity modifier.",
-  "detect alignment (sp)": "At will, an inquisitor can use detect chaos , detect evil , detect good , or detect law . She can only use one of these at any given time.",
-  "discern lies (sp)": "At 5th level, an inquisitor can discern lies , as per the spell, for a number of rounds per day equal to her inquisitor level. These rounds do not need to be consecutive. Activating this ability is an immediate action.",
-  "domain": "Like a cleric's deity, an inquisitor's deity influences her alignment, what magic she can perform, and her values. Although not as tied to the tenets of the deity as a cleric, an inquisitor must still hold such guidelines in high regard, despite that fact she can go against them if it serves the greater good of the faith. An inquisitor can select one domain from among those belonging to her deity. She can select an alignment domain only if her alignment matches that domain. With the GM's approval, an inquisitor can be devoted to an ideal instead of a deity, selecting one domain to represent her personal inclination and abilities. The restriction on alignment domains still applies. Each domain grants a number of domain powers, depending on the level of the inquisitor. An inquisitor does not gain the bonus spells listed for each domain, nor does she gain bonus spell slots. The inquisitor uses her level as her effective cleric level when determining the power and effect of her domain powers. If the inquisitor has cleric levels, one of her two domain selections must be the same domain selected as an inquisitor. Levels of cleric and inquisitor stack for the purpose of determining domain powers and abilities, but not for bonus spells.",
-  "exploit weakness": "At 14th level, the inquisitor learns to take advantage of any opportunity that presents itself. Whenever the inquisitor scores a critical hit, she ignores any damage reduction the target might have. In addition, if the target has regeneration, the creature loses regeneration on the round following the critical hit and can die normally during that round. Creatures whose regeneration always functions are immune to this ability. Finally, if the inquisitor deals energy damage to a creature with vulnerability to that energy type, she deals +1 point of damage per die rolled.",
-  "greater bane": "At 12th level, whenever an inquisitor uses her bane ability, the amount of bonus damage dealt by the weapon against creatures of the selected type increases to 4d6.",
-  "jack-of-all-trades": "At 10th level, the bard can use any skill, even if the skill normally requires him to be trained. At 16th level, the bard considers all skills to be class skills. At 19th level, the bard can take 10 on any skill check, even if it is not normally allowed. Alternate Capstones",
-  "judgment": "Starting at 1st level, an inquisitor can pronounce judgment upon her foes as a swift action. Starting when the judgment is made, the inquisitor receives a bonus or special ability based on the type of judgment made. At 1st level, an inquisitor can use this ability once per day. At 4th level and every three levels thereafter, the inquisitor can use this ability one additional time per day. Once activated, this ability lasts until the combat ends, at which point all of the bonuses immediately end. The inquisitor must participate in the combat to gain these bonuses. If she is frightened, panicked, paralyzed, stunned, unconscious, or otherwise prevented from participating in the combat, the ability does not end, but the bonuses do not resume until she can participate in the combat again. When the inquisitor uses this ability, she must select one type of judgment to make. As a swift action, she can change this judgment to another type. If the inquisitor is evil, she receives profane bonuses instead of sacred, as appropriate. Neutral inquisitors must select profane or sacred bonuses. Once made, this choice cannot be changed. Destruction : The inquisitor is filled with divine wrath, gaining a +1 sacred bonus on all weapon damage rolls. This bonus increases by +1 for every three inquisitor levels she possesses. Healing : The inquisitor is surrounded by a healing light, gaining fast healing 1. This causes the inquisitor to heal 1 point of damage each round as long as the inquisitor is alive and the judgment lasts. The amount of healing increases by 1 point for every three inquisitor levels she possesses. Justice : This judgment spurs the inquisitor to seek justice, granting a +1 sacred bonus on all attack rolls. This bonus increases by +1 for every five inquisitor levels she possesses. At 10th level, this bonus is doubled on all attack rolls made to confirm critical hits. Piercing : This judgment gives the inquisitor great focus and makes her spells more potent. This benefit grants a +1 sacred bonus on concentration checks and caster level checks made to overcome a target's spell resistance. This bonus increases by +1 for every three inquisitor levels she possesses. Protection : The inquisitor is surrounded by a protective aura, granting a +1 sacred bonus to Armor Class. This bonus increases by +1 for every five inquisitor levels she possesses. At 10th level, this bonus is doubled against attack rolls made to confirm critical hits against the inquisitor. Purity : The inquisitor is protected from the vile taint of her foes, gaining a +1 sacred bonus on all saving throws. This bonus increases by +1 for every five inquisitor levels she possesses. At 10th level, the bonus is doubled against curses, diseases, and poisons. Resiliency : This judgment makes the inquisitor resistant to harm, granting DR 1/magic. This DR increases by 1 for every five levels she possesses. At 10th level, this DR changes from magic to an alignment (chaotic, evil, good, or lawful) that is opposite the inquisitor's. If she is neutral, the inquisitor does not receive this increase. Resistance : The inquisitor is shielded by a flickering aura, gaining 2 points of energy resistance against one energy type (acid, cold, electricity, fire, or sonic) chosen when the judgment is declared. The protection increases by 2 for every three inquisitor levels she possesses. Smiting : This judgment bathes the inquisitor's weapons in a divine light. The inquisitor's weapons count as magic for the purposes of bypassing damage reduction. At 6th level, the inquisitor's weapons also count as one alignment type (chaotic, evil, good, or lawful) for the purpose of bypassing damage reduction. The type selected must match one of the inquisitor's alignments. If the inquisitor is neutral, she does not receive this bonus. At 10th level, the inquisitor's weapons also count as adamantine for the purpose of overcoming damage reduction (but not for reducing hardness).",
-  "lore master": "At 5th level, the bard becomes a master of lore and can take 10 on any Knowledge skill check that he has ranks in even when threatened or distracted. A bard can choose not to take 10 and can instead roll normally. In addition, once per day, the bard can take 20 on any Knowledge skill check as a standard action. He can use this ability one additional time per day for every six levels he possesses beyond 5th, to a maximum of three times per day at 17th level.",
-  "monster lore": "The inquisitor adds her Wisdom modifier on Knowledge skill checks in addition to her Intelligence modifier, when making skill checks to identify the abilities and weaknesses of creatures.",
+  "combat style feat": "At 2nd level, a ranger must select one of two combat styles to pursue: archery or two-weapon combat. The ranger's expertise manifests in the form of bonus feats at 2nd, 6th, 10th, 14th, and 18th level. He can choose feats from his selected combat style, even if he does not have the normal prerequisites. The benefits of the ranger's chosen style feats apply only when he wears light, medium, or no armor. He loses all benefits of his combat style feats when wearing heavy armor. Once a ranger selects a combat style, it cannot be changed. The full list of Combat Styles can be found",
+  "endurance": "A ranger gains Endurance as a bonus feat at 3rd level. Cold (ice, glaciers, snow, and tundra) Desert (sand and wastelands) Forest (coniferous and deciduous) Jungle Mountain (including hills) Plains Planes (pick one, other than Material Plane) Swamp Underground (caves and dungeons) Urban (buildings, streets, and sewers) Water (above and below the surface)",
+  "evasion": "When he reaches 9th level, a ranger can avoid even magical and unusual attacks with great agility. If he makes a successful Reflex saving throw against an attack that normally deals half damage on a successful save, he instead takes no damage. Evasion can be used only if the ranger is wearing light armor, medium armor, or no armor. A helpless ranger does not gain the benefit of evasion.",
+  "favored enemy": "At 1st level, a ranger selects a creature type from the ranger favored enemies table. He gains a +2 bonus on Bluff, Knowledge, Perception, Sense Motive, and Survival checks against creatures of his selected type. Likewise, he gets a +2 bonus on weapon attack and damage rolls against them. A ranger may make Knowledge skill checks untrained when attempting to identify these creatures. At 5th level and every five levels thereafter (10th, 15th, and 20th level), the ranger may select an additional favored enemy. In addition, at each such interval, the bonus against any one favored enemy (including the one just selected, if so desired) increases by +2. If the ranger chooses humanoids or outsiders as a favored enemy, he must also choose an associated subtype, as indicated on the table below. (Note that there are other types of humanoid to choose from-those called out specifically on the table below are merely the most common.) If a specific creature falls into more than one category of favored enemy, the ranger's bonuses do not stack; he simply uses whichever bonus is higher.",
+  "favored terrain": "At 3rd level, a ranger may select a type of terrain from the Favored Terrains table. The ranger gains a +2 bonus on initiative checks and Knowledge (geography), Perception, Stealth, and Survival skill checks when he is in this terrain. A ranger traveling through his favored terrain normally leaves no trail and cannot be tracked (though he may leave a trail if he so chooses). At 8th level and every five levels thereafter, the ranger may select an additional favored terrain. In addition, at each such interval, the skill bonus and initiative bonus in any one favored terrain (including the one just selected, if so desired), increases by +2. If a specific terrain falls into more than one category of favored terrain, the ranger's bonuses do not stack; he simply uses whichever bonus is higher.",
+  "greater empathic link": "At 14th level, the range of the hunter's empathic link with her animal companion increases to 10 miles. If the animal companion is within 1 mile, the hunter can communicate with it telepathically.",
+  "hide in plain sight": "While in any of his favored terrains, a ranger of 17th level or higher can use the Stealth skill even while being observed.",
+  "hunter animal focuses": "section for a full list of Focuses from all sources.",
+  "hunter tactics": "At 3rd level, the hunter automatically grants her teamwork feats to her animal companion. The companion doesn't need to meet the prerequisites of these teamwork feats.",
+  "hunter's bond": "At 4th level, a ranger forms a bond with his hunting companions. This bond can take one of two forms. Once the form is chosen, it cannot be changed. The first is a bond to his companions. This bond allows him to spend a move action to grant half his favored enemy bonus against a single target of the appropriate type to all allies within 30 feet who can see or hear him. This bonus lasts for a number of rounds equal to the ranger's Wisdom modifier (minimum 1). This bonus does not stack with any favored enemy bonuses possessed by his allies; they use whichever bonus is higher. The second option is to form a close bond with an animal companion. A ranger who selects an animal companion can choose from the following list: Antelope , Armorfish , Baboon , Badger , Bird (Eagle/Hawk/Owl) , Bustard , Camel , Capybara , Cat, Small (Cheetah, Leopard) , Constrictor Snake , Dire Rat , Dog , Elk , Falcon , Hobbe Hound , Horse , Kangaroo , Lizard (Giant Gecko) , Marsupial Devil , Pony , Ram , Reef Snake , Reef Snake , Reindeer , Shark , Spitting Cobra , Stag , Stingray , Swan, Trumpeter , Thylacine , Venomous Snake , Wolf , Wolfdog , Yak , Zebra . If the campaign takes place wholly or partly in an aquatic environment, the ranger may choose from this list instead: Armorfish , Reef Snake , Shark , Stingray . This animal is a loyal companion that accompanies the ranger on his adventures as appropriate for its kind. A ranger's animal companion shares his favored enemy and favored terrain bonuses. This ability functions like the druid animal companion ability (which is part of the Nature Bond class feature), except that the ranger's effective druid level is equal to his ranger level - 3.",
+  "improved empathic link": "At 4th level, the hunter gains an empathic link with her animal companion. This functions like an empathic link with a familiar, except the hunter can also see through a companion's eyes as a swift action, maintaining this connection as long as she likes (as long as the companion is within 1 mile) and ending it as a free action. The hunter is blinded while maintaining this connection.",
+  "improved evasion": "At 16th level, a ranger's evasion improves. This ability works like evasion, except that while the ranger still takes no damage on a successful Reflex saving throw against attacks, he henceforth takes only half damage on a failed save. A helpless ranger does not gain the benefit of improved evasion.",
+  "improved quarry": "At 19th level, the ranger's ability to hunt his quarry improves. He can now select a quarry as a free action, and can now take 20 while using Survival to track his quarry, while moving at normal speed without penalty. His insight bonus to attack his quarry increases to +4. If his quarry is killed or dismissed, he can select a new one after 10 minutes have passed.",
+  "master hunter": "A ranger of 20th level becomes a master hunter. He can always move at full speed while using Survival to follow tracks without penalty. He can, as a standard action, make a single attack against a favored enemy at his full attack bonus. If the attack hits, the target takes damage normally and must make a Fortitude save or die. The DC of this save is equal to 10 + 1/2 the ranger's level + the ranger's Wisdom modifier. A ranger can choose instead to deal an amount of nonlethal damage equal to the creature's current hit points. A successful save negates this damage. A ranger can use this ability once per day against each favored enemy type he possesses, but not against the same creature more than once in a 24-hour period. Alternate Capstones",
   "nature bond": "At 1st level, a druid forms a bond with nature. This bond can take one of two forms. The first is a close tie to the natural world, granting the druid one of the following cleric domains: Air, Animal, Earth, Fire, Plant, Water, or Weather. When determining the powers and bonus spells granted by this domain, the druid's effective cleric level is equal to her druid level. A druid that selects this option also receives additional domain spell slots, just like a cleric. She must prepare the spell from her domain in this slot and this spell cannot be used to cast a spell spontaneously. The second option is to form a close bond with an animal companion. A druid may begin play with any of the animals listed in Animal Choices . This animal is a loyal companion that accompanies the druid on her adventures. Unlike normal animals of its kind, an animal companion's Hit Dice, abilities, skills, and feats advance as the druid advances in level. If a character receives an animal companion from more than one source, her effective druid levels stack for the purposes of determining the statistics and abilities of the companion. Most animal companions increase in size when their druid reaches 4th or 7th level, depending on the companion. If a druid releases her companion from service, she may gain a new one by performing a ceremony requiring 24 uninterrupted hours of prayer in the environment where the new companion typically lives. This ceremony can also replace an animal companion that has perished. Instead of granting access to a domain or an animal companion, a druid's bond with nature can take a third form: access to druidic herbalism",
   "nature sense": "A druid gains a +2 bonus on Knowledge (nature) and Survival checks.",
+  "nature training": "A hunter counts her total hunter level as both druid levels and ranger levels for the purpose of qualifying for feats, traits, and options that modify or improve an animal companion.",
+  "one with the wild": "At 17th level, the hunter and her animal companion are respected or even feared by other animals, so long as the animals are approximately of the same type as any of the hunter's current animal foci: bat for bats, tiger with felines, falcon for birds, snake for reptiles, and so on. No animal in this category (including dire varieties) willingly attacks the hunter or her companion unless magically compelled to or if the hunter or companion attacks it first. The hunter and her companion can attempt to demoralize animals in the appropriate category as a swift action, rolling 1d20 and adding the hunter's level and her Charisma modifier to determine the Intimidate check result.",
   "orisons": "Druids can prepare a number of orisons, or 0-level spells, each day, as noted on Table: Druid under \"Spells per Day.\"These spells are cast like any other spell, but they are not expended when cast and may be used again.",
+  "precise companion": "At 2nd level, a hunter chooses either Precise Shot or Outflank APG as a bonus feat. She does not need to meet the prerequisites for this feat. If she chooses Outflank, she automatically grants this feat to her animal companion as well.",
+  "quarry": "At 11th level, a ranger can, as a standard action, denote one target within his line of sight as his quarry. Whenever he is following the tracks of his quarry, a ranger can take 10 on his Survival skill checks while moving at normal speed, without penalty. In addition, he receives a +2 insight bonus on attack rolls made against his quarry, and all critical threats are automatically confirmed. A ranger can have no more than one quarry at a time and the creature's type must correspond to one of his favored enemy types. He can dismiss this effect at any time as a free action, but he cannot select a new quarry for 24 hours. If the ranger sees proof that his quarry is dead, he can select a new quarry after waiting 1 hour.",
+  "raise animal companion (sp)": "At 10th level, a hunter gains raise animal companion UM as a spell-like ability; this is not restricted to raising only her own animal companion. Using this spell-like ability gives the hunter a permanent negative level. This negative level cannot be overcome in any way (including by restoration ), but automatically ends after 24 hours. At 16th level, this functions as resurrection instead of raise dead , but otherwise operates as normal.",
   "resist nature's lure": "Starting at 4th level, a druid gains a +4 bonus on saving throws against the spell-like and supernatural abilities of fey. This bonus also applies to spells and effects that utilize or target plants, such as blight , entangle , spike growth , and warp wood",
-  "second judgment": "At 8th level, whenever an inquisitor uses her judgment ability, she selects two different judgments, instead of one. This only consumes one use of her judgment ability. As a swift action, she can change one of these judgments to another type.",
-  "slayer": "At 17th level, an inquisitor learns to focus her judgment. Whenever an inquisitor uses her judgment ability, she must select one type of judgment. She is treated as if she were 5 levels higher for the purposes of determining the bonus granted by the judgment. Unlike other types of judgment, the one enhanced by this ability cannot be changed for the remainder of the judgment",
-  "solo tactics": "At 3rd level, all of the inquisitor's allies are treated as if they possessed the same teamwork feats as the inquisitor for the purpose of determining whether the inquisitor receives a bonus from her teamwork feats. Her allies do not receive any bonuses from these feats unless they actually possess the feats themselves. The allies' positioning and actions must still meet the prerequisites listed in the teamwork feat for the inquisitor to receive the listed bonus.",
-  "spells": "A bard casts arcane spells drawn from the bard spell list presented in Spell Lists. He can cast any spell he knows without preparing it ahead of time. Every bard spell has a verbal component (song, recitation, or music). To learn or cast a spell, a bard must have a Charisma score equal to at least 10 + the spell level. The Difficulty Class for a saving throw against a bard's spell is 10 + the spell level + the bard's Charisma modifier. Like other spellcasters, a bard can cast only a certain number of spells of each spell level per day. His base daily spell allotment is given on Table: Bard. In addition, he receives bonus spells per day if he has a high Charisma score (see Table: Ability Modifiers and Bonus Spells ). The bard's selection of spells is extremely limited. A bard begins play knowing four 0-level spells and two 1st-level spells of the bard's choice. At each new bard level, he gains one or more new spells, as indicated on Table: Bard Spells Known. (Unlike spells per day, the number of spells a bard knows is not affected by his Charisma score. The numbers on Table: Bard Spells Known are fixed.) Upon reaching 5th level, and at every third bard level after that (8th, 11th, and so on), a bard can choose to learn a new spell in place of one he already knows. In effect, the bard \"loses\"the old spell in exchange for the new one. The new spell's level must be the same as that of the spell being exchanged, and it must be at least one level lower than the highest-level bard spell the bard can cast. A bard may swap only a single spell at any given level and must choose whether or not to swap the spell at the same time that he gains new spells known for the level. A bard need not prepare his spells in advance. He can cast any spell he knows at any time, assuming he has not yet used up his allotment of spells per day for the spell's level.",
+  "second animal focus": "At 8th level, whenever a hunter uses her animal focus ability, she selects two different animal aspects for herself instead of one, and can assign two aspects to her companion instead of one. As with the companion's previous aspect, the second one does not count against the minutes per day a hunter can take on an aspect. If the hunter's animal companion is dead and the hunter has applied the companion's animal aspect to herself, that aspect does not count toward her maximum of two aspects at once. The hunter can still apply only one of her dead companion's aspects to herself, not both.",
+  "speak with master": "At 11th level, a hunter and her animal companion can communicate verbally, as if they were using a common language. Other creatures cannot understand the communication without magical aid.",
+  "spells": "A druid casts divine spells which are drawn from the druid spell list presented in Spell Lists. Her alignment may restrict her from casting certain spells opposed to her moral or ethical beliefs; see Chaotic, Evil, Good, and Lawful Spells. A druid must choose and prepare her spells in advance. To prepare or cast a spell, the druid must have a Wisdom score equal to at least 10 + the spell level. The Difficulty Class for a saving throw against a druid's spell is 10 + the spell level + the druid's Wisdom modifier. Like other spellcasters, a druid can cast only a certain number of spells of each spell level per day. Her base daily spell allotment is given on Table: Druid. In addition, she receives bonus spells per day if she has a high Wisdom score (see Table: Ability Modifiers and Bonus Spells). A druid must spend 1 hour each day in a trance-like meditation on the mysteries of nature to regain her daily allotment of spells. A druid may prepare and cast any spell on the druid spell list, provided that she can cast spells of that level, but she must choose which spells to prepare during her daily meditation.",
   "spontaneous casting": "A druid can channel stored spell energy into summoning spells that she hasn't prepared ahead of time. She can \"lose\"a prepared spell in order to cast any summon nature's ally spell of the same level or lower.",
-  "stalwart": "At 11th level, an inquisitor can use mental and physical resiliency to avoid certain attacks. If she makes a Fortitude or Will saving throw against an attack that has a reduced effect on a successful save, she instead avoids the effect entirely. This ability can only be used if the inquisitor is wearing light armor, medium armor, or no armor. A helpless inquisitor does not gain the benefit of the stalwart ability.",
-  "stern gaze": "Inquisitors are skilled at sensing deception and intimidating their foes. An inquisitor receives a morale bonus on all Intimidate and Sense Motive checks equal to 1/2 her inquisitor level (minimum +1).",
-  "teamwork feat": "At 3rd level, and every three levels thereafter, the inquisitor gains a bonus feat in addition to those gained from normal advancement. These bonus feats must be selected from those listed as teamwork feats. The inquisitor must meet the prerequisites of the selected bonus feat. As a standard action, the inquisitor can choose to learn a new bonus teamwork feat in place of the most recent bonus teamwork feat she has already learned. In effect, the inquisitor loses the bonus feat in exchange for the new one. She can only change the most recent teamwork feat gained. Whenever she gains a new teamwork feat, the previous teamwork feat becomes set and cannot be changed again. An inquisitor can change her most recent teamwork feat a number of times per day equal to her Wisdom modifier.",
-  "third judgment": "At 16th level, whenever an inquisitor uses her judgment ability, she selects three different judgments, instead of just two. This only consumes one use of her judgment ability. As a swift action, the inquisitor can change one of these judgments to another type.",
+  "swift tracker": "Beginning at 8th level, a ranger can move at his normal speed while using Survival to follow tracks without taking the normal -5 penalty. He takes only a -10 penalty (instead of the normal -20) when moving at up to twice normal speed while tracking.",
+  "teamwork feat": "At 3rd level and every 3 levels thereafter, the hunter gains a bonus teamwork feat in addition to those gained from normal advancement. The hunter must meet the prerequisites of the selected bonus teamwork feat. As a standard action, the hunter can choose to learn a new bonus teamwork feat in place of the most recent bonus teamwork feat she has already learned. In effect, the hunter loses the bonus feat in exchange for the new one. She can change only the most recent teamwork feat gained, and must meet the prerequisites for the newly selected feat. A hunter can change her most recent teamwork feat a number of times per day equal to her Wisdom modifier (minimum 1). Whenever she gains a new teamwork feat, her previous teamwork feats become permanent.",
   "timeless body": "After attaining 15th level, a druid no longer takes ability score penalties for aging and cannot be magically aged. Any penalties she may have already incurred, however, remain in place. Bonuses still accrue, and the druid still dies of old age when her time is up. Ex-Druids A druid who ceases to revere nature, changes to a prohibited alignment, or teaches the Druidic language to a nondruid loses all spells and druid abilities (including her animal companion, but not including weapon, armor, and shield proficiencies). She cannot thereafter gain levels as a druid until she atones (see the atonement spell description). Alternate Capstones",
-  "track": "At 2nd level, an inquisitor adds half her level on Survival skill checks made to follow or identify tracks.",
+  "track": "A ranger adds half his level (minimum 1) to Survival skill checks made to follow or identify tracks.",
   "trackless step": "Starting at 3rd level, a druid leaves no trail in natural surroundings and cannot be tracked. She may choose to leave a trail if so desired.",
-  "true judgment": "At 20th level, an inquisitor can call true judgment down upon a foe during combat. Whenever an inquisitor uses her judgment ability, the inquisitor can invoke true judgment on a foe as a swift action. Once declared, the inquisitor can make a single melee (or ranged attack, if the foe is within 30 feet) against the target. If the attack hits, it deals damage normally and the target must make a Fortitude save or die. The DC of this save is equal to 10 + 1/2 the inquisitor's level + the inquisitor's Wisdom modifier. Regardless of whether or not the save is made, the target creature is immune to the inquisitor's true judgment ability for 24 hours. Once this ability has been used, it cannot be used again for 1d4 rounds.",
   "venom immunity": "At 9th level, a druid gains immunity to all poisons.",
-  "versatile performance": "At 2nd level, a bard can choose one type of Perform skill. He can use his bonus in that skill in place of his bonus in associated skills. When substituting in this way, the bard uses his total Perform skill bonus, including class skill bonus, in place of its associated skill's bonus, whether or not he has ranks in that skill or if it is a class skill. At 6th level, and every 4 levels thereafter, the bard can select an additional type of Perform to substitute. The types of Perform and their associated skills are: Act (Bluff, Disguise), Comedy (Bluff, Intimidate), Dance (Acrobatics, Fly), Keyboard Instruments (Diplomacy, Intimidate), Oratory (Diplomacy, Sense Motive), Percussion (Handle Animal, Intimidate), Sing (Bluff, Sense Motive), String (Bluff, Diplomacy), and Wind (Diplomacy, Handle Animal).",
-  "well-versed": "At 2nd level, the bard becomes resistant to the bardic performance of others, and to sonic effects in general. The bard gains a +4 bonus on saving throws made against bardic performance, sonic, and language-dependent effects.",
   "wild empathy": "A druid can improve the attitude of an animal. This ability functions just like a Diplomacy check made to improve the attitude of a person (see Using Skills). The druid rolls 1d20 and adds her druid level and her Charisma modifier to determine the wild empathy check result. The typical domestic animal has a starting attitude of indifferent, while wild animals are usually unfriendly. To use wild empathy, the druid and the animal must be within 30 feet of one another under normal conditions. Generally, influencing an animal in this way takes 1 minute but, as with influencing people, it might take more or less time. A druid can also use this ability to influence a magical beast with an Intelligence score of 1 or 2, but she takes a -4 penalty on the check.",
   "wild shape": "At 4th level, a druid gains the ability to turn herself into any Small or Medium animal and back again once per day. Her options for new forms include all creatures with the animal type. This ability functions like the beast shape I spell, except as noted here. The effect lasts for 1 hour per druid level, or until she changes back. Changing form (to animal or back) is a standard action and doesn't provoke an attack of opportunity. The form chosen must be that of an animal with which the druid is familiar. A druid loses her ability to speak while in animal form because she is limited to the sounds that a normal, untrained animal can make, but she can communicate normally with other animals of the same general grouping as her new form. (The normal sound a wild parrot makes is a squawk, so changing to this form does not permit speech.) A druid can use this ability an additional time per day at 6th level and every two levels thereafter, for a total of eight times at 18th level. At 20th level, a druid can use wild shape at will. As a druid gains levels, this ability allows the druid to take on the form of larger and smaller animals, elementals, and plants. Each form expends one daily use of this ability, regardless of the form taken. At 6th level, a druid can also use wild shape to change into a Large or Tiny animal or a Small elemental. When taking the form of an animal, a druid's wild shape now functions as beast shape II . When taking the form of an elemental, the druid's wild shape functions as elemental body I At 8th level, a druid can also use wild shape to change into a Huge or Diminutive animal, a Medium elemental, or a Small or Medium plant creature. When taking the form of animals, a druid's wild shape now functions as beast shape III . When taking the form of an elemental, the druid's wild shape now functions as elemental body II . When taking the form of a plant creature, the druid's wild shape functions as plant shape I At 10th level, a druid can also use wild shape to change into a Large elemental or a Large plant creature. When taking the form of an elemental, the druid's wild shape now functions as elemental body III . When taking the form of a plant, the druid's wild shape now functions as plant shape II At 12th level, a druid can also use wild shape to change into a Huge elemental or a Huge plant creature. When taking the form of an elemental, the druid's wild shape now functions as elemental body IV . When taking the form of a plant, the druid's wild shape now functions as plant shape III",
   "woodland stride": "Starting at 2nd level, a druid may move through any sort of undergrowth (such as natural thorns, briars, overgrown areas, and similar terrain) at her normal speed and without taking damage or suffering any other impairment. Thorns, briars, and overgrown areas that have been magically manipulated to impede motion, however, still affect her."
@@ -241,197 +417,175 @@
  "class_feats": [],
  "class_feature_changes_dict": {},
  "class_feature_conditionals_dict": {},
- "class_feature_levels": {
-  "Talents": {
-   "revelation inquisition": 1,
-   "sedition inquisition": 1
-  }
- },
+ "class_feature_levels": {},
  "class_feature_owners": {
-  "Talents": "inquisitor"
+  "favored_enemies": "ranger",
+  "favored_terrains": "ranger"
  },
  "class_features": {
-  "Skill Unlock: Handle Animal": {
-   "10 Ranks": "Trained creatures gain the +2 Will bonus within 30 feet while they can clearly see you, and you can teach a trick in 1 day at DC +20.",
-   "15 Ranks": "With a week and a DC 30 check you can train an animal to understand speech (as speak with animals); you can teach a trick in 1 day (DC +10) or 1 hour (DC +20).",
-   "20 Ranks": "You can make your speech understandable to any animal for 24 hours (DC 30, or DC 40 for magical beasts/vermin), and teach tricks in as little as 1 minute.",
-   "5 Ranks": "Creatures you have trained gain a +2 bonus on Will saves while adjacent to you."
+  "Skill Unlock: Appraise": {
+   "10 Ranks": "As a standard action you can determine the most expensive object a creature wears or wields (DC 20); you never make wildly inaccurate appraisals.",
+   "15 Ranks": "Determining the most expensive object is a move action, and you may substitute an Appraise check at -10 for a Will save against figments and glamers.",
+   "20 Ranks": "Identifying the priciest object is a move action, and observing an item grants a +2 circumstance bonus on steal and disarm checks against its bearer for 1 minute.",
+   "5 Ranks": "You can detect whether an item is magical (DC 20) and reveal its properties (DC 25 + caster level), and you automatically identify non-written forgeries."
   },
-  "Talents": {
-   "revelation inquisition": {
-    "burn shroud (su)": "as a standard action, you can make an unarmed touch attack against a creature. The target takes 1d4 points of fire damage + 1/2 your inquisitor level (minimum 1). If the target is currently the subject of a polymorph effect that changes its appearance (such as by alter self, shapechange, or an innate shapechanging ability such as that possessed by doppelgangers), it instead takes 1d6 points of fire damage + 1/2 your inquisitor level (minimum 1). You can use this ability a number of times per day equal to 3 + your wisdom modifier.",
-    "deities": "desna, irori, sarenrae, shelyn.",
-    "granted powers": "evil often hides itself behind a mask of good. You are an expert at ferreting out those who are not what they seem, and use your powers to reveal the true forms of the unworthy.",
-    "reveal form (su)": "at 8th level, once per day as a standard action, you can invoke the name of your deity and order one shapechanged target within 30 feet to reveal its true form. The target must succeed at a will save (dc 10 + 1/2 your inquisitor level + your wisdom modifier) or be forced on its next turn to dispel any ongoing polymorph effects or innate shapechanging abilities to assume its natural form. If a creature affected by this ability fails its save and is for some reason unable to dispel any ongoing polymorph effects or innate shapechanging abilities, it is instead staggered for 1 round. This is a mind-affecting compulsion effect."
-   },
-   "sedition inquisition": {
-    "deities": "cayden cailean, desna, iomedae, milani, nethys, norgorber, sarenrae, shelyn.",
-    "granted powers": "your deity calls you to cast down a hostile government. Stealth is a class skill for you.",
-    "rebel leader (ex)": "at 8th level, you gain leadership as a bonus feat.",
-    "undermine authority (sp)": "a number of times per day equal to your wisdom bonus, you can worsen the attitude of a character toward any governmental officer or leader acting against your religion. This likewise reduces that officers or leaders influence with that character. The persuasion requires enough conversation to attempt a diplomacy check (usually 1 minute) and you attempt a diplomacy check as normal to influence the targets attitude. However, if you fail the check, the target is subject to a mind-affecting compulsion that alters its attitude for a number of days equal to your inquisitor level. The target can resist the compulsion with a successful will saving throw (dc = 10 + 1/2 your inquisitor level + your wisdom modifier). If the target is under a mind-affecting effect from that officer or leader, the effect is automatically suppressed for 1 minute."
-   }
-  }
+  "favored_enemies": [
+   "Ooze",
+   "Humanoid (halfling)"
+  ],
+  "favored_terrains": [
+   "Swamp"
+  ]
  },
  "classes": [
   {
    "archetype": {
-    "Hexenhammer": {
-     "cunning mind (ex)": " At 2nd level, a hexenhammer gains a +2 bonus on saving throws against hexes, curses, spells of the necromancy school, and spells with the evil descriptor. This ability replaces cunning initiative.",
-     "dark trade (su)": " At 3rd level, a hexenhammer can forgo the power of her judgments and succumb to the temptation of darker powers. She can trade a daily use of judgment to instead gain an additional use of one of her hexes. This ability replaces solo tactics.",
-     "hexcrafter (su)": " Beginning at 3rd level, a hexenhammer learns to turn some powers of witches to her own advantage. She learns either the blight APG , the misfortune APG , or the slumber APG hex from the witch's hex list, and can use that hex once per day as a standard action, using her inquisitor level in place of a witch level. If the hex allows a saving throw, the save DC to resist the hex is equal to 10 + 1/2 the inquisitor's level + the inquisitor's Wisdom modifier. At 6th level, 12th, and 15th levels, the hexenhammer learns an additional hex from her available hexes. At 9th level and 18th level, the hexenhammer can use any one of her hexes one additional time per day. At 12th level, the hexenhammer adds the agony APG , nightmares APG , and retribution APG major hexes to her list of learnable hexes. This ability replaces teamwork feats.",
-     "pride and penance (ex)": " Hexenhammers are deeply conflicted about their dealings with dark powers. If a hexenhammer uses a hex or casts a spell gained from the witch class spell list, she temporarily loses access to her domain abilities and her cunning mind bonus until she undergoes a brief period of penance and atonement that takes 1 minute of quiet prayer and contemplation; this atonement doesn't require any additional cost, and it automatically restores the lost abilities, regardless of how many times the hexenhammer uses her dark powers. If the hexenhammer uses her dark trade ability (see below) to trade uses of judgment for hexes, she loses access to her domain abilities and cunning mind bonus until the next time she regains her spell slots for the day. This ability alters domain.",
-     "source": "Horror Adventures pg. 52 Some inquisitors embrace the dark powers of their traditional foes, turning such powers toward their own ends in order to pronounce judgment on those who oppose them. These inquisitors learn to use the hexes and some spells of witches, but must pay the price for dealing with supernatural powers, as they slip ever closer to the evil they seek to destroy.",
-     "witchcraft (ex)": " At 5th level and at every 3 inquisitor levels thereafter, a hexenhammer can learn a witch spell in place of a spell she already knows. In effect, she loses an old spell in exchange for a new one selected from the witch class spell list. The new spell's level must be the same as that of the spell being exchanged, and it must be at least 1 level lower than the highest-level inquisitor spell she can cast. The hexenhammer can swap out only a single spell at any given level and must choose whether or not to swap the spell at the same time she gains new spells known for the level. This ability alters the inquisitor's spellcasting.",
-     "withering gaze (su)": " Hexenhammers study the effects of a witch's evil eye, and can use this dark magic to steel their gaze in a similar manner. Beginning at 1st level, whenever a hexenhammer successfully demoralizes a creature as a standard action, instead of applying the shaken condition, she can apply the effects of the witch evil eye APG hex as if she were a 1stlevel witch (save DC = 10 + 1/2 the hexenhammer's inquisitor level + her Wisdom modifier). This ability replaces monster lore and stern gaze."
+    "Pelagic Hunter": {
+     "blood to water (su)": " At 5th level, when a pelagic hunter or her animal companion bleeds underwater into the surrounding water (whether from piercing or slashing damage, a bleed effect, or another effect that causes blood to spill), the blood transmutes into ordinary water within 1 round. This prevents sharks and other predators with keen scent from being drawn to the pelagic hunter's position by the blood and makes it harder for such creatures to track her. This ability replaces woodland stride.",
+     "pelagic companion": " A pelagic hunter must select an aquatic animal companion. This alters animal companion.",
+     "pelagic focus (su)": " Unlike with a normal hunter's animal focus, pelagic focus allows the hunter to contact magical deep sea creatures instead of animals, using the options below instead of the normal hunter options. This alters animal focus. Aboleth : The creature gains a +1 morale bonus on saves against divine spells and spell-like abilities. This bonus increases to +2 at 8th level and +3 at 15th level. Cetus : The creature gains Lunge as a bonus feat. At 12th level, instead of gaining Lunge, the creature increases its reach by 5 feet. Charybdis : The creature's attacks ignore the first 5 points of hardness. This improves to ignore the first 7 points of hardness at 8th level and the first 10 points of hardness at 15th level. Deep One : The creature reduces pressure damage it takes (see page 48) by 10. At 12th level, the creature is immune to damage from changing pressure. Hippocampus : The creature gains a +4 competence bonus on Swim checks. This bonus increases to +6 at 8th level and +8 at 15th level. Kraken : The creature gains the jet ability ( Pathfinder RPG Bestiary 2 298) with a speed equal to its unmodified base land speed or four times its swim speed (if it has one), whichever is higher. If it has a swim speed, at 8th level, the jet ability's speed increases to five times its swim speed, and at 15th level, the speed increases to seven times its swim speed. Reefclaw : The creature gains Diehard as a bonus feat. At 12th level, instead of gaining Diehard, the creature gains the ferocity ability ( Pathfinder RPG Bestiary 300). Scylla : The creature's attacks deal 1 point of bleed damage in addition to their normal damage. At 8th level, the bleed damage increases to 1d3, and at 15th level, it increases to 1d6. Sea Serpent : The creature is considered to be under a nondetection spell it cast on itself, with a caster level equal to the pelagic hunter's class level. Selkie : The creature gains a +4 competence bonus on Bluff checks. This bonus increases to +6 at 8th level and +8 at 15th level. Shoggoth : The creature gains a +2 competence bonus on Perception checks and reduces the flanking bonuses of creatures flanking it by 1. This Perception bonus increases to +3 at 8th level and +4 at 15th level. At 12th level, the creature can't be flanked. Siyokoy : The creature's attacks deal 1 additional point of electricity damage. At 8th level, the electricity damage increases to 1d3, and at 15th level, it increases to 1d6.",
+     "source": "Aquatic Adventures pg. 54 Pelagic hunters form strong bonds that extend deep beneath the sea, reaching out to whatever heeds their call, whether it be mundane animals or something far more sinister."
     }
    },
-   "display": "Inquisitor",
-   "level": 8,
-   "name": "inquisitor"
+   "display": "Hunter",
+   "level": 7,
+   "name": "hunter"
   },
   {
    "archetype": {
-    "Menhir Savant": {
-     "empty body (su)": "  At 13th level, a menhir savant can become ethereal as a standard action, as if using ethereal jaunt . She can remain ethereal for a number of rounds per day equal to her druid level. These rounds do not need to be consecutive. This ability replaces a thousand faces.",
-     "place magic (su)": "  At 2nd level, a menhir savant learns to identify and tap into ley lines in different types of terrain. As a free action, she can tap into the magic of a nearby ley line and increase her caster level by +1 for 1 round. She can use this ability a number of times per day equal to 3 + her Wisdom bonus. This ability replaces woodland stride and trackless step.",
-     "source": "Ultimate Magic pg. 38 Some druids study the paths of nature's power through the nodes and ley lines that connect standing stones and megalithic circles, learning to tap into their energies.",
-     "spirit sense (sp)": "  At 1st level, a menhir savant can detect the presence of undead; fey; outsiders; and astral, ethereal, or incorporeal creatures. This ability functions like detect undead , and the druid detects all of these creatures rather than trying to detect one kind. This ability replaces nature sense and wild empathy.",
-     "walk the lines (su)": "  At 9th level, a menhir savant can use her connection to ley lines to cast transport via plants a number of times per day equal to her Wisdom bonus."
+    "Beast Master": {
+     "animal companion (ex)": "  A beast master forms a close bond with an animal companion. This ability functions like the druid animal companion ability except that the ranger's effective druid level is equal to his ranger level - 3. The ranger gains a +2 bonus on wild empathy and Handle Animal checks made regarding his animal companion. Unlike a normal ranger, a beast master's choice of animal companion is not limited to a subset of all possible animal companion choices-he may choose freely among all animal companion choices, just as a druid can. The beast master may have more than one animal companion, but he must divide up his effective druid level between his companions to determine the abilities of each companion. For example, a beast master with an effective druid level of 4 can have one 4th-level companion, two 2nd-level companions, or one 1st-level and one 3rd-level companion. Each time a beast master's effective druid level increases, he must decide how to allocate the increase among his animal companions (including the option of adding a new 1st-level companion). Once an effective druid level is allocated to a particular companion, it cannot be redistributed while that companion is in the ranger's service (he must release a companion or wait until a companion dies to allocate its levels to another companion). The share spells animal companion ability does not give the ranger the ability to cast a single spell so that it affects all of his animal companions. This ability replaces hunter's bond.",
+     "class skills": "  A beast master's class skills are Acrobatics (Dex), Climb (Str), Craft (Int), Escape Artist (Dex), Handle Animal (Cha), Heal (Wis), Intimidate (Cha), Knowledge (nature) (Int), Perception (Wis), Ride (Dex), Stealth (Dex), Survival (Wis), and Swim (Wis). These replace the standard ranger class skills.",
+     "improved empathic link (su)": "  The beast master gains an empathic link with all of his animal companions. This functions like an empathic link with a familiar, except the ranger can also see through a companion's eyes as a swift action, maintaining this connection as long as he likes (as long as the companion is within 1 mile) and ending it as a free action. The ranger can only see through the eyes of one companion at a time, and is blinded while maintaining this connection. This replaces the 6th-level combat style feat.",
+     "source": "Advanced Player's Guide pg. 124 Some rangers, particularly those in primitive lands or who were raised by animals, have unusually strong bonds with animals. Unique among rangers, they can bond with multiple animals of any kind, creating a menagerie of wild yet loyal creatures, like a strange family. A beast master has the following class features.",
+     "strong bond (ex)": "  At 12th level, the ranger strengthens his bond with his animal companions. The ranger's effective druid level for his animal companions is now equal to his ranger level; he may immediately allocate these additional levels to his companions as he sees fit. This ability replaces camouflage."
+    }
+   },
+   "display": "Ranger",
+   "level": 4,
+   "name": "ranger"
+  },
+  {
+   "archetype": {
+    "Feyspeaker": {
+     "fey magic": " At 1st level, a feyspeaker allows the strange idylls of the fey to guide her magic. The feyspeaker uses her Charisma score instead of her Wisdom score as her key spellcasting ability score (to determine her spell DCs, bonus spells per day, concentration checks, and so on). At 4th, 6th, 8th, 10th, 12th, 14th, 16th, and 18th levels, a feyspeaker adds one enchantment or illusion spell from the sorcerer/wizard spell list to her druid spell list as a spell of 1 level higher (for instance, at 4th level, she could add color spray as a 2nd-level druid spell). In order to select a spell, she must be of a level high enough (including the increased spell level) to cast it. Once selected, the spell cannot be changed. A feyspeaker loses the ability to spontaneously cast summon nature's ally spells. She gains the wild shape ability at 6th level and gains all benefits related to wild shape 2 druid levels later than usual. She can never use wild shape to transform into an elemental. This ability alters wild shape and spellcasting.",
+     "fey speech (ex)": " At 1st level, a feyspeaker's words carry a tiny fragment of the otherworldly power of the fey's voices. She gains Bluff, Diplomacy, Disguise, and Sense Motive as class skills. A feyspeaker also learns Sylvan as a bonus language. In addition, the feyspeaker gains a number of skill ranks at each level equal to 6 + her Intelligence modifier, instead of 4 + her Intelligence modifier. The feyspeaker's base attack bonus from her druid levels is equal to half her druid level (much like a sorcerer's base attack bonus is calculated), rather than the usual druid base attack bonus. This ability replaces nature sense and alters the druid's base attack bonus, class skills, and skills ranks per level.",
+     "source": "Ultimate Intrigue pg. 26 Some druids hear the whispers of the natural world like fey creatures do, and learn to mimic those tantalizing murmurs in order to influence the minds of both wild beasts and civilized people. These feyspeakers are often touched by the fey in some way, such as mortals who dared to eat the food and drink the wine while in the hidden halls of the fey.",
+     "wild mischief (ex)": " At 1st level, a feyspeaker can fool an animal into thinking there is food, a potential mate, or a predator nearby. This ability functions just like a Bluff check to deceive a character. To determine the result of the wild mischief check, the feyspeaker rolls 1d20 and adds her druid level and her Charisma modifier. As with Bluff checks, wild mischief checks are modified depending on the believability of the false information. A typical domestic animal is not particularly suspicious of the feyspeaker (no circumstance modifier), whereas wild animals are usually suspicious (-5 penalty on the check). To use wild mischief, the feyspeaker and the animal must be able to study each other, which means they must be within 30 feet of one another under normal conditions. Generally, influencing an animal in this way takes 1 minute, but as when influencing people, it could take more or less time. A feyspeaker can also use this ability to influence a magical beast with an Intelligence score of 1 or 2, but she takes a -4 penalty on the check. This ability replaces the druid's proficiency with medium armor."
     }
    },
    "display": "Druid",
    "level": 3,
    "name": "druid"
-  },
-  {
-   "archetype": {
-    "Court Fool": {
-     "bardic performance": " A court fool gains the following types of bardic performance. Distracting Motley (Su) : At 1st level, a court fool can startle his allies back to their senses with erratic capering or by fluttering multicolored clothing. Each round, he attempts an Acrobatics check. Any ally (including the court fool) within 30 feet can use this check in place of her own saving throw against confusion and fascination effects. Those already under a confusion or fascination effect can attempt a new save each round using the court fool's Acrobatics check. A court fool wearing an entertainer's outfit gains a +2 bonus on these Acrobatics checks. Distracting motley doesn't work on effects that don't allow saves. This is a mind-affecting effect that uses visual components. This performance replaces countersong. Defuse Tension (Su) : At 3rd level, a court fool can use a silly performance to comfort a beleaguered ally. That ally must be within 30 feet and be able to see the court fool. The ally ignores the fatigued and shaken conditions (but not more extreme conditions, such as exhausted or frightened) as long as she continues to see the court fool's performance. This performance affects one additional creature at 7th level and every 4 bard levels thereafter. A court fool can't use defuse tension on himself. Defuse tension relies on visual components. This performance replaces inspire competence.",
-     "buffoonery (ex)": " A court fool gains a bonus equal to 1/2 his bard level on Acrobatics, Bluff, Climb, and Disguise checks (minimum +1). This replaces bardic knowledge.",
-     "caper and jeer (ex)": " At 5th level, a court fool can take 10 on Acrobatics and Bluff checks, even when in danger or distracted, and can use Bluff to create a diversion to hide (as per the Stealth skill) as a swift action. He can take 20 on an Acrobatics or Bluff check once per day, plus one time per 6 levels beyond 5th, even when in danger or distracted. This ability replaces lore master.",
-     "source": "Heroes of the High Court pg. 6 Arguably the oldest and most widespread role for a court entertainer is that of the court jester or fool. This role arose from the need to offset the intense, even deadly, seriousness of court business. The court fool serves as an outlet for the constant pressure of aristocratic dealings, relieving tensions through humor. The motley clad acrobat is a good example of this style of court fool, using physical comedy to generate belly laughs and raise spirits. In other courts, the court fool might ridicule social conventions with bawdy songs or engage in biting satire, parodying manners or even mocking individuals to spread good cheer. The court fool holds up an unflattering mirror to those in charge or speaks truths, however veiled, that no one else can safely utter."
-    }
-   },
-   "display": "Bard",
-   "level": 3,
-   "name": "bard"
   }
  ],
  "combat_talent_items": [],
  "con": 13,
  "counter_schools": [
-  "transmutation"
+  "abjuration"
  ],
  "counter_spell_descriptor": [
-  "fear"
+  "earth",
+  "sonic"
  ],
- "craft_type": "Shipbuilding",
+ "craft_type": "Mirrors",
  "day_list": [
+  5,
   12,
-  15,
-  11,
-  12
+  10,
+  9
  ],
  "deity_name": "Sarenrae",
- "dex": 12,
+ "dex": 17,
  "enhancement_effects_dict": {},
  "equip_descrip": {
   "belts": {
-   "description": " this thick leather belt is adorned with several oversized iron plates and disks depicting images of orc gladiators in battle. The wearer of a victor's belt gains a +2 morale bonus on all combat maneuver checks and to combat maneuver defense. In addition, the wearer can enter a rage (as the rage spell) as a standard action once per day. Whenever the wearer takes an amount of damage equal to at least half his current hit points in a single round, there is a 50% chance that the belt activates its rage ability automatically as an immediate action, provided the power has not already been activated that day and the wearer is not already raging. Regardless of how the rage is activated, it lasts for 5 rounds. ",
-   "item_name": "Victor's Belt"
+   "description": " as a free action, the wearer of this\r brown leather belt can compress\r himself to fit through tight spaces\r as though affected by a squeeze\r spell for up to 10 rounds per day. \r when using the belt's squeezing\r ability, the wearer gains a +5 circumstance bonus on escape\r artist checks. Once per day as a move action, the wearer can\r reduce his size by one step, as the reduce person spell, for 1\r round. These effects can be used simultaneously. ",
+   "item_name": "Tightfit Belt"
   },
-  "headband": {
-   "description": " this metal headband holds a glistening, diamond-shaped gem. A kineticist's diadem includes one of five colors of gem, each corresponding to a different element: blue (water), clear (aether), green (earth), red (fire), and white (air). The diadem's gem grants the wearer greater control over its associated element. While worn by a kineticist, this item increases the damage dealt by the kineticist's simple and composite blasts that match the element of the inlaid gem by 1d6 points (for a lesser kineticist's diadem), 2d6 points (for a kineticist's diadem), or 3d6 points (for a greater kineticist's diadem). If the blast is a physical blast, the extra damage dice from the kineticist's diadem increase to d8s instead of d6s. These extra damage dice do not multiply on a critical hit, and the extra damage dice do not apply to blasts with form infusions that do not apply the extra damage from elemental overflow, like kinetic blade and kinetic whip. ",
-   "item_name": "Kineticist's Diadem, Greater"
+  "eyes": {
+   "description": " these spectacles fit firmly over eyes and are held in place by two crystalline stems. The lenses are initially clear and don't hinder the wearer's vision. When the wearer is targeted with an illusion spell or spell-like ability of the pattern subschool (such as color spray), the spectacles absorb the magic and darken, protecting the wearer from the pattern effect. Once the spectacles absorb a spell and become opaque, the wearer becomes blinded until the spectacles are removed (a swift action). Patternward spectacles protect against spells or spell-like abilities of only 3rd level or lower; higher-level effects affect the wearer as normal. Once the spectacles absorb an effect, they lose their magic. ",
+   "item_name": "Patternward Spectacles"
   }
  },
  "equipment_list": [
-  "Victor's Belt",
-  "Kineticist's Diadem, Greater"
+  "Tightfit Belt",
+  "Patternward Spectacles"
  ],
  "eye_color": [
-  "Brown"
+  "Hazel"
  ],
  "feat_budget": {
   "bloodline": 0,
   "class": 0,
   "flavor": 1,
   "flaw": 2,
-  "normal": 8,
-  "profession": 2,
+  "normal": 10,
+  "profession": 1,
   "story": 3,
   "teamwork": 2,
-  "trainer": 9
+  "trainer": 5
  },
- "feat_changes_dict": {
-  "Shake It Off": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "allSavingThrows",
-     "text": "+1 on all saving throws per adjacent ally who also has this feat (maximum +4)"
-    }
-   ]
-  }
- },
- "feat_conditionals_dict": {
-  "Pushing Assault": {
-   "default": false,
-   "modifiers": [],
-   "name": "Pushing Assault: Activation: choose after the attack roll, before damage is rolled; Effect: on a hit against a creature your size or smaller with a two-handed Power Attack-modified attack, forgo the Power Attack damage bonus to instead push the target [[5]] feet directly away ([[10]] feet on a critical hit) into a safe space, without provoking",
-   "tier": "A"
-  }
- },
+ "feat_changes_dict": {},
+ "feat_conditionals_dict": {},
  "feats": [
-  "Dampen Presence",
-  "Totem Spirit",
-  "Opening Volley",
-  "Flanking Specialist (combat)",
-  "Spell Focus",
-  "Stealth Synergy",
-  "Natural Spell",
-  "Multi Talented",
-  "True Calling"
+  "Mystic Empathy",
+  "Racial Heritage",
+  "Dimensional Agility",
+  "Dispel Synergy",
+  "Discipline Expertise",
+  "Two-Weapon Feint",
+  "Martial Training I (Radiant Dawn)",
+  "Martial Training III (Radiant Dawn)",
+  "Multi Talented"
  ],
  "feats_feat_tax_dict": {
-  "Spell Focus": [
-   "greater spell focus",
-   "spell specialization"
+  "Dimensional Agility": [
+   "dimensional assault",
+   "dimensional dervish",
+   "dimensional maneuvers",
+   "dimensional savant"
+  ],
+  "Martial Training I (Radiant Dawn)": [
+   "Martial Training II (Radiant Dawn)"
+  ],
+  "Martial Training III (Radiant Dawn)": [
+   "Martial Training IV (Radiant Dawn)"
+  ],
+  "Martial Training V (Radiant Dawn)": [
+   "Martial Training VI (Radiant Dawn)"
   ]
  },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Tandem Trip"
+  "Silent Spell"
  ],
  "flaw": [
-  "Accustomed to Society",
-  "Powerless Prophecy"
+  "Coward",
+  "Powerless Prophecy",
+  "Insomniac"
  ],
  "flaw_effects_dict": {
-  "Accustomed to Society": {
-   "changes": [
-    {
-     "formula": "-2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.sur",
-     "type": "untyped"
-    },
-    {
-     "formula": "-4",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.kna",
-     "type": "untyped"
-    }
-   ],
+  "Coward": {
+   "changes": [],
    "contextNotes": [
     {
-     "target": "skill.sur",
-     "text": "Accustomed to Society: you cannot hunt in order to provide food."
+     "target": "will",
+     "text": "Coward: on the first round of combat, Will save DC [[5]] or spend the round retreating or on total defense."
     }
    ],
-   "description": "City comforts have dulled your wilderness instincts. You take a -2 penalty on Survival checks and a -4 penalty on Knowledge (nature) checks, and you cannot hunt in order to provide food.",
+   "description": "In dangerous circumstances you are likely to run. On the first round of any combat, you must pass a Will save (DC 5) or spend the round retreating from or defending against visible enemies.",
+   "tier": "minor"
+  },
+  "Insomniac": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "fort",
+     "text": "Insomniac: each morning, [[20]]% chance to start the day fatigued."
+    }
+   ],
+   "description": "You have trouble achieving a full and restful sleep. Each morning there is a 20% chance you begin the day fatigued until you next get a full night's rest.",
    "tier": "minor"
   },
   "Powerless Prophecy": {
@@ -448,84 +602,76 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Pushing Assault",
-  "Cast Rune"
+  "Incremental Elemental Assault",
+  "Elemental Spell"
  ],
- "formatted_bio": "Anaïs Brunet\n- Alignment: Neutral Good\n- Deity: Sarenrae\n- Race: Human\n- Class: Level 8 Inquisitor / Druid And Bard\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ship's Clerk (rank 15)\n- Profession: Worldforger Eternal (rank 3)\n- Profession: Whittler (rank 10)\n- Profession: Tree Trimmer (rank 1)\n- Known for: Shipbuilding\n- Training: An excellent trainer who taught them Intensified Spell, Sin Eater, Lingering Shadows\n- Training: An average trainer who taught them Equipment Trick, Endurance\n- Training: A terrible trainer who taught them Dimensional Agility\n- Training: An excellent trainer who taught them Shaping Focus, Firebrand, Aquatic Ancestry\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 2 Older Brothers\n- 3 Younger Brothers\n- 3 Younger Sisters\n\nPersonality\n- Personality: Distinguished, Supportive, Approving\n- Mannerisms: Winks, Grits teeth\n- Flaws: Accustomed to Society, Powerless Prophecy\n\nAppearance\n- Hair: Straight Brown\n- Eyes: Brown\n- Build: Sickly",
+ "formatted_bio": "Camille Grégoire\n- Alignment: Neutral Good\n- Deity: Sarenrae\n- Race: Human\n- Class: Level 7 Hunter / Ranger And Druid\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Disciplines: Radiant Dawn\n- Homeland: Tal-falko\n\nVocation\n- Profession: Pike Recruit (rank 1)\n- Profession: Armorer (rank 10)\n- Profession: Tavern Warbler (rank 7)\n- Profession: Submarine Engineer (rank 1)\n- Profession: Rag Gatherer (rank 10)\n- Known for: Mirrors\n- Training: An average trainer who taught them Cosmopolitan, Brew Potion\n- Training: An excellent trainer who taught them Sickening Spell, Miniature Reach, Uncanny Concentration\n\nFamily\n- Loving Mother\n- Absent Father\n- Raised In A Wealthy Household\n- 2 Younger Sisters\n\nPersonality\n- Personality: Curmudgeonly, Judicious, Helpful, Boisterous, Capable, Clueless\n- Mannerisms: Hums to oneself, Taps foot\n- Flaws: Coward, Powerless Prophecy, Insomniac\n\nAppearance\n- Hair: Wavy White\n- Eyes: Hazel\n- Build: Snaggletooth",
  "full_domain": [],
  "gender": "Female",
- "generation_seed": 7275,
+ "generation_seed": 7323,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 982,
+ "gold": 1250,
  "hair_color": [
-  "Brown"
+  "White"
  ],
  "hair_type": [
-  "Straight"
+  "Wavy"
  ],
- "height_number": "5'5\"",
+ "height_number": "5'9\"",
  "hero_points": 3,
  "homebrew_feat_desc_dict": {
-  "Aquatic Ancestry": "You favor your outsider ancestry and are better adapted to life in the water",
-  "Cast Rune": "Even if you are not a practitioner of rune magic, you are protected by a specific rune present in your name or influencing your day of birth. Special You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it grants a new rune you can invoke. select one rune as per the patron rune trait. you may invoke your patron rune once per day to gain its , as listed under runic divination. the runes effects last for 1 hour, or until you use its granted power once (whatever happens first).",
-  "Cooperative Crafting": "Your assistance makes item crafting far more efficient",
-  "Dampen Presence": "Your habitual stillness makes you difficult to perceive for creatures that use blindsight or blindsense",
+  "Brew Potion": "You can create magic potions",
+  "Cosmopolitan": "Living in large, exotic cities has put you in touch with many diverse civilizations, cultures, and races",
   "Dimensional Agility": "Teleportation does not faze you",
-  "Endurance": "Harsh conditions or long exertions do not easily tire you",
-  "Equipment Trick": "Choose one piece of equipment, such as boots, a cloak, rope, a shield, or a heavy blade scabbard You understand how to use that item in combat",
-  "Firebrand": "You can make use of a torch as a deadly, macelike weapon",
-  "Flanking Specialist (combat)": "You are more adept at flanking with allies. you count as occupying both your current space and any space adjacent to you for the purpose of flanking an opponent (including allowing your allies to flank as if you were in any of those spaces). the space must be open; you cannot use this ability to flank from a space that contains an object, creature, or barrier.",
+  "Discipline Expertise": "You are quite adept at the use of your available disciplines associated skills. choose a class you have at least one level in. you gain a +2 competence bonus on checks with the associated skills of your available disciplines in that class.",
+  "Discipline Focus": "Youve trained extensively in the arts of a single martial discipline. special if the character ever has fewer than three maneuvers known from the specialized discipline, then he loses the of this feat until such a time that he does. this feat may be selected multiple times, each time selecting a new discipline to receive the of this feat.",
+  "Dispel Synergy": "By tearing away an opponent's magical defenses, you leave your enemy vulnerable, making it difficult for him to resist your spells",
+  "Elemental Spell": "You can manipulate the elemental nature of your spells",
+  "Eschew Materials": "You can cast many spells without needing to utilize minor material components",
+  "Fleet": "You are faster than most",
+  "Incremental Elemental Assault": "You may activate and quench your elemental assault ability multiple times per day",
   "Intensified Spell": "Your spells can go beyond several normal limitations",
-  "Lingering Shadows": "Your darkness spells are harder to suppress and even more difficult to counter. Normal Most spells that lower lighting conditions (such as darkness) can have the area brightened by a light spell at least one level higher than the darkness spell. Most spells with the light descriptor can be used to counter and dispel a darkness spell of the same spell level or lower. magical light sources cannot increase the light level within the area of spells you cast with the darkness descriptor (such as darkness) unless the light spell is at least two spell levels higher than your darkness spell. spells with the light descriptor cannot be used to counter or dispel your darkness spells unless they are at least two spell levels higher than your darkness spells.",
-  "Martial Training I": "Youve learned the basics in a martial discipline Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead",
+  "Lightning Reflexes": "You have faster ref lexes than normal",
+  "Martial Training I (Radiant Dawn)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training II (Radiant Dawn)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Radiant Dawn)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Radiant Dawn)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training V (Radiant Dawn)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training VI (Radiant Dawn)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
+  "Miniature Reach": "No matter how small you are, you are always a threat. whenever you are under the effects of a polymorph effect which would reduce your size to tiny or smaller, your natural reach is always treated as 5 feet, regardless of your size.",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Natural Spell": "You can cast spells even while in a form that cannot normally cast spells",
-  "Opening Volley": "Your ranged assault leaves your foe disoriented and vulnerable to your melee attack",
-  "Pushing Assault": "A strike made with a two-handed weapon can push a similar sized opponent backward",
-  "Shake It Off": "You support your allies and help them recover from crippling effects",
-  "Shaping Focus": "Your powers of shapeshifting outstrip your dabbling in the druidic faith",
-  "Sin Eater": "You prosper as your enemies fail. whenever a creature claimed by you is reduced to 0 or fewer hit points, you gain temporary hit points equal to twice that creatures hit dice. these temporary hit points last for one minute.",
-  "Spell Focus": "Choose a school of magic Any spells you cast of that school are more difficult to resist",
-  "Stealth Synergy": "Working closely with an ally, you are able to move like twin shadows",
-  "Tandem Trip": "You know how to work together to trip your foes",
-  "Throw Anything": "You are used to throwing things you have on hand",
-  "Totem Spirit": "You are mystically tied to your tribe's sacred totem",
-  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
-  "Uncanny Activation": "You can coax greater power out of magical devices"
+  "Mystic Empathy": "Your bond with wildlife surpasses understanding and becomes supernatural authority. Normal You can use wild empathy to influence a magical beast with an Intelligence score of 1 or 2, but you take a -4 penalty on the check. you no longer take a penalty to your wild empathy checks to influence magical beasts with intelligence scores of 1 or 2. if you spend an additional minute to interact with an animal or magical beast while using wild empathy, you can attempt to direct the creature with mystical compulsion. this acts as suggestion, except it does not have the language-dependent descriptor. you must give relatively simple suggestions or commands to the creature, such as help us track something or lead us to water, unless you can communicate with it directly (such as by being under the effect of speak with animals). you use your ranks in knowledge (nature) as your caster level for this effect, and the save dc is equal to 10 + 1/2 your characters level + your charisma modifier. a magical beast gains a +4 bonus to its save. once you attempt to compel a creature in this manner (whether it makes the save or not), it cannot be compelled again for 24 hours. this is a supernatural ability.",
+  "Racial Heritage": "The blood of a non-human ancestor flows in your veins",
+  "Sickening Spell": "You can sicken creatures with your spells",
+  "Silent Spell": "You can cast your spells without making any sound",
+  "Two-Weapon Feint": "You use one weapon to distract your enemy while slipping another past his defenses",
+  "Uncanny Concentration": "You have learned to enter a deeper state when casting spells, allowing you to shrug off distractions, damage, weather effects, and even the effects of other spells"
  },
  "inherents": {
   "cha": 0,
-  "con": 0,
-  "dex": 3,
-  "int": 7,
-  "str": 0,
+  "con": 3,
+  "dex": 2,
+  "int": 1,
+  "str": 4,
   "wis": 10
  },
  "initiation_stat": "wis",
- "initiator_level": 0,
- "int": 16,
+ "initiator_level": 7,
+ "int": 10,
  "item_changes_dict": {
-  "Kineticist's Diadem, Greater": {
+  "Patternward Spectacles": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "This item increases the damage dealt by the kineticist's simple and composite blasts that match the element of the inlaid gem by 1d6 points (for a lesser kineticist's diadem), 2d6 points (for a kineticist's diadem), or 3d6 points (for a greater kineticist's diadem). If the blast is a physical blast, the extra damage dice from the kineticist's diadem increase to d8s instead of d6s."
+    "When the wearer is targeted with an illusion spell or spell-like ability of the pattern subschool (such as color spray), the spectacles absorb the magic and darken, protecting the wearer from the pattern effect. Patternward spectacles protect against spells or spell-like abilities of only 3rd level or lower;"
    ]
   },
-  "Victor's Belt": {
-   "changes": [
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "cmd",
-     "type": "morale"
-    }
-   ],
+  "Tightfit Belt": {
+   "changes": [],
    "contextNotes": [
     {
-     "target": "cmd",
-     "text": "In addition, the wearer can enter a rage (as the rage spell) as a standard action once per day. Whenever the wearer takes an amount of damage equal to at least half his current hit points in a single round, there is a 50% chance that the belt activates its rage ability automatically as an immediate action, provided the power has not already been activated that day and the wearer is not already raging. Regardless of how the rage is activated, it lasts for [[5]] rounds."
+     "target": "skill.esc",
+     "text": "As a free action, the wearer of this brown leather belt can compress himself to fit through tight spaces as though affected by a squeeze spell for up to [[10]] rounds per day. Once per day as a move action, the wearer can reduce his size by one step, as the reduce person spell, for [[1]] round. When using the belt's squeezing ability, the wearer gains a +[[5]] circumstance bonus on escape artist checks."
     }
    ]
   }
@@ -534,25 +680,13 @@
  "land_speed": 30,
  "language_text": [
   "Common",
-  "Druidic",
-  "Ignan",
-  "Aquan",
-  "Infernal",
-  "Celestial",
-  "Draconic",
-  "Elven",
-  "Kelish",
-  "Gnoll",
-  "Abyssal",
-  "Sphinx",
-  "Sylvan",
-  "Auran"
+  "Druidic"
  ],
- "level": 8,
+ "level": 7,
  "level_up_stats": {
-  "cha": 0,
-  "con": 1,
-  "dex": 1,
+  "cha": 2,
+  "con": 0,
+  "dex": 0,
   "int": 1,
   "str": 0,
   "wis": 0
@@ -560,31 +694,212 @@
  "license_url": "/license",
  "magic_talent_items": [],
  "main_stat": "wis",
- "maneuvers_choose_from": [],
- "maneuvers_desc_dict": {},
- "maneuvers_known_list": [],
- "maneuvers_readied_list": [],
- "maneuvers_readied_names": [],
+ "maneuvers_choose_from": [
+  [
+   "Decree of Mercy",
+   "Staunching Strike"
+  ],
+  [
+   "Expose Weakness maneuver",
+   "Decree of Torment"
+  ],
+  [
+   "Disrupt Essence",
+   "Lifeburst Strike"
+  ],
+  [
+   "Decree of Silence"
+  ],
+  [
+   "Divide and Conquer"
+  ],
+  [
+   "Path of the Sun"
+  ]
+ ],
+ "maneuvers_desc_dict": {
+  "Armaments of the Empire": {
+   "action": "1 swift action",
+   "description": "A thin layer of akasha ows forth from you and covers your and your allies weapons. While you maintain this stance, you empower a number of weapons including natural weapons within close range 25 feet + 5 feet per 2 initiator levels up to your initiation modifier. Each empowered weapon gains the benefit of a weapon special ability with a market price of +1 bonus. This ability must be chosen from the list of weapon special abilities you could normally place on a mind blade see the enhanced mind blade class feature in Chapter 3 of Ultimate Psionics or in the Reference Materials section at the end of this book. At initiator 10th and every five levels thereafter, the market price of the weapon special ability you can grant a weapon increases to +2 bonus, then +3 bonus, and so on. A weapon can only gain a single ability through this stance, though you need not grant the same ability to each aected weapon. A weapon retains its new ability for as long as it remains within close range. You choose which weapons are empowered when you enter this stance, and you can change which weapons within range are empowered as a swift action or as part of reallocating essence.",
+   "discipline": "Radiant Dawn",
+   "duration": "Stance",
+   "level": 3,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Battle Against the Sun": {
+   "action": "1 swift action",
+   "description": "To challenge you is to challenge the sun itself: An exercise in futility. While you maintain this stance, you shed bright light, as if by a daylight spell, out to close range 25 feet + 5 feet per 2 levels. Once per round, as a free action that can be taken at any time including when it is not your turn, you may create a line with a length of 20 feet that originates anywhere within this light. Unlike normal line attacks, this line attack does not need to fire away from you; it may travel in any direction so long as the origin point is within your daylight range. Enemies within the area take damage equal to your initiator level. A successful Reflex save DC 16 + initiation modifier halves this damage. Allies caught within the line are instead healed for a number of hit points equal to your initiator level.",
+   "discipline": "Radiant Dawn",
+   "duration": "Stance",
+   "level": 6,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Decree of Mercy": {
+   "action": "1 immediate action",
+   "description": "A simple look and gesture can weaken ones resolve to kill. You can initiate this counter in response to a creature making any action within close range 25 feet + 5 feet per 2 initiator levels. The next time the target uses an eect which deals hit point damage, the damage is nonlethal. If the effect targets or includes a creature that is immune to nonlethal, the effect instead deals half damage to that creature.",
+   "discipline": "Radiant Dawn",
+   "duration": "1 round or until discharged",
+   "level": 1,
+   "range": "Close 25 ft. + 5 ft./2 levels",
+   "type": "counter"
+  },
+  "Decree of Silence": {
+   "action": "1 immediate action",
+   "description": "Your presence demands silence. Only those who you allow to speak may do so. You may initiate this counter in response to a creature within close range 25 feet + 5 feet per 2 initiator levels manifesting a power, casting a spell, or using a spell-like or psi-like ability. Roll damage as if youd made a successful attack with a weapon youre wielding; you dont deal this damage, but the target of this counter must succeed at a concentration check DC 10 + damage that would be dealt by this attack + the level of the spell being cast or power being manifested or lose the power, psi-like ability, spell, or spell-like ability as if it had been disrupted.",
+   "discipline": "Radiant Dawn",
+   "duration": "Instantaneous",
+   "level": 4,
+   "range": "Close 25 ft. + 5 ft./2 levels",
+   "type": "counter"
+  },
+  "Decree of Torment": {
+   "action": "1 standard action",
+   "description": "You strike with an akashic brand that imbalances a creature. Make an attack. If it hits, it deals weapon damage as normal and the target becomes branded with a number of akashic brands equal to your initiation modifier. These brands last for one minute or until otherwise consumed. When a creature attacks another creature that has been branded this way, they may remove one of the brands as a part of the attack to attempt a combat maneuver of their choice against the branded creature. Ranged attackers may not choose to grapple or move with the target if the combat maneuver would normally allow it such as if using a bull rush, but may otherwise freely select combat maneuvers. When determining their combat maneuver bonus for this strike, creatures may use your initiator level in place of their base attack bonus, and may choose to use your initiation modifier in place of their Strength modifier. Each creature may remove only one brand per round. These combat maneuvers do not provoke an attack of opportunity.",
+   "discipline": "Radiant Dawn",
+   "duration": "Instantaneous see text",
+   "level": 2,
+   "range": "Melee or ranged attack",
+   "type": "strike"
+  },
+  "Disrupt Essence": {
+   "action": "1 standard action",
+   "description": "A powerful blow that disrupts ones essence, inhibiting the use of abilities. Make an attack. If it hits, the target must make a Will save DC 10 + your initiation level + your initiation modifier or have a single Extraordinary Ex or supernatural Su ability that requires an action to activate, special sense, or special movement type of your choice disabled for rounds equal to your initiation modifier. You must be aware of the ability in order to disable it Such as a successful knowledge check, or having seen it in action.",
+   "discipline": "Radiant Dawn",
+   "duration": "Instantaneous; see text",
+   "level": 3,
+   "range": "Melee or ranged attack.",
+   "type": "strike"
+  },
+  "Divide and Conquer": {
+   "action": "1 standard action",
+   "description": "This strike pulls essence from the target, creating an effigy of the creature. When the essence returns to its creature, it brings its wounds with it. Make an attack. If it hits, it deals an additional 3d6 points of damage, and the target must make a Will save DC 15 + initiation modifier or have its essence drawn into one effigy until the end of your next turn. This translucent effigy appears within close range 25 feet plus 5 feet per 2 levels of you. The effigy is the size of the target of this maneuver, but otherwise does not block movement or occupy spaces, and may be targeted by attacks, spells, or other abilities. Any attack, spell, or other ability used against the effigy or including it in its aected area is redirected against the target of this maneuver as if they were the original target regardless of range, and the target may defend themselves normally against these attacks.",
+   "discipline": "Radiant Dawn",
+   "duration": "Instantaneous; see text",
+   "level": 5,
+   "range": "Melee or ranged attack",
+   "type": "strike"
+  },
+  "Expose Weakness maneuver": {
+   "action": "1 swift action",
+   "description": "You strike with a weak, but swift, attack that hampers an opponent. Make an attack. If it hits, it deals no damage, and the target becomes at-footed for 1 round.",
+   "discipline": "Radiant Dawn",
+   "duration": "1 round",
+   "level": 2,
+   "range": "Melee or ranged attack",
+   "type": "boost"
+  },
+  "Lifeburst Strike": {
+   "action": "1 standard action",
+   "description": "You strike out with a simple blow with an uncanny power to heal and harm. Make an attack. If it hits, it deals weapon damage as normal plus an additional 1d6 points of damage, and you can heal yourself and allies within close range 25 feet + 5 feet per 2 initiator levels for a total number of hit points equal to three times your initiation modifier, divided as you choose between you and your allies. Alternatively, you may choose to grant a single ally within close range a saving throw against an ongoing eect on them that oers a saving throw to negate, at the eects original DC. If it succeeds, the eect ends. This does not progress poison, diseases, or similar eects on a failed saving throw.",
+   "discipline": "Radiant Dawn",
+   "duration": "Instantaneous",
+   "level": 3,
+   "range": "Melee or ranged attack",
+   "type": "strike"
+  },
+  "Path of the Sun": {
+   "action": "1 standard action",
+   "description": "Coalesce the power of the sun into a powerful beam that washes over enemies and allies alike, leaving behind thousands of motes of light. Allies of the initiator may traverse these motes as if they were light themselves. When you initiate this maneuver, you create a close range 25 feet + 5 feet per 2 levels foot line of light. Enemies caught within this line take damage equal to your initiator level plus your initiation modifier, and must make a Reex save DC 16 + initiation modifier or be Blinded for rounds equal to your half your initiation modifier. This line persists as a field of golden motes for rounds equal to your initiation modifier. Enemies who enter the line or start their turn within the area take damage and must make a save as if they were struck by this maneuver. Allies do not provoke attack of opportunities when entering or moving through these squares, and can enter or move through these squares as free actions on their turn. Treat creatures within these squares as being exposed to direct sunlight.",
+   "discipline": "Radiant Dawn",
+   "duration": "Instantaneous; see text",
+   "level": 6,
+   "range": "Close range foot line",
+   "type": "strike"
+  },
+  "Stance of the Sunlight Shield": {
+   "action": "1 swift action",
+   "description": "This stance sits halfway between martial form and magic prowess, conjuring shields of light to defend yourself and others. While you maintain this stance, you may create sunlight shields. Creating a single sunlight shield is done as free action that can be done once per round, and is done automatically when you enter this stance. A sunlight shield can be created anywhere within close range 25 feet plus 5 feet per 2 levels of you to include in the air, where they oat until destroyed, dismissed, or removed. Treat a sunlight shield as a 10ft by 10ft by 1 inch thick wall of force, but with hardness equal to your initiator level plus your initiation modifier, and 1 hit point. They may be made smaller at the initiators discretion. You may have a number of sunlight shields equal to your initiation modifier, and these shields last indefinitely, or until they are no longer within close range of you, you dismiss them as a free action, or you leave this stance. These sunlight shields can be made at any angle, and are treated as normal terrain when stepped on. You may command these shields to y an amount of feet equal to your movement speed as a move action. You may also create a sunlight shield as an immediate action, but doing so is dangerous as the hasty construction leaves your essence tied to it. Until the start of your next turn, any damage that the shield takes before hardness is taken into account, or any spell that would fail because of the shields sudden appearance between its caster and its target is also inicted on you, regardless of distance. Creatures can attack other creatures on the other side of these shields, dealing damage to the shield first. If an attack would break the shield, the remainder of the damage is dealt to the creature if the original attack would have hit. When you enter this stance, you may designate any number of allies. These allies attacks and abilities are not impeded by your sunlight shields.",
+   "discipline": "Radiant Dawn",
+   "duration": "Stance",
+   "level": 5,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Staunching Strike": {
+   "action": "1 standard action",
+   "description": "To help your allies and harm your enemies is the most basic tenet of the Radiant Dawn discipline. Make an attack. If it hits, it deals weapon damage as normal, and you can heal yourself and allies within close range 25 feet + 5 feet per 2 initiator levels for a total number of hit points equal to your initiation modifier, divided as you choose between you and your allies.",
+   "discipline": "Radiant Dawn",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Melee or ranged attack",
+   "type": "strike"
+  },
+  "The Caged Sun": {
+   "action": "1 swift action",
+   "description": "If you have 50% or fewer hit points, entering this stance can be done as a free action instead of a swift. While you maintain this stance, you cannot heal creatures other than yourself, but any healing you receive is increased by 50%. If you would be healed for more than your maximum amount of hit points, you instead gain an amount of temporary hit points equal to the excess healing. These temporary hit points stack with other temporary hit points granted by you, up to a maximum of your maximum hit points, and last for one minute, until initiative is rolled, or you abandon this stance.",
+   "discipline": "Radiant Dawn",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal",
+   "type": "stance"
+  }
+ },
+ "maneuvers_known_list": [
+  2,
+  2,
+  2,
+  1,
+  1,
+  1
+ ],
+ "maneuvers_readied_list": [
+  0,
+  1,
+  2,
+  1,
+  1,
+  1
+ ],
+ "maneuvers_readied_names": [
+  [],
+  [
+   "Decree of Torment"
+  ],
+  [
+   "Lifeburst Strike",
+   "Disrupt Essence"
+  ],
+  [
+   "Decree of Silence"
+  ],
+  [
+   "Divide and Conquer"
+  ],
+  [
+   "Path of the Sun"
+  ]
+ ],
  "manifesters": [],
  "mannerisms": [
-  "Winks",
-  "Grits teeth"
+  "Hums to oneself",
+  "Taps foot"
  ],
- "martial_disciplines": [],
+ "martial_disciplines": [
+  "Radiant Dawn"
+ ],
  "mini_alignment": "ng",
  "mod_char_sheet_var": false,
- "mt_feats": [],
- "normal_feat_amount": 7,
- "older_brothers": " you have 2 older brothers",
+ "mt_feats": [
+  "Martial Training I (Radiant Dawn)",
+  "Martial Training III (Radiant Dawn)",
+  "Martial Training V (Radiant Dawn)"
+ ],
+ "normal_feat_amount": 8,
+ "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "loving mother, loving father, raised in a wealthy household",
+ "parents": "loving mother, absent father, raised in a wealthy household",
  "personality_traits": [
-  "Distinguished",
-  "Supportive",
-  "Approving"
+  "Curmudgeonly",
+  "Judicious",
+  "Helpful",
+  "Boisterous",
+  "Capable",
+  "Clueless"
  ],
- "platnium": 98.2,
+ "platnium": 125.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -593,91 +908,18 @@
      "formula": "2",
      "operator": "add",
      "priority": 0,
-     "target": "skill.lin",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.khi",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.klo",
+     "target": "skill.apr",
      "type": "competence"
     }
    ],
-   "contextNotes": [],
-   "description": "<p><em>Profession (Ship's Clerk) - rank 15/15. Associate skills (ranks 1/4/7/10): Handle Animal, Diplomacy, Appraise, Sleight of Hand.</em></p><hr><p><strong>Bookish (Ex)</strong></p><p>Years buried in dusty tomes let you read and write any language you know and grant a +2 competence bonus on Linguistics checks and on any one Knowledge skill in which you have at least 1 rank. Once per day you may take 20 on a Knowledge or Linguistics check made to research a written record without spending extra time.</p><hr><p><strong>Idle Speculation (Ex)</strong></p><p>Your endless musing about history and rumor makes you a font of half-remembered lore. You gain a +2 competence bonus on Knowledge (history) and Knowledge (local) checks, and once per day you may make a Knowledge check to recall a relevant fact even for a topic in which you have no ranks, treating it as a trained check.</p>",
-   "name": "Profession Rank 5: (Ship's Clerk)",
-   "uses": null
-  },
-  {
-   "changes": [
+   "contextNotes": [
     {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.kar",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.khi",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.kge",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.kna",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.lin",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.kar",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.khi",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.kge",
-     "type": "competence"
+     "target": "damage",
+     "text": "Allies wielding gear you tended for 1 minute gain +1 competence to damage (weapon) or AC (armor) for 24 hours."
     }
    ],
-   "contextNotes": [],
-   "description": "<p><em>Profession (Ship's Clerk) - rank 15/15.</em></p><hr><p><strong>Encyclopedic Recall (Ex)</strong></p><p>Your memory is a well-ordered archive of names, dates, and minor facts. You gain a +2 competence bonus on all Knowledge checks, and you can attempt any Knowledge check untrained to recall an obscure fact.</p><hr><p><strong>Polyglot's Ear (Ex)</strong></p><p>Hours of study across foreign grammars let you puzzle out unfamiliar speech and script. You gain a +2 competence bonus on Linguistics checks, and you can read a message in a language you do not know, or decipher an unfamiliar cipher, with a Linguistics check (DC 10 + half your character level + your Intelligence modifier).</p><hr><p><strong>Lore Master (Ex)</strong></p><p>You gain a +2 bonus on all Knowledge checks and can always take 10 on them. You can attempt any Knowledge check untrained.</p>",
-   "name": "Profession Rank 15: (Ship's Clerk)",
+   "description": "<p><em>Profession (Armorer) - rank 10/10. Associate skills (ranks 1/4/7/10): Perception, Use Magic Device, Handle Animal, Knowledge (local).</em></p><hr><p><strong>Quality Goods (Ex)</strong></p><p>Your wares command a premium. You earn your full Profession check result in gold pieces per week, and you gain a +2 bonus on Appraise checks.</p><hr><p><strong>Whetstone Master (Ex)</strong></p><p>You spend 1 minute tending a weapon or suit of armor; for the next 24 hours its wielder gains a +1 competence bonus on weapon damage rolls (weapon) or a +1 competence bonus to AC against the first attack each round (armor). You can maintain a number of pieces of gear this way equal to your ranks in the relevant Craft skill at one time.</p><hr><p><strong>Tireless at the Forge (Ex)</strong></p><p>The Hunter can work a full day and night without faltering, completing in hours what takes lesser hands days. Treat the value of goods this Hunter crafts each day as if a full week of labor had passed.</p>",
+   "name": "Profession Rank 5: (Armorer)",
    "uses": null
   },
   {
@@ -686,126 +928,78 @@
      "formula": "1",
      "operator": "add",
      "priority": 0,
-     "target": "skill.crf",
+     "target": "skill.prf",
      "type": "competence"
     },
     {
-     "formula": "2",
+     "formula": "1",
      "operator": "add",
      "priority": 0,
-     "target": "skill.crf",
+     "target": "skill.dip",
      "type": "competence"
     }
    ],
    "contextNotes": [],
-   "description": "<p><em>Profession (Whittler) - rank 10/10. Associate skills (ranks 1/4/7/10): Craft, Knowledge (local), Sense Motive, Appraise.</em></p><hr><p><strong>Calloused Grip (Ex)</strong></p><p>Years at the bench and forge have hardened your hands against splinters, sparks, and burns. You gain a +1 competence bonus on Craft checks, and you take no penalty on Craft or Profession checks made while working in hazardous conditions such as a hot forge, a rocking ship, or extreme cold.</p><hr><p><strong>Skilled Hands (Ex)</strong></p><p>Years at the workbench steady your hands. You gain a +2 bonus on your primary Craft or Profession skill and you can always take 10 on it, even when distracted.</p>",
-   "name": "Profession Rank 5: (Whittler)",
+   "description": "<p><em>Profession (Tavern Warbler) - rank 7/10. Associate skills (ranks 1/4/7/10): Sense Motive, Appraise, Use Magic Device.</em></p><hr><p><strong>Open Mic Regular (Ex)</strong></p><p>You haunt every tavern stage that will have you. You gain a <strong>+1 competence bonus</strong> on Perform checks, and once per day you can perform for 1 hour to earn 1d4 copper pieces and learn one current local rumor from the audience.</p><hr><p><strong>Off-Key Carouser (Ex)</strong></p><p>You sing loudly and badly, but you read a room well enough to make friends anywhere. You gain a <strong>+1 competence bonus</strong> on Diplomacy checks, and once per day you may reroll a failed Diplomacy check to improve the attitude of a creature in a tavern, feast, or other social gathering.</p>",
+   "name": "Profession Rank 5: (Tavern Warbler)",
+   "uses": null
+  },
+  {
+   "changes": [
+    {
+     "formula": "10",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.swm",
+     "type": "competence"
+    },
+    {
+     "formula": "10",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.pro",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Rag Gatherer) - rank 10/10. Associate skills (ranks 1/4/7/10): Sleight of Hand, Perception, Profession, Diplomacy.</em></p><hr><p><strong>Pool Cleaner (Ex)</strong></p><p>A lifetime in the muck has left its mark. You gain a +10 bonus on Swim checks and on a single cleaning-related Profession or Craft check, and years of exposure have made you immune to poison.</p><hr><p><strong>Gongfarmer's Constitution (Ex)</strong></p><p>Nothing foul can turn your stomach. You are immune to disease and to the sickened and nauseated conditions caused by filth or stench, you gain a +4 bonus on saves against ingested poison, and you can eat or drink almost anything without harm.</p>",
+   "name": "Profession Rank 5: (Rag Gatherer)",
    "uses": null
   }
  ],
  "profession_feat_desc": {
-  "Multi Talented": "Your profession rank cap increases by 10.",
-  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
+  "Multi Talented": "Your profession rank cap increases by 10."
  },
  "profession_feats": [
-  "Multi Talented",
-  "True Calling"
+  "Multi Talented"
  ],
  "profession_pool": 29,
  "profession_ranks": [
   {
-   "ability_theme": "scholar",
+   "ability_theme": "martial",
    "ability_tier": "bad",
    "associate_skills": [
+    "Handle Animal"
+   ],
+   "cap": 10,
+   "name": "Pike Recruit",
+   "rank15_abilities": [],
+   "rank5_abilities": [],
+   "ranks": 1,
+   "skill_label": "Profession (Pike Recruit)"
+  },
+  {
+   "ability_theme": "craft",
+   "ability_tier": "good",
+   "associate_skills": [
+    "Perception",
+    "Use Magic Device",
     "Handle Animal",
-    "Diplomacy",
-    "Appraise",
-    "Sleight of Hand"
+    "Knowledge (local)"
    ],
-   "cap": 15,
-   "name": "Ship's Clerk",
-   "rank15_abilities": [
-    {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.kar",
-       "type": "competence"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.khi",
-       "type": "competence"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.kge",
-       "type": "competence"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.kna",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>Your memory is a well-ordered archive of names, dates, and minor facts. You gain a +2 competence bonus on all Knowledge checks, and you can attempt any Knowledge check untrained to recall an obscure fact.</p>",
-     "name": "Encyclopedic Recall (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.lin",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>Hours of study across foreign grammars let you puzzle out unfamiliar speech and script. You gain a +2 competence bonus on Linguistics checks, and you can read a message in a language you do not know, or decipher an unfamiliar cipher, with a Linguistics check (DC 10 + half your character level + your Intelligence modifier).</p>",
-     "name": "Polyglot's Ear (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.kar",
-       "type": "competence"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.khi",
-       "type": "competence"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.kge",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>You gain a +2 bonus on all Knowledge checks and can always take 10 on them. You can attempt any Knowledge check untrained.</p>",
-     "name": "Lore Master (Ex)",
-     "uses": null
-    }
-   ],
+   "cap": 10,
+   "name": "Armorer",
+   "rank15_abilities": [],
    "rank5_abilities": [
     {
      "changes": [
@@ -813,73 +1007,48 @@
        "formula": "2",
        "operator": "add",
        "priority": 0,
-       "target": "skill.lin",
+       "target": "skill.apr",
        "type": "competence"
       }
      ],
      "contextNotes": [],
-     "desc": "<p>Years buried in dusty tomes let you read and write any language you know and grant a +2 competence bonus on Linguistics checks and on any one Knowledge skill in which you have at least 1 rank. Once per day you may take 20 on a Knowledge or Linguistics check made to research a written record without spending extra time.</p>",
-     "name": "Bookish (Ex)",
-     "uses": {
-      "maxFormula": "1",
-      "per": "day",
-      "value": null
-     }
+     "desc": "<p>Your wares command a premium. You earn your full Profession check result in gold pieces per week, and you gain a +2 bonus on Appraise checks.</p>",
+     "name": "Quality Goods (Ex)",
+     "uses": null
     },
     {
-     "changes": [
+     "changes": [],
+     "contextNotes": [
       {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.khi",
-       "type": "competence"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.klo",
-       "type": "competence"
+       "target": "damage",
+       "text": "Allies wielding gear you tended for 1 minute gain +1 competence to damage (weapon) or AC (armor) for 24 hours."
       }
      ],
+     "desc": "<p>You spend 1 minute tending a weapon or suit of armor; for the next 24 hours its wielder gains a +1 competence bonus on weapon damage rolls (weapon) or a +1 competence bonus to AC against the first attack each round (armor). You can maintain a number of pieces of gear this way equal to your ranks in the relevant Craft skill at one time.</p>",
+     "name": "Whetstone Master (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
      "contextNotes": [],
-     "desc": "<p>Your endless musing about history and rumor makes you a font of half-remembered lore. You gain a +2 competence bonus on Knowledge (history) and Knowledge (local) checks, and once per day you may make a Knowledge check to recall a relevant fact even for a topic in which you have no ranks, treating it as a trained check.</p>",
-     "name": "Idle Speculation (Ex)",
-     "uses": {
-      "maxFormula": "1",
-      "per": "day",
-      "value": null
-     }
+     "desc": "<p>The Hunter can work a full day and night without faltering, completing in hours what takes lesser hands days. Treat the value of goods this Hunter crafts each day as if a full week of labor had passed.</p>",
+     "name": "Tireless at the Forge (Ex)",
+     "uses": null
     }
    ],
-   "ranks": 15,
-   "skill_label": "Profession (Ship's Clerk)"
+   "ranks": 10,
+   "skill_label": "Profession (Armorer)"
   },
   {
-   "ability_theme": "divine",
-   "ability_tier": "top",
+   "ability_theme": "performance",
+   "ability_tier": "bad",
    "associate_skills": [
+    "Sense Motive",
+    "Appraise",
     "Use Magic Device"
    ],
    "cap": 10,
-   "name": "Worldforger Eternal",
-   "rank15_abilities": [],
-   "rank5_abilities": [],
-   "ranks": 3,
-   "skill_label": "Profession (Worldforger Eternal)"
-  },
-  {
-   "ability_theme": "craft",
-   "ability_tier": "bad",
-   "associate_skills": [
-    "Craft",
-    "Knowledge (local)",
-    "Sense Motive",
-    "Appraise"
-   ],
-   "cap": 10,
-   "name": "Whittler",
+   "name": "Tavern Warbler",
    "rank15_abilities": [],
    "rank5_abilities": [
     {
@@ -888,53 +1057,100 @@
        "formula": "1",
        "operator": "add",
        "priority": 0,
-       "target": "skill.crf",
+       "target": "skill.prf",
        "type": "competence"
       }
      ],
      "contextNotes": [],
-     "desc": "<p>Years at the bench and forge have hardened your hands against splinters, sparks, and burns. You gain a +1 competence bonus on Craft checks, and you take no penalty on Craft or Profession checks made while working in hazardous conditions such as a hot forge, a rocking ship, or extreme cold.</p>",
-     "name": "Calloused Grip (Ex)",
+     "desc": "<p>You haunt every tavern stage that will have you. You gain a <strong>+1 competence bonus</strong> on Perform checks, and once per day you can perform for 1 hour to earn 1d4 copper pieces and learn one current local rumor from the audience.</p>",
+     "name": "Open Mic Regular (Ex)",
      "uses": null
     },
     {
      "changes": [
       {
-       "formula": "2",
+       "formula": "1",
        "operator": "add",
        "priority": 0,
-       "target": "skill.crf",
+       "target": "skill.dip",
        "type": "competence"
       }
      ],
      "contextNotes": [],
-     "desc": "<p>Years at the workbench steady your hands. You gain a +2 bonus on your primary Craft or Profession skill and you can always take 10 on it, even when distracted.</p>",
-     "name": "Skilled Hands (Ex)",
+     "desc": "<p>You sing loudly and badly, but you read a room well enough to make friends anywhere. You gain a <strong>+1 competence bonus</strong> on Diplomacy checks, and once per day you may reroll a failed Diplomacy check to improve the attitude of a creature in a tavern, feast, or other social gathering.</p>",
+     "name": "Off-Key Carouser (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 7,
+   "skill_label": "Profession (Tavern Warbler)"
+  },
+  {
+   "ability_theme": "martial",
+   "ability_tier": "good",
+   "associate_skills": [
+    "Perception"
+   ],
+   "cap": 10,
+   "name": "Submarine Engineer",
+   "rank15_abilities": [],
+   "rank5_abilities": [],
+   "ranks": 1,
+   "skill_label": "Profession (Submarine Engineer)"
+  },
+  {
+   "ability_theme": "menial",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Sleight of Hand",
+    "Perception",
+    "Profession",
+    "Diplomacy"
+   ],
+   "cap": 10,
+   "name": "Rag Gatherer",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "10",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.swm",
+       "type": "competence"
+      },
+      {
+       "formula": "10",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.pro",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>A lifetime in the muck has left its mark. You gain a +10 bonus on Swim checks and on a single cleaning-related Profession or Craft check, and years of exposure have made you immune to poison.</p>",
+     "name": "Pool Cleaner (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Nothing foul can turn your stomach. You are immune to disease and to the sickened and nauseated conditions caused by filth or stench, you gain a +4 bonus on saves against ingested poison, and you can eat or drink almost anything without harm.</p>",
+     "name": "Gongfarmer's Constitution (Ex)",
      "uses": null
     }
    ],
    "ranks": 10,
-   "skill_label": "Profession (Whittler)"
-  },
-  {
-   "ability_theme": "craft",
-   "ability_tier": "average",
-   "associate_skills": [
-    "Appraise"
-   ],
-   "cap": 10,
-   "name": "Tree Trimmer",
-   "rank15_abilities": [],
-   "rank5_abilities": [],
-   "ranks": 1,
-   "skill_label": "Profession (Tree Trimmer)"
+   "skill_label": "Profession (Rag Gatherer)"
   }
  ],
  "professions": [
-  "Ship's Clerk",
-  "Worldforger Eternal",
-  "Whittler",
-  "Tree Trimmer"
+  "Pike Recruit",
+  "Armorer",
+  "Tavern Warbler",
+  "Submarine Engineer",
+  "Rag Gatherer"
  ],
  "racial_stats": {
   "cha": 0,
@@ -946,56 +1162,56 @@
  },
  "region": "Tal-falko",
  "save_bases": {
-  "fort": 10,
-  "ref": 6,
-  "will": 12
+  "fort": 12,
+  "ref": 10,
+  "will": 6
  },
  "school": "N/A",
  "selected_traits": [
-  "Wicked Leader",
-  "Resilient Caster",
-  "Cleansing the Twisted",
-  "Surface Stranger",
-  "Group Fighter",
-  "Muscle of the Society",
-  "Pesh Dealer",
-  "Animalistic Affliction"
+  "Clever Wordplay",
+  "Opener of Doors",
+  "Colonial",
+  "Secret-Keeper",
+  "Student of Philosophy",
+  "Savanna Hunter",
+  "Scarred Descendant",
+  "Framed"
  ],
  "selected_traits_desc": [
   {
-   "description": "You gain a +1 trait bonus on Charisma checks against evil creatures. If you select the Leadership feat or the Vile Leadership feat at any point when you meet the prerequisites for that feat, you can recruit a cohort who is up to 1 level lower than you (instead of the normal requirement that your cohort must be 2 or more levels lower than you are) as long as your cohort is evil.",
-   "name": "Wicked Leader"
+   "description": "Choose one Charisma-based skill. You attempt checks with that skill using your Intelligence modifier instead of your Charisma modifier.",
+   "name": "Clever Wordplay"
   },
   {
-   "description": "Your caster level is treated as 1 level higher whenever someone attempts to dispel one of your spells.",
-   "name": "Resilient Caster"
+   "description": "You gain a +2 trait bonus on Perception checks made to find and open secret doors.",
+   "name": "Opener of Doors"
   },
   {
-   "description": "You gain a +1 trait bonus to slashing weapon damage against aberrations.",
-   "name": "Cleansing the Twisted"
+   "description": "You gain a +1 trait bonus on Knowledge (local) checks relating to settlements and politics and a +1 trait bonus on saving throws against disease.",
+   "name": "Colonial"
   },
   {
-   "description": "Your miss chance for concealment or total concealment due to either mundane or magical darkness decreases by 10%. You are dazzled for 1 round when you are suddenly exposed to bright light.",
-   "name": "Surface Stranger"
+   "description": "You gain a +1 trait bonus on Bluff checks and a +1 trait bonus on saving throws against divinations, domination effects, and effects that would compel you to speak the truth.",
+   "name": "Secret-Keeper"
   },
   {
-   "description": "You gain a +1 trait bonus on attacks made while flanking an opponent.",
-   "name": "Group Fighter"
+   "description": "You can use your Intelligence modifier in place of your Charisma modifier on Diplomacy checks to persuade others and on Bluff checks to convince others that a lie is true. (This trait does not affect Diplomacy checks to gather information or Bluff checks to feint in combat).",
+   "name": "Student of Philosophy"
   },
   {
-   "description": "You gain a +2 trait bonus on Strength checks made to break doors and lift portcullises, and you treat your Strength score as 2 higher for the purpose of determining your carrying capacity.",
-   "name": "Muscle of the Society"
+   "description": "You gain a +1 trait bonus on attacks of opportunity attack rolls made with a shortspear, as well as a +1 racial bonus on Constitution checks to continue running and avoid nonlethal damage from a forced march.",
+   "name": "Savanna Hunter"
   },
   {
-   "description": "You gain a +1 trait bonus on Sleight of Hand checks, and Sleight of Hand is always a class skill for you.",
-   "name": "Pesh Dealer"
+   "description": "You gain a +1 trait bonus on rolls to confirm critical hits against favored enemies of your own subtype and on Survival checks made to track such creatures.",
+   "name": "Scarred Descendant"
   },
   {
-   "description": "You gain a +1 trait bonus on Handle Animal and wild empathy checks.",
-   "name": "Animalistic Affliction"
+   "description": "You gain a +2 bonus on Spellcraft checks.",
+   "name": "Framed"
   }
  ],
- "sheet_health": 112,
+ "sheet_health": 120,
  "shield_ac": 0,
  "shield_armor_check_penalty": " ",
  "shield_enhancement_bonus": 0,
@@ -1006,120 +1222,88 @@
  "shield_weight": " ",
  "skill_rank_budget": 260,
  "skill_ranks": {
-  "acrobatics": 12,
-  "appraise": 11,
-  "bluff": 0,
-  "climb": 3,
-  "craft": 2,
-  "diplomacy": 0,
-  "disable device": 7,
-  "disguise": 8,
-  "escape artist": 8,
-  "fly": 9,
-  "handle animal": 10,
-  "heal": 6,
-  "intimidate": 7,
+  "acrobatics": 8,
+  "appraise": 8,
+  "bluff": 8,
+  "climb": 7,
+  "craft": 11,
+  "diplomacy": 10,
+  "disable device": 10,
+  "disguise": 10,
+  "escape artist": 18,
+  "fly": 6,
+  "handle animal": 15,
+  "intimidate": 12,
   "knowledge arcana": 13,
-  "knowledge dungeoneering": 11,
-  "knowledge engineering": 21,
-  "knowledge geography": 14,
-  "knowledge history": 11,
-  "knowledge local": 13,
-  "knowledge nature": 7,
-  "knowledge nobility": 7,
-  "knowledge planes": 4,
-  "knowledge religion": 0,
-  "linguistics": 9,
-  "perception": 7,
-  "perform": 3,
+  "knowledge dungeoneering": 1,
+  "knowledge engineering": 1,
+  "knowledge geography": 8,
+  "knowledge history": 5,
+  "knowledge local": 10,
+  "knowledge nature": 6,
+  "knowledge nobility": 21,
+  "knowledge planes": 3,
+  "knowledge religion": 11,
+  "perception": 8,
+  "perform": 9,
   "profession": 0,
-  "ride": 5,
-  "sense motive": 3,
-  "sleight of hand": 13,
+  "ride": 13,
+  "sense motive": 10,
+  "sleight of hand": 11,
   "spellcraft": 5,
-  "stealth": 9,
-  "survival": 11,
-  "swim": 9,
-  "use magic device": 2
+  "survival": 1,
+  "swim": 1
  },
  "skill_unlock": {
-  "base_skill": "handle animal",
-  "ranks": 10,
-  "skill": "Handle Animal",
+  "base_skill": "appraise",
+  "ranks": 8,
+  "skill": "Appraise",
   "unlock": {
-   "10": "Trained creatures gain the +2 Will bonus within 30 feet while they can clearly see you, and you can teach a trick in 1 day at DC +20.",
-   "15": "With a week and a DC 30 check you can train an animal to understand speech (as speak with animals); you can teach a trick in 1 day (DC +10) or 1 hour (DC +20).",
-   "20": "You can make your speech understandable to any animal for 24 hours (DC 30, or DC 40 for magical beasts/vermin), and teach tricks in as little as 1 minute.",
-   "5": "Creatures you have trained gain a +2 bonus on Will saves while adjacent to you."
+   "10": "As a standard action you can determine the most expensive object a creature wears or wields (DC 20); you never make wildly inaccurate appraisals.",
+   "15": "Determining the most expensive object is a move action, and you may substitute an Appraise check at -10 for a Will save against figments and glamers.",
+   "20": "Identifying the priciest object is a move action, and observing an item grants a +2 circumstance bonus on steal and disarm checks against its bearer for 1 minute.",
+   "5": "You can detect whether an item is magical (DC 20) and reveal its properties (DC 25 + caster level), and you automatically identify non-written forgeries."
   },
-  "unlock_html": "<h2>Handle Animal</h2><p><strong>5 Ranks</strong>: Creatures you have trained gain a +2 bonus on Will saves while adjacent to you.</p><p><strong>10 Ranks</strong>: Trained creatures gain the +2 Will bonus within 30 feet while they can clearly see you, and you can teach a trick in 1 day at DC +20.</p><p><strong>15 Ranks</strong>: With a week and a DC 30 check you can train an animal to understand speech (as speak with animals); you can teach a trick in 1 day (DC +10) or 1 hour (DC +20).</p><p><strong>20 Ranks</strong>: You can make your speech understandable to any animal for 24 hours (DC 30, or DC 40 for magical beasts/vermin), and teach tricks in as little as 1 minute.</p>"
+  "unlock_html": "<h2>Appraise</h2><p><strong>5 Ranks</strong>: You can detect whether an item is magical (DC 20) and reveal its properties (DC 25 + caster level), and you automatically identify non-written forgeries.</p><p><strong>10 Ranks</strong>: As a standard action you can determine the most expensive object a creature wears or wields (DC 20); you never make wildly inaccurate appraisals.</p><p><strong>15 Ranks</strong>: Determining the most expensive object is a move action, and you may substitute an Appraise check at -10 for a Will save against figments and glamers.</p><p><strong>20 Ranks</strong>: Identifying the priciest object is a move action, and observing an item grants a +2 circumstance bonus on steal and disarm checks against its bearer for 1 minute.</p>"
  },
  "specialty_schools": [
-  "evocation"
+  "illusion"
  ],
  "spell_changes_dict": {
-  "Daybreak Arrow": {
-   "default": false,
-   "modifiers": [
+  "Magic Stone": {
+   "changes": [
     {
-     "critical": "nonCrit",
-     "damageType": [
-      "untyped"
-     ],
-     "formula": "1d6",
-     "subTarget": "allDamage",
-     "target": "damage",
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "attack",
+     "type": "enhancement"
+    },
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "wdamage",
+     "type": "enhancement"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Marid's Mastery": {
+   "changes": [
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "attack",
      "type": "untyped"
-    }
-   ],
-   "name": "Daybreak Arrow: ammunition exudes radiant energy, shedding light as a sunrod for [[1]] round after firing; creatures that take penalties in bright light suffer them for [[1]] round after being struck, and undead and creatures harmed by sunlight take extra radiant damage that is not subject to damage resistance. Duration [[10]] minutes/level; Fortitude negates (harmless, object)."
-  },
-  "Divine Favor": {
-   "changes": [
-    {
-     "formula": "min(max(floor(@spells.primary.cl.total/3), 1), 3)",
-     "operator": "add",
-     "priority": 0,
-     "target": "attack",
-     "type": "luck"
-    },
-    {
-     "formula": "min(max(floor(@spells.primary.cl.total/3), 1), 3)",
-     "operator": "add",
-     "priority": 0,
-     "target": "wdamage",
-     "type": "luck"
-    }
-   ],
-   "contextNotes": []
-  },
-  "Gorum's Armor": {
-   "changes": [
-    {
-     "formula": "1",
-     "operator": "add",
-     "priority": 0,
-     "target": "attack",
-     "type": "enhancement"
     },
     {
      "formula": "1",
      "operator": "add",
      "priority": 0,
      "target": "wdamage",
-     "type": "enhancement"
-    }
-   ],
-   "contextNotes": []
-  },
-  "Guidance": {
-   "changes": [
-    {
-     "formula": "1",
-     "operator": "add",
-     "priority": 0,
-     "target": "attack",
-     "type": "competence"
+     "type": "untyped"
     }
    ],
    "contextNotes": []
@@ -1127,141 +1311,101 @@
  },
  "spell_list_choose_from": [
   [
-   "Acid Splash",
-   "Bleed",
-   "Daze",
-   "Detect Magic",
-   "Disrupt Undead",
-   "Guidance",
-   "Light",
-   "Oath of Anonymity",
-   "Read Magic",
-   "Resistance",
-   "Sift",
-   "Stabilize"
+   "Create Water",
+   "Detect Poison",
+   "Flare",
+   "Know Direction",
+   "Mending"
   ],
   [
-   "Burst Bonds",
-   "Cause Fear",
-   "Deadeye's Arrow",
-   "Divine Favor",
-   "Ear-Piercing Scream",
-   "Gorum's Armor",
-   "Horn of Pursuit",
-   "Lend Judgment",
-   "Pick Your Poison",
-   "Protection from Chaos",
-   "Sanctify Corpse",
-   "Secret Sign",
-   "Shield of Fortification",
-   "Stalwart Resolve",
-   "Touch of Combustion"
+   "Blend",
+   "Blend with Surroundings",
+   "Bowstaff",
+   "Calm Animals",
+   "Gentle Breeze",
+   "Hydraulic Push",
+   "Inner Focus",
+   "Ironbloom Sprouts",
+   "Lose the Trail",
+   "Magic Stone",
+   "Marid's Mastery",
+   "Snow Shape"
   ],
   [
-   "Blistering Invective",
-   "Consecrate",
-   "Darkness",
-   "Discovery Torch",
-   "Distressing Tone",
-   "Flickering Lights",
-   "Ghost Whip",
-   "Hidden Presence",
-   "Light Prison",
-   "Spiritual Squire",
-   "Spiritual Weapon"
+   "Aquatic Trail",
+   "Chameleon Stride",
+   "Groundswell",
+   "Hide Campsite",
+   "Neutral Buoyancy",
+   "Planetarium",
+   "Reduce Animal",
+   "Slipstream",
+   "Undetectable Trap",
+   "Water Walk, Communal"
   ],
   [
-   "Blinding Ray",
-   "Continual Flame",
-   "Damnation",
-   "Daybreak Arrow",
-   "Daylight",
-   "Litany of Righteousness",
-   "Night of Blades",
-   "Searing Light",
-   "Shield of Darkness",
-   "Spotlight",
-   "Terrible Remorse",
-   "Trial by Fire"
+   "Aqueous Orb",
+   "Chameleon Stride, Greater",
+   "Geomessage",
+   "Instant Fake",
+   "Life Current",
+   "Sebaceous Twin",
+   "Shadowmind",
+   "Sunstalker",
+   "Water Walk"
   ]
  ],
  "spell_list_choose_from_dict": [
   [
-   "Acid Splash",
-   "Bleed",
-   "Daze",
-   "Detect Magic",
-   "Disrupt Undead",
-   "Guidance",
-   "Light",
-   "Oath of Anonymity",
-   "Read Magic",
-   "Resistance",
-   "Sift",
-   "Stabilize"
+   "Create Water",
+   "Detect Poison",
+   "Flare",
+   "Know Direction",
+   "Mending"
   ],
   [
-   "Burst Bonds",
-   "Cause Fear",
-   "Deadeye's Arrow",
-   "Divine Favor",
-   "Ear-Piercing Scream",
-   "Gorum's Armor",
-   "Horn of Pursuit",
-   "Lend Judgment",
-   "Pick Your Poison",
-   "Protection from Chaos",
-   "Sanctify Corpse",
-   "Secret Sign",
-   "Shield of Fortification",
-   "Stalwart Resolve",
-   "Touch of Combustion"
+   "Blend",
+   "Blend with Surroundings",
+   "Bowstaff",
+   "Calm Animals",
+   "Gentle Breeze",
+   "Hydraulic Push",
+   "Inner Focus",
+   "Ironbloom Sprouts",
+   "Lose the Trail",
+   "Magic Stone",
+   "Marid's Mastery",
+   "Snow Shape"
   ],
   [
-   "Blistering Invective",
-   "Consecrate",
-   "Darkness",
-   "Discovery Torch",
-   "Distressing Tone",
-   "Flickering Lights",
-   "Ghost Whip",
-   "Hidden Presence",
-   "Light Prison",
-   "Spiritual Squire",
-   "Spiritual Weapon"
+   "Aquatic Trail",
+   "Chameleon Stride",
+   "Groundswell",
+   "Hide Campsite",
+   "Neutral Buoyancy",
+   "Planetarium",
+   "Reduce Animal",
+   "Slipstream",
+   "Undetectable Trap",
+   "Water Walk, Communal"
   ],
   [
-   "Blinding Ray",
-   "Continual Flame",
-   "Damnation",
-   "Daybreak Arrow",
-   "Daylight",
-   "Litany of Righteousness",
-   "Night of Blades",
-   "Searing Light",
-   "Shield of Darkness",
-   "Spotlight",
-   "Terrible Remorse",
-   "Trial by Fire"
+   "Aqueous Orb",
+   "Chameleon Stride, Greater",
+   "Geomessage",
+   "Instant Fake",
+   "Life Current",
+   "Sebaceous Twin",
+   "Shadowmind",
+   "Sunstalker",
+   "Water Walk"
   ]
  ],
  "spell_riders_dict": {
-  "Bleed": {
+  "Flare": {
    "attack": null,
    "riders": [
-    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; targets a living creature with -[[1]] or fewer hit points that has been stabilized; the target resumes dying, taking [[1]] point of damage per round (it can be stabilized again normally); if used on a creature that is already dying, it instead takes [[1]] point of damage immediately; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates",
-    "harmless": false,
-    "type": "will"
-   }
-  },
-  "Blinding Ray": {
-   "attack": "ranged",
-   "riders": [
-    "Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates; each ray requires a separate ranged touch attack to hit; you may fire [[min(3, 1 + floor(max(0, @spells.primary.cl.total-3)/4))]] rays, which may be aimed at the same or different targets but must all be aimed at targets within [[30]] feet of each other and fired simultaneously; a target struck by a ray must succeed at a Fortitude save or be blinded for [[1]] round; a target with light blindness, light sensitivity, or otherwise vulnerable to bright light that fails its save is instead blinded for [[1d4]] rounds and takes [[ (min(5, floor(@spells.primary.cl.total/2)))d4 ]] points of damage; any creature blinded by a ray sheds light as a sunrod for the duration of its blindness; spell resistance: yes"
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates; target is dazzled for [[1]] minute; sightless creatures and creatures already dazzled are unaffected; spell resistance: yes"
    ],
    "save": {
     "dc": "",
@@ -1270,235 +1414,124 @@
     "type": "fortitude"
    }
   },
-  "Burst Bonds": {
-   "attack": "melee",
-   "riders": [
-    "Save: Fortitude DC [[ 10 + @slvl + @castMod ]] half (object); the damage against an object target is [[ (min(5, @spells.primary.cl.total))d6 ]] points, ignoring hardness of [[10]] or less; only magical restraints receive a saving throw; you can target a creature that is grappling or otherwise restraining you (such as by adhesive or the swallow whole ability) instead of an object, and you need not make a touch attack to target such a creature; you can cast this spell without making a concentration check while grappled or pinned; a targeted creature does not take damage from this spell; if you are grappled and the target creature fails its save, you may make an immediate attempt to break the grapple (but not reverse it) as a free action, with a +[[ min(5, @spells.primary.cl.total) ]] luck bonus to your CMB; if the target creature fails its save and you are restrained by an ability that originally allowed a saving throw, this spell allows a new saving throw against that effect with a +[[ min(5, floor(@spells.primary.cl.total/2)) ]] luck bonus; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "half (object)",
-    "harmless": false,
-    "type": "fortitude"
-   }
-  },
-  "Cause Fear": {
+  "Sebaceous Twin": {
    "attack": null,
    "riders": [
-    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] partial; affects only a living creature with [[5]] or fewer HD; creatures with [[6]] or more HD are immune to this effect; on a failed save the creature is frightened for [[1d4]] rounds, or shaken for [[1]] round on a successful save; cause fear counters and dispels remove fear; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "partial",
-    "harmless": false,
-    "type": "will"
-   }
-  },
-  "Consecrate": {
-   "attack": null,
-   "riders": [
-    "Cost: [[25]] gp material component (vial of holy water and [[25]] gp); Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; the DC to resist positive channeled energy within the area gains a +[[3]] sacred bonus; undead entering the area take a -[[1]] penalty on attack rolls, damage rolls, and saving throws; undead cannot be created within or summoned into the area; if the area contains an altar, shrine, or other permanent fixture dedicated to your deity, pantheon, or aligned higher power, these modifiers are doubled (+[[6]] sacred bonus to positive channeled energy DCs, -[[2]] penalty for undead in the area); if the fixture is instead dedicated to a different deity, the spell curses the area, cutting off its connection to that deity or power, and does not grant the undead-related bonuses or penalties; consecrate counters and dispels desecrate; spell resistance: no"
+    "Range: touch; a half-formed parasitic clone of the target bursts from its midsection and dangles from its body, imposing a -[[2]] penalty on Acrobatics and Climb checks for the duration; at the start of the target's turn each round, it must succeed at a Fortitude save DC [[ 10 + @slvl + @castMod ]] or take [[1]] point of Constitution damage and be sickened for that round as the twin siphons its blood; each time the target receives any healing, magical or otherwise, the spell's duration is extended by [[1]] round; each attack that deals damage to the target reduces the duration by [[1]] round; if the duration reaches [[0]] rounds in this way, the twin is violently excised from the target's body, and the target takes [[1d6]] points of bleed damage (which can be healed as normal); the effect of this spell counts as a disease effect with a DC equal to the spell's saving throw DC; spell resistance: yes"
    ],
    "save": null
   },
-  "Damnation": {
+  "Snow Shape": {
    "attack": null,
    "riders": [
-    "Save: Will DC [[ 10 + @slvl + @castMod ]] half; the damage dealt equals [[1d8]] per spell level of the most powerful effect with the evil descriptor affecting the creature or in its repertoire: a caster who prepares spells uses the highest-level evil spell prepared that day, even if already cast; a spontaneous caster uses the highest-level evil spell known, even without remaining spell slots; a creature with evil spell-like abilities uses the highest-level evil spell-like ability it can use; a creature that doesn't cast spells but is a willing beneficiary of evil spells uses the highest-level evil spell currently affecting it, including area effects such as desecrate; a creature subject to the harmful effects of an evil spell is unaffected by this unless it voluntarily accepted that spell's effects; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "half",
-    "harmless": false,
-    "type": "will"
-   }
-  },
-  "Daze": {
-   "attack": null,
-   "riders": [
-    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; affects one humanoid of [[4]] or fewer HD (humanoids with [[5]] or more HD are not affected); the target is dazed and takes no actions for [[1]] round; a dazed subject is not stunned, so attackers get no special advantage against it; after being dazed by this spell, the creature is immune to it for [[1]] minute; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates",
-    "harmless": false,
-    "type": "will"
-   }
-  },
-  "Ear-Piercing Scream": {
-   "attack": null,
-   "riders": [
-    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates daze and halves damage; target dazed for [[1]] round; [[ (min(5, floor(@spells.primary.cl.total/2)))d6 ]] sonic damage; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates daze and halves damage",
-    "harmless": false,
-    "type": "fortitude"
-   }
-  },
-  "Light Prison": {
-   "attack": null,
-   "riders": [
-    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Reflex DC [[ 10 + @slvl + @castMod ]] negates; a creature enclosed in the light prison can attack, cast spells, and otherwise act normally as long as it stays within the prison; if a creature passes through the walls of a light prison enclosing it, it takes [[1d6]] damage and is blinded for [[1]] round, with no saving throw against these effects; once a creature passes through the walls of the light prison surrounding it, the effect ends for that creature; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates",
-    "harmless": false,
-    "type": "reflex"
-   }
-  },
-  "Litany of Righteousness": {
-   "attack": null,
-   "riders": [
-    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; if the target is evil, it takes double damage from attacks made by creatures with a good aura (from a class feature or as a creature with the good subtype); if the target also has the evil subtype, when it is hit by such attacks it is also dazzled for [[1d4]] rounds; if this spell targets a nonevil creature, or one that lacks the evil subtype, it has no effect and the spell is wasted; while subject to this spell, the target cannot be the target of another spell that has the word \"litany\" in the title; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates",
-    "harmless": false,
-    "type": "will"
-   }
-  },
-  "Night of Blades": {
-   "attack": null,
-   "riders": [
-    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Reflex DC [[ 10 + @slvl + @castMod ]] half; creates an immobile wall of tiny black blades that whirl and tear into anyone who enters its space, dealing [[ (min(10, @spells.primary.cl.total))d4 ]] damage; the spell cannot be cast so that it appears in a space already occupied by a Small or larger creature; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "half",
-    "harmless": false,
-    "type": "reflex"
-   }
-  },
-  "Spotlight": {
-   "attack": null,
-   "riders": [
-    "Save: Reflex DC [[ 10 + @slvl + @castMod ]] partial — on a success the spotlight is created in the target's square but does not move with the target, hindering the Stealth checks only of creatures within that square (on a failure the effect is centered on the target and moves with it); the target's space is lit to bright light, subjecting anyone within it to any penalties normally suffered in bright light; the affected creature cannot benefit from concealment normally provided by darkness, as though illuminated by faerie fire, and takes a -[[20]] penalty on all Stealth checks for the duration; all mundane light sources, and magic light sources of 3rd level or lower, within [[20]] feet of the target's space are suppressed, shedding no light while inside the spell's affected area and reverting to their unmodified illumination levels; lasts [[@spells.primary.cl.total]] minutes; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "partial — on a success the spotlight is created in the target's square but does not move with the target, hindering the Stealth checks only of creatures within that square (on a failure the effect is centered on the target and moves with it)",
-    "harmless": false,
-    "type": "reflex"
-   }
-  },
-  "Terrible Remorse": {
-   "attack": null,
-   "riders": [
-    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] partial (see text); each round for [[@spells.primary.cl.total]] rounds, the target must succeed at a Will save or deal [[1d8]] damage plus its Strength modifier to itself using an item held in its hand or with unarmed attacks; if the target succeeds at a save, it is staggered for [[1]] round and takes a -[[2]] penalty to Armor Class, after which the spell ends; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "partial (see text)",
-    "harmless": false,
-    "type": "will"
-   }
-  },
-  "Touch of Combustion": {
-   "attack": "melee",
-   "riders": [
-    "Range: melee touch; Save: Reflex DC [[ 10 + @slvl + @castMod ]] negates catching on fire; see text for a secondary Reflex save against adjacent creatures taking fire damage; if the target fails its save it catches on fire; on the first round after the target catches fire, creatures adjacent to it (including you) must each succeed at a Reflex save or take [[1d4]] fire damage; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates catching on fire; see text for a secondary Reflex save against adjacent creatures taking fire damage",
-    "harmless": false,
-    "type": "reflex"
-   }
-  },
-  "Trial by Fire": {
-   "attack": null,
-   "riders": [
-    "Range: touch; unless the target's alignment is within one step of your deity's, the spell deals [[ (min(5, floor(@spells.primary.cl.total/2)))d6 ]] damage, half of which is fire damage and half of which results directly from divine power and is not subject to reduction by resistance to fire-based attacks; if the target has an element of its alignment in direct opposition to yours (chaos opposes law and evil opposes good), you can also attempt an Intimidate check to demoralize the target as a free action; spell resistance: yes"
+    "Range: touch; you can form a mass of snow into any shape as per stone shape, though fine details usually aren't possible; a successful Craft (weapons) check (DC as normally listed for that skill, made by you at the time of casting) allows you to create a bladed weapon instead; a failed check means the spell is still cast, but the weapon created is malformed and useless; this spell can only be used to craft weapons, not more precise tools or elaborate armor; the created item solidifies into super-hard ice with hardness [[5]] and [[10]] hit points per inch of thickness, and takes double damage from fire; anyone using an ice weapon takes a -[[2]] penalty on attacks due to its slippery, unwieldy nature, but the weapon deals [[1]] additional point of cold damage; the weapon lasts [[24]] hours before melting into uselessness; spell resistance: no"
    ],
    "save": null
   }
  },
  "spellbooks": [
   {
-   "capped_level": 8,
-   "casting_level_num": 8,
+   "capped_level": 7,
+   "casting_level_num": 7,
    "casting_level_string": "mid",
    "casting_stat": "wis",
-   "display": "Inquisitor",
+   "display": "Hunter",
    "divine": true,
    "highest_spell_known": 3,
-   "level": 8,
-   "name": "inquisitor",
+   "level": 7,
+   "name": "hunter",
    "spell_list_choose_from": [
     [
-     "Acid Splash",
-     "Bleed",
-     "Daze",
-     "Detect Magic",
-     "Disrupt Undead",
-     "Guidance",
-     "Light",
-     "Oath of Anonymity",
-     "Read Magic",
-     "Resistance",
-     "Sift",
-     "Stabilize"
+     "Create Water",
+     "Detect Poison",
+     "Flare",
+     "Know Direction",
+     "Mending"
     ],
     [
-     "Burst Bonds",
-     "Cause Fear",
-     "Deadeye's Arrow",
-     "Divine Favor",
-     "Ear-Piercing Scream",
-     "Gorum's Armor",
-     "Horn of Pursuit",
-     "Lend Judgment",
-     "Pick Your Poison",
-     "Protection from Chaos",
-     "Sanctify Corpse",
-     "Secret Sign",
-     "Shield of Fortification",
-     "Stalwart Resolve",
-     "Touch of Combustion"
+     "Blend",
+     "Blend with Surroundings",
+     "Bowstaff",
+     "Calm Animals",
+     "Gentle Breeze",
+     "Hydraulic Push",
+     "Inner Focus",
+     "Ironbloom Sprouts",
+     "Lose the Trail",
+     "Magic Stone",
+     "Marid's Mastery",
+     "Snow Shape"
     ],
     [
-     "Blistering Invective",
-     "Consecrate",
-     "Darkness",
-     "Discovery Torch",
-     "Distressing Tone",
-     "Flickering Lights",
-     "Ghost Whip",
-     "Hidden Presence",
-     "Light Prison",
-     "Spiritual Squire",
-     "Spiritual Weapon"
+     "Aquatic Trail",
+     "Chameleon Stride",
+     "Groundswell",
+     "Hide Campsite",
+     "Neutral Buoyancy",
+     "Planetarium",
+     "Reduce Animal",
+     "Slipstream",
+     "Undetectable Trap",
+     "Water Walk, Communal"
     ],
     [
-     "Blinding Ray",
-     "Continual Flame",
-     "Damnation",
-     "Daybreak Arrow",
-     "Daylight",
-     "Litany of Righteousness",
-     "Night of Blades",
-     "Searing Light",
-     "Shield of Darkness",
-     "Spotlight",
-     "Terrible Remorse",
-     "Trial by Fire"
+     "Aqueous Orb",
+     "Chameleon Stride, Greater",
+     "Geomessage",
+     "Instant Fake",
+     "Life Current",
+     "Sebaceous Twin",
+     "Shadowmind",
+     "Sunstalker",
+     "Water Walk"
     ]
    ],
    "spells_known_list": [],
    "spells_per_day_list": [
+    5,
     12,
-    15,
-    11,
+    10,
+    9
+   ],
+   "spells_prepared_per_level": [
+    5,
+    12,
+    10,
+    9
+   ]
+  },
+  {
+   "capped_level": 4,
+   "casting_level_num": 1,
+   "casting_level_string": "low",
+   "casting_stat": "wis",
+   "display": "Ranger",
+   "divine": true,
+   "highest_spell_known": 1,
+   "level": 4,
+   "name": "ranger",
+   "spell_list_choose_from": [
+    [
+     "Alleviate Addiction",
+     "Blend",
+     "Delay Poison",
+     "Detect Radiation",
+     "Heightened Awareness",
+     "Hobble",
+     "Inner Focus",
+     "Longstrider",
+     "Lose the Trail",
+     "Magic Fang",
+     "Marid's Mastery",
+     "Residual Tracking"
+    ]
+   ],
+   "spells_known_list": [],
+   "spells_per_day_list": [
+    3,
     12
    ],
    "spells_prepared_per_level": [
-    12,
-    15,
-    11,
     12
    ]
   },
@@ -1516,188 +1549,136 @@
     [
      "Create Water",
      "Detect Magic",
-     "Flare",
+     "Detect Poison",
+     "Grasp",
      "Know Direction",
      "Light",
-     "Resistance",
+     "Mending",
+     "Purify Food and Drink",
      "Spark",
-     "Stabilize"
+     "Stabilize",
+     "Virtue"
     ],
     [
-     "Burning Disarm",
-     "Charm Animal",
-     "Deadeye's Arrow",
-     "Faerie Fire",
-     "Flare Burst",
-     "Gentle Breeze",
+     "Blend",
+     "Blend with Surroundings",
+     "Damp Powder",
+     "Entangle",
      "Hydraulic Push",
-     "Produce Flame",
-     "Thunderstomp",
-     "Touch of Combustion",
-     "Tracking Mark"
+     "Marid's Mastery",
+     "Mudball",
+     "Snow Shape"
     ],
     [
-     "Aggressive Thundercloud",
-     "Burning Gaze",
+     "Barkskin",
+     "Dousing Rain",
      "Fiery Runes",
-     "Flame Blade",
-     "Flaming Sphere",
-     "Frigid Touch",
-     "Gozreh's Trident",
-     "Gust of Wind",
-     "Gusting Sphere",
-     "Pale Flame"
+     "Fury of the Sun",
+     "Inner Focus",
+     "Natural Rhythm",
+     "Planetarium",
+     "Restoration, Lesser",
+     "Slipstream",
+     "Stone Discus"
     ]
    ],
    "spells_known_list": [],
    "spells_per_day_list": [
-    8,
     11,
+    8,
     10
    ],
    "spells_prepared_per_level": [
-    8,
     11,
+    8,
     10
-   ]
-  },
-  {
-   "capped_level": 3,
-   "casting_level_num": 3,
-   "casting_level_string": "mid",
-   "casting_stat": "cha",
-   "display": "Bard",
-   "divine": false,
-   "highest_spell_known": 1,
-   "level": 3,
-   "name": "bard",
-   "spell_list_choose_from": [
-    [
-     "Dancing Lights",
-     "Flare",
-     "Light",
-     "Lullaby",
-     "Mage Hand",
-     "Spark"
-    ],
-    [
-     "Aphasia",
-     "Assumed Likeness",
-     "Flare Burst",
-     "Saving Finale"
-    ]
-   ],
-   "spells_known_list": [
-    6,
-    4
-   ],
-   "spells_per_day_list": [
-    0,
-    3
-   ],
-   "spells_prepared_per_level": [
-    0,
-    3
    ]
   }
  ],
  "spells_prepared_per_level": [
+  5,
   12,
-  15,
-  11,
-  12
+  10,
+  9
  ],
  "sphere_boons": [
-  "Overcharge"
+  "Easy Focus",
+  "Fortified Casting"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
-  "Wild Magic",
-  "Skilled Casting",
+  "Magical Signs",
+  "Draining Casting",
+  "Somatic Casting",
   "Verbal Casting"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Wild Magic",
-  "Skilled Casting",
+  "Magical Signs",
+  "Draining Casting",
+  "Somatic Casting",
   "Verbal Casting",
-  "Overcharge"
+  "Easy Focus",
+  "Fortified Casting"
  ],
  "spheres_chosen": [],
- "stances_chosen": [],
+ "stances_chosen": [
+  "Armaments of the Empire",
+  "Stance of the Sunlight Shield",
+  "Battle Against the Sun",
+  "The Caged Sun"
+ ],
  "story_feat_tax_dict": {
-  "Throw Anything": [
-   "ricochet splash weapon"
+  "Lightning Reflexes": [
+   "improved lightning reflexes"
   ]
  },
  "story_feats": [
-  "Uncanny Activation",
-  "Throw Anything",
-  "Shake It Off"
+  "Intensified Spell",
+  "Discipline Focus",
+  "Lightning Reflexes"
  ],
- "str": 17,
+ "str": 16,
  "teamwork_feat_labels": [
-  "Inquisitor 3",
-  "Inquisitor 6"
+  "Hunter 3",
+  "Hunter 6"
  ],
  "teamwork_feats": [
-  "Martial Training I",
-  "Cooperative Crafting"
+  "Eschew Materials",
+  "Fleet"
  ],
  "total_level": 14,
- "total_rolled_hp": 104,
+ "total_rolled_hp": 112,
  "trainer_calibers": [
-  3,
   2,
-  1,
   3
  ],
  "trainer_feat_labels": [
   "(Trainer 1)",
   "(Trainer 1)",
-  "(Trainer 1)",
   "(Trainer 2)",
   "(Trainer 2)",
-  "(Trainer 3)",
-  "(Trainer 4)",
-  "(Trainer 4)",
-  "(Trainer 4)"
+  "(Trainer 2)"
  ],
  "trainer_feat_tax_dict": {
-  "Dimensional Agility": [
-   "dimensional assault",
-   "dimensional dervish",
-   "dimensional maneuvers",
-   "dimensional savant"
-  ],
-  "Endurance": [
-   "altitude affinity",
-   "cold celerity",
-   "diehard",
-   "drunken brawler",
-   "fast healer",
-   "stalwart",
-   "survivor"
+  "Brew Potion": [
+   "create sanguine elixir"
   ]
  },
  "trainer_feats": [
-  "Intensified Spell",
-  "Sin Eater",
-  "Lingering Shadows",
-  "Equipment Trick",
-  "Endurance",
-  "Dimensional Agility",
-  "Shaping Focus",
-  "Firebrand",
-  "Aquatic Ancestry"
+  "Cosmopolitan",
+  "Brew Potion",
+  "Sickening Spell",
+  "Miniature Reach",
+  "Uncanny Concentration"
  ],
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],
- "weapon_name": "Quarterstaff",
- "weight_number": 152,
+ "weapon_name": "Scizore",
+ "weight_number": 170,
  "wis": 21,
- "younger_brothers": " you have 3 younger brothers",
- "younger_sisters": " you have 3 younger sisters"
+ "younger_brothers": " you have 0 younger brothers",
+ "younger_sisters": " you have 2 younger sisters"
 }

@@ -1760,6 +1760,11 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				# (with the 7th-level advancement block), the level chassis row from
 				# animal_companion.json, and the rolled feats (previously discarded).
 				# None when the druid went domain or there is no druid.
+				# FROZEN, DELIBERATELY (#37 grill, 2026-08-03). This key is the deprecated
+				# alias D7 keeps for the sheet repo's #15 consumer; `name`, `sex`, `gear`
+				# and `gear_source` live only on `bonded_creatures` (#32). Do not "fix" the
+				# missing name here — a deprecated key that is never worse than its
+				# replacement never dies, and the name is the only reason to migrate.
 				"animal_companion": ({
 					"species": character.chosen_animal,
 					"kind": getattr(character, "chosen_animal_kind", None),
@@ -1767,6 +1772,14 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 					"chassis": character.companion_info,
 					"feats": sorted(animal_companion_feats) if animal_companion_feats else [],
 				} if getattr(character, "chosen_animal", None) else None),
+				# D7 / #32: the list that replaces the singular alias above. One entry per bonded
+				# creature -- companion, mount, familiar, eidolon -- INCLUDING the absences, whose
+				# `outcome` is the only record of why a druid has a domain instead of a wolf.
+				# `stats` is the finished block from #31 and is FINAL: D2 makes this the sole source
+				# of a companion's numbers, because the standalone web sheet has no game system to
+				# derive them from. A renderer displays them; it never re-derives them, and it never
+				# re-applies `stats.size_change`, which is provenance for numbers already totalled in.
+				"bonded_creatures": getattr(character, "bonded_creatures", None) or [],
 				"full_domain": full_domain,
 				"school": school,
 				"opposing_school": opposing_school,

@@ -26,6 +26,7 @@
  "bloodline": "N/A",
  "bloodline_feat_labels": [],
  "bloodline_feats": [],
+ "bonded_creatures": [],
  "buff_gaps": [],
  "build_archetype": "Trickster",
  "build_tactics": "Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.",
