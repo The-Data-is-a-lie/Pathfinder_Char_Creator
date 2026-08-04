@@ -31,9 +31,10 @@ numbers. **Keep this file updated whenever files, pools, or pipelines move.**
 8. Foundry buff export: feat/equipment/class-feature `*_changes_dict` + `*_conditionals_dict`
    built from the `effects`/`changes` JSONs (grep `_load_buffmap`).
 
-Flask: `Backend/app.py` (`POST /update_character_data`, legacy `/sheet`, `GET /license` — the OGL
+Flask: `Backend/app.py` (`POST /update_character_data`, `GET /license` — the OGL
 text payloads point at via `license_url`, required because serving extracted 3pp mechanics is
-Distribution under OGL §10); factory
+Distribution under OGL §10 — plus `/backstory-stats` and a signpost `/`. The in-repo character
+sheet and `/sheet` were deleted; the standalone sheet is the only web front end); factory
 `Backend/start_py.py`. Static data loading: `Backend/utils/data.py`. Race data: `Backend/utils/race.py`.
 
 ## Class-choice buckets (talents/powers/hexes/...)
@@ -274,8 +275,12 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
   User-facing walkthrough: the module repo's `README.md`.
 - FoundryVTT module `pf1e_random_char_generator`: repo in `%LOCALAPPDATA%`-adjacent
   `FoundryVTT\Data\modules` (NOT Documents\GitHub); GitLab MRs; release via its `release.ps1`.
-- Web sheet: standalone `Pathfinder-Character-Sheet` repo in `FoundryVTT\Data`
-  (Flask `/sheet` is the legacy copy).
+- Web sheet: standalone `Pathfinder-Character-Sheet` repo in `FoundryVTT\Data` — the only web front
+  end (the Flask copy at `/sheet` was deleted and will not be revived). One file per tab under
+  `scripts/tabs/`, each exposing `window.SheetTab<Name>`; register a new one in the `TABS` array in
+  `scripts/sheet.js` and add its `<script>` to `index.html`. A tab that returns `null` for an
+  irrelevant character gets an `emptyState(...)` from its `TABS` entry (`path-of-war.js`,
+  `psionics.js`).
 - Backend deploy: Docker Hub image + Render, via `deploy.ps1`.
 
 ## Docs & rules

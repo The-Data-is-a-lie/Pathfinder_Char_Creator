@@ -17,11 +17,15 @@ a year, in three different ways, and nothing noticed:
   else -- while `campaign_lore.json` carried Ieso lore no character could ever reach.
 - It stored a `.title()`d form, which is not a key for **Tal-falko** or **Kaeru no Tochi**, so
   `name_chooser` fell through and drew BOTH names from a random OTHER region (~a fifth of NPCs).
-- The Foundry dialog and `sheet.js` send **Grundykin Damplands** and **Dust Cairn**, which match no
-  key, and unmatched input silently randomised.
+- The Foundry dialog and the web sheet send **Grundykin Damplands** and **Dust Cairn**, which match
+  no key, and unmatched input silently randomised.
 
 Every one of those is invisible from the data files alone -- a wrong region looks exactly like a
 right one -- so this script drives the resolver itself and reads the clients' own option lists.
+
+Both clients now live OUTSIDE this repo (the standalone web sheet, and the Foundry module's
+dialog), so a machine without them checked out prints `SKIPPED:` for each and validates the rest.
+Point PF_FOUNDRY_DATA at the FoundryVTT Data directory if they are somewhere non-default.
 
 Checks (all must pass; exits 1 with a report otherwise):
 - Both files parse as UTF-8 JSON and cover the SAME set of regions (name_chooser indexes both by
@@ -72,12 +76,23 @@ from utils.data import regions as DATA_REGIONS, REGION_ALIASES   # noqa: E402
 
 GENDERS = ('Male', 'Female')
 
-# Where an in-repo client declares what a user may pick. Each is (label, path, extractor).
-SHEET_JS = os.path.join(HERE, '..', 'static', 'scripts', 'sheet.js')
-INDEX_HTML = os.path.join(HERE, '..', 'templates', 'index.html')
+# Where a client declares what a user may pick. BOTH now live outside this repo: the in-repo web
+# sheet and its generate form were deleted in favour of the standalone Pathfinder-Character-Sheet,
+# and the Foundry dialog never lived here. That is why a missing client is a WARNING below rather
+# than an error -- a container or a fresh clone has neither, and the check is worth keeping for the
+# machine that does. Override the root with PF_FOUNDRY_DATA when they live somewhere else.
+FOUNDRY_DATA = os.environ.get(
+    'PF_FOUNDRY_DATA',
+    os.path.join(os.environ.get('LOCALAPPDATA', os.path.expanduser('~')), 'FoundryVTT', 'Data'))
+WEB_SHEET_DATA_JS = os.path.join(FOUNDRY_DATA, 'Pathfinder-Character-Sheet', 'scripts', 'data.js')
+MODULE_BUTTON_JS = os.path.join(FOUNDRY_DATA, 'modules', 'pf1e_random_char_generator',
+                                'scripts', 'button.js')
 
 # Sentinels a client legitimately offers for "surprise me"; they are not region names.
 SENTINELS = {'', 'random'}
+
+# Client checks that could not run because the client is not on this machine. Always printed.
+SKIPPED = []
 
 # How many no-input draws to take. Every region has a ~10% share, so 500 makes a missing one a
 # 1-in-10^22 fluke rather than a flaky test.
@@ -127,30 +142,48 @@ def _block(body, pattern, where):
     return found.group(1)
 
 
-def sheet_js_regions():
-    """What the web sheet POSTs: its REGIONS labels, mapped through REGION_VALUES."""
-    body = read(SHEET_JS)
-    listed = _block(body, r'const REGIONS\s*=\s*\[(.*?)\]', 'sheet.js')
-    mapped = _block(body, r'const REGION_VALUES\s*=\s*\{(.*?)\}', 'sheet.js')
-    if listed is None or mapped is None:
+def web_sheet_regions():
+    """What the standalone web sheet offers: the REGIONS list it fills its region <select> from.
+    It sends the label verbatim, so the label IS the value the backend has to resolve."""
+    body = read(WEB_SHEET_DATA_JS)
+    listed = _block(body, r'const REGIONS\s*=\s*\[(.*?)\]', 'web sheet data.js')
+    if listed is None:
         return []
     labels = re.findall(r"'([^']*)'", listed)
-    values = dict(re.findall(r"'([^']*)'\s*:\s*'([^']*)'", mapped))
     if not labels:
-        err('sheet.js: REGIONS parsed as empty')
-    return [values.get(label, label) for label in labels]
+        err('web sheet data.js: REGIONS parsed as empty')
+    return labels
 
 
-def index_html_regions():
-    """The option values of the region <select> on the page served at `/`."""
-    body = read(INDEX_HTML)
-    block = _block(body, r'<select name="input2">(.*?)</select>', 'index.html')
+def module_dialog_regions():
+    """The option values of the region <select> in the Foundry module's generate dialog. This is
+    the client the original bug was found in -- it sent "Grundykin Damplands" / "Dust Cairn",
+    which matched no key, and an unmatched region silently randomised."""
+    body = read(MODULE_BUTTON_JS)
+    block = _block(body, r'<select id="character-region">(.*?)</select>', 'module button.js')
     if block is None:
         return []
     values = re.findall(r'<option value="([^"]*)"', block)
     if not values:
-        err('index.html: the region <select> has no options')
+        err('module button.js: the region <select> has no options')
     return values
+
+
+def client_region_lists():
+    """[(label, offered)] for every client this machine can actually see. A client that is not
+    checked out here is reported and skipped -- see FOUNDRY_DATA."""
+    out = []
+    for label, path, extract in (
+            ('web sheet', WEB_SHEET_DATA_JS, web_sheet_regions),
+            ('Foundry module', MODULE_BUTTON_JS, module_dialog_regions)):
+        if not os.path.exists(path):
+            # NOT folded into `warnings`: those are counted, not printed, and a check that quietly
+            # stops running is the failure mode this whole script exists to prevent.
+            SKIPPED.append(f'{label}: not checked out at {path} -- its region list was NOT '
+                           'validated (set PF_FOUNDRY_DATA to point at it)')
+            continue
+        out.append((label, extract()))
+    return out
 
 
 def check_regions(first):
@@ -184,7 +217,7 @@ def check_regions(first):
     # region_chooser what it returned cannot distinguish a hit from a miss. Apply the resolution
     # rule itself, using the same slug function and the same alias table the resolver uses.
     by_slug = {slug(name): name for name in canonical}
-    for label, offered in (('sheet.js', sheet_js_regions()), ('index.html', index_html_regions())):
+    for label, offered in client_region_lists():
         covered = set()
         for value in offered:
             if value.strip().lower() in SENTINELS:
@@ -234,6 +267,9 @@ def main():
         total += len(names) if isinstance(names, list) else 0
 
     check_regions(first)
+
+    for s in SKIPPED:
+        print(f'SKIPPED: {s}')
 
     if errors:
         for e in errors:

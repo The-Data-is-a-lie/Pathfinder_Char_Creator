@@ -401,6 +401,24 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     the number Foundry derives HP, attack bonus and saves from — and the table it uses to do that is
     the same table the generator read.
 
+### Removed
+- **The in-repo character sheet and `GET /sheet` are gone.** The standalone
+  *Pathfinder-Character-Sheet* front end superseded this copy some time ago, and the copy had been
+  quietly rotting behind it: its generate form posted to `/execute`, a route that does not exist,
+  and loaded two scripts (`saveFormData.js`, `populateForm.js`) that were not in `Backend/static/`
+  either — so the page had been non-functional apart from its link to `/sheet`. Deleted:
+  `templates/sheet.html`, `static/scripts/sheet.js`, `static/styles/sheet.css`, and the route.
+  New features land on the standalone sheet only; this one will not be extended again.
+  - **`/` still answers**, now as a signpost page naming the API endpoints, so the deployment's root
+    does not start 404ing on a health check. `/license`, `/backstory-stats` and
+    `/update_character_data` are untouched. *Rejected:* removing `/` too and going pure API.
+  - **`validate_name_data.py` follows the clients out of the repo.** Its region-reachability check
+    read the two deleted files, so it now reads the standalone sheet's `REGIONS` and the Foundry
+    module's dialog instead — both real clients, both outside this repo. A machine without them
+    checked out prints a loud `SKIPPED:` line per client rather than folding it into the warning
+    count, because a check that quietly stops running is the exact failure this script exists to
+    catch. `PF_FOUNDRY_DATA` overrides where it looks.
+
 ### Fixed
 - **Psionic characters imported into Foundry attacked at half their proper bonus.** All twelve
   psionic classes arrived carrying the same progression — low BAB, a d6 hit die, 2 skill ranks per

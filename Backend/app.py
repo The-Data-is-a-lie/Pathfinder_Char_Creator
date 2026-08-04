@@ -110,14 +110,10 @@ CORS(app,
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    # A signpost, not an application. This backend is a JSON API; the character sheet that used to
+    # live at /sheet was retired in favour of the standalone Pathfinder-Character-Sheet front end.
+    # The route stays so the deployment's root answers rather than 404s.
     return render_template('index.html')
-
-@app.route('/sheet', methods=['GET'])
-@limiter.exempt
-def sheet():
-    # Read-only pf1-style character sheet; renders client-side from the JSON that
-    # POST /update_character_data returns (static/scripts/sheet.js).
-    return render_template('sheet.html')
 
 @app.route('/license', methods=['GET'])
 @limiter.exempt

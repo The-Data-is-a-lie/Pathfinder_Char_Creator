@@ -2381,8 +2381,8 @@ psionic_pp_tables = {
 occult_classes = ["occultist", "kineticist", "medium", "mesmerist", "psychic", "spiritualist", ]
 
 # Good-save progressions per class (a class adds 2 + level//2 to a listed save, level//3
-# otherwise). Must stay in sync with GOOD_SAVES in Backend/static/scripts/sheet.js, which keeps a
-# copy only as a fallback for cached payloads that predate the exported save_bases.
+# otherwise). The standalone web sheet keeps a GOOD_SAVES copy only as a fallback for cached
+# payloads that predate the exported save_bases; the payload's save_bases is the real contract.
 good_saves = {
     'alchemist': ['fort', 'ref'], 'antipaladin': ['fort', 'will'], 'arcanist': ['will'],
     'barbarian': ['fort'], 'barbarian (unchained)': ['fort'], 'bard': ['ref', 'will'],

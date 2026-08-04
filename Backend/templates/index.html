@@ -3,68 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Form</title>
-
-<!-- Include JavaScript files for the form -->
-    <script src="{{ url_for('static', filename='scripts/saveFormData.js') }}" defer></script>
-    <script src="{{ url_for('static', filename='scripts/populateForm.js') }}" defer></script>
-
-
-
-
-    
-
-
+    <title>Pathfinder 1E Randomized Character Generator</title>
 </head>
 <body>
-
-    <form action="/execute" method="post" onsubmit="saveFormData()">
-        Create a new character (y/n): <input type="text" name="input1"><br>
-        <!-- Option VALUES are the canonical region keys (utils/data.py::regions); the labels may read
-             however they like. A number was accepted here for years and resolved to nothing, so every
-             region choice on this page was silently discarded. validate_name_data.py gates this list. -->
-        Select region: <select name="input2">
-            <option value="">Random</option>
-            <option value="Tal-falko">Tal-falko</option>
-            <option value="Dolestan">Dolestan</option>
-            <option value="Sojoria">Sojoria</option>
-            <option value="Ieso">Ieso</option>
-            <option value="Spire">Spire</option>
-            <option value="Feyador">Feyador</option>
-            <option value="Esterdragon">Esterdragon</option>
-            <option value="Grundy">Grundykin Damplands</option>
-            <option value="Dust-Cairn">Dust Cairn</option>
-            <option value="Kaeru no Tochi">Kaeru no Tochi</option>
-        </select><br>
-        Select Race ['Dwarf', 'Elf', 'Gnome', 'Half-Elf', 'Halfling', 'Half-Orc', 'Human', 'Aasimar', 'Aquatic Elf', 'Catfolk', 'Changeling', 'Dhampir', 'Drow', 'Fetchling', 'Gathlain', 'Ghoran', 'Gillman', 'Goblin', 'Grippli', 'Hobgoblin', 'Ifrit', 'Kitsune', 'Kobold', 'Locathah', 'Merfolk', 'Monkey Goblin', 'Nagaji', 'Orc', 'Oread', 'Ratfolk', 'Sahuagin', 'Skinwalker', 'Strix', 'Svirfneblin', 'Sylph', 'Syrinx', 'Tengu', 'Tiefling', 'Triaxian', 'Triton', 'Undine', 'Vanara', 'Vine Leshy', 'Vishkanya', 'Wayang', 'Wyrwood', 'Wyvaran', 'Yaddithian']: <input type="text" name="input3"><br>
-        please type a class name to select a class, or type 0 for a random class: <input type="text" name="input4"><br>
-        Do you want to multiclass (Y/N): <input type="text" name="input5"><br>
-        If you want to choose an alignment, type: CG CN CE NG N NE LG LN LE: <input type="text" name="input6"><br>
-        If you want to choose a gender, type: Male or Female: <input type="text" name="input7"><br>
-        Truly Radndom feats?: <input type="text" name="input8"><br>
-        How many dice would you like to roll?: <input type="number" name="input9"><br>
-        How many sides should each die have?: <input type="number" name="input10"><br>
-        Enter the highest level you want the char to be: <input type="number" name="input11"><br>
-        Enter the lowest level you want the char to be: <input type="number" name="input12"><br>
-        Please input a desired number for gold, otherwise we will use the amount suggest by Paizo's rules for a PC of that level: <input type="number" name="input13"><br>
-
-    <button type="submit">Execute</button>
-</form>
-
-<pre>
-    {% if output %}
-        {{ output }}
-    {% endif %}
-    {% if error %}
-        {{ error }}
-    {% endif %}
-</pre>
-
-<p><a href="/sheet">Character Sheet (generate &amp; view)</a></p>
-<p><a href="/results">View Results</a></p>
-<p><a href="/test_html_get_request">View test_html_get_request</a></p>
-<p><a href="/get_character_data">View get_character_data</a></p>
-
-
+    <h1>Pathfinder 1E Randomized Character Generator</h1>
+    <p>This is a JSON API, not an application. Generate a character by POSTing the input values to
+       <code>/update_character_data</code>.</p>
+    <p>The character sheet that used to live at <code>/sheet</code> has been retired. Its replacement
+       is the standalone <em>Pathfinder-Character-Sheet</em> front end, which points at this backend.</p>
+    <ul>
+        <li><a href="/license">/license</a> — the Open Game License and its section 15 (OGL §10)</li>
+        <li><a href="/backstory-stats">/backstory-stats</a> — backstory API usage tally</li>
+    </ul>
 </body>
 </html>
