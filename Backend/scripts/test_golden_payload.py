@@ -71,7 +71,14 @@ CONFIGS = {
                     userInput_gender='male', high_level=16, low_level=16, gold_num=400000),
     # Multiclass divine caster + Spheres of Power: spellbooks, bonus spells, domains, spell changes
     # and riders, magic talents, mana pool, casting tradition.
-    'caster': dict(_BASE, seed=5004, userInput_race='Human', class_choice='cleric',
+    #
+    # RESEEDED 2026-08-04 (was 5004). Seven new classes in the pool (spec section 12) realigned the
+    # multiclass roll and 5004's witch became a brawler, leaving ONE spellbook -- in the only golden
+    # that pins two, and the only one anywhere that covers an ARCANE spellbook at all. 5002 rolls
+    # summoner (unchained) 9 / cleric 6, which keeps the pairing that matters: an arcane spontaneous
+    # book beside a divine prepared one. Re-swept 5000-5399 on "two real casters"; do not edit this
+    # prose to match a future roll, re-sweep.
+    'caster': dict(_BASE, seed=5002, userInput_race='Human', class_choice='cleric',
                    chosen_BAB='medium', multi_class='Y', alignment_input='NG',
                    userInput_gender='female', high_level=15, low_level=15,
                    gold_num=40000, spheres_flag='Y'),
@@ -99,15 +106,14 @@ CONFIGS = {
     # ladder, the archetype effects, the chassis) had NO golden coverage at all, which is how the
     # stacking defect below survived review.
     #
-    # This seed rolls druid 6 (Nature Priest) / ranger 6 (Ilsurian Archer) / hunter 2 (Courtly
-    # Hunter) -- all THREE companion-granting classes at once, and it covers three things no other
-    # golden does:
-    #   * a STACK. The ranger's level - 3 and the hunter's own level merge into one companion at
+    # This seed rolls druid 4 (Elemental Ally) / magus 4 / ranger 4 / samurai 2 (Warrior Poet), and
+    # it covers three things no other golden does:
+    #   * a STACK. The druid's own `level` and the ranger's `level - 3` merge into one companion at
     #     effective level 5, so the chassis MUST be re-read there (hd 5) rather than left at either
     #     class's own level, which is exactly what `_stack` used to do.
-    #   * an ARCHETYPE-REMOVED BOND. Nature Priest trades the druid's companion away, so that
-    #     grantor emits an ABSENCE entry (effective_level 0, species null) beside the real one --
-    #     the one payload where both shapes appear together.
+    #   * an ARCHETYPE-REMOVED BOND. Warrior Poet trades the samurai's MOUNT away, so that grantor
+    #     emits an ABSENCE entry (effective_level 0, species null) beside the real one -- the one
+    #     payload where both shapes appear together, and here they are different creature TYPES.
     #   * two different `effective_level` expressions in the same stack.
     #
     # RESEEDED 2026-08-03 (was 7323, itself a reseed of 7275). Opening the random pool to the six
@@ -124,30 +130,40 @@ CONFIGS = {
     # wolf's feats must never churn its master's equipment again, and this is the last time they do.
     # THIS golden is the only one the change moved -- the other six roll no bonded creature, so they
     # never paid the old cost. (Unrelated uncommitted occult work had already re-baselined `caster`
-    # and `manifester` in the working tree; do not read those diffs as belonging to D16.) Within the
-    # companion the identity is stable -- still a hypersloth at effective level 5 -- and hp 45 -> 50
-    # is Toughness folding in under D14.
-    'companion': dict(_BASE, seed=7971, userInput_race='Human', class_choice='druid',
+    # and `manifester` in the working tree; do not read those diffs as belonging to D16.)
+    #
+    # RESEEDED 2026-08-04 (was 7971, itself a reseed of 7323 and 7275). Seven new classes in the
+    # pool (spec section 12) realigned the roll for the third time: 7971's ranger and hunter both
+    # became psionic classes, so the stack this golden EXISTS for collapsed to a single grantor.
+    #
+    # The re-sweep changed the predicate, and that is the durable part. The old one was "rolls druid
+    # + ranger + hunter", which is not what the fixture is for -- it is only how the coverage
+    # happened to arrive at three different seeds, and it is why three seeds in a row silently
+    # stopped covering it. 7000-9500 was swept on the COVERAGE instead: an entry with 2+
+    # `contributors`, an `effective_level: 0` absence entry, and a real one. Sweep that, not a
+    # class list.
+    'companion': dict(_BASE, seed=7899, userInput_race='Human', class_choice='druid',
                       chosen_BAB='medium', multi_class='Y', alignment_input='NG',
                       userInput_gender='female', high_level=14, low_level=14),
     # A MANIFESTER, AND A POINTS-ONLY ONE. The six configs above all carry `manifesters: []`, so
     # power selection -- the pool filter, the level-weighted pick, the discipline bias, the
     # powers_by_level buckets both renderers group on -- had no pinned output anywhere.
     #
-    # This seed rolls psion 7 / aegis 7, which is the pair worth pinning: "manifester" is three
-    # shapes (utils/class_func/psionics.py) and one character covers two of them. The psion carries
-    # powers, a mandated discipline and the 'high' power-point progression; the aegis carries power
-    # points and NO powers, the shape a naive renderer drops on the floor. Two entries also means
-    # the Foundry module has to fill two manifester books rather than assuming one.
+    # This seed rolls psion 5 / aegis 5 / barbarian 4, and psion+aegis is the pair worth pinning:
+    # "manifester" is three shapes (utils/class_func/psionics.py) and one character covers two of
+    # them. The psion carries powers, a mandated discipline and the 'high' power-point progression;
+    # the aegis carries power points and NO powers, the shape a naive renderer drops on the floor.
+    # Two entries also means the Foundry module has to fill two manifester books rather than
+    # assuming one. If this comment stops matching the golden, the RNG stream moved: re-sweep, do
+    # not edit the prose.
     #
-    # Chosen by sweeping 8000-8090 for a psion+aegis pair and taking the richest. If this comment
-    # stops matching the golden, the RNG stream moved: re-sweep, do not edit the prose.
-    #
-    # RESEEDED 2026-08-03 (was 8018). The six Occult Adventures classes entering the random pool
-    # realigned the multiclass roll and 8018's aegis became a wizard, leaving a single manifester
-    # and no coverage at all of the points-only shape. The re-sweep of the same 8000-8090 range
-    # found two psion+aegis pairs; 8041 is the one with powers (18), 8087 has none.
-    'manifester': dict(_BASE, seed=8041, userInput_race='Human', class_choice='psion',
+    # RESEEDED 2026-08-04 (was 8041, itself a reseed of 8018). Seven new classes in the pool (spec
+    # section 12) realigned the multiclass roll and 8041's aegis became a dread -- the same failure
+    # as the 8018 reseed, one pool change later. Re-swept 8000-8399: 8045 rolls FOUR manifesters
+    # (voyager/highlord/aegis/psion, all thin at levels 5/4/3/2) and 8133 mixes in a warpriest
+    # spellbook that duplicates `caster`'s coverage. 8194 is the clean psion+aegis pair -- 4 power
+    # levels on the psion, none on the aegis, and a barbarian that contributes nothing psionic.
+    'manifester': dict(_BASE, seed=8194, userInput_race='Human', class_choice='psion',
                        chosen_BAB='low', multi_class='Y', alignment_input='NG',
                        userInput_gender='female', high_level=14, low_level=14),
 }

@@ -173,9 +173,19 @@ base_classes = ["alchemist", "antipaladin", "arcanist", "barbarian", "barbarian 
 # gates the whole spellbook on `name in base_classes`. The KINETICIST is deliberately absent: the
 # pf1 class Item carries no `casting` block at all, agreeing with the comment at caster_mod that
 # burn is a Constitution-priced resource the caster map cannot express.
-                "occultist", "medium", "mesmerist", "psychic", "spiritualist"]
+                "occultist", "medium", "mesmerist", "psychic", "spiritualist",
+# The adept is the only NPC class that casts. Its spell list is the `adept` column that already
+# existed in data/spells.csv (72 spells, orisons through 5th); see build_npc_class_data.py for why
+# its spells_per_day row is RAW's rather than the pf1 progression its class Item advertises.
+                "adept",
+# The omdura and the vampire hunter, 2026-08-04. Neither has a column of its own in data/spells.csv
+# and neither needs one -- class_for_spells_attr points them at the cleric and inquisitor columns,
+# the same aliasing the warpriest, oracle, witch and skald have always used. Their class Items in
+# pf-collab-content carry no `casting` block, so build_collab_class_data.py overrides the tier and
+# fails loudly if the pack ever ships one that disagrees.
+                "omdura", "vampire hunter"]
 
-divine_casters = ['antipaladin', 'cleric', 'druid', 'oracle', 'hunter' ,'inquisitor', 'paladin', 'ranger', 'shaman', 'warpriest']
+divine_casters = ['antipaladin', 'cleric', 'druid', 'oracle', 'hunter' ,'inquisitor', 'paladin', 'ranger', 'shaman', 'warpriest', 'adept', 'omdura', 'vampire hunter']
 #caster spells per day progression
 
 #must match the same order as the weapon_groups_region section
@@ -286,10 +296,15 @@ region_deity_affinity = {
 }
 
 #types of casters
+# EXACTLY ONE bucket per class. Both readers -- casting_stat_for and
+# spells_per_day_from_ability_mod -- test int, then wis, then cha and stop at the first hit, so a
+# class listed twice silently takes whichever bucket comes first and the second listing is dead
+# text that reads like a rule. The SHAMAN was in wis and cha until 2026-08-04; wis was already the
+# one that won, and is the one RAW gives it. validate_caster_data.py now fails on any duplicate.
 caster_mod = {
         "int_casters": ['alchemist', 'arcanist', 'investigator', 'magus',  'witch', 'wizard', 'occultist', 'psychic',],
-        "wis_casters": ['cleric','druid', 'hunter', 'inquisitor','ranger', 'shaman', 'warpriest', 'spiritualist'],
-        "cha_casters": ['antipaladin', 'bloodrager', 'bard','medium','mesmerist','oracle','paladin','shaman','skald','sorcerer','summoner', 'summoner (unchained)']
+        "wis_casters": ['cleric','druid', 'hunter', 'inquisitor','ranger', 'shaman', 'warpriest', 'spiritualist', 'adept', 'vampire hunter'],
+        "cha_casters": ['antipaladin', 'bloodrager', 'bard','medium','mesmerist','oracle','paladin','skald','sorcerer','summoner', 'summoner (unchained)', 'omdura']
         # kineticist is deliberately unmapped: burn is Constitution-based, which this
         # int/wis/cha bonus-spell table doesn't model. It is also absent from base_classes, so it
         # never reaches the spellbook at all -- the pf1 class Item agrees, carrying no `casting`
@@ -2449,6 +2464,14 @@ good_saves = {
     'highlord': ['fort', 'will'], 'marksman': ['ref', 'will'], 'psion': ['will'],
     'psychic warrior': ['fort'], 'soulknife': ['ref', 'will'], 'tactician': ['will'],
     'vitalist': ['fort', 'will'], 'voyager': ['ref', 'will'], 'wilder': ['will'],
+    # NPC classes. Read off the pf1 class Items rather than the book, and re-checked on every run
+    # of Backend/scripts/build_npc_class_data.py, which refuses to write if these disagree. The
+    # commoner's empty list is the point: it is the one class in the game with no good save.
+    'adept': ['will'], 'aristocrat': ['will'], 'commoner': [], 'expert': ['will'],
+    'warrior': ['fort'],
+    # The last two first-party Paizo base classes, harvested from pf-content's pf-collab-content
+    # pack by Backend/scripts/build_collab_class_data.py, which re-checks these on every run.
+    'omdura': ['fort', 'will'], 'vampire hunter': ['ref', 'will'],
 }
 disciplines = ["Black Seraph", "Broken Blade", "Brutal Crocodile", "Cursed Razor", "Elemental Flux", "Eternal Guardian", "Fools Errand", "Golden Lion", "Iron Tortoise", "Leaden Hyena", "Mangled Gear", "Mithral Current", "Piercing Thunder", "Primal Fury", "Radiant Dawn", "Riven Hourglass", "Roaring Mouse", "Sagitta Stellaris", "Scarlet Throne", "Shattered Mirror", "Silver Crane", "Sleeping Goddess", "Solar Wind", "Spark of Battle", "Steel Serpent", "Surging Shark", "Tempest Gale", "Thrashing Dragon", "Unquiet Grave", "Veiled Moon"]
 

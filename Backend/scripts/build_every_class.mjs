@@ -61,6 +61,9 @@ const classicLevelDir = flag('--classic-level');
 const dryRun = argv.includes('--dry-run');
 const modulesDir = flag('--modules',
   path.join(os.homedir(), 'AppData', 'Local', 'FoundryVTT', 'Data', 'modules'));
+// The NPC classes come out of the pf1 SYSTEM's own pack, not a module's, so that root is separate.
+const systemDir = flag('--system',
+  path.join(os.homedir(), 'AppData', 'Local', 'FoundryVTT', 'Data', 'systems', 'pf1'));
 
 if (!classicLevelDir) {
   console.error('usage: node build_every_class.mjs --classic-level <dir> [--modules <dir>] [--dry-run]');
@@ -86,6 +89,29 @@ const SOURCES = [
     pack: path.join(modulesDir, 'pf1-pow', 'packs', 'classes'),
     packId: 'pf1-pow.classes',
     classes: ['Stalker', 'Zealot'],
+  },
+  {
+    // The five Paizo NPC classes, 2026-08-04. First-party, so unlike everything above they come
+    // from the SYSTEM pack -- the everyClassPerson actor was built from the class list as it stood
+    // and these were simply never dragged onto it. They harvest to a single item each: pf1 gives
+    // them no classAssociations, which is correct (only the adept has features, and its spells and
+    // familiar are progression rather than granted items).
+    pack: path.join(systemDir, 'packs', 'classes'),
+    packId: 'pf1.classes',
+    classes: ['Adept', 'Aristocrat', 'Commoner', 'Expert', 'Warrior'],
+  },
+  {
+    // The omdura and the vampire hunter, 2026-08-04 -- the last two first-party Paizo base classes
+    // the generator lacked. They are NOT in pf1.classes (49 class Items, neither among them); a
+    // sweep of every installed pack found them in pf-content's pf-collab-content.
+    //
+    // `also` is load-bearing here and nowhere else: four of their granted features are @UUIDs into
+    // pf1.class-abilities, the generic shared items (Orisons, Detect Alignment, Track, Swift
+    // Tracker). Resolving associations against pf-collab-content alone silently drops all four.
+    pack: path.join(modulesDir, 'pf-content', 'packs', 'pf-collab-content'),
+    also: [path.join(systemDir, 'packs', 'class-abilities')],
+    packId: 'pf-content.pf-collab-content',
+    classes: ['Omdura', 'Vampire Hunter'],
   },
 ];
 
@@ -181,6 +207,16 @@ for (const source of SOURCES) {
   }
   const docs = await readPack(source.pack, { ClassicLevel });
   const byName = new Map([...docs.values()].filter(d => d.type === 'class').map(d => [d.name, d]));
+
+  // Feature lookup may need to span packs (see `also` on the pf-collab-content source). These are
+  // merged for ASSOCIATION RESOLUTION only -- byName above is built from source.pack alone, so an
+  // extra pack can never contribute a class item of its own.
+  for (const extra of source.also ?? []) {
+    if (!fs.existsSync(extra)) { console.error(`SKIP extra pack (missing): ${extra}`); continue; }
+    for (const [id, doc] of await readPack(extra, { ClassicLevel })) {
+      if (!docs.has(id)) docs.set(id, doc);
+    }
+  }
 
   for (const className of source.classes) {
     const cls = byName.get(className);

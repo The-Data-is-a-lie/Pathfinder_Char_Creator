@@ -1,27 +1,25 @@
 {
- "Total_HP": 126,
- "age_number": 52,
+ "Total_HP": 170,
+ "age_number": 55,
  "alignment": "Neutral Good",
  "animal_companion": null,
  "appearance": [
-  "Runny nose"
+  "Butterfly tattoo"
  ],
  "archetype1": null,
  "archetype_info": "{}",
- "armor_ac": "1",
- "armor_armor_check_penalty": "",
+ "armor_ac": "6",
+ "armor_armor_check_penalty": "-5",
  "armor_enhancement_bonus": 1,
  "armor_enhancement_chosen_list": [],
- "armor_max_dex_bonus": "",
- "armor_name": "Poisoner's Buckler",
+ "armor_max_dex_bonus": "2",
+ "armor_name": "Four-mirror",
  "armor_spell_failure": 0,
- "armor_weight": "3 lbs.",
- "bab_total": 10,
+ "armor_weight": "45 lbs.",
+ "bab_total": 11,
  "background_traits": [
-  "Orphan",
-  "Horrifying Mind",
-  "Unorthodox Strategy",
-  "Trained Medic"
+  "Reckless Contempt",
+  "Ambassador"
  ],
  "backstory": "",
  "bloodline": "N/A",
@@ -29,8 +27,8 @@
  "bloodline_feats": [],
  "bonded_creatures": [],
  "buff_gaps": [],
- "build_archetype": "Generalist",
- "build_tactics": "Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.",
+ "build_archetype": "Archer",
+ "build_tactics": "Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.",
  "c_class": "psion",
  "c_class_2": "aegis",
  "c_class_display": "Psion",
@@ -38,19 +36,9 @@
  "casting_tradition": {
   "bonus_spell_points": 0,
   "boons": [
-   "Fortified Casting",
-   "Empowered Abilities",
    "Easy Focus"
   ],
   "boons_detail": [
-   {
-    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
-    "name": "Fortified Casting"
-   },
-   {
-    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
-    "name": "Empowered Abilities"
-   },
    {
     "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
     "name": "Easy Focus"
@@ -58,69 +46,62 @@
   ],
   "casting_ability_modifier": "Intelligence",
   "drawbacks": [
-   "Focus Casting",
-   "Painful Magic",
-   "Material Casting",
-   "Addictive Casting",
-   "Wild Magic"
+   "Draining Casting",
+   "Verbal Casting"
   ],
   "drawbacks_detail": [
    {
     "counts_as": 1,
-    "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
-    "name": "Focus Casting"
+    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
+    "name": "Draining Casting"
    },
    {
     "counts_as": 1,
-    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
-    "name": "Painful Magic"
-   },
-   {
-    "counts_as": 1,
-    "description": "Your magic requires expending consumable materials/components worth roughly 1 sp per caster level each time you use a sphere ability.",
-    "name": "Material Casting"
-   },
-   {
-    "counts_as": 2,
-    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
-    "name": "Addictive Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
-    "name": "Wild Magic"
+    "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
+    "name": "Verbal Casting"
    }
   ]
  },
- "cha": 18,
- "character_full_name": "Inès Le Blanc",
+ "cha": 12,
+ "character_full_name": "Émilie Daviau",
  "chosen_race": "Human",
  "chosen_spell_descriptor": [
-  "curse"
+  "light"
  ],
  "class feature levels": {
   "customizations": {
-   "Burrow": 1,
-   "Easy Suit": 5,
-   "Increased Size, Improved": 3,
-   "Spiked Carapace": 7
+   "Contemplation": 1,
+   "Diehard": 5,
+   "Suit Maneuverability": 3
+  },
+  "rage_powers": {
+   "ferocious mount": 4,
+   "powerful blow": 2
   }
  },
  "class feature owners": {
-  "customizations": "aegis"
+  "customizations": "aegis",
+  "rage_powers": "barbarian"
  },
  "class features": {
-  "Skill Unlock: Handle Animal": {
-   "10 Ranks": "Trained creatures gain the +2 Will bonus within 30 feet while they can clearly see you, and you can teach a trick in 1 day at DC +20.",
-   "15 Ranks": "With a week and a DC 30 check you can train an animal to understand speech (as speak with animals); you can teach a trick in 1 day (DC +10) or 1 hour (DC +20).",
-   "20 Ranks": "You can make your speech understandable to any animal for 24 hours (DC 30, or DC 40 for magical beasts/vermin), and teach tricks in as little as 1 minute.",
-   "5 Ranks": "Creatures you have trained gain a +2 bonus on Will saves while adjacent to you."
+  "Skill Unlock: Stealth": {
+   "10 Ranks": "Stealth penalties for moving at full speed are halved (including the 5-rank sniping ability).",
+   "15 Ranks": "After a successful Stealth-based attack, your target is denied its Dexterity bonus against all attacks you make before the end of your turn.",
+   "20 Ranks": "After a successful Stealth-based attack, your target is denied its Dexterity bonus against all your attacks before the beginning of your next turn.",
+   "5 Ranks": "Reduce the Stealth penalty from sniping by 10."
   },
   "customizations": {
-   "Burrow": "The aegis gains a burrow speed equal to 1/2 his base speed. He can use this speed to move through dirt, clay, sand, and earth. He does not leave a hole behind, nor is his passage marked on the surface. The aegis must be at least 9th level before selecting this customization. [3-point Customizations]",
-   "Easy Suit": "(Source: Arcforge: Technology Expanded) The type of armor that the aegis forms his astral suit into is considered light armor rather than medium or heavy armor. This does not alter the statistics of the armor in any way but enables creatures to move at their full speed while inside. [3-point Customizations]",
-   "Increased Size, Improved": "The astral suit grows in size and the aegis is treated as two size categories larger as if affected by an augmented expansion. The aegis must be at least 15th level and have selected the increased size customization to select this customization. This customization does not stack with the increased size customization. [4-point Customizations]",
-   "Spiked Carapace": "The astral suit is covered in sharp spikes as if equipped with armor spikes. [1-point Customizations]"
+   "Contemplation": "The aegis’ suit now provides him with the ability to convert psionic power into essence. While his astral suit is formed, the aegis may spend 1 power point per veil or essence receptacle as a swift action, to treat a veil he has shaped or other essence receptacle he has available as though it were invested with a point of essence for 3 rounds. This does not stack with, though it may overlap, standard essence invested in a given receptacle. At 6th level and every three levels thereafter, the aegis may spend an additional 3 power points per receptacle he wishes to invest to treat it as being invested with an additional point of essence. This ability can be used to exceed the aegis’ normal limitation on the maximum amount that can be invested in a given receptacle (for example, an 18th level aegis could spend 13 power points to treat a veil as being invested with 5 points of essence, even though he’d normally be limited to 4 points when investing essence normally. If the aegis has multiple receptacles in which he wants to invest, he may choose to spend power points to psionically invest any number of the receptacles with the same swift action, though he must still pay the normal cost for each. [2 Point Customizations]",
+   "Diehard": "When the aegis’s hit point total is below 0, but he is not dead, he automatically stabilizes. He does not need to make a Constitution check each round to avoid losing additional hit points. He may choose to act as if disabled, rather than dying. He must make this decision as soon as he is reduced to negative hit points (even if it isn’t his turn). If he does not choose to act as if disabled, he immediately falls unconscious. When under this effect, the aegis is staggered. He can take a move action without further injuring himself, but if he performs any standard action (or any other action deemed as strenuous, including some swift actions, such as manifesting a quickened power) he takes 1 point of damage after completing the act. If his negative hit points are equal to or greater than his Constitution score, he immediately dies. [3-point Customizations]",
+   "Suit Maneuverability": "(Source: Arcforge: Technology Expanded) Increase the maximum dexterity bonus of the aegis’ astral suit by +2. This can be selected multiple times [1-point Customizations]"
+  },
+  "rage_powers": {
+   "ferocious mount": {
+    "benefit": "while raging and mounted, the barbarianas mount also gains the benefits of rage (including greater rage and mighty rage) as long as the barbarian is mounted or adjacent to it. while her mount is raging in this way, she must spend one additional round of rage per round. she can elect not to pay this cost, in which case her mount does not rage."
+   },
+   "powerful blow": {
+    "benefit": "the barbarian gains a +1 bonus on a single damage roll. this bonus increases by +1 for every 4 levels the barbarian has attained. this power is used as a swift action before the roll to hit is made. special: this power can only be used once per rage."
+   }
   }
  },
  "class_ability": [
@@ -138,7 +119,18 @@
   "augment suit_aegis",
   "master craftsman_aegis",
   "cannibalize suit_aegis",
-  "perfect merger_aegis"
+  "perfect merger_aegis",
+  "fast movement_barbarian",
+  "rage_barbarian",
+  "rage powers_barbarian",
+  "uncanny dodge_barbarian",
+  "trap sense_barbarian",
+  "improved uncanny dodge_barbarian",
+  "damage reduction_barbarian",
+  "greater rage_barbarian",
+  "indomitable will_barbarian",
+  "tireless rage_barbarian",
+  "mighty rage_barbarian"
  ],
  "class_ability_desc": {
   "astral repair": "An aegis is capable of repairing mundane items, restoring 2 hit points of damage to the touched item as a standard action usable at will. If the object has the broken condition, this condition is removed if the object is restored to at least half its original hit points. All of the pieces of an object must be present for this ability to function. This ability has no effect on objects that have been warped or otherwise transmuted, but it can still repair damage done to such items.",
@@ -146,256 +138,286 @@
   "bonus feats": "A psion gains a bonus feat at 1st level, 5th level, 10th level, 15th level, and 20th level. This feat must be a psionic feat, a metapsionic feat, or a psionic item creation feat.\n\nThese bonus feats are in addition to the feats that a character of any class gains every other level. A psion is not limited to psionic feats, metapsionic feats, and psionic item creation feats when choosing these other feats.",
   "cannibalize suit": "Starting at 12th level, an aegis learns to convert the psionic energy used to create his suit into healing power. Once per day as a standard action, he can dismiss his astral suit and heal a number of hit points equal to his customization pool. The aegis cannot reform his suit again for one minute after using this ability. Every two levels thereafter, the aegis can use this ability an additional time per day. Additional customization points gained from Augment Suit are not counted for this ability.",
   "craftsman": "Beginning at 2nd level, an aegis gains a +1 bonus to any one Craft skill of his choice. At 6th level and every four levels thereafter, this bonus increases by 1.",
-  "damage reduction": "Starting at 2nd level, when an aegis is wearing his astral suit, he gains damage reduction 2/-, regardless of what type of astral suit he is wearing. At 5th level and every three levels thereafter, this damage reduction improves by 1.",
+  "damage reduction": "At 7th level, a barbarian gains damage reduction. Subtract 1 from the damage the barbarian takes each time she is dealt damage from a weapon or a natural attack. At 10th level, and every three barbarian levels thereafter (13th, 16th, and 19th level), this damage reduction rises by 1 point. Damage reduction can reduce damage to 0 but not below 0.",
   "discipline": "Every psion must decide at 1st level which psionic discipline he will specialize in. Choosing a discipline provides a psion with access to the class skills associated with that discipline (see above), as well as the powers restricted to that discipline, and the special abilities associated with that discipline (detailed below). However, choosing a discipline also means that the psion cannot learn powers that are restricted to the other disciplines (generalist psions cannot learn powers on any of the discipline power lists). He can’t even use such powers by employing psionic items.",
   "discipline abilities": "At 2nd, 8th, 14th, and 20th level, the psion gains special abilities related to his choice of discipline, as detailed below.",
+  "fast movement": "A barbarian's land speed is faster than the norm for her race by +10 feet. This benefit applies only when she is wearing no armor, light armor, or medium armor, and not carrying a heavy load. Apply this bonus before modifying the barbarian's speed because of any load carried or armor worn. This bonus stacks with any other bonuses to the barbarian's land speed.",
   "form astral suit": "Every aegis learns to draw forth ectoplasm and form an astral suit around their form. The aegis can select from three different types when forming his astral suit— skin, armor, or juggernaut. An aegis is always considered to be proficient with his astral suit, even if he does not have the appropriate armor proficiency. The amount of time forming this astral suit takes depends on the type of suit being formed. Different astral suit forms grant different free customizations. These free customizations never count against the aegis’s total number of customization points spent on his astral suit.\n\nThe aegis chooses the appearance of his astral suit, although its shape must reflect the selections the aegis has chosen: astral skin would cover the aegis like a psychoactive skin, astral juggernaut would appear to cover the aegis like plate armor, etc.\n\nAn astral suit can be dismissed as a free action.\n\nAn astral suit does not function in areas where psionics do not work, such as a null psionics field. Dismiss ectoplasm can be used against an astral suit; treat the manifester level as the aegis’s class level, although the aegis can simply form his astral suit again on his next turn. Information on astral suits and customizations can be found here.",
+  "greater rage": "At 11th level, when a barbarian enters rage, the morale bonus to her Strength and Constitution increases to +6 and the morale bonus on her Will saves increases to +3.",
+  "improved uncanny dodge": "At 5th level and higher, a barbarian can no longer be flanked. This defense denies a rogue the ability to sneak attack the barbarian by flanking her, unless the attacker has at least four more rogue levels than the target has barbarian levels. If a character already has uncanny dodge (see above) from another class, the levels from the classes that grant uncanny dodge stack to determine the minimum rogue level required to flank the character.",
+  "indomitable will": "While in rage, a barbarian of 14th level or higher gains a +4 bonus on Will saves to resist enchantment spells. This bonus stacks with all other modifiers, including the morale bonus on Will saves she also receives during her rage.",
   "invigorating suit": "An aegis of at least 3rd level wearing his astral suit gains a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage from exhaustion; Constitution checks made to continue running; Constitution checks made to avoid nonlethal damage from a forced march; Constitution checks made to hold breath; Constitution checks made to avoid nonlethal damage from starvation or thirst; Fortitude saves made to avoid nonlethal damage from hot or cold environments; and Fortitude saves made to resist damage from suffocation.",
   "master craftsman": "At 5th level, an aegis gains the Master Craftsman feat as a bonus feat. He must still meet the prerequisites of the feat in order to gain its benefits.",
+  "mighty rage": "At 20th level, when a barbarian enters rage, the morale bonus to her Strength and Constitution increases to +8 and the morale bonus on her Will saves increases to +4. Ex-Barbarians A barbarian who becomes lawful loses the ability to rage and cannot gain more levels as a barbarian. She retains all other benefits of the class. Alternate Capstones",
   "perfect merger": "An aegis of 20th level has learned to become one with his suit. His suit cannot be dispelled or removed against his will by any means, although his astral suit ability still does not function within areas where psionics do not work, such as a null psionics field.\n\nIn addition, the aegis can spend two daily uses of his reconfigure ability to alter all of the customizations on his astral suit.\n\nFinally, once per day, the aegis can boost his cannibalize suit ability, healing all of his hit point damage, although he cannot reform his suit for ten minutes after using this ability, rather than the standard one minute.",
   "psionic disciplines": "A discipline is one of seven groupings of powers, each defined by a common theme. The seven disciplines are athanatism, clairsentience, metacreativity, psychokinesis, psychometabolism, psychoportation, and telepathy. If a psion chooses to specialize in a discipline, he gains special benefits, while those who choose to stay generalists gain unique benefits of their own. Psionic Disciplines can be found here.",
+  "rage": "A barbarian can call upon inner reserves of strength and ferocity, granting her additional combat prowess. Starting at 1st level, a barbarian can rage for a number of rounds per day equal to 4 + her Constitution modifier. At each level after 1st, she can rage for 2 additional rounds. Temporary increases to Constitution, such as those gained from rage and spells like bear's endurance , do not increase the total number of rounds that a barbarian can rage per day. A barbarian can enter rage as a free action. The total number of rounds of rage per day is renewed after resting for 8 hours, although these hours do not need to be consecutive. While in rage, a barbarian gains a +4 morale bonus to her Strength and Constitution, as well as a +2 morale bonus on Will saves. In addition, she takes a -2 penalty to Armor Class. The increase to Constitution grants the barbarian 2 hit points per Hit Dice, but these disappear when the rage ends and are not lost first like temporary hit points. While in rage, a barbarian cannot use any Charisma-, Dexterity-, or Intelligence-based skills (except Acrobatics, Fly, Intimidate, and Ride) or any ability that requires patience or concentration. A barbarian can end her rage as a free action and is fatigued after rage for a number of rounds equal to 2 times the number of rounds spent in the rage. A barbarian cannot enter a new rage while fatigued or exhausted but can otherwise enter rage multiple times during a single encounter or combat. If a barbarian falls unconscious, her rage immediately ends, placing her in peril of death.",
+  "rage powers": "As a barbarian gains levels, she learns to use her rage in new ways. Starting at 2nd level, a barbarian gains a rage power. She gains another rage power for every two levels of barbarian attained after 2nd level. A barbarian gains the benefits of rage powers only while raging, and some of these powers require the barbarian to take an action first. Unless otherwise noted, a barbarian cannot select an individual power more than once. See the Barbarian Rage Power section for a full list of Rage Powers from all sources.",
   "reconfigure": "Starting at 3rd level, an aegis can reconfigure up to his Intelligence modifier in customization points on his astral suit once per day as a standard action. Every two levels thereafter, he can use this ability an additional time per day.",
-  "talents": "Each psion gains three 0 level talents of their choice, as well as detect psionics. These talents do not count against the psion’s powers known."
+  "talents": "Each psion gains three 0 level talents of their choice, as well as detect psionics. These talents do not count against the psion’s powers known.",
+  "tireless rage": "Starting at 17th level, a barbarian no longer becomes fatigued at the end of her rage.",
+  "trap sense": "At 3rd level, a barbarian gains a +1 bonus on Reflex saves made to avoid traps and a +1 dodge bonus to AC against attacks made by traps. These bonuses increase by +1 every three barbarian levels thereafter (6th, 9th, 12th, 15th, and 18th level). Trap sense bonuses gained from multiple classes stack.",
+  "uncanny dodge": "At 2nd level, a barbarian gains the ability to react to danger before her senses would normally allow her to do so. She cannot be caught flat-footed, nor does she lose her Dex bonus to AC if the attacker is invisible. She still loses her Dexterity bonus to AC if immobilized. A barbarian with this ability can still lose her Dexterity bonus to AC if an opponent successfully uses the feint action against her. If a barbarian already has uncanny dodge from a different class, she automatically gains improved uncanny dodge (see below) instead."
  },
  "class_feat_labels": [],
  "class_feat_tax_dict": {},
  "class_feats": [],
  "class_feature_changes_dict": {},
- "class_feature_conditionals_dict": {},
+ "class_feature_conditionals_dict": {
+  "powerful blow": [
+   {
+    "default": false,
+    "modifiers": [
+     {
+      "critical": "normal",
+      "damageType": [],
+      "formula": "1 + floor(@classes.barbarian.level/4)",
+      "subTarget": "allDamage",
+      "target": "damage",
+      "type": "untyped"
+     }
+    ],
+    "name": "Powerful Blow: Cost: [[1]]/rage; Activation: swift action before the attack roll; Effect: bonus on this damage roll",
+    "tier": "A"
+   }
+  ]
+ },
  "class_feature_levels": {
   "customizations": {
-   "Burrow": 1,
-   "Easy Suit": 5,
-   "Increased Size, Improved": 3,
-   "Spiked Carapace": 7
+   "Contemplation": 1,
+   "Diehard": 5,
+   "Suit Maneuverability": 3
+  },
+  "rage_powers": {
+   "ferocious mount": 4,
+   "powerful blow": 2
   }
  },
  "class_feature_owners": {
-  "customizations": "aegis"
+  "customizations": "aegis",
+  "rage_powers": "barbarian"
  },
  "class_features": {
-  "Skill Unlock: Handle Animal": {
-   "10 Ranks": "Trained creatures gain the +2 Will bonus within 30 feet while they can clearly see you, and you can teach a trick in 1 day at DC +20.",
-   "15 Ranks": "With a week and a DC 30 check you can train an animal to understand speech (as speak with animals); you can teach a trick in 1 day (DC +10) or 1 hour (DC +20).",
-   "20 Ranks": "You can make your speech understandable to any animal for 24 hours (DC 30, or DC 40 for magical beasts/vermin), and teach tricks in as little as 1 minute.",
-   "5 Ranks": "Creatures you have trained gain a +2 bonus on Will saves while adjacent to you."
+  "Skill Unlock: Stealth": {
+   "10 Ranks": "Stealth penalties for moving at full speed are halved (including the 5-rank sniping ability).",
+   "15 Ranks": "After a successful Stealth-based attack, your target is denied its Dexterity bonus against all attacks you make before the end of your turn.",
+   "20 Ranks": "After a successful Stealth-based attack, your target is denied its Dexterity bonus against all your attacks before the beginning of your next turn.",
+   "5 Ranks": "Reduce the Stealth penalty from sniping by 10."
   },
   "customizations": {
-   "Burrow": "The aegis gains a burrow speed equal to 1/2 his base speed. He can use this speed to move through dirt, clay, sand, and earth. He does not leave a hole behind, nor is his passage marked on the surface. The aegis must be at least 9th level before selecting this customization. [3-point Customizations]",
-   "Easy Suit": "(Source: Arcforge: Technology Expanded) The type of armor that the aegis forms his astral suit into is considered light armor rather than medium or heavy armor. This does not alter the statistics of the armor in any way but enables creatures to move at their full speed while inside. [3-point Customizations]",
-   "Increased Size, Improved": "The astral suit grows in size and the aegis is treated as two size categories larger as if affected by an augmented expansion. The aegis must be at least 15th level and have selected the increased size customization to select this customization. This customization does not stack with the increased size customization. [4-point Customizations]",
-   "Spiked Carapace": "The astral suit is covered in sharp spikes as if equipped with armor spikes. [1-point Customizations]"
+   "Contemplation": "The aegis’ suit now provides him with the ability to convert psionic power into essence. While his astral suit is formed, the aegis may spend 1 power point per veil or essence receptacle as a swift action, to treat a veil he has shaped or other essence receptacle he has available as though it were invested with a point of essence for 3 rounds. This does not stack with, though it may overlap, standard essence invested in a given receptacle. At 6th level and every three levels thereafter, the aegis may spend an additional 3 power points per receptacle he wishes to invest to treat it as being invested with an additional point of essence. This ability can be used to exceed the aegis’ normal limitation on the maximum amount that can be invested in a given receptacle (for example, an 18th level aegis could spend 13 power points to treat a veil as being invested with 5 points of essence, even though he’d normally be limited to 4 points when investing essence normally. If the aegis has multiple receptacles in which he wants to invest, he may choose to spend power points to psionically invest any number of the receptacles with the same swift action, though he must still pay the normal cost for each. [2 Point Customizations]",
+   "Diehard": "When the aegis’s hit point total is below 0, but he is not dead, he automatically stabilizes. He does not need to make a Constitution check each round to avoid losing additional hit points. He may choose to act as if disabled, rather than dying. He must make this decision as soon as he is reduced to negative hit points (even if it isn’t his turn). If he does not choose to act as if disabled, he immediately falls unconscious. When under this effect, the aegis is staggered. He can take a move action without further injuring himself, but if he performs any standard action (or any other action deemed as strenuous, including some swift actions, such as manifesting a quickened power) he takes 1 point of damage after completing the act. If his negative hit points are equal to or greater than his Constitution score, he immediately dies. [3-point Customizations]",
+   "Suit Maneuverability": "(Source: Arcforge: Technology Expanded) Increase the maximum dexterity bonus of the aegis’ astral suit by +2. This can be selected multiple times [1-point Customizations]"
+  },
+  "rage_powers": {
+   "ferocious mount": {
+    "benefit": "while raging and mounted, the barbarianas mount also gains the benefits of rage (including greater rage and mighty rage) as long as the barbarian is mounted or adjacent to it. while her mount is raging in this way, she must spend one additional round of rage per round. she can elect not to pay this cost, in which case her mount does not rage."
+   },
+   "powerful blow": {
+    "benefit": "the barbarian gains a +1 bonus on a single damage roll. this bonus increases by +1 for every 4 levels the barbarian has attained. this power is used as a swift action before the roll to hit is made. special: this power can only be used once per rage."
+   }
   }
  },
  "classes": [
   {
    "archetype": {},
    "display": "Psion",
-   "level": 7,
+   "level": 5,
    "name": "psion"
   },
   {
    "archetype": {},
    "display": "Aegis",
-   "level": 7,
+   "level": 5,
    "name": "aegis"
+  },
+  {
+   "archetype": {
+    "Numerian Liberator": {
+     "class skill": "  A Numerian liberator gains Stealth as a class skill and removes Climb from her list of barbarian class skills.",
+     "disruptor": "  At 5th level, for any foes in a Numerian liberator's threatened area, the DC to cast spells defensively increases by 1. The DC increases by 1 again for every 5 levels thereafter (to a maximum increase of 4 at 20th level). If the barbarian gains the disruptive rage power, the two abilities stack. This ability replaces improved uncanny dodge.",
+     "hard hitter (ex)": "  At 2nd level, a Numerian liberator can make devastating attacks against objects and foes with breakable components. Damage dealt by the barbarian's attacks ignores an amount of an object's or creature's hardness (if any) equal to 1/2 her class level. This ability replaces the uncanny dodge.",
+     "hide from constructs (su)": "  At 14th level, a Numerian liberator can control her movement, breathing, body temperature, and other physiological signs to confuse the artificial visions of constructs. At will, the barbarian can make herself undetectable to constructs as if she were affected by a hide from undead spell that instead hides the subject from constructs. Intelligent constructs receive a Will save (DC 10 + 1/2 the barbarian's level + the barbarian's Constitution modifier) to see through this effect. The barbarian must expend 1 round of rage for each round she uses this ability. This ability replaces indomitable will.",
+     "rage powers": "  The following rage powers complement the Numerian liberator archetype: deadly accuracy, energy absorption (fire), energy resistance (fire), greater energy resistance (fire), gearbreaker, guarded stance, lethal accuracy, lowlight vision, night vision, rolling dodge, reflexive dodge, surprise accuracy.",
+     "source": "People of the River pg. 6 The Kellid barbarians that roam Numeria's badlands have a healthy mistrust of technology and its corruptive influence. Since the cataclysmic Rain of Stars millennia ago, these warriors have developed numerous techniques and skills to protect themselves from the strange mechanical monsters that roam Numeria. While many native Kellids oppose the Technic League and its espousal of foul alien artifacts, the most stalwart and staunchly dedicated of these technophobic traditionalists refer to themselves as Numerian liberators."
+    }
+   },
+   "display": "Barbarian",
+   "level": 4,
+   "name": "barbarian"
   }
  ],
  "combat_talent_items": [],
  "con": 10,
  "counter_schools": [
-  "enchantment",
-  "divination"
+  "divination",
+  "evocation"
  ],
  "counter_spell_descriptor": [
-  "evil"
+  "force"
  ],
- "craft_type": "Blacksmithing",
+ "craft_type": "Gemcutting",
  "day_list": [],
- "deity_name": "Kurgess",
- "dex": 14,
+ "deity_name": "Shelyn",
+ "dex": 18,
  "enhancement_effects_dict": {},
  "equip_descrip": {
-  "belts": {
-   "description": " long believed to have been gnome in origin, this stately\r cummerbund features a number of dancing dolphins\r embroidered on its deep blue material. The cummerbund grants\r its wearer a +4 competence bonus on swim checks, and allows\r her to take 10 on such checks even if distracted or endangered. ",
-   "item_name": "Aquatic Cummerbund"
-  },
-  "headband": {
-   "description": " this simple teardrop jewel is worn on the center of the forehead and gives its wearer the ability to quickly focus her mind. The wearer can center herself (pathfinder rpg occult adventures 144) as a swift action. ",
-   "item_name": "Centering Jewel"
+  "wrist": {
+   "description": " once per day when a user wearing both these bracers speaks a command word, the metal turns entirely liquid and swims over the wearer's hands to cover her weapons. The user can cover a two-handed melee weapon or up to two one-handed or light melee weapons. For the next 10 rounds, the affected weapons can overcome damage reduction as though the weapons were made of adamantine, cold iron, or silver (as determined by the quickmetal bracers, ' type). The heavy, shifting metal coating affects the balance of manufactured weapons, imposing a 2 penalty on attack rolls. Improvised weapons, however, are already unwieldy, and the metal coating doesn't significantly affect their balance. If the wielder lets go of a weapon affected by the bracers, the liquid metal immediately turns back into a solid metal bracer or bracers, in the case of a two-handed weaponreappearing on the user's wrists. The bracers cannot therefore affect thrown weapons or ranged weapon ammunition. ",
+   "item_name": "Quickmetal Bracers, Adamantine"
   }
  },
  "equipment_list": [
-  "Aquatic Cummerbund",
-  "Centering Jewel"
+  "Quickmetal Bracers, Adamantine"
  ],
  "eye_color": [
-  "Grey"
+  "Brown"
  ],
  "feat_budget": {
   "bloodline": 0,
   "class": 0,
   "flavor": 1,
   "flaw": 2,
-  "normal": 8,
-  "profession": 2,
+  "normal": 9,
+  "profession": 1,
   "story": 3,
   "teamwork": 0,
-  "trainer": 2
+  "trainer": 0
  },
- "feat_changes_dict": {
-  "Secret Signs": {
+ "feat_changes_dict": {},
+ "feat_conditionals_dict": {},
+ "feats": [
+  "Deft Hands",
+  "Coordinated Distraction",
+  "Swap Places",
+  "Gang Up",
+  "Fight Response",
+  "Improved Dirty Trick",
+  "Armor Ripper",
+  "Mechanical Magician",
+  "Multi Talented"
+ ],
+ "feats_feat_tax_dict": {
+  "Deft Hands": [
+   "close call"
+  ],
+  "Gang Up": [
+   "team up"
+  ]
+ },
+ "flavor_feat_tax_dict": {},
+ "flavor_feats": [
+  "Strong Comeback"
+ ],
+ "flaw": [
+  "Motion Sickness",
+  "Shattered Psyche",
+  "Illiterate"
+ ],
+ "flaw_effects_dict": {
+  "Illiterate": {
    "changes": [],
    "contextNotes": [
     {
      "target": "skills",
-     "text": "+4 bonus on Bluff checks made to pass secret messages (not other Bluff uses)"
+     "text": "Illiterate: you cannot read or write any language and cannot use scrolls."
     }
-   ]
+   ],
+   "description": "You never learned to read or write, and you refuse to learn. You cannot read or write any language, and you cannot use scrolls.",
+   "tier": "minor"
   },
-  "Shake It Off": {
+  "Motion Sickness": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "allSavingThrows",
-     "text": "+1 on all saving throws per adjacent ally who also has this feat (maximum +4)"
-    }
-   ]
-  }
- },
- "feat_conditionals_dict": {
-  "Death From Above": {
-   "default": false,
-   "modifiers": [
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "5",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "untyped"
+     "target": "fort",
+     "text": "Motion Sickness: after [[10]] minutes riding/sailing, Fortitude save DC [[5]] or sickened while it continues."
     }
    ],
-   "name": "Death from Above: When you charge an opponent from higher ground, or from above while flying: +5 on attack rolls (in place of the charge and higher-ground bonuses)."
+   "description": "Travel turns your stomach. After 10 minutes riding a mount, vehicle, or ship, you must pass a Fortitude save (DC 5) or be sickened for as long as the ride continues.",
+   "tier": "minor"
+  },
+  "Shattered Psyche": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "intSkills",
+     "text": "Shattered Psyche: -[[2]] on Intelligence-based skill checks."
+    },
+    {
+     "target": "wisSkills",
+     "text": "Shattered Psyche: -[[2]] on Wisdom-based skill checks."
+    },
+    {
+     "target": "concentration",
+     "text": "Shattered Psyche: -[[2]] on concentration checks."
+    }
+   ],
+   "description": "Your mind is crowded with dozens of voices, fragmented snippets of your past lives. You take a -2 penalty on all Intelligence-based skill checks, Wisdom-based skill checks, and concentration checks.",
+   "tier": "major"
   }
  },
- "feats": [
-  "Ostentatious Display",
-  "Flanking Foil",
-  "Improved Shield Bash",
-  "Secret Signs",
-  "Shake It Off",
-  "Saving Shield",
-  "Improved Implantation",
-  "Multi Talented",
-  "True Calling"
- ],
- "feats_feat_tax_dict": {},
- "flavor_feat_tax_dict": {
-  "Point-Blank Shot": [
-   "charging hurler",
-   "disrupting shot",
-   "far shot",
-   "improved charging hurler",
-   "precise shot",
-   "rapid shot"
+ "flaw_feat_tax_dict": {
+  "Improved Disarm": [
+   "greater disarm",
+   "disarming strike",
+   "hold the blade"
   ]
  },
- "flavor_feats": [
-  "Point-Blank Shot"
- ],
- "flaw": [
-  "Racial Distrust",
-  "Light Sensitivity"
- ],
- "flaw_effects_dict": {
-  "Light Sensitivity": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "allChecks",
-     "text": "Light Sensitivity: -[[2]] on skills, saves, attacks, AC, caster level checks, and ability checks in bright sunlight."
-    }
-   ],
-   "description": "Bright sunlight sears your senses. While in bright sunlight you take a -2 penalty on skill checks, saving throws, attack rolls, AC, caster level checks, and ability checks.",
-   "tier": "major"
-  },
-  "Racial Distrust": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skill.sen",
-     "text": "Racial Distrust: on meeting a stranger of another race, Sense Motive DC [[30]] or your attitude is unfriendly; the Diplomacy DC to sway you is +[[10]]; you can never become Fanatic toward them."
-    }
-   ],
-   "description": "You deeply distrust other peoples. When you meet a person (PC or NPC) whom you do not know and who is not the same race as you, you must make a Sense Motive check against DC 30. If you fail, your attitude toward them is automatically unfriendly. In addition, the Diplomacy DC to improve your attitude is increased by +10, and you can never have a Fanatic attitude toward someone of another race.",
-   "tier": "minor"
-  }
- },
- "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Exploit Schema",
-  "Dark Presence"
+  "Quillbreaker Defense",
+  "Improved Disarm"
  ],
- "formatted_bio": "Inès Le Blanc\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 7 Psion / Aegis\n- Archetype: Generalist\n- Tactics: Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Master of Whispers (rank 15)\n- Profession: Weaver of the Aether (rank 8)\n- Profession: Lord of the Realm (rank 6)\n- Known for: Blacksmithing\n- Training: An average trainer who taught them Field Repair, Death From Above\n\nFamily\n- Absent Mother\n- Loving Father\n- Raised In A Middle Income Household\n- 1 Older Brother\n- 3 Younger Brothers\n\nPersonality\n- Personality: Goofy, Stubborn, Proud\n- Mannerisms: Raises eyebrows, Opens and closes mouth, Blows nose\n- Flaws: Racial Distrust, Light Sensitivity\n\nAppearance\n- Hair: Frizzy Red\n- Eyes: Grey\n- Build: Runny Nose",
+ "formatted_bio": "Émilie Daviau\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 5 Psion / Aegis And Barbarian\n- Archetype: Archer\n- Tactics: Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Coin-Picker (rank 10)\n- Profession: Squire-at-Arms (rank 10)\n- Profession: Trader (rank 9)\n- Known for: Gemcutting\n\nFamily\n- Loving Mother\n- Absent Father\n- Raised In A Middle Income Household\n- 1 Younger Brother\n- 2 Younger Sisters\n\nPersonality\n- Personality: Lazy, Realistic, Guarded, Polite, Relaxed, Controlling\n- Mannerisms: Laughs at own jokes, Furrows brow, Plays with sleeves, Drops head\n- Flaws: Motion Sickness, Shattered Psyche, Illiterate\n\nAppearance\n- Hair: Wavy Grey\n- Eyes: Brown\n- Build: Butterfly Tattoo",
  "full_domain": [],
  "gender": "Female",
- "generation_seed": 8041,
+ "generation_seed": 8194,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 2400,
+ "gold": 5000,
  "hair_color": [
-  "Red"
+  "Grey"
  ],
  "hair_type": [
-  "Frizzy"
+  "Wavy"
  ],
- "height_number": "5'9\"",
+ "height_number": "5'0\"",
  "hero_points": 1,
  "homebrew_feat_desc_dict": {
-  "Dark Presence": "Those you have Claimed cannot escape your malice. creatures claimed by you provoke an attack of opportunity from you whenever they make a 5-foot step into or out of one of your threatened squares.",
-  "Death From Above": "You allow gravity to add extra force to your charges",
-  "Defensive Combat Training": "You excel at defending yourself from all manner of combat maneuvers",
-  "Exploit Schema": "You can act in such a way that you seem so out of place that people just fail to notice you. as a standard action, you may adjust your personage to become so outlandish that those who witness your actions are convinced they are seeing things. creatures must make a will save (dc = 10 + 1/2 ranks in perform or bluff + charisma modifier), or fail to notice you, treating you as invisible. you must spend a standard action each round to maintain the personage, and creatures receive a new save each round to recognize your presence. if you attempt any overtly hostile action (draw a weapon, attack someone) the effect immediately ends. creatures with an intelligence score of 3 or less, without an intelligence score, or with the animal type are immune to this effect, and any interaction between you and the subject ends the effect. this is a mind-affecting supernatural effect.",
-  "Field Repair": "You can repair your broken weapon or armor to serviceability even without the benefits of artisan tools",
-  "Flanking Foil": "Fighting multiple foes is easy for you",
-  "Improved Implantation": "Your body has been trained to sustain additional implantations to your mind and nervous system your constitution and intelligence scores are both treated as 4 higher for the purpose of the maximum implantation value of cybertech within your system.",
-  "Improved Shield Bash": "You can protect yourself with your shield, even if you use it to attack",
-  "Improved Trip": "You are skilled at sending your opponents to the ground",
+  "Armor Ripper": "",
+  "Coordinated Distraction": "When working in tandem, you can make it difficult for foes to use their magical abilities",
+  "Death Frombelow": "You have been trained to fight flying creatures",
+  "Deft Hands": "You have exceptional manual dexterity",
+  "Fight Response": "",
+  "Gang Up": "You are adept at using greater numbers against foes",
+  "Improved Dirty Trick": "You are skilled at pulling dirty tricks on your foes",
+  "Improved Disarm": "You are skilled at knocking weapons from a foe's grasp",
+  "Mechanical Magician": "You understand magic much as you would science. you may make knowledge (engineering) checks in place of use magic device checks.",
+  "Miniature Reach": "No matter how small you are, you are always a threat. whenever you are under the effects of a polymorph effect which would reduce your size to tiny or smaller, your natural reach is always treated as 5 feet, regardless of your size.",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Ostentatious Display": "Your extravagant jewelry and accessories give you an air of importance you can use to your advantage in many social situations",
-  "Point-Blank Shot": "You are especially accurate when making ranged attacks against close targets",
-  "Reckless Offense": "You can shift your focus from defense to offense. when you use the attack action or full attack action in melee, you can take a penalty of 4 to your armor class and add a +2 bonus on your melee attack roll. the bonus on attack rolls and penalty to armor class last until the beginning of your next turn.",
-  "Saving Shield": "You deflect attacks that could mean your ally's death",
-  "Secret Signs": "You are particularly adept at communicating with others via innuendo, gestures, and secret hand signs",
-  "Shake It Off": "You support your allies and help them recover from crippling effects",
-  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
+  "Quillbreaker Defense": "You know how to put armor spikes to defensive use by thrusting them into the path of an oncoming attack just in time",
+  "Siege Commander": "Under your leadership, the time required to assemble and move a siege engine is greatly reduced",
+  "Strong Comeback": "You learn quickly from past mistakes",
+  "Swap Places": "You are skilled at changing places with your ally during a chaotic melee"
  },
  "inherents": {
-  "cha": 0,
-  "con": 0,
-  "dex": 0,
+  "cha": 2,
+  "con": 4,
+  "dex": 10,
   "int": 0,
-  "str": 0,
-  "wis": 10
+  "str": 3,
+  "wis": 0
  },
  "initiation_stat": "int",
  "initiator_level": 0,
- "int": 20,
+ "int": 23,
  "item_changes_dict": {
-  "Aquatic Cummerbund": {
+  "Quickmetal Bracers, Adamantine": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "skill.swm",
-     "text": "The cummerbund grants its wearer a +[[4]] competence bonus on swim checks, and allows her to take 10 on such checks even if distracted or endangered."
+     "target": "attack",
+     "text": "Once per day when a user wearing both these bracers speaks a command word, the metal turns entirely liquid and swims over the wearer's hands to cover her weapons. For the next [[10]] rounds, the affected weapons can overcome damage reduction as though the weapons were made of adamantine, cold iron, or silver (as determined by the quickmetal bracers, ' type). The heavy, shifting metal coating affects the balance of manufactured weapons, imposing a 2 penalty on attack rolls."
     }
-   ]
-  },
-  "Centering Jewel": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "The wearer can center herself (pathfinder rpg occult adventures 144) as a swift action."
    ]
   }
  },
@@ -403,26 +425,27 @@
  "land_speed": 30,
  "language_text": [
   "Common",
-  "Sylvan",
-  "Sphinx",
-  "Protean",
-  "Drow Sign Language",
-  "Terran",
+  "Aklo",
   "Grippli",
-  "Ignan",
-  "Gnome",
+  "Halfling",
   "Giant",
+  "Celestial",
+  "Gnoll",
+  "Wayang",
+  "Goblin",
+  "Drow Sign Language",
+  "Sphinx",
   "Elven",
-  "Dwarven"
+  "Abyssal"
  ],
- "level": 7,
+ "level": 5,
  "level_up_stats": {
-  "cha": 1,
+  "cha": 0,
   "con": 0,
   "dex": 0,
-  "int": 2,
+  "int": 1,
   "str": 0,
-  "wis": 0
+  "wis": 2
  },
  "license_url": "/license",
  "magic_talent_items": [],
@@ -435,72 +458,60 @@
  "manifesters": [
   {
    "caster_type": "high",
-   "discipline": "Shaper (Metacreativity)",
+   "discipline": "Seer (Clairsentience)",
    "display": "Psion",
-   "level": 7,
-   "manifester_level": 7,
+   "level": 5,
+   "manifester_level": 5,
    "manifesting_stat": "int",
-   "max_power_level": 4,
+   "max_power_level": 3,
    "mind_blade": null,
    "name": "psion",
    "powers_by_level": [
     [
      "Detect Psionics",
      "Blinding Flash",
-     "My Light"
+     "Energy Splash"
+    ],
+    [],
+    [
+     "Breach",
+     "Cloud Mind",
+     "Mental Regression",
+     "Suppress Veil",
+     "Tormenting the Living",
+     "True Terror"
     ],
     [
-     "Dissipating Touch",
-     "Morbid Fascination"
-    ],
-    [
-     "Apathetic Aura",
-     "Mental Semblance"
-    ],
-    [
-     "Baleful Mind Trap of Surtr",
-     "Energy Burst",
-     "Fettering the Shade",
-     "Follow the Strands",
-     "Spiritual Resting Place",
-     "Tormenting the Dead"
-    ],
-    [
-     "Aura of Decay",
-     "Crystalline Bonds",
-     "Mind Control, Geth's",
-     "Mindwipe",
-     "Temporary Awakening"
+     "Caustic Retribution",
+     "Disruption",
+     "Living Haunter",
+     "Malefic Metamorphosis",
+     "Release Death's Hold"
     ]
    ],
    "powers_chosen": [
     "Detect Psionics",
     "Blinding Flash",
-    "My Light",
-    "Dissipating Touch",
-    "Morbid Fascination",
-    "Apathetic Aura",
-    "Mental Semblance",
-    "Baleful Mind Trap of Surtr",
-    "Energy Burst",
-    "Fettering the Shade",
-    "Follow the Strands",
-    "Spiritual Resting Place",
-    "Tormenting the Dead",
-    "Aura of Decay",
-    "Crystalline Bonds",
-    "Mind Control, Geth's",
-    "Mindwipe",
-    "Temporary Awakening"
+    "Energy Splash",
+    "Breach",
+    "Cloud Mind",
+    "Mental Regression",
+    "Suppress Veil",
+    "Tormenting the Living",
+    "True Terror",
+    "Caustic Retribution",
+    "Disruption",
+    "Living Haunter",
+    "Malefic Metamorphosis",
+    "Release Death's Hold"
    ],
    "powers_known_list": [
     3,
-    2,
-    2,
+    0,
     6,
     5
    ],
-   "pp_per_day": 67,
+   "pp_per_day": 42,
    "subsystem_bucket": "",
    "talents_known": 3
   },
@@ -508,8 +519,8 @@
    "caster_type": "low",
    "discipline": "",
    "display": "Aegis",
-   "level": 7,
-   "manifester_level": 7,
+   "level": 5,
+   "manifester_level": 5,
    "manifesting_stat": "int",
    "max_power_level": 0,
    "mind_blade": null,
@@ -517,74 +528,36 @@
    "powers_by_level": [],
    "powers_chosen": [],
    "powers_known_list": [],
-   "pp_per_day": 32,
+   "pp_per_day": 24,
    "subsystem_bucket": "customizations",
    "talents_known": 0
   }
  ],
  "mannerisms": [
-  "Raises eyebrows",
-  "Opens and closes mouth",
-  "Blows nose"
+  "Laughs at own jokes",
+  "Furrows brow",
+  "Plays with sleeves",
+  "Drops head"
  ],
  "martial_disciplines": [],
  "mini_alignment": "ng",
  "mod_char_sheet_var": false,
  "mt_feats": [],
- "normal_feat_amount": 7,
- "older_brothers": " you have 1 older brothers",
+ "normal_feat_amount": 8,
+ "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "absent mother, loving father, raised in a middle income household",
+ "parents": "loving mother, absent father, raised in a middle income household",
  "personality_traits": [
-  "Goofy",
-  "Stubborn",
-  "Proud"
+  "Lazy",
+  "Realistic",
+  "Guarded",
+  "Polite",
+  "Relaxed",
+  "Controlling"
  ],
- "platnium": 240.0,
+ "platnium": 500.0,
  "powers_desc_dict": {
-  "Apathetic Aura": {
-   "augment": "If you spend an additional 4 power points, the duration becomes 10 minutes/level.",
-   "discipline": "telepathy (compulsion) [mind-affecting]",
-   "display": "Visual",
-   "duration": "1 round/level",
-   "level": "Cryptic 2, psion/wilder 2",
-   "manifesting time": "1 standard action",
-   "name": "Apathetic Aura",
-   "power points": "3",
-   "power resistance": "Yes",
-   "range": "20 ft.",
-   "saving throw": "Will negates",
-   "text": "You emit an aura that causes creatures to be uninterested in you or those accompanying you. The affected creatures are aware of your presence, but simply find your presence unworthy of their attention. Creatures accompanying you must be within 10 feet of you to be similarly ignored. Any action that would directly harm the affected creature allows it to make an additional save against this power with a +4 circumstance bonus to negate this effect."
-  },
-  "Aura of Decay": {
-   "augment": "This power may be augmented in one of the\nfollowing ways.\n\n1. By expending your psionic focus, you and any objects you carry or wield are immune to this manifestation.\n\n2. You may spend an additional 2 power points to cause rapid aging in those affected. Those that fail the Will save also suffer 1 point of ability damage to Strength, Dexterity, and Constitution for each hour that they remain in the area of this power.\n\n3. By spending 4 additional power points, you reduce the hardness of all non-magical objects in the area by 2. For each hour that an object remains in the area of this power, its hardness is reduced by a further 2. After two hours have passed, and after every two hours that passes thereafter, the hardness of magical objects in the area is reduced by 2 as well. These objects receive their own Will save to resist this power.",
-   "discipline": "Athanatism",
-   "display": "Material and olfactory",
-   "duration": "2 hours/level",
-   "level": "Psion/wilder 4, vitalist 4",
-   "manifesting time": "1 standard action",
-   "name": "Aura of Decay",
-   "power points": "7",
-   "power resistance": "no",
-   "range": "Object touched",
-   "saving throw": "Will negates",
-   "text": "You deeply infuse one object with the power of decay.\nCreatures in the area of this power must succeed on a\nWill save or suffer a -2 penalty on saving throws against\nghost special attacks (such as malevolence, corrupting\ngaze, etc.). This penalty increases by one for each hour\nthat they remain within the area of this power. Those\nthat succeed on the saving throw are immune to this\nmanifestation of this power. In addition, non-magical\nobjects also rot away over time when exposed to this\npower, suffering 1d10 points of damage each hour,\nignoring hardness."
-  },
-  "Baleful Mind Trap of Surtr": {
-   "augment": "For every additional power point you spend, this power’s duration increases by 1 round.\n\nLibrarian Note: In Psionics Unleashed, this power is simply called Mind Trap. It appears to have been renamed to avoid confusion with the later Mind Trap power.\n\n== Baleful Mind Trap of Surtr (Mythic) ==\nYou gain a number of power points equal to those drained by the target, or 1 power point if the target does not have power points. Creatures with power points must also make a save to avoid being nauseated, while creatures without power points are nauseated for two rounds on a failed save.",
-   "discipline": "Telepathy [Mind-Affecting]",
-   "display": "Auditory",
-   "duration": "1 round",
-   "level": "Psion/wilder 3",
-   "manifesting time": "1 immediate action",
-   "name": "Baleful Mind Trap of Surtr",
-   "power points": "5",
-   "power resistance": "Yes (harmless)",
-   "range": "Personal",
-   "saving throw": "None; see text",
-   "text": "You set up a trap in your mind against mental intruders. Anyone who attacks you with a telepathy power or mind-affecting effect immediately loses 1d6 power points. This power’s effect does not negate the power that is currently being used against you. You can manifest this power instantly, quickly enough to gain its benefit in an emergency. Creatures that do not have power points must make a Fortitude save or be nauseated for 1 round. Manifesting the power is an immediate action. You can use this power even when it is not your turn."
-  },
   "Blinding Flash": {
    "augment": "You may augment this power in one or both of the following ways:\n*For every additional power point you spend, the power’s duration increases by one round.\n*If you spend 4 additional power points, the target is blinded instead of dazzled.\nIn addition, for every 2 power points spent to achieve either of these effects, increase the save DC by 1.",
    "discipline": "Psychokinesis [Light]",
@@ -599,19 +572,47 @@
    "saving throw": "Fortitude Negates",
    "text": "You create a blinding flash of light to momentarily distract an opponent. The target of this power must make a Fortitude save or be dazzled for one round."
   },
-  "Crystalline Bonds": {
-   "augment": "This power can be augmented in one or more\nof the following ways.\n* For every 2 additional power points spent, this power can affect a target of one size category larger.\n* For every 2 additional power points spent, the continuous damage increases by 1d6 points of damage.\n\nIn addition, for every 2 additional power points spent on\neither of the above options, the power’s save DC and the DCs\nto break free increase by 1.\n\n== Mythic Crystalline Bonds ==\nAdd your tier to the damage dealt by the coils and the DC to break free.\n\nAugmented: If you expend one use of mythic power, you add your tier to the hardness and AC of the bonds.",
-   "discipline": "Metacreativity (Creation)",
-   "display": "Mental and visual",
-   "duration": "1 round/level (D)",
-   "level": "Shaper 4",
+  "Breach": {
+   "augment": "ed (3rd): You can expend two uses of mythic power to target one locked item per tier, unlocking up to four means of closure on each, allowing a free dispel against a psionic lock on each, and automatically opening locks of up to good quality (no manifester level check needed).\n\nIf the door has a trap that triggers when opened, you become aware of the trap and its general nature, and the door is unlocked but doesn’t automatically open.\n\nThe power can raise a barred gate, portcullis, or similar impediment, but each one counts as two locked doors.",
+   "discipline": "Psychoportation",
+   "display": "Material",
+   "duration": "Instantaneous; see text",
+   "level": "Cryptic 2, gambler 2, psion/wilder 2, voyager 2",
    "manifesting time": "1 standard action",
-   "name": "Crystalline Bonds",
-   "power points": "7",
+   "name": "Breach",
+   "power points": "3",
    "power resistance": "No",
    "range": "Medium (100 ft. + 10 ft./level)",
-   "saving throw": "Reflex negates",
-   "text": "You create rope-like coils of crystal that encircle your\nfoe, gagging and immobilizing him, dealing 3d6 points of\ndamage and 1d6 points of damage every round thereafter,\nas the crystal tightens against the target.\n\nA creature caught by the crystal can attempt purely\nmental actions, but must make a concentration check (DC\n20 + half the continuous damage dealt) to manifest powers. The creature can attempt to break free by spending 1 round\nand making a DC 20 Strength or Escape Artist check. The\nbond can alternatively be cut to break the target free. The\ncrystal has AC 5, hardness 12, and 30 hit points."
+   "saving throw": "None",
+   "text": "You psionically open stuck, barred, or locked doors, as well as those subject to hold portal or arcane lock. When you complete the manifestation of this power, make a manifester level check against the DC of the lock with a +10 bonus. If successful, you open up to two means of closure. This power opens secret doors, as well as locked or trick-opening boxes or chests. This also loosens welds, shackles, or chains (provided they serve to hold something shut). If used to open an arcane locked door, the power does not remove the arcane lock but simply suspends its functioning for 10 minutes. In all other cases, the door does not relock itself or become stuck again on its own. This does not raise barred gates or similar impediments (such as a portcullis), nor does it affect ropes, vines, and the like. The effect is limited by the area. Each manifestation can undo as many as two means of preventing access.\n\n== Mythic Breach ==\nThe power unlocks up to three means of closure instead of two. The power automatically opens locks of simple or average quality, without requiring a manifester level check to do so. If used on a door locked with psionic lock, you can attempt a free dispel check against it as if using a targeted dispel psionics, adding your tier to the check."
+  },
+  "Caustic Retribution": {
+   "augment": "You may augment this power in the following ways:\n* For every 2 power points you spend, its damage increases by one die (d6).\n* If you spend an additional 4 power points, creatures damaged by this power who fail their saves are also blinded until the beginning of their next turn.",
+   "discipline": "Psychometabolism [Acid]",
+   "display": "Olfactory",
+   "duration": "1 round/level",
+   "level": "dread 3, highlord 3, psion/wilder 3, psychic warrior 3, vitalist 3",
+   "manifesting time": "1 standard action",
+   "name": "Caustic Retribution",
+   "power points": "5",
+   "power resistance": "Yes",
+   "range": "Touch",
+   "saving throw": "Will negates (harmless)",
+   "text": "You alter a creature’s blood into a caustic fluid and adjust their veins and arteries to accommodate it. The target gains acid resistance 10. Additionally, when the target is damaged by a melee attack, its attacker must succeed at a Reflex save or take 3d6 points of acid damage. Attackers using a natural weapon suffer a –4 penalty to their save.\n\nWhenever the target takes damage from a bleed effect, creatures adjacent to the target must succeed at a Reflex save or suffer 3d6 points of acid damage."
+  },
+  "Cloud Mind": {
+   "augment": "This power may be augmented in one or both of the following ways.\n*If you spend 6 additional power points, you may manifest this power as an immediate action.\n*For every 2 additional power points you spend, this power can affect one additional creature.\n*If you spend 8 additional power points, this power effects one creature per manifester level.\nIn addition, for every 2 power points spent on any of the above options, the power’s save DC increases by 1.\n\n== Mythic Cloud Mind ==\nMythic cloud mind affects a number of creatures equal to your tier. Targets that succeed on the save instead suffer a 20% miss chance against you for the duration of the effect.\n\nAugmented: If you expend one use of mythic power, the effect does not break when you attack a creature.",
+   "discipline": "Telepathy [Mind-Affecting]",
+   "display": "None",
+   "duration": "1 min./level",
+   "level": "Cryptic 2, gambler 2, gifted blade 2, marksman 2, psion/wilder 2, voyager 2",
+   "manifesting time": "1 standard action",
+   "name": "Cloud Mind",
+   "power points": "3",
+   "power resistance": "Yes",
+   "range": "Close (25 ft. +5 ft./2 levels)",
+   "saving throw": "Will negates",
+   "text": "You make yourself completely undetectable to the subject by erasing all awareness of your presence from its mind. This power has the following effects.\n\nFirst, you are invisible and inaudible to the creature. It cannot even detect your presence by means of blindsense, blindsight, scent, or tremorsense. It cannot pinpoint your location by any means.\n\nSecond, the subject remains unaware of your actions, provided you do not make any attacks or cause any obvious or directly threatening changes in the subject’s environment. If you attack the subject creature, the effect ends.\n\nIf you take an action that creates a sustained and obvious change in the subject’s environment—for example, attacking a creature aside from the subject or moving a large or attended object the subject can see—the subject immediately gains a new saving throw against the power. An ally of the subject creature that is able to see or perceive you can use a move action to warn the subject and thereby grant it a new saving throw."
   },
   "Detect Psionics": {
    "augment": "If you spend 2 additional power points, the duration changes to 3 rounds/level (D) (no concentration required) and it also gives you a +10 enhancement bonus on Spellcraft checks made to identify the properties and command words of magic items in your possession. This power does not allow you to identify artifacts.\n\nLibrarian Note: In Psionics Unleashed, this power is instead a 1st-level power for psions, wilders, and psychic warriors. In addition, it also does not have the duration change augment effect (but keeps the +10 Spellcraft effect). Otherwise, it is functionally the same power.",
@@ -627,336 +628,271 @@
    "saving throw": "None",
    "text": "You detect psionic auras. A psionic aura is given off by any active or permanent power, or during the use of any psionic feat. Characters who have levels in a psionic class, creatures with the psionic subtype, and creatures with the Wild Talent feat possess psionic auras. The amount of information revealed by the manifestation of this power depends on how long you study a particular area or subject.\n\n1st Round: Presence or absence of psionic auras.\n\n2nd Round: Number of different psionic auras and the strength of the most potent aura.\n\n3rd Round: The strength and location of each aura. If the items or creatures bearing the auras are in line of sight, you can make Knowledge (psionics) checks to determine the discipline involved in each aura. (Make one check per aura; DC 15 + power level, or 15 + one-half manifester level for an effect that is not created by a power, such as that of a psionic item.) If the aura emanates from a psionic item, you can attempt to identify its properties (see Spellcraft).\n\nPsionically charged locations, multiple disciplines, or strong local psionic emanations may confuse or conceal weaker auras.\n\nAura Strength: A psionic aura’s strength depends on a functioning power’s level or an item’s manifester level. If an aura falls into more than one category, detect psionics indicates the stronger of the two. Detection of an overwhelming aura (see the accompanying table) dazes you for 1 round and the power ends.\n\n{| class=\"wikitable\"\n! rowspan=\"2\" style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Power or Item\n! colspan=\"4\" style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Aura Strength\n|-\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Faint\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Moderate\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Strong\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Overwhelming\n|-\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Functioning power (power level)\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 3rd or lower\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 4th-6th\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 7th-9th\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 10th+ (deity-level)\n|-\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Psionic item or creature (manifester level)*\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 5th or lower\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 6th-11th\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 12th-20th\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 21st+ (artifact)\n|}\n<nowiki>*</nowiki> For creatures without a manifester level, use the creature’s CR or hit die, whichever is lower.\n\nLingering Aura: A psionic aura lingers after its original source dissipates (in the case of a power) or is destroyed (in the case of a psionic item). If detect psionics is manifested and directed at such a location, the power indicates an aura of dim (even weaker than a faint aura). How long the aura lingers at this dim level depends on its original strength:\n{| class=\"wikitable\"\n! style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Original Strength\n! style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Duration\n|-\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Faint\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 1d6 minutes\n|-\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Moderate\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 1d6 x 10 minutes\n|-\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Strong\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 1d6 hours\n|-\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Overwhelming\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 1d6 days\n|}\nEach round, you can turn to detect psionics in a new area. You can tell the difference between magical and psionic auras. The power can penetrate barriers, but 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt blocks it."
   },
-  "Dissipating Touch": {
-   "augment": "For every additional power point you spend, this power’s damage increases by 1d6 points.\n\n== Mythic Dissipating Touch ==\nAdd your tier to each die of damage dealt with your melee touch attack.\n\nAugmented (7th): If you expend three uses of mythic power, your touch dissipates the entire non-mythic creature, scattering their entire form across the planes, effectively killing them. This effect cannot be used against mythic creatures.",
-   "discipline": "Psychoportation (Teleportation)",
-   "display": "Auditory and visual",
-   "duration": "Instantaneous",
-   "level": "Gambler 1, highlord 1, psion/wilder 1, psychic warrior 1, voyager 1",
+  "Disruption": {
+   "augment": "This power can be augmented in one or more of the following ways.\n* For every 2 additional power points you spend, you can choose another target.\n* If you spend 2 additional power points, the range increases to Medium instead of Close.\n* If you spend 3 additional power points, the target takes a penalty to all concentration checks equal to your manifesting ability stat, in addition to any other penalties it might suffer.",
+   "discipline": "Telepathy [mind-affecting]",
+   "display": "Auditory",
+   "duration": "1 round/level",
+   "level": "Cryptic 3, dread 3, highlord 3, psion/wilder 3, tactician 3",
    "manifesting time": "1 standard action",
-   "name": "Dissipating Touch",
-   "power points": "1",
-   "power resistance": "Yes (object)",
-   "range": "Touch",
-   "saving throw": "None",
-   "text": "Your mere touch can disperse the surface material of a foe or object, sending a tiny portion of it far away. This effect is disruptive; thus, your successful melee touch attack deals 1d6 points of damage."
+   "name": "Disruption",
+   "power points": "5",
+   "power resistance": "",
+   "range": "Close (25 ft. + 5 ft./2 levels)",
+   "saving throw": "",
+   "text": "The power overwhelms the target’s mind and ability to concentrate, making manifesting powers or casting spells extremely hard. The subject must succeed at a concentration check (DC equal to the save DC of this power) in order to cast a spell, manifest a power, use any spell-like ability, use any psi-like ability, or use any spell completion, power completion, power trigger or spell trigger magic items.\n\nWhile under the effect of this power, if the subject must attempt a concentration check to cast a spell, manifest a power, use a psi-like ability or a spell-like ability for any reason other than the effect of this spell (such as manifesting defensively, being injured while manifesting, and so on), it takes a penalty on that check equal to 1/2 its caster or manifester level."
   },
-  "Energy Burst": {
-   "augment": "For every additional power point you spend,\nthis power’s damage increases by one die (d6). For each\nextra two dice of damage, this power’s save DC increases\nby 1.\n\nSpecial: A kineticist does not need to select an energy type\nfor this power when he gains psionic focus. He may choose\nthe type of damage at the time the power is manifested.\n\n== Mythic Energy Burst ==\nThe radius of the burst increases to 60 feet.\n\nAugmented: If you expend two uses of mythic power, you can select a number of creatures up to your tier to not be affected by the burst.",
-   "discipline": "Psychokinesis [see text]",
+  "Energy Splash": {
+   "augment": "",
+   "discipline": "Psychokinesis [see text];",
    "display": "Auditory",
    "duration": "Instantaneous",
-   "level": "Gambler 3, psion/wilder 3",
+   "level": "Gambler 0, psion/wilder 0",
    "manifesting time": "1 standard action",
-   "name": "Energy Burst",
-   "power points": "5",
+   "name": "Energy Splash",
+   "power points": "Psionic focus or 1",
    "power resistance": "Yes",
-   "range": "40 ft.",
-   "saving throw": "Reflex half or Fortitude half; see text",
-   "text": "You create an explosion of unstable ectoplasmic energy\nof your active energy type (cold, electricity, fire, or sonic)\nthat deals 5d6 points of damage to every creature or object\nwithin the area. The explosion creates almost no pressure.\nSince this power extends outward from you, you are not\naffected by the damage.\n* Cold: A burst of this energy type deals +1 point of damage per die. The saving throw to reduce damage from a cold burst is a Fortitude save instead of a Reflex save.\n* Electricity: Manifesting a burst of this energy type provides a +2 bonus to the save DC and a +2 bonus on manifester level checks for the purpose of overcoming power resistance.\n* Fire: A burst of this energy type deals +1 point of damage per die.\n* Sonic: A burst of this energy type deals –1 point of damage per die and ignores an object’s hardness.\nThis power’s subtype is the same as the type of energy\nyou manifest."
-  },
-  "Fettering the Shade": {
-   "augment": "This power may be augmented in one of the following ways.\n* You may spend an additional power point to (if the object is a weapon) grant it one of the following: any one of the +1 weapon special abilities suitable for its weapon type, or a +1 bonus on one type of combat maneuver that can normally be used with that weapon type.\n* You may spend an additional 2 power points to (if the object is armor or a shield) grant it any one of the +1 armor or shield special abilities suitable for the object.",
-   "discipline": "Athanatism",
-   "display": "Material and visual",
-   "duration": "10 min./level (D)",
-   "level": "Psion/wilder 3",
-   "manifesting time": "1 standard action",
-   "name": "Fettering the Shade",
-   "power points": "5",
-   "power resistance": "Yes",
-   "range": "Touch",
+   "range": "Close (25 ft. + 5 ft./2 levels)",
    "saving throw": "None",
-   "text": "You force spiritual essence into an object you are touching, granting that object the ghost touch property."
+   "text": "You create a ray of your active energy type (cold, electricity,\nfire, or sonic) that shoots forth from your fingertip and\nstrikes a target within range, dealing damage if you succeed\non a ranged touch attack with the ray.\n* Cold: A ray of this energy type deals 2 points of damage. Alternately, the manifester can choose to deal no damage but instead chill up to 1 pound of non-living material (such as cooling a drink).\n* Electricity: A ray of this energy type deals 1 point of damage. Manifesting a ray of this energy type provides a +3 bonus on your attack roll if the target is wearing metal armor and a +2 bonus on manifester level checks for the purpose of overcoming power resistance. Alternately, the manifester can choose to deal no damage but instead cause a relatively harmless static shock. This shock is painful enough to wake someone sleeping, but is not painful to interrupt concentration or spellcasting.\n* Fire: A ray of this energy type deals 2 points of damage. Alternately, the manifester can choose to deal no damage but instead light a readily flammable object such as a lantern or torch, or warm up to 1 pound of nonliving material (such as heating food).\n* Sonic: A ray of this energy type deals 1 point of damage and ignores an object’s hardness. Alternately, the manifester can choose to deal no damage but instead cause a loud bang at the target location (DC 10 Perception check to hear it).\nThis power’s subtype is the same as the type of energy\nyou manifest."
   },
-  "Follow the Strands": {
-   "augment": "You may spend an additional 4 power\npoints to instead gain knowledge on a living person that\nconsiders a targeted object important. If more than one\nliving person considers the object equally important,\nyou gain knowledge on a random one.",
-   "discipline": "Athanatism",
-   "display": "Auditory and visual",
-   "duration": "Instantaneous",
-   "level": "Conduit 2, psion/wilder 3",
+  "Living Haunter": {
+   "augment": "You may augment this power in one of the following ways.\n* For every additional power point you spend, you may target one additional creature with the movement ability of this power.\n* By spending an additional 4 power points, you may include full sound, smell, and thermal elements with the hallucinations ability of this power.\n* For every 2 additional power points you spend, you can animate one additional Small object with the animate ability of this power. You may instead animate fewer, larger objects, as per control object.\n* By spending an additional 6 power points, increase the duration of this power to 1 min./level.\nIf you spend at least 6 power points augmenting this power, you may sustain any of its effects as a move action, instead of a standard. This allows you to maintain more than one effect each turn.",
+   "discipline": "Athanatism [spirit]",
+   "display": "Mental",
+   "duration": "1 round/level (D)",
+   "level": "Dread 3, psion/wilder 3",
    "manifesting time": "1 standard action",
-   "name": "Follow the Strands",
-   "power points": "3 (conduit), 5 (psion/wilder)",
-   "power resistance": "Yes",
-   "range": "Touch",
-   "saving throw": "Will negates",
-   "text": "You become attuned to the link between a ghost\nand its important possessions. If you target a ghost\nwith this power, you learn what (if any) objects would\nbe considered important to it, as well as their basic\nwhereabouts. If you target an object with this power,\nyou learn the name, alignment, and general location of\na ghost that considers it important (if it is connected to\na ghost). In the latter case, the ghost receives a Will save\nto negate the use of this power on its object. If it fails the\nWill save, it is not aware that anything has occurred. If\nthe object or ghost is located on another plane, you learn\nwhich plane it is on in addition to its location. If more\nthan one ghost considers the object equally important,\nyou gain knowledge on a random one."
+   "name": "Living Haunter",
+   "power points": "5",
+   "power resistance": "No and yes; see text",
+   "range": "Close (25 ft. + 5 ft./2 levels)",
+   "saving throw": "None and Will negates; see text",
+   "text": "You haunt an area by binding your soul to it. When you manifest this power, your soul leaves your body – you count as both unconscious and helpless, but you are also immune to mind-affecting effects. While this power is active, you may spend a standard action each turn to do one of the following.\n\nAnimate: You may animate a Small or smaller object within the area as the control object power. If you do not maintain this effect as a standard action, this animation ends.\n\nHallucinations: You create vivid hallucinations, creating the visual illusion of an object, creature, or force, as visualized by you. You may also create sounds, but not coherent speech. You can move the image within the limits of the size of the effect whenever you maintain this effect as a standard action. If you do not maintain this effect as a standard action, this effect ends.\n\nMovement: You may alter the speed of any single creature in the area of this power. If you choose to accelerate them, they gain a +1 bonus on attack rolls, a +1 dodge bonus to AC, an increase in all modes of movement of 30 feet (to a maximum of twice the subject’s normal speed using that mode), and an additional attack with a natural or manufactured weapon whenever the subject makes a full attack action, using the subject’s full base attack bonus and other applicable modifiers. This effect is not cumulative with similar effects, such as haste or a speed weapon. If you choose to decelerate them, they are staggered, may take only a single move action or standard action each turn, take a -1 penalty on attack rolls, AC, and Reflex saves, and move at half their normal speed. If you do not maintain this effect as a standard action, this effect ends. A creature targeted by this use may attempt a Will save to resist it (power resistance applies)."
   },
-  "Mental Semblance": {
-   "augment": "If you spend an additional 2 power points points, the bonus on Bluff and Disguise checks increase by 2 and the DC to disbelieve the disguise increases by 1.",
-   "discipline": "Telepathy [Mind-Affecting]",
-   "display": "Auditory, Material, Visual",
-   "duration": "10 minute/level",
-   "level": "Cryptic 2, psion/wilder 2",
-   "manifesting time": "1 full round action",
-   "name": "Mental Semblance",
+  "Malefic Metamorphosis": {
+   "augment": "==\n*For every 4 additional power points you spend, you may select another effect to apply to a creature. The same effect can be applied any number of times unless stated otherwise.\n*If you spend 2 additional power points, the range increases from touch to close (25 feet + 5 feet/level). For every 2 points you spend on top of this, you may select an additional target within range.\n*If you spend 4 additional power points, you gain the ability to affect a creature with multiple manifestations of this power.\n*For every 2 power points you spend augmenting this power (including as part of other augments), the save DC increases by 1.",
+   "discipline": "Psychometabolism",
+   "display": "Material",
+   "duration": "permanent",
+   "level": "Psion/Wilder 3, Vitalist 3",
+   "manifesting time": "1 standard action",
+   "name": "Malefic Metamorphosis",
+   "power points": "5",
+   "power resistance": "yes",
+   "range": "Touch",
+   "saving throw": "Fortitude Negates",
+   "text": "While enhancing one’s abilities with psychometabolic power is difficult, inhibiting those of an opponent are a technique that many find easier to gain a grasp upon. On a failed Fortitude save, the target creature is affected by one of the following penalties\n*A -6 penalty to one ability score\n*Size is decreased by up to 2 size categories\n*Target loses use of a limb. If this limb is a leg, fin, wing or other method of mobility, the target’s speed that uses that limb is halved. If it loses all such limbs, it cannot use that method of movement. If this limb is an arm, the target loses the ability to manipulate anything (including weapons) with that arm. If all arms are disabled in this way, the target cannot apply somatic components to spells.\n*The target becomes blind or deaf, as chosen by the manifester.\n*The target’s natural armor decreases by 3 (minimum 0)\n*The target’s damage reduction is reduced by 5 (minimum 0)\n*Any regeneration or fast healing the target possesses is reduced by 5 (minimum 0). If the target’s regeneration cannot be bypassed, it cannot be reduced below 1.\n*The target’s fly maneuverability is reduced by 2 steps. If it would go below poor, the target loses the ability to fly.\n*The target takes a -4 penalty on all attack rolls, skill checks, ability checks, and saving throws\n*Each turn, the target has a 50% chance to act normally; otherwise, it takes no action. This ability can only be selected up to twice. The second time, it causes the target to only have a 25% chance of acting normally\nThis power cannot be dispelled normally, but any effect that would remove ability damage is capable of removing the effects of this power.\n\n=="
+  },
+  "Mental Regression": {
+   "augment": "This power may be augmented in one or more of the following ways.\n* If you spend 2 additional power points, the range increases to Medium (100 ft. + 10 ft. / level).\n* For every 2 additional power points you spent, the penalty increases by 1d6.\n\n* If you spend 2 additional power points, the duration changes to Instantaneous and the penalty can only be removed through the use of psychic surgery, heal, wish, reality revision or a similar power or spell.",
+   "discipline": "Psychometabolism OR telepathy (mind-affecting)",
+   "display": "Visual",
+   "duration": "10 min/level",
+   "level": "Cryptic 2, dread 2, psion/wilder 2",
+   "manifesting time": "1 standard action",
+   "name": "Mental Regression",
    "power points": "3",
    "power resistance": "No",
-   "range": "Personal",
-   "saving throw": "Will negates",
-   "text": "When manifesting this power, you are capable of duplicating the psionic pattern of an individual you’ve touched and attempt to duplicate them. This is a mind-affecting ability that causes those who view you to see and hear you as the duplicated individual, granting you a +30 competence bonus on Disguise and Bluff checks to appear and act like the duplicated individual. You may duplicate patterns that are similar to your own; creatures duplicated must be of same type and size or within one step smaller or larger, and must have the same configuration of limbs (if you duplicate someone with a missing limb, observers will see that this limb is missing still). This power only affects the senses of sight and sound, you will still smell the same and creatures with scent may pick up the difference. Individuals who perceive falsehood in your disguise and representation of the duplicated victim may attempt a Will save to disbelieve the power and see through it. However, this does not end the power, only allowing the creature making the save to see through it to what you really are."
-  },
-  "Mind Control, Geth's": {
-   "augment": "You can augment this power in one or more of the following ways.\n*If you spend 2 additional power points, this power can also affect an animal, fey, magical beast, or monstrous humanoid.\n*If you spend 4 additional power points, this power can also affect an aberration, dragon, elemental, or outsider in addition to the creature types mentioned above.\n*For every 2 additional power points you spend, this power can affect an additional target. Any additional target cannot be more than 15 feet from another target of the power.\nIn addition, for every 2 additional power points you spend to achieve any of these effects, this power’s save DC increases by 1.\n\n== Hive Control ==\nDiscipline Telepathy; Level Highlord 4, Psion/Wilder 4, Tactician 4\n\nDisplay Olfactory\n\nManifesting Time 1 standard action\n\nTarget 1 unintelligent creature or swarm of unintelligent creatures\n\nSaving Throw Will negates; Power Resistance Yes\n\nPower Points 7\n\nYour willpower seizes hold of a nearby entity of infinitesimal intellect, enabling you to usurp control over their actions. This ability functions as Geth's mind control, save that it does not affect a single creature. Rather, it takes control of a single creature or swarm of creatures with an intelligence score of -. Even if such creatures cannot understand your commands, they intuitively know your commands and obey them.\n\n== Augment ==\n*For every 2 additional power points you spend, you may target one additional creature or swarm with this effect.\n*If you spend 6 additional power points, you may use this power to control intelligent swarms or troops as if they were unintelligent swarms.\n*For every 2 additional power points you spend (including as part of other augments), the save DC of this power increases by 1.\n\n== Mythic Geth's Mind Control ==\nThe Sense Motive DC to notice your target is dominated increases by double your tier. You can give orders to the target even if it’s protected by non-mythic effects that block magical control, such as protection from evil. If the target is protected by a mythic effect, you can attempt to overcome this defense with a manifester level check (DC 15 plus the manifester level of the effect); add your tier to your roll and the opposing manifester’s tier to the DC. If the target succeeds at its Will save to break your control, as an immediate action you can expend one use of mythic power to force it to reroll the save and use the lower result.",
-   "discipline": "Telepathy (Compulsion) [Mind-Affecting]",
-   "display": "Mental",
-   "duration": "1 day/level; see text",
-   "level": "Telepath 4",
-   "manifesting time": "1 round",
-   "name": "Mind Control, Geth’s",
-   "power points": "7",
-   "power resistance": "Yes",
-   "range": "Medium (100 ft. + 10 ft./level); see text",
-   "saving throw": "Will negates",
-   "text": "You can control the actions of any humanoid creature through a telepathic link that you establish with the subject’s mind.\n\nIf you and the subject have a common language, you can generally force the subject to perform as you desire, within the limits of its abilities. If no common language exists, you can communicate only basic commands, such as “Come here,” “Go there,” “Fight,” and “Stand still.” You know what the subject is experiencing, but you do not receive direct sensory input from it, nor can it communicate with you telepathically.\n\nOnce you have given a controlled creature a command, it continues to attempt to carry out that command to the exclusion of all other activities except those necessary for day-to-day survival (such as sleeping, eating, and so forth). Because of this limited range of activity, a Sense Motive check against DC 15 (rather than DC 25) can determine that the subject’s behavior is being influenced by an enchantment effect (see the Sense Motive skill description).\n\nChanging your orders or giving a dominated creature a new command is a move action.\n\nBy concentrating fully on the power (a standard action), you can receive full sensory input as interpreted by the mind of the subject, though it still can’t telepathically communicate with you. You can’t actually see through the subject’s eyes, so it’s not as good as being there yourself, but you still get a good idea of what’s going on.\n\nSubjects resist this control, and any subject forced to take actions against its nature receives a new saving throw with a +2 bonus. Obviously self-destructive orders are not carried out. Once control is established, the range at which it can be exercised is unlimited, as long as you and the subject are on the same plane. You need not see the subject to control it.\n\nIf you don’t spend at least 1 round concentrating on the power each day, the subject receives a new saving throw to throw off the mind control.\n\nProtection from evil or a similar effect can prevent you from exercising control or using the telepathic link while the subject is so warded, but such an effect does not automatically dispel it."
-  },
-  "Mindwipe": {
-   "augment": "You can manifest this power in one or both of the following ways.\n* For every 2 additional power points you spend, this power’s save DC increases by 1.\n* For every 3 additional power points you spend, this power bestows an additional negative level on the subject.",
-   "discipline": "Telepathy [Mind-Affecting]",
-   "display": "Auditory, mental, and visual",
-   "duration": "Instantaneous",
-   "level": "Dread 4, gambler 4, psion/wilder 4",
-   "manifesting time": "1 standard action",
-   "name": "Mindwipe",
-   "power points": "7",
-   "power resistance": "Yes",
    "range": "Close (25 ft. + 5 ft./2 levels)",
-   "saving throw": "Fortitude negates",
-   "text": "You partially wipe your victim’s mind of past experiences, bestowing two negative levels upon it. If the subject has at least as many negative levels as Hit Dice, it dies. The effects of multiple negative levels stack.\n\nIf the subject survives, it loses all negative levels after 1 hour. (No Fortitude save is necessary to avoid gaining the negative level permanently.)"
+   "saving throw": "Will or Fortitude negates (see text)",
+   "text": "You regress the targets mental faculties, making them dim-witted and coarse, perhaps even reducing them to an animal state. If the target fails its saving throw (Will for telepathy, Fortitude for psychometabolism), it takes a 1d6 penalty to Intelligence, Wisdom and Charisma (this cannot reduce a score below 1). If the target’s ability score is reduced to 1, they cannot use any skills related to that ability score, cannot communicate clearly (or at all), cannot understand language, but can still identify friend and foe."
   },
-  "Morbid Fascination": {
-   "augment": "By spending an additional 4 power points, you may, as a swift action at any time during the duration of this power, expend your psionic focus to instead treat creatures in the Ethereal Plane as if they had concealment instead of total concealment for one round.",
+  "Release Death's Hold": {
+   "augment": "By spending an additional 6 power points\nand expending your psionic focus, you may allow\nthis power to become contagious. The next undead\ncreature that the target touches is subjected to a second\nmanifestation of this power, including all augments and\nother enhancements. This second manifestation costs\nyou no additional power points and does not require you\nto expend your psionic focus.\n\nSpecial: If this power is manifested on a willing target, the duration becomes 10 min./level and they do not\nsuffer the sensitivity to pain.",
    "discipline": "Athanatism",
-   "display": "Mental and visual",
-   "duration": "1 hour/level",
-   "level": "Cryptic 1, gifted blade 1, highlord 1, psion/wilder 1, psychic warrior 1",
-   "manifesting time": "1 standard action",
-   "name": "Morbid Fascination",
-   "power points": "1",
-   "power resistance": "",
-   "range": "Personal",
-   "saving throw": "",
-   "text": "You cast your eyes far off into the Ethereal, catching occasional glimpses of its inhabitants. You can see creatures in the Ethereal Plane and pinpoint their locations, but they are treated as having total concealment from you. This link with the Ethereal makes you dangerously curious about the dead and ghosts. While this power is active; you gain a +2 bonus on Diplomacy checks made against followers or advocates of death and ghosts, but suffer a -2 penalty on Will saving throws and Bluff checks against the same."
-  },
-  "My Light": {
-   "augment": "You can augment this power in one of the following ways.\n* If you spend 2 additional power points, you can manifest this power as a swift action.\n* If you expend your psionic focus when manifesting this power, the cost of the power is reduced by 1 (to a minimum of 0).\nLibrarian Note: In Psionics Unleashed, this is a 1st-level power for psions, wilders, and psychic warriors. Otherwise, it is identical.",
-   "discipline": "Psychokinesis [Light]",
-   "display": "Auditory and visual",
-   "duration": "10 min./level (D)",
-   "level": "Cryptic 0, dread 0, gambler 0, gifted blade 1, highlord 0, marksman 0, psion/wilder 0, psychic warrior 0",
-   "manifesting time": "1 standard action",
-   "name": "My Light",
-   "power points": "Psionic focus or 1",
-   "power resistance": "",
-   "range": "Personal",
-   "saving throw": "",
-   "text": "Your eyes beam forth a 40-foot cone of light; for the first 20 feet, you shed normal light in such area, and you increase the light level for the other 20 feet by one step, up to normal light (darkness becomes dim light, and dim light becomes normal light). In an area of normal or bright light, this power can be manifested but it has no effect, until you enter into an area with a lower light level.\n\nIf my light is used in conjunction with elfsight, the cone of light extends out to 80 feet instead of 40 feet.\n\nIf my light is used in conjunction with control light, the cone of light extends out to 60 feet instead of 20 feet."
-  },
-  "Spiritual Resting Place": {
-   "augment": "You may augment this power in one of the\nfollowing ways.\n* By spending an additional 4 power points, you may instead target yourself and two willing creatures touched/level.\n* By spending an additional 2 power points, you may send only the willing creatures touched, excluding yourself.\n* By spending an additional 10 power points, you may instead send one unwilling creature touched. This creature receives no save, but may resist with power resistance as normal. When augmented this way, this power has a duration of 10 minutes. A creature targeted by this power may take a full-round action to end this power by succeeding at a DC 20 Charisma check.",
-   "discipline": "Athanatism",
-   "display": "Mental and visual",
-   "duration": "2 hours/level (D)",
-   "level": "Highlord 3, psion/wilder 3, tactician 3",
-   "manifesting time": "1 standard action",
-   "name": "Spiritual Resting Place",
+   "display": "Mental and olfactory",
+   "duration": "1 round/level",
+   "level": "Psion/wilder 3",
+   "manifesting time": "5 minutes",
+   "name": "Release Death’s Hold",
    "power points": "5",
-   "power resistance": "No",
+   "power resistance": "Yes",
    "range": "Touch",
-   "saving throw": "None",
-   "text": "You and the willing creatures you touch are transported\nto the Ethereal Plane, where you are contained within\na impenetrable, transparent, 20 ft. radius dome. This\ndome is a force effect, and no effects or attacks can travel\nthrough it in either direction (though it can be seen\nthrough in either direction, and does not hinder sound).\nYou do not have to remain touching the targets while\nthe power is active. When this power ends, you and the\ncreatures you brought with you are returned to the area\nyou were in when this power was manifested."
+   "saving throw": "Will negates",
+   "text": "You temporarily infuse an undead creature with life\nenergy. The undead creature touched must succeed at\na Will save or it becomes infused with life, no longer\nundead. The target loses the undead type (do not\nchange its HD, skills, or saves), regaining whatever\nits type was in life (if its original type is uncertain, it\ninstead becomes a magical beast). Its Constitution\nscore becomes 10 temporarily, but it continues to use\nCharisma to determine hit points and bonus added to\nFortitude saves. If it was mindless, it remains mindless.\nIt also loses all undead immunities, channel resistance,\nand any energy drain abilities it may have possessed. If\nit was incorporeal, it loses the incorporeal subtype and\ngrows a temporary body similar to the one it had in life,\nexcept that it has a Strength score of 10. It also becomes\nsensitive to pain. Whenever is suffers an amount of\ndamage equal to or greater than its HD, it must succeed\nat a Will save or become sickened for one round."
   },
-  "Temporary Awakening": {
-   "augment": "This power may be augmented in one or both of the following ways.\n* For every 2 additional power points you spend, you can choose another 1st level power you know to gift the target, but you lose access to this power for the duration of this power.\n* 1. If you spend 4 additional power points, the target gains a 2nd level power in addition to the 1st level power and has an effective manifester level of 3 for the purposes of manifesting these powers. You lose access to this 2nd level power for the duration.",
-   "discipline": "Psychometabolism or telepathy (mind-affecting)",
-   "display": "Visual",
-   "duration": "see text (D)",
-   "level": "Psion/wilder 4, vitalist 4",
-   "manifesting time": "10 minutes",
-   "name": "Temporary Awakening",
-   "power points": "7",
-   "power resistance": "No",
-   "range": "Close (25 ft. + 5 ft./2 levels)",
-   "saving throw": "none",
-   "text": "Inside everyone there is a spark that can be fanned into true power. You trigger a temporary awakening of psionic power inside a creature that had none before, temporarily sharing some of your own insights and fueling their internal power. The more powerful the target is, the more power they can contain, but their knowledge is temporary, a gift from you. Choose one 1st level power that you know, as long as this power is in effect, you cannot use the power. The target gains access to that 1st level power, gains 1 power point and a manifester level of 1, and a number of bonus power points as if his hit dice was his manifester level and his highest mental ability score was his primary manifesting ability score (which it also is for purposes of this granted power). Each morning the target can meditate to regain these power points as normal but if they ever are reduced to 0 power points, this power ends. The target can also recharge their power points from cognizance crystals as if he was a true manifester. Both the original manifester and the target can end this power as a swift action at any time."
-  },
-  "Tormenting the Dead": {
-   "augment": "This power may be augmented in one of the\nfollowing ways.\n* For every one additional power point you spend, the power deals an additional 1d8 damage.\n* By spending an additional 4 power points, you may wrack all targets hit with pain. If they fail the Fortitude save, they are also sickened for 1d6 rounds. This special use of the sickened condition affects incorporeal undead normally, regardless of any immunity they may have.\n* By spending an additional 4 power points, this power affects all incorporeal creatures in a 20-ft.-radius spread, instead of only a single target.\nIn addition, for every 2 power points spent augmenting\nthis power, increase the power’s save DC by 1.",
-   "discipline": "Athanatism",
-   "display": "Auditory and olfactory",
-   "duration": "Instantaneous",
-   "level": "Gifted blade 3, highlord 3, psion/wilder 3, psychic warrior 3",
+  "Suppress Veil": {
+   "augment": "For every 3 additional power points you spend, you may choose an additional veil to suppress with this power. You make a single dispel check and apply its results to all selected veils.",
+   "discipline": "Psychokinesis",
+   "display": "Auditory, Visual",
+   "duration": "1 min/level",
+   "level": "All 2",
    "manifesting time": "1 standard action",
-   "name": "Tormenting the Dead",
-   "power points": "5",
+   "name": "Suppress Veil",
+   "power points": "3",
+   "power resistance": "Yes",
+   "range": "Close (25 ft. + 5 ft. per 2 levels)",
+   "saving throw": "None",
+   "text": "===== Description =====\nYou project a pulse of concentrated essence at a creature in an attempt to suppress one of their veils. Select one veil the target creature has shaped and make a dispel check (1d20 + your manifester level) and compare it against a DC equal to 11 + the veil’s veilweaver level. If your check meets or beats this DC, that veil is suppressed it for the duration of this power."
+  },
+  "Tormenting the Living": {
+   "augment": "You may augment this power in one of the\nfollowing ways.\n* By spending an additional 4 power points, any incorporeal creature that attacks the target gains a +2 bonus on attack rolls, damage rolls, and save DCs of powers it manifests or effects it creates.\n* By spending an additional 2 power points, increase the duration of this power to 1 day/level.\n* By spending an additional 4 power points, increase the duration of this power to 1 week/level.",
+   "discipline": "Athanatism [mind-affecting, fear]",
+   "display": "Auditory and material",
+   "duration": "1 hour/level",
+   "level": "Psion/wilder 2, vitalist 2",
+   "manifesting time": "1 standard action",
+   "name": "Tormenting the Living",
+   "power points": "3",
+   "power resistance": "Yes",
+   "range": "Touch",
+   "saving throw": "Will negates",
+   "text": "You bind a spirit to a living creature, goading it into\ntormenting and torturing them. They are constantly\nharassed by ghostly hallucinations, suffering a -2 penalty\non Reflex saves and AC against attacks of opportunity.\nDuring your turn, as a swift action, you may expend\nyour psionic focus to empower the spirit, haunting the\ncreature more intensely. It is shaken for a number of\nrounds equal to your Charisma modifier."
+  },
+  "True Terror": {
+   "augment": "You can augment this power in any of the following ways.\n* If you expend your psionic focus, the range increases to Long (400 ft. + 40 ft./level).\n* For every additional power point you spend, you can target another creature.\n* For every 2 additional power points you spend, the target becomes stunned for an additional round.\n* If you spend 2 additional power points, you can target creatures with an Intelligence of 1 or more, as well as non-living creatures. You still cannot affect creature’s that are immune to fear or mind-affecting effects.\n* If you spend 5 additional power points, this becomes an Area-effect (20 feet radius) centered on you, affecting all targets within range.\nIn addition, for every 2 power points spent on the above augment options, the save DC increases by 1.",
+   "discipline": "Clairsentience [Fear, Mind-affecting]",
+   "display": "Mental",
+   "duration": "1 round",
+   "level": "Dread 2, Seer 2, Thug 2",
+   "manifesting time": "1 standard action",
+   "name": "True Terror",
+   "power points": "3",
    "power resistance": "Yes",
    "range": "Medium (100 ft. + 10 ft./level)",
-   "saving throw": "Fortitude half",
-   "text": "You summon ethereal implements to lash and torment\nthe incorporeal. This power deals 5d8 damage to the\ntarget; this damage is not reduced by the incorporeal trait."
+   "saving throw": "Will negates",
+   "text": "You cause the target to see horrible visions of future possibilities, stunning the target unless it makes a successful Will save."
   }
  },
  "profession_ability_items": [
   {
    "changes": [
     {
-     "formula": "3",
+     "formula": "1",
      "operator": "add",
      "priority": 0,
-     "target": "skill.klo",
+     "target": "skill.apr",
      "type": "competence"
     },
     {
-     "formula": "3",
+     "formula": "1",
      "operator": "add",
      "priority": 0,
-     "target": "skill.kno",
+     "target": "skill.blf",
      "type": "competence"
     }
    ],
-   "contextNotes": [
-    {
-     "target": "ac",
-     "text": "+2 circumstance to Diplomacy/Intimidate while your retinue attends you"
-    }
-   ],
-   "description": "<p><em>Profession (Master of Whispers) - rank 15/15. Associate skills (ranks 1/4/7/10): Craft, Appraise, Use Magic Device, Sense Motive.</em></p><hr><p><strong>Courtly Intrigue (Ex)</strong></p><p>You know how to gather whispers and trade favors. You gain a +3 competence bonus on Knowledge (local) and Knowledge (nobility) checks, and once per day you may call in a favor to learn a single secret or piece of local information as though you had succeeded at a DC 20 Gather Information check.</p><hr><p><strong>Retinue (Ex)</strong></p><p>You travel attended by loyal servants and a hired guard or two. You command 3 nonheroic followers (such as a valet, a guard, and a runner) who obey your lawful commands, and their presence grants you a +2 circumstance bonus on Diplomacy and Intimidate checks made in their company.</p><hr><p><strong>Noble Patronage (Ex)</strong></p><p>Your name opens doors and loosens guards. In any settlement of town size or larger you are presumed to have lodging, an audience with local officials, and a line of credit worth up to 500 gp, and you gain a +4 circumstance bonus on Diplomacy checks made to requisition aid or hospitality.</p>",
-   "name": "Profession Rank 5: (Master of Whispers)",
-   "uses": {
-    "maxFormula": "1",
-    "per": "day",
-    "value": null
-   }
+   "contextNotes": [],
+   "description": "<p><em>Profession (Coin-Picker) - rank 10/10. Associate skills (ranks 1/4/7/10): Appraise, Craft, Knowledge (local), Perception.</em></p><hr><p><strong>Penny-Pincher (Ex)</strong></p><p>Counting coppers all day has made this Psion stingy and sharp-eyed with money. They gain a <strong>+1 competence bonus</strong> on Appraise checks to estimate the value of common trade goods.</p><hr><p><strong>Hawker's Patter (Ex)</strong></p><p>A lifetime of crying wares in the market square keeps this Psion's tongue quick and friendly. They take a <strong>+1 competence bonus</strong> on Bluff checks made to fast-talk a customer.</p>",
+   "name": "Profession Rank 5: (Coin-Picker)",
+   "uses": null
   },
   {
    "changes": [
     {
      "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "ac",
-     "type": "insight"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "allSavingThrows",
-     "type": "insight"
-    },
-    {
-     "formula": "4",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.dip",
-     "type": "competence"
-    },
-    {
-     "formula": "4",
      "operator": "add",
      "priority": 0,
      "target": "skill.int",
      "type": "competence"
     }
    ],
-   "contextNotes": [],
-   "description": "<p><em>Profession (Master of Whispers) - rank 15/15.</em></p><hr><p><strong>Estate and Title (Ex)</strong></p><p>You hold a landed title with all its wealth and obligations. You command a manor, 20 sworn retainers, and a monthly income of 250 gp; once per week you may muster up to 10 men-at-arms (warrior 1) to serve you for a single day.</p><hr><p><strong>Diplomatic Immunity (Su)</strong></p><p>Your station shields you as surely as armor. You gain a +2 insight bonus to AC and on all saving throws, and the first time each day a creature would attack you it must succeed at a Will save (DC 10 + 7 + your Charisma modifier) or hesitate, losing that attack as it reckons with your standing.</p><hr><p><strong>Voice of Authority (Su)</strong></p><p>Your word carries compulsion. Once per day you may speak a one-word command to a single creature within 30 feet as though casting <em>command</em> (Will DC 10 + 7 + your Charisma modifier negates), and you gain a +4 competence bonus on Diplomacy and Intimidate checks.</p>",
-   "name": "Profession Rank 15: (Master of Whispers)",
-   "uses": {
-    "maxFormula": "1",
-    "per": "day",
-    "value": null
-   }
-  },
-  {
-   "changes": [],
-   "contextNotes": [],
-   "description": "<p><em>Profession (Weaver of the Aether) - rank 8/10. Associate skills (ranks 1/4/7/10): Handle Animal, Appraise, Use Magic Device.</em></p><hr><p><strong>Metamagic Adept (Su)</strong></p><p>The Psion can warp the shape of a spell as it leaves their mind. A number of times per day equal to one quarter their character level (minimum 1) they may apply a single metamagic feat they know to a spell without increasing its level or casting time.</p><hr><p><strong>Counterspell Mastery (Su)</strong></p><p>The Psion reads the flow of a hostile incantation and unravels it. A number of times per day equal to one third their character level (minimum 1) they may attempt to counter an enemy spell as an immediate action, making a caster level check (DC 11 + the spell's caster level) in place of readying an action and identifying the spell.</p><hr><p><strong>Arcane Pool (Su)</strong></p><p>You hold a reservoir of arcane energy equal to half your level + your Intelligence modifier (minimum 1). As a swift action you can spend 1 point to grant a weapon you hold a +1 enhancement bonus (to a maximum of +1 per four levels) for 1 minute.</p>",
-   "name": "Profession Rank 5: (Weaver of the Aether)",
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "+2 to confirm critical hits"
+    }
+   ],
+   "description": "<p><em>Profession (Squire-at-Arms) - rank 10/10. Associate skills (ranks 1/4/7/10): Perception, Diplomacy, Sleight of Hand, Profession.</em></p><hr><p><strong>Parade Bearing (Ex)</strong></p><p>Years on the muster ground taught you to stand tall and look the part. You gain a +2 competence bonus on Intimidate checks made to demoralize foes.</p><hr><p><strong>Quartermaster's Eye (Ex)</strong></p><p>You know good steel from scrap at a glance. You gain a +2 competence bonus on attack rolls made to confirm critical hits, the small edge of a soldier who keeps a keen edge.</p>",
+   "name": "Profession Rank 5: (Squire-at-Arms)",
    "uses": null
   },
   {
    "changes": [
     {
-     "formula": "3",
+     "formula": "2",
      "operator": "add",
      "priority": 0,
      "target": "skill.dip",
      "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.apr",
+     "type": "competence"
     }
    ],
    "contextNotes": [],
-   "description": "<p><em>Profession (Lord of the Realm) - rank 6/10. Associate skills (ranks 1/4/7/10): Appraise, Handle Animal.</em></p><hr><p><strong>Imperious Command (Ex)</strong></p><p>When you speak, allies move. As a standard action you may issue a ringing command to a single willing ally within 30 feet, granting them an immediate move action or a +2 morale bonus on their next attack roll or saving throw. You may use this 3 times per day.</p><hr><p><strong>House Allowance (Ex)</strong></p><p>A steady purse from your estate keeps you in fine cloth and ready coin. You begin each adventure with starting wealth equal to 125% of the normal amount, and you may draw on your house's credit to acquire any single mundane item worth up to 100 gp once per week.</p><hr><p><strong>Voice of Command (Ex)</strong></p><p>Years at court honed your charm into a weapon. You gain a +3 competence bonus on Diplomacy checks and may make a request that would normally take 1 minute as a standard action once per round.</p>",
-   "name": "Profession Rank 5: (Lord of the Realm)",
-   "uses": {
-    "maxFormula": "3",
-    "per": "day",
-    "value": null
-   }
+   "description": "<p><em>Profession (Trader) - rank 9/10. Associate skills (ranks 1/4/7/10): Sleight of Hand, Handle Animal, Diplomacy.</em></p><hr><p><strong>Market-Day Haggler (Ex)</strong></p><p>This Psion never accepts the first price offered. They gain a <strong>+2 competence bonus</strong> on Diplomacy checks made to negotiate a price or settle a bargain.</p><hr><p><strong>Practiced Appraiser (Ex)</strong></p><p>A trained eye can weigh a gem or sniff out a forgery at a glance. This Psion takes a <strong>+2 competence bonus</strong> on Appraise checks.</p>",
+   "name": "Profession Rank 5: (Trader)",
+   "uses": null
   }
  ],
  "profession_feat_desc": {
-  "Multi Talented": "Your profession rank cap increases by 10.",
-  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
+  "Multi Talented": "Your profession rank cap increases by 10."
  },
  "profession_feats": [
-  "Multi Talented",
-  "True Calling"
+  "Multi Talented"
  ],
  "profession_pool": 29,
  "profession_ranks": [
   {
-   "ability_theme": "noble",
-   "ability_tier": "good",
+   "ability_theme": "trade",
+   "ability_tier": "garbage",
    "associate_skills": [
-    "Craft",
     "Appraise",
-    "Use Magic Device",
-    "Sense Motive"
+    "Craft",
+    "Knowledge (local)",
+    "Perception"
    ],
-   "cap": 15,
-   "name": "Master of Whispers",
-   "rank15_abilities": [
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>You hold a landed title with all its wealth and obligations. You command a manor, 20 sworn retainers, and a monthly income of 250 gp; once per week you may muster up to 10 men-at-arms (warrior 1) to serve you for a single day.</p>",
-     "name": "Estate and Title (Ex)",
-     "uses": null
-    },
+   "cap": 10,
+   "name": "Coin-Picker",
+   "rank15_abilities": [],
+   "rank5_abilities": [
     {
      "changes": [
       {
-       "formula": "2",
+       "formula": "1",
        "operator": "add",
        "priority": 0,
-       "target": "ac",
-       "type": "insight"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "allSavingThrows",
-       "type": "insight"
+       "target": "skill.apr",
+       "type": "competence"
       }
      ],
      "contextNotes": [],
-     "desc": "<p>Your station shields you as surely as armor. You gain a +2 insight bonus to AC and on all saving throws, and the first time each day a creature would attack you it must succeed at a Will save (DC 10 + 7 + your Charisma modifier) or hesitate, losing that attack as it reckons with your standing.</p>",
-     "name": "Diplomatic Immunity (Su)",
+     "desc": "<p>Counting coppers all day has made this Psion stingy and sharp-eyed with money. They gain a <strong>+1 competence bonus</strong> on Appraise checks to estimate the value of common trade goods.</p>",
+     "name": "Penny-Pincher (Ex)",
      "uses": null
     },
     {
      "changes": [
       {
-       "formula": "4",
+       "formula": "1",
        "operator": "add",
        "priority": 0,
-       "target": "skill.dip",
+       "target": "skill.blf",
        "type": "competence"
-      },
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>A lifetime of crying wares in the market square keeps this Psion's tongue quick and friendly. They take a <strong>+1 competence bonus</strong> on Bluff checks made to fast-talk a customer.</p>",
+     "name": "Hawker's Patter (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 10,
+   "skill_label": "Profession (Coin-Picker)"
+  },
+  {
+   "ability_theme": "martial",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Perception",
+    "Diplomacy",
+    "Sleight of Hand",
+    "Profession"
+   ],
+   "cap": 10,
+   "name": "Squire-at-Arms",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [
       {
-       "formula": "4",
+       "formula": "2",
        "operator": "add",
        "priority": 0,
        "target": "skill.int",
@@ -964,147 +900,42 @@
       }
      ],
      "contextNotes": [],
-     "desc": "<p>Your word carries compulsion. Once per day you may speak a one-word command to a single creature within 30 feet as though casting <em>command</em> (Will DC 10 + 7 + your Charisma modifier negates), and you gain a +4 competence bonus on Diplomacy and Intimidate checks.</p>",
-     "name": "Voice of Authority (Su)",
-     "uses": {
-      "maxFormula": "1",
-      "per": "day",
-      "value": null
-     }
-    }
-   ],
-   "rank5_abilities": [
-    {
-     "changes": [
-      {
-       "formula": "3",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.klo",
-       "type": "competence"
-      },
-      {
-       "formula": "3",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.kno",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>You know how to gather whispers and trade favors. You gain a +3 competence bonus on Knowledge (local) and Knowledge (nobility) checks, and once per day you may call in a favor to learn a single secret or piece of local information as though you had succeeded at a DC 20 Gather Information check.</p>",
-     "name": "Courtly Intrigue (Ex)",
-     "uses": {
-      "maxFormula": "1",
-      "per": "day",
-      "value": null
-     }
+     "desc": "<p>Years on the muster ground taught you to stand tall and look the part. You gain a +2 competence bonus on Intimidate checks made to demoralize foes.</p>",
+     "name": "Parade Bearing (Ex)",
+     "uses": null
     },
     {
      "changes": [],
      "contextNotes": [
       {
-       "target": "ac",
-       "text": "+2 circumstance to Diplomacy/Intimidate while your retinue attends you"
+       "target": "attack",
+       "text": "+2 to confirm critical hits"
       }
      ],
-     "desc": "<p>You travel attended by loyal servants and a hired guard or two. You command 3 nonheroic followers (such as a valet, a guard, and a runner) who obey your lawful commands, and their presence grants you a +2 circumstance bonus on Diplomacy and Intimidate checks made in their company.</p>",
-     "name": "Retinue (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>Your name opens doors and loosens guards. In any settlement of town size or larger you are presumed to have lodging, an audience with local officials, and a line of credit worth up to 500 gp, and you gain a +4 circumstance bonus on Diplomacy checks made to requisition aid or hospitality.</p>",
-     "name": "Noble Patronage (Ex)",
+     "desc": "<p>You know good steel from scrap at a glance. You gain a +2 competence bonus on attack rolls made to confirm critical hits, the small edge of a soldier who keeps a keen edge.</p>",
+     "name": "Quartermaster's Eye (Ex)",
      "uses": null
     }
    ],
-   "ranks": 15,
-   "skill_label": "Profession (Master of Whispers)"
+   "ranks": 10,
+   "skill_label": "Profession (Squire-at-Arms)"
   },
   {
-   "ability_theme": "arcane",
-   "ability_tier": "high",
+   "ability_theme": "trade",
+   "ability_tier": "average",
    "associate_skills": [
+    "Sleight of Hand",
     "Handle Animal",
-    "Appraise",
-    "Use Magic Device"
+    "Diplomacy"
    ],
    "cap": 10,
-   "name": "Weaver of the Aether",
+   "name": "Trader",
    "rank15_abilities": [],
    "rank5_abilities": [
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>The Psion can warp the shape of a spell as it leaves their mind. A number of times per day equal to one quarter their character level (minimum 1) they may apply a single metamagic feat they know to a spell without increasing its level or casting time.</p>",
-     "name": "Metamagic Adept (Su)",
-     "uses": {
-      "maxFormula": "max(1, floor(@attributes.hd.total / 4))",
-      "per": "day",
-      "value": null
-     }
-    },
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>The Psion reads the flow of a hostile incantation and unravels it. A number of times per day equal to one third their character level (minimum 1) they may attempt to counter an enemy spell as an immediate action, making a caster level check (DC 11 + the spell's caster level) in place of readying an action and identifying the spell.</p>",
-     "name": "Counterspell Mastery (Su)",
-     "uses": {
-      "maxFormula": "max(1, floor(@attributes.hd.total / 3))",
-      "per": "day",
-      "value": null
-     }
-    },
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>You hold a reservoir of arcane energy equal to half your level + your Intelligence modifier (minimum 1). As a swift action you can spend 1 point to grant a weapon you hold a +1 enhancement bonus (to a maximum of +1 per four levels) for 1 minute.</p>",
-     "name": "Arcane Pool (Su)",
-     "uses": {
-      "maxFormula": "max(1, floor(@attributes.hd.total / 2) + @abilities.int.mod)",
-      "per": "day",
-      "value": null
-     }
-    }
-   ],
-   "ranks": 8,
-   "skill_label": "Profession (Weaver of the Aether)"
-  },
-  {
-   "ability_theme": "noble",
-   "ability_tier": "good",
-   "associate_skills": [
-    "Appraise",
-    "Handle Animal"
-   ],
-   "cap": 10,
-   "name": "Lord of the Realm",
-   "rank15_abilities": [],
-   "rank5_abilities": [
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>When you speak, allies move. As a standard action you may issue a ringing command to a single willing ally within 30 feet, granting them an immediate move action or a +2 morale bonus on their next attack roll or saving throw. You may use this 3 times per day.</p>",
-     "name": "Imperious Command (Ex)",
-     "uses": {
-      "maxFormula": "3",
-      "per": "day",
-      "value": null
-     }
-    },
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>A steady purse from your estate keeps you in fine cloth and ready coin. You begin each adventure with starting wealth equal to 125% of the normal amount, and you may draw on your house's credit to acquire any single mundane item worth up to 100 gp once per week.</p>",
-     "name": "House Allowance (Ex)",
-     "uses": null
-    },
     {
      "changes": [
       {
-       "formula": "3",
+       "formula": "2",
        "operator": "add",
        "priority": 0,
        "target": "skill.dip",
@@ -1112,19 +943,34 @@
       }
      ],
      "contextNotes": [],
-     "desc": "<p>Years at court honed your charm into a weapon. You gain a +3 competence bonus on Diplomacy checks and may make a request that would normally take 1 minute as a standard action once per round.</p>",
-     "name": "Voice of Command (Ex)",
+     "desc": "<p>This Psion never accepts the first price offered. They gain a <strong>+2 competence bonus</strong> on Diplomacy checks made to negotiate a price or settle a bargain.</p>",
+     "name": "Market-Day Haggler (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.apr",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>A trained eye can weigh a gem or sniff out a forgery at a glance. This Psion takes a <strong>+2 competence bonus</strong> on Appraise checks.</p>",
+     "name": "Practiced Appraiser (Ex)",
      "uses": null
     }
    ],
-   "ranks": 6,
-   "skill_label": "Profession (Lord of the Realm)"
+   "ranks": 9,
+   "skill_label": "Profession (Trader)"
   }
  ],
  "professions": [
-  "Master of Whispers",
-  "Weaver of the Aether",
-  "Lord of the Realm"
+  "Coin-Picker",
+  "Squire-at-Arms",
+  "Trader"
  ],
  "racial_stats": {
   "cha": 0,
@@ -1136,56 +982,56 @@
  },
  "region": "Tal-falko",
  "save_bases": {
-  "fort": 7,
-  "ref": 4,
-  "will": 10
+  "fort": 9,
+  "ref": 3,
+  "will": 9
  },
  "school": "N/A",
  "selected_traits": [
-  "Crusader Tactician",
-  "Suck In Your Gut",
-  "Agent of Chance",
-  "Principled",
-  "Cynical Ear",
-  "Sacred Conduit",
-  "Shadow Whispers",
-  "Meticulous Concoction"
+  "Comparative Religion",
+  "Destined Diplomat",
+  "Improvised Defense",
+  "Shrouded Casting",
+  "Nonchalant Thuggery",
+  "Boarded in Cheliax",
+  "Poverty-Stricken",
+  "Channel the Earth (Plane of Earth)"
  ],
  "selected_traits_desc": [
   {
-   "description": "You gain a +1 trait bonus on Knowledge (engineering) and Knowledge (nobility) checks, and one of these skills is always a class skill for you.",
-   "name": "Crusader Tactician"
+   "description": "You gain a +1 trait bonus on Knowledge (religion) skill checks, and Knowledge (religion) becomes a class skill for you.",
+   "name": "Comparative Religion"
   },
   {
-   "description": "You're able to move normally when squeezing and take only a –2 penalty on attack rolls and to AC.",
-   "name": "Suck In Your Gut"
+   "description": "You gain a +2 trait bonus on Diplomacy checks toward outsiders, and Diplomacy is always a class skill for you.",
+   "name": "Destined Diplomat"
   },
   {
-   "description": "Once a day, when an adjacent ally makes a skill check and doesn’t like the result, you can allow him a reroll as an immediate action. Your ally must take the result of the reroll, even if it is worse than the original roll.",
-   "name": "Agent of Chance"
+   "description": "Whenever you wield an improvised weapon, you gain a +1 shield bonus to AC. If you use the improvised weapon to attack, you lose this shield bonus until the beginning of your next turn.",
+   "name": "Improvised Defense"
   },
   {
-   "description": "You take a –2 penalty on Bluff checks and gain a +2 trait bonus on saving throws against charm, compulsion, and emotion effects.",
-   "name": "Principled"
+   "description": "Choose one school of magic when you pick this trait. You can cast spells from that school as if you had the Eschew Materials feat.",
+   "name": "Shrouded Casting"
   },
   {
-   "description": "Add 2 when determining your Hit Dice for Intimidate checks, and increase the DC or all Diplomacy checks against you by 2.",
-   "name": "Cynical Ear"
+   "description": "You gain a +4 trait bonus on Bluff checks to keep others from noticing your aggressive actions.",
+   "name": "Nonchalant Thuggery"
   },
   {
-   "description": "Whenever you channel energy, you gain a +1 trait bonus to the save DC of your channeled energy.",
-   "name": "Sacred Conduit"
+   "description": "You begin with a detailed map of a very large jungle (this grants +2 competence bonus on all Knowledge [geography] checks made regarding this region) and 200 gp worth of mundane equipment to aid your exploration of the jungle.",
+   "name": "Boarded in Cheliax"
   },
   {
-   "description": "You gain a +1 trait bonus on Knowledge (local) checks and a +2 trait bonus on Intimidate checks made to demoralize opponents.",
-   "name": "Shadow Whispers"
+   "description": "You gain a +1 bonus to Survival checks, and Survival is always a class skill for you.",
+   "name": "Poverty-Stricken"
   },
   {
-   "description": "Once per day, you can either add a +2 trait bonus to the save DC for one bomb you throw or extend the duration of one extract you imbibe by 2 rounds. Extracts with an instantaneous duration are not affected by this trait.",
-   "name": "Meticulous Concoction"
+   "description": "Whenever you channel positive energy to heal living creatures, affected targets gain a +2 profane bonus to CMD to resist bull rush, reposition, and trip combat maneuvers. Alternately, if you channel negative energy to harm living creatures, affected targets take a –2 penalty to CMD against such combat maneuvers. This effect lasts 1 round.",
+   "name": "Channel the Earth (Plane of Earth)"
   }
  ],
- "sheet_health": 112,
+ "sheet_health": 128,
  "shield_ac": 0,
  "shield_armor_check_penalty": " ",
  "shield_enhancement_bonus": 0,
@@ -1194,59 +1040,59 @@
  "shield_name": " ",
  "shield_spell_failure": " ",
  "shield_weight": " ",
- "skill_rank_budget": 182,
+ "skill_rank_budget": 196,
  "skill_ranks": {
-  "acrobatics": 9,
-  "appraise": 10,
-  "bluff": 7,
-  "climb": 0,
-  "craft": 9,
-  "diplomacy": 0,
-  "disable device": 9,
-  "disguise": 6,
-  "escape artist": 0,
-  "fly": 1,
-  "handle animal": 2,
+  "acrobatics": 10,
+  "appraise": 6,
+  "bluff": 3,
+  "climb": 13,
+  "craft": 8,
+  "diplomacy": 7,
+  "disable device": 8,
+  "disguise": 10,
+  "escape artist": 6,
+  "fly": 2,
+  "handle animal": 3,
   "heal": 0,
-  "intimidate": 3,
-  "knowledge arcana": 0,
-  "knowledge dungeoneering": 6,
-  "knowledge engineering": 6,
-  "knowledge geography": 5,
-  "knowledge history": 11,
-  "knowledge local": 2,
-  "knowledge nature": 6,
-  "knowledge nobility": 14,
-  "knowledge planes": 6,
+  "intimidate": 12,
+  "knowledge arcana": 15,
+  "knowledge dungeoneering": 9,
+  "knowledge engineering": 2,
+  "knowledge geography": 0,
+  "knowledge history": 0,
+  "knowledge local": 9,
+  "knowledge nature": 0,
+  "knowledge nobility": 21,
+  "knowledge planes": 5,
   "knowledge religion": 0,
   "linguistics": 6,
-  "perception": 12,
-  "perform": 13,
+  "perception": 8,
+  "perform": 1,
   "profession": 0,
   "ride": 6,
-  "sense motive": 8,
-  "sleight of hand": 13,
-  "spellcraft": 4,
-  "stealth": 2,
+  "sense motive": 0,
+  "sleight of hand": 5,
+  "spellcraft": 10,
+  "stealth": 9,
   "survival": 0,
-  "swim": 0,
-  "use magic device": 6
+  "swim": 2,
+  "use magic device": 0
  },
  "skill_unlock": {
-  "base_skill": "handle animal",
-  "ranks": 2,
-  "skill": "Handle Animal",
+  "base_skill": "stealth",
+  "ranks": 9,
+  "skill": "Stealth",
   "unlock": {
-   "10": "Trained creatures gain the +2 Will bonus within 30 feet while they can clearly see you, and you can teach a trick in 1 day at DC +20.",
-   "15": "With a week and a DC 30 check you can train an animal to understand speech (as speak with animals); you can teach a trick in 1 day (DC +10) or 1 hour (DC +20).",
-   "20": "You can make your speech understandable to any animal for 24 hours (DC 30, or DC 40 for magical beasts/vermin), and teach tricks in as little as 1 minute.",
-   "5": "Creatures you have trained gain a +2 bonus on Will saves while adjacent to you."
+   "10": "Stealth penalties for moving at full speed are halved (including the 5-rank sniping ability).",
+   "15": "After a successful Stealth-based attack, your target is denied its Dexterity bonus against all attacks you make before the end of your turn.",
+   "20": "After a successful Stealth-based attack, your target is denied its Dexterity bonus against all your attacks before the beginning of your next turn.",
+   "5": "Reduce the Stealth penalty from sniping by 10."
   },
-  "unlock_html": "<h2>Handle Animal</h2><p><strong>5 Ranks</strong>: Creatures you have trained gain a +2 bonus on Will saves while adjacent to you.</p><p><strong>10 Ranks</strong>: Trained creatures gain the +2 Will bonus within 30 feet while they can clearly see you, and you can teach a trick in 1 day at DC +20.</p><p><strong>15 Ranks</strong>: With a week and a DC 30 check you can train an animal to understand speech (as speak with animals); you can teach a trick in 1 day (DC +10) or 1 hour (DC +20).</p><p><strong>20 Ranks</strong>: You can make your speech understandable to any animal for 24 hours (DC 30, or DC 40 for magical beasts/vermin), and teach tricks in as little as 1 minute.</p>"
+  "unlock_html": "<h2>Stealth</h2><p><strong>5 Ranks</strong>: Reduce the Stealth penalty from sniping by 10.</p><p><strong>10 Ranks</strong>: Stealth penalties for moving at full speed are halved (including the 5-rank sniping ability).</p><p><strong>15 Ranks</strong>: After a successful Stealth-based attack, your target is denied its Dexterity bonus against all attacks you make before the end of your turn.</p><p><strong>20 Ranks</strong>: After a successful Stealth-based attack, your target is denied its Dexterity bonus against all your attacks before the beginning of your next turn.</p>"
  },
  "specialty_schools": [
-  "transmutation",
-  "evocation"
+  "abjuration",
+  "conjuration"
  ],
  "spell_changes_dict": {},
  "spell_list_choose_from": [],
@@ -1255,66 +1101,43 @@
  "spellbooks": [],
  "spells_prepared_per_level": [],
  "sphere_boons": [
-  "Fortified Casting",
-  "Empowered Abilities",
   "Easy Focus"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
-  "Focus Casting",
-  "Painful Magic",
-  "Material Casting",
-  "Addictive Casting",
-  "Wild Magic"
+  "Draining Casting",
+  "Verbal Casting"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Focus Casting",
-  "Painful Magic",
-  "Material Casting",
-  "Addictive Casting",
-  "Wild Magic",
-  "Fortified Casting",
-  "Empowered Abilities",
+  "Draining Casting",
+  "Verbal Casting",
   "Easy Focus"
  ],
  "spheres_chosen": [],
  "stances_chosen": [],
- "story_feat_tax_dict": {
-  "Improved Trip": [
-   "greater trip",
-   "drag down"
-  ]
- },
+ "story_feat_tax_dict": {},
  "story_feats": [
-  "Reckless Offense",
-  "Defensive Combat Training",
-  "Improved Trip"
+  "Miniature Reach",
+  "Death Frombelow",
+  "Siege Commander"
  ],
- "str": 16,
+ "str": 15,
  "teamwork_feat_labels": [],
  "teamwork_feats": 0,
  "total_level": 14,
- "total_rolled_hp": 106,
- "trainer_calibers": [
-  2
- ],
- "trainer_feat_labels": [
-  "(Trainer 1)",
-  "(Trainer 1)"
- ],
+ "total_rolled_hp": 122,
+ "trainer_calibers": [],
+ "trainer_feat_labels": [],
  "trainer_feat_tax_dict": {},
- "trainer_feats": [
-  "Field Repair",
-  "Death From Above"
- ],
+ "trainer_feats": [],
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],
- "weapon_name": "Bayonet",
- "weight_number": 211,
- "wis": 12,
- "younger_brothers": " you have 3 younger brothers",
- "younger_sisters": " you have 0 younger sisters"
+ "weapon_name": "Dart",
+ "weight_number": 167,
+ "wis": 20,
+ "younger_brothers": " you have 1 younger brothers",
+ "younger_sisters": " you have 2 younger sisters"
 }

@@ -1,6 +1,6 @@
 {
- "Total_HP": 194,
- "age_number": 46,
+ "Total_HP": 236,
+ "age_number": 33,
  "alignment": "Neutral Good",
  "animal_companion": {
   "chassis": {
@@ -17,58 +17,56 @@
    "will": 1
   },
   "feats": [
-   "Agile Maneuvers",
-   "Blind-Fight",
-   "Toughness"
+   "Light Armor Proficiency",
+   "Skill Focus",
+   "Weapon Focus"
   ],
   "kind": "normal",
-  "species": "hypersloth",
+  "species": "snake, reef",
   "species_stats": {
    "7th-level advancement": {
     "ability scores": {
-     "con": "+2",
+     "dex": "+2",
      "str": "+2"
     },
-    "attack": "4 claws (1d4)",
-    "burst of speed (su)": "a hypersloth can act as though under the effect of a haste spell for a number of rounds per day equal to its hit dice. These rounds can be broken up over multiple uses or used all at once. "
+    "special attacks": "poison (frequency 1 round [6]; effect 1d2 str damage; cure 2 saves; con-based dc])"
    },
+   "description": "highly venomous and an excellent swimmer, the brightly colored reef snake is at home in tidal waters but can slither about on land if needed. ",
    "source": "source",
    "starting statistics": {
     "ability scores": {
-     "cha": 6,
+     "cha": 2,
      "con": 12,
-     "dex": 17,
-     "int": 2,
+     "dex": 15,
+     "int": 1,
      "str": 10,
-     "wis": 14
+     "wis": 13
     },
     "ac": "+2 natural armor",
-    "attack": "2 claws (1d4)",
-    "size": "small",
-    "special qualities": "low-light vision",
-    "speed": "10 ft, climb 40 ft"
+    "attack": "bite (1d4 plus poison)",
+    "size": "medium",
+    "special attacks": "poison (frequency 1 round [6]; effect 1 str damage; cure 1 save; con-based dc)",
+    "special qualities": "low-light vision, hold breath, scent",
+    "speed": "10 ft. , swim 40 ft. "
    }
   }
  },
  "appearance": [
-  "Smooth skin"
+  "Homely"
  ],
  "archetype1": null,
- "archetype_info": "{\n    \"Nature Priest\": {\n        \"source\": \"Healer's Handbook pg. 23 Nature priests serve two masters: their deities and nature itself, and can call upon the power of both to fuel their divine abilities.\",\n        \"faithful\": \" Like a cleric, a nature priest must worship a deity and her alignment must be within one step of her deity's ( Pathfinder RPG Core Rulebook 166 ).\",\n        \"class skills\": \" A nature priest adds Knowledge (religion) to her list of class skills instead of Knowledge (geography). This alters the druid's class skills.\",\n        \"weapon proficiencies\": \" A nature priest is proficient with her deity's favored weapon in addition to a druid's typical weapon proficiencies. This alters the druid's weapon proficiencies.\",\n        \"studious piety (ex)\": \" A nature priest gains a +1 bonus on Knowledge (religion) checks. This bonus increases to +2 when attempting checks that involve knowledge of her deity or her faith. This ability replaces nature sense.\",\n        \"chosen druid (ex)\": \" If a nature priest chooses a domain for her nature bond, she must choose one of her deity's domains (or subdomains) in place of those typically available to a druid. This ability alters nature bond.\",\n        \"shepherd of the faithful (su)\": \" At 4th level, a nature priest and all allies within 60 feet that can see or hear her gain a +2 insight bonus on skill checks to notice or avoid natural hazards, difficult terrain, and rough winds or water, as well as on saving throws against natural hazards. This ability offers no protection against the abilities of creatures or the effects of spells or items. This ability replaces resist nature's lure.\",\n        \"divine servants (su)\": \" At 9th level, a nature priest adds the spells lesser planar ally, planar ally, and greater planar ally to her druid spell list at their cleric spell levels. When she casts these spells, the planar allies summoned require half the payment described in those spells. This ability replaces the venom immunity ability.\"\n    }\n}",
+ "archetype_info": "{\n    \"Elemental Ally\": {\n        \"source\": \"Monster Summoner's Handbook pg. 16 An elemental ally is a druid who has crafted powerful bonds of trust and friendship with one ally from each of the four primary elemental planes. Elemental allies are most common in Qadira, where they are considered similar to genie-binders.\",\n        \"elemental eidolons\": \"  At 1st level, an elemental ally has four elemental eidolons she can summon, one each for the elements of air, earth, fire, and water. Their abilities and statistics are determined using the rules for elemental eidolons for the summoner class from page 33 of Pathfinder RPG Pathfinder Unchained , as if the elemental ally were a summoner of her druid level, except they gain no additional evolution pool ( just those evolutions from their base form and base evolutions from their subtype). Each of the four elementals has its own base form, skills, and feats. The elemental ally can summon one of these elementals with the same 1-minute ritual a summoner normally uses to do so. The elemental ally can't summon an eidolon or cast summon nature's ally if she currently has an eidolon summoned. She also can't summon an eidolon if she currently has a creature summoned through other means. If one of the elemental ally's eidolons is killed, she cannot summon any eidolons for 24 hours. The elemental ally can dismiss her eidolon as a standard action. As the elemental ally gains levels, her elemental eidolons' base statistics and base evolutions increase as if her druid level were her summoner level. The eidolons gain the darkvision, link, share spells, evasion, ability score increase, devotion, multiattack, and improved evasion abilities at the appropriate levels, but never gain an evolution pool. Abilities and spells that grant additional evolution points to eidolons do not function for elemental eidolons, though any ability that would grant evolution points to an animal companion does work. The elemental ally does not gain life link or any other class features a summoner gains in relation to her eidolon. This ability replaces nature's bond and wild shape.\",\n        \"elemental empathy (ex)\": \"  An elemental ally can improve the attitude of a creature of the elemental subtype. This ability functions just like a Diplomacy check to improve the attitude of a person. The elemental ally rolls 1d20 and adds her druid level and her Charisma modifier to determine the elemental empathy check result. To use elemental empathy, the elemental ally and the elemental must be able to study each other, which means that they must be within 30 feet of one another under normal conditions. Generally, inf luencing an elemental in this way takes 1 minute, but as with influencing people, it might take more or less time. An elemental ally can also use this ability to influence a non-elemental outsider with the air, earth, fire, or water subtype, but she takes a -4 penalty on the check. This ability replaces wild empathy.\",\n        \"elemental magic\": \"  The elemental ally can target elementals (including her elemental eidolons) with any spell she casts that targets animals, even though elementals can't normally be targeted by such spells.\",\n        \"elemental resistance (ex)\": \"  At 4th level, an elemental ally gains resist acid, cold, electricity, and fire 5. This ability replaces resist nature's lure.\"\n    }\n}",
  "armor_ac": "8",
  "armor_armor_check_penalty": "-7",
  "armor_enhancement_bonus": 1,
  "armor_enhancement_chosen_list": [],
  "armor_max_dex_bonus": "0",
- "armor_name": "Half-plate",
+ "armor_name": "Stone lamellar",
  "armor_spell_failure": 0,
- "armor_weight": "50 lbs.",
- "bab_total": 11,
+ "armor_weight": "45 lbs.",
+ "bab_total": 12,
  "background_traits": [
-  "Deathkeeper",
-  "Prideful Temper",
-  "Alluring",
-  "A Sure Thing"
+  "Spirit Talker"
  ],
  "backstory": "",
  "bloodline": "N/A",
@@ -76,24 +74,24 @@
  "bloodline_feats": [],
  "bonded_creatures": [
   {
-   "archetype": "Nature Priest",
+   "archetype": "Warrior Poet",
    "chassis": null,
    "contributors": [],
    "effective_level": 0,
    "feats": [],
    "flags": [],
-   "grantor": "druid",
+   "grantor": "samurai",
    "kind": null,
    "name": null,
-   "outcome": "domain",
+   "outcome": "archetype_removed",
    "sex": null,
    "species": null,
    "species_stats": null,
    "stats": null,
-   "type": "companion"
+   "type": "mount"
   },
   {
-   "archetype": "Ilsurian Archer",
+   "archetype": "Elemental Ally",
    "chassis": {
     "bab": 3,
     "bonus tricks": 2,
@@ -108,8 +106,8 @@
     "will": 1
    },
    "contributors": [
-    "ranger",
-    "hunter"
+    "druid",
+    "ranger"
    ],
    "effective_level": 5,
    "feat_labels": [
@@ -128,31 +126,52 @@
     "Mobility: ineligible -- Dodge",
     "Power Attack: ineligible -- Str 13 (has 11)",
     "Spring Attack: ineligible -- Dodge",
-    "feat tax dropped Improved Blind-Fight (via Blind-Fight): not on the bonded-creature tax allowlist",
-    "feat tax dropped Surprising Combatant (via Improved Initiative): not on the bonded-creature tax allowlist"
+    "feat tax dropped Arcane Armor Training (via Light Armor Proficiency): not on the bonded-creature tax allowlist",
+    "feat tax dropped Greater Weapon Focus (via Weapon Focus): not on the bonded-creature tax allowlist",
+    "feat tax dropped Courage In Numbers (via Iron Will): not on the bonded-creature tax allowlist"
    ],
    "feat_tax_dict": {
-    "Lightning Reflexes": [
-     "Improved Lightning Reflexes"
+    "Great Fortitude": [
+     "Improved Great Fortitude"
+    ],
+    "Iron Will": [
+     "Improved Iron Will"
+    ],
+    "Light Armor Proficiency": [
+     "Medium Armor Proficiency"
     ]
    },
    "feats": [
-    "Toughness",
-    "Blind-Fight",
-    "Agile Maneuvers"
+    "Light Armor Proficiency",
+    "Weapon Focus",
+    "Skill Focus"
    ],
    "flags": [],
    "flaw_effects": {
-    "Bolts at Blood": {
+    "Fear of Fire": {
      "changes": [],
      "contextNotes": [
       {
        "target": "will",
-       "text": "Bolts at Blood (major): the first time each encounter that the creature or its master is reduced below half hit points, Will save DC [[15]] or the creature flees for 1d4 rounds."
+       "text": "Fear of Fire (major): Will save DC [[15]] when a fire larger than a torch comes within 30 feet or the creature is panicked for 1d4 rounds; it will not willingly approach open flame."
       }
      ],
-     "description": "The smell of blood sends the creature running rather than in.",
+     "description": "Something burned this creature once and it has not forgotten.",
      "tier": "major"
+    },
+    "Heavy-Footed": {
+     "changes": [
+      {
+       "formula": "-2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.ste",
+       "type": "untyped"
+      }
+     ],
+     "contextNotes": [],
+     "description": "The creature moves without any of its kind's usual quiet.",
+     "tier": "minor"
     },
     "Picky Eater": {
      "changes": [],
@@ -165,132 +184,140 @@
      "description": "The creature refuses all but a narrow diet, and sulks when it does not get it.",
      "tier": "minor"
     },
-    "Weak Jaw": {
+    "Skittish": {
      "changes": [],
      "contextNotes": [
       {
-       "target": "cmb",
-       "text": "Weak Jaw (minor): -2 on combat maneuver checks made to grapple or maintain a grapple with a natural attack."
+       "target": "will",
+       "text": "Skittish (minor): when a loud or sudden effect occurs within 30 feet, Will save DC [[5]] or the creature is shaken for 1 round."
       }
      ],
-     "description": "The creature's bite has never had the force its frame suggests.",
+     "description": "Loud noises and sudden movement unsettle the creature. It is easily startled and slow to settle once alarmed.",
      "tier": "minor"
     }
    },
-   "flaw_feat_amount": 2,
+   "flaw_feat_amount": 3,
    "flaw_feats": [
-    "Improved Initiative",
-    "Lightning Reflexes"
+    "Iron Will",
+    "Dodge",
+    "Great Fortitude"
    ],
    "flaws": [
     "Picky Eater",
-    "Bolts at Blood",
-    "Weak Jaw"
+    "Fear of Fire",
+    "Skittish",
+    "Heavy-Footed"
    ],
    "gear": [],
    "gear_source": "not modelled in v1; when added, funded from character.gold (PF1e: companions have no wealth-by-level)",
-   "grantor": "ranger",
+   "grantor": "druid",
    "kind": "normal",
-   "name": "Inès",
+   "name": "Hélène",
    "outcome": "granted",
    "sex": "Female",
-   "species": "hypersloth",
+   "species": "snake, reef",
    "species_stats": {
     "7th-level advancement": {
      "ability scores": {
-      "con": "+2",
+      "dex": "+2",
       "str": "+2"
      },
-     "attack": "4 claws (1d4)",
-     "burst of speed (su)": "a hypersloth can act as though under the effect of a haste spell for a number of rounds per day equal to its hit dice. These rounds can be broken up over multiple uses or used all at once. "
+     "special attacks": "poison (frequency 1 round [6]; effect 1d2 str damage; cure 2 saves; con-based dc])"
     },
+    "description": "highly venomous and an excellent swimmer, the brightly colored reef snake is at home in tidal waters but can slither about on land if needed. ",
     "source": "source",
     "starting statistics": {
      "ability scores": {
-      "cha": 6,
+      "cha": 2,
       "con": 12,
-      "dex": 17,
-      "int": 2,
+      "dex": 15,
+      "int": 1,
       "str": 10,
-      "wis": 14
+      "wis": 13
      },
      "ac": "+2 natural armor",
-     "attack": "2 claws (1d4)",
-     "size": "small",
-     "special qualities": "low-light vision",
-     "speed": "10 ft, climb 40 ft"
+     "attack": "bite (1d4 plus poison)",
+     "size": "medium",
+     "special attacks": "poison (frequency 1 round [6]; effect 1 str damage; cure 1 save; con-based dc)",
+     "special qualities": "low-light vision, hold breath, scent",
+     "speed": "10 ft. , swim 40 ft. "
     }
    },
    "stats": {
     "abilities": {
-     "cha": 6,
+     "cha": 2,
      "con": 12,
-     "dex": 18,
-     "int": 2,
+     "dex": 16,
+     "int": 1,
      "str": 11,
-     "wis": 14
+     "wis": 13
     },
     "ability_modifiers": {
-     "cha": -2,
+     "cha": -4,
      "con": 1,
-     "dex": 4,
-     "int": -4,
+     "dex": 3,
+     "int": -5,
      "str": 0,
-     "wis": 2
+     "wis": 1
     },
-    "ac": 19,
+    "ac": 18,
     "applied_changes": [
      {
-      "source": "Toughness",
-      "target": "mhp",
-      "value": 5
-     },
-     {
-      "source": "Agile Maneuvers",
-      "target": "cmb",
-      "value": 4
-     },
-     {
-      "source": "Improved Initiative",
-      "target": "init",
-      "value": 4
-     },
-     {
-      "source": "Lightning Reflexes",
-      "target": "ref",
+      "source": "Iron Will",
+      "target": "will",
       "value": 2
+     },
+     {
+      "source": "Dodge",
+      "target": "ac",
+      "value": 1
+     },
+     {
+      "source": "Great Fortitude",
+      "target": "fort",
+      "value": 2
+     },
+     {
+      "source": "(Minor flaw) Heavy-Footed",
+      "target": "skill.ste",
+      "value": -2
      }
     ],
     "attacks": [
      {
       "alternative": false,
-      "atk": 4,
-      "count": 2,
+      "atk": 3,
+      "count": 1,
       "crit_multiplier": null,
       "damage": "1d4",
-      "name": "claws",
-      "notes": null
+      "name": "bite",
+      "notes": "poison"
      }
     ],
     "bab": 3,
     "bonus_tricks": 2,
-    "cmb": 6,
+    "cmb": 3,
     "cmd": 16,
     "context_notes": [
      {
-      "source": "Blind-Fight",
+      "source": "Light Armor Proficiency",
       "target": "attack",
-      "text": "Blind-Fight: reroll a miss chance from concealment once per attack, and an invisible attacker gains no bonus to hit."
+      "text": "Light Armor Proficiency: no armor check penalty on attack rolls while wearing light barding."
      },
      {
-      "source": "Blind-Fight",
-      "target": "ac",
-      "text": "Blind-Fight: no loss of Dexterity to AC from an unseen attacker, and full speed while blinded."
+      "source": "Weapon Focus",
+      "target": "attack",
+      "text": "Weapon Focus: +1 on attack rolls with one chosen natural attack."
      },
      {
-      "source": "Agile Maneuvers",
-      "target": "cmb",
-      "text": "Agile Maneuvers: combat maneuver bonus uses Dexterity in place of Strength."
+      "source": "Skill Focus",
+      "target": "skills",
+      "text": "Skill Focus: +3 on one chosen skill, rising to +6 once the creature has 10 ranks in it."
+     },
+     {
+      "source": "Medium Armor Proficiency (via Light Armor Proficiency)",
+      "target": "attack",
+      "text": "Medium Armor Proficiency: no armor check penalty on attack rolls while wearing medium barding."
      },
      {
       "source": "(Minor flaw) Picky Eater",
@@ -298,61 +325,69 @@
       "text": "Picky Eater (minor): rations cost double, and after a day without its preferred food the creature takes a -2 penalty on all checks until fed."
      },
      {
-      "source": "(Major flaw) Bolts at Blood",
+      "source": "(Major flaw) Fear of Fire",
       "target": "will",
-      "text": "Bolts at Blood (major): the first time each encounter that the creature or its master is reduced below half hit points, Will save DC [[15]] or the creature flees for 1d4 rounds."
+      "text": "Fear of Fire (major): Will save DC [[15]] when a fire larger than a torch comes within 30 feet or the creature is panicked for 1d4 rounds; it will not willingly approach open flame."
      },
      {
-      "source": "(Minor flaw) Weak Jaw",
-      "target": "cmb",
-      "text": "Weak Jaw (minor): -2 on combat maneuver checks made to grapple or maintain a grapple with a natural attack."
+      "source": "(Minor flaw) Skittish",
+      "target": "will",
+      "text": "Skittish (minor): when a loud or sudden effect occurs within 30 feet, Will save DC [[5]] or the creature is shaken for 1 round."
      }
     ],
-    "flat_footed_ac": 15,
+    "flat_footed_ac": 14,
     "hd": 5,
     "hit_die": "d8",
-    "hp": 50,
-    "initiative": 8,
+    "hp": 45,
+    "initiative": 3,
     "merge_notes": [
      "7th-level advancement not reached (effective level 5)"
     ],
     "natural_armor": 4,
     "other": {},
     "saves": {
-     "fort": 5,
-     "ref": 10,
-     "will": 3
+     "fort": 7,
+     "ref": 7,
+     "will": 4
     },
-    "size": "small",
+    "size": "medium",
     "size_change": null,
     "skills": {
-     "climb": {
-      "ranks": 1,
-      "total": 4
-     },
      "escape artist": {
       "ranks": 1,
-      "total": 8
+      "total": 7
      },
      "intimidate": {
       "ranks": 1,
-      "total": 2
+      "total": 0
      },
      "perception": {
       "ranks": 1,
-      "total": 6
+      "total": 5
+     },
+     "stealth": {
+      "ranks": 0,
+      "total": -2
      },
      "survival": {
       "ranks": 1,
-      "total": 6
+      "total": 5
+     },
+     "swim": {
+      "ranks": 1,
+      "total": 4
      }
     },
     "space": 5,
     "special": "link, share spells, evasion, ability score increase",
-    "special_attacks": null,
-    "special_qualities": "low-light vision",
-    "speed": "10 ft, climb 40 ft",
-    "touch_ac": 15
+    "special_attacks": "poison (frequency 1 round [6]; effect 1 str damage; cure 1 save; con-based dc)",
+    "special_qualities": "low-light vision, hold breath, scent",
+    "speed": "10 ft. , swim 40 ft. ",
+    "touch_ac": 14,
+    "unapplied": [
+     "Weapon Focus: +1 on ONE chosen natural attack; the generator names no attack, and adding it to every line of a multi-attack routine would overstate it.",
+     "Skill Focus: +3 on ONE chosen skill; the generator strips feat specialisations, so no skill is named and the bonus is not totalled in."
+    ]
    },
    "type": "companion"
   }
@@ -365,11 +400,10 @@
  "c_class_display": "Druid",
  "casting_level_str_foundry": "high",
  "casting_tradition": {
-  "bonus_spell_points": 0,
+  "bonus_spell_points": 1,
   "boons": [
    "Overcharge",
-   "Fortified Casting",
-   "Empowered Abilities"
+   "Fortified Casting"
   ],
   "boons_detail": [
    {
@@ -379,35 +413,31 @@
    {
     "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
     "name": "Fortified Casting"
-   },
-   {
-    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
-    "name": "Empowered Abilities"
    }
   ],
   "casting_ability_modifier": "Wisdom",
   "drawbacks": [
-   "Prepared Caster",
-   "Extended Casting",
    "Verbal Casting",
+   "Magical Signs",
+   "Focus Casting",
    "Painful Magic",
-   "Material Casting"
+   "Skilled Casting"
   ],
   "drawbacks_detail": [
    {
     "counts_as": 1,
-    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
-    "name": "Prepared Caster"
-   },
-   {
-    "counts_as": 2,
-    "description": "Every sphere ability takes one step longer to activate than normal (swift to move, move to standard, standard to full-round, etc.).",
-    "name": "Extended Casting"
+    "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
+    "name": "Verbal Casting"
    },
    {
     "counts_as": 1,
-    "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
-    "name": "Verbal Casting"
+    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
+    "name": "Magical Signs"
+   },
+   {
+    "counts_as": 1,
+    "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
+    "name": "Focus Casting"
    },
    {
     "counts_as": 1,
@@ -416,53 +446,65 @@
    },
    {
     "counts_as": 1,
-    "description": "Your magic requires expending consumable materials/components worth roughly 1 sp per caster level each time you use a sphere ability.",
-    "name": "Material Casting"
+    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
+    "name": "Skilled Casting"
    }
   ]
  },
- "cha": 13,
- "character_full_name": "Yasmine Long",
+ "cha": 16,
+ "character_full_name": "Laurène Long",
  "chosen_race": "Human",
  "chosen_spell_descriptor": [
-  "curseUM"
+  "language-dependent",
+  "water"
  ],
- "class feature levels": {},
+ "class feature levels": {
+  "Talents": {
+   "Order of the Eclipse": 1
+  },
+  "arcana": {
+   "jinx blending": 4,
+   "protected assault": 2
+  }
+ },
  "class feature owners": {
-  "cave domain": "druid",
+  "Talents": "samurai",
+  "arcana": "magus",
   "favored_enemies": "ranger",
   "favored_terrains": "ranger"
  },
  "class features": {
-  "Skill Unlock: Knowledge (engineering)": {
-   "10 Ranks": "After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.",
-   "15 Ranks": "You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.",
-   "20 Ranks": "You can roll twice and take the better result on Knowledge checks.",
-   "5 Ranks": "You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill."
+  "Skill Unlock: Ride": {
+   "10 Ranks": "When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.",
+   "15 Ranks": "While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.",
+   "20 Ranks": "Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.",
+   "5 Ranks": "Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted."
   },
-  "cave domain": {
-   "bonus spells": [
-    "detect aberration",
-    "stone call",
-    "deeper darkness",
-    "echolocation",
-    "wall of stone",
-    "conjure black pudding",
-    "statue (looking like a stalagmite or stalactite)",
-    "earthquake",
-    "imprisonment"
-   ],
-   "granted powers": {
-    "cavesight (sp)": "you can grant darkvision 60 feet to a willing creature you touch. This effect lasts 1 minute, or 1 hour if used on yourself. You can use this ability a number of times per day equal to 3 + your wisdom modifier. ",
-    "tremorsense (ex)": "at 6th level, you gain tremorsense 30 feet. At 12th level, you gain tremorsense 60 feet. "
+  "Talents": {
+   "Order of the Eclipse": {
+    "Challenge": " The order of the eclipse samurai gains a +1 bonus on all Intimidate checks made against the target of his challenge. This bonus increases by 1 for every four levels the samurai possesses.",
+    "Dark Rider (Su)": " At 2nd level, whenever the samurai is on his mount, both he and his mount share any of the following senses if either of them possesses it: darkvision, low-light vision, scent, and see in darkness. This applies regardless of the source of the sense (including senses gained from spells or magic items), but only while the samurai is mounted. If the samurai and mount both have a sense but one has an improved version (such as a samurai with darkvision with a range of 60 feet riding a mount that has darkvision with a range of 90 feet), both receive the improved version of the sense.",
+    "Eclipsing Blade (Sp)": " At 8th level, the samurai can cast on a weapon he is holding. The does not affect the vision of any order of the eclipse samurai, or that of their mounts. The spell immediately ends if the weapon leaves the samurai's hand. He may do this once per day, plus one additional time per day for every four levels he possesses above 8th (to a maximum of four times per day at 20th level).",
+    "Edicts": " The samurai cannot create light where it is not necessary—anything that can be done in darkness should be. The samurai must belong to a military organization (within Kaoling this is likely to be a warband commanded by a senior samurai, who in turn answers to Warlord Tsung-cha Kavangaki or one of the Council of Nine). The samurai must enforce his place within this order and societies that recognize its authority, obeying those senior to him without question and demanding total obedience from those beneath him. The samurai must take every opportunity to extinguish the lights of his foes.",
+    "Order Abilities": " A samurai that belongs to the order of the eclipse gains the following abilities as he increases in level.",
+    "See in Darkness (Ex)": " At 15th level the samurai can see perfectly in darkness, even magical darkness, as the universal monster ability of the same name.",
+    "Skills": " An order of the eclipse samurai adds Perception (Wis) and Survival (Wis) to his list of class skills. In addition, whenever he makes a Perception check to notice an invisible creature or object, he receives a bonus on the check equal to 1/2 his samurai level (minimum +1)."
+   }
+  },
+  "arcana": {
+   "jinx blending": {
+    "Special": "A magus can select this magus arcana more than once.",
+    "benefits": "When a magus selects this arcana, he must select one spell from the witch spell list that is at least one level lower than the highest magus spell level he can cast. He adds this spell to his spellbook and list of magus spells known as a magus spell one level higher than its witch spell level. He can instead select two spells to add in this way, but both must be at least two levels lower than the highest-level magus spell he can cast."
+   },
+   "protected assault": {
+    "benefits": "The magus can expend 1 point from his arcane pool as a swift action to protect himself from an opposing alignment."
    }
   },
   "favored_enemies": [
-   "Humanoid (dwarf)",
-   "Humanoid (orc)"
+   "Ooze"
   ],
   "favored_terrains": [
-   "Cold"
+   "Planes [choose]"
   ]
  },
  "class_ability": [
@@ -481,6 +523,25 @@
   "venom immunity_druid",
   "a thousand faces_druid",
   "timeless body_druid",
+  "spells_magus",
+  "spellbooks_magus",
+  "arcane pool_magus",
+  "cantrips_magus",
+  "spell combat_magus",
+  "spellstrike_magus",
+  "magus arcana_magus",
+  "spell recall_magus",
+  "bonus feats_magus",
+  "knowledge pool_magus",
+  "medium armor_magus",
+  "improved spell combat_magus",
+  "fighter training_magus",
+  "improved spell recall_magus",
+  "heavy armor_magus",
+  "greater spell combat_magus",
+  "counterstrike_magus",
+  "greater spell access_magus",
+  "true magus_magus",
   "favored enemy_ranger",
   "track_ranger",
   "wild empathy_ranger",
@@ -498,408 +559,400 @@
   "hide in plain sight_ranger",
   "improved quarry_ranger",
   "master hunter_ranger",
-  "spells_hunter",
-  "orisons_hunter",
-  "chaotic, evil, good, and lawful spells_hunter",
-  "animal companion_hunter",
-  "animal focus_hunter",
-  "hunter animal focuses_hunter",
-  "nature training_hunter",
-  "wild empathy_hunter",
-  "precise companion_hunter",
-  "track_hunter",
-  "hunter tactics_hunter",
-  "teamwork feat_hunter",
-  "improved empathic link_hunter",
-  "woodland stride_hunter",
-  "bonus tricks_hunter",
-  "second animal focus_hunter",
-  "swift tracker_hunter",
-  "raise animal companion (sp)_hunter",
-  "speak with master_hunter",
-  "greater empathic link_hunter",
-  "one with the wild_hunter",
-  "master hunter_hunter"
+  "challenge_samurai",
+  "mount_samurai",
+  "order_samurai",
+  "resolve_samurai",
+  "weapon expertise_samurai",
+  "mounted archer_samurai",
+  "banner_samurai",
+  "bonus feat_samurai",
+  "greater resolve_samurai",
+  "honorable stand_samurai",
+  "demanding challenge_samurai",
+  "greater banner_samurai",
+  "true resolve_samurai",
+  "last stand_samurai"
  ],
  "class_ability_desc": {
   "a thousand faces": "At 13th level, a druid gains the ability to change her appearance at will, as if using the alter self spell, but only while in her normal form.",
-  "animal companion": "At 1st level, a hunter forms a bond with an animal companion. A hunter may begin play with any of the animals available to a druid. This animal is a loyal companion that accompanies the hunter on her adventures. This ability functions like the druid animal companion ability (which is part of the nature bond class feature). The hunter's effective druid level is equal to her hunter level. If a character receives an animal companion from more than one source, her effective druid levels stack for the purposes of determining the companion's statistics and abilities. A hunter may teach her companion hunter's tricks from the skirmisher ranger archetype ( Pathfinder RPG Advanced Player's Guide 128) instead of standard tricks. The animal companion can use skirmisher tricks when commanded, a number of times per day equal to half its Hit Dice plus its Wisdom modifier. If a hunter releases her companion from service or her animal companion perishes, she may gain a new one by performing a ceremony requiring 24 uninterrupted hours of prayer in the environment where the new companion typically lives. While the hunter's animal companion is dead, any animal she summons with a summon nature's ally spell remains for 1 minute per level instead of 1 round per level. A hunter cannot have more than one summon nature's ally spell active in this way at one time. If this ability is used again, any existing summon nature's ally immediately ends.",
-  "animal focus": "At 1st level, a hunter can take on the aspect of an animal as a swift action. She must select one type of animal to emulate, gaining a bonus or special ability based on the type of animal emulated and her hunter level. The hunter can use this ability for a number of minutes per day equal to her level. This duration does not need to be consecutive, but must be spent in 1-minute increments. The hunter can emulate only one animal at a time. The hunter can also apply one of these aspects to her animal companion. Unlike with the hunter herself, there is no duration on the animal aspect applied to her animal companion. An aspect applied in this way does not count against the hunter's minutes of duration per day-it remains in effect until the hunter changes it. The companion's aspect can be the same aspect the ranger has taken on or a different one. The hunter can select or change the animal foci on both herself and her animal companion as part of the same swift action. If the hunter's animal companion is dead, the hunter can apply her companion's animal focus to herself instead of her animal companion. This is in addition to the normal one she can choose, and (as with a companion's focus) remains in effect until the hunter changes it instead of counting against her minutes per day. See the",
+  "arcane pool": "At 1st level, the magus gains a reservoir of mystical arcane energy that he can draw upon to fuel his powers and enhance his weapon. This arcane pool has a number of points equal to 1/2 his magus level (minimum 1) + his Intelligence modifier. The pool refreshes once per day when the magus prepares his spells. At 1st level, a magus can expend 1 point from his arcane pool as a swift action to grant any weapon he is holding a +1 enhancement bonus for 1 minute. For every four levels beyond 1st, the weapon gains another +1 enhancement bonus, to a maximum of +5 at 17th level. These bonuses can be added to the weapon, stacking with existing weapon enhancement to a maximum of +5. Multiple uses of this ability do not stack with themselves. At 5th level, these bonuses can be used to add any of the following weapon properties: dancing , flaming , flaming burst , frost , icy burst , keen , shock , shocking burst , speed , or vorpal . Adding these properties consumes an amount of bonus equal to the property's base price modifier (see the Magic Weapon Special Ability Descriptions). These properties are added to any the weapon already has, but duplicates do not stack. If the weapon is not magical, at least a +1 enhancement bonus must be added before any other properties can be added. These bonuses and properties are decided when the arcane pool point is spent and cannot be changed until the next time the magus uses this ability. These bonuses do not function if the weapon is wielded by anyone other than the magus. A magus can only enhance one weapon in this way at one time. If he uses this ability again, the first use immediately ends.",
+  "banner": "At 5th level, a samurai's banner becomes a symbol of inspiration to his allies and companions. As long as the samurai's banner is clearly visible, all allies within 60 feet receive a +2 morale bonus on saving throws against fear and a +1 morale bonus on attack rolls made as part of a charge. At 10th level, and every five levels thereafter, these bonuses increase by +1. The banner must be at least Small or larger and must be carried or displayed by the samurai or his mount to function.",
+  "bonus feat": "At 6th level, and every six levels thereafter, a samurai gains a bonus feat in addition to those gained from normal advancement. These bonus feats must be selected from those listed as combat feats. The samurai must meet the requirements of these bonus feats.",
+  "bonus feats": "At 5th level, and every six levels thereafter, a magus gains a bonus feat in addition to those gained from normal advancement. These bonus feats must be selected from those listed as combat, item creation, or metamagic feats. He must meet the prerequisites for these feats as normal.",
   "bonus languages": "A druid's bonus language options include Sylvan, the language of woodland creatures. This choice is in addition to the bonus languages available to the character because of her race. A druid also knows Druidic, a secret language known only to druids, which she learns upon becoming a 1st-level druid. Druidic is a free language for a druid; that is, she knows it in addition to her regular allotment of languages and it doesn't take up a language slot. Druids are forbidden to teach this language to nondruids. Druidic has its own alphabet.",
-  "bonus tricks": "At 7th level and every 6 levels thereafter, a hunter's animal companion learns a bonus trick (in addition to the bonus tricks gained from the hunter's effective druid level).",
   "camouflage": "A ranger of 12th level or higher can use the Stealth skill to hide in any of his favored terrains, even if the terrain doesn't grant cover or concealment.",
-  "chaotic, evil, good, and lawful spells": "A hunter can't cast spells of an alignment opposed to her own or her deity's (if she has one). Spells associated with particular alignments are indicated by the chaos, evil, good, and law descriptors in their spell descriptions.",
+  "cantrips": "A magus can prepare a number of cantrips, or 0-level spells, each day, as noted in the table above under \"Spells per Day.\"These spells are cast like any other spell, but they are not expended when cast and may be used again.",
+  "challenge": "Once per day, a samurai can challenge a foe to combat. As a swift action, the samurai chooses one target within sight to challenge. The samurai's melee attacks deal extra damage when made against the target of his challenge. This extra damage is equal to the samurai's level. The samurai can use this ability once per day at 1st level, plus one additional time per day for every three levels beyond 1st, to a maximum of seven times per day at 19th level. Challenging a foe requires much of the samurai's concentration. The samurai takes a -2 penalty to his Armor Class, except against attacks made by the target of his challenge. The challenge remains in effect until the target is dead or unconscious, or until the combat ends. Each samurai's challenge also includes another effect, which is listed in the section describing the samurai's order.",
+  "chaotic, evil, good, and lawful spells": "A druid can't cast spells of an alignment opposed to her own or her deity's (if she has one). Spells associated with particular alignments are indicated by the chaos, evil, good, and law descriptors in their spell descriptions.",
   "combat style feat": "At 2nd level, a ranger must select one of two combat styles to pursue: archery or two-weapon combat. The ranger's expertise manifests in the form of bonus feats at 2nd, 6th, 10th, 14th, and 18th level. He can choose feats from his selected combat style, even if he does not have the normal prerequisites. The benefits of the ranger's chosen style feats apply only when he wears light, medium, or no armor. He loses all benefits of his combat style feats when wearing heavy armor. Once a ranger selects a combat style, it cannot be changed. The full list of Combat Styles can be found",
+  "counterstrike": "At 16th level, whenever an enemy within reach of the magus successfully casts a spell defensively, that enemy provokes an attack of opportunity from the magus after the spell is complete. This attack of opportunity cannot disrupt the spell.",
+  "demanding challenge": "At 12th level, whenever a samurai declares a challenge, his target must pay attention to the threat he poses. As long as the target is within the threatened area of the samurai, it takes a -2 penalty to its AC on attacks made by anyone other than the samurai.",
   "endurance": "A ranger gains Endurance as a bonus feat at 3rd level. Cold (ice, glaciers, snow, and tundra) Desert (sand and wastelands) Forest (coniferous and deciduous) Jungle Mountain (including hills) Plains Planes (pick one, other than Material Plane) Swamp Underground (caves and dungeons) Urban (buildings, streets, and sewers) Water (above and below the surface)",
   "evasion": "When he reaches 9th level, a ranger can avoid even magical and unusual attacks with great agility. If he makes a successful Reflex saving throw against an attack that normally deals half damage on a successful save, he instead takes no damage. Evasion can be used only if the ranger is wearing light armor, medium armor, or no armor. A helpless ranger does not gain the benefit of evasion.",
   "favored enemy": "At 1st level, a ranger selects a creature type from the ranger favored enemies table. He gains a +2 bonus on Bluff, Knowledge, Perception, Sense Motive, and Survival checks against creatures of his selected type. Likewise, he gets a +2 bonus on weapon attack and damage rolls against them. A ranger may make Knowledge skill checks untrained when attempting to identify these creatures. At 5th level and every five levels thereafter (10th, 15th, and 20th level), the ranger may select an additional favored enemy. In addition, at each such interval, the bonus against any one favored enemy (including the one just selected, if so desired) increases by +2. If the ranger chooses humanoids or outsiders as a favored enemy, he must also choose an associated subtype, as indicated on the table below. (Note that there are other types of humanoid to choose from-those called out specifically on the table below are merely the most common.) If a specific creature falls into more than one category of favored enemy, the ranger's bonuses do not stack; he simply uses whichever bonus is higher.",
   "favored terrain": "At 3rd level, a ranger may select a type of terrain from the Favored Terrains table. The ranger gains a +2 bonus on initiative checks and Knowledge (geography), Perception, Stealth, and Survival skill checks when he is in this terrain. A ranger traveling through his favored terrain normally leaves no trail and cannot be tracked (though he may leave a trail if he so chooses). At 8th level and every five levels thereafter, the ranger may select an additional favored terrain. In addition, at each such interval, the skill bonus and initiative bonus in any one favored terrain (including the one just selected, if so desired), increases by +2. If a specific terrain falls into more than one category of favored terrain, the ranger's bonuses do not stack; he simply uses whichever bonus is higher.",
-  "greater empathic link": "At 14th level, the range of the hunter's empathic link with her animal companion increases to 10 miles. If the animal companion is within 1 mile, the hunter can communicate with it telepathically.",
+  "fighter training": "Starting at 10th level, a magus counts 1/2 his total magus level as his fighter level for the purpose of qualifying for feats. If he has levels in fighter, these levels stack.",
+  "greater banner": "At 14th level, a samurai's banner becomes a rallying call to his allies. All allies within 60 feet receive a +2 morale bonus on saving throws against charm and compulsion spells and effects. In addition, while his banner is displayed, the samurai can spend a standard action to wave the banner through the air, granting all allies within 60 feet an additional saving throw against any one spell or effect that is targeting them. This save is made at the original DC. Spells and effects that do not allow saving throws are unaffected by this ability. An ally cannot benefit from this ability more than once per day.",
+  "greater resolve": "At 9th level, a samurai can spend his resolve to negate some of his most grievous wounds. After a critical hit is confirmed against him, the samurai can spend one use of his resolve as an immediate action to treat that critical hit as a normal hit. Effects that only trigger on a critical hit do not trigger when the samurai uses this ability.",
+  "greater spell access": "At 19th level, the magus gains access to an expanded spell list. He learns and places 14 spells from the wizard's spell list into his spellbook as magus spells of their wizard level. He gains two of each of the following wizard spells not on the magus spell list: 0-level, 1st-level, 2nd-level, 3rd-level, 4th-level, 5th-level, and 6th-level. He can ignore the somatic component of these spells, casting them without the normal chance of spell failure.",
+  "greater spell combat": "At 14th level, the magus gains the ability to seamlessly cast spells and make melee attacks. Whenever he uses the spell combat ability, his concentration check bonus equals double the amount of the attack penalty taken.",
+  "heavy armor": "At 13th level, a magus gains proficiency with heavy armor. A magus can cast magus spells while wearing heavy armor without incurring the normal arcane spell failure chance. Like any other arcane spellcaster, a magus using a shield incurs a chance of arcane spell failure if the spell in question has a somatic component.",
   "hide in plain sight": "While in any of his favored terrains, a ranger of 17th level or higher can use the Stealth skill even while being observed.",
-  "hunter animal focuses": "section for a full list of Focuses from all sources.",
-  "hunter tactics": "At 3rd level, the hunter automatically grants her teamwork feats to her animal companion. The companion doesn't need to meet the prerequisites of these teamwork feats.",
+  "honorable stand": "At 11th level, a samurai can make an honorable stand, deciding to fight the target of his challenge to the bitter end, no matter the cost. He can make an honorable stand once per day at 11th level, plus one additional time per day at 16th level. Declaring an honorable stand is a swift action. While making an honorable stand, the samurai is immune to the shaken, frightened, and panicked conditions. He does not fall unconscious while his hit point total is below 0. Finally, whenever a samurai making an honorable stand must make a saving throw, he can spend one daily use of his resolve to reroll the saving throw after the first roll is made. He must take the result of the second roll, even if it is worse. If a samurai making an honorable stand ever retreats from battle against his challenged foe, he loses the ability to make a challenge for 24 hours.",
   "hunter's bond": "At 4th level, a ranger forms a bond with his hunting companions. This bond can take one of two forms. Once the form is chosen, it cannot be changed. The first is a bond to his companions. This bond allows him to spend a move action to grant half his favored enemy bonus against a single target of the appropriate type to all allies within 30 feet who can see or hear him. This bonus lasts for a number of rounds equal to the ranger's Wisdom modifier (minimum 1). This bonus does not stack with any favored enemy bonuses possessed by his allies; they use whichever bonus is higher. The second option is to form a close bond with an animal companion. A ranger who selects an animal companion can choose from the following list: Antelope , Armorfish , Baboon , Badger , Bird (Eagle/Hawk/Owl) , Bustard , Camel , Capybara , Cat, Small (Cheetah, Leopard) , Constrictor Snake , Dire Rat , Dog , Elk , Falcon , Hobbe Hound , Horse , Kangaroo , Lizard (Giant Gecko) , Marsupial Devil , Pony , Ram , Reef Snake , Reef Snake , Reindeer , Shark , Spitting Cobra , Stag , Stingray , Swan, Trumpeter , Thylacine , Venomous Snake , Wolf , Wolfdog , Yak , Zebra . If the campaign takes place wholly or partly in an aquatic environment, the ranger may choose from this list instead: Armorfish , Reef Snake , Shark , Stingray . This animal is a loyal companion that accompanies the ranger on his adventures as appropriate for its kind. A ranger's animal companion shares his favored enemy and favored terrain bonuses. This ability functions like the druid animal companion ability (which is part of the Nature Bond class feature), except that the ranger's effective druid level is equal to his ranger level - 3.",
-  "improved empathic link": "At 4th level, the hunter gains an empathic link with her animal companion. This functions like an empathic link with a familiar, except the hunter can also see through a companion's eyes as a swift action, maintaining this connection as long as she likes (as long as the companion is within 1 mile) and ending it as a free action. The hunter is blinded while maintaining this connection.",
   "improved evasion": "At 16th level, a ranger's evasion improves. This ability works like evasion, except that while the ranger still takes no damage on a successful Reflex saving throw against attacks, he henceforth takes only half damage on a failed save. A helpless ranger does not gain the benefit of improved evasion.",
   "improved quarry": "At 19th level, the ranger's ability to hunt his quarry improves. He can now select a quarry as a free action, and can now take 20 while using Survival to track his quarry, while moving at normal speed without penalty. His insight bonus to attack his quarry increases to +4. If his quarry is killed or dismissed, he can select a new one after 10 minutes have passed.",
-  "master hunter": "At 20th level, a hunter becomes a master hunter, able to track down foes with ease. She can always move at full speed while using Survival to follow tracks without penalty. Additionally, each day when the hunter regains her spell slots, she chooses one animal focus to be active on herself for the entire day. This focus is in addition to using her animal focus class ability (including the additional focus ability she is able to use on herself if her animal companion is dead). Alternate Capstones",
+  "improved spell combat": "At 8th level, the magus's ability to cast spells and make melee attacks improves. When using the spell combat ability, the magus receives a +2 circumstance bonus on concentration checks, in addition to any bonus granted by taking an additional penalty on the attack roll.",
+  "improved spell recall": "At 11th level, the magus's ability to recall spells using his arcane pool becomes more efficient. Whenever he recalls a spell with spell recall, he expends a number of points from his arcane pool equal to 1/2 the spell's level (minimum 1). Furthermore, instead of recalling a used spell, as a swift action the magus can prepare a spell of the same level that he has in his spellbook. He does so by expending a number of points from his arcane pool equal to the spell's level (minimum 1). The magus cannot apply metamagic feats to a spell prepared in this way. The magus does not need to reference his spellbook to prepare a spell in this way.",
+  "knowledge pool": "At 7th level, when a magus prepares his magus spells, he can decide to expend 1 or more points from his arcane pool, up to his Intelligence bonus. For each point he expends, he can treat any one spell from the magus spell list as if it were in his spellbook and can prepare that spell as normal that day. If he does not cast spells prepared in this way before the next time he prepares spells, he loses those spells. He can also cast spells added in this way using his spell recall ability, but only until he prepares spells again.",
+  "last stand": "At 20th level, a samurai can make a last stand once per day whenever he makes a challenge. While this challenge is in effect, all melee and ranged weapons deal the minimum amount of damage to the samurai, unless the attack scored is a critical hit. In addition, the samurai remains conscious and is not staggered while he is below 0 hit points. While using this ability, the samurai cannot be killed by melee or ranged weapons unless they are wielded by the target of his challenge. Attacks made by opponents that are not the target of his challenge deal no damage when samurai has 0 or fewer hit points. This ability has no effect on spells, environmental effects, supernatural abilities, or any other source of damage other than melee and ranged weapons. Such sources of damage affect him normally and can kill him (although they do not cause him to fall unconscious or to become staggered if they reduce his hit points below 0). This effect lasts until the challenge ends or the samurai takes an offensive action against a target other than the target of his challenge. Alternate Capstones",
+  "magus arcana": "As he gains levels, a magus learns arcane secrets tailored to his specific way of blending martial puissance and magical skill. Starting at 3rd level, a magus gains one magus arcana. He gains an additional magus arcana for every three levels of magus attained after 3rd level. Unless specifically noted in a magus arcana's description, a magus cannot select a particular magus arcana more than once. Magus arcana that affect spells can only be used to modify spells from the magus spell list unless otherwise noted. The full list of Magus Arcana can be found here",
+  "master hunter": "A ranger of 20th level becomes a master hunter. He can always move at full speed while using Survival to follow tracks without penalty. He can, as a standard action, make a single attack against a favored enemy at his full attack bonus. If the attack hits, the target takes damage normally and must make a Fortitude save or die. The DC of this save is equal to 10 + 1/2 the ranger's level + the ranger's Wisdom modifier. A ranger can choose instead to deal an amount of nonlethal damage equal to the creature's current hit points. A successful save negates this damage. A ranger can use this ability once per day against each favored enemy type he possesses, but not against the same creature more than once in a 24-hour period. Alternate Capstones",
+  "medium armor": "At 7th level, a magus gains proficiency with medium armor. A magus can cast magus spells while wearing medium armor without incurring the normal arcane spell failure chance. Like any other arcane spellcaster, a magus wearing heavy armor or using a shield incurs a chance of arcane spell failure if the spell in question has a somatic component.",
+  "mount": "A samurai gains the service of a loyal and trusty steed to carry him into battle. This mount functions as a druid's animal companion, using the samurai's level as his effective druid level. The creature must be one that he is capable of riding and that is suitable as a mount. A Medium samurai can select a camel or a horse. A Small samurai can select a pony or a wolf, but can also select a boar or a dog if he is at least 4th level. The GM may approve other animals as suitable mounts. A samurai does not take an armor check penalty on Ride checks while riding his mount. The mount is always considered combat trained and begins play with Light Armor Proficiency as a bonus feat. A samurai's mount does not gain the share spells special ability. A samurai's bond with his mount is strong, with the pair learning to anticipate each other's moods and moves. Should a samurai's mount die, the samurai may find another mount to serve him after 1 week of mourning. The new mount does not gain the link, evasion, devotion, or improved evasion special abilities until the next time the samurai gains a level.",
+  "mounted archer": "At 4th level, the samurai becomes skilled at firing ranged weapons while mounted. A samurai only takes a -2 penalty on attack rolls with ranged weapons while his mount takes a double move. This penalty increases to -4 while his mount is running.",
   "nature bond": "At 1st level, a druid forms a bond with nature. This bond can take one of two forms. The first is a close tie to the natural world, granting the druid one of the following cleric domains: Air, Animal, Earth, Fire, Plant, Water, or Weather. When determining the powers and bonus spells granted by this domain, the druid's effective cleric level is equal to her druid level. A druid that selects this option also receives additional domain spell slots, just like a cleric. She must prepare the spell from her domain in this slot and this spell cannot be used to cast a spell spontaneously. The second option is to form a close bond with an animal companion. A druid may begin play with any of the animals listed in Animal Choices . This animal is a loyal companion that accompanies the druid on her adventures. Unlike normal animals of its kind, an animal companion's Hit Dice, abilities, skills, and feats advance as the druid advances in level. If a character receives an animal companion from more than one source, her effective druid levels stack for the purposes of determining the statistics and abilities of the companion. Most animal companions increase in size when their druid reaches 4th or 7th level, depending on the companion. If a druid releases her companion from service, she may gain a new one by performing a ceremony requiring 24 uninterrupted hours of prayer in the environment where the new companion typically lives. This ceremony can also replace an animal companion that has perished. Instead of granting access to a domain or an animal companion, a druid's bond with nature can take a third form: access to druidic herbalism",
   "nature sense": "A druid gains a +2 bonus on Knowledge (nature) and Survival checks.",
-  "nature training": "A hunter counts her total hunter level as both druid levels and ranger levels for the purpose of qualifying for feats, traits, and options that modify or improve an animal companion.",
-  "one with the wild": "At 17th level, the hunter and her animal companion are respected or even feared by other animals, so long as the animals are approximately of the same type as any of the hunter's current animal foci: bat for bats, tiger with felines, falcon for birds, snake for reptiles, and so on. No animal in this category (including dire varieties) willingly attacks the hunter or her companion unless magically compelled to or if the hunter or companion attacks it first. The hunter and her companion can attempt to demoralize animals in the appropriate category as a swift action, rolling 1d20 and adding the hunter's level and her Charisma modifier to determine the Intimidate check result.",
-  "orisons": "Hunters learn a number of orisons, or 0-level spells, as noted on Table 1-7: Hunter Spells Known. These spells are cast like any other spell, but they do not consume any slots and may be used again.",
-  "precise companion": "At 2nd level, a hunter chooses either Precise Shot or Outflank APG as a bonus feat. She does not need to meet the prerequisites for this feat. If she chooses Outflank, she automatically grants this feat to her animal companion as well.",
+  "order": "At 1st level, a samurai must pledge himself to a specific order, typically the order of the warrior. The order grants the samurai a number of bonuses, class skills, and special abilities. In addition, each order includes a number of edicts the samurai must follow. If he violates these edicts, he loses the benefits of his order's challenge ability for 24 hours. The violation of an edict is subject to GM interpretation. Most samurai belong to the order of the warrior and are dedicated to their lord. Those without a lord, or who chose to abandon their lord, are ronin. A samurai may instead elect to dedicate himself to one of the orders listed under the cavalier description, but such samurai are rare. A samurai who wishes to change his order must undertake a lengthy process to dedicate himself to a new cause. When this choice is made, he immediately loses all of the benefits from his old order. He must then follow the edicts of his new order for one entire level without gaining any benefits from that order. Once he has accomplished this, he gains all the bonuses from his new order. The only exception to this is when a samurai decides to become a ronin. A samurai can elect to become a ronin immediately, losing all the benefits from his old order and replacing them with the new benefits from the ronin order. Once a ronin, however, the only way for the samurai to change to another order is through the method described above. Note that the names of these orders might vary depending upon the campaign setting or GM's preference.",
+  "orisons": "Druids can prepare a number of orisons, or 0-level spells, each day, as noted on Table: Druid under \"Spells per Day.\"These spells are cast like any other spell, but they are not expended when cast and may be used again.",
   "quarry": "At 11th level, a ranger can, as a standard action, denote one target within his line of sight as his quarry. Whenever he is following the tracks of his quarry, a ranger can take 10 on his Survival skill checks while moving at normal speed, without penalty. In addition, he receives a +2 insight bonus on attack rolls made against his quarry, and all critical threats are automatically confirmed. A ranger can have no more than one quarry at a time and the creature's type must correspond to one of his favored enemy types. He can dismiss this effect at any time as a free action, but he cannot select a new quarry for 24 hours. If the ranger sees proof that his quarry is dead, he can select a new quarry after waiting 1 hour.",
-  "raise animal companion (sp)": "At 10th level, a hunter gains raise animal companion UM as a spell-like ability; this is not restricted to raising only her own animal companion. Using this spell-like ability gives the hunter a permanent negative level. This negative level cannot be overcome in any way (including by restoration ), but automatically ends after 24 hours. At 16th level, this functions as resurrection instead of raise dead , but otherwise operates as normal.",
   "resist nature's lure": "Starting at 4th level, a druid gains a +4 bonus on saving throws against the spell-like and supernatural abilities of fey. This bonus also applies to spells and effects that utilize or target plants, such as blight , entangle , spike growth , and warp wood",
-  "second animal focus": "At 8th level, whenever a hunter uses her animal focus ability, she selects two different animal aspects for herself instead of one, and can assign two aspects to her companion instead of one. As with the companion's previous aspect, the second one does not count against the minutes per day a hunter can take on an aspect. If the hunter's animal companion is dead and the hunter has applied the companion's animal aspect to herself, that aspect does not count toward her maximum of two aspects at once. The hunter can still apply only one of her dead companion's aspects to herself, not both.",
-  "speak with master": "At 11th level, a hunter and her animal companion can communicate verbally, as if they were using a common language. Other creatures cannot understand the communication without magical aid.",
-  "spells": "A hunter casts divine spells drawn from the druid and ranger spell lists . Only druid spells of 6th level and lower and ranger spells are considered to be part of the hunter spell list. If a spell appears on both the druid and ranger spell lists, the hunter uses the lower of the two spell levels listed for the spell. For instance, reduce animal is a 2nd-level druid spell and a 3rd-level ranger spell, making it a 2nd-level hunter spell. Likewise, detect poison is a 0-level druid spell and a 2nd-level ranger spell, making it a 0-level hunter spell. The hunter can cast any spell she knows without preparing it ahead of time. To learn or cast a spell, a hunter must have a Wisdom score equal to at least 10 + the spell's level. The Difficulty Class for a saving throw against a hunter's spell is 10 + the spell's level + the hunter's Wisdom modifier. A hunter cannot use spell completion or spell trigger magic items (without making a successful Use Magic Device check) of druid spells of 7th level or higher. Her alignment may restrict her from casting certain spells opposed to her moral or ethical beliefs; see Chaotic, Evil, Good, and Lawful Spells below. Like other spellcasters, a hunter can cast only a certain number of spells of each spell level per day. Her base daily spell allotment is given on Table 1-6: Hunter. In addition, she receives bonus spells per day if she has a high Wisdom score (see Table 1-3 of the Core Rulebook ). Unlike druids and rangers, a hunter's selection of spells is extremely limited. A hunter begins play knowing four 0-level spells and two 1st-level spells of her choice. At each new hunter level, she gains one or more new spells, as indicated on Table 1-7: Hunter Spells Known. Unlike spells per day, the number of spells a hunter knows is not affected by her Wisdom score; the numbers on Table 1-7 are fixed. In addition to the spells gained by hunters as they gain levels, each hunter also automatically adds all summon nature's ally spells to her list of spells known. These spells are added as soon as the hunter is capable of casting them. At 5th level and at every 3 levels thereafter, a hunter can choose to learn a new spell in place of one she already knows. In effect, the hunter loses the old spell in exchange for the new one. The new spell's level must be the same as that of the spell being exchanged. A hunter may swap only a single spell at any given level, and must choose whether or not to swap the spell at the same time that she gains new spells known for the level. She cannot swap any summon nature's ally spells. Unlike a druid or ranger, a hunter need not prepare her spells in advance. She can cast any spell she knows at any time, assuming she has not yet used up her spells per day for that spell level.",
+  "resolve": "Starting at 1st level, the samurai gains resolve that he can call upon to endure even the most devastating wounds and afflictions. He can use this ability once per day at 1st level, plus one additional time per day for every two samurai levels beyond 1st. Whenever the samurai defeats the target of his challenge, he regains one daily use of his resolve, up to his maximum number of uses per day. Defeating the target of his challenge usually involves reducing the target to 0 hit points or fewer, but the GM might rule that an enemy who surrenders or flees the battle is also defeated. He can use this resolve in a number of ways. Determined : As a standard action, the samurai can spend one use of his resolve to remove the fatigued, shaken, or sickened condition. If the samurai is at least 8th level, he can alternatively remove the exhausted, frightened, nauseated, or staggered condition. If the condition has a duration longer than 1 hour or is permanent, this ability removes the condition for 1 hour, at which time the condition returns. Resolute : Whenever the samurai is required to make a Fortitude or Will save, he can spend one use of his resolve as an immediate action to roll twice and take the better result. He must decide to use this ability before he rolls the saving throw. Unstoppable : When the samurai is reduced to fewer than 0 hit points but not slain, he can spend one use of his resolve as an immediate action to instantly stabilize and remain conscious. He is staggered, but he does not fall unconscious and begin dying if he takes a standard action. He does fall unconscious if he takes additional damage from any source.",
+  "spell combat": "At 1st level, a magus learns to cast spells and wield his weapons at the same time. This functions much like two-weapon fighting, but the off-hand weapon is a spell that is being cast. To use this ability, the magus must have one hand free (even if the spell being cast does not have somatic components), while wielding a light or one-handed melee weapon in the other hand. As a full-round action, he can make all of his attacks with his melee weapon at a -2 penalty and can also cast any spell from the magus spell list with a casting time of 1 standard action (any attack roll made as part of this spell also takes this penalty). If he casts this spell defensively, he can decide to take an additional penalty on his attack rolls, up to his Intelligence bonus, and add the same amount as a circumstance bonus on his concentration check. If the check fails, the spell is wasted, but the attacks still take the penalty. A magus can choose to cast the spell first or make the weapon attacks first, but if he has more than one attack, he cannot cast the spell between weapon attacks.",
+  "spell recall": "At 4th level, the magus learns to use his arcane pool to recall spells he has already cast. With a swift action he can recall any single magus spell that he has already prepared and cast that day by expending a number of points from his arcane pool equal to the spell's level (minimum 1). The spell is prepared again, just as if it had not been cast.",
+  "spellbooks": "A magus must study his spellbook each day to prepare his spells. He cannot prepare any spell not recorded in his spellbook except for read magic , which all magi can prepare from memory. A magus begins play with a spellbook containing all 0-level magus spells plus three 1st-level magus spells of his choice. The magus also selects a number of additional 1st-level magus spells equal to his Intelligence modifier to add to his spellbook. At each new magus level, he gains two new magus spells of any spell level or levels that he can cast (based on his new magus level) for his spellbook. At any time, a magus can also add spells found in other spellbooks to his own (see Arcane Spells). A magus can learn spells from a wizard's spellbook, just as a wizard can from a magus's spellbook. The spells learned must be on the magus spell list, as normal. An alchemist (see the Alchemist description) can learn formulae from a magus's spellbook, if the spells are also on the alchemist spell list. A magus cannot learn spells from an alchemist.",
+  "spells": "Beginning at 4th level, a ranger gains the ability to cast a small number of divine spells, which are drawn from the ranger spell list presented in Spell Lists. A ranger must choose and prepare his spells in advance. To prepare or cast a spell, a ranger must have a Wisdom score equal to at least 10 + the spell level. The Difficulty Class for a saving throw against a ranger's spell is 10 + the spell level + the ranger's Wisdom modifier. Like other spellcasters, a ranger can cast only a certain number of spells of each spell level per day. His base daily spell allotment is given on Table: Ranger. In addition, he receives bonus spells per day if he has a high Wisdom score (see Table: Ability Modifiers and Bonus Spells). When Table: Ranger indicates that the ranger gets 0 spells per day of a given spell level, he gains only the bonus spells he would be entitled to based on his Wisdom score for that spell level. A ranger must spend 1 hour per day in quiet meditation to regain his daily allotment of spells. A ranger may prepare and cast any spell on the ranger spell list, provided that he can cast spells of that level, but he must choose which spells to prepare during his daily meditation. Through 3rd level, a ranger has no caster level. At 4th level and higher, his caster level is equal to his ranger level - 3.",
+  "spellstrike": "At 2nd level, whenever a magus casts a spell with a range of \"touch\"from the magus spell list, he can deliver the spell through any weapon he is wielding as part of a melee attack. Instead of the free melee touch attack normally allowed to deliver the spell, a magus can make one free melee attack with his weapon (at his highest base attack bonus) as part of casting this spell. If successful, this melee attack deals its normal damage as well as the effects of the spell. If the magus makes this attack in concert with spell combat, this melee attack takes all the penalties accrued by spell combat melee attacks. This attack uses the weapon's critical range (20, 19-20, or 18-20 and modified by the keen weapon property or similar effects), but the spell effect only deals ×2 damage on a successful critical hit, while the weapon damage uses its own critical modifier.",
   "spontaneous casting": "A druid can channel stored spell energy into summoning spells that she hasn't prepared ahead of time. She can \"lose\"a prepared spell in order to cast any summon nature's ally spell of the same level or lower.",
-  "swift tracker": "At 8th level, a hunter can move at her normal speed while using Survival to follow tracks without taking the normal -5 penalty. She takes only a -10 penalty (instead of the normal -20) when moving at up to twice normal speed while tracking.",
-  "teamwork feat": "At 3rd level and every 3 levels thereafter, the hunter gains a bonus teamwork feat in addition to those gained from normal advancement. The hunter must meet the prerequisites of the selected bonus teamwork feat. As a standard action, the hunter can choose to learn a new bonus teamwork feat in place of the most recent bonus teamwork feat she has already learned. In effect, the hunter loses the bonus feat in exchange for the new one. She can change only the most recent teamwork feat gained, and must meet the prerequisites for the newly selected feat. A hunter can change her most recent teamwork feat a number of times per day equal to her Wisdom modifier (minimum 1). Whenever she gains a new teamwork feat, her previous teamwork feats become permanent.",
+  "swift tracker": "Beginning at 8th level, a ranger can move at his normal speed while using Survival to follow tracks without taking the normal -5 penalty. He takes only a -10 penalty (instead of the normal -20) when moving at up to twice normal speed while tracking.",
   "timeless body": "After attaining 15th level, a druid no longer takes ability score penalties for aging and cannot be magically aged. Any penalties she may have already incurred, however, remain in place. Bonuses still accrue, and the druid still dies of old age when her time is up. Ex-Druids A druid who ceases to revere nature, changes to a prohibited alignment, or teaches the Druidic language to a nondruid loses all spells and druid abilities (including her animal companion, but not including weapon, armor, and shield proficiencies). She cannot thereafter gain levels as a druid until she atones (see the atonement spell description). Alternate Capstones",
-  "track": "At 2nd level, a hunter adds 1/2 her level to Survival skill checks made to follow tracks.",
+  "track": "A ranger adds half his level (minimum 1) to Survival skill checks made to follow or identify tracks.",
   "trackless step": "Starting at 3rd level, a druid leaves no trail in natural surroundings and cannot be tracked. She may choose to leave a trail if so desired.",
+  "true magus": "At 20th level, the magus becomes a master of spells and combat. Whenever he uses his spell combat ability, he does not need to make a concentration check to cast the spell defensively. Whenever the magus uses spell combat and his spell targets the same creature as his melee attacks, he can choose to either increase the DC to resist the spell by +2, grant himself a +2 circumstance bonus on any checks made to overcome spell resistance, or grant himself a +2 circumstance bonus on all attack rolls made against the target during his turn. Alternate Capstones",
+  "true resolve": "At 17th level, a samurai can spend uses of his resolve to avoid death. If he has at least two uses of his resolve remaining, he can spend all of the daily uses of his resolve that he has available to him to avoid death. Regardless of the source of the attack that would have killed him, he is left alive, at -1 hit points (or lower if he was already below -1), unconscious, and stable.",
   "venom immunity": "At 9th level, a druid gains immunity to all poisons.",
-  "wild empathy": "A hunter can improve the initial attitude of an animal. This ability functions as a Diplomacy check to improve the attitude of a person (see Chapter 4 of the Core Rulebook ). The hunter rolls 1d20 and adds her hunter level and her Charisma modifier to determine the wild empathy check result. The typical domestic animal has a starting attitude of indifferent, while wild animals are usually unfriendly. To use wild empathy, the hunter and the animal must be within 30 feet of one another under normal conditions. Generally, influencing an animal in this way takes 1 minute but, as with influencing people, it might take more or less time. The hunter can also use this ability to influence a magical beast with an Intelligence score of 1 or 2, but she takes a -4 penalty on the check.",
+  "weapon expertise": "At 3rd level, a samurai gains an unparalleled expertise with his chosen weapons. At 3rd level, the samurai selects either the katana, longbow, naginata, or wakizashi. The samurai can draw the selected weapon as a free action as if he had the Quick Draw feat. In addition, whenever he threatens a critical hit with the selected weapon, he gains a +2 bonus on the confirmation roll. Finally, his samurai levels count as fighter levels and stack with any fighter levels he possesses for the purposes of meeting the prerequisites for feats that specifically select his chosen weapon, such as Weapon Specialization.",
+  "wild empathy": "A ranger can improve the initial attitude of an animal. This ability functions just like a Diplomacy check to improve the attitude of a person (see Using Skills). The ranger rolls 1d20 and adds his ranger level and his Charisma bonus to determine the wild empathy check result. The typical domestic animal has a starting attitude of indifferent, while wild animals are usually unfriendly. To use wild empathy, the ranger and the animal must be within 30 feet of one another under normal visibility conditions. Generally, influencing an animal in this way takes 1 minute, but, as with influencing people, it might take more or less time. The ranger can also use this ability to influence a magical beast with an Intelligence score of 1 or 2, but he takes a -4 penalty on the check.",
   "wild shape": "At 4th level, a druid gains the ability to turn herself into any Small or Medium animal and back again once per day. Her options for new forms include all creatures with the animal type. This ability functions like the beast shape I spell, except as noted here. The effect lasts for 1 hour per druid level, or until she changes back. Changing form (to animal or back) is a standard action and doesn't provoke an attack of opportunity. The form chosen must be that of an animal with which the druid is familiar. A druid loses her ability to speak while in animal form because she is limited to the sounds that a normal, untrained animal can make, but she can communicate normally with other animals of the same general grouping as her new form. (The normal sound a wild parrot makes is a squawk, so changing to this form does not permit speech.) A druid can use this ability an additional time per day at 6th level and every two levels thereafter, for a total of eight times at 18th level. At 20th level, a druid can use wild shape at will. As a druid gains levels, this ability allows the druid to take on the form of larger and smaller animals, elementals, and plants. Each form expends one daily use of this ability, regardless of the form taken. At 6th level, a druid can also use wild shape to change into a Large or Tiny animal or a Small elemental. When taking the form of an animal, a druid's wild shape now functions as beast shape II . When taking the form of an elemental, the druid's wild shape functions as elemental body I At 8th level, a druid can also use wild shape to change into a Huge or Diminutive animal, a Medium elemental, or a Small or Medium plant creature. When taking the form of animals, a druid's wild shape now functions as beast shape III . When taking the form of an elemental, the druid's wild shape now functions as elemental body II . When taking the form of a plant creature, the druid's wild shape functions as plant shape I At 10th level, a druid can also use wild shape to change into a Large elemental or a Large plant creature. When taking the form of an elemental, the druid's wild shape now functions as elemental body III . When taking the form of a plant, the druid's wild shape now functions as plant shape II At 12th level, a druid can also use wild shape to change into a Huge elemental or a Huge plant creature. When taking the form of an elemental, the druid's wild shape now functions as elemental body IV . When taking the form of a plant, the druid's wild shape now functions as plant shape III",
-  "woodland stride": "At 5th level, a hunter and her animal companion may move through any sort of undergrowth (such as natural thorns, briars, overgrown areas, and similar terrain) at their normal speed and without taking damage or suffering any other impairment. Thorns, briars, and overgrown areas that are enchanted or magically manipulated to impede motion will still affect the hunter and her animal companion."
+  "woodland stride": "Starting at 7th level, a ranger may move through any sort of undergrowth (such as natural thorns, briars, overgrown areas, and similar terrain) at his normal speed and without taking damage or suffering any other impairment. Thorns, briars, and overgrown areas that are enchanted or magically manipulated to impede motion, however, still affect him."
  },
  "class_feat_labels": [],
  "class_feat_tax_dict": {},
  "class_feats": [],
  "class_feature_changes_dict": {},
  "class_feature_conditionals_dict": {},
- "class_feature_levels": {},
+ "class_feature_levels": {
+  "Talents": {
+   "Order of the Eclipse": 1
+  },
+  "arcana": {
+   "jinx blending": 4,
+   "protected assault": 2
+  }
+ },
  "class_feature_owners": {
-  "cave domain": "druid",
+  "Talents": "samurai",
+  "arcana": "magus",
   "favored_enemies": "ranger",
   "favored_terrains": "ranger"
  },
  "class_features": {
-  "Skill Unlock: Knowledge (engineering)": {
-   "10 Ranks": "After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.",
-   "15 Ranks": "You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.",
-   "20 Ranks": "You can roll twice and take the better result on Knowledge checks.",
-   "5 Ranks": "You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill."
+  "Skill Unlock: Ride": {
+   "10 Ranks": "When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.",
+   "15 Ranks": "While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.",
+   "20 Ranks": "Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.",
+   "5 Ranks": "Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted."
   },
-  "cave domain": {
-   "bonus spells": [
-    "detect aberration",
-    "stone call",
-    "deeper darkness",
-    "echolocation",
-    "wall of stone",
-    "conjure black pudding",
-    "statue (looking like a stalagmite or stalactite)",
-    "earthquake",
-    "imprisonment"
-   ],
-   "granted powers": {
-    "cavesight (sp)": "you can grant darkvision 60 feet to a willing creature you touch. This effect lasts 1 minute, or 1 hour if used on yourself. You can use this ability a number of times per day equal to 3 + your wisdom modifier. ",
-    "tremorsense (ex)": "at 6th level, you gain tremorsense 30 feet. At 12th level, you gain tremorsense 60 feet. "
+  "Talents": {
+   "Order of the Eclipse": {
+    "Challenge": " The order of the eclipse samurai gains a +1 bonus on all Intimidate checks made against the target of his challenge. This bonus increases by 1 for every four levels the samurai possesses.",
+    "Dark Rider (Su)": " At 2nd level, whenever the samurai is on his mount, both he and his mount share any of the following senses if either of them possesses it: darkvision, low-light vision, scent, and see in darkness. This applies regardless of the source of the sense (including senses gained from spells or magic items), but only while the samurai is mounted. If the samurai and mount both have a sense but one has an improved version (such as a samurai with darkvision with a range of 60 feet riding a mount that has darkvision with a range of 90 feet), both receive the improved version of the sense.",
+    "Eclipsing Blade (Sp)": " At 8th level, the samurai can cast on a weapon he is holding. The does not affect the vision of any order of the eclipse samurai, or that of their mounts. The spell immediately ends if the weapon leaves the samurai's hand. He may do this once per day, plus one additional time per day for every four levels he possesses above 8th (to a maximum of four times per day at 20th level).",
+    "Edicts": " The samurai cannot create light where it is not necessary—anything that can be done in darkness should be. The samurai must belong to a military organization (within Kaoling this is likely to be a warband commanded by a senior samurai, who in turn answers to Warlord Tsung-cha Kavangaki or one of the Council of Nine). The samurai must enforce his place within this order and societies that recognize its authority, obeying those senior to him without question and demanding total obedience from those beneath him. The samurai must take every opportunity to extinguish the lights of his foes.",
+    "Order Abilities": " A samurai that belongs to the order of the eclipse gains the following abilities as he increases in level.",
+    "See in Darkness (Ex)": " At 15th level the samurai can see perfectly in darkness, even magical darkness, as the universal monster ability of the same name.",
+    "Skills": " An order of the eclipse samurai adds Perception (Wis) and Survival (Wis) to his list of class skills. In addition, whenever he makes a Perception check to notice an invisible creature or object, he receives a bonus on the check equal to 1/2 his samurai level (minimum +1)."
+   }
+  },
+  "arcana": {
+   "jinx blending": {
+    "Special": "A magus can select this magus arcana more than once.",
+    "benefits": "When a magus selects this arcana, he must select one spell from the witch spell list that is at least one level lower than the highest magus spell level he can cast. He adds this spell to his spellbook and list of magus spells known as a magus spell one level higher than its witch spell level. He can instead select two spells to add in this way, but both must be at least two levels lower than the highest-level magus spell he can cast."
+   },
+   "protected assault": {
+    "benefits": "The magus can expend 1 point from his arcane pool as a swift action to protect himself from an opposing alignment."
    }
   },
   "favored_enemies": [
-   "Humanoid (dwarf)",
-   "Humanoid (orc)"
+   "Ooze"
   ],
   "favored_terrains": [
-   "Cold"
+   "Planes [choose]"
   ]
  },
  "classes": [
   {
    "archetype": {
-    "Nature Priest": {
-     "chosen druid (ex)": " If a nature priest chooses a domain for her nature bond, she must choose one of her deity's domains (or subdomains) in place of those typically available to a druid. This ability alters nature bond.",
-     "class skills": " A nature priest adds Knowledge (religion) to her list of class skills instead of Knowledge (geography). This alters the druid's class skills.",
-     "divine servants (su)": " At 9th level, a nature priest adds the spells lesser planar ally, planar ally, and greater planar ally to her druid spell list at their cleric spell levels. When she casts these spells, the planar allies summoned require half the payment described in those spells. This ability replaces the venom immunity ability.",
-     "faithful": " Like a cleric, a nature priest must worship a deity and her alignment must be within one step of her deity's ( Pathfinder RPG Core Rulebook 166 ).",
-     "shepherd of the faithful (su)": " At 4th level, a nature priest and all allies within 60 feet that can see or hear her gain a +2 insight bonus on skill checks to notice or avoid natural hazards, difficult terrain, and rough winds or water, as well as on saving throws against natural hazards. This ability offers no protection against the abilities of creatures or the effects of spells or items. This ability replaces resist nature's lure.",
-     "source": "Healer's Handbook pg. 23 Nature priests serve two masters: their deities and nature itself, and can call upon the power of both to fuel their divine abilities.",
-     "studious piety (ex)": " A nature priest gains a +1 bonus on Knowledge (religion) checks. This bonus increases to +2 when attempting checks that involve knowledge of her deity or her faith. This ability replaces nature sense.",
-     "weapon proficiencies": " A nature priest is proficient with her deity's favored weapon in addition to a druid's typical weapon proficiencies. This alters the druid's weapon proficiencies."
+    "Elemental Ally": {
+     "elemental eidolons": "  At 1st level, an elemental ally has four elemental eidolons she can summon, one each for the elements of air, earth, fire, and water. Their abilities and statistics are determined using the rules for elemental eidolons for the summoner class from page 33 of Pathfinder RPG Pathfinder Unchained , as if the elemental ally were a summoner of her druid level, except they gain no additional evolution pool ( just those evolutions from their base form and base evolutions from their subtype). Each of the four elementals has its own base form, skills, and feats. The elemental ally can summon one of these elementals with the same 1-minute ritual a summoner normally uses to do so. The elemental ally can't summon an eidolon or cast summon nature's ally if she currently has an eidolon summoned. She also can't summon an eidolon if she currently has a creature summoned through other means. If one of the elemental ally's eidolons is killed, she cannot summon any eidolons for 24 hours. The elemental ally can dismiss her eidolon as a standard action. As the elemental ally gains levels, her elemental eidolons' base statistics and base evolutions increase as if her druid level were her summoner level. The eidolons gain the darkvision, link, share spells, evasion, ability score increase, devotion, multiattack, and improved evasion abilities at the appropriate levels, but never gain an evolution pool. Abilities and spells that grant additional evolution points to eidolons do not function for elemental eidolons, though any ability that would grant evolution points to an animal companion does work. The elemental ally does not gain life link or any other class features a summoner gains in relation to her eidolon. This ability replaces nature's bond and wild shape.",
+     "elemental empathy (ex)": "  An elemental ally can improve the attitude of a creature of the elemental subtype. This ability functions just like a Diplomacy check to improve the attitude of a person. The elemental ally rolls 1d20 and adds her druid level and her Charisma modifier to determine the elemental empathy check result. To use elemental empathy, the elemental ally and the elemental must be able to study each other, which means that they must be within 30 feet of one another under normal conditions. Generally, inf luencing an elemental in this way takes 1 minute, but as with influencing people, it might take more or less time. An elemental ally can also use this ability to influence a non-elemental outsider with the air, earth, fire, or water subtype, but she takes a -4 penalty on the check. This ability replaces wild empathy.",
+     "elemental magic": "  The elemental ally can target elementals (including her elemental eidolons) with any spell she casts that targets animals, even though elementals can't normally be targeted by such spells.",
+     "elemental resistance (ex)": "  At 4th level, an elemental ally gains resist acid, cold, electricity, and fire 5. This ability replaces resist nature's lure.",
+     "source": "Monster Summoner's Handbook pg. 16 An elemental ally is a druid who has crafted powerful bonds of trust and friendship with one ally from each of the four primary elemental planes. Elemental allies are most common in Qadira, where they are considered similar to genie-binders."
     }
    },
    "display": "Druid",
-   "level": 6,
+   "level": 4,
    "name": "druid"
   },
   {
    "archetype": {
-    "Ilsurian Archer": {
-     "archery style (ex)": "  At 2nd level, an Ilsurian archer must select the archery combat style. This modifies the ranger's combat style feat class feature.",
-     "bullseye shot (ex)": "  At 1st level, an Ilsurian archer gains the Bullseye Shot ISG feat as a bonus feat. He need not meet its prerequisites. This ability replaces track and wild empathy.",
-     "iomedae's influence (ex)": "  At 8th level, an Ilsurian archer gains Weapon Focus with the longsword as a bonus feat, due to the inf luence the church of Iomedae has over Ilsurian causes. This ability replaces swift tracking.",
-     "pinpoint targeting (ex)": "  At 11th level, an Ilsurian ranger gains Pinpoint Targeting as a bonus feat, even if he does not meet its prerequisites. This replaces quarry.",
-     "quarry (ex)": "  At 19th level, an Ilsurian ranger gains the quarry class feature. This ability replaces improved quarry.",
-     "source": "Weapon Master's Handbook pg. 6 Ilsurian archers maintain the strong tradition of archery first developed by soldiers in the service of Ilsur, who raised a small army with which he intended to overthrow the monarch of Korvosa after the fall of the Chelish Empire. Though Ilsur's Arena teaches only the basics of these techniques, a few dedicated students strive toward true mastery in each generation.",
-     "vicious aim (ex)": "  At 4th level, an Ilsurian archer adds half his highest favored enemy bonus to all attack rolls and damage rolls for attacks made with ranged weapons. This does not stack with his normal favored enemy bonus when targeting a creature that qualifies as a favored enemy. This ability replaces all spellcasting, and the Ilsurian ranger is not considered to have a caster level."
+    "Spell Dancer": {
+     "arcane movement (su)": "  At 5th level, whenever a spell dancer casts a magus spell, he gains a competence bonus on Acrobatics, Climb, Escape Artist, and Stealth checks equal to the spell's level until the beginning of his next turn. This ability replaces the bonus feat a magus receives at 5th level.",
+     "class skills": "  A spell dancer adds Acrobatics and Perform (dance) to his list of class skills and removes Intimidate and Ride from his list of class skills.",
+     "dance of avoidance (su)": "  At 7th level, while wearing light armor or no armor, a spell dancer gains a +2 insight bonus to Armor Class. This ability replaces the medium armor class feature.",
+     "greater dance of avoidance (su)": "  At 13th level, while wearing light armor or no armor, a spell dancer's insight bonus to Armor Class increases to +4. This ability replaces the heavy armor class feature.",
+     "magus arcana": "  The following magus arcana complement the spell dancer archetype: arcane cloak, prescient defense; close range, concentrate, hasted assault, spell shield.",
+     "source": "Advanced Race Guide pg. 24 The strong emphasis on wizards within elven culture influences how even non-wizard elves see themselves. Many elven magi do not consider themselves masters of a blend of martial and magical talents, but rather a sub-category of wizards who study the effect of physical movement and techniques upon spellcasting ability. They believe their ability to cast spells while fighting is an outgrowth of the concept of the \"spell dance,\" which itself is just another kind of wizardry. A spell dancer has the following class features.",
+     "spell dance (su)": "  At 1st level, a spell dancer gains the ability to expend 1 point from his arcane pool as a swift action to gain a +10 enhancement bonus to his movement rate and a +2 dodge bonus to Armor Class against attacks of opportunity provoked by moving through threatened spaces for 1 minute. For every four levels beyond 1st, the spell dancer gains another +10 enhancement bonus to movement and +2 to AC against attacks of opportunity provoked from movement. At 5th level, once per spell dance as a swift action, the spell dancer may use one of the following on himself as a swift action: blur , fly , or haste . These abilities last for 1 round. At 9th level, the spell dancer may instead take a swift action to use dimension door as a spell-like ability once during a spelldance. At 13th level, the spell dancer may instead choose to take a swift action to gain freedom of movement for 1d4 rounds. This ability replaces the magus's ability to expend points from his arcane pool as a swift action to grant any weapon he is holding magic bonuses for 1 minute."
+    }
+   },
+   "display": "Magus",
+   "level": 4,
+   "name": "magus"
+  },
+  {
+   "archetype": {
+    "Summit Sentinel": {
+     "invincible (su)": " At 17th level, a summit sentinel takes on the unyielding hardness of the mountains. While in her roots of the mountain defensive stance, she is immune to critical hits and precision damage. This replaces hide in plain sight.",
+     "mountain mastery (ex)": " At 3rd level, a summit sentinel must select mountains as her favored terrain, and she does not gain additional favored terrains at higher levels. Every 5 levels beyond 5th, the bonus from this favored terrain increases by 2. At 8th level, a summit sentinel draws strength from the earth. When she and her target are both in contact with the ground or an earthen floor, the summit sentinel gains a +1 bonus on attack and damage rolls against the target. At 18th level, the bonus on attack and damage rolls increases to +2. This alters favored terrain.",
+     "rockslide (su)": " At 8th level, once per day as a standard action, a summit sentinel can create a rushing wave of earth and stone. The summit sentinel chooses a point on the ground or floor within 30 feet. Rippling waves of earth and stone emanate from the chosen point in a 25-foot cone in a direction of the summit sentinel's choice. Each creature in the area takes 4d6 points of bludgeoning damage and is pushed to the end of the cone. A target that succeeds at a Reflex save (DC = 10 + half the ranger's level + the ranger's Wisdom modifier) takes half damage and is not pushed. This replaces swift tracker.",
+     "roots of the mountain (su)": " At 2nd level, a summit sentinel gains Toughness as a bonus feat. Additionally, as a move action, she can enter a defensive stance for 1 minute. While in this stance, the summit sentinel's speed is reduced to 5 feet, she gains a +2 enhancement bonus to her natural armor, and she gains a +2 bonus to her CMD against maneuvers that would move her or knock her prone. If the ranger loses contact with the ground or other solid surface, the stance ends immediately. The ranger can enter this stance a number of times per day equal to 3 + her Constitution modifier. At 6th level and every 4 levels thereafter, the enhancement bonus to natural armor increases by 1, and the bonus to CMD increases by 2. This replaces the ranger's combat style feats.",
+     "source": "Ultimate Wilderness pg. 72 Some rangers eschew the path of the swift skirmisher and embrace the implacable strength of the mountain.",
+     "spells": " A summit sentinel adds stoneskin to the ranger spell list as a 4th-level spell. This alters the ranger's spells."
     }
    },
    "display": "Ranger",
-   "level": 6,
+   "level": 4,
    "name": "ranger"
   },
   {
    "archetype": {
-    "Courtly Hunter": {
-     "alternate form (su)": " At 7th level, the courtly hunter's animal companion learns an additional subtle form. When the courtly hunter gains this ability, she chooses a Tiny animal. When under the effects of the subtle companion ability, the courtly hunter's animal companion can change between a shrunken, more innocuous version of its original shape or the shape of the chosen animal as a standard action. When it transforms, it loses abilities dependent on its original shape and gains abilities from its new shape as beast shape II . At 13th and 19th levels, the courtly hunter can select an additional form to add to the animal companion's list of choices while it is in its polymorphed form. This ability replaces bonus tricks.",
-     "class skills": " A courtly hunter adds Bluff, Diplomacy, and Sense Motive to her list of class skills, instead of Knowledge (geography), Knowledge (nature), and Survival. This alters the hunter's class skills.",
-     "courtly companion": " A courtly hunter's animal companion was touched by either the fey or the nature spirits that form leshys and answer to commune with nature , granting it its own intelligence. The companion's type changes to magical beast (augmented animal), but this doesn't change any of its statistics and it counts as an animal, not as a magical beast, for the purposes of determining all effects, prerequisites, and so on. It does not learn tricks, but it does have an Intelligence score equal to that of a familiar belonging to a wizard of the courtly hunter's hunter level. Levels in other classes that grant animal companions do not stack with levels of courtly hunter for the purpose of determining the abilities of her courtly companion. This ability alters animal companion.",
-     "refined focus (su)": " A courtly hunter has access to a different set of animal aspects with her animal focus. She does not gain access to the bear, bull, frog, monkey, snake, stag, tiger, or wolf aspects. Instead, she gains access to the following aspects. Beaver : The creature gains a +4 competence bonus on Craft checks. This bonus increases to +6 at 8th level and +8 at 15th level. Chameleon : The creature gains a +4 competence bonus on Disguise checks. This bonus increases to +6 at 8th level and +8 at 15th level. Eagle : The creature gains a +2 enhancement bonus to Charisma. This bonus increases to +4 at 8th level and +6 at 15th level. Fox : The creature gains a +4 competence bonus on Bluff checks. This bonus increases to +6 at 8th level and +8 at 15th level. Frilled Lizard : The creature gains a +4 competence bonus on Intimidate checks. This bonus increases to +6 at 8th level and +8 at 15th level. Octopus : The creature gains a +4 competence bonus on Escape Artist checks. This bonus increases to +6 at 8th level and +8 at 15th level. Raccoon : The creature gains a +4 competence bonus on Sleight of Hand checks. This bonus increases to +6 at 8th level and +8 at 15th level. Songbird : The creature gains a +4 competence bonus on Perform checks. This bonus increases to +6 at 8th level and +8 at 15th level. This ability alters animal focus.",
-     "skill bond (ex)": " At 3rd level, a courtly hunter's animal companion gains the courtly hunter's class skills as class skills. Her animal companion can use the courtly hunter's skill ranks in a skill in place of its own, but only to a maximum of the courtly hunter's hunter level (for instance, if a character had 3 levels in courtly hunter and 5 ranks in Diplomacy, her animal companion could either share 3 ranks with skill bond or use its own ranks, whichever would result in a higher total skill bonus). This ability replaces hunter tactics and the hunter's bonus teamwork feats.",
-     "source": "Ultimate Intrigue pg. 64 While most hunters find themselves at ease in the wildest parts of the world, courtly hunters instead make their homes in cultured urban environments. They and their animal companions are more refined than typical hunters, using their skills to navigate the winding paths of courtly intrigue as surely as other hunters find trails in the wilderness.",
-     "subtle companion (su)": " At 2nd level, a courtly hunter can transform her animal companion into a similar Tiny animal to allow it hide easily or even blend in and act as a spy. For instance, a tiger could be transformed into a housecat, a wolf could be transformed into a Tiny dog, a dire bat could be transformed into a Tiny flying fox, and so on. This functions as a polymorph effect, and the animal companion gains a +2 size bonus to Dexterity and a -4 size penalty to Strength (use the polymorph table on page 212 of the Pathfinder RPG Core Rulebook to adjust its ability score if the animal companion is larger than Medium). As a standard action, the courtly hunter can touch her animal companion to transform it. This ability replaces precise companion."
+    "Warrior Poet": {
+     "battle dance (ex)": " At 6th level, the warrior poet gains Spring Attack as a bonus feat. At 12th level, she gains Improved Spring Attack as a bonus feat, and at 18th level, she gains Greater Spring Attack as a bonus feat. The warrior poet does not need to meet the prerequisites for these feats. This replaces the samurai's bonus combat feats.",
+     "dancer's grace (ex)": " When wearing no armor and not using a shield, the warrior poet gains a bonus to Armor Class equal to her Charisma bonus (to a maximum of her samurai level). A warrior poet loses this bonus while flatfooted or otherwise denied her Dexterity bonus. This replaces the samurai's proficiency with medium armor, heavy armor, and shields.",
+     "flourish (ex)": " The warrior poet is skilled at performing elegant moves in battle. At 1st level, the warrior poet gains a flourish of her choice from the list below. She gains another flourish at 3rd, 5th, 9th, 13th, 17th, and 20th levels. Chrysanthemum's Blooming : The warrior poet gains Vital Strike as a bonus feat and can apply its benefit when using Spring Attack . If the warrior poet is at least 16th level and has Improved Vital Strike , she can apply that feat's benefit instead. The warrior poet must be at least 11th level to select this flourish. Exodus of Jinin : As long as the warrior poet is wearing light or no armor and carrying no more than a light load, her land speed increases by 10 feet. A warrior poet can select this flourish up to three times. Harmony of the Tranquil Garden : The warrior poet can focus her senses as a move action to gain blindsense out to 5 feet for 1 round. For every 5 samurai levels she has, the range of this blindsense increases by 5 feet. Jininsiel's Guidance : The warrior poet gains the rogue's uncanny dodge class feature. This flourish can be selected up to twice; selecting it a second time grants the warrior poet the rogue's improved uncanny dodge class feature. The warrior poet must be at least 4th level to select this flourish the first time and at least 8th level to select this flourish the second time. Kitsune's Mystique : The warrior poet gains Improved Feint as a bonus feat, ignoring its prerequisites. When the warrior poet uses Spring Attack or takes a move action to move, she can attempt to feint against one creature she threatens during her movement as part of her movement. Petals on the Wind : Whenever a foe provokes an attack of opportunity from the warrior poet, she can move 5 feet before making the attack of opportunity. This movement does not provoke attacks of opportunity. If the warrior poet takes an action to move during her next turn, she subtracts 5 feet from her total movement for each time she has used this ability since her last turn. Wrath of the Heavens : The warrior poet gains Shot on the Run as a bonus feat, ignoring its prerequisites. This replaces mount, weapon expertise, banner, and greater banner.",
+     "graceful strike (ex)": " At 4th level, when the warrior poet uses Weapon Finesse to make a melee attack that adds her Dexterity bonus to attack rolls and her Strength bonus to damage rolls, she also adds half her samurai level to damage rolls. This replaces mounted archer and demanding challenge.",
+     "graceful warrior (ex)": " The warrior poet gains Weapon Finesse as a bonus feat and can apply its benefits to glaives, katanas, and naginatas as if they were light weapons. This does not alter the weapons' properties for the purposes of any other effects.",
+     "skirmisher's challenge (ex)": " The warrior poet adds her samurai level to her damage rolls only on her first successful attack against a challenged target each round. This modifies challenge.",
+     "source": "Heroes from the Fringe pg. 13 Warrior poets often study calligraphy, flower arrangement, poetry, and other courtly arts, but when called to battle, they treat combat as its own art form, fighting with beauty and grace. While these traditions first arose among the Jininese elves and are still extremely common in Jinin, the warrior poet's art has spread to different nations and peoples in Tian Xia over centuries."
     }
    },
-   "display": "Hunter",
+   "display": "Samurai",
    "level": 2,
-   "name": "hunter"
+   "name": "samurai"
   }
  ],
  "combat_talent_items": [],
- "con": 15,
+ "con": 14,
  "counter_schools": [
   "conjuration",
-  "divination"
+  "illusion"
  ],
  "counter_spell_descriptor": [
-  "fear"
+  "light",
+  "sonic"
  ],
- "craft_type": "Weaving",
+ "craft_type": "Inkmaking",
  "day_list": [
   6,
-  10,
   7,
-  6
+  7
  ],
- "deity_name": "Ragathiel",
- "dex": 8,
+ "deity_name": "Shelyn",
+ "dex": 16,
  "enhancement_effects_dict": {},
  "equip_descrip": {
   "belts": {
-   "description": " long believed to have been gnome in origin, this stately\r cummerbund features a number of dancing dolphins\r embroidered on its deep blue material. The cummerbund grants\r its wearer a +4 competence bonus on swim checks, and allows\r her to take 10 on such checks even if distracted or endangered. ",
-   "item_name": "Aquatic Cummerbund"
-  },
-  "eyes": {
-   "description": " this black silk eye patch is adorned by a skull and\r crossbones worked in silver thread. The wearer\r of this patch gains a +2 competence bonus on\r swim and climb checks. In addition, once per\r day, the wearer of this eye patch can gain the\r effects of either touch of the sea (advanced player's guide) or\r expeditious retreat on command (wearer's choice). ",
-   "item_name": "Pirate's Eye Patch"
+   "description": " at first glance, there is nothing at all unique about this length of woven brown wool; however, in the hands of a spellcaster it can be a devious resource. The wearer of a diminishing sash can tear off a piece of the item and use it as a substitute for spell components worth up to 50. Each piece torn from a diminishing sash (an action subsumed in the casting of a spell) provides components for one spell, and multiple pieces cannot be combined to provide more expensive components. After providing the components for 50 spells, a diminishing sash becomes a nonmagical piece of cloth. If the sash is used to generate material components for a spell that normally uses no components or components that cost 1or less, the wearer casts the spell at +1 caster level. ",
+   "item_name": "Diminishing Sash"
   },
   "rings": {
-   "description": "These four garish and gaudy rings must be worn on one hand, though they take up only a single ring slot. They grant the wearer the ability to commune with and affect the dead in the following ways. The wearer can use  speak with dead , as the spell, three times per day. It takes 10 minutes to use this ability. The wearer can use  spectral hand , as the spell, three times per day. The wearer's weapons gain the  ghost touch  weapon special ability while the wearer is wielding the weapons. The wearer gains a +4 sacred or profane bonus on saving throws against positive and negative energy effects. The bonus depends on the wearer's alignmentgood-aligned wearers gain a sacred bonus, whereas evil-aligned wearers gain a profane bonus. Neutral-aligned wearers pick either a sacred or profane bonus when the ring is first put on, which cannot be changed later .",
-   "item_name": "Spiritualist Rings"
+   "description": "This otherwise plain ring is adorned with a tiny Sihedron rune. These rings were given to agents and allies of the runelords as badges of office and tokens of appreciation for their worksometimes, they were given as bribes to those a runelord was attempting to win to his cause. Like the more common Sihedron medallion , runelords have special links to Sihedron rings that aid in scrying and observation of the world around the wearer of the ring. A Sihedron ring grants a +3 deflection bonus to AC, a +3 resistance bonus on all saving throws, and protects the wearer with a constant endure elements effect. At will, as a standard action, the wearer can use the Sihedron ring to change the appearance of his clothing or armor into any other kind of clothing or armor. The actual clothing and armor worn retain all their properties (including weight) when glamered. Only true seeing or similar magic reveals the true nature of the adornments.",
+   "item_name": "Sihedron Ring"
   }
  },
  "equipment_list": [
-  "Aquatic Cummerbund",
-  "Pirate's Eye Patch",
-  "Ghost Battling Ring",
-  "Spiritualist Rings"
+  "Diminishing Sash",
+  "Sihedron Ring"
  ],
  "eye_color": [
-  "Amber"
+  "Brown"
  ],
  "feat_budget": {
   "bloodline": 0,
   "class": 0,
   "flavor": 1,
   "flaw": 2,
-  "normal": 8,
+  "normal": 7,
   "profession": 4,
   "story": 3,
-  "teamwork": 0,
-  "trainer": 2
+  "teamwork": 1,
+  "trainer": 0
  },
  "feat_changes_dict": {
-  "Divination Guide": {
+  "Secret Signs": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "allSavingThrows",
-     "text": "After casting augury or divination, +1 sacred on all saving throws for 10 min/caster level."
-    }
-   ]
-  },
-  "Swarm Scatter": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "ac",
-     "text": "+1 circumstance bonus to AC for each adjacent ally who also has this feat."
+     "target": "skills",
+     "text": "+4 bonus on Bluff checks made to pass secret messages (not other Bluff uses)"
     }
    ]
   }
  },
  "feat_conditionals_dict": {},
  "feats": [
-  "Biomech Pilot",
-  "Stable Spell",
-  "Cooperative Crafting",
-  "Water Skinned",
-  "Noble Scion",
+  "Spell Shield",
+  "Cosmopolitan",
+  "Malice",
+  "Dazzling Display",
+  "Martial Training I (Scarlet Throne)",
   "Multi Talented",
   "True Calling",
   "Always Improving",
   "Multi Talented (2nd)"
  ],
  "feats_feat_tax_dict": {
-  "Great Fortitude": [
-   "improved great fortitude"
+  "Martial Training I (Scarlet Throne)": [
+   "Martial Training II (Scarlet Throne)"
+  ],
+  "Martial Training III (Scarlet Throne)": [
+   "Martial Training IV (Scarlet Throne)"
+  ],
+  "Martial Training V (Scarlet Throne)": [
+   "Martial Training VI (Scarlet Throne)"
   ]
  },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Divination Guide"
+  "Torch Handling"
  ],
  "flaw": [
-  "Alcoholic",
-  "Bespectacled",
-  "Lame"
+  "Grudge Keeper",
+  "Haunted"
  ],
  "flaw_effects_dict": {
-  "Alcoholic": {
+  "Grudge Keeper": {
    "changes": [],
    "contextNotes": [
     {
      "target": "will",
-     "text": "Alcoholic (minor): when presented with alcohol, Will save DC [[5]] or you must drink it."
+     "text": "Grudge Keeper: Will save DC [[5]] to accept aid from anyone who has ever wronged you."
     }
    ],
-   "description": "You cannot resist the bottle. Whenever you are presented with alcohol, you must pass a Will save (DC 5) or you are compelled to drink it.",
+   "description": "You have difficulty letting go of grudges. You must pass a Will save (DC 5) to willingly accept aid (healing, buffs, Diplomacy) from anyone who has wronged you, however slightly.",
    "tier": "minor"
   },
-  "Bespectacled": {
+  "Haunted": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "skill.per",
-     "text": "Bespectacled: -[[20]] Perception when not wearing glasses."
+     "target": "ac",
+     "text": "Haunted: retrieving stored gear is a standard action; dropped items land [[10]] ft away in a random direction."
     }
    ],
-   "description": "Without your glasses the world is a smear of color. You take a -20 penalty on Perception checks when not wearing your glasses.",
+   "description": "Malevolent spirits follow you wherever you go, causing minor mishaps and strange occurrences. Retrieving any stored item from your gear requires a standard action, and any item you drop lands 10 feet away in a random direction.",
    "tier": "major"
+  }
+ },
+ "flaw_feat_tax_dict": {
+  "Minor Spell Expertise": [
+   "major spell expertise"
+  ]
+ },
+ "flaw_feats": [
+  "Minor Spell Expertise",
+  "Improved Day Job"
+ ],
+ "formatted_bio": "Laurène Long\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 4 Druid / Magus And Ranger And Samurai\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Disciplines: Scarlet Throne\n- Homeland: Tal-falko\n\nVocation\n- Profession: Equine Dentist (rank 15)\n- Profession: Wizard (rank 10)\n- Profession: Torchbearer (rank 8)\n- Profession: Wayfarer's Lackey (rank 2)\n- Profession: Ledger Clerk (rank 4)\n- Known for: Inkmaking\n\nFamily\n- Loving Mother\n- Absent Father\n- Raised In A Wealthy Household\n- 1 Younger Brother\n- 1 Older Sister\n\nPersonality\n- Personality: Astute, Energetic, Chill\n- Mannerisms: Flexes muscles, Withdraws into oneself, Covers eyes, Cracks knuckles\n- Flaws: Grudge Keeper, Haunted\n\nAppearance\n- Hair: Touseled Blond\n- Eyes: Brown\n- Build: Homely",
+ "full_domain": [],
+ "gender": "Female",
+ "generation_seed": 7899,
+ "generator_version": "2026-07-15 racial-stats",
+ "gold": 965,
+ "hair_color": [
+  "Blond"
+ ],
+ "hair_type": [
+  "Touseled"
+ ],
+ "height_number": "5'1\"",
+ "hero_points": 0,
+ "homebrew_feat_desc_dict": {
+  "Ability Focus (malefactions)": "You have a knack for potent, complex curses. increase the dc of your malefactions by 2.",
+  "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
+  "Arcane Vendetta": "The mistreatment of your people by an arcane society (such as Numeria's Technic League or the White Witches of Irrisen) has made you particularly eager to inf lict harm on those who use arcane magic",
+  "Combat Medic": "You know the urgency of treating wounds in the heat of battle, applying first aid to your allies with such speed that you assure no one gets left behind",
+  "Cosmopolitan": "Living in large, exotic cities has put you in touch with many diverse civilizations, cultures, and races",
+  "Dazzling Display": "Your skill with your favored weapon can frighten enemies",
+  "Improved Day Job": "You learned the importance of an honest day's work while training as an initiate of the Pathf inder Society",
+  "Malice": "",
+  "Martial Training I (Scarlet Throne)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training II (Scarlet Throne)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Scarlet Throne)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Scarlet Throne)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training V (Scarlet Throne)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training VI (Scarlet Throne)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
+  "Minor Spell Expertise": "You are able to cast a 1st-level spell as a spell-like ability",
+  "Multi Talented": "Your profession rank cap increases by 10.",
+  "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat.",
+  "Secret Signs": "You are particularly adept at communicating with others via innuendo, gestures, and secret hand signs",
+  "Spell Shield": "",
+  "Torch Handling": "In your grasp, a simple torch becomes a beacon",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
+ },
+ "inherents": {
+  "cha": 0,
+  "con": 10,
+  "dex": 7,
+  "int": 1,
+  "str": 2,
+  "wis": 4
+ },
+ "initiation_stat": "wis",
+ "initiator_level": 7,
+ "int": 13,
+ "item_changes_dict": {
+  "Diminishing Sash": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "The wearer of a diminishing sash can tear off a piece of the item and use it as a substitute for spell components worth up to 50. After providing the components for 50 spells, a diminishing sash becomes a nonmagical piece of cloth. If the sash is used to generate material components for a spell that normally uses no components or components that cost 1or less, the wearer casts the spell at +1 caster level."
+   ]
   },
-  "Lame": {
+  "Sihedron Ring": {
    "changes": [
     {
-     "formula": "-10",
+     "formula": "3",
      "operator": "add",
      "priority": 0,
-     "target": "landSpeed",
-     "type": "untyped"
+     "target": "ac",
+     "type": "deflection"
+    },
+    {
+     "formula": "3",
+     "operator": "add",
+     "priority": 0,
+     "target": "allSavingThrows",
+     "type": "resist"
     }
    ],
    "contextNotes": [
     {
      "target": "ac",
-     "text": "Lame: speed already reduced [[10]] ft; never reduced further by encumbrance."
-    }
-   ],
-   "description": "One of your legs is permanently wounded, reducing your base land speed by 10 feet (5 feet if your base speed is less than 30 feet). Your speed is never reduced further by encumbrance.",
-   "tier": "major"
-  }
- },
- "flaw_feat_tax_dict": {},
- "flaw_feats": [
-  "Forge Ring",
-  "Fleet"
- ],
- "formatted_bio": "Yasmine Long\n- Alignment: Neutral Good\n- Deity: Ragathiel\n- Race: Human\n- Class: Level 6 Druid / Ranger And Hunter\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Homeland: Tal-falko\n\nVocation\n- Profession: Tinker's Lad (rank 15)\n- Profession: Blood Cultist (rank 14)\n- Profession: Burglar (rank 12)\n- Profession: Iron Body Brother (rank 5)\n- Known for: Weaving\n- Training: An average trainer who taught them Brew Potion, Swarm Scatter\n\nFamily\n- Absent Mother\n- Loving Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Hardworking, Optimistic, Cynic\n- Mannerisms: Peers over glasses, Scratches head\n- Flaws: Alcoholic, Bespectacled, Lame\n\nAppearance\n- Hair: Straight Grey\n- Eyes: Amber\n- Build: Smooth Skin",
- "full_domain": [
-  "cave domain"
- ],
- "gender": "Female",
- "generation_seed": 7971,
- "generator_version": "2026-07-15 racial-stats",
- "gold": 717,
- "hair_color": [
-  "Grey"
- ],
- "hair_type": [
-  "Straight"
- ],
- "height_number": "5'0\"",
- "hero_points": 3,
- "homebrew_feat_desc_dict": {
-  "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
-  "Biomech Pilot": "Your mech incorporates many biological parts, offering it versatility not seen in other machines. The following mech enhancements can be selected by a mech pilot with this feat in addition to regular mech enhancements Special If you possess this feat as well as the ability to craft constructs, you may craft constructs with the biomech template and create mechs that use the mech enhancements listed above. your mech is at least partially biological, if not completely so, and as a result has access to many additional abilities. such entities are known as biomechs and possess the biomech template.",
-  "Brew Potion": "You can create magic potions",
-  "Cooperative Crafting": "Your assistance makes item crafting far more efficient",
-  "Divination Guide": "Consulting the agents of your deity, you gain more guidance than most would",
-  "Empower Spell": "You can increase the power of your spells, causing them to deal more damage",
-  "Fleet": "You are faster than most",
-  "Forge Ring": "You can create magic rings",
-  "Mechanical Magician": "You understand magic much as you would science. you may make knowledge (engineering) checks in place of use magic device checks.",
-  "Multi Talented": "Your profession rank cap increases by 10.",
-  "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat.",
-  "Noble Scion": "You are a member of a proud noble family, whether or not you remain in good standing with your family",
-  "Stable Spell": "You can cast spells in areas of primal magic with less chance of triggering a primal magic event",
-  "Stealthy": "You are good at avoiding unwanted attention and slipping out of bonds",
-  "Swarm Scatter": "You have studied the habits of swarming rats for defensive tactics",
-  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
-  "Water Skinned": "Your touch extinguishes small flames"
- },
- "inherents": {
-  "cha": 10,
-  "con": 4,
-  "dex": 0,
-  "int": 0,
-  "str": 3,
-  "wis": 0
- },
- "initiation_stat": "wis",
- "initiator_level": 0,
- "int": 17,
- "item_changes_dict": {
-  "Aquatic Cummerbund": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skill.swm",
-     "text": "The cummerbund grants its wearer a +[[4]] competence bonus on swim checks, and allows her to take 10 on such checks even if distracted or endangered."
-    }
-   ]
-  },
-  "Ghost Battling Ring": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "It functions as a ring of the grasping grave ue . In addition, the wearer can use ghostly disguise um and haste each once per day."
-   ]
-  },
-  "Pirate's Eye Patch": {
-   "changes": [
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.clm",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.swm",
-     "type": "competence"
-    }
-   ],
-   "contextNotes": [
-    {
-     "target": "skill.clm",
-     "text": "In addition, once per day, the wearer of this eye patch can gain the effects of either touch of the sea (advanced player's guide) or expeditious retreat on command (wearer's choice)."
-    }
-   ]
-  },
-  "Spiritualist Rings": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "allSavingThrows",
-     "text": "The wearer can use speak with dead , as the spell, three times per day. It takes [[10]] minutes to use this ability. The wearer can use spectral hand , as the spell, three times per day. The wearer gains a +[[4]] sacred or profane bonus on saving throws against positive and negative energy effects."
+     "text": "At will, as a standard action, the wearer can use the sihedron ring to change the appearance of his clothing or armor into any other kind of clothing or armor."
     }
    ]
   }
@@ -909,155 +962,256 @@
  "language_text": [
   "Common",
   "Druidic",
-  "Sphinx",
-  "Elven",
   "Celestial",
-  "Dwarven",
-  "Infernal",
-  "Wayang",
-  "Drow Sign Language",
-  "Tengu",
-  "Halfling",
   "Kelish",
-  "Auran",
-  "Ignan",
-  "Giant",
-  "Grippli",
-  "Protean",
-  "Gnoll",
-  "Aquan"
+  "Undercommon",
+  "Wayang",
+  "Aklo"
  ],
- "level": 6,
+ "level": 4,
  "level_up_stats": {
-  "cha": 0,
+  "cha": 2,
   "con": 0,
-  "dex": 1,
+  "dex": 0,
   "int": 0,
-  "str": 0,
-  "wis": 2
+  "str": 1,
+  "wis": 0
  },
  "license_url": "/license",
  "magic_talent_items": [],
  "main_stat": "wis",
- "maneuvers_choose_from": [],
- "maneuvers_desc_dict": {},
- "maneuvers_known_list": [],
- "maneuvers_readied_list": [],
- "maneuvers_readied_names": [],
+ "maneuvers_choose_from": [
+  [
+   "Scything Strike",
+   "Princes Attitude"
+  ],
+  [
+   "Rising Zenith Strike",
+   "Regal Blade"
+  ],
+  [
+   "Strike of Defeat",
+   "Scarlet Eyes Perception"
+  ],
+  [
+   "Weeping Scarlet Razor"
+  ],
+  [
+   "Scarlet Riposte"
+  ],
+  [
+   "Final Blow"
+  ]
+ ],
+ "maneuvers_desc_dict": {
+  "Circular Stance": {
+   "action": "1 swift action",
+   "description": "Practitioners of Scarlet Throne know that to be a lord amongst warriors, he must walk the path of battle alone, and he understands that often times he may be beset by all sides. By adopting the Circular Stance, the disciple learns to defend himself from the predations of those who would think him outflanked. While in this stance, the initiator is never considered flanked this thwarts sneak attack attempts as well, provided that the rogue or ninjas level does not exceed the disciples initiator level by 4 or more.",
+   "discipline": "Scarlet Throne",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Final Blow": {
+   "action": "1 standard action",
+   "description": "Mercy has a place on the battlefield, a disciple of Scarlet Throne understands, as does the benefit of an honorable and swift death. By showing his enemy a merciful, swift death in battle, the disciple may continue to his next victory while letting both keep their honor. The disciple makes a melee attack against an injured foe, and if the attack is successful and the foe is under 25% of his maximum hit points, the attack is treated as a coup de grace that is performed as part of that attack action instead of the full round action usually required. This does not provoke attacks of opportunity. The attack does damage as a critical hit, and the foe must make a Fortitude save with a DC equal to 10 + the damage inflicted or die. If the foe is above 25% of his maximum hit points, then this maneuver has no effect and normal damage is rolled. Disciples with this maneuver readied have a keen sense of their enemys condition, and may make a Sense Motive check as a free action DC 20 to gauge if their opponent is eligible to be finished by this maneuver.",
+   "discipline": "Scarlet Throne",
+   "duration": "Instantaneous",
+   "level": 6,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Princes Attitude": {
+   "action": "1 swift action",
+   "description": "The Scarlet Throne disciple knows that he is nobility in the savagery of war, and conducts himself as such when moving through melee. The initiator gains a +4 dodge bonus to his Armor Class when he moves through threatened areas and provokes attacks of opportunity and a +2 competence bonus to Reflex and Will saves until his next turn.",
+   "discipline": "Scarlet Throne",
+   "duration": "One round",
+   "level": 1,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Regal Blade": {
+   "action": "1 swift action",
+   "description": "A disciple of the Scarlet Throne learns that in moments of precise focus, a single stroke of the blade can fell a potent enemy. The disciple may add a +2 insight bonus to his attack roll and +1d8 insight bonus to his damage roll on a single melee attack made during this turn.",
+   "discipline": "Scarlet Throne",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Rising Zenith Strike": {
+   "action": "1 standard action",
+   "description": "With supreme focus, comes great insight into the workings of a foes defenses. When the moment is right, the disciple releases his attack in a vicious upward swing. The disciple makes a Sense Motive check in place of his normal attack roll he may add any enhancement bonus from his weapon or feats that apply from the use of his weapon to this Sense Motive check as well, and if this Sense Motive check equals or exceeds the targets armor class, the attack deals double damage. If this check does not meet or exceed the targets armor class, then the attack fails and the disciple misses.",
+   "discipline": "Scarlet Throne",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Scarlet Duelist Attitude": {
+   "action": "1 swift action",
+   "description": "The force of will that a disciple of Scarlet Throne possesses is enough to protect him and guide his steps through battle, and his battle focus allows him to anticipate danger before it happens. By adopting this stance, the disciple may add +5 insight bonus to his Armor Class, CMD, and to his Initiative score.",
+   "discipline": "Scarlet Throne",
+   "duration": "Stance",
+   "level": 6,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Scarlet Einhander": {
+   "action": "1 swift action",
+   "description": "By adopting this stance, the disciple presents a slim profile to his foes, holding his weapon low and one-handed, and leads with his blade in an elegant and graceful manner, his strikes strong and his profile aiding him in defense. When wielding a melee weapon in one hand, the initiator presents a slim profile with strong offensive and defensive ability. The initiator gains a +2 shield bonus to his Armor Class and inflicts an additional 1d6 points of damage while in this stance. The shield bonus granted by this stance increases by +1 when the characters initiator level reaches 6th, and increases again by +1 at 12th and 18th initiator level. Upon reaching 10th initiator level, the bonus damage increases to 2d6.",
+   "discipline": "Scarlet Throne",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Scarlet Eyes Perception": {
+   "action": "1 swift action",
+   "description": "By watching his opponents defenses and waiting for the hole in them to open, the Scarlet Throne disciple strikes with the speed of the gods. The initiators next melee attack against that target is resolved as a touch attack.",
+   "discipline": "Scarlet Throne",
+   "duration": "Instantaneous",
+   "level": 3,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Scarlet Riposte": {
+   "action": "1 immediate action",
+   "description": "Within the focus of the disciples mind, pathways to victory form which he uses to sculpt and mold the outcome of the battle. When an enemys attack threatens to unravel these pathways, a supreme act of will can restore order to them. The disciple makes a Sense Motive check with a +4 competence bonus opposing his enemys melee attack roll. If successful, the attack is blocked and he may make an immediate counter attack against that opponent at his full attack bonus and inflict an additional 3d6 points of damage.",
+   "discipline": "Scarlet Throne",
+   "duration": "Instantaneous",
+   "level": 5,
+   "range": "Personal",
+   "type": "counter"
+  },
+  "Scything Strike": {
+   "action": "1 standard action",
+   "description": "The principles of the Scarlet Throne teach its disciples that every swing must be made with precision and excellence; no movement is wasted and no attack should be fruitless. The disciple may make a single attack against two adjacent enemies using the same attack roll and applying it to each target.",
+   "discipline": "Scarlet Throne",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Strike of Defeat": {
+   "action": "1 standard action",
+   "description": "A dead foe is a foe that can trouble you no more, is an old adage of the Scarlet Throne disciple. An injured foe is easy prey, but is still a foe nonetheless. By utilizing this swift executioners strike, the Scarlet Throne disciple removes a potential threat and obstacle from his path. The disciple makes an attack against a foe which if successful deals additional damage determined by the state of the enemys hit points. If the enemy has more than 75% of his total hit points, this strike does no additional damage. If the foe has less than 75% hit points, this strike inflicts an additional 4d6 points of damage. If the foe has less than 25% of his total hit points, this strike inflicts an additional 8d6 points of damage.",
+   "discipline": "Scarlet Throne",
+   "duration": "Instantaneous",
+   "level": 3,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Unfettered Movement": {
+   "action": "1 swift action",
+   "description": "The Scarlet Throne disciple is swift in battle and in his ability to go from one skirmish to the next to choose his next foe. By assuming this stance, the disciple gains a +10-ft. bonus to his base speed and gains a +4 dodge bonus to his armor class against attacks of opportunity.",
+   "discipline": "Scarlet Throne",
+   "duration": "Stance",
+   "level": 3,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Weeping Scarlet Razor": {
+   "action": "1 standard action",
+   "description": "Even the basest common soldier knows that there are places on a mans body where if he were to be stabbed, then he would bleed out in minutes. The Scarlet Throne disciple takes this knowledge and arms himself with his superior skill to utilize this arterial strike against his foes. The initiator makes a melee attack against a target creature, and if successful, this attack inflicts an additional 4d6 points of damage and the target begins to bleed profusely, inflicting 4 points of bleed damage per round until a successful Heal check DC 20 or a spell or effect that cures hit point damage has been administered to the target.",
+   "discipline": "Scarlet Throne",
+   "duration": "Special",
+   "level": 4,
+   "range": "Melee attack",
+   "type": "strike"
+  }
+ },
+ "maneuvers_known_list": [
+  2,
+  2,
+  2,
+  1,
+  1,
+  1
+ ],
+ "maneuvers_readied_list": [
+  0,
+  1,
+  2,
+  1,
+  1,
+  1
+ ],
+ "maneuvers_readied_names": [
+  [],
+  [
+   "Regal Blade"
+  ],
+  [
+   "Scarlet Eyes Perception",
+   "Strike of Defeat"
+  ],
+  [
+   "Weeping Scarlet Razor"
+  ],
+  [
+   "Scarlet Riposte"
+  ],
+  [
+   "Final Blow"
+  ]
+ ],
  "manifesters": [],
  "mannerisms": [
-  "Peers over glasses",
-  "Scratches head"
+  "Flexes muscles",
+  "Withdraws into oneself",
+  "Covers eyes",
+  "Cracks knuckles"
  ],
- "martial_disciplines": [],
+ "martial_disciplines": [
+  "Scarlet Throne"
+ ],
  "mini_alignment": "ng",
  "mod_char_sheet_var": false,
- "mt_feats": [],
+ "mt_feats": [
+  "Martial Training I (Scarlet Throne)",
+  "Martial Training III (Scarlet Throne)",
+  "Martial Training V (Scarlet Throne)"
+ ],
  "normal_feat_amount": 5,
  "older_brothers": " you have 0 older brothers",
- "older_sisters": " you have 0 older sisters",
+ "older_sisters": " you have 1 older sisters",
  "opposing_school": "N/A",
- "parents": "absent mother, loving father, raised in a wealthy household",
+ "parents": "loving mother, absent father, raised in a wealthy household",
  "personality_traits": [
-  "Hardworking",
-  "Optimistic",
-  "Cynic"
+  "Astute",
+  "Energetic",
+  "Chill"
  ],
- "platnium": 71.7,
+ "platnium": 96.5,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
    "changes": [
     {
-     "formula": "1",
+     "formula": "3",
      "operator": "add",
      "priority": 0,
-     "target": "skill.crf",
+     "target": "skill.hea",
      "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.crf",
-     "type": "competence"
-    }
-   ],
-   "contextNotes": [],
-   "description": "<p><em>Profession (Tinker's Lad) - rank 15/15. Associate skills (ranks 1/4/7/10): Use Magic Device, Perception, Knowledge (local), Sense Motive.</em></p><hr><p><strong>Calloused Grip (Ex)</strong></p><p>Years at the bench and forge have hardened your hands against splinters, sparks, and burns. You gain a +1 competence bonus on Craft checks, and you take no penalty on Craft or Profession checks made while working in hazardous conditions such as a hot forge, a rocking ship, or extreme cold.</p><hr><p><strong>Patient Mender (Ex)</strong></p><p>Given 1 hour and any scrap materials at hand, you can repair a broken (but not destroyed) object, restoring it to working order; the repair lasts 24 hours before the object becomes broken again unless properly fixed. Once per day this same repair can instead be permanent. You also gain a +2 competence bonus on Craft checks made to repair items.</p>",
-   "name": "Profession Rank 5: (Tinker's Lad)",
-   "uses": {
-    "maxFormula": "1",
-    "per": "day",
-    "value": null
-   }
-  },
-  {
-   "changes": [
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.crf",
-     "type": "competence"
-    }
-   ],
-   "contextNotes": [],
-   "description": "<p><em>Profession (Tinker's Lad) - rank 15/15.</em></p><hr><p><strong>Sturdy Workbench (Ex)</strong></p><p>With a proper bench, vise, and your own tools, you work without error. You gain a +2 competence bonus on Craft checks, and whenever you fail a Craft check by less than 5 while at your workbench, you do not ruin the raw materials.</p><hr><p><strong>Master Craftsman (Ex)</strong></p><p>You can use your Craft or Profession ranks in place of the caster-level prerequisite for item creation feats, and you craft masterwork goods in half the normal time and cost.</p><hr><p><strong>Honest Materials (Ex)</strong></p><p>Objects you craft gain hardness equal to half your ranks in the relevant Craft skill (minimum +1) and +2 hit points per inch of thickness. Once per day you can spend 1 minute reinforcing a held object to grant it this same benefit for 24 hours.</p>",
-   "name": "Profession Rank 15: (Tinker's Lad)",
-   "uses": {
-    "maxFormula": "1",
-    "per": "day",
-    "value": null
-   }
-  },
-  {
-   "changes": [
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.int",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.blf",
-     "type": "competence"
-    }
-   ],
-   "contextNotes": [],
-   "description": "<p><em>Profession (Blood Cultist) - rank 14/10. Associate skills (ranks 1/4/7/10): Handle Animal, Appraise, Perception, Sleight of Hand.</em></p><hr><p><strong>Cantrips of the Coven (Sp)</strong></p><p>Druid can cast bleed, detect magic, touch of fatigue, and putrefy food and drink at will as spell-like abilities (caster level equal to their character level).</p><hr><p><strong>Cultist's Cant (Ex)</strong></p><p>Schooled in whispered creeds and secret signs, Druid sways the faithful and the fearful alike. Grants a +2 competence bonus on Intimidate checks and a +2 competence bonus on Bluff checks made to spread rumor or conceal heresy.</p>",
-   "name": "Profession Rank 5: (Blood Cultist)",
-   "uses": null
-  },
-  {
-   "changes": [
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.dip",
-     "type": "untyped"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.int",
-     "type": "untyped"
     }
    ],
    "contextNotes": [
     {
-     "target": "attack",
-     "text": "+3 circumstance on Bluff to hide cheating at games of chance"
+     "target": "fort",
+     "text": "+2 vs disease, poison, and nausea"
     }
    ],
-   "description": "<p><em>Profession (Burglar) - rank 12/10. Associate skills (ranks 1/4/7/10): Diplomacy, Knowledge (local), Craft, Perception.</em></p><hr><p><strong>Persuasive (Ex)</strong></p><p>You sway attitudes and intimidate with ease. You gain a +2 bonus on Diplomacy and Intimidate checks; if you have 10 or more ranks in either skill, that bonus increases to +4 for it.</p><hr><p><strong>Loaded Dice (Ex)</strong></p><p>The Druid keeps weighted dice and marked cards close at hand, and knows how to slip them into play. They gain a <strong>+3</strong> circumstance bonus on Sleight of Hand checks made to cheat at games of chance and on Bluff checks to avoid being caught doing so.</p>",
-   "name": "Profession Rank 5: (Burglar)",
+   "description": "<p><em>Profession (Equine Dentist) - rank 15/15. Associate skills (ranks 1/4/7/10): Appraise, Perception, Sense Motive, Use Magic Device.</em></p><hr><p><strong>Steady Hands (Ex)</strong></p><p>Years of delicate work have given you unflinching control. You gain a +3 competence bonus on Heal checks, and you never take a penalty on Heal checks for working in poor conditions or under duress.</p><hr><p><strong>Disease Ward (Ex)</strong></p><p>Constant exposure to contagion has toughened your constitution. You gain a +2 resistance bonus on Fortitude saves against disease, poison, and nausea.</p>",
+   "name": "Profession Rank 5: (Equine Dentist)",
+   "uses": null
+  },
+  {
+   "changes": [],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Equine Dentist) - rank 15/15.</em></p><hr><p><strong>Antivenom Expert (Sp)</strong></p><p>You have a near-perfect understanding of toxins. You can cast delay poison at will on touch, and once per day each you can cast lesser restoration and remove sickness as spell-like abilities (caster level equal to your character level).</p><hr><p><strong>Poultice Maker (Sp)</strong></p><p>You can prepare a healing poultice that, when applied as a standard action, acts as cure light wounds (caster level equal to your character level). You can apply such a poultice a number of times per day equal to 3 + your Wisdom modifier.</p><hr><p><strong>Healer's Touch (Sp)</strong></p><p>You can cast cure light wounds three times per day as a spell-like ability, and you can remove the fatigued, shaken, or sickened condition from a creature by touch (caster level equal to your character level).</p>",
+   "name": "Profession Rank 15: (Equine Dentist)",
    "uses": null
   },
   {
@@ -1066,34 +1220,28 @@
      "formula": "2",
      "operator": "add",
      "priority": 0,
-     "target": "skill.ste",
-     "type": "untyped"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.acr",
-     "type": "untyped"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.per",
-     "type": "insight"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.sen",
-     "type": "insight"
+     "target": "skill.kar",
+     "type": "competence"
     }
    ],
    "contextNotes": [],
-   "description": "<p><em>Profession (Iron Body Brother) - rank 5/10. Associate skills (ranks 1/4/7/10): Perception, Diplomacy.</em></p><hr><p><strong>Quiet Step (Su)</strong></p><p>You move with the silence of falling snow. You gain a +2 untyped bonus on Stealth and Acrobatics checks, and you leave no trace of your passing that ordinary tracking could follow.</p><hr><p><strong>Inner Clarity (Su)</strong></p><p>A focused mind perceives what hurried eyes miss. You gain a +2 insight bonus on Perception and Sense Motive checks, and you are never caught flat-footed merely for being surprised by a foe you have already noticed.</p>",
-   "name": "Profession Rank 5: (Iron Body Brother)",
+   "description": "<p><em>Profession (Wizard) - rank 10/10. Associate skills (ranks 1/4/7/10): Profession, Appraise, Handle Animal, Use Magic Device.</em></p><hr><p><strong>Apprentice Spellcasting (Sp)</strong></p><p>Choose two spells of 1st or 2nd level from the wizard/sorcerer spell list (such as mage armor, shield, or magic missile). You can cast each twice per day as a spell-like ability (caster level equal to your character level).</p><hr><p><strong>Mage Armor (Sp)</strong></p><p>Once per day the Druid can sheathe themselves in <strong>mage armor</strong>, conjuring a tangible field of force that wards off blows for the better part of a day.</p><hr><p><strong>Scholar's Insight (Ex)</strong></p><p>Years bent over grimoires sharpen the Druid's recall of arcane lore. They gain a <strong>+2 competence</strong> bonus on Knowledge (arcana) checks, and may always take 10 on Knowledge (arcana) even when distracted or threatened.</p>",
+   "name": "Profession Rank 5: (Wizard)",
+   "uses": null
+  },
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.apr",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Torchbearer) - rank 8/10. Associate skills (ranks 1/4/7/10): Sleight of Hand, Knowledge (local), Profession.</em></p><hr><p><strong>Scavenger's Knack (Ex)</strong></p><p>You make do with what the road leaves behind. You gain a +2 competence bonus on Appraise checks and on Survival checks to forage food and water in the wild.</p><hr><p><strong>Roadworn Feet (Ex)</strong></p><p>You have walked farther than most folk ever will. You can hustle for 1 additional hour each day before risking nonlethal damage, and you gain a +2 competence bonus on Constitution checks to avoid fatigue from a forced march.</p>",
+   "name": "Profession Rank 5: (Torchbearer)",
    "uses": null
   }
  ],
@@ -1112,196 +1260,147 @@
  "profession_pool": 39,
  "profession_ranks": [
   {
-   "ability_theme": "craft",
-   "ability_tier": "bad",
-   "associate_skills": [
-    "Use Magic Device",
-    "Perception",
-    "Knowledge (local)",
-    "Sense Motive"
-   ],
-   "cap": 15,
-   "name": "Tinker's Lad",
-   "rank15_abilities": [
-    {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.crf",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>With a proper bench, vise, and your own tools, you work without error. You gain a +2 competence bonus on Craft checks, and whenever you fail a Craft check by less than 5 while at your workbench, you do not ruin the raw materials.</p>",
-     "name": "Sturdy Workbench (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>You can use your Craft or Profession ranks in place of the caster-level prerequisite for item creation feats, and you craft masterwork goods in half the normal time and cost.</p>",
-     "name": "Master Craftsman (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>Objects you craft gain hardness equal to half your ranks in the relevant Craft skill (minimum +1) and +2 hit points per inch of thickness. Once per day you can spend 1 minute reinforcing a held object to grant it this same benefit for 24 hours.</p>",
-     "name": "Honest Materials (Ex)",
-     "uses": {
-      "maxFormula": "1",
-      "per": "day",
-      "value": null
-     }
-    }
-   ],
-   "rank5_abilities": [
-    {
-     "changes": [
-      {
-       "formula": "1",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.crf",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>Years at the bench and forge have hardened your hands against splinters, sparks, and burns. You gain a +1 competence bonus on Craft checks, and you take no penalty on Craft or Profession checks made while working in hazardous conditions such as a hot forge, a rocking ship, or extreme cold.</p>",
-     "name": "Calloused Grip (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.crf",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>Given 1 hour and any scrap materials at hand, you can repair a broken (but not destroyed) object, restoring it to working order; the repair lasts 24 hours before the object becomes broken again unless properly fixed. Once per day this same repair can instead be permanent. You also gain a +2 competence bonus on Craft checks made to repair items.</p>",
-     "name": "Patient Mender (Ex)",
-     "uses": {
-      "maxFormula": "1",
-      "per": "day",
-      "value": null
-     }
-    }
-   ],
-   "ranks": 15,
-   "skill_label": "Profession (Tinker's Lad)"
-  },
-  {
-   "ability_theme": "occult",
+   "ability_theme": "medical",
    "ability_tier": "average",
    "associate_skills": [
-    "Handle Animal",
     "Appraise",
     "Perception",
-    "Sleight of Hand"
+    "Sense Motive",
+    "Use Magic Device"
    ],
-   "cap": 10,
-   "name": "Blood Cultist",
-   "rank15_abilities": [],
-   "rank5_abilities": [
+   "cap": 15,
+   "name": "Equine Dentist",
+   "rank15_abilities": [
     {
      "changes": [],
      "contextNotes": [],
-     "desc": "<p>Druid can cast bleed, detect magic, touch of fatigue, and putrefy food and drink at will as spell-like abilities (caster level equal to their character level).</p>",
-     "name": "Cantrips of the Coven (Sp)",
-     "uses": null
+     "desc": "<p>You have a near-perfect understanding of toxins. You can cast delay poison at will on touch, and once per day each you can cast lesser restoration and remove sickness as spell-like abilities (caster level equal to your character level).</p>",
+     "name": "Antivenom Expert (Sp)",
+     "uses": {
+      "maxFormula": "2",
+      "per": "day",
+      "value": null
+     }
     },
     {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.int",
-       "type": "competence"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.blf",
-       "type": "competence"
-      }
-     ],
+     "changes": [],
      "contextNotes": [],
-     "desc": "<p>Schooled in whispered creeds and secret signs, Druid sways the faithful and the fearful alike. Grants a +2 competence bonus on Intimidate checks and a +2 competence bonus on Bluff checks made to spread rumor or conceal heresy.</p>",
-     "name": "Cultist's Cant (Ex)",
-     "uses": null
+     "desc": "<p>You can prepare a healing poultice that, when applied as a standard action, acts as cure light wounds (caster level equal to your character level). You can apply such a poultice a number of times per day equal to 3 + your Wisdom modifier.</p>",
+     "name": "Poultice Maker (Sp)",
+     "uses": {
+      "maxFormula": "3 + @abilities.wis.mod",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>You can cast cure light wounds three times per day as a spell-like ability, and you can remove the fatigued, shaken, or sickened condition from a creature by touch (caster level equal to your character level).</p>",
+     "name": "Healer's Touch (Sp)",
+     "uses": {
+      "maxFormula": "3",
+      "per": "day",
+      "value": null
+     }
     }
    ],
-   "ranks": 14,
-   "skill_label": "Profession (Blood Cultist)"
-  },
-  {
-   "ability_theme": "skill",
-   "ability_tier": "average",
-   "associate_skills": [
-    "Diplomacy",
-    "Knowledge (local)",
-    "Craft",
-    "Perception"
-   ],
-   "cap": 10,
-   "name": "Burglar",
-   "rank15_abilities": [],
    "rank5_abilities": [
     {
      "changes": [
       {
-       "formula": "2",
+       "formula": "3",
        "operator": "add",
        "priority": 0,
-       "target": "skill.dip",
-       "type": "untyped"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.int",
-       "type": "untyped"
+       "target": "skill.hea",
+       "type": "competence"
       }
      ],
      "contextNotes": [],
-     "desc": "<p>You sway attitudes and intimidate with ease. You gain a +2 bonus on Diplomacy and Intimidate checks; if you have 10 or more ranks in either skill, that bonus increases to +4 for it.</p>",
-     "name": "Persuasive (Ex)",
+     "desc": "<p>Years of delicate work have given you unflinching control. You gain a +3 competence bonus on Heal checks, and you never take a penalty on Heal checks for working in poor conditions or under duress.</p>",
+     "name": "Steady Hands (Ex)",
      "uses": null
     },
     {
      "changes": [],
      "contextNotes": [
       {
-       "target": "attack",
-       "text": "+3 circumstance on Bluff to hide cheating at games of chance"
+       "target": "fort",
+       "text": "+2 vs disease, poison, and nausea"
       }
      ],
-     "desc": "<p>The Druid keeps weighted dice and marked cards close at hand, and knows how to slip them into play. They gain a <strong>+3</strong> circumstance bonus on Sleight of Hand checks made to cheat at games of chance and on Bluff checks to avoid being caught doing so.</p>",
-     "name": "Loaded Dice (Ex)",
+     "desc": "<p>Constant exposure to contagion has toughened your constitution. You gain a +2 resistance bonus on Fortitude saves against disease, poison, and nausea.</p>",
+     "name": "Disease Ward (Ex)",
      "uses": null
     }
    ],
-   "ranks": 12,
-   "skill_label": "Profession (Burglar)"
+   "ranks": 15,
+   "skill_label": "Profession (Equine Dentist)"
   },
   {
-   "ability_theme": "ki",
-   "ability_tier": "average",
+   "ability_theme": "arcane",
+   "ability_tier": "good",
    "associate_skills": [
-    "Perception",
-    "Diplomacy"
+    "Profession",
+    "Appraise",
+    "Handle Animal",
+    "Use Magic Device"
    ],
    "cap": 10,
-   "name": "Iron Body Brother",
+   "name": "Wizard",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Choose two spells of 1st or 2nd level from the wizard/sorcerer spell list (such as mage armor, shield, or magic missile). You can cast each twice per day as a spell-like ability (caster level equal to your character level).</p>",
+     "name": "Apprentice Spellcasting (Sp)",
+     "uses": {
+      "maxFormula": "4",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Once per day the Druid can sheathe themselves in <strong>mage armor</strong>, conjuring a tangible field of force that wards off blows for the better part of a day.</p>",
+     "name": "Mage Armor (Sp)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.kar",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Years bent over grimoires sharpen the Druid's recall of arcane lore. They gain a <strong>+2 competence</strong> bonus on Knowledge (arcana) checks, and may always take 10 on Knowledge (arcana) even when distracted or threatened.</p>",
+     "name": "Scholar's Insight (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 10,
+   "skill_label": "Profession (Wizard)"
+  },
+  {
+   "ability_theme": "wayfarer",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Sleight of Hand",
+    "Knowledge (local)",
+    "Profession"
+   ],
+   "cap": 10,
+   "name": "Torchbearer",
    "rank15_abilities": [],
    "rank5_abilities": [
     {
@@ -1310,54 +1409,60 @@
        "formula": "2",
        "operator": "add",
        "priority": 0,
-       "target": "skill.ste",
-       "type": "untyped"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.acr",
-       "type": "untyped"
+       "target": "skill.apr",
+       "type": "competence"
       }
      ],
      "contextNotes": [],
-     "desc": "<p>You move with the silence of falling snow. You gain a +2 untyped bonus on Stealth and Acrobatics checks, and you leave no trace of your passing that ordinary tracking could follow.</p>",
-     "name": "Quiet Step (Su)",
+     "desc": "<p>You make do with what the road leaves behind. You gain a +2 competence bonus on Appraise checks and on Survival checks to forage food and water in the wild.</p>",
+     "name": "Scavenger's Knack (Ex)",
      "uses": null
     },
     {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.per",
-       "type": "insight"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.sen",
-       "type": "insight"
-      }
-     ],
+     "changes": [],
      "contextNotes": [],
-     "desc": "<p>A focused mind perceives what hurried eyes miss. You gain a +2 insight bonus on Perception and Sense Motive checks, and you are never caught flat-footed merely for being surprised by a foe you have already noticed.</p>",
-     "name": "Inner Clarity (Su)",
+     "desc": "<p>You have walked farther than most folk ever will. You can hustle for 1 additional hour each day before risking nonlethal damage, and you gain a +2 competence bonus on Constitution checks to avoid fatigue from a forced march.</p>",
+     "name": "Roadworn Feet (Ex)",
      "uses": null
     }
    ],
-   "ranks": 5,
-   "skill_label": "Profession (Iron Body Brother)"
+   "ranks": 8,
+   "skill_label": "Profession (Torchbearer)"
+  },
+  {
+   "ability_theme": "wayfarer",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Sense Motive"
+   ],
+   "cap": 10,
+   "name": "Wayfarer's Lackey",
+   "rank15_abilities": [],
+   "rank5_abilities": [],
+   "ranks": 2,
+   "skill_label": "Profession (Wayfarer's Lackey)"
+  },
+  {
+   "ability_theme": "scholar",
+   "ability_tier": "average",
+   "associate_skills": [
+    "Appraise",
+    "Knowledge (local)"
+   ],
+   "cap": 10,
+   "name": "Ledger Clerk",
+   "rank15_abilities": [],
+   "rank5_abilities": [],
+   "ranks": 4,
+   "skill_label": "Profession (Ledger Clerk)"
   }
  ],
  "professions": [
-  "Tinker's Lad",
-  "Blood Cultist",
-  "Burglar",
-  "Iron Body Brother"
+  "Equine Dentist",
+  "Wizard",
+  "Torchbearer",
+  "Wayfarer's Lackey",
+  "Ledger Clerk"
  ],
  "racial_stats": {
   "cha": 0,
@@ -1369,53 +1474,53 @@
  },
  "region": "Tal-falko",
  "save_bases": {
-  "fort": 13,
-  "ref": 10,
-  "will": 7
+  "fort": 15,
+  "ref": 6,
+  "will": 9
  },
  "school": "N/A",
  "selected_traits": [
-  "Dim Seer",
-  "Captain's Blade",
-  "Undermarket Smuggler",
-  "Fast-Talker",
-  "Stealthy Escape",
-  "Unnatural Revenge",
-  "Comparative Religion",
-  "Airship Captain (Plane of Air)"
+  "Nature's Mimic",
+  "Commercial Savvy",
+  "Enduring Mutagen",
+  "Fools for Friends",
+  "Silvertongued Eunuch",
+  "Inexorable Authority",
+  "Dealmaker",
+  "Sound of Mind"
  ],
  "selected_traits_desc": [
   {
-   "description": "You gain a +2 trait bonus on Perception checks in dim light, and Perception is always a class skill for you.",
-   "name": "Dim Seer"
+   "description": "You gain a +1 trait bonus on all Knowledge (nature) checks, and Knowledge (nature) is always a class skill for you. You can make Knowledge (nature) checks pertaining to animals that correspond to your style feats untrained.",
+   "name": "Nature's Mimic"
   },
   {
-   "description": "While on board any vessel afloat on water, you gain a +1 trait bonus on Acrobatics and Climb checks. One of these skills (your choice) is always a class skill for you.",
-   "name": "Captain's Blade"
+   "description": "Whenever you buy from or sell to a merchant, you treat a settlement's Base Value and Purchase Limit as 10% higher.",
+   "name": "Commercial Savvy"
   },
   {
-   "description": "You gain a +1 trait bonus on Bluff and Sleight of Hand checks.",
-   "name": "Undermarket Smuggler"
+   "description": "The bonuses and penalties granted by your mutagens last for 1 additional minute per alchemist level.",
+   "name": "Enduring Mutagen"
   },
   {
-   "description": "You gain a +1 trait bonus on Bluff checks, and Bluff is always a class skill for you.",
-   "name": "Fast-Talker"
+   "description": "Whenever you perform the Aid Another action, or whenever an ally aids you in this manner, a successful check grants an additional +1 trait bonus to the check for which aid was being rendered. Additionally, as long as one of your friends is within 30 feet, you gain a +1 trait bonus on all saving throws against charm and compulsion effects.",
+   "name": "Fools for Friends"
   },
   {
-   "description": "When trying to escape manacles, rope, or other similar restraints (but not grapples or similar attacks), you may make a Sleight of Hand check instead of your Escape Artist modifier. If you free yourself, you gain a +2 trait bonus on Bluff checks to pretend that you are still bound.",
-   "name": "Stealthy Escape"
+   "description": "You gain a +1 trait bonus on Knowledge (nobility) and Diplomacy checks.",
+   "name": "Silvertongued Eunuch"
   },
   {
-   "description": "You gain a +2 trait bonus on all Intimidate checks against creatures of the animal, fey, or plant type, and Intimidate is always a class skill for you.",
-   "name": "Unnatural Revenge"
+   "description": "You gain a +2 trait bonus on Intimidate checks when enforcing or pronouncing a lawful judgment that you're legitimately deputed to enforce or pronounce.",
+   "name": "Inexorable Authority"
   },
   {
-   "description": "You gain a +1 trait bonus on Knowledge (religion) skill checks, and Knowledge (religion) becomes a class skill for you.",
-   "name": "Comparative Religion"
+   "description": "Once per week, when looking for an item with a price greater than the local community’s base value, make a DC 10 Diplomacy check; add 10 to the DC for each community size category between the current community and the community size with a base value sufficient for that item. Success means (with GM approval) you’re able to sell or purchase that item as if the local community were of sufficient size. Each additional attempt (successful or otherwise) in that community increases the DC by an additional +10.",
+   "name": "Dealmaker"
   },
   {
-   "description": "You gain a +2 trait bonus on Wisdom checks to move in a plane with subjective directional gravity (see planar rules) and a +2 trait bonus on driving checks (see the vehicle rules).",
-   "name": "Airship Captain (Plane of Air)"
+   "description": "You gain a +2 trait bonus on saving throws against mind-affecting effects.",
+   "name": "Sound of Mind"
   }
  ],
  "sheet_health": 124,
@@ -1427,80 +1532,61 @@
  "shield_name": " ",
  "shield_spell_failure": " ",
  "shield_weight": " ",
- "skill_rank_budget": 198,
+ "skill_rank_budget": 190,
  "skill_ranks": {
-  "acrobatics": 5,
-  "appraise": 0,
-  "bluff": 24,
+  "acrobatics": 9,
+  "appraise": 14,
+  "bluff": 8,
   "climb": 0,
-  "craft": 9,
-  "diplomacy": 9,
+  "craft": 10,
+  "diplomacy": 0,
   "disable device": 0,
-  "disguise": 10,
-  "escape artist": 7,
+  "disguise": 0,
+  "escape artist": 8,
   "fly": 0,
-  "handle animal": 1,
-  "heal": 12,
+  "handle animal": 9,
+  "heal": 3,
   "intimidate": 0,
-  "knowledge arcana": 17,
+  "knowledge arcana": 0,
   "knowledge dungeoneering": 0,
-  "knowledge engineering": 3,
-  "knowledge geography": 2,
-  "knowledge history": 7,
+  "knowledge engineering": 11,
+  "knowledge geography": 25,
+  "knowledge history": 8,
   "knowledge local": 0,
   "knowledge nature": 0,
-  "knowledge nobility": 0,
+  "knowledge nobility": 5,
   "knowledge planes": 0,
-  "knowledge religion": 0,
-  "linguistics": 14,
-  "perception": 4,
-  "perform": 11,
-  "profession": 7,
-  "ride": 8,
+  "knowledge religion": 9,
+  "linguistics": 4,
+  "perception": 13,
+  "perform": 8,
+  "profession": 0,
+  "ride": 12,
   "sense motive": 0,
-  "sleight of hand": 19,
-  "spellcraft": 11,
-  "stealth": 0,
+  "sleight of hand": 13,
+  "spellcraft": 4,
+  "stealth": 8,
   "survival": 0,
-  "swim": 18,
+  "swim": 9,
   "use magic device": 0
  },
  "skill_unlock": {
-  "base_skill": "knowledge",
-  "ranks": 3,
-  "skill": "Knowledge (engineering)",
+  "base_skill": "ride",
+  "ranks": 12,
+  "skill": "Ride",
   "unlock": {
-   "10": "After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.",
-   "15": "You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.",
-   "20": "You can roll twice and take the better result on Knowledge checks.",
-   "5": "You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill."
+   "10": "When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.",
+   "15": "While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.",
+   "20": "Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.",
+   "5": "Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted."
   },
-  "unlock_html": "<h2>Knowledge (engineering)</h2><p><strong>5 Ranks</strong>: You gain one additional piece of useful information for every 5 ranks you possess in that Knowledge skill.</p><p><strong>10 Ranks</strong>: After identifying a creature you gain a +1 competence bonus (increasing per 5 ranks) on attack rolls, opposed checks, skill checks, and caster level checks against creatures of that kind for 1 minute.</p><p><strong>15 Ranks</strong>: You can reroll a failed Knowledge check at a -10 penalty, and the competence bonus also applies to saving throws against that creature type's special abilities.</p><p><strong>20 Ranks</strong>: You can roll twice and take the better result on Knowledge checks.</p>"
+  "unlock_html": "<h2>Ride</h2><p><strong>5 Ranks</strong>: Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted.</p><p><strong>10 Ranks</strong>: When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.</p><p><strong>15 Ranks</strong>: While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.</p><p><strong>20 Ranks</strong>: Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.</p>"
  },
  "specialty_schools": [
-  "illusion",
-  "transmutation"
+  "transmutation",
+  "enchantment"
  ],
  "spell_changes_dict": {
-  "Magic Fang": {
-   "changes": [
-    {
-     "formula": "1",
-     "operator": "add",
-     "priority": 0,
-     "target": "attack",
-     "type": "enhancement"
-    },
-    {
-     "formula": "1",
-     "operator": "add",
-     "priority": 0,
-     "target": "wdamage",
-     "type": "enhancement"
-    }
-   ],
-   "contextNotes": []
-  },
   "Marid's Mastery": {
    "changes": [
     {
@@ -1524,112 +1610,60 @@
  "spell_list_choose_from": [
   [
    "Chameleon Scales",
-   "Detect Poison",
+   "Create Water",
    "Flare",
    "Mending",
    "Purify Food and Drink",
    "Virtue"
   ],
   [
-   "Detect Aberration",
-   "Entangle",
-   "Expeditious Excavation",
-   "Ferment",
-   "Frostbite",
-   "Goodberry",
-   "Ironbloom Sprouts",
-   "Magic Fang",
+   "Abstemiousness",
+   "Acid Maw",
+   "Alter Winds",
+   "Ant Haul",
+   "Call Animal",
    "Marid's Mastery",
-   "Strong Wings",
-   "Touch of the Sea"
+   "Snow Shape"
   ],
   [
-   "Fungal Blisters",
+   "Harmless Form",
    "Huntmaster's Spear",
-   "Masterwork Transformation",
-   "Quick Change",
+   "Lockjaw",
    "Sea Steed",
-   "Steal Breath",
-   "Stone Call",
-   "Venomous Bite"
-  ],
-  [
-   "Clear Grove",
-   "Deeper Darkness",
-   "Heatstroke",
-   "Hunter's Friend",
-   "Ignoble Form",
-   "Sebaceous Twin",
-   "Share Glory"
+   "Soften Earth and Stone",
+   "Spider Climb",
+   "Wartrain Mount"
   ]
  ],
  "spell_list_choose_from_dict": [
   [
    "Chameleon Scales",
-   "Detect Poison",
+   "Create Water",
    "Flare",
    "Mending",
    "Purify Food and Drink",
    "Virtue"
   ],
   [
-   "Detect Aberration",
-   "Entangle",
-   "Expeditious Excavation",
-   "Ferment",
-   "Frostbite",
-   "Goodberry",
-   "Ironbloom Sprouts",
-   "Magic Fang",
+   "Abstemiousness",
+   "Acid Maw",
+   "Alter Winds",
+   "Ant Haul",
+   "Call Animal",
    "Marid's Mastery",
-   "Strong Wings",
-   "Touch of the Sea"
+   "Snow Shape"
   ],
   [
-   "Fungal Blisters",
+   "Harmless Form",
    "Huntmaster's Spear",
-   "Masterwork Transformation",
-   "Quick Change",
+   "Lockjaw",
    "Sea Steed",
-   "Steal Breath",
-   "Stone Call",
-   "Venomous Bite"
-  ],
-  [
-   "Clear Grove",
-   "Deeper Darkness",
-   "Heatstroke",
-   "Hunter's Friend",
-   "Ignoble Form",
-   "Sebaceous Twin",
-   "Share Glory"
+   "Soften Earth and Stone",
+   "Spider Climb",
+   "Wartrain Mount"
   ]
  ],
  "spell_riders_dict": {
-  "Entangle": {
-   "attack": null,
-   "riders": [
-    "Range: [[400 + 40*@spells.primary.cl.total]] ft; Save: Reflex DC [[ 10 + @slvl + @castMod ]] partial (see text) — target gains the entangled condition; creatures that succeed at the initial save can move normally but must save again at the end of the caster's turn if they remain in the area; creatures that move into the area must save immediately or end their movement entangled; entangled creatures can attempt to break free as a move action with a Strength or Escape Artist check (DC equal to the spell's save DC); the entire area is difficult terrain for the duration; if the plants bear thorns, creatures take [[1]] point of damage each time they fail a save against the spell or fail a check to break free; [[40]]-ft.-radius spread; spell resistance: no"
-   ],
-   "save": {
-    "dc": "",
-    "description": "partial (see text) — target gains the entangled condition",
-    "harmless": false,
-    "type": "reflex"
-   }
-  },
-  "Ferment": {
-   "attack": null,
-   "riders": [
-    "Range: touch; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates (object); to affect a magic liquid, you must succeed at a caster level check (DC = [[10]] + the item's level), or for a poison, a caster level check against the poison's save DC, or the spell fails; the liquid takes on a flavor of your choosing without altering its effect on the imbiber; an imbiber who fails the Fortitude save takes a -[[2]] penalty on attack rolls, saves, ability checks, and skill checks for the remaining duration of the spell; the imbiber still experiences the liquid's normal effects, such as poisons or potions; the DC of any skill check made to identify the affected liquid or poison increases by [[5]]; spell resistance: yes (object)"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates (object)",
-    "harmless": false,
-    "type": "fortitude"
-   }
-  },
   "Flare": {
    "attack": null,
    "riders": [
@@ -1642,269 +1676,206 @@
     "type": "fortitude"
    }
   },
-  "Frostbite": {
+  "Snow Shape": {
    "attack": null,
    "riders": [
-    "your melee touch attack deals [[ 1d6 + @spells.primary.cl.total ]] nonlethal cold damage; target becomes fatigued, and the fatigued condition ends when the target recovers from the nonlethal damage; this spell cannot make a creature exhausted even if it is already fatigued; you can use this melee touch attack up to [[ @spells.primary.cl.total ]] times per casting; spell resistance: yes"
-   ],
-   "save": null
-  },
-  "Heatstroke": {
-   "attack": null,
-   "riders": [
-    "Save: Fortitude DC [[ 10 + @slvl + @castMod ]] partial; ranged touch attack; on a hit, deals [[1d4]] points of nonlethal damage and causes the target to suffer from heatstroke, otherwise functioning as ray of exhaustion; characters wearing heavy clothing or armor of any sort take a -[[4]] penalty on their saves against this effect; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "partial",
-    "harmless": false,
-    "type": "fortitude"
-   }
-  },
-  "Sebaceous Twin": {
-   "attack": null,
-   "riders": [
-    "Range: touch; a half-formed parasitic clone of the target bursts from its midsection and dangles from its body, imposing a -[[2]] penalty on Acrobatics and Climb checks for the duration; at the start of the target's turn each round, it must succeed at a Fortitude save DC [[ 10 + @slvl + @castMod ]] or take [[1]] point of Constitution damage and be sickened for that round as the twin siphons its blood; each time the target receives any healing, magical or otherwise, the spell's duration is extended by [[1]] round; each attack that deals damage to the target reduces the duration by [[1]] round; if the duration reaches [[0]] rounds in this way, the twin is violently excised from the target's body, and the target takes [[1d6]] points of bleed damage (which can be healed as normal); the effect of this spell counts as a disease effect with a DC equal to the spell's saving throw DC; spell resistance: yes"
-   ],
-   "save": null
-  },
-  "Steal Breath": {
-   "attack": null,
-   "riders": [
-    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates; see text; if the target fails its save, it takes [[2d6]] points of damage and cannot speak, use breath weapons, or do anything else requiring breathing, as a visible line of swirling air leaves the target's mouth and enters yours; if, during the duration, the target moves out of range or line of effect to you, the spell immediately ends; has no effect on creatures that do not need to breathe air; lasts [[1]] round; spell resistance: yes"
-   ],
-   "save": {
-    "dc": "",
-    "description": "negates; see text",
-    "harmless": false,
-    "type": "fortitude"
-   }
-  },
-  "Stone Call": {
-   "attack": null,
-   "riders": [
-    "Range: [[100 + 10*@spells.primary.cl.total]] ft; [[2d6]] points of bludgeoning damage to every creature in the area, occurring only once, when the spell is cast; for the remainder of the duration, the debris covers the ground, making the entire area difficult terrain; at the end of the duration, the rocks disappear, leaving no aftereffects other than the initial damage; lasts [[@spells.primary.cl.total]] rounds; spell resistance: no"
+    "Range: touch; you can form a mass of snow into any shape as per stone shape, though fine details usually aren't possible; a successful Craft (weapons) check (DC as normally listed for that skill, made by you at the time of casting) allows you to create a bladed weapon instead; a failed check means the spell is still cast, but the weapon created is malformed and useless; this spell can only be used to craft weapons, not more precise tools or elaborate armor; the created item solidifies into super-hard ice with hardness [[5]] and [[10]] hit points per inch of thickness, and takes double damage from fire; anyone using an ice weapon takes a -[[2]] penalty on attacks due to its slippery, unwieldy nature, but the weapon deals [[1]] additional point of cold damage; the weapon lasts [[24]] hours before melting into uselessness; spell resistance: no"
    ],
    "save": null
   }
  },
  "spellbooks": [
   {
-   "capped_level": 6,
-   "casting_level_num": 6,
+   "capped_level": 4,
+   "casting_level_num": 4,
    "casting_level_string": "high",
    "casting_stat": "wis",
    "display": "Druid",
    "divine": true,
-   "highest_spell_known": 3,
-   "level": 6,
+   "highest_spell_known": 2,
+   "level": 4,
    "name": "druid",
    "spell_list_choose_from": [
     [
      "Chameleon Scales",
-     "Detect Poison",
+     "Create Water",
      "Flare",
      "Mending",
      "Purify Food and Drink",
      "Virtue"
     ],
     [
-     "Detect Aberration",
-     "Entangle",
-     "Expeditious Excavation",
-     "Ferment",
-     "Frostbite",
-     "Goodberry",
-     "Ironbloom Sprouts",
-     "Magic Fang",
+     "Abstemiousness",
+     "Acid Maw",
+     "Alter Winds",
+     "Ant Haul",
+     "Call Animal",
      "Marid's Mastery",
-     "Strong Wings",
-     "Touch of the Sea"
+     "Snow Shape"
     ],
     [
-     "Fungal Blisters",
+     "Harmless Form",
      "Huntmaster's Spear",
-     "Masterwork Transformation",
-     "Quick Change",
+     "Lockjaw",
      "Sea Steed",
-     "Steal Breath",
-     "Stone Call",
-     "Venomous Bite"
-    ],
-    [
-     "Clear Grove",
-     "Deeper Darkness",
-     "Heatstroke",
-     "Hunter's Friend",
-     "Ignoble Form",
-     "Sebaceous Twin",
-     "Share Glory"
+     "Soften Earth and Stone",
+     "Spider Climb",
+     "Wartrain Mount"
     ]
    ],
    "spells_known_list": [],
    "spells_per_day_list": [
     6,
-    10,
     7,
-    6
+    7
    ],
    "spells_prepared_per_level": [
     6,
-    11,
-    8,
+    7,
     7
    ]
   },
   {
-   "capped_level": 6,
-   "casting_level_num": 3,
+   "capped_level": 4,
+   "casting_level_num": 4,
+   "casting_level_string": "mid",
+   "casting_stat": "int",
+   "display": "Magus",
+   "divine": false,
+   "highest_spell_known": 2,
+   "level": 4,
+   "name": "magus",
+   "spell_list_choose_from": [
+    [
+     "Daze",
+     "Detect Fiendish Presence",
+     "Flare",
+     "Mage Hand",
+     "Open/Close",
+     "Read Magic"
+    ],
+    [
+     "Coin Shot",
+     "Emblazon Crest",
+     "Gorum's Armor",
+     "Unerring Weapon",
+     "Wave Shield"
+    ],
+    [
+     "Diminish Resistance",
+     "Extreme Flexibility"
+    ]
+   ],
+   "spells_known_list": [
+    6,
+    5,
+    2
+   ],
+   "spells_per_day_list": [
+    5,
+    4,
+    1
+   ],
+   "spells_prepared_per_level": [
+    5,
+    4,
+    1
+   ]
+  },
+  {
+   "capped_level": 4,
+   "casting_level_num": 1,
    "casting_level_string": "low",
    "casting_stat": "wis",
    "display": "Ranger",
    "divine": true,
    "highest_spell_known": 1,
-   "level": 6,
+   "level": 4,
    "name": "ranger",
    "spell_list_choose_from": [
     [
-     "Batrachian Surge",
-     "Cheetah's Sprint",
-     "Dancing Lantern",
+     "Aspect of the Falcon",
+     "Call Animal",
+     "Calm Animals",
+     "Compel Hostility",
      "Entangle",
-     "Gravity Bow",
-     "Huntmaster's Spear",
-     "Inner Focus",
+     "Keep Watch",
      "Longstrider",
-     "Magic Fang",
-     "Sculpted Cape",
-     "Stone Throwing",
-     "Underbrush Decoy"
+     "Marid's Mastery",
+     "Underbrush Decoy",
+     "Urban Grace"
     ]
    ],
    "spells_known_list": [],
    "spells_per_day_list": [
-    5,
-    12
+    11,
+    10
    ],
    "spells_prepared_per_level": [
-    12
-   ]
-  },
-  {
-   "capped_level": 2,
-   "casting_level_num": 2,
-   "casting_level_string": "mid",
-   "casting_stat": "wis",
-   "display": "Hunter",
-   "divine": true,
-   "highest_spell_known": 1,
-   "level": 2,
-   "name": "hunter",
-   "spell_list_choose_from": [
-    [
-     "Chameleon Scales",
-     "Detect Poison",
-     "Flare",
-     "Light",
-     "Mending",
-     "Purify Food and Drink",
-     "Resistance",
-     "Virtue"
-    ],
-    [
-     "Aspect of the Nightingale",
-     "Dancing Lantern",
-     "Frostbite",
-     "Hobble",
-     "Huntmaster's Spear",
-     "Itching Curse",
-     "Keen Senses",
-     "Longstrider",
-     "Pass without Trace",
-     "Recharge Innate Magic",
-     "Refine Improvised Weapon",
-     "Strong Wings",
-     "Sun Metal",
-     "Windy Escape"
-    ]
-   ],
-   "spells_known_list": [],
-   "spells_per_day_list": [
-    8,
-    14
-   ],
-   "spells_prepared_per_level": [
-    8,
-    14
+    10
    ]
   }
  ],
  "spells_prepared_per_level": [
   6,
-  11,
-  8,
+  7,
   7
  ],
  "sphere_boons": [
   "Overcharge",
-  "Fortified Casting",
-  "Empowered Abilities"
+  "Fortified Casting"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
-  "Prepared Caster",
-  "Extended Casting",
   "Verbal Casting",
+  "Magical Signs",
+  "Focus Casting",
   "Painful Magic",
-  "Material Casting"
+  "Skilled Casting"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Prepared Caster",
-  "Extended Casting",
   "Verbal Casting",
+  "Magical Signs",
+  "Focus Casting",
   "Painful Magic",
-  "Material Casting",
+  "Skilled Casting",
   "Overcharge",
-  "Fortified Casting",
-  "Empowered Abilities"
+  "Fortified Casting"
  ],
  "spheres_chosen": [],
- "stances_chosen": [],
+ "stances_chosen": [
+  "Scarlet Einhander",
+  "Unfettered Movement",
+  "Scarlet Duelist Attitude",
+  "Circular Stance"
+ ],
  "story_feat_tax_dict": {},
  "story_feats": [
-  "Mechanical Magician",
-  "Empower Spell",
-  "Stealthy"
+  "Ability Focus (malefactions)",
+  "Combat Medic",
+  "Arcane Vendetta"
  ],
  "str": 8,
- "teamwork_feat_labels": [],
- "teamwork_feats": 0,
+ "teamwork_feat_labels": [
+  "Samurai 1"
+ ],
+ "teamwork_feats": [
+  "Secret Signs"
+ ],
  "total_level": 14,
  "total_rolled_hp": 116,
- "trainer_calibers": [
-  2
- ],
- "trainer_feat_labels": [
-  "(Trainer 1)",
-  "(Trainer 1)"
- ],
- "trainer_feat_tax_dict": {
-  "Brew Potion": [
-   "create sanguine elixir"
-  ]
- },
- "trainer_feats": [
-  "Brew Potion",
-  "Swarm Scatter"
- ],
+ "trainer_calibers": [],
+ "trainer_feat_labels": [],
+ "trainer_feat_tax_dict": {},
+ "trainer_feats": [],
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],
- "weapon_name": "Light mace",
- "weight_number": 224,
- "wis": 21,
- "younger_brothers": " you have 0 younger brothers",
+ "weapon_name": "Traveling kettle",
+ "weight_number": 149,
+ "wis": 18,
+ "younger_brothers": " you have 1 younger brothers",
  "younger_sisters": " you have 0 younger sisters"
 }

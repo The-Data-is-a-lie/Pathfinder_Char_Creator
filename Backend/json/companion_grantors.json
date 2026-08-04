@@ -67,6 +67,16 @@
       "choice": { "odds": 70, "on_win": "granted", "on_loss": "bonded_object" }
     },
     {
+      "grantor": "adept",
+      "creature_type": "familiar",
+      "level_gained": 2,
+      "effective_level": "level",
+      "conditional": null,
+      "species_pool": ["familiar"],
+      "species_data": "familiar_choices.json (not built yet -- resolver emits nothing)",
+      "choice": null
+    },
+    {
       "grantor": "sorcerer",
       "creature_type": "familiar",
       "level_gained": 1,
