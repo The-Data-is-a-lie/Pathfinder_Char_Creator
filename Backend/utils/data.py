@@ -156,7 +156,25 @@ divine_casters = ['antipaladin', 'cleric', 'druid', 'oracle', 'hunter' ,'inquisi
 #caster spells per day progression
 
 #must match the same order as the weapon_groups_region section
+# THE CANONICAL SPELLINGS. These are the keys of first_names_regions.json / last_names_regions.json /
+# campaign_lore.json, and what `util.py::region_chooser` stores on the character and the payload
+# emits. `validate_name_data.py` fails if this list and those files ever disagree.
 regions = ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"]
+
+# Region names a CLIENT sends that are not a canonical spelling, keyed by slug (alphanumerics only,
+# lowercased) so any casing or punctuation variant of the alias resolves too. `region_chooser`'s
+# slug match already handles pure spelling drift -- 'Dust Cairn' -> 'Dust-Cairn', 'Tal-Falko' ->
+# 'Tal-falko' -- so only a genuinely DIFFERENT name needs a row here.
+#
+# This exists because clients are not upgradable in lockstep: the Foundry module ships on its own
+# release cycle (button.js sends 'Grundykin Damplands' today) and a browser's saved form data keeps
+# sending whatever it stored. In-repo clients send canonical keys; this is the shim for the rest.
+#
+# NOT the same thing as campaign_lore.json's per-region `aliases`, which are prose misspellings for
+# lore lookup ('Tall-Fakho'), cover only 6 of the 10 regions, and are nobody's input contract.
+REGION_ALIASES = {
+    'grundykindamplands': 'Grundy',
+}
 races = options = ["Random", "Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Half-Orc", "Human", "Aasimar", "Catfolk", "Dhampir", "Drow", "Fetchling", "Goblin", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Wayang"]
 # eventually can add all these classes (especially for FoundryVtt)
 # ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"]
@@ -235,8 +253,9 @@ all_deities = {
 }
 
 # Region -> deities especially venerated there (campaign canon). Biases random deity selection
-# toward the setting's faiths. Keys are lowercased for case-insensitive lookup against the
-# title-cased character.region; only documented regions appear, others fall through to plain random.
+# toward the setting's faiths. Keys are lowercased and looked up case-insensitively -- that was
+# required when character.region was title-cased, and is now belt-and-braces since it holds the
+# canonical key; only documented regions appear, others fall through to plain random.
 region_deity_affinity = {
     "sojoria": ["Abadar", "Pharasma", "Cayden Cailean", "Desna", "Iomedae", "Shelyn"],
     "feyador": ["Tanagaar"],

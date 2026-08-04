@@ -1,6 +1,6 @@
 {
  "Total_HP": 140,
- "age_number": 31,
+ "age_number": 39,
  "alignment": "Lawful Neutral",
  "animal_companion": null,
  "appearance": [
@@ -79,7 +79,7 @@
   ]
  },
  "cha": 19,
- "character_full_name": "Drogo McKinley",
+ "character_full_name": "Pascal Bertin",
  "chosen_race": "Half-Orc",
  "chosen_spell_descriptor": [
   "electricity",
@@ -185,7 +185,7 @@
  ],
  "craft_type": "Trapmaking",
  "day_list": [],
- "deity_name": "Irori",
+ "deity_name": "Ragathiel",
  "dex": 15,
  "enhancement_effects_dict": {},
  "equip_descrip": {
@@ -275,7 +275,7 @@
  "flaw_feats": [
   "Escape Route"
  ],
- "formatted_bio": "Drogo McKinley\n- Alignment: Lawful Neutral\n- Deity: Irori\n- Race: Half-Orc\n- Class: Level 10 Warlord\n- Archetype: Archer\n- Tactics: Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.\n- Stat Focus: Cha\n- Disciplines: Solar Wind, Thrashing Dragon, Tempest Gale\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Greenwood Ranger (rank 10)\n- Profession: Watch Underling (rank 1)\n- Profession: Battlefield Carrion-Hauler (rank 10)\n- Profession: Pruner (rank 3)\n- Profession: Medium (rank 1)\n- Known for: Trapmaking\n- Training: An average trainer who taught them Haft Strike, Counter Maneuver (combat)\n- Training: A terrible trainer who taught them Cosmopolitan\n- Training: An average trainer who taught them Lunge, Dirgesinger\n- Training: A terrible (Path of War) trainer who taught them Thrashing Dragon Style\n\nFamily\n- Dead Mother\n- Absent Father\n- Adopted Into A Poor Family\n- 1 Younger Sister\n\nPersonality\n- Personality: Wise, Egotistic, Assertive, Just, Disruptive, Self-sufficient\n- Mannerisms: Grits teeth, Leans back\n- Flaws: Beady Eyes\n\nAppearance\n- Hair: Spiky Grey\n- Eyes: Amber\n- Build: Ragged",
+ "formatted_bio": "Pascal Bertin\n- Alignment: Lawful Neutral\n- Deity: Ragathiel\n- Race: Half-Orc\n- Class: Level 10 Warlord\n- Archetype: Archer\n- Tactics: Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.\n- Stat Focus: Cha\n- Disciplines: Solar Wind, Thrashing Dragon, Tempest Gale\n- Homeland: Tal-falko\n\nVocation\n- Profession: Greenwood Ranger (rank 10)\n- Profession: Watch Underling (rank 1)\n- Profession: Battlefield Carrion-Hauler (rank 10)\n- Profession: Pruner (rank 3)\n- Profession: Medium (rank 1)\n- Known for: Trapmaking\n- Training: An average trainer who taught them Haft Strike, Counter Maneuver (combat)\n- Training: A terrible trainer who taught them Cosmopolitan\n- Training: An average trainer who taught them Lunge, Dirgesinger\n- Training: A terrible (Path of War) trainer who taught them Thrashing Dragon Style\n\nFamily\n- Dead Mother\n- Absent Father\n- Adopted Into A Poor Family\n- 1 Younger Sister\n\nPersonality\n- Personality: Wise, Egotistic, Assertive, Just, Disruptive, Self-sufficient\n- Mannerisms: Grits teeth, Leans back\n- Flaws: Beady Eyes\n\nAppearance\n- Hair: Spiky Grey\n- Eyes: Amber\n- Build: Ragged",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 1004,
@@ -287,7 +287,7 @@
  "hair_type": [
   "Spiky"
  ],
- "height_number": "7'0\"",
+ "height_number": "6'10\"",
  "hero_points": 3,
  "homebrew_feat_desc_dict": {
   "Ability Focus (malefactions)": "You have a knack for potent, complex curses. increase the dc of your malefactions by 2.",
@@ -787,7 +787,7 @@
   "str": 0,
   "wis": 0
  },
- "region": "Tal-Falko",
+ "region": "Tal-falko",
  "save_bases": {
   "fort": 7,
   "ref": 3,
@@ -980,7 +980,7 @@
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],
  "weapon_name": "Phaleros",
- "weight_number": 289,
+ "weight_number": 272,
  "wis": 14,
  "younger_brothers": " you have 0 younger brothers",
  "younger_sisters": " you have 1 younger sisters"

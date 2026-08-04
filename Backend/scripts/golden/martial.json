@@ -1,6 +1,6 @@
 {
  "Total_HP": 160,
- "age_number": 45,
+ "age_number": 51,
  "alignment": "Lawful Good",
  "animal_companion": null,
  "appearance": [
@@ -100,7 +100,7 @@
   ]
  },
  "cha": 12,
- "character_full_name": "Crogth Thunderstrike",
+ "character_full_name": "Sébastien Dupuy",
  "chosen_race": "Human",
  "chosen_spell_descriptor": [
   "water"
@@ -264,7 +264,7 @@
  ],
  "craft_type": "Siege Engines",
  "day_list": [],
- "deity_name": "Torag",
+ "deity_name": "Erastil",
  "dex": 12,
  "enhancement_effects_dict": {
   "armor": {
@@ -491,7 +491,7 @@
   "Toughness",
   "Charge of the Righteous"
  ],
- "formatted_bio": "Crogth Thunderstrike\n- Alignment: Lawful Good\n- Deity: Torag\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: Man-at-Arms\n- Tactics: Fights the way it drilled: hold the line, strike the enemy in front of you, keep your shield up and your footing. No tricks, no gimmick -- just a professional doing soldier's work.\n- Stat Focus: Str\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Scullery Hand (rank 15)\n- Profession: Sellsword (rank 10)\n- Profession: Abbott (rank 6)\n- Known for: Siege Engines\n\nFamily\n- Absent Mother\n- Loving Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Straight Red\n- Eyes: Brown\n- Build: Knobby Knees",
+ "formatted_bio": "Sébastien Dupuy\n- Alignment: Lawful Good\n- Deity: Erastil\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: Man-at-Arms\n- Tactics: Fights the way it drilled: hold the line, strike the enemy in front of you, keep your shield up and your footing. No tricks, no gimmick -- just a professional doing soldier's work.\n- Stat Focus: Str\n- Homeland: Tal-falko\n\nVocation\n- Profession: Scullery Hand (rank 15)\n- Profession: Sellsword (rank 10)\n- Profession: Abbott (rank 6)\n- Known for: Siege Engines\n\nFamily\n- Absent Mother\n- Loving Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Straight Red\n- Eyes: Brown\n- Build: Knobby Knees",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 3002,
@@ -503,7 +503,7 @@
  "hair_type": [
   "Straight"
  ],
- "height_number": "5'10\"",
+ "height_number": "5'3\"",
  "hero_points": 1,
  "homebrew_feat_desc_dict": {
   "Charge of the Righteous": "You charge undead and fiends with confidence in your righteous cause",
@@ -995,7 +995,7 @@
   "str": 2,
   "wis": 0
  },
- "region": "Tal-Falko",
+ "region": "Tal-falko",
  "save_bases": {
   "fort": 10,
   "ref": 5,
@@ -1165,7 +1165,7 @@
   "Guided"
  ],
  "weapon_name": "Kerambit",
- "weight_number": 221,
+ "weight_number": 210,
  "wis": 15,
  "younger_brothers": " you have 0 younger brothers",
  "younger_sisters": " you have 0 younger sisters"

@@ -63,7 +63,7 @@
   ]
  },
  "cha": 16,
- "character_full_name": "Victoria Tchaikovsky",
+ "character_full_name": "Caroline Landry",
  "chosen_race": "Halfling",
  "chosen_spell_descriptor": [
   "light",
@@ -614,7 +614,7 @@
   "Duck and Cover",
   "Light Armor Proficiency"
  ],
- "formatted_bio": "Victoria Tchaikovsky\n- Alignment: Chaotic Neutral\n- Deity: Calistria\n- Race: Halfling\n- Class: Level 18 Rogue\n- Archetype: Trickster\n- Tactics: Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.\n- Stat Focus: Dex\n- Disciplines: Iron Tortoise\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Baron of the March (rank 10)\n- Profession: Hedge Witch (rank 9)\n- Profession: Camp Drillhand (rank 10)\n- Profession: Knight (rank 4)\n- Known for: Tinsmithing\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Punctual, Prudent, Enchanted, Intentional, Joyful\n- Mannerisms: Glances at watch, Crosses arms, Thumbs through a book\n- Flaws: Fussy Eater, Pranked\n\nAppearance\n- Hair: Straight Black\n- Eyes: Brown\n- Build: Freckled",
+ "formatted_bio": "Caroline Landry\n- Alignment: Chaotic Neutral\n- Deity: Calistria\n- Race: Halfling\n- Class: Level 18 Rogue\n- Archetype: Trickster\n- Tactics: Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.\n- Stat Focus: Dex\n- Disciplines: Iron Tortoise\n- Homeland: Tal-falko\n\nVocation\n- Profession: Baron of the March (rank 10)\n- Profession: Hedge Witch (rank 9)\n- Profession: Camp Drillhand (rank 10)\n- Profession: Knight (rank 4)\n- Known for: Tinsmithing\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Punctual, Prudent, Enchanted, Intentional, Joyful\n- Mannerisms: Glances at watch, Crosses arms, Thumbs through a book\n- Flaws: Fussy Eater, Pranked\n\nAppearance\n- Hair: Straight Black\n- Eyes: Brown\n- Build: Freckled",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 4003,
@@ -1232,7 +1232,7 @@
   "str": -2,
   "wis": 0
  },
- "region": "Tal-Falko",
+ "region": "Tal-falko",
  "save_bases": {
   "fort": 6,
   "ref": 11,

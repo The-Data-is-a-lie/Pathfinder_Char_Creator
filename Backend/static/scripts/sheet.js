@@ -13,6 +13,10 @@
     // same values to /update_character_data.
     const REGIONS = ['Random', 'Tal-falko', 'Dolestan', 'Sojoria', 'Ieso', 'Spire', 'Feyador',
         'Esterdragon', 'Grundykin Damplands', 'Dust Cairn', 'Kaeru no Tochi'];
+    // The two labels that are not the region's canonical key (utils/data.py::regions). The backend
+    // aliases them anyway, for the module and for saved form data it cannot upgrade — but a client
+    // in this repo sends the key, so the alias stays a shim rather than a dependency.
+    const REGION_VALUES = { 'Random': '', 'Grundykin Damplands': 'Grundy', 'Dust Cairn': 'Dust-Cairn' };
     const RACES = ['Random', 'Dwarf', 'Elf', 'Gnome', 'Half-Elf', 'Halfling', 'Half-Orc', 'Human',
         'Aasimar', 'Aquatic Elf', 'Catfolk', 'Changeling', 'Dhampir', 'Drow', 'Fetchling',
         'Gathlain', 'Ghoran', 'Gillman', 'Goblin', 'Grippli', 'Hobgoblin', 'Ifrit', 'Kitsune',
@@ -629,7 +633,7 @@
     // ---------------------------------------------------------------- wiring
     document.addEventListener('DOMContentLoaded', () => {
         const form = document.getElementById('gen-form');
-        fillSelect(form.elements.region, REGIONS);
+        fillSelect(form.elements.region, REGIONS, (r) => REGION_VALUES[r] ?? r);
         fillSelect(form.elements.race, RACES, (r) => r.toLowerCase().replace(/\s/g, '-'));
         fillSelect(form.elements.class, CLASSES, (c) => c.toLowerCase().replace(/\s/g, '-'));
         fillSelect(form.elements.deity, DEITIES);

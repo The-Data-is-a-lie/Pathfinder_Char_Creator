@@ -225,6 +225,42 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     when it ate a leading capital (`rling`), never mid-word (`Lindstrm`). A guard trusted further
     than it earns is worse than one with a documented ceiling.
 
+### Fixed
+- **Every region can now be chosen — five of the ten never worked.** Region selection had three
+  independent defects, all in `region_chooser`, and each looked exactly like success:
+  - **Ieso did not exist.** A stray `regions.remove(region)` ran after the loop that built the list,
+    so it deleted the last region. It appeared in **0 of 2,000** random draws, and asking for it
+    explicitly handed back a different region — while the campaign lore file carried Ieso lore no
+    character could ever reach. The line it replaced had the mirror-image bug at the other end of the
+    list, so this was the second off-by-one in the same spot; the resolver now works from the region
+    names themselves rather than positions in a list.
+  - **Tal-falko and Kaeru no Tochi characters were given other regions' names.** The chosen region
+    was title-cased before being stored, which turned `Tal-falko` into `Tal-Falko` and
+    `Kaeru no Tochi` into `Kaeru No Tochi` (capitalising a Japanese particle). Neither matches the
+    name files, so those characters — roughly a fifth of all NPCs — silently drew **both** their
+    first and last name from a randomly chosen different region. The old golden characters show it:
+    a fighter whose homeland reads *Tal-Falko* was named *Henry Sokolov*, a **Dolestan** name.
+  - **"Grundykin Damplands" and "Dust Cairn" were never selectable.** Those are the labels the
+    Foundry dialog and the web sheet send; the regions are recorded as `Grundy` and `Dust-Cairn`, and
+    an unrecognised region silently became a random one.
+  - **The region a character is given is now the one that was asked for**, in whatever spelling or
+    casing the client uses, and an unrecognised one says so instead of quietly substituting. Region
+    names are matched the same way race names already are (ignoring case, spaces and punctuation),
+    with a small alias table for the two labels that are a genuinely different name. *Rejected:*
+    correcting only the clients — the Foundry module ships on its own release cycle and a browser's
+    saved form data keeps sending old values, so the backend has to keep accepting them.
+  - The web sheet and the page at `/` now send the recorded region name while still showing the
+    friendlier label. The root page's region field was a **number** input whose value the generator
+    could not read at all, so every region choice made there had always been discarded.
+  - **`validate_name_data.py` now proves it**: every region must come back as itself when asked for
+    by name in any casing, must appear across a sample of random draws, and every option the in-repo
+    clients offer must resolve to a real region — with all ten covered between them. None of this is
+    visible from the data files alone, which is how it went unnoticed for over a year.
+  - ⚠ **Generated characters change for the same seed.** Names and homelands are the point of the
+    fix; some seeds also shift further, because the corrected name draw consumes a different amount
+    of randomness and everything drawn afterwards moves with it. All six golden payloads were
+    regenerated; four changed only their name and region, two changed broadly.
+
 ### Changed
 - **Psionic mechanics will be sourced from the Library of Metzofitz wiki, not from the
   `pf1-psionics` module's `packs-source/` YAML** — reversing the extraction decision logged further

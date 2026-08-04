@@ -3,7 +3,7 @@ from math import floor
 #importing stats in case we want to work on them
 import random
 from utils import data
-from utils.data import traits, mannerisms, regions, weapon_groups, weapon_groups_region, disciplines, skills,  languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class#evil_deities, good_deities, neutral_deities,
+from utils.data import traits, mannerisms, regions, REGION_ALIASES, weapon_groups, weapon_groups_region, disciplines, skills,  languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class#evil_deities, good_deities, neutral_deities,
 import json
 import sys
 from utils.class_func.race_func import *
@@ -25,24 +25,55 @@ def roll_dice(num_dice, num_sides):
 def roll_inherent(sides,size):
     return random.randint(sides,size)
 
+def slug(value):
+    """Alphanumerics only, lowercased -- the match key for client-supplied names.
+
+    Clients spell things their own way ('monkey-goblin', 'Dust Cairn', 'TAL-FALKO') while the data
+    files carry one exact key each. Comparing slugs resolves every spelling that differs only in
+    casing, spacing or punctuation, which is the whole of the drift for races and all but one region.
+    """
+    return ''.join(ch for ch in str(value).lower() if ch.isalnum())
+
+
+# Sentinels every client sends for "surprise me". None of them is a failed lookup, so none of them
+# warns: `sheet.js` and the Foundry dialog both offer a literal 'Random' option, and a blank form
+# field arrives as ''.
+_RANDOM_SENTINELS = {'', 'random', '0', 'none'}
+
+
 def region_chooser(character, userInput_region):
-    """
-    Characters either choose a region or randomly select one
-    Return
-    - region
-    """
-    pre_regions = list(character.first_names_regions.keys())
-    regions = []
-    for region in pre_regions:
-        regions.append(region.title())
+    """Resolve a requested region to its CANONICAL key, or roll one.
 
-    regions.remove(region)
-    if isinstance(userInput_region, str) and userInput_region.title() in regions:
-        region_selected = userInput_region.title()        
-    else:
-        region_selected = random.choice(regions).title()
+    The key in `first_names_regions.json` is canonical (`data.regions`) and is what gets stored and
+    emitted -- never a `.title()`d form. That is not cosmetic: `.title()` turns 'Tal-falko' into
+    'Tal-Falko' and 'Kaeru no Tochi' into 'Kaeru No Tochi', neither of which is a key in either name
+    file, so `name_chooser` fell through to its "should never occur" branch and drew BOTH names from
+    a randomly chosen other region -- about a fifth of all NPCs.
 
-    character.region = region_selected
+    Two more things this function used to get wrong, both verified by `validate_name_data.py` now:
+
+    * IT DELETED A REGION. `regions.remove(region)` ran after the `for region in ...` loop, so it
+      removed whatever the last key was (Ieso). Zero of 2,000 random draws produced it and asking for
+      it explicitly returned something else -- while `campaign_lore.json` carried Ieso lore no
+      character could reach. The line it replaced (`randint(1, len(regions)-1)`, see git log -L) had
+      the mirror-image bug at index 0, so this is the second off-by-one in the same spot: prefer the
+      dict over an index.
+    * UNKNOWN INPUT WAS SILENT. A region the resolver could not match looked exactly like one it
+      could, which is how 'Grundykin Damplands' and 'Dust Cairn' -- what the Foundry dialog and
+      sheet.js actually send -- went years without working.
+    """
+    regions = list(character.first_names_regions.keys())
+    canonical = {slug(name): name for name in regions}
+
+    chosen = None
+    if isinstance(userInput_region, str) and slug(userInput_region) not in _RANDOM_SENTINELS:
+        key = slug(userInput_region)
+        chosen = canonical.get(key) or canonical.get(slug(REGION_ALIASES.get(key, '')))
+        if chosen is None:
+            print(f"region_chooser: unknown region {userInput_region!r}; rolling randomly "
+                  f"(known: {', '.join(regions)})")
+
+    character.region = chosen or random.choice(regions)
     return character.region
 
 def race_chooser(character, userInput_race):
@@ -55,8 +86,7 @@ def race_chooser(character, userInput_race):
     # Match on an alphanumeric-only key so any client spelling resolves to the data files'
     # exact key: the web sheet / Foundry module send slugs ('monkey-goblin', 'half-elf'),
     # and the data keys mix casing ('Monkey goblin', 'Half-Elf'). Unknown input (incl.
-    # 'Random') falls through to a random race.
-    slug = lambda s: ''.join(ch for ch in str(s).lower() if ch.isalnum())
+    # 'Random') falls through to a random race. `slug` is shared with region_chooser.
     canonical = {slug(r): r for r in race_data}
     chosen = canonical.get(slug(userInput_race)) if isinstance(userInput_race, str) else None
     character.chosen_race = chosen or random.choice(list(race_data.keys()))
@@ -88,9 +118,9 @@ def name_chooser(character):
 
     if character.region in f_name_list:
         f_names = character.first_names_regions.get(character.region, "Tal-Falko").get(character.chosen_gender, "Nameless")
-        l_names = character.last_names_regions[character.region]        
+        l_names = character.last_names_regions[character.region]
         character.f_name = random.choice(f_names)
-        character.l_name = random.choice(l_names) 
+        character.l_name = random.choice(l_names)
         character.full_name = character.f_name + character.l_name
 
     else:
@@ -98,9 +128,9 @@ def name_chooser(character):
         region_list = (list(f_name_list))
         region = random.choice(region_list)
         f_names = character.first_names_regions.get(region, "Tal-Falko").get(character.chosen_gender, "Nameless")
-        l_names = character.last_names_regions[region]      
+        l_names = character.last_names_regions[region]
         character.f_name = random.choice(f_names)
-        character.l_name = random.choice(l_names) 
+        character.l_name = random.choice(l_names)
         character.full_name = character.f_name + character.l_name
 
     return character.f_name, character.l_name

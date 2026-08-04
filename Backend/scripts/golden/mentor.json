@@ -84,7 +84,7 @@
   ]
  },
  "cha": 12,
- "character_full_name": "Henry Sokolov",
+ "character_full_name": "Charles Coulombe",
  "chosen_race": "Human",
  "chosen_spell_descriptor": [
   "emotion"
@@ -527,7 +527,7 @@
   "Collective Recollection",
   "Giant Slayer"
  ],
- "formatted_bio": "Henry Sokolov\n- Alignment: Lawful Good\n- Deity: Apsu\n- Race: Human\n- Class: Level 15 Fighter\n- Archetype: Archer\n- Tactics: Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.\n- Stat Focus: Dex\n- Disciplines: Black Seraph\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Legend of the Uncharted (rank 15)\n- Profession: Dentist (rank 10)\n- Profession: Master-at-Arms (rank 5)\n- Profession: Upholsterer (rank 10)\n- Known for: Basketweaving\n- Training: An excellent trainer who taught them Dirgesinger, Distance Thrower, Night Dweller\n- Training: An excellent trainer who taught them Prodigy, Great Fortitude, Jaguar Pounce\n- Training: An average trainer who taught them Two-Weapon Fighting, Feint Partner\n- Training: An excellent trainer who taught them Exploit Schema, Blinding Critical, Acrobatic\n- Training: An excellent trainer who taught them Skilled Driver, Coordinated Distraction, Mocking Dance\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Poor Household\n- No Siblings\n\nPersonality\n- Personality: Reverent, Analytical, Doubtful\n- Mannerisms: Combs mustache, Bites lower lip\n- Flaws: Illiterate, Alcoholic\n\nAppearance\n- Hair: Unkempt Red\n- Eyes: Green\n- Build: Towering",
+ "formatted_bio": "Charles Coulombe\n- Alignment: Lawful Good\n- Deity: Apsu\n- Race: Human\n- Class: Level 15 Fighter\n- Archetype: Archer\n- Tactics: Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.\n- Stat Focus: Dex\n- Disciplines: Black Seraph\n- Homeland: Tal-falko\n\nVocation\n- Profession: Legend of the Uncharted (rank 15)\n- Profession: Dentist (rank 10)\n- Profession: Master-at-Arms (rank 5)\n- Profession: Upholsterer (rank 10)\n- Known for: Basketweaving\n- Training: An excellent trainer who taught them Dirgesinger, Distance Thrower, Night Dweller\n- Training: An excellent trainer who taught them Prodigy, Great Fortitude, Jaguar Pounce\n- Training: An average trainer who taught them Two-Weapon Fighting, Feint Partner\n- Training: An excellent trainer who taught them Exploit Schema, Blinding Critical, Acrobatic\n- Training: An excellent trainer who taught them Skilled Driver, Coordinated Distraction, Mocking Dance\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Poor Household\n- No Siblings\n\nPersonality\n- Personality: Reverent, Analytical, Doubtful\n- Mannerisms: Combs mustache, Bites lower lip\n- Flaws: Illiterate, Alcoholic\n\nAppearance\n- Hair: Unkempt Red\n- Eyes: Green\n- Build: Towering",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 6009,
@@ -1385,7 +1385,7 @@
   "str": 0,
   "wis": 0
  },
- "region": "Tal-Falko",
+ "region": "Tal-falko",
  "save_bases": {
   "fort": 9,
   "ref": 5,
