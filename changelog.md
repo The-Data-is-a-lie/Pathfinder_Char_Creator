@@ -326,6 +326,14 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     grantors at once, but the region fix realigned the random stream and it quietly became a single
     ordinary druid. Re-seeded to a case that stacks **three** grantors — hunter, ranger and druid —
     which also exercises three different effective-level formulas at once.
+- **The invariant sweep now watches companions too**, covering what only a whole generated character
+  can show: the emitted shape, that an absence entry carries no stats, that the hit dice agree with
+  the post-stack chassis, that a size change is recorded exactly when the creature grew, and the
+  **druid flip** — a druid takes a companion or a domain, never both and never neither.
+  - **The sweep fails if it never produced a bonded creature at all.** It counts the branches it
+    reached, so a run cannot report success having asserted nothing — the failure mode that let the
+    stacking golden go quiet. 15,560 checks across 825 generations: 55 granted, 39 absences,
+    15 druid flips.
 
 ### Fixed
 - **Every region can now be chosen — five of the ten never worked.** Region selection had three

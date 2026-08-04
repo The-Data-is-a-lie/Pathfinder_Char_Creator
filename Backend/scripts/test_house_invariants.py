@@ -56,6 +56,10 @@ with open(BACKEND / 'json' / 'class_data.json', encoding='utf-8') as f:
 FAILURES = []
 CHECKS = [0]
 METZ_PICKS = [0]
+# Bonded-creature branch coverage (#35). Counted rather than assumed, because the #30 stack review's
+# "both=0, neither=0 over 400 generations" was measured by a sample that could not reach the path it
+# claimed to clear.
+BOND = {'granted': 0, 'absent': 0, 'both': 0, 'neither': 0, 'druid_flip': 0}
 
 # Metzofitz-only pool names: what metzofitz_feat_frame offers minus every AoN name (collisions
 # resolve to AoN, so only names absent from feats.csv prove a homebrew pick happened).
@@ -247,6 +251,94 @@ def check_character(cell, payload):
     check(payload['Total_HP'] - want_hp in (0, L),
           f"{cell}: Total_HP {payload['Total_HP']} != {want_hp} (+favored 0|{L})")
 
+    check_bonded_creatures(cell, payload)
+
+
+def check_bonded_creatures(cell, payload):
+    """Map #18, slice K (#35). The stat-block arithmetic is gated species-by-species in
+    `validate_companion_stats.py`; what is checkable only HERE is the shape of the emitted list and
+    the druid flip, both of which need a whole generated character.
+
+    The flip is the regression test for F's rewire, and it is here because of how the original
+    measurement failed: "both=0, neither=0 over 400 generations" was reported by a sample that never
+    rolled an archetype and so could not reach the broken path. A sample that cannot reach a defect
+    reports zero forever, so this counts BRANCHES REACHED and fails if the sweep never saw one.
+    """
+    entries = payload.get('bonded_creatures')
+    check(isinstance(entries, list),
+          f"{cell}: bonded_creatures is {type(entries).__name__}, not a list")
+    if not isinstance(entries, list):
+        return
+
+    for entry in entries:
+        tag = f"{cell}: {entry.get('grantor')}/{entry.get('type')}"
+        check(entry.get('type') in ('companion', 'mount', 'familiar', 'eidolon'),
+              f"{tag}: type {entry.get('type')!r} is not a bonded-creature type")
+
+        if not entry.get('species'):
+            BOND['absent'] += 1
+            # D9: an absence entry is the record of WHY there is no creature, so it must carry one.
+            check(entry.get('outcome') and entry['outcome'] != 'granted',
+                  f"{tag}: no species but outcome is {entry.get('outcome')!r}")
+            check(entry.get('stats') is None,
+                  f"{tag}: absence entry carries a stats block")
+            continue
+
+        BOND['granted'] += 1
+        check(entry.get('effective_level', 0) >= 1,
+              f"{tag}: granted at effective level {entry.get('effective_level')!r}")
+        stats = entry.get('stats')
+        check(isinstance(stats, dict), f"{tag}: species {entry['species']!r} has no stats block")
+        if not isinstance(stats, dict):
+            continue
+
+        # #31/D2: the backend is the SOLE source of these numbers, so a missing one is not something
+        # a renderer can fill in -- the standalone web sheet has no game system to fall back on.
+        for field in ('hp', 'ac', 'touch_ac', 'flat_footed_ac', 'bab', 'cmb', 'cmd', 'hd', 'size'):
+            check(stats.get(field) is not None, f"{tag}: stats.{field} is None")
+        check(stats.get('hp', 0) >= 1, f"{tag}: hp {stats.get('hp')}")
+        check(stats.get('touch_ac', 0) <= stats.get('ac', 0),
+              f"{tag}: touch AC {stats.get('touch_ac')} exceeds full AC {stats.get('ac')}")
+        check(stats.get('hd') == (entry.get('chassis') or {}).get('hd'),
+              f"{tag}: stats.hd {stats.get('hd')} != chassis hd "
+              f"{(entry.get('chassis') or {}).get('hd')} -- the chassis is re-read after stacking, "
+              f"so these cannot disagree")
+        check(all(v is not None for k, v in (stats.get('abilities') or {}).items() if k != 'int'),
+              f"{tag}: a non-Int ability score is None ({stats.get('abilities')})")
+
+        # Ticket 04: `size_change` exists exactly when the advancement grew the creature, and its
+        # values are provenance for numbers already totalled in. Present-when-it-should-not-be is
+        # the failure that would make a renderer apply the geometry twice.
+        start = next((v for k, v in (entry.get('species_stats') or {}).items()
+                      if str(k) == 'starting statistics' and isinstance(v, dict)), {})
+        grew = str(start.get('size') or '').strip().lower() != str(stats.get('size') or '').lower()
+        check(bool(stats.get('size_change')) == grew,
+              f"{tag}: size {start.get('size')!r} -> {stats.get('size')!r} but size_change is "
+              f"{stats.get('size_change')!r}")
+
+    # ---- the druid flip (F's rewire) ----
+    # Only meaningful on a character whose ONLY domain source is the druid bond; clerics and
+    # inquisitors get domains from their own subsystem and would read as a false "both".
+    names = {c['name'] for c in payload['classes']}
+    if 'druid' not in names or names & {'cleric', 'inquisitor'}:
+        return
+    druid = [e for e in entries if e.get('grantor') == 'druid']
+    if not druid:
+        return
+    got_creature = any(e.get('species') for e in druid)
+    got_domain = bool(payload.get('full_domain'))
+    removed = any(e.get('outcome') == 'archetype_removed' for e in druid)
+
+    if got_creature and got_domain:
+        BOND['both'] += 1
+        check(False, f"{cell}: druid has BOTH a companion and a domain -- the flip is not "
+                     f"exclusive (the defect a fresh per-row draw reintroduces without F's rewire)")
+    elif not got_creature and not got_domain and not removed:
+        BOND['neither'] += 1
+        check(False, f"{cell}: druid has NEITHER a companion nor a domain, and no archetype "
+                     f"removed the feature")
+    BOND['druid_flip'] += 1
+
 
 def run(classes, levels, seeds):
     total = len(classes) * len(levels) * len(seeds)
@@ -301,6 +393,17 @@ def main():
         check(METZ_PICKS[0] > 0,
               f"no Metzofitz homebrew feat appeared in {total} generations -- pool wiring broken?")
     print(f"  Metzofitz picks across the sweep: {METZ_PICKS[0]}")
+
+    # The companion checks above are all conditional on a creature existing, so a sweep that rolled
+    # none would print PASS having asserted nothing. Say so instead.
+    if total >= 100:
+        check(BOND['granted'] > 0,
+              f"no bonded creature was granted in {total} generations -- every companion check "
+              f"above was skipped, so this run proves nothing about them")
+        check(BOND['druid_flip'] > 0,
+              f"the druid flip was never reached in {total} generations")
+    print(f"  bonded creatures: {BOND['granted']} granted, {BOND['absent']} absence entries, "
+          f"{BOND['druid_flip']} druid flips (both={BOND['both']}, neither={BOND['neither']})")
 
     print()
     if FAILURES:
