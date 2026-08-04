@@ -169,6 +169,73 @@ CONFIGS = {
 }
 
 
+# --------------------------------------------------------------------------------------------- #
+# COVERAGE. Three of these fixtures exist for a SHAPE, not for a seed, and the shape arrives by
+# multiclass roll -- so any change to the class pool can silently take it away. It has, repeatedly:
+# `companion` has been re-seeded four times (7275 -> 7323 -> 7971 -> 7899) and `manifester` three
+# (8018 -> 8041 -> 8194), each time noticed by a human reading a 2,000-line golden diff after the
+# fact. The comments above already said what each fixture covers; nothing checked it.
+#
+# These predicates ARE that check, and they are also the sweep predicate. When a pool change costs
+# a fixture its coverage, sweep for one of these coming back true -- not for a class list, which is
+# only ever how the coverage happened to arrive.
+#
+# A predicate returns None when satisfied, or a one-line reason it is not.
+# --------------------------------------------------------------------------------------------- #
+def _covers_companion(payload):
+    """A stacked bond AND an archetype-removed one, so both bonded_creatures shapes are pinned."""
+    entries = payload.get('bonded_creatures') or []
+    stacked = [e for e in entries if len(e.get('contributors') or []) >= 2]
+    absent = [e for e in entries if e.get('effective_level') == 0 and e.get('species') is None]
+    real = [e for e in entries if e.get('effective_level') and e.get('species')]
+    missing = []
+    if not stacked:
+        missing.append('no STACK (no entry with 2+ contributors)')
+    if not absent:
+        missing.append('no ABSENCE entry (effective_level 0, species null)')
+    if not real:
+        missing.append('no real bonded creature')
+    if missing:
+        return (f"{'; '.join(missing)} -- grantors "
+                f"{[e.get('grantor') for e in entries] or 'none'}")
+    return None
+
+
+def _covers_caster(payload):
+    """Two spellbooks, one arcane and one divine -- the only arcane spellbook coverage anywhere."""
+    books = [b for b in (payload.get('spellbooks') or []) if b.get('spell_list_choose_from')]
+    if len(books) < 2:
+        return f'{len(books)} spellbook(s) with spells, needs 2 -- {[b["name"] for b in books]}'
+    if not any(b.get('divine') for b in books):
+        return f'no DIVINE spellbook -- {[b["name"] for b in books]}'
+    if not any(not b.get('divine') for b in books):
+        return f'no ARCANE spellbook -- {[b["name"] for b in books]}'
+    return None
+
+
+def _covers_manifester(payload):
+    """One manifester with powers and one with power points and NO powers -- the shape a naive
+    renderer drops on the floor."""
+    entries = payload.get('manifesters') or []
+    with_powers = [m for m in entries if m.get('powers_by_level')]
+    points_only = [m for m in entries if not m.get('powers_by_level') and m.get('pp_per_day')]
+    missing = []
+    if not with_powers:
+        missing.append('no manifester carrying powers')
+    if not points_only:
+        missing.append('no POINTS-ONLY manifester (power points, no powers)')
+    if missing:
+        return f"{'; '.join(missing)} -- manifesters {[m.get('name') for m in entries] or 'none'}"
+    return None
+
+
+COVERAGE = {
+    'companion': _covers_companion,
+    'caster': _covers_caster,
+    'manifester': _covers_manifester,
+}
+
+
 def generate(name):
     """Run the generator for a named config and return its payload."""
     kwargs = dict(CONFIGS[name])
@@ -208,6 +275,17 @@ def run(names, update):
         payload = generate(name)
         path = golden_path(name)
 
+        # Checked on --update too, and deliberately: the moment a fixture loses its coverage is a
+        # re-seed, and a re-seed is exactly when --update gets run. Reporting it only on a plain
+        # run would mean writing the coverage away and finding out on the next pass.
+        if name in COVERAGE:
+            lost = COVERAGE[name](payload)
+            if lost:
+                failures.append(f'{name}: COVERAGE LOST -- {lost}')
+                print(f'    {name}: coverage -- {lost}')
+            else:
+                print(f'  {name}: coverage OK')
+
         if update:
             path.write_text(canonical(payload), encoding='utf-8')
             print(f'  {name}: wrote {path.relative_to(BACKEND.parent)} ({len(payload)} keys)')
@@ -242,6 +320,14 @@ def main():
 
     if args.update:
         print(f'\nUPDATED -- {len(names)} golden(s). Commit them with the change that caused the diff.')
+        if failures:
+            # The goldens were written; the point is that this one is no longer worth pinning.
+            print('\nBut a fixture no longer covers what it exists for:')
+            for line in failures:
+                print(f'  {line}')
+            print('\nRe-sweep for a seed that satisfies the predicate in COVERAGE -- not for the '
+                  'class list that happened to produce it last time.')
+            return 1
         return 0
 
     if failures:
