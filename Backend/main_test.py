@@ -41,7 +41,9 @@ LICENSE_PATH = "/license"
 # Importing custom functions
 from utils.class_func.adding_bonus_spells			import add_bonus_spells, add_bonus_spells_from_dict
 from utils.class_func.alignment_and_deity 			import randomize_deity, choose_alignment
-from utils.class_func.animal_companions 			import animal_chooser, animal_feats
+from utils.class_func.animal_companions 			import resolve_bonded_creatures
+from utils.class_func.companion_feats 			import companion_feats
+from utils.class_func.companion_stats 			import stat_bonded_creatures
 from utils.class_func.appearance 					import randomize_apperance_attr, randomize_body_feature, get_racial_attr
 from utils.class_func.armor_and_enhancements 		import plan_enhancements, enhancement_chooser#, enhancement_limits
 from utils.class_func.armor_and_weapon_chooser 		import (armor_chooser, weapon_chooser, list_selection, shield_chooser, 
@@ -139,6 +141,8 @@ character_json_config = {
 	'class_features': Load_when_needed('Backend/json/class_features.json'),	
 	# 'classes': Load_when_needed('Backend/json/class.json'),
 	'class_data': Load_when_needed('Backend/json/class_data.json'),
+	'companion_archetypes': Load_when_needed('Backend/json/companion_archetypes.json'),
+	'companion_grantors': Load_when_needed('Backend/json/companion_grantors.json'),
 	'cleric_domains': Load_when_needed('Backend/json/cleric_domains.json'),				
 	'deity': Load_when_needed('Backend/json/deity.json'),	
 	'druid_domains': Load_when_needed('Backend/json/druid_domains.json'),		
@@ -214,6 +218,17 @@ character_json_config = {
 	'psionic_power_lists': Load_when_needed('Backend/json/class_data/psionics/psionic_power_lists.json'),
 	'psionic_powers': Load_when_needed('Backend/json/class_data/psionics/psionic_powers.json'),
 	'psionic_name_map': Load_when_needed('Backend/json/class_data/psionics/psionic_name_map.json'),
+
+	# Occult Adventures section. Same convention as psionics: GENERATED files, registered under the
+	# class's own name because generic_class_option_chooser reads them as getattr(character,
+	# <class name>). Rebuild with Backend/scripts/build_occult_class_data.py after any pf1 or
+	# pf-content update -- the pools are harvested out of those compendia, not hand-maintained.
+	'occultist': Load_when_needed('Backend/json/class_data/occultist.json'),
+	'kineticist': Load_when_needed('Backend/json/class_data/kineticist.json'),
+	'medium': Load_when_needed('Backend/json/class_data/medium.json'),
+	'mesmerist': Load_when_needed('Backend/json/class_data/mesmerist.json'),
+	'psychic': Load_when_needed('Backend/json/class_data/psychic.json'),
+	'spiritualist': Load_when_needed('Backend/json/class_data/spiritualist.json'),
 }
 
 def strip_labeled_bucket(feat_list, label_list, children):
@@ -465,14 +480,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		favored_class = favored_class_option_chooser(character, favored_class_list, character.human_flag)
 		skill_rank_level, favored_class_chosen = favored_class_calculator(character, favored_class)		
 
-		#decides if druids go animal companion or domain
-		# or if inquisitors go inquisitions or domains
+		# domain_chance still drives the inquisitor's inquisitions-vs-domains gate; the druid's
+		# companion-vs-domain flip moved to the bonded-creature resolver (see below).
 		domain_chance(character)
-		domain_chooser(character)	
-		full_domain = character.chosen_domain
-		versatile_perfomance(character)	
-		animal_chooser(character)
-		animal_companion_feats = animal_feats(character)
+		versatile_perfomance(character)
 
 
 		full_school = None
@@ -492,6 +503,24 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# generic single choices (the choosers gate themselves on any matching class entry)
 		bloodline_sorc = generic_class_option_chooser(character, "sorcerer", "bloodline")
 		bloodline_rager = generic_class_option_chooser(character, "bloodrager", "bloodline")
+		character.chosen_bloodline = next(iter(bloodline_sorc), '') if bloodline_sorc else ''
+
+		# Bonded creatures, and the domains that are their alternative.
+		#
+		# This block CANNOT sit where the old druid-only check did (before domain_chooser, above).
+		# The resolver reads the rolled archetype and the rolled sorcerer bloodline, and both are
+		# chosen further down the pipeline than animal_chooser used to run -- archetypes just above,
+		# the bloodline on the line before this one. #38 specified "run the resolver ahead of
+		# domain_chooser"; that is still true, and both now run here instead.
+		character.archetypes_per_class = archetypes_per_class
+		resolve_bonded_creatures(character)
+		domain_chooser(character)
+		full_domain = character.chosen_domain
+		animal_companion_feats = companion_feats(character)
+		# #31: the numbers, last -- the merge reads the post-stack chassis and the feats are already
+		# on the entry by here. D14 makes that ordering load-bearing rather than incidental: the
+		# stat block FOLDS the feats and flaws chosen on the line above, so it cannot run first.
+		stat_bonded_creatures(character)
 
 		generic_class_option_chooser(character,"cavalier", "orders")
 		generic_class_option_chooser(character,"samurai", "orders")
@@ -537,6 +566,30 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		generic_class_option_chooser(character, "highlord", dataset_name="decrees", multiple='yes', dict_name = 'decrees')
 		generic_class_option_chooser(character, "soulknife", dataset_name="blade skills", multiple='yes', dict_name = 'blade_skills')
 		generic_class_option_chooser(character, "tactician", dataset_name="strategies", multiple='yes', dict_name = 'strategies')
+
+		# Occult Adventures subsystems (class-pool map, ticket 03). Every one of them is the same
+		# "pick 1 or N from a {name: description} list" the choosers above already handle, so no
+		# new chooser module exists here either. Option lists are generated per class by
+		# Backend/scripts/build_occult_class_data.py; the multi-pick schedules live in data.amount.
+		#
+		# Two subsystems DEGRADE rather than being modelled, per section 10:
+		#   kineticist burn -- an HP-priced resource with no analogue in the generator. Its wild
+		#       talents and infusions are still picked; burn is described, never tracked.
+		#   medium spirit   -- a *daily* choice, and the generator emits a static snapshot. Rolling
+		#       one seance and freezing it is a house ruling, recorded as such.
+		generic_class_option_chooser(character, "occultist", dataset_name="implements", multiple='yes', dict_name = 'implements')
+		generic_class_option_chooser(character, "occultist", dataset_name="focus powers", multiple='yes', dict_name = 'focus_powers')
+		generic_class_option_chooser(character, "kineticist", "elemental focus", dict_name = 'elemental_focus')
+		generic_class_option_chooser(character, "kineticist", dataset_name="wild talents", multiple='yes', dict_name = 'wild_talents')
+		generic_class_option_chooser(character, "kineticist", dataset_name="infusions", multiple='yes', dict_name = 'infusions')
+		# 'medium_spirit', not 'spirit': the shaman already owns a bucket called 'spirits', and two
+		# buckets one letter apart is a trap for every renderer that has to register them by name.
+		generic_class_option_chooser(character, "medium", "spirits", dict_name = 'medium_spirit')
+		generic_class_option_chooser(character, "mesmerist", dataset_name="mesmerist tricks", multiple='yes', dict_name = 'mesmerist_tricks')
+		generic_class_option_chooser(character, "mesmerist", dataset_name="bold stare", multiple='yes', dict_name = 'bold_stare')
+		generic_class_option_chooser(character, "psychic", "disciplines", dict_name = 'psychic_discipline')
+		generic_class_option_chooser(character, "psychic", dataset_name="phrenic amplifications", multiple='yes', dict_name = 'phrenic_amplifications')
+		generic_class_option_chooser(character, "spiritualist", "emotional focus", dict_name = 'emotional_focus')
 
 
 
@@ -646,6 +699,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# amount of gold buys a +5 one at 1st level. The special abilities enhancement_chooser
 		# picked still stand: that is the Enhanced Mind Blade feature spending its own grant.
 		_mind_blade = mind_blade(character, melee=(weapon_type_flag == 'Melee'))
+		# Stashed for choose_psionics_attr further down, which puts it on the soulknife's manifester
+		# entry. Passed rather than recomputed so the equipped weapon and the psionics tab cannot
+		# disagree about which blade this is.
+		character.mind_blade = _mind_blade
 		if _mind_blade:
 			weapon_name = _mind_blade['name']
 			weapon_enhancement_bonus = _mind_blade['max_enhancement_bonus']
@@ -1744,6 +1801,11 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				# (with the 7th-level advancement block), the level chassis row from
 				# animal_companion.json, and the rolled feats (previously discarded).
 				# None when the druid went domain or there is no druid.
+				# FROZEN, DELIBERATELY (#37 grill, 2026-08-03). This key is the deprecated
+				# alias D7 keeps for the sheet repo's #15 consumer; `name`, `sex`, `gear`
+				# and `gear_source` live only on `bonded_creatures` (#32). Do not "fix" the
+				# missing name here — a deprecated key that is never worse than its
+				# replacement never dies, and the name is the only reason to migrate.
 				"animal_companion": ({
 					"species": character.chosen_animal,
 					"kind": getattr(character, "chosen_animal_kind", None),
@@ -1751,6 +1813,14 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 					"chassis": character.companion_info,
 					"feats": sorted(animal_companion_feats) if animal_companion_feats else [],
 				} if getattr(character, "chosen_animal", None) else None),
+				# D7 / #32: the list that replaces the singular alias above. One entry per bonded
+				# creature -- companion, mount, familiar, eidolon -- INCLUDING the absences, whose
+				# `outcome` is the only record of why a druid has a domain instead of a wolf.
+				# `stats` is the finished block from #31 and is FINAL: D2 makes this the sole source
+				# of a companion's numbers, because the standalone web sheet has no game system to
+				# derive them from. A renderer displays them; it never re-derives them, and it never
+				# re-applies `stats.size_change`, which is provenance for numbers already totalled in.
+				"bonded_creatures": getattr(character, "bonded_creatures", None) or [],
 				"full_domain": full_domain,
 				"school": school,
 				"opposing_school": opposing_school,

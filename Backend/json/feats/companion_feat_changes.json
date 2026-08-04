@@ -1,0 +1,251 @@
+{
+  "_readme": [
+    "Mechanical effects for the feats a BONDED CREATURE can take -- the pool in",
+    "animal_companion.json['feats']. Separate from feat_changes.json ON PURPOSE: the pf1 compendium",
+    "already automates 12 of these (Toughness -> mhp, Dodge -> ac, Iron Will -> will, ...), and a PC",
+    "keeps its compendium item's changes, so adding them to the shared file would double-apply on",
+    "every PC sheet. A companion never keeps them -- createCompanions.js strips system.changes per",
+    "spec section 8 D14 -- so the backend must own the arithmetic instead, and owns it here.",
+    "",
+    "SHAPE: {feat name: {changes: [...], contextNotes: [...], unapplied: [...]}}, the feat_changes.json",
+    "house shape plus `unapplied`. Names are data/feats.csv spelling (the prerequisite and feat-tax",
+    "lookups read that file); Foundry's spelling differs for the three armour proficiencies and the",
+    "module comma-inverts to match.",
+    "",
+    "changes[].target uses pf1 vocabulary: mhp, ac, nac, fort, ref, will, init, cmb, cmd, attack, and",
+    "skill.<pf1 skill id> (data.SKILL_IDS). companion_stats.apply_modifiers maps each onto the stat",
+    "block; an unmapped target lands in stats.unapplied rather than being dropped silently.",
+    "",
+    "changes[].formula is a SIGNED INTEGER or the small expression language apply_modifiers accepts:",
+    "the ability-modifier tokens @str @dex @con @int @wis @cha, @hd, integers, + and -, and max(a, b).",
+    "Anything richer belongs in contextNotes.",
+    "",
+    "`unapplied` is the D12 holdback discipline: an effect that is real but that this stat block",
+    "cannot express (a die-size step, a choice the generator never made, a per-attack bonus on a",
+    "multi-attack routine). It is REPORTED on the creature, never silently discarded."
+  ],
+
+  "Acrobatic": {
+    "changes": [
+      {"formula": "2", "target": "skill.acr", "type": "untyped", "operator": "add", "priority": 0},
+      {"formula": "2", "target": "skill.fly", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": [
+      {"text": "Acrobatic: the bonus rises to +4 once the creature has 10 ranks in that skill.", "target": "skills"}
+    ]
+  },
+
+  "Agile Maneuvers": {
+    "changes": [
+      {"formula": "@dex - @str", "target": "cmb", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": [
+      {"text": "Agile Maneuvers: combat maneuver bonus uses Dexterity in place of Strength.", "target": "cmb"}
+    ]
+  },
+
+  "Athletic": {
+    "changes": [
+      {"formula": "2", "target": "skill.clm", "type": "untyped", "operator": "add", "priority": 0},
+      {"formula": "2", "target": "skill.swm", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": [
+      {"text": "Athletic: the bonus rises to +4 once the creature has 10 ranks in that skill.", "target": "skills"}
+    ]
+  },
+
+  "Blind-Fight": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Blind-Fight: reroll a miss chance from concealment once per attack, and an invisible attacker gains no bonus to hit.", "target": "attack"},
+      {"text": "Blind-Fight: no loss of Dexterity to AC from an unseen attacker, and full speed while blinded.", "target": "ac"}
+    ]
+  },
+
+  "Combat Reflexes": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Combat Reflexes: additional attacks of opportunity per round equal to the Dexterity modifier, and may make them while flat-footed.", "target": "attack"}
+    ]
+  },
+
+  "Diehard": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Diehard: remains conscious and staggered below 0 hit points, and does not die until negative hit points exceed the Constitution score.", "target": "effect"}
+    ]
+  },
+
+  "Dodge": {
+    "changes": [
+      {"formula": "1", "target": "ac", "type": "dodge", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": []
+  },
+
+  "Endurance": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Endurance: +4 on checks to avoid nonlethal damage, on Constitution checks to continue running, to hold breath, to avoid damage from starvation or thirst, and on Fortitude saves against hot or cold environments or suffocation.", "target": "fort"}
+    ]
+  },
+
+  "Great Fortitude": {
+    "changes": [
+      {"formula": "2", "target": "fort", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": []
+  },
+
+  "Heavy Armor Proficiency": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Heavy Armor Proficiency: no armor check penalty on attack rolls while wearing heavy barding.", "target": "attack"}
+    ]
+  },
+
+  "Improved Bull Rush": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "+2 on combat maneuver checks made to bull rush a foe.", "target": "cmb"},
+      {"text": "+2 to CMD when an opponent tries to bull rush you.", "target": "cmd"},
+      {"text": "Improved Bull Rush: bull rushing provokes no attack of opportunity.", "target": "effect"}
+    ]
+  },
+
+  "Improved Initiative": {
+    "changes": [
+      {"formula": "4", "target": "init", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": []
+  },
+
+  "Improved Natural Armor": {
+    "changes": [
+      {"formula": "1", "target": "nac", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": []
+  },
+
+  "Improved Natural Attack": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Improved Natural Attack: the damage die of one natural attack increases by one step.", "target": "attack"}
+    ],
+    "unapplied": ["Improved Natural Attack: a die-size step on one chosen natural attack; the generator picks no attack and this stat block has no die-step table."]
+  },
+
+  "Improved Overrun": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "+2 on combat maneuver checks made to overrun a foe.", "target": "cmb"},
+      {"text": "+2 to CMD when an opponent tries to overrun you.", "target": "cmd"},
+      {"text": "Improved Overrun: overrunning provokes no attack of opportunity, and the target may not choose to avoid it.", "target": "effect"}
+    ]
+  },
+
+  "Intimidating Prowess": {
+    "changes": [
+      {"formula": "@str", "target": "skill.int", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": []
+  },
+
+  "Iron Will": {
+    "changes": [
+      {"formula": "2", "target": "will", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": []
+  },
+
+  "Light Armor Proficiency": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Light Armor Proficiency: no armor check penalty on attack rolls while wearing light barding.", "target": "attack"}
+    ]
+  },
+
+  "Lightning Reflexes": {
+    "changes": [
+      {"formula": "2", "target": "ref", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": []
+  },
+
+  "Medium Armor Proficiency": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Medium Armor Proficiency: no armor check penalty on attack rolls while wearing medium barding.", "target": "attack"}
+    ]
+  },
+
+  "Mobility": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "+4 dodge bonus to AC against attacks of opportunity provoked by moving out of or through a threatened square.", "target": "ac"}
+    ]
+  },
+
+  "Power Attack": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Power Attack: may take -1 on melee attack rolls per 4 BAB for +2 damage (+3 for a single natural attack used two-handed-style), until the next turn.", "target": "attack"}
+    ]
+  },
+
+  "Run": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Run: run at 5x normal speed (4x in medium or heavy barding), keep the Dexterity bonus to AC while running, and gain +4 on Acrobatics checks to jump after a running start.", "target": "effect"}
+    ]
+  },
+
+  "Skill Focus": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Skill Focus: +3 on one chosen skill, rising to +6 once the creature has 10 ranks in it.", "target": "skills"}
+    ],
+    "unapplied": ["Skill Focus: +3 on ONE chosen skill; the generator strips feat specialisations, so no skill is named and the bonus is not totalled in."]
+  },
+
+  "Spring Attack": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Spring Attack: move before and after a single melee attack without provoking an attack of opportunity from the target.", "target": "attack"}
+    ]
+  },
+
+  "Stealthy": {
+    "changes": [
+      {"formula": "2", "target": "skill.ste", "type": "untyped", "operator": "add", "priority": 0},
+      {"formula": "2", "target": "skill.esc", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": [
+      {"text": "Stealthy: the bonus rises to +4 once the creature has 10 ranks in that skill.", "target": "skills"}
+    ]
+  },
+
+  "Toughness": {
+    "changes": [
+      {"formula": "max(3, @hd)", "target": "mhp", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": []
+  },
+
+  "Weapon Finesse": {
+    "changes": [
+      {"formula": "max(0, @dex - @str)", "target": "attack", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": [
+      {"text": "Weapon Finesse: natural attacks use Dexterity in place of Strength on attack rolls. Totalled in only when it helps -- a creature with Str above Dex keeps its Strength bonus.", "target": "attack"}
+    ]
+  },
+
+  "Weapon Focus": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Weapon Focus: +1 on attack rolls with one chosen natural attack.", "target": "attack"}
+    ],
+    "unapplied": ["Weapon Focus: +1 on ONE chosen natural attack; the generator names no attack, and adding it to every line of a multi-attack routine would overstate it."]
+  }
+}

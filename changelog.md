@@ -19,6 +19,123 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **The class dropdown is grouped, and it finally lists every class you can roll.** The FoundryVTT
+  generator dialog now shows five labelled sections with their sizes — Paizo base classes (40),
+  Path of War (5), Psionics (12), Occult Adventures (6), NPC classes (5) — and each section opens
+  with a **Random \<group\>** entry that rolls only inside that family. Picking "Random Occult
+  Adventures" gets you one of the six occult classes and nothing else.
+  - **The six Occult Adventures classes were missing from the dropdown entirely.** They entered the
+    random pool on 2026-08-03 and the Foundry module could already render them, but nobody added
+    them to the list, so the only way to get an occultist was to roll Random and hope. Fixed, and
+    gated so it cannot happen again — see the roster note under *Changed*.
+- **Seven more classes, all of them first-party Paizo: the generator now rolls 68.** Every class on
+  d20pfsrd's index is present except prestige classes.
+  - **The five NPC classes — adept, aristocrat, commoner, expert, warrior.** An NPC generator that
+    could not produce a commoner was missing the most common person in the world; a town guard had
+    to be a fighter and an innkeeper a bard. They are **fully rollable**, not selector-only: about
+    7% of random characters are now NPC-class. *Rejected:* listing them but holding them out of the
+    random pool. If that proves wrong in play, the lever is one list in `data.py`.
+  - **The omdura and the vampire hunter**, the last two first-party base classes, with their full
+    feature chains (12 and 15 features).
+  - Their chassis is **read out of the pf1 compendium, not typed from the book** — hit die, BAB,
+    skill ranks, saves, class skills and proficiencies all come from the class Items, and
+    `build_npc_class_data.py` refuses to write if `data.py`'s hand-maintained good-save table
+    disagrees with the pack.
+  - **Prestige classes are deliberately excluded.** 100+ classes needing an entry-prerequisite
+    engine and base-class-level gating that the generator has no model for, for characters nobody
+    asked to roll.
+  - **The omdura and the vampire hunter cast, and the adept does too.** RAW gives all three divine
+    spellcasting. The omdura is a six-level Charisma caster reading the cleric spell list; the
+    vampire hunter a four-level Wisdom caster reading the inquisitor list, its first spells at 4th.
+    Neither needed a new spell list written: the generator has always been able to point one class
+    at another's list, which is how the warpriest and the oracle read the cleric's. Their
+    per-day tables are the standard six- and four-level progressions every other class of that
+    shape already uses.
+    - Their compendium class Items carry no casting information at all, so the tier is asserted in
+      `build_collab_class_data.py` — and the build now **fails** if the upstream pack ever ships
+      casting information of its own, rather than quietly preferring a hand-written answer to a
+      real one.
+    - **Remaining gap, and it is small:** the omdura's list is RAW the union of the cleric's and
+      the inquisitor's, and no such list has ever been written down. It reads the cleric's, which
+      contains everything an omdura can reach. *Rejected:* deriving the union as a new column.
+    - **A 16th-level-or-higher adept sees one spell slot on the Foundry sheet it cannot fill, and
+      that is allowed to stand.** The adept's spells stop at 5th level; the backend enforces that
+      and the web sheet shows it, but the Foundry sheet works its slots out from the caster tier
+      rather than from the numbers the generator sends, and offers a 6th. *Rejected:* having the
+      generator's own spell table drive the Foundry sheet instead. It would fix this, but it would
+      also put the generator in charge of every caster's slots at once — thirty classes' worth of
+      arithmetic that pf1 has been doing correctly — to correct one empty row on the rarest kind of
+      character in the game. Not worth the blast radius. If it is ever revisited, the trap is
+      written down in `build_npc_class_data.py`.
+
+- **Animal companions and mounts build like characters now.** A bonded creature used to arrive as a
+  stat block and a list of feat names picked at random out of a bag. It now chooses feats it actually
+  qualifies for, records which level each one came from, pays feat taxes, rolls its own mechanical
+  flaws, and reaches a Foundry sheet with the same dividers, tracker groups and basic buffs a player
+  character gets. Spec: `docs/feature_spec_todo.md` §8 **D14/D15/D16**.
+  - **Feats are labelled like class bonus feats** — `Animal Companion 5: Weapon Focus`, beside a
+    PC's `Fighter 1: Weapon Focus`. The number is the effective level at which that slot opened,
+    read off the chassis table's own `feats` column, which also anchors the feat-tax cadence.
+    *Rejected:* labelling by HD, and by species.
+  - **The 27-name feat pool was canonicalised and gated.** It held a dozen lowercase spellings and
+    one entry, `armor proficiency (light, medium, and heavy)`, that is not a feat in either
+    `data/feats.csv` or the pf1 compendium — so it could never resolve, and the module would have
+    attached a bare item with no rules text. It is now 29 canonical names, and picks are checked
+    against the creature's own ability scores and BAB one at a time, so a chain can build itself
+    (Dodge → Mobility → Spring Attack) and a Str 6 body cannot take Power Attack.
+  - **Feat tax runs, behind a curated allowlist.** The pool's feats open **128** distinct chain
+    children, and a prerequisite reader cannot refuse most of them — *Drunken Brawler*, *Wand
+    Dancer*, *Sword and Pistol* and *Arcane Armor Training* all have prerequisites an animal
+    genuinely meets. `tax_children` in `animal_companion.json` is the 23 that suit a body, each one
+    verified reachable and grantable. *Rejected:* confining tax to the pool, which would have fired
+    exactly once (`endurance → diehard`); and trusting the prerequisite reader alone.
+  - **A new animal flaw catalogue** (`Backend/json/flaws/animal_flaw_effects.json`, 12 minor / 10
+    major: Skittish, Gun-Shy, Old Wound, One-Eyed, Lame, Ill-Tempered …) on the PC's own ladder —
+    1st minor, 2nd major, 80/20 thereafter — buying bonus feats on the same diminishing scale.
+    *Rejected:* filtering the PC's 44 down to the animal-safe ones; about eight survive, so every
+    companion would have repeated the same flaws.
+  - **Feat and flaw effects are folded into the payload's numbers, and the sheet is told not to
+    re-apply them.** `stats.applied_changes` records every fold with its source, so a companion's HP
+    can be explained rather than just trusted, and the Foundry module strips `system.changes` off
+    every feat and flaw item. Buffs take the opposite rule: they keep their changes and ship
+    **inactive**, because they are situational and nothing counted them. *Rejected:* letting pf1
+    derive from intact changes — the standalone web sheet has no game system, so it would have been
+    wrong by exactly the feat bonuses.
+- **The six Occult Adventures classes generate.** `occultist`, `kineticist`, `medium`, `mesmerist`,
+  `psychic` and `spiritualist` are now in the default random pool — they had been filtered out since
+  the generator was written. Each one makes its own class choices, and the five casters get a
+  psychic-magic spellbook. Spec: `docs/feature_spec_todo.md` §10.
+  - **They were held out for a reason that turned out not to apply to them.** A compendium census
+    (`docs/wayfinder/class-pool/issues/01`) found all six fully present in the installed `pf1`
+    11.11 — class Item, features *and* choice pools. The renderer objection that the list was built
+    around is real only for the Path of War stalker and zealot, which `pf1-pow` 1.6.4 genuinely does
+    not ship; those two stay pending, now with a named blocker instead of a bare list entry.
+  - **The option pools are harvested, not authored.** `Backend/scripts/build_occult_class_data.py`
+    reads the Foundry compendia and writes 449 options into `Backend/json/class_data/<class>.json`.
+    *Rejected:* scraping d20pfsrd / Archive of Nethys. §8's familiar work had found `pf-content` too
+    thin to generate from, so this was checked rather than assumed — and this time the packs are
+    complete, because the class Item's `classAssociations` gives an exact granted-vs-selectable split
+    instead of a guess. Re-run the script after any pf1 or `pf-content` update.
+  - **Spell progressions are derived from pf1's own `casterProgression` tables**, read out of the
+    system's sourcemap. *Rejected:* typing the tables from the book. The derived occultist row
+    reproduces the repo's existing `bard` row exactly and the psychic row reproduces `sorcerer` in
+    both files — two independently-authored sources agreeing, which a hand-typed table could not
+    give. It also means the payload and the Foundry sheet cannot disagree about spell counts.
+  - **Two of the six degrade rather than being held back**, reusing §8's eidolon ruling. The
+    **kineticist's burn** is named and described but not tracked — it is an HP-priced resource with
+    no analogue in the generator. The **medium's spirit** is rolled once and frozen; the spirit is a
+    *daily* choice and the generator emits a static snapshot, so this is a house ruling and is
+    recorded as one. *Rejected:* holding both classes out until their subsystems could be modelled.
+  - **Eleven new `class features` buckets reach the Foundry sheet**, all registered in the module's
+    `CLASS_FEATURE_BUCKETS`. For the kineticist those buckets are the entire sheet, so an
+    unregistered one would have left the class looking empty — the "generated but invisible" failure
+    the psionics work already hit once.
+  - **The same eleven buckets are named on the standalone web sheet**, which had been falling back to
+    a prettified key (`Medium Spirit`, `Bold Stare`) with no "(Chosen)" tag. They now carry the
+    module's labels verbatim, so the two sheets name the same pick the same way. *Rejected:* a
+    dedicated Occult tab beside Path of War and Psionics — six classes run six different engines with
+    little in common, and unlike power points or maneuvers none of them needs a tracker the Class
+    Features tab cannot already show.
 - **Psionics generates.** All twelve Dreamscarred Press psionic classes — aegis, cryptic, dread,
   highlord, marksman, psion, psychic warrior, soulknife, tactician, vitalist, voyager, wilder — are
   now ordinary entries in `Backend/json/class_data.json` and roll in the default random pool with no
@@ -50,6 +167,39 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     — the class entry already exists and already carries the class's other key ability, so one row
     owning both beats two places that can drift. It stays distinct from `main_stat` because the
     questions differ: a psychic warrior manifests off Wisdom but plays off Strength.
+- **Psionic characters now show their psionics on both sheets.** Generation already picked the
+  powers; nothing downstream rendered them. A manifester imported into Foundry arrived with no
+  Psionics tab at all, and the only way to reveal one was to add a psionics class to the manifester
+  book by hand. Both front ends now build themselves from the payload.
+  - **The FoundryVTT module fills the `pf1-psionics` manifester books** (module repo,
+    `scripts/modify-abilities.js`). `pf1-psionics` gates its entire Psionics tab on a single flag —
+    whether any manifester book is marked in use — and reads nothing else: not a class item, not a
+    class tag, not a power. Writing that flag per manifesting class *is* the fix. Powers become real
+    `pf1-psionics.power` items, cloned from the module's own compendium where the name matches and
+    synthesized from `powers_desc_dict` where it does not, the same way Path of War maneuvers
+    already resolve. Misses are expected, not a defect: a measured 67 of the powers are
+    Metzofitz-only content that exists in no compendium.
+  - **Power points stay the module's to compute**, because its published tables and ours are the
+    same twenty numbers and `validate_psionics_data.py` asserts exactly that on every run. The
+    generator seeds the *current* pool instead, so a rolled NPC arrives rested. *Rejected:* pinning
+    our number into the book's formula, which would have two owners for one fact.
+  - **With `pf1-psionics` absent, powers become feat items** plus a per-class power-point pool,
+    mirroring the Path of War fallback. *Rejected:* skipping psionics entirely, which would import a
+    manifester with no trace of what it can do.
+  - **The standalone web sheet gained a Psionics tab**, beside Path of War: manifester level,
+    manifesting ability, max power level, discipline, an editable power-point tracker with a Rest
+    button, and powers grouped into collapsible per-level blocks. Non-manifesters see an empty
+    state, and the soulknife — which manifests nothing — is correctly not one.
+  - **The payload gained two fields the renderers could not derive.** `caster_type` on each
+    manifester entry is the low/med/high progression the Foundry book needs, derived by matching the
+    class's own power-point column against the published tables rather than hand-maintained in a
+    second map. `powers_by_level` names which power sits at which level: `psionic_powers.json` keys
+    a power's level by power *list* ("psion/wilder"), not by class, so the level a psion learns a
+    power at survives nowhere else. `powers_known_list` is now counted from those buckets, so the
+    two views cannot disagree.
+  - **A `manifester` golden payload** (seeded psion 8 / aegis 6) pins power selection for the first
+    time — the other six goldens all carry `manifesters: []`. One character covers two of the three
+    manifester shapes, including the points-but-no-powers aegis that a naive renderer drops.
 - **The Open Game License artifacts that psionics obliges.** Serving extracted game mechanics over
   HTTP is Distribution under section 10, so the licence now ships with them: a root
   `LICENSE-OGL.txt`, an Open Game Content notice marking the psionics data subtree (and marking the
@@ -63,6 +213,16 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     of War lines copy-pasted from an unrelated module. The build **warns** about copyright lines it
     has not verified against the published work instead of dropping them — omitting a source is the
     worse failure.
+- **`Backend/scripts/test_psionics_sweep.py` — a per-class psionics table.** The house-invariant
+  sweep answers "did anything break" across every class and prints pass or fail; this answers "is
+  *each* psionic class right", one row per class per level, in a table you can read. It exists
+  because the defect that prompted it was invisible to a pass/fail gate: the aegis and soulknife
+  generated their subsystem picks correctly and put them somewhere no renderer looked, so every
+  assertion passed while the sheet stayed empty. Columns cover powers known, free talents, the
+  ability-capped max power level, power points and caster type, whether the subsystem bucket
+  actually holds the picks due at that level, whether every emitted power carries rules text, and —
+  the one that makes "it shows up in Foundry" testable without launching Foundry — whether every
+  emitted name is one `pf1-psionics` will keep rather than silently drop.
 - **`test_house_invariants.py` now checks psionics** on every generated character, so all twelve
   classes are swept at levels 1/5/10/15/20 alongside the rest. It asserts that the `manifesters`
   block names exactly the character's psionic classes, that power points equal the published table
@@ -224,6 +384,377 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   - The docstring states plainly what it **cannot** catch: a stripped diacritic is only detectable
     when it ate a leading capital (`rling`), never mid-word (`Lindstrm`). A guard trusted further
     than it earns is worse than one with a documented ceiling.
+- **Bonded creatures have names, and a stated position on gear.** A companion, mount or familiar
+  that exists now carries a **name** drawn from its master's region pool and a rolled **sex**, so a
+  druid's wolf arrives as "Cédric" rather than as a second row labelled *Wolf*. Both sit on the
+  entry beside the species; nothing composes them into a label, because the Foundry module and the
+  web sheet each want a different one (spec §8 D2).
+  - **The name reuses `first_names_regions.json`** — the same ten region pools the PC draws from —
+    so it costs no new data and reads as regionally flavoured. *Rejected:* a curated animal-name
+    list (new curation, which the road-to-1.0 plan defers) and species-as-label.
+  - **The name never collides with the master's**, and **`species` is left strictly alone** because
+    it is the only key the Foundry module matches a `pf-content` Actor on. A name that leaked into
+    the match key would make every named companion miss its clone and silently degrade to a bare
+    stat block — the failure mode that already bit spell conditionals.
+  - **The sex is rolled per creature.** *Rejected:* reusing the master's, which would have made
+    every companion the same sex as its owner 100% of the time.
+  - **A companion owns nothing yet, and now says so**: `gear: []` plus a `gear_source` note that
+    records *both* the absence and that the gear will be bought from `character.gold` when it
+    arrives (Pathfinder gives companions no wealth-by-level, so the master pays). The point is that
+    the emptiness is a stated fact a later ticket fills, not a field nobody noticed was missing.
+    *Rejected:* modelling a mount's tack now, which drags barding's AC math into this release; and
+    saying nothing at all, which is how the question would have been answered by omission.
+    ⚠ When gear does land, characters generated from the same seed will make **different** armour
+    and weapon purchases, because the money now has a competing claim on it.
+  - **An entry that records an absence stays empty**: a lost coin flip or an archetype that removes
+    the bond yields `name: None`, `sex: None` and no gear key at all. *Rejected:* one uniform key
+    set with nulls everywhere, which ships a null-named, empty-geared creature for renderers to draw.
+  - **The deprecated `animal_companion` payload key is frozen** at its five existing fields and
+    gains none of this. *Rejected:* mirroring the new fields onto it — a deprecated key that is
+    never worse than its replacement is never migrated away from, and the name is the only reason
+    the sheet would ever move to `bonded_creatures`.
+  - **`Backend/scripts/validate_companion_identity.py`** holds all of the above, including the rule
+    that the sample must actually *reach* both a granted and an absent entry before it may report
+    success. The generated payload cannot carry these fields until `bonded_creatures` ships, so
+    without this the rules would have existed only as sentences in a spec.
+  - Companions of masters from **Tal-falko** and **Kaeru no Tochi** would have come out nameless:
+    the region a character carries is title-cased while the name-file keys are not, so two of the
+    ten regions never matched. The new name lookup resolves the region case-insensitively.
+- **Bonded creatures have numbers.** A druid's wolf now has HP, AC, touch and flat-footed AC, saves,
+  BAB, CMB/CMD, ability scores, size, speed, parsed attack lines and spent skill ranks — everything a
+  sheet needs to be worth opening. The block is computed by merging the species' published
+  advancement into its base stats; nothing reads it yet (the payload key is the next change).
+  - **A companion that grows no longer gets its size increase twice.** The published per-species
+    advancement numbers already fold the size change in — the proof is that a Dexterity *penalty*
+    appears on all 153 size-increasing rows and on none of the other 43, and growing is the only
+    thing in Pathfinder that lowers Dexterity. So those numbers are applied **exactly as printed**,
+    and the size table supplies only what the data provably lacks: the size modifiers to AC, attack,
+    CMB/CMD, Stealth and space. Without this a grizzly bear would have come out four points of
+    Strength too strong. *Rejected:* subtracting the size table back out of the published numbers —
+    27 species would have been left with a *negative* Strength residue, describing a bear that never
+    existed at any point in its life.
+  - **Where the size change came from is recorded, and marked as already counted.** The stat block
+    says a creature grew Medium → Large and what that contributed, purely so a sheet can explain a
+    number. A renderer that applies it a second time is the one way to reintroduce the double-count,
+    so the record says so in its own text and again in the payload comment.
+  - **A companion that was *born* Small gets its +1 too.** The size modifiers key off the creature's
+    final size rather than off the step it took, which is a case the original framing of the problem
+    missed entirely.
+  - **The house rules that apply to dice carry over; the ones shaped like a class do not.** A
+    companion gets maximised hit points, exactly as the character does. It does **not** get the
+    2-to-4 skill-rank floor, because that rule floors a *class's* ranks-per-level and an animal has
+    no class — its rank total is a single published number. The per-skill cap is likewise the
+    standard Pathfinder one. This is the same line already drawn for companion feats.
+  - **Attack routines stored as prose become real attack lines** — `"bite (1d8 plus trip)"` becomes a
+    line at full attack bonus with the damage, the Strength bonus and the rider separated out,
+    including Pathfinder's one-and-a-half Strength for a creature with a single natural attack
+    (rounded down, which an obvious `round(x * 1.5)` gets wrong at odd modifiers). **357 of the 358
+    routines parse**; the one that does not is an octopus's *tentacles (grab)*, which genuinely has
+    no damage die. Getting there meant handling the awkward eighth of the file rather than the tidy
+    majority: eight routines put commas *inside* the parentheses, four omit the parentheses entirely,
+    several offer an *"X or Y"* alternative that is not a second attack, and the axe beak spells the
+    one-and-a-half-Strength rule out in words. A companion whose bite shows no damage is a visibly
+    broken sheet, so the count is asserted rather than assumed.
+  - **Skill ranks go where an animal would actually put them**: Perception first, then the rest of
+    its permitted list, and never into Fly or Swim for a creature with no such speed. **A mindless
+    companion gets none at all** — 24 species (the vermin and most of the plants) have no
+    Intelligence score, and Pathfinder says such a creature cannot hold skill ranks. The companion
+    table still offers it a rank total, because that table was written for animals; spending it would
+    have put Perception ranks on a slug.
+  - **A companion's dice never disturb the character's.** The one random choice in a stat block draws
+    from its own generator seeded off the creature's identity, so adding companion skills does not
+    shift every roll made later in generation — otherwise a wolf's Stealth ranks would have quietly
+    changed its master's feats, gear and backstory.
+  - **Nothing the merge produces is dropped.** One-off species abilities that no stat field
+    enumerates — *sudden charge*, *stampede*, *ink cloud*, and 28 others — survive in their own
+    bucket. The spec had called for the merged block to replace the raw one on the entry; it cannot,
+    because the frozen `animal_companion` alias reads the same object and its consumer would have
+    silently changed underneath it.
+  - **Two things are carried but explicitly not applied**, rather than implied: the 17 archetypes
+    that alter a companion's progression describe it only in prose, so the entry reports them as
+    unapplied; and reach is omitted because it depends on whether a body is tall or long, which the
+    data never says.
+  - **`Backend/scripts/validate_companion_stats.py`** checks all 392 stat blocks and would fail on
+    447 counts if the double-count were reintroduced. It also asserts that the published numbers
+    still *disagree* with the size table in at least 30 places — otherwise the check could quietly
+    become vacuous if the data ever moved.
+- **The payload finally carries them.** A new `bonded_creatures` list on every payload carries one
+  entry per creature — companion, mount, familiar, eidolon — each with the stat block above,
+  including the entries that exist only to explain why there *isn't* one. The five-key
+  `animal_companion` alias is unchanged, so nothing reading it has to move.
+  - **The stacking golden had stopped testing stacking.** Its seed was chosen to roll two companion
+    grantors at once, but the region fix realigned the random stream and it quietly became a single
+    ordinary druid. Re-seeded to a case that stacks **three** grantors — hunter, ranger and druid —
+    which also exercises three different effective-level formulas at once.
+- **The invariant sweep now watches companions too**, covering what only a whole generated character
+  can show: the emitted shape, that an absence entry carries no stats, that the hit dice agree with
+  the post-stack chassis, that a size change is recorded exactly when the creature grew, and the
+  **druid flip** — a druid takes a companion or a domain, never both and never neither.
+  - **The sweep fails if it never produced a bonded creature at all.** It counts the branches it
+    reached, so a run cannot report success having asserted nothing — the failure mode that let the
+    stacking golden go quiet. 15,560 checks across 825 generations: 55 granted, 39 absences,
+    15 druid flips.
+- **A companion will get its own character sheet, and the route there is charted.** A new design
+  effort, `docs/wayfinder/companion-sheets/`, takes bonded creatures from *specified* to *on screen*:
+  a druid's wolf becomes a second sheet titled *"Ophir's animal companion: Cédric"*, not a row of
+  data on its master's.
+  - **Foundry and the web sheet get different shapes, deliberately** (spec §8 **D10**). In Foundry
+    each creature is a separate Actor, as already planned. On the standalone web sheet it instead
+    **fills in the Companions tab you currently type by hand**. *Rejected:* a second character in the
+    web sheet's roster — that sheet exports as one JSON file, and splitting a companion out of it
+    would break the portability the tab was built to protect.
+  - **Neither renderer is handed a ready-made title.** The backend keeps emitting plain facts — the
+    creature's name, its type, the master's name — and each renderer writes its own heading.
+    *Rejected:* a single title field on the payload, which would have forced one phrasing onto two
+    surfaces that word things differently.
+  - **The numbers came first.** The advancement merge and stat-block math landed before any sheet, so
+    the first companion sheet anyone opens shows real HP, AC, saves and attacks. *Rejected:* shipping
+    a sheet early from the level-chassis row alone — a page of placeholder numbers looks finished and
+    teaches nobody anything.
+  - **Two questions were genuinely open at charting**, each blocking one renderer: whether Foundry's
+    Pathfinder system honours numbers patched onto a compendium creature or quietly recomputes over
+    them, and what happens to companion details you have edited by hand when the same character is
+    imported again. Both have since been answered — see the two entries below.
+  - Two documents were **wrong and are now right**: the spec's "current state" and the codebase map
+    both still described the companion code as druid-only, which stopped being true when the grantor
+    table landed.
+  - **The Foundry half now has a recipe, and it starts by deleting something.** Every one of the 205
+    creature Actors the module clones from ships two hidden items that re-apply the companion
+    advancement table — so patching a generated companion's ability scores over the clone would have
+    made every one of them stronger than the rules allow, the same double-count the size package
+    already sprang once. Handing the job to Foundry instead is not the way out: its formula raises
+    Strength, Dexterity and natural armour a level early, at 3rd, 6th, 9th and every third level
+    after. The module deletes those two items and drives the creature's hit dice instead, which is
+    the number Foundry derives HP, attack bonus and saves from — and the table it uses to do that is
+    the same table the generator read.
+- **The Foundry module builds the companion sheets** (module repo, `scripts/createCompanions.js`).
+  One Actor per bonded creature in the Random Characters folder, body cloned from `pf-content`,
+  numbers written from `stats`, absences logged rather than dropped, and a species with no
+  compendium body built from the payload alone. The module's own changelog carries the
+  reader-facing version.
+  - **The recipe's numbers were verified before Foundry ever ran them.** A headless harness
+    (`tools/test_create_companions.mjs`, re-runnable against any payload) stubs the parts of pf1 the
+    file touches and replays the `companion` golden through it: the cloned
+    body's class item driven at the creature's **hit dice** reproduces the payload's HP, BAB, saves
+    and AC with **zero corrections**. That is ticket 02's central claim tested rather than asserted.
+  - **The correction pass stays anyway.** It diffs what pf1 derived against what the backend said
+    and writes the remainder into the stored seeds pf1 accumulates on top, so a world with different
+    health rules — or a familiar that does not advance like an animal — still lands on the payload's
+    numbers. What it cannot correct, it names.
+  - **The skill-name map moved to its own file** (`scripts/skills-dict.js`), because the companion
+    renderer spends ranks through the same table the character does and the map already carries the
+    scar of having drifted once. ⚠ `modify-abilities.js` still holds an identical copy — it was
+    being edited by other work at the time — so the deletion there is pending and both the file
+    header and the codebase map say so.
+- **The web sheet's Companions tab will fill itself in, and your edits are safe.** The tab you
+  currently type by hand gets one pre-filled block per bonded creature — HP, AC, saves, abilities,
+  attacks, skills, the lot — and the design for it is settled
+  (`docs/wayfinder/companion-sheets/` ticket 03). The tab is still yours: a filled-in companion is an
+  ordinary row you can rename, edit or delete like any other.
+  - **The clobber everyone was worried about cannot happen.** Rolling a character always creates a
+    *new* entry in your library rather than overwriting one, so a generated companion can never
+    arrive on top of one you have edited. Re-opening a character you exported restores exactly what
+    you saved, edits included.
+  - **Characters already in your library get filled in too**, not just newly rolled ones — the fill
+    runs once per character, the first time its sheet is drawn. If you had already typed your druid's
+    bird by hand you will end up with two rows and can delete either. *Rejected:* guessing which of
+    the two you meant to keep.
+  - **A companion you were never given is explained rather than omitted.** A druid who rolled a
+    domain instead of a bird, or a bond an archetype traded away, shows a one-line note — *"Druid —
+    no animal companion: chose a domain instead."* — instead of an empty tab that looks broken.
+    *Rejected:* skipping those entries silently, which is the confusion that started this effort.
+  - **Speed becomes free text, and skills and CMB/CMD get their own line.** A bird companion's speed
+    is *"10 ft., fly 80 ft. (average)"* and no single number can hold that; skill totals and CMB/CMD
+    are things you roll at the table, so they get real widgets rather than being buried in the notes
+    box. Everything else the generator computes — feats, special abilities, size, bonus tricks — is
+    written into the notes.
+  - **The block is titled with the companion's plain name**, not *"Ophir's animal companion:
+    Cédric"*. Foundry keeps the long form because there the companion is a separate sheet that needs
+    the context; here the tab heading and the type dropdown already supply it. *Rejected:* one
+    phrasing across both surfaces.
+- **Two more design efforts are charted, and both wait their turn.** `docs/wayfinder/class-pool/`
+  asks which classes should be rollable at all, and `docs/wayfinder/class-choices/` asks whether the
+  ones that are rollable pick their class options correctly. Neither is worked until the
+  bonded-creature system is finished and we are happy with it — that gate is written into both maps.
+  - **Six classes you cannot currently roll are Occult Adventures classes** — occultist, kineticist,
+    medium, mesmerist, psychic and spiritualist — held out of the random pool rather than missing,
+    along with the Path of War stalker and zealot. The first ticket is a census of what the installed
+    Foundry content can actually render, because a class that generates and cannot be imported is not
+    ready. The stalker and zealot may simply not exist in their module, in which case the answer is a
+    named blocker rather than a plan.
+  - **Charting already found characters getting the wrong number of class options.** A 20th-level
+    magus is handed **10 arcana where the rules grant 6**, and an investigator **10 talents where the
+    rules grant 9** — labelled with the wrong levels besides. The cause is that "how many picks, and
+    when" is currently answered three different ways in three different places, and nobody has ever
+    swept the whole table.
+  - **A bard's versatile performances are chosen and then thrown away.** The generator rolls them and
+    discards the result, so they reach neither sheet. The gunslinger's deeds and the hunter's animal
+    focus have option lists sitting in the repo that nothing reads, and the shifter has no aspect
+    picker at all.
+  - **The effort ends in a validator, not just a document.** Whatever the sweep concludes about each
+    class gets asserted in code, because a spec that says "the magus gets six arcana" goes stale the
+    moment someone edits a divisor — the same lesson a stale doc taught this repo when it silently
+    broke six weapons.
+
+### Changed
+- **The module's class roster lives in one file instead of three.** It used to be hard-coded in the
+  dropdown, in a dead byte-identical copy of the dialog, and in the item-collection boundary list,
+  with nothing checking they agreed — which is exactly how the occult classes reached two of the
+  three and not the one you look at. There is now a single `scripts/class-roster.js`, and a new
+  `Backend/scripts/validate_class_roster.py` (validator 17) fails if it disagrees with the backend's
+  rollable class list, puts a class in the wrong family, or drifts from `every_class.json`'s class
+  order — the ordering contract that decides whether one class swallows the next one's features.
+- **A class that says it casts is now checked in all four places it has to say so.** Declaring a
+  spellcaster means a caster tier, a place on the spellcasting roster, a casting ability and a
+  spells-per-day table — four files that never knew about each other. Miss one and the failure is
+  invisible in the worst way: the class ships with an empty spellbook, or blows up only on the
+  seeds that happen to roll it. `Backend/scripts/validate_caster_data.py` (validator 18) fails on
+  any of the four, and on a spell list pointed at a list that doesn't exist. The adept, the omdura
+  and the vampire hunter each had to be walked through those four by hand; nothing else will.
+  - It also fails a class filed under two casting abilities at once, which the **shaman** was —
+    listed as both Wisdom- and Charisma-based. Wisdom was already the one that took effect, and is
+    the one the shaman has by the book, so no shaman changes; the Charisma entry was text that
+    read like a rule and did nothing.
+- **Three golden fixtures were re-seeded, not just regenerated.** Seven new classes in the pool
+  realigned every multiclass draw, and all three multiclass goldens quietly stopped covering the
+  thing they exist for: `caster` lost its second spellbook, `companion` lost the three-grantor stack
+  and its archetype-removed bond, `manifester` lost the aegis and with it the only coverage of the
+  power-points-with-no-powers shape. Same failure mode as the 7275, 7323 and 8018 re-seeds. The
+  `companion` sweep now selects on the **coverage** — a stacked entry plus an absence entry — rather
+  than on "rolls druid + ranger + hunter", which was only ever how that coverage happened to arrive.
+  - **And that rule is now enforced instead of merely written down**, which is the durable half.
+    Each of the three fixtures carries a predicate describing the shape it exists to pin, checked on
+    every run — including when the goldens are being regenerated, because that is precisely when the
+    coverage gets written away. A pool change that costs a fixture its purpose now fails immediately
+    and says which shape went missing, instead of arriving as a two-thousand-line diff for someone
+    to read after the fact. All four historical losses would have been caught by name.
+
+### Removed
+- **The module's `html_dialog.js`.** An unreferenced copy of the generator dialog that nothing
+  imported and that had already gone stale — and the copy that missed the occult classes.
+- **The in-repo character sheet and `GET /sheet` are gone.** The standalone
+  *Pathfinder-Character-Sheet* front end superseded this copy some time ago, and the copy had been
+  quietly rotting behind it: its generate form posted to `/execute`, a route that does not exist,
+  and loaded two scripts (`saveFormData.js`, `populateForm.js`) that were not in `Backend/static/`
+  either — so the page had been non-functional apart from its link to `/sheet`. Deleted:
+  `templates/sheet.html`, `static/scripts/sheet.js`, `static/styles/sheet.css`, and the route.
+  New features land on the standalone sheet only; this one will not be extended again.
+  - **`/` still answers**, now as a signpost page naming the API endpoints, so the deployment's root
+    does not start 404ing on a health check. `/license`, `/backstory-stats` and
+    `/update_character_data` are untouched. *Rejected:* removing `/` too and going pure API.
+  - **`validate_name_data.py` follows the clients out of the repo.** Its region-reachability check
+    read the two deleted files, so it now reads the standalone sheet's `REGIONS` and the Foundry
+    module's dialog instead — both real clients, both outside this repo. A machine without them
+    checked out prints a loud `SKIPPED:` line per client rather than folding it into the warning
+    count, because a check that quietly stops running is the exact failure this script exists to
+    catch. `PF_FOUNDRY_DATA` overrides where it looks.
+
+### Fixed
+- **The kineticist would have been handed a spellbook, and the medium two spell levels it never
+  gets.** Both carried `"casting level": "mid"` in `class_data.json`, which `spells.py` branches on.
+  The pf1 class Items disagree — the kineticist has no `casting` block at all (burn is
+  Constitution-priced, exactly as `caster_mod`'s own comment says the caster map cannot express) and
+  the medium is a `low` progression. Corrected to `none` and `low`, and
+  `build_occult_class_data.py` now reconciles the field from the pack so it cannot drift back.
+  Latent until now only because the six were filtered out of the pool.
+- **Two goldens had stopped covering what they exist for.** Opening the pool to six more classes
+  realigned the multiclass roll: `companion`'s ranger became a ninja, collapsing the three-grantor
+  stack the golden was seeded for, and `manifester`'s aegis became a wizard, leaving no coverage at
+  all of the points-only manifester shape. Both were **re-scanned for new seeds rather than
+  regenerated in place** — 7971 (which also picks up an archetype-removed bond beside a real one,
+  so absence and stack now appear in one payload) and 8041. This is the second time this trap has
+  been hit; the seed comments say re-scan rather than edit the prose, and that is what they mean.
+- **Manifesters were short their free talents, and were spending real powers to buy them.** Every
+  one of the ten power-knowing psionic classes grants 0-level talents by class feature, and the
+  rules say in as many words that those talents *do not count against powers known* — a psion gets
+  three plus Detect Psionics, a tactician and a vitalist three, most classes two, a wilder one, a
+  marksman none. The generator granted none of them, and it drew from a pool that mixed the talent
+  tier in with real powers, so a level-1 psion who should know three powers *and* four talents could
+  roll three talents and nothing else. Talents are now granted on top of the class table and land in
+  power level 0; the counted pool starts at level 1 so a free thing can no longer cost a slot.
+- **Powers were handed out that the manifester's key ability forbids.** Every power-knowing class
+  requires a score of "at least 10 + the power's level" to learn a power, and only the
+  can-manifest-at-all floor was enforced — so a 17th-level psion with Int 14 was given 9th-level
+  powers instead of stopping at 4th. Max power level is now the class table capped by the ability
+  score. Most visible on the **psychic warrior**, which manifests off Wisdom but plays off Strength
+  and so is routinely capped below its table; that is the rule working, not a regression.
+- **Some powers reached the sheet with no rules text and no Foundry item.** The power *lists* cite
+  names the power *pages* spell differently — wiki redirects (`Thought Shield` →
+  `Thought Shield (power)`) and a few case-only variants — and selection matched names exactly,
+  which the data validator never did. A cited name that resolved to no page was picked anyway, and
+  arrived as an empty row in Foundry and as nothing at all on the web sheet. Selection now resolves
+  through the same aliases and casefolding the validator uses, and a name that resolves to nothing
+  is no longer legal to pick — which excludes the three known red links (`Manifest Veil`,
+  `Detect Compulsion`, `Mind Trap`) the validator has been warning about all along.
+- **The web sheet's Psionics tab existed but never appeared.** The tab module was written, loaded
+  and referenced, but had no entry in the sheet's tab list — the only thing that builds the tab
+  buttons and panes — so no manifester ever saw it. Registered beside Spells.
+- **The aegis and the soulknife showed nothing psionic.** Both generated their subsystem picks
+  correctly and filed them where nothing pointed: the soulknife has no manifesting ability, so a
+  manifesting-only filter dropped it and it produced no psionics block at all, and the aegis
+  rendered a bare power-point line while its 87 astral-suit customizations sat under generic class
+  features. The payload now carries a `subsystem_bucket` pointer on every psionic class (and the
+  soulknife's `mind_blade`), and both front ends render a class's own options on its psionics page.
+  The nine psionic buckets also gained Foundry display metadata, so blade skills and customizations
+  get their own dividers instead of the generic band — and "strategies" stops being labelled
+  "Strategie" by the trailing-s fallback.
+- **34 class options were named after a citation instead of themselves.** The option-list scraper
+  splits an entry on its first colon, which for an unbolded entry carrying a source note lands
+  *inside* it — so a soulknife blade skill was recorded as `Animal Senses (Source` with the rest of
+  the citation leaking into its description. The parser now hands an unbalanced parenthesis back to
+  the description. Beyond reading correctly, this fixed real Foundry matching: **class options
+  matched against `pf1-psionics` rose from 195 to 229 of 335**, because all 34 truncated names
+  match module items once they are spelled properly.
+- **Psionic characters imported into Foundry attacked at half their proper bonus.** All twelve
+  psionic classes arrived carrying the same progression — low BAB, a d6 hit die, 2 skill ranks per
+  level — because that is the placeholder the `pf1-psionics` module ships for every one of its
+  classes, and the harvest that puts those classes into the generator module's bundle copied it
+  through untouched. It happens to be right for the psion. It was wrong for the other eleven: an
+  **aegis or soulknife at level 20 showed +10 to hit instead of +20**, a psychic warrior +10 instead
+  of +15, and nearly every manifester was short half its skill ranks. The harvest
+  (`Backend/scripts/build_every_class.mjs`) now patches base attack bonus, hit die and skill ranks
+  from `Backend/json/class_data.json` — the scraped values the generator itself has used all along —
+  so the sheet and the backend finally agree. Re-run against the module repo's `every_class.json`
+  and `every_class_MODS.json`. *Rejected:* editing the two bundles by hand (they are generated, and
+  the next rebuild would silently undo it) and fixing it downstream in the module (pf1 reads the
+  class item directly, so the wrong number would still be in the file). The script now also refuses
+  to write at all if a harvested class is missing from `class_data.json`, and re-reads what it wrote
+  to confirm the values landed — an unpatched class is invisible in a 3 MB generated file, which is
+  why this one survived a release.
+- **Every region can now be chosen — five of the ten never worked.** Region selection had three
+  independent defects, all in `region_chooser`, and each looked exactly like success:
+  - **Ieso did not exist.** A stray `regions.remove(region)` ran after the loop that built the list,
+    so it deleted the last region. It appeared in **0 of 2,000** random draws, and asking for it
+    explicitly handed back a different region — while the campaign lore file carried Ieso lore no
+    character could ever reach. The line it replaced had the mirror-image bug at the other end of the
+    list, so this was the second off-by-one in the same spot; the resolver now works from the region
+    names themselves rather than positions in a list.
+  - **Tal-falko and Kaeru no Tochi characters were given other regions' names.** The chosen region
+    was title-cased before being stored, which turned `Tal-falko` into `Tal-Falko` and
+    `Kaeru no Tochi` into `Kaeru No Tochi` (capitalising a Japanese particle). Neither matches the
+    name files, so those characters — roughly a fifth of all NPCs — silently drew **both** their
+    first and last name from a randomly chosen different region. The old golden characters show it:
+    a fighter whose homeland reads *Tal-Falko* was named *Henry Sokolov*, a **Dolestan** name.
+  - **"Grundykin Damplands" and "Dust Cairn" were never selectable.** Those are the labels the
+    Foundry dialog and the web sheet send; the regions are recorded as `Grundy` and `Dust-Cairn`, and
+    an unrecognised region silently became a random one.
+  - **The region a character is given is now the one that was asked for**, in whatever spelling or
+    casing the client uses, and an unrecognised one says so instead of quietly substituting. Region
+    names are matched the same way race names already are (ignoring case, spaces and punctuation),
+    with a small alias table for the two labels that are a genuinely different name. *Rejected:*
+    correcting only the clients — the Foundry module ships on its own release cycle and a browser's
+    saved form data keeps sending old values, so the backend has to keep accepting them.
+  - The web sheet and the page at `/` now send the recorded region name while still showing the
+    friendlier label. The root page's region field was a **number** input whose value the generator
+    could not read at all, so every region choice made there had always been discarded.
+  - **`validate_name_data.py` now proves it**: every region must come back as itself when asked for
+    by name in any casing, must appear across a sample of random draws, and every option the in-repo
+    clients offer must resolve to a real region — with all ten covered between them. None of this is
+    visible from the data files alone, which is how it went unnoticed for over a year.
+  - ⚠ **Generated characters change for the same seed.** Names and homelands are the point of the
+    fix; some seeds also shift further, because the corrected name draw consumes a different amount
+    of randomness and everything drawn afterwards moves with it. All six golden payloads were
+    regenerated; four changed only their name and region, two changed broadly.
 
 ### Changed
 - **Psionic mechanics will be sourced from the Library of Metzofitz wiki, not from the
@@ -346,7 +877,249 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   the matrix. The payload now exports `skill_rank_budget` and `normal_feat_amount` as the sweep's
   assertion handles.
 
+### Changed
+- **One definition of the archetype pipeline, and one owner for its vocabulary.**
+  `build_companion_archetypes.generate()` is now the single statement of what the generated file is
+  (classify → confirm → correct → guarantee a `removes_scope`); `validate_companion_archetypes.py`
+  calls it instead of hand-copying the builder's call sequence, which was kept in step by nothing
+  but a comment reading "must mirror … exactly". The quiet failure was the dangerous one: a new
+  pipeline step added to one and not the other would leave the two agreeing by coincidence until it
+  first changed real output. The builder likewise imports `EFFECTS` from `validate_companion_data.py`
+  rather than restating it — the "restate a symbol instead of naming its owner" pattern CLAUDE.md
+  calls a bug magnet.
+- **The archetype classifier reads clause by clause instead of blob by blob, and it now reproduces
+  every human verdict.** The first pass concatenated an archetype's whole prose and matched generic
+  regexes over it; measured against the first 15 signed sign-offs it scored **6/15**. The blob was
+  the bug: a druid's nature bond has **two sides**, and once the text is concatenated a sentence
+  about domains is indistinguishable from one about the companion. It now splits the *bond feature's
+  own* text into clauses and binds each prohibition to its own object — **17/17**, pinned by the new
+  `Backend/scripts/test_companion_archetype_classifier.py`.
+  - **Five rules the sign-off exposed**, none of which existed before: removal by prohibition
+    ("cannot select an animal companion" — no "replaces" sentence to key on, so Nithveil Adept read
+    as harmless); domain-side-only text (Cave Druid's bond text is *only* a domain list, and read as
+    a species restriction); forcing by prohibition ("cannot … choose a domain instead"); a change of
+    creature **kind**; and property restrictions.
+  - **A sixth effect, `creature_type`.** #38's five effects cannot say "the bond yields something
+    else" — a Draconic Druid gets a *drake*, an Elemental Ally four *eidolons*. 25 archetypes carry
+    it. Without it a druid whose rules say drake would silently generate a wolf.
+  - **Property restrictions are derived, not hand-listed.** "An animal with a fly speed" resolves
+    against `animal_choices.json` to the 21 species that have one, so it stays correct as species are
+    added. Only *resolved* names enter `species_pool`; an unresolved phrase is carried separately,
+    because a guessed species is a hard validator failure.
+  - **`forces` and `removes` are mutually exclusive** and were co-occurring on 13 entries. Where the
+    bond yields a different kind of creature the prohibition is on the *animal companion* and the
+    grant is its replacement, so it is not a removal; the 8 genuinely ambiguous ones are marked
+    `conflict` and dropped to low confidence rather than silently resolved.
+  - **Three archetypes were never bond archetypes at all.** `BOND_TARGETS` held a bare `"mount"`,
+    which matches inside "**mount**ain" — Mountain Druid, Summit Sentinel and Mountain Witch were
+    classified on a substring. The real population is **202**, not 206.
+
+### Added
+- **Who grants a bonded creature is a data table now, and five more classes actually get one**
+  ([#30](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/30)). The generator
+  gave a companion to druids and nobody else, through a hard-coded check. New
+  `Backend/json/companion_grantors.json` declares every grantor — druid, ranger, hunter, wizard,
+  sorcerer (Arcane bloodline only), witch, paladin, cavalier, samurai, summoner, and the Spheres of
+  Might *Beastmastery* talent, which is not a class at all — and one resolver in
+  `animal_companions.py` is the single path to a creature. **Paladins, cavaliers and samurai now
+  arrive with mounts; rangers and hunters with companions.**
+  - **Effective level is the grantor's own class level**, transformed by that row's expression
+    (a ranger's companion is at *level − 3*), stacked across sources and capped at character level.
+    Below a grantor's threshold there is **no creature at all** — a paladin 3 has no mount and does
+    not get a level-1 one.
+  - **`shifter`, `antipaladin` and unconditional `sorcerer` are deliberately not rows**, per the
+    rules check in #23.
+- **No druid has ever generated a vermin companion. Now they can.** `domain_chance` was read by
+  *both* the domain-vs-companion gate (`<= 90`) and the species ladder (normal `<= 80`, plant
+  `<= 90`, else vermin). The ladder only ran when the roll was already `<= 90`, so the vermin branch
+  was unreachable by construction. The species tier draws its own number: **23 vermin companions in
+  400 druids**, where the count was previously zero.
+- **The validators are wired to something that runs them.** This repo had eleven
+  `Backend/scripts/validate_*.py` gates and **nothing invoked any of them** — no CI, no pre-commit,
+  no runner. A gate nobody runs is a sentence, which is the failure the docs doctrine exists to
+  prevent. New `Backend/scripts/validate_all.py` discovers every validator by glob (so a new one is
+  covered the moment it is added, with nothing to register) and runs each in its own process, so one
+  crashing cannot hide the rest. New `.github/workflows/validate.yml` runs it on every push,
+  alongside a trimmed invariant sweep and a check that the generated data files still match their
+  builders. All eleven pass today, which is the first evidence that the eight pre-existing ones had
+  not silently rotted.
+- **Bond-touching archetypes are classified: the `companion_archetypes.json` triad**
+  ([#40](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/40)).
+  `archetypes.json` holds 1,303 archetypes with no structured `replaces` field — the relation
+  between an archetype and the class feature it swaps exists only as prose. Since an archetype is
+  rolled *unconditionally* for every class, a druid has a ~57% chance of rolling one that touches
+  its nature bond, so this cannot be skipped. `build_companion_archetypes.py` classifies the 206
+  that do; `companion_archetypes_overrides.json` wins over it; `validate_companion_archetypes.py`
+  gates the pair.
+  - **The trap is that `forces` cannot be read off the closing sentence.** Cinderwalker (deletes the
+    companion) and Beast Master (grants one) carry the *identical* "This ability replaces hunter's
+    bond." Classification therefore reads what the **replacing feature is**, from its own text.
+    Both come out right.
+  - **The vocabulary needed widening: 33 archetypes have two effects.** Devolutionist both forces a
+    species ("must choose a devolved humanoid … use the stats for an ape animal companion") *and*
+    suppresses a field of the advancement merge ("doesn't increase to size Large at 4th level").
+    #38 gives an archetype one `effect`; collapsing the pair silently drops whichever was tested
+    second, so entries now carry an `effects` **list** beside the single-valued primary.
+  - **Every verdict is a proposal until signed off.** `docs/companion_archetype_signoff.md` is the
+    worksheet — least-confident first, each proposed effect quoted with the phrase that triggered
+    it, so a reviewer can judge without opening the book. 23 entries are flagged where a "select
+    from the following" restriction names **domains** rather than creatures: the druid's nature bond
+    has two sides, and a domain-side restriction is indistinguishable from a species pool until you
+    read what is being listed.
+  - **All 202 verdicts are now signed off**, every one read against the archetype's own rules text
+    rather than the classifier's proposal. 110 came back corrected and live in
+    `companion_archetypes_overrides.json`; the other 92 agreed with the generated verdict. The
+    classifier scored **20/81** against the deliberately-hard residue and **92/121** against the
+    rest — good enough to propose, not to be believed, which is why the signed data is what ships.
+  - **A confirmation is deliberately not an override.** New
+    `Backend/json/companion_archetypes_verified.json` records "a full read agreed with the generated
+    verdict" as its own thing, because an override wins permanently: recording the 92 agreements as
+    overrides would freeze today's proposal and stop any later classifier fix from ever taking
+    effect. If the classifier later disagrees with a verified entry the builder prints `STALE:`
+    instead of quietly changing the answer under a "signed off" label.
+  - **`forces` now applies only to classes whose bond is a choice** — druid, ranger, wizard,
+    sorcerer. A hunter, witch, cavalier, samurai or summoner always has its creature, so there is no
+    flip to suppress; tagging those `forces` described nothing and hid the real effect. Kept in step
+    with which rows of `companion_grantors.json` carry a `choice`.
+- **The `pf-content` Actor names the module clones are captured and gated**
+  ([#29](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/29)).
+  `dump_pf_content_actors.py` writes `pf_content_companions.json` — 205 companions, 175 familiars
+  and 14 eidolon base forms (seven forms in both sizes, as the spec predicted).
+  `validate_companion_names.py` diffs every species the generator can emit against it: **144 of 196
+  match**, and the 52 that do not are listed by name. A miss stays a warning, because degrading to a
+  bare `npc` is the intended behaviour (D3) — but a *silent* miss is what already bit spell
+  conditionals and psionics, so the count is printed every run and `--strict` promotes it.
+  - The ticket asked for a new `.mjs` LevelDB reader; the existing `dump_foundry_pack.mjs` is
+    already generic over pack directories, and `reconcile_psionics_names.py` already solves finding
+    an installed `classic-level`. Reused both — the new file is the Python caller only.
+- **The companion data has a gate: `Backend/scripts/validate_companion_data.py`**
+  ([#27](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/27)). The scrape repair
+  above is worth nothing if the next edit quietly undoes it, so the conventions it established are
+  now asserted rather than described. It shares `repair_animal_choices.py`'s vocabulary — the size
+  list, the block regexes, the drifted spellings — by importing them, so the repairer and the gate
+  cannot disagree about what a well-formed block is.
+  - **What fails is what no legitimate entry can be:** a bare integer where an advancement delta
+    belongs, a positive Dex on a size increase, an absolute score written as a delta or the reverse,
+    prose in an ability slot, an underscored key shadowing a spaced one, an `ac` that is not a
+    natural-armor delta, a size outside the nine categories.
+  - **What does *not* fail is the size package**, and this is a correction to the spec. §8 describes
+    it as Str +8 / Dex −2 / Con +4 / natural armor +2, but that is one row of PF1e's size-change
+    table, not a universal rule — Small → Medium is Str +4 / Con +2, and Large → Huge carries
+    natural armor +3. Measured against the *correct* scaled table, **97 of 153 size increases still
+    disagree** — `bear, grizzly` reaches Large on Str +4. Those are the published per-species
+    entries, and for a companion the published entry is the authority, not a table derived from it.
+    So the deviations print as a WARN census every run: visible, counted, and never a build failure
+    over faithfully transcribed rules text. *Rejected: hard-failing the table* (turns 97 faithful
+    rows red and invites "fixing" the data to match a formula) *and a curated 97-row allowlist*
+    (the same audit, paid up front, for a signal the WARN block already gives).
+  - It also **owns the closed vocabulary** from the D8 grill — the `outcome`, `effect` and `flags`
+    sets — as module constants, and validates `companion_grantors.json` and
+    `companion_archetypes.json` against them the moment those files exist. One owner, importable by
+    the grantor resolver and the archetype triad, the way `validate_maneuver_changes.py` takes its
+    target vocabulary from `validate_quality_effects.py` instead of restating it.
+- **Reindeer, griffon and hippogriff join the companion roster, and a `magical_beast` tier keeps
+  the last two out of the random roll.** Added by the new `Backend/scripts/scrape_companion_species.py`
+  ([#41](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/41)).
+  - Griffon and hippogriff are magical beasts no druid can simply have — they arrive only through an
+    archetype's curated species pool. `animal_chooser` reads only `normal` / `plant` / `vermin`, so a
+    fourth `magical_beast` tier makes that restriction structural rather than something every future
+    consumer has to remember.
+  - d20pfsrd carries **two** griffon and two hippogriff entries; the script selects by enclosing
+    section, taking the non-third-party one over the `LG:LH` version gated behind a *Beast-Speaker*
+    feat this generator doesn't model. Choosing by name alone would silently take whichever the
+    parser reached last.
+  - **Five of the nine species the ticket called missing already existed** under this file's
+    `"noun, modifier"` spelling — `bat, dire`, `weasel, giant` — or without a *giant* qualifier that
+    the stat block already implies (the companion seahorse is Large; `seahorse` *is* the giant one).
+    Verified field-by-field against Archives of Nethys. New
+    `Backend/json/companion_species_aliases.json` maps the pool spellings onto the file's keys, so
+    the hard-failure rule for absent species doesn't fire on five creatures that are present.
+  - **Giant eagle was not added.** PF1e publishes no animal-companion stat block for one, and the
+    archetype that would grant it forbids mounts with a fly speed. It is recorded in the alias file
+    as unavailable, with guidance, rather than invented.
+
 ### Fixed
+- **A druid whose archetype removes the animal companion keeps its domain.** Six archetypes —
+  Blight Druid, Nithveil Adept, Storm Druid, Urban Druid, Life Channeler and Ancient Guardian —
+  forbid the *creature* while leaving the other half of the nature bond reachable ("a blight druid
+  may not bond with an animal companion, but may … select from the Darkness, Death, and Destruction
+  domains"). The resolver collapsed every `removes` to `archetype_removed`, and the domain gate
+  fires only on `domain`, so those druids generated with **no companion and no domain** — the entire
+  class feature silently gone.
+  - **`removes` now says WHAT it removed.** A new `removes_scope` on each entry is either `creature`
+    (the other side of a choice-bond survives) or `feature` (the whole thing is replaced, so nothing
+    does). `feature` is the default because it is both conservative and overwhelmingly common: all
+    25 Ranger and all 18 Wizard `removes` entries read "this ability replaces hunter's bond / arcane
+    bond". Druid is the only class with a genuine split, 6 and 6 — Death Druid, Feral Shifter,
+    Halcyon Druid, Progenitor, Tempest Druid and Urushiol trade the bond away for a phantom, a
+    bonded mask, an aura or a poison, and correctly still get nothing.
+  - *Rejected:* falling through unconditionally for every choice-bearing class. It would have fixed
+    six archetypes and broken five, handing a domain to archetypes whose rules text gives it up. The
+    scoped version needed six entries marked and no re-reading of the other 93 signed `removes`.
+  - The value is closed by `validate_companion_archetypes.py` in both directions on the *merged*
+    file — a `removes` without a scope fails, and a scope without a `removes` fails — because an
+    override is a partial patch and neither file is complete alone.
+  - **This also retires a measurement that could not have caught it.** The "both = 0, neither = 0
+    over 400 generations" figure recorded for the druid flip never rolled an archetype, so it could
+    not reach the broken path at all. A sample that cannot reach a defect reports zero forever.
+- **A companion fed by two classes is built from the right row of the advancement table.** Sources
+  of the same creature type stack their effective levels, but the chassis was read at each row's own
+  *pre-stack* level and never re-read, so a hunter 8 / druid 6 stacked to effective level 14 while
+  keeping the druid's level-6 row — HD 6 instead of 12, three feats instead of six — and
+  `animal_feats` drew from the stale row too.
+- **The companion stack has a golden payload at last.** All five existing goldens carry
+  `animal_companion: null`, so map #18 — the grantor table, the species ladder, the archetype
+  effects, the chassis — had no end-to-end coverage whatsoever, which is precisely how the stacking
+  defect above survived a review. The new `companion` config rolls hunter 8 / druid 6 and pins the
+  stacked chassis. The seed pair was chosen deliberately: most adjacent companion-table levels
+  differ, but 6→7 does not, so a closer pair would have pinned nothing.
+- **The classifier's fixture gate actually runs now.** It was
+  `test_companion_archetype_classifier.py`, while `validate_all.py` discovers gates by globbing
+  `validate_*.py` — so neither the runner nor CI ever invoked it, and its 17/17 was only ever true
+  when somebody ran it by hand, from a file that looks exactly like a wired test. Renamed to
+  `validate_companion_archetype_classifier.py`; the existing glob now finds it, with nothing to
+  register. **Twelve validators run, not eleven.**
+- **`validate_companion_names.py` can fail at the thing it exists for.** Its `--strict` flag was
+  passed by nobody, so the name-match rate it polices could regress from 52 misses to 150 and the
+  build would stay green. A miss is still legitimate — the module degrades to a bare `npc` by D3 —
+  so the gate is now a ratchet on `UNMATCHED_BASELINE`, which fails only on *regression*.
+  *Rejected:* wiring `--strict`, which would fail the build today over 52 known and accepted misses.
+- **Eleven animal companions the generator could never roll are reachable, and advanced companions
+  stopped gaining +2 AC they were never owed.** `Backend/json/animal_choices.json` carried five
+  distinct scrape defects, repaired by the new idempotent
+  `Backend/scripts/repair_animal_choices.py` ([#26](https://github.com/The-Data-is-a-lie/Pathfinder_Char_Creator/issues/26)).
+  - **The scrape lost a nesting level and swallowed a species run whole.** `shark`,
+    `shark, hammerhead`, `shrike, impaler`, `skittergoat`, `skunk, giant`, four snakes,
+    `snapping turtle` and `spinosaurus` were sitting *inside* `seahorse`'s body, so the chooser —
+    which rolls over the top-level keys — could not reach any of them. `seahorse` and `walrus` also
+    had their own advancement block buried one level too deep. Normal companions: **145 → 156**.
+  - **Advancement `dex` deltas had lost their minus sign** on 128 rows. A PF1e size increase never
+    *raises* Dexterity, and 16 rows in the identical position had kept their `-2`, which is what
+    identified the rest as damage rather than data. Merging the file as written inflated every
+    advanced companion by +4 Dex — **+2 AC, +2 Reflex, +2 initiative**.
+  - Advancement deltas are now **signed strings** (`"+8"`, `"-2"`) while the absolute scores in
+    `starting statistics` stay bare integers, so the delta-vs-absolute distinction is visible in the
+    type rather than inferred from context.
+  - **Six underscored key spellings** (`ability_scores`, `starting_statistics`,
+    `4th-level_advancement`, …) shadowed the spaced forms across 88 keys, so lookups silently missed
+    those species. Normalised to the spaced spelling.
+  - `faerie mount`'s advancement `ability scores` block had swallowed its sibling `size` / `speed` /
+    `attack` fields, and 24 mindless vermin split PF1e's "no Int score" between `""` and `null` —
+    now uniformly `null`, which is distinct from an Int of 0.
+  - **Three further defects, found by pointing the new validator at the repaired file** — the
+    argument for writing the gate in the same pass as the repair rather than after it.
+    - **Three Dex deltas had the minus flipped to a plus rather than dropped** — `giant raven`
+      `+2`, `troodon` `+4`, `sniper cactus` `+2`, each on a size increase. They survived the first
+      pass because they *were* signed strings, and the repair only distrusted bare integers. Same
+      rule, same repair: the entry owns the magnitude, PF1e owns the sign.
+    - **Nine `ac` values were missing the word "armor"** (`"+1 natural"`, `"+2"`, `"+8 natural"`),
+      eight of them in `starting statistics`, which the first pass never examined. Only the wording
+      is normalised — the magnitude is left exactly as published.
+    - `giant salamander`'s 4th-level `dex: 2` — previously reported and left alone, because with no
+      size increase there is no rule to recover the sign from — is now resolved by hand to `"+2"`,
+      in a named `HAND_SIGNS` table. Dex rising without a size change is legal PF1e, so positive is
+      the reading; recording it as a one-entry exception keeps the single survivor from quietly
+      becoming the precedent for a second.
 - **Characters from Sojoria, Tal-falko and Feyador have their names back.** Every non-ASCII Latin
   character had been deleted from the two hand-authored name files — mid-word, not just at the
   start — so the generator produced `Stefan rling` for `Stefan Örling`, plus `Lindstrm`, `Trnqvist`,

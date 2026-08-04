@@ -3,7 +3,7 @@ from math import floor
 #importing stats in case we want to work on them
 import random
 from utils import data
-from utils.data import traits, mannerisms, regions, weapon_groups, weapon_groups_region, disciplines, skills,  languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class#evil_deities, good_deities, neutral_deities,
+from utils.data import traits, mannerisms, regions, REGION_ALIASES, weapon_groups, weapon_groups_region, disciplines, skills,  languages, hair_colors, hair_types, appearance, eye_colors, path_of_war_class#evil_deities, good_deities, neutral_deities,
 import json
 import sys
 from utils.class_func.race_func import *
@@ -25,24 +25,55 @@ def roll_dice(num_dice, num_sides):
 def roll_inherent(sides,size):
     return random.randint(sides,size)
 
+def slug(value):
+    """Alphanumerics only, lowercased -- the match key for client-supplied names.
+
+    Clients spell things their own way ('monkey-goblin', 'Dust Cairn', 'TAL-FALKO') while the data
+    files carry one exact key each. Comparing slugs resolves every spelling that differs only in
+    casing, spacing or punctuation, which is the whole of the drift for races and all but one region.
+    """
+    return ''.join(ch for ch in str(value).lower() if ch.isalnum())
+
+
+# Sentinels every client sends for "surprise me". None of them is a failed lookup, so none of them
+# warns: `sheet.js` and the Foundry dialog both offer a literal 'Random' option, and a blank form
+# field arrives as ''.
+_RANDOM_SENTINELS = {'', 'random', '0', 'none'}
+
+
 def region_chooser(character, userInput_region):
-    """
-    Characters either choose a region or randomly select one
-    Return
-    - region
-    """
-    pre_regions = list(character.first_names_regions.keys())
-    regions = []
-    for region in pre_regions:
-        regions.append(region.title())
+    """Resolve a requested region to its CANONICAL key, or roll one.
 
-    regions.remove(region)
-    if isinstance(userInput_region, str) and userInput_region.title() in regions:
-        region_selected = userInput_region.title()        
-    else:
-        region_selected = random.choice(regions).title()
+    The key in `first_names_regions.json` is canonical (`data.regions`) and is what gets stored and
+    emitted -- never a `.title()`d form. That is not cosmetic: `.title()` turns 'Tal-falko' into
+    'Tal-Falko' and 'Kaeru no Tochi' into 'Kaeru No Tochi', neither of which is a key in either name
+    file, so `name_chooser` fell through to its "should never occur" branch and drew BOTH names from
+    a randomly chosen other region -- about a fifth of all NPCs.
 
-    character.region = region_selected
+    Two more things this function used to get wrong, both verified by `validate_name_data.py` now:
+
+    * IT DELETED A REGION. `regions.remove(region)` ran after the `for region in ...` loop, so it
+      removed whatever the last key was (Ieso). Zero of 2,000 random draws produced it and asking for
+      it explicitly returned something else -- while `campaign_lore.json` carried Ieso lore no
+      character could reach. The line it replaced (`randint(1, len(regions)-1)`, see git log -L) had
+      the mirror-image bug at index 0, so this is the second off-by-one in the same spot: prefer the
+      dict over an index.
+    * UNKNOWN INPUT WAS SILENT. A region the resolver could not match looked exactly like one it
+      could, which is how 'Grundykin Damplands' and 'Dust Cairn' -- what the Foundry dialog and
+      sheet.js actually send -- went years without working.
+    """
+    regions = list(character.first_names_regions.keys())
+    canonical = {slug(name): name for name in regions}
+
+    chosen = None
+    if isinstance(userInput_region, str) and slug(userInput_region) not in _RANDOM_SENTINELS:
+        key = slug(userInput_region)
+        chosen = canonical.get(key) or canonical.get(slug(REGION_ALIASES.get(key, '')))
+        if chosen is None:
+            print(f"region_chooser: unknown region {userInput_region!r}; rolling randomly "
+                  f"(known: {', '.join(regions)})")
+
+    character.region = chosen or random.choice(regions)
     return character.region
 
 def race_chooser(character, userInput_race):
@@ -55,8 +86,7 @@ def race_chooser(character, userInput_race):
     # Match on an alphanumeric-only key so any client spelling resolves to the data files'
     # exact key: the web sheet / Foundry module send slugs ('monkey-goblin', 'half-elf'),
     # and the data keys mix casing ('Monkey goblin', 'Half-Elf'). Unknown input (incl.
-    # 'Random') falls through to a random race.
-    slug = lambda s: ''.join(ch for ch in str(s).lower() if ch.isalnum())
+    # 'Random') falls through to a random race. `slug` is shared with region_chooser.
     canonical = {slug(r): r for r in race_data}
     chosen = canonical.get(slug(userInput_race)) if isinstance(userInput_race, str) else None
     character.chosen_race = chosen or random.choice(list(race_data.keys()))
@@ -76,6 +106,39 @@ def gender_chooser(character, userInput_gender):
     character.chosen_gender = userInput_gender
     return character.chosen_gender
 
+def first_name_for(character, region, sex, exclude=None):
+    """One first name for (region, sex), or None if that pool does not exist.
+
+    The pure half of `name_chooser`: same `first_names_regions` lookup, same "Tal-Falko" / "Nameless"
+    fallbacks, but it does NOT touch the character. Bonded creatures name themselves through here
+    (`class_func/animal_companions.py`, #37) so the region -> gender -> names lookup keeps one owner.
+
+    `exclude` drops a name from the pool -- a companion draws from the same list its master drew
+    from, and "Tal-Falko and his wolf Tal-Falko" is otherwise a live outcome. It is a preference,
+    not a guarantee: a one-name pool still returns that name rather than nothing.
+    """
+    pools = getattr(character, 'first_names_regions', None) or {}
+    if region not in pools:
+        # Defence in depth. `region_chooser` now stores the canonical key, so every in-generator
+        # caller passes one; this fold only matters for a caller that builds a character itself
+        # (`validate_companion_identity.py`) or for data that gains a region the resolver has not
+        # seen. It was load-bearing when `character.region` was title-cased.
+        folded = {str(key).casefold(): key for key in pools}
+        region = folded.get(str(region).casefold(), region)
+    by_sex = pools.get(region, "Tal-Falko")
+    # The historical default is a STRING, not a dict, so a missing region cannot be `.get`-chained.
+    # `name_chooser` never reaches it (both of its branches pick a region that exists); a new caller
+    # can, and gets None instead of an AttributeError.
+    if not isinstance(by_sex, dict):
+        return None
+    names = by_sex.get(sex, "Nameless")
+    if not isinstance(names, (list, tuple)) or not names:
+        return None
+    if exclude is not None:
+        names = [name for name in names if name != exclude] or names
+    return random.choice(names)
+
+
 def name_chooser(character):
     """
     Randomly generates names by region
@@ -87,20 +150,18 @@ def name_chooser(character):
 
 
     if character.region in f_name_list:
-        f_names = character.first_names_regions.get(character.region, "Tal-Falko").get(character.chosen_gender, "Nameless")
-        l_names = character.last_names_regions[character.region]        
-        character.f_name = random.choice(f_names)
-        character.l_name = random.choice(l_names) 
+        l_names = character.last_names_regions[character.region]
+        character.f_name = first_name_for(character, character.region, character.chosen_gender)
+        character.l_name = random.choice(l_names)
         character.full_name = character.f_name + character.l_name
 
     else:
         # wehave this section in case of an emergency and region isn't selected. But this should never occur
         region_list = (list(f_name_list))
         region = random.choice(region_list)
-        f_names = character.first_names_regions.get(region, "Tal-Falko").get(character.chosen_gender, "Nameless")
-        l_names = character.last_names_regions[region]      
-        character.f_name = random.choice(f_names)
-        character.l_name = random.choice(l_names) 
+        l_names = character.last_names_regions[region]
+        character.f_name = first_name_for(character, region, character.chosen_gender)
+        character.l_name = random.choice(l_names)
         character.full_name = character.f_name + character.l_name
 
     return character.f_name, character.l_name
@@ -119,8 +180,40 @@ def _available_class_pool(character):
     occult_classes = [x.lower() for x in getattr(data, 'occult_classes')]
     pending = [x.lower() for x in getattr(data, 'pow_classes_pending_foundry', [])]
     pending += [x.lower() for x in getattr(data, 'psionic_classes_pending', [])]
+    pending += [x.lower() for x in getattr(data, 'classes_pending_foundry', [])]
     return [x for x in character.class_data.keys()
             if x not in occult_classes and x not in pending]
+
+
+# The dropdown's per-group "Random <group>" entries arrive as these, after chooseClass has already
+# turned the slug's hyphen into a space ("random-occult" -> "random occult"). Kept as a prefix
+# rather than five literals so the token set is derived from data.CLASS_GROUPS and cannot drift
+# from the module's own copy -- validate_class_roster.py checks both ends against this.
+GROUP_TOKEN_PREFIX = 'random '
+
+
+def group_tokens():
+    """{token string the client sends: group token} for every group in data.CLASS_GROUPS."""
+    return {GROUP_TOKEN_PREFIX + token: token for token, _label, _roster in data.CLASS_GROUPS}
+
+
+def _group_pool(character, token):
+    """The available pool narrowed to one class family.
+
+    `base` is the remainder -- every rollable class no other roster claims -- so it needs no list of
+    its own and a new Paizo class joins it automatically. Returns [] for an unknown token; the
+    caller treats that the same as "no class specified" and falls back to the whole pool, which is
+    what an unrecognised class string has always done here.
+    """
+    pool = _available_class_pool(character)
+    rosters = {tok: [x.lower() for x in (roster or [])]
+               for tok, _label, roster in data.CLASS_GROUPS}
+    if token not in rosters:
+        return []
+    if rosters[token]:
+        return [c for c in pool if c in rosters[token]]
+    claimed = {name for tok, names in rosters.items() if tok != token for name in names}
+    return [c for c in pool if c not in claimed]
 
 
 def chooseClass(character, class_choice, chosen_BAB, chosen_caster_level=None):
@@ -140,6 +233,17 @@ def chooseClass(character, class_choice, chosen_BAB, chosen_caster_level=None):
         # the four space-named classes (the Unchained variants) never matched and fell back to a
         # random class.
         class_choice = class_choice.lower().replace('-', ' ')
+
+    # "Random <group>" from the dropdown: roll inside one family instead of the whole pool. The
+    # BAB / caster-level filters below still apply on top, so the two compose -- ask for a random
+    # Path of War class with BAB L and you get the pool's intersection, or the usual fallback if
+    # that is empty. An empty group (nothing rollable in it) falls through to the whole pool rather
+    # than failing, which is how every other unmatched class string has always behaved here.
+    group = group_tokens().get(class_choice)
+    if group is not None:
+        grouped = _group_pool(character, group)
+        if grouped:
+            available_classes = grouped
 
     if not class_choice in available_classes:
         available_classes_manip = ensure_BAB_and_caster_level(character, available_classes, "bab", chosen_BAB)

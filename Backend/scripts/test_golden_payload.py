@@ -21,8 +21,9 @@ them breaks this test (see changelog):
   * Ollama is severed below, so the backstory/archetype paths can't vary with a live model.
 
 The configs deliberately span code paths that would otherwise go uncovered: a martial with no
-spellcasting, a prepared caster with domains/school buckets, a multiclass Spheres build, and a
-Path of War initiator.
+spellcasting, a prepared caster with domains/school buckets, a multiclass Spheres build, a
+Path of War initiator, a stacked bonded creature, and a psionic manifester paired with a
+points-only one.
 """
 import argparse
 import json
@@ -70,7 +71,14 @@ CONFIGS = {
                     userInput_gender='male', high_level=16, low_level=16, gold_num=400000),
     # Multiclass divine caster + Spheres of Power: spellbooks, bonus spells, domains, spell changes
     # and riders, magic talents, mana pool, casting tradition.
-    'caster': dict(_BASE, seed=5004, userInput_race='Human', class_choice='cleric',
+    #
+    # RESEEDED 2026-08-04 (was 5004). Seven new classes in the pool (spec section 12) realigned the
+    # multiclass roll and 5004's witch became a brawler, leaving ONE spellbook -- in the only golden
+    # that pins two, and the only one anywhere that covers an ARCANE spellbook at all. 5002 rolls
+    # summoner (unchained) 9 / cleric 6, which keeps the pairing that matters: an arcane spontaneous
+    # book beside a divine prepared one. Re-swept 5000-5399 on "two real casters"; do not edit this
+    # prose to match a future roll, re-sweep.
+    'caster': dict(_BASE, seed=5002, userInput_race='Human', class_choice='cleric',
                    chosen_BAB='medium', multi_class='Y', alignment_input='NG',
                    userInput_gender='female', high_level=15, low_level=15,
                    gold_num=40000, spheres_flag='Y'),
@@ -93,6 +101,138 @@ CONFIGS = {
                    chosen_BAB='high', multi_class='N', alignment_input='LG',
                    userInput_gender='male', high_level=15, low_level=15,
                    gold_num=200000, spheres_flag='Y'),
+    # A BONDED CREATURE, AND A STACKED ONE. The five configs above all carry
+    # `animal_companion: null` -- the entire companion stack (map #18: the grantor table, the species
+    # ladder, the archetype effects, the chassis) had NO golden coverage at all, which is how the
+    # stacking defect below survived review.
+    #
+    # This seed rolls druid 4 (Elemental Ally) / magus 4 / ranger 4 / samurai 2 (Warrior Poet), and
+    # it covers three things no other golden does:
+    #   * a STACK. The druid's own `level` and the ranger's `level - 3` merge into one companion at
+    #     effective level 5, so the chassis MUST be re-read there (hd 5) rather than left at either
+    #     class's own level, which is exactly what `_stack` used to do.
+    #   * an ARCHETYPE-REMOVED BOND. Warrior Poet trades the samurai's MOUNT away, so that grantor
+    #     emits an ABSENCE entry (effective_level 0, species null) beside the real one -- the one
+    #     payload where both shapes appear together, and here they are different creature TYPES.
+    #   * two different `effective_level` expressions in the same stack.
+    #
+    # RESEEDED 2026-08-03 (was 7323, itself a reseed of 7275). Opening the random pool to the six
+    # Occult Adventures classes realigned the multiclass roll: 7323's ranger became a ninja, so its
+    # three-grantor stack collapsed to two and the golden that exists FOR the stacking defect had
+    # quietly stopped covering it. Same failure mode as the 7275 reseed, same rule -- if this
+    # comment ever disagrees with the golden, the seed moved: re-scan, do not edit the prose.
+    #
+    # REBASELINED 2026-08-04, seed UNCHANGED (spec section 8, D16). This golden moved on 49 keys --
+    # the master's own gold, gear, appearance, feats and family among them -- and none of that is a
+    # behaviour change to the master. The companion's feat roll used to draw from the GLOBAL random
+    # stream; it now draws from the creature's own salted generator, so the global stream is no
+    # longer consumed there and every later draw shifts. That is the entire point of the move: a
+    # wolf's feats must never churn its master's equipment again, and this is the last time they do.
+    # THIS golden is the only one the change moved -- the other six roll no bonded creature, so they
+    # never paid the old cost. (Unrelated uncommitted occult work had already re-baselined `caster`
+    # and `manifester` in the working tree; do not read those diffs as belonging to D16.)
+    #
+    # RESEEDED 2026-08-04 (was 7971, itself a reseed of 7323 and 7275). Seven new classes in the
+    # pool (spec section 12) realigned the roll for the third time: 7971's ranger and hunter both
+    # became psionic classes, so the stack this golden EXISTS for collapsed to a single grantor.
+    #
+    # The re-sweep changed the predicate, and that is the durable part. The old one was "rolls druid
+    # + ranger + hunter", which is not what the fixture is for -- it is only how the coverage
+    # happened to arrive at three different seeds, and it is why three seeds in a row silently
+    # stopped covering it. 7000-9500 was swept on the COVERAGE instead: an entry with 2+
+    # `contributors`, an `effective_level: 0` absence entry, and a real one. Sweep that, not a
+    # class list.
+    'companion': dict(_BASE, seed=7899, userInput_race='Human', class_choice='druid',
+                      chosen_BAB='medium', multi_class='Y', alignment_input='NG',
+                      userInput_gender='female', high_level=14, low_level=14),
+    # A MANIFESTER, AND A POINTS-ONLY ONE. The six configs above all carry `manifesters: []`, so
+    # power selection -- the pool filter, the level-weighted pick, the discipline bias, the
+    # powers_by_level buckets both renderers group on -- had no pinned output anywhere.
+    #
+    # This seed rolls psion 5 / aegis 5 / barbarian 4, and psion+aegis is the pair worth pinning:
+    # "manifester" is three shapes (utils/class_func/psionics.py) and one character covers two of
+    # them. The psion carries powers, a mandated discipline and the 'high' power-point progression;
+    # the aegis carries power points and NO powers, the shape a naive renderer drops on the floor.
+    # Two entries also means the Foundry module has to fill two manifester books rather than
+    # assuming one. If this comment stops matching the golden, the RNG stream moved: re-sweep, do
+    # not edit the prose.
+    #
+    # RESEEDED 2026-08-04 (was 8041, itself a reseed of 8018). Seven new classes in the pool (spec
+    # section 12) realigned the multiclass roll and 8041's aegis became a dread -- the same failure
+    # as the 8018 reseed, one pool change later. Re-swept 8000-8399: 8045 rolls FOUR manifesters
+    # (voyager/highlord/aegis/psion, all thin at levels 5/4/3/2) and 8133 mixes in a warpriest
+    # spellbook that duplicates `caster`'s coverage. 8194 is the clean psion+aegis pair -- 4 power
+    # levels on the psion, none on the aegis, and a barbarian that contributes nothing psionic.
+    'manifester': dict(_BASE, seed=8194, userInput_race='Human', class_choice='psion',
+                       chosen_BAB='low', multi_class='Y', alignment_input='NG',
+                       userInput_gender='female', high_level=14, low_level=14),
+}
+
+
+# --------------------------------------------------------------------------------------------- #
+# COVERAGE. Three of these fixtures exist for a SHAPE, not for a seed, and the shape arrives by
+# multiclass roll -- so any change to the class pool can silently take it away. It has, repeatedly:
+# `companion` has been re-seeded four times (7275 -> 7323 -> 7971 -> 7899) and `manifester` three
+# (8018 -> 8041 -> 8194), each time noticed by a human reading a 2,000-line golden diff after the
+# fact. The comments above already said what each fixture covers; nothing checked it.
+#
+# These predicates ARE that check, and they are also the sweep predicate. When a pool change costs
+# a fixture its coverage, sweep for one of these coming back true -- not for a class list, which is
+# only ever how the coverage happened to arrive.
+#
+# A predicate returns None when satisfied, or a one-line reason it is not.
+# --------------------------------------------------------------------------------------------- #
+def _covers_companion(payload):
+    """A stacked bond AND an archetype-removed one, so both bonded_creatures shapes are pinned."""
+    entries = payload.get('bonded_creatures') or []
+    stacked = [e for e in entries if len(e.get('contributors') or []) >= 2]
+    absent = [e for e in entries if e.get('effective_level') == 0 and e.get('species') is None]
+    real = [e for e in entries if e.get('effective_level') and e.get('species')]
+    missing = []
+    if not stacked:
+        missing.append('no STACK (no entry with 2+ contributors)')
+    if not absent:
+        missing.append('no ABSENCE entry (effective_level 0, species null)')
+    if not real:
+        missing.append('no real bonded creature')
+    if missing:
+        return (f"{'; '.join(missing)} -- grantors "
+                f"{[e.get('grantor') for e in entries] or 'none'}")
+    return None
+
+
+def _covers_caster(payload):
+    """Two spellbooks, one arcane and one divine -- the only arcane spellbook coverage anywhere."""
+    books = [b for b in (payload.get('spellbooks') or []) if b.get('spell_list_choose_from')]
+    if len(books) < 2:
+        return f'{len(books)} spellbook(s) with spells, needs 2 -- {[b["name"] for b in books]}'
+    if not any(b.get('divine') for b in books):
+        return f'no DIVINE spellbook -- {[b["name"] for b in books]}'
+    if not any(not b.get('divine') for b in books):
+        return f'no ARCANE spellbook -- {[b["name"] for b in books]}'
+    return None
+
+
+def _covers_manifester(payload):
+    """One manifester with powers and one with power points and NO powers -- the shape a naive
+    renderer drops on the floor."""
+    entries = payload.get('manifesters') or []
+    with_powers = [m for m in entries if m.get('powers_by_level')]
+    points_only = [m for m in entries if not m.get('powers_by_level') and m.get('pp_per_day')]
+    missing = []
+    if not with_powers:
+        missing.append('no manifester carrying powers')
+    if not points_only:
+        missing.append('no POINTS-ONLY manifester (power points, no powers)')
+    if missing:
+        return f"{'; '.join(missing)} -- manifesters {[m.get('name') for m in entries] or 'none'}"
+    return None
+
+
+COVERAGE = {
+    'companion': _covers_companion,
+    'caster': _covers_caster,
+    'manifester': _covers_manifester,
 }
 
 
@@ -135,6 +275,17 @@ def run(names, update):
         payload = generate(name)
         path = golden_path(name)
 
+        # Checked on --update too, and deliberately: the moment a fixture loses its coverage is a
+        # re-seed, and a re-seed is exactly when --update gets run. Reporting it only on a plain
+        # run would mean writing the coverage away and finding out on the next pass.
+        if name in COVERAGE:
+            lost = COVERAGE[name](payload)
+            if lost:
+                failures.append(f'{name}: COVERAGE LOST -- {lost}')
+                print(f'    {name}: coverage -- {lost}')
+            else:
+                print(f'  {name}: coverage OK')
+
         if update:
             path.write_text(canonical(payload), encoding='utf-8')
             print(f'  {name}: wrote {path.relative_to(BACKEND.parent)} ({len(payload)} keys)')
@@ -169,6 +320,14 @@ def main():
 
     if args.update:
         print(f'\nUPDATED -- {len(names)} golden(s). Commit them with the change that caused the diff.')
+        if failures:
+            # The goldens were written; the point is that this one is no longer worth pinning.
+            print('\nBut a fixture no longer covers what it exists for:')
+            for line in failures:
+                print(f'  {line}')
+            print('\nRe-sweep for a seed that satisfies the predicate in COVERAGE -- not for the '
+                  'class list that happened to produce it last time.')
+            return 1
         return 0
 
     if failures:

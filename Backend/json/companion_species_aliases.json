@@ -1,0 +1,35 @@
+{
+  "_readme": [
+    "Maps the species spellings used by archetype `species_pool` entries (and by prose in the",
+    "rulebooks) onto the keys actually used in animal_choices.json.",
+    "",
+    "animal_choices.json follows a 'noun, modifier' convention inherited from its scrape --",
+    "'bat, dire', 'weasel, giant' -- while archetypes name creatures the way players do:",
+    "'dire bat', 'giant weasel'. Some entries also drop a 'giant' qualifier that is implicit in",
+    "the companion stat block: the companion seahorse IS Large, so 'giant seahorse' and",
+    "'seahorse' are the same creature.",
+    "",
+    "Ticket #38 ruled that a curated species_pool naming a species absent from",
+    "animal_choices.json is a HARD validator failure. Without this map, five species that exist",
+    "would fail that gate on spelling alone. Resolve through `aliases` BEFORE reporting a miss.",
+    "",
+    "Lookup is case-insensitive; keys and values are lowercase.",
+    "Owned by map #18 tickets #41 (this file) and #40 (the validator that consumes it)."
+  ],
+
+  "aliases": {
+    "dire bat": "bat, dire",
+    "giant weasel": "weasel, giant",
+    "giant seahorse": "seahorse",
+    "giant tortoise": "tortoise",
+    "axebeak": "axe beak",
+    "reindeer": "deer, reindeer"
+  },
+
+  "unavailable": {
+    "giant eagle": {
+      "reason": "PF1e publishes no animal-companion stat block for a giant eagle. It is a Bestiary magical beast, and the Beast Rider archetype that would grant it forbids mounts with a fly speed. Authoring one would be inventing rules, so it is recorded here instead.",
+      "guidance": "Drop it from any curated species_pool, or replace it with 'griffon' or 'hippogriff', which do have companion stat blocks in the magical_beast tier."
+    }
+  }
+}

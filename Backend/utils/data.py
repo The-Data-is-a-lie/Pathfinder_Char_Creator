@@ -63,6 +63,24 @@ SKILL_IDS = {
     "use magic device": "umd",
 }
 
+# Canonical skill name -> the ability score its check keys off (PF1e Core, Table 4-2). Added for the
+# companion stat block (#31), which has to total a bonded creature's skills with no class and no
+# character sheet to lean on; kept here beside SKILL_IDS because it is a property of the skill, not
+# of that one consumer. `craft`, `perform` and `profession` are the un-suffixed umbrella entries the
+# generator stores ranks under.
+SKILL_ABILITY = {
+    "acrobatics": "dex", "appraise": "int", "bluff": "cha", "climb": "str", "craft": "int",
+    "diplomacy": "cha", "disable device": "dex", "disguise": "cha", "escape artist": "dex",
+    "fly": "dex", "handle animal": "cha", "heal": "wis", "intimidate": "cha",
+    "knowledge arcana": "int", "knowledge dungeoneering": "int", "knowledge engineering": "int",
+    "knowledge geography": "int", "knowledge history": "int", "knowledge local": "int",
+    "knowledge nature": "int", "knowledge nobility": "int", "knowledge planes": "int",
+    "knowledge religion": "int", "linguistics": "int", "perception": "wis", "perform": "cha",
+    "profession": "wis", "ride": "dex", "sense motive": "wis", "sleight of hand": "dex",
+    "spellcraft": "int", "stealth": "dex", "survival": "wis", "swim": "str",
+    "use magic device": "cha",
+}
+
 lore = ["Goblin Lore",
 "Dragon Lore",
 "Vampire Lore",
@@ -150,13 +168,46 @@ enhancement_bonus_mapping = {
 # wizards know 3 + INT mod + 2(per level) spells
 
 # add later
-base_classes = ["alchemist", "antipaladin", "arcanist", "barbarian", "barbarian (unchained)", "bard", "bloodrager", "brawler", "cavalier", "cleric", "druid", "fighter", "gunslinger", "hunter", "inquisitor", "investigator", "magus", "monk", "monk (unchained)", "ninja",  "oracle", "paladin",  "ranger", "rogue", "rogue (unchained)", "samurai", "shaman", "shifter", "skald", "slayer", "sorcerer",  "summoner", "summoner (unchained)", "swashbuckler", "vigilante", "warpriest", "witch", "wizard"]
+base_classes = ["alchemist", "antipaladin", "arcanist", "barbarian", "barbarian (unchained)", "bard", "bloodrager", "brawler", "cavalier", "cleric", "druid", "fighter", "gunslinger", "hunter", "inquisitor", "investigator", "magus", "monk", "monk (unchained)", "ninja",  "oracle", "paladin",  "ranger", "rogue", "rogue (unchained)", "samurai", "shaman", "shifter", "skald", "slayer", "sorcerer",  "summoner", "summoner (unchained)", "swashbuckler", "vigilante", "warpriest", "witch", "wizard",
+# Occult Adventures, 2026-08-03. Five of the six cast psychic magic and belong here -- spells.py
+# gates the whole spellbook on `name in base_classes`. The KINETICIST is deliberately absent: the
+# pf1 class Item carries no `casting` block at all, agreeing with the comment at caster_mod that
+# burn is a Constitution-priced resource the caster map cannot express.
+                "occultist", "medium", "mesmerist", "psychic", "spiritualist",
+# The adept is the only NPC class that casts. Its spell list is the `adept` column that already
+# existed in data/spells.csv (72 spells, orisons through 5th); see build_npc_class_data.py for why
+# its spells_per_day row is RAW's rather than the pf1 progression its class Item advertises.
+                "adept",
+# The omdura and the vampire hunter, 2026-08-04. Neither has a column of its own in data/spells.csv
+# and neither needs one -- class_for_spells_attr points them at the cleric and inquisitor columns,
+# the same aliasing the warpriest, oracle, witch and skald have always used. Their class Items in
+# pf-collab-content carry no `casting` block, so build_collab_class_data.py overrides the tier and
+# fails loudly if the pack ever ships one that disagrees.
+                "omdura", "vampire hunter"]
 
-divine_casters = ['antipaladin', 'cleric', 'druid', 'oracle', 'hunter' ,'inquisitor', 'paladin', 'ranger', 'shaman', 'warpriest']
+divine_casters = ['antipaladin', 'cleric', 'druid', 'oracle', 'hunter' ,'inquisitor', 'paladin', 'ranger', 'shaman', 'warpriest', 'adept', 'omdura', 'vampire hunter']
 #caster spells per day progression
 
 #must match the same order as the weapon_groups_region section
+# THE CANONICAL SPELLINGS. These are the keys of first_names_regions.json / last_names_regions.json /
+# campaign_lore.json, and what `util.py::region_chooser` stores on the character and the payload
+# emits. `validate_name_data.py` fails if this list and those files ever disagree.
 regions = ["Tal-falko","Dolestan","Sojoria","Ieso", "Spire", "Feyador", "Esterdragon", "Grundy", "Dust-Cairn", "Kaeru no Tochi"]
+
+# Region names a CLIENT sends that are not a canonical spelling, keyed by slug (alphanumerics only,
+# lowercased) so any casing or punctuation variant of the alias resolves too. `region_chooser`'s
+# slug match already handles pure spelling drift -- 'Dust Cairn' -> 'Dust-Cairn', 'Tal-Falko' ->
+# 'Tal-falko' -- so only a genuinely DIFFERENT name needs a row here.
+#
+# This exists because clients are not upgradable in lockstep: the Foundry module ships on its own
+# release cycle (button.js sends 'Grundykin Damplands' today) and a browser's saved form data keeps
+# sending whatever it stored. In-repo clients send canonical keys; this is the shim for the rest.
+#
+# NOT the same thing as campaign_lore.json's per-region `aliases`, which are prose misspellings for
+# lore lookup ('Tall-Fakho'), cover only 6 of the 10 regions, and are nobody's input contract.
+REGION_ALIASES = {
+    'grundykindamplands': 'Grundy',
+}
 races = options = ["Random", "Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Half-Orc", "Human", "Aasimar", "Catfolk", "Dhampir", "Drow", "Fetchling", "Goblin", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Wayang"]
 # eventually can add all these classes (especially for FoundryVtt)
 # ["Human", "Aasimar", "Catfolk", "Dragonborn", "Dhampir", "Drow", "Duergar", "Elf", "Fetchling", "Goblin", "Gnome", "Halfling", "Dwarf", "Half-Elf", "Half-Orc", "Hobgoblin", "Ifrit", "Kitsune", "Kobold", "Monkey Goblin", "Orc", "Oread", "Ratfolk", "Sylph", "Tengu", "Tiefling", "Undine", "Wayang", "Loxophant", "D-ziriak", "Tortugan"]
@@ -235,8 +286,9 @@ all_deities = {
 }
 
 # Region -> deities especially venerated there (campaign canon). Biases random deity selection
-# toward the setting's faiths. Keys are lowercased for case-insensitive lookup against the
-# title-cased character.region; only documented regions appear, others fall through to plain random.
+# toward the setting's faiths. Keys are lowercased and looked up case-insensitively -- that was
+# required when character.region was title-cased, and is now belt-and-braces since it holds the
+# canonical key; only documented regions appear, others fall through to plain random.
 region_deity_affinity = {
     "sojoria": ["Abadar", "Pharasma", "Cayden Cailean", "Desna", "Iomedae", "Shelyn"],
     "feyador": ["Tanagaar"],
@@ -244,12 +296,19 @@ region_deity_affinity = {
 }
 
 #types of casters
+# EXACTLY ONE bucket per class. Both readers -- casting_stat_for and
+# spells_per_day_from_ability_mod -- test int, then wis, then cha and stop at the first hit, so a
+# class listed twice silently takes whichever bucket comes first and the second listing is dead
+# text that reads like a rule. The SHAMAN was in wis and cha until 2026-08-04; wis was already the
+# one that won, and is the one RAW gives it. validate_caster_data.py now fails on any duplicate.
 caster_mod = {
         "int_casters": ['alchemist', 'arcanist', 'investigator', 'magus',  'witch', 'wizard', 'occultist', 'psychic',],
-        "wis_casters": ['cleric','druid', 'hunter', 'inquisitor','ranger', 'shaman', 'warpriest', 'spiritualist'],
-        "cha_casters": ['antipaladin', 'bloodrager', 'bard','medium','mesmerist','oracle','paladin','shaman','skald','sorcerer','summoner', 'summoner (unchained)']
+        "wis_casters": ['cleric','druid', 'hunter', 'inquisitor','ranger', 'shaman', 'warpriest', 'spiritualist', 'adept', 'vampire hunter'],
+        "cha_casters": ['antipaladin', 'bloodrager', 'bard','medium','mesmerist','oracle','paladin','skald','sorcerer','summoner', 'summoner (unchained)', 'omdura']
         # kineticist is deliberately unmapped: burn is Constitution-based, which this
-        # int/wis/cha bonus-spell table doesn't model (occult classes are pool-excluded anyway)
+        # int/wis/cha bonus-spell table doesn't model. It is also absent from base_classes, so it
+        # never reaches the spellbook at all -- the pf1 class Item agrees, carrying no `casting`
+        # block. The other five occult casters above are mapped to the same ability pf1 uses.
 }
 
 #all_deities = ['Abadar', 'Achaekek', 'Alseta', 'Ameiko Kaijitsu', 'Apsu', 'Aroden', 'Asmodeus', 'Black Butterfly, The', 'Brigh', 'Calistria', 'Cayden Cailean', 'Chaldira Zuzaristan', 'Chamidu', 'Daikitsu', 'Dahak', 'Desna', 'Elion', 'Erastil', 'Ghlaunder', 'Gorum', 'Gozreh', 'Groetus', 'Gruhastha, The', 'Hanspur', 'Hei Feng', 'Iomedae', 'Irori', 'Jaidi', 'Jingxi', 'Kabriri', 'Kazutal', 'Kelizandri', 'Ketephys', 'Kofusachi', 'Lama, The', 'Lamashtu', 'Magrim', 'Milani', 'Minderhal', 'Naderi', 'Nalinivati', 'Nethys', 'Nivi Rhombodazzle', 'Norgorber', 'Old-Mage Jatembe', 'Oras', 'Orcus', 'Pharasma', 'Qi Zhong', 'Ragathiel', 'Razmir', 'Rovagug', 'Sarenrae', 'Sivanah', 'Sivanah, The', 'Skrymir', 'Sokhna', 'Sun Wukong', 'Thamir Gixx', 'Thremyr', 'Torag', 'Urgathoa', 'Uskyeria', 'Wadjet', 'Weydan', 'Ydersius', 'Yuelral', 'Zagnexapan', 'Zargos', 'Zon-Kuthon' ]
@@ -327,6 +386,32 @@ amount = {
   },
   'tactician': {
         'strategies': [4,7,10,13,16,19]
+  },
+  # Occult Adventures. Same rule as the psionics block above: each list is the class levels at
+  # which one pick is granted, read off the class's own feature text in class_data.json. The three
+  # single-pick subsystems -- the kineticist's elemental focus, the medium's spirit and the
+  # psychic's discipline -- need no entry, and neither does the spiritualist's emotional focus.
+  'occultist': {
+        # "two implement schools" at 1st (hence the repeated 1), then 2nd and every 4 levels, to a
+        # maximum of seven at 18th -- the count the prose states, so the list is self-checking.
+        'implements': [1,1,2,6,10,14,18],
+        # One *selected* power at 1st; the two base powers come with the schools and are not picks.
+        # Then 3rd and every 2 levels.
+        'focus powers': [1,3,5,7,9,11,13,15,17,19]
+  },
+  'kineticist': {
+        'wild talents': [2,4,6,8,10,12,14,16,18,20],
+        'infusions': [1,3,5,9,11,13,17,19]
+  },
+  'mesmerist': {
+        # One at 1st, another at 2nd and every 2 levels: eleven at 20th, as the prose states.
+        'mesmerist tricks': [1,2,4,6,8,10,12,14,16,18,20],
+        'bold stare': [3,7,11,15,19]
+  },
+  'psychic': {
+        # 1st, then 3rd and every 4 levels. Major amplifications are taken *in place of* one of
+        # these from 11th, so they are the same pick, not an extra one -- no separate list.
+        'phrenic amplifications': [1,3,7,11,15,19]
   }
 }
 
@@ -2324,13 +2409,72 @@ psionic_classes_pending = []
 # and the soulknife (which has neither powers nor power points) -- and the payload models all three.
 psionic_pp_only_classes = ["aegis"]
 
+# The three power-points-per-day progressions, verbatim from pf1-psionics
+# scripts/data/powerpoints.mjs (POINTS_PER_LEVEL), captured 2026-07-31. Lives here rather than in
+# the validator because two consumers need it and a second copy would drift:
+# validate_psionics_data.py asserts every scraped class's pp_per_day column equals one of these
+# (the load-bearing cross-source check -- two independently-authored sources agreeing on twenty
+# numbers), and class_func/psionics.py reads the SAME match back out as the `caster_type` the
+# Foundry module wants on its manifester book. Derived, never hand-maintained: a class's caster
+# type is whichever row its table matches, so the validator is the gate on both at once.
+psionic_pp_tables = {
+    "low": [1, 2, 3, 5, 7, 9, 11, 14, 17, 20, 24, 28, 32, 37, 42, 47, 52, 58, 64, 70],
+    "med": [1, 2, 4, 6, 8, 12, 16, 20, 24, 28, 36, 44, 52, 60, 68, 80, 92, 104, 116, 128],
+    "high": [2, 6, 11, 17, 25, 35, 46, 58, 72, 88, 106, 126, 147, 170, 195, 221, 250, 280,
+             311, 343],
+}
+
 # NOTE: no "mystic" here -- the Path of War mystic is a generatable class; listing it would
 # silently re-filter it out of the random class pool (chooseClass excludes occult_classes).
-occult_classes = ["occultist", "kineticist", "medium", "mesmerist", "psychic", "spiritualist", ]
+#
+# EMPTIED 2026-08-03. All six Occult Adventures classes are in the random pool: the census in
+# docs/wayfinder/class-pool/issues/01 found every one of them present in pf1 11.11 -- class Item,
+# features and choice pools -- so the renderer objection that held them back never applied to them
+# (it still applies to pow_classes_pending_foundry above). Their option pools are generated by
+# Backend/scripts/build_occult_class_data.py; see docs/feature_spec_todo.md section 10 for what
+# each class ships, including the two that degrade. Re-add a name here to pull one back out.
+occult_classes = []
+
+# The Occult Adventures ROSTER, as opposed to occult_classes above, which is the exclusion lever and
+# is empty. Two lists because they answer different questions: "is this class held out of the pool?"
+# and "which family does this class belong to?". base_classes cannot answer the second -- spells.py
+# overloads it as the spellcasting gate, so five of these six are in it and the kineticist is not.
+occult_class = ["kineticist", "medium", "mesmerist", "occultist", "psychic", "spiritualist"]
+
+# The five Paizo NPC classes. They roll like anything else -- the user's call, 2026-08-04, over the
+# alternative of listing them but holding them out of the random pool. An NPC generator that cannot
+# roll a commoner is missing the most common person in the world.
+npc_class = ["adept", "aristocrat", "commoner", "expert", "warrior"]
+
+# The general-purpose counterpart of pow_classes_pending_foundry, for a class that belongs to no
+# 3pp family: fully defined here, held out of the pool because no installed compendium ships a
+# class item the Foundry sheet could resolve. Empty today.
+#
+# The omdura and the vampire hunter were nearly parked here. pf1 11.11's `classes` pack holds 49
+# class Items and carries neither, but a sweep of EVERY installed pack (2026-08-04) found both in
+# pf-content's `pf-collab-content`, with their full feature chains -- so they ship. The lesson is
+# worth keeping: grade a renderability census against every pack, not the three whose names sound
+# right, or a class gets held out of the pool for a blocker that does not exist.
+classes_pending_foundry = []
+
+# The families the FoundryVTT module's class dropdown groups by, and the tokens its per-group
+# "Random <group>" entries send (util.py::_group_pool turns a token back into a pool).
+#
+# `base` is DERIVED -- everything in class_data.json that no other roster claims -- so adding a
+# Paizo class stays a one-key change to class_data.json and nothing here. Order is display order.
+# The module's own copy of the labels lives in scripts/class-roster.js and is kept honest by
+# Backend/scripts/validate_class_roster.py; the tokens are the contract between them.
+CLASS_GROUPS = (
+    ("base",    "Paizo base classes", None),
+    ("pow",     "Path of War",        path_of_war_class),
+    ("psionic", "Psionics",           psionic_class),
+    ("occult",  "Occult Adventures",  occult_class),
+    ("npc",     "NPC classes",        npc_class),
+)
 
 # Good-save progressions per class (a class adds 2 + level//2 to a listed save, level//3
-# otherwise). Must stay in sync with GOOD_SAVES in Backend/static/scripts/sheet.js, which keeps a
-# copy only as a fallback for cached payloads that predate the exported save_bases.
+# otherwise). The standalone web sheet keeps a GOOD_SAVES copy only as a fallback for cached
+# payloads that predate the exported save_bases; the payload's save_bases is the real contract.
 good_saves = {
     'alchemist': ['fort', 'ref'], 'antipaladin': ['fort', 'will'], 'arcanist': ['will'],
     'barbarian': ['fort'], 'barbarian (unchained)': ['fort'], 'bard': ['ref', 'will'],
@@ -2357,6 +2501,14 @@ good_saves = {
     'highlord': ['fort', 'will'], 'marksman': ['ref', 'will'], 'psion': ['will'],
     'psychic warrior': ['fort'], 'soulknife': ['ref', 'will'], 'tactician': ['will'],
     'vitalist': ['fort', 'will'], 'voyager': ['ref', 'will'], 'wilder': ['will'],
+    # NPC classes. Read off the pf1 class Items rather than the book, and re-checked on every run
+    # of Backend/scripts/build_npc_class_data.py, which refuses to write if these disagree. The
+    # commoner's empty list is the point: it is the one class in the game with no good save.
+    'adept': ['will'], 'aristocrat': ['will'], 'commoner': [], 'expert': ['will'],
+    'warrior': ['fort'],
+    # The last two first-party Paizo base classes, harvested from pf-content's pf-collab-content
+    # pack by Backend/scripts/build_collab_class_data.py, which re-checks these on every run.
+    'omdura': ['fort', 'will'], 'vampire hunter': ['ref', 'will'],
 }
 disciplines = ["Black Seraph", "Broken Blade", "Brutal Crocodile", "Cursed Razor", "Elemental Flux", "Eternal Guardian", "Fools Errand", "Golden Lion", "Iron Tortoise", "Leaden Hyena", "Mangled Gear", "Mithral Current", "Piercing Thunder", "Primal Fury", "Radiant Dawn", "Riven Hourglass", "Roaring Mouse", "Sagitta Stellaris", "Scarlet Throne", "Shattered Mirror", "Silver Crane", "Sleeping Goddess", "Solar Wind", "Spark of Battle", "Steel Serpent", "Surging Shark", "Tempest Gale", "Thrashing Dragon", "Unquiet Grave", "Veiled Moon"]
 

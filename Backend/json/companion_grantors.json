@@ -1,0 +1,148 @@
+{
+  "_readme": [
+    "Who grants a bonded creature, as data rather than a hard-coded class check (D6, ticket #30).",
+    "Consumed by utils/class_func/animal_companions.py::resolve_bonded_creatures, which is the",
+    "SINGLE path to a bonded creature. Gated by scripts/validate_companion_data.py (vocabulary).",
+    "",
+    "Columns:",
+    "  grantor          class name, or a non-class source identified by `source`",
+    "  creature_type    companion | mount | familiar | eidolon",
+    "  level_gained     the grantor's own class level at which the creature arrives; below this,",
+    "                   NOTHING is emitted -- there is no clamp to level 1 (D6)",
+    "  effective_level  an expression over `level` (the grantor's OWN class level, never the",
+    "                   character level and never the total of all classes). Stacked across",
+    "                   sources, then capped at character level.",
+    "  minimum          a per-source floor applied AFTER the expression. Only Beastmastery has one,",
+    "                   and it is RAW from the talent's own text -- not the clamp D6 rejects.",
+    "  conditional      what else must be true (e.g. the rolled sorcerer bloodline)",
+    "  species_pool     which animal_choices.json tiers, or a named creature list",
+    "  choice           {odds, on_win, on_loss} when the class feature is a choice. The resolver",
+    "                   draws random.randint(1, 100) ONCE PER ROW -- never reusing domain_chance,",
+    "                   whose single roll used to make the druid's two outcomes mutually exclusive",
+    "                   by construction.",
+    "",
+    "Not rows, and deliberately (#23): `shifter` (its progression contains no animal companion),",
+    "`antipaladin` (Fiendish Boon is a permanent summon monster III+, a different subsystem --",
+    "deferred), and unconditional `sorcerer` (Arcane Bond comes from the Arcane bloodline only).",
+    "",
+    "`magical_beast` is absent from every standard pool on purpose: griffon and hippogriff are",
+    "reachable only through an archetype's curated species_pool."
+  ],
+  "grantors": [
+    {
+      "grantor": "druid",
+      "creature_type": "companion",
+      "level_gained": 1,
+      "effective_level": "level",
+      "conditional": null,
+      "species_pool": ["normal", "plant", "vermin"],
+      "choice": { "odds": 90, "on_win": "granted", "on_loss": "domain" }
+    },
+    {
+      "grantor": "ranger",
+      "creature_type": "companion",
+      "level_gained": 4,
+      "effective_level": "level - 3",
+      "conditional": null,
+      "species_pool": ["normal"],
+      "choice": { "odds": 75, "on_win": "granted", "on_loss": "bond_with_allies" }
+    },
+    {
+      "grantor": "hunter",
+      "creature_type": "companion",
+      "level_gained": 1,
+      "effective_level": "level",
+      "conditional": null,
+      "species_pool": ["normal"],
+      "choice": null
+    },
+    {
+      "grantor": "wizard",
+      "creature_type": "familiar",
+      "level_gained": 1,
+      "effective_level": "level",
+      "conditional": null,
+      "species_pool": ["familiar"],
+      "species_data": "familiar_choices.json (not built yet -- resolver emits nothing)",
+      "choice": { "odds": 70, "on_win": "granted", "on_loss": "bonded_object" }
+    },
+    {
+      "grantor": "adept",
+      "creature_type": "familiar",
+      "level_gained": 2,
+      "effective_level": "level",
+      "conditional": null,
+      "species_pool": ["familiar"],
+      "species_data": "familiar_choices.json (not built yet -- resolver emits nothing)",
+      "choice": null
+    },
+    {
+      "grantor": "sorcerer",
+      "creature_type": "familiar",
+      "level_gained": 1,
+      "effective_level": "level",
+      "conditional": { "bloodline": "arcane" },
+      "species_pool": ["familiar"],
+      "species_data": "familiar_choices.json (not built yet -- resolver emits nothing)",
+      "choice": { "odds": 70, "on_win": "granted", "on_loss": "bonded_object" }
+    },
+    {
+      "grantor": "witch",
+      "creature_type": "familiar",
+      "level_gained": 1,
+      "effective_level": "level",
+      "conditional": null,
+      "species_pool": ["familiar"],
+      "species_data": "familiar_choices.json (not built yet -- resolver emits nothing)",
+      "choice": null
+    },
+    {
+      "grantor": "paladin",
+      "creature_type": "mount",
+      "level_gained": 5,
+      "effective_level": "level",
+      "conditional": null,
+      "species_pool": ["horse", "pony", "camel", "elk"],
+      "choice": null
+    },
+    {
+      "grantor": "cavalier",
+      "creature_type": "mount",
+      "level_gained": 1,
+      "effective_level": "level",
+      "conditional": null,
+      "species_pool": ["horse", "pony", "camel", "elk"],
+      "choice": null
+    },
+    {
+      "grantor": "samurai",
+      "creature_type": "mount",
+      "level_gained": 1,
+      "effective_level": "level",
+      "conditional": null,
+      "species_pool": ["horse", "pony", "camel", "elk"],
+      "choice": null
+    },
+    {
+      "grantor": "summoner",
+      "creature_type": "eidolon",
+      "level_gained": 1,
+      "effective_level": "level",
+      "conditional": null,
+      "species_pool": ["eidolon"],
+      "species_data": "eidolon_base_forms.json (not built yet -- resolver emits nothing; D4's degraded eidolon takes its base form from pf_content_companions.json[\"pf-eidolon-forms\"])",
+      "choice": null
+    },
+    {
+      "grantor": "beastmastery",
+      "source": "spheres_of_might_talent",
+      "creature_type": "companion",
+      "level_gained": 1,
+      "effective_level": "max(bab, handle_animal, ride) - 3",
+      "minimum": 1,
+      "conditional": { "talent": "animal companion" },
+      "species_pool": ["normal"],
+      "choice": null
+    }
+  ]
+}

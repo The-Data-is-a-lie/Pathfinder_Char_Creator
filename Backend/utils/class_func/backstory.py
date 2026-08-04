@@ -255,7 +255,8 @@ def _lore():
 
 def _lore_region(lore, region):
     """Case-insensitively resolve a region (matching keys and any 'aliases') to its lore dict, or {}.
-    character.region is title-cased at runtime (e.g. 'Tal-Falko'), so the match must be lowercased."""
+    `character.region` is the canonical key since the region fix, so this normally matches exactly;
+    the fold and the alias sweep stay for lore prose spellings ('Tall-Fakho') and hand-passed input."""
     regions = (lore or {}).get("regions") or {}
     key = str(region or "").strip().lower()
     if not key:

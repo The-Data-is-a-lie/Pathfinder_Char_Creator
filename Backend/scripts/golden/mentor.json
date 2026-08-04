@@ -2,6 +2,7 @@
  "Total_HP": 270,
  "age_number": 43,
  "alignment": "Lawful Good",
+ "animal_companion": null,
  "appearance": [
   "Towering"
  ],
@@ -23,6 +24,7 @@
  "bloodline": "N/A",
  "bloodline_feat_labels": [],
  "bloodline_feats": [],
+ "bonded_creatures": [],
  "buff_gaps": [],
  "build_archetype": "Archer",
  "build_tactics": "Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.",
@@ -83,7 +85,7 @@
   ]
  },
  "cha": 12,
- "character_full_name": "Henry Sokolov",
+ "character_full_name": "Charles Coulombe",
  "chosen_race": "Human",
  "chosen_spell_descriptor": [
   "emotion"
@@ -143,7 +145,7 @@
   "armor training": "Starting at 3rd level, a fighter learns to be more maneuverable while wearing armor. Whenever he is wearing armor, he reduces the armor check penalty by 1 (to a minimum of 0) and increases the maximum Dexterity bonus allowed by his armor by 1. Every four levels thereafter (7th, 11th, and 15th), these bonuses increase by +1 each time, to a maximum -4 reduction of the armor check penalty and a +4 increase of the maximum Dexterity bonus allowed. In addition, a fighter can also move at his normal speed while wearing medium armor. At 7th level, a fighter can move at his normal speed while wearing heavy armor.",
   "bonus feats": "At 1st level, and at every even level thereafter, a fighter gains a bonus feat in addition to those gained from normal advancement (meaning that the fighter gains a feat at every level). These bonus feats must be selected from those listed as combat feats, sometimes also called \"fighter bonus feats.\"Upon reaching 4th level, and every four levels thereafter (8th, 12th, and so on), a fighter can choose to learn a new bonus feat in place of a bonus feat he has already learned. In effect, the fighter loses the bonus feat in exchange for the new one. The old feat cannot be one that was used as a prerequisite for another feat, prestige class, or other ability. A fighter can only change one feat at any given level and must choose whether or not to swap the feat at the time he gains a new bonus feat for the level.",
   "bravery": "Starting at 2nd level, a fighter gains a +1 bonus on Will saves against fear. This bonus increases by +1 for every four levels beyond 2nd.",
-  "weapon mastery": "At 20th level, a fighter chooses one weapon, such as the longsword, greataxe, or longbow. Any attacks made with that weapon automatically confirm all critical threats and have their damage multiplier increased by 1 (Ã—2 becomes Ã—3, for example). In addition, he cannot be disarmed while wielding a weapon of this type. Alternate Capstones",
+  "weapon mastery": "At 20th level, a fighter chooses one weapon, such as the longsword, greataxe, or longbow. Any attacks made with that weapon automatically confirm all critical threats and have their damage multiplier increased by 1 (×2 becomes ×3, for example). In addition, he cannot be disarmed while wielding a weapon of this type. Alternate Capstones",
   "weapon training": "Starting at 5th level, a fighter can select one group of weapons, as noted below. Whenever he attacks with a weapon from this group, he gains a +1 bonus on attack and damage rolls. Every four levels thereafter (9th, 13th, and 17th), a fighter becomes further trained in another group of weapons. He gains a +1 bonus on attack and damage rolls when using a weapon from this group. In addition, the bonuses granted by previous weapon groups increase by +1 each. For example, when a fighter reaches 9th level, he receives a +1 bonus on attack and damage rolls with one weapon group and a +2 bonus on attack and damage rolls with the weapon group selected at 5th level. Bonuses granted from overlapping groups do not stack. Take the highest bonus granted for a weapon if it resides in two or more groups. A fighter also adds this bonus to any combat maneuver checks made with weapons from this group. This bonus also applies to the fighter's Combat Maneuver Defense when defending against disarm and sunder attempts made against weapons from this group. Weapon groups are defined as follows (GMs may add other weapons to these groups, or add entirely new groups): Note from Nethys : A consolidated list of fighter weapon groups is provided here"
  },
  "class_feat_labels": [
@@ -526,7 +528,7 @@
   "Collective Recollection",
   "Giant Slayer"
  ],
- "formatted_bio": "Henry Sokolov\n- Alignment: Lawful Good\n- Deity: Apsu\n- Race: Human\n- Class: Level 15 Fighter\n- Archetype: Archer\n- Tactics: Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.\n- Stat Focus: Dex\n- Disciplines: Black Seraph\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Legend of the Uncharted (rank 15)\n- Profession: Dentist (rank 10)\n- Profession: Master-at-Arms (rank 5)\n- Profession: Upholsterer (rank 10)\n- Known for: Basketweaving\n- Training: An excellent trainer who taught them Dirgesinger, Distance Thrower, Night Dweller\n- Training: An excellent trainer who taught them Prodigy, Great Fortitude, Jaguar Pounce\n- Training: An average trainer who taught them Two-Weapon Fighting, Feint Partner\n- Training: An excellent trainer who taught them Exploit Schema, Blinding Critical, Acrobatic\n- Training: An excellent trainer who taught them Skilled Driver, Coordinated Distraction, Mocking Dance\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Poor Household\n- No Siblings\n\nPersonality\n- Personality: Reverent, Analytical, Doubtful\n- Mannerisms: Combs mustache, Bites lower lip\n- Flaws: Illiterate, Alcoholic\n\nAppearance\n- Hair: Unkempt Red\n- Eyes: Green\n- Build: Towering",
+ "formatted_bio": "Charles Coulombe\n- Alignment: Lawful Good\n- Deity: Apsu\n- Race: Human\n- Class: Level 15 Fighter\n- Archetype: Archer\n- Tactics: Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.\n- Stat Focus: Dex\n- Disciplines: Black Seraph\n- Homeland: Tal-falko\n\nVocation\n- Profession: Legend of the Uncharted (rank 15)\n- Profession: Dentist (rank 10)\n- Profession: Master-at-Arms (rank 5)\n- Profession: Upholsterer (rank 10)\n- Known for: Basketweaving\n- Training: An excellent trainer who taught them Dirgesinger, Distance Thrower, Night Dweller\n- Training: An excellent trainer who taught them Prodigy, Great Fortitude, Jaguar Pounce\n- Training: An average trainer who taught them Two-Weapon Fighting, Feint Partner\n- Training: An excellent trainer who taught them Exploit Schema, Blinding Critical, Acrobatic\n- Training: An excellent trainer who taught them Skilled Driver, Coordinated Distraction, Mocking Dance\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Poor Household\n- No Siblings\n\nPersonality\n- Personality: Reverent, Analytical, Doubtful\n- Mannerisms: Combs mustache, Bites lower lip\n- Flaws: Illiterate, Alcoholic\n\nAppearance\n- Hair: Unkempt Red\n- Eyes: Green\n- Build: Towering",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 6009,
@@ -734,6 +736,7 @@
   "str": 1,
   "wis": 1
  },
+ "license_url": "/license",
  "magic_talent_items": [],
  "main_stat": "dex",
  "maneuvers_choose_from": [
@@ -913,6 +916,7 @@
    "Abyssal Drive"
   ]
  ],
+ "manifesters": [],
  "mannerisms": [
   "Combs mustache",
   "Bites lower lip"
@@ -938,6 +942,7 @@
   "Doubtful"
  ],
  "platnium": 1440.0,
+ "powers_desc_dict": {},
  "profession_ability_items": [
   {
    "changes": [
@@ -1381,7 +1386,7 @@
   "str": 0,
   "wis": 0
  },
- "region": "Tal-Falko",
+ "region": "Tal-falko",
  "save_bases": {
   "fort": 9,
   "ref": 5,

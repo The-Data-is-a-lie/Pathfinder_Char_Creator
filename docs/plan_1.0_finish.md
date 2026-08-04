@@ -164,23 +164,122 @@ wayfinder maps — decisions before code — and each ends at a spec section in
       pass across all 55 classes**, and `validate_psionics_data.py` is at 0 errors.
       **Still open, deliberately:** Foundry-side import (gate 3) spans the module repo and is a later
       branch; voyager bonus feats, psionic races and the other deferred items are listed in §9.
-- [ ] Implement the **companions** spec (§8 build slices, in dependency order — each is a commit):
-      1. `repair_animal_choices.py` — the sign-loss/key-drift/field-bleed repair (D5). **Do this
-         first**: 109 advancement rows currently inflate every advanced companion by +4 Dex.
-      2. `validate_companion_data.py` — assert the PF1e size-up package, no surviving bare ints.
-      3. `dump_pf_content_actors.mjs` → `pf_content_companions.json` + `validate_companion_names.py`
-         (the D3 silent-drop gate).
-      4. `companion_grantors.json` + the resolver in `animal_companions.py` (reuses `class_entry_for`).
-      5. Advancement merge + stat-block math; fix the `animal_feats` loop to read the chassis row's
-         own `feats` count.
-      6. Payload: emit `bonded_creatures`, keep `animal_companion` as the deprecated alias.
-      7. Foundry module: loop `Actor.create`, clone from `pf-content`, patch numbers, degrade on miss.
-      8. Web sheet: consume `bonded_creatures`.
-      9. Extend `test_house_invariants.py` with companion invariants (a class missing a
-         `data.good_saves` entry or carrying a bad bab/hit-die/skill-points value already fails it;
-         add: no companion below its grantor's threshold, stacked effective level ≤ character level,
-         every emitted species present in the `pf-content` dump, merged ability scores non-degenerate).
+- [ ] Implement the **companions** spec (§8 build slices, in dependency order — each is a commit).
+      The remaining slices are charted as
+      [`docs/wayfinder/companion-sheets/`](wayfinder/companion-sheets/map.md), whose destination is
+      *every bonded creature arrives as a usable sheet*. **Slices 1–6 and 9 are done (2026-08-03);
+      the backend half of this phase is finished** and the map's first finish-line gate is met. What
+      is left is the two renderers: **7 is unblocked** (ticket 02 resolved), **8 still waits on
+      ticket 03**.
+      - [x] 1. `repair_animal_choices.py` — the sign-loss/key-drift/field-bleed repair (D5). **Done
+            first**: 109 advancement rows were inflating every advanced companion by +4 Dex.
+      - [x] 2. `validate_companion_data.py` — assert the PF1e size-up package, no surviving bare ints.
+      - [x] 3. `dump_pf_content_actors.py` → `pf_content_companions.json` + `validate_companion_names.py`
+            (the D3 silent-drop gate). Landed as Python, not `.mjs` — it reuses `dump_foundry_pack.mjs`.
+      - [x] 4. `companion_grantors.json` + the resolver in `animal_companions.py` (reuses
+            `class_entry_for`), plus archetype-bond classification, stacking and D9 identity.
+      - [x] 5. Advancement merge + stat-block math (**#31**) — `class_func/companion_stats.py`,
+            2026-08-03. Both gating tickets resolved first:
+            [01](wayfinder/companion-sheets/issues/01-attack-skill-derivation.md) (spec §8 **D12** —
+            every number's source; none of the PC's code reusable, only the maximised-HP *rule*; the
+            house skill floor does **not** carry over) and
+            [04](wayfinder/companion-sheets/issues/04-size-change-double-count.md) (spec §8 **D11** —
+            the published deltas already contain the size package, so only the geometry is ours).
+      - [x] 6. Payload: emit `bonded_creatures`, keep `animal_companion` as the deprecated alias
+            (**#32**), 2026-08-03. All six goldens regenerated; five differ by exactly the one added
+            key. ⚠ **The `companion` golden was re-seeded (7275 → 7323)** — the region fix had
+            realigned the RNG and 7275 had quietly stopped rolling a stack at all, so the golden that
+            exists to pin the stacking math had stopped pinning it. 7323 stacks **three** grantors
+            (hunter 7 / ranger 4 / druid 3 → effective 11). **Not done until `./deploy.ps1` runs.**
+      - [x] 7. (**#33**) Foundry module: loop `Actor.create`, clone from `pf-content`, patch numbers,
+            degrade on miss; title composed module-side per D10. **Built 2026-08-03** as the module
+            repo's `scripts/createCompanions.js` (+ `skills-dict.js`, wired into
+            `createAndAssignActor`). The harness `tools/test_create_companions.mjs` replays the
+            `companion` golden through a stubbed pf1: cloned, degraded, familiar and absence paths
+            all behave, and the class item driven at HD reproduces the payload's HP/BAB/saves/AC
+            with **zero corrections**. It fails, naming the field, on a payload whose numbers are
+            nudged.
+            ⚠ **Not verified in a live world yet** — that is finish-line gate 2, and it is the same
+            run that closes ticket 02's two residual claims. Uncommitted in the module repo, which
+            also has concurrent psionics work in `modify-abilities.js`. **Unblocked 2026-08-03** —
+            [ticket 02](wayfinder/companion-sheets/issues/02-pf1-actor-patching.md) is resolved and
+            carries the mechanical recipe: pf1 keeps stored fields and rebuilds every `.total`, the
+            clone's `Animal Companion` class item is driven at the creature's **HD count** (not its
+            effective level), and the two change-bearing items every `pf-content` Actor ships must be
+            deleted or the companion table lands twice. Two narrow claims (re-render persistence,
+            `healthConfig` on a cloned character) are checked on the first live import.
+      - [ ] 8. (**#34**) Web sheet: auto-fill the nested Companions tab from `bonded_creatures` (D10 —
+            **not** a second roster character). **Unblocked 2026-08-03** —
+            [ticket 03](wayfinder/companion-sheets/issues/03-web-sheet-autofill-ownership.md) is
+            resolved and carries the field-level mapping. The build is: a `seedCompanions(data)`
+            beside the two existing one-time seeders in `renderSheet` (`scripts/sheet.js:531-532`,
+            **not** `adoptCharacter` — an adopt-time hook leaves every already-saved character empty
+            forever), guarded by `_sheet.companionsSeeded`; it appends one ordinary editable row per
+            non-absence entry, stamped `source: 'generated'` + `grantor`, and never touches a row it
+            did not create. There is no merge model and no clobber path: a generated payload carries
+            no `_sheet`, so `toRecord()` always mints a fresh library id. Absences render from the
+            payload as a dim line and are never rows. Three small model changes go with it — `speed`
+            becomes free text (`stats.speed` is prose), and `cmb`/`cmd` and a rollable `skills` row
+            join the block. Closes finish-line gate 3.
+      - [x] 9. (**#35**) Companion invariants, 2026-08-03, split across two gates by what each can
+            actually see. `scripts/validate_companion_stats.py` (validators 13 → 14) owns the
+            arithmetic, sweeping all **392** species-level stat blocks — it is where D11's
+            no-double-count ruling is enforced, and it re-fails on **447** counts if the size table is
+            put back on top. `test_house_invariants.py` owns what needs a whole generated character:
+            the emitted shape, absence entries carrying no stats, `stats.hd` agreeing with the
+            post-stack chassis, `size_change` present exactly when the creature grew, and the **druid
+            flip** (both=0, neither=0 — the regression test for F's rewire). It counts branches
+            reached and **fails if the sweep never produced a bonded creature at all**, so the run
+            cannot report success having asserted nothing. Full sweep: **15,560 checks / 825
+            generations**, 55 granted, 39 absence entries, 15 druid flips.
+      - [x] 10–13. (**parity**) Companion feats, flaws, dividers, tracker groups and basic buffs,
+            2026-08-04. Charted by a grill rather than a wayfinder map — the decisions were settled
+            in one pass and landed straight in §8 as **D14/D15/D16**. Backend:
+            `class_func/companion_feats.py` (gated picks, chassis-dated `feat_labels`, feat tax
+            behind the curated `tax_children` allowlist, animal flaws),
+            `companion_stats.apply_modifiers` (the fold + `applied_changes`),
+            `json/feats/companion_feat_changes.json`, `json/flaws/animal_flaw_effects.json`,
+            `scripts/validate_companion_feats.py` (validators 15 → 16). Module:
+            `scripts/companion-sections.js`. ⚠ **The `companion` golden was re-baselined** — moving
+            the companion's feat roll off the global RNG shifts every later draw for that seed; the
+            other six goldens did not move, which is the proof the churn is gone for good.
+            Not verified in a live world yet — same gate 2 as slice 7.
       Psionics has already done its half of the invariant work.
+
+## Phase 4.6 — class pool + class choices (charted 2026-08-03, gated on 4.5)
+
+Two wayfinder maps charted after the bonded-creature work exposed how little of the class-choice
+surface has ever been checked. **Neither is worked until Phase 4.5 is finished and we are happy with
+the bonded-creature system** — that gate is written into both maps' Notes, and charting now only
+captures the questions.
+
+- [x] Work [`docs/wayfinder/class-pool/`](wayfinder/class-pool/map.md) to done →
+      `feature_spec_todo.md` §10. **Map CLOSED 2026-08-03, and BUILT in the same pass** — the census
+      that gates the map turned out to also be the data source, so grilling tickets 02 and 03 were
+      answered by building rather than by conversation. **All six Occult Adventures classes are in
+      the random pool** (61 rollable classes, up from 55); `data.occult_classes` is empty.
+      - The pools (449 options) are harvested from `pf1` 11.11 + `pf-content` 11.4.0 by
+        `Backend/scripts/build_occult_class_data.py`; spell progressions are derived from pf1's own
+        `config.casterProgression` and cross-check exactly against the repo's existing `bard` and
+        `sorcerer` rows. No scrape, no new OGL entry.
+      - **Two classes degrade** per §8's eidolon ruling: the kineticist's **burn** is unmodelled and
+        the medium's **spirit** is rolled once and frozen (a house ruling, recorded as one).
+      - **`stalker`/`zealot` stay pending** — `pf1-pow` 1.6.4 ships no class Item for either. The
+        blocker is now named in §10 instead of implied by a list.
+      - Gates: `validate_occult_data.py` (validator 15) + occult invariants in
+        `test_house_invariants.py` with a branch-coverage guard. 18,863 checks pass.
+      - ⚠ **Two goldens were re-seeded, not just regenerated** — the wider pool had silently
+        collapsed `companion`'s three-grantor stack and `manifester`'s aegis. Same trap as the 7275
+        re-seed; re-scan, never edit the prose to match.
+      - **Still open:** the standalone **web sheet has no occult presentation** (the Foundry side is
+        wired), plus the deferred list in §10.
+- [ ] Work [`docs/wayfinder/class-choices/`](wayfinder/class-choices/map.md) to done →
+      `feature_spec_todo.md` §11, **after** the class pool is settled, so the audit covers the final
+      class list. Destination: every rollable class picks the right number of options, at the right
+      levels, legally, and visibly on both sheets — with a validator that keeps it true. Charting
+      already found two count bugs by inspection (**magus arcana 10 vs. RAW's 6**, **investigator
+      talents 10 vs. 9 with the level stamps on the wrong parity**) and one class whose picks are
+      rolled and then discarded (**bard versatile performances**, `main_test.py:474`).
 
 ## Phase 5 — docs + release train (seals 1.0)
 

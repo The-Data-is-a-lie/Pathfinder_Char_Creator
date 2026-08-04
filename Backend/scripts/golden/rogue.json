@@ -2,6 +2,7 @@
  "Total_HP": 288,
  "age_number": 28,
  "alignment": "Chaotic Neutral",
+ "animal_companion": null,
  "appearance": [
   "Freckled"
  ],
@@ -25,6 +26,7 @@
  "bloodline": "N/A",
  "bloodline_feat_labels": [],
  "bloodline_feats": [],
+ "bonded_creatures": [],
  "buff_gaps": [],
  "build_archetype": "Trickster",
  "build_tactics": "Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.",
@@ -62,7 +64,7 @@
   ]
  },
  "cha": 16,
- "character_full_name": "Victoria Tchaikovsky",
+ "character_full_name": "Caroline Landry",
  "chosen_race": "Halfling",
  "chosen_spell_descriptor": [
   "light",
@@ -410,7 +412,7 @@
       "name": "Bloodsong: while benefiting from a raging song, this weapon is keen; confirming a crit during a raging song grants [[1d10]] temporary HP ([[2d10]] on a x3 weapon, [[3d10]] on x4) until reduced to 0 or the song ends"
      }
     ],
-    "description": "This special ability can be placed only on slashing or piercing melee weapons. While the wielder benefits from a raging song performance (whether her own or from an ally), this weapon gains the keen weapon special ability. If the wearer confirms a critical hit while under the effects of a raging song, she gains 1d10 temporary hit points that last until they're reduced to 0 or the raging song ends, whichever comes first. If the weapon's critical multiplier is Ã—3, add 2d10 temporary hit points instead; if the multiplier is Ã—4, add 3d10 temporary hit points instead. While its powers are active, the weapon vibrates and makes a barely audible hum that rises to a shriek of triumph when it confirms a critical hit."
+    "description": "This special ability can be placed only on slashing or piercing melee weapons. While the wielder benefits from a raging song performance (whether her own or from an ally), this weapon gains the keen weapon special ability. If the wearer confirms a critical hit while under the effects of a raging song, she gains 1d10 temporary hit points that last until they're reduced to 0 or the raging song ends, whichever comes first. If the weapon's critical multiplier is ×3, add 2d10 temporary hit points instead; if the multiplier is ×4, add 3d10 temporary hit points instead. While its powers are active, the weapon vibrates and makes a barely audible hum that rises to a shriek of triumph when it confirms a critical hit."
    },
    "Catalytic": {
     "conditionals": [
@@ -613,7 +615,7 @@
   "Duck and Cover",
   "Light Armor Proficiency"
  ],
- "formatted_bio": "Victoria Tchaikovsky\n- Alignment: Chaotic Neutral\n- Deity: Calistria\n- Race: Halfling\n- Class: Level 18 Rogue\n- Archetype: Trickster\n- Tactics: Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.\n- Stat Focus: Dex\n- Disciplines: Iron Tortoise\n- Homeland: Tal-Falko\n\nVocation\n- Profession: Baron of the March (rank 10)\n- Profession: Hedge Witch (rank 9)\n- Profession: Camp Drillhand (rank 10)\n- Profession: Knight (rank 4)\n- Known for: Tinsmithing\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Punctual, Prudent, Enchanted, Intentional, Joyful\n- Mannerisms: Glances at watch, Crosses arms, Thumbs through a book\n- Flaws: Fussy Eater, Pranked\n\nAppearance\n- Hair: Straight Black\n- Eyes: Brown\n- Build: Freckled",
+ "formatted_bio": "Caroline Landry\n- Alignment: Chaotic Neutral\n- Deity: Calistria\n- Race: Halfling\n- Class: Level 18 Rogue\n- Archetype: Trickster\n- Tactics: Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.\n- Stat Focus: Dex\n- Disciplines: Iron Tortoise\n- Homeland: Tal-falko\n\nVocation\n- Profession: Baron of the March (rank 10)\n- Profession: Hedge Witch (rank 9)\n- Profession: Camp Drillhand (rank 10)\n- Profession: Knight (rank 4)\n- Known for: Tinsmithing\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Punctual, Prudent, Enchanted, Intentional, Joyful\n- Mannerisms: Glances at watch, Crosses arms, Thumbs through a book\n- Flaws: Fussy Eater, Pranked\n\nAppearance\n- Hair: Straight Black\n- Eyes: Brown\n- Build: Freckled",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 4003,
@@ -796,6 +798,7 @@
   "str": 0,
   "wis": 1
  },
+ "license_url": "/license",
  "magic_talent_items": [],
  "main_stat": "dex",
  "maneuvers_choose_from": [
@@ -975,6 +978,7 @@
    "Snapping Turtle Rush"
   ]
  ],
+ "manifesters": [],
  "mannerisms": [
   "Glances at watch",
   "Crosses arms",
@@ -1003,6 +1007,7 @@
   "Joyful"
  ],
  "platnium": 242660.0,
+ "powers_desc_dict": {},
  "profession_ability_items": [
   {
    "changes": [
@@ -1228,7 +1233,7 @@
   "str": -2,
   "wis": 0
  },
- "region": "Tal-Falko",
+ "region": "Tal-falko",
  "save_bases": {
   "fort": 6,
   "ref": 11,

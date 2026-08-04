@@ -23,8 +23,15 @@ def class_for_spells_attr(character):
             entry['class_for_spells'] = 'alchemist'
         elif name in ['witch', 'arcanist']:
             entry['class_for_spells'] = 'wizard'
-        elif name in ['warpriest', 'oracle']:
+        # The omdura's RAW list is the union of the cleric's and the inquisitor's, which nobody has
+        # written down as a list. It reads the CLERIC column: the superset at every level a 'mid'
+        # caster can reach, and the omdura is a cleric alternate class. The column's 7th-9th entries
+        # are unreachable -- caster_formula caps 'mid' at 6 and the selector filters by level.
+        elif name in ['warpriest', 'oracle', 'omdura']:
             entry['class_for_spells'] = 'cleric'
+        # The vampire hunter casts off the inquisitor list RAW; that column already exists.
+        elif name in ['vampire hunter']:
+            entry['class_for_spells'] = 'inquisitor'
         elif name in ['summoner (unchained)']:
             entry['class_for_spells'] = 'summoner'
         else:

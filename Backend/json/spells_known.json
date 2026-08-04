@@ -1,5 +1,59 @@
 {
-
+    "adept": {
+        "0": ["all"],
+        "1": ["all"],
+        "2": ["all"],
+        "3": ["all"],
+        "4": ["all"],
+        "5": ["all"],
+        "6": ["all"]
+    },
+    "medium": {
+        "0": [2,3,4,4,5,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6],
+        "1": ["null","null","null",2,3,4,4,4,5,5,5,6,6,6,6,6,6,6,6,6,6],
+        "2": ["null","null","null","null","null","null",2,3,4,4,4,5,5,5,6,6,6,6,6,6,6],
+        "3": ["null","null","null","null","null","null","null","null","null",2,3,4,4,4,5,5,5,6,6,6,6],
+        "4": ["null","null","null","null","null","null","null","null","null","null","null","null",2,3,4,4,4,5,5,5,5]
+    },
+    "mesmerist": {
+        "0": [4,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6],
+        "1": [2,3,4,4,4,4,5,5,5,5,6,6,6,6,6,6,6,6,6,6,6],
+        "2": ["null","null","null",2,3,4,4,4,4,5,5,5,5,6,6,6,6,6,6,6,6],
+        "3": ["null","null","null","null","null","null",2,3,4,4,4,4,5,5,5,5,6,6,6,6,6],
+        "4": ["null","null","null","null","null","null","null","null","null",2,3,4,4,4,4,5,5,5,5,6,6],
+        "5": ["null","null","null","null","null","null","null","null","null","null","null","null",2,3,4,4,4,4,5,5,5],
+        "6": ["null","null","null","null","null","null","null","null","null","null","null","null","null","null","null",2,3,4,4,5,5]
+    },
+    "occultist": {
+        "0": [4,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6],
+        "1": [2,3,4,4,4,4,5,5,5,5,6,6,6,6,6,6,6,6,6,6,6],
+        "2": ["null","null","null",2,3,4,4,4,4,5,5,5,5,6,6,6,6,6,6,6,6],
+        "3": ["null","null","null","null","null","null",2,3,4,4,4,4,5,5,5,5,6,6,6,6,6],
+        "4": ["null","null","null","null","null","null","null","null","null",2,3,4,4,4,4,5,5,5,5,6,6],
+        "5": ["null","null","null","null","null","null","null","null","null","null","null","null",2,3,4,4,4,4,5,5,5],
+        "6": ["null","null","null","null","null","null","null","null","null","null","null","null","null","null","null",2,3,4,4,5,5]
+    },
+    "psychic": {
+        "0": [4,5,5,6,6,7,7,8,8,9,9,9,9,9,9,9,9,9,9,9,9],
+        "1": [2,2,3,3,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],
+        "2": ["null","null","null",1,2,2,3,3,4,4,5,5,5,5,5,5,5,5,5,5,5],
+        "3": ["null","null","null","null","null",1,2,2,3,3,4,4,4,4,4,4,4,4,4,4,4],
+        "4": ["null","null","null","null","null","null","null",1,2,2,3,3,4,4,4,4,4,4,4,4,4],
+        "5": ["null","null","null","null","null","null","null","null","null",1,2,2,3,3,4,4,4,4,4,4,4],
+        "6": ["null","null","null","null","null","null","null","null","null","null","null",1,2,2,3,3,3,3,3,3,3],
+        "7": ["null","null","null","null","null","null","null","null","null","null","null","null","null",1,2,2,3,3,3,3,3],
+        "8": ["null","null","null","null","null","null","null","null","null","null","null","null","null","null","null",1,2,2,3,3,3],
+        "9": ["null","null","null","null","null","null","null","null","null","null","null","null","null","null","null","null","null",1,2,3,3]
+    },
+    "spiritualist": {
+        "0": [4,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6],
+        "1": [2,3,4,4,4,4,5,5,5,5,6,6,6,6,6,6,6,6,6,6,6],
+        "2": ["null","null","null",2,3,4,4,4,4,5,5,5,5,6,6,6,6,6,6,6,6],
+        "3": ["null","null","null","null","null","null",2,3,4,4,4,4,5,5,5,5,6,6,6,6,6],
+        "4": ["null","null","null","null","null","null","null","null","null",2,3,4,4,4,4,5,5,5,5,6,6],
+        "5": ["null","null","null","null","null","null","null","null","null","null","null","null",2,3,4,4,4,4,5,5,5],
+        "6": ["null","null","null","null","null","null","null","null","null","null","null","null","null","null","null",2,3,4,4,5,5]
+    },
     "arcanist": {
         "0": [4,5,5,6,6,7,7,8,8,9,9,9,9,9,9,9,9,9,9,9,9],
         "1": [2,2,3,3,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],

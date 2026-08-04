@@ -16,7 +16,12 @@ def domain_chooser(character):
         character.chosen_domain = random.sample(deity_choice_list,k=2)
         chosen_first = character.chosen_domain[0].capitalize()
         chosen_second = character.chosen_domain[1].capitalize()
-    if has_druid and character.domain_chance > 90:
+    # The druid's domain-vs-companion flip is owned by animal_companions.resolve_bonded_creatures,
+    # which runs first and records its outcome. Reading `domain_chance` here as well would roll the
+    # question twice: the resolver now draws per grantor row, so the two answers would agree only by
+    # luck -- ~9% of druids would get both a companion and a domain, and ~9% neither. `domain_chance`
+    # is left untouched for the inquisitor gate below, which is a separate question.
+    if has_druid and getattr(character, 'bond_outcomes', {}).get('druid') == 'domain':
 
         druid_domains_list = list(character.druid_domains.keys())
         chosen_domain = random.choice(druid_domains_list)

@@ -1,0 +1,197 @@
+{
+  "_readme": [
+    "Mechanical flaws for BONDED CREATURES -- animal companions and mounts. Spec section 8, D16.",
+    "",
+    "Same shape, same ladder and the same house DCs as flaw_effects.json: the 1st flaw a creature",
+    "rolls is minor, the 2nd major, and any further flaw rolls 80% minor / 20% major (flaws.pick_flaws).",
+    "Minor-flaw save DCs are always 5, major always 15.",
+    "",
+    "A SEPARATE CATALOGUE, not a filtered view of the PC's 44. Those are written for people --",
+    "Alcoholic, Bespectacled, Racial Distrust, Accustomed to Society, Illiterate -- and the subset that",
+    "survives on an animal is about eight entries, which every companion would then repeat. These are",
+    "written for a body instead: senses, temperament, old injuries, and training that did not take.",
+    "",
+    "Numeric `changes` must use a target companion_stats.apply_modifiers can place (MODIFIER_TARGETS",
+    "plus skill.<pf1 id>), because the module strips system.changes off the flaw item and the backend",
+    "is the only thing that will ever do this arithmetic. Anything situational is a contextNote --",
+    "those reach the sheet as text and are never totalled in.",
+    "",
+    "Gated by Backend/scripts/validate_flaw_effects.py, which sweeps both catalogues."
+  ],
+
+  "minor": {
+    "Skittish": {
+      "description": "Loud noises and sudden movement unsettle the creature. It is easily startled and slow to settle once alarmed.",
+      "changes": [],
+      "contextNotes": [
+        {"text": "Skittish (minor): when a loud or sudden effect occurs within 30 feet, Will save DC [[5]] or the creature is shaken for 1 round.", "target": "will"}
+      ]
+    },
+    "Poor Nose": {
+      "description": "The creature's sense of smell is dulled, whether by age, injury or simple bad breeding.",
+      "changes": [
+        {"formula": "-2", "target": "skill.sur", "type": "untyped", "operator": "add", "priority": 0}
+      ],
+      "contextNotes": [
+        {"text": "Poor Nose (minor): -4 on Perception and Survival checks that rely on scent, and the scent special quality (if any) has half its normal range.", "target": "skills"}
+      ]
+    },
+    "Heavy-Footed": {
+      "description": "The creature moves without any of its kind's usual quiet.",
+      "changes": [
+        {"formula": "-2", "target": "skill.ste", "type": "untyped", "operator": "add", "priority": 0}
+      ],
+      "contextNotes": []
+    },
+    "Old Wound": {
+      "description": "A badly healed injury aches in the cold and stiffens after exertion.",
+      "changes": [],
+      "contextNotes": [
+        {"text": "Old Wound (minor): after any round in which the creature charges or runs, Fortitude save DC [[5]] or it is fatigued for 1 minute.", "target": "fort"}
+      ]
+    },
+    "Picky Eater": {
+      "description": "The creature refuses all but a narrow diet, and sulks when it does not get it.",
+      "changes": [],
+      "contextNotes": [
+        {"text": "Picky Eater (minor): rations cost double, and after a day without its preferred food the creature takes a -2 penalty on all checks until fed.", "target": "allChecks"}
+      ]
+    },
+    "Slow to Trust": {
+      "description": "The creature bonded late and still treats strangers as threats.",
+      "changes": [],
+      "contextNotes": [
+        {"text": "Slow to Trust (minor): -4 on Handle Animal and Charisma-based checks made by anyone other than its master, and it will not willingly be handled by a stranger without a DC [[5]] Will save.", "target": "chaChecks"}
+      ]
+    },
+    "Poor Swimmer": {
+      "description": "Deep water frightens the creature and it flounders in it.",
+      "changes": [
+        {"formula": "-4", "target": "skill.swm", "type": "untyped", "operator": "add", "priority": 0}
+      ],
+      "contextNotes": [
+        {"text": "Poor Swimmer (minor): Will save DC [[5]] to enter water deeper than its own height voluntarily.", "target": "will"}
+      ]
+    },
+    "Noisy Breather": {
+      "description": "A narrowed airway makes every breath audible, and hard work audible from further off.",
+      "changes": [],
+      "contextNotes": [
+        {"text": "Noisy Breather (minor): -4 on Stealth checks while moving at more than half speed, and Fortitude save DC [[5]] to avoid fatigue after a minute of running.", "target": "fort"}
+      ]
+    },
+    "Distractible": {
+      "description": "The creature's attention wanders at exactly the wrong moment.",
+      "changes": [
+        {"formula": "-2", "target": "init", "type": "untyped", "operator": "add", "priority": 0}
+      ],
+      "contextNotes": [
+        {"text": "Distractible (minor): Will save DC [[5]] to keep following a command in the round after a new creature comes into view.", "target": "will"}
+      ]
+    },
+    "Sun-Shy": {
+      "description": "Bright daylight makes the creature squint and shy away.",
+      "changes": [],
+      "contextNotes": [
+        {"text": "Sun-Shy (minor): -2 on attack rolls and Perception checks in bright light.", "target": "attack"}
+      ]
+    },
+    "Weak Jaw": {
+      "description": "The creature's bite has never had the force its frame suggests.",
+      "changes": [],
+      "contextNotes": [
+        {"text": "Weak Jaw (minor): -2 on combat maneuver checks made to grapple or maintain a grapple with a natural attack.", "target": "cmb"}
+      ]
+    },
+    "Thin-Coated": {
+      "description": "A sparse coat gives the creature little protection from weather.",
+      "changes": [],
+      "contextNotes": [
+        {"text": "Thin-Coated (minor): -4 on Fortitude saves against cold weather and cold environmental effects; treat any DC [[5]] weather save as one step worse.", "target": "fort"}
+      ]
+    }
+  },
+
+  "major": {
+    "One-Eyed": {
+      "description": "The creature lost an eye and has never adjusted to the missing half of its world.",
+      "changes": [
+        {"formula": "-2", "target": "skill.per", "type": "untyped", "operator": "add", "priority": 0}
+      ],
+      "contextNotes": [
+        {"text": "One-Eyed (major): the creature has no depth perception -- 20% miss chance against any target further away than 30 feet, and Reflex save DC [[15]] to avoid being flanked from its blind side.", "target": "ref"}
+      ]
+    },
+    "Lame": {
+      "description": "An old break set badly. The creature is sound enough at a walk and useless at a gallop.",
+      "changes": [
+        {"formula": "-2", "target": "skill.acr", "type": "untyped", "operator": "add", "priority": 0}
+      ],
+      "contextNotes": [
+        {"text": "Lame (major): base land speed is reduced by 10 feet (minimum 5), and the creature cannot run or charge. Fortitude save DC [[15]] after any forced march or it is exhausted.", "target": "landSpeed"}
+      ]
+    },
+    "Ill-Tempered": {
+      "description": "The creature bites first. It has never entirely accepted that anyone outranks it.",
+      "changes": [],
+      "contextNotes": [
+        {"text": "Ill-Tempered (major): Handle Animal DC increases by 5, and on a failed check by DC [[15]] or more the creature attacks the nearest creature other than its master instead.", "target": "allChecks"}
+      ]
+    },
+    "Fear of Fire": {
+      "description": "Something burned this creature once and it has not forgotten.",
+      "changes": [],
+      "contextNotes": [
+        {"text": "Fear of Fire (major): Will save DC [[15]] when a fire larger than a torch comes within 30 feet or the creature is panicked for 1d4 rounds; it will not willingly approach open flame.", "target": "will"}
+      ]
+    },
+    "Hard of Hearing": {
+      "description": "The creature hears little and reacts late.",
+      "changes": [
+        {"formula": "-4", "target": "init", "type": "untyped", "operator": "add", "priority": 0}
+      ],
+      "contextNotes": [
+        {"text": "Hard of Hearing (major): -8 on Perception checks relying on sound, and verbal commands require a DC [[15]] Handle Animal check unless the creature can see the handler.", "target": "skills"}
+      ]
+    },
+    "Brittle Bones": {
+      "description": "The creature's frame is fine-boned and breaks easily.",
+      "changes": [
+        {"formula": "-1", "target": "nac", "type": "untyped", "operator": "add", "priority": 0}
+      ],
+      "contextNotes": [
+        {"text": "Brittle Bones (major): Fortitude save DC [[15]] on taking falling damage or a critical hit, or the creature is staggered for 1 round.", "target": "fort"}
+      ]
+    },
+    "Glass Stomach": {
+      "description": "The creature's constitution is poor and it sickens easily.",
+      "changes": [
+        {"formula": "-2", "target": "fort", "type": "untyped", "operator": "add", "priority": 0}
+      ],
+      "contextNotes": [
+        {"text": "Glass Stomach (major): -4 on saves against disease, poison and ingested effects.", "target": "fort"}
+      ]
+    },
+    "Bolts at Blood": {
+      "description": "The smell of blood sends the creature running rather than in.",
+      "changes": [],
+      "contextNotes": [
+        {"text": "Bolts at Blood (major): the first time each encounter that the creature or its master is reduced below half hit points, Will save DC [[15]] or the creature flees for 1d4 rounds.", "target": "will"}
+      ]
+    },
+    "Half-Trained": {
+      "description": "The creature's training was rushed and it shows under pressure.",
+      "changes": [],
+      "contextNotes": [
+        {"text": "Half-Trained (major): the creature knows two fewer tricks than its bonus tricks allow (minimum 0), and Handle Animal checks to push it take a -4 penalty.", "target": "allChecks"}
+      ]
+    },
+    "Slow Healer": {
+      "description": "Wounds close badly on this creature and infection follows easily.",
+      "changes": [],
+      "contextNotes": [
+        {"text": "Slow Healer (major): the creature recovers half the normal hit points from natural rest, and magical healing on it is reduced by 1 point per die (minimum 1 per die).", "target": "effect"}
+      ]
+    }
+  }
+}

@@ -26,6 +26,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "Backend/json/class_data/psionics"
 
+sys.path.insert(0, str(ROOT / "Backend"))   # so `from utils...` resolves
+from utils import data as _data             # noqa: E402  (path bootstrap must run first)
+
 EXPECTED_CLASSES = {
     "aegis", "cryptic", "dread", "highlord", "marksman", "psion", "psychic warrior",
     "soulknife", "tactician", "vitalist", "voyager", "wilder",
@@ -34,13 +37,10 @@ LEVELS = 20
 
 # Verbatim from pf1-psionics scripts/data/powerpoints.mjs (POINTS_PER_LEVEL), captured 2026-07-31.
 # Hardcoded rather than fetched so this validator stays offline and deterministic; ticket 02
-# verified the "high" row against the published psion table independently.
-MODULE_PP = {
-    "low": [1, 2, 3, 5, 7, 9, 11, 14, 17, 20, 24, 28, 32, 37, 42, 47, 52, 58, 64, 70],
-    "med": [1, 2, 4, 6, 8, 12, 16, 20, 24, 28, 36, 44, 52, 60, 68, 80, 92, 104, 116, 128],
-    "high": [2, 6, 11, 17, 25, 35, 46, 58, 72, 88, 106, 126, 147, 170, 195, 221, 250, 280,
-             311, 343],
-}
+# verified the "high" row against the published psion table independently. It lives in data.py
+# because class_func/psionics.py reads the same table to derive each manifester's `caster_type` for
+# the Foundry module -- the check below is therefore also the gate on that derivation.
+MODULE_PP = _data.psionic_pp_tables
 
 # Level-20 base attack bonus -> the class_data.json 'bab' vocabulary.
 BAB_AT_20 = {"H": 20, "M": 15, "L": 10}
