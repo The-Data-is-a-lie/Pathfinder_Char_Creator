@@ -191,8 +191,17 @@ wayfinder maps — decisions before code — and each ends at a spec section in
             realigned the RNG and 7275 had quietly stopped rolling a stack at all, so the golden that
             exists to pin the stacking math had stopped pinning it. 7323 stacks **three** grantors
             (hunter 7 / ranger 4 / druid 3 → effective 11). **Not done until `./deploy.ps1` runs.**
-      - [ ] 7. (**#33**) Foundry module: loop `Actor.create`, clone from `pf-content`, patch numbers,
-            degrade on miss; title composed module-side per D10. **Unblocked 2026-08-03** —
+      - [x] 7. (**#33**) Foundry module: loop `Actor.create`, clone from `pf-content`, patch numbers,
+            degrade on miss; title composed module-side per D10. **Built 2026-08-03** as the module
+            repo's `scripts/createCompanions.js` (+ `skills-dict.js`, wired into
+            `createAndAssignActor`). The harness `tools/test_create_companions.mjs` replays the
+            `companion` golden through a stubbed pf1: cloned, degraded, familiar and absence paths
+            all behave, and the class item driven at HD reproduces the payload's HP/BAB/saves/AC
+            with **zero corrections**. It fails, naming the field, on a payload whose numbers are
+            nudged.
+            ⚠ **Not verified in a live world yet** — that is finish-line gate 2, and it is the same
+            run that closes ticket 02's two residual claims. Uncommitted in the module repo, which
+            also has concurrent psionics work in `modify-abilities.js`. **Unblocked 2026-08-03** —
             [ticket 02](wayfinder/companion-sheets/issues/02-pf1-actor-patching.md) is resolved and
             carries the mechanical recipe: pf1 keeps stored fields and rebuilds every `.total`, the
             clone's `Animal Companion` class item is driven at the creature's **HD count** (not its

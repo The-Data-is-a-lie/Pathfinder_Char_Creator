@@ -275,6 +275,12 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
   User-facing walkthrough: the module repo's `README.md`.
 - FoundryVTT module `pf1e_random_char_generator`: repo in `%LOCALAPPDATA%`-adjacent
   `FoundryVTT\Data\modules` (NOT Documents\GitHub); GitLab MRs; release via its `release.ps1`.
+  - `scripts/createCharacter.js` builds the PC Actor; `scripts/createCompanions.js` builds one Actor
+    per `bonded_creatures` entry (spec §8 D1/D2/D10 — its header owns the pf1 patching rules that
+    [`docs/wayfinder/companion-sheets/issues/02-pf1-actor-patching.md`](wayfinder/companion-sheets/issues/02-pf1-actor-patching.md)
+    settled). `scripts/skills-dict.js` holds skill name → pf1 id and must stay in lockstep with
+    `utils/data.py::SKILL_IDS`; ⚠ `modify-abilities.js` still declares its own identical copy —
+    the dedupe is pending, and its header says so.
 - Web sheet: standalone `Pathfinder-Character-Sheet` repo in `FoundryVTT\Data` — the only web front
   end (the Flask copy at `/sheet` was deleted and will not be revived). One file per tab under
   `scripts/tabs/`, each exposing `window.SheetTab<Name>`; register a new one in the `TABS` array in

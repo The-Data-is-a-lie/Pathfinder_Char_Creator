@@ -400,6 +400,25 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     after. The module deletes those two items and drives the creature's hit dice instead, which is
     the number Foundry derives HP, attack bonus and saves from — and the table it uses to do that is
     the same table the generator read.
+- **The Foundry module builds the companion sheets** (module repo, `scripts/createCompanions.js`).
+  One Actor per bonded creature in the Random Characters folder, body cloned from `pf-content`,
+  numbers written from `stats`, absences logged rather than dropped, and a species with no
+  compendium body built from the payload alone. The module's own changelog carries the
+  reader-facing version.
+  - **The recipe's numbers were verified before Foundry ever ran them.** A headless harness
+    (`tools/test_create_companions.mjs`, re-runnable against any payload) stubs the parts of pf1 the
+    file touches and replays the `companion` golden through it: the cloned
+    body's class item driven at the creature's **hit dice** reproduces the payload's HP, BAB, saves
+    and AC with **zero corrections**. That is ticket 02's central claim tested rather than asserted.
+  - **The correction pass stays anyway.** It diffs what pf1 derived against what the backend said
+    and writes the remainder into the stored seeds pf1 accumulates on top, so a world with different
+    health rules — or a familiar that does not advance like an animal — still lands on the payload's
+    numbers. What it cannot correct, it names.
+  - **The skill-name map moved to its own file** (`scripts/skills-dict.js`), because the companion
+    renderer spends ranks through the same table the character does and the map already carries the
+    scar of having drifted once. ⚠ `modify-abilities.js` still holds an identical copy — it was
+    being edited by other work at the time — so the deletion there is pending and both the file
+    header and the codebase map say so.
 
 ### Removed
 - **The in-repo character sheet and `GET /sheet` are gone.** The standalone
