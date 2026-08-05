@@ -13,23 +13,19 @@ Guards two bugs:
 import sys
 from pathlib import Path
 
-HERE = Path(__file__).resolve()
-BACKEND = HERE.parents[1]
-sys.path.insert(0, str(BACKEND))   # so `from utils...` resolves
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _harness import Report  # noqa: E402
 
-from utils import data
-from utils.class_func import item_and_price as ip
-from utils.class_func.armor_and_enhancements import plan_enhancements
-from utils.class_func.stats import roll_stats
+from utils import data  # noqa: E402
+from utils.class_func import item_and_price as ip  # noqa: E402
+from utils.class_func.armor_and_enhancements import plan_enhancements  # noqa: E402
+from utils.class_func.stats import roll_stats  # noqa: E402
 
-FAILURES = []
-CHECKS = [0]
+REPORT = Report('test_gold_and_stats')
 
 
 def check(condition, message):
-    CHECKS[0] += 1
-    if not condition:
-        FAILURES.append(message)
+    return REPORT.check(condition, message)
 
 
 class GoldCharacter:
@@ -252,14 +248,8 @@ def main():
     for test in tests:
         test()
 
-    print()
-    if FAILURES:
-        print(f"FAIL -- {len(FAILURES)} of {CHECKS[0]} checks failed:")
-        for message in FAILURES:
-            print("  *", message)
-        return 1
-    print(f"PASS -- {CHECKS[0]} checks" + ("" if '--slow' in sys.argv else "  (add --slow for the end-to-end run)"))
-    return 0
+    suffix = '' if '--slow' in sys.argv else ' (add --slow for the end-to-end run)'
+    return REPORT.finish(f'{REPORT.checks} checks{suffix}')
 
 
 if __name__ == "__main__":

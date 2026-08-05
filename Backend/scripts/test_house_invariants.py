@@ -35,17 +35,16 @@ from contextlib import redirect_stdout
 from math import ceil, floor
 from pathlib import Path
 
-HERE = Path(__file__).resolve()
-BACKEND = HERE.parents[1]
-sys.path.insert(0, str(BACKEND))   # so `from utils...` resolves
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _harness import BACKEND, Report  # noqa: E402
 
-from utils import data
-from utils.class_func import backstory as _bs
+from utils import data  # noqa: E402
+from utils.class_func import backstory as _bs  # noqa: E402
 
 # Sever Ollama like test_golden_payload.py: build_archetype reaches for it to break scoring ties.
 _bs._try_ollama = lambda *a, **k: ''
 
-import main_test
+import main_test  # noqa: E402
 
 LEVELS = [1, 5, 10, 15, 20]
 SEEDS = [1101, 2202, 3303]
@@ -53,8 +52,7 @@ SEEDS = [1101, 2202, 3303]
 with open(BACKEND / 'json' / 'class_data.json', encoding='utf-8') as f:
     CLASS_DATA = json.load(f)
 
-FAILURES = []
-CHECKS = [0]
+REPORT = Report('test_house_invariants')
 METZ_PICKS = [0]
 # Bonded-creature branch coverage (#35). Counted rather than assumed, because the #30 stack review's
 # "both=0, neither=0 over 400 generations" was measured by a sample that could not reach the path it
@@ -127,9 +125,7 @@ OCCULT = {'chars': 0, 'picks': 0, 'multi_pick_buckets': 0, 'kineticists': 0, 'ca
 
 
 def check(condition, message):
-    CHECKS[0] += 1
-    if not condition:
-        FAILURES.append(message)
+    return REPORT.check(condition, message)
 
 
 def generatable_classes():
@@ -594,10 +590,9 @@ def run(classes, levels, seeds):
                             num_dice='4', num_sides='6', use_backstory_api='N',
                             spheres_flag='N', seed=seed)
                 except Exception:
-                    CHECKS[0] += 1
                     tail = traceback.format_exc().strip().splitlines()
-                    FAILURES.append(f"{cell}: generation raised -- {tail[-1]} "
-                                    f"(replay with seed={seed})")
+                    REPORT.error(f"{cell}: generation raised -- {tail[-1]} "
+                                 f"(replay with seed={seed})")
                     continue
                 check_character(f"{cell} (gen seed {payload.get('generation_seed')})", payload)
         print(f"  {name}: ok through L{levels[-1]} ({done}/{total})")
@@ -665,14 +660,7 @@ def main():
           f"{OCCULT['multi_pick_buckets']} multi-pick buckets "
           f"({OCCULT['kineticists']} kineticist, {OCCULT['casters']} caster)")
 
-    print()
-    if FAILURES:
-        print(f"FAIL -- {len(FAILURES)} of {CHECKS[0]} checks failed:")
-        for message in FAILURES:
-            print("  *", message)
-        return 1
-    print(f"PASS -- {CHECKS[0]} checks")
-    return 0
+    return REPORT.finish(f'{REPORT.checks} checks')
 
 
 if __name__ == '__main__':

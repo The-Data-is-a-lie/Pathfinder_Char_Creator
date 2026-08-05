@@ -35,18 +35,17 @@ from contextlib import redirect_stdout
 from math import floor
 from pathlib import Path
 
-HERE = Path(__file__).resolve()
-BACKEND = HERE.parents[1]
-sys.path.insert(0, str(BACKEND))   # so `from utils...` resolves
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _harness import BACKEND, Report  # noqa: E402
 
-from utils import data
-from utils.class_func import backstory as _bs
+from utils import data  # noqa: E402
+from utils.class_func import backstory as _bs  # noqa: E402
 
 # Sever Ollama the way the other gates do: build_archetype reaches for it to break scoring ties.
 _bs._try_ollama = lambda *a, **k: ''
 
-import main_test
-from utils.class_func.psionics import FREE_TALENTS, MANDATED_TALENTS, SUBSYSTEM_BUCKET
+import main_test  # noqa: E402
+from utils.class_func.psionics import FREE_TALENTS, MANDATED_TALENTS, SUBSYSTEM_BUCKET  # noqa: E402
 
 LEVELS = [1, 5, 10, 20]
 SEED = 4242
@@ -78,11 +77,11 @@ for _list, _entry in POWER_LISTS.items():
             for _n in _names:
                 LEVEL_OF.setdefault(_n, set()).add(int(_k))
 
-FAILURES = []
+REPORT = Report('test_psionics_sweep')
 
 
 def fail(cell, message):
-    FAILURES.append(f"{cell}: {message}")
+    REPORT.error(f"{cell}: {message}")
 
 
 def final_score(payload, stat):
@@ -233,13 +232,7 @@ def main():
     run(classes, levels, args.quiet)
 
     print()
-    if FAILURES:
-        print(f"FAIL -- {len(FAILURES)} failure(s):")
-        for line in FAILURES:
-            print(f"  * {line}")
-        return 1
-    print(f"PASS -- {len(classes) * len(levels)} manifesters, all columns green")
-    return 0
+    return REPORT.finish(f'{len(classes) * len(levels)} manifesters, all columns green')
 
 
 if __name__ == '__main__':

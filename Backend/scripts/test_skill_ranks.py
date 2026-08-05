@@ -20,22 +20,18 @@ import sys
 from math import floor
 from pathlib import Path
 
-HERE = Path(__file__).resolve()
-BACKEND = HERE.parents[1]
-sys.path.insert(0, str(BACKEND))   # so `from utils...` resolves
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _harness import Report  # noqa: E402
 
-from utils import data
-from utils.class_func import profession_chooser as pc
-from utils.class_func import skill_ranks as sr
+from utils import data  # noqa: E402
+from utils.class_func import profession_chooser as pc  # noqa: E402
+from utils.class_func import skill_ranks as sr  # noqa: E402
 
-FAILURES = []
-CHECKS = [0]
+REPORT = Report('test_skill_ranks')
 
 
 def check(condition, message):
-    CHECKS[0] += 1
-    if not condition:
-        FAILURES.append(message)
+    return REPORT.check(condition, message)
 
 
 class FakeCharacter:
@@ -342,14 +338,7 @@ def main():
                  test_house_cap_and_exact_spend, test_background_ranks_pool, test_favored_class):
         test()
 
-    print()
-    if FAILURES:
-        print(f"FAIL -- {len(FAILURES)} of {CHECKS[0]} checks failed:")
-        for message in FAILURES:
-            print("  *", message)
-        return 1
-    print(f"PASS -- {CHECKS[0]} checks")
-    return 0
+    return REPORT.finish(f'{REPORT.checks} checks')
 
 
 if __name__ == "__main__":

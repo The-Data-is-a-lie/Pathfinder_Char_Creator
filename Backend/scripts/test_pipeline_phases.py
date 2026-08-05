@@ -17,13 +17,13 @@ The four ordering hazards these protect (each was previously only a comment in m
 import sys
 from pathlib import Path
 
-HERE = Path(__file__).resolve()
-BACKEND = HERE.parents[1]
-sys.path.insert(0, str(BACKEND))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _harness import Report  # noqa: E402
 
-from utils.class_func.pipeline import (PhaseOrderError, phase, seal, is_sealed, require_sealed)
+from utils.class_func.pipeline import (  # noqa: E402
+    PhaseOrderError, phase, seal, is_sealed, require_sealed)
 
-FAILURES = []
+REPORT = Report('test_pipeline_phases')
 
 
 def check(label, condition):
@@ -31,7 +31,7 @@ def check(label, condition):
         print(f'  ok    {label}')
     else:
         print(f'  FAIL  {label}')
-        FAILURES.append(label)
+    REPORT.check(condition, label)
 
 
 def raises(label, func, *args, **kwargs):
@@ -139,13 +139,8 @@ def main():
         print(f'{test.__name__}:')
         test()
 
-    if FAILURES:
-        print(f'\nFAIL -- {len(FAILURES)} check(s)')
-        for line in FAILURES:
-            print(f'  {line}')
-        return 1
-    print('\nPASS -- phase contracts enforced')
-    return 0
+    print()
+    return REPORT.finish('phase contracts enforced')
 
 
 if __name__ == '__main__':

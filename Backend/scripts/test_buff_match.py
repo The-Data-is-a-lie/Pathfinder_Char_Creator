@@ -16,20 +16,16 @@ Covers the two contracts that are easy to break silently:
 import sys
 from pathlib import Path
 
-HERE = Path(__file__).resolve()
-BACKEND = HERE.parents[1]
-sys.path.insert(0, str(BACKEND))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _harness import Report  # noqa: E402
 
-from utils.class_func import buff_match as bm
+from utils.class_func import buff_match as bm  # noqa: E402
 
-FAILURES = []
-CHECKS = [0]
+REPORT = Report('test_buff_match')
 
 
 def check(condition, message):
-    CHECKS[0] += 1
-    if not condition:
-        FAILURES.append(message)
+    return REPORT.check(condition, message)
 
 
 # --------------------------------------------------------------------------------------------- #
@@ -198,13 +194,7 @@ def main():
                  test_unknown_spell_falls_back_safely):
         test()
 
-    if FAILURES:
-        print(f'FAIL -- {len(FAILURES)} of {CHECKS[0]} checks')
-        for line in FAILURES:
-            print(f'  {line}')
-        return 1
-    print(f'PASS -- {CHECKS[0]} checks')
-    return 0
+    return REPORT.finish(f'{REPORT.checks} checks')
 
 
 if __name__ == '__main__':
