@@ -7,6 +7,14 @@ WORKDIR /app
 # Set PYTHONPATH to include the Backend directory
 ENV PYTHONPATH=/app/Backend
 
+# Python buffers stdout when it is not a TTY, which a container never is. Without this, everything
+# the app prints at import -- the "Redis: using <host>" / "none reachable" line that says whether
+# rate limiting is actually shared across workers, and the generator's startup banner -- sits in a
+# 8 KB buffer instead of reaching Render's log stream, so the deploy log shows gunicorn booting and
+# nothing else. That is not cosmetic: it is the only signal that the Redis wiring took effect, and
+# its absence is indistinguishable from the line never having run.
+ENV PYTHONUNBUFFERED=1
+
 # install uv (runs much faster than pip)
 RUN pip install uv
 
