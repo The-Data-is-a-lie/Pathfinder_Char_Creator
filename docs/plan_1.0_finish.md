@@ -139,7 +139,7 @@ eidolons, mounts/psicrystals) and the **psionics classes**. Both are being desig
 wayfinder maps — decisions before code — and each ends at a spec section in
 `docs/feature_spec_todo.md`. **The release train (Phase 5) waits on these.**
 
-- [x] Work `docs/wayfinder/companions/` to done → `feature_spec_todo.md` §8. **Effort closed
+- [x] Work `tickets: feature/companions` to done → `feature_spec_todo.md` §8. **Effort closed
       2026-08-01**: six of seven tickets resolved, map marked CLOSED, §8 landed. Locked: **one
       payload, N `npc` Actors**; the **backend owns every number** and the module clones a
       `pf-content` Actor for the body (the web sheet has no game system, so pf1 cannot own the math);
@@ -150,7 +150,7 @@ wayfinder maps — decisions before code — and each ends at a spec section in
       **Three grantor rows from the chart failed RAW verification** and were corrected in the spec:
       `shifter` grants nothing, `antipaladin`'s fiendish servant is a `summon monster` subsystem, and
       `sorcerer` is Arcane-bloodline-conditional — 13 classes touched, 10 at a full stat block.
-- [x] Work `docs/wayfinder/psionics/` to done → `feature_spec_todo.md` §9. **Effort closed
+- [x] Work `tickets: feature/psionics` to done → `feature_spec_todo.md` §9. **Effort closed
       2026-07-31**: all eleven tickets resolved, map marked CLOSED. Locked: adopt
       [`pf1-psionics`](https://github.com/SoxMax/pf1-psionics) rather than build a module, but source
       the **mechanics from the Library of Metzofitz wiki** — the module's class fields are
@@ -166,7 +166,8 @@ wayfinder maps — decisions before code — and each ends at a spec section in
       branch; voyager bonus feats, psionic races and the other deferred items are listed in §9.
 - [ ] Implement the **companions** spec (§8 build slices, in dependency order — each is a commit).
       The remaining slices are charted as
-      [`docs/wayfinder/companion-sheets/`](wayfinder/companion-sheets/map.md), whose destination is
+      [`tickets: feature/companion-sheets`](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/companion-sheets/map.md),
+      whose destination is
       *every bonded creature arrives as a usable sheet*. **Slices 1–6 and 9 are done (2026-08-03);
       the backend half of this phase is finished** and the map's first finish-line gate is met. What
       is left is the two renderers: **7 is unblocked** (ticket 02 resolved), **8 still waits on
@@ -180,10 +181,12 @@ wayfinder maps — decisions before code — and each ends at a spec section in
             `class_entry_for`), plus archetype-bond classification, stacking and D9 identity.
       - [x] 5. Advancement merge + stat-block math (**#31**) — `class_func/companion_stats.py`,
             2026-08-03. Both gating tickets resolved first:
-            [01](wayfinder/companion-sheets/issues/01-attack-skill-derivation.md) (spec §8 **D12** —
+            [01](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/companion-sheets/01-attack-skill-derivation.md)
+            (spec §8 **D12** —
             every number's source; none of the PC's code reusable, only the maximised-HP *rule*; the
             house skill floor does **not** carry over) and
-            [04](wayfinder/companion-sheets/issues/04-size-change-double-count.md) (spec §8 **D11** —
+            [04](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/companion-sheets/04-size-change-double-count.md)
+            (spec §8 **D11** —
             the published deltas already contain the size package, so only the geometry is ours).
       - [x] 6. Payload: emit `bonded_creatures`, keep `animal_companion` as the deprecated alias
             (**#32**), 2026-08-03. All six goldens regenerated; five differ by exactly the one added
@@ -202,7 +205,8 @@ wayfinder maps — decisions before code — and each ends at a spec section in
             ⚠ **Not verified in a live world yet** — that is finish-line gate 2, and it is the same
             run that closes ticket 02's two residual claims. Uncommitted in the module repo, which
             also has concurrent psionics work in `modify-abilities.js`. **Unblocked 2026-08-03** —
-            [ticket 02](wayfinder/companion-sheets/issues/02-pf1-actor-patching.md) is resolved and
+            [ticket 02](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/companion-sheets/02-pf1-actor-patching.md)
+            is resolved and
             carries the mechanical recipe: pf1 keeps stored fields and rebuilds every `.total`, the
             clone's `Animal Companion` class item is driven at the creature's **HD count** (not its
             effective level), and the two change-bearing items every `pf-content` Actor ships must be
@@ -210,7 +214,8 @@ wayfinder maps — decisions before code — and each ends at a spec section in
             `healthConfig` on a cloned character) are checked on the first live import.
       - [ ] 8. (**#34**) Web sheet: auto-fill the nested Companions tab from `bonded_creatures` (D10 —
             **not** a second roster character). **Unblocked 2026-08-03** —
-            [ticket 03](wayfinder/companion-sheets/issues/03-web-sheet-autofill-ownership.md) is
+            [ticket 03](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/companion-sheets/03-web-sheet-autofill-ownership.md)
+            is
             resolved and carries the field-level mapping. The build is: a `seedCompanions(data)`
             beside the two existing one-time seeders in `renderSheet` (`scripts/sheet.js:531-532`,
             **not** `adoptCharacter` — an adopt-time hook leaves every already-saved character empty
@@ -253,8 +258,8 @@ surface has ever been checked. **Neither is worked until Phase 4.5 is finished a
 the bonded-creature system** — that gate is written into both maps' Notes, and charting now only
 captures the questions.
 
-- [x] Work [`docs/wayfinder/class-pool/`](wayfinder/class-pool/map.md) to done →
-      `feature_spec_todo.md` §10. **Map CLOSED 2026-08-03, and BUILT in the same pass** — the census
+- [x] Work [`tickets: feature/class-pool`](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/class-pool/map.md)
+      to done → `feature_spec_todo.md` §10. **Map CLOSED 2026-08-03, and BUILT in the same pass** — the census
       that gates the map turned out to also be the data source, so grilling tickets 02 and 03 were
       answered by building rather than by conversation. **All six Occult Adventures classes are in
       the random pool** (61 rollable classes, up from 55); `data.occult_classes` is empty.
@@ -273,8 +278,8 @@ captures the questions.
         re-seed; re-scan, never edit the prose to match.
       - **Still open:** the standalone **web sheet has no occult presentation** (the Foundry side is
         wired), plus the deferred list in §10.
-- [ ] Work [`docs/wayfinder/class-choices/`](wayfinder/class-choices/map.md) to done →
-      `feature_spec_todo.md` §11, **after** the class pool is settled, so the audit covers the final
+- [ ] Work [`tickets: feature/class-choices`](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/class-choices/map.md)
+      to done → `feature_spec_todo.md` §11, **after** the class pool is settled, so the audit covers the final
       class list. Destination: every rollable class picks the right number of options, at the right
       levels, legally, and visibly on both sheets — with a validator that keeps it true. Charting
       already found two count bugs by inspection (**magus arcana 10 vs. RAW's 6**, **investigator

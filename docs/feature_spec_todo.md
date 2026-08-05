@@ -254,8 +254,9 @@ class lists / lowest level first. Validator: `Backend/scripts/validate_spell_con
 
 ## 8. Bonded creatures (animal companions, mounts, familiars, eidolons)
 **Status: SPEC LOCKED (2026-08-01) — build slices 1–4 landed, 5–9 open.** Charted in
-`docs/wayfinder/companions/` (closed); this section is that map's destination. The **build** is
-charted separately in [`docs/wayfinder/companion-sheets/`](wayfinder/companion-sheets/map.md)
+`tickets: feature/companions` (closed); this section is that map's destination. The **build** is
+charted separately in
+[`tickets: feature/companion-sheets`](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/companion-sheets/map.md)
 (open) — it decides only what this section left open and does not reopen D1–D10. §1 (Path of War)
 and §9 (Psionics) are the governing precedents: the backend owns the numbers, a Foundry-side renderer
 owns the presentation, and every holdback is named here rather than left implicit.
@@ -340,7 +341,7 @@ summoner NPC is still missing its entire class identity.
   the payload until #32 and neither the goldens nor `test_house_invariants.py` can see these fields
   yet.
 - **D10 — the two renderers take different shapes, and neither gets a composed title from us**
-  *(charting of [Map: Companion sheets](wayfinder/companion-sheets/map.md), 2026-08-03)*. D1's "N
+  *(charting of [Map: Companion sheets](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/companion-sheets/map.md), 2026-08-03)*. D1's "N
   Actors" is a **Foundry** statement: there, each bonded creature is a genuinely separate Actor
   document. On the **standalone web sheet** the creature instead **auto-fills the existing nested
   Companions tab** (`_sheet.companions[]`), which is hand-typed today. That upholds the ruling
@@ -356,7 +357,7 @@ summoner NPC is still missing its entire class identity.
   source of numbers and a sheet of placeholder values teaches nobody anything.
 
 - **D11 — the published deltas already own the size package; only the geometry is ours**
-  *(ticket 04 of [Map: Companion sheets](wayfinder/companion-sheets/map.md), 2026-08-03)*. When an
+  *(ticket 04 of [Map: Companion sheets](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/companion-sheets/map.md), 2026-08-03)*. When an
   advancement block grows a companion, the PF1e size-change table and the per-species deltas overlap,
   and applying both counts the increase twice. The census settles which one holds it: a Dex **penalty**
   appears on all **153** size-increasing blocks and on **none** of the other 43, and a Dex penalty has
@@ -620,7 +621,7 @@ signature (`gear`, funded from `character.gold`) so this is a ticket with a shap
 ## 9. Psionics (Dreamscarred Press / Library of Metzofitz)
 **Status: SPEC LOCKED (2026-07-31) — implementation in progress on `feat/psionics-v1`.**
 Twelve base classes: `aegis, cryptic, dread, highlord, marksman, psion, psychic warrior, soulknife,
-tactician, vitalist, voyager, wilder`. Charted in `docs/wayfinder/psionics/`; this section is that
+tactician, vitalist, voyager, wilder`. Charted in `tickets: feature/psionics`; this section is that
 map's destination. §1 (Path of War) is the governing precedent throughout — a 3pp system whose
 mechanics are scraped into `Backend/json/` while a third-party Foundry module renders the result.
 
@@ -755,7 +756,7 @@ covering Loxo/Kalyptran/Dolistani too, because `PlayableRaces.json` is walked *p
 `race_func.py::race_traits_chooser` and psionic Duergar collides with core Duergar · the six v2
 classes (Genesis, Skipper, Thug, Warpmind, psionic Zealot — note `zealot` is taken by the PoW class —
 Soulknife (High Psionics)) and the Gifted NPC class · the **psicrystal**, structurally a companion
-(see `docs/wayfinder/companions/map.md`) · turning on the **311 psionic feats already in
+(see `tickets: feature/companions`) · turning on the **311 psionic feats already in
 `data/Metzofitz_Feats.csv`** (gated by `_METZ_TYPES` in `feats.py`; the data is there, the eligibility
 rules are not decided) · power **conditionals** on the main weapon, mirroring §4/§7 · psionic items
 (cognizance crystals, dorjes, power stones) in the gear chooser · multiclass manifester-level
@@ -766,7 +767,7 @@ editors.
 **Status: BUILT (2026-08-03).** All six Occult Adventures classes — `occultist`, `kineticist`,
 `medium`, `mesmerist`, `psychic`, `spiritualist` — are in the random pool. `data.occult_classes` is
 empty; it stays as the one-line lever for pulling a class back out. Charted in
-`docs/wayfinder/class-pool/`; this section is that map's destination. §9 (Psionics) is the governing
+`tickets: feature/class-pool`; this section is that map's destination. §9 (Psionics) is the governing
 precedent — a whole class family entering the pool with **no new chooser module**.
 
 **Why this was a completion job, not a cold start.** `class_data.json` already carried all six
@@ -869,10 +870,10 @@ check of all six.
 ## 12. Class roster and the selector — ✅ BUILT (2026-08-04)
 **Status: BUILT.** 68 rollable classes, in five families the FoundryVTT dropdown groups by. This
 section owns *who is in the pool and how you pick them*; §10 owned the occult six specifically, and
-`docs/wayfinder/class-choices/` (still parked) owns whether everyone in the pool picks correctly.
+`tickets: feature/class-choices` (still parked) owns whether everyone in the pool picks correctly.
 
 > **§11 is reserved**, deliberately, for *Class choices* —
-> [that map](wayfinder/class-choices/map.md) names §11 as its destination and is only parked, not
+> [that map](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/class-choices/map.md) names §11 as its destination and is only parked, not
 > abandoned. Numbering this one 12 keeps that promise rather than quietly taking its slot.
 >
 > **That map's "class list is final at 61" gate needs re-stamping**: this section makes it 68, and
