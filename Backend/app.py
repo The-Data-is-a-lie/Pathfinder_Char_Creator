@@ -8,14 +8,12 @@ if _BACKEND_DIR not in sys.path:
     sys.path.insert(0, _BACKEND_DIR)
 
 # External imports
-from flask import Flask, render_template, request, jsonify, session, abort, Response, url_for
+from flask import Flask, render_template, request, jsonify, abort, Response, url_for
 from flask_cors import CORS
-from flask_session import Session
 from dotenv import load_dotenv
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from redis import Redis
-from datetime import timedelta
 import os
 
 # Custom function imports
@@ -29,14 +27,32 @@ _GENERATION_LOCK = threading.Lock()
 
 # Load environment variables
 load_dotenv()
-# Redis powers rate-limiting + server-side sessions ONLY when REDIS_URL is set (local dev, or a
-# provisioned Redis instance). When it is not set, fall back to in-process memory rate-limiting and
-# filesystem sessions so the app runs without a Redis server -- e.g. the Render deployment, which has
-# none. (Previously this defaulted to redis://localhost:6379, so every request 500'd on Render with
-# ConnectionRefusedError from flask-limiter.)
+# Redis backs rate-limiting ONLY. It used to back server-side sessions too; those are gone -- see
+# the note above update_character_data. Without Redis the limiter falls back to in-process memory
+# storage so the app still runs (this defaulted to redis://localhost:6379 once, which made every
+# request 500 on Render with ConnectionRefusedError from flask-limiter).
+#
+# `memory://` counts per WORKER, so with gunicorn -w 4 the declared 60/minute is really 240/minute
+# across the pool. That is the reason to provision a Redis instance, not sessions.
+#
+# THE REDIS INSTANCE MUST BE IN THE SAME REGION AS THE SERVICE. This is not a preference.
+# flask-limiter checks each configured limit separately and `RedisStorage.incr` is one Lua call per
+# limit, so the three default limits below cost THREE sequential round trips on every request. Same
+# region (Render Oregon <-> Redis Cloud us-west-2) that is ~3 ms and invisible. Cross-country
+# (Oregon <-> us-east-1) it is ~200 ms, against a generation that takes 85-285 ms -- i.e. pointing
+# REDIS_URL at a far-away instance can double or triple response time to enforce a limit this
+# service never approaches. If the only Redis available is in another region, leave REDIS_URL unset
+# and take the per-worker limits; that is the better trade.
+#
+# Note the service's region is fixed at creation on Render, and its URL is hardcoded as the default
+# in the FoundryVTT module (`module.js`, `button.js`) -- so the Redis moves to match the service,
+# never the other way around.
+#
 # Redis selection: try each candidate in order, use the first that actually responds.
 # Local dev -> your local server; if it's not running but a global/cloud URL is set, use that;
-# if none respond (e.g. Render, which has no Redis), fall through to None -> memory/filesystem.
+# if none respond, fall through to None -> memory storage.
+# On Render set REDIS_LOCAL_URL to an EMPTY string: nothing listens on localhost:6379 there, so the
+# default value below costs a 0.5 s connect timeout on every cold start before falling through.
 _REDIS_CANDIDATES = [
     os.getenv('REDIS_LOCAL_URL', 'redis://localhost:6379/0'),  # local server (preferred in dev)
     os.getenv('REDIS_URL'),                                     # global / cloud (unset on Render)
@@ -52,7 +68,7 @@ def _resolve_redis_url():
             return url
         except Exception as e:
             print(f"  Redis: {url.split('@')[-1]} unreachable ({e.__class__.__name__})")
-    print("  Redis: none reachable -> memory/filesystem fallback")
+    print("  Redis: none reachable -> in-process memory rate-limiting (limits count PER WORKER)")
     return None
 
 redis_url = _resolve_redis_url()
@@ -61,28 +77,29 @@ app = create_app()
 app.config['JSON_SORT_KEYS'] = False  # Disable sorting of JSON keys
 app.json.sort_keys = False  # Disable sorting of JSON keys
 
-# Initialize Flask-Limiter (Redis-backed when REDIS_URL is set, else in-process memory storage)
+# Initialize Flask-Limiter (Redis-backed when a Redis URL resolves, else in-process memory storage)
+#
+# swallow_errors=True is NOT optional once a real Redis is configured, and the default is False.
+# The URL above is resolved ONCE, at import, by a single ping. If Redis is reachable then and dies
+# later -- a managed instance restarting, a network blip, a free tier doing maintenance -- every
+# rate-limited request would raise out of the storage layer, and `/update_character_data` would
+# return 500 until someone redeployed. The generator would be fine; the limiter would be taking the
+# API down with it.
+#
+# With this, a storage failure degrades to "limits stop being counted" and characters keep
+# generating. That is the right trade for this service: the rate limit protects a free instance's
+# CPU hours, so losing it briefly costs far less than refusing every request.
+#
+# in_memory_fallback_enabled goes further -- it falls back to per-process counting while Redis is
+# down, so the limit keeps applying (loosely) instead of lapsing entirely.
 limiter = Limiter(
     get_remote_address,
     app=app,
     default_limits=["1000 per day", "500 per hour", "60 per minute"],
-    storage_uri=redis_url or "memory://"  # memory:// keeps the app up without Redis (limits are per-worker)
+    storage_uri=redis_url or "memory://",  # memory:// keeps the app up without Redis (limits are per-worker)
+    swallow_errors=True,
+    in_memory_fallback_enabled=True,
 )
-
-# Flask Configuration -- Redis-backed sessions when available, else server-side filesystem sessions.
-if redis_url:
-    app.config['SESSION_TYPE'] = 'redis'
-    app.config['SESSION_REDIS'] = Redis.from_url(redis_url)
-else:
-    app.config['SESSION_TYPE'] = 'filesystem'
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-app.config['SESSION_PERMANENT'] = False
-# Needs enough time or multiple workers break
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(seconds=60)
-app.config['SESSION_COOKIE_SECURE'] = True
-app.config['SESSION_COOKIE_SAMESITE'] = 'None'
-
-Session(app)
 
 # allowing many routes:
 # For allowing all origins
@@ -177,11 +194,10 @@ def process_input_values(input_values, spheres_flag="N", seed=None, professions_
         # threaded, which is exactly where you would be replaying a seed to debug a character.
         # Generation is ~80ms against a 31s cold start, so the lock costs nothing that matters.
         with _GENERATION_LOCK:
-            session['character_data'] = generate_random_char(
+            return generate_random_char(
             create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num, use_backstory_api, spheres_flag, backstory_focus,
             seed, professions_flag, trainers_flag
             )
-        return session['character_data']
 
     except ValueError as ve:
         return {"error": str(ve)}
@@ -228,10 +244,17 @@ def update_character_data():
     # idea which backend produced it -- a relative path would resolve against Foundry's own host.
     if isinstance(results, dict) and results.get('license_url'):
         results['license_url'] = url_for('license_text', _external=True)
-    session['character_data'] = results
 
-    # Print raw data to terminal for debugging
-    return jsonify(session['character_data'])
+    # No server-side session. This used to write the whole payload to `session['character_data']`
+    # and then read it back on the next line -- a local variable wearing a session's clothes,
+    # inherited from app_Backup_Working.py. Nothing ever read it across requests: none of the four
+    # routes touches the session, and both consumers (the FoundryVTT module, the standalone web
+    # sheet) keep the payload themselves. It cost a full serialisation of the payload to disk (or
+    # Redis) on every request -- 40 KB for a level-5 rogue, more at high level -- for a 60-second
+    # lifetime nobody queried. If a route ever DOES need to recall a
+    # character, the `generation_seed` in the payload replays it exactly -- that is the intended
+    # handle, and it is cheaper than storing the result.
+    return jsonify(results)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5001))
