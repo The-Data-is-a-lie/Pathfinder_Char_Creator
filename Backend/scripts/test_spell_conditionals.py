@@ -11,16 +11,15 @@ only).
 import sys
 from pathlib import Path
 
-HERE = Path(__file__).resolve()
-SCRIPTS, BACKEND = HERE.parent, HERE.parents[1]
-sys.path.insert(0, str(SCRIPTS))   # so `import build_spell_conditionals` resolves
-sys.path.insert(0, str(BACKEND))   # so `from utils...` resolves
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _harness import Report  # noqa: E402
 
-import build_spell_conditionals as bsc
-import normalize_spell_name_casing as nsc
-from utils.class_func import buff_match
-from utils.class_func.spells import (spell_conditionals_selection,
-                                      )
+import build_spell_conditionals as bsc  # noqa: E402
+import normalize_spell_name_casing as nsc  # noqa: E402
+from utils.class_func import buff_match  # noqa: E402
+from utils.class_func.spells import spell_conditionals_selection  # noqa: E402
+
+REPORT = Report('test_spell_conditionals')
 
 
 def test_bucketing():
@@ -32,28 +31,33 @@ def test_bucketing():
               "Mirror Strike": "A"}
     for name, bucket in expect.items():
         got = draft.get(name, {}).get("_bucket")
-        assert got == bucket, f"{name}: expected {bucket}, got {got!r}"
+        REPORT.check(got == bucket, f"{name}: expected {bucket}, got {got!r}")
     # The disqualifier guard must keep AC-bonus / bonus-to-opponent false positives out, and a
     # crit-CONFIRMATION-only bonus ("+N on attack rolls to confirm a critical hit") is not a general
     # attack buff -- Unerring Weapon must stay description-only, not become an always-on to-hit change.
     for name in ("Judgment Light", "Mantle Of Calm", "Unerring Weapon"):
-        assert name not in draft, f"{name} should have been filtered out"
+        REPORT.check(name not in draft, f"{name} should have been filtered out")
     # Flat bonuses must NOT pick up an unrelated "per N levels" clause (locality fix).
     hf = draft.get("Heroes' Feast", {})
-    assert all("@spells" not in c["formula"] for c in hf.get("changes", [])), \
-        "Heroes' Feast flat bonus was wrongly scaled"
-    print(f"  bucketing OK ({len(draft)} drafted)")
+    REPORT.check(all("@spells" not in c["formula"] for c in hf.get("changes", [])),
+                "Heroes' Feast flat bonus was wrongly scaled")
+    print(f"  bucketing checked ({len(draft)} drafted)")
 
 
 def test_curated_files_load():
     chg, rid = buff_match.raw('spell_change'), buff_match.raw('spell_rider')
-    assert isinstance(chg, dict) and chg, "spell_changes.json empty/missing"
-    assert isinstance(rid, dict) and rid, "spell_riders.json empty/missing"
-    for n, e in chg.items():
-        assert ("modifiers" in e) or ("changes" in e), f"spell_changes[{n}]: bad shape"
-    for n, e in rid.items():
-        assert e.get("riders"), f"spell_riders[{n}]: missing riders"
-    print(f"  curated files OK (changes={len(chg)}, riders={len(rid)})")
+    # Guard: the per-entry loops below dereference `.items()` -- if either file failed to load as a
+    # non-empty dict, skip straight past that loop instead of crashing on `.items()`.
+    chg_ok = REPORT.check(isinstance(chg, dict) and chg, "spell_changes.json empty/missing")
+    rid_ok = REPORT.check(isinstance(rid, dict) and rid, "spell_riders.json empty/missing")
+    if chg_ok:
+        for n, e in chg.items():
+            REPORT.check(("modifiers" in e) or ("changes" in e), f"spell_changes[{n}]: bad shape")
+    if rid_ok:
+        for n, e in rid.items():
+            REPORT.check(e.get("riders"), f"spell_riders[{n}]: missing riders")
+    print(f"  curated files checked (changes={len(chg) if chg_ok else 'n/a'}, "
+          f"riders={len(rid) if rid_ok else 'n/a'})")
 
 
 def test_selection():
@@ -64,12 +68,14 @@ def test_selection():
     c.spell_list_choose_from = [["true strike"], ["Magic Weapon", "Mage Armor"],
                                 ["Chill Touch", "Scorching Ray"]]
     chg, rid = spell_conditionals_selection(c)
-    assert {k.lower() for k in chg} == {"true strike", "magic weapon"}, sorted(chg)
-    assert {k.lower() for k in rid} == {"chill touch"}, sorted(rid)
+    REPORT.check({k.lower() for k in chg} == {"true strike", "magic weapon"},
+                f'chg keys mismatch: got {sorted(chg)}')
+    REPORT.check({k.lower() for k in rid} == {"chill touch"}, f'rid keys mismatch: got {sorted(rid)}')
     # Non-caster -> empty, no crash.
     empty = _Char(); empty.spell_list_choose_from = []
-    assert spell_conditionals_selection(empty) == ({}, {})
-    print("  selection OK")
+    got_empty = spell_conditionals_selection(empty)
+    REPORT.check(got_empty == ({}, {}), f'non-caster: expected ({{}}, {{}}), got {got_empty!r}')
+    print("  selection checked")
 
 
 def test_no_uncapped_scaling():
@@ -84,8 +90,8 @@ def test_no_uncapped_scaling():
                     f = str(m.get("formula", ""))
                     if ("cl.total" in f or "hd.total" in f) and "min(" not in f:
                         offenders.append(f"{src}[{name}]: {f}")
-    assert not offenders, "uncapped scaling formula(s): " + "; ".join(offenders)
-    print("  scaling caps OK")
+    REPORT.check(not offenders, "uncapped scaling formula(s): " + "; ".join(offenders))
+    print(f"  scaling caps checked ({len(offenders)} offender(s))")
 
 
 def test_csv_casing_canonical():
@@ -98,8 +104,8 @@ def test_csv_casing_canonical():
         return
     canon = nsc.load_canonical(every)
     changed, _ = nsc.normalize_csv(nsc.DEFAULT_SPELLS_CSV, canon, dry_run=True)
-    assert not changed, f"{len(changed)} csv name(s) mis-cased vs compendium, e.g. {changed[:3]}"
-    print(f"  csv casing OK (0 mismatches vs {len(canon)} compendium names)")
+    REPORT.check(not changed, f"{len(changed)} csv name(s) mis-cased vs compendium, e.g. {changed[:3]}")
+    print(f"  csv casing checked ({len(changed)} mismatch(es) vs {len(canon)} compendium names)")
 
 
 import re
@@ -160,10 +166,11 @@ def test_spell_convention_compliance():
         for rd in (e.get('riders') or []):
             if _bare_numbers(rd):
                 bare.append(f"spell_riders[{name}]: {_bare_numbers(rd)} :: {rd[:70]}")
-    assert not badf, "non-plain modifier formula(s): " + "; ".join(badf[:6])
-    assert not restate, "rolled damage restated in a toggle name: " + "; ".join(restate[:6])
-    assert not bare, "un-bracketed number(s) in display text: " + "; ".join(bare[:6])
-    print(f"  spell convention OK ({len(chg)} changes, plain formulas, all numbers in [[ ]])")
+    REPORT.check(not badf, "non-plain modifier formula(s): " + "; ".join(badf[:6]))
+    REPORT.check(not restate, "rolled damage restated in a toggle name: " + "; ".join(restate[:6]))
+    REPORT.check(not bare, "un-bracketed number(s) in display text: " + "; ".join(bare[:6]))
+    print(f"  spell convention checked ({len(chg)} changes; {len(badf)} bad formula(s), "
+          f"{len(restate)} restated, {len(bare)} bare number(s))")
 
 
 def test_maneuver_convention_compliance():
@@ -184,12 +191,13 @@ def test_maneuver_convention_compliance():
         dd = _restated_dice(rider, mods)
         if dd:
             restate.append(f"maneuver[{name}] rider restates {dd}")
-    assert not badf, "non-plain maneuver formula(s): " + "; ".join(badf[:6])
-    assert not bare, "un-bracketed number(s) in a maneuver rider: " + "; ".join(bare[:6])
+    REPORT.check(not badf, "non-plain maneuver formula(s): " + "; ".join(badf[:6]))
+    REPORT.check(not bare, "un-bracketed number(s) in a maneuver rider: " + "; ".join(bare[:6]))
     # restated secondary damage is allowed (trail/aura/ongoing); report but do not fail.
     if restate:
         print(f"  (note: {len(restate)} maneuver rider(s) repeat a modifier dice -- verify secondary)")
-    print(f"  maneuver convention OK ({len(data)} entries, plain formulas, all numbers in [[ ]])")
+    print(f"  maneuver convention checked ({len(data)} entries; {len(badf)} bad formula(s), "
+          f"{len(bare)} bare number(s))")
 
 
 def main():
@@ -197,8 +205,8 @@ def main():
                test_no_uncapped_scaling, test_csv_casing_canonical,
                test_spell_convention_compliance, test_maneuver_convention_compliance):
         fn()
-    print("ALL SPELL-CONDITIONAL CHECKS PASSED")
+    return REPORT.finish(f'{REPORT.checks} checks', max_errors=25)
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

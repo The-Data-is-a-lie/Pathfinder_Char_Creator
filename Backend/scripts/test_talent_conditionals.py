@@ -8,15 +8,17 @@ Seams under test (agreed):
   B/C. the applier match (Python port) against vendored slim actor fixtures -- the real characters end
        up with exactly the right conditionals attached.
 """
+import json
 import sys
 from pathlib import Path
 
-HERE = Path(__file__).resolve()
-SCRIPTS = HERE.parent
-sys.path.insert(0, str(SCRIPTS))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _harness import JSON_DIR, Report  # noqa: E402
 
-import validate_talent_conditionals as vtc
-import talent_conditional_match as tcm
+import validate_talent_conditionals as vtc  # noqa: E402
+import talent_conditional_match as tcm  # noqa: E402
+
+REPORT = Report('test_talent_conditionals')
 
 
 # --- Slice 1: the validator (Seam A) ---------------------------------------------------------------
@@ -42,14 +44,14 @@ def test_validator_flags_cost_only():
         {"modifiers": [], "rider": "vs a concealed target, roll the miss chance twice, use the better"},
     ]
     for e in cost_only:
-        assert vtc.is_cost_only(e), f"should be flagged cost-only: {e['rider']!r}"
+        REPORT.check(vtc.is_cost_only(e), f"should be flagged cost-only: {e['rider']!r}")
     for e in has_payload:
-        assert not vtc.is_cost_only(e), f"should NOT be flagged: {e.get('rider')!r}"
+        REPORT.check(not vtc.is_cost_only(e), f"should NOT be flagged: {e.get('rider')!r}")
     # find_violations rolls it up over a nested {Sphere:{Talent:entry}} dict
     d = {"Berserker": {"Berserking": cost_only[2], "Brutal Strike": has_payload[0]}}
     viol = vtc.find_violations(d)
-    assert [v[1] for v in viol] == ["Berserking"], f"expected only Berserking flagged, got {viol}"
-    print(f"  validator OK (flags {len(cost_only)} cost-only, passes {len(has_payload)} with payload)")
+    REPORT.check([v[1] for v in viol] == ["Berserking"], f"expected only Berserking flagged, got {viol}")
+    print(f"  validator checked (flags {len(cost_only)} cost-only, passes {len(has_payload)} with payload)")
 
 
 # --- Slice 2: the applier match port (Seam C) ------------------------------------------------------
@@ -66,17 +68,18 @@ def test_matcher_attaches_expected():
              {"name": "Ragdoll Swing (impale)", "sphere": "fencing"},   # source-tag stripped
              {"name": "Does Not Exist", "sphere": "berserker"}]
     res = {r["name"]: r for r in tcm.match_actor(actor, magic, combat)}
-    assert res["black ice"]["matched"] and not res["black ice"]["has_modifier"]
-    assert res["Brutal Strike"]["matched"] and res["Brutal Strike"]["has_modifier"]
-    assert res["Ragdoll Swing (impale)"]["matched"], "source-tagged name should match base key"
-    assert not res["Does Not Exist"]["matched"]
-    print("  matcher OK (case/apostrophe/source-tag; modifier detection)")
+    REPORT.check(res["black ice"]["matched"] and not res["black ice"]["has_modifier"],
+                f'black ice: expected matched=True, has_modifier=False, got {res["black ice"]}')
+    REPORT.check(res["Brutal Strike"]["matched"] and res["Brutal Strike"]["has_modifier"],
+                f'Brutal Strike: expected matched=True, has_modifier=True, got {res["Brutal Strike"]}')
+    REPORT.check(res["Ragdoll Swing (impale)"]["matched"], "source-tagged name should match base key")
+    REPORT.check(not res["Does Not Exist"]["matched"],
+                f'Does Not Exist: expected matched=False, got {res["Does Not Exist"]}')
+    print("  matcher checked (case/apostrophe/source-tag; modifier detection)")
 
 
 # --- Slice 3: fixture acceptance + the real-data invariant (Seams A + B via C) ----------------------
-import json
-
-_FIXTURES = HERE.parents[1] / "json" / "test_fixtures"
+_FIXTURES = JSON_DIR / "test_fixtures"
 
 
 def _load_module_dicts():
@@ -97,8 +100,8 @@ def test_no_cost_only_in_real_dicts():
     if magic is None:
         print("  real-dict invariant SKIPPED (module not checked out)"); return
     viol = vtc.find_violations(magic) + vtc.find_violations(combat)
-    assert not viol, f"{len(viol)} cost-only conditional(s) remain, e.g. {viol[:5]}"
-    print("  real-dict invariant OK (0 cost-only)")
+    REPORT.check(not viol, f"{len(viol)} cost-only conditional(s) remain, e.g. {viol[:5]}")
+    print(f"  real-dict invariant checked ({len(viol)} cost-only)")
 
 
 def test_pascal_warner_expected_set():
@@ -107,11 +110,13 @@ def test_pascal_warner_expected_set():
         print("  Pascal fixture SKIPPED (module not checked out)"); return
     m = _matched("pascal-warner", magic, combat)
     for gone in ("Swift Guardian", "Battle Ready Armor", "Berserking"):
-        assert gone in m, f"fixture missing {gone!r}"                     # it's on the actor
-        assert not m[gone]["matched"], f"{gone} must NOT attach a conditional (defensive/utility)"
-    assert m["Brutal Strike"]["matched"] and m["Brutal Strike"]["has_modifier"], \
-        "Brutal Strike must attach WITH a damage modifier"
-    print("  Pascal Warner OK (3 defensive/utility out, Brutal Strike in)")
+        # Guard: `m[gone]` below would KeyError if the fixture doesn't carry this talent at all.
+        if not REPORT.check(gone in m, f"fixture missing {gone!r}"):
+            continue
+        REPORT.check(not m[gone]["matched"], f"{gone} must NOT attach a conditional (defensive/utility)")
+    REPORT.check(m["Brutal Strike"]["matched"] and m["Brutal Strike"]["has_modifier"],
+                "Brutal Strike must attach WITH a damage modifier")
+    print("  Pascal Warner checked (3 defensive/utility talents, Brutal Strike)")
 
 
 def test_abebe_regression():
@@ -122,10 +127,10 @@ def test_abebe_regression():
     # foe-debuff (Black Ice: shroud, halve speed + Reflex-or-fall) + attack effect (Mirage Sight:
     # reroll miss chance vs concealment) -> keepers.
     for keep in ("Black Ice", "Mirage Sight"):
-        assert m.get(keep, {}).get("matched"), f"{keep} regressed (should still attach)"
+        REPORT.check(m.get(keep, {}).get("matched"), f"{keep} regressed (should still attach)")
     # Mantle grants the weather-mantle to allies -> an ally-buff, NOT a weapon conditional -> removed.
-    assert not m.get("Mantle", {}).get("matched"), "Mantle is an ally-buff; must NOT attach"
-    print("  Abebe regression OK (Black Ice + Mirage Sight in; Mantle correctly out)")
+    REPORT.check(not m.get("Mantle", {}).get("matched"), "Mantle is an ally-buff; must NOT attach")
+    print("  Abebe regression checked (Black Ice + Mirage Sight, Mantle)")
 
 
 # --- Slices 4 & 5: regression guards (drafter + promote gate) --------------------------------------
@@ -133,8 +138,8 @@ def test_drafter_emits_no_cost_only():
     import build_talent_conditionals as btc
     draft = btc.build_draft("might")          # smaller source; the fix applies to both systems
     bad = [(s, t) for s, tt in draft.items() for t, e in tt.items() if vtc.is_cost_only(e)]
-    assert not bad, f"drafter emitted {len(bad)} cost-only seed(s), e.g. {bad[:5]}"
-    print(f"  drafter OK ({sum(len(v) for v in draft.values())} seeds, 0 cost-only)")
+    REPORT.check(not bad, f"drafter emitted {len(bad)} cost-only seed(s), e.g. {bad[:5]}")
+    print(f"  drafter checked ({sum(len(v) for v in draft.values())} seeds, {len(bad)} cost-only)")
 
 
 def test_promote_rejects_cost_only():
@@ -149,9 +154,9 @@ def test_promote_rejects_cost_only():
         ptc.promote("test", dp, cp, dry_run=False)
         curated = json.loads(cp.read_text(encoding="utf-8"))
         names = {t for tt in curated.values() for t in tt}
-    assert "Keeper" in names, "promote dropped a valid entry"
-    assert "Garbage" not in names, "promote gate let a cost-only entry through"
-    print("  promote gate OK (cost-only rejected, keeper promoted)")
+    REPORT.check("Keeper" in names, "promote dropped a valid entry")
+    REPORT.check("Garbage" not in names, "promote gate let a cost-only entry through")
+    print("  promote gate checked (cost-only rejection, keeper promotion)")
 
 
 def main():
@@ -163,8 +168,8 @@ def main():
                test_drafter_emits_no_cost_only,
                test_promote_rejects_cost_only):
         fn()
-    print("ALL TALENT-CONDITIONAL CHECKS PASSED")
+    return REPORT.finish(f'{REPORT.checks} checks')
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

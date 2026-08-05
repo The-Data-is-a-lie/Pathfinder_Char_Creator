@@ -14,19 +14,19 @@ import json
 import sys
 from pathlib import Path
 
-HERE = Path(__file__).resolve()
-BACKEND = HERE.parents[1]
-REPO = HERE.parents[2]
-sys.path.insert(0, str(BACKEND))   # so `from utils...` resolves
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _harness import JSON_DIR, Report, read_json  # noqa: E402
 
-from utils.class_func import backstory as _bs
-from utils.class_func import build_archetype as ba
+from utils.class_func import backstory as _bs  # noqa: E402
+from utils.class_func import build_archetype as ba  # noqa: E402
 
 # The scorer must be identical with or without a reachable model: sever Ollama outright so
 # use_api=True exercises the "unreachable" path deterministically.
 _bs._try_ollama = lambda *a, **k: ''
 
-FEAT_BUCKETS = json.load(open(REPO / 'Backend' / 'json' / 'feat_buckets.json', encoding='utf-8'))
+REPORT = Report('test_build_archetype')
+
+FEAT_BUCKETS = read_json(JSON_DIR / 'feat_buckets.json')
 
 
 def mk(**kw):
@@ -447,23 +447,28 @@ def _classify(build):
 def test_fixture_matrix():
     for name, build in FIXTURES.items():
         res = _classify(build)
-        assert res.label, f'{name}: empty label'
+        # Guard: an empty label is nonsensical to keep classifying against -- skip straight to the
+        # next fixture rather than let `.lower()` and the FORBID/EXPECT checks below run on it.
+        if not REPORT.check(res.label, f'{name}: empty label'):
+            continue
         label_l = res.label.lower()
         for bad in FORBID.get(name, ()):
-            assert bad not in label_l, f'{name}: won forbidden label {res.label!r} (contenders {res.contenders})'
+            REPORT.check(bad not in label_l,
+                         f'{name}: won forbidden label {res.label!r} (contenders {res.contenders})')
         if name in EXPECT:
             want = EXPECT[name] if isinstance(EXPECT[name], tuple) else (EXPECT[name],)
-            assert res.label in want, f'{name}: got {res.label!r}, want one of {want} (contenders {res.contenders})'
-        assert 'generalist' != label_l or name == 'garbage', \
-            f'{name}: fell through to Generalist (contenders {res.contenders})'
+            REPORT.check(res.label in want,
+                         f'{name}: got {res.label!r}, want one of {want} (contenders {res.contenders})')
+        REPORT.check('generalist' != label_l or name == 'garbage',
+                     f'{name}: fell through to Generalist (contenders {res.contenders})')
 
 
 def test_determinism_and_api_parity():
     for name, build in FIXTURES.items():
         a, b = _classify(build), _classify(build)
-        assert a == b, f'{name}: non-deterministic'
+        REPORT.check(a == b, f'{name}: non-deterministic')
         c = ba.choose_build_archetype(build, use_api=True)   # Ollama severed above -> must match
-        assert a.label == c.label, f'{name}: use_api changed the answer with no model reachable'
+        REPORT.check(a.label == c.label, f'{name}: use_api changed the answer with no model reachable')
 
 
 def test_never_raises():
@@ -472,13 +477,13 @@ def test_never_raises():
                {'weapon': 42, 'feat_buckets': []}, {'spheres': 123}]
     for h in horrors:
         res = ba.choose_build_archetype(h, use_api=True)
-        assert res.label, f'garbage {h!r}: empty label'
+        REPORT.check(res.label, f'garbage {h!r}: empty label')
 
 
 def test_roster_mechanics():
     roster = ba._load_roster()
     entries = roster['archetypes']
-    assert 25 <= len(entries) <= 40, f'roster size {len(entries)} outside 25-40'
+    REPORT.check(25 <= len(entries) <= 40, f'roster size {len(entries)} outside 25-40')
     vocab = set(ba._signals(mk(spheres=['destruction'], disciplines=['Iron Tortoise'],
                                spell_levels=[4], initiator_level=4, companion=True)))
     ranks, catch_alls = [], []
@@ -487,15 +492,15 @@ def test_roster_mechanics():
                                             ('requires_any', 'requires_all', 'vetoes')
                                             for g in (e.get(k) or [])}
         unknown = used - vocab
-        assert not unknown, f'{label}: unknown signals {sorted(unknown)}'
-        assert e.get('tactics'), f'{label}: missing tactics'
-        assert e.get('family') in roster['families'], f'{label}: bad family'
-        assert e.get('tactical_pattern') in roster['tactical_patterns'], f'{label}: bad pattern'
+        REPORT.check(not unknown, f'{label}: unknown signals {sorted(unknown)}')
+        REPORT.check(e.get('tactics'), f'{label}: missing tactics')
+        REPORT.check(e.get('family') in roster['families'], f'{label}: bad family')
+        REPORT.check(e.get('tactical_pattern') in roster['tactical_patterns'], f'{label}: bad pattern')
         ranks.append(e.get('tie_break_rank'))
         if not (e.get('requires_any') or e.get('requires_all')):
             catch_alls.append(label)
-    assert len(ranks) == len(set(ranks)), 'tie_break_rank values not unique'
-    assert len(catch_alls) == 1, f'expected exactly one catch-all, got {catch_alls}'
+    REPORT.check(len(ranks) == len(set(ranks)), 'tie_break_rank values not unique')
+    REPORT.check(len(catch_alls) == 1, f'expected exactly one catch-all, got {catch_alls}')
 
 
 def main():
@@ -504,18 +509,18 @@ def main():
         print('signals:', json.dumps(sig, indent=1))
         for label, score, parts in top:
             print(f'{score:6.3f}  {label}  {parts}')
-        return
+        return 0
     for fn in (test_roster_mechanics, test_fixture_matrix,
                test_determinism_and_api_parity, test_never_raises):
         fn()
-        print(f'{fn.__name__}: OK')
+        print(f'{fn.__name__}: done')
     print('--- classification matrix ---')
     for name, build in FIXTURES.items():
         res = _classify(build)
         print(f'{name:28s} -> {res.label:24s} [{res.family} / {res.pattern}] '
               f'{res.confidence} gap={res.gap}')
-    print('ALL PASS')
+    return REPORT.finish(f'{REPORT.checks} checks', max_errors=25)
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())
