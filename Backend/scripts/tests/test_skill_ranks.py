@@ -29,6 +29,14 @@ from utils.class_func import skill_ranks as sr  # noqa: E402
 
 REPORT = Report('test_skill_ranks')
 
+# Every test that reaches production code is run under this seed, set on the GLOBAL `random` module
+# and not on a local generator. Both `skill_ranks.py` (168-207) and `profession_chooser.py`
+# (76-202) draw every one of their own decisions from the global stream, so a local
+# `random.Random(...)` in a test pins the test's own inputs and nothing about the code under test.
+# The visible symptom was test_profession_pool reporting a different check count on every run
+# (3688-3696) -- see test_determinism for the guard that keeps it from coming back.
+SEED = 20260805
+
 
 def check(condition, message):
     return REPORT.check(condition, message)
@@ -175,18 +183,44 @@ def test_capacity_topup():
               f"seed {seed}: assigned {sum(ranks.values())} of {want} (capacity top-up failed)")
         check(len([s for s, r in ranks.items() if r]) >= 3,
               f"seed {seed}: {want} ranks packed into too few skills")
-    random.seed()
+    # NOT `random.seed()` -- a bare reseed pulls from OS entropy and hands every test that runs
+    # after this one a different stream, which is how the whole file became irreproducible.
+    random.seed(SEED)
 
 
 # --------------------------------------------------------------------------------------------
 # 5. Professions: the pool is distributed exactly, within caps, over a sane number of vocations.
 # --------------------------------------------------------------------------------------------
-def test_profession_pool(iterations=200):
+def _profession_sample(iterations=200, seed=SEED):
+    """Build `iterations` profession-bearing characters, asserting nothing.
+
+    Split out of test_profession_pool so the same sample can be drawn twice and compared
+    (test_determinism). The GLOBAL seed is the one that matters: `rng` picks the level and the
+    homebrew flag, but every choice profession_chooser itself makes -- how many vocations, which
+    genres, how many Multi Talented picks -- comes off the global stream.
+    """
+    random.seed(seed)
     rng = random.Random(99)
-    for _ in range(iterations):
-        level = rng.randint(1, 30)
-        character = FakeCharacter([('fighter', level)])
-        pc.profession_chooser(character, "professions", rng.choice(["Y", "N"]))
+    return [_one_profession_character(rng) for _ in range(iterations)]
+
+
+def _one_profession_character(rng):
+    level = rng.randint(1, 30)
+    character = FakeCharacter([('fighter', level)])
+    pc.profession_chooser(character, "professions", rng.choice(["Y", "N"]))
+    return character
+
+
+def _profession_digest(character):
+    """The part of a generated character that must not move between two identically-seeded runs."""
+    return (character.level, character.profession_pool, tuple(character.profession_feats),
+            tuple((p['name'], p['ranks'], p['cap']) for p in character.profession_data))
+
+
+def test_profession_pool(iterations=200):
+    with_feats = 0
+    for character in _profession_sample(iterations):
+        level = character.level
         pool = character.profession_pool
         prof = character.profession_data
         check(sum(p['ranks'] for p in prof) == pool,
@@ -209,8 +243,16 @@ def test_profession_pool(iterations=200):
               f"level {level}: pool {pool} != 5 + {level} + 10*{mt_count}")
         # order: Multi Talented is always taken first, so any feat implies Multi Talented
         if character.profession_feats:
+            with_feats += 1
             check(character.profession_feats[0].startswith("Multi Talented"),
                   f"first profession feat should be Multi Talented, got {character.profession_feats[0]}")
+
+    # Branch coverage, same rule as test_house_invariants' BOND guard: the ordering assertion above
+    # is conditional, so a sample that happened to roll no profession feats would assert nothing
+    # about ordering and still pass. Count it rather than assume it.
+    check(with_feats > 0,
+          f"no character in {iterations} rolled a profession feat -- the Multi Talented ordering "
+          f"check never ran")
 
 
 # --------------------------------------------------------------------------------------------
@@ -332,10 +374,47 @@ def test_favored_class():
     check(chosen == ['health', 'skill ranks'], f"favored class list mangled: {chosen}")
 
 
+# --------------------------------------------------------------------------------------------
+# 9. The suite checks the same things every run.
+# --------------------------------------------------------------------------------------------
+def test_determinism(iterations=40):
+    """Two identically-seeded passes must produce identical characters and identical check counts.
+
+    This file passed every run for months while quietly checking a different number of things each
+    time (3688-3696), because whether the conditional Multi Talented assertion fired was decided by
+    randomness no seed controlled. A test whose coverage fluctuates is the failure mode the gate
+    directory exists to close -- a regression living in the untaken branch passes most of the time.
+
+    Comparing two in-process passes rather than pinning an expected total is deliberate: a hardcoded
+    count would have to be edited every time a check is added, so it would be updated reflexively
+    and stop meaning anything. This asserts the property (reproducibility), not a number.
+    """
+    first, second = _profession_sample(iterations), _profession_sample(iterations)
+    drift = [(a.level, _profession_digest(a), _profession_digest(b))
+             for a, b in zip(first, second) if _profession_digest(a) != _profession_digest(b)]
+    check(not drift,
+          f"{len(drift)} of {iterations} characters differ between two identically-seeded runs -- "
+          f"something under test draws from an unseeded stream. First: {drift[:1]}")
+
+    before = REPORT.checks
+    test_profession_pool(iterations)
+    once = REPORT.checks - before
+    before = REPORT.checks
+    test_profession_pool(iterations)
+    check(REPORT.checks - before == once,
+          f"the same test made {once} checks and then {REPORT.checks - before} -- the number of "
+          f"things this suite verifies is not stable")
+
+
 def main():
     for test in (test_canonical_list, test_exact_spend, test_min_rank_floor, test_capacity_topup,
                  test_profession_pool, test_always_improving_gate, test_house_rank_floor,
-                 test_house_cap_and_exact_spend, test_background_ranks_pool, test_favored_class):
+                 test_house_cap_and_exact_spend, test_background_ranks_pool, test_favored_class,
+                 test_determinism):
+        # Seeded per test, not once for the file: a test that reseeds internally (test_capacity_topup
+        # walks seeds 0-59) would otherwise decide what every test after it sees, making the suite's
+        # results depend on its own running order.
+        random.seed(SEED)
         test()
 
     return REPORT.finish(f'{REPORT.checks} checks')
