@@ -18,8 +18,8 @@ import json
 import os
 import sys
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, HERE)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _harness import Report, read_json  # noqa: E402
 import validate_quality_effects as vqe  # noqa: E402  (shared whitelists + checkers)
 import build_class_feature_changes as bcfc  # noqa: E402  (SECTIONS, pool walker, norm_name)
 
@@ -38,7 +38,10 @@ EVERY_CLASS_FEATURE = os.path.join(
 ENTRY_KEYS = {'changes', 'contextNotes', 'conditionals', 'tagBuff', 'unplaced', 'review', 'tier'}
 TAGBUFF_KEYS = {'onlyOthers', 'auraRange', 'changes', 'contextNotes'}
 
-err = vqe.err
+# Bound to the imported list, not a fresh one: vqe's checkers append to vqe.errors, and those
+# findings have to fail THIS gate too.
+REPORT = Report('validate_class_feature_effects', errors=vqe.errors)
+err = REPORT.error
 
 
 def check_changes(owner, changes):
@@ -129,8 +132,7 @@ def pool_name_sets():
 
 
 def main():
-    with open(EFFECTS_PATH, encoding='utf-8') as f:
-        effects = json.load(f)
+    effects = read_json(EFFECTS_PATH)
     try:
         with open(OVERRIDES_PATH, encoding='utf-8') as f:
             overrides = json.load(f)
@@ -197,14 +199,10 @@ def main():
             if curated and entry.get('review'):
                 err(f'{owner}: curated entry still carries a review flag')
 
-    if vqe.errors:
-        for e in vqe.errors:
-            print(e)
-        print(f'\nFAILED: {len(vqe.errors)} problem(s)')
-        sys.exit(1)
-    print(f'OK: {n_entries} entries across {sum(1 for s in effects if not s.startswith("_"))} '
-          f'sections ({n_curated} curated); all keys resolve to pool names, all targets valid.')
+    return REPORT.finish(
+        f'{n_entries} entries across {sum(1 for s in effects if not s.startswith("_"))} '
+        f'sections ({n_curated} curated); all keys resolve to pool names, all targets valid')
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())

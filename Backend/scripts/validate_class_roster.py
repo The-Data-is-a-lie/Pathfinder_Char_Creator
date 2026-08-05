@@ -32,12 +32,12 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
-sys.path.insert(0, str(ROOT / "Backend"))
+sys.path.insert(0, str(HERE))
+from _harness import JSON_DIR, Report                         # noqa: E402
 
 from utils import data as _data                              # noqa: E402
 
-CLASS_DATA = ROOT / "Backend/json/class_data.json"
+CLASS_DATA = JSON_DIR / "class_data.json"
 DEFAULT_MODULE_ROOT = (Path(os.environ.get("LOCALAPPDATA", "")) /
                        "FoundryVTT/Data/modules/pf1e_random_char_generator")
 ROSTER_JS = "scripts/class-roster.js"
@@ -47,6 +47,8 @@ BUNDLE = "templates/character_sheet_folder/every_class.json"
 # blocker recorded in docs/feature_spec_todo.md; a class in one of them must NOT be in the roster.
 HOLDBACK_LISTS = ("occult_classes", "pow_classes_pending_foundry", "psionic_classes_pending",
                   "classes_pending_foundry")
+
+REPORT = Report('validate_class_roster')
 
 
 # --------------------------------------------------------------------------------------------- #
@@ -219,24 +221,19 @@ def main() -> int:
 
     module_root = Path(args.module_root)
     if not (module_root / ROSTER_JS).exists():
-        print(f"SKIP: no {ROSTER_JS} under {module_root} -- the FoundryVTT module is not installed "
-              f"here. Pass --module-root to check it.")
-        return 0
+        REPORT.skip(f"no {ROSTER_JS} under {module_root} -- the FoundryVTT module is not installed "
+                    f"here. Pass --module-root to check it.")
+        return REPORT.finish("nothing checked -- the FoundryVTT module is not installed here")
 
-    problems = check(module_root)
-    if problems:
-        print(f"FAIL: {len(problems)} problem(s) between the backend and {ROSTER_JS}")
-        for problem in problems:
-            print(f"  - {problem}")
-        print("\nRun with --print to see the roster the backend expects.")
-        return 1
+    for problem in check(module_root):
+        REPORT.error(problem)
 
     pool, _group_of = expected_roster()
     groups, order = read_roster(module_root)
     shape = ", ".join(f"{label} {len(names)}" for _token, label, names in groups)
-    print(f"OK: {len(pool)} rollable classes -- {shape}; {len(order)} class Items in "
-          f"every_class.json, in the order collectItems expects")
-    return 0
+    return REPORT.finish(
+        f"{len(pool)} rollable classes -- {shape}; {len(order)} class Items in "
+        f"every_class.json, in the order collectItems expects")
 
 
 if __name__ == "__main__":

@@ -29,6 +29,9 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+from _harness import Report                                       # noqa: E402
+
 ROOT = HERE.parents[1]
 DUMP = ROOT / "Backend/json/pf_content_companions.json"
 SPECIES = ROOT / "Backend/json/animal_choices.json"
@@ -46,6 +49,7 @@ PUNCT_RE = re.compile(r"[^a-z0-9 ]+")
 
 errors = []
 warnings = []
+REPORT = Report('validate_companion_names', errors=errors, warnings=warnings)
 
 
 def load(path):
@@ -128,24 +132,14 @@ def main():
         print(f"NOTE: unmatched is down to {len(missed)} from a baseline of {UNMATCHED_BASELINE}"
               f" -- lower UNMATCHED_BASELINE in this file to lock the improvement in")
 
-    for message in warnings:
-        print(f"WARN: {message}")
     if missed:
         print("      unmatched:")
         for one in missed:
             print(f"        {one}")
 
-    if errors:
-        print()
-        for message in errors:
-            print(message)
-        print(f"FAILED: {len(errors)} problem(s)")
-        return 1
-
     forms = len(dump.get(EIDOLON_PACK) or [])
-    print(f"OK: {len(matched)} of {total} species match a pf-content Actor; "
-          f"{forms} eidolon base forms available")
-    return 0
+    return REPORT.finish(f"{len(matched)} of {total} species match a pf-content Actor; "
+                         f"{forms} eidolon base forms available")
 
 
 if __name__ == "__main__":

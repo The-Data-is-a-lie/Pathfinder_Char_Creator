@@ -23,11 +23,11 @@ import os
 import re
 import sys
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, HERE)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _harness import Report, JSON_DIR, read_json  # noqa: E402
 from damage_types import classify_damage_type  # noqa: E402  the one owner of the type vocabulary
 
-SPELLS_DIR = os.path.join(HERE, '..', 'json', 'spells')
+SPELLS_DIR = os.path.join(JSON_DIR, 'spells')
 RIDERS_PATH = os.path.join(SPELLS_DIR, 'spell_riders.json')
 CHANGES_PATH = os.path.join(SPELLS_DIR, 'spell_changes.json')
 EVERY_SPELL = os.path.expandvars(
@@ -46,6 +46,7 @@ POW_TOKENS = re.compile(r'@INITMOD|@SKILLCHECK|@ATTACKCHECK')
 
 errors = []
 warnings = []
+REPORT = Report('validate_spell_conditionals', errors=errors, warnings=warnings)
 
 
 def err(msg):
@@ -207,31 +208,20 @@ def warn_missing_compendium(riders, changes):
     if not os.path.exists(EVERY_SPELL):
         warnings.append(f'every_spell.json not found at {EVERY_SPELL} -- compendium check skipped')
         return
-    with open(EVERY_SPELL, encoding='utf-8') as fh:
-        names = {str(i.get('name', '')).lower() for i in json.load(fh)}
+    names = {str(i.get('name', '')).lower() for i in read_json(EVERY_SPELL)}
     for name in list(riders) + list(changes):
         if name.lower() not in names:
             warnings.append(f'{name!r} not in every_spell.json (module will synthesize/skip)')
 
 
 def main():
-    with open(RIDERS_PATH, encoding='utf-8') as fh:
-        riders = json.load(fh)
-    with open(CHANGES_PATH, encoding='utf-8') as fh:
-        changes = json.load(fh)
+    riders = read_json(RIDERS_PATH)
+    changes = read_json(CHANGES_PATH)
     check_riders_file(riders)
     check_changes_file(changes)
     warn_missing_compendium(riders, changes)
-    for w in warnings:
-        print(f'WARN: {w}')
-    if errors:
-        print(f'\n{len(errors)} error(s):')
-        for e in errors:
-            print(f'  {e}')
-        sys.exit(1)
-    print(f'OK: {len(riders)} rider spells + {len(changes)} buff spells validated '
-          f'({len(warnings)} warning(s)).')
+    return REPORT.finish(f'{len(riders)} rider spells + {len(changes)} buff spells validated')
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())

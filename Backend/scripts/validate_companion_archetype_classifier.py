@@ -47,6 +47,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
+from _harness import Report                   # noqa: E402
 
 import build_companion_archetypes as bca      # noqa: E402
 
@@ -85,6 +86,8 @@ RULE = {
     "Druid/Ancient Guardian": "R1 -- forced onto the domain side, so no creature",
 }
 
+REPORT = Report('validate_companion_archetype_classifier')
+
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
@@ -122,19 +125,13 @@ def main():
         else:
             failures.append((key, want_text, got_text))
 
-    if failures:
-        print(f"FAIL -- {len(failures)} of {len(EXPECTED)} signed verdicts not reproduced:\n")
-        for key, want, got in failures:
-            print(f"  {key}")
-            print(f"      want: {want}")
-            print(f"      got:  {got}")
-            if key in RULE:
-                print(f"      rule: {RULE[key]}")
-        print(f"\n{passes}/{len(EXPECTED)} correct")
-        return 1
+    for key, want, got in failures:
+        lines = [key, f"want: {want}", f"got:  {got}"]
+        if key in RULE:
+            lines.append(f"rule: {RULE[key]}")
+        REPORT.error("\n      ".join(lines))
 
-    print(f"PASS -- {passes}/{len(EXPECTED)} signed verdicts reproduced")
-    return 0
+    return REPORT.finish(f"{passes}/{len(EXPECTED)} signed verdicts reproduced")
 
 
 if __name__ == "__main__":

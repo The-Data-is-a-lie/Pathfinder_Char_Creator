@@ -19,6 +19,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
+from _harness import Report  # noqa: E402  shared accumulate/report/exit-code
 from damage_types import classify_damage_type  # noqa: E402  the one owner of the type vocabulary
 JSON_DIR = os.path.join(HERE, '..', 'json')
 QE_PATH = os.path.join(JSON_DIR, 'items', 'quality_effects.json')
@@ -71,16 +72,21 @@ WEAPON_ENTRY_KEYS = {'conditionals'}
 ARMOR_ENTRY_KEYS = {'changes', 'contextNotes'}
 CHANGE_KEYS = {'formula', 'target', 'type', 'operator', 'priority'}
 
-errors = []
-warnings = []
+REPORT = Report('validate_quality_effects')
+# Exported BY NAME on purpose: this module owns the modifier whitelists and the bracket/target
+# checkers, and the gates that reuse them (validate_flaw_effects, validate_class_feature_effects)
+# need those findings to land in their own report. They bind this list -- see Report(errors=...) --
+# so it must stay the same object, not be reassigned.
+errors = REPORT.errors
+warnings = REPORT.warnings
 
 
 def err(msg):
-    errors.append(msg)
+    REPORT.error(msg)
 
 
 def warn(msg):
-    warnings.append(msg)
+    REPORT.warn(msg)
 
 
 def check_damage_types(owner, types):
@@ -237,17 +243,10 @@ def main():
     for name, entry in qe_armor.items():
         check_armor_entry(f'armor.{name}', entry)
 
-    for w in warnings:
-        print(f'WARN: {w}')
-    if errors:
-        for e in errors:
-            print(e)
-        print(f'\nFAILED: {len(errors)} problem(s)')
-        sys.exit(1)
-    print(f'OK: {len(qe_weapon)} weapon + {len(qe_armor)} armor entries; '
-          f'full coverage of {len(weapon_names)} weapon and {len(armor_names)} '
-          f'armor/shield quality names ({len(warnings)} warning(s)).')
+    return REPORT.finish(f'{len(qe_weapon)} weapon + {len(qe_armor)} armor entries; '
+                         f'full coverage of {len(weapon_names)} weapon and {len(armor_names)} '
+                         f'armor/shield quality names')
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())

@@ -21,13 +21,17 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _harness import Report                                                  # noqa: E402
 from validate_quality_effects import (  # noqa: E402
     PF1_CHANGE_TARGETS, PF1_NOTE_TARGETS, valid_target, check_brackets, errors)
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 from utils import data as game_data                                          # noqa: E402
 from utils.class_func.companion_stats import (                               # noqa: E402
     MODIFIER_TARGETS, SKILL_TARGET_PREFIX)
+
+# Bound to the imported list, not a fresh one: `check_brackets` above appends to its own module's
+# accumulator, and those findings have to fail THIS gate.
+REPORT = Report('validate_flaw_effects', errors=errors)
 
 FLAWS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'json', 'flaws')
 # (filename, must every numeric change be foldable by companion_stats?)
@@ -38,7 +42,7 @@ CHANGE_KEYS = {'formula', 'target', 'type', 'operator', 'priority'}
 
 
 def err(msg):
-    errors.append(msg)
+    REPORT.error(msg)
 
 
 def check_foldable(owner, change):
@@ -110,13 +114,8 @@ def main():
         summary.append(f'{filename}: {len(data.get("minor", {}))} minor + '
                        f'{len(data.get("major", {}))} major')
 
-    if errors:
-        for e in errors:
-            print(e)
-        print(f'\nFAILED: {len(errors)} problem(s)')
-        sys.exit(1)
-    print('OK: ' + '; '.join(summary) + '.')
+    return REPORT.finish('; '.join(summary))
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())

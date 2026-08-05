@@ -21,10 +21,10 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
+from _harness import Report, REPO                 # noqa: E402
 from damage_types import classify_damage_type      # noqa: E402  the type vocabulary
 import validate_quality_effects as vqe             # noqa: E402  shared modifier whitelists
 
-REPO = HERE.parents[1]
 MODULE_CS = Path(os.path.expandvars(
     r"%LOCALAPPDATA%\FoundryVTT\Data\modules\pf1e_random_char_generator"
     r"\templates\character_sheet_folder"))
@@ -41,6 +41,7 @@ META_KEYS = {"review", "rider", "modifiers", "_discipline", "_kind", "_level", "
              "_source", "_note", "name", "default", "conditionals", "changes", "contextNotes"}
 
 errors, warnings = [], []
+REPORT = Report('validate_maneuver_changes', errors=errors, warnings=warnings)
 
 
 def check_modifier(owner, m):
@@ -99,15 +100,8 @@ def main():
     total = 0
     for p in TARGETS:
         total += check_file(p)
-    for w in warnings:
-        print(f"WARN: {w}")
-    if errors:
-        for e in errors:
-            print(e)
-        print(f"\nFAILED: {len(errors)} problem(s) across {total} modifier(s)")
-        sys.exit(1)
-    print(f"OK: {total} PoW modifiers validated ({len(warnings)} warning(s)).")
+    return REPORT.finish(f"{total} PoW modifiers validated")
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

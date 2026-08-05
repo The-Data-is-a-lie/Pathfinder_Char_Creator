@@ -23,11 +23,11 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-DATA = ROOT / "Backend/json/class_data/psionics"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _harness import Report, JSON_DIR, read_json  # noqa: E402
+from utils import data as _data                    # noqa: E402  (path bootstrap must run first)
 
-sys.path.insert(0, str(ROOT / "Backend"))   # so `from utils...` resolves
-from utils import data as _data             # noqa: E402  (path bootstrap must run first)
+DATA = JSON_DIR / "class_data" / "psionics"
 
 EXPECTED_CLASSES = {
     "aegis", "cryptic", "dread", "highlord", "marksman", "psion", "psychic warrior",
@@ -49,6 +49,7 @@ SAVE_AT_20 = {"good": 12, "poor": 6}
 
 ERRORS: list[str] = []
 WARNINGS: list[str] = []
+REPORT = Report('validate_psionics_data', errors=ERRORS, warnings=WARNINGS)
 
 
 def error(message: str) -> None:
@@ -64,7 +65,7 @@ def load(name: str):
     if not path.exists():
         error(f"{name} is missing -- run Backend/scripts/scrape_psionics.py")
         return None
-    return json.loads(path.read_text(encoding="utf-8"))
+    return read_json(path)
 
 
 def first_number(value: str) -> int:
@@ -263,9 +264,8 @@ def check_name_map() -> None:
         error("psionic_name_map.json is missing -- run "
               "Backend/scripts/reconcile_psionics_names.py")
         return
-    name_map = json.loads(path.read_text(encoding="utf-8"))
+    name_map = read_json(path)
 
-    sys.path.insert(0, str(Path(__file__).resolve().parent))
     from reconcile_psionics_names import scraped_names          # noqa: PLC0415
 
     matched = name_map.get("matched", {})
@@ -312,16 +312,7 @@ def main() -> int:
     check_name_map()
     check_races(races)
 
-    for message in WARNINGS:
-        print(f"WARNING: {message}")
-    for message in ERRORS:
-        print(f"ERROR:   {message}")
-
-    if ERRORS:
-        print(f"\nFAILED -- {len(ERRORS)} error(s), {len(WARNINGS)} warning(s)")
-        return 1
-    print(f"\nOK -- 0 errors, {len(WARNINGS)} warning(s)")
-    return 0
+    return REPORT.finish("psionics data validated")
 
 
 if __name__ == "__main__":

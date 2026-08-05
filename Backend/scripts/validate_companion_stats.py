@@ -51,17 +51,16 @@ from pathlib import Path
 from types import SimpleNamespace
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
-sys.path.insert(0, str(ROOT / "Backend"))
 sys.path.insert(0, str(HERE))
+from _harness import JSON_DIR, Report                                # noqa: E402
 
 from utils.class_func.companion_stats import (                       # noqa: E402
     ADV_RE, CONSUMED, SIZE_GEOMETRY, START_RE, TIER_HIT_DIE, DEFAULT_HIT_DIE,
     _mod, _natural_armor, _signed, companion_stats, merge_advancement)
 from validate_companion_data import SIZE_CHANGE_TABLE                # noqa: E402
 
-SPECIES = ROOT / "Backend/json/animal_choices.json"
-CHASSIS = ROOT / "Backend/json/animal_companion.json"
+SPECIES = JSON_DIR / "animal_choices.json"
+CHASSIS = JSON_DIR / "animal_companion.json"
 
 # Homebrew ON, because that is what the generator defaults to and it makes HP deterministic (a
 # maximised die at every HD). With it off, `_hit_points` rolls and nothing here could be pinned.
@@ -82,6 +81,7 @@ MAX_ATTACKS_WITHOUT_DAMAGE = 1
 
 errors = []
 notes = []
+REPORT = Report('validate_companion_stats', errors=errors)
 
 
 def fail(message):
@@ -328,15 +328,9 @@ def main():
           f"({grew} with a size increase, {teeth} published deltas that differ from the size table)")
     for note in notes:
         print(f"  note: {note}")
-    if errors:
-        print(f"\nFAILED -- {len(errors)} problems")
-        for message in errors[:25]:
-            print(f"  {message}")
-        if len(errors) > 25:
-            print(f"  ... and {len(errors) - 25} more")
-        return 1
-    print("PASS -- the size package is counted exactly once and the merge follows the spec")
-    return 0
+    return REPORT.finish(
+        "the size package is counted exactly once and the merge follows the spec",
+        max_errors=25)
 
 
 if __name__ == "__main__":

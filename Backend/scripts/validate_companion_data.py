@@ -37,6 +37,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
+from _harness import Report                  # noqa: E402
 from repair_animal_choices import (          # noqa: E402  -- one owner for the shared vocabulary
     ADV_RE, KEY_DRIFT, SIGNED_RE, SIZES, START_RE, STATS, size_step,
 )
@@ -85,6 +86,7 @@ FLAGS = ('species_pool_unavailable',)
 
 errors = []
 warnings = []
+REPORT = Report('validate_companion_data', errors=errors, warnings=warnings)
 deviations = {}     # WARN grouping: reason -> [where]
 
 
@@ -280,8 +282,6 @@ def main():
             check_species(tier, name, body)
     check_closed_vocabulary()
 
-    for message in warnings:
-        print(f'WARN: {message}')
     if deviations:
         total = sum(len(v) for v in deviations.values())
         print(f'WARN: {total} advancement block(s) disagree with the PF1e size-change table or '
@@ -292,16 +292,9 @@ def main():
             for one in where[:2]:
                 print(f'          e.g. {one}')
 
-    if errors:
-        print()
-        for message in errors:
-            print(message)
-        print(f'FAILED: {len(errors)} problem(s)')
-        return 1
-
-    print(f'OK: {species_count} species across {len(data)} tiers -- advancement deltas signed, '
-          f'no Dex raised on a size increase, no key drift, no prose in an ability slot')
-    return 0
+    return REPORT.finish(
+        f'{species_count} species across {len(data)} tiers -- advancement deltas signed, '
+        f'no Dex raised on a size increase, no key drift, no prose in an ability slot')
 
 
 if __name__ == '__main__':

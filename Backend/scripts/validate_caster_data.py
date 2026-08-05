@@ -35,15 +35,17 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
-sys.path.insert(0, str(ROOT / "Backend"))
+sys.path.insert(0, str(HERE))
+from _harness import DATA_DIR, JSON_DIR, Report               # noqa: E402
 
 from utils import data as _data                              # noqa: E402
 from utils.class_func import spells as _spells               # noqa: E402
 
-CLASS_DATA = ROOT / "Backend/json/class_data.json"
-SPELLS_PER_DAY = ROOT / "Backend/json/spells_per_day.json"
-SPELLS_CSV = ROOT / "data/spells.csv"
+CLASS_DATA = JSON_DIR / "class_data.json"
+SPELLS_PER_DAY = JSON_DIR / "spells_per_day.json"
+SPELLS_CSV = DATA_DIR / "spells.csv"
+
+REPORT = Report('validate_caster_data')
 
 # The tiers caster_formula understands. Anything else falls through its else-branch to
 # highest_spell_known = 0, which is "no spells" spelled in a way that looks like a typo.
@@ -174,21 +176,16 @@ def main() -> int:
         print_casters()
         return 0
 
-    problems = check()
-    if problems:
-        print(f"FAIL: {len(problems)} caster declaration problem(s)")
-        for problem in problems:
-            print(f"  - {problem}")
-        print("\nRun with --print to see what each declared caster resolves to.")
-        return 1
+    for problem in check():
+        REPORT.error(problem)
 
     class_data = json.loads(CLASS_DATA.read_text(encoding="utf-8"))
     casters = [name for name, entry in class_data.items()
                if entry.get("casting level") not in (None, "none")]
-    print(f"OK: {len(casters)} declared casters -- each has a tier caster_formula knows, a place "
-          f"in base_classes, a spells_per_day row, and an alias that resolves to a real "
-          f"data/spells.csv column")
-    return 0
+    return REPORT.finish(
+        f"{len(casters)} declared casters -- each has a tier caster_formula knows, a place "
+        f"in base_classes, a spells_per_day row, and an alias that resolves to a real "
+        f"data/spells.csv column")
 
 
 if __name__ == "__main__":

@@ -63,16 +63,15 @@ import re
 import sys
 from types import SimpleNamespace
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-JSON_DIR = os.path.join(HERE, '..', 'json')
-FIRST_PATH = os.path.join(JSON_DIR, 'first_names_regions.json')
-LAST_PATH = os.path.join(JSON_DIR, 'last_names_regions.json')
-
-sys.path.insert(0, os.path.join(HERE, '..'))          # Backend/
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _harness import Report, JSON_DIR, read_json                 # noqa: E402
 # One owner each: the resolver decides what a region is, data.py owns the canonical list and the
 # client aliases. Restating either here is how the two copies drift apart in the first place.
 from utils.util import region_chooser, slug                      # noqa: E402
 from utils.data import regions as DATA_REGIONS, REGION_ALIASES   # noqa: E402
+
+FIRST_PATH = os.path.join(JSON_DIR, 'first_names_regions.json')
+LAST_PATH = os.path.join(JSON_DIR, 'last_names_regions.json')
 
 GENDERS = ('Male', 'Female')
 
@@ -91,15 +90,18 @@ MODULE_BUTTON_JS = os.path.join(FOUNDRY_DATA, 'modules', 'pf1e_random_char_gener
 # Sentinels a client legitimately offers for "surprise me"; they are not region names.
 SENTINELS = {'', 'random'}
 
-# Client checks that could not run because the client is not on this machine. Always printed.
-SKIPPED = []
-
 # How many no-input draws to take. Every region has a ~10% share, so 500 makes a missing one a
 # 1-in-10^22 fluke rather than a flaky test.
 DRAW_SAMPLE = 500
 
 errors = []
+# Duplicate-name findings: counted for the summary note, deliberately NOT itemized like a normal
+# REPORT warning -- Sojoria's surname list legitimately repeats ~90 names (see module docstring),
+# and printing each one would bury the signal in noise nobody reads.
 warnings = []
+
+# Bound to `errors` so `err()` below fails the gate; `warnings` stays a local tally only (see above).
+REPORT = Report('validate_name_data', errors=errors)
 
 
 def err(msg):
@@ -179,8 +181,8 @@ def client_region_lists():
         if not os.path.exists(path):
             # NOT folded into `warnings`: those are counted, not printed, and a check that quietly
             # stops running is the failure mode this whole script exists to prevent.
-            SKIPPED.append(f'{label}: not checked out at {path} -- its region list was NOT '
-                           'validated (set PF_FOUNDRY_DATA to point at it)')
+            REPORT.skip(f'{label}: not checked out at {path} -- its region list was NOT '
+                        'validated (set PF_FOUNDRY_DATA to point at it)')
             continue
         out.append((label, extract()))
     return out
@@ -235,10 +237,8 @@ def check_regions(first):
 
 
 def main():
-    with open(FIRST_PATH, encoding='utf-8') as f:
-        first = json.load(f)
-    with open(LAST_PATH, encoding='utf-8') as f:
-        last = json.load(f)
+    first = read_json(FIRST_PATH)
+    last = read_json(LAST_PATH)
 
     only_first = sorted(set(first) - set(last))
     only_last = sorted(set(last) - set(first))
@@ -268,17 +268,9 @@ def main():
 
     check_regions(first)
 
-    for s in SKIPPED:
-        print(f'SKIPPED: {s}')
-
-    if errors:
-        for e in errors:
-            print(e)
-        print(f'\nFAILED: {len(errors)} problem(s)')
-        sys.exit(1)
     note = f' ({len(warnings)} duplicate warnings)' if warnings else ''
-    print(f'OK: {len(first)} regions, {total} names, all regions reachable.{note}')
+    return REPORT.finish(f'{len(first)} regions, {total} names, all regions reachable{note}')
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())

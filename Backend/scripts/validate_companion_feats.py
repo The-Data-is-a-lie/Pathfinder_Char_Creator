@@ -39,6 +39,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 
 sys.path.insert(0, str(ROOT / "Backend"))
+from _harness import Report                                        # noqa: E402
 # One owner for the vocabulary: the fold declares what it accepts, this file only checks against it.
 from utils import data                                             # noqa: E402
 from utils.class_func.companion_stats import (                     # noqa: E402
@@ -54,10 +55,11 @@ DEFAULT_COMPENDIUM = (Path.home() / "AppData" / "Local" / "FoundryVTT" / "Data" 
 
 errors = []
 notes = []
+REPORT = Report('validate_companion_feats', errors=errors)
 
 
 def fail(message):
-    errors.append(message)
+    REPORT.error(message)
 
 
 def norm(text):
@@ -271,19 +273,13 @@ def main():
     check_effects(changes)
 
     folded = sum(1 for effect in changes.values() if effect.get("changes"))
-    print(f"companion feats: {len(pool)} in the pool, {folded} with folded arithmetic, "
-          f"{len(changes) - folded} text-only; {len(allowed)} tax children allowed")
     for note in notes:
         print(f"  note: {note}")
-    if errors:
-        print(f"\nFAILED -- {len(errors)} problems")
-        for message in errors[:25]:
-            print(f"  {message}")
-        if len(errors) > 25:
-            print(f"  ... and {len(errors) - 25} more")
-        return 1
-    print("PASS -- every pool name resolves and every declared effect lands")
-    return 0
+    return REPORT.finish(
+        f"{len(pool)} feats in the pool, {folded} with folded arithmetic, "
+        f"{len(changes) - folded} text-only; {len(allowed)} tax children allowed "
+        f"-- every pool name resolves and every declared effect lands",
+        max_errors=25)
 
 
 if __name__ == "__main__":

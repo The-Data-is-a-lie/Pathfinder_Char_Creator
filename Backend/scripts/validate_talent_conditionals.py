@@ -15,6 +15,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _harness import Report                    # noqa: E402
 from damage_types import classify_damage_type  # noqa: E402  the one owner of the type vocabulary
 
 # Cost/contingency phrases that carry NO payload on their own.
@@ -165,47 +166,41 @@ _MODULE_CS = Path(
     r"C:\Users\Daniel\AppData\Local\FoundryVTT\Data\modules\pf1e_random_char_generator"
     r"\templates\character_sheet_folder")
 
+REPORT = Report('validate_talent_conditionals')
+
 
 def main():
     import json
     total = 0
-    bad = []
-    warns = []
     for fn in ("magic_talent_conditionals.json", "combat_talent_conditionals.json"):
         p = _MODULE_CS / fn
         if not p.exists():
-            print(f"SKIP {fn} (not found)")
+            REPORT.skip(f"{fn} (not found)")
             continue
         d = json.loads(p.read_text(encoding="utf-8"))
         total += sum(len(v) for v in d.values())
         for sphere, talent, rider in find_violations(d):
-            bad.append(f"{fn.split('_')[0]}/{sphere}/{talent}: cost-only -- {rider}")
+            REPORT.error(f"{fn.split('_')[0]}/{sphere}/{talent}: cost-only -- {rider}")
         for sphere, talent, tok in find_bad_tokens(d):
-            bad.append(f"{fn.split('_')[0]}/{sphere}/{talent}: malformed token {tok} (cam/pam take no .total)")
+            REPORT.error(f"{fn.split('_')[0]}/{sphere}/{talent}: malformed token {tok} (cam/pam take no .total)")
         for sphere, talent, val in find_bad_critical(d):
-            bad.append(f"{fn.split('_')[0]}/{sphere}/{talent}: critical {val!r} is not a pf1 value "
-                       f"{sorted(MOD_CRITICAL)} -- pf1 will delete it and drop the modifier")
+            REPORT.error(f"{fn.split('_')[0]}/{sphere}/{talent}: critical {val!r} is not a pf1 value "
+                         f"{sorted(MOD_CRITICAL)} -- pf1 will delete it and drop the modifier")
         for sphere, talent, tok in find_pow_tokens(d):
-            bad.append(f"{fn.split('_')[0]}/{sphere}/{talent}: Path-of-War token {tok} in a Spheres conditional")
+            REPORT.error(f"{fn.split('_')[0]}/{sphere}/{talent}: Path-of-War token {tok} in a Spheres conditional")
         for sphere, talent, val, suggestion in find_bad_damage_type(d):
             where = f"{fn.split('_')[0]}/{sphere}/{talent}"
             if suggestion:
-                bad.append(f"{where}: damageType {val!r} is rules prose, not a pf1 id -- use {suggestion!r}")
+                REPORT.error(f"{where}: damageType {val!r} is rules prose, not a pf1 id -- use {suggestion!r}")
             else:
-                warns.append(f"{where}: damageType {val!r} is not a known pf1 id "
-                             f"(add it to damage_types.py if it is legitimate)")
+                REPORT.warn(f"{where}: damageType {val!r} is not a known pf1 id "
+                            f"(add it to damage_types.py if it is legitimate)")
         for sphere, talent, formula in find_untyped_damage(d):
-            warns.append(f"{fn.split('_')[0]}/{sphere}/{talent}: dice damage, empty damageType "
-                         f"(coerced to untyped; prefer a real element) -- {formula}")
-    for w in warns:
-        print(f"WARN: {w}")
-    if bad:
-        print(f"{len(bad)} invalid talent conditional(s) (cost-only and/or malformed token):")
-        for b in bad[:60]:
-            print(f"  {b}")
-        sys.exit(1)
-    print(f"OK: {total} talent conditionals, 0 cost-only, 0 malformed tokens ({len(warns)} untyped-damage warning(s)).")
+            REPORT.warn(f"{fn.split('_')[0]}/{sphere}/{talent}: dice damage, empty damageType "
+                        f"(coerced to untyped; prefer a real element) -- {formula}")
+
+    return REPORT.finish(f"{total} talent conditionals, 0 cost-only, 0 malformed tokens", max_errors=60)
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

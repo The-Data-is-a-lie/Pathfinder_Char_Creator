@@ -35,6 +35,8 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 
 sys.path.insert(0, str(ROOT / "Backend"))
+sys.path.insert(0, str(HERE))
+from _harness import Report                                       # noqa: E402
 # One owner for the posture: the resolver declares the constants, this file only checks them.
 from utils.class_func.animal_companions import (                  # noqa: E402
     GEAR_SOURCE_V1, SEXES, resolve_bonded_creatures)
@@ -51,6 +53,7 @@ SAMPLE_CLASS = "druid"
 SAMPLE_LEVEL = 7
 
 errors = []
+REPORT = Report('validate_companion_identity', errors=errors)
 
 
 def load(path):
@@ -59,7 +62,7 @@ def load(path):
 
 
 def fail(message):
-    errors.append(message)
+    REPORT.error(message)
 
 
 def make_character(data, region, first_name):
@@ -184,17 +187,11 @@ def main():
     if seen["granted"] and len(names) < 2:
         fail(f"every companion was named {sorted(names)}; the name draw is stuck")
 
-    print(f"companions: {seen['granted']} granted, {seen['absent']} absence entries "
-          f"over {args.runs} runs ({len(names)} distinct names, sexes {sorted(sexes)})")
-    if errors:
-        print(f"\nFAILED -- {len(errors)} problems")
-        for message in errors[:25]:
-            print(f"  {message}")
-        if len(errors) > 25:
-            print(f"  ... and {len(errors) - 25} more")
-        return 1
-    print("PASS -- identity and gear fields hold on every entry")
-    return 0
+    return REPORT.finish(
+        f"{seen['granted']} granted, {seen['absent']} absence entries over {args.runs} runs "
+        f"({len(names)} distinct names, sexes {sorted(sexes)}) "
+        f"-- identity and gear fields hold on every entry",
+        max_errors=25)
 
 
 if __name__ == "__main__":

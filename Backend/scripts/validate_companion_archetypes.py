@@ -23,6 +23,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
+from _harness import Report                                       # noqa: E402
 import build_companion_archetypes as bca                          # noqa: E402
 from validate_companion_data import (                             # noqa: E402
     CREATURE_TYPES, EFFECTS, FLAGS, OUTCOMES, REMOVES_SCOPES,
@@ -35,6 +36,7 @@ ALIASES = ROOT / "Backend/json/companion_species_aliases.json"
 
 errors = []
 warnings = []
+REPORT = Report('validate_companion_archetypes', errors=errors, warnings=warnings)
 
 
 def load(path):
@@ -263,24 +265,14 @@ def main():
         warnings.append(f"{len(multi)} archetype(s) carry more than one effect; a consumer that "
                         f"reads only `effect` sees the primary verdict alone")
 
-    for message in warnings:
-        print(f"WARN: {message}")
-    if errors:
-        print()
-        for message in errors:
-            print(message)
-        print(f"FAILED: {len(errors)} problem(s)")
-        return 1
-
     counts = {}
     for entry in on_disk.values():
         if isinstance(entry, dict):
             counts[entry.get("effect")] = counts.get(entry.get("effect"), 0) + 1
     summary = ", ".join(f"{effect} {counts.get(effect, 0)}" for effect in EFFECTS)
-    print(f"OK: {len(on_disk)} archetypes classified ({summary}); "
-          f"{len(overrides)} override(s); no dead keys, vocabulary clean, "
-          f"generated file current")
-    return 0
+    return REPORT.finish(f"{len(on_disk)} archetypes classified ({summary}); "
+                         f"{len(overrides)} override(s); no dead keys, vocabulary clean, "
+                         f"generated file current")
 
 
 if __name__ == "__main__":

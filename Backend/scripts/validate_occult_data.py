@@ -29,11 +29,11 @@ import json
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-CLASS_DIR = ROOT / "Backend/json/class_data"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _harness import Report, REPO, read_json  # noqa: E402
+from utils import data as _data               # noqa: E402  (path bootstrap must run first)
 
-sys.path.insert(0, str(ROOT / "Backend"))   # so `from utils...` resolves
-from utils import data as _data             # noqa: E402  (path bootstrap must run first)
+CLASS_DIR = REPO / "Backend/json/class_data"
 
 # class -> the datasets build_occult_class_data.py writes. Keep in step with its BUCKETS and with
 # the generic_class_option_chooser calls in main_test.py -- these three are one convention.
@@ -79,6 +79,7 @@ NO_CROSS_SHELVING = {
 
 errors: list[str] = []
 notes: list[str] = []
+REPORT = Report('validate_occult_data', errors=errors)
 
 
 def fail(message: str) -> None:
@@ -88,9 +89,9 @@ def fail(message: str) -> None:
 def load(name: str) -> dict:
     path = CLASS_DIR / f"{name}.json"
     if not path.exists():
-        fail(f"{name}: {path.relative_to(ROOT)} is missing -- run build_occult_class_data.py")
+        fail(f"{name}: {path.relative_to(REPO)} is missing -- run build_occult_class_data.py")
         return {}
-    return json.loads(path.read_text(encoding="utf-8"))
+    return read_json(path)
 
 
 def check_shape(name: str, sections: dict) -> None:
@@ -157,9 +158,9 @@ def check_schedules(name: str, sections: dict) -> None:
 
 
 def check_wiring() -> None:
-    class_data = json.loads((ROOT / "Backend/json/class_data.json").read_text(encoding="utf-8"))
-    known = json.loads((ROOT / "Backend/json/spells_known.json").read_text(encoding="utf-8"))
-    per_day = json.loads((ROOT / "Backend/json/spells_per_day.json").read_text(encoding="utf-8"))
+    class_data = read_json(REPO / "Backend/json/class_data.json")
+    known = read_json(REPO / "Backend/json/spells_known.json")
+    per_day = read_json(REPO / "Backend/json/spells_per_day.json")
     abilities = {stat: set(_data.caster_mod[f"{stat}_casters"]) for stat in ("int", "wis", "cha")}
 
     for name in DATASETS:
@@ -209,21 +210,17 @@ def main() -> int:
 
     for note in notes:
         print(f"  note: {note}")
-    if errors:
-        for message in errors:
-            print(f"  ERROR {message}")
-        print(f"\nFAIL -- {len(errors)} error(s)")
-        return 1
 
     total = 0
-    for name in sorted(DATASETS):
-        sections = load(name)
-        counts = ", ".join(f"{k} {len(v)}" for k, v in sorted(sections.items()))
-        total += sum(len(v) for v in sections.values())
-        print(f"  {name:14} {counts}")
-    print(f"\nPASS -- {total} options across {len(DATASETS)} classes")
-    return 0
+    if not errors:
+        for name in sorted(DATASETS):
+            sections = load(name)
+            counts = ", ".join(f"{k} {len(v)}" for k, v in sorted(sections.items()))
+            total += sum(len(v) for v in sections.values())
+            print(f"  {name:14} {counts}")
+
+    return REPORT.finish(f"{total} options across {len(DATASETS)} classes")
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    sys.exit(main())
