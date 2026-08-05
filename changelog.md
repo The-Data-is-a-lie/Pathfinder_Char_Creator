@@ -19,6 +19,23 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Every regression test now runs in CI, including the golden-payload fixtures.** There were eleven
+  `test_*.py` scripts in `Backend/scripts/` and CI ran exactly one of them. The expensive omission
+  was `test_golden_payload.py` — seven seeded characters with every payload key diffed byte for byte,
+  which is the only thing that can prove a refactor didn't quietly change a character. A new
+  `test_all.py` discovers the family by glob, exactly as `validate_all.py` already did for the data
+  gates, and both now run on every push. The whole suite is about 25 seconds.
+  - **A trimmed run says it was trimmed.** The full-roster sweeps are slow (the unabridged invariant
+    sweep is 825 generations), so `test_all.py` trims them by default and prints a `NOTE:` naming
+    what it shortened. `--full` runs everything; do that before a release. A suite that quietly
+    tests less than it appears to is the same failure as a gate nobody runs.
+- **`check_racial_stats.py` was renamed to `validate_racial_stats.py` — and started running for the
+  first time.** It checks all 25 playable races against their stat entries, and it had never once
+  been executed by `validate_all.py`, purely because its name didn't match the `validate_*` glob. It
+  passes, and always would have; nobody was looking. The gate count went from 18 to 19. This is the
+  cost of glob discovery: it makes the naming convention load-bearing wiring rather than a style
+  preference.
+
 - **The class dropdown is grouped, and it finally lists every class you can roll.** The FoundryVTT
   generator dialog now shows five labelled sections with their sizes — Paizo base classes (40),
   Path of War (5), Psionics (12), Occult Adventures (6), NPC classes (5) — and each section opens
@@ -597,6 +614,35 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     broke six weapons.
 
 ### Changed
+- **All 30 data gates and regression tests share one harness.** Each of them used to hand-roll an
+  error list, a warning list, a pass/fail print and an exit code — roughly a third of every file,
+  and already drifted: the same failing run printed `FAILED: N problem(s)`, `FAILED: N problem(s)
+  across N modifier(s)` or `FAILED -- N problems` depending on which gate tripped, so "did it fail?"
+  could not be answered from the shape of the output. `Backend/scripts/_harness.py` owns that now,
+  and a new gate opens with its first real rule instead of forty lines of ceremony.
+  - **Path resolution moved into the harness, which is the larger win.** About thirty scripts each
+    recomputed the repo root from their own nesting depth (`Path(__file__).resolve().parents[1]`),
+    so the directory layout was encoded thirty times over. The harness now finds the root by walking
+    up for a directory carrying both `CLAUDE.md` and `.git`, and *raises* rather than guessing when
+    there isn't one — a wrong-but-existing path reads the wrong file silently, which is the worse
+    failure. Depth is no longer a fact any script knows.
+  - **The three bare-`assert` tests now collect instead of stopping at the first failure.** When a
+    data change breaks nine things you want all nine, not the first one and a traceback. Verified by
+    deliberately breaking two fixtures and confirming both were reported. Converting the loop
+    assertions also showed how little was being counted — `test_spell_conditionals` went from 17
+    assertions to 762 checks.
+  - *Deliberately not done:* no pytest, and no shared argparse. The standalone-script convention here
+    is documented and intentional; the flags are genuinely per-gate (`--print`, `--module-root`,
+    `--verbose`), and a shared parser would either accept all of them everywhere or grow bigger than
+    the parsers it replaced.
+- **The wayfinder tracker moved out of this repo** into the standalone
+  [`tickets`](https://github.com/The-Data-is-a-lie/tickets) repo, restructured in the okf-bundles
+  format as `tks/pathfinder-char-creator/<problem-type>/<effort>/`. Five maps and 32 tickets moved;
+  links pointing back into this repo became absolute GitHub URLs so a ticket resolves when read from
+  anywhere. `docs/wayfinder.md` now points at it. *Why:* the maps increasingly span this repo, the
+  FoundryVTT module and the web sheet, and a tracker living inside one of the three repos it tracks
+  had become the wrong home.
+
 - **The module's class roster lives in one file instead of three.** It used to be hard-coded in the
   dropdown, in a dead byte-identical copy of the dialog, and in the item-collection boundary list,
   with nothing checking they agreed — which is exactly how the occult classes reached two of the
@@ -650,6 +696,14 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     catch. `PF_FOUNDRY_DATA` overrides where it looks.
 
 ### Fixed
+- **Nothing yet — but recorded:** `test_skill_ranks.py` reports a *different number of checks on
+  every run* (3689–3696). `profession_chooser.py` draws all its randomness from the global unseeded
+  RNG while the test seeds a local `random.Random(99)`, so a conditional assertion fires a varying
+  number of times. The test has never failed; what varies is how much it checked, which is why it
+  went unnoticed. Found during the harness migration and confirmed to predate it. Left unfixed
+  deliberately — the honest fix is to thread the RNG rather than to seed the global, and that moves
+  draw order and therefore the golden fixtures. Tracked as ticket 11 on the scripts-and-phases map.
+
 - **The kineticist would have been handed a spellbook, and the medium two spell levels it never
   gets.** Both carried `"casting level": "mid"` in `class_data.json`, which `spells.py` branches on.
   The pf1 class Items disagree — the kineticist has no `casting` block at all (burn is
@@ -2306,7 +2360,7 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   (e.g. Orc +4 Str / −2 Int / −2 Wis / −2 Cha) are added to the rolled scores before ability mods,
   HP, skills, and spells are calculated; the floating "+2 to One Ability Score" races (Human,
   Half-Elf, Half-Orc) apply it to the class main stat. Values live in a new curated side-map
-  `Backend/json/racial_stat_changes.json` (validated by `Backend/scripts/check_racial_stats.py`,
+  `Backend/json/racial_stat_changes.json` (validated by `Backend/scripts/validate_racial_stats.py`,
   the old prose-key parser in `race_func.py` stays disabled), and the per-stat split is exported
   as `racial_stats` so the web sheet's ability-total breakdown shows `base X + racial ±N`.
 - **"Monkey Goblin" no longer crashes generation.** `race_chooser` title-cased the chosen race but

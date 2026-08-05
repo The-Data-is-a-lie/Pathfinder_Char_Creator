@@ -233,6 +233,33 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
 
 ## `Backend/scripts/` index
 
+**81 files under one name, and the name is a false category.** Until the split lands
+(`tickets: architecture/scripts-and-phases`, ticket 03) the prefix is the only signal of what a file
+*is*. Read this table first:
+
+| prefix | role | run by | count |
+| --- | --- | --- | --- |
+| `validate_*.py` | **gate** — checks data at rest, or a resolver over stubs. Fails the build. | `validate_all.py`, and CI | 19 |
+| `test_*.py` | **regression test** — generates characters, so it is deliberately outside the validator glob | `test_all.py`, and CI | 11 |
+| `build_*`, `scrape_*`, `compile_*`, `extract_*`, `dump_*` | **generator** — writes a JSON/CSV artefact. Never hand-edit its output; edit the `*_overrides.json` and rerun. | by hand, plus one CI staleness check | ~20 |
+| `fix_*`, `repair_*`, `normalize_*`, `promote_*`, `prune_*`, `merge_*`, `enrich_*` | **one-off / manual tool** — migrations and curation passes. Many say "one-time" or "THROWAWAY" in their own docstring. | by hand | ~20 |
+| `_harness.py`, `validate_all.py`, `test_all.py` | **infrastructure** | — | 3 |
+| `damage_types.py`, `conditional_clauses.py`, `talent_conditional_match.py` | **shared library, not a script** — no `main()`, never run, imported by 6–7 scripts each | — | 3 |
+
+Two traps this table exists to flag. **Several gates are also libraries**:
+`validate_quality_effects.py` exports `PF1_CHANGE_TARGETS` / `valid_target` / `check_brackets` and
+its `errors` accumulator to three other gates, and `validate_talent_conditionals.is_cost_only` is
+imported by five scripts — changing those signatures ripples. And **non-code lives here too**:
+`golden/` (7 fixtures), `_conditional_candidates/`, `_spheres_scratch/`, plus the `_pow_generator/`
+and `_spheres_generator/` sub-toolkits.
+
+**Every gate routes its verdict through `_harness.Report`** (`check` / `error` / `warn` / `skip` /
+`finish`), which also owns `read_json` and the path constants `REPO` / `BACKEND` / `JSON_DIR` /
+`DATA_DIR` / `SCRIPTS` / `GOLDEN_DIR`. Those are resolved by searching upward for a directory with
+both `CLAUDE.md` and `.git` — **not** by counting parents — so a script does not know its own depth
+and does not break when it moves. Importing `_harness` also puts `Backend/` and `Backend/scripts/`
+on `sys.path`. A new gate should open with its first rule, not with path math.
+
 - `build_*.py` → GENERATE the `*_changes.json` / effects files (item, feat, spell, class
   feature, maneuver, stance, talent). Never hand-edit generated output; edit the
   `*_overrides.json` and rerun the build script.
@@ -348,10 +375,18 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
   checked on `--update` too, because a re-seed is exactly when the coverage gets written away. When
   re-seeding, **sweep on the predicate, not on a class list** — the class list is only ever how the
   coverage happened to arrive last time.
-  - **`validate_all.py` runs every one of them** (glob discovery — a new validator is covered the
-    moment it exists), and `.github/workflows/validate.yml` runs *that* plus a trimmed
-    `test_house_invariants.py` on push. Before this the eleven validators were manual and nothing
-    invoked them.
+  - **Two glob runners, both in CI.** `validate_all.py` runs every `validate_*.py` and
+    `test_all.py` runs every `test_*.py`; a new gate of either kind is covered the moment it exists,
+    with nothing to register. `.github/workflows/validate.yml` runs both on push, plus the
+    generated-file staleness check. Before this, the validators were manual, and of the eleven tests
+    CI ran exactly one — `test_golden_payload.py`, the gate a refactor depends on, was not among them.
+  - ⚠ **The glob makes the filename load-bearing.** `check_racial_stats.py` was a real gate that had
+    never once run, purely because it was not named `validate_*`; it is now
+    `validate_racial_stats.py`. A gate whose name does not match a runner's pattern is invisible, and
+    nothing reports its absence.
+  - `test_all.py` **trims** the full-roster sweeps by default (`TRIMMED`, currently
+    `test_house_invariants --levels 1,20 --seeds 1`) and prints a `NOTE:` saying so. `--full` before
+    a release.
 - `audit_class_choice_descriptions.py` → flags choice-pool entries with empty/trivial text.
 - `fix_*.py`, `scrape_*.py`, `_smoke_*.py`, `compile_feats_new.py` — one-off converters,
   scrapers, smoke tests.
@@ -367,7 +402,7 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
   `FoundryVTT\Data\modules` (NOT Documents\GitHub); GitLab MRs; release via its `release.ps1`.
   - `scripts/createCharacter.js` builds the PC Actor; `scripts/createCompanions.js` builds one Actor
     per `bonded_creatures` entry (spec §8 D1/D2/D10 — its header owns the pf1 patching rules that
-    [`docs/wayfinder/companion-sheets/issues/02-pf1-actor-patching.md`](wayfinder/companion-sheets/issues/02-pf1-actor-patching.md)
+    [`tickets: feature/companion-sheets` 02](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/companion-sheets/02-pf1-actor-patching.md)
     settled). `scripts/skills-dict.js` holds skill name → pf1 id and must stay in lockstep with
     `utils/data.py::SKILL_IDS`; ⚠ `modify-abilities.js` still declares its own identical copy —
     the dedupe is pending, and its header says so.
@@ -384,10 +419,23 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
 `docs/homebrew_rules.md` (house rules — source of truth) · `docs/feature_spec_todo.md` (PoW
 spec) · `docs/pow_conditional_decision_rules.md` / `spheres_conditional_decision_rules.md`.
 
-**In-flight design efforts** live under `docs/wayfinder/<effort>/` — a `map.md` (destination,
-locked decisions, decisions-so-far index, fog, out-of-scope) plus one file per decision ticket in
-`issues/`. A ticket is a *question*, not a task; the **frontier** is every open, unclaimed ticket
-whose `Blocked by:` list is fully resolved. Three efforts are **OPEN**:
+**In-flight design efforts moved out of this repo** on 2026-08-05 — they increasingly span the
+backend, the Foundry module and the web sheet at once, so a tracker living inside one of the three
+was the wrong home. They now live in the **`tickets` repo**
+(<https://github.com/The-Data-is-a-lie/tickets>) under
+`tks/pathfinder-char-creator/<problem-type>/<effort>/`, in the okf-bundles format. See
+[`docs/wayfinder.md`](wayfinder.md).
+
+Each effort is a `map.md` (destination, notes, decisions-so-far index, fog, out-of-scope) plus one
+flat file per decision ticket beside it. A ticket is a *question*, not a task; the **frontier** is
+every open, unclaimed ticket whose `Blocked by:` list is fully resolved.
+
+`architecture/scripts-and-phases` is the newest, and the one that touches this file: finishing the
+three mechanisms this repo built and stopped applying — `@phase` (2 of ~11 orderable blocks),
+`_harness` (done, 2026-08-05) and the payload manifest (not yet). Its ticket 03 owns the
+`Backend/scripts/` split described at the top of this doc.
+
+Of the five `feature/` efforts, three are **OPEN**:
 
 - `companion-sheets/` — every bonded creature arrives as its own usable sheet: a Foundry Actor, a
   pre-filled web-sheet Companions tab. Charted 2026-08-03, four tickets, **01, 02 and 04 resolved**;
