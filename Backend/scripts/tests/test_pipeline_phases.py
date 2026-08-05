@@ -129,6 +129,24 @@ def test_real_phases_declare_their_hazards():
     raises('the real stats phase raises when run before level exists',
            stats_phase, Stub(), '4', '6', 'Y')
 
+    # phase_bootstrap_identity is the FIRST phase, so it has nothing to require -- there is no
+    # earlier phase whose output could be absent. Its guard is entirely on the way out: it declares
+    # eight attributes, several of which are set invisibly inside a callee (`region` inside
+    # region_chooser, `c_class` inside chooseClass via select_classes) rather than returned. Those
+    # are exactly the writes that go missing without anyone noticing, so `provides` is the contract
+    # that matters here and an empty `requires` is the correct declaration, not a stub.
+    boot = main_test.phase_bootstrap_identity
+    check('bootstrap phase requires nothing (it is first; nothing crosses in)',
+          getattr(boot, 'requires', None) == ())
+    for name in ('chosen_race', '_class_picks', 'region', 'f_name'):
+        check(f'bootstrap phase provides {name}',
+              name in getattr(boot, 'provides', ()))
+    # The next phase's requires must be satisfiable by what this one provides, or the chain is
+    # broken at its first link. `level` and `classes` come from randomize_level, still inline.
+    check('bootstrap provides chosen_race, which the stats phase requires',
+          'chosen_race' in getattr(boot, 'provides', ())
+          and 'chosen_race' in getattr(stats_phase, 'requires', ()))
+
 
 def main():
     for test in (test_requires_missing_raises,

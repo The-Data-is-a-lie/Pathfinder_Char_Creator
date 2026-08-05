@@ -26,6 +26,41 @@ rather than introducing a second place to look for state.
 Sealing: some ordering constraints aren't "is this attribute set" but "is this bucket finished".
 ``character.data_dict['class features']`` always exists; the question is whether the choosers have
 run. ``seal``/``require_sealed`` express that.
+
+HOW HONEST SHOULD `requires` BE?
+-------------------------------
+The rule, decided before the remaining phases were extracted so they would not each answer it
+differently. It matters because the blocks still to be split are not like the first two: the
+class-options block reads twenty-plus attributes, and writing all twenty into a decorator rebuilds
+the unreadable wall the decorator was meant to replace -- except now it fails at import time when it
+drifts, which is worse than a stale comment, not better.
+
+**`requires` names only what crosses IN from outside the phase.** Two to four attributes, the ones
+another phase had to produce first. Not everything the block reads: a value the block computes and
+then consumes is not a dependency, it is a local. The test for whether a name belongs is "could a
+reordering make this absent?", not "does this code touch it?".
+
+**`provides` is exhaustive.** The asymmetry is deliberate and it is free: `provides` is checked on
+the way OUT, so an over-declared name fails on the very first run, loudly, at the phase that owns
+it. There is no drift to accumulate. `requires` has to be curated because it fails on the way in,
+where a wrong entry blocks a legitimate order.
+
+**Bucket completion is a seal, not a `requires` entry.** `require_sealed` is for the state that
+always exists and is only meaningful once its producers have run.
+
+**A seal proves ordering. It does not prove completeness** -- and that gap is closed by a different
+mechanism rather than by a finer-grained seal. `seal('class options')` says the block ran; it says
+nothing about whether the psionic chooser inside it ran. Splitting into `seal('class options:
+psionics')` just reinvents the twenty-entry `requires` with worse ergonomics, and it still cannot
+catch a chooser nobody remembered to seal.
+
+So completeness is proved by census instead, in the sweep tests, where it belongs: over many
+generations, every chooser must fire at least once, and a count of zero fails the run and says so.
+`test_house_invariants.py` already does this for bonded creatures and occult choices ("no bonded
+creature was granted in N generations -- every companion check proved nothing"), and
+`test_skill_ranks.py` does it for the Multi Talented ordering branch. The two mechanisms answer
+different questions and neither substitutes for the other: the seal fails in-process the moment
+order is wrong, the census fails in CI when coverage silently drops to zero.
 """
 import functools
 

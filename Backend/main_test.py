@@ -246,6 +246,46 @@ def strip_labeled_bucket(feat_list, label_list, children):
 # and trim loops and is not safely movable yet).
 # --------------------------------------------------------------------------------------------- #
 
+@phase(requires=[], provides=['chosen_gender', 'region', 'chosen_race',
+                              'f_name', 'l_name', 'full_name', '_class_picks', 'c_class'])
+def phase_bootstrap_identity(character, userInput_gender, userInput_region, userInput_race,
+                             class_choice, chosen_BAB, chosen_caster_level, multi_class):
+	'''Who this NPC is before it has any levels: gender, region, race, name, and which classes.
+
+	requires NOTHING, and that is not laziness -- this is the first phase, so there is no earlier
+	phase whose output could be missing. Ticket 05's rule is "name what crosses IN from outside the
+	phase"; here nothing does. The character arrives freshly constructed with its JSON loaded, which
+	is a precondition of the constructor rather than of the ordering.
+
+	THE SEAM IS ONE LINE LOWER THAN IT LOOKS. The obvious boundary starts at `CreateNewCharacter`,
+	but a `@phase` takes the character as its first argument and checks `requires` against it -- so
+	the phase cannot be the thing that creates it. Construction stays at the call site and the phase
+	begins with the already-built object. Worth recording: every later block has a natural first line;
+	this one is the only phase whose boundary is set by the decorator rather than by the work.
+
+	`provides` is exhaustive per ticket 05 -- it is checked on the way OUT, so an over-declared name
+	fails loudly on the first run rather than drifting. `region` is set inside `region_chooser`
+	(util.py:76) rather than returned, which is exactly the kind of invisible write `provides` is for.
+
+	Returns (f_name, l_name): the two locals the rest of the function still reads. `full_name` is
+	on the character, so it is declared rather than returned.
+	'''
+	# prep variables
+	no_prereq_prep(character)
+	character.processed_feats = set()
+	character.cached_dataset_without_prerequisites = []
+	character.cached_prereq_list = set()
+	character.chooseable_talents = []
+
+	character.chosen_gender = gender_chooser(character, userInput_gender)
+
+	region_chooser(character, userInput_region)
+	race_chooser(character, userInput_race)
+	f_name, l_name = name_chooser(character)
+	select_classes(character, class_choice, chosen_BAB, chosen_caster_level, multi_class)
+	return f_name, l_name
+
+
 @phase(requires=['level', 'classes', 'chosen_race'], provides=['inherents', 'level_up_stats'])
 def phase_roll_and_assign_stats(character, num_dice, num_sides, inherents):
 	'''Roll the ability scores, fold in racial modifiers, and derive the modifiers.
@@ -368,21 +408,11 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# insantiate character.deity_choice
 		character.deity_choice = deity_flag
 
-		# prep variables
-		no_prereq_prep(character)
-		character.processed_feats = set()
-		character.cached_dataset_without_prerequisites = []
-		character.cached_prereq_list = set()
-		character.chooseable_talents = []
-				
-		character.chosen_gender = gender_chooser(character, userInput_gender)
-		 
-		region_chooser(character,userInput_region)
-		race_chooser(character,userInput_race)
-		f_name, l_name =name_chooser(character)
-		select_classes(character, class_choice, chosen_BAB, chosen_caster_level, multi_class)
+		f_name, l_name = phase_bootstrap_identity(
+			character, userInput_gender, userInput_region, userInput_race,
+			class_choice, chosen_BAB, chosen_caster_level, multi_class)
 
-		#add an optional flaws rule function	
+		#add an optional flaws rule function
 		alignment, mini_alignment = choose_alignment(character, 'alignments', alignment_input)
 		alignment = alignment.title()
 
