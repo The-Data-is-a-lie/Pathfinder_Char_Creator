@@ -1,12 +1,17 @@
-# Data gates + house-rule invariants.
+# Data gates + regression tests.
 #
 # This repo had eleven validate_*.py scripts and nothing that ran any of them, so a data
 # regression could only be caught by whoever happened to run the right script by hand. The
 # generator's correctness lives almost entirely in its JSON, which makes these the real tests.
 #
-# The invariant sweep is trimmed here (two levels, one seed) because the full default is 825
-# generations. Run it unabridged locally before a release:
-#     C:\Python310\python.exe Backend/scripts/test_house_invariants.py
+# The test family was one step further along the same road: eleven test_*.py scripts, of which
+# this workflow ran exactly one. The expensive omission was test_golden_payload.py -- seven seeded
+# characters with every payload key diffed byte for byte, which is the only thing standing between
+# a "pure move" refactor and a quietly different character. Both families now run by glob.
+#
+# test_all.py trims the full-roster sweeps (see its TRIMMED table) and says so in its summary.
+# Run everything unabridged locally before a release:
+#     C:\Python310\python.exe Backend/scripts/test_all.py --full
 name: validate
 
 on:
@@ -34,8 +39,11 @@ jobs:
       - name: Data validators
         run: python Backend/scripts/validate_all.py
 
-      - name: House-rule invariants (trimmed sweep)
-        run: python Backend/scripts/test_house_invariants.py --levels 1,20 --seeds 1
+      # Every Backend/scripts/test_*.py, same glob discovery. Includes the golden-payload
+      # fixtures, which the phase-extraction work depends on: a refactor that changes a payload
+      # must fail here, not months later on a character sheet.
+      - name: Regression tests
+        run: python Backend/scripts/test_all.py
 
       # The generated files must match what their builders produce. A hand-edit to a generated
       # file survives review far too easily otherwise; the fix is always to edit the overrides.
