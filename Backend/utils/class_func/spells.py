@@ -49,13 +49,53 @@ def casting_stat_for(class_name):
     return None
 
 
+# PF1e: a SPONTANEOUS full caster gains each new spell level one class level LATER than a prepared
+# caster of the same tier -- a sorcerer reaches 2nd-level spells at 4, a wizard at 3. Spell level 1
+# is the exception; both get it at class level 1.
+#
+# Keyed by class NAME rather than by widening `casting_level_string`, because that tier string is a
+# cross-repo contract: it ships in the payload and both the FoundryVTT module and the web sheet read
+# it. A new tier value would be a breaking change to two other repositories to express a rule that
+# is purely internal to this function.
+#
+# This is a RULE, not a restatement of the tables. Keeping it here is what lets
+# gates/validate_progression_tables.py go on cross-checking the scraped data against independently
+# computed levels -- deriving the answer from the table instead would have made the gate compare the
+# data with itself, and a scraper error would become the character's behaviour with no second
+# opinion. Verified against all 30 tables: these four lag by exactly 1 at every spell level, and no
+# other class does.
+SPONTANEOUS_FULL_CASTERS = frozenset({'sorcerer', 'oracle', 'psychic', 'arcanist'})
+
+# `adept` is not a lag -- it is an NPC class with its own published ladder, unlocking a spell level
+# every 4 class levels (1/4/8/12/16) and stopping at 5th. It was mapped onto 'mid' because that was
+# the closest tier that existed, which made it wrong by up to 3 levels and gave it a 6th-level row
+# it never reaches. Same reasoning as above for keying on the name: its declared tier stays 'mid'
+# for the payload's sake.
+_ADEPT_CAP = 5
+
+
 def caster_formula(character, n, class_entry):
     """Highest castable spell level + adjusted caster level for ONE class entry (n = its class
-    level). Writes class_entry['highest_spell_known'] / ['casting_level_num']."""
+    level). Writes class_entry['highest_spell_known'] / ['casting_level_num'].
+
+    `character` is unused -- gates call this with None to exercise the formula in isolation."""
     casting_level_string = class_entry['casting_level_string']
     casting_level_num = class_entry['level']
+    # .get: gates construct a bare {'casting_level_string', 'level'} entry to probe the formula.
+    name = (class_entry.get('name') or '').lower()
 
-    if casting_level_string == 'high':
+    if name == 'adept':
+        # 1st at class level 1, then one more every 4 levels. min() rather than a branch on n<4
+        # because 1 + n//4 already yields 1 for n in 1..3.
+        highest_spell_known = min(1 + n // 4, _ADEPT_CAP)
+
+    elif casting_level_string == 'high' and name in SPONTANEOUS_FULL_CASTERS:
+        # Spell level s unlocks at class level 2s (vs 2s-1 prepared), except 1st at level 1 --
+        # which is what max(1, ...) preserves, and why this is not simply the prepared value minus
+        # one.
+        highest_spell_known = min(max(1, n // 2), 9)
+
+    elif casting_level_string == 'high':
         if n % 2 == 0:
             highest_spell_known=n // 2
         else:

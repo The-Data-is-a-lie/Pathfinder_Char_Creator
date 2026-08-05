@@ -159,6 +159,28 @@ def check_character(cell, payload):
     L = payload['total_level']
     classes = payload['classes']
 
+    # ---- spell slots are numbers ----
+    # `spells_per_day_attr` loops `range(0, highest_spell_known + 1)` and indexes the scraped table,
+    # so a `highest_spell_known` that runs one spell level past what the class actually gets reads a
+    # cell the scrape correctly left blank -- and the tables spell blank as the STRING 'null', not
+    # JSON null. That string reached the payload and from there the Foundry sheet and the web sheet.
+    # It shipped for every sorcerer, oracle, psychic and arcanist at roughly half of all levels
+    # (spontaneous casters gain each spell level one class level later than prepared ones), plus
+    # every adept, until caster_formula learned both progressions.
+    #
+    # Checked HERE rather than by a golden fixture on purpose: the seven goldens contain no
+    # spontaneous full caster at a divergent level, so fixing the bug moved none of them. A property
+    # asserted over the whole swept roster catches the next class to acquire a bespoke progression;
+    # one more fixture would only have covered the one class somebody thought to add.
+    for book in (payload.get('spellbooks') or []):
+        rows = book.get('spells_per_day_list') or []
+        bad = [(i, cell_value) for i, cell_value in enumerate(rows)
+               if not isinstance(cell_value, (int, float)) or isinstance(cell_value, bool)]
+        check(not bad,
+              f"{cell}: {book.get('name')} spells_per_day_list has non-numeric slot(s) {bad[:4]} "
+              f"-- a blank table cell leaked in as a value; caster_formula is claiming a spell "
+              f"level this class does not reach (row: {rows})")
+
     # ---- feats ----
     prof_slots = len(payload.get('profession_feats') or [])
     want_normal = max(0, ceil(L / 2) + 2 - prof_slots)
