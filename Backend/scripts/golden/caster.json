@@ -663,7 +663,7 @@
   ],
   [
    "Intercepting Shade",
-   "Solar Flare maneuver",
+   "Solar Flare",
    "Fading Dodge",
    "Iron Fang"
   ],
@@ -787,7 +787,7 @@
    "range": "Melee attack",
    "type": "strike"
   },
-  "Solar Flare maneuver": {
+  "Solar Flare": {
    "action": "1 standard action",
    "description": "Where the light of the sun touches, so does the burning reach of the Solar Wind disciple, allowing him to curve his weapons around impossible angles. The initiator makes a ranged attack against a target creature, and this attack ignores any cover defense that the creature possesses and inflicts an additional 2d6 points of fire damage. This is a supernatural ability.",
    "discipline": "Solar Wind",

@@ -80,20 +80,25 @@ SCRIPTS = BACKEND / 'scripts'
 
 GATES = SCRIPTS / 'gates'
 TESTS = SCRIPTS / 'tests'
+BUILD = SCRIPTS / 'build'
+ATTIC = SCRIPTS / 'attic'
 
 # So `import validate_quality_effects` (sibling gates own the shared whitelists) and
 # `from utils import data` both work from any working directory. `SCRIPTS` is listed separately
 # from `HERE` because they stop being the same directory the moment gates move into a subfolder --
 # a gate in `scripts/gates/` still imports its shared checkers from `scripts/`.
 #
-# GATES and TESTS are on the path because several gates are ALSO libraries and are imported ACROSS
-# buckets: `validate_quality_effects` exports its whitelist and bracket checker to three other
-# gates, `validate_talent_conditionals.is_cost_only` to five callers including
-# `tests/test_talent_conditionals.py`. Ticket 03 chose not to extract those into a lib/ first, on
-# the grounds that separating a rule from its only enforcement is the arrangement this whole effort
-# is undoing -- so the buckets have to stay mutually importable, and this is the single place that
-# is arranged. Adding a bucket means adding it here and nowhere else.
-for _entry in (str(HERE), str(SCRIPTS), str(GATES), str(TESTS), str(BACKEND)):
+# Every bucket is on the path because scripts are ALSO libraries and are imported ACROSS buckets:
+# `validate_quality_effects` exports its whitelist and bracket checker to three other gates,
+# `validate_talent_conditionals.is_cost_only` to five callers including
+# `tests/test_talent_conditionals.py`, `build_item_changes` to `build_class_feature_changes` and
+# `build_spell_buffs`, `reconcile_psionics_names` to four builders -- and `build_companion_archetypes`
+# reaches into `attic/repair_animal_choices`, which is the one edge that says the attic is not yet
+# archaeology. Ticket 03 chose not to extract any of them into a lib/ first, on the grounds that
+# separating a rule from its only enforcement is the arrangement this whole effort is undoing -- so
+# the buckets have to stay mutually importable, and this is the single place that is arranged.
+# Adding a bucket means adding it here and nowhere else.
+for _entry in (str(HERE), str(SCRIPTS), str(GATES), str(TESTS), str(BUILD), str(ATTIC), str(BACKEND)):
     if _entry not in sys.path:
         sys.path.insert(0, _entry)
 
