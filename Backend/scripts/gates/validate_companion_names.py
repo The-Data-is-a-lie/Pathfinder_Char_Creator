@@ -1,7 +1,7 @@
 """Gate the species names the generator emits against the `pf-content` Actors the module clones.
 
-    C:\\Python310\\python.exe Backend/scripts/validate_companion_names.py
-    C:\\Python310\\python.exe Backend/scripts/validate_companion_names.py --strict
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_companion_names.py
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_companion_names.py --strict
 
 Map #18, ticket #29. The Foundry module renders a bonded creature by cloning the `pf-content` Actor
 whose name matches the species, and it attaches BY NAME. On a miss it degrades to a bare `npc` built
@@ -29,10 +29,10 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
-from _harness import Report                                       # noqa: E402
+sys.path.insert(0, str(HERE.parent))
+from _harness import REPO, Report                                       # noqa: E402
 
-ROOT = HERE.parents[1]
+ROOT = REPO
 DUMP = ROOT / "Backend/json/pf_content_companions.json"
 SPECIES = ROOT / "Backend/json/animal_choices.json"
 ALIASES = ROOT / "Backend/json/companion_species_aliases.json"

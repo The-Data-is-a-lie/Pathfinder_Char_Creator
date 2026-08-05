@@ -1,8 +1,8 @@
 """Standalone regression checks for gold spending and the inherents flag (run directly; this repo has
 no pytest harness -- mirrors the CLI-smoke-test convention of Backend/main_test.py).
 
-    C:\\Python310\\python.exe Backend/scripts/test_gold_and_stats.py
-    C:\\Python310\\python.exe Backend/scripts/test_gold_and_stats.py --slow   # + one full generation
+    C:\\Python310\\python.exe Backend/scripts/tests/test_gold_and_stats.py
+    C:\\Python310\\python.exe Backend/scripts/tests/test_gold_and_stats.py --slow   # + one full generation
 
 Guards two bugs:
   * characters bought items/enhancements they couldn't afford and finished with NEGATIVE gold
@@ -13,7 +13,7 @@ Guards two bugs:
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from _harness import Report  # noqa: E402
 
 from utils import data  # noqa: E402

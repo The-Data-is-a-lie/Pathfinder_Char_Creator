@@ -1,7 +1,7 @@
 """Standalone regression checks for the deterministic build-archetype scorer (run directly; this
 repo has no pytest harness -- mirrors the CLI-smoke-test convention of Backend/main_test.py).
 
-    C:\\Python310\\python.exe Backend/scripts/test_build_archetype.py
+    C:\\Python310\\python.exe Backend/scripts/tests/test_build_archetype.py
 
 Covers: the 37-fixture classification matrix (incl. the flagship wizard-with-backup-crossbow
 regression; every non-Generalist archetype of the generalized v3 roster has a proving fixture),
@@ -14,7 +14,7 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from _harness import JSON_DIR, Report, read_json  # noqa: E402
 
 from utils.class_func import backstory as _bs  # noqa: E402

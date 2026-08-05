@@ -1,7 +1,7 @@
 """Fixture gate for the companion-archetype classifier -- the 15 human-signed verdicts.
 
-    C:\\Python310\\python.exe Backend/scripts/validate_companion_archetype_classifier.py
-    C:\\Python310\\python.exe Backend/scripts/validate_companion_archetype_classifier.py -v
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_companion_archetype_classifier.py
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_companion_archetype_classifier.py -v
 
 NAMED `validate_` DELIBERATELY. It was `test_companion_archetype_classifier.py`, which meant
 `validate_all.py` -- whose whole design is discovery by glob over `validate_*.py` -- never picked it
@@ -46,7 +46,7 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parent))
 from _harness import Report                   # noqa: E402
 
 import build_companion_archetypes as bca      # noqa: E402

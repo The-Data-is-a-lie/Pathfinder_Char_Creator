@@ -44,7 +44,8 @@ TRIMMED = {
 
 
 def tests():
-    return sorted(p for p in HERE.glob("test_*.py") if p.name != SELF)
+    # tests/ rather than HERE -- see the matching note in validate_all.py.
+    return sorted(p for p in (HERE / "tests").glob("test_*.py") if p.name != SELF)
 
 
 def main():

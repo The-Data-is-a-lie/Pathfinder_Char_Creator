@@ -16,14 +16,14 @@ Checks:
 - WARN (not fail) when a spell name has no entry in the module's every_spell.json (the module
   synthesizes / skips those, but a typo would silently orphan the entry).
 
-Usage: python Backend/scripts/validate_spell_conditionals.py
+Usage: python Backend/scripts/gates/validate_spell_conditionals.py
 """
 import json
 import os
 import re
 import sys
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from _harness import Report, JSON_DIR, read_json  # noqa: E402
 from damage_types import classify_damage_type  # noqa: E402  the one owner of the type vocabulary
 

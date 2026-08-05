@@ -1,7 +1,7 @@
 """Regression checks for utils/class_func/buff_match.py (run directly; this repo has no pytest
 harness -- mirrors the CLI-smoke-test convention of Backend/main_test.py).
 
-    .venv/Scripts/python.exe Backend/scripts/test_buff_match.py
+    .venv/Scripts/python.exe Backend/scripts/tests/test_buff_match.py
 
 Covers the two contracts that are easy to break silently:
 
@@ -16,7 +16,7 @@ Covers the two contracts that are easy to break silently:
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from _harness import Report  # noqa: E402
 
 from utils.class_func import buff_match as bm  # noqa: E402

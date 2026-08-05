@@ -12,13 +12,13 @@ Checks (all must pass; exits 1 with a report otherwise):
 - tagBuff payloads: onlyOthers bool, auraRange int/str/null, nested changes/notes valid.
 - [[ ]] inline-roll brackets balanced and unnested in every name/text.
 
-Usage: python Backend/scripts/validate_class_feature_effects.py
+Usage: python Backend/scripts/gates/validate_class_feature_effects.py
 """
 import json
 import os
 import sys
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from _harness import Report, read_json  # noqa: E402
 import validate_quality_effects as vqe  # noqa: E402  (shared whitelists + checkers)
 import build_class_feature_changes as bcfc  # noqa: E402  (SECTIONS, pool walker, norm_name)

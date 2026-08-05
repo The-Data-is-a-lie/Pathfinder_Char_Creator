@@ -22,7 +22,7 @@ curation batches and the palette's load_spell_conditional_sources() use:
 A final prune drops any resulting entry that carries neither a save nor a rider, so the curated file
 always satisfies the validator's "save and/or riders" rule even for pre-existing entries.
 
-Run `python Backend/scripts/validate_spell_conditionals.py` afterward to gate the result.
+Run `python Backend/scripts/gates/validate_spell_conditionals.py` afterward to gate the result.
 
 Usage:
     python Backend/scripts/promote_spell_conditionals.py [--dry-run]

@@ -1,7 +1,7 @@
 """Gate the companion stat block: the advancement merge, and who owns the size increase.
 
-    C:\\Python310\\python.exe Backend/scripts/validate_companion_stats.py
-    C:\\Python310\\python.exe Backend/scripts/validate_companion_stats.py --verbose
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_companion_stats.py
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_companion_stats.py --verbose
 
 Map #18, slice G (#31) and ticket 04. Ticket 04's ruling is a two-line rule with a wide blast
 radius, and CLAUDE.md is explicit that a hard convention belongs in a validator rather than only in
@@ -51,7 +51,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parent))
 from _harness import JSON_DIR, Report                                # noqa: E402
 
 from utils.class_func.companion_stats import (                       # noqa: E402

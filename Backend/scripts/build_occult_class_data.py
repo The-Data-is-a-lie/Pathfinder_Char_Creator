@@ -75,7 +75,7 @@ CLASS_ITEM = {
 # rest need a name pattern or a phrase from the description, because the pack tags unevenly.
 #
 # Per CLAUDE.md a heuristic like that belongs in a validator, not a comment -- so every rule here
-# is re-checked by Backend/scripts/validate_occult_data.py, which fails if a bucket empties or
+# is re-checked by Backend/scripts/gates/validate_occult_data.py, which fails if a bucket empties or
 # collects something it should not. Tune the rules here; the gate is what keeps them honest.
 # --------------------------------------------------------------------------------------------- #
 
@@ -407,7 +407,7 @@ def main() -> int:
     reconcile_casting_level(class_items)
     write_spell_tables(caster_tables(Path(args.system_root)))
 
-    print("\nnow run Backend/scripts/validate_occult_data.py, then test_house_invariants.py")
+    print("\nnow run Backend/scripts/gates/validate_occult_data.py, then test_house_invariants.py")
     return 0
 
 

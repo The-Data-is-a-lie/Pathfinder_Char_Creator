@@ -1,7 +1,7 @@
 """Regression checks for the pipeline phase contracts (run directly; this repo has no pytest
 harness -- mirrors the CLI-smoke-test convention of Backend/main_test.py).
 
-    .venv/Scripts/python.exe Backend/scripts/test_pipeline_phases.py
+    .venv/Scripts/python.exe Backend/scripts/tests/test_pipeline_phases.py
 
 The point of utils/class_func/pipeline.py is that an ordering mistake RAISES instead of silently
 producing a worse character. A guard that never fires is worth nothing, so these tests deliberately
@@ -17,7 +17,7 @@ The four ordering hazards these protect (each was previously only a comment in m
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from _harness import Report  # noqa: E402
 
 from utils.class_func.pipeline import (  # noqa: E402

@@ -7,14 +7,14 @@ returns 0 while errors are pending, which would turn the whole suite green and s
 Written in the same standalone-script shape as the scripts it guards, deliberately: a harness that
 needed a different test convention than the one it serves would be evidence it was the wrong shape.
 
-Usage: python Backend/scripts/test_harness.py
+Usage: python Backend/scripts/tests/test_harness.py
 """
 import io
 import os
 import sys
 from contextlib import redirect_stdout
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from _harness import (  # noqa: E402
     Report, read_json, _find_repo_root, BACKEND, REPO, JSON_DIR, DATA_DIR, GOLDEN_DIR, SCRIPTS)
 

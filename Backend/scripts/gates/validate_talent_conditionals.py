@@ -8,13 +8,13 @@ made during curation and pinned by the actor-fixture tests; it can't be judged f
 alone. This module enforces the part that CAN be checked mechanically, and is reused as the promote
 hard-gate + the test invariant.)
 
-    C:\\Python310\\python.exe Backend/scripts/validate_talent_conditionals.py   # validates the module dicts
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_talent_conditionals.py   # validates the module dicts
 """
 import re
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from _harness import Report                    # noqa: E402
 from damage_types import classify_damage_type  # noqa: E402  the one owner of the type vocabulary
 

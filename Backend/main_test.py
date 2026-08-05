@@ -1878,7 +1878,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"build_archetype": build_archetype,
 				"build_tactics": build_tactics,
 				# Replay handle: pass this back as generate_random_char(seed=...) to reproduce this
-				# exact character. See Backend/scripts/test_golden_payload.py.
+				# exact character. See Backend/scripts/tests/test_golden_payload.py.
 				"generation_seed": seed,
 				}
 		
@@ -1906,7 +1906,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"flaw_effects_dict": flaw_effects_dict,
 				"class_feature_changes_dict": class_feature_changes_dict,
 				"class_feature_conditionals_dict": class_feature_conditionals_dict,
-				# Invariant handles for scripts/test_house_invariants.py: the recorded skill-rank
+				# Invariant handles for scripts/tests/test_house_invariants.py: the recorded skill-rank
 				# budget (incl. the background grant) and the pre-merge normal feat count (the
 				# feat_budget["normal"] export absorbs class merges/PoW funding, so it can't be
 				# asserted against the house formula directly).

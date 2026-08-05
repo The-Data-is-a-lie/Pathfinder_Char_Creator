@@ -1,7 +1,7 @@
 """Regression checks for the Spheres talent-conditional two-prong rule (run directly; no pytest, per
 the repo convention -- mirrors test_spell_conditionals.py).
 
-    C:\\Python310\\python.exe Backend/scripts/test_talent_conditionals.py
+    C:\\Python310\\python.exe Backend/scripts/tests/test_talent_conditionals.py
 
 Seams under test (agreed):
   A. validate_talent_conditionals -- the structural "cost-only" predicate.
@@ -12,7 +12,7 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from _harness import JSON_DIR, Report  # noqa: E402
 
 import validate_talent_conditionals as vtc  # noqa: E402

@@ -54,7 +54,7 @@ those are still well-formed capitalised words, and no rule short of a dictionary
 from a deliberately odd fantasy surname. A guard trusted further than it earns is worse than a
 guard with a documented ceiling.
 
-Usage: python Backend/scripts/validate_name_data.py
+Usage: python Backend/scripts/gates/validate_name_data.py
 """
 import json
 import os
@@ -63,7 +63,7 @@ import re
 import sys
 from types import SimpleNamespace
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from _harness import Report, JSON_DIR, read_json                 # noqa: E402
 # One owner each: the resolver decides what a region is, data.py owns the canonical list and the
 # client aliases. Restating either here is how the two copies drift apart in the first place.

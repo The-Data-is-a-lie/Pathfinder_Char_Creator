@@ -10,7 +10,7 @@ Checks (all must pass; exits 1 with a report otherwise):
 - Armor entries: changes[]/contextNotes[] with valid pf1 change / context-note targets.
 - [[ ]] inline-roll brackets balanced in every name/text.
 
-Usage: python Backend/scripts/validate_quality_effects.py
+Usage: python Backend/scripts/gates/validate_quality_effects.py
 """
 import json
 import os
@@ -18,10 +18,9 @@ import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, HERE)
-from _harness import Report  # noqa: E402  shared accumulate/report/exit-code
+sys.path.insert(0, os.path.dirname(HERE))
+from _harness import JSON_DIR, Report  # noqa: E402  shared accumulate/report/exit-code
 from damage_types import classify_damage_type  # noqa: E402  the one owner of the type vocabulary
-JSON_DIR = os.path.join(HERE, '..', 'json')
 QE_PATH = os.path.join(JSON_DIR, 'items', 'quality_effects.json')
 WEAPON_QUALITIES = os.path.join(JSON_DIR, 'weapon_qualities.json')
 ARMOR_QUALITIES = os.path.join(JSON_DIR, 'armor_qualities.json')

@@ -21,7 +21,7 @@ Three kinds of check, in rising order of how much they would have caught:
 
 Errors fail the run (exit 1).
 
-    C:\\Python310\\python.exe Backend/scripts/validate_occult_data.py
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_occult_data.py
 """
 from __future__ import annotations
 
@@ -29,7 +29,7 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from _harness import Report, REPO, read_json  # noqa: E402
 from utils import data as _data               # noqa: E402  (path bootstrap must run first)
 

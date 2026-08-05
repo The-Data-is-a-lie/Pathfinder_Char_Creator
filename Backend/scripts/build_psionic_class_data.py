@@ -111,7 +111,7 @@ def main() -> int:
         print(f"  wrote {path.relative_to(ROOT)} ({counts})")
 
     print("\nnow check Backend/utils/data.py carries a good_saves row for each of the twelve, "
-          "then run Backend/scripts/test_house_invariants.py")
+          "then run Backend/scripts/tests/test_house_invariants.py")
     return 0
 
 

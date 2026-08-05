@@ -14,7 +14,7 @@ either one alone is not.
 Errors fail the run (exit 1). Gaps in the source pages are reported as warnings and do not fail --
 they are facts about the wiki, not defects in the scrape.
 
-    .venv/Scripts/python.exe Backend/scripts/validate_psionics_data.py
+    .venv/Scripts/python.exe Backend/scripts/gates/validate_psionics_data.py
 """
 from __future__ import annotations
 
@@ -23,7 +23,7 @@ import re
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from _harness import Report, JSON_DIR, read_json  # noqa: E402
 from utils import data as _data                    # noqa: E402  (path bootstrap must run first)
 

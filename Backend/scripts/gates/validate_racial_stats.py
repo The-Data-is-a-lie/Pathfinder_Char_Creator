@@ -1,6 +1,6 @@
 """Validate racial_stat_changes.json against PlayableRaces.json.
 
-Run from the repo root: python Backend/scripts/validate_racial_stats.py
+Run from the repo root: python Backend/scripts/gates/validate_racial_stats.py
 Asserts every playable race has an entry, and every entry is either the
 floating {"any": 2} bonus or fixed even modifiers in the -4..+4 range.
 """
@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parent))
 from _harness import JSON_DIR, Report, read_json               # noqa: E402
 
 STAT_KEYS = {'str', 'dex', 'con', 'int', 'wis', 'cha'}

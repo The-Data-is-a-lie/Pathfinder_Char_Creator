@@ -1,7 +1,7 @@
 """Standalone regression checks for skill-rank and profession-rank allocation (run directly; this
 repo has no pytest harness -- mirrors the CLI-smoke-test convention of Backend/main_test.py).
 
-    C:\\Python310\\python.exe Backend/scripts/test_skill_ranks.py
+    C:\\Python310\\python.exe Backend/scripts/tests/test_skill_ranks.py
 
 Guards the invariants behind "characters must fill their skill slots exactly":
   * every rank in the budget is spent -- sum(skill_ranks) == character.skill_rank_budget
@@ -20,7 +20,7 @@ import sys
 from math import floor
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from _harness import Report  # noqa: E402
 
 from utils import data  # noqa: E402

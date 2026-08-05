@@ -36,7 +36,7 @@ by what the data can be shown to hold:
     contributed, purely so a sheet can explain the number. It is provenance, not a second
     application: the values are already inside `ac`, `attacks[].atk`, `cmb`, `cmd` and `skills`.
 
-`Backend/scripts/validate_companion_stats.py` is the gate that keeps this from drifting back.
+`Backend/scripts/gates/validate_companion_stats.py` is the gate that keeps this from drifting back.
 
 WHERE EVERY NUMBER COMES FROM (ticket 01, same grill)
 -----------------------------------------------------

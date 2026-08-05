@@ -1,8 +1,8 @@
 """Per-class psionics sweep: all twelve classes x a level ladder, with a readable table.
 
-    C:\\Python310\\python.exe Backend/scripts/test_psionics_sweep.py
-    C:\\Python310\\python.exe Backend/scripts/test_psionics_sweep.py --classes psion,aegis
-    C:\\Python310\\python.exe Backend/scripts/test_psionics_sweep.py --levels 1,20 --quiet
+    C:\\Python310\\python.exe Backend/scripts/tests/test_psionics_sweep.py
+    C:\\Python310\\python.exe Backend/scripts/tests/test_psionics_sweep.py --classes psion,aegis
+    C:\\Python310\\python.exe Backend/scripts/tests/test_psionics_sweep.py --levels 1,20 --quiet
 
 Why this exists alongside test_house_invariants.py, which already asserts most of the same
 formulas: that sweep answers "did anything break" across 50-odd classes and prints pass/fail. This
@@ -35,7 +35,7 @@ from contextlib import redirect_stdout
 from math import floor
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from _harness import BACKEND, Report  # noqa: E402
 
 from utils import data  # noqa: E402

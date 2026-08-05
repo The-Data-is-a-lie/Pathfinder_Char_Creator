@@ -167,7 +167,7 @@ def main():
     CF_OUT.write_text(json.dumps(overrides, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"\n  wrote {FEATS_OUT.name} ({len(feats)} feats) and {CF_OUT.name}")
     print("  next: python Backend/scripts/build_class_feature_changes.py"
-          "  &&  python Backend/scripts/validate_class_feature_effects.py")
+          "  &&  python Backend/scripts/gates/validate_class_feature_effects.py")
 
 
 if __name__ == "__main__":

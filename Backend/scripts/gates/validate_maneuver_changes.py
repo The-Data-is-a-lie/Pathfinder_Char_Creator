@@ -12,7 +12,7 @@ Entries are a FLAT ``{name: {modifiers, rider, ...}}`` map, unlike the ``{condit
 shape `validate_quality_effects.check_conditional` expects, so the checks are adapted rather than
 reused wholesale -- but the whitelists themselves are imported, so there is still one owner per rule.
 
-Run:  python Backend/scripts/validate_maneuver_changes.py
+Run:  python Backend/scripts/gates/validate_maneuver_changes.py
 """
 import json
 import os
@@ -20,7 +20,7 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parent))
 from _harness import Report, REPO                 # noqa: E402
 from damage_types import classify_damage_type      # noqa: E402  the type vocabulary
 import validate_quality_effects as vqe             # noqa: E402  shared modifier whitelists

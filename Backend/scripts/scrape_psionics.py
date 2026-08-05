@@ -944,7 +944,7 @@ def main() -> int:
     args = parser.parse_args()
     for step in (args.only or ["classes", "options", "lists", "powers", "races"]):
         STEPS[step]()
-    print("done -- now run Backend/scripts/validate_psionics_data.py")
+    print("done -- now run Backend/scripts/gates/validate_psionics_data.py")
     return 0
 
 

@@ -1,7 +1,7 @@
 """Gate the bonded-creature feat pool and the effect data that folds it into the stat block.
 
-    C:\\Python310\\python.exe Backend/scripts/validate_companion_feats.py
-    C:\\Python310\\python.exe Backend/scripts/validate_companion_feats.py --compendium PATH
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_companion_feats.py
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_companion_feats.py --compendium PATH
 
 Spec section 8, D14/D15. Two independent failure modes live here, and both are silent:
 
@@ -36,10 +36,11 @@ from pathlib import Path
 import pandas as pd
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
 
-sys.path.insert(0, str(ROOT / "Backend"))
-from _harness import Report                                        # noqa: E402
+sys.path.insert(0, str(HERE.parent))
+from _harness import REPO, Report                                        # noqa: E402
+
+ROOT = REPO
 # One owner for the vocabulary: the fold declares what it accepts, this file only checks against it.
 from utils import data                                             # noqa: E402
 from utils.class_func.companion_stats import (                     # noqa: E402

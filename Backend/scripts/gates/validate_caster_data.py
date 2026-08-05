@@ -1,7 +1,7 @@
 """Gate the four places a class declares that it casts, which have to agree or it casts nothing.
 
-    C:\\Python310\\python.exe Backend/scripts/validate_caster_data.py
-    C:\\Python310\\python.exe Backend/scripts/validate_caster_data.py --print
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_caster_data.py
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_caster_data.py --print
 
 WHY. A caster is declared in four files and no two of them know about each other:
 
@@ -35,7 +35,7 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parent))
 from _harness import DATA_DIR, JSON_DIR, Report               # noqa: E402
 
 from utils import data as _data                              # noqa: E402

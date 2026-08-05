@@ -1,7 +1,7 @@
 """Standalone regression checks for the spell-conditional pipeline (run directly; this repo has no
 pytest harness -- mirrors the CLI-smoke-test convention of Backend/main_test.py).
 
-    C:\\Python310\\python.exe Backend/scripts/test_spell_conditionals.py
+    C:\\Python310\\python.exe Backend/scripts/tests/test_spell_conditionals.py
 
 Covers: the classifier buckets the canonical exemplars correctly (and the True-Strike word-order fix
 + the AC / other-subject guard hold), the curated runtime files load and are well-shaped, and the
@@ -11,7 +11,7 @@ only).
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from _harness import Report  # noqa: E402
 
 import build_spell_conditionals as bsc  # noqa: E402

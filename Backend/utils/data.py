@@ -2463,7 +2463,7 @@ classes_pending_foundry = []
 # `base` is DERIVED -- everything in class_data.json that no other roster claims -- so adding a
 # Paizo class stays a one-key change to class_data.json and nothing here. Order is display order.
 # The module's own copy of the labels lives in scripts/class-roster.js and is kept honest by
-# Backend/scripts/validate_class_roster.py; the tokens are the contract between them.
+# Backend/scripts/gates/validate_class_roster.py; the tokens are the contract between them.
 CLASS_GROUPS = (
     ("base",    "Paizo base classes", None),
     ("pow",     "Path of War",        path_of_war_class),

@@ -1,9 +1,9 @@
 """Golden-payload regression for the whole generator (run directly; this repo has no pytest
 harness -- mirrors the CLI-smoke-test convention of Backend/main_test.py).
 
-    .venv/Scripts/python.exe Backend/scripts/test_golden_payload.py
-    .venv/Scripts/python.exe Backend/scripts/test_golden_payload.py --update
-    .venv/Scripts/python.exe Backend/scripts/test_golden_payload.py --config spheres
+    .venv/Scripts/python.exe Backend/scripts/tests/test_golden_payload.py
+    .venv/Scripts/python.exe Backend/scripts/tests/test_golden_payload.py --update
+    .venv/Scripts/python.exe Backend/scripts/tests/test_golden_payload.py --config spheres
 
 Generates a fixed set of seeded characters and diffs each payload against a committed snapshot in
 Backend/scripts/golden/. A refactor that changes generated output shows up here as a concrete list
@@ -30,10 +30,13 @@ import json
 import sys
 from pathlib import Path
 
-HERE = Path(__file__).resolve()
-BACKEND = HERE.parents[1]
-GOLDEN_DIR = HERE.parent / 'golden'
-sys.path.insert(0, str(BACKEND))   # so `from utils...` resolves
+# This file computed BACKEND and GOLDEN_DIR from its own nesting depth, which is exactly the
+# arrangement `_harness._find_repo_root` exists to replace: moving this script one level down (into
+# `tests/`) silently repointed both at the wrong directory rather than raising. Take them from the
+# harness, which finds the root by marker, so this file's depth stops being a fact anything depends
+# on. The one remaining depth reference is the line below that locates `_harness` itself.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from _harness import BACKEND, GOLDEN_DIR   # noqa: E402
 
 from utils.class_func import backstory as _bs
 

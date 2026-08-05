@@ -1,7 +1,7 @@
 """Gate the identity and gear fields the resolver puts on a bonded-creature entry.
 
-    C:\\Python310\\python.exe Backend/scripts/validate_companion_identity.py
-    C:\\Python310\\python.exe Backend/scripts/validate_companion_identity.py --runs 500
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_companion_identity.py
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_companion_identity.py --runs 500
 
 Map #18, slice E (#37 grill, 2026-08-03). The grill settled seven things about what a bonded creature
 is called and what it owns; six of them are shape, and shape rots silently. `bonded_creatures` is not
@@ -32,11 +32,11 @@ from pathlib import Path
 from types import SimpleNamespace
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
 
-sys.path.insert(0, str(ROOT / "Backend"))
-sys.path.insert(0, str(HERE))
-from _harness import Report                                       # noqa: E402
+sys.path.insert(0, str(HERE.parent))
+from _harness import REPO, Report                                       # noqa: E402
+
+ROOT = REPO
 # One owner for the posture: the resolver declares the constants, this file only checks them.
 from utils.class_func.animal_companions import (                  # noqa: E402
     GEAR_SOURCE_V1, SEXES, resolve_bonded_creatures)

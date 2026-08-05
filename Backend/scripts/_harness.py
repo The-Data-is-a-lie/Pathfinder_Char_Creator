@@ -56,7 +56,7 @@ def _find_repo_root(start):
     thirty times and moving a script one level down breaks it thirty times -- silently, because a
     wrong-but-existing path just reads the wrong file. Anchoring on a marker instead makes depth a
     non-fact: `Backend/scripts/gates/validate_x.py` resolves the same root as
-    `Backend/scripts/validate_x.py`.
+    `Backend/scripts/validate_x.py` did before the bucket split.
 
     Both markers are required together. `.git` alone would resolve to the wrong repo when this one
     is vendored or a worktree is nested; `CLAUDE.md` alone appears in other checkouts on this
@@ -78,11 +78,22 @@ GOLDEN_DIR = BACKEND / 'scripts' / 'golden'
 
 SCRIPTS = BACKEND / 'scripts'
 
+GATES = SCRIPTS / 'gates'
+TESTS = SCRIPTS / 'tests'
+
 # So `import validate_quality_effects` (sibling gates own the shared whitelists) and
 # `from utils import data` both work from any working directory. `SCRIPTS` is listed separately
 # from `HERE` because they stop being the same directory the moment gates move into a subfolder --
 # a gate in `scripts/gates/` still imports its shared checkers from `scripts/`.
-for _entry in (str(HERE), str(SCRIPTS), str(BACKEND)):
+#
+# GATES and TESTS are on the path because several gates are ALSO libraries and are imported ACROSS
+# buckets: `validate_quality_effects` exports its whitelist and bracket checker to three other
+# gates, `validate_talent_conditionals.is_cost_only` to five callers including
+# `tests/test_talent_conditionals.py`. Ticket 03 chose not to extract those into a lib/ first, on
+# the grounds that separating a rule from its only enforcement is the arrangement this whole effort
+# is undoing -- so the buckets have to stay mutually importable, and this is the single place that
+# is arranged. Adding a bucket means adding it here and nowhere else.
+for _entry in (str(HERE), str(SCRIPTS), str(GATES), str(TESTS), str(BACKEND)):
     if _entry not in sys.path:
         sys.path.insert(0, _entry)
 

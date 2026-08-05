@@ -1,6 +1,6 @@
 """Gate on Backend/json/animal_choices.json -- the companion data the advancement merge reads.
 
-    C:\\Python310\\python.exe Backend/scripts/validate_companion_data.py
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_companion_data.py
 
 Map #18, ticket #27. `repair_animal_choices.py` fixed six scrape defects; this is what stops them
 coming back the next time the file is touched. It shares that script's vocabulary -- SIZES, the
@@ -35,14 +35,14 @@ import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, HERE)
+sys.path.insert(0, os.path.dirname(HERE))
 
-from _harness import Report                  # noqa: E402
+from _harness import JSON_DIR, Report        # noqa: E402
 from repair_animal_choices import (          # noqa: E402  -- one owner for the shared vocabulary
     ADV_RE, KEY_DRIFT, SIGNED_RE, SIZES, START_RE, STATS, size_step,
 )
 
-PATH = os.path.join(HERE, '..', 'json', 'animal_choices.json')
+PATH = os.path.join(JSON_DIR, 'animal_choices.json')
 
 AC_STRICT_RE = re.compile(r'^[+\-]\d+ natural armor$')
 
@@ -217,8 +217,8 @@ def check_species(tier, name, body):
 
 def check_closed_vocabulary():
     """#30 and #40 write these files; validate them the moment they appear, not later."""
-    grantors = os.path.join(HERE, '..', 'json', 'companion_grantors.json')
-    archetypes = os.path.join(HERE, '..', 'json', 'companion_archetypes.json')
+    grantors = os.path.join(JSON_DIR, 'companion_grantors.json')
+    archetypes = os.path.join(JSON_DIR, 'companion_archetypes.json')
 
     if os.path.exists(grantors):
         with open(grantors, encoding='utf-8') as fh:

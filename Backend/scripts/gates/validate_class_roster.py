@@ -1,8 +1,8 @@
 """Gate the FoundryVTT module's class roster against the backend's own class list.
 
-    C:\\Python310\\python.exe Backend/scripts/validate_class_roster.py
-    C:\\Python310\\python.exe Backend/scripts/validate_class_roster.py --module-root <dir>
-    C:\\Python310\\python.exe Backend/scripts/validate_class_roster.py --print
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_class_roster.py
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_class_roster.py --module-root <dir>
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_class_roster.py --print
 
 WHY. The class roster used to exist three times by hand -- the dropdown in button.js, a dead
 byte-identical copy in html_dialog.js, and the collectItems() boundary list in modify-abilities.js
@@ -32,7 +32,7 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parent))
 from _harness import JSON_DIR, Report                         # noqa: E402
 
 from utils import data as _data                              # noqa: E402

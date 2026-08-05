@@ -14,14 +14,14 @@ Checks (all must pass; exits 1 with a report otherwise):
   place. Nothing downstream would notice otherwise -- the module strips `system.changes` off the
   flaw item, so a mistargeted flaw would simply never apply to anything.
 
-Usage: python Backend/scripts/validate_flaw_effects.py
+Usage: python Backend/scripts/gates/validate_flaw_effects.py
 """
 import json
 import os
 import sys
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from _harness import Report                                                  # noqa: E402
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from _harness import JSON_DIR, Report                                        # noqa: E402
 from validate_quality_effects import (  # noqa: E402
     PF1_CHANGE_TARGETS, PF1_NOTE_TARGETS, valid_target, check_brackets, errors)
 
@@ -33,7 +33,7 @@ from utils.class_func.companion_stats import (                               # n
 # accumulator, and those findings have to fail THIS gate.
 REPORT = Report('validate_flaw_effects', errors=errors)
 
-FLAWS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'json', 'flaws')
+FLAWS_DIR = os.path.join(JSON_DIR, 'flaws')
 # (filename, must every numeric change be foldable by companion_stats?)
 CATALOGUES = (('flaw_effects.json', False), ('animal_flaw_effects.json', True))
 

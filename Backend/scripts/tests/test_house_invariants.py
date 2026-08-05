@@ -1,9 +1,9 @@
 """House-rule invariant sweep: every generatable class x level ladder x seeds (run directly; this
 repo has no pytest harness -- mirrors the CLI-smoke-test convention of Backend/main_test.py).
 
-    C:\\Python310\\python.exe Backend/scripts/test_house_invariants.py
-    C:\\Python310\\python.exe Backend/scripts/test_house_invariants.py --classes fighter,wizard
-    C:\\Python310\\python.exe Backend/scripts/test_house_invariants.py --levels 1,20 --seeds 1
+    C:\\Python310\\python.exe Backend/scripts/tests/test_house_invariants.py
+    C:\\Python310\\python.exe Backend/scripts/tests/test_house_invariants.py --classes fighter,wizard
+    C:\\Python310\\python.exe Backend/scripts/tests/test_house_invariants.py --levels 1,20 --seeds 1
 
 Asserts the house-rule FORMULAS (oks/pathfinder/house-rules/), not pinned sheets -- the golden
 payload test owns exact-output regression. Per generated character (homebrew flag on, the
@@ -35,7 +35,7 @@ from contextlib import redirect_stdout
 from math import ceil, floor
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from _harness import BACKEND, Report  # noqa: E402
 
 from utils import data  # noqa: E402
