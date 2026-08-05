@@ -56,6 +56,37 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     **30/30 classes aligned** with `caster_formula` and **30/30 per-day tables free of inversion**,
     with nothing excused.
 
+- **One Path of War maneuver was called "Solar Flare maneuver" and never matched anything.** The
+  scrape recorded the Solar Wind strike's key as `Solar_Flare_maneuver`, so that suffix travelled all
+  the way into `maneuvers_choose_from` and `maneuvers_desc_dict` — the only name in the repo carrying
+  it, while its own siblings Solar Reflection and Dazzling Solar Flare were clean. The cost was not
+  cosmetic: the FoundryVTT module matches maneuvers against the `pf1-pow` compendium by that name,
+  folding case, apostrophes and whitespace but not a trailing word, so Solar Flare missed its
+  document and arrived synthesized — no automation, no discipline, no `(Strike)` prefix. The module's
+  curated conditional key had been hand-patched to the artifact to compensate; both sides now use the
+  real name. *Rejected:* teaching the module to strip a trailing `" maneuver"`, which would have made
+  the consumer absorb a defect in the producer's data and hidden the next one.
+- **FoundryVTT module — five defects the new golden harness found before anyone reported them.**
+  Recorded here because this changelog is the stack's decision log, not just the backend's. A
+  companion's AC was a point low whenever a feat granted one (feat automation is stripped because the
+  payload already counted it, and AC is the one folded stat pf1 gives no seed to write the difference
+  back into — so AC-targeted changes are now kept, and only those; *rejected:* keeping natural armour
+  too, which **does** have a seed and would double). Twelve `pf1-pow` maneuvers carry a
+  double-encoded apostrophe in their compendium names and silently arrived with no automation at all.
+  Seventeen stances were labelled `(Boost)` by the pack while their own buff said `(Stance)` — our
+  stance list now outranks the pack. Synthesized psionic powers were missing
+  `uses.autoDeductChargesCost` and so were free to manifest. And every character carried two token
+  effects both named "Inherent", because re-identifying a buff item never reached the ActiveEffect
+  inside it. *Rejected throughout:* re-recording a golden to accept a diff without reading it — which
+  is how the Solar Flare conditional above was nearly lost for a second time.
+- **Seven build and curation scripts had been dying with `ModuleNotFoundError`.** Filing the
+  validators and tests into `gates/` and `tests/` moved modules that seven other scripts import
+  (`build_companion_archetypes`, `build_talent_conditionals`, `enrich_conditional_riders`,
+  `promote_conditional_candidates`, `promote_talent_conditionals`, `prune_talent_conditionals`,
+  `sweep_buff_gaps`), and none of them imported `_harness` — the thing that puts the buckets on
+  `sys.path`. The check that closed that work was `compileall`, which proves a file parses and never
+  once imports it. All seven now route through `_harness` and run again.
+
 ### Changed
 - **A Redis outage can no longer take the API down with it.** `flask-limiter`'s `swallow_errors`
   defaults to **False**, and the Redis URL is resolved once at import by a single ping — so a Redis
@@ -109,6 +140,24 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   - `_harness` puts `gates/` and `tests/` on `sys.path` as well, because several gates are also
     libraries imported across buckets (`validate_talent_conditionals.is_cost_only` has five callers,
     one of them a test). Adding a bucket means adding it there and nowhere else.
+  - **The other half landed too, and the 43 files were converted first.** `build/` (34) holds
+    anything you run to *produce or maintain* generated or curated data — the builders and scrapers,
+    the `promote_*`/`prune_*`/`enrich_*` conditional-curation chain, the audits, and both
+    sub-toolkits; `attic/` (9) holds only the self-described one-offs. Ticket 03's prefix rule left
+    ten scripts in neither, and filing a maintained curation tool under *"kept for the record, not
+    maintained"* would have been a lie about it. *Rejected:* a third bucket, which would have reopened
+    a settled decision for ten files.
+  - **Verified by measurement, not by reading the diff.** Every module-level path constant of all 50
+    scripts was captured by importing each in a subprocess before the move and again after: 134
+    values identical, and every changed value accounted for by an intended move. That is what caught
+    the one real bug — `_pow_generator/` and `_spheres_generator/` went a level deeper too, so
+    `build_pow_template_actor`'s own `parents[2]` quietly became `Backend/` instead of the repo root
+    and doubled `Backend/Backend/` into fourteen data paths. Nothing in a code review would have
+    shown that.
+  - Two more of the plan's claims failed on contact. **`.gitignore` did need changing** — five of its
+    eight `Backend/scripts/` paths name things that move in this half. And **the buckets are not
+    independent**: `build/build_companion_archetypes.py` imports `attic/repair_animal_choices`, which
+    is the one edge saying the attic is not yet archaeology.
 
 ### Added
 - **A gate for the shape of the scripts directory itself.** `gates/validate_scripts_layout.py` fails
@@ -118,9 +167,15 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   argument for it is this directory's own history: the naming convention was *also* only a
   convention, and `check_racial_stats.py` went years without ever running because nothing checked
   that it held.
-  - It reports the 43 unmoved scripts as **one counted line**, not 43 warnings. Forty-three
+  - It reported the 43 unmoved scripts as **one counted line**, not 43 warnings. Forty-three
     near-identical warnings about a known backlog is not information — it is the noise that teaches
-    people to stop reading a gate's output, which is the same failure as a gate nobody runs.
+    people to stop reading a gate's output, which is the same failure as a gate nobody runs. Now that
+    the backlog is empty those two warnings are **errors**: the next runnable file to appear at the
+    top level is the pile reforming, not the tail of something already ticketed.
+  - It also fails on **anything at the top level that computes a path from its own nesting depth**.
+    That is the defect the second half of the split was blocked on, and it fails *silently* —
+    `parents[2]` one level down points at `Backend/` and reads the wrong file rather than raising —
+    so it earns a check rather than a sentence. Negative-tested against a file carrying both faults.
 
 ### Removed
 - **The server-side session is gone.** Every request wrote the whole generated character to
