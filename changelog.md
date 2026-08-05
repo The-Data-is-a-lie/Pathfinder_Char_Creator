@@ -18,7 +18,162 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 
 ## [Unreleased]
 
+### Fixed
+- **Sorcerers, oracles, psychics and arcanists were shipping the text `null` where a spell-slot
+  count belongs — at roughly half of all class levels.** PF1e spontaneous full casters gain each new
+  spell level one class level *later* than a prepared caster of the same tier: a sorcerer reaches
+  2nd-level spells at 4, a wizard at 3. `caster_formula` modelled only the prepared progression, so
+  `spells_per_day_attr` looped one spell level too far and read a cell the scrape had correctly left
+  blank — and these tables spell "blank" as the **string** `'null'`, not JSON null. A level-3
+  sorcerer's spells-per-day row was literally `[0, 5, 'null']`, and that string reached the payload,
+  the Foundry sheet and the web sheet. `adept` was wrong for a different reason: an NPC class with
+  its own 1/4/8/12/16 ladder, mapped onto the closest tier that existed, wrong by up to three levels
+  and handed a 6th-level row it can never reach. Both progressions are now modelled.
+  - The rule lives in the **code**, as a named constant, not derived from the tables. *Rejected
+    alternative:* reading the unlock level straight out of `spells_per_day.json`, which needs no
+    hand-maintained list and was the tempting option. It would have made
+    `validate_progression_tables.py` compare the data against itself — a scraper error would silently
+    become the character's behaviour with no second opinion. The gate's whole value is that the data
+    and the code are two independent statements of one published table. Verified across all 30
+    tables: those four lag by exactly 1 at every spell level, and no other class does.
+  - **No golden fixture moved, and that is the finding.** None of the seven covers a spontaneous
+    full caster at a divergent level, so the bug was invisible to them. The invariant is asserted
+    over the whole swept roster in `test_house_invariants.py` instead — every `spells_per_day_list`
+    entry must be a number — which also catches the next class to acquire a bespoke progression.
+    Confirmed by reverting the fix: the sweep then fails for arcanist, oracle and psychic at both
+    levels 3 and 17.
+- **The magus 5th-level spells-per-day column was one row late at high levels.** It granted 4 slots
+  at level 20 while the magus's own 6th-level column granted 5 — which no PF1e caster does. Checked
+  against Archive of Nethys: the published row is 1/2/3/3/4/4/**5/5** at class levels 13–20, and the
+  scrape had 1/2/3/3/4/4/4/4 with the 5 pushed onto the unreachable 21st row. Two cells corrected.
+  - **Left unfixed on purpose:** the same source says the magus *4th-level* column should read 3 at
+    level 12 and 5 at 18, where the scrape has 2 and 4 — the same off-by-one, in a column no
+    structural rule catches because it never inverts against its neighbours. The evidence is one
+    LLM-extracted table, and hand-editing game data on that basis is how you introduce a silent
+    wrong-character bug while fixing another. It needs a re-scrape against the source.
+  - Both exemption blocks in `validate_progression_tables.py` are **deleted**, which is what the
+    gate demanded: it fails if an allowance outlives the bug it excused. It now reports 423 columns,
+    **30/30 classes aligned** with `caster_formula` and **30/30 per-day tables free of inversion**,
+    with nothing excused.
+
+### Changed
+- **A Redis outage can no longer take the API down with it.** `flask-limiter`'s `swallow_errors`
+  defaults to **False**, and the Redis URL is resolved once at import by a single ping — so a Redis
+  that was reachable at boot and died later (a managed instance restarting, a network blip, free-tier
+  maintenance) would raise out of the storage layer on *every* rate-limited request, and
+  `/update_character_data` would return 500 until someone redeployed. The generator would have been
+  fine; the limiter would have been taking the API down with it. Now `swallow_errors=True` plus
+  `in_memory_fallback_enabled=True`, so a storage failure degrades to per-process counting and
+  characters keep generating. Verified by pointing the limiter at a dead Redis and confirming the
+  route still answers 200. This mattered only once a real Redis instance was configured — with
+  `memory://` there was nothing to fail.
+
+- **A third pipeline phase is extracted: `phase_bootstrap_identity`** — gender, region, race, name
+  and class selection now declare what they set instead of being 30 loose lines at the top of a
+  1,900-line function. Generated characters are byte-identical (7/7 goldens), and
+  `test_pipeline_phases.py` gained cases for it.
+  - Its `requires` is **empty**, and that is the correct declaration rather than a stub: it is the
+    first phase, so nothing can cross in. All its guard value is in `provides`, which is checked on
+    the way out — `region` is set *inside* `region_chooser` and `c_class` inside `chooseClass`,
+    never returned, and those invisible writes are exactly what goes missing unnoticed.
+  - **The seam is one line lower than it looked.** A phase takes the character as its first argument
+    and checks `requires` against it, so the phase cannot be the thing that *creates* the character.
+    Construction stays at the call site.
+  - **The second candidate block was measured and deliberately not extracted.** 15 locals cross out
+    of it (`flaw` alone has 14 later references), so returning them would be a 15-value tuple — the
+    same silent-miscount failure as the `export_list_dict` helpers already deleted from
+    `createACharacter.py`. The remaining phases must write to the character and declare via
+    `provides` instead; but only 5 of those 13 names are on the character today, so that work is
+    ~8 new attributes plus rewriting ~60 references, not a move. Recorded so the next pass is
+    scoped from a measurement rather than from a reading.
+
+- **`Backend/scripts/` has buckets: the 21 gates now live in `gates/`, the 11 tests in `tests/`.**
+  81 files sat under one name that told you nothing about what any of them was, and the prefix was
+  the only signal. The two runners stay at the top level because they are what you *run*, not what
+  gets run, and `golden/` did not move because `_harness.GOLDEN_DIR` owns that path. Both runners'
+  globs now point at their bucket; the counts are unchanged (21 gates, 11 tests), which is the check
+  that matters — a move that drops a script produces a *smaller passing run*, which reads as success.
+  - **Only half the split landed, deliberately.** The plan assumed the earlier harness work had made
+    this "a deletion, not a recalculation". That holds for gates and tests, which were migrated. It
+    is false for the other 43 files — the builders and one-off fixits never imported `_harness` and
+    still compute the repo root from their own nesting depth. One level down, `parents[2]` would
+    point at `Backend/` instead of the repo root and read the *wrong file* rather than raising, which
+    is precisely the silent failure the marker-based resolver exists to prevent. Moving them is
+    blocked on finishing that migration; *rejected alternative:* bumping each `parents[2]` to
+    `parents[3]`, which would have been quick and would have re-encoded directory depth in 37 files —
+    undoing the thing the resolver was written to achieve, and breaking them all again on the next move.
+  - Five gates and one test were still computing their own paths and would have broken silently:
+    four companion gates via `HERE.parents[1]`, three more via `os.path.join(HERE, '..', 'json')`,
+    and `test_golden_payload.py` — which computed its own `GOLDEN_DIR`, the very constant the harness
+    was supposed to own. All now take `REPO` / `JSON_DIR` / `BACKEND` / `GOLDEN_DIR` from `_harness`.
+  - `_harness` puts `gates/` and `tests/` on `sys.path` as well, because several gates are also
+    libraries imported across buckets (`validate_talent_conditionals.is_cost_only` has five callers,
+    one of them a test). Adding a bucket means adding it there and nowhere else.
+
 ### Added
+- **A gate for the shape of the scripts directory itself.** `gates/validate_scripts_layout.py` fails
+  on a `validate_*.py` outside `gates/` or a `test_*.py` outside `tests/`, and checks that both
+  runners' globs still match a non-empty set — a glob that silently matches nothing is the exact
+  failure `validate_all.py` exists to prevent, and a PASS over zero scripts looks like success. The
+  argument for it is this directory's own history: the naming convention was *also* only a
+  convention, and `check_racial_stats.py` went years without ever running because nothing checked
+  that it held.
+  - It reports the 43 unmoved scripts as **one counted line**, not 43 warnings. Forty-three
+    near-identical warnings about a known backlog is not information — it is the noise that teaches
+    people to stop reading a gate's output, which is the same failure as a gate nobody runs.
+
+### Removed
+- **The server-side session is gone.** Every request wrote the whole generated character to
+  `session['character_data']` and read it back on the very next line — a local variable wearing a
+  session's clothes, inherited from `app_Backup_Working.py`. None of the four routes ever read it
+  across requests, and both consumers (the FoundryVTT module and the standalone web sheet) keep the
+  payload themselves. The cost was a full serialisation of the payload to disk or Redis on every
+  request — 40 KB for a level-5 rogue, more at high level — for a 60-second lifetime nobody queried,
+  plus a `Secure; SameSite=None` cookie on every response. 87 stale session files had accumulated
+  locally. Responses now carry no `Set-Cookie` at all.
+  - **Redis stays**, and this is what it is for: rate limiting. `memory://` storage counts per
+    *worker*, so under `gunicorn -w 4` the declared 60/minute is really 240/minute. That — not
+    session storage — is the argument for provisioning an instance. *Rejected alternative:* keeping
+    the session because "sessions are standard for a Flask app". This backend is a stateless JSON
+    API; the payload's `generation_seed` already replays any character exactly, which is a cheaper
+    handle than storing the result.
+- **The production image no longer ships a Jupyter notebook stack.** `requirements-docker.txt` was a
+  byte-for-byte copy of `requirements.txt`, so the deployed container installed `ipython`,
+  `ipykernel`, `jupyter_client`, `jupyter_core`, `debugpy`, `pyzmq`, `tornado`, `traitlets`, `jedi`,
+  `parso`, `prompt-toolkit`, `stack-data`, `matplotlib-inline`, `nest-asyncio`, `comm` and `psutil`,
+  plus the scraper stack (`beautifulsoup4`, `requests` and their transitive deps) that only
+  `Backend/scripts/scrape_*.py` needs, plus four junk packages that do nothing at all (`ceiling`,
+  `floor`, `jsonify`, `flask_abort` — accidental installs, not the standard-library names they look
+  like). None of it is imported: after `import app; import main_test` and five full generations, the
+  only module that arrives lazily is pandas. **The image went from 714 MB to 602 MB.** On Render's
+  free tier the image is pulled on every cold start, which is the one place this actually costs
+  something. `requirements.txt` keeps the full set, because CI installs it to run the scrapers and
+  the gates.
+  - `waitress` is deliberately kept despite nothing importing it — `usage_counter.py`'s docstring
+    claims production serves under waitress via a `render.yaml` that does not exist in this repo,
+    and a Docker Command override in the Render dashboard isn't visible from the code. Dropping it
+    on that assumption would take the service down. The stale docstring is the bug; it is flagged in
+    `requirements-docker.txt` rather than guessed at.
+
+### Added
+- **A new gate checks what is actually inside the level progression tables, not just that they
+  exist.** Around 423 columns across four webscraped files answer "what do you get at class level
+  N?" — spells per day, spells known, power points, maneuvers. The existing caster gate only checked
+  that a class *had* a row. A single shifted cell inside one was invisible: it doesn't raise, and it
+  only reaches a golden fixture if that exact class at that exact level happens to be seeded. On a
+  character sheet it looks like someone who simply has one fewer spell slot than they should.
+  `validate_progression_tables.py` checks table length, gaps, direction, and that no caster has more
+  high-level slots than low-level ones — and cross-checks every column's unlock level against
+  `caster_formula` by *running* it, so the data and the code are two independent statements of one
+  published table rather than one number nobody recomputes.
+  - It found two real bugs on its first run, both recorded and neither fixed here, because fixing
+    either changes generated characters and this branch was a refactor: **spontaneous casters
+    (sorcerer, oracle, psychic, arcanist) ship the string `'null'` as a spells-per-day count** at
+    around half of all levels, because `caster_formula` only models the prepared-caster progression
+    and reads one spell level too far; and the **magus's 5th-level column looks shifted one row
+    late**. Both are carried as itemised exemptions that name their reason, and the gate fails if an
+    exemption is ever left behind after the bug it excuses is fixed — an allowance that can't be
+    retired is how "temporary" becomes documentation.
 - **Every regression test now runs in CI, including the golden-payload fixtures.** There were eleven
   `test_*.py` scripts in `Backend/scripts/` and CI ran exactly one of them. The expensive omission
   was `test_golden_payload.py` — seven seeded characters with every payload key diffed byte for byte,
@@ -696,13 +851,25 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     catch. `PF_FOUNDRY_DATA` overrides where it looks.
 
 ### Fixed
-- **Nothing yet — but recorded:** `test_skill_ranks.py` reports a *different number of checks on
-  every run* (3689–3696). `profession_chooser.py` draws all its randomness from the global unseeded
-  RNG while the test seeds a local `random.Random(99)`, so a conditional assertion fires a varying
-  number of times. The test has never failed; what varies is how much it checked, which is why it
-  went unnoticed. Found during the harness migration and confirmed to predate it. Left unfixed
-  deliberately — the honest fix is to thread the RNG rather than to seed the global, and that moves
-  draw order and therefore the golden fixtures. Tracked as ticket 11 on the scripts-and-phases map.
+- **`test_skill_ranks.py` checked a different number of things on every run — now it checks 4331,
+  every time.** The count moved between 3688 and 3696 because a conditional assertion fired a
+  varying number of times. The test never failed; what varied is how much it *checked*, which is why
+  nobody noticed. A regression hiding in the untaken branch would have passed most of the time.
+  - The cause was not where it was first recorded. The suspect was a local `random.Random(99)`
+    pinning only the test's own inputs — a red herring. The actual carrier was a bare `random.seed()`
+    at the end of a *different* test, which re-seeds from OS entropy in the middle of the run and
+    handed every test after it an uncontrolled stream. The global seed is now set before each test,
+    so the suite no longer depends on its own running order either.
+  - **The test now proves this itself** rather than relying on someone comparing consecutive runs:
+    two identically-seeded passes must produce identical characters and identical check counts.
+    Deliberately not a pinned expected total — a magic number would need editing every time a check
+    is added, so it would be updated reflexively and stop meaning anything.
+  - Separately, the conditional assertion now **declares its own coverage** and fails if the sample
+    never exercised it. Determinism made the coverage stable; that makes it non-zero. Two different
+    failures, both live here.
+  - The remaining architectural fix — threading a `random.Random` instance into
+    `profession_chooser.py` instead of seeding a global — still moves draw order and therefore the
+    golden fixtures, so it stays out of a refactor branch.
 
 - **The kineticist would have been handed a spellbook, and the medium two spell levels it never
   gets.** Both carried `"casting level": "mid"` in `class_data.json`, which `spells.py` branches on.

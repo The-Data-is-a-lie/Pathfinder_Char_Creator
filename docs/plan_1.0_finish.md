@@ -60,7 +60,7 @@ Grilling settled what "finish" means and what's in/out:
       fixed in `level_and_bab.py`; HP was
       rolled, Con mod floored before halving and ignored inherent/level-up Con — fixed in
       `hp_rolls.py`. Goldens regenerated in the same commit.
-- [x] **New invariant sweep test** `Backend/scripts/test_house_invariants.py`: 43 classes ×
+- [x] **New invariant sweep test** `Backend/scripts/tests/test_house_invariants.py`: 43 classes ×
       1/5/10/15/20 × 3 seeds = 645 generations, 6,450 checks, green in ~4 min (payload buff-gap
       assertions deferred to Phase 3 where the gap report gets fixed).
 
@@ -227,7 +227,7 @@ wayfinder maps — decisions before code — and each ends at a spec section in
             becomes free text (`stats.speed` is prose), and `cmb`/`cmd` and a rollable `skills` row
             join the block. Closes finish-line gate 3.
       - [x] 9. (**#35**) Companion invariants, 2026-08-03, split across two gates by what each can
-            actually see. `scripts/validate_companion_stats.py` (validators 13 → 14) owns the
+            actually see. `scripts/gates/validate_companion_stats.py` (validators 13 → 14) owns the
             arithmetic, sweeping all **392** species-level stat blocks — it is where D11's
             no-double-count ruling is enforced, and it re-fails on **447** counts if the size table is
             put back on top. `test_house_invariants.py` owns what needs a whole generated character:
@@ -244,7 +244,7 @@ wayfinder maps — decisions before code — and each ends at a spec section in
             behind the curated `tax_children` allowlist, animal flaws),
             `companion_stats.apply_modifiers` (the fold + `applied_changes`),
             `json/feats/companion_feat_changes.json`, `json/flaws/animal_flaw_effects.json`,
-            `scripts/validate_companion_feats.py` (validators 15 → 16). Module:
+            `scripts/gates/validate_companion_feats.py` (validators 15 → 16). Module:
             `scripts/companion-sections.js`. ⚠ **The `companion` golden was re-baselined** — moving
             the companion's feat roll off the global RNG shifts every later draw for that seed; the
             other six goldens did not move, which is the proof the churn is gone for good.

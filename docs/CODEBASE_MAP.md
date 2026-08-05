@@ -83,7 +83,8 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
 - `class_data/psionics/` — **GENERATED** by `scrape_psionics.py` from the Library of Metzofitz wiki
   (+ d20pfsrd for races); gated by `validate_psionics_data.py`. `psionic_classes.json` (12 classes,
   20-row tables, derived bab/hit-die/skills/saves), `psionic_powers_known.json` (20-int arrays,
-  index = level − 1 — the PoW convention, not the 21-int spell one), `psionic_power_lists.json`,
+  index = level − 1 — **the same convention as the spell tables**, see the progression-table note
+  below), `psionic_power_lists.json`,
   `psionic_powers.json` (660), `psionic_races.json` (10), `psionic_class_options.json` (9 classes'
   subsystem option lists), `psionic_name_map.json` (generated names → `pf1-psionics` pack names).
   `NOTICE.md` marks the whole subtree as Open Game Content. **Wired in** — `class_func/psionics.py`
@@ -124,7 +125,7 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   the advancement merge and every derived number (#31, landed 2026-08-03).
   - **`companion_stats.py` is the only place a companion's numbers exist.** `SIZE_GEOMETRY` and the
     merge rules live there; `SKILL_ABILITY` (skill → keying ability) is in `data.py` beside
-    `SKILL_IDS`. `scripts/validate_companion_stats.py` imports all of them — never restate one.
+    `SKILL_IDS`. `scripts/gates/validate_companion_stats.py` imports all of them — never restate one.
     The size ruling it enforces is spec §8 **D11**: the published deltas already contain the size
     package, so they apply verbatim and only the *geometry* (AC / attack / CMB / CMD / Stealth /
     space) is added, keyed off the creature's **final** size. `stats.size_change` is provenance for
@@ -133,7 +134,7 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
     a shim) and not `companion_stats.py`. It owns the prerequisite gate (`legal_for_companion`, which
     fails CLOSED on any prerequisite it cannot read), the chassis-dated slot levels behind
     `feat_labels`, feat tax via a four-attribute adapter over `feat_tax_func`, and the animal flaw
-    roll. Spec §8 **D15/D16**. Gated by `scripts/validate_companion_feats.py`.
+    roll. Spec §8 **D15/D16**. Gated by `scripts/gates/validate_companion_feats.py`.
   - **Two feat-effect files, and mixing them is a PC bug.** `feats/companion_feat_changes.json` is
     the companion's; `feats/feat_changes.json` is the PC's. The pf1 compendium already automates 12
     of the pool's feats and a PC *keeps* its compendium item's changes, so a companion effect added
@@ -154,7 +155,7 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   - **Ability values are typed by block:** `starting statistics` holds bare ints (absolute scores),
     advancement blocks hold signed strings (deltas). A bare int in an advancement block means a sign
     was lost — the defect `scripts/repair_animal_choices.py` fixed and
-    `scripts/validate_companion_data.py` gates.
+    `scripts/gates/validate_companion_data.py` gates.
   - **The size package is NOT a constant.** PF1e's size-change table scales with the transition
     (Small→Medium Str +4/Con +2; Medium→Large Str +8/Con +4; Large→Huge natural armor +3), and 97 of
     153 published size-ups disagree with even that. The per-species entry is the authority; the
@@ -172,13 +173,13 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   - `companion_archetypes.json` is **GENERATED** by `scripts/build_companion_archetypes.py` from
     archetype prose (206 archetypes across the ten grantor classes);
     `companion_archetypes_overrides.json` is hand-authored and **wins**;
-    `scripts/validate_companion_archetypes.py` gates the pair. Sign-off worksheet:
+    `scripts/gates/validate_companion_archetypes.py` gates the pair. Sign-off worksheet:
     `docs/companion_archetype_signoff.md` (regenerate with `--review`; never hand-edit it).
     - Entries carry **`effects`, a list**, as well as the single-valued `effect` primary. 33
       archetypes genuinely have two (Devolutionist forces a species *and* suppresses the size step),
       which #38's one-effect vocabulary cannot express.
   - `pf_content_companions.json` is **GENERATED** by `scripts/dump_pf_content_actors.py` (Foundry
-    must be closed — LevelDB is single-writer). `scripts/validate_companion_names.py` diffs our
+    must be closed — LevelDB is single-writer). `scripts/gates/validate_companion_names.py` diffs our
     species against it; a miss is a WARN, because degrading to a bare `npc` is legitimate (D3) but
     a *silent* miss is not.
   - `companion_grantors.json` is the **declarative grantor table** (D6) — read its `_readme` before
@@ -188,7 +189,7 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
     `util.py::first_name_for`, the master's region pool) plus a rolled `sex`, `gear: []` and the
     `GEAR_SOURCE_V1` note — all owned by `animal_companions.py`, never restated. An entry with no
     species gets `name`/`sex` of `None` and **no gear key**. `species` stays the sole `pf-content`
-    match key. Gated by `scripts/validate_companion_identity.py`, which the payload cannot yet cover
+    match key. Gated by `scripts/gates/validate_companion_identity.py`, which the payload cannot yet cover
     (`bonded_creatures` ships with #32).
     - **The resolver owns the druid's companion-vs-domain flip**, and `domain_inquisition.py` reads
       its `character.bond_outcomes` rather than comparing `domain_chance` itself. Rolling the
@@ -233,18 +234,39 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
 
 ## `Backend/scripts/` index
 
-**81 files under one name, and the name is a false category.** Until the split lands
-(`tickets: architecture/scripts-and-phases`, ticket 03) the prefix is the only signal of what a file
-*is*. Read this table first:
+**Half split, and the half that is done is enforced.** Ticket 04 moved the gates and the tests into
+their own buckets; the builders and one-offs are still flat, and that is a known backlog rather than
+an oversight — see the note below. Layout:
 
-| prefix | role | run by | count |
+```
+Backend/scripts/
+  _harness.py                      shared scaffolding: Report, read_json, path constants
+  damage_types.py  conditional_clauses.py  talent_conditional_match.py    imported, never run
+  validate_all.py  test_all.py     the two things you RUN
+  gates/     validate_*.py   (21)  <- run by validate_all.py, and CI
+  tests/     test_*.py       (11)  <- run by test_all.py, and CI
+  golden/    7 payload fixtures    <- did not move; _harness.GOLDEN_DIR owns the path
+  build_*  scrape_*  compile_*  extract_*  dump_*      (~24, STILL FLAT)
+  fix_*  repair_*  normalize_*  promote_*  prune_*  merge_*  enrich_*   (~19, STILL FLAT)
+```
+
+| bucket | role | run by | count |
 | --- | --- | --- | --- |
-| `validate_*.py` | **gate** — checks data at rest, or a resolver over stubs. Fails the build. | `validate_all.py`, and CI | 19 |
-| `test_*.py` | **regression test** — generates characters, so it is deliberately outside the validator glob | `test_all.py`, and CI | 11 |
-| `build_*`, `scrape_*`, `compile_*`, `extract_*`, `dump_*` | **generator** — writes a JSON/CSV artefact. Never hand-edit its output; edit the `*_overrides.json` and rerun. | by hand, plus one CI staleness check | ~20 |
-| `fix_*`, `repair_*`, `normalize_*`, `promote_*`, `prune_*`, `merge_*`, `enrich_*` | **one-off / manual tool** — migrations and curation passes. Many say "one-time" or "THROWAWAY" in their own docstring. | by hand | ~20 |
+| `gates/validate_*.py` | **gate** — checks data at rest, or a resolver over stubs. Fails the build. | `validate_all.py`, and CI | 21 |
+| `tests/test_*.py` | **regression test** — generates characters, so it is deliberately outside the validator glob | `test_all.py`, and CI | 11 |
+| `build_*`, `scrape_*`, `compile_*`, `extract_*`, `dump_*` | **generator** — writes a JSON/CSV artefact. Never hand-edit its output; edit the `*_overrides.json` and rerun. | by hand, plus one CI staleness check | ~24 |
+| `fix_*`, `repair_*`, `normalize_*`, `promote_*`, `prune_*`, `merge_*`, `enrich_*` | **one-off / manual tool** — migrations and curation passes. Many say "one-time" or "THROWAWAY" in their own docstring. | by hand | ~19 |
 | `_harness.py`, `validate_all.py`, `test_all.py` | **infrastructure** | — | 3 |
 | `damage_types.py`, `conditional_clauses.py`, `talent_conditional_match.py` | **shared library, not a script** — no `main()`, never run, imported by 6–7 scripts each | — | 3 |
+
+**Why `build/` and `attic/` do not exist yet.** Ticket 04 assumed ticket 01 had made the move "a
+deletion, not a recalculation". That is true of the gates and tests, which ticket 01 migrated; it is
+false of the other 43 files, which never imported `_harness` and still compute the repo root from
+their own nesting depth (`Path(__file__).resolve().parents[2]`). One level down, those resolve
+**silently wrong** — `parents[2]` would point at `Backend/` instead of the repo root, and a
+wrong-but-existing path reads the wrong file rather than raising. Moving them is blocked on
+finishing the `_harness` migration for those 43 files, and `gates/validate_scripts_layout.py` counts
+them so the backlog stays visible instead of being rediscovered.
 
 Two traps this table exists to flag. **Several gates are also libraries**:
 `validate_quality_effects.py` exports `PF1_CHANGE_TARGETS` / `valid_target` / `check_brackets` and
@@ -257,8 +279,13 @@ and `_spheres_generator/` sub-toolkits.
 `finish`), which also owns `read_json` and the path constants `REPO` / `BACKEND` / `JSON_DIR` /
 `DATA_DIR` / `SCRIPTS` / `GOLDEN_DIR`. Those are resolved by searching upward for a directory with
 both `CLAUDE.md` and `.git` — **not** by counting parents — so a script does not know its own depth
-and does not break when it moves. Importing `_harness` also puts `Backend/` and `Backend/scripts/`
-on `sys.path`. A new gate should open with its first rule, not with path math.
+and does not break when it moves. Importing `_harness` also puts `Backend/`, `Backend/scripts/`,
+`gates/` and `tests/` on `sys.path` — the last two because several gates are also libraries and get
+imported across buckets. A new gate should open with its first rule, not with path math.
+
+The one line where depth still legitimately appears is the bootstrap that finds `_harness` itself:
+`sys.path.insert(0, str(Path(__file__).resolve().parents[1]))`. It should appear **exactly once per
+file**; anything else computing a root is a bug waiting for the next move.
 
 - `build_*.py` → GENERATE the `*_changes.json` / effects files (item, feat, spell, class
   feature, maneuver, stance, talent). Never hand-edit generated output; edit the
@@ -387,6 +414,20 @@ on `sys.path`. A new gate should open with its first rule, not with path math.
   - `test_all.py` **trims** the full-roster sweeps by default (`TRIMMED`, currently
     `test_house_invariants --levels 1,20 --seeds 1`) and prints a `NOTE:` saying so. `--full` before
     a release.
+- `validate_progression_tables.py` → the **contents** of every per-level table (~423 columns across
+  `spells_per_day.json`, `spells_known.json`, `psionic_powers_known.json`,
+  `path_of_war_maneuvers_known.json`). `validate_caster_data.py` checks a caster *has* a row; this
+  checks what is in it. Cross-checks each column's unlock level by *running* `spells.caster_formula`
+  rather than restating the tier formulas.
+  - **All four table families are read the same way: `table[min(capped_level, 20) - 1]`**
+    (`spells.py:105`, `:372`; `psionics.py:136`, `:333`; `path_of_war.py:186`). `capped_level` is
+    `min(lvl, 20)` (`level_and_bab.py:53`), so index 19 is the highest any reader can produce.
+  - ⚠ **The 21-vs-20 array split is NOT a convention** — this file used to say it was. The scrapers
+    emit levels 1–21; a 21st row is a level a 20-level class cannot reach, so 20-int and 21-int
+    arrays behave identically everywhere. Do not "normalise" one to the other, and do not read the
+    21st cell.
+  - Carries two itemised exemptions (`KNOWN_MISALIGNED`, `KNOWN_INVERTED`) for live bugs it found
+    that would change generated output. The gate fails if an exemption outlives its bug.
 - `audit_class_choice_descriptions.py` → flags choice-pool entries with empty/trivial text.
 - `fix_*.py`, `scrape_*.py`, `_smoke_*.py`, `compile_feats_new.py` — one-off converters,
   scrapers, smoke tests.

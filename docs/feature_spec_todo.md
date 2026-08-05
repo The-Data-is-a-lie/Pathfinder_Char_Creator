@@ -241,7 +241,7 @@ review/edit pop-up with persistent per-weapon overrides. See
 
 Curation batch 1 (2026-07-18): **239 curated rider spells** (83 hand-authored gold classics +
 137 vetted drafts + 19 pre-existing B), priority = NPC-learnable ∩ `every_spell.json`, widest
-class lists / lowest level first. Validator: `Backend/scripts/validate_spell_conditionals.py`.
+class lists / lowest level first. Validator: `Backend/scripts/gates/validate_spell_conditionals.py`.
 
 **Remaining (batch 2+):**
 - [ ] Curate the rest of the gated worklist (~355 more compendium-present draft entries; the
@@ -337,7 +337,7 @@ summoner NPC is still missing its entire class identity.
   **The house rules are silent here.** `oks/pathfinder/house-rules/` mentions animals twice — Handle
   Animal's stat swap and Mounted Combat in the feat-tax list — and says nothing about companion gold,
   gear or ownership. This decision *is* the house rule; do not go re-read those pages expecting one.
-  Enforced by `Backend/scripts/validate_companion_identity.py`, because `bonded_creatures` is not in
+  Enforced by `Backend/scripts/gates/validate_companion_identity.py`, because `bonded_creatures` is not in
   the payload until #32 and neither the goldens nor `test_house_invariants.py` can see these fields
   yet.
 - **D10 — the two renderers take different shapes, and neither gets a composed title from us**
@@ -370,7 +370,7 @@ summoner NPC is still missing its entire class identity.
   gets its +1 too. The `size_change` record on a stat block is **provenance, not an instruction**: its
   values are already totalled into `ac`, `attacks[].atk`, `cmb`, `cmd` and `skills`, and a renderer
   that re-applies it double-counts. **Reach is deliberately absent** (tall vs long is not in the data;
-  `space` is emitted). Enforced by `Backend/scripts/validate_companion_stats.py`.
+  `space` is emitted). Enforced by `Backend/scripts/gates/validate_companion_stats.py`.
   *Rejected:* stripping the table out of the deltas (27 rows end with a negative Str residue, so the
   un-buffed body never existed); no size buff at all (the AC/attack/CMB/CMD/Stealth modifiers would be
   missing from the sheet entirely).
@@ -580,19 +580,19 @@ descriptive text** for the eidolon.
 
 1. `Backend/scripts/repair_animal_choices.py` — negate bare-int `dex` on size-up rows, normalise the
    `ability_scores` / `special_attacks` key variants, hand-fix the three bled values.
-2. `Backend/scripts/validate_companion_data.py` — assert every size-up row matches the PF1e package
+2. `Backend/scripts/gates/validate_companion_data.py` — assert every size-up row matches the PF1e package
    and that no bare-int ability value survives.
 3. `Backend/scripts/dump_pf_content_actors.mjs` → `Backend/json/pf_content_companions.json`, plus
-   `Backend/scripts/validate_companion_names.py` gating species names against it (D3).
+   `Backend/scripts/gates/validate_companion_names.py` gating species names against it (D3).
 4. `Backend/json/companion_grantors.json` + the resolver in `animal_companions.py`.
 5. Advancement merge + stat-block math; fix `animal_feats` to read the chassis row's `feats` count.
 6. Payload: emit `bonded_creatures`, keep `animal_companion` as the alias.
 7. Foundry module: loop `Actor.create` in `createCharacter.js`, clone from `pf-content`, patch the
    numbers, degrade on a miss.
 8. Web sheet: consume `bonded_creatures`.
-9. Extend `Backend/scripts/test_house_invariants.py` with companion invariants.
+9. Extend `Backend/scripts/tests/test_house_invariants.py` with companion invariants.
 10. Canonicalise the feat pool + author `companion_feat_changes.json` +
-    `Backend/scripts/validate_companion_feats.py` (D14/D15).
+    `Backend/scripts/gates/validate_companion_feats.py` (D14/D15).
 11. `class_func/companion_feats.py` — gated selection, dated slots, `feat_labels`, feat tax behind
     the `tax_children` allowlist, and the animal flaw roll (D15/D16).
 12. `companion_stats.apply_modifiers` — fold the feats and flaws, emit `applied_changes` /
@@ -834,7 +834,7 @@ module's `CLASS_FEATURE_BUCKETS`. The bucket is `medium_spirit`, not `spirit`, b
 already owns `spirits`. Registration is not cosmetic: for the kineticist those buckets are the whole
 sheet.
 
-**Gates.** `Backend/scripts/validate_occult_data.py` (validator 15) owns the data — pool shape, no
+**Gates.** `Backend/scripts/gates/validate_occult_data.py` (validator 15) owns the data — pool shape, no
 double-shelving, every `data.amount` schedule naming a real dataset, the caster/non-caster split, and
 the **cross-source check** that each schedule produces the maximum pick count the class's own feature
 prose promises (seven implements by 18th, eleven tricks by 20th). `test_house_invariants.py` owns the
@@ -891,7 +891,7 @@ the only way to roll an occultist was to pick Random. The roster existed **three
 order, grouped) and `CLASS_ITEM_ORDER` (every_class.json order). Two exports because the two orders
 are different contracts: the first drives the dropdown, the second is what `collectItems()` slices
 on, where a name out of place makes one class swallow the next one's features.
-`Backend/scripts/validate_class_roster.py` is the gate; `html_dialog.js` is deleted.
+`Backend/scripts/gates/validate_class_roster.py` is the gate; `html_dialog.js` is deleted.
 
 **Groups are derived, not listed twice.** `data.CLASS_GROUPS` names five families; `base` carries no
 roster of its own and is *the remainder* of `class_data.json`, so a new Paizo class stays a one-key

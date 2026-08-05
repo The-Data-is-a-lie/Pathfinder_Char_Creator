@@ -39,11 +39,11 @@ Highest-value, most generation-relevant first:
 1. ~~**Wire homebrew feats**~~ — DONE 2026-07-30: `feats.py::metzofitz_feat_frame` joins the
    General/Combat rows of `data/Metzofitz_Feats.csv` into `generic_feat_chooser`'s pool behind the
    homebrew flag (AoN wins name collisions; descriptions via `metzofitz_description`); swept by
-   `scripts/test_house_invariants.py`.
+   `scripts/tests/test_house_invariants.py`.
 2. ~~**Homebrew feat counts**~~ — DONE 2026-07-30: +2 creation feats (folded into the normal
    bucket) and the diminishing flaw-feat schedule (first 2 flaws +1 each, 4th grants the 3rd;
    0 flaws → 0; behind `misc_homebrew_rules`) in `level_and_bab.py::update_level`; swept by
-   `scripts/test_house_invariants.py`.
+   `scripts/tests/test_house_invariants.py`.
 3. **Skill alternate abilities** — allowed-ability sets per skill plus a chooser in `skill_ranks.py`.
 4. ~~**Skill rank changes**~~ — DONE 2026-07-30: 2→4 rank floor (behind `misc_homebrew_rules`),
    3-ranks-per-level cap, +2/level background-only ranks in `skill_ranks.py` (the mental-ability
