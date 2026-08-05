@@ -21,25 +21,31 @@ WHAT IT CHECKS (ticket 03, point 5)
    -- a glob that silently matches nothing is the exact failure `validate_all.py` exists to prevent,
    and a passing run over zero scripts reads like success.
 
-DELIBERATELY NOT CHECKED: `build/` and `attic/` do not exist yet. Ticket 04 was executed for
-`gates/` and `tests/` only, because the other 43 scripts still compute their own repo roots from
-their nesting depth (`parents[2]`) and would resolve SILENTLY WRONG one level down rather than
-raising. Finishing ticket 01's harness migration for those files is the prerequisite; until then
-this gate must not demand a layout the repo has not adopted, or it becomes a failing gate people
-learn to skip.
+5. Nothing at the top level computes its own repo root. All four buckets exist now, so the top level
+   is meant to be exactly "the shared vocabulary, plus the two entry points" -- and the thing that
+   made the second half of ticket 04 dangerous was 43 files deriving REPO from their own nesting
+   depth, which resolves SILENTLY WRONG one level down instead of raising. A new top-level file that
+   reintroduces `parents[N]` is the start of that backlog reforming, so it fails here.
 """
 import ast
+import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from _harness import GATES, SCRIPTS, TESTS, Report   # noqa: E402
+from _harness import ATTIC, BUILD, GATES, SCRIPTS, TESTS, Report   # noqa: E402
 
 REPORT = Report('validate_scripts_layout')
 
 RUNNERS = {'validate_all.py', 'test_all.py'}
-# Buckets that exist today. `build/` and `attic/` join this list when ticket 04's second half lands.
+# All four buckets, as of ticket 04's second half. Only the two with a naming rule are glob-checked;
+# build/ and attic/ hold whatever their names say and have no prefix to assert.
 BUCKETS = {'gates': GATES, 'tests': TESTS}
+POPULATED = {'gates': GATES, 'tests': TESTS, 'build': BUILD, 'attic': ATTIC}
+
+# The depth math ticket 01 removed and ticket 04's second half finished removing. `_harness.py` is
+# the one file allowed to compute it -- it is what everything else imports instead.
+OWN_REPO_ROOT = re.compile(r'parents\[\d\]|os\.path\.dirname\(os\.path\.dirname\(')
 
 
 def top_level_modules():
@@ -83,48 +89,49 @@ def main():
         if name.startswith('test_') and parent != 'tests':
             REPORT.error(f'{path.relative_to(SCRIPTS)}: a test_*.py belongs in tests/')
 
-    # 2 + 3. The top level is meant to be "the shared vocabulary, plus the two entry points".
-    # It is not that yet: build/ and attic/ have not been split out, so ~43 builders and one-offs
-    # legitimately still live there.
-    #
-    # Reported as ONE counted line rather than one warning per file, deliberately. Forty-three
-    # near-identical warnings on a known, ticketed backlog is not information -- it is the noise
-    # that teaches people to stop reading a gate's output, which is the same failure as a gate
-    # nobody runs. The count is what changes when the backlog moves; the names are in the ticket.
+    # 2 + 3. The top level is "the shared vocabulary, plus the two entry points", and as of ticket
+    # 04's second half it actually is that. These were warnings while 43 files were queued to move;
+    # now that the queue is empty they are errors, because the next file to land here would be the
+    # start of the pile reforming.
     imported = imported_names()
-    runnable, orphans = [], []
     for path in top_level_modules():
         name = path.name
         if name in RUNNERS or name == '_harness.py':
             continue
         if defines_main(path):
-            runnable.append(name)
+            REPORT.error(f'{name}: defines main() at the top level -- a runnable script belongs in '
+                         f'gates/, tests/, build/ or attic/, not in the library layer')
         elif path.stem not in imported:
-            orphans.append(name)
+            REPORT.error(f'{name}: no importer and no main() -- an unfiled script or a dead library')
 
-    if runnable:
-        REPORT.warn(f'{len(runnable)} top-level script(s) define main() and await ticket 04\'s '
-                    f'second half (build/ + attic/); they still compute their own repo roots, so '
-                    f'moving them is blocked on finishing the _harness migration. '
-                    f'e.g. {", ".join(sorted(runnable)[:3])}')
-    if orphans:
-        REPORT.warn(f'{len(orphans)} top-level module(s) have no importer and no main() -- '
-                    f'unfiled or dead: {", ".join(sorted(orphans))}')
+    # 5. Nobody at the top level recomputes the repo root. Depth math is what made the 43-file move
+    # dangerous, and it fails quietly rather than loudly, so it gets a check rather than a comment.
+    for path in top_level_modules():
+        if path.name == '_harness.py':
+            continue
+        for number, line in enumerate(path.read_text(encoding='utf-8', errors='replace').splitlines(), 1):
+            if OWN_REPO_ROOT.search(line) and 'noqa: depth' not in line:
+                REPORT.error(f'{path.name}:{number}: computes a path from its own nesting depth -- '
+                             f'import REPO/BACKEND/JSON_DIR/GOLDEN_DIR from _harness instead')
 
     # 4. The runners' globs still find something. This is the check that would have caught a move
     # that quietly emptied a bucket, which reads as a smaller PASSING run.
-    for label, directory in BUCKETS.items():
-        prefix = 'validate_' if label == 'gates' else 'test_'
+    for label, directory in POPULATED.items():
         if not directory.is_dir():
             REPORT.error(f'{label}/ does not exist')
             continue
-        found = [p for p in directory.glob(f'{prefix}*.py')]
-        REPORT.check(found, f'{label}/: glob {prefix}*.py matched nothing -- the runner would '
-                            f'report a PASS over zero scripts')
+        if label in BUCKETS:
+            prefix = 'validate_' if label == 'gates' else 'test_'
+            found = [p for p in directory.glob(f'{prefix}*.py')]
+            REPORT.check(found, f'{label}/: glob {prefix}*.py matched nothing -- the runner would '
+                                f'report a PASS over zero scripts')
+        else:
+            REPORT.check(list(directory.glob('*.py')),
+                         f'{label}/: empty -- an empty bucket is a move that lost its files')
 
-    n_gates = len(list(GATES.glob('validate_*.py'))) if GATES.is_dir() else 0
-    n_tests = len(list(TESTS.glob('test_*.py'))) if TESTS.is_dir() else 0
-    return REPORT.finish(f'layout OK -- {n_gates} gate(s), {n_tests} test(s), '
+    counts = ', '.join(f'{len(list(d.glob("*.py")))} in {label}/'
+                       for label, d in POPULATED.items() if d.is_dir())
+    return REPORT.finish(f'layout OK -- {counts}, '
                          f'{len(top_level_modules())} top-level module(s)')
 
 

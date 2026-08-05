@@ -38,8 +38,8 @@ Talent spell-point costs now carry the **real** count (the seed's hardcoded `[[1
 | `<module>/…/combat_talent_conditionals.json` | **PER-ROLL** Might talent conditionals `{Sphere:{Talent:{modifiers,rider}}}` | `addSphereTalentConditionals()` → weapon attack toggles |
 | `<module>/…/magic_talent_conditionals.json` | **PER-ROLL** Power talent conditionals (Destruction on the blast; others on the weapon) | `addSphereTalentConditionals()` |
 
-Authoring/curation lives in the gitignored `Backend/scripts/_spheres_generator/`; the draft seeds +
-worklist slicer is `Backend/scripts/build_talent_conditionals.py`; `promote_talents_to_module.py`
+Authoring/curation lives in the gitignored `Backend/scripts/build/_spheres_generator/`; the draft seeds +
+worklist slicer is `Backend/scripts/build/build_talent_conditionals.py`; `promote_talents_to_module.py`
 merges the curated per-sphere files into the three files above.
 
 ## What becomes a conditional (the coverage rule)

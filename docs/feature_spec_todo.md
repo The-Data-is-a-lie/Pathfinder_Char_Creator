@@ -16,7 +16,7 @@
 ## 1. Path of War — ✅ IMPLEMENTED (base classes + martial paths)
 **Current state:** wired into generation and export. The six base PoW classes (`stalker, warlord,
 warder, harbinger, mystic, zealot`) generate end-to-end and are **back in the random class pool**
-(entries built into `Backend/json/class_data.json` by `Backend/scripts/build_pow_class_data.py`);
+(entries built into `Backend/json/class_data.json` by `Backend/scripts/build/build_pow_class_data.py`);
 `Backend/utils/class_func/path_of_war.py` selects disciplines (via `select_disciplines()`),
 maneuvers, stances, and readied sets.
 
@@ -62,7 +62,7 @@ Training characters get `system.maneuverProgression = {archetype, regular, initi
 initiation_stat}` on the class item + the `flags['pf1-pow'].maneuverAttr` actor flag (initiator
 classes untouched — every_class.json already carries theirs). Each stance also becomes an
 inactive temp buff under a "____ Path of War ____" buff divider; mechanical changes from
-`stance_changes.json` (curated via `Backend/scripts/build_stance_changes.py`, `@pow.initLevel`
+`stance_changes.json` (curated via `Backend/scripts/build/build_stance_changes.py`, `@pow.initLevel`
 scaling with `ifelse()/gte()`), description-only otherwise. The PoW tab's `sortManeuvers` helper
 is overridden (discipline → Strike/Boost/Counter/Stance → level inside each level section). With
 pf1-pow disabled, the legacy "____ Path of War ____" feat-item section is the fallback.
@@ -80,7 +80,7 @@ main weapon's attack action** (main weapon = the `weapon_name` export), named wi
 `(Strike)`/`(Boost)`/`(Counter)` prefix as its maneuver item, **default off** — toggled per-roll
 from the attack dialog (e.g. "(Strike) Sting of the Rattler" → +1d4 damage). `formula` keeps real
 dice (`2d6`), unlike buff changes which collapse to a flat maximized number. Data:
-`Backend/scripts/build_maneuver_changes.py` (manual tool) drafts modifiers from
+`Backend/scripts/build/build_maneuver_changes.py` (manual tool) drafts modifiers from
 `Martial_Disciplines.json` Descriptions (conservative damage-dice / attack-bonus regexes) →
 `maneuver_changes.draft.json`; the curated high-confidence subset lives in the Foundry module's
 `templates/character_sheet_folder/maneuver_changes.json` and is attached by
@@ -96,7 +96,7 @@ skill-replaces-attack) have no conditional — their pf1-pow item + description 
 War block (feat-slot reservation) and exported as `magic_talent_items`, `combat_talent_items`,
 `sphere_feats`, `sphere_feat_tax`, `sphere_mana_pool`, `spheres_chosen`, `sphere_counts`,
 `casting_tradition`, `sphere_drawbacks`, `sphere_boons`, `sphere_traits`. Data is extracted from the
-FoundryVTT `pf1spheres` compendium by `Backend/scripts/extract_spheres_talents.py`
+FoundryVTT `pf1spheres` compendium by `Backend/scripts/build/extract_spheres_talents.py`
 (`spheres_of_power.json`, `spheres_of_might_enriched.json`, `sphere_feats.json`, `advanced_talents.json`,
 plus harvested `spheres_traditions.json`). Still connects to
 [homebrew_rules.md §1](homebrew_rules.md) (proficiency → Martial Tradition trade at
@@ -129,9 +129,9 @@ attack action (Might + non-Destruction Power) or on a synthesized **Destructive 
 (Destruction), toggled per-roll like maneuvers. Clean on-hit damage/attack numbers are structured
 `modifiers[]` (auto source-labeled); saves/DCs/conditions/durations/bleed ride the conditional NAME
 with `[[ ]]` inline rolls. See [spheres_conditional_decision_rules.md](spheres_conditional_decision_rules.md).
-- **Draft + worklist:** `Backend/scripts/build_talent_conditionals.py` (regex seeds + `--dump-worklist`
+- **Draft + worklist:** `Backend/scripts/build/build_talent_conditionals.py` (regex seeds + `--dump-worklist`
   per-sphere slices).
-- **Curation:** gitignored `Backend/scripts/_spheres_generator/` (per-sphere `curated_might/`,
+- **Curation:** gitignored `Backend/scripts/build/_spheres_generator/` (per-sphere `curated_might/`,
   `curated_power/` files; `promote_talents_to_module.py` merges + validates them).
 - **Module data:** `<module>/…/combat_talent_conditionals.json` + `magic_talent_conditionals.json`
   (nested `{Sphere:{Talent:{modifiers,rider}}}`); attached by `addSphereTalentConditionals()` /
@@ -226,7 +226,7 @@ review/edit pop-up with persistent per-weapon overrides. See
 [spheres_conditional_decision_rules.md](spheres_conditional_decision_rules.md#the-six-detail-labeled-clause-format-2026-07-20).
 
 **Status — ✅ Buckets A/B/C live end-to-end (2026-07-18).**
-`Backend/scripts/build_spell_conditionals.py` classifies every spell in `data/spells.csv` into:
+`Backend/scripts/build/build_spell_conditionals.py` classifies every spell in `data/spells.csv` into:
 - **A** — attack/damage buffs → `spell_changes.json` (120 curated, fully covers the draft pool)
   → default-off toggles on the main weapon (`addSpellConditionals` / the palette's spell-buff
   weapon).
@@ -578,7 +578,7 @@ descriptive text** for the eidolon.
 
 ### Build slices (dependency order — next session, not the spec session)
 
-1. `Backend/scripts/repair_animal_choices.py` — negate bare-int `dex` on size-up rows, normalise the
+1. `Backend/scripts/attic/repair_animal_choices.py` — negate bare-int `dex` on size-up rows, normalise the
    `ability_scores` / `special_attacks` key variants, hand-fix the three bled values.
 2. `Backend/scripts/gates/validate_companion_data.py` — assert every size-up row matches the PF1e package
    and that no bare-int ability value survives.
@@ -628,7 +628,7 @@ mechanics are scraped into `Backend/json/` while a third-party Foundry module re
 **Sources and the split (locked):**
 - The **[Library of Metzofitz wiki](https://libraryofmetzofitz.fandom.com/wiki/Psionic_Classes) is
   the source of truth for mechanics** — same authority as `data/Metzofitz_Feats.csv`. Scraped by
-  `Backend/scripts/scrape_psionics.py` (via `api.php`; plain `/wiki/` hits Cloudflare) into
+  `Backend/scripts/build/scrape_psionics.py` (via `api.php`; plain `/wiki/` hits Cloudflare) into
   `Backend/json/class_data/psionics/` — 12 classes, 615 powers, 12 power lists, 10 races.
 - **[`pf1-psionics`](https://github.com/SoxMax/pf1-psionics) is adopted as the render target, not a
   data source.** We do not build our own module. Its *powers* are clean, but **all twelve of its
@@ -643,7 +643,7 @@ still carries them as finished numbers, exactly as §1 emits `initiator_level` a
 pf1-pow render items. Rationale: the payload is the API contract, the standalone web sheet has no
 game system to compute anything, and `test_house_invariants.py` needs something to assert on. The
 two agree rather than fight because the PP tables are identical.
-- **Class items:** `Backend/scripts/build_every_class.mjs` harvests the twelve `pf1-psionics` class
+- **Class items:** `Backend/scripts/build/build_every_class.mjs` harvests the twelve `pf1-psionics` class
   items into `every_class.json` (as PoW classes were harvested from pf1-pow) and **patches
   `system.bab` / `hd` / `skillsPerLevel` from `class_data.json`** during harvest. Keeping the
   module's own item
@@ -723,7 +723,7 @@ powers known), and the **soulknife** (neither) — the payload models all three.
 
 **Name reconciliation (ticket 10).** The module attaches by name match and **silently drops** an
 unrecognised name — the failure mode that already bit spell conditionals. Two independent defences:
-`Backend/scripts/reconcile_psionics_names.py` reads the module's LevelDB packs and emits
+`Backend/scripts/build/reconcile_psionics_names.py` reads the module's LevelDB packs and emits
 `psionic_name_map.json`, and `validate_psionics_data.py` **fails on any unmapped name**; separately
 the module normalises apostrophes and case at attach time. The surface is larger than it looks — the
 module's *classes* pack holds **419 items**, because every class feature ships as its own named item,
@@ -777,7 +777,7 @@ column per caster. What did not exist anywhere was the **selectable option pools
 
 **Sources (ticket 04) — compendium-first, and it wins here.**
 - The option pools are **harvested from the installed Foundry compendia** by
-  `Backend/scripts/build_occult_class_data.py` into `Backend/json/class_data/<class>.json`, in the
+  `Backend/scripts/build/build_occult_class_data.py` into `Backend/json/class_data/<class>.json`, in the
   `{dataset: {name: description}}` shape `generic_class_option_chooser` already consumes. **449
   options across the six.** Both packs are required: `pf1.class-abilities` carries most of it, but
   the occultist's eight implement schools and the spiritualist's phantom emotional foci exist only

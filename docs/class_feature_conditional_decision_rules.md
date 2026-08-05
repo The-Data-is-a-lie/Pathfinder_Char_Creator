@@ -14,7 +14,7 @@ are — see [`pow_conditional_decision_rules.md`](pow_conditional_decision_rules
   `Backend/scripts/conditional_clauses.py`.
 
 Candidates are sliced into worklists by
-[`Backend/scripts/build_conditional_candidates.py`](../Backend/scripts/build_conditional_candidates.py);
+[`Backend/scripts/build/build_conditional_candidates.py`](../Backend/scripts/build/build_conditional_candidates.py);
 the readable list is [`conditional_candidates.md`](conditional_candidates.md).
 
 ## What becomes a conditional

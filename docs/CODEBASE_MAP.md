@@ -57,8 +57,8 @@ Choosers live in `Backend/utils/class_func/generic_func.py`; calls are grouped i
 | mercy / cruelty / ki_powers | `generic_multi_chooser` (level-keyed) | paladin, antipaladin, monk .json |
 
 Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name()` in
-`Backend/scripts/build_class_feature_changes.py`. Audit for missing descriptions:
-`Backend/scripts/audit_class_choice_descriptions.py`.
+`Backend/scripts/build/build_class_feature_changes.py`. Audit for missing descriptions:
+`Backend/scripts/build/audit_class_choice_descriptions.py`.
 
 **Gotchas**
 - `character.chooseable` = satisfied-prereq name pool; `character.chooseable_talents`
@@ -234,9 +234,8 @@ class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_
 
 ## `Backend/scripts/` index
 
-**Half split, and the half that is done is enforced.** Ticket 04 moved the gates and the tests into
-their own buckets; the builders and one-offs are still flat, and that is a known backlog rather than
-an oversight — see the note below. Layout:
+**Split, and enforced.** All four buckets exist and `gates/validate_scripts_layout.py` fails if the
+shape drifts. Layout:
 
 ```
 Backend/scripts/
@@ -245,47 +244,59 @@ Backend/scripts/
   validate_all.py  test_all.py     the two things you RUN
   gates/     validate_*.py   (21)  <- run by validate_all.py, and CI
   tests/     test_*.py       (11)  <- run by test_all.py, and CI
+  build/     34  <- anything you run to PRODUCE or MAINTAIN generated/curated data,
+                   plus the _pow_generator/ and _spheres_generator/ sub-toolkits
+  attic/      9  <- one-off fixits and migrations. Kept for the record, NOT maintained.
   golden/    7 payload fixtures    <- did not move; _harness.GOLDEN_DIR owns the path
-  build_*  scrape_*  compile_*  extract_*  dump_*      (~24, STILL FLAT)
-  fix_*  repair_*  normalize_*  promote_*  prune_*  merge_*  enrich_*   (~19, STILL FLAT)
 ```
 
 | bucket | role | run by | count |
 | --- | --- | --- | --- |
 | `gates/validate_*.py` | **gate** — checks data at rest, or a resolver over stubs. Fails the build. | `validate_all.py`, and CI | 21 |
 | `tests/test_*.py` | **regression test** — generates characters, so it is deliberately outside the validator glob | `test_all.py`, and CI | 11 |
-| `build_*`, `scrape_*`, `compile_*`, `extract_*`, `dump_*` | **generator** — writes a JSON/CSV artefact. Never hand-edit its output; edit the `*_overrides.json` and rerun. | by hand, plus one CI staleness check | ~24 |
-| `fix_*`, `repair_*`, `normalize_*`, `promote_*`, `prune_*`, `merge_*`, `enrich_*` | **one-off / manual tool** — migrations and curation passes. Many say "one-time" or "THROWAWAY" in their own docstring. | by hand | ~19 |
+| `build/` | **produces or maintains data** — `build_*` `scrape_*` `compile_*` `extract_*` `dump_*` write an artefact; the `promote_*` / `prune_*` / `enrich_*` / `merge_spell_riders` chain curates the conditional data; `audit_*` / `report_*` / `sweep_*` measure it. Never hand-edit generated output; edit the `*_overrides.json` and rerun. | by hand, plus one CI staleness check | 34 |
+| `attic/` | **one-off fixit or migration** — `fix_*`, `repair_*`, `normalize_*`, the smoke harnesses. Several say "one-time" or "THROWAWAY" in their own docstring, and **nobody has verified which still run**. | by hand, rarely | 9 |
 | `_harness.py`, `validate_all.py`, `test_all.py` | **infrastructure** | — | 3 |
 | `damage_types.py`, `conditional_clauses.py`, `talent_conditional_match.py` | **shared library, not a script** — no `main()`, never run, imported by 6–7 scripts each | — | 3 |
 
-**Why `build/` and `attic/` do not exist yet.** Ticket 04 assumed ticket 01 had made the move "a
-deletion, not a recalculation". That is true of the gates and tests, which ticket 01 migrated; it is
-false of the other 43 files, which never imported `_harness` and still compute the repo root from
-their own nesting depth (`Path(__file__).resolve().parents[2]`). One level down, those resolve
-**silently wrong** — `parents[2]` would point at `Backend/` instead of the repo root, and a
-wrong-but-existing path reads the wrong file rather than raising. Moving them is blocked on
-finishing the `_harness` migration for those 43 files, and `gates/validate_scripts_layout.py` counts
-them so the backlog stays visible instead of being rediscovered.
+**Where the `build/` ÷ `attic/` line actually falls.** Ticket 03 named the buckets by prefix, which
+left ten scripts in neither: the conditional-curation chain and the audits are run repeatedly and
+maintained, so filing them under "kept for the record, not maintained" would have been a lie about
+them. `build/` was widened to *produces or maintains data*; `attic/` holds only the self-described
+one-offs. The dead-vs-dormant rule still governs what eventually leaves the attic: **a script is
+dead when the file it reads or writes no longer exists** — checkable, rather than remembered.
+
+**The buckets are mutually importable, and that is deliberate.** `_harness` puts all four on
+`sys.path`, because scripts here are also libraries: `validate_quality_effects` exports to three
+gates, `validate_talent_conditionals.is_cost_only` to five callers, `build_item_changes` to two
+builders, `reconcile_psionics_names` to four. One edge crosses into the attic —
+`build/build_companion_archetypes.py` imports `attic/repair_animal_choices` — which is the concrete
+reason the attic is not yet archaeology. Adding a bucket means adding it to `_harness` and nowhere
+else.
 
 Two traps this table exists to flag. **Several gates are also libraries**:
 `validate_quality_effects.py` exports `PF1_CHANGE_TARGETS` / `valid_target` / `check_brackets` and
 its `errors` accumulator to three other gates, and `validate_talent_conditionals.is_cost_only` is
 imported by five scripts — changing those signatures ripples. And **non-code lives here too**:
-`golden/` (7 fixtures), `_conditional_candidates/`, `_spheres_scratch/`, plus the `_pow_generator/`
-and `_spheres_generator/` sub-toolkits.
+`golden/` (7 fixtures), `_conditional_candidates/` and `_spheres_scratch/` at the top level, plus
+the `build/_pow_generator/` and `build/_spheres_generator/` sub-toolkits and the two `.mjs` Foundry
+pack dumpers in `build/`.
 
 **Every gate routes its verdict through `_harness.Report`** (`check` / `error` / `warn` / `skip` /
 `finish`), which also owns `read_json` and the path constants `REPO` / `BACKEND` / `JSON_DIR` /
 `DATA_DIR` / `SCRIPTS` / `GOLDEN_DIR`. Those are resolved by searching upward for a directory with
 both `CLAUDE.md` and `.git` — **not** by counting parents — so a script does not know its own depth
-and does not break when it moves. Importing `_harness` also puts `Backend/`, `Backend/scripts/`,
-`gates/` and `tests/` on `sys.path` — the last two because several gates are also libraries and get
-imported across buckets. A new gate should open with its first rule, not with path math.
+and does not break when it moves. Importing `_harness` also puts `Backend/`, `Backend/scripts/` and
+all four buckets on `sys.path`. A new gate should open with its first rule, not with path math.
 
 The one line where depth still legitimately appears is the bootstrap that finds `_harness` itself:
-`sys.path.insert(0, str(Path(__file__).resolve().parents[1]))`. It should appear **exactly once per
-file**; anything else computing a root is a bug waiting for the next move.
+`sys.path.insert(0, str(Path(__file__).resolve().parents[1]))` — `parents[2]` from inside a
+sub-toolkit. It should appear **exactly once per file**, and `validate_scripts_layout.py` now fails
+on anything at the top level that computes a root any other way. That check exists because this
+failure is silent: when the sub-toolkits moved one level deeper, `build_pow_template_actor`'s own
+`parents[2]` quietly became `Backend/` instead of the repo root and doubled `Backend/Backend/` into
+fourteen data paths. It was caught by capturing every script's path constants before and after the
+move and diffing them — not by reading the diff.
 
 - `build_*.py` → GENERATE the `*_changes.json` / effects files (item, feat, spell, class
   feature, maneuver, stance, talent). Never hand-edit generated output; edit the

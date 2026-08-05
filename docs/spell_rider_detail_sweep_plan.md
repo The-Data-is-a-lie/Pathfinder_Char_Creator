@@ -89,11 +89,11 @@ the new one. Any non-empty list ⇒ flagged.
 
 ## Steps
 
-1. **Worklist builder** (new) `Backend/scripts/build_spell_rider_worklist.py` — one record per rider
+1. **Worklist builder** (new) `Backend/scripts/build/build_spell_rider_worklist.py` — one record per rider
    joined to the CSV: `{name, spell_level, range, saving_throw, spell_resistance, duration, targets,
    description, base_ref_description?, current_rider, current_save, has_modifier_damage}`. Sliced into
    ~30-spell batch files under a scratch dir. Reuse `_save_block` from `build_spell_conditionals.py`.
-2. **Merge script** (new) `Backend/scripts/merge_spell_riders.py` — input `{name:{effect, save:{type,
+2. **Merge script** (new) `Backend/scripts/build/merge_spell_riders.py` — input `{name:{effect, save:{type,
    result}|null}}`; sets `entry.riders=[effect]` and corrects `entry.save`; only writes riders that
    **passed verify**. Then caller runs `enrich_conditional_riders.py` + `validate_spell_conditionals.py`.
 3. **Pilot (real pipeline)** — run the Sonnet author+verify agents on ~20 representative spells
@@ -108,7 +108,7 @@ the new one. Any non-empty list ⇒ flagged.
 
 ## Files
 
-- **New:** `Backend/scripts/build_spell_rider_worklist.py`, `Backend/scripts/merge_spell_riders.py`.
+- **New:** `Backend/scripts/build/build_spell_rider_worklist.py`, `Backend/scripts/build/merge_spell_riders.py`.
 - **Regenerated:** `Backend/json/spells/spell_riders.json` (Effect bodies rewritten; save blocks fixed)
   → re-run `enrich_conditional_riders.py`.
 - **Reused as-is:** `conditional_clauses.py`, `enrich_conditional_riders.py`,

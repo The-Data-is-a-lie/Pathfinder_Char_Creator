@@ -264,7 +264,7 @@ captures the questions.
       answered by building rather than by conversation. **All six Occult Adventures classes are in
       the random pool** (61 rollable classes, up from 55); `data.occult_classes` is empty.
       - The pools (449 options) are harvested from `pf1` 11.11 + `pf-content` 11.4.0 by
-        `Backend/scripts/build_occult_class_data.py`; spell progressions are derived from pf1's own
+        `Backend/scripts/build/build_occult_class_data.py`; spell progressions are derived from pf1's own
         `config.casterProgression` and cross-check exactly against the repo's existing `bard` and
         `sorcerer` rows. No scrape, no new OGL entry.
       - **Two classes degrade** per §8's eidolon ruling: the kineticist's **burn** is unmodelled and

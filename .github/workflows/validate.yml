@@ -49,6 +49,6 @@ jobs:
       # file survives review far too easily otherwise; the fix is always to edit the overrides.
       - name: Generated files are current
         run: |
-          python Backend/scripts/build_companion_archetypes.py
+          python Backend/scripts/build/build_companion_archetypes.py
           git diff --exit-code --stat Backend/json/companion_archetypes.json \
             || (echo "::error::companion_archetypes.json is stale -- re-run build_companion_archetypes.py" && exit 1)
