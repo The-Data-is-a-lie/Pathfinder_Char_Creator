@@ -18,6 +18,43 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 
 ## [Unreleased]
 
+### Changed
+- **Every class's pick schedule — how many rogue talents, rage powers, arcana or hexes a character
+  gets, and at which levels — now lives in one place: `Backend/json/class_choice_schedule.json`.**
+  It used to live in three, and they disagreed. `data.amount` held explicit level lists for 13
+  classes; `get_data_without_prerequisites` computed `floor(level / divisor)`; `generic_multi_chooser`
+  computed `floor((level - start) / divisor) + 1`. A single resolver, `generic_func.levels_for()`,
+  now answers for all of them, and the arithmetic is deleted from the choosers. **No behaviour
+  changed** — this is the first of two steps, and the second one carries the fixes.
+  - **The three conventions were nested in generality, not redundant**, which is why this was a bug
+    factory rather than untidiness. The divisor form can only say "every N levels starting at N".
+    The investigator's schedule is *3rd, then every 2* — unreachable in that form — so it silently
+    delivered 10 talents instead of 9 **and** stamped them on even levels instead of odd. One
+    missing degree of freedom, two visible symptoms. A table entry now declares either a compact
+    `{start, every, until}` rule or an explicit `levels[]` list, so both are sayable.
+  - **The level stamp and the pick count now come from one source.** They were derived twice from
+    the same formula in two different functions, so a wrong count was always also a wrong "gained
+    at" on the sheet. The k-th pick's level is simply `levels[k-1]`, which makes that class of bug
+    unrepresentable rather than merely fixed. `_record_choice_level`'s docstring claimed it recorded
+    a *character* level; every caller has always passed a *class* level, and class level is correct
+    — it is what lets a rogue 4 / magus 6 draw on each class's own progression.
+  - **`until` is load-bearing, not tidiness.** Class levels reach 40 (`level_and_bab.py:19`) and
+    nine of these schedules stop at 19 or 20, so an unbounded `{start, every}` rule would have handed
+    a level-30 aegis 15 customizations instead of 10. Found by checking, not by reading.
+  - **`data.amount` is deleted, not left in place**, and its three remaining readers (the psionics
+    and occult invariants, the occult gate) now read the new table through `_harness.schedule_levels`
+    — a *second* implementation of the expansion, deliberately not `levels_for`, so a check cannot
+    confirm the generator against itself. A schedule table that nothing reads is how the original
+    one drifted. *Rejected alternative:* keeping `data.amount` and syncing the two.
+  - Dead knobs removed rather than ignored: `divisor`/`odd` on `get_data_without_prerequisites` and
+    `n2`/`start_level` on `generic_multi_chooser` no longer exist, because a parameter a caller can
+    still set while nothing reads it is how a schedule change silently does nothing.
+  - Verified by replaying the old arithmetic from git across **1,360 bucket × level pairs at levels
+    1–40** (count and stamps identical), 7/7 golden payloads byte-identical, and 30,553 house
+    invariants across all 68 classes.
+  - Decisions and rejected alternatives:
+    [class-choices ticket 01](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/class-choices/01-pick-schedule-authority.md).
+
 ### Fixed
 - **Sorcerers, oracles, psychics and arcanists were shipping the text `null` where a spell-slot
   count belongs — at roughly half of all class levels.** PF1e spontaneous full casters gain each new

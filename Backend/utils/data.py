@@ -333,87 +333,10 @@ alignment_exclusion = {
         'evil': 'good'
     }
 
-amount = {
-  'arcanist':{
-    'basic': [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51]
-  },
-  'bloodrager':{
-    'feats': [7,10,13,16,19,22,25,28,31,34,37,40,43,46,49]
-  }
-  ,
-  'fighter': {
-    'armor_train': [7,11,15,19,23,27,31,35,39,43,47,51],
-    'weapon_train': [9,13,17,21,25,29,33,37,41,45,49,53]
-  },  
-  'oracle': {
-    'mysteries': [1,3,7,11,15,19,23,27],
-  },
-  'shaman':{
-    'hexes': [2, 4, 8, 10, 12, 16, 18, 20, 24, 26, 28, 32, 34, 36, 40, 42, 44, 48, 50, 52]
-  }, 
-  'warpriest': {
-    'blessing': [1,1]
-  },
-  'witch':{
-    'basic': [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52]
-  },
-  'sorcerer': {
-        'feats': [7,13,19,25,31,37,43,49]
-  },
-  'inquisitor': {
-        'inquisitions': [1,1]
-  },
-  # Psionics. Each list is the class levels at which one pick is granted, read off the class's own
-  # feature text (Backend/json/class_data/psionics/psionic_classes.json). The three single-pick
-  # subsystems -- marksman combat style, psychic warrior path, vitalist method -- need no entry.
-  'aegis': {
-        # The aegis is the odd one out: it spends *customization points* (3 at 1st rising to 26 at
-        # 20th), not a fixed number of picks. Modelled as one pick per ~2.5 points, which is what
-        # the published 1-to-4-point costs average out to. Tune this list, not the chooser.
-        'customizations': [1,3,5,7,9,11,13,15,17,19]
-  },
-  'cryptic': {
-        'insights': [2,4,6,8,10,12,14,16,18,20]
-  },
-  'dread': {
-        'terrors': [2,4,6,8,10,12,14,16,18,20]
-  },
-  'highlord': {
-        'decrees': [1,4,7,10,13,16,19]
-  },
-  'soulknife': {
-        'blade skills': [2,4,6,8,10,12,14,16,18,20]
-  },
-  'tactician': {
-        'strategies': [4,7,10,13,16,19]
-  },
-  # Occult Adventures. Same rule as the psionics block above: each list is the class levels at
-  # which one pick is granted, read off the class's own feature text in class_data.json. The three
-  # single-pick subsystems -- the kineticist's elemental focus, the medium's spirit and the
-  # psychic's discipline -- need no entry, and neither does the spiritualist's emotional focus.
-  'occultist': {
-        # "two implement schools" at 1st (hence the repeated 1), then 2nd and every 4 levels, to a
-        # maximum of seven at 18th -- the count the prose states, so the list is self-checking.
-        'implements': [1,1,2,6,10,14,18],
-        # One *selected* power at 1st; the two base powers come with the schools and are not picks.
-        # Then 3rd and every 2 levels.
-        'focus powers': [1,3,5,7,9,11,13,15,17,19]
-  },
-  'kineticist': {
-        'wild talents': [2,4,6,8,10,12,14,16,18,20],
-        'infusions': [1,3,5,9,11,13,17,19]
-  },
-  'mesmerist': {
-        # One at 1st, another at 2nd and every 2 levels: eleven at 20th, as the prose states.
-        'mesmerist tricks': [1,2,4,6,8,10,12,14,16,18,20],
-        'bold stare': [3,7,11,15,19]
-  },
-  'psychic': {
-        # 1st, then 3rd and every 4 levels. Major amplifications are taken *in place of* one of
-        # these from 11th, so they are the same pick, not an extra one -- no separate list.
-        'phrenic amplifications': [1,3,7,11,15,19]
-  }
-}
+# `amount` (the per-class pick schedules) lived here until class-choices ticket 01 moved it
+# to Backend/json/class_choice_schedule.json, where it is one table in two forms behind
+# generic_func.levels_for() rather than one of three competing conventions. Deleted rather
+# than left in place: a second schedule that nothing reads is how the first one drifted.
 
 hair_colors = ['Black', 'Brown', 'Blond', 'Red', 'White', 'Grey']
 hair_types = ['Curly',  'Bald', 'Wavy', 'Straight', 'Flowing', 'Frizzy', 'Spiky', 'Touseled', 'Unkempt','Bald']

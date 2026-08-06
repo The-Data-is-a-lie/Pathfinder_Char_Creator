@@ -141,6 +141,7 @@ character_json_config = {
 	'class_features': Load_when_needed('Backend/json/class_features.json'),	
 	# 'classes': Load_when_needed('Backend/json/class.json'),
 	'class_data': Load_when_needed('Backend/json/class_data.json'),
+	'class_choice_schedule': Load_when_needed('Backend/json/class_choice_schedule.json'),
 	'companion_archetypes': Load_when_needed('Backend/json/companion_archetypes.json'),
 	'companion_grantors': Load_when_needed('Backend/json/companion_grantors.json'),
 	'cleric_domains': Load_when_needed('Backend/json/cleric_domains.json'),				
@@ -630,9 +631,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		get_data_without_prerequisites(character, class_1="alchemist",dataset_name="basic", dict_name = 'discoveries')
 		get_data_without_prerequisites(character, class_1="investigator",dataset_name="basic", dict_name = 'investigator_talents')
 		get_data_without_prerequisites(character, class_1="vigilante",dataset_name="basic", dict_name = 'vigilante_talents')
-		get_data_without_prerequisites(character, class_1="vigilante",dataset_name="social",odd=True, dict_name = 'social_talents')
+		get_data_without_prerequisites(character, class_1="vigilante",dataset_name="social", dict_name = 'social_talents')
 		get_data_without_prerequisites(character, class_1="barbarian",dataset_name="basic", dict_name = 'rage_powers')
-		get_data_without_prerequisites(character, class_1="skald",dataset_name="basic", divisor = 3, dict_name = 'rage_powers')
+		get_data_without_prerequisites(character, class_1="skald",dataset_name="basic", dict_name = 'rage_powers')
 		get_data_without_prerequisites(character, class_1="magus",dataset_name="basic", dict_name = 'arcana')
 
 		grand_discovery_chooser(character) #fix this later
@@ -641,9 +642,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 
 		# >2 Choices based on level
-		generic_multi_chooser(character,"paladin", "mercy", n2=3, start_level=3)
-		generic_multi_chooser(character,"antipaladin", "cruelty",n2=3, start_level=3)
-		ki_powers = generic_multi_chooser(character,"monk", "ki_powers",n2=2,start_level=4)
+		generic_multi_chooser(character,"paladin", "mercy")
+		generic_multi_chooser(character,"antipaladin", "cruelty")
+		ki_powers = generic_multi_chooser(character,"monk", "ki_powers")
 
 
 		# feat + spell searcher

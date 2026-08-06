@@ -36,7 +36,10 @@ from math import floor
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from _harness import BACKEND, Report  # noqa: E402
+from _harness import BACKEND, Report, choice_schedule, schedule_levels  # noqa: E402
+
+# The pick schedule, read from disk rather than through the generator's resolver.
+SCHEDULE = choice_schedule()
 
 from utils import data  # noqa: E402
 from utils.class_func import backstory as _bs  # noqa: E402
@@ -104,8 +107,8 @@ def check_manifester(cell, payload, name, m, class_level):
     want_bucket = SUBSYSTEM_BUCKET.get(name, '')
     picks = (payload.get('class_features') or {}).get(want_bucket) or {} if want_bucket else {}
     if want_bucket:
-        schedule = next(iter((getattr(data, 'amount', {}).get(name) or {}).values()), None)
-        want_picks = len([a for a in schedule if a <= class_level]) if schedule else 1
+        schedule = schedule_levels(SCHEDULE, name, want_bucket, class_level)
+        want_picks = len(schedule) if schedule is not None else 1
         col('subsys', m['subsystem_bucket'] == want_bucket and len(picks) == want_picks,
             f"{want_bucket}={len(picks)}/{want_picks}")
     else:

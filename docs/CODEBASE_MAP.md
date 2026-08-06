@@ -97,9 +97,22 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   `classes` + `class-abilities`, and `pf-content`'s `pf-class-abilities` — the occultist's implements
   and the spiritualist's emotional foci live only in the latter). 449 options; same
   `{dataset: {name: description}}` shape as the psionics files, same lookup-by-class-name rule.
-  Gated by `validate_occult_data.py`. The pick schedules are in `data.amount`, the chooser calls are
+  Gated by `validate_occult_data.py`. The pick schedules are in `class_choice_schedule.json` (see
+  the next bullet), the chooser calls are
   in `main_test.py` after the psionics block, and all six are in the random pool
   (`data.occult_classes` is now empty). Spec: `docs/feature_spec_todo.md` §10.
+- **Class pick schedules — one table, `Backend/json/class_choice_schedule.json`.** How many options
+  each class chooses and at which of *its own* class levels. One row per rollable class (all 68), so
+  a class joining the pool without a schedule is visible rather than silent; an empty `buckets` with
+  a `reason` is a verdict, and `reason: "unswept"` means nobody has ruled yet. A bucket declares
+  either `{start, every, until}` or `{levels: [...]}`, and **`generic_func.levels_for()` is the only
+  reader in the generator** — the count is `len()`, the k-th pick's level stamp is `[k-1]`. Scripts
+  read it through `_harness.schedule_levels()` instead, which is a deliberately separate expansion
+  so a check cannot confirm the generator against itself. Replaced `data.amount` plus the divisor
+  arithmetic in `get_data_without_prerequisites` and `generic_multi_chooser` (class-choices ticket
+  01). **`until` is behaviour, not decoration:** class levels reach 40 and nine schedules stop at
+  19/20. Buckets are keyed by the *rendered* bucket name (`arcana`, `rage_powers`), with the data
+  key in each row's `dataset` field.
 - **The class roster — 68 rollable classes, five families.** The pool is the keys of
   `class_data.json` minus the holdback lists in `data.py` (`pow_classes_pending_foundry`,
   `psionic_classes_pending`, `occult_classes`, `classes_pending_foundry`); the families are

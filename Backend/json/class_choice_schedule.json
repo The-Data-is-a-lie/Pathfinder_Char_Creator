@@ -1,0 +1,642 @@
+{
+  "_readme": [
+    "Authoritative pick schedule: how many class-specific options each class chooses, and at",
+    "which of ITS OWN class levels. Ticket 01 of the class-choices wayfinder map.",
+    "",
+    "A bucket declares EITHER a compact rule {start, every, until} OR an explicit {levels: []}.",
+    "generic_func.levels_for(class, bucket, class_level) expands either into a level list; the",
+    "count is len(levels) and the k-th pick's level stamp is levels[k-1].",
+    "",
+    "  until   caps a compact rule. Load-bearing: class levels reach 40 (level_and_bab.py:19)",
+    "          and nine of these lists stop at 19 or 20, so an unbounded rule would silently",
+    "          over-deliver above 20th. A row with no `until` is unbounded TODAY, which is a",
+    "          question ticket 03 owns, not a decision this table has made.",
+    "  stamps  false where the chooser records no level stamp (generic_multi_chooser does not).",
+    "  source  raw | approximation | unverified | bug | (empty rows) unswept.",
+    "          `unverified` means a human authored the number and nobody has checked it against",
+    "          Sieg's Guide yet -- NOT that it is wrong. `bug` means the number was never chosen",
+    "          by anyone: it was defaulted at the call site. Ticket 01 ruling 5.",
+    "",
+    "Every rollable class has a row, so a class joining the pool without a schedule is a hard",
+    "failure rather than a silence. An empty row is a VERDICT once its reason is filled in;",
+    "`unswept` means ticket 02 has not reached it yet."
+  ],
+  "classes": {
+    "adept": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "aegis": {
+      "buckets": {
+        "customizations": {
+          "dataset": "customizations",
+          "bucket": "customizations",
+          "start": 1,
+          "every": 2,
+          "until": 19,
+          "source": "approximation",
+          "note": "Customization POINTS (3 at 1st rising to 26 at 20th), modelled as one pick per ~2.5 points, which is what the published 1-to-4-point costs average out to. Tune this list, not the chooser."
+        }
+      }
+    },
+    "alchemist": {
+      "buckets": {
+        "discoveries": {
+          "dataset": "basic",
+          "bucket": "discoveries",
+          "start": 2,
+          "every": 2,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "antipaladin": {
+      "buckets": {
+        "cruelty": {
+          "dataset": "cruelty",
+          "bucket": "cruelty",
+          "start": 3,
+          "every": 3,
+          "stamps": false,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "arcanist": {
+      "buckets": {
+        "exploits": {
+          "dataset": "basic",
+          "bucket": "exploits",
+          "start": 1,
+          "every": 2,
+          "until": 51,
+          "source": "raw",
+          "note": "Exploits: 1st, then every odd level."
+        }
+      }
+    },
+    "aristocrat": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "barbarian": {
+      "buckets": {
+        "rage_powers": {
+          "dataset": "basic",
+          "bucket": "rage_powers",
+          "start": 2,
+          "every": 2,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "barbarian (unchained)": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "bard": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "bloodrager": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "brawler": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "cavalier": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "cleric": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "commoner": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "cryptic": {
+      "buckets": {
+        "insights": {
+          "dataset": "insights",
+          "bucket": "insights",
+          "start": 2,
+          "every": 2,
+          "until": 20,
+          "source": "raw"
+        }
+      }
+    },
+    "dread": {
+      "buckets": {
+        "terrors": {
+          "dataset": "terrors",
+          "bucket": "terrors",
+          "start": 2,
+          "every": 2,
+          "until": 20,
+          "source": "raw"
+        }
+      }
+    },
+    "druid": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "expert": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "fighter": {
+      "buckets": {
+        "armor_training": {
+          "dataset": "armor_train",
+          "bucket": "armor_training",
+          "start": 7,
+          "every": 4,
+          "until": 51,
+          "source": "raw",
+          "note": "Advanced armor training: 7th, then every 4 levels."
+        },
+        "weapon_training": {
+          "dataset": "weapon_train",
+          "bucket": "weapon_training",
+          "start": 9,
+          "every": 4,
+          "until": 53,
+          "source": "raw",
+          "note": "Advanced weapon training: 9th, then every 4 levels."
+        }
+      }
+    },
+    "gunslinger": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "harbinger": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "highlord": {
+      "buckets": {
+        "decrees": {
+          "dataset": "decrees",
+          "bucket": "decrees",
+          "start": 1,
+          "every": 3,
+          "until": 19,
+          "source": "raw"
+        }
+      }
+    },
+    "hunter": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "inquisitor": {
+      "buckets": {
+        "Talents": {
+          "dataset": "inquisitions",
+          "bucket": "Talents",
+          "levels": [
+            1,
+            1
+          ],
+          "source": "unverified",
+          "note": "Two picks both stamped 1st. RAW grants one inquisition at 1st; authored, so not touched."
+        }
+      }
+    },
+    "investigator": {
+      "buckets": {
+        "investigator_talents": {
+          "dataset": "basic",
+          "bucket": "investigator_talents",
+          "start": 2,
+          "every": 2,
+          "source": "bug",
+          "note": "divisor DEFAULTED to 2 at main_test.py:631, giving 10 at 20th stamped on even levels. RAW is 3rd then every 2 -> {start: 3, every: 2} = 9, stamped odd. Fixed in ticket 01 step 2."
+        }
+      }
+    },
+    "kineticist": {
+      "buckets": {
+        "wild_talents": {
+          "dataset": "wild talents",
+          "bucket": "wild_talents",
+          "start": 2,
+          "every": 2,
+          "until": 20,
+          "source": "raw"
+        },
+        "infusions": {
+          "dataset": "infusions",
+          "bucket": "infusions",
+          "levels": [
+            1,
+            3,
+            5,
+            9,
+            11,
+            13,
+            17,
+            19
+          ],
+          "source": "raw"
+        }
+      }
+    },
+    "magus": {
+      "buckets": {
+        "arcana": {
+          "dataset": "basic",
+          "bucket": "arcana",
+          "start": 2,
+          "every": 2,
+          "source": "bug",
+          "note": "divisor DEFAULTED to 2 at main_test.py:636, giving 10 arcana at 20th. RAW is 3rd then every 3 -> {start: 3, every: 3} = 6. Fixed in ticket 01 step 2."
+        }
+      }
+    },
+    "marksman": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "medic": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "medium": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "mesmerist": {
+      "buckets": {
+        "mesmerist_tricks": {
+          "dataset": "mesmerist tricks",
+          "bucket": "mesmerist_tricks",
+          "levels": [
+            1,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20
+          ],
+          "source": "raw",
+          "note": "One at 1st, another at 2nd and every 2 levels: eleven at 20th, as the prose states."
+        },
+        "bold_stare": {
+          "dataset": "bold stare",
+          "bucket": "bold_stare",
+          "start": 3,
+          "every": 4,
+          "until": 19,
+          "source": "raw"
+        }
+      }
+    },
+    "monk": {
+      "buckets": {
+        "ki_powers": {
+          "dataset": "ki_powers",
+          "bucket": "ki_powers",
+          "start": 4,
+          "every": 2,
+          "stamps": false,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "monk (unchained)": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "mystic": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "ninja": {
+      "buckets": {
+        "ninja_talents": {
+          "dataset": "basic",
+          "bucket": "ninja_talents",
+          "start": 2,
+          "every": 2,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "occultist": {
+      "buckets": {
+        "implements": {
+          "dataset": "implements",
+          "bucket": "implements",
+          "levels": [
+            1,
+            1,
+            2,
+            6,
+            10,
+            14,
+            18
+          ],
+          "source": "raw",
+          "note": "Two implement schools at 1st (hence the repeated 1), then 2nd and every 4 levels, to seven at 18th -- the count the prose states, so the list is self-checking."
+        },
+        "focus_powers": {
+          "dataset": "focus powers",
+          "bucket": "focus_powers",
+          "start": 1,
+          "every": 2,
+          "until": 19,
+          "source": "raw",
+          "note": "One SELECTED power at 1st; the two base powers come with the schools and are not picks."
+        }
+      }
+    },
+    "omdura": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "oracle": {
+      "buckets": {
+        "mysteries": {
+          "dataset": "mysteries",
+          "bucket": "mysteries",
+          "levels": [
+            1,
+            3,
+            7,
+            11,
+            15,
+            19,
+            23,
+            27
+          ],
+          "source": "raw",
+          "note": "Revelations: 1st, 3rd, then every 4 levels."
+        }
+      }
+    },
+    "paladin": {
+      "buckets": {
+        "mercy": {
+          "dataset": "mercy",
+          "bucket": "mercy",
+          "start": 3,
+          "every": 3,
+          "stamps": false,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "psion": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "psychic": {
+      "buckets": {
+        "phrenic_amplifications": {
+          "dataset": "phrenic amplifications",
+          "bucket": "phrenic_amplifications",
+          "levels": [
+            1,
+            3,
+            7,
+            11,
+            15,
+            19
+          ],
+          "source": "raw",
+          "note": "Major amplifications are taken IN PLACE OF one of these from 11th, so they are the same pick, not an extra one -- no separate list."
+        }
+      }
+    },
+    "psychic warrior": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "ranger": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "rogue": {
+      "buckets": {
+        "rogue_talents": {
+          "dataset": "basic",
+          "bucket": "rogue_talents",
+          "start": 2,
+          "every": 2,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "rogue (unchained)": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "samurai": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "shaman": {
+      "buckets": {
+        "hexes": {
+          "dataset": "hexes",
+          "bucket": "hexes",
+          "levels": [
+            2,
+            4,
+            8,
+            10,
+            12,
+            16,
+            18,
+            20,
+            24,
+            26,
+            28,
+            32,
+            34,
+            36,
+            40,
+            42,
+            44,
+            48,
+            50,
+            52
+          ],
+          "source": "raw",
+          "note": "The gaps at 6 and 14 are wandering hexes -- a separate feature, not omissions."
+        }
+      }
+    },
+    "shifter": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "skald": {
+      "buckets": {
+        "rage_powers": {
+          "dataset": "basic",
+          "bucket": "rage_powers",
+          "start": 3,
+          "every": 3,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "slayer": {
+      "buckets": {
+        "slayer_talents": {
+          "dataset": "basic",
+          "bucket": "slayer_talents",
+          "start": 2,
+          "every": 2,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "sorcerer": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "soulknife": {
+      "buckets": {
+        "blade_skills": {
+          "dataset": "blade skills",
+          "bucket": "blade_skills",
+          "start": 2,
+          "every": 2,
+          "until": 20,
+          "source": "raw"
+        }
+      }
+    },
+    "spiritualist": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "summoner": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "summoner (unchained)": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "swashbuckler": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "tactician": {
+      "buckets": {
+        "strategies": {
+          "dataset": "strategies",
+          "bucket": "strategies",
+          "start": 4,
+          "every": 3,
+          "until": 19,
+          "source": "raw"
+        }
+      }
+    },
+    "vampire hunter": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "vigilante": {
+      "buckets": {
+        "vigilante_talents": {
+          "dataset": "basic",
+          "bucket": "vigilante_talents",
+          "start": 2,
+          "every": 2,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        },
+        "social_talents": {
+          "dataset": "social",
+          "bucket": "social_talents",
+          "start": 1,
+          "every": 2,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "vitalist": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "voyager": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "warder": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "warlord": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "warpriest": {
+      "buckets": {
+        "Talents": {
+          "dataset": "blessing",
+          "bucket": "Talents",
+          "levels": [
+            1,
+            1
+          ],
+          "source": "unverified",
+          "note": "Two picks both stamped 1st. RAW grants one blessing at 1st; authored, so not touched."
+        }
+      }
+    },
+    "warrior": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "wilder": {
+      "buckets": {},
+      "reason": "unswept"
+    },
+    "witch": {
+      "buckets": {
+        "hexes": {
+          "dataset": "basic",
+          "bucket": "hexes",
+          "start": 2,
+          "every": 2,
+          "until": 52,
+          "source": "unverified",
+          "note": "RAW grants a hex at 1st as well as 2nd; this list starts at 2nd. Authored, so not touched."
+        }
+      }
+    },
+    "wizard": {
+      "buckets": {},
+      "reason": "unswept"
+    }
+  }
+}

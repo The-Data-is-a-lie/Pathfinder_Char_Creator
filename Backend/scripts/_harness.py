@@ -180,6 +180,34 @@ class Report:
         return 0
 
 
+def choice_schedule():
+    """Backend/json/class_choice_schedule.json, read straight from disk.
+
+    Deliberately NOT `generic_func.levels_for` (class-choices ticket 01). A check that asked the
+    generator to expand its own schedule would compare the generator with itself and confirm
+    nothing -- the same trap scripts-ticket 12 named when it refused to derive the caster gate
+    from the tables it was gating. So the expansion below is a SECOND implementation, and the
+    checks that use it assert generated characters against the table rather than against code.
+    """
+    return read_json(JSON_DIR / 'class_choice_schedule.json').get('classes', {})
+
+
+def schedule_levels(table, class_name, bucket, class_level):
+    """The class levels at which `class_name` gains a pick in `bucket`, up to `class_level`.
+
+    Returns None when the bucket has no row, which callers must distinguish from an empty list:
+    "no schedule" means a single pick at 1st for the psionic/occult single-pick subsystems, while
+    [] means "scheduled, but nothing due yet at this level".
+    """
+    row = (table.get(class_name) or {}).get('buckets', {}).get(bucket)
+    if not row:
+        return None
+    if 'levels' in row:
+        return [lvl for lvl in row['levels'] if lvl <= class_level]
+    ceiling = min(class_level, row.get('until', class_level))
+    return list(range(row['start'], ceiling + 1, row['every']))
+
+
 def read_json(path):
     """Parse a UTF-8 JSON file, naming the file in the error when it does not parse.
 

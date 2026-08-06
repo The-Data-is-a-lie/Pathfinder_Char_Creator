@@ -36,7 +36,10 @@ from math import ceil, floor
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from _harness import BACKEND, Report  # noqa: E402
+from _harness import BACKEND, Report, choice_schedule, schedule_levels  # noqa: E402
+
+# The pick schedule, read from disk rather than through the generator's resolver.
+SCHEDULE = choice_schedule()
 
 from utils import data  # noqa: E402
 from utils.class_func import backstory as _bs  # noqa: E402
@@ -262,13 +265,13 @@ def check_character(cell, payload):
                   f"{tag}: subsystem_bucket {m['subsystem_bucket']!r} != {want_bucket!r}")
             if want_bucket:
                 picks = (payload.get('class_features') or {}).get(want_bucket) or {}
-                # How many picks are DUE at this level. generic_class_option_chooser walks
-                # data.amount's level schedule (`i = len(chosen_set)`), so the count is exactly the
-                # schedule entries at or below the class level; the three single-pick classes have
-                # no schedule and take one at 1st. Each psionic class has one dataset in
-                # data.amount, so its schedule is read without needing the dataset's name here.
-                schedule = next(iter((getattr(data, 'amount', {}).get(name) or {}).values()), None)
-                want_picks = len([a for a in schedule if a <= entry['level']]) if schedule else 1
+                # How many picks are DUE at this level. generic_class_option_chooser walks the
+                # schedule (`i = len(chosen_set)`), so the count is exactly the entries at or below
+                # the class level; the three single-pick classes have no schedule and take one at
+                # 1st. Read from class_choice_schedule.json via the harness's own expansion, NOT
+                # through generic_func.levels_for -- see _harness.choice_schedule.
+                schedule = schedule_levels(SCHEDULE, name, want_bucket, entry['level'])
+                want_picks = len(schedule) if schedule is not None else 1
                 check(len(picks) == want_picks,
                       f"{tag}: subsystem bucket {want_bucket!r} holds {len(picks)} picks, expected "
                       f"{want_picks} at class level {entry['level']} -- picks that never land "
@@ -383,19 +386,18 @@ def check_character(cell, payload):
             continue
         OCCULT['chars'] += 1
         level = entry['level']
-        schedules = getattr(data, 'amount', {}).get(name, {})
         for dataset, bucket in _OCCULT_BUCKETS[name].items():
             tag = f"{cell}: {name}/{dataset}"
             pool = _OCCULT_OPTIONS[name][dataset]
             chosen = features.get(bucket) or {}
             # How many picks the schedule grants by this class level. A subsystem with no schedule
             # is a single pick taken at 1st -- the marksman/vitalist shape psionics already uses.
-            want = (sum(1 for at in schedules[dataset] if at <= level)
-                    if dataset in schedules else 1)
+            schedule = schedule_levels(SCHEDULE, name, bucket, level)
+            want = len(schedule) if schedule is not None else 1
             check(len(chosen) == want,
                   f"{tag}: {len(chosen)} pick(s) at class level {level}, expected {want}")
             OCCULT['picks'] += len(chosen)
-            if dataset in schedules and want > 1:
+            if schedule is not None and want > 1:
                 OCCULT['multi_pick_buckets'] += 1
             # A pick that is not in the pool means the bucket was written by something else --
             # exactly the collision that would silently merge two classes' choices into one bucket.

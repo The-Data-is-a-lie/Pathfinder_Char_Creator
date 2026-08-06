@@ -30,7 +30,10 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from _harness import Report, REPO, read_json  # noqa: E402
+from _harness import REPO, Report, choice_schedule, read_json, schedule_levels  # noqa: E402
+
+# The pick schedule (class-choices ticket 01), read from disk.
+SCHEDULE = choice_schedule()
 from utils import data as _data               # noqa: E402  (path bootstrap must run first)
 
 CLASS_DIR = REPO / "Backend/json/class_data"
@@ -128,17 +131,34 @@ def check_shape(name: str, sections: dict) -> None:
 
 
 def check_schedules(name: str, sections: dict) -> None:
-    schedules = getattr(_data, "amount", {}).get(name, {})
+    """Structural checks on this class's rows in class_choice_schedule.json.
+
+    Was data.amount, which class-choices ticket 01 replaced. Rows are keyed by the RENDERED bucket
+    and carry the dataset they draw from, so the mapping back to `sections` goes through the row's
+    own `dataset` field rather than through its key.
+    """
+    rows = (SCHEDULE.get(name) or {}).get("buckets", {})
+    schedules, raw = {}, {}
+    for bucket, row in rows.items():
+        dataset = row.get("dataset", bucket)
+        raw[dataset] = row
+        schedules[dataset] = schedule_levels(SCHEDULE, name, bucket, 20) or []
+
     for dataset in schedules:
         if dataset not in sections:
-            fail(f"{name}: data.amount has a schedule for {dataset!r}, which is not a dataset "
+            fail(f"{name}: the schedule table has a row for {dataset!r}, which is not a dataset "
                  f"({sorted(sections)}) -- the chooser would silently pick nothing")
-    for dataset, levels in schedules.items():
-        if list(levels) != sorted(levels):
+    for dataset, row in raw.items():
+        # The structural properties belong to the AUTHORED row, not to an expansion: a compact
+        # {start, every} rule is ascending and bounded by construction, so only an explicit list
+        # can break either, and an expansion capped at 20 could never report a level above 20.
+        levels = row.get("levels")
+        if levels is not None and list(levels) != sorted(levels):
             fail(f"{name}/{dataset}: schedule {levels} is not ascending; the chooser stops at the "
                  f"first level above the character's, so later picks would be unreachable")
-        if levels and levels[-1] > 20:
-            fail(f"{name}/{dataset}: schedule reaches level {levels[-1]}, past the level cap")
+        last = (levels or [None])[-1] if levels is not None else row.get("until")
+        if last is not None and last > 20:
+            fail(f"{name}/{dataset}: schedule reaches level {last}, past the level cap")
 
     for (cls, dataset), (count, by_level) in PROMISED_MAX.items():
         if cls != name:
@@ -146,7 +166,7 @@ def check_schedules(name: str, sections: dict) -> None:
         levels = schedules.get(dataset)
         if levels is None:
             fail(f"{name}/{dataset}: prose promises {count} picks by {by_level}th, "
-                 f"but there is no data.amount schedule at all")
+                 f"but there is no schedule row at all")
             continue
         granted = sum(1 for level in levels if level <= by_level)
         if granted != count:
