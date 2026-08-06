@@ -200,13 +200,52 @@ def test_alignment_and_level_phase():
           and 'chosen_race' not in msg)
 
 
+def test_hp_and_spellbooks_phase():
+    """phase_hp_and_spellbooks -- HP, then one spellbook per class.
+
+    Its hazard is the quietest one in the pipeline so far: total_hp_calc reads the FINAL Con score
+    through final_ability_mod, so running it before the stats phase does not raise, it just gives
+    every character the hit points of a Con-10 one. `requires=['stats']` is what turns that into an
+    error at the boundary instead of a wrong number on a Foundry sheet weeks later.
+    """
+    import main_test
+
+    hp_phase = main_test.phase_hp_and_spellbooks
+    stats_phase = main_test.phase_roll_and_assign_stats
+    align_phase = main_test.phase_alignment_and_level
+
+    check('hp phase requires stats (Total_HP uses the FINAL Con score)',
+          'stats' in getattr(hp_phase, 'requires', ()))
+    for name in ('level', 'classes'):
+        check(f'hp phase requires {name}', name in hp_phase.requires)
+    check('every requirement comes from an earlier phase (the chain holds)',
+          set(hp_phase.requires) <= set(align_phase.provides) | set(stats_phase.provides) | {'stats'})
+
+    # The three names that used to leave this block as locals are now declared outputs. If any of
+    # them stops being set, `provides` fails here rather than at the export dict 1,300 lines later.
+    for name in ('total_hp_rolls', 'spells_per_day_list', 'spells_known_list'):
+        check(f'hp phase provides {name} (was a local crossing out)', name in hp_phase.provides)
+    check('hp phase provides Total_HP and spellbooks',
+          {'Total_HP', 'spellbooks'} <= set(hp_phase.provides))
+
+    raises('the real hp phase raises when run before stats exist', hp_phase, Stub())
+
+    partial = Stub()
+    partial.level = 5
+    partial.classes = [{'name': 'wizard', 'level': 5}]
+    msg = raises('it still raises when only the level half is in place', hp_phase, partial)
+    check('the error names stats and nothing already set',
+          'stats' in msg and 'classes' not in msg)
+
+
 def main():
     for test in (test_requires_missing_raises,
                  test_falsy_requirement_counts_as_set,
                  test_provides_is_checked_on_exit,
                  test_sealing,
                  test_real_phases_declare_their_hazards,
-                 test_alignment_and_level_phase):
+                 test_alignment_and_level_phase,
+                 test_hp_and_spellbooks_phase):
         print(f'{test.__name__}:')
         test()
 

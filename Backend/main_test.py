@@ -385,6 +385,65 @@ def phase_roll_and_assign_stats(character, num_dice, num_sides, inherents):
 	return stats
 
 
+@phase(requires=['level', 'classes', 'stats'],
+	   provides=['Hit_dice1', 'total_hp_rolls', 'sheet_health', 'Total_HP',
+				 'spellbooks', 'spells_per_day_list', 'spells_known_list'])
+def phase_hp_and_spellbooks(character):
+	'''Hit points, then one independent spellbook per class.
+
+	requires `stats`: total_hp_calc reads the FINAL Con score (final_ability_mod), so inherent
+	bonuses and level-up bumps have to have landed -- running this before the stats phase gives
+	every character the HP of a Con-10 one, silently and with no exception.
+	requires `level` and `classes`: hit dice, HP and every caster formula are per-class-level.
+
+	NO LOCALS CROSS OUT OF HERE, which is why this block is the third one done rather than the
+	tenth. All three names that used to leave it were already aliases of character attributes --
+	`total_rolled_hp` is `roll_hp`'s return value, which it sets as `total_hp_rolls` on the way past,
+	and `day_list`/`known_list` were bare aliases bound one line after sync_legacy_spell_fields set
+	them. Zero new attributes; the export just names the attribute instead of the alias.
+
+	THE ALIASES ARE SAFE TO DROP ONLY BECAUSE THAT WAS MEASURED. `sync_legacy_spell_fields` runs a
+	SECOND time much later, after the spell lists are deduped, and re-points the same two attributes
+	-- so an alias captured here and an attribute read at export are not the same read, and a
+	rebinding in between would have made this substitution a silent payload change. Checked by
+	asserting the two agree at the export site across 68 classes at three levels: no drift, and the
+	probe was confirmed able to fire before the result was believed.
+	'''
+	#hp calculations
+	hit_dice_calc(character)
+	roll_hp(character)
+	character.Total_HP = total_hp_calc(character)
+
+	# Choosing character class for spells (per class entry) + character-wide spell themes
+	class_for_spells_attr(character)
+	spell_themes(character)
+
+	# Some spellcasters get 0th level spells (all high + most mid)
+	# Also 0th spells = infinite casting
+	# Wizards + Clerics know all 0th level spells (wizards know all except opposing school)
+	# as long as spells known list has a '0th' spell column (even if it isn't 0)
+	# it won't pull any 0th spells for casters with orisons/cantrips
+
+	#Divine Casters have all spells known (don't make this function for them)
+
+	# Each class builds its own spellbook — a multiclass cleric/wizard gets two independent
+	# spell lists, each at its own class's caster level.
+	character.spellbooks = []
+	for class_entry in character.classes:
+		caster_formula(character, class_entry['level'], class_entry)
+		spells_known_attr(character, "base_classes", "divine_casters", class_entry)
+		spells_per_day_attr(character, "base_classes", class_entry)
+		spells_per_day_from_ability_mod(character, "caster_mod", class_entry)
+		spells_known_extra_roll(character, class_entry)
+		extra_spells_divine(character, class_entry)
+		spells_known_selection(character, class_entry)
+		if class_entry['casting_level_string'] in ('low', 'mid', 'high'):
+			character.spellbooks.append(class_entry)
+
+	# legacy scalar fields = the primary spellbook (primary class if it casts, else first caster)
+	sync_legacy_spell_fields(character)
+
+
 @phase(requires=['level', 'classes', 'class_data', 'craft_chosen'],
 	   provides=['profession_data', 'profession_feats', 'skill_rank_budget'])
 def phase_professions_and_skills(character, truly_random_feats, skill_rank_level, professions_enabled=True):
@@ -499,41 +558,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		stats = phase_roll_and_assign_stats(character, num_dice, num_sides, inherents)
 
 
-		#hp calculations
-		hit_dice_calc(character)
-		total_rolled_hp = roll_hp(character)
-		character.Total_HP = total_hp_calc(character)
-
-		# Choosing character class for spells (per class entry) + character-wide spell themes
-		class_for_spells_attr(character)
-		spell_themes(character)
-
-		# Some spellcasters get 0th level spells (all high + most mid)
-		# Also 0th spells = infinite casting
-		# Wizards + Clerics know all 0th level spells (wizards know all except opposing school)
-		# as long as spells known list has a '0th' spell column (even if it isn't 0)
-		# it won't pull any 0th spells for casters with orisons/cantrips
-
-		#Divine Casters have all spells known (don't make this function for them)
-
-		# Each class builds its own spellbook — a multiclass cleric/wizard gets two independent
-		# spell lists, each at its own class's caster level.
-		character.spellbooks = []
-		for class_entry in character.classes:
-			caster_formula(character, class_entry['level'], class_entry)
-			spells_known_attr(character, "base_classes", "divine_casters", class_entry)
-			spells_per_day_attr(character, "base_classes", class_entry)
-			spells_per_day_from_ability_mod(character, "caster_mod", class_entry)
-			spells_known_extra_roll(character, class_entry)
-			extra_spells_divine(character, class_entry)
-			spells_known_selection(character, class_entry)
-			if class_entry['casting_level_string'] in ('low', 'mid', 'high'):
-				character.spellbooks.append(class_entry)
-
-		# legacy scalar fields = the primary spellbook (primary class if it casts, else first caster)
-		sync_legacy_spell_fields(character)
-		day_list = character.spells_per_day_list
-		known_list = character.spells_known_list
+		phase_hp_and_spellbooks(character)
 
 
 		#this is to allow for talent choice stat pre-reqs (self.chooseable)
@@ -1805,8 +1830,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				# Saving throws are derived by the pf1 engine / the web sheet, not exported:
 				# fort_saving_throw, reflex_saving_throw, wisdom_saving_throw.
 				"spell_list_choose_from": character.spell_list_choose_from,
-				"day_list": day_list,
-				"known_list": known_list,
+				"day_list": character.spells_per_day_list,
+				"known_list": character.spells_known_list,
 				"spells_prepared_per_level": character.spells_prepared_per_level,
 				"martial_disciplines": martial_disciplines,
 				"initiator_level": initiator_level,
@@ -1928,7 +1953,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"counter_schools": character.counter_schools,
 				"chosen_spell_descriptor": character.chosen_descriptors,
 				"counter_spell_descriptor": character.counter_descriptors,
-				"total_rolled_hp": total_rolled_hp,
+				"total_rolled_hp": character.total_hp_rolls,
 				"mini_alignment": character.mini_alignment,
 				"casting_level_str_foundry": casting_level_str_foundry,
 				"main_stat": character.main_stat,

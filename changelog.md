@@ -19,6 +19,18 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Changed
+- **Hit points and the per-class spellbooks are now a declared pipeline phase.**
+  `phase_hp_and_spellbooks` declares that it needs the finished ability scores, because
+  `total_hp_calc` reads the *final* Con score — running it before the stats phase never raised, it
+  just gave every character the hit points of a Con-10 one. Golden payloads unchanged.
+  - Nothing crosses out of this block: all three names that used to leave it were already aliases of
+    character attributes. Zero new attributes; the export now names the attribute rather than the
+    alias.
+  - **Those aliases were only safe to drop because it was measured, not assumed.** The legacy spell
+    scalars are re-pointed a *second* time much later, after the spell lists are deduped — so an
+    alias captured early and an attribute read at export are two different reads, and a rebinding in
+    between would have made the substitution a silent payload change. Asserted equal at the export
+    site across 68 classes at three levels, with the probe first confirmed able to fire.
 - **The alignment / body / flaw / personality / level block is now a declared pipeline phase.**
   `phase_alignment_and_level` covers everything rolled off a finished identity but before any levels
   are spent, and it declares what it needs (`region`, `chosen_race`, `_class_picks`) and what it
