@@ -218,10 +218,10 @@
         "investigator_talents": {
           "dataset": "basic",
           "bucket": "investigator_talents",
-          "start": 2,
+          "start": 3,
           "every": 2,
-          "source": "bug",
-          "note": "divisor DEFAULTED to 2 at main_test.py:631, giving 10 at 20th stamped on even levels. RAW is 3rd then every 2 -> {start: 3, every: 2} = 9, stamped odd. Fixed in ticket 01 step 2."
+          "source": "raw",
+          "note": "RAW: 3rd, then every 2 levels -> 9 talents at 20th, on odd levels. Was {start: 2, every: 2} = 10 on even levels, from the same defaulted divisor. The old convention could not express a start offset at all, so the count and the level stamp were wrong together."
         }
       }
     },
@@ -257,10 +257,10 @@
         "arcana": {
           "dataset": "basic",
           "bucket": "arcana",
-          "start": 2,
-          "every": 2,
-          "source": "bug",
-          "note": "divisor DEFAULTED to 2 at main_test.py:636, giving 10 arcana at 20th. RAW is 3rd then every 3 -> {start: 3, every: 3} = 6. Fixed in ticket 01 step 2."
+          "start": 3,
+          "every": 3,
+          "source": "raw",
+          "note": "RAW: 3rd, then every 3 levels -> 6 arcana at 20th. Was {start: 2, every: 2} = 10, because main_test.py passed no divisor and get_data_without_prerequisites defaulted it to 2. Nobody chose 2 for the magus, which is why this was fixed rather than flagged (ticket 01 ruling 5)."
         }
       }
     },

@@ -18,6 +18,28 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 
 ## [Unreleased]
 
+### Fixed
+- **Magi were getting 10 arcana where the rules grant 6, and investigators 10 talents where the
+  rules grant 9 — with the wrong "gained at" level on every one of them.** Neither number was ever
+  chosen by anyone: both call sites omitted the `divisor` argument and inherited the default of 2,
+  so a magus picked one arcanum every 2 levels instead of every 3. A magus 4 shipped **two** arcana
+  stamped "gained at 2" and "gained at 4"; it now ships **one**, stamped 3, which is what a 4th-level
+  magus has. The investigator's talents now land on odd levels (3rd, 5th, 7th…) as the rules say,
+  instead of even.
+  - The stamps were wrong *because* the counts were: both were derived from the same divisor in two
+    separate places. Fixing the schedule fixes both at once — see the entry below, which made that
+    structurally true before this change was attempted.
+  - **Only these two.** Every other schedule that disagrees with the rulebook was authored by a
+    human on purpose or has not been checked against Sieg's Guide yet — the aegis's customization
+    approximation, the warpriest's and inquisitor's doubled 1st-level picks, the witch's missing
+    1st-level hex. Those are marked `unverified` in the table and deliberately left alone.
+    *Rejected alternative:* fixing everything that disagrees with RAW, which would have quietly
+    overwritten house rulings nobody wrote down.
+  - **One golden fixture moved, `companion.json`, and it was recording the bug.** 116 of its 172
+    keys are unchanged; the 56 that differ are everything drawn *after* the arcana chooser, because
+    one fewer random pick shifts the shared RNG stream. The class composition, stats, saves and HP
+    are identical.
+
 ### Changed
 - **Every class's pick schedule — how many rogue talents, rage powers, arcana or hexes a character
   gets, and at which levels — now lives in one place: `Backend/json/class_choice_schedule.json`.**

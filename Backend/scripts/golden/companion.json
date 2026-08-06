@@ -52,7 +52,7 @@
   }
  },
  "appearance": [
-  "Homely"
+  "Raspy voice"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Elemental Ally\": {\n        \"source\": \"Monster Summoner's Handbook pg. 16 An elemental ally is a druid who has crafted powerful bonds of trust and friendship with one ally from each of the four primary elemental planes. Elemental allies are most common in Qadira, where they are considered similar to genie-binders.\",\n        \"elemental eidolons\": \"  At 1st level, an elemental ally has four elemental eidolons she can summon, one each for the elements of air, earth, fire, and water. Their abilities and statistics are determined using the rules for elemental eidolons for the summoner class from page 33 of Pathfinder RPG Pathfinder Unchained , as if the elemental ally were a summoner of her druid level, except they gain no additional evolution pool ( just those evolutions from their base form and base evolutions from their subtype). Each of the four elementals has its own base form, skills, and feats. The elemental ally can summon one of these elementals with the same 1-minute ritual a summoner normally uses to do so. The elemental ally can't summon an eidolon or cast summon nature's ally if she currently has an eidolon summoned. She also can't summon an eidolon if she currently has a creature summoned through other means. If one of the elemental ally's eidolons is killed, she cannot summon any eidolons for 24 hours. The elemental ally can dismiss her eidolon as a standard action. As the elemental ally gains levels, her elemental eidolons' base statistics and base evolutions increase as if her druid level were her summoner level. The eidolons gain the darkvision, link, share spells, evasion, ability score increase, devotion, multiattack, and improved evasion abilities at the appropriate levels, but never gain an evolution pool. Abilities and spells that grant additional evolution points to eidolons do not function for elemental eidolons, though any ability that would grant evolution points to an animal companion does work. The elemental ally does not gain life link or any other class features a summoner gains in relation to her eidolon. This ability replaces nature's bond and wild shape.\",\n        \"elemental empathy (ex)\": \"  An elemental ally can improve the attitude of a creature of the elemental subtype. This ability functions just like a Diplomacy check to improve the attitude of a person. The elemental ally rolls 1d20 and adds her druid level and her Charisma modifier to determine the elemental empathy check result. To use elemental empathy, the elemental ally and the elemental must be able to study each other, which means that they must be within 30 feet of one another under normal conditions. Generally, inf luencing an elemental in this way takes 1 minute, but as with influencing people, it might take more or less time. An elemental ally can also use this ability to influence a non-elemental outsider with the air, earth, fire, or water subtype, but she takes a -4 penalty on the check. This ability replaces wild empathy.\",\n        \"elemental magic\": \"  The elemental ally can target elementals (including her elemental eidolons) with any spell she casts that targets animals, even though elementals can't normally be targeted by such spells.\",\n        \"elemental resistance (ex)\": \"  At 4th level, an elemental ally gains resist acid, cold, electricity, and fire 5. This ability replaces resist nature's lure.\"\n    }\n}",
@@ -61,9 +61,9 @@
  "armor_enhancement_bonus": 1,
  "armor_enhancement_chosen_list": [],
  "armor_max_dex_bonus": "0",
- "armor_name": "Stone lamellar",
+ "armor_name": "Half-plate",
  "armor_spell_failure": 0,
- "armor_weight": "45 lbs.",
+ "armor_weight": "50 lbs.",
  "bab_total": 12,
  "background_traits": [
   "Spirit Talker"
@@ -400,54 +400,59 @@
  "c_class_display": "Druid",
  "casting_level_str_foundry": "high",
  "casting_tradition": {
-  "bonus_spell_points": 1,
+  "bonus_spell_points": 0,
   "boons": [
+   "Easy Focus",
    "Overcharge",
-   "Fortified Casting"
+   "Empowered Abilities"
   ],
   "boons_detail": [
+   {
+    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
+    "name": "Easy Focus"
+   },
    {
     "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
     "name": "Overcharge"
    },
    {
-    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
-    "name": "Fortified Casting"
+    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
+    "name": "Empowered Abilities"
    }
   ],
   "casting_ability_modifier": "Wisdom",
   "drawbacks": [
+   "Skilled Casting",
+   "Somatic Casting",
    "Verbal Casting",
-   "Magical Signs",
-   "Focus Casting",
-   "Painful Magic",
-   "Skilled Casting"
+   "Addictive Casting",
+   "Focus Casting"
   ],
   "drawbacks_detail": [
+   {
+    "counts_as": 1,
+    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
+    "name": "Skilled Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
+    "name": "Somatic Casting"
+   },
    {
     "counts_as": 1,
     "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
     "name": "Verbal Casting"
    },
    {
-    "counts_as": 1,
-    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
-    "name": "Magical Signs"
+    "counts_as": 2,
+    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
+    "name": "Addictive Casting"
    },
    {
     "counts_as": 1,
     "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
     "name": "Focus Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
-    "name": "Painful Magic"
-   },
-   {
-    "counts_as": 1,
-    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
-    "name": "Skilled Casting"
    }
   ]
  },
@@ -463,8 +468,7 @@
    "Order of the Eclipse": 1
   },
   "arcana": {
-   "jinx blending": 4,
-   "protected assault": 2
+   "protected assault": 3
   }
  },
  "class feature owners": {
@@ -474,11 +478,11 @@
   "favored_terrains": "ranger"
  },
  "class features": {
-  "Skill Unlock: Ride": {
-   "10 Ranks": "When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.",
-   "15 Ranks": "While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.",
-   "20 Ranks": "Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.",
-   "5 Ranks": "Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted."
+  "Skill Unlock: Disguise": {
+   "10 Ranks": "You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.",
+   "15 Ranks": "You can create a disguise as a full-round action.",
+   "20 Ranks": "You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.",
+   "5 Ranks": "You can create a disguise in 1d3 minutes."
   },
   "Talents": {
    "Order of the Eclipse": {
@@ -492,16 +496,12 @@
    }
   },
   "arcana": {
-   "jinx blending": {
-    "Special": "A magus can select this magus arcana more than once.",
-    "benefits": "When a magus selects this arcana, he must select one spell from the witch spell list that is at least one level lower than the highest magus spell level he can cast. He adds this spell to his spellbook and list of magus spells known as a magus spell one level higher than its witch spell level. He can instead select two spells to add in this way, but both must be at least two levels lower than the highest-level magus spell he can cast."
-   },
    "protected assault": {
     "benefits": "The magus can expend 1 point from his arcane pool as a swift action to protect himself from an opposing alignment."
    }
   },
   "favored_enemies": [
-   "Ooze"
+   "Outsider (water)"
   ],
   "favored_terrains": [
    "Planes [choose]"
@@ -647,8 +647,7 @@
    "Order of the Eclipse": 1
   },
   "arcana": {
-   "jinx blending": 4,
-   "protected assault": 2
+   "protected assault": 3
   }
  },
  "class_feature_owners": {
@@ -658,11 +657,11 @@
   "favored_terrains": "ranger"
  },
  "class_features": {
-  "Skill Unlock: Ride": {
-   "10 Ranks": "When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.",
-   "15 Ranks": "While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.",
-   "20 Ranks": "Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.",
-   "5 Ranks": "Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted."
+  "Skill Unlock: Disguise": {
+   "10 Ranks": "You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.",
+   "15 Ranks": "You can create a disguise as a full-round action.",
+   "20 Ranks": "You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.",
+   "5 Ranks": "You can create a disguise in 1d3 minutes."
   },
   "Talents": {
    "Order of the Eclipse": {
@@ -676,16 +675,12 @@
    }
   },
   "arcana": {
-   "jinx blending": {
-    "Special": "A magus can select this magus arcana more than once.",
-    "benefits": "When a magus selects this arcana, he must select one spell from the witch spell list that is at least one level lower than the highest magus spell level he can cast. He adds this spell to his spellbook and list of magus spells known as a magus spell one level higher than its witch spell level. He can instead select two spells to add in this way, but both must be at least two levels lower than the highest-level magus spell he can cast."
-   },
    "protected assault": {
     "benefits": "The magus can expend 1 point from his arcane pool as a swift action to protect himself from an opposing alignment."
    }
   },
   "favored_enemies": [
-   "Ooze"
+   "Outsider (water)"
   ],
   "favored_terrains": [
    "Planes [choose]"
@@ -764,7 +759,7 @@
   "light",
   "sonic"
  ],
- "craft_type": "Inkmaking",
+ "craft_type": "Featherwork",
  "day_list": [
   6,
   7,
@@ -774,70 +769,64 @@
  "dex": 16,
  "enhancement_effects_dict": {},
  "equip_descrip": {
-  "belts": {
-   "description": " at first glance, there is nothing at all unique about this length of woven brown wool; however, in the hands of a spellcaster it can be a devious resource. The wearer of a diminishing sash can tear off a piece of the item and use it as a substitute for spell components worth up to 50. Each piece torn from a diminishing sash (an action subsumed in the casting of a spell) provides components for one spell, and multiple pieces cannot be combined to provide more expensive components. After providing the components for 50 spells, a diminishing sash becomes a nonmagical piece of cloth. If the sash is used to generate material components for a spell that normally uses no components or components that cost 1or less, the wearer casts the spell at +1 caster level. ",
-   "item_name": "Diminishing Sash"
+  "chest": {
+   "description": " this shirt is made of light, gossamer-thin fabric embroidered\r with arrangements of winged feet. Once per day as a swift\r action, the wearer can take an additional move action to move\r and then immediately end his turn, losing any unspent actions. A character must wear this shirt continuously for 24 hours before he can activate this ability. ",
+   "item_name": "Quick Runner's Shirt"
   },
   "rings": {
-   "description": "This otherwise plain ring is adorned with a tiny Sihedron rune. These rings were given to agents and allies of the runelords as badges of office and tokens of appreciation for their worksometimes, they were given as bribes to those a runelord was attempting to win to his cause. Like the more common Sihedron medallion , runelords have special links to Sihedron rings that aid in scrying and observation of the world around the wearer of the ring. A Sihedron ring grants a +3 deflection bonus to AC, a +3 resistance bonus on all saving throws, and protects the wearer with a constant endure elements effect. At will, as a standard action, the wearer can use the Sihedron ring to change the appearance of his clothing or armor into any other kind of clothing or armor. The actual clothing and armor worn retain all their properties (including weight) when glamered. Only true seeing or similar magic reveals the true nature of the adornments.",
-   "item_name": "Sihedron Ring"
+   "description": "When this ring is worn, the wielder's skin attains a barely perceptible sheen. In practical terms, the wearer ignores the first 5 points of an object's hardness when performing a sunder combat maneuver or when smashing an object. She also does not take the standard 4 penalty for making a combat maneuver check to disarm while unarmed. Additionally, the ring's wearer can focus all of the ring's power, possibly repelling a devastating blow. Once per day, when a critical hit or sneak attack is scored on the wearer, there is a 50% chance that the critical hit or sneak attack is negated and damage is instead rolled normally. Using this ability is an immediate action, and the wearer must decide to use it before the critical hit or sneak attack damage is rolled.",
+   "item_name": "Steelhand Circle"
   }
  },
  "equipment_list": [
-  "Diminishing Sash",
-  "Sihedron Ring"
+  "Quick Runner's Shirt",
+  "Steelhand Circle"
  ],
  "eye_color": [
-  "Brown"
+  "Amber"
  ],
  "feat_budget": {
   "bloodline": 0,
   "class": 0,
   "flavor": 1,
   "flaw": 2,
-  "normal": 7,
-  "profession": 4,
+  "normal": 9,
+  "profession": 2,
   "story": 3,
   "teamwork": 1,
-  "trainer": 0
+  "trainer": 5
  },
  "feat_changes_dict": {
-  "Secret Signs": {
+  "Altitude Affinity": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "skills",
-     "text": "+4 bonus on Bluff checks made to pass secret messages (not other Bluff uses)"
+     "target": "skill.sur",
+     "text": "+2 competence on Survival checks at altitudes of 5,000 ft or higher (and you are automatically acclimated to high altitude)."
     }
    ]
   }
  },
  "feat_conditionals_dict": {},
  "feats": [
-  "Spell Shield",
-  "Cosmopolitan",
-  "Malice",
-  "Dazzling Display",
-  "Martial Training I (Scarlet Throne)",
+  "Cast Rune",
+  "Harmonic Blending",
+  "Construct Companions (vanguard)",
+  "Shielded Caster",
+  "Unseelie Hunter",
+  "Enruned Shield",
+  "Strong Comeback",
   "Multi Talented",
-  "True Calling",
-  "Always Improving",
-  "Multi Talented (2nd)"
+  "True Calling"
  ],
  "feats_feat_tax_dict": {
-  "Martial Training I (Scarlet Throne)": [
-   "Martial Training II (Scarlet Throne)"
-  ],
-  "Martial Training III (Scarlet Throne)": [
-   "Martial Training IV (Scarlet Throne)"
-  ],
-  "Martial Training V (Scarlet Throne)": [
-   "Martial Training VI (Scarlet Throne)"
+  "Extra Cantrips Or Orisons": [
+   "extra cantrips or orisons"
   ]
  },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Torch Handling"
+  "Cosmopolitan"
  ],
  "flaw": [
   "Grudge Keeper",
@@ -867,21 +856,17 @@
    "tier": "major"
   }
  },
- "flaw_feat_tax_dict": {
-  "Minor Spell Expertise": [
-   "major spell expertise"
-  ]
- },
+ "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Minor Spell Expertise",
-  "Improved Day Job"
+  "Grant Control",
+  "Altitude Affinity"
  ],
- "formatted_bio": "Laurène Long\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 4 Druid / Magus And Ranger And Samurai\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Disciplines: Scarlet Throne\n- Homeland: Tal-falko\n\nVocation\n- Profession: Equine Dentist (rank 15)\n- Profession: Wizard (rank 10)\n- Profession: Torchbearer (rank 8)\n- Profession: Wayfarer's Lackey (rank 2)\n- Profession: Ledger Clerk (rank 4)\n- Known for: Inkmaking\n\nFamily\n- Loving Mother\n- Absent Father\n- Raised In A Wealthy Household\n- 1 Younger Brother\n- 1 Older Sister\n\nPersonality\n- Personality: Astute, Energetic, Chill\n- Mannerisms: Flexes muscles, Withdraws into oneself, Covers eyes, Cracks knuckles\n- Flaws: Grudge Keeper, Haunted\n\nAppearance\n- Hair: Touseled Blond\n- Eyes: Brown\n- Build: Homely",
+ "formatted_bio": "Laurène Long\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 4 Druid / Magus And Ranger And Samurai\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Homeland: Tal-falko\n\nVocation\n- Profession: Margin Scribbler (rank 15)\n- Profession: Worldforger Eternal (rank 10)\n- Profession: Pickpocket (rank 1)\n- Profession: Apprentice Smith (rank 2)\n- Profession: Grave Necromancer (rank 1)\n- Known for: Featherwork\n- Training: An average trainer who taught them Gunsmithing, Diehard\n- Training: An excellent trainer who taught them Back to Back, Fiendish Resilience, Athletic\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Middle Income Household\n- 2 Older Sisters\n\nPersonality\n- Personality: Astute, Energetic, Chill\n- Mannerisms: Flexes muscles, Withdraws into oneself, Covers eyes, Cracks knuckles\n- Flaws: Grudge Keeper, Haunted\n\nAppearance\n- Hair: Touseled Blond\n- Eyes: Amber\n- Build: Raspy Voice",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 7899,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 965,
+ "gold": 4988,
  "hair_color": [
   "Blond"
  ],
@@ -891,27 +876,27 @@
  "height_number": "5'1\"",
  "hero_points": 0,
  "homebrew_feat_desc_dict": {
-  "Ability Focus (malefactions)": "You have a knack for potent, complex curses. increase the dc of your malefactions by 2.",
-  "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
-  "Arcane Vendetta": "The mistreatment of your people by an arcane society (such as Numeria's Technic League or the White Witches of Irrisen) has made you particularly eager to inf lict harm on those who use arcane magic",
-  "Combat Medic": "You know the urgency of treating wounds in the heat of battle, applying first aid to your allies with such speed that you assure no one gets left behind",
+  "Altitude Affinity": "You have hardened your body against the grueling rigors of surviving at high altitudes",
+  "Athletic": "You possess inherent physical prowess",
+  "Back to Back": "Your ally's eyes are your own, and yours are his",
+  "Cast Rune": "Even if you are not a practitioner of rune magic, you are protected by a specific rune present in your name or influencing your day of birth. Special You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it grants a new rune you can invoke. select one rune as per the patron rune trait. you may invoke your patron rune once per day to gain its , as listed under runic divination. the runes effects last for 1 hour, or until you use its granted power once (whatever happens first).",
+  "Concussive Spell": "You cause creatures to be disoriented when you affect them with a spell that has the sonic descriptor",
+  "Construct Companions (vanguard)": "A construct companions abilities are determined by the vanguards level and by the augmentations selected by the vanguard. The base statistics are outlines in Table Construct Companions. Each construct companion has a chosen form that modifies these base statistics. Construct companions are treated as constructs for determining what spells affect them. Bonus Bonus Class Level This is the characters vanguard level. HD This is the total number of 10-sided (d10) Hit Dice the companion possesses. As the construct companion has no Constitution score, it does not get any bonus hit points from its Constitution modifier (treat its Constitution as 10 for determining its hit points). However, as a Medium-sized construct, it gains 20 additional hit points due to its size. BAB This is the construct companions base attack bonus. A construct companions base attack bonus is equal to its Hit Dice. Construct companions do not gain additional attacks using their natural weapons for having a high base attack bonus, though they do gain additional attacks when using manufactured weapons, as normal. Saving Throws This is the constructs base saving throw bonuses. As a construct, the companion has no good saving throws. Skills This lists the construct companions total skill ranks. A companion can assign skill ranks to any skill. The values shown in Table Construct Companion are the base value, assuming the companion has an Intelligence score of 10. Companions with Intelligence scores above the base value modify these totals as normal (a construct companion receives a number of skill ranks equal to 2 + its Intelligence modifier per HD). A companion cannot have more ranks in a skill than it has Hit Dice. Feats This is the total number of feats possessed by a construct companion. Companions can select any feat that they qualify for. Armor Bonus The number noted here is the construct companions base armor bonus. The construct cannot wear any armor, as it interferes with the vanguards link with the companion. Primary Ability Bonus Add this bonus to the construct companions two primary ability scores. These are determined by the companions base form. Special This includes a number of abilities gained by all construct companions as they increase in power. Each of these bonuses is described below. Companion Traits (Ex) A construct companion is not built nor animated as a typical construct. It is powered by the vanguards innate power and intuition rather than careful design, and as such has different abilities from a normal construct. A construct companion has all traits and immunities a normal construct has, except as noted here. Construct companions are not immune to mind-affecting effects, including charms, compulsions, phantasms, patterns, and morale effects. A construct companion has an Intelligence score and gains feats and skill ranks as appropriate for its level, as shown in Table Construct Companions, and has class skills. A companion has the same weapon proficiencies as the vanguard and can use shields (except tower shields). Integrated Equipment (Ex) A construct companion can have its weapons or shield integrated into its body, rather than having to hold and stow them as a normal piece of equipment. Any manufactured weapon or shield that is of appropriate size for the construct companion can be integrated. Integrating equipment takes 1 hour of work by the vanguard. After doing so, the item is built directly into the constructs form. It can bring forth the weapon or shield and store it back in its body as if drawing it normally, including reductions in time from feats such as Quick Draw. When stored, the equipment is inside the companions body and cannot be seen, and its magic aura (if any) cannot be found with spells such as detect magic unless the spell can penetrate through the constructs metallic body. When it draws an integrated weapon or shield, it replaces the hand necessary to wield the item, at which point it can be used as if wielded normally. An integrated weapon or shield cannot be disarmed or stolen, as its attached directly to the constructs body, though it can be sundered or attacked as normal. A construct companion can have up to three pieces of integrated equipment at once. If the companion has an integrated ranged weapon, the vanguard can integrate ammunition along with it. Up to 50 pieces of ammunition can be integrated with each ranged weapon. Reloading an integrated weapon is no faster than reloading the weapon as normal, and can be reduced by feats and abilities such as Rapid Reload possessed by the companion. Integrating more ammunition takes 10 minutes of work by the vanguard. Once a piece of equipment is integrated, it cannot be removed intact. Removing integrated equipment involves either destroying the equipment (though sunder checks and the like) or spending 1 hour removing the item, the process of which gives it the broken condition but leaves it intact enough to be repaired via make whole or similar magic. Removing a ranged weapon requires removing its integrated ammunition, if any. Link (Ex) A construct companion is not made nor controlled as a normal construct; it is instead tied to the vanguards own magical essence, and as such the vanguard shares a special link with his companion. The vanguard can communicate empathically with the companion, but cannot see through its eyes. Because of the links limited nature, only general emotions can be shared. The vanguard has the same connection to an item or place that the companion does. However, such a link has its drawbacks. As the companion is powered by the vanguards magic essence, the construct cannot move more than 100 feet away from the vanguard at any time. If it does, the construct companion immediately shuts down, rendering it helpless and unable to act. The vanguard must be able to exercise mental control to keep the companion functioning. If the vanguard is ever unconscious, asleep, killed, stunned, or confused, the companion cannot act and is considered helpless. In addition, magic items interfere with the vanguards link to his companion. As a result, the vanguard and his companion share magic item slots. For example, if the vanguard is wearing a ring, the companion can wear no more than one ring. If there is a conflict, the item worn by the vanguard remains active while the item worn by the construct become dormant. Magic weapons do not interfere with the vanguards link with his companion. Despite being animated by magic, the construct does not shut down in an antimagic field, though some of its other abilities may be negated. Share Spells (Ex) The vanguard may cast a spell with a target of you on his construct companion (as a spell with a range of touch) instead of on himself. A vanguard may cast spells on his companion even if the spells normally do not affect creatures of the companions type (construct). Spells cast in this way must come from the vanguard spell list. This ability does not allow the companion to share abilities that are not spells, even if they function like spells. Ability Score Increase (Ex) The construct companion adds +1 to one of its ability scores. Devotion (Ex) A construct companion gains a +4 morale bonus on Will saves against enchantment spells and effects. Greater Link (Ex) The constructs link with the vanguard improves. The companion can now move up to 200 feet away without any penalty. If it moves further than 200 feet away, but less than 500 feet away, the companion is staggered. If it moves more than 500 feet away, the companion shuts down and is considered helpless. In addition, the construct companion can still act normally whenever the vanguard is stunned or confused, though it still cannot act if the vanguard is unconscious, asleep, or killed. The following are class skills for a construct companion Craft (Int), Disable Device (Dex), Knowledge (engineering) (Int), and Perception (Wis). A constructs base form grants four additional class skills, as listed in the forms entry. In addition, any construct companion that gains a fly speed receives Fly (Dex) as a class skill, regardless of what level it obtains its fly speed. Each construct companion has one of three base forms that determines its starting speed, AC, skills, and ability scores (including its primary ability scores). The companion also gains two slam attacks that deal 1d4 damage, regardless of its form. They are primary natural attacks, meaning they use the constructs full base attack bonus. Each slam attack require a free hand for the construct to make the attack. A construct companion is always Medium sized and typically humanoid in shape (two arms, two legs, head, and torso). The appearance of the companion is otherwise left to the vanguard to decide and has no impact on its abilities. Starting Statistics Speed 30 ft.; AC +4 armor bonus; Base Ability Scores Str 16, Dex 13, Con , Int 8, Wis 12, Cha 10; Primary Ability Scores Strength, Dexterity; Skills Climb (Str), Intimidate (Cha), Sense Motive (Wis), and Swim (Str). Starting Statistics Speed 20 ft.; AC No bonus; Base Ability Scores Str 8, Dex 13, Con , Int 10, Wis 12, Cha 16; Primary Ability Scores Dexterity, Charisma, Skills Knowledge (arcana) (Int), Knowledge (planes) (Int), Spellcraft (Int), and Use Magic Device (Cha). Starting Statistics Speed 40 ft.; AC +2 armor bonus; Base Ability Scores Str 10, Dex 16, Con , Int 13, Wis 12, Cha 8; Primary Ability Scores Dexterity, Intelligence; Skills Acrobatics (Dex), Bluff (Cha), Stealth (Dex), Survival (Wis).",
   "Cosmopolitan": "Living in large, exotic cities has put you in touch with many diverse civilizations, cultures, and races",
-  "Dazzling Display": "Your skill with your favored weapon can frighten enemies",
-  "Improved Day Job": "You learned the importance of an honest day's work while training as an initiate of the Pathf inder Society",
-  "Malice": "",
-  "Martial Training I (Scarlet Throne)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
-  "Martial Training II (Scarlet Throne)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training III (Scarlet Throne)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training IV (Scarlet Throne)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training V (Scarlet Throne)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training VI (Scarlet Throne)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
-  "Minor Spell Expertise": "You are able to cast a 1st-level spell as a spell-like ability",
+  "Diehard": "You are especially hard to kill Not only do your wounds automatically stabilize when grievously injured, but you can remain conscious and continue to act even at death's door",
+  "Enruned Shield": "",
+  "Eye for Quality": "Your long experience in your craft allows you to identify items of exceptional or magical quality. you can use a craft check in place of a spellcraft check to identify magic items as if using detect magic or in place of an appraise check to determine an items price. you must hold the item for 1 round to make such a check, and can only identify or appraise items related to your craft skill, subject to gm discretion. for example, craft (armor) could be used to appraise armor or shields, while craft (alchemy) could identify a potion.",
+  "Fiendish Resilience": "You dodge energy attacks with amazing agility",
+  "Grant Control": "Control over your undead is easily granted to others, binding the energy to their soul rather than yours. Transferred undead follow the new creature's commands, not yours, and no longer count against the number of Hit Dice of undead you can control. as a standard action you can touch a creature and transfer control over any number of mindless undead you control to that creature. these undead count against that creatures limit of undead they can control using animate dead (or similar abilities, such as the death spheres reanimate ability), and you cannot transfer control to a creature if the transferred undead would put them above this cap. you cannot transfer control of an undead whose total hit dice is more than twice the recipient's caster level with their ability to create and control undead. if the touched creature does not have the ability to create and control mindless undead themselves, they may only control a maximum of four hit dice of undead, none of which can have more than 2 hit dice. if the creature has caster levels in a class with animate dead on their spell list but does not know the spell, they use their caster level when determining the number of undead they can control (as normal for animate dead).",
+  "Gunsmithing": "You know the secrets of repairing and restoring firearms",
+  "Harmonic Blending": "",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat.",
-  "Secret Signs": "You are particularly adept at communicating with others via innuendo, gestures, and secret hand signs",
-  "Spell Shield": "",
-  "Torch Handling": "In your grasp, a simple torch becomes a beacon",
-  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
+  "Shielded Caster": "Your allies cover you while you cast complicated spells",
+  "Strong Comeback": "You learn quickly from past mistakes",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
+  "Unknowable Fear": "Your terrifying presence precedes you. other creatures take a 2 penalty on intimidate checks against you, and you can perform the project hostility occult skill unlock even if you can't cast psychic spells. if you can cast psychic spells or have the psychic sensitivity feat, then creatures do not become immune to your project hostility for 24 hours after being targeted with it.",
+  "Unseelie Hunter": "",
+  "Weapon Diligence": ""
  },
  "inherents": {
   "cha": 0,
@@ -922,37 +907,22 @@
   "wis": 4
  },
  "initiation_stat": "wis",
- "initiator_level": 7,
+ "initiator_level": 0,
  "int": 13,
  "item_changes_dict": {
-  "Diminishing Sash": {
+  "Quick Runner's Shirt": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "The wearer of a diminishing sash can tear off a piece of the item and use it as a substitute for spell components worth up to 50. After providing the components for 50 spells, a diminishing sash becomes a nonmagical piece of cloth. If the sash is used to generate material components for a spell that normally uses no components or components that cost 1or less, the wearer casts the spell at +1 caster level."
+    "Once per day as a swift action, the wearer can take an additional move action to move and then immediately end his turn, losing any unspent actions. A character must wear this shirt continuously for 24 hours before he can activate this ability."
    ]
   },
-  "Sihedron Ring": {
-   "changes": [
-    {
-     "formula": "3",
-     "operator": "add",
-     "priority": 0,
-     "target": "ac",
-     "type": "deflection"
-    },
-    {
-     "formula": "3",
-     "operator": "add",
-     "priority": 0,
-     "target": "allSavingThrows",
-     "type": "resist"
-    }
-   ],
+  "Steelhand Circle": {
+   "changes": [],
    "contextNotes": [
     {
-     "target": "ac",
-     "text": "At will, as a standard action, the wearer can use the sihedron ring to change the appearance of his clothing or armor into any other kind of clothing or armor."
+     "target": "attack",
+     "text": "In practical terms, the wearer ignores the first 5 points of an object's hardness when performing a sunder combat maneuver or when smashing an object. She also does not take the standard 4 penalty for making a combat maneuver check to disarm while unarmed. Once per day, when a critical hit or sneak attack is scored on the wearer, there is a 50% chance that the critical hit or sneak attack is negated and damage is instead rolled normally."
     }
    ]
   }
@@ -962,11 +932,15 @@
  "language_text": [
   "Common",
   "Druidic",
-  "Celestial",
   "Kelish",
-  "Undercommon",
+  "Aquan",
   "Wayang",
-  "Aklo"
+  "Grippli",
+  "Infernal",
+  "Abyssal",
+  "Orc",
+  "Celestial",
+  "Goblin"
  ],
  "level": 4,
  "level_up_stats": {
@@ -980,183 +954,11 @@
  "license_url": "/license",
  "magic_talent_items": [],
  "main_stat": "wis",
- "maneuvers_choose_from": [
-  [
-   "Scything Strike",
-   "Princes Attitude"
-  ],
-  [
-   "Rising Zenith Strike",
-   "Regal Blade"
-  ],
-  [
-   "Strike of Defeat",
-   "Scarlet Eyes Perception"
-  ],
-  [
-   "Weeping Scarlet Razor"
-  ],
-  [
-   "Scarlet Riposte"
-  ],
-  [
-   "Final Blow"
-  ]
- ],
- "maneuvers_desc_dict": {
-  "Circular Stance": {
-   "action": "1 swift action",
-   "description": "Practitioners of Scarlet Throne know that to be a lord amongst warriors, he must walk the path of battle alone, and he understands that often times he may be beset by all sides. By adopting the Circular Stance, the disciple learns to defend himself from the predations of those who would think him outflanked. While in this stance, the initiator is never considered flanked this thwarts sneak attack attempts as well, provided that the rogue or ninjas level does not exceed the disciples initiator level by 4 or more.",
-   "discipline": "Scarlet Throne",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Final Blow": {
-   "action": "1 standard action",
-   "description": "Mercy has a place on the battlefield, a disciple of Scarlet Throne understands, as does the benefit of an honorable and swift death. By showing his enemy a merciful, swift death in battle, the disciple may continue to his next victory while letting both keep their honor. The disciple makes a melee attack against an injured foe, and if the attack is successful and the foe is under 25% of his maximum hit points, the attack is treated as a coup de grace that is performed as part of that attack action instead of the full round action usually required. This does not provoke attacks of opportunity. The attack does damage as a critical hit, and the foe must make a Fortitude save with a DC equal to 10 + the damage inflicted or die. If the foe is above 25% of his maximum hit points, then this maneuver has no effect and normal damage is rolled. Disciples with this maneuver readied have a keen sense of their enemys condition, and may make a Sense Motive check as a free action DC 20 to gauge if their opponent is eligible to be finished by this maneuver.",
-   "discipline": "Scarlet Throne",
-   "duration": "Instantaneous",
-   "level": 6,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Princes Attitude": {
-   "action": "1 swift action",
-   "description": "The Scarlet Throne disciple knows that he is nobility in the savagery of war, and conducts himself as such when moving through melee. The initiator gains a +4 dodge bonus to his Armor Class when he moves through threatened areas and provokes attacks of opportunity and a +2 competence bonus to Reflex and Will saves until his next turn.",
-   "discipline": "Scarlet Throne",
-   "duration": "One round",
-   "level": 1,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Regal Blade": {
-   "action": "1 swift action",
-   "description": "A disciple of the Scarlet Throne learns that in moments of precise focus, a single stroke of the blade can fell a potent enemy. The disciple may add a +2 insight bonus to his attack roll and +1d8 insight bonus to his damage roll on a single melee attack made during this turn.",
-   "discipline": "Scarlet Throne",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Rising Zenith Strike": {
-   "action": "1 standard action",
-   "description": "With supreme focus, comes great insight into the workings of a foes defenses. When the moment is right, the disciple releases his attack in a vicious upward swing. The disciple makes a Sense Motive check in place of his normal attack roll he may add any enhancement bonus from his weapon or feats that apply from the use of his weapon to this Sense Motive check as well, and if this Sense Motive check equals or exceeds the targets armor class, the attack deals double damage. If this check does not meet or exceed the targets armor class, then the attack fails and the disciple misses.",
-   "discipline": "Scarlet Throne",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Scarlet Duelist Attitude": {
-   "action": "1 swift action",
-   "description": "The force of will that a disciple of Scarlet Throne possesses is enough to protect him and guide his steps through battle, and his battle focus allows him to anticipate danger before it happens. By adopting this stance, the disciple may add +5 insight bonus to his Armor Class, CMD, and to his Initiative score.",
-   "discipline": "Scarlet Throne",
-   "duration": "Stance",
-   "level": 6,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Scarlet Einhander": {
-   "action": "1 swift action",
-   "description": "By adopting this stance, the disciple presents a slim profile to his foes, holding his weapon low and one-handed, and leads with his blade in an elegant and graceful manner, his strikes strong and his profile aiding him in defense. When wielding a melee weapon in one hand, the initiator presents a slim profile with strong offensive and defensive ability. The initiator gains a +2 shield bonus to his Armor Class and inflicts an additional 1d6 points of damage while in this stance. The shield bonus granted by this stance increases by +1 when the characters initiator level reaches 6th, and increases again by +1 at 12th and 18th initiator level. Upon reaching 10th initiator level, the bonus damage increases to 2d6.",
-   "discipline": "Scarlet Throne",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Scarlet Eyes Perception": {
-   "action": "1 swift action",
-   "description": "By watching his opponents defenses and waiting for the hole in them to open, the Scarlet Throne disciple strikes with the speed of the gods. The initiators next melee attack against that target is resolved as a touch attack.",
-   "discipline": "Scarlet Throne",
-   "duration": "Instantaneous",
-   "level": 3,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Scarlet Riposte": {
-   "action": "1 immediate action",
-   "description": "Within the focus of the disciples mind, pathways to victory form which he uses to sculpt and mold the outcome of the battle. When an enemys attack threatens to unravel these pathways, a supreme act of will can restore order to them. The disciple makes a Sense Motive check with a +4 competence bonus opposing his enemys melee attack roll. If successful, the attack is blocked and he may make an immediate counter attack against that opponent at his full attack bonus and inflict an additional 3d6 points of damage.",
-   "discipline": "Scarlet Throne",
-   "duration": "Instantaneous",
-   "level": 5,
-   "range": "Personal",
-   "type": "counter"
-  },
-  "Scything Strike": {
-   "action": "1 standard action",
-   "description": "The principles of the Scarlet Throne teach its disciples that every swing must be made with precision and excellence; no movement is wasted and no attack should be fruitless. The disciple may make a single attack against two adjacent enemies using the same attack roll and applying it to each target.",
-   "discipline": "Scarlet Throne",
-   "duration": "Instantaneous",
-   "level": 1,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Strike of Defeat": {
-   "action": "1 standard action",
-   "description": "A dead foe is a foe that can trouble you no more, is an old adage of the Scarlet Throne disciple. An injured foe is easy prey, but is still a foe nonetheless. By utilizing this swift executioners strike, the Scarlet Throne disciple removes a potential threat and obstacle from his path. The disciple makes an attack against a foe which if successful deals additional damage determined by the state of the enemys hit points. If the enemy has more than 75% of his total hit points, this strike does no additional damage. If the foe has less than 75% hit points, this strike inflicts an additional 4d6 points of damage. If the foe has less than 25% of his total hit points, this strike inflicts an additional 8d6 points of damage.",
-   "discipline": "Scarlet Throne",
-   "duration": "Instantaneous",
-   "level": 3,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Unfettered Movement": {
-   "action": "1 swift action",
-   "description": "The Scarlet Throne disciple is swift in battle and in his ability to go from one skirmish to the next to choose his next foe. By assuming this stance, the disciple gains a +10-ft. bonus to his base speed and gains a +4 dodge bonus to his armor class against attacks of opportunity.",
-   "discipline": "Scarlet Throne",
-   "duration": "Stance",
-   "level": 3,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Weeping Scarlet Razor": {
-   "action": "1 standard action",
-   "description": "Even the basest common soldier knows that there are places on a mans body where if he were to be stabbed, then he would bleed out in minutes. The Scarlet Throne disciple takes this knowledge and arms himself with his superior skill to utilize this arterial strike against his foes. The initiator makes a melee attack against a target creature, and if successful, this attack inflicts an additional 4d6 points of damage and the target begins to bleed profusely, inflicting 4 points of bleed damage per round until a successful Heal check DC 20 or a spell or effect that cures hit point damage has been administered to the target.",
-   "discipline": "Scarlet Throne",
-   "duration": "Special",
-   "level": 4,
-   "range": "Melee attack",
-   "type": "strike"
-  }
- },
- "maneuvers_known_list": [
-  2,
-  2,
-  2,
-  1,
-  1,
-  1
- ],
- "maneuvers_readied_list": [
-  0,
-  1,
-  2,
-  1,
-  1,
-  1
- ],
- "maneuvers_readied_names": [
-  [],
-  [
-   "Regal Blade"
-  ],
-  [
-   "Scarlet Eyes Perception",
-   "Strike of Defeat"
-  ],
-  [
-   "Weeping Scarlet Razor"
-  ],
-  [
-   "Scarlet Riposte"
-  ],
-  [
-   "Final Blow"
-  ]
- ],
+ "maneuvers_choose_from": [],
+ "maneuvers_desc_dict": {},
+ "maneuvers_known_list": [],
+ "maneuvers_readied_list": [],
+ "maneuvers_readied_names": [],
  "manifesters": [],
  "mannerisms": [
   "Flexes muscles",
@@ -1164,54 +966,43 @@
   "Covers eyes",
   "Cracks knuckles"
  ],
- "martial_disciplines": [
-  "Scarlet Throne"
- ],
+ "martial_disciplines": [],
  "mini_alignment": "ng",
  "mod_char_sheet_var": false,
- "mt_feats": [
-  "Martial Training I (Scarlet Throne)",
-  "Martial Training III (Scarlet Throne)",
-  "Martial Training V (Scarlet Throne)"
- ],
- "normal_feat_amount": 5,
+ "mt_feats": [],
+ "normal_feat_amount": 7,
  "older_brothers": " you have 0 older brothers",
- "older_sisters": " you have 1 older sisters",
+ "older_sisters": " you have 2 older sisters",
  "opposing_school": "N/A",
- "parents": "loving mother, absent father, raised in a wealthy household",
+ "parents": "loving mother, loving father, raised in a middle income household",
  "personality_traits": [
   "Astute",
   "Energetic",
   "Chill"
  ],
- "platnium": 96.5,
+ "platnium": 498.8,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
    "changes": [
     {
-     "formula": "3",
+     "formula": "2",
      "operator": "add",
      "priority": 0,
-     "target": "skill.hea",
+     "target": "skill.lin",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.lin",
      "type": "competence"
     }
    ],
-   "contextNotes": [
-    {
-     "target": "fort",
-     "text": "+2 vs disease, poison, and nausea"
-    }
-   ],
-   "description": "<p><em>Profession (Equine Dentist) - rank 15/15. Associate skills (ranks 1/4/7/10): Appraise, Perception, Sense Motive, Use Magic Device.</em></p><hr><p><strong>Steady Hands (Ex)</strong></p><p>Years of delicate work have given you unflinching control. You gain a +3 competence bonus on Heal checks, and you never take a penalty on Heal checks for working in poor conditions or under duress.</p><hr><p><strong>Disease Ward (Ex)</strong></p><p>Constant exposure to contagion has toughened your constitution. You gain a +2 resistance bonus on Fortitude saves against disease, poison, and nausea.</p>",
-   "name": "Profession Rank 5: (Equine Dentist)",
-   "uses": null
-  },
-  {
-   "changes": [],
    "contextNotes": [],
-   "description": "<p><em>Profession (Equine Dentist) - rank 15/15.</em></p><hr><p><strong>Antivenom Expert (Sp)</strong></p><p>You have a near-perfect understanding of toxins. You can cast delay poison at will on touch, and once per day each you can cast lesser restoration and remove sickness as spell-like abilities (caster level equal to your character level).</p><hr><p><strong>Poultice Maker (Sp)</strong></p><p>You can prepare a healing poultice that, when applied as a standard action, acts as cure light wounds (caster level equal to your character level). You can apply such a poultice a number of times per day equal to 3 + your Wisdom modifier.</p><hr><p><strong>Healer's Touch (Sp)</strong></p><p>You can cast cure light wounds three times per day as a spell-like ability, and you can remove the fatigued, shaken, or sickened condition from a creature by touch (caster level equal to your character level).</p>",
-   "name": "Profession Rank 15: (Equine Dentist)",
+   "description": "<p><em>Profession (Margin Scribbler) - rank 15/15. Associate skills (ranks 1/4/7/10): Profession, Sleight of Hand, Handle Animal, Perception.</em></p><hr><p><strong>Bookish (Ex)</strong></p><p>Years buried in dusty tomes let you read and write any language you know and grant a +2 competence bonus on Linguistics checks and on any one Knowledge skill in which you have at least 1 rank. Once per day you may take 20 on a Knowledge or Linguistics check made to research a written record without spending extra time.</p><hr><p><strong>Footnote Hoarder (Ex)</strong></p><p>You obsessively annotate every margin and cross-reference the most obscure citations. You gain a +2 competence bonus on Linguistics checks, and once per day you may reroll a single failed Linguistics check and take the better result.</p>",
+   "name": "Profession Rank 5: (Margin Scribbler)",
    "uses": null
   },
   {
@@ -1222,11 +1013,60 @@
      "priority": 0,
      "target": "skill.kar",
      "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.khi",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.kge",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.lin",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.kar",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.khi",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.kge",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.kna",
+     "type": "competence"
     }
    ],
    "contextNotes": [],
-   "description": "<p><em>Profession (Wizard) - rank 10/10. Associate skills (ranks 1/4/7/10): Profession, Appraise, Handle Animal, Use Magic Device.</em></p><hr><p><strong>Apprentice Spellcasting (Sp)</strong></p><p>Choose two spells of 1st or 2nd level from the wizard/sorcerer spell list (such as mage armor, shield, or magic missile). You can cast each twice per day as a spell-like ability (caster level equal to your character level).</p><hr><p><strong>Mage Armor (Sp)</strong></p><p>Once per day the Druid can sheathe themselves in <strong>mage armor</strong>, conjuring a tangible field of force that wards off blows for the better part of a day.</p><hr><p><strong>Scholar's Insight (Ex)</strong></p><p>Years bent over grimoires sharpen the Druid's recall of arcane lore. They gain a <strong>+2 competence</strong> bonus on Knowledge (arcana) checks, and may always take 10 on Knowledge (arcana) even when distracted or threatened.</p>",
-   "name": "Profession Rank 5: (Wizard)",
+   "description": "<p><em>Profession (Margin Scribbler) - rank 15/15.</em></p><hr><p><strong>Lore Master (Ex)</strong></p><p>You gain a +2 bonus on all Knowledge checks and can always take 10 on them. You can attempt any Knowledge check untrained.</p><hr><p><strong>Polyglot's Ear (Ex)</strong></p><p>Hours of study across foreign grammars let you puzzle out unfamiliar speech and script. You gain a +2 competence bonus on Linguistics checks, and you can read a message in a language you do not know, or decipher an unfamiliar cipher, with a Linguistics check (DC 10 + half your character level + your Intelligence modifier).</p><hr><p><strong>Encyclopedic Recall (Ex)</strong></p><p>Your memory is a well-ordered archive of names, dates, and minor facts. You gain a +2 competence bonus on all Knowledge checks, and you can attempt any Knowledge check untrained to recall an obscure fact.</p>",
+   "name": "Profession Rank 15: (Margin Scribbler)",
    "uses": null
   },
   {
@@ -1235,137 +1075,137 @@
      "formula": "2",
      "operator": "add",
      "priority": 0,
-     "target": "skill.apr",
-     "type": "competence"
+     "target": "fort",
+     "type": "resistance"
     }
    ],
    "contextNotes": [],
-   "description": "<p><em>Profession (Torchbearer) - rank 8/10. Associate skills (ranks 1/4/7/10): Sleight of Hand, Knowledge (local), Profession.</em></p><hr><p><strong>Scavenger's Knack (Ex)</strong></p><p>You make do with what the road leaves behind. You gain a +2 competence bonus on Appraise checks and on Survival checks to forage food and water in the wild.</p><hr><p><strong>Roadworn Feet (Ex)</strong></p><p>You have walked farther than most folk ever will. You can hustle for 1 additional hour each day before risking nonlethal damage, and you gain a +2 competence bonus on Constitution checks to avoid fatigue from a forced march.</p>",
-   "name": "Profession Rank 5: (Torchbearer)",
-   "uses": null
+   "description": "<p><em>Profession (Worldforger Eternal) - rank 10/10. Associate skills (ranks 1/4/7/10): Appraise, Perception, Sense Motive, Use Magic Device.</em></p><hr><p><strong>Venom Immunity (Ex)</strong></p><p>A lifetime among serpents, spiders, and toxic flora has hardened your body. You are immune to all poison, regardless of its source or type.</p><hr><p><strong>Thousand Faces (Su)</strong></p><p>Channeling the shifting nature of the wild, you can alter your physical appearance at will as an <em>alter self</em> spell (caster level equal to your character level). You may change your form a number of times per day equal to 3 + your Wisdom modifier, and each change lasts until you dismiss it or change again.</p><hr><p><strong>Endure Elements (Su)</strong></p><p>The wild's harshest extremes leave you unbothered. You take no harm from severe heat or cold (between -50 and 140 degrees Fahrenheit), and you gain a +2 resistance bonus on Fortitude saves against weather, environmental hazards, and energy damage from heat or cold.</p>",
+   "name": "Profession Rank 5: (Worldforger Eternal)",
+   "uses": {
+    "maxFormula": "3 + @abilities.wis.mod",
+    "per": "day",
+    "value": null
+   }
   }
  ],
  "profession_feat_desc": {
-  "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat.",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
  },
  "profession_feats": [
   "Multi Talented",
-  "True Calling",
-  "Always Improving",
-  "Multi Talented (2nd)"
+  "True Calling"
  ],
- "profession_pool": 39,
+ "profession_pool": 29,
  "profession_ranks": [
   {
-   "ability_theme": "medical",
-   "ability_tier": "average",
+   "ability_theme": "scholar",
+   "ability_tier": "bad",
    "associate_skills": [
-    "Appraise",
-    "Perception",
-    "Sense Motive",
-    "Use Magic Device"
+    "Profession",
+    "Sleight of Hand",
+    "Handle Animal",
+    "Perception"
    ],
    "cap": 15,
-   "name": "Equine Dentist",
+   "name": "Margin Scribbler",
    "rank15_abilities": [
     {
-     "changes": [],
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.kar",
+       "type": "competence"
+      },
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.khi",
+       "type": "competence"
+      },
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.kge",
+       "type": "competence"
+      }
+     ],
      "contextNotes": [],
-     "desc": "<p>You have a near-perfect understanding of toxins. You can cast delay poison at will on touch, and once per day each you can cast lesser restoration and remove sickness as spell-like abilities (caster level equal to your character level).</p>",
-     "name": "Antivenom Expert (Sp)",
-     "uses": {
-      "maxFormula": "2",
-      "per": "day",
-      "value": null
-     }
+     "desc": "<p>You gain a +2 bonus on all Knowledge checks and can always take 10 on them. You can attempt any Knowledge check untrained.</p>",
+     "name": "Lore Master (Ex)",
+     "uses": null
     },
     {
-     "changes": [],
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.lin",
+       "type": "competence"
+      }
+     ],
      "contextNotes": [],
-     "desc": "<p>You can prepare a healing poultice that, when applied as a standard action, acts as cure light wounds (caster level equal to your character level). You can apply such a poultice a number of times per day equal to 3 + your Wisdom modifier.</p>",
-     "name": "Poultice Maker (Sp)",
-     "uses": {
-      "maxFormula": "3 + @abilities.wis.mod",
-      "per": "day",
-      "value": null
-     }
+     "desc": "<p>Hours of study across foreign grammars let you puzzle out unfamiliar speech and script. You gain a +2 competence bonus on Linguistics checks, and you can read a message in a language you do not know, or decipher an unfamiliar cipher, with a Linguistics check (DC 10 + half your character level + your Intelligence modifier).</p>",
+     "name": "Polyglot's Ear (Ex)",
+     "uses": null
     },
     {
-     "changes": [],
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.kar",
+       "type": "competence"
+      },
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.khi",
+       "type": "competence"
+      },
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.kge",
+       "type": "competence"
+      },
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.kna",
+       "type": "competence"
+      }
+     ],
      "contextNotes": [],
-     "desc": "<p>You can cast cure light wounds three times per day as a spell-like ability, and you can remove the fatigued, shaken, or sickened condition from a creature by touch (caster level equal to your character level).</p>",
-     "name": "Healer's Touch (Sp)",
-     "uses": {
-      "maxFormula": "3",
-      "per": "day",
-      "value": null
-     }
+     "desc": "<p>Your memory is a well-ordered archive of names, dates, and minor facts. You gain a +2 competence bonus on all Knowledge checks, and you can attempt any Knowledge check untrained to recall an obscure fact.</p>",
+     "name": "Encyclopedic Recall (Ex)",
+     "uses": null
     }
    ],
    "rank5_abilities": [
     {
      "changes": [
       {
-       "formula": "3",
+       "formula": "2",
        "operator": "add",
        "priority": 0,
-       "target": "skill.hea",
+       "target": "skill.lin",
        "type": "competence"
       }
      ],
      "contextNotes": [],
-     "desc": "<p>Years of delicate work have given you unflinching control. You gain a +3 competence bonus on Heal checks, and you never take a penalty on Heal checks for working in poor conditions or under duress.</p>",
-     "name": "Steady Hands (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [],
-     "contextNotes": [
-      {
-       "target": "fort",
-       "text": "+2 vs disease, poison, and nausea"
-      }
-     ],
-     "desc": "<p>Constant exposure to contagion has toughened your constitution. You gain a +2 resistance bonus on Fortitude saves against disease, poison, and nausea.</p>",
-     "name": "Disease Ward (Ex)",
-     "uses": null
-    }
-   ],
-   "ranks": 15,
-   "skill_label": "Profession (Equine Dentist)"
-  },
-  {
-   "ability_theme": "arcane",
-   "ability_tier": "good",
-   "associate_skills": [
-    "Profession",
-    "Appraise",
-    "Handle Animal",
-    "Use Magic Device"
-   ],
-   "cap": 10,
-   "name": "Wizard",
-   "rank15_abilities": [],
-   "rank5_abilities": [
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>Choose two spells of 1st or 2nd level from the wizard/sorcerer spell list (such as mage armor, shield, or magic missile). You can cast each twice per day as a spell-like ability (caster level equal to your character level).</p>",
-     "name": "Apprentice Spellcasting (Sp)",
-     "uses": {
-      "maxFormula": "4",
-      "per": "day",
-      "value": null
-     }
-    },
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>Once per day the Druid can sheathe themselves in <strong>mage armor</strong>, conjuring a tangible field of force that wards off blows for the better part of a day.</p>",
-     "name": "Mage Armor (Sp)",
+     "desc": "<p>Years buried in dusty tomes let you read and write any language you know and grant a +2 competence bonus on Linguistics checks and on any one Knowledge skill in which you have at least 1 rank. Once per day you may take 20 on a Knowledge or Linguistics check made to research a written record without spending extra time.</p>",
+     "name": "Bookish (Ex)",
      "uses": {
       "maxFormula": "1",
       "per": "day",
@@ -1378,91 +1218,119 @@
        "formula": "2",
        "operator": "add",
        "priority": 0,
-       "target": "skill.kar",
+       "target": "skill.lin",
        "type": "competence"
       }
      ],
      "contextNotes": [],
-     "desc": "<p>Years bent over grimoires sharpen the Druid's recall of arcane lore. They gain a <strong>+2 competence</strong> bonus on Knowledge (arcana) checks, and may always take 10 on Knowledge (arcana) even when distracted or threatened.</p>",
-     "name": "Scholar's Insight (Ex)",
-     "uses": null
+     "desc": "<p>You obsessively annotate every margin and cross-reference the most obscure citations. You gain a +2 competence bonus on Linguistics checks, and once per day you may reroll a single failed Linguistics check and take the better result.</p>",
+     "name": "Footnote Hoarder (Ex)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
     }
    ],
-   "ranks": 10,
-   "skill_label": "Profession (Wizard)"
+   "ranks": 15,
+   "skill_label": "Profession (Margin Scribbler)"
   },
   {
-   "ability_theme": "wayfarer",
-   "ability_tier": "bad",
+   "ability_theme": "nature",
+   "ability_tier": "top",
    "associate_skills": [
-    "Sleight of Hand",
-    "Knowledge (local)",
-    "Profession"
+    "Appraise",
+    "Perception",
+    "Sense Motive",
+    "Use Magic Device"
    ],
    "cap": 10,
-   "name": "Torchbearer",
+   "name": "Worldforger Eternal",
    "rank15_abilities": [],
    "rank5_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>A lifetime among serpents, spiders, and toxic flora has hardened your body. You are immune to all poison, regardless of its source or type.</p>",
+     "name": "Venom Immunity (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Channeling the shifting nature of the wild, you can alter your physical appearance at will as an <em>alter self</em> spell (caster level equal to your character level). You may change your form a number of times per day equal to 3 + your Wisdom modifier, and each change lasts until you dismiss it or change again.</p>",
+     "name": "Thousand Faces (Su)",
+     "uses": {
+      "maxFormula": "3 + @abilities.wis.mod",
+      "per": "day",
+      "value": null
+     }
+    },
     {
      "changes": [
       {
        "formula": "2",
        "operator": "add",
        "priority": 0,
-       "target": "skill.apr",
-       "type": "competence"
+       "target": "fort",
+       "type": "resistance"
       }
      ],
      "contextNotes": [],
-     "desc": "<p>You make do with what the road leaves behind. You gain a +2 competence bonus on Appraise checks and on Survival checks to forage food and water in the wild.</p>",
-     "name": "Scavenger's Knack (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [],
-     "contextNotes": [],
-     "desc": "<p>You have walked farther than most folk ever will. You can hustle for 1 additional hour each day before risking nonlethal damage, and you gain a +2 competence bonus on Constitution checks to avoid fatigue from a forced march.</p>",
-     "name": "Roadworn Feet (Ex)",
+     "desc": "<p>The wild's harshest extremes leave you unbothered. You take no harm from severe heat or cold (between -50 and 140 degrees Fahrenheit), and you gain a +2 resistance bonus on Fortitude saves against weather, environmental hazards, and energy damage from heat or cold.</p>",
+     "name": "Endure Elements (Su)",
      "uses": null
     }
    ],
-   "ranks": 8,
-   "skill_label": "Profession (Torchbearer)"
+   "ranks": 10,
+   "skill_label": "Profession (Worldforger Eternal)"
   },
   {
-   "ability_theme": "wayfarer",
+   "ability_theme": "skill",
    "ability_tier": "bad",
    "associate_skills": [
-    "Sense Motive"
+    "Profession"
    ],
    "cap": 10,
-   "name": "Wayfarer's Lackey",
+   "name": "Pickpocket",
+   "rank15_abilities": [],
+   "rank5_abilities": [],
+   "ranks": 1,
+   "skill_label": "Profession (Pickpocket)"
+  },
+  {
+   "ability_theme": "craft",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Handle Animal"
+   ],
+   "cap": 10,
+   "name": "Apprentice Smith",
    "rank15_abilities": [],
    "rank5_abilities": [],
    "ranks": 2,
-   "skill_label": "Profession (Wayfarer's Lackey)"
+   "skill_label": "Profession (Apprentice Smith)"
   },
   {
-   "ability_theme": "scholar",
+   "ability_theme": "occult",
    "ability_tier": "average",
    "associate_skills": [
-    "Appraise",
-    "Knowledge (local)"
+    "Handle Animal"
    ],
    "cap": 10,
-   "name": "Ledger Clerk",
+   "name": "Grave Necromancer",
    "rank15_abilities": [],
    "rank5_abilities": [],
-   "ranks": 4,
-   "skill_label": "Profession (Ledger Clerk)"
+   "ranks": 1,
+   "skill_label": "Profession (Grave Necromancer)"
   }
  ],
  "professions": [
-  "Equine Dentist",
-  "Wizard",
-  "Torchbearer",
-  "Wayfarer's Lackey",
-  "Ledger Clerk"
+  "Margin Scribbler",
+  "Worldforger Eternal",
+  "Pickpocket",
+  "Apprentice Smith",
+  "Grave Necromancer"
  ],
  "racial_stats": {
   "cha": 0,
@@ -1534,53 +1402,52 @@
  "shield_weight": " ",
  "skill_rank_budget": 190,
  "skill_ranks": {
-  "acrobatics": 9,
-  "appraise": 14,
-  "bluff": 8,
-  "climb": 0,
-  "craft": 10,
-  "diplomacy": 0,
+  "appraise": 6,
+  "bluff": 4,
+  "climb": 8,
+  "craft": 19,
+  "diplomacy": 4,
   "disable device": 0,
-  "disguise": 0,
-  "escape artist": 8,
-  "fly": 0,
-  "handle animal": 9,
-  "heal": 3,
+  "disguise": 2,
+  "escape artist": 16,
+  "fly": 5,
+  "handle animal": 7,
+  "heal": 11,
   "intimidate": 0,
-  "knowledge arcana": 0,
-  "knowledge dungeoneering": 0,
-  "knowledge engineering": 11,
-  "knowledge geography": 25,
-  "knowledge history": 8,
-  "knowledge local": 0,
+  "knowledge arcana": 6,
+  "knowledge dungeoneering": 4,
+  "knowledge engineering": 0,
+  "knowledge geography": 17,
+  "knowledge history": 13,
+  "knowledge local": 6,
   "knowledge nature": 0,
-  "knowledge nobility": 5,
-  "knowledge planes": 0,
-  "knowledge religion": 9,
-  "linguistics": 4,
-  "perception": 13,
-  "perform": 8,
+  "knowledge nobility": 9,
+  "knowledge planes": 8,
+  "knowledge religion": 13,
+  "linguistics": 8,
+  "perception": 3,
+  "perform": 0,
   "profession": 0,
-  "ride": 12,
+  "ride": 0,
   "sense motive": 0,
-  "sleight of hand": 13,
-  "spellcraft": 4,
-  "stealth": 8,
+  "sleight of hand": 12,
+  "spellcraft": 0,
+  "stealth": 3,
   "survival": 0,
-  "swim": 9,
+  "swim": 6,
   "use magic device": 0
  },
  "skill_unlock": {
-  "base_skill": "ride",
-  "ranks": 12,
-  "skill": "Ride",
+  "base_skill": "disguise",
+  "ranks": 2,
+  "skill": "Disguise",
   "unlock": {
-   "10": "When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.",
-   "15": "While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.",
-   "20": "Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.",
-   "5": "Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted."
+   "10": "You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.",
+   "15": "You can create a disguise as a full-round action.",
+   "20": "You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.",
+   "5": "You can create a disguise in 1d3 minutes."
   },
-  "unlock_html": "<h2>Ride</h2><p><strong>5 Ranks</strong>: Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted.</p><p><strong>10 Ranks</strong>: When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.</p><p><strong>15 Ranks</strong>: While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.</p><p><strong>20 Ranks</strong>: Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.</p>"
+  "unlock_html": "<h2>Disguise</h2><p><strong>5 Ranks</strong>: You can create a disguise in 1d3 minutes.</p><p><strong>10 Ranks</strong>: You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.</p><p><strong>15 Ranks</strong>: You can create a disguise as a full-round action.</p><p><strong>20 Ranks</strong>: You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.</p>"
  },
  "specialty_schools": [
   "transmutation",
@@ -1822,60 +1689,76 @@
   7
  ],
  "sphere_boons": [
+  "Easy Focus",
   "Overcharge",
-  "Fortified Casting"
+  "Empowered Abilities"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
+  "Skilled Casting",
+  "Somatic Casting",
   "Verbal Casting",
-  "Magical Signs",
-  "Focus Casting",
-  "Painful Magic",
-  "Skilled Casting"
+  "Addictive Casting",
+  "Focus Casting"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Verbal Casting",
-  "Magical Signs",
-  "Focus Casting",
-  "Painful Magic",
   "Skilled Casting",
+  "Somatic Casting",
+  "Verbal Casting",
+  "Addictive Casting",
+  "Focus Casting",
+  "Easy Focus",
   "Overcharge",
-  "Fortified Casting"
+  "Empowered Abilities"
  ],
  "spheres_chosen": [],
- "stances_chosen": [
-  "Scarlet Einhander",
-  "Unfettered Movement",
-  "Scarlet Duelist Attitude",
-  "Circular Stance"
- ],
+ "stances_chosen": [],
  "story_feat_tax_dict": {},
  "story_feats": [
-  "Ability Focus (malefactions)",
-  "Combat Medic",
-  "Arcane Vendetta"
+  "Weapon Diligence",
+  "Concussive Spell",
+  "Unknowable Fear"
  ],
  "str": 8,
  "teamwork_feat_labels": [
   "Samurai 1"
  ],
  "teamwork_feats": [
-  "Secret Signs"
+  "Eye for Quality"
  ],
  "total_level": 14,
  "total_rolled_hp": 116,
- "trainer_calibers": [],
- "trainer_feat_labels": [],
- "trainer_feat_tax_dict": {},
- "trainer_feats": [],
+ "trainer_calibers": [
+  2,
+  3
+ ],
+ "trainer_feat_labels": [
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 2)"
+ ],
+ "trainer_feat_tax_dict": {
+  "Back to Back": [
+   "improved back to back"
+  ]
+ },
+ "trainer_feats": [
+  "Gunsmithing",
+  "Diehard",
+  "Back to Back",
+  "Fiendish Resilience",
+  "Athletic"
+ ],
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],
- "weapon_name": "Traveling kettle",
+ "weapon_name": "Baston fighting stick",
  "weight_number": 149,
  "wis": 18,
- "younger_brothers": " you have 1 younger brothers",
+ "younger_brothers": " you have 0 younger brothers",
  "younger_sisters": " you have 0 younger sisters"
 }
