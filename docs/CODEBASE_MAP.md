@@ -112,7 +112,7 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   divisor arithmetic in `get_data_without_prerequisites` and `generic_multi_chooser` (class-choices
   ticket 01). Buckets are keyed by the *rendered* bucket name (`arcana`, `rage_powers`), with the
   data key in each row's `dataset` field.
-  **Nothing caps at 20.** Class levels reach 40 and above 20th the game is homebrew, so picks keep
+  **Nothing caps at 20.** Class levels reach `level_and_bab.MAX_CHARACTER_LEVEL` (40) and above 20th the game is homebrew, so picks keep
   coming: only spells and maneuvers freeze, via `capped_level` (`level_and_bab.py:53`). An explicit
   list continues with `repeat` (tile it, so deliberate holes like the shaman's wandering-hex levels
   survive) or `then_every` (a plain cadence); a list with **neither** is a stated cap — the

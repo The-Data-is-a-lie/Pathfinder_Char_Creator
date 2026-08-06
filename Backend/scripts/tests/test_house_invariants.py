@@ -68,6 +68,9 @@ BOND = {'granted': 0, 'absent': 0, 'both': 0, 'neither': 0, 'druid_flip': 0,
 # curated files and this test must fail when a creature strays outside them, not when a copy here
 # falls behind them. `TYPE_NOUNS` is the label vocabulary; only the chassis-driven types have feats.
 from utils.class_func.companion_feats import CHASSIS_TYPES as _CHASSIS_TYPES, TYPE_NOUNS as _NOUNS
+# The ceiling itself, imported rather than restated -- a copy here could agree with a
+# drifted generator, which is the failure this whole file exists to prevent.
+from utils.class_func.level_and_bab import MAX_CHARACTER_LEVEL
 COMPANION_FEAT_TYPES = {kind: _NOUNS[kind] for kind in _CHASSIS_TYPES}
 with open(BACKEND / 'json' / 'animal_companion.json', encoding='utf-8') as _fh:
     _CHASSIS = json.load(_fh)
@@ -190,6 +193,29 @@ def final_mod(payload, stat):
 def check_character(cell, payload):
     L = payload['total_level']
     classes = payload['classes']
+
+    # ---- the level ceiling ----
+    # randomize_level CLAMPS a requested level to MAX_CHARACTER_LEVEL rather than rejecting it, and
+    # a silent clamp is exactly the kind of rule that can stop firing without anyone noticing -- the
+    # symptom would be a level-60 character, not an error. This runs on every swept character, but
+    # the sweep's own levels are all under the ceiling, so `check_level_ceiling` below is what
+    # actually drives the clamp; without it this pair would pass vacuously forever.
+    #
+    # The second half is the one that would really rot: the total is capped in one place, but the
+    # per-class split happens in another (_split_levels), so a character whose class levels do not
+    # add up to its total would satisfy the cap and still be wrong.
+    check(L <= MAX_CHARACTER_LEVEL,
+          f"{cell}: total level {L} exceeds the ceiling of {MAX_CHARACTER_LEVEL}")
+    check(sum(c['level'] for c in classes) == L,
+          f"{cell}: class levels {[c['level'] for c in classes]} sum to "
+          f"{sum(c['level'] for c in classes)}, not the total level {L}")
+    for c in classes:
+        check(1 <= c['level'] <= MAX_CHARACTER_LEVEL,
+              f"{cell}: {c['name']} is level {c['level']}, outside 1..{MAX_CHARACTER_LEVEL}")
+    # `capped_level` -- the min(level, 20) that stops spell and maneuver progressions -- is NOT
+    # asserted here: it lives on character.classes and is deliberately not exported, so the payload
+    # cannot see it. What a payload CAN show is its effect, and the spell-slot check further down
+    # already covers that.
 
     # ---- spell slots are numbers ----
     # `spells_per_day_attr` loops `range(0, highest_spell_known + 1)` and indexes the scraped table,
@@ -632,6 +658,41 @@ def check_bonded_creatures(cell, payload):
     BOND['druid_flip'] += 1
 
 
+def check_level_ceiling():
+    """Ask for characters ABOVE the ceiling and confirm they come back at it.
+
+    Separate from the sweep, and cheap on purpose: the clamp is one branch, so it needs a handful
+    of generations rather than a level added to the 68-class matrix. Multiclass is on, because the
+    interesting half is `_split_levels` -- the total is capped in randomize_level and then divided
+    somewhere else, so an off-by-one there produces a character that is over the ceiling without
+    any single class being.
+
+    `low_level` is raised with `high_level` so the roll cannot land under the ceiling by luck and
+    report a pass it did not earn.
+    """
+    for requested in (MAX_CHARACTER_LEVEL + 1, 60, 999):
+        cell = f"ceiling L{requested}"
+        try:
+            with redirect_stdout(io.StringIO()):
+                payload = main_test.generate_random_char(
+                    class_choice='random', chosen_BAB='high', multi_class='Y',
+                    userInput_race='random', userInput_region='Tal-Falko',
+                    alignment_input='random', userInput_gender='random',
+                    high_level=requested, low_level=requested, gold_num=10000,
+                    num_dice='4', num_sides='6', use_backstory_api='N',
+                    spheres_flag='N', seed=7777)
+        except Exception:
+            tail = traceback.format_exc().strip().splitlines()
+            REPORT.error(f"{cell}: generation raised -- {tail[-1]}")
+            continue
+        got = payload['total_level']
+        check(got == MAX_CHARACTER_LEVEL,
+              f"{cell}: asked for level {requested}, got {got} -- the clamp in randomize_level "
+              f"should pin it to exactly {MAX_CHARACTER_LEVEL}")
+        check_character(f"{cell} (gen seed {payload.get('generation_seed')})", payload)
+    print(f"  level ceiling: clamped to {MAX_CHARACTER_LEVEL} from 41/60/999")
+
+
 def run(classes, levels, seeds):
     total = len(classes) * len(levels) * len(seeds)
     done = 0
@@ -678,6 +739,10 @@ def main():
     print(f"sweeping {len(classes)} classes x {levels} x {len(seeds)} seed(s) "
           f"= {total} generations")
     run(classes, levels, seeds)
+
+    # Runs on every invocation, including `--classes fighter`: it is three generations, and it is
+    # the only thing that exercises the clamp at all.
+    check_level_ceiling()
 
     # Existence check only on a sweep big enough that zero picks means the wiring broke, not luck.
     if total >= 100:

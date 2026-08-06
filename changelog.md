@@ -18,6 +18,23 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 
 ## [Unreleased]
 
+### Changed
+- **The level-40 ceiling is now a named rule with a test behind it, instead of a bare `40` nobody
+  guarded.** The ceiling itself already worked — `randomize_level` has always clamped, and asking
+  for level 999 has always produced a level-40 character — but it was an unexplained literal in one
+  function, and *nothing anywhere asserted it*. Because the clamp is silent rather than an error, a
+  regression would have shipped level-60 characters rather than failing. It is now
+  `level_and_bab.MAX_CHARACTER_LEVEL`, imported by the sweep rather than restated in it.
+  - Every swept character is checked against it, plus the invariant that would actually rot: the
+    total is capped in `randomize_level` but divided across classes in `_split_levels`, so a
+    character whose class levels do not sum to its total would satisfy the cap and still be wrong.
+  - A dedicated check asks for levels 41, 60 and 999 and requires exactly 40 back, multiclassed so
+    the split is exercised. **Verified by breaking it:** with the clamp removed the suite reports
+    the over-ceiling total, the failed clamp, and a level-344 dread. The sweep's own levels all sit
+    under the ceiling, so without this the assertions would have passed vacuously forever.
+  - Requests above the ceiling are still **clamped, not rejected** — the caller is asking for a
+    random character, not a specific one.
+
 ### Fixed
 - **A character above 20th level stopped gaining nine kinds of class option, while still gaining
   the others.** Above 20th the game is homebrew, and the house ruling is that a level-30 character
