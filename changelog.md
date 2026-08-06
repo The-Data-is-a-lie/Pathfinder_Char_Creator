@@ -19,6 +19,23 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Changed
+- **Every class-specific choice is now a declared pipeline phase.** `phase_class_options` covers
+  schools, archetypes, bloodlines, domains, bonded creatures and the thirty-odd option buckets.
+  Golden payloads unchanged.
+  - It was expected to be the twenty-plus-`requires` case and it needs **four**. The block reads a
+    great deal, but nearly all of it is state the block itself produced a few lines earlier; only
+    the prerequisite-seeding state (ability scores, BAB, caster level) and one write-after-write
+    genuinely cross in.
+  - **That write-after-write is the pipeline's only one, and it is now a contract.**
+    `favored_class_calculator` does `character.Total_HP += character.level`, so letting the HP phase
+    run afterwards would *overwrite* the favoured-class bonus rather than lose it loudly.
+  - **A local here was conditionally bound, and the export site knew it** — the wizard school is
+    only assigned for wizards, which is why the export reads it inside a `try/except NameError`. An
+    attribute cannot raise `NameError`, so it is seeded to `None` to keep the non-wizard path
+    landing on "N/A" exactly as before. Those handlers are now provably dead; they are left standing
+    because deleting them is a cleanup, not a move.
+  - **Three locals turned out to be dead**, including one — the favoured-class list — with no reader
+    anywhere in the repo.
 - **Hit points and the per-class spellbooks are now a declared pipeline phase.**
   `phase_hp_and_spellbooks` declares that it needs the finished ability scores, because
   `total_hp_calc` reads the *final* Con score — running it before the stats phase never raised, it

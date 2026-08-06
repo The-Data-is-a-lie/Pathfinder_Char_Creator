@@ -238,6 +238,51 @@ def test_hp_and_spellbooks_phase():
           'stats' in msg and 'classes' not in msg)
 
 
+def test_class_options_phase():
+    """phase_class_options -- the block the ticket expected to need twenty-plus `requires`.
+
+    It needs four, and the reason is the rule rather than luck: the block reads a great deal, but
+    nearly all of it is state the block itself produced a few lines earlier. What actually crosses
+    in is the prerequisite-seeding state (the ability scores, BAB and caster level that every talent
+    pool is filtered against) and one write-after-write.
+    """
+    import main_test
+
+    opts = main_test.phase_class_options
+    hp_phase = main_test.phase_hp_and_spellbooks
+
+    check('class-options phase keeps requires small (ticket 05: 2-4 names)',
+          2 <= len(opts.requires) <= 4)
+    for name in ('stats', 'bab_total', 'casting_level_num'):
+        check(f'class-options requires {name} (talent prereq seeding)', name in opts.requires)
+
+    # The one true write-after-write in the pipeline: favored_class_calculator does
+    # `character.Total_HP += character.level`. If the HP phase were allowed to run afterwards it
+    # would OVERWRITE the favoured-class bonus rather than fail -- so the ordering has to be a
+    # contract, and this is the assertion that says so.
+    check('class-options requires Total_HP (favoured class ADDS to it)',
+          'Total_HP' in opts.requires)
+    check('...and the HP phase is the thing that provides it, so the order is forced',
+          'Total_HP' in hp_phase.provides)
+
+    # The eight names that used to cross out as locals.
+    for name in ('skill_rank_level', 'chosen_school', 'chosen_opposing_school', 'archetype_info',
+                 'archetypes_per_class', 'bloodline_sorc', 'bloodline_rager',
+                 'animal_companion_feats'):
+        check(f'class-options provides {name} (was a local crossing out)', name in opts.provides)
+
+    raises('the real class-options phase raises when run before the stats exist', opts, Stub())
+
+    # The ordering mistake that would actually happen: this block moved above the HP phase. Every
+    # prerequisite-seeding name is present, so only the write-after-write is missing.
+    seeded = Stub()
+    seeded.stats = {'str': 10}
+    seeded.bab_total = 3
+    seeded.casting_level_num = 0
+    msg = raises('it raises when moved above the HP phase', opts, seeded)
+    check('the error names Total_HP alone', 'Total_HP' in msg and 'stats' not in msg)
+
+
 def main():
     for test in (test_requires_missing_raises,
                  test_falsy_requirement_counts_as_set,
@@ -245,7 +290,8 @@ def main():
                  test_sealing,
                  test_real_phases_declare_their_hazards,
                  test_alignment_and_level_phase,
-                 test_hp_and_spellbooks_phase):
+                 test_hp_and_spellbooks_phase,
+                 test_class_options_phase):
         print(f'{test.__name__}:')
         test()
 

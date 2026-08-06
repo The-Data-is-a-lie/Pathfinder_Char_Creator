@@ -444,6 +444,212 @@ def phase_hp_and_spellbooks(character):
 	sync_legacy_spell_fields(character)
 
 
+@phase(requires=['stats', 'bab_total', 'Total_HP', 'casting_level_num'],
+	   provides=['skill_rank_level', 'chosen_school', 'chosen_opposing_school',
+				 'archetype_info', 'archetypes_per_class', 'bloodline_sorc', 'bloodline_rager',
+				 'chosen_bloodline', 'bonded_creatures', 'chosen_domain',
+				 'animal_companion_feats'])
+def phase_class_options(character):
+	'''Every class-specific choice: schools, archetypes, bloodlines, domains, bonded creatures, and
+	the thirty-odd option buckets the choosers fill.
+
+	THE TWENTY-PLUS-`requires` CASE the ticket warned about -- and it did not turn out to be one. The
+	block reads a great deal, but nearly all of it is state this block itself produced a few lines
+	earlier. Ticket 05's test is "could a reordering make this absent?", not "does this code touch
+	it?", and only four names answer yes.
+
+	requires `stats`: chooseable_list_stats seeds the prerequisite strings ("str 13", "dex 15") that
+	every talent pool is then filtered against, straight off the final ability scores. Run this before
+	the stats phase and the pools silently narrow to whatever a blank character qualifies for -- no
+	error, just a worse character.
+	requires `bab_total` and `casting_level_num`: the same seeding, for the "base attack bonus +6" and
+	"caster level 5th" prerequisite forms. `casting_level_num` is set by caster_formula, which makes
+	the HP/spellbook phase a hard predecessor rather than a conventional one.
+	requires `Total_HP`: favored_class_calculator does `character.Total_HP += character.level`. That
+	is the one true write-after-write in the pipeline -- run the HP phase afterwards and the favoured
+	class bonus is silently overwritten instead of loudly lost.
+
+	EIGHT NAMES CROSS OUT, and this is where they get homes. Two already had one: `archetypes_per_class`
+	was being written to the character mid-block anyway, and `full_domain` was a bare alias of
+	`character.chosen_domain` -- safe to drop here because domain_chooser is its only writer and runs
+	exactly once, which is precisely what was NOT true of the spell aliases in phase_hp_and_spellbooks.
+
+	THREE LOCALS ARE DEAD and stay only for their draws: `favored_class_chosen` has no reader anywhere
+	in the repo, and pre_oracle_mystery/oracle_mystery are consumed inside the block.
+
+	`chosen_school` IS SEEDED TO None ON PURPOSE. The local it replaces was conditionally bound --
+	only a wizard ever reached the assignment -- which is why the export site reads it inside a
+	`try/except NameError`. An attribute cannot raise NameError, so those handlers are now dead. They
+	are left standing because deleting them is a cleanup and this commit is a pure move; the None
+	seeding is what keeps the non-wizard path landing on "N/A" exactly as it did before.
+	'''
+	#this is to allow for talent choice stat pre-reqs (self.chooseable)
+	chooseable_list(character) 		
+	chooseable_list_stats(character, character.str, 'str ', base=10)
+	chooseable_list_stats(character, character.dex, 'dex ', base=10)
+	chooseable_list_stats(character, character.con, 'con ', base=10)
+	chooseable_list_stats(character, character.int, 'int ', base=10)
+	chooseable_list_stats(character, character.wis, 'wis ', base=10)
+	chooseable_list_stats(character, character.cha, 'cha ', base=10)	
+	chooseable_list_stats(character, character.bab_total, 'base attack bonus +', base=0 )
+	chooseable_list_stats(character, character.casting_level_num, 'caster level ', base=0, th='th')	
+	chooseable_list_class_features(character)
+	chooseable_list_race(character)
+
+	druidic_flag_assigner(character) 
+	human_flag_assigner(character)
+	favored_class_list = favored_class_option(character, )
+	favored_class = favored_class_option_chooser(character, favored_class_list, character.human_flag)
+	character.skill_rank_level, _favored_class_chosen = favored_class_calculator(character, favored_class)		
+
+	# domain_chance still drives the inquisitor's inquisitions-vs-domains gate; the druid's
+	# companion-vs-domain flip moved to the bonded-creature resolver (see below).
+	domain_chance(character)
+	versatile_perfomance(character)
+
+
+	character.chosen_school = None
+	character.chosen_opposing_school = None
+	if any(c['name'] == 'wizard' for c in character.classes):
+		character.chosen_school = wizard_school_chooser(character)
+		character.chosen_opposing_school = wizard_opposing_school(character, character.chosen_school)
+
+	character.archetype_info = character.archetype_data()
+	# One archetype per rolled class for the Foundry module. The primary reuses the legacy pick
+	# above (which also strips " (unchained)" off c_class for later data lookups), so
+	# archetype_info and its class entry always agree; {} for classes with no archetypes.
+	archetypes_per_class = [
+		character.archetype_info if i == character.primary_class_index
+		else character.archetype_data(entry['name'])
+		for i, entry in enumerate(character.classes)]
+
+	# generic single choices (the choosers gate themselves on any matching class entry)
+	character.bloodline_sorc = generic_class_option_chooser(character, "sorcerer", "bloodline")
+	character.bloodline_rager = generic_class_option_chooser(character, "bloodrager", "bloodline")
+	character.chosen_bloodline = (next(iter(character.bloodline_sorc), '')
+								  if character.bloodline_sorc else '')
+
+	# Bonded creatures, and the domains that are their alternative.
+	#
+	# This block CANNOT sit where the old druid-only check did (before domain_chooser, above).
+	# The resolver reads the rolled archetype and the rolled sorcerer bloodline, and both are
+	# chosen further down the pipeline than animal_chooser used to run -- archetypes just above,
+	# the bloodline on the line before this one. #38 specified "run the resolver ahead of
+	# domain_chooser"; that is still true, and both now run here instead.
+	character.archetypes_per_class = archetypes_per_class
+	resolve_bonded_creatures(character)
+	domain_chooser(character)
+	character.animal_companion_feats = companion_feats(character)
+	# #31: the numbers, last -- the merge reads the post-stack chassis and the feats are already
+	# on the entry by here. D14 makes that ordering load-bearing rather than incidental: the
+	# stat block FOLDS the feats and flaws chosen on the line above, so it cannot run first.
+	stat_bonded_creatures(character)
+
+	generic_class_option_chooser(character,"cavalier", "orders")
+	generic_class_option_chooser(character,"samurai", "orders")
+	generic_class_option_chooser(character,"warpriest", "blessing", multiple='yes', alternate_dataset=True)
+	generic_class_option_chooser(character,"inquisitor", "inquisitions", multiple='yes', alternate_dataset=True)
+	# Need to add revelations to oracle
+
+	# Make this populate like how you want it to *********
+	
+	# Choose Oracle mystery
+	if any(c['name'] == 'oracle' for c in character.classes):
+		pre_oracle_mystery = generic_class_option_chooser(character, "oracle", "mysteries", dict_name = 'mysteries')
+		oracle_mystery = list(pre_oracle_mystery.keys())[0]
+		generic_class_option_chooser(character,"oracle", dataset_name="mysteries", dataset_name_2=oracle_mystery, dataset_name_3="revelations", multiple='yes', alternate_dataset = True, level = 99, level_2 = 99, dict_name = 'mysteries')
+
+	generic_class_option_chooser(character, "oracle", "curses", dict_name = "curses")
+
+
+	generic_class_option_chooser(character,"fighter",  dataset_name="armor_train", multiple='yes', dict_name = 'armor_training')
+	generic_class_option_chooser(character,"fighter", dataset_name="weapon_train", multiple='yes', dict_name = 'weapon_training')
+	generic_class_option_chooser(character,"arcanist", dataset_name="basic", dataset_name_2="greater", multiple='yes', level=10, dict_name = 'exploits')
+	
+	#need to add patron spells to the witch spell list (like how clerics + druids + s
+	# orcs get their own added)
+	generic_class_option_chooser(character,"witch", dataset_name="basic", dataset_name_2="greater", dataset_name_3="grand", multiple='yes', level=10, level_2=18, dict_name = 'hexes')
+
+	generic_class_option_chooser(character,"shaman", "spirits", dict_name = 'spirits')
+	generic_class_option_chooser(character,"shaman", dataset_name="hexes", dataset_name_2 = "basic", multiple='yes', alternate_dataset = True, level = 99, dict_name = 'hexes')
+
+	# Psionics subsystems (ticket 08). Nine of the twelve classes carry a choice-bearing
+	# subsystem and every one of them is the same shape the choosers above already handle --
+	# pick 1 or N from a {name: description} list -- so no new chooser module exists. The pick
+	# schedules live in data.amount; the option lists are generated per class by
+	# Backend/scripts/build_psionic_class_data.py. The voyager is absent on purpose (its
+	# Voyager Knowledge feature grants bonus feats, not options) and so are the psion and
+	# wilder, which choose powers rather than a subsystem.
+	generic_class_option_chooser(character, "vitalist", "methods", dict_name = 'vitalist_method')
+	generic_class_option_chooser(character, "psychic warrior", "warrior paths", dict_name = 'warrior_path')
+	generic_class_option_chooser(character, "marksman", "combat styles", dict_name = 'combat_style')
+	generic_class_option_chooser(character, "aegis", dataset_name="customizations", multiple='yes', dict_name = 'customizations')
+	generic_class_option_chooser(character, "cryptic", dataset_name="insights", multiple='yes', dict_name = 'insights')
+	generic_class_option_chooser(character, "dread", dataset_name="terrors", multiple='yes', dict_name = 'terrors')
+	generic_class_option_chooser(character, "highlord", dataset_name="decrees", multiple='yes', dict_name = 'decrees')
+	generic_class_option_chooser(character, "soulknife", dataset_name="blade skills", multiple='yes', dict_name = 'blade_skills')
+	generic_class_option_chooser(character, "tactician", dataset_name="strategies", multiple='yes', dict_name = 'strategies')
+
+	# Occult Adventures subsystems (class-pool map, ticket 03). Every one of them is the same
+	# "pick 1 or N from a {name: description} list" the choosers above already handle, so no
+	# new chooser module exists here either. Option lists are generated per class by
+	# Backend/scripts/build_occult_class_data.py; the multi-pick schedules live in data.amount.
+	#
+	# Two subsystems DEGRADE rather than being modelled, per section 10:
+	#   kineticist burn -- an HP-priced resource with no analogue in the generator. Its wild
+	#       talents and infusions are still picked; burn is described, never tracked.
+	#   medium spirit   -- a *daily* choice, and the generator emits a static snapshot. Rolling
+	#       one seance and freezing it is a house ruling, recorded as such.
+	generic_class_option_chooser(character, "occultist", dataset_name="implements", multiple='yes', dict_name = 'implements')
+	generic_class_option_chooser(character, "occultist", dataset_name="focus powers", multiple='yes', dict_name = 'focus_powers')
+	generic_class_option_chooser(character, "kineticist", "elemental focus", dict_name = 'elemental_focus')
+	generic_class_option_chooser(character, "kineticist", dataset_name="wild talents", multiple='yes', dict_name = 'wild_talents')
+	generic_class_option_chooser(character, "kineticist", dataset_name="infusions", multiple='yes', dict_name = 'infusions')
+	# 'medium_spirit', not 'spirit': the shaman already owns a bucket called 'spirits', and two
+	# buckets one letter apart is a trap for every renderer that has to register them by name.
+	generic_class_option_chooser(character, "medium", "spirits", dict_name = 'medium_spirit')
+	generic_class_option_chooser(character, "mesmerist", dataset_name="mesmerist tricks", multiple='yes', dict_name = 'mesmerist_tricks')
+	generic_class_option_chooser(character, "mesmerist", dataset_name="bold stare", multiple='yes', dict_name = 'bold_stare')
+	generic_class_option_chooser(character, "psychic", "disciplines", dict_name = 'psychic_discipline')
+	generic_class_option_chooser(character, "psychic", dataset_name="phrenic amplifications", multiple='yes', dict_name = 'phrenic_amplifications')
+	generic_class_option_chooser(character, "spiritualist", "emotional focus", dict_name = 'emotional_focus')
+
+
+
+	# generic multi choices (with pre-reqs)
+	get_data_without_prerequisites(character, class_1="rogue",dataset_name="basic", level=10, dataset_name_2="advanced", dict_name = 'rogue_talents')
+	get_data_without_prerequisites(character, class_1="ninja",dataset_name="basic", level=10, dataset_name_2="advanced", dict_name = 'ninja_talents')
+	get_data_without_prerequisites(character, class_1="slayer",dataset_name="basic", level=10, dataset_name_2="advanced", dict_name = 'slayer_talents')
+	get_data_without_prerequisites(character, class_1="alchemist",dataset_name="basic", dict_name = 'discoveries')
+	get_data_without_prerequisites(character, class_1="investigator",dataset_name="basic", dict_name = 'investigator_talents')
+	get_data_without_prerequisites(character, class_1="vigilante",dataset_name="basic", dict_name = 'vigilante_talents')
+	get_data_without_prerequisites(character, class_1="vigilante",dataset_name="social", dict_name = 'social_talents')
+	get_data_without_prerequisites(character, class_1="barbarian",dataset_name="basic", dict_name = 'rage_powers')
+	get_data_without_prerequisites(character, class_1="skald",dataset_name="basic", dict_name = 'rage_powers')
+	get_data_without_prerequisites(character, class_1="magus",dataset_name="basic", dict_name = 'arcana')
+
+	grand_discovery_chooser(character) #fix this later
+
+	# Adding class specific feats
+
+
+	# >2 Choices based on level
+	generic_multi_chooser(character,"paladin", "mercy")
+	generic_multi_chooser(character,"antipaladin", "cruelty")
+	ki_powers = generic_multi_chooser(character,"monk", "ki_powers")
+
+
+	# feat + spell searcher
+	feat_spell_searcher(character, "monk", ki_powers, "feats", "benefit")
+	feat_spell_searcher(character, "monk", ki_powers, "spells", "description")
+	feat_spell_searcher(character, "bloodrager", character.bonus_feats , "feats", "benefit")
+	# feat_spell_searcher(character, "bloodrager", character.bonus_spells, "spells", "description")
+	# feat_spell_searcher(character, "sorcerer", character.bonus_spells, "spells", "description")
+
+	# Choosing guns for gunslinger
+	choose_gun_func(character, character.c_class)
+
+
 @phase(requires=['level', 'classes', 'class_data', 'craft_chosen'],
 	   provides=['profession_data', 'profession_feats', 'skill_rank_budget'])
 def phase_professions_and_skills(character, truly_random_feats, skill_rank_level, professions_enabled=True):
@@ -561,170 +767,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		phase_hp_and_spellbooks(character)
 
 
-		#this is to allow for talent choice stat pre-reqs (self.chooseable)
-		chooseable_list(character) 		
-		chooseable_list_stats(character, character.str, 'str ', base=10)
-		chooseable_list_stats(character, character.dex, 'dex ', base=10)
-		chooseable_list_stats(character, character.con, 'con ', base=10)
-		chooseable_list_stats(character, character.int, 'int ', base=10)
-		chooseable_list_stats(character, character.wis, 'wis ', base=10)
-		chooseable_list_stats(character, character.cha, 'cha ', base=10)	
-		chooseable_list_stats(character, character.bab_total, 'base attack bonus +', base=0 )
-		chooseable_list_stats(character, character.casting_level_num, 'caster level ', base=0, th='th')	
-		chooseable_list_class_features(character)
-		chooseable_list_race(character)
-
-		druidic_flag_assigner(character) 
-		human_flag_assigner(character)
-		favored_class_list = favored_class_option(character, )
-		favored_class = favored_class_option_chooser(character, favored_class_list, character.human_flag)
-		skill_rank_level, favored_class_chosen = favored_class_calculator(character, favored_class)		
-
-		# domain_chance still drives the inquisitor's inquisitions-vs-domains gate; the druid's
-		# companion-vs-domain flip moved to the bonded-creature resolver (see below).
-		domain_chance(character)
-		versatile_perfomance(character)
-
-
-		full_school = None
-		if any(c['name'] == 'wizard' for c in character.classes):
-			full_school = wizard_school_chooser(character)
-			full_opposing_school = wizard_opposing_school(character, full_school)
-
-		archetype_info = character.archetype_data()
-		# One archetype per rolled class for the Foundry module. The primary reuses the legacy pick
-		# above (which also strips " (unchained)" off c_class for later data lookups), so
-		# archetype_info and its class entry always agree; {} for classes with no archetypes.
-		archetypes_per_class = [
-			archetype_info if i == character.primary_class_index
-			else character.archetype_data(entry['name'])
-			for i, entry in enumerate(character.classes)]
-
-		# generic single choices (the choosers gate themselves on any matching class entry)
-		bloodline_sorc = generic_class_option_chooser(character, "sorcerer", "bloodline")
-		bloodline_rager = generic_class_option_chooser(character, "bloodrager", "bloodline")
-		character.chosen_bloodline = next(iter(bloodline_sorc), '') if bloodline_sorc else ''
-
-		# Bonded creatures, and the domains that are their alternative.
-		#
-		# This block CANNOT sit where the old druid-only check did (before domain_chooser, above).
-		# The resolver reads the rolled archetype and the rolled sorcerer bloodline, and both are
-		# chosen further down the pipeline than animal_chooser used to run -- archetypes just above,
-		# the bloodline on the line before this one. #38 specified "run the resolver ahead of
-		# domain_chooser"; that is still true, and both now run here instead.
-		character.archetypes_per_class = archetypes_per_class
-		resolve_bonded_creatures(character)
-		domain_chooser(character)
-		full_domain = character.chosen_domain
-		animal_companion_feats = companion_feats(character)
-		# #31: the numbers, last -- the merge reads the post-stack chassis and the feats are already
-		# on the entry by here. D14 makes that ordering load-bearing rather than incidental: the
-		# stat block FOLDS the feats and flaws chosen on the line above, so it cannot run first.
-		stat_bonded_creatures(character)
-
-		generic_class_option_chooser(character,"cavalier", "orders")
-		generic_class_option_chooser(character,"samurai", "orders")
-		generic_class_option_chooser(character,"warpriest", "blessing", multiple='yes', alternate_dataset=True)
-		generic_class_option_chooser(character,"inquisitor", "inquisitions", multiple='yes', alternate_dataset=True)
-		# Need to add revelations to oracle
-
-		# Make this populate like how you want it to *********
-		
-		# Choose Oracle mystery
-		if any(c['name'] == 'oracle' for c in character.classes):
-			pre_oracle_mystery = generic_class_option_chooser(character, "oracle", "mysteries", dict_name = 'mysteries')
-			oracle_mystery = list(pre_oracle_mystery.keys())[0]
-			generic_class_option_chooser(character,"oracle", dataset_name="mysteries", dataset_name_2=oracle_mystery, dataset_name_3="revelations", multiple='yes', alternate_dataset = True, level = 99, level_2 = 99, dict_name = 'mysteries')
-
-		generic_class_option_chooser(character, "oracle", "curses", dict_name = "curses")
-
-
-		generic_class_option_chooser(character,"fighter",  dataset_name="armor_train", multiple='yes', dict_name = 'armor_training')
-		generic_class_option_chooser(character,"fighter", dataset_name="weapon_train", multiple='yes', dict_name = 'weapon_training')
-		generic_class_option_chooser(character,"arcanist", dataset_name="basic", dataset_name_2="greater", multiple='yes', level=10, dict_name = 'exploits')
-		
-		#need to add patron spells to the witch spell list (like how clerics + druids + s
-		# orcs get their own added)
-		generic_class_option_chooser(character,"witch", dataset_name="basic", dataset_name_2="greater", dataset_name_3="grand", multiple='yes', level=10, level_2=18, dict_name = 'hexes')
-
-		generic_class_option_chooser(character,"shaman", "spirits", dict_name = 'spirits')
-		generic_class_option_chooser(character,"shaman", dataset_name="hexes", dataset_name_2 = "basic", multiple='yes', alternate_dataset = True, level = 99, dict_name = 'hexes')
-
-		# Psionics subsystems (ticket 08). Nine of the twelve classes carry a choice-bearing
-		# subsystem and every one of them is the same shape the choosers above already handle --
-		# pick 1 or N from a {name: description} list -- so no new chooser module exists. The pick
-		# schedules live in data.amount; the option lists are generated per class by
-		# Backend/scripts/build_psionic_class_data.py. The voyager is absent on purpose (its
-		# Voyager Knowledge feature grants bonus feats, not options) and so are the psion and
-		# wilder, which choose powers rather than a subsystem.
-		generic_class_option_chooser(character, "vitalist", "methods", dict_name = 'vitalist_method')
-		generic_class_option_chooser(character, "psychic warrior", "warrior paths", dict_name = 'warrior_path')
-		generic_class_option_chooser(character, "marksman", "combat styles", dict_name = 'combat_style')
-		generic_class_option_chooser(character, "aegis", dataset_name="customizations", multiple='yes', dict_name = 'customizations')
-		generic_class_option_chooser(character, "cryptic", dataset_name="insights", multiple='yes', dict_name = 'insights')
-		generic_class_option_chooser(character, "dread", dataset_name="terrors", multiple='yes', dict_name = 'terrors')
-		generic_class_option_chooser(character, "highlord", dataset_name="decrees", multiple='yes', dict_name = 'decrees')
-		generic_class_option_chooser(character, "soulknife", dataset_name="blade skills", multiple='yes', dict_name = 'blade_skills')
-		generic_class_option_chooser(character, "tactician", dataset_name="strategies", multiple='yes', dict_name = 'strategies')
-
-		# Occult Adventures subsystems (class-pool map, ticket 03). Every one of them is the same
-		# "pick 1 or N from a {name: description} list" the choosers above already handle, so no
-		# new chooser module exists here either. Option lists are generated per class by
-		# Backend/scripts/build_occult_class_data.py; the multi-pick schedules live in data.amount.
-		#
-		# Two subsystems DEGRADE rather than being modelled, per section 10:
-		#   kineticist burn -- an HP-priced resource with no analogue in the generator. Its wild
-		#       talents and infusions are still picked; burn is described, never tracked.
-		#   medium spirit   -- a *daily* choice, and the generator emits a static snapshot. Rolling
-		#       one seance and freezing it is a house ruling, recorded as such.
-		generic_class_option_chooser(character, "occultist", dataset_name="implements", multiple='yes', dict_name = 'implements')
-		generic_class_option_chooser(character, "occultist", dataset_name="focus powers", multiple='yes', dict_name = 'focus_powers')
-		generic_class_option_chooser(character, "kineticist", "elemental focus", dict_name = 'elemental_focus')
-		generic_class_option_chooser(character, "kineticist", dataset_name="wild talents", multiple='yes', dict_name = 'wild_talents')
-		generic_class_option_chooser(character, "kineticist", dataset_name="infusions", multiple='yes', dict_name = 'infusions')
-		# 'medium_spirit', not 'spirit': the shaman already owns a bucket called 'spirits', and two
-		# buckets one letter apart is a trap for every renderer that has to register them by name.
-		generic_class_option_chooser(character, "medium", "spirits", dict_name = 'medium_spirit')
-		generic_class_option_chooser(character, "mesmerist", dataset_name="mesmerist tricks", multiple='yes', dict_name = 'mesmerist_tricks')
-		generic_class_option_chooser(character, "mesmerist", dataset_name="bold stare", multiple='yes', dict_name = 'bold_stare')
-		generic_class_option_chooser(character, "psychic", "disciplines", dict_name = 'psychic_discipline')
-		generic_class_option_chooser(character, "psychic", dataset_name="phrenic amplifications", multiple='yes', dict_name = 'phrenic_amplifications')
-		generic_class_option_chooser(character, "spiritualist", "emotional focus", dict_name = 'emotional_focus')
-
-
-
-		# generic multi choices (with pre-reqs)
-		get_data_without_prerequisites(character, class_1="rogue",dataset_name="basic", level=10, dataset_name_2="advanced", dict_name = 'rogue_talents')
-		get_data_without_prerequisites(character, class_1="ninja",dataset_name="basic", level=10, dataset_name_2="advanced", dict_name = 'ninja_talents')
-		get_data_without_prerequisites(character, class_1="slayer",dataset_name="basic", level=10, dataset_name_2="advanced", dict_name = 'slayer_talents')
-		get_data_without_prerequisites(character, class_1="alchemist",dataset_name="basic", dict_name = 'discoveries')
-		get_data_without_prerequisites(character, class_1="investigator",dataset_name="basic", dict_name = 'investigator_talents')
-		get_data_without_prerequisites(character, class_1="vigilante",dataset_name="basic", dict_name = 'vigilante_talents')
-		get_data_without_prerequisites(character, class_1="vigilante",dataset_name="social", dict_name = 'social_talents')
-		get_data_without_prerequisites(character, class_1="barbarian",dataset_name="basic", dict_name = 'rage_powers')
-		get_data_without_prerequisites(character, class_1="skald",dataset_name="basic", dict_name = 'rage_powers')
-		get_data_without_prerequisites(character, class_1="magus",dataset_name="basic", dict_name = 'arcana')
-
-		grand_discovery_chooser(character) #fix this later
-
-		# Adding class specific feats
-
-
-		# >2 Choices based on level
-		generic_multi_chooser(character,"paladin", "mercy")
-		generic_multi_chooser(character,"antipaladin", "cruelty")
-		ki_powers = generic_multi_chooser(character,"monk", "ki_powers")
-
-
-		# feat + spell searcher
-		feat_spell_searcher(character, "monk", ki_powers, "feats", "benefit")
-		feat_spell_searcher(character, "monk", ki_powers, "spells", "description")
-		feat_spell_searcher(character, "bloodrager", character.bonus_feats , "feats", "benefit")
-		# feat_spell_searcher(character, "bloodrager", character.bonus_spells, "spells", "description")
-		# feat_spell_searcher(character, "sorcerer", character.bonus_spells, "spells", "description")
-
-		# Choosing guns for gunslinger
-		choose_gun_func(character, character.c_class)
+		phase_class_options(character)
 
 
 
@@ -751,7 +794,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# Chosen before professions so a profession can be themed around it.
 		character.craft_chosen = random.choice(data.crafts)
 		professions, skill_ranks = phase_professions_and_skills(character, truly_random_feats,
-																skill_rank_level, professions_enabled)
+																character.skill_rank_level, professions_enabled)
 		# Every character gets exactly one skill unlock, drawn from a skill they have ranks in.
 		skill_unlock = choose_skill_unlock(character, skill_ranks)
 
@@ -881,11 +924,11 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 
 		try:
-			if bloodline_sorc:
-				bloodline_full = bloodline_sorc
+			if character.bloodline_sorc:
+				bloodline_full = character.bloodline_sorc
 				bloodline = next(iter(bloodline_full.keys()), "N/A")
-			elif bloodline_rager:
-				bloodline_full = bloodline_rager
+			elif character.bloodline_rager:
+				bloodline_full = character.bloodline_rager
 				bloodline = next(iter(bloodline_full.keys()), "N/A")
 			else:
 				bloodline = "N/A"
@@ -895,12 +938,13 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 
 		try:
-			school = full_school if full_school else "N/A"
+			school = character.chosen_school if character.chosen_school else "N/A"
 		except NameError:
 			school = "N/A"
 
 		try:
-			opposing_school = full_opposing_school if full_opposing_school else "N/A"
+			opposing_school = (character.chosen_opposing_school
+							   if character.chosen_opposing_school else "N/A")
 		except NameError:
 			opposing_school = "N/A"
 
@@ -1267,14 +1311,14 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			add_bonus_spells(character, bonus_spells, _bloodline_book['spell_list_choose_from'])
 	# Domains
 		_cleric_book = _book_for('cleric')
-		if full_domain not in ([], None) and _cleric_book is not None:
-			for i, domain in enumerate(full_domain):
+		if character.chosen_domain not in ([], None) and _cleric_book is not None:
+			for i, domain in enumerate(character.chosen_domain):
 				bonus_spells = character.data_dict.get('class features', {}).get(domain.title(), {}).get("bonus spells", {})
 				add_bonus_spells(character, bonus_spells, _cleric_book['spell_list_choose_from'])
 
 		_druid_book = _book_for('druid')
-		if full_domain not in ([], None) and _druid_book is not None:
-			for i, domain in enumerate(full_domain):
+		if character.chosen_domain not in ([], None) and _druid_book is not None:
+			for i, domain in enumerate(character.chosen_domain):
 				bonus_spells = character.data_dict['class features'].get(domain, {}).get("bonus spells", [])
 				add_bonus_spells(character, bonus_spells, _druid_book['spell_list_choose_from'])
 	# Inquisitions
@@ -1282,9 +1326,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 	# Schools
 		# Schools spells are just recommended spells (not bonus spells), but we'll mnake sure wizards take them
 		_wizard_book = _book_for('wizard')
-		if full_school not in ([], None) and _wizard_book is not None:
+		if character.chosen_school not in ([], None) and _wizard_book is not None:
 			try:
-				bonus_spells_dict = character.data_dict['class features'].get(full_school).get("spells", [])
+				bonus_spells_dict = character.data_dict['class features'].get(character.chosen_school).get("spells", [])
 				add_bonus_spells_from_dict(character, bonus_spells_dict, _wizard_book['spell_list_choose_from'])
 				# print("bonus_spells_dict", bonus_spells_dict)
 				# print("character.spell_list_choose_from", character.spell_list_choose_from)
@@ -1672,7 +1716,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 	# ------------------- Last minute modded char sheet -------------------#
 		mod_char_sheet_var = modded_char_sheet_func(modded_char_sheet)
 	#-------------------- Start of export process --------------------#
-		archetype_info = json.dumps(archetype_info, indent=4)
+		archetype_info = json.dumps(character.archetype_info, indent=4)
 		character.land_speed = character.races.get(character.chosen_race, {}).get('speed', 30)
 
 	# ------------------- Build archetype (deterministic scorer; Ollama only breaks near-ties) -------------------#
@@ -1913,7 +1957,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 					"kind": getattr(character, "chosen_animal_kind", None),
 					"species_stats": character.chosen_animal_description,
 					"chassis": character.companion_info,
-					"feats": sorted(animal_companion_feats) if animal_companion_feats else [],
+					"feats": sorted(character.animal_companion_feats) if character.animal_companion_feats else [],
 				} if getattr(character, "chosen_animal", None) else None),
 				# D7 / #32: the list that replaces the singular alias above. One entry per bonded
 				# creature -- companion, mount, familiar, eidolon -- INCLUDING the absences, whose
@@ -1923,7 +1967,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				# derive them from. A renderer displays them; it never re-derives them, and it never
 				# re-applies `stats.size_change`, which is provenance for numbers already totalled in.
 				"bonded_creatures": getattr(character, "bonded_creatures", None) or [],
-				"full_domain": full_domain,
+				"full_domain": character.chosen_domain,
 				"school": school,
 				"opposing_school": opposing_school,
 				"bloodline": bloodline,
@@ -1969,7 +2013,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				# --- multiclass (new keys; the legacy keys above keep their old semantics:
 				#     "level" = primary-class level, "c_class"/"c_class_2" = primary/second class) ---
 				"classes": [{'name': c['name'], 'display': c['display'], 'level': c['level'],
-					'archetype': archetypes_per_class[i] if i < len(archetypes_per_class) else {}}
+					'archetype': character.archetypes_per_class[i]
+								 if i < len(character.archetypes_per_class) else {}}
 					for i, c in enumerate(character.classes)],
 				"total_level": character.level,
 				"save_bases": character.save_bases,
