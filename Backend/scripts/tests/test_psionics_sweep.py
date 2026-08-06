@@ -36,10 +36,29 @@ from math import floor
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from _harness import BACKEND, Report, choice_schedule, schedule_levels  # noqa: E402
+from _harness import (BACKEND, Report, choice_schedule, schedule_due,  # noqa: E402
+                      schedule_row)
 
 # The pick schedule, read from disk rather than through the generator's resolver.
 SCHEDULE = choice_schedule()
+
+
+_POOL_CACHE = {}
+
+
+def _pool_size(class_name, bucket):
+    """Distinct options that exist for a bucket, or None if the pool is not a flat name->text dict
+    (level-banded and nested pools are not countable, and get no cap)."""
+    if (class_name, bucket) not in _POOL_CACHE:
+        row = schedule_row(SCHEDULE, class_name, bucket) or {}
+        path = BACKEND / 'json' / 'class_data' / f'{class_name}.json'
+        size = None
+        if path.exists():
+            opts = json.load(open(path, encoding='utf-8')).get(row.get('dataset', bucket))
+            if isinstance(opts, dict) and opts and all(isinstance(v, str) for v in opts.values()):
+                size = len(opts)
+        _POOL_CACHE[(class_name, bucket)] = size
+    return _POOL_CACHE[(class_name, bucket)]
 
 from utils import data  # noqa: E402
 from utils.class_func import backstory as _bs  # noqa: E402
@@ -107,8 +126,12 @@ def check_manifester(cell, payload, name, m, class_level):
     want_bucket = SUBSYSTEM_BUCKET.get(name, '')
     picks = (payload.get('class_features') or {}).get(want_bucket) or {} if want_bucket else {}
     if want_bucket:
-        schedule = schedule_levels(SCHEDULE, name, want_bucket, class_level)
-        want_picks = len(schedule) if schedule is not None else 1
+        # Capped by how many options exist: the schedules keep granting above 20th but the
+        # published lists are finite, so a tactician 40 holds 12 strategies, not the 13 due.
+        want_picks = schedule_due(SCHEDULE, name, want_bucket, class_level,
+                                  _pool_size(name, want_bucket))
+        if want_picks is None:
+            want_picks = 1
         col('subsys', m['subsystem_bucket'] == want_bucket and len(picks) == want_picks,
             f"{want_bucket}={len(picks)}/{want_picks}")
     else:

@@ -107,12 +107,18 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   a `reason` is a verdict, and `reason: "unswept"` means nobody has ruled yet. A bucket declares
   either `{start, every, until}` or `{levels: [...]}`, and **`generic_func.levels_for()` is the only
   reader in the generator** — the count is `len()`, the k-th pick's level stamp is `[k-1]`. Scripts
-  read it through `_harness.schedule_levels()` instead, which is a deliberately separate expansion
-  so a check cannot confirm the generator against itself. Replaced `data.amount` plus the divisor
-  arithmetic in `get_data_without_prerequisites` and `generic_multi_chooser` (class-choices ticket
-  01). **`until` is behaviour, not decoration:** class levels reach 40 and nine schedules stop at
-  19/20. Buckets are keyed by the *rendered* bucket name (`arcana`, `rage_powers`), with the data
-  key in each row's `dataset` field.
+  read it through `_harness.schedule_levels()` / `schedule_due()` instead, a deliberately separate
+  expansion so a check cannot confirm the generator against itself. Replaced `data.amount` plus the
+  divisor arithmetic in `get_data_without_prerequisites` and `generic_multi_chooser` (class-choices
+  ticket 01). Buckets are keyed by the *rendered* bucket name (`arcana`, `rage_powers`), with the
+  data key in each row's `dataset` field.
+  **Nothing caps at 20.** Class levels reach 40 and above 20th the game is homebrew, so picks keep
+  coming: only spells and maneuvers freeze, via `capped_level` (`level_and_bab.py:53`). An explicit
+  list continues with `repeat` (tile it, so deliberate holes like the shaman's wandering-hex levels
+  survive) or `then_every` (a plain cadence); a list with **neither** is a stated cap — the
+  warpriest's two blessings, the occultist's seven implement schools. The option pools are finite,
+  so above 20th a bucket can legitimately under-deliver; both choosers stop when the pool runs dry
+  and `schedule_due(..., pool_size)` is what the sweeps expect.
 - **The class roster — 68 rollable classes, five families.** The pool is the keys of
   `class_data.json` minus the holdback lists in `data.py` (`pow_classes_pending_foundry`,
   `psionic_classes_pending`, `occult_classes`, `classes_pending_foundry`); the families are

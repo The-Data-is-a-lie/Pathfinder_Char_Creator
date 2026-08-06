@@ -3,19 +3,30 @@
     "Authoritative pick schedule: how many class-specific options each class chooses, and at",
     "which of ITS OWN class levels. Ticket 01 of the class-choices wayfinder map.",
     "",
-    "A bucket declares EITHER a compact rule {start, every, until} OR an explicit {levels: []}.",
+    "A bucket declares EITHER a compact rule {start, every} OR an explicit {levels: []}.",
     "generic_func.levels_for(class, bucket, class_level) expands either into a level list; the",
     "count is len(levels) and the k-th pick's level stamp is levels[k-1].",
     "",
-    "  until   caps a compact rule. Load-bearing: class levels reach 40 (level_and_bab.py:19)",
-    "          and nine of these lists stop at 19 or 20, so an unbounded rule would silently",
-    "          over-deliver above 20th. A row with no `until` is unbounded TODAY, which is a",
-    "          question ticket 03 owns, not a decision this table has made.",
-    "  stamps  false where the chooser records no level stamp (generic_multi_chooser does not).",
-    "  source  raw | approximation | unverified | bug | (empty rows) unswept.",
-    "          `unverified` means a human authored the number and nobody has checked it against",
-    "          Sieg's Guide yet -- NOT that it is wrong. `bug` means the number was never chosen",
-    "          by anyone: it was defaulted at the call site. Ticket 01 ruling 5.",
+    "ABOVE 20th THE PICKS KEEP COMING. Class levels reach 40 (level_and_bab.py:19) and past 20 the",
+    "game is homebrew, so a level-30 character goes on gaining rogue talents, rage powers and",
+    "customizations at their class's own cadence. This is already the codebase's model, not a new",
+    "rule: spells and maneuvers read `capped_level` (min(level, 20)) because there is no 10th-level",
+    "spell, while class choices read the uncapped class level. A compact rule therefore has NO cap",
+    "-- an earlier `until` field existed only to reproduce the truncated scrape lists and was",
+    "removed as an artifact rather than a ruling.",
+    "",
+    "  repeat      the whole level list tiles every N levels. For schedules with deliberate HOLES",
+    "              (shaman hexes skip 6 and 14 for wandering hexes; kineticist infusions skip 7 and",
+    "              15), so the holes survive above 20 instead of being filled in.",
+    "  then_every  after the last listed level, keep granting one every N levels. For lists whose",
+    "              irregularity is only in the opening levels.",
+    "  neither     the list is the whole story: warpriest blessings and inquisitor inquisitions are",
+    "              [1, 1], a fixed package at 1st level rather than a progression.",
+    "  stamps      false where the chooser records no level stamp (generic_multi_chooser does not).",
+    "  source      raw | approximation | unverified | bug | (empty rows) unswept.",
+    "              `unverified` means a human authored the number and nobody has checked it against",
+    "              Sieg's Guide yet -- NOT that it is wrong. `bug` means the number was never chosen",
+    "              by anyone: it was defaulted at the call site. Ticket 01 ruling 5.",
     "",
     "Every rollable class has a row, so a class joining the pool without a schedule is a hard",
     "failure rather than a silence. An empty row is a VERDICT once its reason is filled in;",
@@ -33,7 +44,6 @@
           "bucket": "customizations",
           "start": 1,
           "every": 2,
-          "until": 19,
           "source": "approximation",
           "note": "Customization POINTS (3 at 1st rising to 26 at 20th), modelled as one pick per ~2.5 points, which is what the published 1-to-4-point costs average out to. Tune this list, not the chooser."
         }
@@ -71,7 +81,6 @@
           "bucket": "exploits",
           "start": 1,
           "every": 2,
-          "until": 51,
           "source": "raw",
           "note": "Exploits: 1st, then every odd level."
         }
@@ -128,7 +137,6 @@
           "bucket": "insights",
           "start": 2,
           "every": 2,
-          "until": 20,
           "source": "raw"
         }
       }
@@ -140,7 +148,6 @@
           "bucket": "terrors",
           "start": 2,
           "every": 2,
-          "until": 20,
           "source": "raw"
         }
       }
@@ -160,7 +167,6 @@
           "bucket": "armor_training",
           "start": 7,
           "every": 4,
-          "until": 51,
           "source": "raw",
           "note": "Advanced armor training: 7th, then every 4 levels."
         },
@@ -169,7 +175,6 @@
           "bucket": "weapon_training",
           "start": 9,
           "every": 4,
-          "until": 53,
           "source": "raw",
           "note": "Advanced weapon training: 9th, then every 4 levels."
         }
@@ -190,7 +195,6 @@
           "bucket": "decrees",
           "start": 1,
           "every": 3,
-          "until": 19,
           "source": "raw"
         }
       }
@@ -232,7 +236,6 @@
           "bucket": "wild_talents",
           "start": 2,
           "every": 2,
-          "until": 20,
           "source": "raw"
         },
         "infusions": {
@@ -248,7 +251,8 @@
             17,
             19
           ],
-          "source": "raw"
+          "source": "raw",
+          "repeat": 20
         }
       }
     },
@@ -295,14 +299,14 @@
             20
           ],
           "source": "raw",
-          "note": "One at 1st, another at 2nd and every 2 levels: eleven at 20th, as the prose states."
+          "note": "One at 1st, another at 2nd and every 2 levels: eleven at 20th, as the prose states.",
+          "then_every": 2
         },
         "bold_stare": {
           "dataset": "bold stare",
           "bucket": "bold_stare",
           "start": 3,
           "every": 4,
-          "until": 19,
           "source": "raw"
         }
       }
@@ -355,14 +359,13 @@
             18
           ],
           "source": "raw",
-          "note": "Two implement schools at 1st (hence the repeated 1), then 2nd and every 4 levels, to seven at 18th -- the count the prose states, so the list is self-checking."
+          "note": "Two implement schools at 1st (hence the repeated 1), then 2nd and every 4 levels, to seven at 18th -- the count the prose states, so the list is self-checking. NO continuation past 20: 'a maximum of seven implement schools' is a stated cap and only eight schools of magic exist, so this is a bounded feature like the warpriest's blessings, not a progression."
         },
         "focus_powers": {
           "dataset": "focus powers",
           "bucket": "focus_powers",
           "start": 1,
           "every": 2,
-          "until": 19,
           "source": "raw",
           "note": "One SELECTED power at 1st; the two base powers come with the schools and are not picks."
         }
@@ -388,7 +391,8 @@
             27
           ],
           "source": "raw",
-          "note": "Revelations: 1st, 3rd, then every 4 levels."
+          "note": "Revelations: 1st, 3rd, then every 4 levels.",
+          "then_every": 4
         }
       }
     },
@@ -423,7 +427,8 @@
             19
           ],
           "source": "raw",
-          "note": "Major amplifications are taken IN PLACE OF one of these from 11th, so they are the same pick, not an extra one -- no separate list."
+          "note": "Major amplifications are taken IN PLACE OF one of these from 11th, so they are the same pick, not an extra one -- no separate list.",
+          "then_every": 4
         }
       }
     },
@@ -483,7 +488,7 @@
             52
           ],
           "source": "raw",
-          "note": "The gaps at 6 and 14 are wandering hexes -- a separate feature, not omissions."
+          "note": "The gaps at 6 and 14 are wandering hexes -- a separate feature, not omissions. The published list already runs to 52, past the level-40 ceiling, so it needs no continuation rule: the pattern (even levels, minus every 8th starting at 6) is carried in the data itself."
         }
       }
     },
@@ -526,7 +531,6 @@
           "bucket": "blade_skills",
           "start": 2,
           "every": 2,
-          "until": 20,
           "source": "raw"
         }
       }
@@ -554,7 +558,6 @@
           "bucket": "strategies",
           "start": 4,
           "every": 3,
-          "until": 19,
           "source": "raw"
         }
       }
@@ -628,7 +631,6 @@
           "bucket": "hexes",
           "start": 2,
           "every": 2,
-          "until": 52,
           "source": "unverified",
           "note": "RAW grants a hex at 1st as well as 2nd; this list starts at 2nd. Authored, so not touched."
         }

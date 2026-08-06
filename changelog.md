@@ -19,6 +19,28 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Fixed
+- **A character above 20th level stopped gaining nine kinds of class option, while still gaining
+  the others.** Above 20th the game is homebrew, and the house ruling is that a level-30 character
+  goes on picking rogue talents, rage powers and aegis customizations at their class's own cadence —
+  only *spells* stop, because there is no 10th-level spell. The code already modelled that: spells
+  and maneuvers read `capped_level` (`min(level, 20)`), class choices read the uncapped class level.
+  But nine schedules had been scraped as finite lists that happened to stop at 19th or 20th, so an
+  aegis 30 quietly received 10 customizations instead of 15 while a rogue 30 correctly received 15
+  talents. The truncations were an artifact of how the tables were harvested, never a ruling, and
+  they are gone.
+  - Schedules whose gaps are **deliberate** keep them past 20th rather than filling them in: the
+    shaman's missing 6th and 14th levels are wandering hexes, a separate feature. Bounded features
+    do **not** continue, and are now distinguishable from truncated ones — the warpriest's two
+    blessings and the occultist's *"maximum of seven implement schools"* are caps the classes state,
+    not lists that ran out.
+- **Fixed a hang that could freeze character generation outright.** `generic_class_option_chooser`
+  advanced its loop only on a *distinct* pick, with no check for the option pool running dry — so a
+  class owed more picks than its pool holds would spin forever rather than take what exists. It was
+  unreachable only because every schedule stopped at 20th; removing those caps made it reachable
+  immediately (an occultist 40 is owed 12 implements and only eight schools of magic exist). The
+  loop now stops when the pool is exhausted, which is what its sibling `choosing_talents` has always
+  done. **Found by running the generator above 20th for the first time** — no fixture and no sweep
+  had ever gone past 18th, so the entire 21–40 band was unexercised.
 - **Magi were getting 10 arcana where the rules grant 6, and investigators 10 talents where the
   rules grant 9 — with the wrong "gained at" level on every one of them.** Neither number was ever
   chosen by anyone: both call sites omitted the `divisor` argument and inherited the default of 2,

@@ -36,7 +36,8 @@ from math import ceil, floor
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from _harness import BACKEND, Report, choice_schedule, schedule_levels  # noqa: E402
+from _harness import (BACKEND, Report, choice_schedule, schedule_due, schedule_levels,  # noqa: E402
+                      schedule_row)
 
 # The pick schedule, read from disk rather than through the generator's resolver.
 SCHEDULE = choice_schedule()
@@ -129,6 +130,34 @@ OCCULT = {'chars': 0, 'picks': 0, 'multi_pick_buckets': 0, 'kineticists': 0, 'ca
 
 def check(condition, message):
     return REPORT.check(condition, message)
+
+
+_POOL_CACHE = {}
+
+
+def _subsystem_pool_size(class_name, bucket):
+    """How many distinct options exist for a bucket, or None if the pool cannot be resolved.
+
+    Read from the class's own data file rather than through the chooser, for the same reason the
+    psionics tables above are: a check that reads through the code it is checking cannot catch that
+    code drifting. Only used to CAP the expectation -- an unresolvable pool means no cap, which
+    keeps this from silently excusing a real shortfall.
+    """
+    if (class_name, bucket) in _POOL_CACHE:
+        return _POOL_CACHE[(class_name, bucket)]
+    row = schedule_row(SCHEDULE, class_name, bucket) or {}
+    dataset = row.get('dataset', bucket)
+    size = None
+    path = BACKEND / 'json' / 'class_data' / f'{class_name}.json'
+    if path.exists():
+        options = json.load(open(path, encoding='utf-8')).get(dataset)
+        # Only a flat {name: description} pool is countable; the level-banded and nested shapes
+        # (paladin mercies, shaman hexes) are not, and get no cap.
+        if isinstance(options, dict) and options and all(
+                isinstance(v, str) for v in options.values()):
+            size = len(options)
+    _POOL_CACHE[(class_name, bucket)] = size
+    return size
 
 
 def generatable_classes():
@@ -270,8 +299,13 @@ def check_character(cell, payload):
                 # the class level; the three single-pick classes have no schedule and take one at
                 # 1st. Read from class_choice_schedule.json via the harness's own expansion, NOT
                 # through generic_func.levels_for -- see _harness.choice_schedule.
-                schedule = schedule_levels(SCHEDULE, name, want_bucket, entry['level'])
-                want_picks = len(schedule) if schedule is not None else 1
+                # ...capped by how many options EXIST: above 20th the schedules keep granting, but
+                # the published lists are finite (a tactician 40 is owed 13 strategies and 12
+                # exist), and the chooser breaks out rather than inventing one.
+                want_picks = schedule_due(SCHEDULE, name, want_bucket, entry['level'],
+                                          _subsystem_pool_size(name, want_bucket))
+                if want_picks is None:
+                    want_picks = 1
                 check(len(picks) == want_picks,
                       f"{tag}: subsystem bucket {want_bucket!r} holds {len(picks)} picks, expected "
                       f"{want_picks} at class level {entry['level']} -- picks that never land "
@@ -392,8 +426,10 @@ def check_character(cell, payload):
             chosen = features.get(bucket) or {}
             # How many picks the schedule grants by this class level. A subsystem with no schedule
             # is a single pick taken at 1st -- the marksman/vitalist shape psionics already uses.
+            want = schedule_due(SCHEDULE, name, bucket, level, len(pool))
             schedule = schedule_levels(SCHEDULE, name, bucket, level)
-            want = len(schedule) if schedule is not None else 1
+            if want is None:
+                want = 1
             check(len(chosen) == want,
                   f"{tag}: {len(chosen)} pick(s) at class level {level}, expected {want}")
             OCCULT['picks'] += len(chosen)

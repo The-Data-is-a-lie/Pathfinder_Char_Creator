@@ -14,15 +14,19 @@ def levels_for(character, class_name, bucket, class_level):
     """The class levels at which `class_name` gains a pick in `bucket`, up to `class_level`.
 
     The one seam over Backend/json/class_choice_schedule.json (class-choices ticket 01). A bucket
-    declares EITHER a compact rule {start, every, until} OR an explicit {levels: []}; both expand
-    to the same thing here, so no caller needs to know which form it got. The count is len(...)
-    and the k-th pick's level stamp is [k-1], which is why the three choosers below no longer
-    carry any arithmetic of their own -- a wrong count used to mean a wrong stamp, because they
-    were derived twice from the same formula.
+    declares EITHER a compact rule {start, every} OR an explicit {levels: []}; both expand to the
+    same thing here, so no caller needs to know which form it got. The count is len(...) and the
+    k-th pick's level stamp is [k-1], which is why the three choosers below no longer carry any
+    arithmetic of their own -- a wrong count used to mean a wrong stamp, because they were derived
+    twice from the same formula.
 
-    `until` is load-bearing, not decoration: class levels reach 40 (level_and_bab.py:19) and nine
-    of these schedules stop at 19 or 20, so an unbounded rule would silently over-deliver above
-    20th. A row without `until` is unbounded TODAY -- recorded as it stands, not decided here.
+    NOTHING IS CAPPED AT 20. Class levels reach 40 (level_and_bab.py:19), and above 20th the game
+    is homebrew: a level-30 character goes on gaining talents and rage powers at their class's own
+    cadence. That is this codebase's existing model rather than a new rule -- spells and maneuvers
+    read `capped_level` (min(level, 20)) because there is no 10th-level spell, while class choices
+    read the uncapped class level. An explicit list continues via `repeat` (tile the whole list
+    every N levels, so deliberate holes survive) or `then_every` (keep going at a cadence); a list
+    with neither is the whole story, like the warpriest's two 1st-level blessings.
 
     Returns [] for a bucket with no row. That is a mistake rather than a state, and the thing that
     catches it is validate_class_choices.py (ticket 05), not a guard here.
@@ -32,9 +36,22 @@ def levels_for(character, class_name, bucket, class_level):
     if not row:
         return []
     if 'levels' in row:
-        return [lvl for lvl in row['levels'] if lvl <= class_level]
-    ceiling = min(class_level, row.get('until', class_level))
-    return list(range(row['start'], ceiling + 1, row['every']))
+        listed = list(row['levels'])
+        out = [lvl for lvl in listed if lvl <= class_level]
+        period = row.get('repeat')
+        if period:
+            shift = period
+            while listed[0] + shift <= class_level:
+                out += [lvl + shift for lvl in listed if lvl + shift <= class_level]
+                shift += period
+            out.sort()   # stamps are levels[k-1]; an unsorted tile would mis-date every pick
+        elif row.get('then_every'):
+            nxt = listed[-1] + row['then_every']
+            while nxt <= class_level:
+                out.append(nxt)
+                nxt += row['then_every']
+        return out
+    return list(range(row['start'], class_level + 1, row['every']))
 
 
 def _record_choice_level(character, dict_name, choice, level):
@@ -132,6 +149,15 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
                 if dataset_name_2 != None and class_level >= level and alternate_dataset == False:
                     dataset_list.extend(dataset_2_list)
                     dataset.update(dataset_2)
+
+                # The pool can run dry before the schedule does, and this loop only advances on a
+                # DISTINCT pick (`i = len(chosen_set)`) -- so without this it spins forever rather
+                # than under-delivering. Its sibling choosing_talents has always had the equivalent
+                # break; this one did not, and the bug was unreachable only because every schedule
+                # stopped at 20. It stopped being unreachable the moment picks continued past 20:
+                # an occultist 40 is owed 12 implements and only 8 schools exist.
+                if len(chosen_set) >= len(set(dataset_list)):
+                    break
 
                 chosen = random.choice(dataset_list)
                 if chosen not in chosen_set:

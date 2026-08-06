@@ -192,20 +192,60 @@ def choice_schedule():
     return read_json(JSON_DIR / 'class_choice_schedule.json').get('classes', {})
 
 
+def schedule_row(table, class_name, bucket):
+    """The raw schedule row for a bucket, or None. For checks that need the authored form (which
+    dataset it draws from, whether it declares a continuation) rather than an expansion."""
+    return (table.get(class_name) or {}).get('buckets', {}).get(bucket)
+
+
+def schedule_due(table, class_name, bucket, class_level, pool_size=None):
+    """How many picks are DUE in `bucket` at `class_level` -- the number a generated character must
+    actually hold.
+
+    `pool_size` is the count of distinct options that exist. Picks are capped by it because a class
+    cannot take a thirteenth strategy when twelve exist: above 20th the schedules keep granting
+    (there is no level cap on class choices) but the published option lists are finite, so the
+    honest expectation is min(scheduled, available). The generator behaves the same way -- both
+    choosers break out when the pool runs dry rather than spinning.
+
+    Returns None when the bucket has no row at all, which callers read as "one pick at 1st".
+    """
+    levels = schedule_levels(table, class_name, bucket, class_level)
+    if levels is None:
+        return None
+    return min(len(levels), pool_size) if pool_size is not None else len(levels)
+
+
 def schedule_levels(table, class_name, bucket, class_level):
     """The class levels at which `class_name` gains a pick in `bucket`, up to `class_level`.
 
     Returns None when the bucket has no row, which callers must distinguish from an empty list:
     "no schedule" means a single pick at 1st for the psionic/occult single-pick subsystems, while
     [] means "scheduled, but nothing due yet at this level".
+
+    Nothing caps at 20 -- see levels_for's docstring. Written out longhand rather than shared with
+    it on purpose: this is the second implementation, and a check that borrowed the first would
+    confirm nothing.
     """
     row = (table.get(class_name) or {}).get('buckets', {}).get(bucket)
     if not row:
         return None
-    if 'levels' in row:
-        return [lvl for lvl in row['levels'] if lvl <= class_level]
-    ceiling = min(class_level, row.get('until', class_level))
-    return list(range(row['start'], ceiling + 1, row['every']))
+    if 'levels' not in row:
+        return list(range(row['start'], class_level + 1, row['every']))
+    listed = list(row['levels'])
+    out = [lvl for lvl in listed if lvl <= class_level]
+    if row.get('repeat'):
+        shift = row['repeat']
+        while listed[0] + shift <= class_level:
+            out += [lvl + shift for lvl in listed if lvl + shift <= class_level]
+            shift += row['repeat']
+        out.sort()   # stamps are levels[k-1]; an unsorted tile would mis-date every pick
+    elif row.get('then_every'):
+        nxt = listed[-1] + row['then_every']
+        while nxt <= class_level:
+            out.append(nxt)
+            nxt += row['then_every']
+    return out
 
 
 def read_json(path):
