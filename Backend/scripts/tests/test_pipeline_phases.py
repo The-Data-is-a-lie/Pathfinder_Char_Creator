@@ -142,10 +142,62 @@ def test_real_phases_declare_their_hazards():
         check(f'bootstrap phase provides {name}',
               name in getattr(boot, 'provides', ()))
     # The next phase's requires must be satisfiable by what this one provides, or the chain is
-    # broken at its first link. `level` and `classes` come from randomize_level, still inline.
+    # broken at its first link.
     check('bootstrap provides chosen_race, which the stats phase requires',
           'chosen_race' in getattr(boot, 'provides', ())
           and 'chosen_race' in getattr(stats_phase, 'requires', ()))
+
+
+def test_alignment_and_level_phase():
+    """phase_alignment_and_level -- the block between identity and stats.
+
+    Its hazards are not the obvious ones. Nothing here would CRASH out of order; each failure is a
+    quietly different NPC, which is why the contract has to carry them:
+
+      * `region` -- randomize_deity reads it through a `getattr(self, "region", None)` default, so
+        running before region_chooser costs the homeland faith bias silently, with no exception.
+      * `chosen_race` -- randomize_body_feature indexes the race's age/height/weight dice.
+      * `level`/`classes` -- this phase is where randomize_level runs, so it is the link that lets
+        the stats phase's `requires=['level', 'classes']` ever be satisfied.
+    """
+    import main_test
+
+    align_phase = main_test.phase_alignment_and_level
+    boot = main_test.phase_bootstrap_identity
+    stats_phase = main_test.phase_roll_and_assign_stats
+
+    for name in ('region', 'chosen_race', '_class_picks'):
+        check(f'alignment/level phase requires {name}',
+              name in getattr(align_phase, 'requires', ()))
+    check('every requirement is something bootstrap provides (the chain holds)',
+          set(align_phase.requires) <= set(boot.provides))
+    check('it provides level and classes, which the stats phase requires',
+          set(stats_phase.requires) - {'chosen_race'} <= set(align_phase.provides))
+
+    # The two strings that are NOT interchangeable: choose_alignment stores the lowercased form
+    # (the deity table is keyed that way) and the payload exports the title-cased one. Both must be
+    # declared, or a later reader silently picks up the wrong casing.
+    for name in ('alignment', 'alignment_display'):
+        check(f'alignment/level phase provides {name}', name in align_phase.provides)
+
+    # The chosen deity is `deity_choice`, never `deity` -- `character.deity` is the deity data TABLE
+    # keyed by alignment, and overwriting it with one deity breaks domain selection.
+    check('it provides deity_choice, not deity',
+          'deity_choice' in align_phase.provides and 'deity' not in align_phase.provides)
+
+    # The real hazard, run for real: no region, no race, no class picks.
+    raises('the real alignment/level phase raises when run before bootstrap',
+           align_phase, Stub(), 'LG', 'random', 1, 5)
+
+    # ...and it still raises when only SOME of the identity is in place, which is the ordering
+    # mistake that would actually happen -- a block moved above one call rather than above all three.
+    partial = Stub()
+    partial.region = 'Tal-Falko'
+    partial.chosen_race = 'Human'
+    msg = raises('it still raises when only part of the identity is set',
+                 align_phase, partial, 'LG', 'random', 1, 5)
+    check('the error names _class_picks and nothing already set', '_class_picks' in msg
+          and 'chosen_race' not in msg)
 
 
 def main():
@@ -153,7 +205,8 @@ def main():
                  test_falsy_requirement_counts_as_set,
                  test_provides_is_checked_on_exit,
                  test_sealing,
-                 test_real_phases_declare_their_hazards):
+                 test_real_phases_declare_their_hazards,
+                 test_alignment_and_level_phase):
         print(f'{test.__name__}:')
         test()
 

@@ -19,6 +19,30 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Changed
+- **The alignment / body / flaw / personality / level block is now a declared pipeline phase.**
+  `phase_alignment_and_level` covers everything rolled off a finished identity but before any levels
+  are spent, and it declares what it needs (`region`, `chosen_race`, `_class_picks`) and what it
+  produces. Nothing in that block would have *crashed* out of order — each mis-ordering produced a
+  quietly different NPC, which is exactly why the ordering had to become a contract rather than a
+  comment. The generated character is unchanged: all seven golden payloads are byte-identical with
+  no fixture edits.
+  - The level roll belongs to this phase rather than one of its own, because `flaw_amount` crosses
+    from the flaw roll straight into `update_level`'s feat economy and nowhere else. Splitting them
+    would have promoted a local into an exported attribute to serve exactly one reader.
+  - **Three near-misses, each of which would have been a silent wrong-character bug.** The two
+    alignment strings are *not* interchangeable — `choose_alignment` stores the lowercased form
+    because the deity table is keyed that way, while the payload exports the title-cased one, so
+    both now have their own name. `character.deity` was already taken by the deity *data table*
+    keyed by alignment, so the chosen deity keeps its existing home at `character.deity_choice`;
+    giving it an attribute named `deity` would have overwritten the table and broken domain
+    selection. And the block's `professions` roll was overwritten 240 lines later by
+    `phase_professions_and_skills`, which returns *trainer* professions — two unrelated things
+    sharing one name.
+  - **That third one turned out to be dead code that cannot be deleted.** Nothing had ever read the
+    personality-flavour profession list; every downstream reader was reading the trainer list that
+    replaced it. The call still has to run, because it draws from the shared RNG and removing it
+    would shift every later roll and change the character. Dropping the flavour list is a behaviour
+    change and belongs with the class-choices work, not with a pure move.
 - **The level-40 ceiling is now a named rule with a test behind it, instead of a bare `40` nobody
   guarded.** The ceiling itself already worked — `randomize_level` has always clamped, and asking
   for level 999 has always produced a level-40 character — but it was an unexplained literal in one

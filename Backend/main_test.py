@@ -242,9 +242,10 @@ def strip_labeled_bucket(feat_list, label_list, children):
 # --------------------------------------------------------------------------------------------- #
 # Pipeline phases. Each declares what it needs on the character and what it is responsible for
 # setting, so an ordering mistake raises instead of quietly producing a worse NPC -- see
-# utils/class_func/pipeline.py. Extraction is staged: the feat / Path of War / Spheres block is
-# still inline in generate_random_char (it rebuilds its feat lists across ~600 lines of backfill
-# and trim loops and is not safely movable yet).
+# utils/class_func/pipeline.py. Extraction is staged and these are declared in pipeline order:
+# identity -> alignment/level -> stats -> professions/skills. Everything from the HP roll onward is
+# still inline in generate_random_char; the feat / Path of War / Spheres block is last on purpose,
+# because it rebuilds its feat lists across ~600 lines of backfill and trim loops.
 # --------------------------------------------------------------------------------------------- #
 
 @phase(requires=[], provides=['chosen_gender', 'region', 'chosen_race',
@@ -285,6 +286,85 @@ def phase_bootstrap_identity(character, userInput_gender, userInput_region, user
 	f_name, l_name = name_chooser(character)
 	select_classes(character, class_choice, chosen_BAB, chosen_caster_level, multi_class)
 	return f_name, l_name
+
+
+@phase(requires=['region', 'chosen_race', '_class_picks'],
+	   provides=['alignment', 'alignment_display', 'mini_alignment', 'deity_choice',
+				 'age', 'height', 'weight', 'flaw', 'flaw_effects',
+				 'background_traits', 'mannerisms', 'personality_traits',
+				 'level', 'classes', 'feat_amounts'])
+def phase_alignment_and_level(character, alignment_input, deity_flag, low_level, high_level):
+	'''Everything rolled off a finished identity but before any levels are spent: alignment, deity,
+	body, flaws, personality flavour -- and then the level itself.
+
+	requires `region`: randomize_deity biases ~70% toward the homeland's canon faiths
+	(alignment_and_deity._region_affinity_deity reads it through a getattr default), so running this
+	before region_chooser would quietly drop the setting flavour instead of failing.
+	requires `chosen_race`: randomize_body_feature indexes the race's age/height/weight dice.
+	requires `_class_picks`: both the rogue(unchained)/vigilante level floor below and
+	randomize_level's own truncation of the pick list read it.
+
+	THE LEVEL BELONGS IN THIS PHASE rather than in one of its own. `flaw_amount` is rolled here and
+	crosses straight into `update_level`'s feat economy (flaw feats diminish, see
+	level_and_bab.update_level) and nowhere else -- splitting the two would promote a local into a
+	sixteenth exported attribute to serve exactly one reader.
+
+	`provides` is exhaustive per ticket 05, with one honest weakness worth naming: `age`, `height`
+	and `weight` are initialised to None in the constructor (createACharacter.py:167-169) and
+	`deity_choice` is pre-set from `deity_flag` at the call site, so `hasattr` passes for those four
+	whether this phase ran or not. They are declared anyway -- the check is weaker there, not absent,
+	and a name left out of `provides` is invisible rather than merely unproven.
+	'''
+	# TRAP 1 -- the two alignment strings are NOT interchangeable. choose_alignment stores the
+	# lowercased form on the character (the deity table is keyed that way, and spells.py:179
+	# re-lowercases it deliberately); the payload exports the title-cased form. Both are live, so
+	# each gets its own name rather than one being derived from the other at a distant call site.
+	_alignment, mini_alignment = choose_alignment(character, 'alignments', alignment_input)
+	character.alignment_display = _alignment.title()
+	character.mini_alignment = mini_alignment
+
+	# TRAP 2 -- `character.deity` is already taken, and not by this: it is the deity data TABLE
+	# keyed by alignment (`self.deity[self.alignment]`). The chosen deity lives at
+	# `character.deity_choice`, which randomize_deity both sets and returns; giving the choice an
+	# attribute named `deity` would overwrite the table and break domain selection.
+	if deity_flag.lower() == 'random':
+		randomize_deity(character, random_flag=True)
+	else:
+		randomize_deity(character, random_flag=False, deity_choice=deity_flag)
+
+	character.age = randomize_body_feature(character, 'age')
+	character.height = randomize_body_feature(character, 'height')
+	character.weight = randomize_body_feature(character, 'weight')
+
+	# We don't use subrace data in foundryVTT (comment these out if we want to (will need to fix their issues first))
+	# chosen_subrace, subrace_description = subrace_chooser(character)
+	# race_traits_list, race_traits_description_list = race_traits_chooser(character)
+	# split_race_traits_list = race_ability_split(character, race_traits_list)
+
+	flaw_amount = randomize_flaw_amount()
+	# Mechanical flaws replace the old personality-flaw strings: same 0-4 roll, but the
+	# flaws now come from json/flaws/flaw_effects.json with pf1 changes/contextNotes
+	# (1st flaw minor, 2nd major, extras 80% minor / 20% major).
+	flaw_chooser(character, flaw_amount)		# sets character.flaw and character.flaw_effects
+	character.background_traits = randomize_personality_attr(character, "background_traits",1,4)
+	# TRAP 3 -- this roll's RESULT IS DEAD, and it is kept for its dice, not its value. The local it
+	# used to fill was overwritten 240 lines later by phase_professions_and_skills, which returns
+	# TRAINER professions; every reader downstream was reading that one. Deleting the call would
+	# still be wrong -- it draws from the shared RNG, so removing it shifts every later roll and
+	# changes the character. Dropping the flavour list is a behaviour change and belongs to the
+	# class-choices work, not to a pure move.
+	randomize_personality_attr(character, "professions",1, 3)
+	character.mannerisms = randomize_personality_attr(character, "mannerisms",2,4)
+	character.personality_traits = randomize_personality_attr(character, "personality_traits",3,6)
+	# Flaws chosen earlier in it's own function
+
+	# I don't know why, but these keep breaking the game (if low enough level and stats)
+	if any(pick in ('rogue (unchained)', 'vigilante') for pick in character._class_picks):
+		if low_level <= 1:
+			low_level = 2
+		if high_level <= 1:
+			high_level = 2
+	randomize_level(character, low_level, high_level, flaw_amount)
 
 
 @phase(requires=['level', 'classes', 'chosen_race'], provides=['inherents', 'level_up_stats'])
@@ -414,43 +494,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			class_choice, chosen_BAB, chosen_caster_level, multi_class)
 
 		#add an optional flaws rule function
-		alignment, mini_alignment = choose_alignment(character, 'alignments', alignment_input)
-		alignment = alignment.title()
-
-		if deity_flag.lower() == 'random':
-			deity = randomize_deity(character, random_flag=True)
-		else:
-			deity = randomize_deity(character, random_flag=False, deity_choice=deity_flag)
-
- 
-		age_number = randomize_body_feature(character, 'age')
-		height_number = randomize_body_feature(character, 'height')
-		weight_number = randomize_body_feature(character, 'weight')			
-
-		# We don't use subrace data in foundryVTT (comment these out if we want to (will need to fix their issues first))
-		# chosen_subrace, subrace_description = subrace_chooser(character)
-		# race_traits_list, race_traits_description_list = race_traits_chooser(character)
-		# split_race_traits_list = race_ability_split(character, race_traits_list)
-
-		flaw_amount = randomize_flaw_amount()
-		# Mechanical flaws replace the old personality-flaw strings: same 0-4 roll, but the
-		# flaws now come from json/flaws/flaw_effects.json with pf1 changes/contextNotes
-		# (1st flaw minor, 2nd major, extras 80% minor / 20% major).
-		flaw, flaw_effects_dict = flaw_chooser(character, flaw_amount)
-		background_traits = randomize_personality_attr(character, "background_traits",1,4)
-		professions = randomize_personality_attr(character, "professions",1, 3)
-		mannerisms = randomize_personality_attr(character, "mannerisms",2,4)
-		personality_traits = randomize_personality_attr(character, "personality_traits",3,6)
-		# Flaws chosen earlier in it's own function
-
-
-		# I don't know why, but these keep breaking the game (if low enough level and stats)
-		if any(pick in ('rogue (unchained)', 'vigilante') for pick in character._class_picks):
-			if low_level <= 1:
-				low_level = 2
-			if high_level <= 1:
-				high_level = 2
-		randomize_level(character, low_level, high_level, flaw_amount)
+		phase_alignment_and_level(character, alignment_input, deity_flag, low_level, high_level)
 
 		stats = phase_roll_and_assign_stats(character, num_dice, num_sides, inherents)
 
@@ -755,11 +799,12 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# deity.json "Name" is a LIST of aliases since the homebrew-deities rework (091da54) -- export
 		# one string: pf1's details.deity is a StringField, and an array crashes the actor's data
 		# preparation on import (sheet dies reading the underived encumbrance).
-		deity_name = deity.get("Name", "") if isinstance(deity, dict) else deity
+		deity_choice = character.deity_choice
+		deity_name = deity_choice.get("Name", "") if isinstance(deity_choice, dict) else deity_choice
 		if isinstance(deity_name, list):
 			deity_name = deity_name[0] if deity_name else ""
 		print("deity_name", deity_name)
-		print("deity", deity)
+		print("deity", deity_choice)
 		# skill_ranks = json.dumps(skill_ranks)  # disabled: ship the dict so Flask serializes it as a JSON object and the Foundry module parses it		
 
 		if isinstance(character.armor_dict, dict):
@@ -1688,8 +1733,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			_bs_trainers.append(f"{_article} {_cal_name}{_kind_str} trainer who taught them {', '.join(_taught)}")
 		_bs_brief = {
 			'name': character_full_name, 'race': character.chosen_race,
-			'gender': character.chosen_gender, 'age': age_number, 'region': character.region,
-			'alignment': alignment, 'deity': deity_name,
+			'gender': character.chosen_gender, 'age': character.age, 'region': character.region,
+			'alignment': character.alignment_display, 'deity': deity_name,
 			'char_class': character.c_class_display,
 			# all non-primary classes, e.g. "fighter and wizard" for a 3-class character
 			'class_2': ' and '.join(
@@ -1698,8 +1743,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			'level': character.c_class_level, 'main_stat': character.main_stat,
 			'martial_disciplines': martial_disciplines, 'notable_feats': feats,
 			'traits': getattr(character, 'selected_traits_desc', None) or selected_traits,
-			'personality_traits': personality_traits, 'mannerisms': mannerisms, 'flaw': flaw,
-			'background_traits': background_traits, 'professions': _bs_professions,
+			'personality_traits': character.personality_traits, 'mannerisms': character.mannerisms,
+			'flaw': character.flaw,
+			'background_traits': character.background_traits, 'professions': _bs_professions,
 			'craft': character.craft_chosen, 'trainers': _bs_trainers,
 			'appearance': appearance, 'parents': parents,
 			'siblings': [older_brothers, younger_brothers, older_sisters, younger_sisters],
@@ -1727,10 +1773,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"c_class": character.c_class,
 				"c_class_display": character.c_class_display,
 				"c_class_2": character.c_class_2,
-				"alignment": alignment,
-				"age_number": age_number,
-				"height_number": height_number,
-				"weight_number": weight_number,
+				"alignment": character.alignment_display,
+				"age_number": character.age,
+				"height_number": character.height,
+				"weight_number": character.weight,
 				"dex": character.dex,
 				"str": character.str,
 				"con": character.con,
@@ -1740,7 +1786,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"inherents": character.inherents,
 				"level_up_stats": character.level_up_stats,
 				"racial_stats": character.racial_stats,
-				"flaw": flaw,
+				"flaw": character.flaw,
 				"Total_HP": character.Total_HP,
 				"sheet_health": character.sheet_health,
 				"bab_total": character.bab_total,
@@ -1856,11 +1902,15 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"school": school,
 				"opposing_school": opposing_school,
 				"bloodline": bloodline,
-				"background_traits": background_traits,
+				"background_traits": character.background_traits,
+				# NOT the personality flavour list rolled in phase_alignment_and_level -- these are
+				# the TRAINER professions from phase_professions_and_skills, which used to overwrite
+				# the same local 240 lines later. Two unrelated things shared one name; only this one
+				# was ever read.
 				"professions": professions,
 				"craft_type": character.craft_chosen,
-				"mannerisms": mannerisms,
-				"personality_traits": personality_traits,
+				"mannerisms": character.mannerisms,
+				"personality_traits": character.personality_traits,
 				"hero_points": hero_points,
 				"gender": character.chosen_gender,
 				"class_ability_desc": class_ability_desc,
@@ -1879,7 +1929,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"chosen_spell_descriptor": character.chosen_descriptors,
 				"counter_spell_descriptor": character.counter_descriptors,
 				"total_rolled_hp": total_rolled_hp,
-				"mini_alignment": mini_alignment,
+				"mini_alignment": character.mini_alignment,
 				"casting_level_str_foundry": casting_level_str_foundry,
 				"main_stat": character.main_stat,
 				"story_feat_tax_dict": story_feat_tax_dict,
@@ -1934,7 +1984,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				"selected_traits_desc": getattr(character, 'selected_traits_desc', []) or [],
 				"item_changes_dict": item_changes_dict,
 				"enhancement_effects_dict": enhancement_effects_dict,
-				"flaw_effects_dict": flaw_effects_dict,
+				"flaw_effects_dict": character.flaw_effects,
 				"class_feature_changes_dict": class_feature_changes_dict,
 				"class_feature_conditionals_dict": class_feature_conditionals_dict,
 				# Invariant handles for scripts/tests/test_house_invariants.py: the recorded skill-rank
