@@ -400,13 +400,17 @@
  "c_class_display": "Druid",
  "casting_level_str_foundry": "high",
  "casting_tradition": {
-  "bonus_spell_points": 0,
+  "bonus_spell_points": 1,
   "boons": [
+   "Fortified Casting",
    "Easy Focus",
-   "Overcharge",
-   "Empowered Abilities"
+   "Overcharge"
   ],
   "boons_detail": [
+   {
+    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
+    "name": "Fortified Casting"
+   },
    {
     "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
     "name": "Easy Focus"
@@ -414,26 +418,18 @@
    {
     "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
     "name": "Overcharge"
-   },
-   {
-    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
-    "name": "Empowered Abilities"
    }
   ],
   "casting_ability_modifier": "Wisdom",
   "drawbacks": [
-   "Skilled Casting",
    "Somatic Casting",
-   "Verbal Casting",
+   "Wild Magic",
    "Addictive Casting",
-   "Focus Casting"
+   "Focus Casting",
+   "Verbal Casting",
+   "Prepared Caster"
   ],
   "drawbacks_detail": [
-   {
-    "counts_as": 1,
-    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
-    "name": "Skilled Casting"
-   },
    {
     "counts_as": 1,
     "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
@@ -441,8 +437,8 @@
    },
    {
     "counts_as": 1,
-    "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
-    "name": "Verbal Casting"
+    "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
+    "name": "Wild Magic"
    },
    {
     "counts_as": 2,
@@ -453,6 +449,16 @@
     "counts_as": 1,
     "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
     "name": "Focus Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
+    "name": "Verbal Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
+    "name": "Prepared Caster"
    }
   ]
  },
@@ -797,36 +803,48 @@
   "trainer": 5
  },
  "feat_changes_dict": {
-  "Altitude Affinity": {
+  "Divine Deception": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "skill.sur",
-     "text": "+2 competence on Survival checks at altitudes of 5,000 ft or higher (and you are automatically acclimated to high altitude)."
+     "target": "skill.umd",
+     "text": "+5 on Use Magic Device checks to use divine spell-trigger/spell-completion items or to emulate a divine class feature."
+    }
+   ]
+  },
+  "Eye of the Arclord": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skills",
+     "text": "While the third eye is open (1/day standard action, 1 minute), +8 on Perception checks to notice invisible creatures."
     }
    ]
   }
  },
- "feat_conditionals_dict": {},
+ "feat_conditionals_dict": {
+  "Bludgeoner": {
+   "default": false,
+   "modifiers": [],
+   "name": "Bludgeoner: Effect: deal nonlethal damage with a bludgeoning weapon at no [[-4]] penalty",
+   "tier": "A"
+  }
+ },
  "feats": [
-  "Cast Rune",
-  "Harmonic Blending",
-  "Construct Companions (vanguard)",
-  "Shielded Caster",
-  "Unseelie Hunter",
-  "Enruned Shield",
-  "Strong Comeback",
+  "Divinatory Strike",
+  "Tribe Mentality",
+  "Catch Off-Guard",
+  "Master of the Staff",
+  "Outer Planes Traveler",
+  "Divine Deception",
+  "Enforcer",
   "Multi Talented",
   "True Calling"
  ],
- "feats_feat_tax_dict": {
-  "Extra Cantrips Or Orisons": [
-   "extra cantrips or orisons"
-  ]
- },
+ "feats_feat_tax_dict": {},
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Cosmopolitan"
+  "Eye of the Arclord"
  ],
  "flaw": [
   "Grudge Keeper",
@@ -858,10 +876,10 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Grant Control",
-  "Altitude Affinity"
+  "Skilled Tracker",
+  "Bludgeoner"
  ],
- "formatted_bio": "Laurène Long\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 4 Druid / Magus And Ranger And Samurai\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Homeland: Tal-falko\n\nVocation\n- Profession: Margin Scribbler (rank 15)\n- Profession: Worldforger Eternal (rank 10)\n- Profession: Pickpocket (rank 1)\n- Profession: Apprentice Smith (rank 2)\n- Profession: Grave Necromancer (rank 1)\n- Known for: Featherwork\n- Training: An average trainer who taught them Gunsmithing, Diehard\n- Training: An excellent trainer who taught them Back to Back, Fiendish Resilience, Athletic\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Middle Income Household\n- 2 Older Sisters\n\nPersonality\n- Personality: Astute, Energetic, Chill\n- Mannerisms: Flexes muscles, Withdraws into oneself, Covers eyes, Cracks knuckles\n- Flaws: Grudge Keeper, Haunted\n\nAppearance\n- Hair: Touseled Blond\n- Eyes: Amber\n- Build: Raspy Voice",
+ "formatted_bio": "Laurène Long\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 4 Druid / Magus And Ranger And Samurai\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Homeland: Tal-falko\n\nVocation\n- Profession: Margin Scribbler (rank 15)\n- Profession: Worldforger Eternal (rank 10)\n- Profession: Pickpocket (rank 1)\n- Profession: Apprentice Smith (rank 2)\n- Profession: Grave Necromancer (rank 1)\n- Known for: Featherwork\n- Training: An average trainer who taught them Counter Maneuver (combat), Nemesis\n- Training: An excellent trainer who taught them Swift Aid, Undermine, Astrology\n\nFamily\n- Absent Mother\n- Absent Father\n- Adopted Into A Poor Family\n- 1 Older Brother\n\nPersonality\n- Personality: Astute, Energetic, Chill\n- Mannerisms: Flexes muscles, Withdraws into oneself, Covers eyes, Cracks knuckles\n- Flaws: Grudge Keeper, Haunted\n\nAppearance\n- Hair: Touseled Blond\n- Eyes: Amber\n- Build: Raspy Voice",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 7899,
@@ -876,27 +894,27 @@
  "height_number": "5'1\"",
  "hero_points": 0,
  "homebrew_feat_desc_dict": {
-  "Altitude Affinity": "You have hardened your body against the grueling rigors of surviving at high altitudes",
-  "Athletic": "You possess inherent physical prowess",
-  "Back to Back": "Your ally's eyes are your own, and yours are his",
-  "Cast Rune": "Even if you are not a practitioner of rune magic, you are protected by a specific rune present in your name or influencing your day of birth. Special You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it grants a new rune you can invoke. select one rune as per the patron rune trait. you may invoke your patron rune once per day to gain its , as listed under runic divination. the runes effects last for 1 hour, or until you use its granted power once (whatever happens first).",
-  "Concussive Spell": "You cause creatures to be disoriented when you affect them with a spell that has the sonic descriptor",
-  "Construct Companions (vanguard)": "A construct companions abilities are determined by the vanguards level and by the augmentations selected by the vanguard. The base statistics are outlines in Table Construct Companions. Each construct companion has a chosen form that modifies these base statistics. Construct companions are treated as constructs for determining what spells affect them. Bonus Bonus Class Level This is the characters vanguard level. HD This is the total number of 10-sided (d10) Hit Dice the companion possesses. As the construct companion has no Constitution score, it does not get any bonus hit points from its Constitution modifier (treat its Constitution as 10 for determining its hit points). However, as a Medium-sized construct, it gains 20 additional hit points due to its size. BAB This is the construct companions base attack bonus. A construct companions base attack bonus is equal to its Hit Dice. Construct companions do not gain additional attacks using their natural weapons for having a high base attack bonus, though they do gain additional attacks when using manufactured weapons, as normal. Saving Throws This is the constructs base saving throw bonuses. As a construct, the companion has no good saving throws. Skills This lists the construct companions total skill ranks. A companion can assign skill ranks to any skill. The values shown in Table Construct Companion are the base value, assuming the companion has an Intelligence score of 10. Companions with Intelligence scores above the base value modify these totals as normal (a construct companion receives a number of skill ranks equal to 2 + its Intelligence modifier per HD). A companion cannot have more ranks in a skill than it has Hit Dice. Feats This is the total number of feats possessed by a construct companion. Companions can select any feat that they qualify for. Armor Bonus The number noted here is the construct companions base armor bonus. The construct cannot wear any armor, as it interferes with the vanguards link with the companion. Primary Ability Bonus Add this bonus to the construct companions two primary ability scores. These are determined by the companions base form. Special This includes a number of abilities gained by all construct companions as they increase in power. Each of these bonuses is described below. Companion Traits (Ex) A construct companion is not built nor animated as a typical construct. It is powered by the vanguards innate power and intuition rather than careful design, and as such has different abilities from a normal construct. A construct companion has all traits and immunities a normal construct has, except as noted here. Construct companions are not immune to mind-affecting effects, including charms, compulsions, phantasms, patterns, and morale effects. A construct companion has an Intelligence score and gains feats and skill ranks as appropriate for its level, as shown in Table Construct Companions, and has class skills. A companion has the same weapon proficiencies as the vanguard and can use shields (except tower shields). Integrated Equipment (Ex) A construct companion can have its weapons or shield integrated into its body, rather than having to hold and stow them as a normal piece of equipment. Any manufactured weapon or shield that is of appropriate size for the construct companion can be integrated. Integrating equipment takes 1 hour of work by the vanguard. After doing so, the item is built directly into the constructs form. It can bring forth the weapon or shield and store it back in its body as if drawing it normally, including reductions in time from feats such as Quick Draw. When stored, the equipment is inside the companions body and cannot be seen, and its magic aura (if any) cannot be found with spells such as detect magic unless the spell can penetrate through the constructs metallic body. When it draws an integrated weapon or shield, it replaces the hand necessary to wield the item, at which point it can be used as if wielded normally. An integrated weapon or shield cannot be disarmed or stolen, as its attached directly to the constructs body, though it can be sundered or attacked as normal. A construct companion can have up to three pieces of integrated equipment at once. If the companion has an integrated ranged weapon, the vanguard can integrate ammunition along with it. Up to 50 pieces of ammunition can be integrated with each ranged weapon. Reloading an integrated weapon is no faster than reloading the weapon as normal, and can be reduced by feats and abilities such as Rapid Reload possessed by the companion. Integrating more ammunition takes 10 minutes of work by the vanguard. Once a piece of equipment is integrated, it cannot be removed intact. Removing integrated equipment involves either destroying the equipment (though sunder checks and the like) or spending 1 hour removing the item, the process of which gives it the broken condition but leaves it intact enough to be repaired via make whole or similar magic. Removing a ranged weapon requires removing its integrated ammunition, if any. Link (Ex) A construct companion is not made nor controlled as a normal construct; it is instead tied to the vanguards own magical essence, and as such the vanguard shares a special link with his companion. The vanguard can communicate empathically with the companion, but cannot see through its eyes. Because of the links limited nature, only general emotions can be shared. The vanguard has the same connection to an item or place that the companion does. However, such a link has its drawbacks. As the companion is powered by the vanguards magic essence, the construct cannot move more than 100 feet away from the vanguard at any time. If it does, the construct companion immediately shuts down, rendering it helpless and unable to act. The vanguard must be able to exercise mental control to keep the companion functioning. If the vanguard is ever unconscious, asleep, killed, stunned, or confused, the companion cannot act and is considered helpless. In addition, magic items interfere with the vanguards link to his companion. As a result, the vanguard and his companion share magic item slots. For example, if the vanguard is wearing a ring, the companion can wear no more than one ring. If there is a conflict, the item worn by the vanguard remains active while the item worn by the construct become dormant. Magic weapons do not interfere with the vanguards link with his companion. Despite being animated by magic, the construct does not shut down in an antimagic field, though some of its other abilities may be negated. Share Spells (Ex) The vanguard may cast a spell with a target of you on his construct companion (as a spell with a range of touch) instead of on himself. A vanguard may cast spells on his companion even if the spells normally do not affect creatures of the companions type (construct). Spells cast in this way must come from the vanguard spell list. This ability does not allow the companion to share abilities that are not spells, even if they function like spells. Ability Score Increase (Ex) The construct companion adds +1 to one of its ability scores. Devotion (Ex) A construct companion gains a +4 morale bonus on Will saves against enchantment spells and effects. Greater Link (Ex) The constructs link with the vanguard improves. The companion can now move up to 200 feet away without any penalty. If it moves further than 200 feet away, but less than 500 feet away, the companion is staggered. If it moves more than 500 feet away, the companion shuts down and is considered helpless. In addition, the construct companion can still act normally whenever the vanguard is stunned or confused, though it still cannot act if the vanguard is unconscious, asleep, or killed. The following are class skills for a construct companion Craft (Int), Disable Device (Dex), Knowledge (engineering) (Int), and Perception (Wis). A constructs base form grants four additional class skills, as listed in the forms entry. In addition, any construct companion that gains a fly speed receives Fly (Dex) as a class skill, regardless of what level it obtains its fly speed. Each construct companion has one of three base forms that determines its starting speed, AC, skills, and ability scores (including its primary ability scores). The companion also gains two slam attacks that deal 1d4 damage, regardless of its form. They are primary natural attacks, meaning they use the constructs full base attack bonus. Each slam attack require a free hand for the construct to make the attack. A construct companion is always Medium sized and typically humanoid in shape (two arms, two legs, head, and torso). The appearance of the companion is otherwise left to the vanguard to decide and has no impact on its abilities. Starting Statistics Speed 30 ft.; AC +4 armor bonus; Base Ability Scores Str 16, Dex 13, Con , Int 8, Wis 12, Cha 10; Primary Ability Scores Strength, Dexterity; Skills Climb (Str), Intimidate (Cha), Sense Motive (Wis), and Swim (Str). Starting Statistics Speed 20 ft.; AC No bonus; Base Ability Scores Str 8, Dex 13, Con , Int 10, Wis 12, Cha 16; Primary Ability Scores Dexterity, Charisma, Skills Knowledge (arcana) (Int), Knowledge (planes) (Int), Spellcraft (Int), and Use Magic Device (Cha). Starting Statistics Speed 40 ft.; AC +2 armor bonus; Base Ability Scores Str 10, Dex 16, Con , Int 13, Wis 12, Cha 8; Primary Ability Scores Dexterity, Intelligence; Skills Acrobatics (Dex), Bluff (Cha), Stealth (Dex), Survival (Wis).",
-  "Cosmopolitan": "Living in large, exotic cities has put you in touch with many diverse civilizations, cultures, and races",
-  "Diehard": "You are especially hard to kill Not only do your wounds automatically stabilize when grievously injured, but you can remain conscious and continue to act even at death's door",
-  "Enruned Shield": "",
-  "Eye for Quality": "Your long experience in your craft allows you to identify items of exceptional or magical quality. you can use a craft check in place of a spellcraft check to identify magic items as if using detect magic or in place of an appraise check to determine an items price. you must hold the item for 1 round to make such a check, and can only identify or appraise items related to your craft skill, subject to gm discretion. for example, craft (armor) could be used to appraise armor or shields, while craft (alchemy) could identify a potion.",
-  "Fiendish Resilience": "You dodge energy attacks with amazing agility",
-  "Grant Control": "Control over your undead is easily granted to others, binding the energy to their soul rather than yours. Transferred undead follow the new creature's commands, not yours, and no longer count against the number of Hit Dice of undead you can control. as a standard action you can touch a creature and transfer control over any number of mindless undead you control to that creature. these undead count against that creatures limit of undead they can control using animate dead (or similar abilities, such as the death spheres reanimate ability), and you cannot transfer control to a creature if the transferred undead would put them above this cap. you cannot transfer control of an undead whose total hit dice is more than twice the recipient's caster level with their ability to create and control undead. if the touched creature does not have the ability to create and control mindless undead themselves, they may only control a maximum of four hit dice of undead, none of which can have more than 2 hit dice. if the creature has caster levels in a class with animate dead on their spell list but does not know the spell, they use their caster level when determining the number of undead they can control (as normal for animate dead).",
-  "Gunsmithing": "You know the secrets of repairing and restoring firearms",
-  "Harmonic Blending": "",
+  "Allied Spellcaster": "With the aid of an ally, you are skilled at piercing the protections of other creatures with your spells",
+  "Astrology": "You have come to understand that the workings of the universe and even the capricious machinations of the gods can all be divined from the motions of the heavens. If you can cast psychic spells or have the Psychic Sensitivity feat, you can use prognostication one additional time per day. Spending 1 minute consulting a star chart or cosmogram that is accurate for the world or plane you are currently on, prior to attempting a Sense Motive check, grants you a +2 insight bonus on the check. Special A zodiac, or a path of the mage vizier, can expend uses of their stargazing or personal astrarium ability to use prognostication an additional time per day. you can perform the prognostication occult skill unlock even if you cant use psychic magic, though you must employ this occult skill unlock via horoscopy. with a dc 10 + creature's hit die prognostication task you can determine the astrological conditions at the time of a creature's birth. this can allow you to ascertain information about a creature that is based on those astrological conditions such as a creature's date of birth or the they would receive from the auspicious birth feat. this task follows the normal rules for the prognostication occult skill unlock.",
+  "Bludgeoner": "You can knock foes out cold with just about any blunt instrument",
+  "Catch Off-Guard": "Foes are surprised by your skilled use of unorthodox and improvised weapons",
+  "Charlatan": "You can fake out practitioners of magic when using your own superhuman abilities. Special If your campaign uses Path of War, you may use this feat to obfuscate a supernatural martial maneuver, or to disguise one of the listed effects as a martial maneuver. If you do, you may make a Knowledge (martial) check in place of your Bluff or Spellcraft check, and viewers may attempt a Knowledge (martial) check in place of their Sense Motive or Spellcraft check. A maneuver does not have obvious components for the purposes of this feat. whenever you use a power, psi-like ability, spell, spell-like ability, or supernatural ability, you may make a bluff or spellcraft check to obfuscate the nature of your ability. a creature watching you while you use this ability must succeed at a sense motive or spellcraft check with a dc equal to your bluff check result or they believe that you used a type of effect of your choice from the above list. they do not gain insight into the exact nature of your ability; for example, you could fool a creature into thinking that youve cast a spell, but they will not be sure of what exact spell youve cast. if your ability has obvious components (such as verbal, somatic, or material components, a psionic powers display, or a dragons breath weapon erupting from its mouth), then you take a 5 penalty on your bluff check. a creature that succeeds on its check may still make a spellcraft check to identify a spell or power being used, as normal.",
+  "Counter Maneuver (combat)": "You use your opponents failed maneuvers as a window of opportunity to make your own. whenever an opponent makes a failed combat maneuver check against you, you can use an attack of opportunity to attempt the same kind of maneuver upon that opponent. you must be able to reach your opponent with the maneuver to do so.",
+  "Divinatory Strike": "",
+  "Divine Deception": "You are skilled at manipulating divine magical items",
+  "Enforcer": "You are skilled at causing fear in those you brutalize",
+  "Expert Driver": "When driving a chosen type of vehicle, you exhibit incredible control, maneuvering the vehicle with greater ease and stopping with uncanny precision",
+  "Eye of the Arclord": "Your understanding of the esoteric teachings of the Arclords of Nex allows you to open an eldritch eye that grants you superior perception of the magical world",
+  "Master of the Staff": "You have whipped your servants into shape - they are the best in the business. Note This is not a metamagic feat and does not modify the level of the spell. unseen servants, whether conjured by the spell or the battle butler class feature, have improved statistics. they have a strength score of 6 (about 60 pounds of lift, 300 lbs dragging), its base speed is 30 feet, and they can take 20 points of damage before they disappear.",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Shielded Caster": "Your allies cover you while you cast complicated spells",
-  "Strong Comeback": "You learn quickly from past mistakes",
+  "Nemesis": "A past enemy seeks your ruin",
+  "Outer Planes Traveler": "You have seen the outer reaches of the multiverse, and have gleaned knowledge from these alien realms You have a special affinity for one of these realms in particular, and carry some of that plane's power within you",
+  "Skilled Tracker": "You can track down impossible prey. Normal You cannot track a creature without a trail. you can track creatures that leave no tracks at all, such as flying creatures and those under the effects of pass without trace, though you take a -5 penalty to your survival checks to do so.",
+  "Step Up": "You can close the distance when a foe tries to move away",
+  "Swift Aid": "With a quick but harmless swipe, you can aid an ally's assault",
+  "Tribe Mentality": "You and your tribemates grant each other mental strength",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
-  "Unknowable Fear": "Your terrifying presence precedes you. other creatures take a 2 penalty on intimidate checks against you, and you can perform the project hostility occult skill unlock even if you can't cast psychic spells. if you can cast psychic spells or have the psychic sensitivity feat, then creatures do not become immune to your project hostility for 24 hours after being targeted with it.",
-  "Unseelie Hunter": "",
-  "Weapon Diligence": ""
+  "Undermine": "You and your allies take advantage of shifting terrain to unbalance enemies"
  },
  "inherents": {
   "cha": 0,
@@ -971,10 +989,10 @@
  "mod_char_sheet_var": false,
  "mt_feats": [],
  "normal_feat_amount": 7,
- "older_brothers": " you have 0 older brothers",
- "older_sisters": " you have 2 older sisters",
+ "older_brothers": " you have 1 older brothers",
+ "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "loving mother, loving father, raised in a middle income household",
+ "parents": "absent mother, absent father, adopted into a poor family",
  "personality_traits": [
   "Astute",
   "Energetic",
@@ -1689,45 +1707,47 @@
   7
  ],
  "sphere_boons": [
+  "Fortified Casting",
   "Easy Focus",
-  "Overcharge",
-  "Empowered Abilities"
+  "Overcharge"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
-  "Skilled Casting",
   "Somatic Casting",
-  "Verbal Casting",
+  "Wild Magic",
   "Addictive Casting",
-  "Focus Casting"
+  "Focus Casting",
+  "Verbal Casting",
+  "Prepared Caster"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Skilled Casting",
   "Somatic Casting",
-  "Verbal Casting",
+  "Wild Magic",
   "Addictive Casting",
   "Focus Casting",
+  "Verbal Casting",
+  "Prepared Caster",
+  "Fortified Casting",
   "Easy Focus",
-  "Overcharge",
-  "Empowered Abilities"
+  "Overcharge"
  ],
  "spheres_chosen": [],
  "stances_chosen": [],
  "story_feat_tax_dict": {},
  "story_feats": [
-  "Weapon Diligence",
-  "Concussive Spell",
-  "Unknowable Fear"
+  "Expert Driver",
+  "Allied Spellcaster",
+  "Charlatan"
  ],
  "str": 8,
  "teamwork_feat_labels": [
   "Samurai 1"
  ],
  "teamwork_feats": [
-  "Eye for Quality"
+  "Step Up"
  ],
  "total_level": 14,
  "total_rolled_hp": 116,
@@ -1742,17 +1762,13 @@
   "(Trainer 2)",
   "(Trainer 2)"
  ],
- "trainer_feat_tax_dict": {
-  "Back to Back": [
-   "improved back to back"
-  ]
- },
+ "trainer_feat_tax_dict": {},
  "trainer_feats": [
-  "Gunsmithing",
-  "Diehard",
-  "Back to Back",
-  "Fiendish Resilience",
-  "Athletic"
+  "Counter Maneuver (combat)",
+  "Nemesis",
+  "Swift Aid",
+  "Undermine",
+  "Astrology"
  ],
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],

@@ -46,14 +46,14 @@
   ],
   "casting_ability_modifier": "Intelligence",
   "drawbacks": [
-   "Draining Casting",
+   "Wild Magic",
    "Verbal Casting"
   ],
   "drawbacks_detail": [
    {
     "counts_as": 1,
-    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
-    "name": "Draining Casting"
+    "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
+    "name": "Wild Magic"
    },
    {
     "counts_as": 1,
@@ -1105,14 +1105,14 @@
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
-  "Draining Casting",
+  "Wild Magic",
   "Verbal Casting"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Draining Casting",
+  "Wild Magic",
   "Verbal Casting",
   "Easy Focus"
  ],

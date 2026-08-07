@@ -81,6 +81,33 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   in their own commit, with the `if ... else "N/A"` carrying the non-wizard path exactly as before.
 
 ### Changed
+- **Sphere talents now scale with level instead of being a flat 8, and nothing is free.** The flat 8
+  was a testing convenience that handed a 1st-level character the same eight talents as a 20th —
+  which is *why* the feat budget was over-committed at level 1. `test_feat_budget.py` is now green:
+  **0 over-commits in 840 generations**, where it previously fired 16 times.
+  - **The roll** (`spheres.roll_talent_budget`): under 5th rolls 0–8, under 10th 0–12, under 20th
+    0–16, and 20th+ rolls 0–(level−4) so the curve keeps going instead of flattening. The low end is
+    a real 0 — a dabbler who rolls nothing is a legitimate character.
+  - **No freebies.** Every talent is paid for by a feat (HR1: one Extra-Talent feat = 2 talents; the
+    first magic talent rides Basic Magic Training for 1) or by a Spheres Mentor. What neither can
+    fund is **dropped, not granted**. Verified directly: 0 unpaid talents across 225 bundles.
+  - **The three levers, in order.** What is left of the feat budget after Path of War and professions
+    have taken their share; then, if that falls short and trainers are on, a **Spheres Mentor is
+    forced** to cover the gap; if trainers are off the roll **halves** (no mentor can be conjured),
+    and if feat taxing is off it halves **again** — both off quarters it. Measured at 20th level:
+    6.9 talents → 3.6 (no trainers) → 3.4 (no taxing) → 1.6 (neither).
+  - **The magic-side bonus feats are now rolled before the cap, not after.** They come out of the
+    same budget, so rolling them afterwards meant the budget was sized for the talents alone and
+    then quietly overspent. When the budget cannot carry both, the bonus feat goes and the talents
+    stay — talents are the point of taking a sphere.
+  - **Dropping a talent rebuilds the sheet items from the pick list**, not by filtering on name: the
+    item carries a display-cased name and the pick the raw one, so a name filter silently kept
+    talents nobody had paid for. That was caught by checking the invariant, not by reading.
+  - **"Feat taxing" is read from `homebrew_feat_amount`**, the flag that actually governs the
+    homebrew feat economy (creation/story/flavour feats). There is no separate feat-tax toggle in the
+    code; if a distinct one is wanted, that is the line to change.
+  - Golden fixtures re-baselined — a deliberate behaviour change, and the first on this map for which
+    `--update` is the correct response rather than a failure signal.
 - **A phase's outputs now have three declared homes, not one.** Extraction was heading toward
   `build_payload(character)` — the payload built from the character alone — and a runtime census
   priced it: the payload literal reads **98 function locals**, of which **88** would have to become

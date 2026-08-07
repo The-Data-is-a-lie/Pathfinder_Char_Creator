@@ -35,32 +35,20 @@
  "casting_tradition": {
   "bonus_spell_points": 1,
   "boons": [
-   "Easy Focus",
-   "Fortified Casting"
+   "Overcharge"
   ],
   "boons_detail": [
    {
-    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
-    "name": "Easy Focus"
-   },
-   {
-    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
-    "name": "Fortified Casting"
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
    }
   ],
   "casting_ability_modifier": "Intelligence",
   "drawbacks": [
-   "Draining Casting",
    "Extended Casting",
-   "Somatic Casting",
-   "Prepared Caster"
+   "Somatic Casting"
   ],
   "drawbacks_detail": [
-   {
-    "counts_as": 1,
-    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
-    "name": "Draining Casting"
-   },
    {
     "counts_as": 2,
     "description": "Every sphere ability takes one step longer to activate than normal (swift to move, move to standard, standard to full-round, etc.).",
@@ -70,11 +58,6 @@
     "counts_as": 1,
     "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
     "name": "Somatic Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
-    "name": "Prepared Caster"
    }
   ]
  },
@@ -294,96 +277,7 @@
    "name": "cleric"
   }
  ],
- "combat_talent_items": [
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "You channel the serpent, improving your tenacity and grip.\n\nYou gain the following abilities which can be used while grappling:\n\nWhen Your Grappled Target Is Being Moved Away From You: While you are grappling another creature, any effect which would move your grappled target out of your reach must also succeed against you and your relevant statistic (CMD, saving throw, ability check, etc.) or fail to move the grappled target.\n\nWhen You Are Being Moved Away From Your Grappled Target: If an effect would move you away from your grappled target, you may attempt a grapple combat maneuver against your grappled target's CMD as an immediate action. If the target is battered, you may spend an attack of opportunity in place of an immediate action instead. If you are successful, the grappled target is moved into the nearest unoccupied and safe space within your reach and remains grappled. A grappled target being moved this way does not provoke attacks of opportunity.\n\nIf there is no unoccupied, safe space within your reach when attempting to move your grappled target with you, the target is moved into the nearest unoccupied, safe space near your new location, is released from your grapple, and is staggered for a number of rounds equal to 1/2 your practitioner modifier (minimum 1 round).\n\nSpecial: The abilities granted by Stubborn Serpent's Coils do not function against Warp sphere effects or other teleportation effects. If you possess the Inescapable Grasp talent, you may use the abilities granted by this talent against teleportation or Warp effects originating from a source other than your grappled target which would move your grappled target out of your grapple.\n\nWhen Your Grappled Target Is Being Moved Away From You: You are granted a saving throw or other appropriate check to negate a teleportation effect which would move your grappled target out of your grapple, as described in this ability.\n\nWhen You Are Being Moved Away From Your Grappled Target: You may include your grappled target in a teleport effect that would move you. If your grappled target is unwilling, the teleportation effect must be able to target an unwilling creature and the creature receives a saving throw against the effect, otherwise the grappled target is not moved with you and your grapple ends.\n\nExamples: Grappling is a complex and often confusing combat maneuver. Two examples are included with this talent to help better demonstrate how this talent is used.\n\nIf your grappled target is being moved away from you: A creature which uses the bull rush combat maneuver to push your grappled target away from you must also succeed against your CMD while grappling. A Wind severity effect would fail to push your grappled target if the Wind severity effect fails to push you. If a Telekinesis sphere effect would attempt to lift and move your grappled target out of your reach, the Telekinesis sphere caster would treat this as contested control over an item.\n\nIf you are being moved away from your grappled target: If a creature uses the bull rush combat maneuver to push you away from your grappled target, you can attempt a grapple combat maneuver as an immediate action (or as an attack of opportunity if the target is battered) against your grappled target. If you are successful, the grappled target also moves into an unoccupied, safe space within your reach and your grapple would not end.",
-   "name": "Stubborn Serpent’s Coils",
-   "sphere": "Wrestling",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "Whenever a creature provokes an attack of opportunity from you, you may expend your martial focus to make a grapple check against them as an immediate action; if this grapple check is successful, you may make a trip attempt against that creature as a free action.",
-   "name": "Powerslam",
-   "sphere": "Wrestling",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "You may attempt a grapple at the end of a charge in place of the normally granted attack. If this grapple attempt is successful, the creature must succeed at a Reflex save or fall prone.",
-   "name": "Tackle",
-   "sphere": "Wrestling",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "As long as you have martial focus, you may maintain a grapple as a move action. Associated Feat: Greater Grapple.",
-   "name": "Greater Grapple",
-   "sphere": "Wrestling",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "When you successfully maintain a grapple against a creature you have already pinned, you may expend your martial focus as an immediate action to attempt to damage one of the creatures limbs; the creature must succeed at a Fortitude save or have one of its limbs damaged by you (arms, legs, tentacles, or wings), ending the grapple. The penalties for a damaged limb are identical to the effects of a removed limb from the Limb Ripper talent except as follows:\n\nThe creature suffers no bleed damage.\n\nAny numerical penalties associated with the limb are halved.\n\nThe condition lasts for 1 round plus 1 round per 4 points of base attack bonus you possess.\n\nNote: Undead are not immune to this effect and must make the saving throw.",
-   "name": "Armbar",
-   "sphere": "Wrestling",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "Whenever a creature attempts to magically escape a grapple with a teleportation or Warp effect, you may make a special combat maneuver check against their CMD as an immediate action. If successful, the escape fails and they provoke an attack of opportunity from you. At +10 base attack bonus, if you make a grapple attempt against a creature under the effect of a freedom of movement spell or similar effect, that effect is suppressed for the duration of the grapple.\n\nAuthor's Note: This talent only applies against teleportation effects originating from the grappled target, not from any source. At 10+ base attack bonus, this talent can suppress freedom of movement and other similar effects (like the Fate sphere's Freedom (word)), regardless of their source.",
-   "name": "Inescapable Grasp",
-   "sphere": "Wrestling",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "When you successfully maintain a grapple against a creature you have already pinned, instead of one of the options normally available when you maintain a grapple, you may lift them over your head and smash them into the ground, automatically threatening a critical hit with your unarmed strike and rolling to confirm as normal. If the critical threat confirms successfully, the creature must make a successful Fortitude save or be staggered for 1 round. Use of this talent breaks your grapple on the creature. At +10 base attack bonus, the target is dazed for 1 round instead.\n\nThis talent is not a (slam) itself, and cannot be used together with a (slam).",
-   "name": "Piledriver",
-   "sphere": "Wrestling",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": true,
-   "changes": [],
-   "contextNotes": [],
-   "description": "Treat the result of your grapple check as a dispel check against the target of your grapple as though you were making a targeted dispel with dispel magic (compare your grapple check to the effect on the target with the highest caster level (DC = 11 + the spell's caster level). If successful, that effect ends. If not, compare the same result to the spell with the next highest caster level. Repeat this process until you have dispelled one spell affecting the target, or you have failed to dispel every spell). If you grapple a summoned creature, this can end the spell that summoned them.",
-   "name": "Magic Killing Grip",
-   "sphere": "Wrestling",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  }
- ],
+ "combat_talent_items": [],
  "con": 9,
  "counter_schools": [
   "illusion",
@@ -431,23 +325,87 @@
   "class": 0,
   "flavor": 1,
   "flaw": 2,
-  "normal": 8,
+  "normal": 6,
   "profession": 2,
   "story": 4,
   "teamwork": 0,
-  "trainer": 9
+  "trainer": 15
  },
- "feat_changes_dict": {},
- "feat_conditionals_dict": {},
+ "feat_changes_dict": {
+  "Coordinated Maneuvers": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "cmb",
+     "text": "While adjacent to an ally who also has this feat: +2 competence bonus on all combat maneuver checks (+4 to break free from a grapple)."
+    }
+   ]
+  },
+  "Focused Discipline": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "+2 on all saving throws against fear effects."
+    }
+   ]
+  }
+ },
+ "feat_conditionals_dict": {
+  "Desperate Battler": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    },
+    {
+     "critical": "crit",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    }
+   ],
+   "name": "Desperate Battler: When no ally is within 10 feet and you are not benefiting from aid another: +1 morale bonus on melee attack rolls and +1 morale bonus on melee damage rolls."
+  },
+  "Focused Discipline": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    },
+    {
+     "critical": "crit",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    }
+   ],
+   "name": "Focused Discipline: +2 morale on attack rolls, weapon damage, and CMB vs a creature whose fear effect you just resisted (1 round)."
+  }
+ },
  "feats": [
-  "Acrobatic",
-  "Improved Day Job",
-  "Cloak Dance",
   "Alertness",
   "Endurance",
+  "Coordinated Maneuvers",
+  "Desperate Battler",
   "Martial Training I (Solar Wind)",
   "Martial Training III (Solar Wind)",
-  "Blighted Critical",
+  "Basic Magic Training",
+  "Extra Magic Talent (Wild Instinct / Nature’s Carapace)",
   "Multi Talented",
   "True Calling"
  ],
@@ -457,10 +415,17 @@
   ],
   "Endurance": [
    "altitude affinity",
-   "cold celerity"
+   "cold celerity",
+   "diehard",
+   "drunken brawler",
+   "fast healer",
+   "stalwart"
   ],
-  "Extra Combat Talent (Stubborn Serpent’s Coils / Powerslam)": [
-   "Extra Combat Talent"
+  "Extra Magic Talent (Speak With The Elements / Instill Spirit)": [
+   "Extra Magic Talent"
+  ],
+  "Extra Magic Talent (Wild Instinct / Nature’s Carapace)": [
+   "Extra Magic Talent"
   ],
   "Martial Training I (Solar Wind)": [
    "Martial Training II (Solar Wind)"
@@ -471,7 +436,7 @@
  },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Shield Wall"
+  "Cloud Gazer"
  ],
  "flaw": [
   "Animal Phobia",
@@ -501,12 +466,18 @@
    "tier": "major"
   }
  },
- "flaw_feat_tax_dict": {},
+ "flaw_feat_tax_dict": {
+  "Improved Disarm": [
+   "greater disarm",
+   "disarming strike",
+   "hold the blade"
+  ]
+ },
  "flaw_feats": [
-  "Prone Slinger",
-  "Astrology"
+  "Improved Disarm",
+  "Blighted Critical"
  ],
- "formatted_bio": "Pauline Dupont\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 9 Summoner (Unchained) / Cleric\n- Archetype: Spellblade\n- Tactics: Loads a touch spell into its blade and delivers spell and sword damage in the same swing, spiking one target with everything at once. Banks spell slots between novas behind decent armor and self-buffs like shield or mirror image.\n- Stat Focus: Int\n- Disciplines: Solar Wind, Steel Serpent\n- Homeland: Tal-falko\n\nVocation\n- Profession: Charm-Peddler (rank 15)\n- Profession: Medusa Hunter (rank 6)\n- Profession: Stoneshaper (rank 1)\n- Profession: Book Seller (rank 1)\n- Profession: Sea Urchin Harvester (rank 7)\n- Known for: Locks\n- Training: An excellent trainer who taught them Woodland Sage, Cooperative Crafting, Selective Spell\n- Training: An excellent trainer who taught them Firesight, Pack Attack, Wand Desperado\n- Training: An average (Path of War) trainer who taught them Martial Training I (Steel Serpent), Martial Training III (Steel Serpent)\n- Training: An excellent (Spheres) trainer who taught them Tackle, Greater Grapple, Armbar, Inescapable Grasp, Piledriver, Magic Killing Grip\n\nFamily\n- Absent Mother\n- Loving Father\n- Raised In A Middle Income Household\n- 2 Younger Sisters\n\nPersonality\n- Personality: Enthusiastic, Agreeable, Goal-oriented, Judicious, Gregarious\n- Mannerisms: Taps pencil, Rub hands together, Bursts into laughter, Crouches\n- Flaws: Animal Phobia, Powerless Prophecy\n\nAppearance\n- Hair: Frizzy Red\n- Eyes: Blue\n- Build: Hazel-eyed",
+ "formatted_bio": "Pauline Dupont\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 9 Summoner (Unchained) / Cleric\n- Archetype: Spellblade\n- Tactics: Loads a touch spell into its blade and delivers spell and sword damage in the same swing, spiking one target with everything at once. Banks spell slots between novas behind decent armor and self-buffs like shield or mirror image.\n- Stat Focus: Int\n- Disciplines: Solar Wind, Steel Serpent\n- Homeland: Tal-falko\n\nVocation\n- Profession: Charm-Peddler (rank 15)\n- Profession: Medusa Hunter (rank 6)\n- Profession: Stoneshaper (rank 1)\n- Profession: Book Seller (rank 1)\n- Profession: Sea Urchin Harvester (rank 7)\n- Known for: Locks\n- Training: An average trainer who taught them Scribe Scroll, Giant Slayer\n- Training: An excellent trainer who taught them Out of the Sun, Venemous Strike (combat), Shield Focus\n- Training: An average trainer who taught them Firesight, Improved Quick Draw\n- Training: An excellent trainer who taught them Ensemble, Improved Steal, Cooperative Crafting\n- Training: An average trainer who taught them Focused Discipline, Bouncing Spell\n- Training: An average (Path of War) trainer who taught them Martial Training I (Steel Serpent), Martial Training III (Steel Serpent)\n- Training: An excellent (Spheres) trainer who taught them Nature’s Movement, Fog Mastery, Air, Nature Lord, Ranged Geomancy, Whispering Elements\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Poor Household\n- 1 Older Brother\n- 2 Younger Brothers\n- 2 Younger Sisters\n\nPersonality\n- Personality: Enthusiastic, Agreeable, Goal-oriented, Judicious, Gregarious\n- Mannerisms: Taps pencil, Rub hands together, Bursts into laughter, Crouches\n- Flaws: Animal Phobia, Powerless Prophecy\n\nAppearance\n- Hair: Frizzy Red\n- Eyes: Blue\n- Build: Hazel-eyed",
  "full_domain": [
   "Luck",
   "Strength"
@@ -527,16 +498,24 @@
   "Acrobatic": "You are skilled at leaping, jumping, and flying",
   "Alertness": "You often notice things that others might miss",
   "Astrology": "You have come to understand that the workings of the universe and even the capricious machinations of the gods can all be divined from the motions of the heavens. If you can cast psychic spells or have the Psychic Sensitivity feat, you can use prognostication one additional time per day. Spending 1 minute consulting a star chart or cosmogram that is accurate for the world or plane you are currently on, prior to attempting a Sense Motive check, grants you a +2 insight bonus on the check. Special A zodiac, or a path of the mage vizier, can expend uses of their stargazing or personal astrarium ability to use prognostication an additional time per day. you can perform the prognostication occult skill unlock even if you cant use psychic magic, though you must employ this occult skill unlock via horoscopy. with a dc 10 + creature's hit die prognostication task you can determine the astrological conditions at the time of a creature's birth. this can allow you to ascertain information about a creature that is based on those astrological conditions such as a creature's date of birth or the they would receive from the auspicious birth feat. this task follows the normal rules for the prognostication occult skill unlock.",
+  "Basic Magic Training": "Benefit: Choose a sphere of magic. You gain access to this basic sphere. You gain an effective caster level of 1, a magic skill bonus of 1, a magic skill defense of 12, and a spell pool of 1. You may also select a casting tradition when you gain this feat. You are considered to possess the casting class feature, but do not gain the +2 magic talents a caster gains for their 1st level in a casting class.\n\nIf you later gain levels in a class granting the casting class feature, exchange this feat for the Extra Magic Talent feat.\n\nSpecial: For retraining purposes, having the casting class feature counts as Basic Magic Training.\nSphere/talent gained: Riding Fog (Nature)",
   "Blighted Critical": "With a critical hit from a spell or spell-like ability, you give the target a minor spellblight",
-  "Catch Off-Guard": "Foes are surprised by your skilled use of unorthodox and improvised weapons",
-  "Cloak Dance": "You are skilled at using optical tricks to make yourself seem to be where you are not. you can take a move action to obscure your exact position. until your next turn, you have concealment. alternatively, you can take a full-round action to entirely obscure your exact position. until your next action, you have total concealment.",
+  "Bouncing Spell": "You can direct a failed spell against a different target",
+  "Cloud Gazer": "Your insight into your elemental heritage gives you a clarity of sight few humans possess",
   "Cooperative Crafting": "Your assistance makes item crafting far more efficient",
+  "Coordinated Maneuvers": "You are skilled at working with your allies to perform dangerous combat maneuvers",
+  "Desperate Battler": "Your experiences fighting against numerous foes that have already overwhelmed your allies, friends, and family have forced you to excel at fighting on your own",
   "Endurance": "Harsh conditions or long exertions do not easily tire you",
-  "Extra Combat Talent": "Your knowledge of combat is easily expanded.\n\nBenefit: Gain an additional sphere or a talent from a combat sphere you possess.\n\nSpecial: You may take this feat multiple times. The effects stack.",
-  "Extra Combat Talent (Stubborn Serpent’s Coils / Powerslam)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Stubborn Serpent’s Coils (Wrestling): You channel the serpent, improving your tenacity and grip.  You gain the following abilities which can be used while grappling:  When Your Grappled Target Is Being Moved Away From You: While you are grappling another creature, any effect which would move your grappled target out of your reach must a\n- Powerslam (Wrestling): Whenever a creature provokes an attack of opportunity from you, you may expend your martial focus to make a grapple check against them as an immediate action; if this grapple check is successful, you may make a trip attempt against that creature as a free action.",
+  "Ensemble": "You can create an ensemble of skilled and amateur performers to aid you in your performance",
+  "Extra Magic Talent": "Benefit: Gain an additional sphere or a talent from a sphere you possess. You may take this feat multiple times. The effects stack.",
+  "Extra Magic Talent (Speak With The Elements / Instill Spirit)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Speak With The Elements (Nature): You may spend a spell point to commune with the elements for 1 minute per caster level.  Air: Speak With Clouds: You gain the Auran language, and may speak with clouds of fog or mist. This is not truly accomplished with speech, but rather by interacting with the cloud you may learn what else has tou\n- Instill Spirit (Nature): As a standard action you may touch a small container of liquid and instill a spirit effect inside it, which functions as a potion or oil. Spirit effects with an instantaneous or concentration duration cannot be instilled, and if you do not have the ability to grant spirit effects to other creatures,",
+  "Extra Magic Talent (Wild Instinct / Nature’s Carapace)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Wild Instinct (Nature): While concentrating on any Nature sphere ability, you gain the benefits of uncanny dodge. You may take this talent twice, upon taking this talent a second time, you also gain the benefits of improved uncanny dodge using your caster level in place of class level to determine the minimum rogue level r\n- Nature’s Carapace (Nature): You may spend a spell point as a move action to wrap an element around yourself for 1 minute per caster level. This allows you to grant yourself one of the benefits outlined below, dependent on the packages you possess:  Air: Buffeting Winds: You gain a 10% miss chance vs. ranged attacks, +10% per 5",
   "Firesight": "Fire no longer blinds you, and smoke conceals nothing from your gaze",
-  "Improved Day Job": "You learned the importance of an honest day's work while training as an initiate of the Pathf inder Society",
-  "Martial Charge": "You have learned how to initiate a martial strike on the move, delivering them at the end of a charge attack. as a full-round action, you can make a special charge attack. first, move up to twice your speed in a straight line towards a creature, obeying the normal restrictions on movement during a charge, as well as applying any effects or you might have to such movement. then, at the end of your movement, you can initiate a strike on the creature you moved towards with an initiation action of 1 standard action. you gain a +2 bonus on attack rolls during the strike, and take a 2 penalty to your ac until the start of your next turn. during the strike, you do not gain any other you would have gained for charging, such as pounce.",
+  "Focused Discipline": "Familiarity with the military traditions of your homeland inspires uncommon valor in you",
+  "Giant Slayer": "You know how to turn a foes size and reach against them. when you make a charge attack, you do not provoke attacks of opportunity from the target of your charge. in addition, you gain a +1 bonus on attack rolls made during charges for each size category larger than you the target of the attack is.",
+  "Improved Disarm": "You are skilled at knocking weapons from a foe's grasp",
+  "Improved Quick Draw": "Even with your weapon still sheathed, your presence is enough to threaten enemies. you are considered to be threatening all squares within reach of your weapon even if it is sheathed, and can draw your weapon when making an attack of opportunity. when you draw your weapon in this way, you may sheath weapon without provoking attacks of opportunity after the attack is resolved.",
+  "Improved Steal": "You have a knack for snatching items from your opponents",
   "Martial Training I (Solar Wind)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
   "Martial Training I (Steel Serpent)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
   "Martial Training II (Solar Wind)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
@@ -546,16 +525,14 @@
   "Martial Training IV (Solar Wind)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training IV (Steel Serpent)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Pack Attack": "You are skilled at surrounding your enemies",
-  "Point-Blank Shot": "You are especially accurate when making ranged attacks against close targets",
-  "Prone Slinger": "Your sideways sling release allows you to launch bullets and stones even while prone",
-  "Quick Preparation": "Early on in your adventuring career, you learned (perhaps the hard way) how to prepare your spells even when put under extreme time constraints",
-  "Selective Spell": "Your allies need not fear friendly fire",
-  "Shield Wall": "You form a unified defense with those around you",
-  "Spheres Mentor": "<strong>Spheres funded:</strong> Wrestling (Might)<br><br>Extra Combat Talent > Extra Combat Talent<br>Extra Combat Talent > Extra Combat Talent<br>Extra Combat Talent > Extra Combat Talent<br><br>Tackle (Wrestling)<br>Greater Grapple (Wrestling)<br>Armbar (Wrestling)<br>Inescapable Grasp (Wrestling)<br>Piledriver (Wrestling)<br>Magic Killing Grip (Wrestling)",
+  "Out of the Sun": "Your allies use the sun's glare to their advantage",
+  "Quick Draw": "You can draw weapons faster than most",
+  "Scribe Scroll": "You can create magic scrolls",
+  "Shield Focus": "You are skilled at def lecting blows with your shield",
+  "Shielded Caster": "Your allies cover you while you cast complicated spells",
+  "Spheres Mentor": "<strong>Spheres funded:</strong> Nature (Power)<br><br>Extra Magic Talent > Extra Magic Talent<br>Extra Magic Talent > Extra Magic Talent<br>Extra Magic Talent > Extra Magic Talent<br><br>Nature’s Movement (Nature)<br>Fog Mastery (Nature)<br>Air (Nature)<br>Nature Lord (Nature)<br>Ranged Geomancy (Nature)<br>Whispering Elements (Nature)",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
-  "Wand Desperado": "Magical weaponry is a form of weaponry just as versatile as any whenever you use a martial maneuver that would allow an attack with a weapon, you may make a use magic device check with a wand or staff which allows a touch attack corresponding to the maneuver range (melee touch if with a melee weapon, ranged touch or ray if with a ranged weapon) to use the wand or staffs spell as a weapon for the purpose of the maneuver. the attack is made against regular ac rather than touch ac, but elsewise the spell operates normally and applies any effects of the maneuver to it (such as extra damage or debilitating effects). if the spell allows multiple touch attacks for fires multiple rays (such as scorching ray), the maneuvers effects are only applied to the first ray or touch.",
-  "Woodland Sage": "Understanding nature requires patience far more than education or guile. add your wisdom modifier as an additional bonus to your handle animal, knowledge (nature), and knowledge (geography) checks. if you have the wild empathy class feature, add your wisdom modifier as an additional bonus on checks with that ability."
+  "Venemous Strike (combat)": "A poisonous sting accompanies your attacks. you can use this a number of times per day equal to your wisdom modifier (minimum 1). you can choose to use this ability as a free action after you hit the enemy with the attack. this is a supernatural ability."
  },
  "inherents": {
   "cha": 8,
@@ -652,7 +629,129 @@
   "wis": 1
  },
  "license_url": "/license",
- "magic_talent_items": [],
+ "magic_talent_items": [
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You may create clouds of fog attached to yourself or to other creatures. A fog cloud attached to a creature is called a riding fog. This functions as a regular fog and can be dispersed by wind, except that it moves with the creature it is attached to, becomes inactive if that creature is knocked unconscious and is dispelled if they are killed. The fog continues to function if it goes beyond the range of its creator.\n\nThe recipient must be within range of your geomancing. An unwilling creature can have a riding fog attached to them as a touch attack; A creature is allowed a Will save to prevent having the fog attached to them and may attempt another saving throw each round to end the fog. The Break Enchantment talent from the Life sphere or a similar effect can dispel the riding fog before its natural duration expires. An enemy with a riding fog attached to them still receives any saving throws the fog allows to avoid being affected. A successful save causes the fog to immediately dissipate.\n\nSpell resistance can prevent a riding fog from being attached to a creature. Failing to bypass the intended target's spell resistance in attempting to attach the fog dispels the fog.",
+   "name": "Riding Fog",
+   "sphere": "Nature",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "While concentrating on any Nature sphere ability, you gain the benefits of uncanny dodge. You may take this talent twice, upon taking this talent a second time, you also gain the benefits of improved uncanny dodge using your caster level in place of class level to determine the minimum rogue level required to flank you.",
+   "name": "Wild Instinct",
+   "sphere": "Nature",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You may spend a spell point as a move action to wrap an element around yourself for 1 minute per caster level. This allows you to grant yourself one of the benefits outlined below, dependent on the packages you possess:\n\nAir: Buffeting Winds: You gain a 10% miss chance vs. ranged attacks, +10% per 5 caster levels. This does not affect ranged weapons that are unusually massive, such as boulders or siege weapons.\n\nEarth: Stoneskin: You gain DR/adamantine equal to 1/2 your caster level. Once this has absorbed damage equal to 10 per caster level, it immediately ends even if its duration has not expired.\n\nFire: Flame Mantle: You place fire around yourself as a mantle. This does not deal fire damage to yourself, but all adjacent creatures take fire damage equal to the largest fire you can create at the end of each of your turns, and must succeed at a Reflex save or catch fire.\n\nMetal: Iron Body: You wrap yourself in thick iron. You count as a creature comprised mostly of metal and gain a +6 armor bonus and a -3 armor check penalty, both of which increase by 1 per 4 caster levels, and you are considered to be wearing heavy armor, such as when calculating movement speed. You are considered armed when making unarmed attacks, and gain a +2 bonus to Strength and a -2 penalty to Dexterity, both of which increase by 2 for every 8 caster levels you possess.\n\nPlant: Barkskin: You gain a +1 enhancement bonus to natural armor, +1 per 5 caster levels. In addition, in natural environments you gain a circumstance bonus to Stealth equal to 1/2 your caster level (minimum 1). You lose this circumstance bonus to Stealth in any round that you move more than 5 feet.\n\nWater: Seamantle: You wrap water around yourself, gaining a circumstance bonus to Escape Artist checks and combat maneuver checks made to escape a grapple, as well as to your CMD to avoid being grappled, equal to your caster level. Additionally, the distortion from the water grants you a 10% chance to negate critical hits and precision damage, +10% per 5 caster levels.",
+   "name": "Nature’s Carapace",
+   "sphere": "Nature",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You may spend a spell point to commune with the elements for 1 minute per caster level.\n\nAir: Speak With Clouds: You gain the Auran language, and may speak with clouds of fog or mist. This is not truly accomplished with speech, but rather by interacting with the cloud you may learn what else has touched it, passed through it, is hidden within it, etc. You can tell depth, weight, size, and number of passers-by, but not more detailed information.\n\nEarth: Speak With Stone: You gain the Terran language, and may speak with natural or worked stone. This is not truly accomplished through speech, but rather by touching a stone you may learn what else has touched it, passed by it, what is hidden underneath it, etc. You can tell depth, weight, size, and number of passers-by, but not more detailed information.\n\nFire: Speak With Fire: You gain the Ignan language, and may speak with fire or smoke. This is not truly accomplished through speech, but rather by gazing into the flames and smoke you may learn what else has touched it, passed by it, what is responsible for creating it, etc. You can tell weight, size, and number of passers-by, but not more detailed information.\n\nMetal: Speak With Metal: You gain the Aklo language, and may speak with natural ore or worked metal. This is not truly accomplished through speech, but rather by touching a piece of metal you may learn what else has touched it, worn it, passed by it, what is hidden inside it, details of its forging, etc. You can tell depth, weight, size, and number of passers-by, but not more detailed information.\n\nPlant: Speak With Plants: You gain the Sylvan language, and may speak with normal plants and plant creatures. You can communicate with normal plants and plant creatures and can ask questions and receive answers from them. A normal plant's sense of its surroundings is limited, so it will not be able to give (or recognize) detailed descriptions of creatures or answer questions about events outside its immediate vicinity.\n\nWater: Speak With Water: You gain the Aquan language, and may speak with pools or bodies of water. This is not truly accomplished through speech, but rather by dipping a limb into the water you may learn what else has touched it, passed by it, what is hidden inside it, etc. You can tell depth, weight, size, and number of passers-by, but not more detailed information. You can speak with both fresh or salt bodies of water, and if attempting to converse with particularly large bodies of water, such as oceans, you can only acquire information from a portion of the body of water, to a maximum distance of 1000 feet + 100 feet per caster level.",
+   "name": "Speak With The Elements",
+   "sphere": "Nature",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "As a standard action you may touch a small container of liquid and instill a spirit effect inside it, which functions as a potion or oil. Spirit effects with an instantaneous or concentration duration cannot be instilled, and if you do not have the ability to grant spirit effects to other creatures, the instilled liquid is only usable by you.\n\nAn instilled liquid remains potent until you rest to regain spell points. If you have equipment on hand (such as an alchemy lab), the cost of bottles and water is considered negligible. You may target food but not an already-magical item, such as a potion. All spell points must be spent and all variables of the sphere effect must be chosen at the time the instilled liquid is created. You cannot instill multiple effects in a single liquid, nor create multiple instilled liquids with a single action.",
+   "name": "Instill Spirit",
+   "sphere": "Nature",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You may spend a standard action to gain one of the following benefits for 1 round. You may spend a spell point to gain one of the following benefits for 1 minute per caster level. You may move up to your speed with the granted move type as part of activating this sphere effect, so long as the action used was at least a move action. The movements you can choose are determined by the packages you possess.\n\nAir: Air Ball: You gain a rideable sphere of compressed air, which can support 200 + 20 lbs. per caster level. This ball can float up to 5 feet + 5 feet per 5 caster levels above the ground, and has a movement speed equal to your base land speed. This ball is only usable by you, but others may ride along if the ball can support the weight of all riders. The ball is treated as a mount, but requires no Ride or Fly checks to use and cannot be affected by uses of those skills such as cover or spur mount, nor can be targeted by opponents.\n\nEarth: Burrow: You can tunnel through sand, loose soil, or gravel, at a burrow speed equal to half your land speed (minimum 10 feet) or at a burrow speed equal to a quarter of your land speed through stone (minimum 5 feet). While burrowing with this talent you cannot charge or run. This ability does not grant you the ability to breathe underground, so when passing through loose material, you must hold your breath and take only short trips or else you may suffocate.\n\nFire: Ride the Flames: You may use heat waves to push yourself, gaining a fly speed equal to your base land speed, with a maneuverability of clumsy. This fly speed only functions on your turn. If you are not on a surface that can support you on the end of your turn, you glide safely to the ground, at a speed of 60 feet per round, taking no falling damage. You cannot use this fly speed to hover.\n\nMetal: Ironshod: You become difficult to impede with traps, hazards, and difficult terrain. You reduce any damage you take from traps, hazards, and difficult terrain (including caltrops and spike stones) by your caster level, and you can still 5-foot step through difficult terrain. When moving through difficult terrain, you may completely ignore 5 feet of difficult terrain + 5 feet per 5 caster levels when calculating your movement for a round.\n\nPlant: Brachiate: You gain a climb speed equal to half your land speed (minimum 10 feet), granting you all the usual benefits of a Climb speed, including a racial +8 bonus to Climb checks. In addition, you can move through the upper canopies of jungles and forests with the same ease you move along the ground. You can use your base land speed to move through any heavily forested area without touching the ground by leaping and swinging from tree to tree. You can also use this among the rafters of a building, or even stalactites on a cavern ceiling.\n\nWater: Water Walk: You gain the ability to walk on water. Water and all other liquid becomes solid to you, allowing you to move over it as if it were normal ground. Especially turbulent water (such as during a storm) may count as difficult terrain. You may always choose to sink into the water and swim if you so desire, in which case you are considered to have a Swim speed equal to your land speed, granting you all the usual benefits of a Swim speed, including a racial +8 bonus to Swim checks. This does not, however, grant you the ability to breathe underwater.",
+   "name": "Nature’s Movement",
+   "sphere": "Nature",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When you create Fog, you may add one of the following additional effects depending on what other packages you possess.\n\nAir: Wind Blades: Your fog attacks those inside it with blades of wind. Any creature or object moving through this fog must succeed at a Reflex save or suffer 1d6 + 1 per 2 caster levels points of slashing damage for every 5 feet of movement spent entering or moving through this fog.\n\nEarth: Sandstorm: Requires loose dirt or sand instead of water. You create a sandstorm. In addition to the fog, this also functions as a Vortex, except it travels over land and extends into the air, and can even leave the ground and travel in the air. The obscuring effect only applies to the actual area of the vortex, and creatures that possess earthsight or tremorsense do not have their vision obscured by this effect.\n\nFire: Smokescreen: Requires fire instead of water. You may create a fog out of smoke instead of mist. Creatures that begin their turn within or enter the cloud must succeed at a Fortitude save or become blinded for 1 minute. In addition, creatures suffer -2 penalty on attack rolls and Perception checks for as long as they remain inside and for 1 round after exiting the smoke. Creatures that possess firesight do not have their vision obscured by clouds modified with this effect.\n\nMetal: Acid Rain: You may spend an additional spell point to create acid rain. An acid fog deals 1d6 acid damage per 2 caster levels (minimum 1d6, no save) to creatures inside it. This fog deals damage when you first create it and each subsequent round at the beginning of your turn. Any creature who enters the cloud immediately suffers damage, but only once even if they leave and re-enter the cloud as part of their movement. Creatures that possess metalsight do not have their vision obscured by this effect.\n\nPlant: Spore Cloud: Requires grass, weeds, or trees instead of water. You may create a cloud of spores. Creatures that begin their turn within or enter the cloud must succeed at a Fortitude save or become sickened for as long as they remain within the fog + 1d6 rounds after leaving. If a creature fails its Fortitude save against this effect while already sickened, it also becomes nauseated for 1 round. Creatures and objects that exit the cloud are covered in visible sticky spores that remain until removed as a full-round action; outlining their form and revealing their position, and making invisibility impossible without first cleaning off the spores. Creatures that possess greensight or plantsight do not have their vision obscured by this effect.\n\nWater: Solid Fog: You may make your fog so thick that it becomes effectively solid. Creatures move at half their speed through the fog, cannot make 5-foot steps, and suffer a -1 penalty to all weapon attacks and damage rolls made within or that pass through this area -1 per 10 caster levels. Objects that fall within this area are slowed so that each 10 feet of fog reduces the falling damage by 1d6, +1d6 per 10 caster levels.",
+   "name": "Fog Mastery",
+   "sphere": "Nature",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Breeze: Concentration, requires air. You create a light wind that remains swirling around a target. The breeze grants the target a circumstance bonus equal to 2 + 1 per 5 caster levels on saves against very hot conditions, severe heat, and saves against clouds, vapors, and gases (such as cloudkill, stinking cloud, and inhaled poisons).\n\nGust Of Wind: Concentration, requires air. You may create a line-shaped gust of wind emanating out from you out to the edge of your geomancing range, affecting all creatures and objects within that line. The severity level of the wind is 3 + 1 per 5 caster levels (see the Wind category of the Weather sphere for more information). If maintaining Gust Of Wind via concentration, you may spend a spell point as a free action to increase the severity level of its wind by 1 for that round. Walls and other barriers block this wind.\n\nAuthor's Note: If Gust Of Wind is used in an area of existing wind severity level 3 or greater, the geomancing ability may have different effects depending upon what direction your line-shaped gust is blowing versus the existing weather.\n\nGust Of Wind blowing in same direction of Existing Wind: instead increase the wind severity in the line-shaped gust by 1 + 1 per 5 caster levels.\n\nGust Of Wind blowing in opposite direction of Existing Wind: instead decrease the wind severity in the line-shaped gust by 3 + 1 per 5 caster levels.\n\nGust Of Wind blowing in perpendicular directions of Existing Wind: Gust Of Wind overrides the existing wind severity and direction in that line-shaped gust, but otherwise remains unchanged.\n\nPurify Air: Concentration, requires air, gas, or vaporous substance. You may convert polluted air or a non-breathable gas or vapor into a cloud of breathable air in a 5 feet + 5 feet per 5 caster levels radius area centered within range. This has no effect on supernatural or other magically created clouds (such as a vampire's gaseous form or a cloudkill spell). Creatures who are entirely within the area of the cloud are able to breathe in sufficient air to sustain them.",
+   "name": "Air",
+   "sphere": "Nature",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Treat your caster level as 5 higher when determining the maximum area radius and height you can affect with your geomancing abilities that affect an area (such as Bury, Dust Storm, Entangle, Fog, Gust Of Wind, Purify Air, Tremor, or Vortex).\n\nWhen using a geomancing ability dependent on size (such as Affect Fire, Create Fire, Magnetize, Pummel, or Recover Ore), increase the maximum size object you can create or target by 1 size category.\n\nWhen using Freeze, you may affect twice as many equivalent Medium-sized creatures without affecting the thickness of the ice.\n\nAuthor's Note: You can apply this effect to each applicable effect. For example, if using the Create Nature talent to both Create Fire and Affect Fire, both abilities will receive the size increases from the Nature Lord talent",
+   "name": "Nature Lord",
+   "sphere": "Nature",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "The range of your geomancing abilities increases from close to medium range. You may select this talent up to 2 times. Each time it is selected, the range increases by 1 step (close to medium, medium to long).",
+   "name": "Ranged Geomancy",
+   "sphere": "Nature",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": true,
+   "changes": [],
+   "contextNotes": [],
+   "description": "As an instantaneous effect, you may as a standard action spend a spell point to send a message or sound through an element corresponding to a package you possess (air, earth, water, etc.) to a designated spot anywhere in the world. The message travels to the destination, provided that the location is familiar to you and that it can find a way to the location through its chosen medium. The message can travel as slowly as 1 mile per hour or as quickly as 1 mile per 10 minutes, though if it cannot reach its destination within 1 hour per caster level, the effect ends without delivering the message. If choosing plant or fire the message can travel without a medium, provided the end location possesses either plantlife or a fire for the message to be delivered through.\n\nThe message is gentle and unnoticed until it reaches the location, where it then delivers its whisper-quiet message or other sound to all creatures within 10 feet + 5 feet per 5 caster levels of the destination. Note that the message is delivered regardless of whether anyone is present to hear it.\n\nAt time of casting, you can prepare the effect to bear a message of no more than 20 + your caster level words, cause the talent to deliver other sounds for 1 round per 2 caster levels, or merely have the message seem to be a faint manifestation of the chosen element.\n\nThe message cannot speak verbal components, use command words, or activate magical effects.",
+   "name": "Whispering Elements",
+   "sphere": "Nature",
+   "system": "Spheres of Power",
+   "type": "advanced",
+   "uses": null
+  }
+ ],
  "main_stat": "int",
  "maneuvers_choose_from": [
   [
@@ -891,10 +990,10 @@
   "Martial Training III (Steel Serpent)"
  ],
  "normal_feat_amount": 8,
- "older_brothers": " you have 0 older brothers",
+ "older_brothers": " you have 1 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "absent mother, loving father, raised in a middle income household",
+ "parents": "loving mother, loving father, raised in a poor household",
  "personality_traits": [
   "Enthusiastic",
   "Agreeable",
@@ -1579,43 +1678,42 @@
   3
  ],
  "sphere_boons": [
-  "Easy Focus",
-  "Fortified Casting"
+  "Overcharge"
  ],
  "sphere_counts": {
-  "Wrestling": {
+  "Nature": {
    "advanced": 1,
    "feats": 0,
-   "normal": 7
+   "normal": 10
   }
  },
  "sphere_drawbacks": [
-  "Draining Casting",
   "Extended Casting",
-  "Somatic Casting",
-  "Prepared Caster"
+  "Somatic Casting"
  ],
  "sphere_feat_tax": {
-  "Extra Combat Talent (Stubborn Serpent’s Coils / Powerslam)": [
-   "Extra Combat Talent"
+  "Extra Magic Talent (Speak With The Elements / Instill Spirit)": [
+   "Extra Magic Talent"
+  ],
+  "Extra Magic Talent (Wild Instinct / Nature’s Carapace)": [
+   "Extra Magic Talent"
   ]
  },
  "sphere_feats": [
-  "Extra Combat Talent (Stubborn Serpent’s Coils / Powerslam)"
+  "Basic Magic Training",
+  "Extra Magic Talent (Wild Instinct / Nature’s Carapace)",
+  "Extra Magic Talent (Speak With The Elements / Instill Spirit)"
  ],
- "sphere_mana_pool": 0,
+ "sphere_mana_pool": 5,
  "sphere_traits": [
-  "Draining Casting",
   "Extended Casting",
   "Somatic Casting",
-  "Prepared Caster",
-  "Easy Focus",
-  "Fortified Casting"
+  "Overcharge"
  ],
  "spheres_chosen": [
   {
-   "sphere": "Wrestling",
-   "system": "might"
+   "sphere": "Nature",
+   "system": "power"
   }
  ],
  "stances_chosen": [
@@ -1625,19 +1723,15 @@
   "Poisoners Stance"
  ],
  "story_feat_tax_dict": {
-  "Point-Blank Shot": [
-   "charging hurler",
-   "disrupting shot",
-   "far shot",
-   "improved charging hurler",
-   "precise shot"
+  "Quick Draw": [
+   "improved quick draw"
   ]
  },
  "story_feats": [
-  "Catch Off-Guard",
-  "Point-Blank Shot",
-  "Martial Charge",
-  "Quick Preparation"
+  "Quick Draw",
+  "Astrology",
+  "Shielded Caster",
+  "Acrobatic"
  ],
  "str": 12,
  "teamwork_feat_labels": [],
@@ -1645,36 +1739,58 @@
  "total_level": 15,
  "total_rolled_hp": 112,
  "trainer_calibers": [
+  2,
   3,
-  3
+  2,
+  3,
+  2
  ],
  "trainer_feat_labels": [
   "(Trainer 1)",
   "(Trainer 1)",
-  "(Trainer 1)",
   "(Trainer 2)",
   "(Trainer 2)",
   "(Trainer 2)",
-  "(Trainer 3 - Path of War)",
-  "(Trainer 3 - Path of War)",
-  "(Trainer 4 - Spheres)"
+  "(Trainer 3)",
+  "(Trainer 3)",
+  "(Trainer 4)",
+  "(Trainer 4)",
+  "(Trainer 4)",
+  "(Trainer 5)",
+  "(Trainer 5)",
+  "(Trainer 6 - Path of War)",
+  "(Trainer 6 - Path of War)",
+  "(Trainer 7 - Spheres)"
  ],
  "trainer_feat_tax_dict": {
+  "Improved Steal": [
+   "greater steal",
+   "quick steal"
+  ],
   "Martial Training I (Steel Serpent)": [
    "Martial Training II (Steel Serpent)"
   ],
   "Martial Training III (Steel Serpent)": [
    "Martial Training IV (Steel Serpent)"
   ],
+  "Scribe Scroll": [
+   "cypher magic"
+  ],
   "Spheres Mentor": []
  },
  "trainer_feats": [
-  "Woodland Sage",
-  "Cooperative Crafting",
-  "Selective Spell",
+  "Scribe Scroll",
+  "Giant Slayer",
+  "Out of the Sun",
+  "Venemous Strike (combat)",
+  "Shield Focus",
   "Firesight",
-  "Pack Attack",
-  "Wand Desperado",
+  "Improved Quick Draw",
+  "Ensemble",
+  "Improved Steal",
+  "Cooperative Crafting",
+  "Focused Discipline",
+  "Bouncing Spell",
   "Martial Training I (Steel Serpent)",
   "Martial Training III (Steel Serpent)",
   "Spheres Mentor"
@@ -1684,6 +1800,6 @@
  "weapon_name": "Morningstar",
  "weight_number": 217,
  "wis": 13,
- "younger_brothers": " you have 0 younger brothers",
+ "younger_brothers": " you have 2 younger brothers",
  "younger_sisters": " you have 2 younger sisters"
 }

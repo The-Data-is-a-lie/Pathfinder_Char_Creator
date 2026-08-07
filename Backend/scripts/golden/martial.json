@@ -40,39 +40,20 @@
  "casting_tradition": {
   "bonus_spell_points": 1,
   "boons": [
-   "Empowered Abilities",
-   "Overcharge",
-   "Easy Focus"
+   "Overcharge"
   ],
   "boons_detail": [
    {
-    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
-    "name": "Empowered Abilities"
-   },
-   {
     "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
     "name": "Overcharge"
-   },
-   {
-    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
-    "name": "Easy Focus"
    }
   ],
   "casting_ability_modifier": "Charisma",
   "drawbacks": [
-   "Draining Casting",
    "Addictive Casting",
-   "Skilled Casting",
-   "Somatic Casting",
-   "Painful Magic",
-   "Prepared Caster"
+   "Skilled Casting"
   ],
   "drawbacks_detail": [
-   {
-    "counts_as": 1,
-    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
-    "name": "Draining Casting"
-   },
    {
     "counts_as": 2,
     "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
@@ -82,21 +63,6 @@
     "counts_as": 1,
     "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
     "name": "Skilled Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
-    "name": "Somatic Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
-    "name": "Painful Magic"
-   },
-   {
-    "counts_as": 1,
-    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
-    "name": "Prepared Caster"
    }
   ]
  },
@@ -175,25 +141,17 @@
   "Fighter 14",
   "Fighter 16"
  ],
- "class_feat_tax_dict": {
-  "Combat Reflexes": [
-   "bodyguard",
-   "in harm's way",
-   "pin down",
-   "porcupine defense",
-   "stand still"
-  ]
- },
+ "class_feat_tax_dict": {},
  "class_feats": [
-  "Ferocious Loyalty",
-  "Miniature Reach",
-  "Winds of War",
-  "Stone Read",
-  "Combat Reflexes",
-  "Ensemble",
+  "Firebrand",
+  "Lookout",
+  "Desperate Battler",
   "Duck and Cover",
-  "Cosmopolitan",
-  "Opening Volley"
+  "Stone Read",
+  "Opening Volley",
+  "Skilled Driver",
+  "Coordinated Maneuvers",
+  "Dragoncrafting"
  ],
  "class_feature_changes_dict": {},
  "class_feature_conditionals_dict": {},
@@ -374,7 +332,7 @@
   "profession": 2,
   "story": 4,
   "teamwork": 0,
-  "trainer": 0
+  "trainer": 11
  },
  "feat_changes_dict": {
   "Coordinated Maneuvers": {
@@ -418,46 +376,24 @@
     }
    ],
    "name": "Desperate Battler: When no ally is within 10 feet and you are not benefiting from aid another: +1 morale bonus on melee attack rolls and +1 morale bonus on melee damage rolls."
-  },
-  "Ferocious Loyalty": {
-   "default": false,
-   "modifiers": [
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "1",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
-    },
-    {
-     "critical": "crit",
-     "damageType": [],
-     "formula": "1",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
-    }
-   ],
-   "name": "Ferocious Loyalty: +1 morale on attack rolls vs a foe threatening an ally who also has this feat (+2 morale for 1 min if such an ally is downed/killed within 30 ft)"
   }
  },
  "feats": [
-  "Lookout",
-  "Sin Eater",
-  "Dragoncrafting",
-  "Firebrand",
+  "Cosmopolitan",
   "Scholar",
-  "Seize the Opportunity",
+  "Charge of the Righteous",
   "Enforcer",
   "Sure Grasp",
+  "Combat Reflexes",
+  "Toughness",
+  "Winds of War",
   "Multi Talented",
   "True Calling"
  ],
  "feats_feat_tax_dict": {},
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Coordinated Maneuvers"
+  "Woodland Sage"
  ],
  "flaw": [
   "Motion Sickness",
@@ -489,10 +425,10 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Toughness",
-  "Charge of the Righteous"
+  "Broken Wing Gambit",
+  "Reckless Offense"
  ],
- "formatted_bio": "Sébastien Dupuy\n- Alignment: Lawful Good\n- Deity: Erastil\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: Man-at-Arms\n- Tactics: Fights the way it drilled: hold the line, strike the enemy in front of you, keep your shield up and your footing. No tricks, no gimmick -- just a professional doing soldier's work.\n- Stat Focus: Str\n- Homeland: Tal-falko\n\nVocation\n- Profession: Scullery Hand (rank 15)\n- Profession: Sellsword (rank 10)\n- Profession: Abbott (rank 6)\n- Known for: Siege Engines\n\nFamily\n- Absent Mother\n- Loving Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Straight Red\n- Eyes: Brown\n- Build: Knobby Knees",
+ "formatted_bio": "Sébastien Dupuy\n- Alignment: Lawful Good\n- Deity: Erastil\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: Man-at-Arms\n- Tactics: Fights the way it drilled: hold the line, strike the enemy in front of you, keep your shield up and your footing. No tricks, no gimmick -- just a professional doing soldier's work.\n- Stat Focus: Str\n- Homeland: Tal-falko\n\nVocation\n- Profession: Scullery Hand (rank 15)\n- Profession: Sellsword (rank 10)\n- Profession: Abbott (rank 6)\n- Known for: Siege Engines\n- Training: An excellent trainer who taught them Bred for Battle, Dirgesinger, Critical Focus\n- Training: An excellent trainer who taught them Feint Partner, Ostentatious Display, Hard to Fool\n- Training: An average trainer who taught them Unseen Terror, Bloodletting\n- Training: A terrible trainer who taught them Step Up\n- Training: An average trainer who taught them Animal Affinity, Torch Handling\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Middle Income Household\n- No Siblings\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Straight Red\n- Eyes: Brown\n- Build: Knobby Knees",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 3002,
@@ -507,30 +443,41 @@
  "height_number": "5'3\"",
  "hero_points": 1,
  "homebrew_feat_desc_dict": {
+  "Animal Affinity": "You are skilled at working with animals and mounts",
+  "Bloodletting": "When you attack with a piercing or slashing weapon, the wounds you cause bleed profusely",
+  "Bred for Battle": "Even a foolish creature can be trained in the arts of war choose one initiating class. treat your initiation ability score modifier for that class as +2 for the purposes of maneuvers and class features for that particular class, regardless of what the ability score may actually be.",
+  "Broken Wing Gambit": "You feign weakness, making yourself a tempting and distracting target",
   "Charge of the Righteous": "You charge undead and fiends with confidence in your righteous cause",
   "Combat Reflexes": "You can make additional attacks of opportunity",
   "Coordinated Maneuvers": "You are skilled at working with your allies to perform dangerous combat maneuvers",
   "Cosmopolitan": "Living in large, exotic cities has put you in touch with many diverse civilizations, cultures, and races",
+  "Critical Focus": "You are trained in the art of causing pain",
+  "Darting Viper": "When using a dorn-dergar, you can quickly attack both near and distant foes",
   "Desperate Battler": "Your experiences fighting against numerous foes that have already overwhelmed your allies, friends, and family have forced you to excel at fighting on your own",
+  "Dirgesinger": "You have learned to affect the undead with your bardic power. you may affect undead with your bardic performances as though they were not immune to mind-affecting abilities. mindless undead remain immune to your performances.",
   "Dragoncrafting": "You have the ability to create rare and valuable items from the bodies of fallen true dragons",
   "Duck and Cover": "Your allies assist you in avoiding certain attacks",
   "Enforcer": "You are skilled at causing fear in those you brutalize",
-  "Ensemble": "You can create an ensemble of skilled and amateur performers to aid you in your performance",
-  "Ferocious Loyalty": "You have a powerful sense of responsibility for your allies",
+  "Feint Partner": "A little diversion is all you need to slip through your foe's defenses",
   "Firebrand": "You can make use of a torch as a deadly, macelike weapon",
+  "Hard to Fool": "You treat strange sights with healthy skepticism. Upon reaching 10 ranks in Perception, the distance you can see through illusions increases to 20 feet. At 15 ranks in Perception, it increases to 30 feet. Normal You only get a saving throw against many illusion effects if you directly interact with that effect. when you come within 10 feet of an active illusion effect that would require you to interact with it to disbelieve the effect, you automatically get a saving throw (as if you interacted with it). the gm should make your saving throw in secret.",
+  "Improved Day Job": "You learned the importance of an honest day's work while training as an initiate of the Pathf inder Society",
   "Lookout": "Your allies help you avoid being surprised",
-  "Miniature Reach": "No matter how small you are, you are always a threat. whenever you are under the effects of a polymorph effect which would reduce your size to tiny or smaller, your natural reach is always treated as 5 feet, regardless of your size.",
+  "Martial Charge": "You have learned how to initiate a martial strike on the move, delivering them at the end of a charge attack. as a full-round action, you can make a special charge attack. first, move up to twice your speed in a straight line towards a creature, obeying the normal restrictions on movement during a charge, as well as applying any effects or you might have to such movement. then, at the end of your movement, you can initiate a strike on the creature you moved towards with an initiation action of 1 standard action. you gain a +2 bonus on attack rolls during the strike, and take a 2 penalty to your ac until the start of your next turn. during the strike, you do not gain any other you would have gained for charging, such as pounce.",
   "Multi Talented": "Your profession rank cap increases by 10.",
   "Opening Volley": "Your ranged assault leaves your foe disoriented and vulnerable to your melee attack",
+  "Ostentatious Display": "Your extravagant jewelry and accessories give you an air of importance you can use to your advantage in many social situations",
   "Reckless Offense": "You can shift your focus from defense to offense. when you use the attack action or full attack action in melee, you can take a penalty of 4 to your armor class and add a +2 bonus on your melee attack roll. the bonus on attack rolls and penalty to armor class last until the beginning of your next turn.",
   "Scholar": "You have graduated from one of the many colleges, universities, and specialty schools of higher learning scattered throughout the Inner Sea region",
-  "Seize the Opportunity": "You possess an exceptional knack for exploiting sudden openings by your opponents. when you make an attack of opportunity, you can take an attack action (such as vital strike) or attempt a combat maneuver (such as a bull rush, disarm or dirty trick) in place of your attack of opportunity. this feat does not allow you to move when it isnt your turn.",
-  "Sin Eater": "You prosper as your enemies fail. whenever a creature claimed by you is reduced to 0 or fewer hit points, you gain temporary hit points equal to twice that creatures hit dice. these temporary hit points last for one minute.",
   "Skilled Driver": "Choose a type a type of vehicle (either air, land, or water) You are more skilled when driving that vehicle",
+  "Step Up": "You can close the distance when a foe tries to move away",
   "Stone Read": "Even the faint movement and vibrations of stone can alert you to trouble",
+  "Strong Comeback": "You learn quickly from past mistakes",
   "Sure Grasp": "Your quick ref lexes and skill at climbing keep you from falling to your doom",
+  "Torch Handling": "In your grasp, a simple torch becomes a beacon",
   "Toughness": "You have enhanced physical stamina",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
+  "Unseen Terror": "Creatures are naturally afraid of what they cannot see. Normal You can only make an Intimidate check to demoralize an opponent if it is within 30 feet and can clearly see and hear you. you can make intimidate checks to demoralize a creature even if it cannot see you. you must still influence it in some other way, such as by taunting, making sounds, or using visual effects such as silent image or light from a torch. you gain a +2 bonus on intimidate checks made while in dim light or darkness.",
   "Winds of War": "Those you have Claimed cannot hide, and now they can no longer even run. you gain a +5-foot bonus to each of your movement speeds. this bonus increases by +5 feet for each creature you currently have claimed.",
   "Woodland Sage": "Understanding nature requires patience far more than education or guile. add your wisdom modifier as an additional bonus to your handle animal, knowledge (nature), and knowledge (geography) checks. if you have the wild empathy class feature, add your wisdom modifier as an additional bonus on checks with that ability."
  },
@@ -711,7 +658,7 @@
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "absent mother, loving father, raised in a wealthy household",
+ "parents": "loving mother, loving father, raised in a middle income household",
  "personality_traits": [
   "Fervent",
   "Rebellious",
@@ -1115,51 +1062,77 @@
  "spellbooks": [],
  "spells_prepared_per_level": [],
  "sphere_boons": [
-  "Empowered Abilities",
-  "Overcharge",
-  "Easy Focus"
+  "Overcharge"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
-  "Draining Casting",
   "Addictive Casting",
-  "Skilled Casting",
-  "Somatic Casting",
-  "Painful Magic",
-  "Prepared Caster"
+  "Skilled Casting"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Draining Casting",
   "Addictive Casting",
   "Skilled Casting",
-  "Somatic Casting",
-  "Painful Magic",
-  "Prepared Caster",
-  "Empowered Abilities",
-  "Overcharge",
-  "Easy Focus"
+  "Overcharge"
  ],
  "spheres_chosen": [],
  "stances_chosen": [],
  "story_feat_tax_dict": {},
  "story_feats": [
-  "Reckless Offense",
-  "Woodland Sage",
-  "Skilled Driver",
-  "Desperate Battler"
+  "Strong Comeback",
+  "Darting Viper",
+  "Improved Day Job",
+  "Martial Charge"
  ],
  "str": 21,
  "teamwork_feat_labels": [],
  "teamwork_feats": 0,
  "total_level": 16,
  "total_rolled_hp": 150,
- "trainer_calibers": [],
- "trainer_feat_labels": [],
- "trainer_feat_tax_dict": {},
- "trainer_feats": [],
+ "trainer_calibers": [
+  3,
+  3,
+  2,
+  1,
+  2
+ ],
+ "trainer_feat_labels": [
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 3)",
+  "(Trainer 3)",
+  "(Trainer 4)",
+  "(Trainer 5)",
+  "(Trainer 5)"
+ ],
+ "trainer_feat_tax_dict": {
+  "Feint Partner": [
+   "improved feint partner"
+  ],
+  "Step Up": [
+   "following step",
+   "step up and strike"
+  ]
+ },
+ "trainer_feats": [
+  "Bred for Battle",
+  "Dirgesinger",
+  "Critical Focus",
+  "Feint Partner",
+  "Ostentatious Display",
+  "Hard to Fool",
+  "Unseen Terror",
+  "Bloodletting",
+  "Step Up",
+  "Animal Affinity",
+  "Torch Handling"
+ ],
  "weapon_enhancement_bonus": 5,
  "weapon_enhancement_chosen_list": [
   "Dispelling",

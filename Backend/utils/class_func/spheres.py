@@ -36,6 +36,7 @@ import json
 import os
 import random
 import re
+from math import ceil
 
 from utils.class_func.generic_func import no_prereq_loop
 from utils.class_func.skill_ranks import highest_mental_mod, final_ability_mod
@@ -48,13 +49,48 @@ import utils.data as data
 # TEMP (testing 2026-06-16): 0-weight zeroed so an opted-in character ALWAYS rolls >=1 sphere
 # (subject to feat budget). REVERT to [1, 4, 3, 2] before shipping.
 SPHERE_COUNT_WEIGHTS = [0, 4, 3, 2]      # weights for 0,1,2,3 spheres when the flag is on
-# TEMP (testing): force all of a dabbler's flat-8 talents into ONE sphere so the 7 normals satisfy the
+# TEMP (testing): force all of a dabbler's talents into ONE sphere so the normals satisfy the
 # same-sphere prerequisites that gate advanced/legendary talents. Set False to restore 1-3 spheres.
 SINGLE_SPHERE_TESTING = True
+
 MAX_EXTRA_TALENT_FEATS = 2               # cap on Extra-Talent feats beyond one entry feat per sphere
 KEEP_FREE_FEATS = 1                      # try to leave the character at least this many normal feats
 DRAWBACK_MIN, DRAWBACK_MAX = 2, 6        # general drawbacks rolled for a casting tradition (HR3: no cap)
 ADVANCED_RATIO = 7                       # §8: this many normal-talent-equivalents per advanced talent
+
+# How many talents a dabbler ROLLS for, by character level. The flat 8 this replaces was a testing
+# convenience, not a rule -- it gave a 1st-level character the same eight talents as a 20th, which is
+# how the feat budget came to be over-committed at level 1 (ticket 08: 16/700 generations, all L1).
+#
+# Read as "level < L -> roll 0..N"; 20+ scales with level so the curve keeps going past the band
+# table rather than flattening. randint is INCLUSIVE, and the low end is a real 0 -- a dabbler who
+# rolls nothing is a legitimate outcome, not an error.
+TALENT_BANDS = ((5, 8), (10, 12), (20, 16))
+TALENT_20_PLUS_OFFSET = 4                # 20+ rolls 0..(level - 4); at 20 that is 0..16, continuous
+
+
+def roll_talent_budget(level):
+    """How many sphere talents this character rolls for, before funding is applied."""
+    level = int(level or 0)
+    for band_level, high in TALENT_BANDS:
+        if level < band_level:
+            return random.randint(0, high)
+    return random.randint(0, max(0, level - TALENT_20_PLUS_OFFSET))
+
+
+def feats_for_talents(paid_magic_n, paid_combat_n):
+    """Feats needed to pay for a given split of BUDGET-PAID talents (HR1).
+
+    One Extra-Talent feat buys 2 talents of one system (HR2: both share a system), except the first
+    paid magic talent, which rides Basic Magic Training and buys only 1 (it also grants the sphere
+    access). This is the exact inverse of the feat-building loop below, and the two must agree -- if
+    that loop changes, this changes with it, or the budget reservation goes wrong in silence."""
+    feats = 0
+    if paid_magic_n >= 1:
+        feats += 1                                       # Basic Magic Training: 1 talent
+        feats += ceil((paid_magic_n - 1) / 2)            # the rest pair up
+    feats += ceil(paid_combat_n / 2)
+    return feats
 
 _JSON_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "json", "class_data", "spheres")
 _CACHE = {}
@@ -443,6 +479,11 @@ def _pick_flat_talents(character, chosen, counts, n_normal=7, n_advanced=1):
     taken = {s: set() for s, _ in spheres}
     picks_by_sphere = {s: [] for s, _ in spheres}
     magic_items, combat_items = [], []
+    # Append-order pick lists plus a pick -> item map, so a caller that has to DROP unfunded talents
+    # can rebuild the item lists exactly rather than filtering them by name. Name matching was not
+    # good enough: the item carries a display-cased name while the pick carries the raw one, so a
+    # filter silently kept talents nobody paid for.
+    magic_order, combat_order, item_of = [], [], {}
 
     def _take(sphere, system, want_advanced):
         ds = datasets[sphere]
@@ -460,7 +501,10 @@ def _pick_flat_talents(character, chosen, counts, n_normal=7, n_advanced=1):
         counts[sphere]["advanced" if want_advanced else "normal"] += 1
         pick = (sphere, system, name, rec)
         picks_by_sphere[sphere].append(pick)
-        (magic_items if system == "power" else combat_items).append(_talent_item(*pick))
+        item = _talent_item(*pick)
+        (magic_items if system == "power" else combat_items).append(item)
+        (magic_order if system == "power" else combat_order).append(pick)
+        item_of[id(pick)] = item
         return True
 
     def _round_robin_normals(target):
@@ -487,7 +531,7 @@ def _pick_flat_talents(character, chosen, counts, n_normal=7, n_advanced=1):
             adv_got += 1
     if adv_got < n_advanced:                              # no advanced available -> backfill normals
         _round_robin_normals(n_advanced - adv_got)
-    return magic_items, combat_items, picks_by_sphere
+    return magic_items, combat_items, picks_by_sphere, magic_order, combat_order, item_of
 
 
 def _roll_magic_sphere_feats(character, chosen, counts):
@@ -525,7 +569,8 @@ def _roll_magic_sphere_feats(character, chosen, counts):
     return names, descs
 
 
-def choose_spheres_attr(character, max_feats=None, trainer_backed=False, mentor_talents=None):
+def choose_spheres_attr(character, max_feats=None, trainer_backed=False, mentor_talents=None,
+                        talent_budget=None, max_budget_feats=None):
     """Select sphere talents (flat-8) + a feat slot for each BUDGET-PAID talent; return the bundle.
 
     Empty defaults when ``character.sphere_count`` is 0 (flag off). Each budget-paid talent is tracked
@@ -585,7 +630,15 @@ def choose_spheres_attr(character, max_feats=None, trainer_backed=False, mentor_
     # Every spheres-selected dabbler takes a flat 8 talents (7 normal + 1 advanced); the 25%
     # "trainer-backed" branch adds overflow talents on top in main_test.
     counts = {s: {"normal": 0, "advanced": 0, "feats": 0} for s, _ in chosen}
-    magic_items, combat_items, picks_by_sphere = _pick_flat_talents(character, chosen, counts)
+    # How many talents to pick. `talent_budget` is the level-scaled roll; the flat 7+1 remains the
+    # default only so the older smoke scripts in attic/ still run.
+    _want = 8 if talent_budget is None else max(0, int(talent_budget))
+    if _want == 0:
+        return bundle                                 # rolled nothing: a legitimate outcome
+    _n_advanced = 1 if _want >= 1 else 0
+    (magic_items, combat_items, picks_by_sphere,
+     _magic_order, _combat_order, _item_of) = _pick_flat_talents(
+        character, chosen, counts, n_normal=_want - _n_advanced, n_advanced=_n_advanced)
     took_magic = any(sy == "power" for _, sy in chosen)
 
     # ---- a feat slot for each BUDGET-PAID talent (HR1: one Extra-Talent feat = 2 talents) ---- #
@@ -598,12 +651,70 @@ def choose_spheres_attr(character, max_feats=None, trainer_backed=False, mentor_
     combat_picks = [p for s, _sy in chosen for p in picks_by_sphere.get(s, []) if p[1] == "might"]
     all_picks = magic_picks + combat_picks            # magic first -> Basic Magic Training stays budget-paid
     n_total = len(all_picks)
+
+    # The magic-side bonus feats are rolled HERE, before the talents are capped, because they come
+    # out of the SAME feat budget. Rolling them after the cap (as this used to) meant the budget was
+    # sized for the talents alone and then quietly overspent by one or two -- which is most of what
+    # the ticket-08 gate was catching once the talent count itself was fixed.
+    _bonus_names, _bonus_descs = ([], {})
+    if took_magic:
+        _bonus_names, _bonus_descs = _roll_magic_sphere_feats(character, chosen, counts)
+    if max_budget_feats is not None and len(_bonus_names) >= max_budget_feats:
+        # Talents are the point of taking a sphere; the bonus feat is a flavour extra. When the
+        # budget cannot carry both, the extra goes.
+        _bonus_names, _bonus_descs = [], {}
+    _talent_feat_budget = (None if max_budget_feats is None
+                           else max(0, max_budget_feats - len(_bonus_names)))
     if trainer_backed and mentor_talents is not None:
         budget_paid = max(0, n_total - mentor_talents)   # the dedicated mentor funds min(mentor_talents, n_total) off-budget
     elif trainer_backed:
         budget_paid = (n_total + 1) // 2                 # fallback: mentor funds the off-budget half
     else:
-        budget_paid = n_total                            # lean: the character pays for all flat-8 talents
+        budget_paid = n_total                            # lean: the character pays for all its talents
+
+    # ---- NO FREEBIES: every talent is paid for, by the feat budget or by a mentor ---- #
+    # The invariant this enforces is `budget_paid + mentor_funded == kept talents`. It used to hold
+    # by construction because the talent count was a flat 8 and lean characters simply paid for all
+    # of them -- which is exactly how the budget came to be over-committed at 1st level, where 8
+    # talents cost more feats than a 1st-level character has (ticket 08).
+    #
+    # Now the rolled budget can exceed what the character can fund, so the surplus has to go
+    # somewhere. It is DROPPED, not granted: a talent nobody paid for is a freebie, and the whole
+    # point of HR1 is that talents cost feats.
+    mentor_funded = min(int(mentor_talents or 0), n_total) if trainer_backed else 0
+    if _talent_feat_budget is not None:
+        budget_paid = min(budget_paid, n_total - mentor_funded)
+        # Shrink to fit. Done by measuring the ACTUAL magic/combat split rather than by a formula,
+        # because the split changes the answer: 2 magic talents cost 2 feats (Basic Magic Training
+        # buys only one) while 2 combat talents cost 1. A closed form would have to assume the worst
+        # case and would under-grant everyone to protect the edge.
+        while budget_paid > 0:
+            _pm = sum(1 for p in all_picks[:budget_paid] if p[1] == "power")
+            if feats_for_talents(_pm, budget_paid - _pm) <= _talent_feat_budget:
+                break
+            budget_paid -= 1
+
+    kept = budget_paid + mentor_funded
+    if kept < n_total:
+        dropped = {id(p) for p in all_picks[kept:]}
+        _dropped_names = {p[2] for p in all_picks[kept:]}
+        all_picks = all_picks[:kept]
+        magic_picks = [p for p in magic_picks if id(p) not in dropped]
+        combat_picks = [p for p in combat_picks if id(p) not in dropped]
+        for _sphere in list(picks_by_sphere):
+            picks_by_sphere[_sphere] = [p for p in picks_by_sphere[_sphere] if id(p) not in dropped]
+        # The sheet items and the per-sphere counters have to follow, or the character displays
+        # talents it never paid for and the advanced-talent gate is computed against a talent count
+        # that no longer exists. Rebuilt from the append-order pick lists, so the surviving items
+        # keep their original order and every drop is exact.
+        magic_items = [_item_of[id(p)] for p in _magic_order if id(p) not in dropped]
+        combat_items = [_item_of[id(p)] for p in _combat_order if id(p) not in dropped]
+        for _sphere, _sy in chosen:
+            _norm_n = sum(1 for p in picks_by_sphere.get(_sphere, []))
+            counts[_sphere]["normal"] = min(counts[_sphere]["normal"], _norm_n)
+            counts[_sphere]["advanced"] = min(counts[_sphere]["advanced"], _norm_n)
+        n_total = len(all_picks)
+
     paid_magic = [p for p in all_picks[:budget_paid] if p[1] == "power"]
     paid_combat = [p for p in all_picks[:budget_paid] if p[1] == "might"]
 
@@ -640,10 +751,10 @@ def choose_spheres_attr(character, max_feats=None, trainer_backed=False, mentor_
         desc.setdefault("Extra Combat Talent", (feat_lib.get("extra combat talent", {}) or {}).get("benefit", "") or "Extra Combat Talent.")
 
     # ---- magic-side bonus feat(s) from the most-taken power sphere (50/50, favor 1) ---- #
-    if took_magic:
-        _mf_names, _mf_descs = _roll_magic_sphere_feats(character, chosen, counts)
-        sphere_feats.extend(_mf_names)
-        desc.update(_mf_descs)
+    # Rolled further up, where the cap could see their cost; appended here so the exported feat
+    # order is unchanged (paid talent feats first, then the bonus).
+    sphere_feats.extend(_bonus_names)
+    desc.update(_bonus_descs)
 
     # ---- mana pool (magic only; the tradition itself was rolled up front for every NPC) ---- #
     bundle.update({

@@ -44,17 +44,29 @@ Highest-value, most generation-relevant first:
    bucket) and the diminishing flaw-feat schedule (first 2 flaws +1 each, 4th grants the 3rd;
    0 flaws → 0; behind `misc_homebrew_rules`) in `level_and_bab.py::update_level`; swept by
    `scripts/tests/test_house_invariants.py`.
-3. **Skill alternate abilities** — allowed-ability sets per skill plus a chooser in `skill_ranks.py`.
-4. ~~**Skill rank changes**~~ — DONE 2026-07-30: 2→4 rank floor (behind `misc_homebrew_rules`),
+3. **Verify every sphere's advanced talents are labelled** — UNVERIFIED, and the §8 hard gate
+   depends on it. `spheres._is_advanced` decides advanced-vs-normal from `rec["type"] == "advanced"`
+   OR membership in `_advanced_set(system, sphere)` (`advanced_talents.json`). Neither source has
+   ever been checked for **coverage**: a sphere whose advanced talents are unlabelled in both would
+   have them silently treated as normal, which both defeats the
+   `(normal + 2*feats) // 7` gate and mislabels them on the sheet (the front-end reads this flag to
+   print "(Advanced)" and to sort them last). The module docstring already warns that the pf1 prereq
+   engine cannot be trusted here — `no_prereq_prep`'s `filter_pattern` matches the substring "cast",
+   so a magic talent's "caster level Nth" gate auto-satisfies. **Wanted:** a
+   `validate_spheres_advanced_labels.py` that, per sphere, reports how many talents each source
+   marks advanced and fails on a sphere where BOTH are empty — that is the shape that cannot be
+   right. Raised 2026-08-07 alongside the level-scaled talent budget.
+4. **Skill alternate abilities** — allowed-ability sets per skill plus a chooser in `skill_ranks.py`.
+5. ~~**Skill rank changes**~~ — DONE 2026-07-30: 2→4 rank floor (behind `misc_homebrew_rules`),
    3-ranks-per-level cap, +2/level background-only ranks in `skill_ranks.py` (the mental-ability
    pick already existed); the alternate-ability table remains #3.
-5. ~~**Full HP**~~ — DONE 2026-07-30: max hit die every level in `hp_rolls.py::roll_hp` behind the
+6. ~~**Full HP**~~ — DONE 2026-07-30: max hit die every level in `hp_rolls.py::roll_hp` behind the
    homebrew flag (racial HD N/A — the generator never emits racial hit dice).
-6. **Feat-tax prereqs** — relax prerequisite checks and default Weapon Finesse behaviour.
-7. **Custom races** — add Loxo / Kalyptran / Dolistani to `PlayableRaces.json` (needs stat blocks,
+7. **Feat-tax prereqs** — relax prerequisite checks and default Weapon Finesse behaviour.
+8. **Custom races** — add Loxo / Kalyptran / Dolistani to `PlayableRaces.json` (needs stat blocks,
    which the feat library does not carry).
-8. **Flaws/traits** — the flaw→feat grant and the 8-pick-4 trait flow.
-9. **Expose `misc_homebrew_rules` as a user input if ever needed** — the catch-all flag for
+9. **Flaws/traits** — the flaw→feat grant and the 8-pick-4 trait flow.
+10. **Expose `misc_homebrew_rules` as a user input if ever needed** — the catch-all flag for
    homebrew rules too small for their own Yes/No question (currently: the 2→4 rank floor and the
    diminishing flaw-feat grant). Internal, defaults Y; owner: the `generate_random_char`
    signature + `skill_ranks.misc_homebrew_enabled`.

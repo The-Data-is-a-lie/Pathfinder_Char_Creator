@@ -67,7 +67,7 @@ from utils.class_func.weapon_focus_buffs import weapon_focus_changes
 from utils.class_func.buff_match					import match as match_buffs, sections as buff_sections, format_gaps, keep_tier_a
 from utils.class_func.pipeline					import phase, seal, require_sealed, PhaseRecord
 from utils.payload							import build_payload, gear_display, PAYLOAD_KEYS
-from utils.class_func.spheres 						import randomize_spheres_num, choose_spheres_attr, add_overflow_talents, MAX_EXTRA_TALENT_FEATS, mentor_sphere_summary, mentor_feat_worth
+from utils.class_func.spheres 						import randomize_spheres_num, choose_spheres_attr, add_overflow_talents, MAX_EXTRA_TALENT_FEATS, mentor_sphere_summary, mentor_feat_worth, roll_talent_budget
 from utils.class_func.flag_assign 					import human_flag_assigner, druidic_flag_assigner
 from utils.class_func.flaws 						import flaw_chooser
 from utils.class_func.generic_func 					import generic_class_option_chooser, get_data_without_prerequisites, no_prereq_prep#, no_prereq_loop, chosen_set_append
@@ -1080,10 +1080,43 @@ def phase_path_of_war_and_spheres(character, spheres_flag, trainers_enabled):
 	_pow_mentor_names = set(_pow_mentor_feats)
 
 # ------------------- Spheres (Power / Might) section -------------------#
-	# Build the spheres: flat-8 talents + a feat slot per BUDGET-PAID talent (Extra Talent feats,
-	# 2 talents each, HR1). trainer_backed (25% branch) -> only ~half the talents are budget-paid
-	# (the rest ride the Spheres Mentor trainers below); lean chars pay for all their talents.
-	sphere_data          = choose_spheres_attr(character, trainer_backed=bool(_sphere_mentor_cal), mentor_talents=_mentor_talents_n)
+	# Build the spheres: a LEVEL-SCALED roll of talents (spheres.roll_talent_budget) plus a feat slot
+	# per BUDGET-PAID talent (Extra Talent feats, 2 talents each, HR1). The flat 8 this replaces was a
+	# testing convenience: it gave a 1st-level character the same eight talents as a 20th, which cost
+	# more feats than a 1st-level budget holds -- the over-commit ticket 08 measured.
+	#
+	# THE RULE IS "NO FREEBIES": every talent is paid for, by the feat budget or by a Spheres Mentor.
+	# What the character cannot fund is not granted, it is dropped. Three levers, applied in order:
+	#
+	#   1. What is left of the feat budget after PoW and professions have taken their share. This is
+	#      the same arithmetic the reservation below performs, computed BEFORE the talents are picked
+	#      instead of after -- which is the whole fix. The guarantee block already worked out what the
+	#      character could afford; nothing ever passed it to the sphere builder.
+	#   2. No trainers (trainers_flag != Y) -> a mentor cannot be forced, so the roll HALVES. With
+	#      trainers on, a mentor is forced when the budget alone cannot cover the roll.
+	#   3. No feat taxing (homebrew_feat_amount = N) -> the character has no creation/story/flavour
+	#      feats to spend, so the roll HALVES again. Neither lever -> quartered, as two halvings.
+	_sphere_affordable = max(0, character.feat_amounts
+							 - (len(mt_feats) + len(style_feats) - _pow_funded_n)
+							 - len(getattr(character, 'profession_feats', []) or []))
+	_talent_roll = roll_talent_budget(character.level)
+	_feat_tax_on = str(getattr(character, 'homebrew_feat_amount', 'Y')) not in ('N', 'n')
+	if not trainers_enabled:
+		_talent_roll //= 2
+	if not _feat_tax_on:
+		_talent_roll //= 2
+	# A mentor is forced only to cover a shortfall the budget genuinely cannot meet. `_sphere_mentor_cal`
+	# may already be set by the 25% trainer-backed branch above; forcing raises it rather than replacing
+	# it, and it stays inside the 1-4 caliber range a mentor can roll.
+	_talents_from_budget = 2 * _sphere_affordable - 1 if _sphere_affordable else 0
+	if _talent_roll > _talents_from_budget and trainers_enabled:
+		_needed = _talent_roll - max(0, _talents_from_budget)
+		_sphere_mentor_cal = max(_sphere_mentor_cal, min(4, -(-_needed // 2)))
+		_mentor_talents_n = 2 * _sphere_mentor_cal
+	sphere_data          = choose_spheres_attr(character, trainer_backed=bool(_sphere_mentor_cal),
+											   mentor_talents=_mentor_talents_n,
+											   talent_budget=_talent_roll,
+											   max_budget_feats=_sphere_affordable)
 	magic_talent_items   = sphere_data['magic_talent_items']
 	combat_talent_items  = sphere_data['combat_talent_items']
 	sphere_feats         = sphere_data['sphere_feats']

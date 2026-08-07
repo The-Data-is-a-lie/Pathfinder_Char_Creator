@@ -37,29 +37,68 @@
  "casting_tradition": {
   "bonus_spell_points": 0,
   "boons": [
-   "Easy Focus"
+   "Empowered Abilities",
+   "Overcharge",
+   "Easy Focus",
+   "Fortified Casting"
   ],
   "boons_detail": [
    {
+    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
+    "name": "Empowered Abilities"
+   },
+   {
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
+   },
+   {
     "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
     "name": "Easy Focus"
+   },
+   {
+    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
+    "name": "Fortified Casting"
    }
   ],
   "casting_ability_modifier": "Charisma",
   "drawbacks": [
-   "Somatic Casting",
-   "Prepared Caster"
+   "Prepared Caster",
+   "Addictive Casting",
+   "Magical Signs",
+   "Extended Casting",
+   "Material Casting",
+   "Verbal Casting"
   ],
   "drawbacks_detail": [
    {
     "counts_as": 1,
-    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
-    "name": "Somatic Casting"
+    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
+    "name": "Prepared Caster"
+   },
+   {
+    "counts_as": 2,
+    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
+    "name": "Addictive Casting"
    },
    {
     "counts_as": 1,
-    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
-    "name": "Prepared Caster"
+    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
+    "name": "Magical Signs"
+   },
+   {
+    "counts_as": 2,
+    "description": "Every sphere ability takes one step longer to activate than normal (swift to move, move to standard, standard to full-round, etc.).",
+    "name": "Extended Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic requires expending consumable materials/components worth roughly 1 sp per caster level each time you use a sphere ability.",
+    "name": "Material Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
+    "name": "Verbal Casting"
    }
   ]
  },
@@ -282,75 +321,9 @@
    "advanced": false,
    "changes": [],
    "contextNotes": [],
-   "description": "Whenever you destroy a magic wand, staff, rod, scroll, or similar magic item held by an enemy with a sunder attempt as part of a brutal strike, if the item is destroyed, any excess damage is applied to the item's wielder. No damage is transferred if you decide to leave the item with 1 hit point. When targeting a battered creature, you may roll the sunder check twice and take the best result. In addition, you gain a competence bonus equal to 1/2 your base attack bonus on any Reflex saving throws made as a result of the item's destruction (such as when destroying a staff of power).",
-   "name": "Mage Masher",
-   "sphere": "Berserker",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "When you inflict the battered condition with a brutal strike, the condition lasts for an additional number of rounds equal to your practitioner modifier (minimum 1).",
-   "name": "Beat Down",
-   "sphere": "Berserker",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "As an immediate action, when a creature targets you with a melee attack, before the attack roll is made you may allow the attack to automatically strike you (although the roll is still made to determine if the attack threatens a critical hit). After the damage is determined, you may make a brutal strike targeting that creature as a free action that may be taken even when it isn't your turn, if it is in range. If the creature attacking you is battered, you may resolve your attack action prior to their attack being resolved.",
-   "name": "Bloody Counter",
-   "sphere": "Berserker",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "While in this stance, when a creature targets you with a manufactured melee weapon attack, you may attempt to sunder the weapon used to make the attack as an attack of opportunity after it resolves. If the creature attacking you is battered, you may resolve your sunder attempt prior to their attack being resolved.",
-   "name": "Sword Eater",
-   "sphere": "Berserker",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "You do not provoke attacks of opportunity when delivering a coup de grace. As long as you have martial focus, you may deliver a coup de grace as a standard action.",
-   "name": "Decapitate",
-   "sphere": "Berserker",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "When you attack an unattended object with a brutal strike, if you destroy the object, you may send fragments of it flying in a cone dealing damage to any creature in an area based on its size. Small or smaller objects create a 10 ft. cone and the size of the cone increases by 5 ft. for every size category above Small. This shrapnel does 1d6 points of bludgeoning, piercing, and slashing damage dealt by the same material or materials that the object was primarily composed of. This damage increases by 1d6 at +3 base attack bonus and every 2 points of base attack bonus thereafter. The damage also increases by 1d6 for every 5 points of hardness the object possessed, to a maximum increase of 10d6 additional damage. Creatures that take damage are also battered. A Reflex save halves this damage and prevents the battered condition. A battered creature must roll twice and take the worse result on their Reflex save.",
-   "name": "Shrapnel",
-   "sphere": "Berserker",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "After making a sunder attempt, you may attempt an Acrobatics or Perform (dance) check as a swift action with a DC equal to the target of your sunder's CMD. If you succeed, you may move up to half your speed. This movement does not provoke attacks of opportunity. If you succeed at this check by 10 or more, your sweet moves restore your martial focus.",
-   "name": "Break Dancing",
-   "sphere": "Berserker",
+   "description": "You fire an additional piece of ammunition, striking the target twice as hard where they've already been damaged. When a target is struck by an additional attack modified by this (blitz), the target also takes an additional +1 precision damage for each attack that previously damaged that target as part of this barrage. This additional damage increases by +1 for every 7 base attack bonus you possess. A character with 14 BAB would deal +3 damage on the second successful attack, then +6, +9, and so on.\n\nYou expend an additional piece of ammunition when using this (blitz).",
+   "name": "Double Tap",
+   "sphere": "Barrage",
    "system": "Spheres of Might",
    "type": "base",
    "uses": null
@@ -359,11 +332,11 @@
    "advanced": true,
    "changes": [],
    "contextNotes": [],
-   "description": "You unleash a powerful roar and swing a weapon with such extreme ferocity that you tear the very fabric of space and time, opening up a rift to another location. As a full-round action that provokes attacks of opportunity, you open up a rift to another location which may be as distant as 100 miles per point of base attack bonus you possess. Interplanar travel is not possible. You can bring along objects as long as their weight doesn't exceed your maximum load. You may also bring one additional willing Medium or smaller creature (carrying gear or objects up to its maximum load) or its equivalent per three points of base attack bonus you possess. A Large creature counts as two Medium creatures, a Huge creature counts as two Large creatures, and so forth. All creatures to be transported must be in contact with one another, and at least one of those creatures must be in contact with you. You must have some clear idea of the location and layout of the destination; if you have not been to the desired destination before you do not arrive at the exact location, instead creating a rift to a location within 1d20 miles of the desired point.\n\nYou are exhausted for 1 hour after using this ability, and are fatigued as normal thereafter. You incur these penalties even if you are immune to the exhausted and fatigued conditions, and the exhausted condition cannot be removed before its duration is up. You may attempt to use this ability while exhausted or fatigued, but doing so incurs a 50% chance that the ability fails to work; regardless of whether you succeed at this attempt, you suffer 1d6 points of Constitution damage and the duration of the exhausted condition caused by using this ability is doubled. This is a supernatural effect.",
-   "name": "Rift Strike",
-   "sphere": "Berserker",
+   "description": "You may expend your martial focus as a full-round action to make a special barrage. You forgo your ability to add (blitz) talents and instead make a single attack against every creature within a close range (25 ft. +5 ft. per 2 base attack bonus) cone. Roll a single attack and apply it to every creature within range, dealing damage to any creature you successfully strike. This may affect swarms that are usually immune to weapon damage.\n\nYou may take this talent a total of three times, up to once per 5 base attack bonus you possess. If taken twice, increase the size of the effect to a medium (100 ft. + 10 ft. per base attack bonus) range cone. If taken three times, increase the size of the effect to a long range (400 ft. + 40 ft. per base attack bonus) cone.\n\nUsing Cone of Death is the equivalent of making 10 attacks with ranged or thrown weapons; if you do not have enough ammunition or are incapable of reloading your weapon or drawing weapons as a free action, you cannot use Cone of Death. Special abilities, features, or other enhancements (special ammunition, enhancement bonuses, etc.) only apply to Cone of Death if all 10 ranged or thrown attacks would be augmented by them.",
+   "name": "Cone Of Death",
+   "sphere": "Barrage",
    "system": "Spheres of Might",
-   "type": "advanced",
+   "type": "base",
    "uses": null
   }
  ],
@@ -509,14 +482,47 @@
   "class": 0,
   "flavor": 1,
   "flaw": 2,
-  "normal": 6,
+  "normal": 9,
   "profession": 1,
   "story": 4,
   "teamwork": 0,
-  "trainer": 0
+  "trainer": 11
  },
- "feat_changes_dict": {},
+ "feat_changes_dict": {
+  "Coordinated Defense": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "cmd",
+     "text": "While adjacent to an ally who also has this feat: +2 competence bonus to CMD (+4 if the creature attempting the maneuver is larger than both you and your ally)."
+    }
+   ]
+  },
+  "Witchbreaker": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "+2 on saving throws against the hexes, spells, spell-like abilities, and supernatural abilities of witches and hags."
+    }
+   ]
+  }
+ },
  "feat_conditionals_dict": {
+  "Death From Above": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "5",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "untyped"
+    }
+   ],
+   "name": "Death from Above: When you charge an opponent from higher ground, or from above while flying: +5 on attack rolls (in place of the charge and higher-ground bonuses)."
+  },
   "Hammer the Gap": {
    "default": false,
    "modifiers": [],
@@ -525,33 +531,25 @@
   }
  },
  "feats": [
-  "Intimidating Prowess",
-  "Shadow Dodge",
+  "Death From Above",
+  "Collective Recollection",
+  "Dragoncrafting",
+  "Arcane Weaponry (combat)",
+  "Master Alchemist",
+  "Blind-Fight",
   "Martial Training I (Iron Tortoise)",
   "Martial Training III (Iron Tortoise)",
   "Martial Training V (Iron Tortoise)",
-  "Hammer the Gap",
-  "Extra Combat Talent (Mage Masher / Beat Down)",
-  "Extra Combat Talent (Bloody Counter / Sword Eater)",
-  "Extra Combat Talent (Decapitate / Shrapnel)",
-  "Extra Combat Talent (Break Dancing / Rift Strike)",
+  "Extra Combat Talent (Double Tap / Cone Of Death)",
   "Multi Talented"
  ],
  "feats_feat_tax_dict": {
-  "Extra Combat Talent (Bloody Counter / Sword Eater)": [
-   "Extra Combat Talent"
+  "Blind-Fight": [
+   "improved blind-fight",
+   "greater blind-fight"
   ],
-  "Extra Combat Talent (Break Dancing / Rift Strike)": [
+  "Extra Combat Talent (Double Tap / Cone Of Death)": [
    "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Decapitate / Shrapnel)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Mage Masher / Beat Down)": [
-   "Extra Combat Talent"
-  ],
-  "Intimidating Prowess": [
-   "fearsome finish"
   ],
   "Martial Training I (Iron Tortoise)": [
    "Martial Training II (Iron Tortoise)"
@@ -565,7 +563,7 @@
  },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Gunsmithing"
+  "Night Dweller"
  ],
  "flaw": [
   "Fussy Eater",
@@ -604,18 +602,15 @@
   }
  },
  "flaw_feat_tax_dict": {
-  "Light Armor Proficiency": [
-   "arcane armor training",
-   "medium armor proficiency",
-   "arcane armor mastery",
-   "heavy armor proficiency"
+  "Persuasive": [
+   "rhetorical flourish"
   ]
  },
  "flaw_feats": [
-  "Duck and Cover",
-  "Light Armor Proficiency"
+  "Shadow Dodge",
+  "Persuasive"
  ],
- "formatted_bio": "Caroline Landry\n- Alignment: Chaotic Neutral\n- Deity: Calistria\n- Race: Halfling\n- Class: Level 18 Rogue\n- Archetype: Trickster\n- Tactics: Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.\n- Stat Focus: Dex\n- Disciplines: Iron Tortoise\n- Homeland: Tal-falko\n\nVocation\n- Profession: Baron of the March (rank 10)\n- Profession: Hedge Witch (rank 9)\n- Profession: Camp Drillhand (rank 10)\n- Profession: Knight (rank 4)\n- Known for: Tinsmithing\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Punctual, Prudent, Enchanted, Intentional, Joyful\n- Mannerisms: Glances at watch, Crosses arms, Thumbs through a book\n- Flaws: Fussy Eater, Pranked\n\nAppearance\n- Hair: Straight Black\n- Eyes: Brown\n- Build: Freckled",
+ "formatted_bio": "Caroline Landry\n- Alignment: Chaotic Neutral\n- Deity: Calistria\n- Race: Halfling\n- Class: Level 18 Rogue\n- Archetype: Trickster\n- Tactics: Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.\n- Stat Focus: Dex\n- Disciplines: Iron Tortoise\n- Homeland: Tal-falko\n\nVocation\n- Profession: Baron of the March (rank 10)\n- Profession: Hedge Witch (rank 9)\n- Profession: Camp Drillhand (rank 10)\n- Profession: Knight (rank 4)\n- Known for: Tinsmithing\n- Training: An average trainer who taught them Flanking Foil, Exotic Weapon Proficiency\n- Training: An average trainer who taught them Coordinated Defense, Haft Strike\n- Training: An average trainer who taught them Healer's Mercy, Witchbreaker\n- Training: An excellent trainer who taught them Strike Back, Dampen Presence, Racial Heritage\n- Training: An average trainer who taught them Nemesis, Dreadforger\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Middle Income Household\n- 3 Younger Brothers\n\nPersonality\n- Personality: Punctual, Prudent, Enchanted, Intentional, Joyful\n- Mannerisms: Glances at watch, Crosses arms, Thumbs through a book\n- Flaws: Fussy Eater, Pranked\n\nAppearance\n- Hair: Straight Black\n- Eyes: Brown\n- Build: Freckled",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 4003,
@@ -630,28 +625,39 @@
  "height_number": "3'4\"",
  "hero_points": 1,
  "homebrew_feat_desc_dict": {
+  "Arcane Weaponry (combat)": "You force additional power from your magical weapons. increase the dc of any weapon special properties that require a saving throw by +1. this bonus increases by +1 upon reaching a base attack bonus of +8 and for every four base attack bonus gained thereafter. this cannot cause the dc of any effect to exceed 10 + your base attack bonus. this only applies to weapons you are wielding (and applies for up to 1 round after leaving your grip or being fired, in the case of thrown weapons or ammunition, respectively).",
   "Blind-Fight": "You are skilled at attacking opponents that you cannot clearly perceive",
-  "Discipline Focus": "Youve trained extensively in the arts of a single martial discipline. special if the character ever has fewer than three maneuvers known from the specialized discipline, then he loses the of this feat until such a time that he does. this feat may be selected multiple times, each time selecting a new discipline to receive the of this feat.",
-  "Duck and Cover": "Your allies assist you in avoiding certain attacks",
+  "Collective Recollection": "You and your allies can quickly jog each other's memories to remember essential facts",
+  "Coordinated Defense": "You are adept at working with allies to avoid being tripped, grappled, and subjected to other maneuvers",
+  "Dampen Presence": "Your habitual stillness makes you difficult to perceive for creatures that use blindsight or blindsense",
+  "Death From Above": "You allow gravity to add extra force to your charges",
+  "Dragoncrafting": "You have the ability to create rare and valuable items from the bodies of fallen true dragons",
+  "Dreadforger": "With a little extra effort, you can make your concoctions a lot more deadly when creating a non-magical trap, item, or other device, you may increase the craft dc to up to twice your character level. for every two points by which you increase the craft dc, the save dc of your creation increases by 1. using this ability does not increase the cost of your creation.",
+  "Exotic Weapon Proficiency": "Choose one type of exotic weapon, such as the spiked chain or whip You understand how to use that type of exotic weapon in combat, and can utilize any special tricks or qualities that exotic weapon might allow",
   "Extra Combat Talent": "Your knowledge of combat is easily expanded.\n\nBenefit: Gain an additional sphere or a talent from a combat sphere you possess.\n\nSpecial: You may take this feat multiple times. The effects stack.",
-  "Extra Combat Talent (Bloody Counter / Sword Eater)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Bloody Counter (Berserker): As an immediate action, when a creature targets you with a melee attack, before the attack roll is made you may allow the attack to automatically strike you (although the roll is still made to determine if the attack threatens a critical hit). After the damage is determined, you may make a brutal st\n- Sword Eater (Berserker): While in this stance, when a creature targets you with a manufactured melee weapon attack, you may attempt to sunder the weapon used to make the attack as an attack of opportunity after it resolves. If the creature attacking you is battered, you may resolve your sunder attempt prior to their attack ",
-  "Extra Combat Talent (Break Dancing / Rift Strike)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Break Dancing (Berserker): After making a sunder attempt, you may attempt an Acrobatics or Perform (dance) check as a swift action with a DC equal to the target of your sunder's CMD. If you succeed, you may move up to half your speed. This movement does not provoke attacks of opportunity. If you succeed at this check by 10 or\n- Rift Strike (Berserker): You unleash a powerful roar and swing a weapon with such extreme ferocity that you tear the very fabric of space and time, opening up a rift to another location. As a full-round action that provokes attacks of opportunity, you open up a rift to another location which may be as distant as 100 miles p",
-  "Extra Combat Talent (Decapitate / Shrapnel)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Decapitate (Berserker): You do not provoke attacks of opportunity when delivering a coup de grace. As long as you have martial focus, you may deliver a coup de grace as a standard action.\n- Shrapnel (Berserker): When you attack an unattended object with a brutal strike, if you destroy the object, you may send fragments of it flying in a cone dealing damage to any creature in an area based on its size. Small or smaller objects create a 10 ft. cone and the size of the cone increases by 5 ft. for every size ca",
-  "Extra Combat Talent (Mage Masher / Beat Down)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Mage Masher (Berserker): Whenever you destroy a magic wand, staff, rod, scroll, or similar magic item held by an enemy with a sunder attempt as part of a brutal strike, if the item is destroyed, any excess damage is applied to the item's wielder. No damage is transferred if you decide to leave the item with 1 hit point. Whe\n- Beat Down (Berserker): When you inflict the battered condition with a brutal strike, the condition lasts for an additional number of rounds equal to your practitioner modifier (minimum 1).",
-  "Gunsmithing": "You know the secrets of repairing and restoring firearms",
+  "Extra Combat Talent (Double Tap / Cone Of Death)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Double Tap (Barrage): You fire an additional piece of ammunition, striking the target twice as hard where they've already been damaged. When a target is struck by an additional attack modified by this (blitz), the target also takes an additional +1 precision damage for each attack that previously damaged that target as p\n- Cone Of Death (Barrage): You may expend your martial focus as a full-round action to make a special barrage. You forgo your ability to add (blitz) talents and instead make a single attack against every creature within a close range (25 ft. +5 ft. per 2 base attack bonus) cone. Roll a single attack and apply it to every crea",
+  "Flanking Foil": "Fighting multiple foes is easy for you",
+  "Haft Strike": "Holding your polearm further up its length, you can strike adjacent foes as well as those further away. you can choose to take a 2 penalty to your ac to gain the ability to threaten all opponents within the reach of your reach weapon, rather than those you would normally threaten with your weapon. you must choose to use this feat before making an attack roll during your turn, and its effects last until the start of your next turn.",
   "Hammer the Gap": "You repeatedly strike the same location, causing increasing amounts of damage",
   "Healer's Mercy": "Sometimes a creature is beyond your ability to heal, but you know how to grant them a swift and painless death. when you use a coup de grace action, you can substitute a heal check in place of the normal damage roll for your weapon, but still use your weapons normal critical multiplier. in addition, if the creature you are coup de gracing has regeneration of a type that can be overcome, you suppress that creatures regeneration for the duration of the round in which you coup de grace them",
-  "Improved Shield Bash": "You can protect yourself with your shield, even if you use it to attack",
-  "Intimidating Prowess": "Your physical might is intimidating to others",
-  "Light Armor Proficiency": "You are skilled at wearing light armor",
+  "Iron Will": "You are more resistant to mental effects",
+  "Lightning Recovery": "With a flash of insight, you retain the knowledge of a martial maneuver youve just used. Special You may select this feat multiple times, gaining multiple uses per day. as a free action, after youve use a martial strike, counter, or boost, you may instantly recover that maneuver. you may do this once per day.",
   "Martial Training I (Iron Tortoise)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
   "Martial Training II (Iron Tortoise)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training III (Iron Tortoise)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training IV (Iron Tortoise)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training V (Iron Tortoise)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training VI (Iron Tortoise)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
+  "Master Alchemist": "Your mastery of alchemy is nearly supernatural",
+  "Mind Trick": "This is not the one you are looking for. Special You can take this feat multiple times. Its effects do not stack; you must select a different class skill each time you take this feat. select 1 class skill which uses dexterity as its associated ability score, such as sleight of hand or stealth. you can use charisma as its associated ability score instead (this allows you to ignore armor check penalty for the chosen skill). in addition, when you use the aid another action to provide a bonus to another creature attempting a check with the selected skill, increase that bonus by your charisma modifier.",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Shadow Dodge": "You use light and darkness to your advantage, confusing your enemies and confounding their senses"
+  "Nemesis": "A past enemy seeks your ruin",
+  "Night Dweller": "Your long time spent in darkness has made you accustomed to its terrors. you gain a +4 bonus on saving throws against fear, phantasm, darkness, shadow, and shadowmorph effects. the dc of intimidate checks made to demoralize you increases by 5.",
+  "Persuasive": "You are skilled at swaying attitudes and intimidating others into your way of thinking",
+  "Racial Heritage": "The blood of a non-human ancestor flows in your veins",
+  "Shadow Dodge": "You use light and darkness to your advantage, confusing your enemies and confounding their senses",
+  "Strike Back": "You can strike at foes that attack you using their superior reach, by targeting their limbs or weapons as they come at you",
+  "Witchbreaker": "Your training and skill in combating witches and hags have made you resistant to their magic, and you can disrupt their magical hatred"
  },
  "inherents": {
   "cha": 5,
@@ -998,7 +1004,7 @@
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "loving mother, dead father, raised in a wealthy household",
+ "parents": "loving mother, loving father, raised in a middle income household",
  "personality_traits": [
   "Punctual",
   "Prudent",
@@ -1354,48 +1360,50 @@
  "spellbooks": [],
  "spells_prepared_per_level": [],
  "sphere_boons": [
-  "Easy Focus"
+  "Empowered Abilities",
+  "Overcharge",
+  "Easy Focus",
+  "Fortified Casting"
  ],
  "sphere_counts": {
-  "Berserker": {
+  "Barrage": {
    "advanced": 1,
    "feats": 0,
-   "normal": 7
+   "normal": 1
   }
  },
  "sphere_drawbacks": [
-  "Somatic Casting",
-  "Prepared Caster"
+  "Prepared Caster",
+  "Addictive Casting",
+  "Magical Signs",
+  "Extended Casting",
+  "Material Casting",
+  "Verbal Casting"
  ],
  "sphere_feat_tax": {
-  "Extra Combat Talent (Bloody Counter / Sword Eater)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Break Dancing / Rift Strike)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Decapitate / Shrapnel)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Mage Masher / Beat Down)": [
+  "Extra Combat Talent (Double Tap / Cone Of Death)": [
    "Extra Combat Talent"
   ]
  },
  "sphere_feats": [
-  "Extra Combat Talent (Mage Masher / Beat Down)",
-  "Extra Combat Talent (Bloody Counter / Sword Eater)",
-  "Extra Combat Talent (Decapitate / Shrapnel)",
-  "Extra Combat Talent (Break Dancing / Rift Strike)"
+  "Extra Combat Talent (Double Tap / Cone Of Death)"
  ],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Somatic Casting",
   "Prepared Caster",
-  "Easy Focus"
+  "Addictive Casting",
+  "Magical Signs",
+  "Extended Casting",
+  "Material Casting",
+  "Verbal Casting",
+  "Empowered Abilities",
+  "Overcharge",
+  "Easy Focus",
+  "Fortified Casting"
  ],
  "spheres_chosen": [
   {
-   "sphere": "Berserker",
+   "sphere": "Barrage",
    "system": "might"
   }
  ],
@@ -1406,26 +1414,56 @@
   "Mithral Tortoise Stance"
  ],
  "story_feat_tax_dict": {
-  "Blind-Fight": [
-   "improved blind-fight",
-   "greater blind-fight"
+  "Iron Will": [
+   "courage in numbers",
+   "witchbreaker"
   ]
  },
  "story_feats": [
-  "Improved Shield Bash",
-  "Healer's Mercy",
-  "Blind-Fight",
-  "Discipline Focus"
+  "Lightning Recovery",
+  "Mind Trick",
+  "Hammer the Gap",
+  "Iron Will"
  ],
  "str": 10,
  "teamwork_feat_labels": [],
  "teamwork_feats": 0,
  "total_level": 18,
  "total_rolled_hp": 136,
- "trainer_calibers": [],
- "trainer_feat_labels": [],
+ "trainer_calibers": [
+  2,
+  2,
+  2,
+  3,
+  2
+ ],
+ "trainer_feat_labels": [
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 3)",
+  "(Trainer 3)",
+  "(Trainer 4)",
+  "(Trainer 4)",
+  "(Trainer 4)",
+  "(Trainer 5)",
+  "(Trainer 5)"
+ ],
  "trainer_feat_tax_dict": {},
- "trainer_feats": [],
+ "trainer_feats": [
+  "Flanking Foil",
+  "Exotic Weapon Proficiency",
+  "Coordinated Defense",
+  "Haft Strike",
+  "Healer's Mercy",
+  "Witchbreaker",
+  "Strike Back",
+  "Dampen Presence",
+  "Racial Heritage",
+  "Nemesis",
+  "Dreadforger"
+ ],
  "weapon_enhancement_bonus": 5,
  "weapon_enhancement_chosen_list": [
   "Concealed",
@@ -1436,6 +1474,6 @@
  "weapon_name": "Hanbo",
  "weight_number": 30,
  "wis": 15,
- "younger_brothers": " you have 0 younger brothers",
+ "younger_brothers": " you have 3 younger brothers",
  "younger_sisters": " you have 0 younger sisters"
 }
