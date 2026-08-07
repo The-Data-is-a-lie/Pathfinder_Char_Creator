@@ -19,6 +19,40 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **The web sheet's Companions tab now pre-fills from the generated character** *(sibling repo:
+  `Pathfinder-Character-Sheet`)* — the last gate on the Companion Sheets map. A druid's rolled
+  companion arrives with its HP/AC/saves, abilities, skills, attack lines and notes already in place,
+  and stays fully hand-editable.
+  - **Generated rows are seeded ONCE into the user's own array, then left alone.** `seedCompanions()`
+    joins `seedBackendStatBonuses` / `seedRacialColumn` in `renderSheet`, guarded by its own
+    `_sheet.companionsSeeded` flag — its own, not theirs, so characters saved before this feature
+    still upgrade. It sits *above* the simple-view early return, so both view modes and
+    `loadCharacter()` fill, not just a fresh generation. After that first render a generated
+    companion is an *ordinary* companion: same model, same editors, same `×`.
+  - *Rejected:* live-deriving the rows with a per-field override layer. It keeps generated numbers
+    correct if the payload changes — but the payload never changes for a saved character, and the
+    price is rewiring every editor plus designing a "reset to generated" affordance nobody asked for.
+    *Rejected:* a read-only generated block above the editable list — cleanest provenance, but the
+    player could not tick their own companion's HP down without copying it first.
+  - **A player who hand-typed their bird may now see two rows.** That is correct and visible — both
+    are editable and either has a `×`. Silently reconciling them would mean guessing which fields
+    the player meant to keep.
+  - **Entries that explain an ABSENCE render as a dim line, not a row** (*"Samurai — no mount: traded
+    away by Warrior Poet."*). They are not creatures, so they must not become deletable rows, and
+    they render straight from the payload every time. Skipping them was rejected: an empty tab cannot
+    distinguish "the generator decided no companion" from "this is broken", which is the confusion
+    that opened this work. An unrecognised `outcome` prints the token itself rather than vanishing.
+  - **`merge_notes` is dropped and `unapplied` is kept**, deliberately: the first explains how a
+    number was built, the second names something the generator *could not do*, which the player needs
+    to know. `size_change` renders as a sentence and never as a modifier — its values are already
+    inside `ac` / `attacks[].atk` / `cmb` / `cmd` / `skills`, so re-applying it would double-count.
+  - Three widget changes came with it: **speed is free text** (the backend ships prose —
+    `"10 ft. , fly 80 ft. (average)"` — and the second number is the one a bird's player needs),
+    **CMB/CMD join the vitals strip**, and **a skills row** mirrors the abilities row with a 🎲 each.
+    All three are backward-compatible with rows already saved.
+  - The row takes the **bare** creature name, not Foundry's composed
+    `<Master>'s animal companion: <Name>`: the tab heading, the type dropdown and the HD badge
+    already say all three things. The two renderers differ here on purpose.
 - **The payload shape is a declared manifest.** `Backend/utils/payload.py` owns `build_payload()`
   and `PAYLOAD_KEYS` — the exact 172-key order the FoundryVTT module and the web sheet read
   **positionally** — and `validate_payload_shape.py` fails when the built payload stops matching it.
