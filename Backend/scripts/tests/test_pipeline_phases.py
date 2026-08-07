@@ -21,7 +21,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from _harness import Report  # noqa: E402
 
 from utils.class_func.pipeline import (  # noqa: E402
-    PhaseOrderError, phase, seal, is_sealed, require_sealed)
+    PhaseOrderError, PhaseRecord, phase, seal, is_sealed, require_sealed)
 
 REPORT = Report('test_pipeline_phases')
 
@@ -283,15 +283,269 @@ def test_class_options_phase():
     check('the error names Total_HP alone', 'Total_HP' in msg and 'stats' not in msg)
 
 
+def test_returns_is_checked_on_exit():
+    """`returns` is the third contract: outputs that are NOT character state ride a PhaseRecord,
+    and an over-declared field has to fail on the way out exactly as `provides` does -- otherwise
+    the record's whole advantage over a tuple (a typo raises here, not in the payload) is lost."""
+    @phase(requires=[], provides=[], returns=['weapon_name'])
+    def forgets_a_field(character):
+        return PhaseRecord(armor_ac=3)
+
+    msg = raises('a phase whose record lacks a declared field raises', forgets_a_field, Stub())
+    check('the record error names the field', 'weapon_name' in msg)
+    check('the record error names the phase', 'forgets_a_field' in msg)
+
+    @phase(requires=[], provides=[], returns=['weapon_name'])
+    def carries_it(character):
+        return PhaseRecord(weapon_name='Longsword')
+
+    check('a phase whose record carries the field passes',
+          carries_it(Stub()).weapon_name == 'Longsword')
+
+    # The failure mode a plain dict would NOT catch: reading a field nobody set. On a record this
+    # is an AttributeError at the reader; in a dict it is a KeyError at best and a silent None at
+    # worst, arriving in the payload as a key the two consuming repos read positionally.
+    rec = PhaseRecord(weapon_name='Longsword')
+    try:
+        rec.weapon_nmae                                          # noqa: B018 - deliberate typo
+        check('a mistyped record field raises at the reader', False)
+    except AttributeError:
+        check('a mistyped record field raises at the reader', True)
+
+
+def test_gear_and_equipment_phase():
+    """phase_gear_and_equipment -- the first phase whose outputs are mostly NOT character state.
+
+    Its ordering hazard is the one the file already got wrong once and fixed by moving a call:
+    item_chooser used to drain the purse before plan_enhancements reserved its share, so no
+    character could afford an enhancement tier and enhancement_effects_dict was empty for every
+    realistically funded NPC. That is now an ordering rule INSIDE the phase; what the contract
+    guards is the purse existing at all, and the armour type the selection is limited against.
+
+    It is also the phase that proves the record: eleven values cross out of it and every one is read
+    only by the export, so none of them belongs on the character.
+    """
+    import main_test
+
+    gear = main_test.phase_gear_and_equipment
+
+    check('gear phase keeps requires small (ticket 05: 2-4 names)',
+          2 <= len(gear.requires) <= 4)
+    check('gear phase requires gold (every spender below draws the purse down)',
+          'gold' in gear.requires)
+    check('gear phase requires armor_type (list_selection limits on it)',
+          'armor_type' in gear.requires)
+
+    # What IS character state: the chosen kit, which later phases and the buff pass read.
+    for name in ('armor_dict', 'weapon_dict', 'shield_dict', 'shield_flag', 'mind_blade'):
+        check(f'gear phase provides {name} (real character state)', name in gear.provides)
+
+    # What is NOT: eleven export-only outputs. On the character these would be eleven more
+    # attributes on an object that already carries ~200.
+    for name in ('weapon_name', 'equipment_list', 'equip_descrip', 'armor_ac', 'shield_ac',
+                 'weapon_enhancement_chosen_list', 'armor_enhancement_chosen_list',
+                 'shield_enhancement_chosen_list'):
+        check(f'gear phase returns {name} on its record', name in gear.returns)
+    check('nothing is declared both on the character and on the record',
+          not (set(gear.provides) & set(gear.returns)))
+
+    raises('the real gear phase raises when run before the purse is filled', gear, Stub())
+
+    # The ordering mistake that would actually happen: the block moved above assign_gold, which
+    # sits two lines from armor_chooser. Everything else is in place, so only `gold` is missing.
+    armed = Stub()
+    armed.armor_type = 'L'
+    msg = raises('it raises when moved above assign_gold', gear, armed)
+    check('the error names gold alone', 'gold' in msg and 'armor_type' not in msg)
+
+
+def test_appearance_and_traits_phase():
+    """phase_appearance_and_traits -- seven flavour rolls, none of them character state.
+
+    Its hazard is invisible by construction: language_chooser is HANDED the skill ranks, so running
+    this before the skills are spent does not raise, it just picks languages against an empty rank
+    sheet. `skill_rank_budget` is the only attribute that can express that ordering, because the
+    ranks themselves never reach the character -- which is exactly why the contract has to name it.
+    """
+    import main_test
+
+    look = main_test.phase_appearance_and_traits
+    prof = main_test.phase_professions_and_skills
+
+    check('appearance phase requires skill_rank_budget (languages are chosen against the ranks)',
+          'skill_rank_budget' in look.requires)
+    check('...and the professions phase is what provides it, so the order is forced',
+          'skill_rank_budget' in prof.provides)
+    check('appearance phase requires chosen_race (appearance tables are keyed by race)',
+          'chosen_race' in look.requires)
+
+    # Every output is export-only, so the phase should put NOTHING on the character.
+    check('appearance phase provides no character state (all seven outputs are export-only)',
+          look.provides == ())
+    for name in ('selected_traits', 'hero_points', 'hair_color', 'appearance', 'language_text'):
+        check(f'appearance phase returns {name} on its record', name in look.returns)
+
+    raises('the real appearance phase raises when run before the skills are spent',
+           look, Stub(), {})
+
+    raced = Stub()
+    raced.chosen_race = 'Human'
+    msg = raises('it raises when moved above the professions phase', look, raced, {})
+    check('the error names skill_rank_budget alone',
+          'skill_rank_budget' in msg and 'chosen_race' not in msg)
+
+
+def test_class_bonus_feats_phase():
+    """phase_class_bonus_feats -- the feats a class GRANTS, before any are chosen.
+
+    The hazard here is a silent refund, and it is worth spelling out because it hides itself. The
+    bloodline bonus list is drawn from `character.bloodline`; run this before the bloodline is
+    resolved and the list comes back EMPTY -- at which point the phase's own refund converts every
+    unfilled slot into an ordinary feat, so the character still ends up with the right feat COUNT
+    and the wrong feats. A total that still adds up is the hardest kind of bug to notice.
+    """
+    import main_test
+
+    grants = main_test.phase_class_bonus_feats
+
+    check('class-bonus-feats requires bloodline (the bonus list is the bloodline\'s own)',
+          'bloodline' in grants.requires)
+    check('class-bonus-feats requires feat_amounts (it REFUNDS into the budget -- ticket 08)',
+          'feat_amounts' in grants.requires)
+    check('class-bonus-feats requires bab_total (the BAB>=1 free-feat seeding)',
+          'bab_total' in grants.requires)
+    check('requires stays small (ticket 05: 2-4 names)', 2 <= len(grants.requires) <= 4)
+
+    for name in ('bloodline_feats', 'bloodline_feat_labels', 'ranger_style_feats',
+                 'monk_bonus_feats'):
+        check(f'class-bonus-feats returns {name} on its record', name in grants.returns)
+    check('nothing is declared both on the character and on the record',
+          not (set(grants.provides) & set(grants.returns)))
+
+    raises('the real class-bonus-feats phase raises before the bloodline is resolved',
+           grants, Stub())
+
+    # The ordering mistake that would actually happen: this block moved above the try/except that
+    # resolves character.bloodline, which sits ~30 lines earlier. Everything else is in place.
+    armed = Stub()
+    armed.bab_total = 6
+    armed.feat_amounts = 9
+    msg = raises('it raises when moved above the bloodline resolution', grants, armed)
+    check('the error names bloodline alone', 'bloodline' in msg and 'bab_total' not in msg)
+
+
+def test_bloodline_resolution_phase():
+    """phase_bloodline_resolution -- collapse two optional tables into one name.
+
+    Its `except (NameError, AttributeError)` is NOT the dead kind that was deleted from the school
+    reads: bloodline_sorc/bloodline_rager only exist for bloodline classes, so the AttributeError arm
+    is live for everyone else. That is exactly why both are declared -- otherwise a reordering falls
+    into the handler and reads "N/A" instead of failing.
+    """
+    import main_test
+
+    bl = main_test.phase_bloodline_resolution
+    opts = main_test.phase_class_options
+    grants = main_test.phase_class_bonus_feats
+
+    check('bloodline phase provides bloodline', 'bloodline' in bl.provides)
+    check('...which phase_class_bonus_feats requires, so the order is forced',
+          'bloodline' in grants.requires)
+    check('its requirements come from phase_class_options (the chain holds)',
+          set(bl.requires) <= set(opts.provides))
+    check('it returns nothing on a record (bloodline is character state)', bl.returns == ())
+
+    raises('the real bloodline phase raises before the bloodline tables exist', bl, Stub())
+
+
+def test_path_of_war_and_spheres_phase():
+    """phase_path_of_war_and_spheres -- the block ticket 08 is about.
+
+    Thirty-two values cross out and not one is character state, which is the single strongest
+    argument for the record: as attributes they would be 32 more names on an object already carrying
+    ~200; as a tuple, 32 positions nobody can read.
+    """
+    import main_test
+
+    pw = main_test.phase_path_of_war_and_spheres
+
+    check('PoW/Spheres requires profession_feats (the reservation subtracts them)',
+          'profession_feats' in pw.requires)
+    check('PoW/Spheres requires feat_amounts (it MUTATES the budget -- ticket 08)',
+          'feat_amounts' in pw.requires)
+    check('requires stays within the rule (2-4 names)', 2 <= len(pw.requires) <= 4)
+    check('it returns a large record rather than character attributes', len(pw.returns) >= 30)
+    check('nothing is declared in both homes', not (set(pw.provides) & set(pw.returns)))
+    for name in ('mt_feats', 'style_feats', 'sphere_feats', 'martial_disciplines', 'manifesters'):
+        check(f'PoW/Spheres returns {name} on its record', name in pw.returns)
+
+    raises('the real PoW/Spheres phase raises when run before the professions phase', pw,
+           Stub(), 'N', False)
+
+
+def test_class_features_and_bonus_spells_phase():
+    """phase_class_features_and_bonus_spells -- the seal, then the reads that depend on it."""
+    import main_test
+
+    cf = main_test.phase_class_features_and_bonus_spells
+
+    for name in ('class_features', 'class_feature_levels', 'class_feature_owners',
+                 'casting_level_str_foundry'):
+        check(f'class-features phase returns {name}', name in cf.returns)
+    check('class-features phase puts nothing on the character', cf.provides == ())
+
+    # The conditionally-bound export string: seeded inside the phase so `returns` can check it.
+    # Without the seed a non-low/high/mid caster leaves the name unbound and the export dies.
+    raises('the real class-features phase raises before the class choices exist', cf, Stub(), 'mid')
+
+
+def test_feat_phases():
+    """The two feat phases, and the boundary between them.
+
+    `character.feats` and the local `feats` are NOT the same list -- `separate_feats_func` splits the
+    local five ways while the attribute keeps the merged one. That is the trap that would have
+    shipped the wrong feats if the extraction had repointed by name, so the split is asserted here.
+    """
+    import main_test
+
+    sel = main_test.phase_feat_selection
+    tax = main_test.phase_feat_tax_and_swaps
+
+    check('feat selection provides feats on the CHARACTER (choosers read it there)',
+          'feats' in sel.provides)
+    check('...and does NOT also carry feats on its record (one value, one home)',
+          'feats' not in sel.returns)
+    check('feat selection requires chooseable (class grants are seeded into it first)',
+          'chooseable' in sel.requires)
+
+    check('the feat-tax phase returns the five-way split',
+          {'feats', 'story_feats', 'flaw_feats', 'flavor_feats', 'class_feats'} <= set(tax.returns))
+    check('the feat-tax phase returns feat_budget', 'feat_budget' in tax.returns)
+    check('the feat-tax phase only READS the budget -- every mutation is upstream now',
+          'feat_amounts' in tax.requires and 'feat_amounts' not in tax.provides)
+    check('nothing is declared in both homes', not (set(tax.provides) & set(tax.returns)))
+
+    raises('the real feat-selection phase raises before the class grants are seeded',
+           sel, Stub(), None, {}, 'Y', 0)
+
+
 def main():
     for test in (test_requires_missing_raises,
                  test_falsy_requirement_counts_as_set,
                  test_provides_is_checked_on_exit,
+                 test_returns_is_checked_on_exit,
                  test_sealing,
                  test_real_phases_declare_their_hazards,
                  test_alignment_and_level_phase,
                  test_hp_and_spellbooks_phase,
-                 test_class_options_phase):
+                 test_class_options_phase,
+                 test_gear_and_equipment_phase,
+                 test_appearance_and_traits_phase,
+                 test_class_bonus_feats_phase,
+                 test_bloodline_resolution_phase,
+                 test_path_of_war_and_spheres_phase,
+                 test_class_features_and_bonus_spells_phase,
+                 test_feat_phases):
         print(f'{test.__name__}:')
         test()
 

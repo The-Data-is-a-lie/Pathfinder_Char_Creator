@@ -18,7 +18,109 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 
 ## [Unreleased]
 
+### Added
+- **The payload shape is a declared manifest.** `Backend/utils/payload.py` owns `build_payload()`
+  and `PAYLOAD_KEYS` — the exact 172-key order the FoundryVTT module and the web sheet read
+  **positionally** — and `validate_payload_shape.py` fails when the built payload stops matching it.
+  Previously that contract was the insertion order of a dict literal in the middle of a 2,700-line
+  file, where inserting a key in the wrong place breaks nothing locally and breaks a character sheet
+  in another repository.
+  - **It found a live contract violation on its first run.** `class feature owners` was inserted
+    only when some chooser happened to call `setdefault`, so a character with no class choices at
+    all (fighter 1) shipped a payload **one key shorter than everyone else**. It is now seeded
+    alongside its two siblings, so the shape never depends on the character.
+  - That is a bug the goldens structurally could not catch: a golden says *this character did not
+    change*, never *the contract is what we think it is*. The gate compares **two different**
+    characters for exactly that reason, and has no `--update`.
+  - `build_payload` **derives** rather than receives the ~15 values that are pure unpackings of
+    character state (`armor_name` and its five siblings out of `character.armor_dict`, `deity_name`,
+    `school`, `archetype_info`). Two pre-existing quirks are preserved deliberately and recorded in
+    the module docstring rather than silently fixed: `shield_max_dex_bonus` reads `armor_dict`, and
+    `armor_dict` is only bound on one branch. Fixing either is a behaviour change, not a move.
+- **The feat budget is no longer allowed to be over-committed in silence** — `test_feat_budget.py`
+  reports the arithmetic and names who over-drew. **It currently fails, deliberately**, on a real
+  bug it found.
+  - The `max(0, ...)` that reserves feat slots for Path of War, Spheres and professions was
+    clamping a negative result to zero, so an over-committed character quietly ended up with fewer
+    feats than the rules allow. The golden fixtures could never catch it: they record whatever the
+    clamp produced, so a clamped character is "correct" forever.
+  - **Instrumented before designing anything**, as ticket 08 asked: 70 classes x 5 levels x 2 seeds
+    = 700 generations. The clamp fires in **16 of 700 (2.3%)**, **every one of them at level 1**,
+    worst overdraft 2 feats. The sibling clamp on `normal_feat_amount` never fires at all.
+  - The cause is a sizing mismatch, not a structural over-commit: a 1st-level budget is 7, and the
+    homebrew subsystems ask for ~8 (typically 5 sphere feats + 3 profession feats). The subsystems
+    are sized as though the budget were a mid-level one.
+  - **That measurement is why there is no `FeatBudget` object.** A `reserve()`/`grant()` interface
+    that refuses to go negative is real leverage, but inventing an interface for one value to
+    prevent a bug confined to one level in 2.3% of runs costs more than it buys, and the map warns
+    against exactly that. The arithmetic stays; the silence goes. If over-commits ever appear
+    outside level 1, the gate says so in those words — and that is the evidence that promotes it.
+- **`validate_alias_invariants.py`** — an alias was dropped because its writer runs once; this keeps
+  that true. Two aliases had **identical shape and opposite verdicts**, and the discriminator is
+  invisible at the alias site: `full_domain` was safe to drop because `domain_chooser` runs *once*,
+  while `day_list`/`known_list` had to be kept because `sync_legacy_spell_fields` runs *twice*. The
+  gate pins both call counts and fails either way they move — including the harmless direction,
+  because a stale verdict is still a stale verdict.
+  - The failure it prevents is silent and remote. Add a second `domain_chooser(character)` call and
+    nothing breaks locally: the payload's `full_domain` just starts reporting the second roll
+    instead of the first, on a character sheet, in another repository. The key is still present and
+    still a list of domains, so no test, diff or exception would have said a word.
+- **`validate_phase_contracts.py`** — the phase rules are now a gate, not a paragraph. It catches a
+  `phase_*` function that lost its `@phase` decorator (it would keep working and stop checking
+  anything), a value declared in both `provides` and `returns`, a `requires` list grown past four,
+  and a phase that declares `returns` without building a `PhaseRecord`. The three phases that still
+  return bare tuples are listed as named debt and warn rather than fail — a gate that fails the day
+  it lands is a gate people disable.
+
+### Removed
+- **The dead `try/except NameError` handlers around the wizard school reads.** They were the
+  non-wizard path back when `school`/`opposing_school` were conditionally-bound locals; once
+  `phase_class_options` began seeding both attributes to `None`, an attribute lookup could only ever
+  raise `AttributeError`, so the handlers were unreachable. They were deliberately left standing
+  while that extraction was in flight — a pure move must not fold in a cleanup — and are removed now
+  in their own commit, with the `if ... else "N/A"` carrying the non-wizard path exactly as before.
+
 ### Changed
+- **A phase's outputs now have three declared homes, not one.** Extraction was heading toward
+  `build_payload(character)` — the payload built from the character alone — and a runtime census
+  priced it: the payload literal reads **98 function locals**, of which **88** would have to become
+  character attributes, on an object that already carries ~200.
+  - **Four of those names already exist on the character holding different values**, and three were
+    invisible to reading. `character.feats` is the *pre-*`separate_feats_func` list;
+  	`character.martial_disciplines` is the discipline data **table**, not the chosen list (the same
+    shape as the known `character.deity` trap); `character.class_features` is not the `data_dict`
+    slice the local holds; `character.archetype_info` is the dict whose `json.dumps` the local is.
+    Repointing any of them by name would have shipped a wrong character.
+  - So outputs sort three ways, by *who else needs this*: **character state** (`provides`),
+    **derivable at export** (stored nowhere — `armor_name` and its five siblings come straight out
+    of `character.armor_dict`), and **everything else** (a `PhaseRecord`, declared in `returns`).
+  - **This reopens ticket 06's "positional soup" ruling, and narrows it.** That objection was
+    against a 15-element *tuple*, and it was right about tuples. A record is not a tuple:
+    `gear.weapon_name` names itself at the call site, cannot be mis-ordered, and is checked on the
+    way out exactly as `provides` is. The rule is now positionality, not returning.
+- **`generate_random_char` is 934 lines, down from 1,904** — every ordering-sensitive block in it is
+  now a declared phase (15 of them), and the goldens stayed **byte-identical through every
+  extraction**. The later blocks landed as records: `phase_path_of_war_and_spheres` alone hands back
+  **32 values, not one of which is character state**, which is the clearest case the record rule
+  makes for itself.
+  - The two feat blocks are **not** adjacent (the class-features phase sits between them) and
+    `feats`/`teamwork_feats` are re-bound across them, so the records are **unpacked at the call
+    site** rather than repointed downstream — 97 references left untouched instead of rewritten.
+  - **`validate_phase_contracts.py` caught a modelling error in one of these extractions**:
+    `phase_feat_selection` had declared `feats` in *both* `provides` and `returns`. It is character
+    state (choosers and `no_prereq_loop` read `character.feats`), and the local is only an alias.
+    The gate written earlier in the same session is what found it.
+- **Three more blocks are declared pipeline phases**, golden payloads byte-identical throughout:
+  `phase_gear_and_equipment` (the kit and the purse — eleven outputs cross out of it and *every one*
+  is read only by the export, which is what proved the record), `phase_appearance_and_traits` (seven
+  flavour rolls, and the first phase that puts **nothing** on the character), and
+  `phase_class_bonus_feats` (the feats a class grants, before any are chosen).
+  - The appearance phase's hazard is one no attribute could express: `language_chooser` is *handed*
+    the skill ranks, so running it early picks languages against an empty rank sheet without raising.
+    Requiring `skill_rank_budget` — which only the professions phase sets — is what forces the order.
+  - The class-bonus-feats hazard hides itself: run before `character.bloodline` is resolved, the
+    bonus list comes back empty and the phase's own refund converts every unfilled slot into an
+    ordinary feat, so the character ends with the right feat **count** and the wrong feats.
 - **Every class-specific choice is now a declared pipeline phase.** `phase_class_options` covers
   schools, archetypes, bloodlines, domains, bonded creatures and the thirty-odd option buckets.
   Golden payloads unchanged.
