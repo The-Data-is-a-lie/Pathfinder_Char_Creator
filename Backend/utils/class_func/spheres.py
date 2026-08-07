@@ -571,15 +571,27 @@ def _roll_magic_sphere_feats(character, chosen, counts):
 
 def choose_spheres_attr(character, max_feats=None, trainer_backed=False, mentor_talents=None,
                         talent_budget=None, max_budget_feats=None):
-    """Select sphere talents (flat-8) + a feat slot for each BUDGET-PAID talent; return the bundle.
+    """Select sphere talents + a feat slot for each BUDGET-PAID talent; return the bundle.
 
     Empty defaults when ``character.sphere_count`` is 0 (flag off). Each budget-paid talent is tracked
     by an HR1 "Extra Talent > Extra Talent" feat (2 talents per feat; the first magic talent uses Basic
     Magic Training, 1 talent + access). ``trainer_backed`` (the 25% branch): only ~half the talents are
     budget-paid and get feats; the rest are funded by the 2 dedicated Spheres Mentor trainers (tracked
-    there, not here). Lean characters pay for all their talents. ``max_feats`` is accepted for
-    backward-compat but no longer used (the feat count now follows the budget-paid talent count). The
-    generator reserves the realized feats with priority.
+    there, not here). Lean characters pay for all their talents.
+
+    Two callers-supplied numbers decide how many talents survive, and they are NOT the same thing:
+
+    * ``talent_budget`` -- how many talents are ROLLED for, from ``roll_talent_budget(level)``. Level-
+      scaled; ``None`` falls back to the historical flat 8 so the attic/ smoke scripts still run.
+    * ``max_budget_feats`` -- how many FEATS the character can actually spend here, i.e. what is left
+      of the feat budget after Path of War and professions take their share. Talents the feat budget
+      and the mentor together cannot fund are DROPPED, not granted (no freebies -- HR1's whole point
+      is that talents cost feats). ``None`` means "unbounded", for the same smoke scripts.
+
+    That second parameter is the fix for ticket 08's level-1 over-commit: the affordability was
+    already being computed by the caller and then thrown away, so the feat count followed the talent
+    count instead of the budget. ``max_feats`` is the vestige of that era -- accepted for
+    backward-compat, never read. The generator reserves the realized feats with priority.
     """
     # Per-character gap accumulator; main_test folds character.talent_buff_gaps into buff_gaps.
     del _TALENT_GAPS[:]
@@ -626,9 +638,10 @@ def choose_spheres_attr(character, max_feats=None, trainer_backed=False, mentor_
     if not chosen:
         return bundle
 
-    # ---- pick the flat-8 talents first (talent COUNT is decoupled from the feat slots) ---- #
-    # Every spheres-selected dabbler takes a flat 8 talents (7 normal + 1 advanced); the 25%
-    # "trainer-backed" branch adds overflow talents on top in main_test.
+    # ---- pick the rolled talents first (talent COUNT is decoupled from the feat slots) ---- #
+    # A spheres-selected dabbler rolls for `talent_budget` talents (all but one normal, 1 advanced);
+    # the 25% "trainer-backed" branch adds overflow talents on top in main_test. How many of these
+    # SURVIVE is decided further down by what the feat budget and the mentor can fund.
     counts = {s: {"normal": 0, "advanced": 0, "feats": 0} for s, _ in chosen}
     # How many talents to pick. `talent_budget` is the level-scaled roll; the flat 7+1 remains the
     # default only so the older smoke scripts in attic/ still run.
